@@ -147,8 +147,12 @@ extern struct BattleUnit * gpEkrBattleUnitLeft;
 extern struct BattleUnit * gpEkrBattleUnitRight;
 extern u32 gEkrHPBarCount;
 extern u32 gEkrDeadEventExist;
+extern u8 gSpellAnimBgfx[];
 extern u16 gEkrBarfxBuf[];
+extern u16 gEkrTsaBuffer[0x1000 / 2];
+extern u8 gSpellAnimObjfx[];
 extern i16 gEkrPairExpPrevious[2];
+extern u16 gEfxFrameTmap[0x2520 / 2];
 
 void NewEkrLvlupFan(void);
 void EkrLvupFanMain(struct ProcEfx * proc);
@@ -185,11 +189,11 @@ void EkrGauge_08044274(void);
 // func_fe6_08044390
 // func_fe6_080444EC
 void EfxPrepareScreenFx(void);
-// func_fe6_08044870
+// GetBanimInitPosReal
 void EkrEfxStatusClear(void);
 // func_fe6_080449C4
 // func_fe6_080449E4
-// func_fe6_080449F4
+// NewEfxHPBar
 // func_fe6_08044AC0
 // func_fe6_08044C68
 // func_fe6_08044D08
@@ -197,15 +201,15 @@ void EkrEfxStatusClear(void);
 // func_fe6_08044E2C
 // func_fe6_08044EEC
 // func_fe6_08044F90
-// func_fe6_080450DC
+// NewEfxAvoid
 // func_fe6_08045180
 // func_fe6_080451E0
 // func_fe6_080452B8
-// func_fe6_0804536C
+// NewEfxNoDmage
 // func_fe6_080453C0
 // func_fe6_08045478
 // func_fe6_0804549C
-// func_fe6_08045578
+// NewEfxStatusCHG
 // func_fe6_080455A4
 // func_fe6_080455C0
 // func_fe6_08045614
@@ -234,7 +238,7 @@ void NewEfxFarAttackWithDistance(struct BaSprite * anim, int);
 // func_fe6_0804600C
 // func_fe6_08046010
 // func_fe6_0804610C
-// func_fe6_080462BC
+// NewEfxHitQuake
 // func_fe6_0804646C
 // func_fe6_08046794
 // func_fe6_080467D0
@@ -244,7 +248,7 @@ void NewEfxFarAttackWithDistance(struct BaSprite * anim, int);
 // func_fe6_08046880
 // func_fe6_080468D8
 // func_fe6_08046948
-// func_fe6_0804695C
+// NewEfxFlashHPBar
 // func_fe6_08046994
 // func_fe6_080469B4
 // func_fe6_08046A0C
@@ -253,15 +257,15 @@ void EndEfxHPBarColorChange(void);
 // func_fe6_08046B5C
 // func_fe6_08046B6C
 // func_fe6_08046B7C
-// func_fe6_08046C14
+// NewEfxFlashUnit
 // func_fe6_08046C50
 // func_fe6_08046D04
 void NewEfxStatusUnit(struct BaSprite * anim);
 void EndEfxStatusUnits(struct BaSprite *anim);
 void DisableEfxStatusUnits(struct BaSprite * anim);
 // func_fe6_08046EF8
-// func_fe6_08046F18
-// func_fe6_08046F48
+// SetUnitEfxDebuff
+// GetUnitEfxDebuff
 // func_fe6_08046F64
 // func_fe6_08047058
 // func_fe6_08047160
@@ -277,39 +281,39 @@ void EndProcEfxWeaponIcon(void);
 // func_fe6_0804738C
 // func_fe6_080473F0
 // func_fe6_08047430
-// func_fe6_080474B0
-// func_fe6_080474BC
-// func_fe6_080474C8
+void SpellFx_Begin(void);
+void SpellFx_Finish(void);
+void SpellFx_SetBG1Position(void);
 void SpellFx_ClearBG1(void);
-// func_fe6_08047500
-// func_fe6_080475D8
-// func_fe6_08047600
+void SpellFx_SetSomeColorEffect(void);
+void SpellFx_ClearColorEffects(void);
+void StartBattleAnimHitEffectsDefault(struct BaSprite * anim, int type);
 // func_fe6_08047610
-// func_fe6_08047620
-// func_fe6_080477AC
-// func_fe6_080478A0
-// func_fe6_080478DC
+void StartBattleAnimHitEffects(struct BaSprite * anim, int type);
+void StartBattleAnimResireHitEffects(struct BaSprite * anim, int type);
+void StartBattleAnimStatusChgHitEffects(struct BaSprite * anim, int type);
+// EfxCreateAnim
 // func_fe6_08047938
 // func_fe6_0804799C
-// func_fe6_08047A1C
-// func_fe6_08047A88
-// func_fe6_08047AB0
-// func_fe6_08047ACC
-// func_fe6_08047AF4
+// SpellFx_WriteBgMapExt
+void SpellFx_RegisterObjGfx(const void * img, u32 size);
+void SpellFx_RegisterObjPal(const u16 * pal, u32 size);
+void SpellFx_RegisterBgGfx(const void * img, u32 size);
+void SpellFx_RegisterBgPal(const u16 * pal, u32 size);
 // func_fe6_08047B10
 // func_fe6_08047B3C
 // func_fe6_08047B6C
-// func_fe6_08047BA4
+i16 EfxAdvanceFrameLut(i16 * ptime, i16 * pcount, const i16 lut[]);
 // func_fe6_08047C1C
-// func_fe6_08047C28
+int EfxGetCamMovDuration(void);
 // func_fe6_08047C48
-// func_fe6_08047C68
-// func_fe6_08047C88
-bool PrepareBattleGraphicsMaybe_(void);
+void EfxTmFill(u32 val);
+void SetEkrFrontAnimPostion(int pos, i16 x, i16 y);
+bool SetupBanim(void);
 void BeginAnimsOnBattleAnimations(void);
 void EkrMainEndExec(void);
-// func_fe6_08047D38
-// func_fe6_08047DAC
+void OnMainBas(void);
+// NewEkrBattleStarting
 // func_fe6_08047DC0
 // func_fe6_08047ED4
 // func_fe6_08047FDC
@@ -355,8 +359,8 @@ void ParseBattleHitToBanimCmd(void);
 // func_fe6_0804A500
 // func_fe6_0804A528
 // GetBattleAnimRoundType
-// func_fe6_0804A57C
-// func_fe6_0804A5A8
+// GetBattleAnimRoundTypeFlags
+// GetEfxHp
 // func_fe6_0804A5C0
 void BattleAIS_ExecCommands(void);
 // .L00804A5E8
@@ -376,7 +380,7 @@ int GetAnimPosition(struct BaSprite * anim);
 int CheckRoundMiss(i16 type);
 int CheckRound1(i16 type);
 int CheckRound2(i16 type);
-// func_fe6_0804B7B0
+// CheckRoundCrit
 struct BaSprite * GetAnimAnotherSide(struct BaSprite * anim);
 i16 GetAnimRoundType(struct BaSprite * anim);
 i16 GetAnimNextRoundType(struct BaSprite * anim);
@@ -411,7 +415,7 @@ int GetBattleAnimArenaFlag(void);
 // func_fe6_0804C50C
 // func_fe6_0804C554
 void func_fe6_0804C56C(void);
-// func_fe6_0804C580
+// BeginAnimsOnBattle_Arena
 // func_fe6_0804C5A4
 // func_fe6_0804C5BC
 // func_fe6_0804C5D0
@@ -971,15 +975,15 @@ void func_fe6_0804C56C(void);
 // func_fe6_0805AFA4
 // func_fe6_0805AFD4
 // func_fe6_0805AFEC
-// func_fe6_0805B01C
-// func_fe6_0805B094
-// func_fe6_0805B0D4
-// func_fe6_0805B13C
+void func_fe6_0805B01C(u16 * tm, u16 width, u16 height, int pal, int chr);
+void FillBGRect(u16 * tm, u16 width, u16 height, int pal, int chr);
+void func_fe6_0805B0D4(u16 * tm, u16 width, u16 height, int pal, int chr);
+void EfxTmModifyPal(u16 * tm, u16 width, u16 height);
 void EfxTmCpyBG(const void * ptr1, void * ptr2, u16 width, u16 height, int pal, int chr);
 void EfxTmCpyBgHFlip(const u16 * tsa, u16 * tm, u16 width, u16 height, int pal, int chr);
 void EfxTmCpyExt(const u16 * src, i16 src_width, u16 * dst, i16 dst_width, u16 width, u16 hight, int pal, int chr);
 void EfxTmCpyExtHFlip(const u16 * src, i16 src_width, u16 * dst, i16 dst_width, u16 width, u16 hight, int pal, int chr);
-// func_fe6_0805B380
+void func_fe6_0805B380(u16 * tm, int arg1, int arg2);
 void EkrModifyBarfx(u16 * tm, int);
 // func_fe6_0805B4D8
 void EfxPalBlackInOut(u16 const * pal_buf, int line, int length, int ref);
@@ -1160,7 +1164,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrGauge[];
 // ??? gUnk_085CB8A8
 // ??? gUnk_085CB8C0
 // ??? gUnk_085CB8D8
-// ??? gUnk_085CB8F0
+// ??? ProcScr_efxFarAttack
 // ??? gUnk_085CB918
 // ??? gUnk_085CB930
 // ??? gUnk_085CB988
@@ -1606,7 +1610,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrGauge[];
 // ??? gUnk_08603B58
 // ??? gUnk_08603BA4
 // ??? gUnk_08603BC0
-// ??? gUnk_086046D8
+extern struct ProcScr CONST_DATA ProcScr_EkrDragon_086046D8[];
 // ??? gUnk_086046F0
 // ??? gUnk_08604710
 // ??? gUnk_08604798

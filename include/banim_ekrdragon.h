@@ -42,12 +42,57 @@ u16 * GetEkrDragonStatusIdx(struct BaSprite * anim);
 // func_fe6_08058A1C
 // func_fe6_08058A34
 // func_fe6_08058A50
+
+struct ProcEkrDragon {
+    PROC_HEADER;
+
+    /* 29 */ u8 done;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ i16 timer;
+    /* 2E */ i16 terminator;
+    /* 30 */ i16 timer2;
+    /* 32 */ i16 x; 
+
+    STRUCT_PAD(0x34, 0x3A);
+
+    /* 3A */ i16 y_lo;
+    /* 3C */ i16 y_hi;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ ProcPtr sproc_flashingobj;
+    /* 48 */ ProcPtr sproc_bg2fx;
+    /* 4C */ ProcPtr sproc_bg2scroll;
+    /* 50 */ ProcPtr mainfxproc;
+    /* 54 */ ProcPtr proc54;
+    /* 58 */ ProcPtr sproc_bg2scrollhandle;
+    /* 5C */ struct BaSprite * anim;
+    /* 60 */ ProcPtr sproc1;
+    /* 64 */ ProcPtr procfx;
+    /* 68 */ ProcPtr sproc_flashingbg;
+};
+
 // func_fe6_08058A80
 // func_fe6_08058ACC
 // func_fe6_08058B84
 // func_fe6_08058C3C
-// func_fe6_08058CEC
-// func_fe6_08058D08
+
+struct ProcEkrDragon_086046D8 {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x2A, 0x2C);
+    
+    /* 2C */ i16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ int x;
+};
+
+void func_fe6_08058CEC(int x);
+void func_fe6_08058D08(struct ProcEkrDragon_086046D8 * proc);
 // func_fe6_08058D34
 // func_fe6_08058E24
 // func_fe6_08058E58
@@ -56,7 +101,7 @@ u16 * GetEkrDragonStatusIdx(struct BaSprite * anim);
 // func_fe6_08058F00
 void InitEkrDragonStatus(void);
 // func_fe6_08058F38
-// func_fe6_08058F60
+void EkrDragonTmCpyExt(int x, int y);
 // func_fe6_08058FA8
 // func_fe6_08059018
 // func_fe6_08059078
@@ -98,3 +143,11 @@ void func_fe6_080599D0(struct BaSprite * anim);
 // func_fe6_08059C78
 // func_fe6_08059D34
 void func_fe6_08059D8C(struct BaSprite * anim);
+
+extern const u16 Pal_081BF434[0xC0];
+extern const u8 Img_081BC268[];
+extern const u8 Tsa_081BF5B4[];
+extern const u8 Img_081BCBDC[];
+extern const u8 Tsa_081BF6F4[];
+extern const u8 Img_081BD5E8[];
+extern const u8 Tsa_081BD5E8[];
