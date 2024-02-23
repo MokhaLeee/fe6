@@ -204,9 +204,9 @@ SECTIONS
         . = 0x01E7AC; gUnk_Banim_0201E7AC = .;
         . = 0x01E7B4; gUnk_Banim_0201E7B4 = .;
         . = 0x01E7BC; gUnk_Banim_0201E7BC = .;
-        . = 0x01E7C0; gUnk_Banim_0201E7C0 = .;
+        . = 0x01E7C0; gEkrDragonIntroDone = .;
         . = 0x01E7C4; gUnk_Banim_0201E7C4 = .;
-        . = 0x01E7C8; gUnk_Banim_0201E7C8 = .;
+        . = 0x01E7C8; gEkrDragonState = .;
         . = 0x01E7CC; gUnk_Banim_0201E7CC = .;
         . = 0x01EFCC; gUnk_Banim_0201EFCC = .;
         . = 0x01EFEC; gUnk_Banim_0201EFEC = .;
@@ -287,6 +287,7 @@ SECTIONS
         . = 0x0203CDB8 - __ewram_overlay_end; gEkrPairExpPrevious = .;
         . = 0x0203CDBC - __ewram_overlay_end; gEkrPairExpGain = .;
         . = 0x0203CDCC - __ewram_overlay_end; gEkrPairEffectiveAgainst = .;
+        . = 0x0203CDE0 - __ewram_overlay_end; gEkrDragonJid = .;
 
         . = 0x0203CDE4 - __ewram_overlay_end;
         . = ALIGN(4); src/manim.o(ewram_data);
@@ -518,6 +519,8 @@ SECTIONS
         src/banim_ekrbattle.o(.text);
         src/banim_ekrlvupfan.o(.text);
         asm/code-banim.o(.text);
+        src/banim_dragon.o(.text);
+        asm/code-banim-dragon.o(.text);
         src/mu.o(.text);
         src/manim.o(.text);
         src/eventinfo.o(.text);

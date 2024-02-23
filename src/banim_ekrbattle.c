@@ -86,7 +86,7 @@ void NewEkrBattle(void)
     gpProcEkrBattle = SpawnProc(ProcScr_EkrBattle, PROC_TREE_3);
     SetMainFunc(InBattleMainRoutine);
     EkrEfxStatusClear();
-    func_fe6_0805884C();
+    ResetEkrDragonStatus();
 
     gEkrBattleEndFlag = 0;
     gEkrDebugTimer = 0;
@@ -281,7 +281,7 @@ void EkrBattlePreDragonIntro(struct ProcEkrBattle * proc)
 
 void EkrBattleExecDragonIntro(struct ProcEkrBattle * proc)
 {
-    u32 conf = GetEkrDragonStatusType();
+    u32 conf = GetEkrDragonStatueType();
 
     if (proc->counter == 2)
     {
@@ -546,7 +546,7 @@ void EkrBattleWaitNamewinAppear(struct ProcEkrBattle * proc)
     proc->timer = 0;
     proc->proc_repeat_func = (ProcFunc)EkrBattleWaitForPostBattleAct;
 
-    if (CheckEkrDragonDead1() != FALSE && *GetEkrDragonStatusIdx(MAIN_ANIM_FRONT(POS_L)) == TRUE)
+    if (GetEkrDragonStatueType70() != FALSE && *GetEkrDragonStatusIdx(MAIN_ANIM_FRONT(POS_L)) == TRUE)
         return;
 
     if (gEkrPairExpGain[POS_L] != 0)
@@ -594,7 +594,7 @@ void EkrBattleExecExpGain(struct ProcEkrBattle * proc)
     CpuFastCopy(Pal_EkrExpBar, &PAL_BG_COLOR(1, 0), 0x20);
     EnableBgSync(BG1_SYNC_BIT);
     EnablePalSync();
-    ret = GetBanimDragonStatusType();
+    ret = GetEkrDragonStatueType5370();
 
     switch (ret) {
     case 0:
@@ -752,7 +752,7 @@ void EkrBattleLvupHanlder(struct ProcEkrBattle *proc)
     SpellFx_ClearBG1();
     EkrGauge_08043908(0);
 
-    switch (GetBanimDragonStatusType()) {
+    switch (GetEkrDragonStatueType5370()) {
     case 0:
         gDispIo.bg0_ct.priority = 0;
         gDispIo.bg1_ct.priority = 1;
@@ -832,7 +832,7 @@ void EkrBattleStartDragonEnding(struct ProcEkrBattle * proc)
 {
     int val;
 
-    u32 conf = GetEkrDragonStatusType();
+    u32 conf = GetEkrDragonStatueType();
 
     /* If both side is not the ekrdragon, get here */
     if (proc->counter == 2)

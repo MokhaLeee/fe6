@@ -354,7 +354,7 @@ void ParseBattleHitToBanimCmd(void);
 // func_fe6_0804A4B8
 // func_fe6_0804A500
 // func_fe6_0804A528
-// func_fe6_0804A554
+// GetBattleAnimRoundType
 // func_fe6_0804A57C
 // func_fe6_0804A5A8
 // func_fe6_0804A5C0
@@ -367,23 +367,23 @@ void BattleAIS_ExecCommands(void);
 // GetBanimPalette
 void UpdateBanimFrame(void);
 void InitMainAnims(void);
-// func_fe6_0804B324
-// func_fe6_0804B37C
-// func_fe6_0804B4C0
-// func_fe6_0804B5E0
-// func_fe6_0804B6B0
-// func_fe6_0804B6C4
-// func_fe6_0804B6D8
-// func_fe6_0804B720
-// func_fe6_0804B768
+void InitBattleAnimFrame(int round_type_left, int round_type_right);
+void InitLeftAnim(int round_type);
+void InitRightAnim(int round_type);
+void SwitchAISFrameDataFromBARoundType(struct BaSprite * anim, int type);
+int GetAnimLayer(struct BaSprite * anim);
+int GetAnimPosition(struct BaSprite * anim);
+int CheckRoundMiss(i16 type);
+int CheckRound1(i16 type);
+int CheckRound2(i16 type);
 // func_fe6_0804B7B0
-// func_fe6_0804B80C
-// func_fe6_0804B828
-// func_fe6_0804B848
-// func_fe6_0804B868
-// func_fe6_0804B88C
-// SetAnimStateHiddenForDragon
-// func_fe6_0804B8E8
+struct BaSprite * GetAnimAnotherSide(struct BaSprite * anim);
+i16 GetAnimRoundType(struct BaSprite * anim);
+i16 GetAnimNextRoundType(struct BaSprite * anim);
+i16 GetAnimRoundTypeAnotherSide(struct BaSprite * anim);
+i16 GetAnimNextRoundTypeAnotherSide(struct BaSprite * anim);
+void SetAnimStateHidden(int pos);
+void SetAnimStateUnHidden(int pos);
 // func_fe6_0804B930
 // func_fe6_0804BACC
 // func_fe6_0804BAF0

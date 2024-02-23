@@ -3,23 +3,41 @@
 #include "prelude.h"
 #include "banim_sprite.h"
 
+extern ProcPtr gUnk_Banim_0201E7AC[2];
+extern ProcPtr gUnk_Banim_0201E7B4[2];
+extern ProcPtr gUnk_Banim_0201E7BC;
+extern u16 gEkrDragonIntroDone[2];
+extern u16 gUnk_Banim_0201E7C4[2];
+
+enum EkrDragonState_idx {
+    DRAGON_STATE_DEFAULT = 0,
+    DRAGON_STATE_1 = 1,
+    DRAGON_STATE_ENDING = 2,
+};
+
+extern u16 gEkrDragonState[2];
+extern u16 gEkrDragonJid[2];
+extern u16 gUnk_Banim_0201E7C4[2];
+
+void ResetEkrDragonStatus(void);
+bool EkrDragonIntroDone(struct BaSprite * anim);
+void TriggerEkrDragonEnding(struct BaSprite * anim);
+bool CheckEkrDragonEndingDone(struct BaSprite * anim);
+
 enum ekr_dragon_status_type_bitfile {
     EDRAGON_TYPE_0 = 1 << 0,
     EDRAGON_TYPE_1 = 1 << 1,
     EDRAGON_TYPE_2 = 1 << 2,
     EDRAGON_TYPE_3 = 1 << 3,
     EDRAGON_TYPE_4 = 1 << 4,
+    EDRAGON_TYPE_5 = 1 << 5,
 };
 
-void func_fe6_0805884C(void);
-bool EkrDragonIntroDone(struct BaSprite * anim);
-void TriggerEkrDragonEnding(struct BaSprite * anim);
-bool CheckEkrDragonEndingDone(struct BaSprite * anim);
-u32 GetEkrDragonStatusType(void); /* Different form FE8, this is a bitfile rather than enum */
-u32 GetBanimDragonStatusType(void);
-int CheckEkrDragonDead1(void);
+u32 GetEkrDragonStatueType(void); /* Different form FE8, this is a bitfile rather than enum */
+u32 GetEkrDragonStatueType5370(void);
+u32 GetEkrDragonStatueType70(void);
 // func_fe6_080589C4
-// func_fe6_080589FC
+u16 * GetEkrDragonJid(int pos);
 u16 * GetEkrDragonStatusIdx(struct BaSprite * anim);
 // func_fe6_08058A1C
 // func_fe6_08058A34
