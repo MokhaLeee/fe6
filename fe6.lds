@@ -97,7 +97,7 @@ SECTIONS
         . = 0x000018; gEkrDebugFlag2 = .;
         . = 0x00001C; gAnimC01Blocking = .;
         . = 0x000020; gEkrXPosReal = .;
-        . = 0x000024; gUnk_Banim_02000024 = .;
+        . = 0x000024; gEkrYPosReal = .;
         . = 0x000028; gUnk_Banim_02000028 = .;
         . = 0x00002C; gUnk_Banim_0200002C = .;
         . = 0x000030; gEkrBg0QuakeVec = .;
@@ -123,7 +123,7 @@ SECTIONS
         . = 0x011BC0; gUnk_Banim_02011BC0 = .;
         . = 0x0145C0; gUnk_Banim_020145C0 = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
-        . = 0x0165C0; gUnk_Banim_020165C0 = .;
+        . = 0x0165C0; gEfxPal = .;
         . = 0x0169C0; gUnk_Banim_020169C0 = .;
         . = 0x016DC0; gUnk_Banim_02016DC0 = .;
         . = 0x016E40; gUnk_Banim_02016E40 = .;
@@ -149,7 +149,7 @@ SECTIONS
         . = 0x017738; gUnk_Banim_02017738 = .;
         . = 0x01773C; gEkrInitPosReal = .;
         . = 0x017740; gUnk_Banim_02017740 = .;
-        . = 0x017744; gUnk_Banim_02017744 = .;
+        . = 0x017744; gEfxBgSemaphore = .;
         . = 0x017748; gUnk_Banim_02017748 = .;
         . = 0x01774C; gUnk_Banim_0201774C = .;
         . = 0x017750; gUnk_Banim_02017750 = .;
@@ -201,7 +201,7 @@ SECTIONS
         . = 0x01E524; gUnk_Banim_0201E524 = .;
         . = 0x01E7A4; gUnk_Banim_0201E7A4 = .;
         . = 0x01E7A8; gUnk_Banim_0201E7A8 = .;
-        . = 0x01E7AC; gUnk_Banim_0201E7AC = .;
+        . = 0x01E7AC; EkrDragonProcs = .;
         . = 0x01E7B4; gUnk_Banim_0201E7B4 = .;
         . = 0x01E7BC; gUnk_Banim_0201E7BC = .;
         . = 0x01E7C0; gEkrDragonIntroDone = .;
@@ -278,7 +278,9 @@ SECTIONS
         . = 0x0203CCF4 - __ewram_overlay_end; gEkrInitialHitSide = .;
         . = 0x0203CCF6 - __ewram_overlay_end; gEkrSnowWeather = .;
         . = 0x0203CCF8 - __ewram_overlay_end; gEkrPairSideVaild = .;
+        . = 0x0203CD00 - __ewram_overlay_end; gBanimIdx_bak = .;
         . = 0x0203CD14 - __ewram_overlay_end; gEkrDistanceType = .;
+        . = 0x0203CD76 - __ewram_overlay_end; gBanimIdx = .;
         . = 0x0203CD7C - __ewram_overlay_end; gpEkrBattleUnitLeft = .;
         . = 0x0203CD80 - __ewram_overlay_end; gpEkrBattleUnitRight = .;
         . = 0x0203CD84 - __ewram_overlay_end; gEkrPids = .;
@@ -518,6 +520,7 @@ SECTIONS
         src/mapselect.o(.text);
         src/banim_ekrbattle.o(.text);
         src/banim_ekrlvupfan.o(.text);
+        src/banim_ekrgauge.o(.text);
         asm/code-banim.o(.text);
         src/banim_dragon.o(.text);
         asm/code-banim-dragon.o(.text);

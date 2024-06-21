@@ -1,27 +1,11 @@
 	.data
 
-	.global gUnk_086046F0
-gUnk_086046F0: @ 086046F0
-	.incbin "fe6-base.gba", 0x6046F0, (0x604710 - 0x6046F0) @ length: 0020
-
-	.global gUnk_08604710
-gUnk_08604710: @ 08604710
-	.incbin "fe6-base.gba", 0x604710, (0x604798 - 0x604710) @ length: 0088
-
-	.global gUnk_08604798
-gUnk_08604798: @ 08604798
-	.incbin "fe6-base.gba", 0x604798, (0x6047E0 - 0x604798) @ length: 0048
-
-	.global gUnk_086047E0
-gUnk_086047E0: @ 086047E0
-	.incbin "fe6-base.gba", 0x6047E0, (0x604828 - 0x6047E0) @ length: 0048
-
-	.global gUnk_08604828
-gUnk_08604828: @ 08604828
+	.global ProcScr_EkrDragon
+ProcScr_EkrDragon: @ 08604828
 	.incbin "fe6-base.gba", 0x604828, (0x604840 - 0x604828) @ length: 0018
 
-	.global gUnk_08604840
-gUnk_08604840: @ 08604840
+	.global ProcScr_EkrDragonFae
+ProcScr_EkrDragonFae: @ 08604840
 	.incbin "fe6-base.gba", 0x604840, (0x604888 - 0x604840) @ length: 0048
 
 	.global gUnk_08604888
@@ -124,8 +108,8 @@ gUnk_08605A94: @ 08605A94
 gUnk_08605D14: @ 08605D14
 	.incbin "fe6-base.gba", 0x605D14, (0x605D28 - 0x605D14) @ length: 0014
 
-	.global gUnk_08605D28
-gUnk_08605D28: @ 08605D28
+	.global ProcScr_EkrSubAnimeEmulator
+ProcScr_EkrSubAnimeEmulator: @ 08605D28
 	.incbin "fe6-base.gba", 0x605D28, (0x605D40 - 0x605D28) @ length: 0018
 
 	.global gUnk_08605D40

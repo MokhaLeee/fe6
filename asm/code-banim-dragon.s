@@ -3,1193 +3,35 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_08058D34
-func_fe6_08058D34: @ 0x08058D34
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	adds r5, r0, #0
-	ldr r0, .L08058D94 @ =gUnk_081BE490
-	ldr r4, .L08058D98 @ =gSpellAnimBgfx
-	adds r1, r4, #0
-	bl LZ77UnCompWram
-	ldr r1, .L08058D9C @ =0x06008000
-	movs r2, #0x80
-	lsls r2, r2, #6
-	adds r0, r4, #0
-	bl RegisterDataMove
-	movs r0, #0
-	bl EfxTmFill
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	adds r5, r0, #0
-	cmp r5, #0
-	bne .L08058E14
-	ldr r0, .L08058DA0 @ =gUnk_081BFA34
-	ldr r4, .L08058DA4 @ =gEkrTsaBuffer
-	adds r1, r4, #0
-	bl LZ77UnCompWram
-	ldr r6, .L08058DA8 @ =gBg3Tm
-	movs r0, #6
-	str r0, [sp]
-	str r5, [sp, #4]
-	adds r0, r4, #0
-	adds r1, r6, #0
-	movs r2, #0x1e
-	movs r3, #0x16
-	bl EfxTmCpyBgHFlip
-	ldr r0, .L08058DAC @ =gEkrDistanceType
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #1
-	beq .L08058DC2
-	cmp r0, #1
-	bgt .L08058DB0
-	cmp r0, #0
-	beq .L08058DB6
-	b .L08058E14
-	.align 2, 0
-.L08058D94: .4byte gUnk_081BE490
-.L08058D98: .4byte gSpellAnimBgfx
-.L08058D9C: .4byte 0x06008000
-.L08058DA0: .4byte gUnk_081BFA34
-.L08058DA4: .4byte gEkrTsaBuffer
-.L08058DA8: .4byte gBg3Tm
-.L08058DAC: .4byte gEkrDistanceType
-.L08058DB0:
-	cmp r0, #2
-	beq .L08058E04
-	b .L08058E14
-.L08058DB6:
-	movs r0, #3
-	movs r1, #0
-	movs r2, #0x10
-	bl SetBgOffset
-	b .L08058E14
-.L08058DC2:
-	ldr r4, .L08058E00 @ =gEkrBgPosition
-	ldr r0, [r4]
-	adds r0, #0x30
-	bl func_fe6_08058CEC
-	ldr r1, [r4]
-	adds r1, #0x30
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	movs r0, #3
-	movs r2, #0x10
-	bl SetBgOffset
-	ldr r4, [r4]
-	cmp r4, #0
-	bne .L08058E14
-	str r4, [sp]
-	adds r0, r6, #0
-	movs r1, #2
-	movs r2, #0x16
-	movs r3, #0xf0
-	bl FillBGRect
-	adds r0, r6, #4
-	str r4, [sp]
-	movs r1, #2
-	movs r2, #0x16
-	movs r3, #0xf0
-	bl FillBGRect
-	b .L08058E14
-	.align 2, 0
-.L08058E00: .4byte gEkrBgPosition
-.L08058E04:
-	movs r0, #0x10
-	bl func_fe6_08058CEC
-	movs r0, #3
-	movs r1, #0x10
-	movs r2, #0x10
-	bl SetBgOffset
-.L08058E14:
-	movs r0, #8
-	bl EnableBgSync
-	add sp, #8
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_08058E24
-func_fe6_08058E24: @ 0x08058E24
-	push {r4, lr}
-	sub sp, #4
-	movs r0, #0
-	str r0, [sp]
-	ldr r4, .L08058E4C @ =gUnk_Banim_0201C77C
-	ldr r2, .L08058E50 @ =0x01000008
-	mov r0, sp
-	adds r1, r4, #0
-	bl CpuFastSet
-	ldr r1, .L08058E54 @ =0x06008000
-	adds r0, r4, #0
-	movs r2, #0x20
-	bl RegisterDataMove
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08058E4C: .4byte gUnk_Banim_0201C77C
-.L08058E50: .4byte 0x01000008
-.L08058E54: .4byte 0x06008000
-
-	thumb_func_start func_fe6_08058E58
-func_fe6_08058E58: @ 0x08058E58
-	push {lr}
-	cmp r0, #0
-	bne .L08058E74
-	ldr r0, .L08058E6C @ =Pal_081BF434
-	ldr r1, .L08058E70 @ =gPal+0xC0
-	movs r2, #8
-	bl CpuFastSet
-	b .L08058E7E
-	.align 2, 0
-.L08058E6C: .4byte Pal_081BF434
-.L08058E70: .4byte gPal+0xC0
-.L08058E74:
-	ldr r0, .L08058E88 @ =Pal_081BF434
-	ldr r1, .L08058E8C @ =gPal+0xE0
-	movs r2, #8
-	bl CpuFastSet
-.L08058E7E:
-	bl EnablePalSync
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08058E88: .4byte Pal_081BF434
-.L08058E8C: .4byte gPal+0xE0
-
-	thumb_func_start func_fe6_08058E90
-func_fe6_08058E90: @ 0x08058E90
-	push {lr}
-	cmp r0, #0
-	bne .L08058EAC
-	ldr r0, .L08058EA4 @ =gUnk_081C4DE8
-	ldr r1, .L08058EA8 @ =gPal+0xC0
-	movs r2, #8
-	bl CpuFastSet
-	b .L08058EB6
-	.align 2, 0
-.L08058EA4: .4byte gUnk_081C4DE8
-.L08058EA8: .4byte gPal+0xC0
-.L08058EAC:
-	ldr r0, .L08058EC0 @ =gUnk_081C4DE8
-	ldr r1, .L08058EC4 @ =gPal+0xE0
-	movs r2, #8
-	bl CpuFastSet
-.L08058EB6:
-	bl EnablePalSync
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08058EC0: .4byte gUnk_081C4DE8
-.L08058EC4: .4byte gPal+0xE0
-
-	thumb_func_start func_fe6_08058EC8
-func_fe6_08058EC8: @ 0x08058EC8
-	push {lr}
-	cmp r0, #0
-	bne .L08058EE4
-	ldr r0, .L08058EDC @ =gUnk_08113564
-	ldr r1, .L08058EE0 @ =gPal+0xC0
-	movs r2, #8
-	bl CpuFastSet
-	b .L08058EEE
-	.align 2, 0
-.L08058EDC: .4byte gUnk_08113564
-.L08058EE0: .4byte gPal+0xC0
-.L08058EE4:
-	ldr r0, .L08058EF8 @ =gUnk_08113564
-	ldr r1, .L08058EFC @ =gPal+0xE0
-	movs r2, #8
-	bl CpuFastSet
-.L08058EEE:
-	bl EnablePalSync
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08058EF8: .4byte gUnk_08113564
-.L08058EFC: .4byte gPal+0xE0
-
-	thumb_func_start func_fe6_08058F00
-func_fe6_08058F00: @ 0x08058F00
-	push {lr}
-	bl GetEkrDragonStatueType70
-	adds r1, r0, #0
-	movs r0, #0x10
-	ands r0, r1
-	cmp r0, #0
-	beq .L08058F14
-	movs r0, #0
-	b .L08058F22
-.L08058F14:
-	movs r0, #0x20
-	ands r0, r1
-	cmp r0, #0
-	bne .L08058F20
-	movs r0, #2
-	b .L08058F22
-.L08058F20:
-	movs r0, #1
-.L08058F22:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start InitEkrDragonStatus
-InitEkrDragonStatus: @ 0x08058F28
-	push {lr}
-	bl func_fe6_08058F00
-	bl SetAnimStateHidden
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_08058F38
-func_fe6_08058F38: @ 0x08058F38
-	push {lr}
-	bl GetEkrDragonStatueType70
-	cmp r0, #0
-	beq .L08058F58
-	ldr r0, .L08058F54 @ =gAnims
-	ldr r0, [r0]
-	bl GetEkrDragonStatusIdx
-	ldrh r0, [r0]
-	cmp r0, #1
-	bne .L08058F58
-	movs r0, #1
-	b .L08058F5A
-	.align 2, 0
-.L08058F54: .4byte gAnims
-.L08058F58:
-	movs r0, #0
-.L08058F5A:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start EkrDragonTmCpyExt
-EkrDragonTmCpyExt: @ 0x08058F60
-	push {r4, lr}
-	sub sp, #0x10
-	asrs r4, r0, #3
-	movs r1, #7
-	ands r1, r0
-	movs r0, #3
-	movs r2, #0x10
-	bl SetBgOffset
-	lsls r4, r4, #1
-	ldr r0, .L08058FA0 @ =gUnk_Banim_0201D456
-	adds r4, r4, r0
-	ldr r2, .L08058FA4 @ =gBg3Tm
-	movs r0, #0x20
-	str r0, [sp]
-	movs r0, #0x16
-	str r0, [sp, #4]
-	subs r0, #0x17
-	str r0, [sp, #8]
-	str r0, [sp, #0xc]
-	adds r0, r4, #0
-	movs r1, #0x42
-	movs r3, #0x20
-	bl EfxTmCpyExt
-	movs r0, #8
-	bl EnableBgSync
-	add sp, #0x10
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08058FA0: .4byte gUnk_Banim_0201D456
-.L08058FA4: .4byte gBg3Tm
-
-	thumb_func_start func_fe6_08058FA8
-func_fe6_08058FA8: @ 0x08058FA8
-	push {r4, lr}
-	sub sp, #0x10
-	ldr r4, .L08058FDC @ =gEkrTsaBuffer
-	adds r1, r4, #0
-	bl LZ77UnCompWram
-	ldr r0, .L08058FE0 @ =gEkrDistanceType
-	movs r1, #0
-	ldrsh r3, [r0, r1]
-	cmp r3, #0
-	bne .L08058FE8
-	movs r1, #1
-	rsbs r1, r1, #0
-	ldr r2, .L08058FE4 @ =gBg3Tm
-	movs r0, #0x1e
-	str r0, [sp]
-	str r0, [sp, #4]
-	movs r0, #6
-	str r0, [sp, #8]
-	str r3, [sp, #0xc]
-	adds r0, r4, #0
-	movs r3, #0x20
-	bl EfxTmCpyExt
-	b .L08059006
-	.align 2, 0
-.L08058FDC: .4byte gEkrTsaBuffer
-.L08058FE0: .4byte gEkrDistanceType
-.L08058FE4: .4byte gBg3Tm
-.L08058FE8:
-	adds r0, r4, #0
-	adds r0, #8
-	ldr r2, .L08059014 @ =gBg3Tm
-	movs r1, #0x1a
-	str r1, [sp]
-	movs r1, #0x1e
-	str r1, [sp, #4]
-	movs r1, #6
-	str r1, [sp, #8]
-	movs r1, #0
-	str r1, [sp, #0xc]
-	movs r1, #0x1e
-	movs r3, #0x20
-	bl EfxTmCpyExt
-.L08059006:
-	movs r0, #8
-	bl EnableBgSync
-	add sp, #0x10
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08059014: .4byte gBg3Tm
-
-	thumb_func_start func_fe6_08059018
-func_fe6_08059018: @ 0x08059018
-	push {lr}
-	sub sp, #0x10
-	ldr r1, .L08059068 @ =gUnk_Banim_0201E7CC
-	bl LZ77UnCompWram
-	ldr r0, .L0805906C @ =gEkrDistanceType
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	movs r2, #0x21
-	cmp r0, #0
-	beq .L08059036
-	movs r2, #3
-	cmp r0, #1
-	bne .L08059036
-	movs r2, #0x1d
-.L08059036:
-	ldr r0, .L08059068 @ =gUnk_Banim_0201E7CC
-	movs r1, #1
-	rsbs r1, r1, #0
-	lsls r2, r2, #1
-	ldr r3, .L08059070 @ =gEfxFrameTmap
-	adds r2, r2, r3
-	movs r3, #0x1e
-	str r3, [sp]
-	movs r3, #0x16
-	str r3, [sp, #4]
-	movs r3, #6
-	str r3, [sp, #8]
-	movs r3, #0
-	str r3, [sp, #0xc]
-	movs r3, #0x42
-	bl EfxTmCpyExt
-	ldr r0, .L08059074 @ =gEkrBgPosition
-	ldr r0, [r0]
-	bl EkrDragonTmCpyExt
-	add sp, #0x10
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08059068: .4byte gUnk_Banim_0201E7CC
-.L0805906C: .4byte gEkrDistanceType
-.L08059070: .4byte gEfxFrameTmap
-.L08059074: .4byte gEkrBgPosition
-
-	thumb_func_start func_fe6_08059078
-func_fe6_08059078: @ 0x08059078
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, .L0805908C @ =gUnk_086046F0
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805908C: .4byte gUnk_086046F0
-
-	thumb_func_start func_fe6_08059090
-func_fe6_08059090: @ 0x08059090
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, [r5, #0x5c]
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #0xe6
-	bl EfxPlaySE
-	movs r0, #2
-	ldrsh r1, [r4, r0]
-	movs r0, #0xe6
-	movs r2, #1
-	bl M4aPlayWithPostionCtrl
-	adds r0, r5, #0
-	bl Proc_Break
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_080590B8
-func_fe6_080590B8: @ 0x080590B8
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	bl GetAnimPosition
-	adds r4, r0, #0
-	ldr r0, .L080590F0 @ =gUnk_08604710
-	movs r1, #3
-	bl SpawnProc
-	adds r5, r0, #0
-	ldr r0, .L080590F4 @ =gUnk_Banim_0201E7AC
-	lsls r4, r4, #2
-	adds r4, r4, r0
-	str r5, [r4]
-	adds r0, r6, #0
-	bl GetAnimPosition
-	ldr r1, .L080590F8 @ =gEkrDragonState
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	movs r2, #0
-	movs r1, #1
-	strh r1, [r0]
-	str r6, [r5, #0x5c]
-	strh r2, [r5, #0x2c]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080590F0: .4byte gUnk_08604710
-.L080590F4: .4byte gUnk_Banim_0201E7AC
-.L080590F8: .4byte gEkrDragonState
-
-	thumb_func_start func_fe6_080590FC
-func_fe6_080590FC: @ 0x080590FC
-	push {r4, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	movs r0, #0x2c
-	ldrsh r3, [r4, r0]
-	movs r0, #8
-	str r0, [sp]
-	movs r0, #1
-	movs r1, #4
-	movs r2, #0x10
-	bl Interpolate
-	bl func_fe6_0805B9A4
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #9
-	bne .L0805913C
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldr r0, [r4, #0x5c]
-	movs r1, #0
-	movs r2, #0xa
-	movs r3, #1
-	bl NewEfxFlashUnit
-	adds r0, r4, #0
-	bl Proc_Break
-.L0805913C:
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_08059144
-func_fe6_08059144: @ 0x08059144
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne .L08059162
-	movs r0, #0x3c
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-	b .L080591A4
-.L08059162:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0xb
-	bne .L080591A4
-	ldr r1, [r4, #0x5c]
-	movs r0, #2
-	ldrh r2, [r1]
-	orrs r0, r2
-	strh r0, [r1]
-	ldr r0, [r4, #0x5c]
-	movs r1, #0
-	bl func_fe6_08059690
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #0xe8
-	bl EfxPlaySE
-	ldr r0, [r4, #0x5c]
-	movs r2, #2
-	ldrsh r1, [r0, r2]
-	movs r0, #0xe8
-	movs r2, #1
-	bl M4aPlayWithPostionCtrl
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-.L080591A4:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_080591AC
-func_fe6_080591AC: @ 0x080591AC
-	push {lr}
-	adds r1, r0, #0
-	ldrh r0, [r1, #0x2c]
-	adds r0, #1
-	strh r0, [r1, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x3d
-	bne .L080591C8
-	movs r0, #0
-	strh r0, [r1, #0x2c]
-	adds r0, r1, #0
-	bl Proc_Break
-.L080591C8:
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_080591CC
-func_fe6_080591CC: @ 0x080591CC
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne .L08059244
-	bl func_fe6_08058E24
-	ldr r0, .L0805923C @ =gBg3Tm
-	movs r1, #0xf0
-	lsls r1, r1, #8
-	bl TmFill
-	movs r0, #3
-	movs r1, #0
-	movs r2, #0x10
-	bl SetBgOffset
-	movs r0, #8
-	bl EnableBgSync
-	ldr r3, .L08059240 @ =gDispIo
-	movs r1, #4
-	rsbs r1, r1, #0
-	adds r0, r1, #0
-	ldrb r2, [r3, #0xc]
-	ands r0, r2
-	strb r0, [r3, #0xc]
-	adds r0, r1, #0
-	ldrb r2, [r3, #0x10]
-	ands r0, r2
-	movs r2, #1
-	orrs r0, r2
-	strb r0, [r3, #0x10]
-	ldrb r0, [r3, #0x18]
-	ands r1, r0
-	movs r0, #2
-	orrs r1, r0
-	strb r1, [r3, #0x18]
-	movs r0, #3
-	ldrb r1, [r3, #0x14]
-	orrs r0, r1
-	strb r0, [r3, #0x14]
-	movs r0, #1
-	bl func_fe6_08058A50
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-	b .L080592C0
-	.align 2, 0
-.L0805923C: .4byte gBg3Tm
-.L08059240: .4byte gDispIo
-.L08059244:
-	movs r2, #0x2c
-	ldrsh r0, [r4, r2]
-	cmp r0, #0
-	bne .L080592A8
-	bl func_fe6_08058E24
-	ldr r0, .L080592C8 @ =gBg3Tm
-	movs r1, #0xf0
-	lsls r1, r1, #8
-	bl TmFill
-	movs r0, #3
-	movs r1, #0
-	movs r2, #0x10
-	bl SetBgOffset
-	ldr r3, .L080592CC @ =gDispIo
-	movs r1, #4
-	rsbs r1, r1, #0
-	adds r0, r1, #0
-	ldrb r2, [r3, #0xc]
-	ands r0, r2
-	strb r0, [r3, #0xc]
-	adds r0, r1, #0
-	ldrb r2, [r3, #0x10]
-	ands r0, r2
-	movs r2, #1
-	orrs r0, r2
-	strb r0, [r3, #0x10]
-	ldrb r0, [r3, #0x18]
-	ands r1, r0
-	movs r0, #2
-	orrs r1, r0
-	strb r1, [r3, #0x18]
-	movs r0, #3
-	ldrb r1, [r3, #0x14]
-	orrs r0, r1
-	strb r0, [r3, #0x14]
-	movs r0, #8
-	bl EnableBgSync
-	movs r0, #1
-	bl func_fe6_08058A50
-	adds r0, r4, #0
-	bl func_fe6_08058A80
-	adds r0, r4, #0
-	bl func_fe6_08058ACC
-.L080592A8:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #6
-	bne .L080592C0
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-.L080592C0:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080592C8: .4byte gBg3Tm
-.L080592CC: .4byte gDispIo
-
-	thumb_func_start func_fe6_080592D0
-func_fe6_080592D0: @ 0x080592D0
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne .L080592EE
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-	b .L08059320
-.L080592EE:
-	movs r1, #0x2c
-	ldrsh r0, [r4, r1]
-	cmp r0, #0
-	bne .L08059302
-	adds r0, r4, #0
-	bl func_fe6_08058B84
-	movs r0, #5
-	bl func_fe6_08046010
-.L08059302:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0xb
-	bne .L08059320
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_08059078
-	adds r0, r4, #0
-	bl Proc_Break
-.L08059320:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_08059328
-func_fe6_08059328: @ 0x08059328
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r0, [r5, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	asrs r6, r0, #0x18
-	cmp r6, #1
-	bne .L0805937C
-	adds r0, r5, #0
-	bl func_fe6_08058C3C
-	ldr r0, [r5, #0x5c]
-	bl func_fe6_080598F0
-	ldr r1, [r5, #0x5c]
-	ldr r0, .L08059374 @ =0x0000FFFD
-	ldrh r2, [r1]
-	ands r0, r2
-	movs r4, #0
-	strh r0, [r1]
-	ldr r0, [r5, #0x5c]
-	movs r1, #0x55
-	bl func_fe6_0804A528
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	ldr r1, .L08059378 @ =gEkrDragonIntroDone
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	strh r6, [r0]
-	strh r4, [r5, #0x2c]
-	adds r0, r5, #0
-	bl Proc_Break
-	b .L080593C6
-	.align 2, 0
-.L08059374: .4byte 0x0000FFFD
-.L08059378: .4byte gEkrDragonIntroDone
-.L0805937C:
-	movs r1, #0x2c
-	ldrsh r0, [r5, r1]
-	cmp r0, #0
-	bne .L080593A2
-	adds r0, r5, #0
-	bl func_fe6_08058C3C
-	ldr r0, [r5, #0x5c]
-	bl func_fe6_080598F0
-	ldr r1, [r5, #0x5c]
-	ldr r0, .L080593CC @ =0x0000FFFD
-	ldrh r2, [r1]
-	ands r0, r2
-	strh r0, [r1]
-	ldr r0, [r5, #0x5c]
-	movs r1, #0x55
-	bl func_fe6_0804A528
-.L080593A2:
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	strh r0, [r5, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x3d
-	bne .L080593C6
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	ldr r1, .L080593D0 @ =gEkrDragonIntroDone
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	movs r1, #1
-	strh r1, [r0]
-	adds r0, r5, #0
-	bl Proc_Break
-.L080593C6:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080593CC: .4byte 0x0000FFFD
-.L080593D0: .4byte gEkrDragonIntroDone
-
-	thumb_func_start func_fe6_080593D4
-func_fe6_080593D4: @ 0x080593D4
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, .L080593FC @ =gEkrDragonState
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	lsls r0, r0, #1
-	adds r0, r0, r4
-	ldrh r0, [r0]
-	cmp r0, #2
-	bne .L080593F4
-	movs r0, #0
-	strh r0, [r5, #0x2c]
-	adds r0, r5, #0
-	bl Proc_Break
-.L080593F4:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080593FC: .4byte gEkrDragonState
-
-	thumb_func_start func_fe6_08059400
-func_fe6_08059400: @ 0x08059400
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_08058A34
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_08059418
-func_fe6_08059418: @ 0x08059418
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne .L08059436
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-	b .L08059466
-.L08059436:
-	movs r1, #0x2c
-	ldrsh r0, [r4, r1]
-	cmp r0, #0
-	bne .L0805944E
-	adds r0, r4, #0
-	bl func_fe6_08058B84
-	ldr r0, [r4, #0x5c]
-	movs r1, #2
-	ldrh r2, [r0]
-	orrs r1, r2
-	strh r1, [r0]
-.L0805944E:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #6
-	bne .L08059466
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-.L08059466:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_0805946C
-func_fe6_0805946C: @ 0x0805946C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne .L0805948E
-	bl func_fe6_08058E24
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-	b .L080594C4
-.L0805948E:
-	movs r1, #0x2c
-	ldrsh r0, [r4, r1]
-	cmp r0, #0
-	bne .L080594AC
-	bl func_fe6_08058E24
-	movs r0, #0x10
-	bl func_fe6_0805B9A4
-	adds r0, r4, #0
-	bl func_fe6_08058A80
-	adds r0, r4, #0
-	bl func_fe6_08058ACC
-.L080594AC:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #6
-	bne .L080594C4
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-.L080594C4:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_080594CC
-func_fe6_080594CC: @ 0x080594CC
-	push {r4, lr}
-	adds r4, r0, #0
-	movs r1, #0x2c
-	ldrsh r0, [r4, r1]
-	cmp r0, #0
-	bne .L08059504
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne .L08059504
-	ldr r0, [r4, #0x5c]
-	movs r1, #1
-	bl func_fe6_08059690
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #0xe9
-	bl EfxPlaySE
-	ldr r0, [r4, #0x5c]
-	movs r2, #2
-	ldrsh r1, [r0, r2]
-	movs r0, #0xe9
-	movs r2, #1
-	bl M4aPlayWithPostionCtrl
-.L08059504:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #6
-	bne .L08059568
-	ldr r0, .L08059570 @ =gBg3Tm
-	movs r1, #0xf0
-	lsls r1, r1, #8
-	bl TmFill
-	movs r0, #3
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #8
-	bl EnableBgSync
-	ldr r3, .L08059574 @ =gDispIo
-	movs r1, #4
-	rsbs r1, r1, #0
-	adds r0, r1, #0
-	ldrb r2, [r3, #0xc]
-	ands r0, r2
-	strb r0, [r3, #0xc]
-	adds r0, r1, #0
-	ldrb r2, [r3, #0x10]
-	ands r0, r2
-	movs r2, #1
-	orrs r0, r2
-	strb r0, [r3, #0x10]
-	ldrb r0, [r3, #0x14]
-	ands r1, r0
-	movs r0, #2
-	orrs r1, r0
-	strb r1, [r3, #0x14]
-	movs r0, #3
-	ldrb r1, [r3, #0x18]
-	orrs r0, r1
-	strb r0, [r3, #0x18]
-	movs r0, #2
-	bl func_fe6_08058A50
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-.L08059568:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08059570: .4byte gBg3Tm
-.L08059574: .4byte gDispIo
-
-	thumb_func_start func_fe6_08059578
-func_fe6_08059578: @ 0x08059578
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	ldr r0, [r6, #0x5c]
-	bl func_fe6_080589C4
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne .L08059596
-	movs r0, #0x50
-	strh r0, [r6, #0x2c]
-	adds r0, r6, #0
-	bl Proc_Break
-	b .L080595DC
-.L08059596:
-	ldrh r0, [r6, #0x2c]
-	adds r0, #1
-	strh r0, [r6, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x3d
-	bne .L080595DC
-	ldr r1, [r6, #0x5c]
-	ldr r0, .L080595E4 @ =0x0000FFFD
-	ldrh r2, [r1]
-	ands r0, r2
-	strh r0, [r1]
-	ldr r5, [r6, #0x5c]
-	ldr r4, .L080595E8 @ =0x0203CD00
-	adds r0, r5, #0
-	bl GetAnimPosition
-	lsls r0, r0, #1
-	adds r0, r0, r4
-	movs r2, #0
-	ldrsh r1, [r0, r2]
-	adds r0, r5, #0
-	bl func_fe6_0804A528
-	ldr r0, [r6, #0x5c]
-	movs r1, #0
-	movs r2, #0xa
-	movs r3, #1
-	bl NewEfxFlashUnit
-	movs r0, #0
-	strh r0, [r6, #0x2c]
-	adds r0, r6, #0
-	bl Proc_Break
-.L080595DC:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080595E4: .4byte 0x0000FFFD
-.L080595E8: .4byte 0x0203CD00
-
-	thumb_func_start func_fe6_080595EC
-func_fe6_080595EC: @ 0x080595EC
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x51
-	bne .L0805960E
-	movs r0, #0x10
-	bl func_fe6_0805B9A4
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-.L0805960E:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_08059614
-func_fe6_08059614: @ 0x08059614
-	push {r4, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	movs r1, #0x2c
-	ldrsh r0, [r4, r1]
-	cmp r0, #0
-	bne .L08059632
-	ldr r0, .L08059668 @ =gPlaySt
-	ldrb r0, [r0, #0xe]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	bl ApplyChapterMapGraphics
-	bl RenderMap
-.L08059632:
-	movs r0, #0x2c
-	ldrsh r3, [r4, r0]
-	movs r0, #8
-	str r0, [sp]
-	movs r0, #4
-	movs r1, #0x10
-	movs r2, #4
-	bl Interpolate
-	bl func_fe6_0805B9A4
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #9
-	bne .L08059660
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-.L08059660:
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08059668: .4byte gPlaySt
-
-	thumb_func_start func_fe6_0805966C
-func_fe6_0805966C: @ 0x0805966C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	ldr r1, .L0805968C @ =gEkrDragonIntroDone
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	movs r1, #2
-	strh r1, [r0]
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805968C: .4byte gEkrDragonIntroDone
-
-	thumb_func_start func_fe6_08059690
-func_fe6_08059690: @ 0x08059690
+	thumb_func_start StartManaketeTransferAnim
+StartManaketeTransferAnim: @ 0x08059690
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r2, .L080596A8 @ =gUnk_Banim_02017744
+	ldr r2, .L080596A8 @ =gEfxBgSemaphore
 	ldr r0, [r2]
 	adds r0, #1
 	str r0, [r2]
 	cmp r1, #0
 	bne .L080596B0
-	ldr r0, .L080596AC @ =gUnk_08604798
+	ldr r0, .L080596AC @ =ProcScr_EkrManaketeComeInFlame
 	b .L080596B2
 	.align 2, 0
-.L080596A8: .4byte gUnk_Banim_02017744
-.L080596AC: .4byte gUnk_08604798
+.L080596A8: .4byte gEfxBgSemaphore
+.L080596AC: .4byte ProcScr_EkrManaketeComeInFlame
 .L080596B0:
-	ldr r0, .L08059718 @ =gUnk_086047E0
+	ldr r0, .L08059718 @ =ProcScr_EkrManaketeDispearInFlame
 .L080596B2:
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
 	str r5, [r4, #0x5c]
-	ldr r3, .L0805971C @ =gUnk_085D0E8C
+	ldr r3, .L0805971C @ =AnimScr_ManaketeFlame
 	str r3, [sp]
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl EfxCreateAnim
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	movs r3, #0
 	movs r1, #0x98
@@ -1228,8 +70,8 @@ func_fe6_08059690: @ 0x08059690
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08059718: .4byte gUnk_086047E0
-.L0805971C: .4byte gUnk_085D0E8C
+.L08059718: .4byte ProcScr_EkrManaketeDispearInFlame
+.L0805971C: .4byte AnimScr_ManaketeFlame
 .L08059720: .4byte gDispIo+0x3C
 .L08059724: .4byte 0x0000FFE0
 .L08059728: .4byte 0x0000E0FF
@@ -1239,7 +81,7 @@ func_fe6_08059690: @ 0x08059690
 func_fe6_08059730: @ 0x08059730
 	push {r4, lr}
 	ldr r4, [r0, #0x5c]
-	ldr r2, .L08059750 @ =gUnk_Banim_02017744
+	ldr r2, .L08059750 @ =gEfxBgSemaphore
 	ldr r1, [r2]
 	subs r1, #1
 	str r1, [r2]
@@ -1253,7 +95,7 @@ func_fe6_08059730: @ 0x08059730
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08059750: .4byte gUnk_Banim_02017744
+.L08059750: .4byte gEfxBgSemaphore
 .L08059754: .4byte 0x0000FFF7
 
 	thumb_func_start func_fe6_08059758
@@ -1448,7 +290,7 @@ func_fe6_080598F0: @ 0x080598F0
 	adds r5, r0, #0
 	bl GetAnimPosition
 	adds r4, r0, #0
-	ldr r0, .L08059920 @ =gUnk_08604828
+	ldr r0, .L08059920 @ =ProcScr_EkrDragon
 	movs r1, #4
 	bl SpawnProc
 	ldr r1, .L08059924 @ =gUnk_Banim_0201E7B4
@@ -1466,7 +308,7 @@ func_fe6_080598F0: @ 0x080598F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08059920: .4byte gUnk_08604828
+.L08059920: .4byte ProcScr_EkrDragon
 .L08059924: .4byte gUnk_Banim_0201E7B4
 
 	thumb_func_start func_fe6_08059928
@@ -1557,17 +399,17 @@ func_fe6_08059928: @ 0x08059928
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080599D0
-func_fe6_080599D0: @ 0x080599D0
+	thumb_func_start StartEkrDragonFae
+StartEkrDragonFae: @ 0x080599D0
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	bl GetAnimPosition
 	adds r4, r0, #0
-	ldr r0, .L08059A10 @ =gUnk_08604840
+	ldr r0, .L08059A10 @ =ProcScr_EkrDragonFae
 	movs r1, #3
 	bl SpawnProc
 	adds r6, r0, #0
-	ldr r0, .L08059A14 @ =gUnk_Banim_0201E7AC
+	ldr r0, .L08059A14 @ =EkrDragonProcs
 	lsls r4, r4, #2
 	adds r4, r4, r0
 	str r6, [r4]
@@ -1580,7 +422,7 @@ func_fe6_080599D0: @ 0x080599D0
 	strh r1, [r0]
 	str r5, [r6, #0x5c]
 	adds r0, r5, #0
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -1588,8 +430,8 @@ func_fe6_080599D0: @ 0x080599D0
 	movs r0, #0x3c
 	b .L08059A1E
 	.align 2, 0
-.L08059A10: .4byte gUnk_08604840
-.L08059A14: .4byte gUnk_Banim_0201E7AC
+.L08059A10: .4byte ProcScr_EkrDragonFae
+.L08059A14: .4byte EkrDragonProcs
 .L08059A18: .4byte gEkrDragonState
 .L08059A1C:
 	movs r0, #0
@@ -1650,7 +492,7 @@ func_fe6_08059A44: @ 0x08059A44
 	bl CpuFastSet
 	bl EnablePalSync
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -1668,7 +510,7 @@ func_fe6_08059A44: @ 0x08059A44
 	strh r0, [r5, #0x2c]
 	ldr r0, [r5, #0x5c]
 	movs r1, #0x6b
-	bl func_fe6_0804A528
+	bl EkrPrepareBanimfx
 	ldr r0, [r5, #0x5c]
 	movs r1, #0
 	bl SwitchAISFrameDataFromBARoundType
@@ -1684,14 +526,14 @@ func_fe6_08059AD0: @ 0x08059AD0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r5, r0, #0x18
 	cmp r5, #1
 	bne .L08059B04
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x5b
-	bl func_fe6_0804A528
+	bl EkrPrepareBanimfx
 	ldr r0, [r4, #0x5c]
 	bl GetAnimPosition
 	ldr r1, .L08059B00 @ =gEkrDragonIntroDone
@@ -1741,7 +583,7 @@ func_fe6_08059AD0: @ 0x08059AD0
 	bl M4aPlayWithPostionCtrl
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x5b
-	bl func_fe6_0804A528
+	bl EkrPrepareBanimfx
 	ldr r0, [r4, #0x5c]
 	bl GetAnimPosition
 	ldr r1, .L08059B74 @ =gEkrDragonIntroDone
@@ -1771,7 +613,7 @@ func_fe6_08059B78: @ 0x08059B78
 	cmp r0, #2
 	bne .L08059BDC
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -1794,7 +636,7 @@ func_fe6_08059B78: @ 0x08059B78
 	bl M4aPlayWithPostionCtrl
 	ldr r0, [r5, #0x5c]
 	movs r1, #0x6c
-	bl func_fe6_0804A528
+	bl EkrPrepareBanimfx
 	ldr r0, [r5, #0x5c]
 	movs r1, #0
 	bl SwitchAISFrameDataFromBARoundType
@@ -1813,7 +655,7 @@ func_fe6_08059BE4: @ 0x08059BE4
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, [r6, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -1831,7 +673,7 @@ func_fe6_08059BE4: @ 0x08059BE4
 	ands r7, r0
 	cmp r7, #0
 	bne .L08059C2E
-	ldr r4, .L08059C34 @ =0x0203CD00
+	ldr r4, .L08059C34 @ =gBanimIdx_bak
 	adds r0, r5, #0
 	bl GetAnimPosition
 	lsls r0, r0, #1
@@ -1839,7 +681,7 @@ func_fe6_08059BE4: @ 0x08059BE4
 	movs r2, #0
 	ldrsh r1, [r0, r2]
 	adds r0, r5, #0
-	bl func_fe6_0804A528
+	bl EkrPrepareBanimfx
 	strh r7, [r6, #0x2c]
 	adds r0, r6, #0
 	bl Proc_Break
@@ -1848,7 +690,7 @@ func_fe6_08059BE4: @ 0x08059BE4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08059C34: .4byte 0x0203CD00
+.L08059C34: .4byte gBanimIdx_bak
 
 	thumb_func_start func_fe6_08059C38
 func_fe6_08059C38: @ 0x08059C38
@@ -1890,7 +732,7 @@ func_fe6_08059C54: @ 0x08059C54
 func_fe6_08059C78: @ 0x08059C78
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, .L08059CD0 @ =gUnk_Banim_02017744
+	ldr r1, .L08059CD0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -1928,7 +770,7 @@ func_fe6_08059C78: @ 0x08059C78
 	movs r1, #0x18
 	b .L08059CF0
 	.align 2, 0
-.L08059CD0: .4byte gUnk_Banim_02017744
+.L08059CD0: .4byte gEfxBgSemaphore
 .L08059CD4: .4byte gUnk_08604888
 .L08059CD8: .4byte gUnk_081BC0FC
 .L08059CDC: .4byte gUnk_086048A0
@@ -2002,7 +844,7 @@ func_fe6_08059D34: @ 0x08059D34
 	cmp r2, r0
 	bne .L08059D80
 	bl SpellFx_ClearBG1
-	ldr r1, .L08059D88 @ =gUnk_Banim_02017744
+	ldr r1, .L08059D88 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -2014,10 +856,10 @@ func_fe6_08059D34: @ 0x08059D34
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08059D88: .4byte gUnk_Banim_02017744
+.L08059D88: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08059D8C
-func_fe6_08059D8C: @ 0x08059D8C
+	thumb_func_start StartEkrDragonIdunn
+StartEkrDragonIdunn: @ 0x08059D8C
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	bl GetAnimPosition
@@ -2026,7 +868,7 @@ func_fe6_08059D8C: @ 0x08059D8C
 	movs r1, #3
 	bl SpawnProc
 	adds r5, r0, #0
-	ldr r0, .L08059DC8 @ =gUnk_Banim_0201E7AC
+	ldr r0, .L08059DC8 @ =EkrDragonProcs
 	lsls r4, r4, #2
 	adds r4, r4, r0
 	str r5, [r4]
@@ -2045,7 +887,7 @@ func_fe6_08059D8C: @ 0x08059D8C
 	bx r0
 	.align 2, 0
 .L08059DC4: .4byte gUnk_086048D0
-.L08059DC8: .4byte gUnk_Banim_0201E7AC
+.L08059DC8: .4byte EkrDragonProcs
 .L08059DCC: .4byte gEkrDragonState
 
 	thumb_func_start func_fe6_08059DD0
@@ -2061,7 +903,7 @@ func_fe6_08059DD0: @ 0x08059DD0
 	movs r1, #4
 	movs r2, #0x10
 	bl Interpolate
-	bl func_fe6_0805B9A4
+	bl EfxChapterMapFadeOUT
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
 	strh r0, [r4, #0x2c]
@@ -2083,7 +925,7 @@ func_fe6_08059E08: @ 0x08059E08
 	adds r5, r0, #0
 	ldr r0, [r5, #0x5c]
 	movs r1, #0x74
-	bl func_fe6_0804A528
+	bl EkrPrepareBanimfx
 	ldr r0, .L08059E6C @ =gAnims
 	ldr r3, [r0]
 	ldr r4, [r0, #4]
@@ -2100,7 +942,7 @@ func_fe6_08059E08: @ 0x08059E08
 	subs r0, r2, r0
 	strh r0, [r4, #2]
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2150,7 +992,7 @@ func_fe6_08059E80: @ 0x08059E80
 	bl TmFill
 	movs r0, #8
 	bl EnableBgSync
-	ldr r0, .L08059F14 @ =gUnk_081C4DE8
+	ldr r0, .L08059F14 @ =Pal_081C4DE8
 	ldr r4, .L08059F18 @ =gPal+0xC0
 	adds r1, r4, #0
 	movs r2, #8
@@ -2190,7 +1032,7 @@ func_fe6_08059E80: @ 0x08059E80
 .L08059F08: .4byte gEkrTsaBuffer
 .L08059F0C: .4byte 0x001F001F
 .L08059F10: .4byte gBg3Tm
-.L08059F14: .4byte gUnk_081C4DE8
+.L08059F14: .4byte Pal_081C4DE8
 .L08059F18: .4byte gPal+0xC0
 .L08059F1C: .4byte gUnk_Banim_0201EFCC
 .L08059F20: .4byte gUnk_Banim_0201EFEC
@@ -2205,7 +1047,7 @@ func_fe6_08059F2C: @ 0x08059F2C
 	ldr r0, .L08059F4C @ =gUnk_Banim_0201E7B4
 	ldr r5, [r0]
 	ldr r0, [r6, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2261,7 +1103,7 @@ func_fe6_08059F2C: @ 0x08059F2C
 	ldr r0, [r6, #0x5c]
 	movs r1, #3
 	movs r2, #0x64
-	bl func_fe6_0804685C
+	bl NewEfxWhiteOUT
 	ldr r4, .L08059FFC @ =0x0000013F
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -2274,7 +1116,7 @@ func_fe6_08059F2C: @ 0x08059F2C
 	movs r2, #1
 	bl M4aPlayWithPostionCtrl
 	movs r0, #6
-	bl func_fe6_08046010
+	bl NewEfxQuake
 	adds r5, r0, #0
 	movs r0, #0x72
 	strh r0, [r5, #0x3c]
@@ -2300,7 +1142,7 @@ func_fe6_0805A000: @ 0x0805A000
 	push {r6, r7}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2391,7 +1233,7 @@ func_fe6_0805A0BC: @ 0x0805A0BC
 	cmp r0, #1
 	bne .L0805A132
 	ldr r0, [r4, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2460,7 +1302,7 @@ func_fe6_0805A140: @ 0x0805A140
 	ldr r1, [r6, #4]
 	mov sb, r1
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r4, r0, #0x18
 	cmp r4, #1
@@ -2644,7 +1486,7 @@ func_fe6_0805A2BC: @ 0x0805A2BC
 .L0805A2E0: .4byte gUnk_Banim_0201E7C4
 .L0805A2E4:
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_080589C4
+	bl CheckEkrDragonStateTypeFae
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2660,7 +1502,7 @@ func_fe6_0805A2BC: @ 0x0805A2BC
 	bl func_fe6_0805A4C8
 	str r0, [r5, #0x64]
 	movs r0, #0x10
-	bl func_fe6_0805B9A4
+	bl EfxChapterMapFadeOUT
 .L0805A30E:
 	adds r0, r5, #0
 	bl Proc_Break
@@ -2678,7 +1520,7 @@ func_fe6_0805A2BC: @ 0x0805A2BC
 	bl func_fe6_0805A4C8
 	str r0, [r5, #0x64]
 	movs r0, #0x10
-	bl func_fe6_0805B9A4
+	bl EfxChapterMapFadeOUT
 	ldr r0, [r5, #0x5c]
 	bl GetAnimPosition
 	ldr r1, .L0805A358 @ =gEkrPairSideVaild
@@ -2750,7 +1592,7 @@ func_fe6_0805A394: @ 0x0805A394
 	movs r1, #0x10
 	movs r2, #4
 	bl Interpolate
-	bl func_fe6_0805B9A4
+	bl EfxChapterMapFadeOUT
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
 	strh r0, [r4, #0x2c]
@@ -3877,7 +2719,7 @@ func_fe6_0805AC54: @ 0x0805AC54
 	movs r2, #0
 	mov r8, r2
 	strh r0, [r4, #2]
-	ldr r2, .L0805ADD0 @ =gUnk_Banim_02000024
+	ldr r2, .L0805ADD0 @ =gEkrYPosReal
 	ldrh r0, [r2]
 	adds r0, r0, r6
 	strh r0, [r4, #4]
@@ -3921,7 +2763,7 @@ func_fe6_0805AC54: @ 0x0805AC54
 	bne .L0805AD1E
 	movs r0, #8
 	movs r1, #0
-	bl func_fe6_08045F48
+	bl NewEfxQuakePure
 	str r0, [r7, #0x5c]
 .L0805AD1E:
 	ldrh r6, [r7, #0x2c]
@@ -3931,7 +2773,7 @@ func_fe6_0805AC54: @ 0x0805AC54
 	bl Proc_End
 	movs r0, #9
 	movs r1, #0
-	bl func_fe6_08045F48
+	bl NewEfxQuakePure
 	str r0, [r7, #0x5c]
 .L0805AD34:
 	ldrh r0, [r7, #0x2c]
@@ -3941,7 +2783,7 @@ func_fe6_0805AC54: @ 0x0805AC54
 	bl Proc_End
 	movs r0, #0xa
 	movs r1, #0
-	bl func_fe6_08045F48
+	bl NewEfxQuakePure
 	str r0, [r7, #0x5c]
 .L0805AD4A:
 	ldrh r1, [r7, #0x2c]
@@ -4003,7 +2845,7 @@ func_fe6_0805AC54: @ 0x0805AC54
 .L0805ADC4: .4byte gAnims
 .L0805ADC8: .4byte gEkrXPosReal
 .L0805ADCC: .4byte gEkrBgPosition
-.L0805ADD0: .4byte gUnk_Banim_02000024
+.L0805ADD0: .4byte gEkrYPosReal
 .L0805ADD4: .4byte gDispIo
 .L0805ADD8: .4byte gUnk_Banim_02017758
 .L0805ADDC: .4byte gPal+0xC0
@@ -4099,7 +2941,7 @@ func_fe6_0805AE6C: @ 0x0805AE6C
 	bl Interpolate
 	adds r6, r0, #0
 	ldr r0, .L0805AED4 @ =gPal
-	ldr r4, .L0805AED8 @ =gUnk_Banim_020165C0
+	ldr r4, .L0805AED8 @ =gEfxPal
 	movs r5, #0x80
 	lsls r5, r5, #1
 	adds r1, r4, #0
@@ -4135,14 +2977,14 @@ func_fe6_0805AE6C: @ 0x0805AE6C
 	bx r0
 	.align 2, 0
 .L0805AED4: .4byte gPal
-.L0805AED8: .4byte gUnk_Banim_020165C0
+.L0805AED8: .4byte gEfxPal
 
 	thumb_func_start func_fe6_0805AEDC
 func_fe6_0805AEDC: @ 0x0805AEDC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r0, .L0805AF2C @ =gPal
-	ldr r4, .L0805AF30 @ =gUnk_Banim_020165C0
+	ldr r4, .L0805AF30 @ =gEfxPal
 	movs r5, #0x80
 	lsls r5, r5, #1
 	adds r1, r4, #0
@@ -4177,7 +3019,7 @@ func_fe6_0805AEDC: @ 0x0805AEDC
 	bx r0
 	.align 2, 0
 .L0805AF2C: .4byte gPal
-.L0805AF30: .4byte gUnk_Banim_020165C0
+.L0805AF30: .4byte gEfxPal
 
 	thumb_func_start func_fe6_0805AF34
 func_fe6_0805AF34: @ 0x0805AF34
@@ -4194,7 +3036,7 @@ func_fe6_0805AF34: @ 0x0805AF34
 	bl Interpolate
 	adds r6, r0, #0
 	ldr r0, .L0805AF9C @ =gPal
-	ldr r4, .L0805AFA0 @ =gUnk_Banim_020165C0
+	ldr r4, .L0805AFA0 @ =gEfxPal
 	movs r5, #0x80
 	lsls r5, r5, #1
 	adds r1, r4, #0
@@ -4230,7 +3072,7 @@ func_fe6_0805AF34: @ 0x0805AF34
 	bx r0
 	.align 2, 0
 .L0805AF9C: .4byte gPal
-.L0805AFA0: .4byte gUnk_Banim_020165C0
+.L0805AFA0: .4byte gEfxPal
 
 	thumb_func_start func_fe6_0805AFA4
 func_fe6_0805AFA4: @ 0x0805AFA4
@@ -5250,8 +4092,8 @@ EfxPalWhiteInOut: @ 0x0805B644
 	pop {r0}
 	bx r0
 
-	thumb_func_start EfxPalGrayInOut
-EfxPalGrayInOut: @ 0x0805B6C8
+	thumb_func_start EfxPalFlashingInOut
+EfxPalFlashingInOut: @ 0x0805B6C8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5345,8 +4187,8 @@ EfxPalGrayInOut: @ 0x0805B6C8
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805B780
-func_fe6_0805B780: @ 0x0805B780
+	thumb_func_start EfxPalModifyPetrifyEffect
+EfxPalModifyPetrifyEffect: @ 0x0805B780
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5408,8 +4250,8 @@ func_fe6_0805B780: @ 0x0805B780
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805B7F4
-func_fe6_0805B7F4: @ 0x0805B7F4
+	thumb_func_start EfxSplitColor
+EfxSplitColor: @ 0x0805B7F4
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r3, r1, #0
@@ -5445,8 +4287,8 @@ func_fe6_0805B7F4: @ 0x0805B7F4
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805B834
-func_fe6_0805B834: @ 0x0805B834
+	thumb_func_start EfxSplitColorPetrify
+EfxSplitColorPetrify: @ 0x0805B834
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -5559,8 +4401,8 @@ func_fe6_0805B88C: @ 0x0805B88C
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805B90C
-func_fe6_0805B90C: @ 0x0805B90C
+	thumb_func_start EfxDecodeSplitedPalette
+EfxDecodeSplitedPalette: @ 0x0805B90C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -5642,8 +4484,8 @@ func_fe6_0805B90C: @ 0x0805B90C
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805B9A4
-func_fe6_0805B9A4: @ 0x0805B9A4
+	thumb_func_start EfxChapterMapFadeOUT
+EfxChapterMapFadeOUT: @ 0x0805B9A4
 	push {r4, lr}
 	adds r4, r0, #0
 	bl ApplyChapterMapPalettes
@@ -5672,8 +4514,8 @@ func_fe6_0805B9C8: @ 0x0805B9C8
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805B9E0
-func_fe6_0805B9E0: @ 0x0805B9E0
+	thumb_func_start NewEkrsubAnimeEmulator
+NewEkrsubAnimeEmulator: @ 0x0805B9E0
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -5683,7 +4525,7 @@ func_fe6_0805B9E0: @ 0x0805B9E0
 	adds r4, r3, #0
 	ldr r7, [sp, #0x18]
 	ldr r1, [sp, #0x20]
-	ldr r0, .L0805BA28 @ =gUnk_08605D28
+	ldr r0, .L0805BA28 @ =ProcScr_EkrSubAnimeEmulator
 	bl SpawnProc
 	movs r2, #0
 	movs r1, #0
@@ -5710,10 +4552,10 @@ func_fe6_0805B9E0: @ 0x0805B9E0
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805BA28: .4byte gUnk_08605D28
+.L0805BA28: .4byte ProcScr_EkrSubAnimeEmulator
 
-	thumb_func_start func_fe6_0805BA2C
-func_fe6_0805BA2C: @ 0x0805BA2C
+	thumb_func_start EkrsubAnimeEmulator_Loop
+EkrsubAnimeEmulator_Loop: @ 0x0805BA2C
 	push {r4, r5, lr}
 	sub sp, #0x48
 	adds r2, r0, #0
@@ -5818,8 +4660,8 @@ func_fe6_0805BA2C: @ 0x0805BA2C
 	.align 2, 0
 .L0805BAE8: .4byte 0x0FFFFFFC
 
-	thumb_func_start func_fe6_0805BAEC
-func_fe6_0805BAEC: @ 0x0805BAEC
+	thumb_func_start GetAnimSpriteRotScaleX
+GetAnimSpriteRotScaleX: @ 0x0805BAEC
 	lsrs r1, r0, #0x1e
 	movs r2, #0xc0
 	lsls r2, r2, #8
@@ -5835,8 +4677,8 @@ func_fe6_0805BAEC: @ 0x0805BAEC
 	.align 2, 0
 .L0805BB04: .4byte gUnk_081C9EF4
 
-	thumb_func_start func_fe6_0805BB08
-func_fe6_0805BB08: @ 0x0805BB08
+	thumb_func_start GetAnimSpriteRotScaleY
+GetAnimSpriteRotScaleY: @ 0x0805BB08
 	lsrs r1, r0, #0x1e
 	movs r2, #0xc0
 	lsls r2, r2, #8
@@ -5852,8 +4694,8 @@ func_fe6_0805BB08: @ 0x0805BB08
 	.align 2, 0
 .L0805BB20: .4byte gUnk_081C9F14
 
-	thumb_func_start func_fe6_0805BB24
-func_fe6_0805BB24: @ 0x0805BB24
+	thumb_func_start BanimUpdateSpriteRotScale
+BanimUpdateSpriteRotScale: @ 0x0805BB24
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -5968,7 +4810,7 @@ func_fe6_0805BB24: @ 0x0805BB24
 	ldrh r0, [r7, #4]
 	strh r0, [r6, #4]
 	adds r0, r2, #0
-	bl func_fe6_0805BAEC
+	bl GetAnimSpriteRotScaleX
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x11
@@ -5991,7 +4833,7 @@ func_fe6_0805BB24: @ 0x0805BB24
 	subs r4, r4, r1
 	strh r4, [r6, #6]
 	ldr r0, [r7]
-	bl func_fe6_0805BB08
+	bl GetAnimSpriteRotScaleY
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x11
@@ -7387,15 +6229,15 @@ func_fe6_0805C76C: @ 0x0805C76C
 	movs r0, #6
 	ldrsh r5, [r6, r0]
 	ldr r0, [r6]
-	bl func_fe6_0805BAEC
+	bl GetAnimSpriteRotScaleX
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x11
 	adds r5, r5, r0
 	ldr r0, [r6]
-	bl func_fe6_0805BAEC
+	bl GetAnimSpriteRotScaleX
 	adds r4, r0, #0
 	ldr r0, [r6]
-	bl func_fe6_0805BB08
+	bl GetAnimSpriteRotScaleY
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x10
 	lsls r0, r0, #0x10
@@ -7560,7 +6402,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	bne .L0805C928
 	ldr r0, [r4, #0x5c]
 	movs r1, #0xa
-	bl func_fe6_08046794
+	bl NewEfxFlashBgWhite
 	ldr r0, .L0805C924 @ =0x0000013B
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -7749,7 +6591,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	bl func_fe6_0805CD68
 	ldr r0, [r4, #0x5c]
 	movs r1, #0xa
-	bl func_fe6_08046794
+	bl NewEfxFlashBgWhite
 	movs r0, #1
 	movs r1, #0
 	movs r2, #0
@@ -7782,7 +6624,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	adds r0, r5, #0
 	movs r1, #0xa
 	movs r2, #0x46
-	bl func_fe6_0804685C
+	bl NewEfxWhiteOUT
 	b .L0805CB56
 .L0805CAE4:
 	movs r0, #0xb2
@@ -8124,7 +6966,7 @@ func_fe6_0805CD68: @ 0x0805CD68
 	adds r0, r4, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl EfxCreateAnim
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldr r0, .L0805CDAC @ =gUnk_0812D80C
 	movs r1, #0x20
@@ -8514,7 +7356,7 @@ func_fe6_0805D09C: @ 0x0805D09C
 	adds r5, r2, #0
 	adds r6, r3, #0
 	ldr r7, [sp, #0x18]
-	ldr r1, .L0805D0D8 @ =gUnk_Banim_02017744
+	ldr r1, .L0805D0D8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8535,7 +7377,7 @@ func_fe6_0805D09C: @ 0x0805D09C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D0D8: .4byte gUnk_Banim_02017744
+.L0805D0D8: .4byte gEfxBgSemaphore
 .L0805D0DC: .4byte gUnk_08606174
 
 	thumb_func_start func_fe6_0805D0E0
@@ -8562,7 +7404,7 @@ func_fe6_0805D0E0: @ 0x0805D0E0
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble .L0805D11C
-	ldr r1, .L0805D124 @ =gUnk_Banim_02017744
+	ldr r1, .L0805D124 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8574,7 +7416,7 @@ func_fe6_0805D0E0: @ 0x0805D0E0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D124: .4byte gUnk_Banim_02017744
+.L0805D124: .4byte gEfxBgSemaphore
 
 	thumb_func_start CheckEkrLvupDone
 CheckEkrLvupDone: @ 0x0805D128
@@ -9642,7 +8484,7 @@ func_fe6_0805DA38: @ 0x0805DA38
 	subs r0, #2
 	str r0, [r4, #0x50]
 	ldr r0, .L0805DA74 @ =gPal
-	ldr r1, .L0805DA78 @ =gUnk_Banim_020165C0
+	ldr r1, .L0805DA78 @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl CpuFastSet
@@ -9654,7 +8496,7 @@ func_fe6_0805DA38: @ 0x0805DA38
 	bx r0
 	.align 2, 0
 .L0805DA74: .4byte gPal
-.L0805DA78: .4byte gUnk_Banim_020165C0
+.L0805DA78: .4byte gEfxPal
 
 	thumb_func_start func_fe6_0805DA7C
 func_fe6_0805DA7C: @ 0x0805DA7C
@@ -9759,7 +8601,7 @@ func_fe6_0805DA7C: @ 0x0805DA7C
 	mov r2, r8
 	subs r0, r0, r2
 	strh r0, [r1, #0x30]
-	ldr r0, .L0805DB9C @ =gUnk_Banim_020165C0
+	ldr r0, .L0805DB9C @ =gEfxPal
 	ldr r4, .L0805DBA0 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -9800,7 +8642,7 @@ func_fe6_0805DA7C: @ 0x0805DA7C
 .L0805DB90: .4byte gUnk_Banim_0201F0D8
 .L0805DB94: .4byte gUnk_Banim_0201F0DA
 .L0805DB98: .4byte gFaces
-.L0805DB9C: .4byte gUnk_Banim_020165C0
+.L0805DB9C: .4byte gEfxPal
 .L0805DBA0: .4byte gPal
 
 	thumb_func_start func_fe6_0805DBA4
@@ -10246,7 +9088,7 @@ func_fe6_0805DEC8: @ 0x0805DEC8
 	movs r0, #0x50
 	subs r0, r0, r5
 	strh r0, [r1, #0x30]
-	ldr r0, .L0805DF88 @ =gUnk_Banim_020165C0
+	ldr r0, .L0805DF88 @ =gEfxPal
 	ldr r4, .L0805DF8C @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -10288,7 +9130,7 @@ func_fe6_0805DEC8: @ 0x0805DEC8
 .L0805DF7C: .4byte gUnk_Banim_0201F0D8
 .L0805DF80: .4byte gUnk_Banim_0201F0DA
 .L0805DF84: .4byte gFaces
-.L0805DF88: .4byte gUnk_Banim_020165C0
+.L0805DF88: .4byte gEfxPal
 .L0805DF8C: .4byte gPal
 
 	thumb_func_start func_fe6_0805DF90
@@ -10806,7 +9648,7 @@ func_fe6_0805E370: @ 0x0805E370
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r1, .L0805E40C @ =gUnk_Banim_02017744
+	ldr r1, .L0805E40C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10883,7 +9725,7 @@ func_fe6_0805E370: @ 0x0805E370
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805E40C: .4byte gUnk_Banim_02017744
+.L0805E40C: .4byte gEfxBgSemaphore
 .L0805E410: .4byte gUnk_Banim_0201E158
 .L0805E414: .4byte gUnk_Banim_0201E298
 .L0805E418: .4byte gUnk_Banim_0201E3E4
@@ -11407,7 +10249,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	bne .L0805E80C
 	adds r0, r5, #0
 	movs r1, #6
-	bl func_fe6_08046794
+	bl NewEfxFlashBgWhite
 .L0805E80C:
 	ldrh r3, [r4, #0x2c]
 	cmp r3, #0x22
@@ -11437,7 +10279,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	bne .L0805E84C
 	adds r0, r5, #0
 	movs r1, #6
-	bl func_fe6_08046794
+	bl NewEfxFlashBgWhite
 .L0805E84C:
 	ldrh r3, [r4, #0x2c]
 	cmp r3, #0x39
@@ -11614,7 +10456,7 @@ func_fe6_0805E964: @ 0x0805E964
 	adds r0, r7, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl EfxCreateAnim
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldr r4, .L0805EA00 @ =gSpellAnimObjfx
 	adds r0, r6, #0
@@ -11752,7 +10594,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	bne .L0805EAE0
 	ldr r0, [r5, #0x5c]
 	movs r1, #4
-	bl func_fe6_08046794
+	bl NewEfxFlashBgWhite
 	ldr r0, [r5, #0x5c]
 	movs r1, #0xa
 	bl func_fe6_0805EE9C
@@ -11786,7 +10628,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	bne .L0805EB26
 	ldr r0, [r5, #0x5c]
 	movs r1, #4
-	bl func_fe6_08046794
+	bl NewEfxFlashBgWhite
 	ldr r0, [r5, #0x5c]
 	movs r1, #0xa
 	bl func_fe6_0805EE9C
@@ -11863,7 +10705,7 @@ func_fe6_0805EB40: @ 0x0805EB40
 	mov r0, r8
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl EfxCreateAnim
+	bl EfxCreateFrontAnim
 	adds r1, r0, #0
 	str r1, [r5, #0x60]
 	ldr r0, .L0805EBFC @ =0x00008840
@@ -11923,7 +10765,7 @@ func_fe6_0805EB40: @ 0x0805EB40
 	mov r0, r8
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl EfxCreateAnim
+	bl EfxCreateFrontAnim
 	adds r1, r0, #0
 	str r1, [r5, #0x64]
 	ldr r0, .L0805ECB0 @ =0x0000A880
@@ -12091,7 +10933,7 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	mov r0, r8
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl EfxCreateAnim
+	bl EfxCreateFrontAnim
 	adds r1, r0, #0
 	str r1, [r4, #0x60]
 	cmp r5, #0
@@ -12214,7 +11056,7 @@ func_fe6_0805EE9C: @ 0x0805EE9C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
-	ldr r1, .L0805EECC @ =gUnk_Banim_02017744
+	ldr r1, .L0805EECC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12225,7 +11067,7 @@ func_fe6_0805EE9C: @ 0x0805EE9C
 	str r5, [r4, #0x5c]
 	movs r0, #0
 	movs r1, #0
-	bl func_fe6_08045F48
+	bl NewEfxQuakePure
 	str r0, [r4, #0x60]
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -12234,7 +11076,7 @@ func_fe6_0805EE9C: @ 0x0805EE9C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805EECC: .4byte gUnk_Banim_02017744
+.L0805EECC: .4byte gEfxBgSemaphore
 .L0805EED0: .4byte gUnk_086063DC
 
 	thumb_func_start func_fe6_0805EED4
@@ -12289,7 +11131,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	bl func_fe6_08044230
-	bl GetEkrDragonStatueType5370
+	bl GetEkrDragonStateTypeIdunnManakete
 	cmp r0, #0
 	beq .L0805EF58
 	ldrh r1, [r5]
@@ -12310,7 +11152,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	mov sl, r3
 	ldr r4, [r3]
 	subs r1, r1, r4
-	ldr r2, .L0805F070 @ =gUnk_Banim_02000024
+	ldr r2, .L0805F070 @ =gEkrYPosReal
 	mov r8, r2
 	ldrh r3, [r5, #2]
 	ldrh r5, [r2]
@@ -12348,7 +11190,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	lsls r1, r5, #0x10
 	cmp r0, r1
 	ble .L0805F052
-	ldr r1, .L0805F074 @ =gUnk_Banim_02017744
+	ldr r1, .L0805F074 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -12378,7 +11220,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	bl func_fe6_08044230
-	bl GetEkrDragonStatueType5370
+	bl GetEkrDragonStateTypeIdunnManakete
 	cmp r0, #0
 	beq .L0805F012
 	movs r0, #3
@@ -12427,8 +11269,8 @@ func_fe6_0805EED4: @ 0x0805EED4
 .L0805F064: .4byte gEkrBg0QuakeVec
 .L0805F068: .4byte gEkrXPosReal
 .L0805F06C: .4byte gEkrBgPosition
-.L0805F070: .4byte gUnk_Banim_02000024
-.L0805F074: .4byte gUnk_Banim_02017744
+.L0805F070: .4byte gEkrYPosReal
+.L0805F074: .4byte gEfxBgSemaphore
 
 	thumb_func_start func_fe6_0805F078
 func_fe6_0805F078: @ 0x0805F078

@@ -109,32 +109,32 @@ gUnk_085CB8D8: @ 085CB8D8
 ProcScr_efxFarAttack: @ 085CB8F0
 	.incbin "fe6-base.gba", 0x5CB8F0, (0x5CB918 - 0x5CB8F0) @ length: 0028
 
-	.global gUnk_085CB918
-gUnk_085CB918: @ 085CB918
+	.global ProcScr_EfxQuakePure
+ProcScr_EfxQuakePure: @ 085CB918
 	.incbin "fe6-base.gba", 0x5CB918, (0x5CB930 - 0x5CB918) @ length: 0018
 
 	.global gUnk_085CB930
 gUnk_085CB930: @ 085CB930
 	.incbin "fe6-base.gba", 0x5CB930, (0x5CB988 - 0x5CB930) @ length: 0058
 
-	.global gUnk_085CB988
-gUnk_085CB988: @ 085CB988
+	.global ProcScr_EfxHitQuakePure
+ProcScr_EfxHitQuakePure: @ 085CB988
 	.incbin "fe6-base.gba", 0x5CB988, (0x5CB9A0 - 0x5CB988) @ length: 0018
 
 	.global gUnk_085CB9A0
 gUnk_085CB9A0: @ 085CB9A0
 	.incbin "fe6-base.gba", 0x5CB9A0, (0x5CB9B8 - 0x5CB9A0) @ length: 0018
 
-	.global gUnk_085CB9B8
-gUnk_085CB9B8: @ 085CB9B8
+	.global ProcScr_EfxHitQuake
+ProcScr_EfxHitQuake: @ 085CB9B8
 	.incbin "fe6-base.gba", 0x5CB9B8, (0x5CB9D0 - 0x5CB9B8) @ length: 0018
 
-	.global gUnk_085CB9D0
-gUnk_085CB9D0: @ 085CB9D0
+	.global ProcScr_EfxFlashBG
+ProcScr_EfxFlashBG: @ 085CB9D0
 	.incbin "fe6-base.gba", 0x5CB9D0, (0x5CB9F8 - 0x5CB9D0) @ length: 0028
 
-	.global gUnk_085CB9F8
-gUnk_085CB9F8: @ 085CB9F8
+	.global ProcScr_EfxWhiteOUT
+ProcScr_EfxWhiteOUT: @ 085CB9F8
 	.incbin "fe6-base.gba", 0x5CB9F8, (0x5CBA20 - 0x5CB9F8) @ length: 0028
 
 	.global gUnk_085CBA20
@@ -301,8 +301,8 @@ gUnk_085CDD18: @ 085CDD18
 gUnk_085D0DA0: @ 085D0DA0
 	.incbin "fe6-base.gba", 0x5D0DA0, (0x5D0E8C - 0x5D0DA0) @ length: 00EC
 
-	.global gUnk_085D0E8C
-gUnk_085D0E8C: @ 085D0E8C
+	.global AnimScr_ManaketeFlame
+AnimScr_ManaketeFlame: @ 085D0E8C
 	.incbin "fe6-base.gba", 0x5D0E8C, (0x5D0E94 - 0x5D0E8C) @ length: 0008
 
 	.global gUnk_085D0E94

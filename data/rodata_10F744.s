@@ -237,8 +237,8 @@ gUnk_08113024: @ 08113024
 gUnk_081131A4: @ 081131A4
 	.incbin "fe6-base.gba", 0x1131A4, (0x113224 - 0x1131A4) @ length: 0080
 
-	.global gUnk_08113224
-gUnk_08113224: @ 08113224
+	.global Pal_08113224
+Pal_08113224: @ 08113224
 	.incbin "fe6-base.gba", 0x113224, (0x113424 - 0x113224) @ length: 0200
 
 	.global gUnk_08113424
@@ -253,8 +253,8 @@ gUnk_081134A4: @ 081134A4
 gUnk_081134C4: @ 081134C4
 	.incbin "fe6-base.gba", 0x1134C4, (0x113564 - 0x1134C4) @ length: 00A0
 
-	.global gUnk_08113564
-gUnk_08113564: @ 08113564
+	.global Pal_08113564
+Pal_08113564: @ 08113564
 	.incbin "fe6-base.gba", 0x113564, (0x113584 - 0x113564) @ length: 0020
 
 	.global Img_EkrExpBar
@@ -1325,8 +1325,8 @@ Img_081BCBDC: @ 081BCBDC
 Img_081BD5E8: @ 081BD5E8
 	.incbin "fe6-base.gba", 0x1BD5E8, (0x1BE490 - 0x1BD5E8) @ length: 0EA8
 
-	.global gUnk_081BE490
-gUnk_081BE490: @ 081BE490
+	.global Img_081BE490
+Img_081BE490: @ 081BE490
 	.incbin "fe6-base.gba", 0x1BE490, (0x1BF434 - 0x1BE490) @ length: 0FA4
 
 	.global Pal_081BF434
@@ -1345,8 +1345,8 @@ Tsa_081BF6F4: @ 081BF6F4
 Tsa_081BD5E8: @ 081BF848
 	.incbin "fe6-base.gba", 0x1BF848, (0x1BFA34 - 0x1BF848) @ length: 01EC
 
-	.global gUnk_081BFA34
-gUnk_081BFA34: @ 081BFA34
+	.global Tsa_081BFA34
+Tsa_081BFA34: @ 081BFA34
 	.incbin "fe6-base.gba", 0x1BFA34, (0x1BFC74 - 0x1BFA34) @ length: 0240
 
 	.global gUnk_081BFC74
@@ -1369,8 +1369,8 @@ gUnk_081C1C74: @ 081C1C74
 gUnk_081C1C94: @ 081C1C94
 	.incbin "fe6-base.gba", 0x1C1C94, (0x1C4DE8 - 0x1C1C94) @ length: 3154
 
-	.global gUnk_081C4DE8
-gUnk_081C4DE8: @ 081C4DE8
+	.global Pal_081C4DE8
+Pal_081C4DE8: @ 081C4DE8
 	.incbin "fe6-base.gba", 0x1C4DE8, (0x1C4E28 - 0x1C4DE8) @ length: 0040
 
 	.global gUnk_081C4E28
