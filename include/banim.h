@@ -284,9 +284,9 @@ void NewEfxFlashUnit(struct BaSprite * anim, int a, int b, int c);
 void NewEfxStatusUnit(struct BaSprite * anim);
 void EndEfxStatusUnits(struct BaSprite *anim);
 void DisableEfxStatusUnits(struct BaSprite * anim);
-// func_fe6_08046EF8
-// SetUnitEfxDebuff
-// GetUnitEfxDebuff
+void EnableEfxStatusUnits(struct BaSprite * anim);
+void SetUnitEfxDebuff(struct BaSprite * anim, int debuff);
+u32 GetUnitEfxDebuff(struct BaSprite * anim);
 // func_fe6_08046F64
 // func_fe6_08047058
 // func_fe6_08047160
@@ -315,7 +315,7 @@ void StartBattleAnimResireHitEffects(struct BaSprite * anim, int type);
 void StartBattleAnimStatusChgHitEffects(struct BaSprite * anim, int type);
 struct BaSprite * EfxCreateFrontAnim(struct BaSprite * anim, const AnimScr * scr1, const AnimScr * scr2, const AnimScr * scr3, const AnimScr * scr4);
 struct BaSprite * EfxCreateBackAnim( struct BaSprite * anim, const AnimScr * scr1, const AnimScr *scr2, const AnimScr * scr3, const AnimScr * scr4);
-// func_fe6_0804799C
+void SpellFx_WriteBgMap(struct BaSprite * anim, const u16 * src1, const u16 * src2);
 // SpellFx_WriteBgMapExt
 void SpellFx_RegisterObjGfx(const void * img, u32 size);
 void SpellFx_RegisterObjPal(const u16 * pal, u32 size);
@@ -1659,15 +1659,15 @@ extern u32 AnimScr_ManaketeFlame[];
 // ??? gUnk_08603BA4
 // ??? gUnk_08603BC0
 extern struct ProcScr CONST_DATA ProcScr_EkrDragon_086046D8[];
-extern struct ProcScr CONST_DATA ProcScr_EkrDragon_086046F0[];
+extern struct ProcScr CONST_DATA ProcScr_EkrDragonBark[];
 extern struct ProcScr CONST_DATA ProcScr_EkrManakete[];
-// ??? ProcScr_EkrManaketeComeInFlame
-// ??? ProcScr_EkrManaketeDispearInFlame
-extern struct ProcScr CONST_DATA ProcScr_EkrDragon[];
+// ??? ProcScr_EkrManaketeEnterfx
+// ??? ProcScr_EkrManaketeExitfx
+extern struct ProcScr CONST_DATA ProcScr_EkrManaketefx[];
 // ??? ProcScr_EkrDragonFae
-// ??? gUnk_08604888
-// ??? gUnk_086048A0
-// ??? gUnk_086048D0
+// ??? ProcScr_EkrFaefx
+// ??? TsaLut_EkrFaefx
+// ??? ProcScr_EkrDragonIdunn
 // ??? gUnk_08604948
 // ??? gUnk_08604968
 // ??? gUnk_08604988
@@ -1680,12 +1680,12 @@ extern struct ProcScr CONST_DATA ProcScr_EkrDragon[];
 // ??? gUnk_08604A6C
 // ??? gUnk_08604A9C
 // ??? gUnk_08604ACC
-// ??? gUnk_08604C34
-// ??? gUnk_08604C48
-// ??? gUnk_08604E30
-// ??? gUnk_08604E4C
-// ??? gUnk_08604F94
-// ??? gUnk_08604FA0
+extern AnimScr AnimScr_ManaketeEnter1[];
+extern AnimScr AnimScr_ManaketeExit3[];
+extern AnimScr AnimScr_ManaketeEnter2[];
+extern AnimScr AnimScr_ManaketeExit2[];
+extern AnimScr AnimScr_ManaketeEnter3[];
+extern AnimScr AnimScr_ManaketeExit1[];
 // ??? gUnk_08605A50
 // ??? gUnk_08605A70
 // ??? gUnk_08605A94

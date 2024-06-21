@@ -2,8 +2,6 @@
 #include "proc.h"
 #include "oam.h"
 #include "move.h"
-#include "util.h"
-#include "map.h"
 #include "hardware.h"
 #include "constants/jids.h"
 #include "constants/videoalloc_banim.h"
@@ -130,9 +128,9 @@ ProcPtr GetEkrDragonProc(struct BaSprite * anim)
     return EkrDragonProcs[GetAnimPosition(anim)];
 }
 
-void func_fe6_08058A34(struct BaSprite * anim)
+void EndEkrDragonFlashing(struct BaSprite * anim)
 {
-    Proc_End(gUnk_Banim_0201E7B4[GetAnimPosition(anim)]);
+    Proc_End(gEkrDragonDeamonProcs[GetAnimPosition(anim)]);
 }
 
 void SetDragonBasLayer(u8 layer)
@@ -145,25 +143,25 @@ void SetDragonBasLayer(u8 layer)
     anim_r->oam2 = (anim_r->oam2 & (OAM2_PAL_MASK | OAM2_CHR_MASK)) | (layer * 0x0400);
 }
 
-void func_fe6_08058A80(struct ProcEkrDragon * proc)
+void PutManaketeBodyPalette(struct ProcEkrDragon * proc)
 {
-    CpuFastCopy(Pal_081BF434, &PAL_BG_COLOR(1, 0), 0x20);
+    CpuFastCopy(Pal_EkrManaketefx, &PAL_BG_COLOR(1, 0), 0x20);
 
     if (GetAnimPosition(proc->anim) == POS_L)
     {
-        CpuFastCopy(Pal_081BF434, &PAL_BG_COLOR(6, 0), 0x20);
+        CpuFastCopy(Pal_EkrManaketefx, &PAL_BG_COLOR(6, 0), 0x20);
     }
     else
     {
-        CpuFastCopy(Pal_081BF434, &PAL_BG_COLOR(7, 0), 0x20);
+        CpuFastCopy(Pal_EkrManaketefx, &PAL_BG_COLOR(7, 0), 0x20);
     }
     EnablePalSync();
 }
 
-void func_fe6_08058ACC(struct ProcEkrDragon * proc)
+void PutManaketeBodyIntro2(struct ProcEkrDragon * proc)
 {
-    LZ77UnCompWram(Img_081BC268, gSpellAnimBgfx);
-    LZ77UnCompWram(Tsa_081BF5B4, gEkrTsaBuffer);
+    LZ77UnCompWram(Img_ManaketeBodyIntro2, gSpellAnimBgfx);
+    LZ77UnCompWram(Tsa_ManaketeBodyIntro2, gEkrTsaBuffer);
     EfxTmFill(0);
 
     if (GetAnimPosition(proc->anim) == POS_L)
@@ -187,10 +185,10 @@ void func_fe6_08058ACC(struct ProcEkrDragon * proc)
     EnableBgSync(BG3_SYNC_BIT);
 }
 
-void func_fe6_08058B84(struct ProcEkrDragon * proc)
+void PutManaketeBodyIntro1(struct ProcEkrDragon * proc)
 {
-    LZ77UnCompWram(Img_081BCBDC, gSpellAnimBgfx);
-    LZ77UnCompWram(Tsa_081BF6F4, gEkrTsaBuffer);
+    LZ77UnCompWram(Img_ManaketeBodyIntro1, gSpellAnimBgfx);
+    LZ77UnCompWram(Tsa_ManaketeBodyIntro1, gEkrTsaBuffer);
     EfxTmFill(0);
 
     if (GetAnimPosition(proc->anim) == POS_L)
@@ -214,10 +212,10 @@ void func_fe6_08058B84(struct ProcEkrDragon * proc)
     EnableBgSync(BG3_SYNC_BIT);
 }
 
-void func_fe6_08058C3C(struct ProcEkrDragon * proc)
+void PutManaketeBodyStd(struct ProcEkrDragon * proc)
 {
-    LZ77UnCompWram(Img_081BD5E8, gSpellAnimBgfx);
-    LZ77UnCompWram(Tsa_081BD5E8, gEkrTsaBuffer);
+    LZ77UnCompWram(Img_ManaketeBodyStd, gSpellAnimBgfx);
+    LZ77UnCompWram(Tsa_ManaketeBodyStd, gEkrTsaBuffer);
     EfxTmFill(0);
 
     if (GetAnimPosition(proc->anim) == POS_L)
@@ -336,9 +334,9 @@ void func_fe6_08058E24(void)
 void func_fe6_08058E58(int pos)
 {
     if (pos == POS_L)
-        CpuFastCopy(Pal_081BF434, gPal + BGPAL_OFFSET(6), 0x20);
+        CpuFastCopy(Pal_EkrManaketefx, gPal + BGPAL_OFFSET(6), 0x20);
     else
-        CpuFastCopy(Pal_081BF434, gPal + BGPAL_OFFSET(7), 0x20);
+        CpuFastCopy(Pal_EkrManaketefx, gPal + BGPAL_OFFSET(7), 0x20);
 
     EnablePalSync();
 }
@@ -435,16 +433,6 @@ void func_fe6_08058FA8(const u8 * tsa)
     EnableBgSync(BG3_SYNC_BIT);
 }
 
-static inline void _func(int loc)
-{
-    EfxTmCpyExt(
-        gUnk_Banim_0201E7CC,
-        -1,
-        gEfxFrameTmap + loc,
-        EFX_BG_WIDTH, 30, 22,
-        6, 0);
-}
-
 void func_fe6_08059018(const u8 * tsa)
 {
     int loc, distance;
@@ -468,22 +456,22 @@ void func_fe6_08059018(const u8 * tsa)
     EkrDragonTmCpyExt(gEkrBgPosition);
 }
 
-struct ProcScr CONST_DATA ProcScr_EkrDragon_086046F0[] =
+struct ProcScr CONST_DATA ProcScr_EkrDragonBark[] =
 {
     PROC_19,
     PROC_SLEEP(20),
-    PROC_REPEAT(func_fe6_08059090),
+    PROC_REPEAT(EkrDragonBarkExt),
     PROC_END,
 };
 
-void func_fe6_08059078(struct BaSprite * anim)
+void NewEkrDragonBark(struct BaSprite * anim)
 {
-    struct ProcEkrDragon_086046F0 * proc;
-    proc = SpawnProc(ProcScr_EkrDragon_086046F0, PROC_TREE_3);
+    struct ProcEkrDragonBark * proc;
+    proc = SpawnProc(ProcScr_EkrDragonBark, PROC_TREE_3);
     proc->anim = anim;
 }
 
-void func_fe6_08059090(struct ProcEkrDragon_086046F0 * proc)
+void EkrDragonBarkExt(struct ProcEkrDragonBark * proc)
 {
     struct BaSprite * anim = proc->anim;
 
@@ -491,370 +479,3 @@ void func_fe6_08059090(struct ProcEkrDragon_086046F0 * proc)
     M4aPlayWithPostionCtrl(0x0E6, anim->xPosition, 1);
     Proc_Break(proc);
 }
-
-/**
- * Manakete
- */
-struct ProcScr CONST_DATA ProcScr_EkrManakete[] =
-{
-    PROC_19,
-    PROC_REPEAT(EkrManakete_BgFadeIn),
-    PROC_REPEAT(func_fe6_08059144),
-    PROC_REPEAT(func_fe6_080591AC),
-    PROC_REPEAT(func_fe6_080591CC),
-    PROC_REPEAT(func_fe6_080592D0),
-    PROC_REPEAT(EkrManakete_EnterPrepareNewBanimfx),
-    PROC_REPEAT(EkrManakete_BlockingInBattle),
-    PROC_REPEAT(func_fe6_08059400),
-    PROC_REPEAT(EkrManakete_StartExit),
-    PROC_REPEAT(func_fe6_0805946C),
-    PROC_REPEAT(func_fe6_080594CC),
-    PROC_REPEAT(func_fe6_08059578),
-    PROC_REPEAT(func_fe6_080595EC),
-    PROC_REPEAT(EkrManakete_ReloadBg),
-    PROC_REPEAT(EkrManakete_TriggerEnding),
-    PROC_END,
-};
-
-void StartEkrManakete(struct BaSprite * anim)
-{
-    int pos;
-    struct ProcEkrDragon * proc;
-
-    pos = GetAnimPosition(anim);
-    proc = SpawnProc(ProcScr_EkrManakete, PROC_TREE_3);
-
-    EkrDragonProcs[pos] = proc;
-    gEkrDragonState[GetAnimPosition(anim)] = DRAGON_STATE_1;
-
-    proc->anim = anim;
-    proc->timer = 0;
-}
-
-void EkrManakete_BgFadeIn(struct ProcEkrDragon * proc)
-{
-    EfxChapterMapFadeOUT(Interpolate(INTERPOLATE_SQUARE, 4, 0x10, proc->timer, 8));
-
-    if (++proc->timer == 0x9)
-    {
-        proc->timer = 0;
-        NewEfxFlashUnit(proc->anim, 0, 10, 1);
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_08059144(struct ProcEkrDragon * proc)
-{
-    if (CheckEkrDragonStateTypeFae(proc->anim) == TRUE)
-    {
-        proc->timer = 60;
-        Proc_Break(proc);
-        return;
-    }
-
-    if (++proc->timer == 11)
-    {
-        proc->anim->flags |= BAS_BIT_HIDDEN;
-        StartManaketeTransferAnim(proc->anim, 0);
-        EfxPlaySE(0xE8, 0x100);
-        M4aPlayWithPostionCtrl(0x0E8, proc->anim->xPosition, 1);
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_080591AC(struct ProcEkrDragon * proc)
-{
-    if (++proc->timer == 61)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_080591CC(struct ProcEkrDragon * proc)
-{
-    if (CheckEkrDragonStateTypeFae(proc->anim) == TRUE)
-    {
-        func_fe6_08058E24();
-        TmFill(gBg3Tm, 0xF000);
-        SetBgOffset(3, 0, 0x10);
-        EnableBgSync(BG3_SYNC_BIT);
-
-        gDispIo.bg0_ct.priority = 0;
-        gDispIo.bg1_ct.priority = 1;
-        gDispIo.bg3_ct.priority = 2;
-        gDispIo.bg2_ct.priority = 3;
-
-        SetDragonBasLayer(1);
-        proc->timer = 0;
-        Proc_Break(proc);
-        return;
-    }
-
-    if (proc->timer == 0)
-    {
-        func_fe6_08058E24();
-        TmFill(gBg3Tm, 0xF000);
-        SetBgOffset(3, 0, 0x10);
-
-        gDispIo.bg0_ct.priority = 0;
-        gDispIo.bg1_ct.priority = 1;
-        gDispIo.bg3_ct.priority = 2;
-        gDispIo.bg2_ct.priority = 3;
-
-        EnableBgSync(BG3_SYNC_BIT);
-        SetDragonBasLayer(1);
-        func_fe6_08058A80(proc);
-        func_fe6_08058ACC(proc);
-    }
-
-    if (++proc->timer == 6)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_080592D0(struct ProcEkrDragon * proc)
-{
-    if (CheckEkrDragonStateTypeFae(proc->anim) == TRUE)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-        return;
-    }
-
-    if (proc->timer == 0)
-    {
-        func_fe6_08058B84(proc);
-        NewEfxQuake(5);
-    }
-
-    if (++proc->timer == 11)
-    {
-        proc->timer = 0;
-        func_fe6_08059078(proc->anim);
-        Proc_Break(proc);
-    }
-}
-
-void EkrManakete_EnterPrepareNewBanimfx(struct ProcEkrDragon * proc)
-{
-    if (CheckEkrDragonStateTypeFae(proc->anim) == TRUE)
-    {
-        func_fe6_08058C3C(proc);
-        func_fe6_080598F0(proc->anim);
-        proc->anim->flags &= ~BAS_BIT_HIDDEN;
-        EkrPrepareBanimfx(proc->anim, 0x55);
-        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
-        proc->timer = 0;
-        Proc_Break(proc);
-        return;
-    }
-
-    if (proc->timer == 0)
-    {
-        func_fe6_08058C3C(proc);
-        func_fe6_080598F0(proc->anim);
-        proc->anim->flags &= ~BAS_BIT_HIDDEN;
-        EkrPrepareBanimfx(proc->anim, 0x55);
-    }
-
-    if (++proc->timer == 61)
-    {
-        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
-        Proc_Break(proc);
-    }
-}
-
-void EkrManakete_BlockingInBattle(struct ProcEkrDragon * proc)
-{
-    if (gEkrDragonState[GetAnimPosition(proc->anim)] == DRAGON_STATE_ENDING)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_08059400(struct ProcEkrDragon * proc)
-{
-    func_fe6_08058A34(proc->anim);
-    Proc_Break(proc);
-}
-
-void EkrManakete_StartExit(struct ProcEkrDragon * proc)
-{
-    if (CheckEkrDragonStateTypeFae(proc->anim) == TRUE)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-        return;
-    }
-
-    if (proc->timer == 0)
-    {
-        func_fe6_08058B84(proc);
-        proc->anim->flags |= BAS_BIT_HIDDEN;
-    }
-
-    if (++proc->timer == 6)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_0805946C(struct ProcEkrDragon * proc)
-{
-    if (CheckEkrDragonStateTypeFae(proc->anim) == TRUE)
-    {
-        func_fe6_08058E24();
-        proc->timer = 0;
-        Proc_Break(proc);
-        return;
-    }
-
-    if (proc->timer == 0)
-    {
-        func_fe6_08058E24();
-        EfxChapterMapFadeOUT(0x10);
-        func_fe6_08058A80(proc);
-        func_fe6_08058ACC(proc);
-    }
-
-    if (++proc->timer == 6)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_080594CC(struct ProcEkrDragon * proc)
-{
-    if (proc->timer == 0 && CheckEkrDragonStateTypeFae(proc->anim) == FALSE)
-    {
-        StartManaketeTransferAnim(proc->anim, 1);
-        EfxPlaySE(0xE9, 0x100);
-        M4aPlayWithPostionCtrl(0xE9, proc->anim->xPosition, 1);
-    }
-
-    if (++proc->timer == 6)
-    {
-        TmFill(gBg3Tm, 0xF000);
-        SetBgOffset(3, 0, 0);
-        EnableBgSync(BG3_SYNC_BIT);
-
-        gDispIo.bg0_ct.priority = 0;
-        gDispIo.bg1_ct.priority = 1;
-        gDispIo.bg2_ct.priority = 2;
-        gDispIo.bg3_ct.priority = 3;
-
-        SetDragonBasLayer(2);
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_08059578(struct ProcEkrDragon * proc)
-{
-    if (CheckEkrDragonStateTypeFae(proc->anim) == TRUE)
-    {
-        proc->timer = 80;
-        Proc_Break(proc);
-        return;
-    }
-
-    if (++proc->timer == 61)
-    {
-        proc->anim->flags &= ~BAS_BIT_HIDDEN;
-        EkrPrepareBanimfx(proc->anim, gBanimIdx_bak[GetAnimPosition(proc->anim)]);
-        NewEfxFlashUnit(proc->anim, 0, 10, 1);
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void func_fe6_080595EC(struct ProcEkrDragon * proc)
-{
-    if (++proc->timer == 81)
-    {
-        EfxChapterMapFadeOUT(0x10);
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void EkrManakete_ReloadBg(struct ProcEkrDragon * proc)
-{
-    if (proc->timer == 0)
-    {
-        ApplyChapterMapGraphics(gPlaySt.chapter);
-        RenderMap();
-    }
-
-    EfxChapterMapFadeOUT(Interpolate(INTERPOLATE_RSQUARE, 0x10, 4, proc->timer, 8));
-
-    if (++proc->timer == 0x9)
-    {
-        proc->timer = 0;
-        Proc_Break(proc);
-    }
-}
-
-void EkrManakete_TriggerEnding(struct ProcEkrDragon * proc)
-{
-    gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = 2;
-    Proc_Break(proc);
-}
-
-struct ProcScr CONST_DATA ProcScr_EkrManaketeComeInFlame[] =
-{
-    PROC_19,
-    PROC_ONEND(func_fe6_08059730),
-    PROC_REPEAT(func_fe6_08059758),
-    PROC_SLEEP(20),
-    PROC_REPEAT(func_fe6_0805979C),
-    PROC_SLEEP(26),
-    PROC_REPEAT(func_fe6_080597E0),
-    PROC_SLEEP(9),
-    PROC_END,
-};
-
-struct ProcScr CONST_DATA ProcScr_EkrManaketeDispearInFlame[] =
-{
-    PROC_19,
-    PROC_ONEND(func_fe6_08059730),
-    PROC_REPEAT(func_fe6_080598AC),
-    PROC_SLEEP(9),
-    PROC_REPEAT(func_fe6_08059868),
-    PROC_SLEEP(26),
-    PROC_REPEAT(func_fe6_08059824),
-    PROC_SLEEP(20),
-    PROC_END,
-};
-
-#if 0
-void StartManaketeTransferAnim(struct BaSprite * anim, int type)
-{
-    struct BaSprite * animfx;
-    struct ProcEkrManaketefx * proc;
-
-    gEfxBgSemaphore++;
-
-    if (type == 0)
-        proc = SpawnProc(ProcScr_EkrManaketeComeInFlame, PROC_TREE_3);
-    else
-        proc = SpawnProc(ProcScr_EkrManaketeDispearInFlame, PROC_TREE_3);
-
-    proc->anim = anim;
-    proc->animfx = animfx = EfxCreateFrontAnim(proc, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame);
-    animfx->oam2 = OAM2_CHR(0x200) + OAM2_LAYER(1) + OAM2_PAL(2);
-    animfx->oam01 |= OAM1_AFFINE_ID(2);
-    animfx->yPosition += 8;
-
-    proc->timer = 0;
-    SpellFx_SetSomeColorEffect();
-    gDispIo.blend_ct
-}
-#endif

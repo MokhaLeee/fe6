@@ -4520,7 +4520,7 @@ func_fe6_08045B24: @ 0x08045B24
 	strh r3, [r0, #0x2c]
 	strh r3, [r0, #0x2e]
 	ldr r0, [r0, #0x5c]
-	bl func_fe6_08058A34
+	bl EndEkrDragonFlashing
 	ldr r5, .L08045BEC @ =gDispIo
 	adds r2, r5, #0
 	adds r2, #0x3c
@@ -6946,8 +6946,8 @@ DisableEfxStatusUnits: @ 0x08046ED8
 	.align 2, 0
 .L08046EF4: .4byte gUnk_Banim_02017764
 
-	thumb_func_start func_fe6_08046EF8
-func_fe6_08046EF8: @ 0x08046EF8
+	thumb_func_start EnableEfxStatusUnits
+EnableEfxStatusUnits: @ 0x08046EF8
 	push {r4, lr}
 	ldr r4, .L08046F14 @ =gUnk_Banim_02017764
 	bl GetAnimPosition
@@ -8311,8 +8311,8 @@ EfxCreateBackAnim: @ 0x08047938
 	.align 2, 0
 .L08047998: .4byte gBg1Tm
 
-	thumb_func_start func_fe6_0804799C
-func_fe6_0804799C: @ 0x0804799C
+	thumb_func_start SpellFx_WriteBgMap
+SpellFx_WriteBgMap: @ 0x0804799C
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -20701,7 +20701,7 @@ func_fe6_0804DC8C: @ 0x0804DC8C
 	bl CpuFastSet
 .L0804DD0C:
 	adds r0, r4, #0
-	bl func_fe6_08046EF8
+	bl EnableEfxStatusUnits
 	b .L0804DD32
 	.align 2, 0
 .L0804DD14: .4byte gUnk_Banim_0200004C
@@ -20746,7 +20746,7 @@ func_fe6_0804DD38: @ 0x0804DD38
 	ldr r0, [r4, #0x5c]
 	ldr r2, .L0804DD90 @ =gUnk_0811D0D4
 	adds r1, r2, #0
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	bl SpellFx_SetBG1Position
 	bl SpellFx_SetSomeColorEffect
 	pop {r4, r5}
@@ -20937,7 +20937,7 @@ func_fe6_0804DE84: @ 0x0804DE84
 	bl CpuFastSet
 .L0804DF04:
 	adds r0, r4, #0
-	bl func_fe6_08046EF8
+	bl EnableEfxStatusUnits
 	b .L0804DF2A
 	.align 2, 0
 .L0804DF0C: .4byte gUnk_Banim_0200004C
@@ -21986,7 +21986,7 @@ func_fe6_0804E778: @ 0x0804E778
 	ldr r0, [r5, #0x5c]
 	ldr r2, .L0804E7E4 @ =gUnk_0813BA64
 	adds r1, r2, #0
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	bl SpellFx_SetBG1Position
 	bl SpellFx_SetSomeColorEffect
 	ldr r0, .L0804E7E8 @ =gEkrDistanceType
@@ -22425,7 +22425,7 @@ func_fe6_0804EB24: @ 0x0804EB24
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L0804EB70
 .L0804EB52:
 	movs r0, #1
@@ -22784,7 +22784,7 @@ func_fe6_0804EE18: @ 0x0804EE18
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	cmp r5, #0
 	bne .L0804EE4E
 	ldr r6, .L0804EE68 @ =0x0000011F
@@ -23209,7 +23209,7 @@ func_fe6_0804F1A4: @ 0x0804F1A4
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L0804F1F0
 .L0804F1D2:
 	movs r0, #1
@@ -23417,7 +23417,7 @@ func_fe6_0804F354: @ 0x0804F354
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L0804F3AE
 .L0804F390:
 	movs r0, #1
@@ -23462,7 +23462,7 @@ func_fe6_0804F3B8: @ 0x0804F3B8
 	ldr r0, [r5, #0x5c]
 	ldr r2, .L0804F420 @ =gUnk_0813B8B4
 	adds r1, r2, #0
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	bl SpellFx_SetBG1Position
 	bl SpellFx_SetSomeColorEffect
 	ldr r0, .L0804F424 @ =gEkrDistanceType
@@ -23943,7 +23943,7 @@ func_fe6_0804F7BC: @ 0x0804F7BC
 	ldr r1, [r1]
 	adds r2, r4, r2
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	adds r4, r4, r5
 	ldr r0, [r4]
 	movs r1, #0x80
@@ -24051,7 +24051,7 @@ func_fe6_0804F8A4: @ 0x0804F8A4
 	ldr r1, [r1]
 	adds r2, r4, r2
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	adds r4, r4, r5
 	ldr r0, [r4]
 	movs r1, #0x80
@@ -24642,7 +24642,7 @@ func_fe6_0804FD78: @ 0x0804FD78
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L0804FDCA
 .L0804FDB4:
 	movs r0, #1
@@ -25721,7 +25721,7 @@ func_fe6_08050650: @ 0x08050650
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L080506AA
 .L0805068C:
 	movs r0, #1
@@ -26296,7 +26296,7 @@ func_fe6_08050B10: @ 0x08050B10
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08050B8E
 .L08050B4C:
 	movs r0, #1
@@ -26488,7 +26488,7 @@ func_fe6_08050C9C: @ 0x08050C9C
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08050CFA
 .L08050CD8:
 	movs r0, #1
@@ -26538,7 +26538,7 @@ func_fe6_08050D04: @ 0x08050D04
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08050D5E
 .L08050D40:
 	movs r0, #1
@@ -26830,7 +26830,7 @@ func_fe6_08050F54: @ 0x08050F54
 	ldr r1, [r6]
 	add r5, r8
 	ldr r2, [r5]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	ldr r0, .L08050FBC @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -27158,7 +27158,7 @@ func_fe6_0805120C: @ 0x0805120C
 	ldr r1, [r6]
 	add r5, r8
 	ldr r2, [r5]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08051278
 .L0805125A:
 	movs r0, #1
@@ -27576,7 +27576,7 @@ func_fe6_080515A0: @ 0x080515A0
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	ldr r0, .L080515F0 @ =gBg1Tm+0x3C
 	ldr r1, .L080515F4 @ =0x0000011F
 	str r1, [sp]
@@ -28783,7 +28783,7 @@ func_fe6_08051F88: @ 0x08051F88
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08051FE2
 .L08051FC4:
 	movs r0, #1
@@ -31219,7 +31219,7 @@ func_fe6_08053340: @ 0x08053340
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 .L08053388:
 	ldrh r0, [r7, #0x2e]
 	adds r0, #1
@@ -32101,7 +32101,7 @@ func_fe6_08053A98: @ 0x08053A98
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08053AF2
 .L08053AD4:
 	movs r0, #1
@@ -33140,7 +33140,7 @@ func_fe6_08054310: @ 0x08054310
 	ldr r1, [r5]
 	adds r4, r4, r6
 	ldr r2, [r4]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	ldr r0, .L08054374 @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -35205,7 +35205,7 @@ func_fe6_080553B4: @ 0x080553B4
 	adds r0, r0, r2
 	ldr r2, [r0]
 	adds r0, r6, #0
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	ldr r0, .L08055404 @ =gUnk_0811A9BA
 	lsls r1, r5, #1
 	adds r0, r1, r0
@@ -35424,7 +35424,7 @@ func_fe6_08055580: @ 0x08055580
 	adds r0, r0, r2
 	ldr r2, [r0]
 	adds r0, r5, #0
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08055614
 .L080555BA:
 	movs r0, #1
@@ -35777,7 +35777,7 @@ func_fe6_08055870: @ 0x08055870
 	ldr r1, [r1]
 	adds r2, r4, r2
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	adds r4, r4, r5
 	ldr r0, [r4]
 	movs r1, #0x80
@@ -36102,7 +36102,7 @@ func_fe6_08055B2C: @ 0x08055B2C
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08055B78
 .L08055B5A:
 	movs r0, #1
@@ -36405,7 +36405,7 @@ func_fe6_08055DBC: @ 0x08055DBC
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08055E08
 .L08055DEA:
 	movs r0, #1
@@ -36787,7 +36787,7 @@ func_fe6_080560D4: @ 0x080560D4
 	ldr r1, [r1]
 	adds r2, r4, r2
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	adds r4, r4, r5
 	ldr r0, [r4]
 	movs r1, #0x80
@@ -37768,7 +37768,7 @@ func_fe6_08056910: @ 0x08056910
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L0805695C
 .L0805693E:
 	movs r0, #1
@@ -38064,7 +38064,7 @@ func_fe6_08056B58: @ 0x08056B58
 	ldr r0, [r4, #0x5c]
 	ldr r1, .L08056BA0 @ =gUnk_08123D1C
 	ldr r2, .L08056BA4 @ =gUnk_081241BC
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	bl SpellFx_SetSomeColorEffect
 	pop {r4, r5}
 	pop {r0}
@@ -38285,7 +38285,7 @@ func_fe6_08056D28: @ 0x08056D28
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08056D74
 .L08056D56:
 	movs r0, #1
@@ -39025,7 +39025,7 @@ func_fe6_080572EC: @ 0x080572EC
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	b .L08057338
 .L0805731A:
 	movs r0, #1
@@ -39834,7 +39834,7 @@ func_fe6_080579C0: @ 0x080579C0
 	ldr r0, [r4, #0x5c]
 	ldr r2, .L08057A08 @ =gUnk_081246F8
 	adds r1, r2, #0
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 	bl SpellFx_SetSomeColorEffect
 	pop {r4, r5}
 	pop {r0}
@@ -40193,7 +40193,7 @@ func_fe6_08057C94: @ 0x08057C94
 	ldr r1, [r1]
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl func_fe6_0804799C
+	bl SpellFx_WriteBgMap
 .L08057CC0:
 	ldrh r0, [r4, #0x2e]
 	adds r0, #1

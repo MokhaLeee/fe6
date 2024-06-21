@@ -202,7 +202,7 @@ SECTIONS
         . = 0x01E7A4; gUnk_Banim_0201E7A4 = .;
         . = 0x01E7A8; gUnk_Banim_0201E7A8 = .;
         . = 0x01E7AC; EkrDragonProcs = .;
-        . = 0x01E7B4; gUnk_Banim_0201E7B4 = .;
+        . = 0x01E7B4; gEkrDragonDeamonProcs = .;
         . = 0x01E7BC; gUnk_Banim_0201E7BC = .;
         . = 0x01E7C0; gEkrDragonIntroDone = .;
         . = 0x01E7C4; gUnk_Banim_0201E7C4 = .;
@@ -523,6 +523,9 @@ SECTIONS
         src/banim_ekrgauge.o(.text);
         asm/code-banim.o(.text);
         src/banim_dragon.o(.text);
+        src/banim_dragonfx_manakete.o(.text);
+        src/banim_dragonfx_fae.o(.text);
+        asm/banim_dragonfx_fae.o(.text);
         asm/code-banim-dragon.o(.text);
         src/mu.o(.text);
         src/manim.o(.text);
@@ -702,6 +705,8 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrlvupfan.o(.data);
         . = ALIGN(4); data/data-code-banim.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
+        . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
+        . = ALIGN(4); src/banim_dragonfx_fae.o(.data);
         . = ALIGN(4); data/data-banim-dragon.o(.data);
         . = ALIGN(4); src/gamedata.o(.data);
         . = ALIGN(4), data/data-game-info.o(.data);

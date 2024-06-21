@@ -295,17 +295,17 @@ void EkrBattleExecDragonIntro(struct ProcEkrBattle * proc)
         proc->anim = MAIN_ANIM_FRONT(POS_L);
         if (conf & EDRAGON_TYPE_MANAKETE_L)
         {
-            StartEkrManakete(proc->anim);
+            NewEkrManakete(proc->anim);
             proc->proc_repeat_func = (ProcFunc)EkrBattleWaitDragonIntro;
         }
         if (conf & EDRAGON_TYPE_FAE_L)
         {
-            StartEkrDragonFae(proc->anim);
+            NewEkrDragonFae(proc->anim);
             proc->proc_repeat_func = (ProcFunc)EkrBattleWaitDragonIntro;
         }
         if (conf & EDRAGON_TYPE_IDUNN_L)
         {
-            StartEkrDragonIdunn(proc->anim);
+            NewEkrDragonIdunn(proc->anim);
             proc->proc_repeat_func = (ProcFunc)EkrBattleWaitDragonIntro;
         }
         proc->side = POS_R;
@@ -316,12 +316,12 @@ void EkrBattleExecDragonIntro(struct ProcEkrBattle * proc)
         proc->anim = MAIN_ANIM_FRONT(POS_R);
         if (conf & EDRAGON_TYPE_MANAKETE_R)
         {
-            StartEkrManakete(proc->anim);
+            NewEkrManakete(proc->anim);
             proc->proc_repeat_func = (ProcFunc)EkrBattleWaitDragonIntro;
         }
         if (conf & EDRAGON_TYPE_FAE_R)
         {
-            StartEkrDragonFae(proc->anim);
+            NewEkrDragonFae(proc->anim);
             proc->proc_repeat_func = (ProcFunc)EkrBattleWaitDragonIntro;
         }
         proc->side = POS_L;

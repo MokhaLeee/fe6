@@ -1,23 +1,7 @@
 	.data
 
-	.global ProcScr_EkrDragon
-ProcScr_EkrDragon: @ 08604828
-	.incbin "fe6-base.gba", 0x604828, (0x604840 - 0x604828) @ length: 0018
-
-	.global ProcScr_EkrDragonFae
-ProcScr_EkrDragonFae: @ 08604840
-	.incbin "fe6-base.gba", 0x604840, (0x604888 - 0x604840) @ length: 0048
-
-	.global gUnk_08604888
-gUnk_08604888: @ 08604888
-	.incbin "fe6-base.gba", 0x604888, (0x6048A0 - 0x604888) @ length: 0018
-
-	.global gUnk_086048A0
-gUnk_086048A0: @ 086048A0
-	.incbin "fe6-base.gba", 0x6048A0, (0x6048D0 - 0x6048A0) @ length: 0030
-
-	.global gUnk_086048D0
-gUnk_086048D0: @ 086048D0
+	.global ProcScr_EkrDragonIdunn
+ProcScr_EkrDragonIdunn: @ 086048D0
 	.incbin "fe6-base.gba", 0x6048D0, (0x604948 - 0x6048D0) @ length: 0078
 
 	.global gUnk_08604948
@@ -68,28 +52,28 @@ gUnk_08604A9C: @ 08604A9C
 gUnk_08604ACC: @ 08604ACC
 	.incbin "fe6-base.gba", 0x604ACC, (0x604C34 - 0x604ACC) @ length: 0168
 
-	.global gUnk_08604C34
-gUnk_08604C34: @ 08604C34
+	.global AnimScr_ManaketeEnter1
+AnimScr_ManaketeEnter1: @ 08604C34
 	.incbin "fe6-base.gba", 0x604C34, (0x604C48 - 0x604C34) @ length: 0014
 
-	.global gUnk_08604C48
-gUnk_08604C48: @ 08604C48
+	.global AnimScr_ManaketeExit3
+AnimScr_ManaketeExit3: @ 08604C48
 	.incbin "fe6-base.gba", 0x604C48, (0x604E30 - 0x604C48) @ length: 01E8
 
-	.global gUnk_08604E30
-gUnk_08604E30: @ 08604E30
+	.global AnimScr_ManaketeEnter2
+AnimScr_ManaketeEnter2: @ 08604E30
 	.incbin "fe6-base.gba", 0x604E30, (0x604E4C - 0x604E30) @ length: 001C
 
-	.global gUnk_08604E4C
-gUnk_08604E4C: @ 08604E4C
+	.global AnimScr_ManaketeExit2
+AnimScr_ManaketeExit2: @ 08604E4C
 	.incbin "fe6-base.gba", 0x604E4C, (0x604F94 - 0x604E4C) @ length: 0148
 
-	.global gUnk_08604F94
-gUnk_08604F94: @ 08604F94
+	.global AnimScr_ManaketeEnter3
+AnimScr_ManaketeEnter3: @ 08604F94
 	.incbin "fe6-base.gba", 0x604F94, (0x604FA0 - 0x604F94) @ length: 000C
 
-	.global gUnk_08604FA0
-gUnk_08604FA0: @ 08604FA0
+	.global AnimScr_ManaketeExit1
+AnimScr_ManaketeExit1: @ 08604FA0
 	.incbin "fe6-base.gba", 0x604FA0, (0x605A50 - 0x604FA0) @ length: 0AB0
 
 	.global gUnk_08605A50
