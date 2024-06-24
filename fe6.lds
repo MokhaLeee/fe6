@@ -165,15 +165,10 @@ SECTIONS
         . = 0x01777C; gSpellAnimBgfx = .;
         . = 0x01947C; gEkrBarfxBuf = .;
         . = 0x01977C; gEkrTsaBuffer = .;
-        . = 0x019F7C; gUnk_Banim_02019F7C = .;
-        . = 0x01A77C; gSpellAnimObjfx = .;
-        . = 0x01AF7C; gUnk_Banim_0201AF7C = .;
-        . = 0x01B77C; gUnk_Banim_0201B77C = .;
+        . = 0x01A77C; gBuf_Banim = .;
         . = 0x01C77C; gPal_Banim = .;
-        . = 0x01C8BC; gUnk_Banim_0201C8BC = .;
-        . = 0x01C8FE; gUnk_Banim_0201C8FE = .;
-        . = 0x01CF70; gUnk_Banim_0201CF70 = .;
-        . = 0x01D414; gEfxFrameTmap = .;
+        . = 0x01C8BC; gTmA_Banim = .;
+        . = 0x01D414; gTmB_Banim = .;
         . = 0x01D424; gUnk_Banim_0201D424 = .;
         . = 0x01D456; gUnk_Banim_0201D456 = .;
         . = 0x01DF6C; gUnk_Banim_0201DF6C = .;

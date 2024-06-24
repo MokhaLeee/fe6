@@ -60,7 +60,7 @@ void EkrIdunn_InitBanimfx(struct ProcEkrDragon * proc)
     animf->xPosition = gEkrXPosBase[POS_L] + 0x54 - gEkrBgPosition;
     animr->xPosition = gEkrXPosReal[POS_L] - gEkrBgPosition;
 
-    if (CheckEkrDragonFarFar(proc->anim) != TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) != TRUE)
     {
         gEkrDragonDeamonProcs[POS_L] = StartEkrIdunnDeamon(proc->anim);
         gEkrDragonDeamonProcs[POS_L]->x_hi = gEkrXPosBase[POS_L] - (gEkrBgPosition - 0x4E);
@@ -94,7 +94,7 @@ void EkrIdunn_PreMainBodyIntro(struct ProcEkrDragon * proc)
 {
     struct ProcEkrDragonDeamon * procfx = gEkrDragonDeamonProcs[POS_L];
 
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         Proc_Break(proc);
         return;

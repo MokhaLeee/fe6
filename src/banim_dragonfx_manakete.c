@@ -62,7 +62,7 @@ void EkrManakete_BgFadeIn(struct ProcEkrDragon * proc)
 
 void func_fe6_08059144(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         proc->timer = 60;
         Proc_Break(proc);
@@ -91,7 +91,7 @@ void EkrManakete_PauseOnStart(struct ProcEkrDragon * proc)
 
 void func_fe6_080591CC(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         func_fe6_08058E24();
         TmFill(gBg3Tm, 0xF000);
@@ -135,7 +135,7 @@ void func_fe6_080591CC(struct ProcEkrDragon * proc)
 
 void func_fe6_080592D0(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         proc->timer = 0;
         Proc_Break(proc);
@@ -158,7 +158,7 @@ void func_fe6_080592D0(struct ProcEkrDragon * proc)
 
 void EkrManakete_UpdateBanimfx(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         PutManaketeBodyStd(proc);
         NewEkrManaketeDeamon(proc->anim);
@@ -202,7 +202,7 @@ void EkrManakete_EndFlashing(struct ProcEkrDragon * proc)
 
 void EkrManakete_StartExit(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         proc->timer = 0;
         Proc_Break(proc);
@@ -224,7 +224,7 @@ void EkrManakete_StartExit(struct ProcEkrDragon * proc)
 
 void func_fe6_0805946C(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         func_fe6_08058E24();
         proc->timer = 0;
@@ -249,7 +249,7 @@ void func_fe6_0805946C(struct ProcEkrDragon * proc)
 
 void func_fe6_080594CC(struct ProcEkrDragon * proc)
 {
-    if (proc->timer == 0 && CheckEkrDragonFarFar(proc->anim) == FALSE)
+    if (proc->timer == 0 && CheckSkipDragonTransfer(proc->anim) == FALSE)
     {
         StartManaketeTransferAnim(proc->anim, 1);
         EfxPlaySE(0xE9, 0x100);
@@ -275,7 +275,7 @@ void func_fe6_080594CC(struct ProcEkrDragon * proc)
 
 void func_fe6_08059578(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         proc->timer = 80;
         Proc_Break(proc);
@@ -400,7 +400,7 @@ void EkrManaketeEnter1(struct ProcEkrManaketefx * proc)
 
     src = Img_ManaketeObjfx1;
     dst = OBJ_VRAM0 + 0x4000;
-    buf = gSpellAnimObjfx;
+    buf = gBuf_Banim;
 
     LZ77UnCompWram(src, buf);
     RegisterDataMove(buf, dst, 0x2000);
@@ -419,7 +419,7 @@ void EkrManaketeEnter2(struct ProcEkrManaketefx * proc)
 
     src = Img_ManaketeObjfx2;
     dst = OBJ_VRAM0 + 0x4000;
-    buf = gSpellAnimObjfx;
+    buf = gBuf_Banim;
 
     LZ77UnCompWram(src, buf);
     RegisterDataMove(buf, dst, 0x2000);
@@ -438,7 +438,7 @@ void EkrManaketeEnter3(struct ProcEkrManaketefx * proc)
 
     src = Img_ManaketeObjfx3;
     dst = OBJ_VRAM0 + 0x4000;
-    buf = gSpellAnimObjfx;
+    buf = gBuf_Banim;
 
     LZ77UnCompWram(src, buf);
     RegisterDataMove(buf, dst, 0x2000);
@@ -457,7 +457,7 @@ void EkrManaketeExit3(struct ProcEkrManaketefx * proc)
 
     src = Img_ManaketeObjfx1;
     dst = OBJ_VRAM0 + 0x4000;
-    buf = gSpellAnimObjfx;
+    buf = gBuf_Banim;
 
     LZ77UnCompWram(src, buf);
     RegisterDataMove(buf, dst, 0x2000);
@@ -476,7 +476,7 @@ void EkrManaketeExit2(struct ProcEkrManaketefx * proc)
 
     src = Img_ManaketeObjfx2;
     dst = OBJ_VRAM0 + 0x4000;
-    buf = gSpellAnimObjfx;
+    buf = gBuf_Banim;
 
     LZ77UnCompWram(src, buf);
     RegisterDataMove(buf, dst, 0x2000);
@@ -495,7 +495,7 @@ void EkrManaketeExit1(struct ProcEkrManaketefx * proc)
 
     src = Img_ManaketeObjfx3;
     dst = OBJ_VRAM0 + 0x4000;
-    buf = gSpellAnimObjfx;
+    buf = gBuf_Banim;
 
     LZ77UnCompWram(src, buf);
     RegisterDataMove(buf, dst, 0x2000);

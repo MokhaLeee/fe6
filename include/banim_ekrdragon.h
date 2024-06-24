@@ -38,7 +38,7 @@ enum ekr_dragon_status_type_bitfile {
 u32 GetEkrDragonStateType(void); /* Different form FE8, this is a bitfile rather than enum */
 u32 GetEkrDragonStateTypeIdunnManakete(void);
 u32 GetEkrDragonStateTypeIdunn(void);
-bool CheckEkrDragonFarFar(struct BaSprite * anim);
+bool CheckSkipDragonTransfer(struct BaSprite * anim);
 u16 * GetEkrDragonJid(int pos);
 u16 * CheckEkrDragonFasten(struct BaSprite * anim);
 ProcPtr GetEkrDragonProc(struct BaSprite * anim);

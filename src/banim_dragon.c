@@ -102,7 +102,7 @@ u32 GetEkrDragonStateTypeIdunn(void)
     return ret;
 }
 
-bool CheckEkrDragonFarFar(struct BaSprite * anim)
+bool CheckSkipDragonTransfer(struct BaSprite * anim)
 {
     if (*CheckEkrDragonFasten(anim) == TRUE)
         return TRUE;
@@ -135,7 +135,6 @@ void EndEkrDragonFlashing(struct BaSprite * anim)
 
 void SetDragonBasLayer(u8 layer)
 {
-    u32 oam2;
     struct BaSprite * anim_l = MAIN_ANIM_FRONT(POS_L);
     struct BaSprite * anim_r = MAIN_ANIM_FRONT(POS_R);
 
@@ -170,12 +169,12 @@ void PutManaketeBodyIntro2(struct ProcEkrDragon * proc)
 
         EfxTmCpyExtHFlip(
             gEkrTsaBuffer, -1,
-            EFX_TILEMAP_LOC(gEfxFrameTmap, x, 0), EFX_BG_WIDTH,
+            EFX_TILEMAP_LOC(gTmB_Banim, x, 0), EFX_BG_WIDTH,
             0xF, 0x16, 0x6, 0
         );
 
         EfxTmCpyExt(
-            EFX_TILEMAP_LOC(gEfxFrameTmap, 0x21, 0), EFX_BG_WIDTH,
+            EFX_TILEMAP_LOC(gTmB_Banim, 0x21, 0), EFX_BG_WIDTH,
             gBg3Tm, 0x20,
             0x20, 0x16, -1, -1
         );
@@ -197,12 +196,12 @@ void PutManaketeBodyIntro1(struct ProcEkrDragon * proc)
 
         EfxTmCpyExtHFlip(
             gEkrTsaBuffer, -1,
-            EFX_TILEMAP_LOC(gEfxFrameTmap, x, 0), EFX_BG_WIDTH,
+            EFX_TILEMAP_LOC(gTmB_Banim, x, 0), EFX_BG_WIDTH,
             0xF, 0x16, 0x6, 0
         );
 
         EfxTmCpyExt(
-            EFX_TILEMAP_LOC(gEfxFrameTmap, 0x21, 0), EFX_BG_WIDTH,
+            EFX_TILEMAP_LOC(gTmB_Banim, 0x21, 0), EFX_BG_WIDTH,
             gBg3Tm, 0x20,
             0x20, 0x16, -1, -1
         );
@@ -249,12 +248,12 @@ void PutManaketeBodyStd(struct ProcEkrDragon * proc)
 
         EfxTmCpyExtHFlip(
             gEkrTsaBuffer, -1,
-            EFX_TILEMAP_LOC(gEfxFrameTmap, x, 0), EFX_BG_WIDTH,
+            EFX_TILEMAP_LOC(gTmB_Banim, x, 0), EFX_BG_WIDTH,
             0xF, 0x16, 0x6, 0
         );
 
         EfxTmCpyExt(
-            EFX_TILEMAP_LOC(gEfxFrameTmap, 0x21, 0), EFX_BG_WIDTH,
+            EFX_TILEMAP_LOC(gTmB_Banim, 0x21, 0), EFX_BG_WIDTH,
             gBg3Tm, 0x20,
             0x20, 0x16, -1, -1
         );
@@ -399,7 +398,7 @@ void EkrDragonTmCpyExt(int x)
 
     SetBgOffset(3, x & tmp1, 16);
 
-    buf = gEfxFrameTmap + 0x21 + _x;
+    buf = gTmB_Banim + 0x21 + _x;
 
     EfxTmCpyExt(
         buf,
@@ -449,7 +448,7 @@ void func_fe6_08059018(const u8 * tsa)
     EfxTmCpyExt(
         gUnk_Banim_0201E7CC,
         -1,
-        gEfxFrameTmap + loc,
+        gTmB_Banim + loc,
         EFX_BG_WIDTH, 30, 22,
         6, 0);
 

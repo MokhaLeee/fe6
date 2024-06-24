@@ -30,7 +30,7 @@ void NewEkrDragonFae(struct BaSprite * anim)
 
     proc->anim = anim;
 
-    if (CheckEkrDragonFarFar(anim) == TRUE)
+    if (CheckSkipDragonTransfer(anim) == TRUE)
         proc->timer = 60;
     else
         proc->timer = 0;
@@ -64,7 +64,7 @@ void EkrFae_StartTransfer(struct ProcEkrDragon * proc)
 
     EnablePalSync();
 
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         Proc_Break(proc);
         return;
@@ -82,7 +82,7 @@ void EkrFae_UpdateBanimfx(struct ProcEkrDragon * proc)
 {
     const u8 * scr;
 
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         EkrPrepareBanimfx(proc->anim, 0x5B); /* Fae dragon anim */
         gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
@@ -113,7 +113,7 @@ void EkrFae_WaitBattleDone(struct ProcEkrDragon * proc)
     if (gEkrDragonState[GetAnimPosition(proc->anim)] != DRAGON_STATE_ENDING)
         return;
 
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         Proc_Break(proc);
         return;
@@ -131,7 +131,7 @@ void EkrFae_ReloadBanimBak(struct ProcEkrDragon * proc)
 {
     const u8 * scr;
 
-    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         proc->timer = 60;
         Proc_Break(proc);

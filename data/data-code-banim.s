@@ -1,5 +1,6 @@
 
 	.data
+	.include "animscr.inc"
 
 	.global ProcScr_EkrGauge
 ProcScr_EkrGauge: @ 085CB568
@@ -299,11 +300,15 @@ gUnk_085CDD18: @ 085CDD18
 
 	.global gUnk_085D0DA0
 gUnk_085D0DA0: @ 085D0DA0
-	.incbin "fe6-base.gba", 0x5D0DA0, (0x5D0E8C - 0x5D0DA0) @ length: 00EC
+	.incbin "fe6-base.gba", 0x5D0DA0, (0x5D0E80 - 0x5D0DA0) @ length: 00EC
+
+AnimSprite_ManaketeFlame:
+    ANIM_SPRITE_END
 
 	.global AnimScr_ManaketeFlame
 AnimScr_ManaketeFlame: @ 085D0E8C
-	.incbin "fe6-base.gba", 0x5D0E8C, (0x5D0E94 - 0x5D0E8C) @ length: 0008
+    ANIMSCR_FORCE_SPRITE AnimSprite_ManaketeFlame, 1
+    ANIMSCR_BLOCKED
 
 	.global gUnk_085D0E94
 gUnk_085D0E94: @ 085D0E94

@@ -178,10 +178,10 @@ extern u32 gEkrDeadEventExist;
 extern u8 gSpellAnimBgfx[];
 extern u16 gEkrBarfxBuf[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
-extern u8 gSpellAnimObjfx[];
+extern u8 gBuf_Banim[];
 extern u16 gPal_Banim[];
 extern i16 gEkrPairExpPrevious[2];
-extern u16 gEfxFrameTmap[0x2520 / 2];
+extern u16 gTmB_Banim[0x2520 / 2];
 
 void NewEkrLvlupFan(void);
 void EkrLvupFanMain(struct ProcEfx * proc);
@@ -1694,7 +1694,7 @@ extern struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[];
 // ??? gUnk_08604968
 // ??? gUnk_08604988
 // ??? gUnk_086049A8
-// ??? gUnk_086049D0
+// ??? ProcScr_EkrIdunnDeamon
 // ??? gUnk_086049E8
 // ??? gUnk_08604A00
 // ??? gUnk_08604A18
@@ -1708,7 +1708,7 @@ extern AnimScr AnimScr_ManaketeEnter2[];
 extern AnimScr AnimScr_ManaketeExit2[];
 extern AnimScr AnimScr_ManaketeEnter3[];
 extern AnimScr AnimScr_ManaketeExit1[];
-// ??? gUnk_08605A50
+// ??? AnimScr_EkrIdunnDeamon
 // ??? gUnk_08605A70
 // ??? gUnk_08605A94
 // ??? gUnk_08605D14
