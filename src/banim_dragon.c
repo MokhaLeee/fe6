@@ -102,7 +102,7 @@ u32 GetEkrDragonStateTypeIdunn(void)
     return ret;
 }
 
-bool CheckEkrDragonStateTypeFae(struct BaSprite * anim)
+bool CheckEkrDragonAlly(struct BaSprite * anim)
 {
     if (*GetEkrDragonStatusIdx(anim) == TRUE)
         return TRUE;
@@ -327,8 +327,8 @@ void func_fe6_08058D34(struct ProcEkrDragon * proc)
 
 void func_fe6_08058E24(void)
 {
-    CpuFastFill16(0, gUnk_Banim_0201C77C, CHR_SIZE);
-    RegisterVramMove(gUnk_Banim_0201C77C, CHR_SIZE * BGCHR_EKRDRAGON_400, CHR_SIZE);
+    CpuFastFill16(0, gPal_Banim, 0x20);
+    RegisterVramMove(gPal_Banim, 0x8000, 0x20);
 }
 
 void func_fe6_08058E58(int pos)

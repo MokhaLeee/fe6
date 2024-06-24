@@ -21,6 +21,23 @@ extern struct BaSprite * gAnims[4];
 #define MAIN_ANIM_FRONT(pos) (gAnims[pos * 2 + 0])
 #define MAIN_ANIM_BACK(pos)  (gAnims[pos * 2 + 1])
 
+enum banim_mode_index {
+    BANIM_MODE_NORMAL_ATK,
+    BANIM_MODE_NORMAL_ATK_PRIORITY_L,
+    BANIM_MODE_CRIT_ATK,
+    BANIM_MODE_CRIT_ATK_PRIORITY_L,
+    BANIM_MODE_RANGED_ATK,
+    BANIM_MODE_RANGED_CRIT_ATK,
+    BANIM_MODE_CLOSE_DODGE,
+    BANIM_MODE_RANGED_DODGE,
+    BANIM_MODE_STANDING,
+    BANIM_MODE_STANDING2,
+    BANIM_MODE_RANGED_STANDING,
+    BANIM_MODE_MISSED_ATK,
+
+    BANIM_MODE_INVALID = -1,
+};
+
 #define EFX_BG_WIDTH 66
 #define EFX_TILEMAP_LOC(aMap, aX, aY) (aMap + (aX) + EFX_BG_WIDTH * (aY))
 
@@ -143,6 +160,10 @@ extern u32 gEkrBgPosition;
 extern i16 gEkrPairEffectiveAgainst[2];
 extern i16 gEkrPairSideVaild[2];
 extern i16 gBanimIdx_bak[2];
+extern i16 gBanimUniquePal[2];
+extern i16 gBanimFactionPal[2];
+extern i16 gEkrSpellAnimIndex[2];
+extern i16 gBanimFloorfx[2];;
 extern i16 gEkrPairExpGain[2];
 extern i16 gEkrGaugeHp[2];
 extern i16 gBanimIdx[2];
@@ -154,7 +175,7 @@ extern u8 gSpellAnimBgfx[];
 extern u16 gEkrBarfxBuf[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
 extern u8 gSpellAnimObjfx[];
-extern u8 gUnk_Banim_0201C77C[0x10];
+extern u16 gPal_Banim[];
 extern i16 gEkrPairExpPrevious[2];
 extern u16 gEfxFrameTmap[0x2520 / 2];
 

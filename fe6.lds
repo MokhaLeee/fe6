@@ -169,7 +169,7 @@ SECTIONS
         . = 0x01A77C; gSpellAnimObjfx = .;
         . = 0x01AF7C; gUnk_Banim_0201AF7C = .;
         . = 0x01B77C; gUnk_Banim_0201B77C = .;
-        . = 0x01C77C; gUnk_Banim_0201C77C = .;
+        . = 0x01C77C; gPal_Banim = .;
         . = 0x01C8BC; gUnk_Banim_0201C8BC = .;
         . = 0x01C8FE; gUnk_Banim_0201C8FE = .;
         . = 0x01CF70; gUnk_Banim_0201CF70 = .;
@@ -279,6 +279,10 @@ SECTIONS
         . = 0x0203CCF6 - __ewram_overlay_end; gEkrSnowWeather = .;
         . = 0x0203CCF8 - __ewram_overlay_end; gEkrPairSideVaild = .;
         . = 0x0203CD00 - __ewram_overlay_end; gBanimIdx_bak = .;
+        . = 0x0203CD04 - __ewram_overlay_end; gBanimUniquePal = .;
+        . = 0x0203CD08 - __ewram_overlay_end; gBanimFactionPal = .;
+        . = 0x0203CD0C - __ewram_overlay_end; gEkrSpellAnimIndex = .;
+        . = 0x0203CD10 - __ewram_overlay_end; gBanimFloorfx = .;
         . = 0x0203CD14 - __ewram_overlay_end; gEkrDistanceType = .;
         . = 0x0203CD76 - __ewram_overlay_end; gBanimIdx = .;
         . = 0x0203CD7C - __ewram_overlay_end; gpEkrBattleUnitLeft = .;
@@ -525,7 +529,6 @@ SECTIONS
         src/banim_dragon.o(.text);
         src/banim_dragonfx_manakete.o(.text);
         src/banim_dragonfx_fae.o(.text);
-        asm/banim_dragonfx_fae.o(.text);
         asm/code-banim-dragon.o(.text);
         src/mu.o(.text);
         src/manim.o(.text);

@@ -86,7 +86,7 @@ func_fe6_08059E08: @ 0x08059E08
 	subs r0, r2, r0
 	strh r0, [r4, #2]
 	ldr r0, [r5, #0x5c]
-	bl CheckEkrDragonStateTypeFae
+	bl CheckEkrDragonAlly
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -191,7 +191,7 @@ func_fe6_08059F2C: @ 0x08059F2C
 	ldr r0, .L08059F4C @ =gEkrDragonDeamonProcs
 	ldr r5, [r0]
 	ldr r0, [r6, #0x5c]
-	bl CheckEkrDragonStateTypeFae
+	bl CheckEkrDragonAlly
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -286,7 +286,7 @@ func_fe6_0805A000: @ 0x0805A000
 	push {r6, r7}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl CheckEkrDragonStateTypeFae
+	bl CheckEkrDragonAlly
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -377,7 +377,7 @@ func_fe6_0805A0BC: @ 0x0805A0BC
 	cmp r0, #1
 	bne .L0805A132
 	ldr r0, [r4, #0x5c]
-	bl CheckEkrDragonStateTypeFae
+	bl CheckEkrDragonAlly
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -446,7 +446,7 @@ func_fe6_0805A140: @ 0x0805A140
 	ldr r1, [r6, #4]
 	mov sb, r1
 	ldr r0, [r5, #0x5c]
-	bl CheckEkrDragonStateTypeFae
+	bl CheckEkrDragonAlly
 	lsls r0, r0, #0x18
 	asrs r4, r0, #0x18
 	cmp r4, #1
@@ -630,7 +630,7 @@ func_fe6_0805A2BC: @ 0x0805A2BC
 .L0805A2E0: .4byte gUnk_Banim_0201E7C4
 .L0805A2E4:
 	ldr r0, [r5, #0x5c]
-	bl CheckEkrDragonStateTypeFae
+	bl CheckEkrDragonAlly
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -5047,7 +5047,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	ldr r1, .L0805C57C @ =gUnk_Banim_0201F04C
 	movs r0, #1
 	str r0, [r1]
-	ldr r1, .L0805C580 @ =0x0203CD08
+	ldr r1, .L0805C580 @ =gBanimFactionPal
 	ldr r0, .L0805C584 @ =gEkrInitialHitSide
 	movs r2, #0
 	ldrsh r0, [r0, r2]
@@ -5076,7 +5076,7 @@ EkrPlayMainBGM: @ 0x0805C520
 .L0805C574: .4byte gpEkrBattleUnitRight
 .L0805C578: .4byte gBmSt
 .L0805C57C: .4byte gUnk_Banim_0201F04C
-.L0805C580: .4byte 0x0203CD08
+.L0805C580: .4byte gBanimFactionPal
 .L0805C584: .4byte gEkrInitialHitSide
 .L0805C588:
 	ldr r0, .L0805C59C @ =gEkrDistanceType
@@ -7180,7 +7180,7 @@ func_fe6_0805D604: @ 0x0805D604
 	adds r0, r6, #0
 	adds r2, r4, #0
 	bl RegisterDataMove
-	ldr r1, .L0805D6D4 @ =0x0203CD10
+	ldr r1, .L0805D6D4 @ =gBanimFloorfx
 	ldrh r4, [r1]
 	strh r4, [r7]
 	movs r0, #3
@@ -7230,7 +7230,7 @@ func_fe6_0805D604: @ 0x0805D604
 .L0805D6C8: .4byte 0x06007000
 .L0805D6CC: .4byte 0x06005000
 .L0805D6D0: .4byte 0x06005800
-.L0805D6D4: .4byte 0x0203CD10
+.L0805D6D4: .4byte gBanimFloorfx
 .L0805D6D8: .4byte gEkrDistanceType
 .L0805D6DC: .4byte 0x0000FFFF
 .L0805D6E0: .4byte 0x06010000
@@ -8308,7 +8308,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	movs r1, #0
 	bl SetBgScreenSize
 	mov r4, sp
-	ldr r2, .L0805E0A0 @ =0x0203CD10
+	ldr r2, .L0805E0A0 @ =gBanimFloorfx
 	ldrh r0, [r2]
 	movs r6, #0
 	strh r0, [r4]
@@ -8403,7 +8403,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	b .L0805E0EC
 	.align 2, 0
 .L0805E09C: .4byte gUnk_Banim_0201F084
-.L0805E0A0: .4byte 0x0203CD10
+.L0805E0A0: .4byte gBanimFloorfx
 .L0805E0A4: .4byte gEkrDistanceType
 .L0805E0A8: .4byte gUnk_Banim_020145C0
 .L0805E0AC: .4byte gEkrSnowWeather
@@ -10931,7 +10931,7 @@ NewEkrPopup: @ 0x0805F498
 	ldrh r0, [r0]
 	cmp r0, #4
 	beq .L0805F576
-	ldr r0, .L0805F564 @ =0x0203CD08
+	ldr r0, .L0805F564 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -10959,7 +10959,7 @@ NewEkrPopup: @ 0x0805F498
 	ldrh r0, [r0]
 	str r0, [r5, #0x48]
 .L0805F500:
-	ldr r0, .L0805F564 @ =0x0203CD08
+	ldr r0, .L0805F564 @ =gBanimFactionPal
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -11005,7 +11005,7 @@ NewEkrPopup: @ 0x0805F498
 .L0805F558: .4byte gUnk_08607668
 .L0805F55C: .4byte gUnk_Banim_0201F0E4
 .L0805F560: .4byte gEkrDistanceType
-.L0805F564: .4byte 0x0203CD08
+.L0805F564: .4byte gBanimFactionPal
 .L0805F568: .4byte gpEkrBattleUnitLeft
 .L0805F56C: .4byte gpEkrBattleUnitRight
 .L0805F570:

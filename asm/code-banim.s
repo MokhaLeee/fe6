@@ -26,7 +26,7 @@ NewEkrGauge: @ 0x080436A4
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	bl func_fe6_08043918
-	ldr r6, .L0804385C @ =0x0203CD08
+	ldr r6, .L0804385C @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #5
@@ -194,7 +194,7 @@ NewEkrGauge: @ 0x080436A4
 .L08043850: .4byte gpProcEkrGauge
 .L08043854: .4byte ProcScr_EkrGauge
 .L08043858: .4byte gEkrBg0QuakeVec
-.L0804385C: .4byte 0x0203CD08
+.L0804385C: .4byte gBanimFactionPal
 .L08043860: .4byte gUnk_08113424
 .L08043864: .4byte gPal+0x360
 .L08043868: .4byte 0x0203CDA8
@@ -1809,7 +1809,7 @@ func_fe6_080444EC: @ 0x080444EC
 	mov r7, r8
 	push {r7}
 	ldr r4, .L0804452C @ =gUnk_Banim_0201E0FC
-	ldr r2, .L08044530 @ =0x0203CD10
+	ldr r2, .L08044530 @ =gBanimFloorfx
 	movs r0, #0
 	ldrsh r1, [r2, r0]
 	lsls r0, r1, #1
@@ -1838,7 +1838,7 @@ func_fe6_080444EC: @ 0x080444EC
 	b .L08044576
 	.align 2, 0
 .L0804452C: .4byte gUnk_Banim_0201E0FC
-.L08044530: .4byte 0x0203CD10
+.L08044530: .4byte gBanimFloorfx
 .L08044534: .4byte 0x087EA008
 .L08044538: .4byte gEkrDistanceType
 .L0804453C: .4byte gUnk_Banim_020145C0
@@ -2144,7 +2144,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	bl func_fe6_0805B01C
 	movs r0, #1
 	bl EnableBgSync
-	ldr r6, .L08044860 @ =0x0203CD08
+	ldr r6, .L08044860 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #5
@@ -2181,7 +2181,7 @@ EfxPrepareScreenFx: @ 0x08044608
 .L08044854: .4byte 0x060018C0
 .L08044858: .4byte gBg0Tm
 .L0804485C: .4byte gUnk_08112C84
-.L08044860: .4byte 0x0203CD08
+.L08044860: .4byte gBanimFactionPal
 .L08044864: .4byte gUnk_08112CD4
 .L08044868: .4byte gPal+0x40
 .L0804486C: .4byte gEkrBg0QuakeVec
@@ -6356,7 +6356,7 @@ func_fe6_08046A0C: @ 0x08046A0C
 	bl GetAnimPosition
 	cmp r0, #0
 	bne .L08046A3C
-	ldr r0, .L08046A30 @ =0x0203CD08
+	ldr r0, .L08046A30 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	lsls r0, r0, #5
@@ -6367,11 +6367,11 @@ func_fe6_08046A0C: @ 0x08046A0C
 	bl CpuSet
 	b .L08046A50
 	.align 2, 0
-.L08046A30: .4byte 0x0203CD08
+.L08046A30: .4byte gBanimFactionPal
 .L08046A34: .4byte gUnk_08113424
 .L08046A38: .4byte gPal+0x360
 .L08046A3C:
-	ldr r0, .L08046A60 @ =0x0203CD08
+	ldr r0, .L08046A60 @ =gBanimFactionPal
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	lsls r0, r0, #5
@@ -6388,7 +6388,7 @@ func_fe6_08046A0C: @ 0x08046A0C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08046A60: .4byte 0x0203CD08
+.L08046A60: .4byte gBanimFactionPal
 .L08046A64: .4byte gUnk_08113424
 .L08046A68: .4byte gPal+0x380
 
@@ -6414,7 +6414,7 @@ NewEfxHPBarColorChange: @ 0x08046A6C
 	str r1, [r0, #0x48]
 	str r2, [r0, #0x4c]
 	str r2, [r0, #0x50]
-	ldr r0, .L08046B30 @ =0x0203CD08
+	ldr r0, .L08046B30 @ =gBanimFactionPal
 	mov r8, r0
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -6483,7 +6483,7 @@ NewEfxHPBarColorChange: @ 0x08046A6C
 .L08046B24: .4byte gUnk_Banim_02017774
 .L08046B28: .4byte gUnk_085CBA50
 .L08046B2C: .4byte gUnk_081120F8
-.L08046B30: .4byte 0x0203CD08
+.L08046B30: .4byte gBanimFactionPal
 .L08046B34: .4byte gUnk_08113424
 .L08046B38: .4byte gUnk_Banim_0201DF6C
 .L08046B3C: .4byte gUnk_081134C4
@@ -7486,7 +7486,7 @@ func_fe6_08047300: @ 0x08047300
 	cmp r0, #0
 	bne .L08047344
 	ldr r0, .L0804733C @ =gPal+0xC0
-	ldr r1, .L08047340 @ =gUnk_Banim_0201C77C
+	ldr r1, .L08047340 @ =gPal_Banim
 	movs r2, #0x50
 	bl CpuFastSet
 	b .L08047348
@@ -7494,7 +7494,7 @@ func_fe6_08047300: @ 0x08047300
 .L08047334: .4byte gUnk_085CBAE8
 .L08047338: .4byte gUnk_Banim_02017770
 .L0804733C: .4byte gPal+0xC0
-.L08047340: .4byte gUnk_Banim_0201C77C
+.L08047340: .4byte gPal_Banim
 .L08047344:
 	bl Proc_End
 .L08047348:
@@ -7553,7 +7553,7 @@ func_fe6_0804738C: @ 0x0804738C
 	movs r2, #8
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, .L080473E8 @ =gUnk_Banim_0201C77C
+	ldr r0, .L080473E8 @ =gPal_Banim
 	ldr r4, .L080473EC @ =gPal+0xC0
 	adds r1, r4, #0
 	movs r2, #0x50
@@ -7583,14 +7583,14 @@ func_fe6_0804738C: @ 0x0804738C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080473E8: .4byte gUnk_Banim_0201C77C
+.L080473E8: .4byte gPal_Banim
 .L080473EC: .4byte gPal+0xC0
 
 	thumb_func_start func_fe6_080473F0
 func_fe6_080473F0: @ 0x080473F0
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, .L08047428 @ =gUnk_Banim_0201C77C
+	ldr r0, .L08047428 @ =gPal_Banim
 	ldr r4, .L0804742C @ =gPal+0xC0
 	adds r1, r4, #0
 	movs r2, #0x50
@@ -7615,7 +7615,7 @@ func_fe6_080473F0: @ 0x080473F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08047428: .4byte gUnk_Banim_0201C77C
+.L08047428: .4byte gPal_Banim
 .L0804742C: .4byte gPal+0xC0
 
 	thumb_func_start func_fe6_08047430
@@ -7633,7 +7633,7 @@ func_fe6_08047430: @ 0x08047430
 	movs r2, #0
 	bl Interpolate
 	adds r4, r0, #0
-	ldr r7, .L080474A4 @ =gUnk_Banim_0201C77C
+	ldr r7, .L080474A4 @ =gPal_Banim
 	ldr r6, .L080474A8 @ =gPal+0xC0
 	adds r0, r7, #0
 	adds r1, r6, #0
@@ -7672,7 +7672,7 @@ func_fe6_08047430: @ 0x08047430
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080474A4: .4byte gUnk_Banim_0201C77C
+.L080474A4: .4byte gPal_Banim
 .L080474A8: .4byte gPal+0xC0
 .L080474AC: .4byte gUnk_Banim_02017770
 
@@ -11641,7 +11641,7 @@ _SetupBanim: @ 0x08049058
 	beq .L080493F6
 	ldr r0, [sp, #0x10]
 	bl func_fe6_0804A49C
-	ldr r1, .L0804951C @ =0x0203CD04
+	ldr r1, .L0804951C @ =gBanimUniquePal
 	strh r0, [r1]
 .L080493F6:
 	ldr r4, [sp, #0x20]
@@ -11651,7 +11651,7 @@ _SetupBanim: @ 0x08049058
 	beq .L0804940A
 	mov r0, sl
 	bl func_fe6_0804A49C
-	ldr r1, .L0804951C @ =0x0203CD04
+	ldr r1, .L0804951C @ =gBanimUniquePal
 	strh r0, [r1, #2]
 .L0804940A:
 	cmp r7, #0
@@ -11689,7 +11689,7 @@ _SetupBanim: @ 0x08049058
 	adds r6, #0x53
 	ldrb r0, [r6]
 	strh r0, [r4, #2]
-	ldr r5, .L08049528 @ =0x0203CD10
+	ldr r5, .L08049528 @ =gBanimFloorfx
 	ldr r1, .L0804952C @ =0x0000FFFF
 	adds r0, r1, #0
 	ldrh r1, [r5, #2]
@@ -11771,7 +11771,7 @@ _SetupBanim: @ 0x08049058
 	ble .L08049502
 	cmp r0, #4
 	bne .L08049502
-	ldr r1, .L08049528 @ =0x0203CD10
+	ldr r1, .L08049528 @ =gBanimFloorfx
 	ldrh r0, [r1, #2]
 	strh r0, [r1]
 .L08049502:
@@ -11787,10 +11787,10 @@ _SetupBanim: @ 0x08049058
 	.align 2, 0
 .L08049514: .4byte gBanimIdx
 .L08049518: .4byte gBanimIdx_bak
-.L0804951C: .4byte 0x0203CD04
+.L0804951C: .4byte gBanimUniquePal
 .L08049520: .4byte 0x0203CD90
 .L08049524: .4byte 0x0203CDC0
-.L08049528: .4byte 0x0203CD10
+.L08049528: .4byte gBanimFloorfx
 .L0804952C: .4byte 0x0000FFFF
 .L08049530: .4byte gPlaySt
 .L08049534: .4byte gBmSt
@@ -11860,7 +11860,7 @@ _SetupBanim: @ 0x08049058
 	ldrh r0, [r0]
 	cmp r0, #4
 	bne .L080495D8
-	ldr r1, .L080495D4 @ =0x0203CD0C
+	ldr r1, .L080495D4 @ =gEkrSpellAnimIndex
 	movs r0, #1
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -11871,7 +11871,7 @@ _SetupBanim: @ 0x08049058
 .L080495C8: .4byte gEkrGaugeHp
 .L080495CC: .4byte 0x0203CDA4
 .L080495D0: .4byte gEkrDistanceType
-.L080495D4: .4byte 0x0203CD0C
+.L080495D4: .4byte gEkrSpellAnimIndex
 .L080495D8:
 	cmp r4, #0
 	beq .L080495F0
@@ -11882,7 +11882,7 @@ _SetupBanim: @ 0x08049058
 	adds r1, #0x4a
 	ldrh r1, [r1]
 	bl func_fe6_08049D98
-	ldr r1, .L08049918 @ =0x0203CD0C
+	ldr r1, .L08049918 @ =gEkrSpellAnimIndex
 	strh r0, [r1]
 .L080495F0:
 	cmp r5, #0
@@ -11894,7 +11894,7 @@ _SetupBanim: @ 0x08049058
 	adds r1, #0x4a
 	ldrh r1, [r1]
 	bl func_fe6_08049D98
-	ldr r1, .L08049918 @ =0x0203CD0C
+	ldr r1, .L08049918 @ =gEkrSpellAnimIndex
 	strh r0, [r1, #2]
 .L08049608:
 	ldr r1, .L0804991C @ =gBattleSt
@@ -11908,7 +11908,7 @@ _SetupBanim: @ 0x08049058
 	ldrb r0, [r0, #4]
 	cmp r0, #0x36
 	bne .L08049624
-	ldr r1, .L08049918 @ =0x0203CD0C
+	ldr r1, .L08049918 @ =gEkrSpellAnimIndex
 	movs r0, #0xe
 	strh r0, [r1, #2]
 .L08049624:
@@ -11917,7 +11917,7 @@ _SetupBanim: @ 0x08049058
 	ldrb r0, [r0, #4]
 	cmp r0, #0x37
 	bne .L08049634
-	ldr r1, .L08049918 @ =0x0203CD0C
+	ldr r1, .L08049918 @ =gEkrSpellAnimIndex
 	movs r0, #0xf
 	strh r0, [r1, #2]
 .L08049634:
@@ -11925,7 +11925,7 @@ _SetupBanim: @ 0x08049058
 	asrs r5, r3, #0x10
 	cmp r5, #0
 	beq .L0804964A
-	ldr r0, .L08049918 @ =0x0203CD0C
+	ldr r0, .L08049918 @ =gEkrSpellAnimIndex
 	ldr r1, [sp]
 	adds r1, #0x4a
 	ldrh r2, [r1]
@@ -12049,7 +12049,7 @@ _SetupBanim: @ 0x08049058
 	ldrb r3, [r3, #0xb]
 	ands r0, r3
 	bl func_fe6_0804A500
-	ldr r1, .L08049928 @ =0x0203CD08
+	ldr r1, .L08049928 @ =gBanimFactionPal
 	strh r0, [r1]
 .L0804974A:
 	ldr r0, [sp, #0x20]
@@ -12062,7 +12062,7 @@ _SetupBanim: @ 0x08049058
 	ldrb r1, [r1, #0xb]
 	ands r0, r1
 	bl func_fe6_0804A500
-	ldr r1, .L08049928 @ =0x0203CD08
+	ldr r1, .L08049928 @ =gBanimFactionPal
 	strh r0, [r1, #2]
 .L08049764:
 	ldr r1, .L0804992C @ =gEkrPids
@@ -12304,11 +12304,11 @@ _SetupBanim: @ 0x08049058
 	cmp r7, #0
 	b .L08049954
 	.align 2, 0
-.L08049918: .4byte 0x0203CD0C
+.L08049918: .4byte gEkrSpellAnimIndex
 .L0804991C: .4byte gBattleSt
 .L08049920: .4byte 0x0203CD0E
 .L08049924: .4byte gEkrDistanceType
-.L08049928: .4byte 0x0203CD08
+.L08049928: .4byte gBanimFactionPal
 .L0804992C: .4byte gEkrPids
 .L08049930: .4byte 0x0203CDAC
 .L08049934: .4byte 0x0000FFFF
@@ -12487,7 +12487,7 @@ _SetupBanim: @ 0x08049058
 	ldrb r0, [r0, #4]
 	cmp r0, #0x64
 	bne .L08049AB2
-	ldr r0, .L08049B84 @ =0x0203CD08
+	ldr r0, .L08049B84 @ =gBanimFactionPal
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	cmp r0, #0
@@ -12499,7 +12499,7 @@ _SetupBanim: @ 0x08049058
 	ldrb r0, [r0, #4]
 	cmp r0, #0x64
 	bne .L08049AC8
-	ldr r0, .L08049B84 @ =0x0203CD08
+	ldr r0, .L08049B84 @ =gBanimFactionPal
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -12543,14 +12543,14 @@ _SetupBanim: @ 0x08049058
 	rsbs r2, r2, #0
 	cmp r0, r2
 	beq .L08049B72
-	ldr r0, .L08049B90 @ =0x0203CD0C
+	ldr r0, .L08049B90 @ =gEkrSpellAnimIndex
 	movs r4, #0
 	ldrsh r1, [r0, r4]
 	movs r0, #2
 	rsbs r0, r0, #0
 	cmp r1, r0
 	beq .L08049B72
-	ldr r0, .L08049B94 @ =0x0203CD10
+	ldr r0, .L08049B94 @ =gBanimFloorfx
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, r2
@@ -12577,14 +12577,14 @@ _SetupBanim: @ 0x08049058
 	rsbs r2, r2, #0
 	cmp r0, r2
 	beq .L08049B72
-	ldr r0, .L08049B90 @ =0x0203CD0C
+	ldr r0, .L08049B90 @ =gEkrSpellAnimIndex
 	movs r3, #2
 	ldrsh r1, [r0, r3]
 	movs r0, #2
 	rsbs r0, r0, #0
 	cmp r1, r0
 	beq .L08049B72
-	ldr r0, .L08049B94 @ =0x0203CD10
+	ldr r0, .L08049B94 @ =gBanimFloorfx
 	movs r4, #2
 	ldrsh r0, [r0, r4]
 	cmp r0, r2
@@ -12600,11 +12600,11 @@ _SetupBanim: @ 0x08049058
 .L08049B78: .4byte 0x0203CDC0
 .L08049B7C: .4byte gPlaySt
 .L08049B80: .4byte gEkrDistanceType
-.L08049B84: .4byte 0x0203CD08
+.L08049B84: .4byte gBanimFactionPal
 .L08049B88: .4byte gEkrPairSideVaild
 .L08049B8C: .4byte gBanimIdx
-.L08049B90: .4byte 0x0203CD0C
-.L08049B94: .4byte 0x0203CD10
+.L08049B90: .4byte gEkrSpellAnimIndex
+.L08049B94: .4byte gBanimFloorfx
 .L08049B98:
 	movs r0, #1
 .L08049B9A:
@@ -15208,11 +15208,11 @@ UpdateBanimFrame: @ 0x0804B048
 	ldr r0, .L0804B104 @ =gBanimIdx
 	movs r2, #0
 	ldrsh r7, [r0, r2]
-	ldr r0, .L0804B108 @ =0x0203CD08
+	ldr r0, .L0804B108 @ =gBanimFactionPal
 	movs r2, #0
 	ldrsh r1, [r0, r2]
 	mov r8, r1
-	ldr r0, .L0804B10C @ =0x0203CD04
+	ldr r0, .L0804B10C @ =gBanimUniquePal
 	movs r1, #0
 	ldrsh r4, [r0, r1]
 	lsls r0, r7, #5
@@ -15275,8 +15275,8 @@ UpdateBanimFrame: @ 0x0804B048
 .L0804B0FC: .4byte gpImgSheet
 .L0804B100: .4byte gEkrPairSideVaild
 .L0804B104: .4byte gBanimIdx
-.L0804B108: .4byte 0x0203CD08
-.L0804B10C: .4byte 0x0203CD04
+.L0804B108: .4byte gBanimFactionPal
+.L0804B10C: .4byte gBanimUniquePal
 .L0804B110: .4byte gUnk_Banim_0200F1C0
 .L0804B114: .4byte gUnk_Banim_02000054
 .L0804B118: .4byte gUnk_Banim_02004080
@@ -15303,11 +15303,11 @@ UpdateBanimFrame: @ 0x0804B048
 	ldr r0, .L0804B260 @ =gBanimIdx
 	movs r1, #2
 	ldrsh r7, [r0, r1]
-	ldr r0, .L0804B264 @ =0x0203CD08
+	ldr r0, .L0804B264 @ =gBanimFactionPal
 	movs r1, #2
 	ldrsh r2, [r0, r1]
 	mov r8, r2
-	ldr r0, .L0804B268 @ =0x0203CD04
+	ldr r0, .L0804B268 @ =gBanimUniquePal
 	movs r2, #2
 	ldrsh r4, [r0, r2]
 	lsls r0, r7, #5
@@ -15429,8 +15429,8 @@ UpdateBanimFrame: @ 0x0804B048
 .L0804B258: .4byte gUnk_Banim_020099B0
 .L0804B25C: .4byte gEkrPairSideVaild
 .L0804B260: .4byte gBanimIdx
-.L0804B264: .4byte 0x0203CD08
-.L0804B268: .4byte 0x0203CD04
+.L0804B264: .4byte gBanimFactionPal
+.L0804B268: .4byte gBanimUniquePal
 .L0804B26C: .4byte gUnk_Banim_02011BC0
 .L0804B270: .4byte gUnk_Banim_02000058
 .L0804B274: .4byte gUnk_Banim_02004120
@@ -18198,7 +18198,7 @@ func_fe6_0804C860: @ 0x0804C860
 StartSpellAnimation: @ 0x0804C898
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r4, .L0804C8C4 @ =0x0203CD0C
+	ldr r4, .L0804C8C4 @ =gEkrSpellAnimIndex
 	bl GetAnimPosition
 	lsls r0, r0, #1
 	adds r0, r0, r4
@@ -18217,7 +18217,7 @@ StartSpellAnimation: @ 0x0804C898
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804C8C4: .4byte 0x0203CD0C
+.L0804C8C4: .4byte gEkrSpellAnimIndex
 .L0804C8C8: .4byte gUnk_085D0DA0
 .L0804C8CC: .4byte gUnk_Banim_0201E7A4
 

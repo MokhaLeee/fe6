@@ -1395,7 +1395,55 @@ Img_EkrFaefx: @ 081C864C
 
 	.global Pal_EkrFaefx
 Pal_EkrFaefx: @ 081C8F38
-	.incbin "fe6-base.gba", 0x1C8F38, (0x1C9EC8 - 0x1C8F38) @ length: 0F90
+	.incbin "fe6-base.gba", 0x1C8F38, (0x1C8F58 - 0x1C8F38) @ length: 0F90
+
+	.global Tsa_EkrFaefx1
+Tsa_EkrFaefx1:
+	.incbin "fe6-base.gba", 0x1C8F58, (0x1C9084 - 0x1C8F58)
+
+	.global Tsa_EkrFaefx2
+Tsa_EkrFaefx2:
+	.incbin "fe6-base.gba", 0x1C9084, (0x1C91CC - 0x1C9084)
+
+	.global Tsa_EkrFaefx3
+Tsa_EkrFaefx3:
+	.incbin "fe6-base.gba", 0x1C91CC, (0x1C92F8 - 0x1C91CC)
+
+	.global Tsa_EkrFaefx4
+Tsa_EkrFaefx4:
+	.incbin "fe6-base.gba", 0x1C92F8, (0x1C946C - 0x1C92F8)
+
+	.global Tsa_EkrFaefx5
+Tsa_EkrFaefx5:
+	.incbin "fe6-base.gba", 0x1C946C, (0x1C9618 - 0x1C946C)
+
+	.global Tsa_EkrFaefx6
+Tsa_EkrFaefx6:
+	.incbin "fe6-base.gba", 0x1C9618, (0x1C9794 - 0x1C9618)
+
+	.global Tsa_EkrFaefx7
+Tsa_EkrFaefx7:
+	.incbin "fe6-base.gba", 0x1C9794, (0x1C9940 - 0x1C9794)
+
+	.global Tsa_EkrFaefx8
+Tsa_EkrFaefx8:
+	.incbin "fe6-base.gba", 0x1C9940, (0x1C9A9C - 0x1C9940)
+
+	.global Tsa_EkrFaefx9
+Tsa_EkrFaefx9:
+	.incbin "fe6-base.gba", 0x1C9A9C, (0x1C9BB8 - 0x1C9A9C)
+
+	.global Tsa_EkrFaefx10
+Tsa_EkrFaefx10:
+	.incbin "fe6-base.gba", 0x1C9BB8, (0x1C9CE4 - 0x1C9BB8)
+
+	.global Tsa_EkrFaefx11
+Tsa_EkrFaefx11:
+	.incbin "fe6-base.gba", 0x1C9CE4, (0x1C9DEC - 0x1C9CE4)
+
+	.global Tsa_EkrFaefx12
+Tsa_EkrFaefx12:
+	.incbin "fe6-base.gba", 0x1C9DEC, (0x1C9EC8 - 0x1C9DEC)
 
 	.global gUnk_081C9EC8
 gUnk_081C9EC8: @ 081C9EC8
