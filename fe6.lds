@@ -98,8 +98,8 @@ SECTIONS
         . = 0x00001C; gAnimC01Blocking = .;
         . = 0x000020; gEkrXPosReal = .;
         . = 0x000024; gEkrYPosReal = .;
-        . = 0x000028; gUnk_Banim_02000028 = .;
-        . = 0x00002C; gUnk_Banim_0200002C = .;
+        . = 0x000028; gEkrXPosBase = .;
+        . = 0x00002C; gEkrYPosBase = .;
         . = 0x000030; gEkrBg0QuakeVec = .;
         . = 0x000034; gUnk_Banim_02000034 = .;
         . = 0x00003C; gUnk_Banim_0200003C = .;
@@ -205,12 +205,12 @@ SECTIONS
         . = 0x01E7B4; gEkrDragonDeamonProcs = .;
         . = 0x01E7BC; gUnk_Banim_0201E7BC = .;
         . = 0x01E7C0; gEkrDragonIntroDone = .;
-        . = 0x01E7C4; gUnk_Banim_0201E7C4 = .;
+        . = 0x01E7C4; gEkrDragonFastenConf = .;
         . = 0x01E7C8; gEkrDragonState = .;
         . = 0x01E7CC; gUnk_Banim_0201E7CC = .;
-        . = 0x01EFCC; gUnk_Banim_0201EFCC = .;
-        . = 0x01EFEC; gUnk_Banim_0201EFEC = .;
-        . = 0x01F00C; gUnk_Banim_0201F00C = .;
+        . = 0x01EFCC; gEkrBgPaletteBackup1 = .;
+        . = 0x01EFEC; gEkrBgPaletteBackup2 = .;
+        . = 0x01F00C; gEkrBgPaletteBackup3 = .;
         . = 0x01F04C; gUnk_Banim_0201F04C = .;
         . = 0x01F050; gUnk_Banim_0201F050 = .;
         . = 0x01F054; gUnk_Banim_0201F054 = .;
@@ -529,6 +529,7 @@ SECTIONS
         src/banim_dragon.o(.text);
         src/banim_dragonfx_manakete.o(.text);
         src/banim_dragonfx_fae.o(.text);
+        src/banim_dragonfx_idunn.o(.text);
         asm/code-banim-dragon.o(.text);
         src/mu.o(.text);
         src/manim.o(.text);
@@ -710,6 +711,7 @@ SECTIONS
         . = ALIGN(4); src/banim_dragon.o(.data);
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
         . = ALIGN(4); src/banim_dragonfx_fae.o(.data);
+        . = ALIGN(4); src/banim_dragonfx_idunn.o(.data);
         . = ALIGN(4); data/data-banim-dragon.o(.data);
         . = ALIGN(4); src/gamedata.o(.data);
         . = ALIGN(4), data/data-game-info.o(.data);

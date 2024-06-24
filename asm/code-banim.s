@@ -3849,9 +3849,9 @@ func_fe6_080455C0: @ 0x080455C0
 	cmp r0, #0
 	beq .L080455FC
 	ldr r0, [r6, #0x5c]
-	bl func_fe6_0805A77C
+	bl StartEkrIdunnDeamon
 	str r0, [r6, #0x64]
-	ldr r2, .L0804560C @ =gUnk_Banim_02000028
+	ldr r2, .L0804560C @ =gEkrXPosBase
 	ldr r1, .L08045610 @ =gEkrBgPosition
 	ldr r1, [r1]
 	subs r1, #0x4e
@@ -3867,7 +3867,7 @@ func_fe6_080455C0: @ 0x080455C0
 	.align 2, 0
 .L08045604: .4byte gUnk_085CB850
 .L08045608: .4byte gEkrDeadEventExist
-.L0804560C: .4byte gUnk_Banim_02000028
+.L0804560C: .4byte gEkrXPosBase
 .L08045610: .4byte gEkrBgPosition
 
 	thumb_func_start func_fe6_08045614
@@ -4171,7 +4171,7 @@ func_fe6_08045828: @ 0x08045828
 	bl func_fe6_08045974
 .L0804589C:
 	ldr r0, [r5, #0x5c]
-	bl GetEkrDragonStatusIdx
+	bl CheckEkrDragonFasten
 	movs r1, #1
 	strh r1, [r0]
 	b .L080458B0
@@ -5558,7 +5558,7 @@ NewEfxHitQuake: @ 0x080462BC
 	bl GetAnimPosition
 	ldr r1, .L080463A8 @ =gEkrBgPosition
 	ldr r1, [r1]
-	ldr r2, .L080463AC @ =gUnk_Banim_02000028
+	ldr r2, .L080463AC @ =gEkrXPosBase
 	lsls r0, r0, #1
 	adds r0, r0, r2
 	ldrh r0, [r0]
@@ -5577,7 +5577,7 @@ NewEfxHitQuake: @ 0x080462BC
 	b .L080463BE
 	.align 2, 0
 .L080463A8: .4byte gEkrBgPosition
-.L080463AC: .4byte gUnk_Banim_02000028
+.L080463AC: .4byte gEkrXPosBase
 .L080463B0: .4byte gUnk_085CCE38
 .L080463B4:
 	movs r0, #0xb0
@@ -5842,7 +5842,7 @@ func_fe6_0804646C: @ 0x0804646C
 	bl GetAnimPosition
 	ldr r1, .L08046624 @ =gEkrBgPosition
 	ldr r1, [r1]
-	ldr r2, .L08046628 @ =gUnk_Banim_02000028
+	ldr r2, .L08046628 @ =gEkrXPosBase
 	lsls r0, r0, #1
 	adds r0, r0, r2
 	ldrh r0, [r0]
@@ -5864,7 +5864,7 @@ func_fe6_0804646C: @ 0x0804646C
 .L0804661C: .4byte gBg2Tm+0x2C0
 .L08046620: .4byte gUnk_Banim_02017758
 .L08046624: .4byte gEkrBgPosition
-.L08046628: .4byte gUnk_Banim_02000028
+.L08046628: .4byte gEkrXPosBase
 .L0804662C:
 	ldrh r1, [r4]
 	ldrh r2, [r4, #2]
@@ -15584,7 +15584,7 @@ InitLeftAnim: @ 0x0804B37C
 	ldrsh r1, [r1, r2]
 	adds r0, r1, r0
 	ldrb r4, [r0]
-	ldr r3, .L0804B490 @ =gUnk_Banim_02000028
+	ldr r3, .L0804B490 @ =gEkrXPosBase
 	ldr r0, .L0804B494 @ =gUnk_081122D0
 	lsls r1, r1, #1
 	adds r1, r1, r0
@@ -15592,7 +15592,7 @@ InitLeftAnim: @ 0x0804B37C
 	rsbs r1, r1, #0
 	movs r2, #0
 	strh r1, [r3]
-	ldr r0, .L0804B498 @ =gUnk_Banim_0200002C
+	ldr r0, .L0804B498 @ =gEkrYPosBase
 	strh r2, [r0]
 	ldr r0, .L0804B49C @ =gEkrXPosReal
 	adds r1, r1, r4
@@ -15693,9 +15693,9 @@ InitLeftAnim: @ 0x0804B37C
 .L0804B484: .4byte gUnk_08112298
 .L0804B488: .4byte gUnk_081122C5
 .L0804B48C: .4byte gEkrDistanceType
-.L0804B490: .4byte gUnk_Banim_02000028
+.L0804B490: .4byte gEkrXPosBase
 .L0804B494: .4byte gUnk_081122D0
-.L0804B498: .4byte gUnk_Banim_0200002C
+.L0804B498: .4byte gEkrYPosBase
 .L0804B49C: .4byte gEkrXPosReal
 .L0804B4A0: .4byte gEkrYPosReal
 .L0804B4A4: .4byte gUnk_Banim_02000054
@@ -15729,10 +15729,10 @@ InitRightAnim: @ 0x0804B4C0
 	ldrsh r0, [r0, r2]
 	adds r0, r0, r1
 	ldrb r2, [r0]
-	ldr r0, .L0804B5B4 @ =gUnk_Banim_02000028
+	ldr r0, .L0804B5B4 @ =gEkrXPosBase
 	movs r1, #0
 	strh r1, [r0, #2]
-	ldr r0, .L0804B5B8 @ =gUnk_Banim_0200002C
+	ldr r0, .L0804B5B8 @ =gEkrYPosBase
 	strh r1, [r0, #2]
 	ldr r0, .L0804B5BC @ =gEkrXPosReal
 	strh r2, [r0, #2]
@@ -15828,8 +15828,8 @@ InitRightAnim: @ 0x0804B4C0
 .L0804B5A8: .4byte gUnk_08112298
 .L0804B5AC: .4byte gUnk_081122CA
 .L0804B5B0: .4byte gEkrDistanceType
-.L0804B5B4: .4byte gUnk_Banim_02000028
-.L0804B5B8: .4byte gUnk_Banim_0200002C
+.L0804B5B4: .4byte gEkrXPosBase
+.L0804B5B8: .4byte gEkrYPosBase
 .L0804B5BC: .4byte gEkrXPosReal
 .L0804B5C0: .4byte gEkrYPosReal
 .L0804B5C4: .4byte gUnk_Banim_02000058

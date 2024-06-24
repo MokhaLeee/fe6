@@ -1,9 +1,5 @@
 	.data
 
-	.global ProcScr_EkrDragonIdunn
-ProcScr_EkrDragonIdunn: @ 086048D0
-	.incbin "fe6-base.gba", 0x6048D0, (0x604948 - 0x6048D0) @ length: 0078
-
 	.global gUnk_08604948
 gUnk_08604948: @ 08604948
 	.incbin "fe6-base.gba", 0x604948, (0x604968 - 0x604948) @ length: 0020

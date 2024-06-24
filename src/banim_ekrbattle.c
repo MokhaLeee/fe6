@@ -546,7 +546,7 @@ void EkrBattleWaitNamewinAppear(struct ProcEkrBattle * proc)
     proc->timer = 0;
     proc->proc_repeat_func = (ProcFunc)EkrBattleWaitForPostBattleAct;
 
-    if (GetEkrDragonStateTypeIdunn() != FALSE && *GetEkrDragonStatusIdx(MAIN_ANIM_FRONT(POS_L)) == TRUE)
+    if (GetEkrDragonStateTypeIdunn() != FALSE && *CheckEkrDragonFasten(MAIN_ANIM_FRONT(POS_L)) == TRUE)
         return;
 
     if (gEkrPairExpGain[POS_L] != 0)

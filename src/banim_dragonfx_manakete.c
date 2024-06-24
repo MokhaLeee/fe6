@@ -62,7 +62,7 @@ void EkrManakete_BgFadeIn(struct ProcEkrDragon * proc)
 
 void func_fe6_08059144(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonAlly(proc->anim) == TRUE)
+    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
     {
         proc->timer = 60;
         Proc_Break(proc);
@@ -91,7 +91,7 @@ void EkrManakete_PauseOnStart(struct ProcEkrDragon * proc)
 
 void func_fe6_080591CC(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonAlly(proc->anim) == TRUE)
+    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
     {
         func_fe6_08058E24();
         TmFill(gBg3Tm, 0xF000);
@@ -135,7 +135,7 @@ void func_fe6_080591CC(struct ProcEkrDragon * proc)
 
 void func_fe6_080592D0(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonAlly(proc->anim) == TRUE)
+    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
     {
         proc->timer = 0;
         Proc_Break(proc);
@@ -158,7 +158,7 @@ void func_fe6_080592D0(struct ProcEkrDragon * proc)
 
 void EkrManakete_UpdateBanimfx(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonAlly(proc->anim) == TRUE)
+    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
     {
         PutManaketeBodyStd(proc);
         NewEkrManaketeDeamon(proc->anim);
@@ -202,7 +202,7 @@ void EkrManakete_EndFlashing(struct ProcEkrDragon * proc)
 
 void EkrManakete_StartExit(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonAlly(proc->anim) == TRUE)
+    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
     {
         proc->timer = 0;
         Proc_Break(proc);
@@ -224,7 +224,7 @@ void EkrManakete_StartExit(struct ProcEkrDragon * proc)
 
 void func_fe6_0805946C(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonAlly(proc->anim) == TRUE)
+    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
     {
         func_fe6_08058E24();
         proc->timer = 0;
@@ -249,7 +249,7 @@ void func_fe6_0805946C(struct ProcEkrDragon * proc)
 
 void func_fe6_080594CC(struct ProcEkrDragon * proc)
 {
-    if (proc->timer == 0 && CheckEkrDragonAlly(proc->anim) == FALSE)
+    if (proc->timer == 0 && CheckEkrDragonFarFar(proc->anim) == FALSE)
     {
         StartManaketeTransferAnim(proc->anim, 1);
         EfxPlaySE(0xE9, 0x100);
@@ -275,7 +275,7 @@ void func_fe6_080594CC(struct ProcEkrDragon * proc)
 
 void func_fe6_08059578(struct ProcEkrDragon * proc)
 {
-    if (CheckEkrDragonAlly(proc->anim) == TRUE)
+    if (CheckEkrDragonFarFar(proc->anim) == TRUE)
     {
         proc->timer = 80;
         Proc_Break(proc);
@@ -511,7 +511,7 @@ struct ProcScr CONST_DATA ProcScr_EkrManaketefx[] =
 
 void NewEkrManaketeDeamon(struct BaSprite * anim)
 {
-    struct ProcEkrManaketeDeamon * proc;
+    struct ProcEkrDragonDeamon * proc;
 
     gEkrDragonDeamonProcs[GetAnimPosition(anim)] = proc = SpawnProc(ProcScr_EkrManaketefx, PROC_TREE_4);
     proc->fxtype = 0;
@@ -519,7 +519,7 @@ void NewEkrManaketeDeamon(struct BaSprite * anim)
     proc->round_cur = anim->currentRoundType;
 }
 
-void EkrManaketeDeamon_Loop(struct ProcEkrManaketeDeamon * proc)
+void EkrManaketeDeamon_Loop(struct ProcEkrDragonDeamon * proc)
 {
     i16 ret;
     const u16 * pal_src;

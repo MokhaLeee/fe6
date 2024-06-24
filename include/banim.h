@@ -147,6 +147,10 @@ extern int gEkrDebugTimer;
 extern int gEkrDebugFlag1;
 extern int gEkrDebugFlag2;
 extern int gAnimC01Blocking;
+extern i16 gEkrXPosReal[2];
+extern i16 gEkrYPosReal[2];
+extern u16 gEkrXPosBase[2];
+extern u16 gEkrYPosBase[2];
 extern struct Vec2i gEkrBg0QuakeVec;
 extern i16 gEkrDebugModeMaybe;
 extern u32 gEkrBattleEndFlag;
@@ -257,11 +261,33 @@ void NewEfxFarAttackWithDistance(struct BaSprite * anim, int);
 // func_fe6_08045DDC
 // func_fe6_08045E50
 // func_fe6_08045EE8
+
+struct EfxQuakeProc {
+    /* 00 */ PROC_HEADER;
+    /* 29 */ u8 unk_29;
+    /* 2A */ u8 unk_2a;
+    /* 2C */ i16 unk_2c;
+    /* 30 */ int unk_30;
+    /* 34 */ i16 unk_34;
+    /* 36 */ i16 unk_36;
+    /* 38 */ i16 unk_38;
+    /* 3A */ i16 unk_3a;
+    /* 3C */ i16 unk_3c;
+    /* 3E */ i16 unk_3e;
+    /* 40 */ int unk_40;
+    /* 44 */ const i16 * unk_44;
+    /* 48 */ int unk_48;
+    /* 4C */ STRUCT_PAD(0x4C, 0x5C);
+    /* 5C */ struct Anim * unk_5c;
+    /* 60 */ struct Anim * unk_60;
+    /* 64 */ struct Anim * unk_64;
+};
+
 ProcPtr NewEfxQuakePure(int, int);
 // func_fe6_08045F88
 ProcPtr NewEfxHitQuakePure(void);
 // EfxHitQuakePure_Loop
-void NewEfxQuake(int type);
+ProcPtr NewEfxQuake(int type);
 // EfxQuake_Loop
 void NewEfxHitQuake(struct BaSprite * anim1, struct BaSprite * anim2, int kind);
 // func_fe6_0804646C
@@ -968,33 +994,8 @@ void func_fe6_0804C56C(void);
 // func_fe6_080587C0
 // func_fe6_08058824
 
-// func_fe6_08059DD0
-// func_fe6_08059E08
-// func_fe6_08059E80
-// func_fe6_08059F2C
-// func_fe6_0805A000
-// func_fe6_0805A0BC
-// func_fe6_0805A140
-// func_fe6_0805A228
-// func_fe6_0805A270
-// func_fe6_0805A2BC
-// func_fe6_0805A35C
-// func_fe6_0805A394
-// func_fe6_0805A3EC
-// func_fe6_0805A410
-// func_fe6_0805A434
-// func_fe6_0805A4B4
-// func_fe6_0805A4C8
-// func_fe6_0805A51C
-// func_fe6_0805A584
-// func_fe6_0805A598
-// func_fe6_0805A5C4
-// func_fe6_0805A63C
-// func_fe6_0805A658
-// func_fe6_0805A6B8
-// func_fe6_0805A6DC
-// func_fe6_0805A768
-// func_fe6_0805A77C
+/* banim_ekrdragon.h */
+
 // func_fe6_0805A7C0
 // func_fe6_0805A7EC
 // func_fe6_0805A82C
@@ -1679,16 +1680,16 @@ extern u32 AnimScr_ManaketeFlame[];
 // ??? gUnk_08603B58
 // ??? gUnk_08603BA4
 // ??? gUnk_08603BC0
-extern struct ProcScr CONST_DATA ProcScr_EkrDragon_086046D8[];
+extern struct ProcScr CONST_DATA ProcScr_EkrDragonMoveBg3[];
 extern struct ProcScr CONST_DATA ProcScr_EkrDragonBark[];
 extern struct ProcScr CONST_DATA ProcScr_EkrManakete[];
-// ??? ProcScr_EkrManaketeEnterfx
-// ??? ProcScr_EkrManaketeExitfx
+extern struct ProcScr CONST_DATA ProcScr_EkrManaketeEnterfx[];
+extern struct ProcScr CONST_DATA ProcScr_EkrManaketeExitfx[];
 extern struct ProcScr CONST_DATA ProcScr_EkrManaketefx[];
-// ??? ProcScr_EkrDragonFae
-// ??? ProcScr_EkrFaefx
-// ??? TsaLut_EkrFaefx
-// ??? ProcScr_EkrDragonIdunn
+extern struct ProcScr CONST_DATA ProcScr_EkrDragonFae[];
+extern struct ProcScr CONST_DATA ProcScr_EkrFaefx[];
+extern const u16 * CONST_DATA TsaLut_EkrFaefx[];
+extern struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[];
 // ??? gUnk_08604948
 // ??? gUnk_08604968
 // ??? gUnk_08604988

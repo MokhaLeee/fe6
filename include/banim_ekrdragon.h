@@ -3,11 +3,9 @@
 #include "prelude.h"
 #include "banim_sprite.h"
 
-extern ProcPtr EkrDragonProcs[2];
-extern ProcPtr gEkrDragonDeamonProcs[2];
 extern ProcPtr gUnk_Banim_0201E7BC;
 extern u16 gEkrDragonIntroDone[2];
-extern u16 gUnk_Banim_0201E7C4[2];
+extern u16 gEkrDragonFastenConf[2];
 
 enum EkrDragonState_idx {
     DRAGON_STATE_DEFAULT = 0,
@@ -18,7 +16,10 @@ enum EkrDragonState_idx {
 extern u16 gEkrDragonState[2];
 extern u16 gUnk_Banim_0201E7CC[];
 extern u16 gEkrDragonJid[2];
-extern u16 gUnk_Banim_0201E7C4[2];
+extern u16 gEkrDragonFastenConf[2];
+extern u16 gEkrBgPaletteBackup1[0x20];
+extern u16 gEkrBgPaletteBackup2[0x20];
+extern u16 gEkrBgPaletteBackup3[0x40];
 
 void ResetEkrDragonStatus(void);
 bool EkrDragonIntroDone(struct BaSprite * anim);
@@ -37,9 +38,9 @@ enum ekr_dragon_status_type_bitfile {
 u32 GetEkrDragonStateType(void); /* Different form FE8, this is a bitfile rather than enum */
 u32 GetEkrDragonStateTypeIdunnManakete(void);
 u32 GetEkrDragonStateTypeIdunn(void);
-bool CheckEkrDragonAlly(struct BaSprite * anim);
+bool CheckEkrDragonFarFar(struct BaSprite * anim);
 u16 * GetEkrDragonJid(int pos);
-u16 * GetEkrDragonStatusIdx(struct BaSprite * anim);
+u16 * CheckEkrDragonFasten(struct BaSprite * anim);
 ProcPtr GetEkrDragonProc(struct BaSprite * anim);
 void EndEkrDragonFlashing(struct BaSprite * anim);
 void SetDragonBasLayer(u8 layer);
@@ -75,12 +76,50 @@ struct ProcEkrDragon {
     /* 68 */ ProcPtr sproc_flashingbg;
 };
 
+extern struct ProcEkrDragon * EkrDragonProcs[2];
+
+struct ProcEkrDragonDeamon {
+    PROC_HEADER;
+
+    /* 29 */ u8 fxtype;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ i16 timer;
+
+    STRUCT_PAD(0x2E, 0x32);
+
+    /* 32 */ i16 x;
+    /* 34 */ i16 x_hi;
+
+    STRUCT_PAD(0x36, 0x3A);
+
+    /* 3A */ i16 y;
+    /* 3C */ i16 y_hi;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const i16 * conf;
+    /* 4C */ const u16 * pal;
+
+    STRUCT_PAD(0x50, 0x54);
+
+    /* 54 */ u32 round_cur;
+
+    STRUCT_PAD(0x58, 0x5C);
+
+    /* 5C */ struct BaSprite * anim;
+};
+
+extern struct ProcEkrDragonDeamon * gEkrDragonDeamonProcs[2];
+
 void PutManaketeBodyPalette(struct ProcEkrDragon * proc);
 void PutManaketeBodyIntro2(struct ProcEkrDragon * proc);
 void PutManaketeBodyIntro1(struct ProcEkrDragon * proc);
 void PutManaketeBodyStd(struct ProcEkrDragon * proc);
 
-struct ProcEkrDragon_086046D8 {
+struct ProcEkrDragonMoveBg3 {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x2C);
@@ -92,8 +131,8 @@ struct ProcEkrDragon_086046D8 {
     /* 44 */ int x;
 };
 
-void func_fe6_08058CEC(int x);
-void func_fe6_08058D08(struct ProcEkrDragon_086046D8 * proc);
+void EkrDragonMoveBg3(int x);
+void EkrDragonMoveBg3_Loop(struct ProcEkrDragonMoveBg3 * proc);
 void func_fe6_08058D34(struct ProcEkrDragon * proc);
 void func_fe6_08058E24(void);
 void func_fe6_08058E58(int pos);
@@ -155,32 +194,8 @@ void EkrManaketeExit3(struct ProcEkrManaketefx * proc);
 void EkrManaketeExit2(struct ProcEkrManaketefx * proc);
 void EkrManaketeExit1(struct ProcEkrManaketefx * proc);
 
-struct ProcEkrManaketeDeamon {
-    PROC_HEADER;
-
-    /* 29 */ u8 fxtype;
-
-    STRUCT_PAD(0x2A, 0x2C);
-
-    /* 2C */ i16 timer;
-
-    STRUCT_PAD(0x2E, 0x44);
-
-    /* 44 */ u32 frame;
-    /* 48 */ const i16 * conf;
-    /* 4C */ const u16 * pal;
-
-    STRUCT_PAD(0x50, 0x54);
-
-    /* 54 */ u32 round_cur;
-
-    STRUCT_PAD(0x58, 0x5C);
-
-    /* 5C */ struct BaSprite * anim;
-};
-
 void NewEkrManaketeDeamon(struct BaSprite * anim);
-void EkrManaketeDeamon_Loop(struct ProcEkrManaketeDeamon * proc);
+void EkrManaketeDeamon_Loop(struct ProcEkrDragonDeamon * proc);
 
 void NewEkrDragonFae(struct BaSprite * anim);
 void EkrFae_PauseOnStart(struct ProcEkrDragon * proc);
@@ -215,3 +230,30 @@ void StartEkrFaeTransferfx(struct BaSprite * anim);
 void EkrFaeTransferBackfx_Loop(struct ProcEkrFaefx * proc);
 
 void NewEkrDragonIdunn(struct BaSprite * anim);
+void EkrIdunn_BgFadeIn(struct ProcEkrDragon * proc);
+void EkrIdunn_InitBanimfx(struct ProcEkrDragon * proc);
+void EkrIdunn_InitBodyfx(struct ProcEkrDragon * proc);
+void EkrIdunn_PreMainBodyIntro(struct ProcEkrDragon * proc);
+void func_fe6_0805A000(struct ProcEkrDragon * proc);
+void func_fe6_0805A0BC(struct ProcEkrDragon * proc);
+void func_fe6_0805A140(struct ProcEkrDragon * proc);
+void func_fe6_0805A228(struct ProcEkrDragon * proc);
+void func_fe6_0805A270(struct ProcEkrDragon * proc);
+void func_fe6_0805A2BC(struct ProcEkrDragon * proc);
+void func_fe6_0805A35C(struct ProcEkrDragon * proc);
+void func_fe6_0805A394(struct ProcEkrDragon * proc);
+void func_fe6_0805A3EC(struct ProcEkrDragon * proc);
+// func_fe6_0805A410
+// func_fe6_0805A434
+// func_fe6_0805A4B4
+// func_fe6_0805A4C8
+// func_fe6_0805A51C
+// func_fe6_0805A584
+// func_fe6_0805A598
+// func_fe6_0805A5C4
+// func_fe6_0805A63C
+// func_fe6_0805A658
+// func_fe6_0805A6B8
+// func_fe6_0805A6DC
+// func_fe6_0805A768
+ProcPtr StartEkrIdunnDeamon(struct BaSprite * anim);

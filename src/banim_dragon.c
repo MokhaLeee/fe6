@@ -18,8 +18,8 @@ void ResetEkrDragonStatus(void)
     gUnk_Banim_0201E7BC = NULL;
     gEkrDragonIntroDone[POS_L] = FALSE;
     gEkrDragonIntroDone[POS_R] = FALSE;
-    gUnk_Banim_0201E7C4[POS_L] = 0;
-    gUnk_Banim_0201E7C4[POS_R] = 0;
+    gEkrDragonFastenConf[POS_L] = 0;
+    gEkrDragonFastenConf[POS_R] = 0;
     gEkrDragonState[POS_L] = DRAGON_STATE_DEFAULT;
     gEkrDragonState[POS_R] = DRAGON_STATE_DEFAULT;
 }
@@ -102,9 +102,9 @@ u32 GetEkrDragonStateTypeIdunn(void)
     return ret;
 }
 
-bool CheckEkrDragonAlly(struct BaSprite * anim)
+bool CheckEkrDragonFarFar(struct BaSprite * anim)
 {
-    if (*GetEkrDragonStatusIdx(anim) == TRUE)
+    if (*CheckEkrDragonFasten(anim) == TRUE)
         return TRUE;
 
     if (gEkrDistanceType != EKR_DISTANCE_FARFAR || GetAnimPosition(anim) == gEkrInitPosReal)
@@ -118,9 +118,9 @@ u16 * GetEkrDragonJid(int pos)
     return gEkrDragonJid + pos;
 }
 
-u16 * GetEkrDragonStatusIdx(struct BaSprite * anim)
+u16 * CheckEkrDragonFasten(struct BaSprite * anim)
 {
-    return gUnk_Banim_0201E7C4 + GetAnimPosition(anim);
+    return gEkrDragonFastenConf + GetAnimPosition(anim);
 }
 
 ProcPtr GetEkrDragonProc(struct BaSprite * anim)
@@ -264,21 +264,21 @@ void PutManaketeBodyStd(struct ProcEkrDragon * proc)
     EnableBgSync(BG3_SYNC_BIT);
 }
 
-struct ProcScr CONST_DATA ProcScr_EkrDragon_086046D8[] = {
+struct ProcScr CONST_DATA ProcScr_EkrDragonMoveBg3[] = {
     PROC_19,
-    PROC_REPEAT(func_fe6_08058D08),
+    PROC_REPEAT(EkrDragonMoveBg3_Loop),
     PROC_END,
 };
 
-void func_fe6_08058CEC(int x)
+void EkrDragonMoveBg3(int x)
 {
-    struct ProcEkrDragon_086046D8 * proc;
-    proc = SpawnProc(ProcScr_EkrDragon_086046D8, PROC_TREE_4);
+    struct ProcEkrDragonMoveBg3 * proc;
+    proc = SpawnProc(ProcScr_EkrDragonMoveBg3, PROC_TREE_4);
     proc->timer = 0;
     proc->x = x;
 }
 
-void func_fe6_08058D08(struct ProcEkrDragon_086046D8 * proc)
+void EkrDragonMoveBg3_Loop(struct ProcEkrDragonMoveBg3 * proc)
 {
     SetBgOffset(3, proc->x, 0x10);
 
@@ -306,7 +306,7 @@ void func_fe6_08058D34(struct ProcEkrDragon * proc)
             break;
 
         case EKR_DISTANCE_FAR:
-            func_fe6_08058CEC(gEkrBgPosition + 48);
+            EkrDragonMoveBg3(gEkrBgPosition + 48);
             SetBgOffset(3, gEkrBgPosition + 48, 16);
 
             if (gEkrBgPosition == 0)
@@ -317,7 +317,7 @@ void func_fe6_08058D34(struct ProcEkrDragon * proc)
             break;
 
         case EKR_DISTANCE_FARFAR:
-            func_fe6_08058CEC(16);
+            EkrDragonMoveBg3(16);
             SetBgOffset(3, 16, 16);
             break;
         }
@@ -383,7 +383,7 @@ int func_fe6_08058F38(void)
     if (GetEkrDragonStateTypeIdunn() == 0)
         return 0;
 
-    if (*GetEkrDragonStatusIdx(MAIN_ANIM_FRONT(POS_L)) != 1)
+    if (*CheckEkrDragonFasten(MAIN_ANIM_FRONT(POS_L)) != 1)
         return 0;
 
     return 1;

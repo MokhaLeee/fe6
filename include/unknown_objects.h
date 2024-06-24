@@ -478,12 +478,12 @@ extern u8 const Img_ManaketeObjfx1[];
 extern u8 const Img_ManaketeObjfx2[];
 extern u8 const Img_ManaketeObjfx3[];
 extern u16 const Pal_ManaketeBodyStd[];
-// extern ??? gUnk_081C1C94
+extern u8 const Img_EkrIdunn_081C1C94[];
 extern u16 const Pal_081C4DE8[];
-// extern ??? gUnk_081C4E28
+extern u8 const Tsa_EkrIdunn_081C4E28[];
 // extern ??? gUnk_081C5264
 // extern ??? gUnk_081C5688
-// extern ??? gUnk_081C5AAC
+extern u8 const Tsa_EkrIdunn_081C5AAC[];
 extern u8 const Img_EkrFaefx[];
 extern u16 const Pal_EkrFaefx[];
 extern u16 const Tsa_EkrFaefx1[];
