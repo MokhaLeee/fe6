@@ -457,9 +457,9 @@ extern u16 const Pal_Unk_081B1710[];
 // extern ??? gUnk_081BB5E4
 // extern ??? gUnk_081BBBB4
 // extern ??? gUnk_081BC0A8
-extern u16 const FrameLut_EkrManaketefxNormalAttack[];
-extern u16 const FrameLut_EkrManaketefxCriticalAttack[];
-extern u16 const FrameLut_EkrFaefx[];
+extern i16 const FrameLut_EkrManaketefxNormalAttack[];
+extern i16 const FrameLut_EkrManaketefxCriticalAttack[];
+extern i16 const FrameLut_EkrFaefx[];
 // extern ??? gUnk_081BC132
 // extern ??? gUnk_081BC140
 // extern ??? gUnk_081BC15E

@@ -1283,11 +1283,23 @@ gUnk_081BC0A8: @ 081BC0A8
 
 	.global FrameLut_EkrManaketefxNormalAttack
 FrameLut_EkrManaketefxNormalAttack: @ 081BC0C8
-	.incbin "fe6-base.gba", 0x1BC0C8, (0x1BC0EE - 0x1BC0C8) @ length: 0026
+	.short 0, 3
+	.short 1, 3
+	.short 2, 3
+	.short 3, 3
+	.short 4, 3
+	.short 5, 3
+	.short 6, 3
+	.short 7, 3
+	.short 8, 3
+	.short -2
 
 	.global FrameLut_EkrManaketefxCriticalAttack
 FrameLut_EkrManaketefxCriticalAttack: @ 081BC0EE
-	.incbin "fe6-base.gba", 0x1BC0EE, (0x1BC0FC - 0x1BC0EE) @ length: 000E
+	.short 9, 2
+	.short 10, 2
+	.short 11, 10
+	.short -1
 
 	.global FrameLut_EkrFaefx
 FrameLut_EkrFaefx: @ 081BC0FC

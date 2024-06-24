@@ -128,7 +128,7 @@ ProcPtr GetEkrDragonProc(struct BaSprite * anim)
     return EkrDragonProcs[GetAnimPosition(anim)];
 }
 
-void EndEkrDragonFlashing(struct BaSprite * anim)
+void EndEkrDragonDaemon(struct BaSprite * anim)
 {
     Proc_End(gEkrDragonDeamonProcs[GetAnimPosition(anim)]);
 }

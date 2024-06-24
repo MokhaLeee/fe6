@@ -42,7 +42,7 @@ bool CheckSkipDragonTransfer(struct BaSprite * anim);
 u16 * GetEkrDragonJid(int pos);
 u16 * CheckEkrDragonFasten(struct BaSprite * anim);
 ProcPtr GetEkrDragonProc(struct BaSprite * anim);
-void EndEkrDragonFlashing(struct BaSprite * anim);
+void EndEkrDragonDaemon(struct BaSprite * anim);
 void SetDragonBasLayer(u8 layer);
 
 struct ProcEkrDragon {
@@ -164,7 +164,7 @@ void func_fe6_080591CC(struct ProcEkrDragon * proc);
 void func_fe6_080592D0(struct ProcEkrDragon * proc);
 void EkrManakete_UpdateBanimfx(struct ProcEkrDragon * proc);
 void EkrManakete_BlockingInBattle(struct ProcEkrDragon * proc);
-void EkrManakete_EndFlashing(struct ProcEkrDragon * proc);
+void EkrManakete_EndDeamon(struct ProcEkrDragon * proc);
 void EkrManakete_StartExit(struct ProcEkrDragon * proc);
 void func_fe6_0805946C(struct ProcEkrDragon * proc);
 void func_fe6_080594CC(struct ProcEkrDragon * proc);

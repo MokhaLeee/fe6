@@ -4520,7 +4520,7 @@ func_fe6_08045B24: @ 0x08045B24
 	strh r3, [r0, #0x2c]
 	strh r3, [r0, #0x2e]
 	ldr r0, [r0, #0x5c]
-	bl EndEkrDragonFlashing
+	bl EndEkrDragonDaemon
 	ldr r5, .L08045BEC @ =gDispIo
 	adds r2, r5, #0
 	adds r2, #0x3c

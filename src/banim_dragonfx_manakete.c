@@ -26,7 +26,7 @@ struct ProcScr CONST_DATA ProcScr_EkrManakete[] =
     PROC_REPEAT(func_fe6_080592D0),
     PROC_REPEAT(EkrManakete_UpdateBanimfx),
     PROC_REPEAT(EkrManakete_BlockingInBattle),
-    PROC_REPEAT(EkrManakete_EndFlashing),
+    PROC_REPEAT(EkrManakete_EndDeamon),
     PROC_REPEAT(EkrManakete_StartExit),
     PROC_REPEAT(func_fe6_0805946C),
     PROC_REPEAT(func_fe6_080594CC),
@@ -194,9 +194,9 @@ void EkrManakete_BlockingInBattle(struct ProcEkrDragon * proc)
     }
 }
 
-void EkrManakete_EndFlashing(struct ProcEkrDragon * proc)
+void EkrManakete_EndDeamon(struct ProcEkrDragon * proc)
 {
-    EndEkrDragonFlashing(proc->anim);
+    EndEkrDragonDaemon(proc->anim);
     Proc_Break(proc);
 }
 
@@ -522,7 +522,6 @@ void NewEkrManaketeDeamon(struct BaSprite * anim)
 void EkrManaketeDeamon_Loop(struct ProcEkrDragonDeamon * proc)
 {
     i16 ret;
-    const u16 * pal_src;
 
     if (GetUnitEfxDebuff(proc->anim) != UNIT_STATUS_NONE)
         return;
