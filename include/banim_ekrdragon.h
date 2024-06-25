@@ -3,7 +3,7 @@
 #include "prelude.h"
 #include "banim_sprite.h"
 
-extern ProcPtr gUnk_Banim_0201E7BC;
+extern ProcPtr gpProcEkrIdunnBodyFlashing;
 extern u16 gEkrDragonIntroDone[2];
 extern u16 gEkrDragonFastenConf[2];
 
@@ -45,6 +45,32 @@ ProcPtr GetEkrDragonProc(struct BaSprite * anim);
 void EndEkrDragonDaemon(struct BaSprite * anim);
 void SetDragonBasLayer(u8 layer);
 
+struct ProcEkrDragonIntroFx {
+    PROC_HEADER;
+
+    /* 29 */ u8 flag;
+    /* 2A */ u16 unk2A;
+    /* 2C */ i16 timer;
+    /* 2E */ i16 timer2;
+
+    STRUCT_PAD(0x30, 0x32);
+
+    /* 32 */ u16 x;
+    /* 34 */ i16 x_hi;
+
+    STRUCT_PAD(0x36, 0x3A);
+
+    /* 3A */ i16 y;
+    /* 3C */ i16 y_hi;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ int duration;
+    /* 48 */ int step;
+    /* 4C */ int speed;
+    /* 50 */ int unk50;
+};
+
 struct ProcEkrDragon {
     PROC_HEADER;
 
@@ -72,7 +98,7 @@ struct ProcEkrDragon {
     /* 58 */ ProcPtr sproc_bg2scrollhandle;
     /* 5C */ struct BaSprite * anim;
     /* 60 */ ProcPtr sproc1;
-    /* 64 */ ProcPtr procfx;
+    /* 64 */ struct ProcEkrDragonIntroFx * procfx;
     /* 68 */ ProcPtr sproc_flashingbg;
 };
 
@@ -234,26 +260,49 @@ void EkrIdunn_BgFadeIn(struct ProcEkrDragon * proc);
 void EkrIdunn_InitBanimfx(struct ProcEkrDragon * proc);
 void EkrIdunn_InitBodyfx(struct ProcEkrDragon * proc);
 void EkrIdunn_PreMainBodyIntro(struct ProcEkrDragon * proc);
-void func_fe6_0805A000(struct ProcEkrDragon * proc);
+void EkrIdunn_InitIntroBodyPosition(struct ProcEkrDragon * proc);
 void func_fe6_0805A0BC(struct ProcEkrDragon * proc);
-void func_fe6_0805A140(struct ProcEkrDragon * proc);
-void func_fe6_0805A228(struct ProcEkrDragon * proc);
+void EkrIdunn_BodyFallInAndTriggerBattleStart(struct ProcEkrDragon * proc);
+void EkrIdunn_BlockingInBattle(struct ProcEkrDragon * proc);
 void func_fe6_0805A270(struct ProcEkrDragon * proc);
 void func_fe6_0805A2BC(struct ProcEkrDragon * proc);
 void func_fe6_0805A35C(struct ProcEkrDragon * proc);
 void func_fe6_0805A394(struct ProcEkrDragon * proc);
 void func_fe6_0805A3EC(struct ProcEkrDragon * proc);
-// func_fe6_0805A410
+
+ProcPtr NewEfxIdunnIntro(struct BaSprite * anim);
 // func_fe6_0805A434
 // func_fe6_0805A4B4
 // func_fe6_0805A4C8
 // func_fe6_0805A51C
 // func_fe6_0805A584
-// func_fe6_0805A598
+ProcPtr NewEfxIdunnMain(struct BaSprite * anim);
 // func_fe6_0805A5C4
 // func_fe6_0805A63C
-// func_fe6_0805A658
+ProcPtr NewEkrIdunnExitAnim2(struct BaSprite * anim, int, int);
 // func_fe6_0805A6B8
 // func_fe6_0805A6DC
 // func_fe6_0805A768
-ProcPtr StartEkrIdunnDeamon(struct BaSprite * anim);
+ProcPtr NewEkrIdunnIntroDeamon1(struct BaSprite * anim);
+// func_fe6_0805A7C0
+ProcPtr NewEkrIdunnIntroDeamon2(struct BaSprite * anim);
+// func_fe6_0805A82C
+void NewEkrIdunnBodyFlashing(struct BaSprite * anim);
+void EndEkrIdunnBodyFlashing(void);
+// func_fe6_0805A8B0
+// func_fe6_0805A998
+// func_fe6_0805A9F8
+// func_fe6_0805AAA0
+// func_fe6_0805AB50
+ProcPtr NewEkrIdunnExitAnim1(struct BaSprite * anim);
+// func_fe6_0805ABC0
+// func_fe6_0805AC54
+// func_fe6_0805ADE4
+// func_fe6_0805AE08
+// func_fe6_0805AE1C
+// func_fe6_0805AE6C
+// func_fe6_0805AEDC
+// func_fe6_0805AF34
+// func_fe6_0805AFA4
+// func_fe6_0805AFD4
+// func_fe6_0805AFEC

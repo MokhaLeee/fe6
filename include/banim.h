@@ -160,6 +160,7 @@ extern struct Unit * gpEkrTriangleUnits[2];
 extern i16 gEkrInitialHitSide;
 extern u32 gEkrInitPosReal;
 extern u32 gEfxBgSemaphore;
+extern struct Vec2i gEkrBg2QuakeVec;
 extern u32 gEkrBgPosition;
 extern i16 gEkrPairEffectiveAgainst[2];
 extern i16 gEkrPairSideVaild[2];
@@ -175,6 +176,7 @@ extern struct BattleUnit * gpEkrBattleUnitLeft;
 extern struct BattleUnit * gpEkrBattleUnitRight;
 extern u32 gEkrHPBarCount;
 extern u32 gEkrDeadEventExist;
+extern u32 gUnk_Banim_02017734;
 extern u8 gSpellAnimBgfx[];
 extern u16 gEkrBarfxBuf[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
@@ -996,28 +998,6 @@ void func_fe6_0804C56C(void);
 
 /* banim_ekrdragon.h */
 
-// func_fe6_0805A7C0
-// func_fe6_0805A7EC
-// func_fe6_0805A82C
-// func_fe6_0805A858
-// func_fe6_0805A894
-// func_fe6_0805A8B0
-// func_fe6_0805A998
-// func_fe6_0805A9F8
-// func_fe6_0805AAA0
-// func_fe6_0805AB50
-// func_fe6_0805AB5C
-// func_fe6_0805ABC0
-// func_fe6_0805AC54
-// func_fe6_0805ADE4
-// func_fe6_0805AE08
-// func_fe6_0805AE1C
-// func_fe6_0805AE6C
-// func_fe6_0805AEDC
-// func_fe6_0805AF34
-// func_fe6_0805AFA4
-// func_fe6_0805AFD4
-// func_fe6_0805AFEC
 void func_fe6_0805B01C(u16 * tm, u16 width, u16 height, int pal, int chr);
 void FillBGRect(u16 * tm, u16 width, u16 height, int pal, int chr);
 void func_fe6_0805B0D4(u16 * tm, u16 width, u16 height, int pal, int chr);
@@ -1696,7 +1676,7 @@ extern struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[];
 // ??? gUnk_086049A8
 // ??? ProcScr_EkrIdunnDeamon
 // ??? gUnk_086049E8
-// ??? gUnk_08604A00
+// ??? ProcScr_EkrIdunnBodyFlashing
 // ??? gUnk_08604A18
 // ??? gUnk_08604A3C
 // ??? gUnk_08604A6C

@@ -2286,7 +2286,7 @@ EkrEfxStatusClear: @ 0x08044900
 	str r4, [r0]
 	ldr r0, .L08044998 @ =gUnk_Banim_02017754
 	str r4, [r0]
-	ldr r0, .L0804499C @ =gUnk_Banim_02017758
+	ldr r0, .L0804499C @ =gEkrBg2QuakeVec
 	strh r4, [r0]
 	strh r4, [r0, #2]
 	ldr r0, .L080449A0 @ =gUnk_Banim_0201775C
@@ -2326,7 +2326,7 @@ EkrEfxStatusClear: @ 0x08044900
 .L08044990: .4byte gUnk_Banim_0201774C
 .L08044994: .4byte gUnk_Banim_02017750
 .L08044998: .4byte gUnk_Banim_02017754
-.L0804499C: .4byte gUnk_Banim_02017758
+.L0804499C: .4byte gEkrBg2QuakeVec
 .L080449A0: .4byte gUnk_Banim_0201775C
 .L080449A4: .4byte gUnk_Banim_02017760
 .L080449A8: .4byte gUnk_Banim_02017778
@@ -3849,7 +3849,7 @@ func_fe6_080455C0: @ 0x080455C0
 	cmp r0, #0
 	beq .L080455FC
 	ldr r0, [r6, #0x5c]
-	bl StartEkrIdunnDeamon
+	bl NewEkrIdunnIntroDeamon1
 	str r0, [r6, #0x64]
 	ldr r2, .L0804560C @ =gEkrXPosBase
 	ldr r1, .L08045610 @ =gEkrBgPosition
@@ -5063,7 +5063,7 @@ func_fe6_08045F88: @ 0x08045F88
 	ldr r1, .L08045FB8 @ =0x00007FFF
 	cmp r4, r1
 	beq .L08045FC0
-	ldr r1, .L08045FBC @ =gUnk_Banim_02017758
+	ldr r1, .L08045FBC @ =gEkrBg2QuakeVec
 	strh r4, [r1]
 	movs r4, #0x2c
 	ldrsh r0, [r2, r4]
@@ -5077,7 +5077,7 @@ func_fe6_08045F88: @ 0x08045F88
 	b .L08045FEC
 	.align 2, 0
 .L08045FB8: .4byte 0x00007FFF
-.L08045FBC: .4byte gUnk_Banim_02017758
+.L08045FBC: .4byte gEkrBg2QuakeVec
 .L08045FC0:
 	adds r0, r2, #0
 	adds r0, #0x2a
@@ -5089,16 +5089,16 @@ func_fe6_08045F88: @ 0x08045F88
 	b .L08045FEC
 .L08045FD0:
 	strh r0, [r2, #0x2c]
-	ldr r0, .L08045FE0 @ =gUnk_Banim_02017758
+	ldr r0, .L08045FE0 @ =gEkrBg2QuakeVec
 	ldrh r1, [r3]
 	strh r1, [r0]
 	ldrh r1, [r3, #2]
 	strh r1, [r0, #2]
 	b .L08045FEC
 	.align 2, 0
-.L08045FE0: .4byte gUnk_Banim_02017758
+.L08045FE0: .4byte gEkrBg2QuakeVec
 .L08045FE4:
-	ldr r1, .L08045FF4 @ =gUnk_Banim_02017758
+	ldr r1, .L08045FF4 @ =gEkrBg2QuakeVec
 	movs r0, #0
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -5107,7 +5107,7 @@ func_fe6_08045F88: @ 0x08045F88
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08045FF4: .4byte gUnk_Banim_02017758
+.L08045FF4: .4byte gEkrBg2QuakeVec
 
 	thumb_func_start NewEfxHitQuakePure
 NewEfxHitQuakePure: @ 0x08045FF8
@@ -5321,7 +5321,7 @@ EfxQuake_Loop: @ 0x0804610C
 .L08046198: .4byte gEkrYPosReal
 .L0804619C: .4byte gUnk_Banim_02017734
 .L080461A0:
-	ldr r5, .L080461F8 @ =gUnk_Banim_02017758
+	ldr r5, .L080461F8 @ =gEkrBg2QuakeVec
 	strh r2, [r5]
 	movs r1, #0x2c
 	ldrsh r0, [r7, r1]
@@ -5363,7 +5363,7 @@ EfxQuake_Loop: @ 0x0804610C
 	subs r1, r1, r0
 	b .L0804620C
 	.align 2, 0
-.L080461F8: .4byte gUnk_Banim_02017758
+.L080461F8: .4byte gEkrBg2QuakeVec
 .L080461FC: .4byte gEkrXPosReal
 .L08046200:
 	ldr r4, .L0804626C @ =gEkrXPosReal
@@ -5388,7 +5388,7 @@ EfxQuake_Loop: @ 0x0804610C
 	adds r5, r2, #0
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	ldr r2, .L08046278 @ =gUnk_Banim_02017758
+	ldr r2, .L08046278 @ =gEkrBg2QuakeVec
 	movs r4, #0
 	ldrsh r0, [r2, r4]
 	adds r1, r1, r0
@@ -5422,7 +5422,7 @@ EfxQuake_Loop: @ 0x0804610C
 .L0804626C: .4byte gEkrXPosReal
 .L08046270: .4byte gEkrBgPosition
 .L08046274: .4byte gEkrYPosReal
-.L08046278: .4byte gUnk_Banim_02017758
+.L08046278: .4byte gEkrBg2QuakeVec
 .L0804627C: .4byte gEkrDistanceType
 .L08046280:
 	cmp r0, #0
@@ -5817,7 +5817,7 @@ func_fe6_0804646C: @ 0x0804646C
 	movs r3, #0
 	bl FillBGRect
 .L080465C4:
-	ldr r4, .L08046620 @ =gUnk_Banim_02017758
+	ldr r4, .L08046620 @ =gEkrBg2QuakeVec
 	movs r1, #0x2c
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #2
@@ -5862,7 +5862,7 @@ func_fe6_0804646C: @ 0x0804646C
 	b .L08046636
 	.align 2, 0
 .L0804661C: .4byte gBg2Tm+0x2C0
-.L08046620: .4byte gUnk_Banim_02017758
+.L08046620: .4byte gEkrBg2QuakeVec
 .L08046624: .4byte gEkrBgPosition
 .L08046628: .4byte gEkrXPosBase
 .L0804662C:
@@ -5876,7 +5876,7 @@ func_fe6_0804646C: @ 0x0804646C
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne .L08046696
-	ldr r5, .L080466CC @ =gUnk_Banim_02017758
+	ldr r5, .L080466CC @ =gEkrBg2QuakeVec
 	ldr r4, .L080466D0 @ =gEkrBg0QuakeVec
 	ldrh r2, [r5]
 	ldrh r3, [r4]
@@ -5920,7 +5920,7 @@ func_fe6_0804646C: @ 0x0804646C
 	bl GetEkrDragonStateTypeIdunnManakete
 	cmp r0, #0
 	beq .L080466B0
-	ldr r0, .L080466CC @ =gUnk_Banim_02017758
+	ldr r0, .L080466CC @ =gEkrBg2QuakeVec
 	ldrh r1, [r0]
 	ldrh r2, [r0, #2]
 	adds r2, #0x10
@@ -5936,13 +5936,13 @@ func_fe6_0804646C: @ 0x0804646C
 	mov ip, r2
 	movs r3, #0
 	ldrsh r1, [r2, r3]
-	ldr r2, .L080466CC @ =gUnk_Banim_02017758
+	ldr r2, .L080466CC @ =gEkrBg2QuakeVec
 	movs r4, #0
 	ldrsh r0, [r2, r4]
 	subs r1, r1, r0
 	b .L080466E8
 	.align 2, 0
-.L080466CC: .4byte gUnk_Banim_02017758
+.L080466CC: .4byte gEkrBg2QuakeVec
 .L080466D0: .4byte gEkrBg0QuakeVec
 .L080466D4: .4byte gEkrXPosReal
 .L080466D8:
@@ -5950,7 +5950,7 @@ func_fe6_0804646C: @ 0x0804646C
 	mov ip, r0
 	movs r2, #0
 	ldrsh r1, [r0, r2]
-	ldr r2, .L08046744 @ =gUnk_Banim_02017758
+	ldr r2, .L08046744 @ =gEkrBg2QuakeVec
 	movs r3, #0
 	ldrsh r0, [r2, r3]
 	adds r1, r1, r0
@@ -5999,7 +5999,7 @@ func_fe6_0804646C: @ 0x0804646C
 	b .L08046786
 	.align 2, 0
 .L08046740: .4byte gEkrXPosReal
-.L08046744: .4byte gUnk_Banim_02017758
+.L08046744: .4byte gEkrBg2QuakeVec
 .L08046748: .4byte gEkrBgPosition
 .L0804674C: .4byte gEkrYPosReal
 .L08046750: .4byte gEkrDistanceType
@@ -19235,7 +19235,7 @@ func_fe6_0804D088: @ 0x0804D088
 	mov r5, r8
 	push {r5, r6, r7}
 	mov r8, r0
-	ldr r5, .L0804D120 @ =gUnk_Banim_02017758
+	ldr r5, .L0804D120 @ =gEkrBg2QuakeVec
 	ldrh r1, [r5]
 	ldrh r2, [r5, #2]
 	movs r0, #2
@@ -19299,7 +19299,7 @@ func_fe6_0804D088: @ 0x0804D088
 	subs r0, r4, r1
 	b .L0804D134
 	.align 2, 0
-.L0804D120: .4byte gUnk_Banim_02017758
+.L0804D120: .4byte gEkrBg2QuakeVec
 .L0804D124: .4byte gEkrBg0QuakeVec
 .L0804D128: .4byte gEkrXPosReal
 .L0804D12C:
@@ -19321,7 +19321,7 @@ func_fe6_0804D088: @ 0x0804D088
 	lsrs r6, r0, #0x10
 	mov sb, r3
 	mov sl, r1
-	ldr r2, .L0804D250 @ =gUnk_Banim_02017758
+	ldr r2, .L0804D250 @ =gEkrBg2QuakeVec
 	mov r1, sb
 	ldrh r1, [r1, #2]
 	ldrh r3, [r2]
@@ -19438,7 +19438,7 @@ func_fe6_0804D088: @ 0x0804D088
 .L0804D244: .4byte gEkrXPosReal
 .L0804D248: .4byte gEkrBgPosition
 .L0804D24C: .4byte gEkrYPosReal
-.L0804D250: .4byte gUnk_Banim_02017758
+.L0804D250: .4byte gEkrBg2QuakeVec
 .L0804D254: .4byte gEfxBgSemaphore
 .L0804D258: .4byte gEkrBg0QuakeVec
 

@@ -26,8 +26,8 @@ ProcScr_EkrIdunnDeamon: @ 086049D0
 gUnk_086049E8: @ 086049E8
 	.incbin "fe6-base.gba", 0x6049E8, (0x604A00 - 0x6049E8) @ length: 0018
 
-	.global gUnk_08604A00
-gUnk_08604A00: @ 08604A00
+	.global ProcScr_EkrIdunnBodyFlashing
+ProcScr_EkrIdunnBodyFlashing: @ 08604A00
 	.incbin "fe6-base.gba", 0x604A00, (0x604A18 - 0x604A00) @ length: 0018
 
 	.global gUnk_08604A18

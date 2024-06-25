@@ -15,7 +15,7 @@ void ResetEkrDragonStatus(void)
 {
     EkrDragonProcs[POS_L] = NULL;
     EkrDragonProcs[POS_R] = NULL;
-    gUnk_Banim_0201E7BC = NULL;
+    gpProcEkrIdunnBodyFlashing = NULL;
     gEkrDragonIntroDone[POS_L] = FALSE;
     gEkrDragonIntroDone[POS_R] = FALSE;
     gEkrDragonFastenConf[POS_L] = 0;

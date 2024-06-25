@@ -16,10 +16,10 @@ struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[] =
     PROC_REPEAT(EkrIdunn_InitBanimfx),
     PROC_REPEAT(EkrIdunn_InitBodyfx),
     PROC_REPEAT(EkrIdunn_PreMainBodyIntro),
-    PROC_REPEAT(func_fe6_0805A000),
+    PROC_REPEAT(EkrIdunn_InitIntroBodyPosition),
     PROC_REPEAT(func_fe6_0805A0BC),
-    PROC_REPEAT(func_fe6_0805A140),
-    PROC_REPEAT(func_fe6_0805A228),
+    PROC_REPEAT(EkrIdunn_BodyFallInAndTriggerBattleStart),
+    PROC_REPEAT(EkrIdunn_BlockingInBattle),
     PROC_REPEAT(func_fe6_0805A270),
     PROC_REPEAT(func_fe6_0805A2BC),
     PROC_REPEAT(func_fe6_0805A35C),
@@ -62,9 +62,9 @@ void EkrIdunn_InitBanimfx(struct ProcEkrDragon * proc)
 
     if (CheckSkipDragonTransfer(proc->anim) != TRUE)
     {
-        gEkrDragonDeamonProcs[POS_L] = StartEkrIdunnDeamon(proc->anim);
-        gEkrDragonDeamonProcs[POS_L]->x_hi = gEkrXPosBase[POS_L] - (gEkrBgPosition - 0x4E);
-        gEkrDragonDeamonProcs[POS_L]->y_hi = 0x50;
+        gEkrDragonDeamonProcs[0] = NewEkrIdunnIntroDeamon1(proc->anim);
+        gEkrDragonDeamonProcs[0]->x_hi = gEkrXPosBase[POS_L] - (gEkrBgPosition - 0x4E);
+        gEkrDragonDeamonProcs[0]->y_hi = 0x50;
     }
     proc->timer = 0;
     Proc_Break(proc);
@@ -92,7 +92,7 @@ void EkrIdunn_InitBodyfx(struct ProcEkrDragon * proc)
 
 void EkrIdunn_PreMainBodyIntro(struct ProcEkrDragon * proc)
 {
-    struct ProcEkrDragonDeamon * procfx = gEkrDragonDeamonProcs[POS_L];
+    struct ProcEkrDragonDeamon * procfx = gEkrDragonDeamonProcs[0];
 
     if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
@@ -128,6 +128,131 @@ void EkrIdunn_PreMainBodyIntro(struct ProcEkrDragon * proc)
         procfx = NewEfxQuake(6);
         procfx->y_hi = 0x72;
 
+        Proc_Break(proc);
+    }
+}
+
+void EkrIdunn_InitIntroBodyPosition(struct ProcEkrDragon * proc)
+{
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
+    {
+        proc->procfx = NewEfxIdunnIntro(proc->anim);
+        Proc_Break(proc);
+        return;
+    }
+
+    gEkrDragonDeamonProcs[0]->x = gEkrXPosBase[POS_L] - (gEkrBgPosition - 0x4E);
+    gEkrDragonDeamonProcs[0]->y = 0x50;
+
+    if (gEkrBg2QuakeVec.x != 0x7FFF)
+    {
+        gEkrDragonDeamonProcs[0]->x += gEkrBg2QuakeVec.x;
+        gEkrDragonDeamonProcs[0]->y += gEkrBg2QuakeVec.y;
+    }
+
+    if (gUnk_Banim_02017734 == 0)
+    {
+        SetBgOffset(3, 0, 0x82);
+        gEkrDragonDeamonProcs[0]->x = gEkrXPosBase[POS_L] - (gEkrBgPosition - 0x4E);
+        gEkrDragonDeamonProcs[0]->y = 0x50;
+        proc->procfx = NewEfxIdunnIntro(proc->anim);
+        Proc_Break(proc);
+    }
+}
+
+void func_fe6_0805A0BC(struct ProcEkrDragon * proc)
+{
+    int x, _0;
+    u8 *pflag = &proc->procfx->flag;
+
+    if (*pflag != 1)
+        return;
+
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
+    {
+        Proc_Break(proc);
+        return;
+    }
+
+    _0 = 0;
+    *pflag = 2;
+    proc->timer = _0;
+    proc->procfx = NewEfxIdunnMain(proc->anim);
+
+    gEkrDragonDeamonProcs[1] = NewEkrIdunnIntroDeamon2(proc->anim);
+
+    if (gEkrDistanceType == EKR_DISTANCE_CLOSE)
+        gEkrDragonDeamonProcs[1]->x = 0x54;
+    else
+        gEkrDragonDeamonProcs[1]->x = 0x34;
+
+    gEkrDragonDeamonProcs[1]->y = -11;
+
+    EfxPlaySE(0x144, 0x100);
+    Proc_Break(proc);
+}
+
+void EkrIdunn_BodyFallInAndTriggerBattleStart(struct ProcEkrDragon * proc)
+{
+    int ret;
+    struct ProcEkrDragonIntroFx * procf = proc->procfx;
+    struct ProcEkrDragonDeamon * procd1 = gEkrDragonDeamonProcs[0];
+    struct ProcEkrDragonDeamon * procd2 = gEkrDragonDeamonProcs[1];
+
+    if (CheckSkipDragonTransfer(proc->anim) == TRUE)
+    {
+        SetAnimStateUnHidden(GetAnimPosition(proc->anim));
+        CpuFastCopy(gEkrBgPaletteBackup1, gPal + PAL_OFFSET(6), 0x20);
+        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
+        NewEkrIdunnBodyFlashing(proc->anim);
+        Proc_Break(proc);
+        return;
+    }
+
+    ret = Interpolate(INTERPOLATE_LINEAR, 0, 0x72, proc->timer, 0x120);
+    procf->y = -ret + 0x82;
+    procd1->y = ret + 0x50;
+    procd2->y = ret - 11;
+
+    if (++proc->timer == 0xFF)
+    {
+        procf->flag = 1;
+        gEkrDragonDeamonProcs[0]->fxtype = 1;
+        gEkrDragonDeamonProcs[1]->fxtype = 1;
+        SetAnimStateUnHidden(GetAnimPosition(proc->anim));
+        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
+        NewEkrIdunnBodyFlashing(proc->anim);
+        Proc_Break(proc);
+        return;
+    }
+}
+
+void EkrIdunn_BlockingInBattle(struct ProcEkrDragon * proc)
+{
+    if (gEkrDragonState[GetAnimPosition(proc->anim)] != DRAGON_STATE_ENDING)
+        return;
+
+    EndEkrIdunnBodyFlashing();
+
+    if (gEkrDragonFastenConf[GetAnimPosition(proc->anim)] == 1)
+        proc->procfx = NewEkrIdunnExitAnim1(proc->anim);
+
+    Proc_Break(proc);
+}
+
+void func_fe6_0805A270(struct ProcEkrDragon * proc)
+{
+    struct ProcEkrDragonIntroFx * procfx = proc->procfx;
+    if (gEkrDragonFastenConf[GetAnimPosition(proc->anim)] == 0)
+    {
+        proc->procfx = NewEkrIdunnExitAnim2(proc->anim, 1, 0x20);
+        Proc_Break(proc);
+        return;
+    }
+
+    if (procfx->flag == 1)
+    {
+        procfx->flag = 2;
         Proc_Break(proc);
     }
 }

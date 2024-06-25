@@ -154,7 +154,7 @@ SECTIONS
         . = 0x01774C; gUnk_Banim_0201774C = .;
         . = 0x017750; gUnk_Banim_02017750 = .;
         . = 0x017754; gUnk_Banim_02017754 = .;
-        . = 0x017758; gUnk_Banim_02017758 = .;
+        . = 0x017758; gEkrBg2QuakeVec = .;
         . = 0x01775C; gUnk_Banim_0201775C = .;
         . = 0x017760; gUnk_Banim_02017760 = .;
         . = 0x017764; gUnk_Banim_02017764 = .;
@@ -198,7 +198,7 @@ SECTIONS
         . = 0x01E7A8; gUnk_Banim_0201E7A8 = .;
         . = 0x01E7AC; EkrDragonProcs = .;
         . = 0x01E7B4; gEkrDragonDeamonProcs = .;
-        . = 0x01E7BC; gUnk_Banim_0201E7BC = .;
+        . = 0x01E7BC; gpProcEkrIdunnBodyFlashing = .;
         . = 0x01E7C0; gEkrDragonIntroDone = .;
         . = 0x01E7C4; gEkrDragonFastenConf = .;
         . = 0x01E7C8; gEkrDragonState = .;
