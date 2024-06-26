@@ -2,6 +2,36 @@
 
 	.syntax unified
 
+	.section .data
+	.global ProcScr_EfxHpBar
+ProcScr_EfxHpBar: @ 085CB730
+	.incbin "fe6-base.gba", 0x5CB730, (0x5CB758 - 0x5CB730) @ length: 0028
+
+	.global ProcScr_EfxHpBarResire
+ProcScr_EfxHpBarResire: @ 085CB758
+	.incbin "fe6-base.gba", 0x5CB758, (0x5CB790 - 0x5CB758) @ length: 0038
+
+	.global ProcScr_EfxAvoid
+ProcScr_EfxAvoid: @ 085CB790
+	.incbin "fe6-base.gba", 0x5CB790, (0x5CB7B8 - 0x5CB790) @ length: 0028
+
+	.global gUnk_085CB7B8
+gUnk_085CB7B8: @ 085CB7B8
+	.incbin "fe6-base.gba", 0x5CB7B8, (0x5CB7E0 - 0x5CB7B8) @ length: 0028
+
+	.global ProcScr_EfxNoDmage
+ProcScr_EfxNoDmage: @ 085CB7E0
+	.incbin "fe6-base.gba", 0x5CB7E0, (0x5CB808 - 0x5CB7E0) @ length: 0028
+
+	.global gUnk_085CB808
+gUnk_085CB808: @ 085CB808
+	.incbin "fe6-base.gba", 0x5CB808, (0x5CB820 - 0x5CB808) @ length: 0018
+
+	.global ProcScr_EfxStatusCHG
+ProcScr_EfxStatusCHG: @ 085CB820
+	.incbin "fe6-base.gba", 0x5CB820, (0x5CB850 - 0x5CB820) @ length: 0030
+
+	.section .text
 	thumb_func_start CheckEkrHitDone
 CheckEkrHitDone: @ 0x080449C4
 	ldr r0, .L080449D8 @ =gEkrHPBarCount

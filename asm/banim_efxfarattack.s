@@ -2,6 +2,13 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_efxFarAttack
+ProcScr_efxFarAttack: @ 085CB8F0
+	.incbin "fe6-base.gba", 0x5CB8F0, (0x5CB918 - 0x5CB8F0) @ length: 0028
+
+	.section .text
 	thumb_func_start NewEfxFarAttackWithDistance
 NewEfxFarAttackWithDistance: @ 0x08045C90
 	push {r4, r5, r6, lr}

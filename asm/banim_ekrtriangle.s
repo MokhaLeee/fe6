@@ -4,14 +4,14 @@
 
 	thumb_func_start CheckEkrTriangleInvalid
 CheckEkrTriangleInvalid: @ 0x0805E560
-	ldr r0, .L0805E56C @ =gUnk_Banim_0201F0DC
+	ldr r0, .L0805E56C @ =gEkrTriangleInvalid
 	ldr r0, [r0]
 	cmp r0, #1
 	beq .L0805E570
 	movs r0, #0
 	b .L0805E572
 	.align 2, 0
-.L0805E56C: .4byte gUnk_Banim_0201F0DC
+.L0805E56C: .4byte gEkrTriangleInvalid
 .L0805E570:
 	movs r0, #1
 .L0805E572:
@@ -26,19 +26,19 @@ DebugEkrTriangleMsg: @ 0x0805E574
 NewEkrTriangle: @ 0x0805E578
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0805E594 @ =gUnk_08606314
+	ldr r0, .L0805E594 @ =ProcScr_EkrTriangle
 	movs r1, #3
 	bl SpawnProc
 	str r4, [r0, #0x5c]
-	ldr r1, .L0805E598 @ =gUnk_Banim_0201F0DC
+	ldr r1, .L0805E598 @ =gEkrTriangleInvalid
 	movs r0, #0
 	str r0, [r1]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805E594: .4byte gUnk_08606314
-.L0805E598: .4byte gUnk_Banim_0201F0DC
+.L0805E594: .4byte ProcScr_EkrTriangle
+.L0805E598: .4byte gEkrTriangleInvalid
 
 	thumb_func_start func_fe6_0805E59C
 func_fe6_0805E59C: @ 0x0805E59C
@@ -201,12 +201,12 @@ func_fe6_0805E59C: @ 0x0805E59C
 	bl GetItemIid
 	cmp r0, #0x20
 	bne .L0805E780
-	ldr r1, .L0805E6D4 @ =gUnk_Banim_0201F0DC
+	ldr r1, .L0805E6D4 @ =gEkrTriangleInvalid
 	movs r0, #0
 	b .L0805E784
 	.align 2, 0
 .L0805E6D0: .4byte gpEkrBattleUnitRight
-.L0805E6D4: .4byte gUnk_Banim_0201F0DC
+.L0805E6D4: .4byte gEkrTriangleInvalid
 .L0805E6D8:
 	ldr r0, .L0805E704 @ =gpEkrTriangleUnits
 	ldr r1, [r0]
@@ -292,13 +292,13 @@ func_fe6_0805E59C: @ 0x0805E59C
 	bl func_fe6_0805E7A0
 	cmp r5, #0x2a
 	bne .L0805E780
-	ldr r1, .L0805E77C @ =gUnk_Banim_0201F0DC
+	ldr r1, .L0805E77C @ =gEkrTriangleInvalid
 	movs r0, #0
 	b .L0805E784
 	.align 2, 0
-.L0805E77C: .4byte gUnk_Banim_0201F0DC
+.L0805E77C: .4byte gEkrTriangleInvalid
 .L0805E780:
-	ldr r1, .L0805E79C @ =gUnk_Banim_0201F0DC
+	ldr r1, .L0805E79C @ =gEkrTriangleInvalid
 	movs r0, #1
 .L0805E784:
 	str r0, [r1]
@@ -313,7 +313,7 @@ func_fe6_0805E59C: @ 0x0805E59C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805E79C: .4byte gUnk_Banim_0201F0DC
+.L0805E79C: .4byte gEkrTriangleInvalid
 
 	thumb_func_start func_fe6_0805E7A0
 func_fe6_0805E7A0: @ 0x0805E7A0
@@ -422,7 +422,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x43
 	bne .L0805E884
-	ldr r1, .L0805E88C @ =gUnk_Banim_0201F0DC
+	ldr r1, .L0805E88C @ =gEkrTriangleInvalid
 	movs r0, #1
 	str r0, [r1]
 	adds r0, r4, #0
@@ -432,7 +432,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805E88C: .4byte gUnk_Banim_0201F0DC
+.L0805E88C: .4byte gEkrTriangleInvalid
 
 	thumb_func_start func_fe6_0805E890
 func_fe6_0805E890: @ 0x0805E890
@@ -739,7 +739,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x5b
 	bne .L0805EB10
-	ldr r1, .L0805EB3C @ =gUnk_Banim_0201F0DC
+	ldr r1, .L0805EB3C @ =gEkrTriangleInvalid
 	movs r0, #1
 	str r0, [r1]
 .L0805EB10:
@@ -764,7 +764,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805EB3C: .4byte gUnk_Banim_0201F0DC
+.L0805EB3C: .4byte gEkrTriangleInvalid
 
 	thumb_func_start func_fe6_0805EB40
 func_fe6_0805EB40: @ 0x0805EB40

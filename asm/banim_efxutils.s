@@ -2,6 +2,22 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global gUnk_08605A94
+gUnk_08605A94: @ 08605A94
+	.incbin "fe6-base.gba", 0x605A94, (0x605D14 - 0x605A94) @ length: 0280
+
+	.global gEfxTmyPalRefs
+gEfxTmyPalRefs: @ 08605D14
+	.incbin "fe6-base.gba", 0x605D14, (0x605D28 - 0x605D14) @ length: 0014
+
+	.global ProcScr_EkrSubAnimeEmulator
+ProcScr_EkrSubAnimeEmulator: @ 08605D28
+	.incbin "fe6-base.gba", 0x605D28, (0x605D40 - 0x605D28) @ length: 0018
+
+	.section .text
+
 	thumb_func_start func_fe6_0805B01C
 func_fe6_0805B01C: @ 0x0805B01C
 	push {r4, r5, r6, r7, lr}
@@ -188,7 +204,7 @@ EfxTmModifyPal: @ 0x0805B13C
 	subs r0, r0, r1
 	lsls r0, r0, #0x10
 	mov r8, r0
-	ldr r0, .L0805B1A4 @ =gUnk_08605D14
+	ldr r0, .L0805B1A4 @ =gEfxTmyPalRefs
 	mov sb, r0
 .L0805B160:
 	mov r4, ip
@@ -229,7 +245,7 @@ EfxTmModifyPal: @ 0x0805B13C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805B1A4: .4byte gUnk_08605D14
+.L0805B1A4: .4byte gEfxTmyPalRefs
 .L0805B1A8: .4byte 0x00000FFF
 
 	thumb_func_start EfxTmCpyBG

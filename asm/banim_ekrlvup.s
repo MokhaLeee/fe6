@@ -2,9 +2,40 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global FaceConfig_EkrLevelup
+FaceConfig_EkrLevelup: @ 0860618C
+	.incbin "fe6-base.gba", 0x60618C, (0x6061AC - 0x60618C) @ length: 0020
+
+	.global ProcScr_EkrLevelup
+ProcScr_EkrLevelup: @ 086061AC
+	.incbin "fe6-base.gba", 0x6061AC, (0x606254 - 0x6061AC) @ length: 00A8
+
+	.global gUnk_08606254
+gUnk_08606254: @ 08606254
+	.incbin "fe6-base.gba", 0x606254, (0x60626C - 0x606254) @ length: 0018
+
+	.global gUnk_0860626C
+gUnk_0860626C: @ 0860626C
+	.incbin "fe6-base.gba", 0x60626C, (0x60628C - 0x60626C) @ length: 0020
+
+	.global gUnk_0860628C
+gUnk_0860628C: @ 0860628C
+	.incbin "fe6-base.gba", 0x60628C, (0x6062AC - 0x60628C) @ length: 0020
+
+	.global gUnk_086062AC
+gUnk_086062AC: @ 086062AC
+	.incbin "fe6-base.gba", 0x6062AC, (0x6062EC - 0x6062AC) @ length: 0040
+
+	.global gUnk_086062EC
+gUnk_086062EC: @ 086062EC
+	.incbin "fe6-base.gba", 0x6062EC, (0x606314 - 0x6062EC) @ length: 0028
+
+	.section .text
 	thumb_func_start CheckEkrLvupDone
 CheckEkrLvupDone: @ 0x0805D128
-	ldr r0, .L0805D138 @ =gUnk_Banim_0201F058
+	ldr r0, .L0805D138 @ =gpProcEkrLevelup
 	ldr r0, [r0]
 	adds r0, #0x29
 	ldrb r0, [r0]
@@ -13,7 +44,7 @@ CheckEkrLvupDone: @ 0x0805D128
 	movs r0, #0
 	b .L0805D13E
 	.align 2, 0
-.L0805D138: .4byte gUnk_Banim_0201F058
+.L0805D138: .4byte gpProcEkrLevelup
 .L0805D13C:
 	movs r0, #1
 .L0805D13E:
@@ -22,13 +53,13 @@ CheckEkrLvupDone: @ 0x0805D128
 	thumb_func_start EndEkrLevelUp
 EndEkrLevelUp: @ 0x0805D140
 	push {lr}
-	ldr r0, .L0805D150 @ =gUnk_Banim_0201F058
+	ldr r0, .L0805D150 @ =gpProcEkrLevelup
 	ldr r0, [r0]
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D150: .4byte gUnk_Banim_0201F058
+.L0805D150: .4byte gpProcEkrLevelup
 
 	thumb_func_start func_fe6_0805D154
 func_fe6_0805D154: @ 0x0805D154
@@ -538,8 +569,8 @@ func_fe6_0805D570: @ 0x0805D570
 NewEkrLevelup: @ 0x0805D5B0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r5, .L0805D5E8 @ =gUnk_Banim_0201F058
-	ldr r0, .L0805D5EC @ =gUnk_086061AC
+	ldr r5, .L0805D5E8 @ =gpProcEkrLevelup
+	ldr r0, .L0805D5EC @ =ProcScr_EkrLevelup
 	movs r1, #3
 	bl SpawnProc
 	adds r6, r0, #0
@@ -563,8 +594,8 @@ NewEkrLevelup: @ 0x0805D5B0
 	strb r1, [r0]
 	b .L0805D5FC
 	.align 2, 0
-.L0805D5E8: .4byte gUnk_Banim_0201F058
-.L0805D5EC: .4byte gUnk_086061AC
+.L0805D5E8: .4byte gpProcEkrLevelup
+.L0805D5EC: .4byte ProcScr_EkrLevelup
 .L0805D5F0: .4byte gEkrDistanceType
 .L0805D5F4:
 	adds r1, r6, #0
@@ -990,7 +1021,7 @@ func_fe6_0805D8B4: @ 0x0805D8B4
 .L0805D9AC:
 	ldr r0, [r1]
 	ldrh r4, [r0, #6]
-	ldr r0, .L0805D9F8 @ =gUnk_0860618C
+	ldr r0, .L0805D9F8 @ =FaceConfig_EkrLevelup
 	bl SetFaceConfig
 	movs r0, #0x42
 	str r0, [sp]
@@ -1021,7 +1052,7 @@ func_fe6_0805D8B4: @ 0x0805D8B4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D9F8: .4byte gUnk_0860618C
+.L0805D9F8: .4byte FaceConfig_EkrLevelup
 .L0805D9FC: .4byte gFaces
 .L0805DA00: .4byte gBg2Tm
 .L0805DA04: .4byte 0x01000200

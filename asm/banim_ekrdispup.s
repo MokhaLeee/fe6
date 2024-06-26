@@ -2,6 +2,12 @@
 
 	.syntax unified
 
+	.section .data
+	.global ProcScr_EkrDispUP
+ProcScr_EkrDispUP: @ 085CB718
+	.incbin "fe6-base.gba", 0x5CB718, (0x5CB730 - 0x5CB718) @ length: 0018
+
+	.section .text
 	thumb_func_start NewEkrDispUP
 NewEkrDispUP: @ 0x08044198
 	push {r4, lr}

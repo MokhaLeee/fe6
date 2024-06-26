@@ -3,6 +3,13 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EfxStatusUnit
+ProcScr_EfxStatusUnit: @ 085CBA98
+	.incbin "fe6-base.gba", 0x5CBA98, (0x5CBAC0 - 0x5CBA98) @ length: 0028
+
+	.section .text
 	thumb_func_start NewEfxStatusUnit
 NewEfxStatusUnit: @ 0x08046DA0
 	push {r4, r5, r6, lr}
@@ -19,7 +26,7 @@ NewEfxStatusUnit: @ 0x08046DA0
 	ldr r0, .L08046E40 @ =gpEkrBattleUnitRight
 .L08046DBA:
 	ldr r6, [r0]
-	ldr r0, .L08046E44 @ =gUnk_085CBA98
+	ldr r0, .L08046E44 @ =ProcScr_EfxStatusUnit
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -81,7 +88,7 @@ NewEfxStatusUnit: @ 0x08046DA0
 	b .L08046E8C
 	.align 2, 0
 .L08046E40: .4byte gpEkrBattleUnitRight
-.L08046E44: .4byte gUnk_085CBA98
+.L08046E44: .4byte ProcScr_EfxStatusUnit
 .L08046E48: .4byte gUnk_08112122
 .L08046E4C: .4byte gEkrDebugModeMaybe
 .L08046E50: .4byte gUnk_Banim_02017764

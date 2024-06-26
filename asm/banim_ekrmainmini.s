@@ -1,6 +1,17 @@
 	.include "macro.inc"
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EfxAnimeDrv
+ProcScr_EfxAnimeDrv: @ 085CBDF0
+	.incbin "fe6-base.gba", 0x5CBDF0, (0x5CBE08 - 0x5CBDF0) @ length: 0018
+
+	.global ProcScr_EkrUnitMainMini
+ProcScr_EkrUnitMainMini: @ 085CBE08
+	.incbin "fe6-base.gba", 0x5CBE08, (0x5CBE20 - 0x5CBE08) @ length: 0018
+
+	.section .text
 	thumb_func_start func_fe6_0804B930
 func_fe6_0804B930: @ 0x0804B930
 	push {r4, r5, r6, lr}
@@ -278,7 +289,7 @@ func_fe6_0804BB54: @ 0x0804BB54
 	adds r1, r0, r3
 	ldr r2, [r1, #0xc]
 	ldr r3, [r6, #0x24]
-	ldr r7, .L0804BBE0 @ =gUnk_085CBDA0
+	ldr r7, .L0804BBE0 @ =AnimScr_DefaultAnim
 	cmp r4, #0xff
 	beq .L0804BBAE
 	lsls r0, r4, #2
@@ -286,7 +297,7 @@ func_fe6_0804BB54: @ 0x0804BB54
 	ldr r0, [r0]
 	adds r7, r3, r0
 .L0804BBAE:
-	ldr r0, .L0804BBE0 @ =gUnk_085CBDA0
+	ldr r0, .L0804BBE0 @ =AnimScr_DefaultAnim
 	mov sl, r0
 	cmp r5, #0xff
 	beq .L0804BBC0
@@ -309,7 +320,7 @@ func_fe6_0804BB54: @ 0x0804BB54
 	.align 2, 0
 .L0804BBD8: .4byte banim_data
 .L0804BBDC: .4byte gUnk_08112298
-.L0804BBE0: .4byte gUnk_085CBDA0
+.L0804BBE0: .4byte AnimScr_DefaultAnim
 .L0804BBE4: .4byte 0x000057F0
 .L0804BBE8:
 	ldr r4, [r6, #0x20]
@@ -448,7 +459,7 @@ func_fe6_0804BCC8: @ 0x0804BCC8
 	adds r1, r0, r7
 	ldr r2, [r1, #0xc]
 	ldr r3, [r6, #0x24]
-	ldr r7, .L0804BD40 @ =gUnk_085CBDA0
+	ldr r7, .L0804BD40 @ =AnimScr_DefaultAnim
 	cmp r4, #0xff
 	beq .L0804BD0E
 	lsls r0, r4, #2
@@ -456,7 +467,7 @@ func_fe6_0804BCC8: @ 0x0804BCC8
 	ldr r0, [r0]
 	adds r7, r3, r0
 .L0804BD0E:
-	ldr r0, .L0804BD40 @ =gUnk_085CBDA0
+	ldr r0, .L0804BD40 @ =AnimScr_DefaultAnim
 	mov r8, r0
 	cmp r5, #0xff
 	beq .L0804BD20
@@ -479,7 +490,7 @@ func_fe6_0804BCC8: @ 0x0804BCC8
 	.align 2, 0
 .L0804BD38: .4byte banim_data
 .L0804BD3C: .4byte gUnk_08112298
-.L0804BD40: .4byte gUnk_085CBDA0
+.L0804BD40: .4byte AnimScr_DefaultAnim
 .L0804BD44: .4byte 0x000057F0
 .L0804BD48:
 	ldr r4, [r6, #0x20]
@@ -666,11 +677,11 @@ func_fe6_0804BE80: @ 0x0804BE80
 .L0804BE96:
 	bx lr
 
-	thumb_func_start func_fe6_0804BE98
-func_fe6_0804BE98: @ 0x0804BE98
+	thumb_func_start NewEfxAnimeDrvProc
+NewEfxAnimeDrvProc: @ 0x0804BE98
 	push {r4, lr}
-	ldr r4, .L0804BEB0 @ =gUnk_Banim_0201E138
-	ldr r0, .L0804BEB4 @ =gUnk_085CBDF0
+	ldr r4, .L0804BEB0 @ =gpProcEfxAnimeDrv
+	ldr r0, .L0804BEB4 @ =ProcScr_EfxAnimeDrv
 	movs r1, #4
 	bl SpawnProc
 	str r0, [r4]
@@ -679,33 +690,33 @@ func_fe6_0804BE98: @ 0x0804BE98
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804BEB0: .4byte gUnk_Banim_0201E138
-.L0804BEB4: .4byte gUnk_085CBDF0
+.L0804BEB0: .4byte gpProcEfxAnimeDrv
+.L0804BEB4: .4byte ProcScr_EfxAnimeDrv
 
-	thumb_func_start func_fe6_0804BEB8
-func_fe6_0804BEB8: @ 0x0804BEB8
+	thumb_func_start EndEfxAnimeDrvProc
+EndEfxAnimeDrvProc: @ 0x0804BEB8
 	push {lr}
-	ldr r0, .L0804BEC8 @ =gUnk_Banim_0201E138
+	ldr r0, .L0804BEC8 @ =gpProcEfxAnimeDrv
 	ldr r0, [r0]
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804BEC8: .4byte gUnk_Banim_0201E138
+.L0804BEC8: .4byte gpProcEfxAnimeDrv
 
-	thumb_func_start func_fe6_0804BECC
-func_fe6_0804BECC: @ 0x0804BECC
+	thumb_func_start ExecAllBas
+ExecAllBas: @ 0x0804BECC
 	push {lr}
 	bl BasUpdateAll
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0804BED8
-func_fe6_0804BED8: @ 0x0804BED8
+	thumb_func_start NewEkrUnitMainMini
+NewEkrUnitMainMini: @ 0x0804BED8
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, .L0804BEFC @ =gUnk_085CBE08
+	ldr r0, .L0804BEFC @ =ProcScr_EkrUnitMainMini
 	movs r1, #4
 	bl SpawnProc
 	adds r5, r0, #0
@@ -719,7 +730,7 @@ func_fe6_0804BED8: @ 0x0804BED8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804BEFC: .4byte gUnk_085CBE08
+.L0804BEFC: .4byte ProcScr_EkrUnitMainMini
 
 	thumb_func_start func_fe6_0804BF00
 func_fe6_0804BF00: @ 0x0804BF00

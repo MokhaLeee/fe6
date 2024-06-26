@@ -2,6 +2,29 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EfxQuakePure
+ProcScr_EfxQuakePure: @ 085CB918
+	.incbin "fe6-base.gba", 0x5CB918, (0x5CB930 - 0x5CB918) @ length: 0018
+
+	.global gUnk_085CB930
+gUnk_085CB930: @ 085CB930
+	.incbin "fe6-base.gba", 0x5CB930, (0x5CB988 - 0x5CB930) @ length: 0058
+
+	.global ProcScr_EfxHitQuakePure
+ProcScr_EfxHitQuakePure: @ 085CB988
+	.incbin "fe6-base.gba", 0x5CB988, (0x5CB9A0 - 0x5CB988) @ length: 0018
+
+	.global gUnk_085CB9A0
+gUnk_085CB9A0: @ 085CB9A0
+	.incbin "fe6-base.gba", 0x5CB9A0, (0x5CB9B8 - 0x5CB9A0) @ length: 0018
+
+	.global ProcScr_EfxHitQuake
+ProcScr_EfxHitQuake: @ 085CB9B8
+	.incbin "fe6-base.gba", 0x5CB9B8, (0x5CB9D0 - 0x5CB9B8) @ length: 0018
+
+	.section .text
 	thumb_func_start NewEfxQuakePure
 NewEfxQuakePure: @ 0x08045F48
 	push {r4, r5, lr}

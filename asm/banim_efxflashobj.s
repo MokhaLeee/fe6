@@ -2,6 +2,16 @@
 
 	.syntax unified
 
+	.section .data
+	.global ProcScr_EfxWeaponIcon
+ProcScr_EfxWeaponIcon: @ 085CBAC0
+	.incbin "fe6-base.gba", 0x5CBAC0, (0x5CBAE8 - 0x5CBAC0) @ length: 0028
+
+	.global gUnk_085CBAE8
+gUnk_085CBAE8: @ 085CBAE8
+	.incbin "fe6-base.gba", 0x5CBAE8, (0x5CBB18 - 0x5CBAE8) @ length: 0030
+
+	.section .text
 	thumb_func_start NewEfxWeaponIcon
 NewEfxWeaponIcon: @ 0x080471E4
 	push {r4, r5, lr}
@@ -11,7 +21,7 @@ NewEfxWeaponIcon: @ 0x080471E4
 	lsrs r4, r4, #0x10
 	lsls r5, r5, #0x10
 	lsrs r5, r5, #0x10
-	ldr r0, .L08047220 @ =gUnk_085CBAC0
+	ldr r0, .L08047220 @ =ProcScr_EfxWeaponIcon
 	movs r1, #3
 	bl SpawnProc
 	movs r2, #0
@@ -33,7 +43,7 @@ NewEfxWeaponIcon: @ 0x080471E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08047220: .4byte gUnk_085CBAC0
+.L08047220: .4byte ProcScr_EfxWeaponIcon
 .L08047224: .4byte gUnk_08112144
 .L08047228: .4byte gUnk_Banim_0201776C
 

@@ -2,6 +2,29 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EfxDeadEvent
+ProcScr_EfxDeadEvent: @ 085CB850
+	.incbin "fe6-base.gba", 0x5CB850, (0x5CB888 - 0x5CB850) @ length: 0038
+
+	.global ProcScr_EfxDead
+ProcScr_EfxDead: @ 085CB888
+	.incbin "fe6-base.gba", 0x5CB888, (0x5CB8A8 - 0x5CB888) @ length: 0020
+
+	.global ProcScr_EfxDeadPika
+ProcScr_EfxDeadPika: @ 085CB8A8
+	.incbin "fe6-base.gba", 0x5CB8A8, (0x5CB8C0 - 0x5CB8A8) @ length: 0018
+
+	.global ProcScr_EfxDeadAlpha
+ProcScr_EfxDeadAlpha: @ 085CB8C0
+	.incbin "fe6-base.gba", 0x5CB8C0, (0x5CB8D8 - 0x5CB8C0) @ length: 0018
+
+	.global ProcScr_EfxDeadDragonAlpha
+ProcScr_EfxDeadDragonAlpha: @ 085CB8D8
+	.incbin "fe6-base.gba", 0x5CB8D8, (0x5CB8F0 - 0x5CB8D8) @ length: 0018
+
+	.section .text
 	thumb_func_start NewEfxDeadEvent
 NewEfxDeadEvent: @ 0x080455C0
 	push {r4, r5, r6, lr}

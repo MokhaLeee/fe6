@@ -2,6 +2,25 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EfxFlashBG
+ProcScr_EfxFlashBG: @ 085CB9D0
+	.incbin "fe6-base.gba", 0x5CB9D0, (0x5CB9F8 - 0x5CB9D0) @ length: 0028
+
+	.global ProcScr_EfxWhiteOUT
+ProcScr_EfxWhiteOUT: @ 085CB9F8
+	.incbin "fe6-base.gba", 0x5CB9F8, (0x5CBA20 - 0x5CB9F8) @ length: 0028
+
+	.global gUnk_085CBA20
+gUnk_085CBA20: @ 085CBA20
+	.incbin "fe6-base.gba", 0x5CBA20, (0x5CBA50 - 0x5CBA20) @ length: 0030
+
+	.global ProcScr_EfxHpBarColorChange
+ProcScr_EfxHpBarColorChange: @ 085CBA50
+	.incbin "fe6-base.gba", 0x5CBA50, (0x5CBA70 - 0x5CBA50) @ length: 0020
+
+	.section .text
 	thumb_func_start NewEfxFlashBgWhite
 NewEfxFlashBgWhite: @ 0x08046794
 	push {r4, r5, lr}
@@ -368,7 +387,7 @@ NewEfxHPBarColorChange: @ 0x08046A6C
 	sub sp, #4
 	adds r5, r0, #0
 	ldr r4, .L08046B24 @ =gUnk_Banim_02017774
-	ldr r0, .L08046B28 @ =gUnk_085CBA50
+	ldr r0, .L08046B28 @ =ProcScr_EfxHpBarColorChange
 	movs r1, #3
 	bl SpawnProc
 	str r0, [r4]
@@ -447,7 +466,7 @@ NewEfxHPBarColorChange: @ 0x08046A6C
 	bx r0
 	.align 2, 0
 .L08046B24: .4byte gUnk_Banim_02017774
-.L08046B28: .4byte gUnk_085CBA50
+.L08046B28: .4byte ProcScr_EfxHpBarColorChange
 .L08046B2C: .4byte gUnk_081120F8
 .L08046B30: .4byte gBanimFactionPal
 .L08046B34: .4byte gUnk_08113424

@@ -1,6 +1,21 @@
 	.include "macro.inc"
 	.syntax unified
 
+	.section .data
+
+	.global AnimScr_DefaultAnim
+AnimScr_DefaultAnim: @ 085CBDA0
+	.incbin "fe6-base.gba", 0x5CBDA0, (0x5CBDB0 - 0x5CBDA0) @ length: 0010
+
+	.global gUnk_085CBDB0
+gUnk_085CBDB0: @ 085CBDB0
+	.incbin "fe6-base.gba", 0x5CBDB0, (0x5CBDD8 - 0x5CBDB0) @ length: 0028
+
+	.global ProcScr_EkrChienCHR
+ProcScr_EkrChienCHR: @ 085CBDD8
+	.incbin "fe6-base.gba", 0x5CBDD8, (0x5CBDF0 - 0x5CBDD8) @ length: 0018
+
+	.section .text
 	thumb_func_start NewEkrChienCHR
 NewEkrChienCHR: @ 0x0804AF70
 	push {r4, lr}
@@ -546,7 +561,7 @@ InitLeftAnim: @ 0x0804B37C
 	adds r0, r1, r0
 	cmp r5, #0xff
 	bne .L0804B3E4
-	ldr r0, .L0804B4AC @ =gUnk_085CBDA0
+	ldr r0, .L0804B4AC @ =AnimScr_DefaultAnim
 .L0804B3E4:
 	adds r1, r6, #0
 	bl BasCreate
@@ -588,7 +603,7 @@ InitLeftAnim: @ 0x0804B37C
 	adds r0, r1, r0
 	cmp r2, #0xff
 	bne .L0804B438
-	ldr r0, .L0804B4AC @ =gUnk_085CBDA0
+	ldr r0, .L0804B4AC @ =AnimScr_DefaultAnim
 .L0804B438:
 	mov r1, sb
 	bl BasCreate
@@ -637,7 +652,7 @@ InitLeftAnim: @ 0x0804B37C
 .L0804B4A0: .4byte gEkrYPosReal
 .L0804B4A4: .4byte gUnk_Banim_02000054
 .L0804B4A8: .4byte gUnk_Banim_0200F1C0
-.L0804B4AC: .4byte gUnk_085CBDA0
+.L0804B4AC: .4byte AnimScr_DefaultAnim
 .L0804B4B0: .4byte gEkrBgPosition
 .L0804B4B4: .4byte gUnk_Banim_02000080
 .L0804B4B8: .4byte gUnk_Banim_020041C0
@@ -685,7 +700,7 @@ InitRightAnim: @ 0x0804B4C0
 	adds r0, r1, r0
 	cmp r3, #0xff
 	bne .L0804B512
-	ldr r0, .L0804B5CC @ =gUnk_085CBDA0
+	ldr r0, .L0804B5CC @ =AnimScr_DefaultAnim
 .L0804B512:
 	adds r1, r4, #0
 	bl BasCreate
@@ -726,7 +741,7 @@ InitRightAnim: @ 0x0804B4C0
 	adds r0, r1, r0
 	cmp r6, #0xff
 	bne .L0804B564
-	ldr r0, .L0804B5CC @ =gUnk_085CBDA0
+	ldr r0, .L0804B5CC @ =AnimScr_DefaultAnim
 .L0804B564:
 	adds r1, r7, #0
 	bl BasCreate
@@ -771,7 +786,7 @@ InitRightAnim: @ 0x0804B4C0
 .L0804B5C0: .4byte gEkrYPosReal
 .L0804B5C4: .4byte gUnk_Banim_02000058
 .L0804B5C8: .4byte gUnk_Banim_02011BC0
-.L0804B5CC: .4byte gUnk_085CBDA0
+.L0804B5CC: .4byte AnimScr_DefaultAnim
 .L0804B5D0: .4byte gEkrBgPosition
 .L0804B5D4: .4byte gUnk_Banim_02002080
 .L0804B5D8: .4byte gUnk_Banim_020099C0
@@ -837,7 +852,7 @@ SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
 .L0804B64C: .4byte gUnk_Banim_02000058
 .L0804B650: .4byte gUnk_Banim_02011BC0
 .L0804B654:
-	ldr r0, .L0804B6A4 @ =gUnk_085CBDA0
+	ldr r0, .L0804B6A4 @ =AnimScr_DefaultAnim
 	str r0, [r4, #0x24]
 	str r0, [r4, #0x20]
 	movs r0, #0
@@ -877,7 +892,7 @@ SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804B6A4: .4byte gUnk_085CBDA0
+.L0804B6A4: .4byte AnimScr_DefaultAnim
 .L0804B6A8: .4byte 0x0000F3FF
 .L0804B6AC: .4byte gUnk_Banim_020041C0
 

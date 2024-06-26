@@ -2,6 +2,13 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EkrBattleStarting
+ProcScr_EkrBattleStarting: @ 085CBB18
+	.incbin "fe6-base.gba", 0x5CBB18, (0x5CBB60 - 0x5CBB18) @ length: 0048
+
+	.section .text
 	thumb_func_start SetupBanim
 SetupBanim: @ 0x08047CB8
 	push {lr}

@@ -479,10 +479,10 @@ void SetAnimStateUnHidden(int pos);
 // func_fe6_0804BE4C
 // func_fe6_0804BE6C
 // func_fe6_0804BE80
-// func_fe6_0804BE98
-// func_fe6_0804BEB8
-// func_fe6_0804BECC
-// func_fe6_0804BED8
+// NewEfxAnimeDrvProc
+// EndEfxAnimeDrvProc
+// ExecAllBas
+// NewEkrUnitMainMini
 // func_fe6_0804BF00
 // func_fe6_0804BF24
 // func_fe6_0804BF40
@@ -497,7 +497,7 @@ int GetBattleAnimArenaFlag(void);
 void func_fe6_0804C56C(void);
 // BeginAnimsOnBattle_Arena
 // ExecBattleAnimArenaExit
-// func_fe6_0804C5BC
+// NewEkrTogiInitPROC
 // func_fe6_0804C5D0
 // func_fe6_0804C658
 // func_fe6_0804C6CC
@@ -1233,38 +1233,38 @@ extern struct ProcScr CONST_DATA ProcScr_EfxHitQuake[];
 extern struct ProcScr CONST_DATA ProcScr_EfxFlashBG[];
 extern struct ProcScr CONST_DATA ProcScr_EfxWhiteOUT[];
 // ??? gUnk_085CBA20
-// ??? gUnk_085CBA50
+// ??? ProcScr_EfxHpBarColorChange
 extern struct ProcScr CONST_DATA ProcScr_EfxFlashUnit[];
-// ??? gUnk_085CBA98
-// ??? gUnk_085CBAC0
+// ??? ProcScr_EfxStatusUnit
+// ??? ProcScr_EfxWeaponIcon
 // ??? gUnk_085CBAE8
 // ??? ProcScr_EkrBattleStarting
-// ??? gUnk_085CBB60
-// ??? gUnk_085CBBB0
-// ??? gUnk_085CBBC8
-// ??? gUnk_085CBBE8
-// ??? gUnk_085CBC08
-// ??? gUnk_085CBC28
-// ??? gUnk_085CBC48
-// ??? gUnk_085CBC68
-// ??? gUnk_085CBC88
-// ??? gUnk_085CBCA8
+// ??? ProcScr_Ekrbattleending
+// ??? ProcScr_EkrBaseKaiten
+// ??? Imgs_EkrBaseKaiten1
+// ??? Imgs_EkrBaseKaiten2
+// ??? AnimScrs_EkrBaseKaiten1
+// ??? AnimScrs_EkrBaseKaiten2
+// ??? AnimScrs_EkrBaseKaiten3
+// ??? AnimScrs_EkrBaseKaiten4
+// ??? AnimScrs_EkrBaseKaiten5
+// ??? AnimScrs_EkrBaseKaiten6
 // ??? gUnk_085CBCC8
 // ??? gUnk_085CBCE8
 // ??? gUnk_085CBD08
-// ??? gUnk_085CBD28
-// ??? gUnk_085CBD50
-// ??? gUnk_085CBD68
+// ??? ProcScr_EkrUnitKakudai
+// ??? ProcScr_EkrWindowAppear
+// ??? ProcScr_EkrNamewinAppear
 // ??? ProcScr_EkrBaseAppear
-// ??? gUnk_085CBDA0
+// ??? AnimScr_DefaultAnim
 // ??? gUnk_085CBDB0
 extern struct ProcScr CONST_DATA ProcScr_EkrChienCHR[];
-// ??? gUnk_085CBDF0
-// ??? gUnk_085CBE08
-// ??? gUnk_085CBE20
+// ??? ProcScr_EfxAnimeDrv
+// ??? ProcScr_EkrUnitMainMini
+// ??? ProcScr_EkrTogiInitPROC
 // ??? gUnk_085CBE50
 // ??? gUnk_085CBE78
-// ??? gUnk_085CBE90
+// ??? Pals_ArenaBattleBg
 // ??? gUnk_085CCC40
 // ??? gUnk_085CCDAC
 // ??? gUnk_085CCE38
@@ -1701,14 +1701,14 @@ extern AnimScr AnimScr_ManaketeExit1[];
 // ??? AnimScr_EkrIdunnDeamon
 // ??? gUnk_08605A70
 // ??? gUnk_08605A94
-// ??? gUnk_08605D14
+// ??? gEfxTmyPalRefs
 extern struct ProcScr CONST_DATA ProcScr_EkrSubAnimeEmulator[];
-// ??? gUnk_08605D40
-// ??? gUnk_08605F18
+// ??? ProcScr_EfxSoundSE
+// ??? gBanimBossBGMs
 // ??? gUnk_08605F34
 // ??? gUnk_08605F50
 // ??? gUnk_08605F6C
-// ??? gUnk_08605F88
+// ??? ProcScr_EkrClasschg
 // ??? gUnk_08605FA8
 // ??? gUnk_08605FC0
 // ??? gUnk_0860601C
@@ -1720,14 +1720,14 @@ extern struct ProcScr CONST_DATA ProcScr_EkrSubAnimeEmulator[];
 // ??? gUnk_0860613C
 // ??? gUnk_0860615C
 // ??? gUnk_08606174
-// ??? gUnk_0860618C
-// ??? gUnk_086061AC
+// ??? FaceConfig_EkrLevelup
+// ??? ProcScr_EkrLevelup
 // ??? gUnk_08606254
 // ??? gUnk_0860626C
 // ??? gUnk_0860628C
 // ??? gUnk_086062AC
 // ??? gUnk_086062EC
-// ??? gUnk_08606314
+// ??? ProcScr_EkrTriangle
 // ??? gUnk_0860632C
 // ??? gUnk_08606344
 // ??? gUnk_0860635C

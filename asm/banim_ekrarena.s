@@ -1,6 +1,25 @@
 	.include "macro.inc"
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EkrTogiInitPROC
+ProcScr_EkrTogiInitPROC: @ 085CBE20
+	.incbin "fe6-base.gba", 0x5CBE20, (0x5CBE50 - 0x5CBE20) @ length: 0030
+
+	.global gUnk_085CBE50
+gUnk_085CBE50: @ 085CBE50
+	.incbin "fe6-base.gba", 0x5CBE50, (0x5CBE78 - 0x5CBE50) @ length: 0028
+
+	.global gUnk_085CBE78
+gUnk_085CBE78: @ 085CBE78
+	.incbin "fe6-base.gba", 0x5CBE78, (0x5CBE90 - 0x5CBE78) @ length: 0018
+
+	.global Pals_ArenaBattleBg
+Pals_ArenaBattleBg: @ 085CBE90
+	.incbin "fe6-base.gba", 0x5CBE90, (0x5CCC40 - 0x5CBE90) @ length: 0DB0
+
+	.section .text
 	thumb_func_start SetBanimArenaFlag
 SetBanimArenaFlag: @ 0x0804C4F4
 	ldr r1, .L0804C4FC @ =0x0203CDD4
@@ -86,7 +105,7 @@ BeginAnimsOnBattle_Arena: @ 0x0804C580
 	bl GetBanimInitPosReal
 	ldr r1, .L0804C5A0 @ =gEkrInitPosReal
 	str r0, [r1]
-	bl func_fe6_0804C5BC
+	bl NewEkrTogiInitPROC
 	movs r0, #0
 	bl SetOnHBlankA
 	pop {r0}
@@ -106,16 +125,16 @@ ExecBattleAnimArenaExit: @ 0x0804C5A4
 	.align 2, 0
 .L0804C5B8: .4byte OnMainBas
 
-	thumb_func_start func_fe6_0804C5BC
-func_fe6_0804C5BC: @ 0x0804C5BC
+	thumb_func_start NewEkrTogiInitPROC
+NewEkrTogiInitPROC: @ 0x0804C5BC
 	push {lr}
-	ldr r0, .L0804C5CC @ =gUnk_085CBE20
+	ldr r0, .L0804C5CC @ =ProcScr_EkrTogiInitPROC
 	movs r1, #3
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804C5CC: .4byte gUnk_085CBE20
+.L0804C5CC: .4byte ProcScr_EkrTogiInitPROC
 
 	thumb_func_start func_fe6_0804C5D0
 func_fe6_0804C5D0: @ 0x0804C5D0
@@ -395,7 +414,7 @@ func_fe6_0804C818: @ 0x0804C818
 	str r1, [r0, #0x44]
 	ldr r1, .L0804C844 @ =gUnk_08112370
 	str r1, [r0, #0x48]
-	ldr r1, .L0804C848 @ =gUnk_085CBE90
+	ldr r1, .L0804C848 @ =Pals_ArenaBattleBg
 	str r1, [r0, #0x4c]
 	pop {r4}
 	pop {r0}
@@ -404,7 +423,7 @@ func_fe6_0804C818: @ 0x0804C818
 .L0804C83C: .4byte gUnk_Banim_0201E144
 .L0804C840: .4byte gUnk_085CBE78
 .L0804C844: .4byte gUnk_08112370
-.L0804C848: .4byte gUnk_085CBE90
+.L0804C848: .4byte Pals_ArenaBattleBg
 
 	thumb_func_start func_fe6_0804C84C
 func_fe6_0804C84C: @ 0x0804C84C

@@ -2,9 +2,60 @@
 
 	.syntax unified
 
+	.section .data
+	.global ProcScr_EkrClasschg
+ProcScr_EkrClasschg: @ 08605F88
+	.incbin "fe6-base.gba", 0x605F88, (0x605FA8 - 0x605F88) @ length: 0020
+
+	.global gUnk_08605FA8
+gUnk_08605FA8: @ 08605FA8
+	.incbin "fe6-base.gba", 0x605FA8, (0x605FC0 - 0x605FA8) @ length: 0018
+
+	.global gUnk_08605FC0
+gUnk_08605FC0: @ 08605FC0
+	.incbin "fe6-base.gba", 0x605FC0, (0x60601C - 0x605FC0) @ length: 005C
+
+	.global gUnk_0860601C
+gUnk_0860601C: @ 0860601C
+	.incbin "fe6-base.gba", 0x60601C, (0x606078 - 0x60601C) @ length: 005C
+
+	.global gUnk_08606078
+gUnk_08606078: @ 08606078
+	.incbin "fe6-base.gba", 0x606078, (0x6060D4 - 0x606078) @ length: 005C
+
+	.global gUnk_086060D4
+gUnk_086060D4: @ 086060D4
+	.incbin "fe6-base.gba", 0x6060D4, (0x6060EC - 0x6060D4) @ length: 0018
+
+	.global gUnk_086060EC
+gUnk_086060EC: @ 086060EC
+	.incbin "fe6-base.gba", 0x6060EC, (0x606104 - 0x6060EC) @ length: 0018
+
+	.global gUnk_08606104
+gUnk_08606104: @ 08606104
+	.incbin "fe6-base.gba", 0x606104, (0x606124 - 0x606104) @ length: 0020
+
+	.global gUnk_08606124
+gUnk_08606124: @ 08606124
+	.incbin "fe6-base.gba", 0x606124, (0x60613C - 0x606124) @ length: 0018
+
+	.global gUnk_0860613C
+gUnk_0860613C: @ 0860613C
+	.incbin "fe6-base.gba", 0x60613C, (0x60615C - 0x60613C) @ length: 0020
+
+	.global gUnk_0860615C
+gUnk_0860615C: @ 0860615C
+	.incbin "fe6-base.gba", 0x60615C, (0x606174 - 0x60615C) @ length: 0018
+
+	.global gUnk_08606174
+gUnk_08606174: @ 08606174
+	.incbin "fe6-base.gba", 0x606174, (0x60618C - 0x606174) @ length: 0018
+
+	.section .text
+
 	thumb_func_start EkrClasschgFinished
 EkrClasschgFinished: @ 0x0805C840
-	ldr r0, .L0805C850 @ =gUnk_Banim_0201F054
+	ldr r0, .L0805C850 @ =gpProcEkrClasschg
 	ldr r0, [r0]
 	adds r0, #0x29
 	ldrb r0, [r0]
@@ -13,7 +64,7 @@ EkrClasschgFinished: @ 0x0805C840
 	movs r0, #0
 	b .L0805C856
 	.align 2, 0
-.L0805C850: .4byte gUnk_Banim_0201F054
+.L0805C850: .4byte gpProcEkrClasschg
 .L0805C854:
 	movs r0, #1
 .L0805C856:
@@ -22,21 +73,21 @@ EkrClasschgFinished: @ 0x0805C840
 	thumb_func_start EndEkrClasschg
 EndEkrClasschg: @ 0x0805C858
 	push {lr}
-	ldr r0, .L0805C868 @ =gUnk_Banim_0201F054
+	ldr r0, .L0805C868 @ =gpProcEkrClasschg
 	ldr r0, [r0]
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805C868: .4byte gUnk_Banim_0201F054
+.L0805C868: .4byte gpProcEkrClasschg
 
 	thumb_func_start NewEkrClassChg
 NewEkrClassChg: @ 0x0805C86C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl func_fe6_08047300
-	ldr r4, .L0805C894 @ =gUnk_Banim_0201F054
-	ldr r0, .L0805C898 @ =gUnk_08605F88
+	ldr r4, .L0805C894 @ =gpProcEkrClasschg
+	ldr r0, .L0805C898 @ =ProcScr_EkrClasschg
 	movs r1, #3
 	bl SpawnProc
 	str r0, [r4]
@@ -50,8 +101,8 @@ NewEkrClassChg: @ 0x0805C86C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805C894: .4byte gUnk_Banim_0201F054
-.L0805C898: .4byte gUnk_08605F88
+.L0805C894: .4byte gpProcEkrClasschg
+.L0805C898: .4byte ProcScr_EkrClasschg
 
 	thumb_func_start func_fe6_0805C89C
 func_fe6_0805C89C: @ 0x0805C89C

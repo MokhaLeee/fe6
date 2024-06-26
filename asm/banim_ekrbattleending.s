@@ -2,10 +2,16 @@
 
 	.syntax unified
 
+	.section .data
+	.global ProcScr_Ekrbattleending
+ProcScr_Ekrbattleending: @ 085CBB60
+	.incbin "fe6-base.gba", 0x5CBB60, (0x5CBBB0 - 0x5CBB60) @ length: 0050
+
+	.section .text
 	thumb_func_start NewEkrbattleending
 NewEkrbattleending: @ 0x080481B4
 	push {lr}
-	ldr r0, .L080481C8 @ =gUnk_085CBB60
+	ldr r0, .L080481C8 @ =ProcScr_Ekrbattleending
 	movs r1, #3
 	bl SpawnProc
 	movs r1, #0
@@ -13,7 +19,7 @@ NewEkrbattleending: @ 0x080481B4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080481C8: .4byte gUnk_085CBB60
+.L080481C8: .4byte ProcScr_Ekrbattleending
 
 	thumb_func_start func_fe6_080481CC
 func_fe6_080481CC: @ 0x080481CC

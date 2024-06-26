@@ -2,6 +2,29 @@
 
 	.syntax unified
 
+	.section .data
+	.global ProcScr_EfxSoundSE
+ProcScr_EfxSoundSE: @ 08605D40
+	.incbin "fe6-base.gba", 0x605D40, (0x605F18 - 0x605D40) @ length: 01D8
+
+	.global gBanimBossBGMs
+gBanimBossBGMs: @ 08605F18
+	.incbin "fe6-base.gba", 0x605F18, (0x605F34 - 0x605F18) @ length: 001C
+
+	.global gUnk_08605F34
+gUnk_08605F34: @ 08605F34
+	.incbin "fe6-base.gba", 0x605F34, (0x605F50 - 0x605F34) @ length: 001C
+
+	.global gUnk_08605F50
+gUnk_08605F50: @ 08605F50
+	.incbin "fe6-base.gba", 0x605F50, (0x605F6C - 0x605F50) @ length: 001C
+
+	.global gUnk_08605F6C
+gUnk_08605F6C: @ 08605F6C
+	.incbin "fe6-base.gba", 0x605F6C, (0x605F88 - 0x605F6C) @ length: 001C
+
+	.section .text
+
 	thumb_func_start EfxPlaySE
 EfxPlaySE: @ 0x0805BCA8
 	push {r4, r5, r6, lr}
@@ -34,7 +57,7 @@ EfxPlaySE: @ 0x0805BCA8
 .L0805BCE4: .4byte gBmSt
 .L0805BCE8: .4byte gPlaySt
 .L0805BCEC:
-	ldr r0, .L0805BD00 @ =gUnk_08605D40
+	ldr r0, .L0805BD00 @ =ProcScr_EfxSoundSE
 	movs r1, #3
 	bl SpawnProc
 	str r5, [r0, #0x44]
@@ -45,7 +68,7 @@ EfxPlaySE: @ 0x0805BCA8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805BD00: .4byte gUnk_08605D40
+.L0805BD00: .4byte ProcScr_EfxSoundSE
 
 	thumb_func_start func_fe6_0805BD04
 func_fe6_0805BD04: @ 0x0805BD04
@@ -504,7 +527,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	movs r4, #0xe7
 	b .L0805C16C
 .L0805C0D4:
-	ldr r1, .L0805C0E8 @ =gUnk_08605F18
+	ldr r1, .L0805C0E8 @ =gBanimBossBGMs
 .L0805C0D6:
 	lsls r0, r7, #2
 	adds r0, r0, r1
@@ -516,7 +539,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	ldrh r4, [r0]
 	b .L0805C16C
 	.align 2, 0
-.L0805C0E8: .4byte gUnk_08605F18
+.L0805C0E8: .4byte gBanimBossBGMs
 .L0805C0EC:
 	ldr r4, .L0805C0F8 @ =0x00000265
 .L0805C0EE:
