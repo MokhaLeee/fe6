@@ -5829,7 +5829,7 @@ func_fe6_0805CFF8: @ 0x0805CFF8
 	bl GetAnimPosition
 	cmp r0, #0
 	bne .L0805D050
-	ldr r0, .L0805D044 @ =gUnk_Banim_0200004C
+	ldr r0, .L0805D044 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0]
 	ldr r4, .L0805D048 @ =gPal+0x2E0
 	adds r1, r4, #0
@@ -5844,11 +5844,11 @@ func_fe6_0805CFF8: @ 0x0805CFF8
 	bl EfxPalBlackInOut
 	b .L0805D06E
 	.align 2, 0
-.L0805D044: .4byte gUnk_Banim_0200004C
+.L0805D044: .4byte gpEfxUnitPaletteBackup
 .L0805D048: .4byte gPal+0x2E0
 .L0805D04C: .4byte 0xFFFFFD20
 .L0805D050:
-	ldr r0, .L0805D090 @ =gUnk_Banim_0200004C
+	ldr r0, .L0805D090 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0, #4]
 	ldr r4, .L0805D094 @ =gPal+0x320
 	adds r1, r4, #0
@@ -5879,7 +5879,7 @@ func_fe6_0805CFF8: @ 0x0805CFF8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D090: .4byte gUnk_Banim_0200004C
+.L0805D090: .4byte gpEfxUnitPaletteBackup
 .L0805D094: .4byte gPal+0x320
 .L0805D098: .4byte 0xFFFFFCE0
 
@@ -9668,7 +9668,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	bl func_fe6_08044230
-	bl GetEkrDragonStateTypeIdunnManakete
+	bl GetEkrDragonStateType
 	cmp r0, #0
 	beq .L0805EF58
 	ldrh r1, [r5]
@@ -9757,7 +9757,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	bl func_fe6_08044230
-	bl GetEkrDragonStateTypeIdunnManakete
+	bl GetEkrDragonStateType
 	cmp r0, #0
 	beq .L0805F012
 	movs r0, #3

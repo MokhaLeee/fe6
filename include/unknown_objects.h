@@ -200,7 +200,7 @@ extern u16 Pal_08113224[];
 // extern ??? gUnk_08113424
 // extern ??? gUnk_081134A4
 // extern ??? gUnk_081134C4
-extern u16 const Pal_08113564[];
+extern u16 const Pal_BanimUnitFlashing[];
 extern u8 const Img_EkrExpBar[];
 extern u8 const Img_EkrExpBarChange[];
 extern u8 const Img_BarNumfx[];

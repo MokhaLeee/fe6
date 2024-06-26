@@ -253,8 +253,8 @@ gUnk_081134A4: @ 081134A4
 gUnk_081134C4: @ 081134C4
 	.incbin "fe6-base.gba", 0x1134C4, (0x113564 - 0x1134C4) @ length: 00A0
 
-	.global Pal_08113564
-Pal_08113564: @ 08113564
+	.global Pal_BanimUnitFlashing
+Pal_BanimUnitFlashing: @ 08113564
 	.incbin "fe6-base.gba", 0x113564, (0x113584 - 0x113564) @ length: 0020
 
 	.global Img_EkrExpBar

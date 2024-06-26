@@ -41,6 +41,11 @@ enum banim_mode_index {
 #define EFX_BG_WIDTH 66
 #define EFX_TILEMAP_LOC(aMap, aX, aY) (aMap + (aX) + EFX_BG_WIDTH * (aY))
 
+enum video_banim {
+    OBPAL_EFX_UNIT_L = 7,
+    OBPAL_EFX_UNIT_R = 9,
+};
+
 struct ProcEfx {
     PROC_HEADER;
 
@@ -152,6 +157,7 @@ extern i16 gEkrYPosReal[2];
 extern u16 gEkrXPosBase[2];
 extern u16 gEkrYPosBase[2];
 extern struct Vec2i gEkrBg0QuakeVec;
+extern u16 * gpEfxUnitPaletteBackup[2];
 extern i16 gEkrDebugModeMaybe;
 extern u32 gEkrBattleEndFlag;
 extern u32 gBanimDoneFlag[2];
@@ -297,7 +303,7 @@ void NewEfxHitQuake(struct BaSprite * anim1, struct BaSprite * anim2, int kind);
 struct ProcEfxFlashing {
     PROC_HEADER;
 
-    /* 29 */ u8 unk29;
+    /* 29 */ u8 flag;
 
     STRUCT_PAD(0x2A, 0x2C);
 
@@ -326,10 +332,11 @@ void NewEfxHPBarColorChange(struct BaSprite * anim);
 void EndEfxHPBarColorChange(void);
 // func_fe6_08046B5C
 // func_fe6_08046B6C
-// func_fe6_08046B7C
-void NewEfxFlashUnit(struct BaSprite * anim, int a, int b, int c);
-// func_fe6_08046C50
-// func_fe6_08046D04
+// EfxHpBarColorChange_Loop
+void NewEfxFlashUnit(struct BaSprite * anim, u16 dura1, u16 dura2, int c);
+void EfxFlashUnit_Loop(struct ProcEfxFlashing * proc);
+void EfxFlashUnit_RestorePal(struct ProcEfxFlashing * proc);
+
 void NewEfxStatusUnit(struct BaSprite * anim);
 void EndEfxStatusUnits(struct BaSprite *anim);
 void DisableEfxStatusUnits(struct BaSprite * anim);
@@ -1224,7 +1231,7 @@ extern struct ProcScr CONST_DATA ProcScr_EfxFlashBG[];
 extern struct ProcScr CONST_DATA ProcScr_EfxWhiteOUT[];
 // ??? gUnk_085CBA20
 // ??? gUnk_085CBA50
-// ??? gUnk_085CBA70
+extern struct ProcScr CONST_DATA ProcScr_EfxFlashUnit[];
 // ??? gUnk_085CBA98
 // ??? gUnk_085CBAC0
 // ??? gUnk_085CBAE8

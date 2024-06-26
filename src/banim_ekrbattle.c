@@ -281,7 +281,7 @@ void EkrBattlePreDragonIntro(struct ProcEkrBattle * proc)
 
 void EkrBattleExecDragonIntro(struct ProcEkrBattle * proc)
 {
-    u32 conf = GetEkrDragonStateType();
+    u32 conf = GetEkrDragonStateTypeGeneric();
 
     if (proc->counter == 2)
     {
@@ -594,7 +594,7 @@ void EkrBattleExecExpGain(struct ProcEkrBattle * proc)
     CpuFastCopy(Pal_EkrExpBar, &PAL_BG_COLOR(1, 0), 0x20);
     EnableBgSync(BG1_SYNC_BIT);
     EnablePalSync();
-    ret = GetEkrDragonStateTypeIdunnManakete();
+    ret = GetEkrDragonStateType();
 
     switch (ret) {
     case 0:
@@ -752,7 +752,7 @@ void EkrBattleLvupHanlder(struct ProcEkrBattle *proc)
     SpellFx_ClearBG1();
     EkrGauge_08043908(0);
 
-    switch (GetEkrDragonStateTypeIdunnManakete()) {
+    switch (GetEkrDragonStateType()) {
     case 0:
         gDispIo.bg0_ct.priority = 0;
         gDispIo.bg1_ct.priority = 1;
@@ -832,7 +832,7 @@ void EkrBattleStartDragonEnding(struct ProcEkrBattle * proc)
 {
     int val;
 
-    u32 conf = GetEkrDragonStateType();
+    u32 conf = GetEkrDragonStateTypeGeneric();
 
     /* If both side is not the ekrdragon, get here */
     if (proc->counter == 2)

@@ -35,8 +35,8 @@ enum ekr_dragon_status_type_bitfile {
     EDRAGON_TYPE_IDUNN_R = 1 << 5,
 };
 
-u32 GetEkrDragonStateType(void); /* Different form FE8, this is a bitfile rather than enum */
-u32 GetEkrDragonStateTypeIdunnManakete(void);
+u32 GetEkrDragonStateTypeGeneric(void); /* Different form FE8, this is a bitfile rather than enum */
+u32 GetEkrDragonStateType(void);
 u32 GetEkrDragonStateTypeIdunn(void);
 bool CheckSkipDragonTransfer(struct BaSprite * anim);
 u16 * GetEkrDragonJid(int pos);
@@ -161,9 +161,9 @@ void EkrDragonMoveBg3(int x);
 void EkrDragonMoveBg3_Loop(struct ProcEkrDragonMoveBg3 * proc);
 void func_fe6_08058D34(struct ProcEkrDragon * proc);
 void func_fe6_08058E24(void);
-void func_fe6_08058E58(int pos);
-void func_fe6_08058E90(int pos);
-void func_fe6_08058EC8(int pos);
+void RestoreBodyFlashingPalForManakete(int pos);
+void RestoreBodyFlashingPalForIdunn(int pos);
+void EfxBodyFlashingForDragon(int pos);
 int GetDragonPosition(void);
 void InitEkrDragonStatus(void);
 int func_fe6_08058F38(void);

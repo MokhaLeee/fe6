@@ -45,7 +45,7 @@ bool CheckEkrDragonEndingDone(struct BaSprite * anim)
     return FALSE;
 }
 
-u32 GetEkrDragonStateType(void)
+u32 GetEkrDragonStateTypeGeneric(void)
 {
     u32 ret = 0;
 
@@ -70,7 +70,7 @@ u32 GetEkrDragonStateType(void)
     return ret;
 }
 
-u32 GetEkrDragonStateTypeIdunnManakete(void)
+u32 GetEkrDragonStateType(void)
 {
     u32 ret = 0;
 
@@ -330,7 +330,7 @@ void func_fe6_08058E24(void)
     RegisterVramMove(gPal_Banim, 0x8000, 0x20);
 }
 
-void func_fe6_08058E58(int pos)
+void RestoreBodyFlashingPalForManakete(int pos)
 {
     if (pos == POS_L)
         CpuFastCopy(Pal_EkrManaketefx, gPal + BGPAL_OFFSET(6), 0x20);
@@ -340,7 +340,7 @@ void func_fe6_08058E58(int pos)
     EnablePalSync();
 }
 
-void func_fe6_08058E90(int pos)
+void RestoreBodyFlashingPalForIdunn(int pos)
 {
     if (pos == POS_L)
         CpuFastCopy(Pal_081C4DE8, gPal + BGPAL_OFFSET(6), 0x20);
@@ -350,12 +350,12 @@ void func_fe6_08058E90(int pos)
     EnablePalSync();
 }
 
-void func_fe6_08058EC8(int pos)
+void EfxBodyFlashingForDragon(int pos)
 {
     if (pos == POS_L)
-        CpuFastCopy(Pal_08113564, gPal + BGPAL_OFFSET(6), 0x20);
+        CpuFastCopy(Pal_BanimUnitFlashing, gPal + BGPAL_OFFSET(6), 0x20);
     else
-        CpuFastCopy(Pal_08113564, gPal + BGPAL_OFFSET(7), 0x20);
+        CpuFastCopy(Pal_BanimUnitFlashing, gPal + BGPAL_OFFSET(7), 0x20);
 
     EnablePalSync();
 }

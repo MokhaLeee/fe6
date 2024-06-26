@@ -104,7 +104,7 @@ SECTIONS
         . = 0x000034; gUnk_Banim_02000034 = .;
         . = 0x00003C; gUnk_Banim_0200003C = .;
         . = 0x000044; gUnk_Banim_02000044 = .;
-        . = 0x00004C; gUnk_Banim_0200004C = .;
+        . = 0x00004C; gpEfxUnitPaletteBackup = .;
         . = 0x000054; gUnk_Banim_02000054 = .;
         . = 0x000058; gUnk_Banim_02000058 = .;
         . = 0x00005C; gpProcEkrBattle = .;
@@ -520,6 +520,8 @@ SECTIONS
         src/banim_ekrbattle.o(.text);
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
+        asm/code-banim-80436A4.o(.text);
+        src/banim_efxflashing.o(.text);
         asm/code-banim.o(.text);
         src/banim_dragon.o(.text);
         src/banim_dragonfx_manakete.o(.text);
@@ -702,6 +704,8 @@ SECTIONS
         . = ALIGN(4); src/mapselect.o(.data);
         . = ALIGN(4); src/banim_ekrbattle.o(.data);
         . = ALIGN(4); src/banim_ekrlvupfan.o(.data);
+        . = ALIGN(4); data/data-banim-085CB568.o(.data);
+        . = ALIGN(4); src/banim_efxflashing.o(.data);
         . = ALIGN(4); data/data-code-banim.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
