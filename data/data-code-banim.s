@@ -14,8 +14,8 @@ gUnk_085CBAC0: @ 085CBAC0
 gUnk_085CBAE8: @ 085CBAE8
 	.incbin "fe6-base.gba", 0x5CBAE8, (0x5CBB18 - 0x5CBAE8) @ length: 0030
 
-	.global gUnk_085CBB18
-gUnk_085CBB18: @ 085CBB18
+	.global ProcScr_EkrBattleStarting
+ProcScr_EkrBattleStarting: @ 085CBB18
 	.incbin "fe6-base.gba", 0x5CBB18, (0x5CBB60 - 0x5CBB18) @ length: 0048
 
 	.global gUnk_085CBB60
@@ -82,8 +82,8 @@ gUnk_085CBD50: @ 085CBD50
 gUnk_085CBD68: @ 085CBD68
 	.incbin "fe6-base.gba", 0x5CBD68, (0x5CBD88 - 0x5CBD68) @ length: 0020
 
-	.global gUnk_085CBD88
-gUnk_085CBD88: @ 085CBD88
+	.global ProcScr_EkrBaseAppear
+ProcScr_EkrBaseAppear: @ 085CBD88
 	.incbin "fe6-base.gba", 0x5CBD88, (0x5CBDA0 - 0x5CBD88) @ length: 0018
 
 	.global gUnk_085CBDA0
@@ -1038,8 +1038,8 @@ gUnk_085D3434: @ 085D3434
 gUnk_085D3454: @ 085D3454
 	.incbin "fe6-base.gba", 0x5D3454, (0x5D3474 - 0x5D3454) @ length: 0020
 
-	.global gUnk_085D3474
-gUnk_085D3474: @ 085D3474
+	.global ProcScr_EfxDamageMojiEffect
+ProcScr_EfxDamageMojiEffect: @ 085D3474
 	.incbin "fe6-base.gba", 0x5D3474, (0x5D348C - 0x5D3474) @ length: 0018
 
 	.global gUnk_085D348C
@@ -1070,12 +1070,12 @@ gUnk_085D350C: @ 085D350C
 gUnk_085D3524: @ 085D3524
 	.incbin "fe6-base.gba", 0x5D3524, (0x5D354C - 0x5D3524) @ length: 0028
 
-	.global gUnk_085D354C
-gUnk_085D354C: @ 085D354C
+	.global ProcScr_EfxYushaSpinShield
+ProcScr_EfxYushaSpinShield: @ 085D354C
 	.incbin "fe6-base.gba", 0x5D354C, (0x5D3564 - 0x5D354C) @ length: 0018
 
-	.global gUnk_085D3564
-gUnk_085D3564: @ 085D3564
+	.global ProcScr_EfxYushaSpinShieldOBJ
+ProcScr_EfxYushaSpinShieldOBJ: @ 085D3564
 	.incbin "fe6-base.gba", 0x5D3564, (0x5D3594 - 0x5D3564) @ length: 0030
 
 	.global gUnk_085D3594

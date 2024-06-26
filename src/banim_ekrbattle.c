@@ -258,7 +258,7 @@ void EkrBattleWaitBattleQuote(struct ProcEkrBattle * proc)
     NewEkrWindowAppear(0, 7);
     NewEkrNamewinAppear(0, 7, 0);
     DisableEkrGauge();
-    EkrGauge_08044274();
+    UnAsyncEkrDispUP();
     EkrGauge_080438C8();
     proc->proc_repeat_func = (ProcFunc)EkrBattleWaitWindowAppear;
 }

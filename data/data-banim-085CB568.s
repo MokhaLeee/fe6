@@ -52,56 +52,56 @@ gUnk_085CB6E8: @ 085CB6E8
 gUnk_085CB700: @ 085CB700
 	.incbin "fe6-base.gba", 0x5CB700, (0x5CB718 - 0x5CB700) @ length: 0018
 
-	.global gUnk_085CB718
-gUnk_085CB718: @ 085CB718
+	.global ProcScr_EkrDispUP
+ProcScr_EkrDispUP: @ 085CB718
 	.incbin "fe6-base.gba", 0x5CB718, (0x5CB730 - 0x5CB718) @ length: 0018
 
-	.global gUnk_085CB730
-gUnk_085CB730: @ 085CB730
+	.global ProcScr_EfxHpBar
+ProcScr_EfxHpBar: @ 085CB730
 	.incbin "fe6-base.gba", 0x5CB730, (0x5CB758 - 0x5CB730) @ length: 0028
 
-	.global gUnk_085CB758
-gUnk_085CB758: @ 085CB758
+	.global ProcScr_EfxHpBarResire
+ProcScr_EfxHpBarResire: @ 085CB758
 	.incbin "fe6-base.gba", 0x5CB758, (0x5CB790 - 0x5CB758) @ length: 0038
 
-	.global gUnk_085CB790
-gUnk_085CB790: @ 085CB790
+	.global ProcScr_EfxAvoid
+ProcScr_EfxAvoid: @ 085CB790
 	.incbin "fe6-base.gba", 0x5CB790, (0x5CB7B8 - 0x5CB790) @ length: 0028
 
 	.global gUnk_085CB7B8
 gUnk_085CB7B8: @ 085CB7B8
 	.incbin "fe6-base.gba", 0x5CB7B8, (0x5CB7E0 - 0x5CB7B8) @ length: 0028
 
-	.global gUnk_085CB7E0
-gUnk_085CB7E0: @ 085CB7E0
+	.global ProcScr_EfxNoDmage
+ProcScr_EfxNoDmage: @ 085CB7E0
 	.incbin "fe6-base.gba", 0x5CB7E0, (0x5CB808 - 0x5CB7E0) @ length: 0028
 
 	.global gUnk_085CB808
 gUnk_085CB808: @ 085CB808
 	.incbin "fe6-base.gba", 0x5CB808, (0x5CB820 - 0x5CB808) @ length: 0018
 
-	.global gUnk_085CB820
-gUnk_085CB820: @ 085CB820
+	.global ProcScr_EfxStatusCHG
+ProcScr_EfxStatusCHG: @ 085CB820
 	.incbin "fe6-base.gba", 0x5CB820, (0x5CB850 - 0x5CB820) @ length: 0030
 
-	.global gUnk_085CB850
-gUnk_085CB850: @ 085CB850
+	.global ProcScr_EfxDeadEvent
+ProcScr_EfxDeadEvent: @ 085CB850
 	.incbin "fe6-base.gba", 0x5CB850, (0x5CB888 - 0x5CB850) @ length: 0038
 
-	.global gUnk_085CB888
-gUnk_085CB888: @ 085CB888
+	.global ProcScr_EfxDead
+ProcScr_EfxDead: @ 085CB888
 	.incbin "fe6-base.gba", 0x5CB888, (0x5CB8A8 - 0x5CB888) @ length: 0020
 
-	.global gUnk_085CB8A8
-gUnk_085CB8A8: @ 085CB8A8
+	.global ProcScr_EfxDeadPika
+ProcScr_EfxDeadPika: @ 085CB8A8
 	.incbin "fe6-base.gba", 0x5CB8A8, (0x5CB8C0 - 0x5CB8A8) @ length: 0018
 
-	.global gUnk_085CB8C0
-gUnk_085CB8C0: @ 085CB8C0
+	.global ProcScr_EfxDeadAlpha
+ProcScr_EfxDeadAlpha: @ 085CB8C0
 	.incbin "fe6-base.gba", 0x5CB8C0, (0x5CB8D8 - 0x5CB8C0) @ length: 0018
 
-	.global gUnk_085CB8D8
-gUnk_085CB8D8: @ 085CB8D8
+	.global ProcScr_EfxDeadDragonAlpha
+ProcScr_EfxDeadDragonAlpha: @ 085CB8D8
 	.incbin "fe6-base.gba", 0x5CB8D8, (0x5CB8F0 - 0x5CB8D8) @ length: 0018
 
 	.global ProcScr_efxFarAttack
