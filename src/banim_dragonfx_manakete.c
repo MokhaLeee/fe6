@@ -93,7 +93,7 @@ void func_fe6_080591CC(struct ProcEkrDragon * proc)
 {
     if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
-        func_fe6_08058E24();
+        ResetDragonAnimfx();
         TmFill(gBg3Tm, 0xF000);
         SetBgOffset(3, 0, 0x10);
         EnableBgSync(BG3_SYNC_BIT);
@@ -111,7 +111,7 @@ void func_fe6_080591CC(struct ProcEkrDragon * proc)
 
     if (proc->timer == 0)
     {
-        func_fe6_08058E24();
+        ResetDragonAnimfx();
         TmFill(gBg3Tm, 0xF000);
         SetBgOffset(3, 0, 0x10);
 
@@ -226,7 +226,7 @@ void func_fe6_0805946C(struct ProcEkrDragon * proc)
 {
     if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
-        func_fe6_08058E24();
+        ResetDragonAnimfx();
         proc->timer = 0;
         Proc_Break(proc);
         return;
@@ -234,7 +234,7 @@ void func_fe6_0805946C(struct ProcEkrDragon * proc)
 
     if (proc->timer == 0)
     {
-        func_fe6_08058E24();
+        ResetDragonAnimfx();
         EfxChapterMapFadeOUT(0x10);
         PutManaketeBodyPalette(proc);
         PutManaketeBodyIntro2(proc);

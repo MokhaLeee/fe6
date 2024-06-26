@@ -324,7 +324,7 @@ void func_fe6_08058D34(struct ProcEkrDragon * proc)
     EnableBgSync(BG3_SYNC_BIT);
 }
 
-void func_fe6_08058E24(void)
+void ResetDragonAnimfx(void)
 {
     CpuFastFill16(0, gPal_Banim, 0x20);
     RegisterVramMove(gPal_Banim, 0x8000, 0x20);
