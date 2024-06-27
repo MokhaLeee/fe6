@@ -285,7 +285,7 @@ void EkrDragonMoveBg3_Loop(struct ProcEkrDragonMoveBg3 * proc)
         Proc_Break(proc);
 }
 
-void func_fe6_08058D34(struct ProcEkrDragon * proc)
+void EfxDragonBodyFadeOutInDeath(struct ProcEkrDragon * proc)
 {
     int pos;
 

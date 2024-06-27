@@ -159,7 +159,7 @@ struct ProcEkrDragonMoveBg3 {
 
 void EkrDragonMoveBg3(int x);
 void EkrDragonMoveBg3_Loop(struct ProcEkrDragonMoveBg3 * proc);
-void func_fe6_08058D34(struct ProcEkrDragon * proc);
+void EfxDragonBodyFadeOutInDeath(struct ProcEkrDragon * proc);
 void ResetDragonAnimfx(void);
 void RestoreBodyFlashingPalForManakete(int pos);
 void RestoreBodyFlashingPalForIdunn(int pos);
