@@ -346,7 +346,7 @@ func_fe6_08045828: @ 0x08045828
 	strh r0, [r7]
 	ldr r0, [r5, #0x5c]
 	bl GetEkrDragonProc
-	bl EfxDragonBodyFadeOutInDeath
+	bl PutManaketeTotalImg
 	b .L0804589C
 	.align 2, 0
 .L0804587C: .4byte gEfxBgSemaphore
