@@ -150,7 +150,7 @@ void EkrIdunn_InitIntroBodyPosition(struct ProcEkrDragon * proc)
         gEkrDragonDeamonProcs[0]->y += gEkrBg2QuakeVec.y;
     }
 
-    if (gUnk_Banim_02017734 == 0)
+    if (gEfxQuakeExist == 0)
     {
         SetBgOffset(3, 0, 0x82);
         gEkrDragonDeamonProcs[0]->x = gEkrXPosBase[POS_L] - (gEkrBgPosition - 0x4E);

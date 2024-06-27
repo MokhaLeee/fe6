@@ -152,15 +152,20 @@ extern u8 const gUnk_08308070[]; // tsa (compressed): statscreen page B battle s
 extern u8 const gUnk_083080AC[]; // tsa: statscreen page B equipped weapon background
 
 extern i16 const gEfxNoDmgBgShakeOff[];
-// extern ??? gUnk_08111C60
-// extern ??? gUnk_08111C82
-// extern ??? gUnk_08111CCC
-// extern ??? gUnk_08111D16
-// extern ??? gUnk_08111D60
-// extern ??? gUnk_08111DAA
-// extern ??? gUnk_08111E14
-// extern ??? gUnk_08111F30
-// extern ??? gUnk_08111FC6
+extern i16 const gEfxQuakePureVec1[];
+extern i16 const gEfxQuakePureVec2[];
+extern i16 const gEfxQuakePureVec3[];
+extern i16 const gEfxQuakePureVec4[];
+extern i16 const gEfxQuakePureVec5[];
+extern i16 const gEfxQuakePureVec6[];
+extern i16 const gEfxQuakeVec_08111E14[];
+extern i16 const gEfxQuakePureVec7[];
+extern i16 const gEfxQuakePureVec8[];
+extern i16 const gEfxQuakePureVec9[];
+extern i16 const gEfxQuakePureVec10[];
+extern i16 const gEfxQuakePureVec11[];
+extern i16 const gEfxQuakeVec_08111F30[];
+extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_081120F8
 // extern ??? gUnk_08112122
 // extern ??? gUnk_08112144

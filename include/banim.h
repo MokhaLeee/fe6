@@ -166,6 +166,7 @@ extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
 extern i16 gEkrInitialHitSide;
 extern u32 gEkrInitPosReal;
+extern u32 gEfxFarAttackExist;
 extern u32 gEfxBgSemaphore;
 extern u32 gEfxHpBarResireFlag;
 extern struct Vec2i gEkrBg2QuakeVec;
@@ -188,7 +189,7 @@ extern struct BattleUnit * gpEkrBattleUnitRight;
 extern u32 gEkrHpBarCount;
 extern u32 gEfxSpellAnimExists;
 extern u32 gEkrDeadEventExist;
-extern u32 gUnk_Banim_02017734;
+extern u32 gEfxQuakeExist;
 extern i16 gEkrHitNow[];
 extern u8 gSpellAnimBgfx[];
 extern u16 gEkrBarfxBuf[];
@@ -307,35 +308,40 @@ void NewEfxFarAttackWithDistance(struct BaSprite * anim, int);
 // func_fe6_08045E50
 // func_fe6_08045EE8
 
-struct EfxQuakeProc {
+struct ProcEfxQuake {
     /* 00 */ PROC_HEADER;
-    /* 29 */ u8 unk_29;
-    /* 2A */ u8 unk_2a;
-    /* 2C */ i16 unk_2c;
+
+    /* 29 */ u8 quake_ui;
+    /* 2A */ u8 kind;
+    /* 2C */ i16 timer;
     /* 30 */ int unk_30;
-    /* 34 */ i16 unk_34;
+    /* 34 */ i16 ix;
     /* 36 */ i16 unk_36;
     /* 38 */ i16 unk_38;
     /* 3A */ i16 unk_3a;
-    /* 3C */ i16 unk_3c;
+    /* 3C */ i16 iy;
     /* 3E */ i16 unk_3e;
     /* 40 */ int unk_40;
-    /* 44 */ const i16 * unk_44;
+    /* 44 */ const i16 * vec;
     /* 48 */ int unk_48;
-    /* 4C */ STRUCT_PAD(0x4C, 0x5C);
-    /* 5C */ struct Anim * unk_5c;
-    /* 60 */ struct Anim * unk_60;
-    /* 64 */ struct Anim * unk_64;
+    STRUCT_PAD(0x4C, 0x5C);
+    /* 5C */ struct BaSprite * anim_l;
+    /* 60 */ struct BaSprite * anim_r;
+    /* 64 */ struct BaSprite * unk_64;
 };
 
-ProcPtr NewEfxQuakePure(int, int);
-// func_fe6_08045F88
+#define SetEkrBg2QuakeVec(_x, _y) \
+    gEkrBg2QuakeVec.x = (_x);     \
+    gEkrBg2QuakeVec.y = (_y);
+
+ProcPtr NewEfxQuakePure(int index, int kind);
+void EfxQuakePure_Loop(struct ProcEfxQuake * proc);
 ProcPtr NewEfxHitQuakePure(void);
-// EfxHitQuakePure_Loop
+void EfxHitQuakePure_Loop(struct ProcEfxQuake * proc);
 ProcPtr NewEfxQuake(int type);
-// EfxQuake_Loop
+void EfxQuake_Loop(struct ProcEfxQuake * proc);
 void NewEfxHitQuake(struct BaSprite * anim1, struct BaSprite * anim2, int kind);
-// func_fe6_0804646C
+void EfxHitQuake_Loop(struct ProcEfxQuake * proc);
 
 struct ProcEfxFlashing {
     PROC_HEADER;
@@ -1259,9 +1265,9 @@ extern CONST_DATA struct ProcScr ProcScr_EfxDeadAlpha[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDeadDragonAlpha[];
 extern struct ProcScr CONST_DATA ProcScr_efxFarAttack[];
 extern struct ProcScr CONST_DATA ProcScr_EfxQuakePure[];
-// ??? gUnk_085CB930
+// ??? EfxQuakePureVecs
 extern struct ProcScr CONST_DATA ProcScr_EfxHitQuakePure[];
-// ??? gUnk_085CB9A0
+// ??? ProcScr_EfxQuake
 extern struct ProcScr CONST_DATA ProcScr_EfxHitQuake[];
 extern struct ProcScr CONST_DATA ProcScr_EfxFlashBG[];
 extern struct ProcScr CONST_DATA ProcScr_EfxWhiteOUT[];

@@ -145,10 +145,10 @@ SECTIONS
         . = 0x017728; gUnk_Banim_02017728 = .;
         . = 0x01772C; gUnk_Banim_0201772C = .;
         . = 0x017730; gEkrDeadEventExist = .;
-        . = 0x017734; gUnk_Banim_02017734 = .;
+        . = 0x017734; gEfxQuakeExist = .;
         . = 0x017738; gUnk_Banim_02017738 = .;
         . = 0x01773C; gEkrInitPosReal = .;
-        . = 0x017740; gUnk_Banim_02017740 = .;
+        . = 0x017740; gEfxFarAttackExist = .;
         . = 0x017744; gEfxBgSemaphore = .;
         . = 0x017748; gEfxHpBarResireFlag = .;
         . = 0x01774C; gUnk_Banim_0201774C = .;
@@ -529,6 +529,7 @@ SECTIONS
         src/banim_efxhpbar.o(.text);
         asm/banim_efxdeath.o(.text);
         asm/banim_efxfarattack.o(.text);
+        src/banim_efxquake.o(.text);
         asm/banim_efxquake.o(.text);
         asm/banim_efxflashing.o(.text);
         src/banim_efxflashing.o(.text);
@@ -739,6 +740,7 @@ SECTIONS
         . = ALIGN(4); src/banim_efxhpbar.o(.data);
         . = ALIGN(4); asm/banim_efxdeath.o(.data);
         . = ALIGN(4); asm/banim_efxfarattack.o(.data);
+        . = ALIGN(4); src/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxflashing.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);

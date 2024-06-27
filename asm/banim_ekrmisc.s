@@ -86,11 +86,11 @@ EkrEfxStatusClear: @ 0x08044900
 	str r4, [r0]
 	ldr r0, .L08044978 @ =gEkrDeadEventExist
 	str r4, [r0]
-	ldr r0, .L0804497C @ =gUnk_Banim_02017734
+	ldr r0, .L0804497C @ =gEfxQuakeExist
 	str r4, [r0]
 	ldr r0, .L08044980 @ =gUnk_Banim_02017738
 	str r4, [r0]
-	ldr r0, .L08044984 @ =gUnk_Banim_02017740
+	ldr r0, .L08044984 @ =gEfxFarAttackExist
 	str r4, [r0]
 	ldr r0, .L08044988 @ =gEfxBgSemaphore
 	str r4, [r0]
@@ -134,9 +134,9 @@ EkrEfxStatusClear: @ 0x08044900
 .L08044970: .4byte gEfxSpellAnimExists
 .L08044974: .4byte gUnk_Banim_02017728
 .L08044978: .4byte gEkrDeadEventExist
-.L0804497C: .4byte gUnk_Banim_02017734
+.L0804497C: .4byte gEfxQuakeExist
 .L08044980: .4byte gUnk_Banim_02017738
-.L08044984: .4byte gUnk_Banim_02017740
+.L08044984: .4byte gEfxFarAttackExist
 .L08044988: .4byte gEfxBgSemaphore
 .L0804498C: .4byte gEfxHpBarResireFlag
 .L08044990: .4byte gUnk_Banim_0201774C

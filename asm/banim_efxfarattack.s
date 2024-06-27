@@ -108,7 +108,7 @@ NewEfxFarAttackWithDistance: @ 0x08045C90
 	movs r2, #0x32
 	ldrsh r0, [r4, r2]
 	str r0, [r1]
-	ldr r1, .L08045D68 @ =gUnk_Banim_02017740
+	ldr r1, .L08045D68 @ =gEfxFarAttackExist
 	movs r0, #1
 	str r0, [r1]
 .L08045D5C:
@@ -117,7 +117,7 @@ NewEfxFarAttackWithDistance: @ 0x08045C90
 	bx r0
 	.align 2, 0
 .L08045D64: .4byte gEkrBgPosition
-.L08045D68: .4byte gUnk_Banim_02017740
+.L08045D68: .4byte gEfxFarAttackExist
 
 	thumb_func_start func_fe6_08045D6C
 func_fe6_08045D6C: @ 0x08045D6C
@@ -289,7 +289,7 @@ func_fe6_08045E50: @ 0x08045E50
 	movs r0, #0
 .L08045EC8:
 	str r0, [r1]
-	ldr r1, .L08045EE4 @ =gUnk_Banim_02017740
+	ldr r1, .L08045EE4 @ =gEfxFarAttackExist
 	movs r0, #0
 	str r0, [r1]
 	adds r0, r4, #0
@@ -301,7 +301,7 @@ func_fe6_08045E50: @ 0x08045E50
 	bx r0
 	.align 2, 0
 .L08045EE0: .4byte gEkrInitPosReal
-.L08045EE4: .4byte gUnk_Banim_02017740
+.L08045EE4: .4byte gEfxFarAttackExist
 
 	thumb_func_start func_fe6_08045EE8
 func_fe6_08045EE8: @ 0x08045EE8
