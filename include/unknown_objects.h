@@ -151,7 +151,7 @@ extern u8 const gUnk_08307E50[]; // tsa (compressed): statscreen page C frame
 extern u8 const gUnk_08308070[]; // tsa (compressed): statscreen page B battle stat box
 extern u8 const gUnk_083080AC[]; // tsa: statscreen page B equipped weapon background
 
-// extern ??? gUnk_08111C44
+extern i16 const gEfxNoDmgBgShakeOff[];
 // extern ??? gUnk_08111C60
 // extern ??? gUnk_08111C82
 // extern ??? gUnk_08111CCC

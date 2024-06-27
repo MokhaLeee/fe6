@@ -343,7 +343,7 @@ StartBattleAnimHitEffects: @ 0x08047620
 	cmp r6, r4
 	beq .L0804778A
 	adds r0, r5, #0
-	bl NewEfxHPBar
+	bl NewEfxHpBar
 	adds r0, r7, #0
 	bl CheckRoundCrit
 	cmp r0, #1
@@ -375,7 +375,7 @@ StartBattleAnimHitEffects: @ 0x08047620
 	adds r0, r5, #0
 	mov r1, r8
 	movs r2, #0
-	bl NewEfxNoDmage
+	bl NewEfxNoDamage
 	b .L0804779C
 .L08047796:
 	adds r0, r5, #0
@@ -484,16 +484,16 @@ StartBattleAnimResireHitEffects: @ 0x080477AC
 	bl NewEfxFlashUnit
 	b .L08047892
 .L08047876:
-	ldr r1, .L08047888 @ =gUnk_Banim_02017748
+	ldr r1, .L08047888 @ =gEfxHpBarResireFlag
 	movs r0, #2
 	str r0, [r1]
 	adds r0, r5, #0
 	mov r1, r8
 	movs r2, #1
-	bl NewEfxNoDmage
+	bl NewEfxNoDamage
 	b .L08047892
 	.align 2, 0
-.L08047888: .4byte gUnk_Banim_02017748
+.L08047888: .4byte gEfxHpBarResireFlag
 .L0804788C:
 	adds r0, r5, #0
 	bl NewEfxAvoid

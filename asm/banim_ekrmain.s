@@ -153,7 +153,7 @@ UpdateBanimFrame: @ 0x0804B048
 	movs r0, #0
 	str r0, [r1, #4]
 	str r0, [r1]
-	ldr r0, .L0804B100 @ =gEkrPairSideVaild
+	ldr r0, .L0804B100 @ =gBanimValid
 	ldrh r1, [r0]
 	cmp r1, #1
 	bne .L0804B140
@@ -225,7 +225,7 @@ UpdateBanimFrame: @ 0x0804B048
 	.align 2, 0
 .L0804B0F8: .4byte banim_data
 .L0804B0FC: .4byte gpImgSheet
-.L0804B100: .4byte gEkrPairSideVaild
+.L0804B100: .4byte gBanimValid
 .L0804B104: .4byte gBanimIdx
 .L0804B108: .4byte gBanimFactionPal
 .L0804B10C: .4byte gBanimUniquePal
@@ -245,7 +245,7 @@ UpdateBanimFrame: @ 0x0804B048
 	ldr r4, .L0804B258 @ =gUnk_Banim_020099B0
 	movs r0, #1
 	str r0, [r4]
-	ldr r0, .L0804B25C @ =gEkrPairSideVaild
+	ldr r0, .L0804B25C @ =gBanimValid
 .L0804B140:
 	movs r2, #2
 	ldrsh r1, [r0, r2]
@@ -379,7 +379,7 @@ UpdateBanimFrame: @ 0x0804B048
 	.align 2, 0
 .L0804B254: .4byte gUnk_Banim_020041C0
 .L0804B258: .4byte gUnk_Banim_020099B0
-.L0804B25C: .4byte gEkrPairSideVaild
+.L0804B25C: .4byte gBanimValid
 .L0804B260: .4byte gBanimIdx
 .L0804B264: .4byte gBanimFactionPal
 .L0804B268: .4byte gBanimUniquePal
@@ -473,7 +473,7 @@ InitBattleAnimFrame: @ 0x0804B324
 	str r0, [r4, #4]
 	str r0, [r4, #8]
 	str r0, [r4, #0xc]
-	ldr r5, .L0804B374 @ =gEkrPairSideVaild
+	ldr r5, .L0804B374 @ =gBanimValid
 	ldrh r0, [r5]
 	cmp r0, #1
 	bne .L0804B344
@@ -505,7 +505,7 @@ InitBattleAnimFrame: @ 0x0804B324
 	bx r0
 	.align 2, 0
 .L0804B370: .4byte gAnims
-.L0804B374: .4byte gEkrPairSideVaild
+.L0804B374: .4byte gBanimValid
 .L0804B378: .4byte gEkrDistanceType
 
 	thumb_func_start InitLeftAnim

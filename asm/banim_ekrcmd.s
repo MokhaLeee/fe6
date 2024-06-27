@@ -76,7 +76,7 @@ _SetupBanim: @ 0x08049058
 	movs r0, #0
 	strh r0, [r1, #2]
 	strh r0, [r1]
-	ldr r0, .L08049110 @ =gEkrPairSideVaild
+	ldr r0, .L08049110 @ =gBanimValid
 	movs r1, #1
 	strh r1, [r0]
 	strh r1, [r0, #2]
@@ -90,7 +90,7 @@ _SetupBanim: @ 0x08049058
 .L08049104: .4byte gpEkrBattleUnitRight
 .L08049108: .4byte gBattleUnitB
 .L0804910C: .4byte 0x0203CCFC
-.L08049110: .4byte gEkrPairSideVaild
+.L08049110: .4byte gBanimValid
 .L08049114:
 	ldr r5, .L0804914C @ =gBattleUnitA
 	movs r4, #0x40
@@ -140,7 +140,7 @@ _SetupBanim: @ 0x08049058
 	lsrs r0, r0, #0x18
 	str r0, [sp, #0x18]
 .L0804917C:
-	ldr r1, .L080491D0 @ =gEkrPairSideVaild
+	ldr r1, .L080491D0 @ =gBanimValid
 	movs r0, #1
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -177,14 +177,14 @@ _SetupBanim: @ 0x08049058
 	strh r2, [r0]
 	strh r1, [r0, #2]
 	ldr r7, [sp, #4]
-	ldr r3, .L080491D0 @ =gEkrPairSideVaild
+	ldr r3, .L080491D0 @ =gBanimValid
 	ldr r4, [sp, #0x18]
 	cmp r4, #1
 	bne .L0804920E
 	strh r1, [r3]
 	b .L0804920E
 	.align 2, 0
-.L080491D0: .4byte gEkrPairSideVaild
+.L080491D0: .4byte gBanimValid
 .L080491D4: .4byte gpEkrBattleUnitLeft
 .L080491D8: .4byte gBattleUnitB
 .L080491DC: .4byte gpEkrBattleUnitRight
@@ -205,7 +205,7 @@ _SetupBanim: @ 0x08049058
 	movs r0, #1
 	strh r0, [r1, #2]
 	ldr r7, [sp]
-	ldr r3, .L080492D8 @ =gEkrPairSideVaild
+	ldr r3, .L080492D8 @ =gBanimValid
 	ldr r0, [sp, #0x18]
 	cmp r0, #1
 	bne .L0804920E
@@ -311,7 +311,7 @@ _SetupBanim: @ 0x08049058
 .L080492CC: .4byte gpEkrBattleUnitRight
 .L080492D0: .4byte gBattleUnitB
 .L080492D4: .4byte 0x0203CCFC
-.L080492D8: .4byte gEkrPairSideVaild
+.L080492D8: .4byte gBanimValid
 .L080492DC: .4byte gEkrBmLocation
 .L080492E0: .4byte gBmSt
 .L080492E4: .4byte gEkrDistanceType
@@ -1240,7 +1240,7 @@ _SetupBanim: @ 0x08049058
 	bl GetBattleAnimType
 	cmp r0, #3
 	bne .L08049A6A
-	ldr r0, .L08049A48 @ =gEkrPairSideVaild
+	ldr r0, .L08049A48 @ =gBanimValid
 	movs r4, #0
 	ldrsh r0, [r0, r4]
 	cmp r0, #0
@@ -1251,7 +1251,7 @@ _SetupBanim: @ 0x08049058
 	.align 2, 0
 .L08049A40: .4byte 0x0203CDD0
 .L08049A44: .4byte gBanimBackgroundIndex
-.L08049A48: .4byte gEkrPairSideVaild
+.L08049A48: .4byte gBanimValid
 .L08049A4C: .4byte 0x0203CDC0
 .L08049A50:
 	ldr r0, .L08049B78 @ =0x0203CDC0
@@ -1334,7 +1334,7 @@ _SetupBanim: @ 0x08049058
 .L08049AE6:
 	cmp r4, #0
 	beq .L08049B72
-	ldr r0, .L08049B88 @ =gEkrPairSideVaild
+	ldr r0, .L08049B88 @ =gBanimValid
 	adds r3, r0, #0
 	ldrh r1, [r3]
 	cmp r1, #1
@@ -1411,7 +1411,7 @@ _SetupBanim: @ 0x08049058
 .L08049B7C: .4byte gPlaySt
 .L08049B80: .4byte gEkrDistanceType
 .L08049B84: .4byte gBanimFactionPal
-.L08049B88: .4byte gEkrPairSideVaild
+.L08049B88: .4byte gBanimValid
 .L08049B8C: .4byte gBanimIdx
 .L08049B90: .4byte gEkrSpellAnimIndex
 .L08049B94: .4byte gBanimFloorfx

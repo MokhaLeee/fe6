@@ -410,7 +410,7 @@ EkrBaStart_InitBattleScreen: @ 0x08047FDC
 .L08048008: .4byte gEkrDebugModeMaybe
 .L0804800C: .4byte gEkrDistanceType
 .L08048010:
-	ldr r4, .L08048034 @ =gEkrPairSideVaild
+	ldr r4, .L08048034 @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -426,7 +426,7 @@ EkrBaStart_InitBattleScreen: @ 0x08047FDC
 	bl func_fe6_0804420C
 	b .L08048040
 	.align 2, 0
-.L08048034: .4byte gEkrPairSideVaild
+.L08048034: .4byte gBanimValid
 .L08048038:
 	bl func_fe6_080438E8
 	bl func_fe6_080441FC

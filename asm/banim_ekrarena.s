@@ -71,8 +71,8 @@ func_fe6_0804C50C: @ 0x0804C50C
 .L0804C54C: .4byte gUnk_Banim_0201D424
 .L0804C550: .4byte gBg3Tm
 
-	thumb_func_start func_fe6_0804C554
-func_fe6_0804C554: @ 0x0804C554
+	thumb_func_start PlayDeathSoundForArena
+PlayDeathSoundForArena: @ 0x0804C554
 	push {lr}
 	bl GetBattleAnimArenaFlag
 	cmp r0, #0

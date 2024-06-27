@@ -216,14 +216,14 @@ func_fe6_0804574C: @ 0x0804574C
 	asrs r5, r0, #0x18
 	cmp r5, #0
 	bne .L080457A4
-	bl func_fe6_0804C554
+	bl PlayDeathSoundForArena
 	ldr r0, [r4, #0x5c]
 	ldr r1, [r4, #0x60]
 	bl NewEfxDead
 	bl EfxPrepareScreenFx
 	ldr r0, [r4, #0x5c]
 	bl GetAnimPosition
-	ldr r1, .L080457AC @ =gEkrPairSideVaild
+	ldr r1, .L080457AC @ =gBanimValid
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r5, [r0]
@@ -246,7 +246,7 @@ func_fe6_0804574C: @ 0x0804574C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080457AC: .4byte gEkrPairSideVaild
+.L080457AC: .4byte gBanimValid
 
 	thumb_func_start func_fe6_080457B0
 func_fe6_080457B0: @ 0x080457B0
@@ -282,7 +282,7 @@ NewEfxDead: @ 0x080457E8
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, .L0804581C @ =gEkrHPBarCount
+	ldr r1, .L0804581C @ =gEkrHpBarCount
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -303,7 +303,7 @@ NewEfxDead: @ 0x080457E8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804581C: .4byte gEkrHPBarCount
+.L0804581C: .4byte gEkrHpBarCount
 .L08045820: .4byte gUnk_Banim_0201772C
 .L08045824: .4byte ProcScr_EfxDead
 
@@ -455,7 +455,7 @@ func_fe6_080458C0: @ 0x080458C0
 	ldrsh r0, [r4, r2]
 	cmp r1, r0
 	bne .L08045966
-	ldr r1, .L0804596C @ =gEkrHPBarCount
+	ldr r1, .L0804596C @ =gEkrHpBarCount
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -469,7 +469,7 @@ func_fe6_080458C0: @ 0x080458C0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804596C: .4byte gEkrHPBarCount
+.L0804596C: .4byte gEkrHpBarCount
 .L08045970: .4byte gUnk_Banim_0201772C
 
 	thumb_func_start NewEfxDeadPika

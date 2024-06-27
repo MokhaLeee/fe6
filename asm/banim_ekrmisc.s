@@ -77,7 +77,7 @@ GetBanimInitPosReal: @ 0x08044870
 	thumb_func_start EkrEfxStatusClear
 EkrEfxStatusClear: @ 0x08044900
 	push {r4, lr}
-	ldr r0, .L0804496C @ =gEkrHPBarCount
+	ldr r0, .L0804496C @ =gEkrHpBarCount
 	movs r4, #0
 	str r4, [r0]
 	ldr r0, .L08044970 @ =gEfxSpellAnimExists
@@ -94,7 +94,7 @@ EkrEfxStatusClear: @ 0x08044900
 	str r4, [r0]
 	ldr r0, .L08044988 @ =gEfxBgSemaphore
 	str r4, [r0]
-	ldr r0, .L0804498C @ =gUnk_Banim_02017748
+	ldr r0, .L0804498C @ =gEfxHpBarResireFlag
 	str r4, [r0]
 	ldr r0, .L08044990 @ =gUnk_Banim_0201774C
 	str r4, [r0]
@@ -130,7 +130,7 @@ EkrEfxStatusClear: @ 0x08044900
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804496C: .4byte gEkrHPBarCount
+.L0804496C: .4byte gEkrHpBarCount
 .L08044970: .4byte gEfxSpellAnimExists
 .L08044974: .4byte gUnk_Banim_02017728
 .L08044978: .4byte gEkrDeadEventExist
@@ -138,7 +138,7 @@ EkrEfxStatusClear: @ 0x08044900
 .L08044980: .4byte gUnk_Banim_02017738
 .L08044984: .4byte gUnk_Banim_02017740
 .L08044988: .4byte gEfxBgSemaphore
-.L0804498C: .4byte gUnk_Banim_02017748
+.L0804498C: .4byte gEfxHpBarResireFlag
 .L08044990: .4byte gUnk_Banim_0201774C
 .L08044994: .4byte gUnk_Banim_02017750
 .L08044998: .4byte gUnk_Banim_02017754

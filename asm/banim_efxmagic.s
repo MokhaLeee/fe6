@@ -8143,7 +8143,7 @@ func_fe6_08050B10: @ 0x08050B10
 func_fe6_08050B94: @ 0x08050B94
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r5, .L08050BB8 @ =gUnk_Banim_02017748
+	ldr r5, .L08050BB8 @ =gEfxHpBarResireFlag
 	ldr r0, [r5]
 	cmp r0, #2
 	bne .L08050BC0
@@ -8157,7 +8157,7 @@ func_fe6_08050B94: @ 0x08050B94
 	bl Proc_End
 	b .L08050C1A
 	.align 2, 0
-.L08050BB8: .4byte gUnk_Banim_02017748
+.L08050BB8: .4byte gEfxHpBarResireFlag
 .L08050BBC: .4byte gEfxBgSemaphore
 .L08050BC0:
 	ldrh r0, [r4, #0x2c]
@@ -15337,7 +15337,7 @@ func_fe6_08054580: @ 0x08054580
 	cmp r0, #0xa6
 	bne .L08054674
 	adds r0, r5, #0
-	bl func_fe6_080451E0
+	bl NewEfxHpBarLive
 	b .L080546A0
 .L08054674:
 	cmp r0, #0xb5
@@ -15534,7 +15534,7 @@ func_fe6_080546D0: @ 0x080546D0
 	cmp r1, r0
 	bne .L08054810
 	adds r0, r5, #0
-	bl func_fe6_080451E0
+	bl NewEfxHpBarLive
 	b .L08054840
 .L08054810:
 	adds r0, r2, #0
@@ -15733,7 +15733,7 @@ func_fe6_08054870: @ 0x08054870
 	cmp r1, r0
 	bne .L080549B0
 	adds r0, r5, #0
-	bl func_fe6_080451E0
+	bl NewEfxHpBarLive
 	b .L080549E0
 .L080549B0:
 	adds r0, r2, #0
@@ -15938,7 +15938,7 @@ func_fe6_08054A10: @ 0x08054A10
 	cmp r1, r0
 	bne .L08054B60
 	adds r0, r5, #0
-	bl func_fe6_080451E0
+	bl NewEfxHpBarLive
 	b .L08054B90
 .L08054B60:
 	adds r0, r2, #0

@@ -643,7 +643,7 @@ EkrGauge_Loop: @ 0x080439CC
 .L08043B4C: .4byte 0x0203CDA4
 .L08043B50: .4byte gEkrDistanceType
 .L08043B54:
-	ldr r0, .L08043B68 @ =gEkrPairSideVaild
+	ldr r0, .L08043B68 @ =gBanimValid
 	ldrh r0, [r0]
 	cmp r0, #1
 	bne .L08043B6C
@@ -653,7 +653,7 @@ EkrGauge_Loop: @ 0x080439CC
 	adds r0, #0x38
 	b .L08043B7C
 	.align 2, 0
-.L08043B68: .4byte gEkrPairSideVaild
+.L08043B68: .4byte gBanimValid
 .L08043B6C:
 	mov r3, sl
 	movs r4, #0x32

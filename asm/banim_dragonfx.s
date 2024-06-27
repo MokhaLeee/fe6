@@ -60,7 +60,7 @@ func_fe6_0805A2BC: @ 0x0805A2BC
 	bl EfxChapterMapFadeOUT
 	ldr r0, [r5, #0x5c]
 	bl GetAnimPosition
-	ldr r1, .L0805A358 @ =gEkrPairSideVaild
+	ldr r1, .L0805A358 @ =gBanimValid
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
@@ -74,7 +74,7 @@ func_fe6_0805A2BC: @ 0x0805A2BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805A358: .4byte gEkrPairSideVaild
+.L0805A358: .4byte gBanimValid
 
 	thumb_func_start func_fe6_0805A35C
 func_fe6_0805A35C: @ 0x0805A35C
@@ -876,8 +876,8 @@ func_fe6_0805A8B0: @ 0x0805A8B0
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805A998
-func_fe6_0805A998: @ 0x0805A998
+	thumb_func_start NewEfxAvoidForIdunn
+NewEfxAvoidForIdunn: @ 0x0805A998
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, .L0805A9E4 @ =gUnk_08604A3C

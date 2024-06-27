@@ -57,8 +57,8 @@ Img_UiUnitNameFrame: @ 08111970
 Pal_UiUnitNameFrame: @ 08111BC4
 	.incbin "fe6-base.gba", 0x111BC4, (0x111C44 - 0x111BC4) @ length: 0080
 
-	.global gUnk_08111C44
-gUnk_08111C44: @ 08111C44
+	.global gEfxNoDmgBgShakeOff
+gEfxNoDmgBgShakeOff: @ 08111C44
 	.incbin "fe6-base.gba", 0x111C44, (0x111C60 - 0x111C44) @ length: 001C
 
 	.global gUnk_08111C60

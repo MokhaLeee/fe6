@@ -377,8 +377,8 @@ func_fe6_08046A0C: @ 0x08046A0C
 .L08046A64: .4byte gUnk_08113424
 .L08046A68: .4byte gPal+0x380
 
-	thumb_func_start NewEfxHPBarColorChange
-NewEfxHPBarColorChange: @ 0x08046A6C
+	thumb_func_start NewEfxHpBarColorChange
+NewEfxHpBarColorChange: @ 0x08046A6C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

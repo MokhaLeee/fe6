@@ -140,7 +140,7 @@ SECTIONS
         . = 0x0176E8; gUnk_Banim_020176E8 = .;
         . = 0x0176F8; gUnk_Banim_020176F8 = .;
         . = 0x01771C; gEkrBattleEndFlag = .;
-        . = 0x017720; gEkrHPBarCount = .;
+        . = 0x017720; gEkrHpBarCount = .;
         . = 0x017724; gEfxSpellAnimExists = .;
         . = 0x017728; gUnk_Banim_02017728 = .;
         . = 0x01772C; gUnk_Banim_0201772C = .;
@@ -150,7 +150,7 @@ SECTIONS
         . = 0x01773C; gEkrInitPosReal = .;
         . = 0x017740; gUnk_Banim_02017740 = .;
         . = 0x017744; gEfxBgSemaphore = .;
-        . = 0x017748; gUnk_Banim_02017748 = .;
+        . = 0x017748; gEfxHpBarResireFlag = .;
         . = 0x01774C; gUnk_Banim_0201774C = .;
         . = 0x017750; gUnk_Banim_02017750 = .;
         . = 0x017754; gUnk_Banim_02017754 = .;
@@ -272,7 +272,7 @@ SECTIONS
         . = 0x0203CCF2 - __ewram_overlay_end; gBanimBackgroundIndex = .;
         . = 0x0203CCF4 - __ewram_overlay_end; gEkrInitialHitSide = .;
         . = 0x0203CCF6 - __ewram_overlay_end; gEkrSnowWeather = .;
-        . = 0x0203CCF8 - __ewram_overlay_end; gEkrPairSideVaild = .;
+        . = 0x0203CCF8 - __ewram_overlay_end; gBanimValid = .;
         . = 0x0203CD00 - __ewram_overlay_end; gBanimIdx_bak = .;
         . = 0x0203CD04 - __ewram_overlay_end; gBanimUniquePal = .;
         . = 0x0203CD08 - __ewram_overlay_end; gBanimFactionPal = .;
@@ -526,7 +526,7 @@ SECTIONS
         asm/banim_ekrgauge.o(.text);
         asm/banim_ekrdispup.o(.text);
         asm/banim_ekrmisc.o(.text);
-        asm/banim_efxhpbar.o(.text);
+        src/banim_efxhpbar.o(.text);
         asm/banim_efxdeath.o(.text);
         asm/banim_efxfarattack.o(.text);
         asm/banim_efxquake.o(.text);
@@ -736,7 +736,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrlvupfan.o(.data);
         . = ALIGN(4); asm/banim_ekrgauge.o(.data);
         . = ALIGN(4); asm/banim_ekrdispup.o(.data);
-        . = ALIGN(4); asm/banim_efxhpbar.o(.data);
+        . = ALIGN(4); src/banim_efxhpbar.o(.data);
         . = ALIGN(4); asm/banim_efxdeath.o(.data);
         . = ALIGN(4); asm/banim_efxfarattack.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);

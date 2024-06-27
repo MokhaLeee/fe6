@@ -597,7 +597,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	ldr r0, .L08044654 @ =gUnk_081125E0
 	ldr r1, .L08044658 @ =0x06001000
 	bl LZ77UnCompVram
-	ldr r0, .L0804465C @ =gEkrPairSideVaild
+	ldr r0, .L0804465C @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -610,7 +610,7 @@ EfxPrepareScreenFx: @ 0x08044608
 .L08044650: .4byte 0x06001400
 .L08044654: .4byte gUnk_081125E0
 .L08044658: .4byte 0x06001000
-.L0804465C: .4byte gEkrPairSideVaild
+.L0804465C: .4byte gBanimValid
 .L08044660: .4byte gNopStr
 .L08044664:
 	ldr r0, .L080446AC @ =gpEkrBattleUnitLeft
@@ -636,7 +636,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, .L080446BC @ =gEkrPairSideVaild
+	ldr r0, .L080446BC @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -648,7 +648,7 @@ EfxPrepareScreenFx: @ 0x08044608
 .L080446B0: .4byte gUnk_Banim_02017658
 .L080446B4: .4byte gUnk_081127F0
 .L080446B8: .4byte 0x06001400
-.L080446BC: .4byte gEkrPairSideVaild
+.L080446BC: .4byte gBanimValid
 .L080446C0: .4byte gNopStr
 .L080446C4:
 	ldr r0, .L0804470C @ =gpEkrBattleUnitLeft
@@ -674,7 +674,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, .L0804471C @ =gEkrPairSideVaild
+	ldr r0, .L0804471C @ =gBanimValid
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -686,7 +686,7 @@ EfxPrepareScreenFx: @ 0x08044608
 .L08044710: .4byte gUnk_Banim_02017668
 .L08044714: .4byte gUnk_08112840
 .L08044718: .4byte 0x06001580
-.L0804471C: .4byte gEkrPairSideVaild
+.L0804471C: .4byte gBanimValid
 .L08044720: .4byte gNopStr
 .L08044724:
 	ldr r0, .L0804476C @ =gpEkrBattleUnitRight
@@ -712,7 +712,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, .L0804477C @ =gEkrPairSideVaild
+	ldr r0, .L0804477C @ =gBanimValid
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -724,7 +724,7 @@ EfxPrepareScreenFx: @ 0x08044608
 .L08044770: .4byte gUnk_Banim_02017670
 .L08044774: .4byte gUnk_081128AC
 .L08044778: .4byte 0x06001740
-.L0804477C: .4byte gEkrPairSideVaild
+.L0804477C: .4byte gBanimValid
 .L08044780: .4byte gNopStr
 .L08044784:
 	ldr r0, .L08044848 @ =gpEkrBattleUnitRight

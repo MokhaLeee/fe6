@@ -653,7 +653,7 @@ NewEkrUnitKakudai: @ 0x080489E8
 .L08048A14: .4byte ProcScr_EkrUnitKakudai
 .L08048A18: .4byte gEkrDistanceType
 .L08048A1C:
-	ldr r0, .L08048A48 @ =gEkrPairSideVaild
+	ldr r0, .L08048A48 @ =gBanimValid
 	movs r1, #0
 	ldrsh r5, [r0, r1]
 	cmp r5, #1
@@ -663,7 +663,7 @@ NewEkrUnitKakudai: @ 0x080489E8
 	beq .L08048A30
 	str r5, [r4, #0x4c]
 .L08048A30:
-	ldr r0, .L08048A48 @ =gEkrPairSideVaild
+	ldr r0, .L08048A48 @ =gBanimValid
 	movs r2, #2
 	ldrsh r5, [r0, r2]
 	cmp r5, #1
@@ -674,7 +674,7 @@ NewEkrUnitKakudai: @ 0x080489E8
 	str r5, [r4, #0x50]
 	b .L08048A5E
 	.align 2, 0
-.L08048A48: .4byte gEkrPairSideVaild
+.L08048A48: .4byte gBanimValid
 .L08048A4C:
 	cmp r5, #0
 	bne .L08048A58
@@ -720,7 +720,7 @@ func_fe6_08048A64: @ 0x08048A64
 	movs r2, #1
 	bl EfxPalModifyPetrifyEffect
 .L08048A9C:
-	ldr r5, .L08048B88 @ =gEkrPairSideVaild
+	ldr r5, .L08048B88 @ =gBanimValid
 	ldrh r3, [r5]
 	cmp r3, #1
 	bne .L08048AC2
@@ -832,7 +832,7 @@ func_fe6_08048A64: @ 0x08048A64
 .L08048B7C: .4byte gUnk_08112298
 .L08048B80: .4byte gBattleSt
 .L08048B84: .4byte gPal
-.L08048B88: .4byte gEkrPairSideVaild
+.L08048B88: .4byte gBanimValid
 .L08048B8C: .4byte gUnk_Banim_02000054
 .L08048B90: .4byte gUnk_Banim_0200F1C0
 .L08048B94: .4byte gUnk_Banim_020041C0

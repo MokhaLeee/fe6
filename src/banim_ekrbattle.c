@@ -365,7 +365,7 @@ void EkrBattleSetUnitFlashing(struct ProcEkrBattle * proc)
     if (gBattleSt.flags & BATTLE_FLAG_REFRESH)
         DisableEfxStatusUnits(MAIN_ANIM_FRONT(POS_L));
 
-    NewEfxHPBarColorChange(MAIN_ANIM_FRONT(POS_L));
+    NewEfxHpBarColorChange(MAIN_ANIM_FRONT(POS_L));
     proc->proc_repeat_func = (ProcFunc)EkrBattleExecTriangleAtk;
 }
 
@@ -399,7 +399,7 @@ void EkrBattleTriggerNewRoundStart(struct ProcEkrBattle * proc)
     if (++proc->timer <= 0x1E)
         return;
 
-    if (gEkrPairSideVaild[POS_L] == TRUE)
+    if (gBanimValid[POS_L] == TRUE)
     {
         anim = MAIN_ANIM_FRONT(POS_L);
         anim->flags3 = ANIM_BIT3_NEW_ROUND_START;
@@ -410,7 +410,7 @@ void EkrBattleTriggerNewRoundStart(struct ProcEkrBattle * proc)
         anim->flags2 |= ANIM_BIT2_STOP;
     }
 
-    if (gEkrPairSideVaild[POS_R] == TRUE)
+    if (gBanimValid[POS_R] == TRUE)
     {
         anim = MAIN_ANIM_FRONT(POS_R);
         anim->flags3 = ANIM_BIT3_NEW_ROUND_START;
@@ -534,7 +534,7 @@ void EkrBattleWaitNamewinAppear(struct ProcEkrBattle * proc)
 {
     int pos, ret, _ret;
 
-    if (gEkrHPBarCount != 0)
+    if (gEkrHpBarCount != 0)
         return;
 
     if (gEkrDeadEventExist != 0)

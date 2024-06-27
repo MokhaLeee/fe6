@@ -290,7 +290,7 @@ ProcPtr NewEkrIdunnIntroDeamon2(struct BaSprite * anim);
 void NewEkrIdunnBodyFlashing(struct BaSprite * anim);
 void EndEkrIdunnBodyFlashing(void);
 // func_fe6_0805A8B0
-// func_fe6_0805A998
+void NewEfxAvoidForIdunn(struct BaSprite * anim);
 // func_fe6_0805A9F8
 // func_fe6_0805AAA0
 // func_fe6_0805AB50
