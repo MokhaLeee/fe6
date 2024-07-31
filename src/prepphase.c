@@ -72,7 +72,7 @@ struct ProcScr CONST_DATA ProcScr_PrepPhase[] =
     // fallthrough
 
 PROC_LABEL(L_PLAYERPHASE_ACTION_SELECT),
-    PROC_CALL(func_fe6_0807B6BC),
+    PROC_CALL(StartPrepAtMenu),
     PROC_SLEEP(0),
 
     PROC_CALL(PrepPhase_WatchRoy),
@@ -358,7 +358,7 @@ fu8 PrepMapMenuConfirm(struct MenuProc * menu, struct MenuEntProc * ent)
 {
     ProcPtr proc = FindProc(ProcScr_PrepPhase);
 
-    func_fe6_0807B6BC();
+    StartPrepAtMenu();
     Proc_Goto(proc, L_PREPPHASE_BEGINMAP);
 
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;

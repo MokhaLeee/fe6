@@ -1,7 +1,7 @@
     .data
 
-	.global gUnk_08678E38
-gUnk_08678E38: @ 08678E38
+	.global ProcScr_AtMenu
+ProcScr_AtMenu: @ 08678E38
 	.incbin "fe6-base.gba", 0x678E38, (0x679008 - 0x678E38) @ length: 01D0
 
 	.global gUnk_08679008

@@ -10680,7 +10680,7 @@ func_fe6_0803A5C8: @ 0x0803A5C8
 func_fe6_0803A5E4: @ 0x0803A5E4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0803A600 @ =gUnk_08678E38
+	ldr r0, .L0803A600 @ =ProcScr_AtMenu
 	bl FindProc
 	cmp r0, #0
 	bne .L0803A5F8
@@ -10691,7 +10691,7 @@ func_fe6_0803A5E4: @ 0x0803A5E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803A600: .4byte gUnk_08678E38
+.L0803A600: .4byte ProcScr_AtMenu
 
 	thumb_func_start func_fe6_0803A604
 func_fe6_0803A604: @ 0x0803A604
@@ -10708,7 +10708,7 @@ func_fe6_0803A604: @ 0x0803A604
 	bl func_fe6_0803FC60
 	bl func_fe6_0803FDD8
 	bl func_fe6_0803F9F4
-	bl func_fe6_0807B6BC
+	bl StartPrepAtMenu
 	adds r0, r4, #0
 	movs r1, #5
 	bl Proc_Goto

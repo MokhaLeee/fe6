@@ -168,16 +168,16 @@ extern u16 const gUnk_08320FCE[]; // tiles
 extern u16 const gUnk_08326EE6[]; // tiles
 
 #if 0
-struct ProcScr CONST_DATA gUnk_08678E38[] =
+struct ProcScr CONST_DATA ProcScr_AtMenu[] =
 {
     PROC_19,
     PROC_CALL(LockGame),
     PROC_CALL(StartMidFadeToBlack),
     PROC_REPEAT(WhileFadeExists),
     PROC_CALL(LockBmDisplay),
-    PROC_CALL(func_fe6_0807ACFC),
+    PROC_CALL(AtMenu_EndIfNoUnit),
     PROC_SLEEP(0),
-    PROC_CALL(func_fe6_0807AD6C),
+    PROC_CALL(AtMenu_OnInit),
     PROC_CALL(func_fe6_0807B888),
     PROC_SLEEP(0),
 PROC_LABEL(1),
@@ -855,7 +855,7 @@ void RearrangeMandatoryDeployUnits(void)
     })
 }
 
-void func_fe6_0807A194(void)
+void SioResetUnitItems(void)
 {
     FOR_UNITS_FACTION(FACTION_BLUE, unit,
     {
@@ -1112,7 +1112,7 @@ void func_fe6_0807A67C(struct PrepMenuProc * proc)
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 }
 
-void func_fe6_0807A84C(struct PrepMenuProc * proc)
+void AtMenu_OnInitExt(struct PrepMenuProc * proc)
 {
     int i;
 
@@ -1313,7 +1313,7 @@ void func_fe6_0807ACE8(struct PrepMenuProc * proc)
     EndGreenText();
 }
 
-void func_fe6_0807ACFC(struct PrepMenuProc * proc)
+void AtMenu_EndIfNoUnit(struct PrepMenuProc * proc)
 {
     fu8 dead_count = 0;
 
@@ -1336,7 +1336,7 @@ void func_fe6_0807ACFC(struct PrepMenuProc * proc)
     }
 }
 
-void func_fe6_0807AD6C(struct PrepMenuProc * proc)
+void AtMenu_OnInit(struct PrepMenuProc * proc)
 {
-    func_fe6_0807A84C(proc);
+    AtMenu_OnInitExt(proc);
 }

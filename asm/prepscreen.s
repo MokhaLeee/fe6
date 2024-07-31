@@ -1161,29 +1161,29 @@ func_fe6_0807B69C: @ 0x0807B69C
 	.align 2, 0
 .L0807B6B8: .4byte gDispIo
 
-	thumb_func_start func_fe6_0807B6BC
-func_fe6_0807B6BC: @ 0x0807B6BC
+	thumb_func_start StartPrepAtMenu
+StartPrepAtMenu: @ 0x0807B6BC
 	push {lr}
-	ldr r0, .L0807B6CC @ =gUnk_08678E38
+	ldr r0, .L0807B6CC @ =ProcScr_AtMenu
 	movs r1, #3
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807B6CC: .4byte gUnk_08678E38
+.L0807B6CC: .4byte ProcScr_AtMenu
 
-	thumb_func_start func_fe6_0807B6D0
-func_fe6_0807B6D0: @ 0x0807B6D0
+	thumb_func_start StartSioPrepAtMenu
+StartSioPrepAtMenu: @ 0x0807B6D0
 	push {lr}
-	ldr r0, .L0807B6E8 @ =gUnk_08678E38
+	ldr r0, .L0807B6E8 @ =ProcScr_AtMenu
 	movs r1, #3
 	bl SpawnProc
-	bl func_fe6_0807A194
+	bl SioResetUnitItems
 	bl ResetSioPidPool
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807B6E8: .4byte gUnk_08678E38
+.L0807B6E8: .4byte ProcScr_AtMenu
 
 	thumb_func_start func_fe6_0807B6EC
 func_fe6_0807B6EC: @ 0x0807B6EC
