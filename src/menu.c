@@ -412,7 +412,7 @@ fu8 MenuHelpBoxRegular(struct MenuProc * proc, struct MenuEntProc * ent)
 
 void Menu_HelpBoxInit(struct MenuProc * proc)
 {
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
     proc->info->on_help_box(proc, proc->entries[proc->active_entry]);
 }
 
@@ -470,7 +470,7 @@ fu8 MenuFrozenHelpBox(struct MenuProc * proc, int msg)
 {
     Proc_GotoScript(proc, ProcScr_MenuFrozenHelpBox);
 
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
     StartHelpBox(GetUiHandPrevX(), GetUiHandPrevY(), msg);
 
 #if BUGFIX

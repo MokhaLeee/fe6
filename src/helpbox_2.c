@@ -227,7 +227,7 @@ int func_fe6_08070E0C(struct PlaySt const * play_st)
     }
 }
 
-void func_fe6_08070E70(void * vram, int pal)
+void LoadHelpBoxGfx(void * vram, int pal)
 {
     if (vram == NULL)
         vram = ((void *) VRAM) + 0x10000 + OBCHR_HELPBOX_180 * CHR_SIZE;
@@ -849,7 +849,7 @@ struct ProcScr CONST_DATA gUnk_08678070[] =
 
 int func_fe6_080718A8(int msg, ProcPtr parent)
 {
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
     func_fe6_080715DC(GetUiHandPrevX(), GetUiHandPrevY(), msg);
     SpawnProcLocking(gUnk_08678070, parent);
     return 1; // ?
@@ -867,7 +867,7 @@ struct Unk_0203D40C EWRAM_DATA gUnk_0203D460 = { { 0 } };
 
 void func_fe6_080718FC(void * vram, int pal)
 {
-    // identical to func_fe6_08070E70
+    // identical to LoadHelpBoxGfx
     // except for gUnk_0203D460 instead of gUnk_0203D40C
 
     if (vram == NULL)

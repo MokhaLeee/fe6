@@ -143,7 +143,7 @@ fu8 MapMenu_Unit_Select(struct MenuProc * menu, struct MenuEntProc * ent)
 
 fu8 MapMenu_Options_Select(struct MenuProc * menu, struct MenuEntProc * ent)
 {
-    SpawnProc(ProcScr_Unk_0868AE04, PROC_TREE_3);
+    SpawnProc(ProcScr_UiConfig, PROC_TREE_3);
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 
@@ -1476,7 +1476,7 @@ fu8 UnitActionMenu_Arena_Select(struct MenuProc * menu, struct MenuEntProc * ent
         return MENU_ACTION_SE_6B;
     }
 
-    func_fe6_08097E84();
+    StartArenaScreen();
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 

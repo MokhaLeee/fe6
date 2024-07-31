@@ -312,8 +312,8 @@ gUnk_0835C824: @ 0835C824
 gUnk_0835C829: @ 0835C829
 	.incbin "fe6-base.gba", 0x35C829, (0x35CA44 - 0x35C829) @ length: 021B
 
-	.global gUnk_0835CA44
-gUnk_0835CA44: @ 0835CA44
+	.global String_ShopGoldG
+String_ShopGoldG: @ 0835CA44
 	.incbin "fe6-base.gba", 0x35CA44, (0x35CA78 - 0x35CA44) @ length: 0034
 
 	.global gUnk_0835CA78

@@ -735,7 +735,7 @@ func_fe6_0807B28C: @ 0x0807B28C
 	adds r0, r0, r1
 	ldr r0, [r0]
 	adds r1, r4, #0
-	bl func_fe6_08095DF0
+	bl StartDefaultArmoryScreen
 .L0807B350:
 	adds r0, r4, #0
 	bl func_fe6_0807ACE8
@@ -1161,29 +1161,29 @@ func_fe6_0807B69C: @ 0x0807B69C
 	.align 2, 0
 .L0807B6B8: .4byte gDispIo
 
-	thumb_func_start func_fe6_0807B6BC
-func_fe6_0807B6BC: @ 0x0807B6BC
+	thumb_func_start StartPrepAtMenu
+StartPrepAtMenu: @ 0x0807B6BC
 	push {lr}
-	ldr r0, .L0807B6CC @ =gUnk_08678E38
+	ldr r0, .L0807B6CC @ =ProcScr_AtMenu
 	movs r1, #3
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807B6CC: .4byte gUnk_08678E38
+.L0807B6CC: .4byte ProcScr_AtMenu
 
-	thumb_func_start func_fe6_0807B6D0
-func_fe6_0807B6D0: @ 0x0807B6D0
+	thumb_func_start StartSioPrepAtMenu
+StartSioPrepAtMenu: @ 0x0807B6D0
 	push {lr}
-	ldr r0, .L0807B6E8 @ =gUnk_08678E38
+	ldr r0, .L0807B6E8 @ =ProcScr_AtMenu
 	movs r1, #3
 	bl SpawnProc
-	bl func_fe6_0807A194
-	bl func_fe6_080791A0
+	bl SioResetUnitItems
+	bl ResetSioPidPool
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807B6E8: .4byte gUnk_08678E38
+.L0807B6E8: .4byte ProcScr_AtMenu
 
 	thumb_func_start func_fe6_0807B6EC
 func_fe6_0807B6EC: @ 0x0807B6EC
@@ -3198,7 +3198,7 @@ func_fe6_0807C5B8: @ 0x0807C5B8
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
-	bl func_fe6_080791B4
+	bl RegisterSioPid
 	ldr r0, .L0807C6D0 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
@@ -3273,7 +3273,7 @@ func_fe6_0807C5B8: @ 0x0807C5B8
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
-	bl func_fe6_080791DC
+	bl RemoveSioPid
 	ldr r0, .L0807C784 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
@@ -3906,17 +3906,17 @@ func_fe6_0807CBDC: @ 0x0807CBDC
 	.align 2, 0
 .L0807CC24: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807CC28
-func_fe6_0807CC28: @ 0x0807CC28
-	ldr r1, .L0807CC30 @ =0x020155E4
+	thumb_func_start ResetPrepMenuItem
+ResetPrepMenuItem: @ 0x0807CC28
+	ldr r1, .L0807CC30 @ =gPrepMenuItemCnt
 	movs r0, #0
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-.L0807CC30: .4byte 0x020155E4
+.L0807CC30: .4byte gPrepMenuItemCnt
 
-	thumb_func_start func_fe6_0807CC34
-func_fe6_0807CC34: @ 0x0807CC34
+	thumb_func_start SetPrepScreenMenuItem
+SetPrepScreenMenuItem: @ 0x0807CC34
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r6, r2, #0
@@ -3928,11 +3928,11 @@ func_fe6_0807CC34: @ 0x0807CC34
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	mov ip, r0
-	ldr r3, .L0807CCBC @ =0x020155E4
+	ldr r3, .L0807CCBC @ =gPrepMenuItemCnt
 	ldrb r0, [r3]
 	cmp r0, #0xf
 	bhi .L0807CCB4
-	ldr r2, .L0807CCC0 @ =0x020154A4
+	ldr r2, .L0807CCC0 @ =gPrepMenuItems
 	lsls r0, r0, #2
 	ldrb r7, [r3]
 	adds r0, r0, r7
@@ -3986,8 +3986,8 @@ func_fe6_0807CC34: @ 0x0807CC34
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807CCBC: .4byte 0x020155E4
-.L0807CCC0: .4byte 0x020154A4
+.L0807CCBC: .4byte gPrepMenuItemCnt
+.L0807CCC0: .4byte gPrepMenuItems
 
 	thumb_func_start func_fe6_0807CCC4
 func_fe6_0807CCC4: @ 0x0807CCC4
@@ -3995,14 +3995,14 @@ func_fe6_0807CCC4: @ 0x0807CCC4
 	adds r4, r0, #0
 	movs r5, #0
 	movs r3, #0
-	ldr r0, .L0807CD04 @ =0x020155E4
+	ldr r0, .L0807CD04 @ =gPrepMenuItemCnt
 	adds r6, r0, #0
 	ldrb r0, [r6]
 	cmp r3, r0
 	bge .L0807CD1C
 	adds r2, r4, #0
 	adds r2, #0x35
-	ldr r1, .L0807CD08 @ =0x020154A4
+	ldr r1, .L0807CD08 @ =gPrepMenuItems
 .L0807CCDC:
 	ldrb r7, [r1, #9]
 	ldrb r0, [r2]
@@ -4024,8 +4024,8 @@ func_fe6_0807CCC4: @ 0x0807CCC4
 	movs r0, #1
 	b .L0807CD1E
 	.align 2, 0
-.L0807CD04: .4byte 0x020155E4
-.L0807CD08: .4byte 0x020154A4
+.L0807CD04: .4byte gPrepMenuItemCnt
+.L0807CD08: .4byte gPrepMenuItems
 .L0807CD0C:
 	adds r0, r5, #1
 	lsls r0, r0, #0x18
@@ -4049,11 +4049,11 @@ func_fe6_0807CD24: @ 0x0807CD24
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 	movs r3, #0
-	ldr r0, .L0807CD54 @ =0x020155E4
+	ldr r0, .L0807CD54 @ =gPrepMenuItemCnt
 	ldrb r0, [r0]
 	cmp r3, r0
 	bge .L0807CD4C
-	ldr r2, .L0807CD58 @ =0x020154A4
+	ldr r2, .L0807CD58 @ =gPrepMenuItems
 	adds r1, r0, #0
 .L0807CD38:
 	ldrb r0, [r2, #9]
@@ -4073,11 +4073,11 @@ func_fe6_0807CD24: @ 0x0807CD24
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0807CD54: .4byte 0x020155E4
-.L0807CD58: .4byte 0x020154A4
+.L0807CD54: .4byte gPrepMenuItemCnt
+.L0807CD58: .4byte gPrepMenuItems
 
-	thumb_func_start func_fe6_0807CD5C
-func_fe6_0807CD5C: @ 0x0807CD5C
+	thumb_func_start PutPrepScreenMenuItems
+PutPrepScreenMenuItems: @ 0x0807CD5C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4093,11 +4093,11 @@ func_fe6_0807CD5C: @ 0x0807CD5C
 	movs r0, #0
 	mov r8, r0
 	movs r7, #0
-	ldr r0, .L0807CDEC @ =0x020155E4
+	ldr r0, .L0807CDEC @ =gPrepMenuItemCnt
 	ldrb r0, [r0]
 	cmp r7, r0
 	bge .L0807CDDC
-	ldr r0, .L0807CDF0 @ =0x020154A4
+	ldr r0, .L0807CDF0 @ =gPrepMenuItems
 	adds r5, r0, #0
 	adds r5, #8
 	adds r6, r2, #0
@@ -4135,7 +4135,7 @@ func_fe6_0807CD5C: @ 0x0807CD5C
 .L0807CDD0:
 	adds r5, #0x14
 	adds r7, #1
-	ldr r0, .L0807CDEC @ =0x020155E4
+	ldr r0, .L0807CDEC @ =gPrepMenuItemCnt
 	ldrb r0, [r0]
 	cmp r7, r0
 	blt .L0807CD8A
@@ -4148,8 +4148,8 @@ func_fe6_0807CD5C: @ 0x0807CD5C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807CDEC: .4byte 0x020155E4
-.L0807CDF0: .4byte 0x020154A4
+.L0807CDEC: .4byte gPrepMenuItemCnt
+.L0807CDF0: .4byte gPrepMenuItems
 
 	thumb_func_start func_fe6_0807CDF4
 func_fe6_0807CDF4: @ 0x0807CDF4
@@ -4162,12 +4162,12 @@ func_fe6_0807CDF4: @ 0x0807CDF4
 	movs r0, #0
 	mov sl, r0
 	movs r4, #0
-	ldr r0, .L0807CE4C @ =0x020155E4
+	ldr r0, .L0807CE4C @ =gPrepMenuItemCnt
 	mov sb, r0
 	ldrb r1, [r0]
 	cmp r4, r1
 	bge .L0807CE8A
-	ldr r7, .L0807CE50 @ =0x020154A4
+	ldr r7, .L0807CE50 @ =gPrepMenuItems
 	mov ip, r7
 	mov r3, r8
 	adds r3, #0x35
@@ -4198,8 +4198,8 @@ func_fe6_0807CDF4: @ 0x0807CDF4
 	bl StartHelpBox
 	b .L0807CE68
 	.align 2, 0
-.L0807CE4C: .4byte 0x020155E4
-.L0807CE50: .4byte 0x020154A4
+.L0807CE4C: .4byte gPrepMenuItemCnt
+.L0807CE50: .4byte gPrepMenuItems
 .L0807CE54:
 	ldrb r1, [r1]
 	lsls r1, r1, #4
@@ -4245,11 +4245,11 @@ func_fe6_0807CE98: @ 0x0807CE98
 	adds r5, r0, #0
 	movs r4, #0
 	movs r2, #0
-	ldr r0, .L0807CED0 @ =0x020155E4
+	ldr r0, .L0807CED0 @ =gPrepMenuItemCnt
 	ldrb r1, [r0]
 	cmp r2, r1
 	bge .L0807CEE6
-	ldr r0, .L0807CED4 @ =0x020154A4
+	ldr r0, .L0807CED4 @ =gPrepMenuItems
 	adds r3, r5, #0
 	adds r3, #0x35
 	ldrb r6, [r3]
@@ -4270,8 +4270,8 @@ func_fe6_0807CE98: @ 0x0807CE98
 	ldrb r0, [r1, #7]
 	b .L0807CEE8
 	.align 2, 0
-.L0807CED0: .4byte 0x020155E4
-.L0807CED4: .4byte 0x020154A4
+.L0807CED0: .4byte gPrepMenuItemCnt
+.L0807CED4: .4byte gPrepMenuItems
 .L0807CED8:
 	adds r0, r4, #1
 	lsls r0, r0, #0x18
@@ -4297,11 +4297,11 @@ func_fe6_0807CEF0: @ 0x0807CEF0
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	movs r2, #0
-	ldr r3, .L0807CF14 @ =0x020155E4
+	ldr r3, .L0807CF14 @ =gPrepMenuItemCnt
 	ldrb r0, [r3]
 	cmp r2, r0
 	bge .L0807CF26
-	ldr r0, .L0807CF18 @ =0x020154A4
+	ldr r0, .L0807CF18 @ =gPrepMenuItems
 	adds r0, #8
 .L0807CF08:
 	ldrb r5, [r0, #8]
@@ -4310,8 +4310,8 @@ func_fe6_0807CEF0: @ 0x0807CEF0
 	strb r1, [r0]
 	b .L0807CF26
 	.align 2, 0
-.L0807CF14: .4byte 0x020155E4
-.L0807CF18: .4byte 0x020154A4
+.L0807CF14: .4byte gPrepMenuItemCnt
+.L0807CF18: .4byte gPrepMenuItems
 .L0807CF1C:
 	adds r0, #0x14
 	adds r2, #1
@@ -4332,11 +4332,11 @@ func_fe6_0807CF2C: @ 0x0807CF2C
 	lsrs r5, r1, #0x18
 	movs r1, #0
 	movs r3, #0
-	ldr r0, .L0807CF58 @ =0x020155E4
+	ldr r0, .L0807CF58 @ =gPrepMenuItemCnt
 	ldrb r2, [r0]
 	cmp r3, r2
 	bge .L0807CF6E
-	ldr r0, .L0807CF5C @ =0x020154A4
+	ldr r0, .L0807CF5C @ =gPrepMenuItems
 	adds r4, r2, #0
 	adds r2, r0, #0
 	adds r2, #9
@@ -4349,8 +4349,8 @@ func_fe6_0807CF2C: @ 0x0807CF2C
 	ldrb r0, [r2, #7]
 	b .L0807CF70
 	.align 2, 0
-.L0807CF58: .4byte 0x020155E4
-.L0807CF5C: .4byte 0x020154A4
+.L0807CF58: .4byte gPrepMenuItemCnt
+.L0807CF5C: .4byte gPrepMenuItems
 .L0807CF60:
 	adds r0, r1, #1
 	lsls r0, r0, #0x18
@@ -6694,7 +6694,7 @@ func_fe6_0807E0D4: @ 0x0807E0D4
 	lsrs r4, r0, #0x18
 	cmp r4, #7
 	bls .L0807E1E8
-	ldr r0, .L0807E2D4 @ =gUnk_08319E88
+	ldr r0, .L0807E2D4 @ =Pal_SpinningArrow
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x60
@@ -6786,7 +6786,7 @@ func_fe6_0807E0D4: @ 0x0807E0D4
 .L0807E2C8: .4byte 0x02015688
 .L0807E2CC: .4byte 0x020155E8
 .L0807E2D0: .4byte 0x02015638
-.L0807E2D4: .4byte gUnk_08319E88
+.L0807E2D4: .4byte Pal_SpinningArrow
 .L0807E2D8: .4byte gUnk_0831AABC
 .L0807E2DC: .4byte gUnk_0831A248
 .L0807E2E0: .4byte gUnk_08319EE8
@@ -6907,7 +6907,7 @@ func_fe6_0807E0D4: @ 0x0807E0D4
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl func_fe6_08070E70
+	bl LoadHelpBoxGfx
 	add sp, #0x34
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -13410,7 +13410,7 @@ func_fe6_0808171C: @ 0x0808171C
 	ldr r0, .L08081958 @ =gUnk_083198CC
 	ldr r1, .L0808195C @ =0x06017200
 	bl Decompress
-	ldr r0, .L08081960 @ =gUnk_08319E88
+	ldr r0, .L08081960 @ =Pal_SpinningArrow
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x60
@@ -13431,7 +13431,7 @@ func_fe6_0808171C: @ 0x0808171C
 	rsbs r4, r4, #0
 	movs r0, #0
 	adds r1, r4, #0
-	bl func_fe6_08070E70
+	bl LoadHelpBoxGfx
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl func_fe6_080829E8
@@ -13456,7 +13456,7 @@ func_fe6_0808171C: @ 0x0808171C
 .L08081954: .4byte 0x02015638
 .L08081958: .4byte gUnk_083198CC
 .L0808195C: .4byte 0x06017200
-.L08081960: .4byte gUnk_08319E88
+.L08081960: .4byte Pal_SpinningArrow
 .L08081964: .4byte gUnk_0831AB1C
 .L08081968: .4byte 0x06011000
 .L0808196C: .4byte gUnk_0831AABC

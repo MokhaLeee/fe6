@@ -74,8 +74,8 @@ gUnk_0868AA80: @ 0868AA80
 gUnk_0868AAA8: @ 0868AAA8
 	.incbin "fe6-base.gba", 0x68AAA8, (0x68AAC8 - 0x68AAA8) @ length: 0020
 
-	.global gUnk_0868AAC8
-gUnk_0868AAC8: @ 0868AAC8
+	.global gpUiConfigSt
+gpUiConfigSt: @ 0868AAC8
 	.incbin "fe6-base.gba", 0x68AAC8, (0x68AAE4 - 0x68AAC8) @ length: 001C
 
 	.global gUnk_0868AAE4
@@ -94,16 +94,16 @@ gUnk_0868AB22: @ 0868AB22
 gUnk_0868AB3C: @ 0868AB3C
 	.incbin "fe6-base.gba", 0x68AB3C, (0x68ADA4 - 0x68AB3C) @ length: 0268
 
-	.global gUnk_0868ADA4
-gUnk_0868ADA4: @ 0868ADA4
+	.global ProcScr_RedrawConfigHelpText
+ProcScr_RedrawConfigHelpText: @ 0868ADA4
 	.incbin "fe6-base.gba", 0x68ADA4, (0x68ADC4 - 0x68ADA4) @ length: 0020
 
-	.global gUnk_0868ADC4
-gUnk_0868ADC4: @ 0868ADC4
+	.global ProcScr_DrawConfigUiSprites
+ProcScr_DrawConfigUiSprites: @ 0868ADC4
 	.incbin "fe6-base.gba", 0x68ADC4, (0x68AE04 - 0x68ADC4) @ length: 0040
 
-	.global ProcScr_Unk_0868AE04
-ProcScr_Unk_0868AE04: @ 0868AE04
+	.global ProcScr_UiConfig
+ProcScr_UiConfig: @ 0868AE04
 	.incbin "fe6-base.gba", 0x68AE04, (0x68AEB4 - 0x68AE04) @ length: 00B0
 
 	.global gUnk_0868AEB4
@@ -378,8 +378,8 @@ gUnk_0868C2D4: @ 0868C2D4
 gUnk_0868C2DC: @ 0868C2DC
 	.incbin "fe6-base.gba", 0x68C2DC, (0x68C304 - 0x68C2DC) @ length: 0028
 
-	.global ProcScr_Unk_0868C304
-ProcScr_Unk_0868C304: @ 0868C304
+	.global ProcScr_WorldMapIntroEvent
+ProcScr_WorldMapIntroEvent: @ 0868C304
 	.incbin "fe6-base.gba", 0x68C304, (0x68C324 - 0x68C304) @ length: 0020
 
 	.global gUnk_0868C324
@@ -454,8 +454,8 @@ gUnk_0868FDB4: @ 0868FDB4
 gUnk_0868FE0C: @ 0868FE0C
 	.incbin "fe6-base.gba", 0x68FE0C, (0x68FE34 - 0x68FE0C) @ length: 0028
 
-	.global gUnk_0868FE34
-gUnk_0868FE34: @ 0868FE34
+	.global ProcScr_ClassDemo
+ProcScr_ClassDemo: @ 0868FE34
 	.incbin "fe6-base.gba", 0x68FE34, (0x68FEDC - 0x68FE34) @ length: 00A8
 
 	.global gUnk_0868FEDC
@@ -550,12 +550,12 @@ gUnk_08690D44: @ 08690D44
 gUnk_08690E60: @ 08690E60
 	.incbin "fe6-base.gba", 0x690E60, (0x690E70 - 0x690E60) @ length: 0010
 
-	.global gUnk_08690E70
-gUnk_08690E70: @ 08690E70
+	.global gShopDialogueOffsetLut
+gShopDialogueOffsetLut: @ 08690E70
 	.incbin "fe6-base.gba", 0x690E70, (0x690E7C - 0x690E70) @ length: 000C
 
-	.global gUnk_08690E7C
-gUnk_08690E7C: @ 08690E7C
+	.global gShopFaces
+gShopFaces: @ 08690E7C
 	.incbin "fe6-base.gba", 0x690E7C, (0x690E88 - 0x690E7C) @ length: 000C
 
 	.global gUnk_08690E88
@@ -566,8 +566,8 @@ gUnk_08690E88: @ 08690E88
 gUnk_08690EC0: @ 08690EC0
 	.incbin "fe6-base.gba", 0x690EC0, (0x690F00 - 0x690EC0) @ length: 0040
 
-	.global gUnk_08690F00
-gUnk_08690F00: @ 08690F00
+	.global ProcScr_Shop
+ProcScr_Shop: @ 08690F00
 	.incbin "fe6-base.gba", 0x690F00, (0x691138 - 0x690F00) @ length: 0238
 
 	.global gUnk_08691138
@@ -578,28 +578,36 @@ gUnk_08691138: @ 08691138
 gUnk_08691148: @ 08691148
 	.incbin "fe6-base.gba", 0x691148, (0x691158 - 0x691148) @ length: 0010
 
-	.global gUnk_08691158
-gUnk_08691158: @ 08691158
+	.global Sprite_ShopGoldBox
+Sprite_ShopGoldBox: @ 08691158
 	.incbin "fe6-base.gba", 0x691158, (0x691190 - 0x691158) @ length: 0038
 
-	.global gUnk_08691190
-gUnk_08691190: @ 08691190
-	.incbin "fe6-base.gba", 0x691190, (0x6911A8 - 0x691190) @ length: 0018
+	.global ProcScr_GoldBox
+ProcScr_GoldBox: @ 08691190
+	.incbin "fe6-base.gba", 0x691190, (0x6911A0 - 0x691190) @ length: 0018
 
-	.global gUnk_086911A8
-gUnk_086911A8: @ 086911A8
+	.global ProcScr_ShopDrawHand
+ProcScr_ShopDrawHand: @ 086911A0
+	.incbin "fe6-base.gba", 0x6911A0, (0x6911A8 - 0x6911A0) @ length: 0004
+
+	.global gpShopSt
+gpShopSt: @ 086911A8
 	.incbin "fe6-base.gba", 0x6911A8, (0x6911AC - 0x6911A8) @ length: 0004
 
-	.global gUnk_086911AC
-gUnk_086911AC: @ 086911AC
+	.global ProcScr_ArenaUiMain
+ProcScr_ArenaUiMain: @ 086911AC
 	.incbin "fe6-base.gba", 0x6911AC, (0x69130C - 0x6911AC) @ length: 0160
 
-	.global gUnk_0869130C
-gUnk_0869130C: @ 0869130C
-	.incbin "fe6-base.gba", 0x69130C, (0x69141C - 0x69130C) @ length: 0110
+	.global ProcScr_ArenaUiResults
+ProcScr_ArenaUiResults: @ 0869130C
+	.incbin "fe6-base.gba", 0x69130C, (0x6913FC - 0x69130C) @ length: 0110
 
-	.global gUnk_0869141C
-gUnk_0869141C: @ 0869141C
+	.global ProcScr_ArenaUiResultBgm
+ProcScr_ArenaUiResultBgm: @ 086913FC
+	.incbin "fe6-base.gba", 0x6913FC, (0x69141C - 0x6913FC)
+
+	.global EventScr_SuspendPrompt
+EventScr_SuspendPrompt: @ 0869141C
 	.incbin "fe6-base.gba", 0x69141C, (0x691480 - 0x69141C) @ length: 0064
 
 /**
@@ -824,7 +832,11 @@ gUnk_08692128: @ 08692128
 
 	.global gUnk_0869212C
 gUnk_0869212C: @ 0869212C
-	.incbin "fe6-base.gba", 0x69212C, (0x6921E8 - 0x69212C)
+	.incbin "fe6-base.gba", 0x69212C, (0x692130 - 0x69212C)
+
+	.global ProcScr_OpAnim_08692130
+ProcScr_OpAnim_08692130: @ 08692130
+	.incbin "fe6-base.gba", 0x692130, (0x6921E8 - 0x692130)
 
 	.global ProcScr_TitleScreen
 ProcScr_TitleScreen: @ 086921E8

@@ -455,7 +455,7 @@ struct ProcScr CONST_DATA ProcScr_HelpBoxLockHelper[] =
 // unused
 int StartLockingHelpBox(int msg, ProcPtr parent)
 {
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
 
     StartHelpBox(GetUiHandPrevX(), GetUiHandPrevY(), msg);
     SpawnProcLocking(ProcScr_HelpBoxLockHelper, parent);

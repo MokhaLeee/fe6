@@ -1413,7 +1413,7 @@ void StartStatScreen(struct Unit * unit, ProcPtr parent)
 
 void StartStatScreenHelp(int page_id, ProcPtr proc)
 {
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
 
     if (gStatScreenSt.help == NULL)
     {
