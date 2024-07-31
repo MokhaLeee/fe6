@@ -6397,7 +6397,7 @@ func_fe6_080382A0: @ 0x080382A0
 	movs r6, #0
 	mov r7, r8
 .L080382CC:
-	ldr r0, .L08038320 @ =gUnk_0203D494
+	ldr r0, .L08038320 @ =SioPidPool
 	adds r0, r6, r0
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -6436,7 +6436,7 @@ func_fe6_080382A0: @ 0x080382A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08038320: .4byte gUnk_0203D494
+.L08038320: .4byte SioPidPool
 
 	thumb_func_start func_fe6_08038324
 func_fe6_08038324: @ 0x08038324
@@ -19527,7 +19527,7 @@ func_fe6_0803ED9C: @ 0x0803ED9C
 	adds r5, r0, #0
 	ldr r0, .L0803EDE0 @ =0x06015000
 	movs r1, #6
-	bl func_fe6_08070E70
+	bl LoadHelpBoxGfx
 	ldr r2, .L0803EDE4 @ =0x000006E5
 	movs r0, #0x40
 	movs r1, #0x38

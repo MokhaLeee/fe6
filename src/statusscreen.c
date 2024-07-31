@@ -396,7 +396,7 @@ void StatusScreen_Init(struct StatusScreenProc * proc)
 
     SetBlendNone();
 
-    func_fe6_0808C390(proc, 0, -1);
+    StartMuralBackgroundExt(proc, 0, -1);
 
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 }
@@ -505,7 +505,7 @@ void func_fe6_08073F90(struct StatusScreenProc * proc)
         help = &HelpInfo_0868B1B0;
     }
 
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
     StartMovingHelpBox(help, proc);
 }
 

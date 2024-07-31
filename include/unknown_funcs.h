@@ -432,16 +432,16 @@ void func_fe6_0803C080(ProcPtr parent);
 // func_fe6_08041210
 
 
-// func_fe6_080791A0
-void func_fe6_080791B4(fu8 pid);
-void func_fe6_080791DC(fu8 pid);
+// ResetSioPidPool
+void RegisterSioPid(fu8 pid);
+void RemoveSioPid(fu8 pid);
 // func_fe6_0807921C
 // func_fe6_08079250
 // func_fe6_080792C8
 // func_fe6_08079388
 // func_fe6_080793F0
 bool IsUnitMandatoryDeploy(struct Unit * unit);
-// func_fe6_08079424
+// InitPrepScreenMainMenu
 // func_fe6_08079624
 // func_fe6_080796B0
 // func_fe6_0807979C
@@ -516,11 +516,11 @@ void func_fe6_0807CB08(/* TODO: args */);
 void func_fe6_0807CB78(/* TODO: args */);
 void func_fe6_0807CBB0(/* TODO: args */);
 void func_fe6_0807CBDC(/* TODO: args */);
-// func_fe6_0807CC28
-void func_fe6_0807CC34(void(*func)(/* TODO: args */), fu8 arg_1, int arg_2, fu8 arg_3, int arg_4, fu8 arg_5);
+// ResetPrepMenuItem
+void SetPrepScreenMenuItem(void(*func)(/* TODO: args */), fu8 arg_1, int arg_2, fu8 arg_3, int arg_4, fu8 arg_5);
 // func_fe6_0807CCC4
 // func_fe6_0807CD24
-// func_fe6_0807CD5C
+// PutPrepScreenMenuItems
 // func_fe6_0807CDF4
 // func_fe6_0807CE98
 // func_fe6_0807CEF0
@@ -690,26 +690,26 @@ ProcPtr func_fe6_08082CF4(ProcPtr parent);
 // func_fe6_0808C084
 // func_fe6_0808C098
 // func_fe6_0808C32C
-// func_fe6_0808C340
-// func_fe6_0808C350
+// GetSelectedGameOption
+// GetSelectedOptionValue
 // func_fe6_0808C380
-void func_fe6_0808C390(ProcPtr parent, int arg_1, int arg_2);
-// func_fe6_0808C428
+void StartMuralBackgroundExt(ProcPtr parent, int arg_1, int arg_2);
+// DrawGameOptionIcon
 // func_fe6_0808C4A8
-// func_fe6_0808C514
-// func_fe6_0808C58C
+// DrawGameOptionText
+// DrawOptionValueTexts
 // func_fe6_0808C668
 // func_fe6_0808C680
-// func_fe6_0808C6A8
-// func_fe6_0808C75C
-// func_fe6_0808C9AC
-// func_fe6_0808C9C8
-// func_fe6_0808CA14
-// func_fe6_0808CAF0
-// func_fe6_0808CC18
+// DrawConfigUiSprites
+// Config_Init
+// WindowColorOptionChangeHandler
+// MusicOptionChangeHandler
+// GenericOptionChangeHandler
+// GetGameOption
+// SetGameOption
 // func_fe6_0808CDCC
-// func_fe6_0808CE4C
-// func_fe6_0808D07C
+// Config_Loop
+// Config_End
 // func_fe6_0808D0C0
 fu8 func_fe6_0808D0F8(void);
 // func_fe6_0808D168
@@ -986,7 +986,7 @@ void func_fe6_08094030(int arg_0, int arg_1, int arg_2, ProcPtr proc);
 // func_fe6_080947AC
 // func_fe6_080947B8
 // func_fe6_080947DC
-void func_fe6_080947F0(u8 arg_0, ProcPtr parent);
+void StartClassDemo(u8 arg_0, ProcPtr parent);
 // func_fe6_0809480C
 // func_fe6_0809485C
 // func_fe6_08094878
@@ -1025,17 +1025,17 @@ void func_fe6_080947F0(u8 arg_0, ProcPtr parent);
 // func_fe6_08095D40
 // func_fe6_08095D48
 // func_fe6_08095D58
-// func_fe6_08095D5C
-// func_fe6_08095D88
-// func_fe6_08095DF0
-void func_fe6_08095E10(struct Unit * unit, u16 const * iid_list);
-void func_fe6_08095E30(struct Unit * unit, u16 const * iid_list);
-void func_fe6_08095E50(struct Unit * unit, u16 const * iid_list);
-// func_fe6_08095E70
-// func_fe6_08095E90
-// func_fe6_08095F5C
-void func_fe6_08095FC4(void);
-void func_fe6_08095FF8(void);
+// GetShopFace
+// StartShopDialogue
+// StartDefaultArmoryScreen
+void StartArmoryScreenOrphaned(struct Unit * unit, u16 const * iid_list);
+void StartVendorScreenOrphaned(struct Unit * unit, u16 const * iid_list);
+void StartSecretShopScreenOrphaned(struct Unit * unit, u16 const * iid_list);
+// StartArmoryScreen
+// StartShopScreen
+// UpdateShopItemCounts
+void TalkChoice_OnBuy(void);
+void TalkChoice_OnSell(void);
 // func_fe6_0809602C
 // func_fe6_0809604C
 // func_fe6_080960B8
@@ -1064,46 +1064,46 @@ void func_fe6_08095FF8(void);
 // func_fe6_08096AC4
 // func_fe6_08096AFC
 // func_fe6_08096B38
-// func_fe6_08096F70
-// func_fe6_08097014
-// func_fe6_0809704C
-// func_fe6_08097084
-// func_fe6_080970BC
-// func_fe6_08097180
+// StartUiGoldBox
+// InitGoldBoxText
+// ClearGoldBoxTextTm2Line
+// DisplayGoldBoxText
+// ShopInitTexts_OnBuy
+// DrawShopSoldItems
 // func_fe6_08097280
-// func_fe6_080972AC
+// ShopInitTexts_OnSell
 // func_fe6_08097354
 // func_fe6_08097418
 // func_fe6_08097444
 // func_fe6_080974A0
-// func_fe6_0809750C
+// GetItemPrice
 // func_fe6_080975A0
 // func_fe6_080975C8
-// func_fe6_08097600
-// func_fe6_08097638
-// func_fe6_08097728
-// func_fe6_0809773C
-// func_fe6_0809777C
-// func_fe6_080977C0
-// func_fe6_08097830
-// func_fe6_080978AC
+// GoldBox_OnLoop
+// InitShopScreenConfig
+// _DisplayShopUiArrows
+// DisplayShopUiArrows
+// UnpackUiVArrowGfx
+// DisplayUiVArrow
+// HandleShopBuyAction
+// ShopTryMoveCursor
 // func_fe6_080979AC
-// func_fe6_080979C8
-// func_fe6_08097A54
+// ShopTryScrollPage
+// ShopUpdateBg2Offset
 // func_fe6_08097AC4
-// func_fe6_08097BC0
+// Shop_TryMoveHandPage
 // func_fe6_08097CF4
 // func_fe6_08097D10
 // func_fe6_08097D34
 // func_fe6_08097D50
 // func_fe6_08097D7C
 // func_fe6_08097DA8
-// func_fe6_08097DD8
-// func_fe6_08097DFC
+// ShouldDisplayUpArrow
+// ShouldDisplayDownArrow
 // func_fe6_08097E2C
-void func_fe6_08097E84(void);
-void func_fe6_08097EAC(void);
-// func_fe6_08097ECC
+void StartArenaScreen(void);
+void StartArenaResultsScreen(void);
+// ArenaUi_Init
 // func_fe6_08098258
 // func_fe6_08098290
 // func_fe6_080982B0
@@ -1117,15 +1117,15 @@ void func_fe6_08097EAC(void);
 // func_fe6_08098490
 // func_fe6_080984A8
 // func_fe6_08098550
-// func_fe6_080985AC
+// Shop_OnExit
 // func_fe6_080985D8
 // func_fe6_08098624
-// func_fe6_080986DC
-// func_fe6_08098730
+// Arena_PlayResultSong
+// Arena_PlayArenaSong
 void func_fe6_0809874C(void);
 // func_fe6_08098764
-// func_fe6_08098798
-void func_fe6_080987B8(ProcPtr todo_event_proc);
+// WriteSuspandPlaterIdle
+void PostGameOverHandler(ProcPtr todo_event_proc);
 // func_fe6_080987D4
 // func_fe6_080987E8
 // func_fe6_0809882C

@@ -4,8 +4,8 @@
 gUnk_083198CC: @ 083198CC
 	.incbin "fe6-base.gba", 0x3198CC, (0x319E88 - 0x3198CC) @ length: 05BC
 
-	.global gUnk_08319E88
-gUnk_08319E88: @ 08319E88
+	.global Pal_SpinningArrow
+Pal_SpinningArrow: @ 08319E88
 	.incbin "fe6-base.gba", 0x319E88, (0x319EE8 - 0x319E88) @ length: 0060
 
 	.global gUnk_08319EE8
@@ -56,8 +56,8 @@ gUnk_08320436: @ 08320436
 gUnk_08320D98: @ 08320D98
 	.incbin "fe6-base.gba", 0x320D98, (0x320E18 - 0x320D98) @ length: 0080
 
-	.global gUnk_08320E18
-gUnk_08320E18: @ 08320E18
+	.global Img_SpinningArrow
+Img_SpinningArrow: @ 08320E18
 	.incbin "fe6-base.gba", 0x320E18, (0x320EEC - 0x320E18) @ length: 00D4
 
 	.global gUnk_08320EEC

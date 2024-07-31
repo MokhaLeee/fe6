@@ -540,7 +540,7 @@ static void TradeMenu_HelpBox_OnInit(struct GenericProc * proc)
     if (tradeMenu->extraCellEnabled)
         tradeMenu->hasItem[tradeMenu->extraColumn][tradeMenu->extraRow] = FALSE;
 
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
 
     StartItemHelpBox(
         8 * sItemDisplayTileLocation[tradeMenu->hoverColumn][tradeMenu->hoverRow].x,

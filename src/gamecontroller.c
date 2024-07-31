@@ -123,7 +123,7 @@ PROC_LABEL(L_GAMECTRL_MAINMENU),
 PROC_LABEL(L_GAMECTRL_CHAPTER),
     PROC_CALL(GC_CheckForGameEnded),
 
-    PROC_START_CHILD_LOCKING(ProcScr_Unk_0868C304),
+    PROC_START_CHILD_LOCKING(ProcScr_WorldMapIntroEvent),
 
     PROC_CALL(GC_DarkenScreen),
     PROC_SLEEP(0),
@@ -178,7 +178,7 @@ PROC_LABEL(L_GAMECTRL_POSTTRIAL),
 PROC_LABEL(L_GAMECTRL_TUTORIAL),
     PROC_CALL(GC_InitTutorial),
 
-    PROC_START_CHILD_LOCKING(ProcScr_Unk_0868C304),
+    PROC_START_CHILD_LOCKING(ProcScr_WorldMapIntroEvent),
 
     PROC_CALL(StartChapter),
     PROC_SLEEP(0),
@@ -268,7 +268,7 @@ static bool GC_StartClassDemo(struct GameController * proc)
         class_set = 0;
 
     proc->previous_demo_class_set = class_set;
-    func_fe6_080947F0(class_set, proc);
+    StartClassDemo(class_set, proc);
 
     return FALSE;
 }

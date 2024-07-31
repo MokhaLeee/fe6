@@ -214,8 +214,8 @@ struct TalkChoiceEnt CONST_DATA gYesNoTalkChoice[] =
 
 struct TalkChoiceEnt CONST_DATA gBuySellTalkChoice[] =
 {
-    { MSG_2C1, func_fe6_08095FC4 }, // Buy
-    { MSG_2C2, func_fe6_08095FF8 }, // Sell
+    { MSG_2C1, TalkChoice_OnBuy }, // Buy
+    { MSG_2C2, TalkChoice_OnSell }, // Sell
 };
 
 struct ProcScr CONST_DATA ProcScr_TalkChoice[] =

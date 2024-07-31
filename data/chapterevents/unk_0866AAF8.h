@@ -87,7 +87,7 @@ EventScr CONST_DATA EventScr_GameOver[] =
     EvtFunc(StartGameOverScreen)
 
 EvtLabel(1)
-    EvtFunc(func_fe6_080987B8)
+    EvtFunc(PostGameOverHandler)
     EvtClearSkip
     EvtEnd
 };

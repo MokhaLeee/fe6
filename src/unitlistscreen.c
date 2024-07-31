@@ -129,7 +129,7 @@ struct Unk_02016874
 extern struct Unk_02016874 gUnk_02016874;
 
 extern u8 const gUnk_083198CC[]; // img
-extern u16 const gUnk_08319E88[]; // pal
+extern u16 const Pal_SpinningArrow[]; // pal
 extern u8 const gUnk_083215B8[]; // img
 extern u16 const gUnk_08321EE4[]; // pal
 extern u8 const gUnk_083210A0[]; // tsa
@@ -748,7 +748,7 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
     }
 
     Decompress(gUnk_083198CC, OBJ_VRAM0 + OBCHR_UNITLIST_390 * CHR_SIZE);
-    ApplyPalettes(gUnk_08319E88, 0x10 + OBPAL_UNITLIST_1, 3);
+    ApplyPalettes(Pal_SpinningArrow, 0x10 + OBPAL_UNITLIST_1, 3);
 
     TmFill(gBg0Tm, 0);
     TmFill(gBg1Tm, 0);
@@ -827,7 +827,7 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
     gDispIo.bg3_ct.priority = 3;
 
     Decompress(gUnk_08320EEC, gBg1Tm + TM_OFFSET(0, 20));
-    ApplyPalette(gUnk_08319E88, BGPAL_UNITLIST_15);
+    ApplyPalette(Pal_SpinningArrow, BGPAL_UNITLIST_15);
 
     proc->sprites_proc = SpawnProc(ProcScr_UnitListScreenSprites, proc);
 
@@ -842,7 +842,7 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
         proc->unk_48 = StartMuralBackground(NULL, NULL, BGPAL_UNITLIST_10);
     }
 
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
 }
 
 void func_fe6_08075338(struct UnitListScreenProc * proc)
@@ -880,7 +880,7 @@ void func_fe6_080753A0(struct UnitListScreenProc * proc)
             if (proc->unk_3A > proc->unk_3B)
             {
                 gSortedUnits[idx]->unit->flags &= ~(UNIT_FLAG_TURN_ENDED | UNIT_FLAG_NOT_DEPLOYED);
-                func_fe6_080791B4(UNIT_PID(gSortedUnits[idx]->unit));
+                RegisterSioPid(UNIT_PID(gSortedUnits[idx]->unit));
                 proc->unk_3B++;
                 PlaySe(SONG_6A);
                 func_fe6_08076448(proc, idx, gBg0Tm, proc->page, TRUE);
@@ -902,7 +902,7 @@ void func_fe6_080753A0(struct UnitListScreenProc * proc)
         if (proc->unk_3C != 0 || !IsUnitMandatoryDeploy(gSortedUnits[idx]->unit))
         {
             gSortedUnits[idx]->unit->flags |= UNIT_FLAG_TURN_ENDED | UNIT_FLAG_NOT_DEPLOYED;
-            func_fe6_080791DC(UNIT_PID(gSortedUnits[idx]->unit));
+            RemoveSioPid(UNIT_PID(gSortedUnits[idx]->unit));
             PlaySe(SONG_6B);
             proc->unk_3B--;
             func_fe6_08076448(proc, idx, gBg0Tm, proc->page, TRUE);
@@ -2070,7 +2070,7 @@ PROC_LABEL(4),
     PROC_END,
 };
 
-void func_fe6_080762B4(ProcPtr parent)
+void StartUnitListScreenForSoloAnim(ProcPtr parent)
 {
     struct UnitListScreenProc * proc;
 

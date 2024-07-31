@@ -695,7 +695,7 @@ fu8 StartBattlePreviewHelpBox(struct MapSelectProc * mapselect_proc, struct Sele
         // right
         x = 20;
 
-    func_fe6_08070E70(NULL, -1);
+    LoadHelpBoxGfx(NULL, -1);
 
     switch (proc->frame_kind)
     {

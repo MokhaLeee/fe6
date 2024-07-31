@@ -60,6 +60,8 @@ SECTIONS
         . = 0x00E8A4; gUnk_0200E8A4 = .; /* this is a tilemap */
         . = 0x00F0A4; gUnk_0200F0A4 = .; /* this is units */
         . = 0x0104A4; gUnk_020104A4 = .; /* buf? */
+        . = 0x0154A4; gPrepMenuItems = .;
+        . = 0x0155E4; gPrepMenuItemCnt = .;
         . = 0x016874; gUnk_02016874 = .; /* big jump here? */
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
@@ -318,7 +320,7 @@ SECTIONS
         . = ALIGN(4); src/statscreen.o(ewram_data);
         . = ALIGN(4); src/helpbox.o(ewram_data);
         . = ALIGN(4); src/helpbox_2.o(ewram_data);
-        . = ALIGN(4); gUnk_0203D494 = .;
+        . = ALIGN(4); SioPidPool = .;
 
         . = 0x0203D524 - __ewram_overlay_end;
         . = ALIGN(4); src/save_core.o(ewram_data);
@@ -329,6 +331,9 @@ SECTIONS
 
         . = 0x0203DCA7 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203DCA7 = .;
+
+        . = 0x0203DD04 - __ewram_overlay_end;
+        . = ALIGN(4); gShopSt = .;
 
         . = 0x02040000 - __ewram_overlay_end; /* end */
     }
@@ -370,7 +375,7 @@ SECTIONS
 
         . = 0x001440; src/mu.o(.bss);
 
-        . = 0x001570; gUnk_03001570 = .;
+        . = 0x001570; Text_GoldBox = .;
 
         . = 0x002158; src/gbasram.o(.bss);
         . = ALIGN(4); *libgcc.a:dp-bit.o(.bss);
@@ -571,7 +576,7 @@ SECTIONS
         src/statusscreen.o(.text);
         src/unitlistscreen.o(.text);
         src/prepmenu.o(.text);
-        asm/code_8073548.o(.text);
+        asm/prepscreen.o(.text);
         src/save_core.o(.text);
         src/save_stats.o(.text);
         src/save_game.o(.text);
@@ -580,8 +585,12 @@ SECTIONS
         src/minimap.o(.text);
         src/savemenu.o(.text);
         src/savemenu_2.o(.text);
-
+        asm/code_0808AA84.o(.text);
+        asm/config.o(.text);
         asm/code.o(.text);
+        asm/shop.o(.text);
+        asm/arena.o(.text);
+        asm/opanim.o(.text);
 
         src/m4a_1.o(.text);
         src/m4a.o(.text);

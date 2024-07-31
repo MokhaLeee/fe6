@@ -397,7 +397,7 @@ void ResumeMapMainDuringArena(ProcPtr mapmain)
 
     Proc_Goto(mapmain, L_BMMAIN_8);
 
-    func_fe6_08097EAC();
+    StartArenaResultsScreen();
 }
 
 void ResumeMapMainDuringPhaseChange(ProcPtr mapmain)
