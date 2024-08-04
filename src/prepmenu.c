@@ -18,6 +18,7 @@
 #include "ui.h"
 #include "statscreen.h"
 #include "helpbox.h"
+#include "prepscreen.h"
 #include "unitlistscreen.h"
 
 #include "constants/pids.h"
@@ -27,146 +28,6 @@
 
 #include "constants/videoalloc_global.h"
 
-enum
-{
-    PREPMENU_FLAG_MULTIARENA = 1 << 0,
-};
-
-enum
-{
-    L_PREPMENU_5 = 0x05,
-    L_PREPMENU_6 = 0x06,
-    L_PREPMENU_B = 0x0B,
-};
-
-// TODO: MOOOOVE
-
-#define BGCHR_PREPMENU_230 0x230
-#define BGCHR_PREPMENU_240 0x240
-#define BGCHR_PREPMENU_700 0x700
-
-#define OBCHR_PREPMENU_240 0x240
-#define OBCHR_PREPMENU_380 0x380
-
-#define BGPAL_PREPMENU_2 0x02
-#define BGPAL_PREPMENU_A 0x0A // ..E // background
-#define BGPAL_PREPMENU_E 0x0E
-#define BGPAL_PREPMENU_F 0x0F
-
-#define OBPAL_PREPMENU_2 0x02 // ..4
-#define OBPAL_PREPMENU_4 0x04
-#define OBPAL_PREPMENU_5 0x05
-#define OBPAL_PREPMENU_6 0x06 // ..A
-#define OBPAL_PREPMENU_D 0x0D
-
-extern u32 const gUnk_0831A268[]; // img(lz)
-extern u32 const Img_SpinningArrow[]; // img(lz)
-extern u32 const gUnk_08326930[]; // img(lz)
-extern u16 const Pal_SpinningArrow[]; // pal
-extern u16 const gUnk_0831AABC[]; // pal (x2)
-extern u16 const gUnk_08326E64[]; // pal (x4)
-extern u16 const gUnk_08327108[]; // pal
-extern u32 const gUnk_0831B0A8[]; // img(lz)
-extern u16 const gUnk_08320D98[]; // pal (x4)
-extern u32 const gUnk_08321FA4[]; // img(lz)
-extern u16 const gUnk_08326910[]; // pal
-
-struct UnkProc_08678E18;
-struct UnkProc_PrepMenu_50;
-
-struct PrepMenuProc
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ u8 unk_29;
-    /* 2A */ u8 unk_2A;
-    /* 2B */ u8 unk_2B;
-    /* 2C */ u8 unk_2C;
-    /* 2D */ u8 unk_2D; // size of gUnk_0200E6D4?
-    /* 2E */ u8 unk_2E;
-    /* 2F */ u8 unk_2F;
-    /* 30 */ u8 unk_30; // id within gUnk_0200E6D4
-    /* 31 */ u8 unk_31;
-    /* 32 */ STRUCT_PAD(0x32, 0x33);
-    /* 33 */ u8 unk_33[2];
-    /* 35 */ u8 unk_35;
-    /* 36 */ i8 unk_36;
-    /* 37 */ u8 unk_37; // i8 also?
-    /* 38 */ u8 unk_38;
-    /* 39 */ u8 unk_39;
-    /* 3A */ u8 unk_3A;
-    /* 3B */ u8 unk_3B;
-    /* 3C */ u8 unk_3C;
-    /* 3D */ u8 unk_3D;
-    /* 3E */ u8 unk_3E;
-    /* 3F */ u8 unk_3F;
-    /* 40 */ u16 unk_40;
-    /* 42 */ u16 unk_42;
-    /* 44 */ u16 unk_44;
-    /* 46 */ STRUCT_PAD(0x46, 0x48);
-    /* 48 */ u32 unk_48;
-    /* 4C */ u32 unk_4C;
-    /* 50 */ struct UnkProc_PrepMenu_50 * unk_50;
-    /* 54 */ STRUCT_PAD(0x54, 0x58);
-    /* 58 */ ProcPtr unk_58;
-    /* 5C */ struct UnkProc_08678E18 * unk_5C;
-    /* 60 */ ProcPtr unk_60;
-};
-
-struct UnkProc_08678DE0
-{
-    /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
-    /* 29 */ STRUCT_PAD(0x29, 0x30);
-    /* 30 */ u16 unk_30;
-};
-
-struct UnkProc_08678E00
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ STRUCT_PAD(0x29, 0x48);
-    /* 48 */ struct Unit * unit;
-};
-
-struct UnkProc_08678E18
-{
-    /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
-    /* 29 */ STRUCT_PAD(0x29, 0x2C);
-    /* 2C */ struct Unit * unit;
-    /* 30 */ struct PrepMenuProc * main_proc;
-    /* 34 */ u8 unk_34;
-    /* 35 */ u8 unk_35;
-};
-
-struct UnkProc_PrepMenu_50
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ STRUCT_PAD(0x29, 0x2A);
-    /* 2A */ u8 unk_2A;
-};
-
-void func_fe6_0807A67C(struct PrepMenuProc * proc);
-fu8 func_fe6_0807CD24(fu8 arg_0);
-void func_fe6_0807CEF0(fu8 arg_0, fu8 arg_1);
-void PutPrepScreenMenuItems(struct Text * text, fu8 arg_1, u16 * tm, fu8 arg_3);
-void func_fe6_08082D08(ProcPtr proc, int unused_1, fu16 obpal);
-void ResetPrepMenuItem(void);
-
-enum { SID_PID_POOL_SIZE = 5 };
-extern u8 SioPidPool[SID_PID_POOL_SIZE];
-
-extern struct Unit * gUnk_0200E6D4[];
-extern struct Text gUnk_0200E7DC;
-extern struct Text gUnk_0200E864[];
-extern struct Text gUnk_0200E89C;
-extern u16 gUnk_0200E8A4[];
-extern struct Unit gUnk_0200F0A4[]; // rearrange buf
-extern struct Text gUnk_0200E7E4[];
-extern u8 gUnk_0200E7D4;
-extern struct Text gUnk_0200E88C[];
-extern u8 gUnk_020104A4[]; // img buf
-
-extern u16 const gUnk_08320FCE[]; // tiles
-extern u16 const gUnk_08326EE6[]; // tiles
-
 #if 0
 struct ProcScr CONST_DATA ProcScr_AtMenu[] =
 {
@@ -175,13 +36,13 @@ struct ProcScr CONST_DATA ProcScr_AtMenu[] =
     PROC_CALL(StartMidFadeToBlack),
     PROC_REPEAT(WhileFadeExists),
     PROC_CALL(LockBmDisplay),
-    PROC_CALL(AtMenu_EndIfNoUnit),
+    PROC_CALL(PrepMenu_EndIfNoUnit),
     PROC_SLEEP(0),
-    PROC_CALL(AtMenu_OnInit),
-    PROC_CALL(func_fe6_0807B888),
+    PROC_CALL(PrepMenu_Init),
+    PROC_CALL(StartPrepMenuFadeIn),
     PROC_SLEEP(0),
 PROC_LABEL(1),
-    PROC_REPEAT(func_fe6_0807AD78),
+    PROC_REPEAT(PrepMenu_Loop),
     PROC_GOTO(5),
 PROC_LABEL(7),
     PROC_REPEAT(func_fe6_0807B178),
@@ -209,7 +70,7 @@ PROC_LABEL(13),
     PROC_SLEEP(0),
     PROC_GOTO(3),
 PROC_LABEL(12),
-    PROC_CALL(func_fe6_0807B888),
+    PROC_CALL(StartPrepMenuFadeIn),
     PROC_SLEEP(0),
     PROC_GOTO(1),
 PROC_LABEL(14),
@@ -1112,7 +973,7 @@ void func_fe6_0807A67C(struct PrepMenuProc * proc)
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 }
 
-void AtMenu_OnInitExt(struct PrepMenuProc * proc)
+void PrepMenu_InitExt(struct PrepMenuProc * proc)
 {
     int i;
 
@@ -1142,7 +1003,7 @@ void AtMenu_OnInitExt(struct PrepMenuProc * proc)
     proc->unk_39 = 0;
     proc->unk_3A = 0;
     proc->unk_3B = 0;
-    proc->unk_3D = 0;
+    proc->do_help = 0;
     proc->unk_3C = 0;
     proc->unk_3E = 0;
 
@@ -1156,7 +1017,7 @@ void AtMenu_OnInitExt(struct PrepMenuProc * proc)
 
     func_fe6_0807A59C(proc);
 
-    func_fe6_0807B8CC((proc->unk_50 = func_fe6_0807C508(proc)),
+    func_fe6_0807B8CC((proc->unk_50 = StartPrepMenuBmCursor(proc)),
         GetChapterInfo(gPlaySt.chapter)->unk_41 * 8,
         GetChapterInfo(gPlaySt.chapter)->unk_42 * 8,
         GetChapterInfo(gPlaySt.chapter)->number_id);
@@ -1313,7 +1174,7 @@ void func_fe6_0807ACE8(struct PrepMenuProc * proc)
     EndGreenText();
 }
 
-void AtMenu_EndIfNoUnit(struct PrepMenuProc * proc)
+void PrepMenu_EndIfNoUnit(struct PrepMenuProc * proc)
 {
     fu8 dead_count = 0;
 
@@ -1336,7 +1197,57 @@ void AtMenu_EndIfNoUnit(struct PrepMenuProc * proc)
     }
 }
 
-void AtMenu_OnInit(struct PrepMenuProc * proc)
+void PrepMenu_Init(struct PrepMenuProc * proc)
 {
-    AtMenu_OnInitExt(proc);
+    PrepMenu_InitExt(proc);
 }
+
+#if 0
+void PrepMenu_Loop(struct PrepMenuProc * proc)
+{
+    int unk1 = proc->unk_33[proc->unk_35];
+    int unk2 = proc->unk_35;
+
+    if (proc->unk_29 == 0)
+    {
+        if (proc->do_help)
+        {
+            if (gKeySt->pressed & (KEY_BUTTON_B | KEY_BUTTON_R))
+            {
+                CloseHelpBox();
+                proc->do_help = FALSE;
+                return;
+            }
+        }
+        else
+        {
+            int new_key = gKeySt->pressed;
+
+            if (new_key & KEY_BUTTON_A)
+            {
+                if (proc->do_help != FALSE)
+                    return;
+
+                if (PrepMenuOnSelected(proc) == FALSE)
+                {
+                    PlaySe(0x6C);
+                }
+                return;
+            }
+            else if (new_key & KEY_BUTTON_R)
+            {
+                if (proc->do_help == FALSE)
+                {
+                    PrepMenuHelpbox(proc);
+                }
+            }
+        }
+    }
+    else if (proc->unk_29 == 1)
+    {}
+    else
+    {
+        return;
+    }
+}
+#endif

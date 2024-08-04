@@ -4,8 +4,8 @@
 ProcScr_AtMenu: @ 08678E38
 	.incbin "fe6-base.gba", 0x678E38, (0x679008 - 0x678E38) @ length: 01D0
 
-	.global gUnk_08679008
-gUnk_08679008: @ 08679008
+	.global ProcScr_PrepMenuFadeIn
+ProcScr_PrepMenuFadeIn: @ 08679008
 	.incbin "fe6-base.gba", 0x679008, (0x679028 - 0x679008) @ length: 0020
 
 	.global gUnk_08679028
@@ -72,8 +72,8 @@ gUnk_086791B0: @ 086791B0
 gUnk_086791BE: @ 086791BE
 	.incbin "fe6-base.gba", 0x6791BE, (0x67923C - 0x6791BE) @ length: 007E
 
-	.global gUnk_0867923C
-gUnk_0867923C: @ 0867923C
+	.global ProcScr_PrepMenuBmCursor
+ProcScr_PrepMenuBmCursor: @ 0867923C
 	.incbin "fe6-base.gba", 0x67923C, (0x67929C - 0x67923C) @ length: 0060
 
 	.global gUnk_0867929C
