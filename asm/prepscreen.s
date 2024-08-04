@@ -2,8 +2,8 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_0807AD78
-func_fe6_0807AD78: @ 0x0807AD78
+	thumb_func_start PrepMenu_Loop
+PrepMenu_Loop: @ 0x0807AD78
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -11,6 +11,7 @@ func_fe6_0807AD78: @ 0x0807AD78
 	push {r5, r6, r7}
 	sub sp, #0xc
 	adds r6, r0, #0
+
 	adds r0, #0x35
 	ldrb r2, [r0]
 	subs r0, #2
@@ -18,9 +19,11 @@ func_fe6_0807AD78: @ 0x0807AD78
 	ldrb r0, [r0]
 	str r0, [sp]
 	str r2, [sp, #4]
+
 	adds r5, r6, #0
 	adds r5, #0x29
 	ldrb r4, [r5]
+
 	cmp r4, #0
 	beq .L0807ADA6
 	cmp r4, #1
@@ -63,7 +66,7 @@ func_fe6_0807AD78: @ 0x0807AD78
 	cmp r0, #0
 	bne .L0807AECC
 	adds r0, r6, #0
-	bl func_fe6_0807CCC4
+	bl PrepMenuOnSelected
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L0807AECC
@@ -90,7 +93,7 @@ func_fe6_0807AD78: @ 0x0807AD78
 	cmp r0, #0
 	bne .L0807AECC
 	adds r0, r6, #0
-	bl func_fe6_0807CDF4
+	bl PrepMenuHelpbox
 	b .L0807AECC
 .L0807AE2A:
 	ldrh r1, [r1, #6]
@@ -197,7 +200,7 @@ func_fe6_0807AD78: @ 0x0807AD78
 	cmp r0, #0
 	beq .L0807AEF6
 	adds r0, r6, #0
-	bl func_fe6_0807CDF4
+	bl PrepMenuHelpbox
 .L0807AEF6:
 	ldrb r4, [r4]
 	cmp r4, #1
@@ -236,7 +239,7 @@ func_fe6_0807AD78: @ 0x0807AD78
 	cmp r3, #0
 	beq .L0807AF68
 	adds r0, r6, #0
-	bl func_fe6_0807CCC4
+	bl PrepMenuOnSelected
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0807AF4C
@@ -1172,8 +1175,8 @@ StartPrepAtMenu: @ 0x0807B6BC
 	.align 2, 0
 .L0807B6CC: .4byte ProcScr_AtMenu
 
-	thumb_func_start StartSioPrepAtMenu
-StartSioPrepAtMenu: @ 0x0807B6D0
+	thumb_func_start StartSioPrepMenu
+StartSioPrepMenu: @ 0x0807B6D0
 	push {lr}
 	ldr r0, .L0807B6E8 @ =ProcScr_AtMenu
 	movs r1, #3
@@ -1185,8 +1188,8 @@ StartSioPrepAtMenu: @ 0x0807B6D0
 	.align 2, 0
 .L0807B6E8: .4byte ProcScr_AtMenu
 
-	thumb_func_start func_fe6_0807B6EC
-func_fe6_0807B6EC: @ 0x0807B6EC
+	thumb_func_start PrepMenuFadeIn_Init
+PrepMenuFadeIn_Init: @ 0x0807B6EC
 	adds r0, #0x42
 	movs r1, #0
 	strh r1, [r0]
@@ -1207,8 +1210,8 @@ func_fe6_0807B6EC: @ 0x0807B6EC
 .L0807B70C: .4byte gPal
 .L0807B710: .4byte 0x020100A4
 
-	thumb_func_start func_fe6_0807B714
-func_fe6_0807B714: @ 0x0807B714
+	thumb_func_start PrepMenuFadeIn_Loop
+PrepMenuFadeIn_Loop: @ 0x0807B714
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1392,16 +1395,16 @@ func_fe6_0807B7C8: @ 0x0807B7C8
 .L0807B880: .4byte 0x000001FF
 .L0807B884: .4byte gDispIo
 
-	thumb_func_start func_fe6_0807B888
-func_fe6_0807B888: @ 0x0807B888
+	thumb_func_start StartPrepMenuFadeIn
+StartPrepMenuFadeIn: @ 0x0807B888
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0807B898 @ =gUnk_08679008
+	ldr r0, .L0807B898 @ =ProcScr_PrepMenuFadeIn
 	bl SpawnProcLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807B898: .4byte gUnk_08679008
+.L0807B898: .4byte ProcScr_PrepMenuFadeIn
 
 	thumb_func_start func_fe6_0807B89C
 func_fe6_0807B89C: @ 0x0807B89C
@@ -2658,8 +2661,8 @@ func_fe6_0807C090: @ 0x0807C090
 .L0807C280: .4byte 0x000001FF
 .L0807C284: .4byte gUnk_086791BE
 
-	thumb_func_start func_fe6_0807C288
-func_fe6_0807C288: @ 0x0807C288
+	thumb_func_start PrepMenuBmCursor_Init
+PrepMenuBmCursor_Init: @ 0x0807C288
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r0, #0x2a
@@ -2768,8 +2771,8 @@ func_fe6_0807C288: @ 0x0807C288
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0807C364
-func_fe6_0807C364: @ 0x0807C364
+	thumb_func_start PrepMenuBmCursor_Loop
+PrepMenuBmCursor_Loop: @ 0x0807C364
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, [r5, #0x14]
@@ -2973,28 +2976,28 @@ func_fe6_0807C364: @ 0x0807C364
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0807C500
-func_fe6_0807C500: @ 0x0807C500
+	thumb_func_start PrepMenuBmCursor_End
+PrepMenuBmCursor_End: @ 0x0807C500
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_0807C504
-func_fe6_0807C504: @ 0x0807C504
+	thumb_func_start PrepMenuBmCursor_Block
+PrepMenuBmCursor_Block: @ 0x0807C504
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_0807C508
-func_fe6_0807C508: @ 0x0807C508
+	thumb_func_start StartPrepMenuBmCursor
+StartPrepMenuBmCursor: @ 0x0807C508
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0807C51C @ =gUnk_0867923C
+	ldr r0, .L0807C51C @ =ProcScr_PrepMenuBmCursor
 	bl SpawnProc
 	movs r1, #0
 	strh r1, [r0, #0x3c]
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0807C51C: .4byte gUnk_0867923C
+.L0807C51C: .4byte ProcScr_PrepMenuBmCursor
 
 	thumb_func_start func_fe6_0807C520
 func_fe6_0807C520: @ 0x0807C520
@@ -3989,8 +3992,8 @@ SetPrepScreenMenuItem: @ 0x0807CC34
 .L0807CCBC: .4byte gPrepMenuItemCnt
 .L0807CCC0: .4byte gPrepMenuItems
 
-	thumb_func_start func_fe6_0807CCC4
-func_fe6_0807CCC4: @ 0x0807CCC4
+	thumb_func_start PrepMenuOnSelected
+PrepMenuOnSelected: @ 0x0807CCC4
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r5, #0
@@ -4151,8 +4154,8 @@ PutPrepScreenMenuItems: @ 0x0807CD5C
 .L0807CDEC: .4byte gPrepMenuItemCnt
 .L0807CDF0: .4byte gPrepMenuItems
 
-	thumb_func_start func_fe6_0807CDF4
-func_fe6_0807CDF4: @ 0x0807CDF4
+	thumb_func_start PrepMenuHelpbox
+PrepMenuHelpbox: @ 0x0807CDF4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

@@ -23,6 +23,7 @@
 #include "statscreen.h"
 #include "mapui.h"
 #include "minimap.h"
+#include "prepscreen.h"
 
 #include "constants/videoalloc_global.h"
 #include "constants/pids.h"
