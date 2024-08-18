@@ -49,6 +49,15 @@ extern u16 const gUnk_08326910[]; // pal
 struct UnkProc_08678E18;
 struct UnkProc_PrepMenu_50;
 
+enum PREP_SUB2_ACTION_IDX {
+    PREP_SUB2ACT_TRADE_ITEM = 2,
+    PREP_SUB2ACT_CONVOY,
+    PREP_SUB2ACT_DISCARD_ITEM,
+    PREP_SUB2ACT_CHECK_ALL_ITEM,
+    PREP_SUB2ACT_STATSCREEN,
+    PREP_SUB2ACT_SAVEMENU,
+};
+
 struct PrepMenuProc
 {
     /* 00 */ PROC_HEADER;
@@ -69,7 +78,7 @@ struct PrepMenuProc
     /* 38 */ u8 unk_38;
     /* 39 */ u8 unk_39;
     /* 3A */ u8 unk_3A;
-    /* 3B */ u8 unk_3B;
+    /* 3B */ u8 sub2_action;
     /* 3C */ u8 unk_3C;
     /* 3D */ u8 do_help;
     /* 3E */ u8 unk_3E;
@@ -119,7 +128,7 @@ struct UnkProc_PrepMenu_50
 };
 
 void func_fe6_0807A67C(struct PrepMenuProc * proc);
-fu8 func_fe6_0807CD24(fu8 arg_0);
+fu8 GetPrepMenuItemAmount(fu8 arg_0);
 void func_fe6_0807CEF0(fu8 arg_0, fu8 arg_1);
 void PutPrepScreenMenuItems(struct Text * text, fu8 arg_1, u16 * tm, fu8 arg_3);
 void func_fe6_08082D08(ProcPtr proc, int unused_1, fu16 obpal);
@@ -160,7 +169,7 @@ void RearrangeMandatoryDeployUnits(void);
 // func_fe6_0807A59C
 // func_fe6_0807A67C
 // PrepMenu_InitExt
-// func_fe6_0807A940
+// PrepUnitSel_Loop
 // func_fe6_0807ABF4
 // func_fe6_0807AC9C
 // func_fe6_0807ACE8
@@ -171,7 +180,7 @@ void RearrangeMandatoryDeployUnits(void);
 // func_fe6_0807B0E4
 // func_fe6_0807B178
 // func_fe6_0807B200
-// func_fe6_0807B28C
+// PrepMenu_ExecSub2Screen
 // func_fe6_0807B3D8
 // func_fe6_0807B49C
 // func_fe6_0807B4C0
@@ -215,7 +224,7 @@ void func_fe6_0807CBDC(/* TODO: args */);
 // ResetPrepMenuItem
 void SetPrepScreenMenuItem(void(*func)(/* TODO: args */), fu8 arg_1, int arg_2, fu8 arg_3, int arg_4, fu8 arg_5);
 bool PrepMenuOnSelected(struct PrepMenuProc * proc);
-// func_fe6_0807CD24
+// GetPrepMenuItemAmount
 // PutPrepScreenMenuItems
 void PrepMenuHelpbox(struct PrepMenuProc * proc);
 // PrepMenuHelpbox

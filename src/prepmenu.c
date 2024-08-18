@@ -49,7 +49,7 @@ PROC_LABEL(7),
 PROC_LABEL(8),
     PROC_REPEAT(func_fe6_0807B200),
 PROC_LABEL(3),
-    PROC_REPEAT(func_fe6_0807B28C),
+    PROC_REPEAT(PrepMenu_ExecSub2Screen),
 PROC_LABEL(4),
     PROC_REPEAT(func_fe6_0807B3D8),
     PROC_GOTO(1),
@@ -445,7 +445,7 @@ void func_fe6_08079A28(void)
 
 void func_fe6_08079A94(struct PrepMenuProc * proc)
 {
-    fu8 r7 = func_fe6_0807CD24(proc->unk_35);
+    fu8 r7 = GetPrepMenuItemAmount(proc->unk_35);
 
     if (proc->unk_35 == 0)
     {
@@ -790,11 +790,11 @@ void func_fe6_0807A268(struct PrepMenuProc * proc)
     if (proc->unk_2E > proc->unk_2D)
         proc->unk_2E = proc->unk_2D;
 
-    if (proc->unk_3B == 6)
+    if (proc->sub2_action == 6)
     {
         func_fe6_08079928(proc, GetLastStatScreenUnitId(), FALSE);
     }
-    else if (proc->unk_3B == 9)
+    else if (proc->sub2_action == 9)
     {
         func_fe6_08079928(proc, gUnk_0200E7D8, TRUE);
     }
@@ -1002,7 +1002,7 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
     proc->unk_38 = 0;
     proc->unk_39 = 0;
     proc->unk_3A = 0;
-    proc->unk_3B = 0;
+    proc->sub2_action = 0;
     proc->do_help = 0;
     proc->unk_3C = 0;
     proc->unk_3E = 0;
@@ -1023,7 +1023,7 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
         GetChapterInfo(gPlaySt.chapter)->number_id);
 }
 
-fi8 func_fe6_0807A940(struct PrepMenuProc * proc)
+fi8 PrepUnitSel_Loop(struct PrepMenuProc * proc)
 {
     int old_unk_30 = proc->unk_30;
 

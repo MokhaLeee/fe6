@@ -124,7 +124,7 @@ PrepMenu_Loop: @ 0x0807AD78
 	cmp r0, #0
 	beq .L0807AECC
 	adds r0, r5, #0
-	bl func_fe6_0807CD24
+	bl GetPrepMenuItemAmount
 	ldrb r2, [r4]
 	adds r1, r2, r7
 	subs r0, #1
@@ -144,7 +144,7 @@ PrepMenu_Loop: @ 0x0807AD78
 	adds r1, r7, r0
 	ldrb r5, [r1]
 	str r2, [sp, #8]
-	bl func_fe6_0807CD24
+	bl GetPrepMenuItemAmount
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	subs r0, #1
@@ -339,7 +339,7 @@ PrepMenu_Loop: @ 0x0807AD78
 .L0807B00C: .4byte gPlaySt
 .L0807B010:
 	adds r0, r6, #0
-	bl func_fe6_0807A940
+	bl PrepUnitSel_Loop
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
 	cmp r0, #0
@@ -544,7 +544,7 @@ func_fe6_0807B178: @ 0x0807B178
 	cmp r0, #0
 	bne .L0807B1F4
 	adds r0, r5, #0
-	bl func_fe6_0807A940
+	bl PrepUnitSel_Loop
 	lsls r0, r0, #0x18
 	asrs r4, r0, #0x18
 	cmp r4, #0
@@ -612,7 +612,7 @@ func_fe6_0807B200: @ 0x0807B200
 	cmp r0, #0
 	bne .L0807B280
 	adds r0, r4, #0
-	bl func_fe6_0807A940
+	bl PrepUnitSel_Loop
 	lsls r0, r0, #0x18
 	asrs r5, r0, #0x18
 	cmp r5, #0
@@ -650,8 +650,8 @@ func_fe6_0807B200: @ 0x0807B200
 	.align 2, 0
 .L0807B288: .4byte gBg2Tm
 
-	thumb_func_start func_fe6_0807B28C
-func_fe6_0807B28C: @ 0x0807B28C
+	thumb_func_start PrepMenu_ExecSub2Screen
+PrepMenu_ExecSub2Screen: @ 0x0807B28C
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x3b
@@ -684,7 +684,7 @@ func_fe6_0807B28C: @ 0x0807B28C
 	b .L0807B2E8
 .L0807B2D6:
 	adds r0, r4, #0
-	bl func_fe6_08081E3C
+	bl StartPrepDiscardItemScreen
 	b .L0807B2EC
 .L0807B2DE:
 	adds r0, r4, #0
@@ -694,7 +694,7 @@ func_fe6_0807B28C: @ 0x0807B28C
 	adds r0, r4, #0
 	movs r1, #0
 .L0807B2E8:
-	bl func_fe6_080815BC
+	bl StartPrepSubtemScreen
 .L0807B2EC:
 	adds r0, r4, #0
 	bl func_fe6_0807ACE8
@@ -4046,8 +4046,8 @@ PrepMenuOnSelected: @ 0x0807CCC4
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_0807CD24
-func_fe6_0807CD24: @ 0x0807CD24
+	thumb_func_start GetPrepMenuItemAmount
+GetPrepMenuItemAmount: @ 0x0807CD24
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -13037,13 +13037,13 @@ func_fe6_08081540: @ 0x08081540
 .L080815B4: .4byte gBg1Tm
 .L080815B8: .4byte gBg2Tm
 
-	thumb_func_start func_fe6_080815BC
-func_fe6_080815BC: @ 0x080815BC
+	thumb_func_start StartPrepSubtemScreen
+StartPrepSubtemScreen: @ 0x080815BC
 	push {r4, lr}
 	adds r2, r0, #0
 	lsls r4, r1, #0x18
 	lsrs r4, r4, #0x18
-	ldr r0, .L080815E0 @ =gUnk_086793E8
+	ldr r0, .L080815E0 @ =ProcScr_PrepTradeItemScreen
 	adds r1, r2, #0
 	bl SpawnProcLocking
 	adds r2, r0, #0
@@ -13056,7 +13056,7 @@ func_fe6_080815BC: @ 0x080815BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080815E0: .4byte gUnk_086793E8
+.L080815E0: .4byte ProcScr_PrepTradeItemScreen
 
 	thumb_func_start func_fe6_080815E4
 func_fe6_080815E4: @ 0x080815E4
@@ -14058,16 +14058,16 @@ func_fe6_08081DF8: @ 0x08081DF8
 .L08081E34: .4byte gBg1Tm
 .L08081E38: .4byte gBg2Tm
 
-	thumb_func_start func_fe6_08081E3C
-func_fe6_08081E3C: @ 0x08081E3C
+	thumb_func_start StartPrepDiscardItemScreen
+StartPrepDiscardItemScreen: @ 0x08081E3C
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L08081E4C @ =gUnk_08679518
+	ldr r0, .L08081E4C @ =ProcScr_PrepDiscardItemScreen
 	bl SpawnProcLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08081E4C: .4byte gUnk_08679518
+.L08081E4C: .4byte ProcScr_PrepDiscardItemScreen
 
 	thumb_func_start func_fe6_08081E50
 func_fe6_08081E50: @ 0x08081E50
