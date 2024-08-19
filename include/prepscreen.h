@@ -14,6 +14,10 @@ enum
     L_PREPMENU_B = 0x0B,
 };
 
+enum prepscreen_text_idx {
+    TEXT_PREP_PICK_LEFT_BAR = 0,
+};
+
 // TODO: MOOOOVE
 
 #define BGCHR_PREPMENU_230 0x230
@@ -34,18 +38,6 @@ enum
 #define OBPAL_PREPMENU_6 0x06 // ..A
 #define OBPAL_PREPMENU_D 0x0D
 
-extern u32 const gUnk_0831A268[]; // img(lz)
-extern u32 const Img_SpinningArrow[]; // img(lz)
-extern u32 const gUnk_08326930[]; // img(lz)
-extern u16 const Pal_SpinningArrow[]; // pal
-extern u16 const gUnk_0831AABC[]; // pal (x2)
-extern u16 const gUnk_08326E64[]; // pal (x4)
-extern u16 const gUnk_08327108[]; // pal
-extern u32 const gUnk_0831B0A8[]; // img(lz)
-extern u16 const gUnk_08320D98[]; // pal (x4)
-extern u32 const gUnk_08321FA4[]; // img(lz)
-extern u16 const gUnk_08326910[]; // pal
-
 struct UnkProc_08678E18;
 struct UnkProc_PrepMenu_50;
 
@@ -62,36 +54,36 @@ struct PrepMenuProc
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ u8 unk_29;
-    /* 2A */ u8 unk_2A;
+    /* 2A */ u8 in_unit_sel_screen;
     /* 2B */ u8 unk_2B;
     /* 2C */ u8 unk_2C;
-    /* 2D */ u8 unk_2D; // size of gUnk_0200E6D4?
-    /* 2E */ u8 unk_2E;
-    /* 2F */ u8 unk_2F;
-    /* 30 */ u8 unk_30; // id within gUnk_0200E6D4
+    /* 2D */ u8 unk_2D; // size of gPrepUnitList?
+    /* 2E */ u8 max_counter;
+    /* 2F */ u8 cur_counter;
+    /* 30 */ u8 list_num_cur; // id within gPrepUnitList
     /* 31 */ u8 unk_31;
     /* 32 */ STRUCT_PAD(0x32, 0x33);
     /* 33 */ u8 unk_33[2];
     /* 35 */ u8 unk_35;
-    /* 36 */ i8 unk_36;
+    /* 36 */ i8 hand_y_pos;
     /* 37 */ u8 unk_37; // i8 also?
     /* 38 */ u8 unk_38;
     /* 39 */ u8 unk_39;
     /* 3A */ u8 unk_3A;
     /* 3B */ u8 sub2_action;
-    /* 3C */ u8 unk_3C;
+    /* 3C */ u8 a_button_actions; // Bit1:selection unit, Bit2:Start battle
     /* 3D */ u8 do_help;
     /* 3E */ u8 unk_3E;
     /* 3F */ u8 unk_3F;
     /* 40 */ u16 unk_40;
-    /* 42 */ u16 unk_42;
-    /* 44 */ u16 unk_44;
+    /* 42 */ u16 scroll_timer;
+    /* 44 */ u16 yDiff_cur;
     /* 46 */ STRUCT_PAD(0x46, 0x48);
     /* 48 */ u32 unk_48;
     /* 4C */ u32 unk_4C;
     /* 50 */ struct UnkProc_PrepMenu_50 * unk_50;
     /* 54 */ STRUCT_PAD(0x54, 0x58);
-    /* 58 */ ProcPtr unk_58;
+    /* 58 */ ProcPtr procbg;
     /* 5C */ struct UnkProc_08678E18 * unk_5C;
     /* 60 */ ProcPtr unk_60;
 };
@@ -127,7 +119,7 @@ struct UnkProc_PrepMenu_50
     /* 2A */ u8 unk_2A;
 };
 
-void func_fe6_0807A67C(struct PrepMenuProc * proc);
+void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc);
 fu8 GetPrepMenuItemAmount(fu8 arg_0);
 void func_fe6_0807CEF0(fu8 arg_0, fu8 arg_1);
 void PutPrepScreenMenuItems(struct Text * text, fu8 arg_1, u16 * tm, fu8 arg_3);
@@ -147,8 +139,8 @@ void RemoveSioPid(fu8 pid);
 // func_fe6_080793F0
 bool IsUnitMandatoryDeploy(struct Unit * unit);
 // InitPrepScreenMainMenu
-// func_fe6_08079624
-// func_fe6_080796B0
+// PrepUnit_DrawLeftUnitInfo
+// PrepScreen_ReloadLeftUnitInfo
 // func_fe6_0807979C
 // func_fe6_080797DC
 // func_fe6_08079804
@@ -160,14 +152,14 @@ bool IsUnitMandatoryDeploy(struct Unit * unit);
 // func_fe6_08079C38
 // func_fe6_08079D70
 // func_fe6_08079D84
-// func_fe6_08079EA0
-// func_fe6_08079F50
+// PrepUnit_DrawPickLeftBar
+// PrepUnit_DrawUnitListNames
 void RearrangeMandatoryDeployUnits(void);
 // SioResetUnitItems
 // func_fe6_0807A1C8
-// func_fe6_0807A268
-// func_fe6_0807A59C
-// func_fe6_0807A67C
+// PrepMenu_InitScreenExt
+// PrepMenu_InitScreen
+// PrepScreen_DrawScreenInfo
 // PrepMenu_InitExt
 // PrepUnitSel_Loop
 // func_fe6_0807ABF4
@@ -182,7 +174,7 @@ void RearrangeMandatoryDeployUnits(void);
 // func_fe6_0807B200
 // PrepMenu_ExecSub2Screen
 // func_fe6_0807B3D8
-// func_fe6_0807B49C
+// PrepScreen_ReloadLeftUnitInfoFromStatscreen
 // func_fe6_0807B4C0
 // func_fe6_0807B5A0
 // func_fe6_0807B69C
@@ -207,22 +199,22 @@ void func_fe6_0807B8CC(ProcPtr proc, fu8 arg_1, fu8 arg_2, int arg_3);
 // PrepMenuBmCursor_Block
 ProcPtr StartPrepMenuBmCursor(ProcPtr parent);
 // func_fe6_0807C520
-void func_fe6_0807C5B8(/* TODO: args */);
-void func_fe6_0807C7B8(/* TODO: args */);
+void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc);
+void PrepScreenMenu_OnItems(struct PrepMenuProc * proc);
 // func_fe6_0807C840
-void func_fe6_0807C884(/* TODO: args */);
-void func_fe6_0807C97C(/* TODO: args */);
-void func_fe6_0807C9F4(/* TODO: args */);
-void func_fe6_0807CA48(/* TODO: args */);
-void func_fe6_0807CA9C(/* TODO: args */);
+void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc);
+void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc);
+void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc);
+void PrepScreenSubMenu_AllItems(struct PrepMenuProc * proc);
+void PrepScreenSubMenu_Shop(struct PrepMenuProc * proc);
 // func_fe6_0807CAD4
-void func_fe6_0807CB08(/* TODO: args */);
+void PrepScreenMenu_Augury(struct PrepMenuProc * proc);
 // func_fe6_0807CB40
-void func_fe6_0807CB78(/* TODO: args */);
-void func_fe6_0807CBB0(/* TODO: args */);
-void func_fe6_0807CBDC(/* TODO: args */);
+void PrepScreenMenu_OnSave(struct PrepMenuProc * proc);
+void PrepScreenMenu_OnCheckMap(struct PrepMenuProc * proc);
+void PrepScreenSubMenu_StartBattle(struct PrepMenuProc * proc);
 // ResetPrepMenuItem
-void SetPrepScreenMenuItem(void(*func)(/* TODO: args */), fu8 arg_1, int arg_2, fu8 arg_3, int arg_4, fu8 arg_5);
+void SetPrepScreenMenuItem(void(*func)(struct PrepMenuProc * proc), fu8 is_submenu, int name, fu8 color, int desc, fu8 index);
 bool PrepMenuOnSelected(struct PrepMenuProc * proc);
 // GetPrepMenuItemAmount
 // PutPrepScreenMenuItems
@@ -242,16 +234,27 @@ void PrepMenuHelpbox(struct PrepMenuProc * proc);
 // func_fe6_0807D0A8
 // func_fe6_0807D16C
 
-extern struct Unit * gUnk_0200E6D4[];
-extern struct Text gUnk_0200E7DC;
+extern struct Unit * gPrepUnitList[];
+extern struct Text gPrepScreenText_PickLeftBar;
 extern struct Text gUnk_0200E864[];
-extern struct Text gUnk_0200E89C;
+extern struct Text gPrepScreenText_LeftPersonName;
 extern u16 gUnk_0200E8A4[];
 extern struct Unit gUnk_0200F0A4[]; // rearrange buf
-extern struct Text gUnk_0200E7E4[];
+extern struct Text gPrepScreenTexts_Units[];
 extern u8 gUnk_0200E7D4;
 extern struct Text gUnk_0200E88C[];
 extern u8 gUnk_020104A4[]; // img buf
 
 extern u16 const gUnk_08320FCE[]; // tiles
 extern u16 const gUnk_08326EE6[]; // tiles
+extern u32 const gUnk_0831A268[]; // img(lz)
+extern u32 const Img_SpinningArrow[]; // img(lz)
+extern u32 const gUnk_08326930[]; // img(lz)
+extern u16 const Pal_SpinningArrow[]; // pal
+extern u16 const gUnk_0831AABC[]; // pal (x2)
+extern u16 const gUnk_08326E64[]; // pal (x4)
+extern u16 const gUnk_08327108[]; // pal
+extern u32 const gUnk_0831B0A8[]; // img(lz)
+extern u16 const gUnk_08320D98[]; // pal (x4)
+extern u32 const gUnk_08321FA4[]; // img(lz)
+extern u16 const gUnk_08326910[]; // pal

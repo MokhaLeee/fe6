@@ -397,7 +397,7 @@ PrepMenu_Loop: @ 0x0807AD78
 	cmp r0, #1
 	beq .L0807B0BC
 	ldr r2, .L0807B0D0 @ =gUnk_0200E7D8
-	ldr r1, .L0807B0D4 @ =gUnk_0200E6D4
+	ldr r1, .L0807B0D4 @ =gPrepUnitList
 	adds r0, r6, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -434,7 +434,7 @@ PrepMenu_Loop: @ 0x0807AD78
 	.align 2, 0
 .L0807B0CC: .4byte gKeySt
 .L0807B0D0: .4byte gUnk_0200E7D8
-.L0807B0D4: .4byte gUnk_0200E6D4
+.L0807B0D4: .4byte gPrepUnitList
 .L0807B0D8: .4byte gPlaySt
 
 	thumb_func_start func_fe6_0807B0DC
@@ -529,7 +529,7 @@ func_fe6_0807B178: @ 0x0807B178
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	adds r0, r5, #0
-	bl func_fe6_08079F50
+	bl PrepUnit_DrawUnitListNames
 .L0807B19A:
 	adds r0, r5, #0
 	adds r0, #0x3f
@@ -597,7 +597,7 @@ func_fe6_0807B200: @ 0x0807B200
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	adds r0, r4, #0
-	bl func_fe6_08079F50
+	bl PrepUnit_DrawUnitListNames
 .L0807B222:
 	adds r0, r4, #0
 	adds r0, #0x3f
@@ -730,7 +730,7 @@ PrepMenu_ExecSub2Screen: @ 0x0807B28C
 .L0807B336:
 	ldr r0, [r4, #0x58]
 	bl Proc_End
-	ldr r1, .L0807B378 @ =gUnk_0200E6D4
+	ldr r1, .L0807B378 @ =gPrepUnitList
 	adds r0, r4, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -759,7 +759,7 @@ PrepMenu_ExecSub2Screen: @ 0x0807B28C
 	strb r0, [r2, #1]
 	b .L0807B3C4
 	.align 2, 0
-.L0807B378: .4byte gUnk_0200E6D4
+.L0807B378: .4byte gPrepUnitList
 .L0807B37C: .4byte gDispIo
 .L0807B380:
 	ldr r0, [r4, #0x58]
@@ -783,7 +783,7 @@ PrepMenu_ExecSub2Screen: @ 0x0807B28C
 	strb r0, [r2, #1]
 	movs r0, #4
 	bl SetStatScreenExcludedUnitFlags
-	ldr r1, .L0807B3D4 @ =gUnk_0200E6D4
+	ldr r1, .L0807B3D4 @ =gPrepUnitList
 	adds r0, r4, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -800,7 +800,7 @@ PrepMenu_ExecSub2Screen: @ 0x0807B28C
 	bx r0
 	.align 2, 0
 .L0807B3D0: .4byte gDispIo
-.L0807B3D4: .4byte gUnk_0200E6D4
+.L0807B3D4: .4byte gPrepUnitList
 
 	thumb_func_start func_fe6_0807B3D8
 func_fe6_0807B3D8: @ 0x0807B3D8
@@ -830,7 +830,7 @@ func_fe6_0807B3D8: @ 0x0807B3D8
 	.4byte .L0807B440 @ case 8
 .L0807B418:
 	adds r0, r4, #0
-	bl func_fe6_0807A268
+	bl PrepMenu_InitScreenExt
 	ldr r0, [r4, #0x50]
 	movs r1, #0
 	bl Proc_Goto
@@ -851,14 +851,14 @@ func_fe6_0807B3D8: @ 0x0807B3D8
 	movs r1, #0
 	bl StartBgm
 	adds r0, r4, #0
-	bl func_fe6_0807A59C
+	bl PrepMenu_InitScreen
 	ldr r0, [r4, #0x50]
 	movs r1, #0
 	bl Proc_Goto
 	b .L0807B466
 .L0807B458:
 	adds r0, r4, #0
-	bl func_fe6_0807A59C
+	bl PrepMenu_InitScreen
 	ldr r0, [r4, #0x50]
 	movs r1, #0
 	bl Proc_Goto
@@ -891,17 +891,17 @@ func_fe6_0807B3D8: @ 0x0807B3D8
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0807B49C
-func_fe6_0807B49C: @ 0x0807B49C
+	thumb_func_start PrepScreen_ReloadLeftUnitInfoFromStatscreen
+PrepScreen_ReloadLeftUnitInfoFromStatscreen: @ 0x0807B49C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, .L0807B4BC @ =gUnk_0200E6D4
+	ldr r1, .L0807B4BC @ =gPrepUnitList
 	adds r0, #0x30
 	ldrb r0, [r0]
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
-	bl func_fe6_080796B0
+	bl PrepScreen_ReloadLeftUnitInfo
 	adds r4, #0x42
 	movs r0, #0
 	strh r0, [r4]
@@ -909,7 +909,7 @@ func_fe6_0807B49C: @ 0x0807B49C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807B4BC: .4byte gUnk_0200E6D4
+.L0807B4BC: .4byte gPrepUnitList
 
 	thumb_func_start func_fe6_0807B4C0
 func_fe6_0807B4C0: @ 0x0807B4C0
@@ -934,7 +934,7 @@ func_fe6_0807B4C0: @ 0x0807B4C0
 	adds r1, #1
 	strb r0, [r1]
 	mov r0, r8
-	bl func_fe6_0807A67C
+	bl PrepScreen_DrawScreenInfo
 	ldr r0, .L0807B594 @ =gBg0Tm
 	movs r1, #0xc
 	movs r2, #0x13
@@ -1115,7 +1115,7 @@ func_fe6_0807B5A0: @ 0x0807B5A0
 	bl func_fe6_08079A94
 	adds r0, r6, #0
 	bl Proc_Break
-	ldr r1, .L0807B698 @ =gUnk_0200E6D4
+	ldr r1, .L0807B698 @ =gPrepUnitList
 	adds r0, r6, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -1133,7 +1133,7 @@ func_fe6_0807B5A0: @ 0x0807B5A0
 	movs r2, #1
 	bl func_fe6_08079928
 	adds r0, r6, #0
-	bl func_fe6_0807A67C
+	bl PrepScreen_DrawScreenInfo
 .L0807B68A:
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -1143,7 +1143,7 @@ func_fe6_0807B5A0: @ 0x0807B5A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807B698: .4byte gUnk_0200E6D4
+.L0807B698: .4byte gPrepUnitList
 
 	thumb_func_start func_fe6_0807B69C
 func_fe6_0807B69C: @ 0x0807B69C
@@ -1791,7 +1791,7 @@ func_fe6_0807B9CC: @ 0x0807B9CC
 	ands r1, r5
 	lsls r1, r1, #6
 	adds r1, #0x70
-	ldr r2, .L0807BC00 @ =gUnk_0200E6D4
+	ldr r2, .L0807BC00 @ =gPrepUnitList
 	lsls r0, r3, #2
 	adds r0, r0, r2
 	ldr r3, [r0]
@@ -1828,7 +1828,7 @@ func_fe6_0807B9CC: @ 0x0807B9CC
 	adds r2, r2, r7
 	movs r0, #0xff
 	ands r2, r0
-	ldr r3, .L0807BC00 @ =gUnk_0200E6D4
+	ldr r3, .L0807BC00 @ =gPrepUnitList
 	lsls r0, r4, #2
 	adds r0, r0, r3
 	ldr r3, [r0]
@@ -1851,7 +1851,7 @@ func_fe6_0807B9CC: @ 0x0807B9CC
 	bx r0
 	.align 2, 0
 .L0807BBFC: .4byte gDispIo
-.L0807BC00: .4byte gUnk_0200E6D4
+.L0807BC00: .4byte gPrepUnitList
 
 	thumb_func_start func_fe6_0807BC04
 func_fe6_0807BC04: @ 0x0807BC04
@@ -3079,8 +3079,8 @@ func_fe6_0807C520: @ 0x0807C520
 	.align 2, 0
 .L0807C5B4: .4byte gBg0Tm+0x8
 
-	thumb_func_start func_fe6_0807C5B8
-func_fe6_0807C5B8: @ 0x0807C5B8
+	thumb_func_start PrepScreenMenu_OnPickUnits
+PrepScreenMenu_OnPickUnits: @ 0x0807C5B8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -3154,7 +3154,7 @@ func_fe6_0807C5B8: @ 0x0807C5B8
 	.align 2, 0
 .L0807C648: .4byte gPlaySt
 .L0807C64C:
-	ldr r7, .L0807C6C8 @ =gUnk_0200E6D4
+	ldr r7, .L0807C6C8 @ =gPrepUnitList
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r2, [r5]
@@ -3215,7 +3215,7 @@ func_fe6_0807C5B8: @ 0x0807C5B8
 	adds r0, #1
 	b .L0807C764
 	.align 2, 0
-.L0807C6C8: .4byte gUnk_0200E6D4
+.L0807C6C8: .4byte gPrepUnitList
 .L0807C6CC: .4byte 0x0000FFF5
 .L0807C6D0: .4byte gPlaySt
 .L0807C6D4:
@@ -3301,7 +3301,7 @@ func_fe6_0807C5B8: @ 0x0807C5B8
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	adds r0, r4, #0
-	bl func_fe6_08079F50
+	bl PrepUnit_DrawUnitListNames
 	b .L0807C798
 	.align 2, 0
 .L0807C784: .4byte gPlaySt
@@ -3319,7 +3319,7 @@ func_fe6_0807C5B8: @ 0x0807C5B8
 	cmp sb, r2
 	beq .L0807C7A6
 	adds r0, r4, #0
-	bl func_fe6_08079EA0
+	bl PrepUnit_DrawPickLeftBar
 .L0807C7A6:
 	pop {r3, r4}
 	mov r8, r3
@@ -3330,8 +3330,8 @@ func_fe6_0807C5B8: @ 0x0807C5B8
 	.align 2, 0
 .L0807C7B4: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807C7B8
-func_fe6_0807C7B8: @ 0x0807C7B8
+	thumb_func_start PrepScreenMenu_OnItems
+PrepScreenMenu_OnItems: @ 0x0807C7B8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x29
@@ -3438,8 +3438,8 @@ func_fe6_0807C840: @ 0x0807C840
 .L0807C882:
 	bx lr
 
-	thumb_func_start func_fe6_0807C884
-func_fe6_0807C884: @ 0x0807C884
+	thumb_func_start PrepScreenSubMenu_OnTrade
+PrepScreenSubMenu_OnTrade: @ 0x0807C884
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -3491,7 +3491,7 @@ func_fe6_0807C884: @ 0x0807C884
 	ldrb r1, [r6]
 	cmp r0, r1
 	beq .L0807C916
-	ldr r0, .L0807C928 @ =gUnk_0200E6D4
+	ldr r0, .L0807C928 @ =gPrepUnitList
 	mov r8, r0
 	ldrb r1, [r7]
 	lsls r0, r1, #2
@@ -3516,7 +3516,7 @@ func_fe6_0807C884: @ 0x0807C884
 	bl m4aSongNumStart
 	b .L0807C96C
 	.align 2, 0
-.L0807C928: .4byte gUnk_0200E6D4
+.L0807C928: .4byte gPrepUnitList
 .L0807C92C: .4byte gPlaySt
 .L0807C930:
 	ldrb r6, [r6]
@@ -3555,15 +3555,15 @@ func_fe6_0807C884: @ 0x0807C884
 	.align 2, 0
 .L0807C978: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807C97C
-func_fe6_0807C97C: @ 0x0807C97C
+	thumb_func_start PrepScreenSubMenu_OnDiscard
+PrepScreenSubMenu_OnDiscard: @ 0x0807C97C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r0, #0x29
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne .L0807C9EA
-	ldr r6, .L0807C9B0 @ =gUnk_0200E6D4
+	ldr r6, .L0807C9B0 @ =gPrepUnitList
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
@@ -3582,7 +3582,7 @@ func_fe6_0807C97C: @ 0x0807C97C
 	bl m4aSongNumStart
 	b .L0807C9EA
 	.align 2, 0
-.L0807C9B0: .4byte gUnk_0200E6D4
+.L0807C9B0: .4byte gPrepUnitList
 .L0807C9B4: .4byte gPlaySt
 .L0807C9B8:
 	ldrb r5, [r5]
@@ -3614,15 +3614,15 @@ func_fe6_0807C97C: @ 0x0807C97C
 	.align 2, 0
 .L0807C9F0: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807C9F4
-func_fe6_0807C9F4: @ 0x0807C9F4
+	thumb_func_start PrepScreenSubMenu_Convoy
+PrepScreenSubMenu_Convoy: @ 0x0807C9F4
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x29
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne .L0807CA38
-	ldr r1, .L0807CA40 @ =gUnk_0200E6D4
+	ldr r1, .L0807CA40 @ =gPrepUnitList
 	adds r0, r4, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -3652,18 +3652,18 @@ func_fe6_0807C9F4: @ 0x0807C9F4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807CA40: .4byte gUnk_0200E6D4
+.L0807CA40: .4byte gPrepUnitList
 .L0807CA44: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807CA48
-func_fe6_0807CA48: @ 0x0807CA48
+	thumb_func_start PrepScreenSubMenu_AllItems
+PrepScreenSubMenu_AllItems: @ 0x0807CA48
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x29
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne .L0807CA8C
-	ldr r1, .L0807CA94 @ =gUnk_0200E6D4
+	ldr r1, .L0807CA94 @ =gPrepUnitList
 	adds r0, r4, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -3693,11 +3693,11 @@ func_fe6_0807CA48: @ 0x0807CA48
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807CA94: .4byte gUnk_0200E6D4
+.L0807CA94: .4byte gPrepUnitList
 .L0807CA98: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807CA9C
-func_fe6_0807CA9C: @ 0x0807CA9C
+	thumb_func_start PrepScreenSubMenu_Shop
+PrepScreenSubMenu_Shop: @ 0x0807CA9C
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x29
@@ -3755,8 +3755,8 @@ func_fe6_0807CAD4: @ 0x0807CAD4
 	.align 2, 0
 .L0807CB04: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807CB08
-func_fe6_0807CB08: @ 0x0807CB08
+	thumb_func_start PrepScreenMenu_Augury
+PrepScreenMenu_Augury: @ 0x0807CB08
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x29
@@ -3815,8 +3815,8 @@ func_fe6_0807CB40: @ 0x0807CB40
 	.align 2, 0
 .L0807CB74: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807CB78
-func_fe6_0807CB78: @ 0x0807CB78
+	thumb_func_start PrepScreenMenu_OnSave
+PrepScreenMenu_OnSave: @ 0x0807CB78
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x29
@@ -3845,8 +3845,8 @@ func_fe6_0807CB78: @ 0x0807CB78
 	.align 2, 0
 .L0807CBAC: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807CBB0
-func_fe6_0807CBB0: @ 0x0807CBB0
+	thumb_func_start PrepScreenMenu_OnCheckMap
+PrepScreenMenu_OnCheckMap: @ 0x0807CBB0
 	push {lr}
 	adds r1, r0, #0
 	adds r0, #0x29
@@ -3869,8 +3869,8 @@ func_fe6_0807CBB0: @ 0x0807CBB0
 	.align 2, 0
 .L0807CBD8: .4byte gPlaySt
 
-	thumb_func_start func_fe6_0807CBDC
-func_fe6_0807CBDC: @ 0x0807CBDC
+	thumb_func_start PrepScreenSubMenu_StartBattle
+PrepScreenSubMenu_StartBattle: @ 0x0807CBDC
 	push {lr}
 	adds r1, r0, #0
 	adds r0, #0x29

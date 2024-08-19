@@ -607,7 +607,7 @@ void StartMuralBackgroundExt(ProcPtr parent, int arg_1, int arg_2);
 // Config_Loop
 // Config_End
 // func_fe6_0808D0C0
-fu8 func_fe6_0808D0F8(void);
+fu8 GetAuguryIndex(void);
 // func_fe6_0808D168
 // func_fe6_0808D1B8
 // func_fe6_0808D204

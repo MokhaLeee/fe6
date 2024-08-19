@@ -28,8 +28,8 @@ func_fe6_0808D0C0: @ 0x0808D0C0
 .L0808D0F0: .4byte gBg0Tm+0x58
 .L0808D0F4: .4byte gBg1Tm+0x16
 
-	thumb_func_start func_fe6_0808D0F8
-func_fe6_0808D0F8: @ 0x0808D0F8
+	thumb_func_start GetAuguryIndex
+GetAuguryIndex: @ 0x0808D0F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r0, .L0808D148 @ =gPlaySt
@@ -346,7 +346,7 @@ func_fe6_0808D374: @ 0x0808D374
 	strh r1, [r0]
 	ldr r0, .L0808D548 @ =0x020169DC
 	strb r1, [r0]
-	bl func_fe6_0808D0F8
+	bl GetAuguryIndex
 	ldr r1, .L0808D54C @ =0x020169DB
 	strb r0, [r1]
 	lsls r0, r0, #0x18
