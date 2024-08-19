@@ -461,7 +461,7 @@ void func_fe6_0803C080(ProcPtr parent);
 // func_fe6_08080284
 // func_fe6_080813E8
 // func_fe6_08081540
-// func_fe6_080815BC
+// StartPrepSubtemScreen
 void func_fe6_080815E4(struct Unit * unit, ProcPtr parent);
 void func_fe6_08081620(struct Unit * unit, ProcPtr parent);
 // func_fe6_0808165C
@@ -469,7 +469,7 @@ void func_fe6_08081620(struct Unit * unit, ProcPtr parent);
 // func_fe6_0808171C
 // func_fe6_08081970
 // func_fe6_08081DF8
-// func_fe6_08081E3C
+// StartPrepDiscardItemScreen
 // func_fe6_08081E50
 // func_fe6_08081E58
 // func_fe6_08081ED4
@@ -607,7 +607,7 @@ void StartMuralBackgroundExt(ProcPtr parent, int arg_1, int arg_2);
 // Config_Loop
 // Config_End
 // func_fe6_0808D0C0
-fu8 func_fe6_0808D0F8(void);
+fu8 GetAuguryIndex(void);
 // func_fe6_0808D168
 // func_fe6_0808D1B8
 // func_fe6_0808D204

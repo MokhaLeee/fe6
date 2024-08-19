@@ -120,16 +120,16 @@ gUnk_086793A8: @ 086793A8
 gUnk_086793C8: @ 086793C8
 	.incbin "fe6-base.gba", 0x6793C8, (0x6793E8 - 0x6793C8) @ length: 0020
 
-	.global gUnk_086793E8
-gUnk_086793E8: @ 086793E8
+	.global ProcScr_PrepTradeItemScreen
+ProcScr_PrepTradeItemScreen: @ 086793E8
 	.incbin "fe6-base.gba", 0x6793E8, (0x679490 - 0x6793E8) @ length: 00A8
 
 	.global gUnk_08679490
 gUnk_08679490: @ 08679490
 	.incbin "fe6-base.gba", 0x679490, (0x679518 - 0x679490) @ length: 0088
 
-	.global gUnk_08679518
-gUnk_08679518: @ 08679518
+	.global ProcScr_PrepDiscardItemScreen
+ProcScr_PrepDiscardItemScreen: @ 08679518
 	.incbin "fe6-base.gba", 0x679518, (0x679558 - 0x679518) @ length: 0040
 
 	.global gUnk_08679558

@@ -49,7 +49,7 @@ PROC_LABEL(7),
 PROC_LABEL(8),
     PROC_REPEAT(func_fe6_0807B200),
 PROC_LABEL(3),
-    PROC_REPEAT(func_fe6_0807B28C),
+    PROC_REPEAT(PrepMenu_ExecSub2Screen),
 PROC_LABEL(4),
     PROC_REPEAT(func_fe6_0807B3D8),
     PROC_GOTO(1),
@@ -58,11 +58,11 @@ PROC_LABEL(15),
     PROC_CALL(func_fe6_0807B69C),
     PROC_GOTO(1),
 PROC_LABEL(9),
-    PROC_CALL(func_fe6_0807B49C),
+    PROC_CALL(PrepScreen_ReloadLeftUnitInfoFromStatscreen),
     PROC_REPEAT(func_fe6_0807B4C0),
     PROC_GOTO(1),
 PROC_LABEL(10),
-    PROC_CALL(func_fe6_0807B49C),
+    PROC_CALL(PrepScreen_ReloadLeftUnitInfoFromStatscreen),
     PROC_REPEAT(func_fe6_0807B5A0),
     PROC_GOTO(1),
 PROC_LABEL(13),
@@ -167,12 +167,12 @@ void func_fe6_080792C8(struct UnkProc_08678DE0 * proc)
 
         proc->unk_30 = 0;
 
-        if (proc->proc_parent->unk_2A == 0)
-            proc->proc_parent->unk_2A = 1;
+        if (proc->proc_parent->in_unit_sel_screen == 0)
+            proc->proc_parent->in_unit_sel_screen = 1;
         else
-            proc->proc_parent->unk_2A = 0;
+            proc->proc_parent->in_unit_sel_screen = 0;
 
-        func_fe6_0807A67C(proc->proc_parent);
+        PrepScreen_DrawScreenInfo(proc->proc_parent);
 
         SetWinEnable(1, 0, 0);
         SetWin0Box(0x68, 0x20, DISPLAY_WIDTH, DISPLAY_HEIGHT);
@@ -221,49 +221,50 @@ bool IsUnitMandatoryDeploy(struct Unit * unit)
 
 void InitPrepScreenMainMenu(struct PrepMenuProc * proc)
 {
-    SetPrepScreenMenuItem(func_fe6_0807C5B8, 0, MSG_6AE, 0, MSG_659, 0);
-    SetPrepScreenMenuItem(func_fe6_0807C7B8, 0, MSG_6AF, 0, MSG_65A, 1);
+    SetPrepScreenMenuItem(PrepScreenMenu_OnPickUnits, 0, MSG_6AE, 0, MSG_659, 0);
+    SetPrepScreenMenuItem(PrepScreenMenu_OnItems, 0, MSG_6AF, 0, MSG_65A, 1);
 
-    if (func_fe6_0808D0F8() != 0xFF && (proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0 && (gPlaySt.flags & PLAY_FLAG_COMPLETE) == 0)
+    if (GetAuguryIndex() != 0xFF && (proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0 && (gPlaySt.flags & PLAY_FLAG_COMPLETE) == 0)
     {
-        SetPrepScreenMenuItem(func_fe6_0807CB08, 0, MSG_6B7, 0, MSG_6A3, 10);
+        // 占い
+        SetPrepScreenMenuItem(PrepScreenMenu_Augury, 0, MSG_6B7, 0, MSG_6A3, 10);
     }
 
-    SetPrepScreenMenuItem(func_fe6_0807C884, 1, MSG_6B3, proc->unk_2D == 1 ? 1 : 0, MSG_65F, 5);
+    SetPrepScreenMenuItem(PrepScreenSubMenu_OnTrade, 1, MSG_6B3, proc->unk_2D == 1 ? 1 : 0, MSG_65F, 5);
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0)
     {
         if ((gPlaySt.flags & PLAY_FLAG_COMPLETE) == 0)
         {
-            SetPrepScreenMenuItem(func_fe6_0807CB78, 0, MSG_6B1, 0, MSG_65C, 3);
+            SetPrepScreenMenuItem(PrepScreenMenu_OnSave, 0, MSG_6B1, 0, MSG_65C, 3);
         }
 
-        SetPrepScreenMenuItem(func_fe6_0807CBB0, 0, MSG_6B2, 0, MSG_65D, 4);
-        SetPrepScreenMenuItem(func_fe6_0807C97C, 1, MSG_6B4, 0, MSG_660, 6);
+        SetPrepScreenMenuItem(PrepScreenMenu_OnCheckMap, 0, MSG_6B2, 0, MSG_65D, 4);
+        SetPrepScreenMenuItem(PrepScreenSubMenu_OnDiscard, 1, MSG_6B4, 0, MSG_660, 6);
     }
 
-    SetPrepScreenMenuItem(func_fe6_0807C9F4, 1, MSG_6B5, 0, MSG_661, 7);
-    SetPrepScreenMenuItem(func_fe6_0807CA48, 1, MSG_6B6, 0, MSG_662, 8);
+    SetPrepScreenMenuItem(PrepScreenSubMenu_Convoy, 1, MSG_6B5, 0, MSG_661, 7);
+    SetPrepScreenMenuItem(PrepScreenSubMenu_AllItems, 1, MSG_6B6, 0, MSG_662, 8);
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0)
     {
         if ((gPlaySt.flags & (PLAY_FLAG_COMPLETE | PLAY_FLAG_HARD)) == 0)
         {
-            SetPrepScreenMenuItem(func_fe6_0807CA9C, 1, MSG_6B9, 0, MSG_663, 9);
+            SetPrepScreenMenuItem(PrepScreenSubMenu_Shop, 1, MSG_6B9, 0, MSG_663, 9);
         }
     }
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) != 0)
     {
-        SetPrepScreenMenuItem(func_fe6_0807CBDC, 0, MSG_6B0, 0, MSG_6F1, 12);
+        SetPrepScreenMenuItem(PrepScreenSubMenu_StartBattle, 0, MSG_6B0, 0, MSG_6F1, 12);
     }
     else
     {
-        SetPrepScreenMenuItem(func_fe6_0807CBDC, 0, MSG_6BA, 0, MSG_65E, 12);
+        SetPrepScreenMenuItem(PrepScreenSubMenu_StartBattle, 0, MSG_6BA, 0, MSG_65E, 12);
     }
 }
 
-void func_fe6_08079624(struct Unit * unit, u16 * tm)
+void PrepUnit_DrawLeftUnitInfo(struct Unit * unit, u16 * tm)
 {
     int text_offset;
 
@@ -274,13 +275,13 @@ void func_fe6_08079624(struct Unit * unit, u16 * tm)
 
     text_offset = (0x38 - GetStringTextLen(DecodeMsg(unit->pinfo->msg_name))) >> 1;
 
-    ClearText(&gUnk_0200E89C);
+    ClearText(&gPrepScreenText_LeftPersonName);
 
-    PutDrawText(&gUnk_0200E89C, tm + TM_OFFSET(3, 5), TEXT_COLOR_SYSTEM_WHITE,
+    PutDrawText(&gPrepScreenText_LeftPersonName, tm + TM_OFFSET(3, 5), TEXT_COLOR_SYSTEM_WHITE,
         text_offset, 0, DecodeMsg(unit->pinfo->msg_name));
 }
 
-void func_fe6_080796B0(struct Unit * unit)
+void PrepScreen_ReloadLeftUnitInfo(struct Unit * unit)
 {
     u16 const * tiles = gUnk_08320FCE;
     int ix, iy;
@@ -295,7 +296,7 @@ void func_fe6_080796B0(struct Unit * unit)
         }
     }
 
-    ClearText(&gUnk_0200E89C);
+    ClearText(&gPrepScreenText_LeftPersonName);
 
     PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(9, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
     PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(5, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_A);
@@ -304,7 +305,7 @@ void func_fe6_080796B0(struct Unit * unit)
     PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(6, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_LV_B);
     PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(9, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_EXP_E);
 
-    func_fe6_08079624(unit, gUnk_0200E8A4);
+    PrepUnit_DrawLeftUnitInfo(unit, gUnk_0200E8A4);
 
     PutFaceChibi(GetUnitFid(unit), gUnk_0200E8A4 + TM_OFFSET(1, 1),
         BGCHR_PREPMENU_230, BGPAL_PREPMENU_2, FALSE);
@@ -316,7 +317,7 @@ void func_fe6_0807979C(struct UnkProc_08678E00 * proc)
 
     TmFillRect(gBg0Tm + TM_OFFSET(7, 1), 1, 3, 0);
     TmFillRect(gBg0Tm + TM_OFFSET(10, 1), 1, 3, 0);
-    func_fe6_08079624(unit, gBg0Tm);
+    PrepUnit_DrawLeftUnitInfo(unit, gBg0Tm);
 
     EnableBgSync(BG0_SYNC_BIT);
 
@@ -335,7 +336,7 @@ void func_fe6_080797DC(struct PrepMenuProc * parent)
     struct UnkProc_08678E00 * proc;
 
     proc = SpawnProc(ProcScr_Unk_08678E00, parent);
-    proc->unit = gUnk_0200E6D4[parent->unk_30];
+    proc->unit = gPrepUnitList[parent->list_num_cur];
 }
 
 void func_fe6_08079804(struct PrepMenuProc * proc)
@@ -358,7 +359,7 @@ void func_fe6_08079804(struct PrepMenuProc * proc)
         }
     }
 
-    PutFaceChibi(GetUnitFid(gUnk_0200E6D4[proc->unk_30]), gBg0Tm + TM_OFFSET(1, 1),
+    PutFaceChibi(GetUnitFid(gPrepUnitList[proc->list_num_cur]), gBg0Tm + TM_OFFSET(1, 1),
         BGCHR_PREPMENU_230, BGPAL_PREPMENU_2, FALSE);
 
     func_fe6_080797DC(proc);
@@ -368,7 +369,7 @@ void func_fe6_08079804(struct PrepMenuProc * proc)
 
 void func_fe6_080798EC(struct PrepMenuProc * proc)
 {
-    PutFaceChibi(GetUnitFid(gUnk_0200E6D4[proc->unk_30]), gBg0Tm + TM_OFFSET(1, 1),
+    PutFaceChibi(GetUnitFid(gPrepUnitList[proc->list_num_cur]), gBg0Tm + TM_OFFSET(1, 1),
         BGCHR_PREPMENU_230, BGPAL_PREPMENU_2, FALSE);
 
     func_fe6_080797DC(proc);
@@ -380,48 +381,48 @@ void func_fe6_08079928(struct PrepMenuProc * proc, int unit_id_or_pid, bool by_p
 
     for (i = 0; i < proc->unk_2D; i++)
     {
-        if ((by_pid && UNIT_PID(gUnk_0200E6D4[i]) == unit_id_or_pid) || (!by_pid && gUnk_0200E6D4[i]->id == unit_id_or_pid))
+        if ((by_pid && UNIT_PID(gPrepUnitList[i]) == unit_id_or_pid) || (!by_pid && gPrepUnitList[i]->id == unit_id_or_pid))
         {
-            proc->unk_30 = i;
+            proc->list_num_cur = i;
 
             if (i / 2 == 0)
             {
-                proc->unk_36 = 0;
-                proc->unk_44 = 0;
+                proc->hand_y_pos = 0;
+                proc->yDiff_cur = 0;
             }
             else if (i / 2 == (proc->unk_2D - 1) / 2)
             {
                 if (proc->unk_2D < 15)
                 {
-                    proc->unk_36 = i / 2;
-                    proc->unk_44 = 0;
+                    proc->hand_y_pos = i / 2;
+                    proc->yDiff_cur = 0;
                 }
                 else
                 {
-                    proc->unk_36 = 6;
-                    proc->unk_44 = ((proc->unk_2D - 0xd) / 2) * 16;
+                    proc->hand_y_pos = 6;
+                    proc->yDiff_cur = ((proc->unk_2D - 0xd) / 2) * 16;
                 }
             }
-            else if (i / 2 > proc->unk_44 / 16 && i / 2 < proc->unk_44 / 16 + 6)
+            else if (i / 2 > proc->yDiff_cur / 16 && i / 2 < proc->yDiff_cur / 16 + 6)
             {
-                proc->unk_36 = i / 2 - proc->unk_44 / 16;
+                proc->hand_y_pos = i / 2 - proc->yDiff_cur / 16;
             }
-            else if (proc->unk_44 / 16 > i / 2 - 1)
+            else if (proc->yDiff_cur / 16 > i / 2 - 1)
             {
-                proc->unk_36 = 1;
-                proc->unk_44 = (i / 2 - 1) * 16;
+                proc->hand_y_pos = 1;
+                proc->yDiff_cur = (i / 2 - 1) * 16;
             }
-            else if (proc->unk_44 / 16 < i / 2 - 5)
+            else if (proc->yDiff_cur / 16 < i / 2 - 5)
             {
-                proc->unk_36 = 5;
-                proc->unk_44 = (i / 2 - 5) * 16;
+                proc->hand_y_pos = 5;
+                proc->yDiff_cur = (i / 2 - 5) * 16;
             }
 
             break;
         }
     }
 
-    SetBgOffset(2, 0, proc->unk_44 - 0x28);
+    SetBgOffset(2, 0, proc->yDiff_cur - 0x28);
 }
 
 void func_fe6_08079A28(void)
@@ -445,11 +446,11 @@ void func_fe6_08079A28(void)
 
 void func_fe6_08079A94(struct PrepMenuProc * proc)
 {
-    fu8 r7 = func_fe6_0807CD24(proc->unk_35);
+    fu8 r7 = GetPrepMenuItemAmount(proc->unk_35);
 
     if (proc->unk_35 == 0)
     {
-        if (proc->unk_2F == 0)
+        if (proc->cur_counter == 0)
         {
             func_fe6_0807CEF0(12, 1);
         }
@@ -467,7 +468,7 @@ void func_fe6_08079A94(struct PrepMenuProc * proc)
     }
     else
     {
-        if (GetUnitItemCount(gUnk_0200E6D4[proc->unk_30]) > 0)
+        if (GetUnitItemCount(gPrepUnitList[proc->list_num_cur]) > 0)
         {
             func_fe6_0807CEF0(6, 0);
         }
@@ -490,7 +491,7 @@ void func_fe6_08079A94(struct PrepMenuProc * proc)
 void func_fe6_08079BC8(struct UnkProc_08678E18 * proc)
 {
     proc->main_proc = proc->proc_parent;
-    proc->unit = gUnk_0200E6D4[proc->main_proc->unk_30];
+    proc->unit = gPrepUnitList[proc->main_proc->list_num_cur];
 
     TmFillRect(gBg0Tm + TM_OFFSET(0, 8), 12, 11, 0);
     PutUiWindowFrame(0, 8, 13, 12, UI_WINDOW_REGULAR);
@@ -557,13 +558,13 @@ struct UnkProc_08678E18 * func_fe6_08079D70(struct PrepMenuProc * parent)
 
 void func_fe6_08079D84(struct PrepMenuProc * proc)
 {
-    struct Unit * unit = gUnk_0200E6D4[proc->unk_30];
+    struct Unit * unit = gPrepUnitList[proc->list_num_cur];
     int i, count;
 
     TmFillRect(gBg0Tm + TM_OFFSET(0, 8), 12, 11, 0);
     PutUiWindowFrame(0, 8, 13, 12, UI_WINDOW_REGULAR);
 
-    count = GetUnitItemCount(gUnk_0200E6D4[proc->unk_30]);
+    count = GetUnitItemCount(gPrepUnitList[proc->list_num_cur]);
 
     ClearIcons();
 
@@ -590,36 +591,36 @@ void func_fe6_08079D84(struct PrepMenuProc * proc)
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
 }
 
-void func_fe6_08079EA0(struct PrepMenuProc * proc)
+void PrepUnit_DrawPickLeftBar(struct PrepMenuProc * proc)
 {
-    ClearText(&gUnk_0200E7DC);
+    ClearText(&gPrepScreenText_PickLeftBar);
 
-    Text_SetCursor(&gUnk_0200E7DC, 0);
-    Text_SetColor(&gUnk_0200E7DC, TEXT_COLOR_SYSTEM_WHITE);
-    Text_DrawString(&gUnk_0200E7DC, JTEXT("残り"));
+    Text_SetCursor(&gPrepScreenText_PickLeftBar, 0);
+    Text_SetColor(&gPrepScreenText_PickLeftBar, TEXT_COLOR_SYSTEM_WHITE);
+    Text_DrawString(&gPrepScreenText_PickLeftBar, JTEXT("残り"));
 
-    Text_SetCursor(&gUnk_0200E7DC, 0x18);
-    Text_SetColor(&gUnk_0200E7DC, TEXT_COLOR_SYSTEM_BLUE);
-    Text_DrawNumberOrBlank(&gUnk_0200E7DC, proc->unk_2E - proc->unk_2F);
+    Text_SetCursor(&gPrepScreenText_PickLeftBar, 0x18);
+    Text_SetColor(&gPrepScreenText_PickLeftBar, TEXT_COLOR_SYSTEM_BLUE);
+    Text_DrawNumberOrBlank(&gPrepScreenText_PickLeftBar, proc->max_counter - proc->cur_counter);
 
-    Text_SetColor(&gUnk_0200E7DC, TEXT_COLOR_SYSTEM_WHITE);
+    Text_SetColor(&gPrepScreenText_PickLeftBar, TEXT_COLOR_SYSTEM_WHITE);
 
-    Text_SetCursor(&gUnk_0200E7DC, 0x20);
-    Text_DrawString(&gUnk_0200E7DC, JTEXT("人"));
+    Text_SetCursor(&gPrepScreenText_PickLeftBar, 0x20);
+    Text_DrawString(&gPrepScreenText_PickLeftBar, JTEXT("人"));
 
-    Text_SetCursor(&gUnk_0200E7DC, 0x28);
-    Text_DrawString(&gUnk_0200E7DC, JTEXT("／"));
+    Text_SetCursor(&gPrepScreenText_PickLeftBar, 0x28);
+    Text_DrawString(&gPrepScreenText_PickLeftBar, JTEXT("／"));
 
-    Text_SetCursor(&gUnk_0200E7DC, 0x38);
-    Text_SetColor(&gUnk_0200E7DC, TEXT_COLOR_SYSTEM_BLUE);
-    Text_DrawNumberOrBlank(&gUnk_0200E7DC, proc->unk_2E);
+    Text_SetCursor(&gPrepScreenText_PickLeftBar, 0x38);
+    Text_SetColor(&gPrepScreenText_PickLeftBar, TEXT_COLOR_SYSTEM_BLUE);
+    Text_DrawNumberOrBlank(&gPrepScreenText_PickLeftBar, proc->max_counter);
 
-    PutText(&gUnk_0200E7DC, gBg0Tm + TM_OFFSET(21, 1));
+    PutText(&gPrepScreenText_PickLeftBar, gBg0Tm + TM_OFFSET(21, 1));
 
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-void func_fe6_08079F50(struct PrepMenuProc * proc, fu8 row)
+void PrepUnit_DrawUnitListNames(struct PrepMenuProc * proc, fu8 row)
 {
     fu8 i;
 
@@ -630,28 +631,28 @@ void func_fe6_08079F50(struct PrepMenuProc * proc, fu8 row)
 
     for (i = 0; i < 2 && first_ent + i < proc->unk_2D; i++)
     {
-        ClearText(&gUnk_0200E7E4[text_base + i]);
-        Text_SetCursor(&gUnk_0200E7E4[text_base + i], 0);
+        ClearText(&gPrepScreenTexts_Units[text_base + i]);
+        Text_SetCursor(&gPrepScreenTexts_Units[text_base + i], 0);
 
-        if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0 && IsUnitMandatoryDeploy(gUnk_0200E6D4[first_ent + i]))
+        if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0 && IsUnitMandatoryDeploy(gPrepUnitList[first_ent + i]))
         {
             // force deployed color
-            Text_SetColor(&gUnk_0200E7E4[text_base + i], TEXT_COLOR_SYSTEM_GREEN);
+            Text_SetColor(&gPrepScreenTexts_Units[text_base + i], TEXT_COLOR_SYSTEM_GREEN);
         }
-        else if ((gUnk_0200E6D4[first_ent + i]->flags & UNIT_FLAG_NOT_DEPLOYED) != 0)
+        else if ((gPrepUnitList[first_ent + i]->flags & UNIT_FLAG_NOT_DEPLOYED) != 0)
         {
             // not selected color
-            Text_SetColor(&gUnk_0200E7E4[text_base + i], TEXT_COLOR_SYSTEM_GRAY);
+            Text_SetColor(&gPrepScreenTexts_Units[text_base + i], TEXT_COLOR_SYSTEM_GRAY);
         }
         else
         {
             // selected color
-            Text_SetColor(&gUnk_0200E7E4[text_base + i], TEXT_COLOR_SYSTEM_WHITE);
+            Text_SetColor(&gPrepScreenTexts_Units[text_base + i], TEXT_COLOR_SYSTEM_WHITE);
         }
 
-        Text_DrawString(&gUnk_0200E7E4[text_base + i], DecodeMsg(gUnk_0200E6D4[first_ent + i]->pinfo->msg_name));
+        Text_DrawString(&gPrepScreenTexts_Units[text_base + i], DecodeMsg(gPrepUnitList[first_ent + i]->pinfo->msg_name));
 
-        PutText(&gUnk_0200E7E4[text_base + i], gBg2Tm + TM_OFFSET(i * 8, first_ent % 0x20));
+        PutText(&gPrepScreenTexts_Units[text_base + i], gBg2Tm + TM_OFFSET(i * 8, first_ent % 0x20));
     }
 
     EnableBgSync(BG2_SYNC_BIT);
@@ -727,7 +728,7 @@ void SioResetUnitItems(void)
 
 void func_fe6_0807A1C8(struct PrepMenuProc * proc, bool load_sprites)
 {
-    proc->unk_2F = 0;
+    proc->cur_counter = 0;
     proc->unk_2D = 0;
     gUnk_0200E7D4 = 0;
 
@@ -736,12 +737,12 @@ void func_fe6_0807A1C8(struct PrepMenuProc * proc, bool load_sprites)
         if ((unit->flags & UNIT_FLAG_DEAD) != 0)
             continue;
 
-        gUnk_0200E6D4[proc->unk_2D] = unit;
+        gPrepUnitList[proc->unk_2D] = unit;
 
         if ((unit->flags & UNIT_FLAG_NOT_DEPLOYED) == 0)
         {
             unit->flags &= ~UNIT_FLAG_TURN_ENDED;
-            proc->unk_2F++;
+            proc->cur_counter++;
         }
         else
         {
@@ -756,7 +757,7 @@ void func_fe6_0807A1C8(struct PrepMenuProc * proc, bool load_sprites)
     })
 }
 
-void func_fe6_0807A268(struct PrepMenuProc * proc)
+void PrepMenu_InitScreenExt(struct PrepMenuProc * proc)
 {
     int i;
 
@@ -776,25 +777,25 @@ void func_fe6_0807A268(struct PrepMenuProc * proc)
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) != 0)
     {
-        proc->unk_2E = 5;
+        proc->max_counter = 5;
     }
     else
     {
-        proc->unk_2E = GetPlayerMaxDeployCount();
+        proc->max_counter = GetPlayerMaxDeployCount();
     }
 
     proc->unk_5C = NULL;
 
     func_fe6_0807A1C8(proc, TRUE);
 
-    if (proc->unk_2E > proc->unk_2D)
-        proc->unk_2E = proc->unk_2D;
+    if (proc->max_counter > proc->unk_2D)
+        proc->max_counter = proc->unk_2D;
 
-    if (proc->unk_3B == 6)
+    if (proc->sub2_action == 6)
     {
         func_fe6_08079928(proc, GetLastStatScreenUnitId(), FALSE);
     }
-    else if (proc->unk_3B == 9)
+    else if (proc->sub2_action == 9)
     {
         func_fe6_08079928(proc, gUnk_0200E7D8, TRUE);
     }
@@ -813,11 +814,11 @@ void func_fe6_0807A268(struct PrepMenuProc * proc)
 
     for (i = 0; i < 16; i++)
     {
-        InitText(&gUnk_0200E7E4[i], 5);
+        InitText(&gPrepScreenTexts_Units[i], 5);
     }
 
-    InitTextDb(&gUnk_0200E7DC, 9);
-    InitText(&gUnk_0200E89C, 7);
+    InitTextDb(&gPrepScreenText_PickLeftBar, 9);
+    InitText(&gPrepScreenText_LeftPersonName, 7);
 
     Decompress(gUnk_0831A268, OBJ_VRAM0 + CHR_SIZE * OBCHR_PREPMENU_240);
     ApplyObPalettes(gUnk_0831AABC, OBPAL_PREPMENU_2, 2);
@@ -828,7 +829,7 @@ void func_fe6_0807A268(struct PrepMenuProc * proc)
     for (i = 0; i < 10; i++)
     {
         gPal[OBPAL_OFFSET(OBPAL_PREPMENU_6) + 5 + i] =
-            gPal[OBPAL_OFFSET(OBPAL_PREPMENU_6 + 3) + ((proc->unk_42 / 4 + i) & 0x0F)];
+            gPal[OBPAL_OFFSET(OBPAL_PREPMENU_6 + 3) + ((proc->scroll_timer / 4 + i) & 0x0F)];
     }
 
     EnablePalSync();
@@ -846,7 +847,7 @@ void func_fe6_0807A268(struct PrepMenuProc * proc)
 
     SetBgOffset(0, 0, 0);
     SetBgOffset(1, 0, 0);
-    SetBgOffset(2, 0, proc->unk_44 - 0x28);
+    SetBgOffset(2, 0, proc->yDiff_cur - 0x28);
 
     Decompress(Img_SpinningArrow, (void *) VRAM + CHR_SIZE * BGCHR_PREPMENU_240);
     ApplyBgPalette(Pal_SpinningArrow, BGPAL_PREPMENU_F);
@@ -855,7 +856,7 @@ void func_fe6_0807A268(struct PrepMenuProc * proc)
 
     InitPrepScreenMainMenu(proc);
 
-    if (proc->unk_2A == 1)
+    if (proc->in_unit_sel_screen == 1)
     {
         func_fe6_08079804(proc);
     }
@@ -869,28 +870,28 @@ void func_fe6_0807A268(struct PrepMenuProc * proc)
         func_fe6_08079D84(proc);
     }
 
-    func_fe6_0807A67C(proc);
+    PrepScreen_DrawScreenInfo(proc);
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
     func_fe6_08082D08(proc->unk_60, 0x6000, OBPAL_PREPMENU_D);
 }
 
-void func_fe6_0807A59C(struct PrepMenuProc * proc)
+void PrepMenu_InitScreen(struct PrepMenuProc * proc)
 {
     int i, j;
 
     InitBgs(NULL);
 
-    func_fe6_0807A268(proc);
+    PrepMenu_InitScreenExt(proc);
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) != 0)
     {
-        proc->unk_58 = StartMuralBackground(NULL, NULL, BGPAL_PREPMENU_A);
+        proc->procbg = StartMuralBackground(NULL, NULL, BGPAL_PREPMENU_A);
     }
     else
     {
         Decompress(gUnk_0831B0A8, (void *) VRAM + GetBgChrOffset(3));
         ApplyBgPalettes(gUnk_08320D98, BGPAL_PREPMENU_A, 4);
-        proc->unk_58 = func_fe6_08082560(proc);
+        proc->procbg = func_fe6_08082560(proc);
     }
 
     Decompress(gUnk_08321FA4, gUnk_020104A4);
@@ -911,11 +912,11 @@ void func_fe6_0807A59C(struct PrepMenuProc * proc)
     }
 }
 
-void func_fe6_0807A67C(struct PrepMenuProc * proc)
+void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc)
 {
     int i, j;
 
-    if (proc->unk_2A == 0)
+    if (proc->in_unit_sel_screen == 0)
     {
         u16 const * tiles = gUnk_08326EE6;
 
@@ -944,30 +945,30 @@ void func_fe6_0807A67C(struct PrepMenuProc * proc)
         gBg0Tm[TM_OFFSET(20, 19)] = 0;
         gBg0Tm[TM_OFFSET(21, 19)] = 0;
 
-        ClearText(&gUnk_0200E7DC);
+        ClearText(&gPrepScreenText_PickLeftBar);
 
-        Text_SetCursor(&gUnk_0200E7DC, (0x48 - GetStringTextLen(DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C))) >> 1);
-        Text_SetColor(&gUnk_0200E7DC, TEXT_COLOR_SYSTEM_WHITE);
-        Text_DrawString(&gUnk_0200E7DC, DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C));
+        Text_SetCursor(&gPrepScreenText_PickLeftBar, (0x48 - GetStringTextLen(DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C))) >> 1);
+        Text_SetColor(&gPrepScreenText_PickLeftBar, TEXT_COLOR_SYSTEM_WHITE);
+        Text_DrawString(&gPrepScreenText_PickLeftBar, DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C));
 
-        PutText(&gUnk_0200E7DC, gBg0Tm + TM_OFFSET(17, 17));
+        PutText(&gPrepScreenText_PickLeftBar, gBg0Tm + TM_OFFSET(17, 17));
     }
     else
     {
         SetBgChrOffset(2, 0x0000);
         TmFill(gBg2Tm, 0);
 
-        for (i = proc->unk_44 / 16; i < proc->unk_44 / 16 + 7; i++)
+        for (i = proc->yDiff_cur / 16; i < proc->yDiff_cur / 16 + 7; i++)
         {
-            func_fe6_08079F50(proc, i);
+            PrepUnit_DrawUnitListNames(proc, i);
         }
 
         PutUiWindowFrame(13, 4, 17, 16, UI_WINDOW_REGULAR);
 
-        SetBgOffset(2, -0x80, (proc->unk_44 - 0x28) & 0xFF);
+        SetBgOffset(2, -0x80, (proc->yDiff_cur - 0x28) & 0xFF);
 
         if (proc->unk_33[0] == 0)
-            func_fe6_08079EA0(proc);
+            PrepUnit_DrawPickLeftBar(proc);
     }
 
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
@@ -981,13 +982,13 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
 
     proc->unk_48 = 0;
     proc->unk_4C = 0;
-    proc->unk_44 = 0;
-    proc->unk_30 = 0;
+    proc->yDiff_cur = 0;
+    proc->list_num_cur = 0;
     proc->unk_31 = 0xFF;
     proc->unk_29 = 0;
-    proc->unk_2A = 0;
+    proc->in_unit_sel_screen = 0;
     proc->unk_2B = 0;
-    proc->unk_36 = 0;
+    proc->hand_y_pos = 0;
 
     if (func_fe6_08036984() == 1)
     {
@@ -1002,9 +1003,9 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
     proc->unk_38 = 0;
     proc->unk_39 = 0;
     proc->unk_3A = 0;
-    proc->unk_3B = 0;
+    proc->sub2_action = 0;
     proc->do_help = 0;
-    proc->unk_3C = 0;
+    proc->a_button_actions = 0;
     proc->unk_3E = 0;
 
     // BUG: this should be 2, not 3
@@ -1015,7 +1016,7 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
 
     proc->unk_60 = func_fe6_08082CF4(proc);
 
-    func_fe6_0807A59C(proc);
+    PrepMenu_InitScreen(proc);
 
     func_fe6_0807B8CC((proc->unk_50 = StartPrepMenuBmCursor(proc)),
         GetChapterInfo(gPlaySt.chapter)->unk_41 * 8,
@@ -1023,9 +1024,9 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
         GetChapterInfo(gPlaySt.chapter)->number_id);
 }
 
-fi8 func_fe6_0807A940(struct PrepMenuProc * proc)
+fi8 PrepUnitSel_Loop(struct PrepMenuProc * proc)
 {
-    int old_unk_30 = proc->unk_30;
+    int old_list_num_cur = proc->list_num_cur;
 
     if ((gKeySt->held & KEY_BUTTON_L) != 0)
     {
@@ -1038,7 +1039,7 @@ fi8 func_fe6_0807A940(struct PrepMenuProc * proc)
 
     if ((gKeySt->pressed & KEY_BUTTON_START) != 0 && (proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0)
     {
-        if ((proc->unk_3C & 1) != 0 && proc->unk_2F != 0)
+        if ((proc->a_button_actions & 1) != 0 && proc->cur_counter != 0)
         {
             Proc_Goto(proc, L_PREPMENU_5);
             proc->unk_50->unk_2A = 1;
@@ -1053,51 +1054,51 @@ fi8 func_fe6_0807A940(struct PrepMenuProc * proc)
     {
         if (((gKeySt->repeated & KEY_DPAD_DOWN) != 0) || ((gKeySt->pressed2 & KEY_DPAD_DOWN) != 0 && proc->unk_3F == 2))
         {
-            if ((proc->unk_3C & 2) != 0 && (proc->unk_3C & 1) != 0)
+            if ((proc->a_button_actions & 2) != 0 && (proc->a_button_actions & 1) != 0)
             {
-                proc->unk_3C &= 1;
+                proc->a_button_actions &= 1;
                 PlaySe(SONG_66);
             }
-            else if (proc->unk_30 + 2 < proc->unk_2D)
+            else if (proc->list_num_cur + 2 < proc->unk_2D)
             {
-                proc->unk_30 = proc->unk_30 + 2;
-                proc->unk_36++;
-                proc->unk_3C &= 1;
+                proc->list_num_cur = proc->list_num_cur + 2;
+                proc->hand_y_pos++;
+                proc->a_button_actions &= 1;
             }
         }
         else if (((gKeySt->repeated & KEY_DPAD_UP) != 0) || ((gKeySt->pressed2 & KEY_DPAD_UP) != 0 && proc->unk_3F == 2))
         {
-            if ((proc->unk_3C & 1) != 0 && proc->unk_36 == 0 && proc->unk_44 == 0)
+            if ((proc->a_button_actions & 1) != 0 && proc->hand_y_pos == 0 && proc->yDiff_cur == 0)
             {
-                if ((gKeySt->pressed & KEY_DPAD_UP) != 0 && proc->unk_2F != 0 && (proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0)
+                if ((gKeySt->pressed & KEY_DPAD_UP) != 0 && proc->cur_counter != 0 && (proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0)
                 {
-                    proc->unk_3C |= 2;
+                    proc->a_button_actions |= 2;
                     PlaySe(SONG_66);
                 }
             }
-            else if (proc->unk_30 - 2 >= 0)
+            else if (proc->list_num_cur - 2 >= 0)
             {
-                proc->unk_30 = proc->unk_30 - 2;
-                proc->unk_36--;
+                proc->list_num_cur = proc->list_num_cur - 2;
+                proc->hand_y_pos--;
             }
         }
         else if ((gKeySt->repeated & KEY_DPAD_LEFT) != 0)
         {
-            if ((proc->unk_30 % 2) != 0 && (proc->unk_3C & (1 | 2)) != (1 | 2))
+            if ((proc->list_num_cur % 2) != 0 && (proc->a_button_actions & (1 | 2)) != (1 | 2))
             {
-                proc->unk_30--;
+                proc->list_num_cur--;
             }
         }
         else if ((gKeySt->repeated & KEY_DPAD_RIGHT) != 0)
         {
-            if ((proc->unk_3C & (1 | 2)) != (1 | 2) && (proc->unk_30 % 2) == 0 && (proc->unk_30 + 1) < proc->unk_2D)
+            if ((proc->a_button_actions & (1 | 2)) != (1 | 2) && (proc->list_num_cur % 2) == 0 && (proc->list_num_cur + 1) < proc->unk_2D)
             {
-                proc->unk_30++;
+                proc->list_num_cur++;
             }
         }
     }
 
-    if (proc->unk_30 != old_unk_30)
+    if (proc->list_num_cur != old_list_num_cur)
     {
         func_fe6_080798EC(proc);
 
@@ -1109,15 +1110,15 @@ fi8 func_fe6_0807A940(struct PrepMenuProc * proc)
         PlaySe(SONG_66);
     }
 
-    if (proc->unk_36 == 6 && ((proc->unk_30 + 2) / 2) <= (proc->unk_2D - 1) / 2)
+    if (proc->hand_y_pos == 6 && ((proc->list_num_cur + 2) / 2) <= (proc->unk_2D - 1) / 2)
     {
-        proc->unk_36 = 5;
+        proc->hand_y_pos = 5;
         return +1;
     }
 
-    if (proc->unk_36 == 0 && proc->unk_30 / 2 != 0)
+    if (proc->hand_y_pos == 0 && proc->list_num_cur / 2 != 0)
     {
-        proc->unk_36 = 1;
+        proc->hand_y_pos = 1;
         return -1;
     }
 
@@ -1126,26 +1127,26 @@ fi8 func_fe6_0807A940(struct PrepMenuProc * proc)
 
 void func_fe6_0807ABF4(struct PrepMenuProc * proc)
 {
-    int i, r4 = proc->unk_44 / 16;
+    int i, r4 = proc->yDiff_cur / 16;
 
-    proc->unk_30 = proc->unk_31;
+    proc->list_num_cur = proc->unk_31;
     proc->unk_31 = 0xFF;
 
-    if (proc->unk_44 == proc->unk_40 || (proc->unk_30 / 2 > r4 && proc->unk_30 / 2 < r4 + 6))
+    if (proc->yDiff_cur == proc->unk_40 || (proc->list_num_cur / 2 > r4 && proc->list_num_cur / 2 < r4 + 6))
     {
-        proc->unk_36 = proc->unk_30 / 2 - r4;
+        proc->hand_y_pos = proc->list_num_cur / 2 - r4;
         return;
     }
 
-    proc->unk_44 = proc->unk_40;
-    proc->unk_36 = proc->unk_37;
+    proc->yDiff_cur = proc->unk_40;
+    proc->hand_y_pos = proc->unk_37;
 
     TmFill(gBg2Tm, 0);
-    SetBgOffset(2, -0x80, (proc->unk_44 - 0x28) & 0xFF);
+    SetBgOffset(2, -0x80, (proc->yDiff_cur - 0x28) & 0xFF);
 
-    for (i = proc->unk_44 / 16; i < proc->unk_44 / 16 + 7; i++)
+    for (i = proc->yDiff_cur / 16; i < proc->yDiff_cur / 16 + 7; i++)
     {
-        func_fe6_08079F50(proc, i);
+        PrepUnit_DrawUnitListNames(proc, i);
     }
 
     EnableBgSync(BG2_SYNC_BIT);
@@ -1188,7 +1189,7 @@ void PrepMenu_EndIfNoUnit(struct PrepMenuProc * proc)
 
     if (dead_count == 0)
     {
-        proc->unk_58 = NULL;
+        proc->procbg = NULL;
         proc->unk_3E = 1;
 
         Proc_Goto(proc, L_PREPMENU_B);
