@@ -267,6 +267,7 @@ PrepMenu_Loop: @ 0x0807AD78
 	adds r0, r2, #0
 	cmp r0, #0
 	bne .L0807AFB6
+
 	ldr r0, .L0807AFA8 @ =gBg0Tm+0x28
 	movs r1, #0xa
 	movs r2, #3

@@ -62,7 +62,7 @@ struct PrepMenuProc
     /* 2F */ u8 cur_counter;
     /* 30 */ u8 list_num_cur; // id within gPrepUnitList
     /* 31 */ u8 unk_31;
-    /* 32 */ STRUCT_PAD(0x32, 0x33);
+    /* 32 */ u8 unk_32;
     /* 33 */ u8 unk_33[2];
     /* 35 */ u8 unk_35;
     /* 36 */ i8 hand_y_pos;
@@ -129,45 +129,45 @@ void ResetPrepMenuItem(void);
 enum { SID_PID_POOL_SIZE = 5 };
 extern u8 SioPidPool[SID_PID_POOL_SIZE];
 
-// ResetSioPidPool
+void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
 void RemoveSioPid(fu8 pid);
-// func_fe6_0807921C
-// func_fe6_08079250
-// func_fe6_080792C8
-// func_fe6_08079388
-// func_fe6_080793F0
+void func_fe6_0807921C(void);
+void func_fe6_08079250(struct UnkProc_08678DE0 * proc);
+void func_fe6_080792C8(struct UnkProc_08678DE0 * proc);
+void func_fe6_08079388(struct UnkProc_08678DE0 * proc);
+void func_fe6_080793F0(struct PrepMenuProc * parent);
 bool IsUnitMandatoryDeploy(struct Unit * unit);
-// InitPrepScreenMainMenu
-// PrepUnit_DrawLeftUnitInfo
-// PrepScreen_ReloadLeftUnitInfo
-// func_fe6_0807979C
-// func_fe6_080797DC
-// func_fe6_08079804
-// func_fe6_080798EC
-// func_fe6_08079928
-// func_fe6_08079A28
-// func_fe6_08079A94
-// func_fe6_08079BC8
-// func_fe6_08079C38
-// func_fe6_08079D70
-// func_fe6_08079D84
-// PrepUnit_DrawPickLeftBar
-// PrepUnit_DrawUnitListNames
+void InitPrepScreenMainMenu(struct PrepMenuProc * proc);
+void PrepUnit_DrawLeftUnitInfo(struct Unit * unit, u16 * tm);
+void PrepScreen_ReloadLeftUnitInfo(struct Unit * unit);
+void func_fe6_0807979C(struct UnkProc_08678E00 * proc);
+void func_fe6_080797DC(struct PrepMenuProc * parent);
+void func_fe6_08079804(struct PrepMenuProc * proc);
+void func_fe6_080798EC(struct PrepMenuProc * proc);
+void func_fe6_08079928(struct PrepMenuProc * proc, int unit_id_or_pid, bool by_pid);
+void func_fe6_08079A28(void);
+void func_fe6_08079A94(struct PrepMenuProc * proc);
+void func_fe6_08079BC8(struct UnkProc_08678E18 * proc);
+void func_fe6_08079C38(struct UnkProc_08678E18 * proc);
+struct UnkProc_08678E18 * func_fe6_08079D70(struct PrepMenuProc * parent);
+void func_fe6_08079D84(struct PrepMenuProc * proc);
+void PrepUnit_DrawPickLeftBar(struct PrepMenuProc * proc);
+void PrepUnit_DrawUnitListNames(struct PrepMenuProc * proc, fu8 row);
 void RearrangeMandatoryDeployUnits(void);
-// SioResetUnitItems
-// func_fe6_0807A1C8
-// PrepMenu_InitScreenExt
-// PrepMenu_InitScreen
-// PrepScreen_DrawScreenInfo
-// PrepMenu_InitExt
-// PrepUnitSel_Loop
-// func_fe6_0807ABF4
-// func_fe6_0807AC9C
-// func_fe6_0807ACE8
-// PrepMenu_EndIfNoUnit
-// PrepMenu_Init
-// PrepMenu_Loop
+void SioResetUnitItems(void);
+void func_fe6_0807A1C8(struct PrepMenuProc * proc, bool load_sprites);
+void PrepMenu_InitScreenExt(struct PrepMenuProc * proc);
+void PrepMenu_InitScreen(struct PrepMenuProc * proc);
+void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc);
+void PrepMenu_InitExt(struct PrepMenuProc * proc);
+fi8 PrepUnitSel_Loop(struct PrepMenuProc * proc);
+void func_fe6_0807ABF4(struct PrepMenuProc * proc);
+void func_fe6_0807AC9C(struct PrepMenuProc * proc);
+void func_fe6_0807ACE8(struct PrepMenuProc * proc);
+void PrepMenu_EndIfNoUnit(struct PrepMenuProc * proc);
+void PrepMenu_Init(struct PrepMenuProc * proc);
+void PrepMenu_Loop(struct PrepMenuProc * proc);
 // func_fe6_0807B0DC
 // func_fe6_0807B0E4
 // func_fe6_0807B178
@@ -185,7 +185,7 @@ void StartPrepAtMenu(void);
 // func_fe6_0807B7C8
 // StartPrepMenuFadeIn
 // func_fe6_0807B89C
-// func_fe6_0807B8B0
+void func_fe6_0807B8B0(ProcPtr proc, int);
 void func_fe6_0807B8CC(ProcPtr proc, fu8 arg_1, fu8 arg_2, int arg_3);
 // func_fe6_0807B90C
 // func_fe6_0807B9CC
@@ -222,7 +222,7 @@ void PrepMenuHelpbox(struct PrepMenuProc * proc);
 // PrepMenuHelpbox
 // func_fe6_0807CE98
 // func_fe6_0807CEF0
-// func_fe6_0807CF2C
+u8 func_fe6_0807CF2C(u8, u8);
 // func_fe6_0807CF78
 // func_fe6_0807CFA0
 // func_fe6_0807CFA4
