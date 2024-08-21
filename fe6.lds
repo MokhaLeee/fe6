@@ -58,7 +58,7 @@ SECTIONS
         . = 0x00E88C; gUnk_0200E88C = .; /* this is multiple (2?) text */
         . = 0x00E89C; gPrepScreenText_LeftPersonName = .;
         . = 0x00E8A4; gUnk_0200E8A4 = .; /* this is a tilemap */
-        . = 0x00F0A4; gUnk_0200F0A4 = .; /* this is units */
+        . = 0x00F0A4; gPrepUnitPool = .; /* this is units */
         . = 0x0104A4; gUnk_020104A4 = .; /* buf? */
         . = 0x0154A4; gPrepMenuItems = .;
         . = 0x0155E4; gPrepMenuItemCnt = .;

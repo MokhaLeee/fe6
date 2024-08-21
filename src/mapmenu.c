@@ -32,6 +32,7 @@
 #include "statusscreen.h"
 #include "unitlistscreen.h"
 #include "savemenu.h"
+#include "prepscreen.h"
 
 #include "constants/videoalloc_global.h"
 #include "constants/terrains.h"

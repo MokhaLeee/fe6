@@ -64,7 +64,7 @@ u32 func_fe6_080368DC(void const * src, void * dst);
 // func_fe6_08036964
 // func_fe6_08036974
 int func_fe6_08036984(void);
-// func_fe6_08036994
+void func_fe6_08036994(void);
 // func_fe6_080369A0
 // func_fe6_080369E0
 // func_fe6_08036A40
@@ -430,121 +430,6 @@ void func_fe6_0803C080(ProcPtr parent);
 // func_fe6_0804119C
 // func_fe6_08041200
 // func_fe6_08041210
-
-// func_fe6_0807D180
-// func_fe6_0807D1AC
-// func_fe6_0807D2E0
-// func_fe6_0807D2F4
-// func_fe6_0807D338
-// func_fe6_0807D358
-// func_fe6_0807D4A8
-// func_fe6_0807D6C0
-// func_fe6_0807D834
-// func_fe6_0807D9E4
-// func_fe6_0807DB80
-// func_fe6_0807DCB8
-// func_fe6_0807DDC8
-// func_fe6_0807DE60
-// func_fe6_0807DEC8
-// func_fe6_0807DF60
-// func_fe6_0807DFEC
-// func_fe6_0807E06C
-// func_fe6_0807E0D4
-// func_fe6_0807E41C
-// func_fe6_0807E544
-// func_fe6_0807E5A8
-// func_fe6_0807EB70
-// func_fe6_0807EDBC
-// func_fe6_0807FBE8
-// func_fe6_0807FCFC
-// func_fe6_0807FF98
-// func_fe6_08080284
-// func_fe6_080813E8
-// func_fe6_08081540
-// StartPrepSubtemScreen
-void func_fe6_080815E4(struct Unit * unit, ProcPtr parent);
-void func_fe6_08081620(struct Unit * unit, ProcPtr parent);
-// func_fe6_0808165C
-// func_fe6_0808166C
-// func_fe6_0808171C
-// func_fe6_08081970
-// func_fe6_08081DF8
-// StartPrepDiscardItemScreen
-// func_fe6_08081E50
-// func_fe6_08081E58
-// func_fe6_08081ED4
-// func_fe6_08081EE8
-// func_fe6_08081F20
-ProcPtr func_fe6_0808230C(ProcPtr parent);
-void func_fe6_08082320(ProcPtr self, int arg_1, int arg_2, int arg_3, int arg_4, int arg_5, int arg_6);
-// func_fe6_08082348
-// func_fe6_08082360
-// func_fe6_080823A0
-// func_fe6_080823F4
-// func_fe6_08082498
-// func_fe6_0808255C
-ProcPtr func_fe6_08082560(ProcPtr parent);
-// func_fe6_08082574
-// func_fe6_080825B8
-// func_fe6_08082708
-// func_fe6_080827CC
-// func_fe6_080827D8
-// func_fe6_080827F8
-// func_fe6_080828B8
-// func_fe6_080829E8
-// func_fe6_08082A08
-// func_fe6_08082A40
-// func_fe6_08082A7C
-// func_fe6_08082ABC
-// func_fe6_08082AC8
-// func_fe6_08082AD8
-void func_fe6_08082B00(int arg_0, int arg_1, int msg, ProcPtr parent);
-// func_fe6_08082B1C
-// func_fe6_08082B44
-bool func_fe6_08082B74(struct Unit * unit);
-// func_fe6_08082B98
-// func_fe6_08082C34
-// func_fe6_08082C80
-void func_fe6_08082CBC(void);
-ProcPtr func_fe6_08082CF4(ProcPtr parent);
-// func_fe6_08082D08
-// func_fe6_08082D54
-// func_fe6_08082DA4
-// func_fe6_08082E74
-// func_fe6_08082EC0
-// func_fe6_08082EEC
-// func_fe6_08082F18
-// func_fe6_08082F54
-// func_fe6_08082FE8
-// func_fe6_08083078
-// func_fe6_080830AC
-// func_fe6_08083180
-// func_fe6_080832A0
-// func_fe6_08083378
-// func_fe6_0808344C
-// func_fe6_0808347C
-// func_fe6_080834B4
-// func_fe6_0808357C
-// func_fe6_08083618
-// func_fe6_08083688
-// func_fe6_08083750
-// func_fe6_080837C8
-// func_fe6_080838FC
-// func_fe6_08083900
-// func_fe6_08083930
-// func_fe6_08083944
-// func_fe6_08083A68
-// func_fe6_08083B8C
-// func_fe6_08083BC4
-// func_fe6_08083E70
-// func_fe6_08083F40
-// func_fe6_08083FF0
-// func_fe6_08084134
-// func_fe6_08084138
-// func_fe6_08084168
-// func_fe6_080841B4
-// func_fe6_080841EC
-// func_fe6_080841F8
 
 // func_fe6_0808AA84
 // func_fe6_0808AB44
@@ -923,7 +808,7 @@ void StartClassDemo(u8 arg_0, ProcPtr parent);
 // func_fe6_08095D58
 // GetShopFace
 // StartShopDialogue
-// StartDefaultArmoryScreen
+void StartDefaultArmoryScreen(struct Unit * unit, ProcPtr proc);
 void StartArmoryScreenOrphaned(struct Unit * unit, u16 const * iid_list);
 void StartVendorScreenOrphaned(struct Unit * unit, u16 const * iid_list);
 void StartSecretShopScreenOrphaned(struct Unit * unit, u16 const * iid_list);
