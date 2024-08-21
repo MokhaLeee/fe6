@@ -89,7 +89,7 @@ struct UnitListScreenProc;
 // func_fe6_08075E94
 // func_fe6_08076060
 void StartUnitListScreen(void);
-// func_fe6_08076250
+void func_fe6_08076250(ProcPtr parent);
 // StartUnitListScreenForSoloAnim
 // func_fe6_080762E4
 void func_fe6_08076314(u16 * tm, fu8 arg_1);

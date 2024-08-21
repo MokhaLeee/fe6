@@ -34,6 +34,7 @@
 #include "manim.h"
 #include "statscreen.h"
 #include "helpbox.h"
+#include "prepscreen.h"
 
 #include "constants/videoalloc_global.h"
 #include "constants/pids.h"
