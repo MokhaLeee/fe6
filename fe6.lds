@@ -59,6 +59,7 @@ SECTIONS
         . = 0x00E89C; gPrepScreenText_LeftPersonName = .;
         . = 0x00E8A4; gUnk_0200E8A4 = .; /* this is a tilemap */
         . = 0x00F0A4; gPrepUnitPool = .; /* this is units */
+        . = 0x0100A4; gPalPrepMenuFadeIn = .;
         . = 0x0104A4; gUnk_020104A4 = .; /* buf? */
         . = 0x0154A4; gPrepMenuItems = .;
         . = 0x0155E4; gPrepMenuItemCnt = .;
@@ -576,6 +577,8 @@ SECTIONS
         src/statusscreen.o(.text);
         src/unitlistscreen.o(.text);
         src/prepmenu.o(.text);
+        asm/prepmenufx.o(.text);
+        src/prepmenufx.o(.text);
         asm/prepscreen.o(.text);
         src/save_core.o(.text);
         src/save_stats.o(.text);
@@ -678,6 +681,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_3198C0.o(.rodata);
         . = ALIGN(4); src/unitlistscreen.o(.rodata);
         . = ALIGN(4); src/prepmenu.o(.rodata);
+        . = ALIGN(4); src/prepmenufx.o(.rodata);
         . = ALIGN(4); data/rodata_327254.o(.rodata);
         . = ALIGN(4); src/save_core.o(.rodata);
         . = ALIGN(4); src/save_multiarena.o(.rodata);
@@ -788,6 +792,7 @@ SECTIONS
         . = ALIGN(4); src/statusscreen.o(.data);
         . = ALIGN(4); src/unitlistscreen.o(.data);
         . = ALIGN(4); src/prepmenu.o(.data);
+        . = ALIGN(4); src/prepmenufx.o(.data);
         . = ALIGN(4); data/data_67829C.o(.data);
         . = ALIGN(4); src/chapterunits.o(.data);
         . = ALIGN(4); data/data_mapchangeinfo.o(.data);

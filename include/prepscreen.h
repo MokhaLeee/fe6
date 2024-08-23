@@ -177,23 +177,31 @@ void func_fe6_0807ACE8(struct PrepMenuProc * proc);
 void PrepMenu_EndIfNoUnit(struct PrepMenuProc * proc);
 void PrepMenu_Init(struct PrepMenuProc * proc);
 void PrepMenu_Loop(struct PrepMenuProc * proc);
-// func_fe6_0807B0DC
-// func_fe6_0807B0E4
-// PrepUnit_HandleScrollUp
-// PrepUnit_HandleScrollDown
-// AtMenu_StartSubmenu
-// AtMenu_OnSubmenuEnd
-// PrepScreen_ReloadLeftUnitInfoFromStatscreen
-// func_fe6_0807B4C0
-// func_fe6_0807B5A0
-// func_fe6_0807B69C
+void func_fe6_0807B0DC(struct PrepMenuProc * proc);
+void func_fe6_0807B0E4(struct PrepMenuProc * proc);
+void PrepUnit_HandleScrollUp(struct PrepMenuProc * proc);
+void PrepUnit_HandleScrollDown(struct PrepMenuProc * proc);
+void AtMenu_StartSubmenu(struct PrepMenuProc * proc);
+void AtMenu_OnSubmenuEnd(struct PrepMenuProc * proc);
+void PrepScreen_ReloadLeftUnitInfoFromStatscreen(struct PrepMenuProc * proc);
+void func_fe6_0807B4C0(struct PrepMenuProc * proc);
+void func_fe6_0807B5A0(struct PrepMenuProc * proc);
+void func_fe6_0807B69C(struct PrepMenuProc * proc);
 void StartPrepAtMenu(void);
 // StartSioPrepMenu
-// PrepMenuFadeIn_Init
-// PrepMenuFadeIn_Loop
+
+struct ProcPrepMenuFadeIn {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x42);
+    u16 timer;
+};
+
+void PrepMenuFadeIn_Init(struct ProcPrepMenuFadeIn * proc);
+void PrepMenuFadeIn_Loop(struct ProcPrepMenuFadeIn * proc);
 // func_fe6_0807B7C8
-// StartPrepMenuFadeIn
-// func_fe6_0807B89C
+void StartPrepMenuFadeIn(struct PrepMenuProc * proc);
+void func_fe6_0807B89C(struct PrepMenuProc * proc);
 void func_fe6_0807B8B0(ProcPtr proc, int);
 void func_fe6_0807B8CC(ProcPtr proc, fu8 arg_1, fu8 arg_2, int arg_3);
 // func_fe6_0807B90C
@@ -362,6 +370,7 @@ extern struct Text gUnk_0200E864[];
 extern struct Text gPrepScreenText_LeftPersonName;
 extern u16 gUnk_0200E8A4[];
 extern struct Unit gPrepUnitPool[]; // rearrange buf
+extern u16 gPalPrepMenuFadeIn[];
 extern struct Text gPrepScreenTexts_Units[];
 extern u8 gUnk_0200E7D4;
 extern struct Text gUnk_0200E88C[];
