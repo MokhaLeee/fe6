@@ -78,7 +78,7 @@ def HuffListAdd(list_node, node):
 def HuffListPopHead(list_node):
     return list_node.node, list_node.next
 
-def BuildHuffmanTree(freq_table):
+def BuildHuffmanList_Leaves(freq_table):
     list_node = None
     for i in range(0x100):
         if freq_table[i] > 0:
@@ -98,6 +98,10 @@ def BuildHuffmanTree(freq_table):
                 new_leaf = HuffNodeCreateLeaf(code, freq_table[code])
                 list_node = HuffListAdd(list_node, new_leaf)
 
+    return list_node
+
+def BuildHuffmanTree(freq_table):
+    list_node = BuildHuffmanList_Leaves(freq_table)
     while True:
         left, list_node = HuffListPopHead(list_node)
 
