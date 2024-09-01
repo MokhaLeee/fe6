@@ -92,7 +92,7 @@ struct ChapterInfo
 
     /* 3B */ u8 pad_3B[0x3C - 0x3B];
 
-    /* 3C */ u16 msg_unk_0C;
+    /* 3C */ u16 MSG_0C;
     /* 3E */ u8 number_id;
     /* 3F */ u8 unk_3F;
     /* 40 */ u8 unk_40;

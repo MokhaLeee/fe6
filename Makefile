@@ -10,6 +10,9 @@ SRC_DIR = src
 ASM_DIR = asm
 BUILD_DIR = build
 
+CLEAN_FILES :=
+CLEAN_DIRS  :=
+
 # ====================
 # = TOOL DEFINITIONS =
 # ====================
@@ -21,6 +24,7 @@ else
   UNAME_S := $(shell uname -s)
 endif
 
+PYTHON := python3
 TOOLCHAIN ?= $(DEVKITARM)
 AGBCC_HOME ?= tools/agbcc
 
@@ -87,13 +91,6 @@ compare: $(ROM)
 
 .PHONY: compare
 
-clean:
-	@echo "RM $(ROM) $(ELF) $(MAP) $(BUILD_DIR)/"
-	@rm -f $(ROM) $(ELF) $(MAP)
-	@rm -fr $(BUILD_DIR)/
-
-.PHONY: clean
-
 %.gba: %.elf
 	$(OBJCOPY) --strip-debug -O binary $< $@
 
@@ -101,13 +98,15 @@ $(ELF): $(ALL_OBJS) $(LDS)
 	@echo "LD $(LDS) $(ALL_OBJS:$(BUILD_DIR)/%=%)"
 	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
 
+CLEAN_FILES += $(ROM) $(ELF) $(MAP)
+
 # C dependency file
 $(BUILD_DIR)/%.d: %.c
 	@$(CPP) $(CPPFLAGS) $< -o $@ -MM -MG -MT $@ -MT $(BUILD_DIR)/$*.o
 
 # C object
 $(BUILD_DIR)/%.o: %.c
-	@echo "CC $<"
+	@echo "[CC]	$<"
 	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) -o $(BUILD_DIR)/$*.s
 	@echo ".text\n\t.align\t2, 0\n" >> $(BUILD_DIR)/$*.s
 	@$(AS) $(ASFLAGS) $(BUILD_DIR)/$*.s -o $@
@@ -119,13 +118,58 @@ $(BUILD_DIR)/%.d: $(BUILD_DIR)/%.o
 
 # ASM object
 $(BUILD_DIR)/%.o: %.s
-	@echo "AS $<"
+	@echo "[AS]	$<"
 	@$(AS) $(ASFLAGS) $< -o $@ --MD $(BUILD_DIR)/$*.d
 
 ifneq (clean,$(MAKECMDGOALS))
   -include $(ALL_DEPS)
   .PRECIOUS: $(BUILD_DIR)/%.d
 endif
+
+CLEAN_DIRS += $(BUILD_DIR)
+
+# =========
+# = Texts =
+# =========
+TEXT_DIR := texts
+TEXT_TOOLS := tools/texttools
+
+TEXT_DECODER := $(TEXT_TOOLS)/textdecoder.py
+TEXT_DPARSER := $(TEXT_TOOLS)/textdeparser.py
+TEXT_PROCESS := $(TEXT_TOOLS)/textprocess.py
+TEXT_ENCODE := tools/textencode/textencode
+
+TEXT_MAIN := $(TEXT_DIR)/texts.txt
+TEXT_DEFS := $(TEXT_DIR)/textdefs.txt
+
+TEXT_HEADER := include/constants/msg.h
+MSG_LIST    := $(SRC_DIR)/msg_data.c
+
+# this should just be used for testing
+$(TEXT_MAIN):
+	@echo "[GEN]	$@"
+	@$(PYTHON) $(TEXT_DECODER) > $@
+
+msg: $(MSG_LIST)
+
+$(MSG_LIST) $(TEXT_HEADER): $(TEXT_MAIN) $(TEXT_DEFS)
+	@echo "[GEN]	$@"
+	@$(PYTHON) $(TEXT_PROCESS) $(TEXT_MAIN) $(TEXT_DEFS) $(MSG_LIST) $(TEXT_HEADER)
+
+CLEAN_FILES += # $(TEXT_MAIN) 
+CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
+
+# ==============
+# = Make clean =
+# ==============
+CLEAN_DIRS += $(shell find . -type d -name "__pycache__")
+
+clean:
+	@echo "RM $(CLEAN_FILES) $(CLEAN_DIRS)"
+	@rm -f $(CLEAN_FILES)
+	@rm -rf $(CLEAN_DIRS)
+
+.PHONY: clean
 
 # ======================
 # = CFLAGS overrides =
