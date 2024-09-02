@@ -96,11 +96,25 @@ def dump_huffmanlist_leaves():
 
         print(f"[0x{head.data:04X}] = {head.freq}")
 
+def dump_vanilla_leave_order():
+    with open(textdecoder.ROM, 'rb') as f:
+        rom_data = f.read()
+
+    off = textdecoder.HUFFMAN_TREE
+
+    for i in range(textdecoder.ROOT_NODE + 1):
+        node_data = int.from_bytes(rom_data[off + 0:off + 4], 'little')
+        if textdecoder.is_leaf(node_data):
+            print(f"leaf:0x{(node_data & 0xFFFF):04X}")
+
+        off = off + 4
+
 # test_compress_value()
 # dump_data_freq()
-# test_vanilla_huffmantree()
-test_reworked_huffmantree()
+test_vanilla_huffmantree()
+# test_reworked_huffmantree()
 # test_visualize_reconstructed_huffman_tree()
 # test_visualize_vanilla_huffman_tree()
 # dump_all_data()
 # dump_huffmanlist_leaves()
+# dump_vanilla_leave_order()

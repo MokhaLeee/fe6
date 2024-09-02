@@ -615,7 +615,7 @@ SECTIONS
         asm/code_linker_stubs.o(.text);
 
         /* .rodata */
-        . = ALIGN(4); data/rodata_msg.o(.rodata);
+        . = ALIGN(4); src/msg_data.o(.rodata);
         . = ALIGN(4); src/main.o(.rodata);
         . = ALIGN(4); src/irq.o(.rodata);
         . = ALIGN(4); src/random.o(.rodata);

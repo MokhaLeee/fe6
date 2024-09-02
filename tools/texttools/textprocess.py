@@ -129,7 +129,7 @@ def write_header(messages, header_file):
     for msg in messages:
         header_file.write(f"#define {msg.definiation} 0x{msg.idx:04X}\n")
 
-    header_file.write(f"\n#define MSG_COUNT 0x{(len(messages) + 1):04X}\n")
+    header_file.write(f"\n#define MSG_COUNT 0x{(len(messages)):04X}\n")
     header_file.write("\n#endif /* MSG_H */\n")
 
 def write_all_compressed_data(messages, code_table, data_file):
@@ -140,7 +140,7 @@ def write_all_compressed_data(messages, code_table, data_file):
         data_file.write("};\n")
 
 def write_text_table(messages, data_file):
-    data_file.write("const unsigned char * const gMsgStringTable[] = {")
+    data_file.write("const unsigned char * const gMsgTable[] = {")
     for i, msg in enumerate(messages):
         if i % 8 == 0:
             data_file.write("\n    ")
@@ -160,7 +160,7 @@ def write_huffman_table(huffman_table, data_file):
 
         data_file.write(f"0x{branch:08X},")
     data_file.write("\n};\n\n")
-    data_file.write(f"const unsigned int * const gMsgHuffmanTableRoot = gMsgHuffmanTable + 0x{(len(huffman_table) + 1):04X};\n")
+    data_file.write(f"const unsigned int * const gMsgHuffmanTableRoot = gMsgHuffmanTable + 0x{(len(huffman_table) - 1):04X};\n")
 
 def dump_msg(messages):
     for msg in messages:

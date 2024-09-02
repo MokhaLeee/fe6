@@ -5,6 +5,7 @@ import textdeparser, huffman
 
 ROM = "fe6-base.gba"
 TEXT_TABLE = 0xF635C
+TEXT_COUNT = 0xD6E
 
 ROOT_NODE = 3282
 HUFFMAN_TREE = 0xF300C
@@ -104,7 +105,7 @@ def decode_all_data():
         rom_data = f.read()
 
     huffman_table = build_huffman_table()
-    for msg_idx in range(0xD0D):
+    for msg_idx in range(0xD0E):
         pr_encodered_string = get_pr_offset(rom_data, TEXT_TABLE + 4 * msg_idx)
         decoded_data = decode_data(rom_data, huffman_table, pr_encodered_string)
         all_data.extend(decoded_data)
@@ -129,7 +130,7 @@ def main():
 
     huffman_table = build_huffman_table()
 
-    for msg_idx in range(0xD0D):
+    for msg_idx in range(0xD0E):
         parsed_string = decode_single_string(msg_idx, rom_data, huffman_table)
 
         if msg_idx == 0:

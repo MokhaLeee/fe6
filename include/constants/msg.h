@@ -3344,6 +3344,7 @@
 #define MSG_D0A 0x0D0A
 #define MSG_D0B 0x0D0B
 #define MSG_D0C 0x0D0C
+#define MSG_D0D 0x0D0D
 
 #define MSG_COUNT 0x0D0E
 
