@@ -1,0 +1,395 @@
+## MSG_SOUNDROM_00_NAME
+ファイアーエムブレム・メインテーマ[X]
+
+## MSG_SOUNDROM_01_NAME
+中原の鹿～リキア、エトルリア[X]
+
+## MSG_SOUNDROM_02_NAME
+Ｆｒｏｎｔｉｅｒ～西方三島、ミスル半島[X]
+
+## MSG_SOUNDROM_03_NAME
+Ｐｏｌａｒ[TAB]Ｒｅｇｉｏｎ～イリア、サカ[X]
+
+## MSG_SOUNDROM_04_NAME
+竜の地～ベルン[X]
+
+## MSG_SOUNDROM_05_NAME
+Ｓａｎｃｔｕａｒｙ[TAB]ｏｆ[TAB]Ｄｒａｇｏｎ[X]
+
+## MSG_SOUNDROM_06_NAME
+伝説の遺産[X]
+
+## MSG_SOUNDROM_07_NAME
+『ＦＥ外伝ＣＰマップより』[X]
+
+## MSG_SOUNDROM_08_NAME
+闇からの使者[X]
+
+## MSG_SOUNDROM_09_NAME
+あの空の向こうに（ロイの旅立ち）[X]
+
+## MSG_SOUNDROM_0A_NAME
+志ひとしき者たち（ロイの戦い）[X]
+
+## MSG_SOUNDROM_0B_NAME
+雄大なる自然の中へ（ロイの遠征）[X]
+
+## MSG_SOUNDROM_0C_NAME
+新たなる光の下へ（ロイの勇気）[X]
+
+## MSG_SOUNDROM_0D_NAME
+『神将』をつぐ道（ロイの挑戦）[X]
+
+## MSG_SOUNDROM_0E_NAME
+人竜戦役のきずあと（ロイの畏れ）[X]
+
+## MSG_SOUNDROM_0F_NAME
+『ＦＥ外伝プレイヤーマップより』[X]
+
+## MSG_SOUNDROM_10_NAME
+せまりくる影（ロイの混迷）[X]
+
+## MSG_SOUNDROM_11_NAME
+むすばれた約束（ロイの友情）[X]
+
+## MSG_SOUNDROM_12_NAME
+Ｗｉｎｎｉｎｇ[TAB]Ｒｏａｄ（ロイの希望）[X]
+
+## MSG_SOUNDROM_13_NAME
+微風の詩[X]
+
+## MSG_SOUNDROM_14_NAME
+最後の『竜』へ[X]
+
+## MSG_SOUNDROM_15_NAME
+明日への戦い[X]
+
+## MSG_SOUNDROM_16_NAME
+ベルンの名のもとに[X]
+
+## MSG_SOUNDROM_17_NAME
+誰がための戦い[X]
+
+## MSG_SOUNDROM_18_NAME
+Ｓｈａｍａｎ[TAB]ｉｎ[TAB]ｔｈｅ[TAB]ｄａｒｋ[X]
+
+## MSG_SOUNDROM_19_NAME
+Ｃｕｒｉｎｇ[X]
+
+## MSG_SOUNDROM_1A_NAME
+Ｈｅａｌｉｎｇ[X]
+
+## MSG_SOUNDROM_1B_NAME
+更なる高みへ[X]
+
+## MSG_SOUNDROM_1C_NAME
+Ｉ[TAB]進撃[X]
+
+## MSG_SOUNDROM_1D_NAME
+ＩＩ[TAB]王都奪還[X]
+
+## MSG_SOUNDROM_1E_NAME
+ＩＩＩ[TAB]見えない敵[X]
+
+## MSG_SOUNDROM_1F_NAME
+ＩＶ[TAB]最終章[X]
+
+## MSG_SOUNDROM_20_NAME
+進撃準備[X]
+
+## MSG_SOUNDROM_21_NAME
+突然の来訪者[X]
+
+## MSG_SOUNDROM_22_NAME
+躍進のときを[X]
+
+## MSG_SOUNDROM_23_NAME
+見えない糸[X]
+
+## MSG_SOUNDROM_24_NAME
+はるかなる理想郷[X]
+
+## MSG_SOUNDROM_25_NAME
+勝利[X]
+
+## MSG_SOUNDROM_26_NAME
+勝利の影に[X]
+
+## MSG_SOUNDROM_27_NAME
+暗闇の巫女[X]
+
+## MSG_SOUNDROM_28_NAME
+Ｔｈｅ[TAB]Ｋｉｎｇ[TAB]ｏｆ[TAB]Ｂｅｒｎ[X]
+
+## MSG_SOUNDROM_29_NAME
+運命の王女[X]
+
+## MSG_SOUNDROM_2A_NAME
+Ｓｕｓｐｉｃｉｏｕｓ～三竜将のテーマ[X]
+
+## MSG_SOUNDROM_2B_NAME
+Ｄｉｇｎｉｔｙ～三竜将のテーマ[X]
+
+## MSG_SOUNDROM_2C_NAME
+Ｍｅｌａｎｃｈｏｌｙ～三竜将のテーマ[X]
+
+## MSG_SOUNDROM_2D_NAME
+悲しみのとき[X]
+
+## MSG_SOUNDROM_2E_NAME
+キャス[X]
+
+## MSG_SOUNDROM_2F_NAME
+Ｊｏｉｎ[TAB]Ｕｓ！[X]
+
+## MSG_SOUNDROM_30_NAME
+Ｅｐｉｌｏｇｕｅ[X]
+
+## MSG_SOUNDROM_31_NAME
+戦績[X]
+
+## MSG_SOUNDROM_32_NAME
+Ａｆｔｅｒ[TAB]ｔｈｅ[TAB]Ｗａｒ[X]
+
+## MSG_SOUNDROM_33_NAME
+ゲームオーバー[X]
+
+## MSG_SOUNDROM_34_NAME
+秘密のお店[X]
+
+## MSG_SOUNDROM_35_NAME
+闘技場～受付[X]
+
+## MSG_SOUNDROM_36_NAME
+闘技場～バトル[X]
+
+## MSG_SOUNDROM_37_NAME
+ゆかいな面々[X]
+
+## MSG_SOUNDROM_38_NAME
+メインテーマ・モチーフ[X]
+
+## MSG_SOUNDROM_39_NAME
+驚愕Ｉ[X]
+
+## MSG_SOUNDROM_3A_NAME
+驚愕ＩＩ[X]
+
+## MSG_SOUNDROM_3B_NAME
+語り[X]
+
+## MSG_SOUNDROM_3C_NAME
+魅惑の踊り[X]
+
+## MSG_SOUNDROM_3D_NAME
+Ｐｒｅｌｕｄｅ～語りつがれる物語[X]
+
+## MSG_SOUNDROM_3E_NAME
+Ｅｔｅｒｎａｌ[TAB]ｗｉｎｄ[X]
+
+## MSG_SOUNDROM_3F_NAME
+始まりの時[X]
+
+## MSG_SOUNDROM_40_NAME
+Ａｔｔａｃｋ！[X]
+
+## MSG_SOUNDROM_41_NAME
+Ｒｅｖｅｎｇｅ！[X]
+
+## MSG_SOUNDROM_00_DESC
+[X]
+
+## MSG_SOUNDROM_01_DESC
+敵軍マップ１[X]
+
+## MSG_SOUNDROM_02_DESC
+敵軍マップ２[X]
+
+## MSG_SOUNDROM_03_DESC
+敵軍マップ３[X]
+
+## MSG_SOUNDROM_04_DESC
+敵軍マップ４[X]
+
+## MSG_SOUNDROM_05_DESC
+敵軍マップ５[X]
+
+## MSG_SOUNDROM_06_DESC
+敵軍マップ６[X]
+
+## MSG_SOUNDROM_07_DESC
+敵軍マップ７[X]
+
+## MSG_SOUNDROM_08_DESC
+敵軍マップ８[X]
+
+## MSG_SOUNDROM_09_DESC
+自軍マップ１[X]
+
+## MSG_SOUNDROM_0A_DESC
+自軍マップ２[X]
+
+## MSG_SOUNDROM_0B_DESC
+自軍マップ３[X]
+
+## MSG_SOUNDROM_0C_DESC
+自軍マップ４[X]
+
+## MSG_SOUNDROM_0D_DESC
+自軍マップ５[X]
+
+## MSG_SOUNDROM_0E_DESC
+自軍マップ６[X]
+
+## MSG_SOUNDROM_0F_DESC
+自軍マップ７[X]
+
+## MSG_SOUNDROM_10_DESC
+自軍マップ８[X]
+
+## MSG_SOUNDROM_11_DESC
+三軍マップ９[X]
+
+## MSG_SOUNDROM_12_DESC
+自軍マップ（勝利近し）[X]
+
+## MSG_SOUNDROM_13_DESC
+戦闘（エルフィン）[X]
+
+## MSG_SOUNDROM_14_DESC
+戦闘（ヤアン）[X]
+
+## MSG_SOUNDROM_15_DESC
+戦闘（面ボス）[X]
+
+## MSG_SOUNDROM_16_DESC
+戦闘（三竜将）[X]
+
+## MSG_SOUNDROM_17_DESC
+戦闘（ゼフィール）[X]
+
+## MSG_SOUNDROM_18_DESC
+戦闘（イドゥン）[X]
+
+## MSG_SOUNDROM_19_DESC
+戦闘（状態変化系）[X]
+
+## MSG_SOUNDROM_1A_DESC
+戦闘（白魔法・回復系）[X]
+
+## MSG_SOUNDROM_1B_DESC
+クラスチェンジ[X]
+
+## MSG_SOUNDROM_1C_DESC
+全体マップ１[X]
+
+## MSG_SOUNDROM_1D_DESC
+全体マップ２[X]
+
+## MSG_SOUNDROM_1E_DESC
+全体マップ３[X]
+
+## MSG_SOUNDROM_1F_DESC
+全体マップ４[X]
+
+## MSG_SOUNDROM_20_DESC
+進撃準備[X]
+
+## MSG_SOUNDROM_21_DESC
+オープニング、エンディングイベント[X]
+
+## MSG_SOUNDROM_22_DESC
+オープニング、エンディングイベント[X]
+
+## MSG_SOUNDROM_23_DESC
+オープニング、エンディングイベント[X]
+
+## MSG_SOUNDROM_24_DESC
+オープニング、エンディングイベント[X]
+
+## MSG_SOUNDROM_25_DESC
+オープニング、エンディングイベント[X]
+
+## MSG_SOUNDROM_26_DESC
+オープニング、エンディングイベント[X]
+
+## MSG_SOUNDROM_27_DESC
+イドゥンのテーマ[X]
+
+## MSG_SOUNDROM_28_DESC
+ゼフィールのテーマ[X]
+
+## MSG_SOUNDROM_29_DESC
+ギネヴィアのテーマ[X]
+
+## MSG_SOUNDROM_2A_DESC
+ナーシェンのテーマ[X]
+
+## MSG_SOUNDROM_2B_DESC
+マードックのテーマ[X]
+
+## MSG_SOUNDROM_2C_DESC
+ブルーニャのテーマ[X]
+
+## MSG_SOUNDROM_2D_DESC
+イベント[X]
+
+## MSG_SOUNDROM_2E_DESC
+イベント[X]
+
+## MSG_SOUNDROM_2F_DESC
+仲間入り[X]
+
+## MSG_SOUNDROM_30_DESC
+エピローグ[X]
+
+## MSG_SOUNDROM_31_DESC
+スコア表示[X]
+
+## MSG_SOUNDROM_32_DESC
+その後[X]
+
+## MSG_SOUNDROM_33_DESC
+ゲームオーバー[X]
+
+## MSG_SOUNDROM_34_DESC
+秘密の店[X]
+
+## MSG_SOUNDROM_35_DESC
+闘技場１（受付）[X]
+
+## MSG_SOUNDROM_36_DESC
+闘技場２（戦闘）[X]
+
+## MSG_SOUNDROM_37_DESC
+イベント[X]
+
+## MSG_SOUNDROM_38_DESC
+イベント[X]
+
+## MSG_SOUNDROM_39_DESC
+イベント[X]
+
+## MSG_SOUNDROM_3A_DESC
+イベント[X]
+
+## MSG_SOUNDROM_3B_DESC
+イベント[X]
+
+## MSG_SOUNDROM_3C_DESC
+戦闘（ララムおどる）[X]
+
+## MSG_SOUNDROM_3D_DESC
+オープニング[X]
+
+## MSG_SOUNDROM_3E_DESC
+[X]
+
+## MSG_SOUNDROM_3F_DESC
+[X]
+
+## MSG_SOUNDROM_40_DESC
+戦闘（プレイヤー）[X]
+
+## MSG_SOUNDROM_41_DESC
+戦闘（ＣＰ）[X]

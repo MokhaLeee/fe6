@@ -180,7 +180,7 @@ void func_fe6_08073808(struct StatusScreenProc * proc)
 
     Text_InsertDrawString(gStatusScreenSt.text + 1, 2, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_724));
     PutDrawText(gStatusScreenSt.text + 1, gBg0Tm + TM_OFFSET(1, 6), TEXT_COLOR_SYSTEM_BLUE, 25, 0,
-        func_fe6_080867FC(gPlaySt.chapter));
+        DecodeExtraMapGoalMsg(gPlaySt.chapter));
 
     Text_InsertDrawString(gStatusScreenSt.text + 2, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_725));
     Text_SetParams(gStatusScreenSt.text + 2, 50, TEXT_COLOR_SYSTEM_BLUE);
@@ -257,7 +257,7 @@ void func_fe6_08073AC8(struct StatusScreenProc * proc)
 
     print_proc->font = NULL;
     print_proc->line = 0;
-    print_proc->str_it = func_fe6_08086910(gPlaySt.chapter);
+    print_proc->str_it = DecodeExtraMapInfoMsg(gPlaySt.chapter);
     print_proc->chars_per_print = UINT8_MAX;
     print_proc->clock_interval = 0;
     print_proc->clock = 0;

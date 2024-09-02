@@ -39,10 +39,18 @@ def load_control_chars(parse_ref):
                 control_chars[key] = values
     return control_chars
 
+def text_preprocess(text):
+    # remove comments
+    text = re.sub(r'^//.*', '', text, flags=re.MULTILINE)
+    text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
+    return text
+
 def text_to_shiftjis_u16_array(text, control_chars, encoding_method):
     pattern = re.compile(r'\[(.*?)\]')
     
     u16_array = []
+
+    text = text_preprocess(text)
 
     pos = 0
     while pos < len(text):
@@ -86,6 +94,10 @@ def process_file(file_path, control_chars, encoding_method, index=0):
         if include_match:
             include_file = include_match.group(1)
             include_path = os.path.join(os.path.dirname(file_path), include_file)
+
+            if not os.path.isfile(include_path):
+                raise FileNotFoundError(f"Error: File '{include_path}' does not exist.")
+
             messages.extend(process_file(include_path, control_chars, encoding_method, current_index))
             current_index = messages[-1].idx + 1 if messages else current_index
             i += 1
@@ -134,13 +146,13 @@ def write_header(messages, header_file):
 
 def write_all_compressed_data(messages, code_table, data_file):
     for msg in messages:
-        data_file.write(f"static const unsigned char CompressedText_{msg.definiation}[] = " + "{")
+        data_file.write(f"static const u8 CompressedText_{msg.definiation}[] = " + "{")
         for data in huffman.CompressData(msg.data, code_table):
             data_file.write(f"0x{data:02X}, ")
         data_file.write("};\n")
 
 def write_text_table(messages, data_file):
-    data_file.write("const unsigned char * const gMsgTable[] = {")
+    data_file.write("const u8 * const gMsgTable[] = {")
     for i, msg in enumerate(messages):
         if i % 8 == 0:
             data_file.write("\n    ")
@@ -151,7 +163,7 @@ def write_text_table(messages, data_file):
     data_file.write("\n};\n")
 
 def write_huffman_table(huffman_table, data_file):
-    data_file.write("const unsigned int gMsgHuffmanTable[] = {")
+    data_file.write("const u32 gMsgHuffmanTable[] = {")
     for i, branch in enumerate(huffman_table):
         if i % 8 == 0:
             data_file.write("\n    ")
@@ -160,7 +172,7 @@ def write_huffman_table(huffman_table, data_file):
 
         data_file.write(f"0x{branch:08X},")
     data_file.write("\n};\n\n")
-    data_file.write(f"const unsigned int * const gMsgHuffmanTableRoot = gMsgHuffmanTable + 0x{(len(huffman_table) - 1):04X};\n")
+    data_file.write(f"const u32 * const gMsgHuffmanTableRoot = gMsgHuffmanTable + 0x{(len(huffman_table) - 1):04X};\n")
 
 def dump_msg(messages):
     for msg in messages:
@@ -196,6 +208,7 @@ def main(args):
         write_header(messages, header_file)
 
     with open(output_data, 'w', encoding='utf-8') as data_file:
+        data_file.write('#include "prelude.h"\n')
         write_all_compressed_data(messages, code_table, data_file)
         data_file.write("\n")
         write_huffman_table(huffman_table, data_file)

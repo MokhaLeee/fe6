@@ -1,0 +1,222 @@
+## MSG_2A5
+[LoadFace][FID_0x42][ToggleSmile]お前は[LF]
+あの時の小娘！[A][ClearFace][LF]
+[LoadFace][FID_0x03][ToggleSmile]あら[TAB]どこかで[LF]
+お会いしましたかしら？[A][ClearFace][LF]
+[LoadFace][FID_0x42][ToggleSmile]なんだと！[TAB]この私を[LF]
+忘れたというのか！[A][LF]
+くっ[TAB]許せん[TAB]許せんぞっ！[A][X]
+
+## MSG_2A6
+[LoadFace][FID_0x42][ToggleSmile]貴様は[LF]
+ギネヴィア殿下の・・・[A][LF]
+[ToggleSmile]フン[TAB]母国を売って敵につくか[LF]
+見下げはてたヤツだな[A][ClearFace][LF]
+[LoadFace][FID_0x2E][ToggleSmile]私は[TAB]ギネヴィア殿下に[LF]
+槍をささげた騎士[A][LF]
+よって[TAB]その義を[LF]
+つらぬくのみ！[A][ClearFace][X]
+
+## MSG_2A7
+[LoadFace][FID_0x42][ToggleSmile]むっ[TAB]貴様は・・・[A][ClearFace][LF]
+[LoadFace][FID_0x2A]ナーシェンどの・・・[.....][LF]
+いや[TAB]ナーシェン！！[A][LF]
+事情はすべて[LF]
+ゲイルさんに聞いた！[A][LF]
+貴様には[TAB]ベルン騎士としての[LF]
+誇りはないのか！！[A][ClearFace][LF]
+[LoadFace][FID_0x42]チッ[TAB]ゲイルめ[LF]
+どこまでも[TAB]めざわりな・・・[A][LF]
+[ToggleSmile]まあいい[LF]
+おまえさえ始末すれば[A][LF]
+すべては闇のなかさ・・・[LF]
+クックックッ[A][X]
+
+## MSG_2A8
+[LoadFace][FID_0x42][ToggleSmile]貴様は・・・[A][LF]
+[ToggleSmile]フン[TAB]こりもせず[LF]
+また[TAB]私に敗れに来たか[A][ClearFace][LF]
+[LoadFace][FID_0x34][ToggleSmile]私が敗れたのは[LF]
+国王ゼフィール[A][LF]
+あなたにではなくってよ[A][ClearFace][LF]
+[LoadFace][FID_0x42]なら[TAB]今[LF]
+思い知らせてやるよ[A][LF]
+私の実力をね！[A][X]
+
+## MSG_2A9
+[LoadFace][FID_0x42]おやおや[TAB]裏切り者の[LF]
+パーシバル閣下のお出ましか[A][ClearFace][LF]
+[LoadFace][FID_0x1A][ToggleSmile][LF]
+一時でも[TAB]貴様たちと[LF]
+共にあったのは一生の不覚・・・[A][LF]
+そのあやまちを[TAB]今[LF]
+たださせてもらおう！[A][X]
+
+## MSG_2AA
+[LoadFace][FID_0x47][ToggleSmile]貴様は[TAB]たしか[LF]
+ナーシェンの部下の・・・[A][LF]
+話はゲイルから[LF]
+聞いた[A][LF]
+あわれとは思うが[LF]
+敵は敵だ[TAB]てかげんはせぬ[A][LF]
+さあ[TAB]かかってまいれ！[A][X]
+
+## MSG_2AB
+[LoadFace][FID_0x47][ToggleSmile]ミレディか・・・[A][LF]
+本意ではないが[LF]
+事ここにいたった以上[A][LF]
+戦うことは[TAB]やむをえぬ[LF]
+さあ[TAB]かかってまいれ！[A][X]
+
+## MSG_2AC
+[LoadFace][FID_0x47]貴様が[TAB]ロイ将軍か[A][LF]
+フフフ・・・[TAB]あいまみえるのを[LF]
+楽しみにしておったぞ！[A][X]
+
+## MSG_2AD
+[LoadFace][FID_0x48][ToggleSmile]あなたは[LF]
+ベルンの竜騎士・・・[A][LF]
+[ToggleSmile]そう[TAB]ギネヴィア殿下と共に[LF]
+歩もうというのですね[A][LF]
+それも[TAB]また[LF]
+ひとつの道でしょう・・・[A][LF]
+[ToggleSmile]ですが[TAB]私も[TAB]ベルンの誇りを[LF]
+ゆずるわけにはいかない！[A][X]
+
+## MSG_2AE
+[LoadFace][FID_0x48][ToggleSmile]あなた[TAB]ミレディ・・・[A][LF]
+[ToggleSmile]そう[TAB]ギネヴィア殿下と共に[LF]
+歩もうというのですね[A][LF]
+それも[TAB]また[LF]
+ひとつの道でしょう・・・[A][LF]
+[ToggleSmile]ですが[TAB]私も[TAB]ベルンの誇りを[LF]
+ゆずるわけにはいかない！[A][X]
+
+## MSG_2AF
+[LoadFace][FID_0x42]おやおや[TAB]裏切り者の[LF]
+パーシバル閣下のお出ましか[A][ClearFace][LF]
+[LoadFace][FID_0x1A][ToggleSmile]一時でも[TAB]貴様たちと[LF]
+ともにあったのは[TAB]一生の不覚・・・[A][LF]
+そのあやまちを[TAB]今[LF]
+たださせてもらおう！[A][X]
+
+## MSG_2B0
+[LoadFace][FID_0xCD]・・・クトラ族の生き残りか？[A][ClearFace][LF]
+[LoadFace][FID_0x05][ToggleSmile]モンケ！[LF]
+わが部族のうらみ思い知れ！[A][ClearFace][X]
+
+## MSG_2B1
+[LoadFace][FID_0xCD][ToggleSmile]おまえは[LF]
+クトラ族ダヤンの孫娘・・・[A][ClearFace][LF]
+[LoadFace][FID_0x06][ToggleMouthMove]・・・・・・[A][X]
+
+## MSG_2B2
+[LoadFace][FID_0x45]おや[TAB]ティトじゃないか[LF]
+どうしてここに・・・[A][LF]
+[ToggleSmile]そうか[TAB]あんた[LF]
+エトルリアについたのか・・・[A][ClearFace][LF]
+[LoadFace][FID_0x28]シグーネさん・・・[A][ClearFace][LF]
+[LoadFace][FID_0x45]イリア騎士の誓いは[LF]
+わかっているね[A][LF]
+遠慮はしないよ[A][X]
+
+## MSG_2B3
+[LoadFace][FID_0x45]ユーノの末妹だね[A][LF]
+あたしの相手を[LF]
+しようって言うのかい？[A][ClearFace][LF]
+[LoadFace][FID_0x29][ToggleMouthMove]・・・・・・[ToggleMouthMove][A][ClearFace][LF]
+[LoadFace][FID_0x45]イリア騎士の誓い・・・[LF]
+手加減はしないよ[TAB]いいね[A][ClearFace][LF]
+[LoadFace][FID_0x29][ToggleSmile]うん・・・[A][ClearFace][X]
+
+## MSG_2B4
+[LoadFace][FID_0x44][ToggleSmile]リリーナ様・・・[LF]
+ちっ[TAB]しくじりおったか[A][ClearFace][LF]
+[LoadFace][FID_0x22]レイガンス[LF]
+どうして・・・？[A][ClearFace][LF]
+[LoadFace][FID_0x44]時代が変わるのですよ[LF]
+わしは[TAB]それに従うだけだ[A][LF]
+それを読みきれなかった[LF]
+おろかなヘクトル様とはちがう[A][ClearFace][LF]
+[LoadFace][FID_0x22]だまりなさい！[.....][LF]
+お父様の悪口は許さないわ！[A][X]
+
+## MSG_2B5
+[LoadFace][FID_0x08][ToggleSmile]レイガンス[TAB]貴様[A][LF]
+主家を裏切って[LF]
+はずかしくはないのか！[A][ClearFace][LF]
+[LoadFace][FID_0x44]バースか・・・[A][LF]
+[ToggleSmile]フン[TAB]おろかな主家につきあって[LF]
+ともにほろびるよりマシだ[A][ClearFace][LF]
+[LoadFace][FID_0x08][ToggleSmile]なんだと！[LF]
+レイガンス[TAB]そこまでクサったか！！[A][X]
+
+## MSG_2B6
+[LoadFace][FID_0x44]ほう[TAB]ボールス[LF]
+貴様[TAB]生きておったのか[A][ClearFace][LF]
+[LoadFace][FID_0x09][ToggleSmile]当たり前だ[A][LF]
+・・・オレたちのいない間に[LF]
+よくも[TAB]このオスティアを！[A][ClearFace][LF]
+[LoadFace][FID_0x44][ToggleSmile]文句があるなら[LF]
+取り返してみればいい[A][LF]
+おまえの[TAB]そのウデでな！[A][X]
+
+## MSG_2B7
+[LoadFace][FID_0xBD][ToggleSmile]レイガンスどの[LF]
+かくご！[A][ClearFace][LF]
+[LoadFace][FID_0x44][ToggleSmile]ほう[TAB]貴様は[LF]
+たしかボールスの・・・[A][LF]
+いさましいことだが[TAB]このわしが[LF]
+倒せるかな[TAB]クックックッ[A][X]
+
+## MSG_2B8
+[LoadFace][FID_0x3C][ToggleSmile]ぬうっ[TAB]ボールスかっ！[A][ClearFace][LF]
+[LoadFace][FID_0x09]主の留守に[LF]
+反乱を起こすとは！[A][CR][LF]
+許せん！[A][X]
+
+## MSG_2B9
+[LoadFace][FID_0x46][ToggleSmile]貴様[TAB]クレイン！[LF]
+このわたしを裏切るとは[A][ClearFace][LF]
+[LoadFace][FID_0x0D]エトルリアという国を[LF]
+裏切ったのはあなただ[A][CR][LF]
+アルカルドどの！[A][X]
+
+## MSG_2BA
+[LoadFace][FID_0x46][ToggleSmile]ダ[TAB]ダグラス将軍！[A][LF]
+結局[TAB]敵に寝返ったのか[LF]
+おのれ！！[A][X]
+
+## MSG_2BB
+[LoadFace][FID_0x3D]ダグラス・・・フフン[LF]
+えらそうなことを言って[TAB][A][LF]
+結局[TAB]おまえも[TAB]強いものに[LF]
+従っているではないか[A][ClearFace][LF]
+[LoadFace][FID_0x0A][ToggleSmile]外から見れば[LF]
+そうかもしれん[A][LF]
+[ToggleSmile]だが[TAB]今のわしの心に[LF]
+一点のまよいもないぞ[A][ClearFace][LF]
+[LoadFace][FID_0x3D][ToggleSmile]ほざけ！[A][X]
+
+## MSG_2BC
+[LoadFace][FID_0x0F][ToggleSmile]あなたは・・・[LF]
+神に仕える身でありながら・・・[A][ClearFace][LF]
+[LoadFace][FID_0x40][ToggleSmile]だから[TAB]なんだというのです[A][LF]
+「神」の言葉の前には[LF]
+すべてが許される・・・[A][LF]
+便利なものですよ[LF]
+くっくっくっ[A][ClearFace][LF]
+[LoadFace][FID_0x0F][ToggleSmile]・・・許せない[A][ClearFace][X]
+
+## MSG_2BD
+[LoadFace][FID_0x0E][ToggleSmile]やれやれ[TAB]ひどい[LF]
+司祭もいたものだ[A][ClearFace][LF]
+[LoadFace][FID_0x40][ToggleSmile]フフン[TAB]私は[TAB]私の気持ちに[LF]
+忠実に生きているだけです[A][LF]
+「神」の言葉の前には[LF]
+すべてが許される・・・[A][LF]
+便利なものですよ[LF]
+くっくっくっ[A][ClearFace][LF]
+[LoadFace][FID_0x0E][ToggleSmile]神をぼうとくする気ですか[A][LF]
+ならば[TAB]それ相応のむくいを[LF]
+受けていただきましょう！[A][ClearFace][X]

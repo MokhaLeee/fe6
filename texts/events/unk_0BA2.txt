@@ -1,0 +1,179 @@
+## MSG_BA2
+[OpenMidLeft][LoadFace][FID_0x49][OpenMidRight][LoadFace][FID_0xD7][LF]
+[OpenMidRight][CloseSpeechFast]陛下[TAB]全軍[TAB]集結いたしました[.....][LF]
+いつでも出撃できます！[.....][LF]
+[OpenMidLeft][NormalPrint]わかった[LF]
+すぐに行く[.....][X]
+
+## MSG_BA3
+[OpenMidLeft][LoadFace][FID_0x49][OpenMidRight][LoadFace][FID_0x4B][LF]
+[OpenMidLeft]では[TAB]行くか[.....][LF]
+世界を『解放』するために[.....][LF]
+[OpenMidRight][NormalPrint]世界を『解放』[LF]
+するために・・・[.....][X]
+
+## MSG_BA4
+[OpenMidLeft][LoadFace][FID_0x18][OpenMidRight][LoadFace][FID_0x19][LF]
+[OpenMidLeft]いつぞやの戦いでは[LF]
+おまえに遅れをとったが[TAB]今回は負けん！[.....][LF]
+オレの戦いぶり[TAB]よく見ておけよ！[.....][LF]
+[OpenMidRight]ああ[TAB]じっくり見せてもらうさ[.....][LF]
+・・・もっとも[TAB]今度も[LF]
+おまえに負けるつもりはないがな[.....][X]
+
+## MSG_BA5
+[OpenMidLeft][LoadFace][FID_0x19][OpenRight][LoadFace][FID_0x02][LF]
+[OpenRight][FastPrint][ToggleSmile]ランスじゃないか[LF]
+どうしたんだ？[TAB]あわてて[.....][LF]
+[OpenMidLeft]ロイ様！[TAB]山賊たちが[LF]
+城に[TAB]攻撃を！[.....][X]
+
+## MSG_BA6
+[OpenFarLeft][MoveLeft][LoadFace][FID_0x02]いくぞ[TAB]マーカス！[.....][X]
+
+## MSG_BA7
+[LoadFace][FID_0x1C]ロイ様[TAB]剣は槍に弱いのです[LF]
+ムチャな攻撃はなりませんぞ[.....][X]
+
+## MSG_BA8
+[OpenFarLeft][MoveMidLeft][LoadFace][FID_0x0F]ロイ様[TAB]ひどいおケガ・・・[LF]
+しばらく動かないで下さい[.....][X]
+
+## MSG_BA9
+[OpenMidLeft][LoadFace][FID_0x02]ありがとう[LF]
+エレンさん[.....][X]
+
+## MSG_BAA
+[X]
+
+## MSG_BAB
+[X]
+
+## MSG_BAC
+[X]
+
+## MSG_BAD
+[X]
+
+## MSG_BAE
+[X]
+
+## MSG_BAF
+[X]
+
+## MSG_BB0
+[X]
+
+## MSG_BB1
+[X]
+
+## MSG_BB2
+[X]
+
+## MSG_BB3
+[X]
+
+## MSG_BB4
+[X]
+
+## MSG_BB5
+[X]
+
+## MSG_BB6
+[X]
+
+## MSG_BB7
+[X]
+
+## MSG_BB8
+[X]
+
+## MSG_BB9
+[X]
+
+## MSG_BBA
+[X]
+
+## MSG_BBB
+[X]
+
+## MSG_BBC
+[X]
+
+## MSG_BBD
+[X]
+
+## MSG_BBE
+[X]
+
+## MSG_BBF
+[X]
+
+## MSG_BC0
+[X]
+
+## MSG_BC1
+[X]
+
+## MSG_BC2
+[X]
+
+## MSG_BC3
+[X]
+
+## MSG_BC4
+[X]
+
+## MSG_BC5
+[X]
+
+## MSG_BC6
+[X]
+
+## MSG_BC7
+[X]
+
+## MSG_BC8
+[X]
+
+## MSG_BC9
+[X]
+
+## MSG_BCA
+[X]
+
+## MSG_BCB
+[X]
+
+## MSG_BCC
+[X]
+
+## MSG_BCD
+「人」と「竜」が大陸の覇権を争った[LF]
+「人竜戦役」より千年・・・[.....][X]
+
+## MSG_BCE
+ゆるやかだが[LF]
+確かな繁栄を築きつつあった人類[.....][X]
+
+## MSG_BCF
+しかし[TAB]突然はじまった[LF]
+大国の侵略戦争が[LF]
+大陸を[TAB]戦乱へと巻きこんだ[.....][X]
+
+## MSG_BD0
+戦いを起こしたもの・・・[LF]
+戦いにまきこまれたもの・・・[LF]
+幾多の人々の[TAB]無数の思い[.....][X]
+
+## MSG_BD1
+それらの思いが[LF]
+生と死のはざまで[LF]
+向かい合い[TAB]ぶつかりあい[LF]
+そして[TAB]砕きあう・・・[.....][X]
+
+## MSG_BD2
+そんな[TAB]つらく悲しい時代を[LF]
+懸命に生きた[LF]
+「英雄」たちの物語が[LF]
+今[TAB]始まる・・・[.....][X]

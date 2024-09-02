@@ -208,14 +208,14 @@ struct ProcScr CONST_DATA ProcScr_TalkShiftClearAll[] =
 
 struct TalkChoiceEnt CONST_DATA gYesNoTalkChoice[] =
 {
-    { MSG_2BF, NULL }, // Yes
-    { MSG_2C0, NULL }, // No
+    { MSG_YES, NULL }, // Yes
+    { MSG_NO, NULL }, // No
 };
 
 struct TalkChoiceEnt CONST_DATA gBuySellTalkChoice[] =
 {
-    { MSG_2C1, TalkChoice_OnBuy }, // Buy
-    { MSG_2C2, TalkChoice_OnSell }, // Sell
+    { MSG_BUY, TalkChoice_OnBuy }, // Buy
+    { MSG_SEL, TalkChoice_OnSell }, // Sell
 };
 
 struct ProcScr CONST_DATA ProcScr_TalkChoice[] =

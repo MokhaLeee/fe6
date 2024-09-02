@@ -1,0 +1,161 @@
+## MSG_CONFIG_0
+アニメ設定[X]
+
+## MSG_CONFIG_1
+地形ウィンドウ[X]
+
+## MSG_CONFIG_2
+ユニットウィンドウ[X]
+
+## MSG_CONFIG_3
+戦闘情報ウィンドウ[X]
+
+## MSG_CONFIG_4
+字幕ヘルプ[X]
+
+## MSG_CONFIG_5
+オートカーソル[X]
+
+## MSG_CONFIG_6
+メッセージスピード[X]
+
+## MSG_CONFIG_7
+ゲームスピード[X]
+
+## MSG_CONFIG_8
+ＢＧＭ[X]
+
+## MSG_CONFIG_9
+効果音[X]
+
+## MSG_CONFIG_10
+ウィンドウパネル[X]
+
+## MSG_CONFIG_11
+ＣＰレベル[X]
+
+## MSG_CONFIG_12
+オートターンエンド[X]
+
+## MSG_CONFIG_13
+ユニット個別カラー[X]
+
+## MSG_CONFIG_14
+戦闘アニメーションの設定をします[X]
+
+## MSG_CONFIG_15
+戦闘アニメーションの設定をします（背景つき）[X]
+
+## MSG_CONFIG_16
+戦闘アニメーションの設定をします（アニメオフ）[X]
+
+## MSG_CONFIG_17
+戦闘アニメーションの設定をします（ユニット毎）[X]
+
+## MSG_CONFIG_18
+ユニットの移動スピードを設定します[X]
+
+## MSG_CONFIG_19
+ユニットの移動スピードを設定します（はやい）[X]
+
+## MSG_CONFIG_20
+メッセージ表示の速さを設定します（ゆっくり）[X]
+
+## MSG_CONFIG_21
+メッセージ表示の速さを設定します[X]
+
+## MSG_CONFIG_22
+メッセージ表示の速さを設定します（はやい）[X]
+
+## MSG_CONFIG_23
+メッセージ表示の速さを設定します（ウェイト無）[X]
+
+## MSG_CONFIG_24
+地形ウィンドウの表示を設定します[X]
+
+## MSG_CONFIG_25
+ユニットウィンドウ表示を設定します（パネル）[X]
+
+## MSG_CONFIG_26
+ユニットウィンドウ表示を設定します（フキダシ）[X]
+
+## MSG_CONFIG_27
+ユニットウィンドウ表示を設定します（表示オフ）[X]
+
+## MSG_CONFIG_28
+戦闘情報ウィンドウ表示を設定します（簡略形式）[X]
+
+## MSG_CONFIG_29
+戦闘情報ウィンドウ表示を設定します（詳細形式）[X]
+
+## MSG_CONFIG_30
+戦闘情報ウィンドウ表示を設定します（表示オフ）[X]
+
+## MSG_CONFIG_31
+画面下に流れる簡易ヘルプの表示を設定します[X]
+
+## MSG_CONFIG_32
+最初に主人公にカーソルを合わせる設定をします[X]
+
+## MSG_CONFIG_33
+全ユニット行動済みでターン終了の設定をします[X]
+
+## MSG_CONFIG_34
+ＢＧＭの使用を設定します[X]
+
+## MSG_CONFIG_35
+効果音の使用を設定します[X]
+
+## MSG_CONFIG_36
+ウィンドウカラーを設定します[X]
+
+## MSG_CONFIG_37
+敵の思考レベルを設定します[X]
+
+## MSG_CONFIG_38
+ユニット個別カラーの使用を設定します[X]
+
+## MSG_CONFIG_39
+オン[X]
+
+## MSG_CONFIG_40
+オフ[X]
+
+## MSG_CONFIG_41
+１[X]
+
+## MSG_CONFIG_42
+２[X]
+
+## MSG_CONFIG_43
+３[X]
+
+## MSG_CONFIG_44
+４[X]
+
+## MSG_CONFIG_45
+おそい[X]
+
+## MSG_CONFIG_46
+ふつう[X]
+
+## MSG_CONFIG_47
+はやい[X]
+
+## MSG_CONFIG_48
+最速[X]
+
+## MSG_CONFIG_49
+個別[X]
+
+## MSG_CONFIG_50
+簡略[X]
+
+## MSG_CONFIG_51
+詳細[X]
+
+## MSG_CONFIG_52
+パネル[X]
+
+## MSG_CONFIG_53
+フキダシ[X]

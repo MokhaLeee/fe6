@@ -1,0 +1,63 @@
+## MSG_EXTRAMAP_1_NAME
+必殺の谷[X]
+
+## MSG_EXTRAMAP_1_GOAL
+城門の制圧[X]
+
+## MSG_EXTRAMAP_1_INFO
+リキア北部の山間で[TAB]ならずものたちが[LF]
+暴れているとの報告をうけ[TAB]ロイたちは[LF]
+その討伐に向かった[LF]
+しかし[TAB]そこで待ち受けていたのは[LF]
+一撃必殺を得意とする恐怖の軍だった[X]
+
+## MSG_EXTRAMAP_2_NAME
+豪雨の島[X]
+
+## MSG_EXTRAMAP_2_GOAL
+２０ターン生き残る[X]
+
+## MSG_EXTRAMAP_2_INFO
+西方の島々を行軍中に[LF]
+突然[TAB]豪雨にみまわれたロイたち[LF]
+それに乗じて[TAB]西方の『賊』たちが[LF]
+ロイにおそいかかってきた[X]
+
+## MSG_EXTRAMAP_3_NAME
+雪の中の防衛戦[X]
+
+## MSG_EXTRAMAP_3_GOAL
+２０ターン生き残る[X]
+
+## MSG_EXTRAMAP_3_INFO
+イリアの[TAB]とある古城で[TAB]合流予定の[LF]
+ほかの軍を待っていたロイたち[LF]
+そこに[TAB]ロイたちをよく思わない勢力が[LF]
+奇襲をしかけてきた[LF]
+援軍到着まで生き残れるのか？[X]
+
+## MSG_EXTRAMAP_4_NAME
+海賊の挑戦[X]
+
+## MSG_EXTRAMAP_4_GOAL
+敵軍の全滅後[TAB]敵将の撃破[X]
+
+## MSG_EXTRAMAP_4_INFO
+西方『賊』の制圧に手をやいている[LF]
+ロイのもとへ[TAB]その頭から手紙が来た[LF]
+「そろそろ白黒をつけようじゃないか[LF]
+[TAB]オレの部下を全員たおしたら[LF]
+[TAB]オレ自らが戦ってやる！」[X]
+
+## MSG_EXTRAMAP_5_NAME
+ロイの試練[X]
+
+## MSG_EXTRAMAP_5_GOAL
+敵軍の全滅[X]
+
+## MSG_EXTRAMAP_5_INFO
+ナバタ砂漠でワナにはまり[LF]
+部下とはぐれてしまったロイ[LF]
+そこへナバタの山賊たちが[LF]
+襲いかかってくる[LF]
+ロイは[TAB]生きのびることができるか？[X]

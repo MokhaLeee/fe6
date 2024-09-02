@@ -640,7 +640,7 @@ func_fe6_0808AF4C: @ 0x0808AF4C
 	adds r5, r6, r5
 	movs r0, #0
 	ldrsb r0, [r5, r0]
-	bl func_fe6_080867FC
+	bl DecodeExtraMapGoalMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Text_DrawString
@@ -684,7 +684,7 @@ func_fe6_0808B028: @ 0x0808B028
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl func_fe6_08086910
+	bl DecodeExtraMapInfoMsg
 	str r0, [r4, #0x40]
 	add r2, sp, #4
 	mov r1, sp

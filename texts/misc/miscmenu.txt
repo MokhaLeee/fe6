@@ -1,0 +1,55 @@
+## MSG_2FD
+[OpenLeft][LoadFace][FID_0xC0]中断しますか？[LF]
+[Yes][X]
+
+## MSG_2FE
+[OpenLeft]このつづきは「中断から[LF]
+始める」をえらんでください[A][X]
+
+## MSG_2FF
+[OpenLeft][LoadFace][FID_0xC0]降伏しますか？[LF]
+[Yes][X]
+
+## MSG_300
+[OpenLeft][LoadFace][FID_0xC0]ダメージが与えられません[LF]
+終了しますか？[TAB][Yes][X]
+
+## MSG_301
+[OpenLeft]トライアルマップの送信を始めても[LF]
+よろしいですか？[TAB][Yes][X]
+
+## MSG_302
+[OpenLeft][LoadFace][FID_0xC0]準備中です[LF]
+しばらくお待ちください[X]
+
+## MSG_303
+[OpenLeft]マップ転送中です[LF]
+しばらくお待ちください[X]
+
+## MSG_304
+[OpenLeft]正常に終了しました[X]
+
+## MSG_305
+[OpenLeft]通信に異常が生じました[X]
+
+## MSG_306
+[OpenLeft]バックアップにトライアルマップがありません[LF]
+送信を中止してメニューへ戻ります[X]
+
+## MSG_307
+[OpenLeft][LoadFace][FID_0xC0]セーブデータを全部消去します[LF]
+よろしいですか？[TAB][No][X]
+
+## MSG_308
+[OpenLeft]消去したデータは二度と復元できなくなります[LF]
+よろしいですか？[TAB][No][X]
+
+## MSG_309
+[OpenLeft]消去しました[A][X]
+
+## MSG_30A
+[OpenLeft][LoadFace][FID_0x34]あら[TAB]訓練を終了するのかしら？[LF]
+[Yes][X]
+
+## MSG_30B
+[OpenLeft]では[TAB]終了するわ[A][X]
