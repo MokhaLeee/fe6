@@ -156,30 +156,30 @@ char const * func_fe6_080867F0(int chapter)
     return GetChapterUnk_0802BBD0(chapter);
 }
 
-char const * func_fe6_080867FC(int chapter)
+char const * DecodeExtraMapGoalMsg(int chapter)
 {
     int msg = 0;
 
     switch (chapter)
     {
         case CHAPTER_TRIAL_A:
-            msg = MSG_C7C;
+            msg = MSG_EXTRAMAP_1_GOAL;
             break;
 
         case CHAPTER_TRIAL_B:
-            msg = MSG_C7F;
+            msg = MSG_EXTRAMAP_2_GOAL;
             break;
 
         case CHAPTER_TRIAL_C:
-            msg = MSG_C82;
+            msg = MSG_EXTRAMAP_3_GOAL;
             break;
 
         case CHAPTER_TRIAL_D:
-            msg = MSG_C85;
+            msg = MSG_EXTRAMAP_4_GOAL;
             break;
 
         case CHAPTER_TRIAL_E:
-            msg = MSG_C88;
+            msg = MSG_EXTRAMAP_5_GOAL;
             break;
 
         case -1:
@@ -190,30 +190,30 @@ char const * func_fe6_080867FC(int chapter)
     return DecodeMsg(msg);
 }
 
-char const * func_fe6_08086910(int chapter)
+char const * DecodeExtraMapInfoMsg(int chapter)
 {
     int msg = 0;
 
     switch (chapter)
     {
         case CHAPTER_TRIAL_A:
-            msg = MSG_C7D;
+            msg = MSG_EXTRAMAP_1_INFO;
             break;
 
         case CHAPTER_TRIAL_B:
-            msg = MSG_C80;
+            msg = MSG_EXTRAMAP_2_INFO;
             break;
 
         case CHAPTER_TRIAL_C:
-            msg = MSG_C83;
+            msg = MSG_EXTRAMAP_3_INFO;
             break;
 
         case CHAPTER_TRIAL_D:
-            msg = MSG_C86;
+            msg = MSG_EXTRAMAP_4_INFO;
             break;
 
         case CHAPTER_TRIAL_E:
-            msg = MSG_C89;
+            msg = MSG_EXTRAMAP_5_INFO;
             break;
 
         case -1:

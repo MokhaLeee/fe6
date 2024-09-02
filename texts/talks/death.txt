@@ -1,0 +1,242 @@
+## MSG_26C
+[LoadFace][FID_0x03][ToggleSmile]いや・・・助けて[.....][LF]
+クレイン兄さま・・・[A][X]
+
+## MSG_26D
+[LoadFace][FID_0x04][ToggleSmile]くすん・・・[LF]
+こわいよ・・・[A][X]
+
+## MSG_26E
+[LoadFace][FID_0x05][ToggleSmile]ここまでか・・・[LF]
+無念・・・[A][X]
+
+## MSG_26F
+[LoadFace][FID_0x06][ToggleSmile]風の音・・・草のにおい・・・[LF]
+今は・・・もう・・・[A][X]
+
+## MSG_270
+[LoadFace][FID_0x07][ToggleSmile]そ・・・草原に・・・[LF]
+ふたたび・・・風を・・・ぐっ[A][X]
+
+## MSG_271
+[LoadFace][FID_0x08][ToggleSmile]フン・・・ここまでか・・・[LF]
+情けない・・・ことだ・・・[A][X]
+
+## MSG_272
+[LoadFace][FID_0x09][ToggleSmile]ぐうっ[LF]
+リ[TAB]リリーナさま・・・[A][X]
+
+## MSG_273
+[LoadFace][FID_0xBD][ToggleSmile]すみません・・・[LF]
+足を・・・ひっぱってしまって・・・[A][X]
+
+## MSG_274
+[LoadFace][FID_0x0A][ToggleSmile]ぬうっ！[A][LF]
+わ[TAB]わしとしたことが・・・[LF]
+不覚・・・[A][X]
+
+## MSG_275
+[LoadFace][FID_0x0B][ToggleSmile]もう・・・お役には・・・[LF]
+ロイ様・・・すみません・・・[A][X]
+
+## MSG_276
+[LoadFace][FID_0x0C][ToggleSmile]あれ・・・あたし・・・[LF]
+ここで・・・終わっちゃうの？[A][X]
+
+## MSG_277
+[LoadFace][FID_0x0D][ToggleSmile]こんなところで[LF]
+倒れるわけには・・・[A][LF]
+・・・クラリーネ[A][X]
+
+## MSG_278
+[LoadFace][FID_0x0E][ToggleSmile]これも・・・運命ですか・・・[LF]
+やれやれ・・・[A][X]
+
+## MSG_279
+[LoadFace][FID_0x0F][ToggleSmile]ギネヴィアさま・・・[A][CR][LF]
+希望を・・・[LF]
+すてないで・・・ください・・・[A][X]
+
+## MSG_27A
+[LoadFace][FID_0x10][ToggleSmile]こ・・・これまで・・・[LF]
+ですかな・・・[A][CR][LF]
+ロイどの・・・『竜』のこと・・・[LF]
+世界のこと・・・たのみましたぞ[A][X]
+
+## MSG_27B
+[LoadFace][FID_0x11][ToggleSmile]ちくしょう！[LF]
+こんなところで・・・[A][LF]
+ルゥ・・・ごめんな[A][X]
+
+## MSG_27C
+[LoadFace][FID_0x12][ToggleSmile]フッ・・・[LF]
+私も・・・まだまだか・・・[A][X]
+
+## MSG_27D
+[LoadFace][FID_0x13][ToggleSmile]まだまだ・・・道は・・・[LF]
+遠いのに・・・[A][X]
+
+## MSG_27E
+[LoadFace][FID_0x14][ToggleSmile]・・・ここまで[LF]
+・・・か[A][X]
+
+## MSG_27F
+[LoadFace][FID_0x15][ToggleSmile]悪い[TAB]最後まで[LF]
+つきあえそうにねえ・・・[A][X]
+
+## MSG_280
+[LoadFace][FID_0x17][ToggleSmile]ここで終わりか・・・[LF]
+フン・・・くだらねえ・・・[A][X]
+
+## MSG_281
+[LoadFace][FID_0x18][ToggleSmile]く[TAB]くそっ[LF]
+こんなところで・・・ロイ様・・・[A][X]
+
+## MSG_282
+[LoadFace][FID_0x19][ToggleSmile]ロイ様・・・[LF]
+ご武運を・・・[A][X]
+
+## MSG_283
+[LoadFace][FID_0x1A][ToggleSmile]わが人生に・・・[LF]
+悔いはない・・・[A][X]
+
+## MSG_284
+[LoadFace][FID_0x1B][ToggleSmile]私・・・せいいっぱい・・・[LF]
+戦った・・・でしょう？・・・[A][LF]
+あの子のそばにいっても・・・[LF]
+いいかしら・・・あなた・・・[A][X]
+
+## MSG_285
+[LoadFace][FID_0x1C][ToggleSmile]くっ[TAB]これまでか[LF]
+ロイ様[TAB]おん身[TAB]大切に・・・[A][X]
+
+## MSG_286
+[LoadFace][FID_0x1D][ToggleSmile]へっ・・・お楽しみは・・・[LF]
+これからだってのによ・・・[A][X]
+
+## MSG_287
+[LoadFace][FID_0x1E][ToggleSmile]チ[TAB]チクショウ！[LF]
+オレとしたことが・・・[A][X]
+
+## MSG_288
+[LoadFace][FID_0x1F][ToggleSmile]これまでか・・・[A][X]
+
+## MSG_289
+[LoadFace][FID_0x20][ToggleSmile]ちっ・・・わしの・・・[LF]
+力も・・・こんなものか・・・[A][X]
+
+## MSG_28A
+[LoadFace][FID_0x21][ToggleSmile]ごめんねチャド・・・[.....][LF]
+・・・レ・・・イ[A][X]
+
+## MSG_28B
+[LoadFace][FID_0x22][ToggleSmile]ロイ・・・[LF]
+どうか・・・負けないで・・・[A][X]
+
+## MSG_28C
+[LoadFace][FID_0x23][ToggleSmile]おい・・・ちょっと待てよ・・・[LF]
+オレが・・・じょうだんだろ・・・[A][X]
+
+## MSG_28D
+[LoadFace][FID_0x24][ToggleSmile]ホッホッホッ・・・なかなか・・・[LF]
+楽しい・・・人生だったね・・・[A][X]
+
+## MSG_28E
+[LoadFace][FID_0x25][ToggleSmile]フフン・・・[LF]
+世の中・・・バカばっかりだ・・・[A][X]
+
+## MSG_28F
+[LoadFace][FID_0x26][ToggleSmile]こんなところで・・・[LF]
+ごめんなさい[TAB]お義父さま・・・[A][X]
+
+## MSG_290
+[LoadFace][FID_0x27][ToggleSmile]イリアに・・・春は・・・[LF]
+まだ・・・来ないのかしら・・・[A][X]
+
+## MSG_291
+[LoadFace][FID_0x28][ToggleSmile]姉さん・・・シャニー・・・[LF]
+私[TAB]最後まで・・・頑張ったよね[A][X]
+
+## MSG_292
+[LoadFace][FID_0x29][ToggleSmile]お姉ちゃん・・・ゴメン・・・[LF]
+帰れそうに・・・ないよ・・・[A][X]
+
+## MSG_293
+[LoadFace][FID_0x2A][ToggleSmile]姉さん・・・ゲイルさん・・・[LF]
+おれは・・・[A][X]
+
+## MSG_294
+[LoadFace][FID_0x2B][ToggleSmile]くっ[LF]
+この傷では・・・[A][CR][LF]
+やむをえない[LF]
+後方に下がります・・・[A][X]
+
+## MSG_295
+[LoadFace][FID_0x2C][ToggleSmile]へへへ・・・[LF]
+ドジっ・・・ちゃっ・・・た・・・[A][X]
+
+## MSG_296
+[LoadFace][FID_0x2D][ToggleSmile]私の・・・未来に・・・[LF]
+光は・・・ないのね・・・[A][X]
+
+## MSG_297
+[LoadFace][FID_0x2E][ToggleSmile]ギネヴィア様・・・[A][LF]
+ご自分の・・・信じる・・・道を・・・[LF]
+ゲイル・・・ごめんなさい・・・[A][X]
+
+## MSG_298
+[LoadFace][FID_0x2F][ToggleSmile]オ[TAB]オレ・・・[LF]
+いたい・・・ぐっ[A][X]
+
+## MSG_299
+[LoadFace][FID_0x30][ToggleSmile]まあ・・・いいか・・・[LF]
+やるだけは・・・やった・・・よな[A][X]
+
+## MSG_29A
+[LoadFace][FID_0x31][ToggleSmile]まあ[LF]
+こんなものか・・・[A][X]
+
+## MSG_29B
+[LoadFace][FID_0x32][ToggleSmile]どうやら・・・[LF]
+ここまでのようだ・・・[A][LF]
+わが故郷・・・エデッサに・・・[LF]
+栄えあれ・・・[A][X]
+
+## MSG_29C
+[LoadFace][FID_0x33][ToggleSmile]島のみんな・・・[LF]
+なにがあっても・・・[A][LF]
+あきらめては・・・[LF]
+いけないよ・・・[A][X]
+
+## MSG_29D
+[LoadFace][FID_0x34][ToggleSmile]エ[TAB]エトルリアの・・・[LF]
+未来に・・・光を・・・[A][X]
+
+## MSG_29E
+[LoadFace][FID_0x35][ToggleSmile]ここまでかよ[LF]
+すまねえ・・・[A][X]
+
+## MSG_29F
+[LoadFace][FID_0x16][ToggleSmile]おれは・・・[LF]
+まだ[TAB]死ぬわけには・・・[A][X]
+
+## MSG_2A0
+[LoadFace][FID_0x54][ToggleSmile]い[TAB]いかん[A][LF]
+大事な物資を奪われる前に[LF]
+撤退じゃあっ！[A][X]
+
+## MSG_2A1
+[LoadFace][FID_0x22][ToggleSmile]ああ[TAB]ロイ[LF]
+死んでしまうなんて・・・[A][X]
+
+## MSG_2A2
+[LoadFace][FID_0x1C][ToggleSmile]ぐっ[TAB]ロイ様・・・[LF]
+無念・・・[A][X]
+
+## MSG_2A3
+[LoadFace][FID_0x54][ToggleSmile]ぐっ[TAB]ロイ様・・・[LF]
+死んでしまわれるとは・・・[A][X]
+
+## MSG_2A4
+[LoadFace][FID_0x57][ToggleSmile]ああ[TAB]ロイ様[LF]
+死んでしまわれるなんて・・・[A][X]

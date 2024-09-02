@@ -1,0 +1,32 @@
+## MSG_POPUP_WexpLvup1
+武器レベル[X]
+
+## MSG_POPUP_WexpLvup2
+がアップした[X]
+
+## MSG_POPUP_WeaponBroken
+が壊れた[X]
+
+## MSG_POPUP_ItemVanilshed
+がなくなった[X]
+
+## MSG_POPUP_GetGold
+ゴールドを手に入れた[X]
+
+## MSG_POPUP_GetItem
+を手に入れた[X]
+
+## MSG_POPUP_StoleItem
+をぬすんだ[X]
+
+## MSG_POPUP_GoldStolen
+ゴールドをうばわれた[X]
+
+## MSG_POPUP_ItemStolen1
+をうばわれた[X]
+
+## MSG_POPUP_ItemStolen2
+をぬすまれた[X]
+
+## MSG_POPUP_Support
+支援レベルがアップした[X]

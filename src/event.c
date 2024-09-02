@@ -4065,7 +4065,7 @@ struct PopupInfo CONST_DATA Popup_085C46FC[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C72),
+    POPUP_MSG(MSG_POPUP_WeaponBroken),
 
     POPUP_END,
 };
@@ -4080,7 +4080,7 @@ struct PopupInfo CONST_DATA Popup_085C473C[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C73),
+    POPUP_MSG(MSG_POPUP_ItemVanilshed),
 
     POPUP_END,
 };
@@ -4089,9 +4089,9 @@ struct PopupInfo CONST_DATA Popup_085C477C[] =
 {
     POPUP_SONG(SONG_5A),
 
-    POPUP_MSG(MSG_C70),
+    POPUP_MSG(MSG_POPUP_WexpLvup1),
     POPUP_ICON_IKIND,
-    POPUP_MSG(MSG_C71),
+    POPUP_MSG(MSG_POPUP_WexpLvup2),
 
     POPUP_END,
 };
@@ -4105,7 +4105,7 @@ struct PopupInfo CONST_DATA Popup_085C47A4[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C74),
+    POPUP_MSG(MSG_POPUP_GetGold),
 
     POPUP_END,
 };
@@ -4119,7 +4119,7 @@ struct PopupInfo CONST_DATA Popup_085C47DC[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C77),
+    POPUP_MSG(MSG_POPUP_GoldStolen),
 
     POPUP_END,
 };
@@ -4134,7 +4134,7 @@ struct PopupInfo CONST_DATA Popup_085C4814[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C75),
+    POPUP_MSG(MSG_POPUP_GetItem),
 
     POPUP_END,
 };
@@ -4149,7 +4149,7 @@ struct PopupInfo CONST_DATA Popup_085C4854[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C78),
+    POPUP_MSG(MSG_POPUP_ItemStolen1),
 
     POPUP_END,
 };
@@ -4164,7 +4164,7 @@ struct PopupInfo CONST_DATA Popup_PlayerStoleItem[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C76),
+    POPUP_MSG(MSG_POPUP_StoleItem),
 
     POPUP_END,
 };
@@ -4179,7 +4179,7 @@ struct PopupInfo CONST_DATA Popup_AiStoleItem[] =
     POPUP_SPACE(3),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C79),
+    POPUP_MSG(MSG_POPUP_ItemStolen2),
 
     POPUP_END,
 };
@@ -4189,7 +4189,7 @@ struct PopupInfo CONST_DATA Popup_085C4914[] =
     POPUP_SONG(SONG_5A),
 
     POPUP_COLOR(TEXT_COLOR_0123),
-    POPUP_MSG(MSG_C7A),
+    POPUP_MSG(MSG_POPUP_Support),
 
     POPUP_END,
 };

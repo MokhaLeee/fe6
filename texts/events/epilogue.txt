@@ -1,0 +1,493 @@
+## MSG_23B
+こうして[TAB]後に『ベルン動乱』とよばれる[X]
+
+## MSG_23C
+大陸全土をまきこんだ大乱は[TAB]幕を閉じた[X]
+
+## MSG_23D
+降伏したベルン王国を[X]
+
+## MSG_23E
+エトルリア王国は一度は解体するが[X]
+
+## MSG_23F
+さまざまな事情を[TAB]かんがみて[X]
+
+## MSG_240
+直接の統治は断念する[X]
+
+## MSG_241
+また[TAB]この『ベルン動乱』最大の功労者である[X]
+
+## MSG_242
+ロイの助力もあり[X]
+
+## MSG_243
+ギネヴィアを女王とする[X]
+
+## MSG_244
+ベルン王国が再建されることになった[X]
+
+## MSG_245
+そして[TAB]その即位の日・・・[X]
+
+## MSG_246
+[OpenMidLeft][LoadFace][FID_0x22][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenMidLeft]ロイ[TAB]いよいよ[LF]
+ギネヴィア姫の即位の式ね[A][LF]
+[OpenMidRight]正装を見るのは[TAB]はじめてだ[LF]
+言葉もでないぐらい[TAB]きれいだろうなあ[A][LF]
+初めて会った時は[LF]
+正直[TAB]驚いたもの[A][LF]
+こんなに美しい人が[LF]
+この世にいるんだって[A][LF]
+[OpenMidLeft]そうね[A][LF]
+[OpenMidRight][ToggleSmile]でも[TAB]ギネヴィア姫は[LF]
+これからが[TAB]大変なときだ[A][LF]
+[OpenMidLeft]え？[A][LF]
+[OpenMidRight]今[TAB]エトルリア王国の力によって[LF]
+ベルン王になれば[A][LF]
+ベルン国内からの反発は[TAB]どうしても[LF]
+でてきてしまうものだと思うんだ[A][LF]
+[OpenMidLeft]そんな・・・[A][LF]
+[OpenMidRight]中にはギネヴィア姫のことを『王位をねらって[LF]
+エトルリアに力をかしたのだ』と[A][LF]
+言う者たちもでてくると思う[LF]
+そんな声と向き合うことになるんだから[A][LF]
+[OpenMidLeft]・・・でも[TAB]きっと[LF]
+ギネヴィア姫なら[TAB]乗り越えていかれるわ[A][LF]
+そして[TAB]いつか[TAB]ベルンは[LF]
+昔以上に豊かな国に・・・[A][LF]
+[ToggleSmile]だって[TAB]あんなに[LF]
+気高く[TAB]賢く・・・そして強い方だもの[A][LF]
+[OpenMidRight]そうだね[LF]
+ぼくも[TAB]そう信じているよ[A][LF]
+[OpenMidLeft][ToggleSmile]・・・ロイは[LF]
+これから[TAB]どうするの？[A][LF]
+[OpenMidRight][ToggleSmile]ぼく？[TAB]ぼくは[TAB]フェレに戻るよ[A][LF]
+父上の病気も心配だし[LF]
+戦争に荒れた土地を建て直さないと[A][LF]
+[OpenMidLeft][ToggleSmile]その・・・私・・・[LF]
+私も・・・[A][LF]
+[OpenMidRight]え？[A][LF]
+[OpenMidLeft][ToggleSmile]え？[TAB]な[TAB]なんでもないの[A][LF]
+[ToggleSmile]そう[LF]
+ロイはフェレに帰るの・・・[A][LF]
+[OpenMidRight][ToggleSmile]リリーナは[TAB]どうするの？[LF]
+オスティアに戻るのだろう？[A][LF]
+[OpenMidLeft]・・・ええ[TAB]そういうことになるわ[LF]
+お父様のご遺志をつがないとね[A][LF]
+[OpenMidRight]リリーナの帰るところが[LF]
+オスティアでよかったよ[A][LF]
+[OpenMidLeft][ToggleSmile]・・・なぜ？[A][LF]
+[OpenMidRight][ToggleSmile]だって[TAB]オスティアなら[LF]
+いつだって[TAB]リリーナをむかえに行ける[A][LF]
+[OpenMidLeft][ToggleSmile]えっ・・・[A][LF]
+[OpenMidRight][ToggleSmile]リリーナ[TAB]いつになるか分からないけど[A][LF]
+ぼくは[TAB]必ず[TAB]リリーナを・・・[A][LF]
+[OpenMidLeft][ToggleSmile]・・・と[TAB]とつぜん[TAB]そんなこと言われても[LF]
+私にも心の準備が・・・[A][CR][LF]
+で[TAB]でも[TAB]私[TAB]ロイのことをずっと・・・[A][LF]
+[OpenMidRight]あっ[TAB]もうすぐ[LF]
+即位の式が始まってしまう[A][LF]
+[ToggleSmile]リリーナ[TAB]早く行こう[LF]
+ギネヴィア姫にお祝いを言わないと！[A][ClearFace][LF]
+[OpenMidLeft][ToggleSmile]あ[TAB]ロ[TAB]ロイ・・・[LF]
+ちょっと待って・・・[A][ClearFace][X]
+
+## MSG_247
+[OpenMidLeft][LoadFace][FID_0x57][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenMidRight]姫[TAB]いよいよ[LF]
+即位の式ですね[A][LF]
+[OpenMidLeft]ええ・・・[A][LF]
+私にとっては[TAB]これからが[LF]
+さらなる[TAB]戦いの日々ですわ[A][LF]
+[OpenMidRight][ToggleSmile]すみません[TAB]ぼくには[LF]
+エトルリア王国の力を[TAB]かりる事でしか[A][LF]
+手だてがありませんでした[A][LF]
+[OpenMidLeft][ToggleSmile]いいえ[LF]
+ロイ様には感謝しています[A][LF]
+[ToggleSmile]たしかに[TAB]私が『王位をねらって[LF]
+エトルリアに力をかしたのだ』と[A][LF]
+言うものが[LF]
+多く出るとは[TAB]思います[A][LF]
+[OpenMidRight]ギネヴィア姫・・・[A][LF]
+[OpenMidLeft]ですが[TAB]今は[TAB]そんなことよりも[LF]
+このベルンを建て直すことが大切[A][LF]
+私は[TAB]この国をよみがえらせることで[LF]
+民や臣下に理解してもらえるよう努力します[A][LF]
+たとえ[TAB]何年[TAB]何十年かかろうと[LF]
+いつか[TAB]きっと・・・[A][LF]
+[OpenMidRight]ぼくに[TAB]お手伝いできることが[LF]
+あれば[TAB]いつでも言ってください[A][LF]
+[OpenMidLeft][ToggleSmile]ありがとう[LF]
+いつか[TAB]お願いするかもしれません[A][LF]
+それより[LF]
+ロイ様は・・・[A][LF]
+[OpenMidRight][ToggleSmile]えっ？[A][LF]
+[OpenMidLeft][ToggleSmile]これから[TAB]どうなさるのです？[LF]
+このまま[TAB]エトルリア軍に？[A][LF]
+[OpenMidRight]いえ[LF]
+ぼくは[TAB]フェレに戻ります[A][LF]
+父上の病気も心配ですし[LF]
+戦争に荒れた土地を建て直さないと[A][LF]
+[OpenMidLeft]そうですか[LF]
+故郷に戻られるのですね[A][LF]
+ロイ様らしい・・・[LF]
+ロイ様ほどの実力と功績なら[A][LF]
+エトルリア王国の中で[LF]
+もっと上の地位ものぞめるでしょうに・・・[A][LF]
+[OpenMidRight][ToggleSmile]ぼ[TAB]ぼくは[LF]
+そんな器じゃありません！[A][LF]
+[OpenMidLeft][ToggleSmile]フフ・・・[LF]
+フェレの民は幸せですね[A][LF]
+きっと[TAB]すぐに昔以上の[LF]
+豊かな土地に・・・[A][X]
+
+## MSG_248
+[OpenMidLeft][LoadFace][FID_0x57][OpenMidRight][LoadFace][FID_0x52][ToggleSmile]王女殿下・・・[.....][LF]
+いえ[TAB]女王陛下・・・[A][LF]
+[OpenMidLeft][ToggleSmile]『ギネヴィア』でいいわ[LF]
+どうしたの？[A][LF]
+[OpenMidRight][ToggleSmile]はっ[TAB]ギネヴィア様[LF]
+式典の準備がととのいました！[A][LF]
+[OpenMidLeft][ToggleSmile]わかりました[.....][LF]
+すぐに行きます[A][X]
+
+## MSG_249
+[OpenFarLeft][LoadFace][FID_0x57][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenFarLeft][ToggleSmile]ロイ様[TAB]一つだけ[LF]
+聞いてもよろしいでしょうか？[A][LF]
+[OpenMidRight]なんでしょう[A][LF]
+[OpenFarLeft]『魔竜』に・・・[LF]
+とどめを[TAB]さされたのですか？[A][LF]
+[OpenMidRight]・・・・・・[TAB]答えなければ[LF]
+ならないでしょうか[A][LF]
+[OpenFarLeft][ToggleSmile]いえ・・・[TAB]お答えのないことが[LF]
+答えだと考えますわ[A][X]
+
+## MSG_24A
+それから[TAB]時は流れ・・・[X]
+
+## MSG_24B
+[OpenMidLeft][LoadFace][FID_0x61][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenMidLeft]おお[TAB]これはロイどの[LF]
+久しぶりじゃの[A][LF]
+[OpenMidRight]こちらの近くまで[LF]
+来る用がありましたので[A][LF]
+立ち寄らせていただきました[A][LF]
+[OpenMidLeft]ファも喜ぶことじゃろう[A][LF]
+[OpenMidRight]先ほど[TAB]会ってきました[LF]
+相変わらず[TAB]元気そうですね[A][LF]
+[OpenMidLeft]最近は[TAB]外に出られることが多いので[LF]
+なおさらなのじゃろうな[A][LF]
+[OpenMidRight][ToggleSmile]それで[TAB]いかがですか？[LF]
+お預けした女性の様子は[A][LF]
+[OpenMidLeft]『心』をうばう術は[LF]
+解いたのじゃが・・・[A][LF]
+[OpenMidRight]・・・やはり[TAB]元にもどるというわけには[LF]
+いきませんでしたか[A][LF]
+[OpenMidLeft]ファが[TAB]外に[LF]
+連れ出したりしておるが[A][LF]
+自ら進んでは[LF]
+何もしようとはせぬ[A][LF]
+[OpenMidRight]そうですか・・・[A][LF]
+[OpenMidLeft]・・・ロイどの[A][LF]
+[OpenMidLeft]わしらは[TAB]あの娘が『竜』に[LF]
+捕まってしまったことに[TAB]気付いていながら[A][LF]
+助けにはいかなかった・・・[LF]
+再びやつらの前に[TAB]姿をあらわすことで[A][LF]
+種族を危険にさらすことを[LF]
+恐れたためだったのじゃが[A][LF]
+今は[TAB]その判断が正しかったのか[LF]
+疑問に思っておる[A][LF]
+[OpenMidRight][ToggleMouthMove]・・・・・・[ToggleMouthMove][A][LF]
+[OpenMidLeft]これも[TAB]人とともに[LF]
+暮らすようになったからかの？[A][LF]
+そのつぐないの意味もこめて[A][LF]
+娘の『心』を取り戻すために[LF]
+全力をつくすつもりじゃ[A][LF]
+[OpenMidRight]・・・よろしく[LF]
+おねがいします[A][LF]
+[OpenMidLeft]せめて[TAB]感情が動いたという[LF]
+『きざし』があればよいのじゃがの[A][LF]
+泣くとか[TAB]笑うとか・・・[A][X]
+
+## MSG_24C
+[OpenMidRight][LoadFace][FID_0x4A][OpenMidLeft][LoadFace][FID_0x04][LF]
+それでね[......][TAB]あれがね[......][TAB]あれがね[......][LF]
+『木』っていうんだよ[.......][.....][LF]
+[OpenMidRight][ToggleSmile]『木』・・・[.......][.....][LF]
+[OpenMidLeft][MoveMidLeft][ToggleSmile]うん！[.....][......][LF]
+あの『木』にはね[......][TAB]と～っても[.....][LF]
+おいしい『実』ができるんだよ[.......][......][LF]
+[OpenMidRight][ToggleSmile]『実』？[.......][.....][LF]
+[OpenMidLeft][ToggleSmile]ほらほら[TAB][......]あの上のほうに[LF]
+あるやつ[.......][......][LF]
+それでね[......][TAB]こうやって[......][LF]
+『木』をぶるぶるさせたらね・・・[MoveMidLeft][LoadOverworldFaces][LF]
+[MoveMidLeft][LoadOverworldFaces][LF]
+[OpenMidLeft][ToggleSmile]きゃん！[MoveMidLeft][LoadOverworldFaces][LF]
+[......][.....][LF]
+[OpenMidLeft][ToggleSmile]グスン[......][LF]
+おててに当たっちゃったよぉ・・・[.......][......][LF]
+[OpenMidRight][ToggleSmile]・・・クスッ[.......][LF]
+[OpenMidLeft]え・・・[......]おねえちゃん[......][LF]
+今[......][TAB]笑った？[.......][.....][LF]
+[OpenMidRight][ToggleSmile]・・・笑う？[......][TAB]私が？[.......][.....][LF]
+[OpenMidLeft][ToggleSmile]うん[......][TAB]今[......][TAB]『クスッ』って[.......][.....][LF]
+[OpenMidLeft][MoveMidLeft][MoveMidLeft]わーい[......][LF]
+おねえちゃんが笑った[......][TAB]笑った～[.......][LoadOverworldFaces][LF]
+[OpenMidRight]『笑う』？[......][.....][LF]
+これが[......][TAB]『笑う』・・・[.......][.....][LF]
+[OpenMidLeft]ファ[......][TAB]ロイのお兄ちゃんに[LF]
+お話ししてくる！[.......][......][LF]
+おねえちゃんが笑ったって！！[.......][......][X]
+
+## MSG_24D
+[X]
+
+## MSG_24E
+[X]
+
+## MSG_24F
+[X]
+
+## MSG_250
+[OpenMidRight][LoadFace][FID_0x4A]風・・・[.....][......][......][X]
+
+## MSG_251
+[OpenMidRight][LoadFace][FID_0x02][ToggleSmile]な[TAB]なんだ・・・[LF]
+建物が[TAB]くずれはじめたぞ！[A][LF]
+みんな[TAB]急いで[LF]
+ここを出るんだ！[A][X]
+
+## MSG_252
+[OpenMidLeft][LoadFace][FID_0x54][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenMidLeft]おお[TAB]ロイ様[LF]
+ご無事でしたか！[A][LF]
+[OpenMidRight]うん[TAB]なんとかね[A][LF]
+[ToggleSmile]でも[TAB]驚いたよ[LF]
+突然[TAB]くずれはじめたのだから・・・[A][LF]
+[OpenMidLeft]・・・もう千年以上も前の建物です[A][LF]
+その中で[TAB]大量のエネルギーを[LF]
+用いる戦いが行われた・・・[A][LF]
+建物自体が[LF]
+たえられなくなったのでしょうな[A][LF]
+[OpenMidRight]そうか・・・[A][LF]
+[OpenMidLeft]これで[TAB]ようやく[LF]
+終わるのですな[TAB]ロイ様[A][LF]
+[OpenMidRight][ToggleSmile]いいや[A][LF]
+これで[TAB]終わりじゃない[LF]
+これからが[TAB]始まりなんだ[A][LF]
+戦争に荒れた大地や[TAB]人々を[LF]
+取り戻さなければならない[A][LF]
+やらなければならないことは[LF]
+たくさんあるさ[A][LF]
+真の戦いはこれからだ！[A][X]
+
+## MSG_253
+戦いの日々は[TAB]ようやく[X]
+
+## MSG_254
+終わりをつげた・・・[X]
+
+## MSG_255
+降伏したベルン王国を[X]
+
+## MSG_256
+エトルリア王国は一度は解体するが[X]
+
+## MSG_257
+さまざまな事情をかんがみて[X]
+
+## MSG_258
+直接の統治は断念する[X]
+
+## MSG_259
+また[TAB]この『ベルン動乱』最大の功労者である[X]
+
+## MSG_25A
+ロイの助力もあり[X]
+
+## MSG_25B
+ギネヴィアを女王とする[X]
+
+## MSG_25C
+ベルン王国が再建されることになった[X]
+
+## MSG_25D
+そして[TAB]その即位の日・・・[X]
+
+## MSG_25E
+[OpenMidLeft][LoadFace][FID_0x22][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenMidLeft]ロイ[TAB]いよいよ[LF]
+ギネヴィア姫の即位の式ね[A][LF]
+[OpenMidRight]正装を見るのは[TAB]はじめてだ[LF]
+言葉もでないぐらい[TAB]きれいだろうなあ[A][LF]
+初めて会った時は[LF]
+正直[TAB]驚いたもの[A][LF]
+こんなに美しい人が[LF]
+この世にいるんだって[A][LF]
+[OpenMidLeft]そうね[A][LF]
+[OpenMidRight][ToggleSmile]でも[TAB]ギネヴィア姫は[LF]
+これからが[TAB]大変なときだ[A][LF]
+[OpenMidLeft]え？[A][LF]
+[OpenMidRight]今[TAB]エトルリア王国の力によって[LF]
+ベルン王になれば[A][LF]
+ベルン国内からの反発は[TAB]どうしても[LF]
+でてきてしまうものだと思うんだ[A][LF]
+[OpenMidLeft]そんな・・・[A][LF]
+[OpenMidRight]中にはギネヴィア姫のことを『王位をねらって[LF]
+エトルリアに力をかしたのだ』と[A][LF]
+言う者たちもでてくると思う[LF]
+そんな声と向き合うことになるんだから[A][LF]
+[OpenMidLeft]・・・でも[TAB]きっと[LF]
+ギネヴィア姫なら[TAB]乗り越えていかれるわ[A][LF]
+そして[TAB]いつか[TAB]ベルンは[LF]
+昔以上に豊かな国に・・・[A][LF]
+[ToggleSmile]だって[TAB]あんなに[LF]
+気高く[TAB]賢く・・・そして強い方だもの[A][LF]
+[OpenMidRight]そうだね[LF]
+ぼくも[TAB]そう信じているよ[A][LF]
+[OpenMidLeft][ToggleSmile]・・・ロイは[LF]
+これから[TAB]どうするの？[A][LF]
+[OpenMidRight][ToggleSmile]ぼく？[TAB]ぼくは[TAB]フェレに戻るよ[A][LF]
+父上の病気も心配だし[LF]
+戦争に荒れた土地を建て直さないと[A][LF]
+[OpenMidLeft][ToggleSmile]その・・・私・・・[LF]
+私も・・・[A][LF]
+[OpenMidRight]え？[A][LF]
+[OpenMidLeft][ToggleSmile]え？[TAB]な[TAB]なんでもないの[A][LF]
+[ToggleSmile]そう[LF]
+ロイはフェレに帰るの・・・[A][LF]
+[OpenMidRight][ToggleSmile]リリーナは[TAB]どうするの？[LF]
+オスティアに戻るのだろう？[A][LF]
+[OpenMidLeft]・・・ええ[TAB]そういうことになるわ[LF]
+お父様のご遺志をつがないとね[A][LF]
+[OpenMidRight]リリーナの帰るところが[LF]
+オスティアでよかったよ[A][LF]
+[OpenMidLeft][ToggleSmile]・・・なぜ？[A][LF]
+[OpenMidRight][ToggleSmile]だって[TAB]オスティアなら[LF]
+いつだって[TAB]リリーナをむかえに行ける[A][LF]
+[OpenMidLeft][ToggleSmile]えっ・・・[A][LF]
+[OpenMidRight][ToggleSmile]リリーナ[TAB]いつになるか分からないけど[A][LF]
+ぼくは[TAB]必ず[TAB]リリーナを・・・[A][LF]
+[OpenMidLeft][ToggleSmile]・・・と[TAB]とつぜん[TAB]そんなこと言われても[LF]
+私にも心の準備が・・・[A][CR][LF]
+で[TAB]でも[TAB]私[TAB]ロイのことをずっと・・・[A][LF]
+[OpenMidRight]あっ[TAB]もうすぐ[LF]
+即位の式が始まってしまう[A][LF]
+[ToggleSmile]リリーナ[TAB]早く行こう[LF]
+ギネヴィア姫にお祝いを言わなきゃ[A][ClearFace][LF]
+[OpenMidLeft][ToggleSmile]あ[TAB]ロ[TAB]ロイ・・・[LF]
+ちょっと待って・・・[A][ClearFace][X]
+
+## MSG_25F
+[OpenMidLeft][LoadFace][FID_0x57][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenMidRight]姫[TAB]いよいよ[LF]
+即位の式ですね[A][LF]
+[OpenMidLeft]ええ・・・[A][LF]
+私にとっては[TAB]これからが[LF]
+さらなる[TAB]戦いの日々ですわ[A][LF]
+[OpenMidRight][ToggleSmile]すみません[TAB]ぼくには[LF]
+エトルリア王国の力を[TAB]かりる事でしか[A][LF]
+手だてがありませんでした[A][LF]
+[OpenMidLeft][ToggleSmile]いいえ[LF]
+ロイ様には感謝しています[A][LF]
+[ToggleSmile]たしかに[TAB]私が『王位をねらって[LF]
+エトルリアに力をかしたのだ』と[A][LF]
+言うものが[LF]
+多く出るとは[TAB]思います[A][LF]
+[OpenMidRight]ギネヴィア姫・・・[A][LF]
+[OpenMidLeft]ですが[TAB]今は[TAB]そんなことよりも[LF]
+このベルンを建て直すことが大切[A][LF]
+私は[TAB]この国をよみがえらせることで[LF]
+民や臣下に理解してもらえるよう努力します[A][LF]
+たとえ[TAB]何年[TAB]何十年かかろうと[LF]
+いつか[TAB]きっと・・・[A][LF]
+[OpenMidRight]ぼくに[TAB]お手伝いできることが[LF]
+あれば[TAB]いつでも言ってください[A][LF]
+[OpenMidLeft][ToggleSmile]ありがとう[LF]
+いつか[TAB]お願いするかもしれません[A][LF]
+それより[LF]
+ロイ様は・・・[A][LF]
+[OpenMidRight][ToggleSmile]えっ？[A][LF]
+[OpenMidLeft][ToggleSmile]これから[TAB]どうなさるのです？[LF]
+このまま[TAB]エトルリア軍に？[A][LF]
+[OpenMidRight]いえ[LF]
+ぼくは[TAB]フェレに戻ります[A][LF]
+父上の病気も心配ですし[LF]
+戦争に荒れた土地を建て直さないと[A][LF]
+[OpenMidLeft]そうですか[LF]
+故郷に戻られるのですね[A][LF]
+ロイ様らしい・・・[LF]
+ロイ様ほどの実力と功績なら[A][LF]
+エトルリア王国の中で[LF]
+もっと上の地位ものぞめるでしょうに・・・[A][LF]
+[OpenMidRight][ToggleSmile]ぼ[TAB]ぼくは[LF]
+そんな器じゃありません！[A][LF]
+[OpenMidLeft][ToggleSmile]フフ・・・[LF]
+フェレの民は幸せですね[A][LF]
+きっと[TAB]すぐに昔以上の[LF]
+豊かな土地に・・・[A][X]
+
+## MSG_260
+[OpenMidLeft][LoadFace][FID_0x57][OpenMidRight][LoadFace][FID_0x52][ToggleSmile]王女殿下・・・[.....][LF]
+いえ[TAB]女王陛下・・・[A][LF]
+[OpenMidLeft][ToggleSmile]『ギネヴィア』でいいわ[LF]
+どうしたの？[A][LF]
+[OpenMidRight][ToggleSmile]はっ[TAB]ギネヴィア様[LF]
+式典の準備がととのいました！[A][LF]
+[OpenMidLeft][ToggleSmile]わかりました[.....][LF]
+すぐに行きます[A][X]
+
+## MSG_261
+[OpenMidLeft][LoadFace][FID_0x57][OpenMidRight][LoadFace][FID_0x02][LF]
+[OpenMidLeft]ロイ様[TAB]ごいっしょ[LF]
+していただけませんか？[A][LF]
+[OpenMidRight][ToggleSmile]えっ[LF]
+ぼくが[TAB]ですか？[A][LF]
+[OpenMidLeft][ToggleSmile]私が『ファイアーエムブレム』を持って[LF]
+ベルンから出て以来[A][LF]
+ロイ様には[LF]
+本当にお世話になりました[A][LF]
+ですから[TAB]ロイ様に[LF]
+見届けていただきたいのです[A][LF]
+ベルンの王冠を受け[TAB]私が[TAB]ベルンが[LF]
+新しい道を歩み始める姿を・・・[A][LF]
+[OpenMidRight]わかりました[LF]
+ぼくでよければ[TAB]よろこんで[A][LF]
+[OpenMidLeft]では・・・[A][LF]
+[OpenMidRight]新しいベルン[TAB]いや[LF]
+新しい時代の始まりを見届けに・・・[A][X]
+
+## MSG_262
+そして[TAB]世界は[X]
+
+## MSG_263
+再び安定と平和を取り戻し[X]
+
+## MSG_264
+エレブ大陸は[TAB]かつてないほどの[X]
+
+## MSG_265
+繁栄の時代をむかえることとなる[X]
+
+## MSG_266
+エレブの大地の[X]
+
+## MSG_267
+運命をかけた動乱の中で[X]
+
+## MSG_268
+喜び[TAB]悲しみ[TAB]笑い[TAB]涙しながら[X]
+
+## MSG_269
+精一杯生きた者たちのおりなす[X]
+
+## MSG_26A
+叙事詩が[TAB]今[TAB]幕を閉じる・・・[X]
+
+## MSG_26B
+[LoadFace][FID_0x02][ToggleSmile]みんな[TAB]すまない・・・[A][X]

@@ -1,0 +1,180 @@
+## MSG_YES
+はい[X]
+
+## MSG_NO
+いいえ[X]
+
+## MSG_BUY
+買う[X]
+
+## MSG_SEL
+売る[X]
+
+## MSG_SHOP_00
+ここは武器屋だぜ[A][CR][LF]
+いろいろ売り買いしてくれよ[LF]
+[BuySell][X]
+
+## MSG_SHOP_01
+ここは道具屋よ[A][CR][LF]
+どんなご用かしら？[LF]
+[BuySell][X]
+
+## MSG_SHOP_02
+ウフフ・・・[A][CR][LF]
+秘密の店にようこそ[LF]
+[BuySell][X]
+
+## MSG_SHOP_03
+ほかにも用があるのか[LF]
+[BuySell][X]
+
+## MSG_SHOP_04
+ほかになにかご用は？[LF]
+[BuySell][X]
+
+## MSG_SHOP_05
+ほかにご用はあるかしら？[LF]
+[BuySell][X]
+
+## MSG_SHOP_06
+ほかにも用があるのか[LF]
+[ShopContinue][X]
+
+## MSG_SHOP_07
+ほかになにかご用は？[LF]
+[ShopContinue][X]
+
+## MSG_SHOP_08
+ほかにご用はあるかしら？[LF]
+[BuySell][X]
+
+## MSG_SHOP_09
+どれがほしいんだい[X]
+
+## MSG_SHOP_0A
+どれがほしいの？[X]
+
+## MSG_SHOP_0B
+どれを[TAB]お求め？[X]
+
+## MSG_SHOP_0C
+ほかにも買うか？[X]
+
+## MSG_SHOP_0D
+ほかにも買うの？[X]
+
+## MSG_SHOP_0E
+ほかにも[TAB]お求め？[X]
+
+## MSG_SHOP_0F
+どれを売るんだ？[X]
+
+## MSG_SHOP_10
+どれを売ってくれるの？[X]
+
+## MSG_SHOP_11
+どれを[TAB]売ってくださるの？[X]
+
+## MSG_SHOP_12
+売るものがねえじゃねえか[A][X]
+
+## MSG_SHOP_13
+売れるものをお持ちじゃないわ[A][X]
+
+## MSG_SHOP_14
+売れるものをお持ちじゃないわ[A][X]
+
+## MSG_SHOP_15
+ほかにも売るのか？[X]
+
+## MSG_SHOP_16
+ほかにも売ってくれるの？[X]
+
+## MSG_SHOP_17
+ほかにも[TAB]売ってくださるの？[X]
+
+## MSG_SHOP_18
+お金が足りねえぜ[A][X]
+
+## MSG_SHOP_19
+お金が足りないわ[A][X]
+
+## MSG_SHOP_1A
+フフフ・・・お金が足りないわ[A][X]
+
+## MSG_SHOP_1B
+[G]ゴールドだ[LF]
+それでいいのかい？[TAB][Yes][X]
+
+## MSG_SHOP_1C
+[G]ゴールドよ[LF]
+それでいいの？[TAB][Yes][X]
+
+## MSG_SHOP_1D
+[G]ゴールドよ[LF]
+それでよろしい？[TAB][Yes][X]
+
+## MSG_SHOP_1E
+また来てくれよな[A][X]
+
+## MSG_SHOP_1F
+またいらしてね[A][X]
+
+## MSG_SHOP_20
+フフフ・・・[TAB]またいらしてね[A][X]
+
+## MSG_SHOP_21
+それは買い取りできねぇな[A][X]
+
+## MSG_SHOP_22
+それは買い取りできないわ[A][X]
+
+## MSG_SHOP_23
+フフフ・・・[LF]
+それは買い取りできないわ[A][X]
+
+## MSG_SHOP_24
+手持ちがいっぱいみたいだな[LF]
+輸送隊へ送るかい？[TAB][Yes][X]
+
+## MSG_SHOP_25
+手持ちがいっぱいね[LF]
+輸送隊へ送る？[TAB][Yes][X]
+
+## MSG_SHOP_26
+手持ちがいっぱいですわ[LF]
+輸送隊へ送る？[TAB][Yes][X]
+
+## MSG_SHOP_27
+じゃあ[TAB]送っておくよ[A][X]
+
+## MSG_SHOP_28
+じゃあ[TAB]送っておくわ[A][X]
+
+## MSG_SHOP_29
+フフフ・・・[TAB]では[TAB]送っておくわ[A][X]
+
+## MSG_SHOP_2A
+そうかい[TAB]残念だ[LF]
+手持ちをへらせば持てるんだがな[A][X]
+
+## MSG_SHOP_2B
+そう・・・[TAB]残念ね[LF]
+手持ちをへらせば持てるのだけど[A][X]
+
+## MSG_SHOP_2C
+そう・・・[TAB]残念ですわ[LF]
+手持ちをへらせば持てるのに[A][X]
+
+## MSG_SHOP_2D
+おっと[TAB]輸送隊もいっぱいみたいだな[LF]
+整理して[TAB]また来てくれよ[A][X]
+
+## MSG_SHOP_2E
+あら[TAB]輸送隊もいっぱいみたいね[LF]
+整理して[TAB]また来てくださいな[A][X]
+
+## MSG_SHOP_2F
+フフフ・・・[TAB]輸送隊もいっぱいね[LF]
+整理して[TAB]また来てくださいな[A][X]

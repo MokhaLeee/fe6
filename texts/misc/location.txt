@@ -1,0 +1,116 @@
+## MSG_LOCATION_00
+トリア[X]
+
+## MSG_LOCATION_01
+オスティア[X]
+
+## MSG_LOCATION_02
+オスティア[X]
+
+## MSG_LOCATION_03
+フィベルニアの海岸[X]
+
+## MSG_LOCATION_04
+アルマー[X]
+
+## MSG_LOCATION_05
+エブラクム鉱山[X]
+
+## MSG_LOCATION_06
+ジュトー[X]
+
+## MSG_LOCATION_07
+カフチ島[X]
+
+## MSG_LOCATION_08
+ナバタ砂漠[X]
+
+## MSG_LOCATION_09
+エトルリア国境[X]
+
+## MSG_LOCATION_0A
+アクレイア[X]
+
+## MSG_LOCATION_0B
+レーミー[X]
+
+## MSG_LOCATION_0C
+イリアの森[X]
+
+## MSG_LOCATION_0D
+カルラエ[X]
+
+## MSG_LOCATION_0E
+エデッサ[X]
+
+## MSG_LOCATION_0F
+封印の神殿[X]
+
+## MSG_LOCATION_10
+ベルン[X]
+
+## MSG_LOCATION_11
+竜殿前[X]
+
+## MSG_LOCATION_12
+竜殿[X]
+
+## MSG_LOCATION_13
+小さな村[X]
+
+## MSG_LOCATION_14
+イディナ[X]
+
+## MSG_LOCATION_15
+タラス[X]
+
+## MSG_LOCATION_16
+ジュテ族遊牧地[X]
+
+## MSG_LOCATION_17
+ブルガル[X]
+
+## MSG_LOCATION_18
+ブルガル[X]
+
+## MSG_LOCATION_19
+オスティア郊外[X]
+
+## MSG_LOCATION_1A
+ジュトーの洞窟[X]
+
+## MSG_LOCATION_1B
+ナバタの神殿[X]
+
+## MSG_LOCATION_1C
+聖女の塔[X]
+
+## MSG_LOCATION_1D
+エデッサの遺跡[X]
+
+## MSG_LOCATION_1E
+サカの遺跡[X]
+
+## MSG_LOCATION_1F
+封印の神殿地下[X]
+
+## MSG_LOCATION_20
+リキア[X]
+
+## MSG_LOCATION_21
+エトルリア[X]
+
+## MSG_LOCATION_22
+西方三島[X]
+
+## MSG_LOCATION_23
+ミスル半島[X]
+
+## MSG_LOCATION_24
+イリアの森[X]
+
+## MSG_LOCATION_25
+サカ[X]
+
+## MSG_LOCATION_26
+ベルン[X]
