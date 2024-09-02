@@ -187,11 +187,10 @@ def main(args):
         input_parse_ref = args[1]
         output_data = args[2]
         output_header = args[3]
+        encoding_method = args[4]
 
     except IndexError:
-        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_data> <output_header>")
-
-    encoding_method = 'cp932'
+        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_data> <output_header> <'cp932' or 'utf8'>")
 
     control_chars = load_control_chars(input_parse_ref)
     messages = process_file(input_fpath, control_chars, encoding_method)

@@ -259,15 +259,15 @@ func_fe6_08000620: @ 0x08000620
 	pop {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
 	.align 2, 0
-.L080006DC: .4byte 0x080F6358
-.L080006E0: .4byte 0x080F300C
+.L080006DC: .4byte gMsgHuffmanTableRoot
+.L080006E0: .4byte gMsgHuffmanTable
 
 	arm_func_start DecodeString
 DecodeString: @ 0x080006E4
 	push {r4, r5, r6, r7}
 	sub r3, r3, r3
-	ldr r5, .L080006E0 @ =0x080F300C
-	ldr r7, .L080006DC @ =0x080F6358
+	ldr r5, .L080006E0 @ =gMsgHuffmanTable
+	ldr r7, .L080006DC @ =gMsgHuffmanTableRoot
 	ldr r7, [r7]
 .L080006F8:
 	mov r4, r7
