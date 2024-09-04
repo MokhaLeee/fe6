@@ -16,7 +16,9 @@
 #include "chapterinfo.h"
 #include "unitrearrange.h"
 #include "ui.h"
+#include "mu.h"
 #include "map.h"
+#include "bmio.h"
 #include "statscreen.h"
 #include "helpbox.h"
 #include "prepscreen.h"
@@ -30,71 +32,6 @@
 #include "constants/songs.h"
 
 #include "constants/videoalloc_global.h"
-
-#if 0
-struct ProcScr CONST_DATA ProcScr_AtMenu[] =
-{
-    PROC_19,
-    PROC_CALL(LockGame),
-    PROC_CALL(StartMidFadeToBlack),
-    PROC_REPEAT(WhileFadeExists),
-    PROC_CALL(LockBmDisplay),
-    PROC_CALL(PrepMenu_EndIfNoUnit),
-    PROC_SLEEP(0),
-    PROC_CALL(PrepMenu_Init),
-    PROC_CALL(StartPrepMenuFadeIn),
-    PROC_SLEEP(0),
-PROC_LABEL(1),
-    PROC_REPEAT(PrepMenu_Loop),
-    PROC_GOTO(5),
-PROC_LABEL(7),
-    PROC_REPEAT(PrepUnit_HandleScrollUp),
-PROC_LABEL(8),
-    PROC_REPEAT(PrepUnit_HandleScrollDown),
-PROC_LABEL(3),
-    PROC_REPEAT(AtMenu_StartSubmenu),
-PROC_LABEL(4),
-    PROC_REPEAT(AtMenu_OnSubmenuEnd),
-    PROC_GOTO(1),
-PROC_LABEL(15),
-    PROC_SLEEP(1),
-    PROC_CALL(func_fe6_0807B69C),
-    PROC_GOTO(1),
-PROC_LABEL(9),
-    PROC_CALL(PrepScreen_ReloadLeftUnitInfoFromStatscreen),
-    PROC_REPEAT(func_fe6_0807B4C0),
-    PROC_GOTO(1),
-PROC_LABEL(10),
-    PROC_CALL(PrepScreen_ReloadLeftUnitInfoFromStatscreen),
-    PROC_REPEAT(func_fe6_0807B5A0),
-    PROC_GOTO(1),
-PROC_LABEL(13),
-    PROC_CALL(func_fe6_0807B89C),
-    PROC_SLEEP(0),
-    PROC_GOTO(3),
-PROC_LABEL(12),
-    PROC_CALL(StartPrepMenuFadeIn),
-    PROC_SLEEP(0),
-    PROC_GOTO(1),
-PROC_LABEL(14),
-    PROC_CALL(func_fe6_0807B0DC),
-    PROC_GOTO(6),
-PROC_LABEL(L_PREPMENU_5),
-    PROC_CALL(func_fe6_0807B0DC),
-    PROC_SLEEP(60),
-PROC_LABEL(L_PREPMENU_6),
-    PROC_CALL(func_fe6_0807B89C),
-    PROC_SLEEP(1),
-PROC_LABEL(11),
-    PROC_CALL(func_fe6_0807B0E4),
-    PROC_SLEEP(0),
-    PROC_CALL(EndAllMus),
-    PROC_CALL(UnlockBmDisplay),
-    PROC_CALL(UnlockGame),
-    PROC_END,
-};
-// end at 08679008
-#endif
 
 void ResetSioPidPool(void)
 {
@@ -903,8 +840,8 @@ void PrepMenu_InitScreen(struct PrepMenuProc * proc)
     for (i = 0; i < 12; i++)
     {
         CpuFastCopy(
-            gUnk_020104A4 + (((GetChapterInfo(gPlaySt.chapter)->unk_40 + i) * 0x20)
-                + GetChapterInfo(gPlaySt.chapter)->unk_3F) * 0x20,
+            gUnk_020104A4 + (((GetChapterInfo(gPlaySt.chapter)->gmap_dispy + i) * 0x20)
+                + GetChapterInfo(gPlaySt.chapter)->gmap_dispx) * 0x20,
             (void *) VRAM + CHR_SIZE * BGCHR_PREPMENU_700 + 15 * CHR_SIZE * i, 15 * CHR_SIZE);
     }
 
@@ -1022,8 +959,8 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
     PrepMenu_InitScreen(proc);
 
     func_fe6_0807B8CC((proc->unk_50 = StartPrepMenuBmCursor(proc)),
-        GetChapterInfo(gPlaySt.chapter)->unk_41 * 8,
-        GetChapterInfo(gPlaySt.chapter)->unk_42 * 8,
+        GetChapterInfo(gPlaySt.chapter)->gmap_cursorx * 8,
+        GetChapterInfo(gPlaySt.chapter)->gmap_cursory * 8,
         GetChapterInfo(gPlaySt.chapter)->number_id);
 }
 
@@ -1553,4 +1490,426 @@ void PrepScreen_ReloadLeftUnitInfoFromStatscreen(struct PrepMenuProc * proc)
 {
     PrepScreen_ReloadLeftUnitInfo(GetUnitFromPrepList(proc->list_num_cur));
     proc->scroll_timer = 0;
+}
+
+/* https://decomp.me/scratch/UR3Es */
+#if NONMATCHING
+
+void func_fe6_0807B4C0(struct PrepMenuProc * proc)
+{
+    int i, j;
+    int scroll_timer;
+
+    if (proc->scroll_timer == 0)
+    {
+        proc->unk_29 = TRUE;
+        proc->in_unit_sel_screen = TRUE;
+        proc->unk_2B = TRUE;
+
+        PrepScreen_DrawScreenInfo(proc);
+        TmFillRect(gBg0Tm, 12, 19, 0);
+        TmFillRect(gBg1Tm, 12, 19, 0);
+        func_fe6_08079D84(proc);
+    }
+
+    scroll_timer = (proc->scroll_timer += 0x10 - (proc->scroll_timer / 0xC)) >> 3;
+
+    for (i = 0; i < 7; i++)
+    {
+        for (j = 0; j != scroll_timer; j++)
+        {
+            gBg1Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(j - scroll_timer + 13, i)];
+            gBg0Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(j - scroll_timer + 13, i + 10)];
+        }
+    }
+
+    EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
+
+    if ((scroll_timer) > 12)
+        Proc_Break(proc);
+}
+
+#else
+
+NAKEDFUNC
+void func_fe6_0807B4C0(struct PrepMenuProc * proc)
+{
+asm("\
+	.syntax unified\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	sub sp, #4\n\
+	mov r8, r0\n\
+	mov r5, r8\n\
+	adds r5, #0x42\n\
+	ldrh r0, [r5]\n\
+	cmp r0, #0\n\
+	bne .L0807B50C\n\
+	mov r1, r8\n\
+	adds r1, #0x29\n\
+	movs r0, #1\n\
+	strb r0, [r1]\n\
+	adds r1, #1\n\
+	strb r0, [r1]\n\
+	adds r1, #1\n\
+	strb r0, [r1]\n\
+	mov r0, r8\n\
+	bl PrepScreen_DrawScreenInfo\n\
+	ldr r0, .L0807B594 @ =gBg0Tm\n\
+	movs r1, #0xc\n\
+	movs r2, #0x13\n\
+	movs r3, #0\n\
+	bl TmFillRect_thm\n\
+	ldr r0, .L0807B598 @ =gBg1Tm\n\
+	movs r1, #0xc\n\
+	movs r2, #0x13\n\
+	movs r3, #0\n\
+	bl TmFillRect_thm\n\
+	mov r0, r8\n\
+	bl func_fe6_08079D84\n\
+.L0807B50C:\n\
+	ldrh r4, [r5]\n\
+	adds r4, #0x10\n\
+	ldrh r0, [r5]\n\
+	movs r1, #0xc\n\
+	bl __udivsi3\n\
+	subs r4, r4, r0\n\
+	strh r4, [r5]			@ scroll_timer = proc->scroll_timer += 0x10 - (proc->scroll_timer / 0xC);\n\
+	lsls r4, r4, #0x10\n\
+	lsrs r7, r4, #0x13		@ _scroll_timer = scroll_timer / 8\n\
+	movs r0, #0\n\
+	rsbs r1, r7, #0\n\
+	str r1, [sp]			@ [_sp] = -_scroll_timer\n\
+.L0807B526:					@ for (i = 0; i < 7; i++)\n\
+	adds r1, r0, #1\n\
+	mov ip, r1\n\
+	cmp r7, #0\n\
+	beq .L0807B56C			@ if (_scroll_timer != 0)\n\
+	ldr r3, .L0807B59C @ =gUnk_0200E8A4\n\
+	adds r2, r0, #0\n\
+	adds r2, #0xa\n\
+	lsls r2, r2, #6			@ r2 = (i + 10) << 6\n\
+	ldr r1, [sp]\n\
+	adds r1, #0xd 			@ off2 = -_scroll_timer + 13\n\
+	lsls r4, r0, #6			@ r4 = i << 6\n\
+	ldr r0, .L0807B598 		@ sl=gBg1Tm\n\
+	mov sl, r0\n\
+	ldr r0, .L0807B594 		@ sb=gBg0Tm\n\
+	mov sb, r0\n\
+	adds r6, r7, #0			@ for (j = _scroll_timer; j != 0; j--)\n\
+	lsls r1, r1, #1 		@ off2 * 2\n\
+	adds r0, r4, r3\n\
+	adds r5, r1, r0			@ r5 = src2 = gUnk_0200E8A4 + (i << 6) + (-_scroll_timer + 13) * 2\n\
+	adds r2, r2, r3\n\
+	adds r2, r1, r2			@ r2 = src1 = gUnk_0200E8A4 + (i + 10) << 6\n\
+.L0807B550:\n\
+	mov r0, sl\n\
+	adds r1, r4, r0			@ r1 = gBg1Tm + (r4) + j\n\
+	ldrh r0, [r2]\n\
+	strh r0, [r1]\n\
+	mov r0, sb\n\
+	adds r1, r4, r0			@ r1 = gBg0Tm + (r4) + j\n\
+	ldrh r0, [r5]\n\
+	strh r0, [r1]\n\
+	adds r5, #2\n\
+	adds r2, #2\n\
+	adds r4, #2\n\
+	subs r6, #1\n\
+	cmp r6, #0\n\
+	bne .L0807B550\n\
+.L0807B56C:\n\
+	mov r0, ip\n\
+	cmp r0, #7\n\
+	ble .L0807B526\n\
+	movs r0, #3\n\
+	bl EnableBgSync\n\
+	cmp r7, #0xc\n\
+	ble .L0807B582\n\
+	mov r0, r8\n\
+	bl Proc_Break\n\
+.L0807B582:\n\
+	add sp, #4\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+.L0807B594: .4byte gBg0Tm\n\
+.L0807B598: .4byte gBg1Tm\n\
+.L0807B59C: .4byte gUnk_0200E8A4\n\
+	.syntax divided\n\
+");
+}
+
+#endif
+
+/* https://decomp.me/scratch/JZCk9 */
+#if NONMATCHING
+
+void func_fe6_0807B5A0(struct PrepMenuProc * proc)
+{
+    int i, j, r8;
+    u16 scroll_timer;
+    if (proc->scroll_timer == 0)
+    {
+        proc->unk_2B = 0;
+    }
+
+    scroll_timer = (proc->scroll_timer += 0x10 - (proc->scroll_timer / 0xC)) / 8;
+    r8 = 14 - scroll_timer;
+
+    for (i = 0; i < 7; i++)
+    {
+        for (j = 0; j < 13; j++)
+        {
+            if (i < r8)
+            {
+                gBg1Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(scroll_timer, i)];
+                gBg0Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(scroll_timer, i + 10)];
+            }
+            else
+            {
+                gBg1Tm[TM_OFFSET(j, i)] = 0;
+                gBg0Tm[TM_OFFSET(j, i)] = 0;
+            }
+        }
+    }
+
+    EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
+
+    if (scroll_timer > 12)
+    {
+        u8 pid;
+
+        proc->unk_29 = 0;
+        proc->in_unit_sel_screen = 0;
+        func_fe6_08079A94(proc);
+        Proc_Break(proc);
+
+        pid = UNIT_PID(gPrepUnitList[proc->list_num_cur]);
+
+        ReorderPlayerUnitsBasedOnDeployment();
+        func_fe6_0807A1C8(proc, FALSE);
+        func_fe6_08079928(proc, pid, 1);
+        PrepScreen_DrawScreenInfo(proc);
+    }
+}
+
+#else
+
+NAKEDFUNC
+void func_fe6_0807B5A0(struct PrepMenuProc * proc)
+{
+asm("\
+	.syntax unified\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	adds r6, r0, #0\n\
+	adds r5, r6, #0\n\
+	adds r5, #0x42\n\
+	ldrh r1, [r5]\n\
+	cmp r1, #0\n\
+	bne .L0807B5BA\n\
+	adds r0, #0x2b\n\
+	strb r1, [r0]\n\
+.L0807B5BA:\n\
+	ldrh r4, [r5]\n\
+	adds r4, #0x10\n\
+	ldrh r0, [r5]\n\
+	movs r1, #0xc\n\
+	bl __udivsi3\n\
+	subs r4, r4, r0\n\
+	strh r4, [r5]\n\
+	lsls r4, r4, #0x10\n\
+	lsrs r4, r4, #0x13\n\
+	mov sl, r4 			@ sl = scroll_timer\n\
+	movs r2, #0\n\
+	movs r0, #0xd\n\
+	mov r1, sl\n\
+	subs r1, r0, r1\n\
+	mov r8, r1			@ r8 = 14 - scroll_timer\n\
+	movs r3, #0\n\
+	mov sb, r3			@ sb = 0\n\
+	mov r0, sl\n\
+	lsls r7, r0, #1		@ r7 = scroll_timer << 1\n\
+.L0807B5E2:\n\
+	movs r5, #0\n\
+	lsls r1, r2, #6\n\
+	adds r3, r2, #1\n\
+	mov ip, r3\n\
+	adds r0, r7, r1\n\
+	ldr r3, .L0807B610 @ =gUnk_0200E8A4\n\
+	adds r4, r0, r3							@ r4 = gUnk_0200E8A4 + (x = scroll_timer, y = j)\n\
+	ldr r0, .L0807B614 @ =gBg0Tm\n\
+	adds r3, r1, r0							@ r3 = gBg0Tm + (x = )\n\
+	ldr r0, .L0807B618 @ =gBg1Tm\n\
+	adds r1, r1, r0\n\
+	adds r0, r2, #0\n\
+	adds r0, #0xa\n\
+	lsls r0, r0, #6\n\
+	ldr r2, .L0807B610 @ =gUnk_0200E8A4\n\
+	adds r0, r0, r2\n\
+	adds r2, r7, r0\n\
+.L0807B604:\n\
+	cmp r5, r8\n\
+	blt .L0807B61C\n\
+	mov r0, sb\n\
+	strh r0, [r1]\n\
+	b .L0807B622\n\
+	.align 2, 0\n\
+.L0807B610: .4byte gUnk_0200E8A4\n\
+.L0807B614: .4byte gBg0Tm\n\
+.L0807B618: .4byte gBg1Tm\n\
+.L0807B61C:\n\
+	ldrh r0, [r2]\n\
+	strh r0, [r1]\n\
+	ldrh r0, [r4]\n\
+.L0807B622:\n\
+	strh r0, [r3]\n\
+	adds r4, #2\n\
+	adds r3, #2\n\
+	adds r2, #2\n\
+	adds r1, #2\n\
+	adds r5, #1\n\
+	cmp r5, #0xc\n\
+	ble .L0807B604\n\
+	mov r2, ip\n\
+	cmp r2, #7\n\
+	ble .L0807B5E2\n\
+	movs r0, #3\n\
+	bl EnableBgSync\n\
+	mov r1, sl\n\
+	cmp r1, #0xc\n\
+	ble .L0807B68A\n\
+	adds r1, r6, #0\n\
+	adds r1, #0x29\n\
+	movs r0, #0\n\
+	strb r0, [r1]\n\
+	adds r1, #1\n\
+	strb r0, [r1]\n\
+	adds r0, r6, #0\n\
+	bl func_fe6_08079A94\n\
+	adds r0, r6, #0\n\
+	bl Proc_Break\n\
+	ldr r1, .L0807B698 @ =gPrepUnitList\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x30\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #2\n\
+	adds r0, r0, r1\n\
+	ldr r0, [r0]\n\
+	ldr r0, [r0]\n\
+	ldrb r4, [r0, #4]\n\
+	bl ReorderPlayerUnitsBasedOnDeployment\n\
+	adds r0, r6, #0\n\
+	movs r1, #0\n\
+	bl func_fe6_0807A1C8\n\
+	adds r0, r6, #0\n\
+	adds r1, r4, #0\n\
+	movs r2, #1\n\
+	bl func_fe6_08079928\n\
+	adds r0, r6, #0\n\
+	bl PrepScreen_DrawScreenInfo\n\
+.L0807B68A:\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+.L0807B698: .4byte gPrepUnitList\n\
+	.syntax divided\n\
+");
+}
+
+#endif
+
+void func_fe6_0807B69C(struct PrepMenuProc * proc)
+{
+    SetDispEnable(1, 1, 1, 1, 1);
+}
+
+struct ProcScr CONST_DATA ProcScr_AtMenu[] =
+{
+    PROC_19,
+    PROC_CALL(LockGame),
+    PROC_CALL(StartMidFadeToBlack),
+    PROC_REPEAT(WhileFadeExists),
+    PROC_CALL(LockBmDisplay),
+    PROC_CALL(PrepMenu_EndIfNoUnit),
+    PROC_SLEEP(0),
+    PROC_CALL(PrepMenu_Init),
+    PROC_CALL(StartPrepMenuFadeOut),
+    PROC_SLEEP(0),
+PROC_LABEL(1),
+    PROC_REPEAT(PrepMenu_Loop),
+    PROC_GOTO(5),
+PROC_LABEL(7),
+    PROC_REPEAT(PrepUnit_HandleScrollUp),
+PROC_LABEL(8),
+    PROC_REPEAT(PrepUnit_HandleScrollDown),
+PROC_LABEL(3),
+    PROC_REPEAT(AtMenu_StartSubmenu),
+PROC_LABEL(4),
+    PROC_REPEAT(AtMenu_OnSubmenuEnd),
+    PROC_GOTO(1),
+PROC_LABEL(15),
+    PROC_SLEEP(1),
+    PROC_CALL(func_fe6_0807B69C),
+    PROC_GOTO(1),
+PROC_LABEL(9),
+    PROC_CALL(PrepScreen_ReloadLeftUnitInfoFromStatscreen),
+    PROC_REPEAT(func_fe6_0807B4C0),
+    PROC_GOTO(1),
+PROC_LABEL(10),
+    PROC_CALL(PrepScreen_ReloadLeftUnitInfoFromStatscreen),
+    PROC_REPEAT(func_fe6_0807B5A0),
+    PROC_GOTO(1),
+PROC_LABEL(13),
+    PROC_CALL(StartPrepMenuFadeIn),
+    PROC_SLEEP(0),
+    PROC_GOTO(3),
+PROC_LABEL(12),
+    PROC_CALL(StartPrepMenuFadeOut),
+    PROC_SLEEP(0),
+    PROC_GOTO(1),
+PROC_LABEL(14),
+    PROC_CALL(func_fe6_0807B0DC),
+    PROC_GOTO(6),
+PROC_LABEL(5),
+    PROC_CALL(func_fe6_0807B0DC),
+    PROC_SLEEP(60),
+PROC_LABEL(6),
+    PROC_CALL(StartPrepMenuFadeIn),
+    PROC_SLEEP(1),
+PROC_LABEL(11),
+    PROC_CALL(func_fe6_0807B0E4),
+    PROC_SLEEP(0),
+    PROC_CALL(EndAllMus),
+    PROC_CALL(UnlockBmDisplay),
+    PROC_CALL(UnlockGame),
+    PROC_END,
+};
+
+void StartPrepAtMenu(void)
+{
+    SpawnProc(ProcScr_AtMenu, PROC_TREE_3);
+}
+
+void StartSioPrepMenu(void)
+{
+    SpawnProc(ProcScr_AtMenu, PROC_TREE_3);
+    SioResetUnitItems();
+    ResetSioPidPool();
 }

@@ -122,6 +122,13 @@ struct PrepMenuCursorProc
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x2A);
     /* 2A */ u8 unk_2A;
+    /* 2B */ STRUCT_PAD(0x2B, 0x34);
+    /* 34 */ u8 cursor_x, cursor_y;
+    /* 36 */ u8 unk36, chidx;
+    /* 38 */ u8 disp_x, disp_y;
+    /* 3A */ STRUCT_PAD(0x3A, 0x43);
+    /* 43 */ u8 pre;
+    /* 44 */ bool8 unk_44;
 };
 
 void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc);
@@ -189,13 +196,21 @@ void PrepMenu_Loop(struct PrepMenuProc * proc);
 // func_fe6_0807B69C
 void StartPrepAtMenu(void);
 // StartSioPrepMenu
-// PrepMenuFadeIn_Init
-// PrepMenuFadeIn_Loop
-// func_fe6_0807B7C8
-// StartPrepMenuFadeIn
-// func_fe6_0807B89C
-void func_fe6_0807B8B0(ProcPtr proc, int);
-void func_fe6_0807B8CC(ProcPtr proc, fu8 arg_1, fu8 arg_2, int arg_3);
+
+struct ProcPrepFade {
+    PROC_HEADER;
+    STRUCT_PAD(0x29, 0x42);
+    u16 timer;
+};
+
+void PrepMenuFade_Init(struct ProcPrepFade * proc);
+void PrepMenuFadeOut_Loop(struct ProcPrepFade * proc);
+void PrepMenuFadeIn_Loop(struct ProcPrepFade * proc);
+void StartPrepMenuFadeOut(ProcPtr proc);
+void StartPrepMenuFadeIn(ProcPtr proc);
+
+void func_fe6_0807B8B0(struct PrepMenuCursorProc * proc, int idx);
+void func_fe6_0807B8CC(struct PrepMenuCursorProc * proc, fu8 x, fu8 y, int chidx);
 // func_fe6_0807B90C
 // func_fe6_0807B9CC
 // func_fe6_0807BC04
@@ -365,7 +380,63 @@ extern struct Unit gPrepUnitPool[]; // rearrange buf
 extern struct Text gPrepScreenTexts_Units[];
 extern u8 gUnk_0200E7D4;
 extern struct Text gUnk_0200E88C[];
+extern u16 gPrepFadePal[0x200];
 extern u8 gUnk_020104A4[]; // img buf
+
+extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
+// ??? ProcScr_PrepMenuFadeOut
+// ??? ProcScr_PrepMenuFadeIn
+// ??? gUnk_08679048
+// ??? gUnk_08679050
+// ??? gUnk_0867907A
+// ??? gUnk_08679082
+// ??? gUnk_0867908A
+// ??? gUnk_08679098
+// ??? gUnk_086790A0
+// ??? gUnk_086790BA
+// ??? gUnk_0867913C
+// ??? gUnk_0867916C
+// ??? gUnk_0867917A
+// ??? gUnk_08679182
+// ??? gUnk_086791A2
+// ??? gUnk_086791B0
+// ??? gUnk_086791BE
+// ??? ProcScr_PrepMenuBmCursor
+// ??? gUnk_0867929C
+// ??? gUnk_086792A8
+// ??? gUnk_086792B6
+// ??? gUnk_086792C4
+// ??? gUnk_08679326
+// ??? gUnk_08679330
+// ??? gUnk_08679354
+// ??? gUnk_08679368
+// ??? gUnk_08679388
+// ??? gUnk_086793A8
+// ??? gUnk_086793C8
+// ??? ProcScr_PrepTradeItemScreen
+// ??? gUnk_08679490
+// ??? ProcScr_PrepDiscardItemScreen
+// ??? gUnk_08679558
+// ??? gUnk_08679578
+// ??? gUnk_08679580
+// ??? gUnk_08679588
+// ??? gUnk_08679590
+// ??? gUnk_08679598
+// ??? gUnk_086795F8
+// ??? gUnk_08679654
+// ??? gUnk_0867966C
+// ??? gUnk_0867968C
+// ??? gUnk_086796C4
+// ??? gUnk_086796F4
+// ??? gUnk_0867971C
+// ??? gUnk_0867973C
+// ??? gUnk_08679754
+// ??? gUnk_0867976C
+// ??? gUnk_08679774
+// ??? gUnk_0867978C
+// ??? gUnk_086797D0
+// ??? gUnk_08679820
+// ??? gUnk_08679924
 
 extern u16 const gUnk_08320FCE[]; // tiles
 extern u16 const gUnk_08326EE6[]; // tiles
