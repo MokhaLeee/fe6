@@ -128,3 +128,40 @@ void func_fe6_0807B8CC(struct PrepMenuCursorProc * proc, fu8 x, fu8 y, int chidx
     proc->disp_x = GetChapterInfo(gPlaySt.chapter)->gmap_dispx;
     proc->disp_y = GetChapterInfo(gPlaySt.chapter)->gmap_dispy;
 }
+
+void func_fe6_0807B90C(u8 a, u8 b, int c)
+{
+    u8 _c = c;
+    u8 e = ((b / 8) % 6) * 2;
+
+    if (a == 0)
+    {
+        i8 __c = c;
+        if (__c != 0)
+        {
+            gBg0Tm[TM_OFFSET(0x14, 4)] = e + 0xF240;
+            gBg0Tm[TM_OFFSET(0x15, 4)] = e + 0xF241;
+        }
+        else
+        {
+            gBg0Tm[TM_OFFSET(0x14, 4)] = 0;
+            gBg0Tm[TM_OFFSET(0x15, 4)] = 0;
+        }
+    }
+    else
+    {
+        i8 __c = c;
+        if (__c != 0)
+        {
+            u16 oam2 = 0xF240;
+            gBg0Tm[TM_OFFSET(0x14, 0x13)] = e + 0xFA40;
+            gBg0Tm[TM_OFFSET(0x15, 0x13)] = e + 0xFA41;
+        }
+        else
+        {
+            gBg0Tm[TM_OFFSET(0x14, 0x13)] = 0;
+            gBg0Tm[TM_OFFSET(0x15, 0x13)] = 0;
+        }
+    }
+    EnableBgSync(BG0_SYNC_BIT);
+}
