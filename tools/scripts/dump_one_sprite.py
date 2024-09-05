@@ -1,3 +1,5 @@
+#!/bin/python3
+
 import sys
 
 def read_int(f, count, signed = False):

@@ -1,9 +1,5 @@
 	.section .rodata
 
-	.global gUnk_08327264
-gUnk_08327264: @ 08327264
-	.incbin "fe6-base.gba", 0x327264, (0x32726C - 0x327264) @ length: 0008
-
 	.global gUnk_0832726C
 gUnk_0832726C: @ 0832726C
 	.incbin "fe6-base.gba", 0x32726C, (0x327274 - 0x32726C) @ length: 0008

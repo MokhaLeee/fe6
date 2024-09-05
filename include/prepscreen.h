@@ -93,6 +93,8 @@ struct PrepMenuProc
     /* 60 */ ProcPtr unk_60;
 };
 
+#define SYDIFF(proc) (*((i16 *)&(proc)->yDiff_cur))
+
 struct UnkProc_08678DE0
 {
     /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
@@ -119,14 +121,18 @@ struct UnkProc_08678E18
 
 struct PrepMenuCursorProc
 {
-    /* 00 */ PROC_HEADER;
-    /* 29 */ STRUCT_PAD(0x29, 0x2A);
+    /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
+    /* 29 */ u8 unk_29;
     /* 2A */ u8 unk_2A;
-    /* 2B */ STRUCT_PAD(0x2B, 0x34);
+    /* 2B */ STRUCT_PAD(0x2B, 0x33);
+    /* 33 */ u8 unk_33;
     /* 34 */ u8 cursor_x, cursor_y;
     /* 36 */ u8 unk36, chidx;
     /* 38 */ u8 disp_x, disp_y;
-    /* 3A */ STRUCT_PAD(0x3A, 0x43);
+    /* 3A */ STRUCT_PAD(0x3A, 0x3E);
+    /* 3E */ u16 unk_3E;
+    /* 40 */ u16 unk_40;
+    /* 42 */ u8 unk_42;
     /* 43 */ u8 pre;
     /* 44 */ bool8 unk_44;
 };
@@ -211,9 +217,9 @@ void StartPrepMenuFadeIn(ProcPtr proc);
 
 void func_fe6_0807B8B0(struct PrepMenuCursorProc * proc, int idx);
 void func_fe6_0807B8CC(struct PrepMenuCursorProc * proc, fu8 x, fu8 y, int chidx);
-// func_fe6_0807B90C
-// func_fe6_0807B9CC
-// func_fe6_0807BC04
+void func_fe6_0807B90C(u8 a, u8 b, int c);
+void PrepUnit_DrawSMSAndObjs(struct PrepMenuCursorProc * proc);
+void PrepMenu_DrawGmapSprites(struct PrepMenuCursorProc * proc);
 // func_fe6_0807BE88
 // func_fe6_0807BF70
 // func_fe6_0807C090
@@ -384,17 +390,29 @@ extern u16 gPrepFadePal[0x200];
 extern u8 gUnk_020104A4[]; // img buf
 
 extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
-// ??? ProcScr_PrepMenuFadeOut
-// ??? ProcScr_PrepMenuFadeIn
-// ??? gUnk_08679048
-// ??? gUnk_08679050
-// ??? gUnk_0867907A
-// ??? gUnk_08679082
-// ??? gUnk_0867908A
-// ??? gUnk_08679098
-// ??? gUnk_086790A0
-// ??? gUnk_086790BA
-// ??? gUnk_0867913C
+extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeOut[];
+extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeIn[];
+extern CONST_DATA u16 Sprite_08679048[];
+extern CONST_DATA u16 Sprite_08679050[];
+extern CONST_DATA u16 Sprite_0867907A[];
+extern CONST_DATA u16 Sprite_08679082[];
+extern CONST_DATA u16 Sprite_0867908A[];
+extern CONST_DATA u16 Sprite_08679098[];
+extern CONST_DATA u16 Sprite_086790A0[];
+extern CONST_DATA u16 Sprite_086790BA[];
+extern CONST_DATA u16 Sprite_086790DA[];
+extern CONST_DATA u16 Sprite_086790E2[];
+extern CONST_DATA u16 Sprite_086790EA[];
+extern CONST_DATA u16 Sprite_086790F2[];
+extern CONST_DATA u16 Sprite_086790FA[];
+extern CONST_DATA u16 Sprite_08679102[];
+extern CONST_DATA u16 Sprite_0867910A[];
+extern CONST_DATA u16 Sprite_08679112[];
+extern CONST_DATA u16 Sprite_0867911A[];
+extern CONST_DATA u16 Sprite_08679122[];
+extern CONST_DATA u16 Sprite_0867912A[];
+extern CONST_DATA u16 Sprite_08679132[];
+extern CONST_DATA u16 * Sprites_0867913C[12];
 // ??? gUnk_0867916C
 // ??? gUnk_0867917A
 // ??? gUnk_08679182
