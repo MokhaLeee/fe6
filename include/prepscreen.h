@@ -39,7 +39,7 @@ enum prepscreen_text_idx {
 #define OBPAL_PREPMENU_D 0x0D
 
 struct UnkProc_08678E18;
-struct PrepMenuCursorProc;
+struct PrepScreenDispProc;
 
 enum PREP_SUB2_ACTION_IDX {
     PREP_SUB2ACT_NONE,
@@ -86,12 +86,14 @@ struct PrepMenuProc
     /* 46 */ STRUCT_PAD(0x46, 0x48);
     /* 48 */ u32 unk_48;
     /* 4C */ u32 unk_4C;
-    /* 50 */ struct PrepMenuCursorProc * unk_50;
+    /* 50 */ struct PrepScreenDispProc * unk_50;
     /* 54 */ STRUCT_PAD(0x54, 0x58);
     /* 58 */ ProcPtr procbg;
     /* 5C */ struct UnkProc_08678E18 * unk_5C;
     /* 60 */ ProcPtr unk_60;
 };
+
+#define SYDIFF(proc) (*((i16 *)&(proc)->yDiff_cur))
 
 struct UnkProc_08678DE0
 {
@@ -117,18 +119,37 @@ struct UnkProc_08678E18
     /* 35 */ u8 unk_35;
 };
 
-struct PrepMenuCursorProc
+struct PrepScreenDispProc
 {
-    /* 00 */ PROC_HEADER;
-    /* 29 */ STRUCT_PAD(0x29, 0x2A);
+    /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
+    /* 29 */ u8 unk_29;
     /* 2A */ u8 unk_2A;
-    /* 2B */ STRUCT_PAD(0x2B, 0x34);
+    /* 2B */ u8 unk_2B;
+    /* 2C */ u8 unk_2C;
+    /* 2D */ u8 unk_2D;
+    /* 2E */ u8 unk_2E;
+    /* 2F */ u8 unk_2F;
+    /* 30 */ u8 unk_30;
+    /* 31 */ u8 unk_31;
+    /* 32 */ u8 unk_32;
+    /* 33 */ u8 unk_33;
     /* 34 */ u8 cursor_x, cursor_y;
     /* 36 */ u8 unk36, chidx;
     /* 38 */ u8 disp_x, disp_y;
-    /* 3A */ STRUCT_PAD(0x3A, 0x43);
+    /* 3A */ u16 unk_3A;
+    /* 3C */ u16 unk_3C;
+    /* 3E */ u16 unk_3E;
+    /* 40 */ u16 unk_40;
+    /* 42 */ u8 unk_42;
     /* 43 */ u8 pre;
-    /* 44 */ bool8 unk_44;
+    /* 44 */ u8 unk_44;
+    /* 46 */ u16 unk_46;
+    /* 48 */ u16 unk_48;
+};
+
+struct PrepMenuProcBug {
+    STRUCT_PAD(0, 0x34);
+    u16 _bug_34;
 };
 
 void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc);
@@ -209,19 +230,19 @@ void PrepMenuFadeIn_Loop(struct ProcPrepFade * proc);
 void StartPrepMenuFadeOut(ProcPtr proc);
 void StartPrepMenuFadeIn(ProcPtr proc);
 
-void func_fe6_0807B8B0(struct PrepMenuCursorProc * proc, int idx);
-void func_fe6_0807B8CC(struct PrepMenuCursorProc * proc, fu8 x, fu8 y, int chidx);
-// func_fe6_0807B90C
-// func_fe6_0807B9CC
-// func_fe6_0807BC04
-// func_fe6_0807BE88
-// func_fe6_0807BF70
-// func_fe6_0807C090
-// PrepMenuBmCursor_Init
-// PrepMenuBmCursor_Loop
-// PrepMenuBmCursor_End
-// PrepMenuBmCursor_Block
-ProcPtr StartPrepMenuBmCursor(ProcPtr parent);
+void func_fe6_0807B8B0(struct PrepScreenDispProc * proc, int idx);
+void func_fe6_0807B8CC(struct PrepScreenDispProc * proc, fu8 x, fu8 y, int chidx);
+void func_fe6_0807B90C(u8 a, u8 b, int c);
+void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc);
+void PrepMenu_DrawGmapSprites(struct PrepScreenDispProc * proc);
+void func_fe6_0807BE88(struct PrepScreenDispProc * proc);
+void func_fe6_0807BF70(struct PrepScreenDispProc * proc);
+void func_fe6_0807C090(struct PrepScreenDispProc * proc);
+// PrepScreenDisp_Init
+// PrepScreenDisp_Loop
+// PrepScreenDisp_End
+// PrepScreenDisp_Block
+ProcPtr StartPrepScreenDisp(ProcPtr parent);
 // func_fe6_0807C520
 void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc);
 void PrepScreenMenu_OnItems(struct PrepMenuProc * proc);
@@ -244,7 +265,7 @@ bool PrepMenuOnSelected(struct PrepMenuProc * proc);
 // PutPrepScreenMenuItems
 void PrepMenuHelpbox(struct PrepMenuProc * proc);
 // PrepMenuHelpbox
-// func_fe6_0807CE98
+u8 func_fe6_0807CE98(struct PrepMenuProc * proc);
 // func_fe6_0807CEF0
 u8 func_fe6_0807CF2C(u8, u8);
 // func_fe6_0807CF78
@@ -334,8 +355,8 @@ bool func_fe6_08082B74(struct Unit * unit);
 void func_fe6_08082CBC(void);
 ProcPtr func_fe6_08082CF4(ProcPtr parent);
 // func_fe6_08082D08
-// func_fe6_08082D54
-// func_fe6_08082DA4
+void func_fe6_08082D54(ProcPtr proc, int msg_order_idx);
+void func_fe6_08082DA4(ProcPtr proc, int oam1, int, int);
 // func_fe6_08082E74
 // func_fe6_08082EC0
 // func_fe6_08082EEC
@@ -384,24 +405,36 @@ extern u16 gPrepFadePal[0x200];
 extern u8 gUnk_020104A4[]; // img buf
 
 extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
-// ??? ProcScr_PrepMenuFadeOut
-// ??? ProcScr_PrepMenuFadeIn
-// ??? gUnk_08679048
-// ??? gUnk_08679050
-// ??? gUnk_0867907A
-// ??? gUnk_08679082
-// ??? gUnk_0867908A
-// ??? gUnk_08679098
-// ??? gUnk_086790A0
-// ??? gUnk_086790BA
-// ??? gUnk_0867913C
-// ??? gUnk_0867916C
-// ??? gUnk_0867917A
-// ??? gUnk_08679182
-// ??? gUnk_086791A2
-// ??? gUnk_086791B0
-// ??? gUnk_086791BE
-// ??? ProcScr_PrepMenuBmCursor
+extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeOut[];
+extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeIn[];
+extern CONST_DATA u16 Sprite_08679048[];
+extern CONST_DATA u16 Sprite_08679050[];
+extern CONST_DATA u16 Sprite_0867907A[];
+extern CONST_DATA u16 Sprite_08679082[];
+extern CONST_DATA u16 Sprite_0867908A[];
+extern CONST_DATA u16 Sprite_08679098[];
+extern CONST_DATA u16 Sprite_086790A0[];
+extern CONST_DATA u16 Sprite_086790BA[];
+extern CONST_DATA u16 Sprite_086790DA[];
+extern CONST_DATA u16 Sprite_086790E2[];
+extern CONST_DATA u16 Sprite_086790EA[];
+extern CONST_DATA u16 Sprite_086790F2[];
+extern CONST_DATA u16 Sprite_086790FA[];
+extern CONST_DATA u16 Sprite_08679102[];
+extern CONST_DATA u16 Sprite_0867910A[];
+extern CONST_DATA u16 Sprite_08679112[];
+extern CONST_DATA u16 Sprite_0867911A[];
+extern CONST_DATA u16 Sprite_08679122[];
+extern CONST_DATA u16 Sprite_0867912A[];
+extern CONST_DATA u16 Sprite_08679132[];
+extern CONST_DATA u16 * Sprites_0867913C[12];
+extern CONST_DATA u16 Sprite_0867916C[];
+// ??? Sprite_0867917A
+// ??? Sprite_08679182
+extern CONST_DATA u16 Sprite_086791A2[];
+// ??? Sprite_086791B0
+// ??? Sprite_086791BE
+// ??? ProcScr_PrepScreenDisp
 // ??? gUnk_0867929C
 // ??? gUnk_086792A8
 // ??? gUnk_086792B6
