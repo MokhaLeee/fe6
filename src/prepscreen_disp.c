@@ -115,7 +115,7 @@ void StartPrepMenuFadeIn(ProcPtr proc)
     SpawnProcLocking(ProcScr_PrepMenuFadeIn, proc);
 }
 
-void func_fe6_0807B8B0(struct PrepMenuCursorProc * proc, int idx)
+void func_fe6_0807B8B0(struct PrepScreenDispProc * proc, int idx)
 {
     u8 _idx = idx;
 
@@ -125,7 +125,7 @@ void func_fe6_0807B8B0(struct PrepMenuCursorProc * proc, int idx)
     proc->unk_44 = TRUE;
 }
 
-void func_fe6_0807B8CC(struct PrepMenuCursorProc * proc, fu8 x, fu8 y, int chidx)
+void func_fe6_0807B8CC(struct PrepScreenDispProc * proc, fu8 x, fu8 y, int chidx)
 {
     proc->cursor_x = x;
     proc->cursor_y = y;
@@ -173,7 +173,7 @@ void func_fe6_0807B90C(u8 a, u8 b, int c)
 
 /* https://decomp.me/scratch/W8G6F */
 #if NONMATCHING
-void PrepUnit_DrawSMSAndObjs(struct PrepMenuCursorProc * proc)
+void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc)
 {
     u8 i;
     int r6, r8;
@@ -279,7 +279,7 @@ void PrepUnit_DrawSMSAndObjs(struct PrepMenuCursorProc * proc)
 #else
 
 NAKEDFUNC
-void PrepUnit_DrawSMSAndObjs(struct PrepMenuCursorProc * proc)
+void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc)
 {
 asm("\
 	.syntax unified\n\
@@ -766,7 +766,7 @@ u16 CONST_DATA * Sprites_0867913C[12] =
     Sprite_08679132,
 };
 
-void PrepMenu_DrawGmapSprites(struct PrepMenuCursorProc * proc)
+void PrepMenu_DrawGmapSprites(struct PrepScreenDispProc * proc)
 {
     u8 order[6] = { 8, 5, 4, 3, 4, 5 };
     u32 unk33;
@@ -888,75 +888,6 @@ u16 CONST_DATA Sprite_086791CC[] =
     OAM0_SHAPE_32x32 + OAM0_BLEND, OAM1_SIZE_32x32, OAM2_CHR(0x80) + OAM2_LAYER(3),
 };
 
-void func_fe6_0807BE88(struct PrepMenuCursorProc * proc)
-{
-    struct PrepMenuProc * parent = proc->proc_parent;
-
-    switch (parent->unk_29) {
-    case 0:
-        if (parent->unk_35 == 0)
-            PutUiHand(0xC, parent->unk_33[0] * 0x10 + 0x28);
-        else if (parent->unk_35 == 1)
-            PutUiHand(0xC, parent->unk_33[parent->unk_35] * 0x10 + 0x48);
-        break;
-
-    case 1:
-        if (parent->a_button_actions & 2 && parent->unk_33[0] == 0)
-            PutUiHand(0x6C, 0x8);
-        else
-        {
-            PutUiHand(
-                (proc->proc_parent->list_num_cur & 1) * 0x40 + 0x70,
-                proc->proc_parent->hand_y_pos * 0x10 + 0x28);
-
-            PutSpriteExt(
-                0xD,
-                (proc->proc_parent->list_num_cur & 1) * 0x40 + 0x70,
-                proc->proc_parent->hand_y_pos * 0x10 + 0x30,
-                Sprite_0867916C,
-                0x3000);
-
-            gPal[0x13E] = gUnk_02016874.unk_00[(proc->unk_3E / 4) & 0xF];
-            EnablePalSync();
-        }
-        break;
-
-    default:
-        break;
-    }
-}
-
-void func_fe6_0807BF70(struct PrepMenuCursorProc * proc)
-{
-    struct PrepMenuProc * parent = proc->proc_parent;
-
-    if ((parent->a_button_actions & 1) && (parent->cur_counter != 0))
-    {
-        if (proc->unk_3C <= 0xFF)
-            proc->unk_3C += 0x20;
-    }
-    else
-    {
-        if (proc->unk_3C != 0)
-            proc->unk_3C -= 0x20;
-    }
-
-    if (proc->unk_3C > 0x10)
-    {
-        gPal[0x13D] = *(Pal_0831AAFC + (proc->unk_3E / 8) % 0x10);
-        EnablePalSync();
-
-        if ((proc->unk_2A % 10) <= 4)
-        {
-            SetObjAffineAuto(0, 0, 0x100, proc->unk_3C);
-            PutSprite(4, 0x68, 0x1FE, Sprite_086791A2, 0x3000);
-        }
-
-        if (proc->unk_2A != 0)
-            proc->unk_2A++;
-    }
-}
-
 u16 CONST_DATA Sprite_086791D4[] =
 {
     3,
@@ -998,3 +929,288 @@ u16 CONST_DATA * Sprites_0867922C[] =
     Sprite_08679202,
     Sprite_0867921C,
 };
+
+void func_fe6_0807BE88(struct PrepScreenDispProc * proc)
+{
+    struct PrepMenuProc * parent = proc->proc_parent;
+
+    switch (parent->unk_29) {
+    case 0:
+        if (parent->unk_35 == 0)
+            PutUiHand(0xC, parent->unk_33[0] * 0x10 + 0x28);
+        else if (parent->unk_35 == 1)
+            PutUiHand(0xC, parent->unk_33[parent->unk_35] * 0x10 + 0x48);
+        break;
+
+    case 1:
+        if (parent->a_button_actions & 2 && parent->unk_33[0] == 0)
+            PutUiHand(0x6C, 0x8);
+        else
+        {
+            PutUiHand(
+                (proc->proc_parent->list_num_cur & 1) * 0x40 + 0x70,
+                proc->proc_parent->hand_y_pos * 0x10 + 0x28);
+
+            PutSpriteExt(
+                0xD,
+                (proc->proc_parent->list_num_cur & 1) * 0x40 + 0x70,
+                proc->proc_parent->hand_y_pos * 0x10 + 0x30,
+                Sprite_0867916C,
+                0x3000);
+
+            gPal[0x13E] = gUnk_02016874.unk_00[(proc->unk_3E / 4) & 0xF];
+            EnablePalSync();
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+void func_fe6_0807BF70(struct PrepScreenDispProc * proc)
+{
+    struct PrepMenuProc * parent = proc->proc_parent;
+
+    if ((parent->a_button_actions & 1) && (parent->cur_counter != 0))
+    {
+        if (proc->unk_3C <= 0xFF)
+            proc->unk_3C += 0x20;
+    }
+    else
+    {
+        if (proc->unk_3C != 0)
+            proc->unk_3C -= 0x20;
+    }
+
+    if (proc->unk_3C > 0x10)
+    {
+        gPal[0x13D] = *(Pal_0831AAFC + (proc->unk_3E / 8) % 0x10);
+        EnablePalSync();
+
+        if ((proc->unk_2A % 10) <= 4)
+        {
+            SetObjAffineAuto(0, 0, 0x100, proc->unk_3C);
+            PutSprite(4, 0x68, 0x1FE, Sprite_086791A2, 0x3000);
+        }
+
+        if (proc->unk_2A != 0)
+            proc->unk_2A++;
+    }
+}
+
+void func_fe6_0807C090(struct PrepScreenDispProc * proc)
+{
+    int i, x;
+
+    SetBlendConfig(0, 0xE, 0x8, 0);
+    SetBlendTargetA(0, 0, 0, 0, 1);
+    SetBlendTargetB(0, 0, 0, 1, 0);
+
+    for (i = 0; i < 8; i++)
+        PutSprite(0xD, 0x20 * i, 4, Sprite_0867917A, 0x2000);
+
+    if (proc->unk_30 != 0)
+    {
+        proc->unk_3A = (proc->unk_30 * 320 - (proc->unk_30 * 0x10) * proc->unk_30) / 10;
+
+        if (proc->unk_30 < 10)
+            proc->unk_30++;
+        else
+            proc->unk_30 = 0;
+    }
+
+    if (proc->proc_parent->unk_2B == 0)
+        x = proc->unk_3A - 0xA0;
+    else
+        x = -proc->unk_3A;
+
+    if (proc->proc_parent->unk_35 == 1)
+    {
+        if (proc->unk_44 == 0)
+        {
+            if (proc->unk_46 < 0x100)
+                proc->unk_46 += 0x20;
+        }
+        else
+        {
+            if (proc->unk_46 >= 0x40)
+                proc->unk_46 -= 0x40;
+            else
+            {
+                proc->unk_44 = 0;
+                proc->unk_46 = 0;
+                func_fe6_08082D54(proc->proc_parent->unk_60, proc->pre);
+                proc->unk_48 = 0x60;
+            }
+        }
+
+        if (proc->proc_parent->unk_35 == 1)
+        {
+            goto L0;
+        }
+    }
+
+    PutSprite(0xD, OAM1_X(x + 8), 8, Sprite_08679182, 0x2000);
+
+    if (proc->unk_31 == 0)
+    {
+        if (proc->proc_parent->unk_2C & 1)
+            goto L2;
+
+        func_fe6_0807BF70(proc);
+    }
+    else
+    {
+        PutSprite(0xD, OAM1_X(0x140 + x), 8, Sprite_086791B0, 0x2000);
+    }
+    goto L1;
+
+L0:
+    func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x200 - proc->unk_48), 7, proc->unk_46);
+    func_fe6_08082DA4(proc->proc_parent->unk_60, OAM1_X(0x100 - proc->unk_48), 7, proc->unk_46);
+    proc->unk_48++;
+
+L1:
+    if ((proc->proc_parent->unk_2C & 1) == 0)
+        return;
+
+L2:
+    if (proc->proc_parent->unk_35 != 0)
+        return;
+
+    PutSpriteExt(4, OAM1_X((x >> 1) + 0xBC), 8, Sprite_086791BE, 0x4000);
+}
+
+void PrepScreenDisp_Init(struct PrepScreenDispProc * proc)
+{
+    proc->unk_2A = 0;
+    proc->unk_3E = 0;
+    proc->unk_29 = 0;
+    proc->unk_40 = proc->proc_parent->yDiff_cur;
+
+    ForceSyncUnitSpriteSheet();
+
+    proc->unk_2B = proc->proc_parent->unk_33[proc->proc_parent->unk_35];
+    proc->unk_2C = proc->proc_parent->unk_35;
+    proc->unk_3A = 0xA0;
+    proc->unk_2D = proc->proc_parent->unk_29;
+    proc->unk_2E = proc->proc_parent->in_unit_sel_screen;
+    proc->unk_2F = proc->proc_parent->unk_2B;
+    proc->unk_30 = 0;
+    proc->unk_32 = 0;
+    proc->unk_33 = 0;
+
+    proc->unk_31 = func_fe6_0807CE98(proc->proc_parent);
+    proc->unk_44 = 0;
+    proc->pre = proc->proc_parent->unk_33[1];
+    proc->unk_48 = 0x60;
+
+    if (((struct PrepMenuProcBug *)(proc->proc_parent))->_bug_34 == 0x100) // ?
+    {
+        proc->unk_46 = ((struct PrepMenuProcBug *)(proc->proc_parent))->_bug_34;
+        func_fe6_08082D54(proc->proc_parent->unk_60, 5);
+    }
+    else
+    {
+        proc->unk_46 = 0;
+        func_fe6_08082D54(proc->proc_parent->unk_60, func_fe6_0807CF2C(proc->pre, 1) - 5);
+    }
+}
+
+void PrepScreenDisp_Loop(struct PrepScreenDispProc * proc)
+{
+    if (proc->proc_parent->in_unit_sel_screen != proc->unk_2E)
+        proc->unk_2E = proc->proc_parent->in_unit_sel_screen;
+
+    if (proc->proc_parent->unk_2B != proc->unk_2F)
+    {
+        proc->unk_31 = func_fe6_0807CE98(proc->proc_parent);
+        proc->unk_2F = proc->proc_parent->unk_2B;
+        proc->unk_30 = 1;
+    }
+
+    SyncUnitSpriteSheet();
+
+    if (proc->proc_parent->in_unit_sel_screen == FALSE)
+    {
+        PrepMenu_DrawGmapSprites(proc);
+    }
+    else
+    {
+        SetBgOffset(2, -0x80, (proc->proc_parent->yDiff_cur - 0x28) & 0xFF);
+        PrepUnit_DrawSMSAndObjs(proc);
+
+        if (proc->proc_parent->yDiff_cur != 0)
+            func_fe6_0807B90C(0, proc->unk_32, 1);
+        else
+            func_fe6_0807B90C(0, proc->unk_32, 0);
+
+        if (((proc->proc_parent->yDiff_cur / 0x10 + 7) * 2) < proc->proc_parent->unk_2D)
+            func_fe6_0807B90C(1, proc->unk_32, 1);
+        else
+            func_fe6_0807B90C(1, proc->unk_32, 0);
+    }
+
+    func_fe6_0807BE88(proc);
+    func_fe6_0807C090(proc);
+
+    if ((++proc->unk_32 / 8) > 5)
+        proc->unk_32 = 0;
+
+    proc->unk_40 = proc->proc_parent->yDiff_cur;
+
+    if (proc->unk_2C != proc->proc_parent->unk_35)
+    {
+        proc->unk_2C = proc->proc_parent->unk_35;
+    }
+    else if (proc->unk_2B != proc->proc_parent->unk_33[proc->proc_parent->unk_35])
+    {
+        if (proc->proc_parent->unk_35 == 0)
+        {
+            RemoveUiEntryHover(1, proc->unk_2B * 2 + 5, 10);
+            PutUiEntryHover(1, proc->proc_parent->unk_33[proc->proc_parent->unk_35] * 2 + 5, 10);
+        }
+        else
+        {
+            RemoveUiEntryHover(1, proc->unk_2B * 2 + 9, 10);
+            PutUiEntryHover(1, proc->proc_parent->unk_33[proc->proc_parent->unk_35] * 2 + 9, 10);
+        }
+        EnableBgSync(BG1_SYNC_BIT);
+    }
+
+    proc->unk_2B = proc->proc_parent->unk_33[proc->proc_parent->unk_35];
+    proc->unk_3E++;
+}
+
+void PrepScreenDisp_End(struct PrepScreenDispProc * proc)
+{
+    return;
+}
+
+void PrepScreenDisp_Block(struct PrepScreenDispProc * proc)
+{
+    return;
+}
+
+struct ProcScr CONST_DATA ProcScr_PrepScreenDisp[] = {
+    PROC_19,
+PROC_LABEL(0),
+    PROC_SLEEP(1),
+    PROC_CALL(PrepScreenDisp_Init),
+PROC_LABEL(1),
+    PROC_REPEAT(PrepScreenDisp_Loop),
+    PROC_GOTO(5),
+PROC_LABEL(2),
+    PROC_REPEAT(PrepScreenDisp_Block),
+PROC_LABEL(5),
+    PROC_CALL(PrepScreenDisp_End),
+    PROC_END,
+};
+
+ProcPtr StartPrepScreenDisp(ProcPtr parent)
+{
+    struct PrepScreenDispProc * proc;
+    proc = SpawnProc(ProcScr_PrepScreenDisp, parent);
+    proc->unk_3C = 0;
+}

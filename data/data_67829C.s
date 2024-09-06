@@ -1,9 +1,5 @@
     .data
 
-	.global ProcScr_PrepMenuBmCursor
-ProcScr_PrepMenuBmCursor: @ 0867923C
-	.incbin "fe6-base.gba", 0x67923C, (0x67929C - 0x67923C) @ length: 0060
-
 	.global gUnk_0867929C
 gUnk_0867929C: @ 0867929C
 	.incbin "fe6-base.gba", 0x67929C, (0x6792A8 - 0x67929C) @ length: 000C

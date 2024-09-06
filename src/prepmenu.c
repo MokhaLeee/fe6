@@ -958,7 +958,7 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
 
     PrepMenu_InitScreen(proc);
 
-    func_fe6_0807B8CC((proc->unk_50 = StartPrepMenuBmCursor(proc)),
+    func_fe6_0807B8CC((proc->unk_50 = StartPrepScreenDisp(proc)),
         GetChapterInfo(gPlaySt.chapter)->gmap_cursorx * 8,
         GetChapterInfo(gPlaySt.chapter)->gmap_cursory * 8,
         GetChapterInfo(gPlaySt.chapter)->number_id);
