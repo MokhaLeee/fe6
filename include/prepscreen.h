@@ -129,7 +129,8 @@ struct PrepMenuCursorProc
     /* 34 */ u8 cursor_x, cursor_y;
     /* 36 */ u8 unk36, chidx;
     /* 38 */ u8 disp_x, disp_y;
-    /* 3A */ STRUCT_PAD(0x3A, 0x3E);
+    /* 3A */ STRUCT_PAD(0x3A, 0x3C);
+    /* 3C */ u16 unk_3C;
     /* 3E */ u16 unk_3E;
     /* 40 */ u16 unk_40;
     /* 42 */ u8 unk_42;
@@ -413,12 +414,12 @@ extern CONST_DATA u16 Sprite_08679122[];
 extern CONST_DATA u16 Sprite_0867912A[];
 extern CONST_DATA u16 Sprite_08679132[];
 extern CONST_DATA u16 * Sprites_0867913C[12];
-// ??? gUnk_0867916C
-// ??? gUnk_0867917A
-// ??? gUnk_08679182
-// ??? gUnk_086791A2
-// ??? gUnk_086791B0
-// ??? gUnk_086791BE
+extern CONST_DATA u16 Sprite_0867916C[];
+// ??? Sprite_0867917A
+// ??? Sprite_08679182
+extern CONST_DATA u16 Sprite_086791A2[];
+// ??? Sprite_086791B0
+// ??? Sprite_086791BE
 // ??? ProcScr_PrepMenuBmCursor
 // ??? gUnk_0867929C
 // ??? gUnk_086792A8

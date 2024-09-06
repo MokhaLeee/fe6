@@ -6,6 +6,7 @@
 #include "oam.h"
 #include "sprite.h"
 #include "unitsprite.h"
+#include "unitlistscreen.h"
 #include "chapterinfo.h"
 #include "prepscreen.h"
 
@@ -837,3 +838,163 @@ void PrepMenu_DrawGmapSprites(struct PrepMenuCursorProc * proc)
     EnablePalSync();
 }
 
+u16 CONST_DATA Sprite_0867916C[] =
+{
+    2,
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_CHR(0x2C0) + OAM2_LAYER(2),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x2C3) + OAM2_LAYER(2),
+};
+
+u16 CONST_DATA Sprite_0867917A[] =
+{
+    1,
+    OAM0_SHAPE_32x32 + OAM0_BLEND, OAM1_SIZE_32x32, OAM2_CHR(0x240) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08679182[] =
+{
+    5,
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16, OAM2_CHR(0x24E) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0x252) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(64), OAM2_CHR(0x256) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(96), OAM2_CHR(0x25A) + OAM2_LAYER(3),
+    OAM0_SHAPE_16x16 + OAM0_BLEND, OAM1_SIZE_16x16 + OAM1_X(128), OAM2_CHR(0x25E) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_086791A2[] =
+{
+    2,
+    OAM0_SHAPE_32x32 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x32, OAM2_CHR(0x246) + OAM2_LAYER(1),
+    OAM0_SHAPE_32x32 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x32 + OAM1_X(32), OAM2_CHR(0x24A) + OAM2_LAYER(1),
+};
+
+u16 CONST_DATA Sprite_086791B0[] =
+{
+    2,
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16, OAM2_CHR(0x28E) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(40), OAM2_CHR(0x292) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_086791BE[] =
+{
+    2,
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(0x29B) + OAM2_LAYER(1),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(32), OAM2_CHR(0x29F) + OAM2_LAYER(1),
+};
+
+u16 CONST_DATA Sprite_086791CC[] =
+{
+    1,
+    OAM0_SHAPE_32x32 + OAM0_BLEND, OAM1_SIZE_32x32, OAM2_CHR(0x80) + OAM2_LAYER(3),
+};
+
+void func_fe6_0807BE88(struct PrepMenuCursorProc * proc)
+{
+    struct PrepMenuProc * parent = proc->proc_parent;
+
+    switch (parent->unk_29) {
+    case 0:
+        if (parent->unk_35 == 0)
+            PutUiHand(0xC, parent->unk_33[0] * 0x10 + 0x28);
+        else if (parent->unk_35 == 1)
+            PutUiHand(0xC, parent->unk_33[parent->unk_35] * 0x10 + 0x48);
+        break;
+
+    case 1:
+        if (parent->a_button_actions & 2 && parent->unk_33[0] == 0)
+            PutUiHand(0x6C, 0x8);
+        else
+        {
+            PutUiHand(
+                (proc->proc_parent->list_num_cur & 1) * 0x40 + 0x70,
+                proc->proc_parent->hand_y_pos * 0x10 + 0x28);
+
+            PutSpriteExt(
+                0xD,
+                (proc->proc_parent->list_num_cur & 1) * 0x40 + 0x70,
+                proc->proc_parent->hand_y_pos * 0x10 + 0x30,
+                Sprite_0867916C,
+                0x3000);
+
+            gPal[0x13E] = gUnk_02016874.unk_00[(proc->unk_3E / 4) & 0xF];
+            EnablePalSync();
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+void func_fe6_0807BF70(struct PrepMenuCursorProc * proc)
+{
+    struct PrepMenuProc * parent = proc->proc_parent;
+
+    if ((parent->a_button_actions & 1) && (parent->cur_counter != 0))
+    {
+        if (proc->unk_3C <= 0xFF)
+            proc->unk_3C += 0x20;
+    }
+    else
+    {
+        if (proc->unk_3C != 0)
+            proc->unk_3C -= 0x20;
+    }
+
+    if (proc->unk_3C > 0x10)
+    {
+        gPal[0x13D] = *(Pal_0831AAFC + (proc->unk_3E / 8) % 0x10);
+        EnablePalSync();
+
+        if ((proc->unk_2A % 10) <= 4)
+        {
+            SetObjAffineAuto(0, 0, 0x100, proc->unk_3C);
+            PutSprite(4, 0x68, 0x1FE, Sprite_086791A2, 0x3000);
+        }
+
+        if (proc->unk_2A != 0)
+            proc->unk_2A++;
+    }
+}
+
+u16 CONST_DATA Sprite_086791D4[] =
+{
+    3,
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0x94) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(72), OAM2_CHR(0x98) + OAM2_LAYER(3),
+    OAM0_SHAPE_16x16 + OAM0_BLEND, OAM1_SIZE_16x16 + OAM1_X(104), OAM2_CHR(0x9C) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_086791E8[] =
+{
+    4,
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(8), OAM2_CHR(0x94) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(48), OAM2_CHR(0xC4) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(80), OAM2_CHR(0xC8) + OAM2_LAYER(3),
+    OAM0_SHAPE_16x16 + OAM0_BLEND, OAM1_SIZE_16x16 + OAM1_X(112), OAM2_CHR(0xCC) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08679202[] =
+{
+    4,
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16, OAM2_CHR(0x84) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0x88) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(64), OAM2_CHR(0x8C) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(96), OAM2_CHR(0x90) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_0867921C[] =
+{
+    2,
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(48), OAM2_CHR(0x94) + OAM2_LAYER(3),
+    OAM0_SHAPE_32x16 + OAM0_BLEND, OAM1_SIZE_32x16 + OAM1_X(88), OAM2_CHR(0xCE) + OAM2_LAYER(3),
+};
+
+/* maybe unused? */
+u16 CONST_DATA * Sprites_0867922C[] =
+{
+    Sprite_086791D4,
+    Sprite_086791E8,
+    Sprite_08679202,
+    Sprite_0867921C,
+};

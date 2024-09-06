@@ -122,6 +122,34 @@ extern u8 const gUnk_08309408[]; // compressed tsa
 extern u8 const gUnk_0833C6F4[]; // tsa
 extern u8 const gUnk_0833C8D8[]; // tsa
 
+// extern ??? gUnk_083198CC
+// extern ??? Pal_SpinningArrow
+// extern ??? gUnk_08319EE8
+// extern ??? gUnk_0831A088
+// extern ??? gUnk_0831A248
+// extern ??? gUnk_0831A268
+// extern ??? gUnk_0831AABC
+extern u16 const Pal_0831AAFC[];
+// extern ??? gUnk_0831AB1C
+// extern ??? gUnk_0831B068
+// extern ??? gUnk_0831B0A8
+// extern ??? gUnk_08320434
+// extern ??? gUnk_08320436
+// extern ??? gUnk_08320D98
+// extern ??? Img_SpinningArrow
+// extern ??? gUnk_08320EEC
+// extern ??? gUnk_08320FCE
+// extern ??? gUnk_083210A0
+// extern ??? gUnk_083215B8
+// extern ??? gUnk_08321EE4
+// extern ??? gUnk_08321F24
+// extern ??? gUnk_08321FA4
+// extern ??? gUnk_08326910
+// extern ??? gUnk_08326930
+// extern ??? gUnk_08326E64
+// extern ??? gUnk_08326EE6
+// extern ??? gUnk_08327108
+
 extern struct ProcScr CONST_DATA ProcScr_OpeningSequence[];
 extern struct ProcScr CONST_DATA ProcScr_TitleScreenHandler[];
 extern struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[];

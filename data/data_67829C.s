@@ -1,29 +1,5 @@
     .data
 
-	.global gUnk_0867916C
-gUnk_0867916C: @ 0867916C
-	.incbin "fe6-base.gba", 0x67916C, (0x67917A - 0x67916C) @ length: 000E
-
-	.global gUnk_0867917A
-gUnk_0867917A: @ 0867917A
-	.incbin "fe6-base.gba", 0x67917A, (0x679182 - 0x67917A) @ length: 0008
-
-	.global gUnk_08679182
-gUnk_08679182: @ 08679182
-	.incbin "fe6-base.gba", 0x679182, (0x6791A2 - 0x679182) @ length: 0020
-
-	.global gUnk_086791A2
-gUnk_086791A2: @ 086791A2
-	.incbin "fe6-base.gba", 0x6791A2, (0x6791B0 - 0x6791A2) @ length: 000E
-
-	.global gUnk_086791B0
-gUnk_086791B0: @ 086791B0
-	.incbin "fe6-base.gba", 0x6791B0, (0x6791BE - 0x6791B0) @ length: 000E
-
-	.global gUnk_086791BE
-gUnk_086791BE: @ 086791BE
-	.incbin "fe6-base.gba", 0x6791BE, (0x67923C - 0x6791BE) @ length: 007E
-
 	.global ProcScr_PrepMenuBmCursor
 ProcScr_PrepMenuBmCursor: @ 0867923C
 	.incbin "fe6-base.gba", 0x67923C, (0x67929C - 0x67923C) @ length: 0060

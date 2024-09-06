@@ -22158,7 +22158,7 @@ func_fe6_08040154: @ 0x08040154
 	ands r1, r0
 	lsrs r1, r1, #2
 	lsls r1, r1, #1
-	ldr r0, .L080402CC @ =gUnk_0831AAFC
+	ldr r0, .L080402CC @ =Pal_0831AAFC
 	adds r1, r1, r0
 	ldrh r0, [r1]
 	ldr r1, .L080402D0 @ =0x0000031A
@@ -22234,7 +22234,7 @@ func_fe6_08040154: @ 0x08040154
 .L080402C0: .4byte gUnk_Sio_0810F544
 .L080402C4: .4byte 0x0203C9D0
 .L080402C8: .4byte gPal
-.L080402CC: .4byte gUnk_0831AAFC
+.L080402CC: .4byte Pal_0831AAFC
 .L080402D0: .4byte 0x0000031A
 .L080402D4: .4byte gSinLut
 .L080402D8: .4byte gUnk_Sio_0810F55E
