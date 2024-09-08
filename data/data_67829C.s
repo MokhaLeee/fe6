@@ -28,16 +28,16 @@ gUnk_08679330: @ 08679330
 gUnk_08679354: @ 08679354
 	.incbin "fe6-base.gba", 0x679354, (0x679368 - 0x679354) @ length: 0014
 
-	.global gUnk_08679368
-gUnk_08679368: @ 08679368
+	.global ProcScr_08679368
+ProcScr_08679368: @ 08679368
 	.incbin "fe6-base.gba", 0x679368, (0x679388 - 0x679368) @ length: 0020
 
-	.global gUnk_08679388
-gUnk_08679388: @ 08679388
+	.global ProcScr_08679388
+ProcScr_08679388: @ 08679388
 	.incbin "fe6-base.gba", 0x679388, (0x6793A8 - 0x679388) @ length: 0020
 
-	.global gUnk_086793A8
-gUnk_086793A8: @ 086793A8
+	.global ProcScr_086793A8
+ProcScr_086793A8: @ 086793A8
 	.incbin "fe6-base.gba", 0x6793A8, (0x6793C8 - 0x6793A8) @ length: 0020
 
 	.global gUnk_086793C8
