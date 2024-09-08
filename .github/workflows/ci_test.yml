@@ -1,14 +1,13 @@
-name: Pull progress
+name: CI-test
 
 on:
-  push:
+  pull_request:
     branches:
     - main
-  workflow_dispatch
 
 jobs:
   build_stats:
-    name: Progress
+    name: CI-test
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +24,3 @@ jobs:
 
     - name: Build target ROM
       run: make -j fe6.gba
-
-    - name: Build stats
-      run: tools/stats/calcstats.sh fe6.elf fe6.map > stats.txt
-
-    - name: Upload stats
-      run: python tools/stats/upload_stats.py -b https://progress.deco.mp -a ${{secrets.FROGRESS_API_KEY}} -p fireemblem6 -v jp stats.txt

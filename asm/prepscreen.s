@@ -1403,12 +1403,12 @@ func_fe6_0807CFA0: @ 0x0807CFA0
 func_fe6_0807CFA4: @ 0x0807CFA4
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0807CFB4 @ =gUnk_08679368
+	ldr r0, .L0807CFB4 @ =ProcScr_08679368
 	bl SpawnProc
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0807CFB4: .4byte gUnk_08679368
+.L0807CFB4: .4byte ProcScr_08679368
 
 	thumb_func_start func_fe6_0807CFB8
 func_fe6_0807CFB8: @ 0x0807CFB8
@@ -1515,12 +1515,12 @@ func_fe6_0807CFDC: @ 0x0807CFDC
 func_fe6_0807D074: @ 0x0807D074
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0807D084 @ =gUnk_08679388
+	ldr r0, .L0807D084 @ =ProcScr_08679388
 	bl SpawnProc
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0807D084: .4byte gUnk_08679388
+.L0807D084: .4byte ProcScr_08679388
 
 	thumb_func_start func_fe6_0807D088
 func_fe6_0807D088: @ 0x0807D088
@@ -1642,12 +1642,12 @@ func_fe6_0807D0A8: @ 0x0807D0A8
 func_fe6_0807D16C: @ 0x0807D16C
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0807D17C @ =gUnk_086793A8
+	ldr r0, .L0807D17C @ =ProcScr_086793A8
 	bl SpawnProc
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0807D17C: .4byte gUnk_086793A8
+.L0807D17C: .4byte ProcScr_086793A8
 
 	thumb_func_start func_fe6_0807D180
 func_fe6_0807D180: @ 0x0807D180
