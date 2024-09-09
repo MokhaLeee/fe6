@@ -757,7 +757,7 @@ void func_fe6_080753A0(struct UnitListScreenProc * proc)
         }
         else
         {
-            func_fe6_08082B00(0, proc->unk_2C * 16 + 0x38, MSG_6C1, proc);
+            PrepMenuStartHelpbox(0, proc->unk_2C * 16 + 0x38, MSG_6C1, proc);
         }
 
         return;

@@ -578,6 +578,8 @@ SECTIONS
         src/unitlistscreen.o(.text);
         src/prepmenu.o(.text);
         src/prepscreen_disp.o(.text);
+        src/prepmenuitem.o(.text);
+        src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
         src/save_core.o(.text);
         src/save_stats.o(.text);
@@ -681,6 +683,8 @@ SECTIONS
         . = ALIGN(4); src/unitlistscreen.o(.rodata);
         . = ALIGN(4); src/prepmenu.o(.rodata);
         . = ALIGN(4); src/prepscreen_disp.o(.rodata);
+        . = ALIGN(4); src/prepmenuitem.o(.rodata);
+        . = ALIGN(4); src/prepscreenfx.o(.rodata);
         . = ALIGN(4); data/rodata_327254.o(.rodata);
         . = ALIGN(4); src/save_core.o(.rodata);
         . = ALIGN(4); src/save_multiarena.o(.rodata);
@@ -792,6 +796,8 @@ SECTIONS
         . = ALIGN(4); src/unitlistscreen.o(.data);
         . = ALIGN(4); src/prepmenu.o(.data);
         . = ALIGN(4); src/prepscreen_disp.o(.data);
+        . = ALIGN(4); src/prepmenuitem.o(.data);
+        . = ALIGN(4); src/prepscreenfx.o(.data);
         . = ALIGN(4); data/data_67829C.o(.data);
         . = ALIGN(4); src/chapterunits.o(.data);
         . = ALIGN(4); data/data_mapchangeinfo.o(.data);
