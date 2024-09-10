@@ -268,18 +268,18 @@ void PrepMenuHelpbox(struct PrepMenuProc * proc);
 u8 func_fe6_0807CE98(struct PrepMenuProc * proc);
 // func_fe6_0807CEF0
 u8 func_fe6_0807CF2C(u8, u8);
-// func_fe6_0807CF78
-// func_fe6_0807CFA0
+void func_fe6_0807CF78(ProcPtr);
+void func_fe6_0807CFA0(ProcPtr);
 // func_fe6_0807CFA4
 // func_fe6_0807CFB8
-// func_fe6_0807CFBC
-// func_fe6_0807CFDC
+void func_fe6_0807CFBC(ProcPtr);
+void func_fe6_0807CFDC(ProcPtr);
 // func_fe6_0807D074
-// func_fe6_0807D088
-// func_fe6_0807D0A8
+void func_fe6_0807D088(ProcPtr);
+void func_fe6_0807D0A8(ProcPtr);
 // func_fe6_0807D16C
-// func_fe6_0807D180
-// func_fe6_0807D1AC
+void func_fe6_0807D180(ProcPtr);
+void func_fe6_0807D1AC(ProcPtr);
 // func_fe6_0807D2E0
 // func_fe6_0807D2F4
 // func_fe6_0807D338
@@ -296,29 +296,29 @@ u8 func_fe6_0807CF2C(u8, u8);
 // func_fe6_0807DF60
 // func_fe6_0807DFEC
 // func_fe6_0807E06C
-// func_fe6_0807E0D4
-// func_fe6_0807E41C
+void func_fe6_0807E0D4(ProcPtr);
+void func_fe6_0807E41C(ProcPtr);
 // func_fe6_0807E544
-// func_fe6_0807E5A8
-// func_fe6_0807EB70
-// func_fe6_0807EDBC
+void func_fe6_0807E5A8(ProcPtr);
+void func_fe6_0807EB70(ProcPtr);
+void func_fe6_0807EDBC(ProcPtr);
 // func_fe6_0807FBE8
-// func_fe6_0807FCFC
-// func_fe6_0807FF98
-// func_fe6_08080284
-// func_fe6_080813E8
-// func_fe6_08081540
+void func_fe6_0807FCFC(ProcPtr);
+void func_fe6_0807FF98(ProcPtr);
+void func_fe6_08080284(ProcPtr);
+void func_fe6_080813E8(ProcPtr);
+void func_fe6_08081540(ProcPtr);
 void StartPrepSubtemScreen(struct PrepMenuProc * parent, int type);
 void func_fe6_080815E4(struct Unit * unit, ProcPtr parent);
 void func_fe6_08081620(struct Unit * unit, ProcPtr parent);
 // func_fe6_0808165C
 // func_fe6_0808166C
-// func_fe6_0808171C
-// func_fe6_08081970
-// func_fe6_08081DF8
+void func_fe6_0808171C(ProcPtr);
+void func_fe6_08081970(ProcPtr);
+void func_fe6_08081DF8(ProcPtr);
 void StartPrepDiscardItemScreen(struct PrepMenuProc * parent);
-// func_fe6_08081E50
-// func_fe6_08081E58
+void func_fe6_08081E50(ProcPtr);
+void func_fe6_08081E58(ProcPtr);
 // func_fe6_08081ED4
 // func_fe6_08081EE8
 // func_fe6_08081F20
@@ -345,7 +345,7 @@ void func_fe6_080829E8(ProcPtr parent, i8);
 // func_fe6_08082ABC
 // func_fe6_08082AC8
 // func_fe6_08082AD8
-void func_fe6_08082B00(int arg_0, int arg_1, int msg, ProcPtr parent);
+void PrepMenuStartHelpbox(int x, int y, int msg, ProcPtr parent);
 // func_fe6_08082B1C
 // func_fe6_08082B44
 bool func_fe6_08082B74(struct Unit * unit);
@@ -429,41 +429,41 @@ extern CONST_DATA u16 Sprite_0867912A[];
 extern CONST_DATA u16 Sprite_08679132[];
 extern CONST_DATA u16 * Sprites_0867913C[12];
 extern CONST_DATA u16 Sprite_0867916C[];
-// ??? Sprite_0867917A
-// ??? Sprite_08679182
+extern CONST_DATA u16 Sprite_0867917A[];
+extern CONST_DATA u16 Sprite_08679182[];
 extern CONST_DATA u16 Sprite_086791A2[];
-// ??? Sprite_086791B0
-// ??? Sprite_086791BE
-// ??? ProcScr_PrepScreenDisp
-// ??? gUnk_0867929C
-// ??? gUnk_086792A8
-// ??? gUnk_086792B6
-// ??? gUnk_086792C4
-// ??? gUnk_08679326
-// ??? gUnk_08679330
+extern CONST_DATA u16 Sprite_086791B0[];
+extern CONST_DATA u16 Sprite_086791BE[];
+extern struct ProcScr ProcScr_PrepScreenDisp[];
+// ??? HelpboxMsg_0867929C
+extern CONST_DATA u16 Sprite_086792A8[];
+extern CONST_DATA u16 Sprite_086792B6[];
+extern CONST_DATA u16 Sprite_086792C4[];
+extern CONST_DATA u16 Sprite_08679326[];
+// ??? Sprites_08679330
 // ??? gUnk_08679354
-// ??? ProcScr_08679368
-// ??? ProcScr_08679388
-// ??? ProcScr_086793A8
-// ??? gUnk_086793C8
-// ??? ProcScr_PrepTradeItemScreen
-// ??? gUnk_08679490
-// ??? ProcScr_PrepDiscardItemScreen
-// ??? gUnk_08679558
-// ??? gUnk_08679578
-// ??? gUnk_08679580
-// ??? gUnk_08679588
-// ??? gUnk_08679590
-// ??? gUnk_08679598
-// ??? gUnk_086795F8
-// ??? gUnk_08679654
-// ??? gUnk_0867966C
-// ??? gUnk_0867968C
-// ??? gUnk_086796C4
-// ??? gUnk_086796F4
-// ??? gUnk_0867971C
-// ??? gUnk_0867973C
-// ??? gUnk_08679754
+extern struct ProcScr ProcScr_08679368[];
+extern struct ProcScr ProcScr_08679388[];
+extern struct ProcScr ProcScr_086793A8[];
+extern struct ProcScr ProcScr_086793C8[];
+extern struct ProcScr ProcScr_PrepTradeItemScreen[];
+extern struct ProcScr ProcScr_08679490[];
+extern struct ProcScr ProcScr_PrepDiscardItemScreen[];
+extern struct ProcScr ProcScr_08679558[];
+extern CONST_DATA u16 Sprite_08679578[];
+extern CONST_DATA u16 Sprite_08679580[];
+extern CONST_DATA u16 Sprite_08679588[];
+extern CONST_DATA u16 Sprite_08679590[];
+extern CONST_DATA u16 Sprite_08679598[];
+// ??? Sprites_086795F8
+// ??? Sprites_08679654
+extern struct ProcScr ProcScr_0867966C[];
+extern struct ProcScr ProcScr_0867968C[];
+extern struct ProcScr ProcScr_086796C4[];
+extern struct ProcScr ProcScr_086796F4[];
+extern struct ProcScr ProcScr_0867971C[];
+extern struct ProcScr ProcScr_0867973C[];
+// ??? Msgs_08679754
 // ??? gUnk_0867976C
 // ??? gUnk_08679774
 // ??? gUnk_0867978C
