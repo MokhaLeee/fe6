@@ -151,7 +151,7 @@ void PrepScreenMenu_OnItems(struct PrepMenuProc * proc)
         proc->unk_40 = proc->yDiff_cur;
         proc->unk_37 = proc->hand_y_pos;
         proc->unk_29 = 0;
-        proc->unk_35 = 1;
+        proc->submenu_level = 1;
         PlaySe(SONG_6A);
         func_fe6_08079A94(proc);
     }
@@ -277,7 +277,7 @@ void func_fe6_0807CAD4(struct PrepMenuProc * proc)
 {
     if (proc->unk_29 == 0)
     {
-        proc->unk_35 = 2;
+        proc->submenu_level = 2;
         PlaySe(SONG_6A);
         func_fe6_08079A94(proc);
     }
@@ -370,10 +370,10 @@ bool PrepMenuOnSelected(struct PrepMenuProc * proc)
     u8 disp_idx = 0;
     for (i = 0; i < gPrepMenuItemCnt; i++)
     {
-        if (gPrepMenuItems[i].is_submenu != proc->unk_35)
+        if (gPrepMenuItems[i].is_submenu != proc->submenu_level)
             continue;
 
-        if (disp_idx == proc->unk_33[proc->unk_35])
+        if (disp_idx == proc->disp_idx[proc->submenu_level])
         {
             if (gPrepMenuItems[i].color != TEXT_COLOR_SYSTEM_GRAY)
             {
@@ -433,19 +433,67 @@ void PrepMenuHelpbox(struct PrepMenuProc * proc)
     u8 disp_idx = 0;
     for (i = 0; i < gPrepMenuItemCnt; i++)
     {
-        if (gPrepMenuItems[i].is_submenu != proc->unk_35)
+        if (gPrepMenuItems[i].is_submenu != proc->submenu_level)
             continue;
 
-        if (disp_idx == proc->unk_33[proc->unk_35])
+        if (disp_idx == proc->disp_idx[proc->submenu_level])
         {
-            if (proc->unk_35 == 0)
-                StartHelpBox(0xC, proc->unk_33[0] * 0x10 + 0x28, gPrepMenuItems[i].desc);
+            if (proc->submenu_level == 0)
+                StartHelpBox(0xC, proc->disp_idx[0] * 0x10 + 0x28, gPrepMenuItems[i].desc);
             else
-                StartHelpBox(0xC, proc->unk_33[proc->unk_35] * 0x10 + 0x48, gPrepMenuItems[i].desc);
+                StartHelpBox(0xC, proc->disp_idx[proc->submenu_level] * 0x10 + 0x48, gPrepMenuItems[i].desc);
 
             proc->do_help = TRUE;
             return;
         }
         disp_idx = disp_idx + 1;
     }
+}
+
+u8 GetPrepScreenMenuCurrentItemIndex(struct PrepMenuProc * proc)
+{
+    int i;
+    u8 disp_idx = 0;
+    for (i = 0; i < gPrepMenuItemCnt; i++)
+    {
+        if (gPrepMenuItems[i].is_submenu != proc->submenu_level)
+            continue;
+
+        if (disp_idx == proc->disp_idx[proc->submenu_level])
+        {
+            return gPrepMenuItems[i].index;
+        }
+        disp_idx = disp_idx + 1;
+    }
+    return PREPMENUITEM_INVALID;
+}
+
+void SetPrepMenuItemUsability(u8 index, u8 color)
+{
+    int i;
+    for (i = 0; i < gPrepMenuItemCnt; i++)
+    {
+        if (gPrepMenuItems[i].index == index)
+        {
+            gPrepMenuItems[i].color = color;
+            break;
+        }
+    }
+}
+
+u8 GetPrepScreenMenuDispItemIndex(u8 target_disp_idx, fu8 is_submenu)
+{
+    int i;
+    u8 disp_idx = 0;
+    for (i = 0; i < gPrepMenuItemCnt; i++)
+    {
+        if (gPrepMenuItems[i].is_submenu != is_submenu)
+            continue;
+
+        if (disp_idx == target_disp_idx)
+            return gPrepMenuItems[i].index;
+
+        disp_idx++;
+    }
+    return PREPMENUITEM_INVALID;
 }

@@ -161,46 +161,46 @@ bool IsUnitMandatoryDeploy(struct Unit * unit)
 
 void InitPrepScreenMainMenu(struct PrepMenuProc * proc)
 {
-    SetPrepScreenMenuItem(PrepScreenMenu_OnPickUnits, 0, MSG_6AE, 0, MSG_659, 0);
-    SetPrepScreenMenuItem(PrepScreenMenu_OnItems, 0, MSG_6AF, 0, MSG_65A, 1);
+    SetPrepScreenMenuItem(PrepScreenMenu_OnPickUnits, 0, MSG_6AE, 0, MSG_659, PREPMENUITEM_UNITSEL);
+    SetPrepScreenMenuItem(PrepScreenMenu_OnItems, 0, MSG_6AF, 0, MSG_65A, PREPMENUITEM_ITEMSEL);
 
     if (GetAuguryIndex() != 0xFF && (proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0 && (gPlaySt.flags & PLAY_FLAG_COMPLETE) == 0)
     {
         // 占い
-        SetPrepScreenMenuItem(PrepScreenMenu_Augury, 0, MSG_6B7, 0, MSG_6A3, 10);
+        SetPrepScreenMenuItem(PrepScreenMenu_Augury, 0, MSG_6B7, 0, MSG_6A3, PREPMENUITEM_AUGURY);
     }
 
-    SetPrepScreenMenuItem(PrepScreenSubMenu_OnTrade, 1, MSG_6B3, proc->unk_2D == 1 ? 1 : 0, MSG_65F, 5);
+    SetPrepScreenMenuItem(PrepScreenSubMenu_OnTrade, 1, MSG_6B3, proc->unk_2D == 1 ? 1 : 0, MSG_65F, PREPMENUITEM_TRADE);
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0)
     {
         if ((gPlaySt.flags & PLAY_FLAG_COMPLETE) == 0)
         {
-            SetPrepScreenMenuItem(PrepScreenMenu_OnSave, 0, MSG_6B1, 0, MSG_65C, 3);
+            SetPrepScreenMenuItem(PrepScreenMenu_OnSave, 0, MSG_6B1, 0, MSG_65C, PREPMENUITEM_SAVE);
         }
 
-        SetPrepScreenMenuItem(PrepScreenMenu_OnCheckMap, 0, MSG_6B2, 0, MSG_65D, 4);
-        SetPrepScreenMenuItem(PrepScreenSubMenu_OnDiscard, 1, MSG_6B4, 0, MSG_660, 6);
+        SetPrepScreenMenuItem(PrepScreenMenu_OnCheckMap, 0, MSG_6B2, 0, MSG_65D, PREPMENUITEM_CHECKMAP);
+        SetPrepScreenMenuItem(PrepScreenSubMenu_OnDiscard, 1, MSG_6B4, 0, MSG_660, PREPMENUITEM_DISCARD);
     }
 
-    SetPrepScreenMenuItem(PrepScreenSubMenu_Convoy, 1, MSG_6B5, 0, MSG_661, 7);
-    SetPrepScreenMenuItem(PrepScreenSubMenu_AllItems, 1, MSG_6B6, 0, MSG_662, 8);
+    SetPrepScreenMenuItem(PrepScreenSubMenu_Convoy, 1, MSG_6B5, 0, MSG_661, PREPMENUITEM_CONVOY);
+    SetPrepScreenMenuItem(PrepScreenSubMenu_AllItems, 1, MSG_6B6, 0, MSG_662, PREPMENUITEM_ALLITEMS);
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) == 0)
     {
         if ((gPlaySt.flags & (PLAY_FLAG_COMPLETE | PLAY_FLAG_HARD)) == 0)
         {
-            SetPrepScreenMenuItem(PrepScreenSubMenu_Shop, 1, MSG_6B9, 0, MSG_663, 9);
+            SetPrepScreenMenuItem(PrepScreenSubMenu_Shop, 1, MSG_6B9, 0, MSG_663, PREPMENUITEM_SHOP);
         }
     }
 
     if ((proc->unk_2C & PREPMENU_FLAG_MULTIARENA) != 0)
     {
-        SetPrepScreenMenuItem(PrepScreenSubMenu_StartBattle, 0, MSG_6B0, 0, MSG_6F1, 12);
+        SetPrepScreenMenuItem(PrepScreenSubMenu_StartBattle, 0, MSG_6B0, 0, MSG_6F1, PREPMENUITEM_STARTBATTLE);
     }
     else
     {
-        SetPrepScreenMenuItem(PrepScreenSubMenu_StartBattle, 0, MSG_6BA, 0, MSG_65E, 12);
+        SetPrepScreenMenuItem(PrepScreenSubMenu_StartBattle, 0, MSG_6BA, 0, MSG_65E, PREPMENUITEM_STARTBATTLE);
     }
 }
 
@@ -386,17 +386,17 @@ void ReorderPlayerUnitsBasedOnDeployment(void)
 
 void func_fe6_08079A94(struct PrepMenuProc * proc)
 {
-    fu8 r7 = GetPrepMenuItemAmount(proc->unk_35);
+    fu8 r7 = GetPrepMenuItemAmount(proc->submenu_level);
 
-    if (proc->unk_35 == 0)
+    if (proc->submenu_level == 0)
     {
         if (proc->cur_counter == 0)
         {
-            func_fe6_0807CEF0(12, 1);
+            SetPrepMenuItemUsability(PREPMENUITEM_STARTBATTLE, TEXT_COLOR_SYSTEM_GRAY);
         }
         else
         {
-            func_fe6_0807CEF0(12, 0);
+            SetPrepMenuItemUsability(PREPMENUITEM_STARTBATTLE, TEXT_COLOR_SYSTEM_WHITE);
         }
 
         TmFillRect(gBg0Tm, 12, 19, 0);
@@ -404,25 +404,25 @@ void func_fe6_08079A94(struct PrepMenuProc * proc)
 
         PutUiWindowFrame(0, 4, 12, 2 + r7 * 2, UI_WINDOW_REGULAR);
         PutPrepScreenMenuItems(gUnk_0200E864, 0, gBg0Tm + TM_OFFSET(2, 5), r7);
-        PutUiEntryHover(1, 5 + proc->unk_33[proc->unk_35] * 2, 10);
+        PutUiEntryHover(1, 5 + proc->disp_idx[proc->submenu_level] * 2, 10);
     }
     else
     {
         if (GetUnitItemCount(gPrepUnitList[proc->list_num_cur]) > 0)
         {
-            func_fe6_0807CEF0(6, 0);
+            SetPrepMenuItemUsability(PREPMENUITEM_DISCARD, TEXT_COLOR_SYSTEM_WHITE);
         }
         else
         {
-            func_fe6_0807CEF0(6, 1);
+            SetPrepMenuItemUsability(PREPMENUITEM_DISCARD, TEXT_COLOR_SYSTEM_GRAY);
         }
 
         TmFillRect(gBg0Tm + TM_OFFSET(0, 8), 12, 11, 0);
         TmFillRect(gBg1Tm + TM_OFFSET(0, 8), 12, 11, 0);
 
         PutUiWindowFrame(0, 8, 13, 2 + r7 * 2, UI_WINDOW_REGULAR);
-        PutPrepScreenMenuItems(gUnk_0200E864, proc->unk_35, gBg0Tm + TM_OFFSET(2, 9), r7);
-        PutUiEntryHover(1, 9 + proc->unk_33[proc->unk_35] * 2, 10);
+        PutPrepScreenMenuItems(gUnk_0200E864, proc->submenu_level, gBg0Tm + TM_OFFSET(2, 9), r7);
+        PutUiEntryHover(1, 9 + proc->disp_idx[proc->submenu_level] * 2, 10);
     }
 
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
@@ -907,7 +907,7 @@ void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc)
 
         SetBgOffset(2, -0x80, (proc->yDiff_cur - 0x28) & 0xFF);
 
-        if (proc->unk_33[0] == 0)
+        if (proc->disp_idx[0] == 0)
             PrepUnit_DrawPickLeftBar(proc);
     }
 
@@ -950,9 +950,9 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
 
     // BUG: this should be 2, not 3
     for (i = 0; i < 3; i++)
-        proc->unk_33[i] = 0;
+        proc->disp_idx[i] = 0;
 
-    proc->unk_35 = 0;
+    proc->submenu_level = 0;
 
     proc->unk_60 = func_fe6_08082CF4(proc);
 
@@ -1094,16 +1094,16 @@ void func_fe6_0807ABF4(struct PrepMenuProc * proc)
 
 void func_fe6_0807AC9C(struct PrepMenuProc * proc)
 {
-    if (proc->unk_35 == 0)
+    if (proc->submenu_level == 0)
     {
         Proc_Goto(proc, L_PREPMENU_6);
     }
-    else if (proc->unk_35 == 1)
+    else if (proc->submenu_level == 1)
     {
         func_fe6_0807ABF4(proc);
         proc->unk_29 = 1;
         func_fe6_08079D84(proc);
-        proc->unk_35 = 0;
+        proc->submenu_level = 0;
     }
 
     PlaySe(SONG_6B);
@@ -1145,8 +1145,8 @@ void PrepMenu_Init(struct PrepMenuProc * proc)
 
 void PrepMenu_Loop(struct PrepMenuProc * proc)
 {
-    u8 pre_item = proc->unk_33[proc->unk_35];
-    u8 pre_idx = proc->unk_35;
+    u8 pre_item = proc->disp_idx[proc->submenu_level];
+    u8 pre_idx = proc->submenu_level;
 
     switch (proc->unk_29) {
     case 0:
@@ -1179,31 +1179,31 @@ void PrepMenu_Loop(struct PrepMenuProc * proc)
             {
                 if (gKeySt->repeated & KEY_DPAD_UP)
                 {
-                    if (proc->unk_33[proc->unk_35] != 0)
-                        proc->unk_33[proc->unk_35]--;
+                    if (proc->disp_idx[proc->submenu_level] != 0)
+                        proc->disp_idx[proc->submenu_level]--;
                     else if (gKeySt->pressed & KEY_DPAD_UP)
-                        proc->unk_33[proc->unk_35] = GetPrepMenuItemAmount(proc->unk_35) - 1;
+                        proc->disp_idx[proc->submenu_level] = GetPrepMenuItemAmount(proc->submenu_level) - 1;
                 }
                 else if (gKeySt->repeated & KEY_DPAD_DOWN)
                 {
-                    if (proc->unk_33[proc->unk_35] < GetPrepMenuItemAmount(proc->unk_35) - 1)
-                        proc->unk_33[proc->unk_35]++;
+                    if (proc->disp_idx[proc->submenu_level] < GetPrepMenuItemAmount(proc->submenu_level) - 1)
+                        proc->disp_idx[proc->submenu_level]++;
                     else if (gKeySt->pressed & KEY_DPAD_DOWN)
-                        proc->unk_33[proc->unk_35] = 0;
+                        proc->disp_idx[proc->submenu_level] = 0;
                 }
                 else if (gKeySt->pressed & KEY_BUTTON_B)
                     func_fe6_0807AC9C(proc);
             }
         }
 
-        if (pre_idx == proc->unk_35)
+        if (pre_idx == proc->submenu_level)
         {
-            if (pre_item != proc->unk_33[proc->unk_35])
+            if (pre_item != proc->disp_idx[proc->submenu_level])
             {
                 if (proc->do_help != FALSE)
                     PrepMenuHelpbox(proc);
-                if (proc->unk_35 == 1)
-                    func_fe6_0807B8B0(proc->unk_50, func_fe6_0807CF2C(proc->unk_33[1], 1) - 5);
+                if (proc->submenu_level == 1)
+                    func_fe6_0807B8B0(proc->unk_50, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
     
                 PlaySe(0x66);
             }
@@ -1235,7 +1235,7 @@ void PrepMenu_Loop(struct PrepMenuProc * proc)
             else if (_pre_idx == 1)
             {
                 proc->unk_29 = 0;
-                func_fe6_0807B8B0(proc->unk_50, func_fe6_0807CF2C(proc->unk_33[1], 1) - 5);
+                func_fe6_0807B8B0(proc->unk_50, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
                 func_fe6_08079A94(proc);
                 proc->unk_32 = proc->list_num_cur;
                 proc->list_num_cur = proc->unk_31;
@@ -1262,7 +1262,7 @@ void PrepMenu_Loop(struct PrepMenuProc * proc)
                     proc->sub2_action = 6;
                     Proc_Goto(proc, 0x3);
                 }
-                else if (gKeySt->pressed & KEY_BUTTON_SELECT && proc->unk_35 != 1)
+                else if (gKeySt->pressed & KEY_BUTTON_SELECT && proc->submenu_level != 1)
                 {
                     gUnk_0200E7D8 = UNIT_PID(gPrepUnitList[proc->list_num_cur]);
 

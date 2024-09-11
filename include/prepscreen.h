@@ -69,8 +69,8 @@ struct PrepMenuProc
     /* 30 */ u8 list_num_cur; // id within gPrepUnitList
     /* 31 */ u8 unk_31;
     /* 32 */ u8 unk_32;
-    /* 33 */ u8 unk_33[2];
-    /* 35 */ u8 unk_35;
+    /* 33 */ u8 disp_idx[2];
+    /* 35 */ u8 submenu_level;
     /* 36 */ i8 hand_y_pos;
     /* 37 */ u8 unk_37; // i8 also?
     /* 38 */ u8 unk_38;
@@ -151,17 +151,6 @@ struct PrepMenuProcBug {
     STRUCT_PAD(0, 0x34);
     u16 _bug_34;
 };
-
-struct PrepMenuItem {
-    /* 00 */ void (* func)(struct PrepMenuProc * proc);
-    /* 04 */ int desc;
-    /* 08 */ u8 color;
-    /* 09 */ fu8 is_submenu;
-    /* 0C */ int name;
-    /* 10 */ u8 index;
-    /* 14 */
-};
-extern struct PrepMenuItem gPrepMenuItems[0x10];
 
 extern struct Unit * gPrepUnitList[];
 #define GetUnitFromPrepList(index) (gPrepUnitList[(index)])
@@ -248,6 +237,38 @@ void func_fe6_0807C090(struct PrepScreenDispProc * proc);
 // PrepScreenDisp_End
 // PrepScreenDisp_Block
 ProcPtr StartPrepScreenDisp(ProcPtr parent);
+
+struct PrepMenuItem {
+    /* 00 */ void (* func)(struct PrepMenuProc * proc);
+    /* 04 */ int desc;
+    /* 08 */ u8 color;
+    /* 09 */ fu8 is_submenu;
+    /* 0C */ int name;
+    /* 10 */ u8 index;
+    /* 14 */
+};
+
+enum PrepMenuItemIndex {
+    /* PrepMenuItem::index */
+    PREPMENUITEM_UNITSEL,
+    PREPMENUITEM_ITEMSEL,
+    PREPMENUITEM_2,
+    PREPMENUITEM_SAVE,
+    PREPMENUITEM_CHECKMAP,
+    PREPMENUITEM_TRADE,
+    PREPMENUITEM_DISCARD,
+    PREPMENUITEM_CONVOY,
+    PREPMENUITEM_ALLITEMS,
+    PREPMENUITEM_SHOP,
+    PREPMENUITEM_AUGURY,
+    PREPMENUITEM_11,
+    PREPMENUITEM_STARTBATTLE,
+
+    PREPMENUITEM_INVALID = 0xFF,
+};
+
+extern struct PrepMenuItem gPrepMenuItems[0x10];
+
 // func_fe6_0807C520
 void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc);
 void PrepScreenMenu_OnItems(struct PrepMenuProc * proc);
@@ -269,9 +290,10 @@ bool PrepMenuOnSelected(struct PrepMenuProc * proc);
 fu8 GetPrepMenuItemAmount(fu8 arg_0);
 void PutPrepScreenMenuItems(struct Text * text, fu8 arg_1, u16 * tm, fu8 arg_3);
 void PrepMenuHelpbox(struct PrepMenuProc * proc);
-u8 func_fe6_0807CE98(struct PrepMenuProc * proc);
-void func_fe6_0807CEF0(fu8 arg_0, fu8 arg_1);
-u8 func_fe6_0807CF2C(u8, u8);
+u8 GetPrepScreenMenuCurrentItemIndex(struct PrepMenuProc * proc);
+void SetPrepMenuItemUsability(u8 index, u8 color);
+u8 GetPrepScreenMenuDispItemIndex(u8 disp_idx, fu8 is_submenu);
+
 void func_fe6_0807CF78(ProcPtr);
 void func_fe6_0807CFA0(ProcPtr);
 // func_fe6_0807CFA4
