@@ -936,14 +936,14 @@ void func_fe6_0807BE88(struct PrepScreenDispProc * proc)
 
     switch (parent->unk_29) {
     case 0:
-        if (parent->unk_35 == 0)
-            PutUiHand(0xC, parent->unk_33[0] * 0x10 + 0x28);
-        else if (parent->unk_35 == 1)
-            PutUiHand(0xC, parent->unk_33[parent->unk_35] * 0x10 + 0x48);
+        if (parent->submenu_level == 0)
+            PutUiHand(0xC, parent->disp_idx[0] * 0x10 + 0x28);
+        else if (parent->submenu_level == 1)
+            PutUiHand(0xC, parent->disp_idx[parent->submenu_level] * 0x10 + 0x48);
         break;
 
     case 1:
-        if (parent->a_button_actions & 2 && parent->unk_33[0] == 0)
+        if (parent->a_button_actions & 2 && parent->disp_idx[0] == 0)
             PutUiHand(0x6C, 0x8);
         else
         {
@@ -1025,7 +1025,7 @@ void func_fe6_0807C090(struct PrepScreenDispProc * proc)
     else
         x = -proc->unk_3A;
 
-    if (proc->proc_parent->unk_35 == 1)
+    if (proc->proc_parent->submenu_level == 1)
     {
         if (proc->unk_44 == 0)
         {
@@ -1045,7 +1045,7 @@ void func_fe6_0807C090(struct PrepScreenDispProc * proc)
             }
         }
 
-        if (proc->proc_parent->unk_35 == 1)
+        if (proc->proc_parent->submenu_level == 1)
         {
             goto L0;
         }
@@ -1076,7 +1076,7 @@ L1:
         return;
 
 L2:
-    if (proc->proc_parent->unk_35 != 0)
+    if (proc->proc_parent->submenu_level != 0)
         return;
 
     PutSpriteExt(4, OAM1_X((x >> 1) + 0xBC), 8, Sprite_086791BE, 0x4000);
@@ -1091,8 +1091,8 @@ void PrepScreenDisp_Init(struct PrepScreenDispProc * proc)
 
     ForceSyncUnitSpriteSheet();
 
-    proc->unk_2B = proc->proc_parent->unk_33[proc->proc_parent->unk_35];
-    proc->unk_2C = proc->proc_parent->unk_35;
+    proc->unk_2B = proc->proc_parent->disp_idx[proc->proc_parent->submenu_level];
+    proc->unk_2C = proc->proc_parent->submenu_level;
     proc->unk_3A = 0xA0;
     proc->unk_2D = proc->proc_parent->unk_29;
     proc->unk_2E = proc->proc_parent->in_unit_sel_screen;
@@ -1101,9 +1101,9 @@ void PrepScreenDisp_Init(struct PrepScreenDispProc * proc)
     proc->unk_32 = 0;
     proc->unk_33 = 0;
 
-    proc->unk_31 = func_fe6_0807CE98(proc->proc_parent);
+    proc->unk_31 = GetPrepScreenMenuCurrentItemIndex(proc->proc_parent);
     proc->unk_44 = 0;
-    proc->pre = proc->proc_parent->unk_33[1];
+    proc->pre = proc->proc_parent->disp_idx[1];
     proc->unk_48 = 0x60;
 
     if (((struct PrepMenuProcBug *)(proc->proc_parent))->_bug_34 == 0x100) // ?
@@ -1114,7 +1114,7 @@ void PrepScreenDisp_Init(struct PrepScreenDispProc * proc)
     else
     {
         proc->unk_46 = 0;
-        func_fe6_08082D54(proc->proc_parent->unk_60, func_fe6_0807CF2C(proc->pre, 1) - 5);
+        func_fe6_08082D54(proc->proc_parent->unk_60, GetPrepScreenMenuDispItemIndex(proc->pre, 1) - 5);
     }
 }
 
@@ -1125,7 +1125,7 @@ void PrepScreenDisp_Loop(struct PrepScreenDispProc * proc)
 
     if (proc->proc_parent->unk_2B != proc->unk_2F)
     {
-        proc->unk_31 = func_fe6_0807CE98(proc->proc_parent);
+        proc->unk_31 = GetPrepScreenMenuCurrentItemIndex(proc->proc_parent);
         proc->unk_2F = proc->proc_parent->unk_2B;
         proc->unk_30 = 1;
     }
@@ -1160,26 +1160,26 @@ void PrepScreenDisp_Loop(struct PrepScreenDispProc * proc)
 
     proc->unk_40 = proc->proc_parent->yDiff_cur;
 
-    if (proc->unk_2C != proc->proc_parent->unk_35)
+    if (proc->unk_2C != proc->proc_parent->submenu_level)
     {
-        proc->unk_2C = proc->proc_parent->unk_35;
+        proc->unk_2C = proc->proc_parent->submenu_level;
     }
-    else if (proc->unk_2B != proc->proc_parent->unk_33[proc->proc_parent->unk_35])
+    else if (proc->unk_2B != proc->proc_parent->disp_idx[proc->proc_parent->submenu_level])
     {
-        if (proc->proc_parent->unk_35 == 0)
+        if (proc->proc_parent->submenu_level == 0)
         {
             RemoveUiEntryHover(1, proc->unk_2B * 2 + 5, 10);
-            PutUiEntryHover(1, proc->proc_parent->unk_33[proc->proc_parent->unk_35] * 2 + 5, 10);
+            PutUiEntryHover(1, proc->proc_parent->disp_idx[proc->proc_parent->submenu_level] * 2 + 5, 10);
         }
         else
         {
             RemoveUiEntryHover(1, proc->unk_2B * 2 + 9, 10);
-            PutUiEntryHover(1, proc->proc_parent->unk_33[proc->proc_parent->unk_35] * 2 + 9, 10);
+            PutUiEntryHover(1, proc->proc_parent->disp_idx[proc->proc_parent->submenu_level] * 2 + 9, 10);
         }
         EnableBgSync(BG1_SYNC_BIT);
     }
 
-    proc->unk_2B = proc->proc_parent->unk_33[proc->proc_parent->unk_35];
+    proc->unk_2B = proc->proc_parent->disp_idx[proc->proc_parent->submenu_level];
     proc->unk_3E++;
 }
 

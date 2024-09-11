@@ -1,6 +1,7 @@
 #pragma once
 
 #include "prelude.h"
+#include "unit.h"
 
 enum
 {
@@ -68,8 +69,8 @@ struct PrepMenuProc
     /* 30 */ u8 list_num_cur; // id within gPrepUnitList
     /* 31 */ u8 unk_31;
     /* 32 */ u8 unk_32;
-    /* 33 */ u8 unk_33[2];
-    /* 35 */ u8 unk_35;
+    /* 33 */ u8 disp_idx[2];
+    /* 35 */ u8 submenu_level;
     /* 36 */ i8 hand_y_pos;
     /* 37 */ u8 unk_37; // i8 also?
     /* 38 */ u8 unk_38;
@@ -84,8 +85,7 @@ struct PrepMenuProc
     /* 42 */ u16 scroll_timer;
     /* 44 */ u16 yDiff_cur;
     /* 46 */ STRUCT_PAD(0x46, 0x48);
-    /* 48 */ u32 unk_48;
-    /* 4C */ u32 unk_4C;
+    /* 48 */ struct Unit * unit1, * unit2;
     /* 50 */ struct PrepScreenDispProc * unk_50;
     /* 54 */ STRUCT_PAD(0x54, 0x58);
     /* 58 */ ProcPtr procbg;
@@ -152,19 +152,13 @@ struct PrepMenuProcBug {
     u16 _bug_34;
 };
 
-void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc);
-fu8 GetPrepMenuItemAmount(fu8 arg_0);
-void func_fe6_0807CEF0(fu8 arg_0, fu8 arg_1);
-void PutPrepScreenMenuItems(struct Text * text, fu8 arg_1, u16 * tm, fu8 arg_3);
-void func_fe6_08082D08(ProcPtr proc, int unused_1, fu16 obpal);
-void ResetPrepMenuItem(void);
-
 extern struct Unit * gPrepUnitList[];
 #define GetUnitFromPrepList(index) (gPrepUnitList[(index)])
 #define RegisterPrepUnitList(index, unit) (gPrepUnitList[(index)] = (unit))
 
 enum { SID_PID_POOL_SIZE = 5 };
 extern u8 SioPidPool[SID_PID_POOL_SIZE];
+extern u8 gPrepMenuItemCnt;
 
 void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
@@ -243,10 +237,42 @@ void func_fe6_0807C090(struct PrepScreenDispProc * proc);
 // PrepScreenDisp_End
 // PrepScreenDisp_Block
 ProcPtr StartPrepScreenDisp(ProcPtr parent);
+
+struct PrepMenuItem {
+    /* 00 */ void (* func)(struct PrepMenuProc * proc);
+    /* 04 */ int desc;
+    /* 08 */ u8 color;
+    /* 09 */ fu8 is_submenu;
+    /* 0C */ int name;
+    /* 10 */ u8 index;
+    /* 14 */
+};
+
+enum PrepMenuItemIndex {
+    /* PrepMenuItem::index */
+    PREPMENUITEM_UNITSEL,
+    PREPMENUITEM_ITEMSEL,
+    PREPMENUITEM_2,
+    PREPMENUITEM_SAVE,
+    PREPMENUITEM_CHECKMAP,
+    PREPMENUITEM_TRADE,
+    PREPMENUITEM_DISCARD,
+    PREPMENUITEM_CONVOY,
+    PREPMENUITEM_ALLITEMS,
+    PREPMENUITEM_SHOP,
+    PREPMENUITEM_AUGURY,
+    PREPMENUITEM_11,
+    PREPMENUITEM_STARTBATTLE,
+
+    PREPMENUITEM_INVALID = 0xFF,
+};
+
+extern struct PrepMenuItem gPrepMenuItems[0x10];
+
 // func_fe6_0807C520
 void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc);
 void PrepScreenMenu_OnItems(struct PrepMenuProc * proc);
-// func_fe6_0807C840
+void func_fe6_0807C840(struct PrepMenuProc * proc);
 void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc);
 void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc);
 void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc);
@@ -258,16 +284,16 @@ void PrepScreenMenu_Augury(struct PrepMenuProc * proc);
 void PrepScreenMenu_OnSave(struct PrepMenuProc * proc);
 void PrepScreenMenu_OnCheckMap(struct PrepMenuProc * proc);
 void PrepScreenSubMenu_StartBattle(struct PrepMenuProc * proc);
-// ResetPrepMenuItem
+void ResetPrepMenuItem(void);
 void SetPrepScreenMenuItem(void(*func)(struct PrepMenuProc * proc), fu8 is_submenu, int name, fu8 color, int desc, fu8 index);
 bool PrepMenuOnSelected(struct PrepMenuProc * proc);
-// GetPrepMenuItemAmount
-// PutPrepScreenMenuItems
+fu8 GetPrepMenuItemAmount(fu8 arg_0);
+void PutPrepScreenMenuItems(struct Text * text, fu8 arg_1, u16 * tm, fu8 arg_3);
 void PrepMenuHelpbox(struct PrepMenuProc * proc);
-// PrepMenuHelpbox
-u8 func_fe6_0807CE98(struct PrepMenuProc * proc);
-// func_fe6_0807CEF0
-u8 func_fe6_0807CF2C(u8, u8);
+u8 GetPrepScreenMenuCurrentItemIndex(struct PrepMenuProc * proc);
+void SetPrepMenuItemUsability(u8 index, u8 color);
+u8 GetPrepScreenMenuDispItemIndex(u8 disp_idx, fu8 is_submenu);
+
 void func_fe6_0807CF78(ProcPtr);
 void func_fe6_0807CFA0(ProcPtr);
 // func_fe6_0807CFA4
@@ -354,7 +380,7 @@ bool func_fe6_08082B74(struct Unit * unit);
 // func_fe6_08082C80
 void func_fe6_08082CBC(void);
 ProcPtr func_fe6_08082CF4(ProcPtr parent);
-// func_fe6_08082D08
+void func_fe6_08082D08(ProcPtr proc, int unused_1, fu16 obpal);
 void func_fe6_08082D54(ProcPtr proc, int msg_order_idx);
 void func_fe6_08082DA4(ProcPtr proc, int oam1, int, int);
 // func_fe6_08082E74
