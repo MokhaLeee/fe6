@@ -920,8 +920,8 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
 
     gUnk_0200E7D8 = 0;
 
-    proc->unk_48 = 0;
-    proc->unk_4C = 0;
+    proc->unit1 = 0;
+    proc->unit2 = 0;
     proc->yDiff_cur = 0;
     proc->list_num_cur = 0;
     proc->unk_31 = 0xFF;
