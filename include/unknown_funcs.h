@@ -806,81 +806,9 @@ void StartClassDemo(u8 arg_0, ProcPtr parent);
 // func_fe6_08095D40
 // func_fe6_08095D48
 // func_fe6_08095D58
-// GetShopFace
-// StartShopDialogue
-void StartDefaultArmoryScreen(struct Unit * unit, ProcPtr proc);
-void StartArmoryScreenOrphaned(struct Unit * unit, u16 const * iid_list);
-void StartVendorScreenOrphaned(struct Unit * unit, u16 const * iid_list);
-void StartSecretShopScreenOrphaned(struct Unit * unit, u16 const * iid_list);
-// StartArmoryScreen
-// StartShopScreen
-// UpdateShopItemCounts
-void TalkChoice_OnBuy(void);
-void TalkChoice_OnSell(void);
-// func_fe6_0809602C
-// func_fe6_0809604C
-// func_fe6_080960B8
-// func_fe6_080960D4
-// func_fe6_08096164
-// func_fe6_080961F4
-// func_fe6_08096234
-// func_fe6_080964E0
-// func_fe6_08096514
-// func_fe6_0809656C
-// func_fe6_080965A0
-// func_fe6_080965C0
-// func_fe6_080965F0
-// func_fe6_08096610
-// func_fe6_08096630
-// func_fe6_0809664C
-// func_fe6_0809666C
-// func_fe6_0809668C
-// func_fe6_080966C4
-// func_fe6_08096944
-// func_fe6_08096A0C
-// func_fe6_08096A28
-// func_fe6_08096A58
-// func_fe6_08096A78
-// func_fe6_08096A98
-// func_fe6_08096AC4
-// func_fe6_08096AFC
-// func_fe6_08096B38
-// StartUiGoldBox
-// InitGoldBoxText
-// ClearGoldBoxTextTm2Line
-// DisplayGoldBoxText
-// ShopInitTexts_OnBuy
-// DrawShopSoldItems
-// func_fe6_08097280
-// ShopInitTexts_OnSell
-// func_fe6_08097354
-// func_fe6_08097418
-// func_fe6_08097444
-// func_fe6_080974A0
-// GetItemPrice
-// func_fe6_080975A0
-// func_fe6_080975C8
-// GoldBox_OnLoop
-// InitShopScreenConfig
-// _DisplayShopUiArrows
-// DisplayShopUiArrows
-// UnpackUiVArrowGfx
-// DisplayUiVArrow
-// HandleShopBuyAction
-// ShopTryMoveCursor
-// func_fe6_080979AC
-// ShopTryScrollPage
-// ShopUpdateBg2Offset
-// func_fe6_08097AC4
-// Shop_TryMoveHandPage
-// func_fe6_08097CF4
-// func_fe6_08097D10
-// func_fe6_08097D34
-// func_fe6_08097D50
-// func_fe6_08097D7C
-// func_fe6_08097DA8
-// ShouldDisplayUpArrow
-// ShouldDisplayDownArrow
+
+/* shop.h */
+
 // func_fe6_08097E2C
 void StartArenaScreen(void);
 void StartArenaResultsScreen(void);
@@ -898,7 +826,7 @@ void StartArenaResultsScreen(void);
 // func_fe6_08098490
 // func_fe6_080984A8
 // func_fe6_08098550
-// Shop_OnExit
+// func_fe6_080985AC
 // func_fe6_080985D8
 // func_fe6_08098624
 // Arena_PlayResultSong

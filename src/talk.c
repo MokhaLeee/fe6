@@ -18,6 +18,7 @@
 #include "unit.h"
 #include "chapter.h"
 #include "ui.h"
+#include "shop.h"
 #include "banim_ekrbattle.h"
 #include "manim.h"
 

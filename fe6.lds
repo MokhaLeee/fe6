@@ -333,6 +333,9 @@ SECTIONS
         . = 0x0203DCA7 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203DCA7 = .;
 
+        . = 0x0203DCB8 - __ewram_overlay_end;
+        . = ALIGN(4); gShopItemTexts = .;
+
         . = 0x0203DD04 - __ewram_overlay_end;
         . = ALIGN(4); gShopSt = .;
 
@@ -592,6 +595,7 @@ SECTIONS
         asm/code_0808AA84.o(.text);
         asm/config.o(.text);
         asm/code.o(.text);
+        src/shop.o(.text);
         asm/shop.o(.text);
         asm/arena.o(.text);
         asm/opanim.o(.text);
@@ -807,6 +811,8 @@ SECTIONS
         . = ALIGN(4); src/savemenu.o(.data);
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/data.o(.data);
+        . = ALIGN(4); src/shop.o(.data);
+        . = ALIGN(4); data/shop.o(.data);
 
         . = ALIGN(4); FILL(0xFF);
 

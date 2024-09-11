@@ -941,8 +941,8 @@ func_fe6_08098550: @ 0x08098550
 	pop {r0}
 	bx r0
 
-	thumb_func_start Shop_OnExit
-Shop_OnExit: @ 0x080985AC
+	thumb_func_start func_fe6_080985AC
+func_fe6_080985AC: @ 0x080985AC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp

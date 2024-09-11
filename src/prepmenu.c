@@ -19,6 +19,7 @@
 #include "mu.h"
 #include "map.h"
 #include "bmio.h"
+#include "shop.h"
 #include "statscreen.h"
 #include "helpbox.h"
 #include "prepscreen.h"

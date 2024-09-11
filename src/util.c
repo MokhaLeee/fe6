@@ -958,33 +958,33 @@ void func_fe6_080148A0(ProcPtr parent)
     StartFadeCore(3, 0x40, parent, func_fe6_08014AF8);
 }
 
-void func_fe6_080148B8(ProcPtr parent)
+void FadeInBlackSpeed04(ProcPtr parent)
 {
     StartFadeCore(2, 0x04, parent, NULL);
 }
 
-void func_fe6_080148CC(ProcPtr parent)
+void FadeInBlackSpeed08(ProcPtr parent)
 {
     StartFadeCore(2, 0x08, parent, NULL);
 }
 
-void func_fe6_080148E0(ProcPtr parent)
+void FadeInBlackSpeed08Unk(ProcPtr parent)
 {
     StartFadeCore(2, 0x08, parent, NULL);
     func_fe6_08014AB8();
 }
 
-void func_fe6_080148F8(ProcPtr parent)
+void FadeInBlackSpeed10(ProcPtr parent)
 {
     StartFadeCore(2, 0x10, parent, NULL);
 }
 
-void func_fe6_0801490C(ProcPtr parent)
+void FadeInBlackSpeed20(ProcPtr parent)
 {
     StartFadeCore(2, 0x20, parent, NULL);
 }
 
-void func_fe6_08014920(ProcPtr parent)
+void FadeInBlackSpeed40(ProcPtr parent)
 {
     StartFadeCore(2, 0x40, parent, NULL);
 }
@@ -1745,12 +1745,12 @@ static void PlaySeFunc(int song)
     PlaySe(song);
 }
 
-void func_fe6_0801548C(short song)
+void _StartBgm(short song)
 {
     StartBgm(song, NULL);
 }
 
-void func_fe6_0801549C(short speed)
+void _FadeBgmOut(short speed)
 {
     FadeBgmOut(speed);
 }

@@ -780,18 +780,9 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_08690A99
 // extern CONST_DATA ??? gUnk_08690C14
 // extern CONST_DATA ??? gUnk_08690D44
-// extern CONST_DATA ??? gUnk_08690E60
-// extern CONST_DATA ??? gShopDialogueOffsetLut
-// extern CONST_DATA ??? gShopFaces
-// extern CONST_DATA ??? gUnk_08690E88
-// extern CONST_DATA ??? gUnk_08690EC0
-// extern CONST_DATA ??? ProcScr_Shop
-// extern CONST_DATA ??? gUnk_08691138
-// extern CONST_DATA ??? gUnk_08691148
-// extern CONST_DATA ??? Sprite_ShopGoldBox
-// extern CONST_DATA ??? ProcScr_GoldBox
-// extern CONST_DATA ??? ProcScr_ShopDrawHand
-// extern CONST_DATA ??? gpShopSt
+
+/* shop.h */
+
 // extern CONST_DATA ??? ProcScr_ArenaUiMain
 // extern CONST_DATA ??? ProcScr_ArenaUiResults
 // extern CONST_DATA ??? ProcScr_ArenaUiResultBgm

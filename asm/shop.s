@@ -2,475 +2,8 @@
 
 	.syntax unified
 
-	thumb_func_start GetShopFace
-GetShopFace: @ 0x08095D5C
-	push {r7, lr}
-	sub sp, #4
-	mov r7, sp
-	str r0, [r7]
-	ldr r0, .L08095D7C @ =gShopFaces
-	ldr r2, [r7]
-	adds r1, r2, #0
-	adds r2, #0x61
-	ldrb r1, [r2]
-	adds r2, r1, #0
-	lsls r1, r2, #2
-	adds r0, r0, r1
-	ldr r1, [r0]
-	adds r0, r1, #0
-	b .L08095D80
-	.align 2, 0
-.L08095D7C: .4byte gShopFaces
-.L08095D80:
-	add sp, #4
-	pop {r7}
-	pop {r1}
-	bx r1
-
-	thumb_func_start StartShopDialogue
-StartShopDialogue: @ 0x08095D88
-	push {r7, lr}
-	sub sp, #0xc
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r0, .L08095DEC @ =gShopDialogueOffsetLut
-	ldr r2, [r7, #4]
-	adds r1, r2, #0
-	adds r2, #0x61
-	ldrb r1, [r2]
-	adds r2, r1, #0
-	lsls r1, r2, #2
-	adds r0, r0, r1
-	ldr r1, [r7]
-	ldr r0, [r0]
-	adds r1, r1, r0
-	str r1, [r7, #8]
-	bl SetInitTalkTextFont
-	bl ClearTalkText
-	ldr r1, [r7, #8]
-	adds r0, r1, #0
-	bl DecodeMsg
-	adds r2, r0, #0
-	ldr r3, [r7, #4]
-	movs r0, #8
-	movs r1, #2
-	bl StartTalkExt
-	movs r0, #0
-	bl SetTalkPrintColor
-	movs r0, #1
-	bl SetTalkFlag
-	movs r0, #2
-	bl SetTalkFlag
-	movs r0, #4
-	bl SetTalkFlag
-	movs r0, #1
-	bl SetActiveTalkFace
-	add sp, #0xc
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08095DEC: .4byte gShopDialogueOffsetLut
-
-	thumb_func_start StartDefaultArmoryScreen
-StartDefaultArmoryScreen: @ 0x08095DF0
-	push {r7, lr}
-	sub sp, #8
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r3, [r7, #4]
-	ldr r0, [r7]
-	movs r1, #0
-	movs r2, #0
-	bl StartShopScreen
-	add sp, #8
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start StartArmoryScreenOrphaned
-StartArmoryScreenOrphaned: @ 0x08095E10
-	push {r7, lr}
-	sub sp, #8
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r1, [r7, #4]
-	ldr r0, [r7]
-	movs r2, #0
-	movs r3, #0
-	bl StartShopScreen
-	add sp, #8
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start StartVendorScreenOrphaned
-StartVendorScreenOrphaned: @ 0x08095E30
-	push {r7, lr}
-	sub sp, #8
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r1, [r7, #4]
-	ldr r0, [r7]
-	movs r2, #1
-	movs r3, #0
-	bl StartShopScreen
-	add sp, #8
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start StartSecretShopScreenOrphaned
-StartSecretShopScreenOrphaned: @ 0x08095E50
-	push {r7, lr}
-	sub sp, #8
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r1, [r7, #4]
-	ldr r0, [r7]
-	movs r2, #2
-	movs r3, #0
-	bl StartShopScreen
-	add sp, #8
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start StartArmoryScreen
-StartArmoryScreen: @ 0x08095E70
-	push {r7, lr}
-	sub sp, #8
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r1, [r7, #4]
-	ldr r0, [r7]
-	movs r2, #0
-	movs r3, #0
-	bl StartShopScreen
-	add sp, #8
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start StartShopScreen
-StartShopScreen: @ 0x08095E90
-	push {r7, lr}
-	sub sp, #0x1c
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	adds r0, r2, #0
-	str r3, [r7, #0xc]
-	adds r1, r7, #0
-	adds r1, #8
-	strb r0, [r1]
-	bl EndMapUi
-	ldr r0, [r7, #0xc]
-	cmp r0, #0
-	beq .L08095EC0
-	ldr r0, .L08095EBC @ =ProcScr_Shop
-	ldr r1, [r7, #0xc]
-	bl SpawnProcLocking
-	str r0, [r7, #0x10]
-	b .L08095ECC
-	.align 2, 0
-.L08095EBC: .4byte ProcScr_Shop
-.L08095EC0:
-	ldr r1, .L08095EFC @ =ProcScr_Shop
-	adds r0, r1, #0
-	movs r1, #3
-	bl SpawnProc
-	str r0, [r7, #0x10]
-.L08095ECC:
-	ldr r0, [r7, #0x10]
-	adds r1, r7, #0
-	adds r1, #8
-	adds r2, r0, #0
-	adds r0, #0x61
-	ldrb r2, [r0]
-	movs r3, #0
-	ands r2, r3
-	adds r3, r2, #0
-	ldrb r1, [r1]
-	adds r2, r3, #0
-	orrs r2, r1
-	adds r1, r2, #0
-	strb r1, [r0]
-	ldr r0, [r7, #0x10]
-	ldr r1, [r7]
-	str r1, [r0, #0x2c]
-	ldr r0, [r7, #4]
-	cmp r0, #0
-	beq .L08095F00
-	ldr r0, [r7, #4]
-	str r0, [r7, #0x14]
-	b .L08095F04
-	.align 2, 0
-.L08095EFC: .4byte ProcScr_Shop
-.L08095F00:
-	ldr r0, .L08095F10 @ =gUnk_08690E60
-	str r0, [r7, #0x14]
-.L08095F04:
-	movs r0, #0
-	str r0, [r7, #0x18]
-.L08095F08:
-	ldr r0, [r7, #0x18]
-	cmp r0, #0x14
-	ble .L08095F14
-	b .L08095F4C
-	.align 2, 0
-.L08095F10: .4byte gUnk_08690E60
-.L08095F14:
-	adds r0, r7, #0
-	adds r0, #0x14
-	ldr r1, [r0]
-	ldrh r2, [r1]
-	adds r1, #2
-	str r1, [r0]
-	adds r0, r2, #0
-	bl CreateItem
-	ldr r1, [r7, #0x10]
-	ldr r2, [r7, #0x18]
-	adds r3, r2, #0
-	lsls r2, r3, #1
-	adds r3, r1, #0
-	adds r3, #0x30
-	adds r1, r3, r2
-	ldrh r2, [r1]
-	movs r3, #0
-	ands r2, r3
-	adds r3, r2, #0
-	adds r2, r3, #0
-	orrs r2, r0
-	adds r0, r2, #0
-	strh r0, [r1]
-	ldr r0, [r7, #0x18]
-	adds r1, r0, #1
-	str r1, [r7, #0x18]
-	b .L08095F08
-.L08095F4C:
-	ldr r1, [r7, #0x10]
-	adds r0, r1, #0
-	bl UpdateShopItemCounts
-	add sp, #0x1c
-	pop {r7}
-	pop {r0}
-	bx r0
-
-	thumb_func_start UpdateShopItemCounts
-UpdateShopItemCounts: @ 0x08095F5C
-	push {r7, lr}
-	sub sp, #8
-	mov r7, sp
-	str r0, [r7]
-	movs r0, #0
-	str r0, [r7, #4]
-.L08095F68:
-	ldr r0, [r7]
-	ldr r1, [r7, #4]
-	adds r2, r1, #0
-	lsls r1, r2, #1
-	adds r0, #0x30
-	adds r1, r0, r1
-	ldrh r0, [r1]
-	cmp r0, #0
-	bne .L08095F7C
-	b .L08095F84
-.L08095F7C:
-	ldr r0, [r7, #4]
-	adds r1, r0, #1
-	str r1, [r7, #4]
-	b .L08095F68
-.L08095F84:
-	ldr r1, [r7]
-	ldr r2, [r7, #4]
-	adds r0, r2, #0
-	adds r2, r1, #0
-	adds r1, #0x5a
-	ldrb r2, [r1]
-	movs r3, #0
-	ands r2, r3
-	adds r3, r2, #0
-	orrs r0, r3
-	adds r2, r0, #0
-	strb r2, [r1]
-	ldr r0, [r7]
-	ldr r1, [r0, #0x2c]
-	adds r0, r1, #0
-	bl GetUnitItemCount
-	ldr r1, [r7]
-	adds r2, r1, #0
-	adds r1, #0x5b
-	ldrb r2, [r1]
-	movs r3, #0
-	ands r2, r3
-	adds r3, r2, #0
-	adds r2, r3, #0
-	orrs r2, r0
-	adds r0, r2, #0
-	strb r0, [r1]
-	add sp, #8
-	pop {r7}
-	pop {r0}
-	bx r0
-
-	thumb_func_start TalkChoice_OnBuy
-TalkChoice_OnBuy: @ 0x08095FC4
-	push {r7, lr}
-	sub sp, #4
-	mov r7, sp
-	ldr r1, .L08095FE4 @ =ProcScr_Shop
-	adds r0, r1, #0
-	bl FindProc
-	str r0, [r7]
-	ldr r1, [r7]
-	adds r0, r1, #0
-	adds r1, #0x60
-	ldrb r0, [r1]
-	cmp r0, #0
-	bne .L08095FE8
-	b .L08095FEE
-	.align 2, 0
-.L08095FE4: .4byte ProcScr_Shop
-.L08095FE8:
-	ldr r0, [r7]
-	bl ShopInitTexts_OnBuy
-.L08095FEE:
-	add sp, #4
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start TalkChoice_OnSell
-TalkChoice_OnSell: @ 0x08095FF8
-	push {r7, lr}
-	sub sp, #4
-	mov r7, sp
-	ldr r1, .L08096018 @ =ProcScr_Shop
-	adds r0, r1, #0
-	bl FindProc
-	str r0, [r7]
-	ldr r1, [r7]
-	adds r0, r1, #0
-	adds r1, #0x60
-	ldrb r0, [r1]
-	cmp r0, #1
-	bne .L0809601C
-	b .L08096022
-	.align 2, 0
-.L08096018: .4byte ProcScr_Shop
-.L0809601C:
-	ldr r0, [r7]
-	bl ShopInitTexts_OnSell
-.L08096022:
-	add sp, #4
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0809602C
-func_fe6_0809602C: @ 0x0809602C
-	push {r7, lr}
-	sub sp, #4
-	mov r7, sp
-	str r0, [r7]
-	ldr r1, .L08096048 @ =0x000002C3
-	adds r0, r1, #0
-	ldr r1, [r7]
-	bl StartShopDialogue
-	add sp, #4
-	pop {r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08096048: .4byte 0x000002C3
-
-	thumb_func_start func_fe6_0809604C
-func_fe6_0809604C: @ 0x0809604C
-	push {r7, lr}
-	sub sp, #4
-	mov r7, sp
-	str r0, [r7]
-	bl GetTalkChoiceResult
-	cmp r0, #1
-	beq .L08096076
-	cmp r0, #1
-	bgt .L08096066
-	cmp r0, #0
-	beq .L0809606C
-	b .L0809606C
-.L08096066:
-	cmp r0, #2
-	beq .L08096080
-	b .L0809606C
-.L0809606C:
-	ldr r0, [r7]
-	movs r1, #0xc
-	bl Proc_Goto
-	b .L080960B0
-.L08096076:
-	ldr r0, [r7]
-	movs r1, #1
-	bl Proc_Goto
-	b .L080960B0
-.L08096080:
-	ldr r0, [r7]
-	ldr r1, [r0, #0x2c]
-	adds r0, r1, #0
-	bl GetUnitItemCount
-	cmp r0, #0
-	bne .L080960A8
-	ldr r1, .L080960A4 @ =0x000002D5
-	adds r0, r1, #0
-	ldr r1, [r7]
-	bl StartShopDialogue
-	ldr r0, [r7]
-	movs r1, #7
-	bl Proc_Goto
-	b .L080960B0
-	.align 2, 0
-.L080960A4: .4byte 0x000002D5
-.L080960A8:
-	ldr r0, [r7]
-	movs r1, #4
-	bl Proc_Goto
-.L080960B0:
-	add sp, #4
-	pop {r7}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_080960B8
-func_fe6_080960B8: @ 0x080960B8
-	push {r7, lr}
-	sub sp, #4
-	mov r7, sp
-	str r0, [r7]
-	movs r1, #0xb3
-	lsls r1, r1, #2
-	adds r0, r1, #0
-	ldr r1, [r7]
-	bl StartShopDialogue
-	add sp, #4
-	pop {r7}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_080960D4
-func_fe6_080960D4: @ 0x080960D4
+	thumb_func_start ShopDrawSellItemLine
+ShopDrawSellItemLine: @ 0x08096164
 	push {r4, r5, r7, lr}
 	sub sp, #0x14
 	mov r7, sp
@@ -491,76 +24,7 @@ func_fe6_080960D4: @ 0x080960D4
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r2, .L08096128 @ =0x0203DCB8
-	adds r1, r0, r2
-	adds r0, r1, #0
-	bl ClearText
-	ldr r0, [r7, #8]
-	ldr r1, [r7, #4]
-	adds r2, r1, #0
-	lsls r1, r2, #1
-	adds r0, #0x30
-	adds r1, r0, r1
-	ldrh r0, [r1]
-	str r0, [r7, #0x10]
-	ldr r0, [r7, #0x10]
-	cmp r0, #0
-	bne .L0809612C
-	b .L08096154
-	.align 2, 0
-.L08096128: .4byte 0x0203DCB8
-.L0809612C:
-	ldr r0, [r7, #0xc]
-	adds r1, r0, #0
-	lsls r0, r1, #3
-	ldr r1, .L0809615C @ =0x0203DCB8
-	adds r0, r0, r1
-	ldr r1, [r7, #0x10]
-	ldr r3, [r7, #8]
-	ldr r2, [r3, #0x2c]
-	ldr r3, [r7, #4]
-	adds r4, r3, #0
-	lsls r3, r4, #1
-	movs r4, #0x1f
-	ands r3, r4
-	lsls r4, r3, #5
-	adds r3, r4, #0
-	lsls r4, r3, #1
-	ldr r5, .L08096160 @ =gBg2Tm+0xE
-	adds r3, r4, r5
-	bl func_fe6_08097444
-.L08096154:
-	add sp, #0x14
-	pop {r4, r5, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0809615C: .4byte 0x0203DCB8
-.L08096160: .4byte gBg2Tm+0xE
-
-	thumb_func_start func_fe6_08096164
-func_fe6_08096164: @ 0x08096164
-	push {r4, r5, r7, lr}
-	sub sp, #0x14
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r0, [r7]
-	str r0, [r7, #8]
-	ldr r1, [r7, #4]
-	adds r0, r1, #0
-	movs r1, #6
-	bl DivRem
-	str r0, [r7, #0xc]
-	movs r0, #0
-	bl SetTextFont
-	bl InitSystemTextFont
-	movs r0, #4
-	bl EnableBgSync
-	ldr r0, [r7, #0xc]
-	adds r1, r0, #0
-	lsls r0, r1, #3
-	ldr r2, .L080961B8 @ =0x0203DCB8
+	ldr r2, .L080961B8 @ =gShopItemTexts
 	adds r1, r0, r2
 	adds r0, r1, #0
 	bl ClearText
@@ -577,12 +41,12 @@ func_fe6_08096164: @ 0x08096164
 	bne .L080961BC
 	b .L080961E4
 	.align 2, 0
-.L080961B8: .4byte 0x0203DCB8
+.L080961B8: .4byte gShopItemTexts
 .L080961BC:
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r1, .L080961EC @ =0x0203DCB8
+	ldr r1, .L080961EC @ =gShopItemTexts
 	adds r0, r0, r1
 	ldr r1, [r7, #0x10]
 	ldr r3, [r7, #8]
@@ -604,11 +68,11 @@ func_fe6_08096164: @ 0x08096164
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080961EC: .4byte 0x0203DCB8
+.L080961EC: .4byte gShopItemTexts
 .L080961F0: .4byte gBg2Tm+0xE
 
-	thumb_func_start func_fe6_080961F4
-func_fe6_080961F4: @ 0x080961F4
+	thumb_func_start Shop_InitBuyState
+Shop_InitBuyState: @ 0x080961F4
 	push {r4, r7, lr}
 	sub sp, #0x10
 	add r7, sp, #0xc
@@ -628,21 +92,21 @@ func_fe6_080961F4: @ 0x080961F4
 	ldrb r3, [r4]
 	movs r2, #0x48
 	str r2, [sp]
-	ldr r2, .L08096230 @ =func_fe6_080960D4
+	ldr r2, .L08096230 @ =ShopDrawBuyItemLine
 	str r2, [sp, #4]
 	ldr r2, [r7]
 	str r2, [sp, #8]
 	movs r2, #5
-	bl func_fe6_08097AC4
+	bl RegisterShopState
 	add sp, #0x10
 	pop {r4, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08096230: .4byte func_fe6_080960D4
+.L08096230: .4byte ShopDrawBuyItemLine
 
-	thumb_func_start func_fe6_08096234
-func_fe6_08096234: @ 0x08096234
+	thumb_func_start Shop_Loop_BuyKeyHandler
+Shop_Loop_BuyKeyHandler: @ 0x08096234
 	push {r4, r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -971,8 +435,8 @@ func_fe6_08096234: @ 0x08096234
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080964E0
-func_fe6_080964E0: @ 0x080964E0
+	thumb_func_start Shop_HandleBuyConfirmPrompt
+Shop_HandleBuyConfirmPrompt: @ 0x080964E0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1002,8 +466,8 @@ func_fe6_080964E0: @ 0x080964E0
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08096514
-func_fe6_08096514: @ 0x08096514
+	thumb_func_start Shop_TryAddItemToInventory
+Shop_TryAddItemToInventory: @ 0x08096514
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1047,8 +511,8 @@ func_fe6_08096514: @ 0x08096514
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0809656C
-func_fe6_0809656C: @ 0x0809656C
+	thumb_func_start Shop_HandleSendToConvoyPrompt
+Shop_HandleSendToConvoyPrompt: @ 0x0809656C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1078,8 +542,8 @@ func_fe6_0809656C: @ 0x0809656C
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080965A0
-func_fe6_080965A0: @ 0x080965A0
+	thumb_func_start Shop_NoSendToConvoyDialogue
+Shop_NoSendToConvoyDialogue: @ 0x080965A0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1095,8 +559,8 @@ func_fe6_080965A0: @ 0x080965A0
 	.align 2, 0
 .L080965BC: .4byte 0x000002ED
 
-	thumb_func_start func_fe6_080965C0
-func_fe6_080965C0: @ 0x080965C0
+	thumb_func_start Shop_AddItemToConvoy
+Shop_AddItemToConvoy: @ 0x080965C0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1120,8 +584,8 @@ func_fe6_080965C0: @ 0x080965C0
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080965F0
-func_fe6_080965F0: @ 0x080965F0
+	thumb_func_start Shop_SendToConvoyDialogue
+Shop_SendToConvoyDialogue: @ 0x080965F0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1137,8 +601,8 @@ func_fe6_080965F0: @ 0x080965F0
 	.align 2, 0
 .L0809660C: .4byte 0x000002EA
 
-	thumb_func_start func_fe6_08096610
-func_fe6_08096610: @ 0x08096610
+	thumb_func_start Shop_CheckIfConvoyFull
+Shop_CheckIfConvoyFull: @ 0x08096610
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1155,8 +619,8 @@ func_fe6_08096610: @ 0x08096610
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08096630
-func_fe6_08096630: @ 0x08096630
+	thumb_func_start Shop_ConvoyFullDialogue
+Shop_ConvoyFullDialogue: @ 0x08096630
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1171,8 +635,8 @@ func_fe6_08096630: @ 0x08096630
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0809664C
-func_fe6_0809664C: @ 0x0809664C
+	thumb_func_start Shop_AnythingElseDialogue
+Shop_AnythingElseDialogue: @ 0x0809664C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1188,8 +652,8 @@ func_fe6_0809664C: @ 0x0809664C
 	.align 2, 0
 .L08096668: .4byte 0x000002CF
 
-	thumb_func_start func_fe6_0809666C
-func_fe6_0809666C: @ 0x0809666C
+	thumb_func_start Shop_SellDialogue
+Shop_SellDialogue: @ 0x0809666C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1205,8 +669,8 @@ func_fe6_0809666C: @ 0x0809666C
 	.align 2, 0
 .L08096688: .4byte 0x000002D2
 
-	thumb_func_start func_fe6_0809668C
-func_fe6_0809668C: @ 0x0809668C
+	thumb_func_start Shop_InitSellState
+Shop_InitSellState: @ 0x0809668C
 	push {r7, lr}
 	sub sp, #0x10
 	add r7, sp, #0xc
@@ -1221,22 +685,22 @@ func_fe6_0809668C: @ 0x0809668C
 	ldrb r1, [r2]
 	movs r2, #0x48
 	str r2, [sp]
-	ldr r2, .L080966C0 @ =func_fe6_08096164
+	ldr r2, .L080966C0 @ =ShopDrawSellItemLine
 	str r2, [sp, #4]
 	ldr r2, [r7]
 	str r2, [sp, #8]
 	movs r2, #5
 	movs r3, #0
-	bl func_fe6_08097AC4
+	bl RegisterShopState
 	add sp, #0x10
 	pop {r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080966C0: .4byte func_fe6_08096164
+.L080966C0: .4byte ShopDrawSellItemLine
 
-	thumb_func_start func_fe6_080966C4
-func_fe6_080966C4: @ 0x080966C4
+	thumb_func_start Shop_Loop_SellKeyHandler
+Shop_Loop_SellKeyHandler: @ 0x080966C4
 	push {r4, r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -1547,8 +1011,8 @@ func_fe6_080966C4: @ 0x080966C4
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08096944
-func_fe6_08096944: @ 0x08096944
+	thumb_func_start Shop_HandleSellConfirmPrompt
+Shop_HandleSellConfirmPrompt: @ 0x08096944
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -1642,8 +1106,8 @@ func_fe6_08096944: @ 0x08096944
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08096A0C
-func_fe6_08096A0C: @ 0x08096A0C
+	thumb_func_start Shop_SellAnythingElseDialogue
+Shop_SellAnythingElseDialogue: @ 0x08096A0C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1658,8 +1122,8 @@ func_fe6_08096A0C: @ 0x08096A0C
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08096A28
-func_fe6_08096A28: @ 0x08096A28
+	thumb_func_start Shop_AnythingElseRestartDialogue
+Shop_AnythingElseRestartDialogue: @ 0x08096A28
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1683,8 +1147,8 @@ func_fe6_08096A28: @ 0x08096A28
 	.align 2, 0
 .L08096A54: .4byte 0x000002C6
 
-	thumb_func_start func_fe6_08096A58
-func_fe6_08096A58: @ 0x08096A58
+	thumb_func_start Shop_AnythingElseContinueDialogue
+Shop_AnythingElseContinueDialogue: @ 0x08096A58
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1700,8 +1164,8 @@ func_fe6_08096A58: @ 0x08096A58
 	.align 2, 0
 .L08096A74: .4byte 0x000002C9
 
-	thumb_func_start func_fe6_08096A78
-func_fe6_08096A78: @ 0x08096A78
+	thumb_func_start Shop_ExitShopDialogue
+Shop_ExitShopDialogue: @ 0x08096A78
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1717,8 +1181,8 @@ func_fe6_08096A78: @ 0x08096A78
 	.align 2, 0
 .L08096A94: .4byte 0x000002E1
 
-	thumb_func_start func_fe6_08096A98
-func_fe6_08096A98: @ 0x08096A98
+	thumb_func_start Shop_OnExit
+Shop_OnExit: @ 0x08096A98
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1738,8 +1202,8 @@ func_fe6_08096A98: @ 0x08096A98
 .L08096ABC: .4byte ProcScr_Mu
 .L08096AC0: .4byte ShowMu
 
-	thumb_func_start func_fe6_08096AC4
-func_fe6_08096AC4: @ 0x08096AC4
+	thumb_func_start StartShopFadeIn
+StartShopFadeIn: @ 0x08096AC4
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1754,7 +1218,7 @@ func_fe6_08096AC4: @ 0x08096AC4
 	lsrs r0, r1, #0x18
 	cmp r0, #0
 	bne .L08096AEA
-	ldr r1, .L08096AF8 @ =gUnk_08690E88
+	ldr r1, .L08096AF8 @ =ProcScr_ShopFadeIn
 	adds r0, r1, #0
 	ldr r1, [r7]
 	bl SpawnProcLocking
@@ -1765,10 +1229,10 @@ func_fe6_08096AC4: @ 0x08096AC4
 	bx r0
 	.align 2, 0
 .L08096AF4: .4byte gBmSt
-.L08096AF8: .4byte gUnk_08690E88
+.L08096AF8: .4byte ProcScr_ShopFadeIn
 
-	thumb_func_start func_fe6_08096AFC
-func_fe6_08096AFC: @ 0x08096AFC
+	thumb_func_start StartShopFadeOut
+StartShopFadeOut: @ 0x08096AFC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1783,14 +1247,14 @@ func_fe6_08096AFC: @ 0x08096AFC
 	lsrs r0, r1, #0x18
 	cmp r0, #0
 	bne .L08096B2C
-	ldr r1, .L08096B28 @ =gUnk_08690EC0
+	ldr r1, .L08096B28 @ =ProcScr_ShopFadeOut
 	adds r0, r1, #0
 	ldr r1, [r7]
 	bl SpawnProcLocking
 	b .L08096B30
 	.align 2, 0
 .L08096B24: .4byte gBmSt
-.L08096B28: .4byte gUnk_08690EC0
+.L08096B28: .4byte ProcScr_ShopFadeOut
 .L08096B2C:
 	bl ClearTalk
 .L08096B30:
@@ -1945,7 +1409,7 @@ func_fe6_08096B38: @ 0x08096B38
 	ldr r0, [r7, #4]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r2, .L08096C90 @ =0x0203DCB8
+	ldr r2, .L08096C90 @ =gShopItemTexts
 	adds r1, r0, r2
 	adds r0, r1, #0
 	movs r1, #0x14
@@ -1955,7 +1419,7 @@ func_fe6_08096B38: @ 0x08096B38
 	str r1, [r7, #4]
 	b .L08096C52
 	.align 2, 0
-.L08096C90: .4byte 0x0203DCB8
+.L08096C90: .4byte gShopItemTexts
 .L08096C94:
 	ldr r0, [r7]
 	bl DrawShopSoldItems
@@ -2483,7 +1947,7 @@ ShopInitTexts_OnBuy: @ 0x080970BC
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r1, .L0809710C @ =gUnk_08691138
+	ldr r1, .L0809710C @ =ProcScr_ShopBuyInit
 	adds r0, r1, #0
 	movs r1, #3
 	bl SpawnProc
@@ -2510,7 +1974,7 @@ ShopInitTexts_OnBuy: @ 0x080970BC
 	blt .L08097110
 	b .L08097150
 	.align 2, 0
-.L0809710C: .4byte gUnk_08691138
+.L0809710C: .4byte ProcScr_ShopBuyInit
 .L08097110:
 	ldr r1, [r7, #4]
 	adds r0, r1, #0
@@ -2520,7 +1984,7 @@ ShopInitTexts_OnBuy: @ 0x080970BC
 	ldr r0, [r7, #8]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r1, .L08097148 @ =0x0203DCB8
+	ldr r1, .L08097148 @ =gShopItemTexts
 	adds r0, r0, r1
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
@@ -2538,7 +2002,7 @@ ShopInitTexts_OnBuy: @ 0x080970BC
 	str r1, [r7, #4]
 	b .L080970FA
 	.align 2, 0
-.L08097148: .4byte 0x0203DCB8
+.L08097148: .4byte gShopItemTexts
 .L0809714C: .4byte gBg2Tm+0xE
 .L08097150:
 	ldr r1, [r7]
@@ -2597,7 +2061,7 @@ DrawShopSoldItems: @ 0x08097180
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r2, .L080971D4 @ =0x0203DCB8
+	ldr r2, .L080971D4 @ =gShopItemTexts
 	adds r1, r0, r2
 	adds r0, r1, #0
 	bl ClearText
@@ -2606,7 +2070,7 @@ DrawShopSoldItems: @ 0x08097180
 	str r1, [r7, #4]
 	b .L0809719C
 	.align 2, 0
-.L080971D4: .4byte 0x0203DCB8
+.L080971D4: .4byte gShopItemTexts
 .L080971D8:
 	ldr r1, [r7]
 	adds r0, r1, #0
@@ -2645,7 +2109,7 @@ DrawShopSoldItems: @ 0x08097180
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r1, .L08097248 @ =0x0203DCB8
+	ldr r1, .L08097248 @ =gShopItemTexts
 	adds r0, r0, r1
 	ldr r1, [r7, #8]
 	ldr r3, [r7]
@@ -2660,13 +2124,13 @@ DrawShopSoldItems: @ 0x08097180
 	lsls r4, r3, #1
 	ldr r5, .L0809724C @ =gBg2Tm+0xE
 	adds r3, r4, r5
-	bl func_fe6_08097444
+	bl DrawShopItemPriceLine
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
 	b .L080971E2
 	.align 2, 0
-.L08097248: .4byte 0x0203DCB8
+.L08097248: .4byte gShopItemTexts
 .L0809724C: .4byte gBg2Tm+0xE
 .L08097250:
 	ldr r1, [r7]
@@ -2692,8 +2156,8 @@ DrawShopSoldItems: @ 0x08097180
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08097280
-func_fe6_08097280: @ 0x08097280
+	thumb_func_start InitShopBuyStatus
+InitShopBuyStatus: @ 0x08097280
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -2701,7 +2165,7 @@ func_fe6_08097280: @ 0x08097280
 	ldr r0, [r7]
 	ldr r1, [r0, #0x54]
 	adds r0, r1, #0
-	bl func_fe6_080961F4
+	bl Shop_InitBuyState
 	ldr r0, [r7]
 	ldr r1, [r0, #0x54]
 	adds r0, r1, #0
@@ -2732,7 +2196,7 @@ ShopInitTexts_OnSell: @ 0x080972AC
 	orrs r1, r3
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r1, .L080972F4 @ =gUnk_08691148
+	ldr r1, .L080972F4 @ =ProcScr_ShopSellInit
 	adds r0, r1, #0
 	movs r1, #3
 	bl SpawnProc
@@ -2751,7 +2215,7 @@ ShopInitTexts_OnSell: @ 0x080972AC
 	ble .L080972F8
 	b .L08097338
 	.align 2, 0
-.L080972F4: .4byte gUnk_08691148
+.L080972F4: .4byte ProcScr_ShopSellInit
 .L080972F8:
 	ldr r1, [r7, #4]
 	adds r0, r1, #0
@@ -2761,7 +2225,7 @@ ShopInitTexts_OnSell: @ 0x080972AC
 	ldr r0, [r7, #8]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r1, .L08097330 @ =0x0203DCB8
+	ldr r1, .L08097330 @ =gShopItemTexts
 	adds r0, r0, r1
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
@@ -2779,7 +2243,7 @@ ShopInitTexts_OnSell: @ 0x080972AC
 	str r1, [r7, #4]
 	b .L080972EC
 	.align 2, 0
-.L08097330: .4byte 0x0203DCB8
+.L08097330: .4byte gShopItemTexts
 .L08097334: .4byte gBg2Tm+0xE
 .L08097338:
 	ldr r2, .L08097350 @ =0x0000FFB8
@@ -2820,7 +2284,7 @@ func_fe6_08097354: @ 0x08097354
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r2, .L08097398 @ =0x0203DCB8
+	ldr r2, .L08097398 @ =gShopItemTexts
 	adds r1, r0, r2
 	adds r0, r1, #0
 	bl ClearText
@@ -2829,7 +2293,7 @@ func_fe6_08097354: @ 0x08097354
 	str r1, [r7, #4]
 	b .L0809736A
 	.align 2, 0
-.L08097398: .4byte 0x0203DCB8
+.L08097398: .4byte gShopItemTexts
 .L0809739C:
 	movs r0, #0
 	str r0, [r7, #4]
@@ -2861,7 +2325,7 @@ func_fe6_08097354: @ 0x08097354
 	ldr r0, [r7, #0xc]
 	adds r1, r0, #0
 	lsls r0, r1, #3
-	ldr r1, .L08097400 @ =0x0203DCB8
+	ldr r1, .L08097400 @ =gShopItemTexts
 	adds r0, r0, r1
 	ldr r1, [r7, #8]
 	ldr r3, [r7]
@@ -2882,7 +2346,7 @@ func_fe6_08097354: @ 0x08097354
 	str r1, [r7, #4]
 	b .L080973A0
 	.align 2, 0
-.L08097400: .4byte 0x0203DCB8
+.L08097400: .4byte gShopItemTexts
 .L08097404: .4byte gBg2Tm+0xE
 .L08097408:
 	movs r0, #4
@@ -2893,8 +2357,8 @@ func_fe6_08097354: @ 0x08097354
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08097418
-func_fe6_08097418: @ 0x08097418
+	thumb_func_start InitShopSellStatus
+InitShopSellStatus: @ 0x08097418
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -2902,7 +2366,7 @@ func_fe6_08097418: @ 0x08097418
 	ldr r0, [r7]
 	ldr r1, [r0, #0x54]
 	adds r0, r1, #0
-	bl func_fe6_0809668C
+	bl Shop_InitSellState
 	ldr r0, [r7]
 	ldr r1, [r0, #0x54]
 	adds r0, r1, #0
@@ -2915,8 +2379,8 @@ func_fe6_08097418: @ 0x08097418
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08097444
-func_fe6_08097444: @ 0x08097444
+	thumb_func_start DrawShopItemPriceLine
+DrawShopItemPriceLine: @ 0x08097444
 	push {r4, r7, lr}
 	sub sp, #0x14
 	mov r7, sp
@@ -3770,8 +3234,8 @@ ShopUpdateBg2Offset: @ 0x08097A54
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_08097AC4
-func_fe6_08097AC4: @ 0x08097AC4
+	thumb_func_start RegisterShopState
+RegisterShopState: @ 0x08097AC4
 	push {r4, r5, r7, lr}
 	sub sp, #8
 	mov r7, sp
