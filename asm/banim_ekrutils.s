@@ -364,7 +364,7 @@ StartBattleAnimHitEffects: @ 0x08047620
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #5
-	bl NewEfxFlashHPBar
+	bl NewEfxFlashHpBar
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #8
@@ -476,7 +476,7 @@ StartBattleAnimResireHitEffects: @ 0x080477AC
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #5
-	bl NewEfxFlashHPBar
+	bl NewEfxFlashHpBar
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #8

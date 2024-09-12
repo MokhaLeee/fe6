@@ -83,7 +83,7 @@ NewEkrGauge: @ 0x080436A4
 	movs r1, #0
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #5
-	ldr r4, .L08043860 @ =gUnk_08113424
+	ldr r4, .L08043860 @ =gPalEfxHpBarPurple
 	adds r0, r0, r4
 	ldr r5, .L08043864 @ =gPal+0x360
 	adds r1, r5, #0
@@ -248,7 +248,7 @@ NewEkrGauge: @ 0x080436A4
 .L08043854: .4byte ProcScr_EkrGauge
 .L08043858: .4byte gEkrBg0QuakeVec
 .L0804385C: .4byte gBanimFactionPal
-.L08043860: .4byte gUnk_08113424
+.L08043860: .4byte gPalEfxHpBarPurple
 .L08043864: .4byte gPal+0x360
 .L08043868: .4byte 0x0203CDA8
 .L0804386C: .4byte 0x0000FFFF

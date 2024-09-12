@@ -559,7 +559,7 @@ static void PalFade_OnLoop(struct PalFadeProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PalFade[] =
 {
-    PROC_MARK(PROC_MARK_10),
+    PROC_MARK(PROC_MARK_PAL_CHG),
     PROC_REPEAT(PalFade_OnLoop),
 
     PROC_END,
@@ -1047,7 +1047,7 @@ void func_fe6_08014A44(struct FadeCoreProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_FadeCore[] =
 {
-    PROC_MARK(PROC_MARK_10),
+    PROC_MARK(PROC_MARK_PAL_CHG),
 
     PROC_CALL(func_fe6_08014A38),
     PROC_SLEEP(0),

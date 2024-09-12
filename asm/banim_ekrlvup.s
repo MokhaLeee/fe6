@@ -871,7 +871,7 @@ func_fe6_0805D604: @ 0x0805D604
 	ldr r0, [r1, #0x60]
 	bl DisableEfxStatusUnits
 	bl func_fe6_08047248
-	bl func_fe6_08046B5C
+	bl DisableEfxHpBarColorChange
 	movs r0, #0x21
 	rsbs r0, r0, #0
 	ldrb r2, [r4, #1]
@@ -1932,7 +1932,7 @@ func_fe6_0805E104: @ 0x0805E104
 	ldr r0, [r4, #0x60]
 	bl EnableEfxStatusUnits
 	bl func_fe6_08047258
-	bl func_fe6_08046B6C
+	bl EnableEfxHpBarColorChange
 	adds r4, #0x29
 	movs r0, #1
 	strb r0, [r4]

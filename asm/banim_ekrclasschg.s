@@ -373,7 +373,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	adds r0, r5, #0
 	movs r1, #0xa
 	movs r2, #0x46
-	bl NewEfxWhiteOUT
+	bl NewEfxWhiteIN
 	b .L0805CB56
 .L0805CAE4:
 	movs r0, #0xb2

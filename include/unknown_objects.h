@@ -194,8 +194,8 @@ extern i16 const gEfxQuakePureVec10[];
 extern i16 const gEfxQuakePureVec11[];
 extern i16 const gEfxQuakeVec_08111F30[];
 extern i16 const gEfxQuakeVec_08111FC6[];
-// extern ??? gUnk_081120F8
-// extern ??? gUnk_08112122
+extern u16 const gFrameLut_EfxHPBarColorChange[];
+// extern ??? gFrameLut_EfxStatusUnit
 // extern ??? gUnk_08112144
 // extern ??? gUnk_08112234
 // extern ??? gUnk_0811223E
@@ -230,9 +230,9 @@ extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_08113024
 // extern ??? gUnk_081131A4
 extern u16 Pal_08113224[];
-// extern ??? gUnk_08113424
-// extern ??? gUnk_081134A4
-// extern ??? gUnk_081134C4
+extern u16 gPalEfxHpBarPurple[];
+extern u16 gPalEfxHpBarGreen[];
+extern u16 Pal_081134C4[];
 extern u16 const Pal_BanimUnitFlashing[];
 extern u8 const Img_EkrExpBar[];
 extern u8 const Img_EkrExpBarChange[];

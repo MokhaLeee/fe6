@@ -11956,7 +11956,7 @@ func_fe6_08052A28: @ 0x08052A28
 	adds r0, r5, #0
 	movs r1, #0xa
 	movs r2, #0x14
-	bl NewEfxWhiteOUT
+	bl NewEfxWhiteIN
 	b .L08052B9A
 .L08052AFA:
 	ldr r2, .L08052B48 @ =0x000001D5

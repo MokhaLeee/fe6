@@ -44,6 +44,9 @@ enum banim_mode_index {
 enum video_banim {
     OBPAL_EFX_UNIT_L = 7,
     OBPAL_EFX_UNIT_R = 9,
+
+    OBPAL_EFXHPBAR_L = 11,
+    OBPAL_EFXHPBAR_R = 12,
 };
 
 struct ProcEfx {
@@ -159,7 +162,11 @@ extern u16 gEkrYPosBase[2];
 extern struct Vec2i gEkrBg0QuakeVec;
 extern u16 * gpEfxUnitPaletteBackup[2];
 extern i16 gEkrDebugModeMaybe;
+extern u16 gEfxPal[0x130];
 extern u32 gEkrBattleEndFlag;
+extern i8 gEfxSplitedColorBufA[2][0x30];
+extern i8 gEfxSplitedColorBufB[2][0x30];
+extern i16 gEfxSplitedColorBufC[2][0x30];
 extern int gProcEkrBaseAppearExist;
 extern u32 gBanimDoneFlag[2];
 extern u8 gEkrPids[2];
@@ -364,21 +371,45 @@ struct ProcEfxFlashing {
 
 void NewEfxFlashBgWhite(struct BaSprite * anim, int duartion);
 void NewEfxFlashBgRed(struct BaSprite * anim, int duartion);
-void NewEfxFlashBgBlack(struct BaSprite * anim, int duartion);
+void EfxFlashBg_Loop(struct ProcEfxFlashing * proc);
 void EfxFlashRestorePalSync(struct ProcEfxFlashing * proc);
-void NewEfxWhiteOUT(struct BaSprite * anim, int duartion, int duartion2);
-// func_fe6_08046880
-// func_fe6_080468D8
-// EfxBlackInRestorePalSync
-// NewEfxFlashHPBar
-// func_fe6_08046994
-// func_fe6_080469B4
-// func_fe6_08046A0C
+void NewEfxWhiteIN(struct BaSprite * anim, int duartion, int duartion2);
+void EfxWhiteIn_Loop1(struct ProcEfxFlashing * proc);
+void EfxWhiteIn_Loop2(struct ProcEfxFlashing * proc);
+void EfxBlackInRestorePalSync(struct ProcEfxFlashing * proc);
+
+void NewEfxFlashHpBar(struct Anim * anim, int duartion, int duartion2);
+void EfxFlashHpBar_Pause(struct ProcEfxFlashing * proc);
+void EfxFlashHpBar_Loop(struct ProcEfxFlashing * proc);
+void EfxFlashHpBar_RestorePal(struct ProcEfxFlashing * proc);
+
+struct ProcEfxHpBarColorChange {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ i16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const u16 * frame_conf;
+    /* 4C */ u32 frame_state;
+    /* 50 */ int disabled;
+
+    STRUCT_PAD(0x54, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+};
+
+extern struct ProcEfxHpBarColorChange * gpProcEfxHpBarColorChange;
+
 void NewEfxHpBarColorChange(struct BaSprite * anim);
 void EndEfxHPBarColorChange(void);
-// func_fe6_08046B5C
-// func_fe6_08046B6C
-// EfxHpBarColorChange_Loop
+void DisableEfxHpBarColorChange(void);
+void EnableEfxHpBarColorChange(void);
+void EfxHpBarColorChange_Loop(struct ProcEfxHpBarColorChange * proc);
+
 void NewEfxFlashUnit(struct BaSprite * anim, u16 dura1, u16 dura2, int c);
 void EfxFlashUnit_Loop(struct ProcEfxFlashing * proc);
 void EfxFlashUnit_RestorePal(struct ProcEfxFlashing * proc);
@@ -1067,7 +1098,7 @@ void EfxPalFlashingInOut(u16 const * pal_buf, int line, int length, int r0, int 
 void EfxPalModifyPetrifyEffect(u16 * pal_buf, int line, int length);
 void EfxSplitColor(u16 * pal, u8 * dst, u32 length);
 void EfxSplitColorPetrify(u16 * src, u8 * dst, u32 length);
-// func_fe6_0805B88C
+void func_fe6_0805B88C(i8 * src1, i8 * src2, i16 * pal, u32 length, int ref);
 void EfxDecodeSplitedPalette(u16 * dst, i8 * src1, i8 * src2, i16 * src3, u32 length, int ref, int unk);
 void EfxChapterMapFadeOUT(int speed);
 int func_fe6_0805B9C8(int a);
@@ -1266,18 +1297,17 @@ extern CONST_DATA struct ProcScr ProcScr_EfxDead[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDeadPika[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDeadAlpha[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDeadDragonAlpha[];
-extern struct ProcScr CONST_DATA ProcScr_efxFarAttack[];
-extern struct ProcScr CONST_DATA ProcScr_EfxQuakePure[];
+extern CONST_DATA struct ProcScr ProcScr_efxFarAttack[];
+extern CONST_DATA struct ProcScr ProcScr_EfxQuakePure[];
 // ??? EfxQuakePureVecs
-extern struct ProcScr CONST_DATA ProcScr_EfxHitQuakePure[];
-extern struct ProcScr CONST_DATA ProcScr_EfxQuake[];
-extern struct ProcScr CONST_DATA ProcScr_EfxHitQuake[];
-extern struct ProcScr CONST_DATA ProcScr_EfxFlashBG[];
-extern struct ProcScr CONST_DATA ProcScr_EfxWhiteOUT[];
-// ??? gUnk_085CBA20
+extern CONST_DATA struct ProcScr ProcScr_EfxHitQuakePure[];
+extern CONST_DATA struct ProcScr ProcScr_EfxQuake[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHitQuake[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFlashBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxWhiteIN[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFlashHpBar[];
 extern CONST_DATA struct ProcScr ProcScr_EfxStatusUnit[];
-extern struct ProcScr CONST_DATA ProcScr_EfxWeaponIcon[];
-extern CONST_DATA struct ProcScr ProcScr_EfxHpBarColorChange[];
+extern CONST_DATA struct ProcScr ProcScr_EfxWeaponIcon[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHpBarColorChange[];
 // ??? gUnk_085CBAE8
 extern CONST_DATA struct ProcScr ProcScr_EkrBattleStarting[];
@@ -1300,10 +1330,10 @@ extern CONST_DATA struct ProcScr ProcScr_EkrNamewinAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBaseAppear[];
 extern CONST_DATA AnimScr AnimScr_DefaultAnim[];
 // ??? gUnk_085CBDB0
-extern struct ProcScr CONST_DATA ProcScr_EkrChienCHR[];
-extern struct ProcScr CONST_DATA ProcScr_EfxAnimeDrv[];
-extern struct ProcScr CONST_DATA ProcScr_EkrUnitMainMini[];
-extern struct ProcScr CONST_DATA ProcScr_EkrTogiInitPROC[];
+extern CONST_DATA struct ProcScr ProcScr_EkrChienCHR[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAnimeDrv[];
+extern CONST_DATA struct ProcScr ProcScr_EkrUnitMainMini[];
+extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
 // ??? gUnk_085CBE50
 // ??? gUnk_085CBE78
 // ??? Pals_ArenaBattleBg
@@ -1712,16 +1742,16 @@ extern u32 AnimScr_ManaketeFlame[];
 // ??? gUnk_08603B58
 // ??? gUnk_08603BA4
 // ??? gUnk_08603BC0
-extern struct ProcScr CONST_DATA ProcScr_EkrDragonMoveBg3[];
-extern struct ProcScr CONST_DATA ProcScr_EkrDragonBark[];
-extern struct ProcScr CONST_DATA ProcScr_EkrManakete[];
-extern struct ProcScr CONST_DATA ProcScr_EkrManaketeEnterfx[];
-extern struct ProcScr CONST_DATA ProcScr_EkrManaketeExitfx[];
-extern struct ProcScr CONST_DATA ProcScr_EkrManaketefx[];
-extern struct ProcScr CONST_DATA ProcScr_EkrDragonFae[];
-extern struct ProcScr CONST_DATA ProcScr_EkrFaefx[];
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonMoveBg3[];
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonBark[];
+extern CONST_DATA struct ProcScr ProcScr_EkrManakete[];
+extern CONST_DATA struct ProcScr ProcScr_EkrManaketeEnterfx[];
+extern CONST_DATA struct ProcScr ProcScr_EkrManaketeExitfx[];
+extern CONST_DATA struct ProcScr ProcScr_EkrManaketefx[];
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonFae[];
+extern CONST_DATA struct ProcScr ProcScr_EkrFaefx[];
 extern const u16 * CONST_DATA TsaLut_EkrFaefx[];
-extern struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[];
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonIdunn[];
 // ??? gUnk_08604948
 // ??? gUnk_08604968
 // ??? gUnk_08604988
@@ -1744,7 +1774,7 @@ extern AnimScr AnimScr_ManaketeExit1[];
 // ??? gUnk_08605A70
 // ??? gUnk_08605A94
 // ??? gEfxTmyPalRefs
-extern struct ProcScr CONST_DATA ProcScr_EkrSubAnimeEmulator[];
+extern CONST_DATA struct ProcScr ProcScr_EkrSubAnimeEmulator[];
 // ??? ProcScr_EfxSoundSE
 // ??? gBanimBossBGMs
 // ??? gUnk_08605F34

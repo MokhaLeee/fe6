@@ -36,7 +36,7 @@ NewEfxStatusUnit: @ 0x08046DA0
 	str r5, [r4, #0x5c]
 	strh r1, [r4, #0x2c]
 	str r1, [r4, #0x44]
-	ldr r0, .L08046E48 @ =gUnk_08112122
+	ldr r0, .L08046E48 @ =gFrameLut_EfxStatusUnit
 	str r0, [r4, #0x48]
 	adds r0, r6, #0
 	adds r0, #0x2e
@@ -89,7 +89,7 @@ NewEfxStatusUnit: @ 0x08046DA0
 	.align 2, 0
 .L08046E40: .4byte gpEkrBattleUnitRight
 .L08046E44: .4byte ProcScr_EfxStatusUnit
-.L08046E48: .4byte gUnk_08112122
+.L08046E48: .4byte gFrameLut_EfxStatusUnit
 .L08046E4C: .4byte gEkrDebugModeMaybe
 .L08046E50: .4byte gUnk_Banim_02017764
 .L08046E54: .4byte gpEfxUnitPaletteBackup
