@@ -1,6 +1,7 @@
 #include "prelude.h"
 #include "proc.h"
 #include "util.h"
+#include "icon.h"
 #include "hardware.h"
 #include "banim_sprite.h"
 #include "banim.h"
@@ -617,4 +618,211 @@ void EfxStatusUnit_End(struct ProcEfxStatusUnit *proc)
             RestoreBodyFlashingPalForIdunn(POS_R);
     }
     EnablePalSync();
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxWeaponIcon[] =
+{
+    PROC_NAME_DEBUG("efxWeaponIcon"),
+    PROC_MARK(PROC_MARK_PAL_CHG),
+    PROC_ONEND(EfxWeaponIcon_End),
+    PROC_REPEAT(EfxWeaponIcon_Loop),
+    PROC_END,
+};
+
+void NewEfxWeaponIcon(i16 eff1, i16 eff2)
+{
+    struct ProcEfxWeaponIcon * proc;
+
+    static const u16 frame_conf[] = {
+        0x00, 0x1,
+        0x04, 0x2,
+        0x07, 0x1,
+        0x0A, 0x1,
+        0x0D, 0x1,
+        0x10, 0x2,
+        0x0D, 0x3,
+        0x0A, 0x3,
+        0x07, 0x4,
+        0x04, 0x5,
+        0x00, 0x9,
+        -2
+    };
+
+    proc = SpawnProc(ProcScr_EfxWeaponIcon, PROC_TREE_3);
+
+    proc->timer = 0;
+    proc->frame = 0;
+    proc->frame_lut = frame_conf;
+    proc->frame_state = 0;
+    proc->invalid = false;
+    proc->eff1 = eff1;
+    proc->eff2 = eff2;
+
+    gpProcEfxWeaponIcon = proc;
+}
+
+void EndProcEfxWeaponIcon(void)
+{
+    if (gpProcEfxWeaponIcon != NULL)
+    {
+        Proc_End(gpProcEfxWeaponIcon);
+        gpProcEfxWeaponIcon = NULL;
+    }
+}
+
+void DisableEfxWeaponIcon(void)
+{
+#if BUGFIX
+    if (!gpProcEfxWeaponIcon)
+        return;
+#endif
+
+    gpProcEfxWeaponIcon->invalid = true;
+}
+
+void EnableEfxWeaponIcon(void)
+{
+#if BUGFIX
+    if (!gpProcEfxWeaponIcon)
+        return;
+#endif
+
+    gpProcEfxWeaponIcon->invalid = false;
+}
+
+void EfxWeaponIcon_Loop(struct ProcEfxWeaponIcon * proc)
+{
+    int ret;
+
+    if (true == proc->invalid)
+        return;
+    
+    InitIcons();
+    ret = EfxAdvanceFrameLut(&proc->timer, (i16 *)&proc->frame, proc->frame_lut);
+    if (ret >= 0)
+        proc->frame_state = ret;
+
+    if (proc->eff1 != 0)
+    {
+        ApplyIconPalette(0, OBPAL_EFX_ITEM_L + 0x10);
+        EfxPalWhiteInOut(gPal, OBPAL_EFX_ITEM_L + 0x10, 0x1, proc->frame_state);
+    }
+
+    if (proc->eff2 != 0)
+    {
+        ApplyIconPalette(0, OBPAL_EFX_ITEM_R + 0x10);
+        EfxPalWhiteInOut(gPal, OBPAL_EFX_ITEM_R + 0x10, 0x1, proc->frame_state);
+    }
+
+    EnablePalSync();
+}
+
+void EfxWeaponIcon_End(struct ProcEfxWeaponIcon * proc)
+{
+    InitIcons();
+
+    if (proc->eff1 != 0)
+        ApplyIconPalette(0, OBPAL_EFX_ITEM_L + 0x10);
+    
+    if (proc->eff2 != 0)
+        ApplyIconPalette(0, OBPAL_EFX_ITEM_R + 0x10);
+    
+    EnablePalSync();
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxSpellCast[] =
+{
+    PROC_NAME_DEBUG("efxSpellCast"),
+    PROC_MARK(PROC_MARK_PAL_CHG),
+    PROC_REPEAT(EfxSpellCast_FlashIN),
+    PROC_REPEAT(EfxSpellCast_Pause),
+    PROC_REPEAT(EfxSpellCast_FlashOUT),
+    PROC_END,
+};
+
+void NewEfxSpellCast(void)
+{
+    struct ProcEfxSpellCast * proc;
+    u32 conf = GetEkrDragonStateType();
+
+    if (conf != 0)
+        return;
+
+    proc = SpawnProc(ProcScr_EfxSpellCast, PROC_TREE_4);
+    proc->done = 0;
+    proc->timer = 0;
+    proc->terminator = 4;
+
+    if (NULL == gpProcEfxSpellCast)
+        CpuFastCopy(gPal + BGPAL_OFFSET(BGPAL_EFXDRAGON_L), gPal_Banim, 0x140);
+    else
+        Proc_End(gpProcEfxSpellCast);
+
+    gpProcEfxSpellCast = proc;
+}
+
+void EndEfxSpellCastAsync(void)
+{
+    if (NULL == gpProcEfxSpellCast)
+        return;
+    
+    gpProcEfxSpellCast->done = true;
+}
+
+void EndEfxSpellCastSync(void)
+{
+    ProcPtr proc = gpProcEfxSpellCast;
+
+    if (NULL == proc)
+        return;
+    
+    gpProcEfxSpellCast = NULL;
+
+#if BUGFIX
+    Proc_End(proc);
+#else
+    /* .... */
+    Proc_End(NULL);
+#endif
+}
+
+void EfxSpellCast_FlashIN(struct ProcEfxSpellCast * proc)
+{
+    int val = Interpolate(INTERPOLATE_LINEAR, 0, 0x8, proc->timer, proc->terminator);
+    
+    CpuFastCopy(gPal_Banim, gPal + BGPAL_OFFSET(BGPAL_EFXDRAGON_L), 0x140);
+    EfxPalBlackInOut(gPal, BGPAL_EFXDRAGON_L, 0xA, val);
+    EnablePalSync();
+
+    if (++proc->timer == (proc->terminator + 1))
+        Proc_Break(proc);
+}
+
+void EfxSpellCast_Pause(struct ProcEfxSpellCast * proc)
+{
+    CpuFastCopy(gPal_Banim, gPal + BGPAL_OFFSET(BGPAL_EFXDRAGON_L), 0x140);
+    EfxPalBlackInOut(gPal, BGPAL_EFXDRAGON_L, 0xA, 0x8);
+
+    if (true == proc->done)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}
+
+void EfxSpellCast_FlashOUT(struct ProcEfxSpellCast * proc)
+{
+    int val = Interpolate(INTERPOLATE_LINEAR, 0x8, 0, proc->timer, proc->terminator);
+
+    CpuFastCopy(gPal_Banim, gPal + BGPAL_OFFSET(BGPAL_EFXDRAGON_L), 0x140);
+    EfxPalBlackInOut(gPal, BGPAL_EFXDRAGON_L, 0xA, val);
+    EnablePalSync();
+
+    if (++proc->timer == (proc->terminator + 1))
+    {
+        gpProcEfxSpellCast = NULL;
+        CpuFastCopy(gPal_Banim, gPal + BGPAL_OFFSET(BGPAL_EFXDRAGON_L), 0x140);
+        EnablePalSync();
+        Proc_Break(proc);
+    }
 }

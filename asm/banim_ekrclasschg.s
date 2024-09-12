@@ -85,7 +85,7 @@ EndEkrClasschg: @ 0x0805C858
 NewEkrClassChg: @ 0x0805C86C
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	ldr r4, .L0805C894 @ =gpProcEkrClasschg
 	ldr r0, .L0805C898 @ =ProcScr_EkrClasschg
 	movs r1, #3
@@ -369,7 +369,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	lsls r0, r0, #1
 	cmp r1, r0
 	bne .L0805CAE4
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r5, #0
 	movs r1, #0xa
 	movs r2, #0x46

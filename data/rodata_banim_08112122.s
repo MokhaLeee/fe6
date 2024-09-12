@@ -1,8 +1,6 @@
 	.section .rodata
 
-	.global gUnk_08112144
-gUnk_08112144: @ 08112144
-	.incbin "fe6-base.gba", 0x112144, (0x112234 - 0x112144) @ length: 00F0
+	.incbin "fe6-base.gba", 0x112174, (0x112234 - 0x112174)
 
 	.global gUnk_08112234
 gUnk_08112234: @ 08112234

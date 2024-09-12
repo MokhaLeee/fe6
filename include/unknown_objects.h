@@ -194,7 +194,6 @@ extern i16 const gEfxQuakePureVec10[];
 extern i16 const gEfxQuakePureVec11[];
 extern i16 const gEfxQuakeVec_08111F30[];
 extern i16 const gEfxQuakeVec_08111FC6[];
-// extern ??? gUnk_08112144
 // extern ??? gUnk_08112234
 // extern ??? gUnk_0811223E
 // extern ??? gUnk_08112248

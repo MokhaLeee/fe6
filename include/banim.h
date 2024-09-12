@@ -51,6 +51,9 @@ enum video_banim {
 
     OBPAL_EFXHPBAR_L = 11,
     OBPAL_EFXHPBAR_R = 12,
+
+    OBPAL_EFX_ITEM_L = 13,
+    OBPAL_EFX_ITEM_R = 14,
 };
 
 struct ProcEfx {
@@ -452,18 +455,53 @@ u32 GetUnitEfxDebuff(struct BaSprite * anim);
 void EfxStatusUnitFlashing(struct Anim * anim, int r, int g, int b);
 void EfxStatusUnit_Loop(struct ProcEfxStatusUnit * proc);
 void EfxStatusUnit_End(struct ProcEfxStatusUnit * proc);
+
+struct ProcEfxWeaponIcon {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ i16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const u16 * frame_lut;
+    /* 4C */ u32 frame_state;
+    /* 50 */ u32 invalid;
+    /* 54 */ int eff1, eff2;
+};
+
+extern struct ProcEfxWeaponIcon * gpProcEfxWeaponIcon;
+
 void NewEfxWeaponIcon(i16 eff1, i16 eff2);
 void EndProcEfxWeaponIcon(void);
-// func_fe6_08047248
-// func_fe6_08047258
-// func_fe6_08047268
-// func_fe6_080472D0
-// func_fe6_08047300
-// func_fe6_08047358
-// func_fe6_08047370
-// func_fe6_0804738C
-// func_fe6_080473F0
-// func_fe6_08047430
+void DisableEfxWeaponIcon(void);
+void EnableEfxWeaponIcon(void);
+void EfxWeaponIcon_Loop(struct ProcEfxWeaponIcon * proc);
+void EfxWeaponIcon_End(struct ProcEfxWeaponIcon * proc);
+
+struct ProcEfxSpellCast {
+    PROC_HEADER;
+
+    /* 29 */ u8 done;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ i16 timer;
+    /* 2E */ i16 terminator;
+};
+
+extern struct ProcEfxSpellCast * gpProcEfxSpellCast;
+
+void NewEfxSpellCast(void);
+void UnsyncEkrDispUP(void);
+void EndEfxSpellCastAsync(void);
+void EndEfxSpellCastSync(void);
+void EfxSpellCast_FlashIN(struct ProcEfxSpellCast * proc);
+void EfxSpellCast_Pause(struct ProcEfxSpellCast * proc);
+void EfxSpellCast_FlashOUT(struct ProcEfxSpellCast * proc);
+
 void SpellFx_Begin(void);
 void SpellFx_Finish(void);
 void SpellFx_SetBG1Position(void);
@@ -1338,7 +1376,7 @@ extern CONST_DATA struct ProcScr ProcScr_EfxFlashHpBar[];
 extern CONST_DATA struct ProcScr ProcScr_EfxStatusUnit[];
 extern CONST_DATA struct ProcScr ProcScr_EfxWeaponIcon[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHpBarColorChange[];
-// ??? gUnk_085CBAE8
+// ??? ProcScr_EfxSpellCast
 extern CONST_DATA struct ProcScr ProcScr_EkrBattleStarting[];
 extern CONST_DATA struct ProcScr ProcScr_Ekrbattleending[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBaseKaiten[];
