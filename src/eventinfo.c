@@ -13,6 +13,7 @@
 #include "chapterinfo.h"
 #include "support.h"
 #include "trap.h"
+#include "shop.h"
 #include "eventfunctions.h"
 #include "chapterevents.h"
 

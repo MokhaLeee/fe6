@@ -75,7 +75,7 @@ void EkrIdunn_InitBodyfx(struct ProcEkrDragon * proc)
     LZ77UnCompVram(Img_EkrIdunn_081C1C94, (void *)BG_VRAM + 0x8000);
     LZ77UnCompWram(Tsa_EkrIdunn_081C5AAC, gEkrTsaBuffer);
 
-    EfxTmFill(0x001F001F);
+    EfxTmFilB(0x001F001F);
     TmFill(gBg3Tm, 0x1F);
     EnableBgSync(BG3_SYNC_BIT);
 
@@ -120,7 +120,7 @@ void EkrIdunn_PreMainBodyIntro(struct ProcEkrDragon * proc)
         CpuFastCopy(gEkrBgPaletteBackup1, gPal + BGPAL_OFFSET(6), 0x20);
         CpuFastCopy(gEkrBgPaletteBackup2, gPal + OBPAL_OFFSET(7), 0x20);
         func_fe6_08058FA8(Tsa_EkrIdunn_081C4E28);
-        NewEfxWhiteOUT(proc->anim, 3, 100);
+        NewEfxWhiteIN(proc->anim, 3, 100);
         EfxPlaySE(0x13F, 0x100);
         M4aPlayWithPostionCtrl(0x13F, proc->anim->xPosition, 1);
 

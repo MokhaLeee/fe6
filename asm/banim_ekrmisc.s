@@ -114,12 +114,12 @@ EkrEfxStatusClear: @ 0x08044900
 	ldr r0, .L080449A8 @ =gEkrHitNow
 	strh r4, [r0]
 	strh r4, [r0, #2]
-	ldr r0, .L080449AC @ =gUnk_Banim_02017764
+	ldr r0, .L080449AC @ =gpProcEfxStatusUnits
 	str r4, [r0]
 	str r4, [r0, #4]
-	ldr r0, .L080449B0 @ =gUnk_Banim_02017770
+	ldr r0, .L080449B0 @ =gpProcEfxSpellCast
 	str r4, [r0]
-	ldr r0, .L080449B4 @ =gUnk_Banim_02017774
+	ldr r0, .L080449B4 @ =gpProcEfxHpBarColorChange
 	str r4, [r0]
 	ldr r0, .L080449B8 @ =gUnk_08113D70
 	ldr r1, .L080449BC @ =0x06012000
@@ -146,9 +146,9 @@ EkrEfxStatusClear: @ 0x08044900
 .L080449A0: .4byte gUnk_Banim_0201775C
 .L080449A4: .4byte gUnk_Banim_02017760
 .L080449A8: .4byte gEkrHitNow
-.L080449AC: .4byte gUnk_Banim_02017764
-.L080449B0: .4byte gUnk_Banim_02017770
-.L080449B4: .4byte gUnk_Banim_02017774
+.L080449AC: .4byte gpProcEfxStatusUnits
+.L080449B0: .4byte gpProcEfxSpellCast
+.L080449B4: .4byte gpProcEfxHpBarColorChange
 .L080449B8: .4byte gUnk_08113D70
 .L080449BC: .4byte 0x06012000
 .L080449C0: .4byte gUnk_Banim_0201E7A4

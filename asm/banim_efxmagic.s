@@ -2982,7 +2982,7 @@ func_fe6_0804E0E8: @ 0x0804E0E8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804E120 @ =gUnk_085D10D4
 	movs r1, #3
@@ -3069,7 +3069,7 @@ func_fe6_0804E124: @ 0x0804E124
 	cmp r0, #0x1e
 	bne .L0804E1BA
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0804E1BA:
@@ -3390,7 +3390,7 @@ func_fe6_0804E448: @ 0x0804E448
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804E480 @ =gUnk_085D113C
 	movs r1, #3
@@ -3490,7 +3490,7 @@ func_fe6_0804E484: @ 0x0804E484
 	cmp r1, r0
 	bne .L0804E536
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0804E536:
@@ -3935,7 +3935,7 @@ func_fe6_0804E8CC: @ 0x0804E8CC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804E904 @ =gUnk_085D11D4
 	movs r1, #3
@@ -4009,7 +4009,7 @@ func_fe6_0804E908: @ 0x0804E908
 	cmp r0, #0x3c
 	bne .L0804E980
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0804E980:
@@ -4412,7 +4412,7 @@ func_fe6_0804ECB8: @ 0x0804ECB8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804ECF0 @ =gUnk_085D12A4
 	movs r1, #3
@@ -4501,7 +4501,7 @@ func_fe6_0804ECF4: @ 0x0804ECF4
 	cmp r1, r0
 	bne .L0804ED8E
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0804ED8E:
@@ -4771,7 +4771,7 @@ func_fe6_0804EFB4: @ 0x0804EFB4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804EFF4 @ =gUnk_085D131C
 	movs r1, #3
@@ -4802,7 +4802,7 @@ func_fe6_0804EFF8: @ 0x0804EFF8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804F038 @ =gUnk_085D131C
 	movs r1, #3
@@ -4943,7 +4943,7 @@ func_fe6_0804F03C: @ 0x0804F03C
 	cmp r0, sb
 	bne .L0804F138
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0804F138:
@@ -5500,7 +5500,7 @@ func_fe6_0804F5C4: @ 0x0804F5C4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804F5FC @ =gUnk_085D14D4
 	movs r1, #3
@@ -5658,7 +5658,7 @@ func_fe6_0804F600: @ 0x0804F600
 	cmp r1, r0
 	bne .L0804F72C
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0804F72C:
@@ -6272,7 +6272,7 @@ func_fe6_0804FC28: @ 0x0804FC28
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0804FC60 @ =gUnk_085D15EC
 	movs r1, #3
@@ -6376,7 +6376,7 @@ func_fe6_0804FC64: @ 0x0804FC64
 	cmp r1, r0
 	bne .L0804FD1C
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0804FD1C:
@@ -6806,7 +6806,7 @@ func_fe6_0805007C: @ 0x0805007C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080500B4 @ =gUnk_085D16FC
 	movs r1, #3
@@ -6940,7 +6940,7 @@ func_fe6_080500B8: @ 0x080500B8
 	cmp r1, r0
 	bne .L080501B0
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L080501B0:
@@ -7200,7 +7200,7 @@ func_fe6_080503BC: @ 0x080503BC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080503F4 @ =gUnk_085D176C
 	movs r1, #3
@@ -7331,7 +7331,7 @@ func_fe6_080503F8: @ 0x080503F8
 	cmp r1, r0
 	bne .L080504E8
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L080504E8:
@@ -7763,7 +7763,7 @@ func_fe6_08050860: @ 0x08050860
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08050898 @ =gUnk_085D195C
 	movs r1, #3
@@ -8121,7 +8121,7 @@ func_fe6_08050B10: @ 0x08050B10
 	subs r0, #1
 	str r0, [r1]
 	bl SpellFx_ClearColorEffects
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r7, #0
 	bl Proc_End
 	b .L08050B8E
@@ -8152,7 +8152,7 @@ func_fe6_08050B94: @ 0x08050B94
 	subs r0, #1
 	str r0, [r1]
 	bl SpellFx_ClearColorEffects
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_End
 	b .L08050C1A
@@ -8308,7 +8308,7 @@ func_fe6_08050C9C: @ 0x08050C9C
 	subs r0, #1
 	str r0, [r1]
 	bl SpellFx_ClearColorEffects
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r7, #0
 	bl Proc_Break
 .L08050CFA:
@@ -8435,7 +8435,7 @@ func_fe6_08050DE0: @ 0x08050DE0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08050E18 @ =gUnk_085D1B6C
 	movs r1, #3
@@ -8534,7 +8534,7 @@ func_fe6_08050E1C: @ 0x08050E1C
 	cmp r1, r0
 	bne .L08050ECC
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L08050ECC:
@@ -8693,7 +8693,7 @@ func_fe6_0805100C: @ 0x0805100C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08051048 @ =gUnk_085D1D28
 	movs r1, #3
@@ -8885,7 +8885,7 @@ func_fe6_0805108C: @ 0x0805108C
 	cmp r1, r0
 	bne .L080511B4
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r6, #0
 	bl Proc_Break
 .L080511B4:
@@ -9135,7 +9135,7 @@ func_fe6_080513AC: @ 0x080513AC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080513E4 @ =gUnk_085D2178
 	movs r1, #3
@@ -9287,7 +9287,7 @@ func_fe6_080513E8: @ 0x080513E8
 	cmp r1, r0
 	bne .L08051514
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r6, #0
 	bl Proc_Break
 .L08051514:
@@ -10248,7 +10248,7 @@ func_fe6_08051CD0: @ 0x08051CD0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08051D08 @ =gUnk_085D2358
 	movs r1, #3
@@ -10378,7 +10378,7 @@ func_fe6_08051D0C: @ 0x08051D0C
 	cmp r2, #0x64
 	bne .L08051DF6
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L08051DF6:
@@ -10698,7 +10698,7 @@ func_fe6_08052090: @ 0x08052090
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080520C8 @ =gUnk_085D2500
 	movs r1, #3
@@ -10877,7 +10877,7 @@ func_fe6_080520CC: @ 0x080520CC
 	cmp r1, r0
 	bne .L0805222A
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L0805222A:
@@ -11844,7 +11844,7 @@ func_fe6_080529EC: @ 0x080529EC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08052A24 @ =gUnk_085D2608
 	movs r1, #3
@@ -11956,7 +11956,7 @@ func_fe6_08052A28: @ 0x08052A28
 	adds r0, r5, #0
 	movs r1, #0xa
 	movs r2, #0x14
-	bl NewEfxWhiteOUT
+	bl NewEfxWhiteIN
 	b .L08052B9A
 .L08052AFA:
 	ldr r2, .L08052B48 @ =0x000001D5
@@ -12026,7 +12026,7 @@ func_fe6_08052A28: @ 0x08052A28
 	cmp r1, r0
 	bne .L08052B9A
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r6, #0
 	bl Proc_Break
 .L08052B9A:
@@ -13511,7 +13511,7 @@ func_fe6_08053764: @ 0x08053764
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0805379C @ =gUnk_085D2A24
 	movs r1, #3
@@ -13725,7 +13725,7 @@ func_fe6_080537A0: @ 0x080537A0
 	cmp r1, r0
 	bne .L08053946
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r6, #0
 	bl Proc_Break
 .L08053946:
@@ -14289,7 +14289,7 @@ func_fe6_08053DC8: @ 0x08053DC8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08053E00 @ =gUnk_085D2BC4
 	movs r1, #3
@@ -14535,7 +14535,7 @@ func_fe6_08053E04: @ 0x08053E04
 	cmp r1, r0
 	bne .L08053FE8
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r6, #0
 	bl Proc_Break
 .L08053FE8:
@@ -15209,7 +15209,7 @@ func_fe6_08054558: @ 0x08054558
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0805457C @ =gUnk_085D2E3C
 	movs r1, #3
@@ -15343,7 +15343,7 @@ func_fe6_08054580: @ 0x08054580
 	cmp r0, #0xb5
 	bne .L080546A0
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r5, #0
 	bl GetAnimNextRoundType
 	lsls r0, r0, #0x10
@@ -15370,7 +15370,7 @@ func_fe6_080546A8: @ 0x080546A8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080546CC @ =gUnk_085D2E54
 	movs r1, #3
@@ -15542,7 +15542,7 @@ func_fe6_080546D0: @ 0x080546D0
 	cmp r1, r0
 	bne .L08054840
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r5, #0
 	bl GetAnimNextRoundType
 	lsls r0, r0, #0x10
@@ -15569,7 +15569,7 @@ func_fe6_08054848: @ 0x08054848
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L0805486C @ =gUnk_085D2E6C
 	movs r1, #3
@@ -15741,7 +15741,7 @@ func_fe6_08054870: @ 0x08054870
 	cmp r1, r0
 	bne .L080549E0
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r5, #0
 	bl GetAnimNextRoundType
 	lsls r0, r0, #0x10
@@ -15768,7 +15768,7 @@ func_fe6_080549E8: @ 0x080549E8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08054A0C @ =gUnk_085D2E84
 	movs r1, #3
@@ -15946,7 +15946,7 @@ func_fe6_08054A10: @ 0x08054A10
 	cmp r1, r0
 	bne .L08054B90
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r5, #0
 	bl GetAnimNextRoundType
 	lsls r0, r0, #0x10
@@ -16159,7 +16159,7 @@ func_fe6_08054D08: @ 0x08054D08
 	lsls r3, r3, #4
 	adds r1, r1, r3
 	adds r2, r2, r3
-	bl EfxCreateBackAnim
+	bl SpellFx_WriteBgMapUncomp
 	b .L08054D6C
 .L08054D3A:
 	movs r0, #1
@@ -16815,7 +16815,7 @@ func_fe6_08055234: @ 0x08055234
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08055260 @ =gUnk_085D2F4C
 	movs r1, #3
@@ -16837,7 +16837,7 @@ func_fe6_08055264: @ 0x08055264
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08055290 @ =gUnk_085D2F4C
 	movs r1, #3
@@ -16942,7 +16942,7 @@ func_fe6_08055294: @ 0x08055294
 	cmp r1, r0
 	bne .L08055358
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L08055358:
@@ -17365,7 +17365,7 @@ func_fe6_080556BC: @ 0x080556BC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080556F4 @ =gUnk_085D2FE8
 	movs r1, #3
@@ -17514,7 +17514,7 @@ func_fe6_080556F8: @ 0x080556F8
 	orrs r0, r1
 	strh r0, [r6, #0x10]
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L08055810:
@@ -17682,7 +17682,7 @@ func_fe6_0805595C: @ 0x0805595C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08055994 @ =gUnk_085D30A0
 	movs r1, #3
@@ -17815,7 +17815,7 @@ func_fe6_08055998: @ 0x08055998
 	orrs r0, r3
 	strh r0, [r5, #0x10]
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L08055A92:
@@ -17989,7 +17989,7 @@ func_fe6_08055BF4: @ 0x08055BF4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08055C2C @ =gUnk_085D3138
 	movs r1, #3
@@ -18118,7 +18118,7 @@ func_fe6_08055C30: @ 0x08055C30
 	orrs r0, r3
 	strh r0, [r5, #0x10]
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L08055D22:
@@ -18376,7 +18376,7 @@ func_fe6_08055F24: @ 0x08055F24
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L08055F5C @ =gUnk_085D3230
 	movs r1, #3
@@ -18524,7 +18524,7 @@ func_fe6_08055F60: @ 0x08055F60
 	orrs r0, r3
 	strh r0, [r6, #0x10]
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L08056074:
@@ -18675,7 +18675,7 @@ func_fe6_080561A0: @ 0x080561A0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080561D8 @ =gUnk_085D32E8
 	movs r1, #3
@@ -18792,7 +18792,7 @@ func_fe6_080561DC: @ 0x080561DC
 	orrs r0, r1
 	strh r0, [r5, #0x10]
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r4, #0
 	bl Proc_Break
 .L080562B6:
@@ -19394,7 +19394,7 @@ func_fe6_080567AC: @ 0x080567AC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl func_fe6_08047300
+	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
 	ldr r0, .L080567E4 @ =gUnk_085D33F0
 	movs r1, #3
@@ -19507,7 +19507,7 @@ func_fe6_080567E8: @ 0x080567E8
 	orrs r0, r3
 	strh r0, [r4, #0x10]
 	bl SpellFx_Finish
-	bl func_fe6_08047358
+	bl EndEfxSpellCastAsync
 	adds r0, r5, #0
 	bl Proc_Break
 .L080568AE:

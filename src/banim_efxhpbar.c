@@ -647,7 +647,7 @@ void EfxNoDamageYure_Loop(struct ProcEfxHpBar * proc)
 struct ProcScr CONST_DATA ProcScr_EfxStatusCHG[] =
 {
     PROC_19,
-    PROC_MARK(10),
+    PROC_MARK(PROC_MARK_PAL_CHG),
     PROC_REPEAT(EfxStatusCHG_Loop),
     PROC_REPEAT(EfxHpBar_MoveCameraOnEnd),
     PROC_REPEAT(EfxHpBar_WaitCameraMove),

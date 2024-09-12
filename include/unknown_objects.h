@@ -194,9 +194,6 @@ extern i16 const gEfxQuakePureVec10[];
 extern i16 const gEfxQuakePureVec11[];
 extern i16 const gEfxQuakeVec_08111F30[];
 extern i16 const gEfxQuakeVec_08111FC6[];
-// extern ??? gUnk_081120F8
-// extern ??? gUnk_08112122
-// extern ??? gUnk_08112144
 // extern ??? gUnk_08112234
 // extern ??? gUnk_0811223E
 // extern ??? gUnk_08112248
@@ -230,9 +227,9 @@ extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_08113024
 // extern ??? gUnk_081131A4
 extern u16 Pal_08113224[];
-// extern ??? gUnk_08113424
-// extern ??? gUnk_081134A4
-// extern ??? gUnk_081134C4
+extern u16 gPalEfxHpBarPurple[];
+extern u16 gPalEfxHpBarGreen[];
+extern u16 Pal_081134C4[];
 extern u16 const Pal_BanimUnitFlashing[];
 extern u8 const Img_EkrExpBar[];
 extern u8 const Img_EkrExpBarChange[];
@@ -780,18 +777,9 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_08690A99
 // extern CONST_DATA ??? gUnk_08690C14
 // extern CONST_DATA ??? gUnk_08690D44
-// extern CONST_DATA ??? gUnk_08690E60
-// extern CONST_DATA ??? gShopDialogueOffsetLut
-// extern CONST_DATA ??? gShopFaces
-// extern CONST_DATA ??? gUnk_08690E88
-// extern CONST_DATA ??? gUnk_08690EC0
-// extern CONST_DATA ??? ProcScr_Shop
-// extern CONST_DATA ??? gUnk_08691138
-// extern CONST_DATA ??? gUnk_08691148
-// extern CONST_DATA ??? Sprite_ShopGoldBox
-// extern CONST_DATA ??? ProcScr_GoldBox
-// extern CONST_DATA ??? ProcScr_ShopDrawHand
-// extern CONST_DATA ??? gpShopSt
+
+/* shop.h */
+
 // extern CONST_DATA ??? ProcScr_ArenaUiMain
 // extern CONST_DATA ??? ProcScr_ArenaUiResults
 // extern CONST_DATA ??? ProcScr_ArenaUiResultBgm

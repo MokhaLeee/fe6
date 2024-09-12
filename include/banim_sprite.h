@@ -40,6 +40,8 @@ struct BaSprite
     /* 44 */ void const * unk_44;
 };
 
+#define Anim BaSprite /* Macro for FE8U */
+
 enum
 {
     // For use with BaSprite::flags

@@ -21,7 +21,7 @@ NewEkrDispUP: @ 0x08044198
 	bl func_fe6_0804421C
 	bl func_fe6_080441DC
 	bl UnAsyncEkrDispUP
-	bl func_fe6_08044254
+	bl UnsyncEkrDispUP
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -108,8 +108,8 @@ func_fe6_08044230: @ 0x08044230
 	.align 2, 0
 .L08044240: .4byte gpProcEkrDispUP
 
-	thumb_func_start func_fe6_08044244
-func_fe6_08044244: @ 0x08044244
+	thumb_func_start SyncEkrDispUP
+SyncEkrDispUP: @ 0x08044244
 	ldr r0, .L08044250 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	adds r0, #0x29
@@ -119,8 +119,8 @@ func_fe6_08044244: @ 0x08044244
 	.align 2, 0
 .L08044250: .4byte gpProcEkrDispUP
 
-	thumb_func_start func_fe6_08044254
-func_fe6_08044254: @ 0x08044254
+	thumb_func_start UnsyncEkrDispUP
+UnsyncEkrDispUP: @ 0x08044254
 	ldr r0, .L08044260 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	adds r0, #0x29
@@ -130,8 +130,8 @@ func_fe6_08044254: @ 0x08044254
 	.align 2, 0
 .L08044260: .4byte gpProcEkrDispUP
 
-	thumb_func_start EkrGauge_08044264
-EkrGauge_08044264: @ 0x08044264
+	thumb_func_start AsyncEkrDispUP
+AsyncEkrDispUP: @ 0x08044264
 	ldr r0, .L08044270 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	adds r0, #0x2a

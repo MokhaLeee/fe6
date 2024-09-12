@@ -59,7 +59,8 @@ SHASUM ?= sha1sum
 # ================
 
 CPPFLAGS := -I $(AGBCC_HOME)/include -I include -I . -nostdinc -undef
-CFLAGS := -g -mthumb-interwork -Wimplicit -Wparentheses -Werror -fhex-asm -ffix-debug-line -O2
+CFLAGS := -g -mthumb-interwork -Wimplicit -Wparentheses -Werror -fhex-asm -ffix-debug-line
+CFLAG_OPT := -O2
 ASFLAGS := -mcpu=arm7tdmi -I asm/include -I include
 
 LDS := $(BUILD_NAME).lds
@@ -147,7 +148,7 @@ $(BUILD_DIR)/%.d: %.c
 # C object
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 	@echo "[CC]	$<"
-	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) -o $(BUILD_DIR)/$*.s
+	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) $(CFLAG_OPT) -o $(BUILD_DIR)/$*.s
 	@echo ".text\n\t.align\t2, 0\n" >> $(BUILD_DIR)/$*.s
 	@$(AS) $(ASFLAGS) $(BUILD_DIR)/$*.s -o $@
 	@$(STRIP) -N .gcc2_compiled. $@
@@ -186,27 +187,28 @@ clean:
 
 %/main.o:           CFLAGS += -mtpcs-frame
 
-%/irq.o:            CFLAGS += -O0
-%/random.o:         CFLAGS += -O0
-%/hardware.o:       CFLAGS += -O0
-%/move.o:           CFLAGS += -O0
-%/oam.o:            CFLAGS += -O0
-%/sound.o:          CFLAGS += -O0
-%/ramfunc.o:        CFLAGS += -O0
-%/proc.o:           CFLAGS += -O0
-%/icon.o:           CFLAGS += -O0
-%/debugtext.o:      CFLAGS += -O0
-%/text.o:           CFLAGS += -O0
-%/banim_sprite.o:   CFLAGS += -O0
-%/sprite.o:         CFLAGS += -O0
-%/face.o:           CFLAGS += -O0
-%/talk.o:           CFLAGS += -O0
-%/event.o:          CFLAGS += -O0
-%/spriteanim.o:     CFLAGS += -O0
-%/gamecontroller.o: CFLAGS += -O0
-%/msg.o:            CFLAGS += -O0
+%/irq.o:            CFLAG_OPT := -O0
+%/random.o:         CFLAG_OPT := -O0
+%/hardware.o:       CFLAG_OPT := -O0
+%/move.o:           CFLAG_OPT := -O0
+%/oam.o:            CFLAG_OPT := -O0
+%/sound.o:          CFLAG_OPT := -O0
+%/ramfunc.o:        CFLAG_OPT := -O0
+%/proc.o:           CFLAG_OPT := -O0
+%/icon.o:           CFLAG_OPT := -O0
+%/debugtext.o:      CFLAG_OPT := -O0
+%/text.o:           CFLAG_OPT := -O0
+%/banim_sprite.o:   CFLAG_OPT := -O0
+%/sprite.o:         CFLAG_OPT := -O0
+%/face.o:           CFLAG_OPT := -O0
+%/talk.o:           CFLAG_OPT := -O0
+%/event.o:          CFLAG_OPT := -O0
+%/spriteanim.o:     CFLAG_OPT := -O0
+%/gamecontroller.o: CFLAG_OPT := -O0
+%/msg.o:            CFLAG_OPT := -O0
 
-%/mu.o:             CFLAGS += -O0
-%/manim.o:          CFLAGS += -O0
+%/mu.o:             CFLAG_OPT := -O0
+%/manim.o:          CFLAG_OPT := -O0
 
-%/gbasram.o:        CFLAGS += -O1
+%/gbasram.o:        CFLAG_OPT := -O1
+%/shop.o:        	CFLAG_OPT := -O0

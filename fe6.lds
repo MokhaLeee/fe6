@@ -146,7 +146,7 @@ SECTIONS
         . = 0x017720; gEkrHpBarCount = .;
         . = 0x017724; gEfxSpellAnimExists = .;
         . = 0x017728; gUnk_Banim_02017728 = .;
-        . = 0x01772C; gUnk_Banim_0201772C = .;
+        . = 0x01772C; gEkrDeadExist = .;
         . = 0x017730; gEkrDeadEventExist = .;
         . = 0x017734; gEfxQuakeExist = .;
         . = 0x017738; gUnk_Banim_02017738 = .;
@@ -160,10 +160,10 @@ SECTIONS
         . = 0x017758; gEkrBg2QuakeVec = .;
         . = 0x01775C; gUnk_Banim_0201775C = .;
         . = 0x017760; gUnk_Banim_02017760 = .;
-        . = 0x017764; gUnk_Banim_02017764 = .;
-        . = 0x01776C; gUnk_Banim_0201776C = .;
-        . = 0x017770; gUnk_Banim_02017770 = .;
-        . = 0x017774; gUnk_Banim_02017774 = .;
+        . = 0x017764; gpProcEfxStatusUnits = .;
+        . = 0x01776C; gpProcEfxWeaponIcon = .;
+        . = 0x017770; gpProcEfxSpellCast = .;
+        . = 0x017774; gpProcEfxHpBarColorChange = .;
         . = 0x017778; gEkrHitNow = .;
         . = 0x01777C; gSpellAnimBgfx = .;
         . = 0x01947C; gEkrBarfxBuf = .;
@@ -174,9 +174,9 @@ SECTIONS
         . = 0x01D414; gTmB_Banim = .;
         . = 0x01D424; gUnk_Banim_0201D424 = .;
         . = 0x01D456; gUnk_Banim_0201D456 = .;
-        . = 0x01DF6C; gUnk_Banim_0201DF6C = .;
-        . = 0x01DFCC; gUnk_Banim_0201DFCC = .;
-        . = 0x01E02C; gUnk_Banim_0201E02C = .;
+        . = 0x01DF6C; gEfxSplitedColorBufA = .;
+        . = 0x01DFCC; gEfxSplitedColorBufB = .;
+        . = 0x01E02C; gEfxSplitedColorBufC = .;
         . = 0x01E0EC; gUnk_Banim_0201E0EC = .;
         . = 0x01E0F0; gUnk_Banim_0201E0F0 = .;
         . = 0x01E0F4; gProcEkrBaseAppearExist = .;
@@ -332,6 +332,9 @@ SECTIONS
 
         . = 0x0203DCA7 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203DCA7 = .;
+
+        . = 0x0203DCB8 - __ewram_overlay_end;
+        . = ALIGN(4); gShopItemTexts = .;
 
         . = 0x0203DD04 - __ewram_overlay_end;
         . = ALIGN(4); gShopSt = .;
@@ -533,15 +536,12 @@ SECTIONS
         asm/banim_ekrdispup.o(.text);
         asm/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
-        asm/banim_efxdeath.o(.text);
+        src/banim_efxdeath.o(.text);
         asm/banim_efxfarattack.o(.text);
         src/banim_efxquake.o(.text);
         asm/banim_efxquake.o(.text);
-        asm/banim_efxflashing.o(.text);
         src/banim_efxflashing.o(.text);
-        asm/banim_efxstatusunit.o(.text);
-        asm/banim_efxflashobj.o(.text);
-        asm/banim_ekrutils.o(.text);
+        src/banim_ekrutils.o(.text);
         asm/banim_ekrbattlestarting.o(.text);
         asm/banim_ekrbattleending.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);
@@ -592,6 +592,7 @@ SECTIONS
         asm/code_0808AA84.o(.text);
         asm/config.o(.text);
         asm/code.o(.text);
+        src/shop.o(.text);
         asm/shop.o(.text);
         asm/arena.o(.text);
         asm/opanim.o(.text);
@@ -670,6 +671,9 @@ SECTIONS
         . = ALIGN(4); data/data-code-sio.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
+        . = ALIGN(4); src/banim_efxflashing.o(.rodata);
+        . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
+        . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
         . = ALIGN(4); data/rodata_279E60.o(.rodata);
         . = ALIGN(4); src/mu.o(.rodata);
@@ -754,14 +758,11 @@ SECTIONS
         . = ALIGN(4); asm/banim_ekrgauge.o(.data);
         . = ALIGN(4); asm/banim_ekrdispup.o(.data);
         . = ALIGN(4); src/banim_efxhpbar.o(.data);
-        . = ALIGN(4); asm/banim_efxdeath.o(.data);
+        . = ALIGN(4); src/banim_efxdeath.o(.data);
         . = ALIGN(4); asm/banim_efxfarattack.o(.data);
         . = ALIGN(4); src/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);
-        . = ALIGN(4); asm/banim_efxflashing.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);
-        . = ALIGN(4); asm/banim_efxstatusunit.o(.data);
-        . = ALIGN(4); asm/banim_efxflashobj.o(.data);
         . = ALIGN(4); asm/banim_ekrbattlestarting.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleending.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
@@ -807,6 +808,8 @@ SECTIONS
         . = ALIGN(4); src/savemenu.o(.data);
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/data.o(.data);
+        . = ALIGN(4); src/shop.o(.data);
+        . = ALIGN(4); data/shop.o(.data);
 
         . = ALIGN(4); FILL(0xFF);
 
