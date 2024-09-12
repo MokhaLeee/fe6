@@ -160,7 +160,7 @@ SECTIONS
         . = 0x017758; gEkrBg2QuakeVec = .;
         . = 0x01775C; gUnk_Banim_0201775C = .;
         . = 0x017760; gUnk_Banim_02017760 = .;
-        . = 0x017764; gUnk_Banim_02017764 = .;
+        . = 0x017764; gpProcEfxStatusUnits = .;
         . = 0x01776C; gUnk_Banim_0201776C = .;
         . = 0x017770; gUnk_Banim_02017770 = .;
         . = 0x017774; gpProcEfxHpBarColorChange = .;
@@ -541,7 +541,6 @@ SECTIONS
         src/banim_efxquake.o(.text);
         asm/banim_efxquake.o(.text);
         src/banim_efxflashing.o(.text);
-        asm/banim_efxstatusunit.o(.text);
         asm/banim_efxflashobj.o(.text);
         asm/banim_ekrutils.o(.text);
         asm/banim_ekrbattlestarting.o(.text);
@@ -765,7 +764,6 @@ SECTIONS
         . = ALIGN(4); src/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);
-        . = ALIGN(4); asm/banim_efxstatusunit.o(.data);
         . = ALIGN(4); asm/banim_efxflashobj.o(.data);
         . = ALIGN(4); asm/banim_ekrbattlestarting.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleending.o(.data);

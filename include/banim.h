@@ -6,6 +6,7 @@
 
 #include "prelude.h"
 #include "banim_sprite.h"
+#include "battle.h"
 
 enum EkrDistanceType_idx {
     EKR_DISTANCE_CLOSE,
@@ -42,6 +43,9 @@ enum banim_mode_index {
 #define EFX_TILEMAP_LOC(aMap, aX, aY) (aMap + (aX) + EFX_BG_WIDTH * (aY))
 
 enum video_banim {
+    BGPAL_EFXDRAGON_L = 6,
+    BGPAL_EFXDRAGON_R = 7,
+
     OBPAL_EFX_UNIT_L = 7,
     OBPAL_EFX_UNIT_R = 9,
 
@@ -414,15 +418,40 @@ void NewEfxFlashUnit(struct BaSprite * anim, u16 dura1, u16 dura2, int c);
 void EfxFlashUnit_Loop(struct ProcEfxFlashing * proc);
 void EfxFlashUnit_RestorePal(struct ProcEfxFlashing * proc);
 
+struct ProcEfxStatusUnit {
+    PROC_HEADER;
+    /* 29 */ u8 invalid;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ u16 timer;
+
+    STRUCT_PAD(0x2E, 0x32);
+
+    /* 32 */ i16 red, green, blue;
+
+    STRUCT_PAD(0x38, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const u16 * frame_lut;
+    /* 4C */ int debuff, debuf_bak;
+
+    STRUCT_PAD(0x54, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+};
+
+extern struct ProcEfxStatusUnit * gpProcEfxStatusUnits[2];
+
 void NewEfxStatusUnit(struct BaSprite * anim);
 void EndEfxStatusUnits(struct BaSprite *anim);
 void DisableEfxStatusUnits(struct BaSprite * anim);
 void EnableEfxStatusUnits(struct BaSprite * anim);
 void SetUnitEfxDebuff(struct BaSprite * anim, int debuff);
 u32 GetUnitEfxDebuff(struct BaSprite * anim);
-// func_fe6_08046F64
-// func_fe6_08047058
-// func_fe6_08047160
+void EfxStatusUnitFlashing(struct Anim * anim, int r, int g, int b);
+void EfxStatusUnit_Loop(struct ProcEfxStatusUnit * proc);
+void EfxStatusUnit_End(struct ProcEfxStatusUnit * proc);
 void NewEfxWeaponIcon(i16 eff1, i16 eff2);
 void EndProcEfxWeaponIcon(void);
 // func_fe6_08047248

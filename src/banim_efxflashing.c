@@ -383,14 +383,238 @@ void EfxFlashUnit_RestorePal(struct ProcEfxFlashing * proc)
     Proc_Break(proc);
 }
 
-const u16 gFrameLut_EfxStatusUnit[] = {
-    0x00, 0x14,
-    0x04, 0x06,
-    0x08, 0x05,
-    0x0C, 0x06,
-    0x10, 0x14,
-    0x0C, 0x06,
-    0x08, 0x05,
-    0x04, 0x06,
-    -2
+struct ProcScr CONST_DATA ProcScr_EfxStatusUnit[] =
+{
+    PROC_NAME_DEBUG("efxStatusUnit"),
+    PROC_MARK(PROC_MARK_PAL_CHG),
+    PROC_ONEND(EfxStatusUnit_End),
+    PROC_REPEAT(EfxStatusUnit_Loop),
+    PROC_END,
 };
+
+void NewEfxStatusUnit(struct Anim * anim)
+{
+    struct Unit * unit;
+    struct ProcEfxStatusUnit * proc;
+
+    static const u16 frame_config[] = {
+        0x00, 0x14,
+        0x04, 0x06,
+        0x08, 0x05,
+        0x0C, 0x06,
+        0x10, 0x14,
+        0x0C, 0x06,
+        0x08, 0x05,
+        0x04, 0x06,
+        -2
+    };
+
+    if (GetAnimPosition(anim) == POS_L)
+        unit = &gpEkrBattleUnitLeft->unit;
+    else
+        unit = &gpEkrBattleUnitRight->unit;
+
+    proc = SpawnProc(ProcScr_EfxStatusUnit, PROC_TREE_3);
+
+    proc->invalid = 0;
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->frame = 0;
+    proc->frame_lut = frame_config;
+    proc->debuff = unit->status;
+
+    if (gEkrDebugModeMaybe == 1)
+        proc->debuff = UNIT_STATUS_NONE;
+
+    proc->debuf_bak = 0;
+    proc->blue = 0;
+    proc->green = 0;
+    proc->red = 0;
+    gpProcEfxStatusUnits[GetAnimPosition(anim)] = proc;
+
+    if (GetAnimPosition(anim) == POS_L)
+    {
+        EfxSplitColor(gpEfxUnitPaletteBackup[POS_L], &gFadeComponents[0], 0x10);
+        EfxSplitColorPetrify(gpEfxUnitPaletteBackup[POS_L], &gFadeComponents[0x30], 0x10);
+        func_fe6_0805B88C(&gFadeComponents[0], &gFadeComponents[0x30], (void *)&gFadeComponents[0x180], 0x10, 0x10);
+    }
+    else
+    {
+        EfxSplitColor(gpEfxUnitPaletteBackup[POS_R], &gFadeComponents[0x60], 0x10);
+        EfxSplitColorPetrify(gpEfxUnitPaletteBackup[POS_R], &gFadeComponents[0x90], 0x10);
+        func_fe6_0805B88C(&gFadeComponents[0x60], &gFadeComponents[0x90], (void *)&gFadeComponents[0x300], 0x10, 0x10);
+    }
+}
+
+void EndEfxStatusUnits(struct Anim * anim)
+{
+    if (gpProcEfxStatusUnits[GetAnimPosition(anim)])
+    {
+        Proc_End(gpProcEfxStatusUnits[GetAnimPosition(anim)]);
+        gpProcEfxStatusUnits[GetAnimPosition(anim)] = NULL;
+    }
+}
+
+void DisableEfxStatusUnits(struct Anim * anim)
+{
+    struct ProcEfxStatusUnit ** procs = gpProcEfxStatusUnits;
+    procs[GetAnimPosition(anim)]->invalid = true;
+}
+
+void EnableEfxStatusUnits(struct Anim * anim)
+{
+    struct ProcEfxStatusUnit **procs = gpProcEfxStatusUnits;
+    procs[GetAnimPosition(anim)]->invalid = false;
+}
+
+void SetUnitEfxDebuff(struct Anim * anim, int debuff)
+{
+    struct ProcEfxStatusUnit ** procs = gpProcEfxStatusUnits;
+    procs[GetAnimPosition(anim)]->debuff = debuff;
+
+    if (debuff == UNIT_STATUS_NONE)
+        EfxStatusUnitFlashing(anim, 0, 0, 0);
+}
+
+u32 GetUnitEfxDebuff(struct Anim * anim)
+{
+    struct ProcEfxStatusUnit **procs = gpProcEfxStatusUnits;
+    return procs[GetAnimPosition(anim)]->debuff;
+}
+
+void EfxStatusUnitFlashing(struct Anim * anim, int r, int g, int b)
+{
+    u32 ret = GetEkrDragonStateType();
+
+    if (GetAnimPosition(anim) == POS_L)
+    {
+        CpuFastCopy(gpEfxUnitPaletteBackup[POS_L], gPal + OBPAL_OFFSET(OBPAL_EFX_UNIT_L), 0x20);
+        EfxPalFlashingInOut(gPal, OBPAL_EFX_UNIT_L + 0x10, 1, r, g, b);
+
+        if (EDRAGON_TYPE_MANAKETE_L & ret)
+            RestoreBodyFlashingPalForManakete(POS_L);
+
+        if (EDRAGON_TYPE_IDUNN_L & ret)
+            RestoreBodyFlashingPalForIdunn(POS_L);
+
+        if ((EDRAGON_TYPE_IDUNN_L | EDRAGON_TYPE_MANAKETE_L) & ret)
+            EfxPalFlashingInOut(gPal, BGPAL_EFXDRAGON_L, 1, r, g, b);
+    }
+    else
+    {
+        CpuFastCopy(gpEfxUnitPaletteBackup[POS_R], gPal + OBPAL_OFFSET(OBPAL_EFX_UNIT_R), 0x20);
+        EfxPalFlashingInOut(gPal, OBPAL_EFX_UNIT_R + 0x10, 1, r, g, b);
+
+        if (EDRAGON_TYPE_MANAKETE_R & ret)
+            RestoreBodyFlashingPalForManakete(POS_R);
+
+        if (EDRAGON_TYPE_IDUNN_R & ret)
+            RestoreBodyFlashingPalForIdunn(POS_R);
+
+        if ((EDRAGON_TYPE_IDUNN_R | EDRAGON_TYPE_MANAKETE_R) & ret)
+            EfxPalFlashingInOut(gPal, BGPAL_EFXDRAGON_R, 1, r, g, b);
+    }
+}
+
+void EfxStatusUnit_Loop(struct ProcEfxStatusUnit * proc)
+{
+    int ret;
+
+    if (GetUnitEfxDebuff(proc->anim) == UNIT_STATUS_NONE || proc->invalid == true)
+        return;
+
+    if (proc->debuff != proc->debuf_bak)
+    {
+        proc->timer = 0;
+        proc->frame = 0;
+        proc->debuf_bak = proc->debuff;
+    }
+
+    ret = EfxAdvanceFrameLut((void *)&proc->timer, (void *)&proc->frame, proc->frame_lut);
+    if (ret >= 0) {
+        switch (proc->debuff) {
+        case UNIT_STATUS_POISON:
+            proc->red = ret;
+            proc->green = 0;
+            proc->blue = ret;
+            break;
+
+        case UNIT_STATUS_SLEEP:
+            proc->red = 0;
+            proc->green = 0;
+            proc->blue = ret;
+            break;
+
+        case UNIT_STATUS_BERSERK:
+            proc->red = ret;
+            proc->green = 0;
+            proc->blue = 0;
+            break;
+
+        case UNIT_STATUS_SILENCED:
+        default:
+            proc->red = ret;
+            proc->green = ret;
+            proc->blue = ret;
+            break;
+        }
+    }
+
+
+    switch (proc->debuff) {
+    case UNIT_STATUS_POISON:
+    case UNIT_STATUS_SLEEP:
+    case UNIT_STATUS_BERSERK:
+        EfxStatusUnitFlashing(proc->anim, proc->red, proc->green, proc->blue);
+        break;
+
+    case UNIT_STATUS_SILENCED:
+        if (GetAnimPosition(proc->anim) == POS_L)
+            EfxDecodeSplitedPalette(
+                gPal + OBPAL_OFFSET(OBPAL_EFX_UNIT_L),
+                gFadeComponents,
+                &gFadeComponents[0x30],
+                (i16 *)&gFadeComponents[0x180],
+                16, proc->red, 16);
+        else
+            EfxDecodeSplitedPalette(
+                gPal + OBPAL_OFFSET(OBPAL_EFX_UNIT_R),
+                &gFadeComponents[0x60],
+                &gFadeComponents[0x90],
+                (i16 *)&gFadeComponents[0x300],
+                16, proc->red, 16);
+        break;
+
+    default:
+        break;
+    }
+
+    EnablePalSync();
+}
+
+void EfxStatusUnit_End(struct ProcEfxStatusUnit *proc)
+{
+    u32 ret = GetEkrDragonStateType();
+
+    if (GetAnimPosition(proc->anim) == POS_L)
+    {
+        CpuFastCopy(gpEfxUnitPaletteBackup[POS_L], gPal + OBPAL_OFFSET(OBPAL_EFX_UNIT_L), 0x20);
+
+        if (EDRAGON_TYPE_MANAKETE_L & ret)
+            RestoreBodyFlashingPalForManakete(POS_L);
+
+        if (EDRAGON_TYPE_IDUNN_L & ret)
+            RestoreBodyFlashingPalForIdunn(POS_L);
+    }
+    else
+    {
+        CpuFastCopy(gpEfxUnitPaletteBackup[POS_R], gPal + OBPAL_OFFSET(OBPAL_EFX_UNIT_R), 0x20);
+
+        if (EDRAGON_TYPE_MANAKETE_R & ret)
+            RestoreBodyFlashingPalForManakete(POS_R);
+
+        if (EDRAGON_TYPE_IDUNN_R & ret)
+            RestoreBodyFlashingPalForIdunn(POS_R);
+    }
+    EnablePalSync();
+}

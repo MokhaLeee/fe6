@@ -230,6 +230,8 @@ void SetOnHBlankB(Func func);
 
 extern u8 EWRAM_DATA gBuf[0x2000];
 
+extern i8 EWRAM_DATA gFadeComponentStep[0x20];
+extern i8 EWRAM_DATA gFadeComponents[0x600];
 extern u16 EWRAM_DATA gPal[0x200];
 
 extern u16 EWRAM_DATA gBg0Tm[0x400];
