@@ -3,9 +3,11 @@
 #include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
 #include "proc.h"
+#include "util.h"
 #include "eventinfo.h"
 #include "hardware.h"
 #include "constants/pids.h"
+#include "constants/songs.h"
 
 struct ProcScr CONST_DATA ProcScr_EfxDeadEvent[] =
 {
@@ -150,7 +152,7 @@ void NewEfxDead(struct Anim * anim1, struct Anim * anim2)
     DisableEfxStatusUnits(anim1);
 }
 
-void EfxDead_StartPika(struct ProcEfxDead *proc)
+void EfxDead_StartPika(struct ProcEfxDead * proc)
 {
     u32 conf = GetEkrDragonStateTypeGeneric();
     struct Anim * anim1 = proc->anim1;
@@ -187,4 +189,197 @@ void EfxDead_StartPika(struct ProcEfxDead *proc)
         proc->terminator = 0x32;
         Proc_Break(proc);
     }
+}
+
+void EfxDead_StartAlpha(struct ProcEfxDead * proc)
+{
+    i16 time;
+    u32 conf = GetEkrDragonStateTypeGeneric();
+    struct Anim * anim = proc->anim1;
+
+    if (GetAnimPosition(anim) == POS_L)
+        conf &= (EDRAGON_TYPE_IDUNN_L | EDRAGON_TYPE_FAE_L | EDRAGON_TYPE_MANAKETE_L);
+    else
+        conf &= (EDRAGON_TYPE_IDUNN_R | EDRAGON_TYPE_FAE_R | EDRAGON_TYPE_MANAKETE_R);
+
+    time = ++proc->timer;
+    if (time == 0x1E)
+    {
+        if ((EDRAGON_TYPE_MANAKETE_L | EDRAGON_TYPE_MANAKETE_R) & conf)
+        {
+            NewEfxDeadDragonAlpha(proc->anim1, proc->anim2);
+            EfxPlaySE(SONG_D6, 0x100);
+            M4aPlayWithPostionCtrl(SONG_D6, anim->xPosition, 1);
+            proc->terminator = 100;
+        }
+        else if ((EDRAGON_TYPE_IDUNN_L | EDRAGON_TYPE_IDUNN_R) & conf)
+        {
+            proc->terminator = 0x1F;
+        }
+        else
+        {
+            NewEfxDeadAlpha(proc->anim1, proc->anim2);
+            EfxPlaySE(SONG_D6, 0x100);
+            M4aPlayWithPostionCtrl(SONG_D6, anim->xPosition, 1);
+            proc->terminator = 50;
+        }
+        return;
+    }
+
+    if (time == proc->terminator)
+    {
+        gEkrHpBarCount--;
+        gEkrDeadExist = 0;
+        Proc_Break(proc);
+    }
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxDeadPika[] =
+{
+    PROC_NAME_DEBUG("efxDeadPika"),
+    PROC_REPEAT(EfxDeadPika_Loop),
+    PROC_END,
+};
+
+void NewEfxDeadPika(struct Anim * anim1, struct Anim * anim2)
+{
+    struct ProcEfxDead *proc;
+    proc = SpawnProc(ProcScr_EfxDeadPika, PROC_TREE_3);
+    
+    proc->anim1 = anim1;
+    proc->anim2 = anim2;
+    proc->timer = 0;
+    proc->terminator = 0;
+}
+
+void EfxDeadPika_Loop(struct ProcEfxDead * proc)
+{
+    struct Anim *anim1 = proc->anim1;
+    struct Anim *anim2 = proc->anim2;
+
+    if (++proc->timer > 0x6)
+    {
+        anim1->flags &= ~BAS_BIT_HIDDEN;
+        anim2->flags &= ~BAS_BIT_HIDDEN;
+
+        proc->timer = 0;
+        proc->terminator++;
+    }
+    else
+    {
+        anim1->flags |= BAS_BIT_HIDDEN;
+        anim2->flags |= BAS_BIT_HIDDEN;
+    }
+
+    if (proc->terminator > 0x5)
+    {
+        proc->timer = 0;
+        proc->terminator = 0;
+        Proc_Break(proc);
+    }
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxDeadAlpha[] =
+{
+    PROC_NAME_DEBUG("efxDeadAlpha"),
+    PROC_REPEAT(EfxDeadAlpha_Loop),
+    PROC_END,
+};
+
+void NewEfxDeadAlpha(struct Anim * anim1, struct Anim * anim2)
+{
+    struct ProcEfxDead * proc;
+    proc = SpawnProc(ProcScr_EfxDeadAlpha, PROC_TREE_3);
+    
+    proc->anim1 = anim1;
+    proc->anim2 = anim2;
+    proc->timer = 0;
+    proc->terminator = 0;
+
+    anim1->priority = 0xA;
+    anim2->priority = 0xA;
+    BasSort();
+
+    SetBlendConfig(0, 0x10, 0x10, 0x0);
+    SetBlendTargetA(0, 0, 0, 0, 0);
+    SetBlendTargetB(0, 0, 1, 1, 0);
+
+    gDispIo.blend_ct.target2_enable_bd = true;
+}
+
+void EfxDeadAlpha_Loop(struct ProcEfxDead * proc)
+{
+    int ca;
+    struct Anim * anim1 = proc->anim1;
+    struct Anim * anim2 = proc->anim2;
+
+    anim1->oam01 |= 0x400;
+    anim2->oam01 |= 0x400;
+
+    if (++proc->timer > 0x3C)
+    {
+        anim1->flags |= BAS_BIT_HIDDEN;
+        anim2->flags |= BAS_BIT_HIDDEN;
+
+        anim1->oam01 &= ~0x400;
+        anim2->oam01 &= ~0x400;
+
+        SetBlendNone();
+        Proc_Break(proc);
+        return;
+    }
+
+    ca = Interpolate(INTERPOLATE_LINEAR, 0x10, 0, proc->timer, 0x3C);
+    SetBlendConfig(0, ca, 0x10, 0);
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxDeadDragonAlpha[] =
+{
+    PROC_NAME_DEBUG("efxDeadDragonAlpha"),
+    PROC_REPEAT(EfxDeadDragonAlpha_Loop),
+    PROC_END,
+};
+
+void NewEfxDeadDragonAlpha(struct Anim * anim1, struct Anim * anim2)
+{
+    struct ProcEfxDead * proc;
+    proc = SpawnProc(ProcScr_EfxDeadDragonAlpha, PROC_TREE_3);
+
+    proc->anim1 = anim1;
+    proc->anim2 = anim2;
+
+    anim1->flags |= BAS_BIT_HIDDEN;
+    anim2->flags |= BAS_BIT_HIDDEN;
+
+    proc->timer = 0;
+    proc->terminator = 0;
+
+    EndEkrDragonDaemon(proc->anim1);
+
+    SetBlendConfig(1, 0x10, 0x10, 0x0);
+    SetBlendTargetA(0, 0, 0, 1, 0);
+    SetBlendTargetB(0, 0, 1, 0, 0);
+
+    SetWinEnable(1, 0, 0);
+    SetWin0Box(0, 0, 0xF0, 0xA0);
+    SetWin0Layers(1, 1, 1, 1, 1);
+    gDispIo.win_ct.win0_enable_blend = 1;
+    gDispIo.blend_ct.target2_enable_bd = 1;
+}
+
+void EfxDeadDragonAlpha_Loop(struct ProcEfxDead * proc)
+{
+    int ca;
+
+    if (++proc->timer > 0x3C)
+    {
+        TmFill(gBg3Tm, 0xF000);
+        EnableBgSync(BG3_SYNC_BIT);
+        SetBlendNone();
+        Proc_Break(proc);
+        return;
+    }
+
+    ca = Interpolate(INTERPOLATE_LINEAR, 0x10, 0, proc->timer, 0x3C);
+    SetBlendConfig(1, ca, 0x10, 0);
 }

@@ -537,7 +537,6 @@ SECTIONS
         asm/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
         src/banim_efxdeath.o(.text);
-        asm/banim_efxdeath.o(.text);
         asm/banim_efxfarattack.o(.text);
         src/banim_efxquake.o(.text);
         asm/banim_efxquake.o(.text);
@@ -760,7 +759,6 @@ SECTIONS
         . = ALIGN(4); asm/banim_ekrdispup.o(.data);
         . = ALIGN(4); src/banim_efxhpbar.o(.data);
         . = ALIGN(4); src/banim_efxdeath.o(.data);
-        . = ALIGN(4); asm/banim_efxdeath.o(.data);
         . = ALIGN(4); asm/banim_efxfarattack.o(.data);
         . = ALIGN(4); src/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);

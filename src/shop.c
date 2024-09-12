@@ -364,14 +364,10 @@ void Shop_InitBuyState(struct ProcShop * proc)
         proc);
 }
 
-#if NONMATCHING
 void Shop_Loop_BuyKeyHandler(struct ProcShop * proc)
 {
-    u8 head_loc;
-    u32 cursor_at_head;
+    bool cursor_at_head;
     int price;
-    int a;
-    int b;
 
     cursor_at_head = FALSE;
 
@@ -388,13 +384,11 @@ void Shop_Loop_BuyKeyHandler(struct ProcShop * proc)
     proc->head_idx = proc->head_loc;
     proc->hand_idx = proc->hand_loc;
 
-    PutUiHand(0x38, - (proc->hand_loc * 0x10 - 72) + proc->head_loc * 0x10);
+    PutUiHand(0x38, proc->head_loc * 16 + 72 - proc->hand_loc * 16);
 
     if ((proc->helpTextActive != 0) && (cursor_at_head != 0))
     {
-        a = (proc->head_loc * 16);
-        b = ((proc->hand_loc * 16) - 72);
-        StartItemHelpBox(56, a - b, proc->shopItems[proc->head_loc]);
+        StartItemHelpBox(56, proc->head_loc * 16 + 72 - proc->hand_loc * 16, proc->shopItems[proc->head_loc]);
     }
 
     DisplayShopUiArrows();
@@ -409,16 +403,17 @@ void Shop_Loop_BuyKeyHandler(struct ProcShop * proc)
             proc->helpTextActive = 0;
             CloseHelpBox();
         }
+
         return;
     }
-
-    if (gKeySt->pressed & KEY_BUTTON_R)
+    else
     {
-        proc->helpTextActive = 1;
-        a = (proc->head_loc * 16);
-        b = ((proc->hand_loc * 16) - 72);
-        StartItemHelpBox(56, a - b, proc->shopItems[proc->head_loc]);
-        return;
+        if (gKeySt->pressed & KEY_BUTTON_R)
+        {
+            proc->helpTextActive = 1;
+            StartItemHelpBox(56, proc->head_loc * 16 + 72 - proc->hand_loc * 16, proc->shopItems[proc->head_loc]);
+            return;
+        }
     }
 
     price = GetItemPrice(proc->unit, proc->shopItems[proc->head_loc]);
@@ -446,4 +441,3 @@ void Shop_Loop_BuyKeyHandler(struct ProcShop * proc)
         return;
     }
 }
-#endif
