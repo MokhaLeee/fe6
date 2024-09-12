@@ -119,32 +119,32 @@ void InitShopBuyStatus(struct ProcShopInit * proc);
 void ShopInitTexts_OnSell(struct ProcShop * proc);
 // func_fe6_08097354
 void InitShopSellStatus(struct ProcShopInit * proc);
-void DrawShopItemPriceLine(struct Text *, int, struct Unit *, u16 *);
-// func_fe6_080974A0
-// GetItemPrice
+void DrawShopItemPriceLine(struct Text * text, int item, struct Unit * unit, u16 * tm);
+void DrawShopItemLine(struct Text * text, int item, struct Unit * unit, u16 * tm);
+u16 GetItemPrice(struct Unit *, int);
 // func_fe6_080975A0
 // func_fe6_080975C8
-// GoldBox_OnLoop
-// InitShopScreenConfig
-// _DisplayShopUiArrows
-// DisplayShopUiArrows
-// UnpackUiVArrowGfx
-// DisplayUiVArrow
-// HandleShopBuyAction
-// ShopTryMoveCursor
+void GoldBox_OnLoop(struct ProcShop * proc);
+void InitShopScreenConfig(void);
+void _DisplayShopUiArrows(void);
+void DisplayShopUiArrows(void);
+void UnpackUiVArrowGfx(int, int);
+void DisplayUiVArrow(int, int, u16, int);
+void HandleShopBuyAction(struct ProcShop * proc);
+int ShopTryMoveCursor(int pos, int pre, bool scroll);
 // func_fe6_080979AC
 // ShopTryScrollPage
 // ShopUpdateBg2Offset
-// RegisterShopState
-// Shop_TryMoveHandPage
-// func_fe6_08097CF4
-// func_fe6_08097D10
-// func_fe6_08097D34
+void RegisterShopState(u16, u16 item_cnt, u16 lines, u16 cur_sel, int bg_off, void (* on_draw)(struct ProcShop *, int), struct ProcShop * proc);
+void Shop_TryMoveHandPage(void);
+u16 ShopSt_GetHeadLoc(void);
+int ShopSt_GetBg2Offset(void);
+u16 ShopSt_GetHandLoc(void);
 // func_fe6_08097D50
 // func_fe6_08097D7C
-// func_fe6_08097DA8
-// ShouldDisplayUpArrow
-// ShouldDisplayDownArrow
+bool IsShopPageScrolling(void);
+bool ShouldDisplayUpArrow(void);
+bool ShouldDisplayDownArrow(void);
 
 // extern CONST_DATA ??? gDefaultShopItems
 // extern CONST_DATA ??? gShopDislogueIdx

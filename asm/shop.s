@@ -2,109 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start ShopDrawSellItemLine
-ShopDrawSellItemLine: @ 0x08096164
-	push {r4, r5, r7, lr}
-	sub sp, #0x14
-	mov r7, sp
-	str r0, [r7]
-	str r1, [r7, #4]
-	ldr r0, [r7]
-	str r0, [r7, #8]
-	ldr r1, [r7, #4]
-	adds r0, r1, #0
-	movs r1, #6
-	bl DivRem
-	str r0, [r7, #0xc]
-	movs r0, #0
-	bl SetTextFont
-	bl InitSystemTextFont
-	movs r0, #4
-	bl EnableBgSync
-	ldr r0, [r7, #0xc]
-	adds r1, r0, #0
-	lsls r0, r1, #3
-	ldr r2, .L080961B8 @ =gShopItemTexts
-	adds r1, r0, r2
-	adds r0, r1, #0
-	bl ClearText
-	ldr r0, [r7, #8]
-	ldr r1, [r7, #4]
-	adds r2, r1, #0
-	lsls r1, r2, #1
-	adds r0, #0x30
-	adds r1, r0, r1
-	ldrh r0, [r1]
-	str r0, [r7, #0x10]
-	ldr r0, [r7, #0x10]
-	cmp r0, #0
-	bne .L080961BC
-	b .L080961E4
-	.align 2, 0
-.L080961B8: .4byte gShopItemTexts
-.L080961BC:
-	ldr r0, [r7, #0xc]
-	adds r1, r0, #0
-	lsls r0, r1, #3
-	ldr r1, .L080961EC @ =gShopItemTexts
-	adds r0, r0, r1
-	ldr r1, [r7, #0x10]
-	ldr r3, [r7, #8]
-	ldr r2, [r3, #0x2c]
-	ldr r3, [r7, #4]
-	adds r4, r3, #0
-	lsls r3, r4, #1
-	movs r4, #0x1f
-	ands r3, r4
-	lsls r4, r3, #5
-	adds r3, r4, #0
-	lsls r4, r3, #1
-	ldr r5, .L080961F0 @ =gBg2Tm+0xE
-	adds r3, r4, r5
-	bl func_fe6_080974A0
-.L080961E4:
-	add sp, #0x14
-	pop {r4, r5, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080961EC: .4byte gShopItemTexts
-.L080961F0: .4byte gBg2Tm+0xE
-
-	thumb_func_start Shop_InitBuyState
-Shop_InitBuyState: @ 0x080961F4
-	push {r4, r7, lr}
-	sub sp, #0x10
-	add r7, sp, #0xc
-	str r0, [r7]
-	ldr r1, [r7]
-	adds r0, r1, #0
-	adds r1, #0x5e
-	ldrb r0, [r1]
-	ldr r2, [r7]
-	adds r1, r2, #0
-	adds r2, #0x5a
-	ldrb r1, [r2]
-	ldr r3, [r7]
-	adds r2, r3, #0
-	adds r4, r3, #0
-	adds r4, #0x5f
-	ldrb r3, [r4]
-	movs r2, #0x48
-	str r2, [sp]
-	ldr r2, .L08096230 @ =ShopDrawBuyItemLine
-	str r2, [sp, #4]
-	ldr r2, [r7]
-	str r2, [sp, #8]
-	movs r2, #5
-	bl RegisterShopState
-	add sp, #0x10
-	pop {r4, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08096230: .4byte ShopDrawBuyItemLine
-
 	thumb_func_start Shop_Loop_BuyKeyHandler
 Shop_Loop_BuyKeyHandler: @ 0x08096234
 	push {r4, r7, lr}
@@ -115,7 +12,7 @@ Shop_Loop_BuyKeyHandler: @ 0x08096234
 	movs r1, #0
 	strb r1, [r0]
 	bl Shop_TryMoveHandPage
-	bl func_fe6_08097D10
+	bl ShopSt_GetBg2Offset
 	adds r1, r0, #0
 	lsls r0, r1, #0x10
 	lsrs r2, r0, #0x10
@@ -127,7 +24,7 @@ Shop_Loop_BuyKeyHandler: @ 0x08096234
 	adds r1, #0x5c
 	ldrb r0, [r1]
 	adds r4, r0, #0
-	bl func_fe6_08097CF4
+	bl ShopSt_GetHeadLoc
 	lsls r2, r4, #0x10
 	lsrs r1, r2, #0x10
 	lsls r2, r0, #0x10
@@ -138,7 +35,7 @@ Shop_Loop_BuyKeyHandler: @ 0x08096234
 	movs r1, #1
 	strb r1, [r0]
 .L08096278:
-	bl func_fe6_08097CF4
+	bl ShopSt_GetHeadLoc
 	ldr r1, [r7]
 	adds r2, r1, #0
 	adds r1, #0x5c
@@ -150,7 +47,7 @@ Shop_Loop_BuyKeyHandler: @ 0x08096234
 	orrs r2, r0
 	adds r0, r2, #0
 	strb r0, [r1]
-	bl func_fe6_08097D34
+	bl ShopSt_GetHandLoc
 	ldr r1, [r7]
 	adds r2, r1, #0
 	adds r1, #0x5d
@@ -249,7 +146,7 @@ Shop_Loop_BuyKeyHandler: @ 0x08096234
 	bl StartItemHelpBox
 .L0809635A:
 	bl DisplayShopUiArrows
-	bl func_fe6_08097DA8
+	bl IsShopPageScrolling
 	lsls r1, r0, #0x18
 	asrs r0, r1, #0x18
 	cmp r0, #0
@@ -709,7 +606,7 @@ Shop_Loop_SellKeyHandler: @ 0x080966C4
 	movs r1, #0
 	strb r1, [r0]
 	bl Shop_TryMoveHandPage
-	bl func_fe6_08097D10
+	bl ShopSt_GetBg2Offset
 	adds r1, r0, #0
 	lsls r0, r1, #0x10
 	lsrs r2, r0, #0x10
@@ -721,7 +618,7 @@ Shop_Loop_SellKeyHandler: @ 0x080966C4
 	adds r1, #0x5c
 	ldrb r0, [r1]
 	adds r4, r0, #0
-	bl func_fe6_08097CF4
+	bl ShopSt_GetHeadLoc
 	lsls r2, r4, #0x10
 	lsrs r1, r2, #0x10
 	lsls r2, r0, #0x10
@@ -732,7 +629,7 @@ Shop_Loop_SellKeyHandler: @ 0x080966C4
 	movs r1, #1
 	strb r1, [r0]
 .L08096708:
-	bl func_fe6_08097CF4
+	bl ShopSt_GetHeadLoc
 	ldr r1, [r7]
 	adds r2, r1, #0
 	adds r1, #0x5c
@@ -744,7 +641,7 @@ Shop_Loop_SellKeyHandler: @ 0x080966C4
 	orrs r2, r0
 	adds r0, r2, #0
 	strb r0, [r1]
-	bl func_fe6_08097D34
+	bl ShopSt_GetHandLoc
 	ldr r1, [r7]
 	adds r2, r1, #0
 	adds r1, #0x5d
@@ -813,7 +710,7 @@ Shop_Loop_SellKeyHandler: @ 0x080966C4
 	movs r0, #0x38
 	bl StartItemHelpBox
 .L080967B0:
-	bl func_fe6_08097DA8
+	bl IsShopPageScrolling
 	lsls r1, r0, #0x18
 	asrs r0, r1, #0x18
 	cmp r0, #0
@@ -2340,7 +2237,7 @@ func_fe6_08097354: @ 0x08097354
 	lsls r4, r3, #1
 	ldr r5, .L08097404 @ =gBg2Tm+0xE
 	adds r3, r4, r5
-	bl func_fe6_080974A0
+	bl DrawShopItemLine
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
@@ -2425,8 +2322,8 @@ DrawShopItemPriceLine: @ 0x08097444
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_080974A0
-func_fe6_080974A0: @ 0x080974A0
+	thumb_func_start DrawShopItemLine
+DrawShopItemLine: @ 0x080974A0
 	push {r4, r7, lr}
 	sub sp, #0x10
 	mov r7, sp
@@ -3515,8 +3412,8 @@ Shop_TryMoveHandPage: @ 0x08097BC0
 	.align 2, 0
 .L08097CF0: .4byte gpShopSt
 
-	thumb_func_start func_fe6_08097CF4
-func_fe6_08097CF4: @ 0x08097CF4
+	thumb_func_start ShopSt_GetHeadLoc
+ShopSt_GetHeadLoc: @ 0x08097CF4
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, .L08097D04 @ =gpShopSt
@@ -3532,8 +3429,8 @@ func_fe6_08097CF4: @ 0x08097CF4
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_08097D10
-func_fe6_08097D10: @ 0x08097D10
+	thumb_func_start ShopSt_GetBg2Offset
+ShopSt_GetBg2Offset: @ 0x08097D10
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, .L08097D28 @ =gpShopSt
@@ -3553,8 +3450,8 @@ func_fe6_08097D10: @ 0x08097D10
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_08097D34
-func_fe6_08097D34: @ 0x08097D34
+	thumb_func_start ShopSt_GetHandLoc
+ShopSt_GetHandLoc: @ 0x08097D34
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, .L08097D44 @ =gpShopSt
@@ -3618,8 +3515,8 @@ func_fe6_08097D7C: @ 0x08097D7C
 	.align 2, 0
 .L08097DA4: .4byte gpShopSt
 
-	thumb_func_start func_fe6_08097DA8
-func_fe6_08097DA8: @ 0x08097DA8
+	thumb_func_start IsShopPageScrolling
+IsShopPageScrolling: @ 0x08097DA8
 	push {r7, lr}
 	mov r7, sp
 	ldr r0, .L08097DC8 @ =gpShopSt

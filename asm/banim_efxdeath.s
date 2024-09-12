@@ -4,14 +4,6 @@
 
 	.section .data
 
-	.global ProcScr_EfxDeadEvent
-ProcScr_EfxDeadEvent: @ 085CB850
-	.incbin "fe6-base.gba", 0x5CB850, (0x5CB888 - 0x5CB850) @ length: 0038
-
-	.global ProcScr_EfxDead
-ProcScr_EfxDead: @ 085CB888
-	.incbin "fe6-base.gba", 0x5CB888, (0x5CB8A8 - 0x5CB888) @ length: 0020
-
 	.global ProcScr_EfxDeadPika
 ProcScr_EfxDeadPika: @ 085CB8A8
 	.incbin "fe6-base.gba", 0x5CB8A8, (0x5CB8C0 - 0x5CB8A8) @ length: 0018
@@ -25,366 +17,9 @@ ProcScr_EfxDeadDragonAlpha: @ 085CB8D8
 	.incbin "fe6-base.gba", 0x5CB8D8, (0x5CB8F0 - 0x5CB8D8) @ length: 0018
 
 	.section .text
-	thumb_func_start NewEfxDeadEvent
-NewEfxDeadEvent: @ 0x080455C0
-	push {r4, r5, r6, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r0, .L08045604 @ =ProcScr_EfxDeadEvent
-	movs r1, #3
-	bl SpawnProc
-	adds r6, r0, #0
-	str r4, [r6, #0x5c]
-	str r5, [r6, #0x60]
-	ldr r1, .L08045608 @ =gEkrDeadEventExist
-	movs r0, #1
-	str r0, [r1]
-	bl GetEkrDragonStateTypeIdunn
-	cmp r0, #0
-	beq .L080455FC
-	ldr r0, [r6, #0x5c]
-	bl NewEkrIdunnIntroDeamon1
-	str r0, [r6, #0x64]
-	ldr r2, .L0804560C @ =gEkrXPosBase
-	ldr r1, .L08045610 @ =gEkrBgPosition
-	ldr r1, [r1]
-	subs r1, #0x4e
-	ldrh r2, [r2]
-	subs r1, r2, r1
-	strh r1, [r0, #0x32]
-	movs r1, #0xb2
-	strh r1, [r0, #0x3a]
-.L080455FC:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08045604: .4byte ProcScr_EfxDeadEvent
-.L08045608: .4byte gEkrDeadEventExist
-.L0804560C: .4byte gEkrXPosBase
-.L08045610: .4byte gEkrBgPosition
 
-	thumb_func_start func_fe6_08045614
-func_fe6_08045614: @ 0x08045614
-	push {r4, r5, r6, r7, lr}
-	adds r5, r0, #0
-	ldr r0, [r5, #0x5c]
-	bl GetAnimAnotherSide
-	adds r7, r0, #0
-	movs r6, #0
-	ldr r0, .L08045680 @ =gEfxBgSemaphore
-	ldr r0, [r0]
-	cmp r0, #0
-	bne .L08045646
-	ldr r0, .L08045684 @ =gEfxSpellAnimExists
-	ldr r0, [r0]
-	cmp r0, #0
-	bne .L08045646
-	ldr r4, .L08045688 @ =gBanimDoneFlag
-	adds r0, r7, #0
-	bl GetAnimPosition
-	lsls r0, r0, #2
-	adds r0, r0, r4
-	ldr r0, [r0]
-	cmp r0, #1
-	bne .L08045646
-	movs r6, #1
-.L08045646:
-	cmp r6, #1
-	bne .L0804567A
-	movs r0, #7
-	strh r0, [r5, #0x2c]
-	ldr r0, .L0804568C @ =gEkrDistanceType
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #0
-	beq .L08045674
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	ldr r1, .L08045690 @ =gEkrInitPosReal
-	ldr r1, [r1]
-	cmp r0, r1
-	beq .L08045674
-	movs r1, #1
-	rsbs r1, r1, #0
-	adds r0, r7, #0
-	bl NewEfxFarAttackWithDistance
-	movs r0, #0
-	strh r0, [r5, #0x2c]
-.L08045674:
-	adds r0, r5, #0
-	bl Proc_Break
-.L0804567A:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08045680: .4byte gEfxBgSemaphore
-.L08045684: .4byte gEfxSpellAnimExists
-.L08045688: .4byte gBanimDoneFlag
-.L0804568C: .4byte gEkrDistanceType
-.L08045690: .4byte gEkrInitPosReal
-
-	thumb_func_start func_fe6_08045694
-func_fe6_08045694: @ 0x08045694
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #8
-	bne .L080456BE
-	movs r0, #1
-	movs r1, #7
-	bl NewEkrWindowAppear
-	movs r0, #1
-	movs r1, #7
-	movs r2, #0
-	bl NewEkrNamewinAppear
-	adds r0, r4, #0
-	bl Proc_Break
-.L080456BE:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_080456C4
-func_fe6_080456C4: @ 0x080456C4
-	push {r4, r5, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	bl CheckEkrWindowAppearUnexist
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne .L08045734
-	bl EnableEkrGauge
-	bl EkrGauge_08044264
-	movs r0, #0
-	str r0, [sp]
-	ldr r1, .L0804573C @ =gBg0Tm
-	ldr r2, .L08045740 @ =0x01000200
-	mov r0, sp
-	bl CpuFastSet
-	ldr r0, .L08045744 @ =gEkrBg0QuakeVec
-	ldrh r1, [r0]
-	ldrh r2, [r0, #2]
-	movs r0, #0
-	bl SetBgOffset
-	movs r0, #1
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #1
-	bl EnableBgSync
-	bl EkrGauge_080438D8
-	ldr r5, .L08045748 @ =gEkrPids
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	adds r0, r0, r5
-	ldrb r0, [r0]
-	cmp r0, #0x66
-	bne .L08045720
-	bl func_fe6_0805AFD4
-.L08045720:
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	adds r0, r0, r5
-	ldrb r0, [r0]
-	bl StartBattleDefeatTalk
-	adds r0, r4, #0
-	bl Proc_Break
-.L08045734:
-	add sp, #4
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804573C: .4byte gBg0Tm
-.L08045740: .4byte 0x01000200
-.L08045744: .4byte gEkrBg0QuakeVec
-.L08045748: .4byte gEkrPids
-
-	thumb_func_start func_fe6_0804574C
-func_fe6_0804574C: @ 0x0804574C
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	bl IsEventRunning
-	lsls r0, r0, #0x18
-	asrs r5, r0, #0x18
-	cmp r5, #0
-	bne .L080457A4
-	bl PlayDeathSoundForArena
-	ldr r0, [r4, #0x5c]
-	ldr r1, [r4, #0x60]
-	bl NewEfxDead
-	bl EfxPrepareScreenFx
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	ldr r1, .L080457AC @ =gBanimValid
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	strh r5, [r0]
-	movs r0, #1
-	bl EnableBgSync
-	movs r0, #0
-	movs r1, #7
-	bl NewEkrWindowAppear
-	movs r0, #0
-	movs r1, #7
-	movs r2, #0
-	bl NewEkrNamewinAppear
-	bl DisableEkrGauge
-	bl UnAsyncEkrDispUP
-	bl EkrGauge_080438C8
-	adds r0, r4, #0
-	bl Proc_Break
-.L080457A4:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080457AC: .4byte gBanimValid
-
-	thumb_func_start func_fe6_080457B0
-func_fe6_080457B0: @ 0x080457B0
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r6, [r5, #0x64]
-	bl CheckEkrWindowAppearUnexist
-	lsls r0, r0, #0x18
-	asrs r4, r0, #0x18
-	cmp r4, #1
-	bne .L080457DC
-	ldr r0, .L080457E4 @ =gEkrDeadEventExist
-	movs r1, #0
-	str r1, [r0]
-	bl GetEkrDragonStateTypeIdunn
-	cmp r0, #0
-	beq .L080457D6
-	adds r0, r6, #0
-	adds r0, #0x29
-	strb r4, [r0]
-.L080457D6:
-	adds r0, r5, #0
-	bl Proc_Break
-.L080457DC:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080457E4: .4byte gEkrDeadEventExist
-
-	thumb_func_start NewEfxDead
-NewEfxDead: @ 0x080457E8
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r1, .L0804581C @ =gEkrHpBarCount
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r1, .L08045820 @ =gUnk_Banim_0201772C
-	movs r0, #1
-	str r0, [r1]
-	ldr r0, .L08045824 @ =ProcScr_EfxDead
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	str r5, [r0, #0x60]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	strh r1, [r0, #0x2e]
-	adds r0, r4, #0
-	bl DisableEfxStatusUnits
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804581C: .4byte gEkrHpBarCount
-.L08045820: .4byte gUnk_Banim_0201772C
-.L08045824: .4byte ProcScr_EfxDead
-
-	thumb_func_start func_fe6_08045828
-func_fe6_08045828: @ 0x08045828
-	push {r4, r5, r6, r7, lr}
-	adds r5, r0, #0
-	bl GetEkrDragonStateTypeGeneric
-	adds r4, r0, #0
-	ldr r6, [r5, #0x5c]
-	ldr r7, [r5, #0x60]
-	adds r0, r6, #0
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L08045844
-	movs r0, #0x15
-	b .L08045846
-.L08045844:
-	movs r0, #0x2a
-.L08045846:
-	ands r4, r0
-	ldr r0, .L0804587C @ =gEfxBgSemaphore
-	ldr r0, [r0]
-	cmp r0, #0
-	bne .L080458BA
-	ldr r0, .L08045880 @ =gEfxSpellAnimExists
-	ldr r0, [r0]
-	cmp r0, #0
-	bne .L080458BA
-	movs r0, #3
-	ands r0, r4
-	cmp r0, #0
-	beq .L08045884
-	movs r1, #2
-	ldrh r0, [r6]
-	orrs r0, r1
-	strh r0, [r6]
-	ldrh r0, [r7]
-	orrs r0, r1
-	strh r0, [r7]
-	ldr r0, [r5, #0x5c]
-	bl GetEkrDragonProc
-	bl PutManaketeTotalImg
-	b .L0804589C
-	.align 2, 0
-.L0804587C: .4byte gEfxBgSemaphore
-.L08045880: .4byte gEfxSpellAnimExists
-.L08045884:
-	movs r0, #0x30
-	ands r0, r4
-	cmp r0, #0
-	bne .L0804589C
-	movs r0, #0xc
-	ands r0, r4
-	cmp r0, #0
-	beq .L080458A8
-	ldr r0, [r5, #0x5c]
-	ldr r1, [r5, #0x60]
-	bl NewEfxDeadPika
-.L0804589C:
-	ldr r0, [r5, #0x5c]
-	bl CheckEkrDragonFasten
-	movs r1, #1
-	strh r1, [r0]
-	b .L080458B0
-.L080458A8:
-	ldr r0, [r5, #0x5c]
-	ldr r1, [r5, #0x60]
-	bl NewEfxDeadPika
-.L080458B0:
-	movs r0, #0x32
-	strh r0, [r5, #0x2e]
-	adds r0, r5, #0
-	bl Proc_Break
-.L080458BA:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_080458C0
-func_fe6_080458C0: @ 0x080458C0
+	thumb_func_start EfxDead_StartAlpha
+EfxDead_StartAlpha: @ 0x080458C0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bl GetEkrDragonStateTypeGeneric
@@ -459,7 +94,7 @@ func_fe6_080458C0: @ 0x080458C0
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	ldr r1, .L08045970 @ =gUnk_Banim_0201772C
+	ldr r1, .L08045970 @ =gEkrDeadExist
 	movs r0, #0
 	str r0, [r1]
 	adds r0, r4, #0
@@ -470,7 +105,7 @@ func_fe6_080458C0: @ 0x080458C0
 	bx r0
 	.align 2, 0
 .L0804596C: .4byte gEkrHpBarCount
-.L08045970: .4byte gUnk_Banim_0201772C
+.L08045970: .4byte gEkrDeadExist
 
 	thumb_func_start NewEfxDeadPika
 NewEfxDeadPika: @ 0x08045974
@@ -491,8 +126,8 @@ NewEfxDeadPika: @ 0x08045974
 	.align 2, 0
 .L08045994: .4byte ProcScr_EfxDeadPika
 
-	thumb_func_start func_fe6_08045998
-func_fe6_08045998: @ 0x08045998
+	thumb_func_start EfxDeadPika_Loop
+EfxDeadPika_Loop: @ 0x08045998
 	push {r4, r5, lr}
 	adds r2, r0, #0
 	ldr r3, [r2, #0x5c]
@@ -601,8 +236,8 @@ NewEfxDeadAlpha: @ 0x080459F8
 .L08045A68: .4byte 0x0000FFE0
 .L08045A6C: .4byte 0x0000E0FF
 
-	thumb_func_start func_fe6_08045A70
-func_fe6_08045A70: @ 0x08045A70
+	thumb_func_start EfxDeadAlpha_Loop
+EfxDeadAlpha_Loop: @ 0x08045A70
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0

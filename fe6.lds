@@ -146,7 +146,7 @@ SECTIONS
         . = 0x017720; gEkrHpBarCount = .;
         . = 0x017724; gEfxSpellAnimExists = .;
         . = 0x017728; gUnk_Banim_02017728 = .;
-        . = 0x01772C; gUnk_Banim_0201772C = .;
+        . = 0x01772C; gEkrDeadExist = .;
         . = 0x017730; gEkrDeadEventExist = .;
         . = 0x017734; gEfxQuakeExist = .;
         . = 0x017738; gUnk_Banim_02017738 = .;
@@ -536,6 +536,7 @@ SECTIONS
         asm/banim_ekrdispup.o(.text);
         asm/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
+        src/banim_efxdeath.o(.text);
         asm/banim_efxdeath.o(.text);
         asm/banim_efxfarattack.o(.text);
         src/banim_efxquake.o(.text);
@@ -758,6 +759,7 @@ SECTIONS
         . = ALIGN(4); asm/banim_ekrgauge.o(.data);
         . = ALIGN(4); asm/banim_ekrdispup.o(.data);
         . = ALIGN(4); src/banim_efxhpbar.o(.data);
+        . = ALIGN(4); src/banim_efxdeath.o(.data);
         . = ALIGN(4); asm/banim_efxdeath.o(.data);
         . = ALIGN(4); asm/banim_efxfarattack.o(.data);
         . = ALIGN(4); src/banim_efxquake.o(.data);

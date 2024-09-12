@@ -229,7 +229,7 @@ void EkrBattleStartBattleQuote(struct ProcEkrBattle * proc)
         return;
 
     EnableEkrGauge();
-    EkrGauge_08044264();
+    AsyncEkrDispUP();
     CpuFastFill(0, gBg0Tm, 0x800);
     SetBgOffset(0, gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y);
     SetBgOffset(1, 0, 0);

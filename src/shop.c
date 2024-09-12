@@ -1,15 +1,19 @@
 #include "prelude.h"
 #include "shop.h"
 #include "bm.h"
+#include "ui.h"
 #include "msg.h"
 #include "util.h"
 #include "bmio.h"
 #include "mapui.h"
 #include "item.h"
 #include "talk.h"
+#include "gold.h"
 #include "event.h"
+#include "sound.h"
 #include "chapter.h"
 #include "hardware.h"
+#include "helpbox.h"
 #include "constants/iids.h"
 #include "constants/faces.h"
 #include "constants/msg.h"
@@ -321,3 +325,125 @@ void ShopDrawBuyItemLine(struct ProcShop * _proc, int list_idx)
         gBg2Tm + TM_OFFSET(7, (list_idx * 2 & 0x1F))
     );
 }
+
+void ShopDrawSellItemLine(struct ProcShop * _proc, int list_idx)
+{
+    struct ProcShop * proc = _proc;
+    int index, item;
+
+    index = DivRem(list_idx, 6);
+
+    SetTextFont(NULL);
+    InitSystemTextFont();
+
+    EnableBgSync(BG2_SYNC_BIT);
+
+    ClearText(&gShopItemTexts[index]);
+
+    item = proc->shopItems[list_idx];
+    if (item == 0)
+        return;
+
+    DrawShopItemLine(
+        &gShopItemTexts[index],
+        item,
+        proc->unit,
+        gBg2Tm + TM_OFFSET(7, (list_idx * 2 & 0x1F))
+    );
+}
+
+void Shop_InitBuyState(struct ProcShop * proc)
+{
+    RegisterShopState(
+        proc->head_idx,
+        proc->shopItemCount,
+        5,
+        proc->hand_idx,
+        72,
+        ShopDrawBuyItemLine,
+        proc);
+}
+
+#if NONMATCHING
+void Shop_Loop_BuyKeyHandler(struct ProcShop * proc)
+{
+    u8 head_loc;
+    u32 cursor_at_head;
+    int price;
+    int a;
+    int b;
+
+    cursor_at_head = FALSE;
+
+    Shop_TryMoveHandPage();
+
+    SetBgOffset(2, 0, ShopSt_GetBg2Offset());
+
+    if (proc->head_loc != ShopSt_GetHeadLoc())
+        cursor_at_head = TRUE;
+
+    proc->head_loc = ShopSt_GetHeadLoc();
+    proc->hand_loc = ShopSt_GetHandLoc();
+
+    proc->head_idx = proc->head_loc;
+    proc->hand_idx = proc->hand_loc;
+
+    PutUiHand(0x38, - (proc->hand_loc * 0x10 - 72) + proc->head_loc * 0x10);
+
+    if ((proc->helpTextActive != 0) && (cursor_at_head != 0))
+    {
+        a = (proc->head_loc * 16);
+        b = ((proc->hand_loc * 16) - 72);
+        StartItemHelpBox(56, a - b, proc->shopItems[proc->head_loc]);
+    }
+
+    DisplayShopUiArrows();
+
+    if (IsShopPageScrolling() != 0)
+        return;
+
+    if (proc->helpTextActive != 0)
+    {
+        if (gKeySt->pressed & (KEY_BUTTON_B | KEY_BUTTON_R))
+        {
+            proc->helpTextActive = 0;
+            CloseHelpBox();
+        }
+        return;
+    }
+
+    if (gKeySt->pressed & KEY_BUTTON_R)
+    {
+        proc->helpTextActive = 1;
+        a = (proc->head_loc * 16);
+        b = ((proc->hand_loc * 16) - 72);
+        StartItemHelpBox(56, a - b, proc->shopItems[proc->head_loc]);
+        return;
+    }
+
+    price = GetItemPrice(proc->unit, proc->shopItems[proc->head_loc]);
+
+    if (gKeySt->pressed & KEY_BUTTON_A)
+    {
+        if (price > GetGold())
+        {
+            StartShopDialogue(0x2DB, proc);
+            Proc_Goto(proc, 1);
+        }
+        else
+        {
+            SetTalkNumber(price);
+            StartShopDialogue(0x2DE, proc);
+            Proc_Break(proc);
+        }
+        return;
+    }
+
+    if (gKeySt->pressed & KEY_BUTTON_B)
+    {
+        PlaySe(0x6B);
+        Proc_Goto(proc, PL_SHOP_SELL_NOITEM);
+        return;
+    }
+}
+#endif

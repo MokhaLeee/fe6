@@ -162,6 +162,14 @@ struct KeySt
 
 enum
 {
+    BG_0 = 0,
+    BG_1,
+    BG_2,
+    BG_3,
+};
+
+enum
+{
     BG0_SYNC_BIT = (1 << 0),
     BG1_SYNC_BIT = (1 << 1),
     BG2_SYNC_BIT = (1 << 2),

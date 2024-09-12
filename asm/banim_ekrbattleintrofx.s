@@ -1241,7 +1241,7 @@ NewEkrNamewinAppear: @ 0x08048E88
 	ldr r1, .L08048ED4 @ =gUnk_Banim_0201E0F0
 	movs r0, #1
 	str r0, [r1]
-	bl func_fe6_08044254
+	bl UnsyncEkrDispUP
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -1298,7 +1298,7 @@ func_fe6_08048F0C: @ 0x08048F0C
 	ldr r0, .L08048F3C @ =gUnk_Banim_0201E0F0
 	movs r1, #0
 	str r1, [r0]
-	bl func_fe6_08044244
+	bl SyncEkrDispUP
 	ldr r0, [r4, #0x44]
 	cmp r0, #2
 	bne .L08048F34
