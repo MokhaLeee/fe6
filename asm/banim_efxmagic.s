@@ -16159,7 +16159,7 @@ func_fe6_08054D08: @ 0x08054D08
 	lsls r3, r3, #4
 	adds r1, r1, r3
 	adds r2, r2, r3
-	bl EfxCreateBackAnim
+	bl SpellFx_WriteBgMapUncomp
 	b .L08054D6C
 .L08054D3A:
 	movs r0, #1

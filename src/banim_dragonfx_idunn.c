@@ -75,7 +75,7 @@ void EkrIdunn_InitBodyfx(struct ProcEkrDragon * proc)
     LZ77UnCompVram(Img_EkrIdunn_081C1C94, (void *)BG_VRAM + 0x8000);
     LZ77UnCompWram(Tsa_EkrIdunn_081C5AAC, gEkrTsaBuffer);
 
-    EfxTmFill(0x001F001F);
+    EfxTmFilB(0x001F001F);
     TmFill(gBg3Tm, 0x1F);
     EnableBgSync(BG3_SYNC_BIT);
 

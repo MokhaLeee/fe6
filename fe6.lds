@@ -541,7 +541,7 @@ SECTIONS
         src/banim_efxquake.o(.text);
         asm/banim_efxquake.o(.text);
         src/banim_efxflashing.o(.text);
-        asm/banim_ekrutils.o(.text);
+        src/banim_ekrutils.o(.text);
         asm/banim_ekrbattlestarting.o(.text);
         asm/banim_ekrbattleending.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);

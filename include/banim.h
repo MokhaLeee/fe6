@@ -43,17 +43,27 @@ enum banim_mode_index {
 #define EFX_TILEMAP_LOC(aMap, aX, aY) (aMap + (aX) + EFX_BG_WIDTH * (aY))
 
 enum video_banim {
+    BGPAL_EFX_SPELL_BG = 1,
     BGPAL_EFXDRAGON_L = 6,
     BGPAL_EFXDRAGON_R = 7,
 
+    OBPAL_EFX_SPELL_BG = 1,
+    OBPAL_EFX_SPELL_OBJ = 2,
+    OBPAL_EFX_FACE = 3,
     OBPAL_EFX_UNIT_L = 7,
     OBPAL_EFX_UNIT_R = 9,
-
     OBPAL_EFXHPBAR_L = 11,
     OBPAL_EFXHPBAR_R = 12,
-
     OBPAL_EFX_ITEM_L = 13,
     OBPAL_EFX_ITEM_R = 14,
+
+    VRAMOFF_BANIM_SPELL_OBJ = 0x0800,
+    VRAMOFF_BANIM_SPELL_BG  = 0x2000,
+};
+
+enum ekr_hit {
+    EKR_HITTED = 0,
+    EKR_MISS
 };
 
 struct ProcEfx {
@@ -184,6 +194,7 @@ extern u32 gEfxFarAttackExist;
 extern u32 gEfxBgSemaphore;
 extern u32 gEfxHpBarResireFlag;
 extern struct Vec2i gEkrBg2QuakeVec;
+extern u32 gUnk_Banim_02017754;
 extern u32 gEkrBgPosition;
 extern i16 gEkrPairEffectiveAgainst[2];
 extern i16 gBanimValid[2];
@@ -212,8 +223,9 @@ extern u16 gEkrBarfxBuf[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
 extern u8 gBuf_Banim[];
 extern u16 gPal_Banim[];
+extern u16 gTmA_Banim[0xB58 / sizeof(u16)];
+extern u16 gTmB_Banim[0xB58 / sizeof(u16)];
 extern i16 gEkrPairExpPrevious[2];
-extern u16 gTmB_Banim[0x2520 / 2];
 
 void NewEkrLvlupFan(void);
 void EkrLvupFanMain(struct ProcEfx * proc);
@@ -510,11 +522,11 @@ void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearColorEffects(void);
 void StartBattleAnimHitEffectsDefault(struct BaSprite * anim, int type);
 // func_fe6_08047610
-void StartBattleAnimHitEffects(struct BaSprite * anim, int type);
+void StartBattleAnimHitEffects(struct BaSprite * anim, int type, int quake_normal, int quake_crit);
 void StartBattleAnimResireHitEffects(struct BaSprite * anim, int type);
 void StartBattleAnimStatusChgHitEffects(struct BaSprite * anim, int type);
 struct BaSprite * EfxCreateFrontAnim(struct BaSprite * anim, const AnimScr * scr1, const AnimScr * scr2, const AnimScr * scr3, const AnimScr * scr4);
-struct BaSprite * EfxCreateBackAnim( struct BaSprite * anim, const AnimScr * scr1, const AnimScr *scr2, const AnimScr * scr3, const AnimScr * scr4);
+void SpellFx_WriteBgMapUncomp(struct Anim * anim, const u16 * src1, const u16 * src2);
 void SpellFx_WriteBgMap(struct BaSprite * anim, const u16 * src1, const u16 * src2);
 // SpellFx_WriteBgMapExt
 void SpellFx_RegisterObjGfx(const void * img, u32 size);
@@ -527,8 +539,8 @@ void SpellFx_RegisterBgPal(const u16 * pal, u32 size);
 i16 EfxAdvanceFrameLut(i16 * ptime, i16 * pcount, const i16 lut[]);
 // func_fe6_08047C1C
 int EfxGetCamMovDuration(void);
-// func_fe6_08047C48
-void EfxTmFill(u32 val);
+// EfxTmFilA
+void EfxTmFilB(u32 val);
 void SetEkrFrontAnimPostion(int pos, i16 x, i16 y);
 bool SetupBanim(void);
 void BeginAnimsOnBattleAnimations(void);
@@ -579,8 +591,23 @@ void ParseBattleHitToBanimCmd(void);
 // FilterBattleAnimCharacterPalette
 // GetBanimFactionPalette
 void EkrPrepareBanimfx(struct BaSprite * anim, i16);
-// GetBattleAnimRoundType
-// GetBattleAnimRoundTypeFlags
+
+enum anim_round_type {
+    ANIM_ROUND_BIT8 = 0x0100,
+    ANIM_ROUND_PIERCE = 0x0200,
+    ANIM_ROUND_GREAT_SHIELD = 0x0400,
+    ANIM_ROUND_SURE_SHOT = 0x0800,
+    ANIM_ROUND_SILENCER = 0x1000,
+    ANIM_ROUND_POISON = 0x2000,
+    ANIM_ROUND_BIT14 = 0x4000,
+    ANIM_ROUND_DEVIL = 0x8000,    
+};
+
+i16 GetBattleAnimRoundType(int index);
+i16 GetBattleAnimRoundTypeFlags(int);
+
+#define GetRoundFlagByAnim(aAnim) (GetBattleAnimRoundTypeFlags((aAnim->nextRoundId - 1) * 2 + GetAnimPosition(aAnim)))
+
 i16 GetEfxHp(int index);
 // func_fe6_0804A5C0
 void BattleAIS_ExecCommands(void);
@@ -600,7 +627,7 @@ int GetAnimPosition(struct BaSprite * anim);
 int CheckRoundMiss(i16 type);
 int CheckRound1(i16 type);
 int CheckRound2(i16 type);
-// CheckRoundCrit
+int CheckRoundCrit(struct Anim * anim);
 struct BaSprite * GetAnimAnotherSide(struct BaSprite * anim);
 i16 GetAnimRoundType(struct BaSprite * anim);
 i16 GetAnimNextRoundType(struct BaSprite * anim);

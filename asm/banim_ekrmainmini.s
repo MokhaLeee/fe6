@@ -1289,7 +1289,7 @@ func_fe6_0804C330: @ 0x0804C330
 	ldr r1, [r1]
 	str r1, [sp, #0x14]
 	movs r0, #0
-	bl func_fe6_08047C48
+	bl EfxTmFilA
 	movs r1, #0xc
 	ldrsh r0, [r7, r1]
 	cmp r0, #4
