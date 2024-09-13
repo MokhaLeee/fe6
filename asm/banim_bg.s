@@ -51,8 +51,8 @@ func_fe6_0805F098: @ 0x0805F098
 .L0805F0D4: .4byte gEkrTsaBuffer
 .L0805F0D8: .4byte gBg3Tm
 
-	thumb_func_start func_fe6_0805F0DC
-func_fe6_0805F0DC: @ 0x0805F0DC
+	thumb_func_start PutBanimBgPAL
+PutBanimBgPAL: @ 0x0805F0DC
 	push {lr}
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -69,8 +69,8 @@ func_fe6_0805F0DC: @ 0x0805F0DC
 .L0805F0F8: .4byte gUnk_08607504
 .L0805F0FC: .4byte gPal+0xC0
 
-	thumb_func_start func_fe6_0805F100
-func_fe6_0805F100: @ 0x0805F100
+	thumb_func_start PutBanimBG
+PutBanimBG: @ 0x0805F100
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -84,7 +84,7 @@ func_fe6_0805F100: @ 0x0805F100
 	adds r0, r4, #0
 	bl func_fe6_0805F098
 	adds r0, r4, #0
-	bl func_fe6_0805F0DC
+	bl PutBanimBgPAL
 	ldr r0, .L0805F144 @ =gPal
 	strh r5, [r0]
 	movs r0, #8

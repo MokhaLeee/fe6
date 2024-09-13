@@ -185,10 +185,13 @@ extern i8 gEfxSplitedColorBufA[2][0x30];
 extern i8 gEfxSplitedColorBufB[2][0x30];
 extern i16 gEfxSplitedColorBufC[2][0x30];
 extern int gProcEkrBaseAppearExist;
+extern u32 gUnk_Banim_0201E0F8;
 extern u32 gBanimDoneFlag[2];
 extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
+extern i16 gBanimBG;
 extern i16 gEkrInitialHitSide;
+extern i16 gEkrSnowWeather;
 extern u32 gEkrInitPosReal;
 extern u32 gEfxFarAttackExist;
 extern u32 gEfxBgSemaphore;
@@ -205,7 +208,7 @@ extern i16 gEkrSpellAnimIndex[2];
 extern i16 gBanimFloorfx[2];
 extern i16 gEkrPairExpGain[2];
 extern i16 gEkrGaugeHp[2];
-extern i16 gEkrBmLocation[2];
+extern i16 gEkrBmLocation[4];
 extern i16 gEfxHpLutOff[2];
 extern u16 gEfxHpLut[22];
 extern i16 gBanimIdx[2];
@@ -231,12 +234,12 @@ void NewEkrLvlupFan(void);
 void EkrLvupFanMain(struct ProcEfx * proc);
 // func_fe6_080435EC
 // EkrGaugeModDec
-// NewEkrGauge
+void NewEkrGauge(void);
 void EndEkrGauge(void);
 void EkrGauge_080438C8(void);
 void EkrGauge_080438D8(void);
-// func_fe6_080438E8
-// func_fe6_080438F8
+void func_fe6_080438E8(void);
+void func_fe6_080438F8(void);
 void EkrGauge_08043908(u16 val);
 // func_fe6_08043918
 // func_fe6_0804392C
@@ -246,12 +249,12 @@ void EnableEkrGauge(void);
 void DisableEkrGauge(void);
 // func_fe6_08043980
 // EkrGauge_Loop
-// NewEkrDispUP
-// EndEkrDispUP
+void NewEkrDispUP(void);
+void EndEkrDispUP(void);
 // func_fe6_080441DC
 // func_fe6_080441EC
-// func_fe6_080441FC
-// func_fe6_0804420C
+void func_fe6_080441FC(void);
+void func_fe6_0804420C(void);
 // func_fe6_0804421C
 // func_fe6_08044230
 void SyncEkrDispUP(void);
@@ -521,40 +524,61 @@ void SpellFx_ClearBG1(void);
 void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearColorEffects(void);
 void StartBattleAnimHitEffectsDefault(struct BaSprite * anim, int type);
-// func_fe6_08047610
+void func_fe6_08047610(struct Anim * anim, int type);
 void StartBattleAnimHitEffects(struct BaSprite * anim, int type, int quake_normal, int quake_crit);
 void StartBattleAnimResireHitEffects(struct BaSprite * anim, int type);
 void StartBattleAnimStatusChgHitEffects(struct BaSprite * anim, int type);
 struct BaSprite * EfxCreateFrontAnim(struct BaSprite * anim, const AnimScr * scr1, const AnimScr * scr2, const AnimScr * scr3, const AnimScr * scr4);
 void SpellFx_WriteBgMapUncomp(struct Anim * anim, const u16 * src1, const u16 * src2);
 void SpellFx_WriteBgMap(struct BaSprite * anim, const u16 * src1, const u16 * src2);
-// SpellFx_WriteBgMapExt
+void SpellFx_WriteBgMapExt(struct Anim * anim, const u16 * src, int width, int height);
 void SpellFx_RegisterObjGfx(const void * img, u32 size);
 void SpellFx_RegisterObjPal(const u16 * pal, u32 size);
 void SpellFx_RegisterBgGfx(const void * img, u32 size);
 void SpellFx_RegisterBgPal(const u16 * pal, u32 size);
-// func_fe6_08047B10
-// func_fe6_08047B3C
-// func_fe6_08047B6C
+void func_fe6_08047B10(const u16 * src, u16 * dst, u32 cur, u32 len_src, u32 len_dst);
+void func_fe6_08047B3C(const u16 * src, u16 * dst, u32 cur, u32 len_src, u32 len_dst);
+void func_fe6_08047B6C(const u16 * src, u16 * dst, u32 a, u32 b, u32 c);
 i16 EfxAdvanceFrameLut(i16 * ptime, i16 * pcount, const i16 lut[]);
-// func_fe6_08047C1C
+void func_fe6_08047C1C(void);
 int EfxGetCamMovDuration(void);
-// EfxTmFilA
+void EfxTmFilA(u32 val);
 void EfxTmFilB(u32 val);
 void SetEkrFrontAnimPostion(int pos, i16 x, i16 y);
 bool SetupBanim(void);
 void BeginAnimsOnBattleAnimations(void);
 void EkrMainEndExec(void);
 void OnMainBas(void);
-// NewEkrBattleStarting
-// EkrBaStart_InitScreen
-// EkrBaStart_SreenFailIn
-// EkrBaStart_InitBattleScreen
-// EkrBaStart_ExecEkrBattle
-// func_fe6_080480C4
-// func_fe6_08048100
-// func_fe6_08048154
-// NewEkrbattleending
+
+struct ProcEkrBattleFrameSwitching {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ i16 timer, terminator;
+
+    STRUCT_PAD(0x30, 0x32);
+
+    /* 32 */ i16 x1, x2;
+
+    STRUCT_PAD(0x36, 0x3A);
+
+    /* 3A */ i16 y1, y2;
+};
+
+#define ProcEkrBattleStarting ProcEkrBattleFrameSwitching
+#define ProcEkrBattleEnding   ProcEkrBattleFrameSwitching
+
+void NewEkrBattleStarting(void);
+void EkrBaStart_InitScreen(struct ProcEkrBattleStarting * proc);
+void EkrBaStart_SreenFailIn(struct ProcEkrBattleStarting * proc);
+void EkrBaStart_InitBattleScreen(struct ProcEkrBattleStarting * proc);
+void EkrBaStart_ExecEkrBattle(struct ProcEkrBattleStarting * proc);
+void EkrBaStart_BgFadeOut(struct ProcEkrBattleStarting * proc);
+void EkrBaStart_MergeBG(struct ProcEkrBattleStarting * proc);
+void func_fe6_08048154(struct ProcEkrBattleStarting * proc);
+
+void NewEkrbattleending(void);
 // func_fe6_080481CC
 // func_fe6_08048244
 // func_fe6_08048298
@@ -563,12 +587,26 @@ void OnMainBas(void);
 // func_fe6_080483E0
 // func_fe6_08048470
 // func_fe6_0804855C
-// NewEkrBaseKaiten
+void NewEkrBaseKaiten(int identifier);
 // func_fe6_0804894C
-// NewEkrUnitKakudai
+void NewEkrUnitKakudai(int identifier);
 // func_fe6_08048A64
 // func_fe6_08048BF0
 // func_fe6_08048D98
+
+struct ProcEkrIntroWindow {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ i16 timer, terminator, ymax;
+
+    STRUCT_PAD(0x32, 0x44);
+
+    /* 44 */ int type;
+    /* 48 */ int ymax_name;
+};
+
 void NewEkrWindowAppear(int identifier, int duration);
 bool CheckEkrWindowAppearUnexist(void);
 // func_fe6_08048E08
@@ -576,10 +614,10 @@ void NewEkrNamewinAppear(int identifier, int duration, int delay);
 bool CheckEkrNamewinAppearUnexist(void);
 // func_fe6_08048EEC
 // func_fe6_08048F0C
-// NewEkrBaseAppear
-// CheckEkrBaseAppearUnexist
+void NewEkrBaseAppear(int identifier, int duration);
+bool CheckEkrBaseAppearUnexist(void);
 // EkrBaseAppear_Loop
-// _SetupBanim
+bool _SetupBanim(void);
 u16 GetBattleAnimationId_WithUnique(struct Unit * unit, const void * banim_info, u16, int * out);
 // func_fe6_08049C5C
 // func_fe6_08049CFC
@@ -662,9 +700,9 @@ int GetBattleAnimArenaFlag(void);
 // func_fe6_0804C50C
 void PlayDeathSoundForArena(void);
 void func_fe6_0804C56C(void);
-// BeginAnimsOnBattle_Arena
-// ExecBattleAnimArenaExit
-// NewEkrTogiInitPROC
+void BeginAnimsOnBattle_Arena(void);
+void ExecBattleAnimArenaExit(void);
+void NewEkrTogiInitPROC(void);
 // func_fe6_0804C5D0
 // func_fe6_0804C658
 // func_fe6_0804C6CC
@@ -1334,8 +1372,8 @@ void NewEkrTriangle(struct BaSprite * anim);
 // func_fe6_0805EED4
 // func_fe6_0805F078
 // func_fe6_0805F098
-// func_fe6_0805F0DC
-// func_fe6_0805F100
+void PutBanimBgPAL(int);
+void PutBanimBG(int);
 bool CheckEkrPopupDone(void);
 void EndEkrPopup(void);
 // func_fe6_0805F178

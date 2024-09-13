@@ -272,7 +272,7 @@ SECTIONS
         . = 0x0203CCE4 - __ewram_overlay_end;
         . = ALIGN(4); src/banim_ekrbattle.o(ewram_data);
 
-        . = 0x0203CCF2 - __ewram_overlay_end; gBanimBackgroundIndex = .;
+        . = 0x0203CCF2 - __ewram_overlay_end; gBanimBG = .;
         . = 0x0203CCF4 - __ewram_overlay_end; gEkrInitialHitSide = .;
         . = 0x0203CCF6 - __ewram_overlay_end; gEkrSnowWeather = .;
         . = 0x0203CCF8 - __ewram_overlay_end; gBanimValid = .;
@@ -542,7 +542,7 @@ SECTIONS
         asm/banim_efxquake.o(.text);
         src/banim_efxflashing.o(.text);
         src/banim_ekrutils.o(.text);
-        asm/banim_ekrbattlestarting.o(.text);
+        src/banim_ekrbattlestarting.o(.text);
         asm/banim_ekrbattleending.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);
         asm/banim_ekrcmd.o(.text);
@@ -763,7 +763,7 @@ SECTIONS
         . = ALIGN(4); src/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);
-        . = ALIGN(4); asm/banim_ekrbattlestarting.o(.data);
+        . = ALIGN(4); src/banim_ekrbattlestarting.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleending.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrmain.o(.data);

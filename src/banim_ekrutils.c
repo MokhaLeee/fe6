@@ -3,8 +3,10 @@
 #include "oam.h"
 #include "move.h"
 #include "hardware.h"
+#include "sprite.h"
 #include "banim_sprite.h"
 #include "banim.h"
+#include "banim_ekrbattle.h"
 
 void SpellFx_Begin(void)
 {
@@ -47,12 +49,12 @@ void SpellFx_ClearColorEffects(void)
     SetBlendNone();
 }
 
-void StartBattleAnimHitEffectsDefault(struct Anim *anim, int type)
+void StartBattleAnimHitEffectsDefault(struct Anim * anim, int type)
 {
     StartBattleAnimHitEffects(anim, type, 3, 4);
 }
 
-void func_fe6_08047610(struct Anim *anim, int type)
+void func_fe6_08047610(struct Anim * anim, int type)
 {
     StartBattleAnimHitEffects(anim, type, 5, 5);
 }
@@ -353,7 +355,7 @@ void func_fe6_08047B3C(const u16 * src, u16 * dst, u32 cur, u32 len_src, u32 len
     EnablePalSync();
 }
 
-void func_fe6_08047B6C(const u16 *src, u16 *dst, u32 a, u32 b, u32 c)
+void func_fe6_08047B6C(const u16 * src, u16 * dst, u32 a, u32 b, u32 c)
 {
     u32 i;
     for (i = 0; i < c; i++, a++) {
@@ -468,4 +470,74 @@ void SetEkrFrontAnimPostion(int pos, i16 x, i16 y)
         anim->xPosition = ux;
         anim->yPosition = uy;
     }
+}
+
+bool SetupBanim(void)
+{
+    return _SetupBanim();
+}
+
+void BeginAnimsOnBattleAnimations(void)
+{
+    int ret;
+
+    if (GetBattleAnimArenaFlag() == true)
+    {
+        BeginAnimsOnBattle_Arena();
+        return;
+    }
+
+    NewEkrBattleDeamon();
+    BasInit();
+    ret = GetBanimInitPosReal();
+    gEkrInitPosReal = ret;
+    NewEkrBattleStarting();
+
+    gAnims[0] = NULL;
+    gAnims[1] = NULL;
+    gAnims[2] = NULL;
+    gAnims[3] = NULL;
+
+    SetMainFunc(OnMainBas);
+    SetOnHBlankA(NULL);
+}
+
+void EkrMainEndExec(void)
+{
+    if (GetBattleAnimArenaFlag() == true)
+    {
+        ExecBattleAnimArenaExit();
+        return;
+    }
+
+    NewEkrbattleending();
+    SetMainFunc(OnMainBas);
+}
+
+void OnMainBas(void)
+{
+    RefreshKeySt(gKeySt);
+    ClearSprites();
+
+    Proc_Run(gProcTreeRootArray[1]);
+
+    if (GetGameLock() == 0)
+        Proc_Run(gProcTreeRootArray[2]);
+
+    Proc_Run(gProcTreeRootArray[3]);
+    Proc_Run(gProcTreeRootArray[5]);
+
+    PutSpriteLayerOam(0);
+
+    Proc_Run(gProcTreeRootArray[4]);
+
+    BasUpdateAll();
+    BattleAIS_ExecCommands();
+
+    PutSpriteLayerOam(13);
+
+    gBmSt.main_loop_ended = TRUE;
+    gBmSt.main_loop_end_scanline = REG_VCOUNT;
+
+    VBlankIntrWait();
 }

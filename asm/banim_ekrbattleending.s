@@ -26,7 +26,7 @@ func_fe6_080481CC: @ 0x080481CC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r7, .L080481F0 @ =gBanimBackgroundIndex
+	ldr r7, .L080481F0 @ =gBanimBG
 	movs r1, #0
 	ldrsh r0, [r7, r1]
 	cmp r0, #0
@@ -40,7 +40,7 @@ func_fe6_080481CC: @ 0x080481CC
 	bl Proc_Break
 	b .L08048238
 	.align 2, 0
-.L080481F0: .4byte gBanimBackgroundIndex
+.L080481F0: .4byte gBanimBG
 .L080481F4:
 	movs r0, #0x2c
 	ldrsh r3, [r5, r0]
@@ -54,7 +54,7 @@ func_fe6_080481CC: @ 0x080481CC
 	movs r1, #0
 	ldrsh r0, [r7, r1]
 	subs r0, #1
-	bl func_fe6_0805F0DC
+	bl PutBanimBgPAL
 	ldr r0, .L08048240 @ =gPal
 	movs r1, #6
 	movs r2, #0xa
@@ -83,7 +83,7 @@ func_fe6_080481CC: @ 0x080481CC
 func_fe6_08048244: @ 0x08048244
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L08048264 @ =gBanimBackgroundIndex
+	ldr r0, .L08048264 @ =gBanimBG
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -96,7 +96,7 @@ func_fe6_08048244: @ 0x08048244
 	bl Proc_Break
 	b .L0804828E
 	.align 2, 0
-.L08048264: .4byte gBanimBackgroundIndex
+.L08048264: .4byte gBanimBG
 .L08048268:
 	ldr r0, .L08048294 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
@@ -124,7 +124,7 @@ func_fe6_08048298: @ 0x08048298
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r0, .L080482BC @ =gBanimBackgroundIndex
+	ldr r0, .L080482BC @ =gBanimBG
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -138,7 +138,7 @@ func_fe6_08048298: @ 0x08048298
 	bl Proc_Break
 	b .L080482EC
 	.align 2, 0
-.L080482BC: .4byte gBanimBackgroundIndex
+.L080482BC: .4byte gBanimBG
 .L080482C0:
 	movs r0, #0x2c
 	ldrsh r3, [r4, r0]

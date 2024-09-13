@@ -1234,7 +1234,7 @@ _SetupBanim: @ 0x08049058
 .L08049A1C:
 	strh r0, [r1, #2]
 	strh r0, [r1]
-	ldr r5, .L08049A44 @ =gBanimBackgroundIndex
+	ldr r5, .L08049A44 @ =gBanimBG
 	movs r0, #0
 	strh r0, [r5]
 	bl GetBattleAnimType
@@ -1250,7 +1250,7 @@ _SetupBanim: @ 0x08049058
 	b .L08049A54
 	.align 2, 0
 .L08049A40: .4byte 0x0203CDD0
-.L08049A44: .4byte gBanimBackgroundIndex
+.L08049A44: .4byte gBanimBG
 .L08049A48: .4byte gBanimValid
 .L08049A4C: .4byte 0x0203CDC0
 .L08049A50:
