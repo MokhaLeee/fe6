@@ -451,16 +451,16 @@ func_fe6_0805E890: @ 0x0805E890
 	str r0, [r1, #0x44]
 	cmp r5, #0
 	bne .L0805E8C4
-	ldr r0, .L0805E8BC @ =0x0203CD90
+	ldr r0, .L0805E8BC @ =gpBanimTriAtkPalettes
 	ldr r2, [r0]
 	ldr r0, .L0805E8C0 @ =gUnk_081CA054
 	b .L0805E8CA
 	.align 2, 0
 .L0805E8B8: .4byte gUnk_08606344
-.L0805E8BC: .4byte 0x0203CD90
+.L0805E8BC: .4byte gpBanimTriAtkPalettes
 .L0805E8C0: .4byte gUnk_081CA054
 .L0805E8C4:
-	ldr r0, .L0805E900 @ =0x0203CD90
+	ldr r0, .L0805E900 @ =gpBanimTriAtkPalettes
 	ldr r2, [r0, #4]
 	ldr r0, .L0805E904 @ =gUnk_081CA062
 .L0805E8CA:
@@ -490,7 +490,7 @@ func_fe6_0805E890: @ 0x0805E890
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805E900: .4byte 0x0203CD90
+.L0805E900: .4byte gpBanimTriAtkPalettes
 .L0805E904: .4byte gUnk_081CA062
 .L0805E908: .4byte gUnk_0860635C
 .L0805E90C: .4byte gSpellAnimBgfx
@@ -557,18 +557,18 @@ func_fe6_0805E964: @ 0x0805E964
 	bne .L0805E9A4
 	movs r0, #0x12
 	strh r0, [r5, #0x2e]
-	ldr r0, .L0805E99C @ =0x0203CD90
+	ldr r0, .L0805E99C @ =gpBanimTriAtkPalettes
 	ldr r6, [r0]
 	ldr r3, .L0805E9A0 @ =gUnk_086068A4
 	b .L0805E9AE
 	.align 2, 0
 .L0805E998: .4byte gUnk_08606374
-.L0805E99C: .4byte 0x0203CD90
+.L0805E99C: .4byte gpBanimTriAtkPalettes
 .L0805E9A0: .4byte gUnk_086068A4
 .L0805E9A4:
 	movs r0, #0x11
 	strh r0, [r5, #0x2e]
-	ldr r0, .L0805E9F8 @ =0x0203CD90
+	ldr r0, .L0805E9F8 @ =gpBanimTriAtkPalettes
 	ldr r6, [r0, #4]
 	ldr r3, .L0805E9FC @ =gUnk_08606BD8
 .L0805E9AE:
@@ -606,7 +606,7 @@ func_fe6_0805E964: @ 0x0805E964
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805E9F8: .4byte 0x0203CD90
+.L0805E9F8: .4byte gpBanimTriAtkPalettes
 .L0805E9FC: .4byte gUnk_08606BD8
 .L0805EA00: .4byte gBuf_Banim
 .L0805EA04: .4byte gUnk_081CC428
@@ -787,7 +787,7 @@ func_fe6_0805EB40: @ 0x0805EB40
 	strh r0, [r5, #0x2c]
 	movs r0, #0x14
 	strh r0, [r5, #0x2e]
-	ldr r0, .L0805EB7C @ =0x0203CD90
+	ldr r0, .L0805EB7C @ =gpBanimTriAtkPalettes
 	ldr r7, [r0]
 	cmp r4, #0
 	bne .L0805EB88
@@ -796,7 +796,7 @@ func_fe6_0805EB40: @ 0x0805EB40
 	b .L0805EBB4
 	.align 2, 0
 .L0805EB78: .4byte gUnk_086063A4
-.L0805EB7C: .4byte 0x0203CD90
+.L0805EB7C: .4byte gpBanimTriAtkPalettes
 .L0805EB80: .4byte gUnk_08606C70
 .L0805EB84: .4byte gUnk_081CE154
 .L0805EB88:
@@ -841,7 +841,7 @@ func_fe6_0805EB40: @ 0x0805EB40
 	adds r0, r6, #0
 	adds r1, r4, #0
 	bl LZ77UnCompWram
-	ldr r0, .L0805EC08 @ =0x0203CD90
+	ldr r0, .L0805EC08 @ =gpBanimTriAtkPalettes
 	ldr r7, [r0, #4]
 	mov r0, sb
 	cmp r0, #0
@@ -855,7 +855,7 @@ func_fe6_0805EB40: @ 0x0805EB40
 .L0805EBFC: .4byte 0x00008840
 .L0805EC00: .4byte gBuf_Banim
 .L0805EC04: .4byte gPal+0x300
-.L0805EC08: .4byte 0x0203CD90
+.L0805EC08: .4byte gpBanimTriAtkPalettes
 .L0805EC0C: .4byte gUnk_08606C70
 .L0805EC10: .4byte gUnk_081CE154
 .L0805EC14:
@@ -1007,14 +1007,14 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	strb r6, [r0]
 	cmp r5, #0
 	bne .L0805ED60
-	ldr r0, .L0805ED5C @ =0x0203CD90
+	ldr r0, .L0805ED5C @ =gpBanimTriAtkPalettes
 	ldr r0, [r0]
 	b .L0805ED64
 	.align 2, 0
 .L0805ED58: .4byte gUnk_086063BC
-.L0805ED5C: .4byte 0x0203CD90
+.L0805ED5C: .4byte gpBanimTriAtkPalettes
 .L0805ED60:
-	ldr r0, .L0805ED70 @ =0x0203CD90
+	ldr r0, .L0805ED70 @ =gpBanimTriAtkPalettes
 	ldr r0, [r0, #4]
 .L0805ED64:
 	mov sb, r0
@@ -1024,7 +1024,7 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	ldr r6, .L0805ED78 @ =gUnk_081CF03C
 	b .L0805EDA8
 	.align 2, 0
-.L0805ED70: .4byte 0x0203CD90
+.L0805ED70: .4byte gpBanimTriAtkPalettes
 .L0805ED74: .4byte gUnk_08606F0C
 .L0805ED78: .4byte gUnk_081CF03C
 .L0805ED7C:

@@ -757,7 +757,7 @@ func_fe6_08048A64: @ 0x08048A64
 	ldr r1, .L08048BA8 @ =gUnk_Banim_02002080
 	bl LZ77UnCompWram
 .L08048AE6:
-	ldr r5, .L08048BAC @ =0x0203CD98
+	ldr r5, .L08048BAC @ =gBanimUnitChgForceImg
 	ldr r0, [r5]
 	cmp r0, #0
 	beq .L08048AF4
@@ -841,7 +841,7 @@ func_fe6_08048A64: @ 0x08048A64
 .L08048BA0: .4byte gUnk_Banim_02011BC0
 .L08048BA4: .4byte gUnk_Banim_020099C0
 .L08048BA8: .4byte gUnk_Banim_02002080
-.L08048BAC: .4byte 0x0203CD98
+.L08048BAC: .4byte gBanimUnitChgForceImg
 .L08048BB0: .4byte gUnk_Banim_02001080
 .L08048BB4: .4byte gUnk_Banim_02003080
 .L08048BB8: .4byte 0x06014000

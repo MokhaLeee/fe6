@@ -288,14 +288,14 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	adds r5, r0, #0
 	cmp r5, #0
 	bne .L0805BEB4
-	ldr r0, .L0805BEB0 @ =0x0203CDC0
+	ldr r0, .L0805BEB0 @ =gBanimTerrain
 	movs r1, #0
 	ldrsh r4, [r0, r1]
 	b .L0805BEBA
 	.align 2, 0
-.L0805BEB0: .4byte 0x0203CDC0
+.L0805BEB0: .4byte gBanimTerrain
 .L0805BEB4:
-	ldr r0, .L0805BEE4 @ =0x0203CDC0
+	ldr r0, .L0805BEE4 @ =gBanimTerrain
 	movs r3, #2
 	ldrsh r4, [r0, r3]
 .L0805BEBA:
@@ -314,15 +314,15 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 .L0805BED6:
 	cmp r5, #0
 	bne .L0805BEEC
-	ldr r0, .L0805BEE8 @ =0x0203CDC4
+	ldr r0, .L0805BEE8 @ =gBanimCon
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	b .L0805BEF2
 	.align 2, 0
-.L0805BEE4: .4byte 0x0203CDC0
-.L0805BEE8: .4byte 0x0203CDC4
+.L0805BEE4: .4byte gBanimTerrain
+.L0805BEE8: .4byte gBanimCon
 .L0805BEEC:
-	ldr r0, .L0805BF30 @ =0x0203CDC4
+	ldr r0, .L0805BF30 @ =gBanimCon
 	movs r3, #2
 	ldrsh r0, [r0, r3]
 .L0805BEF2:
@@ -356,7 +356,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-.L0805BF30: .4byte 0x0203CDC4
+.L0805BF30: .4byte gBanimCon
 .L0805BF34: .4byte 0x0000FFFF
 .L0805BF38: .4byte .L0805BF3C
 .L0805BF3C: @ jump table

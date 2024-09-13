@@ -4,6 +4,7 @@
 #include "move.h"
 #include "hardware.h"
 #include "constants/jids.h"
+#include "constants/iids.h"
 #include "constants/videoalloc_banim.h"
 
 #include "banim_sprite.h"
@@ -49,22 +50,22 @@ u32 GetEkrDragonStateTypeGeneric(void)
 {
     u32 ret = 0;
 
-    if (*GetEkrDragonJid(POS_L) == 0x53)
+    if (*GetEkrDragonWeapon(POS_L) == IID_FIRESTONE)
         ret |= EDRAGON_TYPE_MANAKETE_L;
 
-    if (*GetEkrDragonJid(POS_R) == 0x53)
+    if (*GetEkrDragonWeapon(POS_R) == IID_FIRESTONE)
         ret |= EDRAGON_TYPE_MANAKETE_R;
 
-    if (*GetEkrDragonJid(POS_L) == 0x54)
+    if (*GetEkrDragonWeapon(POS_L) == IID_DIVINESTONE)
         ret |= EDRAGON_TYPE_FAE_L;
 
-    if (*GetEkrDragonJid(POS_R) == 0x54)
+    if (*GetEkrDragonWeapon(POS_R) == IID_DIVINESTONE)
         ret |= EDRAGON_TYPE_FAE_R;
 
-    if (*GetEkrDragonJid(POS_L) == 0x70)
+    if (*GetEkrDragonWeapon(POS_L) == IID_DARKBREATH)
         ret |= EDRAGON_TYPE_IDUNN_L;
 
-    if (*GetEkrDragonJid(POS_R) == 0x70)
+    if (*GetEkrDragonWeapon(POS_R) == IID_DARKBREATH)
         ret |= EDRAGON_TYPE_IDUNN_R;
 
     return ret;
@@ -74,16 +75,16 @@ u32 GetEkrDragonStateType(void)
 {
     u32 ret = 0;
 
-    if (*GetEkrDragonJid(POS_L) == 0x53)
+    if (*GetEkrDragonWeapon(POS_L) == IID_FIRESTONE)
         ret |= EDRAGON_TYPE_MANAKETE_L;
 
-    if (*GetEkrDragonJid(POS_R) == 0x53)
+    if (*GetEkrDragonWeapon(POS_R) == IID_FIRESTONE)
         ret |= EDRAGON_TYPE_MANAKETE_R;
 
-    if (*GetEkrDragonJid(POS_L) == 0x70)
+    if (*GetEkrDragonWeapon(POS_L) == IID_DARKBREATH)
         ret |= EDRAGON_TYPE_IDUNN_L;
 
-    if (*GetEkrDragonJid(POS_R) == 0x70)
+    if (*GetEkrDragonWeapon(POS_R) == IID_DARKBREATH)
         ret |= EDRAGON_TYPE_IDUNN_R;
 
     return ret;
@@ -93,10 +94,10 @@ u32 GetEkrDragonStateTypeIdunn(void)
 {
     u32 ret = 0;
 
-    if (*GetEkrDragonJid(POS_L) == 0x70)
+    if (*GetEkrDragonWeapon(POS_L) == IID_DARKBREATH)
         ret |= EDRAGON_TYPE_IDUNN_L;
 
-    if (*GetEkrDragonJid(POS_R) == 0x70)
+    if (*GetEkrDragonWeapon(POS_R) == IID_DARKBREATH)
         ret |= EDRAGON_TYPE_IDUNN_R;
 
     return ret;
@@ -113,7 +114,7 @@ bool CheckSkipDragonTransfer(struct BaSprite * anim)
     return TRUE;
 }
 
-u16 * GetEkrDragonJid(int pos)
+u16 * GetEkrDragonWeapon(int pos)
 {
     return gEkrDragonJid + pos;
 }

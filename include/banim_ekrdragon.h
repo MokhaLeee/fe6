@@ -39,7 +39,7 @@ u32 GetEkrDragonStateTypeGeneric(void); /* Different form FE8, this is a bitfile
 u32 GetEkrDragonStateType(void);
 u32 GetEkrDragonStateTypeIdunn(void);
 bool CheckSkipDragonTransfer(struct BaSprite * anim);
-u16 * GetEkrDragonJid(int pos);
+u16 * GetEkrDragonWeapon(int pos);
 u16 * CheckEkrDragonFasten(struct BaSprite * anim);
 ProcPtr GetEkrDragonProc(struct BaSprite * anim);
 void EndEkrDragonDaemon(struct BaSprite * anim);

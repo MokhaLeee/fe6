@@ -189,6 +189,8 @@ extern u32 gUnk_Banim_0201E0F8;
 extern u32 gBanimDoneFlag[2];
 extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
+extern u16 * gpBanimTriAtkPalettes[2];
+extern const u8 * gBanimUnitChgForceImg[2];
 extern i16 gBanimBG;
 extern i16 gEkrInitialHitSide;
 extern i16 gEkrSnowWeather;
@@ -199,15 +201,25 @@ extern u32 gEfxHpBarResireFlag;
 extern struct Vec2i gEkrBg2QuakeVec;
 extern u32 gUnk_Banim_02017754;
 extern u32 gEkrBgPosition;
-extern i16 gEkrPairEffectiveAgainst[2];
+extern i16 gBanimEffectiveness[2];
+extern i16 gBanimUniquePaletteDisabled[2];
 extern i16 gBanimValid[2];
+extern i16 gBanimPositionIsEnemy[2];
 extern i16 gBanimIdx_bak[2];
 extern i16 gBanimUniquePal[2];
 extern i16 gBanimFactionPal[2];
 extern i16 gEkrSpellAnimIndex[2];
 extern i16 gBanimFloorfx[2];
-extern i16 gEkrPairExpGain[2];
+extern i16 gBanimExpGain[2];
+extern i16 gBanimTerrain[2];
+extern i16 gBanimCon[2];
+extern i16 gBanimWtaBonus[2];
 extern i16 gEkrGaugeHp[2];
+extern i16 gBanimMaxHP[2];
+extern i16 gEkrGaugeHpBak[2];
+extern i16 gEkrGaugeHit[2];
+extern i16 gEkrGaugeDmg[2];
+extern i16 gEkrGaugeCrt[2];
 extern i16 gEkrBmLocation[4];
 extern i16 gEfxHpLutOff[2];
 extern u16 gEfxHpLut[22];
@@ -228,7 +240,7 @@ extern u8 gBuf_Banim[];
 extern u16 gPal_Banim[];
 extern u16 gTmA_Banim[0xB58 / sizeof(u16)];
 extern u16 gTmB_Banim[0xB58 / sizeof(u16)];
-extern i16 gEkrPairExpPrevious[2];
+extern i16 gBanimExpPrevious[2];
 
 void NewEkrLvlupFan(void);
 void EkrLvupFanMain(struct ProcEfx * proc);
@@ -619,16 +631,25 @@ void NewEkrBaseAppear(int identifier, int duration);
 bool CheckEkrBaseAppearUnexist(void);
 // EkrBaseAppear_Loop
 bool _SetupBanim(void);
-u16 GetBattleAnimationId_WithUnique(struct Unit * unit, const void * banim_info, u16, int * out);
-// func_fe6_08049C5C
-// func_fe6_08049CFC
-// func_fe6_08049D98
-// func_fe6_08049E9C
+u16 GetBattleAnimationId(const struct BanimInfoEnt * animdef, u16 item);
+int GetBanimTerrainGround(u16 terrain, u16 tileset);
+int GetBanimBackgroundIndex(u16 terrain, u16 tileset);
+i16 GetSpellAnimId(u16 jid, u16 weapon);
+void UnsetMapStaffAnim(i16 * out, u16 pos, u16 weapon);
 void ParseBattleHitToBanimCmd(void);
-// CheckBattleHasHit
-// func_fe6_0804A49C
-// FilterBattleAnimCharacterPalette
-// GetBanimFactionPalette
+bool CheckBattleHasHit(void);
+int GetBanimUniquePal(struct Unit * unit);
+u16 * GetBanimTriangleAttackPalette(i16 bid, u16 item);
+
+enum banim_faction_palette_idx {
+    BANIMPAL_BLUE = 0,
+    BANIMPAL_RED = 1,
+    BANIMPAL_GREEN = 2,
+    BANIMPAL_PURPLE = 3,
+};
+
+int GetBanimFactionPalette(u32 faction);
+
 void EkrPrepareBanimfx(struct BaSprite * anim, i16);
 
 enum anim_round_type {
@@ -696,7 +717,7 @@ void SetAnimStateUnHidden(int pos);
 // func_fe6_0804C318
 // func_fe6_0804C330
 // func_fe6_0804C478
-// SetBanimArenaFlag
+void SetBanimArenaFlag(int flag);
 int GetBattleAnimArenaFlag(void);
 // func_fe6_0804C50C
 void PlayDeathSoundForArena(void);
@@ -1394,7 +1415,7 @@ void NewEkrPopup(void);
 // func_fe6_0805F71C
 // func_fe6_0805F74C
 // func_fe6_0805F750
-u8 GetWeaponAnimActorCount(int item);
+u8 GetWeaponAnimActorCount(u16 item);
 // func_fe6_0805F794
 struct ProcScr const * GetWeaponAnimManimSpecialScr(int item); // fu16?
 fu8 func_fe6_0805F7B4(int item); // fu16?

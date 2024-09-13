@@ -360,7 +360,7 @@ void EkrBattleSetUnitFlashing(struct ProcEkrBattle * proc)
 {
     NewEfxStatusUnit(MAIN_ANIM_FRONT(POS_L));
     NewEfxStatusUnit(MAIN_ANIM_FRONT(POS_R));
-    NewEfxWeaponIcon(gEkrPairEffectiveAgainst[0], gEkrPairEffectiveAgainst[1]);
+    NewEfxWeaponIcon(gBanimEffectiveness[0], gBanimEffectiveness[1]);
 
     if (gBattleSt.flags & BATTLE_FLAG_REFRESH)
         DisableEfxStatusUnits(MAIN_ANIM_FRONT(POS_L));
@@ -451,7 +451,7 @@ void EkrBattleWaitPromotion(struct ProcEkrBattle * proc)
     if (EkrClasschgFinished() == TRUE)
     {
         EndEkrClasschg();
-        gEkrPairExpGain[POS_L] = 1;
+        gBanimExpGain[POS_L] = 1;
         proc->proc_repeat_func = (ProcFunc)EkrBattleExecEkrLvup;
     }
 }
@@ -474,8 +474,8 @@ void EkrBattleInRound(struct ProcEkrBattle * proc)
             }
             else
             {
-                gEkrPairExpGain[0] = gpEkrBattleUnitLeft->exp_gain;
-                gEkrPairExpGain[1] = gpEkrBattleUnitRight->exp_gain;
+                gBanimExpGain[0] = gpEkrBattleUnitLeft->exp_gain;
+                gBanimExpGain[1] = gpEkrBattleUnitRight->exp_gain;
 
                 if (gEkrGaugeHp[POS_L] == 0)
                 {
@@ -485,14 +485,14 @@ void EkrBattleInRound(struct ProcEkrBattle * proc)
                 else if (gEkrGaugeHp[POS_R] == 0)
                 {
                     ArenaSetResult(2);
-                    gEkrPairExpGain[POS_R] = 0;
+                    gBanimExpGain[POS_R] = 0;
                     ret = 1;
                 }
                 else if (proc->speedup == TRUE)
                 {
                     func_fe6_0804C56C();
                     ArenaSetResult(4);
-                    gEkrPairExpGain[POS_R] = 0;
+                    gBanimExpGain[POS_R] = 0;
                     ret = 1;
                 }
                 else
@@ -549,7 +549,7 @@ void EkrBattleWaitNamewinAppear(struct ProcEkrBattle * proc)
     if (GetEkrDragonStateTypeIdunn() != FALSE && *CheckEkrDragonFasten(MAIN_ANIM_FRONT(POS_L)) == TRUE)
         return;
 
-    if (gEkrPairExpGain[POS_L] != 0)
+    if (gBanimExpGain[POS_L] != 0)
         pos = POS_L;
     else
         pos = POS_R;
@@ -566,7 +566,7 @@ void EkrBattleWaitForPostBattleAct(struct ProcEkrBattle * proc)
     if (++proc->timer < 0x1E)
         return;
 
-    if (GetBanimLinkArenaFlag() != 1 && gEkrPairExpGain[POS_L] != -gEkrPairExpGain[POS_R])
+    if (GetBanimLinkArenaFlag() != 1 && gBanimExpGain[POS_L] != -gBanimExpGain[POS_R])
         proc->proc_repeat_func = (ProcFunc)EkrBattleExecExpGain;
     else
         proc->proc_repeat_func = (ProcFunc)EkrBattleExecPopup;
@@ -614,10 +614,10 @@ void EkrBattleExecExpGain(struct ProcEkrBattle * proc)
 
     EkrGauge_08043908(1);
 
-    if (gEkrPairExpGain[POS_L] != 0)
-        val0 = gEkrPairExpPrevious[POS_L];
+    if (gBanimExpGain[POS_L] != 0)
+        val0 = gBanimExpPrevious[POS_L];
     else
-        val0 = gEkrPairExpPrevious[POS_R];
+        val0 = gBanimExpPrevious[POS_R];
 
     val1 = DivRem(val0, 100);
     val2 = Div(val1, 10);
@@ -658,15 +658,15 @@ void EkrBattleExecExpBar(struct ProcEkrBattle * proc)
 {
     if (++proc->timer > 10)
     {
-        if (gEkrPairExpGain[POS_L] != 0)
+        if (gBanimExpGain[POS_L] != 0)
         {
-            proc->timer = gEkrPairExpPrevious[POS_L];
-            proc->end = gEkrPairExpPrevious[POS_L] + gEkrPairExpGain[POS_L];
+            proc->timer = gBanimExpPrevious[POS_L];
+            proc->end = gBanimExpPrevious[POS_L] + gBanimExpGain[POS_L];
         }
-        else if (gEkrPairExpGain[POS_R] != 0)
+        else if (gBanimExpGain[POS_R] != 0)
         {
-            proc->timer = gEkrPairExpPrevious[POS_R];
-            proc->end = gEkrPairExpPrevious[POS_R] + gEkrPairExpGain[POS_R];
+            proc->timer = gBanimExpPrevious[POS_R];
+            proc->end = gBanimExpPrevious[POS_R] + gBanimExpGain[POS_R];
         }
 
         proc->proc_repeat_func = (ProcFunc)EkrBattleWaitExpBar;
@@ -738,10 +738,10 @@ void EkrBattleLvupHanlder(struct ProcEkrBattle *proc)
     int exp_gain;
 
     if (++proc->timer == 0x18) {
-        if (gEkrPairExpGain[POS_L] != 0)
-            exp_gain = gEkrPairExpPrevious[POS_L] + gEkrPairExpGain[POS_L];
+        if (gBanimExpGain[POS_L] != 0)
+            exp_gain = gBanimExpPrevious[POS_L] + gBanimExpGain[POS_L];
         else
-            exp_gain = gEkrPairExpPrevious[POS_R] + gEkrPairExpGain[POS_R];
+            exp_gain = gBanimExpPrevious[POS_R] + gBanimExpGain[POS_R];
         if (exp_gain >= 100)
             NewEkrLvlupFan();
     }
@@ -769,10 +769,10 @@ void EkrBattleLvupHanlder(struct ProcEkrBattle *proc)
 
     SetWin0Box(0, 0, 0xF0, 0xA0);
 
-    if (gEkrPairExpGain[POS_L] != 0)
-        exp_gain = gEkrPairExpPrevious[POS_L] + gEkrPairExpGain[POS_L];
+    if (gBanimExpGain[POS_L] != 0)
+        exp_gain = gBanimExpPrevious[POS_L] + gBanimExpGain[POS_L];
     else
-        exp_gain = gEkrPairExpPrevious[POS_R] + gEkrPairExpGain[POS_R];
+        exp_gain = gBanimExpPrevious[POS_R] + gBanimExpGain[POS_R];
 
     if (exp_gain >= 100)
         proc->proc_repeat_func = (ProcFunc)EkrBattleExecEkrLvup;
@@ -784,7 +784,7 @@ void EkrBattleExecEkrLvup(struct ProcEkrBattle * proc)
 {
     struct BaSprite * anim;
 
-    if (gEkrPairExpGain[POS_L] != 0)
+    if (gBanimExpGain[POS_L] != 0)
         anim = MAIN_ANIM_FRONT(POS_L);
     else
         anim = MAIN_ANIM_FRONT(POS_R);

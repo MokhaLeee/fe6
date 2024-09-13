@@ -97,7 +97,7 @@ NewEkrGauge: @ 0x080436A4
 	adds r1, #0x20
 	movs r2, #0x10
 	bl CpuSet
-	ldr r1, .L08043868 @ =0x0203CDA8
+	ldr r1, .L08043868 @ =gEkrGaugeHpBak
 	ldr r2, .L0804386C @ =0x0000FFFF
 	adds r0, r2, #0
 	ldrh r2, [r1]
@@ -130,18 +130,18 @@ NewEkrGauge: @ 0x080436A4
 	movs r2, #8
 	bl CpuFastSet
 	bl EnablePalSync
-	ldr r6, .L08043884 @ =0x0203CDAC
+	ldr r6, .L08043884 @ =gEkrGaugeHit
 	movs r1, #0
 	ldrsh r0, [r6, r1]
 	ldr r7, .L08043888 @ =gUnk_Banim_020176F8
 	adds r1, r7, #0
 	bl EkrGaugeModDec
-	ldr r5, .L0804388C @ =0x0203CDB0
+	ldr r5, .L0804388C @ =gEkrGaugeDmg
 	movs r2, #0
 	ldrsh r0, [r5, r2]
 	adds r1, r7, #6
 	bl EkrGaugeModDec
-	ldr r4, .L08043890 @ =0x0203CDB4
+	ldr r4, .L08043890 @ =gEkrGaugeCrt
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	adds r1, r7, #0
@@ -250,17 +250,17 @@ NewEkrGauge: @ 0x080436A4
 .L0804385C: .4byte gBanimFactionPal
 .L08043860: .4byte gPalEfxHpBarPurple
 .L08043864: .4byte gPal+0x360
-.L08043868: .4byte 0x0203CDA8
+.L08043868: .4byte gEkrGaugeHpBak
 .L0804386C: .4byte 0x0000FFFF
 .L08043870: .4byte gUnk_08112D54
 .L08043874: .4byte 0x06013800
 .L08043878: .4byte gUnk_08112DF4
 .L0804387C: .4byte 0x06013C00
 .L08043880: .4byte gUnk_081131A4
-.L08043884: .4byte 0x0203CDAC
+.L08043884: .4byte gEkrGaugeHit
 .L08043888: .4byte gUnk_Banim_020176F8
-.L0804388C: .4byte 0x0203CDB0
-.L08043890: .4byte 0x0203CDB4
+.L0804388C: .4byte gEkrGaugeDmg
+.L08043890: .4byte gEkrGaugeCrt
 .L08043894: .4byte gUnk_Banim_020169C0
 .L08043898: .4byte 0x01000100
 .L0804389C: .4byte gUnk_08113024
@@ -592,7 +592,7 @@ EkrGauge_Loop: @ 0x080439CC
 	movs r0, #1
 	bl EnableBgSync
 .L08043AE6:
-	ldr r1, .L08043B44 @ =0x0203CDA8
+	ldr r1, .L08043B44 @ =gEkrGaugeHpBak
 	ldr r0, .L08043B48 @ =gEkrGaugeHp
 	ldrh r2, [r0]
 	adds r5, r0, #0
@@ -613,7 +613,7 @@ EkrGauge_Loop: @ 0x080439CC
 	strh r2, [r1]
 	strh r0, [r1, #2]
 	ldrh r7, [r5]
-	ldr r0, .L08043B4C @ =0x0203CDA4
+	ldr r0, .L08043B4C @ =gBanimMaxHP
 	ldrh r6, [r0]
 	ldrh r1, [r5, #2]
 	mov r8, r1
@@ -638,9 +638,9 @@ EkrGauge_Loop: @ 0x080439CC
 .L08043B38: .4byte gUnk_08112AD0
 .L08043B3C: .4byte 0xFFFFFCC0
 .L08043B40: .4byte gUnk_08112BA4
-.L08043B44: .4byte 0x0203CDA8
+.L08043B44: .4byte gEkrGaugeHpBak
 .L08043B48: .4byte gEkrGaugeHp
-.L08043B4C: .4byte 0x0203CDA4
+.L08043B4C: .4byte gBanimMaxHP
 .L08043B50: .4byte gEkrDistanceType
 .L08043B54:
 	ldr r0, .L08043B68 @ =gBanimValid
@@ -1300,7 +1300,7 @@ EkrGauge_Loop: @ 0x080439CC
 	cmp r4, #0
 	bne .L080440E6
 	str r4, [sp, #0x24]
-	ldr r1, .L08044188 @ =0x0203CDC8
+	ldr r1, .L08044188 @ =gBanimWtaBonus
 	movs r2, #0
 	ldrsh r0, [r1, r2]
 	ldr r5, [sp, #0xe4]
@@ -1353,7 +1353,7 @@ EkrGauge_Loop: @ 0x080439CC
 	cmp r4, #0
 	bne .L08044152
 	str r4, [sp, #0x24]
-	ldr r1, .L08044188 @ =0x0203CDC8
+	ldr r1, .L08044188 @ =gBanimWtaBonus
 	movs r2, #2
 	ldrsh r0, [r1, r2]
 	ldr r5, [sp, #0xe4]
@@ -1419,7 +1419,7 @@ EkrGauge_Loop: @ 0x080439CC
 .L0804417C: .4byte 0x000061F0
 .L08044180: .4byte gUnk_085CB634
 .L08044184: .4byte 0x000061C0
-.L08044188: .4byte 0x0203CDC8
+.L08044188: .4byte gBanimWtaBonus
 .L0804418C: .4byte gUnk_085CB670
 .L08044190: .4byte 0x0000D1DC
 .L08044194: .4byte 0x0000E1DE

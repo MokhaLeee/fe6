@@ -785,7 +785,7 @@ func_fe6_0805D604: @ 0x0805D604
 	orrs r0, r3
 	strb r0, [r4, #0x18]
 	movs r0, #0
-	bl GetEkrDragonJid
+	bl GetEkrDragonWeapon
 	ldrh r0, [r0]
 	cmp r0, #0x53
 	bne .L0805D7D6
@@ -1581,12 +1581,12 @@ func_fe6_0805DDA8: @ 0x0805DDA8
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
 	bne .L0805DE44
-	ldr r1, .L0805DE58 @ =0x0203CDA4
+	ldr r1, .L0805DE58 @ =gBanimMaxHP
 	lsls r0, r0, #1
 	adds r0, r0, r6
 	ldrh r0, [r0]
 	strh r0, [r1, #2]
-	ldr r1, .L0805DE5C @ =0x0203CDA8
+	ldr r1, .L0805DE5C @ =gEkrGaugeHpBak
 	ldr r0, .L0805DE60 @ =0x0000FFFF
 	strh r0, [r1, #2]
 .L0805DE44:
@@ -1597,8 +1597,8 @@ func_fe6_0805DDA8: @ 0x0805DDA8
 .L0805DE4C: .4byte gUnk_Banim_0201F0B8
 .L0805DE50: .4byte gUnk_Banim_0201F0C8
 .L0805DE54: .4byte gUnk_081CA03C
-.L0805DE58: .4byte 0x0203CDA4
-.L0805DE5C: .4byte 0x0203CDA8
+.L0805DE58: .4byte gBanimMaxHP
+.L0805DE5C: .4byte gEkrGaugeHpBak
 .L0805DE60: .4byte 0x0000FFFF
 .L0805DE64:
 	ldrh r0, [r4, #0x2e]
@@ -1845,7 +1845,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	movs r0, #0
 	bl EkrGauge_08043908
 	movs r0, #0
-	bl GetEkrDragonJid
+	bl GetEkrDragonWeapon
 	ldrh r0, [r0]
 	cmp r0, #0x53
 	bne .L0805E0C0

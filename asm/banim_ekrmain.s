@@ -71,7 +71,7 @@ RegisterAISSheetGraphics: @ 0x0804AFA0
 	thumb_func_start func_fe6_0804AFD4
 func_fe6_0804AFD4: @ 0x0804AFD4
 	adds r2, r0, #0
-	ldr r0, .L0804AFF8 @ =0x0203CDD0
+	ldr r0, .L0804AFF8 @ =gBanimUniquePaletteDisabled
 	lsls r1, r1, #1
 	adds r1, r1, r0
 	movs r3, #0
@@ -90,7 +90,7 @@ func_fe6_0804AFD4: @ 0x0804AFD4
 .L0804AFF4:
 	bx lr
 	.align 2, 0
-.L0804AFF8: .4byte 0x0203CDD0
+.L0804AFF8: .4byte gBanimUniquePaletteDisabled
 
 	thumb_func_start GetBanimPalette
 GetBanimPalette: @ 0x0804AFFC
@@ -209,7 +209,7 @@ UpdateBanimFrame: @ 0x0804B048
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
-	ldr r0, .L0804B128 @ =0x0203CD90
+	ldr r0, .L0804B128 @ =gpBanimTriAtkPalettes
 	ldr r0, [r0]
 	adds r4, #0x20
 	adds r1, r4, #0
@@ -235,7 +235,7 @@ UpdateBanimFrame: @ 0x0804B048
 .L0804B11C: .4byte 0x087FC008
 .L0804B120: .4byte gpEfxUnitPaletteBackup
 .L0804B124: .4byte gPal+0x2E0
-.L0804B128: .4byte 0x0203CD90
+.L0804B128: .4byte gpBanimTriAtkPalettes
 .L0804B12C: .4byte gUnk_Banim_020041C0
 .L0804B130:
 	ldr r0, [r6, #0x14]
@@ -303,7 +303,7 @@ UpdateBanimFrame: @ 0x0804B048
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
-	ldr r0, .L0804B284 @ =0x0203CD90
+	ldr r0, .L0804B284 @ =gpBanimTriAtkPalettes
 	ldr r0, [r0, #4]
 	adds r4, #0x20
 	adds r1, r4, #0
@@ -326,15 +326,15 @@ UpdateBanimFrame: @ 0x0804B048
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x30]
 	movs r1, #0
-	bl GetBattleAnimationId_WithUnique
+	bl GetBattleAnimationId
 	lsls r0, r0, #0x10
-	ldr r5, .L0804B284 @ =0x0203CD90
+	ldr r5, .L0804B284 @ =gpBanimTriAtkPalettes
 	lsrs r0, r0, #0xb
 	add r0, sl
 	ldr r0, [r0, #0x1c]
 	str r0, [r5]
 	ldr r0, [r6]
-	bl func_fe6_0804A49C
+	bl GetBanimUniquePal
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	movs r7, #1
@@ -351,14 +351,14 @@ UpdateBanimFrame: @ 0x0804B048
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x30]
 	movs r1, #0
-	bl GetBattleAnimationId_WithUnique
+	bl GetBattleAnimationId
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0xb
 	add r0, sl
 	ldr r0, [r0, #0x1c]
 	str r0, [r5, #4]
 	ldr r0, [r6, #4]
-	bl func_fe6_0804A49C
+	bl GetBanimUniquePal
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, r7
@@ -389,7 +389,7 @@ UpdateBanimFrame: @ 0x0804B048
 .L0804B278: .4byte 0x087FC008
 .L0804B27C: .4byte gpEfxUnitPaletteBackup
 .L0804B280: .4byte gPal+0x320
-.L0804B284: .4byte 0x0203CD90
+.L0804B284: .4byte gpBanimTriAtkPalettes
 .L0804B288: .4byte gUnk_Banim_020099C0
 .L0804B28C: .4byte 0x000057F0
 .L0804B290: .4byte gpEkrTriangleUnits
