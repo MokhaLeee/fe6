@@ -554,5 +554,5 @@ void func_fe6_08013A64(void)
     gPlaySt.config_bgm_disable = FALSE;
     gPlaySt.config_se_disable = TRUE;
     gPlaySt.config_window_theme = UI_WINDOW_THEME_BLUE;
-    gPlaySt.unk_1C_1 = 0;
+    gPlaySt.config_unique_pal = 0;
 }

@@ -111,7 +111,5 @@ struct MapChangeInfo
 
 struct BanimInfoEnt
 {
-    /* 00 */ u8 identifier;
-    /* 01 */ u8 generic;
-    /* 02 */ u16 banim_id;
+    u16 wtype, index;
 };

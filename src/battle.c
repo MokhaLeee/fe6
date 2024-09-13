@@ -1562,12 +1562,12 @@ int GetUnitSoloBattleAnimType(struct Unit * unit)
     // TODO: battle anim type constants
 
     if (unit->flags & UNIT_FLAG_SOLOANIM_1)
-        return 0;
+        return PLAY_ANIMCONF_ON;
 
     if (unit->flags & UNIT_FLAG_SOLOANIM_2)
-        return 3;
+        return PLAY_ANIMCONF_ON_UNIQUE_BG;
 
-    return 1;
+    return PLAY_ANIMCONF_OFF;
 }
 
 int GetBattleAnimType(void)

@@ -186,16 +186,16 @@ gUnk_08113FB8: @ 08113FB8
 gUnk_08113FD8: @ 08113FD8
 	.incbin "fe6-base.gba", 0x113FD8, (0x113FF8 - 0x113FD8) @ length: 0020
 
-	.global gUnk_08113FF8
-gUnk_08113FF8: @ 08113FF8
+	.global Img_BanimArcherFBallistaIntro
+Img_BanimArcherFBallistaIntro: @ 08113FF8
 	.incbin "fe6-base.gba", 0x113FF8, (0x11446C - 0x113FF8) @ length: 0474
 
-	.global gUnk_0811446C
-gUnk_0811446C: @ 0811446C
+	.global Img_BanimArcherMBallistaIntro
+Img_BanimArcherMBallistaIntro: @ 0811446C
 	.incbin "fe6-base.gba", 0x11446C, (0x11490C - 0x11446C) @ length: 04A0
 
-	.global gUnk_0811490C
-gUnk_0811490C: @ 0811490C
+	.global Img_BanimSnipperFBallistaIntro
+Img_BanimSnipperFBallistaIntro: @ 0811490C
 	.incbin "fe6-base.gba", 0x11490C, (0x114D80 - 0x11490C) @ length: 0474
 
 	.global Img_LevelUpFrame

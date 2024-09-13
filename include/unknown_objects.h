@@ -240,9 +240,9 @@ extern u16 const Pal_EkrExpBar[];
 // extern ??? gUnk_08113F98
 // extern ??? gUnk_08113FB8
 // extern ??? gUnk_08113FD8
-// extern ??? gUnk_08113FF8
-// extern ??? gUnk_0811446C
-// extern ??? gUnk_0811490C
+extern u8 const Img_BanimArcherFBallistaIntro[];
+extern u8 const Img_BanimArcherMBallistaIntro[];
+extern u8 const Img_BanimSnipperFBallistaIntro[];
 extern u8 const Img_LevelUpFrame[]; // img (stat gains)
 extern u8 const Tm_LevelUpFrame[]; // tiles (stat gains)
 extern u16 const Pal_LevelUpFrame[]; // pal (stat gains)

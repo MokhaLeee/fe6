@@ -812,7 +812,7 @@ func_fe6_08057380: @ 0x08057380
 	adds r1, r3, #0
 	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
-	ldr r4, .L08057408 @ =0x0203CDC0
+	ldr r4, .L08057408 @ =gBanimTerrain
 	ldr r0, [r5, #0x5c]
 	bl GetAnimPosition
 	lsls r0, r0, #1
@@ -837,7 +837,7 @@ func_fe6_08057380: @ 0x08057380
 .L080573FC: .4byte gUnk_085E0324
 .L08057400: .4byte gUnk_085E05B4
 .L08057404: .4byte gUnk_085E046C
-.L08057408: .4byte 0x0203CDC0
+.L08057408: .4byte gBanimTerrain
 .L0805740C: .4byte .L08057410
 .L08057410: @ jump table
 	.4byte .L08057510 @ case 0

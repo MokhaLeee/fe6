@@ -78,7 +78,7 @@ void InitPlayConfig(int is_hard)
     gPlaySt.config_battle_preview_kind = 0;
     gPlaySt.debug_control_red = 0;
     gPlaySt.debug_control_green = 0;
-    gPlaySt.unk_1C_1 = 0;
+    gPlaySt.config_unique_pal = 0;
     gPlaySt.unk_1D_5 = 0;
 }
 

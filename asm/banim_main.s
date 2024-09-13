@@ -513,7 +513,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r0, .L0804AAD4 @ =0x000057F0
 	adds r4, r4, r0
 	str r4, [r6, #0x3c]
-	ldr r4, .L0804AAD8 @ =0x0203CD98
+	ldr r4, .L0804AAD8 @ =gBanimUnitChgForceImg
 	adds r0, r7, #0
 	str r2, [sp]
 	bl GetAnimPosition
@@ -552,7 +552,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 .L0804AACC: .4byte gUnk_Banim_02000058
 .L0804AAD0: .4byte gUnk_Banim_0200F1C0
 .L0804AAD4: .4byte 0x000057F0
-.L0804AAD8: .4byte 0x0203CD98
+.L0804AAD8: .4byte gBanimUnitChgForceImg
 .L0804AADC: .4byte gpImgSheet
 .L0804AAE0:
 	ldr r1, .L0804AB00 @ =gUnk_081122C0
@@ -907,7 +907,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	bl GetAnimLayer
 	cmp r0, #0
 	bne .L0804ADF0
-	ldr r4, .L0804AE4C @ =0x0203CD98
+	ldr r4, .L0804AE4C @ =gBanimUnitChgForceImg
 	adds r0, r7, #0
 	bl GetAnimPosition
 	lsls r0, r0, #2
@@ -984,7 +984,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r4, .L0804AE5C @ =0x0000FFFD
 	b .L0804AED0
 	.align 2, 0
-.L0804AE4C: .4byte 0x0203CD98
+.L0804AE4C: .4byte gBanimUnitChgForceImg
 .L0804AE50: .4byte gpImgSheet
 .L0804AE54: .4byte gAnimC01Blocking
 .L0804AE58: .4byte gAnims

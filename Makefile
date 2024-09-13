@@ -132,11 +132,11 @@ compare: $(ROM)
 .PHONY: compare
 
 %.gba: %.elf
-	@echo "[OBJCPY]	$<"
+	@echo "[OBJCPY]	$@"
 	$(OBJCOPY) --strip-debug -O binary $< $@
 
 $(ELF): $(ALL_OBJS) $(LDS)
-	@echo "[LD]	$<"
+	@echo "[LD]	$@"
 	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
 
 CLEAN_FILES += $(ROM) $(ELF) $(MAP)

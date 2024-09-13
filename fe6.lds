@@ -272,10 +272,11 @@ SECTIONS
         . = 0x0203CCE4 - __ewram_overlay_end;
         . = ALIGN(4); src/banim_ekrbattle.o(ewram_data);
 
-        . = 0x0203CCF2 - __ewram_overlay_end; gBanimBackgroundIndex = .;
+        . = 0x0203CCF2 - __ewram_overlay_end; gBanimBG = .;
         . = 0x0203CCF4 - __ewram_overlay_end; gEkrInitialHitSide = .;
         . = 0x0203CCF6 - __ewram_overlay_end; gEkrSnowWeather = .;
         . = 0x0203CCF8 - __ewram_overlay_end; gBanimValid = .;
+        . = 0x0203CCFC - __ewram_overlay_end; gBanimPositionIsEnemy = .;
         . = 0x0203CD00 - __ewram_overlay_end; gBanimIdx_bak = .;
         . = 0x0203CD04 - __ewram_overlay_end; gBanimUniquePal = .;
         . = 0x0203CD08 - __ewram_overlay_end; gBanimFactionPal = .;
@@ -290,10 +291,21 @@ SECTIONS
         . = 0x0203CD80 - __ewram_overlay_end; gpEkrBattleUnitRight = .;
         . = 0x0203CD84 - __ewram_overlay_end; gEkrPids = .;
         . = 0x0203CD88 - __ewram_overlay_end; gpEkrTriangleUnits = .;
+        . = 0x0203CD90 - __ewram_overlay_end; gpBanimTriAtkPalettes = .;
+        . = 0x0203CD98 - __ewram_overlay_end; gBanimUnitChgForceImg = .;
         . = 0x0203CDA0 - __ewram_overlay_end; gEkrGaugeHp = .;
-        . = 0x0203CDB8 - __ewram_overlay_end; gEkrPairExpPrevious = .;
-        . = 0x0203CDBC - __ewram_overlay_end; gEkrPairExpGain = .;
-        . = 0x0203CDCC - __ewram_overlay_end; gEkrPairEffectiveAgainst = .;
+        . = 0x0203CDA4 - __ewram_overlay_end; gBanimMaxHP = .;
+        . = 0x0203CDA8 - __ewram_overlay_end; gEkrGaugeHpBak = .;
+        . = 0x0203CDAC - __ewram_overlay_end; gEkrGaugeHit = .;
+        . = 0x0203CDB0 - __ewram_overlay_end; gEkrGaugeDmg = .;
+        . = 0x0203CDB4 - __ewram_overlay_end; gEkrGaugeCrt = .;
+        . = 0x0203CDB8 - __ewram_overlay_end; gBanimExpPrevious = .;
+        . = 0x0203CDBC - __ewram_overlay_end; gBanimExpGain = .;
+        . = 0x0203CDC0 - __ewram_overlay_end; gBanimTerrain = .;
+        . = 0x0203CDC4 - __ewram_overlay_end; gBanimCon = .;
+        . = 0x0203CDC8 - __ewram_overlay_end; gBanimWtaBonus = .;
+        . = 0x0203CDCC - __ewram_overlay_end; gBanimEffectiveness = .;
+        . = 0x0203CDD0 - __ewram_overlay_end; gBanimUniquePaletteDisabled = .;
         . = 0x0203CDE0 - __ewram_overlay_end; gEkrDragonJid = .;
 
         . = 0x0203CDE4 - __ewram_overlay_end;
@@ -542,9 +554,9 @@ SECTIONS
         asm/banim_efxquake.o(.text);
         src/banim_efxflashing.o(.text);
         src/banim_ekrutils.o(.text);
-        asm/banim_ekrbattlestarting.o(.text);
-        asm/banim_ekrbattleending.o(.text);
+        src/banim_ekrbattleintro.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);
+        src/banim_setup.o(.text);
         asm/banim_ekrcmd.o(.text);
         asm/banim_main.o(.text);
         asm/banim_ekrmain.o(.text);
@@ -763,8 +775,7 @@ SECTIONS
         . = ALIGN(4); src/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);
-        . = ALIGN(4); asm/banim_ekrbattlestarting.o(.data);
-        . = ALIGN(4); asm/banim_ekrbattleending.o(.data);
+        . = ALIGN(4); src/banim_ekrbattleintro.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrmain.o(.data);
         . = ALIGN(4); asm/banim_ekrmainmini.o(.data);
