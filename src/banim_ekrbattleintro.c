@@ -3,8 +3,11 @@
 #include "bmio.h"
 #include "mu.h"
 #include "oam.h"
+#include "map.h"
 #include "util.h"
 #include "hardware.h"
+#include "unitsprite.h"
+#include "chapter.h"
 #include "banim_sprite.h"
 #include "banim.h"
 #include "banim_ekrbattle.h"
@@ -12,7 +15,7 @@
 
 struct ProcScr CONST_DATA ProcScr_EkrBattleStarting[] =
 {
-    PROC_19,
+    PROC_NAME_DEBUG("ekrBattleStarting"),
     PROC_REPEAT(EkrBaStart_InitScreen),
     PROC_REPEAT(EkrBaStart_SreenFailIn),
     PROC_REPEAT(EkrBaStart_InitBattleScreen),
@@ -165,7 +168,7 @@ void EkrBaStart_BgFadeOut(struct ProcEkrBattleStarting * proc)
     }
 }
 
-void EkrBaStart_MergeBG(struct ProcEkrBattleStarting *proc)
+void EkrBaStart_MergeBG(struct ProcEkrBattleStarting * proc)
 {
     if (gEkrSnowWeather == 0)
         gUnk_Banim_0201E0F8 = 0x6;
@@ -177,7 +180,7 @@ void EkrBaStart_MergeBG(struct ProcEkrBattleStarting *proc)
     Proc_Break(proc);
 }
 
-void func_fe6_08048154(struct ProcEkrBattleStarting *proc)
+void func_fe6_08048154(struct ProcEkrBattleStarting * proc)
 {
     int val = Interpolate(0, 0x10, 0, proc->timer, 8);
 
@@ -190,4 +193,173 @@ void func_fe6_08048154(struct ProcEkrBattleStarting *proc)
         proc->timer = 0;
         Proc_Break(proc);
     }
+}
+
+struct ProcScr CONST_DATA ProcScr_Ekrbattleending[] =
+{
+    PROC_NAME_DEBUG("ekrBattleEnding"),
+    PROC_REPEAT(func_fe6_080481CC),
+    PROC_REPEAT(func_fe6_08048244),
+    PROC_REPEAT(func_fe6_08048298),
+    PROC_REPEAT(func_fe6_080482F4),
+    PROC_REPEAT(func_fe6_08048354),
+    PROC_REPEAT(func_fe6_080483E0),
+    PROC_REPEAT(func_fe6_08048470),
+    PROC_REPEAT(func_fe6_0804855C),
+    PROC_END,
+};
+
+void NewEkrbattleending(void)
+{
+    struct ProcEkrBattleEnding * proc;
+    proc = SpawnProc(ProcScr_Ekrbattleending, PROC_TREE_3);
+    proc->timer = 0;
+}
+
+void func_fe6_080481CC(struct ProcEkrBattleEnding * proc)
+{
+    int ret;
+
+    if (gBanimBG == 0 || GetEkrDragonStateType() != 0)
+    {
+        Proc_Break(proc);
+        return;
+    }
+
+    ret = Interpolate(INTERPOLATE_LINEAR, 0, 0x10, proc->timer, 0x8);
+    PutBanimBgPAL(gBanimBG - 1);
+    EfxPalBlackInOut(gPal, BGPAL_EFXDRAGON_L, 0xA, ret);
+    EnablePalSync();
+
+    if (++proc->timer == 0x9)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}
+
+void func_fe6_08048244(struct ProcEkrBattleEnding * proc)
+{
+    if (gBanimBG == 0 || GetEkrDragonStateType() != 0)
+    {
+        Proc_Break(proc);
+        return;
+    }
+
+    ApplyChapterMapGraphics(gPlaySt.chapter);
+    EfxChapterMapFadeOUT(0x10);
+    RenderMap();
+    SetBgOffset(BG_3, 0, 0);
+    Proc_Break(proc);
+}
+
+void func_fe6_08048298(struct ProcEkrBattleEnding * proc)
+{
+    if (gBanimBG == 0 || GetEkrDragonStateType() != 0)
+    {
+        Proc_Break(proc);
+        return;
+    }
+
+    EfxChapterMapFadeOUT(Interpolate(INTERPOLATE_LINEAR, 0x10, 0x4, proc->timer, 0x8));
+
+    if (++proc->timer == 0x9)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}
+
+void func_fe6_080482F4(struct ProcEkrBattleEnding * proc)
+{
+    int val;
+
+    proc->timer = 0;
+
+    val = (gEkrBmLocation[0] + gEkrBmLocation[2]) * 8 + 8;
+    proc->x2 = val;
+    proc->x1 = val;
+
+    val = (gEkrBmLocation[1] + gEkrBmLocation[3]) * 8 + 8;
+    proc->y2 = val;
+    proc->y1 = val;
+
+    BasInit();
+    NewEkrUnitKakudai(1);
+    NewEkrBaseKaiten(1);
+    NewEkrWindowAppear(1, 0xB);
+    NewEkrBaseAppear(1, 0xB);
+    Proc_Break(proc);
+}
+
+void func_fe6_08048354(struct ProcEkrBattleEnding * proc)
+{
+    if (++proc->timer > 0xC)
+    {
+        EndEkrGauge();
+        Proc_Break(proc);
+        InitBmBgLayers();
+        
+        SetWinEnable(1, 0, 0);
+        SetWin0Box(0, 0, 0, 0);
+        SetWin0Layers(1, 1, 1, 1, 1);
+        SetWOutLayers(1, 1, 1, 1, 0);
+    }
+}
+
+void func_fe6_080483E0(struct ProcEkrBattleEnding * proc)
+{
+    proc->timer = 0;
+    proc->terminator = 0xF;
+    ResetUnitSprites();
+    func_fe6_080292B8();
+    RefreshUnitSprites();
+    ForceSyncUnitSpriteSheet();
+    ApplyUnitSpritePalettes();
+
+    SetBlendConfig(3, 0, 0, 4);
+    SetBlendTargetA(0, 0, 0, 1, 0);
+
+    gDispIo.win_ct.win0_enable_blend = false;
+    gDispIo.win_ct.wout_enable_blend = true;
+
+    if (GetBattleAnimArenaFlag() != 1)
+        ApplyChapterMapPalettes();
+
+    if (GetBanimLinkArenaFlag() == 1)
+        func_fe6_0803CF58();
+    
+    Proc_Break(proc);
+}
+
+void func_fe6_08048470(struct ProcEkrBattleEnding * proc)
+{
+    int left, top, right, bottom;
+
+    if (proc->timer != proc->terminator)
+        proc->timer++;
+
+    left   = Interpolate(INTERPOLATE_LINEAR, proc->x1, 0,    proc->timer, proc->terminator);
+    top    = Interpolate(INTERPOLATE_LINEAR, proc->y1, 0,    proc->timer, proc->terminator);
+    right  = Interpolate(INTERPOLATE_LINEAR, proc->x2, 0xF0, proc->timer, proc->terminator);
+    bottom = Interpolate(INTERPOLATE_LINEAR, proc->y2, 0xA0, proc->timer, proc->terminator);
+
+    SetWin0Box(left, top, right, bottom);
+    CpuFastFill16(0, gBg2Tm, 0x800);
+    EnableBgSync(BG2_SYNC_BIT);
+
+    if (proc->timer == proc->terminator)
+    {
+        proc->timer = 0;
+        SetWin0Box(0, 0, 0xF0, 0xA0);
+        EnablePalSync();
+        Proc_Break(proc);
+    }
+}
+
+void func_fe6_0804855C(struct ProcEkrBattleEnding * proc)
+{
+    EndEkrBattleDeamon();
+    func_fe6_08029240();
+    Proc_Break(proc);
 }

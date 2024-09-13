@@ -254,7 +254,7 @@ void func_fe6_0803C080(ProcPtr parent);
 // func_fe6_0803CE7C
 // func_fe6_0803CEDC
 // func_fe6_0803CF14
-// func_fe6_0803CF58
+void func_fe6_0803CF58(void);
 // func_fe6_0803CF70
 // func_fe6_0803CF9C
 // func_fe6_0803CFE4

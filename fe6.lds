@@ -542,8 +542,7 @@ SECTIONS
         asm/banim_efxquake.o(.text);
         src/banim_efxflashing.o(.text);
         src/banim_ekrutils.o(.text);
-        src/banim_ekrbattlestarting.o(.text);
-        asm/banim_ekrbattleending.o(.text);
+        src/banim_ekrbattleintro.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);
         asm/banim_ekrcmd.o(.text);
         asm/banim_main.o(.text);
@@ -763,8 +762,7 @@ SECTIONS
         . = ALIGN(4); src/banim_efxquake.o(.data);
         . = ALIGN(4); asm/banim_efxquake.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);
-        . = ALIGN(4); src/banim_ekrbattlestarting.o(.data);
-        . = ALIGN(4); asm/banim_ekrbattleending.o(.data);
+        . = ALIGN(4); src/banim_ekrbattleintro.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrmain.o(.data);
         . = ALIGN(4); asm/banim_ekrmainmini.o(.data);

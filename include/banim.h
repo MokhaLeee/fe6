@@ -550,7 +550,7 @@ void BeginAnimsOnBattleAnimations(void);
 void EkrMainEndExec(void);
 void OnMainBas(void);
 
-struct ProcEkrBattleFrameSwitching {
+struct ProcEkrBattleIntro {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x2C);
@@ -566,8 +566,8 @@ struct ProcEkrBattleFrameSwitching {
     /* 3A */ i16 y1, y2;
 };
 
-#define ProcEkrBattleStarting ProcEkrBattleFrameSwitching
-#define ProcEkrBattleEnding   ProcEkrBattleFrameSwitching
+#define ProcEkrBattleStarting ProcEkrBattleIntro
+#define ProcEkrBattleEnding   ProcEkrBattleIntro
 
 void NewEkrBattleStarting(void);
 void EkrBaStart_InitScreen(struct ProcEkrBattleStarting * proc);
@@ -579,14 +579,15 @@ void EkrBaStart_MergeBG(struct ProcEkrBattleStarting * proc);
 void func_fe6_08048154(struct ProcEkrBattleStarting * proc);
 
 void NewEkrbattleending(void);
-// func_fe6_080481CC
-// func_fe6_08048244
-// func_fe6_08048298
-// func_fe6_080482F4
-// func_fe6_08048354
-// func_fe6_080483E0
-// func_fe6_08048470
-// func_fe6_0804855C
+void func_fe6_080481CC(struct ProcEkrBattleEnding * proc);
+void func_fe6_08048244(struct ProcEkrBattleEnding * proc);
+void func_fe6_08048298(struct ProcEkrBattleEnding * proc);
+void func_fe6_080482F4(struct ProcEkrBattleEnding * proc);
+void func_fe6_08048354(struct ProcEkrBattleEnding * proc);
+void func_fe6_080483E0(struct ProcEkrBattleEnding * proc);
+void func_fe6_08048470(struct ProcEkrBattleEnding * proc);
+void func_fe6_0804855C(struct ProcEkrBattleEnding * proc);
+
 void NewEkrBaseKaiten(int identifier);
 // func_fe6_0804894C
 void NewEkrUnitKakudai(int identifier);
