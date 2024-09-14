@@ -11,6 +11,8 @@ import dump_banim_script
 import dump_banim_oam
 
 from rom_def import BANIM_MODES
+from dump_banim_oam import BanimOAM
+from dump_banim_script import BanimSCR
 
 abbr_count = {}
 
@@ -41,19 +43,34 @@ def dump_scr_frame(img_addr, pal_addr, out_png):
     img = dump_banim_frame.create_image_from_4bpp(img_data, pal_bytes, 256, 64)
     img.save(out_png)
 
-def dump_modes(prefix, addr):
+def dump_modes(prefix, addr, scrs):
     offset = addr & 0x00FFFFFF
+
+    print(f".global BANIM_MODES_{prefix}")
+    print(f"BANIM_MODES_{prefix}:")
 
     with open(rom_def.ROM, "rb") as f:
         f.seek(offset)
         data = f.read(12 * 2 * 4)
 
-        for i in range(12):
+        for i in range(24):
             scr_offset = int.from_bytes(data[i*4 : i*4+4], 'little')
-            print(f"    .word BANIM_SCR_{prefix}_{BANIM_MODES[i]} - BANIM_SCR_{prefix}_START @ 0x{scr_offset:X}")
+            mode_str = f"0x{scr_offset:X}"
 
-        for i in range(12):
-            print(f"    .word 0")
+            # corner case 1?
+            if i >= 12 and scr_offset != 0:
+                break
+
+            # corner case 2?
+            if scr_offset > 0x6000:
+                break
+
+            if i == 0 or scr_offset != 0:
+                for scr in scrs:
+                    if scr.offset == scr_offset:
+                        mode_str = f"{scr.name} - SCR"
+
+            print(f"    .word {mode_str}")
 
 def dump_one_banim_data_ent(addr, out_dir):
     global abbr_count, all_symbols
@@ -88,27 +105,30 @@ def dump_one_banim_data_ent(addr, out_dir):
         sys.stdout = file
 
         try:
+            print(".include \"macro.inc\"")
+            print(".include \"animscr.inc\"")
+            print(".include \"gba_sprites.inc\"")
             print("")
             print(".section .data.oamr")
-            dump_banim_oam.dump_banim_oam_r(abbr_str, oam_r)
+            oams_r = dump_banim_oam.dump_banim_oam_r(abbr_str, oam_r)
 
             print("")
             print(".section .data.oaml")
-            dump_banim_oam.dump_banim_oam_l(abbr_str, oam_l)
+            oams_l = dump_banim_oam.dump_banim_oam_l(abbr_str, oam_l)
 
             print("")
             print(".section .data.script")
-            anim_frames = dump_banim_script.dump_banim_script(abbr_str, script)
+            scrs, anim_frames = dump_banim_script.dump_banim_script(abbr_str, script, oams_r)
 
             anim_frames = list(set(anim_frames))
             anim_frames.sort()
 
             print("")
             print(".section .data.modes")
-            dump_modes(abbr_str, modes)
+            dump_modes(abbr_str, modes, scrs)
 
-            print("")
-            print(".section .data.frames")
+            # print("")
+            # print(".section .data.frames")
             dump_banim_frame.dump_banim_frames(abbr_str, anim_frames, pal, out_dir_ext)
 
             for i, img_addr in enumerate(anim_frames):
@@ -121,22 +141,43 @@ def dump_one_banim_data_ent(addr, out_dir):
 def main(args):
     global all_symbols
 
+    out_dir = "data/banims" # "out"
+
     for i in range(122):
-        dump_one_banim_data_ent(0x6A0008 + i * 32, "data/banims")
+        dump_one_banim_data_ent(0x6A0008 + i * 32, out_dir)
 
     print("    .data")
     sorted_symbols = sort_symbols(all_symbols)
     for i, symbol in enumerate(sorted_symbols):
         print(f"    .global {symbol.name}")
         print(f"{symbol.name}: @ 0x{symbol.ptr:08X}")
-        if symbol.is_img:
-            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.name}.4bpp.lz\"")
-        else:
-            end = 0x7E989C # hardcoded lol
-            if i < (len(sorted_symbols) - 1):
-                end = sorted_symbols[i + 1].ptr
 
-            print(f"    .incbin \"fe6-base.gba\", 0x{(symbol.ptr & 0x00FFFFFF):06X}, 0x{(end & 0x00FFFFFF):06X} - 0x{(symbol.ptr & 0x00FFFFFF):06X}")
+        cur = symbol.ptr & 0x00FFFFFF
+        end = 0x7E989C # hardcoded lol
+        if i < (len(sorted_symbols) - 1):
+            end = sorted_symbols[i + 1].ptr & 0x00FFFFFF
+
+
+        if symbol.name[0:9] == "BANIM_IMG":
+            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.name}.4bpp.lz\"")
+        elif symbol.name[0:10] == "BANIM_OAMR":
+            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.prefix}.oamr.bin.lz\"")
+        elif symbol.name[0:10] == "BANIM_OAML":
+            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.prefix}.oaml.bin.lz\"")
+        elif symbol.name[0:10] == "BANIM_MODE":
+            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.prefix}.mode.bin\"")
+
+            if (end - cur) > (24 * 4):
+                cur += 24 * 4
+                print("")
+                ptr = f"{(cur + 0x08000000):08X}"
+                name = f"gUnk_{ptr}"
+                print(f"    .global {name}")
+                print(f"{name}: @ {ptr}")
+                print(f"    .incbin \"fe6-base.gba\", 0x{cur:06X}, 0x{end:06X} - 0x{cur:06X}")
+
+        else:
+            print(f"    .incbin \"fe6-base.gba\", 0x{cur:06X}, 0x{end:06X} - 0x{cur:06X}")
 
         print("")
 
