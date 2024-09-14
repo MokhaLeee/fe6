@@ -5,6 +5,11 @@ import struct, ctypes
 import lzss_lib
 import rom_def
 
+class BanimOAM:
+    def __init__(self, name, offset):
+        self.name = name
+        self.offset = offset
+
 def lo16(data):
     return data & 0xFFFF
 
@@ -12,6 +17,8 @@ def hi16(data):
     return (data >> 16) & 0xFFFF
 
 def dump_banim_oam(prefix, addr):
+    ret_oams = []
+
     oam_bytes = lzss_lib.lz77_decomp_data(addr)
     oam_data  = struct.unpack(f'{len(oam_bytes) // 4}I', oam_bytes)
 
@@ -19,14 +26,15 @@ def dump_banim_oam(prefix, addr):
     oam_idx = 0
     new_oam = True
 
-    print(f"BANIM_{prefix}:")
+    print(f"{prefix}:")
 
     while True:
         if cur >= len(oam_data):
             break
 
         if new_oam:
-            name = f"BANIM_{prefix}_{oam_idx}"
+            name = f"{prefix}_{oam_idx}"
+            ret_oams.append(BanimOAM(name, cur * 4))
             print(name + ":")
             new_oam = False
             oam_idx += 1
@@ -100,8 +108,14 @@ def dump_banim_oam(prefix, addr):
         else:
             print(f"    {PREFIX} {OAM0}, {OAM1}, {OAM2}, {x}, {y}")
 
+    return ret_oams
+
 def dump_banim_oam_r(prefix, addr):
-    dump_banim_oam("OAMR_" + prefix, addr)
+    print(f".global BANIM_OAMR_{prefix}")
+    print(f"BANIM_OAMR_{prefix}:")
+    return dump_banim_oam("OAMR", addr)
 
 def dump_banim_oam_l(prefix, addr):
-    dump_banim_oam("OAML_" + prefix, addr)
+    print(f".global BANIM_OAML_{prefix}")
+    print(f"BANIM_OAML_{prefix}:")
+    return dump_banim_oam("OAML", addr)

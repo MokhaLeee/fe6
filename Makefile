@@ -1,4 +1,5 @@
 .SUFFIXES:
+.SECONDARY:
 
 # ==================
 # = PROJECT CONFIG =
@@ -108,11 +109,6 @@ CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
 # ============
 
 PNG_FILES := $(shell find ./data -type f -name '*.png')
-
-BANIM_TOOLS := tools/banimtools
-LZSS_COMPRESS  := $(PYTHON) $(BANIM_TOOLS)/lzss_compress.py
-PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
-PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 GBAGFX := tools/gbagfx/gbagfx$(EXE)
 
 %.1bpp: %.png
@@ -136,21 +132,53 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 	@$(GBAGFX) $< $@
 
 %.lz: %
-	@echo "[LZ]	$@"
+	@echo "[LZ ]	$@"
 	@$(GBAGFX) $< $@
 
 %.rl: %
-	@echo "[LZ]	$@"
+	@echo "[LZ ]	$@"
 	@$(GBAGFX) $< $@
 
-# lol
-%.4bpp.lz: %.png
-	@echo "[LZ]	$@"
-	@$(GBAGFX) $< $*.4bpp
-	@$(GBAGFX) $*.4bpp $@
-	@rm *.4bpp -f
-
 CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz)
+
+# ==============
+# = Banim data =
+# ==============
+
+ALL_BANIM_SCRS := $(shell find ./data/banims/ -type f -name "*.s")
+
+BANIM_TOOLS := tools/banimtools
+LZSS_COMPRESS  := $(PYTHON) $(BANIM_TOOLS)/lzss_compress.py
+PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
+PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
+
+%.oamr.elf: %.o
+	@echo "[LD ]	$@"
+	@$(LD) -T $(BANIM_TOOLS)/link_oamr.ld -o $@ $<
+
+%.oaml.elf: %.o
+	@echo "[LD ]	$@"
+	@$(LD) -T $(BANIM_TOOLS)/link_oaml.ld -o $@ $<
+
+%.mode.elf: %.o
+	@echo "[LD ]	$@"
+	@$(LD) -T $(BANIM_TOOLS)/link_mode.ld -o $@ $<
+
+%.oamr.bin: %.oamr.elf
+	@echo "[OPY]	$@"
+	@$(OBJCOPY) --only-section=.data.oamr -O binary $< $@
+
+%.oaml.bin: %.oaml.elf
+	@echo "[OPY]	$@"
+	@$(OBJCOPY) --only-section=.data.oaml -O binary $< $@
+
+%.mode.bin: %.mode.elf
+	@echo "[OPY]	$@"
+	@$(OBJCOPY) --only-section=.data.modes -O binary $< $@
+
+CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz)
+CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz)
+CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.lz)
 
 # ===========
 # = Targets =
@@ -184,7 +212,7 @@ compare: $(ROM)
 .PHONY: compare
 
 %.gba: %.elf
-	@echo "[OBJCPY]	$@"
+	@echo "[OPY]	$@"
 	$(OBJCOPY) --strip-debug -O binary $< $@
 
 $(ELF): $(ALL_OBJS) $(LDS)
@@ -206,7 +234,7 @@ $(BUILD_DIR)/%.d: %.s
 	@$(ASM_DEP) $(INC_FLAG) $< >> $@
 
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
-	@echo "[CC]	$<"
+	@echo "[CC ]	$<"
 	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) $(CFLAG_OPT) -o $(BUILD_DIR)/$*.s
 	@echo ".text\n\t.align\t2, 0\n" >> $(BUILD_DIR)/$*.s
 	@$(AS) $(ASFLAGS) $(BUILD_DIR)/$*.s -o $@
@@ -216,7 +244,12 @@ $(BUILD_DIR)/%.d: $(BUILD_DIR)/%.o
 	@touch $@
 
 $(BUILD_DIR)/%.o: %.s
-	@echo "[AS]	$<"
+	@echo "[AS ]	$<"
+	@$(AS) $(ASFLAGS) $< -o $@ --MD $(BUILD_DIR)/$*.d
+
+%.o: %.s
+	@echo "[AS ]	$<"
+	@mkdir -p $(dir $(BUILD_DIR)/$*.d)
 	@$(AS) $(ASFLAGS) $< -o $@ --MD $(BUILD_DIR)/$*.d
 
 ifneq (clean,$(MAKECMDGOALS))

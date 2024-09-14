@@ -3,11 +3,28 @@
 import struct
 
 import lzss_lib
+from symbols import try_get_ptr_symbol
 from rom_def import BANIM_MODES
+from dump_banim_oam import BanimOAM
 
-def dump_banim_script(prefix, addr):
+class BanimSCR:
+    def __init__(self, name, offset):
+        self.name = name
+        self.offset = offset
+
+def find_oam(oams, off):
+    print(f"Type of oams: {type(oams)}")
+    for oam in oams:
+        if off == oam.offset:
+            return oam
+
+    return None
+
+def dump_banim_script(prefix, addr, oams_r):
     scr_bytes = lzss_lib.lz77_decomp_data(addr)
     scr_data  = struct.unpack(f'{len(scr_bytes) // 4}I', scr_bytes)
+
+    ret_scrs = []
 
     cur = 0
     scr_idx = 0
@@ -15,7 +32,9 @@ def dump_banim_script(prefix, addr):
 
     anim_frames = []
 
-    print(f"BANIM_SCR_{prefix}")
+    print(f".global BANIM_SCR_{prefix}")
+    print(f"BANIM_SCR_{prefix}:")
+    print(f"SCR:")
 
     while True:
         if cur >= len(scr_data):
@@ -23,10 +42,11 @@ def dump_banim_script(prefix, addr):
 
         if new_scr:
             if scr_idx in BANIM_MODES:
-                name = f"BANIM_SCR_{prefix}_{BANIM_MODES[scr_idx]}"
+                name = f"SCR_{BANIM_MODES[scr_idx]}"
             else:
-                name = f"BANIM_SCR_{prefix}_{scr_idx}"
+                name = f"SCR_{scr_idx}"
 
+            ret_scrs.append(BanimSCR(name, cur * 4))
             print(name + ":")
             scr_idx += 1
             new_scr = False
@@ -81,12 +101,22 @@ def dump_banim_script(prefix, addr):
 
             anim_frames.append(sheet_addr)
 
+            frame_name = try_get_ptr_symbol(sheet_addr)
+            if frame_name == None:
+                frame_name = f"0x{sheet_addr:08X}"
+
             _data = scr_data[cur]
             cur += 1
             oam_offset = _data
-            print(f"    ANIMSCR_FRAME 0x{duration:02X}, 0x{sheet_addr:08X}, 0x{frame_number:02X}, 0x{oam_offset:04X}") # @ 0x{data:08X}
+
+            oam_name = f"0x{oam_offset:04X}"
+            for oam in oams_r:
+                if oam.offset == oam_offset:
+                    oam_name = f"{oam.name} - OAMR"
+
+            print(f"    ANIMSCR_FRAME 0x{duration:02X}, {frame_name}, 0x{frame_number:02X}, {oam_name}") # @ 0x{data:08X}
 
         else:
             print("[ERROR] 0x{ins:08X}")
 
-    return anim_frames
+    return ret_scrs, anim_frames
