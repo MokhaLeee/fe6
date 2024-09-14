@@ -13,10 +13,19 @@ GBAFE decompilation progress history can be found on [laqieer's FE decomp portal
 
 ## Quick setup
 
-- get a `arm-none-eabi` binutils toolchain (devkitARM works).
 - get a copy of the original rom (still required for every build for now), put it in this folder and name it `fe6-base.gba`.
-- run [tools/install_agbcc.sh](tools/install_agbcc.sh) or get an agbcc another way.
-- `make compare`
+
+```bash
+# install dependence
+sudo apt update
+sudo apt install -y build-essential gcc-arm-none-eabi binutils-arm-none-eabi
+python -m pip install requests argparse numpy pillow
+./tools/install_agbcc.sh
+./build_tools.sh
+
+# make
+make compare
+```
 
 In the future, a native GCC or GCC-like C compiler (such as clang) will be required to build tools, there is just no tool to build yet.
 

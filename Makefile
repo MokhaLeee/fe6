@@ -58,10 +58,13 @@ SHASUM ?= sha1sum
 # = BUILD CONFIG =
 # ================
 
-CPPFLAGS := -I $(AGBCC_HOME)/include -I include -I . -nostdinc -undef
+INC_DIRS := include asm/include $(AGBCC_HOME)/include .
+INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
+
+CPPFLAGS := $(INC_FLAG) -nostdinc -undef
 CFLAGS := -g -mthumb-interwork -Wimplicit -Wparentheses -Werror -fhex-asm -ffix-debug-line
 CFLAG_OPT := -O2
-ASFLAGS := -mcpu=arm7tdmi -I asm/include -I include
+ASFLAGS := -mcpu=arm7tdmi $(INC_FLAG)
 
 LDS := $(BUILD_NAME).lds
 C_SRCS := $(wildcard $(SRC_DIR)/*.c)
@@ -76,9 +79,9 @@ C_GENERATED :=
 TEXT_DIR := texts
 TEXT_TOOLS := tools/texttools
 
-TEXT_DECODER := $(TEXT_TOOLS)/textdecoder.py
-TEXT_DPARSER := $(TEXT_TOOLS)/textdeparser.py
-TEXT_PROCESS := $(TEXT_TOOLS)/textprocess.py
+TEXT_DECODER := $(PYTHON)  $(TEXT_TOOLS)/textdecoder.py
+TEXT_DPARSER := $(PYTHON) $(TEXT_TOOLS)/textdeparser.py
+TEXT_PROCESS := $(PYTHON) $(TEXT_TOOLS)/textprocess.py
 TEXT_ENCODE := tools/textencode/textencode
 
 TEXT_MAIN := $(TEXT_DIR)/texts.txt
@@ -91,14 +94,63 @@ MSG_LIST    := src/msg_data.c
 # this should just be used for testing
 $(TEXT_MAIN):
 	@echo "[GEN]	$@"
-	@$(PYTHON) $(TEXT_DECODER) > $@
+	@$(TEXT_DECODER) > $@
 
 $(MSG_LIST) $(TEXT_HEADER): $(TEXT_SRC) $(TEXT_DEFS)
 	@echo "[GEN]	$@"
-	@$(PYTHON) $(TEXT_PROCESS) $(TEXT_MAIN) $(TEXT_DEFS) $(MSG_LIST) $(TEXT_HEADER) cp932
+	@$(TEXT_PROCESS) $(TEXT_MAIN) $(TEXT_DEFS) $(MSG_LIST) $(TEXT_HEADER) cp932
 
 C_GENERATED += $(MSG_LIST)
 CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
+
+# ============
+# = Spritans =
+# ============
+
+PNG_FILES := $(shell find ./data -type f -name '*.png')
+
+BANIM_TOOLS := tools/banimtools
+LZSS_COMPRESS  := $(PYTHON) $(BANIM_TOOLS)/lzss_compress.py
+PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
+PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
+GBAGFX := tools/gbagfx/gbagfx$(EXE)
+
+%.1bpp: %.png
+	@echo "[GEN]	$@"
+	@ $(GBAGFX) $< $@
+
+%.4bpp: %.png
+	@echo "[GEN]	$@"
+	@ $(GBAGFX) $< $@
+
+%.8bpp: %.png
+	@echo "[GEN]	$@"
+	@ $(GBAGFX) $< $@
+
+%.gbapal: %.pal
+	@echo "[GEN]	$@"
+	@ $(GBAGFX) $< $@
+
+%.gbapal: %.png
+	@echo "[GEN]	$@"
+	@$(GBAGFX) $< $@
+
+%.lz: %
+	@echo "[LZ]	$@"
+	@$(GBAGFX) $< $@
+
+%.rl: %
+	@echo "[LZ]	$@"
+	@$(GBAGFX) $< $@
+
+# lol
+%.4bpp.lz: %.png
+	@echo "[LZ]	$@"
+	@$(GBAGFX) $< $*.4bpp
+	@$(GBAGFX) $*.4bpp $@
+	@rm *.4bpp -f
+
+CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz)
 
 # ===========
 # = Targets =
@@ -141,11 +193,18 @@ $(ELF): $(ALL_OBJS) $(LDS)
 
 CLEAN_FILES += $(ROM) $(ELF) $(MAP)
 
-# C dependency file
+# ============
+# = Wizardry =
+# ============
+ASM_DEP := $(PYTHON)  tools/asmtools/asmdep.py
+
 $(BUILD_DIR)/%.d: %.c
 	@$(CPP) $(CPPFLAGS) $< -o $@ -MM -MG -MT $@ -MT $(BUILD_DIR)/$*.o
 
-# C object
+$(BUILD_DIR)/%.d: %.s
+	@echo "$(BUILD_DIR)/$*.o: \\" > $@
+	@$(ASM_DEP) $(INC_FLAG) $< >> $@
+
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 	@echo "[CC]	$<"
 	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) $(CFLAG_OPT) -o $(BUILD_DIR)/$*.s
@@ -153,11 +212,9 @@ $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 	@$(AS) $(ASFLAGS) $(BUILD_DIR)/$*.s -o $@
 	@$(STRIP) -N .gcc2_compiled. $@
 
-# ASM dependency file (dummy, generated with the object)
 $(BUILD_DIR)/%.d: $(BUILD_DIR)/%.o
 	@touch $@
 
-# ASM object
 $(BUILD_DIR)/%.o: %.s
 	@echo "[AS]	$<"
 	@$(AS) $(ASFLAGS) $< -o $@ --MD $(BUILD_DIR)/$*.d
