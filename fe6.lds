@@ -824,7 +824,10 @@ SECTIONS
 
         . = ALIGN(4); FILL(0xFF);
 
-        . = 0x6A0000; data/data-banim.o(.data);
+        . = 0x6A0000;
+        . = ALIGN(4); data/data-banim.o(.data);
+        . = ALIGN(4); data/data-banims.o(.data);
+        . = ALIGN(4); data/data_7E989C.o(.data);
 
         . = ALIGN(4); FILL(0xFF);
 

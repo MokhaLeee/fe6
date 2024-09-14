@@ -74,7 +74,7 @@ def dump_one_part(rom_data, off):
 
 
 def main(args):
-    rom = "fe6.gba"
+    rom = "fe6-base.gba"
     elf = "fe6.elf"
 
     try:

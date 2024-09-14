@@ -2,7 +2,7 @@
 	.data
 
 	BEGIN = 0x6A0000
-	END   = 0x7FF0A4
+	END   = 0x6A1000
 
 .global banim_number
 banim_number:
