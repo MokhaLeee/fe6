@@ -69,7 +69,16 @@ tools/agbcc
 *.8bpp.h
 *.lz
 *.fk
-data/banim/*.bin
+
+# ==================
+# Banim generated
+# ==================
+*.oaml.elf
+*.oamr.elf
+*.mode.elf
+*.oaml.bin
+*.oamr.bin
+*.mode.bin
 
 # =========================
 # Dump Scripts Output
