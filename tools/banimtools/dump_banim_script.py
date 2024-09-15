@@ -32,8 +32,8 @@ def dump_banim_script(prefix, addr, oams_r):
 
     anim_frames = []
 
-    print(f".global BANIM_SCR_{prefix}")
-    print(f"BANIM_SCR_{prefix}:")
+    # print(f".global BANIM_SCR_{prefix}")
+    # print(f"BANIM_SCR_{prefix}:")
     print(f"SCR:")
 
     while True:
