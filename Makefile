@@ -140,6 +140,7 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 	@$(GBAGFX) $< $@
 
 CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz)
+CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
 
 # ==============
 # = Banim data =

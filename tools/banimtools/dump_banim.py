@@ -47,8 +47,8 @@ def dump_scr_frame(img_addr, pal_addr, out_png):
 def dump_modes(prefix, addr, scrs):
     offset = addr & 0x00FFFFFF
 
-    print(f".global BANIM_MODES_{prefix}")
-    print(f"BANIM_MODES_{prefix}:")
+    # print(f".global BANIM_MODES_{prefix}")
+    # print(f"BANIM_MODES_{prefix}:")
 
     with open(rom_def.ROM, "rb") as f:
         f.seek(offset)
@@ -163,6 +163,8 @@ def main(args):
 
         if symbol.name[0:9] == "BANIM_IMG":
             print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.name}.4bpp.lz\"")
+        # elif symbol.name[0:9] == "BANIM_PAL":
+        #    print(f"    .incbin \"data/banims/{symbol._abbr}/BANIM_IMG_{symbol._abbr}_0.gbapal.lz\"")
         elif symbol.name[0:10] == "BANIM_OAMR":
             print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.prefix}.oamr.bin.lz\"")
         elif symbol.name[0:10] == "BANIM_OAML":
@@ -183,6 +185,16 @@ def main(args):
             print(f"    .incbin \"fe6-base.gba\", 0x{cur:06X}, 0x{end:06X} - 0x{cur:06X}")
 
         print("")
+
+        # some extras
+        if symbol.ptr == 0x087C0FCC:
+            print("    @ ?")
+            print("    .incbin \"fe6-base.gba\", 0x7C18C4, 0x7C2064 - 0x7C18C4")
+            print("")
+        elif symbol.ptr == 0x087DF434:
+            print("    @ ?")
+            print("    .incbin \"fe6-base.gba\", 0x7DFC44, 0x7E0014 - 0x7DFC44")
+            print("")
 
 if __name__ == '__main__':
     main(sys.argv)
