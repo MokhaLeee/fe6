@@ -97,7 +97,7 @@ BANIM_IMG_banm_ax1_1: @ 0x086AC5B8
 
     .global BANIM_IMG_banm_ax1_3_1
 BANIM_IMG_banm_ax1_3_1: @ 0x086AD808
-    .incbin "data/banims/banm_ax1_3/BANIM_IMG_banm_ax1_3_1.4bpp.lz"
+    .incbin "data/banims/banm_ax1/BANIM_IMG_banm_ax1_3_1.4bpp.lz"
 
     .global BANIM_PAL_banm_ax1
 BANIM_PAL_banm_ax1: @ 0x086AE14C
@@ -225,11 +225,11 @@ BANIM_PAL_merm_sw1_2: @ 0x086BA114
 
     .global BANIM_OAML_merm_sw1_2
 BANIM_OAML_merm_sw1_2: @ 0x086BA184
-    .incbin "data/banims/merm_sw1_2/merm_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/merm_sw1/merm_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_merm_sw1_2
 BANIM_OAMR_merm_sw1_2: @ 0x086BA208
-    .incbin "data/banims/merm_sw1_2/merm_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/merm_sw1/merm_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_merm_sw1_2
 BANIM_SCR_merm_sw1_2: @ 0x086BA28C
@@ -237,7 +237,7 @@ BANIM_SCR_merm_sw1_2: @ 0x086BA28C
 
     .global BANIM_MODE_merm_sw1_2
 BANIM_MODE_merm_sw1_2: @ 0x086BA2E4
-    .incbin "data/banims/merm_sw1_2/merm_sw1_2.mode.bin"
+    .incbin "data/banims/merm_sw1/merm_sw1_2.mode.bin"
 
     .global BANIM_IMG_sokm_sp1_0
 BANIM_IMG_sokm_sp1_0: @ 0x086BA344
@@ -281,11 +281,11 @@ BANIM_PAL_sokm_sp1_2: @ 0x086C0004
 
     .global BANIM_OAML_sokm_sp1_2
 BANIM_OAML_sokm_sp1_2: @ 0x086C0070
-    .incbin "data/banims/sokm_sp1_2/sokm_sp1_2.oaml.bin.lz"
+    .incbin "data/banims/sokm_sp1/sokm_sp1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_sokm_sp1_2
 BANIM_OAMR_sokm_sp1_2: @ 0x086C0900
-    .incbin "data/banims/sokm_sp1_2/sokm_sp1_2.oamr.bin.lz"
+    .incbin "data/banims/sokm_sp1/sokm_sp1_2.oamr.bin.lz"
 
     .global BANIM_SCR_sokm_sp1_2
 BANIM_SCR_sokm_sp1_2: @ 0x086C1180
@@ -293,7 +293,7 @@ BANIM_SCR_sokm_sp1_2: @ 0x086C1180
 
     .global BANIM_MODE_sokm_sp1_2
 BANIM_MODE_sokm_sp1_2: @ 0x086C1450
-    .incbin "data/banims/sokm_sp1_2/sokm_sp1_2.mode.bin"
+    .incbin "data/banims/sokm_sp1/sokm_sp1_2.mode.bin"
 
     .global BANIM_PAL_sokm_sp1_3
 BANIM_PAL_sokm_sp1_3: @ 0x086C14B0
@@ -301,11 +301,11 @@ BANIM_PAL_sokm_sp1_3: @ 0x086C14B0
 
     .global BANIM_OAML_sokm_sp1_3
 BANIM_OAML_sokm_sp1_3: @ 0x086C151C
-    .incbin "data/banims/sokm_sp1_3/sokm_sp1_3.oaml.bin.lz"
+    .incbin "data/banims/sokm_sp1/sokm_sp1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_sokm_sp1_3
 BANIM_OAMR_sokm_sp1_3: @ 0x086C1600
-    .incbin "data/banims/sokm_sp1_3/sokm_sp1_3.oamr.bin.lz"
+    .incbin "data/banims/sokm_sp1/sokm_sp1_3.oamr.bin.lz"
 
     .global BANIM_SCR_sokm_sp1_3
 BANIM_SCR_sokm_sp1_3: @ 0x086C16E4
@@ -313,7 +313,7 @@ BANIM_SCR_sokm_sp1_3: @ 0x086C16E4
 
     .global BANIM_MODE_sokm_sp1_3
 BANIM_MODE_sokm_sp1_3: @ 0x086C1768
-    .incbin "data/banims/sokm_sp1_3/sokm_sp1_3.mode.bin"
+    .incbin "data/banims/sokm_sp1/sokm_sp1_3.mode.bin"
 
     .global BANIM_IMG_fakf_sp1_0
 BANIM_IMG_fakf_sp1_0: @ 0x086C17C8
@@ -581,7 +581,7 @@ BANIM_IMG_solm_sp1_1: @ 0x086E394C
 
     .global BANIM_IMG_solm_sp1_2_0
 BANIM_IMG_solm_sp1_2_0: @ 0x086E4B04
-    .incbin "data/banims/solm_sp1_2/BANIM_IMG_solm_sp1_2_0.4bpp.lz"
+    .incbin "data/banims/solm_sp1/BANIM_IMG_solm_sp1_2_0.4bpp.lz"
 
     .global BANIM_PAL_solm_sp1
 BANIM_PAL_solm_sp1: @ 0x086E5238
@@ -645,11 +645,11 @@ BANIM_PAL_lorm_sw1_2: @ 0x086E9D1C
 
     .global BANIM_OAML_lorm_sw1_2
 BANIM_OAML_lorm_sw1_2: @ 0x086E9D70
-    .incbin "data/banims/lorm_sw1_2/lorm_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/lorm_sw1/lorm_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_lorm_sw1_2
 BANIM_OAMR_lorm_sw1_2: @ 0x086E9E04
-    .incbin "data/banims/lorm_sw1_2/lorm_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/lorm_sw1/lorm_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_lorm_sw1_2
 BANIM_SCR_lorm_sw1_2: @ 0x086E9E9C
@@ -657,7 +657,7 @@ BANIM_SCR_lorm_sw1_2: @ 0x086E9E9C
 
     .global BANIM_MODE_lorm_sw1_2
 BANIM_MODE_lorm_sw1_2: @ 0x086E9F1C
-    .incbin "data/banims/lorm_sw1_2/lorm_sw1_2.mode.bin"
+    .incbin "data/banims/lorm_sw1/lorm_sw1_2.mode.bin"
 
     .global BANIM_IMG_bram_sw1_0
 BANIM_IMG_bram_sw1_0: @ 0x086E9F7C
@@ -885,11 +885,11 @@ BANIM_PAL_nomm_ar1_2: @ 0x087061C8
 
     .global BANIM_OAML_nomm_ar1_2
 BANIM_OAML_nomm_ar1_2: @ 0x08706238
-    .incbin "data/banims/nomm_ar1_2/nomm_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/nomm_ar1/nomm_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_nomm_ar1_2
 BANIM_OAMR_nomm_ar1_2: @ 0x0870631C
-    .incbin "data/banims/nomm_ar1_2/nomm_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/nomm_ar1/nomm_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_nomm_ar1_2
 BANIM_SCR_nomm_ar1_2: @ 0x08706400
@@ -897,7 +897,7 @@ BANIM_SCR_nomm_ar1_2: @ 0x08706400
 
     .global BANIM_MODE_nomm_ar1_2
 BANIM_MODE_nomm_ar1_2: @ 0x08706480
-    .incbin "data/banims/nomm_ar1_2/nomm_ar1_2.mode.bin"
+    .incbin "data/banims/nomm_ar1/nomm_ar1_2.mode.bin"
 
     .global BANIM_IMG_nomf_ar1_0
 BANIM_IMG_nomf_ar1_0: @ 0x087064E0
@@ -937,11 +937,11 @@ BANIM_PAL_nomf_ar1_2: @ 0x087097C0
 
     .global BANIM_OAML_nomf_ar1_2
 BANIM_OAML_nomf_ar1_2: @ 0x08709820
-    .incbin "data/banims/nomf_ar1_2/nomf_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/nomf_ar1/nomf_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_nomf_ar1_2
 BANIM_OAMR_nomf_ar1_2: @ 0x08709904
-    .incbin "data/banims/nomf_ar1_2/nomf_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/nomf_ar1/nomf_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_nomf_ar1_2
 BANIM_SCR_nomf_ar1_2: @ 0x087099E8
@@ -949,7 +949,7 @@ BANIM_SCR_nomf_ar1_2: @ 0x087099E8
 
     .global BANIM_MODE_nomf_ar1_2
 BANIM_MODE_nomf_ar1_2: @ 0x08709A68
-    .incbin "data/banims/nomf_ar1_2/nomf_ar1_2.mode.bin"
+    .incbin "data/banims/nomf_ar1/nomf_ar1_2.mode.bin"
 
     .global gUnk_08709AC8
 gUnk_08709AC8: @ 08709AC8
@@ -957,7 +957,7 @@ gUnk_08709AC8: @ 08709AC8
 
     .global BANIM_IMG_armm_sp1_2_0
 BANIM_IMG_armm_sp1_2_0: @ 0x08709E98
-    .incbin "data/banims/armm_sp1_2/BANIM_IMG_armm_sp1_2_0.4bpp.lz"
+    .incbin "data/banims/armm_sp1/BANIM_IMG_armm_sp1_2_0.4bpp.lz"
 
     .global BANIM_PAL_armm_sp1_2
 BANIM_PAL_armm_sp1_2: @ 0x0870AEE0
@@ -965,11 +965,11 @@ BANIM_PAL_armm_sp1_2: @ 0x0870AEE0
 
     .global BANIM_OAML_armm_sp1_2
 BANIM_OAML_armm_sp1_2: @ 0x0870AF44
-    .incbin "data/banims/armm_sp1_2/armm_sp1_2.oaml.bin.lz"
+    .incbin "data/banims/armm_sp1/armm_sp1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_armm_sp1_2
 BANIM_OAMR_armm_sp1_2: @ 0x0870AFD4
-    .incbin "data/banims/armm_sp1_2/armm_sp1_2.oamr.bin.lz"
+    .incbin "data/banims/armm_sp1/armm_sp1_2.oamr.bin.lz"
 
     .global BANIM_SCR_armm_sp1_2
 BANIM_SCR_armm_sp1_2: @ 0x0870B064
@@ -977,7 +977,7 @@ BANIM_SCR_armm_sp1_2: @ 0x0870B064
 
     .global BANIM_MODE_armm_sp1_2
 BANIM_MODE_armm_sp1_2: @ 0x0870B0E0
-    .incbin "data/banims/armm_sp1_2/armm_sp1_2.mode.bin"
+    .incbin "data/banims/armm_sp1/armm_sp1_2.mode.bin"
 
     .global BANIM_PAL_prif_mg1_2
 BANIM_PAL_prif_mg1_2: @ 0x0870B140
@@ -985,11 +985,11 @@ BANIM_PAL_prif_mg1_2: @ 0x0870B140
 
     .global BANIM_OAML_prif_mg1_2
 BANIM_OAML_prif_mg1_2: @ 0x0870B1A8
-    .incbin "data/banims/prif_mg1_2/prif_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/prif_mg1/prif_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_prif_mg1_2
 BANIM_OAMR_prif_mg1_2: @ 0x0870B22C
-    .incbin "data/banims/prif_mg1_2/prif_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/prif_mg1/prif_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_prif_mg1_2
 BANIM_SCR_prif_mg1_2: @ 0x0870B2B4
@@ -997,7 +997,7 @@ BANIM_SCR_prif_mg1_2: @ 0x0870B2B4
 
     .global BANIM_MODE_prif_mg1_2
 BANIM_MODE_prif_mg1_2: @ 0x0870B32C
-    .incbin "data/banims/prif_mg1_2/prif_mg1_2.mode.bin"
+    .incbin "data/banims/prif_mg1/prif_mg1_2.mode.bin"
 
     .global BANIM_PAL_prim_mg1_2
 BANIM_PAL_prim_mg1_2: @ 0x0870B384
@@ -1005,11 +1005,11 @@ BANIM_PAL_prim_mg1_2: @ 0x0870B384
 
     .global BANIM_OAML_prim_mg1_2
 BANIM_OAML_prim_mg1_2: @ 0x0870B3EC
-    .incbin "data/banims/prim_mg1_2/prim_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/prim_mg1/prim_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_prim_mg1_2
 BANIM_OAMR_prim_mg1_2: @ 0x0870B470
-    .incbin "data/banims/prim_mg1_2/prim_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/prim_mg1/prim_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_prim_mg1_2
 BANIM_SCR_prim_mg1_2: @ 0x0870B4F8
@@ -1017,7 +1017,7 @@ BANIM_SCR_prim_mg1_2: @ 0x0870B4F8
 
     .global BANIM_MODE_prim_mg1_2
 BANIM_MODE_prim_mg1_2: @ 0x0870B570
-    .incbin "data/banims/prim_mg1_2/prim_mg1_2.mode.bin"
+    .incbin "data/banims/prim_mg1/prim_mg1_2.mode.bin"
 
     .global BANIM_IMG_figm_ax1_0
 BANIM_IMG_figm_ax1_0: @ 0x0870B5C8
@@ -1061,11 +1061,11 @@ BANIM_PAL_figm_ax1_2: @ 0x087110D8
 
     .global BANIM_OAML_figm_ax1_2
 BANIM_OAML_figm_ax1_2: @ 0x08711124
-    .incbin "data/banims/figm_ax1_2/figm_ax1_2.oaml.bin.lz"
+    .incbin "data/banims/figm_ax1/figm_ax1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_figm_ax1_2
 BANIM_OAMR_figm_ax1_2: @ 0x087111F0
-    .incbin "data/banims/figm_ax1_2/figm_ax1_2.oamr.bin.lz"
+    .incbin "data/banims/figm_ax1/figm_ax1_2.oamr.bin.lz"
 
     .global BANIM_SCR_figm_ax1_2
 BANIM_SCR_figm_ax1_2: @ 0x087112B4
@@ -1073,7 +1073,7 @@ BANIM_SCR_figm_ax1_2: @ 0x087112B4
 
     .global BANIM_MODE_figm_ax1_2
 BANIM_MODE_figm_ax1_2: @ 0x08711308
-    .incbin "data/banims/figm_ax1_2/figm_ax1_2.mode.bin"
+    .incbin "data/banims/figm_ax1/figm_ax1_2.mode.bin"
 
     .global BANIM_IMG_bism_mg1_0
 BANIM_IMG_bism_mg1_0: @ 0x08711368
@@ -1109,11 +1109,11 @@ BANIM_PAL_bism_mg1_2: @ 0x087139AC
 
     .global BANIM_OAML_bism_mg1_2
 BANIM_OAML_bism_mg1_2: @ 0x08713A1C
-    .incbin "data/banims/bism_mg1_2/bism_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/bism_mg1/bism_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_bism_mg1_2
 BANIM_OAMR_bism_mg1_2: @ 0x08713B40
-    .incbin "data/banims/bism_mg1_2/bism_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/bism_mg1/bism_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_bism_mg1_2
 BANIM_SCR_bism_mg1_2: @ 0x08713C5C
@@ -1121,7 +1121,7 @@ BANIM_SCR_bism_mg1_2: @ 0x08713C5C
 
     .global BANIM_MODE_bism_mg1_2
 BANIM_MODE_bism_mg1_2: @ 0x08713D0C
-    .incbin "data/banims/bism_mg1_2/bism_mg1_2.mode.bin"
+    .incbin "data/banims/bism_mg1/bism_mg1_2.mode.bin"
 
     .global BANIM_IMG_bisf_mg1_0
 BANIM_IMG_bisf_mg1_0: @ 0x08713D6C
@@ -1157,11 +1157,11 @@ BANIM_PAL_bisf_mg1_2: @ 0x087162C0
 
     .global BANIM_OAML_bisf_mg1_2
 BANIM_OAML_bisf_mg1_2: @ 0x08716330
-    .incbin "data/banims/bisf_mg1_2/bisf_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/bisf_mg1/bisf_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_bisf_mg1_2
 BANIM_OAMR_bisf_mg1_2: @ 0x08716454
-    .incbin "data/banims/bisf_mg1_2/bisf_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/bisf_mg1/bisf_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_bisf_mg1_2
 BANIM_SCR_bisf_mg1_2: @ 0x08716570
@@ -1169,7 +1169,7 @@ BANIM_SCR_bisf_mg1_2: @ 0x08716570
 
     .global BANIM_MODE_bisf_mg1_2
 BANIM_MODE_bisf_mg1_2: @ 0x08716620
-    .incbin "data/banims/bisf_mg1_2/bisf_mg1_2.mode.bin"
+    .incbin "data/banims/bisf_mg1/bisf_mg1_2.mode.bin"
 
     .global BANIM_IMG_mamm_no1_0
 BANIM_IMG_mamm_no1_0: @ 0x08716680
@@ -1229,11 +1229,11 @@ BANIM_PAL_banm_ax1_2: @ 0x08718EF8
 
     .global BANIM_OAML_banm_ax1_2
 BANIM_OAML_banm_ax1_2: @ 0x08718F44
-    .incbin "data/banims/banm_ax1_2/banm_ax1_2.oaml.bin.lz"
+    .incbin "data/banims/banm_ax1/banm_ax1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_banm_ax1_2
 BANIM_OAMR_banm_ax1_2: @ 0x08718FCC
-    .incbin "data/banims/banm_ax1_2/banm_ax1_2.oamr.bin.lz"
+    .incbin "data/banims/banm_ax1/banm_ax1_2.oamr.bin.lz"
 
     .global BANIM_SCR_banm_ax1_2
 BANIM_SCR_banm_ax1_2: @ 0x08719050
@@ -1241,11 +1241,11 @@ BANIM_SCR_banm_ax1_2: @ 0x08719050
 
     .global BANIM_MODE_banm_ax1_2
 BANIM_MODE_banm_ax1_2: @ 0x087190D4
-    .incbin "data/banims/banm_ax1_2/banm_ax1_2.mode.bin"
+    .incbin "data/banims/banm_ax1/banm_ax1_2.mode.bin"
 
     .global BANIM_IMG_berm_ax1_2_0
 BANIM_IMG_berm_ax1_2_0: @ 0x08719134
-    .incbin "data/banims/berm_ax1_2/BANIM_IMG_berm_ax1_2_0.4bpp.lz"
+    .incbin "data/banims/berm_ax1/BANIM_IMG_berm_ax1_2_0.4bpp.lz"
 
     .global BANIM_PAL_berm_ax1_2
 BANIM_PAL_berm_ax1_2: @ 0x08719DC8
@@ -1253,11 +1253,11 @@ BANIM_PAL_berm_ax1_2: @ 0x08719DC8
 
     .global BANIM_OAML_berm_ax1_2
 BANIM_OAML_berm_ax1_2: @ 0x08719E14
-    .incbin "data/banims/berm_ax1_2/berm_ax1_2.oaml.bin.lz"
+    .incbin "data/banims/berm_ax1/berm_ax1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_berm_ax1_2
 BANIM_OAMR_berm_ax1_2: @ 0x08719EB8
-    .incbin "data/banims/berm_ax1_2/berm_ax1_2.oamr.bin.lz"
+    .incbin "data/banims/berm_ax1/berm_ax1_2.oamr.bin.lz"
 
     .global BANIM_SCR_berm_ax1_2
 BANIM_SCR_berm_ax1_2: @ 0x08719F5C
@@ -1265,7 +1265,7 @@ BANIM_SCR_berm_ax1_2: @ 0x08719F5C
 
     .global BANIM_MODE_berm_ax1_2
 BANIM_MODE_berm_ax1_2: @ 0x08719FDC
-    .incbin "data/banims/berm_ax1_2/berm_ax1_2.mode.bin"
+    .incbin "data/banims/berm_ax1/berm_ax1_2.mode.bin"
 
     .global BANIM_IMG_sham_mg1_0
 BANIM_IMG_sham_mg1_0: @ 0x0871A03C
@@ -1397,11 +1397,11 @@ BANIM_PAL_warm_ax1_2: @ 0x0872CE54
 
     .global BANIM_OAML_warm_ax1_2
 BANIM_OAML_warm_ax1_2: @ 0x0872CEA0
-    .incbin "data/banims/warm_ax1_2/warm_ax1_2.oaml.bin.lz"
+    .incbin "data/banims/warm_ax1/warm_ax1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_warm_ax1_2
 BANIM_OAMR_warm_ax1_2: @ 0x0872CF38
-    .incbin "data/banims/warm_ax1_2/warm_ax1_2.oamr.bin.lz"
+    .incbin "data/banims/warm_ax1/warm_ax1_2.oamr.bin.lz"
 
     .global BANIM_SCR_warm_ax1_2
 BANIM_SCR_warm_ax1_2: @ 0x0872CFCC
@@ -1409,7 +1409,7 @@ BANIM_SCR_warm_ax1_2: @ 0x0872CFCC
 
     .global BANIM_MODE_warm_ax1_2
 BANIM_MODE_warm_ax1_2: @ 0x0872D044
-    .incbin "data/banims/warm_ax1_2/warm_ax1_2.mode.bin"
+    .incbin "data/banims/warm_ax1/warm_ax1_2.mode.bin"
 
     .global BANIM_PAL_pirm_ax1_2
 BANIM_PAL_pirm_ax1_2: @ 0x0872D09C
@@ -1417,11 +1417,11 @@ BANIM_PAL_pirm_ax1_2: @ 0x0872D09C
 
     .global BANIM_OAML_pirm_ax1_2
 BANIM_OAML_pirm_ax1_2: @ 0x0872D0F0
-    .incbin "data/banims/pirm_ax1_2/pirm_ax1_2.oaml.bin.lz"
+    .incbin "data/banims/pirm_ax1/pirm_ax1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_pirm_ax1_2
 BANIM_OAMR_pirm_ax1_2: @ 0x0872D1A0
-    .incbin "data/banims/pirm_ax1_2/pirm_ax1_2.oamr.bin.lz"
+    .incbin "data/banims/pirm_ax1/pirm_ax1_2.oamr.bin.lz"
 
     .global BANIM_SCR_pirm_ax1_2
 BANIM_SCR_pirm_ax1_2: @ 0x0872D250
@@ -1429,7 +1429,7 @@ BANIM_SCR_pirm_ax1_2: @ 0x0872D250
 
     .global BANIM_MODE_pirm_ax1_2
 BANIM_MODE_pirm_ax1_2: @ 0x0872D2D4
-    .incbin "data/banims/pirm_ax1_2/pirm_ax1_2.mode.bin"
+    .incbin "data/banims/pirm_ax1/pirm_ax1_2.mode.bin"
 
     .global BANIM_IMG_trof_ro1_0
 BANIM_IMG_trof_ro1_0: @ 0x0872D334
@@ -1469,11 +1469,11 @@ BANIM_PAL_trof_ro1_2: @ 0x0872FF90
 
     .global BANIM_OAML_trof_ro1_2
 BANIM_OAML_trof_ro1_2: @ 0x0872FFF0
-    .incbin "data/banims/trof_ro1_2/trof_ro1_2.oaml.bin.lz"
+    .incbin "data/banims/trof_ro1/trof_ro1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_trof_ro1_2
 BANIM_OAMR_trof_ro1_2: @ 0x087300B0
-    .incbin "data/banims/trof_ro1_2/trof_ro1_2.oamr.bin.lz"
+    .incbin "data/banims/trof_ro1/trof_ro1_2.oamr.bin.lz"
 
     .global BANIM_SCR_trof_ro1_2
 BANIM_SCR_trof_ro1_2: @ 0x0873016C
@@ -1481,7 +1481,7 @@ BANIM_SCR_trof_ro1_2: @ 0x0873016C
 
     .global BANIM_MODE_trof_ro1_2
 BANIM_MODE_trof_ro1_2: @ 0x087301EC
-    .incbin "data/banims/trof_ro1_2/trof_ro1_2.mode.bin"
+    .incbin "data/banims/trof_ro1/trof_ro1_2.mode.bin"
 
     .global BANIM_IMG_valf_mg1_0
 BANIM_IMG_valf_mg1_0: @ 0x0873024C
@@ -1489,7 +1489,7 @@ BANIM_IMG_valf_mg1_0: @ 0x0873024C
 
     .global BANIM_IMG_valf_mg1_2_1
 BANIM_IMG_valf_mg1_2_1: @ 0x08730F64
-    .incbin "data/banims/valf_mg1_2/BANIM_IMG_valf_mg1_2_1.4bpp.lz"
+    .incbin "data/banims/valf_mg1/BANIM_IMG_valf_mg1_2_1.4bpp.lz"
 
     .global BANIM_IMG_valf_mg1_1
 BANIM_IMG_valf_mg1_1: @ 0x08731D44
@@ -1525,11 +1525,11 @@ BANIM_PAL_valf_mg1_2: @ 0x087342F0
 
     .global BANIM_OAML_valf_mg1_2
 BANIM_OAML_valf_mg1_2: @ 0x0873435C
-    .incbin "data/banims/valf_mg1_2/valf_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/valf_mg1/valf_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_valf_mg1_2
 BANIM_OAMR_valf_mg1_2: @ 0x087345DC
-    .incbin "data/banims/valf_mg1_2/valf_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/valf_mg1/valf_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_valf_mg1_2
 BANIM_SCR_valf_mg1_2: @ 0x08734858
@@ -1537,7 +1537,7 @@ BANIM_SCR_valf_mg1_2: @ 0x08734858
 
     .global BANIM_MODE_valf_mg1_2
 BANIM_MODE_valf_mg1_2: @ 0x087349C4
-    .incbin "data/banims/valf_mg1_2/valf_mg1_2.mode.bin"
+    .incbin "data/banims/valf_mg1/valf_mg1_2.mode.bin"
 
     .global BANIM_IMG_sagm_mg1_0
 BANIM_IMG_sagm_mg1_0: @ 0x08734A24
@@ -1581,11 +1581,11 @@ BANIM_PAL_bram_sw1_2: @ 0x08738C84
 
     .global BANIM_OAML_bram_sw1_2
 BANIM_OAML_bram_sw1_2: @ 0x08738CD0
-    .incbin "data/banims/bram_sw1_2/bram_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/bram_sw1/bram_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_bram_sw1_2
 BANIM_OAMR_bram_sw1_2: @ 0x08738D94
-    .incbin "data/banims/bram_sw1_2/bram_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/bram_sw1/bram_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_bram_sw1_2
 BANIM_SCR_bram_sw1_2: @ 0x08738E58
@@ -1593,7 +1593,7 @@ BANIM_SCR_bram_sw1_2: @ 0x08738E58
 
     .global BANIM_MODE_bram_sw1_2
 BANIM_MODE_bram_sw1_2: @ 0x08738EDC
-    .incbin "data/banims/bram_sw1_2/bram_sw1_2.mode.bin"
+    .incbin "data/banims/bram_sw1/bram_sw1_2.mode.bin"
 
     .global BANIM_IMG_pekf_sp1_0
 BANIM_IMG_pekf_sp1_0: @ 0x08738F3C
@@ -1653,11 +1653,11 @@ BANIM_PAL_pekf_sp1_2: @ 0x087421D0
 
     .global BANIM_OAML_pekf_sp1_2
 BANIM_OAML_pekf_sp1_2: @ 0x08742234
-    .incbin "data/banims/pekf_sp1_2/pekf_sp1_2.oaml.bin.lz"
+    .incbin "data/banims/pekf_sp1/pekf_sp1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_pekf_sp1_2
 BANIM_OAMR_pekf_sp1_2: @ 0x08742410
-    .incbin "data/banims/pekf_sp1_2/pekf_sp1_2.oamr.bin.lz"
+    .incbin "data/banims/pekf_sp1/pekf_sp1_2.oamr.bin.lz"
 
     .global BANIM_SCR_pekf_sp1_2
 BANIM_SCR_pekf_sp1_2: @ 0x087425EC
@@ -1665,7 +1665,7 @@ BANIM_SCR_pekf_sp1_2: @ 0x087425EC
 
     .global BANIM_MODE_pekf_sp1_2
 BANIM_MODE_pekf_sp1_2: @ 0x08742670
-    .incbin "data/banims/pekf_sp1_2/pekf_sp1_2.mode.bin"
+    .incbin "data/banims/pekf_sp1/pekf_sp1_2.mode.bin"
 
     .global BANIM_IMG_thim_sw1_0
 BANIM_IMG_thim_sw1_0: @ 0x087426D0
@@ -1705,11 +1705,11 @@ BANIM_PAL_thim_sw1_2: @ 0x087454CC
 
     .global BANIM_OAML_thim_sw1_2
 BANIM_OAML_thim_sw1_2: @ 0x0874552C
-    .incbin "data/banims/thim_sw1_2/thim_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/thim_sw1/thim_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_thim_sw1_2
 BANIM_OAMR_thim_sw1_2: @ 0x087455F0
-    .incbin "data/banims/thim_sw1_2/thim_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/thim_sw1/thim_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_thim_sw1_2
 BANIM_SCR_thim_sw1_2: @ 0x087456AC
@@ -1717,7 +1717,7 @@ BANIM_SCR_thim_sw1_2: @ 0x087456AC
 
     .global BANIM_MODE_thim_sw1_2
 BANIM_MODE_thim_sw1_2: @ 0x0874573C
-    .incbin "data/banims/thim_sw1_2/thim_sw1_2.mode.bin"
+    .incbin "data/banims/thim_sw1/thim_sw1_2.mode.bin"
 
     .global BANIM_IMG_thif_sw1_0
 BANIM_IMG_thif_sw1_0: @ 0x0874579C
@@ -1757,11 +1757,11 @@ BANIM_PAL_thif_sw1_2: @ 0x08748624
 
     .global BANIM_OAML_thif_sw1_2
 BANIM_OAML_thif_sw1_2: @ 0x08748684
-    .incbin "data/banims/thif_sw1_2/thif_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/thif_sw1/thif_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_thif_sw1_2
 BANIM_OAMR_thif_sw1_2: @ 0x08748748
-    .incbin "data/banims/thif_sw1_2/thif_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/thif_sw1/thif_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_thif_sw1_2
 BANIM_SCR_thif_sw1_2: @ 0x08748804
@@ -1769,7 +1769,7 @@ BANIM_SCR_thif_sw1_2: @ 0x08748804
 
     .global BANIM_MODE_thif_sw1_2
 BANIM_MODE_thif_sw1_2: @ 0x08748894
-    .incbin "data/banims/thif_sw1_2/thif_sw1_2.mode.bin"
+    .incbin "data/banims/thif_sw1/thif_sw1_2.mode.bin"
 
     .global BANIM_IMG_braf_sw1_0
 BANIM_IMG_braf_sw1_0: @ 0x087488F4
@@ -1813,11 +1813,11 @@ BANIM_PAL_braf_sw1_2: @ 0x087501D0
 
     .global BANIM_OAML_braf_sw1_2
 BANIM_OAML_braf_sw1_2: @ 0x0875021C
-    .incbin "data/banims/braf_sw1_2/braf_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/braf_sw1/braf_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_braf_sw1_2
 BANIM_OAMR_braf_sw1_2: @ 0x087502E0
-    .incbin "data/banims/braf_sw1_2/braf_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/braf_sw1/braf_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_braf_sw1_2
 BANIM_SCR_braf_sw1_2: @ 0x087503A4
@@ -1825,7 +1825,7 @@ BANIM_SCR_braf_sw1_2: @ 0x087503A4
 
     .global BANIM_MODE_braf_sw1_2
 BANIM_MODE_braf_sw1_2: @ 0x08750428
-    .incbin "data/banims/braf_sw1_2/braf_sw1_2.mode.bin"
+    .incbin "data/banims/braf_sw1/braf_sw1_2.mode.bin"
 
     .global BANIM_IMG_myrm_sw1_0
 BANIM_IMG_myrm_sw1_0: @ 0x08750488
@@ -1869,11 +1869,11 @@ BANIM_PAL_myrm_sw1_2: @ 0x08755E68
 
     .global BANIM_OAML_myrm_sw1_2
 BANIM_OAML_myrm_sw1_2: @ 0x08755ED0
-    .incbin "data/banims/myrm_sw1_2/myrm_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/myrm_sw1/myrm_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_myrm_sw1_2
 BANIM_OAMR_myrm_sw1_2: @ 0x08755F78
-    .incbin "data/banims/myrm_sw1_2/myrm_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/myrm_sw1/myrm_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_myrm_sw1_2
 BANIM_SCR_myrm_sw1_2: @ 0x08756024
@@ -1881,11 +1881,11 @@ BANIM_SCR_myrm_sw1_2: @ 0x08756024
 
     .global BANIM_MODE_myrm_sw1_2
 BANIM_MODE_myrm_sw1_2: @ 0x087560AC
-    .incbin "data/banims/myrm_sw1_2/myrm_sw1_2.mode.bin"
+    .incbin "data/banims/myrm_sw1/myrm_sw1_2.mode.bin"
 
     .global BANIM_IMG_pakm_sw1_5_4
 BANIM_IMG_pakm_sw1_5_4: @ 0x0875610C
-    .incbin "data/banims/pakm_sw1_5/BANIM_IMG_pakm_sw1_5_4.4bpp.lz"
+    .incbin "data/banims/pakm_sw1/BANIM_IMG_pakm_sw1_5_4.4bpp.lz"
 
     .global BANIM_PAL_pakm_sw1_2
 BANIM_PAL_pakm_sw1_2: @ 0x087564DC
@@ -1893,11 +1893,11 @@ BANIM_PAL_pakm_sw1_2: @ 0x087564DC
 
     .global BANIM_OAML_pakm_sw1_2
 BANIM_OAML_pakm_sw1_2: @ 0x08756550
-    .incbin "data/banims/pakm_sw1_2/pakm_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_pakm_sw1_2
 BANIM_OAMR_pakm_sw1_2: @ 0x08757398
-    .incbin "data/banims/pakm_sw1_2/pakm_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_pakm_sw1_2
 BANIM_SCR_pakm_sw1_2: @ 0x087581A4
@@ -1905,7 +1905,7 @@ BANIM_SCR_pakm_sw1_2: @ 0x087581A4
 
     .global BANIM_MODE_pakm_sw1_2
 BANIM_MODE_pakm_sw1_2: @ 0x0875861C
-    .incbin "data/banims/pakm_sw1_2/pakm_sw1_2.mode.bin"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_2.mode.bin"
 
     .global BANIM_PAL_pakm_sw1_3
 BANIM_PAL_pakm_sw1_3: @ 0x0875867C
@@ -1913,11 +1913,11 @@ BANIM_PAL_pakm_sw1_3: @ 0x0875867C
 
     .global BANIM_OAML_pakm_sw1_3
 BANIM_OAML_pakm_sw1_3: @ 0x087586F0
-    .incbin "data/banims/pakm_sw1_3/pakm_sw1_3.oaml.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_pakm_sw1_3
 BANIM_OAMR_pakm_sw1_3: @ 0x08759424
-    .incbin "data/banims/pakm_sw1_3/pakm_sw1_3.oamr.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_3.oamr.bin.lz"
 
     .global BANIM_SCR_pakm_sw1_3
 BANIM_SCR_pakm_sw1_3: @ 0x0875A13C
@@ -1925,7 +1925,7 @@ BANIM_SCR_pakm_sw1_3: @ 0x0875A13C
 
     .global BANIM_MODE_pakm_sw1_3
 BANIM_MODE_pakm_sw1_3: @ 0x0875A598
-    .incbin "data/banims/pakm_sw1_3/pakm_sw1_3.mode.bin"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_3.mode.bin"
 
     .global BANIM_PAL_pakm_sw1_4
 BANIM_PAL_pakm_sw1_4: @ 0x0875A5F8
@@ -1933,11 +1933,11 @@ BANIM_PAL_pakm_sw1_4: @ 0x0875A5F8
 
     .global BANIM_OAML_pakm_sw1_4
 BANIM_OAML_pakm_sw1_4: @ 0x0875A66C
-    .incbin "data/banims/pakm_sw1_4/pakm_sw1_4.oaml.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_4.oaml.bin.lz"
 
     .global BANIM_OAMR_pakm_sw1_4
 BANIM_OAMR_pakm_sw1_4: @ 0x0875A744
-    .incbin "data/banims/pakm_sw1_4/pakm_sw1_4.oamr.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_4.oamr.bin.lz"
 
     .global BANIM_SCR_pakm_sw1_4
 BANIM_SCR_pakm_sw1_4: @ 0x0875A818
@@ -1945,7 +1945,7 @@ BANIM_SCR_pakm_sw1_4: @ 0x0875A818
 
     .global BANIM_MODE_pakm_sw1_4
 BANIM_MODE_pakm_sw1_4: @ 0x0875A89C
-    .incbin "data/banims/pakm_sw1_4/pakm_sw1_4.mode.bin"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_4.mode.bin"
 
     .global BANIM_PAL_arcm_ar1_2
 BANIM_PAL_arcm_ar1_2: @ 0x0875A8FC
@@ -1953,11 +1953,11 @@ BANIM_PAL_arcm_ar1_2: @ 0x0875A8FC
 
     .global BANIM_OAML_arcm_ar1_2
 BANIM_OAML_arcm_ar1_2: @ 0x0875A964
-    .incbin "data/banims/arcm_ar1_2/arcm_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/arcm_ar1/arcm_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_arcm_ar1_2
 BANIM_OAMR_arcm_ar1_2: @ 0x0875AA30
-    .incbin "data/banims/arcm_ar1_2/arcm_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/arcm_ar1/arcm_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_arcm_ar1_2
 BANIM_SCR_arcm_ar1_2: @ 0x0875AAF8
@@ -1965,7 +1965,7 @@ BANIM_SCR_arcm_ar1_2: @ 0x0875AAF8
 
     .global BANIM_MODE_arcm_ar1_2
 BANIM_MODE_arcm_ar1_2: @ 0x0875AB50
-    .incbin "data/banims/arcm_ar1_2/arcm_ar1_2.mode.bin"
+    .incbin "data/banims/arcm_ar1/arcm_ar1_2.mode.bin"
 
     .global BANIM_PAL_arcf_ar1_2
 BANIM_PAL_arcf_ar1_2: @ 0x0875ABB0
@@ -1973,11 +1973,11 @@ BANIM_PAL_arcf_ar1_2: @ 0x0875ABB0
 
     .global BANIM_OAML_arcf_ar1_2
 BANIM_OAML_arcf_ar1_2: @ 0x0875AC18
-    .incbin "data/banims/arcf_ar1_2/arcf_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/arcf_ar1/arcf_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_arcf_ar1_2
 BANIM_OAMR_arcf_ar1_2: @ 0x0875ACE4
-    .incbin "data/banims/arcf_ar1_2/arcf_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/arcf_ar1/arcf_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_arcf_ar1_2
 BANIM_SCR_arcf_ar1_2: @ 0x0875ADAC
@@ -1985,7 +1985,7 @@ BANIM_SCR_arcf_ar1_2: @ 0x0875ADAC
 
     .global BANIM_MODE_arcf_ar1_2
 BANIM_MODE_arcf_ar1_2: @ 0x0875AE04
-    .incbin "data/banims/arcf_ar1_2/arcf_ar1_2.mode.bin"
+    .incbin "data/banims/arcf_ar1/arcf_ar1_2.mode.bin"
 
     .global BANIM_PAL_solm_sp1_2
 BANIM_PAL_solm_sp1_2: @ 0x0875AE64
@@ -1993,11 +1993,11 @@ BANIM_PAL_solm_sp1_2: @ 0x0875AE64
 
     .global BANIM_OAML_solm_sp1_2
 BANIM_OAML_solm_sp1_2: @ 0x0875AEB8
-    .incbin "data/banims/solm_sp1_2/solm_sp1_2.oaml.bin.lz"
+    .incbin "data/banims/solm_sp1/solm_sp1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_solm_sp1_2
 BANIM_OAMR_solm_sp1_2: @ 0x0875AF7C
-    .incbin "data/banims/solm_sp1_2/solm_sp1_2.oamr.bin.lz"
+    .incbin "data/banims/solm_sp1/solm_sp1_2.oamr.bin.lz"
 
     .global BANIM_SCR_solm_sp1_2
 BANIM_SCR_solm_sp1_2: @ 0x0875B03C
@@ -2005,7 +2005,7 @@ BANIM_SCR_solm_sp1_2: @ 0x0875B03C
 
     .global BANIM_MODE_solm_sp1_2
 BANIM_MODE_solm_sp1_2: @ 0x0875B0BC
-    .incbin "data/banims/solm_sp1_2/solm_sp1_2.mode.bin"
+    .incbin "data/banims/solm_sp1/solm_sp1_2.mode.bin"
 
     .global BANIM_IMG_warm_ar1_0
 BANIM_IMG_warm_ar1_0: @ 0x0875B11C
@@ -2085,11 +2085,11 @@ BANIM_PAL_myrf_sw1_2: @ 0x087645CC
 
     .global BANIM_OAML_myrf_sw1_2
 BANIM_OAML_myrf_sw1_2: @ 0x08764634
-    .incbin "data/banims/myrf_sw1_2/myrf_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/myrf_sw1/myrf_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_myrf_sw1_2
 BANIM_OAMR_myrf_sw1_2: @ 0x087646DC
-    .incbin "data/banims/myrf_sw1_2/myrf_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/myrf_sw1/myrf_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_myrf_sw1_2
 BANIM_SCR_myrf_sw1_2: @ 0x08764788
@@ -2097,7 +2097,7 @@ BANIM_SCR_myrf_sw1_2: @ 0x08764788
 
     .global BANIM_MODE_myrf_sw1_2
 BANIM_MODE_myrf_sw1_2: @ 0x08764810
-    .incbin "data/banims/myrf_sw1_2/myrf_sw1_2.mode.bin"
+    .incbin "data/banims/myrf_sw1/myrf_sw1_2.mode.bin"
 
     .global BANIM_PAL_bram_sw1_3
 BANIM_PAL_bram_sw1_3: @ 0x08764870
@@ -2105,11 +2105,11 @@ BANIM_PAL_bram_sw1_3: @ 0x08764870
 
     .global BANIM_OAML_bram_sw1_3
 BANIM_OAML_bram_sw1_3: @ 0x087648BC
-    .incbin "data/banims/bram_sw1_3/bram_sw1_3.oaml.bin.lz"
+    .incbin "data/banims/bram_sw1/bram_sw1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_bram_sw1_3
 BANIM_OAMR_bram_sw1_3: @ 0x08765FCC
-    .incbin "data/banims/bram_sw1_3/bram_sw1_3.oamr.bin.lz"
+    .incbin "data/banims/bram_sw1/bram_sw1_3.oamr.bin.lz"
 
     .global BANIM_SCR_bram_sw1_3
 BANIM_SCR_bram_sw1_3: @ 0x087676EC
@@ -2117,7 +2117,7 @@ BANIM_SCR_bram_sw1_3: @ 0x087676EC
 
     .global BANIM_MODE_bram_sw1_3
 BANIM_MODE_bram_sw1_3: @ 0x08767F68
-    .incbin "data/banims/bram_sw1_3/bram_sw1_3.mode.bin"
+    .incbin "data/banims/bram_sw1/bram_sw1_3.mode.bin"
 
     .global BANIM_PAL_braf_sw1_3
 BANIM_PAL_braf_sw1_3: @ 0x08767FC8
@@ -2125,11 +2125,11 @@ BANIM_PAL_braf_sw1_3: @ 0x08767FC8
 
     .global BANIM_OAML_braf_sw1_3
 BANIM_OAML_braf_sw1_3: @ 0x08768014
-    .incbin "data/banims/braf_sw1_3/braf_sw1_3.oaml.bin.lz"
+    .incbin "data/banims/braf_sw1/braf_sw1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_braf_sw1_3
 BANIM_OAMR_braf_sw1_3: @ 0x08769724
-    .incbin "data/banims/braf_sw1_3/braf_sw1_3.oamr.bin.lz"
+    .incbin "data/banims/braf_sw1/braf_sw1_3.oamr.bin.lz"
 
     .global BANIM_SCR_braf_sw1_3
 BANIM_SCR_braf_sw1_3: @ 0x0876AE44
@@ -2137,7 +2137,7 @@ BANIM_SCR_braf_sw1_3: @ 0x0876AE44
 
     .global BANIM_MODE_braf_sw1_3
 BANIM_MODE_braf_sw1_3: @ 0x0876B6C0
-    .incbin "data/banims/braf_sw1_3/braf_sw1_3.mode.bin"
+    .incbin "data/banims/braf_sw1/braf_sw1_3.mode.bin"
 
     .global BANIM_IMG_drkm_sp1_0
 BANIM_IMG_drkm_sp1_0: @ 0x0876B720
@@ -2189,11 +2189,11 @@ BANIM_PAL_drkm_sp1_2: @ 0x087735A4
 
     .global BANIM_OAML_drkm_sp1_2
 BANIM_OAML_drkm_sp1_2: @ 0x08773618
-    .incbin "data/banims/drkm_sp1_2/drkm_sp1_2.oaml.bin.lz"
+    .incbin "data/banims/drkm_sp1/drkm_sp1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_drkm_sp1_2
 BANIM_OAMR_drkm_sp1_2: @ 0x087737C8
-    .incbin "data/banims/drkm_sp1_2/drkm_sp1_2.oamr.bin.lz"
+    .incbin "data/banims/drkm_sp1/drkm_sp1_2.oamr.bin.lz"
 
     .global BANIM_SCR_drkm_sp1_2
 BANIM_SCR_drkm_sp1_2: @ 0x08773974
@@ -2201,7 +2201,7 @@ BANIM_SCR_drkm_sp1_2: @ 0x08773974
 
     .global BANIM_MODE_drkm_sp1_2
 BANIM_MODE_drkm_sp1_2: @ 0x08773A14
-    .incbin "data/banims/drkm_sp1_2/drkm_sp1_2.mode.bin"
+    .incbin "data/banims/drkm_sp1/drkm_sp1_2.mode.bin"
 
     .global BANIM_IMG_roym_sw1_0
 BANIM_IMG_roym_sw1_0: @ 0x08773A74
@@ -2393,11 +2393,11 @@ BANIM_PAL_notm_ar1_2: @ 0x0879093C
 
     .global BANIM_OAML_notm_ar1_2
 BANIM_OAML_notm_ar1_2: @ 0x087909BC
-    .incbin "data/banims/notm_ar1_2/notm_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/notm_ar1/notm_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_notm_ar1_2
 BANIM_OAMR_notm_ar1_2: @ 0x08790AC8
-    .incbin "data/banims/notm_ar1_2/notm_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/notm_ar1/notm_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_notm_ar1_2
 BANIM_SCR_notm_ar1_2: @ 0x08790BD0
@@ -2405,7 +2405,7 @@ BANIM_SCR_notm_ar1_2: @ 0x08790BD0
 
     .global BANIM_MODE_notm_ar1_2
 BANIM_MODE_notm_ar1_2: @ 0x08790C2C
-    .incbin "data/banims/notm_ar1_2/notm_ar1_2.mode.bin"
+    .incbin "data/banims/notm_ar1/notm_ar1_2.mode.bin"
 
     .global BANIM_PAL_notf_ar1_2
 BANIM_PAL_notf_ar1_2: @ 0x08790C8C
@@ -2413,11 +2413,11 @@ BANIM_PAL_notf_ar1_2: @ 0x08790C8C
 
     .global BANIM_OAML_notf_ar1_2
 BANIM_OAML_notf_ar1_2: @ 0x08790D0C
-    .incbin "data/banims/notf_ar1_2/notf_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/notf_ar1/notf_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_notf_ar1_2
 BANIM_OAMR_notf_ar1_2: @ 0x08790E20
-    .incbin "data/banims/notf_ar1_2/notf_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/notf_ar1/notf_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_notf_ar1_2
 BANIM_SCR_notf_ar1_2: @ 0x08790F2C
@@ -2425,7 +2425,7 @@ BANIM_SCR_notf_ar1_2: @ 0x08790F2C
 
     .global BANIM_MODE_notf_ar1_2
 BANIM_MODE_notf_ar1_2: @ 0x08790F88
-    .incbin "data/banims/notf_ar1_2/notf_ar1_2.mode.bin"
+    .incbin "data/banims/notf_ar1/notf_ar1_2.mode.bin"
 
     .global BANIM_IMG_fifd_mg1_0
 BANIM_IMG_fifd_mg1_0: @ 0x08790FE8
@@ -2493,11 +2493,11 @@ BANIM_PAL_swmm_sw1_2: @ 0x0879778C
 
     .global BANIM_OAML_swmm_sw1_2
 BANIM_OAML_swmm_sw1_2: @ 0x087977F0
-    .incbin "data/banims/swmm_sw1_2/swmm_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/swmm_sw1/swmm_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_swmm_sw1_2
 BANIM_OAMR_swmm_sw1_2: @ 0x08797840
-    .incbin "data/banims/swmm_sw1_2/swmm_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/swmm_sw1/swmm_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_swmm_sw1_2
 BANIM_SCR_swmm_sw1_2: @ 0x08797890
@@ -2505,7 +2505,7 @@ BANIM_SCR_swmm_sw1_2: @ 0x08797890
 
     .global BANIM_MODE_swmm_sw1_2
 BANIM_MODE_swmm_sw1_2: @ 0x087978F4
-    .incbin "data/banims/swmm_sw1_2/swmm_sw1_2.mode.bin"
+    .incbin "data/banims/swmm_sw1/swmm_sw1_2.mode.bin"
 
     .global BANIM_IMG_swmf_sw1_0
 BANIM_IMG_swmf_sw1_0: @ 0x08797954
@@ -2549,11 +2549,11 @@ BANIM_PAL_swmf_sw1_2: @ 0x0879D03C
 
     .global BANIM_OAML_swmf_sw1_2
 BANIM_OAML_swmf_sw1_2: @ 0x0879D0A0
-    .incbin "data/banims/swmf_sw1_2/swmf_sw1_2.oaml.bin.lz"
+    .incbin "data/banims/swmf_sw1/swmf_sw1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_swmf_sw1_2
 BANIM_OAMR_swmf_sw1_2: @ 0x0879D0F0
-    .incbin "data/banims/swmf_sw1_2/swmf_sw1_2.oamr.bin.lz"
+    .incbin "data/banims/swmf_sw1/swmf_sw1_2.oamr.bin.lz"
 
     .global BANIM_SCR_swmf_sw1_2
 BANIM_SCR_swmf_sw1_2: @ 0x0879D140
@@ -2561,7 +2561,7 @@ BANIM_SCR_swmf_sw1_2: @ 0x0879D140
 
     .global BANIM_MODE_swmf_sw1_2
 BANIM_MODE_swmf_sw1_2: @ 0x0879D1A4
-    .incbin "data/banims/swmf_sw1_2/swmf_sw1_2.mode.bin"
+    .incbin "data/banims/swmf_sw1/swmf_sw1_2.mode.bin"
 
     .global BANIM_PAL_drum_mg1_2
 BANIM_PAL_drum_mg1_2: @ 0x0879D204
@@ -2569,11 +2569,11 @@ BANIM_PAL_drum_mg1_2: @ 0x0879D204
 
     .global BANIM_OAML_drum_mg1_2
 BANIM_OAML_drum_mg1_2: @ 0x0879D250
-    .incbin "data/banims/drum_mg1_2/drum_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/drum_mg1/drum_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_drum_mg1_2
 BANIM_OAMR_drum_mg1_2: @ 0x0879D51C
-    .incbin "data/banims/drum_mg1_2/drum_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/drum_mg1/drum_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_drum_mg1_2
 BANIM_SCR_drum_mg1_2: @ 0x0879D7E0
@@ -2581,7 +2581,7 @@ BANIM_SCR_drum_mg1_2: @ 0x0879D7E0
 
     .global BANIM_MODE_drum_mg1_2
 BANIM_MODE_drum_mg1_2: @ 0x0879D974
-    .incbin "data/banims/drum_mg1_2/drum_mg1_2.mode.bin"
+    .incbin "data/banims/drum_mg1/drum_mg1_2.mode.bin"
 
     .global BANIM_IMG_godd_mg1_0
 BANIM_IMG_godd_mg1_0: @ 0x0879D9D4
@@ -2625,11 +2625,11 @@ BANIM_PAL_pirm_ax1_3: @ 0x087A2FAC
 
     .global BANIM_OAML_pirm_ax1_3
 BANIM_OAML_pirm_ax1_3: @ 0x087A3000
-    .incbin "data/banims/pirm_ax1_3/pirm_ax1_3.oaml.bin.lz"
+    .incbin "data/banims/pirm_ax1/pirm_ax1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_pirm_ax1_3
 BANIM_OAMR_pirm_ax1_3: @ 0x087A3288
-    .incbin "data/banims/pirm_ax1_3/pirm_ax1_3.oamr.bin.lz"
+    .incbin "data/banims/pirm_ax1/pirm_ax1_3.oamr.bin.lz"
 
     .global BANIM_SCR_pirm_ax1_3
 BANIM_SCR_pirm_ax1_3: @ 0x087A3510
@@ -2637,7 +2637,7 @@ BANIM_SCR_pirm_ax1_3: @ 0x087A3510
 
     .global BANIM_MODE_pirm_ax1_3
 BANIM_MODE_pirm_ax1_3: @ 0x087A3610
-    .incbin "data/banims/pirm_ax1_3/pirm_ax1_3.mode.bin"
+    .incbin "data/banims/pirm_ax1/pirm_ax1_3.mode.bin"
 
     .global BANIM_PAL_berm_ax1_3
 BANIM_PAL_berm_ax1_3: @ 0x087A3670
@@ -2645,11 +2645,11 @@ BANIM_PAL_berm_ax1_3: @ 0x087A3670
 
     .global BANIM_OAML_berm_ax1_3
 BANIM_OAML_berm_ax1_3: @ 0x087A36BC
-    .incbin "data/banims/berm_ax1_3/berm_ax1_3.oaml.bin.lz"
+    .incbin "data/banims/berm_ax1/berm_ax1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_berm_ax1_3
 BANIM_OAMR_berm_ax1_3: @ 0x087A38E8
-    .incbin "data/banims/berm_ax1_3/berm_ax1_3.oamr.bin.lz"
+    .incbin "data/banims/berm_ax1/berm_ax1_3.oamr.bin.lz"
 
     .global BANIM_SCR_berm_ax1_3
 BANIM_SCR_berm_ax1_3: @ 0x087A3B18
@@ -2657,7 +2657,7 @@ BANIM_SCR_berm_ax1_3: @ 0x087A3B18
 
     .global BANIM_MODE_berm_ax1_3
 BANIM_MODE_berm_ax1_3: @ 0x087A3C24
-    .incbin "data/banims/berm_ax1_3/berm_ax1_3.mode.bin"
+    .incbin "data/banims/berm_ax1/berm_ax1_3.mode.bin"
 
     .global BANIM_PAL_banm_ax1_3
 BANIM_PAL_banm_ax1_3: @ 0x087A3C84
@@ -2665,11 +2665,11 @@ BANIM_PAL_banm_ax1_3: @ 0x087A3C84
 
     .global BANIM_OAML_banm_ax1_3
 BANIM_OAML_banm_ax1_3: @ 0x087A3CD0
-    .incbin "data/banims/banm_ax1_3/banm_ax1_3.oaml.bin.lz"
+    .incbin "data/banims/banm_ax1/banm_ax1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_banm_ax1_3
 BANIM_OAMR_banm_ax1_3: @ 0x087A3EE8
-    .incbin "data/banims/banm_ax1_3/banm_ax1_3.oamr.bin.lz"
+    .incbin "data/banims/banm_ax1/banm_ax1_3.oamr.bin.lz"
 
     .global BANIM_SCR_banm_ax1_3
 BANIM_SCR_banm_ax1_3: @ 0x087A40FC
@@ -2677,7 +2677,7 @@ BANIM_SCR_banm_ax1_3: @ 0x087A40FC
 
     .global BANIM_MODE_banm_ax1_3
 BANIM_MODE_banm_ax1_3: @ 0x087A4218
-    .incbin "data/banims/banm_ax1_3/banm_ax1_3.mode.bin"
+    .incbin "data/banims/banm_ax1/banm_ax1_3.mode.bin"
 
     .global BANIM_PAL_figm_ax1_3
 BANIM_PAL_figm_ax1_3: @ 0x087A4278
@@ -2685,11 +2685,11 @@ BANIM_PAL_figm_ax1_3: @ 0x087A4278
 
     .global BANIM_OAML_figm_ax1_3
 BANIM_OAML_figm_ax1_3: @ 0x087A42C4
-    .incbin "data/banims/figm_ax1_3/figm_ax1_3.oaml.bin.lz"
+    .incbin "data/banims/figm_ax1/figm_ax1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_figm_ax1_3
 BANIM_OAMR_figm_ax1_3: @ 0x087A4590
-    .incbin "data/banims/figm_ax1_3/figm_ax1_3.oamr.bin.lz"
+    .incbin "data/banims/figm_ax1/figm_ax1_3.oamr.bin.lz"
 
     .global BANIM_SCR_figm_ax1_3
 BANIM_SCR_figm_ax1_3: @ 0x087A4860
@@ -2697,7 +2697,7 @@ BANIM_SCR_figm_ax1_3: @ 0x087A4860
 
     .global BANIM_MODE_figm_ax1_3
 BANIM_MODE_figm_ax1_3: @ 0x087A4988
-    .incbin "data/banims/figm_ax1_3/figm_ax1_3.mode.bin"
+    .incbin "data/banims/figm_ax1/figm_ax1_3.mode.bin"
 
     .global BANIM_PAL_bram_sw1_4
 BANIM_PAL_bram_sw1_4: @ 0x087A49E8
@@ -2705,11 +2705,11 @@ BANIM_PAL_bram_sw1_4: @ 0x087A49E8
 
     .global BANIM_OAML_bram_sw1_4
 BANIM_OAML_bram_sw1_4: @ 0x087A4A34
-    .incbin "data/banims/bram_sw1_4/bram_sw1_4.oaml.bin.lz"
+    .incbin "data/banims/bram_sw1/bram_sw1_4.oaml.bin.lz"
 
     .global BANIM_OAMR_bram_sw1_4
 BANIM_OAMR_bram_sw1_4: @ 0x087A4C94
-    .incbin "data/banims/bram_sw1_4/bram_sw1_4.oamr.bin.lz"
+    .incbin "data/banims/bram_sw1/bram_sw1_4.oamr.bin.lz"
 
     .global BANIM_SCR_bram_sw1_4
 BANIM_SCR_bram_sw1_4: @ 0x087A4EEC
@@ -2717,7 +2717,7 @@ BANIM_SCR_bram_sw1_4: @ 0x087A4EEC
 
     .global BANIM_MODE_bram_sw1_4
 BANIM_MODE_bram_sw1_4: @ 0x087A5070
-    .incbin "data/banims/bram_sw1_4/bram_sw1_4.mode.bin"
+    .incbin "data/banims/bram_sw1/bram_sw1_4.mode.bin"
 
     .global BANIM_PAL_braf_sw1_4
 BANIM_PAL_braf_sw1_4: @ 0x087A50D0
@@ -2725,11 +2725,11 @@ BANIM_PAL_braf_sw1_4: @ 0x087A50D0
 
     .global BANIM_OAML_braf_sw1_4
 BANIM_OAML_braf_sw1_4: @ 0x087A511C
-    .incbin "data/banims/braf_sw1_4/braf_sw1_4.oaml.bin.lz"
+    .incbin "data/banims/braf_sw1/braf_sw1_4.oaml.bin.lz"
 
     .global BANIM_OAMR_braf_sw1_4
 BANIM_OAMR_braf_sw1_4: @ 0x087A537C
-    .incbin "data/banims/braf_sw1_4/braf_sw1_4.oamr.bin.lz"
+    .incbin "data/banims/braf_sw1/braf_sw1_4.oamr.bin.lz"
 
     .global BANIM_SCR_braf_sw1_4
 BANIM_SCR_braf_sw1_4: @ 0x087A55D4
@@ -2737,7 +2737,7 @@ BANIM_SCR_braf_sw1_4: @ 0x087A55D4
 
     .global BANIM_MODE_braf_sw1_4
 BANIM_MODE_braf_sw1_4: @ 0x087A5758
-    .incbin "data/banims/braf_sw1_4/braf_sw1_4.mode.bin"
+    .incbin "data/banims/braf_sw1/braf_sw1_4.mode.bin"
 
     .global BANIM_PAL_pakm_sw1_5
 BANIM_PAL_pakm_sw1_5: @ 0x087A57B8
@@ -2745,11 +2745,11 @@ BANIM_PAL_pakm_sw1_5: @ 0x087A57B8
 
     .global BANIM_OAML_pakm_sw1_5
 BANIM_OAML_pakm_sw1_5: @ 0x087A582C
-    .incbin "data/banims/pakm_sw1_5/pakm_sw1_5.oaml.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_5.oaml.bin.lz"
 
     .global BANIM_OAMR_pakm_sw1_5
 BANIM_OAMR_pakm_sw1_5: @ 0x087A644C
-    .incbin "data/banims/pakm_sw1_5/pakm_sw1_5.oamr.bin.lz"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_5.oamr.bin.lz"
 
     .global BANIM_SCR_pakm_sw1_5
 BANIM_SCR_pakm_sw1_5: @ 0x087A7060
@@ -2757,7 +2757,7 @@ BANIM_SCR_pakm_sw1_5: @ 0x087A7060
 
     .global BANIM_MODE_pakm_sw1_5
 BANIM_MODE_pakm_sw1_5: @ 0x087A72B0
-    .incbin "data/banims/pakm_sw1_5/pakm_sw1_5.mode.bin"
+    .incbin "data/banims/pakm_sw1/pakm_sw1_5.mode.bin"
 
     .global BANIM_PAL_warm_ax1_3
 BANIM_PAL_warm_ax1_3: @ 0x087A7310
@@ -2765,11 +2765,11 @@ BANIM_PAL_warm_ax1_3: @ 0x087A7310
 
     .global BANIM_OAML_warm_ax1_3
 BANIM_OAML_warm_ax1_3: @ 0x087A735C
-    .incbin "data/banims/warm_ax1_3/warm_ax1_3.oaml.bin.lz"
+    .incbin "data/banims/warm_ax1/warm_ax1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_warm_ax1_3
 BANIM_OAMR_warm_ax1_3: @ 0x087A7E50
-    .incbin "data/banims/warm_ax1_3/warm_ax1_3.oamr.bin.lz"
+    .incbin "data/banims/warm_ax1/warm_ax1_3.oamr.bin.lz"
 
     .global BANIM_SCR_warm_ax1_3
 BANIM_SCR_warm_ax1_3: @ 0x087A895C
@@ -2777,7 +2777,7 @@ BANIM_SCR_warm_ax1_3: @ 0x087A895C
 
     .global BANIM_MODE_warm_ax1_3
 BANIM_MODE_warm_ax1_3: @ 0x087A8B3C
-    .incbin "data/banims/warm_ax1_3/warm_ax1_3.mode.bin"
+    .incbin "data/banims/warm_ax1/warm_ax1_3.mode.bin"
 
     .global BANIM_IMG_drmm_sp1_0
 BANIM_IMG_drmm_sp1_0: @ 0x087A8B9C
@@ -2813,7 +2813,7 @@ BANIM_IMG_drmm_sp1_7: @ 0x087AFEB8
 
     .global BANIM_IMG_drmm_sp1_3_1
 BANIM_IMG_drmm_sp1_3_1: @ 0x087B11C8
-    .incbin "data/banims/drmm_sp1_3/BANIM_IMG_drmm_sp1_3_1.4bpp.lz"
+    .incbin "data/banims/drmm_sp1/BANIM_IMG_drmm_sp1_3_1.4bpp.lz"
 
     .global BANIM_IMG_drmm_sp1_8
 BANIM_IMG_drmm_sp1_8: @ 0x087B1F58
@@ -2841,7 +2841,7 @@ BANIM_MODE_drmm_sp1: @ 0x087B6504
 
     .global BANIM_IMG_drmm_sp1_2_9
 BANIM_IMG_drmm_sp1_2_9: @ 0x087B6564
-    .incbin "data/banims/drmm_sp1_2/BANIM_IMG_drmm_sp1_2_9.4bpp.lz"
+    .incbin "data/banims/drmm_sp1/BANIM_IMG_drmm_sp1_2_9.4bpp.lz"
 
     .global BANIM_PAL_drmm_sp1_2
 BANIM_PAL_drmm_sp1_2: @ 0x087B6F78
@@ -2849,11 +2849,11 @@ BANIM_PAL_drmm_sp1_2: @ 0x087B6F78
 
     .global BANIM_OAML_drmm_sp1_2
 BANIM_OAML_drmm_sp1_2: @ 0x087B6FE4
-    .incbin "data/banims/drmm_sp1_2/drmm_sp1_2.oaml.bin.lz"
+    .incbin "data/banims/drmm_sp1/drmm_sp1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_drmm_sp1_2
 BANIM_OAMR_drmm_sp1_2: @ 0x087B8B50
-    .incbin "data/banims/drmm_sp1_2/drmm_sp1_2.oamr.bin.lz"
+    .incbin "data/banims/drmm_sp1/drmm_sp1_2.oamr.bin.lz"
 
     .global BANIM_SCR_drmm_sp1_2
 BANIM_SCR_drmm_sp1_2: @ 0x087BA6AC
@@ -2861,7 +2861,7 @@ BANIM_SCR_drmm_sp1_2: @ 0x087BA6AC
 
     .global BANIM_MODE_drmm_sp1_2
 BANIM_MODE_drmm_sp1_2: @ 0x087BAA80
-    .incbin "data/banims/drmm_sp1_2/drmm_sp1_2.mode.bin"
+    .incbin "data/banims/drmm_sp1/drmm_sp1_2.mode.bin"
 
     .global BANIM_PAL_drmm_sp1_3
 BANIM_PAL_drmm_sp1_3: @ 0x087BAAE0
@@ -2869,11 +2869,11 @@ BANIM_PAL_drmm_sp1_3: @ 0x087BAAE0
 
     .global BANIM_OAML_drmm_sp1_3
 BANIM_OAML_drmm_sp1_3: @ 0x087BAB4C
-    .incbin "data/banims/drmm_sp1_3/drmm_sp1_3.oaml.bin.lz"
+    .incbin "data/banims/drmm_sp1/drmm_sp1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_drmm_sp1_3
 BANIM_OAMR_drmm_sp1_3: @ 0x087BAD40
-    .incbin "data/banims/drmm_sp1_3/drmm_sp1_3.oamr.bin.lz"
+    .incbin "data/banims/drmm_sp1/drmm_sp1_3.oamr.bin.lz"
 
     .global BANIM_SCR_drmm_sp1_3
 BANIM_SCR_drmm_sp1_3: @ 0x087BAF2C
@@ -2881,7 +2881,7 @@ BANIM_SCR_drmm_sp1_3: @ 0x087BAF2C
 
     .global BANIM_MODE_drmm_sp1_3
 BANIM_MODE_drmm_sp1_3: @ 0x087BAFB4
-    .incbin "data/banims/drmm_sp1_3/drmm_sp1_3.mode.bin"
+    .incbin "data/banims/drmm_sp1/drmm_sp1_3.mode.bin"
 
     .global BANIM_IMG_stam_ar1_0
 BANIM_IMG_stam_ar1_0: @ 0x087BB014
@@ -2913,7 +2913,7 @@ BANIM_IMG_genm_al1_0: @ 0x087BBF14
 
     .global BANIM_IMG_genm_al1_2_1
 BANIM_IMG_genm_al1_2_1: @ 0x087BCC24
-    .incbin "data/banims/genm_al1_2/BANIM_IMG_genm_al1_2_1.4bpp.lz"
+    .incbin "data/banims/genm_al1/BANIM_IMG_genm_al1_2_1.4bpp.lz"
 
     .global BANIM_IMG_genm_al1_1
 BANIM_IMG_genm_al1_1: @ 0x087BD944
@@ -2925,7 +2925,7 @@ BANIM_IMG_genm_al1_2: @ 0x087BE784
 
     .global BANIM_IMG_genm_al1_2_4
 BANIM_IMG_genm_al1_2_4: @ 0x087BF688
-    .incbin "data/banims/genm_al1_2/BANIM_IMG_genm_al1_2_4.4bpp.lz"
+    .incbin "data/banims/genm_al1/BANIM_IMG_genm_al1_2_4.4bpp.lz"
 
     .global BANIM_IMG_genm_al1_3
 BANIM_IMG_genm_al1_3: @ 0x087C0244
@@ -2940,7 +2940,7 @@ BANIM_IMG_genm_al1_4: @ 0x087C0FCC
 
     .global BANIM_IMG_genm_al1_2_7
 BANIM_IMG_genm_al1_2_7: @ 0x087C2064
-    .incbin "data/banims/genm_al1_2/BANIM_IMG_genm_al1_2_7.4bpp.lz"
+    .incbin "data/banims/genm_al1/BANIM_IMG_genm_al1_2_7.4bpp.lz"
 
     .global BANIM_IMG_genm_al1_5
 BANIM_IMG_genm_al1_5: @ 0x087C2DCC
@@ -2972,11 +2972,11 @@ BANIM_PAL_bism_mg1_3: @ 0x087C4490
 
     .global BANIM_OAML_bism_mg1_3
 BANIM_OAML_bism_mg1_3: @ 0x087C4500
-    .incbin "data/banims/bism_mg1_3/bism_mg1_3.oaml.bin.lz"
+    .incbin "data/banims/bism_mg1/bism_mg1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_bism_mg1_3
 BANIM_OAMR_bism_mg1_3: @ 0x087C4594
-    .incbin "data/banims/bism_mg1_3/bism_mg1_3.oamr.bin.lz"
+    .incbin "data/banims/bism_mg1/bism_mg1_3.oamr.bin.lz"
 
     .global BANIM_SCR_bism_mg1_3
 BANIM_SCR_bism_mg1_3: @ 0x087C4628
@@ -2984,7 +2984,7 @@ BANIM_SCR_bism_mg1_3: @ 0x087C4628
 
     .global BANIM_MODE_bism_mg1_3
 BANIM_MODE_bism_mg1_3: @ 0x087C46A8
-    .incbin "data/banims/bism_mg1_3/bism_mg1_3.mode.bin"
+    .incbin "data/banims/bism_mg1/bism_mg1_3.mode.bin"
 
     .global BANIM_PAL_bisf_mg1_3
 BANIM_PAL_bisf_mg1_3: @ 0x087C4708
@@ -2992,11 +2992,11 @@ BANIM_PAL_bisf_mg1_3: @ 0x087C4708
 
     .global BANIM_OAML_bisf_mg1_3
 BANIM_OAML_bisf_mg1_3: @ 0x087C4778
-    .incbin "data/banims/bisf_mg1_3/bisf_mg1_3.oaml.bin.lz"
+    .incbin "data/banims/bisf_mg1/bisf_mg1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_bisf_mg1_3
 BANIM_OAMR_bisf_mg1_3: @ 0x087C480C
-    .incbin "data/banims/bisf_mg1_3/bisf_mg1_3.oamr.bin.lz"
+    .incbin "data/banims/bisf_mg1/bisf_mg1_3.oamr.bin.lz"
 
     .global BANIM_SCR_bisf_mg1_3
 BANIM_SCR_bisf_mg1_3: @ 0x087C48A0
@@ -3004,7 +3004,7 @@ BANIM_SCR_bisf_mg1_3: @ 0x087C48A0
 
     .global BANIM_MODE_bisf_mg1_3
 BANIM_MODE_bisf_mg1_3: @ 0x087C4920
-    .incbin "data/banims/bisf_mg1_3/bisf_mg1_3.mode.bin"
+    .incbin "data/banims/bisf_mg1/bisf_mg1_3.mode.bin"
 
     .global BANIM_IMG_godd_he1_0
 BANIM_IMG_godd_he1_0: @ 0x087C4980
@@ -3076,11 +3076,11 @@ BANIM_PAL_genm_al1_2: @ 0x087CA61C
 
     .global BANIM_OAML_genm_al1_2
 BANIM_OAML_genm_al1_2: @ 0x087CA698
-    .incbin "data/banims/genm_al1_2/genm_al1_2.oaml.bin.lz"
+    .incbin "data/banims/genm_al1/genm_al1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_genm_al1_2
 BANIM_OAMR_genm_al1_2: @ 0x087CB3E0
-    .incbin "data/banims/genm_al1_2/genm_al1_2.oamr.bin.lz"
+    .incbin "data/banims/genm_al1/genm_al1_2.oamr.bin.lz"
 
     .global BANIM_SCR_genm_al1_2
 BANIM_SCR_genm_al1_2: @ 0x087CC120
@@ -3088,7 +3088,7 @@ BANIM_SCR_genm_al1_2: @ 0x087CC120
 
     .global BANIM_MODE_genm_al1_2
 BANIM_MODE_genm_al1_2: @ 0x087CC5FC
-    .incbin "data/banims/genm_al1_2/genm_al1_2.mode.bin"
+    .incbin "data/banims/genm_al1/genm_al1_2.mode.bin"
 
     .global BANIM_PAL_genm_al1_3
 BANIM_PAL_genm_al1_3: @ 0x087CC65C
@@ -3096,11 +3096,11 @@ BANIM_PAL_genm_al1_3: @ 0x087CC65C
 
     .global BANIM_OAML_genm_al1_3
 BANIM_OAML_genm_al1_3: @ 0x087CC6D8
-    .incbin "data/banims/genm_al1_3/genm_al1_3.oaml.bin.lz"
+    .incbin "data/banims/genm_al1/genm_al1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_genm_al1_3
 BANIM_OAMR_genm_al1_3: @ 0x087CCE60
-    .incbin "data/banims/genm_al1_3/genm_al1_3.oamr.bin.lz"
+    .incbin "data/banims/genm_al1/genm_al1_3.oamr.bin.lz"
 
     .global BANIM_SCR_genm_al1_3
 BANIM_SCR_genm_al1_3: @ 0x087CD5E8
@@ -3108,7 +3108,7 @@ BANIM_SCR_genm_al1_3: @ 0x087CD5E8
 
     .global BANIM_MODE_genm_al1_3
 BANIM_MODE_genm_al1_3: @ 0x087CDA94
-    .incbin "data/banims/genm_al1_3/genm_al1_3.mode.bin"
+    .incbin "data/banims/genm_al1/genm_al1_3.mode.bin"
 
     .global BANIM_PAL_genm_al1_4
 BANIM_PAL_genm_al1_4: @ 0x087CDAF4
@@ -3116,11 +3116,11 @@ BANIM_PAL_genm_al1_4: @ 0x087CDAF4
 
     .global BANIM_OAML_genm_al1_4
 BANIM_OAML_genm_al1_4: @ 0x087CDB70
-    .incbin "data/banims/genm_al1_4/genm_al1_4.oaml.bin.lz"
+    .incbin "data/banims/genm_al1/genm_al1_4.oaml.bin.lz"
 
     .global BANIM_OAMR_genm_al1_4
 BANIM_OAMR_genm_al1_4: @ 0x087CDC0C
-    .incbin "data/banims/genm_al1_4/genm_al1_4.oamr.bin.lz"
+    .incbin "data/banims/genm_al1/genm_al1_4.oamr.bin.lz"
 
     .global BANIM_SCR_genm_al1_4
 BANIM_SCR_genm_al1_4: @ 0x087CDCA8
@@ -3128,7 +3128,7 @@ BANIM_SCR_genm_al1_4: @ 0x087CDCA8
 
     .global BANIM_MODE_genm_al1_4
 BANIM_MODE_genm_al1_4: @ 0x087CDD30
-    .incbin "data/banims/genm_al1_4/genm_al1_4.mode.bin"
+    .incbin "data/banims/genm_al1/genm_al1_4.mode.bin"
 
     .global BANIM_IMG_druf_mg1_0
 BANIM_IMG_druf_mg1_0: @ 0x087CDD90
@@ -3172,11 +3172,11 @@ BANIM_PAL_druf_mg1_2: @ 0x087D159C
 
     .global BANIM_OAML_druf_mg1_2
 BANIM_OAML_druf_mg1_2: @ 0x087D15E8
-    .incbin "data/banims/druf_mg1_2/druf_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/druf_mg1/druf_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_druf_mg1_2
 BANIM_OAMR_druf_mg1_2: @ 0x087D18B4
-    .incbin "data/banims/druf_mg1_2/druf_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/druf_mg1/druf_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_druf_mg1_2
 BANIM_SCR_druf_mg1_2: @ 0x087D1B78
@@ -3184,7 +3184,7 @@ BANIM_SCR_druf_mg1_2: @ 0x087D1B78
 
     .global BANIM_MODE_druf_mg1_2
 BANIM_MODE_druf_mg1_2: @ 0x087D1D0C
-    .incbin "data/banims/druf_mg1_2/druf_mg1_2.mode.bin"
+    .incbin "data/banims/druf_mg1/druf_mg1_2.mode.bin"
 
     .global BANIM_PAL_fakf_sp1_2
 BANIM_PAL_fakf_sp1_2: @ 0x087D1D6C
@@ -3192,11 +3192,11 @@ BANIM_PAL_fakf_sp1_2: @ 0x087D1D6C
 
     .global BANIM_OAML_fakf_sp1_2
 BANIM_OAML_fakf_sp1_2: @ 0x087D1DD0
-    .incbin "data/banims/fakf_sp1_2/fakf_sp1_2.oaml.bin.lz"
+    .incbin "data/banims/fakf_sp1/fakf_sp1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_fakf_sp1_2
 BANIM_OAMR_fakf_sp1_2: @ 0x087D3758
-    .incbin "data/banims/fakf_sp1_2/fakf_sp1_2.oamr.bin.lz"
+    .incbin "data/banims/fakf_sp1/fakf_sp1_2.oamr.bin.lz"
 
     .global BANIM_SCR_fakf_sp1_2
 BANIM_SCR_fakf_sp1_2: @ 0x087D50AC
@@ -3204,7 +3204,7 @@ BANIM_SCR_fakf_sp1_2: @ 0x087D50AC
 
     .global BANIM_MODE_fakf_sp1_2
 BANIM_MODE_fakf_sp1_2: @ 0x087D5558
-    .incbin "data/banims/fakf_sp1_2/fakf_sp1_2.mode.bin"
+    .incbin "data/banims/fakf_sp1/fakf_sp1_2.mode.bin"
 
     .global BANIM_PAL_fakf_sp1_3
 BANIM_PAL_fakf_sp1_3: @ 0x087D55B8
@@ -3212,11 +3212,11 @@ BANIM_PAL_fakf_sp1_3: @ 0x087D55B8
 
     .global BANIM_OAML_fakf_sp1_3
 BANIM_OAML_fakf_sp1_3: @ 0x087D561C
-    .incbin "data/banims/fakf_sp1_3/fakf_sp1_3.oaml.bin.lz"
+    .incbin "data/banims/fakf_sp1/fakf_sp1_3.oaml.bin.lz"
 
     .global BANIM_OAMR_fakf_sp1_3
 BANIM_OAMR_fakf_sp1_3: @ 0x087D57D8
-    .incbin "data/banims/fakf_sp1_3/fakf_sp1_3.oamr.bin.lz"
+    .incbin "data/banims/fakf_sp1/fakf_sp1_3.oamr.bin.lz"
 
     .global BANIM_SCR_fakf_sp1_3
 BANIM_SCR_fakf_sp1_3: @ 0x087D5990
@@ -3224,7 +3224,7 @@ BANIM_SCR_fakf_sp1_3: @ 0x087D5990
 
     .global BANIM_MODE_fakf_sp1_3
 BANIM_MODE_fakf_sp1_3: @ 0x087D5A18
-    .incbin "data/banims/fakf_sp1_3/fakf_sp1_3.mode.bin"
+    .incbin "data/banims/fakf_sp1/fakf_sp1_3.mode.bin"
 
     .global BANIM_IMG_magdd_mg1_0
 BANIM_IMG_magdd_mg1_0: @ 0x087D5A78
@@ -3331,11 +3331,11 @@ BANIM_PAL_snim_ar1_2: @ 0x087E8B24
 
     .global BANIM_OAML_snim_ar1_2
 BANIM_OAML_snim_ar1_2: @ 0x087E8B8C
-    .incbin "data/banims/snim_ar1_2/snim_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/snim_ar1/snim_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_snim_ar1_2
 BANIM_OAMR_snim_ar1_2: @ 0x087E8C38
-    .incbin "data/banims/snim_ar1_2/snim_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/snim_ar1/snim_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_snim_ar1_2
 BANIM_SCR_snim_ar1_2: @ 0x087E8CE0
@@ -3343,7 +3343,7 @@ BANIM_SCR_snim_ar1_2: @ 0x087E8CE0
 
     .global BANIM_MODE_snim_ar1_2
 BANIM_MODE_snim_ar1_2: @ 0x087E8D38
-    .incbin "data/banims/snim_ar1_2/snim_ar1_2.mode.bin"
+    .incbin "data/banims/snim_ar1/snim_ar1_2.mode.bin"
 
     .global BANIM_PAL_snif_ar1_2
 BANIM_PAL_snif_ar1_2: @ 0x087E8D98
@@ -3351,11 +3351,11 @@ BANIM_PAL_snif_ar1_2: @ 0x087E8D98
 
     .global BANIM_OAML_snif_ar1_2
 BANIM_OAML_snif_ar1_2: @ 0x087E8E00
-    .incbin "data/banims/snif_ar1_2/snif_ar1_2.oaml.bin.lz"
+    .incbin "data/banims/snif_ar1/snif_ar1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_snif_ar1_2
 BANIM_OAMR_snif_ar1_2: @ 0x087E8EAC
-    .incbin "data/banims/snif_ar1_2/snif_ar1_2.oamr.bin.lz"
+    .incbin "data/banims/snif_ar1/snif_ar1_2.oamr.bin.lz"
 
     .global BANIM_SCR_snif_ar1_2
 BANIM_SCR_snif_ar1_2: @ 0x087E8F54
@@ -3363,7 +3363,7 @@ BANIM_SCR_snif_ar1_2: @ 0x087E8F54
 
     .global BANIM_MODE_snif_ar1_2
 BANIM_MODE_snif_ar1_2: @ 0x087E8FAC
-    .incbin "data/banims/snif_ar1_2/snif_ar1_2.mode.bin"
+    .incbin "data/banims/snif_ar1/snif_ar1_2.mode.bin"
 
     .global BANIM_PAL_sagm_mg1_2
 BANIM_PAL_sagm_mg1_2: @ 0x087E900C
@@ -3371,11 +3371,11 @@ BANIM_PAL_sagm_mg1_2: @ 0x087E900C
 
     .global BANIM_OAML_sagm_mg1_2
 BANIM_OAML_sagm_mg1_2: @ 0x087E9084
-    .incbin "data/banims/sagm_mg1_2/sagm_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/sagm_mg1/sagm_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_sagm_mg1_2
 BANIM_OAMR_sagm_mg1_2: @ 0x087E91DC
-    .incbin "data/banims/sagm_mg1_2/sagm_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/sagm_mg1/sagm_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_sagm_mg1_2
 BANIM_SCR_sagm_mg1_2: @ 0x087E9334
@@ -3383,7 +3383,7 @@ BANIM_SCR_sagm_mg1_2: @ 0x087E9334
 
     .global BANIM_MODE_sagm_mg1_2
 BANIM_MODE_sagm_mg1_2: @ 0x087E93F4
-    .incbin "data/banims/sagm_mg1_2/sagm_mg1_2.mode.bin"
+    .incbin "data/banims/sagm_mg1/sagm_mg1_2.mode.bin"
 
     .global BANIM_PAL_sagf_mg1_2
 BANIM_PAL_sagf_mg1_2: @ 0x087E9454
@@ -3391,11 +3391,11 @@ BANIM_PAL_sagf_mg1_2: @ 0x087E9454
 
     .global BANIM_OAML_sagf_mg1_2
 BANIM_OAML_sagf_mg1_2: @ 0x087E94CC
-    .incbin "data/banims/sagf_mg1_2/sagf_mg1_2.oaml.bin.lz"
+    .incbin "data/banims/sagf_mg1/sagf_mg1_2.oaml.bin.lz"
 
     .global BANIM_OAMR_sagf_mg1_2
 BANIM_OAMR_sagf_mg1_2: @ 0x087E9624
-    .incbin "data/banims/sagf_mg1_2/sagf_mg1_2.oamr.bin.lz"
+    .incbin "data/banims/sagf_mg1/sagf_mg1_2.oamr.bin.lz"
 
     .global BANIM_SCR_sagf_mg1_2
 BANIM_SCR_sagf_mg1_2: @ 0x087E977C
@@ -3403,4 +3403,4 @@ BANIM_SCR_sagf_mg1_2: @ 0x087E977C
 
     .global BANIM_MODE_sagf_mg1_2
 BANIM_MODE_sagf_mg1_2: @ 0x087E983C
-    .incbin "data/banims/sagf_mg1_2/sagf_mg1_2.mode.bin"
+    .incbin "data/banims/sagf_mg1/sagf_mg1_2.mode.bin"

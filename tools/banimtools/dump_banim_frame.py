@@ -5,6 +5,7 @@ import array
 from PIL import Image
 
 import lzss_lib
+from dump_banim import Symbol
 
 def read_palette_from_binary(palette_data):
     palette = []
@@ -55,21 +56,28 @@ def create_image_from_4bpp(img_data, pal_bytes, width, height):
     img.putdata(pixels)
     return img
 
-def dump_banim_frames(prefix, anim_frames, pal_addr, out_dir):
+def dump_banim_frames(prefix, anim_frames, all_symbols, pal_addr, out_dir):
     pal_bytes = lzss_lib.lz77_decomp_data(pal_addr)
 
     for i, img_addr in enumerate(anim_frames):
-        img_bytes = lzss_lib.lz77_decomp_data(img_addr)
-        img_data = array.array('B', img_bytes)
-        img = create_image_from_4bpp(img_data, pal_bytes, 256, 64)
+        exists = False
+        for symbol in all_symbols:
+            if (symbol.ptr & 0x00FFFFFF) == (img_addr & 0x00FFFFFF):
+                exists = True
+                break
 
-        frame_name = f"BANIM_IMG_{prefix}_{i}"
-        fpath = f"{out_dir}/{frame_name}.png"
+        if not exists:
+            img_bytes = lzss_lib.lz77_decomp_data(img_addr)
+            img_data = array.array('B', img_bytes)
+            img = create_image_from_4bpp(img_data, pal_bytes, 256, 64)
+
+            frame_name = f"BANIM_IMG_{prefix}_{i}"
+            fpath = f"{out_dir}/{frame_name}.png"
 
 
-        # print(f"{frame_name}: @ 0x{img_addr:08X}")
-        # print(f"    .incbin {out_dir}/{frame_name}.4bpp.lz")
-        # print("")
+            # print(f"{frame_name}: @ 0x{img_addr:08X}")
+            # print(f"    .incbin {out_dir}/{frame_name}.4bpp.lz")
+            # print("")
 
-        os.makedirs(out_dir, exist_ok=True)
-        img.save(fpath)
+            os.makedirs(out_dir, exist_ok=True)
+            img.save(fpath)

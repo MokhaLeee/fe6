@@ -17,9 +17,10 @@ from dump_banim_script import BanimSCR
 abbr_count = {}
 
 class Symbol:
-    def __init__(self, ptr, prefix, name, is_img=False):
+    def __init__(self, ptr, prefix, _abbr, name, is_img=False):
         self.ptr = ptr
         self.prefix = prefix
+        self._abbr = _abbr
         self.name = name
         self.is_img = is_img
 
@@ -82,20 +83,21 @@ def dump_one_banim_data_ent(addr, out_dir):
 
     abbr, modes, script, oam_r, oam_l, pal = struct.unpack(struct_format, data)
 
-    abbr_str = abbr.decode('utf-8').rstrip(chr(0))
-    if abbr_str in abbr_count:
-        abbr_count[abbr_str] += 1
-        abbr_str = f"{abbr_str}_{abbr_count[abbr_str]}"
+    _abbr_str = abbr.decode('utf-8').rstrip(chr(0))
+    if _abbr_str in abbr_count:
+        abbr_count[_abbr_str] += 1
+        abbr_str = f"{_abbr_str}_{abbr_count[_abbr_str]}"
     else:
-        abbr_count[abbr_str] = 1
+        abbr_count[_abbr_str] = 1
+        abbr_str = _abbr_str
 
-    all_symbols.append(Symbol(modes, abbr_str, f"BANIM_MODE_{abbr_str}"))
-    all_symbols.append(Symbol(script, abbr_str, f"BANIM_SCR_{abbr_str}"))
-    all_symbols.append(Symbol(oam_r, abbr_str, f"BANIM_OAMR_{abbr_str}"))
-    all_symbols.append(Symbol(oam_l, abbr_str, f"BANIM_OAML_{abbr_str}"))
-    all_symbols.append(Symbol(pal, abbr_str, f"BANIM_PAL_{abbr_str}"))
+    all_symbols.append(Symbol(modes, abbr_str, _abbr_str, f"BANIM_MODE_{abbr_str}"))
+    all_symbols.append(Symbol(script, abbr_str, _abbr_str, f"BANIM_SCR_{abbr_str}"))
+    all_symbols.append(Symbol(oam_r, abbr_str, _abbr_str, f"BANIM_OAMR_{abbr_str}"))
+    all_symbols.append(Symbol(oam_l, abbr_str, _abbr_str, f"BANIM_OAML_{abbr_str}"))
+    all_symbols.append(Symbol(pal, abbr_str, _abbr_str, f"BANIM_PAL_{abbr_str}"))
 
-    out_dir_ext = f"{out_dir}/{abbr_str}"
+    out_dir_ext = f"{out_dir}/{_abbr_str}"
     os.makedirs(out_dir_ext, exist_ok=True)
     out_sfile = f"{out_dir_ext}/{abbr_str}.s"
 
@@ -129,10 +131,10 @@ def dump_one_banim_data_ent(addr, out_dir):
 
             # print("")
             # print(".section .data.frames")
-            dump_banim_frame.dump_banim_frames(abbr_str, anim_frames, pal, out_dir_ext)
+            dump_banim_frame.dump_banim_frames(abbr_str, anim_frames, all_symbols, pal, out_dir_ext)
 
             for i, img_addr in enumerate(anim_frames):
-                all_symbols.append(Symbol(img_addr, abbr_str, f"BANIM_IMG_{abbr_str}_{i}", True))
+                all_symbols.append(Symbol(img_addr, abbr_str, _abbr_str, f"BANIM_IMG_{abbr_str}_{i}", True))
 
         finally:
             sys.stdout = original_stdout
@@ -141,7 +143,8 @@ def dump_one_banim_data_ent(addr, out_dir):
 def main(args):
     global all_symbols
 
-    out_dir = "data/banims" # "out"
+    # out_dir = "out"
+    out_dir = "data/banims"
 
     for i in range(122):
         dump_one_banim_data_ent(0x6A0008 + i * 32, out_dir)
@@ -159,13 +162,13 @@ def main(args):
 
 
         if symbol.name[0:9] == "BANIM_IMG":
-            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.name}.4bpp.lz\"")
+            print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.name}.4bpp.lz\"")
         elif symbol.name[0:10] == "BANIM_OAMR":
-            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.prefix}.oamr.bin.lz\"")
+            print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.prefix}.oamr.bin.lz\"")
         elif symbol.name[0:10] == "BANIM_OAML":
-            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.prefix}.oaml.bin.lz\"")
+            print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.prefix}.oaml.bin.lz\"")
         elif symbol.name[0:10] == "BANIM_MODE":
-            print(f"    .incbin \"data/banims/{symbol.prefix}/{symbol.prefix}.mode.bin\"")
+            print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.prefix}.mode.bin\"")
 
             if (end - cur) > (24 * 4):
                 cur += 24 * 4
