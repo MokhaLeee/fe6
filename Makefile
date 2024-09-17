@@ -135,10 +135,6 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 	@echo "[LZ ]	$@"
 	@$(GBAGFX) $< $@
 
-%.lzd: %
-	@echo "[LZD]	$@"
-	@$(GBAGFX) $< $@ -no-padding
-
 %.rl: %
 	@echo "[LZ ]	$@"
 	@$(GBAGFX) $< $@
@@ -151,7 +147,7 @@ CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
 # ==============
 
 ALL_BANIM_SCRS := $(shell find ./data/banims/ -type f -name "*.s")
-ALL_BANIM_PALS := $(shell find ./data/banims/ -type f -name "*.banimpal")
+ALL_BANIM_PALS := $(shell find ./data/banims/ -type f -name "*.agbpal")
 
 BANIM_TOOLS := tools/banimtools
 LZSS_COMPRESS  := $(PYTHON) $(BANIM_TOOLS)/lzss_compress.py
