@@ -147,11 +147,13 @@ CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
 # ==============
 
 ALL_BANIM_SCRS := $(shell find ./data/banims/ -type f -name "*.s")
+ALL_BANIM_PALS := $(shell find ./data/banims/ -type f -name "*.agbpal")
 
 BANIM_TOOLS := tools/banimtools
 LZSS_COMPRESS  := $(PYTHON) $(BANIM_TOOLS)/lzss_compress.py
 PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
+FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
 
 %.oamr.elf: %.o
 	@echo "[LD ]	$@"
@@ -181,6 +183,7 @@ CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.o)
 CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz)
 CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz)
 CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.lz)
+CLEAN_FILES += $(ALL_BANIM_PALS:%=%.lz)
 
 # ===========
 # = Targets =

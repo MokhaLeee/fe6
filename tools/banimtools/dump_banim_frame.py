@@ -56,8 +56,16 @@ def create_image_from_4bpp(img_data, pal_bytes, width, height):
     img.putdata(pixels)
     return img
 
-def dump_banim_frames(prefix, anim_frames, all_symbols, pal_addr, out_dir):
+def dump_banim_pal(pal_bytes, _abbr_str, out_dir):
+    pal_fpath = f"{out_dir}/BANIM_PAL_{_abbr_str}.agbpal"
+    if not os.path.exists(pal_fpath):
+        with open(pal_fpath, 'wb') as fpal:
+            fpal.write(pal_bytes)
+
+def dump_banim_frames(prefix, _abbr_str, anim_frames, all_symbols, pal_addr, out_dir):
     pal_bytes = lzss_lib.lz77_decomp_data(pal_addr)
+
+    # dump_banim_pal(pal_bytes, _abbr_str, out_dir)
 
     for i, img_addr in enumerate(anim_frames):
         exists = False

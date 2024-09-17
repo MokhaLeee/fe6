@@ -321,7 +321,7 @@ def lz77_compress(input):
         length += sum(2 if f else 1 for f in flags)
 
     # padding
-    padding = 4 - (length % 4 or 4)
-    if padding:
-        out += (b'\x00' * padding)
+    # padding = 4 - (length % 4 or 4)
+    # if padding:
+    #   out += (b'\x00' * padding)
     return out
