@@ -15,7 +15,8 @@ def main(args):
         bin_data = f.read()
 
     with open(out_fpath, "wb") as f:
-        f.write(lzss_lib.lz77_compress(bin_data))
+        compressed_data = lzss_lib.lz77_compress(bin_data)
+        f.write(compressed_data)
 
 if __name__ == '__main__':
     main(sys.argv)

@@ -131,7 +131,7 @@ def dump_one_banim_data_ent(addr, out_dir):
 
             # print("")
             # print(".section .data.frames")
-            dump_banim_frame.dump_banim_frames(abbr_str, anim_frames, all_symbols, pal, out_dir_ext)
+            dump_banim_frame.dump_banim_frames(abbr_str, _abbr_str, anim_frames, all_symbols, pal, out_dir_ext)
 
             for i, img_addr in enumerate(anim_frames):
                 all_symbols.append(Symbol(img_addr, abbr_str, _abbr_str, f"BANIM_IMG_{abbr_str}_{i}", True))
@@ -163,8 +163,9 @@ def main(args):
 
         if symbol.name[0:9] == "BANIM_IMG":
             print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.name}.4bpp.lz\"")
-        # elif symbol.name[0:9] == "BANIM_PAL":
-        #    print(f"    .incbin \"data/banims/{symbol._abbr}/BANIM_IMG_{symbol._abbr}_0.gbapal.lz\"")
+        # it need to take a look on palette: 0x0877FF18
+        #elif symbol.name[0:9] == "BANIM_PAL":
+        #    print(f"    .incbin \"data/banims/{symbol._abbr}/BANIM_PAL_{symbol._abbr}.agbpal.lz\"")
         elif symbol.name[0:10] == "BANIM_OAMR":
             print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.prefix}.oamr.bin.lz\"")
         elif symbol.name[0:10] == "BANIM_OAML":
