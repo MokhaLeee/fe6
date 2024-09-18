@@ -65,7 +65,7 @@ def dump_banim_pal(pal_bytes, _abbr_str, out_dir):
 def dump_banim_frames(prefix, _abbr_str, anim_frames, all_symbols, pal_addr, out_dir):
     pal_bytes = lzss_lib.lz77_decomp_data(pal_addr)
 
-    # dump_banim_pal(pal_bytes, _abbr_str, out_dir)
+    dump_banim_pal(pal_bytes, _abbr_str, out_dir)
 
     for i, img_addr in enumerate(anim_frames):
         exists = False
