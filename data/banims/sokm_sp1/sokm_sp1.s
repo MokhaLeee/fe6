@@ -3,6 +3,8 @@
 .include "gba_sprites.inc"
 
 .section .data.oamr
+.global BANIM_OAMR_sokm_sp1
+BANIM_OAMR_sokm_sp1:
 OAMR:
 OAMR_0:
     ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0048, 8, -16
@@ -829,6 +831,8 @@ OAMR_47:
     ANIM_SPRITE_END
 
 .section .data.oaml
+.global BANIM_OAML_sokm_sp1
+BANIM_OAML_sokm_sp1:
 OAML:
 OAML_0:
     ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0048, -16, -16
@@ -1655,6 +1659,8 @@ OAML_47:
     ANIM_SPRITE_END
 
 .section .data.script
+.global BANIM_SCR_sokm_sp1
+BANIM_SCR_sokm_sp1:
 SCR:
 SCR_NORMAL_ATK:
     ANIMSCR_CMD 0x03
@@ -1965,6 +1971,8 @@ SCR_MISSED_ATK:
 
 
 .section .data.modes
+.global BANIM_MODES_sokm_sp1
+BANIM_MODES_sokm_sp1:
     .word SCR_NORMAL_ATK - SCR
     .word SCR_NORMAL_ATK_PRIORITY_L - SCR
     .word SCR_CRIT_ATK - SCR
