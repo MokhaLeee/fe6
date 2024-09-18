@@ -47,8 +47,8 @@ def dump_scr_frame(img_addr, pal_addr, out_png):
 def dump_modes(prefix, addr, scrs):
     offset = addr & 0x00FFFFFF
 
-    # print(f".global BANIM_MODES_{prefix}")
-    # print(f"BANIM_MODES_{prefix}:")
+    print(f".global BANIM_MODES_{prefix}")
+    print(f"BANIM_MODES_{prefix}:")
 
     with open(rom_def.ROM, "rb") as f:
         f.seek(offset)
@@ -146,12 +146,26 @@ def main(args):
     # out_dir = "out"
     out_dir = "data/banims"
 
+    out_linker_fpath = "lds/banim.ld"
+
+    out_linker = open(out_linker_fpath, 'w', encoding='utf-8')
+
     for i in range(122):
         dump_one_banim_data_ent(0x6A0008 + i * 32, out_dir)
 
     print("    .data")
     sorted_symbols = sort_symbols(all_symbols)
     for i, symbol in enumerate(sorted_symbols):
+        out_linker.write(f"_data_{symbol.name}_start = .;\n")
+        out_linker.write(f"data/data-banims.o(.data.{symbol.name});\n")
+        out_linker.write(f"_data_{symbol.name}_end   = .;\n")
+        out_linker.write("\n")
+
+        # Some overlaps: todo
+        if symbol.name == "BANIM_PAL_notm_sw1":
+            out_linker.write("/* overlaps */\n/* . = . - 4; */\n\n")
+
+        print(f"    .section .data.{symbol.name}")
         print(f"    .global {symbol.name}")
         print(f"{symbol.name}: @ 0x{symbol.ptr:08X}")
 
@@ -163,9 +177,9 @@ def main(args):
 
         if symbol.name[0:9] == "BANIM_IMG":
             print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.name}.4bpp.lz\"")
-        # it need to take a look on palette: 0x0877FF18
-        #elif symbol.name[0:9] == "BANIM_PAL":
-        #    print(f"    .incbin \"data/banims/{symbol._abbr}/BANIM_PAL_{symbol._abbr}.agbpal.lz\"")
+        elif symbol.name[0:9] == "BANIM_PAL":
+            print(f"    @ .incbin \"data/banims/{symbol._abbr}/BANIM_PAL_{symbol._abbr}.agbpal.lz\"")
+            print(f"    .incbin \"fe6-base.gba\", 0x{cur:06X}, 0x{end:06X} - 0x{cur:06X}")
         elif symbol.name[0:10] == "BANIM_OAMR":
             print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.prefix}.oamr.bin.lz\"")
         elif symbol.name[0:10] == "BANIM_OAML":
@@ -196,6 +210,8 @@ def main(args):
             print("    @ ?")
             print("    .incbin \"fe6-base.gba\", 0x7DFC44, 0x7E0014 - 0x7DFC44")
             print("")
+
+    out_linker.close()
 
 if __name__ == '__main__':
     main(sys.argv)
