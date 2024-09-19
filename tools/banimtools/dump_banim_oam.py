@@ -111,11 +111,11 @@ def dump_banim_oam(prefix, addr):
     return ret_oams
 
 def dump_banim_oam_r(prefix, addr):
-    print(f".global BANIM_OAMR_{prefix}")
-    print(f"BANIM_OAMR_{prefix}:")
+    # print(f".global BANIM_OAMR_{prefix}")
+    # print(f"BANIM_OAMR_{prefix}:")
     return dump_banim_oam("OAMR", addr)
 
 def dump_banim_oam_l(prefix, addr):
-    print(f".global BANIM_OAML_{prefix}")
-    print(f"BANIM_OAML_{prefix}:")
+    # print(f".global BANIM_OAML_{prefix}")
+    # print(f"BANIM_OAML_{prefix}:")
     return dump_banim_oam("OAML", addr)

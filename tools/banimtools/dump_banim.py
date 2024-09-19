@@ -47,8 +47,8 @@ def dump_scr_frame(img_addr, pal_addr, out_png):
 def dump_modes(prefix, addr, scrs):
     offset = addr & 0x00FFFFFF
 
-    print(f".global BANIM_MODES_{prefix}")
-    print(f"BANIM_MODES_{prefix}:")
+    # print(f".global BANIM_MODES_{prefix}")
+    # print(f"BANIM_MODES_{prefix}:")
 
     with open(rom_def.ROM, "rb") as f:
         f.seek(offset)

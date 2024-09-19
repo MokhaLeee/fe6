@@ -139,7 +139,7 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 	@echo "[LZ ]	$@"
 	@$(GBAGFX) $< $@
 
-CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz)
+CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz) $(PNG_FILES:%.png=%.4bpp.lz.o)
 CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
 
 # ==============
@@ -157,11 +157,14 @@ FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
 
 BANIM_OBJECT := banim.o
 
-$(BANIM_OBJECT): $(shell ./tools/banimtools/arm_compressing_linker.py -t linker_script_banim.txt -m)
-	@./tools/banimtools/arm_compressing_linker.py -o $@ -t linker_script_banim.txt -b 0x086A1000 -l $(LD) --objcopy $(OBJCOPY) -c ./tools/banimtools/compressor.py
+$(BANIM_OBJECT): $(shell ./tools/banimtools/banim_compressing_linker.py -t linker_script_banim.txt -m)
+	@./tools/banimtools/banim_compressing_linker.py -o $@ -t linker_script_banim.txt -b 0x086A1000 -l $(LD) --objcopy $(OBJCOPY) -c ./tools/banimtools/compressor.py
 
 BANIM_LINK_SCR := ./linker_script_banim.txt
 
+banim: $(BANIM_OBJECT)
+
+CLEAN_FILES += $(BANIM_OBJECT) $(BANIM_OBJECT:%.o=%.*)
 
 %.oamr.elf: %.o
 	@echo "[LD ]	$@"
@@ -187,11 +190,14 @@ BANIM_LINK_SCR := ./linker_script_banim.txt
 	@echo "[OPY]	$@"
 	@$(OBJCOPY) --only-section=.data.modes -O binary $< $@
 
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.o)
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz)
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz)
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.lz)
-CLEAN_FILES += $(ALL_BANIM_PALS:%=%.lz)
+BANIM_GENERATED :=
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.o) $(ALL_BANIM_SCRS:%.s=%.o.bin) $(ALL_BANIM_SCRS:%.s=%.o.bin.lz) $(ALL_BANIM_SCRS:%.s=%.o.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.lz)
+BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz) $(ALL_BANIM_PALS:%=%.lz.o)
+
+# CLEAN_FILES += $(BANIM_GENERATED)
 
 # ===========
 # = Targets =
@@ -279,6 +285,7 @@ CLEAN_DIRS += $(shell find . -type d -name "__pycache__")
 
 clean:
 	@rm -f $(CLEAN_FILES)
+	@rm -f $(BANIM_GENERATED)
 	@rm -rf $(CLEAN_DIRS)
 	@echo "all cleaned..."
 

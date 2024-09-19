@@ -5,7 +5,9 @@
 # 2. use external compressor and toolchain
 # 3. link both object file and raw binary
 
-# author: https://github.com/laqieer
+# author:
+# origined from: https://github.com/laqieer
+# modified by:   https://github.com/MokhaLeee
 
 import os
 import sys
@@ -38,16 +40,26 @@ def parse_linker_script(filename):
                 obj = obj_sec
                 sec = '.data'
             obj_list.append((obj, sec, comp))
+
     return obj_list
 
 def convert_binary_to_object(filename, objcopy, with_label, is_debug):
     if with_label:
         label = os.path.basename(filename).split(".")
-        # omit extension name .4bpp
+
         if label[1] == '4bpp':
-            label = label[0]
+            label = f"BANIM_IMG_{label[0]}"
+        elif label[1] in ['agbpal', 'agbpal_lz']:
+            label = f"BANIM_PAL_{label[0]}"
+        elif label[1] == 'oaml':
+            label = f"BANIM_OAML_{label[0]}"
+        elif label[1] == 'oamr':
+            label = f"BANIM_OAMR_{label[0]}"
+        elif label[1] == 'mode':
+            label = f"BANIM_MODE_{label[0]}"
         else:
             label = label[0] + '_' + label[1]
+
         cmd = '%s -I binary -O elf32-littlearm -B armv4t -S --add-symbol %s=.data:0 %s %s.o' \
             % (objcopy, label, filename, filename)
     else:
@@ -173,7 +185,10 @@ def process_input_object(filename, outputfile, section, base_addr, ld, objcopy,
 #                print(cmd)
 #            os.system(cmd)
 #            remove_section_in_object(outputfile, section, objcopy, is_debug)
+
+            # overwritten
             filename = filename + '.bin'
+
             cmd = 'cp %s %s' % (filename_2, filename)
             if is_debug:
                 print(cmd)
@@ -199,11 +214,11 @@ def link_objects(obj_list, outputfile, base_addr,
     change_outputfile_type(outputfile, objcopy, is_debug)
     # link other objects
     for i, obj in enumerate(obj_list[1:]):
-        print('Compressing linking (%d/%d): %s'
-              % (i + 2, total_number, filename))
         filename = obj[0]
         comptype = obj[2]
         section = obj[1]
+        print('Compressing linking (%d/%d): %s'
+              % (i + 2, total_number, filename))
         filename = process_input_object(filename, outputfile, section,
                                         base_addr, ld, objcopy,
                                         comptype, compressor, is_debug)
@@ -284,6 +299,7 @@ for makefile.\n')
         objcopy = rreplace(ld, 'ld', 'objcopy', 1)
     if os.path.exists(outputfile):
         os.remove(outputfile)
+
     link_objects(obj_list, outputfile, base_addr, ld, objcopy, compressor,
                  is_debug)
 
