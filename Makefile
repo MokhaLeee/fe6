@@ -243,7 +243,7 @@ compare: $(ROM)
 	$(OBJCOPY) --strip-debug -O binary $< $@
 
 $(ELF): $(ALL_OBJS) $(LDS)
-	@echo "[LD]	$@"
+	@echo "[LD ]	$@"
 	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -R $(BANIM_OBJECT).sym.o -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
 
 CLEAN_FILES += $(ROM) $(ELF) $(MAP)

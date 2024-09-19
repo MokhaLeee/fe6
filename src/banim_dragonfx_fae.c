@@ -7,6 +7,7 @@
 #include "banim_data.h"
 #include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
+#include "constants/banims.h"
 
 struct ProcScr CONST_DATA ProcScr_EkrDragonFae[] =
 {
@@ -49,7 +50,7 @@ void EkrFae_StartTransfer(struct ProcEkrDragon * proc)
     struct BattleAnim * banim;
     int faction_pal = gBanimFactionPal[GetAnimPosition(proc->anim)];
 
-    banim = &banim_data[0x5B];
+    banim = &gBanimTable[BANIM_5B];
     LZ77UnCompWram(banim->pal, gPal_Banim);
 
     pos = GetAnimPosition(proc->anim);

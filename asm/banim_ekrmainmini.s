@@ -212,7 +212,7 @@ func_fe6_0804BAF0: @ 0x0804BAF0
 	ldr r3, .L0804BB48 @ =gUnk_08112298
 	ldrh r1, [r6, #6]
 	lsls r0, r1, #5
-	ldr r1, .L0804BB4C @ =banim_data
+	ldr r1, .L0804BB4C @ =gBanimTable
 	adds r0, r0, r1
 	ldr r1, [r0, #0xc]
 	ldr r2, [r6, #0x10]
@@ -247,7 +247,7 @@ func_fe6_0804BAF0: @ 0x0804BAF0
 	bx r0
 	.align 2, 0
 .L0804BB48: .4byte gUnk_08112298
-.L0804BB4C: .4byte banim_data
+.L0804BB4C: .4byte gBanimTable
 .L0804BB50: .4byte 0x000057F0
 
 	thumb_func_start func_fe6_0804BB54
@@ -259,7 +259,7 @@ func_fe6_0804BB54: @ 0x0804BB54
 	push {r5, r6, r7}
 	sub sp, #4
 	adds r6, r0, #0
-	ldr r0, .L0804BBD8 @ =banim_data
+	ldr r0, .L0804BBD8 @ =gBanimTable
 	mov sb, r0
 	ldr r2, .L0804BBDC @ =gUnk_08112298
 	ldrh r3, [r6, #8]
@@ -318,7 +318,7 @@ func_fe6_0804BB54: @ 0x0804BB54
 	adds r1, r4, r2
 	b .L0804BBF6
 	.align 2, 0
-.L0804BBD8: .4byte banim_data
+.L0804BBD8: .4byte gBanimTable
 .L0804BBDC: .4byte gUnk_08112298
 .L0804BBE0: .4byte AnimScr_DefaultAnim
 .L0804BBE4: .4byte 0x000057F0
@@ -437,7 +437,7 @@ func_fe6_0804BCC8: @ 0x0804BCC8
 	mov r6, r8
 	push {r6, r7}
 	adds r6, r0, #0
-	ldr r0, .L0804BD38 @ =banim_data
+	ldr r0, .L0804BD38 @ =gBanimTable
 	mov sb, r0
 	ldr r2, .L0804BD3C @ =gUnk_08112298
 	ldrh r1, [r6, #8]
@@ -488,7 +488,7 @@ func_fe6_0804BCC8: @ 0x0804BCC8
 	adds r1, r4, r2
 	b .L0804BD56
 	.align 2, 0
-.L0804BD38: .4byte banim_data
+.L0804BD38: .4byte gBanimTable
 .L0804BD3C: .4byte gUnk_08112298
 .L0804BD40: .4byte AnimScr_DefaultAnim
 .L0804BD44: .4byte 0x000057F0
