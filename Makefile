@@ -156,16 +156,12 @@ PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
 STRIPER        := $(BANIM_TOOLS)/strip.sh
 
-BANIM_OBJECT := banim.o
+BANIM_OBJECT := src/banim_data.o
 
-$(BANIM_OBJECT): $(shell ./tools/banimtools/banim_compressing_linker.py -t linker_script_banim.txt -m)
+$(BUILD_DIR)/$(BANIM_OBJECT): linker_script_banim.txt $(shell ./tools/banimtools/banim_compressing_linker.py -t linker_script_banim.txt -m)
 	@./tools/banimtools/banim_compressing_linker.py -o $@ -t linker_script_banim.txt -b 0x086A1000 -l $(LD) --objcopy $(OBJCOPY) -c ./tools/banimtools/compressor.py
 
 BANIM_LINK_SCR := ./linker_script_banim.txt
-
-banim: $(BANIM_OBJECT)
-
-CLEAN_FILES += $(BANIM_OBJECT) $(BANIM_OBJECT:%.o=%.*)
 
 %.stripped: %
 	@echo "[STP]	$@"
@@ -198,11 +194,18 @@ CLEAN_FILES += $(BANIM_OBJECT) $(BANIM_OBJECT:%.o=%.*)
 BANIM_GENERATED :=
 BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.o) $(ALL_BANIM_SCRS:%.s=%.o.bin) $(ALL_BANIM_SCRS:%.s=%.o.bin.lz) $(ALL_BANIM_SCRS:%.s=%.o.bin.lz.o)
 BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.script.bin) $(ALL_BANIM_SCRS:%.s=%.script.bin.lz) $(ALL_BANIM_SCRS:%.s=%.script.bin.lz.o)
 BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz.o)
-BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.lz)
-BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz) $(ALL_BANIM_PALS:%=%.lz.o) $(ALL_BANIM_PALS:%=%.lz.stripped) $(ALL_BANIM_PALS:%=%.lz.stripped.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.o)
+BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz) $(ALL_BANIM_PALS:%=%.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz.stripped) $(ALL_BANIM_PALS:%=%.lz.stripped.o)
 
 # CLEAN_FILES += $(BANIM_GENERATED)
+
+banim: $(BUILD_DIR)/$(BANIM_OBJECT)
+
+clean_banim:
+	rm -rf $(BUILD_DIR)/$(BANIM_OBJECT) $(BANIM_GENERATED)
 
 # ===========
 # = Targets =
@@ -220,7 +223,7 @@ C_OBJS := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
 ASM_OBJS := $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
 DATA_OBJS := $(DATA_SRCS:%.s=$(BUILD_DIR)/%.o)
 
-ALL_OBJS := $(C_OBJS) $(ASM_OBJS) $(DATA_OBJS)
+ALL_OBJS := $(C_OBJS) $(ASM_OBJS) $(DATA_OBJS) $(BUILD_DIR)/$(BANIM_OBJECT)
 ALL_DEPS := $(ALL_OBJS:%.o=%.d)
 
 SUBDIRS := $(sort $(dir $(ALL_OBJS)))
@@ -241,7 +244,7 @@ compare: $(ROM)
 
 $(ELF): $(ALL_OBJS) $(LDS)
 	@echo "[LD]	$@"
-	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
+	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -R $(BANIM_OBJECT).sym.o -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
 
 CLEAN_FILES += $(ROM) $(ELF) $(MAP)
 

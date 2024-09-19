@@ -58,7 +58,8 @@ def convert_binary_to_object(filename, objcopy, with_label, is_debug):
         elif label[1] == 'mode':
             label = f"BANIM_MODE_{label[0]}"
         else:
-            label = label[0] + '_' + label[1]
+            label = f"BANIM_SCR_{label[0]}"
+            # label = label[0] + '_' + label[1]
 
         cmd = '%s -I binary -O elf32-littlearm -B armv4t -S --add-symbol %s=.data:0 %s %s.o' \
             % (objcopy, label, filename, filename)
@@ -180,14 +181,11 @@ def process_input_object(filename, outputfile, section, base_addr, ld, objcopy,
                            ld, False, is_debug)
             filename_2 = dump_binary_from_object(outputfile + '.bak.o',
                                                  section, objcopy, is_debug)
-#            cmd = 'mv %s.bak.o %s' % (outputfile, outputfile)
-#            if is_debug:
-#                print(cmd)
-#            os.system(cmd)
-#            remove_section_in_object(outputfile, section, objcopy, is_debug)
 
-            # overwritten
-            filename = filename + '.bin'
+            if section == ".data.script":
+                filename = os.path.splitext(filename)[0] + '.script.bin'
+            else:
+                filename = filename + '.bin'
 
             cmd = 'cp %s %s' % (filename_2, filename)
             if is_debug:
