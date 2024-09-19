@@ -70,7 +70,6 @@ ASFLAGS := -mcpu=arm7tdmi $(INC_FLAG)
 LDS := $(BUILD_NAME).lds
 C_SRCS := $(wildcard $(SRC_DIR)/*.c)
 ASM_SRCS := $(wildcard $(SRC_DIR)/*.s) $(wildcard $(ASM_DIR)/*.s)
-LD_SRCS := $(wildcard lds/*.ld)
 DATA_SRCS := $(wildcard data/*.s)
 
 C_GENERATED :=
@@ -221,7 +220,7 @@ compare: $(ROM)
 	@echo "[OPY]	$@"
 	$(OBJCOPY) --strip-debug -O binary $< $@
 
-$(ELF): $(ALL_OBJS) $(LDS) $(LD_SRCS)
+$(ELF): $(ALL_OBJS) $(LDS)
 	@echo "[LD]	$@"
 	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
 
