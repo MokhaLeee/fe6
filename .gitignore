@@ -79,6 +79,7 @@ tools/agbcc
 *.oaml.bin
 *.oamr.bin
 *.mode.bin
+*.stripped
 
 # =========================
 # Dump Scripts Output

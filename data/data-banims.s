@@ -2269,7 +2269,7 @@ BANIM_IMG_notm_sw1_3: @ 0x0877F8F4
 
     .global BANIM_PAL_notm_sw1
 BANIM_PAL_notm_sw1: @ 0x0877FF18
-    .incbin "data/banims/notm_sw1/notm_sw1.agbpal_lz"
+    .incbin "data/banims/notm_sw1/notm_sw1.agbpal.lz.stripped"
 
     .global BANIM_OAML_notm_sw1
 BANIM_OAML_notm_sw1: @ 0x0877FF98
@@ -2305,7 +2305,7 @@ BANIM_IMG_notf_sw1_3: @ 0x08784E60
 
     .global BANIM_PAL_notf_sw1
 BANIM_PAL_notf_sw1: @ 0x08785480
-    .incbin "data/banims/notf_sw1/notf_sw1.agbpal_lz"
+    .incbin "data/banims/notf_sw1/notf_sw1.agbpal.lz.stripped"
 
     .global BANIM_OAML_notf_sw1
 BANIM_OAML_notf_sw1: @ 0x08785500
@@ -2337,7 +2337,7 @@ BANIM_IMG_notm_ar1_2: @ 0x08788BF4
 
     .global BANIM_PAL_notm_ar1
 BANIM_PAL_notm_ar1: @ 0x08789E74
-    .incbin "data/banims/notm_ar1/notm_ar1.agbpal_lz"
+    .incbin "data/banims/notm_ar1/notm_ar1.agbpal.lz.stripped"
 
     .global BANIM_OAML_notm_ar1
 BANIM_OAML_notm_ar1: @ 0x08789EF4
@@ -2369,7 +2369,7 @@ BANIM_IMG_notf_ar1_2: @ 0x0878DAC8
 
     .global BANIM_PAL_notf_ar1
 BANIM_PAL_notf_ar1: @ 0x0878ED70
-    .incbin "data/banims/notf_ar1/notf_ar1.agbpal_lz"
+    .incbin "data/banims/notf_ar1/notf_ar1.agbpal.lz.stripped"
 
     .global BANIM_OAML_notf_ar1
 BANIM_OAML_notf_ar1: @ 0x0878EDF0
@@ -2389,7 +2389,7 @@ BANIM_MODE_notf_ar1: @ 0x087908DC
 
     .global BANIM_PAL_notm_ar1_2
 BANIM_PAL_notm_ar1_2: @ 0x0879093C
-    .incbin "data/banims/notf_ar1/notf_ar1.agbpal_lz"
+    .incbin "data/banims/notf_ar1/notf_ar1.agbpal.lz.stripped"
 
     .global BANIM_OAML_notm_ar1_2
 BANIM_OAML_notm_ar1_2: @ 0x087909BC
@@ -2409,7 +2409,7 @@ BANIM_MODE_notm_ar1_2: @ 0x08790C2C
 
     .global BANIM_PAL_notf_ar1_2
 BANIM_PAL_notf_ar1_2: @ 0x08790C8C
-    .incbin "data/banims/notm_ar1/notm_ar1.agbpal_lz"
+    .incbin "data/banims/notm_ar1/notm_ar1.agbpal.lz.stripped"
 
     .global BANIM_OAML_notf_ar1_2
 BANIM_OAML_notf_ar1_2: @ 0x08790D0C

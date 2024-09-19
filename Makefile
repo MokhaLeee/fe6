@@ -154,6 +154,7 @@ LZSS_COMPRESS  := $(PYTHON) $(BANIM_TOOLS)/lzss_compress.py
 PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
+STRIPER        := $(BANIM_TOOLS)/strip.sh
 
 BANIM_OBJECT := banim.o
 
@@ -165,6 +166,10 @@ BANIM_LINK_SCR := ./linker_script_banim.txt
 banim: $(BANIM_OBJECT)
 
 CLEAN_FILES += $(BANIM_OBJECT) $(BANIM_OBJECT:%.o=%.*)
+
+%.stripped: %
+	@echo "[STP]	$@"
+	@$(STRIPER) $< $@
 
 %.oamr.elf: %.o
 	@echo "[LD ]	$@"
@@ -195,7 +200,7 @@ BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.o) $(ALL_BANIM_SCRS:%.s=%.o.bin) $(ALL
 BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz.o)
 BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz.o)
 BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.lz)
-BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz) $(ALL_BANIM_PALS:%=%.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz) $(ALL_BANIM_PALS:%=%.lz.o) $(ALL_BANIM_PALS:%=%.lz.stripped) $(ALL_BANIM_PALS:%=%.lz.stripped.o)
 
 # CLEAN_FILES += $(BANIM_GENERATED)
 

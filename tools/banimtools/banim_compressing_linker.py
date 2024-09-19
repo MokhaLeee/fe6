@@ -199,9 +199,7 @@ def process_input_object(filename, outputfile, section, base_addr, ld, objcopy,
 
 def link_objects(obj_list, outputfile, base_addr,
                  ld, objcopy, compressor, is_debug):
-#    os.mkdir('link_temp')
-#    os.chdir('link_temp')
-    # handle the first object
+
     total_number = len(obj_list)
     filename = obj_list[0][0]
     comptype = obj_list[0][2]
