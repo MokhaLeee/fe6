@@ -3,8 +3,7 @@
 .include "gba_sprites.inc"
 
 .section .data.oamr
-.global BANIM_OAMR_godd_hk1
-BANIM_OAMR_godd_hk1:
+@ BANIM_OAMR_godd_hk1:
 OAMR:
 OAMR_0:
     ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x1008, -11, 0
@@ -117,8 +116,7 @@ OAMR_11:
     ANIM_SPRITE_END
 
 .section .data.oaml
-.global BANIM_OAML_godd_hk1
-BANIM_OAML_godd_hk1:
+@ BANIM_OAML_godd_hk1:
 OAML:
 OAML_0:
     ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x1008, -21, 0
@@ -231,27 +229,25 @@ OAML_11:
     ANIM_SPRITE_END
 
 .section .data.script
-.global BANIM_SCR_godd_hk1
-BANIM_SCR_godd_hk1:
+@ BANIM_SCR_godd_hk1:
 SCR:
 SCR_NORMAL_ATK:
-    ANIMSCR_FRAME 0x09, _data_BANIM_IMG_godd_hk1_0_start, 0x00, OAMR_0 - OAMR
-    ANIMSCR_FRAME 0x04, _data_BANIM_IMG_godd_hk1_0_start, 0x01, OAMR_1 - OAMR
-    ANIMSCR_FRAME 0x02, _data_BANIM_IMG_godd_hk1_0_start, 0x02, OAMR_2 - OAMR
-    ANIMSCR_FRAME 0x02, _data_BANIM_IMG_godd_hk1_0_start, 0x03, OAMR_3 - OAMR
-    ANIMSCR_FRAME 0x04, _data_BANIM_IMG_godd_hk1_0_start, 0x04, OAMR_4 - OAMR
-    ANIMSCR_FRAME 0x04, _data_BANIM_IMG_godd_hk1_1_start, 0x05, OAMR_5 - OAMR
-    ANIMSCR_FRAME 0x04, _data_BANIM_IMG_godd_hk1_1_start, 0x06, OAMR_6 - OAMR
-    ANIMSCR_FRAME 0x02, _data_BANIM_IMG_godd_hk1_1_start, 0x07, OAMR_7 - OAMR
-    ANIMSCR_FRAME 0x02, _data_BANIM_IMG_godd_hk1_1_start, 0x08, OAMR_8 - OAMR
-    ANIMSCR_FRAME 0x02, _data_BANIM_IMG_godd_hk1_1_start, 0x09, OAMR_9 - OAMR
-    ANIMSCR_FRAME 0x02, _data_BANIM_IMG_godd_hk1_1_start, 0x0A, OAMR_10 - OAMR
-    ANIMSCR_FRAME 0x01, _data_BANIM_IMG_godd_hk1_1_start, 0x0B, OAMR_11 - OAMR
+    ANIMSCR_FRAME 0x09, BANIM_IMG_godd_hk1_0, 0x00, OAMR_0 - OAMR
+    ANIMSCR_FRAME 0x04, BANIM_IMG_godd_hk1_0, 0x01, OAMR_1 - OAMR
+    ANIMSCR_FRAME 0x02, BANIM_IMG_godd_hk1_0, 0x02, OAMR_2 - OAMR
+    ANIMSCR_FRAME 0x02, BANIM_IMG_godd_hk1_0, 0x03, OAMR_3 - OAMR
+    ANIMSCR_FRAME 0x04, BANIM_IMG_godd_hk1_0, 0x04, OAMR_4 - OAMR
+    ANIMSCR_FRAME 0x04, BANIM_IMG_godd_hk1_1, 0x05, OAMR_5 - OAMR
+    ANIMSCR_FRAME 0x04, BANIM_IMG_godd_hk1_1, 0x06, OAMR_6 - OAMR
+    ANIMSCR_FRAME 0x02, BANIM_IMG_godd_hk1_1, 0x07, OAMR_7 - OAMR
+    ANIMSCR_FRAME 0x02, BANIM_IMG_godd_hk1_1, 0x08, OAMR_8 - OAMR
+    ANIMSCR_FRAME 0x02, BANIM_IMG_godd_hk1_1, 0x09, OAMR_9 - OAMR
+    ANIMSCR_FRAME 0x02, BANIM_IMG_godd_hk1_1, 0x0A, OAMR_10 - OAMR
+    ANIMSCR_FRAME 0x01, BANIM_IMG_godd_hk1_1, 0x0B, OAMR_11 - OAMR
     ANIMSCR_BLOCKED
 
 
 .section .data.modes
-.global BANIM_MODES_godd_hk1
-BANIM_MODES_godd_hk1:
+@ BANIM_MODES_godd_hk1:
     .word SCR_NORMAL_ATK - SCR
     .word 0x0

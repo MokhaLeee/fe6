@@ -70,7 +70,6 @@ ASFLAGS := -mcpu=arm7tdmi $(INC_FLAG)
 LDS := $(BUILD_NAME).lds
 C_SRCS := $(wildcard $(SRC_DIR)/*.c)
 ASM_SRCS := $(wildcard $(SRC_DIR)/*.s) $(wildcard $(ASM_DIR)/*.s)
-LD_SRCS := $(wildcard lds/*.ld)
 DATA_SRCS := $(wildcard data/*.s)
 
 C_GENERATED :=
@@ -140,7 +139,7 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 	@echo "[LZ ]	$@"
 	@$(GBAGFX) $< $@
 
-CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz)
+CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz) $(PNG_FILES:%.png=%.4bpp.lz.o)
 CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
 
 # ==============
@@ -155,6 +154,18 @@ LZSS_COMPRESS  := $(PYTHON) $(BANIM_TOOLS)/lzss_compress.py
 PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
+STRIPER        := $(BANIM_TOOLS)/strip.sh
+
+BANIM_OBJECT := src/banim_data.o
+
+$(BUILD_DIR)/$(BANIM_OBJECT): linker_script_banim.txt $(shell ./tools/banimtools/banim_compressing_linker.py -t linker_script_banim.txt -m)
+	@./tools/banimtools/banim_compressing_linker.py -o $@ -t linker_script_banim.txt -b 0x086A1000 -l $(LD) --objcopy $(OBJCOPY) -c ./tools/banimtools/compressor.py
+
+BANIM_LINK_SCR := ./linker_script_banim.txt
+
+%.stripped: %
+	@echo "[STP]	$@"
+	@$(STRIPER) $< $@
 
 %.oamr.elf: %.o
 	@echo "[LD ]	$@"
@@ -180,11 +191,21 @@ FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
 	@echo "[OPY]	$@"
 	@$(OBJCOPY) --only-section=.data.modes -O binary $< $@
 
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.o)
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz)
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz)
-CLEAN_FILES += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.lz)
-CLEAN_FILES += $(ALL_BANIM_PALS:%=%.lz)
+BANIM_GENERATED :=
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.o) $(ALL_BANIM_SCRS:%.s=%.o.bin) $(ALL_BANIM_SCRS:%.s=%.o.bin.lz) $(ALL_BANIM_SCRS:%.s=%.o.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oamr.elf) $(ALL_BANIM_SCRS:%.s=%.oamr.bin) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oamr.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.script.bin) $(ALL_BANIM_SCRS:%.s=%.script.bin.lz) $(ALL_BANIM_SCRS:%.s=%.script.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.oaml.elf) $(ALL_BANIM_SCRS:%.s=%.oaml.bin) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz) $(ALL_BANIM_SCRS:%.s=%.oaml.bin.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_SCRS:%.s=%.mode.elf) $(ALL_BANIM_SCRS:%.s=%.mode.bin) $(ALL_BANIM_SCRS:%.s=%.mode.bin.o)
+BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz) $(ALL_BANIM_PALS:%=%.lz.o)
+BANIM_GENERATED += $(ALL_BANIM_PALS:%=%.lz.stripped) $(ALL_BANIM_PALS:%=%.lz.stripped.o)
+
+# CLEAN_FILES += $(BANIM_GENERATED)
+
+banim: $(BUILD_DIR)/$(BANIM_OBJECT)
+
+clean_banim:
+	rm -rf $(BUILD_DIR)/$(BANIM_OBJECT) $(BANIM_GENERATED)
 
 # ===========
 # = Targets =
@@ -202,7 +223,7 @@ C_OBJS := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
 ASM_OBJS := $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
 DATA_OBJS := $(DATA_SRCS:%.s=$(BUILD_DIR)/%.o)
 
-ALL_OBJS := $(C_OBJS) $(ASM_OBJS) $(DATA_OBJS)
+ALL_OBJS := $(C_OBJS) $(ASM_OBJS) $(DATA_OBJS) $(BUILD_DIR)/$(BANIM_OBJECT)
 ALL_DEPS := $(ALL_OBJS:%.o=%.d)
 
 SUBDIRS := $(sort $(dir $(ALL_OBJS)))
@@ -221,9 +242,9 @@ compare: $(ROM)
 	@echo "[OPY]	$@"
 	$(OBJCOPY) --strip-debug -O binary $< $@
 
-$(ELF): $(ALL_OBJS) $(LDS) $(LD_SRCS)
-	@echo "[LD]	$@"
-	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
+$(ELF): $(ALL_OBJS) $(LDS)
+	@echo "[LD ]	$@"
+	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -R $(BANIM_OBJECT).sym.o -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
 
 CLEAN_FILES += $(ROM) $(ELF) $(MAP)
 
@@ -272,6 +293,7 @@ CLEAN_DIRS += $(shell find . -type d -name "__pycache__")
 
 clean:
 	@rm -f $(CLEAN_FILES)
+	@rm -f $(BANIM_GENERATED)
 	@rm -rf $(CLEAN_DIRS)
 	@echo "all cleaned..."
 

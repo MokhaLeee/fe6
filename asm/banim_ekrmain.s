@@ -147,7 +147,7 @@ UpdateBanimFrame: @ 0x0804B048
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r0, .L0804B0F8 @ =banim_data
+	ldr r0, .L0804B0F8 @ =gBanimTable
 	mov sl, r0
 	ldr r1, .L0804B0FC @ =gpImgSheet
 	movs r0, #0
@@ -168,7 +168,7 @@ UpdateBanimFrame: @ 0x0804B048
 	movs r1, #0
 	ldrsh r4, [r0, r1]
 	lsls r0, r7, #5
-	ldr r2, .L0804B0F8 @ =banim_data
+	ldr r2, .L0804B0F8 @ =gBanimTable
 	adds r6, r0, r2
 	ldr r0, [r6, #0x10]
 	ldr r1, .L0804B110 @ =gUnk_Banim_0200F1C0
@@ -180,7 +180,7 @@ UpdateBanimFrame: @ 0x0804B048
 	movs r1, #0
 	bl GetBanimPalette
 	lsls r0, r0, #5
-	ldr r1, .L0804B0F8 @ =banim_data
+	ldr r1, .L0804B0F8 @ =gBanimTable
 	adds r0, r0, r1
 	ldr r0, [r0, #0x1c]
 	ldr r5, .L0804B118 @ =gUnk_Banim_02004080
@@ -223,7 +223,7 @@ UpdateBanimFrame: @ 0x0804B048
 	bl LZ77UnCompWram
 	b .L0804B138
 	.align 2, 0
-.L0804B0F8: .4byte banim_data
+.L0804B0F8: .4byte gBanimTable
 .L0804B0FC: .4byte gpImgSheet
 .L0804B100: .4byte gBanimValid
 .L0804B104: .4byte gBanimIdx
