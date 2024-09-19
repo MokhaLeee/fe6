@@ -155,6 +155,14 @@ PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
 
+BANIM_OBJECT := banim.o
+
+$(BANIM_OBJECT): $(shell ./tools/banimtools/arm_compressing_linker.py -t linker_script_banim.txt -m)
+	@./tools/banimtools/arm_compressing_linker.py -o $@ -t linker_script_banim.txt -b 0x086A1000 -l $(LD) --objcopy $(OBJCOPY) -c ./tools/banimtools/compressor.py
+
+BANIM_LINK_SCR := ./linker_script_banim.txt
+
+
 %.oamr.elf: %.o
 	@echo "[LD ]	$@"
 	@$(LD) -T $(BANIM_TOOLS)/link_oamr.ld -o $@ $<

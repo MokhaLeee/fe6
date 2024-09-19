@@ -57,7 +57,7 @@ def create_image_from_4bpp(img_data, pal_bytes, width, height):
     return img
 
 def dump_banim_pal(pal_bytes, _abbr_str, out_dir):
-    pal_fpath = f"{out_dir}/BANIM_PAL_{_abbr_str}.agbpal"
+    pal_fpath = f"{out_dir}/{_abbr_str}.agbpal"
     if not os.path.exists(pal_fpath):
         with open(pal_fpath, 'wb') as fpal:
             fpal.write(pal_bytes)
@@ -79,7 +79,7 @@ def dump_banim_frames(prefix, _abbr_str, anim_frames, all_symbols, pal_addr, out
             img_data = array.array('B', img_bytes)
             img = create_image_from_4bpp(img_data, pal_bytes, 256, 64)
 
-            frame_name = f"BANIM_IMG_{prefix}_{i}"
+            frame_name = f"{prefix}_{i}"
             fpath = f"{out_dir}/{frame_name}.png"
 
 

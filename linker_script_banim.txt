@@ -1,0 +1,6 @@
+data/banims/armm_sp1/BANIM_IMG_armm_sp1_0.4bpp.lz
+data/banims/armm_sp1/BANIM_IMG_armm_sp1_1.4bpp.lz
+data/banims/armm_sp1/BANIM_IMG_armm_sp1_2.4bpp.lz
+data/banims/armm_sp1/BANIM_PAL_armm_sp1.agbpal.lz
+data/banims/armm_sp1/armm_sp1.oaml.bin.lz
+data/banims/armm_sp1/armm_sp1.oamr.bin.lz

@@ -163,12 +163,13 @@ def main(args):
             end = sorted_symbols[i + 1].ptr & 0x00FFFFFF
 
         if symbol.name[0:9] == "BANIM_IMG":
-            print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.name}.4bpp.lz\"")
+            print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.name[10:]}.4bpp.lz\"")
         elif symbol.name[0:9] == "BANIM_PAL":
             if symbol.ptr in overlayed_ptrs:
-                print(f"    .incbin \"fe6-base.gba\", 0x{cur:06X}, 0x{end:06X} - 0x{cur:06X}")
+                # print(f"    .incbin \"fe6-base.gba\", 0x{cur:06X}, 0x{end:06X} - 0x{cur:06X}")
+                print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol._abbr}.agbpal_lz\"")
             else:
-                print(f"    .incbin \"data/banims/{symbol._abbr}/BANIM_PAL_{symbol._abbr}.agbpal.lz\"")
+                print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol._abbr}.agbpal.lz\"")
 
         elif symbol.name[0:10] == "BANIM_OAMR":
             print(f"    .incbin \"data/banims/{symbol._abbr}/{symbol.prefix}.oamr.bin.lz\"")
