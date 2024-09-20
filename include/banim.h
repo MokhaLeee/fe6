@@ -345,12 +345,26 @@ void EfxDeadAlpha_Loop(struct ProcEfxDead * proc);
 void NewEfxDeadDragonAlpha(struct BaSprite * anim1, struct BaSprite * anim2);
 void EfxDeadDragonAlpha_Loop(struct ProcEfxDead * proc);
 
-void NewEfxFarAttackWithDistance(struct BaSprite * anim, int);
-// func_fe6_08045D6C
-// func_fe6_08045DA4
-// func_fe6_08045DDC
-// func_fe6_08045E50
-// func_fe6_08045EE8
+struct ProcEfxFarAttack
+{
+    /* 00 */ PROC_HEADER;
+    /* 29 */ u8 pos;
+    /* 2A */ u16 unk_2a;
+    /* 2C */ i16 timer;
+    /* 2E */ i16 unk_2e;
+    /* 30 */ i16 terminator;
+    /* 32 */ i16 unk_32;
+    /* 34 */ i16 unk_34;
+    /* 36 */ i16 unk_36;
+    /* 38 */ i16 unk_38;
+};
+
+void NewEfxFarAttackWithDistance(struct Anim * anim, i16);
+void func_fe6_08045D6C(struct ProcEfxFarAttack * unused, int x);
+void func_fe6_08045DA4(struct ProcEfxFarAttack * proc);
+void func_fe6_08045DDC(struct ProcEfxFarAttack * proc);
+void func_fe6_08045E50(struct ProcEfxFarAttack * proc);
+void func_fe6_08045EE8(int);
 
 struct ProcEfxQuake {
     /* 00 */ PROC_HEADER;
@@ -719,7 +733,7 @@ void SetAnimStateUnHidden(int pos);
 // func_fe6_0804C478
 void SetBanimArenaFlag(int flag);
 int GetBattleAnimArenaFlag(void);
-// func_fe6_0804C50C
+void func_fe6_0804C50C(int x);
 void PlayDeathSoundForArena(void);
 void func_fe6_0804C56C(void);
 void BeginAnimsOnBattle_Arena(void);
