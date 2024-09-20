@@ -392,7 +392,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0805E83E:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x33
@@ -417,7 +417,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0805E872:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x43
@@ -690,7 +690,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe2
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0805EAA6:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x30
@@ -707,7 +707,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe2
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0805EACA:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x3c
@@ -734,7 +734,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe2
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0805EB04:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x5b

@@ -128,8 +128,8 @@ func_fe6_08056AD8: @ 0x08056AD8
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08056B08
-func_fe6_08056B08: @ 0x08056B08
+	thumb_func_start NewEfxPierceCritical
+NewEfxPierceCritical: @ 0x08056B08
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_SetBG1Position
@@ -280,8 +280,8 @@ func_fe6_08056C00: @ 0x08056C00
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08056C3C
-func_fe6_08056C3C: @ 0x08056C3C
+	thumb_func_start NewEfxNormalEffect
+NewEfxNormalEffect: @ 0x08056C3C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_SetBG1Position

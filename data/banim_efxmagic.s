@@ -2,96 +2,8 @@
 	.include "animscr.inc"
 	.section .data
 
-	.global gUnk_085CCC40
-gUnk_085CCC40: @ 085CCC40
-	.incbin "fe6-base.gba", 0x5CCC40, (0x5CCDAC - 0x5CCC40) @ length: 016C
-
-	.global gUnk_085CCDAC
-gUnk_085CCDAC: @ 085CCDAC
-	.incbin "fe6-base.gba", 0x5CCDAC, (0x5CCE38 - 0x5CCDAC) @ length: 008C
-
-	.global gUnk_085CCE38
-gUnk_085CCE38: @ 085CCE38
-	.incbin "fe6-base.gba", 0x5CCE38, (0x5CCEB8 - 0x5CCE38) @ length: 0080
-
-	.global gUnk_085CCEB8
-gUnk_085CCEB8: @ 085CCEB8
-	.incbin "fe6-base.gba", 0x5CCEB8, (0x5CCF38 - 0x5CCEB8) @ length: 0080
-
-	.global gUnk_085CCF38
-gUnk_085CCF38: @ 085CCF38
-	.incbin "fe6-base.gba", 0x5CCF38, (0x5CDCA4 - 0x5CCF38) @ length: 0D6C
-
-	.global gUnk_085CDCA4
-gUnk_085CDCA4: @ 085CDCA4
-	.incbin "fe6-base.gba", 0x5CDCA4, (0x5CDD18 - 0x5CDCA4) @ length: 0074
-
-	.global gUnk_085CDD18
-gUnk_085CDD18: @ 085CDD18
-	.incbin "fe6-base.gba", 0x5CDD18, (0x5D0DA0 - 0x5CDD18) @ length: 3088
-
-	.global gUnk_085D0DA0
-gUnk_085D0DA0: @ 085D0DA0
-	.incbin "fe6-base.gba", 0x5D0DA0, (0x5D0E80 - 0x5D0DA0) @ length: 00EC
-
-AnimSprite_ManaketeFlame:
-    ANIM_SPRITE_END
-
-	.global AnimScr_ManaketeFlame
-AnimScr_ManaketeFlame: @ 085D0E8C
-    ANIMSCR_FORCE_SPRITE AnimSprite_ManaketeFlame, 1
-    ANIMSCR_BLOCKED
-
-	.global gUnk_085D0E94
-gUnk_085D0E94: @ 085D0E94
-	.incbin "fe6-base.gba", 0x5D0E94, (0x5D0EB4 - 0x5D0E94) @ length: 0020
-
-	.global gUnk_085D0EB4
-gUnk_085D0EB4: @ 085D0EB4
-	.incbin "fe6-base.gba", 0x5D0EB4, (0x5D0ED4 - 0x5D0EB4) @ length: 0020
-
-	.global gUnk_085D0ED4
-gUnk_085D0ED4: @ 085D0ED4
-	.incbin "fe6-base.gba", 0x5D0ED4, (0x5D0EEC - 0x5D0ED4) @ length: 0018
-
-	.global gUnk_085D0EEC
-gUnk_085D0EEC: @ 085D0EEC
-	.incbin "fe6-base.gba", 0x5D0EEC, (0x5D0F0C - 0x5D0EEC) @ length: 0020
-
-	.global gUnk_085D0F0C
-gUnk_085D0F0C: @ 085D0F0C
-	.incbin "fe6-base.gba", 0x5D0F0C, (0x5D0F24 - 0x5D0F0C) @ length: 0018
-
-	.global gUnk_085D0F24
-gUnk_085D0F24: @ 085D0F24
-	.incbin "fe6-base.gba", 0x5D0F24, (0x5D0F3C - 0x5D0F24) @ length: 0018
-
-	.global gUnk_085D0F3C
-gUnk_085D0F3C: @ 085D0F3C
-	.incbin "fe6-base.gba", 0x5D0F3C, (0x5D0F54 - 0x5D0F3C) @ length: 0018
-
-	.global gUnk_085D0F54
-gUnk_085D0F54: @ 085D0F54
-	.incbin "fe6-base.gba", 0x5D0F54, (0x5D0F6C - 0x5D0F54) @ length: 0018
-
-	.global gUnk_085D0F6C
-gUnk_085D0F6C: @ 085D0F6C
-	.incbin "fe6-base.gba", 0x5D0F6C, (0x5D0F84 - 0x5D0F6C) @ length: 0018
-
-	.global gUnk_085D0F84
-gUnk_085D0F84: @ 085D0F84
-	.incbin "fe6-base.gba", 0x5D0F84, (0x5D0FA4 - 0x5D0F84) @ length: 0020
-
-	.global gUnk_085D0FA4
-gUnk_085D0FA4: @ 085D0FA4
-	.incbin "fe6-base.gba", 0x5D0FA4, (0x5D0FBC - 0x5D0FA4) @ length: 0018
-
-	.global gUnk_085D0FBC
-gUnk_085D0FBC: @ 085D0FBC
-	.incbin "fe6-base.gba", 0x5D0FBC, (0x5D0FDC - 0x5D0FBC) @ length: 0020
-
-	.global gUnk_085D0FDC
-gUnk_085D0FDC: @ 085D0FDC
+	.global ProcScr_EfxArrow
+ProcScr_EfxArrow: @ 085D0FDC
 	.incbin "fe6-base.gba", 0x5D0FDC, (0x5D0FF4 - 0x5D0FDC) @ length: 0018
 
 	.global gUnk_085D0FF4
@@ -1114,28 +1026,28 @@ gUnk_085D3A90: @ 085D3A90
 gUnk_085D3AB0: @ 085D3AB0
 	.incbin "fe6-base.gba", 0x5D3AB0, (0x5D3DB0 - 0x5D3AB0) @ length: 0300
 
-	.global gUnk_085D3DB0
-gUnk_085D3DB0: @ 085D3DB0
+	.global AnimScr_TeonoObjCloseRight
+AnimScr_TeonoObjCloseRight: @ 085D3DB0
 	.incbin "fe6-base.gba", 0x5D3DB0, (0x5D3E0C - 0x5D3DB0) @ length: 005C
 
-	.global gUnk_085D3E0C
-gUnk_085D3E0C: @ 085D3E0C
+	.global AnimScr_TeonoObjFarRight
+AnimScr_TeonoObjFarRight: @ 085D3E0C
 	.incbin "fe6-base.gba", 0x5D3E0C, (0x5D3E2C - 0x5D3E0C) @ length: 0020
 
-	.global gUnk_085D3E2C
-gUnk_085D3E2C: @ 085D3E2C
+	.global AnimScr_TeonoObj2Right
+AnimScr_TeonoObj2Right: @ 085D3E2C
 	.incbin "fe6-base.gba", 0x5D3E2C, (0x5D4148 - 0x5D3E2C) @ length: 031C
 
-	.global gUnk_085D4148
-gUnk_085D4148: @ 085D4148
+	.global AnimScr_TeonoObjCloseLeft
+AnimScr_TeonoObjCloseLeft: @ 085D4148
 	.incbin "fe6-base.gba", 0x5D4148, (0x5D41A4 - 0x5D4148) @ length: 005C
 
-	.global gUnk_085D41A4
-gUnk_085D41A4: @ 085D41A4
+	.global AnimScr_TeonoObjFarLeft
+AnimScr_TeonoObjFarLeft: @ 085D41A4
 	.incbin "fe6-base.gba", 0x5D41A4, (0x5D41C4 - 0x5D41A4) @ length: 0020
 
-	.global gUnk_085D41C4
-gUnk_085D41C4: @ 085D41C4
+	.global AnimScr_TeonoObj2Left
+AnimScr_TeonoObj2Left: @ 085D41C4
 	.incbin "fe6-base.gba", 0x5D41C4, (0x5D4264 - 0x5D41C4) @ length: 00A0
 
 	.global gUnk_085D4264

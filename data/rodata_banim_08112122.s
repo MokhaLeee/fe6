@@ -522,12 +522,12 @@ gUnk_0811AF9E: @ 0811AF9E
 gUnk_0811AFA4: @ 0811AFA4
 	.incbin "fe6-base.gba", 0x11AFA4, (0x11AFE8 - 0x11AFA4) @ length: 0044
 
-	.global gUnk_0811AFE8
-gUnk_0811AFE8: @ 0811AFE8
+	.global Img_TeonoOBJ
+Img_TeonoOBJ: @ 0811AFE8
 	.incbin "fe6-base.gba", 0x11AFE8, (0x11B3E8 - 0x11AFE8) @ length: 0400
 
-	.global gUnk_0811B3E8
-gUnk_0811B3E8: @ 0811B3E8
+	.global Pal_TeonoOBJ
+Pal_TeonoOBJ: @ 0811B3E8
 	.incbin "fe6-base.gba", 0x11B3E8, (0x11B408 - 0x11B3E8) @ length: 0020
 
 	.global gUnk_0811B408

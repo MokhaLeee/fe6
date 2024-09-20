@@ -4,9 +4,9 @@
 #include "banim.h"
 #include "banim_ekrdragon.h"
 
-struct ProcScr CONST_DATA ProcScr_efxFarAttack[] =
+struct ProcScr CONST_DATA ProcScr_EfxFarAttack[] =
 {
-    PROC_19,
+    PROC_NAME_DEBUG("efxFarAttack"),
     PROC_REPEAT(func_fe6_08045DA4),
     PROC_REPEAT(func_fe6_08045DDC),
     PROC_REPEAT(func_fe6_08045E50),
@@ -22,7 +22,7 @@ void NewEfxFarAttackWithDistance(struct Anim * anim, i16 arg)
     {
         case EKR_DISTANCE_FAR:
         case EKR_DISTANCE_FARFAR:
-            proc = SpawnProc(ProcScr_efxFarAttack, PROC_TREE_3);
+            proc = SpawnProc(ProcScr_EfxFarAttack, PROC_TREE_3);
             proc->pos = GetAnimPosition(anim);
             proc->timer = 0;
 

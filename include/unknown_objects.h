@@ -324,8 +324,8 @@ extern u16 const Pal_LevelUpFrame[]; // pal (stat gains)
 // extern ??? gUnk_0811AF5C
 // extern ??? gUnk_0811AF9E
 // extern ??? gUnk_0811AFA4
-// extern ??? gUnk_0811AFE8
-// extern ??? gUnk_0811B3E8
+extern const u8 Img_TeonoOBJ[];
+extern const u16 Pal_TeonoOBJ[];
 // extern ??? gUnk_0811B408
 // extern ??? gUnk_0811B444
 // extern ??? gUnk_0811B674

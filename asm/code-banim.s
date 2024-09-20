@@ -1068,7 +1068,7 @@ NewEfxFlashFX: @ 0x080575E8
 	ldrsh r2, [r0, r3]
 	movs r0, #0xee
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -1098,7 +1098,7 @@ func_fe6_0805765C: @ 0x0805765C
 	ldrsh r2, [r0, r3]
 	movs r0, #0xee
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L08057680:
 	movs r0, #0x2c
 	ldrsh r1, [r4, r0]
@@ -1160,7 +1160,7 @@ NewEfxSongOBJ2: @ 0x080576AC
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe1
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -1415,7 +1415,7 @@ func_fe6_08057860: @ 0x08057860
 	movs r0, #0xf0
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	bl func_fe6_0805792C
 .L08057916:
@@ -1470,7 +1470,7 @@ func_fe6_0805794C: @ 0x0805794C
 	ldr r0, [r6, #0x5c]
 	ldr r2, .L0805797C @ =func_fe6_08057A34
 	movs r1, #0x2d
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	bl func_fe6_08057A5C
 	b .L080579B6
 	.align 2, 0
@@ -1569,7 +1569,7 @@ func_fe6_08057A34: @ 0x08057A34
 	cmp r0, #0
 	bne .L08057A4E
 	ldr r3, .L08057A54 @ =0x04000016
-	ldr r2, .L08057A58 @ =gUnk_Banim_0201E3E0
+	ldr r2, .L08057A58 @ =gpBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -1580,7 +1580,7 @@ func_fe6_08057A34: @ 0x08057A34
 	.align 2, 0
 .L08057A50: .4byte 0x04000004
 .L08057A54: .4byte 0x04000016
-.L08057A58: .4byte gUnk_Banim_0201E3E0
+.L08057A58: .4byte gpBg1ScrollOffset
 
 	thumb_func_start func_fe6_08057A5C
 func_fe6_08057A5C: @ 0x08057A5C
@@ -1605,17 +1605,17 @@ func_fe6_08057A7C: @ 0x08057A7C
 	mov r6, r8
 	push {r6, r7}
 	mov sb, r0
-	ldr r0, .L08057AD8 @ =gUnk_Banim_0201E3D8
+	ldr r0, .L08057AD8 @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r5, .L08057ADC @ =gUnk_Banim_0201E158
+	ldr r5, .L08057ADC @ =gpBg2ScrollOffsetTable1
 	cmp r0, #0
 	bne .L08057A92
-	ldr r5, .L08057AE0 @ =gUnk_Banim_0201E298
+	ldr r5, .L08057AE0 @ =gpBg2ScrollOffsetTable2
 .L08057A92:
-	ldr r4, .L08057AE4 @ =gUnk_Banim_0201E3E4
+	ldr r4, .L08057AE4 @ =gpBg1ScrollOffsetList1
 	cmp r0, #0
 	bne .L08057A9A
-	ldr r4, .L08057AE8 @ =gUnk_Banim_0201E524
+	ldr r4, .L08057AE8 @ =gpBg1ScrollOffsetList2
 .L08057A9A:
 	movs r3, #0
 	movs r0, #0
@@ -1649,11 +1649,11 @@ func_fe6_08057A7C: @ 0x08057A7C
 	lsls r0, r0, #0x10
 	b .L08057AFA
 	.align 2, 0
-.L08057AD8: .4byte gUnk_Banim_0201E3D8
-.L08057ADC: .4byte gUnk_Banim_0201E158
-.L08057AE0: .4byte gUnk_Banim_0201E298
-.L08057AE4: .4byte gUnk_Banim_0201E3E4
-.L08057AE8: .4byte gUnk_Banim_0201E524
+.L08057AD8: .4byte gEkrBg1ScrollFlip
+.L08057ADC: .4byte gpBg2ScrollOffsetTable1
+.L08057AE0: .4byte gpBg2ScrollOffsetTable2
+.L08057AE4: .4byte gpBg1ScrollOffsetList1
+.L08057AE8: .4byte gpBg1ScrollOffsetList2
 .L08057AEC: .4byte gUnk_085D37B4
 .L08057AF0: .4byte 0x0000FF78
 .L08057AF4:
