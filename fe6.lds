@@ -570,6 +570,7 @@ SECTIONS
         src/banim_dragonfx_fae.o(.text);
         src/banim_dragonfx_idunn.o(.text);
         asm/banim_dragonfx.o(.text);
+        src/banim_efxutils.o(.text);
         asm/banim_efxutils.o(.text);
         asm/banim_efxsound.o(.text);
         asm/banim_ekrclasschg.o(.text);
@@ -685,6 +686,8 @@ SECTIONS
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
+        . = ALIGN(4); src/banim_efxutils.o(.rodata);
+        . = ALIGN(4); data/rodata_banim_081C9EF4.o(.rodata);
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
         . = ALIGN(4); data/rodata_279E60.o(.rodata);
@@ -786,6 +789,7 @@ SECTIONS
         . = ALIGN(4); src/banim_dragonfx_fae.o(.data);
         . = ALIGN(4); src/banim_dragonfx_idunn.o(.data);
         . = ALIGN(4); data/data-banim-dragon.o(.data);
+        . = ALIGN(4); src/banim_efxutils.o(.data);
         . = ALIGN(4); asm/banim_efxutils.o(.data);
         . = ALIGN(4); asm/banim_efxsound.o(.data);
         . = ALIGN(4); asm/banim_ekrclasschg.o(.data);

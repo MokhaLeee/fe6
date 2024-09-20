@@ -2802,7 +2802,7 @@ void func_fe6_0806E520(void)
 
     for (i = 0; i < 8; i++)
     {
-        EfxPalBlackInOut((u16 const *) gBuf, i, 1, 2);
+        EfxPalBlackInOut((u16 *) gBuf, i, 1, 2);
     }
 
     ApplyPalettes(gBuf, 0, 0x10);

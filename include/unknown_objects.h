@@ -528,9 +528,6 @@ extern u16 const Tsa_EkrFaefx9[];
 extern u16 const Tsa_EkrFaefx10[];
 extern u16 const Tsa_EkrFaefx11[];
 extern u16 const Tsa_EkrFaefx12[];
-// extern ??? gUnk_081C9EC8
-// extern ??? gUnk_081C9ED6
-// extern ??? gUnk_081C9EE8
 // extern ??? gUnk_081C9EF4
 // extern ??? gUnk_081C9F14
 // extern ??? gUnk_081C9F34

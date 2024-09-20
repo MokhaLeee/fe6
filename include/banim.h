@@ -1246,8 +1246,8 @@ void EfxTmCpyExtHFlip(const u16 * src, i16 src_width, u16 * dst, i16 dst_width, 
 void func_fe6_0805B380(u16 * tm, int arg1, int arg2);
 void EkrModifyBarfx(u16 * tm, int);
 // func_fe6_0805B4D8
-void EfxPalBlackInOut(u16 const * pal_buf, int line, int length, int ref);
-void EfxPalWhiteInOut(u16 const * pal_buf, int line, int length, int ref);
+void EfxPalBlackInOut(u16 * pal_buf, int line, int length, int ref);
+void EfxPalWhiteInOut(u16 * pal_buf, int line, int length, int ref);
 void EfxPalFlashingInOut(u16 const * pal_buf, int line, int length, int r0, int g0, int b0);
 void EfxPalModifyPetrifyEffect(u16 * pal_buf, int line, int length);
 void EfxSplitColor(u16 * pal, u8 * dst, u32 length);
