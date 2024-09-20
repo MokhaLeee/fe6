@@ -356,14 +356,14 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	cmp r0, #0
 	bne .L0804A93C
 	adds r0, r2, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	ldr r2, [sp]
 	cmp r0, #2
 	beq .L0804A93C
 	adds r0, r2, #0
-	bl func_fe6_08056B08
+	bl NewEfxPierceCritical
 	ldr r2, [sp]
 .L0804A93C:
 	cmp r2, #0
@@ -585,7 +585,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	strh r0, [r7, #0x10]
 	b .L0804AD82
 .L0804AB1C:
-	ldr r1, .L0804AB30 @ =gUnk_Banim_02017750
+	ldr r1, .L0804AB30 @ =gEfxTeonoState
 	ldr r0, [r1]
 	cmp r0, #1
 	beq .L0804AB26
@@ -597,7 +597,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ands r0, r2
 	b .L0804ACDA
 	.align 2, 0
-.L0804AB30: .4byte gUnk_Banim_02017750
+.L0804AB30: .4byte gEfxTeonoState
 .L0804AB34: .4byte 0x0000FFDF
 .L0804AB38:
 	adds r0, r7, #0
@@ -678,7 +678,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r2, [sp]
 .L0804ABDA:
 	adds r0, r2, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #2
@@ -686,7 +686,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	b .L0804AD82
 .L0804ABEA:
 	adds r0, r7, #0
-	bl func_fe6_08056C3C
+	bl NewEfxNormalEffect
 	b .L0804AD82
 .L0804ABF2:
 	adds r0, r7, #0

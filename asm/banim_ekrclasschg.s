@@ -159,7 +159,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	movs r0, #1
 	movs r1, #0
 	movs r2, #8
@@ -214,7 +214,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r1, #0x38
 	movs r2, #7
 	movs r3, #0
-	bl func_fe6_0804C8D4
+	bl NewEfxRestRST
 	adds r2, r0, #0
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x40
@@ -224,9 +224,9 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r3, #0
 	bl func_fe6_0805D09C
 	ldr r0, [r4, #0x5c]
-	ldr r2, .L0805C9B8 @ =func_fe6_0804CD4C
+	ldr r2, .L0805C9B8 @ =EfxRestWINH_DefaultHblank
 	movs r1, #0x38
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	ldr r0, [r4, #0x5c]
 	mov r3, r8
 	str r3, [sp]
@@ -234,10 +234,10 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r1, #0
 	movs r2, #0x38
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	b .L0805CB56
 	.align 2, 0
-.L0805C9B8: .4byte func_fe6_0804CD4C
+.L0805C9B8: .4byte EfxRestWINH_DefaultHblank
 .L0805C9BC:
 	cmp r1, #0xf2
 	bne .L0805CA58
@@ -262,7 +262,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r1, #0x38
 	movs r2, #7
 	movs r3, #0x40
-	bl func_fe6_0804C8D4
+	bl NewEfxRestRST
 	adds r2, r0, #0
 	ldr r0, [r4, #0x5c]
 	mov r3, r8
@@ -272,9 +272,9 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r3, #0x40
 	bl func_fe6_0805D09C
 	ldr r0, [r4, #0x5c]
-	ldr r2, .L0805CA54 @ =func_fe6_0804CD4C
+	ldr r2, .L0805CA54 @ =EfxRestWINH_DefaultHblank
 	movs r1, #0x38
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	adds r2, r6, #0
 	adds r2, #0x3c
 	movs r0, #0x3f
@@ -298,7 +298,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r1, #0
 	movs r2, #0x38
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r0, #0x9e
 	lsls r0, r0, #1
 	movs r1, #0x80
@@ -308,7 +308,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	b .L0805CB36
 	.align 2, 0
 .L0805CA50: .4byte gDispIo
-.L0805CA54: .4byte func_fe6_0804CD4C
+.L0805CA54: .4byte EfxRestWINH_DefaultHblank
 .L0805CA58:
 	movs r0, #0x9c
 	lsls r0, r0, #1
@@ -394,7 +394,7 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r1, #0x5a
 	movs r2, #0x28
 	movs r3, #0xe
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r4, #0x80
 	lsls r4, r4, #1
 	movs r0, #1
@@ -403,21 +403,21 @@ func_fe6_0805C89C: @ 0x0805C89C
 	movs r1, #0x82
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl func_fe6_0804C8D4
-	ldr r2, .L0805CB40 @ =func_fe6_0804CD4C
+	bl NewEfxRestRST
+	ldr r2, .L0805CB40 @ =EfxRestWINH_DefaultHblank
 	adds r0, r5, #0
 	movs r1, #0x82
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	ldr r0, .L0805CB44 @ =0x0000013D
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	adds r1, r4, #0
 .L0805CB36:
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0805CB56
 	.align 2, 0
-.L0805CB40: .4byte func_fe6_0804CD4C
+.L0805CB40: .4byte EfxRestWINH_DefaultHblank
 .L0805CB44: .4byte 0x0000013D
 .L0805CB48:
 	movs r0, #0x94
@@ -618,7 +618,7 @@ func_fe6_0805CC80: @ 0x0805CC80
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0805CCE2
 .L0805CCD8:
 	cmp r0, #0x50
@@ -688,7 +688,7 @@ func_fe6_0805CD04: @ 0x0805CD04
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0805CD62
 .L0805CD58:
 	cmp r0, #0x6e

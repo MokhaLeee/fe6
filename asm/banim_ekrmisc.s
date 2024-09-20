@@ -98,7 +98,7 @@ EkrEfxStatusClear: @ 0x08044900
 	str r4, [r0]
 	ldr r0, .L08044990 @ =gUnk_Banim_0201774C
 	str r4, [r0]
-	ldr r0, .L08044994 @ =gUnk_Banim_02017750
+	ldr r0, .L08044994 @ =gEfxTeonoState
 	str r4, [r0]
 	ldr r0, .L08044998 @ =gUnk_Banim_02017754
 	str r4, [r0]
@@ -124,7 +124,7 @@ EkrEfxStatusClear: @ 0x08044900
 	ldr r0, .L080449B8 @ =gUnk_08113D70
 	ldr r1, .L080449BC @ =0x06012000
 	bl LZ77UnCompVram
-	ldr r0, .L080449C0 @ =gUnk_Banim_0201E7A4
+	ldr r0, .L080449C0 @ =gEfxMagicChk_N
 	str r4, [r0]
 	pop {r4}
 	pop {r0}
@@ -140,7 +140,7 @@ EkrEfxStatusClear: @ 0x08044900
 .L08044988: .4byte gEfxBgSemaphore
 .L0804498C: .4byte gEfxHpBarResireFlag
 .L08044990: .4byte gUnk_Banim_0201774C
-.L08044994: .4byte gUnk_Banim_02017750
+.L08044994: .4byte gEfxTeonoState
 .L08044998: .4byte gUnk_Banim_02017754
 .L0804499C: .4byte gEkrBg2QuakeVec
 .L080449A0: .4byte gUnk_Banim_0201775C
@@ -151,4 +151,4 @@ EkrEfxStatusClear: @ 0x08044900
 .L080449B4: .4byte gpProcEfxHpBarColorChange
 .L080449B8: .4byte gUnk_08113D70
 .L080449BC: .4byte 0x06012000
-.L080449C0: .4byte gUnk_Banim_0201E7A4
+.L080449C0: .4byte gEfxMagicChk_N

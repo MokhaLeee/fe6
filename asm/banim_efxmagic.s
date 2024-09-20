@@ -1,1323 +1,13 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start StartSpellAnimation
-StartSpellAnimation: @ 0x0804C898
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, .L0804C8C4 @ =gEkrSpellAnimIndex
-	bl GetAnimPosition
-	lsls r0, r0, #1
-	adds r0, r0, r4
-	ldr r1, .L0804C8C8 @ =gUnk_085D0DA0
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r2, [r0]
-	ldr r1, .L0804C8CC @ =gUnk_Banim_0201E7A4
-	movs r0, #0
-	str r0, [r1]
-	adds r0, r5, #0
-	bl _call_via_r2
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804C8C4: .4byte gEkrSpellAnimIndex
-.L0804C8C8: .4byte gUnk_085D0DA0
-.L0804C8CC: .4byte gUnk_Banim_0201E7A4
-
-	thumb_func_start func_fe6_0804C8D0
-func_fe6_0804C8D0: @ 0x0804C8D0
-	bx lr
-	.align 2, 0
-
-	thumb_func_start func_fe6_0804C8D4
-func_fe6_0804C8D4: @ 0x0804C8D4
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	adds r6, r2, #0
-	mov r8, r3
-	ldr r7, [sp, #0x18]
-	ldr r1, .L0804C910 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804C914 @ =gUnk_085D0E94
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	strh r1, [r0, #0x2e]
-	str r5, [r0, #0x44]
-	str r6, [r0, #0x48]
-	mov r1, r8
-	str r1, [r0, #0x4c]
-	str r7, [r0, #0x50]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0804C910: .4byte gEfxBgSemaphore
-.L0804C914: .4byte gUnk_085D0E94
-
-	thumb_func_start func_fe6_0804C918
-func_fe6_0804C918: @ 0x0804C918
-	ldr r1, .L0804C924 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-.L0804C924: .4byte gEfxBgSemaphore
-
-	thumb_func_start func_fe6_0804C928
-func_fe6_0804C928: @ 0x0804C928
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	adds r2, r0, #0
-	ldr r0, .L0804C9A8 @ =gUnk_Banim_0201E3D8
-	ldr r0, [r0]
-	ldr r4, .L0804C9AC @ =gUnk_Banim_0201E3E4
-	cmp r0, #0
-	bne .L0804C940
-	ldr r4, .L0804C9B0 @ =gUnk_Banim_0201E524
-.L0804C940:
-	ldrh r0, [r2, #0x2e]
-	lsls r1, r0, #0x18
-	lsrs r3, r1, #0x18
-	ldr r1, [r2, #0x50]
-	adds r0, r0, r1
-	strh r0, [r2, #0x2e]
-	movs r1, #0
-	ldr r0, [r2, #0x44]
-	mov r8, r0
-	ldr r6, [r2, #0x48]
-	mov sl, r6
-	ldr r7, .L0804C9B4 @ =gUnk_08605A94
-	mov ip, r7
-	ldr r5, [r2, #0x4c]
-	ldr r0, .L0804C9B8 @ =gDispIo
-	mov sb, r0
-.L0804C960:
-	mov r6, sl
-	adds r0, r3, r6
-	lsls r0, r0, #0x18
-	lsrs r3, r0, #0x18
-	lsls r0, r3, #1
-	add r0, ip
-	movs r7, #0
-	ldrsh r0, [r0, r7]
-	muls r0, r5, r0
-	lsls r0, r0, #8
-	lsrs r0, r0, #0x10
-	mov r6, sb
-	ldrh r6, [r6, #0x20]
-	adds r0, r6, r0
-	strh r0, [r4]
-	adds r4, #2
-	adds r1, #1
-	cmp r1, #0x77
-	bls .L0804C960
-	ldrh r0, [r2, #0x2c]
-	adds r0, #1
-	strh r0, [r2, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, r8
-	bne .L0804C99A
-	adds r0, r2, #0
-	bl Proc_End
-.L0804C99A:
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804C9A8: .4byte gUnk_Banim_0201E3D8
-.L0804C9AC: .4byte gUnk_Banim_0201E3E4
-.L0804C9B0: .4byte gUnk_Banim_0201E524
-.L0804C9B4: .4byte gUnk_08605A94
-.L0804C9B8: .4byte gDispIo
-
-	thumb_func_start func_fe6_0804C9BC
-func_fe6_0804C9BC: @ 0x0804C9BC
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r1, .L0804C9E4 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804C9E8 @ =gUnk_085D0EB4
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	strh r1, [r0, #0x2e]
-	str r5, [r0, #0x44]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804C9E4: .4byte gEfxBgSemaphore
-.L0804C9E8: .4byte gUnk_085D0EB4
-
-	thumb_func_start func_fe6_0804C9EC
-func_fe6_0804C9EC: @ 0x0804C9EC
-	ldr r1, .L0804C9F8 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-.L0804C9F8: .4byte gEfxBgSemaphore
-
-	thumb_func_start func_fe6_0804C9FC
-func_fe6_0804C9FC: @ 0x0804C9FC
-	push {r4, r5, lr}
-	adds r3, r0, #0
-	ldr r0, .L0804CA38 @ =gUnk_Banim_0201E3D8
-	ldr r0, [r0]
-	ldr r1, .L0804CA3C @ =gUnk_Banim_0201E3E4
-	cmp r0, #0
-	bne .L0804CA0C
-	ldr r1, .L0804CA40 @ =gUnk_Banim_0201E524
-.L0804CA0C:
-	movs r2, #0
-	ldr r5, [r3, #0x44]
-	ldr r4, .L0804CA44 @ =gDispIo
-.L0804CA12:
-	ldrh r0, [r4, #0x20]
-	strh r0, [r1]
-	adds r1, #2
-	adds r2, #1
-	cmp r2, #0x77
-	bls .L0804CA12
-	ldrh r0, [r3, #0x2c]
-	adds r0, #1
-	strh r0, [r3, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, r5
-	bne .L0804CA32
-	adds r0, r3, #0
-	bl Proc_End
-.L0804CA32:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804CA38: .4byte gUnk_Banim_0201E3D8
-.L0804CA3C: .4byte gUnk_Banim_0201E3E4
-.L0804CA40: .4byte gUnk_Banim_0201E524
-.L0804CA44: .4byte gDispIo
-
-	thumb_func_start func_fe6_0804CA48
-func_fe6_0804CA48: @ 0x0804CA48
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	mov r8, r0
-	adds r4, r1, #0
-	adds r5, r2, #0
-	adds r6, r3, #0
-	ldr r1, .L0804CA90 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804CA94 @ =gUnk_085D0ED4
-	movs r1, #3
-	bl SpawnProc
-	adds r7, r0, #0
-	mov r0, r8
-	str r0, [r7, #0x5c]
-	movs r1, #0
-	mov sb, r1
-	movs r0, #0
-	strh r0, [r7, #0x2c]
-	strh r0, [r7, #0x2e]
-	str r4, [r7, #0x44]
-	str r5, [r7, #0x54]
-	str r6, [r7, #0x58]
-	mov r0, r8
-	bl GetAnimAnotherSide
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L0804CA9C
-	ldr r0, .L0804CA98 @ =0x0000FFB8
-	b .L0804CA9E
-	.align 2, 0
-.L0804CA90: .4byte gEfxBgSemaphore
-.L0804CA94: .4byte gUnk_085D0ED4
-.L0804CA98: .4byte 0x0000FFB8
-.L0804CA9C:
-	ldr r0, .L0804CABC @ =0x0000FFF8
-.L0804CA9E:
-	strh r0, [r7, #0x32]
-	ldr r0, .L0804CAC0 @ =gEkrDistanceType
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #0
-	beq .L0804CACA
-	mov r0, r8
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L0804CAC4
-	ldrh r0, [r7, #0x32]
-	adds r0, #0x18
-	b .L0804CAC8
-	.align 2, 0
-.L0804CABC: .4byte 0x0000FFF8
-.L0804CAC0: .4byte gEkrDistanceType
-.L0804CAC4:
-	ldrh r0, [r7, #0x32]
-	subs r0, #0x18
-.L0804CAC8:
-	strh r0, [r7, #0x32]
-.L0804CACA:
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0804CAD8
-func_fe6_0804CAD8: @ 0x0804CAD8
-	push {r4, r5, r6, r7, lr}
-	adds r4, r0, #0
-	ldr r0, .L0804CB20 @ =gUnk_Banim_0201E14C
-	ldr r0, [r0]
-	ldr r5, .L0804CB24 @ =gUnk_Banim_0201E158
-	cmp r0, #0
-	bne .L0804CAE8
-	ldr r5, .L0804CB28 @ =gUnk_Banim_0201E298
-.L0804CAE8:
-	ldr r1, [r4, #0x54]
-	movs r2, #0x2e
-	ldrsh r0, [r4, r2]
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	ldrh r2, [r0]
-	ldr r1, [r4, #0x58]
-	lsls r0, r2, #2
-	adds r0, r0, r1
-	ldr r3, [r0]
-	ldr r0, .L0804CB2C @ =0x0000FFFF
-	cmp r2, r0
-	beq .L0804CB54
-	ldrh r0, [r4, #0x2e]
-	adds r0, #1
-	strh r0, [r4, #0x2e]
-	movs r2, #0
-	ldr r6, [r4, #0x44]
-	ldr r7, .L0804CB30 @ =0x00007FFF
-	mov ip, r7
-.L0804CB10:
-	ldrh r1, [r3]
-	movs r7, #0
-	ldrsh r0, [r3, r7]
-	cmp r0, ip
-	bne .L0804CB34
-	movs r0, #0
-	b .L0804CB46
-	.align 2, 0
-.L0804CB20: .4byte gUnk_Banim_0201E14C
-.L0804CB24: .4byte gUnk_Banim_0201E158
-.L0804CB28: .4byte gUnk_Banim_0201E298
-.L0804CB2C: .4byte 0x0000FFFF
-.L0804CB30: .4byte 0x00007FFF
-.L0804CB34:
-	ldrh r0, [r4, #0x32]
-	adds r1, r1, r0
-	ldrh r7, [r3, #2]
-	adds r0, r0, r7
-	lsls r1, r1, #0x10
-	asrs r1, r1, #8
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	orrs r0, r1
-.L0804CB46:
-	strh r0, [r5]
-	adds r3, #4
-	adds r5, #2
-	adds r2, #1
-	cmp r2, #0x77
-	bls .L0804CB10
-	b .L0804CB64
-.L0804CB54:
-	movs r2, #0
-	ldr r6, [r4, #0x44]
-	movs r0, #0
-.L0804CB5A:
-	strh r0, [r5]
-	adds r5, #2
-	adds r2, #1
-	cmp r2, #0x77
-	bls .L0804CB5A
-.L0804CB64:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	movs r1, #0x2c
-	ldrsh r0, [r4, r1]
-	cmp r0, r6
-	bne .L0804CB80
-	ldr r1, .L0804CB88 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	adds r0, r4, #0
-	bl Proc_Break
-.L0804CB80:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804CB88: .4byte gEfxBgSemaphore
-
-	thumb_func_start func_fe6_0804CB8C
-func_fe6_0804CB8C: @ 0x0804CB8C
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	mov r8, r0
-	mov sb, r1
-	adds r5, r3, #0
-	lsls r2, r2, #0x10
-	lsrs r2, r2, #0x10
-	ldr r1, .L0804CC34 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r1, .L0804CC38 @ =gUnk_Banim_0201E158
-	movs r0, #0
-	adds r7, r1, #0
-	ldr r4, .L0804CC3C @ =gUnk_Banim_0201E298
-	ldr r3, .L0804CC40 @ =gUnk_Banim_0201E3E4
-	ldr r6, .L0804CC44 @ =gUnk_Banim_0201E14C
-	mov ip, r6
-	ldr r6, .L0804CC48 @ =gUnk_Banim_0201E3D8
-	mov sl, r6
-.L0804CBBA:
-	strh r2, [r1]
-	adds r1, #2
-	adds r0, #1
-	cmp r0, #0x9f
-	bls .L0804CBBA
-	adds r1, r4, #0
-	movs r0, #0
-.L0804CBC8:
-	strh r2, [r1]
-	adds r1, #2
-	adds r0, #1
-	cmp r0, #0x9f
-	bls .L0804CBC8
-	adds r1, r3, #0
-	movs r0, #0
-.L0804CBD6:
-	strh r2, [r1]
-	adds r1, #2
-	adds r0, #1
-	cmp r0, #0x9f
-	bls .L0804CBD6
-	ldr r1, .L0804CC4C @ =gUnk_Banim_0201E524
-	movs r0, #0
-.L0804CBE4:
-	strh r2, [r1]
-	adds r1, #2
-	adds r0, #1
-	cmp r0, #0x9f
-	bls .L0804CBE4
-	movs r4, #0
-	mov r0, ip
-	str r4, [r0]
-	mov r1, sl
-	str r4, [r1]
-	ldr r6, .L0804CC50 @ =gUnk_Banim_0201E150
-	str r7, [r6]
-	ldr r0, .L0804CC54 @ =gUnk_Banim_0201E3DC
-	str r3, [r0]
-	ldr r1, .L0804CC58 @ =gUnk_Banim_0201E154
-	str r7, [r1]
-	ldr r6, .L0804CC5C @ =gUnk_Banim_0201E3E0
-	str r3, [r6]
-	adds r0, r5, #0
-	bl SetOnHBlankA
-	ldr r1, .L0804CC60 @ =gUnk_Banim_0201E7A4
-	movs r0, #1
-	str r0, [r1]
-	ldr r0, .L0804CC64 @ =gUnk_085D0EEC
-	movs r1, #0
-	bl SpawnProc
-	mov r1, r8
-	str r1, [r0, #0x5c]
-	strh r4, [r0, #0x2c]
-	mov r6, sb
-	str r6, [r0, #0x44]
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804CC34: .4byte gEfxBgSemaphore
-.L0804CC38: .4byte gUnk_Banim_0201E158
-.L0804CC3C: .4byte gUnk_Banim_0201E298
-.L0804CC40: .4byte gUnk_Banim_0201E3E4
-.L0804CC44: .4byte gUnk_Banim_0201E14C
-.L0804CC48: .4byte gUnk_Banim_0201E3D8
-.L0804CC4C: .4byte gUnk_Banim_0201E524
-.L0804CC50: .4byte gUnk_Banim_0201E150
-.L0804CC54: .4byte gUnk_Banim_0201E3DC
-.L0804CC58: .4byte gUnk_Banim_0201E154
-.L0804CC5C: .4byte gUnk_Banim_0201E3E0
-.L0804CC60: .4byte gUnk_Banim_0201E7A4
-.L0804CC64: .4byte gUnk_085D0EEC
-
-	thumb_func_start func_fe6_0804CC68
-func_fe6_0804CC68: @ 0x0804CC68
-	push {lr}
-	adds r3, r2, #0
-	movs r2, #0
-	bl func_fe6_0804CB8C
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0804CC78
-func_fe6_0804CC78: @ 0x0804CC78
-	push {lr}
-	bl Proc_Break
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0804CC84
-func_fe6_0804CC84: @ 0x0804CC84
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, .L0804CCA8 @ =gBmSt
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq .L0804CD04
-	ldr r1, .L0804CCAC @ =gUnk_Banim_0201E14C
-	ldr r0, [r1]
-	cmp r0, #1
-	bne .L0804CCB8
-	movs r0, #0
-	str r0, [r1]
-	ldr r1, .L0804CCB0 @ =gUnk_Banim_0201E150
-	ldr r0, .L0804CCB4 @ =gUnk_Banim_0201E158
-	b .L0804CCC0
-	.align 2, 0
-.L0804CCA8: .4byte gBmSt
-.L0804CCAC: .4byte gUnk_Banim_0201E14C
-.L0804CCB0: .4byte gUnk_Banim_0201E150
-.L0804CCB4: .4byte gUnk_Banim_0201E158
-.L0804CCB8:
-	movs r0, #1
-	str r0, [r1]
-	ldr r1, .L0804CCD8 @ =gUnk_Banim_0201E150
-	ldr r0, .L0804CCDC @ =gUnk_Banim_0201E298
-.L0804CCC0:
-	str r0, [r1]
-	adds r3, r1, #0
-	ldr r1, .L0804CCE0 @ =gUnk_Banim_0201E3D8
-	ldr r0, [r1]
-	cmp r0, #1
-	bne .L0804CCEC
-	movs r0, #0
-	str r0, [r1]
-	ldr r1, .L0804CCE4 @ =gUnk_Banim_0201E3DC
-	ldr r0, .L0804CCE8 @ =gUnk_Banim_0201E3E4
-	b .L0804CCF4
-	.align 2, 0
-.L0804CCD8: .4byte gUnk_Banim_0201E150
-.L0804CCDC: .4byte gUnk_Banim_0201E298
-.L0804CCE0: .4byte gUnk_Banim_0201E3D8
-.L0804CCE4: .4byte gUnk_Banim_0201E3DC
-.L0804CCE8: .4byte gUnk_Banim_0201E3E4
-.L0804CCEC:
-	movs r0, #1
-	str r0, [r1]
-	ldr r1, .L0804CD34 @ =gUnk_Banim_0201E3DC
-	ldr r0, .L0804CD38 @ =gUnk_Banim_0201E524
-.L0804CCF4:
-	str r0, [r1]
-	adds r2, r1, #0
-	ldr r1, .L0804CD3C @ =gUnk_Banim_0201E154
-	ldr r0, [r3]
-	str r0, [r1]
-	ldr r1, .L0804CD40 @ =gUnk_Banim_0201E3E0
-	ldr r0, [r2]
-	str r0, [r1]
-.L0804CD04:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	ldr r1, [r4, #0x44]
-	cmp r0, r1
-	bne .L0804CD2E
-	ldr r1, .L0804CD44 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	movs r0, #0
-	bl SetOnHBlankA
-	ldr r1, .L0804CD48 @ =gUnk_Banim_0201E7A4
-	movs r0, #0
-	str r0, [r1]
-	adds r0, r4, #0
-	bl Proc_Break
-.L0804CD2E:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804CD34: .4byte gUnk_Banim_0201E3DC
-.L0804CD38: .4byte gUnk_Banim_0201E524
-.L0804CD3C: .4byte gUnk_Banim_0201E154
-.L0804CD40: .4byte gUnk_Banim_0201E3E0
-.L0804CD44: .4byte gEfxBgSemaphore
-.L0804CD48: .4byte gUnk_Banim_0201E7A4
-
-	thumb_func_start func_fe6_0804CD4C
-func_fe6_0804CD4C: @ 0x0804CD4C
-	ldr r0, .L0804CD78 @ =0x04000004
-	ldrh r1, [r0]
-	movs r0, #1
-	ands r0, r1
-	cmp r0, #0
-	bne .L0804CD74
-	ldr r3, .L0804CD7C @ =0x04000040
-	ldr r2, .L0804CD80 @ =gUnk_Banim_0201E154
-	ldr r0, [r2]
-	ldrh r1, [r0]
-	strh r1, [r3]
-	adds r0, #2
-	str r0, [r2]
-	subs r3, #0x2c
-	ldr r2, .L0804CD84 @ =gUnk_Banim_0201E3E0
-	ldr r0, [r2]
-	ldrh r1, [r0]
-	strh r1, [r3]
-	adds r0, #2
-	str r0, [r2]
-.L0804CD74:
-	bx lr
-	.align 2, 0
-.L0804CD78: .4byte 0x04000004
-.L0804CD7C: .4byte 0x04000040
-.L0804CD80: .4byte gUnk_Banim_0201E154
-.L0804CD84: .4byte gUnk_Banim_0201E3E0
-
-	thumb_func_start func_fe6_0804CD88
-func_fe6_0804CD88: @ 0x0804CD88
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	adds r6, r2, #0
-	mov r8, r3
-	ldr r7, [sp, #0x18]
-	ldr r1, .L0804CDC8 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804CDCC @ =gUnk_085D0F0C
-	movs r1, #3
-	bl SpawnProc
-	str r5, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	strh r4, [r0, #0x2e]
-	adds r4, r4, r6
-	strh r4, [r0, #0x30]
-	mov r1, r8
-	str r1, [r0, #0x44]
-	str r7, [r0, #0x48]
-	ldr r1, [sp, #0x1c]
-	str r1, [r0, #0x4c]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804CDC8: .4byte gEfxBgSemaphore
-.L0804CDCC: .4byte gUnk_085D0F0C
-
-	thumb_func_start func_fe6_0804CDD0
-func_fe6_0804CDD0: @ 0x0804CDD0
-	push {r4, r5, r6, r7, lr}
-	sub sp, #4
-	adds r5, r0, #0
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	movs r7, #0
-	strh r0, [r5, #0x2c]
-	lsls r0, r0, #0x10
-	ldrh r2, [r5, #0x2e]
-	lsls r1, r2, #0x10
-	cmp r0, r1
-	blt .L0804CEC4
-	ldr r1, [r5, #0x44]
-	ldr r2, [r5, #0x48]
-	movs r6, #0x2c
-	ldrsh r3, [r5, r6]
-	movs r0, #0x2e
-	ldrsh r4, [r5, r0]
-	subs r3, r3, r4
-	movs r6, #0x30
-	ldrsh r0, [r5, r6]
-	subs r0, r0, r4
-	str r0, [sp]
-	movs r0, #0
-	bl Interpolate
-	adds r6, r0, #0
-	ldr r0, [r5, #0x4c]
-	cmp r0, #1
-	beq .L0804CE44
-	cmp r0, #1
-	bgt .L0804CE16
-	cmp r0, #0
-	beq .L0804CE1C
-	b .L0804CEAA
-.L0804CE16:
-	cmp r0, #2
-	beq .L0804CE6C
-	b .L0804CEAA
-.L0804CE1C:
-	ldr r3, .L0804CE40 @ =gDispIo
-	adds r2, r3, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x40
-	orrs r0, r1
-	strb r0, [r2]
-	adds r0, r3, #0
-	adds r0, #0x44
-	strb r6, [r0]
-	adds r1, r3, #0
-	adds r1, #0x45
-	movs r0, #0x10
-	strb r0, [r1]
-	adds r0, r3, #0
-	b .L0804CEA6
-	.align 2, 0
-.L0804CE40: .4byte gDispIo
-.L0804CE44:
-	ldr r3, .L0804CE68 @ =gDispIo
-	adds r2, r3, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x80
-	orrs r0, r1
-	strb r0, [r2]
-	adds r0, r3, #0
-	adds r0, #0x44
-	strb r7, [r0]
-	adds r0, #1
-	strb r7, [r0]
-	adds r0, #1
-	strb r6, [r0]
-	b .L0804CEAA
-	.align 2, 0
-.L0804CE68: .4byte gDispIo
-.L0804CE6C:
-	movs r2, #0x2c
-	ldrsh r3, [r5, r2]
-	movs r0, #0x2e
-	ldrsh r1, [r5, r0]
-	subs r3, r3, r1
-	movs r2, #0x30
-	ldrsh r0, [r5, r2]
-	subs r0, r0, r1
-	str r0, [sp]
-	movs r0, #0
-	movs r1, #8
-	movs r2, #0x10
-	bl Interpolate
-	ldr r4, .L0804CECC @ =gDispIo
-	adds r3, r4, #0
-	adds r3, #0x3c
-	movs r1, #0x3f
-	ldrb r2, [r3]
-	ands r1, r2
-	movs r2, #0x40
-	orrs r1, r2
-	strb r1, [r3]
-	adds r1, r4, #0
-	adds r1, #0x44
-	strb r6, [r1]
-	adds r1, #1
-	strb r0, [r1]
-	adds r0, r4, #0
-.L0804CEA6:
-	adds r0, #0x46
-	strb r7, [r0]
-.L0804CEAA:
-	movs r6, #0x2c
-	ldrsh r1, [r5, r6]
-	movs r2, #0x30
-	ldrsh r0, [r5, r2]
-	cmp r1, r0
-	blt .L0804CEC4
-	ldr r1, .L0804CED0 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	adds r0, r5, #0
-	bl Proc_Break
-.L0804CEC4:
-	add sp, #4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804CECC: .4byte gDispIo
-.L0804CED0: .4byte gEfxBgSemaphore
-
-	thumb_func_start func_fe6_0804CED4
-func_fe6_0804CED4: @ 0x0804CED4
-	push {r4, r5, r6, lr}
-	mov r6, sl
-	mov r5, sb
-	mov r4, r8
-	push {r4, r5, r6}
-	mov r8, r0
-	mov sb, r1
-	mov sl, r2
-	adds r5, r3, #0
-	ldr r6, [sp, #0x1c]
-	lsls r5, r5, #0x10
-	lsrs r5, r5, #0x10
-	lsls r6, r6, #0x10
-	lsrs r6, r6, #0x10
-	ldr r1, .L0804CF2C @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804CF30 @ =gUnk_085D0F24
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	mov r0, r8
-	str r0, [r4, #0x5c]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	strh r0, [r4, #0x2e]
-	mov r0, sb
-	str r0, [r4, #0x44]
-	mov r0, sl
-	str r0, [r4, #0x54]
-	mov r0, r8
-	bl GetAnimAnotherSide
-	strh r5, [r4, #0x32]
-	strh r6, [r4, #0x3a]
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804CF2C: .4byte gEfxBgSemaphore
-.L0804CF30: .4byte gUnk_085D0F24
-
-	thumb_func_start func_fe6_0804CF34
-func_fe6_0804CF34: @ 0x0804CF34
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	adds r5, r0, #0
-	ldr r0, .L0804CFB4 @ =gUnk_Banim_0201E14C
-	ldr r0, [r0]
-	ldr r1, .L0804CFB8 @ =gUnk_Banim_0201E158
-	mov r8, r1
-	cmp r0, #0
-	bne .L0804CF4E
-	ldr r2, .L0804CFBC @ =gUnk_Banim_0201E298
-	mov r8, r2
-.L0804CF4E:
-	ldr r4, [r5, #0x54]
-	movs r7, #0x2e
-	ldrsh r0, [r5, r7]
-	lsls r0, r0, #1
-	adds r0, r0, r4
-	ldrh r7, [r0]
-	adds r0, r7, #0
-	bl func_fe6_08013F7C
-	adds r6, r0, #0
-	movs r1, #0x2e
-	ldrsh r0, [r5, r1]
-	lsls r0, r0, #1
-	adds r0, r0, r4
-	ldr r1, .L0804CFC0 @ =0x0000FFFF
-	ldrh r0, [r0, #2]
-	cmp r0, r1
-	beq .L0804CF78
-	ldrh r0, [r5, #0x2e]
-	adds r0, #1
-	strh r0, [r5, #0x2e]
-.L0804CF78:
-	ldrh r1, [r5, #0x3a]
-	subs r0, r1, r7
-	lsls r0, r0, #0x10
-	lsrs r2, r0, #0x10
-	cmp r0, #0
-	bge .L0804CF86
-	movs r2, #0
-.L0804CF86:
-	adds r0, r7, r1
-	lsls r0, r0, #0x10
-	lsrs r1, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0xa0
-	ble .L0804CF94
-	movs r1, #0xa0
-.L0804CF94:
-	movs r3, #0
-	lsls r0, r2, #0x10
-	ldr r2, [r5, #0x44]
-	mov ip, r2
-	asrs r0, r0, #0x10
-	mov sb, r0
-	lsls r0, r1, #0x10
-	asrs r4, r0, #0x10
-.L0804CFA4:
-	cmp sb, r3
-	bhi .L0804CFAC
-	cmp r4, r3
-	bhs .L0804CFC4
-.L0804CFAC:
-	movs r0, #0
-	mov r7, r8
-	strh r0, [r7]
-	b .L0804CFF4
-	.align 2, 0
-.L0804CFB4: .4byte gUnk_Banim_0201E14C
-.L0804CFB8: .4byte gUnk_Banim_0201E158
-.L0804CFBC: .4byte gUnk_Banim_0201E298
-.L0804CFC0: .4byte 0x0000FFFF
-.L0804CFC4:
-	ldrh r2, [r5, #0x32]
-	ldrh r1, [r6]
-	adds r0, r2, r1
-	lsls r0, r0, #0x10
-	lsrs r1, r0, #0x10
-	cmp r0, #0
-	bge .L0804CFD4
-	movs r1, #0
-.L0804CFD4:
-	ldrh r7, [r6, #2]
-	adds r0, r2, r7
-	lsls r0, r0, #0x10
-	lsrs r2, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0xf0
-	ble .L0804CFE4
-	movs r2, #0xf0
-.L0804CFE4:
-	lsls r1, r1, #0x10
-	asrs r1, r1, #8
-	lsls r0, r2, #0x10
-	asrs r0, r0, #0x10
-	orrs r0, r1
-	mov r1, r8
-	strh r0, [r1]
-	adds r6, #4
-.L0804CFF4:
-	movs r2, #2
-	add r8, r2
-	adds r3, #1
-	cmp r3, #0x9f
-	bls .L0804CFA4
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	movs r3, #0
-	strh r0, [r5, #0x2c]
-	movs r4, #0x2c
-	ldrsh r0, [r5, r4]
-	cmp r0, ip
-	bne .L0804D03A
-	ldr r1, .L0804D048 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	ldr r2, .L0804D04C @ =gDispIo
-	adds r1, r2, #0
-	adds r1, #0x3c
-	movs r0, #0x3f
-	ldrb r7, [r1]
-	ands r0, r7
-	strb r0, [r1]
-	adds r1, #8
-	movs r0, #0x10
-	strb r0, [r1]
-	adds r0, r2, #0
-	adds r0, #0x45
-	strb r3, [r0]
-	adds r0, #1
-	strb r3, [r0]
-	adds r0, r5, #0
-	bl Proc_Break
-.L0804D03A:
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D048: .4byte gEfxBgSemaphore
-.L0804D04C: .4byte gDispIo
-
-	thumb_func_start func_fe6_0804D050
-func_fe6_0804D050: @ 0x0804D050
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	adds r6, r1, #0
-	ldr r1, .L0804D080 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804D084 @ =gUnk_085D0F3C
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r5, [r4, #0x5c]
-	movs r0, #6
-	movs r1, #0
-	bl NewEfxQuakePure
-	str r0, [r4, #0x60]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	strh r6, [r4, #0x2e]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D080: .4byte gEfxBgSemaphore
-.L0804D084: .4byte gUnk_085D0F3C
-
-	thumb_func_start func_fe6_0804D088
-func_fe6_0804D088: @ 0x0804D088
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	mov r8, r0
-	ldr r5, .L0804D120 @ =gEkrBg2QuakeVec
-	ldrh r1, [r5]
-	ldrh r2, [r5, #2]
-	movs r0, #2
-	bl SetBgOffset
-	ldr r4, .L0804D124 @ =gEkrBg0QuakeVec
-	ldrh r0, [r5]
-	ldrh r2, [r4]
-	adds r1, r0, r2
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	ldrh r3, [r5, #2]
-	ldrh r0, [r4, #2]
-	adds r2, r3, r0
-	lsls r2, r2, #0x10
-	lsrs r2, r2, #0x10
-	movs r0, #0
-	bl SetBgOffset
-	ldrh r1, [r5]
-	ldrh r2, [r4]
-	adds r0, r1, r2
-	rsbs r0, r0, #0
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	ldrh r3, [r5, #2]
-	ldrh r2, [r4, #2]
-	adds r1, r3, r2
-	rsbs r1, r1, #0
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	bl func_fe6_0804392C
-	ldrh r3, [r5]
-	ldrh r1, [r4]
-	adds r0, r3, r1
-	rsbs r0, r0, #0
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	ldrh r2, [r5, #2]
-	ldrh r4, [r4, #2]
-	adds r1, r2, r4
-	rsbs r1, r1, #0
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	bl func_fe6_08044230
-	bl GetEkrDragonStateType
-	cmp r0, #0
-	beq .L0804D10C
-	ldrh r1, [r5]
-	ldrh r2, [r5, #2]
-	adds r2, #0x10
-	lsls r2, r2, #0x10
-	lsrs r2, r2, #0x10
-	movs r0, #3
-	bl SetBgOffset
-.L0804D10C:
-	bl GetEkrDragonStateType
-	cmp r0, #0
-	beq .L0804D12C
-	ldr r3, .L0804D128 @ =gEkrXPosReal
-	ldrh r4, [r3]
-	ldrh r1, [r5]
-	subs r0, r4, r1
-	b .L0804D134
-	.align 2, 0
-.L0804D120: .4byte gEkrBg2QuakeVec
-.L0804D124: .4byte gEkrBg0QuakeVec
-.L0804D128: .4byte gEkrXPosReal
-.L0804D12C:
-	ldr r3, .L0804D244 @ =gEkrXPosReal
-	ldrh r1, [r3]
-	ldrh r2, [r5]
-	adds r0, r1, r2
-.L0804D134:
-	ldr r2, .L0804D248 @ =gEkrBgPosition
-	ldr r1, [r2]
-	subs r0, r0, r1
-	lsls r0, r0, #0x10
-	lsrs r7, r0, #0x10
-	ldr r1, .L0804D24C @ =gEkrYPosReal
-	ldrh r4, [r1]
-	ldrh r5, [r5, #2]
-	subs r0, r4, r5
-	lsls r0, r0, #0x10
-	lsrs r6, r0, #0x10
-	mov sb, r3
-	mov sl, r1
-	ldr r2, .L0804D250 @ =gEkrBg2QuakeVec
-	mov r1, sb
-	ldrh r1, [r1, #2]
-	ldrh r3, [r2]
-	adds r0, r1, r3
-	ldr r4, .L0804D248 @ =gEkrBgPosition
-	ldr r1, [r4]
-	subs r0, r0, r1
-	lsls r0, r0, #0x10
-	lsrs r5, r0, #0x10
-	mov r1, sl
-	ldrh r1, [r1, #2]
-	ldrh r2, [r2, #2]
-	subs r0, r1, r2
-	lsls r0, r0, #0x10
-	lsrs r4, r0, #0x10
-	lsls r1, r7, #0x10
-	asrs r1, r1, #0x10
-	lsls r2, r6, #0x10
-	asrs r2, r2, #0x10
-	movs r0, #0
-	bl SetEkrFrontAnimPostion
-	lsls r1, r5, #0x10
-	asrs r1, r1, #0x10
-	lsls r2, r4, #0x10
-	asrs r2, r2, #0x10
-	movs r0, #1
-	bl SetEkrFrontAnimPostion
-	mov r2, r8
-	ldrh r0, [r2, #0x2c]
-	adds r0, #1
-	strh r0, [r2, #0x2c]
-	lsls r0, r0, #0x10
-	ldrh r3, [r2, #0x2e]
-	lsls r1, r3, #0x10
-	cmp r0, r1
-	ble .L0804D236
-	ldr r1, .L0804D254 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	movs r0, #2
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	ldr r4, .L0804D258 @ =gEkrBg0QuakeVec
-	ldrh r1, [r4]
-	ldrh r2, [r4, #2]
-	movs r0, #0
-	bl SetBgOffset
-	ldrh r1, [r4]
-	rsbs r0, r1, #0
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	ldrh r2, [r4, #2]
-	rsbs r1, r2, #0
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	bl func_fe6_0804392C
-	ldrh r3, [r4]
-	rsbs r0, r3, #0
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	ldrh r4, [r4, #2]
-	rsbs r1, r4, #0
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	bl func_fe6_08044230
-	bl GetEkrDragonStateType
-	cmp r0, #0
-	beq .L0804D1F4
-	movs r0, #3
-	movs r1, #0
-	movs r2, #0x10
-	bl SetBgOffset
-.L0804D1F4:
-	ldr r4, .L0804D248 @ =gEkrBgPosition
-	ldr r0, [r4]
-	mov r2, sb
-	ldrh r2, [r2]
-	subs r1, r2, r0
-	mov r3, sb
-	ldrh r3, [r3, #2]
-	subs r0, r3, r0
-	lsls r0, r0, #0x10
-	lsrs r5, r0, #0x10
-	mov r0, sl
-	ldrh r4, [r0, #2]
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	movs r3, #0
-	ldrsh r2, [r0, r3]
-	movs r0, #0
-	bl SetEkrFrontAnimPostion
-	lsls r1, r5, #0x10
-	asrs r1, r1, #0x10
-	lsls r2, r4, #0x10
-	asrs r2, r2, #0x10
-	movs r0, #1
-	bl SetEkrFrontAnimPostion
-	mov r4, r8
-	ldr r0, [r4, #0x60]
-	bl Proc_End
-	mov r0, r8
-	bl Proc_Break
-.L0804D236:
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D244: .4byte gEkrXPosReal
-.L0804D248: .4byte gEkrBgPosition
-.L0804D24C: .4byte gEkrYPosReal
-.L0804D250: .4byte gEkrBg2QuakeVec
-.L0804D254: .4byte gEfxBgSemaphore
-.L0804D258: .4byte gEkrBg0QuakeVec
-
-	thumb_func_start func_fe6_0804D25C
-func_fe6_0804D25C: @ 0x0804D25C
-	push {r4, lr}
-	adds r4, r0, #0
-	bl SpellFx_Begin
-	bl SpellFx_SetBG1Position
-	ldr r0, .L0804D27C @ =gUnk_085D0F54
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D27C: .4byte gUnk_085D0F54
-
-	thumb_func_start func_fe6_0804D280
-func_fe6_0804D280: @ 0x0804D280
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r0, [r5, #0x5c]
-	bl GetAnimAnotherSide
-	adds r4, r0, #0
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	movs r6, #0
-	strh r0, [r5, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #1
-	bne .L0804D2A6
-	movs r0, #9
-	ldrh r1, [r4, #0x10]
-	orrs r0, r1
-	strh r0, [r4, #0x10]
-	b .L0804D2CE
-.L0804D2A6:
-	cmp r0, #0xa
-	bne .L0804D2CE
-	adds r0, r4, #0
-	bl GetAnimNextRoundType
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	movs r1, #1
-	rsbs r1, r1, #0
-	cmp r0, r1
-	beq .L0804D2C4
-	movs r0, #2
-	ldrh r1, [r4, #0x10]
-	orrs r0, r1
-	strh r0, [r4, #0x10]
-.L0804D2C4:
-	bl SpellFx_Finish
-	adds r0, r5, #0
-	bl Proc_Break
-.L0804D2CE:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_0804D2D4
-func_fe6_0804D2D4: @ 0x0804D2D4
+	thumb_func_start NewEfxArrow
+NewEfxArrow: @ 0x0804D62C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl SpellFx_SetBG1Position
-	ldr r0, .L0804D308 @ =gUnk_085D0F6C
+	ldr r0, .L0804D660 @ =ProcScr_EfxArrow
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -1335,422 +25,10 @@ func_fe6_0804D2D4: @ 0x0804D2D4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804D308: .4byte gUnk_085D0F6C
+.L0804D660: .4byte ProcScr_EfxArrow
 
-	thumb_func_start func_fe6_0804D30C
-func_fe6_0804D30C: @ 0x0804D30C
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r0, [r5, #0x5c]
-	bl GetAnimAnotherSide
-	adds r6, r0, #0
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	strh r0, [r5, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #1
-	bne .L0804D38A
-	ldr r0, [r5, #0x5c]
-	movs r1, #1
-	rsbs r1, r1, #0
-	bl NewEfxFarAttackWithDistance
-	ldr r0, [r5, #0x5c]
-	bl func_fe6_0804D3A8
-	ldrh r0, [r5, #0x2c]
-	cmp r0, #1
-	bne .L0804D38A
-	movs r0, #9
-	ldrh r1, [r6, #0x10]
-	orrs r0, r1
-	strh r0, [r6, #0x10]
-	adds r4, r5, #0
-	adds r4, #0x29
-	ldrb r1, [r4]
-	adds r0, r6, #0
-	bl StartBattleAnimHitEffectsDefault
-	adds r0, r6, #0
-	bl func_fe6_0805C308
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #2
-	beq .L0804D37C
-	ldr r0, [r5, #0x5c]
-	bl CheckRoundCrit
-	cmp r0, #1
-	bne .L0804D370
-	adds r0, r6, #0
-	bl func_fe6_08056B08
-	b .L0804D37C
-.L0804D370:
-	ldrb r0, [r4]
-	cmp r0, #0
-	bne .L0804D3A0
-	ldr r0, [r5, #0x5c]
-	bl func_fe6_08056C3C
-.L0804D37C:
-	ldrb r0, [r4]
-	cmp r0, #0
-	bne .L0804D3A0
-	adds r0, r6, #0
-	bl func_fe6_0805C358
-	b .L0804D3A0
-.L0804D38A:
-	movs r1, #0x2c
-	ldrsh r0, [r5, r1]
-	cmp r0, #0x46
-	beq .L0804D3A0
-	cmp r0, #0x50
-	bne .L0804D3A0
-	bl SpellFx_Finish
-	adds r0, r5, #0
-	bl Proc_Break
-.L0804D3A0:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0804D3A8
-func_fe6_0804D3A8: @ 0x0804D3A8
-	push {r4, r5, r6, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	ldr r1, .L0804D3EC @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804D3F0 @ =gUnk_085D0F84
-	movs r1, #3
-	bl SpawnProc
-	adds r6, r0, #0
-	str r4, [r6, #0x5c]
-	movs r0, #0
-	strh r0, [r6, #0x2c]
-	ldr r1, .L0804D3F4 @ =gUnk_085D4148
-	ldr r2, .L0804D3F8 @ =gUnk_085D3DB0
-	ldr r3, .L0804D3FC @ =gUnk_085D41A4
-	ldr r0, .L0804D400 @ =gUnk_085D3E0C
-	str r0, [sp]
-	adds r0, r4, #0
-	bl EfxCreateFrontAnim
-	adds r5, r0, #0
-	str r5, [r6, #0x60]
-	adds r0, r4, #0
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L0804D404
-	ldrh r0, [r5, #2]
-	adds r0, #0x48
-	b .L0804D408
-	.align 2, 0
-.L0804D3EC: .4byte gEfxBgSemaphore
-.L0804D3F0: .4byte gUnk_085D0F84
-.L0804D3F4: .4byte gUnk_085D4148
-.L0804D3F8: .4byte gUnk_085D3DB0
-.L0804D3FC: .4byte gUnk_085D41A4
-.L0804D400: .4byte gUnk_085D3E0C
-.L0804D404:
-	ldrh r0, [r5, #2]
-	subs r0, #0x48
-.L0804D408:
-	strh r0, [r5, #2]
-	ldr r0, .L0804D418 @ =gEkrDistanceType
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #0
-	bne .L0804D41C
-	movs r0, #0x23
-	b .L0804D41E
-	.align 2, 0
-.L0804D418: .4byte gEkrDistanceType
-.L0804D41C:
-	movs r0, #0xa
-.L0804D41E:
-	strh r0, [r6, #0x2e]
-	ldr r0, [r6, #0x5c]
-	ldr r1, [r6, #0x60]
-	bl func_fe6_0804D590
-	str r0, [r6, #0x64]
-	ldr r0, .L0804D444 @ =gUnk_0811B3E8
-	movs r1, #0x20
-	bl SpellFx_RegisterObjPal
-	ldr r0, .L0804D448 @ =gUnk_0811AFE8
-	movs r1, #0x80
-	lsls r1, r1, #5
-	bl SpellFx_RegisterObjGfx
-	add sp, #4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D444: .4byte gUnk_0811B3E8
-.L0804D448: .4byte gUnk_0811AFE8
-
-	thumb_func_start func_fe6_0804D44C
-func_fe6_0804D44C: @ 0x0804D44C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	ldrh r2, [r4, #0x2e]
-	lsls r1, r2, #0x10
-	cmp r0, r1
-	bne .L0804D49E
-	ldr r1, .L0804D48C @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	ldr r0, [r4, #0x60]
-	bl BasRemove
-	ldr r0, .L0804D490 @ =gEkrDistanceType
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #0
-	bne .L0804D498
-	ldr r0, .L0804D494 @ =gUnk_Banim_02017750
-	movs r1, #1
-	str r1, [r0]
-	ldr r0, [r4, #0x64]
-	bl Proc_End
-	adds r0, r4, #0
-	bl Proc_End
-	b .L0804D49E
-	.align 2, 0
-.L0804D48C: .4byte gEfxBgSemaphore
-.L0804D490: .4byte gEkrDistanceType
-.L0804D494: .4byte gUnk_Banim_02017750
-.L0804D498:
-	adds r0, r4, #0
-	bl Proc_Break
-.L0804D49E:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_0804D4A4
-func_fe6_0804D4A4: @ 0x0804D4A4
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r1, .L0804D4C8 @ =gUnk_Banim_0201774C
-	movs r0, #0
-	str r0, [r1]
-	ldr r0, [r4, #0x64]
-	bl Proc_End
-	ldr r0, [r4, #0x5c]
-	bl func_fe6_0804D4CC
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D4C8: .4byte gUnk_Banim_0201774C
-
-	thumb_func_start func_fe6_0804D4CC
-func_fe6_0804D4CC: @ 0x0804D4CC
-	push {r4, r5, r6, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	ldr r1, .L0804D50C @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804D510 @ =gUnk_085D0FA4
-	movs r1, #3
-	bl SpawnProc
-	adds r6, r0, #0
-	str r4, [r6, #0x5c]
-	movs r0, #0
-	strh r0, [r6, #0x2c]
-	ldr r3, .L0804D514 @ =gUnk_085D41C4
-	ldr r2, .L0804D518 @ =gUnk_085D3E2C
-	str r2, [sp]
-	adds r0, r4, #0
-	adds r1, r3, #0
-	bl EfxCreateFrontAnim
-	adds r5, r0, #0
-	str r5, [r6, #0x60]
-	adds r0, r4, #0
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L0804D51C
-	ldrh r0, [r5, #2]
-	adds r0, #0x48
-	b .L0804D520
-	.align 2, 0
-.L0804D50C: .4byte gEfxBgSemaphore
-.L0804D510: .4byte gUnk_085D0FA4
-.L0804D514: .4byte gUnk_085D41C4
-.L0804D518: .4byte gUnk_085D3E2C
-.L0804D51C:
-	ldrh r0, [r5, #2]
-	subs r0, #0x48
-.L0804D520:
-	strh r0, [r5, #2]
-	ldr r0, .L0804D548 @ =gUnk_0811B3E8
-	movs r1, #0x20
-	bl SpellFx_RegisterObjPal
-	ldr r0, .L0804D54C @ =gUnk_0811AFE8
-	movs r1, #0x80
-	lsls r1, r1, #5
-	bl SpellFx_RegisterObjGfx
-	ldr r0, [r6, #0x5c]
-	ldr r1, [r6, #0x60]
-	bl func_fe6_0804D590
-	str r0, [r6, #0x64]
-	add sp, #4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D548: .4byte gUnk_0811B3E8
-.L0804D54C: .4byte gUnk_0811AFE8
-
-	thumb_func_start func_fe6_0804D550
-func_fe6_0804D550: @ 0x0804D550
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x11
-	bne .L0804D582
-	ldr r1, .L0804D588 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	ldr r1, .L0804D58C @ =gUnk_Banim_02017750
-	movs r0, #1
-	str r0, [r1]
-	ldr r0, [r4, #0x64]
-	bl Proc_End
-	ldr r0, [r4, #0x60]
-	bl BasRemove
-	adds r0, r4, #0
-	bl Proc_Break
-.L0804D582:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D588: .4byte gEfxBgSemaphore
-.L0804D58C: .4byte gUnk_Banim_02017750
-
-	thumb_func_start func_fe6_0804D590
-func_fe6_0804D590: @ 0x0804D590
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	adds r5, r1, #0
-	ldr r1, .L0804D5CC @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804D5D0 @ =gUnk_085D0FBC
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r6, [r4, #0x5c]
-	str r5, [r4, #0x60]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	movs r0, #1
-	strh r0, [r4, #0x2e]
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #2
-	ldrsh r2, [r6, r0]
-	movs r0, #0xcd
-	movs r3, #1
-	bl func_fe6_0805C804
-	adds r0, r4, #0
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0804D5CC: .4byte gEfxBgSemaphore
-.L0804D5D0: .4byte gUnk_085D0FBC
-
-	thumb_func_start func_fe6_0804D5D4
-func_fe6_0804D5D4: @ 0x0804D5D4
-	ldr r1, .L0804D5E0 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-.L0804D5E0: .4byte gEfxBgSemaphore
-
-	thumb_func_start func_fe6_0804D5E4
-func_fe6_0804D5E4: @ 0x0804D5E4
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #8
-	bne .L0804D626
-	ldr r0, [r4, #0x60]
-	bl func_fe6_0805C76C
-	adds r2, r0, #0
-	ldr r0, [r4, #0x60]
-	ldrh r0, [r0, #2]
-	adds r2, r0, r2
-	movs r1, #0x80
-	lsls r1, r1, #1
-	lsls r2, r2, #0x10
-	asrs r2, r2, #0x10
-	movs r0, #0xcd
-	movs r3, #1
-	bl func_fe6_0805C804
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldrh r1, [r4, #0x2e]
-	movs r2, #0x2e
-	ldrsh r0, [r4, r2]
-	cmp r0, #8
-	bgt .L0804D626
-	adds r0, r1, #1
-	strh r0, [r4, #0x2e]
-.L0804D626:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_0804D62C
-func_fe6_0804D62C: @ 0x0804D62C
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	bl SpellFx_Begin
-	bl SpellFx_SetBG1Position
-	ldr r0, .L0804D660 @ =gUnk_085D0FDC
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r5, [r4, #0x5c]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r5, #0
-	bl GetAnimRoundTypeAnotherSide
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	bl CheckRoundMiss
-	adds r4, #0x29
-	strb r0, [r4]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804D660: .4byte gUnk_085D0FDC
-
-	thumb_func_start func_fe6_0804D664
-func_fe6_0804D664: @ 0x0804D664
+	thumb_func_start EfxArrow_Loop
+EfxArrow_Loop: @ 0x0804D664
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, [r5, #0x5c]
@@ -1778,7 +56,7 @@ func_fe6_0804D664: @ 0x0804D664
 	ldrsh r2, [r0, r3]
 	movs r0, #0xcc
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #1
 	bne .L0804D6FA
@@ -1792,7 +70,7 @@ func_fe6_0804D664: @ 0x0804D664
 	adds r0, r6, #0
 	bl StartBattleAnimHitEffectsDefault
 	adds r0, r6, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #2
@@ -1802,20 +80,20 @@ func_fe6_0804D664: @ 0x0804D664
 	cmp r0, #1
 	bne .L0804D6E0
 	adds r0, r6, #0
-	bl func_fe6_08056B08
+	bl NewEfxPierceCritical
 	b .L0804D6EC
 .L0804D6E0:
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0804D720
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_08056C3C
+	bl NewEfxNormalEffect
 .L0804D6EC:
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0804D720
 	adds r0, r6, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804D720
 .L0804D6FA:
 	movs r3, #0x2c
@@ -1865,7 +143,7 @@ func_fe6_0804D728: @ 0x0804D728
 	adds r0, r5, #0
 	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
-	ldr r0, .L0804D788 @ =gUnk_0811B3E8
+	ldr r0, .L0804D788 @ =Pal_TeonoOBJ
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
 	ldr r0, .L0804D78C @ =gUnk_0811B408
@@ -1882,7 +160,7 @@ func_fe6_0804D728: @ 0x0804D728
 .L0804D77C: .4byte gUnk_085D4264
 .L0804D780: .4byte gUnk_085D4300
 .L0804D784: .4byte gUnk_085D4274
-.L0804D788: .4byte gUnk_0811B3E8
+.L0804D788: .4byte Pal_TeonoOBJ
 .L0804D78C: .4byte gUnk_0811B408
 
 	thumb_func_start func_fe6_0804D790
@@ -2275,7 +553,7 @@ func_fe6_0804DAFC: @ 0x0804DAFC
 	ldrsh r2, [r0, r3]
 	movs r0, #0xca
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #1
 	bne .L0804DB86
@@ -2292,7 +570,7 @@ func_fe6_0804DAFC: @ 0x0804DAFC
 	adds r0, r6, #0
 	bl StartBattleAnimHitEffectsDefault
 	adds r0, r6, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #2
@@ -2302,20 +580,20 @@ func_fe6_0804DAFC: @ 0x0804DAFC
 	cmp r0, #1
 	bne .L0804DB6C
 	adds r0, r6, #0
-	bl func_fe6_08056B08
+	bl NewEfxPierceCritical
 	b .L0804DB78
 .L0804DB6C:
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0804DBA4
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_08056C3C
+	bl NewEfxNormalEffect
 .L0804DB78:
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0804DBA4
 	adds r0, r6, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804DBA4
 .L0804DB86:
 	movs r3, #0x2c
@@ -2472,7 +750,7 @@ func_fe6_0804DC8C: @ 0x0804DC8C
 	ldrsh r2, [r4, r0]
 	movs r0, #0xef
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0804DCC4:
 	movs r1, #0x2c
 	ldrsh r0, [r5, r1]
@@ -2708,7 +986,7 @@ func_fe6_0804DE84: @ 0x0804DE84
 	ldrsh r2, [r4, r0]
 	movs r0, #0xef
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0804DEBC:
 	movs r1, #0x2c
 	ldrsh r0, [r5, r1]
@@ -2793,7 +1071,7 @@ func_fe6_0804DF30: @ 0x0804DF30
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -2831,7 +1109,7 @@ func_fe6_0804DF80: @ 0x0804DF80
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0804E038
 	.align 2, 0
 .L0804DFC4: .4byte 0x00000137
@@ -2854,7 +1132,7 @@ func_fe6_0804DF80: @ 0x0804DF80
 	adds r0, r6, #0
 	bl StartBattleAnimHitEffectsDefault
 	adds r0, r6, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #2
@@ -2864,20 +1142,20 @@ func_fe6_0804DF80: @ 0x0804DF80
 	cmp r0, #1
 	bne .L0804E00C
 	adds r0, r6, #0
-	bl func_fe6_08056B08
+	bl NewEfxPierceCritical
 	b .L0804E018
 .L0804E00C:
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0804E038
 	ldr r0, [r5, #0x5c]
-	bl func_fe6_08056C3C
+	bl NewEfxNormalEffect
 .L0804E018:
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0804E038
 	adds r0, r6, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804E038
 .L0804E026:
 	cmp r0, #0x3e
@@ -3044,7 +1322,7 @@ func_fe6_0804E124: @ 0x0804E124
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0804E1BA
 .L0804E180:
 	cmp r0, #0xa
@@ -3061,7 +1339,7 @@ func_fe6_0804E124: @ 0x0804E124
 	cmp r0, #0
 	bne .L0804E1BA
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804E1BA
 .L0804E1A4:
 	cmp r0, #0x19
@@ -3446,7 +1724,7 @@ func_fe6_0804E484: @ 0x0804E484
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	bl func_fe6_0804E540
 	ldr r0, [r4, #0x5c]
@@ -3464,7 +1742,7 @@ func_fe6_0804E484: @ 0x0804E484
 	cmp r0, #0
 	bne .L0804E536
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804E536
 	.align 2, 0
 .L0804E4FC: .4byte 0x0000010D
@@ -3479,7 +1757,7 @@ func_fe6_0804E484: @ 0x0804E484
 	movs r1, #0
 	movs r2, #0xe
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	b .L0804E536
 .L0804E51A:
 	adds r0, r6, #0
@@ -3621,7 +1899,7 @@ func_fe6_0804E61C: @ 0x0804E61C
 	bne .L0804E67C
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x5a
-	bl func_fe6_0804D050
+	bl NewEfxMagicQUAKE
 	adds r0, r5, #0
 	bl func_fe6_0804E6BC
 	adds r0, r5, #0
@@ -3634,14 +1912,14 @@ func_fe6_0804E61C: @ 0x0804E61C
 	movs r1, #0x28
 	movs r2, #0xf
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	ldr r0, .L0804E678 @ =0x0000011D
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0804E6B2
 	.align 2, 0
 .L0804E678: .4byte 0x0000011D
@@ -3660,7 +1938,7 @@ func_fe6_0804E61C: @ 0x0804E61C
 	cmp r0, #0
 	bne .L0804E6B2
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804E6B2
 .L0804E6A0:
 	cmp r0, #0x78
@@ -3973,7 +2251,7 @@ func_fe6_0804E908: @ 0x0804E908
 	bne .L0804E942
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x5a
-	bl func_fe6_0804D050
+	bl NewEfxMagicQUAKE
 	ldr r0, [r4, #0x5c]
 	bl func_fe6_0804E988
 	movs r0, #0x8f
@@ -3983,7 +2261,7 @@ func_fe6_0804E908: @ 0x0804E908
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0804E942:
 	movs r1, #0x2c
 	ldrsh r0, [r4, r1]
@@ -4001,7 +2279,7 @@ func_fe6_0804E908: @ 0x0804E908
 	cmp r0, #0
 	bne .L0804E980
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804E980
 .L0804E96A:
 	cmp r0, #0x32
@@ -4128,7 +2406,7 @@ func_fe6_0804EA4C: @ 0x0804EA4C
 	bne .L0804EA90
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x5a
-	bl func_fe6_0804D050
+	bl NewEfxMagicQUAKE
 	ldr r0, [r4, #0x5c]
 	bl func_fe6_0804EAD4
 	ldr r0, [r4, #0x5c]
@@ -4141,7 +2419,7 @@ func_fe6_0804EA4C: @ 0x0804EA4C
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0804EA90:
 	movs r1, #0x2c
 	ldrsh r0, [r4, r1]
@@ -4159,7 +2437,7 @@ func_fe6_0804EA4C: @ 0x0804EA4C
 	cmp r0, #0
 	bne .L0804EACE
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804EACE
 	.align 2, 0
 .L0804EAB8: .4byte 0x0000011F
@@ -4485,12 +2763,12 @@ func_fe6_0804ECF4: @ 0x0804ECF4
 	ldrsh r2, [r5, r0]
 	movs r0, #0xf5
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0804ED8E
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804ED8E
 .L0804ED72:
 	adds r0, r6, #0
@@ -4878,7 +3156,7 @@ func_fe6_0804F03C: @ 0x0804F03C
 	ldrsh r2, [r0, r3]
 	movs r0, #0xf1
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0804F0A4:
 	movs r1, #0x2c
 	ldrsh r0, [r4, r1]
@@ -4915,7 +3193,7 @@ func_fe6_0804F03C: @ 0x0804F03C
 	ldrsh r2, [r6, r0]
 	movs r0, #0xf7
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r6, #0
 	bl func_fe6_0804F2D0
 	b .L0804F11A
@@ -4926,7 +3204,7 @@ func_fe6_0804F03C: @ 0x0804F03C
 	ldrsh r2, [r6, r3]
 	movs r0, #0xf8
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r6, #0
 	bl func_fe6_0804F3B8
 	adds r0, r6, #0
@@ -4935,7 +3213,7 @@ func_fe6_0804F03C: @ 0x0804F03C
 	bl func_fe6_0804F510
 .L0804F11A:
 	adds r0, r6, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804F138
 .L0804F122:
 	cmp r0, r8
@@ -5118,7 +3396,7 @@ func_fe6_0804F288: @ 0x0804F288
 	ldrsh r2, [r0, r3]
 	movs r0, #0xf2
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0804F2C6
 .L0804F2AE:
 	cmp r0, #0x32
@@ -5582,7 +3860,7 @@ func_fe6_0804F600: @ 0x0804F600
 	movs r1, #0
 	movs r2, #0x10
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r0, #0x91
 	lsls r0, r0, #1
 	movs r1, #0x80
@@ -5590,7 +3868,7 @@ func_fe6_0804F600: @ 0x0804F600
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0804F692:
 	movs r0, #0x2c
 	ldrsh r1, [r4, r0]
@@ -5619,14 +3897,14 @@ func_fe6_0804F600: @ 0x0804F600
 	movs r1, #0x18
 	movs r2, #0x10
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	ldr r0, .L0804F6E4 @ =0x00000123
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0804F72C
 	.align 2, 0
 .L0804F6E4: .4byte 0x00000123
@@ -5647,7 +3925,7 @@ func_fe6_0804F600: @ 0x0804F600
 	cmp r0, #0
 	bne .L0804F72C
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804F72C
 .L0804F710:
 	adds r0, r6, #0
@@ -6326,7 +4604,7 @@ func_fe6_0804FC64: @ 0x0804FC64
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	bl func_fe6_0804FD24
 	adds r0, r5, #0
@@ -6363,7 +4641,7 @@ func_fe6_0804FC64: @ 0x0804FC64
 	cmp r0, #0
 	bne .L0804FD1C
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0804FD1C
 	.align 2, 0
 .L0804FCFC: .4byte 0x00000119
@@ -6567,7 +4845,7 @@ func_fe6_0804FE84: @ 0x0804FE84
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x26
 	bl NewEfxFlashBgWhite
@@ -6864,7 +5142,7 @@ func_fe6_080500B8: @ 0x080500B8
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -6897,14 +5175,14 @@ func_fe6_080500B8: @ 0x080500B8
 	movs r1, #6
 	movs r2, #5
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	ldr r0, .L08050160 @ =0x00000109
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L080501B0
 	.align 2, 0
 .L08050160: .4byte 0x00000109
@@ -6926,7 +5204,7 @@ func_fe6_080500B8: @ 0x080500B8
 	cmp r0, #0
 	bne .L080501B0
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L080501B0
 .L0805018E:
 	adds r0, r2, #0
@@ -7246,7 +5524,7 @@ func_fe6_080503F8: @ 0x080503F8
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	bl func_fe6_080504F0
 	b .L080504E8
@@ -7286,7 +5564,7 @@ func_fe6_080503F8: @ 0x080503F8
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	bl func_fe6_080505A0
 	b .L080504E8
@@ -7320,7 +5598,7 @@ func_fe6_080503F8: @ 0x080503F8
 	cmp r0, #0
 	bne .L080504E8
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L080504E8
 .L080504CC:
 	adds r0, r2, #0
@@ -7841,14 +6119,14 @@ func_fe6_0805089C: @ 0x0805089C
 	movs r1, #0
 	movs r2, #0xa
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x28
 	movs r2, #0x28
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	adds r0, r6, #0
 	bl func_fe6_08050A70
 	movs r0, #0x92
@@ -7867,7 +6145,7 @@ func_fe6_0805089C: @ 0x0805089C
 	movs r1, #0x52
 	movs r2, #0xf
 	movs r3, #0
-	bl func_fe6_0804C8D4
+	bl NewEfxRestRST
 	adds r1, r0, #0
 	adds r0, r6, #0
 	movs r2, #0x3c
@@ -7875,14 +6153,14 @@ func_fe6_0805089C: @ 0x0805089C
 	ldr r0, .L08050964 @ =gDispIo
 	movs r1, #0x20
 	ldrsh r2, [r0, r1]
-	ldr r3, .L08050968 @ =func_fe6_0804CD4C
+	ldr r3, .L08050968 @ =EfxRestWINH_DefaultHblank
 	adds r0, r6, #0
 	movs r1, #0x53
-	bl func_fe6_0804CB8C
+	bl NewEfxRestWINH
 	b .L080509D8
 	.align 2, 0
 .L08050964: .4byte gDispIo
-.L08050968: .4byte func_fe6_0804CD4C
+.L08050968: .4byte EfxRestWINH_DefaultHblank
 .L0805096C:
 	adds r0, r5, #0
 	adds r0, #0x64
@@ -7900,7 +6178,7 @@ func_fe6_0805089C: @ 0x0805089C
 	movs r3, #2
 	ldrsh r2, [r6, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L080509D8
 	.align 2, 0
 .L08050994: .4byte 0x00000125
@@ -7921,7 +6199,7 @@ func_fe6_0805089C: @ 0x0805089C
 	cmp r0, #0
 	bne .L080509D8
 	adds r0, r6, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L080509D8
 .L080509C0:
 	adds r0, r5, #0
@@ -8260,7 +6538,7 @@ func_fe6_08050C30: @ 0x08050C30
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r4, #0
 	bl Proc_Break
 .L08050C96:
@@ -8490,7 +6768,7 @@ func_fe6_08050E1C: @ 0x08050E1C
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	bl func_fe6_08050ED4
 	b .L08050ECC
@@ -8505,7 +6783,7 @@ func_fe6_08050E1C: @ 0x08050E1C
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	movs r1, #4
 	bl NewEfxFlashBgWhite
@@ -8521,7 +6799,7 @@ func_fe6_08050E1C: @ 0x08050E1C
 	cmp r0, #0
 	bne .L08050ECC
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L08050ECC
 	.align 2, 0
 .L08050EAC: .4byte 0x00000121
@@ -8731,7 +7009,7 @@ func_fe6_08051050: @ 0x08051050
 	beq .L08051070
 	adds r1, #0xff
 	movs r0, #0xfe
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0805107A
 	.align 2, 0
 .L0805106C: .4byte gUnk_Banim_0201E7A8
@@ -8739,7 +7017,7 @@ func_fe6_08051050: @ 0x08051050
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0xff
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L0805107A:
 	ldr r1, .L08051088 @ =gUnk_Banim_0201E7A8
 	ldr r0, [r1]
@@ -8825,14 +7103,14 @@ func_fe6_0805108C: @ 0x0805108C
 	movs r1, #3
 	movs r2, #0xa
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	adds r0, r1, #0
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L080511B4
 .L0805113E:
 	adds r0, r4, #0
@@ -8857,12 +7135,12 @@ func_fe6_0805108C: @ 0x0805108C
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L080511B4
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L080511B4
 	.align 2, 0
 .L08051180: .4byte 0x00000101
@@ -8877,7 +7155,7 @@ func_fe6_0805108C: @ 0x0805108C
 	movs r1, #0
 	movs r2, #0x14
 	movs r3, #8
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	b .L080511B4
 .L0805119E:
 	adds r0, r4, #0
@@ -9197,7 +7475,7 @@ func_fe6_080513E8: @ 0x080513E8
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08051514
 	.align 2, 0
 .L08051444: .4byte 0x0000012D
@@ -9215,7 +7493,7 @@ func_fe6_080513E8: @ 0x080513E8
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08051514
 .L0805146A:
 	adds r0, r4, #0
@@ -9233,7 +7511,7 @@ func_fe6_080513E8: @ 0x080513E8
 	bne .L080514F4
 	adds r0, r5, #0
 	movs r1, #0x64
-	bl func_fe6_0804D050
+	bl NewEfxMagicQUAKE
 	adds r0, r5, #0
 	movs r1, #0x64
 	bl func_fe6_08051870
@@ -9243,11 +7521,11 @@ func_fe6_080513E8: @ 0x080513E8
 	movs r1, #0x50
 	movs r2, #0x14
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	ldr r2, .L080514EC @ =func_fe6_08051C00
 	adds r0, r5, #0
 	movs r1, #0x64
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	movs r0, #0x64
 	bl func_fe6_08051C30
 	adds r0, r5, #0
@@ -9257,7 +7535,7 @@ func_fe6_080513E8: @ 0x080513E8
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -9271,7 +7549,7 @@ func_fe6_080513E8: @ 0x080513E8
 	cmp r0, #0
 	bne .L08051514
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L08051514
 	.align 2, 0
 .L080514EC: .4byte func_fe6_08051C00
@@ -10146,7 +8424,7 @@ func_fe6_08051C00: @ 0x08051C00
 	cmp r0, #0
 	bne .L08051C20
 	ldr r2, .L08051C28 @ =0x04000014
-	ldr r3, .L08051C2C @ =gUnk_Banim_0201E154
+	ldr r3, .L08051C2C @ =gpBg2ScrollOffset
 	ldr r1, [r3]
 	ldrh r0, [r1]
 	strh r0, [r2]
@@ -10160,7 +8438,7 @@ func_fe6_08051C00: @ 0x08051C00
 	.align 2, 0
 .L08051C24: .4byte 0x04000004
 .L08051C28: .4byte 0x04000014
-.L08051C2C: .4byte gUnk_Banim_0201E154
+.L08051C2C: .4byte gpBg2ScrollOffset
 
 	thumb_func_start func_fe6_08051C30
 func_fe6_08051C30: @ 0x08051C30
@@ -10188,12 +8466,12 @@ func_fe6_08051C30: @ 0x08051C30
 func_fe6_08051C5C: @ 0x08051C5C
 	push {r4, r5, r6, r7, lr}
 	adds r3, r0, #0
-	ldr r0, .L08051CBC @ =gUnk_Banim_0201E3D8
+	ldr r0, .L08051CBC @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r4, .L08051CC0 @ =gUnk_Banim_0201E158
+	ldr r4, .L08051CC0 @ =gpBg2ScrollOffsetTable1
 	cmp r0, #0
 	bne .L08051C6C
-	ldr r4, .L08051CC4 @ =gUnk_Banim_0201E298
+	ldr r4, .L08051CC4 @ =gpBg2ScrollOffsetTable2
 .L08051C6C:
 	movs r2, #0
 	ldr r6, .L08051CC8 @ =gSinLut
@@ -10237,9 +8515,9 @@ func_fe6_08051C5C: @ 0x08051C5C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08051CBC: .4byte gUnk_Banim_0201E3D8
-.L08051CC0: .4byte gUnk_Banim_0201E158
-.L08051CC4: .4byte gUnk_Banim_0201E298
+.L08051CBC: .4byte gEkrBg1ScrollFlip
+.L08051CC0: .4byte gpBg2ScrollOffsetTable1
+.L08051CC4: .4byte gpBg2ScrollOffsetTable2
 .L08051CC8: .4byte gSinLut
 .L08051CCC: .4byte gEfxBgSemaphore
 
@@ -10293,7 +8571,7 @@ func_fe6_08051D0C: @ 0x08051D0C
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	bl func_fe6_08051DFC
 	ldr r0, [r4, #0x5c]
@@ -10336,7 +8614,7 @@ func_fe6_08051D0C: @ 0x08051D0C
 	ldrsh r2, [r5, r3]
 .L08051D90:
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08051DF6
 	.align 2, 0
 .L08051D98: .4byte 0x00000129
@@ -10368,7 +8646,7 @@ func_fe6_08051D0C: @ 0x08051D0C
 	cmp r0, #0
 	bne .L08051DF6
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L08051DF6
 .L08051DDC:
 	adds r0, r3, #0
@@ -10777,7 +9055,7 @@ func_fe6_080520CC: @ 0x080520CC
 	movs r1, #0
 	movs r2, #0x20
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	adds r0, r5, #0
 	movs r1, #0xaa
 	bl func_fe6_080524F4
@@ -10798,7 +9076,7 @@ func_fe6_080520CC: @ 0x080520CC
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0805222A
 	.align 2, 0
 .L08052174: .4byte 0x0000011B
@@ -10835,7 +9113,7 @@ func_fe6_080520CC: @ 0x080520CC
 	cmp r0, #0
 	bne .L0805222A
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L0805222A
 .L080521C6:
 	movs r2, #0xad
@@ -10849,10 +9127,10 @@ func_fe6_080520CC: @ 0x080520CC
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	movs r1, #0x64
-	bl func_fe6_0804D050
+	bl NewEfxMagicQUAKE
 	adds r0, r5, #0
 	movs r1, #0x64
 	bl func_fe6_08052334
@@ -10866,7 +9144,7 @@ func_fe6_080520CC: @ 0x080520CC
 	movs r1, #0x46
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	adds r0, r5, #0
 	bl func_fe6_08052848
 	b .L0805222A
@@ -11921,15 +10199,15 @@ func_fe6_08052A28: @ 0x08052A28
 	adds r1, r4, #0
 	movs r2, #0x14
 	movs r3, #0x80
-	bl func_fe6_0804C8D4
+	bl NewEfxRestRST
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #0x8c
 	bl func_fe6_080530E4
-	ldr r2, .L08052AD0 @ =func_fe6_0804CD4C
+	ldr r2, .L08052AD0 @ =EfxRestWINH_DefaultHblank
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	movs r0, #0x82
 	lsls r0, r0, #1
 	b .L08052B38
@@ -11937,7 +10215,7 @@ func_fe6_08052A28: @ 0x08052A28
 .L08052AC4: .4byte 0x000001D1
 .L08052AC8: .4byte 0x0000018B
 .L08052ACC: .4byte 0x0000019F
-.L08052AD0: .4byte func_fe6_0804CD4C
+.L08052AD0: .4byte EfxRestWINH_DefaultHblank
 .L08052AD4:
 	adds r0, r4, #0
 	adds r0, #0x92
@@ -11972,7 +10250,7 @@ func_fe6_08052A28: @ 0x08052A28
 	movs r1, #0x6e
 	movs r2, #0x28
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	adds r0, r5, #0
 	movs r1, #0x8c
 	movs r2, #0x18
@@ -11982,7 +10260,7 @@ func_fe6_08052A28: @ 0x08052A28
 	bl func_fe6_08053530
 	adds r0, r5, #0
 	movs r1, #0x5a
-	bl func_fe6_0804D050
+	bl NewEfxMagicQUAKE
 	movs r0, #0x83
 	lsls r0, r0, #1
 .L08052B38:
@@ -11990,7 +10268,7 @@ func_fe6_08052A28: @ 0x08052A28
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08052B9A
 	.align 2, 0
 .L08052B48: .4byte 0x000001D5
@@ -12012,7 +10290,7 @@ func_fe6_08052A28: @ 0x08052A28
 	cmp r0, #0
 	bne .L08052B9A
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L08052B9A
 	.align 2, 0
 .L08052B78: .4byte 0x0000020D
@@ -13589,14 +11867,14 @@ func_fe6_080537A0: @ 0x080537A0
 	movs r1, #0
 	movs r2, #0x1e
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0xa0
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	ldr r0, [r6, #0x5c]
 	bl func_fe6_08053954
 	ldr r0, [r6, #0x5c]
@@ -13607,7 +11885,7 @@ func_fe6_080537A0: @ 0x080537A0
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08053946
 	.align 2, 0
 .L08053844: .4byte gDispIo
@@ -13622,18 +11900,18 @@ func_fe6_080537A0: @ 0x080537A0
 	movs r1, #0x52
 	movs r2, #0xf
 	movs r3, #0
-	bl func_fe6_0804C8D4
+	bl NewEfxRestRST
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #0x3c
 	bl func_fe6_08050D68
-	ldr r2, .L08053878 @ =func_fe6_0804CD4C
+	ldr r2, .L08053878 @ =EfxRestWINH_DefaultHblank
 	adds r0, r5, #0
 	movs r1, #0x53
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	b .L08053946
 	.align 2, 0
-.L08053878: .4byte func_fe6_0804CD4C
+.L08053878: .4byte EfxRestWINH_DefaultHblank
 .L0805387C:
 	adds r0, r4, #0
 	adds r0, #0xd2
@@ -13653,7 +11931,7 @@ func_fe6_080537A0: @ 0x080537A0
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08053946
 	.align 2, 0
 .L080538A8: .4byte 0x00000139
@@ -13678,7 +11956,7 @@ func_fe6_080537A0: @ 0x080537A0
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	adds r0, r5, #0
 	movs r1, #0xa
 	bl NewEfxFlashBgWhite
@@ -13695,7 +11973,7 @@ func_fe6_080537A0: @ 0x080537A0
 	cmp r0, #0
 	bne .L08053946
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L08053946
 .L08053902:
 	movs r2, #0xa3
@@ -13711,7 +11989,7 @@ func_fe6_080537A0: @ 0x080537A0
 	movs r1, #0x10
 	movs r2, #0xa
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	b .L08053946
 .L08053924:
 	movs r3, #0xaf
@@ -14357,11 +12635,11 @@ func_fe6_08053E04: @ 0x08053E04
 	movs r1, #0x64
 	movs r2, #2
 	adds r3, r4, #0
-	bl func_fe6_0804C8D4
-	ldr r2, .L08053EC8 @ =func_fe6_0804CD4C
+	bl NewEfxRestRST
+	ldr r2, .L08053EC8 @ =EfxRestWINH_DefaultHblank
 	adds r0, r5, #0
 	movs r1, #0x69
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	ldr r3, .L08053ECC @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -14386,23 +12664,23 @@ func_fe6_08053E04: @ 0x08053E04
 	movs r1, #0
 	movs r2, #0xf
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0x46
 	movs r2, #0xf
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r0, #0x98
 	lsls r0, r0, #1
 	adds r1, r4, #0
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08053FE8
 	.align 2, 0
-.L08053EC8: .4byte func_fe6_0804CD4C
+.L08053EC8: .4byte EfxRestWINH_DefaultHblank
 .L08053ECC: .4byte gDispIo
 .L08053ED0:
 	adds r0, r4, #0
@@ -14468,7 +12746,7 @@ func_fe6_08053E04: @ 0x08053E04
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08053FE8
 	.align 2, 0
 .L08053F50: .4byte 0x00000117
@@ -14499,12 +12777,12 @@ func_fe6_08053E04: @ 0x08053E04
 	ldrsh r2, [r5, r0]
 	adds r0, r7, #0
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L08053FE8
 	adds r0, r5, #0
-	bl func_fe6_0805C358
+	bl EfxPlayHittedSFX
 	b .L08053FE8
 .L08053FA2:
 	movs r2, #0xb8
@@ -14521,7 +12799,7 @@ func_fe6_08053E04: @ 0x08053E04
 	movs r1, #0x12
 	movs r2, #8
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	b .L08053FE8
 .L08053FC6:
 	movs r3, #0xcd
@@ -15329,7 +13607,7 @@ func_fe6_08054580: @ 0x08054580
 	ldrsh r2, [r5, r3]
 .L0805465C:
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L080546A0
 	.align 2, 0
 .L08054664: .4byte 0x0000010F
@@ -15523,7 +13801,7 @@ func_fe6_080546D0: @ 0x080546D0
 	ldrsh r2, [r5, r3]
 .L080547EE:
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08054840
 	.align 2, 0
 .L080547F8: .4byte gDispIo
@@ -15722,7 +14000,7 @@ func_fe6_08054870: @ 0x08054870
 	ldrsh r2, [r5, r3]
 .L0805498E:
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L080549E0
 	.align 2, 0
 .L08054998: .4byte gDispIo
@@ -15927,7 +14205,7 @@ func_fe6_08054A10: @ 0x08054A10
 	ldrsh r2, [r5, r3]
 .L08054B3E:
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08054B90
 	.align 2, 0
 .L08054B48: .4byte gDispIo
@@ -16875,7 +15153,7 @@ func_fe6_08055294: @ 0x08055294
 	ldrsh r2, [r0, r3]
 	movs r0, #0xf3
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08055358
 .L080552C2:
 	cmp r1, #0x34
@@ -16897,7 +15175,7 @@ func_fe6_08055294: @ 0x08055294
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	bl func_fe6_080554C8
 	ldr r0, [r4, #0x5c]
@@ -17023,7 +15301,7 @@ func_fe6_080553B4: @ 0x080553B4
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #0
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L0805542A
 	.align 2, 0
 .L08055404: .4byte gUnk_0811A9BA
@@ -17428,7 +15706,7 @@ func_fe6_080556F8: @ 0x080556F8
 	movs r1, #0x28
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r4, #0x10
 	str r4, [sp]
 	str r7, [sp, #4]
@@ -17436,35 +15714,35 @@ func_fe6_080556F8: @ 0x080556F8
 	movs r1, #0x47
 	movs r2, #0x1e
 	movs r3, #8
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r5, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x66
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r4, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x85
 	movs r2, #0x1e
 	movs r3, #8
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0xa4
 	movs r2, #0x3c
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #2
 	ldrsh r2, [r6, r0]
 	movs r0, #0xfd
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08055810
 .L080557A4:
 	adds r0, r5, #0
@@ -17735,7 +16013,7 @@ func_fe6_08055998: @ 0x08055998
 	ldrsh r2, [r0, r3]
 	movs r0, #0xfa
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L080559DC:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x29
@@ -17760,14 +16038,14 @@ func_fe6_08055998: @ 0x08055998
 	ldrsh r2, [r5, r0]
 	movs r0, #0xfb
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	str r7, [sp]
 	str r7, [sp, #4]
 	movs r1, #0x42
 	movs r2, #0x14
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	b .L08055A92
 .L08055A22:
 	adds r0, r6, #0
@@ -17780,7 +16058,7 @@ func_fe6_08055998: @ 0x08055998
 	ldrsh r2, [r5, r3]
 	movs r0, #0xfc
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	bl func_fe6_0805BD8C
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
@@ -18042,7 +16320,7 @@ func_fe6_08055C30: @ 0x08055C30
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 .L08055C74:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x64
@@ -18071,14 +16349,14 @@ func_fe6_08055C30: @ 0x08055C30
 	movs r1, #0
 	movs r2, #0x14
 	movs r3, #0
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0xe6
 	movs r2, #0x14
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	b .L08055D22
 	.align 2, 0
 .L08055CC8: .4byte 0x0000011B
@@ -18355,7 +16633,7 @@ func_fe6_08055EF4: @ 0x08055EF4
 	ldrsh r2, [r0, r4]
 	adds r0, r3, #0
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -18439,7 +16717,7 @@ func_fe6_08055F60: @ 0x08055F60
 	movs r1, #0x28
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	movs r4, #0x10
 	str r4, [sp]
 	str r7, [sp, #4]
@@ -18447,35 +16725,35 @@ func_fe6_08055F60: @ 0x08055F60
 	movs r1, #0x47
 	movs r2, #0x1e
 	movs r3, #8
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r5, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x66
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r4, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x85
 	movs r2, #0x1e
 	movs r3, #8
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0xa4
 	movs r2, #0x3c
 	movs r3, #0x10
-	bl func_fe6_0804CD88
+	bl NewEfxALPHA
 	ldr r0, .L0805600C @ =0x00000103
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #2
 	ldrsh r2, [r6, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L08056074
 	.align 2, 0
 .L0805600C: .4byte 0x00000103
@@ -18741,20 +17019,20 @@ func_fe6_080561DC: @ 0x080561DC
 	movs r1, #0x4a
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl func_fe6_0804C8D4
-	ldr r2, .L08056258 @ =func_fe6_0804CD4C
+	bl NewEfxRestRST
+	ldr r2, .L08056258 @ =EfxRestWINH_DefaultHblank
 	adds r0, r5, #0
 	movs r1, #0x4a
-	bl func_fe6_0804CC68
+	bl NewEfxRestWINH_
 	movs r1, #2
 	ldrsh r2, [r5, r1]
 	movs r0, #0xf9
 	adds r1, r4, #0
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L080562B6
 	.align 2, 0
-.L08056258: .4byte func_fe6_0804CD4C
+.L08056258: .4byte EfxRestWINH_DefaultHblank
 .L0805625C:
 	adds r0, r6, #0
 	adds r0, #0x4a
@@ -19456,7 +17734,7 @@ func_fe6_080567E8: @ 0x080567E8
 	movs r3, #2
 	ldrsh r2, [r4, r3]
 	movs r3, #1
-	bl func_fe6_0805C804
+	bl PlaySFX
 	b .L080568AE
 .L08056844:
 	adds r0, r6, #0

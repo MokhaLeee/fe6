@@ -334,7 +334,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	ldr r4, .L0805BF34 @ =0x0000FFFF
 	mov r0, r8
 	str r2, [sp]
-	bl func_fe6_0805C76C
+	bl GetProperAnimSoundLocation
 	mov r1, r8
 	ldrh r1, [r1, #2]
 	adds r0, r1, r0
@@ -430,9 +430,9 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 .L0805C01C: .4byte gUnk_08605F6C
 .L0805C020:
 	adds r0, r6, #0
-	bl func_fe6_0805C3B8
+	bl EfxPlayCriticalHittedSFX
 	adds r0, r6, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #1
@@ -445,9 +445,9 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	b .L0805C08E
 .L0805C040:
 	adds r0, r6, #0
-	bl func_fe6_0805C3B8
+	bl EfxPlayCriticalHittedSFX
 	adds r0, r6, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #1
@@ -460,9 +460,9 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	b .L0805C08E
 .L0805C060:
 	adds r0, r6, #0
-	bl func_fe6_0805C3B8
+	bl EfxPlayCriticalHittedSFX
 	adds r0, r6, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #1
@@ -486,7 +486,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	movs r4, #0xec
 .L0805C08E:
 	adds r0, r6, #0
-	bl func_fe6_0805C76C
+	bl GetProperAnimSoundLocation
 	ldrh r6, [r6, #2]
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
@@ -748,7 +748,7 @@ func_fe6_0805C1A0: @ 0x0805C1A0
 func_fe6_0805C2B0: @ 0x0805C2B0
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl func_fe6_0805C76C
+	bl GetProperAnimSoundLocation
 	movs r2, #2
 	ldrsh r1, [r4, r2]
 	adds r5, r0, r1
@@ -799,8 +799,8 @@ func_fe6_0805C2E0: @ 0x0805C2E0
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805C308
-func_fe6_0805C308: @ 0x0805C308
+	thumb_func_start GetEfxHpChangeType
+GetEfxHpChangeType: @ 0x0805C308
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r4, .L0805C348 @ =gEfxHpLutOff
@@ -840,14 +840,14 @@ func_fe6_0805C308: @ 0x0805C308
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_0805C358
-func_fe6_0805C358: @ 0x0805C358
+	thumb_func_start EfxPlayHittedSFX
+EfxPlayHittedSFX: @ 0x0805C358
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, .L0805C37C @ =0x0000FFFF
-	bl func_fe6_0805C3B8
+	bl EfxPlayCriticalHittedSFX
 	adds r0, r5, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #1
@@ -892,14 +892,14 @@ func_fe6_0805C358: @ 0x0805C358
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805C3B8
-func_fe6_0805C3B8: @ 0x0805C3B8
+	thumb_func_start EfxPlayCriticalHittedSFX
+EfxPlayCriticalHittedSFX: @ 0x0805C3B8
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
 	adds r0, r4, #0
-	bl func_fe6_0805C308
+	bl GetEfxHpChangeType
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #1
@@ -925,8 +925,8 @@ func_fe6_0805C3B8: @ 0x0805C3B8
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805C3FC
-func_fe6_0805C3FC: @ 0x0805C3FC
+	thumb_func_start EfxCheckRetaliation
+EfxCheckRetaliation: @ 0x0805C3FC
 	ldr r2, .L0805C414 @ =gBattleHits
 	movs r1, #8
 	ldrb r2, [r2, #2]
@@ -946,8 +946,8 @@ func_fe6_0805C3FC: @ 0x0805C3FC
 .L0805C41A:
 	bx lr
 
-	thumb_func_start func_fe6_0805C41C
-func_fe6_0805C41C: @ 0x0805C41C
+	thumb_func_start EfxCheckStaffType
+EfxCheckStaffType: @ 0x0805C41C
 	push {lr}
 	cmp r0, #0
 	beq .L0805C518
@@ -1259,7 +1259,7 @@ EkrPlayMainBGM: @ 0x0805C520
 .L0805C6D0: .4byte gBattleSt
 .L0805C6D4:
 	movs r0, #0
-	bl func_fe6_0805C3FC
+	bl EfxCheckRetaliation
 	cmp r0, #1
 	bne .L0805C6E8
 	ldr r0, .L0805C6E4 @ =gBattleUnitA
@@ -1268,14 +1268,14 @@ EkrPlayMainBGM: @ 0x0805C520
 .L0805C6E4: .4byte gBattleUnitA
 .L0805C6E8:
 	movs r0, #1
-	bl func_fe6_0805C3FC
+	bl EfxCheckRetaliation
 	cmp r0, #1
 	bne .L0805C704
 	ldr r0, .L0805C700 @ =gBattleUnitB
 .L0805C6F4:
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl func_fe6_0805C41C
+	bl EfxCheckStaffType
 	b .L0805C706
 	.align 2, 0
 .L0805C700: .4byte gBattleUnitB
@@ -1339,8 +1339,8 @@ EkrRestoreBGM: @ 0x0805C738
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805C76C
-func_fe6_0805C76C: @ 0x0805C76C
+	thumb_func_start GetProperAnimSoundLocation
+GetProperAnimSoundLocation: @ 0x0805C76C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -1417,8 +1417,8 @@ func_fe6_0805C76C: @ 0x0805C76C
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805C804
-func_fe6_0805C804: @ 0x0805C804
+	thumb_func_start PlaySFX
+PlaySFX: @ 0x0805C804
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r2, #0
@@ -1432,14 +1432,14 @@ func_fe6_0805C804: @ 0x0805C804
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805C820
-func_fe6_0805C820: @ 0x0805C820
+	thumb_func_start PlaySfxAutomatically
+PlaySfxAutomatically: @ 0x0805C820
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r2, #0
 	bl EfxPlaySE
 	adds r0, r4, #0
-	bl func_fe6_0805C76C
+	bl GetProperAnimSoundLocation
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #1

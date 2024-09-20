@@ -30,25 +30,6 @@
 #include "constants/pids.h"
 #include "constants/songs.h"
 
-static bool CanSelectMoveTo(int x, int y);
-static void PlayerPhase_ContinueAction(ProcPtr proc);
-static void PlayerPhase_CancelAction(ProcPtr proc);
-static bool PlayerPhase_AttemptReMove(ProcPtr proc);
-
-static bool TrySetCursorOn(int uid);
-
-static void PlayerPhase_Suspend(ProcPtr proc);
-static void PlayerPhase_IdleLoop(ProcPtr proc);
-static void PlayerPhase_BeginMoveSelect(ProcPtr proc);
-static void PlayerPhase_BeginMove(ProcPtr proc);
-static void PlayerPhase_WaitForMove(ProcPtr proc);
-static void PlayerPhase_BeginActionSelect(ProcPtr proc);
-static bool PlayerPhase_BeginAction(ProcPtr proc);
-static bool PlayerPhase_WatchActiveUnit(ProcPtr proc);
-static void PlayerPhase_FinishAction(ProcPtr proc);
-static void PlayerPhase_0801BD08(ProcPtr proc);
-static void PlayerPhase_HandleAutoEnd(ProcPtr proc);
-
 struct ProcScr CONST_DATA ProcScr_PlayerPhase[] =
 {
     PROC_19,
@@ -167,9 +148,6 @@ u8 const * CONST_DATA gOpenLimitViewImgLut[] =
     Img_LimitViewSquares + 5 * 4*CHR_SIZE,
 };
 
-static void OpenLimitView_Init(struct GenericProc * proc);
-static void OpenLimitView_Loop(struct GenericProc * proc);
-
 struct ProcScr CONST_DATA ProcScr_OpenLimitView[] =
 {
     PROC_19,
@@ -180,10 +158,6 @@ struct ProcScr CONST_DATA ProcScr_OpenLimitView[] =
 
     PROC_END,
 };
-
-static void LimitView_Init(struct GenericProc * proc);
-static void LimitView_Loop(struct GenericProc * proc);
-static void LimitView_Deinit(struct GenericProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_LimitView[] =
 {
@@ -200,7 +174,7 @@ struct ProcScr CONST_DATA ProcScr_LimitView[] =
     PROC_END,
 };
 
-static void PlayerPhase_Suspend(ProcPtr proc)
+void PlayerPhase_Suspend(ProcPtr proc)
 {
     gAction.suspend_point = SUSPEND_POINT_PLAYER_PHASE;
     WriteSuspendSave(SAVE_SUSPEND);
@@ -227,7 +201,7 @@ void HandlePlayerMapCursor(void)
         gKeySt->pressed &= ~(KEY_BUTTON_A | KEY_BUTTON_B | KEY_BUTTON_START | KEY_BUTTON_R | KEY_BUTTON_L);
 }
 
-static void PlayerPhase_IdleLoop(ProcPtr proc)
+void PlayerPhase_IdleLoop(ProcPtr proc)
 {
     HandlePlayerMapCursor();
 
@@ -393,7 +367,7 @@ void DisplayUnitActionRange(struct Unit * unit)
     StartLimitView(flags);
 }
 
-static void PlayerPhase_BeginMoveSelect(ProcPtr proc)
+void PlayerPhase_BeginMoveSelect(ProcPtr proc)
 {
     if (!MuExists() && UNIT_FACTION(gActiveUnit) == gPlaySt.faction)
     {
@@ -576,13 +550,13 @@ do_act:
     PutMapCursor(gBmSt.cursor_sprite.x, gBmSt.cursor_sprite.y, MAP_CURSOR_REGULAR);
 }
 
-static void PlayerPhase_ContinueAction(ProcPtr proc)
+void PlayerPhase_ContinueAction(ProcPtr proc)
 {
     gAction.id = ACTION_NONE;
     Proc_Goto(proc, L_PLAYERPHASE_ACTION_SELECT);
 }
 
-static void PlayerPhase_CancelAction(ProcPtr proc)
+void PlayerPhase_CancelAction(ProcPtr proc)
 {
     gActiveUnit->x = gActiveUnitMoveOrigin.x;
     gActiveUnit->y = gActiveUnitMoveOrigin.y;
@@ -607,7 +581,7 @@ static void PlayerPhase_CancelAction(ProcPtr proc)
     Proc_Goto(proc, L_PLAYERPHASE_MOVE);
 }
 
-static bool PlayerPhase_BeginAction(ProcPtr proc)
+bool PlayerPhase_BeginAction(ProcPtr proc)
 {
     bool camret;
 
@@ -661,7 +635,7 @@ static bool PlayerPhase_BeginAction(ProcPtr proc)
     return camret;
 }
 
-static bool PlayerPhase_AttemptReMove(ProcPtr proc)
+bool PlayerPhase_AttemptReMove(ProcPtr proc)
 {
     if (!(UNIT_ATTRIBUTES(gActiveUnit) & UNIT_ATTR_RE_MOVE))
         return FALSE;
@@ -704,12 +678,12 @@ bool StartAvailableMoveEvents(ProcPtr proc)
     return TRUE;
 }
 
-static bool PlayerPhase_WatchActiveUnit(ProcPtr proc)
+bool PlayerPhase_WatchActiveUnit(ProcPtr proc)
 {
     return !CameraMoveWatchPosition(proc, gActiveUnit->x, gActiveUnit->y);
 }
 
-static void PlayerPhase_FinishAction(ProcPtr proc)
+void PlayerPhase_FinishAction(ProcPtr proc)
 {
     if (gPlaySt.vision != 0)
     {
@@ -760,7 +734,7 @@ static void PlayerPhase_FinishAction(ProcPtr proc)
     EndAllMus();
 }
 
-static void func_fe6_0801BAB4(ProcPtr proc)
+void func_fe6_0801BAB4(ProcPtr proc)
 {
     if (gAction.id != ACTION_TRAPPED)
         StartCenteredMenu(&MenuInfo_UnitAction, gBmSt.cursor_sprite_target.x - gBmSt.camera.x, 1, 22);
@@ -768,7 +742,7 @@ static void func_fe6_0801BAB4(ProcPtr proc)
     Proc_Break(proc);
 }
 
-static void PlayerPhase_BeginActionSelect(ProcPtr proc)
+void PlayerPhase_BeginActionSelect(ProcPtr proc)
 {
     gActiveUnit->x = gAction.x_move;
     gActiveUnit->y = gAction.y_move;
@@ -822,7 +796,7 @@ int GetPlayerSelectKind(struct Unit * unit)
     return PLAYER_SELECT_NOCONTROL;
 }
 
-static bool CanSelectMoveTo(int x, int y)
+bool CanSelectMoveTo(int x, int y)
 {
     if (gMapUnit[y][x] == 0 && gMapMovement[y][x] < MAP_MOVEMENT_MAX)
         return TRUE;
@@ -830,14 +804,14 @@ static bool CanSelectMoveTo(int x, int y)
     return FALSE;
 }
 
-static void PlayerPhase_BeginMove(ProcPtr proc)
+void PlayerPhase_BeginMove(ProcPtr proc)
 {
     GenMoveScriptFromMovePath();
     ApplyWorkingMovScriptToAction(gActiveUnit->x, gActiveUnit->y);
     SetAutoMuMoveScript(gWorkingMoveScr);
 }
 
-static void PlayerPhase_WaitForMove(ProcPtr proc)
+void PlayerPhase_WaitForMove(ProcPtr proc)
 {
     if (!MuExistsActive())
         Proc_Break(proc);
@@ -867,13 +841,13 @@ void PlayerPhase_0801BC84(ProcPtr proc)
     }
 }
 
-static void PlayerPhase_0801BD08(ProcPtr proc)
+void PlayerPhase_0801BD08(ProcPtr proc)
 {
     InitBmDisplay();
     SetBlendNone();
 }
 
-static void OpenLimitView_Init(struct GenericProc * proc)
+void OpenLimitView_Init(struct GenericProc * proc)
 {
     RegisterVramMove(Img_LimitViewSquares + 5 * 4 * CHR_SIZE, CHR_SIZE * (BGCHR_LIMITVIEW + 4), CHR_SIZE * 4);
 
@@ -888,7 +862,7 @@ static void OpenLimitView_Init(struct GenericProc * proc)
     }
 }
 
-static void OpenLimitView_Loop(struct GenericProc * proc)
+void OpenLimitView_Loop(struct GenericProc * proc)
 {
     RegisterVramMove(gOpenLimitViewImgLut[proc->unk4C], CHR_SIZE * BGCHR_LIMITVIEW, 4 * CHR_SIZE);
 
@@ -898,7 +872,7 @@ static void OpenLimitView_Loop(struct GenericProc * proc)
         Proc_Break(proc);
 }
 
-static void LimitView_Init(struct GenericProc * proc)
+void LimitView_Init(struct GenericProc * proc)
 {
     int ix, iy;
 
@@ -990,7 +964,7 @@ void EndLimitView(void)
     Proc_EndEach(ProcScr_LimitView);
 }
 
-static bool TrySetCursorOn(int uid)
+bool TrySetCursorOn(int uid)
 {
     struct Unit * unit = GetUnit(uid);
 
@@ -1036,7 +1010,7 @@ void TrySwitchViewedUnit(int x, int y)
     }
 }
 
-static void PlayerPhase_HandleAutoEnd(ProcPtr proc)
+void PlayerPhase_HandleAutoEnd(ProcPtr proc)
 {
     if (!gPlaySt.config_no_auto_end_turn && CountFactionMoveableUnits(gPlaySt.faction) == 0)
         Proc_Goto(proc, L_PLAYERPHASE_END);
