@@ -170,8 +170,8 @@ Tsa_ManimInfoFrameLeft: @ 082DC8EC
 Tsa_ManimInfoFrameRight: @ 082DC918
     .incbin "fe6-base.gba", 0x2DC918, (0x2DC944 - 0x2DC918) @ length: 002C
 
-    .global gUnk_082DC944
-gUnk_082DC944: @ 082DC944
+    .global Tsa_ShopWindows
+Tsa_ShopWindows: @ 082DC944
     .incbin "fe6-base.gba", 0x2DC944, (0x2DCA2C - 0x2DC944) @ length: 00E8
 
     .global gUnk_082DCA2C

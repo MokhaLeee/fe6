@@ -20,6 +20,7 @@
 #include "trap.h"
 #include "supply.h"
 #include "arena.h"
+#include "arena_ui.h"
 #include "action.h"
 #include "unitpanel.h"
 #include "subtitlehelp.h"

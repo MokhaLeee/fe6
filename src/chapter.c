@@ -11,6 +11,7 @@
 #include "unitsprite.h"
 #include "bmio.h"
 #include "arena.h"
+#include "arena_ui.h"
 #include "action.h"
 #include "chapterinfo.h"
 #include "ui.h"

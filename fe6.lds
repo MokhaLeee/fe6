@@ -608,6 +608,7 @@ SECTIONS
         asm/code.o(.text);
         src/shop.o(.text);
         asm/shop.o(.text);
+        src/arena_ui.o(.text);
         asm/arena.o(.text);
         asm/opanim.o(.text);
 

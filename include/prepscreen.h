@@ -328,7 +328,8 @@ struct ProcPrepfx_086793A8 {
 
 void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 * proc);
 void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 * proc);
-// func_fe6_0807D074
+ProcPtr func_fe6_0807D074(ProcPtr parent);
+
 void func_fe6_0807D088(ProcPtr);
 void func_fe6_0807D0A8(ProcPtr);
 // func_fe6_0807D16C
@@ -368,6 +369,8 @@ struct PrepSubItemProc {
 
     /* 29 */ STRUCT_PAD(0x29, 0x2D);
     /* 2D */ u8 unk2D;
+    /* 2E */ u8 unk2E, unk2F;
+    /* 30 */ u8 unk30, unk31;
 };
 
 void StartPrepSubItemScreen(struct PrepMenuProc * parent, int type);

@@ -6,6 +6,7 @@
 #include "sound.h"
 #include "sprite.h"
 #include "text.h"
+#include "ui.h"
 #include "prepscreen.h"
 #include "constants/msg.h"
 
@@ -189,6 +190,31 @@ void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 * proc)
         proc->obj_offset = 0x7200;
     else
         proc->obj_offset = 0x5000;
+}
+
+void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 * proc)
+{
+    PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
+    PutSpriteExt(0xB, 0xB0,       0, Sprite_086792A8, proc->obj_offset / 0x20);
+
+    PutUiHand(
+        proc->proc_parent->unk2F * 0x70 + 0x10,
+        proc->proc_parent->unk2E * 0x10 + 0x48);
+
+    if (proc->proc_parent->unk30 != 0xFF)
+    {
+        PutFrozenUiHand(
+            proc->proc_parent->unk30 * 0x70 + 0x10,
+            proc->proc_parent->unk31 * 0x10 + 0x48);
+    }
+
+    func_fe6_0807CFB8(0, 4, proc->timer);
+    proc->timer++;
+}
+
+ProcPtr func_fe6_0807D074(ProcPtr parent)
+{
+    return SpawnProc(ProcScr_08679388, parent);
 }
 
 struct ProcScr CONST_DATA ProcScr_086793A8[] =

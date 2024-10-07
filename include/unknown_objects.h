@@ -776,10 +776,8 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_08690D44
 
 /* shop.h */
+/* arena_ui.h */
 
-// extern CONST_DATA ??? ProcScr_ArenaUiMain
-// extern CONST_DATA ??? ProcScr_ArenaUiResults
-// extern CONST_DATA ??? ProcScr_ArenaUiResultBgm
 // extern CONST_DATA ??? EventScr_SuspendPrompt
 // extern CONST_DATA ??? ProcScr_TitleScreenHandler
 // extern CONST_DATA ??? gUnk_08691494

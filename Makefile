@@ -329,4 +329,5 @@ clean:
 %/manim.o:          CFLAG_OPT := -O0
 
 %/gbasram.o:        CFLAG_OPT := -O1
-%/shop.o:        	CFLAG_OPT := -O0
+%/shop.o:           CFLAG_OPT := -O0
+%/arena_ui.o:       CFLAG_OPT := -O0
