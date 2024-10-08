@@ -1338,7 +1338,7 @@ func_fe6_080577F4: @ 0x080577F4
 func_fe6_08057860: @ 0x08057860
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	ldr r4, .L08057894 @ =gUnk_Banim_02017760
+	ldr r4, .L08057894 @ =gEfxSpecalEffectExist
 	bl GetAnimPosition
 	lsls r0, r0, #1
 	adds r0, r0, r4
@@ -1359,7 +1359,7 @@ func_fe6_08057860: @ 0x08057860
 	ldr r0, .L08057898 @ =gpEkrBattleUnitLeft
 	b .L0805789E
 	.align 2, 0
-.L08057894: .4byte gUnk_Banim_02017760
+.L08057894: .4byte gEfxSpecalEffectExist
 .L08057898: .4byte gpEkrBattleUnitLeft
 .L0805789C:
 	ldr r0, .L080578EC @ =gpEkrBattleUnitRight

@@ -1,21 +1,14 @@
 
 	.include "animscr.inc"
+	.include "gba_sprites.inc"
 	.section .data
 
-	.global ProcScr_EfxArrow
-ProcScr_EfxArrow: @ 085D0FDC
-	.incbin "fe6-base.gba", 0x5D0FDC, (0x5D0FF4 - 0x5D0FDC) @ length: 0018
-
-	.global gUnk_085D0FF4
-gUnk_085D0FF4: @ 085D0FF4
-	.incbin "fe6-base.gba", 0x5D0FF4, (0x5D100C - 0x5D0FF4) @ length: 0018
-
-	.global gUnk_085D100C
-gUnk_085D100C: @ 085D100C
+	.global ProcScr_EfxTeyari
+ProcScr_EfxTeyari: @ 085D100C
 	.incbin "fe6-base.gba", 0x5D100C, (0x5D1024 - 0x5D100C) @ length: 0018
 
-	.global gUnk_085D1024
-gUnk_085D1024: @ 085D1024
+	.global ProcScr_EfxTeyariOBJ
+ProcScr_EfxTeyariOBJ: @ 085D1024
 	.incbin "fe6-base.gba", 0x5D1024, (0x5D103C - 0x5D1024) @ length: 0018
 
 	.global gUnk_085D103C
@@ -1050,36 +1043,60 @@ AnimScr_TeonoObjFarLeft: @ 085D41A4
 AnimScr_TeonoObj2Left: @ 085D41C4
 	.incbin "fe6-base.gba", 0x5D41C4, (0x5D4264 - 0x5D41C4) @ length: 00A0
 
-	.global gUnk_085D4264
-gUnk_085D4264: @ 085D4264
+	.global AnimScr_ArrowCloseRight
+AnimScr_ArrowCloseRight: @ 085D4264
 	.incbin "fe6-base.gba", 0x5D4264, (0x5D4274 - 0x5D4264) @ length: 0010
 
-	.global gUnk_085D4274
-gUnk_085D4274: @ 085D4274
-	.incbin "fe6-base.gba", 0x5D4274, (0x5D42F0 - 0x5D4274) @ length: 007C
+	.global AnimScr_ArrowFarRight
+AnimScr_ArrowFarRight: @ 085D4274
+	.incbin "fe6-base.gba", 0x5D4274, 0x10
 
-	.global gUnk_085D42F0
-gUnk_085D42F0: @ 085D42F0
-	.incbin "fe6-base.gba", 0x5D42F0, (0x5D4300 - 0x5D42F0) @ length: 0010
+.global AnimSprite_ArrowLeft1
+AnimSprite_ArrowLeft1:
+        ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x0000, 45, -14
+        ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0002, 37, -14
+        ANIM_SPRITE_END
+.global AnimSprite_ArrowLeft2
+AnimSprite_ArrowLeft2:
+        ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x0000, 77, -14
+        ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0002, 69, -14
+        ANIM_SPRITE_END
+.global AnimSprite_ArrowLeft3
+AnimSprite_ArrowLeft3:
+        ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x0000, 109, -14
+        ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0002, 101, -14
+        ANIM_SPRITE_END
 
-	.global gUnk_085D4300
-gUnk_085D4300: @ 085D4300
-	.incbin "fe6-base.gba", 0x5D4300, (0x5D44E4 - 0x5D4300) @ length: 01E4
+	.global AnimScr_ArrowCloseLeft
+AnimScr_ArrowCloseLeft: @ 085D42F0
+    ANIMSCR_FORCE_SPRITE AnimSprite_ArrowLeft1, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_ArrowLeft2, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_ArrowLeft3, 1
+    ANIMSCR_BLOCKED
 
-	.global gUnk_085D44E4
-gUnk_085D44E4: @ 085D44E4
+	.global AnimScr_ArrowFarLeft
+AnimScr_ArrowFarLeft: @ 085D4300
+    ANIMSCR_FORCE_SPRITE AnimSprite_ArrowLeft1, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_ArrowLeft2, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_ArrowLeft3, 1
+    ANIMSCR_BLOCKED
+
+	.incbin "fe6-base.gba", 0x5D4310, (0x5D44E4 - 0x5D4310)
+
+	.global AnimScr_EfxTeyariObjType0Right
+AnimScr_EfxTeyariObjType0Right: @ 085D44E4
 	.incbin "fe6-base.gba", 0x5D44E4, (0x5D4738 - 0x5D44E4) @ length: 0254
 
-	.global gUnk_085D4738
-gUnk_085D4738: @ 085D4738
+	.global AnimScr_EfxTeyariObjType0Left
+AnimScr_EfxTeyariObjType0Left: @ 085D4738
 	.incbin "fe6-base.gba", 0x5D4738, (0x5D4998 - 0x5D4738) @ length: 0260
 
-	.global gUnk_085D4998
-gUnk_085D4998: @ 085D4998
+	.global AnimScr_EfxTeyariObjType1Right
+AnimScr_EfxTeyariObjType1Right: @ 085D4998
 	.incbin "fe6-base.gba", 0x5D4998, (0x5D4BF8 - 0x5D4998) @ length: 0260
 
-	.global gUnk_085D4BF8
-gUnk_085D4BF8: @ 085D4BF8
+	.global AnimScr_EfxTeyariObjType1Left
+AnimScr_EfxTeyariObjType1Left: @ 085D4BF8
 	.incbin "fe6-base.gba", 0x5D4BF8, (0x5D4CFC - 0x5D4BF8) @ length: 0104
 
 	.global gUnk_085D4CFC

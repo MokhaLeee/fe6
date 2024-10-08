@@ -13,7 +13,7 @@ NewEfxHitQuake: @ 0x080462BC
 	mov sb, r0
 	mov r8, r1
 	adds r6, r2, #0
-	ldr r0, .L08046300 @ =gUnk_Banim_02017738
+	ldr r0, .L08046300 @ =gEfxHitQuakeExist
 	ldr r7, [r0]
 	cmp r7, #0
 	beq .L080462D4
@@ -40,7 +40,7 @@ NewEfxHitQuake: @ 0x080462BC
 	ldr r0, .L08046308 @ =gEfxQuakePureVec2
 	b .L0804633E
 	.align 2, 0
-.L08046300: .4byte gUnk_Banim_02017738
+.L08046300: .4byte gEfxHitQuakeExist
 .L08046304: .4byte ProcScr_EfxHitQuake
 .L08046308: .4byte gEfxQuakePureVec2
 .L0804630C:
@@ -294,7 +294,7 @@ EfxHitQuake_Loop: @ 0x0804646C
 	adds r2, r5, #0
 	movs r0, #1
 	bl SetEkrFrontAnimPostion
-	ldr r1, .L08046590 @ =gUnk_Banim_02017738
+	ldr r1, .L08046590 @ =gEfxHitQuakeExist
 	movs r0, #0
 	str r0, [r1]
 	adds r0, r6, #0
@@ -342,7 +342,7 @@ EfxHitQuake_Loop: @ 0x0804646C
 .L08046584: .4byte gUnk_Banim_0201E0FC
 .L08046588: .4byte gEkrXPosReal
 .L0804658C: .4byte gEkrYPosReal
-.L08046590: .4byte gUnk_Banim_02017738
+.L08046590: .4byte gEfxHitQuakeExist
 .L08046594: .4byte gEkrBg0QuakeVec
 .L08046598:
 	movs r0, #0x2c

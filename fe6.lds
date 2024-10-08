@@ -149,7 +149,7 @@ SECTIONS
         . = 0x01772C; gEkrDeadExist = .;
         . = 0x017730; gEkrDeadEventExist = .;
         . = 0x017734; gEfxQuakeExist = .;
-        . = 0x017738; gUnk_Banim_02017738 = .;
+        . = 0x017738; gEfxHitQuakeExist = .;
         . = 0x01773C; gEkrInitPosReal = .;
         . = 0x017740; gEfxFarAttackExist = .;
         . = 0x017744; gEfxBgSemaphore = .;
@@ -159,7 +159,7 @@ SECTIONS
         . = 0x017754; gUnk_Banim_02017754 = .;
         . = 0x017758; gEkrBg2QuakeVec = .;
         . = 0x01775C; gUnk_Banim_0201775C = .;
-        . = 0x017760; gUnk_Banim_02017760 = .;
+        . = 0x017760; gEfxSpecalEffectExist = .;
         . = 0x017764; gpProcEfxStatusUnits = .;
         . = 0x01776C; gpProcEfxWeaponIcon = .;
         . = 0x017770; gpProcEfxSpellCast = .;
