@@ -809,11 +809,8 @@ void StartClassDemo(u8 arg_0, ProcPtr parent);
 
 /* shop.h */
 /* arena_ui.h */
+/* suspend_ui.h */
 
-void func_fe6_0809874C(void);
-// func_fe6_08098764
-// WriteSuspandPlaterIdle
-void PostGameOverHandler(ProcPtr todo_event_proc);
 // func_fe6_080987D4
 // func_fe6_080987E8
 // func_fe6_0809882C

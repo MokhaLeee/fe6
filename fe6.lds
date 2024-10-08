@@ -609,6 +609,7 @@ SECTIONS
         src/shop.o(.text);
         asm/shop.o(.text);
         src/arena_ui.o(.text);
+        src/suspend_ui.o(.text);
         asm/arena.o(.text);
         asm/opanim.o(.text);
 
@@ -832,7 +833,7 @@ SECTIONS
         . = ALIGN(4); src/shop.o(.data);
         . = ALIGN(4); data/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);
-        . = ALIGN(4); data/arena_ui.o(.data);
+        . = ALIGN(4); src/suspend_ui.o(.data);
         . = ALIGN(4); data/data_08691480.o(.data);
 
         . = ALIGN(4); FILL(0xFF);
