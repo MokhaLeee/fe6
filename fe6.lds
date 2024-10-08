@@ -606,6 +606,8 @@ SECTIONS
         asm/savemenufx.o(.text);
         asm/config.o(.text);
         asm/code.o(.text);
+        src/worldmap.o(.text);
+        asm/worldmap.o(.text);
         src/shop.o(.text);
         asm/shop.o(.text);
         src/arena_ui.o(.text);

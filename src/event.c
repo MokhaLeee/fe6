@@ -33,6 +33,7 @@
 #include "ai_utility.h"
 #include "ui.h"
 #include "mu.h"
+#include "worldmap.h"
 #include "banim_ekrbattle.h"
 #include "eventinfo.h"
 
