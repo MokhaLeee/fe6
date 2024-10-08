@@ -460,17 +460,17 @@ void func_fe6_0803CF58(void);
 // func_fe6_0808BCBC
 // func_fe6_0808BCF0
 // func_fe6_0808BD28
-// func_fe6_0808BD58
+// NewProc_0868AA08
 // func_fe6_0808BD6C
 // func_fe6_0808BD78
 // func_fe6_0808BDF8
-// func_fe6_0808BE5C
+// NewProc_0868AA80
 // func_fe6_0808BE70
 // func_fe6_0808BF00
 // func_fe6_0808BFF0
 // func_fe6_0808C084
 // func_fe6_0808C098
-// func_fe6_0808C32C
+// NewProc_0868AAA8
 // GetSelectedGameOption
 // GetSelectedOptionValue
 // func_fe6_0808C380
@@ -808,33 +808,9 @@ void StartClassDemo(u8 arg_0, ProcPtr parent);
 // func_fe6_08095D58
 
 /* shop.h */
+/* arena_ui.h */
+/* suspend_ui.h */
 
-// func_fe6_08097E2C
-void StartArenaScreen(void);
-void StartArenaResultsScreen(void);
-// ArenaUi_Init
-// func_fe6_08098258
-// func_fe6_08098290
-// func_fe6_080982B0
-// func_fe6_080982D8
-// func_fe6_08098340
-// func_fe6_08098390
-// func_fe6_080983B0
-// func_fe6_080983D0
-// func_fe6_080983EC
-// func_fe6_08098478
-// func_fe6_08098490
-// func_fe6_080984A8
-// func_fe6_08098550
-// func_fe6_080985AC
-// func_fe6_080985D8
-// func_fe6_08098624
-// Arena_PlayResultSong
-// Arena_PlayArenaSong
-void func_fe6_0809874C(void);
-// func_fe6_08098764
-// WriteSuspandPlaterIdle
-void PostGameOverHandler(ProcPtr todo_event_proc);
 // func_fe6_080987D4
 // func_fe6_080987E8
 // func_fe6_0809882C

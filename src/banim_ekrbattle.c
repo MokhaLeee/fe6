@@ -441,7 +441,7 @@ void EkrBattleStartPromotion(struct ProcEkrBattle * proc)
     }
     else
     {
-        proc->speedup = FALSE;
+        proc->yield_arena = FALSE;
         proc->proc_repeat_func = (ProcFunc)EkrBattleInRound;
     }
 }
@@ -460,7 +460,7 @@ void EkrBattleInRound(struct ProcEkrBattle * proc)
 {
     int ret = 0;
     if (gKeySt->held & KEY_BUTTON_B)
-        proc->speedup = TRUE;
+        proc->yield_arena = TRUE;
 
     switch (gEkrDistanceType) {
     case EKR_DISTANCE_CLOSE:
@@ -479,19 +479,19 @@ void EkrBattleInRound(struct ProcEkrBattle * proc)
 
                 if (gEkrGaugeHp[POS_L] == 0)
                 {
-                    ArenaSetResult(1);
+                    ArenaSetResult(ARENA_RESULT_WIN);
                     ret = 1;
                 }
                 else if (gEkrGaugeHp[POS_R] == 0)
                 {
-                    ArenaSetResult(2);
+                    ArenaSetResult(ARENA_RESULT_LOSS);
                     gBanimExpGain[POS_R] = 0;
                     ret = 1;
                 }
-                else if (proc->speedup == TRUE)
+                else if (proc->yield_arena == TRUE)
                 {
                     func_fe6_0804C56C();
-                    ArenaSetResult(4);
+                    ArenaSetResult(ARENA_RESULT_YIELD);
                     gBanimExpGain[POS_R] = 0;
                     ret = 1;
                 }
@@ -526,7 +526,7 @@ void EkrBattleInRound(struct ProcEkrBattle * proc)
 
 void EkrBattleTriggerEnding(struct ProcEkrBattle * proc)
 {
-    proc->speedup = FALSE;
+    proc->yield_arena = FALSE;
     proc->proc_repeat_func = (ProcFunc)EkrBattleWaitNamewinAppear;
 }
 
@@ -555,9 +555,9 @@ void EkrBattleWaitNamewinAppear(struct ProcEkrBattle * proc)
         pos = POS_R;
 
     if (pos != gEkrInitPosReal)
-        proc->speedup = TRUE;
+        proc->yield_arena = TRUE;
 
-    if (proc->speedup == TRUE)
+    if (proc->yield_arena == TRUE)
         NewEfxFarAttackWithDistance(MAIN_ANIM_FRONT(gEkrInitPosReal), -1);
 }
 

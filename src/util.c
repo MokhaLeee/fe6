@@ -885,27 +885,27 @@ void StartSlowLockingFadeFromWhite(ProcPtr parent)
 
 void func_fe6_08014778(ProcPtr parent)
 {
-    StartFadeCore(1, 0x04, parent, func_fe6_08014AF8);
+    StartFadeCore(1, 0x04, parent, Fade_CommonCallBack);
 }
 
 void func_fe6_08014790(ProcPtr parent)
 {
-    StartFadeCore(1, 0x08, parent, func_fe6_08014AF8);
+    StartFadeCore(1, 0x08, parent, Fade_CommonCallBack);
 }
 
 void func_fe6_080147A8(ProcPtr parent)
 {
-    StartFadeCore(1, 0x10, parent, func_fe6_08014AF8);
+    StartFadeCore(1, 0x10, parent, Fade_CommonCallBack);
 }
 
 void func_fe6_080147C0(ProcPtr parent)
 {
-    StartFadeCore(1, 0x20, parent, func_fe6_08014AF8);
+    StartFadeCore(1, 0x20, parent, Fade_CommonCallBack);
 }
 
 void func_fe6_080147D8(ProcPtr parent)
 {
-    StartFadeCore(1, 0x40, parent, func_fe6_08014AF8);
+    StartFadeCore(1, 0x40, parent, Fade_CommonCallBack);
 }
 
 void func_fe6_080147F0(ProcPtr parent)
@@ -928,29 +928,29 @@ void func_fe6_0801482C(ProcPtr parent)
     StartFadeCore(0, 0x40, parent, NULL);
 }
 
-void func_fe6_08014840(ProcPtr parent)
+void FadeInBlackWithCallBack_Speed04(ProcPtr parent)
 {
-    StartFadeCore(3, 0x04, parent, func_fe6_08014AF8);
+    StartFadeCore(3, 0x04, parent, Fade_CommonCallBack);
 }
 
-void func_fe6_08014858(ProcPtr parent)
+void FadeInBlackWithCallBack_Speed08(ProcPtr parent)
 {
-    StartFadeCore(3, 0x08, parent, func_fe6_08014AF8);
+    StartFadeCore(3, 0x08, parent, Fade_CommonCallBack);
 }
 
-void func_fe6_08014870(ProcPtr parent)
+void FadeInBlackWithCallBack_Speed10(ProcPtr parent)
 {
-    StartFadeCore(3, 0x10, parent, func_fe6_08014AF8);
+    StartFadeCore(3, 0x10, parent, Fade_CommonCallBack);
 }
 
-void func_fe6_08014888(ProcPtr parent)
+void FadeInBlackWithCallBack_Speed20(ProcPtr parent)
 {
-    StartFadeCore(3, 0x20, parent, func_fe6_08014AF8);
+    StartFadeCore(3, 0x20, parent, Fade_CommonCallBack);
 }
 
-void func_fe6_080148A0(ProcPtr parent)
+void FadeInBlackWithCallBack_Speed40(ProcPtr parent)
 {
-    StartFadeCore(3, 0x40, parent, func_fe6_08014AF8);
+    StartFadeCore(3, 0x40, parent, Fade_CommonCallBack);
 }
 
 void FadeInBlackSpeed04(ProcPtr parent)
@@ -1163,7 +1163,7 @@ void func_fe6_08014ADC(void)
         proc->on_end = NULL;
 }
 
-void func_fe6_08014AF8(void)
+void Fade_CommonCallBack(void)
 {
     SetBlendDarken(0x10);
     SetBlendTargetA(1, 1, 1, 1, 1);

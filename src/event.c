@@ -878,7 +878,7 @@ static void Event_MaybeEndMapMain(struct EventProc * proc)
 
 static void Event_ClearTextOnSkip(struct EventProc * proc)
 {
-    func_fe6_08014AF8();
+    Fade_CommonCallBack();
     Proc_EndEach(ProcScr_TalkOpen);
 
     if (proc->background == -1)
@@ -2789,7 +2789,7 @@ static int EvtCmd_FightScript(struct EventProc * proc)
     BattleHitTerminate();
     BeginBattleAnimations();
 
-    Proc_Mark(proc, PROC_MARK_7);
+    Proc_Mark(proc, PROC_MARK_EVENT_ANIM);
 
     gAiDecision.x_move = unit_a->x;
     gAiDecision.y_move = unit_a->y;
@@ -3423,7 +3423,7 @@ bool IsEventProcRunning(void)
 void KillTalkAndEvent(void)
 {
     Proc_EndEachMarked(PROC_MARK_6);
-    Proc_EndEachMarked(PROC_MARK_7);
+    Proc_EndEachMarked(PROC_MARK_EVENT_ANIM);
     Proc_EndEachMarked(PROC_MARK_5);
 
     EndAllMus();
@@ -3994,7 +3994,7 @@ static struct FaceVramEnt CONST_DATA gWmEventFaceConfig[] =
 
 struct ProcScr CONST_DATA ProcScr_WmEventShowFace[] =
 {
-    PROC_MARK(PROC_MARK_8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_SLEEP(0),
 
     PROC_CALL(WmPutFace_OnInit),
@@ -4005,7 +4005,7 @@ struct ProcScr CONST_DATA ProcScr_WmEventShowFace[] =
 
 struct ProcScr CONST_DATA ProcScr_WmEventHideFace[] =
 {
-    PROC_MARK(PROC_MARK_8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_ONEND(WmRemoveFace_OnEnd),
     PROC_SLEEP(0),
 
@@ -4017,7 +4017,7 @@ struct ProcScr CONST_DATA ProcScr_WmEventHideFace[] =
 
 struct ProcScr CONST_DATA ProcScr_WmEventMoveFace[] =
 {
-    PROC_MARK(PROC_MARK_8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_SLEEP(0),
 
     PROC_CALL(WmMoveFace_OnInit),

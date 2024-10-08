@@ -1354,7 +1354,7 @@ void AtMenu_StartSubmenu(struct PrepMenuProc * proc)
 {
     switch (proc->sub2_action) {
     case PREP_SUB2ACT_TRADE_ITEM:
-        StartPrepSubtemScreen(proc, 2);
+        StartPrepSubItemScreen(proc, 2);
         func_fe6_0807ACE8(proc);
         break;
 
@@ -1364,12 +1364,12 @@ void AtMenu_StartSubmenu(struct PrepMenuProc * proc)
         break;
 
     case PREP_SUB2ACT_CONVOY:
-        StartPrepSubtemScreen(proc, 4);
+        StartPrepSubItemScreen(proc, 4);
         func_fe6_0807ACE8(proc);
         break;
 
     case PREP_SUB2ACT_CHECK_ALL_ITEM:
-        StartPrepSubtemScreen(proc, 0);
+        StartPrepSubItemScreen(proc, 0);
         func_fe6_0807ACE8(proc);
         break;
 

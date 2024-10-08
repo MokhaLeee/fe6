@@ -19,6 +19,7 @@
 #include "eventinfo.h"
 #include "eventfunctions.h"
 #include "chapterunits.h"
+#include "suspend_ui.h"
 
 #include "constants/pids.h"
 #include "constants/jids.h"

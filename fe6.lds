@@ -603,11 +603,13 @@ SECTIONS
         src/minimap.o(.text);
         src/savemenu.o(.text);
         src/savemenu_2.o(.text);
-        asm/code_0808AA84.o(.text);
+        asm/savemenufx.o(.text);
         asm/config.o(.text);
         asm/code.o(.text);
         src/shop.o(.text);
         asm/shop.o(.text);
+        src/arena_ui.o(.text);
+        src/suspend_ui.o(.text);
         asm/arena.o(.text);
         asm/opanim.o(.text);
 
@@ -826,9 +828,13 @@ SECTIONS
         . = ALIGN(4); src/minimap.o(.data);
         . = ALIGN(4); src/savemenu.o(.data);
         . = ALIGN(4); src/savemenu_2.o(.data);
+        . = ALIGN(4); data/savemenufx.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/shop.o(.data);
         . = ALIGN(4); data/shop.o(.data);
+        . = ALIGN(4); src/arena_ui.o(.data);
+        . = ALIGN(4); src/suspend_ui.o(.data);
+        . = ALIGN(4); data/data_08691480.o(.data);
 
         . = ALIGN(4); FILL(0xFF);
 

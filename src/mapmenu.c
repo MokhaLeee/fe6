@@ -20,6 +20,7 @@
 #include "trap.h"
 #include "supply.h"
 #include "arena.h"
+#include "arena_ui.h"
 #include "action.h"
 #include "unitpanel.h"
 #include "subtitlehelp.h"
@@ -33,6 +34,7 @@
 #include "unitlistscreen.h"
 #include "savemenu.h"
 #include "prepscreen.h"
+#include "suspend_ui.h"
 
 #include "constants/videoalloc_global.h"
 #include "constants/terrains.h"
@@ -123,7 +125,7 @@ fu8 MapMenu_Suspend_Select(struct MenuProc * menu, struct MenuEntProc * ent)
         return MENU_ACTION_SE_6B;
     }
 
-    func_fe6_0809874C();
+    StartSuspendEvent();
 
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }

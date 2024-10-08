@@ -5589,7 +5589,7 @@ func_fe6_0809B2FC: @ 0x0809B2FC
 	movs r0, #1
 	bl SetNextGameAction
 	adds r0, r4, #0
-	bl func_fe6_08014870
+	bl FadeInBlackWithCallBack_Speed10
 	adds r0, r4, #0
 	bl Proc_Break
 	b .L0809B35C
@@ -5614,7 +5614,7 @@ func_fe6_0809B2FC: @ 0x0809B2FC
 	movs r0, #0
 	bl SetNextGameAction
 	adds r0, r4, #0
-	bl func_fe6_08014888
+	bl FadeInBlackWithCallBack_Speed20
 	adds r0, r4, #0
 	bl Proc_Break
 .L0809B35C:

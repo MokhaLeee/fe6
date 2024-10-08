@@ -2,154 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_0807CF78
-func_fe6_0807CF78: @ 0x0807CF78
-	push {r4, lr}
-	adds r4, r0, #0
-	adds r0, #0x34
-	movs r1, #0xc
-	bl InitTextDb
-	adds r0, r4, #0
-	adds r0, #0x3c
-	movs r1, #0xc
-	bl InitTextDb
-	adds r0, r4, #0
-	adds r0, #0x44
-	movs r1, #0xc
-	bl InitText
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0807CFA0
-func_fe6_0807CFA0: @ 0x0807CFA0
-	bx lr
-	.align 2, 0
-
-	thumb_func_start func_fe6_0807CFA4
-func_fe6_0807CFA4: @ 0x0807CFA4
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, .L0807CFB4 @ =ProcScr_08679368
-	bl SpawnProc
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0807CFB4: .4byte ProcScr_08679368
-
-	thumb_func_start func_fe6_0807CFB8
-func_fe6_0807CFB8: @ 0x0807CFB8
-	bx lr
-	.align 2, 0
-
-	thumb_func_start func_fe6_0807CFBC
-func_fe6_0807CFBC: @ 0x0807CFBC
-	adds r1, r0, #0
-	movs r0, #0
-	strh r0, [r1, #0x2a]
-	ldr r0, [r1, #0x14]
-	adds r0, #0x2d
-	ldrb r0, [r0]
-	cmp r0, #3
-	bhi .L0807CFD2
-	movs r0, #0xe4
-	lsls r0, r0, #7
-	b .L0807CFD6
-.L0807CFD2:
-	movs r0, #0xa0
-	lsls r0, r0, #7
-.L0807CFD6:
-	str r0, [r1, #0x30]
-	bx lr
-	.align 2, 0
-
-	thumb_func_start func_fe6_0807CFDC
-func_fe6_0807CFDC: @ 0x0807CFDC
-	push {r4, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	ldr r3, .L0807D06C @ =Sprite_086792B6
-	ldr r0, [r4, #0x30]
-	cmp r0, #0
-	bge .L0807CFEC
-	adds r0, #0x1f
-.L0807CFEC:
-	asrs r0, r0, #5
-	str r0, [sp]
-	movs r0, #0xb
-	movs r1, #0x80
-	lsls r1, r1, #5
-	movs r2, #0
-	bl PutSpriteExt
-	ldr r3, .L0807D070 @ =Sprite_086792A8
-	ldr r0, [r4, #0x30]
-	cmp r0, #0
-	bge .L0807D006
-	adds r0, #0x1f
-.L0807D006:
-	asrs r0, r0, #5
-	str r0, [sp]
-	movs r0, #0xb
-	movs r1, #0xb0
-	movs r2, #0
-	bl PutSpriteExt
-	ldr r1, [r4, #0x14]
-	adds r2, r1, #0
-	adds r2, #0x2f
-	ldrb r3, [r2]
-	lsls r0, r3, #3
-	subs r0, r0, r3
-	lsls r0, r0, #4
-	adds r0, #0x10
-	adds r1, #0x2e
-	ldrb r1, [r1]
-	lsls r1, r1, #4
-	adds r1, #0x48
-	bl PutUiHand
-	ldr r1, [r4, #0x14]
-	adds r2, r1, #0
-	adds r2, #0x30
-	ldrb r0, [r2]
-	cmp r0, #0xff
-	beq .L0807D052
-	ldrb r3, [r2]
-	lsls r0, r3, #3
-	subs r0, r0, r3
-	lsls r0, r0, #4
-	adds r0, #0x10
-	adds r1, #0x31
-	ldrb r1, [r1]
-	lsls r1, r1, #4
-	adds r1, #0x48
-	bl PutFrozenUiHand
-.L0807D052:
-	ldrh r2, [r4, #0x2a]
-	movs r0, #0
-	movs r1, #4
-	bl func_fe6_0807CFB8
-	ldrh r0, [r4, #0x2a]
-	adds r0, #1
-	strh r0, [r4, #0x2a]
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0807D06C: .4byte Sprite_086792B6
-.L0807D070: .4byte Sprite_086792A8
-
-	thumb_func_start func_fe6_0807D074
-func_fe6_0807D074: @ 0x0807D074
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, .L0807D084 @ =ProcScr_08679388
-	bl SpawnProc
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0807D084: .4byte ProcScr_08679388
-
 	thumb_func_start func_fe6_0807D088
 func_fe6_0807D088: @ 0x0807D088
 	adds r1, r0, #0
@@ -8668,13 +8520,13 @@ func_fe6_08081540: @ 0x08081540
 .L080815B4: .4byte gBg1Tm
 .L080815B8: .4byte gBg2Tm
 
-	thumb_func_start StartPrepSubtemScreen
-StartPrepSubtemScreen: @ 0x080815BC
+	thumb_func_start StartPrepSubItemScreen
+StartPrepSubItemScreen: @ 0x080815BC
 	push {r4, lr}
 	adds r2, r0, #0
 	lsls r4, r1, #0x18
 	lsrs r4, r4, #0x18
-	ldr r0, .L080815E0 @ =ProcScr_PrepTradeItemScreen
+	ldr r0, .L080815E0 @ =ProcScr_PrepSubItemScreen
 	adds r1, r2, #0
 	bl SpawnProcLocking
 	adds r2, r0, #0
@@ -8687,7 +8539,7 @@ StartPrepSubtemScreen: @ 0x080815BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080815E0: .4byte ProcScr_PrepTradeItemScreen
+.L080815E0: .4byte ProcScr_PrepSubItemScreen
 
 	thumb_func_start func_fe6_080815E4
 func_fe6_080815E4: @ 0x080815E4

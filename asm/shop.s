@@ -939,7 +939,7 @@ func_fe6_08096B38: @ 0x08096B38
 	movs r2, #8
 	movs r3, #3
 	bl StartTalkFace
-	ldr r0, .L08096C68 @ =gUnk_082DC944
+	ldr r0, .L08096C68 @ =Tsa_ShopWindows
 	ldr r1, .L08096C6C @ =gBuf
 	bl Decompress
 	ldr r0, .L08096C70 @ =gBg1Tm
@@ -969,7 +969,7 @@ func_fe6_08096B38: @ 0x08096B38
 .L08096C5C: .4byte ProcScr_Mu
 .L08096C60: .4byte HideMu
 .L08096C64: .4byte gDispIo
-.L08096C68: .4byte gUnk_082DC944
+.L08096C68: .4byte Tsa_ShopWindows
 .L08096C6C: .4byte gBuf
 .L08096C70: .4byte gBg1Tm
 .L08096C74:
@@ -3260,6 +3260,55 @@ ShouldDisplayDownArrow: @ 0x08097DFC
 	movs r0, #0
 	b .L08097E24
 .L08097E24:
+	pop {r7}
+	pop {r1}
+	bx r1
+	.align 2, 0
+
+	thumb_func_start func_fe6_08097E2C
+func_fe6_08097E2C: @ 0x08097E2C
+	push {r7, lr}
+	sub sp, #8
+	mov r7, sp
+	str r0, [r7]
+	ldr r0, .L08097E6C @ =gMusicPlayerTable
+	ldr r2, .L08097E70 @ =gSongTable
+	adds r1, r2, #0
+	movs r1, #0xe6
+	lsls r1, r1, #1
+	adds r2, r2, r1
+	ldrh r1, [r2]
+	adds r3, r1, #0
+	lsls r2, r3, #1
+	adds r2, r2, r1
+	lsls r1, r2, #2
+	adds r0, r0, r1
+	ldr r1, [r0]
+	str r1, [r7, #4]
+	ldr r0, [r7, #4]
+	ldr r1, [r0, #4]
+	lsls r2, r1, #0x10
+	lsrs r0, r2, #0x10
+	cmp r0, #0
+	bne .L08097E76
+	ldr r0, [r7, #4]
+	ldr r1, [r0, #4]
+	lsrs r2, r1, #0x1f
+	lsls r0, r2, #0x1f
+	cmp r0, #0
+	bne .L08097E76
+	movs r0, #0
+	b .L08097E7A
+	.align 2, 0
+.L08097E6C: .4byte gMusicPlayerTable
+.L08097E70: .4byte gSongTable
+.L08097E74:
+	.byte 0x01, 0xE0
+.L08097E76:
+	movs r0, #1
+	b .L08097E7A
+.L08097E7A:
+	add sp, #8
 	pop {r7}
 	pop {r1}
 	bx r1

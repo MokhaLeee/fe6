@@ -642,20 +642,20 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_0868A518
 // extern CONST_DATA ??? gUnk_0868A550
 // extern CONST_DATA ??? gUnk_0868A55C
-// extern CONST_DATA ??? gUnk_0868A568
-// extern CONST_DATA ??? gUnk_0868A570
-// extern CONST_DATA ??? gUnk_0868A58C
-// extern CONST_DATA ??? gUnk_0868A634
-// extern CONST_DATA ??? gUnk_0868A644
+// extern CONST_DATA ??? Sprite_0868A568
+// extern CONST_DATA ??? Sprite_0868A570
+// extern CONST_DATA ??? ProcScr_0868A58C
+// extern CONST_DATA ??? ProcScr_0868A634
+// extern CONST_DATA ??? ProcScr_0868A644
 // extern CONST_DATA ??? gUnk_0868A664
-// extern CONST_DATA ??? gUnk_0868A988
-// extern CONST_DATA ??? gUnk_0868A998
-// extern CONST_DATA ??? gUnk_0868A9E8
-// extern CONST_DATA ??? gUnk_0868A9F0
-// extern CONST_DATA ??? gUnk_0868A9F8
-// extern CONST_DATA ??? gUnk_0868AA08
-// extern CONST_DATA ??? gUnk_0868AA80
-// extern CONST_DATA ??? gUnk_0868AAA8
+// extern CONST_DATA ??? Sprite_0868A988
+// extern CONST_DATA ??? Imgs_0868A998
+// extern CONST_DATA ??? Sprite_0868A9E8
+// extern CONST_DATA ??? Sprite_0868A9F0
+// extern CONST_DATA ??? Sprite_0868A9F8
+// extern CONST_DATA ??? ProcScr_0868AA08
+// extern CONST_DATA ??? ProcScr_0868AA80
+// extern CONST_DATA ??? ProcScr_0868AAA8
 // extern CONST_DATA ??? gpUiConfigSt
 // extern CONST_DATA ??? gUnk_0868AAE4
 // extern CONST_DATA ??? gUnk_0868AAFC
@@ -776,10 +776,8 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_08690D44
 
 /* shop.h */
+/* arena_ui.h */
 
-// extern CONST_DATA ??? ProcScr_ArenaUiMain
-// extern CONST_DATA ??? ProcScr_ArenaUiResults
-// extern CONST_DATA ??? ProcScr_ArenaUiResultBgm
 // extern CONST_DATA ??? EventScr_SuspendPrompt
 // extern CONST_DATA ??? ProcScr_TitleScreenHandler
 // extern CONST_DATA ??? gUnk_08691494

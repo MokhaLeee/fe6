@@ -5,6 +5,8 @@
 #include "oam.h"
 #include "sound.h"
 #include "sprite.h"
+#include "text.h"
+#include "ui.h"
 #include "prepscreen.h"
 #include "constants/msg.h"
 
@@ -122,6 +124,51 @@ struct ProcScr CONST_DATA ProcScr_08679368[] =
     PROC_END,
 };
 
+#if NONMATCHING
+void func_fe6_0807CF78(struct ProcPrepfx_08679368 * proc)
+{
+    InitTextDb(proc->text1, 12);
+    InitTextDb(proc->text2, 12);
+    InitText(proc->text3, 12);
+}
+#else
+
+NAKEDFUNC
+void func_fe6_0807CF78(struct ProcPrepfx_08679368 * proc)
+{
+asm("\
+    .syntax unified\n\
+    push {r4, lr}\n\
+    adds r4, r0, #0\n\
+    adds r0, #0x34\n\
+    movs r1, #0xc\n\
+    bl InitTextDb\n\
+    adds r0, r4, #0\n\
+    adds r0, #0x3c\n\
+    movs r1, #0xc\n\
+    bl InitTextDb\n\
+    adds r0, r4, #0\n\
+    adds r0, #0x44\n\
+    movs r1, #0xc\n\
+    bl InitText\n\
+    pop {r4}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .syntax divided\n\
+");
+}
+#endif
+
+void func_fe6_0807CFA0(struct ProcPrepfx_08679368 * proc)
+{
+    return;
+}
+
+struct ProcPrepfx_08679368 * func_fe6_0807CFA4(ProcPtr parent)
+{
+    return SpawnProc(ProcScr_08679368, parent);
+}
+
 struct ProcScr CONST_DATA ProcScr_08679388[] =
 {
     PROC_19,
@@ -129,6 +176,46 @@ struct ProcScr CONST_DATA ProcScr_08679388[] =
     PROC_REPEAT(func_fe6_0807CFDC),
     PROC_END,
 };
+
+void func_fe6_0807CFB8(int a, int b, int c)
+{
+    return;
+}
+
+void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 * proc)
+{
+    proc->timer = 0;
+
+    if (proc->proc_parent->unk2D <= 3)
+        proc->obj_offset = 0x7200;
+    else
+        proc->obj_offset = 0x5000;
+}
+
+void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 * proc)
+{
+    PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
+    PutSpriteExt(0xB, 0xB0,       0, Sprite_086792A8, proc->obj_offset / 0x20);
+
+    PutUiHand(
+        proc->proc_parent->unk2F * 0x70 + 0x10,
+        proc->proc_parent->unk2E * 0x10 + 0x48);
+
+    if (proc->proc_parent->unk30 != 0xFF)
+    {
+        PutFrozenUiHand(
+            proc->proc_parent->unk30 * 0x70 + 0x10,
+            proc->proc_parent->unk31 * 0x10 + 0x48);
+    }
+
+    func_fe6_0807CFB8(0, 4, proc->timer);
+    proc->timer++;
+}
+
+ProcPtr func_fe6_0807D074(ProcPtr parent)
+{
+    return SpawnProc(ProcScr_08679388, parent);
+}
 
 struct ProcScr CONST_DATA ProcScr_086793A8[] =
 {
@@ -146,7 +233,7 @@ struct ProcScr CONST_DATA ProcScr_086793C8[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_PrepTradeItemScreen[] =
+struct ProcScr CONST_DATA ProcScr_PrepSubItemScreen[] =
 {
     PROC_19,
     PROC_SLEEP(0),

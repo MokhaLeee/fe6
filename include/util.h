@@ -87,11 +87,11 @@ void StartSlowLockingFadeFromWhite(ProcPtr parent);
 // func_fe6_08014804
 // func_fe6_08014818
 // func_fe6_0801482C
-// func_fe6_08014840
-// func_fe6_08014858
-// func_fe6_08014870
-void func_fe6_08014888(ProcPtr parent);
-void func_fe6_080148A0(ProcPtr parent);
+// FadeInBlackWithCallBack_Speed04
+// FadeInBlackWithCallBack_Speed08
+// FadeInBlackWithCallBack_Speed10
+void FadeInBlackWithCallBack_Speed20(ProcPtr parent);
+void FadeInBlackWithCallBack_Speed40(ProcPtr parent);
 void FadeInBlackSpeed04(ProcPtr parent);
 void FadeInBlackSpeed08(ProcPtr parent);
 void FadeInBlackSpeed08Unk(ProcPtr parent);
@@ -114,7 +114,7 @@ void StartFadeCore(int kind, int speed, ProcPtr parent, Func end_callback);
 void func_fe6_08014AB8(void);
 // func_fe6_08014ACC
 void func_fe6_08014ADC(void);
-void func_fe6_08014AF8(void);
+void Fade_CommonCallBack(void);
 void func_fe6_08014B68(void);
 void StartTemporaryLock(ProcPtr proc, int arg_1);
 int NumberToString(int number, char * buf);
