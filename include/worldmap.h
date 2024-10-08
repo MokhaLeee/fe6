@@ -17,8 +17,27 @@ struct ProcWorldMap {
     /* 48 */ i16 unk48, unk4A;
     /* 4C */ u16 unk4C, unk4E, unk50;
     /* 52 */ u8 unk52, unk53, unk54;
-
 };
+
+struct Struct_030048E0 {
+    u8 unk_00, unk_01;
+
+    STRUCT_PAD(0x02, 0x05);
+
+    /* 05 */ u8 unk_05;
+
+    /* 08 */ int unk_08;
+    /* 0C */ int unk_0C;
+
+    STRUCT_PAD(0x10, 0xD4);
+
+    /* D4 */ int unk_D4;
+    /* D8 */ int unk_D8;
+
+    STRUCT_PAD(0xDC, 0x334);
+};
+
+extern struct Struct_030048E0 gUnk_030048E0[2];
 
 // GetCompressedWmPalette
 // ApplyCompressedWmPalette
@@ -29,17 +48,21 @@ void func_fe6_080923C4(struct ProcWorldMap * proc);
 
 struct Proc_0868C37C {
     PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x58);
+
+    /* 58 */ struct Struct_030048E0 * unk58;
 };
 
-// func_fe6_080923C8
-// func_fe6_08092424
-// func_fe6_08092434
+// NewProc_0868C37C
+// EndProc_0868C37C
+// ProcExists_0868C37C
 void func_fe6_08092450(struct Proc_0868C37C * proc);
 void func_fe6_08092458(struct Proc_0868C37C * proc);
 // func_fe6_080925C4
 void func_fe6_0809268C(struct Proc_0868C37C * proc);
 void func_fe6_08092838(void);
-// func_fe6_08092854
+struct Struct_030048E0 * GetUnkStruct_030048E0(void);
 
 struct Proc_0868C3AC {
     PROC_HEADER;
@@ -68,7 +91,7 @@ void func_fe6_08092D0C(struct Proc_0868C3C4 * proc);
 
 bool func_fe6_08092E68(void);
 void func_fe6_08092E94(void);
-void func_fe6_08092EB0(int a, int b, int c, int d, int e, int f);
+void func_fe6_08092EB0(int a, int b, int c, int d, int e, int f, int g);
 // func_fe6_08093064
 void StartWorldMapIntroScen(void);
 // func_fe6_08093114
