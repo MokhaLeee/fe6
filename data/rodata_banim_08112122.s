@@ -530,80 +530,80 @@ Img_TeonoOBJ: @ 0811AFE8
 Pal_TeonoOBJ: @ 0811B3E8
 	.incbin "fe6-base.gba", 0x11B3E8, (0x11B408 - 0x11B3E8) @ length: 0020
 
-	.global gUnk_0811B408
-gUnk_0811B408: @ 0811B408
+	.global Img_EfxArrowOBJ
+Img_EfxArrowOBJ: @ 0811B408
 	.incbin "fe6-base.gba", 0x11B408, (0x11B444 - 0x11B408) @ length: 003C
 
-	.global gUnk_0811B444
-gUnk_0811B444: @ 0811B444
+	.global Img_SpellJavelin
+Img_SpellJavelin: @ 0811B444
 	.incbin "fe6-base.gba", 0x11B444, (0x11B674 - 0x11B444) @ length: 0230
 
-	.global gUnk_0811B674
-gUnk_0811B674: @ 0811B674
+	.global Pal_SpellJavelin
+Pal_SpellJavelin: @ 0811B674
 	.incbin "fe6-base.gba", 0x11B674, (0x11B694 - 0x11B674) @ length: 0020
 
-	.global gUnk_0811B694
-gUnk_0811B694: @ 0811B694
+	.global Img_SpellJavelinCavalier
+Img_SpellJavelinCavalier: @ 0811B694
 	.incbin "fe6-base.gba", 0x11B694, (0x11B8B0 - 0x11B694) @ length: 021C
 
-	.global gUnk_0811B8B0
-gUnk_0811B8B0: @ 0811B8B0
+	.global Pal_SpellJavelinCavalier
+Pal_SpellJavelinCavalier: @ 0811B8B0
 	.incbin "fe6-base.gba", 0x11B8B0, (0x11B8D0 - 0x11B8B0) @ length: 0020
 
-	.global gUnk_0811B8D0
-gUnk_0811B8D0: @ 0811B8D0
+	.global Img_SpellJavelinSoldier
+Img_SpellJavelinSoldier: @ 0811B8D0
 	.incbin "fe6-base.gba", 0x11B8D0, (0x11BAE8 - 0x11B8D0) @ length: 0218
 
-	.global gUnk_0811BAE8
-gUnk_0811BAE8: @ 0811BAE8
+	.global Pal_SpellJavelinSoldier
+Pal_SpellJavelinSoldier: @ 0811BAE8
 	.incbin "fe6-base.gba", 0x11BAE8, (0x11BB08 - 0x11BAE8) @ length: 0020
 
-	.global gUnk_0811BB08
-gUnk_0811BB08: @ 0811BB08
+	.global Img_SpellJavelinPaladin
+Img_SpellJavelinPaladin: @ 0811BB08
 	.incbin "fe6-base.gba", 0x11BB08, (0x11BD24 - 0x11BB08) @ length: 021C
 
-	.global gUnk_0811BD24
-gUnk_0811BD24: @ 0811BD24
+	.global Pal_SpellJavelinPaladin
+Pal_SpellJavelinPaladin: @ 0811BD24
 	.incbin "fe6-base.gba", 0x11BD24, (0x11BD44 - 0x11BD24) @ length: 0020
 
-	.global gUnk_0811BD44
-gUnk_0811BD44: @ 0811BD44
+	.global Img_SpellJavelinPrgasusKnight
+Img_SpellJavelinPrgasusKnight: @ 0811BD44
 	.incbin "fe6-base.gba", 0x11BD44, (0x11BF70 - 0x11BD44) @ length: 022C
 
-	.global gUnk_0811BF70
-gUnk_0811BF70: @ 0811BF70
+	.global Pal_SpellJavelinPrgasusKnight
+Pal_SpellJavelinPrgasusKnight: @ 0811BF70
 	.incbin "fe6-base.gba", 0x11BF70, (0x11BF90 - 0x11BF70) @ length: 0020
 
-	.global gUnk_0811BF90
-gUnk_0811BF90: @ 0811BF90
+	.global Img_SpellJavelinFalcon
+Img_SpellJavelinFalcon: @ 0811BF90
 	.incbin "fe6-base.gba", 0x11BF90, (0x11C1D8 - 0x11BF90) @ length: 0248
 
-	.global gUnk_0811C1D8
-gUnk_0811C1D8: @ 0811C1D8
+	.global Pal_SpellJavelinFalcon
+Pal_SpellJavelinFalcon: @ 0811C1D8
 	.incbin "fe6-base.gba", 0x11C1D8, (0x11C1F8 - 0x11C1D8) @ length: 0020
 
-	.global gUnk_0811C1F8
-gUnk_0811C1F8: @ 0811C1F8
+	.global Img_SpellJavelinWyvernRider
+Img_SpellJavelinWyvernRider: @ 0811C1F8
 	.incbin "fe6-base.gba", 0x11C1F8, (0x11C430 - 0x11C1F8) @ length: 0238
 
-	.global gUnk_0811C430
-gUnk_0811C430: @ 0811C430
+	.global Pal_SpellJavelinWyvernRider
+Pal_SpellJavelinWyvernRider: @ 0811C430
 	.incbin "fe6-base.gba", 0x11C430, (0x11C450 - 0x11C430) @ length: 0020
 
-	.global gUnk_0811C450
-gUnk_0811C450: @ 0811C450
+	.global Img_SpellJavelinWyvernLord
+Img_SpellJavelinWyvernLord: @ 0811C450
 	.incbin "fe6-base.gba", 0x11C450, (0x11C6B4 - 0x11C450) @ length: 0264
 
-	.global gUnk_0811C6B4
-gUnk_0811C6B4: @ 0811C6B4
+	.global Pal_SpellJavelinWyvernLord
+Pal_SpellJavelinWyvernLord: @ 0811C6B4
 	.incbin "fe6-base.gba", 0x11C6B4, (0x11C6D4 - 0x11C6B4) @ length: 0020
 
-	.global gUnk_0811C6D4
-gUnk_0811C6D4: @ 0811C6D4
+	.global Img_SpellJavelinGenerial
+Img_SpellJavelinGenerial: @ 0811C6D4
 	.incbin "fe6-base.gba", 0x11C6D4, (0x11C944 - 0x11C6D4) @ length: 0270
 
-	.global gUnk_0811C944
-gUnk_0811C944: @ 0811C944
+	.global Pal_SpellJavelinGenerial
+Pal_SpellJavelinGenerial: @ 0811C944
 	.incbin "fe6-base.gba", 0x11C944, (0x11C964 - 0x11C944) @ length: 0020
 
 	.global gUnk_0811C964

@@ -1,0 +1,179 @@
+#include "prelude.h"
+#include "oam.h"
+#include "hardware.h"
+#include "util.h"
+#include "bm.h"
+#include "bmio.h"
+#include "event.h"
+#include "worldmap.h"
+
+u16 CONST_DATA Sprite_0868C2CC[] = {
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, 0,
+};
+
+u16 CONST_DATA Sprite_0868C2D4[] = {
+    1,
+    OAM0_SHAPE_16x16 + OAM0_Y(252) + OAM0_AFFINE_ENABLE, OAM1_SIZE_16x16 + OAM1_X(508), 0,
+};
+
+u8 CONST_DATA * Pals_0868C2DC[10] = {
+    Pal_Wm_082C8874,
+    Pal_Wm_082D1BA0,
+    Pal_Wm_082AADA4,
+    Pal_Wm_082D1964,
+    Pal_Wm_082B2380,
+    Pal_Wm_082D1964,
+    Pal_Wm_082B9E64,
+    Pal_Wm_082D1964,
+    Pal_Wm_082C1224,
+    Pal_Wm_082D1964,
+};
+
+u8 * GetCompressedWmPalette(int a, int b)
+{
+    return Pals_0868C2DC[a * 2 + b];
+}
+
+void ApplyCompressedWmPalette(int a, int b)
+{
+    Decompress(GetCompressedWmPalette(a, b), gBuf);
+    ApplyPalettes(gBuf, 0, 0x10);
+}
+
+struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[] = {
+    PROC_SLEEP(1),
+    PROC_CALL(StartWorldMapIntroScen),
+    PROC_WHILE(IsEventRunning),
+    PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_WorldMap[] = {
+    PROC_MARK(8),
+    PROC_CALL(LockBmDisplay),
+    PROC_SLEEP(0),
+    PROC_CALL(func_fe6_080922D8),
+    PROC_START_CHILD_LOCKING(ProcScr_0868C688),
+    PROC_REPEAT(func_fe6_080923C4),
+    PROC_CALL(StartMidFadeToBlack),
+    PROC_REPEAT(WhileFadeExists),
+    PROC_CALL(UnlockBmDisplay),
+    PROC_CALL(UnlockGame),
+    PROC_END,
+};
+
+void StartWorldMap(void)
+{
+    SpawnProc(ProcScr_WorldMap, PROC_TREE_3);
+}
+
+void StartWorldMapUnused(void)
+{
+    SpawnProc(ProcScr_WorldMap, PROC_TREE_3);
+}
+
+void func_fe6_080922D8(struct ProcWorldMap * proc)
+{
+    gDispIo.disp_ct.mode = 4;
+    SetDispEnable(0, 0, 1, 0, 1);
+
+    gDispIo.bg0_ct.priority = 0;
+    gDispIo.bg1_ct.priority = 1;
+    gDispIo.bg2_ct.priority = 2;
+    gDispIo.bg3_ct.priority = 3;
+
+    gDispIo.disp_ct.bitmap_frame = 0;
+
+    proc->unk2C = 0;
+    proc->unk30 = 0;
+    proc->unk34 = 0x3C00;
+    proc->unk38 = 0x2800;
+    proc->unk44 = 0;
+    proc->unk48 = 0x100;
+    proc->unk4A = 0x100;
+    proc->unk4C = 0;
+    proc->unk52 = 0;
+    proc->unk4E = 0;
+    proc->unk53 = 0;
+    proc->unk50 = 0;
+    proc->unk54 = 0;
+
+    func_fe6_08092EB0(proc->unk2C, proc->unk30, proc->unk34, proc->unk38, proc->unk44, proc->unk48, proc->unk4A);
+
+    ApplyCompressedWmPalette(0, 1);
+    Decompress(GetCompressedWmPalette(0, 0), (void *)BG_VRAM);
+    func_fe6_08092838();
+}
+
+void func_fe6_080923C4(struct ProcWorldMap * proc) {}
+
+struct ProcScr CONST_DATA ProcScr_0868C37C[] = {
+    PROC_MARK(8),
+    PROC_ONEND(func_fe6_08092450),
+    PROC_SLEEP(1),
+    PROC_CALL(func_fe6_08092458),
+    PROC_REPEAT(func_fe6_0809268C),
+    PROC_END,
+};
+
+void NewProc_0868C37C(int a, int b, int c, int d, int e, int f)
+{
+    struct Proc_0868C37C * proc;
+
+    proc = SpawnProc(ProcScr_0868C37C, PROC_TREE_3);
+    proc->unk58 = GetUnkStruct_030048E0();
+
+    if (proc->unk58 == NULL)
+    {
+        Proc_End(proc);
+        return;
+    }
+
+    proc->unk58->unk_00 = 1;
+    proc->unk58->unk_01 = a;
+    proc->unk58->unk_05 = b;
+    proc->unk58->unk_D4 = c;
+    proc->unk58->unk_D8 = d;
+    proc->unk58->unk_0C = e;
+    proc->unk58->unk_08 = f;
+}
+
+void EndProc_0868C37C(void)
+{
+    Proc_EndEach(ProcScr_0868C37C);
+}
+
+bool ProcExists_0868C37C(void)
+{
+    if (FindProc(ProcScr_0868C37C) != NULL)
+        return true;
+
+    return false;
+}
+
+void func_fe6_08092450(struct Proc_0868C37C * proc)
+{
+    proc->unk58->unk_00 = 0;
+}
+
+struct ProcScr CONST_DATA ProcScr_0868C3AC[] = {
+    PROC_MARK(8),
+    PROC_REPEAT(func_fe6_0809289C),
+    PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_0868C3C4[] = {
+    PROC_MARK(8),
+    PROC_SLEEP(1),
+    PROC_CALL(func_fe6_0809290C),
+    PROC_REPEAT(func_fe6_0809291C),
+    PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_0868C3EC[] = {
+    PROC_MARK(8),
+    PROC_SLEEP(1),
+    PROC_CALL(func_fe6_08092CFC),
+    PROC_REPEAT(func_fe6_08092D0C),
+    PROC_END,
+};

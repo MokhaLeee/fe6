@@ -38,13 +38,43 @@ Pal_ManimFireDragonMu: @ 082AA968
 Pal_ManimDivineDragonMu: @ 082AA988
     .incbin "fe6-base.gba", 0x2AA988, (0x2AA9A8 - 0x2AA988) @ length: 0020
 
-    .global gUnk_082AA9A8
-gUnk_082AA9A8: @ 082AA9A8
-    .incbin "fe6-base.gba", 0x2AA9A8, (0x2AAD5C - 0x2AA9A8) @ length: 03B4
+    .global Img_WmDialogueBox
+Img_WmDialogueBox: @ 082AA9A8
+    .incbin "data/worldmap/graphics/Img_WmDialogueBox.4bpp.lz"
 
-    .global gUnk_082AAD5C
-gUnk_082AAD5C: @ 082AAD5C
-    .incbin "fe6-base.gba", 0x2AAD5C, (0x2D3398 - 0x2AAD5C) @ length: 2863C
+    .global Pal_WmDialogueBox
+Pal_WmDialogueBox: @ 082AAD5C
+    .incbin "data/worldmap/graphics/Img_WmDialogueBox.gbapal", 0, 0x20
+
+    .incbin "fe6-base.gba", 0x2AAD7C, (0x2AADA4 - 0x2AAD7C)
+
+    .global Pal_Wm_082AADA4
+Pal_Wm_082AADA4:    @ 0x082AADA4
+    .incbin "fe6-base.gba", 0x2AADA4, 0x2B2380 - 0x2AADA4
+
+    .global Pal_Wm_082B2380
+Pal_Wm_082B2380:    @ 0x082B2380
+    .incbin "fe6-base.gba", 0x2B2380, 0x2B9E64 - 0x2B2380
+
+    .global Pal_Wm_082B9E64
+Pal_Wm_082B9E64:    @ 0x082B9E64
+    .incbin "fe6-base.gba", 0x2B9E64, 0x2C1224 - 0x2B9E64
+
+    .global Pal_Wm_082C1224
+Pal_Wm_082C1224:    @ 0x082C1224
+    .incbin "fe6-base.gba", 0x2C1224, 0x2C8874 - 0x2C1224
+
+    .global Pal_Wm_082C8874
+Pal_Wm_082C8874:    @ 0x082C8874
+    .incbin "fe6-base.gba", 0x2C8874, 0x2D1964 - 0x2C8874
+
+    .global Pal_Wm_082D1964
+Pal_Wm_082D1964:    @ 0x082D1964
+    .incbin "fe6-base.gba", 0x2D1964, 0x2D1BA0 - 0x2D1964
+
+    .global Pal_Wm_082D1BA0
+Pal_Wm_082D1BA0:    @ 0x082D1BA0
+    .incbin "fe6-base.gba", 0x2D1BA0, 0x2D3398 - 0x2D1BA0
 
     .global gUnk_082D3398
 gUnk_082D3398: @ 082D3398

@@ -6,15 +6,15 @@ gEkrSpellAnimLut: @ 0x005D0DA0
 	.4byte NewEfxDummyMagic
 	.4byte NewEfxTeono
 	.4byte NewEfxArrow
-	.4byte func_fe6_0804D7C0
-	.4byte func_fe6_0804D81C
-	.4byte func_fe6_0804D878
-	.4byte func_fe6_0804D8D4
-	.4byte func_fe6_0804D930
-	.4byte func_fe6_0804D98C
-	.4byte func_fe6_0804D9E8
-	.4byte func_fe6_0804DA44
-	.4byte func_fe6_0804DAA0
+	.4byte StartSpellAnimJavelin
+	.4byte StartSpellAnimJavelinCavalier
+	.4byte StartSpellAnimJavelinSoldier
+	.4byte StartSpellAnimJavelinPaladin
+	.4byte StartSpellAnimJavelinPrgasusKnight
+	.4byte StartSpellAnimJavelinFalcon
+	.4byte StartSpellAnimJavelinWyvernRider
+	.4byte StartSpellAnimJavelinWyvernLord
+	.4byte StartSpellAnimJavelinGenerial
 	.4byte 0x00000000
 	.4byte 0x00000000
 	.4byte func_fe6_0804DC54

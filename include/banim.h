@@ -923,22 +923,22 @@ void EfxTeonoOBJ2_Loop(struct ProcEfxMagicOBJ * proc);
 ProcPtr NewEfxTeonoSE(struct Anim * anim, struct Anim * anim2);
 void EfxTeonoSE_End(struct ProcEfxMagicOBJ * proc);
 void EfxTeonoSE_Loop(struct ProcEfxMagicOBJ * proc);
-// NewEfxArrow
-// EfxArrow_Loop
-// func_fe6_0804D728
-// func_fe6_0804D790
-// func_fe6_0804D7C0
-// func_fe6_0804D81C
-// func_fe6_0804D878
-// func_fe6_0804D8D4
-// func_fe6_0804D930
-// func_fe6_0804D98C
-// func_fe6_0804D9E8
-// func_fe6_0804DA44
-// func_fe6_0804DAA0
-// func_fe6_0804DAFC
-// func_fe6_0804DBAC
-// func_fe6_0804DC24
+void NewEfxArrow(struct Anim * anim);
+void EfxArrow_Loop(struct ProcEfx * proc);
+void NewEfxArrowOBJ(struct Anim * anim);
+void EfxArrowObj_Loop(struct ProcEfxMagicOBJ * proc);
+// StartSpellAnimJavelin
+// StartSpellAnimJavelinCavalier
+// StartSpellAnimJavelinSoldier
+// StartSpellAnimJavelinPaladin
+// StartSpellAnimJavelinPrgasusKnight
+// StartSpellAnimJavelinFalcon
+// StartSpellAnimJavelinWyvernRider
+// StartSpellAnimJavelinWyvernLord
+// StartSpellAnimJavelinGenerial
+// EfxTeyari_Loop
+void NewEfxTeyariOBJ(struct Anim * anim, int type);
+// EfxTeyariObj_Loop
 // func_fe6_0804DC54
 // func_fe6_0804DC8C
 // func_fe6_0804DD38
@@ -1676,9 +1676,9 @@ extern CONST_DATA struct ProcScr ProcScr_EfxTeonoOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxTeonoOBJ2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxTeonoSE[];
 extern CONST_DATA struct ProcScr ProcScr_EfxArrow[];
-// ??? gUnk_085D0FF4
-// ??? gUnk_085D100C
-// ??? gUnk_085D1024
+extern CONST_DATA struct ProcScr ProcScr_EfxArrowOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxTeyari[];
+extern CONST_DATA struct ProcScr ProcScr_EfxTeyariOBJ[];
 // ??? gUnk_085D103C
 // ??? gUnk_085D1054
 // ??? gUnk_085D106C
@@ -1937,14 +1937,14 @@ extern u32 AnimScr_TeonoObj2Right[];
 extern u32 AnimScr_TeonoObjCloseLeft[];
 extern u32 AnimScr_TeonoObjFarLeft[];
 extern u32 AnimScr_TeonoObj2Left[];
-// ??? gUnk_085D4264
-// ??? gUnk_085D4274
-// ??? gUnk_085D42F0
-// ??? gUnk_085D4300
-// ??? gUnk_085D44E4
-// ??? gUnk_085D4738
-// ??? gUnk_085D4998
-// ??? gUnk_085D4BF8
+extern u32 AnimScr_ArrowCloseRight[];
+extern u32 AnimScr_ArrowFarRight[];
+extern u32 AnimScr_ArrowCloseLeft[];
+extern u32 AnimScr_ArrowFarLeft[];
+extern u32 AnimScr_EfxTeyariObjType0Right[];
+extern u32 AnimScr_EfxTeyariObjType0Left[];
+extern u32 AnimScr_EfxTeyariObjType1Right[];
+extern u32 AnimScr_EfxTeyariObjType1Left[];
 // ??? gUnk_085D4CFC
 // ??? gUnk_085D4D98
 // ??? gUnk_085D5590

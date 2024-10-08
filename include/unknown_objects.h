@@ -326,25 +326,25 @@ extern u16 const Pal_LevelUpFrame[]; // pal (stat gains)
 // extern ??? gUnk_0811AFA4
 extern const u8 Img_TeonoOBJ[];
 extern const u16 Pal_TeonoOBJ[];
-// extern ??? gUnk_0811B408
-// extern ??? gUnk_0811B444
-// extern ??? gUnk_0811B674
-// extern ??? gUnk_0811B694
-// extern ??? gUnk_0811B8B0
-// extern ??? gUnk_0811B8D0
-// extern ??? gUnk_0811BAE8
-// extern ??? gUnk_0811BB08
-// extern ??? gUnk_0811BD24
-// extern ??? gUnk_0811BD44
-// extern ??? gUnk_0811BF70
-// extern ??? gUnk_0811BF90
-// extern ??? gUnk_0811C1D8
-// extern ??? gUnk_0811C1F8
-// extern ??? gUnk_0811C430
-// extern ??? gUnk_0811C450
-// extern ??? gUnk_0811C6B4
-// extern ??? gUnk_0811C6D4
-// extern ??? gUnk_0811C944
+extern const u8 Img_EfxArrowOBJ[];
+extern const u8 Img_SpellJavelin[];
+extern const u16 Pal_SpellJavelin[];
+extern const u8 Img_SpellJavelinCavalier[];
+extern const u16 Pal_SpellJavelinCavalier[];
+extern const u8 Img_SpellJavelinSoldier[];
+extern const u16 Pal_SpellJavelinSoldier[];
+extern const u8 Img_SpellJavelinPaladin[];
+extern const u16 Pal_SpellJavelinPaladin[];
+extern const u8 Img_SpellJavelinPrgasusKnight[];
+extern const u16 Pal_SpellJavelinPrgasusKnight[];
+extern const u8 Img_SpellJavelinFalcon[];
+extern const u16 Pal_SpellJavelinFalcon[];
+extern const u8 Img_SpellJavelinWyvernRider[];
+extern const u16 Pal_SpellJavelinWyvernRider[];
+extern const u8 Img_SpellJavelinWyvernLord[];
+extern const u16 Pal_SpellJavelinWyvernLord[];
+extern const u8 Img_SpellJavelinGenerial[];
+extern const u16 Pal_SpellJavelinGenerial[];
 // extern ??? gUnk_0811C964
 // extern ??? gUnk_0811CAD8
 // extern ??? gUnk_0811CAF8
@@ -553,6 +553,24 @@ extern u16 const Tsa_EkrFaefx12[];
 // extern ??? gUnk_081CFCB0
 // extern ??? gUnk_081D043C
 
+// extern ??? Img_WmDialogueBox
+// extern ??? Pal_WmDialogueBox
+extern u8 Pal_Wm_082AADA4[];
+extern u8 Pal_Wm_082B2380[];
+extern u8 Pal_Wm_082B9E64[];
+extern u8 Pal_Wm_082C1224[];
+extern u8 Pal_Wm_082C8874[];
+extern u8 Pal_Wm_082D1964[];
+extern u8 Pal_Wm_082D1BA0[];
+// extern ??? gUnk_082D3398
+// extern ??? gUnk_082D33B8
+// extern ??? gUnk_082D3674
+// extern ??? gUnk_082D36E4
+// extern ??? gUnk_082D3764
+// extern ??? gUnk_082D37E4
+// extern ??? gUnk_082D3864
+// extern ??? gUnk_082D38A4
+// extern ??? gUnk_082D5910
 extern u8 const Img_Background_082D80B0[];
 extern u8 const Tsa_Background_082DAC8C[];
 extern u16 const Pal_Background_082DB140[];
@@ -726,55 +744,11 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_0868BE74
 // extern CONST_DATA ??? gUnk_0868BEEC
 // extern CONST_DATA ??? gUnk_0868BF14
-// extern CONST_DATA ??? gUnk_0868BF3C
+// extern CONST_DATA ??? ProcScr_0868BF3C
 // extern CONST_DATA ??? gUnk_0868BFAC
 // extern CONST_DATA ??? gUnk_0868BFCC
-// extern CONST_DATA ??? gUnk_0868C2CC
-// extern CONST_DATA ??? gUnk_0868C2D4
-// extern CONST_DATA ??? gUnk_0868C2DC
-// extern CONST_DATA ??? ProcScr_WorldMapIntroEvent
-// extern CONST_DATA ??? gUnk_0868C324
-// extern CONST_DATA ??? gUnk_0868C37C
-// extern CONST_DATA ??? gUnk_0868C3AC
-// extern CONST_DATA ??? gUnk_0868C3C4
-// extern CONST_DATA ??? gUnk_0868C3EC
-// extern CONST_DATA ??? gUnk_0868C414
-// extern CONST_DATA ??? gUnk_0868C648
-// extern CONST_DATA ??? gUnk_0868C658
-// extern CONST_DATA ??? gUnk_0868C668
-// extern CONST_DATA ??? gUnk_0868C6B0
-// extern CONST_DATA ??? gUnk_0868C704
-// extern CONST_DATA ??? gUnk_0868C734
-// extern CONST_DATA ??? gUnk_0868C8D8
-// extern CONST_DATA ??? gUnk_0868C940
-// extern CONST_DATA ??? gUnk_0868C970
-// extern CONST_DATA ??? gUnk_0868C988
-// extern CONST_DATA ??? gUnk_0868FDB4
-// extern CONST_DATA ??? gUnk_0868FE0C
-// extern CONST_DATA ??? ProcScr_ClassDemo
-// extern CONST_DATA ??? gUnk_0868FEDC
-// extern CONST_DATA ??? gUnk_0868FEFC
-// extern CONST_DATA ??? gUnk_0868FF4C
-// extern CONST_DATA ??? gUnk_0868FF84
-// extern CONST_DATA ??? gUnk_0868FFCC
-// extern CONST_DATA ??? gUnk_08690014
-// extern CONST_DATA ??? gUnk_0869006C
-// extern CONST_DATA ??? gUnk_086900BC
-// extern CONST_DATA ??? gUnk_086900DC
-// extern CONST_DATA ??? gUnk_086900F0
-// extern CONST_DATA ??? gUnk_086900F8
-// extern CONST_DATA ??? gUnk_08690100
-// extern CONST_DATA ??? gUnk_08690288
-// extern CONST_DATA ??? gUnk_0869056C
-// extern CONST_DATA ??? gUnk_0869058C
-// extern CONST_DATA ??? gUnk_086905B0
-// extern CONST_DATA ??? gUnk_086905F8
-// extern CONST_DATA ??? gUnk_086909A4
-// extern CONST_DATA ??? gUnk_08690A53
-// extern CONST_DATA ??? gUnk_08690A99
-// extern CONST_DATA ??? gUnk_08690C14
-// extern CONST_DATA ??? gUnk_08690D44
 
+/* worldmap.h */
 /* shop.h */
 /* arena_ui.h */
 
