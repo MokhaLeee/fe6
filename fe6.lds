@@ -610,7 +610,6 @@ SECTIONS
         asm/shop.o(.text);
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
-        asm/arena.o(.text);
         asm/opanim.o(.text);
 
         src/m4a_1.o(.text);
