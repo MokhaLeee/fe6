@@ -2850,7 +2850,7 @@ static int EvtCmd_WmStart(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_080922B0();
+    StartWorldMap();
 
     SetFaceConfig(gWmEventFaceConfig);
     proc->background = 0;

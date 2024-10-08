@@ -831,6 +831,8 @@ SECTIONS
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/savemenufx.o(.data);
         . = ALIGN(4); data/data.o(.data);
+        . = ALIGN(4); src/worldmap.o(.data);
+        . = ALIGN(4); data/worldmap.o(.data);
         . = ALIGN(4); src/shop.o(.data);
         . = ALIGN(4); data/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);

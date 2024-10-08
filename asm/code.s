@@ -7711,12 +7711,12 @@ func_fe6_08090D78: @ 0x08090D78
 	lsrs r0, r0, #0x18
 	cmp r0, #0x3f
 	bhi .L08090F10
-	ldr r0, .L08090F0C @ =gUnk_0868BF3C
+	ldr r0, .L08090F0C @ =ProcScr_0868BF3C
 	adds r1, r4, #0
 	bl SpawnProcLocking
 	b .L08090F2A
 	.align 2, 0
-.L08090F0C: .4byte gUnk_0868BF3C
+.L08090F0C: .4byte ProcScr_0868BF3C
 .L08090F10:
 	adds r1, r4, #0
 	adds r1, #0x64
@@ -9718,7 +9718,7 @@ func_fe6_08091FFC: @ 0x08091FFC
 	thumb_func_start func_fe6_08092028
 func_fe6_08092028: @ 0x08092028
 	push {lr}
-	ldr r0, .L0809203C @ =gUnk_0868BF3C
+	ldr r0, .L0809203C @ =ProcScr_0868BF3C
 	bl FindProc
 	cmp r0, #0
 	beq .L08092036
@@ -9727,7 +9727,7 @@ func_fe6_08092028: @ 0x08092028
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0809203C: .4byte gUnk_0868BF3C
+.L0809203C: .4byte ProcScr_0868BF3C
 
 	thumb_func_start func_fe6_08092040
 func_fe6_08092040: @ 0x08092040
@@ -9756,7 +9756,7 @@ func_fe6_08092054: @ 0x08092054
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	beq .L08092098
-	ldr r0, .L080920AC @ =gUnk_0868BF3C
+	ldr r0, .L080920AC @ =ProcScr_0868BF3C
 	bl FindProc
 	adds r5, r0, #0
 	ldr r1, .L080920B0 @ =0xFFFFFF00
@@ -9784,7 +9784,7 @@ func_fe6_08092054: @ 0x08092054
 	.align 2, 0
 .L080920A4: .4byte 0x02016B44
 .L080920A8: .4byte 0x02016B90
-.L080920AC: .4byte gUnk_0868BF3C
+.L080920AC: .4byte ProcScr_0868BF3C
 .L080920B0: .4byte 0xFFFFFF00
 
 	thumb_func_start func_fe6_080920B4
