@@ -14,26 +14,12 @@
 #include "constants/pids.h"
 #include "constants/iids.h"
 
-static void ArenaBeginInternal(struct Unit * unit);
-static int ArenaGetUnitWeaponKind(struct Unit * unit);
-static int ArenaGetJobWeaponKind(struct JInfo const * jinfo);
-static int ArenaGenOpposingJid(int weapon_kind);
-static bool ArenaIsMagicWeaponKind(int weapon_kind);
-static int ArenaGetOpposingLevel(int level);
-static int ArenaGetPowerRanking(struct Unit * unit, bool opponent_is_magic);
-static void ArenaGenOpponentUnit(void);
-static void ArenaGenBaseWeapons(void);
-static u16 ArenaGetUpgradedWeapon(u16 item);
-static bool ArenaAdjustOpponentDamage(void);
-static bool ArenaAdjustOpponentPowerRanking(void);
-static void ArenaGenMatchupGoldValue(void);
-
 struct ArenaSt EWRAM_DATA gArenaSt = {};
 struct Unit EWRAM_DATA gArenaOpponent = {};
 
 #include "data/arena_jids.h"
 
-static void ArenaBeginInternal(struct Unit * unit)
+void ArenaBeginInternal(struct Unit * unit)
 {
     int i;
 
@@ -86,7 +72,7 @@ void ArenaResume(struct Unit * unit)
     RandSetSt(gAction.action_rand_st);
 }
 
-static int ArenaGetUnitWeaponKind(struct Unit * unit)
+int ArenaGetUnitWeaponKind(struct Unit * unit)
 {
     int i;
 
@@ -108,7 +94,7 @@ static int ArenaGetUnitWeaponKind(struct Unit * unit)
     return kind;
 }
 
-static int ArenaGetJobWeaponKind(struct JInfo const * jinfo)
+int ArenaGetJobWeaponKind(struct JInfo const * jinfo)
 {
     int i;
 
@@ -130,7 +116,7 @@ static int ArenaGetJobWeaponKind(struct JInfo const * jinfo)
     return kind;
 }
 
-static int ArenaGenOpposingJid(int weapon_kind)
+int ArenaGenOpposingJid(int weapon_kind)
 {
     int promoteflag;
     int jobnum, i;
@@ -195,7 +181,7 @@ static int ArenaGenOpposingJid(int weapon_kind)
     return joblist[i];
 }
 
-static bool ArenaIsMagicWeaponKind(int weapon_kind)
+bool ArenaIsMagicWeaponKind(int weapon_kind)
 {
     switch (weapon_kind)
     {
@@ -219,7 +205,7 @@ static bool ArenaIsMagicWeaponKind(int weapon_kind)
     }
 }
 
-static int ArenaGetOpposingLevel(int level)
+int ArenaGetOpposingLevel(int level)
 {
     enum { LEVEL_VARIANCE = 4 };
 
@@ -231,7 +217,7 @@ static int ArenaGetOpposingLevel(int level)
     return result;
 }
 
-static int ArenaGetPowerRanking(struct Unit * unit, bool opponent_is_magic)
+int ArenaGetPowerRanking(struct Unit * unit, bool opponent_is_magic)
 {
     int result = unit->max_hp;
 
@@ -253,7 +239,7 @@ static int ArenaGetPowerRanking(struct Unit * unit, bool opponent_is_magic)
     return result;
 }
 
-static void ArenaGenOpponentUnit(void)
+void ArenaGenOpponentUnit(void)
 {
     struct UnitInfo info;
 
@@ -299,7 +285,7 @@ static void ArenaGenOpponentUnit(void)
     SetUnitHp(unit, GetUnitMaxHp(unit));
 }
 
-static void ArenaGenBaseWeapons(void)
+void ArenaGenBaseWeapons(void)
 {
     SHOULD_BE_STATIC u8 SHOULD_BE_CONST arenaWeapons[] =
     {
@@ -324,7 +310,7 @@ static void ArenaGenBaseWeapons(void)
         gArenaSt.range = 2;
 }
 
-static u16 ArenaGetUpgradedWeapon(u16 item)
+u16 ArenaGetUpgradedWeapon(u16 item)
 {
     SHOULD_BE_STATIC u8 SHOULD_BE_CONST arenaWeaponUpgrades[] =
     {
@@ -357,7 +343,7 @@ static u16 ArenaGetUpgradedWeapon(u16 item)
 #endif
 }
 
-static bool ArenaAdjustOpponentDamage(void)
+bool ArenaAdjustOpponentDamage(void)
 {
     bool result = FALSE;
 
@@ -420,7 +406,7 @@ static bool ArenaAdjustOpponentDamage(void)
     return result;
 }
 
-static bool ArenaAdjustOpponentPowerRanking(void)
+bool ArenaAdjustOpponentPowerRanking(void)
 {
     int max, diff;
 
@@ -493,7 +479,7 @@ static bool ArenaAdjustOpponentPowerRanking(void)
     }
 }
 
-static void ArenaGenMatchupGoldValue(void)
+void ArenaGenMatchupGoldValue(void)
 {
     int value = gArenaSt.opponent_power_ranking - gArenaSt.player_power_ranking;
 

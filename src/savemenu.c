@@ -37,7 +37,7 @@ bool func_fe6_0808A79C(struct SaveMenuProc * proc);
 bool func_fe6_08088EB8(struct SaveMenuProc * proc, int direction);
 void func_fe6_0808A8B4(ProcPtr parent, int arg_1, int arg_2);
 void func_fe6_0808B578(fu8 arg_0, ProcPtr parent);
-void func_fe6_0808BD58(ProcPtr parent);
+void NewProc_0868AA08(ProcPtr parent);
 void func_fe6_08089550(ProcPtr parent);
 void func_fe6_08089564(ProcPtr parent);
 void func_fe6_08089578(ProcPtr parent);
@@ -1121,7 +1121,7 @@ void func_fe6_08089180(struct SaveMenuProc * proc)
 
         case 8:
             StartBgmVolumeChange(0x80, 0, 0x20, NULL);
-            func_fe6_0808BD58(proc);
+            NewProc_0868AA08(proc);
             break;
     }
 }

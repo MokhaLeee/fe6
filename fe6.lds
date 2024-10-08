@@ -827,6 +827,7 @@ SECTIONS
         . = ALIGN(4); src/minimap.o(.data);
         . = ALIGN(4); src/savemenu.o(.data);
         . = ALIGN(4); src/savemenu_2.o(.data);
+        . = ALIGN(4); data/savemenufx.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/shop.o(.data);
         . = ALIGN(4); data/shop.o(.data);
