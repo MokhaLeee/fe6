@@ -112,7 +112,7 @@ void func_fe6_08096B38(struct ProcShop * proc);
 void StartUiGoldBox(ProcPtr proc);
 // InitGoldBoxText
 // ClearGoldBoxTextTm2Line
-// DisplayGoldBoxText
+void DisplayGoldBoxText(u16 * tm);
 void ShopInitTexts_OnBuy(struct ProcShop * proc);
 // DrawShopSoldItems
 void InitShopBuyStatus(struct ProcShopInit * proc);
@@ -145,6 +145,7 @@ u16 ShopSt_GetHandLoc(void);
 bool IsShopPageScrolling(void);
 bool ShouldDisplayUpArrow(void);
 bool ShouldDisplayDownArrow(void);
+// func_fe6_08097E2C
 
 // extern CONST_DATA ??? gDefaultShopItems
 // extern CONST_DATA ??? gShopDislogueIdx

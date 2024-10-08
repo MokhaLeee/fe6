@@ -8,10 +8,10 @@
 enum
 {
     ARENA_RESULT_0,
-    ARENA_RESULT_1, // player victory?
-    ARENA_RESULT_2, // enemy victory?
-    ARENA_RESULT_3, // ???
-    ARENA_RESULT_4, // backed out?
+    ARENA_RESULT_WIN,
+    ARENA_RESULT_LOSS,
+    ARENA_RESULT_TIES,
+    ARENA_RESULT_YIELD,
 };
 
 struct ArenaSt

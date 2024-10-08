@@ -33,6 +33,7 @@ enum
     SONG_33 = 0x33,
     SONG_34 = 0x34,
     SONG_37 = 0x37,
+    SONG_39 = 0x39,
     SONG_3B = 0x3B,
     SONG_3C = 0x3C,
     SONG_3D = 0x3D,
@@ -41,6 +42,7 @@ enum
     SONG_43 = 0x43,
     SONG_44 = 0x44,
     SONG_45 = 0x45,
+    SONG_46 = 0x46,
     SONG_5A = 0x5A,
     SONG_5B = 0x5B,
     SONG_5C = 0x5C,
@@ -103,6 +105,7 @@ enum
     SONG_B5 = 0xB5, // manim
     SONG_B6 = 0xB6,
     SONG_B7 = 0xB7, // manim poison
+    SONG_B9 = 0xB9,
     SONG_BA = 0xBA,
     SONG_BB = 0xBB,
     SONG_BC = 0xBC,
