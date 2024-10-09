@@ -608,6 +608,8 @@ SECTIONS
         asm/code.o(.text);
         src/worldmap.o(.text);
         asm/worldmap.o(.text);
+        src/class_demo.o(.text);
+        asm/classdemo.o(.text);
         src/shop.o(.text);
         asm/shop.o(.text);
         src/arena_ui.o(.text);
@@ -833,6 +835,8 @@ SECTIONS
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); data/worldmap.o(.data);
+        . = ALIGN(4); src/class_demo.o(.data);
+        . = ALIGN(4); data/classdemo.o(.data);
         . = ALIGN(4); src/shop.o(.data);
         . = ALIGN(4); data/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);

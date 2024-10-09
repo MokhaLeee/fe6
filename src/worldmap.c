@@ -2,6 +2,8 @@
 #include "oam.h"
 #include "hardware.h"
 #include "util.h"
+#include "oam.h"
+#include "sprite.h"
 #include "bm.h"
 #include "bmio.h"
 #include "event.h"
@@ -154,6 +156,45 @@ bool ProcExists_0868C37C(void)
 void func_fe6_08092450(struct Proc_0868C37C * proc)
 {
     proc->unk58->unk_00 = 0;
+}
+
+void func_fe6_08092458(struct Proc_0868C37C * proc)
+{
+    int i;
+    struct Struct_030048E0 * conf = proc->unk58;
+    int unk = func_fe6_08093284(func_fe6_0809325C(conf->unk_01));
+
+    conf->unk_04 = unk;
+    conf->unk_14[0] = 0;
+
+    for (i = 0; i < conf->unk_04; i++)
+    {
+        conf->unk_74[i] = (func_fe6_08093288(func_fe6_0809325C(conf->unk_01), i) + conf->unk_D4) * 0x100;
+        conf->unk_A4[i] = (func_fe6_080932D8(func_fe6_0809325C(conf->unk_01), i) + conf->unk_D8) * 0x100;
+    }
+
+    for (i = 1; i < conf->unk_04; i++)
+    {
+        int arctan;
+
+        int r5 = conf->unk_74[i] - conf->unk_74[i - 1];
+        int r4 = conf->unk_A4[i] - conf->unk_A4[i - 1];
+
+        int sqrt = Sqrt(r5 * r5 + r4 * r4);
+        conf->unk_14[i] = conf->unk_14[i - 1] + sqrt;
+        conf->unk_44[i] = (arctan = ArcTan2(r5, r4)) / 0x3F;
+    }
+
+    conf->unk_10 = conf->unk_14[conf->unk_04 - 1];
+    conf->unk_03 = conf->unk_10 / conf->unk_08 + 1;
+
+    for (i = 0; i < conf->unk_03; i++)
+    {
+        conf->unk_244[i] = (conf->unk_0C * i) / (conf->unk_03 - 1);
+        conf->unk_DC[i] = 0;
+        conf->unk_2E4[i] = 0;
+        conf->unk_F0[i] = 0;
+    }
 }
 
 struct ProcScr CONST_DATA ProcScr_0868C3AC[] = {

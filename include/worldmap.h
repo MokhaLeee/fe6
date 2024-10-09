@@ -20,21 +20,46 @@ struct ProcWorldMap {
 };
 
 struct Struct_030048E0 {
-    u8 unk_00, unk_01;
-
-    STRUCT_PAD(0x02, 0x05);
-
+    u8 unk_00, unk_01, unk_02, unk_03;
+    /* 04 */ u8 unk_04;
     /* 05 */ u8 unk_05;
 
     /* 08 */ int unk_08;
     /* 0C */ int unk_0C;
-
-    STRUCT_PAD(0x10, 0xD4);
-
+    /* 10 */ int unk_10;
+    /* 14 */ int unk_14[12];
+    /* 44 */ int unk_44[12];
+    /* 74 */ int unk_74[12];
+    /* A4 */ int unk_A4[12];
     /* D4 */ int unk_D4;
     /* D8 */ int unk_D8;
+    /* DC */ u8 unk_DC[12];
 
-    STRUCT_PAD(0xDC, 0x334);
+    STRUCT_PAD(0xE8, 0xF0);
+
+    /* DC */ u8 unk_F0[12];
+
+    STRUCT_PAD(0xFC, 0x104);
+
+    /* 104 */ int unk_104[12];
+
+    STRUCT_PAD(0x134, 0x154);
+
+    /* 154 */ int unk_154[12];
+
+    STRUCT_PAD(0x184, 0x244);
+
+    /* 244 */ int unk_244[12];
+
+    STRUCT_PAD(0x274, 0x294);
+
+    /* 294 */ int unk_294[12];
+
+    STRUCT_PAD(0x2C4, 0x2E4);
+
+    /* 2E4 */ int unk_2E4[12];
+
+    STRUCT_PAD(0x314, 0x334);
 };
 
 extern struct Struct_030048E0 gUnk_030048E0[2];
@@ -59,7 +84,7 @@ struct Proc_0868C37C {
 // ProcExists_0868C37C
 void func_fe6_08092450(struct Proc_0868C37C * proc);
 void func_fe6_08092458(struct Proc_0868C37C * proc);
-// func_fe6_080925C4
+void func_fe6_080925C4(struct Struct_030048E0 * conf, int idx);
 void func_fe6_0809268C(struct Proc_0868C37C * proc);
 void func_fe6_08092838(void);
 struct Struct_030048E0 * GetUnkStruct_030048E0(void);
@@ -92,7 +117,7 @@ void func_fe6_08092D0C(struct Proc_0868C3C4 * proc);
 bool func_fe6_08092E68(void);
 void func_fe6_08092E94(void);
 void func_fe6_08092EB0(int a, int b, int c, int d, int e, int f, int g);
-// func_fe6_08093064
+void func_fe6_08093064(int a, int b, int c);
 void StartWorldMapIntroScen(void);
 // func_fe6_08093114
 // func_fe6_08093120
@@ -104,10 +129,10 @@ void StartWorldMapIntroScen(void);
 // GetWMHighlight
 // SetWMMapText
 // GetWMMapText
-// func_fe6_0809325C
-// func_fe6_08093284
-// func_fe6_08093288
-// func_fe6_080932D8
+u16 * func_fe6_0809325C(int a);
+int func_fe6_08093284(u16 * buf);
+int func_fe6_08093288(u16 * buf, int a);
+int func_fe6_080932D8(u16 * buf, int a);
 // func_fe6_0809331C
 // func_fe6_0809338C
 // func_fe6_08093394
@@ -164,52 +189,6 @@ void func_fe6_08094030(int arg_0, int arg_1, int arg_2, ProcPtr proc);
 // func_fe6_08094460
 // func_fe6_080944F4
 // func_fe6_08094504
-// func_fe6_08094540
-// func_fe6_080945F4
-// func_fe6_080946D4
-// func_fe6_08094724
-// func_fe6_080947AC
-// func_fe6_080947B8
-// func_fe6_080947DC
-void StartClassDemo(u8 arg_0, ProcPtr parent);
-// func_fe6_0809480C
-// func_fe6_0809485C
-// func_fe6_08094878
-// func_fe6_080949B8
-// func_fe6_08094B28
-// func_fe6_08094B80
-// func_fe6_08094BE0
-// func_fe6_08094C50
-// func_fe6_08094C80
-// func_fe6_08094CB8
-// func_fe6_08094CEC
-// func_fe6_08094E20
-// func_fe6_08094E4C
-// func_fe6_08094EE8
-// func_fe6_08094F08
-// func_fe6_08094F14
-// func_fe6_08094F94
-// func_fe6_08095034
-// func_fe6_08095100
-// func_fe6_08095138
-// func_fe6_0809517C
-// func_fe6_080951A4
-// func_fe6_080951DC
-// func_fe6_080951FC
-// func_fe6_0809525C
-// func_fe6_08095334
-// func_fe6_08095850
-// func_fe6_0809597C
-// func_fe6_08095A70
-// func_fe6_08095A74
-// func_fe6_08095AB8
-// func_fe6_08095AE0
-// func_fe6_08095BCC
-// func_fe6_08095D28
-// func_fe6_08095D2C
-// func_fe6_08095D40
-// func_fe6_08095D48
-// func_fe6_08095D58
 
 extern u16 CONST_DATA Sprite_0868C2CC[];
 extern u16 CONST_DATA Sprite_0868C2D4[];
@@ -234,26 +213,3 @@ extern CONST_DATA struct ProcScr ProcScr_0868C688[];
 // extern CONST_DATA ??? gUnk_0868C988
 // extern CONST_DATA ??? gUnk_0868FDB4
 // extern CONST_DATA ??? gUnk_0868FE0C
-// extern CONST_DATA ??? ProcScr_ClassDemo
-// extern CONST_DATA ??? gUnk_0868FEDC
-// extern CONST_DATA ??? gUnk_0868FEFC
-// extern CONST_DATA ??? gUnk_0868FF4C
-// extern CONST_DATA ??? gUnk_0868FF84
-// extern CONST_DATA ??? gUnk_0868FFCC
-// extern CONST_DATA ??? gUnk_08690014
-// extern CONST_DATA ??? gUnk_0869006C
-// extern CONST_DATA ??? gUnk_086900BC
-// extern CONST_DATA ??? gUnk_086900DC
-// extern CONST_DATA ??? gUnk_086900F0
-// extern CONST_DATA ??? gUnk_086900F8
-// extern CONST_DATA ??? gUnk_08690100
-// extern CONST_DATA ??? gUnk_08690288
-// extern CONST_DATA ??? gUnk_0869056C
-// extern CONST_DATA ??? gUnk_0869058C
-// extern CONST_DATA ??? gUnk_086905B0
-// extern CONST_DATA ??? gUnk_086905F8
-// extern CONST_DATA ??? gUnk_086909A4
-// extern CONST_DATA ??? gUnk_08690A53
-// extern CONST_DATA ??? gUnk_08690A99
-// extern CONST_DATA ??? gUnk_08690C14
-// extern CONST_DATA ??? gUnk_08690D44

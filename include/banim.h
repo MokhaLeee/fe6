@@ -735,9 +735,9 @@ void SetAnimStateUnHidden(int pos);
 // func_fe6_0804BE4C
 // func_fe6_0804BE6C
 // func_fe6_0804BE80
-// NewEfxAnimeDrvProc
-// EndEfxAnimeDrvProc
-// ExecAllBas
+void NewEfxAnimeDrvProc(void);
+void EndEfxAnimeDrvProc(void);
+void ExecAllBas(void);
 // NewEkrUnitMainMini
 // func_fe6_0804BF00
 // func_fe6_0804BF24
@@ -1345,11 +1345,11 @@ void NewEfxNormalEffect(struct Anim * anim);
 // NewEfxMantBatabata
 // func_fe6_08057E98
 // func_fe6_08057EC4
-// func_fe6_08057EF4
-// func_fe6_08057F08
-// func_fe6_08057F24
-// func_fe6_08057F40
-// func_fe6_08057F4C
+void ResetClassReelSpell(void);
+void EndActiveClassReelSpell(void);
+void EndActiveClassReelBgColorProc(void);
+void SetActiveClassReelSpell(ProcPtr proc);
+void SetActiveCRSpellBgColorProc(ProcPtr proc);
 // func_fe6_08057F58
 // func_fe6_08057F60
 // func_fe6_08057FB8

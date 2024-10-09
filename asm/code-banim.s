@@ -2124,8 +2124,8 @@ func_fe6_08057EC4: @ 0x08057EC4
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08057EF4
-func_fe6_08057EF4: @ 0x08057EF4
+	thumb_func_start ResetClassReelSpell
+ResetClassReelSpell: @ 0x08057EF4
 	ldr r0, .L08057F00 @ =0x0203CDD8
 	movs r1, #0
 	str r1, [r0]
@@ -2136,8 +2136,8 @@ func_fe6_08057EF4: @ 0x08057EF4
 .L08057F00: .4byte 0x0203CDD8
 .L08057F04: .4byte 0x0203CDDC
 
-	thumb_func_start func_fe6_08057F08
-func_fe6_08057F08: @ 0x08057F08
+	thumb_func_start EndActiveClassReelSpell
+EndActiveClassReelSpell: @ 0x08057F08
 	push {r4, lr}
 	ldr r4, .L08057F20 @ =0x0203CDD8
 	ldr r0, [r4]
@@ -2153,8 +2153,8 @@ func_fe6_08057F08: @ 0x08057F08
 	.align 2, 0
 .L08057F20: .4byte 0x0203CDD8
 
-	thumb_func_start func_fe6_08057F24
-func_fe6_08057F24: @ 0x08057F24
+	thumb_func_start EndActiveClassReelBgColorProc
+EndActiveClassReelBgColorProc: @ 0x08057F24
 	push {r4, lr}
 	ldr r4, .L08057F3C @ =0x0203CDDC
 	ldr r0, [r4]
@@ -2170,16 +2170,16 @@ func_fe6_08057F24: @ 0x08057F24
 	.align 2, 0
 .L08057F3C: .4byte 0x0203CDDC
 
-	thumb_func_start func_fe6_08057F40
-func_fe6_08057F40: @ 0x08057F40
+	thumb_func_start SetActiveClassReelSpell
+SetActiveClassReelSpell: @ 0x08057F40
 	ldr r1, .L08057F48 @ =0x0203CDD8
 	str r0, [r1]
 	bx lr
 	.align 2, 0
 .L08057F48: .4byte 0x0203CDD8
 
-	thumb_func_start func_fe6_08057F4C
-func_fe6_08057F4C: @ 0x08057F4C
+	thumb_func_start SetActiveCRSpellBgColorProc
+SetActiveCRSpellBgColorProc: @ 0x08057F4C
 	ldr r1, .L08057F54 @ =0x0203CDDC
 	str r0, [r1]
 	bx lr
@@ -2480,7 +2480,7 @@ func_fe6_08058180: @ 0x08058180
 	movs r1, #3
 	bl SpawnProc
 	adds r5, r0, #0
-	bl func_fe6_08057F40
+	bl SetActiveClassReelSpell
 	str r4, [r5, #0x5c]
 	pop {r4, r5}
 	pop {r0}
@@ -2670,7 +2670,7 @@ func_fe6_08058310: @ 0x08058310
 	movs r1, #3
 	bl SpawnProc
 	adds r5, r0, #0
-	bl func_fe6_08057F40
+	bl SetActiveClassReelSpell
 	str r4, [r5, #0x5c]
 	pop {r4, r5}
 	pop {r0}
@@ -2810,7 +2810,7 @@ func_fe6_08058438: @ 0x08058438
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
-	bl func_fe6_08057F4C
+	bl SetActiveCRSpellBgColorProc
 	str r5, [r4, #0x5c]
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -2851,7 +2851,7 @@ func_fe6_0805846C: @ 0x0805846C
 	rsbs r0, r0, #0
 	cmp r2, r0
 	bne .L080584A4
-	bl func_fe6_08057F24
+	bl EndActiveClassReelBgColorProc
 	adds r0, r4, #0
 	bl Proc_Break
 .L080584A4:
@@ -3017,7 +3017,7 @@ func_fe6_080585DC: @ 0x080585DC
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
-	bl func_fe6_08057F40
+	bl SetActiveClassReelSpell
 	str r5, [r4, #0x5c]
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -3089,7 +3089,7 @@ func_fe6_0805867C: @ 0x0805867C
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
-	bl func_fe6_08057F4C
+	bl SetActiveCRSpellBgColorProc
 	str r5, [r4, #0x5c]
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -3130,7 +3130,7 @@ func_fe6_080586B0: @ 0x080586B0
 	rsbs r0, r0, #0
 	cmp r2, r0
 	bne .L080586E8
-	bl func_fe6_08057F24
+	bl EndActiveClassReelBgColorProc
 	adds r0, r4, #0
 	bl Proc_Break
 .L080586E8:

@@ -14,7 +14,7 @@
 #include "save_game.h"
 #include "save_xmap.h"
 #include "savemenu.h"
-#include "worldmap.h"
+#include "class_demo.h"
 
 #include "constants/chapters.h"
 
