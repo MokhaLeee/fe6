@@ -14,6 +14,7 @@
 #include "chapter.h"
 #include "statscreen.h"
 #include "helpbox.h"
+#include "sound.h"
 #include "constants/msg.h"
 #include "constants/videoalloc_global.h"
 
@@ -523,5 +524,17 @@ bool WindowColorOptionChangeHandler(ProcPtr proc)
     if (GenericOptionChangeHandler(proc))
         UnpackUiWindowFrameGraphics2(-1);
 
+    return false;
+}
+
+bool MusicOptionChangeHandler(ProcPtr proc)
+{
+    if (GenericOptionChangeHandler(proc))
+    {
+        if (GetGameOption(GetConfigItemCur()) != 0)
+            FadeBgmOut(1);
+        else
+            StartMapSongBgm();
+    }
     return false;
 }

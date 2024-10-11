@@ -2,44 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start MusicOptionChangeHandler
-MusicOptionChangeHandler: @ 0x0808C9C8
-	push {lr}
-	bl GenericOptionChangeHandler
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq .L0808CA0C
-	ldr r1, .L0808CA00 @ =gUiConfigOrder
-	ldr r0, .L0808CA04 @ =gpUiConfigSt
-	ldr r2, [r0]
-	movs r3, #0x32
-	ldrsh r0, [r2, r3]
-	lsls r0, r0, #3
-	adds r1, #4
-	adds r0, r0, r1
-	movs r3, #0x2a
-	ldrsh r1, [r2, r3]
-	ldr r0, [r0]
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	bl GetGameOption
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq .L0808CA08
-	movs r0, #1
-	bl FadeBgmOut
-	b .L0808CA0C
-	.align 2, 0
-.L0808CA00: .4byte gUiConfigOrder
-.L0808CA04: .4byte gpUiConfigSt
-.L0808CA08:
-	bl StartMapSongBgm
-.L0808CA0C:
-	movs r0, #0
-	pop {r1}
-	bx r1
-	.align 2, 0
-
 	thumb_func_start GenericOptionChangeHandler
 GenericOptionChangeHandler: @ 0x0808CA14
 	push {r4, r5, r6, r7, lr}
