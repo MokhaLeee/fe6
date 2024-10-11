@@ -146,7 +146,7 @@ fu8 MapMenu_Unit_Select(struct MenuProc * menu, struct MenuEntProc * ent)
 
 fu8 MapMenu_Options_Select(struct MenuProc * menu, struct MenuEntProc * ent)
 {
-    SpawnProc(ProcScr_UiConfig, PROC_TREE_3);
+    SpawnProc(ProcScr_Config, PROC_TREE_3);
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 

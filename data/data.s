@@ -1,37 +1,5 @@
 	.data
 
-	.global gpUiConfigSt
-gpUiConfigSt: @ 0868AAC8
-	.incbin "fe6-base.gba", 0x68AAC8, (0x68AAE4 - 0x68AAC8) @ length: 001C
-
-	.global gUnk_0868AAE4
-gUnk_0868AAE4: @ 0868AAE4
-	.incbin "fe6-base.gba", 0x68AAE4, (0x68AAFC - 0x68AAE4) @ length: 0018
-
-	.global gUnk_0868AAFC
-gUnk_0868AAFC: @ 0868AAFC
-	.incbin "fe6-base.gba", 0x68AAFC, (0x68AB22 - 0x68AAFC) @ length: 0026
-
-	.global gUnk_0868AB22
-gUnk_0868AB22: @ 0868AB22
-	.incbin "fe6-base.gba", 0x68AB22, (0x68AB3C - 0x68AB22) @ length: 001A
-
-	.global gUnk_0868AB3C
-gUnk_0868AB3C: @ 0868AB3C
-	.incbin "fe6-base.gba", 0x68AB3C, (0x68ADA4 - 0x68AB3C) @ length: 0268
-
-	.global ProcScr_RedrawConfigHelpText
-ProcScr_RedrawConfigHelpText: @ 0868ADA4
-	.incbin "fe6-base.gba", 0x68ADA4, (0x68ADC4 - 0x68ADA4) @ length: 0020
-
-	.global ProcScr_DrawConfigUiSprites
-ProcScr_DrawConfigUiSprites: @ 0868ADC4
-	.incbin "fe6-base.gba", 0x68ADC4, (0x68AE04 - 0x68ADC4) @ length: 0040
-
-	.global ProcScr_UiConfig
-ProcScr_UiConfig: @ 0868AE04
-	.incbin "fe6-base.gba", 0x68AE04, (0x68AEB4 - 0x68AE04) @ length: 00B0
-
 	.global gUnk_0868AEB4
 gUnk_0868AEB4: @ 0868AEB4
 	.incbin "fe6-base.gba", 0x68AEB4, (0x68AF58 - 0x68AEB4) @ length: 00A4

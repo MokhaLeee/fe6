@@ -471,26 +471,9 @@ void func_fe6_0803CF58(void);
 // func_fe6_0808C084
 // func_fe6_0808C098
 // NewProc_0868AAA8
-// GetSelectedGameOption
-// GetSelectedOptionValue
-// func_fe6_0808C380
-void StartMuralBackgroundExt(ProcPtr parent, int arg_1, int arg_2);
-// DrawGameOptionIcon
-// func_fe6_0808C4A8
-// DrawGameOptionText
-// DrawOptionValueTexts
-// func_fe6_0808C668
-// func_fe6_0808C680
-// DrawConfigUiSprites
-// Config_Init
-// WindowColorOptionChangeHandler
-// MusicOptionChangeHandler
-// GenericOptionChangeHandler
-// GetGameOption
-// SetGameOption
-// func_fe6_0808CDCC
-// Config_Loop
-// Config_End
+
+/* config.h */
+
 // func_fe6_0808D0C0
 fu8 GetAuguryIndex(void);
 // func_fe6_0808D168
