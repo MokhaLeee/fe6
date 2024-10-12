@@ -15,6 +15,8 @@
 #include "statscreen.h"
 #include "helpbox.h"
 #include "sound.h"
+#include "unitlistscreen.h"
+#include "constants/songs.h"
 #include "constants/msg.h"
 #include "constants/videoalloc_global.h"
 
@@ -446,6 +448,7 @@ PROC_LABEL(0),
     PROC_REPEAT(WhileFadeExists),
     PROC_CALL(KillHelpBox),
     PROC_CALL_2(Config_End),
+
     PROC_CALL(UnlockBmDisplay),
     PROC_CALL(InitBmDisplay),
     PROC_CALL(StartFastFadeFromBlack),
@@ -466,16 +469,16 @@ void Config_Init(struct UiConfigProc * proc)
     gpUiConfigSt->sel_index = 0;
     gpUiConfigSt->top_index = 0;
 
-    proc->unk_2E = 0;
-    proc->unk_30 = 0;
-    proc->unk_36 = 0;
+    proc->bg_position = 0;
+    proc->scrolling_type = 0;
+    proc->goto_unique_anim_sel = 0;
 
     UnpackUiWindowFrameGraphics();
 
     SetDispEnable(1, 1, 1, 1, 1);
     SetBgOffset(BG_0, 0, 0);
     SetBgOffset(BG_1, 0, 0);
-    SetBgOffset(BG_2, 0, proc->unk_2E);
+    SetBgOffset(BG_2, 0, proc->bg_position);
     SetBgOffset(BG_3, 0, 0);
 
     SetWinEnable(1, 0, 0);
@@ -537,4 +540,342 @@ bool MusicOptionChangeHandler(ProcPtr proc)
             StartMapSongBgm();
     }
     return false;
+}
+
+bool GenericOptionChangeHandler(ProcPtr proc)
+{
+    bool ret = false;
+    int sel_index = gpUiConfigSt->sel_index;
+    int item_index = GetConfigItem(sel_index);
+    int _item_index = item_index;
+    u8 option_value = GetSelectedOptionValue();
+
+    if (gKeySt->repeated & (KEY_DPAD_LEFT | KEY_DPAD_RIGHT))
+    {
+        if (gKeySt->repeated & KEY_DPAD_LEFT)
+        {
+            if (option_value != 0)
+            {
+                option_value--;
+                SetGameOption(item_index, option_value);
+                ret = true;
+            }
+        }
+        else
+        {
+            if (gUiConfigOptions[item_index].selectors[option_value + 1].name != 0)
+            {
+                if (option_value < 3)
+                {
+                    option_value++;
+                    SetGameOption(_item_index, option_value);
+                    ret = true;
+                }
+            }
+        }
+
+        if (ret)
+        {
+            SpawnProc(ProcScr_RewriteUiConfigExplanition, proc);
+            DrawOptionValueTexts(sel_index, sel_index % 7, sel_index * 2 + 4);
+            EnableBgSync(BG0_SYNC_BIT | BG2_SYNC_BIT);
+            PlaySe(SONG_67);
+        }
+    }
+
+    return ret;
+}
+
+u8 GetGameOption(u8 item_index)
+{
+    int value = 0;
+
+    switch (item_index) {
+    case GAME_OPTION_ANIMATION:
+        switch (gPlaySt.config_battle_anim) {
+        case 0:
+            return 0;
+        case 3:
+            return 1;
+        case 1:
+            return 2;
+        case 2:
+            return 3;
+        }
+
+#if BUGFIX
+        // lol
+        break;
+#endif
+
+    case GAME_OPTION_TERRAIN:
+        value = gPlaySt.config_terrain_mapui;
+        break;
+
+    case GAME_OPTION_UNIT:
+        value = gPlaySt.config_unit_mapui;
+        break;
+
+    case GAME_OPTION_AUTOCURSOR:
+        value = gPlaySt.config_no_auto_cursor;
+        break;
+
+    case GAME_OPTION_TEXT_SPEED:
+        value = gPlaySt.config_talk_speed;
+        break;
+
+    case GAME_OPTION_GAME_SPEED:
+        value = gPlaySt.config_walk_speed;
+        break;
+
+    case GAME_OPTION_MUSIC:
+        value = gPlaySt.config_bgm_disable;
+        break;
+
+    case GAME_OPTION_SOUND_EFFECTS:
+        value = gPlaySt.config_se_disable;
+        break;
+
+    case GAME_OPTION_WINDOW_COLOR:
+        value = gPlaySt.config_window_theme;
+        break;
+
+    case GAME_OPTION_COMBAT:
+        value = gPlaySt.config_battle_preview_kind;
+        break;
+
+    case GAME_OPTION_SUBTITLE_HELP:
+        value = gPlaySt.config_no_subtitle_help;
+        break;
+
+    case GAME_OPTION_AUTOEND_TURNS:
+        value = gPlaySt.config_no_auto_end_turn;
+        break;
+
+    case GAME_OPTION_UNIT_COLOR:
+        value = gPlaySt.config_unique_pal;
+        break;
+    }
+
+    return value;
+}
+
+void SetGameOption(u8 item_index, u8 option_value)
+{
+    switch (item_index) {
+    case GAME_OPTION_ANIMATION:
+        switch (option_value) {
+        case 0:
+            gPlaySt.config_battle_anim = 0;
+            return;
+
+        case 1:
+            gPlaySt.config_battle_anim = 3;
+            return;
+
+        case 2:
+            gPlaySt.config_battle_anim = 1;
+            return;
+
+        case 3:
+            gPlaySt.config_battle_anim = 2;
+            return;
+        }
+
+#if BUGFIX
+        // lol
+        break;
+#endif
+
+    case GAME_OPTION_TERRAIN:
+        gPlaySt.config_terrain_mapui = option_value;
+        break;
+
+    case GAME_OPTION_UNIT:
+        gPlaySt.config_unit_mapui = option_value;
+        break;
+
+    case GAME_OPTION_AUTOCURSOR:
+        gPlaySt.config_no_auto_cursor = option_value;
+        break;
+
+    case GAME_OPTION_TEXT_SPEED:
+        gPlaySt.config_talk_speed = option_value;
+        break;
+
+    case GAME_OPTION_GAME_SPEED:
+        gPlaySt.config_walk_speed = option_value;
+        break;
+
+    case GAME_OPTION_MUSIC:
+        gPlaySt.config_bgm_disable = option_value;
+        break;
+
+    case GAME_OPTION_SOUND_EFFECTS:
+        gPlaySt.config_se_disable = option_value;
+        break;
+
+    case GAME_OPTION_WINDOW_COLOR:
+        gPlaySt.config_window_theme = option_value;
+        break;
+
+    case GAME_OPTION_COMBAT:
+        gPlaySt.config_battle_preview_kind = option_value;
+        break;
+
+    case GAME_OPTION_SUBTITLE_HELP:
+        gPlaySt.config_no_subtitle_help = option_value;
+        break;
+
+    case GAME_OPTION_AUTOEND_TURNS:
+        gPlaySt.config_no_auto_end_turn = option_value;
+        break;
+
+    case GAME_OPTION_UNIT_COLOR:
+        gPlaySt.config_unique_pal = option_value;
+        break;
+    }
+}
+
+void RefrashUiConfigScreen(ProcPtr proc, int sel_index, int tm_offset)
+{
+    int i, text_index;
+    int y = sel_index * 2 + 4;
+    int iy = TM_OFFSET(0, y);
+
+    for (i = 0; i <= 0x1A; i++)
+    {
+        gBg2Tm[iy + 0x02 + i] = 0;
+        gBg2Tm[iy + 0x22 + i] = 0;
+    }
+
+    text_index = sel_index % 7;
+
+    DrawGameOptionIcon(sel_index, 4);
+    DrawGameOptionText(sel_index, text_index, y);
+    DrawOptionValueTexts(sel_index, text_index, y);
+
+    for (i = 0; i <= 0x1A; i++)
+        gBg0Tm[tm_offset + 0x62 + i] = 0;
+
+    EnableBgSync(BG0_SYNC_BIT | BG2_SYNC_BIT);
+}
+
+void Config_Loop(struct UiConfigProc * proc)
+{
+    bool ret = false;
+
+    switch (proc->scrolling_type) {
+    case 0:
+        if (gKeySt->pressed & KEY_BUTTON_B)
+        {
+            PlaySe(SONG_6B);
+            Proc_Break(proc);
+            break;
+        }
+        else if (gKeySt->pressed & KEY_BUTTON_A)
+        {
+            if (GetConfigItemCur() != 0)
+                break;
+
+            if (GetGameOption(GAME_OPTION_ANIMATION) != 3)
+                break;
+
+            PlaySe(SONG_6A);
+            proc->goto_unique_anim_sel = 1; // something related to unique anim selection?
+            Proc_Break(proc);
+            break;
+        }
+        else if (gKeySt->repeated & (KEY_DPAD_UP | KEY_DPAD_DOWN))
+        {
+            if (gKeySt->repeated & KEY_DPAD_UP)
+            {
+                /* UP */
+                if (gpUiConfigSt->sel_index != 0)
+                {
+                    gpUiConfigSt->sel_index--;
+
+                    if (((gpUiConfigSt->sel_index - gpUiConfigSt->top_index) < 1) && gpUiConfigSt->top_index != 0)
+                    {
+                        gpUiConfigSt->top_index--;
+                        RefrashUiConfigScreen(proc, gpUiConfigSt->sel_index - 1, 0);
+                        proc->bg_position -= 4;
+                        proc->scrolling_type = 1;
+                    }
+                    ret = true;
+                }
+            }
+            else
+            {
+                /* DOWN */
+                if (gpUiConfigSt->sel_index < (gpUiConfigSt->max_item - 1))
+                {
+                    gpUiConfigSt->sel_index++;
+
+                    if (((gpUiConfigSt->sel_index - gpUiConfigSt->top_index) > 4) && gpUiConfigSt->sel_index < (gpUiConfigSt->max_item - 1))
+                    {
+                        gpUiConfigSt->top_index++;
+                        RefrashUiConfigScreen(proc, gpUiConfigSt->sel_index + 1, 0x140);
+                        proc->bg_position += 4;
+                        proc->scrolling_type = 4;
+                    }
+                    ret = true;
+                }
+            }
+
+            if (ret)
+            {
+                SpawnProc(ProcScr_RewriteUiConfigExplanition, proc);
+                EnableBgSync(BG0_SYNC_BIT | BG2_SYNC_BIT);
+                PlaySe(0x66);
+                break;
+            }
+        }
+
+        if (gKeySt->pressed & (KEY_DPAD_LEFT | KEY_DPAD_RIGHT))
+        {
+            if (gUiConfigOptions[GetConfigItemCur()].func)
+                gUiConfigOptions[GetConfigItemCur()].func(proc);
+        }
+        break;
+
+    case 1:
+    case 2:
+    case 3:
+        proc->bg_position -= 4;
+        if (proc->scrolling_type == 3)
+            proc->scrolling_type = 0;
+        else
+            proc->scrolling_type++;
+
+        break;
+
+    case 4:
+    case 5:
+    case 6:
+        proc->bg_position += 4;
+        if (proc->scrolling_type == 6)
+            proc->scrolling_type = 0;
+        else
+            proc->scrolling_type++;
+
+        break;
+    }
+
+    SetBgOffset(BG_2, 0, proc->bg_position);
+}
+
+bool Config_End(struct UiConfigProc * proc)
+{
+    EndMuralBackground();
+    Proc_EndEach(ProcScr_ConfigObj);
+    Proc_EndEach(ProcScr_RewriteUiConfigExplanition);
+
+    if (proc->goto_unique_anim_sel)
+    {
+        StartUnitListScreenForSoloAnim(proc);
+        Proc_Goto(proc, 0);
+        return false;
+    }
+    return true;
 }

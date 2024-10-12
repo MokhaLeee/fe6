@@ -30,8 +30,8 @@ struct ConfigSt {
 
     /* 32 */ i16 list_index;
     /* 34 */ i16 max_item;
-    /* 36 */ u8 unk_36;
-    /* 37 */ i8 unk_37;
+
+    STRUCT_PAD(0x36, 0x38);
 
     /* 38 */ struct Text texts_name[6];
     /* 68 */ struct Text text_68;
@@ -71,11 +71,12 @@ struct UiConfigProc {
 
     STRUCT_PAD(0x29, 0x2E);
 
-    /* 2E */ u16 unk_2E, unk_30;
+    /* 2E */ u16 bg_position;
+    /* 30 */ i16 scrolling_type;
 
     STRUCT_PAD(0x32, 0x36);
 
-    /* 36 */ u8 unk_36;
+    /* 36 */ u8 goto_unique_anim_sel;
 };
 
 u8 GetSelectedGameOption(void);
@@ -94,10 +95,10 @@ bool WindowColorOptionChangeHandler(ProcPtr proc);
 bool MusicOptionChangeHandler(ProcPtr proc);
 bool GenericOptionChangeHandler(ProcPtr proc);
 u8 GetGameOption(u8 item_index);
-// SetGameOption
-// func_fe6_0808CDCC
+void SetGameOption(u8 item_index, u8 option_value);
+void RefrashUiConfigScreen(ProcPtr proc, int sel_index, int tm_offset);
 void Config_Loop(struct UiConfigProc * proc);
-void Config_End(struct UiConfigProc * proc);
+bool Config_End(struct UiConfigProc * proc);
 
 extern CONST_DATA u16 Sprite_UiConfigTitle[];
 extern CONST_DATA struct ProcScr ProcScr_RewriteUiConfigExplanition[];
