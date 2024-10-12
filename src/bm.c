@@ -79,7 +79,7 @@ struct ProcScr CONST_DATA ProcScr_BmMain[] =
     PROC_19,
     PROC_19,
     PROC_MARK(PROC_MARK_2),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
 PROC_LABEL(L_BMMAIN_INIT),
     PROC_START_CHILD_LOCKING(ProcScr_PrepPhase),
@@ -138,7 +138,7 @@ PROC_LABEL(L_BMMAIN_4),
     PROC_GOTO(L_BMMAIN_CHANGEPHASE),
 
 PROC_LABEL(L_BMMAIN_8),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_REPEAT(BmMain_ResumePlayerPhase),
     PROC_START_CHILD_LOCKING(ProcScr_AiPhase_Berserk),
@@ -294,7 +294,7 @@ u16 const * CONST_DATA gSysDownArrowSpriteLut[] =
 struct ProcScr CONST_DATA ProcScr_CamMove[] =
 {
     PROC_19,
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(CamMove_OnInit),
     PROC_REPEAT(CamMove_OnLoop),

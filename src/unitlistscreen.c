@@ -710,7 +710,7 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
     LoadHelpBoxGfx(NULL, -1);
 }
 
-void func_fe6_08075338(struct UnitListScreenProc * proc)
+void UnitList_Init(struct UnitListScreenProc * proc)
 {
     proc->unk_29 = 0;
     proc->unk_31 = 1;
@@ -1807,7 +1807,7 @@ struct ProcScr CONST_DATA ProcScr_UnitListScreen[] =
 
     PROC_CALL(LockBmDisplay),
 
-    PROC_CALL(func_fe6_08075338),
+    PROC_CALL(UnitList_Init),
 
     PROC_CALL(StartFastFadeFromBlack),
     PROC_REPEAT(WhileFadeExists),
@@ -1858,7 +1858,7 @@ struct ProcScr CONST_DATA gUnk_08678594[] =
 {
     PROC_19,
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08075338),
+    PROC_CALL(UnitList_Init),
     PROC_CALL(StartMidFadeFromBlack),
     PROC_REPEAT(WhileFadeExists),
 PROC_LABEL(1),
@@ -1912,12 +1912,14 @@ void func_fe6_08076250(ProcPtr parent)
     proc->unk_3B = 0;
 }
 
-struct ProcScr CONST_DATA gUnk_0867865C[] =
+struct ProcScr CONST_DATA ProcScr_ConfigSoloAnim[] =
 {
-    PROC_SLEEP(0),
-    PROC_CALL(func_fe6_08075338),
+    PROC_YIELD,
+    PROC_CALL(UnitList_Init),
+
     PROC_CALL(StartFastFadeFromBlack),
     PROC_REPEAT(WhileFadeExists),
+
 PROC_LABEL(1),
     PROC_REPEAT(func_fe6_08075570),
     PROC_CALL(StartFastFadeToBlack),
@@ -1941,11 +1943,11 @@ void StartUnitListScreenForSoloAnim(ProcPtr parent)
 
     if (parent == NULL)
     {
-        proc = SpawnProc(gUnk_0867865C, PROC_TREE_3);
+        proc = SpawnProc(ProcScr_ConfigSoloAnim, PROC_TREE_3);
     }
     else
     {
-        proc = SpawnProcLocking(gUnk_0867865C, parent);
+        proc = SpawnProcLocking(ProcScr_ConfigSoloAnim, parent);
     }
 
     proc->mode = UNITLIST_MODE_SOLOANIM;

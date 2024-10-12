@@ -606,12 +606,12 @@ func_fe6_0805A768: @ 0x0805A768
 NewEkrIdunnIntroDeamon1: @ 0x0805A77C
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, .L0805A7B8 @ =ProcScr_EkrIdunnDeamon
+	ldr r0, .L0805A7B8 @ =ProcScr_EkrIdunnDeamon1
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
 	str r5, [r4, #0x5c]
-	ldr r0, .L0805A7BC @ =AnimScr_EkrIdunnDeamon
+	ldr r0, .L0805A7BC @ =AnimScr_EkrIdunnDeamon1
 	movs r1, #0x78
 	bl BasCreate
 	movs r2, #0
@@ -633,8 +633,8 @@ NewEkrIdunnIntroDeamon1: @ 0x0805A77C
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805A7B8: .4byte ProcScr_EkrIdunnDeamon
-.L0805A7BC: .4byte AnimScr_EkrIdunnDeamon
+.L0805A7B8: .4byte ProcScr_EkrIdunnDeamon1
+.L0805A7BC: .4byte AnimScr_EkrIdunnDeamon1
 
 	thumb_func_start func_fe6_0805A7C0
 func_fe6_0805A7C0: @ 0x0805A7C0
@@ -664,12 +664,12 @@ func_fe6_0805A7C0: @ 0x0805A7C0
 NewEkrIdunnIntroDeamon2: @ 0x0805A7EC
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, .L0805A824 @ =gUnk_086049E8
+	ldr r0, .L0805A824 @ =ProcScr_EkrIdunnDeamon2
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
 	str r5, [r4, #0x5c]
-	ldr r0, .L0805A828 @ =gUnk_08605A70
+	ldr r0, .L0805A828 @ =AnimScr_EkrIdunnDeamon2
 	movs r1, #0x78
 	bl BasCreate
 	movs r2, #0
@@ -689,8 +689,8 @@ NewEkrIdunnIntroDeamon2: @ 0x0805A7EC
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805A824: .4byte gUnk_086049E8
-.L0805A828: .4byte gUnk_08605A70
+.L0805A824: .4byte ProcScr_EkrIdunnDeamon2
+.L0805A828: .4byte AnimScr_EkrIdunnDeamon2
 
 	thumb_func_start func_fe6_0805A82C
 func_fe6_0805A82C: @ 0x0805A82C

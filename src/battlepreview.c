@@ -602,7 +602,7 @@ struct ProcScr CONST_DATA ProcScr_BattlePreview[] =
     PROC_ONEND(BattlePreview_OnEnd),
 
     PROC_CALL(ClearUi),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(BattlePreview_Init),
 

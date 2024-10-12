@@ -7,6 +7,7 @@
 #include "prelude.h"
 #include "banim_sprite.h"
 #include "battle.h"
+#include "face.h"
 
 enum EkrDistanceType_idx {
     EKR_DISTANCE_CLOSE,
@@ -1494,30 +1495,35 @@ void NewEkrClassChg(struct BaSprite * anim);
 // func_fe6_0805CFF8
 // func_fe6_0805D09C
 // func_fe6_0805D0E0
+
+struct ProcEkrlvup {
+    PROC_HEADER;
+};
+
 bool CheckEkrLvupDone(void);
 void EndEkrLevelUp(void);
-// func_fe6_0805D154
+// EkrLvup_InitStatusText
 // func_fe6_0805D4E0
 // func_fe6_0805D538
 // func_fe6_0805D570
 void NewEkrLevelup(struct BaSprite * anim);
-// func_fe6_0805D604
-// func_fe6_0805D8B4
-// func_fe6_0805DA08
-// func_fe6_0805DA38
-// func_fe6_0805DA7C
-// func_fe6_0805DBA4
-// func_fe6_0805DBD4
-// func_fe6_0805DC2C
-// func_fe6_0805DCB4
-// func_fe6_0805DD08
-// func_fe6_0805DD78
-// func_fe6_0805DDA8
-// func_fe6_0805DE8C
-// func_fe6_0805DEBC
-// func_fe6_0805DEC8
-// func_fe6_0805DF90
-// func_fe6_0805E104
+void EkrLvup_Init(struct ProcEkrlvup * proc);
+void EkrLvup_InitLevelUpBox(struct ProcEkrlvup * proc);
+void func_fe6_0805DA08(struct ProcEkrlvup * proc);
+void func_fe6_0805DA38(struct ProcEkrlvup * proc);
+void func_fe6_0805DA7C(struct ProcEkrlvup * proc);
+void func_fe6_0805DBA4(struct ProcEkrlvup * proc);
+void func_fe6_0805DBD4(struct ProcEkrlvup * proc);
+void func_fe6_0805DC2C(struct ProcEkrlvup * proc);
+void func_fe6_0805DCB4(struct ProcEkrlvup * proc);
+void func_fe6_0805DD08(struct ProcEkrlvup * proc);
+void func_fe6_0805DD78(struct ProcEkrlvup * proc);
+void func_fe6_0805DDA8(struct ProcEkrlvup * proc);
+void func_fe6_0805DE8C(struct ProcEkrlvup * proc);
+void func_fe6_0805DEBC(struct ProcEkrlvup * proc);
+void func_fe6_0805DEC8(struct ProcEkrlvup * proc);
+void func_fe6_0805DF90(struct ProcEkrlvup * proc);
+void func_fe6_0805E104(struct ProcEkrlvup * proc);
 // func_fe6_0805E140
 // func_fe6_0805E180
 // func_fe6_0805E230
@@ -2073,8 +2079,8 @@ extern CONST_DATA struct ProcScr ProcScr_EkrDragonIdunn[];
 // ??? gUnk_08604968
 // ??? gUnk_08604988
 // ??? gUnk_086049A8
-extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon[];
-// ??? gUnk_086049E8
+extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon1[];
+// ??? ProcScr_EkrIdunnDeamon2
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnBodyFlashing[];
 // ??? gUnk_08604A18
 // ??? gUnk_08604A3C
@@ -2087,8 +2093,8 @@ extern AnimScr AnimScr_ManaketeEnter2[];
 extern AnimScr AnimScr_ManaketeExit2[];
 extern AnimScr AnimScr_ManaketeEnter3[];
 extern AnimScr AnimScr_ManaketeExit1[];
-// ??? AnimScr_EkrIdunnDeamon
-// ??? gUnk_08605A70
+// ??? AnimScr_EkrIdunnDeamon1
+// ??? AnimScr_EkrIdunnDeamon2
 extern i16 gUnk_08605A94[];
 // ??? gEfxTmyPalRefs
 extern CONST_DATA struct ProcScr ProcScr_EkrSubAnimeEmulator[];
@@ -2109,7 +2115,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrClasschg[];
 // ??? gUnk_0860613C
 // ??? gUnk_0860615C
 // ??? gUnk_08606174
-extern CONST_DATA struct ProcScr FaceConfig_EkrLevelup[];
+extern CONST_DATA struct FaceVramEnt FaceConfig_EkrLevelup[];
 extern CONST_DATA struct ProcScr ProcScr_EkrLevelup[];
 // ??? gUnk_08606254
 // ??? gUnk_0860626C

@@ -108,7 +108,7 @@ void StartItemHelpBox(int x, int y, int item)
 
 struct ProcScr CONST_DATA ProcScr_HelpBox[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(HelpBox_OnOpen),
     PROC_REPEAT(HelpBox_OnLoop),

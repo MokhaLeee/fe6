@@ -484,10 +484,10 @@ struct ProcScr CONST_DATA ProcScr_TerrainHealDisplay[] =
 PROC_LABEL(0),
     PROC_CALL(MassEffectDisplay_Check),
     PROC_CALL(MassEffectDisplay_Watch),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(TerrainHealDisplay_Display),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(FinishDamageDisplay),
 
@@ -539,16 +539,16 @@ struct ProcScr CONST_DATA ProcScr_PoisonDamageDisplay[] =
 PROC_LABEL(0),
     PROC_CALL(MassEffectDisplay_Check),
     PROC_CALL(MassEffectDisplay_Watch),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(PoisonDamageDisplay_Display),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(FinishDamageDisplay),
 
 PROC_LABEL(1),
     PROC_CALL(PoisonDamageDisplay_Next),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(0),
 
@@ -588,10 +588,10 @@ struct ProcScr CONST_DATA ProcScr_StatusDecayDisplay[] =
 PROC_LABEL(0),
     PROC_CALL(MassEffectDisplay_Check),
     PROC_CALL(MassEffectDisplay_Watch),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StatusDecayDisplay_Display),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
 PROC_LABEL(1),
     PROC_CALL(StatusDecayDisplay_Next),
@@ -706,15 +706,15 @@ struct ProcScr CONST_DATA ProcScr_TrapDamageDisplay[] =
     PROC_CALL(TrapDamageDisplay_Init),
 
 PROC_LABEL(0),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(TrapDamageDisplay_Check),
 
     PROC_CALL(TrapDamageDisplay_Watch),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(TrapDamageDisplay_Display),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(FinishDamageDisplay),
 

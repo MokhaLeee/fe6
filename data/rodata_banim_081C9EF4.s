@@ -16,16 +16,16 @@ gUnk_081C9F34: @ 081C9F34
 gUnk_081C9FA6: @ 081C9FA6
 	.incbin "fe6-base.gba", 0x1C9FA6, (0x1C9FEC - 0x1C9FA6) @ length: 0046
 
-	.global gUnk_081C9FEC
-gUnk_081C9FEC: @ 081C9FEC
+	.global EkrLvupMsgsStr
+EkrLvupMsgsStr: @ 081C9FEC
 	.incbin "fe6-base.gba", 0x1C9FEC, (0x1CA014 - 0x1C9FEC) @ length: 0028
 
-	.global gUnk_081CA014
-gUnk_081CA014: @ 081CA014
+	.global EkrLvupMsgsMag
+EkrLvupMsgsMag: @ 081CA014
 	.incbin "fe6-base.gba", 0x1CA014, (0x1CA03C - 0x1CA014) @ length: 0028
 
-	.global gUnk_081CA03C
-gUnk_081CA03C: @ 081CA03C
+	.global sEfxLvupPartsPos
+sEfxLvupPartsPos: @ 081CA03C
 	.incbin "fe6-base.gba", 0x1CA03C, (0x1CA04C - 0x1CA03C) @ length: 0010
 
 	.global gUnk_081CA04C

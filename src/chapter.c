@@ -32,7 +32,7 @@
 
 struct ProcScr CONST_DATA ProcScr_DelayedUnlockBmDisplay[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(UnlockBmDisplay),
     PROC_END,

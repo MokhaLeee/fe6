@@ -74,7 +74,7 @@ struct ProcScr CONST_DATA ProcScr_PrepPhase[] =
 
 PROC_LABEL(L_PLAYERPHASE_ACTION_SELECT),
     PROC_CALL(StartPrepAtMenu),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(PrepPhase_WatchRoy),
 
@@ -138,7 +138,7 @@ PROC_LABEL(L_PLAYERPHASE_END),
     PROC_WHILE_EXISTS(ProcScr_CamMove),
 
     PROC_CALL(PrepPhase_MapSwapSelectFogFadeA),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(PrepPhase_MapSwapSelectFogFadeB),
 
     PROC_GOTO(L_PLAYERPHASE_BEGIN),
@@ -149,7 +149,7 @@ PROC_LABEL(L_PLAYERPHASE_MAPFADE_MOVE),
     PROC_WHILE_EXISTS(ProcScr_CamMove),
 
     PROC_CALL(PrepPhase_MapSwapSelectCancel),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_PLAYERPHASE_BEGIN),
 

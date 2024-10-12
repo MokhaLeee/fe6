@@ -83,14 +83,14 @@ struct ProcScr CONST_DATA ProcScr_CombatAction[] =
 
 PROC_LABEL(1),
     PROC_CALL(CombatAction_DoHandleDeaths),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };
 
 struct ProcScr CONST_DATA ProcScr_ArenaAction[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(ArenaAction_MaybeSkipDeathFades),
     PROC_CALL(CombatAction_PostBanimDeathFades),
@@ -101,7 +101,7 @@ struct ProcScr CONST_DATA ProcScr_ArenaAction[] =
 
 PROC_LABEL(1),
     PROC_CALL(ArenaAction_DoHandleDeaths),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };

@@ -588,7 +588,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	movs r1, #0x60
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0804464C @ =gUnk_Banim_02017640
+	ldr r0, .L0804464C @ =gBanimFont
 	ldr r1, .L08044650 @ =0x06001400
 	movs r2, #0xa0
 	movs r3, #2
@@ -606,7 +606,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	b .L08044672
 	.align 2, 0
 .L08044648: .4byte Pal_Text
-.L0804464C: .4byte gUnk_Banim_02017640
+.L0804464C: .4byte gBanimFont
 .L08044650: .4byte 0x06001400
 .L08044654: .4byte gUnk_081125E0
 .L08044658: .4byte 0x06001000
@@ -620,7 +620,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	bl DecodeMsg
 	adds r5, r0, #0
 .L08044672:
-	ldr r4, .L080446B0 @ =gUnk_Banim_02017658
+	ldr r4, .L080446B0 @ =gBanimText
 	adds r0, r4, #0
 	movs r1, #6
 	bl InitText
@@ -645,7 +645,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	b .L080446D2
 	.align 2, 0
 .L080446AC: .4byte gpEkrBattleUnitLeft
-.L080446B0: .4byte gUnk_Banim_02017658
+.L080446B0: .4byte gBanimText
 .L080446B4: .4byte gUnk_081127F0
 .L080446B8: .4byte 0x06001400
 .L080446BC: .4byte gBanimValid
@@ -658,7 +658,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	bl GetItemName
 	adds r5, r0, #0
 .L080446D2:
-	ldr r4, .L08044710 @ =gUnk_Banim_02017668
+	ldr r4, .L08044710 @ =gBanimText + 0x10
 	adds r0, r4, #0
 	movs r1, #7
 	bl InitText
@@ -683,7 +683,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	b .L08044732
 	.align 2, 0
 .L0804470C: .4byte gpEkrBattleUnitLeft
-.L08044710: .4byte gUnk_Banim_02017668
+.L08044710: .4byte gBanimText + 0x10
 .L08044714: .4byte gUnk_08112840
 .L08044718: .4byte 0x06001580
 .L0804471C: .4byte gBanimValid
@@ -696,7 +696,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	bl DecodeMsg
 	adds r5, r0, #0
 .L08044732:
-	ldr r4, .L08044770 @ =gUnk_Banim_02017670
+	ldr r4, .L08044770 @ =gBanimText + 0x18
 	adds r0, r4, #0
 	movs r1, #6
 	bl InitText
@@ -721,7 +721,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	b .L08044792
 	.align 2, 0
 .L0804476C: .4byte gpEkrBattleUnitRight
-.L08044770: .4byte gUnk_Banim_02017670
+.L08044770: .4byte gBanimText + 0x18
 .L08044774: .4byte gUnk_081128AC
 .L08044778: .4byte 0x06001740
 .L0804477C: .4byte gBanimValid
@@ -734,7 +734,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	bl GetItemName
 	adds r5, r0, #0
 .L08044792:
-	ldr r4, .L0804484C @ =gUnk_Banim_02017660
+	ldr r4, .L0804484C @ =gBanimText + 0x08
 	adds r0, r4, #0
 	movs r1, #7
 	bl InitText
@@ -813,7 +813,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	bx r0
 	.align 2, 0
 .L08044848: .4byte gpEkrBattleUnitRight
-.L0804484C: .4byte gUnk_Banim_02017660
+.L0804484C: .4byte gBanimText + 0x08
 .L08044850: .4byte gUnk_081128FC
 .L08044854: .4byte 0x060018C0
 .L08044858: .4byte gBg0Tm

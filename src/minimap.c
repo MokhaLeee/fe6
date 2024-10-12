@@ -886,9 +886,9 @@ void Minimap_Main(struct MinimapProc * proc)
 struct ProcScr CONST_DATA ProcScr_Minimap[] =
 {
     PROC_CALL(LockGame),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(ClearUi),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(Minimap_Init),
     PROC_CALL(Minimap_AdjustDisplay),
@@ -901,7 +901,7 @@ struct ProcScr CONST_DATA ProcScr_Minimap[] =
     PROC_CALL(Minimap_Fini),
 
     PROC_CALL(ClearUi),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(UnpackUiWindowFrameGraphics),
     PROC_CALL(ResetText),
     PROC_CALL(ApplySystemObjectsGraphics),

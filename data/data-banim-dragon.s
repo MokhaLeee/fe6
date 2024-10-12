@@ -18,12 +18,12 @@ gUnk_08604988: @ 08604988
 gUnk_086049A8: @ 086049A8
 	.incbin "fe6-base.gba", 0x6049A8, (0x6049D0 - 0x6049A8) @ length: 0028
 
-	.global ProcScr_EkrIdunnDeamon
-ProcScr_EkrIdunnDeamon: @ 086049D0
+	.global ProcScr_EkrIdunnDeamon1
+ProcScr_EkrIdunnDeamon1: @ 086049D0
 	.incbin "fe6-base.gba", 0x6049D0, (0x6049E8 - 0x6049D0) @ length: 0018
 
-	.global gUnk_086049E8
-gUnk_086049E8: @ 086049E8
+	.global ProcScr_EkrIdunnDeamon2
+ProcScr_EkrIdunnDeamon2: @ 086049E8
 	.incbin "fe6-base.gba", 0x6049E8, (0x604A00 - 0x6049E8) @ length: 0018
 
 	.global ProcScr_EkrIdunnBodyFlashing
@@ -465,8 +465,8 @@ AnimSprite_Idunnfx_15:  @ 0x605978
     ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x0094, -72, 4
     ANIM_SPRITE_END
 
-	.global AnimScr_EkrIdunnDeamon
-AnimScr_EkrIdunnDeamon: @ 08605A50
+	.global AnimScr_EkrIdunnDeamon1
+AnimScr_EkrIdunnDeamon1: @ 08605A50
     ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_1, 2
     ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_2, 2
     ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_3, 2
@@ -476,6 +476,14 @@ AnimScr_EkrIdunnDeamon: @ 08605A50
     ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_7, 1
     ANIMSCR_BLOCKED
 
-	.global gUnk_08605A70
-gUnk_08605A70: @ 08605A70
-	.incbin "fe6-base.gba", 0x605A70, (0x605A94 - 0x605A70) @ length: 0024
+	.global AnimScr_EkrIdunnDeamon2
+AnimScr_EkrIdunnDeamon2: @ 08605A70
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_9, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_10, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_11, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_12, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_13, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_14, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_15, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_Idunnfx_8, 1
+    ANIMSCR_BLOCKED

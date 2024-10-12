@@ -879,7 +879,7 @@ void StatScreenUnitSlide_End(struct StatScreenUnitSlideProc * proc)
 
 struct ProcScr CONST_DATA ProcScr_StatScreenUnitSlide[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(StatScreenUnitSlide_FadeOutInit),
     PROC_REPEAT(StatScreenUnitSlide_FadeOutLoop),
     PROC_CALL(StatScreenUnitSlide_ChangeUnit),
@@ -1167,7 +1167,7 @@ struct ProcScr CONST_DATA ProcScr_StatScreenSprites[] =
     PROC_CALL(StatScreenSprites_Init),
 
 PROC_LABEL(0),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StatScreenSprites_BumpCheck),
     PROC_CALL(StatScreenSprites_PutArrows),

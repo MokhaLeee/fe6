@@ -57,7 +57,7 @@ struct ProcScr CONST_DATA ProcScr_SquareSelectWarp[] =
     PROC_REPEAT(WarpSelect_Loop),
 
     PROC_CALL(WarpSelect_HandleConfirm),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(UnlockGame),
 
@@ -65,7 +65,7 @@ struct ProcScr CONST_DATA ProcScr_SquareSelectWarp[] =
 
 PROC_LABEL(99),
     PROC_CALL(WarpSelect_HandleCancel),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(UnlockGame),
 

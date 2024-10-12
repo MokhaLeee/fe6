@@ -188,7 +188,7 @@ struct ProcScr CONST_DATA ProcScr_SubtitleHelp[] =
     PROC_19,
 
     PROC_ONEND(SubtitleHelp_OnEnd),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(SubtitleHelp_Init),
     PROC_REPEAT(SubtitleHelp_Loop),

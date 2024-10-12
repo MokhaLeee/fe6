@@ -31,10 +31,10 @@ u16 const * CONST_DATA gMuFlashPalLut[] =
 struct ProcScr CONST_DATA ProcScr_MuStepSe[] =
 {
     PROC_CALL(MuStepSe_Init),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(MuStepSe_PlaySeA),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(MuStepSe_PlaySeB),
 

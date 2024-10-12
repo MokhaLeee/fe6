@@ -731,7 +731,7 @@ static void FadeFromWhite_OnInit(struct GenericProc * proc)
 struct ProcScr CONST_DATA ProcScr_FadeToBlack[] =
 {
     PROC_CALL(FadeToBlack_OnInit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_REPEAT(FadeToCommon_OnLoop),
     PROC_BLOCK,
@@ -740,7 +740,7 @@ struct ProcScr CONST_DATA ProcScr_FadeToBlack[] =
 struct ProcScr CONST_DATA ProcScr_FadeFromBlack[] =
 {
     PROC_CALL(FadeFromBlack_OnInit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_REPEAT(FadeFromCommon_OnLoop),
     PROC_BLOCK,
@@ -749,7 +749,7 @@ struct ProcScr CONST_DATA ProcScr_FadeFromBlack[] =
 struct ProcScr CONST_DATA ProcScr_FadeToWhite[] =
 {
     PROC_CALL(FadeToWhite_OnInit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_REPEAT(FadeToCommon_OnLoop),
     PROC_BLOCK,
@@ -758,7 +758,7 @@ struct ProcScr CONST_DATA ProcScr_FadeToWhite[] =
 struct ProcScr CONST_DATA ProcScr_FadeFromWhite[] =
 {
     PROC_CALL(FadeFromWhite_OnInit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_REPEAT(FadeFromCommon_OnLoop),
     PROC_BLOCK,
@@ -1045,7 +1045,7 @@ struct ProcScr CONST_DATA ProcScr_FadeCore[] =
     PROC_MARK(PROC_MARK_PAL_CHG),
 
     PROC_CALL(func_fe6_08014A38),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(func_fe6_08014A68),
     PROC_REPEAT(func_fe6_08014A44),
@@ -1184,7 +1184,7 @@ static void TemporaryLock_OnLoop(struct GenericProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_TemporaryLock[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_REPEAT(TemporaryLock_OnLoop),
     PROC_END,

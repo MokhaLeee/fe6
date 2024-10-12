@@ -58,13 +58,13 @@ struct ProcScr CONST_DATA ProcScr_StepPikeTrap[] =
 
     PROC_CALL(StepPikeTrap_08027318),
     PROC_CALL(StepPikeTrap_StartAnim),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StepPikeTrap_ApplyDamage),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StepTrap_End),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };
@@ -75,13 +75,13 @@ struct ProcScr CONST_DATA ProcScr_StepFireTrap[] =
 
     PROC_CALL(StepFireTrap_08027318),
     PROC_CALL(StepFireTrap_StartAnim),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StepFireTrap_ApplyDamage),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StepTrap_End),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };

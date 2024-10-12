@@ -137,7 +137,7 @@ static void TradeMenu_ClearDisplay(struct TradeMenuProc * proc);
 struct ProcScr CONST_DATA ProcScr_TradeMenu[] =
 {
     PROC_CALL(LockGame),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_WHILE_EXISTS(ProcScr_CamMove),
 
