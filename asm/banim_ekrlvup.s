@@ -4,14 +4,6 @@
 
 	.section .data
 
-	.global FaceConfig_EkrLevelup
-FaceConfig_EkrLevelup: @ 0860618C
-	.incbin "fe6-base.gba", 0x60618C, (0x6061AC - 0x60618C) @ length: 0020
-
-	.global ProcScr_EkrLevelup
-ProcScr_EkrLevelup: @ 086061AC
-	.incbin "fe6-base.gba", 0x6061AC, (0x606254 - 0x6061AC) @ length: 00A8
-
 	.global gUnk_08606254
 gUnk_08606254: @ 08606254
 	.incbin "fe6-base.gba", 0x606254, (0x60626C - 0x606254) @ length: 0018
@@ -61,8 +53,8 @@ EndEkrLevelUp: @ 0x0805D140
 	.align 2, 0
 .L0805D150: .4byte gpProcEkrLevelup
 
-	thumb_func_start func_fe6_0805D154
-func_fe6_0805D154: @ 0x0805D154
+	thumb_func_start EkrLvup_InitStatusText
+EkrLvup_InitStatusText: @ 0x0805D154
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -72,24 +64,24 @@ func_fe6_0805D154: @ 0x0805D154
 	bne .L0805D17C
 	ldr r0, .L0805D170 @ =gpEkrBattleUnitLeft
 	ldr r4, [r0]
-	ldr r0, .L0805D174 @ =gUnk_Banim_0201F0AC
+	ldr r0, .L0805D174 @ =gpEkrLvupUnit
 	adds r6, r4, #0
 	str r6, [r0]
 	ldr r0, .L0805D178 @ =gpEkrBattleUnitRight
 	b .L0805D188
 	.align 2, 0
 .L0805D170: .4byte gpEkrBattleUnitLeft
-.L0805D174: .4byte gUnk_Banim_0201F0AC
+.L0805D174: .4byte gpEkrLvupUnit
 .L0805D178: .4byte gpEkrBattleUnitRight
 .L0805D17C:
 	ldr r0, .L0805D298 @ =gpEkrBattleUnitRight
 	ldr r4, [r0]
-	ldr r0, .L0805D29C @ =gUnk_Banim_0201F0AC
+	ldr r0, .L0805D29C @ =gpEkrLvupUnit
 	adds r6, r4, #0
 	str r6, [r0]
 	ldr r0, .L0805D2A0 @ =gpEkrBattleUnitLeft
 .L0805D188:
-	ldr r1, .L0805D2A4 @ =gUnk_Banim_0201F0B0
+	ldr r1, .L0805D2A4 @ =gpEkrLvupBattleUnit
 	ldr r3, [r0]
 	str r3, [r1]
 	adds r0, r2, #0
@@ -103,13 +95,13 @@ func_fe6_0805D154: @ 0x0805D154
 	ldrsb r0, [r6, r0]
 	bl GetUnit
 	adds r6, r0, #0
-	ldr r1, .L0805D2A8 @ =gUnk_Banim_0201F0B4
+	ldr r1, .L0805D2A8 @ =gEkrLvupPreLevel
 	adds r3, r4, #0
 	adds r3, #0x6c
 	movs r0, #0
 	ldrsb r0, [r3, r0]
 	strh r0, [r1]
-	ldr r2, .L0805D2AC @ =gUnk_Banim_0201F0B8
+	ldr r2, .L0805D2AC @ =gEkrLvupBaseStatus
 	movs r0, #0x10
 	ldrsb r0, [r6, r0]
 	strh r0, [r2]
@@ -141,12 +133,12 @@ func_fe6_0805D154: @ 0x0805D154
 	asrs r1, r1, #0x18
 	adds r0, r0, r1
 	strh r0, [r2, #0xe]
-	ldr r1, .L0805D2B0 @ =gUnk_Banim_0201F0B6
+	ldr r1, .L0805D2B0 @ =gEkrLvupPostLevel
 	movs r0, #0
 	ldrsb r0, [r3, r0]
 	adds r0, #1
 	strh r0, [r1]
-	ldr r2, .L0805D2B4 @ =gUnk_Banim_0201F0C8
+	ldr r2, .L0805D2B4 @ =gEkrLvupPostStatus
 	movs r0, #0x10
 	ldrsb r0, [r6, r0]
 	adds r1, r4, #0
@@ -226,19 +218,19 @@ func_fe6_0805D154: @ 0x0805D154
 	b .L0805D342
 	.align 2, 0
 .L0805D298: .4byte gpEkrBattleUnitRight
-.L0805D29C: .4byte gUnk_Banim_0201F0AC
+.L0805D29C: .4byte gpEkrLvupUnit
 .L0805D2A0: .4byte gpEkrBattleUnitLeft
-.L0805D2A4: .4byte gUnk_Banim_0201F0B0
-.L0805D2A8: .4byte gUnk_Banim_0201F0B4
-.L0805D2AC: .4byte gUnk_Banim_0201F0B8
-.L0805D2B0: .4byte gUnk_Banim_0201F0B6
-.L0805D2B4: .4byte gUnk_Banim_0201F0C8
+.L0805D2A4: .4byte gpEkrLvupBattleUnit
+.L0805D2A8: .4byte gEkrLvupPreLevel
+.L0805D2AC: .4byte gEkrLvupBaseStatus
+.L0805D2B0: .4byte gEkrLvupPostLevel
+.L0805D2B4: .4byte gEkrLvupPostStatus
 .L0805D2B8:
-	ldr r1, .L0805D36C @ =gUnk_Banim_0201F0B4
+	ldr r1, .L0805D36C @ =gEkrLvupPreLevel
 	movs r0, #8
 	ldrsb r0, [r6, r0]
 	strh r0, [r1]
-	ldr r2, .L0805D370 @ =gUnk_Banim_0201F0B8
+	ldr r2, .L0805D370 @ =gEkrLvupBaseStatus
 	movs r0, #0x10
 	ldrsb r0, [r6, r0]
 	strh r0, [r2]
@@ -270,10 +262,10 @@ func_fe6_0805D154: @ 0x0805D154
 	asrs r1, r1, #0x18
 	adds r0, r0, r1
 	strh r0, [r2, #0xe]
-	ldr r1, .L0805D374 @ =gUnk_Banim_0201F0B6
+	ldr r1, .L0805D374 @ =gEkrLvupPostLevel
 	movs r0, #1
 	strh r0, [r1]
-	ldr r2, .L0805D378 @ =gUnk_Banim_0201F0C8
+	ldr r2, .L0805D378 @ =gEkrLvupPostStatus
 	movs r0, #0x10
 	ldrsb r0, [r3, r0]
 	strh r0, [r2]
@@ -306,7 +298,7 @@ func_fe6_0805D154: @ 0x0805D154
 .L0805D342:
 	adds r0, r0, r1
 	strh r0, [r2, #0xe]
-	ldr r0, .L0805D37C @ =gUnk_Banim_02017640
+	ldr r0, .L0805D37C @ =gBanimFont
 	ldr r1, .L0805D380 @ =0x06002400
 	movs r2, #0x90
 	lsls r2, r2, #1
@@ -321,23 +313,23 @@ func_fe6_0805D154: @ 0x0805D154
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L0805D388
-	ldr r0, .L0805D384 @ =gUnk_081C9FEC
+	ldr r0, .L0805D384 @ =EkrLvupMsgsStr
 	b .L0805D38A
 	.align 2, 0
-.L0805D36C: .4byte gUnk_Banim_0201F0B4
-.L0805D370: .4byte gUnk_Banim_0201F0B8
-.L0805D374: .4byte gUnk_Banim_0201F0B6
-.L0805D378: .4byte gUnk_Banim_0201F0C8
-.L0805D37C: .4byte gUnk_Banim_02017640
+.L0805D36C: .4byte gEkrLvupPreLevel
+.L0805D370: .4byte gEkrLvupBaseStatus
+.L0805D374: .4byte gEkrLvupPostLevel
+.L0805D378: .4byte gEkrLvupPostStatus
+.L0805D37C: .4byte gBanimFont
 .L0805D380: .4byte 0x06002400
-.L0805D384: .4byte gUnk_081C9FEC
+.L0805D384: .4byte EkrLvupMsgsStr
 .L0805D388:
-	ldr r0, .L0805D4B8 @ =gUnk_081CA014
+	ldr r0, .L0805D4B8 @ =EkrLvupMsgsMag
 .L0805D38A:
 	mov r1, r8
 	adds r5, r1, r0
 	lsls r1, r7, #3
-	ldr r0, .L0805D4BC @ =gUnk_Banim_02017658
+	ldr r0, .L0805D4BC @ =gBanimText
 	adds r4, r1, r0
 	adds r0, r4, #0
 	movs r1, #3
@@ -360,7 +352,7 @@ func_fe6_0805D154: @ 0x0805D154
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r1, .L0805D4C0 @ =gUnk_081CA03C
+	ldr r1, .L0805D4C0 @ =sEfxLvupPartsPos
 	lsls r0, r7, #1
 	adds r0, r0, r1
 	ldrh r0, [r0]
@@ -377,7 +369,7 @@ func_fe6_0805D154: @ 0x0805D154
 	movs r7, #0
 .L0805D3E6:
 	lsls r5, r7, #3
-	ldr r1, .L0805D4C8 @ =gUnk_Banim_02017698
+	ldr r1, .L0805D4C8 @ =gBanimText + 0x40
 	mov r8, r1
 	add r5, r8
 	adds r0, r5, #0
@@ -389,13 +381,13 @@ func_fe6_0805D154: @ 0x0805D154
 	adds r0, r5, #0
 	movs r1, #2
 	bl Text_SetColor
-	ldr r0, .L0805D4CC @ =gUnk_Banim_0201F0B8
+	ldr r0, .L0805D4CC @ =gEkrLvupBaseStatus
 	lsls r4, r7, #1
 	adds r0, r4, r0
 	ldrh r1, [r0]
 	adds r0, r5, #0
 	bl Text_DrawNumber
-	ldr r0, .L0805D4C0 @ =gUnk_081CA03C
+	ldr r0, .L0805D4C0 @ =sEfxLvupPartsPos
 	adds r4, r4, r0
 	ldrh r4, [r4]
 	lsls r1, r4, #1
@@ -411,7 +403,7 @@ func_fe6_0805D154: @ 0x0805D154
 	adds r0, r4, #0
 	movs r1, #8
 	bl InitText
-	ldr r0, .L0805D4D4 @ =gUnk_Banim_0201F0AC
+	ldr r0, .L0805D4D4 @ =gpEkrLvupUnit
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	ldrh r0, [r0]
@@ -449,7 +441,7 @@ func_fe6_0805D154: @ 0x0805D154
 	adds r0, r4, #0
 	movs r1, #2
 	bl Text_SetColor
-	ldr r0, .L0805D4DC @ =gUnk_Banim_0201F0B4
+	ldr r0, .L0805D4DC @ =gEkrLvupPreLevel
 	ldrh r1, [r0]
 	adds r0, r4, #0
 	bl Text_DrawNumber
@@ -464,23 +456,23 @@ func_fe6_0805D154: @ 0x0805D154
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D4B8: .4byte gUnk_081CA014
-.L0805D4BC: .4byte gUnk_Banim_02017658
-.L0805D4C0: .4byte gUnk_081CA03C
+.L0805D4B8: .4byte EkrLvupMsgsMag
+.L0805D4BC: .4byte gBanimText
+.L0805D4C0: .4byte sEfxLvupPartsPos
 .L0805D4C4: .4byte gBg2Tm
-.L0805D4C8: .4byte gUnk_Banim_02017698
-.L0805D4CC: .4byte gUnk_Banim_0201F0B8
+.L0805D4C8: .4byte gBanimText + 0x40
+.L0805D4CC: .4byte gEkrLvupBaseStatus
 .L0805D4D0: .4byte gBg2Tm+0x6
-.L0805D4D4: .4byte gUnk_Banim_0201F0AC
+.L0805D4D4: .4byte gpEkrLvupUnit
 .L0805D4D8: .4byte gUnk_081CA04C
-.L0805D4DC: .4byte gUnk_Banim_0201F0B4
+.L0805D4DC: .4byte gEkrLvupPreLevel
 
 	thumb_func_start func_fe6_0805D4E0
 func_fe6_0805D4E0: @ 0x0805D4E0
 	push {r4, r5, lr}
 	adds r4, r1, #0
 	lsls r5, r4, #3
-	ldr r0, .L0805D528 @ =gUnk_Banim_02017698
+	ldr r0, .L0805D528 @ =gBanimText + 0x40
 	adds r5, r5, r0
 	adds r0, r5, #0
 	bl ClearText
@@ -490,13 +482,13 @@ func_fe6_0805D4E0: @ 0x0805D4E0
 	adds r0, r5, #0
 	movs r1, #2
 	bl Text_SetColor
-	ldr r0, .L0805D52C @ =gUnk_Banim_0201F0B8
+	ldr r0, .L0805D52C @ =gEkrLvupBaseStatus
 	lsls r4, r4, #1
 	adds r0, r4, r0
 	ldrh r1, [r0]
 	adds r0, r5, #0
 	bl Text_DrawNumber
-	ldr r0, .L0805D530 @ =gUnk_081CA03C
+	ldr r0, .L0805D530 @ =sEfxLvupPartsPos
 	adds r4, r4, r0
 	ldrh r4, [r4]
 	lsls r1, r4, #1
@@ -508,18 +500,18 @@ func_fe6_0805D4E0: @ 0x0805D4E0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D528: .4byte gUnk_Banim_02017698
-.L0805D52C: .4byte gUnk_Banim_0201F0B8
-.L0805D530: .4byte gUnk_081CA03C
+.L0805D528: .4byte gBanimText + 0x40
+.L0805D52C: .4byte gEkrLvupBaseStatus
+.L0805D530: .4byte sEfxLvupPartsPos
 .L0805D534: .4byte gBg2Tm+0x6
 
 	thumb_func_start func_fe6_0805D538
 func_fe6_0805D538: @ 0x0805D538
 	push {r4, lr}
-	ldr r4, .L0805D564 @ =gUnk_Banim_020176D8
+	ldr r4, .L0805D564 @ =gBanimText + 0x80
 	adds r0, r4, #0
 	bl ClearText
-	ldr r0, .L0805D568 @ =gUnk_Banim_0201F0AC
+	ldr r0, .L0805D568 @ =gpEkrLvupUnit
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	ldrh r0, [r0]
@@ -534,14 +526,14 @@ func_fe6_0805D538: @ 0x0805D538
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D564: .4byte gUnk_Banim_020176D8
-.L0805D568: .4byte gUnk_Banim_0201F0AC
+.L0805D564: .4byte gBanimText + 0x80
+.L0805D568: .4byte gpEkrLvupUnit
 .L0805D56C: .4byte gBg2Tm+0x1C4
 
 	thumb_func_start func_fe6_0805D570
 func_fe6_0805D570: @ 0x0805D570
 	push {r4, lr}
-	ldr r4, .L0805D5A4 @ =gUnk_Banim_020176E8
+	ldr r4, .L0805D5A4 @ =gBanimText + 0x90
 	adds r0, r4, #0
 	bl ClearText
 	adds r0, r4, #0
@@ -550,7 +542,7 @@ func_fe6_0805D570: @ 0x0805D570
 	adds r0, r4, #0
 	movs r1, #2
 	bl Text_SetColor
-	ldr r0, .L0805D5A8 @ =gUnk_Banim_0201F0B4
+	ldr r0, .L0805D5A8 @ =gEkrLvupPreLevel
 	ldrh r1, [r0]
 	adds r0, r4, #0
 	bl Text_DrawNumber
@@ -561,8 +553,8 @@ func_fe6_0805D570: @ 0x0805D570
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805D5A4: .4byte gUnk_Banim_020176E8
-.L0805D5A8: .4byte gUnk_Banim_0201F0B4
+.L0805D5A4: .4byte gBanimText + 0x90
+.L0805D5A8: .4byte gEkrLvupPreLevel
 .L0805D5AC: .4byte gBg2Tm+0x1DA
 
 	thumb_func_start NewEkrLevelup
@@ -608,8 +600,8 @@ NewEkrLevelup: @ 0x0805D5B0
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805D604
-func_fe6_0805D604: @ 0x0805D604
+	thumb_func_start EkrLvup_Init
+EkrLvup_Init: @ 0x0805D604
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -915,8 +907,8 @@ func_fe6_0805D604: @ 0x0805D604
 .L0805D8AC: .4byte gUnk_Banim_0201F07C
 .L0805D8B0: .4byte gUnk_Banim_0201F080
 
-	thumb_func_start func_fe6_0805D8B4
-func_fe6_0805D8B4: @ 0x0805D8B4
+	thumb_func_start EkrLvup_InitLevelUpBox
+EkrLvup_InitLevelUpBox: @ 0x0805D8B4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -1041,7 +1033,7 @@ func_fe6_0805D8B4: @ 0x0805D8B4
 	add r0, sp, #8
 	bl CpuFastSet
 	adds r0, r6, #0
-	bl func_fe6_0805D154
+	bl EkrLvup_InitStatusText
 	adds r0, r6, #0
 	bl Proc_Break
 	add sp, #0xc
@@ -1360,14 +1352,14 @@ func_fe6_0805DC2C: @ 0x0805DC2C
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble .L0805DC96
-	ldr r1, .L0805DCA4 @ =gUnk_Banim_0201F0AC
-	ldr r0, .L0805DCA8 @ =gUnk_Banim_0201F0B0
+	ldr r1, .L0805DCA4 @ =gpEkrLvupUnit
+	ldr r0, .L0805DCA8 @ =gpEkrLvupBattleUnit
 	ldr r0, [r0]
 	str r0, [r1]
 	adds r0, r5, #0
 	bl func_fe6_0805D538
-	ldr r1, .L0805DCAC @ =gUnk_Banim_0201F0B4
-	ldr r0, .L0805DCB0 @ =gUnk_Banim_0201F0B6
+	ldr r1, .L0805DCAC @ =gEkrLvupPreLevel
+	ldr r0, .L0805DCB0 @ =gEkrLvupPostLevel
 	ldrh r0, [r0]
 	strh r0, [r1]
 	adds r0, r5, #0
@@ -1385,10 +1377,10 @@ func_fe6_0805DC2C: @ 0x0805DC2C
 	bx r0
 	.align 2, 0
 .L0805DCA0: .4byte gUnk_Banim_0201F0D8
-.L0805DCA4: .4byte gUnk_Banim_0201F0AC
-.L0805DCA8: .4byte gUnk_Banim_0201F0B0
-.L0805DCAC: .4byte gUnk_Banim_0201F0B4
-.L0805DCB0: .4byte gUnk_Banim_0201F0B6
+.L0805DCA4: .4byte gpEkrLvupUnit
+.L0805DCA8: .4byte gpEkrLvupBattleUnit
+.L0805DCAC: .4byte gEkrLvupPreLevel
+.L0805DCB0: .4byte gEkrLvupPostLevel
 
 	thumb_func_start func_fe6_0805DCB4
 func_fe6_0805DCB4: @ 0x0805DCB4
@@ -1447,8 +1439,8 @@ func_fe6_0805DD08: @ 0x0805DD08
 	movs r2, #0
 	movs r3, #0
 	bl StartManimLevelUpStatGainLabelAnim
-	ldr r1, .L0805DD4C @ =gUnk_Banim_0201F0B4
-	ldr r0, .L0805DD50 @ =gUnk_Banim_0201F0B6
+	ldr r1, .L0805DD4C @ =gEkrLvupPreLevel
+	ldr r0, .L0805DD50 @ =gEkrLvupPostLevel
 	ldrh r0, [r0]
 	strh r0, [r1]
 	adds r0, r5, #0
@@ -1465,8 +1457,8 @@ func_fe6_0805DD08: @ 0x0805DD08
 	bl Proc_Break
 	b .L0805DD6E
 	.align 2, 0
-.L0805DD4C: .4byte gUnk_Banim_0201F0B4
-.L0805DD50: .4byte gUnk_Banim_0201F0B6
+.L0805DD4C: .4byte gEkrLvupPreLevel
+.L0805DD50: .4byte gEkrLvupPostLevel
 .L0805DD54:
 	ldr r4, .L0805DD74 @ =gUnk_Banim_0201F07C
 	ldr r0, [r4]
@@ -1530,13 +1522,13 @@ func_fe6_0805DDA8: @ 0x0805DDA8
 	ldrh r0, [r4, #0x2e]
 	cmp r0, #8
 	beq .L0805DE78
-	ldr r6, .L0805DE4C @ =gUnk_Banim_0201F0B8
+	ldr r6, .L0805DE4C @ =gEkrLvupBaseStatus
 .L0805DDCA:
 	movs r1, #0x2e
 	ldrsh r0, [r4, r1]
 	lsls r0, r0, #1
 	adds r2, r0, r6
-	ldr r1, .L0805DE50 @ =gUnk_Banim_0201F0C8
+	ldr r1, .L0805DE50 @ =gEkrLvupPostStatus
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	ldrh r7, [r2]
@@ -1558,7 +1550,7 @@ func_fe6_0805DDA8: @ 0x0805DDA8
 	movs r1, #0x38
 	movs r2, #0
 	bl M4aPlayWithPostionCtrl
-	ldr r1, .L0805DE54 @ =gUnk_081CA03C
+	ldr r1, .L0805DE54 @ =sEfxLvupPartsPos
 	movs r7, #0x2e
 	ldrsh r2, [r4, r7]
 	lsls r0, r2, #1
@@ -1594,9 +1586,9 @@ func_fe6_0805DDA8: @ 0x0805DDA8
 	strh r7, [r4, #0x2c]
 	b .L0805DE72
 	.align 2, 0
-.L0805DE4C: .4byte gUnk_Banim_0201F0B8
-.L0805DE50: .4byte gUnk_Banim_0201F0C8
-.L0805DE54: .4byte gUnk_081CA03C
+.L0805DE4C: .4byte gEkrLvupBaseStatus
+.L0805DE50: .4byte gEkrLvupPostStatus
+.L0805DE54: .4byte sEfxLvupPartsPos
 .L0805DE58: .4byte gBanimMaxHP
 .L0805DE5C: .4byte gEkrGaugeHpBak
 .L0805DE60: .4byte 0x0000FFFF

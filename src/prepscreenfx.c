@@ -236,7 +236,7 @@ struct ProcScr CONST_DATA ProcScr_086793C8[] =
 struct ProcScr CONST_DATA ProcScr_PrepSubItemScreen[] =
 {
     PROC_19,
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(func_fe6_0807E0D4),
 PROC_LABEL(0),
     PROC_CALL(func_fe6_0807EB70),
@@ -262,19 +262,19 @@ struct ProcScr CONST_DATA ProcScr_08679490[] =
 {
     PROC_19,
     PROC_CALL(LockGame),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(func_fe6_0807E0D4),
 PROC_LABEL(4),
     PROC_CALL(func_fe6_0807FCFC),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 PROC_LABEL(5),
     PROC_REPEAT(func_fe6_0807FF98),
 PROC_LABEL(7),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_REPEAT(func_fe6_08080284),
 PROC_LABEL(6),
     PROC_CALL(func_fe6_08081540),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(UnlockGame),
     PROC_END,
 };

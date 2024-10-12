@@ -139,7 +139,7 @@ static void InitPhaseCursor_Init(ProcPtr proc);
 struct ProcScr CONST_DATA ProcScr_InitPhaseCursor[] =
 {
     PROC_CALL(InitPhaseCursor_Init),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };
@@ -191,7 +191,7 @@ static void UnitPrepSwapAnim_Cleanup(struct UnitPrepSwapAnimProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_UnitPrepSwapAnim[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(UnitPrepSwapAnim_Init),
     PROC_REPEAT(UnitPrepSwapAnim_Loop),
@@ -276,7 +276,7 @@ static void GasTrapSpriteAnim_Init(struct GenericProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_GasTrapAnim[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GasTrapSpriteAnim_Init),
     PROC_WHILE(SpriteAnimProcExists),
@@ -288,7 +288,7 @@ static void FireTrapSpriteAnim_Init(struct GenericProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_FireTrapAnim[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(FireTrapSpriteAnim_Init),
     PROC_WHILE(SpriteAnimProcExists),
@@ -300,7 +300,7 @@ static void ArrowTrapSpriteAnim_Init(struct GenericProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_ArrowTrapAnim[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(ArrowTrapSpriteAnim_Init),
     PROC_WHILE(SpriteAnimProcExists),
@@ -315,7 +315,7 @@ static void func_fe6_0801D8E4(struct ShowMapChangeProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_MapChange_085C5B50[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(func_fe6_0801D8B8),
     PROC_WHILE_EXISTS(ProcScr_CamMove),
@@ -330,7 +330,7 @@ static void PikeTrapSpriteAnim_Init(struct GenericProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_PikeTrapAnim[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(PikeTrapSpriteAnim_Init),
     PROC_WHILE(SpriteAnimProcExists),

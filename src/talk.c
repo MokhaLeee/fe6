@@ -246,7 +246,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_085C3E7C[] =
     PROC_MARK(PROC_MARK_5),
 
     PROC_CALL(func_fe6_0800B3D4),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(func_fe6_0800B3F8),
     PROC_SLEEP(1),

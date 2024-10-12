@@ -88,7 +88,7 @@ struct ProcScr CONST_DATA ProcScr_TerrainMapUi[] =
 {
     PROC_19,
     PROC_19,
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(TerrainMapUi_Init),
 
@@ -110,7 +110,7 @@ struct ProcScr CONST_DATA ProcScr_UnitMapUi[] =
 {
     PROC_19,
     PROC_19,
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(UnitMapUi_Init),
 
@@ -136,7 +136,7 @@ struct ProcScr CONST_DATA ProcScr_UnitBurstMapUi[] =
 {
     PROC_19,
     PROC_19,
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(UnitBurstMapUi_Init),
     PROC_REPEAT(UnitBurstMapUi_Loop),

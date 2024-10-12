@@ -16,7 +16,7 @@ struct ProcScr CONST_DATA ProcScr_AiPhase[] =
     PROC_19,
 
     PROC_CALL(AiPhase_Begin),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(AiPhase_Finish),
 
@@ -30,7 +30,7 @@ struct ProcScr CONST_DATA ProcScr_AiPhase_Berserk[] =
     PROC_19,
 
     PROC_CALL(AiPhase_Berserk_Begin),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(AiPhase_Finish),
 

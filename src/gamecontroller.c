@@ -44,7 +44,7 @@ PROC_LABEL(L_GAMECTRL_OPENINGSEQ),
     PROC_START_CHILD_LOCKING(ProcScr_OpeningSequence),
 
     PROC_CALL(GC_PostIntro),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_TITLE),
 
@@ -54,7 +54,7 @@ PROC_LABEL(L_GAMECTRL_CLASSDEMO),
     PROC_CALL_2(GC_StartClassDemo),
 
     PROC_CALL(GC_PostDemo),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_OPENINGSEQ),
 
@@ -62,12 +62,12 @@ PROC_LABEL(L_GAMECTRL_SCENEDEMO),
     PROC_CALL(GC_InitDemo),
 
     PROC_CALL_ARG(func_fe6_0806DB00, 0),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(CleanupGame),
 
     PROC_CALL(GC_PostDemo),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_OPENINGSEQ),
 
@@ -77,7 +77,7 @@ PROC_LABEL(L_GAMECTRL_TITLE),
     PROC_START_CHILD_LOCKING(ProcScr_TitleScreenHandler),
 
     PROC_CALL(GC_PostIntro),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_OPENINGSEQ),
 
@@ -85,10 +85,10 @@ PROC_LABEL(L_GAMECTRL_MAINMENU),
     PROC_CALL(ForceEnableSounds),
 
     PROC_CALL(StartMainMenu),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GC_PostMainMenu),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     // fallthrough?
 
@@ -98,28 +98,28 @@ PROC_LABEL(L_GAMECTRL_CHAPTER),
     PROC_START_CHILD_LOCKING(ProcScr_WorldMapIntroEvent),
 
     PROC_CALL(GC_DarkenScreen),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StartChapter),
 
     // fallthrough
 
 PROC_LABEL(L_GAMECTRL_POSTCHAPTER),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GC_PostChapter),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GC_InitNextChapter),
 
     PROC_CALL(StartSaveMenu),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_CHAPTER),
 
 PROC_LABEL(L_GAMECTRL_LOADSUSPEND),
     PROC_CALL(GC_DarkenScreen),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(ResumeChapterFromSuspend),
 
@@ -135,15 +135,15 @@ PROC_LABEL(L_GAMECTRL_TRIAL),
     // fallthrough
 
 PROC_LABEL(L_GAMECTRL_POSTTRIAL),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GC_PostChapter),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GC_ClearSuspend),
 
     PROC_CALL(func_fe6_0808FD6C),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_TITLE),
 
@@ -153,13 +153,13 @@ PROC_LABEL(L_GAMECTRL_TUTORIAL),
     PROC_START_CHILD_LOCKING(ProcScr_WorldMapIntroEvent),
 
     PROC_CALL(StartChapter),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_MAINMENU),
 
 PROC_LABEL(L_GAMECTRL_LINK),
     PROC_CALL(func_fe6_0803BA64),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_MAINMENU),
 
@@ -167,13 +167,13 @@ PROC_LABEL(L_GAMECTRL_PREENDING),
     PROC_CALL(func_fe6_08029654),
 
     PROC_CALL(StartSaveMenu),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     // fallthrough
 
 PROC_LABEL(L_GAMECTRL_ENDING),
     PROC_CALL(StartGameEndingScene),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_TITLE),
 
@@ -184,7 +184,7 @@ PROC_LABEL(L_GAMECTRL_SRAMRESET),
     PROC_REPEAT(WhileFadeExists),
 
     PROC_CALL(func_fe6_0803C080),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StartMidFadeToBlack),
     PROC_REPEAT(WhileFadeExists),

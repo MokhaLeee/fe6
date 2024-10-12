@@ -473,7 +473,7 @@ end:
 
 struct ProcScr CONST_DATA ProcScr_Unk_08677FE0[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(func_fe6_08071308),
     PROC_END,
 };
@@ -1385,7 +1385,7 @@ void func_fe6_080720E0(struct HelpBoxPrintProc2 * proc)
 
 struct ProcScr CONST_DATA ProcScr_HelpBoxPrint_086780E8[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(func_fe6_08071F50),
     PROC_REPEAT(func_fe6_08071F64),
     PROC_CALL(func_fe6_080720E0),

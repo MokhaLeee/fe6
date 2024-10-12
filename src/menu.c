@@ -19,7 +19,7 @@ struct ProcScr CONST_DATA ProcScr_MenuMain[] =
 struct ProcScr CONST_DATA ProcScr_Menu[] =
 {
     PROC_19,
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_WHILE_EXISTS(ProcScr_CamMove),
     PROC_CALL(StartGreenText),
     PROC_CALL(Menu_Draw),

@@ -1145,15 +1145,15 @@ struct ProcScr CONST_DATA ProcScr_SaveMenu[] =
     PROC_19,
 
 PROC_LABEL(L_SAVEMENU_BEGIN),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(SaveMenu_InitDisplay),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(SaveMenu_PutScreen),
     PROC_CALL(func_fe6_08088094),
     PROC_CALL(func_fe6_08089550),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(func_fe6_080881B8),
 
@@ -1208,13 +1208,13 @@ PROC_LABEL(L_SAVEMENU_10),
 
 PROC_LABEL(L_SAVEMENU_13),
     PROC_CALL(func_fe6_08089564),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(func_fe6_08089180),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(SaveMenu_InitDisplay),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(SaveMenu_PutScreen),
     PROC_CALL(func_fe6_08088094),
@@ -1229,7 +1229,7 @@ PROC_LABEL(L_SAVEMENU_15),
     PROC_CALL(func_fe6_08089564),
 
 PROC_LABEL(L_SAVEMENU_14),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(SaveMenu_Finish),
     PROC_END,

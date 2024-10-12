@@ -115,7 +115,7 @@ struct ProcScr CONST_DATA ProcScr_BmVSync[] =
     PROC_MARK(PROC_MARK_1),
     PROC_ONEND(BmVSync_End),
 
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
 PROC_LABEL(0),
     PROC_CALL(BmVSync_TsImgAnim),
@@ -133,13 +133,13 @@ struct ProcScr CONST_DATA ProcScr_MapTask[] =
     PROC_19,
     PROC_19,
     PROC_MARK(PROC_MARK_1),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
 PROC_LABEL(0),
     PROC_CALL(PutUnitSpritesOam),
     PROC_CALL(WeatherUpdate),
     PROC_CALL(UpdateRenderMap),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_GOTO(0),
 };

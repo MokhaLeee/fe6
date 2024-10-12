@@ -189,7 +189,7 @@ func_fe6_0805F27C: @ 0x0805F27C
 	ldr r0, .L0805F2E0 @ =gUnk_08115498
 	ldr r1, .L0805F2E4 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
-	ldr r0, .L0805F2E8 @ =gUnk_Banim_02017640
+	ldr r0, .L0805F2E8 @ =gBanimFont
 	ldr r1, .L0805F2EC @ =0x060020C0
 	movs r2, #0x83
 	lsls r2, r2, #1
@@ -218,7 +218,7 @@ func_fe6_0805F27C: @ 0x0805F27C
 .L0805F2DC: .4byte 0x06002000
 .L0805F2E0: .4byte gUnk_08115498
 .L0805F2E4: .4byte gEkrTsaBuffer
-.L0805F2E8: .4byte gUnk_Banim_02017640
+.L0805F2E8: .4byte gBanimFont
 .L0805F2EC: .4byte 0x060020C0
 .L0805F2F0: .4byte gUnk_08115478
 .L0805F2F4: .4byte gPal+0x20
@@ -244,7 +244,7 @@ func_fe6_0805F27C: @ 0x0805F27C
 	lsls r1, r6, #0x10
 	lsrs r1, r1, #0x10
 	bl func_fe6_0805F198
-	ldr r5, .L0805F398 @ =gUnk_Banim_02017658
+	ldr r5, .L0805F398 @ =gBanimText
 	adds r0, r5, #0
 	adds r1, r6, #0
 	bl InitText
@@ -287,7 +287,7 @@ func_fe6_0805F27C: @ 0x0805F27C
 	.align 2, 0
 .L0805F390: .4byte 0x00000C72
 .L0805F394: .4byte gBg1Tm
-.L0805F398: .4byte gUnk_Banim_02017658
+.L0805F398: .4byte gBanimText
 .L0805F39C: .4byte gUnk_08115378
 .L0805F3A0: .4byte 0x060020C0
 .L0805F3A4: .4byte 0x00000C71

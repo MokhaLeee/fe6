@@ -42,7 +42,7 @@ struct ProcScr CONST_DATA ProcScr_AiDecide[] =
 
 PROC_LABEL(0),
     PROC_CALL(AiDecide_NextUnit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(AiDecide_Suspend),
 

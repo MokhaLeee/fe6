@@ -50,7 +50,7 @@ static void AiActionCursor_Idle(struct GenericProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_AiActionCursor[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_WHILE_EXISTS(ProcScr_CamMove),
 
@@ -71,13 +71,13 @@ struct ProcScr CONST_DATA ProcScr_AiPerform[] =
     PROC_19,
 
     PROC_CALL(AiPerform_WatchUnit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(AiPerform_StartMovement),
     PROC_WHILE(MuExistsActive),
 
     PROC_CALL(AiPerform_WatchTarget),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(AiPerform_StartAction),
     PROC_REPEAT(AiPerform_WaitAction),

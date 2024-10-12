@@ -214,7 +214,7 @@ void UnitListScreenSprites_Dummy(struct UnitListScreenSpritesProc * proc);
 void func_fe6_08074BA4(struct UnitListScreenProc * proc);
 void func_fe6_08074D54(struct UnitListScreenProc * proc);
 void func_fe6_08074EF0(struct UnitListScreenProc * proc);
-void func_fe6_08075338(struct UnitListScreenProc * proc);
+void UnitList_Init(struct UnitListScreenProc * proc);
 void func_fe6_080753A0(struct UnitListScreenProc * proc);
 void func_fe6_080754F4(struct Unit * unit, int step);
 void func_fe6_08075570(struct UnitListScreenProc * proc);

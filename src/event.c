@@ -3725,14 +3725,14 @@ struct ProcScr CONST_DATA ProcScr_Popup[] =
 
     PROC_CALL(Popup_Prepare),
     PROC_CALL(Popup_FadeBgmOut),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(Popup_PlaySe),
     PROC_CALL(Popup_Display),
     PROC_REPEAT(Popup_WaitForEnd),
 
     PROC_CALL(Popup_FadeBgmIn),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };
@@ -3745,23 +3745,23 @@ struct ProcScr CONST_DATA ProcScr_PopupIconSprite[] =
 struct ProcScr CONST_DATA ProcScr_SceneReturnFromBackgroundTalk[] =
 {
     PROC_CALL(FadeFromBg_FadeToBlack),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(FadeFromBg_ClearScreen),
     PROC_SLEEP(1),
 
     PROC_CALL(FadeFromBg_FadeFromBlack),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };
 
 struct ProcScr CONST_DATA ProcScr_SceneEndFade[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(FadeFromSkip_Start),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };
@@ -3776,10 +3776,10 @@ struct ProcScr CONST_DATA ProcScr_Event[] =
 PROC_LABEL(0),
     PROC_REPEAT(Event_MainLoop),
     PROC_REPEAT(Event_WaitForFaceEnd),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(Event_ResetText),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(Event_RestartFromQueued),
 
@@ -3807,7 +3807,7 @@ PROC_LABEL(0),
 struct ProcScr CONST_DATA ProcScr_DarkenThenFunc[] =
 {
     PROC_CALL(DarkenThenFunc_OnInit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_REPEAT(DarkenThenFunc_OnLoop),
 
@@ -3971,16 +3971,16 @@ struct ProcScr CONST_DATA ProcScr_Unused_085C45B8[] =
 
 struct ProcScr CONST_DATA ProcScr_WeatherChangeFade[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(StartSlowLockingFadeToWhite),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(DoChangeWeather),
     PROC_SLEEP(30),
 
     PROC_CALL(StartSlowLockingFadeFromWhite),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };
@@ -3996,7 +3996,7 @@ static struct FaceVramEnt CONST_DATA gWmEventFaceConfig[] =
 struct ProcScr CONST_DATA ProcScr_WmEventShowFace[] =
 {
     PROC_MARK(PROC_MARK_WMSTUFF),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(WmPutFace_OnInit),
     PROC_REPEAT(WmPutFace_OnLoop),
@@ -4008,7 +4008,7 @@ struct ProcScr CONST_DATA ProcScr_WmEventHideFace[] =
 {
     PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_ONEND(WmRemoveFace_OnEnd),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(WmRemoveFace_OnInit),
     PROC_REPEAT(WmRemoveFace_OnLoop),
@@ -4019,7 +4019,7 @@ struct ProcScr CONST_DATA ProcScr_WmEventHideFace[] =
 struct ProcScr CONST_DATA ProcScr_WmEventMoveFace[] =
 {
     PROC_MARK(PROC_MARK_WMSTUFF),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(WmMoveFace_OnInit),
     PROC_REPEAT(WmMoveFace_OnLoop),
@@ -4197,13 +4197,13 @@ struct PopupInfo CONST_DATA Popup_085C4914[] =
 
 struct ProcScr CONST_DATA ProcScr_GiveItem[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GiveItem_DoPopup),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_CALL(GiveItem_DoGiveItem),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 
     PROC_END,
 };

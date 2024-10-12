@@ -267,7 +267,7 @@ void func_fe6_0807979C(struct UnkProc_08678E00 * proc)
 
 struct ProcScr CONST_DATA ProcScr_Unk_08678E00[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_REPEAT(func_fe6_0807979C),
     PROC_END,
 };
@@ -486,7 +486,7 @@ void func_fe6_08079C38(struct UnkProc_08678E18 * proc)
 
 struct ProcScr CONST_DATA ProcScr_Unk_08678E18[] =
 {
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(func_fe6_08079BC8),
     PROC_REPEAT(func_fe6_08079C38),
     PROC_END,
@@ -1849,10 +1849,10 @@ struct ProcScr CONST_DATA ProcScr_AtMenu[] =
     PROC_REPEAT(WhileFadeExists),
     PROC_CALL(LockBmDisplay),
     PROC_CALL(PrepMenu_EndIfNoUnit),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(PrepMenu_Init),
     PROC_CALL(StartPrepMenuFadeOut),
-    PROC_SLEEP(0),
+    PROC_YIELD,
 PROC_LABEL(1),
     PROC_REPEAT(PrepMenu_Loop),
     PROC_GOTO(5),
@@ -1879,11 +1879,11 @@ PROC_LABEL(10),
     PROC_GOTO(1),
 PROC_LABEL(13),
     PROC_CALL(StartPrepMenuFadeIn),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_GOTO(3),
 PROC_LABEL(12),
     PROC_CALL(StartPrepMenuFadeOut),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_GOTO(1),
 PROC_LABEL(14),
     PROC_CALL(func_fe6_0807B0DC),
@@ -1896,7 +1896,7 @@ PROC_LABEL(6),
     PROC_SLEEP(1),
 PROC_LABEL(11),
     PROC_CALL(func_fe6_0807B0E4),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(EndAllMus),
     PROC_CALL(UnlockBmDisplay),
     PROC_CALL(UnlockGame),

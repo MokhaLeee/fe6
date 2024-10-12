@@ -53,7 +53,7 @@ struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[] = {
 struct ProcScr CONST_DATA ProcScr_WorldMap[] = {
     PROC_MARK(8),
     PROC_CALL(LockBmDisplay),
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(func_fe6_080922D8),
     PROC_START_CHILD_LOCKING(ProcScr_0868C688),
     PROC_REPEAT(func_fe6_080923C4),
