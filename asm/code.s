@@ -3827,7 +3827,7 @@ func_fe6_0808EDE0: @ 0x0808EDE0
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0808F024 @ =gUnk_0833C03C
+	ldr r0, .L0808F024 @ =Pal_0833C03C
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -3909,7 +3909,7 @@ func_fe6_0808EDE0: @ 0x0808EDE0
 .L0808F018: .4byte 0x0000E0FF
 .L0808F01C: .4byte gUnk_0834138C
 .L0808F020: .4byte gUnk_08341DA0
-.L0808F024: .4byte gUnk_0833C03C
+.L0808F024: .4byte Pal_0833C03C
 .L0808F028: .4byte gUnk_08342A98
 .L0808F02C: .4byte Img_Unk_083092CC
 .L0808F030: .4byte 0x06011000
@@ -5348,7 +5348,7 @@ func_fe6_0808FA14: @ 0x0808FA14
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0808FCC8 @ =gUnk_0833C03C
+	ldr r0, .L0808FCC8 @ =Pal_0833C03C
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -5497,7 +5497,7 @@ func_fe6_0808FA14: @ 0x0808FA14
 .L0808FCBC: .4byte 0x0000E0FF
 .L0808FCC0: .4byte gUnk_0834138C
 .L0808FCC4: .4byte gUnk_08341DA0
-.L0808FCC8: .4byte gUnk_0833C03C
+.L0808FCC8: .4byte Pal_0833C03C
 .L0808FCCC: .4byte gUnk_08343358
 .L0808FCD0: .4byte gUnk_08342A98
 .L0808FCD4: .4byte Img_Unk_083092CC

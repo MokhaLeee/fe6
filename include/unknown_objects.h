@@ -154,7 +154,7 @@ extern struct ProcScr CONST_DATA ProcScr_OpeningSequence[];
 extern struct ProcScr CONST_DATA ProcScr_TitleScreenHandler[];
 extern struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_0868B010[];
-extern struct ProcScr CONST_DATA ProcScr_UiConfig[];
+extern struct ProcScr CONST_DATA ProcScr_Config[];
 extern u16 CONST_DATA Pal_ManimFireDragonMu[];
 extern u16 CONST_DATA Pal_ManimDivineDragonMu[];
 
@@ -647,6 +647,13 @@ extern u8 const Tsa_UnitBurstMapUi_Frame3[];
 extern u8 const Tsa_UnitBurstMapUi_Frame4[];
 extern u8 const Tsa_UnitBurstMapUi_Frame5[];
 
+extern u8 const Img_0833B958[];
+extern u8 const Img_0833BB14[];
+extern u8 const Img_0833BB28[];
+extern u8 const Tsa_0833BE84[];
+extern u8 const Tsa_0833BF08[];
+extern u16 const Pal_0833C03C[];
+
 extern u16 const Pal_Unk_0833C944[];
 extern u8 const Img_Unk_083092CC[];
 extern u8 const Img_Unk_0833C378[];
@@ -674,14 +681,9 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? ProcScr_0868AA08
 // extern CONST_DATA ??? ProcScr_0868AA80
 // extern CONST_DATA ??? ProcScr_0868AAA8
-// extern CONST_DATA ??? gpUiConfigSt
-// extern CONST_DATA ??? gUnk_0868AAE4
-// extern CONST_DATA ??? gUnk_0868AAFC
-// extern CONST_DATA ??? gUnk_0868AB22
-// extern CONST_DATA ??? gUnk_0868AB3C
-// extern CONST_DATA ??? ProcScr_RedrawConfigHelpText
-// extern CONST_DATA ??? ProcScr_DrawConfigUiSprites
-// extern CONST_DATA ??? ProcScr_UiConfig
+
+/* config.h */
+
 // extern CONST_DATA ??? gUnk_0868AEB4
 // extern CONST_DATA ??? gUnk_0868AF58
 // extern CONST_DATA ??? gUnk_0868AF74

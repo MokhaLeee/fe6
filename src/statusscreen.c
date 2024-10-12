@@ -19,6 +19,7 @@
 #include "ui.h"
 #include "statscreen.h"
 #include "helpbox.h"
+#include "config.h"
 #include "save_core.h"
 #include "save_stats.h"
 #include "save_xmap.h"

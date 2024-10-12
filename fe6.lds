@@ -604,7 +604,7 @@ SECTIONS
         src/savemenu.o(.text);
         src/savemenu_2.o(.text);
         asm/savemenufx.o(.text);
-        asm/config.o(.text);
+        src/config.o(.text);
         asm/code.o(.text);
         src/worldmap.o(.text);
         asm/worldmap.o(.text);
@@ -832,6 +832,7 @@ SECTIONS
         . = ALIGN(4); src/savemenu.o(.data);
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/savemenufx.o(.data);
+        . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); data/worldmap.o(.data);
