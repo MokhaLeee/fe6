@@ -2073,8 +2073,8 @@ extern CONST_DATA struct ProcScr ProcScr_EkrDragonIdunn[];
 // ??? gUnk_08604968
 // ??? gUnk_08604988
 // ??? gUnk_086049A8
-extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon[];
-// ??? gUnk_086049E8
+extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon1[];
+// ??? ProcScr_EkrIdunnDeamon2
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnBodyFlashing[];
 // ??? gUnk_08604A18
 // ??? gUnk_08604A3C
@@ -2087,8 +2087,8 @@ extern AnimScr AnimScr_ManaketeEnter2[];
 extern AnimScr AnimScr_ManaketeExit2[];
 extern AnimScr AnimScr_ManaketeEnter3[];
 extern AnimScr AnimScr_ManaketeExit1[];
-// ??? AnimScr_EkrIdunnDeamon
-// ??? gUnk_08605A70
+// ??? AnimScr_EkrIdunnDeamon1
+// ??? AnimScr_EkrIdunnDeamon2
 extern i16 gUnk_08605A94[];
 // ??? gEfxTmyPalRefs
 extern CONST_DATA struct ProcScr ProcScr_EkrSubAnimeEmulator[];
