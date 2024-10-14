@@ -109,20 +109,20 @@ void func_fe6_080922D8(struct ProcWorldMap * proc)
 
 void func_fe6_080923C4(struct ProcWorldMap * proc) {}
 
-struct ProcScr CONST_DATA ProcScr_0868C37C[] = {
+struct ProcScr CONST_DATA ProcScr_WmArrow[] = {
     PROC_MARK(8),
-    PROC_ONEND(func_fe6_08092450),
+    PROC_ONEND(WmArrow_End),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08092458),
-    PROC_REPEAT(func_fe6_0809268C),
+    PROC_CALL(WmArrow_Init),
+    PROC_REPEAT(WmArrow_Loop),
     PROC_END,
 };
 
-void NewProc_0868C37C(int a, int b, int c, int d, int e, int f)
+void StartWmArrow(int id, int color, int c, int d, int e, int f)
 {
-    struct Proc_0868C37C * proc;
+    struct ProcWmArrow * proc;
 
-    proc = SpawnProc(ProcScr_0868C37C, PROC_TREE_3);
+    proc = SpawnProc(ProcScr_WmArrow, PROC_TREE_3);
     proc->unk58 = GetUnkStruct_030048E0();
 
     if (proc->unk58 == NULL)
@@ -132,45 +132,45 @@ void NewProc_0868C37C(int a, int b, int c, int d, int e, int f)
     }
 
     proc->unk58->unk_00 = 1;
-    proc->unk58->unk_01 = a;
-    proc->unk58->unk_05 = b;
+    proc->unk58->id = id;
+    proc->unk58->color = color;
     proc->unk58->unk_D4 = c;
     proc->unk58->unk_D8 = d;
     proc->unk58->unk_0C = e;
     proc->unk58->unk_08 = f;
 }
 
-void EndProc_0868C37C(void)
+void EndWmArrow(void)
 {
-    Proc_EndEach(ProcScr_0868C37C);
+    Proc_EndEach(ProcScr_WmArrow);
 }
 
-bool ProcExists_0868C37C(void)
+bool WmArrowExists(void)
 {
-    if (FindProc(ProcScr_0868C37C) != NULL)
+    if (FindProc(ProcScr_WmArrow) != NULL)
         return true;
 
     return false;
 }
 
-void func_fe6_08092450(struct Proc_0868C37C * proc)
+void WmArrow_End(struct ProcWmArrow * proc)
 {
     proc->unk58->unk_00 = 0;
 }
 
-void func_fe6_08092458(struct Proc_0868C37C * proc)
+void WmArrow_Init(struct ProcWmArrow * proc)
 {
     int i;
     struct Struct_030048E0 * conf = proc->unk58;
-    int unk = func_fe6_08093284(func_fe6_0809325C(conf->unk_01));
+    int unk = func_fe6_08093284(func_fe6_0809325C(conf->id));
 
     conf->unk_04 = unk;
     conf->unk_14[0] = 0;
 
     for (i = 0; i < conf->unk_04; i++)
     {
-        conf->unk_74[i] = (func_fe6_08093288(func_fe6_0809325C(conf->unk_01), i) + conf->unk_D4) * 0x100;
-        conf->unk_A4[i] = (func_fe6_080932D8(func_fe6_0809325C(conf->unk_01), i) + conf->unk_D8) * 0x100;
+        conf->unk_74[i] = (func_fe6_08093288(func_fe6_0809325C(conf->id), i) + conf->unk_D4) * 0x100;
+        conf->unk_A4[i] = (func_fe6_080932D8(func_fe6_0809325C(conf->id), i) + conf->unk_D8) * 0x100;
     }
 
     for (i = 1; i < conf->unk_04; i++)

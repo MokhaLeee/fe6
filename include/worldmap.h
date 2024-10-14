@@ -20,9 +20,9 @@ struct ProcWorldMap {
 };
 
 struct Struct_030048E0 {
-    u8 unk_00, unk_01, unk_02, unk_03;
+    u8 unk_00, id, unk_02, unk_03;
     /* 04 */ u8 unk_04;
-    /* 05 */ u8 unk_05;
+    /* 05 */ u8 color;
 
     /* 08 */ int unk_08;
     /* 0C */ int unk_0C;
@@ -71,7 +71,7 @@ void StartWorldMap(void);
 void func_fe6_080922D8(struct ProcWorldMap * proc);
 void func_fe6_080923C4(struct ProcWorldMap * proc);
 
-struct Proc_0868C37C {
+struct ProcWmArrow {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x58);
@@ -79,13 +79,13 @@ struct Proc_0868C37C {
     /* 58 */ struct Struct_030048E0 * unk58;
 };
 
-// NewProc_0868C37C
-// EndProc_0868C37C
-// ProcExists_0868C37C
-void func_fe6_08092450(struct Proc_0868C37C * proc);
-void func_fe6_08092458(struct Proc_0868C37C * proc);
+// StartWmArrow
+// EndWmArrow
+// WmArrowExists
+void WmArrow_End(struct ProcWmArrow * proc);
+void WmArrow_Init(struct ProcWmArrow * proc);
 void func_fe6_080925C4(struct Struct_030048E0 * conf, int idx);
-void func_fe6_0809268C(struct Proc_0868C37C * proc);
+void WmArrow_Loop(struct ProcWmArrow * proc);
 void func_fe6_08092838(void);
 struct Struct_030048E0 * GetUnkStruct_030048E0(void);
 
@@ -141,7 +141,7 @@ i8 func_fe6_08093444(void);
 // func_fe6_0809345C
 void func_fe6_0809347C(int x, int y);
 void func_fe6_080934A0(void);
-void func_fe6_080934BC(int x, int y);
+void DisplayWmArrow(int id, int color);
 void func_fe6_08093518(void);
 void StartWMIntroRotation(ProcPtr parent);
 // func_fe6_08093584
@@ -149,16 +149,25 @@ void StartWMIntroRotation(ProcPtr parent);
 // func_fe6_08093608
 // func_fe6_080936E8
 // func_fe6_08093764
+
+struct WMHighlightConfig {
+    const void * img;
+    const u16 * sprite;
+    i16 x, y;
+};
+
+extern CONST_DATA struct WMHighlightConfig Config_WMHighlight[];
+
 void StartWMHighlight(int arg_0, int id);
-// func_fe6_080937D4
-// func_fe6_080938BC
-// func_fe6_08093960
-// func_fe6_0809397C
-// func_fe6_08093990
-void func_fe6_080939A8(int id);
+// WMHighlight_Init
+// WMHighlight_Loop
+// WMHighlight_End
+// RemoveWMHighlight
+// RemoveAllWMHighlight
+void WMHighlightFadeOut(int id);
 i8 WMHighlightExists(int id);
-i8 func_fe6_080939D0(void);
-void func_fe6_080939F0(int palid, int x, int y, int id);
+i8 WMHighlightAllSideExists(void);
+void WmPutDot(int palid, int x, int y, int id);
 void EndWMDot(int id);
 void StartWMFlag(int palid, int x, int y, int id);
 void EndWMFlag(int id);
@@ -195,7 +204,7 @@ extern u16 CONST_DATA Sprite_0868C2D4[];
 extern CONST_DATA u8 * Pals_0868C2DC[10];
 extern CONST_DATA struct ProcScr ProcScr_WorldMapIntroEvent[];
 extern CONST_DATA struct ProcScr ProcScr_WorldMap[];
-// extern CONST_DATA ??? ProcScr_0868C37C
+// extern CONST_DATA ??? ProcScr_WmArrow
 // extern CONST_DATA ??? ProcScr_0868C3AC
 // extern CONST_DATA ??? ProcScr_0868C3C4
 // extern CONST_DATA ??? ProcScr_0868C3EC
@@ -204,8 +213,7 @@ extern CONST_DATA struct ProcScr ProcScr_WorldMap[];
 // extern CONST_DATA ??? ProcScr_0868C658
 // extern CONST_DATA ??? ProcScr_0868C668
 extern CONST_DATA struct ProcScr ProcScr_0868C688[];
-// extern CONST_DATA ??? gUnk_0868C6B0
-// extern CONST_DATA ??? gUnk_0868C704
+extern CONST_DATA struct ProcScr ProcScr_WroldMapRmBorder[];
 // extern CONST_DATA ??? gUnk_0868C734
 // extern CONST_DATA ??? gUnk_0868C8D8
 // extern CONST_DATA ??? gUnk_0868C940

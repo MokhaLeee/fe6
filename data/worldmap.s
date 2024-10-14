@@ -20,12 +20,12 @@ ProcScr_0868C668: @ 0868C668
 ProcScr_0868C688:
     .incbin "fe6-base.gba", 0x68C688, (0x68C6B0 - 0x68C688)
 
-	.global gUnk_0868C6B0
-gUnk_0868C6B0: @ 0868C6B0
+	.global Config_WMHighlight
+Config_WMHighlight: @ 0868C6B0
 	.incbin "fe6-base.gba", 0x68C6B0, (0x68C704 - 0x68C6B0) @ length: 0054
 
-	.global gUnk_0868C704
-gUnk_0868C704: @ 0868C704
+	.global ProcScr_WroldMapRmBorder
+ProcScr_WroldMapRmBorder: @ 0868C704
 	.incbin "fe6-base.gba", 0x68C704, (0x68C734 - 0x68C704) @ length: 0030
 
 	.global gUnk_0868C734

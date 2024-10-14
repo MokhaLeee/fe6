@@ -3191,13 +3191,13 @@ static int EvtCmd_WmTalkBoxRemove(struct EventProc * proc)
 
 static int EvtCmd_WmArrow(struct EventProc * proc)
 {
-    int x = EVTCMD_GET_X(proc->script[0]);
-    int y = EVTCMD_GET_Y(proc->script[0]);
+    int id = EVTCMD_GET_X(proc->script[0]);
+    int color = EVTCMD_GET_Y(proc->script[0]);
 
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_080934BC(x, y);
+    DisplayWmArrow(id, color);
 
     return EVENT_CMDRET_CONTINUE;
 }
@@ -3224,7 +3224,7 @@ static int EvtCmd_WmRemoveHighlight(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_080939A8(id);
+    WMHighlightFadeOut(id);
     proc->cmd_byte = id;
 
     proc->on_idle = EventWmRemoveHighlightWait;
@@ -3247,8 +3247,8 @@ static int EvtCmd_WmRemoveBothHighlights(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_080939A8(0);
-    func_fe6_080939A8(1);
+    WMHighlightFadeOut(0);
+    WMHighlightFadeOut(1);
 
     proc->on_idle = EventWmRemoveHighlightsWait;
 
@@ -3257,7 +3257,7 @@ static int EvtCmd_WmRemoveBothHighlights(struct EventProc * proc)
 
 static void EventWmRemoveHighlightsWait(struct EventProc * proc)
 {
-    if (func_fe6_080939D0())
+    if (WMHighlightAllSideExists())
         return;
 
     proc->on_idle = NULL;
@@ -3275,7 +3275,7 @@ static int EvtCmd_WmPutDot(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_080939F0(x, y, palid, id);
+    WmPutDot(x, y, palid, id);
 
     return EVENT_CMDRET_CONTINUE;
 }
