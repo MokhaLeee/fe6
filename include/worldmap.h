@@ -11,7 +11,7 @@ struct ProcWorldMap {
     /* 34 */ int unk34;
     /* 38 */ int unk38;
 
-    STRUCT_PAD(0x3C, 0x44);
+    /* 3C */ int camera_x, camera_y;
 
     /* 44 */ int unk44;
     /* 48 */ i16 unk48, unk4A;
@@ -66,9 +66,9 @@ struct ProcWmArrow {
     /* 58 */ struct WmArrowSt * conf;
 };
 
-// StartWmArrow
-// EndWmArrow
-// WmArrowExists
+void StartWmArrow(int id, int color, int c, int d, int e, int f);
+void EndWmArrow(void);
+bool WmArrowExists(void);
 void WmArrow_End(struct ProcWmArrow * proc);
 void WmArrow_Init(struct ProcWmArrow * proc);
 void PutWmArrowSpriteExt(struct WmArrowSt * conf, int idx);
@@ -78,25 +78,41 @@ struct WmArrowSt * GetFreeWmArrowSt(void);
 
 struct Proc_0868C3AC {
     PROC_HEADER;
+
+    /* 2C */ int duration;
+
+    STRUCT_PAD(0x30, 0x66);
+
+    /* 66 */ i16 timer;
 };
 
-// func_fe6_0809287C
+void func_fe6_0809287C(int duration);
 void func_fe6_0809289C(struct Proc_0868C3AC * proc);
-// func_fe6_080928C0
+bool func_fe6_080928C0(void);
 
 struct Proc_0868C3C4 {
     PROC_HEADER;
+
+    /* 2C */ int ix, iy;
+
+    STRUCT_PAD(0x34, 0x4C);
+
+    /* 4C */ struct ProcWorldMap * wmproc;
+
+    STRUCT_PAD(0x50, 0x66);
+
+    /* 66 */ i16 unk_66, unk_68;
 };
 
 void func_fe6_080928DC(int x, int y, ProcPtr parent);
 void func_fe6_0809290C(struct Proc_0868C3C4 * proc);
 void func_fe6_0809291C(struct Proc_0868C3C4 * proc);
+void func_fe6_08092A9C(int x, int y);
 
 struct Proc_0868C3EC {
     PROC_HEADER;
 };
 
-// func_fe6_08092A9C
 void func_fe6_08092CD8(ProcPtr parent);
 void func_fe6_08092CFC(struct Proc_0868C3C4 * proc);
 void func_fe6_08092D0C(struct Proc_0868C3C4 * proc);

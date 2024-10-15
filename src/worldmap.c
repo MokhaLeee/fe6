@@ -338,6 +338,31 @@ struct ProcScr CONST_DATA ProcScr_0868C3AC[] = {
     PROC_END,
 };
 
+void func_fe6_0809287C(int duration)
+{
+    struct Proc_0868C3AC * proc;
+
+    proc = SpawnProc(ProcScr_0868C3AC, PROC_TREE_3);
+    proc->duration = duration;
+    proc->timer = 0;
+}
+
+void func_fe6_0809289C(struct Proc_0868C3AC * proc)
+{
+    proc->timer++;
+
+    if (proc->timer == proc->duration)
+        Proc_Break(proc);
+}
+
+bool func_fe6_080928C0(void)
+{
+    if (FindProc(ProcScr_0868C3AC) != NULL)
+        return true;
+
+    return false;
+}
+
 struct ProcScr CONST_DATA ProcScr_0868C3C4[] = {
     PROC_MARK(8),
     PROC_SLEEP(1),
@@ -345,6 +370,102 @@ struct ProcScr CONST_DATA ProcScr_0868C3C4[] = {
     PROC_REPEAT(func_fe6_0809291C),
     PROC_END,
 };
+
+void func_fe6_080928DC(int x, int y, ProcPtr parent)
+{
+    struct Proc_0868C3C4 * proc;
+
+    proc = SpawnProc(ProcScr_0868C3C4, parent);
+
+    proc->wmproc = FindProc(ProcScr_WorldMap);
+
+    proc->ix = x * 0x100;
+    proc->iy = y * 0x100;
+}
+
+void func_fe6_0809290C(struct Proc_0868C3C4 * proc)
+{
+    proc->unk_66 = 0;
+    proc->unk_68 = 0;
+}
+
+void func_fe6_0809291C(struct Proc_0868C3C4 * proc)
+{
+    int ret;
+    struct ProcWorldMap * wmproc = proc->wmproc;
+
+    wmproc->camera_x = proc->ix;
+    wmproc->camera_y = proc->iy;
+
+    switch (proc->unk_66) {
+    case 0:
+        func_fe6_08092A9C(wmproc->camera_x, wmproc->camera_y);
+        proc->unk_66++;
+        proc->unk_68 = 0;
+        break;
+
+    case 1:
+        ret = Interpolate(INTERPOLATE_RCUBIC, 0x100, 0x200, proc->unk_68, 0x20);
+
+        wmproc->unk4A = ret;
+        wmproc->unk48 = ret;
+
+        wmproc->unk34 = wmproc->camera_x + 0xFFFF8800;
+        wmproc->unk38 = wmproc->camera_y + 0xFFFFB000;
+
+        proc->unk_68++;
+        if (proc->unk_68 == 0x21)
+        {
+            proc->unk_66++;
+            proc->unk_68 = 0;
+        }
+        break;
+
+    case 2:
+        if (1 & proc->unk_68)
+        {
+            ApplyCompressedWmPalette(1, 1);
+
+            wmproc->unk2C = 0;
+            wmproc->unk30 = 0;
+
+            wmproc->unk34 = 0x7800;
+            wmproc->unk38 = 0x5000;
+
+            wmproc->unk44 = 0;
+
+            wmproc->unk48 = 0x100;
+            wmproc->unk4A = 0x100;
+
+            gDispIo.disp_ct.bitmap_frame = true;
+        }
+        else
+        {
+            ApplyCompressedWmPalette(0, 1);
+
+            wmproc->unk2C = 0;
+            wmproc->unk30 = 0;
+
+            wmproc->unk34 = wmproc->camera_x + 0xFFFF8800;
+            wmproc->unk38 = wmproc->camera_y + 0xFFFFB000;
+
+            wmproc->unk44 = 0;
+
+            wmproc->unk48 = 0x200;
+            wmproc->unk4A = 0x200;
+
+            gDispIo.disp_ct.bitmap_frame = false;
+        }
+
+        proc->unk_68++;
+        if (proc->unk_68 == 8)
+            Proc_Break(proc);
+
+        break;
+    }
+
+    func_fe6_08092EB0(wmproc->unk2C, wmproc->unk30, wmproc->unk34, wmproc->unk38, wmproc->unk44, wmproc->unk48, wmproc->unk4A);
+}
 
 struct ProcScr CONST_DATA ProcScr_0868C3EC[] = {
     PROC_MARK(8),
