@@ -19,8 +19,11 @@ struct ProcWorldMap {
     /* 52 */ u8 unk52, unk53, unk54;
 };
 
-struct Struct_030048E0 {
-    u8 unk_00, id, unk_02, unk_03;
+struct WmArrowSt {
+    /* 00 */ u8 busy;
+    /* 01 */ u8 eid;    /* user defined */;
+    /* 02 */ u8 affin;  /* gWmArrowSt index */
+    /* 03 */ u8 unk_03;
     /* 04 */ u8 unk_04;
     /* 05 */ u8 color;
 
@@ -33,36 +36,20 @@ struct Struct_030048E0 {
     /* A4 */ int unk_A4[12];
     /* D4 */ int unk_D4;
     /* D8 */ int unk_D8;
-    /* DC */ u8 unk_DC[12];
 
-    STRUCT_PAD(0xE8, 0xF0);
+    /* DC */ u8 unk_DC[20];
+    /* DC */ u8 unk_F0[20];
 
-    /* DC */ u8 unk_F0[12];
-
-    STRUCT_PAD(0xFC, 0x104);
-
-    /* 104 */ int unk_104[12];
-
-    STRUCT_PAD(0x134, 0x154);
-
-    /* 154 */ int unk_154[12];
-
-    STRUCT_PAD(0x184, 0x244);
-
-    /* 244 */ int unk_244[12];
-
-    STRUCT_PAD(0x274, 0x294);
-
-    /* 294 */ int unk_294[12];
-
-    STRUCT_PAD(0x2C4, 0x2E4);
-
-    /* 2E4 */ int unk_2E4[12];
-
-    STRUCT_PAD(0x314, 0x334);
+    /* 104 */ int x_array[20];
+    /* 154 */ int y_array[20];
+    /* 1A4 */ int unk_1A4[20];
+    /* 1F4 */ int unk_1F4[20];
+    /* 244 */ int unk_244[20];
+    /* 294 */ int unk_294[20];
+    /* 2E4 */ int unk_2E4[20];
 };
 
-extern struct Struct_030048E0 gUnk_030048E0[2];
+extern struct WmArrowSt gWmArrowSt[2];
 
 // GetCompressedWmPalette
 // ApplyCompressedWmPalette
@@ -76,7 +63,7 @@ struct ProcWmArrow {
 
     STRUCT_PAD(0x29, 0x58);
 
-    /* 58 */ struct Struct_030048E0 * unk58;
+    /* 58 */ struct WmArrowSt * conf;
 };
 
 // StartWmArrow
@@ -84,10 +71,10 @@ struct ProcWmArrow {
 // WmArrowExists
 void WmArrow_End(struct ProcWmArrow * proc);
 void WmArrow_Init(struct ProcWmArrow * proc);
-void func_fe6_080925C4(struct Struct_030048E0 * conf, int idx);
+void PutWmArrowSpriteExt(struct WmArrowSt * conf, int idx);
 void WmArrow_Loop(struct ProcWmArrow * proc);
 void func_fe6_08092838(void);
-struct Struct_030048E0 * GetUnkStruct_030048E0(void);
+struct WmArrowSt * GetFreeWmArrowSt(void);
 
 struct Proc_0868C3AC {
     PROC_HEADER;
@@ -117,7 +104,7 @@ void func_fe6_08092D0C(struct Proc_0868C3C4 * proc);
 bool func_fe6_08092E68(void);
 void func_fe6_08092E94(void);
 void func_fe6_08092EB0(int a, int b, int c, int d, int e, int f, int g);
-void func_fe6_08093064(int a, int b, int c);
+void func_fe6_08093064(int a, int b, int c, int d);
 void StartWorldMapIntroScen(void);
 // func_fe6_08093114
 // func_fe6_08093120
@@ -221,3 +208,5 @@ extern CONST_DATA struct ProcScr ProcScr_WroldMapRmBorder[];
 // extern CONST_DATA ??? gUnk_0868C988
 // extern CONST_DATA ??? gUnk_0868FDB4
 // extern CONST_DATA ??? gUnk_0868FE0C
+
+extern const int gUnk_08353328[];
