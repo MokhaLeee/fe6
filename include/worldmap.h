@@ -11,7 +11,7 @@ struct ProcWorldMap {
     /* 34 */ int unk34;
     /* 38 */ int unk38;
 
-    STRUCT_PAD(0x3C, 0x44);
+    /* 3C */ int camera_x, camera_y;
 
     /* 44 */ int unk44;
     /* 48 */ i16 unk48, unk4A;
@@ -19,10 +19,13 @@ struct ProcWorldMap {
     /* 52 */ u8 unk52, unk53, unk54;
 };
 
-struct Struct_030048E0 {
-    u8 unk_00, unk_01, unk_02, unk_03;
+struct WmArrowSt {
+    /* 00 */ u8 busy;
+    /* 01 */ u8 eid;    /* user defined */;
+    /* 02 */ u8 affin;  /* gWmArrowSt index */
+    /* 03 */ u8 unk_03;
     /* 04 */ u8 unk_04;
-    /* 05 */ u8 unk_05;
+    /* 05 */ u8 color;
 
     /* 08 */ int unk_08;
     /* 0C */ int unk_0C;
@@ -33,36 +36,20 @@ struct Struct_030048E0 {
     /* A4 */ int unk_A4[12];
     /* D4 */ int unk_D4;
     /* D8 */ int unk_D8;
-    /* DC */ u8 unk_DC[12];
 
-    STRUCT_PAD(0xE8, 0xF0);
+    /* DC */ u8 unk_DC[20];
+    /* DC */ u8 unk_F0[20];
 
-    /* DC */ u8 unk_F0[12];
-
-    STRUCT_PAD(0xFC, 0x104);
-
-    /* 104 */ int unk_104[12];
-
-    STRUCT_PAD(0x134, 0x154);
-
-    /* 154 */ int unk_154[12];
-
-    STRUCT_PAD(0x184, 0x244);
-
-    /* 244 */ int unk_244[12];
-
-    STRUCT_PAD(0x274, 0x294);
-
-    /* 294 */ int unk_294[12];
-
-    STRUCT_PAD(0x2C4, 0x2E4);
-
-    /* 2E4 */ int unk_2E4[12];
-
-    STRUCT_PAD(0x314, 0x334);
+    /* 104 */ int x_array[20];
+    /* 154 */ int y_array[20];
+    /* 1A4 */ int unk_1A4[20];
+    /* 1F4 */ int unk_1F4[20];
+    /* 244 */ int unk_244[20];
+    /* 294 */ int unk_294[20];
+    /* 2E4 */ int unk_2E4[20];
 };
 
-extern struct Struct_030048E0 gUnk_030048E0[2];
+extern struct WmArrowSt gWmArrowSt[2];
 
 // GetCompressedWmPalette
 // ApplyCompressedWmPalette
@@ -71,45 +58,61 @@ void StartWorldMap(void);
 void func_fe6_080922D8(struct ProcWorldMap * proc);
 void func_fe6_080923C4(struct ProcWorldMap * proc);
 
-struct Proc_0868C37C {
+struct ProcWmArrow {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x58);
 
-    /* 58 */ struct Struct_030048E0 * unk58;
+    /* 58 */ struct WmArrowSt * conf;
 };
 
-// NewProc_0868C37C
-// EndProc_0868C37C
-// ProcExists_0868C37C
-void func_fe6_08092450(struct Proc_0868C37C * proc);
-void func_fe6_08092458(struct Proc_0868C37C * proc);
-void func_fe6_080925C4(struct Struct_030048E0 * conf, int idx);
-void func_fe6_0809268C(struct Proc_0868C37C * proc);
+void StartWmArrow(int id, int color, int c, int d, int e, int f);
+void EndWmArrow(void);
+bool WmArrowExists(void);
+void WmArrow_End(struct ProcWmArrow * proc);
+void WmArrow_Init(struct ProcWmArrow * proc);
+void PutWmArrowSpriteExt(struct WmArrowSt * conf, int idx);
+void WmArrow_Loop(struct ProcWmArrow * proc);
 void func_fe6_08092838(void);
-struct Struct_030048E0 * GetUnkStruct_030048E0(void);
+struct WmArrowSt * GetFreeWmArrowSt(void);
 
 struct Proc_0868C3AC {
     PROC_HEADER;
+
+    /* 2C */ int duration;
+
+    STRUCT_PAD(0x30, 0x66);
+
+    /* 66 */ i16 timer;
 };
 
-// func_fe6_0809287C
+void func_fe6_0809287C(int duration);
 void func_fe6_0809289C(struct Proc_0868C3AC * proc);
-// func_fe6_080928C0
+bool func_fe6_080928C0(void);
 
 struct Proc_0868C3C4 {
     PROC_HEADER;
+
+    /* 2C */ int ix, iy;
+
+    STRUCT_PAD(0x34, 0x4C);
+
+    /* 4C */ struct ProcWorldMap * wmproc;
+
+    STRUCT_PAD(0x50, 0x66);
+
+    /* 66 */ i16 unk_66, unk_68;
 };
 
 void func_fe6_080928DC(int x, int y, ProcPtr parent);
 void func_fe6_0809290C(struct Proc_0868C3C4 * proc);
 void func_fe6_0809291C(struct Proc_0868C3C4 * proc);
+void func_fe6_08092A9C(int x, int y);
 
 struct Proc_0868C3EC {
     PROC_HEADER;
 };
 
-// func_fe6_08092A9C
 void func_fe6_08092CD8(ProcPtr parent);
 void func_fe6_08092CFC(struct Proc_0868C3C4 * proc);
 void func_fe6_08092D0C(struct Proc_0868C3C4 * proc);
@@ -117,7 +120,7 @@ void func_fe6_08092D0C(struct Proc_0868C3C4 * proc);
 bool func_fe6_08092E68(void);
 void func_fe6_08092E94(void);
 void func_fe6_08092EB0(int a, int b, int c, int d, int e, int f, int g);
-void func_fe6_08093064(int a, int b, int c);
+void func_fe6_08093064(int a, int b, int c, int d);
 void StartWorldMapIntroScen(void);
 // func_fe6_08093114
 // func_fe6_08093120
@@ -141,7 +144,7 @@ i8 func_fe6_08093444(void);
 // func_fe6_0809345C
 void func_fe6_0809347C(int x, int y);
 void func_fe6_080934A0(void);
-void func_fe6_080934BC(int x, int y);
+void DisplayWmArrow(int id, int color);
 void func_fe6_08093518(void);
 void StartWMIntroRotation(ProcPtr parent);
 // func_fe6_08093584
@@ -149,16 +152,25 @@ void StartWMIntroRotation(ProcPtr parent);
 // func_fe6_08093608
 // func_fe6_080936E8
 // func_fe6_08093764
+
+struct WMHighlightConfig {
+    const void * img;
+    const u16 * sprite;
+    i16 x, y;
+};
+
+extern CONST_DATA struct WMHighlightConfig Config_WMHighlight[];
+
 void StartWMHighlight(int arg_0, int id);
-// func_fe6_080937D4
-// func_fe6_080938BC
-// func_fe6_08093960
-// func_fe6_0809397C
-// func_fe6_08093990
-void func_fe6_080939A8(int id);
+// WMHighlight_Init
+// WMHighlight_Loop
+// WMHighlight_End
+// RemoveWMHighlight
+// RemoveAllWMHighlight
+void WMHighlightFadeOut(int id);
 i8 WMHighlightExists(int id);
-i8 func_fe6_080939D0(void);
-void func_fe6_080939F0(int palid, int x, int y, int id);
+i8 WMHighlightAllSideExists(void);
+void WmPutDot(int palid, int x, int y, int id);
 void EndWMDot(int id);
 void StartWMFlag(int palid, int x, int y, int id);
 void EndWMFlag(int id);
@@ -195,7 +207,7 @@ extern u16 CONST_DATA Sprite_0868C2D4[];
 extern CONST_DATA u8 * Pals_0868C2DC[10];
 extern CONST_DATA struct ProcScr ProcScr_WorldMapIntroEvent[];
 extern CONST_DATA struct ProcScr ProcScr_WorldMap[];
-// extern CONST_DATA ??? ProcScr_0868C37C
+// extern CONST_DATA ??? ProcScr_WmArrow
 // extern CONST_DATA ??? ProcScr_0868C3AC
 // extern CONST_DATA ??? ProcScr_0868C3C4
 // extern CONST_DATA ??? ProcScr_0868C3EC
@@ -204,8 +216,7 @@ extern CONST_DATA struct ProcScr ProcScr_WorldMap[];
 // extern CONST_DATA ??? ProcScr_0868C658
 // extern CONST_DATA ??? ProcScr_0868C668
 extern CONST_DATA struct ProcScr ProcScr_0868C688[];
-// extern CONST_DATA ??? gUnk_0868C6B0
-// extern CONST_DATA ??? gUnk_0868C704
+extern CONST_DATA struct ProcScr ProcScr_WroldMapRmBorder[];
 // extern CONST_DATA ??? gUnk_0868C734
 // extern CONST_DATA ??? gUnk_0868C8D8
 // extern CONST_DATA ??? gUnk_0868C940
@@ -213,3 +224,5 @@ extern CONST_DATA struct ProcScr ProcScr_0868C688[];
 // extern CONST_DATA ??? gUnk_0868C988
 // extern CONST_DATA ??? gUnk_0868FDB4
 // extern CONST_DATA ??? gUnk_0868FE0C
+
+extern const int gUnk_08353328[];

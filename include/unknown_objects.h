@@ -562,13 +562,13 @@ extern u8 Pal_Wm_082C1224[];
 extern u8 Pal_Wm_082C8874[];
 extern u8 Pal_Wm_082D1964[];
 extern u8 Pal_Wm_082D1BA0[];
-// extern ??? gUnk_082D3398
-// extern ??? gUnk_082D33B8
+// extern ??? Pal_WroldMapRmBorder
+// extern ??? Img_WorldMapStuff
 // extern ??? gUnk_082D3674
-// extern ??? gUnk_082D36E4
+// extern ??? Pal_WorldMapStuff
 // extern ??? gUnk_082D3764
 // extern ??? gUnk_082D37E4
-// extern ??? gUnk_082D3864
+// extern ??? Pal_WorldMap_082D3864
 // extern ??? gUnk_082D38A4
 // extern ??? gUnk_082D5910
 extern u8 const Img_Background_082D80B0[];

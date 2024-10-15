@@ -109,68 +109,68 @@ void func_fe6_080922D8(struct ProcWorldMap * proc)
 
 void func_fe6_080923C4(struct ProcWorldMap * proc) {}
 
-struct ProcScr CONST_DATA ProcScr_0868C37C[] = {
+struct ProcScr CONST_DATA ProcScr_WmArrow[] = {
     PROC_MARK(8),
-    PROC_ONEND(func_fe6_08092450),
+    PROC_ONEND(WmArrow_End),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08092458),
-    PROC_REPEAT(func_fe6_0809268C),
+    PROC_CALL(WmArrow_Init),
+    PROC_REPEAT(WmArrow_Loop),
     PROC_END,
 };
 
-void NewProc_0868C37C(int a, int b, int c, int d, int e, int f)
+void StartWmArrow(int id, int color, int c, int d, int e, int f)
 {
-    struct Proc_0868C37C * proc;
+    struct ProcWmArrow * proc;
 
-    proc = SpawnProc(ProcScr_0868C37C, PROC_TREE_3);
-    proc->unk58 = GetUnkStruct_030048E0();
+    proc = SpawnProc(ProcScr_WmArrow, PROC_TREE_3);
+    proc->conf = GetFreeWmArrowSt();
 
-    if (proc->unk58 == NULL)
+    if (proc->conf == NULL)
     {
         Proc_End(proc);
         return;
     }
 
-    proc->unk58->unk_00 = 1;
-    proc->unk58->unk_01 = a;
-    proc->unk58->unk_05 = b;
-    proc->unk58->unk_D4 = c;
-    proc->unk58->unk_D8 = d;
-    proc->unk58->unk_0C = e;
-    proc->unk58->unk_08 = f;
+    proc->conf->busy = true;
+    proc->conf->eid = id;
+    proc->conf->color = color;
+    proc->conf->unk_D4 = c;
+    proc->conf->unk_D8 = d;
+    proc->conf->unk_0C = e;
+    proc->conf->unk_08 = f;
 }
 
-void EndProc_0868C37C(void)
+void EndWmArrow(void)
 {
-    Proc_EndEach(ProcScr_0868C37C);
+    Proc_EndEach(ProcScr_WmArrow);
 }
 
-bool ProcExists_0868C37C(void)
+bool WmArrowExists(void)
 {
-    if (FindProc(ProcScr_0868C37C) != NULL)
+    if (FindProc(ProcScr_WmArrow) != NULL)
         return true;
 
     return false;
 }
 
-void func_fe6_08092450(struct Proc_0868C37C * proc)
+void WmArrow_End(struct ProcWmArrow * proc)
 {
-    proc->unk58->unk_00 = 0;
+    proc->conf->busy = false;
 }
 
-void func_fe6_08092458(struct Proc_0868C37C * proc)
+void WmArrow_Init(struct ProcWmArrow * proc)
 {
     int i;
-    struct Struct_030048E0 * conf = proc->unk58;
-    int unk = func_fe6_08093284(func_fe6_0809325C(conf->unk_01));
+    struct WmArrowSt * conf = proc->conf;
+    int unk = func_fe6_08093284(func_fe6_0809325C(conf->eid));
 
     conf->unk_04 = unk;
     conf->unk_14[0] = 0;
 
     for (i = 0; i < conf->unk_04; i++)
     {
-        conf->unk_74[i] = (func_fe6_08093288(func_fe6_0809325C(conf->unk_01), i) + conf->unk_D4) * 0x100;
-        conf->unk_A4[i] = (func_fe6_080932D8(func_fe6_0809325C(conf->unk_01), i) + conf->unk_D8) * 0x100;
+        conf->unk_74[i] = (func_fe6_08093288(func_fe6_0809325C(conf->eid), i) + conf->unk_D4) * 0x100;
+        conf->unk_A4[i] = (func_fe6_080932D8(func_fe6_0809325C(conf->eid), i) + conf->unk_D8) * 0x100;
     }
 
     for (i = 1; i < conf->unk_04; i++)
@@ -197,11 +197,171 @@ void func_fe6_08092458(struct Proc_0868C37C * proc)
     }
 }
 
+/* https://decomp.me/scratch/WjMel */
+void PutWmArrowSpriteExt(struct WmArrowSt * conf, int idx)
+{
+    int r0 = OAM2_CHR(conf->unk_294[idx] + 0x20);
+    int r2 = r0 >> 6;
+    int r3 = (r0 >> 8) << 8;
+    int r6 = (r2 & 3) * 2;
+
+    if (idx == (conf->unk_03 - 1))
+    {
+        int a1;
+        register u32 r1 asm("r1");
+
+        func_fe6_08093064(conf->affin, 0x100, 0x100, r3);
+
+        a1 = OAM2_PAL(conf->color);
+        a1 = a1 + 0x310;
+        r6 = r6 + a1;
+
+        r1 = conf->x_array[idx];
+        r1 = (r1 << 0xF) >> 0x17;
+        r1 = r1 | (conf->affin << 9);
+
+        r2 = conf->y_array[idx];
+        r2 = (r2 >> 8) & 0xFF;
+        r2 = r2 | 0x100;
+
+        PutSpriteExt(
+            0xC,
+            r1,
+            r2,
+            Sprite_0868C2D4,
+            r6
+        );
+    }
+    else
+    {
+        int a1;
+        register u32 r1 asm("r1");
+
+        a1 = OAM2_PAL(conf->color);
+        a1 += 0x323;
+        r6 = a1;
+
+        r1 = conf->x_array[idx];
+        r1 = ((r1 << 0xF) >> 0x17);
+
+        r2 = ((conf->y_array[idx] >> 8) & 0xFF);
+
+        PutSpriteExt(
+            0xC,
+            r1,
+            r2,
+            Sprite_0868C2CC,
+            r6
+        );
+    }
+}
+
+void WmArrow_Loop(struct ProcWmArrow * proc)
+{
+    int i;
+    int r6;
+    struct WmArrowSt * conf = proc->conf;
+
+    for (i = 0; i < conf->unk_03; i++)
+    {
+        switch (conf->unk_F0[i]) {
+        case 0:
+            r6 = conf->unk_DC[i];
+
+            conf->x_array[i] = conf->unk_74[r6];
+            conf->y_array[i] = conf->unk_A4[r6];
+            conf->unk_294[i] = conf->unk_44[r6 + 1];
+            conf->unk_1A4[i] = conf->unk_244[i] * gUnk_08353328[(conf->unk_294[i] + 0x100) & 0x3FF] / 0x8000;
+            conf->unk_1F4[i] = conf->unk_244[i] * gUnk_08353328[(conf->unk_294[i]) & 0x3FF] / 0x8000;
+            conf->unk_F0[i] = 1;
+
+            /* Fall through */
+
+        case 1:
+            PutWmArrowSpriteExt(conf, i);
+
+            r6 = conf->unk_DC[i];
+
+            conf->x_array[i] += conf->unk_1A4[i];
+            conf->y_array[i] += conf->unk_1F4[i];
+            conf->unk_2E4[i] += conf->unk_244[i];
+
+            if (conf->unk_2E4[i] >= (conf->unk_10 * i / (conf->unk_03 - 1)))
+            {
+                conf->unk_F0[i] = 99;
+            }
+            else if (conf->unk_2E4[i] >= conf->unk_14[r6 + 1])
+            {
+                conf->unk_DC[i]++;
+                conf->unk_F0[i] = 0;
+            }
+            break;
+
+        case 99:
+            PutWmArrowSpriteExt(conf, i);                            
+            break;
+
+        default:
+            break;
+        }
+    }
+}
+
+void func_fe6_08092838(void)
+{
+    int i;
+
+    for (i = 0; i < 3; i++)
+    {
+        gWmArrowSt[i].busy = false;
+        gWmArrowSt[i].affin = i;
+    }
+}
+
+struct WmArrowSt * GetFreeWmArrowSt(void)
+{
+    int i;
+
+    for (i = 0; i < 3; i++)
+    {
+        struct WmArrowSt * st = &gWmArrowSt[i];
+
+        if (st->busy == false)
+            return st;
+    }
+    return NULL;
+}
+
 struct ProcScr CONST_DATA ProcScr_0868C3AC[] = {
     PROC_MARK(8),
     PROC_REPEAT(func_fe6_0809289C),
     PROC_END,
 };
+
+void func_fe6_0809287C(int duration)
+{
+    struct Proc_0868C3AC * proc;
+
+    proc = SpawnProc(ProcScr_0868C3AC, PROC_TREE_3);
+    proc->duration = duration;
+    proc->timer = 0;
+}
+
+void func_fe6_0809289C(struct Proc_0868C3AC * proc)
+{
+    proc->timer++;
+
+    if (proc->timer == proc->duration)
+        Proc_Break(proc);
+}
+
+bool func_fe6_080928C0(void)
+{
+    if (FindProc(ProcScr_0868C3AC) != NULL)
+        return true;
+
+    return false;
+}
 
 struct ProcScr CONST_DATA ProcScr_0868C3C4[] = {
     PROC_MARK(8),
@@ -210,6 +370,102 @@ struct ProcScr CONST_DATA ProcScr_0868C3C4[] = {
     PROC_REPEAT(func_fe6_0809291C),
     PROC_END,
 };
+
+void func_fe6_080928DC(int x, int y, ProcPtr parent)
+{
+    struct Proc_0868C3C4 * proc;
+
+    proc = SpawnProc(ProcScr_0868C3C4, parent);
+
+    proc->wmproc = FindProc(ProcScr_WorldMap);
+
+    proc->ix = x * 0x100;
+    proc->iy = y * 0x100;
+}
+
+void func_fe6_0809290C(struct Proc_0868C3C4 * proc)
+{
+    proc->unk_66 = 0;
+    proc->unk_68 = 0;
+}
+
+void func_fe6_0809291C(struct Proc_0868C3C4 * proc)
+{
+    int ret;
+    struct ProcWorldMap * wmproc = proc->wmproc;
+
+    wmproc->camera_x = proc->ix;
+    wmproc->camera_y = proc->iy;
+
+    switch (proc->unk_66) {
+    case 0:
+        func_fe6_08092A9C(wmproc->camera_x, wmproc->camera_y);
+        proc->unk_66++;
+        proc->unk_68 = 0;
+        break;
+
+    case 1:
+        ret = Interpolate(INTERPOLATE_RCUBIC, 0x100, 0x200, proc->unk_68, 0x20);
+
+        wmproc->unk4A = ret;
+        wmproc->unk48 = ret;
+
+        wmproc->unk34 = wmproc->camera_x + 0xFFFF8800;
+        wmproc->unk38 = wmproc->camera_y + 0xFFFFB000;
+
+        proc->unk_68++;
+        if (proc->unk_68 == 0x21)
+        {
+            proc->unk_66++;
+            proc->unk_68 = 0;
+        }
+        break;
+
+    case 2:
+        if (1 & proc->unk_68)
+        {
+            ApplyCompressedWmPalette(1, 1);
+
+            wmproc->unk2C = 0;
+            wmproc->unk30 = 0;
+
+            wmproc->unk34 = 0x7800;
+            wmproc->unk38 = 0x5000;
+
+            wmproc->unk44 = 0;
+
+            wmproc->unk48 = 0x100;
+            wmproc->unk4A = 0x100;
+
+            gDispIo.disp_ct.bitmap_frame = true;
+        }
+        else
+        {
+            ApplyCompressedWmPalette(0, 1);
+
+            wmproc->unk2C = 0;
+            wmproc->unk30 = 0;
+
+            wmproc->unk34 = wmproc->camera_x + 0xFFFF8800;
+            wmproc->unk38 = wmproc->camera_y + 0xFFFFB000;
+
+            wmproc->unk44 = 0;
+
+            wmproc->unk48 = 0x200;
+            wmproc->unk4A = 0x200;
+
+            gDispIo.disp_ct.bitmap_frame = false;
+        }
+
+        proc->unk_68++;
+        if (proc->unk_68 == 8)
+            Proc_Break(proc);
+
+        break;
+    }
+
+    func_fe6_08092EB0(wmproc->unk2C, wmproc->unk30, wmproc->unk34, wmproc->unk38, wmproc->unk44, wmproc->unk48, wmproc->unk4A);
+}
 
 struct ProcScr CONST_DATA ProcScr_0868C3EC[] = {
     PROC_MARK(8),

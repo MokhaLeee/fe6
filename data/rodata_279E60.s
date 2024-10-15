@@ -76,20 +76,20 @@ Pal_Wm_082D1964:    @ 0x082D1964
 Pal_Wm_082D1BA0:    @ 0x082D1BA0
     .incbin "fe6-base.gba", 0x2D1BA0, 0x2D3398 - 0x2D1BA0
 
-    .global gUnk_082D3398
-gUnk_082D3398: @ 082D3398
+    .global Pal_WroldMapRmBorder
+Pal_WroldMapRmBorder: @ 082D3398
     .incbin "fe6-base.gba", 0x2D3398, (0x2D33B8 - 0x2D3398) @ length: 0020
 
-    .global gUnk_082D33B8
-gUnk_082D33B8: @ 082D33B8
+    .global Img_WorldMapStuff
+Img_WorldMapStuff: @ 082D33B8
     .incbin "fe6-base.gba", 0x2D33B8, (0x2D3674 - 0x2D33B8) @ length: 02BC
 
     .global gUnk_082D3674
 gUnk_082D3674: @ 082D3674
     .incbin "fe6-base.gba", 0x2D3674, (0x2D36E4 - 0x2D3674) @ length: 0070
 
-    .global gUnk_082D36E4
-gUnk_082D36E4: @ 082D36E4
+    .global Pal_WorldMapStuff
+Pal_WorldMapStuff: @ 082D36E4
     .incbin "fe6-base.gba", 0x2D36E4, (0x2D3764 - 0x2D36E4) @ length: 0080
 
     .global gUnk_082D3764
@@ -100,8 +100,8 @@ gUnk_082D3764: @ 082D3764
 gUnk_082D37E4: @ 082D37E4
     .incbin "fe6-base.gba", 0x2D37E4, (0x2D3864 - 0x2D37E4) @ length: 0080
 
-    .global gUnk_082D3864
-gUnk_082D3864: @ 082D3864
+    .global Pal_WorldMap_082D3864
+Pal_WorldMap_082D3864: @ 082D3864
     .incbin "fe6-base.gba", 0x2D3864, (0x2D38A4 - 0x2D3864) @ length: 0040
 
     .global gUnk_082D38A4
