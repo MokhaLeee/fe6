@@ -151,7 +151,6 @@ extern u16 const Pal_0831AAFC[];
 // extern ??? gUnk_08327108
 
 extern struct ProcScr CONST_DATA ProcScr_OpeningSequence[];
-extern struct ProcScr CONST_DATA ProcScr_TitleScreenHandler[];
 extern struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_0868B010[];
 extern struct ProcScr CONST_DATA ProcScr_Config[];
@@ -163,8 +162,6 @@ extern struct ChapterInfo CONST_DATA ChapterInfoTable[];
 extern void const * CONST_DATA ChapterAssets[];
 
 extern u16 const Pal_LinkArenaMuralBackground[];
-extern u16 const Pal_MuralBackground[];
-extern u8 const Img_MuralBackground[];
 extern u16 const Pal_Unk_083087C8[][0x20];
 
 extern u8 const gUnk_083080D0[]; // compressed img (statscreen misc sprite sheet)
@@ -647,16 +644,148 @@ extern u8 const Tsa_UnitBurstMapUi_Frame3[];
 extern u8 const Tsa_UnitBurstMapUi_Frame4[];
 extern u8 const Tsa_UnitBurstMapUi_Frame5[];
 
+extern u8 const Img_Unk_083092CC[];
+
+// extern const ??? gUnk_08336CD0
+// extern const ??? gUnk_08336CF0
+// extern const ??? gUnk_08336CF8
+// extern const ??? gUnk_08336D00
+// extern const ??? gUnk_08336D3C
+// extern const ??? gUnk_08336D48
+// extern const ??? gUnk_08336D54
+extern u8 const Img_MuralBackground[];
 extern u8 const Img_0833B958[];
 extern u8 const Img_0833BB14[];
 extern u8 const Img_0833BB28[];
 extern u8 const Tsa_0833BE84[];
 extern u8 const Tsa_0833BF08[];
+extern u16 const Pal_MuralBackground[];
+// extern const ??? gUnk_0833C01C
 extern u16 const Pal_0833C03C[];
-
-extern u16 const Pal_Unk_0833C944[];
-extern u8 const Img_Unk_083092CC[];
+// extern const ??? gUnk_0833C09C
+// extern const ??? gUnk_0833C1D8
+// extern const ??? gUnk_0833C234
 extern u8 const Img_Unk_0833C378[];
+// extern const ??? gUnk_0833C6F4
+// extern const ??? gUnk_0833C8D8
+extern u16 const Pal_Unk_0833C944[];
+// extern const ??? gUnk_0833C984
+// extern const ??? gUnk_08340ED8
+// extern const ??? gUnk_0834138C
+// extern const ??? gUnk_083413CC
+// extern const ??? gUnk_08341DA0
+// extern const ??? gUnk_08341DC0
+// extern const ??? gUnk_08342438
+// extern const ??? gUnk_08342A98
+// extern const ??? gUnk_08342AB8
+// extern const ??? gUnk_08342AD8
+// extern const ??? gUnk_08342AF8
+// extern const ??? gUnk_08342B54
+// extern const ??? gUnk_08343358
+// extern const ??? gUnk_08343398
+// extern const ??? gUnk_08343A80
+// extern const ??? gUnk_08343FAC
+// extern const ??? gUnk_083442C4
+// extern const ??? gUnk_08344304
+// extern const ??? gUnk_083449F8
+// extern const ??? gUnk_08344CB0
+// extern const ??? gUnk_08344CD0
+// extern const ??? gUnk_0834523C
+// extern const ??? gUnk_08345420
+// extern const ??? gUnk_08345440
+// extern const ??? gUnk_08345934
+// extern const ??? gUnk_08346184
+// extern const ??? gUnk_083461C4
+// extern const ??? gUnk_08346330
+// extern const ??? gUnk_083463B4
+// extern const ??? gUnk_083463F4
+// extern const ??? gUnk_08346574
+// extern const ??? gUnk_0834658C
+// extern const ??? gUnk_08349A78
+// extern const ??? gUnk_08349A98
+// extern const ??? gUnk_0834B69C
+// extern const ??? gUnk_0834E1D4
+// extern const ??? gUnk_08352160
+// extern const ??? gUnk_08353308
+// extern const ??? gUnk_08353328
+// extern const ??? gUnk_08354728
+// extern const ??? gUnk_08354760
+// extern const ??? gUnk_08354780
+// extern const ??? gUnk_08357140
+// extern const ??? gUnk_083599AC
+// extern const ??? gUnk_0835A368
+// extern const ??? gUnk_0835A3E8
+// extern const ??? gUnk_0835A5D0
+// extern const ??? gUnk_0835A5F0
+// extern const ??? gUnk_0835AB08
+// extern const ??? gUnk_0835AB28
+// extern const ??? gUnk_0835B040
+// extern const ??? gUnk_0835C034
+// extern const ??? gUnk_0835C80C
+// extern const ??? gUnk_0835C824
+// extern const ??? gUnk_0835C829
+// extern const ??? String_ShopGoldG
+// extern const ??? gUnk_0835CA78
+extern u16 const Pal_Title_BG[];
+extern u8 const Img_Title_BG[];
+extern u8 const Img_Title_Sprites[];
+extern u16 const SpriteAnim_0835F2C8[];
+extern u16 const Pal_Title_0835F388[];
+extern u8 const Tsa_Title_BG2[];
+extern u8 const Tsa_Title_BG0[];
+extern u8 const Tsa_Title_BG1[];
+extern u8 const Img_Title_BG3[];
+extern u16 const Pal_Title_BG3[];
+extern u8 const Img_Title_08364438[];
+extern u16 const Pal_Title_08364A94[];
+// extern const ??? gUnk_08364AB4
+// extern const ??? gUnk_083674BC
+// extern const ??? gUnk_08367B30
+// extern const ??? gUnk_0836A094
+// extern const ??? gUnk_0836A494
+// extern const ??? gUnk_0836A888
+// extern const ??? gUnk_0836A9AC
+// extern const ??? gUnk_0836EEFC
+// extern const ??? gUnk_0836F610
+// extern const ??? gUnk_0836F6D4
+// extern const ??? gUnk_08373F80
+// extern const ??? gUnk_08374670
+// extern const ??? gUnk_083747A4
+// extern const ??? gUnk_08375888
+// extern const ??? gUnk_083758A8
+// extern const ??? gUnk_08375908
+// extern const ??? gUnk_08375ADC
+// extern const ??? gUnk_08375B64
+// extern const ??? gUnk_08375B84
+// extern const ??? gUnk_08376B70
+// extern const ??? gUnk_08376DF4
+// extern const ??? gUnk_08376FDC
+// extern const ??? gUnk_08378C60
+// extern const ??? gUnk_08378F54
+// extern const ??? gUnk_08379D0C
+// extern const ??? gUnk_08379D2C
+// extern const ??? gUnk_08379DCC
+// extern const ??? gUnk_08379F8C
+// extern const ??? gUnk_0837AA68
+// extern const ??? gUnk_0837AAC8
+// extern const ??? gUnk_0837AAE8
+// extern const ??? gUnk_0837AB18
+// extern const ??? gUnk_0837ACB0
+// extern const ??? gUnk_0837ACD0
+// extern const ??? gUnk_0837C844
+// extern const ??? gUnk_0837CB0C
+// extern const ??? gUnk_0837CB2C
+// extern const ??? gUnk_0837CB4C
+// extern const ??? gUnk_0837CB6C
+// extern const ??? gUnk_0837CB8C
+// extern const ??? gUnk_0837EEB4
+// extern const ??? gUnk_0837F418
+// extern const ??? gUnk_0837F478
+// extern const ??? gUnk_08380ECC
+// extern const ??? gUnk_08380F4C
+// extern const ??? gUnk_08380F54
+// extern const ??? gUnk_08380F5A
+// extern const ??? gUnk_08380F62
 
 struct HelpBoxInfo;
 extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B1B0;
@@ -753,70 +882,8 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 /* worldmap.h */
 /* shop.h */
 /* arena_ui.h */
-
-// extern CONST_DATA ??? EventScr_SuspendPrompt
-// extern CONST_DATA ??? ProcScr_TitleScreenHandler
-// extern CONST_DATA ??? gUnk_08691494
-// extern CONST_DATA ??? gUnk_08691498
-// extern CONST_DATA ??? gUnk_0869149C
-// extern CONST_DATA ??? gUnk_086914A0
-// extern CONST_DATA ??? gUnk_086914A4
-// extern CONST_DATA ??? gUnk_086914A8
-// extern CONST_DATA ??? gUnk_086914AC
-// extern CONST_DATA ??? gUnk_086914B0
-// extern CONST_DATA ??? gUnk_086914B4
-// extern CONST_DATA ??? gUnk_086914B8
-// extern CONST_DATA ??? gUnk_086914BC
-// extern CONST_DATA ??? gUnk_086914C0
-// extern CONST_DATA ??? gUnk_086914C4
-// extern CONST_DATA ??? gUnk_086914C8
-// extern CONST_DATA ??? gUnk_086914CC
-// extern CONST_DATA ??? gUnk_086914D0
-// extern CONST_DATA ??? gUnk_086914D4
-// extern CONST_DATA ??? gUnk_086914D8
-// extern CONST_DATA ??? gUnk_086914DC
-// extern CONST_DATA ??? gUnk_086914E0
-// extern CONST_DATA ??? gUnk_086914F0
-// extern CONST_DATA ??? gUnk_086914F4
-// extern CONST_DATA ??? gUnk_086914F8
-// extern CONST_DATA ??? ProcScr_OpeningSequence
-// extern CONST_DATA ??? gUnk_08691604
-// extern CONST_DATA ??? gUnk_0869161C
-// extern CONST_DATA ??? gUnk_08691634
-// extern CONST_DATA ??? gUnk_08691644
-// extern CONST_DATA ??? gUnk_086916E5
-// extern CONST_DATA ??? gUnk_08691738
-// extern CONST_DATA ??? gUnk_08691778
-// extern CONST_DATA ??? gUnk_086917D8
-// extern CONST_DATA ??? gUnk_08691858
-// extern CONST_DATA ??? gUnk_08691890
-// extern CONST_DATA ??? gUnk_086918B0
-// extern CONST_DATA ??? gUnk_08691B20
-// extern CONST_DATA ??? gUnk_08691B38
-// extern CONST_DATA ??? gUnk_08691B50
-// extern CONST_DATA ??? gUnk_08691C78
-// extern CONST_DATA ??? gUnk_08691CA8
-// extern CONST_DATA ??? gUnk_08691CC0
-// extern CONST_DATA ??? gUnk_08691DE8
-// extern CONST_DATA ??? gUnk_08691DF8
-// extern CONST_DATA ??? gUnk_08691E10
-// extern CONST_DATA ??? gUnk_08691E30
-// extern CONST_DATA ??? gUnk_08691EB8
-// extern CONST_DATA ??? gUnk_086920A0
-// extern CONST_DATA ??? gUnk_086920B8
-// extern CONST_DATA ??? gUnk_08692118
-// extern CONST_DATA ??? gUnk_0869211C
-// extern CONST_DATA ??? gUnk_08692120
-// extern CONST_DATA ??? gUnk_08692124
-// extern CONST_DATA ??? gUnk_08692128
-// extern CONST_DATA ??? gUnk_0869212C
-// extern CONST_DATA ??? ProcScr_OpAnim_08692130
-// extern CONST_DATA ??? ProcScr_TitleScreen
-// extern CONST_DATA ??? gUnk_08692240
-// extern CONST_DATA ??? gUnk_08692258
-// extern CONST_DATA ??? gUnk_08692298
-// extern CONST_DATA ??? gUnk_086922F0
-// extern CONST_DATA ??? gUnk_086922F8
-// extern CONST_DATA ??? gUnk_08692300
+/* suspend_ui.h */
+/* opanim.h */
+/* titlescreen.h */
 
 #endif // UNKNOWN_OBJECTS_H

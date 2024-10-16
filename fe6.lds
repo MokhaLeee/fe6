@@ -442,7 +442,7 @@ SECTIONS
         . = 0x0048D4; gUnk_030048D4 = .;
         . = 0x0048E0; gWmArrowSt = .;
         . = 0x005280; gUnk_03005280 = .;
-        . = 0x005284; gUnk_03005284 = .;
+        . = 0x005284; bool_opanim_03005284 = .;
         . = 0x005290; gUnk_03005290 = .;
         . = 0x0052B0; *(.iwram.gSoundInfo);
         . = 0x006260; gMusicPlayer_03006260 = .;
@@ -610,6 +610,8 @@ SECTIONS
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
         asm/opanim.o(.text);
+        src/titlescreen.o(.text);
+        asm/titlescreen.o(.text);
 
         src/m4a_1.o(.text);
         src/m4a.o(.text);
@@ -839,7 +841,9 @@ SECTIONS
         . = ALIGN(4); src/arena_ui.o(.data);
         . = ALIGN(4); src/suspend_ui.o(.data);
         . = ALIGN(4); data/data_08691480.o(.data);
+        . = ALIGN(4); src/titlescreen.o(.data);
 
+        . = ALIGN(4); data/data_692308.o(.data);
         . = ALIGN(4); FILL(0xFF);
 
         . = 0x6A0000;

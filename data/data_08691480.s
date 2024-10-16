@@ -200,8 +200,8 @@ gUnk_086920A0: @ 086920A0
 gUnk_086920B8: @ 086920B8
 	.incbin "fe6-base.gba", 0x6920B8, (0x692118 - 0x6920B8) @ length: 0060
 
-	.global gUnk_08692118
-gUnk_08692118: @ 08692118
+	.global gTitleDuration
+gTitleDuration: @ 08692118
 	.incbin "fe6-base.gba", 0x692118, (0x69211C - 0x692118) @ length: 0004
 
 	.global gUnk_0869211C
@@ -227,31 +227,3 @@ gUnk_0869212C: @ 0869212C
 	.global ProcScr_OpAnim_08692130
 ProcScr_OpAnim_08692130: @ 08692130
 	.incbin "fe6-base.gba", 0x692130, (0x6921E8 - 0x692130)
-
-	.global ProcScr_TitleScreen
-ProcScr_TitleScreen: @ 086921E8
-	.incbin "fe6-base.gba", 0x6921E8, (0x692240 - 0x6921E8)
-
-	.global gUnk_08692240
-gUnk_08692240: @ 08692240
-	.incbin "fe6-base.gba", 0x692240, (0x692258 - 0x692240) @ length: 0018
-
-	.global gUnk_08692258
-gUnk_08692258: @ 08692258
-	.incbin "fe6-base.gba", 0x692258, (0x692298 - 0x692258) @ length: 0040
-
-	.global gUnk_08692298
-gUnk_08692298: @ 08692298
-	.incbin "fe6-base.gba", 0x692298, (0x6922F0 - 0x692298) @ length: 0058
-
-	.global gUnk_086922F0
-gUnk_086922F0: @ 086922F0
-	.incbin "fe6-base.gba", 0x6922F0, (0x6922F8 - 0x6922F0) @ length: 0008
-
-	.global gUnk_086922F8
-gUnk_086922F8: @ 086922F8
-	.incbin "fe6-base.gba", 0x6922F8, (0x692300 - 0x6922F8) @ length: 0008
-
-	.global gUnk_08692300
-gUnk_08692300: @ 08692300
-	.incbin "fe6-base.gba", 0x692300, (0x69B668 - 0x692300) @ length: 9368

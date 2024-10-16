@@ -56,6 +56,7 @@ enum
     SONG_6A = 0x6A,
     SONG_6B = 0x6B,
     SONG_6C = 0x6C,
+    SONG_6D = 0x6D,
     SONG_6E = 0x6E,
     SONG_6F = 0x6F, // stat screen page slide
     SONG_70 = 0x70, // help box open
@@ -83,6 +84,7 @@ enum
     SONG_8D = 0x8D, // manim (unlock?)
     SONG_90 = 0x90,
     SONG_91 = 0x91,
+    SONG_92 = 0x92,
     SONG_96 = 0x96,
     SONG_97 = 0x97,
     SONG_9A = 0x9A,
