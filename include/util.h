@@ -87,9 +87,9 @@ void StartSlowLockingFadeFromWhite(ProcPtr parent);
 // func_fe6_08014804
 // func_fe6_08014818
 // func_fe6_0801482C
-// FadeInBlackWithCallBack_Speed04
-// FadeInBlackWithCallBack_Speed08
-// FadeInBlackWithCallBack_Speed10
+void FadeInBlackWithCallBack_Speed04(ProcPtr parent);
+void FadeInBlackWithCallBack_Speed08(ProcPtr parent);
+void FadeInBlackWithCallBack_Speed10(ProcPtr parent);
 void FadeInBlackWithCallBack_Speed20(ProcPtr parent);
 void FadeInBlackWithCallBack_Speed40(ProcPtr parent);
 void FadeInBlackSpeed04(ProcPtr parent);

@@ -15,6 +15,7 @@
 #include "save_xmap.h"
 #include "savemenu.h"
 #include "class_demo.h"
+#include "opanim.h"
 
 #include "constants/chapters.h"
 
