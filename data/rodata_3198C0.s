@@ -40,20 +40,20 @@ gUnk_0831AB1C: @ 0831AB1C
 gUnk_0831B068: @ 0831B068
 	.incbin "fe6-base.gba", 0x31B068, (0x31B0A8 - 0x31B068) @ length: 0040
 
-	.global gUnk_0831B0A8
-gUnk_0831B0A8: @ 0831B0A8
+	.global Img_MonologueBG
+Img_MonologueBG: @ 0831B0A8
 	.incbin "fe6-base.gba", 0x31B0A8, (0x320434 - 0x31B0A8) @ length: 538C
 
-	.global gUnk_08320434
-gUnk_08320434: @ 08320434
+	.global Tsa_MonologueBG
+Tsa_MonologueBG: @ 08320434
 	.incbin "fe6-base.gba", 0x320434, (0x320436 - 0x320434) @ length: 0002
 
 	.global gUnk_08320436
 gUnk_08320436: @ 08320436
 	.incbin "fe6-base.gba", 0x320436, (0x320D98 - 0x320436) @ length: 0962
 
-	.global gUnk_08320D98
-gUnk_08320D98: @ 08320D98
+	.global Pal_MonologueBG
+Pal_MonologueBG: @ 08320D98
 	.incbin "fe6-base.gba", 0x320D98, (0x320E18 - 0x320D98) @ length: 0080
 
 	.global Img_SpinningArrow

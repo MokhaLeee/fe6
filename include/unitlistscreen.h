@@ -164,7 +164,7 @@ extern u8 const gUnk_083215B8[]; // img
 extern u16 const gUnk_08321EE4[]; // pal
 extern u8 const gUnk_083210A0[]; // tsa
 extern u16 const gUnk_08320EEC[]; // tm
-extern u16 const gUnk_08320D98[]; // pal
+extern u16 const Pal_MonologueBG[]; // pal
 
 extern struct Text gUnk_0200D5BC[];
 extern struct Text gUnk_0200D5F4[][3];

@@ -545,7 +545,5 @@ extern u16 const Pal_SpinningArrow[]; // pal
 extern u16 const gUnk_0831AABC[]; // pal (x2)
 extern u16 const gUnk_08326E64[]; // pal (x4)
 extern u16 const gUnk_08327108[]; // pal
-extern u32 const gUnk_0831B0A8[]; // img(lz)
-extern u16 const gUnk_08320D98[]; // pal (x4)
 extern u32 const gUnk_08321FA4[]; // img(lz)
 extern u16 const gUnk_08326910[]; // pal

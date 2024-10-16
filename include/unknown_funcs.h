@@ -645,6 +645,7 @@ void func_fe6_0809154C(void);
 // func_fe6_080920B4
 
 /* worldmap.h */
+/* monologue.h */
 /* shop.h */
 /* arena_ui.h */
 /* suspend_ui.h */

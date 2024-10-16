@@ -1658,7 +1658,7 @@ func_fe6_08095334: @ 0x08095334
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r4, .L080955F0 @ =gUnk_0831B0A8
+	ldr r4, .L080955F0 @ =Img_MonologueBG
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1784,7 +1784,7 @@ func_fe6_08095334: @ 0x08095334
 	.align 2, 0
 .L080955E8: .4byte gUnk_086905F8
 .L080955EC: .4byte gDispIo
-.L080955F0: .4byte gUnk_0831B0A8
+.L080955F0: .4byte Img_MonologueBG
 .L080955F4: .4byte gUnk_0835AB08
 .L080955F8: .4byte gBg3Tm
 .L080955FC: .4byte gUnk_0835AB28

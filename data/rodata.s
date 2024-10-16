@@ -216,12 +216,12 @@ gUnk_083463F4: @ 083463F4
 gUnk_08346574: @ 08346574
 	.incbin "fe6-base.gba", 0x346574, (0x34658C - 0x346574) @ length: 0018
 
-	.global gUnk_0834658C
-gUnk_0834658C: @ 0834658C
+	.global Img_MonologueText
+Img_MonologueText: @ 0834658C
 	.incbin "fe6-base.gba", 0x34658C, (0x349A78 - 0x34658C) @ length: 34EC
 
-	.global gUnk_08349A78
-gUnk_08349A78: @ 08349A78
+	.global Pal_MonologueText
+Pal_MonologueText: @ 08349A78
 	.incbin "fe6-base.gba", 0x349A78, (0x349A98 - 0x349A78) @ length: 0020
 
 	.global gUnk_08349A98

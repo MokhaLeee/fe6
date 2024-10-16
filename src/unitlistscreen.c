@@ -698,8 +698,8 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
 
     if (proc->mode == UNITLIST_MODE_PREPMENU && proc->unk_3C == 0)
     {
-        Decompress(gUnk_0831B0A8, (void *) VRAM + GetBgChrOffset(3));
-        ApplyPalettes(gUnk_08320D98, BGPAL_UNITLIST_10, 4);
+        Decompress(Img_MonologueBG, (void *) VRAM + GetBgChrOffset(3));
+        ApplyPalettes(Pal_MonologueBG, BGPAL_UNITLIST_10, 4);
         proc->unk_48 = func_fe6_08082560(proc);
     }
     else

@@ -7025,14 +7025,14 @@ func_fe6_080908A4: @ 0x080908A4
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L080909F8 @ =gUnk_08320D98
+	ldr r0, .L080909F8 @ =Pal_MonologueBG
 	movs r1, #0x80
 	movs r2, #0x40
 	bl ApplyPaletteExt
 	ldr r0, .L080909FC @ =gUnk_08344304
 	ldr r1, .L08090A00 @ =0x06001000
 	bl Decompress
-	ldr r4, .L08090A04 @ =gUnk_0831B0A8
+	ldr r4, .L08090A04 @ =Img_MonologueBG
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -7104,10 +7104,10 @@ func_fe6_080908A4: @ 0x080908A4
 .L080909EC: .4byte gBg0Tm
 .L080909F0: .4byte gBg3Tm
 .L080909F4: .4byte gUnk_08344CB0
-.L080909F8: .4byte gUnk_08320D98
+.L080909F8: .4byte Pal_MonologueBG
 .L080909FC: .4byte gUnk_08344304
 .L08090A00: .4byte 0x06001000
-.L08090A04: .4byte gUnk_0831B0A8
+.L08090A04: .4byte Img_MonologueBG
 .L08090A08: .4byte gUnk_08345440
 .L08090A0C: .4byte 0x00000107
 .L08090A10: .4byte 0x00000127
@@ -8504,11 +8504,11 @@ func_fe6_0809159C: @ 0x0809159C
 	strh r0, [r2, #0x3c]
 	bl InitFaces
 	bl ResetText
-	ldr r0, .L08091634 @ =gUnk_08320D98
+	ldr r0, .L08091634 @ =Pal_MonologueBG
 	movs r1, #0x40
 	movs r2, #0x40
 	bl ApplyPaletteExt
-	ldr r0, .L08091638 @ =gUnk_0831B0A8
+	ldr r0, .L08091638 @ =Img_MonologueBG
 	ldr r1, .L0809163C @ =0x06008000
 	bl Decompress
 	ldr r0, .L08091640 @ =gUnk_08346184
@@ -8526,8 +8526,8 @@ func_fe6_0809159C: @ 0x0809159C
 .L08091628: .4byte gDispIo
 .L0809162C: .4byte 0x0000FFE0
 .L08091630: .4byte 0x0000E0FF
-.L08091634: .4byte gUnk_08320D98
-.L08091638: .4byte gUnk_0831B0A8
+.L08091634: .4byte Pal_MonologueBG
+.L08091638: .4byte Img_MonologueBG
 .L0809163C: .4byte 0x06008000
 .L08091640: .4byte gUnk_08346184
 .L08091644: .4byte gUnk_08345934

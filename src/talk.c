@@ -706,7 +706,7 @@ static int TalkInterpret(ProcPtr proc)
             }
 
             gproc = SpawnProcLocking(ProcScr_TalkPause, proc);
-            gproc->unk64 = GetTalkPauseCmdDuration(4);
+            gproc->timer1 = GetTalkPauseCmdDuration(4);
 
             return 3;
         }
@@ -758,7 +758,7 @@ static int TalkInterpret(ProcPtr proc)
         }
 
         gproc = SpawnProcLocking(ProcScr_TalkPause, proc);
-        gproc->unk64 = GetTalkPauseCmdDuration (* sTalkSt->str);
+        gproc->timer1 = GetTalkPauseCmdDuration (* sTalkSt->str);
 
         sTalkSt->str++;
         return 3;
@@ -1087,8 +1087,8 @@ static void StartTalkFaceMove(int talkFaceFrom, int talkFaceTo, bool isSwap)
 
     proc = SpawnProc(ProcScr_TalkMoveFace, gFaces[slot]);
 
-    proc->unk64 = slot;
-    proc->unk66 = talkFaceTo;
+    proc->timer1 = slot;
+    proc->timer2 = talkFaceTo;
     proc->unk68 = gFaces[slot]->x_disp;
     proc->unk6A = isSwap;
 }
@@ -1097,9 +1097,9 @@ static void TalkFaceMove_OnInit(struct GenericProc * proc)
 {
     proc->unk58 = 0;
 
-    if (((proc->unk68 - GetTalkFaceHPos(proc->unk66)*8) < 0)
-        ? (GetTalkFaceHPos(proc->unk66)*8 - proc->unk68) > 24
-        : (proc->unk68 - GetTalkFaceHPos(proc->unk66)*8) > 24)
+    if (((proc->unk68 - GetTalkFaceHPos(proc->timer2)*8) < 0)
+        ? (GetTalkFaceHPos(proc->timer2)*8 - proc->unk68) > 24
+        : (proc->unk68 - GetTalkFaceHPos(proc->timer2)*8) > 24)
     {
         proc->unk5C = 32;
     }
@@ -1114,29 +1114,29 @@ static void TalkFaceMove_OnIdle(struct GenericProc * proc)
     if (proc->unk5C > 16)
     {
         if (proc->unk58 == proc->unk5C / 8)
-            gFaces[proc->unk64]->y_disp++;
+            gFaces[proc->timer1]->y_disp++;
 
         if (proc->unk58 == proc->unk5C / 2)
-            gFaces[proc->unk64]->y_disp--;
+            gFaces[proc->timer1]->y_disp--;
 
         if (proc->unk58 == proc->unk5C * 5 / 8)
-            gFaces[proc->unk64]->y_disp++;
+            gFaces[proc->timer1]->y_disp++;
     }
     else
     {
         if (proc->unk58 == proc->unk5C / 2)
-            gFaces[proc->unk64]->y_disp++;
+            gFaces[proc->timer1]->y_disp++;
     }
 
     if (proc->unk58 >= proc->unk5C)
     {
-        gFaces[proc->unk64]->y_disp--;
+        gFaces[proc->timer1]->y_disp--;
         Proc_Break(proc);
     }
     else
     {
-        gFaces[proc->unk64]->x_disp = Interpolate(INTERPOLATE_RSQUARE,
-            proc->unk68, GetTalkFaceHPos(proc->unk66)*8,
+        gFaces[proc->timer1]->x_disp = Interpolate(INTERPOLATE_RSQUARE,
+            proc->unk68, GetTalkFaceHPos(proc->timer2)*8,
             proc->unk58++, proc->unk5C);
     }
 }
@@ -1149,13 +1149,13 @@ static void Talk_OnEnd(ProcPtr proc)
 
 static void TalkPause_OnIdle(struct GenericProc * proc)
 {
-    if (proc->unk64 == 0)
+    if (proc->timer1 == 0)
     {
         Proc_Break(proc);
         return;
     }
 
-    proc->unk64--;
+    proc->timer1--;
 }
 
 static void TalkWaitForInput_OnIdle(struct GenericProc * proc)
@@ -1165,13 +1165,13 @@ static void TalkWaitForInput_OnIdle(struct GenericProc * proc)
     if (!CheckTalkFlag(TALK_FLAG_SPRITE))
     {
         PutSprite(2,
-            proc->unk64, proc->unk66,
+            proc->timer1, proc->timer2,
             gPressKeyArrowSpriteLut[frame], OAM2_CHR(4));
     }
     else
     {
         PutSprite(0,
-            proc->unk64, proc->unk66,
+            proc->timer1, proc->timer2,
             gPressKeyArrowSpriteLut[frame], OAM2_CHR(0x321) + OAM2_PAL(11)); // TODO: Chr/Pal constants
     }
 
@@ -1187,8 +1187,8 @@ void StartTalkWaitForInput(ProcPtr parent, int x, int y)
 {
     struct GenericProc * proc = SpawnProcLocking(ProcScr_TalkWaitForInput, parent);
 
-    proc->unk64 = x;
-    proc->unk66 = y;
+    proc->timer1 = x;
+    proc->timer2 = y;
 }
 
 static void TalkShiftClearAll_OnInit(struct GenericProc * proc)
@@ -1198,29 +1198,29 @@ static void TalkShiftClearAll_OnInit(struct GenericProc * proc)
 
     TalkBgSync(BG0_SYNC_BIT);
 
-    proc->unk64 = 0;
+    proc->timer1 = 0;
 
     if (sTalkSt->line_active == 0)
     {
-        proc->unk66 = 16;
+        proc->timer2 = 16;
     }
     else if (sTalkSt->line_active + 1 >= sTalkSt->lines)
     {
-        proc->unk66 = sTalkSt->lines * 16;
+        proc->timer2 = sTalkSt->lines * 16;
     }
     else
     {
-        proc->unk66 = (sTalkSt->line_active + 1) * 16;
+        proc->timer2 = (sTalkSt->line_active + 1) * 16;
     }
 }
 
 static void TalkShiftClearAll_OnIdle(struct GenericProc * proc)
 {
-    proc->unk64 = proc->unk64 + 1;
+    proc->timer1 = proc->timer1 + 1;
 
-    SetBgOffset(0, 0, proc->unk64);
+    SetBgOffset(0, 0, proc->timer1);
 
-    if (proc->unk64 >= proc->unk66)
+    if (proc->timer1 >= proc->timer2)
     {
         SetBgOffset(0, 0, 0);
         ClearPutTalkText();
@@ -1306,16 +1306,16 @@ static void TalkShiftClear_OnInit(struct GenericProc * proc)
 
     TalkBgSync(BG0_SYNC_BIT);
 
-    proc->unk64 = 0;
+    proc->timer1 = 0;
 }
 
 static void TalkShiftClear_OnIdle(struct GenericProc * proc)
 {
-    proc->unk64 = proc->unk64 + 1;
+    proc->timer1 = proc->timer1 + 1;
 
-    SetBgOffset(0, 0, proc->unk64);
+    SetBgOffset(0, 0, proc->timer1);
 
-    if (proc->unk64 >= 16)
+    if (proc->timer1 >= 16)
     {
         int i;
 
@@ -1494,7 +1494,7 @@ static void PutTalkBubble(int xAnchor, int yAnchor, int width, int height)
 static void StartOpenTalkBubble(void)
 {
     struct GenericProc * proc = SpawnProc(ProcScr_TalkOpenBubble, PROC_TREE_3);
-    proc->unk64 = 0;
+    proc->timer1 = 0;
 }
 
 static void TalkOpenBubble_OnIdle(struct GenericProc * proc)
@@ -1510,13 +1510,13 @@ static void TalkOpenBubble_OnIdle(struct GenericProc * proc)
         NULL,
     };
 
-    if ((proc->unk64++) & 1)
+    if ((proc->timer1++) & 1)
         return;
 
-    Decompress(img_list[proc->unk64 >> 1],
+    Decompress(img_list[proc->timer1 >> 1],
         (u8 *) VRAM + GetBgChrOffset(1) + 0x10 * CHR_SIZE);
 
-    if (img_list[(proc->unk64 >> 1) + 1] == NULL)
+    if (img_list[(proc->timer1 >> 1) + 1] == NULL)
         Proc_Break(proc);
 }
 
@@ -1620,7 +1620,7 @@ static void TalkOpen_InitBlend(struct GenericProc * proc)
 
 static void TalkOpen_PutTalkBubble(struct GenericProc * proc)
 {
-    PutTalkBubble(proc->unk64, proc->unk66, proc->unk68, proc->unk6A);
+    PutTalkBubble(proc->timer1, proc->timer2, proc->unk68, proc->unk6A);
     Proc_Break(proc);
 }
 
@@ -1643,17 +1643,17 @@ static void StartTalkOpen(int talk_face, ProcPtr parent)
 {
     struct GenericProc * proc = SpawnProcLocking(ProcScr_TalkOpen, parent);
 
-    proc->unk64 = GetTalkFaceHPos(talk_face);
-    proc->unk66 = 8;
+    proc->timer1 = GetTalkFaceHPos(talk_face);
+    proc->timer2 = 8;
 
     proc->unk68 = sTalkSt->active_width;
     proc->unk6A = 6;
 
-    if (proc->unk64 < 0)
-        proc->unk64 = 0;
+    if (proc->timer1 < 0)
+        proc->timer1 = 0;
 
-    if (proc->unk64 > 29)
-        proc->unk64 = 30;
+    if (proc->timer1 > 29)
+        proc->timer1 = 30;
 
     sTalkSt->speak_talk_face = talk_face;
     sTalkSt->speak_width = sTalkSt->active_width;
@@ -1767,7 +1767,7 @@ static void TalkPutSpriteText_OnIdle(struct GenericProc * proc)
 {
     PutSprite(3,
         proc->x, proc->y, Sprite_TalkTextBack,
-        OAM2_CHR(proc->unk52) | OAM2_PAL(proc->unk64));
+        OAM2_CHR(proc->unk52) | OAM2_PAL(proc->timer1));
 
     PutSprite(3,
         proc->x, proc->y, Sprite_TalkTextFront,
@@ -1796,7 +1796,7 @@ void StartPutTalkSpriteText(int x, int y, int chr, int palid, ProcPtr parent)
     proc->x = x;
     proc->y = y;
     proc->unk52 = chr;
-    proc->unk64 = palid;
+    proc->timer1 = palid;
 
     InitScanlineEffect();
     func_fe6_0806A218(y + 7, y + 41, 0x44C3, 0x7247);

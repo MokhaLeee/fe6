@@ -194,13 +194,6 @@ void func_fe6_08094030(int arg_0, int arg_1, int arg_2, ProcPtr proc);
 // func_fe6_08094108
 // func_fe6_08094110
 // func_fe6_0809412C
-// func_fe6_08094214
-// func_fe6_08094228
-// func_fe6_08094234
-// func_fe6_08094438
-// func_fe6_08094460
-// func_fe6_080944F4
-// func_fe6_08094504
 
 extern u16 CONST_DATA Sprite_0868C2CC[];
 extern u16 CONST_DATA Sprite_0868C2D4[];
@@ -222,7 +215,5 @@ extern CONST_DATA struct ProcScr ProcScr_WroldMapRmBorder[];
 // extern CONST_DATA ??? gUnk_0868C940
 // extern CONST_DATA ??? gUnk_0868C970
 // extern CONST_DATA ??? gUnk_0868C988
-// extern CONST_DATA ??? gUnk_0868FDB4
-// extern CONST_DATA ??? gUnk_0868FE0C
 
 extern const int gUnk_08353328[];

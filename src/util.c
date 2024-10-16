@@ -492,8 +492,8 @@ void func_fe6_08014130(char const * arg_0)
 
 static void SpacialSeTest_OnInit(struct GenericProc * proc)
 {
-    proc->unk64 = 0;
-    proc->unk66 = 90;
+    proc->timer1 = 0;
+    proc->timer2 = 90;
 }
 
 static void SpacialSeTest_OnLoop(struct GenericProc * proc)
@@ -501,15 +501,15 @@ static void SpacialSeTest_OnLoop(struct GenericProc * proc)
     int location = 0;
 
     if (gKeySt->pressed & KEY_BUTTON_A)
-        proc->unk66++;
+        proc->timer2++;
 
-    if (((proc->unk64++) & 0x0F) == 0)
+    if (((proc->timer1++) & 0x0F) == 0)
     {
         if (gKeySt->held & KEY_DPAD_LEFT)
-            location = -proc->unk66;
+            location = -proc->timer2;
 
         if (gKeySt->held & KEY_DPAD_RIGHT)
-            location = +proc->unk66;
+            location = +proc->timer2;
 
         PlaySeSpacial(SONG_9A, location);
     }
@@ -663,8 +663,8 @@ static void FadeToBlack_OnInit(struct GenericProc * proc)
     SetBlendTargetA(1, 1, 1, 1, 1);
     SetBlendBackdropA(1);
 
-    proc->unk64 = 0x10;
-    proc->unk66 = 0;
+    proc->timer1 = 0x10;
+    proc->timer2 = 0;
 }
 
 static void FadeToCommon_OnLoop(struct GenericProc * proc)
@@ -675,12 +675,12 @@ static void FadeToCommon_OnLoop(struct GenericProc * proc)
         return;
     }
 
-    proc->unk66 += proc->unk64;
+    proc->timer2 += proc->timer1;
 
-    if (proc->unk66 >= 0x100)
-        proc->unk66 = 0x100;
+    if (proc->timer2 >= 0x100)
+        proc->timer2 = 0x100;
 
-    gDispIo.blend_y = proc->unk66 >> 4;
+    gDispIo.blend_y = proc->timer2 >> 4;
 }
 
 static void FadeFromBlack_OnInit(struct GenericProc * proc)
@@ -696,8 +696,8 @@ static void FadeFromBlack_OnInit(struct GenericProc * proc)
     SetBlendTargetB(1, 1, 1, 1, 1);
     SetBlendBackdropA(1);
 
-    proc->unk64 = 0x10;
-    proc->unk66 = 0x100;
+    proc->timer1 = 0x10;
+    proc->timer2 = 0x100;
 }
 
 static void FadeFromCommon_OnLoop(struct GenericProc * proc)
@@ -708,12 +708,12 @@ static void FadeFromCommon_OnLoop(struct GenericProc * proc)
         return;
     }
 
-    proc->unk66 -= proc->unk64;
+    proc->timer2 -= proc->timer1;
 
-    if (proc->unk66 <= 0)
-        proc->unk66 = 0;
+    if (proc->timer2 <= 0)
+        proc->timer2 = 0;
 
-    gDispIo.blend_y = proc->unk66 >> 4;
+    gDispIo.blend_y = proc->timer2 >> 4;
 }
 
 static void FadeToWhite_OnInit(struct GenericProc * proc)
@@ -780,37 +780,37 @@ bool FadeExists(void)
 void StartFadeToBlack(int q4_speed)
 {
     struct GenericProc * proc = SpawnProc(ProcScr_FadeToBlack, PROC_TREE_3);
-    proc->unk64 = q4_speed;
+    proc->timer1 = q4_speed;
 }
 
 void StartFadeFromBlack(int q4_speed)
 {
     struct GenericProc * proc = SpawnProc(ProcScr_FadeFromBlack, PROC_TREE_3);
-    proc->unk64 = q4_speed;
+    proc->timer1 = q4_speed;
 }
 
 void StartLockingFadeToBlack(int q4_speed, ProcPtr parent)
 {
     struct GenericProc * proc = SpawnProcLocking(ProcScr_FadeToBlack, parent);
-    proc->unk64 = q4_speed;
+    proc->timer1 = q4_speed;
 }
 
 void StartLockingFadeFromBlack(int q4_speed, ProcPtr parent)
 {
     struct GenericProc * proc = SpawnProcLocking(ProcScr_FadeFromBlack, parent);
-    proc->unk64 = q4_speed;
+    proc->timer1 = q4_speed;
 }
 
 void StartLockingFadeToWhite(int q4_speed, ProcPtr parent)
 {
     struct GenericProc * proc = SpawnProcLocking(ProcScr_FadeToWhite, parent);
-    proc->unk64 = q4_speed;
+    proc->timer1 = q4_speed;
 }
 
 void StartLockingFadeFromWhite(int q4_speed, ProcPtr parent)
 {
     struct GenericProc * proc = SpawnProcLocking(ProcScr_FadeFromWhite, parent);
-    proc->unk64 = q4_speed;
+    proc->timer1 = q4_speed;
 }
 
 void StartMidFadeToBlack(void)
@@ -1561,7 +1561,7 @@ void CallDelayedArg(void (* func)(int), int arg, int delay)
     proc->clock = delay;
 }
 
-void func_fe6_080151E4(u8 * out, int size)
+void ClearTm(u8 * out, int size)
 {
     while (size > 0)
     {
@@ -1570,7 +1570,7 @@ void func_fe6_080151E4(u8 * out, int size)
     }
 }
 
-void func_fe6_080151F8(u8 * out, int size, int value)
+void SetTm_unused(u8 * out, int size, int value)
 {
     while (size > 0)
     {
@@ -1579,7 +1579,7 @@ void func_fe6_080151F8(u8 * out, int size, int value)
     }
 }
 
-void func_fe6_08015208(u16 * out, int size, int value)
+void SetTm(u16 * out, int size, int value)
 {
     while (size > 0)
     {
@@ -1628,16 +1628,16 @@ void StartPartialGameLock(ProcPtr proc)
     struct GenericProc * gproc;
 
     gproc = SpawnProcLocking(ProcScr_PartialGameLock, proc);
-    gproc->unk64 = GetGameLock();
+    gproc->timer1 = GetGameLock();
 }
 
 static void PartialGameLock_OnLoop(struct GenericProc * proc)
 {
-    if (GetGameLock() == proc->unk64)
+    if (GetGameLock() == proc->timer1)
         Proc_Break(proc);
 }
 
-void VramCopy(u8 const * src, u8 * dst, int size)
+void VramCopy(void const * src, void * dst, int size)
 {
     if ((size & 0x1F) != 0)
         CpuCopy16(src, dst, size);
@@ -1690,19 +1690,19 @@ u16 * GetTmOffsetById(int bgid, int x, int y)
     }
 }
 
-void func_fe6_08015344(void)
+void Clear4bppFirstTm(void)
 {
     if (gDispIo.bg0_ct.color_depth == BG_COLORDEPTH_4BPP)
-        func_fe6_08015208((u16 *) (VRAM + GetBgChrOffset(0)), 0x10, 0);
+        SetTm((u16 *) (VRAM + GetBgChrOffset(0)), 0x10, 0);
 
     if (gDispIo.bg1_ct.color_depth == BG_COLORDEPTH_4BPP)
-        func_fe6_08015208((u16 *) (VRAM + GetBgChrOffset(1)), 0x10, 0);
+        SetTm((u16 *) (VRAM + GetBgChrOffset(1)), 0x10, 0);
 
     if (gDispIo.bg2_ct.color_depth == BG_COLORDEPTH_4BPP)
-        func_fe6_08015208((u16 *) (VRAM + GetBgChrOffset(2)), 0x10, 0);
+        SetTm((u16 *) (VRAM + GetBgChrOffset(2)), 0x10, 0);
 
     if (gDispIo.bg3_ct.color_depth == BG_COLORDEPTH_4BPP)
-        func_fe6_08015208((u16 *) (VRAM + GetBgChrOffset(3)), 0x10, 0);
+        SetTm((u16 *) (VRAM + GetBgChrOffset(3)), 0x10, 0);
 }
 
 int Screen2Pan(int x)
@@ -1750,7 +1750,7 @@ void _FadeBgmOut(short speed)
     FadeBgmOut(speed);
 }
 
-void func_fe6_080154AC(int palid)
+void BrightenPalette(int palid)
 {
     int i;
 

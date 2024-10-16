@@ -120,8 +120,8 @@ struct GenericProc
     /* 58 */ int unk58;
     /* 5C */ int unk5C;
     /* 60 */ int unk60;
-    /* 64 */ short unk64;
-    /* 66 */ short unk66;
+    /* 64 */ short timer1;
+    /* 66 */ short timer2;
     /* 68 */ short unk68;
     /* 6A */ short unk6A;
 };

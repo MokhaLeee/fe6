@@ -81,7 +81,7 @@ void Title_Init(struct ProcTitle * proc)
     DisableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 
     SetDispEnable(0, 0, 0, 1, 1);
-    func_fe6_08015208((void *)BG_VRAM + GetBgTilemapOffset(BG_2), 0x1000, 0);
+    SetTm((void *)BG_VRAM + GetBgTilemapOffset(BG_2), 0x1000, 0);
 
     Decompress(Img_Title_BG, (void *)BG_VRAM + GetBgChrOffset(BG_0));
     Decompress(Tsa_Title_BG0, (void *)BG_VRAM + GetBgTilemapOffset(BG_0));

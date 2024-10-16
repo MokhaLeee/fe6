@@ -830,8 +830,8 @@ void PrepMenu_InitScreen(struct PrepMenuProc * proc)
     }
     else
     {
-        Decompress(gUnk_0831B0A8, (void *) VRAM + GetBgChrOffset(3));
-        ApplyBgPalettes(gUnk_08320D98, BGPAL_PREPMENU_A, 4);
+        Decompress(Img_MonologueBG, (void *) VRAM + GetBgChrOffset(3));
+        ApplyBgPalettes(Pal_MonologueBG, BGPAL_PREPMENU_A, 4);
         proc->procbg = func_fe6_08082560(proc);
     }
 

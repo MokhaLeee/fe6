@@ -2228,8 +2228,8 @@ static int EvtCmd_FlashCursorPosition(struct EventProc * proc)
 
     gproc = SpawnProc(ProcScr_FlashCursor, proc);
 
-    gproc->unk64 = x;
-    gproc->unk66 = y;
+    gproc->timer1 = x;
+    gproc->timer2 = y;
 
     proc->on_idle = EventFlashCursorWait;
 
@@ -2249,8 +2249,8 @@ static int EvtCmd_FlashCursorPid(struct EventProc * proc)
 
     gproc = SpawnProc(ProcScr_FlashCursor, proc);
 
-    gproc->unk64 = unit->x;
-    gproc->unk66 = unit->y;
+    gproc->timer1 = unit->x;
+    gproc->timer2 = unit->y;
 
     proc->on_idle = EventFlashCursorWait;
 
@@ -2275,7 +2275,7 @@ static void FlashCursor_OnLoop(struct GenericProc * proc)
     if (--proc->unk58 <= 0)
         Proc_Break(proc);
 
-    PutMapCursor(proc->unk64 << 4, proc->unk66 << 4, MAP_CURSOR_DEFAULT);
+    PutMapCursor(proc->timer1 << 4, proc->timer2 << 4, MAP_CURSOR_DEFAULT);
 }
 
 static int EvtCmd_PutCursor(struct EventProc * proc)
@@ -2293,15 +2293,15 @@ static int EvtCmd_PutCursor(struct EventProc * proc)
 
     gproc = SpawnProc(ProcScr_EventCursor, proc);
 
-    gproc->unk64 = x;
-    gproc->unk66 = y;
+    gproc->timer1 = x;
+    gproc->timer2 = y;
 
     return EVENT_CMDRET_YIELD;
 }
 
 static void EventCursor_OnLoop(struct GenericProc * proc)
 {
-    PutMapCursor(proc->unk64 << 4, proc->unk66 << 4, MAP_CURSOR_DEFAULT);
+    PutMapCursor(proc->timer1 << 4, proc->timer2 << 4, MAP_CURSOR_DEFAULT);
 }
 
 static int EvtCmd_ClearCursors(struct EventProc * proc)
@@ -2835,14 +2835,14 @@ static int EvtCmd_SetWeather(struct EventProc * proc)
     struct GenericProc * gproc;
 
     gproc = SpawnProcLocking(ProcScr_WeatherChangeFade, proc);
-    gproc->unk64 = proc->script[0];
+    gproc->timer1 = proc->script[0];
 
     return EVENT_CMDRET_YIELD;
 }
 
 static void DoChangeWeather(struct GenericProc * proc)
 {
-    SetWeather(proc->unk64);
+    SetWeather(proc->timer1);
 }
 
 static int EvtCmd_WmStart(struct EventProc * proc)
