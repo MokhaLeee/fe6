@@ -488,7 +488,7 @@ func_fe6_0808ABD4: @ 0x0808ABD4
 	strb r0, [r5]
 	adds r0, r7, #0
 	bl func_fe6_0808B7A0
-	ldr r6, .L0808AEEC @ =gUnk_0831B0A8
+	ldr r6, .L0808AEEC @ =Img_MonologueBG
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -497,7 +497,7 @@ func_fe6_0808ABD4: @ 0x0808ABD4
 	adds r1, r1, r0
 	adds r0, r6, #0
 	bl Decompress
-	ldr r0, .L0808AEF0 @ =gUnk_08320D98
+	ldr r0, .L0808AEF0 @ =Pal_MonologueBG
 	movs r1, #0xf0
 	lsls r1, r1, #1
 	movs r2, #0x20
@@ -528,8 +528,8 @@ func_fe6_0808ABD4: @ 0x0808ABD4
 .L0808AEE0: .4byte gMapSize
 .L0808AEE4: .4byte 0x0203DC3C
 .L0808AEE8: .4byte gBg0Tm+0x4
-.L0808AEEC: .4byte gUnk_0831B0A8
-.L0808AEF0: .4byte gUnk_08320D98
+.L0808AEEC: .4byte Img_MonologueBG
+.L0808AEF0: .4byte Pal_MonologueBG
 .L0808AEF4: .4byte 0x0203DC6C
 .L0808AEF8: .4byte 0x0203DC6D
 
@@ -2022,7 +2022,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 	movs r2, #0xf
 	movs r3, #0xa
 	bl func_fe6_0808FDE8
-	ldr r4, .L0808BBA8 @ =gUnk_0831B0A8
+	ldr r4, .L0808BBA8 @ =Img_MonologueBG
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -2079,7 +2079,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 .L0808BB9C: .4byte 0x0000FF98
 .L0808BBA0: .4byte 0x0000FFC0
 .L0808BBA4: .4byte 0x00006140
-.L0808BBA8: .4byte gUnk_0831B0A8
+.L0808BBA8: .4byte Img_MonologueBG
 .L0808BBAC: .4byte gUnk_0832CA9C
 .L0808BBB0: .4byte gUnk_08345440
 .L0808BBB4: .4byte gUnk_0832CAFC

@@ -2421,8 +2421,8 @@ void func_fe6_08065E78(struct ManimSomethingProc_08065E08 * proc)
     ApplyPalette(gUnk_082DF690, 0x10 + OBPAL_MANIM_4);
 
     SetWhitePal(BGPAL_MANIM_4);
-    func_fe6_08015208(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
-    func_fe6_08015208(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
+    SetTm(((void *) VRAM) + GetBgChrOffset(2) + BGCHR_MANIM_140 * CHR_SIZE, CHR_SIZE / sizeof(u16), 0xFFFF);
+    SetTm(gBg2Tm, ARRAY_COUNT(gBg2Tm), TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4));
     EnableBgSync(BG2_SYNC_BIT);
 
     proc->unk_40 = 0;

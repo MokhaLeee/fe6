@@ -425,21 +425,21 @@ struct MuProc * StartMuScripted(u16 x, u16 y, u16 jid, int pal, u8 const * moves
 void MuStepSe_Init(struct GenericProc * proc)
 {
     proc->unk58 = 0;
-    proc->unk64 = 0;
+    proc->timer1 = 0;
 
     proc->unk5C = 0;
-    proc->unk66 = 0;
+    proc->timer2 = 0;
 }
 
 void MuStepSe_PlaySeA(struct GenericProc * proc)
 {
-    PlaySeSpacial(proc->unk58, proc->unk64);
+    PlaySeSpacial(proc->unk58, proc->timer1);
 }
 
 void MuStepSe_PlaySeB(struct GenericProc * proc)
 {
     if (proc->unk5C != 0)
-        PlaySeSpacial(proc->unk5C, proc->unk66);
+        PlaySeSpacial(proc->unk5C, proc->timer2);
 }
 
 void StartPlayMuStepSe(int song, int alt_offset, int x)
@@ -454,7 +454,7 @@ void StartPlayMuStepSe(int song, int alt_offset, int x)
     if (proc->unk58 == 0)
     {
         proc->unk58 = song;
-        proc->unk64 = x;
+        proc->timer1 = x;
     }
 #if BUGFIX
     else if (proc->unk5C == 0)
@@ -463,7 +463,7 @@ void StartPlayMuStepSe(int song, int alt_offset, int x)
 #endif
     {
         proc->unk5C = song + alt_offset;
-        proc->unk66 = x;
+        proc->timer2 = x;
     }
 }
 
@@ -989,9 +989,9 @@ void StartMuDeathFade(struct MuProc * mu)
     proc = SpawnProc(ProcScr_MuDeathFade, mu);
 
     proc->ptr = mu;
-    proc->unk64 = 0x20;
+    proc->timer1 = 0x20;
 
-    SetBlendConfig(0, proc->unk64 >> 1, 0x10, 0);
+    SetBlendConfig(0, proc->timer1 >> 1, 0x10, 0);
 
     FreezeSpriteAnim(mu->sprite_anim);
 
@@ -1004,9 +1004,9 @@ void StartMuDeathFade(struct MuProc * mu)
 
 void MuDeathFade_OnLoop(struct GenericProc * proc)
 {
-    SetBlendConfig(0, (proc->unk64--) >> 1, 0x10, 0);
+    SetBlendConfig(0, (proc->timer1--) >> 1, 0x10, 0);
 
-    if (proc->unk64 == 0)
+    if (proc->timer1 == 0)
     {
         EndMu(proc->ptr);
         Proc_Break(proc);

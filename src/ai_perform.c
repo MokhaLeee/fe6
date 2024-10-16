@@ -95,10 +95,10 @@ void AiActionCursor_Idle(struct GenericProc * proc)
 {
     PutMapCursor(proc->x, proc->y, proc->unk58);
 
-    if ((gKeySt->held & (KEY_BUTTON_A | KEY_BUTTON_START)) || proc->unk64 > 45)
+    if ((gKeySt->held & (KEY_BUTTON_A | KEY_BUTTON_START)) || proc->timer1 > 45)
         Proc_Break(proc);
 
-    proc->unk64++;
+    proc->timer1++;
 }
 
 void AiStartActionCursor(int x, int y, int kind, ProcPtr parent)
@@ -110,7 +110,7 @@ void AiStartActionCursor(int x, int y, int kind, ProcPtr parent)
     proc->x = x;
     proc->y = y;
     proc->unk58 = kind;
-    proc->unk64 = 0;
+    proc->timer1 = 0;
 }
 
 void AiPerform_WatchUnit(struct AiPerformProc * proc)

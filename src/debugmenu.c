@@ -166,7 +166,7 @@ u32 func_fe6_0801A760(struct MenuProc * menu, struct MenuEntProc * ent)
     ClearText(&ent->text);
 
     Text_InsertDrawString(&ent->text, 8, TEXT_COLOR_SYSTEM_WHITE, JTEXT("デブ情報"));
-    Text_InsertDrawString(&ent->text, 64, TEXT_COLOR_SYSTEM_BLUE, offon[proc->unk66]);
+    Text_InsertDrawString(&ent->text, 64, TEXT_COLOR_SYSTEM_BLUE, offon[proc->timer2]);
 
     PutText(&ent->text, gBg0Tm + TM_OFFSET(ent->x, ent->y));
 
@@ -181,7 +181,7 @@ fu8 func_fe6_0801A7D4(struct MenuProc * menu, struct MenuEntProc * ent)
 
     if (gKeySt->pressed & (KEY_BUTTON_A | KEY_DPAD_RIGHT | KEY_DPAD_LEFT))
     {
-        proc->unk66 ^= 1;
+        proc->timer2 ^= 1;
         func_fe6_0801A760(menu, ent);
 
         DebugInitObj(-1, 9);

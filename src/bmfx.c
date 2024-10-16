@@ -2176,20 +2176,20 @@ static void GameOverScreen_RandomScroll_Init(struct GenericProc * proc)
     proc->unk3C = -16;
     proc->unk40 = -53;
 
-    proc->unk64 = 1234;
-    proc->unk66 = 5678;
+    proc->timer1 = 1234;
+    proc->timer2 = 5678;
     proc->unk68 = 6346;
     proc->unk6A = 8536;
 }
 
 static void GameOverScreen_RandomScroll_Loop(struct GenericProc * proc)
 {
-    proc->unk64 += proc->unk34;
-    proc->unk66 += proc->unk38;
+    proc->timer1 += proc->unk34;
+    proc->timer2 += proc->unk38;
     proc->unk68 += proc->unk3C;
     proc->unk6A += proc->unk40;
 
-    SetBgOffset(2, -proc->unk64 >> 8, -proc->unk66 >> 8);
+    SetBgOffset(2, -proc->timer1 >> 8, -proc->timer2 >> 8);
     SetBgOffset(3, -proc->unk68 >> 8, -proc->unk6A >> 8);
 }
 

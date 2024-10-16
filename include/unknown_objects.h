@@ -132,10 +132,10 @@ extern u8 const gUnk_0833C8D8[]; // tsa
 extern u16 const Pal_0831AAFC[];
 // extern ??? gUnk_0831AB1C
 // extern ??? gUnk_0831B068
-// extern ??? gUnk_0831B0A8
-// extern ??? gUnk_08320434
+extern u8 const Img_MonologueBG[];
+extern u8 const Tsa_MonologueBG[];
 // extern ??? gUnk_08320436
-// extern ??? gUnk_08320D98
+extern u16 const Pal_MonologueBG[];
 // extern ??? Img_SpinningArrow
 // extern ??? gUnk_08320EEC
 // extern ??? gUnk_08320FCE
@@ -700,8 +700,8 @@ extern u16 const Pal_Unk_0833C944[];
 // extern const ??? gUnk_083463B4
 // extern const ??? gUnk_083463F4
 // extern const ??? gUnk_08346574
-// extern const ??? gUnk_0834658C
-// extern const ??? gUnk_08349A78
+extern u8 const Img_MonologueText[];
+extern u16 const Pal_MonologueText[];
 // extern const ??? gUnk_08349A98
 // extern const ??? gUnk_0834B69C
 // extern const ??? gUnk_0834E1D4
@@ -880,6 +880,7 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_0868BFCC
 
 /* worldmap.h */
+/* monologue.h */
 /* shop.h */
 /* arena_ui.h */
 /* suspend_ui.h */

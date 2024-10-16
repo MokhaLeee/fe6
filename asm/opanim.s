@@ -143,7 +143,7 @@ func_fe6_080988C0: @ 0x080988C0
 	push {lr}
 	ldr r0, .L08098924 @ =gUnk_0869161C
 	bl InitBgs
-	bl func_fe6_08015344
+	bl Clear4bppFirstTm
 	ldr r3, .L08098928 @ =gDispIo
 	movs r0, #8
 	rsbs r0, r0, #0

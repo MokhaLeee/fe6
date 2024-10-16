@@ -603,6 +603,7 @@ SECTIONS
         asm/code.o(.text);
         src/worldmap.o(.text);
         asm/worldmap.o(.text);
+        src/monologue.o(.text);
         src/class_demo.o(.text);
         asm/classdemo.o(.text);
         src/shop.o(.text);
@@ -611,7 +612,6 @@ SECTIONS
         src/suspend_ui.o(.text);
         asm/opanim.o(.text);
         src/titlescreen.o(.text);
-        asm/titlescreen.o(.text);
 
         src/m4a_1.o(.text);
         src/m4a.o(.text);
@@ -834,6 +834,7 @@ SECTIONS
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); data/worldmap.o(.data);
+        . = ALIGN(4); src/monologue.o(.data);
         . = ALIGN(4); src/class_demo.o(.data);
         . = ALIGN(4); data/classdemo.o(.data);
         . = ALIGN(4); src/shop.o(.data);
