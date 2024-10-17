@@ -2233,8 +2233,8 @@ StartWMMapText: @ 0x08093B3C
 	.align 2, 0
 .L08093B9C: .4byte gUnk_0868C8D8
 
-	thumb_func_start func_fe6_08093BA0
-func_fe6_08093BA0: @ 0x08093BA0
+	thumb_func_start RemoveWmMapText
+RemoveWmMapText: @ 0x08093BA0
 	push {lr}
 	bl GetWMMapText
 	cmp r0, #0
@@ -2245,8 +2245,8 @@ func_fe6_08093BA0: @ 0x08093BA0
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08093BB4
-func_fe6_08093BB4: @ 0x08093BB4
+	thumb_func_start EndWmMapText
+EndWmMapText: @ 0x08093BB4
 	push {lr}
 	bl GetWMMapText
 	adds r1, r0, #0

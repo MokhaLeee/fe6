@@ -3038,7 +3038,7 @@ int EvtCmd_WmRemoveMapText(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_08093BB4(id);
+    EndWmMapText(id);
 
     return EVENT_CMDRET_CONTINUE;
 }

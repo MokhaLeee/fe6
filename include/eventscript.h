@@ -345,6 +345,48 @@ enum
 #define EvtWeather(weather) \
     EVT_CMD_WEATHER, (weather),
 
+#define EvtWmStart \
+    EVT_CMD_WM_START, 0,
+
+#define EvtWmEnd \
+    EVT_CMD_WM_END,
+
+#define EvtWmZoomTo(x, y) \
+    EVT_CMD_WM_ZOOMTO, _EvtParams2(x, y),
+
+#define EvtWmPutFace(slot, x, y, fid) \
+    EVT_CMD_WM_PUTFACE, (slot), _EvtParams2(x, y), (fid),
+
+#define EvtWmTalk(msg) \
+    EVT_CMD_WM_TALK, (msg),
+
+#define EvtWmTalkBoxBottom \
+    EVT_CMD_WM_TALKBOX_BOTTOM,
+
+#define EvtWmTalkBoxTop \
+    EVT_CMD_WM_TALKBOX_TOP,
+
+#define EvtWmTalkBoxRemove \
+    EVT_CMD_WM_TALKBOX_REMOVE,
+
+#define EvtWmPutHighlight(id, nation) \
+    EVT_CMD_WM_HIGHLIGHT, _EvtParams2(id, nation),
+
+#define EvtWmRemoveBothHighlights \
+    EVT_CMD_WM_HIGHLIGHT_REMOVEBOTH,
+
+#define EvtWmPutDot(id, x, y, pal) \
+    EVT_CMD_WM_DOT, (id), _EvtParams2(x, y), (pal),
+
+#define EvtWmRemoveDot(id) \
+    EVT_CMD_WM_DOT_REMOVE, (id),
+
+#define EvtWmPutMapText(id, x, y, location, style, color) \
+    EVT_CMD_WM_MAPTEXT, (id), _EvtParams2(x, y), (location), _EvtParams2(style, color),
+
+#define EvtWmRemoveMapText(id) \
+    EVT_CMD_WM_MAPTEXT_REMOVE, (id),
+
 // aliases
 #define EvtPlaySE(song) EvtPlaySe(song)
 

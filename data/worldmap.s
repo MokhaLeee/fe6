@@ -46,4 +46,4 @@ gUnk_0868C970: @ 0868C970
 
 	.global gUnk_0868C988
 gUnk_0868C988: @ 0868C988
-	.incbin "fe6-base.gba", 0x68C988, (0x68FDB4 - 0x68C988) @ length: 342C
+	.incbin "fe6-base.gba", 0x68C988, (0x68C9B8 - 0x68C988)

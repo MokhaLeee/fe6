@@ -123,7 +123,7 @@ void func_fe6_08092EB0(int a, int b, int c, int d, int e, int f, int g);
 void func_fe6_08093064(int a, int b, int c, int d);
 void StartWorldMapIntroScen(void);
 // func_fe6_08093114
-// func_fe6_08093120
+void func_fe6_08093120(void);
 // SetWMFlag
 // GetWMFlag
 // SetWMDot
@@ -141,7 +141,7 @@ int func_fe6_080932D8(u16 * buf, int a);
 // func_fe6_08093394
 void func_fe6_080933F8(void);
 i8 func_fe6_08093444(void);
-// func_fe6_0809345C
+void func_fe6_0809345C(void);
 void func_fe6_0809347C(int x, int y);
 void func_fe6_080934A0(void);
 void DisplayWmArrow(int id, int color);
@@ -175,8 +175,8 @@ void EndWMDot(int id);
 void StartWMFlag(int palid, int x, int y, int id);
 void EndWMFlag(int id);
 void StartWMMapText(int x_a, int y_a, int unk, int x_b, int y_b, int id);
-// func_fe6_08093BA0
-void func_fe6_08093BB4(int id);
+// RemoveWmMapText
+void EndWmMapText(int id);
 // func_fe6_08093BC8
 // func_fe6_08093C18
 // func_fe6_08093C24
