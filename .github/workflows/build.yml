@@ -12,10 +12,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Dependencies
-      run: sudo apt update && sudo apt install -y build-essential gcc-arm-none-eabi binutils-arm-none-eabi && sudo apt-get install python3-requests python3-argparse
-
     - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y build-essential gcc-arm-none-eabi binutils-arm-none-eabi
+        python3 -m pip install --upgrade pip
+        pip install requests argparse
 
     - name: Build tools
       run: ./build_tools.sh
