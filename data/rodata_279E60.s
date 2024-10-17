@@ -28,7 +28,35 @@ SpriteAnim_ManimRubble: @ 082A9228
 
     .global SpriteAnim_MuFogBump
 SpriteAnim_MuFogBump: @ 082AA324
-    .incbin "fe6-base.gba", 0x2AA324, (0x2AA968 - 0x2AA324) @ length: 0644
+    .incbin "fe6-base.gba", 0x2AA324, (0x2AA380 - 0x2AA324) @ length: 0644
+
+    .global gUnk_WmArrow_Buf1
+gUnk_WmArrow_Buf1:
+    .incbin "fe6-base.gba", 0x2AA380, (0x2AA4CC - 0x2AA380)
+
+    .global gUnk_WmArrow_Buf2
+gUnk_WmArrow_Buf2:
+    .incbin "fe6-base.gba", 0x2AA4CC, (0x2AA5F0 - 0x2AA4CC)
+
+    .global gUnk_WmArrow_Buf3
+gUnk_WmArrow_Buf3:
+    .incbin "fe6-base.gba", 0x2AA5F0, (0x2AA650 - 0x2AA5F0)
+
+    .global gUnk_WmArrow_Buf4
+gUnk_WmArrow_Buf4:
+    .incbin "fe6-base.gba", 0x2AA650, (0x2AA7FC - 0x2AA650)
+
+    .global gUnk_WmArrow_Buf5
+gUnk_WmArrow_Buf5:
+    .incbin "fe6-base.gba", 0x2AA7FC, (0x2AA844 - 0x2AA7FC)
+
+    .global gUnk_WmArrow_Buf6
+gUnk_WmArrow_Buf6:
+    .incbin "fe6-base.gba", 0x2AA844, (0x2AA918 - 0x2AA844)
+
+    .global gUnk_WmArrow_Buf7
+gUnk_WmArrow_Buf7:
+    .incbin "fe6-base.gba", 0x2AA918, (0x2AA968 - 0x2AA918)
 
     .global Pal_ManimFireDragonMu
 Pal_ManimFireDragonMu: @ 082AA968

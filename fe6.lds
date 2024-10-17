@@ -602,6 +602,7 @@ SECTIONS
         src/config.o(.text);
         asm/code.o(.text);
         src/worldmap.o(.text);
+        src/worldmapfx.o(.text);
         asm/worldmap.o(.text);
         src/monologue.o(.text);
         src/class_demo.o(.text);
@@ -833,8 +834,9 @@ SECTIONS
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
+        . = ALIGN(4); src/worldmapfx.o(.data);
         . = ALIGN(4); data/worldmap.o(.data);
-        . = ALIGN(4); src/worldmap_event.o(.data);
+        . = ALIGN(4); src/worldmap_eventscr.o(.data);
         . = ALIGN(4); data/worldmap_event.o(.data);
         . = ALIGN(4); src/monologue.o(.data);
         . = ALIGN(4); src/class_demo.o(.data);

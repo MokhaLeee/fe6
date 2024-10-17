@@ -5,7 +5,7 @@
 #include "constants/msg.h"
 #include "constants/faces.h"
 
-CONST_DATA EventScr EventScr_0868C9B8[] = {
+CONST_DATA EventScr EventScr_Tutorial[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart

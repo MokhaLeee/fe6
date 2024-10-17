@@ -721,7 +721,7 @@ void Event_MainLoop(struct EventProc * proc)
         {
             proc->no_map = TRUE;
 
-            if (func_fe6_08093444())
+            if (WmSpriteExists())
                 Event_ClearTextOnSkip(proc);
             else
                 Event_DarkenThenFunc(Event_ClearTextOnSkip, proc);
@@ -2568,7 +2568,7 @@ int EvtCmd_WmStart(struct EventProc * proc)
     SetFaceConfig(gWmEventFaceConfig);
     proc->background = 0;
 
-    func_fe6_080933F8();
+    StartWmSprite();
 
     StartWMIntroRotation(proc);
     PlayWMIntroBGM();
@@ -2599,7 +2599,7 @@ int EvtCmd_WmZoomTo(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_080928DC(x, y, proc);
+    StartWmZoomTo(x, y, proc);
     func_fe6_0809347C(x, y);
 
     proc->on_idle = EventWmZoomWait;
@@ -2612,7 +2612,7 @@ int EvtCmd_WmZoomBack(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_08092CD8(proc);
+    StartWmZoomBack(proc);
     func_fe6_080934A0();
 
     proc->on_idle = EventWmZoomWait;
@@ -2624,13 +2624,13 @@ void EventWmZoomWait(struct EventProc * proc)
 {
     if (proc->flags & EVENT_FLAG_SKIPPED)
     {
-        func_fe6_08092E94();
+        EndWmZoom();
         proc->on_idle = NULL;
 
         return;
     }
 
-    if (func_fe6_08092E68())
+    if (WmZoomExists())
         return;
 
     proc->on_idle = NULL;
