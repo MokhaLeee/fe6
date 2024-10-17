@@ -4239,7 +4239,7 @@ func_fe6_0809A868: @ 0x0809A868
 	str r3, [sp, #4]
 	str r3, [sp, #8]
 	adds r3, r4, #0
-	bl func_fe6_08092EB0
+	bl WmZoomCore
 	add sp, #0xc
 	pop {r4, r5}
 	pop {r0}

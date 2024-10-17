@@ -707,7 +707,7 @@ extern u16 const Pal_MonologueText[];
 // extern const ??? gUnk_0834E1D4
 // extern const ??? gUnk_08352160
 // extern const ??? gUnk_08353308
-// extern const ??? gUnk_08353328
+extern const int gUnk_08353328[];
 // extern const ??? gUnk_08354728
 // extern const ??? gUnk_08354760
 // extern const ??? gUnk_08354780
