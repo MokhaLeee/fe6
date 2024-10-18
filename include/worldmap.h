@@ -2,6 +2,7 @@
 
 #include "prelude.h"
 #include "proc.h"
+#include "spriteanim.h"
 
 struct ProcWorldMap {
     PROC_HEADER;
@@ -105,8 +106,8 @@ struct ProcWmZoom {
 };
 
 void StartWmZoomTo(int x, int y, ProcPtr parent);
-void WmZoomIn_Init(struct ProcWmZoom * proc);
-void WmZoomIn_Loop(struct ProcWmZoom * proc);
+void WmZoomTo_Init(struct ProcWmZoom * proc);
+void WmZoomTo_Loop(struct ProcWmZoom * proc);
 void func_fe6_08092A9C(int x, int y);
 void StartWmZoomBack(ProcPtr parent);
 void WmZoomBack_Init(struct ProcWmZoom * proc);
@@ -114,7 +115,7 @@ void WmZoomBack_Loop(struct ProcWmZoom * proc);
 bool WmZoomExists(void);
 void EndWmZoom(void);
 
-void WmZoomCore(int a, int b, int c, int d, int e, int f, int g);
+void WmZoomCore(int a, int b, int c, int d, int e, i16 f, i16 g);
 void DrawWmArrowCore(u8 a, i16 b, i16 c, int d);
 void StartWmEvent(void);
 // func_fe6_08093114
@@ -123,7 +124,7 @@ void func_fe6_08093120(void);
 struct ProcWmSprite {
     PROC_HEADER;
 
-    STRUCT_PAD(0x29, 0x2E);
+    /* 2A */ u16 unk_2A, unk_2C;
 
     /* 2E */ u8 unk_2E;
 
@@ -142,14 +143,14 @@ struct WmArrowConf {
 
 extern CONST_DATA struct WmArrowConf gWmArrowConf[];
 
-void SetWMFlag(int index, ProcPtr approc);
-ProcPtr GetWMFlag(int index);
+void SetWmFlag(int index, ProcPtr approc);
+ProcPtr GetWmFlag(int index);
 void SetWMDot(int index, ProcPtr approc);
 ProcPtr GetWMDot(int index);
-void SetWMHighlight(int index, ProcPtr approc);
-ProcPtr GetWMHighlight(int index);
-void SetWMMapText(int index, ProcPtr approc);
-ProcPtr GetWMMapText(int index);
+void SetWmHighlight(int index, ProcPtr approc);
+ProcPtr GetWmHighlight(int index);
+void SetWmMapText(int index, ProcPtr approc);
+ProcPtr GetWmMapText(int index);
 const u16 * GetWmArrowConfigBuf(int a);
 int GetWmArrowCount(const u16 * buf);
 int func_fe6_08093288(const u16 * buf, int a);
@@ -159,52 +160,98 @@ void WmSpriteDisp_Init(struct GenericProc * proc);
 void WmSpriteDisp_Loop(struct GenericProc * proc);
 void StartWmSprite(void);
 bool WmSpriteExists(void);
-
-void func_fe6_0809345C(void);
+void EndWmSprite(void);
 void func_fe6_0809347C(int x, int y);
-void func_fe6_080934A0(void);
+void ResetWmSpriteState(void);
 void DisplayWmArrow(int id, int color);
-void func_fe6_08093518(void);
-void StartWMIntroRotation(ProcPtr parent);
-// func_fe6_08093584
-// func_fe6_080935A0
-// func_fe6_08093608
-// func_fe6_080936E8
-// func_fe6_08093764
+void SetupWmTalkBoxGfx(void);
 
-struct WMHighlightConfig {
+void StartWmZoomIntro(ProcPtr parent);
+void WmZoomIntro_Init(struct GenericProc * proc);
+void WmZoomIntro_Loop(struct GenericProc * proc);
+void WmRotIntro_Init(struct GenericProc * proc);
+void WmRotIntro_Loop(struct GenericProc * proc);
+void WmRotIntro_End(struct GenericProc * proc);
+
+struct WmHighlightConfig {
     const void * img;
     const u16 * sprite;
-    i16 x, y;
+    u8 x, y;
 };
 
-extern CONST_DATA struct WMHighlightConfig Config_WMHighlight[];
+extern CONST_DATA struct WmHighlightConfig Config_WmHighlight[];
 
-void StartWMHighlight(int arg_0, int id);
-// WMHighlight_Init
-// WMHighlight_Loop
-// WMHighlight_End
-// RemoveWMHighlight
-// RemoveAllWMHighlight
-void WMHighlightFadeOut(int id);
-i8 WMHighlightExists(int id);
-i8 WMHighlightAllSideExists(void);
-void WmPutDot(int palid, int x, int y, int id);
+struct ProcWmHighLight {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x44);
+
+    /* 44 */ u16 unk_44;
+
+    STRUCT_PAD(0x46, 0x50);
+
+    /* 50 */ struct SpriteAnim * sprite_anim;
+    /* 54 */ int ctrl;
+
+    STRUCT_PAD(0x58, 0x64);
+
+    /* 64 */ i16 nation, id;
+};
+
+void StartWmHighlight(int nation, int id);
+void WmHighlight_Init(struct ProcWmHighLight * proc);
+void WmHighlight_Loop(struct ProcWmHighLight * proc);
+void WmHighlight_End(struct ProcWmHighLight * proc);
+void RemoveWmHighlight(int index);
+void RemoveAllWmHighlight(void);
+void WmHighlightFadeOut(int id);
+i8 WmHighlightExists(int id);
+i8 WmHighlightAllSideExists(void);
+void StartWmDot(int x, int y, int palid, int id);
 void EndWMDot(int id);
-void StartWMFlag(int palid, int x, int y, int id);
-void EndWMFlag(int id);
-void StartWMMapText(int x_a, int y_a, int unk, int x_b, int y_b, int id);
-// RemoveWmMapText
+void StartWmFlag(int x, int y, int palid, int id);
+void EndWmFlag(int id);
+
+struct WmMapTextConfig {
+    int unk;
+    const void * img1;
+    const void * img2;
+};
+
+extern CONST_DATA struct WmMapTextConfig Config_WmMapText[];
+
+struct ProcWmMapText {
+    PROC_HEADER;
+
+    /* 2C */ int x, y;
+
+    STRUCT_PAD(0x34, 0x44);
+
+    /* 44 */ i16 unk_44;
+
+    STRUCT_PAD(0x46, 0x50);
+
+    /* 50 */ struct SpriteAnim * sprite_anim;
+    /* 54 */ int ctrl;
+
+    STRUCT_PAD(0x58, 0x64);
+
+    /* 64 */ i16 unk_64, unk_66, unk_68;
+    /* 6A */ i16 id;
+};
+
+void StartWmMapText(int x_a, int y_a, int unk, int x_b, int y_b, int id);
+void RemoveWmMapText(int id);
 void EndWmMapText(int id);
-// func_fe6_08093BC8
-// func_fe6_08093C18
-// func_fe6_08093C24
-// func_fe6_08093D54
-// func_fe6_08093DD4
-// func_fe6_08093E14
-// func_fe6_08093E90
+void PutWmMapTextGfx(const void * img_src, u8 * vram_dst);
+void WmMapTextDisp_Init(struct ProcWmMapText * proc);
+void WmMapTextDisp_DrawGfx(struct ProcWmMapText * proc);
+void WmMapTextDisp_Loop1(struct ProcWmMapText * proc);
+void WmMapTextDisp_Loop2(struct ProcWmMapText * proc);
+void WmMapTextDisp_Loop3(struct ProcWmMapText * proc);
+void WmMapTextDisp_End(struct ProcWmMapText * proc);
 // func_fe6_08093EAC
-// func_fe6_08093FD8
+void ModifyWmSpritePosition(struct Vec2i * vec);
 void PlayWMIntroBGM(void);
 void func_fe6_08094030(int arg_0, int arg_1, int arg_2, ProcPtr proc);
 // func_fe6_08094064
@@ -221,15 +268,14 @@ extern CONST_DATA struct ProcScr ProcScr_WorldMapIntroEvent[];
 extern CONST_DATA struct ProcScr ProcScr_WorldMap[];
 extern CONST_DATA struct ProcScr ProcScr_WmArrow[];
 extern CONST_DATA struct ProcScr ProcScr_0868C3AC[];
-extern CONST_DATA struct ProcScr ProcScr_WmZoomIn[];
+extern CONST_DATA struct ProcScr ProcScr_WmZoomTo[];
 extern CONST_DATA struct ProcScr ProcScr_WmZoomBack[];
 extern CONST_DATA struct ProcScr ProcScr_WmSprite[];
 extern CONST_DATA struct ProcScr ProcScr_WmSpriteDisp[];
-extern CONST_DATA struct ProcScr ProcScr_0868C668[];
-extern CONST_DATA struct ProcScr ProcScr_0868C688[];
+extern CONST_DATA struct ProcScr ProcScr_WmZoomIntro[];
+extern CONST_DATA struct ProcScr ProcScr_WmRotIntro[];
 extern CONST_DATA struct ProcScr ProcScr_WroldMapRmBorder[];
-// extern CONST_DATA ??? gUnk_0868C734
-// extern CONST_DATA ??? gUnk_0868C8D8
+extern CONST_DATA struct ProcScr ProcScr_WmMapTextDisp[];
 // extern CONST_DATA ??? gUnk_0868C940
 // extern CONST_DATA ??? gUnk_0868C970
 // extern CONST_DATA ??? gUnk_0868C988

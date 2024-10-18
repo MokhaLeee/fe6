@@ -717,6 +717,8 @@ SECTIONS
         . = ALIGN(4); src/savemenu.o(.rodata);
         . = ALIGN(4); src/savemenu_2.o(.rodata);
         . = ALIGN(4); data/rodata.o(.rodata);
+        . = ALIGN(4); src/worldmapfx.o(.rodata);
+        . = ALIGN(4); data/rodata_08354760.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
         . = ALIGN(4); data/rodata_lib.o(.rodata);

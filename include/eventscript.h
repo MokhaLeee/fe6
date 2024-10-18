@@ -375,7 +375,7 @@ enum
 #define EvtWmRemoveBothHighlights \
     EVT_CMD_WM_HIGHLIGHT_REMOVEBOTH,
 
-#define EvtWmPutDot(id, x, y, pal) \
+#define EvtStartWmDot(id, x, y, pal) \
     EVT_CMD_WM_DOT, (id), _EvtParams2(x, y), (pal),
 
 #define EvtWmRemoveDot(id) \

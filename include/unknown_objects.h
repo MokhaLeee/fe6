@@ -550,8 +550,8 @@ extern u16 const Tsa_EkrFaefx12[];
 // extern ??? gUnk_081CFCB0
 // extern ??? gUnk_081D043C
 
-// extern ??? Img_WmDialogueBox
-// extern ??? Pal_WmDialogueBox
+extern u8 Img_WmDialogueBox[];
+extern u16 Pal_WmDialogueBox[];
 extern u8 Pal_Wm_082AADA4[];
 extern u8 Pal_Wm_082B2380[];
 extern u8 Pal_Wm_082B9E64[];
@@ -559,15 +559,29 @@ extern u8 Pal_Wm_082C1224[];
 extern u8 Pal_Wm_082C8874[];
 extern u8 Pal_Wm_082D1964[];
 extern u8 Pal_Wm_082D1BA0[];
-// extern ??? Pal_WroldMapRmBorder
-// extern ??? Img_WorldMapStuff
-// extern ??? gUnk_082D3674
-// extern ??? Pal_WorldMapStuff
-// extern ??? gUnk_082D3764
-// extern ??? gUnk_082D37E4
-// extern ??? Pal_WorldMap_082D3864
-// extern ??? gUnk_082D38A4
-// extern ??? gUnk_082D5910
+extern u8 const Img_WmHighlight_Nation1[];
+extern u8 const Img_WmHighlight_Nation2[];
+extern u8 const Img_WmHighlight_Nation3[];
+extern u8 const Img_WmHighlight_Nation4[];
+extern u8 const Img_WmHighlight_Nation5[];
+extern u8 const Img_WmHighlight_Nation6[];
+extern u8 const Img_WmHighlight_Nation7[];
+extern u16 const ApInfo_WmHighlight_Nation1[];
+extern u16 const ApInfo_WmHighlight_Nation2[];
+extern u16 const ApInfo_WmHighlight_Nation3[];
+extern u16 const ApInfo_WmHighlight_Nation4[];
+extern u16 const ApInfo_WmHighlight_Nation5[];
+extern u16 const ApInfo_WmHighlight_Nation6[];
+extern u16 const ApInfo_WmHighlight_Nation7[];
+extern u16 const Pal_WmHightlight[];
+extern u8 const Img_WorldMapStuff[];
+extern u16 const ApInfo_WmDot[];
+extern u16 const Pal_WorldMapStuff[];
+extern u16 const Pal_WmSpriteDisp2[];
+extern u16 const Pal_WmSpriteDisp1[];
+extern u16 const Pal_WorldMap_082D3864[];
+extern u16 const ApInfo_WmMapTextDisp[];
+extern u8 const Img_DefaultMapText[];
 extern u8 const Img_Background_082D80B0[];
 extern u8 const Tsa_Background_082DAC8C[];
 extern u16 const Pal_Background_082DB140[];

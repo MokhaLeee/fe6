@@ -51,11 +51,11 @@ struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[] = {
 };
 
 struct ProcScr CONST_DATA ProcScr_WorldMap[] = {
-    PROC_MARK(8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_CALL(LockBmDisplay),
     PROC_YIELD,
     PROC_CALL(func_fe6_080922D8),
-    PROC_START_CHILD_LOCKING(ProcScr_0868C688),
+    PROC_START_CHILD_LOCKING(ProcScr_WmRotIntro),
     PROC_REPEAT(func_fe6_080923C4),
     PROC_CALL(StartMidFadeToBlack),
     PROC_REPEAT(WhileFadeExists),
@@ -110,7 +110,7 @@ void func_fe6_080922D8(struct ProcWorldMap * proc)
 void func_fe6_080923C4(struct ProcWorldMap * proc) {}
 
 struct ProcScr CONST_DATA ProcScr_WmArrow[] = {
-    PROC_MARK(8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_ONEND(WmArrow_End),
     PROC_SLEEP(1),
     PROC_CALL(WmArrow_Init),
@@ -333,7 +333,7 @@ struct WmArrowSt * GetFreeWmArrowSt(void)
 }
 
 struct ProcScr CONST_DATA ProcScr_0868C3AC[] = {
-    PROC_MARK(8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_REPEAT(func_fe6_0809289C),
     PROC_END,
 };
@@ -363,11 +363,11 @@ bool func_fe6_080928C0(void)
     return false;
 }
 
-struct ProcScr CONST_DATA ProcScr_WmZoomIn[] = {
-    PROC_MARK(8),
+struct ProcScr CONST_DATA ProcScr_WmZoomTo[] = {
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_SLEEP(1),
-    PROC_CALL(WmZoomIn_Init),
-    PROC_REPEAT(WmZoomIn_Loop),
+    PROC_CALL(WmZoomTo_Init),
+    PROC_REPEAT(WmZoomTo_Loop),
     PROC_END,
 };
 
@@ -375,7 +375,7 @@ void StartWmZoomTo(int x, int y, ProcPtr parent)
 {
     struct ProcWmZoom * proc;
 
-    proc = SpawnProc(ProcScr_WmZoomIn, parent);
+    proc = SpawnProc(ProcScr_WmZoomTo, parent);
 
     proc->wmproc = FindProc(ProcScr_WorldMap);
 
@@ -383,13 +383,13 @@ void StartWmZoomTo(int x, int y, ProcPtr parent)
     proc->iy = y * 0x100;
 }
 
-void WmZoomIn_Init(struct ProcWmZoom * proc)
+void WmZoomTo_Init(struct ProcWmZoom * proc)
 {
     proc->unk_66 = 0;
     proc->unk_68 = 0;
 }
 
-void WmZoomIn_Loop(struct ProcWmZoom * proc)
+void WmZoomTo_Loop(struct ProcWmZoom * proc)
 {
     int ret;
     struct ProcWorldMap * wmproc = proc->wmproc;
@@ -761,7 +761,7 @@ asm("\
 }
 
 struct ProcScr CONST_DATA ProcScr_WmZoomBack[] = {
-    PROC_MARK(8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_SLEEP(1),
     PROC_CALL(WmZoomBack_Init),
     PROC_REPEAT(WmZoomBack_Loop),
@@ -856,7 +856,7 @@ void WmZoomBack_Loop(struct ProcWmZoom * proc)
 
 bool WmZoomExists(void)
 {
-    if (FindProc(ProcScr_WmZoomIn) != NULL)
+    if (FindProc(ProcScr_WmZoomTo) != NULL)
         return true;
 
     if (FindProc(ProcScr_WmZoomBack) != NULL)
@@ -867,14 +867,12 @@ bool WmZoomExists(void)
 
 void EndWmZoom(void)
 {
-    Proc_EndEach(ProcScr_WmZoomIn);
+    Proc_EndEach(ProcScr_WmZoomTo);
     Proc_EndEach(ProcScr_WmZoomBack);
 }
 
-void WmZoomCore(int a, int b, int c, int d, int e, int f, int g)
+void WmZoomCore(int a, int b, int c, int d, int e, i16 f, i16 g)
 {
-    i16 _f = f;
-    i16 _g = g;
     int r5 = Div(e, 0x20);
     int r4 = Div(r5, 2);
     int r7;
@@ -894,11 +892,11 @@ void WmZoomCore(int a, int b, int c, int d, int e, int f, int g)
     c = c / 0x100;
     d = d / 0x100;
 
-    gDispIo.bg2pa = ((0x10000 / _f * r5) / 0x100) >> 7;
-    gDispIo.bg2pb = ((0x10000 / _f * r7) / 0x100) >> 7;
+    gDispIo.bg2pa = ((0x10000 / f * r5) / 0x100) >> 7;
+    gDispIo.bg2pb = ((0x10000 / f * r7) / 0x100) >> 7;
 
-    gDispIo.bg2pc = -(((0x10000 / _g * r7) / 0x100) >> 7);
-    gDispIo.bg2pd = ((0x10000 / _g * r5) / 0x100) >> 7;
+    gDispIo.bg2pc = -(((0x10000 /g * r7) / 0x100) >> 7);
+    gDispIo.bg2pd = ((0x10000 / g * r5) / 0x100) >> 7;
 
     gDispIo.bg2x = ((i16)gDispIo.bg2pa) * (a - c) + ((i16)gDispIo.bg2pb) * (b - d) + c * 0x100;
     gDispIo.bg2y = ((i16)gDispIo.bg2pc) * (a - c) + ((i16)gDispIo.bg2pd) * (b - d) + d * 0x100;

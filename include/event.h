@@ -363,7 +363,7 @@ int EvtCmd_WmRemoveHighlight(struct EventProc * proc);
 void EventWmRemoveHighlightWait(struct EventProc * proc);
 int EvtCmd_WmRemoveBothHighlights(struct EventProc * proc);
 void EventWmRemoveHighlightsWait(struct EventProc * proc);
-int EvtCmd_WmPutDot(struct EventProc * proc);
+int EvtCmd_StartWmDot(struct EventProc * proc);
 int EvtCmd_WmRemoveDot(struct EventProc * proc);
 int EvtCmd_WmPutFlag(struct EventProc * proc);
 int EvtCmd_WmRemoveFlag(struct EventProc * proc);
@@ -517,7 +517,7 @@ void func_fe6_080127B0(void);
     [EVT_CMD_WM_HIGHLIGHT] = { EvtCmd_WmPutHighlight, 2 }, \
     [EVT_CMD_WM_HIGHLIGHT_REMOVE] = { EvtCmd_WmRemoveHighlight, 2 }, \
     [EVT_CMD_WM_HIGHLIGHT_REMOVEBOTH] = { EvtCmd_WmRemoveBothHighlights, 1 }, \
-    [EVT_CMD_WM_DOT] = { EvtCmd_WmPutDot, 4 }, \
+    [EVT_CMD_WM_DOT] = { EvtCmd_StartWmDot, 4 }, \
     [EVT_CMD_WM_DOT_REMOVE] = { EvtCmd_WmRemoveDot, 2 }, \
     [EVT_CMD_WM_FLAG] = { EvtCmd_WmPutFlag, 4 }, \
     [EVT_CMD_WM_FLAG_REMOVE] = { EvtCmd_WmRemoveFlag, 2 }, \
