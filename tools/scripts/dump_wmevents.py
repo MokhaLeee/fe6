@@ -133,7 +133,7 @@ def parse_event(rom_data, off):
             _id = arg1_u32_le
             x, y = unpack_EvtParams2(arg2_u32_le)
             pal = arg3_u32_le
-            print(f"    EvtWmPutDot({_id}, {hex(x)}, {hex(y)}, {pal})")
+            print(f"    EvtStartWmDot({_id}, {hex(x)}, {hex(y)}, {pal})")
 
         case "EVT_CMD_WM_DOT_REMOVE":
             cmd_len = 2

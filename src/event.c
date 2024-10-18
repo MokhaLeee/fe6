@@ -2570,7 +2570,7 @@ int EvtCmd_WmStart(struct EventProc * proc)
 
     StartWmSprite();
 
-    StartWMIntroRotation(proc);
+    StartWmZoomIntro(proc);
     PlayWMIntroBGM();
 
     return EVENT_CMDRET_YIELD;
@@ -2613,7 +2613,7 @@ int EvtCmd_WmZoomBack(struct EventProc * proc)
         return EVENT_CMDRET_CONTINUE;
 
     StartWmZoomBack(proc);
-    func_fe6_080934A0();
+    ResetWmSpriteState();
 
     proc->on_idle = EventWmZoomWait;
 
@@ -2844,7 +2844,7 @@ int EvtCmd_WmTalkBoxBottom(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_08093518();
+    SetupWmTalkBoxGfx();
 
     proc->cmd_short = 14;
 
@@ -2859,7 +2859,7 @@ int EvtCmd_WmTalkBoxTop(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    func_fe6_08093518();
+    SetupWmTalkBoxGfx();
 
     proc->cmd_short = 0;
 
@@ -2900,7 +2900,7 @@ int EvtCmd_WmPutHighlight(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    StartWMHighlight(var_08, id);
+    StartWmHighlight(var_08, id);
 
     return EVENT_CMDRET_CONTINUE;
 }
@@ -2914,7 +2914,7 @@ int EvtCmd_WmRemoveHighlight(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    WMHighlightFadeOut(id);
+    WmHighlightFadeOut(id);
     proc->cmd_byte = id;
 
     proc->on_idle = EventWmRemoveHighlightWait;
@@ -2924,7 +2924,7 @@ int EvtCmd_WmRemoveHighlight(struct EventProc * proc)
 
 void EventWmRemoveHighlightWait(struct EventProc * proc)
 {
-    if (WMHighlightExists(proc->cmd_byte))
+    if (WmHighlightExists(proc->cmd_byte))
         return;
 
     proc->on_idle = NULL;
@@ -2937,8 +2937,8 @@ int EvtCmd_WmRemoveBothHighlights(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    WMHighlightFadeOut(0);
-    WMHighlightFadeOut(1);
+    WmHighlightFadeOut(0);
+    WmHighlightFadeOut(1);
 
     proc->on_idle = EventWmRemoveHighlightsWait;
 
@@ -2947,13 +2947,13 @@ int EvtCmd_WmRemoveBothHighlights(struct EventProc * proc)
 
 void EventWmRemoveHighlightsWait(struct EventProc * proc)
 {
-    if (WMHighlightAllSideExists())
+    if (WmHighlightAllSideExists())
         return;
 
     proc->on_idle = NULL;
 }
 
-int EvtCmd_WmPutDot(struct EventProc * proc)
+int EvtCmd_StartWmDot(struct EventProc * proc)
 {
     int id = proc->script[0];
 
@@ -2965,7 +2965,7 @@ int EvtCmd_WmPutDot(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    WmPutDot(x, y, palid, id);
+    StartWmDot(x, y, palid, id);
 
     return EVENT_CMDRET_CONTINUE;
 }
@@ -2994,7 +2994,7 @@ int EvtCmd_WmPutFlag(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    StartWMFlag(x, y, palid, id);
+    StartWmFlag(x, y, palid, id);
 
     return EVENT_CMDRET_CONTINUE;
 }
@@ -3006,7 +3006,7 @@ int EvtCmd_WmRemoveFlag(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    EndWMFlag(id);
+    EndWmFlag(id);
 
     return EVENT_CMDRET_CONTINUE;
 }
@@ -3026,7 +3026,7 @@ int EvtCmd_WmPutMapText(struct EventProc * proc)
     if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
 
-    StartWMMapText(x_a, y_a, unk, x_b, y_b, id);
+    StartWmMapText(x_a, y_a, unk, x_b, y_b, id);
 
     return EVENT_CMDRET_CONTINUE;
 }

@@ -105,8 +105,9 @@ struct GenericProc
     /* 3C */ int unk3C;
     /* 40 */ int unk40;
 
-    /* 44 */ u8 pad_38[0x4A - 0x44];
-
+    /* 44 */ short unk44;
+    /* 44 */ short unk46;
+    /* 44 */ short unk48;
     /* 4A */ short unk4A;
 
     // Is this part of that?

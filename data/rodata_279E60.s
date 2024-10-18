@@ -102,42 +102,98 @@ Pal_Wm_082D1964:    @ 0x082D1964
 
     .global Pal_Wm_082D1BA0
 Pal_Wm_082D1BA0:    @ 0x082D1BA0
-    .incbin "fe6-base.gba", 0x2D1BA0, 0x2D3398 - 0x2D1BA0
+    .incbin "fe6-base.gba", 0x2D1BA0, 0x2D1DE4 - 0x2D1BA0
 
-    .global Pal_WroldMapRmBorder
-Pal_WroldMapRmBorder: @ 082D3398
+    .global Img_WmHighlight_Nation1
+Img_WmHighlight_Nation1:
+    .incbin "data/worldmap/graphics/Img_WmHighlight_Nation1.4bpp.lz"
+
+    .global Img_WmHighlight_Nation2
+Img_WmHighlight_Nation2:
+    .incbin "data/worldmap/graphics/Img_WmHighlight_Nation2.4bpp.lz"
+
+    .global Img_WmHighlight_Nation3
+Img_WmHighlight_Nation3:
+    .incbin "data/worldmap/graphics/Img_WmHighlight_Nation3.4bpp.lz"
+
+    .global Img_WmHighlight_Nation4
+Img_WmHighlight_Nation4:
+    .incbin "data/worldmap/graphics/Img_WmHighlight_Nation4.4bpp.lz"
+
+    .global Img_WmHighlight_Nation5
+Img_WmHighlight_Nation5:
+    .incbin "data/worldmap/graphics/Img_WmHighlight_Nation5.4bpp.lz"
+
+    .global Img_WmHighlight_Nation6
+Img_WmHighlight_Nation6:
+    .incbin "data/worldmap/graphics/Img_WmHighlight_Nation6.4bpp.lz"
+
+    .global Img_WmHighlight_Nation7
+Img_WmHighlight_Nation7:
+    .incbin "data/worldmap/graphics/Img_WmHighlight_Nation7.4bpp.lz"
+
+    .global ApInfo_WmHighlight_Nation1
+ApInfo_WmHighlight_Nation1:
+    .incbin "fe6-base.gba", 0x2D3224, 0x2D3250 - 0x2D3224
+
+    .global ApInfo_WmHighlight_Nation2
+ApInfo_WmHighlight_Nation2:
+    .incbin "fe6-base.gba", 0x2D3250, 0x2D3280 - 0x2D3250
+
+    .global ApInfo_WmHighlight_Nation3
+ApInfo_WmHighlight_Nation3:
+    .incbin "fe6-base.gba", 0x2D3280, 0x2D32AC - 0x2D3280
+
+    .global ApInfo_WmHighlight_Nation4
+ApInfo_WmHighlight_Nation4:
+    .incbin "fe6-base.gba", 0x2D32AC, 0x2D32F0 - 0x2D32AC
+
+    .global ApInfo_WmHighlight_Nation5
+ApInfo_WmHighlight_Nation5:
+    .incbin "fe6-base.gba", 0x2D32F0, 0x2D3324 - 0x2D32F0
+
+    .global ApInfo_WmHighlight_Nation7
+ApInfo_WmHighlight_Nation7:
+    .incbin "fe6-base.gba", 0x2D3324, 0x2D335C - 0x2D3324
+
+    .global ApInfo_WmHighlight_Nation6
+ApInfo_WmHighlight_Nation6:
+    .incbin "fe6-base.gba", 0x2D335C, 0x2D3398 - 0x2D335C
+
+    .global Pal_WmHightlight
+Pal_WmHightlight: @ 082D3398
     .incbin "fe6-base.gba", 0x2D3398, (0x2D33B8 - 0x2D3398) @ length: 0020
 
     .global Img_WorldMapStuff
 Img_WorldMapStuff: @ 082D33B8
-    .incbin "fe6-base.gba", 0x2D33B8, (0x2D3674 - 0x2D33B8) @ length: 02BC
+    .incbin "data/worldmap/graphics/Img_WorldMapStuff.4bpp.lz"
 
-    .global gUnk_082D3674
-gUnk_082D3674: @ 082D3674
+    .global ApInfo_WmDot
+ApInfo_WmDot: @ 082D3674
     .incbin "fe6-base.gba", 0x2D3674, (0x2D36E4 - 0x2D3674) @ length: 0070
 
     .global Pal_WorldMapStuff
 Pal_WorldMapStuff: @ 082D36E4
     .incbin "fe6-base.gba", 0x2D36E4, (0x2D3764 - 0x2D36E4) @ length: 0080
 
-    .global gUnk_082D3764
-gUnk_082D3764: @ 082D3764
+    .global Pal_WmSpriteDisp2
+Pal_WmSpriteDisp2: @ 082D3764
     .incbin "fe6-base.gba", 0x2D3764, (0x2D37E4 - 0x2D3764) @ length: 0080
 
-    .global gUnk_082D37E4
-gUnk_082D37E4: @ 082D37E4
+    .global Pal_WmSpriteDisp1
+Pal_WmSpriteDisp1: @ 082D37E4
     .incbin "fe6-base.gba", 0x2D37E4, (0x2D3864 - 0x2D37E4) @ length: 0080
 
     .global Pal_WorldMap_082D3864
 Pal_WorldMap_082D3864: @ 082D3864
     .incbin "fe6-base.gba", 0x2D3864, (0x2D38A4 - 0x2D3864) @ length: 0040
 
-    .global gUnk_082D38A4
-gUnk_082D38A4: @ 082D38A4
+    .global ApInfo_WmMapTextDisp
+ApInfo_WmMapTextDisp: @ 082D38A4
     .incbin "fe6-base.gba", 0x2D38A4, (0x2D5910 - 0x2D38A4) @ length: 206C
 
-    .global gUnk_082D5910
-gUnk_082D5910: @ 082D5910
+    .global Img_DefaultMapText
+Img_DefaultMapText: @ 082D5910
     .incbin "fe6-base.gba", 0x2D5910, (0x2D80B0 - 0x2D5910) @ length: 27A0
 
     .global Img_Background_082D80B0

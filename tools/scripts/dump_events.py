@@ -122,7 +122,7 @@ CMD_NAMES = {
     0x5B: 'WmPutHighlight',
     0x5C: 'WmRemoveHighlight',
     0x5D: 'WmRemoveBothHighlights',
-    0x5E: 'WmPutDot',
+    0x5E: 'StartWmDot',
     0x5F: 'WmRemoveDot',
     0x60: 'WmPutFlag',
     0x61: 'WmRemoveFlag',
@@ -381,7 +381,7 @@ def main(args):
                 line = f"{line}({id}, {unk})"
 
             # WmPutHighlight, WmPutFlag
-            if cmd_name in ('WmPutDot', 'WmPutFlag'):
+            if cmd_name in ('StartWmDot', 'WmPutFlag'):
                 id = int.from_bytes(param_data[0:4], 'little')
                 x = int.from_bytes(param_data[4:6], 'little', signed = True)
                 y = int.from_bytes(param_data[6:8], 'little', signed = True)

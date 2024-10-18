@@ -24,7 +24,7 @@ CONST_DATA EventScr EventScr_Tutorial[] = {
     EvtSleep(2)
     EvtWmZoomTo(0xb4, 0x96)
     EvtWmTalkBoxBottom
-    EvtWmPutDot(0, 0x14a, 0xde, 1)
+    EvtStartWmDot(0, 0x14a, 0xde, 1)
     EvtWmPutMapText(1, 0x14a, 0xde, 13, 0, 1)
     EvtSleep(20)
     EvtWmPutFace(0, 0x28, 0x2c, FID_02)
@@ -35,7 +35,7 @@ CONST_DATA EventScr EventScr_Tutorial[] = {
     EvtSleep(20)
     EvtWmRemoveDot(0)
     EvtWmRemoveDot(1)
-    EvtWmPutDot(0, 0xf4, 0xb3, 1)
+    EvtStartWmDot(0, 0xf4, 0xb3, 1)
     EvtWmPutMapText(1, 0xf4, 0xb3, 24, 3, 1)
     EvtSleep(20)
     EvtTalkContinue
@@ -50,6 +50,6 @@ CONST_DATA EventScr EventScr_Tutorial[] = {
     EvtFadeBgmOut(4)
     EvtWmEnd
     EvtSleep(0)
-    EvtFunc(func_fe6_0809345C)
+    EvtFunc(EndWmSprite)
     EvtEnd
 };

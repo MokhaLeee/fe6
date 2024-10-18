@@ -1,27 +1,11 @@
 	.data
 
-	.global ProcScr_0868C668
-ProcScr_0868C668: @ 0868C668
-	.incbin "fe6-base.gba", 0x68C668, (0x68C688 - 0x68C668) @ length: 0048
-
-	.global ProcScr_0868C688
-ProcScr_0868C688:
-    .incbin "fe6-base.gba", 0x68C688, (0x68C6B0 - 0x68C688)
-
-	.global Config_WMHighlight
-Config_WMHighlight: @ 0868C6B0
-	.incbin "fe6-base.gba", 0x68C6B0, (0x68C704 - 0x68C6B0) @ length: 0054
-
-	.global ProcScr_WroldMapRmBorder
-ProcScr_WroldMapRmBorder: @ 0868C704
-	.incbin "fe6-base.gba", 0x68C704, (0x68C734 - 0x68C704) @ length: 0030
-
-	.global gUnk_0868C734
-gUnk_0868C734: @ 0868C734
+	.global Config_WmMapText
+Config_WmMapText: @ 0868C734
 	.incbin "fe6-base.gba", 0x68C734, (0x68C8D8 - 0x68C734) @ length: 01A4
 
-	.global gUnk_0868C8D8
-gUnk_0868C8D8: @ 0868C8D8
+	.global ProcScr_WmMapTextDisp
+ProcScr_WmMapTextDisp: @ 0868C8D8
 	.incbin "fe6-base.gba", 0x68C8D8, (0x68C940 - 0x68C8D8) @ length: 0068
 
 	.global gUnk_0868C940
