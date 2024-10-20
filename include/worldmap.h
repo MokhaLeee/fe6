@@ -227,12 +227,12 @@ struct ProcWmMapText {
 
     STRUCT_PAD(0x34, 0x44);
 
-    /* 44 */ i16 unk_44;
+    /* 44 */ i16 timer;
 
     STRUCT_PAD(0x46, 0x50);
 
     /* 50 */ struct SpriteAnim * sprite_anim;
-    /* 54 */ int ctrl;
+    /* 54 */ int end_ctrl;
 
     STRUCT_PAD(0x58, 0x64);
 
@@ -250,7 +250,7 @@ void WmMapTextDisp_Loop1(struct ProcWmMapText * proc);
 void WmMapTextDisp_Loop2(struct ProcWmMapText * proc);
 void WmMapTextDisp_Loop3(struct ProcWmMapText * proc);
 void WmMapTextDisp_End(struct ProcWmMapText * proc);
-// func_fe6_08093EAC
+void func_fe6_08093EAC(struct SpriteAnim * sprit_anim, int oam0, int oam1, int d, int e, int f);
 void ModifyWmSpritePosition(struct Vec2i * vec);
 void PlayWMIntroBGM(void);
 void func_fe6_08094030(int arg_0, int arg_1, int arg_2, ProcPtr proc);

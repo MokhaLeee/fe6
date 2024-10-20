@@ -739,7 +739,7 @@ void EndWmMapText(int id)
     struct ProcWmMapText * proc = GetWmMapText(id);
 
     if (proc)
-        proc->ctrl = 1;
+        proc->end_ctrl = true;
 }
 
 void PutWmMapTextGfx(const void * img_src, u8 * vram_dst)
@@ -755,8 +755,8 @@ void PutWmMapTextGfx(const void * img_src, u8 * vram_dst)
 
 void WmMapTextDisp_Init(struct ProcWmMapText * proc)
 {
-    proc->unk_44 = 0;
-    proc->ctrl = 0;
+    proc->timer = 0;
+    proc->end_ctrl = false;
 }
 
 void WmMapTextDisp_DrawGfx(struct ProcWmMapText * proc)
@@ -776,4 +776,40 @@ void WmMapTextDisp_DrawGfx(struct ProcWmMapText * proc)
     SetBlendTargetA(0, 0, 0, 0, 1);
     SetBlendTargetB(0, 0, 1, 0, 0);
     SetBlendBackdropB(1);
+}
+
+void WmMapTextDisp_Loop1(struct ProcWmMapText * proc)
+{
+    func_fe6_08093EAC(proc->sprite_anim, proc->x, proc->y | 0x400, proc->unk_64, proc->unk_66, proc->unk_68);
+
+    proc->timer++;
+    SetBlendConfig(BLEND_EFFECT_NONE, proc->timer, 0x10 - proc->timer, 0);
+
+    if (proc->timer >= 0x10)
+        Proc_Break(proc);
+}
+
+void WmMapTextDisp_Loop2(struct ProcWmMapText * proc)
+{
+    func_fe6_08093EAC(proc->sprite_anim, proc->x, proc->y, proc->unk_64, proc->unk_66, proc->unk_68);
+
+    if (proc->end_ctrl)
+        Proc_Break(proc);
+}
+
+void WmMapTextDisp_Loop3(struct ProcWmMapText * proc)
+{
+    func_fe6_08093EAC(proc->sprite_anim, proc->x, proc->y | 0x400, proc->unk_64, proc->unk_66, proc->unk_68);
+
+    proc->timer--;
+    SetBlendConfig(BLEND_EFFECT_NONE, proc->timer, 0x10 - proc->timer, 0);
+
+    if (proc->timer == 0)
+        Proc_Break(proc);
+}
+
+void WmMapTextDisp_End(struct ProcWmMapText * proc)
+{
+    SetWmMapText(proc->id, NULL);
+    EndSpriteAnim(proc->sprite_anim);
 }
