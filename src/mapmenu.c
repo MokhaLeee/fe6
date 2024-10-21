@@ -47,7 +47,7 @@
 
 static void CheckTutorialInterruptPromptResult(ProcPtr proc);
 
-EventScr CONST_DATA EventScr_TutorialInterruptQuitConfirm[] =
+EventScr CONST_DATA EventScr_WmTutorialInterruptQuitConfirm[] =
 {
     EvtNoSkipNoTextSkip
 
@@ -175,7 +175,7 @@ static void CheckTutorialInterruptPromptResult(ProcPtr proc)
 
 fu8 TutorialInterruptMenu_Quit_Select(struct MenuProc * menu, struct MenuEntProc * ent)
 {
-    StartEvent(EventScr_TutorialInterruptQuitConfirm);
+    StartEvent(EventScr_WmTutorialInterruptQuitConfirm);
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 

@@ -354,6 +354,12 @@ enum
 #define EvtWmZoomTo(x, y) \
     EVT_CMD_WM_ZOOMTO, _EvtParams2(x, y),
 
+#define EvtWmZoomBack \
+    EVT_CMD_WM_ZOOMBACK,
+
+#define EvtWmRemoveFace(slot) \
+    EVT_CMD_WM_REMOVEFACE, (slot),
+
 #define EvtWmPutFace(slot, x, y, fid) \
     EVT_CMD_WM_PUTFACE, (slot), _EvtParams2(x, y), (fid),
 
@@ -369,6 +375,9 @@ enum
 #define EvtWmTalkBoxRemove \
     EVT_CMD_WM_TALKBOX_REMOVE,
 
+#define EvtWmPutArrow(id, color) \
+    EVT_CMD_WM_ARROW, _EvtParams2(id, color),
+
 #define EvtWmPutHighlight(id, nation) \
     EVT_CMD_WM_HIGHLIGHT, _EvtParams2(id, nation),
 
@@ -380,6 +389,12 @@ enum
 
 #define EvtWmRemoveDot(id) \
     EVT_CMD_WM_DOT_REMOVE, (id),
+
+#define EvtWmPutFlag(id, x, y, pal) \
+    EVT_CMD_WM_FLAG, (id), _EvtParams2(x, y), (pal),
+
+#define EvtWmRemoveFlag(id) \
+    EVT_CMD_WM_FLAG_REMOVE, (id),
 
 #define EvtWmPutMapText(id, x, y, location, style, color) \
     EVT_CMD_WM_MAPTEXT, (id), _EvtParams2(x, y), (location), _EvtParams2(style, color),

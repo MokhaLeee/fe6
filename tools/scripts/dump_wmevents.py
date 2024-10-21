@@ -68,6 +68,22 @@ def parse_event(rom_data, off):
         case "EVT_CMD_TALKCONT":
             print("    EvtTalkContinue")
 
+        case "EVT_CMD_LABEL":
+            cmd_len = 2
+            _id = arg1_u32_le
+            print(f"EvtLabel({_id})")
+
+        case "EVT_CMD_GOTO":
+            cmd_len = 2
+            _id = arg1_u32_le
+            print(f"    EvtGoto({_id})")
+
+        case "EVT_CMD_GOTO_IFN_FLAG":
+            cmd_len = 3
+            _id = arg1_u32_le
+            flag = arg2_u32_le
+            print(f"    EvtGotoIfNotFlag({_id}, {flag})")
+
         case "EVT_CMD_BGM_FADEOUT":
             cmd_len = 2
             speed = arg1_u32_le
@@ -97,14 +113,22 @@ def parse_event(rom_data, off):
         case "EVT_CMD_WM_ZOOMTO":
             cmd_len = 2
             x, y = unpack_EvtParams2(arg1_u32_le)
-            print(f"    EvtWmZoomTo({hex(x)}, {hex(y)})")
+            print(f"    EvtWmZoomTo(0x{x:02X}, 0x{y:02X})")
+
+        case "EVT_CMD_WM_ZOOMBACK":
+            print(    "EvtWmZoomBack")
+
+        case "EVT_CMD_WM_REMOVEFACE":
+            cmd_len = 2
+            slot = arg1_u32_le
+            print(f"    EvtWmRemoveFace({slot})")
 
         case "EVT_CMD_WM_PUTFACE":
             cmd_len = 4
             slot = arg1_u32_le
             x, y = unpack_EvtParams2(arg2_u32_le)
             fid = f"FID_{arg3_u32_le:02X}"
-            print(f"    EvtWmPutFace({slot}, {hex(x)}, {hex(y)}, {fid})")
+            print(f"    EvtWmPutFace({slot}, 0x{x:02X}, 0x{y:02X}, {fid})")
 
         case "EVT_CMD_WM_TALK":
             cmd_len = 2
@@ -120,9 +144,15 @@ def parse_event(rom_data, off):
         case "EVT_CMD_WM_TALKBOX_REMOVE":
             print("    EvtWmTalkBoxRemove")
 
+        case "EVT_CMD_WM_ARROW":
+            cmd_len = 2
+            _id, color = unpack_EvtParams2(arg1_u32_le)
+            print(f"    EvtWmPutArrow({_id}, {color})")
+
         case "EVT_CMD_WM_HIGHLIGHT":
             cmd_len = 2
-            _id, nation = unpack_EvtParams2(arg1_u32_le)
+            _id, _nation = unpack_EvtParams2(arg1_u32_le)
+            nation = f"WM_HIGHLIGHT_NATION_{_nation}"
             print(f"    EvtWmPutHighlight({_id}, {nation})")
 
         case "EVT_CMD_WM_HIGHLIGHT_REMOVEBOTH":
@@ -133,20 +163,32 @@ def parse_event(rom_data, off):
             _id = arg1_u32_le
             x, y = unpack_EvtParams2(arg2_u32_le)
             pal = arg3_u32_le
-            print(f"    EvtStartWmDot({_id}, {hex(x)}, {hex(y)}, {pal})")
+            print(f"    EvtStartWmDot({_id}, 0x{x:02X}, 0x{y:02X}, {pal})")
 
         case "EVT_CMD_WM_DOT_REMOVE":
             cmd_len = 2
             _id = arg1_u32_le
             print(f"    EvtWmRemoveDot({_id})")
 
+        case "EVT_CMD_WM_FLAG":
+            cmd_len = 4
+            _id = arg1_u32_le
+            x, y = unpack_EvtParams2(arg2_u32_le)
+            pal = arg3_u32_le
+            print(f"    EvtWmPutFlag({_id}, 0x{x:02X}, 0x{y:02X}, {pal})")
+
+        case "EVT_CMD_WM_FLAG_REMOVE":
+            cmd_len = 2
+            _id = arg1_u32_le
+            print(f"    EvtWmRemoveFlag({_id})")
+
         case "EVT_CMD_WM_MAPTEXT":
             cmd_len = 5
             tid = arg1_u32_le
             x, y = unpack_EvtParams2(arg2_u32_le)
-            location = arg3_u32_le
+            location = f"WM_MAPTEXT_LOC_{arg3_u32_le:02X}"
             style, color = unpack_EvtParams2(arg4_u32_le)
-            print(f"    EvtWmPutMapText({tid}, {hex(x)}, {hex(y)}, {location}, {style}, {color})")
+            print(f"    EvtWmPutMapText({tid}, 0x{x:02X}, 0x{y:02X}, {location}, {style}, {color})")
 
         case "EVT_CMD_WM_MAPTEXT_REMOVE":
             cmd_len = 2
@@ -178,7 +220,6 @@ def dump_one_event(rom_data, off):
             break
 
     print("};\n")
-    print(f"// end at 0x{off:06X}")
     return off
 
 def main(args):
@@ -205,6 +246,8 @@ def main(args):
 
             if off_end <= off:
                 break
+
+    print(f"// end at 0x{off:06X}")
 
 if __name__ == '__main__':
     main(sys.argv)
