@@ -243,7 +243,7 @@ struct ProcWmMapText {
 
     STRUCT_PAD(0x58, 0x64);
 
-    /* 64 */ i16 nation, unk_66, unk_68;
+    /* 64 */ i16 nation, type_a, type_b;
     /* 6A */ i16 id;
 };
 
@@ -257,7 +257,7 @@ void WmMapTextDisp_Loop1(struct ProcWmMapText * proc);
 void WmMapTextDisp_Loop2(struct ProcWmMapText * proc);
 void WmMapTextDisp_Loop3(struct ProcWmMapText * proc);
 void WmMapTextDisp_End(struct ProcWmMapText * proc);
-void func_fe6_08093EAC(struct SpriteAnim * sprit_anim, int oam0, int oam1, int d, int e, int f);
+void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam0, int oam1, int nation, int e, int f);
 void ModifyWmSpritePosition(struct Vec2i * vec);
 void PlayWmIntroBGM(void);
 
@@ -275,9 +275,9 @@ struct ProcTalkAdvance {
     i16 timer;
 };
 
-void CleanTalkObjects(int oam2_chr, int arg_1, int arg_2, ProcPtr proc);
-// TalkAdvance_Init
-// TalkAdvance_Loop
+void StartTalkAdvance(int chr, int lines, int _fill, ProcPtr parent);
+void TalkAdvance_Init(struct ProcTalkAdvance * proc);
+void TalkAdvance_Loop(struct ProcTalkAdvance * proc);
 
 struct ProcWmDebug {
     PROC_HEADER;

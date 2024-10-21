@@ -352,7 +352,7 @@ void StartWmSprite(void)
 {
     Decompress(Img_WorldMapStuff, OBJ_VRAM0 + 0x6200);
     ApplyPalettes(Pal_WorldMapStuff, 0x10, 4);
-    ApplyPalettes(Pal_WorldMap_082D3864, 0x14, 2);
+    ApplyPalettes(Pal_WmMapText, 0x14, 2);
     ResetWmArrowSt();
 
     SpawnProc(ProcScr_WmSprite, PROC_TREE_3);
@@ -753,7 +753,7 @@ CONST_DATA struct WmMapTextConfig Config_WmMapText[] = {
 
 struct ProcScr CONST_DATA ProcScr_WmMapTextDisp[] =
 {
-    PROC_MARK(8),
+    PROC_MARK(PROC_MARK_WMSTUFF),
     PROC_ONEND(WmMapTextDisp_End),
     PROC_CALL(WmMapTextDisp_Init),
     PROC_YIELD,
@@ -775,8 +775,8 @@ void StartWmMapText(int x, int y, int nation, int d, int e, int id)
     proc->x = vec.x;
     proc->y = vec.y;
     proc->nation = nation;
-    proc->unk_66 = d;
-    proc->unk_68 = e;
+    proc->type_a = d;
+    proc->type_b = e;
     proc->id = id;
 
     SetWmMapText(id, proc);
@@ -818,7 +818,7 @@ void WmMapTextDisp_Init(struct ProcWmMapText * proc)
 void WmMapTextDisp_DrawGfx(struct ProcWmMapText * proc)
 {
     proc->sprite_anim = StartSpriteAnim(ApInfo_WmMapTextDisp, 0xB);
-    proc->sprite_anim->oam2 = ((proc->id == 0) ? 0x200 : 0x288) | ((proc->unk_68 == 0) ? 0x5000 : 0x4000);
+    proc->sprite_anim->oam2 = ((proc->id == 0) ? 0x200 : 0x288) | ((proc->type_b == 0) ? 0x5000 : 0x4000);
 
     if (Config_WmMapText[proc->nation].img2 == Img_DefaultMapText)
         SetSpriteAnimId(proc->sprite_anim, 1);
@@ -836,7 +836,7 @@ void WmMapTextDisp_DrawGfx(struct ProcWmMapText * proc)
 
 void WmMapTextDisp_Loop1(struct ProcWmMapText * proc)
 {
-    func_fe6_08093EAC(proc->sprite_anim, proc->x, proc->y | 0x400, proc->nation, proc->unk_66, proc->unk_68);
+    DrawWmMapTextCore(proc->sprite_anim, proc->x, proc->y | 0x400, proc->nation, proc->type_a, proc->type_b);
 
     proc->timer++;
     SetBlendConfig(BLEND_EFFECT_NONE, proc->timer, 0x10 - proc->timer, 0);
@@ -847,7 +847,7 @@ void WmMapTextDisp_Loop1(struct ProcWmMapText * proc)
 
 void WmMapTextDisp_Loop2(struct ProcWmMapText * proc)
 {
-    func_fe6_08093EAC(proc->sprite_anim, proc->x, proc->y, proc->nation, proc->unk_66, proc->unk_68);
+    DrawWmMapTextCore(proc->sprite_anim, proc->x, proc->y, proc->nation, proc->type_a, proc->type_b);
 
     if (proc->end_ctrl)
         Proc_Break(proc);
@@ -855,7 +855,7 @@ void WmMapTextDisp_Loop2(struct ProcWmMapText * proc)
 
 void WmMapTextDisp_Loop3(struct ProcWmMapText * proc)
 {
-    func_fe6_08093EAC(proc->sprite_anim, proc->x, proc->y | 0x400, proc->nation, proc->unk_66, proc->unk_68);
+    DrawWmMapTextCore(proc->sprite_anim, proc->x, proc->y | 0x400, proc->nation, proc->type_a, proc->type_b);
 
     proc->timer--;
     SetBlendConfig(BLEND_EFFECT_NONE, proc->timer, 0x10 - proc->timer, 0);
@@ -894,8 +894,15 @@ u16 CONST_DATA Sprite_0868C938[] =
     OAM0_SHAPE_8x8, OAM1_SIZE_8x8 + OAM1_X(507) + OAM1_HFLIP, 0,
 };
 
+CONST_DATA struct WmMapTextSpriteConfig SpriteConf_WmMapTextDisp[] = {
+    [0] = { Sprite_0868C920, -4, -8, 2, 2 },
+    [1] = { Sprite_0868C928, 4, -8, -2, 2 },
+    [2] = { Sprite_0868C930, -4, 8, 1, 0 },
+    [3] = { Sprite_0868C938, 4, 8, -1, 0 },
+};
+
 #if NONMATCHING
-void func_fe6_08093EAC(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
+void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
 {
     int _e = e;
     int oam1 = oam1_x & 0xFFFFFE00;
@@ -961,7 +968,7 @@ void func_fe6_08093EAC(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, i
 #else
 
 NAKEDFUNC
-void func_fe6_08093EAC(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
+void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
 {
 asm("\
     .syntax unified\n\
@@ -1144,7 +1151,14 @@ void PlayWmIntroBGM(void)
     StartBgm(GetChapterInfo(gPlaySt.chapter)->song_intro_bgm, NULL);
 }
 
-void CleanTalkObjects(int chr, int lines, int _fill, ProcPtr parent)
+struct ProcScr CONST_DATA ProcScr_TalkAdvance[] =
+{
+    PROC_CALL(TalkAdvance_Init),
+    PROC_REPEAT(TalkAdvance_Loop),
+    PROC_END,
+};
+
+void StartTalkAdvance(int chr, int lines, int _fill, ProcPtr parent)
 {
     struct ProcTalkAdvance * proc;
 
@@ -1188,6 +1202,16 @@ void TalkAdvance_Loop(struct ProcTalkAdvance * proc)
     if (proc->timer > 15)
         Proc_Break(proc);
 }
+
+struct ProcScr CONST_DATA ProcScr_WmDebug[] =
+{
+    PROC_CALL(LockGame),
+    PROC_YIELD,
+    PROC_CALL(WmDebug_Init),
+    PROC_REPEAT(WmDebug_Loop),
+    PROC_CALL(UnlockGame),
+    PROC_END,
+};
 
 void StartWmDebug(void)
 {

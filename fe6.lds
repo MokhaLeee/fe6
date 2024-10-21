@@ -836,7 +836,6 @@ SECTIONS
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);
-        . = ALIGN(4); data/worldmap.o(.data);
         . = ALIGN(4); src/worldmap_eventscr.o(.data);
         . = ALIGN(4); data/worldmap_event.o(.data);
         . = ALIGN(4); src/monologue.o(.data);

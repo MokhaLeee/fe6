@@ -184,8 +184,8 @@ Pal_WmSpriteDisp2: @ 082D3764
 Pal_WmSpriteDisp1: @ 082D37E4
     .incbin "fe6-base.gba", 0x2D37E4, (0x2D3864 - 0x2D37E4) @ length: 0080
 
-    .global Pal_WorldMap_082D3864
-Pal_WorldMap_082D3864: @ 082D3864
+    .global Pal_WmMapText
+Pal_WmMapText: @ 082D3864
     .incbin "fe6-base.gba", 0x2D3864, (0x2D38A4 - 0x2D3864) @ length: 0040
 
     .global ApInfo_WmMapTextDisp

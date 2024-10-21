@@ -1344,7 +1344,7 @@ static void TalkShiftClear_OnIdle(struct GenericProc * proc)
 
 static void TalkSpritePrepNextChar_Step1(ProcPtr proc)
 {
-    CleanTalkObjects(0x361, 0x1C, 0x44444444, proc);
+    StartTalkAdvance(0x361, 0x1C, 0x44444444, proc);
 }
 
 static void TalkSpritePrepNextChar_Step2(ProcPtr proc)

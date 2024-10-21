@@ -579,7 +579,7 @@ extern u16 const ApInfo_WmDot[];
 extern u16 const Pal_WorldMapStuff[];
 extern u16 const Pal_WmSpriteDisp2[];
 extern u16 const Pal_WmSpriteDisp1[];
-extern u16 const Pal_WorldMap_082D3864[];
+extern u16 const Pal_WmMapText[];
 extern u16 const ApInfo_WmMapTextDisp[];
 extern u8 const Img_WmMapTextDisp_082D3904[];
 extern u8 const Img_WmMapTextDisp_082D3C68[];
