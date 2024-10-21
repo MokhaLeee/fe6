@@ -118,7 +118,7 @@ struct ProcScr CONST_DATA ProcScr_WmArrow[] = {
     PROC_END,
 };
 
-void StartWmArrow(int id, int color, int c, int d, int e, int f)
+void StartWmArrow(int id, int color, int x, int y, int e, int f)
 {
     struct ProcWmArrow * proc;
 
@@ -134,8 +134,8 @@ void StartWmArrow(int id, int color, int c, int d, int e, int f)
     proc->conf->busy = true;
     proc->conf->eid = id;
     proc->conf->color = color;
-    proc->conf->unk_D4 = c;
-    proc->conf->unk_D8 = d;
+    proc->conf->x_base = x;
+    proc->conf->y_base = y;
     proc->conf->unk_0C = e;
     proc->conf->unk_08 = f;
 }
@@ -165,27 +165,27 @@ void WmArrow_Init(struct ProcWmArrow * proc)
     int unk = GetWmArrowCount(GetWmArrowConfigBuf(conf->eid));
 
     conf->amount = unk;
-    conf->unk_14[0] = 0;
+    conf->sqrt_array[0] = 0;
 
     for (i = 0; i < conf->amount; i++)
     {
-        conf->unk_74[i] = (func_fe6_08093288(GetWmArrowConfigBuf(conf->eid), i) + conf->unk_D4) * 0x100;
-        conf->unk_A4[i] = (func_fe6_080932D8(GetWmArrowConfigBuf(conf->eid), i) + conf->unk_D8) * 0x100;
+        conf->unk_74[i] = (func_fe6_08093288(GetWmArrowConfigBuf(conf->eid), i) + conf->x_base) * 0x100;
+        conf->unk_A4[i] = (func_fe6_080932D8(GetWmArrowConfigBuf(conf->eid), i) + conf->y_base) * 0x100;
     }
 
     for (i = 1; i < conf->amount; i++)
     {
         int arctan;
 
-        int r5 = conf->unk_74[i] - conf->unk_74[i - 1];
-        int r4 = conf->unk_A4[i] - conf->unk_A4[i - 1];
+        int x_diff = conf->unk_74[i] - conf->unk_74[i - 1];
+        int y_diff = conf->unk_A4[i] - conf->unk_A4[i - 1];
 
-        int sqrt = Sqrt(r5 * r5 + r4 * r4);
-        conf->unk_14[i] = conf->unk_14[i - 1] + sqrt;
-        conf->unk_44[i] = (arctan = ArcTan2(r5, r4)) / 0x3F;
+        int sqrt = Sqrt(x_diff * x_diff + y_diff * y_diff);
+        conf->sqrt_array[i] = conf->sqrt_array[i - 1] + sqrt;
+        conf->arctan_array[i] = (arctan = ArcTan2(x_diff, y_diff)) / 0x3F;
     }
 
-    conf->unk_10 = conf->unk_14[conf->amount - 1];
+    conf->unk_10 = conf->sqrt_array[conf->amount - 1];
     conf->unk_03 = conf->unk_10 / conf->unk_08 + 1;
 
     for (i = 0; i < conf->unk_03; i++)
@@ -270,7 +270,7 @@ void WmArrow_Loop(struct ProcWmArrow * proc)
 
             conf->x_array[i] = conf->unk_74[r6];
             conf->y_array[i] = conf->unk_A4[r6];
-            conf->unk_294[i] = conf->unk_44[r6 + 1];
+            conf->unk_294[i] = conf->arctan_array[r6 + 1];
             conf->unk_1A4[i] = conf->unk_244[i] * gUnk_08353328[(conf->unk_294[i] + 0x100) & 0x3FF] / 0x8000;
             conf->unk_1F4[i] = conf->unk_244[i] * gUnk_08353328[(conf->unk_294[i]) & 0x3FF] / 0x8000;
             conf->unk_F0[i] = 1;
@@ -290,7 +290,7 @@ void WmArrow_Loop(struct ProcWmArrow * proc)
             {
                 conf->unk_F0[i] = 99;
             }
-            else if (conf->unk_2E4[i] >= conf->unk_14[r6 + 1])
+            else if (conf->unk_2E4[i] >= conf->sqrt_array[r6 + 1])
             {
                 conf->unk_DC[i]++;
                 conf->unk_F0[i] = 0;

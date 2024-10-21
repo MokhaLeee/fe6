@@ -31,12 +31,12 @@ struct WmArrowSt {
     /* 08 */ int unk_08;
     /* 0C */ int unk_0C;
     /* 10 */ int unk_10;
-    /* 14 */ int unk_14[12];
-    /* 44 */ int unk_44[12];
+    /* 14 */ int sqrt_array[12];
+    /* 44 */ int arctan_array[12];
     /* 74 */ int unk_74[12];
     /* A4 */ int unk_A4[12];
-    /* D4 */ int unk_D4;
-    /* D8 */ int unk_D8;
+    /* D4 */ int x_base;
+    /* D8 */ int y_base;
 
     /* DC */ u8 unk_DC[20];
     /* DC */ u8 unk_F0[20];
@@ -67,7 +67,7 @@ struct ProcWmArrow {
     /* 58 */ struct WmArrowSt * conf;
 };
 
-void StartWmArrow(int id, int color, int c, int d, int e, int f);
+void StartWmArrow(int id, int color, int x, int y, int e, int f);
 void EndWmArrow(void);
 bool WmArrowExists(void);
 void WmArrow_End(struct ProcWmArrow * proc);
@@ -124,9 +124,8 @@ void func_fe6_08093120(void);
 struct ProcWmSprite {
     PROC_HEADER;
 
-    /* 2A */ u16 unk_2A, unk_2C;
-
-    /* 2E */ u8 unk_2E;
+    /* 2A */ u16 x_off, y_off;
+    /* 2E */ u8 scaling_down;
 
     /* 30 */ ProcPtr flag_procs[4];
     /* 40 */ ProcPtr dot_procs[2];
@@ -136,7 +135,7 @@ struct ProcWmSprite {
 
 struct WmArrowConf {
     const u16 * buf;
-    i16 unk_04, unk_06;
+    i16 x, y;
     u8 unk_08, unk_09;
     u16 unk_0A;
 };
@@ -213,12 +212,20 @@ void StartWmFlag(int x, int y, int palid, int id);
 void EndWmFlag(int id);
 
 struct WmMapTextConfig {
-    int unk;
+    int x;
     const void * img1;
     const void * img2;
 };
 
 extern CONST_DATA struct WmMapTextConfig Config_WmMapText[];
+
+struct WmMapTextSpriteConfig {
+    u16 * sprite;
+    i16 x1, y1;
+    i16 x2, y2;
+};
+
+extern CONST_DATA struct WmMapTextSpriteConfig SpriteConf_WmMapTextDisp[];
 
 struct ProcWmMapText {
     PROC_HEADER;
@@ -236,7 +243,7 @@ struct ProcWmMapText {
 
     STRUCT_PAD(0x58, 0x64);
 
-    /* 64 */ i16 unk_64, unk_66, unk_68;
+    /* 64 */ i16 nation, unk_66, unk_68;
     /* 6A */ i16 id;
 };
 
@@ -252,14 +259,43 @@ void WmMapTextDisp_Loop3(struct ProcWmMapText * proc);
 void WmMapTextDisp_End(struct ProcWmMapText * proc);
 void func_fe6_08093EAC(struct SpriteAnim * sprit_anim, int oam0, int oam1, int d, int e, int f);
 void ModifyWmSpritePosition(struct Vec2i * vec);
-void PlayWMIntroBGM(void);
-void func_fe6_08094030(int arg_0, int arg_1, int arg_2, ProcPtr proc);
-// func_fe6_08094064
-// func_fe6_0809406C
-// func_fe6_080940F0
-// func_fe6_08094108
-// func_fe6_08094110
-// func_fe6_0809412C
+void PlayWmIntroBGM(void);
+
+struct ProcTalkAdvance {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x4C);
+
+    void * dst;
+    int unk50;
+    int lines, _fill;
+
+    STRUCT_PAD(0x5C, 0x64);
+
+    i16 timer;
+};
+
+void CleanTalkObjects(int oam2_chr, int arg_1, int arg_2, ProcPtr proc);
+// TalkAdvance_Init
+// TalkAdvance_Loop
+
+struct ProcWmDebug {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ int number;
+
+    STRUCT_PAD(0x30, 0x34);
+
+    /* 34 */ u8 state;
+    /* 35 */ u8 chapter;
+};
+
+void StartWmDebug(void);
+void WmDebug_ResetState(struct ProcWmDebug * proc);
+void WmDebug_Init(struct ProcWmDebug * proc);
+void WmDebug_Loop(struct ProcWmDebug * proc);
 
 extern u16 CONST_DATA Sprite_0868C2CC[];
 extern u16 CONST_DATA Sprite_0868C2D4[];
@@ -276,9 +312,8 @@ extern CONST_DATA struct ProcScr ProcScr_WmZoomIntro[];
 extern CONST_DATA struct ProcScr ProcScr_WmRotIntro[];
 extern CONST_DATA struct ProcScr ProcScr_WroldMapRmBorder[];
 extern CONST_DATA struct ProcScr ProcScr_WmMapTextDisp[];
-// extern CONST_DATA ??? gUnk_0868C940
-// extern CONST_DATA ??? gUnk_0868C970
-// extern CONST_DATA ??? gUnk_0868C988
+extern CONST_DATA struct ProcScr ProcScr_TalkAdvance[];
+extern CONST_DATA struct ProcScr ProcScr_WmDebug[];
 
 extern u16 const gUnk_WmArrow_Buf1[];
 extern u16 const gUnk_WmArrow_Buf2[];

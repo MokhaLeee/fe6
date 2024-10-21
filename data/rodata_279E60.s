@@ -190,11 +190,159 @@ Pal_WorldMap_082D3864: @ 082D3864
 
     .global ApInfo_WmMapTextDisp
 ApInfo_WmMapTextDisp: @ 082D38A4
-    .incbin "fe6-base.gba", 0x2D38A4, (0x2D5910 - 0x2D38A4) @ length: 206C
+    .incbin "fe6-base.gba", 0x2D38A4, (0x2D3904 - 0x2D38A4) @ length: 206C
+
+	.global Img_WmMapTextDisp_082D3904
+Img_WmMapTextDisp_082D3904:	@ 0x082D3904
+	.incbin "fe6-base.gba", 0x2D3904, 0x2D3C68 - 0x2D3904
+
+	.global Img_WmMapTextDisp_082D3C68
+Img_WmMapTextDisp_082D3C68:	@ 0x082D3C68
+	.incbin "fe6-base.gba", 0x2D3C68, 0x2D3E78 - 0x2D3C68
+
+	.global Img_WmMapTextDisp_082D3E78
+Img_WmMapTextDisp_082D3E78:	@ 0x082D3E78
+	.incbin "fe6-base.gba", 0x2D3E78, 0x2D4120 - 0x2D3E78
+
+	.global Img_WmMapTextDisp_082D4120
+Img_WmMapTextDisp_082D4120:	@ 0x082D4120
+	.incbin "fe6-base.gba", 0x2D4120, 0x2D43A4 - 0x2D4120
+
+	.global Img_WmMapTextDisp_082D43A4
+Img_WmMapTextDisp_082D43A4:	@ 0x082D43A4
+	.incbin "fe6-base.gba", 0x2D43A4, 0x2D45E0 - 0x2D43A4
+
+	.global Img_WmMapTextDisp_082D45E0
+Img_WmMapTextDisp_082D45E0:	@ 0x082D45E0
+	.incbin "fe6-base.gba", 0x2D45E0, 0x2D4838 - 0x2D45E0
+
+	.global Img_WmMapTextDisp_082D4838
+Img_WmMapTextDisp_082D4838:	@ 0x082D4838
+	.incbin "fe6-base.gba", 0x2D4838, 0x2D4B38 - 0x2D4838
+
+	.global Img_WmMapTextDisp_082D4B38
+Img_WmMapTextDisp_082D4B38:	@ 0x082D4B38
+	.incbin "fe6-base.gba", 0x2D4B38, 0x2D4D3C - 0x2D4B38
+
+	.global Img_WmMapTextDisp_082D4D3C
+Img_WmMapTextDisp_082D4D3C:	@ 0x082D4D3C
+	.incbin "fe6-base.gba", 0x2D4D3C, 0x2D4F9C - 0x2D4D3C
+
+	.global Img_WmMapTextDisp_082D4F9C
+Img_WmMapTextDisp_082D4F9C:	@ 0x082D4F9C
+	.incbin "fe6-base.gba", 0x2D4F9C, 0x2D5254 - 0x2D4F9C
+
+	.global Img_WmMapTextDisp_082D5254
+Img_WmMapTextDisp_082D5254:	@ 0x082D5254
+	.incbin "fe6-base.gba", 0x2D5254, 0x2D5400 - 0x2D5254
+
+	.global Img_WmMapTextDisp_082D5400
+Img_WmMapTextDisp_082D5400:	@ 0x082D5400
+	.incbin "fe6-base.gba", 0x2D5400, 0x2D55A4 - 0x2D5400
+
+	.global Img_WmMapTextDisp_082D55A4
+Img_WmMapTextDisp_082D55A4:	@ 0x082D55A4
+	.incbin "fe6-base.gba", 0x2D55A4, 0x2D5778 - 0x2D55A4
+
+	.global Img_WmMapTextDisp_082D5778
+Img_WmMapTextDisp_082D5778:	@ 0x082D5778
+	.incbin "fe6-base.gba", 0x2D5778, 0x2D5844 - 0x2D5778
+
+	.global Img_WmMapTextDisp_082D5844
+Img_WmMapTextDisp_082D5844:	@ 0x082D5844
+	.incbin "fe6-base.gba", 0x2D5844, 0x2D5910 - 0x2D5844
 
     .global Img_DefaultMapText
 Img_DefaultMapText: @ 082D5910
-    .incbin "fe6-base.gba", 0x2D5910, (0x2D80B0 - 0x2D5910) @ length: 27A0
+    .incbin "fe6-base.gba", 0x2D5910, (0x2D59DC - 0x2D5910)
+
+	.global Img_WmMapTextDisp_082D59DC
+Img_WmMapTextDisp_082D59DC:	@ 0x082D59DC
+	.incbin "fe6-base.gba", 0x2D59DC, 0x2D5B98 - 0x2D59DC
+
+	.global Img_WmMapTextDisp_082D5B98
+Img_WmMapTextDisp_082D5B98:	@ 0x082D5B98
+	.incbin "fe6-base.gba", 0x2D5B98, 0x2D5D08 - 0x2D5B98
+
+	.global Img_WmMapTextDisp_082D5D08
+Img_WmMapTextDisp_082D5D08:	@ 0x082D5D08
+	.incbin "fe6-base.gba", 0x2D5D08, 0x2D5EE0 - 0x2D5D08
+
+	.global Img_WmMapTextDisp_082D5EE0
+Img_WmMapTextDisp_082D5EE0:	@ 0x082D5EE0
+	.incbin "fe6-base.gba", 0x2D5EE0, 0x2D60F4 - 0x2D5EE0
+
+	.global Img_WmMapTextDisp_082D60F4
+Img_WmMapTextDisp_082D60F4:	@ 0x082D60F4
+	.incbin "fe6-base.gba", 0x2D60F4, 0x2D6274 - 0x2D60F4
+
+	.global Img_WmMapTextDisp_082D6274
+Img_WmMapTextDisp_082D6274:	@ 0x082D6274
+	.incbin "fe6-base.gba", 0x2D6274, 0x2D6408 - 0x2D6274
+
+	.global Img_WmMapTextDisp_082D6408
+Img_WmMapTextDisp_082D6408:	@ 0x082D6408
+	.incbin "fe6-base.gba", 0x2D6408, 0x2D65A8 - 0x2D6408
+
+	.global Img_WmMapTextDisp_082D65A8
+Img_WmMapTextDisp_082D65A8:	@ 0x082D65A8
+	.incbin "fe6-base.gba", 0x2D65A8, 0x2D6768 - 0x2D65A8
+
+	.global Img_WmMapTextDisp_082D6768
+Img_WmMapTextDisp_082D6768:	@ 0x082D6768
+	.incbin "fe6-base.gba", 0x2D6768, 0x2D6930 - 0x2D6768
+
+	.global Img_WmMapTextDisp_082D6930
+Img_WmMapTextDisp_082D6930:	@ 0x082D6930
+	.incbin "fe6-base.gba", 0x2D6930, 0x2D6AF4 - 0x2D6930
+
+	.global Img_WmMapTextDisp_082D6AF4
+Img_WmMapTextDisp_082D6AF4:	@ 0x082D6AF4
+	.incbin "fe6-base.gba", 0x2D6AF4, 0x2D6CA8 - 0x2D6AF4
+
+	.global Img_WmMapTextDisp_082D6CA8
+Img_WmMapTextDisp_082D6CA8:	@ 0x082D6CA8
+	.incbin "fe6-base.gba", 0x2D6CA8, 0x2D6E44 - 0x2D6CA8
+
+	.global Img_WmMapTextDisp_082D6E44
+Img_WmMapTextDisp_082D6E44:	@ 0x082D6E44
+	.incbin "fe6-base.gba", 0x2D6E44, 0x2D7018 - 0x2D6E44
+
+	.global Img_WmMapTextDisp_082D7018
+Img_WmMapTextDisp_082D7018:	@ 0x082D7018
+	.incbin "fe6-base.gba", 0x2D7018, 0x2D720C - 0x2D7018
+
+	.global Img_WmMapTextDisp_082D720C
+Img_WmMapTextDisp_082D720C:	@ 0x082D720C
+	.incbin "fe6-base.gba", 0x2D720C, 0x2D73D0 - 0x2D720C
+
+	.global Img_WmMapTextDisp_082D73D0
+Img_WmMapTextDisp_082D73D0:	@ 0x082D73D0
+	.incbin "fe6-base.gba", 0x2D73D0, 0x2D75D8 - 0x2D73D0
+
+	.global Img_WmMapTextDisp_082D75D8
+Img_WmMapTextDisp_082D75D8:	@ 0x082D75D8
+	.incbin "fe6-base.gba", 0x2D75D8, 0x2D7774 - 0x2D75D8
+
+	.global Img_WmMapTextDisp_082D7774
+Img_WmMapTextDisp_082D7774:	@ 0x082D7774
+	.incbin "fe6-base.gba", 0x2D7774, 0x2D7934 - 0x2D7774
+
+	.global Img_WmMapTextDisp_082D7934
+Img_WmMapTextDisp_082D7934:	@ 0x082D7934
+	.incbin "fe6-base.gba", 0x2D7934, 0x2D7B20 - 0x2D7934
+
+	.global Img_WmMapTextDisp_082D7B20
+Img_WmMapTextDisp_082D7B20:	@ 0x082D7B20
+	.incbin "fe6-base.gba", 0x2D7B20, 0x2D7D24 - 0x2D7B20
+
+	.global Img_WmMapTextDisp_082D7D24
+Img_WmMapTextDisp_082D7D24:	@ 0x082D7D24
+	.incbin "fe6-base.gba", 0x2D7D24, 0x2D7F2C - 0x2D7D24
+
+	.global Img_WmMapTextDisp_082D7F2C
+Img_WmMapTextDisp_082D7F2C:	@ 0x082D7F2C
+	.incbin "fe6-base.gba", 0x2D7F2C, 0x2D80B0 - 0x2D7F2C
 
     .global Img_Background_082D80B0
 Img_Background_082D80B0: @ 082D80B0

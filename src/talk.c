@@ -71,8 +71,8 @@ static void TalkShiftClear_OnIdle(struct GenericProc * proc);
 static int GetTalkPauseCmdDuration(int cmd);
 static void PutTalkBubble(int xAnchor, int yAnchor, int width, int height);
 static void StartOpenTalkBubble(void);
-static void func_fe6_0800B3D4(ProcPtr proc);
-static void func_fe6_0800B3F8(ProcPtr proc);
+static void TalkSpritePrepNextChar_Step1(ProcPtr proc);
+static void TalkSpritePrepNextChar_Step2(ProcPtr proc);
 static void TalkOpenBubble_OnIdle(struct GenericProc * proc);
 static void InitTalkTextWin(int x, int y, int width, int height);
 static void TalkOpen_OnEnd(struct GenericProc * proc);
@@ -241,14 +241,14 @@ struct ProcScr CONST_DATA ProcScr_TalkShiftClear[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_085C3E7C[] =
+struct ProcScr CONST_DATA ProcScr_TalkSpritePrepNextChar[] =
 {
     PROC_MARK(PROC_MARK_5),
 
-    PROC_CALL(func_fe6_0800B3D4),
+    PROC_CALL(TalkSpritePrepNextChar_Step1),
     PROC_YIELD,
 
-    PROC_CALL(func_fe6_0800B3F8),
+    PROC_CALL(TalkSpritePrepNextChar_Step2),
     PROC_SLEEP(1),
 
     PROC_END,
@@ -640,7 +640,7 @@ static bool TalkSpritePrepNextChar(ProcPtr proc)
     if (sTalkSt->line_active >= sTalkSt->lines)
     {
         sTalkSt->instant_print = FALSE;
-        SpawnProcLocking(ProcScr_Unk_085C3E7C, proc);
+        SpawnProcLocking(ProcScr_TalkSpritePrepNextChar, proc);
 
         return TRUE;
     }
@@ -1342,12 +1342,12 @@ static void TalkShiftClear_OnIdle(struct GenericProc * proc)
     }
 }
 
-static void func_fe6_0800B3D4(ProcPtr proc)
+static void TalkSpritePrepNextChar_Step1(ProcPtr proc)
 {
-    func_fe6_08094030(0x361, 0x1C, 0x44444444, proc);
+    CleanTalkObjects(0x361, 0x1C, 0x44444444, proc);
 }
 
-static void func_fe6_0800B3F8(ProcPtr proc)
+static void TalkSpritePrepNextChar_Step2(ProcPtr proc)
 {
     sTalkSt->line_active--;
 

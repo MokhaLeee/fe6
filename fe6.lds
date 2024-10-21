@@ -603,7 +603,6 @@ SECTIONS
         asm/code.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
-        asm/worldmap.o(.text);
         src/monologue.o(.text);
         src/class_demo.o(.text);
         asm/classdemo.o(.text);

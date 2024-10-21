@@ -2571,7 +2571,7 @@ int EvtCmd_WmStart(struct EventProc * proc)
     StartWmSprite();
 
     StartWmZoomIntro(proc);
-    PlayWMIntroBGM();
+    PlayWmIntroBGM();
 
     return EVENT_CMDRET_YIELD;
 }
