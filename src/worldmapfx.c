@@ -9,9 +9,13 @@
 #include "event.h"
 #include "sound.h"
 #include "talk.h"
+#include "mapui.h"
 #include "manim.h"
+#include "debugtext.h"
 #include "spriteanim.h"
 #include "chapterinfo.h"
+#include "constants/videoalloc_global.h"
+
 #include "worldmap.h"
 
 #if NONMATCHING
@@ -255,7 +259,7 @@ int func_fe6_08093288(const u16 * buf, int a)
     if (0x100 & x)
         x |= 0xFFFFFE00;
 
-    if (proc->unk_2E == 0)
+    if (proc->scaling_down == 0)
         x = Div(x, 2);
 
     return x;
@@ -269,7 +273,7 @@ int func_fe6_080932D8(const u16 * buf, int a)
     if (0x80 & x)
         x |= 0xFFFFFF00;
 
-    if (proc->unk_2E == 0)
+    if (proc->scaling_down == 0)
         x = Div(x, 2);
 
     return x;
@@ -286,9 +290,9 @@ void StartWmSpriteDisp(struct ProcWmSprite * proc)
     int i;
     const struct ProcScr * procscr;
 
-    proc->unk_2A = 0;
-    proc->unk_2C = 0;
-    proc->unk_2E = 0;
+    proc->x_off = 0;
+    proc->y_off = 0;
+    proc->scaling_down = 0;
 
     procscr = ProcScr_WmSpriteDisp;
 
@@ -348,7 +352,7 @@ void StartWmSprite(void)
 {
     Decompress(Img_WorldMapStuff, OBJ_VRAM0 + 0x6200);
     ApplyPalettes(Pal_WorldMapStuff, 0x10, 4);
-    ApplyPalettes(Pal_WorldMap_082D3864, 0x14, 2);
+    ApplyPalettes(Pal_WmMapText, 0x14, 2);
     ResetWmArrowSt();
 
     SpawnProc(ProcScr_WmSprite, PROC_TREE_3);
@@ -372,37 +376,38 @@ void func_fe6_0809347C(int x, int y)
 {
     struct ProcWmSprite * proc = FindProc(ProcScr_WmSprite);
 
-    proc->unk_2A = x - 0x78;
-    proc->unk_2C = y - 0x50;
-    proc->unk_2E = true;
+    proc->x_off = x - 0x78;
+    proc->y_off = y - 0x50;
+    proc->scaling_down = true;
 }
 
 void ResetWmSpriteState(void)
 {
     struct ProcWmSprite * proc = FindProc(ProcScr_WmSprite);
 
-    proc->unk_2A = 0;
-    proc->unk_2C = 0;
-    proc->unk_2E = false;
+    proc->x_off = 0;
+    proc->y_off = 0;
+    proc->scaling_down = false;
 }
 
 void DisplayWmArrow(int id, int color)
 {
     struct ProcWmSprite * proc = FindProc(ProcScr_WmSprite);
     struct WmArrowConf * conf = gWmArrowConf + id;
-    int r4 = conf->unk_04 - proc->unk_2A;
-    int r3 = conf->unk_06 - proc->unk_2C;
 
-    if (proc->unk_2E == 0)
+    int x = conf->x - proc->x_off;
+    int y = conf->y - proc->y_off;
+
+    if (proc->scaling_down == 0)
     {
-        r4 = r4 >> 1;
-        r3 = r3 >> 1;
+        x = x >> 1;
+        y = y >> 1;
 
-        r4 -= 2;
-        r3 -= 2;
+        x -= 2;
+        y -= 2;
     }
 
-    StartWmArrow(id, color, r4, r3, conf->unk_0A, conf->unk_09 << 8);
+    StartWmArrow(id, color, x, y, conf->unk_0A, conf->unk_09 << 8);
 }
 
 void SetupWmTalkBoxGfx(void)
@@ -708,7 +713,58 @@ void EndWmFlag(int id)
     SetWmFlag(id, NULL);
 }
 
-void StartWmMapText(int x, int y, int c, int d, int e, int id)
+CONST_DATA struct WmMapTextConfig Config_WmMapText[] = {
+    [0x00] = { 0, Img_WmMapTextDisp_082D3904, Img_WmMapTextDisp_082D3E78 },
+    [0x01] = { 0, Img_WmMapTextDisp_082D3904, Img_WmMapTextDisp_082D43A4 },
+    [0x02] = { 0, Img_WmMapTextDisp_082D4838, Img_WmMapTextDisp_082D4D3C },
+    [0x03] = { 0, Img_WmMapTextDisp_082D5254, Img_DefaultMapText },
+    [0x04] = { 0, Img_WmMapTextDisp_082D3C68, Img_DefaultMapText },
+    [0x05] = { 0, Img_WmMapTextDisp_082D4120, Img_DefaultMapText },
+    [0x06] = { 0, Img_WmMapTextDisp_082D45E0, Img_DefaultMapText },
+    [0x07] = { 0, Img_WmMapTextDisp_082D4B38, Img_DefaultMapText },
+    [0x08] = { 0, Img_WmMapTextDisp_082D4F9C, Img_DefaultMapText },
+    [0x09] = { 0, Img_WmMapTextDisp_082D5400, Img_DefaultMapText },
+    [0x0A] = { 0, Img_WmMapTextDisp_082D55A4, Img_DefaultMapText },
+    [0x0B] = { 0, Img_WmMapTextDisp_082D5778, Img_WmMapTextDisp_082D5844 },
+    [0x0C] = { 0, Img_DefaultMapText, Img_DefaultMapText },
+    [0x0D] = { 45, Img_WmMapTextDisp_082D59DC, Img_DefaultMapText },
+    [0x0E] = { 33, Img_WmMapTextDisp_082D5B98, Img_DefaultMapText },
+    [0x0F] = { 46, Img_WmMapTextDisp_082D5D08, Img_DefaultMapText },
+    [0x10] = { 64, Img_WmMapTextDisp_082D5EE0, Img_DefaultMapText },
+    [0x11] = { 32, Img_WmMapTextDisp_082D60F4, Img_DefaultMapText },
+    [0x12] = { 35, Img_WmMapTextDisp_082D6274, Img_DefaultMapText },
+    [0x13] = { 37, Img_WmMapTextDisp_082D6408, Img_DefaultMapText },
+    [0x14] = { 39, Img_WmMapTextDisp_082D65A8, Img_DefaultMapText },
+    [0x15] = { 42, Img_WmMapTextDisp_082D6768, Img_DefaultMapText },
+    [0x16] = { 38, Img_WmMapTextDisp_082D6930, Img_DefaultMapText },
+    [0x17] = { 40, Img_WmMapTextDisp_082D6AF4, Img_DefaultMapText },
+    [0x18] = { 35, Img_WmMapTextDisp_082D6CA8, Img_DefaultMapText },
+    [0x19] = { 44, Img_WmMapTextDisp_082D6E44, Img_DefaultMapText },
+    [0x1A] = { 52, Img_WmMapTextDisp_082D7018, Img_DefaultMapText },
+    [0x1B] = { 37, Img_WmMapTextDisp_082D720C, Img_DefaultMapText },
+    [0x1C] = { 52, Img_WmMapTextDisp_082D73D0, Img_DefaultMapText },
+    [0x1D] = { 38, Img_WmMapTextDisp_082D75D8, Img_DefaultMapText },
+    [0x1E] = { 36, Img_WmMapTextDisp_082D7774, Img_DefaultMapText },
+    [0x1F] = { 44, Img_WmMapTextDisp_082D7934, Img_DefaultMapText },
+    [0x20] = { 51, Img_WmMapTextDisp_082D7B20, Img_DefaultMapText },
+    [0x21] = { 58, Img_WmMapTextDisp_082D7D24, Img_DefaultMapText },
+    [0x22] = { 35, Img_WmMapTextDisp_082D7F2C, Img_DefaultMapText },
+};
+
+struct ProcScr CONST_DATA ProcScr_WmMapTextDisp[] =
+{
+    PROC_MARK(PROC_MARK_WMSTUFF),
+    PROC_ONEND(WmMapTextDisp_End),
+    PROC_CALL(WmMapTextDisp_Init),
+    PROC_YIELD,
+    PROC_CALL(WmMapTextDisp_DrawGfx),
+    PROC_REPEAT(WmMapTextDisp_Loop1),
+    PROC_REPEAT(WmMapTextDisp_Loop2),
+    PROC_REPEAT(WmMapTextDisp_Loop3),
+    PROC_END,
+};
+
+void StartWmMapText(int x, int y, int nation, int d, int e, int id)
 {
     struct ProcWmMapText * proc;
     struct Vec2i vec = { x, y };
@@ -718,9 +774,9 @@ void StartWmMapText(int x, int y, int c, int d, int e, int id)
     proc = SpawnProc(ProcScr_WmMapTextDisp, PROC_TREE_3);
     proc->x = vec.x;
     proc->y = vec.y;
-    proc->unk_64 = c;
-    proc->unk_66 = d;
-    proc->unk_68 = e;
+    proc->nation = nation;
+    proc->type_a = d;
+    proc->type_b = e;
     proc->id = id;
 
     SetWmMapText(id, proc);
@@ -739,7 +795,7 @@ void EndWmMapText(int id)
     struct ProcWmMapText * proc = GetWmMapText(id);
 
     if (proc)
-        proc->ctrl = 1;
+        proc->end_ctrl = true;
 }
 
 void PutWmMapTextGfx(const void * img_src, u8 * vram_dst)
@@ -755,25 +811,487 @@ void PutWmMapTextGfx(const void * img_src, u8 * vram_dst)
 
 void WmMapTextDisp_Init(struct ProcWmMapText * proc)
 {
-    proc->unk_44 = 0;
-    proc->ctrl = 0;
+    proc->timer = 0;
+    proc->end_ctrl = false;
 }
 
 void WmMapTextDisp_DrawGfx(struct ProcWmMapText * proc)
 {
     proc->sprite_anim = StartSpriteAnim(ApInfo_WmMapTextDisp, 0xB);
-    proc->sprite_anim->oam2 = ((proc->id == 0) ? 0x200 : 0x288) | ((proc->unk_68 == 0) ? 0x5000 : 0x4000);
+    proc->sprite_anim->oam2 = ((proc->id == 0) ? 0x200 : 0x288) | ((proc->type_b == 0) ? 0x5000 : 0x4000);
 
-    if (Config_WmMapText[proc->unk_64].img2 == Img_DefaultMapText)
+    if (Config_WmMapText[proc->nation].img2 == Img_DefaultMapText)
         SetSpriteAnimId(proc->sprite_anim, 1);
     else
         SetSpriteAnimId(proc->sprite_anim, 2);
 
-    PutWmMapTextGfx(Config_WmMapText[proc->unk_64].img1, proc->id == 0 ? (OBJ_VRAM0 + 0x4000) : (OBJ_VRAM0 + 0x5100));
-    PutWmMapTextGfx(Config_WmMapText[proc->unk_64].img2, proc->id == 0 ? (OBJ_VRAM0 + 0x4200) : (OBJ_VRAM0 + 0x5300));
+    PutWmMapTextGfx(Config_WmMapText[proc->nation].img1, proc->id == 0 ? (OBJ_VRAM0 + 0x4000) : (OBJ_VRAM0 + 0x5100));
+    PutWmMapTextGfx(Config_WmMapText[proc->nation].img2, proc->id == 0 ? (OBJ_VRAM0 + 0x4200) : (OBJ_VRAM0 + 0x5300));
 
     SetBlendConfig(BLEND_EFFECT_NONE, 0, 0x10, 0);
     SetBlendTargetA(0, 0, 0, 0, 1);
     SetBlendTargetB(0, 0, 1, 0, 0);
     SetBlendBackdropB(1);
+}
+
+void WmMapTextDisp_Loop1(struct ProcWmMapText * proc)
+{
+    DrawWmMapTextCore(proc->sprite_anim, proc->x, proc->y | 0x400, proc->nation, proc->type_a, proc->type_b);
+
+    proc->timer++;
+    SetBlendConfig(BLEND_EFFECT_NONE, proc->timer, 0x10 - proc->timer, 0);
+
+    if (proc->timer >= 0x10)
+        Proc_Break(proc);
+}
+
+void WmMapTextDisp_Loop2(struct ProcWmMapText * proc)
+{
+    DrawWmMapTextCore(proc->sprite_anim, proc->x, proc->y, proc->nation, proc->type_a, proc->type_b);
+
+    if (proc->end_ctrl)
+        Proc_Break(proc);
+}
+
+void WmMapTextDisp_Loop3(struct ProcWmMapText * proc)
+{
+    DrawWmMapTextCore(proc->sprite_anim, proc->x, proc->y | 0x400, proc->nation, proc->type_a, proc->type_b);
+
+    proc->timer--;
+    SetBlendConfig(BLEND_EFFECT_NONE, proc->timer, 0x10 - proc->timer, 0);
+
+    if (proc->timer == 0)
+        Proc_Break(proc);
+}
+
+void WmMapTextDisp_End(struct ProcWmMapText * proc)
+{
+    SetWmMapText(proc->id, NULL);
+    EndSpriteAnim(proc->sprite_anim);
+}
+
+u16 CONST_DATA Sprite_0868C920[] =
+{
+    1,
+    OAM0_SHAPE_8x8 + OAM0_Y(248), OAM1_SIZE_8x8 + OAM1_X(507) + OAM1_HFLIP, 0,
+};
+
+u16 CONST_DATA Sprite_0868C928[] =
+{
+    1,
+    OAM0_SHAPE_8x8 + OAM0_Y(248), OAM1_SIZE_8x8 + OAM1_X(510), 0,
+};
+
+u16 CONST_DATA Sprite_0868C930[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8 + OAM1_X(510), 0,
+};
+
+u16 CONST_DATA Sprite_0868C938[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8 + OAM1_X(507) + OAM1_HFLIP, 0,
+};
+
+CONST_DATA struct WmMapTextSpriteConfig SpriteConf_WmMapTextDisp[] = {
+    [0] = { Sprite_0868C920, -4, -8, 2, 2 },
+    [1] = { Sprite_0868C928, 4, -8, -2, 2 },
+    [2] = { Sprite_0868C930, -4, 8, 1, 0 },
+    [3] = { Sprite_0868C938, 4, 8, -1, 0 },
+};
+
+#if NONMATCHING
+void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
+{
+    int _e = e;
+    int oam1 = oam1_x & 0xFFFFFE00;
+    int oam0 = oam0_y & 0xFFFFFF00;
+
+    switch (_e) {
+    case 0:
+        oam1_x = oam1_x - 2;
+        break;
+
+    case 2:
+        oam1_x = oam1_x - 3;
+        break;
+
+    case 1:
+    case 3:
+        oam1_x = oam1_x + 2;
+        break;
+
+    default:
+        break;
+    }
+
+    f *= 2;
+
+    while (--f != -1)
+    {
+        PutSpriteExt(
+            0xB,
+            OAM1_X(oam1_x),
+            OAM0_Y(oam0_y),
+            SpriteConf_WmMapTextDisp[e].sprite,
+            0x4320);
+
+        oam1_x += SpriteConf_WmMapTextDisp[e].x1;
+        oam0_y += SpriteConf_WmMapTextDisp[e].y1;
+    }
+
+    switch (_e) {
+    case 2:
+        oam1_x = oam1_x + 2;
+
+        /* Fall through */
+
+    case 0:
+        oam1_x = oam1_x - Config_WmMapText[e].x;
+        break;
+
+    case 3:
+        oam1_x = oam1_x - 2;
+        break;
+
+    default:
+        break;
+    }
+
+    DisplaySpriteAnim(
+        sprit_anim,
+        oam1 + OAM1_X(oam1_x + SpriteConf_WmMapTextDisp[d].x2),
+        oam0 + OAM0_Y(oam0_y + SpriteConf_WmMapTextDisp[d].y2));
+}
+
+#else
+
+NAKEDFUNC
+void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
+{
+asm("\
+    .syntax unified\n\
+    push {r4, r5, r6, r7, lr}\n\
+    mov r7, sl\n\
+    mov r6, sb\n\
+    mov r5, r8\n\
+    push {r5, r6, r7}\n\
+    sub sp, #0x10\n\
+    str r0, [sp, #4]\n\
+    adds r4, r1, #0\n\
+    adds r7, r2, #0\n\
+    str r3, [sp, #8]\n\
+    ldr r0, [sp, #0x30]\n\
+    mov r8, r0\n\
+    ldr r5, [sp, #0x34]\n\
+    ldr r1, .L08093EEC @ =0xFFFFFE00\n\
+    mov sb, r1\n\
+    mov r2, sb\n\
+    ands r2, r4\n\
+    mov sb, r2\n\
+    ldr r0, .L08093EF0 @ =0xFFFFFF00\n\
+    mov sl, r0\n\
+    mov r1, sl\n\
+    ands r1, r7\n\
+    mov sl, r1\n\
+    mov r2, r8\n\
+    cmp r2, #1\n\
+    beq .L08093F08\n\
+    cmp r2, #1\n\
+    bgt .L08093EF4\n\
+    cmp r2, #0\n\
+    beq .L08093F00\n\
+    b .L08093F0A\n\
+    .align 2, 0\n\
+.L08093EEC: .4byte 0xFFFFFE00\n\
+.L08093EF0: .4byte 0xFFFFFF00\n\
+.L08093EF4:\n\
+    mov r0, r8\n\
+    cmp r0, #2\n\
+    beq .L08093F04\n\
+    cmp r0, #3\n\
+    beq .L08093F08\n\
+    b .L08093F0A\n\
+.L08093F00:\n\
+    subs r4, #2\n\
+    b .L08093F0A\n\
+.L08093F04:\n\
+    subs r4, #3\n\
+    b .L08093F0A\n\
+.L08093F08:\n\
+    adds r4, #2\n\
+.L08093F0A:\n\
+    lsls r5, r5, #1\n\
+    subs r5, #1\n\
+    movs r0, #1\n\
+    rsbs r0, r0, #0\n\
+    mov r1, r8\n\
+    lsls r1, r1, #1\n\
+    str r1, [sp, #0xc]\n\
+    cmp r5, r0\n\
+    beq .L08093F54\n\
+    ldr r1, .L08093F64\n\
+    ldr r0, [sp, #0xc]\n\
+    add r0, r8\n\
+    lsls r0, r0, #2\n\
+    adds r6, r0, r1\n\
+.L08093F26:\n\
+    ldr r1, .L08093F68 @ =0x000001FF\n\
+    ands r1, r4\n\
+    add r1, sb\n\
+    movs r2, #0xff\n\
+    ands r2, r7\n\
+    add r2, sl\n\
+    ldr r3, [r6]\n\
+    ldr r0, .L08093F6C @ =0x00004320\n\
+    str r0, [sp]\n\
+    movs r0, #0xb\n\
+    bl PutSpriteExt\n\
+    movs r2, #4\n\
+    ldrsh r0, [r6, r2]\n\
+    adds r4, r4, r0\n\
+    movs r1, #6\n\
+    ldrsh r0, [r6, r1]\n\
+    adds r7, r7, r0\n\
+    subs r5, #1\n\
+    movs r0, #1\n\
+    rsbs r0, r0, #0\n\
+    cmp r5, r0\n\
+    bne .L08093F26\n\
+.L08093F54:\n\
+    mov r2, r8\n\
+    cmp r2, #1\n\
+    beq .L08093F96\n\
+    cmp r2, #1\n\
+    bgt .L08093F70\n\
+    cmp r2, #0\n\
+    beq .L08093F7E\n\
+    b .L08093F96\n\
+    .align 2, 0\n\
+.L08093F64: .4byte SpriteConf_WmMapTextDisp\n\
+.L08093F68: .4byte 0x000001FF\n\
+.L08093F6C: .4byte 0x00004320\n\
+.L08093F70:\n\
+    mov r0, r8\n\
+    cmp r0, #2\n\
+    beq .L08093F7C\n\
+    cmp r0, #3\n\
+    beq .L08093F94\n\
+    b .L08093F96\n\
+.L08093F7C:\n\
+    adds r4, #2\n\
+.L08093F7E:\n\
+    ldr r0, .L08093F90 @ =Config_WmMapText\n\
+    ldr r2, [sp, #8]\n\
+    lsls r1, r2, #1\n\
+    adds r1, r1, r2\n\
+    lsls r1, r1, #2\n\
+    adds r1, r1, r0\n\
+    ldr r0, [r1]\n\
+    subs r4, r4, r0\n\
+    b .L08093F96\n\
+    .align 2, 0\n\
+.L08093F90: .4byte Config_WmMapText\n\
+.L08093F94:\n\
+    subs r4, #2\n\
+.L08093F96:\n\
+    ldr r0, .L08093FD0 @ =SpriteConf_WmMapTextDisp\n\
+    ldr r2, [sp, #0xc]\n\
+    add r2, r8\n\
+    lsls r2, r2, #2\n\
+    adds r2, r2, r0\n\
+    movs r0, #8\n\
+    ldrsh r1, [r2, r0]\n\
+    adds r1, r4, r1\n\
+    ldr r0, .L08093FD4 @ =0x000001FF\n\
+    ands r1, r0\n\
+    add r1, sb\n\
+    movs r0, #0xa\n\
+    ldrsh r2, [r2, r0]\n\
+    adds r2, r7, r2\n\
+    movs r0, #0xff\n\
+    ands r2, r0\n\
+    add r2, sl\n\
+    ldr r0, [sp, #4]\n\
+    bl DisplaySpriteAnim\n\
+    add sp, #0x10\n\
+    pop {r3, r4, r5}\n\
+    mov r8, r3\n\
+    mov sb, r4\n\
+    mov sl, r5\n\
+    pop {r4, r5, r6, r7}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .align 2, 0\n\
+.L08093FD0: .4byte SpriteConf_WmMapTextDisp\n\
+.L08093FD4: .4byte 0x000001FF\n\
+    .syntax divided\n\
+");
+}
+
+#endif
+
+void ModifyWmSpritePosition(struct Vec2i * vec)
+{
+    struct ProcWmSprite * proc = FindProc(ProcScr_WmSprite);
+
+    vec->x -= proc->x_off;
+    vec->y -= proc->y_off;
+
+    if (proc->scaling_down == 0)
+    {
+        vec->x = vec->x >> 1;
+        vec->y = vec->y >> 1;
+    }
+}
+
+void PlayWmIntroBGM(void)
+{
+    StartBgm(GetChapterInfo(gPlaySt.chapter)->song_intro_bgm, NULL);
+}
+
+struct ProcScr CONST_DATA ProcScr_TalkAdvance[] =
+{
+    PROC_CALL(TalkAdvance_Init),
+    PROC_REPEAT(TalkAdvance_Loop),
+    PROC_END,
+};
+
+void StartTalkAdvance(int chr, int lines, int _fill, ProcPtr parent)
+{
+    struct ProcTalkAdvance * proc;
+
+    proc = SpawnProcLocking(ProcScr_TalkAdvance, parent);
+
+    proc->dst = OBJ_VRAM0 + OAM2_CHR(chr) * CHR_SIZE;
+    proc->lines = lines;
+    proc->_fill = _fill;
+}
+
+void TalkAdvance_Init(struct ProcTalkAdvance * proc)
+{
+    proc->timer = 0;
+}
+
+void TalkAdvance_Loop(struct ProcTalkAdvance * proc)
+{
+    int ix, iy;
+    u32 * dst = proc->dst;
+
+    for (ix = 0; ix < proc->lines * 8; ix += 8)
+    {
+        for (iy = 0; iy <= 0x300; iy += 0x100)
+        {
+            (dst + ix + iy)[0] = (dst + ix + iy)[1];
+            (dst + ix + iy)[1] = (dst + ix + iy)[2];
+            (dst + ix + iy)[2] = (dst + ix + iy)[3];
+            (dst + ix + iy)[3] = (dst + ix + iy)[4];
+            (dst + ix + iy)[4] = (dst + ix + iy)[5];
+            (dst + ix + iy)[5] = (dst + ix + iy)[6];
+            (dst + ix + iy)[6] = (dst + ix + iy)[7];
+
+            if (iy < 0x300)
+                (dst + ix + iy)[7] = (dst + ix + iy)[0x100]; // next line
+            else
+                (dst + ix + iy)[7] = proc->_fill;
+        }
+    }
+
+    proc->timer++;
+    if (proc->timer > 15)
+        Proc_Break(proc);
+}
+
+struct ProcScr CONST_DATA ProcScr_WmDebug[] =
+{
+    PROC_CALL(LockGame),
+    PROC_YIELD,
+    PROC_CALL(WmDebug_Init),
+    PROC_REPEAT(WmDebug_Loop),
+    PROC_CALL(UnlockGame),
+    PROC_END,
+};
+
+void StartWmDebug(void)
+{
+    EndMapUi();
+    SpawnProc(ProcScr_WmDebug, PROC_TREE_3);
+}
+
+void WmDebug_ResetState(struct ProcWmDebug * proc)
+{
+    proc->state = 1;
+}
+
+void WmDebug_Init(struct ProcWmDebug * proc)
+{
+    proc->number = 0;
+    proc->chapter = gPlaySt.chapter;
+    WmDebug_ResetState(proc);
+}
+
+void WmDebug_Loop(struct ProcWmDebug * proc)
+{
+    int repeated, _button_l;
+    int number = proc->number;
+
+    if (IsEventRunning())
+        return;
+
+    if (proc->state == 0)
+    {
+        DebugInitObj(-1, 0x9);
+        WmDebug_ResetState(proc);
+    }
+
+    DebugPutObjNumber(0x70, 0x64, number, 4);
+
+    if (gKeySt->pressed & KEY_BUTTON_SELECT)
+    {
+        Proc_Break(proc);
+        return;
+    }
+
+    repeated = gKeySt->repeated;
+
+    if (repeated & KEY_DPAD_UP)
+        number++;
+
+    if (repeated & KEY_DPAD_DOWN)
+        number--;
+
+    if (repeated & KEY_DPAD_RIGHT)
+        number += 10;
+
+    if (repeated & KEY_DPAD_LEFT)
+        number -= 10;
+
+    if (repeated & KEY_BUTTON_R)
+        number += 100;
+
+    _button_l = KEY_BUTTON_L;
+    _button_l &= repeated;
+    if (_button_l)
+        number -= 100;
+
+    if (number < 0)
+        number = 0;
+
+    if (number > 38)
+        number = 38;
+
+    if (number != proc->number)
+    {
+        DebugInitObj(-1, 9);
+        proc->number = number;
+        return;
+    }
+
+    if (gKeySt->pressed & KEY_BUTTON_A)
+    {
+        proc->state = 0;
+        gPlaySt.chapter = proc->chapter;
+        SpawnProc(ProcScr_WorldMapIntroEvent, PROC_TREE_3);
+    }
 }
