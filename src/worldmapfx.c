@@ -14,9 +14,9 @@
 #include "debugtext.h"
 #include "spriteanim.h"
 #include "chapterinfo.h"
-#include "constants/videoalloc_global.h"
-
 #include "worldmap.h"
+#include "constants/videoalloc_global.h"
+#include "constants/worldmap.h"
 
 #if NONMATCHING
 void DrawWmArrowCore(u8 id, i16 b, i16 c, int d)
@@ -510,49 +510,49 @@ void StartWmHighlight(int nation, int id)
 
 struct WmHighlightConfig CONST_DATA Config_WmHighlight[7] =
 {
-    [0] = {
+    [WM_HIGHLIGHT_NATION_0] = {
         .img = Img_WmHighlight_Nation1,
         .sprite = ApInfo_WmHighlight_Nation1,
         .x = 0x3E,
         .y = 0x1D,
     },
 
-    [1] = {
+    [WM_HIGHLIGHT_NATION_1] = {
         .img = Img_WmHighlight_Nation2,
         .sprite = ApInfo_WmHighlight_Nation2,
         .x = 0xC9,
         .y = 0x33,
     },
 
-    [2] = {
+    [WM_HIGHLIGHT_NATION_2] = {
         .img = Img_WmHighlight_Nation3,
         .sprite = ApInfo_WmHighlight_Nation3,
         .x = 0x40,
         .y = 0x69,
     },
 
-    [3] = {
+    [WM_HIGHLIGHT_NATION_3] = {
         .img = Img_WmHighlight_Nation4,
         .sprite = ApInfo_WmHighlight_Nation4,
         .x = 0xA0,
         .y = 0x50,
     },
 
-    [4] = {
+    [WM_HIGHLIGHT_NATION_4] = {
         .img = Img_WmHighlight_Nation5,
         .sprite = ApInfo_WmHighlight_Nation5,
         .x = 0xE5,
         .y = 0x4B,
     },
 
-    [5] = {
+    [WM_HIGHLIGHT_NATION_5] = {
         .img = Img_WmHighlight_Nation6,
         .sprite = ApInfo_WmHighlight_Nation6,
         .x = 0xB3,
         .y = 0x00,
     },
 
-    [6] = {
+    [WM_HIGHLIGHT_NATION_6] = {
         .img = Img_WmHighlight_Nation7,
         .sprite = ApInfo_WmHighlight_Nation7,
         .x = 0x62,
@@ -714,41 +714,41 @@ void EndWmFlag(int id)
 }
 
 CONST_DATA struct WmMapTextConfig Config_WmMapText[] = {
-    [0x00] = { 0, Img_WmMapTextDisp_082D3904, Img_WmMapTextDisp_082D3E78 },
-    [0x01] = { 0, Img_WmMapTextDisp_082D3904, Img_WmMapTextDisp_082D43A4 },
-    [0x02] = { 0, Img_WmMapTextDisp_082D4838, Img_WmMapTextDisp_082D4D3C },
-    [0x03] = { 0, Img_WmMapTextDisp_082D5254, Img_DefaultMapText },
-    [0x04] = { 0, Img_WmMapTextDisp_082D3C68, Img_DefaultMapText },
-    [0x05] = { 0, Img_WmMapTextDisp_082D4120, Img_DefaultMapText },
-    [0x06] = { 0, Img_WmMapTextDisp_082D45E0, Img_DefaultMapText },
-    [0x07] = { 0, Img_WmMapTextDisp_082D4B38, Img_DefaultMapText },
-    [0x08] = { 0, Img_WmMapTextDisp_082D4F9C, Img_DefaultMapText },
-    [0x09] = { 0, Img_WmMapTextDisp_082D5400, Img_DefaultMapText },
-    [0x0A] = { 0, Img_WmMapTextDisp_082D55A4, Img_DefaultMapText },
-    [0x0B] = { 0, Img_WmMapTextDisp_082D5778, Img_WmMapTextDisp_082D5844 },
-    [0x0C] = { 0, Img_DefaultMapText, Img_DefaultMapText },
-    [0x0D] = { 45, Img_WmMapTextDisp_082D59DC, Img_DefaultMapText },
-    [0x0E] = { 33, Img_WmMapTextDisp_082D5B98, Img_DefaultMapText },
-    [0x0F] = { 46, Img_WmMapTextDisp_082D5D08, Img_DefaultMapText },
-    [0x10] = { 64, Img_WmMapTextDisp_082D5EE0, Img_DefaultMapText },
-    [0x11] = { 32, Img_WmMapTextDisp_082D60F4, Img_DefaultMapText },
-    [0x12] = { 35, Img_WmMapTextDisp_082D6274, Img_DefaultMapText },
-    [0x13] = { 37, Img_WmMapTextDisp_082D6408, Img_DefaultMapText },
-    [0x14] = { 39, Img_WmMapTextDisp_082D65A8, Img_DefaultMapText },
-    [0x15] = { 42, Img_WmMapTextDisp_082D6768, Img_DefaultMapText },
-    [0x16] = { 38, Img_WmMapTextDisp_082D6930, Img_DefaultMapText },
-    [0x17] = { 40, Img_WmMapTextDisp_082D6AF4, Img_DefaultMapText },
-    [0x18] = { 35, Img_WmMapTextDisp_082D6CA8, Img_DefaultMapText },
-    [0x19] = { 44, Img_WmMapTextDisp_082D6E44, Img_DefaultMapText },
-    [0x1A] = { 52, Img_WmMapTextDisp_082D7018, Img_DefaultMapText },
-    [0x1B] = { 37, Img_WmMapTextDisp_082D720C, Img_DefaultMapText },
-    [0x1C] = { 52, Img_WmMapTextDisp_082D73D0, Img_DefaultMapText },
-    [0x1D] = { 38, Img_WmMapTextDisp_082D75D8, Img_DefaultMapText },
-    [0x1E] = { 36, Img_WmMapTextDisp_082D7774, Img_DefaultMapText },
-    [0x1F] = { 44, Img_WmMapTextDisp_082D7934, Img_DefaultMapText },
-    [0x20] = { 51, Img_WmMapTextDisp_082D7B20, Img_DefaultMapText },
-    [0x21] = { 58, Img_WmMapTextDisp_082D7D24, Img_DefaultMapText },
-    [0x22] = { 35, Img_WmMapTextDisp_082D7F2C, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_00] = { 0, Img_WmMapTextDisp_082D3904, Img_WmMapTextDisp_082D3E78 },
+    [WM_MAPTEXT_LOC_01] = { 0, Img_WmMapTextDisp_082D3904, Img_WmMapTextDisp_082D43A4 },
+    [WM_MAPTEXT_LOC_02] = { 0, Img_WmMapTextDisp_082D4838, Img_WmMapTextDisp_082D4D3C },
+    [WM_MAPTEXT_LOC_03] = { 0, Img_WmMapTextDisp_082D5254, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_04] = { 0, Img_WmMapTextDisp_082D3C68, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_05] = { 0, Img_WmMapTextDisp_082D4120, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_06] = { 0, Img_WmMapTextDisp_082D45E0, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_07] = { 0, Img_WmMapTextDisp_082D4B38, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_08] = { 0, Img_WmMapTextDisp_082D4F9C, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_09] = { 0, Img_WmMapTextDisp_082D5400, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_0A] = { 0, Img_WmMapTextDisp_082D55A4, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_0B] = { 0, Img_WmMapTextDisp_082D5778, Img_WmMapTextDisp_082D5844 },
+    [WM_MAPTEXT_LOC_0C] = { 0, Img_DefaultMapText, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_0D] = { 45, Img_WmMapTextDisp_082D59DC, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_0E] = { 33, Img_WmMapTextDisp_082D5B98, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_0F] = { 46, Img_WmMapTextDisp_082D5D08, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_10] = { 64, Img_WmMapTextDisp_082D5EE0, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_11] = { 32, Img_WmMapTextDisp_082D60F4, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_12] = { 35, Img_WmMapTextDisp_082D6274, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_13] = { 37, Img_WmMapTextDisp_082D6408, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_14] = { 39, Img_WmMapTextDisp_082D65A8, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_15] = { 42, Img_WmMapTextDisp_082D6768, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_16] = { 38, Img_WmMapTextDisp_082D6930, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_17] = { 40, Img_WmMapTextDisp_082D6AF4, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_18] = { 35, Img_WmMapTextDisp_082D6CA8, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_19] = { 44, Img_WmMapTextDisp_082D6E44, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_1A] = { 52, Img_WmMapTextDisp_082D7018, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_1B] = { 37, Img_WmMapTextDisp_082D720C, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_1C] = { 52, Img_WmMapTextDisp_082D73D0, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_1D] = { 38, Img_WmMapTextDisp_082D75D8, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_1E] = { 36, Img_WmMapTextDisp_082D7774, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_1F] = { 44, Img_WmMapTextDisp_082D7934, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_20] = { 51, Img_WmMapTextDisp_082D7B20, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_21] = { 58, Img_WmMapTextDisp_082D7D24, Img_DefaultMapText },
+    [WM_MAPTEXT_LOC_22] = { 35, Img_WmMapTextDisp_082D7F2C, Img_DefaultMapText },
 };
 
 struct ProcScr CONST_DATA ProcScr_WmMapTextDisp[] =
