@@ -220,8 +220,8 @@ SECTIONS
         . = 0x01F0D8; gUnk_Banim_0201F0D8 = .;
         . = 0x01F0DA; gUnk_Banim_0201F0DA = .;
         . = 0x01F0DC; gEkrTriangleInvalid = .;
-        . = 0x01F0E0; gUnk_Banim_0201F0E0 = .;
-        . = 0x01F0E4; gUnk_Banim_0201F0E4 = .;
+        . = 0x01F0E0; gpProcEkrPopup = .;
+        . = 0x01F0E4; gEkrPopupDone = .;
         . = 0x01F0E8; /* end */
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
@@ -573,6 +573,7 @@ SECTIONS
         asm/banim_ekrlvup.o(.text);
         asm/banim_ekrtriangle.o(.text);
         asm/banim_bg.o(.text);
+        src/banim_ekrpopup.o(.text);
         asm/banim_ekrpopup.o(.text);
         src/mu.o(.text);
         src/manim.o(.text);
@@ -804,6 +805,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
         . = ALIGN(4); asm/banim_ekrlvup.o(.data);
         . = ALIGN(4); data/data-code-banim2.o(.data);
+        . = ALIGN(4); src/banim_ekrpopup.o(.data);
         . = ALIGN(4); src/gamedata.o(.data);
         . = ALIGN(4), data/data-game-info.o(.data);
         . = ALIGN(4); src/mu.o(.data);
