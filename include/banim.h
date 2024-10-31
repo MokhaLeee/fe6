@@ -1568,7 +1568,19 @@ void PutBanimBG(int);
 struct ProcEkrPopup {
     PROC_HEADER;
 
-    STRUCT_PAD(0x29, 0x60);
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ i16 timer;
+    /* 2E */ i16 terminator;
+
+    STRUCT_PAD(0x30, 0x44);
+
+    /* 44 */ int lbuff;
+    /* 48 */ int ldebuf;
+    /* 4C */ int rbuff;
+    /* 50 */ int rdebuf;
+
+    STRUCT_PAD(0x54, 0x60);
 
     /* 60 */ struct Anim * anim;
 };
@@ -1583,17 +1595,17 @@ void EndEkrPopup(void);
 // MakeBattlePopupTileMap
 // DrawBattlePopup
 void NewEkrPopup(void);
-void func_fe6_0805F57C(struct ProcEkrPopup * proc);
-void func_fe6_0805F598(struct ProcEkrPopup * proc);
-void func_fe6_0805F5C0(struct ProcEkrPopup * proc);
-void func_fe6_0805F5F8(struct ProcEkrPopup * proc);
-void func_fe6_0805F620(struct ProcEkrPopup * proc);
-void func_fe6_0805F658(struct ProcEkrPopup * proc);
-void func_fe6_0805F680(struct ProcEkrPopup * proc);
-void func_fe6_0805F6B8(struct ProcEkrPopup * proc);
-void func_fe6_0805F6E0(struct ProcEkrPopup * proc);
-void func_fe6_0805F71C(struct ProcEkrPopup * proc);
-void func_fe6_0805F74C(struct ProcEkrPopup * proc);
+void EkrPopup_BeginningPause(struct ProcEkrPopup * proc);
+void EkrPopup_DrawRankUp1(struct ProcEkrPopup * proc);
+void EkrPopup_WaitRankUp1(struct ProcEkrPopup * proc);
+void EkrPopup_DrawRankUp2(struct ProcEkrPopup * proc);
+void EkrPopup_WaitRankUp2(struct ProcEkrPopup * proc);
+void EkrPopup_DrawWeaponBroken1(struct ProcEkrPopup * proc);
+void EkrPopup_WaitWeaponBroken1(struct ProcEkrPopup * proc);
+void EkrPopup_DrawWeaponBroken2(struct ProcEkrPopup * proc);
+void EkrPopup_WaitWeaponBroken2(struct ProcEkrPopup * proc);
+void EkrPopup_EndingPause(struct ProcEkrPopup * proc);
+void EkrPopup_Blocked(struct ProcEkrPopup * proc);
 void func_fe6_0805F750(struct ProcEkrPopup * proc);
 u8 GetWeaponAnimActorCount(u16 item);
 // func_fe6_0805F794

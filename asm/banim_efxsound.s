@@ -1314,7 +1314,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	thumb_func_start EkrRestoreBGM
 EkrRestoreBGM: @ 0x0805C738
 	push {lr}
-	bl func_fe6_08058F38
+	bl CheckEkrDragonWorking
 	cmp r0, #0
 	bne .L0805C756
 	ldr r1, .L0805C75C @ =gBmSt
