@@ -694,6 +694,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_banim_081C9EF4.o(.rodata);
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
+        . = ALIGN(4); src/gamedatainfo.o(.rodata);
         . = ALIGN(4); data/rodata_279E60.o(.rodata);
         . = ALIGN(4); src/mu.o(.rodata);
         . = ALIGN(4); src/manim.o(.rodata);
@@ -807,6 +808,8 @@ SECTIONS
         . = ALIGN(4); data/data-code-banim2.o(.data);
         . = ALIGN(4); src/banim_ekrpopup.o(.data);
         . = ALIGN(4); src/gamedata.o(.data);
+        . = ALIGN(4), data/data-portrait.o(.data);
+        . = ALIGN(4); src/gamedatainfo.o(.data);
         . = ALIGN(4), data/data-game-info.o(.data);
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); data/data-code-mu.o(.data);

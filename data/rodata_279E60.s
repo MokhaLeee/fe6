@@ -1,6 +1,6 @@
     .section .rodata
 
-    .incbin "fe6-base.gba", 0x279E60, (0x2A75FC - 0x279E60) @ length: ????
+    .incbin "fe6-base.gba", 0x27A924, (0x2A75FC - 0x27A924) @ length: ????
 
     .global SpriteAnim_ManimStatGain
 SpriteAnim_ManimStatGain: @ 082A75FC
