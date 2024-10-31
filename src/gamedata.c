@@ -14,6 +14,9 @@
 #include "constants/icons.h"
 #include "constants/terrains.h"
 
+/**
+ * Contents
+ */
 #include "data/gamedata/pinfo.h"
 #include "data/gamedata/jinfo.h"
 #include "data/gamedata/iinfo.h"
