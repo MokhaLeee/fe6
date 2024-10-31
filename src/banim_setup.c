@@ -6,6 +6,7 @@
 #include "item.h"
 #include "battle.h"
 #include "chapterinfo.h"
+#include "spellassoc.h"
 #include "banim_sprite.h"
 #include "banim.h"
 #include "banim_ekrbattle.h"
@@ -82,7 +83,7 @@ bool _SetupBanim(void)
         else if (gBattleUnitA.weapon_before == 0)
             char_cnt = 2;
         else
-            char_cnt = GetWeaponAnimActorCount(GetItemIid(gBattleUnitA.weapon_before));
+            char_cnt = GetSpellAssocCharCount(GetItemIid(gBattleUnitA.weapon_before));
 
         gBanimValid[POS_L] = gBanimValid[POS_R] = true;
 

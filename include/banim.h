@@ -1606,13 +1606,6 @@ void EkrPopup_DrawWeaponBroken2(struct ProcEkrPopup * proc);
 void EkrPopup_WaitWeaponBroken2(struct ProcEkrPopup * proc);
 void EkrPopup_EndingPause(struct ProcEkrPopup * proc);
 void EkrPopup_Blocked(struct ProcEkrPopup * proc);
-void func_fe6_0805F750(struct ProcEkrPopup * proc);
-u8 GetWeaponAnimActorCount(u16 item);
-// func_fe6_0805F794
-struct ProcScr const * GetWeaponAnimManimSpecialScr(int item); // fu16?
-fu8 func_fe6_0805F7B4(int item); // fu16?
-fu8 GetItemMaFacing(int item); // fu16?
-fu8 func_fe6_0805F7D4(int item); // fu16?
 
 extern CONST_DATA struct ProcScr ProcScr_EkrBattleDeamon[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBattle[];
