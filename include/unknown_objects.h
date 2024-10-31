@@ -245,10 +245,10 @@ extern u8 const Tm_LevelUpFrame[]; // tiles (stat gains)
 extern u16 const Pal_LevelUpFrame[]; // pal (stat gains)
 // extern ??? gUnk_081150E8
 // extern ??? gUnk_081152FC
-// extern ??? gUnk_0811531C
-// extern ??? gUnk_08115378
-// extern ??? gUnk_08115478
-// extern ??? gUnk_08115498
+extern u8 const Img_EkrPopup[];
+extern u8 const Img_EkrUnkPopup[];
+extern u16 const Pal_EkrPopup[];
+extern u8 const Tsa_EkrPopup[];
 // extern ??? gUnk_08115524
 // extern ??? gUnk_08117B90
 // extern ??? gUnk_08118330

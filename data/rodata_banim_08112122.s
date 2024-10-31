@@ -218,20 +218,20 @@ gUnk_081150E8: @ 081150E8
 gUnk_081152FC: @ 081152FC
 	.incbin "fe6-base.gba", 0x1152FC, (0x11531C - 0x1152FC) @ length: 0020
 
-	.global gUnk_0811531C
-gUnk_0811531C: @ 0811531C
+	.global Img_EkrPopup
+Img_EkrPopup: @ 0811531C
 	.incbin "fe6-base.gba", 0x11531C, (0x115378 - 0x11531C) @ length: 005C
 
-	.global gUnk_08115378
-gUnk_08115378: @ 08115378
+	.global Img_EkrUnkPopup
+Img_EkrUnkPopup: @ 08115378
 	.incbin "fe6-base.gba", 0x115378, (0x115478 - 0x115378) @ length: 0100
 
-	.global gUnk_08115478
-gUnk_08115478: @ 08115478
+	.global Pal_EkrPopup
+Pal_EkrPopup: @ 08115478
 	.incbin "fe6-base.gba", 0x115478, (0x115498 - 0x115478) @ length: 0020
 
-	.global gUnk_08115498
-gUnk_08115498: @ 08115498
+	.global Tsa_EkrPopup
+Tsa_EkrPopup: @ 08115498
 	.incbin "fe6-base.gba", 0x115498, (0x115524 - 0x115498) @ length: 008C
 
 	.global gUnk_08115524

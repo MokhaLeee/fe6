@@ -1,3 +1,5 @@
+	.include "animscr.inc"
+	.include "gba_sprites.inc"
 	.section .data
 
 	.global ProcScr_EkrTriangle
@@ -78,12 +80,14 @@ gUnk_086074A0: @ 086074A0
 
 	.global gUnk_08607504
 gUnk_08607504: @ 08607504
-	.incbin "fe6-base.gba", 0x607504, (0x607660 - 0x607504) @ length: 015C
+	.incbin "fe6-base.gba", 0x607504, (0x607648 - 0x607504) @ length: 015C
 
-	.global gUnk_08607660
-gUnk_08607660: @ 08607660
-	.incbin "fe6-base.gba", 0x607660, (0x607668 - 0x607660) @ length: 0008
+	.global AnimSprite_08607648
+AnimSprite_08607648:  @ 0x607648
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x0000, 0, 0
+    ANIM_SPRITE_END
 
-	.global gUnk_08607668
-gUnk_08607668: @ 08607668
-	.incbin "fe6-base.gba", 0x607668, (0x6076D0 - 0x607668) @ length: 0068
+	.global AnimScr_EkrPopup
+AnimScr_EkrPopup: @ 0x607660
+    ANIMSCR_FORCE_SPRITE AnimSprite_08607648, 1
+    ANIMSCR_BLOCKED

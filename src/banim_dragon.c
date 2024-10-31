@@ -378,7 +378,7 @@ void InitEkrDragonStatus(void)
     SetAnimStateHidden(GetDragonPosition());
 }
 
-int func_fe6_08058F38(void)
+int CheckEkrDragonWorking(void)
 {
     if (GetEkrDragonStateTypeIdunn() == 0)
         return 0;
