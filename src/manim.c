@@ -26,7 +26,7 @@
 #include "eventinfo.h"
 #include "systemlabels.h"
 #include "mapui.h"
-#include "banim.h"
+#include "spellassoc.h"
 
 #include "constants/iids.h"
 #include "constants/pids.h"
@@ -482,7 +482,7 @@ void Manim_OpenInfoWindow(ProcPtr proc)
 
     }
 
-    if (func_fe6_0805F7B4(gManimSt.actor[0].bu->weapon_before) == 0)
+    if (CheckSpellAssocCombat(gManimSt.actor[0].bu->weapon_before) == 0)
         return;
 
     if (gManimSt.main_actor_count == 1)
@@ -629,7 +629,7 @@ void SetManimActorFacing(int actor_id, int opponent_actor_id, int manim_facing)
 
 void InitManimActorFacings(void)
 {
-    int manim_facing = GetItemMaFacing(gManimSt.actor[0].bu->weapon_before);
+    int manim_facing = GetSpellAssocFacing(gManimSt.actor[0].bu->weapon_before);
 
     SortManimMuLayers();
 
@@ -795,9 +795,9 @@ void StartBattleManim(void)
 
 void InitManimHits(struct BattleUnit * bu_a, struct BattleUnit * bu_b, struct BattleHit * battle_hits)
 {
-    gManimSt.main_actor_count = GetWeaponAnimActorCount(bu_a->weapon_before);
+    gManimSt.main_actor_count = GetSpellAssocCharCount(bu_a->weapon_before);
     gManimSt.hit_it = battle_hits;
-    gManimSt.special_proc_scr = GetWeaponAnimManimSpecialScr(bu_a->weapon_before);
+    gManimSt.special_proc_scr = GetSpellAssocManimSpecialScr(bu_a->weapon_before);
 }
 
 void InitManimActors(struct BattleUnit * bu_a, struct BattleUnit * bu_b, struct BattleHit * battle_hits)
@@ -4492,7 +4492,7 @@ void Manim_HitImpact(ProcPtr proc)
     else
         defender_actor = gManimSt.defender_actor;
 
-    if (func_fe6_0805F7B4(gManimSt.actor[attacker_actor].bu->weapon_before) == 0)
+    if (CheckSpellAssocCombat(gManimSt.actor[attacker_actor].bu->weapon_before) == 0)
     {
         if ((gManimSt.hit_attributes & BATTLE_HIT_ATTR_MISS) != 0)
             StartManimMissTag(gManimSt.actor[defender_actor].unit);
@@ -4554,7 +4554,7 @@ void Manim_HitImpact(ProcPtr proc)
     if ((gManimSt.hit_attributes & BATTLE_HIT_ATTR_CRIT) != 0)
     {
         PlaySeSpacial(hit_song, gManimSt.actor[defender_actor].unit->x * 16 - gBmSt.camera.x);
-        func_fe6_0806142C(gManimSt.actor[defender_actor].mu, func_fe6_0805F7D4(gManimSt.actor[attacker_actor].bu->weapon_before));
+        func_fe6_0806142C(gManimSt.actor[defender_actor].mu, GetSpellAssocFlashColor(gManimSt.actor[attacker_actor].bu->weapon_before));
         func_fe6_080685F0();
         PlaySeSpacial(SONG_D8, gManimSt.actor[defender_actor].unit->x * 16 - gBmSt.camera.x);
         StartMuSpeedUpAnim(gManimSt.actor[attacker_actor].mu);
@@ -4562,7 +4562,7 @@ void Manim_HitImpact(ProcPtr proc)
     else
     {
         PlaySeSpacial(hit_song, gManimSt.actor[defender_actor].unit->x * 16 - gBmSt.camera.x);
-        StartMuFlashFadeFrom(gManimSt.actor[defender_actor].mu, func_fe6_0805F7D4(gManimSt.actor[attacker_actor].bu->weapon_before));
+        StartMuFlashFadeFrom(gManimSt.actor[defender_actor].mu, GetSpellAssocFlashColor(gManimSt.actor[attacker_actor].bu->weapon_before));
     }
 }
 

@@ -11,7 +11,7 @@
 #include "chapter.h"
 #include "battle.h"
 #include "manim.h"
-#include "banim.h"
+#include "spellassoc.h"
 
 #include "constants/jids.h"
 #include "constants/songs.h"
@@ -1081,7 +1081,7 @@ void StartMuDelayedFaceDefender(struct MuProc * mu)
 
 void MuDelayedFaceDefenderFunc(int arg)
 {
-    SetManimActorFacing(gManimSt.attacker_actor, 1-gManimSt.attacker_actor, GetItemMaFacing(gManimSt.actor[0].bu->weapon_before));
+    SetManimActorFacing(gManimSt.attacker_actor, 1-gManimSt.attacker_actor, GetSpellAssocFacing(gManimSt.actor[0].bu->weapon_before));
     FreezeSpriteAnim((struct SpriteAnim *) arg);
 }
 

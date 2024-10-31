@@ -177,12 +177,12 @@ GetSpellAnimId: @ 0x08049D98
 	bl GetItemIid
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	ldr r3, .L08049DB4 @ =gUnk_08662E4C
+	ldr r3, .L08049DB4 @ =gSpellAssoc
 	ldrh r1, [r3]
 	ldr r2, .L08049DB8 @ =0x0000FFFF
 	b .L08049DC0
 	.align 2, 0
-.L08049DB4: .4byte gUnk_08662E4C
+.L08049DB4: .4byte gSpellAssoc
 .L08049DB8: .4byte 0x0000FFFF
 .L08049DBC:
 	adds r3, #0x10

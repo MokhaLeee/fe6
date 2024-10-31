@@ -5895,7 +5895,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	sub sp, #0xc
 	str r0, [sp]
 	mov r8, r1
-	ldr r2, .L08090050 @ =gUnk_0866354C
+	ldr r2, .L08090050 @ =gCreditInfo
 	lsls r0, r1, #1
 	add r0, r8
 	lsls r4, r0, #2
@@ -5947,7 +5947,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	ldr r0, [r0]
 	b .L080902BA
 	.align 2, 0
-.L08090050: .4byte gUnk_0866354C
+.L08090050: .4byte gCreditInfo
 .L08090054: .4byte 0x02016A3C
 .L08090058: .4byte 0x02016A3F
 .L0809005C:
@@ -6004,7 +6004,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	.4byte .L08090134 @ case 36
 .L08090108:
 	adds r7, #0x10
-	ldr r1, .L08090124 @ =gUnk_0866354C
+	ldr r1, .L08090124 @ =gCreditInfo
 	mov r3, r8
 	lsls r2, r3, #1
 	adds r0, r2, r3
@@ -6017,7 +6017,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	movs r3, #0
 	b .L080902A2
 	.align 2, 0
-.L08090124: .4byte gUnk_0866354C
+.L08090124: .4byte gCreditInfo
 .L08090128:
 	adds r5, #7
 	b .L0809029E
@@ -6216,7 +6216,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	ldr r6, [sp, #8]
 	adds r6, #1
 	str r6, [sp, #8]
-	ldr r1, .L080902E8 @ =gUnk_0866354C
+	ldr r1, .L080902E8 @ =gCreditInfo
 	mov r4, r8
 	adds r0, r2, r4
 	lsls r0, r0, #2
@@ -6249,7 +6249,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	.align 2, 0
 .L080902E0: .4byte gUnk_0868BA3C
 .L080902E4: .4byte Sprite_16x16
-.L080902E8: .4byte gUnk_0866354C
+.L080902E8: .4byte gCreditInfo
 .L080902EC: .4byte 0x02016A42
 
 	thumb_func_start func_fe6_080902F0
@@ -6260,7 +6260,7 @@ func_fe6_080902F0: @ 0x080902F0
 	mov r5, r8
 	push {r5, r6, r7}
 	adds r5, r0, #0
-	ldr r4, .L08090374 @ =gUnk_0866354C
+	ldr r4, .L08090374 @ =gCreditInfo
 	lsls r0, r5, #1
 	adds r0, r0, r5
 	lsls r0, r0, #2
@@ -6318,7 +6318,7 @@ func_fe6_080902F0: @ 0x080902F0
 	mov r8, r1
 	b .L080904CE
 	.align 2, 0
-.L08090374: .4byte gUnk_0866354C
+.L08090374: .4byte gCreditInfo
 .L08090378: .4byte 0x02016A42
 .L0809037C: .4byte gBg0Tm
 .L08090380: .4byte gBg1Tm
@@ -6376,7 +6376,7 @@ func_fe6_080902F0: @ 0x080902F0
 	.4byte .L0809049C @ case 35
 	.4byte .L08090498 @ case 36
 .L08090434:
-	ldr r0, .L08090460 @ =gUnk_0866354C
+	ldr r0, .L08090460 @ =gCreditInfo
 	lsls r4, r5, #1
 	adds r1, r4, r5
 	lsls r1, r1, #2
@@ -6396,7 +6396,7 @@ func_fe6_080902F0: @ 0x080902F0
 	adds r2, r4, #0
 	b .L080904B4
 	.align 2, 0
-.L08090460: .4byte gUnk_0866354C
+.L08090460: .4byte gCreditInfo
 .L08090464: .4byte gBg1Tm
 .L08090468:
 	lsls r2, r6, #0x10
@@ -6450,7 +6450,7 @@ func_fe6_080902F0: @ 0x080902F0
 	lsrs r6, r0, #0x10
 	movs r0, #1
 	add sb, r0
-	ldr r1, .L080904EC @ =gUnk_0866354C
+	ldr r1, .L080904EC @ =gCreditInfo
 	adds r0, r2, r5
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -6472,7 +6472,7 @@ func_fe6_080902F0: @ 0x080902F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080904EC: .4byte gUnk_0866354C
+.L080904EC: .4byte gCreditInfo
 
 	thumb_func_start func_fe6_080904F0
 func_fe6_080904F0: @ 0x080904F0
@@ -7571,7 +7571,7 @@ func_fe6_08090D78: @ 0x08090D78
 	.align 2, 0
 .L08090DD0: .4byte 0x02016A3E
 .L08090DD4:
-	ldr r2, .L08090DFC @ =gUnk_0866354C
+	ldr r2, .L08090DFC @ =gCreditInfo
 	ldr r1, .L08090E00 @ =0x02016A3C
 	ldrb r3, [r1]
 	lsls r0, r3, #1
@@ -7590,7 +7590,7 @@ func_fe6_08090D78: @ 0x08090D78
 	bl SpawnProcLocking
 	b .L08090E68
 	.align 2, 0
-.L08090DFC: .4byte gUnk_0866354C
+.L08090DFC: .4byte gCreditInfo
 .L08090E00: .4byte 0x02016A3C
 .L08090E04: .4byte 0x02016A41
 .L08090E08: .4byte gUnk_0868BC44
@@ -7753,7 +7753,7 @@ func_fe6_08090F34: @ 0x08090F34
 func_fe6_08090F48: @ 0x08090F48
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, .L08090F68 @ =gUnk_0866354C
+	ldr r0, .L08090F68 @ =gCreditInfo
 	ldr r3, .L08090F6C @ =0x02016A3C
 	ldrb r2, [r3]
 	lsls r1, r2, #1
@@ -7768,7 +7768,7 @@ func_fe6_08090F48: @ 0x08090F48
 	strb r0, [r3]
 	b .L08090FFC
 	.align 2, 0
-.L08090F68: .4byte gUnk_0866354C
+.L08090F68: .4byte gCreditInfo
 .L08090F6C: .4byte 0x02016A3C
 .L08090F70:
 	adds r0, r5, #0

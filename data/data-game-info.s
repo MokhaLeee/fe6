@@ -586,16 +586,16 @@ BanimInfo_Roy_Promoted: @ 08662C04
 UnitSpriteTable: @ 08662C14
     .incbin "fe6-base.gba", 0x662C14, (0x662E4C - 0x662C14) @ length: 0238
 
-    .global gUnk_08662E4C
-gUnk_08662E4C: @ 08662E4C
+    .global gSpellAssoc
+gSpellAssoc: @ 08662E4C
     .incbin "fe6-base.gba", 0x662E4C, (0x66350C - 0x662E4C) @ length: 06C0
 
     .global AffinityBonuses
 AffinityBonuses: @ 0866350C
     .incbin "fe6-base.gba", 0x66350C, (0x66354C - 0x66350C) @ length: 0040
 
-    .global gUnk_0866354C
-gUnk_0866354C: @ 0866354C
+    .global gCreditInfo
+gCreditInfo: @ 0866354C
     .incbin "fe6-base.gba", 0x66354C, (0x6637A4 - 0x66354C) @ length: 0258
 
     .global ChapterInfoTable
