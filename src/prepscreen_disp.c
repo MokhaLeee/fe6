@@ -293,7 +293,6 @@ asm("\
 	ldr r0, [r0, #0x14]\n\
 	adds r0, #0x44\n\
 	ldrh r2, [r0]\n\
-\n\
 	rsbs r1, r2, #0\n\
 	adds r0, r1, #0\n\
 	cmp r1, #0\n\
@@ -306,21 +305,17 @@ asm("\
 	lsls r0, r0, #0x10\n\
 	lsrs r0, r0, #0x10\n\
 	str r0, [sp]\n\
-\n\
 	lsrs r0, r2, #4\n\
 	lsls r0, r0, #0x18\n\
 	lsrs r0, r0, #0x18\n\
 	str r0, [sp, #4]\n\
-\n\
 	mov r0, sl\n\
 	adds r0, #0x40\n\
 	ldrh r0, [r0]\n\
 	cmp r0, r2\n\
 	beq .L0807BAAC\n\
-\n\
 	ldr r0, .L0807BAA8 @ =gDispIo\n\
 	mov ip, r0\n\
-\n\
 	@ SetWinEnable\n\
 	movs r0, #0x20\n\
 	mov r1, ip\n\
@@ -349,7 +344,6 @@ asm("\
 	movs r4, #0x10\n\
 	orrs r0, r4\n\
 	strb r0, [r1]\n\
-\n\
 	@ SetWin0Layers\n\
 	mov r3, ip\n\
 	adds r3, #0x34\n\
@@ -361,7 +355,6 @@ asm("\
 	orrs r0, r5\n\
 	orrs r0, r4\n\
 	strb r0, [r3]\n\
-\n\
 	@ SetWin0Box\n\
 	mov r0, ip\n\
 	adds r0, #0x2d\n\
@@ -379,7 +372,6 @@ asm("\
 	adds r1, #0x30\n\
 	movs r0, #0x98\n\
 	strb r0, [r1]\n\
-\n\
 	@ SetWin1Box\n\
 	mov r0, ip\n\
 	adds r0, #0x2f\n\
@@ -391,7 +383,6 @@ asm("\
 	adds r0, #4\n\
 	mov r3, r8\n\
 	strb r3, [r0]\n\
-\n\
 	@ SetWOutLayers\n\
 	adds r1, #6\n\
 	ldrb r0, [r1]\n\
@@ -404,7 +395,6 @@ asm("\
 	rsbs r0, r0, #0\n\
 	ands r2, r0\n\
 	strb r2, [r1]\n\
-\n\
 	mov r1, sl\n\
 	adds r1, #0x29\n\
 	movs r0, #1\n\
@@ -418,10 +408,8 @@ asm("\
 	ldrb r0, [r7]\n\
 	cmp r0, #1\n\
 	bne .L0807BB2A\n\
-\n\
 	ldr r1, .L0807BBFC @ =gDispIo\n\
 	mov r8, r1\n\
-\n\
 	@ SetWinEnable\n\
 	movs r0, #0x20\n\
 	ldrb r2, [r1, #1]\n\
@@ -433,7 +421,6 @@ asm("\
 	ands r0, r1\n\
 	mov r3, r8\n\
 	strb r0, [r3, #1]\n\
-\n\
 	@ SetWin1Layers\n\
 	mov r2, r8\n\
 	adds r2, #0x35\n\
@@ -449,7 +436,6 @@ asm("\
 	movs r4, #0x10\n\
 	orrs r0, r4\n\
 	strb r0, [r2]\n\
-\n\
 	@ SetWin0Layers\n\
 	subs r2, #1\n\
 	ldrb r0, [r2]\n\
@@ -459,7 +445,6 @@ asm("\
 	orrs r0, r5\n\
 	orrs r0, r4\n\
 	strb r0, [r2]\n\
-\n\
 	@ SetWin0Box\n\
 	mov r0, r8\n\
 	adds r0, #0x2d\n\
@@ -474,7 +459,6 @@ asm("\
 	adds r2, #4\n\
 	movs r0, #0x98\n\
 	strb r0, [r2]\n\
-\n\
 	@ SetWOutLayers\n\
 	adds r2, #6\n\
 	ldrb r0, [r2]\n\
@@ -487,7 +471,6 @@ asm("\
 	orrs r1, r4\n\
 	strb r1, [r2]\n\
 	strb r3, [r7]\n\
-\n\
 .L0807BB2A:\n\
 	mov r1, sl\n\
 	ldr r0, [r1, #0x14]\n\
@@ -504,12 +487,10 @@ asm("\
 	subs r1, r0, r3\n\
 	cmp r1, #6\n\
 	bhi .L0807BB5C\n\
-\n\
 	movs r0, #1\n\
 	ands r2, r0\n\
 	lsls r0, r2, #6\n\
 	adds r0, #0x70\n\
-\n\
 	lsls r1, r1, #4\n\
 	asrs r2, r7, #0x10\n\
 	adds r1, r1, r2\n\
