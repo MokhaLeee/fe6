@@ -401,6 +401,26 @@ PROC_LABEL(6),
     PROC_END,
 };
 
+#if 0
+void func_fe6_0807D358(struct PrepSubItemProc * proc)
+{
+    u16 i, j;
+    int icons[ITEMSLOT_INV_COUNT];
+    struct Unit * unit = proc->unit;
+    u16 item_amt = GetUnitItemCount(proc->unit);
+
+    for (j = 0, i = 0; i < item_amt; j++, i++)
+    {
+        icons[j] = GetItemIcon(unit->items);
+    }
+
+    if (gUnk_0201636A != 0)
+    {
+
+    }
+}
+#endif
+
 struct ProcScr CONST_DATA ProcScr_08679490[] =
 {
     PROC_19,

@@ -111,8 +111,9 @@ struct PrepSubItemProc {
     STRUCT_PAD(0x47, 0x50);
 
     /* 50 */ u16 unk50;
+    /* 54 */ struct Unit * unit;
 
-    STRUCT_PAD(0x52, 0x60);
+    STRUCT_PAD(0x58, 0x60);
 
     /* 60 */ ProcPtr unk60;
 };
