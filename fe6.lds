@@ -63,6 +63,8 @@ SECTIONS
         . = 0x0104A4; gUnk_020104A4 = .; /* buf? */
         . = 0x0154A4; gPrepMenuItems = .;
         . = 0x0155E4; gPrepMenuItemCnt = .;
+        . = 0x015698; gPrepSubMenuIcons = .;
+        . = 0x01636A; gUnk_0201636A = .;
         . = 0x016874; gUnk_02016874 = .; /* big jump here? */
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);

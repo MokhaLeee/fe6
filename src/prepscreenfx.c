@@ -6,6 +6,7 @@
 #include "sound.h"
 #include "sprite.h"
 #include "text.h"
+#include "icon.h"
 #include "ui.h"
 #include "prepscreen.h"
 #include "constants/msg.h"
@@ -225,6 +226,51 @@ struct ProcScr CONST_DATA ProcScr_086793A8[] =
     PROC_END,
 };
 
+void func_fe6_0807D088(struct ProcPrepfx_086793A8 * proc)
+{
+    proc->timer = 0;
+
+    if (proc->proc_parent->unk2D <= 3)
+        proc->obj_offset = 0x7200;
+    else
+        proc->obj_offset = 0x5000;
+}
+
+void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 * proc)
+{
+    PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
+    PutSpriteExt(0xB, 0xB0,       0, Sprite_086792A8, proc->obj_offset / 0x20);
+
+    if (proc->proc_parent->unk2C == 100)
+        PutFrozenUiHand(
+            0x80,
+            proc->proc_parent->unk31 * 0x10 + 0x28);
+
+    func_fe6_0807DFEC(proc->proc_parent->unk46, proc->timer, proc->obj_offset);
+
+    PutUiHand(
+        proc->proc_parent->unk2F * 0x70 + 0x10,
+        proc->proc_parent->unk2E * 0x10 + 0x48 - (proc->proc_parent->unk2F * 0x20));
+
+    func_fe6_08082320(
+        proc->proc_parent->unk60,
+        0xE0,
+        0x30,
+        0xC,
+        proc->proc_parent->unk50,
+        gUnk_0201636A,
+        7);
+
+    func_fe6_0807CFB8(3, 4, proc->timer);
+
+    proc->timer++;
+}
+
+ProcPtr func_fe6_0807D16C(ProcPtr parent)
+{
+    return SpawnProc(ProcScr_086793A8, parent);
+}
+
 struct ProcScr CONST_DATA ProcScr_086793C8[] =
 {
     PROC_19,
@@ -232,6 +278,103 @@ struct ProcScr CONST_DATA ProcScr_086793C8[] =
     PROC_REPEAT(func_fe6_0807D1AC),
     PROC_END,
 };
+
+void func_fe6_0807D180(struct ProcPrepfx_086793A8 * proc)
+{
+    proc->timer = 0;
+
+    proc->procfx = func_fe6_0807CFA4(proc);
+
+    if (proc->proc_parent->unk2D <= 3)
+        proc->obj_offset = 0x7200;
+    else
+        proc->obj_offset = 0x5000;
+}
+
+void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 * proc)
+{
+    PutSpriteExt(0xB, 0x88,       0, Sprite_086792C4, proc->obj_offset / 0x20);
+
+    if (proc->proc_parent->unk2B == 0)
+    {
+        PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
+
+        PutUiHand(
+            0xA0,
+            proc->proc_parent->unk31 * 0x10 + 0x48);
+    }
+    else
+    {
+        if (proc->proc_parent->unk31 != 2)
+            PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
+
+        if (proc->proc_parent->unk2C == 20)
+        {
+            PutFrozenUiHand(
+                proc->proc_parent->unk2F * 0x70 + 0x10,
+                proc->proc_parent->unk2E * 0x10 + 0x48 - (proc->proc_parent->unk2F * 0x20));
+
+            PutUiHand(
+                proc->proc_parent->unk30 * 0x20 + 0x24,
+                0x40);
+        }
+        else
+        {
+            PutUiHand(
+                proc->proc_parent->unk2F * 0x70 + 0x10,
+                proc->proc_parent->unk2E * 0x10 + 0x48 - (proc->proc_parent->unk2F * 0x20));
+        }
+
+        func_fe6_0807DFEC(proc->proc_parent->unk46, proc->timer, proc->obj_offset);
+
+        func_fe6_08082320(
+            proc->proc_parent->unk60,
+            0xE0,
+            0x30,
+            0xC,
+            proc->proc_parent->unk50,
+            gUnk_0201636A,
+            7);
+    }
+
+    if (proc->proc_parent->unk2D <= 3)
+        func_fe6_0807CFB8(2, 4, proc->timer);
+
+    proc->timer++;
+}
+
+ProcPtr func_fe6_0807D2E0(ProcPtr parent)
+{
+    return SpawnProc(ProcScr_086793C8, parent);
+}
+
+void func_fe6_0807D2F4(int icon)
+{
+    u8 i;
+
+    for (i = 0; i < 20; i++)
+        if (gPrepSubMenuIcons[i] == icon)
+            return;
+
+    for (i = 0; i < 20; i++)
+    {
+        if (gPrepSubMenuIcons[i] == 0xFF)
+        {
+            gPrepSubMenuIcons[i] = icon;
+            return;
+        }
+    }
+}
+
+void func_fe6_0807D338(void)
+{
+    int i;
+
+    InitIcons();
+
+    for (i = 0; i < 20; i++)
+        gPrepSubMenuIcons[i] = 0xFF;
+}
 
 struct ProcScr CONST_DATA ProcScr_PrepSubItemScreen[] =
 {
@@ -257,6 +400,26 @@ PROC_LABEL(6),
     PROC_CALL(func_fe6_08081540),
     PROC_END,
 };
+
+#if 0
+void func_fe6_0807D358(struct PrepSubItemProc * proc)
+{
+    u16 i, j;
+    int icons[ITEMSLOT_INV_COUNT];
+    struct Unit * unit = proc->unit;
+    u16 item_amt = GetUnitItemCount(proc->unit);
+
+    for (j = 0, i = 0; i < item_amt; j++, i++)
+    {
+        icons[j] = GetItemIcon(unit->items);
+    }
+
+    if (gUnk_0201636A != 0)
+    {
+
+    }
+}
+#endif
 
 struct ProcScr CONST_DATA ProcScr_08679490[] =
 {
