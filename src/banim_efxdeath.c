@@ -86,7 +86,7 @@ void EfxDeathEvent_CallEvent(struct ProcEfxDead * proc)
         SetBgOffset(BG_1, 0, 0);
         EnableBgSync(BG0_SYNC_BIT);
 
-        EkrGauge_080438D8();
+        EkrGauge_Set4C50();
 
         if (gEkrPids[GetAnimPosition(proc->anim1)] == PID_IDUNN_DRAGON)
             func_fe6_0805AFD4();
@@ -110,7 +110,7 @@ void EfxDeathEvent_WaitEvent(struct ProcEfxDead * proc)
 
         DisableEkrGauge();
         UnAsyncEkrDispUP();
-        EkrGauge_080438C8();
+        EkrGauge_Clr4C50();
         Proc_Break(proc);
     }
 }

@@ -234,7 +234,7 @@ void EkrBattleStartBattleQuote(struct ProcEkrBattle * proc)
     SetBgOffset(0, gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y);
     SetBgOffset(1, 0, 0);
     EnableBgSync(BG0_SYNC_BIT);
-    EkrGauge_080438D8();
+    EkrGauge_Set4C50();
 
     if (proc->quote == TRUE)
     {
@@ -259,7 +259,7 @@ void EkrBattleWaitBattleQuote(struct ProcEkrBattle * proc)
     NewEkrNamewinAppear(0, 7, 0);
     DisableEkrGauge();
     UnAsyncEkrDispUP();
-    EkrGauge_080438C8();
+    EkrGauge_Clr4C50();
     proc->proc_repeat_func = (ProcFunc)EkrBattleWaitWindowAppear;
 }
 
@@ -612,7 +612,7 @@ void EkrBattleExecExpGain(struct ProcEkrBattle * proc)
         break;
     }
 
-    EkrGauge_08043908(1);
+    EkrGauge_Setup44(1);
 
     if (gBanimExpGain[POS_L] != 0)
         val0 = gBanimExpPrevious[POS_L];
@@ -750,7 +750,7 @@ void EkrBattleLvupHanlder(struct ProcEkrBattle *proc)
         return;
 
     SpellFx_ClearBG1();
-    EkrGauge_08043908(0);
+    EkrGauge_Setup44(0);
 
     switch (GetEkrDragonStateType()) {
     case 0:

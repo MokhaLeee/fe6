@@ -855,7 +855,7 @@ EkrLvup_Init: @ 0x0805D604
 	str r0, [r1]
 	bl func_fe6_0805E248
 	movs r0, #2
-	bl EkrGauge_08043908
+	bl EkrGauge_Setup44
 	mov r3, sb
 	ldr r0, [r3, #0x5c]
 	bl DisableEfxStatusUnits
@@ -1835,7 +1835,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	movs r0, #2
 	bl EnableBgSync
 	movs r0, #0
-	bl EkrGauge_08043908
+	bl EkrGauge_Setup44
 	movs r0, #0
 	bl GetEkrDragonWeapon
 	ldrh r0, [r0]

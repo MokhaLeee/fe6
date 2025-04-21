@@ -491,7 +491,7 @@ void EfxMagicQUAKE_Loop(struct ProcEfxMagicQuake * proc)
     SetBgOffset(BG_2, gEkrBg2QuakeVec.x, gEkrBg2QuakeVec.y);
     SetBgOffset(BG_0, gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x, gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y);
 
-    func_fe6_0804392C(-(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x), -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
+    EkrGauge_Setxy323A(-(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x), -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
     func_fe6_08044230(-(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x), -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
 
     if (GetEkrDragonStateType() != 0)
@@ -524,7 +524,7 @@ void EfxMagicQUAKE_Loop(struct ProcEfxMagicQuake * proc)
         SetBgOffset(BG_2, 0, 0);
         SetBgOffset(BG_0, gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y);
 
-        func_fe6_0804392C(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
+        EkrGauge_Setxy323A(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
         func_fe6_08044230(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
 
         if (GetEkrDragonStateType() != 0)

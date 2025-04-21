@@ -48,9 +48,12 @@ enum video_banim {
     BGPAL_EFXDRAGON_L = 6,
     BGPAL_EFXDRAGON_R = 7,
 
+    OBPAL_EFX_SYSTEM_OBJ = 0,
     OBPAL_EFX_SPELL_BG = 1,
     OBPAL_EFX_SPELL_OBJ = 2,
     OBPAL_EFX_FACE = 3,
+    OBPAL_EFX_5 = 5,
+    OBPAL_EFX_6 = 6,
     OBPAL_EFX_UNIT_L = 7,
     OBPAL_EFX_UNIT_R = 9,
     OBPAL_EFXHPBAR_L = 11,
@@ -60,6 +63,13 @@ enum video_banim {
 
     VRAMOFF_BANIM_SPELL_OBJ = 0x0800,
     VRAMOFF_BANIM_SPELL_BG  = 0x2000,
+
+    VRAMOFF_OBJ_EKRGAUGE_SUBFIX = 0x3800,
+    VRAMOFF_OBJ_EKRGAUGE_NUM_L  = 0x3A00,
+    VRAMOFF_OBJ_EKRGAUGE_ICON_L = 0x3B80,
+    VRAMOFF_OBJ_EKRGAUGE_ICON_R = 0x3BC0,
+    VRAMOFF_OBJ_EKRGAUGE_ARROW  = 0x3C00,
+    VRAMOFF_OBJ_EKRGAUGE_NUM_R  = 0x3E00,
 };
 
 enum ekr_hit {
@@ -263,18 +273,40 @@ extern i16 gBanimExpPrevious[2];
 void NewEkrLvlupFan(void);
 void EkrLvupFanMain(struct ProcEfx * proc);
 // func_fe6_080435EC
+
+struct ProcEkrGauge {
+    PROC_HEADER;
+
+    /* 29 */ u8 battle_init;           /* 1 in battle-starting and 0 after battle started */
+    /* 2A */ u8 valid;
+    /* 2B */ u8 _pad_2B[0x32 - 0x2B];
+    /* 32 */ i16 unk32;
+    /* 34 */ u8 _pad_34[0x3A - 0x34];
+    /* 3A */ i16 unk3A;
+    /* 3C */ u8 _pad_3C[0x44 - 0x3C];
+    /* 44 */ int unk44;
+    /* 48 */ int unk48;
+    /* 4C */ int unk4C;
+    /* 50 */ int unk50;
+    /* 54 */
+};
+
+extern struct ProcEkrGauge * gpProcEkrGauge;
+extern EWRAM_OVERLAY(banim) u16 Buf_EkrGaugeNumImg[0x200];
+extern EWRAM_OVERLAY(banim) u16 gEkrGaugeDecoder[18];
+
 // EkrGaugeModDec
 void NewEkrGauge(void);
 void EndEkrGauge(void);
-void EkrGauge_080438C8(void);
-void EkrGauge_080438D8(void);
-void func_fe6_080438E8(void);
-void func_fe6_080438F8(void);
-void EkrGauge_08043908(u16 val);
-// func_fe6_08043918
-void func_fe6_0804392C(i16 x, i16 y);
-// func_fe6_08043940
-// func_fe6_08043950
+void EkrGauge_Clr4C50(void);
+void EkrGauge_Set4C50(void);
+void EkrGauge_Set4C(void);
+void EkrGauge_Set50(void);
+void EkrGauge_Setup44(u16 val);
+void EkrGauge_Clr323A(i16 x, i16 y);
+void EkrGauge_Setxy323A(i16 x, i16 y);
+void EkrGauge_SetInitFlag(void);
+void EkrGauge_ClrInitFlag(void);
 void EnableEkrGauge(void);
 void DisableEkrGauge(void);
 // func_fe6_08043980

@@ -129,7 +129,7 @@ SECTIONS
         . = 0x0145C0; gUnk_Banim_020145C0 = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
         . = 0x0165C0; gEfxPal = .;
-        . = 0x0169C0; gUnk_Banim_020169C0 = .;
+        . = 0x0169C0; Buf_EkrGaugeNumImg = .;
         . = 0x016DC0; gUnk_Banim_02016DC0 = .;
         . = 0x016E40; gUnk_Banim_02016E40 = .;
         . = 0x017040; gUnk_Banim_02017040 = .;
@@ -137,7 +137,7 @@ SECTIONS
         . = 0x017440; gUnk_Banim_02017440 = .;
         . = 0x017640; gBanimFont = .;
         . = 0x017658; gBanimText = .;
-        . = 0x0176F8; gUnk_Banim_020176F8 = .;
+        . = 0x0176F8; gEkrGaugeDecoder = .;
         . = 0x01771C; gEkrBattleEndFlag = .;
         . = 0x017720; gEkrHpBarCount = .;
         . = 0x017724; gEfxSpellAnimExists = .;

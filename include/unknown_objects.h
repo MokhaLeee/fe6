@@ -219,10 +219,10 @@ extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_08112BA4
 // extern ??? gUnk_08112C84
 // extern ??? gUnk_08112CD4
-// extern ??? gUnk_08112D54
-// extern ??? gUnk_08112DF4
-// extern ??? gUnk_08113024
-// extern ??? gUnk_081131A4
+extern u8 const Img_EfxSideHitDmgCrit[];
+extern u8 const Img_EfxArrowWTA[];
+extern u16 Img_EkrGaugeNumber[];
+extern u16 Pal_EkrGauge_081131A4[];
 extern u16 Pal_08113224[];
 extern u16 gPalEfxHpBarPurple[];
 extern u16 gPalEfxHpBarGreen[];
