@@ -114,20 +114,20 @@ gUnk_08112C84: @ 08112C84
 gUnk_08112CD4: @ 08112CD4
 	.incbin "fe6-base.gba", 0x112CD4, (0x112D54 - 0x112CD4) @ length: 0080
 
-	.global gUnk_08112D54
-gUnk_08112D54: @ 08112D54
+	.global Img_EfxSideHitDmgCrit
+Img_EfxSideHitDmgCrit: @ 08112D54
 	.incbin "fe6-base.gba", 0x112D54, (0x112DF4 - 0x112D54) @ length: 00A0
 
-	.global gUnk_08112DF4
-gUnk_08112DF4: @ 08112DF4
+	.global Img_EfxArrowWTA
+Img_EfxArrowWTA: @ 08112DF4
 	.incbin "fe6-base.gba", 0x112DF4, (0x113024 - 0x112DF4) @ length: 0230
 
-	.global gUnk_08113024
-gUnk_08113024: @ 08113024
+	.global Img_EkrGaugeNumber
+Img_EkrGaugeNumber: @ 08113024
 	.incbin "fe6-base.gba", 0x113024, (0x1131A4 - 0x113024) @ length: 0180
 
-	.global gUnk_081131A4
-gUnk_081131A4: @ 081131A4
+	.global Pal_EkrGauge_081131A4
+Pal_EkrGauge_081131A4: @ 081131A4
 	.incbin "fe6-base.gba", 0x1131A4, (0x113224 - 0x1131A4) @ length: 0080
 
 	.global Pal_08113224

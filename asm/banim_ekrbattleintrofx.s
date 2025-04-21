@@ -1114,11 +1114,11 @@ NewEkrWindowAppear: @ 0x08048DA4
 	adds r1, r1, r2
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_08043918
+	bl EkrGauge_Clr323A
 	ldr r1, .L08048DF0 @ =gUnk_Banim_0201E0EC
 	movs r0, #1
 	str r0, [r1]
-	bl func_fe6_08043950
+	bl EkrGauge_ClrInitFlag
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -1157,7 +1157,7 @@ func_fe6_08048E08: @ 0x08048E08
 	ldr r1, .L08048E30 @ =gUnk_Banim_0201E0EC
 	movs r0, #0
 	str r0, [r1]
-	bl func_fe6_08043940
+	bl EkrGauge_SetInitFlag
 	adds r0, r4, #0
 	bl Proc_Break
 	b .L08048E7C
@@ -1199,7 +1199,7 @@ func_fe6_08048E08: @ 0x08048E08
 	adds r1, r1, r2
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_08043918
+	bl EkrGauge_Clr323A
 .L08048E7C:
 	add sp, #4
 	pop {r4}

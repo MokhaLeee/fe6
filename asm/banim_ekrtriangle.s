@@ -1237,7 +1237,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_0804392C
+	bl EkrGauge_Setxy323A
 	ldrh r3, [r5]
 	ldrh r1, [r6]
 	adds r0, r3, r1
@@ -1330,7 +1330,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	rsbs r1, r2, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_0804392C
+	bl EkrGauge_Setxy323A
 	ldrh r3, [r6]
 	rsbs r0, r3, #0
 	lsls r0, r0, #0x10
