@@ -57,52 +57,6 @@ gUnk_085CB700: @ 085CB700
 
 	.section .text
 
-
-	thumb_func_start func_fe6_08043980
-func_fe6_08043980: @ 0x08043980
-	adds r3, r0, #0
-	cmp r1, #0
-	ble .L080439A8
-	cmp r2, #1
-	beq .L08043998
-	cmp r2, #1
-	bhs .L080439A0
-	ldr r0, .L08043994 @ =gUnk_085CB688
-	b .L080439C2
-	.align 2, 0
-.L08043994: .4byte gUnk_085CB688
-.L08043998:
-	ldr r0, .L0804399C @ =gUnk_085CB6A0
-	b .L080439C2
-	.align 2, 0
-.L0804399C: .4byte gUnk_085CB6A0
-.L080439A0:
-	ldr r0, .L080439A4 @ =gUnk_085CB6B8
-	b .L080439C2
-	.align 2, 0
-.L080439A4: .4byte gUnk_085CB6B8
-.L080439A8:
-	cmp r2, #1
-	beq .L080439B8
-	cmp r2, #1
-	bhs .L080439C0
-	ldr r0, .L080439B4 @ =gUnk_085CB6D0
-	b .L080439C2
-	.align 2, 0
-.L080439B4: .4byte gUnk_085CB6D0
-.L080439B8:
-	ldr r0, .L080439BC @ =gUnk_085CB6E8
-	b .L080439C2
-	.align 2, 0
-.L080439BC: .4byte gUnk_085CB6E8
-.L080439C0:
-	ldr r0, .L080439C8 @ =gUnk_085CB700
-.L080439C2:
-	str r0, [r3, #0x3c]
-	bx lr
-	.align 2, 0
-.L080439C8: .4byte gUnk_085CB700
-
 	thumb_func_start EkrGauge_Loop
 EkrGauge_Loop: @ 0x080439CC
 	push {r4, r5, r6, r7, lr}
@@ -119,6 +73,7 @@ EkrGauge_Loop: @ 0x080439CC
 	movs r1, #3
 	bl DivRem
 	str r0, [sp, #0xe8]
+
 	mov r0, sl
 	adds r0, #0x2a
 	ldrb r0, [r0]
@@ -132,6 +87,8 @@ EkrGauge_Loop: @ 0x080439CC
 	str r0, [sp, #0x104]
 	cmp r1, #0
 	bne .L08043AE6
+
+	@ (proc->battle_init == false
 	mov r1, sl
 	ldrh r1, [r1, #0x3a]
 	lsls r0, r1, #0x10

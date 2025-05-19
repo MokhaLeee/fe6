@@ -215,8 +215,8 @@ extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_081128FC
 // extern ??? gUnk_08112968
 // extern ??? gUnk_08112A1C
-// extern ??? gUnk_08112AD0
-// extern ??? gUnk_08112BA4
+extern u8 const gUnk_08112AD0[];
+extern u8 const gUnk_08112BA4[];
 // extern ??? gUnk_08112C84
 // extern ??? gUnk_08112CD4
 extern u8 const Img_EfxSideHitDmgCrit[];
