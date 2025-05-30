@@ -2,352 +2,17 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_0808D0C0
-func_fe6_0808D0C0: @ 0x0808D0C0
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, .L0808D0F0 @ =gBg0Tm+0x58
-	movs r1, #6
-	movs r2, #0xe
-	movs r3, #0
-	bl TmFillRect_thm
-	ldr r0, .L0808D0F4 @ =gBg1Tm+0x16
-	movs r1, #8
-	movs r2, #0x10
-	movs r3, #0
-	bl TmFillRect_thm
-	adds r0, r4, #0
-	bl EndMenu
-	movs r0, #3
-	bl EnableBgSync
-	movs r0, #1
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0808D0F0: .4byte gBg0Tm+0x58
-.L0808D0F4: .4byte gBg1Tm+0x16
-
-	thumb_func_start GetAuguryIndex
-GetAuguryIndex: @ 0x0808D0F8
-	push {r4, r5, r6, r7, lr}
-	sub sp, #4
-	ldr r0, .L0808D148 @ =gPlaySt
-	ldrb r0, [r0, #0xe]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0xc
-	ble .L0808D15E
-	movs r2, #0
-	ldr r7, .L0808D14C @ =gUnk_0868AF74
-.L0808D10C:
-	ldrb r0, [r7, #1]
-	str r2, [sp]
-	bl GetUnitByPid
-	ldr r2, [sp]
-	cmp r0, #0
-	beq .L0808D156
-	movs r4, #1
-	adds r6, r7, #0
-	movs r1, #1
-	adds r0, r2, #0
-	eors r0, r1
-	lsls r5, r0, #0x18
-.L0808D126:
-	adds r0, r4, #0
-	str r2, [sp]
-	bl GetUnit
-	ldr r2, [sp]
-	cmp r0, #0
-	beq .L0808D150
-	ldr r0, [r0]
-	cmp r0, #0
-	beq .L0808D150
-	ldrb r0, [r0, #4]
-	ldrb r1, [r6, #1]
-	cmp r0, r1
-	bne .L0808D150
-	lsrs r0, r5, #0x18
-	b .L0808D160
-	.align 2, 0
-.L0808D148: .4byte gPlaySt
-.L0808D14C: .4byte gUnk_0868AF74
-.L0808D150:
-	adds r4, #1
-	cmp r4, #0x3f
-	ble .L0808D126
-.L0808D156:
-	adds r7, #0x10
-	adds r2, #1
-	cmp r2, #1
-	ble .L0808D10C
-.L0808D15E:
-	movs r0, #0xff
-.L0808D160:
-	add sp, #4
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-
-	thumb_func_start func_fe6_0808D168
-func_fe6_0808D168: @ 0x0808D168
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	bl SetInitTalkTextFont
-	bl ClearTalkText
-	bl EndTalk
-	adds r0, r4, #0
-	bl DecodeMsg
-	adds r2, r0, #0
-	movs r0, #0xa
-	movs r1, #0xe
-	adds r3, r5, #0
-	bl StartTalkExt
-	movs r0, #1
-	bl SetTalkPrintColor
-	movs r0, #1
-	bl SetTalkFlag
-	movs r0, #2
-	bl SetTalkFlag
-	movs r0, #4
-	bl SetTalkFlag
-	movs r0, #3
-	bl SetTalkPrintDelay
-	movs r0, #1
-	bl SetActiveTalkFace
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0808D1B8
-func_fe6_0808D1B8: @ 0x0808D1B8
-	push {r4, lr}
-	adds r4, r0, #0
-	bl SetInitTalkTextFont
-	bl ClearTalkText
-	bl EndTalk
-	adds r0, r4, #0
-	bl DecodeMsg
-	adds r2, r0, #0
-	movs r0, #0xa
-	movs r1, #0xe
-	bl StartTalk
-	movs r0, #1
-	bl SetTalkPrintColor
-	movs r0, #1
-	bl SetTalkFlag
-	movs r0, #2
-	bl SetTalkFlag
-	movs r0, #4
-	bl SetTalkFlag
-	movs r0, #3
-	bl SetTalkPrintDelay
-	movs r0, #1
-	bl SetActiveTalkFace
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0808D204
-func_fe6_0808D204: @ 0x0808D204
-	push {lr}
-	ldr r0, .L0808D210 @ =gUnk_0868AFBE
-	bl InitBgs
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808D210: .4byte gUnk_0868AFBE
-
-	thumb_func_start func_fe6_0808D214
-func_fe6_0808D214: @ 0x0808D214
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	mov sl, r0
-	ldr r5, .L0808D2FC @ =gDispIo
-	adds r2, r5, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x40
-	orrs r0, r1
-	strb r0, [r2]
-	adds r1, r5, #0
-	adds r1, #0x44
-	movs r3, #0
-	movs r7, #0x10
-	mov sb, r7
-	movs r0, #0x10
-	strb r0, [r1]
-	adds r1, #1
-	movs r2, #1
-	movs r0, #1
-	strb r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x46
-	strb r3, [r0]
-	ldr r0, .L0808D300 @ =0x0000FFE0
-	ldrh r1, [r5, #0x3c]
-	ands r0, r1
-	movs r1, #2
-	orrs r0, r1
-	ldr r1, .L0808D304 @ =0x0000E0FF
-	ands r0, r1
-	movs r3, #0x80
-	lsls r3, r3, #4
-	adds r1, r3, #0
-	orrs r0, r1
-	strh r0, [r5, #0x3c]
-	movs r7, #0x20
-	mov r8, r7
-	mov r0, r8
-	ldrb r1, [r5, #1]
-	orrs r0, r1
-	movs r1, #0x41
-	rsbs r1, r1, #0
-	ands r0, r1
-	movs r1, #0x7f
-	ands r0, r1
-	strb r0, [r5, #1]
-	adds r1, r5, #0
-	adds r1, #0x2d
-	movs r0, #0x40
-	strb r0, [r1]
-	adds r1, #4
-	movs r0, #0x68
-	strb r0, [r1]
-	subs r1, #5
-	movs r0, #0xf0
-	strb r0, [r1]
-	adds r1, #4
-	movs r0, #0x98
-	strb r0, [r1]
-	adds r6, r5, #0
-	adds r6, #0x34
-	ldrb r0, [r6]
-	orrs r0, r2
-	movs r4, #2
-	orrs r0, r4
-	movs r3, #4
-	orrs r0, r3
-	movs r1, #8
-	orrs r0, r1
-	mov r7, sb
-	orrs r0, r7
-	adds r5, #0x36
-	ldrb r7, [r5]
-	orrs r2, r7
-	orrs r2, r4
-	orrs r2, r3
-	orrs r2, r1
-	mov r1, sb
-	orrs r2, r1
-	mov r3, r8
-	orrs r0, r3
-	strb r0, [r6]
-	movs r0, #0x21
-	rsbs r0, r0, #0
-	ands r2, r0
-	strb r2, [r5]
-	movs r0, #9
-	movs r1, #0xd
-	movs r2, #0x14
-	movs r3, #6
-	bl PutTalkBubbleTm
-	movs r0, #8
-	movs r1, #0x10
-	movs r2, #2
-	bl PutTalkBubbleTail
-	movs r0, #2
-	bl EnableBgSync
-	mov r0, sl
-	bl func_fe6_0808D954
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808D2FC: .4byte gDispIo
-.L0808D300: .4byte 0x0000FFE0
-.L0808D304: .4byte 0x0000E0FF
-
-	thumb_func_start func_fe6_0808D308
-func_fe6_0808D308: @ 0x0808D308
-	push {lr}
-	ldr r1, .L0808D334 @ =gUnk_0868AF58
-	ldr r0, .L0808D338 @ =0x020169CC
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldrb r2, [r0]
-	lsls r1, r2, #3
-	subs r1, #2
-	ldrb r0, [r0, #1]
-	lsls r2, r0, #3
-	ldr r0, .L0808D33C @ =0x020169DC
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	beq .L0808D340
-	cmp r0, #2
-	beq .L0808D34A
-	b .L0808D352
-	.align 2, 0
-.L0808D334: .4byte gUnk_0868AF58
-.L0808D338: .4byte 0x020169CC
-.L0808D33C: .4byte 0x020169DC
-.L0808D340:
-	adds r0, r1, #0
-	adds r1, r2, #0
-	bl PutUiHand
-	b .L0808D352
-.L0808D34A:
-	adds r0, r1, #0
-	adds r1, r2, #0
-	bl PutFrozenUiHand
-.L0808D352:
-	ldr r2, .L0808D364 @ =gUnk_0868AFA4
-	movs r3, #0x82
-	lsls r3, r3, #6
-	movs r0, #0x20
-	movs r1, #8
-	bl PutOamHiRam
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808D364: .4byte gUnk_0868AFA4
-
-	thumb_func_start func_fe6_0808D368
-func_fe6_0808D368: @ 0x0808D368
-	ldr r1, .L0808D370 @ =0x020169DC
-	movs r0, #1
-	strb r0, [r1]
-	bx lr
-	.align 2, 0
-.L0808D370: .4byte 0x020169DC
-
 	thumb_func_start func_fe6_0808D374
 func_fe6_0808D374: @ 0x0808D374
 	push {r4, r5, r6, lr}
 	sub sp, #8
-	ldr r0, .L0808D544 @ =0x020169CE
+	ldr r0, .L0808D544 @ =unk_020169CE
 	movs r1, #0
 	strh r1, [r0]
-	ldr r0, .L0808D548 @ =0x020169DC
+	ldr r0, .L0808D548 @ =gAuguryChoice
 	strb r1, [r0]
 	bl GetAuguryIndex
-	ldr r1, .L0808D54C @ =0x020169DB
+	ldr r1, .L0808D54C @ =gCurrentAuguryIndex
 	strb r0, [r1]
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
@@ -358,6 +23,7 @@ func_fe6_0808D374: @ 0x0808D374
 .L0808D396:
 	bl ResetText
 	bl UnpackUiWindowFrameGraphics
+
 	ldr r2, .L0808D550 @ =gDispIo
 	movs r0, #1
 	ldrb r1, [r2, #1]
@@ -372,6 +38,7 @@ func_fe6_0808D374: @ 0x0808D374
 	movs r1, #0x10
 	orrs r0, r1
 	strb r0, [r2, #1]
+
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -395,7 +62,7 @@ func_fe6_0808D374: @ 0x0808D374
 	adds r0, r6, #0
 	movs r1, #0
 	bl TmFill
-	ldr r4, .L0808D560 @ =gUnk_0833C01C
+	ldr r4, .L0808D560 @ =Pal_0833C01C
 	adds r0, r4, #0
 	movs r1, #0x80
 	movs r2, #0x20
@@ -406,7 +73,7 @@ func_fe6_0808D374: @ 0x0808D374
 	adds r0, r4, #0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0808D564 @ =gUnk_0833C09C
+	ldr r0, .L0808D564 @ =Img_0833C09C
 	ldr r1, .L0808D568 @ =0x06011000
 	bl Decompress
 	ldr r4, .L0808D56C @ =Img_MuralBackground
@@ -421,14 +88,14 @@ func_fe6_0808D374: @ 0x0808D374
 	ldr r0, .L0808D570 @ =0x06003000
 	bl UnpackUiWindowFrameImg
 	bl UnpackUiWindowFrameGraphics
-	ldr r1, .L0808D574 @ =gUnk_0833C1D8
+	ldr r1, .L0808D574 @ =Tsa_0833C1D8
 	movs r4, #0x8c
 	lsls r4, r4, #5
 	adds r0, r5, #0
 	adds r2, r4, #0
 	bl TmApplyTsa_thm
 	adds r5, #0x56
-	ldr r1, .L0808D578 @ =gUnk_0833C234
+	ldr r1, .L0808D578 @ =Tsa_0833C234
 	adds r0, r5, #0
 	adds r2, r4, #0
 	bl TmApplyTsa_thm
@@ -440,14 +107,14 @@ func_fe6_0808D374: @ 0x0808D374
 	movs r6, #0
 .L0808D460:
 	lsls r5, r6, #3
-	ldr r0, .L0808D57C @ =0x020169E0
+	ldr r0, .L0808D57C @ =gAuguryTexts
 	adds r5, r5, r0
 	adds r0, r5, #0
 	movs r1, #6
 	bl InitText
 	adds r0, r5, #0
 	bl ClearText
-	ldr r0, .L0808D580 @ =gUnk_0868AEB4
+	ldr r0, .L0808D580 @ =AuguryMsgs
 	lsls r4, r6, #2
 	adds r0, r4, r0
 	ldr r0, [r0]
@@ -471,7 +138,7 @@ func_fe6_0808D374: @ 0x0808D374
 	adds r6, #1
 	cmp r6, #6
 	ble .L0808D460
-	ldr r1, .L0808D588 @ =0x020169CC
+	ldr r1, .L0808D588 @ =gAuguryIndex
 	movs r0, #0
 	strh r0, [r1]
 	movs r0, #0
@@ -482,8 +149,8 @@ func_fe6_0808D374: @ 0x0808D374
 	movs r1, #2
 	movs r2, #1
 	bl InitTalk
-	ldr r1, .L0808D58C @ =gUnk_0868AF74
-	ldr r0, .L0808D54C @ =0x020169DB
+	ldr r1, .L0808D58C @ =gAuguryConfig
+	ldr r0, .L0808D54C @ =gCurrentAuguryIndex
 	ldrb r0, [r0]
 	lsls r0, r0, #4
 	adds r0, r0, r1
@@ -494,7 +161,7 @@ func_fe6_0808D374: @ 0x0808D374
 	movs r2, #0x50
 	movs r3, #3
 	bl StartTalkFace
-	ldr r0, .L0808D590 @ =gUnk_0868AFD8
+	ldr r0, .L0808D590 @ =ProcScr_0868AFD8
 	movs r1, #3
 	bl SpawnProc
 	movs r0, #0xb
@@ -538,26 +205,26 @@ func_fe6_0808D374: @ 0x0808D374
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808D544: .4byte 0x020169CE
-.L0808D548: .4byte 0x020169DC
-.L0808D54C: .4byte 0x020169DB
+.L0808D544: .4byte unk_020169CE
+.L0808D548: .4byte gAuguryChoice
+.L0808D54C: .4byte gCurrentAuguryIndex
 .L0808D550: .4byte gDispIo
 .L0808D554: .4byte gBg0Tm
 .L0808D558: .4byte gBg1Tm
 .L0808D55C: .4byte gBg3Tm
-.L0808D560: .4byte gUnk_0833C01C
-.L0808D564: .4byte gUnk_0833C09C
+.L0808D560: .4byte Pal_0833C01C
+.L0808D564: .4byte Img_0833C09C
 .L0808D568: .4byte 0x06011000
 .L0808D56C: .4byte Img_MuralBackground
 .L0808D570: .4byte 0x06003000
-.L0808D574: .4byte gUnk_0833C1D8
-.L0808D578: .4byte gUnk_0833C234
-.L0808D57C: .4byte 0x020169E0
-.L0808D580: .4byte gUnk_0868AEB4
+.L0808D574: .4byte Tsa_0833C1D8
+.L0808D578: .4byte Tsa_0833C234
+.L0808D57C: .4byte gAuguryTexts
+.L0808D580: .4byte AuguryMsgs
 .L0808D584: .4byte gUnk_0868AF58
-.L0808D588: .4byte 0x020169CC
-.L0808D58C: .4byte gUnk_0868AF74
-.L0808D590: .4byte gUnk_0868AFD8
+.L0808D588: .4byte gAuguryIndex
+.L0808D58C: .4byte gAuguryConfig
+.L0808D590: .4byte ProcScr_0868AFD8
 .L0808D594: .4byte 0x02016A2E
 .L0808D598: .4byte 0x020169D4
 
@@ -565,7 +232,7 @@ func_fe6_0808D374: @ 0x0808D374
 func_fe6_0808D59C: @ 0x0808D59C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r3, .L0808D5B0 @ =0x020169CE
+	ldr r3, .L0808D5B0 @ =unk_020169CE
 	ldrh r1, [r3]
 	cmp r1, #0
 	beq .L0808D5B4
@@ -573,7 +240,7 @@ func_fe6_0808D59C: @ 0x0808D59C
 	beq .L0808D5D0
 	b .L0808D62A
 	.align 2, 0
-.L0808D5B0: .4byte 0x020169CE
+.L0808D5B0: .4byte unk_020169CE
 .L0808D5B4:
 	ldr r0, .L0808D5C8 @ =0x020169D0
 	strh r1, [r0]
@@ -640,7 +307,7 @@ func_fe6_0808D59C: @ 0x0808D59C
 	thumb_func_start func_fe6_0808D630
 func_fe6_0808D630: @ 0x0808D630
 	push {r4, r5, lr}
-	ldr r5, .L0808D640 @ =0x020169CE
+	ldr r5, .L0808D640 @ =unk_020169CE
 	ldrh r1, [r5]
 	cmp r1, #0
 	beq .L0808D644
@@ -648,7 +315,7 @@ func_fe6_0808D630: @ 0x0808D630
 	beq .L0808D678
 	b .L0808D6CE
 	.align 2, 0
-.L0808D640: .4byte 0x020169CE
+.L0808D640: .4byte unk_020169CE
 .L0808D644:
 	bl IsTalkActive
 	lsls r0, r0, #0x18
@@ -832,20 +499,20 @@ func_fe6_0808D6D4: @ 0x0808D6D4
 	thumb_func_start func_fe6_0808D7B4
 func_fe6_0808D7B4: @ 0x0808D7B4
 	push {lr}
-	ldr r0, .L0808D7E8 @ =gUnk_0868AF74
-	ldr r1, .L0808D7EC @ =0x020169DB
+	ldr r0, .L0808D7E8 @ =gAuguryConfig
+	ldr r1, .L0808D7EC @ =gCurrentAuguryIndex
 	ldrb r1, [r1]
 	lsls r1, r1, #4
 	adds r0, #0xc
 	adds r1, r1, r0
-	ldr r0, .L0808D7F0 @ =0x020169CC
+	ldr r0, .L0808D7F0 @ =gAuguryIndex
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	ldr r1, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
-	bl func_fe6_0808D1B8
+	bl StartAuguryDialogue2
 	ldr r0, .L0808D7F4 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
@@ -857,9 +524,9 @@ func_fe6_0808D7B4: @ 0x0808D7B4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808D7E8: .4byte gUnk_0868AF74
-.L0808D7EC: .4byte 0x020169DB
-.L0808D7F0: .4byte 0x020169CC
+.L0808D7E8: .4byte gAuguryConfig
+.L0808D7EC: .4byte gCurrentAuguryIndex
+.L0808D7F0: .4byte gAuguryIndex
 .L0808D7F4: .4byte gPlaySt
 
 	thumb_func_start func_fe6_0808D7F8
@@ -874,7 +541,7 @@ func_fe6_0808D7F8: @ 0x0808D7F8
 	beq .L0808D828
 	cmp r0, #2
 	beq .L0808D858
-	ldr r0, .L0808D824 @ =0x020169CC
+	ldr r0, .L0808D824 @ =gAuguryIndex
 	movs r3, #0
 	ldrsh r4, [r0, r3]
 	ldrh r1, [r1, #6]
@@ -886,11 +553,11 @@ func_fe6_0808D7F8: @ 0x0808D7F8
 	b .L0808D894
 	.align 2, 0
 .L0808D820: .4byte gKeySt
-.L0808D824: .4byte 0x020169CC
+.L0808D824: .4byte gAuguryIndex
 .L0808D828:
 	bl ClearTalkText
 	bl EndTalk
-	ldr r1, .L0808D850 @ =0x020169DC
+	ldr r1, .L0808D850 @ =gAuguryChoice
 	movs r0, #2
 	strb r0, [r1]
 	ldr r0, .L0808D854 @ =gPlaySt
@@ -906,7 +573,7 @@ func_fe6_0808D7F8: @ 0x0808D7F8
 	bl Proc_Goto
 	b .L0808D8FA
 	.align 2, 0
-.L0808D850: .4byte 0x020169DC
+.L0808D850: .4byte gAuguryChoice
 .L0808D854: .4byte gPlaySt
 .L0808D858:
 	bl ClearTalkText
@@ -1050,46 +717,46 @@ func_fe6_0808D938: @ 0x0808D938
 func_fe6_0808D954: @ 0x0808D954
 	push {lr}
 	adds r1, r0, #0
-	ldr r2, .L0808D970 @ =gUnk_0868AF74
-	ldr r0, .L0808D974 @ =0x020169DB
+	ldr r2, .L0808D970 @ =gAuguryConfig
+	ldr r0, .L0808D974 @ =gCurrentAuguryIndex
 	ldrb r0, [r0]
 	lsls r0, r0, #4
 	adds r2, #4
 	adds r0, r0, r2
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl func_fe6_0808D168
+	bl StartAuguryDialogue1
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808D970: .4byte gUnk_0868AF74
-.L0808D974: .4byte 0x020169DB
+.L0808D970: .4byte gAuguryConfig
+.L0808D974: .4byte gCurrentAuguryIndex
 
 	thumb_func_start func_fe6_0808D978
 func_fe6_0808D978: @ 0x0808D978
 	push {lr}
 	adds r1, r0, #0
-	ldr r2, .L0808D994 @ =gUnk_0868AF74
-	ldr r0, .L0808D998 @ =0x020169DB
+	ldr r2, .L0808D994 @ =gAuguryConfig
+	ldr r0, .L0808D998 @ =gCurrentAuguryIndex
 	ldrb r0, [r0]
 	lsls r0, r0, #4
 	adds r2, #4
 	adds r0, r0, r2
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl func_fe6_0808D168
+	bl StartAuguryDialogue1
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808D994: .4byte gUnk_0868AF74
-.L0808D998: .4byte 0x020169DB
+.L0808D994: .4byte gAuguryConfig
+.L0808D998: .4byte gCurrentAuguryIndex
 
 	thumb_func_start func_fe6_0808D99C
 func_fe6_0808D99C: @ 0x0808D99C
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, .L0808D9AC @ =0x000006FF
-	bl func_fe6_0808D168
+	bl StartAuguryDialogue1
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1099,14 +766,14 @@ func_fe6_0808D99C: @ 0x0808D99C
 func_fe6_0808D9B0: @ 0x0808D9B0
 	push {r4, lr}
 	adds r1, r0, #0
-	ldr r0, .L0808D9E0 @ =gUnk_0868AF74
-	ldr r2, .L0808D9E4 @ =0x020169DB
+	ldr r0, .L0808D9E0 @ =gAuguryConfig
+	ldr r2, .L0808D9E4 @ =gCurrentAuguryIndex
 	ldrb r2, [r2]
 	lsls r2, r2, #4
 	adds r0, #8
 	adds r2, r2, r0
 	ldr r3, .L0808D9E8 @ =0x020169D4
-	ldr r0, .L0808D9EC @ =0x020169CC
+	ldr r0, .L0808D9EC @ =gAuguryIndex
 	movs r4, #0
 	ldrsh r0, [r0, r4]
 	adds r0, r0, r3
@@ -1115,34 +782,34 @@ func_fe6_0808D9B0: @ 0x0808D9B0
 	lsls r0, r0, #2
 	adds r0, r0, r2
 	ldr r0, [r0]
-	bl func_fe6_0808D168
+	bl StartAuguryDialogue1
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808D9E0: .4byte gUnk_0868AF74
-.L0808D9E4: .4byte 0x020169DB
+.L0808D9E0: .4byte gAuguryConfig
+.L0808D9E4: .4byte gCurrentAuguryIndex
 .L0808D9E8: .4byte 0x020169D4
-.L0808D9EC: .4byte 0x020169CC
+.L0808D9EC: .4byte gAuguryIndex
 
 	thumb_func_start func_fe6_0808D9F0
 func_fe6_0808D9F0: @ 0x0808D9F0
 	push {lr}
 	adds r1, r0, #0
-	ldr r2, .L0808DA0C @ =gUnk_0868AF74
-	ldr r0, .L0808DA10 @ =0x020169DB
+	ldr r2, .L0808DA0C @ =gAuguryConfig
+	ldr r0, .L0808DA10 @ =gCurrentAuguryIndex
 	ldrb r0, [r0]
 	lsls r0, r0, #4
 	adds r2, #4
 	adds r0, r0, r2
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl func_fe6_0808D168
+	bl StartAuguryDialogue1
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808DA0C: .4byte gUnk_0868AF74
-.L0808DA10: .4byte 0x020169DB
+.L0808DA0C: .4byte gAuguryConfig
+.L0808DA10: .4byte gCurrentAuguryIndex
 
 	thumb_func_start func_fe6_0808DA14
 func_fe6_0808DA14: @ 0x0808DA14
@@ -1307,7 +974,7 @@ func_fe6_0808DB14: @ 0x0808DB14
 	adds r3, r7, #0
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, .L0808DB88 @ =gUnk_0833C01C
+	ldr r0, .L0808DB88 @ =Pal_0833C01C
 	ldr r4, .L0808DB8C @ =gPal+0x80
 	adds r1, r4, #0
 	movs r2, #8
@@ -1334,7 +1001,7 @@ func_fe6_0808DB14: @ 0x0808DB14
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808DB88: .4byte gUnk_0833C01C
+.L0808DB88: .4byte Pal_0833C01C
 .L0808DB8C: .4byte gPal+0x80
 
 	thumb_func_start func_fe6_0808DB90
@@ -1446,7 +1113,7 @@ func_fe6_0808DC30: @ 0x0808DC30
 func_fe6_0808DC4C: @ 0x0808DC4C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0808DC6C @ =0x020169DB
+	ldr r0, .L0808DC6C @ =gCurrentAuguryIndex
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne .L0808DCA6
@@ -1460,7 +1127,7 @@ func_fe6_0808DC4C: @ 0x0808DC4C
 	beq .L0808DC76
 	b .L0808DCFC
 	.align 2, 0
-.L0808DC6C: .4byte 0x020169DB
+.L0808DC6C: .4byte gCurrentAuguryIndex
 .L0808DC70:
 	cmp r0, #0xd2
 	beq .L0808DC9C
@@ -1560,12 +1227,12 @@ func_fe6_0808DD24: @ 0x0808DD24
 	bl ClearPutTalkText
 	bl EndTalk
 	bl ClearTalk
-	ldr r0, .L0808DD3C @ =gUnk_0868AFD8
+	ldr r0, .L0808DD3C @ =ProcScr_0868AFD8
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808DD3C: .4byte gUnk_0868AFD8
+.L0808DD3C: .4byte ProcScr_0868AFD8
 
 	thumb_func_start func_fe6_0808DD40
 func_fe6_0808DD40: @ 0x0808DD40

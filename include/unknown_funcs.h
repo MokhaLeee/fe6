@@ -476,8 +476,8 @@ void func_fe6_0803CF58(void);
 
 // func_fe6_0808D0C0
 fu8 GetAuguryIndex(void);
-// func_fe6_0808D168
-// func_fe6_0808D1B8
+// StartAuguryDialogue1
+// StartAuguryDialogue2
 // func_fe6_0808D204
 // func_fe6_0808D214
 // func_fe6_0808D308
@@ -485,12 +485,12 @@ fu8 GetAuguryIndex(void);
 // func_fe6_0808D374
 // func_fe6_0808D59C
 // func_fe6_0808D630
-// func_fe6_0808D6D4
+void func_fe6_0808D6D4(int, int);
 // func_fe6_0808D7B4
 // func_fe6_0808D7F8
 // func_fe6_0808D900
 // func_fe6_0808D938
-// func_fe6_0808D954
+void func_fe6_0808D954(ProcPtr proc);
 // func_fe6_0808D978
 // func_fe6_0808D99C
 // func_fe6_0808D9B0
@@ -547,7 +547,7 @@ fu8 GetAuguryIndex(void);
 // func_fe6_0808F2A4
 // func_fe6_0808F2F0
 // func_fe6_0808F30C
-// func_fe6_0808F33C
+void func_fe6_0808F33C(void);
 // func_fe6_0808F3E8
 // func_fe6_0808F470
 // func_fe6_0808F490
@@ -598,7 +598,7 @@ void func_fe6_0808FD6C(ProcPtr parent);
 // func_fe6_08090740
 // func_fe6_0809076C
 // func_fe6_08090834
-// func_fe6_08090854
+void func_fe6_08090854(u16 *tm, int oam2);
 // func_fe6_08090880
 // func_fe6_080908A4
 // func_fe6_08090A20

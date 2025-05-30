@@ -1,27 +1,19 @@
 	.data
 
-	.global gUnk_0868AEB4
-gUnk_0868AEB4: @ 0868AEB4
-	.incbin "fe6-base.gba", 0x68AEB4, (0x68AF58 - 0x68AEB4) @ length: 00A4
-
-	.global gUnk_0868AF58
-gUnk_0868AF58: @ 0868AF58
-	.incbin "fe6-base.gba", 0x68AF58, (0x68AF74 - 0x68AF58) @ length: 001C
-
-	.global gUnk_0868AF74
-gUnk_0868AF74: @ 0868AF74
+	.global gAuguryConfig
+gAuguryConfig: @ 0868AF74
 	.incbin "fe6-base.gba", 0x68AF74, (0x68AFA4 - 0x68AF74) @ length: 0030
 
-	.global gUnk_0868AFA4
-gUnk_0868AFA4: @ 0868AFA4
+	.global Obj_AuguryUI
+Obj_AuguryUI: @ 0868AFA4
 	.incbin "fe6-base.gba", 0x68AFA4, (0x68AFBE - 0x68AFA4) @ length: 001A
 
-	.global gUnk_0868AFBE
-gUnk_0868AFBE: @ 0868AFBE
+	.global BgConf_Augury
+BgConf_Augury: @ 0868AFBE
 	.incbin "fe6-base.gba", 0x68AFBE, (0x68AFD8 - 0x68AFBE) @ length: 001A
 
-	.global gUnk_0868AFD8
-gUnk_0868AFD8: @ 0868AFD8
+	.global ProcScr_0868AFD8
+ProcScr_0868AFD8: @ 0868AFD8
 	.incbin "fe6-base.gba", 0x68AFD8, (0x68AFF0 - 0x68AFD8) @ length: 0018
 
 	.global gUnk_0868AFF0

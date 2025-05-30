@@ -711,11 +711,11 @@ extern u8 const Img_0833BB28[];
 extern u8 const Tsa_0833BE84[];
 extern u8 const Tsa_0833BF08[];
 extern u16 const Pal_MuralBackground[];
-// extern const ??? gUnk_0833C01C
+extern u16 const Pal_0833C01C[];
 extern u16 const Pal_0833C03C[];
-// extern const ??? gUnk_0833C09C
-// extern const ??? gUnk_0833C1D8
-// extern const ??? gUnk_0833C234
+extern u8 const Img_0833C09C[];
+extern u8 const Tsa_0833C1D8[];
+extern u8 const Tsa_0833C234[];
 extern u8 const Img_Unk_0833C378[];
 // extern const ??? gUnk_0833C6F4
 // extern const ??? gUnk_0833C8D8
@@ -864,12 +864,12 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 
 /* config.h */
 
-// extern CONST_DATA ??? gUnk_0868AEB4
+// extern CONST_DATA ??? AuguryMsgs
 // extern CONST_DATA ??? gUnk_0868AF58
-// extern CONST_DATA ??? gUnk_0868AF74
-// extern CONST_DATA ??? gUnk_0868AFA4
-// extern CONST_DATA ??? gUnk_0868AFBE
-// extern CONST_DATA ??? gUnk_0868AFD8
+// extern CONST_DATA ??? gAuguryConfig
+extern CONST_DATA u16 Obj_AuguryUI[];
+// extern CONST_DATA ??? BgConf_Augury
+extern CONST_DATA struct ProcScr ProcScr_0868AFD8[];
 // extern CONST_DATA ??? gUnk_0868AFF0
 // extern CONST_DATA ??? ProcScr_Unk_0868B010
 // extern CONST_DATA ??? HelpInfo_0868B1B0
