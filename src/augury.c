@@ -8,6 +8,7 @@
 #include "talk.h"
 #include "msg.h"
 #include "ui.h"
+#include "util.h"
 #include "constants/msg.h"
 
 struct UnkStruct_0868AF58 {
@@ -50,11 +51,46 @@ extern CONST_DATA u16 BgConf_Augury[];
 
 EWRAM_OVERLAY(0) i16 gAuguryIndex = 0;
 EWRAM_OVERLAY(0) u16 unk_020169CE = 0;
-EWRAM_OVERLAY(0) u16 unk_020169D0[5] = {};
-EWRAM_OVERLAY(0) u8 unk_020169DA = 0;
+EWRAM_OVERLAY(0) u16 unk_020169D0 = 0;
+EWRAM_OVERLAY(0) u16 unk_020169D2 = 0;
+EWRAM_OVERLAY(0) u8 gAuguryStatus[7] = {};
 EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex = 0;
 EWRAM_OVERLAY(0) i8 gAuguryChoice = 0;
 EWRAM_OVERLAY(0) struct Text gAuguryTexts[7] = {};
+EWRAM_OVERLAY(0) i16 unk_02016A18 = 0;
+EWRAM_OVERLAY(0) i16 unk_02016A1A = 0;
+EWRAM_OVERLAY(0) i16 unk_02016A1C = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A1E = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A20 = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A22 = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A24 = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A26 = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A28 = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A2A = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A2C = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A2D = 0;
+EWRAM_OVERLAY(0) u16 unk_02016A2E[7] = {};
+EWRAM_OVERLAY(0) u8 unk_02016A3C = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A3D = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A3E = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A3F = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A40 = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A41 = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A42 = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A43 = 0;
+EWRAM_OVERLAY(0) u8 unk_02016A44[0x7F] = {};
+EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81] = {};
+EWRAM_OVERLAY(0) u8 unk_02016B44 = 0;
+EWRAM_OVERLAY(0) struct Text Texts_02016B48[6] = {};
+EWRAM_OVERLAY(0) struct Text Texts_02016B78[2] = {};
+EWRAM_OVERLAY(0) u8 unk_02016B88 = 0;
+EWRAM_OVERLAY(0) u8 unk_02016B89 = 0;
+EWRAM_OVERLAY(0) u8 unk_02016B8A = 0;
+EWRAM_OVERLAY(0) ProcPtr gpAuguryFaceProc = NULL;
+EWRAM_OVERLAY(0) u16 unk_02016B90 = 0;
+EWRAM_OVERLAY(0) u16 unk_02016B92 = 0;
+EWRAM_OVERLAY(0) u8 unk_02016B94[0x100] = {};
+EWRAM_OVERLAY(0) u8 unk_02016C94[0x100] = {};
 
 bool func_fe6_0808D0C0(struct MenuProc *proc)
 {
@@ -167,7 +203,6 @@ void func_fe6_0808D368(void)
 	gAuguryChoice = 1;
 }
 
-#if 0
 void func_fe6_0808D374(void)
 {
 	int i;
@@ -224,6 +259,12 @@ void func_fe6_0808D374(void)
 	StartTalkFace(gAuguryConfig[gCurrentAuguryIndex].fid, 0x20, 0x50, FACE_DISP_FLIPPED | 2, TALK_FACE_1);
 	SpawnProc(ProcScr_0868AFD8, PROC_TREE_3);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG3_SYNC_BIT);
-	func_fe6_0808F33C();
+
+	unk_02016A2E[0] = gAuguryStatus[1] = func_fe6_0808F33C();
+	unk_02016A2E[1] = gAuguryStatus[2] = func_fe6_0808F490();
+	unk_02016A2E[2] = gAuguryStatus[3] = func_fe6_0808F524();
+	unk_02016A2E[3] = gAuguryStatus[4] = func_fe6_0808F5AC();
+	unk_02016A2E[4] = gAuguryStatus[5] = func_fe6_0808F600();
+	unk_02016A2E[5] = gAuguryStatus[6] = func_fe6_0808F68C();
+	gAuguryStatus[0] = func_fe6_0808F6E0();
 }
-#endif
