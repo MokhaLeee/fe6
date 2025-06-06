@@ -25,6 +25,7 @@
 #include "prepscreen.h"
 #include "prepphase.h"
 #include "savemenu.h"
+#include "augury.h"
 #include "unitlistscreen.h"
 
 #include "constants/pids.h"
@@ -1375,7 +1376,7 @@ void AtMenu_StartSubmenu(struct PrepMenuProc * proc)
 
     case PREP_SUB2ACT_8:
         Proc_End(proc->procbg);
-        SpawnProcLocking(ProcScr_Unk_0868B010, proc);
+        SpawnProcLocking(ProcScr_Augury, proc);
         func_fe6_0807ACE8(proc);
         SetDispEnable(0, 0, 0, 0, 0);
         break;

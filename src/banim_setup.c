@@ -16,7 +16,7 @@
 #include "constants/jids.h"
 #include "constants/terrains.h"
 
-static inline i16 _GetBanimAllyPosition(int faction1, int faction2)
+static inline i16 GetBanimBattleActorPosition(int faction1, int faction2)
 {
     int pos = POS_L;
     if (GetBanimLinkArenaFlag() != true)
@@ -68,7 +68,7 @@ bool _SetupBanim(void)
         bu1 = gpEkrBattleUnitLeft = &gBattleUnitA;
         bu2 = gpEkrBattleUnitRight = &gBattleUnitB;
 
-        gBanimPositionIsEnemy[POS_L] = gBanimPositionIsEnemy[POS_R] = false;
+        gBanimPosIsTarget[POS_L] = gBanimPosIsTarget[POS_R] = false;
         gBanimValid[POS_R] = gBanimValid[POS_L] = true;
     }
     else
@@ -87,13 +87,13 @@ bool _SetupBanim(void)
 
         gBanimValid[POS_L] = gBanimValid[POS_R] = true;
 
-        if (_GetBanimAllyPosition(fac_pal1, fac_pal2) == POS_R)
+        if (GetBanimBattleActorPosition(fac_pal1, fac_pal2) == POS_R)
         {
             bu1 = gpEkrBattleUnitLeft  = &gBattleUnitB;
             bu2 = gpEkrBattleUnitRight = &gBattleUnitA;
 
-            gBanimPositionIsEnemy[POS_L] = true;
-            gBanimPositionIsEnemy[POS_R] = false;
+            gBanimPosIsTarget[POS_L] = true;
+            gBanimPosIsTarget[POS_R] = false;
 
             if (char_cnt == 1)
                 gBanimValid[POS_L] = false;
@@ -103,8 +103,8 @@ bool _SetupBanim(void)
             bu1 = gpEkrBattleUnitLeft  = &gBattleUnitA;
             bu2 = gpEkrBattleUnitRight = &gBattleUnitB;
 
-            gBanimPositionIsEnemy[POS_L] = false;
-            gBanimPositionIsEnemy[POS_R] = true;
+            gBanimPosIsTarget[POS_L] = false;
+            gBanimPosIsTarget[POS_R] = true;
 
             if (char_cnt == 1)
                 gBanimValid[POS_R] = false;

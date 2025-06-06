@@ -152,7 +152,6 @@ extern u16 const Pal_MonologueBG[];
 
 extern struct ProcScr CONST_DATA ProcScr_OpeningSequence[];
 extern struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_0868B010[];
 extern struct ProcScr CONST_DATA ProcScr_Config[];
 extern u16 CONST_DATA Pal_ManimFireDragonMu[];
 extern u16 CONST_DATA Pal_ManimDivineDragonMu[];
@@ -215,8 +214,8 @@ extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_081128FC
 // extern ??? gUnk_08112968
 // extern ??? gUnk_08112A1C
-// extern ??? gUnk_08112AD0
-// extern ??? gUnk_08112BA4
+extern u8 const gUnk_08112AD0[];
+extern u8 const gUnk_08112BA4[];
 // extern ??? gUnk_08112C84
 // extern ??? gUnk_08112CD4
 extern u8 const Img_EfxSideHitDmgCrit[];
@@ -711,11 +710,11 @@ extern u8 const Img_0833BB28[];
 extern u8 const Tsa_0833BE84[];
 extern u8 const Tsa_0833BF08[];
 extern u16 const Pal_MuralBackground[];
-// extern const ??? gUnk_0833C01C
+extern u16 const Pal_0833C01C[];
 extern u16 const Pal_0833C03C[];
-// extern const ??? gUnk_0833C09C
-// extern const ??? gUnk_0833C1D8
-// extern const ??? gUnk_0833C234
+extern u8 const Img_0833C09C[];
+extern u8 const Tsa_0833C1D8[];
+extern u8 const Tsa_0833C234[];
 extern u8 const Img_Unk_0833C378[];
 // extern const ??? gUnk_0833C6F4
 // extern const ??? gUnk_0833C8D8
@@ -729,13 +728,13 @@ extern u16 const Pal_Unk_0833C944[];
 // extern const ??? gUnk_08342438
 // extern const ??? gUnk_08342A98
 // extern const ??? gUnk_08342AB8
-// extern const ??? gUnk_08342AD8
+// extern const ??? Pal_08342AD8
 // extern const ??? gUnk_08342AF8
 // extern const ??? gUnk_08342B54
 // extern const ??? gUnk_08343358
-// extern const ??? gUnk_08343398
-// extern const ??? gUnk_08343A80
-// extern const ??? gUnk_08343FAC
+// extern const ??? Img_08343398
+// extern const ??? Img_08343A80
+// extern const ??? Img_08343FAC
 // extern const ??? gUnk_083442C4
 // extern const ??? gUnk_08344304
 // extern const ??? gUnk_083449F8
@@ -863,73 +862,7 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? ProcScr_0868AAA8
 
 /* config.h */
-
-// extern CONST_DATA ??? gUnk_0868AEB4
-// extern CONST_DATA ??? gUnk_0868AF58
-// extern CONST_DATA ??? gUnk_0868AF74
-// extern CONST_DATA ??? gUnk_0868AFA4
-// extern CONST_DATA ??? gUnk_0868AFBE
-// extern CONST_DATA ??? gUnk_0868AFD8
-// extern CONST_DATA ??? gUnk_0868AFF0
-// extern CONST_DATA ??? ProcScr_Unk_0868B010
-// extern CONST_DATA ??? HelpInfo_0868B1B0
-// extern CONST_DATA ??? HelpInfo_0868B2C8
-// extern CONST_DATA ??? HelpInfo_0868B3C4
-// extern CONST_DATA ??? gUnk_0868B3FC
-// extern CONST_DATA ??? gUnk_0868B410
-// extern CONST_DATA ??? gUnk_0868B418
-// extern CONST_DATA ??? gUnk_0868B420
-// extern CONST_DATA ??? gUnk_0868B490
-// extern CONST_DATA ??? gUnk_0868B4D0
-// extern CONST_DATA ??? gUnk_0868B5B0
-// extern CONST_DATA ??? gUnk_0868B5C8
-// extern CONST_DATA ??? gUnk_0868B5E0
-// extern CONST_DATA ??? gUnk_0868B5E8
-// extern CONST_DATA ??? gUnk_0868B610
-// extern CONST_DATA ??? gUnk_0868B648
-// extern CONST_DATA ??? gUnk_0868B6D8
-// extern CONST_DATA ??? gUnk_0868B700
-// extern CONST_DATA ??? gUnk_0868B720
-// extern CONST_DATA ??? gUnk_0868B730
-// extern CONST_DATA ??? gUnk_0868B750
-// extern CONST_DATA ??? gUnk_0868B768
-// extern CONST_DATA ??? gUnk_0868B788
-// extern CONST_DATA ??? gUnk_0868B79C
-// extern CONST_DATA ??? gUnk_0868B7A0
-// extern CONST_DATA ??? gUnk_0868B7A4
-// extern CONST_DATA ??? gUnk_0868B7A8
-// extern CONST_DATA ??? gUnk_0868B7B8
-// extern CONST_DATA ??? gUnk_0868B7D6
-// extern CONST_DATA ??? gUnk_0868B7E2
-// extern CONST_DATA ??? gUnk_0868B7E8
-// extern CONST_DATA ??? gUnk_0868B7F4
-// extern CONST_DATA ??? gUnk_0868B80C
-// extern CONST_DATA ??? gUnk_0868B88C
-// extern CONST_DATA ??? gUnk_0868B8AC
-// extern CONST_DATA ??? gUnk_0868B8E4
-// extern CONST_DATA ??? gUnk_0868B99C
-// extern CONST_DATA ??? gUnk_0868BA24
-// extern CONST_DATA ??? gUnk_0868BA3C
-// extern CONST_DATA ??? gUnk_0868BB1C
-// extern CONST_DATA ??? gUnk_0868BB3C
-// extern CONST_DATA ??? gUnk_0868BB5C
-// extern CONST_DATA ??? gUnk_0868BB7C
-// extern CONST_DATA ??? gUnk_0868BB9C
-// extern CONST_DATA ??? gUnk_0868BBEC
-// extern CONST_DATA ??? gUnk_0868BC44
-// extern CONST_DATA ??? gUnk_0868BC8C
-// extern CONST_DATA ??? gUnk_0868BCE4
-// extern CONST_DATA ??? gUnk_0868BDB4
-// extern CONST_DATA ??? gUnk_0868BDF4
-// extern CONST_DATA ??? gUnk_0868BE2C
-// extern CONST_DATA ??? gUnk_0868BE4C
-// extern CONST_DATA ??? gUnk_0868BE74
-// extern CONST_DATA ??? gUnk_0868BEEC
-// extern CONST_DATA ??? gUnk_0868BF14
-// extern CONST_DATA ??? ProcScr_0868BF3C
-// extern CONST_DATA ??? gUnk_0868BFAC
-// extern CONST_DATA ??? gUnk_0868BFCC
-
+/* augury.h */
 /* worldmap.h */
 /* monologue.h */
 /* shop.h */

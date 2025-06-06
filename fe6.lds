@@ -66,6 +66,8 @@ SECTIONS
         . = 0x015698; gPrepSubMenuIcons = .;
         . = 0x01636A; gUnk_0201636A = .;
         . = 0x016874; gUnk_02016874 = .; /* big jump here? */
+        . = 0x0169CC;
+        . = ALIGN(4); src/augury.o(ewram_overlay_0);
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -272,7 +274,7 @@ SECTIONS
         . = 0x0203CCF4 - __ewram_overlay_end; gEkrInitialHitSide = .;
         . = 0x0203CCF6 - __ewram_overlay_end; gEkrSnowWeather = .;
         . = 0x0203CCF8 - __ewram_overlay_end; gBanimValid = .;
-        . = 0x0203CCFC - __ewram_overlay_end; gBanimPositionIsEnemy = .;
+        . = 0x0203CCFC - __ewram_overlay_end; gBanimPosIsTarget = .;
         . = 0x0203CD00 - __ewram_overlay_end; gBanimIdx_bak = .;
         . = 0x0203CD04 - __ewram_overlay_end; gBanimUniquePal = .;
         . = 0x0203CD08 - __ewram_overlay_end; gBanimFactionPal = .;
@@ -603,6 +605,7 @@ SECTIONS
         src/savemenu_2.o(.text);
         asm/savemenufx.o(.text);
         src/config.o(.text);
+        src/augury.o(.text);
         asm/code.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
@@ -840,6 +843,7 @@ SECTIONS
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/savemenufx.o(.data);
         . = ALIGN(4); src/config.o(.data);
+        . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);
