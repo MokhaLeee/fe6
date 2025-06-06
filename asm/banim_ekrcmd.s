@@ -541,7 +541,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	rsbs r0, r0, #0
 	lsrs r0, r0, #0x1f
 	str r0, [sp, #0x14]
-	ldr r0, .L0804A0F4 @ =gBanimPositionIsEnemy
+	ldr r0, .L0804A0F4 @ =gBanimPosIsTarget
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	ldr r2, [sp, #0x14]
@@ -563,7 +563,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	strh r2, [r0]
 	b .L0804A118
 	.align 2, 0
-.L0804A0F4: .4byte gBanimPositionIsEnemy
+.L0804A0F4: .4byte gBanimPosIsTarget
 .L0804A0F8: .4byte gEkrInitialHitSide
 .L0804A0FC:
 	mov r5, sp
@@ -735,7 +735,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ands r0, r1
 	cmp r0, #0
 	beq .L0804A2D0
-	ldr r0, .L0804A284 @ =gBanimPositionIsEnemy
+	ldr r0, .L0804A284 @ =gBanimPosIsTarget
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	ldr r2, [sp, #0x14]
@@ -768,7 +768,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	.align 2, 0
 .L0804A27C: .4byte gUnk_0811225C
 .L0804A280: .4byte 0x0203CD1E
-.L0804A284: .4byte gBanimPositionIsEnemy
+.L0804A284: .4byte gBanimPosIsTarget
 .L0804A288: .4byte gEfxHpLut
 .L0804A28C: .4byte 0xFFFF8000
 .L0804A290:
@@ -809,7 +809,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ands r0, r1
 	cmp r0, #0
 	beq .L0804A3B8
-	ldr r0, .L0804A344 @ =gBanimPositionIsEnemy
+	ldr r0, .L0804A344 @ =gBanimPosIsTarget
 	movs r5, #0
 	ldrsh r0, [r0, r5]
 	ldr r1, [sp, #0x14]
@@ -861,7 +861,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	lsls r0, r7, #2
 	b .L0804A3A8
 	.align 2, 0
-.L0804A344: .4byte gBanimPositionIsEnemy
+.L0804A344: .4byte gBanimPosIsTarget
 .L0804A348: .4byte gEfxHpLut
 .L0804A34C: .4byte gBanimMaxHP
 .L0804A350:
@@ -917,7 +917,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 .L0804A3B0: .4byte gEfxHpLut
 .L0804A3B4: .4byte gBanimMaxHP
 .L0804A3B8:
-	ldr r0, .L0804A410 @ =gBanimPositionIsEnemy
+	ldr r0, .L0804A410 @ =gBanimPosIsTarget
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	ldr r2, [sp, #0x14]
@@ -963,7 +963,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	strh r0, [r4]
 	b .L0804A456
 	.align 2, 0
-.L0804A410: .4byte gBanimPositionIsEnemy
+.L0804A410: .4byte gBanimPosIsTarget
 .L0804A414: .4byte gEfxHpLut
 .L0804A418:
 	lsls r0, r7, #1

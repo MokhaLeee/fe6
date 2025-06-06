@@ -232,7 +232,7 @@ extern u32 gEkrBgPosition;
 extern i16 gBanimEffectiveness[2];
 extern i16 gBanimUniquePaletteDisabled[2];
 extern i16 gBanimValid[2];
-extern i16 gBanimPositionIsEnemy[2];
+extern i16 gBanimPosIsTarget[2];
 extern i16 gBanimIdx_bak[2];
 extern i16 gBanimUniquePal[2];
 extern i16 gBanimFactionPal[2];
