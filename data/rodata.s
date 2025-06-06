@@ -128,8 +128,8 @@ gUnk_08342A98: @ 08342A98
 gUnk_08342AB8: @ 08342AB8
 	.incbin "fe6-base.gba", 0x342AB8, (0x342AD8 - 0x342AB8) @ length: 0020
 
-	.global gUnk_08342AD8
-gUnk_08342AD8: @ 08342AD8
+	.global Pal_08342AD8
+Pal_08342AD8: @ 08342AD8
 	.incbin "fe6-base.gba", 0x342AD8, (0x342AF8 - 0x342AD8) @ length: 0020
 
 	.global gUnk_08342AF8
@@ -144,16 +144,16 @@ gUnk_08342B54: @ 08342B54
 gUnk_08343358: @ 08343358
 	.incbin "fe6-base.gba", 0x343358, (0x343398 - 0x343358) @ length: 0040
 
-	.global gUnk_08343398
-gUnk_08343398: @ 08343398
+	.global Img_08343398
+Img_08343398: @ 08343398
 	.incbin "fe6-base.gba", 0x343398, (0x343A80 - 0x343398) @ length: 06E8
 
-	.global gUnk_08343A80
-gUnk_08343A80: @ 08343A80
+	.global Img_08343A80
+Img_08343A80: @ 08343A80
 	.incbin "fe6-base.gba", 0x343A80, (0x343FAC - 0x343A80) @ length: 052C
 
-	.global gUnk_08343FAC
-gUnk_08343FAC: @ 08343FAC
+	.global Img_08343FAC
+Img_08343FAC: @ 08343FAC
 	.incbin "fe6-base.gba", 0x343FAC, (0x3442C4 - 0x343FAC) @ length: 0318
 
 	.global gUnk_083442C4

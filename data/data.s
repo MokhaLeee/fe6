@@ -16,12 +16,12 @@ BgConf_Augury: @ 0868AFBE
 ProcScr_0868AFD8: @ 0868AFD8
 	.incbin "fe6-base.gba", 0x68AFD8, (0x68AFF0 - 0x68AFD8) @ length: 0018
 
-	.global gUnk_0868AFF0
-gUnk_0868AFF0: @ 0868AFF0
+	.global ProcScr_0868AFF0
+ProcScr_0868AFF0: @ 0868AFF0
 	.incbin "fe6-base.gba", 0x68AFF0, (0x68B010 - 0x68AFF0) @ length: 0020
 
-	.global ProcScr_Unk_0868B010
-ProcScr_Unk_0868B010: @ 0868B010
+	.global ProcScr_Augury
+ProcScr_Augury: @ 0868B010
 	.incbin "fe6-base.gba", 0x68B010, (0x68B1B0 - 0x68B010) @ length: 01A0
 
 	.global HelpInfo_0868B1B0
@@ -72,40 +72,40 @@ gUnk_0868B5C8: @ 0868B5C8
 gUnk_0868B5E0: @ 0868B5E0
 	.incbin "fe6-base.gba", 0x68B5E0, (0x68B5E8 - 0x68B5E0) @ length: 0008
 
-	.global gUnk_0868B5E8
-gUnk_0868B5E8: @ 0868B5E8
+	.global ProcScr_0868B5E8
+ProcScr_0868B5E8: @ 0868B5E8
 	.incbin "fe6-base.gba", 0x68B5E8, (0x68B610 - 0x68B5E8) @ length: 0028
 
-	.global gUnk_0868B610
-gUnk_0868B610: @ 0868B610
+	.global ProcScr_0868B610
+ProcScr_0868B610: @ 0868B610
 	.incbin "fe6-base.gba", 0x68B610, (0x68B648 - 0x68B610) @ length: 0038
 
-	.global gUnk_0868B648
-gUnk_0868B648: @ 0868B648
+	.global ProcScr_0868B648
+ProcScr_0868B648: @ 0868B648
 	.incbin "fe6-base.gba", 0x68B648, (0x68B6D8 - 0x68B648) @ length: 0090
 
-	.global gUnk_0868B6D8
-gUnk_0868B6D8: @ 0868B6D8
+	.global ProcScr_0868B6D8
+ProcScr_0868B6D8: @ 0868B6D8
 	.incbin "fe6-base.gba", 0x68B6D8, (0x68B700 - 0x68B6D8) @ length: 0028
 
-	.global gUnk_0868B700
-gUnk_0868B700: @ 0868B700
+	.global ProcScr_0868B700
+ProcScr_0868B700: @ 0868B700
 	.incbin "fe6-base.gba", 0x68B700, (0x68B720 - 0x68B700) @ length: 0020
 
 	.global gUnk_0868B720
 gUnk_0868B720: @ 0868B720
 	.incbin "fe6-base.gba", 0x68B720, (0x68B730 - 0x68B720) @ length: 0010
 
-	.global gUnk_0868B730
-gUnk_0868B730: @ 0868B730
+	.global ProcScr_0868B730
+ProcScr_0868B730: @ 0868B730
 	.incbin "fe6-base.gba", 0x68B730, (0x68B750 - 0x68B730) @ length: 0020
 
-	.global gUnk_0868B750
-gUnk_0868B750: @ 0868B750
+	.global ProcScr_0868B750
+ProcScr_0868B750: @ 0868B750
 	.incbin "fe6-base.gba", 0x68B750, (0x68B768 - 0x68B750) @ length: 0018
 
-	.global gUnk_0868B768
-gUnk_0868B768: @ 0868B768
+	.global ProcScr_0868B768
+ProcScr_0868B768: @ 0868B768
 	.incbin "fe6-base.gba", 0x68B768, (0x68B788 - 0x68B768) @ length: 0020
 
 	.global gUnk_0868B788
@@ -144,28 +144,28 @@ gUnk_0868B7E2: @ 0868B7E2
 gUnk_0868B7E8: @ 0868B7E8
 	.incbin "fe6-base.gba", 0x68B7E8, (0x68B7F4 - 0x68B7E8) @ length: 000C
 
-	.global gUnk_0868B7F4
-gUnk_0868B7F4: @ 0868B7F4
+	.global BgConfig_0868B7F4
+BgConfig_0868B7F4: @ 0868B7F4
 	.incbin "fe6-base.gba", 0x68B7F4, (0x68B80C - 0x68B7F4) @ length: 0018
 
-	.global gUnk_0868B80C
-gUnk_0868B80C: @ 0868B80C
+	.global ProcScr_0868B80C
+ProcScr_0868B80C: @ 0868B80C
 	.incbin "fe6-base.gba", 0x68B80C, (0x68B88C - 0x68B80C) @ length: 0080
 
-	.global gUnk_0868B88C
-gUnk_0868B88C: @ 0868B88C
+	.global ProcScr_0868B88C
+ProcScr_0868B88C: @ 0868B88C
 	.incbin "fe6-base.gba", 0x68B88C, (0x68B8AC - 0x68B88C) @ length: 0020
 
-	.global gUnk_0868B8AC
-gUnk_0868B8AC: @ 0868B8AC
+	.global ProcScr_0868B8AC
+ProcScr_0868B8AC: @ 0868B8AC
 	.incbin "fe6-base.gba", 0x68B8AC, (0x68B8E4 - 0x68B8AC) @ length: 0038
 
-	.global gUnk_0868B8E4
-gUnk_0868B8E4: @ 0868B8E4
+	.global ProcScr_0868B8E4
+ProcScr_0868B8E4: @ 0868B8E4
 	.incbin "fe6-base.gba", 0x68B8E4, (0x68B99C - 0x68B8E4) @ length: 00B8
 
-	.global gUnk_0868B99C
-gUnk_0868B99C: @ 0868B99C
+	.global ProcScr_0868B99C
+ProcScr_0868B99C: @ 0868B99C
 	.incbin "fe6-base.gba", 0x68B99C, (0x68BA24 - 0x68B99C) @ length: 0088
 
 	.global gUnk_0868BA24
@@ -180,16 +180,16 @@ gUnk_0868BA3C: @ 0868BA3C
 gUnk_0868BB1C: @ 0868BB1C
 	.incbin "fe6-base.gba", 0x68BB1C, (0x68BB3C - 0x68BB1C) @ length: 0020
 
-	.global gUnk_0868BB3C
-gUnk_0868BB3C: @ 0868BB3C
+	.global ProcScr_0868BB3C
+ProcScr_0868BB3C: @ 0868BB3C
 	.incbin "fe6-base.gba", 0x68BB3C, (0x68BB5C - 0x68BB3C) @ length: 0020
 
-	.global gUnk_0868BB5C
-gUnk_0868BB5C: @ 0868BB5C
+	.global ProcScr_0868BB5C
+ProcScr_0868BB5C: @ 0868BB5C
 	.incbin "fe6-base.gba", 0x68BB5C, (0x68BB7C - 0x68BB5C) @ length: 0020
 
-	.global gUnk_0868BB7C
-gUnk_0868BB7C: @ 0868BB7C
+	.global ProcScr_0868BB7C
+ProcScr_0868BB7C: @ 0868BB7C
 	.incbin "fe6-base.gba", 0x68BB7C, (0x68BB9C - 0x68BB7C) @ length: 0020
 
 	.global gUnk_0868BB9C
@@ -200,8 +200,8 @@ gUnk_0868BB9C: @ 0868BB9C
 gUnk_0868BBEC: @ 0868BBEC
 	.incbin "fe6-base.gba", 0x68BBEC, (0x68BC44 - 0x68BBEC) @ length: 0058
 
-	.global gUnk_0868BC44
-gUnk_0868BC44: @ 0868BC44
+	.global ProcScr_0868BC44
+ProcScr_0868BC44: @ 0868BC44
 	.incbin "fe6-base.gba", 0x68BC44, (0x68BC8C - 0x68BC44) @ length: 0048
 
 	.global gUnk_0868BC8C
@@ -212,8 +212,8 @@ gUnk_0868BC8C: @ 0868BC8C
 gUnk_0868BCE4: @ 0868BCE4
 	.incbin "fe6-base.gba", 0x68BCE4, (0x68BDB4 - 0x68BCE4) @ length: 00D0
 
-	.global gUnk_0868BDB4
-gUnk_0868BDB4: @ 0868BDB4
+	.global ProcScr_0868BDB4
+ProcScr_0868BDB4: @ 0868BDB4
 	.incbin "fe6-base.gba", 0x68BDB4, (0x68BDF4 - 0x68BDB4) @ length: 0040
 
 	.global gUnk_0868BDF4
@@ -228,8 +228,8 @@ gUnk_0868BE2C: @ 0868BE2C
 gUnk_0868BE4C: @ 0868BE4C
 	.incbin "fe6-base.gba", 0x68BE4C, (0x68BE74 - 0x68BE4C) @ length: 0028
 
-	.global gUnk_0868BE74
-gUnk_0868BE74: @ 0868BE74
+	.global ProcScr_0868BE74
+ProcScr_0868BE74: @ 0868BE74
 	.incbin "fe6-base.gba", 0x68BE74, (0x68BEEC - 0x68BE74) @ length: 0078
 
 	.global gUnk_0868BEEC

@@ -9,20 +9,11 @@
 #include "msg.h"
 #include "ui.h"
 #include "util.h"
+#include "sound.h"
 #include "constants/msg.h"
+#include "constants/songs.h"
 
-struct UnkStruct_0868AF58 {
-	u8 x, y;
-
-	u8 _pad_[2];
-};
-
-struct AuguryConfig {
-	/* 00 */ u8 fid;
-	/* 01 */ u8 pid;
-
-	STRUCT_PAD(0x02, 0x10);
-};
+#include "augury.h"
 
 CONST_DATA int AuguryMsgs[] = {
 	MSG_716, MSG_717, MSG_718, MSG_719, MSG_71A,
@@ -36,7 +27,7 @@ CONST_DATA int AuguryMsgs[] = {
 	MSG_715,
 };
 
-CONST_DATA struct UnkStruct_0868AF58 gUnk_0868AF58[] = {
+CONST_DATA struct AuguryDispConfig gAuguryDispConfig[] = {
 	{ 0x0D, 2, 0, 0 },
 	{ 0x0D, 4, 0, 0 },
 	{ 0x0D, 6, 0, 0 },
@@ -45,9 +36,6 @@ CONST_DATA struct UnkStruct_0868AF58 gUnk_0868AF58[] = {
 	{ 0x14, 4, 0, 0 },
 	{ 0x14, 6, 0, 0 }
 };
-
-extern struct AuguryConfig gAuguryConfig[];
-extern CONST_DATA u16 BgConf_Augury[];
 
 EWRAM_OVERLAY(0) i16 gAuguryIndex = 0;
 EWRAM_OVERLAY(0) u16 unk_020169CE = 0;
@@ -155,12 +143,12 @@ void StartAuguryDialogue2(int msg)
 	SetActiveTalkFace(TALK_FACE_1);
 }
 
-void func_fe6_0808D204(void)
+void Augury_InitBG(void)
 {
 	InitBgs(BgConf_Augury);
 }
 
-void func_fe6_0808D214(ProcPtr proc)
+void Augury_InitIO(ProcPtr proc)
 {
 	SetBlendAlpha(0x10, 1);
 	SetBlendTargetA(0, 1, 0, 0, 0);
@@ -180,15 +168,15 @@ void func_fe6_0808D214(ProcPtr proc)
 
 void func_fe6_0808D308(void)
 {
-	int x = gUnk_0868AF58[gAuguryIndex].x * 8 - 2;
-	int y = gUnk_0868AF58[gAuguryIndex].y * 8;
+	int x = gAuguryDispConfig[gAuguryIndex].x * 8 - 2;
+	int y = gAuguryDispConfig[gAuguryIndex].y * 8;
 
 	switch (gAuguryChoice) {
-	case 1:
+	case AUGURY_CHOICE_1:
 		PutUiHand(x, y);
 		break;
 
-	case 2:
+	case AUGURY_CHOICE_2:
 		PutFrozenUiHand(x, y);
 		break;
 
@@ -200,15 +188,15 @@ void func_fe6_0808D308(void)
 
 void func_fe6_0808D368(void)
 {
-	gAuguryChoice = 1;
+	gAuguryChoice = AUGURY_CHOICE_1;
 }
 
-void func_fe6_0808D374(void)
+void Augury_Init(void)
 {
 	int i;
 
 	unk_020169CE = 0;
-	gAuguryChoice = 0;
+	gAuguryChoice = AUGURY_CHOICE_0;
 	gCurrentAuguryIndex = GetAuguryIndex();
 
 	if (gCurrentAuguryIndex == (u8)-1)
@@ -247,7 +235,7 @@ void func_fe6_0808D374(void)
 
 		PutDrawText(
 			text,
-			gBg0Tm + TM_OFFSET(gUnk_0868AF58[i].x, gUnk_0868AF58[i].y),
+			gBg0Tm + TM_OFFSET(gAuguryDispConfig[i].x, gAuguryDispConfig[i].y),
 			TEXT_COLOR_SYSTEM_WHITE, 0, 6,
 			DecodeMsg(AuguryMsgs[i])
 		);
@@ -267,4 +255,395 @@ void func_fe6_0808D374(void)
 	unk_02016A2E[4] = gAuguryStatus[5] = func_fe6_0808F600();
 	unk_02016A2E[5] = gAuguryStatus[6] = func_fe6_0808F68C();
 	gAuguryStatus[0] = func_fe6_0808F6E0();
+}
+
+void func_fe6_0808D59C(ProcPtr proc)
+{
+	int val;
+
+	switch (unk_020169CE) {
+	case 0:
+		unk_020169D0 = 0;
+		unk_020169D2 = 0x10;
+		unk_020169CE += 1;
+		break;
+
+	case 1:
+		val = unk_020169D2 / 4;
+
+		if (val == 0)
+			val = 1;
+
+		if (unk_020169D2 > 1) {
+			unk_020169D0 += val;
+			unk_020169D2 -= val;
+
+			SetBlendAlpha(unk_020169D0, unk_020169D2);
+		} else {
+			unk_020169CE = 0;
+			Proc_Break(proc);
+		}
+		break;
+
+	default:
+		break;
+	}
+}
+
+void func_fe6_0808D630(ProcPtr proc)
+{
+	int val;
+
+	switch (unk_020169CE) {
+	case 0:
+		if (!IsTalkActive()) {
+			ClearTalkText();
+			EndTalk();
+			EnableBgSync(BG0_SYNC_BIT);
+			unk_020169D0 = 0x10;
+			unk_020169D2 = 0;
+			unk_020169CE += 1;
+		}
+		break;
+
+	case 1:
+		val = unk_020169D0 / 4;
+
+		if (val == 0)
+			val = 1;
+
+		if (unk_020169D0 >= 1) {
+			unk_020169D0 -= val;
+			unk_020169D2 += val;
+
+			SetBlendAlpha(unk_020169D0, unk_020169D2);
+		} else {
+			unk_020169CE = 0;
+			Proc_Break(proc);
+		}
+		break;
+
+	default:
+		break;
+	}
+}
+
+void func_fe6_0808D6D4(u16 a, u16 b)
+{
+	int offset, tmp, tileref0, tileref1;
+
+	tileref0 = 0x11DE;
+	tileref1 = 0x11DD;
+	if (a <= 3) {
+		tmp = tileref0;
+
+		tileref0 = tileref1;
+		tileref1 = tmp;
+	}
+
+	offset = TM_OFFSET(gAuguryDispConfig[a].x, gAuguryDispConfig[a].y + 1) - 1;
+
+	gBg1Tm[offset + 0] = tileref0;
+	gBg1Tm[offset + 1] = tileref1;
+	gBg1Tm[offset + 2] = tileref0;
+	gBg1Tm[offset + 3] = tileref1;
+	gBg1Tm[offset + 4] = tileref0;
+	gBg1Tm[offset + 5] = tileref1;
+	gBg1Tm[offset + 6] = tileref0;
+
+
+	tileref0 = 0x11F8;
+	tileref1 = 0x11FB;
+	if (b <= 3) {
+		tmp = tileref0;
+
+		tileref0 = tileref1;
+		tileref1 = tmp;
+	}
+
+	offset = TM_OFFSET(gAuguryDispConfig[b].x, gAuguryDispConfig[b].y + 1) - 1;
+
+	gBg1Tm[offset + 0] = tileref0;
+
+	tileref0 += 1;
+	tileref1 += 1;
+	gBg1Tm[offset + 1] = tileref0;
+	gBg1Tm[offset + 2] = tileref1;
+	gBg1Tm[offset + 3] = tileref0;
+	gBg1Tm[offset + 4] = tileref1;
+	gBg1Tm[offset + 5] = tileref0;
+
+	tileref1 += 1;
+	gBg1Tm[offset + 6] = tileref1;
+
+	EnableBgSync(BG1_SYNC_BIT);
+}
+
+void func_fe6_0808D7B4(ProcPtr proc)
+{
+	StartAuguryDialogue2(gAuguryConfig[gCurrentAuguryIndex].msgs3[gAuguryIndex]);
+	PlaySe(SONG_66);
+}
+
+// https://decomp.me/scratch/0O3Ii
+#if NONMATCHING
+void func_fe6_0808D7F8(ProcPtr proc)
+{
+	int index;
+	int ref_index = 4;
+
+	switch (gKeySt->pressed) {
+	case KEY_BUTTON_A:
+		ClearTalkText();
+		EndTalk();
+		gAuguryChoice = AUGURY_CHOICE_2;
+		PlaySe(SONG_6A);
+		Proc_Goto(proc, PL_AUGURY_3);
+		return;
+
+	case KEY_BUTTON_B:
+		ClearTalkText();
+		EndTalk();
+		TmFillRect(gBg1Tm + TM_OFFSET(8, 13), 0x15, 6, 0);
+		EnableBgSync(BG1_SYNC_BIT);
+		PlaySe(SONG_6B);
+		Proc_Goto(proc, PL_AUGURY_4);
+		return;
+
+	default:
+		index = gAuguryIndex;
+
+		switch (gKeySt->repeated) {
+		case KEY_DPAD_UP:
+			if (index < 4) {
+				if (index == 0)
+					index = 3;
+				else
+					index = index - 1;
+			} else if (index <= 4)
+				index = 6;
+			else
+				index = index - 1;
+			break;
+
+		case KEY_DPAD_DOWN:
+			if (index < 4) {
+				if (index >= 3)
+					index = 0;
+				else
+					index = index + 1;
+			} else if (index <= 5)
+				index = index + 1;
+			else
+				index = 4;
+			break;
+
+		case KEY_DPAD_RIGHT:
+		case KEY_DPAD_LEFT:
+			if (index < ref_index) {
+				index += ref_index;
+				if (index > 6)
+					index = 6;
+			} else
+				index -= ref_index;
+			break;
+
+		default:
+			break;
+		}
+		if (gAuguryIndex != index) {
+			func_fe6_0808D6D4(gAuguryIndex, index);
+
+			gAuguryIndex = index;
+			func_fe6_0808D7B4(proc);
+		}
+		break;
+	}
+}
+#else
+NAKEDFUNC
+void func_fe6_0808D7F8(ProcPtr proc)
+{
+asm("\
+	.syntax unified\n\
+	push {r4, r5, r6, lr}\n\
+	adds r5, r0, #0\n\
+	movs r2, #4\n\
+	ldr r0, .L0808D820 @ =gKeySt\n\
+	ldr r1, [r0]\n\
+	ldrh r0, [r1, #8]\n\
+	cmp r0, #1\n\
+	beq .L0808D828\n\
+	cmp r0, #2\n\
+	beq .L0808D858\n\
+	ldr r0, .L0808D824 @ =gAuguryIndex\n\
+	movs r3, #0\n\
+	ldrsh r4, [r0, r3]\n\
+	ldrh r1, [r1, #6]\n\
+	adds r6, r0, #0\n\
+	cmp r1, #0x20\n\
+	beq .L0808D8D0\n\
+	cmp r1, #0x20\n\
+	bgt .L0808D89A\n\
+	b .L0808D894\n\
+	.align 2, 0\n\
+.L0808D820: .4byte gKeySt\n\
+.L0808D824: .4byte gAuguryIndex\n\
+.L0808D828:\n\
+	bl ClearTalkText\n\
+	bl EndTalk\n\
+	ldr r1, .L0808D850 @ =gAuguryChoice\n\
+	movs r0, #2\n\
+	strb r0, [r1]\n\
+	ldr r0, .L0808D854 @ =gPlaySt\n\
+	ldrb r0, [r0, #0x1d]\n\
+	lsls r0, r0, #0x1e\n\
+	cmp r0, #0\n\
+	blt .L0808D846\n\
+	movs r0, #0x6a\n\
+	bl m4aSongNumStart\n\
+.L0808D846:\n\
+	adds r0, r5, #0\n\
+	movs r1, #3\n\
+	bl Proc_Goto\n\
+	b .L0808D8FA\n\
+	.align 2, 0\n\
+.L0808D850: .4byte gAuguryChoice\n\
+.L0808D854: .4byte gPlaySt\n\
+.L0808D858:\n\
+	bl ClearTalkText\n\
+	bl EndTalk\n\
+	ldr r0, .L0808D88C @ =gBg1Tm+0x350\n\
+	movs r1, #0x15\n\
+	movs r2, #6\n\
+	movs r3, #0\n\
+	bl TmFillRect_thm\n\
+	movs r0, #2\n\
+	bl EnableBgSync\n\
+	ldr r0, .L0808D890 @ =gPlaySt\n\
+	ldrb r0, [r0, #0x1d]\n\
+	lsls r0, r0, #0x1e\n\
+	cmp r0, #0\n\
+	blt .L0808D882\n\
+	movs r0, #0x6b\n\
+	bl m4aSongNumStart\n\
+.L0808D882:\n\
+	adds r0, r5, #0\n\
+	movs r1, #4\n\
+	bl Proc_Goto\n\
+	b .L0808D8FA\n\
+	.align 2, 0\n\
+.L0808D88C: .4byte gBg1Tm+0x350\n\
+.L0808D890: .4byte gPlaySt\n\
+.L0808D894:\n\
+	cmp r1, #0x10\n\
+	beq .L0808D8D0\n\
+	b .L0808D8E0\n\
+.L0808D89A:\n\
+	cmp r1, #0x40\n\
+	beq .L0808D8A4\n\
+	cmp r1, #0x80\n\
+	beq .L0808D8B8\n\
+	b .L0808D8E0\n\
+.L0808D8A4:\n\
+	cmp r4, #4\n\
+	bge .L0808D8B0\n\
+	cmp r4, #0\n\
+	bne .L0808D8B4\n\
+	movs r4, #3\n\
+	b .L0808D8E0\n\
+.L0808D8B0:\n\
+	cmp r4, #4\n\
+	ble .L0808D8DA\n\
+.L0808D8B4:\n\
+	subs r4, #1\n\
+	b .L0808D8E0\n\
+.L0808D8B8:\n\
+	cmp r4, #4\n\
+	bge .L0808D8C4\n\
+	cmp r4, #3\n\
+	blt .L0808D8C8\n\
+	movs r4, #0\n\
+	b .L0808D8E0\n\
+.L0808D8C4:\n\
+	cmp r4, #5\n\
+	bgt .L0808D8CC\n\
+.L0808D8C8:\n\
+	adds r4, #1\n\
+	b .L0808D8E0\n\
+.L0808D8CC:\n\
+	movs r4, #4\n\
+	b .L0808D8E0\n\
+.L0808D8D0:\n\
+	cmp r4, r2\n\
+	bge .L0808D8DE\n\
+	adds r4, r4, r2\n\
+	cmp r4, #6\n\
+	ble .L0808D8E0\n\
+.L0808D8DA:\n\
+	movs r4, #6\n\
+	b .L0808D8E0\n\
+.L0808D8DE:\n\
+	subs r4, r4, r2\n\
+.L0808D8E0:\n\
+	movs r1, #0\n\
+	ldrsh r0, [r6, r1]\n\
+	cmp r0, r4\n\
+	beq .L0808D8FA\n\
+	ldrh r0, [r6]\n\
+	lsls r1, r4, #0x10\n\
+	lsrs r1, r1, #0x10\n\
+	bl func_fe6_0808D6D4\n\
+	strh r4, [r6]\n\
+	adds r0, r5, #0\n\
+	bl func_fe6_0808D7B4\n\
+.L0808D8FA:\n\
+	pop {r4, r5, r6}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.syntax divided\n\
+");
+}
+#endif
+
+void func_fe6_0808D900(ProcPtr proc)
+{
+	if (gKeySt->held & KEY_BUTTON_B) {
+		Proc_Goto(proc, PL_AUGURY_4);
+		return;
+	}
+
+	if (!IsTalkActive())
+		Proc_Break(proc);
+}
+
+void func_fe6_0808D938(ProcPtr proc)
+{
+	if (!IsTalkActive())
+		Proc_Break(proc);
+}
+
+void func_fe6_0808D954(ProcPtr proc)
+{
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs1[0], proc);
+}
+
+void func_fe6_0808D978(ProcPtr proc)
+{
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs1[1], proc);
+}
+
+void func_fe6_0808D99C(ProcPtr proc)
+{
+	StartAuguryDialogue1(MSG_6FF, proc);
+}
+
+void func_fe6_0808D9B0(ProcPtr proc)
+{
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs2[gAuguryStatus[gAuguryIndex]], proc);
+}
+
+void func_fe6_0808D9F0(ProcPtr proc)
+{
+	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs1[2], proc);
 }

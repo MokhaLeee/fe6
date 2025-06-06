@@ -33,6 +33,7 @@
 #include "statusscreen.h"
 #include "unitlistscreen.h"
 #include "savemenu.h"
+#include "augury.h"
 #include "prepscreen.h"
 #include "suspend_ui.h"
 
@@ -104,7 +105,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_085C5E58[] =
 
 fu8 func_fe6_0801EA40(struct MenuProc * menu, struct MenuEntProc * ent)
 {
-    SpawnProc(ProcScr_Unk_0868B010, PROC_TREE_3);
+    SpawnProc(ProcScr_Augury, PROC_TREE_3);
 
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }

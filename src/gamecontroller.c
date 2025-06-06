@@ -16,6 +16,7 @@
 #include "savemenu.h"
 #include "class_demo.h"
 #include "opanim.h"
+#include "augury.h"
 
 #include "constants/chapters.h"
 
