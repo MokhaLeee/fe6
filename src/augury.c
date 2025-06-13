@@ -6,25 +6,48 @@
 #include "faction.h"
 #include "unit.h"
 #include "talk.h"
+#include "event.h"
 #include "msg.h"
 #include "ui.h"
 #include "util.h"
 #include "sound.h"
+#include "oam.h"
+#include "bmio.h"
+#include "chapter.h"
+#include "unitsprite.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
+#include "constants/faces.h"
+#include "constants/pids.h"
 
 #include "augury.h"
 
-CONST_DATA int AuguryMsgs[] = {
-	MSG_716, MSG_717, MSG_718, MSG_719, MSG_71A,
-	MSG_71B, MSG_71C, MSG_6F3, MSG_6F4, MSG_6FC,
-	MSG_6FD, MSG_6FE, MSG_707, MSG_6FB, MSG_6FA,
-	MSG_6F9, MSG_6F8, MSG_6F7, MSG_6F6, MSG_6F5,
-	MSG_706, MSG_705, MSG_704, MSG_703, MSG_702,
-	MSG_701, MSG_700, MSG_708, MSG_709, MSG_70A,
-	MSG_70B, MSG_70C, MSG_70D, MSG_70E, MSG_70F,
-	MSG_710, MSG_711, MSG_712, MSG_713, MSG_714,
-	MSG_715,
+CONST_DATA int AuguryMsgs0[] = {
+	MSG_716, MSG_717, MSG_718, MSG_719, MSG_71A, MSG_71B, MSG_71C
+};
+
+CONST_DATA int AuguryMsgs1[] = {
+	MSG_6F3, MSG_6F4, MSG_6FC,
+};
+
+CONST_DATA int AuguryMsgs2[] = {
+	MSG_6FD, MSG_6FE, MSG_707,
+};
+
+CONST_DATA int AuguryMsgs3[] = {
+	MSG_6FB, MSG_6FA, MSG_6F9, MSG_6F8, MSG_6F7, MSG_6F6, MSG_6F5
+};
+
+CONST_DATA int AuguryMsgs4[] = {
+	MSG_706, MSG_705, MSG_704, MSG_703, MSG_702, MSG_701, MSG_700,
+};
+
+CONST_DATA int AuguryMsgs5[] = {
+	MSG_708, MSG_709, MSG_70A, MSG_70B, MSG_70C, MSG_70D, MSG_70E,
+};
+
+CONST_DATA int AuguryMsgs6[] = {
+	MSG_70F, MSG_710, MSG_711, MSG_712, MSG_713, MSG_714, MSG_715,
 };
 
 CONST_DATA struct AuguryDispConfig gAuguryDispConfig[] = {
@@ -37,6 +60,37 @@ CONST_DATA struct AuguryDispConfig gAuguryDispConfig[] = {
 	{ 0x14, 6, 0, 0 }
 };
 
+CONST_DATA struct AuguryConfig gAuguryConfig[] = {
+	{
+		FID_26, PID_LARUM,
+		AuguryMsgs1, AuguryMsgs3, AuguryMsgs5,
+	},
+	{
+		FID_2B, PID_ELFFIN,
+		AuguryMsgs2, AuguryMsgs4, AuguryMsgs6,
+	},
+	{
+		FID_02, PID_NONE,
+		AuguryMsgs2, AuguryMsgs4, AuguryMsgs6,
+	},
+};
+
+u16 CONST_DATA Obj_AuguryUI[] = {
+	4,
+	OAM0_SHAPE_32x8, OAM1_SIZE_32x8, 0,
+	OAM0_SHAPE_16x8, OAM1_SIZE_16x8 + OAM1_X(32), OAM2_CHR(0x4),
+	OAM0_SHAPE_32x8 + OAM0_Y(8), OAM1_SIZE_32x8, OAM2_CHR(0x20),
+	OAM0_SHAPE_16x8 + OAM0_Y(8), OAM1_SIZE_16x8 + OAM1_X(32), OAM2_CHR(0x24),
+};
+
+u16 CONST_DATA BgConf_Augury[12] = {
+	// tile offset  map offset  screen size
+	0x0000,         0x6000,     0,          // BG 0
+	0x0000,         0x6800,     0,          // BG 1
+	0x0000,         0x7000,     0,          // BG 2
+	0x8000,         0x7800,     0,          // BG 3
+};
+
 EWRAM_OVERLAY(0) i16 gAuguryIndex = 0;
 EWRAM_OVERLAY(0) u16 unk_020169CE = 0;
 EWRAM_OVERLAY(0) u16 unk_020169D0 = 0;
@@ -45,7 +99,7 @@ EWRAM_OVERLAY(0) u8 gAuguryStatus[7] = {};
 EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex = 0;
 EWRAM_OVERLAY(0) i8 gAuguryChoice = 0;
 EWRAM_OVERLAY(0) struct Text gAuguryTexts[7] = {};
-EWRAM_OVERLAY(0) i16 unk_02016A18 = 0;
+EWRAM_OVERLAY(0) i16 ProcAugury_0868AFF0_EndEnable = 0;
 EWRAM_OVERLAY(0) i16 unk_02016A1A = 0;
 EWRAM_OVERLAY(0) i16 unk_02016A1C = 0;
 EWRAM_OVERLAY(0) u16 unk_02016A1E = 0;
@@ -119,8 +173,8 @@ void StartAuguryDialogue1(int msg, ProcPtr proc)
 	SetTalkPrintColor(TEXT_COLOR_SYSTEM_GRAY);
 
 	SetTalkFlag(TALK_FLAG_INSTANTSHIFT);
-    SetTalkFlag(TALK_FLAG_NOBUBBLE);
-    SetTalkFlag(TALK_FLAG_NOSKIP);
+	SetTalkFlag(TALK_FLAG_NOBUBBLE);
+	SetTalkFlag(TALK_FLAG_NOSKIP);
 
 	SetTalkPrintDelay(3);
 	SetActiveTalkFace(TALK_FACE_1);
@@ -136,8 +190,8 @@ void StartAuguryDialogue2(int msg)
 	SetTalkPrintColor(TEXT_COLOR_SYSTEM_GRAY);
 
 	SetTalkFlag(TALK_FLAG_INSTANTSHIFT);
-    SetTalkFlag(TALK_FLAG_NOBUBBLE);
-    SetTalkFlag(TALK_FLAG_NOSKIP);
+	SetTalkFlag(TALK_FLAG_NOBUBBLE);
+	SetTalkFlag(TALK_FLAG_NOSKIP);
 
 	SetTalkPrintDelay(3);
 	SetActiveTalkFace(TALK_FACE_1);
@@ -157,8 +211,8 @@ void Augury_InitIO(ProcPtr proc)
 	SetWin0Box(0x40, 0x68, -0x10, -0x68);
 	SetWin0Layers(1, 1, 1, 1, 1);
 	SetWOutLayers(1, 1, 1, 1, 1);
-    gDispIo.win_ct.win0_enable_blend = 1;
-    gDispIo.win_ct.wout_enable_blend = 0;
+	gDispIo.win_ct.win0_enable_blend = 1;
+	gDispIo.win_ct.wout_enable_blend = 0;
 
 	PutTalkBubbleTm(9, 13, 20, 6);
 	PutTalkBubbleTail(8, 16, 2);
@@ -190,6 +244,12 @@ void func_fe6_0808D368(void)
 {
 	gAuguryChoice = AUGURY_CHOICE_1;
 }
+
+struct ProcScr CONST_DATA ProcScr_0868AFD8[] = {
+	PROC_19,
+	PROC_REPEAT(func_fe6_0808D308),
+	PROC_END,
+};
 
 void Augury_Init(void)
 {
@@ -237,7 +297,7 @@ void Augury_Init(void)
 			text,
 			gBg0Tm + TM_OFFSET(gAuguryDispConfig[i].x, gAuguryDispConfig[i].y),
 			TEXT_COLOR_SYSTEM_WHITE, 0, 6,
-			DecodeMsg(AuguryMsgs[i])
+			DecodeMsg(AuguryMsgs0[i])
 		);
 	}
 
@@ -385,8 +445,6 @@ void func_fe6_0808D7B4(ProcPtr proc)
 	PlaySe(SONG_66);
 }
 
-// https://decomp.me/scratch/0O3Ii
-#if NONMATCHING
 void func_fe6_0808D7F8(ProcPtr proc)
 {
 	int index;
@@ -415,20 +473,20 @@ void func_fe6_0808D7F8(ProcPtr proc)
 
 		switch (gKeySt->repeated) {
 		case KEY_DPAD_UP:
-			if (index < 4) {
+			if (index < ref_index) {
 				if (index == 0)
 					index = 3;
 				else
 					index = index - 1;
-			} else if (index <= 4)
-				index = 6;
-			else
+			} else if (index > ref_index)
 				index = index - 1;
+			else
+				index = 6;
 			break;
 
 		case KEY_DPAD_DOWN:
-			if (index < 4) {
-				if (index >= 3)
+			if (index < ref_index) {
+				if (index >= (ref_index - 1))
 					index = 0;
 				else
 					index = index + 1;
@@ -460,151 +518,6 @@ void func_fe6_0808D7F8(ProcPtr proc)
 		break;
 	}
 }
-#else
-NAKEDFUNC
-void func_fe6_0808D7F8(ProcPtr proc)
-{
-asm("\
-	.syntax unified\n\
-	push {r4, r5, r6, lr}\n\
-	adds r5, r0, #0\n\
-	movs r2, #4\n\
-	ldr r0, .L0808D820 @ =gKeySt\n\
-	ldr r1, [r0]\n\
-	ldrh r0, [r1, #8]\n\
-	cmp r0, #1\n\
-	beq .L0808D828\n\
-	cmp r0, #2\n\
-	beq .L0808D858\n\
-	ldr r0, .L0808D824 @ =gAuguryIndex\n\
-	movs r3, #0\n\
-	ldrsh r4, [r0, r3]\n\
-	ldrh r1, [r1, #6]\n\
-	adds r6, r0, #0\n\
-	cmp r1, #0x20\n\
-	beq .L0808D8D0\n\
-	cmp r1, #0x20\n\
-	bgt .L0808D89A\n\
-	b .L0808D894\n\
-	.align 2, 0\n\
-.L0808D820: .4byte gKeySt\n\
-.L0808D824: .4byte gAuguryIndex\n\
-.L0808D828:\n\
-	bl ClearTalkText\n\
-	bl EndTalk\n\
-	ldr r1, .L0808D850 @ =gAuguryChoice\n\
-	movs r0, #2\n\
-	strb r0, [r1]\n\
-	ldr r0, .L0808D854 @ =gPlaySt\n\
-	ldrb r0, [r0, #0x1d]\n\
-	lsls r0, r0, #0x1e\n\
-	cmp r0, #0\n\
-	blt .L0808D846\n\
-	movs r0, #0x6a\n\
-	bl m4aSongNumStart\n\
-.L0808D846:\n\
-	adds r0, r5, #0\n\
-	movs r1, #3\n\
-	bl Proc_Goto\n\
-	b .L0808D8FA\n\
-	.align 2, 0\n\
-.L0808D850: .4byte gAuguryChoice\n\
-.L0808D854: .4byte gPlaySt\n\
-.L0808D858:\n\
-	bl ClearTalkText\n\
-	bl EndTalk\n\
-	ldr r0, .L0808D88C @ =gBg1Tm+0x350\n\
-	movs r1, #0x15\n\
-	movs r2, #6\n\
-	movs r3, #0\n\
-	bl TmFillRect_thm\n\
-	movs r0, #2\n\
-	bl EnableBgSync\n\
-	ldr r0, .L0808D890 @ =gPlaySt\n\
-	ldrb r0, [r0, #0x1d]\n\
-	lsls r0, r0, #0x1e\n\
-	cmp r0, #0\n\
-	blt .L0808D882\n\
-	movs r0, #0x6b\n\
-	bl m4aSongNumStart\n\
-.L0808D882:\n\
-	adds r0, r5, #0\n\
-	movs r1, #4\n\
-	bl Proc_Goto\n\
-	b .L0808D8FA\n\
-	.align 2, 0\n\
-.L0808D88C: .4byte gBg1Tm+0x350\n\
-.L0808D890: .4byte gPlaySt\n\
-.L0808D894:\n\
-	cmp r1, #0x10\n\
-	beq .L0808D8D0\n\
-	b .L0808D8E0\n\
-.L0808D89A:\n\
-	cmp r1, #0x40\n\
-	beq .L0808D8A4\n\
-	cmp r1, #0x80\n\
-	beq .L0808D8B8\n\
-	b .L0808D8E0\n\
-.L0808D8A4:\n\
-	cmp r4, #4\n\
-	bge .L0808D8B0\n\
-	cmp r4, #0\n\
-	bne .L0808D8B4\n\
-	movs r4, #3\n\
-	b .L0808D8E0\n\
-.L0808D8B0:\n\
-	cmp r4, #4\n\
-	ble .L0808D8DA\n\
-.L0808D8B4:\n\
-	subs r4, #1\n\
-	b .L0808D8E0\n\
-.L0808D8B8:\n\
-	cmp r4, #4\n\
-	bge .L0808D8C4\n\
-	cmp r4, #3\n\
-	blt .L0808D8C8\n\
-	movs r4, #0\n\
-	b .L0808D8E0\n\
-.L0808D8C4:\n\
-	cmp r4, #5\n\
-	bgt .L0808D8CC\n\
-.L0808D8C8:\n\
-	adds r4, #1\n\
-	b .L0808D8E0\n\
-.L0808D8CC:\n\
-	movs r4, #4\n\
-	b .L0808D8E0\n\
-.L0808D8D0:\n\
-	cmp r4, r2\n\
-	bge .L0808D8DE\n\
-	adds r4, r4, r2\n\
-	cmp r4, #6\n\
-	ble .L0808D8E0\n\
-.L0808D8DA:\n\
-	movs r4, #6\n\
-	b .L0808D8E0\n\
-.L0808D8DE:\n\
-	subs r4, r4, r2\n\
-.L0808D8E0:\n\
-	movs r1, #0\n\
-	ldrsh r0, [r6, r1]\n\
-	cmp r0, r4\n\
-	beq .L0808D8FA\n\
-	ldrh r0, [r6]\n\
-	lsls r1, r4, #0x10\n\
-	lsrs r1, r1, #0x10\n\
-	bl func_fe6_0808D6D4\n\
-	strh r4, [r6]\n\
-	adds r0, r5, #0\n\
-	bl func_fe6_0808D7B4\n\
-.L0808D8FA:\n\
-	pop {r4, r5, r6}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.syntax divided\n\
-");
-}
-#endif
 
 void func_fe6_0808D900(ProcPtr proc)
 {
@@ -647,3 +560,225 @@ void func_fe6_0808D9F0(ProcPtr proc)
 {
 	StartAuguryDialogue1(gAuguryConfig[gCurrentAuguryIndex].msgs1[2], proc);
 }
+
+void AuguryPaletteModify1(u16 *pal, int line, int start, int count, int val)
+{
+	int i, _v = Div(val * 0x20, 0x10);
+
+	for (i = start; i < (start + count); i++) {
+		u16 *cur = pal + PAL_COLOR_OFFSET(line, i);
+
+		int r = RGB_R(*cur);
+		int g = RGB_G(*cur);
+		int b = RGB_B(*cur);
+
+		r -= (r * _v) >> 5;
+		g -= (g * _v) >> 5;
+		b -= (b * _v) >> 5;
+
+		*cur = _RGB(r, g, b);
+	}
+}
+
+void AuguryPaletteModify2(u16 *pal, int line, int start, int count, int val)
+{
+	int i, _v = Div(val * 0x20, 0x10);
+
+	for (i = start; i < (start + count); i++) {
+		u16 *cur = pal + PAL_COLOR_OFFSET(line, i);
+
+		int r = RGB_R(*cur);
+		int g = RGB_G(*cur);
+		int b = RGB_B(*cur);
+
+		r += ((0x1F - r) * _v) >> 5;
+		g += ((0x1F	- g) * _v) >> 5;
+		b += ((0x1F - b) * _v) >> 5;
+
+		*cur = _RGB(r, g, b);
+	}
+}
+
+void func_fe6_0808DB14(int lo0, int hi0, int lo1, int hi1, int x)
+{
+	int v1 = Interpolate(INTERPOLATE_SQUARE, lo0, hi0, x, 0x37);
+	int v2 = Interpolate(INTERPOLATE_SQUARE, lo1, hi1, x, 0x37);
+
+	CpuFastCopy(Pal_0833C01C, gPal + PAL_OFFSET(BGPAL_AUGURY_4), 0x20);
+
+	AuguryPaletteModify2(gPal, BGPAL_AUGURY_4, 10, 5, v1);
+	AuguryPaletteModify1(gPal, BGPAL_AUGURY_4,  2, 8, v2);
+
+	EnablePalSync();
+}
+
+struct ProcScr CONST_DATA ProcScr_0868AFF0[] = {
+	PROC_19,
+	PROC_CALL(func_fe6_0808DB90),
+	PROC_REPEAT(func_fe6_0808DB98),
+	PROC_END,
+};
+
+void func_fe6_0808DB90(struct Proc_0868AFF0_Augury *proc)
+{
+	proc->timer1 = 0;
+	proc->timer2 = 0;
+}
+
+void func_fe6_0808DB98(struct Proc_0868AFF0_Augury *proc)
+{
+	switch (proc->timer2) {
+	case 0:
+		func_fe6_0808DB14(0, 5, 0, 4, proc->timer1);
+		proc->timer1++;
+		if (proc->timer1 > 0x37) {
+			proc->timer1 = 0;
+			proc->timer2++;
+		}
+		break;
+
+	case 5:
+		func_fe6_0808DB14(5, 0, 4, 0, proc->timer1);
+		proc->timer1++;
+		if (proc->timer1 > 0x37) {
+			proc->timer1 = 0;
+			proc->timer2++;
+
+			if (ProcAugury_0868AFF0_EndEnable != 0)
+				Proc_Break(proc);
+		}
+		break;
+
+	case 10:
+		proc->timer2 = 0;
+		break;
+
+	default:
+		proc->timer2++;
+		break;
+	}
+}
+
+void func_fe6_0808DC30(struct Proc_0868AFF0_Augury *proc)
+{
+	proc->timer1 = 0;
+	proc->current_bgm = GetCurrentBgmSong();
+	ProcAugury_0868AFF0_EndEnable = 0;
+}
+
+void func_fe6_0808DC4C(struct Proc_0868AFF0_Augury *proc)
+{
+	if (gCurrentAuguryIndex == 0) {
+		switch (proc->timer1) {
+		case 0:
+			SpawnProc(ProcScr_0868AFF0, PROC_TREE_3);
+			break;
+
+		case 0x1E:
+			PlaySe(SONG_41);
+			break;
+
+		case 0xD2:
+			FadeBgmOut(-1);
+			break;
+
+		case 0xE6:
+			ProcAugury_0868AFF0_EndEnable++;
+			break;
+		}
+	} else {
+		switch (proc->timer1) {
+		case 0:
+			SpawnProc(ProcScr_0868AFF0, PROC_TREE_3);
+			PlaySe(SONG_EE);
+			break;
+
+		case 0x41:
+		case 0x69:
+		case 0x73:
+		case 0x96:
+			PlaySe(SONG_EE);
+			break;
+
+		case 0xE6:
+			ProcAugury_0868AFF0_EndEnable++;
+			break;
+		}
+	}
+
+	proc->timer1++;
+
+	if (ProcAugury_0868AFF0_EndEnable) {
+		StartBgm(proc->current_bgm, NULL);
+		Proc_Break(proc);
+	}
+}
+
+void func_fe6_0808DD24(ProcPtr proc)
+{
+	ClearPutTalkText();
+	EndTalk();
+	ClearTalk();
+	Proc_EndEach(ProcScr_0868AFD8);
+}
+
+struct ProcScr CONST_DATA ProcScr_Augury[] =
+{
+	PROC_19,
+	PROC_CALL(LockGame),
+	PROC_CALL(StartMidFadeToBlack),
+	PROC_REPEAT(WhileFadeExists),
+	PROC_CALL(LockBmDisplay),
+
+PROC_LABEL(PL_AUGURY_0),
+	PROC_CALL(Augury_InitBG),
+	PROC_CALL(Augury_Init),
+	PROC_CALL(StartMidFadeFromBlack),
+	PROC_REPEAT(WhileFadeExists),
+	PROC_CALL(Augury_InitIO),
+	PROC_REPEAT(func_fe6_0808D900),
+	PROC_GOTO(PL_AUGURY_2),
+
+PROC_LABEL(PL_AUGURY_1),
+	PROC_SLEEP(20),
+	PROC_CALL(func_fe6_0808D368),
+	PROC_REPEAT(func_fe6_0808D59C),
+	PROC_CALL(func_fe6_0808D954),
+	PROC_REPEAT(func_fe6_0808D900),
+
+PROC_LABEL(PL_AUGURY_2),
+	PROC_CALL(func_fe6_0808D368),
+	PROC_SLEEP(5),
+	PROC_CALL(func_fe6_0808D7B4),
+	PROC_REPEAT(func_fe6_0808D7F8),
+
+PROC_LABEL(PL_AUGURY_3),
+	PROC_SLEEP(30),
+	PROC_CALL(func_fe6_0808D978),
+	PROC_REPEAT(func_fe6_0808D630),
+	PROC_SLEEP(1),
+	PROC_CALL_ARG(_FadeBgmOut, -1),
+	PROC_SLEEP(30),
+	PROC_CALL(func_fe6_0808DC30),
+	PROC_REPEAT(func_fe6_0808DC4C),
+	PROC_SLEEP(10),
+	PROC_REPEAT(func_fe6_0808D59C),
+	PROC_CALL(func_fe6_0808D99C),
+	PROC_SLEEP(30),
+	PROC_REPEAT(func_fe6_0808D938),
+	PROC_CALL(func_fe6_0808D9B0),
+	PROC_REPEAT(func_fe6_0808D938),
+	PROC_CALL(func_fe6_0808D9F0),
+	PROC_REPEAT(func_fe6_0808D630),
+	PROC_GOTO(PL_AUGURY_1),
+
+PROC_LABEL(PL_AUGURY_4),
+	PROC_CALL(StartMidFadeToBlack),
+	PROC_REPEAT(WhileFadeExists),
+	PROC_CALL(func_fe6_0808DD24),
+	PROC_CALL(UnlockBmDisplay),
+	PROC_CALL(ResetUnitSprites),
+	PROC_CALL(InitBmDisplay),
+	PROC_CALL(UnlockGame),
+	PROC_END,
+};
