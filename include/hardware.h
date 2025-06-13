@@ -251,6 +251,10 @@ extern i16 SHOULD_BE_CONST gSinLut[];
 #define RGB_GET_GREEN(color) (((color) >> 5) & 0x1F)
 #define RGB_GET_BLUE(color) (((color) >> 10) & 0x1F)
 
+#define RGB_R(color) ((color) & 0x1F)
+#define RGB_G(color) (((color) >> 5) & 0x1F)
+#define RGB_B(color) (((color) >> 10) & 0x1F)
+
 #define RGB5_MASK_R (0x1F << 0)
 #define RGB5_MASK_G (0x1F << 5)
 #define RGB5_MASK_B (0x1F << 10)

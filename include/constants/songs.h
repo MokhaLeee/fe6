@@ -39,6 +39,7 @@ enum
     SONG_3D = 0x3D,
     SONG_3E = 0x3E,
     SONG_3F = 0x3F,
+    SONG_41 = 0x41,
     SONG_43 = 0x43,
     SONG_44 = 0x44,
     SONG_45 = 0x45,
@@ -132,6 +133,7 @@ enum
     SONG_D6 = 0xD6,
     SONG_D8 = 0xD8, // crit?
     SONG_EC = 0xEC, // no damage
+    SONG_EE = 0xEE,
     SONG_FD = 0xFD, // manim
     SONG_10F = 0x10F,
     SONG_269 = 0x269,

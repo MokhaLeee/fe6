@@ -4,6 +4,10 @@
 #include "menu.h"
 #include "proc.h"
 
+enum video_augury {
+    BGPAL_AUGURY_4 = 4,
+};
+
 enum AUGURY_CHOICE {
 	AUGURY_CHOICE_0,
 	AUGURY_CHOICE_1,
@@ -29,12 +33,17 @@ struct AuguryDispConfig {
 struct AuguryConfig {
 	/* 00 */ u8 fid;
 	/* 01 */ u8 pid;
-
-	STRUCT_PAD(0x02, 0x4);
-
 	/* 04 */ int *msgs1;
 	/* 08 */ int *msgs2;
 	/* 0C */ int *msgs3;
+};
+
+struct Proc_0868AFF0_Augury {
+	PROC_HEADER;
+
+	i16 timer1;
+	i16 timer2;
+	int current_bgm;
 };
 
 struct ProcAugury {
@@ -49,7 +58,7 @@ extern EWRAM_OVERLAY(0) u8 gAuguryStatus[7];
 extern EWRAM_OVERLAY(0) u8 gCurrentAuguryIndex;
 extern EWRAM_OVERLAY(0) i8 gAuguryChoice;
 extern EWRAM_OVERLAY(0) struct Text gAuguryTexts[7];
-extern EWRAM_OVERLAY(0) i16 unk_02016A18;
+extern EWRAM_OVERLAY(0) i16 ProcAugury_0868AFF0_EndEnable;
 extern EWRAM_OVERLAY(0) i16 unk_02016A1A;
 extern EWRAM_OVERLAY(0) i16 unk_02016A1C;
 extern EWRAM_OVERLAY(0) u16 unk_02016A1E;
@@ -97,22 +106,22 @@ void func_fe6_0808D59C(ProcPtr proc);
 void func_fe6_0808D630(ProcPtr proc);
 void func_fe6_0808D6D4(u16 old, u16 new);
 void func_fe6_0808D7B4(ProcPtr proc);
-// func_fe6_0808D7F8
-// func_fe6_0808D900
-// func_fe6_0808D938
+void func_fe6_0808D7F8(ProcPtr proc);
+void func_fe6_0808D900(ProcPtr proc);
+void func_fe6_0808D938(ProcPtr proc);
 void func_fe6_0808D954(ProcPtr proc);
-// func_fe6_0808D978
-// func_fe6_0808D99C
-// func_fe6_0808D9B0
-// func_fe6_0808D9F0
-// func_fe6_0808DA14
-// func_fe6_0808DA90
-// func_fe6_0808DB14
-// func_fe6_0808DB90
-// func_fe6_0808DB98
-// func_fe6_0808DC30
-// func_fe6_0808DC4C
-// func_fe6_0808DD24
+void func_fe6_0808D978(ProcPtr proc);
+void func_fe6_0808D99C(ProcPtr proc);
+void func_fe6_0808D9B0(ProcPtr proc);
+void func_fe6_0808D9F0(ProcPtr proc);
+void AuguryPaletteModify1(u16 *pal, int line, int start, int count, int val);
+void AuguryPaletteModify2(u16 *pal, int line, int start, int count, int val);
+void func_fe6_0808DB14(int lo0, int hi0, int lo1, int hi1, int x);
+void func_fe6_0808DB90(struct Proc_0868AFF0_Augury *proc);
+void func_fe6_0808DB98(struct Proc_0868AFF0_Augury *proc);
+void func_fe6_0808DC30(struct Proc_0868AFF0_Augury *proc);
+void func_fe6_0808DC4C(struct Proc_0868AFF0_Augury *proc);
+void func_fe6_0808DD24(ProcPtr proc);
 // func_fe6_0808DD40
 // func_fe6_0808DD78
 // func_fe6_0808DE04
@@ -196,7 +205,7 @@ extern CONST_DATA struct ProcScr ProcScr_Augury[];
 // extern CONST_DATA ??? HelpInfo_0868B1B0
 // extern CONST_DATA ??? HelpInfo_0868B2C8
 // extern CONST_DATA ??? HelpInfo_0868B3C4
-// extern CONST_DATA ??? gUnk_0868B3FC
+extern CONST_DATA u16 *gpAuguryBuf[];
 // extern CONST_DATA ??? gUnk_0868B410
 // extern CONST_DATA ??? gUnk_0868B418
 // extern CONST_DATA ??? gUnk_0868B420
