@@ -23,10 +23,14 @@ FightScr_Unk_08676204: @ 08676204
 
 	.global ProcScr_Unk_08676220
 ProcScr_Unk_08676220: @ 08676220
-	.incbin "fe6-base.gba", 0x676220, (0x676738 - 0x676220) @ length: 0518
+	.incbin "fe6-base.gba", 0x676220, (0x676250 - 0x676220) @ length: 0518
 
-	.global gUnk_08676738
-gUnk_08676738: @ 08676738
+	.global EventScr_IntroDemo
+EventScr_IntroDemo: @ 08676250
+	.incbin "fe6-base.gba", 0x676250, (0x676738 - 0x676250)
+
+	.global EventScrs_IntroDemo
+EventScrs_IntroDemo: @ 08676738
 	.incbin "fe6-base.gba", 0x676738, (0x676844 - 0x676738) @ length: 010C
 
 	.global ProcScr_Unk_08676844

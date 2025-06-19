@@ -2016,12 +2016,12 @@ void func_fe6_0806DAD0(void)
 
 EventScr const * func_fe6_0806DAF0(int arg_0, int arg_1)
 {
-    return gUnk_08676738[arg_1];
+    return EventScrs_IntroDemo[arg_1];
 }
 
 void func_fe6_0806DB00(int arg_0, ProcPtr proc)
 {
-    StartEventLocking(gUnk_08676738[arg_0], proc);
+    StartEventLocking(EventScrs_IntroDemo[arg_0], proc);
 
     gUnk_0203D368 = arg_0;
     gUnk_0203D36C = 0;
