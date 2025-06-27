@@ -28,8 +28,8 @@ EkrLvupMsgsMag: @ 081CA014
 sEfxLvupPartsPos: @ 081CA03C
 	.incbin "fe6-base.gba", 0x1CA03C, (0x1CA04C - 0x1CA03C) @ length: 0010
 
-	.global gUnk_081CA04C
-gUnk_081CA04C: @ 081CA04C
+	.global gMsg_Lv
+gMsg_Lv: @ 081CA04C
 	.incbin "fe6-base.gba", 0x1CA04C, (0x1CA054 - 0x1CA04C) @ length: 0008
 
 	.global gUnk_081CA054

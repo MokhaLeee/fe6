@@ -70,6 +70,8 @@ enum video_banim {
     VRAMOFF_OBJ_EKRGAUGE_ICON_R = 0x3BC0,
     VRAMOFF_OBJ_EKRGAUGE_ARROW  = 0x3C00,
     VRAMOFF_OBJ_EKRGAUGE_NUM_R  = 0x3E00,
+
+    VRAMOFF_BG_EKRLVUP_FONT = 0x2400,
 };
 
 enum ekr_hit {
@@ -1533,9 +1535,57 @@ void NewEkrClassChg(struct BaSprite * anim);
 // func_fe6_0805D09C
 // func_fe6_0805D0E0
 
+enum ekr_lvup_status_index {
+    EKRLVUP_STAT_HP = 0,
+    EKRLVUP_STAT_POW,
+    EKRLVUP_STAT_SKL,
+    EKRLVUP_STAT_SPD,
+    EKRLVUP_STAT_LCK,
+    EKRLVUP_STAT_DEF,
+    EKRLVUP_STAT_RES,
+    EKRLVUP_STAT_CON,
+    EKRLVUP_STAT_MAX,
+
+    EKRLVUP_STAT_CLASS = EKRLVUP_STAT_MAX,
+    EKRLVUP_STAT_LV_MSG,
+    EKRLVUP_STAT_LV_VAL,
+
+    EKRLVUP_STAT_PNAME = EKRLVUP_STAT_MAX,
+    EKRLVUP_STAT_LVPRE_MSG,
+    EKRLVUP_STAT_LVPRE_VAL
+};
+
 struct ProcEkrlvup {
     PROC_HEADER;
+
+    /* 29 */ u8 finished;
+    /* 2A */ u8 is_promotion;
+    /* 2C */ i16 timer;
+    /* 2E */ i16 index;
+
+    STRUCT_PAD(0x30, 0x44);
+
+    /* 44 */ int scroll_timer[4];
+
+    STRUCT_PAD(0x54, 0x5C);
+
+    struct Anim *anim_this, *anim_other;
 };
+
+extern struct ProcEkrlvup * gpProcEkrLevelup;
+extern struct Unit * gpEkrLvupUnit;
+extern struct BattleUnit * gpEkrLvupBattleUnit;
+extern u16 gEkrLvupPreLevel;
+extern u16 gEkrLvupPostLevel;
+extern u16 gEkrLvupBaseStatus[EKRLVUP_STAT_MAX];
+extern u16 gEkrLvupPostStatus[EKRLVUP_STAT_MAX];
+extern u16 gEkrLvupScrollPos1;
+extern u16 gEkrLvupScrollPos2;
+extern int gEkrLvupApfxUnexist;
+
+extern const u16 sEfxLvupPartsPos[];
+extern CONST_DATA char EkrLvupMsgsStr[][5];
+extern CONST_DATA char EkrLvupMsgsMag[][5];
 
 bool CheckEkrLvupDone(void);
 void EndEkrLevelUp(void);
@@ -1598,8 +1648,8 @@ void NewEkrTriangle(struct BaSprite * anim);
 
 extern CONST_DATA u16 *gBattleBGDataTable[];
 
-// PutBanimBgIMG
-// PutBanimBgTSA
+void PutBanimBgIMG(int index);
+void PutBanimBgTSA(int index);
 void PutBanimBgPAL(int);
 void PutBanimBG(int);
 

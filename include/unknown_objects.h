@@ -531,7 +531,7 @@ extern u16 const Tsa_EkrFaefx12[];
 // extern ??? EkrLvupMsgsStr
 // extern ??? EkrLvupMsgsMag
 // extern ??? sEfxLvupPartsPos
-// extern ??? gUnk_081CA04C
+extern const char gMsg_Lv[];
 // extern ??? gUnk_081CA054
 // extern ??? gUnk_081CA062
 // extern ??? gUnk_081CA070
@@ -848,19 +848,24 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_0868A55C
 // extern CONST_DATA ??? Sprite_0868A568
 // extern CONST_DATA ??? Sprite_0868A570
-// extern CONST_DATA ??? ProcScr_0868A58C
-// extern CONST_DATA ??? ProcScr_0868A634
-// extern CONST_DATA ??? ProcScr_0868A644
-// extern CONST_DATA ??? gUnk_0868A664
-// extern CONST_DATA ??? Sprite_0868A988
-// extern CONST_DATA ??? Imgs_0868A998
-// extern CONST_DATA ??? Sprite_0868A9E8
-// extern CONST_DATA ??? Sprite_0868A9F0
-// extern CONST_DATA ??? Sprite_0868A9F8
-// extern CONST_DATA ??? ProcScr_0868AA08
-// extern CONST_DATA ??? ProcScr_0868AA80
-// extern CONST_DATA ??? ProcScr_0868AAA8
 
+extern const u16 gUnk_083278AC[];
+extern const u8 gUnk_083278EC[];
+extern const u16 gUnk_083280B0[];
+extern const u8 gUnk_0832A130[];
+extern const u8 gUnk_0832A29C[];
+extern const u8 gUnk_0832B554[];
+extern const u16 gUnk_0832BDE8[];
+extern const u16 Img_XmapObj[];
+extern const u16 Pal_XmapObj[];
+extern const u16 gUnk_0832C35C[];
+extern const u16 gUnk_0832C39C[];
+extern const u16 gUnk_0832C5E8[];
+extern const u16 gUnk_0832CA9C[];
+extern const u16 gUnk_0832CAFC[];
+extern const u16 gUnk_0832CC90[];
+
+/* xmap.h */
 /* config.h */
 /* augury.h */
 /* worldmap.h */

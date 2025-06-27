@@ -34,7 +34,7 @@ struct Text EWRAM_OVERLAY(savemenu) gSaveMenuText = { 0 };
 
 u8 EWRAM_OVERLAY(savemenu) gUnk_Savemenu_02000464[3] = { 0 };
 
-void func_fe6_08089254(struct SaveMenuUnkPalProc * proc)
+void SaveDraw_SavePalette(struct SaveMenuUnkPalProc * proc)
 {
     int i;
 
@@ -46,7 +46,7 @@ void func_fe6_08089254(struct SaveMenuUnkPalProc * proc)
     }
 }
 
-void func_fe6_0808927C(struct SaveMenuUnkPalProc * proc)
+void SaveDrawFadeIn_Loop(struct SaveMenuUnkPalProc * proc)
 {
     #define SCALE 0x10
 
@@ -79,7 +79,7 @@ void func_fe6_0808927C(struct SaveMenuUnkPalProc * proc)
     #undef SCALE
 }
 
-void func_fe6_08089310(struct SaveMenuUnkPalProc * proc)
+void SaveDrawFadeOut_Loop(struct SaveMenuUnkPalProc * proc)
 {
     #define SCALE 0x10
 
@@ -181,33 +181,33 @@ void func_fe6_08089490(struct SaveMenuUnkPalProc * proc)
     #undef SCALE
 }
 
-struct ProcScr CONST_DATA ProcScr_Unk_0868A09C[] =
+struct ProcScr CONST_DATA ProcScr_SaveDrawFadeIn[] =
 {
-    PROC_CALL(func_fe6_08089254),
-    PROC_REPEAT(func_fe6_0808927C),
+    PROC_CALL(SaveDraw_SavePalette),
+    PROC_REPEAT(SaveDrawFadeIn_Loop),
     PROC_END,
 };
 
-void func_fe6_08089550(ProcPtr parent)
+void StartSaveDrawFadeIn(ProcPtr parent)
 {
-    SpawnProcLocking(ProcScr_Unk_0868A09C, parent);
+    SpawnProcLocking(ProcScr_SaveDrawFadeIn, parent);
 }
 
-struct ProcScr CONST_DATA ProcScr_Unk_0868A0B4[] =
+struct ProcScr CONST_DATA ProcScr_SaveDrawFadeOut[] =
 {
-    PROC_CALL(func_fe6_08089254),
-    PROC_REPEAT(func_fe6_08089310),
+    PROC_CALL(SaveDraw_SavePalette),
+    PROC_REPEAT(SaveDrawFadeOut_Loop),
     PROC_END,
 };
 
-void func_fe6_08089564(ProcPtr parent)
+void StartSaveDrawFadeOut(ProcPtr parent)
 {
-    SpawnProcLocking(ProcScr_Unk_0868A0B4, parent);
+    SpawnProcLocking(ProcScr_SaveDrawFadeOut, parent);
 }
 
 struct ProcScr CONST_DATA ProcScr_Unk_0868A0CC[] =
 {
-    PROC_CALL(func_fe6_08089254),
+    PROC_CALL(SaveDraw_SavePalette),
     PROC_REPEAT(func_fe6_080893D0),
     PROC_END,
 };
@@ -219,7 +219,7 @@ void func_fe6_08089578(ProcPtr parent)
 
 struct ProcScr CONST_DATA ProcScr_Unk_0868A0E4[] =
 {
-    PROC_CALL(func_fe6_08089254),
+    PROC_CALL(SaveDraw_SavePalette),
     PROC_REPEAT(func_fe6_08089490),
     PROC_END,
 };
@@ -679,7 +679,7 @@ void func_fe6_08089C70(struct UnkProc_0868A28C * proc)
 
     if (proc->proc_parent->unk_42 != 0)
     {
-        id = func_fe6_08087CB0(proc->proc_parent->unk_35);
+        id = func_fe6_08087CB0(proc->proc_parent->sel_index);
 
         PutSpriteExt(4, 0x40 + gUnk_0868A518[id].unk_04, (y + 8) & 0x1FF,
             gUnk_0868A4F8[id].sprite, OAM2_PAL(3));
@@ -706,7 +706,7 @@ void func_fe6_08089D30(struct UnkProc_0868A28C * proc)
     {
         if (proc->proc_parent->unk_2E == 0x20)
         {
-            proc->unk_33 = proc->proc_parent->unk_35;
+            proc->unk_33 = proc->proc_parent->sel_index;
         }
         else
         {
@@ -722,7 +722,7 @@ void func_fe6_08089D30(struct UnkProc_0868A28C * proc)
 
         for (i = 0; i < proc->proc_parent->unk_31; i++)
         {
-            id = func_fe6_08087C78(proc->proc_parent->unk_30, i);
+            id = GetSaveMenuSelectIndex(proc->proc_parent->unk_30, i);
             id = func_fe6_08087CB0(id);
 
             if (i == proc->proc_parent->unk_2A)
@@ -743,14 +743,14 @@ void func_fe6_08089D30(struct UnkProc_0868A28C * proc)
 
     if (proc->proc_parent->unk_42 > 0 && proc->proc_parent->unk_42 < 0x1B8)
     {
-        r4 = (6 - proc->proc_parent->unk_33) * 8;
+        r4 = (6 - proc->proc_parent->max_index) * 8;
 
-        for (i = 0; i < proc->proc_parent->unk_33; i++)
+        for (i = 0; i < proc->proc_parent->max_index; i++)
         {
-            id = func_fe6_08087C78(proc->proc_parent->unk_32, i);
+            id = GetSaveMenuSelectIndex(proc->proc_parent->unk_32, i);
             id = func_fe6_08087CB0(id);
 
-            if (i == proc->proc_parent->unk_34)
+            if (i == proc->proc_parent->hand_index)
             {
                 func_fe6_08089ABC(proc, 0x114 - proc->proc_parent->unk_42, r4 + i * 26, id, 1, 3);
             }
@@ -762,7 +762,7 @@ void func_fe6_08089D30(struct UnkProc_0868A28C * proc)
 
         if (proc->proc_parent->unk_2D == 9)
         {
-            func_fe6_0808A3C8(0, 0x24, r4 + proc->proc_parent->unk_34 * 26, proc);
+            func_fe6_0808A3C8(0, 0x24, r4 + proc->proc_parent->hand_index * 26, proc);
         }
     }
 
@@ -1089,7 +1089,7 @@ void func_fe6_0808A524(struct SaveMenuProc * proc)
     proc->unk_31 = 0;
     proc->unk_30 = 0;
     proc->unk_32 = 0;
-    proc->unk_33 = 0;
+    proc->max_index = 0;
 
     if (proc->unk_40 == 0x100)
     {
@@ -1127,25 +1127,25 @@ void func_fe6_0808A524(struct SaveMenuProc * proc)
     if (func_fe6_08084714())
     {
         proc->unk_32 |= 4;
-        proc->unk_33++;
+        proc->max_index++;
     }
 
     if (IsMultiArenaAvailable())
     {
         proc->unk_32 |= 2;
-        proc->unk_33++;
+        proc->max_index++;
     }
 
     if (IsNotFirstPlaythrough_2())
     {
         proc->unk_32 |= 8;
-        proc->unk_33++;
+        proc->max_index++;
     }
 
     if (CheckHasCompletedSave())
     {
         proc->unk_32 |= 1;
-        proc->unk_33++;
+        proc->max_index++;
     }
 
     if (proc->unk_32 != 0)
@@ -1155,7 +1155,7 @@ void func_fe6_0808A524(struct SaveMenuProc * proc)
     }
 }
 
-fu8 func_fe6_0808A658(fu8 save_id, bool valid, fi8 direction)
+fu8 SaveMenu_GetNextSaveIndex(fu8 save_id, bool valid, fi8 direction)
 {
     fu8 i;
 
@@ -1237,7 +1237,7 @@ bool func_fe6_0808A6C8(struct SaveMenuProc * proc, fi8 direction)
     if (proc->unk_2E == UNK_SAVEMENU_6)
         return TRUE;
 
-    proc->selected_id = func_fe6_0808A658(proc->selected_id, valid, direction);
+    proc->selected_id = SaveMenu_GetNextSaveIndex(proc->selected_id, valid, direction);
 
     if (prev_selected_id == proc->selected_id)
         return FALSE;

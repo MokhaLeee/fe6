@@ -28,12 +28,12 @@ gUnk_0832B554: @ 0832B554
 gUnk_0832BDE8: @ 0832BDE8
 	.incbin "fe6-base.gba", 0x32BDE8, (0x32BF28 - 0x32BDE8) @ length: 0140
 
-	.global gUnk_0832BF28
-gUnk_0832BF28: @ 0832BF28
+	.global Img_XmapObj
+Img_XmapObj: @ 0832BF28
 	.incbin "fe6-base.gba", 0x32BF28, (0x32C33C - 0x32BF28) @ length: 0414
 
-	.global gUnk_0832C33C
-gUnk_0832C33C: @ 0832C33C
+	.global Pal_XmapObj
+Pal_XmapObj: @ 0832C33C
 	.incbin "fe6-base.gba", 0x32C33C, (0x32C35C - 0x32C33C) @ length: 0020
 
 	.global gUnk_0832C35C

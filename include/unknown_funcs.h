@@ -433,45 +433,8 @@ void func_fe6_0803CF58(void);
 
 // func_fe6_0808AA84
 // func_fe6_0808AB44
-// func_fe6_0808ABD4
-// func_fe6_0808AEFC
-// func_fe6_0808AF4C
-// func_fe6_0808B028
-// func_fe6_0808B194
-// func_fe6_0808B2BC
-// func_fe6_0808B378
-// func_fe6_0808B3B8
-// func_fe6_0808B40C
-// func_fe6_0808B430
-// func_fe6_0808B52C
-// func_fe6_0808B56C
-// func_fe6_0808B578
-// func_fe6_0808B598
-// func_fe6_0808B628
-// func_fe6_0808B640
-// func_fe6_0808B7A0
-// func_fe6_0808B7B4
-// func_fe6_0808B854
-// func_fe6_0808B928
-// func_fe6_0808B93C
-// func_fe6_0808B9B4
-// func_fe6_0808B9CC
-// func_fe6_0808BBCC
-// func_fe6_0808BCBC
-// func_fe6_0808BCF0
-// func_fe6_0808BD28
-// NewProc_0868AA08
-// func_fe6_0808BD6C
-// func_fe6_0808BD78
-// func_fe6_0808BDF8
-// NewProc_0868AA80
-// func_fe6_0808BE70
-// func_fe6_0808BF00
-// func_fe6_0808BFF0
-// func_fe6_0808C084
-// func_fe6_0808C098
-// NewProc_0868AAA8
 
+/* xmap.h */
 /* config.h */
 
 // func_fe6_0808FD94

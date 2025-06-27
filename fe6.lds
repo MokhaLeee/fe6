@@ -340,6 +340,9 @@ SECTIONS
         . = ALIGN(4); src/save_multiarena.o(ewram_data);
         . = ALIGN(4); src/save_xmap.o(ewram_data);
 
+        . = 0x0203DC3C - __ewram_overlay_end;
+        . = ALIGN(4); src/xmap.o(ewram_data);
+
         . = 0x0203DCA7 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203DCA7 = .;
 
@@ -604,6 +607,8 @@ SECTIONS
         src/savemenu.o(.text);
         src/savemenu_2.o(.text);
         asm/savemenufx.o(.text);
+        src/xmap.o(.text);
+        asm/xmap.o(.text);
         src/config.o(.text);
         src/augury.o(.text);
         asm/code.o(.text);
@@ -842,6 +847,8 @@ SECTIONS
         . = ALIGN(4); src/savemenu.o(.data);
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/savemenufx.o(.data);
+        . = ALIGN(4); src/xmap.o(.data);
+        . = ALIGN(4); data/xmap.o(.data);
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); data/data.o(.data);
