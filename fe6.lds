@@ -576,7 +576,7 @@ SECTIONS
         src/banim_ekrlvup.o(.text);
         asm/banim_ekrlvup.o(.text);
         asm/banim_ekrtriangle.o(.text);
-        asm/banim_bg.o(.text);
+        src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
         src/spellassoc.o(.text);
         src/mu.o(.text);

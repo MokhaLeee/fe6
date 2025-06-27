@@ -53,7 +53,7 @@ enum video_banim {
     OBPAL_EFX_SPELL_OBJ = 2,
     OBPAL_EFX_FACE = 3,
     OBPAL_EFX_5 = 5,
-    OBPAL_EFX_6 = 6,
+    OBPAL_EFX_BG = 6,
     OBPAL_EFX_UNIT_L = 7,
     OBPAL_EFX_UNIT_R = 9,
     OBPAL_EFXHPBAR_L = 11,
@@ -1595,8 +1595,11 @@ void NewEkrTriangle(struct BaSprite * anim);
 // func_fe6_0805EE74
 // func_fe6_0805EE9C
 // func_fe6_0805EED4
-// func_fe6_0805F078
-// func_fe6_0805F098
+
+extern CONST_DATA u16 *gBattleBGDataTable[];
+
+// PutBanimBgIMG
+// PutBanimBgTSA
 void PutBanimBgPAL(int);
 void PutBanimBG(int);
 
@@ -2196,6 +2199,6 @@ extern CONST_DATA struct ProcScr ProcScr_EkrTriangle[];
 // ??? gUnk_08607084
 // ??? gUnk_086071D8
 // ??? gUnk_086074A0
-// ??? gUnk_08607504
+// ??? gBattleBGDataTable
 extern CONST_DATA AnimScr AnimScr_EkrPopup[];
 extern CONST_DATA struct ProcScr ProcScr_EkrPopup[];
