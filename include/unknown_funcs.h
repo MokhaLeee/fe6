@@ -505,7 +505,7 @@ void func_fe6_0809154C(void);
 // func_fe6_08092028
 // func_fe6_08092040
 // func_fe6_08092054
-// func_fe6_080920B4
+// Ending_DrawPInfoText
 
 /* worldmap.h */
 /* monologue.h */

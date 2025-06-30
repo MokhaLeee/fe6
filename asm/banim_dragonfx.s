@@ -1635,10 +1635,10 @@ func_fe6_0805AFA4: @ 0x0805AFA4
 	.align 2, 0
 .L0805AFD0: .4byte gDispIo
 
-	thumb_func_start func_fe6_0805AFD4
-func_fe6_0805AFD4: @ 0x0805AFD4
+	thumb_func_start StartEkrDragonDeath
+StartEkrDragonDeath: @ 0x0805AFD4
 	push {lr}
-	ldr r0, .L0805AFE8 @ =gUnk_08604ACC
+	ldr r0, .L0805AFE8 @ =ProcScr_EkrDragonDeath
 	movs r1, #3
 	bl SpawnProc
 	movs r1, #0
@@ -1646,10 +1646,10 @@ func_fe6_0805AFD4: @ 0x0805AFD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805AFE8: .4byte gUnk_08604ACC
+.L0805AFE8: .4byte ProcScr_EkrDragonDeath
 
-	thumb_func_start func_fe6_0805AFEC
-func_fe6_0805AFEC: @ 0x0805AFEC
+	thumb_func_start EkrDragonDeath_Loop
+EkrDragonDeath_Loop: @ 0x0805AFEC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0x2c]

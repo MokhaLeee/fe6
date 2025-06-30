@@ -292,10 +292,10 @@ extern struct Text EWRAM_DATA gUnkText_0203D370[];
 extern struct Text EWRAM_DATA gUnkText_0203D3A0;
 extern struct ProcScr CONST_DATA ProcScr_Unk_0867688C[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_086768DC[];
-extern EventScr const * CONST_DATA gUnk_086770D4[];
+extern EventScr const * CONST_DATA EventScrs_EndingScene[];
 extern u8 EWRAM_DATA gUnk_0203D3D8; // ending related value
-extern u8 EWRAM_DATA gUnk_0203D3D9; // ending id
-extern EventScr const * CONST_DATA gUnk_08676738[];
+extern u8 EWRAM_DATA gEndingId; // ending id
+extern EventScr const * CONST_DATA EventScrs_DemoScene[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_08677348[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_086768FC[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_08676914[];

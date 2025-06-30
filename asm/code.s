@@ -7396,7 +7396,7 @@ func_fe6_0809195C: @ 0x0809195C
 	movs r1, #0
 	adds r2, r6, #0
 	movs r3, #0
-	bl func_fe6_080920B4
+	bl Ending_DrawPInfoText
 	mov r0, r8
 	str r5, [r0, #0x2c]
 	ldr r0, .L080919FC @ =unk_02016B44
@@ -7991,7 +7991,7 @@ func_fe6_08091E28: @ 0x08091E28
 	movs r1, #0
 	adds r2, r5, #0
 	movs r3, #1
-	bl func_fe6_080920B4
+	bl Ending_DrawPInfoText
 	ldrb r7, [r7]
 	cmp r7, #1
 	bne .L08091F0C
@@ -8021,7 +8021,7 @@ func_fe6_08091E28: @ 0x08091E28
 	movs r1, #0xa
 	adds r2, r5, #0
 	movs r3, #1
-	bl func_fe6_080920B4
+	bl Ending_DrawPInfoText
 .L08091F0C:
 	mov r0, r8
 	mov r1, sb
@@ -8222,8 +8222,8 @@ func_fe6_08092054: @ 0x08092054
 .L080920AC: .4byte ProcScr_0868BF3C
 .L080920B0: .4byte 0xFFFFFF00
 
-	thumb_func_start func_fe6_080920B4
-func_fe6_080920B4: @ 0x080920B4
+	thumb_func_start Ending_DrawPInfoText
+Ending_DrawPInfoText: @ 0x080920B4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

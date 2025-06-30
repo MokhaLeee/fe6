@@ -2016,12 +2016,12 @@ void func_fe6_0806DAD0(void)
 
 EventScr const * func_fe6_0806DAF0(int arg_0, int arg_1)
 {
-    return gUnk_08676738[arg_1];
+    return EventScrs_DemoScene[arg_1];
 }
 
-void func_fe6_0806DB00(int arg_0, ProcPtr proc)
+void StartDemoSceneEvent(int arg_0, ProcPtr proc)
 {
-    StartEventLocking(gUnk_08676738[arg_0], proc);
+    StartEventLocking(EventScrs_DemoScene[arg_0], proc);
 
     gUnk_0203D368 = arg_0;
     gUnk_0203D36C = 0;
@@ -2240,7 +2240,7 @@ void func_fe6_0806DF18(struct UnkProc_086768DC * proc)
 {
     proc->unk_64 = 1;
 
-    if (CheckFlag(FLAG_123))
+    if (CheckFlag(FLAG_IDUNN_NOT_DIE))
         proc->unk_64++;
 }
 
@@ -2480,7 +2480,7 @@ void func_fe6_0806E278(void)
     if (GetItemIid(gBattleUnitA.weapon_before) == IID_BINDINGBLADE ||
         GetItemIid(gBattleUnitB.weapon_before) == IID_BINDINGBLADE)
     {
-        SetFlag(FLAG_123);
+        SetFlag(FLAG_IDUNN_NOT_DIE);
     }
 }
 
@@ -2488,30 +2488,30 @@ void UpdateEndingId(void)
 {
     if (gPlaySt.chapter == CHAPTER_FINAL)
     {
-        if (CheckFlag(FLAG_123) && IsFaeBlue())
+        if (CheckFlag(FLAG_IDUNN_NOT_DIE) && IsFaeBlue())
         {
-            gUnk_0203D3D9 = 0;
+            gEndingId = 0;
         }
         else
         {
-            gUnk_0203D3D9 = 1;
+            gEndingId = 1;
         }
     }
     else
     {
-        gUnk_0203D3D9 = 2;
+        gEndingId = 2;
     }
 }
 
 fu8 GetEndingId(void)
 {
     UpdateEndingId();
-    return gUnk_0203D3D9;
+    return gEndingId;
 }
 
 void StartGameEndingScene(ProcPtr parent)
 {
-    StartEventLocking(gUnk_086770D4[GetEndingId()], parent);
+    StartEventLocking(EventScrs_EndingScene[GetEndingId()], parent);
 }
 
 void func_fe6_0806E32C(void)

@@ -2194,7 +2194,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrIdunnBodyFlashing[];
 // ??? gUnk_08604A3C
 // ??? gUnk_08604A6C
 // ??? gUnk_08604A9C
-// ??? gUnk_08604ACC
+// ??? ProcScr_EkrDragonDeath
 extern AnimScr AnimScr_ManaketeEnter1[];
 extern AnimScr AnimScr_ManaketeExit3[];
 extern AnimScr AnimScr_ManaketeEnter2[];

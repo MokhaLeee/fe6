@@ -19,15 +19,107 @@ MoveScr_Unk_086761E7: @ 086761E7
 
 	.global FightScr_Unk_08676204
 FightScr_Unk_08676204: @ 08676204
-	.incbin "fe6-base.gba", 0x676204, (0x676220 - 0x676204) @ length: ????
+	.incbin "fe6-base.gba", 0x676204, (0x676210 - 0x676204) @ length: ????
+
+	.global FightScr_Unk_08676210
+FightScr_Unk_08676210:
+	.incbin "fe6-base.gba", 0x676210, (0x676218 - 0x676210)
+
+	.global FightScr_Unk_08676218
+FightScr_Unk_08676218:
+	.incbin "fe6-base.gba", 0x676218, (0x676220 - 0x676218)
 
 	.global ProcScr_Unk_08676220
 ProcScr_Unk_08676220: @ 08676220
-	.incbin "fe6-base.gba", 0x676220, (0x676738 - 0x676220) @ length: 0518
+	.incbin "fe6-base.gba", 0x676220, (0x676250 - 0x676220) @ length: 0518
 
-	.global gUnk_08676738
-gUnk_08676738: @ 08676738
-	.incbin "fe6-base.gba", 0x676738, (0x676844 - 0x676738) @ length: 010C
+	.global EventScr_DemoScene
+EventScr_DemoScene:
+	.incbin "fe6-base.gba", 0x676250, (0x676738 - 0x676250)
+
+	.global EventScrs_DemoScene
+EventScrs_DemoScene: @ 08676738
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+	.word EventScr_DemoScene
+
+	.global gpBuf
+gpBuf:
+	.word gBuf
+
+	.global MoveScr_TrueEnding_086767D0
+MoveScr_TrueEnding_086767D0:
+	.incbin "fe6-base.gba", 0x6767D0, (0x6767DB - 0x6767D0)
+
+	.global MoveScr_TrueEnding_086767DB
+MoveScr_TrueEnding_086767DB:
+	.incbin "fe6-base.gba", 0x6767DB, (0x6767E6 - 0x6767DB)
+
+	.global MoveScr_TrueEnding_086767E6
+MoveScr_TrueEnding_086767E6:
+	.incbin "fe6-base.gba", 0x6767E6, (0x6767EB - 0x6767E6)
+
+	.global MoveScr_TrueEnding_086767EB
+MoveScr_TrueEnding_086767EB:
+	.incbin "fe6-base.gba", 0x6767EB, (0x6767F3 - 0x6767EB)
+
+	.global MoveScr_TrueEnding_086767F3
+MoveScr_TrueEnding_086767F3:
+	.incbin "fe6-base.gba", 0x6767F3, (0x676805 - 0x6767F3)
+
+	.global MoveScr_TrueEnding_08676805
+MoveScr_TrueEnding_08676805:
+	.incbin "fe6-base.gba", 0x676805, (0x676810 - 0x676805)
+
+	.global MoveScr_TrueEnding_08676810
+MoveScr_TrueEnding_08676810:
+	.incbin "fe6-base.gba", 0x676810, (0x676823 - 0x676810)
+
+	.global MoveScr_TrueEnding_08676823
+MoveScr_TrueEnding_08676823:
+	.incbin "fe6-base.gba", 0x676823, (0x676831 - 0x676823)
+
+	.global MoveScr_TrueEnding_08676831
+MoveScr_TrueEnding_08676831:
+	.incbin "fe6-base.gba", 0x676831, (0x67683C - 0x676831)
+
+	.global MoveScr_TrueEnding_0867683C
+MoveScr_TrueEnding_0867683C:
+	.incbin "fe6-base.gba", 0x67683C, (0x676844 - 0x67683C)
 
 	.global ProcScr_Unk_08676844
 ProcScr_Unk_08676844: @ 08676844
@@ -67,11 +159,33 @@ gUnk_0867692C: @ 0867692C
 
 	.global gUnk_0867695C
 gUnk_0867695C: @ 0867695C
-	.incbin "fe6-base.gba", 0x67695C, (0x6770D4 - 0x67695C) @ length: 0778
+	.incbin "fe6-base.gba", 0x67695C, (0x676998 - 0x67695C) @ length: 0778
 
-	.global gUnk_086770D4
-gUnk_086770D4: @ 086770D4
-	.incbin "fe6-base.gba", 0x6770D4, (0x6772FC - 0x6770D4) @ length: 0228
+	.global EventScr_TrueEnding_08676998
+EventScr_TrueEnding_08676998:
+	.incbin "fe6-base.gba", 0x676998, (0x676E14 - 0x676998)
+
+	.global EventScr_TrueEnding_08676E14
+EventScr_TrueEnding_08676E14:
+	.incbin "fe6-base.gba", 0x676E14, (0x6770D4 - 0x676E14)
+
+	.global EventScrs_EndingScene
+EventScrs_EndingScene: @ 086770D4
+	.word EventScr_TrueEnding
+	.word EventScr_TrueEnding
+	.word EventScr_Ending
+
+	.global EventScr_TrueEnding
+EventScr_TrueEnding: @ 086770E0
+	.incbin "fe6-base.gba", 0x6770E0, (0x6771CC - 0x6770E0)
+
+	.global EventScr_Ending
+EventScr_Ending: @ 086771CC
+	.incbin "fe6-base.gba", 0x6771CC, (0x6772DC - 0x6771CC)
+
+	.global EventScr_TrueEnding_086772DC
+EventScr_TrueEnding_086772DC:
+	.incbin "fe6-base.gba", 0x6772DC, (0x6772FC - 0x6772DC)
 
 	.global gUnk_086772FC
 gUnk_086772FC: @ 086772FC
