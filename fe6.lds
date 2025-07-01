@@ -317,15 +317,15 @@ SECTIONS
         . = ALIGN(1); gUnk_0203D362 = .; . = . + 1;
         . = ALIGN(2); gUnk_0203D364 = .; . = . + 2;
         . = ALIGN(4); gUnk_0203D368 = .; . = . + 4;
-        . = ALIGN(4); gUnk_0203D36C = .; . = . + 4;
-        . = ALIGN(4); gUnkText_0203D370 = .;
+        . = ALIGN(4); gDemoMonologueId = .; . = . + 4;
+        . = ALIGN(4); Texts_DemoMonologue = .;
 
         . = 0x0203D3A0 - __ewram_overlay_end;
-        . = ALIGN(4); gUnkText_0203D3A0 = .;
+        . = ALIGN(4); Text_EpilogueMonologue = .;
 
         . = 0x0203D3D8 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203D3D8 = .; . = . + 1;
-        . = ALIGN(1); gUnk_0203D3D9 = .; . = . + 1;
+        . = ALIGN(1); gEndingId = .; . = . + 1;
 
         . = 0x0203D3DC - __ewram_overlay_end;
         . = ALIGN(4); src/statscreen.o(ewram_data);
@@ -340,8 +340,11 @@ SECTIONS
         . = ALIGN(4); src/save_multiarena.o(ewram_data);
         . = ALIGN(4); src/save_xmap.o(ewram_data);
 
+        . = 0x0203DC3C - __ewram_overlay_end;
+        . = ALIGN(4); src/xmap.o(ewram_data);
+
         . = 0x0203DCA7 - __ewram_overlay_end;
-        . = ALIGN(1); gUnk_0203DCA7 = .;
+        . = ALIGN(1); gEndingSceneDispEnPidList = .;
 
         . = 0x0203DCB8 - __ewram_overlay_end;
         . = ALIGN(4); gShopItemTexts = .;
@@ -439,9 +442,9 @@ SECTIONS
         . = 0x004750; *(COMMON.gUnk_03004750);
         . = 0x004890; gPermanentFlagBits = .;
         . = 0x004898; gChapterFlagBits = .;
-        . = 0x0048A4; gUnk_030048A4 = .;
+        . = 0x0048A4; gEndingMonologueState = .;
         . = 0x0048A8; gUnk_030048A8 = .;
-        . = 0x0048B8; gUnk_030048B8 = .;
+        . = 0x0048B8; gEndingMonologueTextDone = .;
         . = 0x0048C0; gUnk_030048C0 = .;
         . = 0x0048D4; gUnk_030048D4 = .;
         . = 0x0048E0; gWmArrowSt = .;
@@ -576,7 +579,7 @@ SECTIONS
         src/banim_ekrlvup.o(.text);
         asm/banim_ekrlvup.o(.text);
         asm/banim_ekrtriangle.o(.text);
-        asm/banim_bg.o(.text);
+        src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
         src/spellassoc.o(.text);
         src/mu.o(.text);
@@ -604,6 +607,8 @@ SECTIONS
         src/savemenu.o(.text);
         src/savemenu_2.o(.text);
         asm/savemenufx.o(.text);
+        src/xmap.o(.text);
+        asm/xmap.o(.text);
         src/config.o(.text);
         src/augury.o(.text);
         asm/code.o(.text);
@@ -822,7 +827,7 @@ SECTIONS
         . = ALIGN(4); src/eventinfo.o(.data);
         . = ALIGN(4); data/data_66618C.o(.data);
         . = ALIGN(4); src/chapterevents.o(.data);
-        . = ALIGN(4); data/data_67619C.o(.data);
+        . = ALIGN(4); src/eventfunctions.o(.data);
         . = ALIGN(4); src/statscreen.o(.data);
         . = ALIGN(4); src/helpbox.o(.data);
         . = ALIGN(4); src/helpbox_2.o(.data);
@@ -842,6 +847,8 @@ SECTIONS
         . = ALIGN(4); src/savemenu.o(.data);
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/savemenufx.o(.data);
+        . = ALIGN(4); src/xmap.o(.data);
+        . = ALIGN(4); data/xmap.o(.data);
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); data/data.o(.data);

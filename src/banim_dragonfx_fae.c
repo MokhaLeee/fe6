@@ -46,7 +46,6 @@ void EkrFae_PauseOnStart(struct ProcEkrDragon * proc)
 void EkrFae_StartTransfer(struct ProcEkrDragon * proc)
 {
     int pos, pal_off;
-    u16 * pal_dst;
     struct BattleAnim * banim;
     int faction_pal = gBanimFactionPal[GetAnimPosition(proc->anim)];
 

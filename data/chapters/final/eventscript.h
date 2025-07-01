@@ -111,9 +111,9 @@ EventScr CONST_DATA EventScr_Unk_08672DE0[] =
 };
 
 // EventScr @ 08672E0C
-EventScr CONST_DATA EventScr_Unk_08672E0C[] =
+EventScr CONST_DATA EventScr_FinalEnding[] =
 {
-    EvtFunc(func_fe6_0806E278)
+    EvtFunc(SetFlagIfDefeatedByBindingBlade)
     EvtFunc(UpdateEndingId)
     EvtFadeBgmOut(4)
     EvtFadeToBlack(4)

@@ -3609,7 +3609,7 @@ struct UnitInfo CONST_DATA UnitInfo_Unk_0867E5AC[] =
 };
 
 // UnitInfo @ 0867E5FC
-struct UnitInfo CONST_DATA UnitInfo_Unk_0867E5FC[] =
+struct UnitInfo CONST_DATA UnitInfo_EpilogueFaeIdunn[] =
 {
     { PID_FAE, JID_MANAKETE_F, 0, TRUE, FACTION_ID_BLUE, 10, 29, 8, 29, 8, { 0 }, { 0 } },
     { PID_IDUNN, JID_SHAMAN_F, 0, TRUE, FACTION_ID_GREEN, 4, 30, 8, 30, 8, { 0 }, { 0 } },
@@ -3711,7 +3711,7 @@ EventScr CONST_DATA EventScr_LoadUnits_Unk_0867E5AC[] =
 // EventScr @ 0867E6FC
 EventScr CONST_DATA EventScr_LoadUnits_Unk_0867E5FC[] =
 {
-    EvtLoadUnits(UnitInfo_Unk_0867E5FC)
+    EvtLoadUnits(UnitInfo_EpilogueFaeIdunn)
     EvtMoveWait
     EvtClearSkip
     EvtEnd
@@ -3728,7 +3728,7 @@ EventScr CONST_DATA EventScr_LoadUnits_Unk_0867E5FC[] =
 // Units UnitInfo_Unk_0867E50C 1
 // Units UnitInfo_Unk_0867E55C 1
 // Units UnitInfo_Unk_0867E5AC 1
-// Units UnitInfo_Unk_0867E5FC 1
+// Units UnitInfo_EpilogueFaeIdunn 1
 
 // UnitInfo @ 0867E710
 struct UnitInfo CONST_DATA UnitInfo_Unk_0867E710[] =
@@ -5913,7 +5913,7 @@ struct UnitInfo CONST_DATA UnitInfo_Unk_08681E74[] =
 };
 
 // UnitInfo @ 08681E94
-struct UnitInfo CONST_DATA UnitInfo_Unk_08681E94[] =
+struct UnitInfo CONST_DATA UnitInfo_TrueEnding_Idunn[] =
 {
     { PID_IDUNN, JID_SHAMAN_F, 0, TRUE, FACTION_ID_GREEN, 4, 8, 2, 8, 2, { 0 }, { 0 } },
     { 0 }, // end
@@ -5987,7 +5987,7 @@ EventScr CONST_DATA EventScr_LoadUnits_Unk_08681E74[] =
 // EventScr @ 08681F48
 EventScr CONST_DATA EventScr_LoadUnits_Unk_08681E94[] =
 {
-    EvtLoadUnits(UnitInfo_Unk_08681E94)
+    EvtLoadUnits(UnitInfo_TrueEnding_Idunn)
     EvtMoveWait
     EvtClearSkip
     EvtEnd
@@ -6001,7 +6001,7 @@ EventScr CONST_DATA EventScr_LoadUnits_Unk_08681E94[] =
 // Units UnitInfo_Unk_08681E34 1
 // Units UnitInfo_Unk_08681E54 1
 // Units UnitInfo_Unk_08681E74 1
-// Units UnitInfo_Unk_08681E94 1
+// Units UnitInfo_TrueEnding_Idunn 1
 
 // UnitInfo @ 08681F5C
 struct UnitInfo CONST_DATA UnitInfo_Chapter10B_Deploy[] =

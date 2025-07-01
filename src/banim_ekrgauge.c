@@ -68,7 +68,7 @@ void NewEkrGauge(void)
     LZ77UnCompVram(Img_EfxArrowWTA, OBJ_VRAM0 + VRAMOFF_OBJ_EKRGAUGE_ARROW);
 
     CpuFastCopy(Pal_EkrGauge_081131A4 + PAL_OFFSET(gBanimFactionPal[POS_L]), gPal + OBPAL_OFFSET(OBPAL_EFX_5), 0x10 * sizeof(u16));
-    CpuFastCopy(Pal_EkrGauge_081131A4 + PAL_OFFSET(gBanimFactionPal[POS_R]), gPal + OBPAL_OFFSET(OBPAL_EFX_6), 0x10 * sizeof(u16));
+    CpuFastCopy(Pal_EkrGauge_081131A4 + PAL_OFFSET(gBanimFactionPal[POS_R]), gPal + OBPAL_OFFSET(OBPAL_EFX_BG), 0x10 * sizeof(u16));
 
     EnablePalSync();
 

@@ -57,7 +57,7 @@ void Monologue_Init(struct GenericProc * proc)
 
     InitScanlineEffect();
     SetOnHBlankA(OnHBlank_08069FD8);
-    func_fe6_0806A7AC();
+    Scanline_SetupMonologue();
 
     Decompress(Img_MonologueBG, (void *)BG_VRAM + GetBgChrOffset(BG_3));
     TmApplyTsa((void *)gBuf, Tsa_MonologueBG, 0x4000);

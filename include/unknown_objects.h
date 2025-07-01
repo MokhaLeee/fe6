@@ -531,7 +531,7 @@ extern u16 const Tsa_EkrFaefx12[];
 // extern ??? EkrLvupMsgsStr
 // extern ??? EkrLvupMsgsMag
 // extern ??? sEfxLvupPartsPos
-// extern ??? gUnk_081CA04C
+extern const char gMsg_Lv[];
 // extern ??? gUnk_081CA054
 // extern ??? gUnk_081CA062
 // extern ??? gUnk_081CA070
@@ -719,17 +719,17 @@ extern u8 const Img_Unk_0833C378[];
 // extern const ??? gUnk_0833C6F4
 // extern const ??? gUnk_0833C8D8
 extern u16 const Pal_Unk_0833C944[];
-// extern const ??? gUnk_0833C984
-// extern const ??? gUnk_08340ED8
+// extern const ??? Img_WorldMap_PlayRank
+// extern const ??? Tsa_08340ED8
 // extern const ??? gUnk_0834138C
-// extern const ??? gUnk_083413CC
+// extern const ??? Img_PlayRank_083413CC
 // extern const ??? gUnk_08341DA0
-// extern const ??? gUnk_08341DC0
-// extern const ??? gUnk_08342438
+// extern const ??? Img_PlayRank
+// extern const ??? Img_PlayRankCharacters
 // extern const ??? gUnk_08342A98
 // extern const ??? gUnk_08342AB8
 // extern const ??? Pal_08342AD8
-// extern const ??? gUnk_08342AF8
+// extern const ??? Tsa_08342AF8
 // extern const ??? gUnk_08342B54
 // extern const ??? gUnk_08343358
 // extern const ??? Img_08343398
@@ -737,11 +737,11 @@ extern u16 const Pal_Unk_0833C944[];
 // extern const ??? Img_08343FAC
 // extern const ??? gUnk_083442C4
 // extern const ??? gUnk_08344304
-// extern const ??? gUnk_083449F8
-// extern const ??? gUnk_08344CB0
-// extern const ??? gUnk_08344CD0
-// extern const ??? gUnk_0834523C
-// extern const ??? gUnk_08345420
+// extern const ??? Img_Fin
+// extern const ??? Pal_Fin
+// extern const ??? Img_Credit_08344CD0
+// extern const ??? Tsa_Credit_0834523C
+// extern const ??? Pal_Credit_08345420
 // extern const ??? gUnk_08345440
 // extern const ??? gUnk_08345934
 // extern const ??? gUnk_08346184
@@ -752,11 +752,11 @@ extern u16 const Pal_Unk_0833C944[];
 // extern const ??? gUnk_08346574
 extern u8 const Img_MonologueText[];
 extern u16 const Pal_MonologueText[];
-// extern const ??? gUnk_08349A98
-// extern const ??? gUnk_0834B69C
-// extern const ??? gUnk_0834E1D4
-// extern const ??? gUnk_08352160
-// extern const ??? gUnk_08353308
+// extern const ??? Img_EndingMonologueText3
+// extern const ??? Img_EndingMonologueText1
+// extern const ??? Img_EndingMonologueText4
+// extern const ??? Img_08352160
+// extern const ??? Pal_EndingMonologueText
 extern const int gUnk_08353328[];
 // extern const ??? gUnk_08354728
 // extern const ??? gUnk_08354760
@@ -797,9 +797,9 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? gUnk_0836A9AC
 // extern const ??? gUnk_0836EEFC
 // extern const ??? gUnk_0836F610
-// extern const ??? gUnk_0836F6D4
-// extern const ??? gUnk_08373F80
-// extern const ??? gUnk_08374670
+// extern const ??? Img_EndingMonologue
+// extern const ??? Tsa_EndingMonologue
+// extern const ??? Zpal_EndingMonologue
 // extern const ??? gUnk_083747A4
 // extern const ??? gUnk_08375888
 // extern const ??? gUnk_083758A8
@@ -848,19 +848,24 @@ extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 // extern CONST_DATA ??? gUnk_0868A55C
 // extern CONST_DATA ??? Sprite_0868A568
 // extern CONST_DATA ??? Sprite_0868A570
-// extern CONST_DATA ??? ProcScr_0868A58C
-// extern CONST_DATA ??? ProcScr_0868A634
-// extern CONST_DATA ??? ProcScr_0868A644
-// extern CONST_DATA ??? gUnk_0868A664
-// extern CONST_DATA ??? Sprite_0868A988
-// extern CONST_DATA ??? Imgs_0868A998
-// extern CONST_DATA ??? Sprite_0868A9E8
-// extern CONST_DATA ??? Sprite_0868A9F0
-// extern CONST_DATA ??? Sprite_0868A9F8
-// extern CONST_DATA ??? ProcScr_0868AA08
-// extern CONST_DATA ??? ProcScr_0868AA80
-// extern CONST_DATA ??? ProcScr_0868AAA8
 
+extern const u16 gUnk_083278AC[];
+extern const u8 gUnk_083278EC[];
+extern const u16 gUnk_083280B0[];
+extern const u8 gUnk_0832A130[];
+extern const u8 gUnk_0832A29C[];
+extern const u8 gUnk_0832B554[];
+extern const u16 gUnk_0832BDE8[];
+extern const u16 Img_XmapObj[];
+extern const u16 Pal_XmapObj[];
+extern const u16 gUnk_0832C35C[];
+extern const u16 gUnk_0832C39C[];
+extern const u16 gUnk_0832C5E8[];
+extern const u16 gUnk_0832CA9C[];
+extern const u16 gUnk_0832CAFC[];
+extern const u16 gUnk_0832CC90[];
+
+/* xmap.h */
 /* config.h */
 /* augury.h */
 /* worldmap.h */

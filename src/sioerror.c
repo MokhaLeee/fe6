@@ -57,7 +57,7 @@ void PutSioErrorMessage(void)
     proc->line = 0;
     proc->str_it = DecodeMsg(MSG_C48);
 
-    func_fe6_08071308(proc);
+    DemoMonologueDisp_Main(proc);
 
     PutText(&text[0], gBg0Tm + TM_OFFSET(4,  6));
     PutText(&text[1], gBg0Tm + TM_OFFSET(4,  9));

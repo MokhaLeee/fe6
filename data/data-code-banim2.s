@@ -78,8 +78,8 @@ gUnk_086071D8: @ 086071D8
 gUnk_086074A0: @ 086074A0
 	.incbin "fe6-base.gba", 0x6074A0, (0x607504 - 0x6074A0) @ length: 0064
 
-	.global gUnk_08607504
-gUnk_08607504: @ 08607504
+	.global gBattleBGDataTable
+gBattleBGDataTable: @ 08607504
 	.incbin "fe6-base.gba", 0x607504, (0x607648 - 0x607504) @ length: 015C
 
 	.global AnimSprite_08607648

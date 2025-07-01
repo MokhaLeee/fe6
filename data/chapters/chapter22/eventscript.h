@@ -218,7 +218,7 @@ EventScr CONST_DATA EventScr_Unk_08672464[] =
     EvtSetBgm(SONG_0E)
     EvtTalkMore(MSG_1CF)
     EvtTalkMore(MSG_1D0)
-    EvtFunc(func_fe6_0806DE20)
+    EvtFunc(TruEnding_PlaySe269)
     EvtFadeToWhite(4)
     EvtExitMap
     EvtBackgroundMore(BACKGROUND_6)

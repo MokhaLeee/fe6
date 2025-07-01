@@ -2106,7 +2106,7 @@ static void ChapterIntro_BeginFadeOut(struct GenericProc * proc)
 
     proc->unk4C = 15;
 
-    func_fe6_080030B4(1);
+    EarthQuakeSoundFadeOut(1);
 }
 
 static void ChapterIntro_LoopFadeOut(struct GenericProc * proc)

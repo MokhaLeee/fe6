@@ -46,8 +46,8 @@ gUnk_08604A6C: @ 08604A6C
 gUnk_08604A9C: @ 08604A9C
 	.incbin "fe6-base.gba", 0x604A9C, (0x604ACC - 0x604A9C) @ length: 0030
 
-	.global gUnk_08604ACC
-gUnk_08604ACC: @ 08604ACC
+	.global ProcScr_EkrDragonDeath
+ProcScr_EkrDragonDeath: @ 08604ACC
 	.incbin "fe6-base.gba", 0x604ACC, (0x604AE4 - 0x604ACC) @ length: 0168
 
 AnimSprite_Manaketefx1_1:  @ 0x604AE4

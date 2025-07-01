@@ -89,7 +89,7 @@ void EfxDeathEvent_CallEvent(struct ProcEfxDead * proc)
         EkrGauge_Set4C50();
 
         if (gEkrPids[GetAnimPosition(proc->anim1)] == PID_IDUNN_DRAGON)
-            func_fe6_0805AFD4();
+            StartEkrDragonDeath();
 
         StartBattleDefeatTalk(gEkrPids[GetAnimPosition(proc->anim1)]);
         Proc_Break(proc);

@@ -152,16 +152,16 @@ gUnk_0836EEFC: @ 0836EEFC
 gUnk_0836F610: @ 0836F610
 	.incbin "fe6-base.gba", 0x36F610, (0x36F6D4 - 0x36F610) @ length: 00C4
 
-	.global gUnk_0836F6D4
-gUnk_0836F6D4: @ 0836F6D4
+	.global Img_EndingMonologue
+Img_EndingMonologue: @ 0836F6D4
 	.incbin "fe6-base.gba", 0x36F6D4, (0x373F80 - 0x36F6D4) @ length: 48AC
 
-	.global gUnk_08373F80
-gUnk_08373F80: @ 08373F80
+	.global Tsa_EndingMonologue
+Tsa_EndingMonologue: @ 08373F80
 	.incbin "fe6-base.gba", 0x373F80, (0x374670 - 0x373F80) @ length: 06F0
 
-	.global gUnk_08374670
-gUnk_08374670: @ 08374670
+	.global Zpal_EndingMonologue
+Zpal_EndingMonologue: @ 08374670
 	.incbin "fe6-base.gba", 0x374670, (0x3747A4 - 0x374670) @ length: 0134
 
 	.global gUnk_083747A4

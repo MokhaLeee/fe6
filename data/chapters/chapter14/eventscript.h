@@ -59,7 +59,7 @@ EventScr CONST_DATA EventScr_Unk_0866FCD0[] =
 EventScr CONST_DATA EventScr_Unk_0866FD28[] =
 {
     EvtFunc(RemoveFog)
-    EvtFunc(func_fe6_0806DDD4)
+    EvtFunc(TrueEnding_SetNiceWeather)
     EvtSleep(128)
     EvtCameraUnit(PID_ROY)
     EvtFlashCursorUnit(PID_ROY)

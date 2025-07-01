@@ -37,6 +37,7 @@
 #include "save_stats.h"
 #include "banim.h"
 #include "opanim.h"
+#include "chapterunits.h"
 
 #include "constants/flags.h"
 #include "constants/pids.h"
@@ -1467,7 +1468,7 @@ void func_fe6_0806D000(void)
 
 void func_fe6_0806D01C(void)
 {
-    func_fe6_080030B4(0);
+    EarthQuakeSoundFadeOut(0);
 }
 
 bool func_fe6_0806D028(void)
@@ -1853,67 +1854,379 @@ void func_fe6_0806D77C(void)
     }
 }
 
-void func_fe6_0806D7C8(void)
+/**
+ * Demo scene
+ */
+
+struct DemoMonologueMsg CONST_DATA gDemoMonologueMsg[] = {
+    { MSG_BCD, 0x08 },
+    { MSG_BCE, 0x08 },
+    { MSG_BCF, 0x07 },
+    { MSG_BD0, 0x07 },
+    { MSG_BD1, 0x06 },
+    { MSG_BD2, 0x06 },
+};
+
+u8 CONST_DATA MoveScr_Unk_086761B4[] = {
+    MOVE_CMD_SET_SPEED, 0x18,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_HALT
+};
+
+u8 CONST_DATA MoveScr_Unk_086761CD[] = {
+    MOVE_CMD_SET_SPEED, 0x30,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_CAMERA_ON,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_HALT
+};
+
+u8 CONST_DATA MoveScr_Unk_086761E7[] = {
+    MOVE_CMD_SET_SPEED, 0x30,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_HALT
+};
+
+struct BattleHit CONST_DATA FightScr_Unk_08676204[] = {
+    {
+        .attributes = BATTLE_HIT_ATTR_MISS,
+        .info = BATTLE_HIT_INFO_BEGIN,
+        .damage = 0,
+    },
+    {
+        .info = BATTLE_HIT_INFO_FINISHES | BATTLE_HIT_INFO_ACTORB,
+        .damage = 12,
+    },
+    {
+        .info = BATTLE_HIT_INFO_END,
+    },
+};
+
+struct BattleHit CONST_DATA FightScr_Unk_08676210[] = {
+    {
+        .info = BATTLE_HIT_INFO_FINISHES | BATTLE_HIT_INFO_BEGIN,
+        .damage = 9,
+    },
+    {
+        .info = BATTLE_HIT_INFO_END,
+    },
+};
+
+struct BattleHit CONST_DATA FightScr_Unk_08676218[] = {
+    {
+        .info = BATTLE_HIT_INFO_FINISHES | BATTLE_HIT_INFO_BEGIN,
+        .damage = -10,
+    },
+    {
+        .info = BATTLE_HIT_INFO_END,
+    },
+};
+
+struct ProcScr CONST_DATA ProcScr_DemoSceneIntro[] =
+{
+    PROC_REPEAT(DemoSceneIntro_Blocked),
+    PROC_CALL(DemoSceneIntro_Init),
+    PROC_CALL_ARG(_FadeBgmOut, 2),
+    PROC_REPEAT(DemoSceneIntro_FadeOut),
+    PROC_CALL(DemoSceneIntro_StartExt),
+    PROC_END,
+};
+
+void DemoScene_StartMonologue(void)
 {
     func_fe6_08013A64();
     SetNextGameAction(GAME_ACTION_1);
-    SpawnProc(ProcScr_Unk_08676220, PROC_TREE_4);
+    SpawnProc(ProcScr_DemoSceneIntro, PROC_TREE_4);
 }
 
-void func_fe6_0806D7E4(void)
+void SetBanimConfigUniqueBG(void)
 {
-    gPlaySt.config_battle_anim = 3; // TODO: battle anim config constants
+    gPlaySt.config_battle_anim = PLAY_ANIMCONF_ON_UNIQUE_BG;
 }
 
-void func_fe6_0806D7F4(void)
+void SetBanimConfigON(void)
 {
-    gPlaySt.config_battle_anim = 0; // TODO: battle anim config constants
+    gPlaySt.config_battle_anim = PLAY_ANIMCONF_ON;
 }
 
-void func_fe6_0806D808(void)
+void CleanupDemoSceneIntro(void)
 {
     InitUnits();
     ClearTalk();
     Proc_EndEachMarked(PROC_MARK_1);
 }
 
-void func_fe6_0806D81C(void)
+void EndDemoSceneIntro(void)
 {
-    Proc_EndEach(ProcScr_Unk_08676220);
+    Proc_EndEach(ProcScr_DemoSceneIntro);
 }
 
-void func_fe6_0806D82C(ProcPtr proc)
+void DemoSceneIntro_Blocked(ProcPtr proc)
 {
     if (gKeySt->pressed & (KEY_BUTTON_ANY & ~KEY_BUTTON_SELECT))
         Proc_Break(proc);
 }
 
-void func_fe6_0806D850(struct UnkProc0806D82C * proc)
+void DemoSceneIntro_Init(struct ProcDemoSceneIntro * proc)
 {
     SetNextGameAction(GAME_ACTION_0);
-    proc->unk_4C = 31;
+    proc->timer = 31;
 }
 
-void func_fe6_0806D868(struct UnkProc0806D82C * proc)
+void DemoSceneIntro_FadeOut(struct ProcDemoSceneIntro * proc)
 {
-    DarkenPals(0x20 - proc->unk_4C);
+    DarkenPals(0x20 - proc->timer);
 
-    proc->unk_4C--;
+    proc->timer--;
 
-    if (proc->unk_4C < 0)
+    if (proc->timer < 0)
         Proc_Break(proc);
 }
 
-void func_fe6_0806D894(void)
+void DemoSceneIntro_StartExt(void)
 {
     CleanupGame(NULL);
     SyncHiOam();
-    func_fe6_0806D808();
-    func_fe6_0806D81C();
+    CleanupDemoSceneIntro();
+    EndDemoSceneIntro();
     KillTalkAndEvent();
 }
 
-void func_fe6_0806D8B0(void)
+EventScr CONST_DATA EventScr_DemoScene[] =
+{
+    EvtNoSkipNoTextSkip
+    EvtFunc(DemoScene_StartMonologue)
+    EvtFunc(CleanupDemoSceneIntro)
+    EvtUnitCameraOff
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(DemoScene_JumpToCh4)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtLoadUnits(UnitInfo_Chaper4_UnusedCavaliers)
+    EvtLoadUnits(UnitInfo_Chaper4_UnusedPegasi)
+    EvtSleep(16)
+    EvtMoveScript(21, 10, MoveScr_Unk_086761B4)
+    EvtMoveScript(19, 11, MoveScr_Unk_086761B4)
+    EvtSleep(30)
+    EvtMoveScript(20, 9, MoveScr_Unk_086761CD)
+    EvtMoveScript(21, 12, MoveScr_Unk_086761E7)
+    EvtSleep(60)
+    EvtMoveWait
+    EvtSleep(30)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(CleanupDemoSceneIntro)
+    EvtFunc(PutDemoMonologueMsg)
+    EvtSleep(60)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(120)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(DemoScene_TmpCleanup)
+    EvtFunc(DemoScene_JumpToCh1)
+    EvtLoadUnits(UnitInfo_Chapter1_BlueUnused)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtMove(9, 7, 7, 7)
+    EvtMoveWait
+    EvtTalk(MSG_BA6)
+    EvtSleep(60)
+    EvtFunc(ClearTalk)
+    EvtFightScript(PID_ROY, PID_MARCUS, FightScr_Unk_08676204, FALSE)
+    EvtTalk(MSG_BA7)
+    EvtSleep(60)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtFunc(CleanupDemoSceneIntro)
+    EvtFunc(PutDemoMonologueMsg)
+    EvtSleep(60)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(120)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(DemoScene_TmpCleanup)
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_7)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_BA4)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtFunc(PutDemoMonologueMsg)
+    EvtSleep(60)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(120)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(DemoScene_TmpCleanup)
+    EvtFunc(DemoScene_JumpToCh10A)
+    EvtLoadUnits(UnitInfo_Unk_0867CC08)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(30)
+    EvtMove(8, 20, 6, 19)
+    EvtMoveWait
+    EvtSleep(60)
+    EvtFightScript(PID_WOLT, PID_UNKNOWN_7B, FightScr_Unk_08676210, TRUE)
+    EvtSleep(60)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(CleanupDemoSceneIntro)
+    EvtFunc(PutDemoMonologueMsg)
+    EvtSleep(60)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(120)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(DemoScene_TmpCleanup)
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_7)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_BA5)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtFunc(PutDemoMonologueMsg)
+    EvtSleep(60)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(120)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(DemoScene_TmpCleanup)
+    EvtFunc(DemoScene_JumpToCh2)
+    EvtLoadUnits(UnitInfo_Chapter2_MixedUnused)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtMove(8, 10, 7, 10)
+    EvtMoveWait
+    EvtFunc(DemoScene_SetRoyHp_10)
+    EvtTalk(MSG_BA8)
+    EvtSleep(60)
+    EvtFunc(ClearTalk)
+    EvtFightScript(PID_ELEN, PID_ROY, FightScr_Unk_08676218, FALSE)
+    EvtTalk(MSG_BA9)
+    EvtSleep(60)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtFunc(CleanupDemoSceneIntro)
+    EvtFunc(PutDemoMonologueMsg)
+    EvtSleep(60)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(120)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(DemoScene_TmpCleanup)
+    EvtFunc(DemoScene_JumpToCh22)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtLoadUnits(UnitInfo_Unk_08681240)
+    EvtMapChangePosition(15, 15)
+    EvtSleep(30)
+    EvtLoadUnits(UnitInfo_Unk_08681330)
+    EvtTalk(MSG_BA2)
+    EvtSleep(60)
+    EvtFunc(ClearTalk)
+    EvtMove(15, 9, 15, 22)
+    EvtMoveWait
+    EvtSleep(30)
+    EvtTalk(MSG_BA3)
+    EvtSleep(60)
+    EvtFunc(ClearTalk)
+    EvtSleep(30)
+    EvtMove(15, 8, 15, 10)
+    EvtMoveWait
+    EvtMove(16, 9, 15, 9)
+    EvtMoveWait
+    EvtMove(15, 10, 15, 17)
+    EvtMove(15, 9, 15, 16)
+    EvtMoveWait
+    EvtSleep(60)
+    EvtFadeBgmOut(-1)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(CleanupDemoSceneIntro)
+    EvtFunc(EndDemoSceneIntro)
+    EvtClearSkip
+    EvtEnd
+};
+
+void PutDemoMonologueMsg(void)
 {
     struct HelpBoxPrintProc * proc;
     int i;
@@ -1930,11 +2243,11 @@ void func_fe6_0806D8B0(void)
 
     CpuFastFill(0, (void *) VRAM + GetBgChrOffset(3) + 0 * CHR_SIZE, CHR_SIZE);
 
-    proc = SpawnProc(ProcScr_Unk_08677FE0, PROC_TREE_3);
+    proc = SpawnProc(ProcScr_DemoMonologueDisp, PROC_TREE_3);
 
     for (i = 0; i < (int) ARRAY_COUNT(proc->text); i++)
     {
-        struct Text * text = gUnkText_0203D370 + i;
+        struct Text * text = Texts_DemoMonologue + i;
 
         InitText(text, 24);
         ClearText(text);
@@ -1943,31 +2256,31 @@ void func_fe6_0806D8B0(void)
 
         proc->text[i] = text;
 
-        PutText(text, gBg0Tm + TM_OFFSET(3, 2 * i + gUnk_0867619C[gUnk_0203D36C].y_offset));
+        PutText(text, gBg0Tm + TM_OFFSET(3, 2 * i + gDemoMonologueMsg[gDemoMonologueId].y_offset));
     }
 
     proc->font = NULL;
     proc->line = 0;
-    proc->str_it = DecodeMsg(gUnk_0867619C[gUnk_0203D36C].msg);
+    proc->str_it = DecodeMsg(gDemoMonologueMsg[gDemoMonologueId].msg);
 
-    gUnk_0203D36C++;
+    gDemoMonologueId++;
 
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-void func_fe6_0806D9B4(void)
+void DemoScene_TmpCleanup(void)
 {
     SetDispEnable(1, 1, 1, 1, 1);
     CpuFastFill(0, (void *) VRAM + 0x6000, 0x2000);
 }
 
-void func_fe6_0806D9F4(int chapter, int x, int y)
+void DemoScene_JumpToChapterDirectly(int chapter, int x, int y)
 {
     InitUnits();
 
     gPlaySt.chapter = chapter;
 
-    func_fe6_08029084();
+    JumpToChapterDirectly();
 
     gPlaySt.vision = GetChapterInfo(gPlaySt.chapter)->fog;
 
@@ -1979,60 +2292,252 @@ void func_fe6_0806D9F4(int chapter, int x, int y)
     RefreshUnitSprites();
 }
 
-void func_fe6_0806DA54(void)
+void DemoScene_JumpToCh4(void)
 {
-    // TODO: constants?
-    func_fe6_0806D9F4(CHAPTER_4, 11, 11);
+    DemoScene_JumpToChapterDirectly(CHAPTER_4, 11, 11);
     CpuFastCopy(gPal + (BGPAL_TILESET + 5) * 0x10, gPal + BGPAL_TILESET * 0x10, 5 * 0x20);
     EfxPalWhiteInOut(gPal, 26, 6, 8);
     EnablePalSync();
 }
 
-void func_fe6_0806DA90(void)
+void DemoScene_JumpToCh1(void)
 {
-    func_fe6_0806D9F4(CHAPTER_1, 7, 5);
+    DemoScene_JumpToChapterDirectly(CHAPTER_1, 7, 5);
 }
 
-void func_fe6_0806DAA0(void)
+void DemoScene_JumpToCh10A(void)
 {
-    func_fe6_0806D9F4(CHAPTER_10_A, 0, 20);
+    DemoScene_JumpToChapterDirectly(CHAPTER_10_A, 0, 20);
 }
 
-void func_fe6_0806DAB0(void)
+void DemoScene_JumpToCh2(void)
 {
-    func_fe6_0806D9F4(CHAPTER_2, 7, 10);
+    DemoScene_JumpToChapterDirectly(CHAPTER_2, 7, 10);
 }
 
-void func_fe6_0806DAC0(void)
+void DemoScene_JumpToCh22(void)
 {
-    func_fe6_0806D9F4(CHAPTER_22, 15, 9);
+    DemoScene_JumpToChapterDirectly(CHAPTER_22, 15, 9);
 }
 
-void func_fe6_0806DAD0(void)
+void DemoScene_SetRoyHp_10(void)
 {
     struct Unit * unit = GetUnitByPid(PID_ROY);
     SetUnitHp(unit, GetUnitCurrentHp(unit) - 10);
 }
 
-EventScr const * func_fe6_0806DAF0(int arg_0, int arg_1)
+EventScr const * CONST_DATA EventScrs_DemoScene[] = {
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene,
+    EventScr_DemoScene
+};
+
+EventScr const * GetDemoSceneEvent_Unused(int arg_0, int arg_1)
 {
-    return gUnk_08676738[arg_1];
+    return EventScrs_DemoScene[arg_1];
 }
 
-void func_fe6_0806DB00(int arg_0, ProcPtr proc)
+void StartDemoSceneEvent(int arg_0, ProcPtr proc)
 {
-    StartEventLocking(gUnk_08676738[arg_0], proc);
+    StartEventLocking(EventScrs_DemoScene[arg_0], proc);
 
     gUnk_0203D368 = arg_0;
-    gUnk_0203D36C = 0;
+    gDemoMonologueId = 0;
 }
 
-void func_fe6_0806DB2C(void)
+/**
+ * Ending scene
+ */
+u8 * CONST_DATA gpBuf = gBuf;
+
+// 0x86767D0
+CONST_DATA u8 MoveScr_TrueEnding_086767D0[] = {
+    MOVE_CMD_SET_SPEED, 16,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_HALT,
+};
+
+// 0x86767DB
+CONST_DATA u8 MoveScr_TrueEnding_086767DB[] = {
+    MOVE_CMD_SET_SPEED, 16,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_HALT,
+};
+
+// 0x86767E6
+CONST_DATA u8 MoveScr_TrueEnding_086767E6[] = {
+    MOVE_CMD_SET_SPEED, 8,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_HALT,
+};
+
+// 0x86767EB
+CONST_DATA u8 MoveScr_TrueEnding_086767EB[] = {
+    MOVE_CMD_SET_SPEED, 12,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_HALT,
+};
+
+// 0x86767F3
+CONST_DATA u8 MoveScr_TrueEnding_086767F3[] = {
+    MOVE_CMD_SET_SPEED, 20,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_SLEEP, 4,
+    MOVE_CMD_FACE_RIGHT,
+    MOVE_CMD_SLEEP, 64,
+    MOVE_CMD_SET_SPEED, 8,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_HALT,
+};
+
+// 0x8676805
+CONST_DATA u8 MoveScr_TrueEnding_08676805[] = {
+    MOVE_CMD_SET_SPEED, 6,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_HALT,
+};
+
+// 0x8676810
+CONST_DATA u8 MoveScr_TrueEnding_08676810[] = {
+    MOVE_CMD_SET_SPEED, 32,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_LEFT,
+    MOVE_CMD_HALT,
+};
+
+// 0x8676823
+CONST_DATA u8 MoveScr_TrueEnding_08676823[] = {
+    MOVE_CMD_SET_SPEED, 22,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_DOWN,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_HALT,
+};
+
+// 0x8676831
+CONST_DATA u8 MoveScr_TrueEnding_08676831[] = {
+    MOVE_CMD_SET_SPEED, 5,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_FACE_RIGHT,
+    MOVE_CMD_SLEEP, 24,
+    MOVE_CMD_HALT,
+};
+
+// 0x867683C
+CONST_DATA u8 MoveScr_TrueEnding_0867683C[] = {
+    MOVE_CMD_SET_SPEED, 5,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_UP,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_MOVE_RIGHT,
+    MOVE_CMD_HALT,
+};
+
+void EndAllProcsMark1(void)
 {
     Proc_EndEachMarked(PROC_MARK_1);
 }
 
-void func_fe6_0806DB38(void)
+struct ProcScr CONST_DATA ProcScr_TrueEnding_EarthQuake[] =
+{
+    PROC_REPEAT(TrueEnding_EarthQuake_Main),
+    PROC_END,
+};
+
+void TrueEnding_EarthQuake_Main(void)
 {
     if (GetGameTime() % 2 == 0)
         return;
@@ -2040,17 +2545,24 @@ void func_fe6_0806DB38(void)
     gBmSt.camera.x ^= 2;
 }
 
-void func_fe6_0806DB58(ProcPtr proc)
+void TrueEnding_EarthQuake(ProcPtr proc)
 {
     PlaySe(SONG_26A);
-    SpawnProc(ProcScr_Unk_08676844, proc);
+    SpawnProc(ProcScr_TrueEnding_EarthQuake, proc);
 }
 
-void func_fe6_0806DB88(void)
+void TrueEnding_EarthQuakeEnd(void)
 {
-    Proc_EndEach(ProcScr_Unk_08676844);
-    func_fe6_080030B4(4);
+    Proc_EndEach(ProcScr_TrueEnding_EarthQuake);
+    EarthQuakeSoundFadeOut(4);
 }
+
+struct ProcScr CONST_DATA ProcScr_Unk_08676854[] =
+{
+    PROC_CALL(func_fe6_0806DBA0),
+    PROC_REPEAT(func_fe6_0806DBA8),
+    PROC_END,
+};
 
 void func_fe6_0806DBA0(struct UnkProc_08676854 * proc)
 {
@@ -2083,12 +2595,20 @@ void func_fe6_0806DC38(void)
     Proc_EndEach(ProcScr_Unk_08676854);
 }
 
-void func_fe6_0806DC48(struct UnkProc_0867686C * proc)
+struct ProcScr CONST_DATA ProcScr_EpilogueCreditDisp[] =
+{
+    PROC_CALL(EpilogueCredit_Init),
+    PROC_REPEAT(EpilogueCredit_FadeBg),
+    PROC_CALL(StartGameCredit),
+    PROC_END,
+};
+
+void EpilogueCredit_Init(struct ProcEpilogueCredit * proc)
 {
     proc->unk_64 = 0;
 }
 
-void func_fe6_0806DC50(struct UnkProc_0867686C * proc)
+void EpilogueCredit_FadeBg(struct ProcEpilogueCredit * proc)
 {
     if (GetGameTime() % 8 == 0)
     {
@@ -2100,12 +2620,12 @@ void func_fe6_0806DC50(struct UnkProc_0867686C * proc)
     }
 }
 
-void func_fe6_0806DC90(ProcPtr parent)
+void Epilogue_StartCredit(ProcPtr parent)
 {
-    SpawnProc(ProcScr_Unk_0867686C, parent);
+    SpawnProc(ProcScr_EpilogueCreditDisp, parent);
 }
 
-void func_fe6_0806DCA4(void)
+void RemoveEndingMonologueBG(void)
 {
     InitBgs(NULL);
 
@@ -2115,7 +2635,18 @@ void func_fe6_0806DCA4(void)
     CpuFastFill(0, (void *) VRAM + 0x300 * CHR_SIZE, CHR_SIZE * 0x100);
 }
 
-void func_fe6_0806DD08(void)
+struct ProcScr CONST_DATA ProcScr_EpilogueMonologue[] =
+{
+    PROC_CALL(EpilogueMonologue_Init),
+    PROC_CALL(StartSlowFadeFromBlack),
+    PROC_REPEAT(WhileFadeExists),
+    PROC_SLEEP(120),
+    PROC_CALL(StartSlowFadeToBlack),
+    PROC_REPEAT(WhileFadeExists),
+    PROC_END,
+};
+
+void EpilogueMonologue_Init(void)
 {
     SetDispEnable(1, 0, 0, 0, 0);
 
@@ -2125,43 +2656,43 @@ void func_fe6_0806DD08(void)
     ResetText();
     InitTalkTextFont();
 
-    InitText(&gUnkText_0203D3A0, 14);
-    PutDrawText(&gUnkText_0203D3A0, gBg0Tm + TM_OFFSET(8, 9),
+    InitText(&Text_EpilogueMonologue, 14);
+    PutDrawText(&Text_EpilogueMonologue, gBg0Tm + TM_OFFSET(8, 9),
         TEXT_COLOR_0123, 0, 0, DecodeMsg(MSG_24A));
 }
 
-void func_fe6_0806DD84(ProcPtr parent)
+void DrawEpilogueMonologue(ProcPtr parent)
 {
-    SpawnProc(ProcScr_Unk_0867688C, parent);
+    SpawnProc(ProcScr_EpilogueMonologue, parent);
 }
 
-bool func_fe6_0806DD98(void)
+bool EpilogueMonologueExists(void)
 {
-    if (FindProc(ProcScr_Unk_0867688C) != NULL)
+    if (FindProc(ProcScr_EpilogueMonologue) != NULL)
         return TRUE;
 
-    Proc_EndEach(ProcScr_Unk_08677FE0);
-    func_fe6_0806DCA4();
+    Proc_EndEach(ProcScr_DemoMonologueDisp);
+    RemoveEndingMonologueBG();
 
     return FALSE;
 }
 
-void func_fe6_0806DDC4(struct UnkProc_0806DDC4 * proc)
+void Epilogue_RemoveEventEngineBG(struct EventProc * proc)
 {
-    proc->unk_44 = 0xFF;
+    proc->background = -1;
 }
 
-void func_fe6_0806DDCC(struct UnkProc_0806DDC4 * proc)
+void Epilogue_RemoveEventEngineNoMap(struct EventProc * proc)
 {
-    proc->unk_45 = 1;
+    proc->no_map = true;
 }
 
-void func_fe6_0806DDD4(void)
+void TrueEnding_SetNiceWeather(void)
 {
     SetWeather(WEATHER_NONE);
 }
 
-void func_fe6_0806DDE0(void)
+void Epilogue_StartWind(void)
 {
     PlaySe(SONG_C4);
     SetWeather(WEATHER_SANDSTORM);
@@ -2172,7 +2703,7 @@ void func_fe6_0806DE00(void)
     PlaySe(SONG_269);
 }
 
-void func_fe6_0806DE20(void)
+void TruEnding_PlaySe269(void)
 {
     PlaySe(SONG_269);
 }
@@ -2181,6 +2712,13 @@ void func_fe6_0806DE40(void)
 {
     PlaySe(SONG_6A);
 }
+
+struct ProcScr CONST_DATA ProcScr_Unk_086768C4[] =
+{
+    PROC_CALL(func_fe6_0806DE5C),
+    PROC_REPEAT(func_fe6_0806DE78),
+    PROC_END,
+};
 
 void func_fe6_0806DE5C(struct UnkProc_086768C4 * proc)
 {
@@ -2209,7 +2747,7 @@ void func_fe6_0806DEB4(void)
     Proc_EndEach(ProcScr_Unk_086768C4);
 }
 
-bool func_fe6_0806DEC4(void)
+bool GameEnding_TryBuildGreatLycia(void)
 {
     // this is funny
 #if BUGFIX
@@ -2227,7 +2765,7 @@ bool func_fe6_0806DEC4(void)
     return FALSE;
 }
 
-void func_fe6_0806DEF8(void)
+void RenderMapForDirectJump(void)
 {
     RenderMapForFade();
     gPlaySt.vision = 0;
@@ -2236,15 +2774,23 @@ void func_fe6_0806DEF8(void)
     RenderMap();
 }
 
-void func_fe6_0806DF18(struct UnkProc_086768DC * proc)
+struct ProcScr CONST_DATA ProcScr_TrueEnding_SortAllies[] =
+{
+    PROC_CALL(TrueEnding_SortAllies_Init),
+    PROC_REPEAT(TrueEnding_SortAllies_Loop),
+    PROC_WHILE(MuExistsActive),
+    PROC_END,
+};
+
+void TrueEnding_SortAllies_Init(struct UnkProc_086768DC * proc)
 {
     proc->unk_64 = 1;
 
-    if (CheckFlag(FLAG_123))
+    if (CheckFlag(FLAG_IDUNN_NOT_DIE))
         proc->unk_64++;
 }
 
-void func_fe6_0806DF3C(struct UnkProc_086768DC * proc)
+void TrueEnding_SortAllies_Loop(struct UnkProc_086768DC * proc)
 {
     for (;;)
     {
@@ -2265,70 +2811,84 @@ void func_fe6_0806DF3C(struct UnkProc_086768DC * proc)
     }
 }
 
-void func_fe6_0806DF94(ProcPtr parent)
+void TrueEnding_SortAllies(ProcPtr parent)
 {
     struct UnkProc_086768DC * proc;
 
-    proc = SpawnProc(ProcScr_Unk_086768DC, parent);
+    proc = SpawnProc(ProcScr_TrueEnding_SortAllies, parent);
     proc->unk_4C = parent;
 }
 
-bool func_fe6_0806DFAC(void)
+bool TrueEnding_SortAlliesExists(void)
 {
-    return FindProc(ProcScr_Unk_086768DC) != NULL ? TRUE : FALSE;
+    return FindProc(ProcScr_TrueEnding_SortAllies) != NULL ? TRUE : FALSE;
 }
 
-void func_fe6_0806DFC4(struct UnkProc_086768FC * proc)
+struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeIn[] =
 {
-    proc->unk_64 = 0x100;
+    PROC_CALL(Epilogue_BgmFadeIn_Init),
+    PROC_REPEAT(Epilogue_BgmFadeIn_Loop),
+    PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeOut[] =
+{
+    PROC_CALL(Epilogue_BgmFadeOut_Init),
+    PROC_REPEAT(Epilogue_BgmFadeOut_Loop),
+    PROC_END,
+};
+
+void Epilogue_BgmFadeIn_Init(struct ProcEpilogueBgmFade * proc)
+{
+    proc->timer = 0x100;
 }
 
-void func_fe6_0806DFD0(struct UnkProc_08676914 * proc)
+void Epilogue_BgmFadeOut_Init(struct ProcEpilogueBgmFade * proc)
 {
-    proc->unk_64 = 0;
+    proc->timer = 0;
 }
 
-void func_fe6_0806DFD8(struct UnkProc_086768FC * proc)
+void Epilogue_BgmFadeIn_Loop(struct ProcEpilogueBgmFade * proc)
 {
-    proc->unk_64 -= 3;
+    proc->timer -= 3;
 
-    if (proc->unk_64 <= 0)
+    if (proc->timer <= 0)
     {
-        proc->unk_64 = 0;
+        proc->timer = 0;
         Proc_Break(proc);
     }
 
-    SetBgmVolume(proc->unk_64);
+    SetBgmVolume(proc->timer);
 }
 
-void func_fe6_0806E004(struct UnkProc_08676914 * proc)
+void Epilogue_BgmFadeOut_Loop(struct ProcEpilogueBgmFade * proc)
 {
-    proc->unk_66++;
+    proc->timer2++;
 
-    if ((proc->unk_66 & 1) != 0)
+    if ((proc->timer2 & 1) != 0)
     {
-        proc->unk_64++;
+        proc->timer++;
 
-        if (proc->unk_64 >= 0x100)
+        if (proc->timer >= 0x100)
             Proc_Break(proc);
 
-        SetBgmVolume(proc->unk_64);
+        SetBgmVolume(proc->timer);
     }
 }
 
-void func_fe6_0806E040(void)
+void EarthQuakeSoundFadeOutDefault(void)
 {
-    func_fe6_080030B4(0);
+    EarthQuakeSoundFadeOut(0);
 }
 
-void func_fe6_0806E04C(ProcPtr parent)
+void Epilogue_BgmFadeIn(ProcPtr parent)
 {
-    SpawnProc(ProcScr_Unk_086768FC, parent);
+    SpawnProc(ProcScr_Epilogue_BgmFadeIn, parent);
 }
 
-void func_fe6_0806E060(ProcPtr parent)
+void Epilogue_BgmFadeOut(ProcPtr parent)
 {
-    SpawnProcLocking(ProcScr_Unk_08676914, parent);
+    SpawnProcLocking(ProcScr_Epilogue_BgmFadeOut, parent);
 }
 
 void func_fe6_0806E074(void)
@@ -2355,7 +2915,22 @@ void func_fe6_0806E074(void)
     RefreshUnitSprites();
 }
 
-void func_fe6_0806E0B8(void)
+struct GameEndingPosition CONST_DATA gGameEndingPosition1[] = {
+    { 0x08, 0x06, 0 },
+    { 0x08, 0x08, 0 },
+    { 0x06, 0x08, 0 },
+    { 0x0A, 0x08, 0 },
+    { 0x07, 0x09, 0 },
+    { 0x09, 0x09, 0 },
+    { 0x05, 0x09, 0 },
+    { 0x0B, 0x09, 0 },
+    { 0x04, 0x08, 0 },
+    { 0x0C, 0x08, 0 },
+    { 0x07, 0x0A, 0 },
+    { 0x09, 0x0A, 0 },
+};
+
+void GameEnding_PutUnitsOnPosition1(void)
 {
     int i, j;
     int next_slot = 1;
@@ -2377,18 +2952,18 @@ void func_fe6_0806E0B8(void)
         {
             case PID_ROY:
                 unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
-                unit->x = gUnk_0867692C[0].x;
-                unit->y = gUnk_0867692C[0].y;
+                unit->x = gGameEndingPosition1[0].x;
+                unit->y = gGameEndingPosition1[0].y;
                 break;
 
             default:
-                for (j = 0; gUnk_0203DCA7[j] != -1; j++)
+                for (j = 0; gEndingSceneDispEnPidList[j] != -1; j++)
                 {
-                    if (gUnk_0203DCA7[j] == i)
+                    if (gEndingSceneDispEnPidList[j] == i)
                     {
                         unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
-                        unit->x = gUnk_0867692C[next_slot].x;
-                        unit->y = gUnk_0867692C[next_slot].y;
+                        unit->x = gGameEndingPosition1[next_slot].x;
+                        unit->y = gGameEndingPosition1[next_slot].y;
                         next_slot++;
                     }
                 }
@@ -2401,7 +2976,25 @@ void func_fe6_0806E0B8(void)
     RefreshUnitSprites();
 }
 
-void func_fe6_0806E178(void)
+struct GameEndingPosition CONST_DATA gGameEndingPosition2[] = {
+    { 0x05, 0x01, 0 },
+    { 0x05, 0x06, 0 },
+    { 0x03, 0x06, 0 },
+    { 0x07, 0x06, 0 },
+    { 0x04, 0x07, 0 },
+    { 0x06, 0x07, 0 },
+    { 0x02, 0x07, 0 },
+    { 0x08, 0x07, 0 },
+    { 0x03, 0x08, 0 },
+    { 0x07, 0x08, 0 },
+    { 0x05, 0x08, 0 },
+    { 0x02, 0x05, 0 },
+    { 0x08, 0x05, 0 },
+    { 0x04, 0x09, 0 },
+    { 0x06, 0x09, 0 },
+};
+
+void GameEnding_PutUnitsOnPosition2(void)
 {
     int i, j, pid;
     int next_slot = 2;
@@ -2423,24 +3016,24 @@ void func_fe6_0806E178(void)
         {
             case PID_ROY:
                 unit->flags |= UNIT_FLAG_HIDDEN;
-                unit->x = gUnk_0867695C[0].x;
-                unit->y = gUnk_0867695C[0].y;
+                unit->x = gGameEndingPosition2[0].x;
+                unit->y = gGameEndingPosition2[0].y;
                 break;
 
             case PID_MERLINUS:
                 unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
-                unit->x = gUnk_0867695C[1].x;
-                unit->y = gUnk_0867695C[1].y;
+                unit->x = gGameEndingPosition2[1].x;
+                unit->y = gGameEndingPosition2[1].y;
                 break;
 
             default:
-                for (j = 0; gUnk_0203DCA7[j] != -1; j++)
+                for (j = 0; gEndingSceneDispEnPidList[j] != -1; j++)
                 {
-                    if (gUnk_0203DCA7[j] == i)
+                    if (gEndingSceneDispEnPidList[j] == i)
                     {
                         unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
-                        unit->x = gUnk_0867695C[next_slot].x;
-                        unit->y = gUnk_0867695C[next_slot].y;
+                        unit->x = gGameEndingPosition2[next_slot].x;
+                        unit->y = gGameEndingPosition2[next_slot].y;
                         next_slot++;
                     }
                 }
@@ -2453,7 +3046,7 @@ void func_fe6_0806E178(void)
     RefreshUnitSprites();
 }
 
-void func_fe6_0806E240(void)
+void GameEnding_DeployRoy(void)
 {
     int i;
 
@@ -2475,152 +3068,559 @@ void func_fe6_0806E240(void)
     }
 }
 
-void func_fe6_0806E278(void)
+void SetFlagIfDefeatedByBindingBlade(void)
 {
     if (GetItemIid(gBattleUnitA.weapon_before) == IID_BINDINGBLADE ||
         GetItemIid(gBattleUnitB.weapon_before) == IID_BINDINGBLADE)
     {
-        SetFlag(FLAG_123);
+        SetFlag(FLAG_IDUNN_NOT_DIE);
     }
 }
 
 void UpdateEndingId(void)
 {
-    if (gPlaySt.chapter == CHAPTER_FINAL)
-    {
-        if (CheckFlag(FLAG_123) && IsFaeBlue())
-        {
-            gUnk_0203D3D9 = 0;
-        }
+    if (gPlaySt.chapter == CHAPTER_FINAL) {
+        if (CheckFlag(FLAG_IDUNN_NOT_DIE) && IsFaeBlue())
+            gEndingId = TRUE_ENDING;
         else
-        {
-            gUnk_0203D3D9 = 1;
-        }
-    }
-    else
-    {
-        gUnk_0203D3D9 = 2;
-    }
+            gEndingId = NORMAL_ENDING;
+    } else
+        gEndingId = FALSE_ENDING;
 }
 
 fu8 GetEndingId(void)
 {
     UpdateEndingId();
-    return gUnk_0203D3D9;
+    return gEndingId;
 }
+
+// EventScr @ 08676998
+EventScr CONST_DATA EventScr_TrueEnding_IndunnNotDie[] =
+{
+    EvtSleep(30)
+    EvtFunc(TrueEnding_EarthQuake)
+    EvtTalk(MSG_239)
+    EvtClearTalk
+    EvtFunc(TrueEnding_SortAllies)
+    EvtFuncWhile(TrueEnding_SortAlliesExists)
+    EvtMoveUnitNextTo(PID_ROY, PID_IDUNN)
+    EvtMoveWait
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtSleep(60)
+    EvtFunc(TrueEnding_EarthQuakeEnd)
+    EvtFunc(EndAllProcsMark1)
+    EvtSetMap(CHAPTER_23, 0, 0)
+    EvtFunc(TrueEnding_SetNiceWeather)
+    EvtFunc(GameEnding_PutUnitsOnPosition2)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(150)
+    EvtFunc(GameEnding_DeployRoy)
+    EvtMoveUnit(PID_ROY, 5, 5)
+    EvtMoveWait
+    EvtSleep(60)
+    EvtSetBgm(SONG_3C)
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_7)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_23A)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtFunc(StartEndingMonologue0)
+    EvtFuncWhile(EndEndingMonologue)
+    EvtFadeBgmOut(4)
+    EvtSleep(120)
+    EvtSetBgm(SONG_34)
+    EvtGotoIfNotFunc(3, GameEnding_TryBuildGreatLycia)
+
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_8)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_246)
+    EvtGoto(4)
+
+EvtLabel(3)
+    EvtFunc(EndAllProcsMark1)
+    EvtSetMap(CHAPTER_22, 16, 9)
+    EvtFunc(Epilogue_RemoveEventEngineNoMap)
+    EvtMapChangePosition(15, 15)
+    EvtUnitCameraOff
+    EvtLoadUnits(UnitInfo_Unk_08681350)
+    EvtMoveWait
+    EvtFunc(RenderMapForDirectJump)
+    EvtFunc(Epilogue_RemoveEventEngineBG)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtTalk(MSG_247)
+    EvtSleep(30)
+    EvtClearTalk
+    EvtMoveScript(15, 17, MoveScr_TrueEnding_086767D0)
+    EvtMoveWait
+    EvtTalk(MSG_248)
+    EvtClearTalk
+    EvtSleep(30)
+    EvtMoveScript(15, 9, MoveScr_TrueEnding_086767DB)
+    EvtMoveWait
+    EvtMoveUnitScript(PID_GUINIVERE, MoveScr_TrueEnding_086767E6)
+    EvtMoveWait
+    EvtSleep(45)
+    EvtTalk(MSG_249)
+    EvtClearTalk
+    EvtSleep(30)
+    EvtMoveUnitScript(PID_GUINIVERE, MoveScr_TrueEnding_086767EB)
+    EvtMoveWait
+    EvtSleep(90)
+
+EvtLabel(4)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFadeBgmOut(4)
+    EvtSleep(120)
+    EvtFunc(ClearTalk)
+    EvtFunc(EndAllProcsMark1)
+    EvtFunc(DrawEpilogueMonologue)
+    EvtFuncWhile(EpilogueMonologueExists)
+    EvtSetBgm(SONG_26)
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_3)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_24B)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtSetMap(CHAPTER_14, 22, 7)
+    EvtUnitCameraOff
+    EvtLoadUnits(UnitInfo_EpilogueFaeIdunn)
+    EvtMoveWait
+    EvtFunc(RenderMapForDirectJump)
+    EvtFunc(TrueEnding_SetNiceWeather)
+    EvtFunc(Epilogue_RemoveEventEngineBG)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtMoveUnitScript(PID_FAE, MoveScr_TrueEnding_086767F3)
+    EvtSleep(30)
+    EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_08676805)
+    EvtMoveWait
+    EvtSleep(15)
+    EvtFunc(func_fe6_0806DEA0)
+    EvtTalk(MSG_24C)
+    EvtFunc(func_fe6_0806DC24)
+    EvtTalkContinue
+    EvtSleep(15)
+    EvtFunc(func_fe6_0806DE40)
+    EvtTalkContinue
+    EvtSleep(15)
+    EvtTalkContinue
+    EvtMoveUnitScript(PID_FAE, MoveScr_TrueEnding_08676810)
+    EvtTalkContinue
+    EvtClearTalk
+    EvtMoveWait
+    EvtMoveUnitScript(PID_FAE, MoveScr_TrueEnding_08676823)
+    EvtMoveWait
+    EvtSleep(60)
+    EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_08676831)
+    EvtSleep(100)
+    EvtFunc(Epilogue_BgmFadeIn)
+    EvtSleep(100)
+    EvtFunc(Epilogue_StartWind)
+    EvtSleep(15)
+    EvtFunc(EarthQuakeSoundFadeOutDefault)
+    EvtMoveWait
+    EvtFunc(TrueEnding_SetNiceWeather)
+    EvtSleep(100)
+    EvtTalk(MSG_250)
+    EvtClearTalk
+    EvtSleep(30)
+    EvtFunc(Epilogue_StartCredit)
+    EvtSleep(60)
+    EvtFunc(Epilogue_BgmFadeOut)
+    EvtSleep(420)
+    EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_0867683C)
+    EvtSleep(256)
+    EvtFunc(func_fe6_08090620)
+    EvtFuncWhile(func_fe6_08090D54)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(EndAllProcsMark1)
+    EvtSleep(64)
+    EvtJump(EventScr_CharacterEnding)
+
+    EvtClearSkip
+    EvtEnd
+};
+
+// EventScr @ 08676E14
+EventScr CONST_DATA EventScr_TrueEnding_IndunnDie[] =
+{
+    EvtSleep(30)
+    EvtFunc(TrueEnding_EarthQuake)
+    EvtTalk(MSG_251)
+    EvtClearTalk
+    EvtFunc(TrueEnding_SortAllies)
+    EvtFuncWhile(TrueEnding_SortAlliesExists)
+    EvtGotoIfNotFlag(20, FLAG_IDUNN_NOT_DIE)
+
+    EvtMoveUnitNextTo(PID_ROY, PID_IDUNN)
+    EvtMoveWait
+
+EvtLabel(20)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtSleep(60)
+    EvtFunc(TrueEnding_EarthQuakeEnd)
+    EvtFunc(EndAllProcsMark1)
+    EvtSetMap(CHAPTER_23, 0, 0)
+    EvtFunc(TrueEnding_SetNiceWeather)
+    EvtFunc(GameEnding_PutUnitsOnPosition2)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(150)
+    EvtFunc(GameEnding_DeployRoy)
+    EvtMoveUnit(PID_ROY, 5, 5)
+    EvtMoveWait
+    EvtSleep(60)
+    EvtSetBgm(SONG_3C)
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_7)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_252)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtFunc(StartEndingMonologue1)
+    EvtFuncWhile(EndEndingMonologue)
+    EvtFadeBgmOut(4)
+    EvtSleep(120)
+    EvtSetBgm(SONG_34)
+    EvtGotoIfNotFunc(3, GameEnding_TryBuildGreatLycia)
+
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_8)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_25E)
+    EvtGoto(4)
+
+EvtLabel(3)
+    EvtFunc(EndAllProcsMark1)
+    EvtSetMap(CHAPTER_22, 16, 9)
+    EvtFunc(Epilogue_RemoveEventEngineNoMap)
+    EvtMapChangePosition(15, 15)
+    EvtUnitCameraOff
+    EvtLoadUnits(UnitInfo_Unk_08681350)
+    EvtMoveWait
+    EvtFunc(RenderMapForDirectJump)
+    EvtFunc(Epilogue_RemoveEventEngineBG)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtTalk(MSG_25F)
+    EvtSleep(30)
+    EvtClearTalk
+    EvtMoveScript(15, 17, MoveScr_TrueEnding_086767D0)
+    EvtMoveWait
+    EvtTalk(MSG_260)
+    EvtClearTalk
+    EvtSleep(30)
+    EvtMoveScript(15, 9, MoveScr_TrueEnding_086767DB)
+    EvtMoveWait
+    EvtMoveUnitScript(PID_GUINIVERE, MoveScr_TrueEnding_086767E6)
+    EvtMoveWait
+    EvtSleep(45)
+    EvtTalk(MSG_261)
+    EvtClearTalk
+    EvtSleep(30)
+    EvtMoveUnitScript(PID_GUINIVERE, MoveScr_TrueEnding_086767EB)
+    EvtSleep(10)
+    EvtMoveUnitScript(PID_ROY, MoveScr_TrueEnding_086767EB)
+    EvtMoveWait
+    EvtSleep(60)
+
+EvtLabel(4)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(ClearTalk)
+    EvtFunc(EndAllProcsMark1)
+    EvtFunc(StartEndingMonologue2)
+    EvtFuncWhile(EndEndingMonologue)
+    EvtSleep(75)
+    EvtFunc(func_fe6_0808FED8)
+    EvtJump(EventScr_CharacterEnding)
+
+    EvtClearSkip
+    EvtEnd
+};
+
+EventScr const * CONST_DATA EventScrs_EndingScene[] = {
+    EventScr_TrueEnding,
+    EventScr_TrueEnding,
+    EventScr_FalseEnding
+};
+
+// EventScr @ 086770E0
+EventScr CONST_DATA EventScr_TrueEnding[] =
+{
+    EvtNoSkipNoTextSkip
+    EvtSetBgm(0)
+    EvtSleep(59)
+    EvtFunc(func_fe6_0806E32C)
+    EvtUnitCameraOff
+    EvtFunc(GC_DarkenScreen)
+    EvtSleep(1)
+    EvtSetMap(CHAPTER_FINAL, 9, 2)
+    EvtFunc(GameEnding_PutUnitsOnPosition1)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtGotoIfNotFlag(3, FLAG_IDUNN_NOT_DIE)
+
+    EvtFunc(TruEnding_PlaySe269)
+    EvtFadeToWhite(4)
+    EvtExitMap
+    EvtSleep(30)
+    EvtLoadUnits(UnitInfo_TrueEnding_Idunn)
+    EvtMoveWait
+    EvtFadeFromWhite(4)
+    EvtEnterMap
+
+EvtLabel(3)
+    EvtSleep(60)
+    EvtGotoIfNotFlag(5, FLAG_IDUNN_NOT_DIE)
+    EvtGotoIfNotFunc(5, IsFaeBlue)
+    EvtJump(EventScr_TrueEnding_IndunnNotDie)
+    EvtGoto(9)
+
+EvtLabel(5)
+    EvtJump(EventScr_TrueEnding_IndunnDie)
+
+EvtLabel(9)
+    EvtClearSkip
+    EvtEnd
+};
+
+// EventScr @ 086771CC
+EventScr CONST_DATA EventScr_FalseEnding[] =
+{
+    EvtNoSkipNoTextSkip
+    EvtSetBgm(0)
+    EvtSleep(30)
+    EvtFunc(func_fe6_0806E32C)
+    EvtSetBgm(SONG_3C)
+    EvtSleep(29)
+    EvtFunc(GC_DarkenScreen)
+    EvtSleep(1)
+    EvtSetMap(CHAPTER_22, 16, 9)
+    EvtFunc(func_fe6_0806E074)
+    EvtFunc(Epilogue_RemoveEventEngineNoMap)
+    EvtMapChangePosition(15, 15)
+    EvtFunc(RenderMap)
+    EvtFadeFromBlack(4)
+    EvtEnterMap
+    EvtSleep(60)
+    EvtFadeToBlack(16)
+    EvtExitMap
+    EvtBackground(BACKGROUND_6)
+    EvtFadeFromBlack(16)
+    EvtEnterMap
+    EvtTalk(MSG_1D1)
+    EvtClearTalk
+    EvtSleep(64)
+    EvtFadeBgmOut(4)
+    EvtFadeToBlack(4)
+    EvtExitMap
+    EvtFunc(EndAllProcsMark1)
+    EvtSleep(75)
+    EvtSetBgm(SONG_34)
+    EvtFunc(StartEndingMonologue3)
+    EvtFuncWhile(EndEndingMonologue)
+    EvtSleep(128)
+    EvtFunc(func_fe6_0808FEF0)
+    EvtJump(EventScr_CharacterEnding)
+
+    EvtClearSkip
+    EvtEnd
+};
+
+// EventScr @ 086772DC
+EventScr CONST_DATA EventScr_CharacterEnding[] =
+{
+    EvtFunc(StartCharacterEndings)
+    EvtSleep(1)
+    EvtFunc(CleanupGame)
+    EvtClearSkip
+    EvtEnd
+};
 
 void StartGameEndingScene(ProcPtr parent)
 {
-    StartEventLocking(gUnk_086770D4[GetEndingId()], parent);
+    StartEventLocking(EventScrs_EndingScene[GetEndingId()], parent);
 }
 
 void func_fe6_0806E32C(void)
 {
     switch (GetEndingId())
     {
-        case ENDING_0:
+        case TRUE_ENDING:
             gUnk_0203D3D8 = 0;
             func_fe6_080914DC();
             return;
 
-        case ENDING_1:
+        case NORMAL_ENDING:
             gUnk_0203D3D8 = 1;
             func_fe6_080914DC();
             return;
 
-        case ENDING_2:
+        case FALSE_ENDING:
             gUnk_0203D3D8 = 0x80;
             func_fe6_0809154C();
             return;
     }
 }
 
-void func_fe6_0806E36C(struct UnkProc_08677348 * proc)
+i8 CONST_DATA Ctrl_EndingMonologueText1[] = {
+    0, 1, -1,
+    2, 3, 4, 5, -1,
+    6, 7, 8, 9, -1, -1,
+    10,
+    -3
+};
+
+i8 CONST_DATA Ctrl_EndingMonologueText2[] = {
+    11, 12, -1,
+    2, 3, 4, 5, -1,
+    6, 7, 8, 9, -1, -1,
+    10,
+    -3
+};
+
+i8 CONST_DATA Ctrl_EndingMonologueText3[] = {
+    0, 1, 2, 3, -1,
+    4, 5, 6, 7, 8,
+    -3
+};
+
+i8 CONST_DATA Ctrl_EndingMonologueText4[] = {
+    0, 1, -1,
+    2, 3, -1,
+    4, 5, 6, 7, -1,
+    8, 9, 10, 11, 12, -1,
+    13, 14, -1,
+    15, -2, -1,
+    1, 2, 3, -1, -1,
+    4,
+    -3
+};
+
+struct ProcScr CONST_DATA ProcScr_EndingMonologueText[] =
 {
-    if (gUnk_030048A4 == 0)
+    PROC_CALL(EndingMonologueText_Init),
+    PROC_REPEAT(EndingMonologueText_Loop),
+    PROC_END,
+};
+
+void EndingMonologueText_Init(struct ProcEndingMonologueText * proc)
+{
+    if (gEndingMonologueState == 0)
     {
-        Decompress(gUnk_0834B69C, (void *) VRAM + 1 * CHR_SIZE);
-        proc->unk_3C = gUnk_086772FC;
-        proc->unk_38 = -28;
+        Decompress(Img_EndingMonologueText1, (void *) VRAM + 1 * CHR_SIZE);
+        proc->ctrl_y = Ctrl_EndingMonologueText1;
+        proc->bg_x = -28;
     }
-    else if (gUnk_030048A4 == 1)
+    else if (gEndingMonologueState == 1)
     {
-        Decompress(gUnk_0834B69C, (void *) VRAM + 1 * CHR_SIZE);
-        proc->unk_3C = gUnk_0867730C;
-        proc->unk_38 = -28;
+        Decompress(Img_EndingMonologueText1, (void *) VRAM + 1 * CHR_SIZE);
+        proc->ctrl_y = Ctrl_EndingMonologueText2;
+        proc->bg_x = -28;
     }
-    else if (gUnk_030048A4 == 2)
+    else if (gEndingMonologueState == 2)
     {
-        Decompress(gUnk_08349A98, (void *) VRAM + 1 * CHR_SIZE);
-        proc->unk_3C = gUnk_0867731C;
-        proc->unk_38 = -48;
+        Decompress(Img_EndingMonologueText3, (void *) VRAM + 1 * CHR_SIZE);
+        proc->ctrl_y = Ctrl_EndingMonologueText3;
+        proc->bg_x = -48;
     }
-    else if (gUnk_030048A4 == 3)
+    else if (gEndingMonologueState == 3)
     {
-        Decompress(gUnk_0834E1D4, (void *) VRAM + 1 * CHR_SIZE);
-        proc->unk_3C = gUnk_08677327;
-        proc->unk_38 = -24;
+        Decompress(Img_EndingMonologueText4, (void *) VRAM + 1 * CHR_SIZE);
+        proc->ctrl_y = Ctrl_EndingMonologueText4;
+        proc->bg_x = -24;
     }
 
-    proc->unk_30 = 0;
-    proc->unk_2C = -144;
-    proc->unk_34 = 0;
-    proc->unk_40 = 0;
+    proc->delay_timer = 0;
+    proc->bg_y = -144;
+    proc->main_timer = 0;
+    proc->paulse_timer = 0;
 
-    func_fe6_0806E684(0, proc->unk_3C[0]);
-    SetBgOffset(0, proc->unk_38, proc->unk_2C);
+    EndingMonologue_MoveText(0, proc->ctrl_y[0]);
+    SetBgOffset(0, proc->bg_x, proc->bg_y);
 }
 
-void func_fe6_0806E430(struct UnkProc_08677348 * proc)
+void EndingMonologueText_Loop(struct ProcEndingMonologueText * proc)
 {
-    proc->unk_30++;
+    proc->delay_timer++;
 
-    if (proc->unk_30 < 7)
+    if (proc->delay_timer < 7)
         return;
 
-    proc->unk_30 = 0;
+    proc->delay_timer = 0;
 
-    proc->unk_2C++;
-    SetBgOffset(0, proc->unk_38, proc->unk_2C);
+    proc->bg_y++;
+    SetBgOffset(0, proc->bg_x, proc->bg_y);
 
-    proc->unk_34++;
+    proc->main_timer++;
 
-    if ((proc->unk_34 % 24) != 0)
+    if ((proc->main_timer % 24) != 0)
         return;
 
-    if (proc->unk_40 != 0)
+    if (proc->paulse_timer != 0)
     {
-        func_fe6_0806E684(proc->unk_34 / 8, -3);
+        EndingMonologue_MoveText(proc->main_timer / 8, -3);
     }
     else
     {
-        if (proc->unk_3C[proc->unk_34 / 24] == -2 && proc->unk_3C == gUnk_08677327)
+        if (proc->ctrl_y[proc->main_timer / 24] == -2 && proc->ctrl_y == Ctrl_EndingMonologueText4)
         {
-            Decompress(gUnk_08352160, (void *) VRAM + 1 * CHR_SIZE);
+            Decompress(Img_08352160, (void *) VRAM + 1 * CHR_SIZE);
         }
 
-        func_fe6_0806E684(proc->unk_34 / 8, proc->unk_3C[proc->unk_34 / 24]);
+        EndingMonologue_MoveText(proc->main_timer / 8, proc->ctrl_y[proc->main_timer / 24]);
     }
 
-    if (proc->unk_40 != 0 || proc->unk_3C[proc->unk_34 / 24] == -3)
+    if (proc->paulse_timer != 0 || proc->ctrl_y[proc->main_timer / 24] == -3)
     {
-        proc->unk_40++;
+        proc->paulse_timer++;
 
-        if (proc->unk_40 == 4)
-            gUnk_030048B8 = 1;
+        if (proc->paulse_timer == 4)
+            gEndingMonologueTextDone = true;
     }
 }
 
-void func_fe6_0806E50C(ProcPtr parent)
+void EndingMonologue_PutText(ProcPtr parent)
 {
-    SpawnProc(ProcScr_Unk_08677348, parent);
+    SpawnProc(ProcScr_EndingMonologueText, parent);
 }
 
-void func_fe6_0806E520(void)
+u16 CONST_DATA BgConf_EndingMonologue[] = {
+    // tile offset  map offset  screen size
+    0x0000,         0xE000,     0,          // BG 0
+    0x0000,         0xE800,     0,          // BG 1
+    0x8000,         0xF000,     1,          // BG 2
+    0x0000,         0xF800,     0,          // BG 3
+};
+
+void EndingMonologue_Init(void)
 {
     int i;
 
-    InitBgs(gUnk_08677360);
+    InitBgs(BgConf_EndingMonologue);
     DisableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 
     gDispIo.disp_ct.mode = DISPCNT_BG_MODE_REGULAR;
@@ -2637,9 +3637,9 @@ void func_fe6_0806E520(void)
     TmFill(gBg1Tm, 0);
     SetBgOffset(2, 0, 0);
 
-    Decompress(gUnk_0836F6D4, (void *) VRAM + GetBgChrOffset(2));
-    Decompress(gUnk_08373F80, gBg2Tm);
-    Decompress(gUnk_08374670, gBuf);
+    Decompress(Img_EndingMonologue, (void *) VRAM + GetBgChrOffset(2));
+    Decompress(Tsa_EndingMonologue, gBg2Tm);
+    Decompress(Zpal_EndingMonologue, gBuf);
 
     for (i = 0; i < 8; i++)
     {
@@ -2648,36 +3648,36 @@ void func_fe6_0806E520(void)
 
     ApplyPalettes(gBuf, 0, 0x10);
     gPal[0] = 0;
-    ApplyPalette(gUnk_08353308, 15);
+    ApplyPalette(Pal_EndingMonologueText, 15);
 
     func_fe6_0809892C(1, 0, 1, 0, 1);
 
     InitScanlineEffect();
     SetOnHBlankA(OnHBlank_08069FD8);
-    func_fe6_0806A7AC();
+    Scanline_SetupMonologue();
 
-    gUnk_030048B8 = 0;
+    gEndingMonologueTextDone = false;
 
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 }
 
-void func_fe6_0806E684(int arg_0, int arg_1)
+void EndingMonologue_MoveText(int x, int y)
 {
     int iy, ix;
 
-    if (arg_1 == -2)
-        arg_1 = 0;
+    if (y == -2)
+        y = 0;
 
     for (iy = -1; iy < 3; iy++)
     {
-        u16 * tm = gBg0Tm + TM_OFFSET(0, (arg_0 + iy) & 0x1F);
+        u16 * tm = gBg0Tm + TM_OFFSET(0, (x + iy) & 0x1F);
 
         if (iy == -1 || iy == 2)
         {
             for (ix = 0; ix < 0x20; ix++)
                 *tm++ = 0;
         }
-        else if (arg_1 == -1 || arg_1 == -3)
+        else if (y == -1 || y == -3)
         {
             for (ix = 0; ix < 0x20; ix++)
                 *tm++ = 0;
@@ -2685,7 +3685,7 @@ void func_fe6_0806E684(int arg_0, int arg_1)
         else
         {
             // TODO: constants
-            int base = TILEREF(arg_1 * 0x40 + iy * 0x20 + 1, 15);
+            int base = TILEREF(y * 0x40 + iy * 0x20 + 1, 15);
 
             for (ix = 0; ix < 0x20; ix++)
                 *tm++ = base + ix;
@@ -2695,13 +3695,13 @@ void func_fe6_0806E684(int arg_0, int arg_1)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-void func_fe6_0806E714(ProcPtr proc)
+void EndingMonologue_Loop(ProcPtr proc)
 {
-    if (gUnk_030048B8 != 0)
+    if (gEndingMonologueTextDone != 0)
         Proc_Break(proc);
 }
 
-void func_fe6_0806E730(void)
+void EndingMonologue_End(void)
 {
     SetOnHBlankA(NULL);
 }
@@ -2716,37 +3716,53 @@ void func_fe6_0806E73C(void)
     CpuFastFill(0, (void *) VRAM + 0x6000, 0x2000); // TODO: constants
 }
 
-void func_fe6_0806E7A0(ProcPtr parent)
+struct ProcScr CONST_DATA ProcScr_EndingMonologue[] =
 {
-    gUnk_030048A4 = 0;
-    SpawnProc(ProcScr_Unk_08677378, parent);
+    PROC_SLEEP(15),
+    PROC_CALL(EndingMonologue_Init),
+    PROC_CALL(FadeInBlackSpeed08),
+    PROC_SLEEP(1),
+    PROC_CALL(EndingMonologue_PutText),
+    PROC_REPEAT(EndingMonologue_Loop),
+    PROC_SLEEP(300),
+PROC_LABEL(99),
+    PROC_CALL(FadeInBlackWithCallBack_Speed08),
+    PROC_SLEEP(1),
+    PROC_CALL(EndingMonologue_End),
+    PROC_END,
+};
+
+void StartEndingMonologue0(ProcPtr parent)
+{
+    gEndingMonologueState = 0;
+    SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
-void func_fe6_0806E7BC(ProcPtr parent)
+void StartEndingMonologue1(ProcPtr parent)
 {
-    gUnk_030048A4 = 1;
-    SpawnProc(ProcScr_Unk_08677378, parent);
+    gEndingMonologueState = 1;
+    SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
-void func_fe6_0806E7D8(ProcPtr parent)
+void StartEndingMonologue2(ProcPtr parent)
 {
-    gUnk_030048A4 = 2;
-    SpawnProc(ProcScr_Unk_08677378, parent);
+    gEndingMonologueState = 2;
+    SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
-void func_fe6_0806E7F4(ProcPtr parent)
+void StartEndingMonologue3(ProcPtr parent)
 {
-    gUnk_030048A4 = 3;
-    SpawnProc(ProcScr_Unk_08677378, parent);
+    gEndingMonologueState = 3;
+    SpawnProc(ProcScr_EndingMonologue, parent);
 }
 
-bool func_fe6_0806E810(void)
+bool EndEndingMonologue(void)
 {
-    if (FindProc(ProcScr_Unk_08677378) != NULL)
+    if (FindProc(ProcScr_EndingMonologue) != NULL)
         return TRUE;
 
-    Proc_EndEach(ProcScr_Unk_08677348);
-    func_fe6_0806DCA4();
+    Proc_EndEach(ProcScr_EndingMonologueText);
+    RemoveEndingMonologueBG();
 
     return FALSE;
 }

@@ -5102,7 +5102,7 @@ void ManimShiftingSineWaveScanlineBuf_Loop(struct ManimShiftingSineWaveScanlineB
     SwapScanlineBufs();
 }
 
-void func_fe6_0806A7AC(void)
+void Scanline_SetupMonologue(void)
 {
     int i;
 

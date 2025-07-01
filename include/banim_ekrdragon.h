@@ -304,5 +304,5 @@ ProcPtr NewEkrIdunnExitAnim1(struct BaSprite * anim);
 // func_fe6_0805AEDC
 // func_fe6_0805AF34
 // func_fe6_0805AFA4
-void func_fe6_0805AFD4(void);
-// func_fe6_0805AFEC
+void StartEkrDragonDeath(void);
+// EkrDragonDeath_Loop
