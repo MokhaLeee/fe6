@@ -2291,7 +2291,7 @@ int EvtCmd_SetMap(struct EventProc * proc)
 
     gPlaySt.chapter = proc->script[0];
 
-    func_fe6_08029084();
+    JumpToChapterDirectly();
     CleanupUnitsBeforeChapter();
 
     gBmSt.camera.x = GetCameraCenteredX(proc->script[1] * 16);

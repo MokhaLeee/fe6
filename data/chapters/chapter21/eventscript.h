@@ -279,7 +279,7 @@ EvtLabel(3)
     EvtFadeFromWhite(16)
     EvtEnterMap
     EvtTalkContinue
-    EvtFunc(func_fe6_0806DE20)
+    EvtFunc(TruEnding_PlaySe269)
     EvtFadeToWhite(4)
     EvtExitMap
     EvtBackground(BACKGROUND_4)

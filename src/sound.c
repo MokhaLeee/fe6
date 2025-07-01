@@ -95,7 +95,7 @@ void FadeBgmOut(int speed)
     sSoundSt.is_song_playing = FALSE;
 }
 
-void func_fe6_080030B4(int speed)
+void EarthQuakeSoundFadeOut(int speed)
 {
     if (speed == 0)
         speed = 6;

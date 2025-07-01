@@ -317,11 +317,11 @@ SECTIONS
         . = ALIGN(1); gUnk_0203D362 = .; . = . + 1;
         . = ALIGN(2); gUnk_0203D364 = .; . = . + 2;
         . = ALIGN(4); gUnk_0203D368 = .; . = . + 4;
-        . = ALIGN(4); gUnk_0203D36C = .; . = . + 4;
-        . = ALIGN(4); gUnkText_0203D370 = .;
+        . = ALIGN(4); gDemoMonologueId = .; . = . + 4;
+        . = ALIGN(4); Texts_DemoMonologue = .;
 
         . = 0x0203D3A0 - __ewram_overlay_end;
-        . = ALIGN(4); gUnkText_0203D3A0 = .;
+        . = ALIGN(4); Text_EpilogueMonologue = .;
 
         . = 0x0203D3D8 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203D3D8 = .; . = . + 1;
@@ -344,7 +344,7 @@ SECTIONS
         . = ALIGN(4); src/xmap.o(ewram_data);
 
         . = 0x0203DCA7 - __ewram_overlay_end;
-        . = ALIGN(1); gUnk_0203DCA7 = .;
+        . = ALIGN(1); gEndingSceneDispEnPidList = .;
 
         . = 0x0203DCB8 - __ewram_overlay_end;
         . = ALIGN(4); gShopItemTexts = .;
@@ -442,9 +442,9 @@ SECTIONS
         . = 0x004750; *(COMMON.gUnk_03004750);
         . = 0x004890; gPermanentFlagBits = .;
         . = 0x004898; gChapterFlagBits = .;
-        . = 0x0048A4; gUnk_030048A4 = .;
+        . = 0x0048A4; gEndingMonologueState = .;
         . = 0x0048A8; gUnk_030048A8 = .;
-        . = 0x0048B8; gUnk_030048B8 = .;
+        . = 0x0048B8; gEndingMonologueTextDone = .;
         . = 0x0048C0; gUnk_030048C0 = .;
         . = 0x0048D4; gUnk_030048D4 = .;
         . = 0x0048E0; gWmArrowSt = .;
@@ -827,7 +827,7 @@ SECTIONS
         . = ALIGN(4); src/eventinfo.o(.data);
         . = ALIGN(4); data/data_66618C.o(.data);
         . = ALIGN(4); src/chapterevents.o(.data);
-        . = ALIGN(4); data/data_67619C.o(.data);
+        . = ALIGN(4); src/eventfunctions.o(.data);
         . = ALIGN(4); src/statscreen.o(.data);
         . = ALIGN(4); src/helpbox.o(.data);
         . = ALIGN(4); src/helpbox_2.o(.data);

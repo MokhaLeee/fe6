@@ -129,7 +129,7 @@ void StartChapter(struct GenericProc * parent)
     SetBlendDarken(0x10);
 }
 
-void func_fe6_08029084(void)
+void JumpToChapterDirectly(void)
 {
     InitBgs(NULL);
 

@@ -120,8 +120,8 @@ gUnk_0868B7E2: @ 0868B7E2
 gUnk_0868B7E8: @ 0868B7E8
 	.incbin "fe6-base.gba", 0x68B7E8, (0x68B7F4 - 0x68B7E8) @ length: 000C
 
-	.global BgConfig_0868B7F4
-BgConfig_0868B7F4: @ 0868B7F4
+	.global BgConfig_PlayRank
+BgConfig_PlayRank: @ 0868B7F4
 	.incbin "fe6-base.gba", 0x68B7F4, (0x68B80C - 0x68B7F4) @ length: 0018
 
 	.global ProcScr_0868B80C
@@ -136,8 +136,8 @@ ProcScr_0868B88C: @ 0868B88C
 ProcScr_0868B8AC: @ 0868B8AC
 	.incbin "fe6-base.gba", 0x68B8AC, (0x68B8E4 - 0x68B8AC) @ length: 0038
 
-	.global ProcScr_0868B8E4
-ProcScr_0868B8E4: @ 0868B8E4
+	.global ProcScr_PlayRank
+ProcScr_PlayRank: @ 0868B8E4
 	.incbin "fe6-base.gba", 0x68B8E4, (0x68B99C - 0x68B8E4) @ length: 00B8
 
 	.global ProcScr_0868B99C
@@ -172,16 +172,16 @@ ProcScr_0868BB7C: @ 0868BB7C
 gUnk_0868BB9C: @ 0868BB9C
 	.incbin "fe6-base.gba", 0x68BB9C, (0x68BBEC - 0x68BB9C) @ length: 0050
 
-	.global gUnk_0868BBEC
-gUnk_0868BBEC: @ 0868BBEC
+	.global ProcScr_Credit_0868BBEC
+ProcScr_Credit_0868BBEC: @ 0868BBEC
 	.incbin "fe6-base.gba", 0x68BBEC, (0x68BC44 - 0x68BBEC) @ length: 0058
 
 	.global ProcScr_0868BC44
 ProcScr_0868BC44: @ 0868BC44
 	.incbin "fe6-base.gba", 0x68BC44, (0x68BC8C - 0x68BC44) @ length: 0048
 
-	.global gUnk_0868BC8C
-gUnk_0868BC8C: @ 0868BC8C
+	.global ProcScr_Fin
+ProcScr_Fin: @ 0868BC8C
 	.incbin "fe6-base.gba", 0x68BC8C, (0x68BCE4 - 0x68BC8C) @ length: 0058
 
 	.global gUnk_0868BCE4
@@ -192,12 +192,12 @@ gUnk_0868BCE4: @ 0868BCE4
 ProcScr_0868BDB4: @ 0868BDB4
 	.incbin "fe6-base.gba", 0x68BDB4, (0x68BDF4 - 0x68BDB4) @ length: 0040
 
-	.global gUnk_0868BDF4
-gUnk_0868BDF4: @ 0868BDF4
+	.global ProcScr_CharacterEndingsCredit
+ProcScr_CharacterEndingsCredit: @ 0868BDF4
 	.incbin "fe6-base.gba", 0x68BDF4, (0x68BE2C - 0x68BDF4) @ length: 0038
 
-	.global gUnk_0868BE2C
-gUnk_0868BE2C: @ 0868BE2C
+	.global ProcScr_GameCredit
+ProcScr_GameCredit: @ 0868BE2C
 	.incbin "fe6-base.gba", 0x68BE2C, (0x68BE4C - 0x68BE2C) @ length: 0020
 
 	.global gUnk_0868BE4C
@@ -216,8 +216,8 @@ gUnk_0868BEEC: @ 0868BEEC
 gUnk_0868BF14: @ 0868BF14
 	.incbin "fe6-base.gba", 0x68BF14, (0x68BF3C - 0x68BF14) @ length: 0028
 
-	.global ProcScr_0868BF3C
-ProcScr_0868BF3C: @ 0868BF3C
+	.global ProcScr_CharacterEnding2
+ProcScr_CharacterEnding2: @ 0868BF3C
 	.incbin "fe6-base.gba", 0x68BF3C, (0x68BFAC - 0x68BF3C) @ length: 0070
 
 	.global gUnk_0868BFAC

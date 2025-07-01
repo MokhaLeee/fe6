@@ -92,32 +92,32 @@ gUnk_0833C8D8: @ 0833C8D8
 Pal_Unk_0833C944: @ 0833C944
 	.incbin "fe6-base.gba", 0x33C944, (0x33C984 - 0x33C944) @ length: 0040
 
-	.global gUnk_0833C984
-gUnk_0833C984: @ 0833C984
+	.global Img_WorldMap_PlayRank
+Img_WorldMap_PlayRank: @ 0833C984
 	.incbin "fe6-base.gba", 0x33C984, (0x340ED8 - 0x33C984) @ length: 4554
 
-	.global gUnk_08340ED8
-gUnk_08340ED8: @ 08340ED8
+	.global Tsa_08340ED8
+Tsa_08340ED8: @ 08340ED8
 	.incbin "fe6-base.gba", 0x340ED8, (0x34138C - 0x340ED8) @ length: 04B4
 
 	.global gUnk_0834138C
 gUnk_0834138C: @ 0834138C
 	.incbin "fe6-base.gba", 0x34138C, (0x3413CC - 0x34138C) @ length: 0040
 
-	.global gUnk_083413CC
-gUnk_083413CC: @ 083413CC
+	.global Img_PlayRank_083413CC
+Img_PlayRank_083413CC: @ 083413CC
 	.incbin "fe6-base.gba", 0x3413CC, (0x341DA0 - 0x3413CC) @ length: 09D4
 
 	.global gUnk_08341DA0
 gUnk_08341DA0: @ 08341DA0
 	.incbin "fe6-base.gba", 0x341DA0, (0x341DC0 - 0x341DA0) @ length: 0020
 
-	.global gUnk_08341DC0
-gUnk_08341DC0: @ 08341DC0
+	.global Img_PlayRank
+Img_PlayRank: @ 08341DC0
 	.incbin "fe6-base.gba", 0x341DC0, (0x342438 - 0x341DC0) @ length: 0678
 
-	.global gUnk_08342438
-gUnk_08342438: @ 08342438
+	.global Img_PlayRankCharacters
+Img_PlayRankCharacters: @ 08342438
 	.incbin "fe6-base.gba", 0x342438, (0x342A98 - 0x342438) @ length: 0660
 
 	.global gUnk_08342A98
@@ -132,8 +132,8 @@ gUnk_08342AB8: @ 08342AB8
 Pal_08342AD8: @ 08342AD8
 	.incbin "fe6-base.gba", 0x342AD8, (0x342AF8 - 0x342AD8) @ length: 0020
 
-	.global gUnk_08342AF8
-gUnk_08342AF8: @ 08342AF8
+	.global Tsa_08342AF8
+Tsa_08342AF8: @ 08342AF8
 	.incbin "fe6-base.gba", 0x342AF8, (0x342B54 - 0x342AF8) @ length: 005C
 
 	.global gUnk_08342B54
@@ -164,24 +164,24 @@ gUnk_083442C4: @ 083442C4
 gUnk_08344304: @ 08344304
 	.incbin "fe6-base.gba", 0x344304, (0x3449F8 - 0x344304) @ length: 06F4
 
-	.global gUnk_083449F8
-gUnk_083449F8: @ 083449F8
+	.global Img_Fin
+Img_Fin: @ 083449F8
 	.incbin "fe6-base.gba", 0x3449F8, (0x344CB0 - 0x3449F8) @ length: 02B8
 
-	.global gUnk_08344CB0
-gUnk_08344CB0: @ 08344CB0
+	.global Pal_Fin
+Pal_Fin: @ 08344CB0
 	.incbin "fe6-base.gba", 0x344CB0, (0x344CD0 - 0x344CB0) @ length: 0020
 
-	.global gUnk_08344CD0
-gUnk_08344CD0: @ 08344CD0
+	.global Img_Credit_08344CD0
+Img_Credit_08344CD0: @ 08344CD0
 	.incbin "fe6-base.gba", 0x344CD0, (0x34523C - 0x344CD0) @ length: 056C
 
-	.global gUnk_0834523C
-gUnk_0834523C: @ 0834523C
+	.global Tsa_Credit_0834523C
+Tsa_Credit_0834523C: @ 0834523C
 	.incbin "fe6-base.gba", 0x34523C, (0x345420 - 0x34523C) @ length: 01E4
 
-	.global gUnk_08345420
-gUnk_08345420: @ 08345420
+	.global Pal_Credit_08345420
+Pal_Credit_08345420: @ 08345420
 	.incbin "fe6-base.gba", 0x345420, (0x345440 - 0x345420) @ length: 0020
 
 	.global gUnk_08345440
@@ -224,24 +224,24 @@ Img_MonologueText: @ 0834658C
 Pal_MonologueText: @ 08349A78
 	.incbin "fe6-base.gba", 0x349A78, (0x349A98 - 0x349A78) @ length: 0020
 
-	.global gUnk_08349A98
-gUnk_08349A98: @ 08349A98
+	.global Img_EndingMonologueText3
+Img_EndingMonologueText3: @ 08349A98
 	.incbin "fe6-base.gba", 0x349A98, (0x34B69C - 0x349A98) @ length: 1C04
 
-	.global gUnk_0834B69C
-gUnk_0834B69C: @ 0834B69C
+	.global Img_EndingMonologueText1
+Img_EndingMonologueText1: @ 0834B69C
 	.incbin "fe6-base.gba", 0x34B69C, (0x34E1D4 - 0x34B69C) @ length: 2B38
 
-	.global gUnk_0834E1D4
-gUnk_0834E1D4: @ 0834E1D4
+	.global Img_EndingMonologueText4
+Img_EndingMonologueText4: @ 0834E1D4
 	.incbin "fe6-base.gba", 0x34E1D4, (0x352160 - 0x34E1D4) @ length: 3F8C
 
-	.global gUnk_08352160
-gUnk_08352160: @ 08352160
+	.global Img_08352160
+Img_08352160: @ 08352160
 	.incbin "fe6-base.gba", 0x352160, (0x353308 - 0x352160) @ length: 11A8
 
-	.global gUnk_08353308
-gUnk_08353308: @ 08353308
+	.global Pal_EndingMonologueText
+Pal_EndingMonologueText: @ 08353308
 	.incbin "fe6-base.gba", 0x353308, (0x353328 - 0x353308) @ length: 0020
 
 	.global gUnk_08353328

@@ -158,13 +158,13 @@ void func_fe6_0808DD24(ProcPtr proc);
 // func_fe6_0808EC48
 // func_fe6_0808EC78
 // func_fe6_0808ECD0
-// func_fe6_0808EDE0
+// PlayRank_InitDisplay
 // func_fe6_0808F060
-// func_fe6_0808F098
-// func_fe6_0808F22C
-// func_fe6_0808F27C
-// func_fe6_0808F2A4
-// func_fe6_0808F2F0
+// PlayRank_Loop
+// PlayRank_Idle
+// PlayRank_End1
+// PlayRank_End2
+// PlayRank_End3
 // func_fe6_0808F30C
 u8 func_fe6_0808F33C(void);
 // func_fe6_0808F3E8
@@ -181,7 +181,7 @@ u8 func_fe6_0808F600(void);
 u8 func_fe6_0808F68C(void);
 u8 func_fe6_0808F6E0(void);
 // func_fe6_0808F73C
-// func_fe6_0808F780
+// PlayRank_InitBgConf
 // func_fe6_0808F790
 // func_fe6_0808F7B0
 // func_fe6_0808F7D0
@@ -232,11 +232,11 @@ extern CONST_DATA struct ProcScr ProcScr_0868B768[];
 // extern CONST_DATA ??? gUnk_0868B7D6
 // extern CONST_DATA ??? gUnk_0868B7E2
 // extern CONST_DATA ??? gUnk_0868B7E8
-// extern CONST_DATA ??? BgConfig_0868B7F4
+// extern CONST_DATA ??? BgConfig_PlayRank
 extern CONST_DATA struct ProcScr ProcScr_0868B80C[];
 extern CONST_DATA struct ProcScr ProcScr_0868B88C[];
 extern CONST_DATA struct ProcScr ProcScr_0868B8AC[];
-extern CONST_DATA struct ProcScr ProcScr_0868B8E4[];
+extern CONST_DATA struct ProcScr ProcScr_PlayRank[];
 extern CONST_DATA struct ProcScr ProcScr_0868B99C[];
 // extern CONST_DATA ??? gUnk_0868BA24
 // extern CONST_DATA ??? gUnk_0868BA3C
@@ -245,17 +245,17 @@ extern CONST_DATA struct ProcScr ProcScr_0868BB3C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB5C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB7C[];
 // extern CONST_DATA ??? gUnk_0868BB9C
-// extern CONST_DATA ??? gUnk_0868BBEC
+// extern CONST_DATA ??? ProcScr_Credit_0868BBEC
 extern CONST_DATA struct ProcScr ProcScr_0868BC44[];
-// extern CONST_DATA ??? gUnk_0868BC8C
+// extern CONST_DATA ??? ProcScr_Fin
 // extern CONST_DATA ??? gUnk_0868BCE4
 extern CONST_DATA struct ProcScr ProcScr_0868BDB4[];
-// extern CONST_DATA ??? gUnk_0868BDF4
-// extern CONST_DATA ??? gUnk_0868BE2C
+// extern CONST_DATA ??? ProcScr_CharacterEndingsCredit
+// extern CONST_DATA ??? ProcScr_GameCredit
 // extern CONST_DATA ??? gUnk_0868BE4C
 extern CONST_DATA struct ProcScr ProcScr_0868BE74[];
 // extern CONST_DATA ??? gUnk_0868BEEC
 // extern CONST_DATA ??? gUnk_0868BF14
-extern CONST_DATA struct ProcScr ProcScr_0868BF3C[];
+extern CONST_DATA struct ProcScr ProcScr_CharacterEnding2[];
 // extern CONST_DATA ??? gUnk_0868BFAC
 // extern CONST_DATA ??? gUnk_0868BFCC

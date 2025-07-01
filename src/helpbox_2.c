@@ -212,13 +212,13 @@ int func_fe6_08070E0C(struct PlaySt const * play_st)
         {
             switch (play_st->ending_id)
             {
-                case ENDING_0:
+                case TRUE_ENDING:
                     return 0x2A;
 
-                case ENDING_1:
+                case NORMAL_ENDING:
                     return 0x29;
 
-                case ENDING_2:
+                case FALSE_ENDING:
                     return 0x28;
             }
         }
@@ -422,7 +422,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08677FD0[] =
     PROC_END,
 };
 
-void func_fe6_08071308(struct HelpBoxPrintProc * proc)
+void DemoMonologueDisp_Main(struct HelpBoxPrintProc * proc)
 {
     int i;
 
@@ -471,10 +471,10 @@ end:
     SetTextFont(proc->font);
 }
 
-struct ProcScr CONST_DATA ProcScr_Unk_08677FE0[] =
+struct ProcScr CONST_DATA ProcScr_DemoMonologueDisp[] =
 {
     PROC_YIELD,
-    PROC_CALL(func_fe6_08071308),
+    PROC_CALL(DemoMonologueDisp_Main),
     PROC_END,
 };
 

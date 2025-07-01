@@ -4918,7 +4918,7 @@ func_fe6_0809ADCC: @ 0x0809ADCC
 	adds r0, r4, #0
 	bl Decompress
 	bl func_fe6_0809AED4
-	ldr r4, .L0809AE4C @ =gUnk_0836F6D4
+	ldr r4, .L0809AE4C @ =Img_EndingMonologue
 	movs r0, #2
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -4927,14 +4927,14 @@ func_fe6_0809ADCC: @ 0x0809ADCC
 	adds r1, r1, r5
 	adds r0, r4, #0
 	bl Decompress
-	ldr r4, .L0809AE50 @ =gUnk_08373F80
+	ldr r4, .L0809AE50 @ =Tsa_EndingMonologue
 	movs r0, #2
 	bl GetBgTilemapOffset
 	adds r1, r0, #0
 	adds r1, r1, r5
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L0809AE54 @ =gUnk_08374670
+	ldr r0, .L0809AE54 @ =Zpal_EndingMonologue
 	ldr r4, .L0809AE58 @ =gBuf
 	adds r1, r4, #0
 	bl Decompress
@@ -4958,9 +4958,9 @@ func_fe6_0809ADCC: @ 0x0809ADCC
 	.align 2, 0
 .L0809AE44: .4byte gUnk_08375ADC
 .L0809AE48: .4byte 0x06000020
-.L0809AE4C: .4byte gUnk_0836F6D4
-.L0809AE50: .4byte gUnk_08373F80
-.L0809AE54: .4byte gUnk_08374670
+.L0809AE4C: .4byte Img_EndingMonologue
+.L0809AE50: .4byte Tsa_EndingMonologue
+.L0809AE54: .4byte Zpal_EndingMonologue
 .L0809AE58: .4byte gBuf
 .L0809AE5C: .4byte gUnk_08375B64
 

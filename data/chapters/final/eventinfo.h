@@ -36,5 +36,5 @@ struct ChapterEventInfo CONST_DATA ChapterEventInfo_Unk_086696CC =
     .event_list_move = EventListScr_Unk_086696BC,
     .units_red = UnitInfo_Unk_08681DB4,
     .units_blue = UnitInfo_Unk_08681D04,
-    .event_script_victory = EventScr_Unk_08672E0C,
+    .event_script_victory = EventScr_FinalEnding,
 };
