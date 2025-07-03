@@ -719,29 +719,29 @@ extern u8 const Img_Unk_0833C378[];
 // extern const ??? gUnk_0833C6F4
 // extern const ??? gUnk_0833C8D8
 extern u16 const Pal_Unk_0833C944[];
-// extern const ??? Img_WorldMap_PlayRank
-// extern const ??? Tsa_08340ED8
+extern u8 const Img_WorldMap_PlayRank[];
+extern u16 const Tsa_08340ED8[];
 // extern const ??? gUnk_0834138C
-// extern const ??? Img_PlayRank_083413CC
+extern u8 const Img_PlayRank_083413CC[];
 // extern const ??? gUnk_08341DA0
-// extern const ??? Img_PlayRank
-// extern const ??? Img_PlayRankCharacters
+extern u8 const Img_PlayRank[];
+extern u8 const Img_PlayRankCharacters[];
 // extern const ??? gUnk_08342A98
-// extern const ??? gUnk_08342AB8
-// extern const ??? Pal_08342AD8
-// extern const ??? Tsa_08342AF8
+extern u16 const Pal_08342AB8[];
+extern u16 const Pal_08342AD8[];
+extern u16 const Tsa_08342AF8[];
 // extern const ??? gUnk_08342B54
 // extern const ??? gUnk_08343358
-// extern const ??? Img_08343398
-// extern const ??? Img_08343A80
-// extern const ??? Img_08343FAC
+extern u8 const Img_08343398[];
+extern u8 const Img_08343A80[];
+extern u8 const Img_08343FAC[];
 // extern const ??? gUnk_083442C4
 // extern const ??? gUnk_08344304
-// extern const ??? Img_Fin
-// extern const ??? Pal_Fin
-// extern const ??? Img_Credit_08344CD0
-// extern const ??? Tsa_Credit_0834523C
-// extern const ??? Pal_Credit_08345420
+extern u8 const Img_Fin[];
+extern u16 const Pal_Fin[];
+extern u8 const Img_Credit_08344CD0[];
+extern u16 const Tsa_Credit_0834523C[];
+extern u16 const Pal_Credit_08345420[];
 // extern const ??? gUnk_08345440
 // extern const ??? gUnk_08345934
 // extern const ??? gUnk_08346184
@@ -752,11 +752,11 @@ extern u16 const Pal_Unk_0833C944[];
 // extern const ??? gUnk_08346574
 extern u8 const Img_MonologueText[];
 extern u16 const Pal_MonologueText[];
-// extern const ??? Img_EndingMonologueText3
-// extern const ??? Img_EndingMonologueText1
-// extern const ??? Img_EndingMonologueText4
-// extern const ??? Img_08352160
-// extern const ??? Pal_EndingMonologueText
+extern u8 const Img_EndingMonologueText3[];
+extern u8 const Img_EndingMonologueText1[];
+extern u8 const Img_EndingMonologueText4[];
+extern u8 const Img_08352160[];
+extern u16 const Pal_EndingMonologueText[];
 extern const int gUnk_08353328[];
 // extern const ??? gUnk_08354728
 // extern const ??? gUnk_08354760
@@ -836,11 +836,6 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? gUnk_08380F54
 // extern const ??? gUnk_08380F5A
 // extern const ??? gUnk_08380F62
-
-struct HelpBoxInfo;
-extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B1B0;
-extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B2C8;
-extern struct HelpBoxInfo CONST_DATA HelpInfo_0868B3C4;
 
 // extern CONST_DATA ??? gUnk_0868A4F8
 // extern CONST_DATA ??? gUnk_0868A518

@@ -611,6 +611,7 @@ SECTIONS
         asm/xmap.o(.text);
         src/config.o(.text);
         src/augury.o(.text);
+        src/playrank.o(.text);
         asm/code.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
@@ -851,6 +852,7 @@ SECTIONS
         . = ALIGN(4); data/xmap.o(.data);
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
+        . = ALIGN(4); src/playrank.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);

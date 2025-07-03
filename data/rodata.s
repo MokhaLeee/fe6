@@ -124,8 +124,8 @@ Img_PlayRankCharacters: @ 08342438
 gUnk_08342A98: @ 08342A98
 	.incbin "fe6-base.gba", 0x342A98, (0x342AB8 - 0x342A98) @ length: 0020
 
-	.global gUnk_08342AB8
-gUnk_08342AB8: @ 08342AB8
+	.global Pal_08342AB8
+Pal_08342AB8: @ 08342AB8
 	.incbin "fe6-base.gba", 0x342AB8, (0x342AD8 - 0x342AB8) @ length: 0020
 
 	.global Pal_08342AD8

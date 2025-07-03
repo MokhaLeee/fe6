@@ -15,6 +15,7 @@
 #include "bmio.h"
 #include "chapter.h"
 #include "unitsprite.h"
+#include "playrank.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
 #include "constants/faces.h"

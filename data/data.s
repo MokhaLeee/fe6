@@ -1,47 +1,24 @@
 	.data
 
-	.global HelpInfo_0868B1B0
-HelpInfo_0868B1B0: @ 0868B1B0
-	.incbin "fe6-base.gba", 0x68B1B0, (0x68B2C8 - 0x68B1B0) @ length: 0118
 
-	.global HelpInfo_0868B2C8
-HelpInfo_0868B2C8: @ 0868B2C8
-	.incbin "fe6-base.gba", 0x68B2C8, (0x68B3C4 - 0x68B2C8) @ length: 00FC
-
-	.global HelpInfo_0868B3C4
-HelpInfo_0868B3C4: @ 0868B3C4
-	.incbin "fe6-base.gba", 0x68B3C4, (0x68B3FC - 0x68B3C4) @ length: 0038
-
-	.global gpAuguryBuf
-gpAuguryBuf: @ 0868B3FC
-	.incbin "fe6-base.gba", 0x68B3FC, (0x68B410 - 0x68B3FC) @ length: 0014
-
-	.global gUnk_0868B410
-gUnk_0868B410: @ 0868B410
-	.incbin "fe6-base.gba", 0x68B410, (0x68B418 - 0x68B410) @ length: 0008
-
-	.global gUnk_0868B418
-gUnk_0868B418: @ 0868B418
-	.incbin "fe6-base.gba", 0x68B418, (0x68B420 - 0x68B418) @ length: 0008
-
-	.global gUnk_0868B420
-gUnk_0868B420: @ 0868B420
+	.global Unk_0868B420
+Unk_0868B420: @ 0868B420
 	.incbin "fe6-base.gba", 0x68B420, (0x68B490 - 0x68B420) @ length: 0070
 
 	.global gUnk_0868B490
 gUnk_0868B490: @ 0868B490
 	.incbin "fe6-base.gba", 0x68B490, (0x68B4D0 - 0x68B490) @ length: 0040
 
-	.global gUnk_0868B4D0
-gUnk_0868B4D0: @ 0868B4D0
+	.global Objs_0868B4D0
+Objs_0868B4D0: @ 0868B4D0
 	.incbin "fe6-base.gba", 0x68B4D0, (0x68B5B0 - 0x68B4D0) @ length: 00E0
 
 	.global gUnk_0868B5B0
 gUnk_0868B5B0: @ 0868B5B0
 	.incbin "fe6-base.gba", 0x68B5B0, (0x68B5C8 - 0x68B5B0) @ length: 0018
 
-	.global gUnk_0868B5C8
-gUnk_0868B5C8: @ 0868B5C8
+	.global BaSprite_0868B5C8
+BaSprite_0868B5C8: @ 0868B5C8
 	.incbin "fe6-base.gba", 0x68B5C8, (0x68B5E0 - 0x68B5C8) @ length: 0018
 
 	.global gUnk_0868B5E0
