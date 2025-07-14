@@ -1,58 +1,5 @@
 	.data
 
-
-	.global Unk_0868B420
-Unk_0868B420: @ 0868B420
-	.incbin "fe6-base.gba", 0x68B420, (0x68B490 - 0x68B420) @ length: 0070
-
-	.global gUnk_0868B490
-gUnk_0868B490: @ 0868B490
-	.incbin "fe6-base.gba", 0x68B490, (0x68B4D0 - 0x68B490) @ length: 0040
-
-	.global Objs_0868B4D0
-Objs_0868B4D0: @ 0868B4D0
-	.incbin "fe6-base.gba", 0x68B4D0, (0x68B5B0 - 0x68B4D0) @ length: 00E0
-
-	.global gUnk_0868B5B0
-gUnk_0868B5B0: @ 0868B5B0
-	.incbin "fe6-base.gba", 0x68B5B0, (0x68B5C8 - 0x68B5B0) @ length: 0018
-
-	.global BaSprite_0868B5C8
-BaSprite_0868B5C8: @ 0868B5C8
-	.incbin "fe6-base.gba", 0x68B5C8, (0x68B5E0 - 0x68B5C8) @ length: 0018
-
-	.global gUnk_0868B5E0
-gUnk_0868B5E0: @ 0868B5E0
-	.incbin "fe6-base.gba", 0x68B5E0, (0x68B5E8 - 0x68B5E0) @ length: 0008
-
-	.global ProcScr_0868B5E8
-ProcScr_0868B5E8: @ 0868B5E8
-	.incbin "fe6-base.gba", 0x68B5E8, (0x68B610 - 0x68B5E8) @ length: 0028
-
-	.global ProcScr_0868B610
-ProcScr_0868B610: @ 0868B610
-	.incbin "fe6-base.gba", 0x68B610, (0x68B648 - 0x68B610) @ length: 0038
-
-	.global ProcScr_0868B648
-ProcScr_0868B648: @ 0868B648
-	.incbin "fe6-base.gba", 0x68B648, (0x68B6D8 - 0x68B648) @ length: 0090
-
-	.global ProcScr_0868B6D8
-ProcScr_0868B6D8: @ 0868B6D8
-	.incbin "fe6-base.gba", 0x68B6D8, (0x68B700 - 0x68B6D8) @ length: 0028
-
-	.global ProcScr_0868B700
-ProcScr_0868B700: @ 0868B700
-	.incbin "fe6-base.gba", 0x68B700, (0x68B720 - 0x68B700) @ length: 0020
-
-	.global gUnk_0868B720
-gUnk_0868B720: @ 0868B720
-	.incbin "fe6-base.gba", 0x68B720, (0x68B730 - 0x68B720) @ length: 0010
-
-	.global ProcScr_0868B730
-ProcScr_0868B730: @ 0868B730
-	.incbin "fe6-base.gba", 0x68B730, (0x68B750 - 0x68B730) @ length: 0020
-
 	.global ProcScr_0868B750
 ProcScr_0868B750: @ 0868B750
 	.incbin "fe6-base.gba", 0x68B750, (0x68B768 - 0x68B750) @ length: 0018

@@ -7,17 +7,25 @@
 #include "helpbox.h"
 
 enum videoalloc_playrank {
+	OBPAL_PLAYRANK_2 = 2,
 	OBPAL_PLAYRANK_3 = 3,
 	OBPAL_PLAYRANK_4 = 4,
 	OBPAL_PLAYRANK_5 = 5,
 	OBPAL_PLAYRANK_C = 0xC,
+
+	OBCHR_PLAYRANK_84 = 0x84
 };
 
 struct PlayRankSt {
-	STRUCT_PAD(0x00, 0x42);
+	STRUCT_PAD(0x00, 0x32);
 
-	/* 42 */ u16 unk_42[7];
-	/* 50 */ u16 unk_50[7];
+	/* 32 */ u16 unk_32;
+	/* 34 */ u16 unk_34;
+
+	STRUCT_PAD(0x36, 0x42);
+
+	/* 42 */ i16 xs[7];
+	/* 50 */ i16 ys[7];
 	/* 5E */ u16 unk_5E[7];
 	/* 6C */ u16 unk_6C[7];
 	/* 7A */ u16 unk_7A;
@@ -34,7 +42,7 @@ struct Proc_0868B5E8 {
 	PROC_HEADER;
 
 	/* 2A */ i16 timer1;
-	/* 2C */ i16 anim_timer;
+	/* 2C */ i16 step;
 	/* 2E */ u16 anim_duration;
 	/* 30 */ u16 unk_30;
 	/* 32 */ i16 x, y;
@@ -44,24 +52,48 @@ struct Proc_0868B5E8 {
 void func_fe6_0808DE5C(struct Proc_0868B5E8 *proc);
 void func_fe6_0808DE70(struct Proc_0868B5E8 *proc);
 void func_fe6_0808DEA4(struct Proc_0868B5E8 *proc);
-void func_fe6_0808DF3C(u16 pal_bank, u16 x, u16 y);
+void func_fe6_0808DF3C(u16 pal_bank, int x, int y);
 void func_fe6_0808DF78(int a, int b);
 
 void func_fe6_0808DFC4(struct Proc_0868B5E8 *proc);
 void func_fe6_0808DFCC(struct Proc_0868B5E8 *proc);
 void func_fe6_0808E0DC(struct Proc_0868B5E8 *proc);
-// func_fe6_0808E1D0
-// func_fe6_0808E1E4
-// func_fe6_0808E264
-// func_fe6_0808E284
-// func_fe6_0808E2D0
-// func_fe6_0808E2F0
-// func_fe6_0808E2F4
-// func_fe6_0808E390
-// func_fe6_0808E420
-// func_fe6_0808E434
-// func_fe6_0808E4E8
-// func_fe6_0808E5F0
+
+struct Proc_0868B648 {
+	PROC_HEADER;
+};
+
+void func_fe6_0808E1D0(void);
+void func_fe6_0808E1E4(void);
+void func_fe6_0808E264(struct Proc_0868B648 *proc);
+void func_fe6_0808E284(ProcPtr proc);
+void func_fe6_0808E2D0(struct Proc_0868B648 *proc);
+void func_fe6_0808E2F0(struct Proc_0868B648 *proc);
+
+void func_fe6_0808E2F4(void);
+void func_fe6_0808E390(void);
+
+struct Proc_0868B700 {
+	PROC_HEADER;
+
+	i16 timer;
+	i16 layer;
+};
+
+void func_fe6_0808E420(struct Proc_0868B700 *proc);
+void func_fe6_0808E434(struct Proc_0868B700 *proc);
+
+struct Proc_0868B730 {
+	PROC_HEADER;
+
+	u16 unk_2A;
+	i16 timer;
+	i16 total_sprites;
+};
+
+void func_fe6_0808E4E8(struct Proc_0868B730 *proc);
+void func_fe6_0808E5F0(struct Proc_0868B730 *proc);
+
 // func_fe6_0808E6E0
 // func_fe6_0808E6FC
 // func_fe6_0808E710
@@ -136,18 +168,17 @@ extern CONST_DATA struct PlayRankSt *gpPlayRankSt;
 // extern CONST_DATA ??? Sprite_0868B410
 // extern CONST_DATA ??? Sprite_0868B418
 
-struct UnkStruct_0868B420 {
+struct TotalPlayRankConf {
 	/* 00 */ u16 msg;
-
-	STRUCT_PAD(0x2, 0xC);
-
-	/* 0C */ u8 unk_0C;
-	/* 0D */ u8 unk_0D;
+	/* 04 */ int color;
+	/* 08 */ u8 (*func)(void);
+	/* 0C */ u8 x;
+	/* 0D */ u8 y;
 	/* 0E */ u8 unk_0E;
 };
 
-extern CONST_DATA struct UnkStruct_0868B420 Unk_0868B420[];
-extern CONST_DATA struct UnkStruct_0868B420 gUnk_0868B490[];
+extern CONST_DATA struct TotalPlayRankConf gTotalPlayRankConf1[];
+extern CONST_DATA struct TotalPlayRankConf gTotalPlayRankConf2[];
 
 struct UnkStruct_0868B4D0 {
 	/* 00 */ u16 *obj;
@@ -155,7 +186,20 @@ struct UnkStruct_0868B4D0 {
 };
 
 extern CONST_DATA struct UnkStruct_0868B4D0 Objs_0868B4D0[];
-// extern CONST_DATA ??? gUnk_0868B5B0
+
+struct UnkStruct_0868b508 {
+	i8 chr;
+	u8 len, size;
+	u8 _pad_;
+};
+extern CONST_DATA struct UnkStruct_0868b508 Unk_0868b508[];
+
+struct UnkStruct_0868B5B0 {
+	struct UnkStruct_0868b508 *unk_00;
+	int unk_04;
+};
+extern CONST_DATA struct UnkStruct_0868B5B0 gUnk_0868B5B0[];
+
 extern CONST_DATA struct BaSpriteData BaSprite_0868B5C8[];
 extern CONST_DATA u8 gUnk_0868B5E0[];
 extern CONST_DATA struct ProcScr ProcScr_0868B5E8[];
@@ -163,7 +207,7 @@ extern CONST_DATA struct ProcScr ProcScr_0868B610[];
 extern CONST_DATA struct ProcScr ProcScr_0868B648[];
 extern CONST_DATA struct ProcScr ProcScr_0868B6D8[];
 extern CONST_DATA struct ProcScr ProcScr_0868B700[];
-// extern CONST_DATA ??? gUnk_0868B720
+// extern CONST_DATA ??? Sprite_0868B720
 extern CONST_DATA struct ProcScr ProcScr_0868B730[];
 extern CONST_DATA struct ProcScr ProcScr_0868B750[];
 extern CONST_DATA struct ProcScr ProcScr_0868B768[];
