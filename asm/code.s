@@ -3,417 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start func_fe6_0808E5F0
-func_fe6_0808E5F0: @ 0x0808E5F0
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	sub sp, #4
-
-	adds r4, r0, #0
-	movs r7, #0
-
-	ldr r1, .L0808E6B8 @ =unk_02016A1E
-	movs r0, #0x80
-	lsls r0, r0, #1
-	ldrh r1, [r1]
-	subs r1, r0, r1
-
-	ldr r0, .L0808E6BC @ =unk_02016A2A
-	ldrh r0, [r0]
-	cmp r0, #0
-	bne .L0808E61E
-	adds r1, #0x80
-	ldr r0, .L0808E6C0 @ =0x000001FF
-	ands r1, r0
-	ldr r2, .L0808E6C4 @ =Sprite_0868B720
-	ldr r3, .L0808E6C8 @ =0x00002084
-	movs r0, #0xa2
-	bl PutOamHiRam
-.L0808E61E:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0xe
-	bgt .L0808E646
-	strh r7, [r4, #0x2c]
-	ldr r2, .L0808E6CC @ =gPlayRankLayer
-	ldrh r1, [r2]
-	movs r3, #0x2e
-	ldrsh r0, [r4, r3]
-	cmp r1, r0
-	bge .L0808E646
-	adds r0, r1, #1
-	strh r0, [r2]
-	ldr r0, .L0808E6D0 @ =ProcScr_0868B700
-	movs r1, #3
-	bl SpawnProc
-.L0808E646:
-	ldr r2, .L0808E6D4 @ =gUnk_0868B5B0
-	ldr r0, .L0808E6BC @ =unk_02016A2A
-	ldrh r0, [r0]
-	lsls r0, r0, #3
-	adds r0, r0, r2
-	ldr r1, [r0]
-	movs r6, #0
-	ldr r0, .L0808E6CC @ =gPlayRankLayer
-	ldrh r0, [r0]
-	cmp r6, r0
-	bge .L0808E6AA
-	mov r8, r2
-	adds r4, r1, #0
-.L0808E660:
-	ldr r0, .L0808E6BC @ =unk_02016A2A
-	ldrh r0, [r0]
-	lsls r1, r0, #3
-	add r1, r8
-
-	ldrb r0, [r1, #4]
-	adds r2, r0, r7
-	lsls r0, r6, #9
-	adds r3, r2, r0
-
-	ldrb r1, [r1, #5]
-	movs r0, #0x84
-	lsls r0, r0, #1
-	adds r2, r1, r0
-	ldrb r0, [r4, #2]
-	ldr r5, .L0808E6D8 @ =Sprite_0868B410
-	cmp r0, #0
-	beq .L0808E682
-	ldr r5, .L0808E6DC @ =Sprite_0868B418
-.L0808E682:
-	movs r0, #0
-	ldrsb r0, [r4, r0]
-	lsls r0, r0, #1
-	movs r1, #0xc6
-	lsls r1, r1, #6
-	adds r0, r0, r1
-	str r0, [sp]
-	movs r0, #4
-	adds r1, r3, #0
-	adds r3, r5, #0
-	bl PutSpriteExt
-	ldrb r3, [r4, #1]
-	adds r7, r3, r7
-	adds r4, #4
-	adds r6, #1
-	ldr r0, .L0808E6CC @ =gPlayRankLayer
-	ldrh r0, [r0]
-	cmp r6, r0
-	blt .L0808E660
-.L0808E6AA:
-	add sp, #4
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808E6B8: .4byte unk_02016A1E
-.L0808E6BC: .4byte unk_02016A2A
-.L0808E6C0: .4byte 0x000001FF
-.L0808E6C4: .4byte Sprite_0868B720
-.L0808E6C8: .4byte 0x00002084
-.L0808E6CC: .4byte gPlayRankLayer
-.L0808E6D0: .4byte ProcScr_0868B700
-.L0808E6D4: .4byte gUnk_0868B5B0
-.L0808E6D8: .4byte Sprite_0868B410
-.L0808E6DC: .4byte Sprite_0868B418
-
-	thumb_func_start func_fe6_0808E6E0
-func_fe6_0808E6E0: @ 0x0808E6E0
-	push {lr}
-	ldr r2, .L0808E6F4 @ =Sprite_0868B720
-	ldr r3, .L0808E6F8 @ =0x00002084
-	movs r0, #0x58
-	movs r1, #0x3e
-	bl PutOamHiRam
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808E6F4: .4byte Sprite_0868B720
-.L0808E6F8: .4byte 0x00002084
-
-	thumb_func_start func_fe6_0808E6FC
-func_fe6_0808E6FC: @ 0x0808E6FC
-	push {lr}
-	ldr r0, .L0808E70C @ =ProcScr_0868B750
-	movs r1, #3
-	bl SpawnProc
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808E70C: .4byte ProcScr_0868B750
-
-	thumb_func_start func_fe6_0808E710
-func_fe6_0808E710: @ 0x0808E710
-	ldr r2, .L0808E72C @ =gpPlayRankSt
-	ldr r0, [r2]
-	movs r1, #0
-	str r1, [r0, #0x38]
-	str r1, [r0, #0x3c]
-	adds r0, #0x40
-	strb r1, [r0]
-	ldr r0, [r2]
-	adds r0, #0x41
-	strb r1, [r0]
-	ldr r0, [r2]
-	adds r0, #0x9f
-	strb r1, [r0]
-	bx lr
-	.align 2, 0
-.L0808E72C: .4byte gpPlayRankSt
-
-	thumb_func_start func_fe6_0808E730
-func_fe6_0808E730: @ 0x0808E730
-	push {r4, lr}
-	ldr r3, .L0808E798 @ =gpPlayRankSt
-	ldr r0, [r3]
-	adds r0, #0x40
-	ldrb r1, [r0]
-	adds r1, #3
-	strb r1, [r0]
-	ldr r0, [r3]
-	adds r0, #0x41
-	ldrb r1, [r0]
-	adds r1, #1
-	strb r1, [r0]
-	ldr r0, [r3]
-	mov ip, r0
-	mov r2, ip
-	adds r2, #0x40
-	ldrb r4, [r2]
-	lsrs r1, r4, #2
-	mov r4, ip
-	ldr r0, [r4, #0x38]
-	adds r0, r0, r1
-	str r0, [r4, #0x38]
-	mov r0, ip
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsrs r1, r0, #2
-	ldr r0, [r4, #0x3c]
-	adds r0, r0, r1
-	str r0, [r4, #0x3c]
-	movs r1, #3
-	adds r0, r1, #0
-	ldrb r4, [r2]
-	ands r0, r4
-	strb r0, [r2]
-	ldr r0, [r3]
-	adds r0, #0x41
-	ldrb r2, [r0]
-	ands r1, r2
-	strb r1, [r0]
-	ldr r2, [r3]
-	ldr r1, [r2, #0x38]
-	movs r0, #0xff
-	ands r1, r0
-	ldr r2, [r2, #0x3c]
-	ands r2, r0
-	movs r0, #2
-	bl SetBgOffset
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808E798: .4byte gpPlayRankSt
-
-	thumb_func_start func_fe6_0808E79C
-func_fe6_0808E79C: @ 0x0808E79C
-	push {r4, r5, r6, lr}
-	ldr r6, .L0808E7C8 @ =gpPlayRankSt
-	movs r5, #0xa0
-	movs r4, #7
-.L0808E7A4:
-	ldr r0, [r6]
-	adds r0, r0, r5
-	movs r1, #0xf
-	bl InitText
-	adds r5, #8
-	subs r4, #1
-	cmp r4, #0
-	bge .L0808E7A4
-	ldr r0, .L0808E7C8 @ =gpPlayRankSt
-	ldr r0, [r0]
-	adds r0, #0xe0
-	movs r1, #3
-	bl InitText
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808E7C8: .4byte gpPlayRankSt
-
-	thumb_func_start func_fe6_0808E7CC
-func_fe6_0808E7CC: @ 0x0808E7CC
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #0x14
-	mov sb, r0
-	mov r8, r1
-	lsls r2, r2, #0x18
-	lsrs r4, r2, #0x18
-	str r4, [sp, #0x10]
-	movs r6, #0
-	cmp r1, #0x32
-	bne .L0808E818
-	ldr r7, .L0808E814 @ =0x00000BA1
-	adds r0, r7, #0
-	bl DecodeMsg
-	bl GetStringTextLen
-	adds r5, r0, #0
-	cmp r4, #0
-	beq .L0808E800
-	movs r0, #0x30
-	subs r0, r0, r5
-	asrs r6, r0, #1
-.L0808E800:
-	adds r0, r7, #0
-	bl DecodeMsg
-	adds r3, r0, #0
-	mov r0, sb
-	adds r1, r6, #0
-	movs r2, #0
-	bl Text_InsertDrawString
-	b .L0808E91E
-	.align 2, 0
-.L0808E814: .4byte 0x00000BA1
-.L0808E818:
-	ldr r0, .L0808E930 @ =0x00000B9E
-	bl DecodeMsg
-	bl GetStringTextLen
-	str r0, [sp]
-	adds r5, r0, #0
-	mov r0, r8
-	asrs r4, r0, #1
-	adds r0, r4, #0
-	movs r1, #0xa
-	bl __divsi3
-	adds r7, r0, #0
-	adds r0, r4, #0
-	movs r1, #0xa
-	bl __modsi3
-	adds r4, r0, #0
-	cmp r7, #0
-	beq .L0808E858
-	ldr r1, .L0808E934 @ =gUnk_0868B788
-	lsls r0, r7, #1
-	adds r0, r0, r1
-	ldrh r0, [r0]
-	bl DecodeMsg
-	bl GetStringTextLen
-	subs r0, #1
-	str r0, [sp, #4]
-	adds r5, r5, r0
-.L0808E858:
-	lsls r0, r4, #1
-	ldr r1, .L0808E934 @ =gUnk_0868B788
-	adds r0, r0, r1
-	mov sl, r0
-	ldrh r0, [r0]
-	bl DecodeMsg
-	bl GetStringTextLen
-	subs r0, #1
-	str r0, [sp, #8]
-	adds r5, r5, r0
-	ldr r0, .L0808E938 @ =0x00000B9F
-	bl DecodeMsg
-	bl GetStringTextLen
-	str r0, [sp, #0xc]
-	adds r5, r5, r0
-	movs r4, #1
-	mov r0, r8
-	ands r4, r0
-	cmp r4, #0
-	beq .L0808E896
-	movs r0, #0xba
-	lsls r0, r0, #4
-	bl DecodeMsg
-	bl GetStringTextLen
-	adds r5, r5, r0
-.L0808E896:
-	ldr r1, [sp, #0x10]
-	cmp r1, #0
-	beq .L0808E8A2
-	movs r0, #0x30
-	subs r0, r0, r5
-	asrs r6, r0, #1
-.L0808E8A2:
-	ldr r0, .L0808E930 @ =0x00000B9E
-	bl DecodeMsg
-	adds r3, r0, #0
-	mov r0, sb
-	adds r1, r6, #0
-	movs r2, #0
-	bl Text_InsertDrawString
-	ldr r0, [sp]
-	adds r6, r6, r0
-	cmp r7, #0
-	beq .L0808E8D8
-	lsls r0, r7, #1
-	ldr r1, .L0808E934 @ =gUnk_0868B788
-	adds r0, r0, r1
-	ldrh r0, [r0]
-	bl DecodeMsg
-	adds r3, r0, #0
-	mov r0, sb
-	adds r1, r6, #0
-	movs r2, #0
-	bl Text_InsertDrawString
-	ldr r0, [sp, #4]
-	adds r6, r6, r0
-.L0808E8D8:
-	mov r1, sl
-	ldrh r0, [r1]
-	bl DecodeMsg
-	adds r3, r0, #0
-	mov r0, sb
-	adds r1, r6, #0
-	movs r2, #0
-	bl Text_InsertDrawString
-	ldr r0, [sp, #8]
-	adds r6, r6, r0
-	ldr r0, .L0808E938 @ =0x00000B9F
-	bl DecodeMsg
-	adds r3, r0, #0
-	mov r0, sb
-	adds r1, r6, #0
-	movs r2, #0
-	bl Text_InsertDrawString
-	ldr r0, [sp, #0xc]
-	adds r6, r6, r0
-	cmp r4, #0
-	beq .L0808E91E
-	movs r0, #0xba
-	lsls r0, r0, #4
-	bl DecodeMsg
-	adds r3, r0, #0
-	mov r0, sb
-	adds r1, r6, #0
-	movs r2, #0
-	bl Text_InsertDrawString
-.L0808E91E:
-	adds r0, r5, #0
-	add sp, #0x14
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0808E930: .4byte 0x00000B9E
-.L0808E934: .4byte gUnk_0868B788
-.L0808E938: .4byte 0x00000B9F
-
 	thumb_func_start func_fe6_0808E93C
 func_fe6_0808E93C: @ 0x0808E93C
 	push {r4, r5, r6, r7, lr}
@@ -461,7 +50,7 @@ func_fe6_0808E93C: @ 0x0808E93C
 	ldr r0, [r2]
 	adds r0, r0, r6
 	movs r2, #1
-	bl func_fe6_0808E7CC
+	bl PlayRank_DrawChapterText
 	mov r3, sb
 	ldr r0, [r3]
 	lsls r0, r0, #0x1a
@@ -998,7 +587,7 @@ PlayRank_InitDisplay: @ 0x0808EDE0
 	bl ResetText
 	bl UnpackUiWindowFrameGraphics
 	bl ResetTextFont
-	bl func_fe6_0808E79C
+	bl PlayRank_InitTexts
 	ldr r7, .L0808EFE8 @ =gDispIo
 	movs r4, #1
 	ldrb r0, [r7, #1]
@@ -2536,7 +2125,7 @@ func_fe6_0808FA14: @ 0x0808FA14
 	bl ResetText
 	bl UnpackUiWindowFrameGraphics
 	bl ResetTextFont
-	bl func_fe6_0808E79C
+	bl PlayRank_InitTexts
 	ldr r7, .L0808FCA4 @ =gDispIo
 	movs r4, #1
 	ldrb r0, [r7, #1]
@@ -6054,7 +5643,7 @@ func_fe6_0809172C: @ 0x0809172C
 	ldrb r1, [r0]
 	mov r0, sb
 	movs r2, #0
-	bl func_fe6_0808E7CC
+	bl PlayRank_DrawChapterText
 	adds r1, r0, #0
 	ldr r2, [sp]
 	str r1, [r2, #0x54]
@@ -6432,7 +6021,7 @@ func_fe6_08091A64: @ 0x08091A64
 	ldrb r1, [r0]
 	mov r0, r8
 	movs r2, #0
-	bl func_fe6_0808E7CC
+	bl PlayRank_DrawChapterText
 	adds r1, r0, #0
 	mov r0, sl
 	str r1, [r0, #0x54]
@@ -6653,7 +6242,7 @@ func_fe6_08091C40: @ 0x08091C40
 	ldrb r1, [r0]
 	mov r0, r8
 	movs r2, #0
-	bl func_fe6_0808E7CC
+	bl PlayRank_DrawChapterText
 	adds r1, r0, #0
 	mov r0, sl
 	str r1, [r0, #0x54]

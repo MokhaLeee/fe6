@@ -4,10 +4,12 @@
 #include "hardware.h"
 #include "augury.h"
 #include "oam.h"
+#include "msg.h"
 #include "text.h"
 #include "banim.h"
 #include "sprite.h"
 #include "armfunc.h"
+#include "constants/chapters.h"
 #include "constants/msg.h"
 
 #include "playrank.h"
@@ -692,7 +694,6 @@ void func_fe6_0808E4E8(struct Proc_0868B730 *proc)
 	}
 }
 
-#if 0
 void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 {
 	int i, val, y;
@@ -726,12 +727,176 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 			4,
 			oam1,
 			oam0,
-			ref->size != 0 ? Sprite_0868B410 : Sprite_0868B418,
-			ref->chr * 2 + 0x3180
+			ref[i].size != 0 ? Sprite_0868B418 : Sprite_0868B410,
+			ref[i].chr * 2 + 0x3180
 		);
 
-		val = ref->len + val;
-		ref++;
+		val = ref[i].len + val;
 	}
 }
+
+struct ProcScr CONST_DATA ProcScr_0868B750[] = {
+	PROC_19,
+	PROC_REPEAT(func_fe6_0808E6E0),
+	PROC_END,
+};
+
+void func_fe6_0808E6E0(void)
+{
+	PutOamHi(0x58, 0x3E, Sprite_0868B720, 0x2084);
+}
+
+void func_fe6_0808E6FC(void)
+{
+	SpawnProc(ProcScr_0868B750, PROC_TREE_3);
+}
+
+struct ProcScr CONST_DATA ProcScr_0868B768[] = {
+	PROC_19,
+	PROC_CALL(func_fe6_0808E710),
+	PROC_REPEAT(func_fe6_0808E730),
+	PROC_END,
+};
+
+void func_fe6_0808E710(void)
+{
+	gpPlayRankSt->x = 0;
+	gpPlayRankSt->y = 0;
+	gpPlayRankSt->x_step = 0;
+	gpPlayRankSt->y_step = 0;
+	gpPlayRankSt->step = 0;
+}
+
+void func_fe6_0808E730(void)
+{
+	gpPlayRankSt->x_step += 3;
+	gpPlayRankSt->y_step += 1;
+	gpPlayRankSt->x += gpPlayRankSt->x_step / 4;
+	gpPlayRankSt->y += gpPlayRankSt->y_step / 4;
+
+	gpPlayRankSt->x_step &= 3;
+	gpPlayRankSt->y_step &= 3;
+
+	SetBgOffset(BG_2, gpPlayRankSt->x & 0xFF, gpPlayRankSt->y & 0xFF);
+}
+
+void PlayRank_InitTexts(void)
+{
+	int i;
+
+	for (i = 0; i < 8; i++)
+		InitText(&gpPlayRankSt->texts[i], 0xF);
+
+	InitText(&gpPlayRankSt->texts[PLAYRANK_TEXT_8], 0x3);
+}
+
+CONST_DATA u16 Msgs_PlayRankNum[10] = {
+	MSG_PLAYRANK_0, 
+	MSG_PLAYRANK_1,
+	MSG_PLAYRANK_2,
+	MSG_PLAYRANK_3,
+	MSG_PLAYRANK_4,
+	MSG_PLAYRANK_5,
+	MSG_PLAYRANK_6,
+	MSG_PLAYRANK_7,
+	MSG_PLAYRANK_8,
+	MSG_PLAYRANK_9
+};
+
+int PlayRank_DrawChapterText(struct Text *text, int chapter_gaiden, u8 centered)
+{
+	int is_gaiden;
+    int ret;
+    int x;
+	int hi, lo;
+    int lens[4];
+
+    x = 0;
+
+	if (chapter_gaiden == (CHAPTER_FINAL << 1)) {
+		ret = GetStringTextLen(DecodeMsg(MSG_PLAYRANK_FINAL));
+
+		if (centered != false)
+			x = (0x30 - ret) >> 1;
+
+		Text_InsertDrawString(text, x, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_PLAYRANK_FINAL));
+		return ret;
+	}
+
+	lens[0] = GetStringTextLen(DecodeMsg(MSG_PLAYRANK_PREFIX));
+	ret = lens[0];
+
+	hi = (chapter_gaiden >> 1) / 10;
+	lo = (chapter_gaiden >> 1) % 10;
+
+	if (hi != 0) {
+		lens[1] = GetStringTextLen(DecodeMsg(Msgs_PlayRankNum[hi])) - 1;
+		ret += lens[1];
+	}
+
+	lens[2] = GetStringTextLen(DecodeMsg(Msgs_PlayRankNum[lo])) - 1;
+	ret += lens[2];
+
+	lens[3] = GetStringTextLen(DecodeMsg(MSG_PLAYRANK_SUBFIX));
+	ret += lens[3];
+
+	is_gaiden = chapter_gaiden & 1;
+	if (is_gaiden)
+		ret += GetStringTextLen(DecodeMsg(MSG_PLAYRANK_GAIDEN));
+
+	if (centered != false)
+		x = (0x30 - ret) >> 1;
+
+	Text_InsertDrawString(text, x, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_PLAYRANK_PREFIX));
+	x += lens[0];
+
+	if (hi != 0) {
+		Text_InsertDrawString(text, x, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(Msgs_PlayRankNum[hi]));
+		x += lens[1];
+	}
+
+	Text_InsertDrawString(text, x, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(Msgs_PlayRankNum[lo]));
+	x += lens[2];
+
+	Text_InsertDrawString(text, x, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_PLAYRANK_SUBFIX));
+	x += lens[3];
+
+	if (is_gaiden != 0)
+		Text_InsertDrawString(text, x, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_PLAYRANK_GAIDEN));
+
+	return ret;
+}
+
+#if 0
+bool func_fe6_0808E93C(int line)
+{
+	if (unk_02016A24 < GetNextChapterStatsSlot())
+		return true;
+}
 #endif
+
+CONST_DATA u8 gUnk_0868B79C[] = { 0x0F, 0x19, 0x23, 0x28 };
+CONST_DATA u8 gUnk_0868B7A0[] = { 0x06, 0x04, 0x02, 0x01 };
+CONST_DATA u8 gUnk_0868B7A4[] = { 0x04, 0x03, 0x02, 0x01 };
+CONST_DATA int gUnk_0868B7A8[4] = { 1600, 3200, 4800, 6000 };
+
+CONST_DATA u8 gUnk_0868B7B8[0x1E] = {
+	0x28, 0x50, 0x78, 0xA0, 0xC8,
+	0x0A, 0x1E, 0x32, 0x46, 0x5A,
+	0x0F, 0x23, 0x37, 0x4B, 0x5F,
+	0x00, 0x14, 0x28, 0x3C, 0x50,
+	0x00, 0x14, 0x28, 0x3C, 0x50,
+	0x05, 0x19, 0x2D, 0x41, 0x55,
+};
+
+CONST_DATA u16 gUnk_0868B7D6[6] = {
+	0x78, 0xFA, 0x186, 0x212, 0x276, 0x276
+};
+
+CONST_DATA u8 gUnk_0868B7E2[6] = {
+	20, 40, 60, 80, 100, 0
+};
+
+CONST_DATA u16 gUnk_0868B7E8[6] = {
+	100, 150, 200, 250, 300, 300
+};

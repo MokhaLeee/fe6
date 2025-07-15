@@ -1,49 +1,5 @@
 	.data
 
-	.global ProcScr_0868B750
-ProcScr_0868B750: @ 0868B750
-	.incbin "fe6-base.gba", 0x68B750, (0x68B768 - 0x68B750) @ length: 0018
-
-	.global ProcScr_0868B768
-ProcScr_0868B768: @ 0868B768
-	.incbin "fe6-base.gba", 0x68B768, (0x68B788 - 0x68B768) @ length: 0020
-
-	.global gUnk_0868B788
-gUnk_0868B788: @ 0868B788
-	.incbin "fe6-base.gba", 0x68B788, (0x68B79C - 0x68B788) @ length: 0014
-
-	.global gUnk_0868B79C
-gUnk_0868B79C: @ 0868B79C
-	.incbin "fe6-base.gba", 0x68B79C, (0x68B7A0 - 0x68B79C) @ length: 0004
-
-	.global gUnk_0868B7A0
-gUnk_0868B7A0: @ 0868B7A0
-	.incbin "fe6-base.gba", 0x68B7A0, (0x68B7A4 - 0x68B7A0) @ length: 0004
-
-	.global gUnk_0868B7A4
-gUnk_0868B7A4: @ 0868B7A4
-	.incbin "fe6-base.gba", 0x68B7A4, (0x68B7A8 - 0x68B7A4) @ length: 0004
-
-	.global gUnk_0868B7A8
-gUnk_0868B7A8: @ 0868B7A8
-	.incbin "fe6-base.gba", 0x68B7A8, (0x68B7B8 - 0x68B7A8) @ length: 0010
-
-	.global gUnk_0868B7B8
-gUnk_0868B7B8: @ 0868B7B8
-	.incbin "fe6-base.gba", 0x68B7B8, (0x68B7D6 - 0x68B7B8) @ length: 001E
-
-	.global gUnk_0868B7D6
-gUnk_0868B7D6: @ 0868B7D6
-	.incbin "fe6-base.gba", 0x68B7D6, (0x68B7E2 - 0x68B7D6) @ length: 000C
-
-	.global gUnk_0868B7E2
-gUnk_0868B7E2: @ 0868B7E2
-	.incbin "fe6-base.gba", 0x68B7E2, (0x68B7E8 - 0x68B7E2) @ length: 0006
-
-	.global gUnk_0868B7E8
-gUnk_0868B7E8: @ 0868B7E8
-	.incbin "fe6-base.gba", 0x68B7E8, (0x68B7F4 - 0x68B7E8) @ length: 000C
-
 	.global BgConfig_PlayRank
 BgConfig_PlayRank: @ 0868B7F4
 	.incbin "fe6-base.gba", 0x68B7F4, (0x68B80C - 0x68B7F4) @ length: 0018

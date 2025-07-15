@@ -2,6 +2,7 @@
 
 #include "prelude.h"
 #include "proc.h"
+#include "text.h"
 #include "banim.h"
 #include "banim_sprite.h"
 #include "helpbox.h"
@@ -16,14 +17,27 @@ enum videoalloc_playrank {
 	OBCHR_PLAYRANK_84 = 0x84
 };
 
+enum PlayRankSt_texts_idx {
+	PLAYRANK_TEXT_0,
+	PLAYRANK_TEXT_1,
+	PLAYRANK_TEXT_2,
+	PLAYRANK_TEXT_3,
+	PLAYRANK_TEXT_4,
+	PLAYRANK_TEXT_5,
+	PLAYRANK_TEXT_6,
+	PLAYRANK_TEXT_7,
+	PLAYRANK_TEXT_8,
+
+	PLAYRANK_TEXT_MAX
+};
+
 struct PlayRankSt {
 	STRUCT_PAD(0x00, 0x32);
 
 	/* 32 */ u16 unk_32;
 	/* 34 */ u16 unk_34;
-
-	STRUCT_PAD(0x36, 0x42);
-
+	/* 38 */ int x, y;
+	/* 40 */ u8 x_step, y_step;
 	/* 42 */ i16 xs[7];
 	/* 50 */ i16 ys[7];
 	/* 5E */ u16 unk_5E[7];
@@ -32,6 +46,7 @@ struct PlayRankSt {
 	/* 7C */ u16 *objs[7];
 	/* 98 */ u8 unk_98[7];
 	/* 9F */ u8 step;
+	/* A0 */ struct Text texts[PLAYRANK_TEXT_MAX];
 };
 
 void func_fe6_0808DD40(void);
@@ -94,12 +109,14 @@ struct Proc_0868B730 {
 void func_fe6_0808E4E8(struct Proc_0868B730 *proc);
 void func_fe6_0808E5F0(struct Proc_0868B730 *proc);
 
-// func_fe6_0808E6E0
-// func_fe6_0808E6FC
-// func_fe6_0808E710
-// func_fe6_0808E730
-// func_fe6_0808E79C
-// func_fe6_0808E7CC
+void func_fe6_0808E6E0(void);
+void func_fe6_0808E6FC(void);
+
+void func_fe6_0808E710(void);
+void func_fe6_0808E730(void);
+
+// PlayRank_InitTexts
+// PlayRank_DrawChapterText
 // func_fe6_0808E93C
 // func_fe6_0808EA74
 // func_fe6_0808EB94
@@ -211,7 +228,7 @@ extern CONST_DATA u16 Sprite_0868B720[];
 extern CONST_DATA struct ProcScr ProcScr_0868B730[];
 extern CONST_DATA struct ProcScr ProcScr_0868B750[];
 extern CONST_DATA struct ProcScr ProcScr_0868B768[];
-// extern CONST_DATA ??? gUnk_0868B788
+// extern CONST_DATA ??? Msgs_PlayRankNum
 // extern CONST_DATA ??? gUnk_0868B79C
 // extern CONST_DATA ??? gUnk_0868B7A0
 // extern CONST_DATA ??? gUnk_0868B7A4
