@@ -74,6 +74,7 @@ func_fe6_0808E5F0: @ 0x0808E5F0
 	adds r2, r0, r7
 	lsls r0, r6, #9
 	adds r3, r2, r0
+
 	ldrb r1, [r1, #5]
 	movs r0, #0x84
 	lsls r0, r0, #1

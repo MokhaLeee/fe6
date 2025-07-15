@@ -200,7 +200,7 @@ SECTIONS
         . = 0x01E7AC; EkrDragonProcs = .;
         . = 0x01E7B4; gEkrDragonDeamonProcs = .;
         . = 0x01E7BC; gpProcEkrIdunnBodyFlashing = .;
-        . = 0x01E7C0; gEkrDragonIntroDone = .;
+        . = 0x01E7C0; gEkrDragonfxState = .;
         . = 0x01E7C4; gEkrDragonFastenConf = .;
         . = 0x01E7C8; gEkrDragonState = .;
         . = 0x01E7CC; gUnk_Banim_0201E7CC = .;

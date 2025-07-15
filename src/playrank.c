@@ -321,9 +321,9 @@ CONST_DATA struct UnkStruct_0868b508 Unk_0868B574[] = {
 };
 
 CONST_DATA struct UnkStruct_0868B5B0 gUnk_0868B5B0[] = {
-	{ Unk_0868B508, 0x000E },
-	{ Unk_0868B534, 0x1210 },
-	{ Unk_0868B574, 0x121C }
+	{ Unk_0868B508, 0x0E, 0x00 },
+	{ Unk_0868B534, 0x10, 0x12 },
+	{ Unk_0868B574, 0x1C, 0x12 }
 };
 
 void func_fe6_0808DD40(void)
@@ -695,8 +695,10 @@ void func_fe6_0808E4E8(struct Proc_0868B730 *proc)
 #if 0
 void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 {
-	int i, time, y;
+	int i, val, y;
 	struct UnkStruct_0868b508 *ref;
+
+	val = 0;
 
 	y= 0x100 - unk_02016A1E;
 	if (unk_02016A2A == 0) {
@@ -705,8 +707,7 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 		PutOamHi(0xA2, y, Sprite_0868B720, OAM2_PAL(OBPAL_PLAYRANK_2) + OBCHR_PLAYRANK_84);
 	}
 
-	time = ++proc->timer;
-	if (time < 0xF) {
+	if (++proc->timer < 0xF) {
 		proc->timer = 0;
 
 		if (gPlayRankLayer < proc->total_sprites) {
@@ -716,6 +717,21 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 	}
 
 	ref = gUnk_0868B5B0[unk_02016A2A].unk_00;
+	for (i = 0; i < gPlayRankLayer; i++) {
+		int oam1 = gUnk_0868B5B0[unk_02016A2A].x + val + (i << 9);
+		int oam0 = gUnk_0868B5B0[unk_02016A2A].y + 0x108;
 
+
+		PutSpriteExt(
+			4,
+			oam1,
+			oam0,
+			ref->size != 0 ? Sprite_0868B410 : Sprite_0868B418,
+			ref->chr * 2 + 0x3180
+		);
+
+		val = ref->len + val;
+		ref++;
+	}
 }
 #endif

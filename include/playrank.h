@@ -196,7 +196,7 @@ extern CONST_DATA struct UnkStruct_0868b508 Unk_0868b508[];
 
 struct UnkStruct_0868B5B0 {
 	struct UnkStruct_0868b508 *unk_00;
-	int unk_04;
+	u8 x, y, _pad_[2];
 };
 extern CONST_DATA struct UnkStruct_0868B5B0 gUnk_0868B5B0[];
 
@@ -207,7 +207,7 @@ extern CONST_DATA struct ProcScr ProcScr_0868B610[];
 extern CONST_DATA struct ProcScr ProcScr_0868B648[];
 extern CONST_DATA struct ProcScr ProcScr_0868B6D8[];
 extern CONST_DATA struct ProcScr ProcScr_0868B700[];
-// extern CONST_DATA ??? Sprite_0868B720
+extern CONST_DATA u16 Sprite_0868B720[];
 extern CONST_DATA struct ProcScr ProcScr_0868B730[];
 extern CONST_DATA struct ProcScr ProcScr_0868B750[];
 extern CONST_DATA struct ProcScr ProcScr_0868B768[];

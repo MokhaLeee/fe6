@@ -1282,12 +1282,12 @@ Pal_081C4DE8: @ 081C4DE8
 Tsa_EkrIdunn_081C4E28: @ 081C4E28
 	.incbin "fe6-base.gba", 0x1C4E28, (0x1C5264 - 0x1C4E28) @ length: 043C
 
-	.global gUnk_081C5264
-gUnk_081C5264: @ 081C5264
+	.global Tsa_EkrIdunn_081C5264
+Tsa_EkrIdunn_081C5264: @ 081C5264
 	.incbin "fe6-base.gba", 0x1C5264, (0x1C5688 - 0x1C5264) @ length: 0424
 
-	.global gUnk_081C5688
-gUnk_081C5688: @ 081C5688
+	.global Tsa_EkrIdunn_081C5688
+Tsa_EkrIdunn_081C5688: @ 081C5688
 	.incbin "fe6-base.gba", 0x1C5688, (0x1C5AAC - 0x1C5688) @ length: 0424
 
 	.global Tsa_EkrIdunn_081C5AAC

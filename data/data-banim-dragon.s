@@ -2,20 +2,8 @@
 	.include "animscr.inc"
 	.include "gba_sprites.inc"
 
-	.global gUnk_08604948
-gUnk_08604948: @ 08604948
-	.incbin "fe6-base.gba", 0x604948, (0x604968 - 0x604948) @ length: 0020
-
-	.global gUnk_08604968
-gUnk_08604968: @ 08604968
-	.incbin "fe6-base.gba", 0x604968, (0x604988 - 0x604968) @ length: 0020
-
-	.global gUnk_08604988
-gUnk_08604988: @ 08604988
-	.incbin "fe6-base.gba", 0x604988, (0x6049A8 - 0x604988) @ length: 0020
-
-	.global gUnk_086049A8
-gUnk_086049A8: @ 086049A8
+	.global ProcScr_EkrDragonfx_IdunnExit2
+ProcScr_EkrDragonfx_IdunnExit2: @ 086049A8
 	.incbin "fe6-base.gba", 0x6049A8, (0x6049D0 - 0x6049A8) @ length: 0028
 
 	.global ProcScr_EkrIdunnDeamon1

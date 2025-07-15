@@ -85,7 +85,7 @@ void EkrFae_UpdateBanimfx(struct ProcEkrDragon * proc)
     if (CheckSkipDragonTransfer(proc->anim) == TRUE)
     {
         EkrPrepareBanimfx(proc->anim, 0x5B); /* Fae dragon anim */
-        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
+        gEkrDragonfxState[GetAnimPosition(proc->anim)] = TRUE;
         Proc_Break(proc);
         return;
     }
@@ -102,7 +102,7 @@ void EkrFae_UpdateBanimfx(struct ProcEkrDragon * proc)
         EfxPlaySE(0xDE, 0x100);
         M4aPlayWithPostionCtrl(0xDE, proc->anim->xPosition, 1);
         EkrPrepareBanimfx(proc->anim, 0x5B); /* Fae dragon anim */
-        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
+        gEkrDragonfxState[GetAnimPosition(proc->anim)] = TRUE;
         Proc_Break(proc);
         return;
     }
@@ -156,7 +156,7 @@ void EkrFae_PauseOnEnd(struct ProcEkrDragon * proc)
 
 void EkrFae_TriggerEnding(struct ProcEkrDragon * proc)
 {
-    gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = 2;
+    gEkrDragonfxState[GetAnimPosition(proc->anim)] = 2;
     Proc_Break(proc);
 }
 

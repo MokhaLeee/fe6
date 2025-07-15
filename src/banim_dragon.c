@@ -17,8 +17,8 @@ void ResetEkrDragonStatus(void)
     EkrDragonProcs[POS_L] = NULL;
     EkrDragonProcs[POS_R] = NULL;
     gpProcEkrIdunnBodyFlashing = NULL;
-    gEkrDragonIntroDone[POS_L] = FALSE;
-    gEkrDragonIntroDone[POS_R] = FALSE;
+    gEkrDragonfxState[POS_L] = FALSE;
+    gEkrDragonfxState[POS_R] = FALSE;
     gEkrDragonFastenConf[POS_L] = 0;
     gEkrDragonFastenConf[POS_R] = 0;
     gEkrDragonState[POS_L] = DRAGON_STATE_DEFAULT;
@@ -27,7 +27,7 @@ void ResetEkrDragonStatus(void)
 
 bool EkrDragonIntroDone(struct BaSprite * anim)
 {
-    if (gEkrDragonIntroDone[GetAnimPosition(anim)] == 1)
+    if (gEkrDragonfxState[GetAnimPosition(anim)] == 1)
         return TRUE;
 
     return FALSE;
@@ -40,7 +40,7 @@ void TriggerEkrDragonEnding(struct BaSprite * anim)
 
 bool CheckEkrDragonEndingDone(struct BaSprite * anim)
 {
-    if (gEkrDragonIntroDone[GetAnimPosition(anim)] == 2)
+    if (gEkrDragonfxState[GetAnimPosition(anim)] == 2)
         return TRUE;
 
     return FALSE;
@@ -410,7 +410,7 @@ void EkrDragonTmCpyExt(int x)
     EnableBgSync(BG3_SYNC_BIT);
 }
 
-void func_fe6_08058FA8(const u8 * tsa)
+void EkrDragonTmCpy2(const u8 * tsa)
 {
     LZ77UnCompWram(tsa, gEkrTsaBuffer);
 
@@ -433,9 +433,9 @@ void func_fe6_08058FA8(const u8 * tsa)
     EnableBgSync(BG3_SYNC_BIT);
 }
 
-void func_fe6_08059018(const u8 * tsa)
+void EkrDragonTmCpy3(const u8 * tsa)
 {
-    int loc, distance;
+    int loc;
 
     LZ77UnCompWram(tsa, gUnk_Banim_0201E7CC);
 
