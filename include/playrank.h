@@ -42,15 +42,24 @@ enum PlayRankSt_texts_idx {
 };
 
 enum PlayRankSt_ranks {
-	PLAYRANK_TACTICS,
+	PLAYRANK_TACTICS = 0,
 	PLAYRANK_COMBAT,
 	PLAYRANK_SURVIVAL,
 	PLAYRANK_EXPERIENCE,
 	PLAYRANK_ASSET,
 	PLAYRANK_POWER,
-	PLAYRANK_6,
+	PLAYRANK_TOTAL,
 
 	PLAYRANK_MAX
+};
+
+enum PlayRankSt_Xmap_ranks {
+	PLAYRANK_XMAP_TACTICS = 0,
+	PLAYRANK_XMAP_SURVIVAL,
+	PLAYRANK_XMAP_COMBAT,
+	PLAYRANK_XMAP_TOTAL,
+
+	PLAYRANK_XMAP_MAX
 };
 
 struct PlayRankSt {
@@ -63,16 +72,17 @@ struct PlayRankSt {
 	/* 42 */ i16 xs[7];
 	/* 50 */ i16 ys[7];
 	/* 5E */ u16 unk_5E[7];
-	/* 6C */ u16 unk_6C[7];
+	/* 6C */ u16 ranks[7];
 	/* 7A */ u16 unk_7A;
 	/* 7C */ u16 *objs[7];
 	/* 98 */ u8 unk_98[7];
 	/* 9F */ u8 step;
 	/* A0 */ struct Text texts[PLAYRANK_TEXT_MAX];
+	/* A0 */ struct Text texts_rank_name[PLAYRANK_TEXT_MAX];
 };
 
 void func_fe6_0808DD40(void);
-void func_fe6_0808DD78(void);
+void SetupXmapPlayRanks(void);
 void func_fe6_0808DE04(int lo, int hi, int x, int pal_bank);
 
 struct Proc_0868B5E8 {
@@ -90,7 +100,7 @@ void func_fe6_0808DE5C(struct Proc_0868B5E8 *proc);
 void func_fe6_0808DE70(struct Proc_0868B5E8 *proc);
 void func_fe6_0808DEA4(struct Proc_0868B5E8 *proc);
 void func_fe6_0808DF3C(u16 pal_bank, int x, int y);
-void func_fe6_0808DF78(int a, int b);
+void SetupPlayRankDispUnit(int step, int b);
 
 void func_fe6_0808DFC4(struct Proc_0868B5E8 *proc);
 void func_fe6_0808DFCC(struct Proc_0868B5E8 *proc);
@@ -140,7 +150,7 @@ void func_fe6_0808E730(void);
 // PlayRank_InitTexts
 // PlayRank_ChapterTurns_DrawBase
 // PlayRank_ChapterTurns_DrawTurn
-// func_fe6_0808EA74
+void SetupPlayRanks(int line);
 // func_fe6_0808EB94
 // func_fe6_0808EC1C
 // func_fe6_0808EC48
@@ -157,19 +167,19 @@ void func_fe6_0808E730(void);
 u16 PlayRank_GetTotalTurn(void);
 u8 PlayRankGetter_Tactics(void);
 u8 PlayRankGetter_XmapTactics(void);
-// PlayRank_GetWinningRate
+u16 PlayRank_GetWinningRate(void);
 u8 PlayRankGetter_Combat(void);
 u8 PlayRankGetter_XmapCombat(void);
-// PlayRank_GetDeadAllies
+u16 PlayRank_GetDeadAllies(void);
 u8 PlayRankGetter_Survival(void);
 u8 PlayRankGetter_XmapSurvival(void);
-// PlayRank_GetTotalLevelsGained
+u16 PlayRank_GetTotalLevelsGained(void);
 u8 PlayRankGetter_Experience(void);
 u8 PlayRankGetter_Asset(void);
-// PlayRank_CalcTotalLevel
+u16 PlayRank_CalcTotalLevel(void);
 u8 PlayRankGetter_Power(void);
-u8 func_fe6_0808F6E0(void);
-int func_fe6_0808F73C(void);
+int GameRank_GetTotalRankA(void);
+int GameRank_GetTotalRankB(void);
 // PlayRank_InitBgConf
 // func_fe6_0808F790
 // func_fe6_0808F7B0
@@ -205,8 +215,8 @@ extern CONST_DATA struct HelpBoxInfo HelpInfo_0868B3A8;
 extern CONST_DATA struct HelpBoxInfo HelpInfo_0868B3C4;
 extern CONST_DATA struct HelpBoxInfo HelpInfo_0868B3E0;
 extern CONST_DATA struct PlayRankSt *gpPlayRankSt;
-// extern CONST_DATA ??? Sprite_0868B410
-// extern CONST_DATA ??? Sprite_0868B418
+extern u16 CONST_DATA Sprite_0868B410[];
+extern u16 CONST_DATA Sprite_0868B418[];
 
 struct TotalPlayRankConf {
 	/* 00 */ u16 msg;
@@ -256,10 +266,10 @@ extern CONST_DATA u8 gPlayRank_CombatRef[4];
 extern CONST_DATA u8 gPlayRank_SurvivalRef[4];
 extern CONST_DATA u8 gPlayRank_XmapSurvivalRef[4];
 extern CONST_DATA int gPlayRank_AssetRef[4];
-// extern CONST_DATA ??? gUnk_0868B7B8
-// extern CONST_DATA ??? gUnk_0868B7D6
-// extern CONST_DATA ??? gUnk_0868B7E2
-// extern CONST_DATA ??? gUnk_0868B7E8
+extern CONST_DATA u8 TotalRankA_Ref1[6][5];
+extern CONST_DATA u16 TotalRankA_Ref2[6];
+extern CONST_DATA u8 TotalRankB_Ref1[6];
+extern CONST_DATA u16 TotalRankB_Ref2[6];
 // extern CONST_DATA ??? BgConfig_PlayRank
 extern CONST_DATA struct ProcScr ProcScr_0868B80C[];
 extern CONST_DATA struct ProcScr ProcScr_0868B88C[];

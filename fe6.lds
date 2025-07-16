@@ -855,6 +855,7 @@ SECTIONS
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); src/playrank.o(.data);
+        . = ALIGN(4); src/playrank_0808F33C.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);

@@ -2,138 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_0808EA74
-func_fe6_0808EA74: @ 0x0808EA74
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	sub sp, #0xc
-	adds r7, r0, #0
-	bl PlayRankGetter_Tactics
-	ldr r6, .L0808EB84 @ =gPlayRanks
-	ldr r4, .L0808EB88 @ =gpPlayRankSt
-	ldr r1, [r4]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r1, #0x6c
-	strh r0, [r1]
-	strh r0, [r6]
-	bl PlayRankGetter_Combat
-	ldr r1, [r4]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r1, #0x6e
-	strh r0, [r1]
-	strh r0, [r6, #2]
-	bl PlayRankGetter_Survival
-	ldr r1, [r4]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r1, #0x70
-	strh r0, [r1]
-	strh r0, [r6, #4]
-	bl PlayRankGetter_Experience
-	ldr r1, [r4]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r1, #0x72
-	strh r0, [r1]
-	strh r0, [r6, #6]
-	bl PlayRankGetter_Asset
-	ldr r1, [r4]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r1, #0x74
-	strh r0, [r1]
-	strh r0, [r6, #8]
-	bl PlayRankGetter_Power
-	ldr r1, [r4]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r1, #0x76
-	strh r0, [r1]
-	strh r0, [r6, #0xa]
-	movs r6, #0
-.L0808EAE6:
-	adds r0, r6, #0
-	movs r1, #0
-	bl func_fe6_0808DF78
-	adds r6, #1
-	cmp r6, #5
-	ble .L0808EAE6
-	bl func_fe6_0808F6E0
-	ldr r4, .L0808EB88 @ =gpPlayRankSt
-	ldr r1, [r4]
-	adds r1, #0x78
-	strh r0, [r1]
-	movs r0, #6
-	movs r1, #0
-	bl func_fe6_0808DF78
-	movs r6, #0
-	subs r7, #6
-	mov sb, r7
-	mov r8, r4
-	ldr r5, .L0808EB8C @ =gTotalPlayRankConf1
-	movs r7, #0xe8
-.L0808EB14:
-	mov r1, r8
-	ldr r0, [r1]
-	adds r0, r0, r7
-	movs r1, #6
-	bl InitText
-	mov r2, r8
-	ldr r0, [r2]
-	adds r0, r0, r7
-	bl ClearText
-	ldrh r0, [r5]
-	bl DecodeMsg
-	str r0, [sp, #8]
-	mov r4, r8
-	ldr r3, [r4]
-	adds r0, r3, r7
-	lsls r4, r6, #1
-	adds r1, r3, #0
-	adds r1, #0x50
-	adds r1, r1, r4
-	movs r2, #0
-	ldrsh r1, [r1, r2]
-	add r1, sb
-	movs r2, #0x1f
-	ands r1, r2
-	lsls r1, r1, #5
-	adds r3, #0x42
-	adds r3, r3, r4
-	movs r4, #0
-	ldrsh r2, [r3, r4]
-	adds r1, r1, r2
-	lsls r1, r1, #1
-	ldr r2, .L0808EB90 @ =gBg0Tm
-	adds r1, r1, r2
-	ldr r2, [r5, #4]
-	movs r3, #6
-	str r3, [sp]
-	ldr r3, [sp, #8]
-	str r3, [sp, #4]
-	movs r3, #0
-	bl PutDrawText
-	adds r5, #0x10
-	adds r7, #8
-	adds r6, #1
-	cmp r6, #6
-	ble .L0808EB14
-	add sp, #0xc
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808EB84: .4byte gPlayRanks
-.L0808EB88: .4byte gpPlayRankSt
-.L0808EB8C: .4byte gTotalPlayRankConf1
-.L0808EB90: .4byte gBg0Tm
 
 	thumb_func_start func_fe6_0808EB94
 func_fe6_0808EB94: @ 0x0808EB94
@@ -851,7 +719,7 @@ PlayRank_Loop: @ 0x0808F098
 	strh r1, [r0]
 	movs r0, #0
 	strh r0, [r3]
-	bl func_fe6_0808EA74
+	bl SetupPlayRanks
 	b .L0808F218
 	.align 2, 0
 .L0808F1B8: .4byte unk_02016A1C

@@ -340,7 +340,7 @@ void func_fe6_0808DD40(void)
 	}
 }
 
-void func_fe6_0808DD78(void)
+void SetupXmapPlayRanks(void)
 {
 	int i;
 
@@ -349,14 +349,14 @@ void func_fe6_0808DD78(void)
 		gpPlayRankSt->ys[i] = gTotalPlayRankConf2[i].y;
 	}
 
-	gPlayRanks[0] = gpPlayRankSt->unk_6C[0] = PlayRankGetter_XmapTactics();
-	gPlayRanks[1] = gpPlayRankSt->unk_6C[1] = PlayRankGetter_XmapSurvival();
-	gPlayRanks[2] = gpPlayRankSt->unk_6C[2] = PlayRankGetter_XmapCombat();
+	gPlayRanks[PLAYRANK_XMAP_TACTICS] = gpPlayRankSt->ranks[PLAYRANK_XMAP_TACTICS] = PlayRankGetter_XmapTactics();
+	gPlayRanks[PLAYRANK_XMAP_SURVIVAL] = gpPlayRankSt->ranks[PLAYRANK_XMAP_SURVIVAL] = PlayRankGetter_XmapSurvival();
+	gPlayRanks[PLAYRANK_XMAP_COMBAT] = gpPlayRankSt->ranks[PLAYRANK_XMAP_COMBAT] = PlayRankGetter_XmapCombat();
 
-	gpPlayRankSt->unk_6C[3] = func_fe6_0808F73C();
+	gpPlayRankSt->ranks[PLAYRANK_XMAP_TOTAL] = GameRank_GetTotalRankB();
 
-	for (i = 0; i < 4; i++)
-		func_fe6_0808DF78(i, 0);
+	for (i = 0; i < PLAYRANK_XMAP_MAX; i++)
+		SetupPlayRankDispUnit(i, 0);
 }
 
 CONST_DATA struct BaSpriteData BaSprite_0868B5C8[] = {
@@ -467,13 +467,13 @@ PROC_LABEL(1),
 	PROC_END,
 };
 
-void func_fe6_0808DF78(int a, int b)
+void SetupPlayRankDispUnit(int step, int b)
 {
-	gpPlayRankSt->unk_5E[a] = b;
-	gpPlayRankSt->objs[a] = Objs_0868B4D0[b].obj;
-	gpPlayRankSt->unk_98[a] = Objs_0868B4D0[b].unk_04;
+	gpPlayRankSt->unk_5E[step] = b;
+	gpPlayRankSt->objs[step] = Objs_0868B4D0[b].obj;
+	gpPlayRankSt->unk_98[step] = Objs_0868B4D0[b].unk_04;
 
-	ApplyPalette(Pal_08342AB8, 0x10 + OBPAL_PLAYRANK_4 + a);
+	ApplyPalette(Pal_08342AB8, 0x10 + OBPAL_PLAYRANK_4 + step);
 }
 
 void func_fe6_0808DFC4(struct Proc_0868B5E8 *proc)
@@ -499,7 +499,7 @@ void func_fe6_0808DFCC(struct Proc_0868B5E8 *proc)
 		st = gpPlayRankSt;
 		bug_st = (struct PlayRankSt *)proc; // WTF
 
-		if (st->unk_5E[bug_st->step] < st->unk_6C[bug_st->step]) {
+		if (st->unk_5E[bug_st->step] < st->ranks[bug_st->step]) {
 			Proc_Break(proc);
 			return;
 		}
@@ -533,7 +533,7 @@ void func_fe6_0808E0DC(struct Proc_0868B5E8 *proc)
 		tmp = st->unk_5E[bug_st->step];
 
 		if (tmp <= 5) {
-			func_fe6_0808DF78(bug_st->step, tmp + 1);
+			SetupPlayRankDispUnit(bug_st->step, tmp + 1);
 			Proc_Goto(proc, 0);
 		}
 	}
@@ -926,28 +926,66 @@ bool PlayRank_ChapterTurns_DrawTurn(int line)
 	return true;
 }
 
+void SetupPlayRanks(int line)
+{
+	int i;
+
+	gPlayRanks[PLAYRANK_TACTICS] = gpPlayRankSt->ranks[PLAYRANK_TACTICS] = PlayRankGetter_Tactics();
+	gPlayRanks[PLAYRANK_COMBAT] = gpPlayRankSt->ranks[PLAYRANK_COMBAT] = PlayRankGetter_Combat();
+	gPlayRanks[PLAYRANK_SURVIVAL] = gpPlayRankSt->ranks[PLAYRANK_SURVIVAL] = PlayRankGetter_Survival();
+	gPlayRanks[PLAYRANK_EXPERIENCE] = gpPlayRankSt->ranks[PLAYRANK_EXPERIENCE] = PlayRankGetter_Experience();
+	gPlayRanks[PLAYRANK_ASSET] = gpPlayRankSt->ranks[PLAYRANK_ASSET] = PlayRankGetter_Asset();
+	gPlayRanks[PLAYRANK_POWER] = gpPlayRankSt->ranks[PLAYRANK_POWER] = PlayRankGetter_Power();
+
+	for (i = 0; i < (PLAYRANK_MAX - 1); i++)
+		SetupPlayRankDispUnit(i, 0);
+
+	gpPlayRankSt->ranks[PLAYRANK_TOTAL] = GameRank_GetTotalRankA();
+	SetupPlayRankDispUnit(PLAYRANK_TOTAL, 0);
+
+	for (i = 0; i < PLAYRANK_MAX; i++) {
+		int _line;
+
+		InitText(&gpPlayRankSt->texts_rank_name[i], 6);
+		ClearText(&gpPlayRankSt->texts_rank_name[i]);
+
+		PutDrawText(
+			&gpPlayRankSt->texts_rank_name[i],
+			gBg0Tm + TM_OFFSET(gpPlayRankSt->xs[i], (gpPlayRankSt->ys[i] + (_line = line - 6)) & 0x1F),
+			gTotalPlayRankConf1[i].color,
+			0, 6,
+			DecodeMsg(gTotalPlayRankConf1[i].msg)
+		);
+	}
+}
+
 CONST_DATA u8 gPlayRank_CombatRef[] = { 15, 25, 35, 40 };
 CONST_DATA u8 gPlayRank_SurvivalRef[4] = { 6, 4, 2, 1 };
 CONST_DATA u8 gPlayRank_XmapSurvivalRef[4] = { 4, 3, 2, 1 };
 CONST_DATA int gPlayRank_AssetRef[4] = { 1600, 3200, 4800, 6000 };
 
-CONST_DATA u8 gUnk_0868B7B8[0x1E] = {
-	0x28, 0x50, 0x78, 0xA0, 0xC8,
-	0x0A, 0x1E, 0x32, 0x46, 0x5A,
-	0x0F, 0x23, 0x37, 0x4B, 0x5F,
-	0x00, 0x14, 0x28, 0x3C, 0x50,
-	0x00, 0x14, 0x28, 0x3C, 0x50,
-	0x05, 0x19, 0x2D, 0x41, 0x55,
+CONST_DATA u8 TotalRankA_Ref1[6][5] = {
+	{ 40, 80, 120, 160, 200 }, // Tactics
+	{ 10, 30, 50,  70,  90  }, // Combat
+	{ 15, 35, 55,  75,  95  }, // Surcical
+	{ 0,  20, 40,  60,  80  }, // Exp
+	{ 0,  20, 40,  60,  80  }, // Asset
+	{ 5,  25, 45,  65,  85  }, // Power
 };
 
-CONST_DATA u16 gUnk_0868B7D6[6] = {
-	0x78, 0xFA, 0x186, 0x212, 0x276, 0x276
+CONST_DATA u16 TotalRankA_Ref2[6] = {
+	120,
+	250,
+	390,
+	530,
+	630,
+	630
 };
 
-CONST_DATA u8 gUnk_0868B7E2[6] = {
+CONST_DATA u8 TotalRankB_Ref1[6] = {
 	20, 40, 60, 80, 100, 0
 };
 
-CONST_DATA u16 gUnk_0868B7E8[6] = {
+CONST_DATA u16 TotalRankB_Ref2[6] = {
 	100, 150, 200, 250, 300, 300
 };

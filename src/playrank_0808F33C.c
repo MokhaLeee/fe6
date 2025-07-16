@@ -265,3 +265,50 @@ u8 PlayRankGetter_Power(void)
 	}
 	return ret;
 }
+
+int GameRank_GetTotalRankA(void)
+{
+	int i;
+	u16 ref = 0;
+
+	for (i = 0; i < 6; i++) {
+		ref += TotalRankA_Ref1[i][gPlayRanks[i]];
+	}
+
+	i = 0;
+	for (;;) {
+		if (ref < TotalRankA_Ref2[i])
+			return i;
+
+		i++;
+		if (i > 4)
+			break;
+	}
+
+	if (gPlaySt.flags & PLAY_FLAG_HARD)
+		i++;
+
+	return i;
+}
+
+int GameRank_GetTotalRankB(void)
+{
+	int i;
+	u16 ref = 0;
+
+	for (i = 0; i < 3; i++) {
+		ref += TotalRankB_Ref1[gPlayRanks[i]];
+	}
+
+	i = 0;
+	for (;;) {
+		if (ref < TotalRankB_Ref2[i])
+			return i;
+
+		i++;
+		if (i > 4)
+			break;
+	}
+
+	return i;
+}

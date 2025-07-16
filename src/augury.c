@@ -315,7 +315,7 @@ void Augury_Init(void)
 	gPlayRanks[3] = gAuguryStatus[4] = PlayRankGetter_Experience();
 	gPlayRanks[4] = gAuguryStatus[5] = PlayRankGetter_Asset();
 	gPlayRanks[5] = gAuguryStatus[6] = PlayRankGetter_Power();
-	gAuguryStatus[0] = func_fe6_0808F6E0();
+	gAuguryStatus[0] = GameRank_GetTotalRankA();
 }
 
 void func_fe6_0808D59C(ProcPtr proc)

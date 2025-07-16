@@ -2,93 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_0808F6E0
-func_fe6_0808F6E0: @ 0x0808F6E0
-	push {r4, r5, r6, lr}
-	movs r4, #0
-	ldr r5, .L0808F72C @ =gUnk_0868B7B8
-	movs r3, #0
-	ldr r1, .L0808F730 @ =gPlayRanks
-	movs r2, #5
-.L0808F6EC:
-	ldrh r6, [r1]
-	adds r0, r6, r3
-	adds r0, r0, r5
-	ldrb r0, [r0]
-	adds r0, r0, r4
-	lsls r0, r0, #0x10
-	lsrs r4, r0, #0x10
-	adds r3, #5
-	adds r1, #2
-	subs r2, #1
-	cmp r2, #0
-	bge .L0808F6EC
-	movs r2, #0
-	ldr r0, .L0808F734 @ =gUnk_0868B7D6
-.L0808F708:
-	ldrh r1, [r0]
-	cmp r4, r1
-	blo .L0808F724
-	adds r0, #2
-	adds r2, #1
-	cmp r2, #4
-	ble .L0808F708
-	ldr r1, .L0808F738 @ =gPlaySt
-	movs r0, #0x40
-	ldrb r1, [r1, #0x14]
-	ands r0, r1
-	cmp r0, #0
-	beq .L0808F724
-	adds r2, #1
-.L0808F724:
-	adds r0, r2, #0
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0808F72C: .4byte gUnk_0868B7B8
-.L0808F730: .4byte gPlayRanks
-.L0808F734: .4byte gUnk_0868B7D6
-.L0808F738: .4byte gPlaySt
-
-	thumb_func_start func_fe6_0808F73C
-func_fe6_0808F73C: @ 0x0808F73C
-	push {r4, r5, lr}
-	movs r3, #0
-	ldr r4, .L0808F774 @ =gUnk_0868B7E2
-	ldr r2, .L0808F778 @ =gPlayRanks
-	movs r1, #2
-.L0808F746:
-	ldrh r5, [r2]
-	adds r0, r5, r4
-	ldrb r0, [r0]
-	adds r0, r0, r3
-	lsls r0, r0, #0x10
-	lsrs r3, r0, #0x10
-	adds r2, #2
-	subs r1, #1
-	cmp r1, #0
-	bge .L0808F746
-	movs r1, #0
-	ldr r0, .L0808F77C @ =gUnk_0868B7E8
-.L0808F75E:
-	ldrh r2, [r0]
-	cmp r3, r2
-	blo .L0808F76C
-	adds r0, #2
-	adds r1, #1
-	cmp r1, #4
-	ble .L0808F75E
-.L0808F76C:
-	adds r0, r1, #0
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0808F774: .4byte gUnk_0868B7E2
-.L0808F778: .4byte gPlayRanks
-.L0808F77C: .4byte gUnk_0868B7E8
-
 	thumb_func_start PlayRank_InitBgConf
 PlayRank_InitBgConf: @ 0x0808F780
 	push {lr}
@@ -579,7 +492,7 @@ func_fe6_0808FA14: @ 0x0808FA14
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r7, #0x3c]
-	bl func_fe6_0808DD78
+	bl SetupXmapPlayRanks
 	ldr r0, .L0808FCC0 @ =gUnk_0834138C
 	movs r1, #0x80
 	movs r2, #0x40
@@ -2837,7 +2750,7 @@ EndingCredit_Loop: @ 0x08090D78
 .L08090E0C:
 	cmp r0, #2
 	bne .L08090E60
-	bl func_fe6_0809164C
+	bl CollectEndingCharacters
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #0x3f
@@ -3773,8 +3686,8 @@ CharacterEnding2_InitDisp: @ 0x0809159C
 .L08091644: .4byte gUnk_08345934
 .L08091648: .4byte 0x06006000
 
-	thumb_func_start func_fe6_0809164C
-func_fe6_0809164C: @ 0x0809164C
+	thumb_func_start CollectEndingCharacters
+CollectEndingCharacters: @ 0x0809164C
 	push {r4, r5, lr}
 	ldr r0, .L080916A4 @ =unk_02016B88
 	movs r4, #0
@@ -4166,7 +4079,7 @@ func_fe6_0809195C: @ 0x0809195C
 	push {r6}
 	sub sp, #8
 	mov r8, r0
-	bl func_fe6_0809164C
+	bl CollectEndingCharacters
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	ldr r2, .L080919E8 @ =unk_02016B88
