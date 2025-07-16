@@ -17,6 +17,16 @@ enum videoalloc_playrank {
 	OBCHR_PLAYRANK_84 = 0x84
 };
 
+enum play_ranks {
+	PALYRANK_D,
+	PALYRANK_C,
+	PALYRANK_B,
+	PALYRANK_A,
+	PALYRANK_MAX,
+
+	PALYRANK_S = PALYRANK_MAX,
+};
+
 enum PlayRankSt_texts_idx {
 	PLAYRANK_TEXT_0,
 	PLAYRANK_TEXT_1,
@@ -29,6 +39,18 @@ enum PlayRankSt_texts_idx {
 	PLAYRANK_TEXT_8,
 
 	PLAYRANK_TEXT_MAX
+};
+
+enum PlayRankSt_ranks {
+	PLAYRANK_TACTICS,
+	PLAYRANK_COMBAT,
+	PLAYRANK_SURVIVAL,
+	PLAYRANK_EXPERIENCE,
+	PLAYRANK_ASSET,
+	PLAYRANK_POWER,
+	PLAYRANK_6,
+
+	PLAYRANK_MAX
 };
 
 struct PlayRankSt {
@@ -116,8 +138,8 @@ void func_fe6_0808E710(void);
 void func_fe6_0808E730(void);
 
 // PlayRank_InitTexts
-// PlayRank_DrawChapterText
-// func_fe6_0808E93C
+// PlayRank_ChapterTurns_DrawBase
+// PlayRank_ChapterTurns_DrawTurn
 // func_fe6_0808EA74
 // func_fe6_0808EB94
 // func_fe6_0808EC1C
@@ -131,20 +153,21 @@ void func_fe6_0808E730(void);
 // PlayRank_End1
 // PlayRank_End2
 // PlayRank_End3
-// func_fe6_0808F30C
-u8 func_fe6_0808F33C(void);
-u8 func_fe6_0808F3E8(void);
-// func_fe6_0808F470
-u8 func_fe6_0808F490(void);
-u8 func_fe6_0808F4B8(void);
-// func_fe6_0808F4F0
-u8 func_fe6_0808F524(void);
-u8 func_fe6_0808F550(void);
-// func_fe6_0808F59C
-u8 func_fe6_0808F5AC(void);
-u8 func_fe6_0808F600(void);
-// func_fe6_0808F648
-u8 func_fe6_0808F68C(void);
+
+u16 PlayRank_GetTotalTurn(void);
+u8 PlayRankGetter_Tactics(void);
+u8 PlayRankGetter_XmapTactics(void);
+// PlayRank_GetWinningRate
+u8 PlayRankGetter_Combat(void);
+u8 PlayRankGetter_XmapCombat(void);
+// PlayRank_GetDeadAllies
+u8 PlayRankGetter_Survival(void);
+u8 PlayRankGetter_XmapSurvival(void);
+// PlayRank_GetTotalLevelsGained
+u8 PlayRankGetter_Experience(void);
+u8 PlayRankGetter_Asset(void);
+// PlayRank_CalcTotalLevel
+u8 PlayRankGetter_Power(void);
 u8 func_fe6_0808F6E0(void);
 int func_fe6_0808F73C(void);
 // PlayRank_InitBgConf
@@ -228,11 +251,11 @@ extern CONST_DATA u16 Sprite_0868B720[];
 extern CONST_DATA struct ProcScr ProcScr_0868B730[];
 extern CONST_DATA struct ProcScr ProcScr_0868B750[];
 extern CONST_DATA struct ProcScr ProcScr_0868B768[];
-// extern CONST_DATA ??? Msgs_PlayRankNum
-// extern CONST_DATA ??? gUnk_0868B79C
-// extern CONST_DATA ??? gUnk_0868B7A0
-// extern CONST_DATA ??? gUnk_0868B7A4
-// extern CONST_DATA ??? gUnk_0868B7A8
+extern CONST_DATA u16 Msgs_PlayRankNum[10];
+extern CONST_DATA u8 gPlayRank_CombatRef[4];
+extern CONST_DATA u8 gPlayRank_SurvivalRef[4];
+extern CONST_DATA u8 gPlayRank_XmapSurvivalRef[4];
+extern CONST_DATA int gPlayRank_AssetRef[4];
 // extern CONST_DATA ??? gUnk_0868B7B8
 // extern CONST_DATA ??? gUnk_0868B7D6
 // extern CONST_DATA ??? gUnk_0868B7E2

@@ -9,6 +9,8 @@
 #include "banim.h"
 #include "sprite.h"
 #include "armfunc.h"
+#include "save_stats.h"
+#include "chapterinfo.h"
 #include "constants/chapters.h"
 #include "constants/msg.h"
 
@@ -245,19 +247,19 @@ u16 CONST_DATA Sprite_0868B418[] =
 };
 
 CONST_DATA struct TotalPlayRankConf gTotalPlayRankConf1[] = {
-	{ MSG_71D, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F33C, 5,  6 },
-	{ MSG_71E, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F490, 18, 6 },
-	{ MSG_71F, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F524, 5,  8 },
-	{ MSG_720, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F5AC, 18, 8 },
-	{ MSG_721, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F600, 5,  10 },
-	{ MSG_722, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F68C, 18, 10 },
+	{ MSG_71D, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_Tactics, 5,  6 },
+	{ MSG_71E, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_Combat, 18, 6 },
+	{ MSG_71F, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_Survival, 5,  8 },
+	{ MSG_720, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_Experience, 18, 8 },
+	{ MSG_721, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_Asset, 5,  10 },
+	{ MSG_722, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_Power, 18, 10 },
 	{ MSG_723, TEXT_COLOR_SYSTEM_GREEN, NULL, 5, 13 }
 };
 
 CONST_DATA struct TotalPlayRankConf gTotalPlayRankConf2[] = {
-	{ MSG_71D, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F3E8, 5,  10 },
-	{ MSG_71F, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F550, 18, 10 },
-	{ MSG_71E, TEXT_COLOR_SYSTEM_WHITE, func_fe6_0808F4B8, 5,  13 },
+	{ MSG_71D, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_XmapTactics, 5,  10 },
+	{ MSG_71F, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_XmapSurvival, 18, 10 },
+	{ MSG_71E, TEXT_COLOR_SYSTEM_WHITE, PlayRankGetter_XmapCombat, 5,  13 },
 	{ MSG_723, TEXT_COLOR_SYSTEM_GREEN, NULL, 18, 13 }
 };
 
@@ -347,9 +349,9 @@ void func_fe6_0808DD78(void)
 		gpPlayRankSt->ys[i] = gTotalPlayRankConf2[i].y;
 	}
 
-	unk_02016A2E[0] = gpPlayRankSt->unk_6C[0] = func_fe6_0808F3E8();
-	unk_02016A2E[1] = gpPlayRankSt->unk_6C[1] = func_fe6_0808F550();
-	unk_02016A2E[2] = gpPlayRankSt->unk_6C[2] = func_fe6_0808F4B8();
+	gPlayRanks[0] = gpPlayRankSt->unk_6C[0] = PlayRankGetter_XmapTactics();
+	gPlayRanks[1] = gpPlayRankSt->unk_6C[1] = PlayRankGetter_XmapSurvival();
+	gPlayRanks[2] = gpPlayRankSt->unk_6C[2] = PlayRankGetter_XmapCombat();
 
 	gpPlayRankSt->unk_6C[3] = func_fe6_0808F73C();
 
@@ -803,7 +805,7 @@ CONST_DATA u16 Msgs_PlayRankNum[10] = {
 	MSG_PLAYRANK_9
 };
 
-int PlayRank_DrawChapterText(struct Text *text, int chapter_gaiden, u8 centered)
+int PlayRank_ChapterTurns_DrawBase(struct Text *text, int chapter_gaiden, u8 centered)
 {
 	int is_gaiden;
     int ret;
@@ -867,18 +869,67 @@ int PlayRank_DrawChapterText(struct Text *text, int chapter_gaiden, u8 centered)
 	return ret;
 }
 
-#if 0
-bool func_fe6_0808E93C(int line)
+bool PlayRank_ChapterTurns_DrawTurn(int line)
 {
-	if (unk_02016A24 < GetNextChapterStatsSlot())
-		return true;
-}
-#endif
+	if (gPlayRankCurChapter < GetNextChapterStatsSlot()) {
+		struct ChapterStats *chapter_stat = GetChapterStats(gPlayRankCurChapter);
+		int chapter_id, x;
+		int index = gPlayRankCurChapter & 7;
 
-CONST_DATA u8 gUnk_0868B79C[] = { 0x0F, 0x19, 0x23, 0x28 };
-CONST_DATA u8 gUnk_0868B7A0[] = { 0x06, 0x04, 0x02, 0x01 };
-CONST_DATA u8 gUnk_0868B7A4[] = { 0x04, 0x03, 0x02, 0x01 };
-CONST_DATA int gUnk_0868B7A8[4] = { 1600, 3200, 4800, 6000 };
+		ClearText(&gpPlayRankSt->texts[index]);
+		ClearText(&gpPlayRankSt->texts[PLAYRANK_TEXT_8]);
+
+		chapter_id = GetChapterInfo(chapter_stat->chapter_id)->number_id;
+		PlayRank_ChapterTurns_DrawBase(
+			&gpPlayRankSt->texts[index],
+			chapter_id,
+			true
+		);
+
+		x = (0x46 - GetStringTextLen(DecodeMsg(GetChapterInfo(chapter_stat->chapter_id)->msg_38))) / 2;
+		Text_InsertDrawString(
+			&gpPlayRankSt->texts[index],
+			x + 0x28,
+			TEXT_COLOR_SYSTEM_WHITE,
+			DecodeMsg(GetChapterInfo(chapter_stat->chapter_id)->msg_38)
+		);
+
+		PutText(
+			&gpPlayRankSt->texts[index],
+			gBg0Tm + TM_OFFSET(1, line)
+		);
+
+		PutNumber(
+			gBg0Tm + TM_OFFSET(0x10, line),
+			TEXT_COLOR_SYSTEM_BLUE,
+			chapter_stat->chapter_turn
+		);
+
+		PutDrawText(
+			&gpPlayRankSt->texts[PLAYRANK_TEXT_8],
+			gBg0Tm + TM_OFFSET(0x11, line),
+			TEXT_COLOR_SYSTEM_WHITE,
+			0, 3, DecodeMsg(MSG_Turn)
+		);
+
+		PutTime(
+			gBg0Tm + TM_OFFSET(0x14, line),
+			TEXT_COLOR_SYSTEM_BLUE,
+			chapter_stat->chapter_time * 180,
+			true
+		);
+
+		gPlayRankCurChapter++;
+		EnableBgSync(BG0_SYNC_BIT);
+		return false;
+	}
+	return true;
+}
+
+CONST_DATA u8 gPlayRank_CombatRef[] = { 15, 25, 35, 40 };
+CONST_DATA u8 gPlayRank_SurvivalRef[4] = { 6, 4, 2, 1 };
+CONST_DATA u8 gPlayRank_XmapSurvivalRef[4] = { 4, 3, 2, 1 };
+CONST_DATA int gPlayRank_AssetRef[4] = { 1600, 3200, 4800, 6000 };
 
 CONST_DATA u8 gUnk_0868B7B8[0x1E] = {
 	0x28, 0x50, 0x78, 0xA0, 0xC8,

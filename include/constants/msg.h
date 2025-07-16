@@ -1832,9 +1832,9 @@
 #define MSG_722 0x0722
 #define MSG_723 0x0723
 #define MSG_724 0x0724
-#define MSG_725 0x0725
-#define MSG_726 0x0726
-#define MSG_727 0x0727
+#define MSG_Turn 0x0725
+#define MSG_MoneyOnHand 0x0726
+#define MSG_____ 0x0727
 #define MSG_728 0x0728
 #define MSG_729 0x0729
 #define MSG_72A 0x072A

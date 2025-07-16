@@ -143,7 +143,7 @@ char const * GetRedLeaderName(void)
             return DecodeMsg(unit->pinfo->msg_name);
     })
 
-    return DecodeMsg(MSG_727);
+    return DecodeMsg(MSG_____);
 }
 
 void func_fe6_080736C8(void)
@@ -164,12 +164,12 @@ void func_fe6_0807372C(struct StatusScreenProc * proc)
     PutDrawText(gStatusScreenSt.text + 1, gBg0Tm + TM_OFFSET(1, 5), TEXT_COLOR_SYSTEM_BLUE, 25, 0,
         DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_30));
 
-    Text_InsertDrawString(gStatusScreenSt.text + 2, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_725));
+    Text_InsertDrawString(gStatusScreenSt.text + 2, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_Turn));
     Text_SetParams(gStatusScreenSt.text + 2, 74, TEXT_COLOR_SYSTEM_BLUE);
     Text_DrawNumber(gStatusScreenSt.text + 2, gPlaySt.turn);
     PutText(gStatusScreenSt.text + 2, gBg0Tm + TM_OFFSET(18, 4));
 
-    Text_InsertDrawString(gStatusScreenSt.text + 3, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_726));
+    Text_InsertDrawString(gStatusScreenSt.text + 3, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_MoneyOnHand));
     Text_InsertDrawString(gStatusScreenSt.text + 3, 82, TEXT_COLOR_SYSTEM_GOLD, JTEXT("Ｇ"));
     Text_InsertDrawNumberOrBlank(gStatusScreenSt.text + 3, 74, 2, GetGold());
     PutText(gStatusScreenSt.text + 3, gBg0Tm + TM_OFFSET(18, 6));
@@ -184,7 +184,7 @@ void func_fe6_08073808(struct StatusScreenProc * proc)
     PutDrawText(gStatusScreenSt.text + 1, gBg0Tm + TM_OFFSET(1, 6), TEXT_COLOR_SYSTEM_BLUE, 25, 0,
         DecodeExtraMapGoalMsg(gPlaySt.chapter));
 
-    Text_InsertDrawString(gStatusScreenSt.text + 2, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_725));
+    Text_InsertDrawString(gStatusScreenSt.text + 2, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_Turn));
     Text_SetParams(gStatusScreenSt.text + 2, 50, TEXT_COLOR_SYSTEM_BLUE);
     Text_DrawNumber(gStatusScreenSt.text + 2, gPlaySt.turn);
     PutText(gStatusScreenSt.text + 2, gBg0Tm + TM_OFFSET(21, 6));

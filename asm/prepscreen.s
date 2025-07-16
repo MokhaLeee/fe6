@@ -12141,7 +12141,7 @@ func_fe6_080834B4: @ 0x080834B4
 	adds r1, r5, #0
 	movs r3, #1
 	bl func_fe6_08082F54
-	bl func_fe6_0808F30C
+	bl PlayRank_GetTotalTurn
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -12149,7 +12149,7 @@ func_fe6_080834B4: @ 0x080834B4
 	adds r1, r5, #0
 	movs r3, #0x10
 	bl func_fe6_08082F54
-	bl func_fe6_0808F470
+	bl PlayRank_GetWinningRate
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -12157,7 +12157,7 @@ func_fe6_080834B4: @ 0x080834B4
 	adds r1, r5, #0
 	movs r3, #0x10
 	bl func_fe6_08082F54
-	bl func_fe6_0808F4F0
+	bl PlayRank_GetDeadAllies
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -12165,7 +12165,7 @@ func_fe6_080834B4: @ 0x080834B4
 	adds r1, r5, #0
 	movs r3, #7
 	bl func_fe6_08082F54
-	bl func_fe6_0808F59C
+	bl PlayRank_GetTotalLevelsGained
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -12173,13 +12173,13 @@ func_fe6_080834B4: @ 0x080834B4
 	adds r1, r5, #0
 	movs r3, #0xc
 	bl func_fe6_08082F54
-	bl func_fe6_08017104
+	bl GetTotalAsset
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0x18
 	bl func_fe6_08082F54
-	bl func_fe6_0808F648
+	bl PlayRank_CalcTotalLevel
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -12282,18 +12282,18 @@ func_fe6_0808357C: @ 0x0808357C
 func_fe6_08083618: @ 0x08083618
 	push {r4, lr}
 	sub sp, #0xc
-	bl func_fe6_0808F30C
+	bl PlayRank_GetTotalTurn
 	ldr r4, .L08083654 @ =gUnk_030048C0
 	strh r0, [r4]
-	bl func_fe6_0808F470
+	bl PlayRank_GetWinningRate
 	strh r0, [r4, #2]
-	bl func_fe6_0808F4F0
+	bl PlayRank_GetDeadAllies
 	strh r0, [r4, #4]
-	bl func_fe6_0808F59C
+	bl PlayRank_GetTotalLevelsGained
 	strh r0, [r4, #6]
-	bl func_fe6_08017104
+	bl GetTotalAsset
 	str r0, [r4, #8]
-	bl func_fe6_0808F648
+	bl PlayRank_CalcTotalLevel
 	strh r0, [r4, #0xc]
 	ldr r1, .L08083658 @ =gPlaySt
 	movs r0, #0x40

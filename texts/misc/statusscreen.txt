@@ -1,11 +1,11 @@
 ## MSG_724
 目的：[X]
 
-## MSG_725
+## MSG_Turn
 ターン[X]
 
-## MSG_726
+## MSG_MoneyOnHand
 所持金[X]
 
-## MSG_727
+## MSG_____
 ーーーー[X]

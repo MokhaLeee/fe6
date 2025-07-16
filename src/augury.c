@@ -106,13 +106,13 @@ EWRAM_OVERLAY(0) i16 unk_02016A1C = 0;
 EWRAM_OVERLAY(0) u16 unk_02016A1E = 0;
 EWRAM_OVERLAY(0) u16 unk_02016A20 = 0;
 EWRAM_OVERLAY(0) u16 unk_02016A22 = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A24 = 0;
+EWRAM_OVERLAY(0) u16 gPlayRankCurChapter = 0;
 EWRAM_OVERLAY(0) u16 unk_02016A26 = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankLayer = 0;
 EWRAM_OVERLAY(0) u16 unk_02016A2A = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A2C = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A2D = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A2E[7] = {};
+EWRAM_OVERLAY(0) u16 gPlayRanks[7] = {};
 EWRAM_OVERLAY(0) u8 unk_02016A3C = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A3D = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A3E = 0;
@@ -309,12 +309,12 @@ void Augury_Init(void)
 	SpawnProc(ProcScr_0868AFD8, PROC_TREE_3);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG3_SYNC_BIT);
 
-	unk_02016A2E[0] = gAuguryStatus[1] = func_fe6_0808F33C();
-	unk_02016A2E[1] = gAuguryStatus[2] = func_fe6_0808F490();
-	unk_02016A2E[2] = gAuguryStatus[3] = func_fe6_0808F524();
-	unk_02016A2E[3] = gAuguryStatus[4] = func_fe6_0808F5AC();
-	unk_02016A2E[4] = gAuguryStatus[5] = func_fe6_0808F600();
-	unk_02016A2E[5] = gAuguryStatus[6] = func_fe6_0808F68C();
+	gPlayRanks[0] = gAuguryStatus[1] = PlayRankGetter_Tactics();
+	gPlayRanks[1] = gAuguryStatus[2] = PlayRankGetter_Combat();
+	gPlayRanks[2] = gAuguryStatus[3] = PlayRankGetter_Survival();
+	gPlayRanks[3] = gAuguryStatus[4] = PlayRankGetter_Experience();
+	gPlayRanks[4] = gAuguryStatus[5] = PlayRankGetter_Asset();
+	gPlayRanks[5] = gAuguryStatus[6] = PlayRankGetter_Power();
 	gAuguryStatus[0] = func_fe6_0808F6E0();
 }
 
