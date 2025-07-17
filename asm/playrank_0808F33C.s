@@ -2,114 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start PlayRank_InitBgConf
-PlayRank_InitBgConf: @ 0x0808F780
-	push {lr}
-	ldr r0, .L0808F78C @ =BgConfig_PlayRank
-	bl InitBgs
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808F78C: .4byte BgConfig_PlayRank
-
-	thumb_func_start func_fe6_0808F790
-func_fe6_0808F790: @ 0x0808F790
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, .L0808F7AC @ =gpPlayRankSt
-	ldr r0, [r0]
-	adds r0, #0x9f
-	ldrb r0, [r0]
-	cmp r0, #2
-	bls .L0808F7A8
-	adds r0, r1, #0
-	movs r1, #3
-	bl Proc_Goto
-.L0808F7A8:
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808F7AC: .4byte gpPlayRankSt
-
-	thumb_func_start func_fe6_0808F7B0
-func_fe6_0808F7B0: @ 0x0808F7B0
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, .L0808F7CC @ =gpPlayRankSt
-	ldr r0, [r0]
-	adds r0, #0x9f
-	ldrb r0, [r0]
-	cmp r0, #1
-	bhi .L0808F7C8
-	adds r0, r1, #0
-	movs r1, #2
-	bl Proc_Goto
-.L0808F7C8:
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808F7CC: .4byte gpPlayRankSt
-
-	thumb_func_start func_fe6_0808F7D0
-func_fe6_0808F7D0: @ 0x0808F7D0
-	push {r4, r5, r6, r7, lr}
-	sub sp, #4
-	ldr r4, [sp, #0x18]
-	ldr r6, [sp, #0x1c]
-	str r4, [sp]
-	bl Interpolate
-	adds r5, r0, #0
-	ldr r2, .L0808F810 @ =gUnk_08343358
-	ldr r7, .L0808F814 @ =unk_02016A2D
-	ldrb r0, [r7]
-	cmp r0, #0
-	bne .L0808F7EC
-	adds r2, #0x20
-.L0808F7EC:
-	lsls r1, r6, #5
-	ldr r4, .L0808F818 @ =gPal
-	adds r1, r1, r4
-	adds r0, r2, #0
-	movs r2, #8
-	bl CpuFastSet
-	ldrb r0, [r7]
-	cmp r0, #0
-	beq .L0808F81C
-	str r5, [sp]
-	adds r0, r4, #0
-	adds r1, r6, #0
-	movs r2, #1
-	movs r3, #7
-	bl AuguryPaletteModify2
-	b .L0808F82A
-	.align 2, 0
-.L0808F810: .4byte gUnk_08343358
-.L0808F814: .4byte unk_02016A2D
-.L0808F818: .4byte gPal
-.L0808F81C:
-	str r5, [sp]
-	adds r0, r4, #0
-	adds r1, r6, #0
-	movs r2, #1
-	movs r3, #0xb
-	bl AuguryPaletteModify1
-.L0808F82A:
-	bl EnablePalSync
-	add sp, #4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0808F838
-func_fe6_0808F838: @ 0x0808F838
-	movs r1, #0
-	strh r1, [r0, #0x2a]
-	strh r1, [r0, #0x2c]
-	strh r1, [r0, #0x2e]
-	bx lr
-	.align 2, 0
-
 	thumb_func_start func_fe6_0808F844
 func_fe6_0808F844: @ 0x0808F844
 	push {r4, lr}
@@ -506,7 +398,7 @@ func_fe6_0808FA14: @ 0x0808FA14
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r2, .L0808FCCC @ =gUnk_08343358
+	ldr r2, .L0808FCCC @ =Pal_08343358
 	ldr r1, .L0808FCA0 @ =unk_02016A2D
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -651,7 +543,7 @@ func_fe6_0808FA14: @ 0x0808FA14
 .L0808FCC0: .4byte Pal_0834138C
 .L0808FCC4: .4byte Pal_08341DA0
 .L0808FCC8: .4byte Pal_0833C03C
-.L0808FCCC: .4byte gUnk_08343358
+.L0808FCCC: .4byte Pal_08343358
 .L0808FCD0: .4byte Pal_08342A98
 .L0808FCD4: .4byte Img_Unk_083092CC
 .L0808FCD8: .4byte 0x06011000

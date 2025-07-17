@@ -140,8 +140,8 @@ Tsa_08342AF8: @ 08342AF8
 gUnk_08342B54: @ 08342B54
 	.incbin "fe6-base.gba", 0x342B54, (0x343358 - 0x342B54) @ length: 0804
 
-	.global gUnk_08343358
-gUnk_08343358: @ 08343358
+	.global Pal_08343358
+Pal_08343358: @ 08343358
 	.incbin "fe6-base.gba", 0x343358, (0x343398 - 0x343358) @ length: 0040
 
 	.global Img_08343398

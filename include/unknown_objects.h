@@ -731,7 +731,7 @@ extern u16 const Pal_08342AB8[];
 extern u16 const Pal_08342AD8[];
 extern u8 const Tsa_08342AF8[];
 // extern const ??? gUnk_08342B54
-// extern const ??? gUnk_08343358
+extern const u16 Pal_08343358[];
 extern u8 const Img_08343398[];
 extern u8 const Img_08343A80[];
 extern u8 const Img_08343FAC[];

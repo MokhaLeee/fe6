@@ -8,6 +8,7 @@
 #include "helpbox.h"
 
 enum videoalloc_playrank {
+	BGPAL_PLAYRANK_0 = 0,
 	BGPAL_PLAYRANK_1 = 1,
 	BGPAL_PLAYRANK_4 = 4,
 	BGPAL_PLAYRANK_6 = 6,
@@ -179,10 +180,10 @@ void func_fe6_0808ECD0(u16 *tm, int a, int b);
 void PlayRank_InitDisplay(void);
 void func_fe6_0808F060(struct ProcPlayRank *proc);
 void PlayRank_Loop(struct ProcPlayRank *proc);
-// PlayRank_Idle
-// PlayRank_End1
-// PlayRank_End2
-// PlayRank_End3
+void PlayRank_Idle(ProcPtr proc);
+void PlayRank_End1(ProcPtr proc);
+void PlayRank_End2(ProcPtr proc);
+void PlayRank_End3(ProcPtr proc);
 
 u16 PlayRank_GetTotalTurn(void);
 u8 PlayRankGetter_Tactics(void);
@@ -200,12 +201,22 @@ u16 PlayRank_CalcTotalLevel(void);
 u8 PlayRankGetter_Power(void);
 int GameRank_GetTotalRankA(void);
 int GameRank_GetTotalRankB(void);
-// PlayRank_InitBgConf
-// func_fe6_0808F790
-// func_fe6_0808F7B0
-// func_fe6_0808F7D0
-// func_fe6_0808F838
-// func_fe6_0808F844
+void PlayRank_InitBgConf(void);
+void func_fe6_0808F790(ProcPtr proc);
+void func_fe6_0808F7B0(ProcPtr proc);
+
+struct Proc_0868B88C {
+	PROC_HEADER;
+
+	i16 unk_2A;
+	i16 unk_2C;
+	i16 unk_2E;
+};
+
+void func_fe6_0808F7D0(int method, int lo, int hi, int x, int end, int pal_bank);
+void func_fe6_0808F838(struct Proc_0868B88C *proc);
+void func_fe6_0808F844(struct Proc_0868B88C *proc);
+
 // func_fe6_0808F8B8
 // func_fe6_0808F984
 // func_fe6_0808FA14

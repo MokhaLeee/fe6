@@ -1,17 +1,5 @@
 	.data
 
-	.global BgConfig_PlayRank
-BgConfig_PlayRank: @ 0868B7F4
-	.incbin "fe6-base.gba", 0x68B7F4, (0x68B80C - 0x68B7F4) @ length: 0018
-
-	.global ProcScr_0868B80C
-ProcScr_0868B80C: @ 0868B80C
-	.incbin "fe6-base.gba", 0x68B80C, (0x68B88C - 0x68B80C) @ length: 0080
-
-	.global ProcScr_0868B88C
-ProcScr_0868B88C: @ 0868B88C
-	.incbin "fe6-base.gba", 0x68B88C, (0x68B8AC - 0x68B88C) @ length: 0020
-
 	.global ProcScr_0868B8AC
 ProcScr_0868B8AC: @ 0868B8AC
 	.incbin "fe6-base.gba", 0x68B8AC, (0x68B8E4 - 0x68B8AC) @ length: 0038

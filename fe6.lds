@@ -612,8 +612,6 @@ SECTIONS
         src/config.o(.text);
         src/augury.o(.text);
         src/playrank.o(.text);
-        asm/code.o(.text);
-        src/playrank_0808F33C.o(.text);
         asm/playrank_0808F33C.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
