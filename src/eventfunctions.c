@@ -963,7 +963,7 @@ void func_fe6_0806C76C(int a, int b, int c)
 {
     int var = Interpolate(INTERPOLATE_SQUARE, a, b, c, 8);
 
-    CpuFastCopy(gUnk_08342A98, gPal + 0x12 * 0x10, 0x10 * sizeof(u16));
+    CpuFastCopy(Pal_08342A98, gPal + 0x12 * 0x10, 0x10 * sizeof(u16));
     EfxPalWhiteInOut(gPal, 18, 1, var);
     EnablePalSync();
 }
@@ -972,7 +972,7 @@ void func_fe6_0806C7BC(struct TutorialEventProcA * proc)
 {
     proc->unk_64 = 0;
     proc->unk_66 = 0;
-    ApplyPalette(gUnk_08342A98, 0x12);
+    ApplyPalette(Pal_08342A98, 0x12);
 }
 
 void func_fe6_0806C7E0(struct TutorialEventProcA * proc)

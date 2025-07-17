@@ -720,16 +720,16 @@ extern u8 const Img_Unk_0833C378[];
 // extern const ??? gUnk_0833C8D8
 extern u16 const Pal_Unk_0833C944[];
 extern u8 const Img_WorldMap_PlayRank[];
-extern u16 const Tsa_08340ED8[];
-// extern const ??? gUnk_0834138C
+extern u8 const Tsa_08340ED8[];
+extern u16 const Pal_0834138C[];
 extern u8 const Img_PlayRank_083413CC[];
-// extern const ??? gUnk_08341DA0
+extern u16 const Pal_08341DA0[];
 extern u8 const Img_PlayRank[];
 extern u8 const Img_PlayRankCharacters[];
-// extern const ??? gUnk_08342A98
+extern u16 const Pal_08342A98[];
 extern u16 const Pal_08342AB8[];
 extern u16 const Pal_08342AD8[];
-extern u16 const Tsa_08342AF8[];
+extern u8 const Tsa_08342AF8[];
 // extern const ??? gUnk_08342B54
 // extern const ??? gUnk_08343358
 extern u8 const Img_08343398[];

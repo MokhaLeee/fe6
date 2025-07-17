@@ -6,6 +6,9 @@
 #include "oam.h"
 #include "msg.h"
 #include "text.h"
+#include "ui.h"
+#include "util.h"
+#include "armfunc.h"
 #include "banim.h"
 #include "sprite.h"
 #include "armfunc.h"
@@ -13,6 +16,7 @@
 #include "chapterinfo.h"
 #include "constants/chapters.h"
 #include "constants/msg.h"
+#include "constants/videoalloc_global.h"
 
 #include "playrank.h"
 
@@ -958,6 +962,357 @@ void SetupPlayRanks(int line)
 		);
 	}
 }
+
+void func_fe6_0808EB94(int line)
+{
+	int index;
+	int tile_width = 6;
+
+	line += 0x16;
+	index = PLAYRANK_TOTAL;
+
+	InitText(gpPlayRankSt->texts_rank_name + index, 6);
+	ClearText(gpPlayRankSt->texts_rank_name + index);
+
+	PutDrawText(
+		gpPlayRankSt->texts_rank_name + index,
+		gBg0Tm + TM_OFFSET(gpPlayRankSt->xs[index], (gpPlayRankSt->ys[index] + line) & 0x1F),
+		gTotalPlayRankConf1[index].color,
+		0, tile_width, DecodeMsg(gTotalPlayRankConf1[index].msg)
+	);
+}
+
+int PlayRank_GetTotalPlayTime(void)
+{
+	int i, ret = 0;
+	int slot = GetNextChapterStatsSlot();
+
+	for (i = 0; i < slot; i++)
+		ret += GetChapterStats(i)->chapter_time * 180;
+
+	return ret;
+}
+
+void PlayRank_PutTotalPlayTime(int line)
+{
+	int time = PlayRank_GetTotalPlayTime();
+
+	PutTime(
+		gBg0Tm + TM_OFFSET(0x14, (line + 3) & 0x1F),
+		TEXT_COLOR_SYSTEM_BLUE,
+		time, true
+	);
+	EnableBgSync(BG0_SYNC_BIT);
+}
+
+void func_fe6_0808EC78(int x)
+{
+	int x1 = ((x - 0x50) * 4) & 0x3C0;
+	int x2 = (x1 + 0x40) & 0x3C0;
+	int i;
+
+	for (i = 0; i < 0x20; i++) {
+		gBg0Tm[TM_OFFSET(x1 + i, 0)] = 0;
+		gBg0Tm[TM_OFFSET(x1 + i, 1)] = 0;
+		gBg0Tm[TM_OFFSET(x2 + i, 0)] = 0;
+		gBg0Tm[TM_OFFSET(x2 + i, 1)] = 0;
+	}
+	EnableBgSync(BG0_SYNC_BIT);
+}
+
+// https://decomp.me/scratch/r3WgO
+NAKEDFUNC
+void func_fe6_0808ECD0(u16 *tm, int a, int b)
+{
+asm("\
+	.syntax unified\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	sub sp, #0x28\n\
+	str r0, [sp]\n\
+	lsls r2, r2, #0x10\n\
+	movs r3, #0\n\
+	lsrs r2, r2, #4\n\
+	mov ip, r2\n\
+.L0808ECE6:\n\
+	movs r2, #0\n\
+	lsls r0, r3, #8\n\
+	str r0, [sp, #0x10]\n\
+	adds r3, #1\n\
+	str r3, [sp, #8]\n\
+.L0808ECF0:\n\
+	lsls r0, r2, #3\n\
+	ldr r3, [sp, #0x10]\n\
+	adds r0, r3, r0\n\
+	movs r6, #0\n\
+	str r6, [sp, #4]\n\
+	adds r2, #1\n\
+	str r2, [sp, #0xc]\n\
+	lsls r2, r0, #1\n\
+	adds r0, r2, #0\n\
+	adds r0, #0xc0\n\
+	ldr r7, [sp]\n\
+	adds r0, r0, r7\n\
+	str r0, [sp, #0x14]\n\
+	adds r0, r2, #0\n\
+	adds r0, #0x80\n\
+	adds r0, r0, r7\n\
+	str r0, [sp, #0x18]\n\
+	adds r0, r2, #0\n\
+	adds r0, #0x40\n\
+	adds r0, r0, r7\n\
+	str r0, [sp, #0x1c]\n\
+	adds r2, r2, r7\n\
+	mov r0, ip\n\
+	adds r0, #0xe0\n\
+	adds r0, r0, r1\n\
+	mov sl, r0\n\
+	mov r0, ip\n\
+	adds r0, #0xc0\n\
+	adds r0, r0, r1\n\
+	mov sb, r0\n\
+	mov r0, ip\n\
+	adds r0, #0xa0\n\
+	adds r0, r0, r1\n\
+	mov r8, r0\n\
+	mov r0, ip\n\
+	adds r0, #0x80\n\
+	adds r0, r1, r0\n\
+	str r0, [sp, #0x20]\n\
+	mov r0, ip\n\
+	adds r0, #0x60\n\
+	adds r0, r1, r0\n\
+	str r0, [sp, #0x24]\n\
+	mov r0, ip\n\
+	adds r0, #0x40\n\
+	adds r5, r1, r0\n\
+	subs r0, #0x20\n\
+	adds r4, r1, r0\n\
+	mov r0, ip\n\
+	adds r3, r1, r0\n\
+.L0808ED52:\n\
+	strh r3, [r2]\n\
+	ldr r6, [sp, #0x1c]\n\
+	strh r4, [r6]\n\
+	ldr r7, [sp, #0x18]\n\
+	strh r5, [r7]\n\
+	mov r0, sp\n\
+	ldrh r6, [r0, #0x24]\n\
+	ldr r0, [sp, #0x14]\n\
+	strh r6, [r0]\n\
+	movs r7, #0x80\n\
+	lsls r7, r7, #1\n\
+	adds r0, r2, r7\n\
+	mov r6, sp\n\
+	ldrh r6, [r6, #0x20]\n\
+	strh r6, [r0]\n\
+	adds r7, #0x40\n\
+	adds r0, r2, r7\n\
+	mov r6, r8\n\
+	strh r6, [r0]\n\
+	adds r7, #0x40\n\
+	adds r0, r2, r7\n\
+	mov r6, sb\n\
+	strh r6, [r0]\n\
+	adds r7, #0x40\n\
+	adds r0, r2, r7\n\
+	mov r6, sl\n\
+	strh r6, [r0]\n\
+	ldr r7, [sp, #0x14]\n\
+	adds r7, #2\n\
+	str r7, [sp, #0x14]\n\
+	ldr r0, [sp, #0x18]\n\
+	adds r0, #2\n\
+	str r0, [sp, #0x18]\n\
+	ldr r6, [sp, #0x1c]\n\
+	adds r6, #2\n\
+	str r6, [sp, #0x1c]\n\
+	adds r2, #2\n\
+	movs r7, #1\n\
+	add sl, r7\n\
+	movs r0, #1\n\
+	add sb, r0\n\
+	add r8, r0\n\
+	ldr r6, [sp, #0x20]\n\
+	adds r6, #1\n\
+	str r6, [sp, #0x20]\n\
+	ldr r7, [sp, #0x24]\n\
+	adds r7, #1\n\
+	str r7, [sp, #0x24]\n\
+	adds r5, #1\n\
+	adds r4, #1\n\
+	adds r3, #1\n\
+	ldr r0, [sp, #4]\n\
+	adds r0, #1\n\
+	str r0, [sp, #4]\n\
+	cmp r0, #7\n\
+	ble .L0808ED52\n\
+	ldr r2, [sp, #0xc]\n\
+	cmp r2, #3\n\
+	ble .L0808ECF0\n\
+	ldr r3, [sp, #8]\n\
+	cmp r3, #3\n\
+	ble .L0808ECE6\n\
+	add sp, #0x28\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.syntax divided\n\
+");
+}
+
+void PlayRank_InitDisplay(void)
+{
+	ResetText();
+	UnpackUiWindowFrameGraphics();
+	ResetTextFont();
+	PlayRank_InitTexts();
+
+	SetDispEnable(1, 1, 1, 1, 1);
+
+	gPlayRankCurChapter = 0;
+	unk_02016A26 = 0;
+	unk_02016A2C = 0;
+	unk_02016A1C = 0x80;
+	unk_02016A1E = 0xE0;
+	unk_02016A20 = 0xFF;
+
+	SetBgOffset(BG_0, 0, 0x80);
+	SetBgOffset(BG_1, 0, unk_02016A1E);
+	SetBgOffset(BG_2, 0, 0);
+	SetBgOffset(BG_3, 0, 0);
+
+	SetWinEnable(1, 0, 0);
+	SetWin0Box(0, 0x18, -0x10, -0x78);
+	SetWin0Layers(1, 1, 1, 1, 1);
+	SetWOutLayers(0, 1, 1, 1, 1);
+
+	gDispIo.win_ct.win0_enable_blend = true;
+	gDispIo.win_ct.wout_enable_blend = true;
+
+	TmFill(gBg0Tm, 0);
+	TmFill(gBg1Tm, 0);
+	TmFill(gBg2Tm, 0);
+	TmFill(gBg3Tm, 0);
+
+	SetBlendAlpha(6, 0x10);
+	SetBlendTargetA(0, 0, 1, 0, 0);
+	SetBlendTargetB(0, 0, 0, 1, 0);
+
+	func_fe6_0808DD40();
+
+	ApplyBgPalettes(Pal_0834138C, BGPAL_PLAYRANK_4, 2);
+	ApplyBgPalette(Pal_08341DA0, BGPAL_PLAYRANK_6);
+	ApplyObPalette(Pal_0833C03C, OBPAL_PLAYRANK_2);
+	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_3);
+	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_B);
+
+	Decompress(Img_Unk_083092CC, OBJ_VRAM0 + BGCHR_PLAYRANK_80 * CHR_SIZE);
+	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + BGCHR_PLAYRANK_C0 * CHR_SIZE);
+	Decompress(Img_PlayRank, OBJ_VRAM0 + BGCHR_PLAYRANK_180 * CHR_SIZE);
+	Decompress(Img_PlayRank_083413CC, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
+	Decompress(Img_WorldMap_PlayRank, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
+	TmApplyTsa(gBg1Tm + TM_OFFSET(0x13, 0x10), Tsa_08342AF8, OAM2_PAL(BGPAL_PLAYRANK_1));
+	func_fe6_0808ECD0(gBg2Tm, 0x280, BGPAL_PLAYRANK_6);
+	TmApplyTsa(gBg3Tm, Tsa_08340ED8, OAM2_PAL(BGPAL_PLAYRANK_4));
+
+	SpawnProc(ProcScr_0868B768, PROC_TREE_3);
+	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+}
+
+void func_fe6_0808F060(struct ProcPlayRank *proc)
+{
+
+	proc->unk_2E = 4;
+	proc->unk_30 = 0;
+	unk_02016A1C = unk_02016A22 = 0x7A;
+
+	PlayRank_ChapterTurns_DrawTurn(0);
+	gPlayRankCurChapter = 0;
+	EnableBgSync(BG0_SYNC_BIT);
+}
+
+#if 0
+void PlayRank_Loop(struct ProcPlayRank *proc)
+{
+	int tmp1;
+
+	if (proc->unk_30 != 0) {
+		func_fe6_0808EC78(unk_02016A1C);
+		proc->unk_30 = 0;
+	}
+
+	if (unk_02016A26 <= 8) {
+		proc->unk_2E++;
+		if (proc->unk_2E < 4)
+			return;
+	}
+
+	proc->unk_2E = 0;
+
+	unk_02016A1C++;
+	SetBgOffset(BG_0, 0, unk_02016A1C & 0xFF);
+
+	if (unk_02016A26 >= 0xC) {
+		unk_02016A1E++;
+		SetBgOffset(BG_1, 0, unk_02016A1E & 0xFF);
+	}
+
+	tmp1 = ((unk_02016A1C - unk_02016A22) & 0xF0) >> 3;
+	if (tmp1 == unk_02016A20)
+		return;
+
+	proc->unk_30 = true;
+
+	switch (unk_02016A26) {
+	case 0:
+		if (!PlayRank_ChapterTurns_DrawTurn(unk_02016A20))
+			return;
+
+		break;
+
+	case 8:
+		TmFill(gBg0Tm, 0);
+		EnableBgSync(BG0_SYNC_BIT);
+		break;
+
+	case 9:
+		unk_02016A22 = 0x80;
+		unk_02016A1C = 0x80;
+		unk_02016A20 = 0;
+		SetupPlayRanks(0);
+		break;
+
+	case 11:
+		func_fe6_0808EB94(unk_02016A20);
+		break;
+
+	case 13:
+		PlayRank_PutTotalPlayTime(unk_02016A20);
+		SetWOutLayers(1, 1, 1, 1, 1);
+		break;
+
+	case 14:
+		unk_02016A2A = 0;
+		SpawnProc(ProcScr_0868B730, PROC_TREE_3);
+		SpawnProc(ProcScr_0868B6D8, PROC_TREE_3);
+		Proc_Break(proc);
+		break;
+
+	default:
+		break;
+	}
+
+	unk_02016A26++;
+}
+#endif
 
 CONST_DATA u8 gPlayRank_CombatRef[] = { 15, 25, 35, 40 };
 CONST_DATA u8 gPlayRank_SurvivalRef[4] = { 6, 4, 2, 1 };

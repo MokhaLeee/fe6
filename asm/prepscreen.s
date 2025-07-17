@@ -12310,7 +12310,7 @@ func_fe6_08083618: @ 0x08083618
 	movs r0, #0
 .L0808365E:
 	strb r0, [r4, #0x11]
-	bl func_fe6_0808EC1C
+	bl PlayRank_GetTotalPlayTime
 	add r2, sp, #4
 	add r3, sp, #8
 	mov r1, sp

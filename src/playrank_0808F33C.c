@@ -5,9 +5,48 @@
 #include "faction.h"
 #include "unit.h"
 #include "item.h"
+#include "hardware.h"
 
 #include "augury.h"
 #include "playrank.h"
+
+void PlayRank_Idle(ProcPtr proc)
+{
+	if ((gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B)) && gpPlayRankSt->step == 6) {
+		Proc_Break(proc);
+		return;
+	}
+
+	if (func_fe6_08036DEC()) {
+		unk_02016A2C = 1;
+		Proc_Break(proc);
+	}
+}
+
+void PlayRank_End1(ProcPtr proc)
+{
+	Proc_EndEach(ProcScr_0868B5E8);
+	Proc_EndEach(ProcScr_0868B88C);
+	Proc_EndEach(ProcScr_0868B610);
+	EndGreenText();
+}
+
+void PlayRank_End2(ProcPtr proc)
+{
+	Proc_EndEach(ProcScr_0868B648);
+	Proc_EndEach(ProcScr_0868B768);
+	Proc_EndEach(ProcScr_0868B730);
+	Proc_EndEach(ProcScr_0868B6D8);
+	Proc_EndEach(ProcScr_0868B80C);
+	Proc_EndEach(ProcScr_0868B8AC);
+	Proc_EndEach(ProcScr_0868B750);
+}
+
+void PlayRank_End3(ProcPtr proc)
+{
+	if (unk_02016A2C == 0)
+		Proc_Goto(proc, 1);
+}
 
 u16 PlayRank_GetTotalTurn(void)
 {

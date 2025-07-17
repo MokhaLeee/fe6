@@ -493,11 +493,11 @@ func_fe6_0808FA14: @ 0x0808FA14
 	orrs r0, r1
 	strh r0, [r7, #0x3c]
 	bl SetupXmapPlayRanks
-	ldr r0, .L0808FCC0 @ =gUnk_0834138C
+	ldr r0, .L0808FCC0 @ =Pal_0834138C
 	movs r1, #0x80
 	movs r2, #0x40
 	bl ApplyPaletteExt
-	ldr r0, .L0808FCC4 @ =gUnk_08341DA0
+	ldr r0, .L0808FCC4 @ =Pal_08341DA0
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -518,7 +518,7 @@ func_fe6_0808FA14: @ 0x0808FA14
 	adds r0, r2, #0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0808FCD0 @ =gUnk_08342A98
+	ldr r0, .L0808FCD0 @ =Pal_08342A98
 	movs r1, #0xd8
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -648,11 +648,11 @@ func_fe6_0808FA14: @ 0x0808FA14
 .L0808FCB4: .4byte gBg3Tm
 .L0808FCB8: .4byte 0x0000FFE0
 .L0808FCBC: .4byte 0x0000E0FF
-.L0808FCC0: .4byte gUnk_0834138C
-.L0808FCC4: .4byte gUnk_08341DA0
+.L0808FCC0: .4byte Pal_0834138C
+.L0808FCC4: .4byte Pal_08341DA0
 .L0808FCC8: .4byte Pal_0833C03C
 .L0808FCCC: .4byte gUnk_08343358
-.L0808FCD0: .4byte gUnk_08342A98
+.L0808FCD0: .4byte Pal_08342A98
 .L0808FCD4: .4byte Img_Unk_083092CC
 .L0808FCD8: .4byte 0x06011000
 .L0808FCDC: .4byte Img_PlayRankCharacters

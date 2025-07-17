@@ -8,13 +8,24 @@
 #include "helpbox.h"
 
 enum videoalloc_playrank {
+	BGPAL_PLAYRANK_1 = 1,
+	BGPAL_PLAYRANK_4 = 4,
+	BGPAL_PLAYRANK_6 = 6,
+
 	OBPAL_PLAYRANK_2 = 2,
 	OBPAL_PLAYRANK_3 = 3,
 	OBPAL_PLAYRANK_4 = 4,
 	OBPAL_PLAYRANK_5 = 5,
+	OBPAL_PLAYRANK_B = 0xB,
 	OBPAL_PLAYRANK_C = 0xC,
 
-	OBCHR_PLAYRANK_84 = 0x84
+	BGCHR_PLAYRANK_80 = 0x80,
+	BGCHR_PLAYRANK_C0 = 0xC0,
+	BGCHR_PLAYRANK_180 = 0x180,
+	BGCHR_PLAYRANK_680 = 0x680,
+
+	OBCHR_PLAYRANK_84 = 0x84,
+	OBCHR_PLAYRANK_98 = 0x98,
 };
 
 enum play_ranks {
@@ -147,18 +158,27 @@ void func_fe6_0808E6FC(void);
 void func_fe6_0808E710(void);
 void func_fe6_0808E730(void);
 
-// PlayRank_InitTexts
-// PlayRank_ChapterTurns_DrawBase
-// PlayRank_ChapterTurns_DrawTurn
+struct ProcPlayRank {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x2E);
+
+	i16 unk_2E;
+	i16 unk_30;
+};
+
+void PlayRank_InitTexts(void);
+int PlayRank_ChapterTurns_DrawBase(struct Text *text, int chapter_gaiden, u8 centered);
+bool PlayRank_ChapterTurns_DrawTurn(int line);
 void SetupPlayRanks(int line);
-// func_fe6_0808EB94
-// func_fe6_0808EC1C
-// func_fe6_0808EC48
-// func_fe6_0808EC78
-// func_fe6_0808ECD0
-// PlayRank_InitDisplay
-// func_fe6_0808F060
-// PlayRank_Loop
+void func_fe6_0808EB94(int line);
+int PlayRank_GetTotalPlayTime(void);
+void PlayRank_PutTotalPlayTime(int line);
+void func_fe6_0808EC78(int x);
+void func_fe6_0808ECD0(u16 *tm, int a, int b);
+void PlayRank_InitDisplay(void);
+void func_fe6_0808F060(struct ProcPlayRank *proc);
+void PlayRank_Loop(struct ProcPlayRank *proc);
 // PlayRank_Idle
 // PlayRank_End1
 // PlayRank_End2
