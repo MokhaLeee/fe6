@@ -881,7 +881,7 @@ int GetTotalUnitItemsValue(void)
     return result;
 }
 
-int func_fe6_08017104(void)
+int GetTotalAsset(void)
 {
     int halved, heldValue;
 

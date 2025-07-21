@@ -255,7 +255,7 @@ void CreateTrialChapterBonusUnits(void)
         BatchCreateUnits(UnitInfo_TrialBonusUnitH);
 }
 
-struct ChapterStats * func_fe6_08086AAC(void)
+struct ChapterStats * GetXmapChapterStats(void)
 {
     int time = (GetGameTime() - gPlaySt.time_chapter_started) / (FRAMES_PER_SECOND * 3);
 

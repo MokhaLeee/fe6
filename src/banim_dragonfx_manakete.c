@@ -164,7 +164,7 @@ void EkrManakete_UpdateBanimfx(struct ProcEkrDragon * proc)
         NewEkrManaketeDeamon(proc->anim);
         proc->anim->flags &= ~BAS_BIT_HIDDEN;
         EkrPrepareBanimfx(proc->anim, 0x55);
-        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
+        gEkrDragonfxState[GetAnimPosition(proc->anim)] = TRUE;
         proc->timer = 0;
         Proc_Break(proc);
         return;
@@ -180,7 +180,7 @@ void EkrManakete_UpdateBanimfx(struct ProcEkrDragon * proc)
 
     if (++proc->timer == 61)
     {
-        gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = TRUE;
+        gEkrDragonfxState[GetAnimPosition(proc->anim)] = TRUE;
         Proc_Break(proc);
     }
 }
@@ -321,7 +321,7 @@ void EkrManakete_ReloadBg(struct ProcEkrDragon * proc)
 
 void EkrManakete_TriggerEnding(struct ProcEkrDragon * proc)
 {
-    gEkrDragonIntroDone[GetAnimPosition(proc->anim)] = 2;
+    gEkrDragonfxState[GetAnimPosition(proc->anim)] = 2;
     Proc_Break(proc);
 }
 

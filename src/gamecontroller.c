@@ -17,6 +17,7 @@
 #include "class_demo.h"
 #include "opanim.h"
 #include "augury.h"
+#include "playrank.h"
 
 #include "constants/chapters.h"
 

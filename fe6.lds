@@ -200,7 +200,7 @@ SECTIONS
         . = 0x01E7AC; EkrDragonProcs = .;
         . = 0x01E7B4; gEkrDragonDeamonProcs = .;
         . = 0x01E7BC; gpProcEkrIdunnBodyFlashing = .;
-        . = 0x01E7C0; gEkrDragonIntroDone = .;
+        . = 0x01E7C0; gEkrDragonfxState = .;
         . = 0x01E7C4; gEkrDragonFastenConf = .;
         . = 0x01E7C8; gEkrDragonState = .;
         . = 0x01E7CC; gUnk_Banim_0201E7CC = .;
@@ -611,7 +611,8 @@ SECTIONS
         asm/xmap.o(.text);
         src/config.o(.text);
         src/augury.o(.text);
-        asm/code.o(.text);
+        src/playrank.o(.text);
+        asm/playrank_0808F33C.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
         src/monologue.o(.text);
@@ -851,6 +852,7 @@ SECTIONS
         . = ALIGN(4); data/xmap.o(.data);
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
+        . = ALIGN(4); src/playrank.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);
