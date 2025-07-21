@@ -1,204 +1,33 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start func_fe6_0804DC54
-func_fe6_0804DC54: @ 0x0804DC54
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	bl SpellFx_Begin
-	bl SpellFx_SetBG1Position
-	ldr r0, .L0804DC88 @ =gUnk_085D103C
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r5, [r4, #0x5c]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r5, #0
-	bl GetAnimRoundTypeAnotherSide
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	bl CheckRoundMiss
-	adds r4, #0x29
-	strb r0, [r4]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804DC88: .4byte gUnk_085D103C
-
-	thumb_func_start func_fe6_0804DC8C
-func_fe6_0804DC8C: @ 0x0804DC8C
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r0, [r5, #0x5c]
-	bl GetAnimAnotherSide
-	adds r4, r0, #0
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	movs r6, #0
-	strh r0, [r5, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x27
-	bne .L0804DCC4
-	adds r0, r4, #0
-	bl func_fe6_0804DD38
-	adds r0, r4, #0
-	bl func_fe6_0804DDC8
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #2
-	ldrsh r2, [r4, r0]
-	movs r0, #0xef
-	movs r3, #1
-	bl PlaySFX
-.L0804DCC4:
-	movs r1, #0x2c
-	ldrsh r0, [r5, r1]
-	cmp r0, #0x45
-	bne .L0804DD1C
-	movs r0, #9
-	ldrh r1, [r4, #0x10]
-	orrs r0, r1
-	strh r0, [r4, #0x10]
-	adds r0, r5, #0
-	adds r0, #0x29
-	ldrb r1, [r0]
-	adds r0, r4, #0
-	bl StartBattleAnimStatusChgHitEffects
-	adds r0, r4, #0
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L0804DD00
-	ldr r0, .L0804DCF8 @ =gpEfxUnitPaletteBackup
-	ldr r0, [r0]
-	ldr r1, .L0804DCFC @ =gPal+0x2E0
-	movs r2, #8
-	bl CpuFastSet
-	b .L0804DD0C
-	.align 2, 0
-.L0804DCF8: .4byte gpEfxUnitPaletteBackup
-.L0804DCFC: .4byte gPal+0x2E0
-.L0804DD00:
-	ldr r0, .L0804DD14 @ =gpEfxUnitPaletteBackup
-	ldr r0, [r0, #4]
-	ldr r1, .L0804DD18 @ =gPal+0x320
-	movs r2, #8
-	bl CpuFastSet
-.L0804DD0C:
-	adds r0, r4, #0
-	bl EnableEfxStatusUnits
-	b .L0804DD32
-	.align 2, 0
-.L0804DD14: .4byte gpEfxUnitPaletteBackup
-.L0804DD18: .4byte gPal+0x320
-.L0804DD1C:
-	cmp r0, #0x64
-	bne .L0804DD32
-	movs r0, #2
-	ldrh r1, [r4, #0x10]
-	orrs r0, r1
-	strh r0, [r4, #0x10]
-	bl SpellFx_Finish
-	adds r0, r5, #0
-	bl Proc_Break
-.L0804DD32:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_0804DD38
-func_fe6_0804DD38: @ 0x0804DD38
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r1, .L0804DD80 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804DD84 @ =gUnk_085D1054
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r5, [r4, #0x5c]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldr r0, .L0804DD88 @ =gUnk_0811CAF8
-	movs r1, #0x80
-	lsls r1, r1, #6
-	bl SpellFx_RegisterBgGfx
-	ldr r0, .L0804DD8C @ =gUnk_0811CD14
-	movs r1, #0x20
-	bl SpellFx_RegisterBgPal
-	ldr r0, [r4, #0x5c]
-	ldr r2, .L0804DD90 @ =gUnk_0811D0D4
-	adds r1, r2, #0
-	bl SpellFx_WriteBgMap
-	bl SpellFx_SetBG1Position
-	bl SpellFx_SetSomeColorEffect
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804DD80: .4byte gEfxBgSemaphore
-.L0804DD84: .4byte gUnk_085D1054
-.L0804DD88: .4byte gUnk_0811CAF8
-.L0804DD8C: .4byte gUnk_0811CD14
-.L0804DD90: .4byte gUnk_0811D0D4
-
-	thumb_func_start func_fe6_0804DD94
-func_fe6_0804DD94: @ 0x0804DD94
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x1f
-	bne .L0804DDBC
-	bl SpellFx_ClearBG1
-	bl SpellFx_ClearColorEffects
-	ldr r1, .L0804DDC4 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	adds r0, r4, #0
-	bl Proc_Break
-.L0804DDBC:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804DDC4: .4byte gEfxBgSemaphore
-
-	thumb_func_start func_fe6_0804DDC8
-func_fe6_0804DDC8: @ 0x0804DDC8
+	thumb_func_start StartSubSpell_EfxSongOBJ
+StartSubSpell_EfxSongOBJ: @ 0x0804DDC8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r1, .L0804DDF4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L0804DDF8 @ =gUnk_085D106C
+	ldr r0, .L0804DDF8 @ =ProcScr_EfxSongOBJ
 	movs r1, #3
 	bl SpawnProc
 	str r4, [r0, #0x5c]
 	movs r1, #0
 	strh r1, [r0, #0x2c]
 	str r1, [r0, #0x44]
-	ldr r1, .L0804DDFC @ =gUnk_08119CDC
+	ldr r1, .L0804DDFC @ =FrameLut_EfxSongOBJ
 	str r1, [r0, #0x48]
-	ldr r1, .L0804DE00 @ =gUnk_0811CD14
+	ldr r1, .L0804DE00 @ =Pal_EfxSongBG
 	str r1, [r0, #0x4c]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L0804DDF4: .4byte gEfxBgSemaphore
-.L0804DDF8: .4byte gUnk_085D106C
-.L0804DDFC: .4byte gUnk_08119CDC
-.L0804DE00: .4byte gUnk_0811CD14
+.L0804DDF8: .4byte ProcScr_EfxSongOBJ
+.L0804DDFC: .4byte FrameLut_EfxSongOBJ
+.L0804DE00: .4byte Pal_EfxSongBG
 
 	thumb_func_start func_fe6_0804DE04
 func_fe6_0804DE04: @ 0x0804DE04
@@ -279,9 +108,9 @@ func_fe6_0804DE84: @ 0x0804DE84
 	cmp r0, #0x19
 	bne .L0804DEBC
 	adds r0, r4, #0
-	bl func_fe6_0804DD38
+	bl StartSubSpell_EfxSongBG
 	adds r0, r4, #0
-	bl func_fe6_0804DDC8
+	bl StartSubSpell_EfxSongOBJ
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #2

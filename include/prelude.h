@@ -1,5 +1,12 @@
 #pragma once
 
+#define FE6 1
+#define FE7J 0
+#define FE7E 0
+#define FE7U 0
+#define FE8J 0
+#define FE8U 0
+
 #if defined(MODERN) && MODERN
 #  ifndef MODERN
 #    define MODERN

@@ -252,7 +252,7 @@ extern u8 const Tsa_EkrPopup[];
 // extern ??? gUnk_08117B90
 // extern ??? gUnk_08118330
 // extern ??? gUnk_08119CD8
-// extern ??? gUnk_08119CDC
+// extern ??? FrameLut_EfxSongOBJ
 // extern ??? gUnk_08119D56
 // extern ??? gUnk_08119D78
 // extern ??? gUnk_08119DEA
@@ -341,11 +341,11 @@ extern const u8 Img_SpellJavelinWyvernLord[];
 extern const u16 Pal_SpellJavelinWyvernLord[];
 extern const u8 Img_SpellJavelinGenerial[];
 extern const u16 Pal_SpellJavelinGenerial[];
-// extern ??? gUnk_0811C964
-// extern ??? gUnk_0811CAD8
-// extern ??? gUnk_0811CAF8
-// extern ??? gUnk_0811CD14
-// extern ??? gUnk_0811D0D4
+extern const u8 Img_EfxSongOBJ2[];
+extern const u16 Pal_EfxSongOBJ2[];
+extern const u8 Img_EfxSongBG[];
+extern const u16 Pal_EfxSongBG[];
+extern const u16 Tsa_EfxSongBG[];
 // extern ??? gUnk_0811E36C
 // extern ??? gUnk_0811F22C
 // extern ??? gUnk_0811F32C

@@ -250,8 +250,8 @@ gUnk_08118330: @ 08118330
 gUnk_08119CD8: @ 08119CD8
 	.incbin "fe6-base.gba", 0x119CD8, (0x119CDC - 0x119CD8) @ length: 0004
 
-	.global gUnk_08119CDC
-gUnk_08119CDC: @ 08119CDC
+	.global FrameLut_EfxSongOBJ
+FrameLut_EfxSongOBJ: @ 08119CDC
 	.incbin "fe6-base.gba", 0x119CDC, (0x119D56 - 0x119CDC) @ length: 007A
 
 	.global gUnk_08119D56
@@ -606,24 +606,24 @@ Img_SpellJavelinGenerial: @ 0811C6D4
 Pal_SpellJavelinGenerial: @ 0811C944
 	.incbin "fe6-base.gba", 0x11C944, (0x11C964 - 0x11C944) @ length: 0020
 
-	.global gUnk_0811C964
-gUnk_0811C964: @ 0811C964
+	.global Img_EfxSongOBJ2
+Img_EfxSongOBJ2: @ 0811C964
 	.incbin "fe6-base.gba", 0x11C964, (0x11CAD8 - 0x11C964) @ length: 0174
 
-	.global gUnk_0811CAD8
-gUnk_0811CAD8: @ 0811CAD8
+	.global Pal_EfxSongOBJ2
+Pal_EfxSongOBJ2: @ 0811CAD8
 	.incbin "fe6-base.gba", 0x11CAD8, (0x11CAF8 - 0x11CAD8) @ length: 0020
 
-	.global gUnk_0811CAF8
-gUnk_0811CAF8: @ 0811CAF8
+	.global Img_EfxSongBG
+Img_EfxSongBG: @ 0811CAF8
 	.incbin "fe6-base.gba", 0x11CAF8, (0x11CD14 - 0x11CAF8) @ length: 021C
 
-	.global gUnk_0811CD14
-gUnk_0811CD14: @ 0811CD14
+	.global Pal_EfxSongBG
+Pal_EfxSongBG: @ 0811CD14
 	.incbin "fe6-base.gba", 0x11CD14, (0x11D0D4 - 0x11CD14) @ length: 03C0
 
-	.global gUnk_0811D0D4
-gUnk_0811D0D4: @ 0811D0D4
+	.global Tsa_EfxSongBG
+Tsa_EfxSongBG: @ 0811D0D4
 	.incbin "fe6-base.gba", 0x11D0D4, (0x11E36C - 0x11D0D4) @ length: 1298
 
 	.global gUnk_0811E36C

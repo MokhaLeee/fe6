@@ -17,7 +17,7 @@ gEkrSpellAnimLut: @ 0x005D0DA0
 	.4byte StartSpellAnimJavelinGenerial
 	.4byte 0x00000000
 	.4byte 0x00000000
-	.4byte func_fe6_0804DC54
+	.4byte StartSpellAnimSong
 	.4byte func_fe6_0804DE4C
 	.4byte func_fe6_0804DF30
 	.4byte func_fe6_0804E0E8

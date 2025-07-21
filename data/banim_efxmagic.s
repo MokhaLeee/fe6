@@ -3,24 +3,12 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.global ProcScr_EfxTeyari
-ProcScr_EfxTeyari: @ 085D100C
-	.incbin "fe6-base.gba", 0x5D100C, (0x5D1024 - 0x5D100C) @ length: 0018
-
-	.global ProcScr_EfxTeyariOBJ
-ProcScr_EfxTeyariOBJ: @ 085D1024
-	.incbin "fe6-base.gba", 0x5D1024, (0x5D103C - 0x5D1024) @ length: 0018
-
-	.global gUnk_085D103C
-gUnk_085D103C: @ 085D103C
-	.incbin "fe6-base.gba", 0x5D103C, (0x5D1054 - 0x5D103C) @ length: 0018
-
-	.global gUnk_085D1054
-gUnk_085D1054: @ 085D1054
+	.global ProcScr_EfxSongBG
+ProcScr_EfxSongBG: @ 085D1054
 	.incbin "fe6-base.gba", 0x5D1054, (0x5D106C - 0x5D1054) @ length: 0018
 
-	.global gUnk_085D106C
-gUnk_085D106C: @ 085D106C
+	.global ProcScr_EfxSongOBJ
+ProcScr_EfxSongOBJ: @ 085D106C
 	.incbin "fe6-base.gba", 0x5D106C, (0x5D108C - 0x5D106C) @ length: 0020
 
 	.global gUnk_085D108C

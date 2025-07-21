@@ -134,6 +134,7 @@ enum
     SONG_D8 = 0xD8, // crit?
     SONG_EC = 0xEC, // no damage
     SONG_EE = 0xEE,
+    SONG_EF = 0xEF, // efx song
     SONG_FD = 0xFD, // manim
     SONG_10F = 0x10F,
     SONG_269 = 0x269,

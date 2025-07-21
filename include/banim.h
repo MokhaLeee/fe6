@@ -989,23 +989,23 @@ void NewEfxArrow(struct Anim * anim);
 void EfxArrow_Loop(struct ProcEfx * proc);
 void NewEfxArrowOBJ(struct Anim * anim);
 void EfxArrowObj_Loop(struct ProcEfxMagicOBJ * proc);
-// StartSpellAnimJavelin
-// StartSpellAnimJavelinCavalier
-// StartSpellAnimJavelinSoldier
-// StartSpellAnimJavelinPaladin
-// StartSpellAnimJavelinPrgasusKnight
-// StartSpellAnimJavelinFalcon
-// StartSpellAnimJavelinWyvernRider
-// StartSpellAnimJavelinWyvernLord
-// StartSpellAnimJavelinGenerial
-// EfxTeyari_Loop
+void StartSpellAnimJavelin(struct Anim * anim);
+void StartSpellAnimJavelinCavalier(struct Anim * anim);
+void StartSpellAnimJavelinSoldier(struct Anim * anim);
+void StartSpellAnimJavelinPaladin(struct Anim * anim);
+void StartSpellAnimJavelinPrgasusKnight(struct Anim * anim);
+void StartSpellAnimJavelinFalcon(struct Anim * anim);
+void StartSpellAnimJavelinWyvernRider(struct Anim * anim);
+void StartSpellAnimJavelinWyvernLord(struct Anim * anim);
+void StartSpellAnimJavelinGenerial(struct Anim * anim);
+void EfxTeyari_Loop(struct ProcEfx * proc);
 void NewEfxTeyariOBJ(struct Anim * anim, int type);
-// EfxTeyariObj_Loop
-// func_fe6_0804DC54
-// func_fe6_0804DC8C
-// func_fe6_0804DD38
-// func_fe6_0804DD94
-// func_fe6_0804DDC8
+void EfxTeyariObj_Loop(struct ProcEfxMagicOBJ * proc);
+void StartSpellAnimSong(struct Anim * anim);
+void EfxSong_Loop(struct ProcEfx * proc);
+void StartSubSpell_EfxSongBG(struct Anim * anim);
+void EfxSongBG_Loop(struct ProcEfxBG * proc);
+void StartSubSpell_EfxSongOBJ(struct Anim * anim);
 // func_fe6_0804DE04
 // func_fe6_0804DE4C
 // func_fe6_0804DE84
@@ -1815,9 +1815,9 @@ extern CONST_DATA struct ProcScr ProcScr_EfxArrow[];
 extern CONST_DATA struct ProcScr ProcScr_EfxArrowOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxTeyari[];
 extern CONST_DATA struct ProcScr ProcScr_EfxTeyariOBJ[];
-// ??? gUnk_085D103C
-// ??? gUnk_085D1054
-// ??? gUnk_085D106C
+extern CONST_DATA struct ProcScr ProcScr_EfxSong[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSongBG[];
+// ??? ProcScr_EfxSongOBJ
 // ??? gUnk_085D108C
 // ??? gUnk_085D10A4
 // ??? gUnk_085D10BC

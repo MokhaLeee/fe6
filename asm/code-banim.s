@@ -1054,10 +1054,10 @@ NewEfxFlashFX: @ 0x080575E8
 	adds r2, r3, #0
 	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
-	ldr r0, .L08057654 @ =gUnk_0811CAD8
+	ldr r0, .L08057654 @ =Pal_EfxSongOBJ2
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, .L08057658 @ =gUnk_0811C964
+	ldr r0, .L08057658 @ =Img_EfxSongOBJ2
 	movs r1, #0x80
 	lsls r1, r1, #5
 	bl SpellFx_RegisterObjGfx
@@ -1077,8 +1077,8 @@ NewEfxFlashFX: @ 0x080575E8
 .L08057648: .4byte gEfxBgSemaphore
 .L0805764C: .4byte gUnk_085D36EC
 .L08057650: .4byte gUnk_085D55C0
-.L08057654: .4byte gUnk_0811CAD8
-.L08057658: .4byte gUnk_0811C964
+.L08057654: .4byte Pal_EfxSongOBJ2
+.L08057658: .4byte Img_EfxSongOBJ2
 
 	thumb_func_start func_fe6_0805765C
 func_fe6_0805765C: @ 0x0805765C
@@ -1146,10 +1146,10 @@ NewEfxSongOBJ2: @ 0x080576AC
 	adds r2, r3, #0
 	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
-	ldr r0, .L08057718 @ =gUnk_0811CAD8
+	ldr r0, .L08057718 @ =Pal_EfxSongOBJ2
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, .L0805771C @ =gUnk_0811C964
+	ldr r0, .L0805771C @ =Img_EfxSongOBJ2
 	movs r1, #0x80
 	lsls r1, r1, #5
 	bl SpellFx_RegisterObjGfx
@@ -1169,8 +1169,8 @@ NewEfxSongOBJ2: @ 0x080576AC
 .L0805770C: .4byte gEfxBgSemaphore
 .L08057710: .4byte gUnk_085D3704
 .L08057714: .4byte gUnk_085D5590
-.L08057718: .4byte gUnk_0811CAD8
-.L0805771C: .4byte gUnk_0811C964
+.L08057718: .4byte Pal_EfxSongOBJ2
+.L0805771C: .4byte Img_EfxSongOBJ2
 
 	thumb_func_start func_fe6_08057720
 func_fe6_08057720: @ 0x08057720
