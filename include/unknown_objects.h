@@ -366,6 +366,16 @@ extern u16 Tsa_EfxCriricalEffectBG_R[];
 // extern ??? gUnk_081246F8
 extern u16 Img_EfxNormalEffectBG[];
 extern u16 Pal_EfxNormalEffectBG[];
+extern u16 Tsa1_EfxNormalEffectBG[];
+extern u16 Tsa2_EfxNormalEffectBG[];
+extern u16 Tsa3_EfxNormalEffectBG[];
+extern u16 Tsa4_EfxNormalEffectBG[];
+extern u16 Tsa5_EfxNormalEffectBG[];
+extern u16 Tsa6_EfxNormalEffectBG[];
+extern u16 Tsa7_EfxNormalEffectBG[];
+extern u16 Tsa8_EfxNormalEffectBG[];
+extern u16 Tsa9_EfxNormalEffectBG[];
+extern u16 TsaA_EfxNormalEffectBG[];
 // extern ??? gUnk_08127778
 // extern ??? gUnk_08129504
 // extern ??? gUnk_0812A258

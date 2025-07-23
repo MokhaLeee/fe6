@@ -72,6 +72,8 @@ enum video_banim {
     VRAMOFF_OBJ_EKRGAUGE_ICON_R = 0x3BC0,
     VRAMOFF_OBJ_EKRGAUGE_ARROW  = 0x3C00,
     VRAMOFF_OBJ_EKRGAUGE_NUM_R  = 0x3E00,
+    VRAMOFF_OBJ_4000            = 0x4000,
+    VRAMOFF_OBJ_6000            = 0x6000,
 
     VRAMOFF_BG_EKRLVUP_FONT = 0x2400,
 };
@@ -1367,20 +1369,25 @@ void NewEfxNormalEffect(struct Anim * anim);
 void EfxNormalEffect_Loop(struct ProcEfx * proc);
 void NewEfxNormalEffectBG(struct Anim * anim);
 void EfxNormalEffectBG_Loop(struct ProcEfxBG * proc);
-// NewEfxYushaSpinShield
-// func_fe6_08056DA8
-// NewEfxYushaSpinShieldOBJ
-// func_fe6_08056E34
-// func_fe6_08056E9C
-// func_fe6_08056EC4
-// func_fe6_08056F28
+
+/**
+ * efxmisc
+ */
+void NewEfxYushaSpinShield(struct Anim *anim, int state);
+void EfxYushaSpinShield_Null(struct ProcEfx *proc);
+void NewEfxYushaSpinShieldOBJ(struct Anim *anim, int state);
+void EfxYushaSpinShieldOBJ_1(struct ProcEfxOBJ * proc);
+void EfxYushaSpinShieldOBJ_2(struct ProcEfxOBJ * proc);
+void EfxYushaSpinShieldOBJ_3(struct ProcEfxOBJ * proc);
+void EfxYushaSpinShieldOBJ_4(struct ProcEfxOBJ * proc);
+
 // NewEfxHurtmutEff00
-// func_fe6_08056F94
-// func_fe6_08056FA0
+// EfxHurtmutEff00_Null
+// NewEfxHurtmutEff00OBJ
 // func_fe6_08056FE4
 // func_fe6_08057030
 // func_fe6_0805707C
-// func_fe6_080570A0
+// NewEfxHurtmutEff01OBJ
 // func_fe6_080570E4
 // func_fe6_08057130
 // func_fe6_0805717C
@@ -2040,8 +2047,8 @@ extern CONST_DATA struct ProcScr ProcScr_EfxNormalEffectBG[];
 extern CONST_DATA u16 *TSAs_EfxNormalEffectBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxYushaSpinShield[];
 extern CONST_DATA struct ProcScr ProcScr_EfxYushaSpinShieldOBJ[];
-// ??? gUnk_085D3594
-// ??? gUnk_085D35AC
+// ??? ProcScr_EfxHurtmutEff00
+// ??? ProcScr_EfxHurtmutEff00OBJ
 // ??? gUnk_085D35E4
 // ??? gUnk_085D361C
 // ??? gUnk_085D3634
@@ -2112,18 +2119,18 @@ extern u32 AnimScr_EfxTeyariObjType1Left[];
 // ??? gUnk_085D9E38
 // ??? gUnk_085DAA68
 // ??? gUnk_085DB6A4
-// ??? gUnk_085DC850
-// ??? gUnk_085DC954
-// ??? gUnk_085DC97C
-// ??? gUnk_085DDAF0
-// ??? gUnk_085DDBF4
-// ??? gUnk_085DDC1C
-// ??? gUnk_085DEDC0
-// ??? gUnk_085DEEC4
-// ??? gUnk_085DEEEC
-// ??? gUnk_085E0090
-// ??? gUnk_085E0194
-// ??? gUnk_085E01BC
+extern u32 AnimScr_YushaSpinShieldOBJ_LeftTypeA[];
+extern u32 AnimScr_YushaSpinShieldOBJ2_RightTypeA[];
+extern u32 AnimScr_YushaSpinShieldOBJ3_RightTypeA[];
+extern u32 AnimScr_YushaSpinShieldOBJ_RightTypeA[];
+extern u32 AnimScr_YushaSpinShieldOBJ2_LeftTypeA[];
+extern u32 AnimScr_YushaSpinShieldOBJ3_LeftTypeA[];
+extern u32 AnimScr_YushaSpinShieldOBJ_LeftTypeB[];
+extern u32 AnimScr_YushaSpinShieldOBJ2_RightTypeB[];
+extern u32 AnimScr_YushaSpinShieldOBJ3_RightTypeB[];
+extern u32 AnimScr_YushaSpinShieldOBJ_RightTypeB[];
+extern u32 AnimScr_YushaSpinShieldOBJ2_LeftTypeB[];
+extern u32 AnimScr_YushaSpinShieldOBJ3_LeftTypeB[];
 // ??? gUnk_085E0280
 // ??? gUnk_085E0324
 // ??? gUnk_085E03C8

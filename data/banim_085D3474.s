@@ -2,24 +2,12 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.global TSAs_EfxNormalEffectBG
-TSAs_EfxNormalEffectBG: @ 085D3524
-	.incbin "fe6-base.gba", 0x5D3524, (0x5D354C - 0x5D3524) @ length: 0028
-
-	.global ProcScr_EfxYushaSpinShield
-ProcScr_EfxYushaSpinShield: @ 085D354C
-	.incbin "fe6-base.gba", 0x5D354C, (0x5D3564 - 0x5D354C) @ length: 0018
-
-	.global ProcScr_EfxYushaSpinShieldOBJ
-ProcScr_EfxYushaSpinShieldOBJ: @ 085D3564
-	.incbin "fe6-base.gba", 0x5D3564, (0x5D3594 - 0x5D3564) @ length: 0030
-
-	.global gUnk_085D3594
-gUnk_085D3594: @ 085D3594
+	.global ProcScr_EfxHurtmutEff00
+ProcScr_EfxHurtmutEff00: @ 085D3594
 	.incbin "fe6-base.gba", 0x5D3594, (0x5D35AC - 0x5D3594) @ length: 0018
 
-	.global gUnk_085D35AC
-gUnk_085D35AC: @ 085D35AC
+	.global ProcScr_EfxHurtmutEff00OBJ
+ProcScr_EfxHurtmutEff00OBJ: @ 085D35AC
 	.incbin "fe6-base.gba", 0x5D35AC, (0x5D35E4 - 0x5D35AC) @ length: 0038
 
 	.global gUnk_085D35E4
@@ -326,52 +314,52 @@ gUnk_085DAA68: @ 085DAA68
 gUnk_085DB6A4: @ 085DB6A4
 	.incbin "fe6-base.gba", 0x5DB6A4, (0x5DC850 - 0x5DB6A4) @ length: 11AC
 
-	.global gUnk_085DC850
-gUnk_085DC850: @ 085DC850
+	.global AnimScr_YushaSpinShieldOBJ_LeftTypeA
+AnimScr_YushaSpinShieldOBJ_LeftTypeA: @ 085DC850
 	.incbin "fe6-base.gba", 0x5DC850, (0x5DC954 - 0x5DC850) @ length: 0104
 
-	.global gUnk_085DC954
-gUnk_085DC954: @ 085DC954
+	.global AnimScr_YushaSpinShieldOBJ2_RightTypeA
+AnimScr_YushaSpinShieldOBJ2_RightTypeA: @ 085DC954
 	.incbin "fe6-base.gba", 0x5DC954, (0x5DC97C - 0x5DC954) @ length: 0028
 
-	.global gUnk_085DC97C
-gUnk_085DC97C: @ 085DC97C
+	.global AnimScr_YushaSpinShieldOBJ3_RightTypeA
+AnimScr_YushaSpinShieldOBJ3_RightTypeA: @ 085DC97C
 	.incbin "fe6-base.gba", 0x5DC97C, (0x5DDAF0 - 0x5DC97C) @ length: 1174
 
-	.global gUnk_085DDAF0
-gUnk_085DDAF0: @ 085DDAF0
+	.global AnimScr_YushaSpinShieldOBJ_RightTypeA
+AnimScr_YushaSpinShieldOBJ_RightTypeA: @ 085DDAF0
 	.incbin "fe6-base.gba", 0x5DDAF0, (0x5DDBF4 - 0x5DDAF0) @ length: 0104
 
-	.global gUnk_085DDBF4
-gUnk_085DDBF4: @ 085DDBF4
+	.global AnimScr_YushaSpinShieldOBJ2_LeftTypeA
+AnimScr_YushaSpinShieldOBJ2_LeftTypeA: @ 085DDBF4
 	.incbin "fe6-base.gba", 0x5DDBF4, (0x5DDC1C - 0x5DDBF4) @ length: 0028
 
-	.global gUnk_085DDC1C
-gUnk_085DDC1C: @ 085DDC1C
+	.global AnimScr_YushaSpinShieldOBJ3_LeftTypeA
+AnimScr_YushaSpinShieldOBJ3_LeftTypeA: @ 085DDC1C
 	.incbin "fe6-base.gba", 0x5DDC1C, (0x5DEDC0 - 0x5DDC1C) @ length: 11A4
 
-	.global gUnk_085DEDC0
-gUnk_085DEDC0: @ 085DEDC0
+	.global AnimScr_YushaSpinShieldOBJ_LeftTypeB
+AnimScr_YushaSpinShieldOBJ_LeftTypeB: @ 085DEDC0
 	.incbin "fe6-base.gba", 0x5DEDC0, (0x5DEEC4 - 0x5DEDC0) @ length: 0104
 
-	.global gUnk_085DEEC4
-gUnk_085DEEC4: @ 085DEEC4
+	.global AnimScr_YushaSpinShieldOBJ2_RightTypeB
+AnimScr_YushaSpinShieldOBJ2_RightTypeB: @ 085DEEC4
 	.incbin "fe6-base.gba", 0x5DEEC4, (0x5DEEEC - 0x5DEEC4) @ length: 0028
 
-	.global gUnk_085DEEEC
-gUnk_085DEEEC: @ 085DEEEC
+	.global AnimScr_YushaSpinShieldOBJ3_RightTypeB
+AnimScr_YushaSpinShieldOBJ3_RightTypeB: @ 085DEEEC
 	.incbin "fe6-base.gba", 0x5DEEEC, (0x5E0090 - 0x5DEEEC) @ length: 11A4
 
-	.global gUnk_085E0090
-gUnk_085E0090: @ 085E0090
+	.global AnimScr_YushaSpinShieldOBJ_RightTypeB
+AnimScr_YushaSpinShieldOBJ_RightTypeB: @ 085E0090
 	.incbin "fe6-base.gba", 0x5E0090, (0x5E0194 - 0x5E0090) @ length: 0104
 
-	.global gUnk_085E0194
-gUnk_085E0194: @ 085E0194
+	.global AnimScr_YushaSpinShieldOBJ2_LeftTypeB
+AnimScr_YushaSpinShieldOBJ2_LeftTypeB: @ 085E0194
 	.incbin "fe6-base.gba", 0x5E0194, (0x5E01BC - 0x5E0194) @ length: 0028
 
-	.global gUnk_085E01BC
-gUnk_085E01BC: @ 085E01BC
+	.global AnimScr_YushaSpinShieldOBJ3_LeftTypeB
+AnimScr_YushaSpinShieldOBJ3_LeftTypeB: @ 085E01BC
 	.incbin "fe6-base.gba", 0x5E01BC, (0x5E0280 - 0x5E01BC) @ length: 00C4
 
 	.global gUnk_085E0280

@@ -222,7 +222,47 @@ Img_EfxNormalEffectBG: @ 0812479C
 
 	.global Pal_EfxNormalEffectBG
 Pal_EfxNormalEffectBG: @ 08124B64
-	.incbin "fe6-base.gba", 0x124B64, (0x127778 - 0x124B64) @ length: 2C14
+	.incbin "fe6-base.gba", 0x124B64, (0x124B84 - 0x124B64) @ length: 2C14
+
+	.global Tsa1_EfxNormalEffectBG
+Tsa1_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x124B84, 0x124C50 - 0x124B84
+
+	.global Tsa2_EfxNormalEffectBG
+Tsa2_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x124C50, 0x124D50 - 0x124C50
+
+	.global Tsa3_EfxNormalEffectBG
+Tsa3_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x124D50, 0x124E60 - 0x124D50
+
+	.global Tsa4_EfxNormalEffectBG
+Tsa4_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x124E60, 0x124F6C - 0x124E60
+
+	.global Tsa5_EfxNormalEffectBG
+Tsa5_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x124F6C, 0x125070 - 0x124F6C
+
+	.global Tsa6_EfxNormalEffectBG
+Tsa6_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x125070, 0x12515C - 0x125070
+
+	.global Tsa7_EfxNormalEffectBG
+Tsa7_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x12515C, 0x125230 - 0x12515C
+
+	.global Tsa8_EfxNormalEffectBG
+Tsa8_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x125230, 0x1252EC - 0x125230
+
+	.global Tsa9_EfxNormalEffectBG
+Tsa9_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x1252EC, 0x125394 - 0x1252EC
+
+	.global TsaA_EfxNormalEffectBG
+TsaA_EfxNormalEffectBG:
+    .incbin "fe6-base.gba", 0x125394, 0x127778 - 0x125394
 
 	.global gUnk_08127778
 gUnk_08127778: @ 08127778

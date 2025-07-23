@@ -1,251 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start NewEfxYushaSpinShield
-NewEfxYushaSpinShield: @ 0x08056D80
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r0, .L08056DA4 @ =ProcScr_EfxYushaSpinShield
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl NewEfxYushaSpinShieldOBJ
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08056DA4: .4byte ProcScr_EfxYushaSpinShield
-
-	thumb_func_start func_fe6_08056DA8
-func_fe6_08056DA8: @ 0x08056DA8
-	push {lr}
-	bl Proc_Break
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start NewEfxYushaSpinShieldOBJ
-NewEfxYushaSpinShieldOBJ: @ 0x08056DB4
-	push {r4, r5, r6, lr}
-	sub sp, #4
-	adds r6, r0, #0
-	adds r4, r1, #0
-	ldr r0, .L08056DDC @ =ProcScr_EfxYushaSpinShieldOBJ
-	movs r1, #3
-	bl SpawnProc
-	adds r5, r0, #0
-	str r6, [r5, #0x5c]
-	movs r0, #0
-	strh r0, [r5, #0x2c]
-	adds r0, r5, #0
-	adds r0, #0x29
-	strb r4, [r0]
-	cmp r4, #0
-	bne .L08056DE8
-	ldr r2, .L08056DE0 @ =gUnk_085DC850
-	ldr r3, .L08056DE4 @ =gUnk_085DDAF0
-	b .L08056DEC
-	.align 2, 0
-.L08056DDC: .4byte ProcScr_EfxYushaSpinShieldOBJ
-.L08056DE0: .4byte gUnk_085DC850
-.L08056DE4: .4byte gUnk_085DDAF0
-.L08056DE8:
-	ldr r2, .L08056E18 @ =gUnk_085DEDC0
-	ldr r3, .L08056E1C @ =gUnk_085E0090
-.L08056DEC:
-	str r2, [sp]
-	adds r0, r6, #0
-	adds r1, r3, #0
-	bl EfxCreateFrontAnim
-	adds r4, r0, #0
-	str r4, [r5, #0x60]
-	movs r0, #0xc0
-	lsls r0, r0, #4
-	ldrh r1, [r4, #8]
-	ands r0, r1
-	movs r5, #0
-	strh r0, [r4, #8]
-	adds r0, r6, #0
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L08056E20
-	movs r1, #0xe4
-	lsls r1, r1, #7
-	b .L08056E24
-	.align 2, 0
-.L08056E18: .4byte gUnk_085DEDC0
-.L08056E1C: .4byte gUnk_085E0090
-.L08056E20:
-	movs r1, #0x93
-	lsls r1, r1, #8
-.L08056E24:
-	adds r0, r1, #0
-	ldrh r1, [r4, #8]
-	orrs r0, r1
-	strh r0, [r4, #8]
-	add sp, #4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-
-	thumb_func_start func_fe6_08056E34
-func_fe6_08056E34: @ 0x08056E34
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, [r5, #0x60]
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	strh r0, [r5, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x45
-	bne .L08056E92
-	adds r0, r5, #0
-	adds r0, #0x29
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne .L08056E6C
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L08056E64
-	ldr r0, .L08056E60 @ =gUnk_085DDBF4
-	b .L08056E82
-	.align 2, 0
-.L08056E60: .4byte gUnk_085DDBF4
-.L08056E64:
-	ldr r0, .L08056E68 @ =gUnk_085DC954
-	b .L08056E82
-	.align 2, 0
-.L08056E68: .4byte gUnk_085DC954
-.L08056E6C:
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L08056E80
-	ldr r0, .L08056E7C @ =gUnk_085E0194
-	b .L08056E82
-	.align 2, 0
-.L08056E7C: .4byte gUnk_085E0194
-.L08056E80:
-	ldr r0, .L08056E98 @ =gUnk_085DEEC4
-.L08056E82:
-	str r0, [r4, #0x24]
-	str r0, [r4, #0x20]
-	movs r0, #0
-	strh r0, [r4, #6]
-	strh r0, [r5, #0x2c]
-	adds r0, r5, #0
-	bl Proc_Break
-.L08056E92:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08056E98: .4byte gUnk_085DEEC4
-
-	thumb_func_start func_fe6_08056E9C
-func_fe6_08056E9C: @ 0x08056E9C
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, [r1, #0x5c]
-	ldrh r2, [r0, #0x10]
-	movs r0, #4
-	ands r0, r2
-	cmp r0, #0
-	beq .L08056EBE
-	movs r0, #8
-	ands r0, r2
-	cmp r0, #0
-	beq .L08056EBE
-	movs r0, #0
-	strh r0, [r1, #0x2c]
-	adds r0, r1, #0
-	bl Proc_Break
-.L08056EBE:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_08056EC4
-func_fe6_08056EC4: @ 0x08056EC4
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, [r5, #0x60]
-	bl CheckEkrHitDone
-	cmp r0, #1
-	bne .L08056F1E
-	adds r0, r5, #0
-	adds r0, #0x29
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne .L08056EF8
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L08056EF0
-	ldr r0, .L08056EEC @ =gUnk_085DDC1C
-	b .L08056F0E
-	.align 2, 0
-.L08056EEC: .4byte gUnk_085DDC1C
-.L08056EF0:
-	ldr r0, .L08056EF4 @ =gUnk_085DC97C
-	b .L08056F0E
-	.align 2, 0
-.L08056EF4: .4byte gUnk_085DC97C
-.L08056EF8:
-	ldr r0, [r5, #0x5c]
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L08056F0C
-	ldr r0, .L08056F08 @ =gUnk_085E01BC
-	b .L08056F0E
-	.align 2, 0
-.L08056F08: .4byte gUnk_085E01BC
-.L08056F0C:
-	ldr r0, .L08056F24 @ =gUnk_085DEEEC
-.L08056F0E:
-	str r0, [r4, #0x24]
-	str r0, [r4, #0x20]
-	movs r0, #0
-	strh r0, [r4, #6]
-	strh r0, [r5, #0x2c]
-	adds r0, r5, #0
-	bl Proc_Break
-.L08056F1E:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08056F24: .4byte gUnk_085DEEEC
-
-	thumb_func_start func_fe6_08056F28
-func_fe6_08056F28: @ 0x08056F28
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x14
-	bne .L08056F4A
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldr r0, [r4, #0x60]
-	bl BasRemove
-	adds r0, r4, #0
-	bl Proc_Break
-.L08056F4A:
-	pop {r4}
-	pop {r0}
-	bx r0
-
 	thumb_func_start NewEfxHurtmutEff00
 NewEfxHurtmutEff00: @ 0x08056F50
 	push {r4, r5, lr}
@@ -254,7 +9,7 @@ NewEfxHurtmutEff00: @ 0x08056F50
 	ldr r5, [r0]
 	cmp r5, #0
 	bne .L08056F8E
-	ldr r0, .L08056F80 @ =gUnk_085D3594
+	ldr r0, .L08056F80 @ =ProcScr_EfxHurtmutEff00
 	movs r1, #3
 	bl SpawnProc
 	str r4, [r0, #0x5c]
@@ -265,30 +20,30 @@ NewEfxHurtmutEff00: @ 0x08056F50
 	cmp r0, #0
 	bne .L08056F88
 	adds r0, r4, #0
-	bl func_fe6_08056FA0
+	bl NewEfxHurtmutEff00OBJ
 	b .L08056F8E
 	.align 2, 0
 .L08056F7C: .4byte gEfxBgSemaphore
-.L08056F80: .4byte gUnk_085D3594
+.L08056F80: .4byte ProcScr_EfxHurtmutEff00
 .L08056F84: .4byte gEkrDistanceType
 .L08056F88:
 	adds r0, r4, #0
-	bl func_fe6_080570A0
+	bl NewEfxHurtmutEff01OBJ
 .L08056F8E:
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08056F94
-func_fe6_08056F94: @ 0x08056F94
+	thumb_func_start EfxHurtmutEff00_Null
+EfxHurtmutEff00_Null: @ 0x08056F94
 	push {lr}
 	bl Proc_Break
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08056FA0
-func_fe6_08056FA0: @ 0x08056FA0
+	thumb_func_start NewEfxHurtmutEff00OBJ
+NewEfxHurtmutEff00OBJ: @ 0x08056FA0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -296,7 +51,7 @@ func_fe6_08056FA0: @ 0x08056FA0
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L08056FDC @ =gUnk_085D35AC
+	ldr r0, .L08056FDC @ =ProcScr_EfxHurtmutEff00OBJ
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -316,7 +71,7 @@ func_fe6_08056FA0: @ 0x08056FA0
 	bx r0
 	.align 2, 0
 .L08056FD8: .4byte gEfxBgSemaphore
-.L08056FDC: .4byte gUnk_085D35AC
+.L08056FDC: .4byte ProcScr_EfxHurtmutEff00OBJ
 .L08056FE0: .4byte AnimScr_ManaketeFlame
 
 	thumb_func_start func_fe6_08056FE4
@@ -411,8 +166,8 @@ func_fe6_0805707C: @ 0x0805707C
 	.align 2, 0
 .L0805709C: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_080570A0
-func_fe6_080570A0: @ 0x080570A0
+	thumb_func_start NewEfxHurtmutEff01OBJ
+NewEfxHurtmutEff01OBJ: @ 0x080570A0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0

@@ -566,6 +566,7 @@ SECTIONS
         src/banim_efxmagic.o(.text);
         asm/banim_efxmagic.o(.text);
         src/banim_efxhit.o(.text);
+        src/banim_efxmisc.o(.text);
         asm/code-banim.o(.text);
         src/banim_dragon.o(.text);
         src/banim_dragonfx_manakete.o(.text);
@@ -702,6 +703,7 @@ SECTIONS
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
         . = ALIGN(4); src/banim_efxhit.o(.rodata);
+        . = ALIGN(4); src/banim_efxmisc.o(.rodata);
         . = ALIGN(4); data/rodata_banim_0811AE34.o(.rodata);
         . = ALIGN(4); src/banim_efxutils.o(.rodata);
         . = ALIGN(4); data/rodata_banim_081C9EF4.o(.rodata);
@@ -808,6 +810,7 @@ SECTIONS
         . = ALIGN(4); src/banim_efxmagic.o(.data);
         . = ALIGN(4); data/banim_efxmagic.o(.data);
         . = ALIGN(4); src/banim_efxhit.o(.data);
+        . = ALIGN(4); src/banim_efxmisc.o(.data);
         . = ALIGN(4); data/banim_085D3474.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);

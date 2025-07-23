@@ -267,6 +267,19 @@ CONST_DATA struct ProcScr ProcScr_EfxNormalEffectBG[] = {
 	PROC_END
 };
 
+CONST_DATA u16 *TSAs_EfxNormalEffectBG[] = {
+	Tsa1_EfxNormalEffectBG,
+	Tsa2_EfxNormalEffectBG,
+	Tsa3_EfxNormalEffectBG,
+	Tsa4_EfxNormalEffectBG,
+	Tsa5_EfxNormalEffectBG,
+	Tsa6_EfxNormalEffectBG,
+	Tsa7_EfxNormalEffectBG,
+	Tsa8_EfxNormalEffectBG,
+	Tsa9_EfxNormalEffectBG,
+	TsaA_EfxNormalEffectBG,
+};
+
 void NewEfxNormalEffectBG(struct Anim *anim)
 {
 	static const u16 frames[] = {

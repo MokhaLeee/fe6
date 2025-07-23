@@ -10,6 +10,11 @@ enum
     FRAMES_PER_HOUR   = 60 * FRAMES_PER_MINUTE,
 };
 
+#ifndef CHR_SIZE
+#define CHR_SIZE 0x20
+#define CHR_LINE 0x20
+#endif
+
 #if MODERN
 #  define IO_ALIGNED(n) ALIGNED(n)
 #else
