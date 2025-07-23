@@ -21,10 +21,10 @@ gUnk_085CCEB8: @ 085CCEB8
 gUnk_085CCF38: @ 085CCF38
 	.incbin "fe6-base.gba", 0x5CCF38, (0x5CDCA4 - 0x5CCF38) @ length: 0D6C
 
-	.global gUnk_085CDCA4
-gUnk_085CDCA4: @ 085CDCA4
+	.global AnimScr_NoDamage
+AnimScr_NoDamage: @ 085CDCA4
 	.incbin "fe6-base.gba", 0x5CDCA4, (0x5CDD18 - 0x5CDCA4) @ length: 0074
 
-	.global gUnk_085CDD18
-gUnk_085CDD18: @ 085CDD18
+	.global AnimScr_Miss
+AnimScr_Miss: @ 085CDD18
 	.incbin "fe6-base.gba", 0x5CDD18, (0x5D0DA0 - 0x5CDD18) @ length: 3088

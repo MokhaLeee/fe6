@@ -308,8 +308,8 @@ extern u8 const Tsa_EkrPopup[];
 // extern ??? gUnk_0811AC30
 // extern ??? gUnk_0811AD32
 // extern ??? gUnk_0811AD68
-// extern ??? gUnk_0811AE34
-// extern ??? gUnk_0811AE76
+extern const u16 Frames_EfxCriricalEffectBGCOL[];
+extern const u16 FrameConf_EfxNormalEffectBG[];
 // extern ??? gUnk_0811AEA0
 // extern ??? gUnk_0811AEB6
 // extern ??? gUnk_0811AEBC
@@ -357,15 +357,15 @@ extern const u16 Tsa_EfxSongBG[];
 // extern ??? gUnk_081214B8
 // extern ??? gUnk_081214D8
 // extern ??? gUnk_081214F8
-// extern ??? gUnk_08122A3C
-// extern ??? gUnk_08123B1C
-// extern ??? gUnk_08123D1C
-// extern ??? gUnk_081241BC
+extern u16 Img_EfxCriricalEffectBG[];
+extern u16 Pal_EfxCriricalEffectBG[];
+extern u16 Tsa_EfxCriricalEffectBG_L[];
+extern u16 Tsa_EfxCriricalEffectBG_R[];
 // extern ??? gUnk_08124618
 // extern ??? gUnk_081246D8
 // extern ??? gUnk_081246F8
-// extern ??? gUnk_0812479C
-// extern ??? gUnk_08124B64
+extern u16 Img_EfxNormalEffectBG[];
+extern u16 Pal_EfxNormalEffectBG[];
 // extern ??? gUnk_08127778
 // extern ??? gUnk_08129504
 // extern ??? gUnk_0812A258

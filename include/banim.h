@@ -1341,20 +1341,32 @@ void StartSubSpell_EfxSongOBJ(struct Anim * anim);
 // func_fe6_08056968
 // func_fe6_080569C0
 // func_fe6_08056A00
+
+struct ProcEfxDamageMojiEffectOBJ {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+    /* 2C */ i16 timer;
+    /* 2E */ i16 terminator;
+    STRUCT_PAD(0x30, 0x5C);
+    /* 5C */ struct Anim * anim;
+    /* 60 */ struct ProcEkrSubAnimeEmulator *sub_proc;
+};
+
 void NewEfxDamageMojiEffect(struct BaSprite * anim, int hitted);
-// func_fe6_08056A3C
-// func_fe6_08056A68
-// func_fe6_08056AD8
+void EfxDamageMojiEffect_Loop(struct ProcEfx *proc);
+void NewEfxDamageMojiEffectOBJ(struct Anim *anim, int hitted);
+void EfxDamageMojiEffectOBJ_Loop(struct ProcEfxDamageMojiEffectOBJ *proc);
 void NewEfxPierceCritical(struct Anim * anim);
-// func_fe6_08056B28
-// func_fe6_08056B58
-// func_fe6_08056BA8
-// func_fe6_08056BD0
-// func_fe6_08056C00
+void EfxCriricalEffect_Loop(struct ProcEfx * proc);
+void NewEfxCriricalEffectBG(struct Anim * anim);
+void EfxCriricalEffectBG_Loop(struct ProcEfxBG * proc);
+void NewEfxCriricalEffectBGCOL(struct Anim * anim);
+void EfxCriricalEffectBGCOL_Loop(struct ProcEfxBGCOL * proc);
 void NewEfxNormalEffect(struct Anim * anim);
-// func_fe6_08056C5C
-// func_fe6_08056C9C
-// func_fe6_08056D28
+void EfxNormalEffect_Loop(struct ProcEfx * proc);
+void NewEfxNormalEffectBG(struct Anim * anim);
+void EfxNormalEffectBG_Loop(struct ProcEfxBG * proc);
 // NewEfxYushaSpinShield
 // func_fe6_08056DA8
 // NewEfxYushaSpinShieldOBJ
@@ -1792,8 +1804,8 @@ extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
 // ??? gUnk_085CCE38
 // ??? gUnk_085CCEB8
 // ??? gUnk_085CCF38
-// ??? gUnk_085CDCA4
-// ??? gUnk_085CDD18
+extern u32 AnimScr_NoDamage[];
+extern u32 AnimScr_Miss[];
 
 typedef void (* SpellAnimFunc)(struct Anim * anim);
 extern CONST_DATA SpellAnimFunc gEkrSpellAnimLut[];
@@ -2019,13 +2031,13 @@ extern CONST_DATA struct ProcScr ProcScr_EfxSongBG[];
 // ??? gUnk_085D3434
 // ??? gUnk_085D3454
 extern CONST_DATA struct ProcScr ProcScr_EfxDamageMojiEffect[];
-// ??? gUnk_085D348C
-// ??? gUnk_085D34A4
-// ??? gUnk_085D34BC
-// ??? gUnk_085D34D4
-// ??? gUnk_085D34F4
-// ??? gUnk_085D350C
-// ??? gUnk_085D3524
+extern CONST_DATA struct ProcScr ProcScr_EfxDamageMojiEffectOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxCriricalEffect[];
+extern CONST_DATA struct ProcScr ProcScr_EfxCriricalEffectBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxCriricalEffectBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxNormalEffect[];
+extern CONST_DATA struct ProcScr ProcScr_EfxNormalEffectBG[];
+extern CONST_DATA u16 *TSAs_EfxNormalEffectBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxYushaSpinShield[];
 extern CONST_DATA struct ProcScr ProcScr_EfxYushaSpinShieldOBJ[];
 // ??? gUnk_085D3594
