@@ -940,7 +940,7 @@ func_fe6_0804E540: @ 0x0804E540
 	adds r2, r3, #0
 	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
-	ldr r0, .L0804E5A8 @ =gUnk_081203F4
+	ldr r0, .L0804E5A8 @ =Img_EfxHurtmutEff00OBJ1
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
 	ldr r0, .L0804E5AC @ =gUnk_0811F6F4
@@ -956,7 +956,7 @@ func_fe6_0804E540: @ 0x0804E540
 .L0804E59C: .4byte gUnk_085D1154
 .L0804E5A0: .4byte gUnk_085D6E78
 .L0804E5A4: .4byte gUnk_085D6218
-.L0804E5A8: .4byte gUnk_081203F4
+.L0804E5A8: .4byte Img_EfxHurtmutEff00OBJ1
 .L0804E5AC: .4byte gUnk_0811F6F4
 
 	thumb_func_start func_fe6_0804E5B0
@@ -1135,7 +1135,7 @@ func_fe6_0804E6BC: @ 0x0804E6BC
 	subs r0, #0x20
 .L0804E720:
 	strh r0, [r4, #2]
-	ldr r0, .L0804E73C @ =gUnk_081203F4
+	ldr r0, .L0804E73C @ =Img_EfxHurtmutEff00OBJ1
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
 	ldr r0, .L0804E740 @ =gUnk_0811F6F4
@@ -1147,7 +1147,7 @@ func_fe6_0804E6BC: @ 0x0804E6BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804E73C: .4byte gUnk_081203F4
+.L0804E73C: .4byte Img_EfxHurtmutEff00OBJ1
 .L0804E740: .4byte gUnk_0811F6F4
 
 	thumb_func_start func_fe6_0804E744

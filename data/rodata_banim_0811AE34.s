@@ -1,19 +1,19 @@
 	.section .rodata
 
-	.global gUnk_0811AEA0
-gUnk_0811AEA0: @ 0811AEA0
+	.global FrameConfig_EfxMagFcastBg1
+FrameConfig_EfxMagFcastBg1: @ 0811AEA0
 	.incbin "fe6-base.gba", 0x11AEA0, (0x11AEB6 - 0x11AEA0) @ length: 0016
 
-	.global gUnk_0811AEB6
-gUnk_0811AEB6: @ 0811AEB6
+	.global FrameConfig_EfxMagFcastBg2
+FrameConfig_EfxMagFcastBg2: @ 0811AEB6
 	.incbin "fe6-base.gba", 0x11AEB6, (0x11AEBC - 0x11AEB6) @ length: 0006
 
-	.global gUnk_0811AEBC
-gUnk_0811AEBC: @ 0811AEBC
+	.global FrameConfig_EfxMagFcastBg3
+FrameConfig_EfxMagFcastBg3: @ 0811AEBC
 	.incbin "fe6-base.gba", 0x11AEBC, (0x11AEDE - 0x11AEBC) @ length: 0022
 
-	.global gUnk_0811AEDE
-gUnk_0811AEDE: @ 0811AEDE
+	.global FrameConfig_EfxMagFcastBg4
+FrameConfig_EfxMagFcastBg4: @ 0811AEDE
 	.incbin "fe6-base.gba", 0x11AEDE, (0x11AF00 - 0x11AEDE) @ length: 0022
 
 	.global gUnk_0811AF00
@@ -160,20 +160,20 @@ gUnk_0811F32C: @ 0811F32C
 gUnk_0811F6F4: @ 0811F6F4
 	.incbin "fe6-base.gba", 0x11F6F4, (0x1203F4 - 0x11F6F4) @ length: 0D00
 
-	.global gUnk_081203F4
-gUnk_081203F4: @ 081203F4
+	.global Img_EfxHurtmutEff00OBJ1
+Img_EfxHurtmutEff00OBJ1: @ 081203F4
 	.incbin "fe6-base.gba", 0x1203F4, (0x120414 - 0x1203F4) @ length: 0020
 
-	.global gUnk_08120414
-gUnk_08120414: @ 08120414
+	.global Img_EfxHurtmutEff00OBJ2
+Img_EfxHurtmutEff00OBJ2: @ 08120414
 	.incbin "fe6-base.gba", 0x120414, (0x120CB4 - 0x120414) @ length: 08A0
 
-	.global gUnk_08120CB4
-gUnk_08120CB4: @ 08120CB4
+	.global Pal_EfxHurtmutEff00OBJ1
+Pal_EfxHurtmutEff00OBJ1: @ 08120CB4
 	.incbin "fe6-base.gba", 0x120CB4, (0x121498 - 0x120CB4) @ length: 07E4
 
-	.global gUnk_08121498
-gUnk_08121498: @ 08121498
+	.global Pal_EfxHurtmutEff00OBJ2
+Pal_EfxHurtmutEff00OBJ2: @ 08121498
 	.incbin "fe6-base.gba", 0x121498, (0x1214B8 - 0x121498) @ length: 0020
 
 	.global gUnk_081214B8
@@ -268,12 +268,12 @@ TsaA_EfxNormalEffectBG:
 gUnk_08127778: @ 08127778
 	.incbin "fe6-base.gba", 0x127778, (0x129504 - 0x127778) @ length: 1D8C
 
-	.global gUnk_08129504
-gUnk_08129504: @ 08129504
+	.global Img_EfxMagfcastBG
+Img_EfxMagfcastBG: @ 08129504
 	.incbin "fe6-base.gba", 0x129504, (0x12A258 - 0x129504) @ length: 0D54
 
-	.global gUnk_0812A258
-gUnk_0812A258: @ 0812A258
+	.global Pal_EfxMagfcastBG
+Pal_EfxMagfcastBG: @ 0812A258
 	.incbin "fe6-base.gba", 0x12A258, (0x12B19C - 0x12A258) @ length: 0F44
 
 	.global gUnk_0812B19C
@@ -284,20 +284,20 @@ gUnk_0812B19C: @ 0812B19C
 gUnk_0812BE10: @ 0812BE10
 	.incbin "fe6-base.gba", 0x12BE10, (0x12C1BC - 0x12BE10) @ length: 03AC
 
-	.global gUnk_0812C1BC
-gUnk_0812C1BC: @ 0812C1BC
+	.global Img_EfxSunakemuriOBJ
+Img_EfxSunakemuriOBJ: @ 0812C1BC
 	.incbin "fe6-base.gba", 0x12C1BC, (0x12C62C - 0x12C1BC) @ length: 0470
 
-	.global gUnk_0812C62C
-gUnk_0812C62C: @ 0812C62C
+	.global Pal_EfxSunakemuriOBJ1
+Pal_EfxSunakemuriOBJ1: @ 0812C62C
 	.incbin "fe6-base.gba", 0x12C62C, (0x12C64C - 0x12C62C) @ length: 0020
 
-	.global gUnk_0812C64C
-gUnk_0812C64C: @ 0812C64C
+	.global Pal_EfxSunakemuriOBJ2
+Pal_EfxSunakemuriOBJ2: @ 0812C64C
 	.incbin "fe6-base.gba", 0x12C64C, (0x12C66C - 0x12C64C) @ length: 0020
 
-	.global gUnk_0812C66C
-gUnk_0812C66C: @ 0812C66C
+	.global Pal_EfxSunakemuriOBJ3
+Pal_EfxSunakemuriOBJ3: @ 0812C66C
 	.incbin "fe6-base.gba", 0x12C66C, (0x12C68C - 0x12C66C) @ length: 0020
 
 	.global gUnk_0812C68C

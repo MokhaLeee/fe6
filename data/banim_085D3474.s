@@ -10,40 +10,40 @@ ProcScr_EfxHurtmutEff00: @ 085D3594
 ProcScr_EfxHurtmutEff00OBJ: @ 085D35AC
 	.incbin "fe6-base.gba", 0x5D35AC, (0x5D35E4 - 0x5D35AC) @ length: 0038
 
-	.global gUnk_085D35E4
-gUnk_085D35E4: @ 085D35E4
+	.global ProcScr_EfxHurtmutEff01OBJ
+ProcScr_EfxHurtmutEff01OBJ: @ 085D35E4
 	.incbin "fe6-base.gba", 0x5D35E4, (0x5D361C - 0x5D35E4) @ length: 0038
 
-	.global gUnk_085D361C
-gUnk_085D361C: @ 085D361C
+	.global ProcScr_EfxMagfcast
+ProcScr_EfxMagfcast: @ 085D361C
 	.incbin "fe6-base.gba", 0x5D361C, (0x5D3634 - 0x5D361C) @ length: 0018
 
-	.global gUnk_085D3634
-gUnk_085D3634: @ 085D3634
+	.global ProcScr_EfxMagfcastBG
+ProcScr_EfxMagfcastBG: @ 085D3634
 	.incbin "fe6-base.gba", 0x5D3634, (0x5D364C - 0x5D3634) @ length: 0018
 
-	.global gUnk_085D364C
-gUnk_085D364C: @ 085D364C
+	.global TsaLut1_EfxMagfcastBG
+TsaLut1_EfxMagfcastBG: @ 085D364C
 	.incbin "fe6-base.gba", 0x5D364C, (0x5D3664 - 0x5D364C) @ length: 0018
 
-	.global gUnk_085D3664
-gUnk_085D3664: @ 085D3664
+	.global TsaLut2_EfxMagfcastBG
+TsaLut2_EfxMagfcastBG: @ 085D3664
 	.incbin "fe6-base.gba", 0x5D3664, (0x5D36A4 - 0x5D3664) @ length: 0040
 
-	.global gUnk_085D36A4
-gUnk_085D36A4: @ 085D36A4
+	.global ProcScr_EfxSunakemuri
+ProcScr_EfxSunakemuri: @ 085D36A4
 	.incbin "fe6-base.gba", 0x5D36A4, (0x5D36BC - 0x5D36A4) @ length: 0018
 
-	.global gUnk_085D36BC
-gUnk_085D36BC: @ 085D36BC
+	.global ProcScr_EfxSunakemuriOBJ
+ProcScr_EfxSunakemuriOBJ: @ 085D36BC
 	.incbin "fe6-base.gba", 0x5D36BC, (0x5D36D4 - 0x5D36BC) @ length: 0018
 
 	.global gUnk_085D36D4
 gUnk_085D36D4: @ 085D36D4
 	.incbin "fe6-base.gba", 0x5D36D4, (0x5D36EC - 0x5D36D4) @ length: 0018
 
-	.global gUnk_085D36EC
-gUnk_085D36EC: @ 085D36EC
+	.global ProcScr_EfxFlashFX
+ProcScr_EfxFlashFX: @ 085D36EC
 	.incbin "fe6-base.gba", 0x5D36EC, (0x5D3704 - 0x5D36EC) @ length: 0018
 
 	.global gUnk_085D3704
@@ -262,36 +262,36 @@ gUnk_085D6218: @ 085D6218
 gUnk_085D6E78: @ 085D6E78
 	.incbin "fe6-base.gba", 0x5D6E78, (0x5D7190 - 0x5D6E78) @ length: 0318
 
-	.global gUnk_085D7190
-gUnk_085D7190: @ 085D7190
+	.global AnimScr_HurtmutEff00OBJ1_Right
+AnimScr_HurtmutEff00OBJ1_Right: @ 085D7190
 	.incbin "fe6-base.gba", 0x5D7190, (0x5D71D8 - 0x5D7190) @ length: 0048
 
-	.global gUnk_085D71D8
-gUnk_085D71D8: @ 085D71D8
+	.global AnimScr_HurtmutEff01OBJ1_Right
+AnimScr_HurtmutEff01OBJ1_Right: @ 085D71D8
 	.incbin "fe6-base.gba", 0x5D71D8, (0x5D74FC - 0x5D71D8) @ length: 0324
 
-	.global gUnk_085D74FC
-gUnk_085D74FC: @ 085D74FC
+	.global AnimScr_HurtmutEff00OBJ1_Left
+AnimScr_HurtmutEff00OBJ1_Left: @ 085D74FC
 	.incbin "fe6-base.gba", 0x5D74FC, (0x5D7544 - 0x5D74FC) @ length: 0048
 
-	.global gUnk_085D7544
-gUnk_085D7544: @ 085D7544
+	.global AnimScr_HurtmutEff01OBJ1_Left
+AnimScr_HurtmutEff01OBJ1_Left: @ 085D7544
 	.incbin "fe6-base.gba", 0x5D7544, (0x5D77E4 - 0x5D7544) @ length: 02A0
 
-	.global gUnk_085D77E4
-gUnk_085D77E4: @ 085D77E4
+	.global AnimScr_HurtmutEff00OBJ2_Right
+AnimScr_HurtmutEff00OBJ2_Right: @ 085D77E4
 	.incbin "fe6-base.gba", 0x5D77E4, (0x5D77F4 - 0x5D77E4) @ length: 0010
 
-	.global gUnk_085D77F4
-gUnk_085D77F4: @ 085D77F4
+	.global AnimScr_HurtmutEff01OBJ2_Right
+AnimScr_HurtmutEff01OBJ2_Right: @ 085D77F4
 	.incbin "fe6-base.gba", 0x5D77F4, (0x5D7A40 - 0x5D77F4) @ length: 024C
 
-	.global gUnk_085D7A40
-gUnk_085D7A40: @ 085D7A40
+	.global AnimScr_HurtmutEff00OBJ2_Left
+AnimScr_HurtmutEff00OBJ2_Left: @ 085D7A40
 	.incbin "fe6-base.gba", 0x5D7A40, (0x5D7A50 - 0x5D7A40) @ length: 0010
 
-	.global gUnk_085D7A50
-gUnk_085D7A50: @ 085D7A50
+	.global AnimScr_HurtmutEff01OBJ2_Left
+AnimScr_HurtmutEff01OBJ2_Left: @ 085D7A50
 	.incbin "fe6-base.gba", 0x5D7A50, (0x5D8608 - 0x5D7A50) @ length: 0BB8
 
 	.global gUnk_085D8608
@@ -362,28 +362,28 @@ AnimScr_YushaSpinShieldOBJ2_LeftTypeB: @ 085E0194
 AnimScr_YushaSpinShieldOBJ3_LeftTypeB: @ 085E01BC
 	.incbin "fe6-base.gba", 0x5E01BC, (0x5E0280 - 0x5E01BC) @ length: 00C4
 
-	.global gUnk_085E0280
-gUnk_085E0280: @ 085E0280
+	.global AnimScr_EfxSunakemuriOBJ1_R
+AnimScr_EfxSunakemuriOBJ1_R: @ 085E0280
 	.incbin "fe6-base.gba", 0x5E0280, (0x5E0324 - 0x5E0280) @ length: 00A4
 
-	.global gUnk_085E0324
-gUnk_085E0324: @ 085E0324
+	.global AnimScr_EfxSunakemuriOBJ1_L
+AnimScr_EfxSunakemuriOBJ1_L: @ 085E0324
 	.incbin "fe6-base.gba", 0x5E0324, (0x5E03C8 - 0x5E0324) @ length: 00A4
 
-	.global gUnk_085E03C8
-gUnk_085E03C8: @ 085E03C8
+	.global AnimScr_EfxSunakemuriOBJ2_R
+AnimScr_EfxSunakemuriOBJ2_R: @ 085E03C8
 	.incbin "fe6-base.gba", 0x5E03C8, (0x5E046C - 0x5E03C8) @ length: 00A4
 
-	.global gUnk_085E046C
-gUnk_085E046C: @ 085E046C
+	.global AnimScr_EfxSunakemuriOBJ2_L
+AnimScr_EfxSunakemuriOBJ2_L: @ 085E046C
 	.incbin "fe6-base.gba", 0x5E046C, (0x5E0510 - 0x5E046C) @ length: 00A4
 
-	.global gUnk_085E0510
-gUnk_085E0510: @ 085E0510
+	.global AnimScr_EfxSunakemuriOBJ3_R
+AnimScr_EfxSunakemuriOBJ3_R: @ 085E0510
 	.incbin "fe6-base.gba", 0x5E0510, (0x5E05B4 - 0x5E0510) @ length: 00A4
 
-	.global gUnk_085E05B4
-gUnk_085E05B4: @ 085E05B4
+	.global AnimScr_EfxSunakemuriOBJ3_L
+AnimScr_EfxSunakemuriOBJ3_L: @ 085E05B4
 	.incbin "fe6-base.gba", 0x5E05B4, (0x5E0748 - 0x5E05B4) @ length: 0194
 
 	.global gUnk_085E0748

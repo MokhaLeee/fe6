@@ -1384,27 +1384,27 @@ void EfxYushaSpinShieldOBJ_4(struct ProcEfxOBJ * proc);
 // NewEfxHurtmutEff00
 // EfxHurtmutEff00_Null
 // NewEfxHurtmutEff00OBJ
-// func_fe6_08056FE4
-// func_fe6_08057030
-// func_fe6_0805707C
+// EfxHurtmutEff00OBJ_1
+// EfxHurtmutEff00OBJ_2
+// EfxHurtmutEff00OBJ_3
 // NewEfxHurtmutEff01OBJ
-// func_fe6_080570E4
-// func_fe6_08057130
-// func_fe6_0805717C
-// func_fe6_080571A0
-// func_fe6_08057208
-// func_fe6_08057224
-// func_fe6_080572EC
-// func_fe6_08057344
-// func_fe6_08057374
-// func_fe6_08057380
-// func_fe6_0805752C
+// EfxHurtmutEff01OBJ_1
+// EfxHurtmutEff01OBJ_2
+// EfxHurtmutEff01OBJ_3
+// NewEfxMagfcast
+// EfxMagfcast_Loop
+// NewEfxMagfcastBG
+// EfxMagfcastBG_Loop
+// NewEfxSunakemuri
+// EfxSunakemuri_Null
+// NewEfxSunakemuriOBJ
+// EfxSunakemuriOBJ_Loop
 // NewEfxKingPika
-// func_fe6_08057578
+// EfxKingPika_Loop
 // NewEfxFlashFX
 // func_fe6_0805765C
 // NewEfxSongOBJ2
-// func_fe6_08057720
+// EfxSongOBJ2_Loop
 // func_fe6_08057754
 // func_fe6_080577A0
 // func_fe6_080577F4
@@ -2049,15 +2049,15 @@ extern CONST_DATA struct ProcScr ProcScr_EfxYushaSpinShield[];
 extern CONST_DATA struct ProcScr ProcScr_EfxYushaSpinShieldOBJ[];
 // ??? ProcScr_EfxHurtmutEff00
 // ??? ProcScr_EfxHurtmutEff00OBJ
-// ??? gUnk_085D35E4
-// ??? gUnk_085D361C
-// ??? gUnk_085D3634
-// ??? gUnk_085D364C
-// ??? gUnk_085D3664
-// ??? gUnk_085D36A4
-// ??? gUnk_085D36BC
+// ??? ProcScr_EfxHurtmutEff01OBJ
+// ??? ProcScr_EfxMagfcast
+// ??? ProcScr_EfxMagfcastBG
+// ??? TsaLut1_EfxMagfcastBG
+// ??? TsaLut2_EfxMagfcastBG
+// ??? ProcScr_EfxSunakemuri
+// ??? ProcScr_EfxSunakemuriOBJ
 // ??? gUnk_085D36D4
-// ??? gUnk_085D36EC
+// ??? ProcScr_EfxFlashFX
 // ??? gUnk_085D3704
 // ??? gUnk_085D371C
 // ??? gUnk_085D373C
@@ -2106,14 +2106,14 @@ extern u32 AnimScr_EfxTeyariObjType1Left[];
 // ??? gUnk_085D55C0
 // ??? gUnk_085D6218
 // ??? gUnk_085D6E78
-// ??? gUnk_085D7190
-// ??? gUnk_085D71D8
-// ??? gUnk_085D74FC
-// ??? gUnk_085D7544
-// ??? gUnk_085D77E4
-// ??? gUnk_085D77F4
-// ??? gUnk_085D7A40
-// ??? gUnk_085D7A50
+// ??? AnimScr_HurtmutEff00OBJ1_Right
+// ??? AnimScr_HurtmutEff01OBJ1_Right
+// ??? AnimScr_HurtmutEff00OBJ1_Left
+// ??? AnimScr_HurtmutEff01OBJ1_Left
+// ??? AnimScr_HurtmutEff00OBJ2_Right
+// ??? AnimScr_HurtmutEff01OBJ2_Right
+// ??? AnimScr_HurtmutEff00OBJ2_Left
+// ??? AnimScr_HurtmutEff01OBJ2_Left
 // ??? gUnk_085D8608
 // ??? gUnk_085D9208
 // ??? gUnk_085D9E38
@@ -2131,12 +2131,12 @@ extern u32 AnimScr_YushaSpinShieldOBJ3_RightTypeB[];
 extern u32 AnimScr_YushaSpinShieldOBJ_RightTypeB[];
 extern u32 AnimScr_YushaSpinShieldOBJ2_LeftTypeB[];
 extern u32 AnimScr_YushaSpinShieldOBJ3_LeftTypeB[];
-// ??? gUnk_085E0280
-// ??? gUnk_085E0324
-// ??? gUnk_085E03C8
-// ??? gUnk_085E046C
-// ??? gUnk_085E0510
-// ??? gUnk_085E05B4
+// ??? AnimScr_EfxSunakemuriOBJ1_R
+// ??? AnimScr_EfxSunakemuriOBJ1_L
+// ??? AnimScr_EfxSunakemuriOBJ2_R
+// ??? AnimScr_EfxSunakemuriOBJ2_L
+// ??? AnimScr_EfxSunakemuriOBJ3_R
+// ??? AnimScr_EfxSunakemuriOBJ3_L
 // ??? gUnk_085E0748
 // ??? gUnk_085E08DC
 // ??? gUnk_085E0A88

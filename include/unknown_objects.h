@@ -310,10 +310,10 @@ extern u8 const Tsa_EkrPopup[];
 // extern ??? gUnk_0811AD68
 extern const u16 Frames_EfxCriricalEffectBGCOL[];
 extern const u16 FrameConf_EfxNormalEffectBG[];
-// extern ??? gUnk_0811AEA0
-// extern ??? gUnk_0811AEB6
-// extern ??? gUnk_0811AEBC
-// extern ??? gUnk_0811AEDE
+// extern ??? FrameConfig_EfxMagFcastBg1
+// extern ??? FrameConfig_EfxMagFcastBg2
+// extern ??? FrameConfig_EfxMagFcastBg3
+// extern ??? FrameConfig_EfxMagFcastBg4
 // extern ??? gUnk_0811AF00
 // extern ??? gUnk_0811AF20
 // extern ??? gUnk_0811AF52
@@ -350,10 +350,10 @@ extern const u16 Tsa_EfxSongBG[];
 // extern ??? gUnk_0811F22C
 // extern ??? gUnk_0811F32C
 // extern ??? gUnk_0811F6F4
-// extern ??? gUnk_081203F4
-// extern ??? gUnk_08120414
-// extern ??? gUnk_08120CB4
-// extern ??? gUnk_08121498
+extern u16 Img_EfxHurtmutEff00OBJ1[];
+extern u16 Img_EfxHurtmutEff00OBJ2[];
+extern u16 Pal_EfxHurtmutEff00OBJ1[];
+extern u16 Pal_EfxHurtmutEff00OBJ2[];
 // extern ??? gUnk_081214B8
 // extern ??? gUnk_081214D8
 // extern ??? gUnk_081214F8
@@ -377,14 +377,14 @@ extern u16 Tsa8_EfxNormalEffectBG[];
 extern u16 Tsa9_EfxNormalEffectBG[];
 extern u16 TsaA_EfxNormalEffectBG[];
 // extern ??? gUnk_08127778
-// extern ??? gUnk_08129504
-// extern ??? gUnk_0812A258
+// extern ??? Img_EfxMagfcastBG
+// extern ??? Pal_EfxMagfcastBG
 // extern ??? gUnk_0812B19C
 // extern ??? gUnk_0812BE10
-// extern ??? gUnk_0812C1BC
-// extern ??? gUnk_0812C62C
-// extern ??? gUnk_0812C64C
-// extern ??? gUnk_0812C66C
+// extern ??? Img_EfxSunakemuriOBJ
+// extern ??? Pal_EfxSunakemuriOBJ1
+// extern ??? Pal_EfxSunakemuriOBJ2
+// extern ??? Pal_EfxSunakemuriOBJ3
 // extern ??? gUnk_0812C68C
 // extern ??? gUnk_0812CF48
 // extern ??? gUnk_0812D374
