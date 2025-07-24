@@ -1,21 +1,5 @@
 	.section .rodata
 
-	.global FrameConfig_EfxMagFcastBg1
-FrameConfig_EfxMagFcastBg1: @ 0811AEA0
-	.incbin "fe6-base.gba", 0x11AEA0, (0x11AEB6 - 0x11AEA0) @ length: 0016
-
-	.global FrameConfig_EfxMagFcastBg2
-FrameConfig_EfxMagFcastBg2: @ 0811AEB6
-	.incbin "fe6-base.gba", 0x11AEB6, (0x11AEBC - 0x11AEB6) @ length: 0006
-
-	.global FrameConfig_EfxMagFcastBg3
-FrameConfig_EfxMagFcastBg3: @ 0811AEBC
-	.incbin "fe6-base.gba", 0x11AEBC, (0x11AEDE - 0x11AEBC) @ length: 0022
-
-	.global FrameConfig_EfxMagFcastBg4
-FrameConfig_EfxMagFcastBg4: @ 0811AEDE
-	.incbin "fe6-base.gba", 0x11AEDE, (0x11AF00 - 0x11AEDE) @ length: 0022
-
 	.global gUnk_0811AF00
 gUnk_0811AF00: @ 0811AF00
 	.incbin "fe6-base.gba", 0x11AF00, (0x11AF20 - 0x11AF00) @ length: 0020
@@ -124,12 +108,12 @@ Img_SpellJavelinGenerial: @ 0811C6D4
 Pal_SpellJavelinGenerial: @ 0811C944
 	.incbin "fe6-base.gba", 0x11C944, (0x11C964 - 0x11C944) @ length: 0020
 
-	.global Img_EfxSongOBJ2
-Img_EfxSongOBJ2: @ 0811C964
+	.global Img_EfxSongFE6
+Img_EfxSongFE6: @ 0811C964
 	.incbin "fe6-base.gba", 0x11C964, (0x11CAD8 - 0x11C964) @ length: 0174
 
-	.global Pal_EfxSongOBJ2
-Pal_EfxSongOBJ2: @ 0811CAD8
+	.global Pal_EfxSongFE6
+Pal_EfxSongFE6: @ 0811CAD8
 	.incbin "fe6-base.gba", 0x11CAD8, (0x11CAF8 - 0x11CAD8) @ length: 0020
 
 	.global Img_EfxSongBG
@@ -160,20 +144,20 @@ gUnk_0811F32C: @ 0811F32C
 gUnk_0811F6F4: @ 0811F6F4
 	.incbin "fe6-base.gba", 0x11F6F4, (0x1203F4 - 0x11F6F4) @ length: 0D00
 
-	.global Img_EfxHurtmutEff00OBJ1
-Img_EfxHurtmutEff00OBJ1: @ 081203F4
+	.global Unk_Img_081203F4
+Unk_Img_081203F4: @ 081203F4
 	.incbin "fe6-base.gba", 0x1203F4, (0x120414 - 0x1203F4) @ length: 0020
 
-	.global Img_EfxHurtmutEff00OBJ2
-Img_EfxHurtmutEff00OBJ2: @ 08120414
+	.global Img_EfxHurtmutEff00OBJ1
+Img_EfxHurtmutEff00OBJ1: @ 08120414
 	.incbin "fe6-base.gba", 0x120414, (0x120CB4 - 0x120414) @ length: 08A0
 
-	.global Pal_EfxHurtmutEff00OBJ1
-Pal_EfxHurtmutEff00OBJ1: @ 08120CB4
+	.global Img_EfxHurtmutEff00OBJ2
+Img_EfxHurtmutEff00OBJ2: @ 08120CB4
 	.incbin "fe6-base.gba", 0x120CB4, (0x121498 - 0x120CB4) @ length: 07E4
 
-	.global Pal_EfxHurtmutEff00OBJ2
-Pal_EfxHurtmutEff00OBJ2: @ 08121498
+	.global Pal_EfxHurtmutEff00OBJ
+Pal_EfxHurtmutEff00OBJ: @ 08121498
 	.incbin "fe6-base.gba", 0x121498, (0x1214B8 - 0x121498) @ length: 0020
 
 	.global gUnk_081214B8
@@ -274,7 +258,95 @@ Img_EfxMagfcastBG: @ 08129504
 
 	.global Pal_EfxMagfcastBG
 Pal_EfxMagfcastBG: @ 0812A258
-	.incbin "fe6-base.gba", 0x12A258, (0x12B19C - 0x12A258) @ length: 0F44
+	.incbin "fe6-base.gba", 0x12A258, (0x12A278 - 0x12A258) @ length: 0F44
+
+    .global Tsa1_EfxMagfcastBG
+Tsa1_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A278, 0x12A314 - 0x12A278
+
+    .global Tsa2_EfxMagfcastBG
+Tsa2_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A314, 0x12A3B0 - 0x12A314
+
+    .global Tsa3_EfxMagfcastBG
+Tsa3_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A3B0, 0x12A450 - 0x12A3B0
+
+    .global Tsa4_EfxMagfcastBG
+Tsa4_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A450, 0x12A4F4 - 0x12A450
+
+    .global Tsa5_EfxMagfcastBG
+Tsa5_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A4F4, 0x12A5A8 - 0x12A4F4
+
+    .global Tsa6_EfxMagfcastBG
+Tsa6_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A5A8, 0x12A650 - 0x12A5A8
+
+    .global Tsa7_EfxMagfcastBG
+Tsa7_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A650, 0x12A700 - 0x12A650
+
+    .global Tsa8_EfxMagfcastBG
+Tsa8_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A700, 0x12A7B0 - 0x12A700
+
+    .global Tsa9_EfxMagfcastBG
+Tsa9_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A7B0, 0x12A868 - 0x12A7B0
+
+    .global Tsa10_EfxMagfcastBG
+Tsa10_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A868, 0x12A920 - 0x12A868
+
+    .global Tsa11_EfxMagfcastBG
+Tsa11_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A920, 0x12A9D4 - 0x12A920
+
+    .global Tsa12_EfxMagfcastBG
+Tsa12_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12A9D4, 0x12AA74 - 0x12A9D4
+
+    .global Tsa13_EfxMagfcastBG
+Tsa13_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12AA74, 0x12AB28 - 0x12AA74
+
+    .global Tsa14_EfxMagfcastBG
+Tsa14_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12AB28, 0x12ABDC - 0x12AB28
+
+    .global Tsa15_EfxMagfcastBG
+Tsa15_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12ABDC, 0x12AC90 - 0x12ABDC
+
+    .global Tsa16_EfxMagfcastBG
+Tsa16_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12AC90, 0x12AD30 - 0x12AC90
+
+    .global Tsa17_EfxMagfcastBG
+Tsa17_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12AD30, 0x12ADEC - 0x12AD30
+
+    .global Tsa18_EfxMagfcastBG
+Tsa18_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12ADEC, 0x12AE9C - 0x12ADEC
+
+    .global Tsa19_EfxMagfcastBG
+Tsa19_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12AE9C, 0x12AF6C - 0x12AE9C
+
+    .global Tsa20_EfxMagfcastBG
+Tsa20_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12AF6C, 0x12B024 - 0x12AF6C
+
+    .global Tsa21_EfxMagfcastBG
+Tsa21_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12B024, 0x12B0F4 - 0x12B024
+
+    .global Tsa22_EfxMagfcastBG
+Tsa22_EfxMagfcastBG:
+    .incbin "fe6-base.gba", 0x12B0F4, 0x12B19C - 0x12B0F4
 
 	.global gUnk_0812B19C
 gUnk_0812B19C: @ 0812B19C

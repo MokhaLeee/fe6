@@ -2,64 +2,12 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.global ProcScr_EfxHurtmutEff00
-ProcScr_EfxHurtmutEff00: @ 085D3594
-	.incbin "fe6-base.gba", 0x5D3594, (0x5D35AC - 0x5D3594) @ length: 0018
-
-	.global ProcScr_EfxHurtmutEff00OBJ
-ProcScr_EfxHurtmutEff00OBJ: @ 085D35AC
-	.incbin "fe6-base.gba", 0x5D35AC, (0x5D35E4 - 0x5D35AC) @ length: 0038
-
-	.global ProcScr_EfxHurtmutEff01OBJ
-ProcScr_EfxHurtmutEff01OBJ: @ 085D35E4
-	.incbin "fe6-base.gba", 0x5D35E4, (0x5D361C - 0x5D35E4) @ length: 0038
-
-	.global ProcScr_EfxMagfcast
-ProcScr_EfxMagfcast: @ 085D361C
-	.incbin "fe6-base.gba", 0x5D361C, (0x5D3634 - 0x5D361C) @ length: 0018
-
-	.global ProcScr_EfxMagfcastBG
-ProcScr_EfxMagfcastBG: @ 085D3634
-	.incbin "fe6-base.gba", 0x5D3634, (0x5D364C - 0x5D3634) @ length: 0018
-
-	.global TsaLut1_EfxMagfcastBG
-TsaLut1_EfxMagfcastBG: @ 085D364C
-	.incbin "fe6-base.gba", 0x5D364C, (0x5D3664 - 0x5D364C) @ length: 0018
-
-	.global TsaLut2_EfxMagfcastBG
-TsaLut2_EfxMagfcastBG: @ 085D3664
-	.incbin "fe6-base.gba", 0x5D3664, (0x5D36A4 - 0x5D3664) @ length: 0040
-
-	.global ProcScr_EfxSunakemuri
-ProcScr_EfxSunakemuri: @ 085D36A4
-	.incbin "fe6-base.gba", 0x5D36A4, (0x5D36BC - 0x5D36A4) @ length: 0018
-
-	.global ProcScr_EfxSunakemuriOBJ
-ProcScr_EfxSunakemuriOBJ: @ 085D36BC
-	.incbin "fe6-base.gba", 0x5D36BC, (0x5D36D4 - 0x5D36BC) @ length: 0018
-
-	.global gUnk_085D36D4
-gUnk_085D36D4: @ 085D36D4
-	.incbin "fe6-base.gba", 0x5D36D4, (0x5D36EC - 0x5D36D4) @ length: 0018
-
-	.global ProcScr_EfxFlashFX
-ProcScr_EfxFlashFX: @ 085D36EC
-	.incbin "fe6-base.gba", 0x5D36EC, (0x5D3704 - 0x5D36EC) @ length: 0018
-
-	.global gUnk_085D3704
-gUnk_085D3704: @ 085D3704
-	.incbin "fe6-base.gba", 0x5D3704, (0x5D371C - 0x5D3704) @ length: 0018
-
-	.global gUnk_085D371C
-gUnk_085D371C: @ 085D371C
-	.incbin "fe6-base.gba", 0x5D371C, (0x5D373C - 0x5D371C) @ length: 0020
-
-	.global gUnk_085D373C
-gUnk_085D373C: @ 085D373C
+	.global ProcScr_EfxSpecalEffect
+ProcScr_EfxSpecalEffect: @ 085D373C
 	.incbin "fe6-base.gba", 0x5D373C, (0x5D3754 - 0x5D373C) @ length: 0018
 
-	.global gUnk_085D3754
-gUnk_085D3754: @ 085D3754
+	.global ProcScr_EfxSRankWeaponEffect
+ProcScr_EfxSRankWeaponEffect: @ 085D3754
 	.incbin "fe6-base.gba", 0x5D3754, (0x5D376C - 0x5D3754) @ length: 0018
 
 	.global gUnk_085D376C
@@ -246,12 +194,12 @@ gUnk_085D4CFC: @ 085D4CFC
 gUnk_085D4D98: @ 085D4D98
 	.incbin "fe6-base.gba", 0x5D4D98, (0x5D5590 - 0x5D4D98) @ length: 07F8
 
-	.global gUnk_085D5590
-gUnk_085D5590: @ 085D5590
+	.global AnimScr_EfxDanceObj
+AnimScr_EfxDanceObj: @ 085D5590
 	.incbin "fe6-base.gba", 0x5D5590, (0x5D55C0 - 0x5D5590) @ length: 0030
 
-	.global gUnk_085D55C0
-gUnk_085D55C0: @ 085D55C0
+	.global AnimScr_EfxSongFE6
+AnimScr_EfxSongFE6: @ 085D55C0
 	.incbin "fe6-base.gba", 0x5D55C0, (0x5D6218 - 0x5D55C0) @ length: 0C58
 
 	.global gUnk_085D6218

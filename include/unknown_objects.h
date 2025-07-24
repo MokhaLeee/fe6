@@ -341,8 +341,8 @@ extern const u8 Img_SpellJavelinWyvernLord[];
 extern const u16 Pal_SpellJavelinWyvernLord[];
 extern const u8 Img_SpellJavelinGenerial[];
 extern const u16 Pal_SpellJavelinGenerial[];
-extern const u8 Img_EfxSongOBJ2[];
-extern const u16 Pal_EfxSongOBJ2[];
+extern const u8 Img_EfxSongFE6[];
+extern const u16 Pal_EfxSongFE6[];
 extern const u8 Img_EfxSongBG[];
 extern const u16 Pal_EfxSongBG[];
 extern const u16 Tsa_EfxSongBG[];
@@ -350,10 +350,10 @@ extern const u16 Tsa_EfxSongBG[];
 // extern ??? gUnk_0811F22C
 // extern ??? gUnk_0811F32C
 // extern ??? gUnk_0811F6F4
+extern u16 Unk_Img_081203F4[];
 extern u16 Img_EfxHurtmutEff00OBJ1[];
 extern u16 Img_EfxHurtmutEff00OBJ2[];
-extern u16 Pal_EfxHurtmutEff00OBJ1[];
-extern u16 Pal_EfxHurtmutEff00OBJ2[];
+extern u16 Pal_EfxHurtmutEff00OBJ[];
 // extern ??? gUnk_081214B8
 // extern ??? gUnk_081214D8
 // extern ??? gUnk_081214F8
@@ -377,14 +377,36 @@ extern u16 Tsa8_EfxNormalEffectBG[];
 extern u16 Tsa9_EfxNormalEffectBG[];
 extern u16 TsaA_EfxNormalEffectBG[];
 // extern ??? gUnk_08127778
-// extern ??? Img_EfxMagfcastBG
-// extern ??? Pal_EfxMagfcastBG
+extern u16 Img_EfxMagfcastBG[];
+extern u16 Pal_EfxMagfcastBG[];
+extern u16 Tsa1_EfxMagfcastBG[];
+extern u16 Tsa2_EfxMagfcastBG[];
+extern u16 Tsa3_EfxMagfcastBG[];
+extern u16 Tsa4_EfxMagfcastBG[];
+extern u16 Tsa5_EfxMagfcastBG[];
+extern u16 Tsa6_EfxMagfcastBG[];
+extern u16 Tsa7_EfxMagfcastBG[];
+extern u16 Tsa8_EfxMagfcastBG[];
+extern u16 Tsa9_EfxMagfcastBG[];
+extern u16 Tsa10_EfxMagfcastBG[];
+extern u16 Tsa11_EfxMagfcastBG[];
+extern u16 Tsa12_EfxMagfcastBG[];
+extern u16 Tsa13_EfxMagfcastBG[];
+extern u16 Tsa14_EfxMagfcastBG[];
+extern u16 Tsa15_EfxMagfcastBG[];
+extern u16 Tsa16_EfxMagfcastBG[];
+extern u16 Tsa17_EfxMagfcastBG[];
+extern u16 Tsa18_EfxMagfcastBG[];
+extern u16 Tsa19_EfxMagfcastBG[];
+extern u16 Tsa20_EfxMagfcastBG[];
+extern u16 Tsa21_EfxMagfcastBG[];
+extern u16 Tsa22_EfxMagfcastBG[];
 // extern ??? gUnk_0812B19C
 // extern ??? gUnk_0812BE10
-// extern ??? Img_EfxSunakemuriOBJ
-// extern ??? Pal_EfxSunakemuriOBJ1
-// extern ??? Pal_EfxSunakemuriOBJ2
-// extern ??? Pal_EfxSunakemuriOBJ3
+extern u16 Img_EfxSunakemuriOBJ[];
+extern u16 Pal_EfxSunakemuriOBJ1[];
+extern u16 Pal_EfxSunakemuriOBJ2[];
+extern u16 Pal_EfxSunakemuriOBJ3[];
 // extern ??? gUnk_0812C68C
 // extern ??? gUnk_0812CF48
 // extern ??? gUnk_0812D374

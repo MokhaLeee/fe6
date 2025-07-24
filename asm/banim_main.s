@@ -197,7 +197,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	cmp r0, #0
 	bne .L0804A7EA
 	adds r0, r7, #0
-	bl func_fe6_08057860
+	bl NewEfxSpecalEffect
 .L0804A7EA:
 	ldrh r1, [r7, #0x10]
 	b .L0804ACCA
@@ -858,7 +858,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	cmp r0, #0
 	bne .L0804AD82
 	adds r0, r7, #0
-	bl NewEfxFlashFX
+	bl NewEfxSongFE6
 	b .L0804AD82
 .L0804AD4E:
 	adds r0, r7, #0
@@ -866,7 +866,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	cmp r0, #0
 	bne .L0804AD82
 	adds r0, r7, #0
-	bl NewEfxSongOBJ2
+	bl NewEfxDanceOBJ
 	b .L0804AD82
 .L0804AD60:
 	subs r0, r3, #1

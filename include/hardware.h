@@ -405,3 +405,18 @@ extern i16 SHOULD_BE_CONST gSinLut[];
 #define SetBackdropColor(color) \
     gPal[0] = (color); \
     EnablePalSync()
+
+
+#if BUGFIX
+
+#define SetMosaic(bg, size) \
+    gDispIo.bg##bg##_ct.mosaic = true; \
+    gDispIo.mosaic = size;
+
+#else
+
+#define SetMosaic(bg_idx, size) \
+    gDispIo.bg##bg_idx##_ct.mosaic = true; \
+    *((u8 *) &gDispIo.mosaic) = size;
+
+#endif
