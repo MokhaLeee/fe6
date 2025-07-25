@@ -896,6 +896,12 @@ void EfxArrowObj_Loop(struct ProcEfxMagicOBJ * proc)
     }
 }
 
+struct ProcScr CONST_DATA ProcScr_EfxTeyari[] = {
+    PROC_NAME_DEBUG("efxTeyariOBJ"),
+    PROC_REPEAT(EfxTeyari_Loop),
+    PROC_END,
+};
+
 void StartSpellAnimJavelin(struct Anim * anim)
 {
     struct ProcEfx * proc;
@@ -1094,6 +1100,13 @@ void EfxTeyari_Loop(struct ProcEfx * proc)
     }
 }
 
+struct ProcScr CONST_DATA ProcScr_EfxTeyariOBJ[] =
+{
+    PROC_NAME_DEBUG("efxTeyariOBJ"),
+    PROC_REPEAT(EfxTeyariObj_Loop),
+    PROC_END,
+};
+
 void NewEfxTeyariOBJ(struct Anim * anim, int type)
 {
     struct Anim * anim2;
@@ -1131,6 +1144,105 @@ void EfxTeyariObj_Loop(struct ProcEfxMagicOBJ * proc)
     {
         gEfxBgSemaphore--;
         BasRemove(proc->anim2);
+        Proc_Break(proc);
+    }
+}
+
+/**
+ * Efx song
+ */
+struct ProcScr CONST_DATA ProcScr_EfxSong[] =
+{
+    PROC_NAME_DEBUG("efxSong"),
+    PROC_REPEAT(EfxSong_Loop),
+    PROC_END,
+};
+
+void StartSpellAnimSong(struct Anim * anim)
+{
+    struct ProcEfx * proc;
+
+    SpellFx_Begin();
+    SpellFx_SetBG1Position();
+
+    proc = SpawnProc(ProcScr_EfxSong, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
+
+void EfxSong_Loop(struct ProcEfx * proc)
+{
+    struct Anim * anim = GetAnimAnotherSide(proc->anim);
+
+    proc->timer++;
+
+    if (proc->timer == 39)
+    {
+        StartSubSpell_EfxSongBG(anim);
+        StartSubSpell_EfxSongOBJ(anim);
+
+#if FE8U
+        NewEfxRestWINH_(anim, 130, 1);
+        NewEfxTwobaiRST(anim, 100);
+        SetBlendAlpha(0, 16);
+        NewEfxALPHA(anim, 0, 8, 0, 16, 0);
+        NewEfxALPHA(anim, 60, 40, 16, 0, 0);
+#endif
+
+        PlaySFX(SONG_EF, 0x100, anim->xPosition, 1);
+    }
+
+    if (proc->timer == 69)
+    {
+        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+
+        StartBattleAnimStatusChgHitEffects(anim, proc->hitted);
+
+        if (GetAnimPosition(anim) == POS_L)
+        {
+            CpuFastCopy(gpEfxUnitPaletteBackup[0], gPal + PAL_OFFSET(0x17), 0x20);
+        }
+        else
+        {
+            CpuFastCopy(gpEfxUnitPaletteBackup[1], gPal + PAL_OFFSET(0x19), 0x20);
+        }
+
+        EnableEfxStatusUnits(anim);
+    }
+    else if (proc->timer == 100)
+    {
+        anim->flags3 |= ANIM_BIT3_NEXT_ROUND_START;
+        SpellFx_Finish();
+        Proc_Break(proc);
+    }
+}
+
+void StartSubSpell_EfxSongBG(struct Anim * anim)
+{
+    struct ProcEfxBG * proc;
+
+    gEfxBgSemaphore++;
+
+    proc = SpawnProc(ProcScr_EfxSongBG, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+
+    SpellFx_RegisterBgGfx(Img_EfxSongBG, 0x2000);
+    SpellFx_RegisterBgPal(Pal_EfxSongBG, 0x20);
+    SpellFx_WriteBgMap(proc->anim, Tsa_EfxSongBG, Tsa_EfxSongBG);
+
+    SpellFx_SetBG1Position();
+    SpellFx_SetSomeColorEffect();
+}
+
+void EfxSongBG_Loop(struct ProcEfxBG * proc)
+{
+    if (++proc->timer == 0x1F)
+    {
+        SpellFx_ClearBG1();
+        SpellFx_ClearColorEffects();
+        gEfxBgSemaphore--;
         Proc_Break(proc);
     }
 }

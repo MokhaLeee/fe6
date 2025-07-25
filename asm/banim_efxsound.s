@@ -307,7 +307,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	cmp r4, #0x14
 	bne .L0805BED6
 	mov r0, r8
-	bl func_fe6_0805C2B0
+	bl IsAnimSoundInPosition
 	cmp r0, #0
 	bne .L0805BED6
 	movs r7, #2
@@ -744,8 +744,8 @@ func_fe6_0805C1A0: @ 0x0805C1A0
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_0805C2B0
-func_fe6_0805C2B0: @ 0x0805C2B0
+	thumb_func_start IsAnimSoundInPosition
+IsAnimSoundInPosition: @ 0x0805C2B0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl GetProperAnimSoundLocation
