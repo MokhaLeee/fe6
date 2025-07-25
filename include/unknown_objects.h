@@ -314,7 +314,7 @@ extern const u16 FrameConf_EfxNormalEffectBG[];
 // extern ??? FrameConfig_EfxMagFcastBg2
 // extern ??? FrameConfig_EfxMagFcastBg3
 // extern ??? FrameConfig_EfxMagFcastBg4
-// extern ??? gUnk_0811AF00
+// extern ??? FrameConf_EfxMagdhisEffectBG
 // extern ??? gUnk_0811AF20
 // extern ??? gUnk_0811AF52
 // extern ??? gUnk_0811AF5C
@@ -401,8 +401,12 @@ extern u16 Tsa19_EfxMagfcastBG[];
 extern u16 Tsa20_EfxMagfcastBG[];
 extern u16 Tsa21_EfxMagfcastBG[];
 extern u16 Tsa22_EfxMagfcastBG[];
-// extern ??? gUnk_0812B19C
-// extern ??? gUnk_0812BE10
+extern u16 Img_EfxMagdhisEffectBG[];
+extern u16 Pal_EfxMagdhisEffectBG[];
+extern u16 Tsa1_EfxMagdhisEffectBG[];
+extern u16 Tsa2_EfxMagdhisEffectBG[];
+extern u16 Tsa3_EfxMagdhisEffectBG[];
+extern u16 Tsa4_EfxMagdhisEffectBG[];
 extern u16 Img_EfxSunakemuriOBJ[];
 extern u16 Pal_EfxSunakemuriOBJ1[];
 extern u16 Pal_EfxSunakemuriOBJ2[];

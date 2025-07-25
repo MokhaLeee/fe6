@@ -1,8 +1,5 @@
 	.section .rodata
 
-	.global gUnk_0811AF00
-gUnk_0811AF00: @ 0811AF00
-	.incbin "fe6-base.gba", 0x11AF00, (0x11AF20 - 0x11AF00) @ length: 0020
 
 	.global gUnk_0811AF20
 gUnk_0811AF20: @ 0811AF20
@@ -348,13 +345,29 @@ Tsa21_EfxMagfcastBG:
 Tsa22_EfxMagfcastBG:
     .incbin "fe6-base.gba", 0x12B0F4, 0x12B19C - 0x12B0F4
 
-	.global gUnk_0812B19C
-gUnk_0812B19C: @ 0812B19C
+	.global Img_EfxMagdhisEffectBG
+Img_EfxMagdhisEffectBG: @ 0812B19C
 	.incbin "fe6-base.gba", 0x12B19C, (0x12BE10 - 0x12B19C) @ length: 0C74
 
-	.global gUnk_0812BE10
-gUnk_0812BE10: @ 0812BE10
-	.incbin "fe6-base.gba", 0x12BE10, (0x12C1BC - 0x12BE10) @ length: 03AC
+	.global Pal_EfxMagdhisEffectBG
+Pal_EfxMagdhisEffectBG: @ 0812BE10
+	.incbin "fe6-base.gba", 0x12BE10, (0x12BE30 - 0x12BE10) @ length: 03AC
+
+	.global Tsa1_EfxMagdhisEffectBG
+Tsa1_EfxMagdhisEffectBG:
+	.incbin "fe6-base.gba", 0x12BE30, 0x12BF30 - 0x12BE30
+
+	.global Tsa2_EfxMagdhisEffectBG
+Tsa2_EfxMagdhisEffectBG:
+	.incbin "fe6-base.gba", 0x12BF30, 0x12C024 - 0x12BF30
+
+	.global Tsa3_EfxMagdhisEffectBG
+Tsa3_EfxMagdhisEffectBG:
+	.incbin "fe6-base.gba", 0x12C024, 0x12C0F8 - 0x12C024
+
+	.global Tsa4_EfxMagdhisEffectBG
+Tsa4_EfxMagdhisEffectBG:
+	.incbin "fe6-base.gba", 0x12C0F8, 0x12C1BC - 0x12C0F8
 
 	.global Img_EfxSunakemuriOBJ
 Img_EfxSunakemuriOBJ: @ 0812C1BC

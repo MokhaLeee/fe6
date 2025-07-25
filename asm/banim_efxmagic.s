@@ -2124,7 +2124,7 @@ func_fe6_0804EF24: @ 0x0804EF24
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	ldr r3, .L0804EF74 @ =gUnk_085E2508
-	ldr r2, .L0804EF78 @ =gUnk_085E19DC
+	ldr r2, .L0804EF78 @ =AnimScr_EfxMantBatabata4_R
 	str r2, [sp]
 	adds r0, r5, #0
 	adds r1, r3, #0
@@ -2145,7 +2145,7 @@ func_fe6_0804EF24: @ 0x0804EF24
 .L0804EF6C: .4byte gEfxBgSemaphore
 .L0804EF70: .4byte gUnk_085D1304
 .L0804EF74: .4byte gUnk_085E2508
-.L0804EF78: .4byte gUnk_085E19DC
+.L0804EF78: .4byte AnimScr_EfxMantBatabata4_R
 .L0804EF7C: .4byte gUnk_0812D80C
 .L0804EF80: .4byte gUnk_0812D374
 
@@ -2464,7 +2464,7 @@ func_fe6_0804F1FC: @ 0x0804F1FC
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	ldr r1, .L0804F248 @ =gUnk_085E2CA8
-	ldr r2, .L0804F24C @ =gUnk_085E2920
+	ldr r2, .L0804F24C @ =AnimScr_EfxMantBatabata5_R
 	ldr r3, .L0804F250 @ =gUnk_085E2CD4
 	ldr r0, .L0804F254 @ =gUnk_085E294C
 	str r0, [sp]
@@ -2483,7 +2483,7 @@ func_fe6_0804F1FC: @ 0x0804F1FC
 .L0804F240: .4byte gEfxBgSemaphore
 .L0804F244: .4byte gUnk_085D13AC
 .L0804F248: .4byte gUnk_085E2CA8
-.L0804F24C: .4byte gUnk_085E2920
+.L0804F24C: .4byte AnimScr_EfxMantBatabata5_R
 .L0804F250: .4byte gUnk_085E2CD4
 .L0804F254: .4byte gUnk_085E294C
 .L0804F258:

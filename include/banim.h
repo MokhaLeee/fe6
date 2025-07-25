@@ -1426,24 +1426,24 @@ struct ProcEfxSRankSCR2 {
 };
 extern EWRAM_OVERLAY(banim) i16 gEfxSpecalEffectExist[2];
 
-void NewEfxSpecalEffect(struct Anim * anim);
+void NewEfxSpecalEffect(struct Anim *anim);
 void EfxSpecalEffect_Null(ProcPtr proc);
-void NewEfxSRankWeaponEffect(struct Anim * anim);
-void EfxSRankWeaponEffect_Loop(struct ProcEfx * proc);
-void NewEfxSRankWeaponEffectBG(struct Anim * anim);
-void EfxSRankWeaponEffectBG_Loop(struct ProcEfxBG * proc);
+void NewEfxSRankWeaponEffect(struct Anim *anim);
+void EfxSRankWeaponEffect_Loop(struct ProcEfx *proc);
+void NewEfxSRankWeaponEffectBG(struct Anim *anim);
+void EfxSRankWeaponEffectBG_Loop(struct ProcEfxBG *proc);
 void HBlank_EfxSRankWeaponEffectSCR(void);
 void NewEfxSRankWeaponEffectSCR(void);
- void EfxSRankWeaponEffectSCR_Loop(struct ProcEfx * proc);
+ void EfxSRankWeaponEffectSCR_Loop(struct ProcEfx *proc);
 void NewEfxSRankWeaponEffectSCR2(struct ProcEfx *seff_scr);
-void EfxSRankWeaponEffectSCR2_Loop(struct ProcEfxSRankSCR2 * proc);
-// func_fe6_08057B90
-// func_fe6_08057BB0
-// func_fe6_08057BF8
-// func_fe6_08057C94
-// NewEfxMantBatabata
-// func_fe6_08057E98
-// func_fe6_08057EC4
+void EfxSRankWeaponEffectSCR2_Loop(struct ProcEfxSRankSCR2 *proc);
+void NewEfxMagdhisEffect(struct Anim *anim);
+void EfxMagdhisEffect_Loop(struct ProcEfx *proc);
+void NewEfxMagdhisEffectBG(struct Anim *anim, int);
+void EfxMagdhisEffectBG_Loop(struct ProcEfxBG *proc);
+void NewEfxMantBatabata(struct Anim *anim);
+void EfxMantBatabata_1(struct ProcEfxOBJ *proc);
+void EfxMantBatabata_2(struct ProcEfxOBJ *proc);
 void ResetClassReelSpell(void);
 void EndActiveClassReelSpell(void);
 void EndActiveClassReelBgColorProc(void);
@@ -2084,10 +2084,10 @@ extern CONST_DATA struct ProcScr ProcScr_EfxSRankWeaponEffectBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSRankWeaponEffectSCR[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSRankWeaponEffectSCR2[];
 extern CONST_DATA i16 EfxSRankWeaponEffectSCR_Ref[];
-// ??? gUnk_085D38A4
-// ??? gUnk_085D38BC
-// ??? gUnk_085D38D4
-// ??? gUnk_085D38E4
+extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffect[];
+extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffectBG[];
+extern CONST_DATA u16 *TsaLut_EfxMagdhisEffectBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxMantBatabata[];
 // ??? gUnk_085D3904
 // ??? gUnk_085D3924
 // ??? gUnk_085D394C
@@ -2155,15 +2155,15 @@ extern u32 AnimScr_EfxSunakemuriOBJ2_R[];
 extern u32 AnimScr_EfxSunakemuriOBJ2_L[];
 extern u32 AnimScr_EfxSunakemuriOBJ3_R[];
 extern u32 AnimScr_EfxSunakemuriOBJ3_L[];
-// ??? gUnk_085E0748
-// ??? gUnk_085E08DC
-// ??? gUnk_085E0A88
-// ??? gUnk_085E0C34
-// ??? gUnk_085E0DE0
-// ??? gUnk_085E0F88
-// ??? gUnk_085E19DC
+extern u32 AnimScr_EfxMantBatabata1_R[];
+extern u32 AnimScr_EfxMantBatabata1_L[];
+extern u32 AnimScr_EfxMantBatabata2_R[];
+extern u32 AnimScr_EfxMantBatabata2_L[];
+extern u32 AnimScr_EfxMantBatabata3_R[];
+extern u32 AnimScr_EfxMantBatabata3_L[];
+// ??? AnimScr_EfxMantBatabata4_R
 // ??? gUnk_085E2508
-// ??? gUnk_085E2920
+// ??? AnimScr_EfxMantBatabata5_R
 // ??? gUnk_085E294C
 // ??? gUnk_085E2CA8
 // ??? gUnk_085E2CD4
@@ -2243,17 +2243,17 @@ extern CONST_DATA struct ProcScr ProcScr_EkrFaefx[];
 extern const u16 * CONST_DATA TsaLut_EkrFaefx[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonIdunn[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonfx_IdunnIntro[];
-// ??? ProcScr_EkrDragonfx_IdunnBaseAppear
-// ??? ProcScr_EkrDragonfx_IdunnBodyAnime
-// ??? ProcScr_EkrDragonfx_IdunnExit2
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonfx_IdunnBaseAppear[];
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonfx_IdunnBodyAnime[];
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonfx_IdunnExit2[];
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon1[];
-// ??? ProcScr_EkrIdunnDeamon2
+extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon2[];
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnBodyFlashing[];
 // ??? gUnk_08604A18
 // ??? gUnk_08604A3C
 // ??? gUnk_08604A6C
 // ??? gUnk_08604A9C
-// ??? ProcScr_EkrDragonDeath
+extern CONST_DATA struct ProcScr ProcScr_EkrDragonDeath[];
 extern AnimScr AnimScr_ManaketeEnter1[];
 extern AnimScr AnimScr_ManaketeExit3[];
 extern AnimScr AnimScr_ManaketeEnter2[];

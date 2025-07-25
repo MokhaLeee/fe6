@@ -358,7 +358,7 @@ func_fe6_0805A8B0: @ 0x0805A8B0
 	ldr r0, .L0805A928 @ =gUnk_081BC19A
 	str r0, [r4, #0x48]
 	ldr r0, [r4, #0x5c]
-	bl func_fe6_08057B90
+	bl NewEfxMagdhisEffect
 	b .L0805A930
 	.align 2, 0
 .L0805A928: .4byte gUnk_081BC19A

@@ -2,22 +2,6 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.global gUnk_085D38A4
-gUnk_085D38A4: @ 085D38A4
-	.incbin "fe6-base.gba", 0x5D38A4, (0x5D38BC - 0x5D38A4) @ length: 0018
-
-	.global gUnk_085D38BC
-gUnk_085D38BC: @ 085D38BC
-	.incbin "fe6-base.gba", 0x5D38BC, (0x5D38D4 - 0x5D38BC) @ length: 0018
-
-	.global gUnk_085D38D4
-gUnk_085D38D4: @ 085D38D4
-	.incbin "fe6-base.gba", 0x5D38D4, (0x5D38E4 - 0x5D38D4) @ length: 0010
-
-	.global gUnk_085D38E4
-gUnk_085D38E4: @ 085D38E4
-	.incbin "fe6-base.gba", 0x5D38E4, (0x5D3904 - 0x5D38E4) @ length: 0020
-
 	.global gUnk_085D3904
 gUnk_085D3904: @ 085D3904
 	.incbin "fe6-base.gba", 0x5D3904, (0x5D3924 - 0x5D3904) @ length: 0020
@@ -310,40 +294,40 @@ AnimScr_EfxSunakemuriOBJ3_R: @ 085E0510
 AnimScr_EfxSunakemuriOBJ3_L: @ 085E05B4
 	.incbin "fe6-base.gba", 0x5E05B4, (0x5E0748 - 0x5E05B4) @ length: 0194
 
-	.global gUnk_085E0748
-gUnk_085E0748: @ 085E0748
+	.global AnimScr_EfxMantBatabata1_R
+AnimScr_EfxMantBatabata1_R: @ 085E0748
 	.incbin "fe6-base.gba", 0x5E0748, (0x5E08DC - 0x5E0748) @ length: 0194
 
-	.global gUnk_085E08DC
-gUnk_085E08DC: @ 085E08DC
+	.global AnimScr_EfxMantBatabata1_L
+AnimScr_EfxMantBatabata1_L: @ 085E08DC
 	.incbin "fe6-base.gba", 0x5E08DC, (0x5E0A88 - 0x5E08DC) @ length: 01AC
 
-	.global gUnk_085E0A88
-gUnk_085E0A88: @ 085E0A88
+	.global AnimScr_EfxMantBatabata2_R
+AnimScr_EfxMantBatabata2_R: @ 085E0A88
 	.incbin "fe6-base.gba", 0x5E0A88, (0x5E0C34 - 0x5E0A88) @ length: 01AC
 
-	.global gUnk_085E0C34
-gUnk_085E0C34: @ 085E0C34
+	.global AnimScr_EfxMantBatabata2_L
+AnimScr_EfxMantBatabata2_L: @ 085E0C34
 	.incbin "fe6-base.gba", 0x5E0C34, (0x5E0DE0 - 0x5E0C34) @ length: 01AC
 
-	.global gUnk_085E0DE0
-gUnk_085E0DE0: @ 085E0DE0
+	.global AnimScr_EfxMantBatabata3_R
+AnimScr_EfxMantBatabata3_R: @ 085E0DE0
 	.incbin "fe6-base.gba", 0x5E0DE0, (0x5E0F88 - 0x5E0DE0) @ length: 01A8
 
-	.global gUnk_085E0F88
-gUnk_085E0F88: @ 085E0F88
+	.global AnimScr_EfxMantBatabata3_L
+AnimScr_EfxMantBatabata3_L: @ 085E0F88
 	.incbin "fe6-base.gba", 0x5E0F88, (0x5E19DC - 0x5E0F88) @ length: 0A54
 
-	.global gUnk_085E19DC
-gUnk_085E19DC: @ 085E19DC
+	.global AnimScr_EfxMantBatabata4_R
+AnimScr_EfxMantBatabata4_R: @ 085E19DC
 	.incbin "fe6-base.gba", 0x5E19DC, (0x5E2508 - 0x5E19DC) @ length: 0B2C
 
 	.global gUnk_085E2508
 gUnk_085E2508: @ 085E2508
 	.incbin "fe6-base.gba", 0x5E2508, (0x5E2920 - 0x5E2508) @ length: 0418
 
-	.global gUnk_085E2920
-gUnk_085E2920: @ 085E2920
+	.global AnimScr_EfxMantBatabata5_R
+AnimScr_EfxMantBatabata5_R: @ 085E2920
 	.incbin "fe6-base.gba", 0x5E2920, (0x5E294C - 0x5E2920) @ length: 002C
 
 	.global gUnk_085E294C

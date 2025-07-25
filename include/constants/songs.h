@@ -139,6 +139,7 @@ enum
     SONG_F0 = 0xF0, // efx special effect
     SONG_FD = 0xFD, // manim
     SONG_10F = 0x10F,
+    SONG_140 = 0x140,
     SONG_269 = 0x269,
     SONG_26A = 0x26A,
 };
