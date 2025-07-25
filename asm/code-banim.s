@@ -401,11 +401,11 @@ func_fe6_080581C0: @ 0x080581C0
 	str r0, [r4, #0x48]
 	ldr r0, .L08058214 @ =gUnk_085D3964
 	str r0, [r4, #0x4c]
-	ldr r1, .L08058218 @ =gUnk_0812E4A4
+	ldr r1, .L08058218 @ =Pal_EfxFireBG
 	adds r0, r5, #0
 	bl func_fe6_080580D8
 	ldr r0, [r4, #0x5c]
-	ldr r1, .L0805821C @ =gUnk_0812D8AC
+	ldr r1, .L0805821C @ =Img_EfxFireBG
 	bl func_fe6_080580A8
 	ldr r0, [r6, #0x24]
 	bl _call_via_r0
@@ -419,8 +419,8 @@ func_fe6_080581C0: @ 0x080581C0
 .L0805820C: .4byte gUnk_085D394C
 .L08058210: .4byte gUnk_0811AF20
 .L08058214: .4byte gUnk_085D3964
-.L08058218: .4byte gUnk_0812E4A4
-.L0805821C: .4byte gUnk_0812D8AC
+.L08058218: .4byte Pal_EfxFireBG
+.L0805821C: .4byte Img_EfxFireBG
 
 	thumb_func_start func_fe6_08058220
 func_fe6_08058220: @ 0x08058220
@@ -474,8 +474,8 @@ func_fe6_0805826C: @ 0x0805826C
 	str r5, [r6, #0x5c]
 	movs r0, #0
 	strh r0, [r6, #0x2c]
-	ldr r2, .L080582AC @ =gUnk_085E2CA8
-	ldr r3, .L080582B0 @ =AnimScr_EfxMantBatabata5_R
+	ldr r2, .L080582AC @ =AnimScr_EfxFireOBJ_R_Front
+	ldr r3, .L080582B0 @ =AnimScr_EfxFireOBJ_L_Front
 	adds r0, r5, #0
 	movs r1, #1
 	bl func_fe6_08057FE8
@@ -490,8 +490,8 @@ func_fe6_0805826C: @ 0x0805826C
 	b .L080582B8
 	.align 2, 0
 .L080582A8: .4byte gUnk_085D3994
-.L080582AC: .4byte gUnk_085E2CA8
-.L080582B0: .4byte AnimScr_EfxMantBatabata5_R
+.L080582AC: .4byte AnimScr_EfxFireOBJ_R_Front
+.L080582B0: .4byte AnimScr_EfxFireOBJ_L_Front
 .L080582B4:
 	ldrh r0, [r5, #2]
 	adds r0, #8
@@ -508,17 +508,17 @@ func_fe6_0805826C: @ 0x0805826C
 	adds r0, r7, r0
 	strh r0, [r4, #4]
 	ldr r0, [r6, #0x5c]
-	ldr r1, .L080582E4 @ =gUnk_0812FFD8
+	ldr r1, .L080582E4 @ =Pal_EfxFireOBJ
 	bl func_fe6_08058130
 	ldr r0, [r6, #0x5c]
-	ldr r1, .L080582E8 @ =gUnk_0812F9DC
+	ldr r1, .L080582E8 @ =Img_EfxFireOBJ
 	bl func_fe6_08058100
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080582E4: .4byte gUnk_0812FFD8
-.L080582E8: .4byte gUnk_0812F9DC
+.L080582E4: .4byte Pal_EfxFireOBJ
+.L080582E8: .4byte Img_EfxFireOBJ
 
 	thumb_func_start func_fe6_080582EC
 func_fe6_080582EC: @ 0x080582EC
@@ -593,11 +593,11 @@ func_fe6_08058358: @ 0x08058358
 	str r0, [r4, #0x48]
 	ldr r0, .L080583A8 @ =gUnk_085D39EC
 	str r0, [r4, #0x4c]
-	ldr r1, .L080583AC @ =gUnk_0812CF48
+	ldr r1, .L080583AC @ =Pal_EfxThunderBGCOL
 	adds r0, r5, #0
 	bl func_fe6_080580D8
 	ldr r0, [r4, #0x5c]
-	ldr r1, .L080583B0 @ =gUnk_0812C68C
+	ldr r1, .L080583B0 @ =Img_EfxThunderBG
 	bl func_fe6_080580A8
 	ldr r0, [r6, #0x24]
 	bl _call_via_r0
@@ -611,8 +611,8 @@ func_fe6_08058358: @ 0x08058358
 .L080583A0: .4byte gUnk_085D39D4
 .L080583A4: .4byte gUnk_0811AF52
 .L080583A8: .4byte gUnk_085D39EC
-.L080583AC: .4byte gUnk_0812CF48
-.L080583B0: .4byte gUnk_0812C68C
+.L080583AC: .4byte Pal_EfxThunderBGCOL
+.L080583B0: .4byte Img_EfxThunderBG
 
 	thumb_func_start func_fe6_080583B4
 func_fe6_080583B4: @ 0x080583B4
@@ -695,7 +695,7 @@ func_fe6_08058438: @ 0x08058438
 	str r0, [r4, #0x44]
 	ldr r0, .L08058464 @ =gUnk_0811AF5C
 	str r0, [r4, #0x48]
-	ldr r0, .L08058468 @ =gUnk_0812CF48
+	ldr r0, .L08058468 @ =Pal_EfxThunderBGCOL
 	str r0, [r4, #0x4c]
 	pop {r4, r5}
 	pop {r0}
@@ -703,7 +703,7 @@ func_fe6_08058438: @ 0x08058438
 	.align 2, 0
 .L08058460: .4byte gUnk_085D39F4
 .L08058464: .4byte gUnk_0811AF5C
-.L08058468: .4byte gUnk_0812CF48
+.L08058468: .4byte Pal_EfxThunderBGCOL
 
 	thumb_func_start func_fe6_0805846C
 func_fe6_0805846C: @ 0x0805846C
@@ -751,8 +751,8 @@ func_fe6_080584AC: @ 0x080584AC
 	str r5, [r6, #0x5c]
 	movs r0, #0
 	strh r0, [r6, #0x2c]
-	ldr r2, .L080584EC @ =gUnk_085E2508
-	ldr r3, .L080584F0 @ =AnimScr_EfxMantBatabata4_R
+	ldr r2, .L080584EC @ =AnimScr_EfxThunderOBJ_L
+	ldr r3, .L080584F0 @ =AnimScr_EfxThunderOBJ_R
 	adds r0, r5, #0
 	movs r1, #1
 	bl func_fe6_08057FE8
@@ -767,8 +767,8 @@ func_fe6_080584AC: @ 0x080584AC
 	b .L080584F8
 	.align 2, 0
 .L080584E8: .4byte gUnk_085D3A14
-.L080584EC: .4byte gUnk_085E2508
-.L080584F0: .4byte AnimScr_EfxMantBatabata4_R
+.L080584EC: .4byte AnimScr_EfxThunderOBJ_L
+.L080584F0: .4byte AnimScr_EfxThunderOBJ_R
 .L080584F4:
 	ldrh r0, [r5, #2]
 	subs r0, #0x38
@@ -783,17 +783,17 @@ func_fe6_080584AC: @ 0x080584AC
 	adds r0, r1, r7
 	strh r0, [r4, #4]
 	ldr r0, [r6, #0x5c]
-	ldr r1, .L08058520 @ =gUnk_0812D80C
+	ldr r1, .L08058520 @ =Pal_EfxThunderOBJ
 	bl func_fe6_08058130
 	ldr r0, [r6, #0x5c]
-	ldr r1, .L08058524 @ =gUnk_0812D374
+	ldr r1, .L08058524 @ =Img_EfxThunderOBJ
 	bl func_fe6_08058100
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08058520: .4byte gUnk_0812D80C
-.L08058524: .4byte gUnk_0812D374
+.L08058520: .4byte Pal_EfxThunderOBJ
+.L08058524: .4byte Img_EfxThunderOBJ
 
 	thumb_func_start func_fe6_08058528
 func_fe6_08058528: @ 0x08058528

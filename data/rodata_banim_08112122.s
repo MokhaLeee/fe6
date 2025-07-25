@@ -262,32 +262,32 @@ gUnk_08119D56: @ 08119D56
 gUnk_08119D78: @ 08119D78
 	.incbin "fe6-base.gba", 0x119D78, (0x119DEA - 0x119D78) @ length: 0072
 
-	.global gUnk_08119DEA
-gUnk_08119DEA: @ 08119DEA
+	.global FrameConf_EfxDarkbreathBG
+FrameConf_EfxDarkbreathBG: @ 08119DEA
 	.incbin "fe6-base.gba", 0x119DEA, (0x119E30 - 0x119DEA) @ length: 0046
 
-	.global gUnk_08119E30
-gUnk_08119E30: @ 08119E30
+	.global FrameConf_EfxDarkbreathBGCOL
+FrameConf_EfxDarkbreathBGCOL: @ 08119E30
 	.incbin "fe6-base.gba", 0x119E30, (0x119ED2 - 0x119E30) @ length: 00A2
 
-	.global gUnk_08119ED2
-gUnk_08119ED2: @ 08119ED2
+	.global FrameConf_EfxThunderBG
+FrameConf_EfxThunderBG: @ 08119ED2
 	.incbin "fe6-base.gba", 0x119ED2, (0x119EDC - 0x119ED2) @ length: 000A
 
-	.global gUnk_08119EDC
-gUnk_08119EDC: @ 08119EDC
+	.global FrameConf_EfxThunderBGCOL
+FrameConf_EfxThunderBGCOL: @ 08119EDC
 	.incbin "fe6-base.gba", 0x119EDC, (0x119F1E - 0x119EDC) @ length: 0042
 
-	.global gUnk_08119F1E
-gUnk_08119F1E: @ 08119F1E
+	.global FrameConf_EfxFireBG
+FrameConf_EfxFireBG: @ 08119F1E
 	.incbin "fe6-base.gba", 0x119F1E, (0x119F50 - 0x119F1E) @ length: 0032
 
-	.global gUnk_08119F50
-gUnk_08119F50: @ 08119F50
+	.global FrameConf_EfxFireHITBG
+FrameConf_EfxFireHITBG: @ 08119F50
 	.incbin "fe6-base.gba", 0x119F50, (0x119FA6 - 0x119F50) @ length: 0056
 
-	.global gUnk_08119FA6
-gUnk_08119FA6: @ 08119FA6
+	.global FrameConf_EfxElfireBGCOL
+FrameConf_EfxElfireBGCOL: @ 08119FA6
 	.incbin "fe6-base.gba", 0x119FA6, (0x119FFC - 0x119FA6) @ length: 0056
 
 	.global gUnk_08119FFC

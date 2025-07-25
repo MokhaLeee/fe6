@@ -137,12 +137,12 @@ gUnk_0811F22C: @ 0811F22C
 gUnk_0811F32C: @ 0811F32C
 	.incbin "fe6-base.gba", 0x11F32C, (0x11F6F4 - 0x11F32C) @ length: 03C8
 
-	.global gUnk_0811F6F4
-gUnk_0811F6F4: @ 0811F6F4
+	.global Img_BreathSprites
+Img_BreathSprites: @ 0811F6F4
 	.incbin "fe6-base.gba", 0x11F6F4, (0x1203F4 - 0x11F6F4) @ length: 0D00
 
-	.global Unk_Img_081203F4
-Unk_Img_081203F4: @ 081203F4
+	.global Pal_EfxBindingBlade
+Pal_EfxBindingBlade: @ 081203F4
 	.incbin "fe6-base.gba", 0x1203F4, (0x120414 - 0x1203F4) @ length: 0020
 
 	.global Img_EfxHurtmutEff00OBJ1
@@ -157,16 +157,16 @@ Img_EfxHurtmutEff00OBJ2: @ 08120CB4
 Pal_EfxHurtmutEff00OBJ: @ 08121498
 	.incbin "fe6-base.gba", 0x121498, (0x1214B8 - 0x121498) @ length: 0020
 
-	.global gUnk_081214B8
-gUnk_081214B8: @ 081214B8
+	.global Pal_IceBreathSprites
+Pal_IceBreathSprites: @ 081214B8
 	.incbin "fe6-base.gba", 0x1214B8, (0x1214D8 - 0x1214B8) @ length: 0020
 
-	.global gUnk_081214D8
-gUnk_081214D8: @ 081214D8
+	.global Pal_DarkBreathSprites
+Pal_DarkBreathSprites: @ 081214D8
 	.incbin "fe6-base.gba", 0x1214D8, (0x1214F8 - 0x1214D8) @ length: 0020
 
-	.global gUnk_081214F8
-gUnk_081214F8: @ 081214F8
+	.global Img_EfxDarkbreathBG
+Img_EfxDarkbreathBG: @ 081214F8
 	.incbin "fe6-base.gba", 0x1214F8, (0x122A3C - 0x1214F8) @ length: 1544
 
 	.global Img_EfxCriricalEffectBG
@@ -385,68 +385,68 @@ Pal_EfxSunakemuriOBJ2: @ 0812C64C
 Pal_EfxSunakemuriOBJ3: @ 0812C66C
 	.incbin "fe6-base.gba", 0x12C66C, (0x12C68C - 0x12C66C) @ length: 0020
 
-	.global gUnk_0812C68C
-gUnk_0812C68C: @ 0812C68C
+	.global Img_EfxThunderBG
+Img_EfxThunderBG: @ 0812C68C
 	.incbin "fe6-base.gba", 0x12C68C, (0x12CF48 - 0x12C68C) @ length: 08BC
 
-	.global gUnk_0812CF48
-gUnk_0812CF48: @ 0812CF48
+	.global Pal_EfxThunderBGCOL
+Pal_EfxThunderBGCOL: @ 0812CF48
 	.incbin "fe6-base.gba", 0x12CF48, (0x12D374 - 0x12CF48) @ length: 042C
 
-	.global gUnk_0812D374
-gUnk_0812D374: @ 0812D374
+	.global Img_EfxThunderOBJ
+Img_EfxThunderOBJ: @ 0812D374
 	.incbin "fe6-base.gba", 0x12D374, (0x12D80C - 0x12D374) @ length: 0498
 
-	.global gUnk_0812D80C
-gUnk_0812D80C: @ 0812D80C
+	.global Pal_EfxThunderOBJ
+Pal_EfxThunderOBJ: @ 0812D80C
 	.incbin "fe6-base.gba", 0x12D80C, (0x12D8AC - 0x12D80C) @ length: 00A0
 
-	.global gUnk_0812D8AC
-gUnk_0812D8AC: @ 0812D8AC
+	.global Img_EfxFireBG
+Img_EfxFireBG: @ 0812D8AC
 	.incbin "fe6-base.gba", 0x12D8AC, (0x12E4A4 - 0x12D8AC) @ length: 0BF8
 
-	.global gUnk_0812E4A4
-gUnk_0812E4A4: @ 0812E4A4
+	.global Pal_EfxFireBG
+Pal_EfxFireBG: @ 0812E4A4
 	.incbin "fe6-base.gba", 0x12E4A4, (0x12F9DC - 0x12E4A4) @ length: 1538
 
-	.global gUnk_0812F9DC
-gUnk_0812F9DC: @ 0812F9DC
+	.global Img_EfxFireOBJ
+Img_EfxFireOBJ: @ 0812F9DC
 	.incbin "fe6-base.gba", 0x12F9DC, (0x12FFD8 - 0x12F9DC) @ length: 05FC
 
-	.global gUnk_0812FFD8
-gUnk_0812FFD8: @ 0812FFD8
+	.global Pal_EfxFireOBJ
+Pal_EfxFireOBJ: @ 0812FFD8
 	.incbin "fe6-base.gba", 0x12FFD8, (0x138BF0 - 0x12FFD8) @ length: 8C18
 
-	.global gUnk_08138BF0
-gUnk_08138BF0: @ 08138BF0
+	.global Pal_EfxFireHITBG
+Pal_EfxFireHITBG: @ 08138BF0
 	.incbin "fe6-base.gba", 0x138BF0, (0x13A6F8 - 0x138BF0) @ length: 1B08
 
-	.global gUnk_0813A6F8
-gUnk_0813A6F8: @ 0813A6F8
+	.global Img_EfxElfireBG
+Img_EfxElfireBG: @ 0813A6F8
 	.incbin "fe6-base.gba", 0x13A6F8, (0x13B6B4 - 0x13A6F8) @ length: 0FBC
 
-	.global gUnk_0813B6B4
-gUnk_0813B6B4: @ 0813B6B4
+	.global Pal_EfxElfireBGCOL
+Pal_EfxElfireBGCOL: @ 0813B6B4
 	.incbin "fe6-base.gba", 0x13B6B4, (0x13B8B4 - 0x13B6B4) @ length: 0200
 
-	.global gUnk_0813B8B4
-gUnk_0813B8B4: @ 0813B8B4
+	.global Tsa_EfxElfireBG
+Tsa_EfxElfireBG: @ 0813B8B4
 	.incbin "fe6-base.gba", 0x13B8B4, (0x13BA64 - 0x13B8B4) @ length: 01B0
 
-	.global gUnk_0813BA64
-gUnk_0813BA64: @ 0813BA64
+	.global Tsa_FireBreathBg
+Tsa_FireBreathBg: @ 0813BA64
 	.incbin "fe6-base.gba", 0x13BA64, (0x13BAFC - 0x13BA64) @ length: 0098
 
-	.global gUnk_0813BAFC
-gUnk_0813BAFC: @ 0813BAFC
+	.global Img_EfxElfireOBJ
+Img_EfxElfireOBJ: @ 0813BAFC
 	.incbin "fe6-base.gba", 0x13BAFC, (0x13BD74 - 0x13BAFC) @ length: 0278
 
-	.global gUnk_0813BD74
-gUnk_0813BD74: @ 0813BD74
+	.global Pal_EfxElfireOBJ
+Pal_EfxElfireOBJ: @ 0813BD74
 	.incbin "fe6-base.gba", 0x13BD74, (0x13E75C - 0x13BD74) @ length: 29E8
 
-	.global gUnk_0813E75C
-gUnk_0813E75C: @ 0813E75C
+	.global Pal_BoltingBg
+Pal_BoltingBg: @ 0813E75C
 	.incbin "fe6-base.gba", 0x13E75C, (0x1408CC - 0x13E75C) @ length: 2170
 
 	.global gUnk_081408CC
