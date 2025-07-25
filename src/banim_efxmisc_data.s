@@ -1,0 +1,3401 @@
+	.include "animscr.inc"
+	.include "gba_sprites.inc"
+	.section .data
+
+/**
+ * YushaSpinShield
+ */
+.global AnimSprite_YushaSpinShield1_1
+AnimSprite_YushaSpinShield1_1:  @ 0x5DB710
+    ANIM_SPRITE ATTR0_SQUARE, 0xA000, 0x001C, -32, -51
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, 0x2000, 0x009F, -19, -27
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_2
+AnimSprite_YushaSpinShield1_2:  @ 0x5DB734
+    ANIM_SPRITE_AFFIN 2, -0xf7, -0x41, 0x41, -0xf7
+    ANIM_SPRITE_AFFIN 2, -0xe8, -0x6b, 0x6b, -0xe8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -31, -54
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -23, -30
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_3
+AnimSprite_YushaSpinShield1_3:  @ 0x5DB770
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc3, 0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0xb5, -0xb4, 0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -31, -56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -29, -36
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_4
+AnimSprite_YushaSpinShield1_4:  @ 0x5DB7AC
+    ANIM_SPRITE_AFFIN 1, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -31, -58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, -31, -42
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_5
+AnimSprite_YushaSpinShield1_5:  @ 0x5DB7DC
+    ANIM_SPRITE_AFFIN 2, 0x41, -0xf7, 0xf7, 0x41
+    ANIM_SPRITE_AFFIN 2, 0x56, -0xf0, 0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -32, -60
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -32, -52
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_6
+AnimSprite_YushaSpinShield1_6:  @ 0x5DB818
+    ANIM_SPRITE_AFFIN 2, 0x92, -0xd2, 0xd2, 0x92
+    ANIM_SPRITE_AFFIN 2, 0x9d, -0xca, 0xca, 0x9d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -32, -62
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -30, -58
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_7
+AnimSprite_YushaSpinShield1_7:  @ 0x5DB854
+    ANIM_SPRITE_AFFIN 2, 0xe7, -0x6c, 0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, 0xe3, -0x74, 0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -33, -64
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -25, -64
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_8
+AnimSprite_YushaSpinShield1_8:  @ 0x5DB890
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, -34, -66
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x009F, -21, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_9
+AnimSprite_YushaSpinShield1_9:  @ 0x5DB8B4
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, 0xe9, 0x68, -0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -33, -68
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -15, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_10
+AnimSprite_YushaSpinShield1_10:  @ 0x5DB8F0
+    ANIM_SPRITE_AFFIN 2, 0xae, 0xbb, -0xbb, 0xae
+    ANIM_SPRITE_AFFIN 2, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -71
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -12, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_11
+AnimSprite_YushaSpinShield1_11:  @ 0x5DB92C
+    ANIM_SPRITE_AFFIN 2, 0x57, 0xf0, -0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, 0x53, 0xf2, -0xf2, 0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -74
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -10, -66
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_12
+AnimSprite_YushaSpinShield1_12:  @ 0x5DB968
+    ANIM_SPRITE_AFFIN 2, -0x42, 0xf7, -0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, -0xd, 0xff, -0xff, -0xd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -76
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -10, -60
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_13
+AnimSprite_YushaSpinShield1_13:  @ 0x5DB9A4
+    ANIM_SPRITE_AFFIN 2, -0x92, 0xd1, -0xd1, -0x92
+    ANIM_SPRITE_AFFIN 2, -0x99, 0xcc, -0xcc, -0x99
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -79
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -12, -59
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_14
+AnimSprite_YushaSpinShield1_14:  @ 0x5DB9E0
+    ANIM_SPRITE_AFFIN 2, -0xdd, 0x80, -0x80, -0xdd
+    ANIM_SPRITE_AFFIN 2, -0xd8, 0x87, -0x87, -0xd8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -81
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -16, -58
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_15
+AnimSprite_YushaSpinShield1_15:  @ 0x5DBA1C
+    ANIM_SPRITE_AFFIN 1, -0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -83
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, -24, -59
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_16
+AnimSprite_YushaSpinShield1_16:  @ 0x5DBA4C
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xea, -0x67, 0x67, -0xea
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -86
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -28, -62
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_17
+AnimSprite_YushaSpinShield1_17:  @ 0x5DBA88
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc3, 0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0xb5, -0xb4, 0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -88
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -32, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_18
+AnimSprite_YushaSpinShield1_18:  @ 0x5DBAC4
+    ANIM_SPRITE_AFFIN 2, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -91
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -35, -75
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_19
+AnimSprite_YushaSpinShield1_19:  @ 0x5DBB00
+    ANIM_SPRITE_AFFIN 1, 0x56, -0xf0, 0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -94
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, -34, -87
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_20
+AnimSprite_YushaSpinShield1_20:  @ 0x5DBB30
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc4, 0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, 0x9d, -0xca, 0xca, 0x9d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -95
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -32, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_21
+AnimSprite_YushaSpinShield1_21:  @ 0x5DBB6C
+    ANIM_SPRITE_AFFIN 2, 0xe7, -0x6c, 0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, 0xe3, -0x74, 0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -36, -96
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -29, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_22
+AnimSprite_YushaSpinShield1_22:  @ 0x5DBBA8
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, -36, -98
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x009F, -23, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_23
+AnimSprite_YushaSpinShield1_23:  @ 0x5DBBCC
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, 0xe9, 0x68, -0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -36, -100
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -18, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_24
+AnimSprite_YushaSpinShield1_24:  @ 0x5DBC08
+    ANIM_SPRITE_AFFIN 2, 0xa4, 0xc4, -0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -37, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -15, -98
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_25
+AnimSprite_YushaSpinShield1_25:  @ 0x5DBC44
+    ANIM_SPRITE_AFFIN 2, 0x42, 0xf7, -0xf7, 0x42
+    ANIM_SPRITE_AFFIN 2, 0x53, 0xf2, -0xf2, 0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -37, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -12, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_26
+AnimSprite_YushaSpinShield1_26:  @ 0x5DBC80
+    ANIM_SPRITE_AFFIN 2, -0x6b, 0xe8, -0xe8, -0x6b
+    ANIM_SPRITE_AFFIN 2, -0xd, 0xff, -0xff, -0xd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -37, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -13, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_27
+AnimSprite_YushaSpinShield1_27:  @ 0x5DBCBC
+    ANIM_SPRITE_AFFIN 2, -0xa4, 0xc4, -0xc4, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0x99, 0xcc, -0xcc, -0x99
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -38, -104
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -17, -83
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_28
+AnimSprite_YushaSpinShield1_28:  @ 0x5DBCF8
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xd8, 0x87, -0x87, -0xd8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -38, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -22, -81
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_29
+AnimSprite_YushaSpinShield1_29:  @ 0x5DBD34
+    ANIM_SPRITE_AFFIN 2, -0xfc, 0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xfe, 0x1b, -0x1b, -0xfe
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -38, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -25, -80
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_30
+AnimSprite_YushaSpinShield1_30:  @ 0x5DBD70
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -39, -106
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -30, -82
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_31
+AnimSprite_YushaSpinShield1_31:  @ 0x5DBDAC
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xea, -0x67, 0x67, -0xea
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -39, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -32, -83
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_32
+AnimSprite_YushaSpinShield1_32:  @ 0x5DBDE8
+    ANIM_SPRITE_AFFIN 2, -0xdd, -0x7f, 0x7f, -0xdd
+    ANIM_SPRITE_AFFIN 2, -0xd1, -0x92, 0x92, -0xd1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -40, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -35, -84
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_33
+AnimSprite_YushaSpinShield1_33:  @ 0x5DBE24
+    ANIM_SPRITE_AFFIN 2, -0xc4, -0xa4, 0xa4, -0xc4
+    ANIM_SPRITE_AFFIN 2, -0xb5, -0xb4, 0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -40, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -36, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_34
+AnimSprite_YushaSpinShield1_34:  @ 0x5DBE60
+    ANIM_SPRITE_AFFIN 2, -0x80, -0xdd, 0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -40, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -39, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_35
+AnimSprite_YushaSpinShield1_35:  @ 0x5DBE9C
+    ANIM_SPRITE_AFFIN 2, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, -0x53, -0xf1, 0xf1, -0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -41, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -40, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_36
+AnimSprite_YushaSpinShield1_36:  @ 0x5DBED8
+    ANIM_SPRITE_AFFIN 1, 0x0, -0xff, 0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -41, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, -41, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_37
+AnimSprite_YushaSpinShield1_37:  @ 0x5DBF08
+    ANIM_SPRITE_AFFIN 2, 0x2b, -0xfc, 0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, 0x15, -0xff, 0xff, 0x15
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -41, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -41, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_38
+AnimSprite_YushaSpinShield1_38:  @ 0x5DBF44
+    ANIM_SPRITE_AFFIN 2, 0x56, -0xf0, 0xf0, 0x56
+    ANIM_SPRITE_AFFIN 2, 0x7f, -0xde, 0xde, 0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -42, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -41, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_39
+AnimSprite_YushaSpinShield1_39:  @ 0x5DBF80
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc4, 0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, 0x9d, -0xca, 0xca, 0x9d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -42, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -39, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_40
+AnimSprite_YushaSpinShield1_40:  @ 0x5DBFBC
+    ANIM_SPRITE_AFFIN 2, 0xd1, -0x93, 0x93, 0xd1
+    ANIM_SPRITE_AFFIN 2, 0xe3, -0x74, 0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -42, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -36, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_41
+AnimSprite_YushaSpinShield1_41:  @ 0x5DBFF8
+    ANIM_SPRITE_AFFIN 2, 0xf3, -0x4f, 0x4f, 0xf3
+    ANIM_SPRITE_AFFIN 2, 0xe3, -0x74, 0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -43, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -35, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_42
+AnimSprite_YushaSpinShield1_42:  @ 0x5DC034
+    ANIM_SPRITE_AFFIN 2, 0xfb, -0x2d, 0x2d, 0xfb
+    ANIM_SPRITE_AFFIN 2, 0xff, -0xe, 0xe, 0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -43, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -34, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_43
+AnimSprite_YushaSpinShield1_43:  @ 0x5DC070
+    ANIM_SPRITE_AFFIN 2, 0xfc, 0x2c, -0x2c, 0xfc
+    ANIM_SPRITE_AFFIN 2, 0xe9, 0x68, -0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -43, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -27, -109
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_44
+AnimSprite_YushaSpinShield1_44:  @ 0x5DC0AC
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, 0xe9, 0x68, -0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -44, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -26, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_45
+AnimSprite_YushaSpinShield1_45:  @ 0x5DC0E8
+    ANIM_SPRITE_AFFIN 2, 0xdd, 0x7f, -0x7f, 0xdd
+    ANIM_SPRITE_AFFIN 2, 0xbe, 0xab, -0xab, 0xbe
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -44, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -24, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_46
+AnimSprite_YushaSpinShield1_46:  @ 0x5DC124
+    ANIM_SPRITE_AFFIN 2, 0xc4, 0xa4, -0xa4, 0xc4
+    ANIM_SPRITE_AFFIN 2, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -45, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -24, -106
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_47
+AnimSprite_YushaSpinShield1_47:  @ 0x5DC160
+    ANIM_SPRITE_AFFIN 2, 0x92, 0xd1, -0xd1, 0x92
+    ANIM_SPRITE_AFFIN 2, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -45, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -22, -104
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_48
+AnimSprite_YushaSpinShield1_48:  @ 0x5DC19C
+    ANIM_SPRITE_AFFIN 2, 0x57, 0xf0, -0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, 0x74, 0xe4, -0xe4, 0x74
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -46, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -22, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_49
+AnimSprite_YushaSpinShield1_49:  @ 0x5DC1D8
+    ANIM_SPRITE_AFFIN 2, 0x0, 0xff, -0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, -0x4, 0xff, -0xff, -0x4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -46, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -21, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_50
+AnimSprite_YushaSpinShield1_50:  @ 0x5DC214
+    ANIM_SPRITE_AFFIN 2, -0x42, 0xf7, -0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, -0xd, 0xff, -0xff, -0xd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -47, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -23, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_51
+AnimSprite_YushaSpinShield1_51:  @ 0x5DC250
+    ANIM_SPRITE_AFFIN 2, -0x7f, 0xdd, -0xdd, -0x7f
+    ANIM_SPRITE_AFFIN 2, -0x99, 0xcc, -0xcc, -0x99
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -47, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -25, -90
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_52
+AnimSprite_YushaSpinShield1_52:  @ 0x5DC28C
+    ANIM_SPRITE_AFFIN 2, -0xb4, 0xb5, -0xb5, -0xb4
+    ANIM_SPRITE_AFFIN 2, -0xb1, 0xb8, -0xb8, -0xb1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -47, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -27, -88
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_53
+AnimSprite_YushaSpinShield1_53:  @ 0x5DC2C8
+    ANIM_SPRITE_AFFIN 2, -0xd1, 0x93, -0x93, -0xd1
+    ANIM_SPRITE_AFFIN 2, -0xd8, 0x87, -0x87, -0xd8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -48, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -29, -87
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_54
+AnimSprite_YushaSpinShield1_54:  @ 0x5DC304
+    ANIM_SPRITE_AFFIN 2, -0xe7, 0x6c, -0x6c, -0xe7
+    ANIM_SPRITE_AFFIN 2, -0xe3, 0x74, -0x74, -0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -48, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -31, -86
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_55
+AnimSprite_YushaSpinShield1_55:  @ 0x5DC340
+    ANIM_SPRITE_AFFIN 2, -0xfc, 0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xfe, 0x1b, -0x1b, -0xfe
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -49, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -36, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_56
+AnimSprite_YushaSpinShield1_56:  @ 0x5DC37C
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -49, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -39, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_57
+AnimSprite_YushaSpinShield1_57:  @ 0x5DC3B8
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xea, -0x67, 0x67, -0xea
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -43, -86
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_58
+AnimSprite_YushaSpinShield1_58:  @ 0x5DC3F4
+    ANIM_SPRITE_AFFIN 1, -0xd1, -0x92, 0x92, -0xd1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, -46, -88
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_59
+AnimSprite_YushaSpinShield1_59:  @ 0x5DC424
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc3, 0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0xb5, -0xb4, 0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -47, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_60
+AnimSprite_YushaSpinShield1_60:  @ 0x5DC460
+    ANIM_SPRITE_AFFIN 2, -0x80, -0xdd, 0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -49, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_61
+AnimSprite_YushaSpinShield1_61:  @ 0x5DC49C
+    ANIM_SPRITE_AFFIN 2, -0x42, -0xf7, 0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, -0x53, -0xf1, 0xf1, -0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -51, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -51, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_62
+AnimSprite_YushaSpinShield1_62:  @ 0x5DC4D8
+    ANIM_SPRITE_AFFIN 1, 0x0, -0xff, 0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -52, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, -52, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_63
+AnimSprite_YushaSpinShield1_63:  @ 0x5DC508
+    ANIM_SPRITE_AFFIN 2, 0x2b, -0xfc, 0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, 0x0, -0xff, 0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -53, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, -53, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_64
+AnimSprite_YushaSpinShield1_64:  @ 0x5DC544
+    ANIM_SPRITE_AFFIN 1, -0xdd, -0x7f, 0x7f, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -55, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_65
+AnimSprite_YushaSpinShield1_65:  @ 0x5DC568
+    ANIM_SPRITE_AFFIN 1, -0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_66
+AnimSprite_YushaSpinShield1_66:  @ 0x5DC58C
+    ANIM_SPRITE_AFFIN 1, -0xdd, 0x80, -0x80, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_67
+AnimSprite_YushaSpinShield1_67:  @ 0x5DC5B0
+    ANIM_SPRITE_AFFIN 1, 0x0, 0xff, -0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_68
+AnimSprite_YushaSpinShield1_68:  @ 0x5DC5D4
+    ANIM_SPRITE_AFFIN 1, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_69
+AnimSprite_YushaSpinShield1_69:  @ 0x5DC5F8
+    ANIM_SPRITE_AFFIN 1, 0xf7, -0x43, 0x43, 0xf7
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_70
+AnimSprite_YushaSpinShield1_70:  @ 0x5DC61C
+    ANIM_SPRITE_AFFIN 1, 0x56, -0xf0, 0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -58, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_71
+AnimSprite_YushaSpinShield1_71:  @ 0x5DC640
+    ANIM_SPRITE_AFFIN 1, -0x6c, -0xe7, 0xe7, -0x6c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -58, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_72
+AnimSprite_YushaSpinShield1_72:  @ 0x5DC664
+    ANIM_SPRITE_AFFIN 1, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -58, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_73
+AnimSprite_YushaSpinShield1_73:  @ 0x5DC688
+    ANIM_SPRITE_AFFIN 1, -0xc3, 0xa4, -0xa4, -0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -59, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_74
+AnimSprite_YushaSpinShield1_74:  @ 0x5DC6AC
+    ANIM_SPRITE_AFFIN 1, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -59, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_75
+AnimSprite_YushaSpinShield1_75:  @ 0x5DC6D0
+    ANIM_SPRITE_AFFIN 1, 0xfb, -0x2d, 0x2d, 0xfb
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -60, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_76
+AnimSprite_YushaSpinShield1_76:  @ 0x5DC6F4
+    ANIM_SPRITE_AFFIN 1, 0x7f, -0xde, 0xde, 0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -60, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_77
+AnimSprite_YushaSpinShield1_77:  @ 0x5DC718
+    ANIM_SPRITE_AFFIN 1, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -62, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_78
+AnimSprite_YushaSpinShield1_78:  @ 0x5DC73C
+    ANIM_SPRITE_AFFIN 1, -0xe8, -0x6b, 0x6b, -0xe8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -63, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_79
+AnimSprite_YushaSpinShield1_79:  @ 0x5DC760
+    ANIM_SPRITE_AFFIN 1, -0xf0, 0x57, -0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_80
+AnimSprite_YushaSpinShield1_80:  @ 0x5DC784
+    ANIM_SPRITE_AFFIN 1, -0x57, 0xf0, -0xf0, -0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -81
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_81
+AnimSprite_YushaSpinShield1_81:  @ 0x5DC7A8
+    ANIM_SPRITE_AFFIN 1, 0x57, 0xf0, -0xf0, 0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -78
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_82
+AnimSprite_YushaSpinShield1_82:  @ 0x5DC7CC
+    ANIM_SPRITE_AFFIN 1, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -70
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_83
+AnimSprite_YushaSpinShield1_83:  @ 0x5DC7F0
+    ANIM_SPRITE_AFFIN 1, 0xc3, -0xa5, 0xa5, 0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -61
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_84
+AnimSprite_YushaSpinShield1_84:  @ 0x5DC814
+    ANIM_SPRITE_AFFIN 1, -0x80, -0xdd, 0xdd, -0x80
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -56
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield1_85
+AnimSprite_YushaSpinShield1_85:  @ 0x5DC838
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x001F, 0, -8
+    ANIM_SPRITE_END
+
+	.global AnimScr_YushaSpinShieldOBJ_LeftTypeA
+AnimScr_YushaSpinShieldOBJ_LeftTypeA:
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_1, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_2, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_3, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_4, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_5, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_6, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_7, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_8, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_9, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_10, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_11, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_12, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_13, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_14, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_15, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_16, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_17, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_18, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_19, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_20, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_21, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_22, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_23, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_24, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_25, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_26, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_27, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_28, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_29, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_30, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_31, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_32, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_33, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_34, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_35, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_36, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_37, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_38, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_39, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_40, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_41, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_42, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_43, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_44, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_45, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_46, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_47, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_48, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_49, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_50, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_51, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_52, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_53, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_54, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_55, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_56, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_57, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_58, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_59, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_60, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_61, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_62, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_63, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_85, 2
+    ANIMSCR_LOOP
+
+	.global AnimScr_YushaSpinShieldOBJ2_RightTypeA
+AnimScr_YushaSpinShieldOBJ2_RightTypeA:
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_64, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_65, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_66, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_67, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_68, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_69, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_70, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_71, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_72, 1
+    ANIMSCR_LOOP
+
+	.global AnimScr_YushaSpinShieldOBJ3_RightTypeA
+AnimScr_YushaSpinShieldOBJ3_RightTypeA:
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_73, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_74, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_75, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_76, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_77, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_78, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_79, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_80, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_81, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_82, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_83, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield1_84, 2
+    ANIMSCR_LOOP
+
+.global AnimSprite_YushaSpinShield2_1
+AnimSprite_YushaSpinShield2_1:  @ 0x5DC9B0
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, 0xA000, 0x001C, 0, -51
+    ANIM_SPRITE ATTR0_SQUARE, 0x2000, 0x009F, 11, -27
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_2
+AnimSprite_YushaSpinShield2_2:  @ 0x5DC9D4
+    ANIM_SPRITE_AFFIN 2, 0xf7, -0x41, -0x41, -0xf7
+    ANIM_SPRITE_AFFIN 2, 0xe8, -0x6b, -0x6b, -0xe8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -1, -54
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 15, -30
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_3
+AnimSprite_YushaSpinShield2_3:  @ 0x5DCA10
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc3, -0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0xb5, -0xb4, -0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -1, -56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 21, -36
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_4
+AnimSprite_YushaSpinShield2_4:  @ 0x5DCA4C
+    ANIM_SPRITE_AFFIN 1, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -1, -58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, 23, -42
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_5
+AnimSprite_YushaSpinShield2_5:  @ 0x5DCA7C
+    ANIM_SPRITE_AFFIN 2, -0x41, -0xf7, -0xf7, 0x41
+    ANIM_SPRITE_AFFIN 2, -0x56, -0xf0, -0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 0, -60
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 24, -52
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_6
+AnimSprite_YushaSpinShield2_6:  @ 0x5DCAB8
+    ANIM_SPRITE_AFFIN 2, -0x92, -0xd2, -0xd2, 0x92
+    ANIM_SPRITE_AFFIN 2, -0x9d, -0xca, -0xca, 0x9d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 0, -62
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 22, -58
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_7
+AnimSprite_YushaSpinShield2_7:  @ 0x5DCAF4
+    ANIM_SPRITE_AFFIN 2, -0xe7, -0x6c, -0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, -0xe3, -0x74, -0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 1, -64
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 17, -64
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_8
+AnimSprite_YushaSpinShield2_8:  @ 0x5DCB30
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, 2, -66
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x009F, 13, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_9
+AnimSprite_YushaSpinShield2_9:  @ 0x5DCB54
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, -0xe9, 0x68, 0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 1, -68
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 7, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_10
+AnimSprite_YushaSpinShield2_10:  @ 0x5DCB90
+    ANIM_SPRITE_AFFIN 2, -0xae, 0xbb, 0xbb, 0xae
+    ANIM_SPRITE_AFFIN 2, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -71
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 4, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_11
+AnimSprite_YushaSpinShield2_11:  @ 0x5DCBCC
+    ANIM_SPRITE_AFFIN 2, -0x57, 0xf0, 0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, -0x53, 0xf2, 0xf2, 0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -74
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 2, -66
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_12
+AnimSprite_YushaSpinShield2_12:  @ 0x5DCC08
+    ANIM_SPRITE_AFFIN 2, 0x42, 0xf7, 0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, 0xd, 0xff, 0xff, -0xd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -76
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 2, -60
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_13
+AnimSprite_YushaSpinShield2_13:  @ 0x5DCC44
+    ANIM_SPRITE_AFFIN 2, 0x92, 0xd1, 0xd1, -0x92
+    ANIM_SPRITE_AFFIN 2, 0x99, 0xcc, 0xcc, -0x99
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -79
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 4, -59
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_14
+AnimSprite_YushaSpinShield2_14:  @ 0x5DCC80
+    ANIM_SPRITE_AFFIN 2, 0xdd, 0x80, 0x80, -0xdd
+    ANIM_SPRITE_AFFIN 2, 0xd8, 0x87, 0x87, -0xd8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -81
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 8, -58
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_15
+AnimSprite_YushaSpinShield2_15:  @ 0x5DCCBC
+    ANIM_SPRITE_AFFIN 1, 0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -83
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, 16, -59
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_16
+AnimSprite_YushaSpinShield2_16:  @ 0x5DCCEC
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xea, -0x67, -0x67, -0xea
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -86
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 20, -62
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_17
+AnimSprite_YushaSpinShield2_17:  @ 0x5DCD28
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc3, -0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0xb5, -0xb4, -0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -88
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 24, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_18
+AnimSprite_YushaSpinShield2_18:  @ 0x5DCD64
+    ANIM_SPRITE_AFFIN 2, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -91
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 27, -75
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_19
+AnimSprite_YushaSpinShield2_19:  @ 0x5DCDA0
+    ANIM_SPRITE_AFFIN 1, -0x56, -0xf0, -0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -94
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, 26, -87
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_20
+AnimSprite_YushaSpinShield2_20:  @ 0x5DCDD0
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc4, -0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, -0x9d, -0xca, -0xca, 0x9d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -95
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 24, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_21
+AnimSprite_YushaSpinShield2_21:  @ 0x5DCE0C
+    ANIM_SPRITE_AFFIN 2, -0xe7, -0x6c, -0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, -0xe3, -0x74, -0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 4, -96
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 21, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_22
+AnimSprite_YushaSpinShield2_22:  @ 0x5DCE48
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, 4, -98
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x009F, 15, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_23
+AnimSprite_YushaSpinShield2_23:  @ 0x5DCE6C
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, -0xe9, 0x68, 0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 4, -100
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 10, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_24
+AnimSprite_YushaSpinShield2_24:  @ 0x5DCEA8
+    ANIM_SPRITE_AFFIN 2, -0xa4, 0xc4, 0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 5, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 7, -98
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_25
+AnimSprite_YushaSpinShield2_25:  @ 0x5DCEE4
+    ANIM_SPRITE_AFFIN 2, -0x42, 0xf7, 0xf7, 0x42
+    ANIM_SPRITE_AFFIN 2, -0x53, 0xf2, 0xf2, 0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 5, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 4, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_26
+AnimSprite_YushaSpinShield2_26:  @ 0x5DCF20
+    ANIM_SPRITE_AFFIN 2, 0x6b, 0xe8, 0xe8, -0x6b
+    ANIM_SPRITE_AFFIN 2, 0xd, 0xff, 0xff, -0xd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 5, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 5, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_27
+AnimSprite_YushaSpinShield2_27:  @ 0x5DCF5C
+    ANIM_SPRITE_AFFIN 2, 0xa4, 0xc4, 0xc4, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0x99, 0xcc, 0xcc, -0x99
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 6, -104
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 9, -83
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_28
+AnimSprite_YushaSpinShield2_28:  @ 0x5DCF98
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xd8, 0x87, 0x87, -0xd8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 6, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 14, -81
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_29
+AnimSprite_YushaSpinShield2_29:  @ 0x5DCFD4
+    ANIM_SPRITE_AFFIN 2, 0xfc, 0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xfe, 0x1b, 0x1b, -0xfe
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 6, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 17, -80
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_30
+AnimSprite_YushaSpinShield2_30:  @ 0x5DD010
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 7, -106
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 22, -82
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_31
+AnimSprite_YushaSpinShield2_31:  @ 0x5DD04C
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xea, -0x67, -0x67, -0xea
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 7, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 24, -83
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_32
+AnimSprite_YushaSpinShield2_32:  @ 0x5DD088
+    ANIM_SPRITE_AFFIN 2, 0xdd, -0x7f, -0x7f, -0xdd
+    ANIM_SPRITE_AFFIN 2, 0xd1, -0x92, -0x92, -0xd1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 8, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 27, -84
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_33
+AnimSprite_YushaSpinShield2_33:  @ 0x5DD0C4
+    ANIM_SPRITE_AFFIN 2, 0xc4, -0xa4, -0xa4, -0xc4
+    ANIM_SPRITE_AFFIN 2, 0xb5, -0xb4, -0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 8, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 28, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_34
+AnimSprite_YushaSpinShield2_34:  @ 0x5DD100
+    ANIM_SPRITE_AFFIN 2, 0x80, -0xdd, -0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 8, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 31, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_35
+AnimSprite_YushaSpinShield2_35:  @ 0x5DD13C
+    ANIM_SPRITE_AFFIN 2, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, 0x53, -0xf1, -0xf1, -0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 9, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 32, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_36
+AnimSprite_YushaSpinShield2_36:  @ 0x5DD178
+    ANIM_SPRITE_AFFIN 1, 0x0, -0xff, -0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 9, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, 33, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_37
+AnimSprite_YushaSpinShield2_37:  @ 0x5DD1A8
+    ANIM_SPRITE_AFFIN 2, -0x2b, -0xfc, -0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, -0x15, -0xff, -0xff, 0x15
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 9, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 33, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_38
+AnimSprite_YushaSpinShield2_38:  @ 0x5DD1E4
+    ANIM_SPRITE_AFFIN 2, -0x56, -0xf0, -0xf0, 0x56
+    ANIM_SPRITE_AFFIN 2, -0x7f, -0xde, -0xde, 0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 10, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 33, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_39
+AnimSprite_YushaSpinShield2_39:  @ 0x5DD220
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc4, -0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, -0x9d, -0xca, -0xca, 0x9d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 10, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 31, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_40
+AnimSprite_YushaSpinShield2_40:  @ 0x5DD25C
+    ANIM_SPRITE_AFFIN 2, -0xd1, -0x93, -0x93, 0xd1
+    ANIM_SPRITE_AFFIN 2, -0xe3, -0x74, -0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 10, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 28, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_41
+AnimSprite_YushaSpinShield2_41:  @ 0x5DD298
+    ANIM_SPRITE_AFFIN 2, -0xf3, -0x4f, -0x4f, 0xf3
+    ANIM_SPRITE_AFFIN 2, -0xe3, -0x74, -0x74, 0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 11, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 27, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_42
+AnimSprite_YushaSpinShield2_42:  @ 0x5DD2D4
+    ANIM_SPRITE_AFFIN 2, -0xfb, -0x2d, -0x2d, 0xfb
+    ANIM_SPRITE_AFFIN 2, -0xff, -0xe, -0xe, 0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 11, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 26, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_43
+AnimSprite_YushaSpinShield2_43:  @ 0x5DD310
+    ANIM_SPRITE_AFFIN 2, -0xfc, 0x2c, 0x2c, 0xfc
+    ANIM_SPRITE_AFFIN 2, -0xe9, 0x68, 0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 11, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 19, -109
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_44
+AnimSprite_YushaSpinShield2_44:  @ 0x5DD34C
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, -0xe9, 0x68, 0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 12, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 18, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_45
+AnimSprite_YushaSpinShield2_45:  @ 0x5DD388
+    ANIM_SPRITE_AFFIN 2, -0xdd, 0x7f, 0x7f, 0xdd
+    ANIM_SPRITE_AFFIN 2, -0xbe, 0xab, 0xab, 0xbe
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 12, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 16, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_46
+AnimSprite_YushaSpinShield2_46:  @ 0x5DD3C4
+    ANIM_SPRITE_AFFIN 2, -0xc4, 0xa4, 0xa4, 0xc4
+    ANIM_SPRITE_AFFIN 2, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 13, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 16, -106
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_47
+AnimSprite_YushaSpinShield2_47:  @ 0x5DD400
+    ANIM_SPRITE_AFFIN 2, -0x92, 0xd1, 0xd1, 0x92
+    ANIM_SPRITE_AFFIN 2, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 13, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 14, -104
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_48
+AnimSprite_YushaSpinShield2_48:  @ 0x5DD43C
+    ANIM_SPRITE_AFFIN 2, -0x57, 0xf0, 0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, -0x74, 0xe4, 0xe4, 0x74
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 14, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 14, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_49
+AnimSprite_YushaSpinShield2_49:  @ 0x5DD478
+    ANIM_SPRITE_AFFIN 2, 0x0, 0xff, 0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, 0x4, 0xff, 0xff, -0x4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 14, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 13, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_50
+AnimSprite_YushaSpinShield2_50:  @ 0x5DD4B4
+    ANIM_SPRITE_AFFIN 2, 0x42, 0xf7, 0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, 0xd, 0xff, 0xff, -0xd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 15, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 15, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_51
+AnimSprite_YushaSpinShield2_51:  @ 0x5DD4F0
+    ANIM_SPRITE_AFFIN 2, 0x7f, 0xdd, 0xdd, -0x7f
+    ANIM_SPRITE_AFFIN 2, 0x99, 0xcc, 0xcc, -0x99
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 15, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 17, -90
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_52
+AnimSprite_YushaSpinShield2_52:  @ 0x5DD52C
+    ANIM_SPRITE_AFFIN 2, 0xb4, 0xb5, 0xb5, -0xb4
+    ANIM_SPRITE_AFFIN 2, 0xb1, 0xb8, 0xb8, -0xb1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 15, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 19, -88
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_53
+AnimSprite_YushaSpinShield2_53:  @ 0x5DD568
+    ANIM_SPRITE_AFFIN 2, 0xd1, 0x93, 0x93, -0xd1
+    ANIM_SPRITE_AFFIN 2, 0xd8, 0x87, 0x87, -0xd8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 16, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 21, -87
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_54
+AnimSprite_YushaSpinShield2_54:  @ 0x5DD5A4
+    ANIM_SPRITE_AFFIN 2, 0xe7, 0x6c, 0x6c, -0xe7
+    ANIM_SPRITE_AFFIN 2, 0xe3, 0x74, 0x74, -0xe3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 16, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 23, -86
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_55
+AnimSprite_YushaSpinShield2_55:  @ 0x5DD5E0
+    ANIM_SPRITE_AFFIN 2, 0xfc, 0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xfe, 0x1b, 0x1b, -0xfe
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 17, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 28, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_56
+AnimSprite_YushaSpinShield2_56:  @ 0x5DD61C
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 17, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 31, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_57
+AnimSprite_YushaSpinShield2_57:  @ 0x5DD658
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xea, -0x67, -0x67, -0xea
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 35, -86
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_58
+AnimSprite_YushaSpinShield2_58:  @ 0x5DD694
+    ANIM_SPRITE_AFFIN 1, 0xd1, -0x92, -0x92, -0xd1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, 38, -88
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_59
+AnimSprite_YushaSpinShield2_59:  @ 0x5DD6C4
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc3, -0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0xb5, -0xb4, -0xb4, -0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 39, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_60
+AnimSprite_YushaSpinShield2_60:  @ 0x5DD700
+    ANIM_SPRITE_AFFIN 2, 0x80, -0xdd, -0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 41, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_61
+AnimSprite_YushaSpinShield2_61:  @ 0x5DD73C
+    ANIM_SPRITE_AFFIN 2, 0x42, -0xf7, -0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, 0x53, -0xf1, -0xf1, -0x53
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 19, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 43, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_62
+AnimSprite_YushaSpinShield2_62:  @ 0x5DD778
+    ANIM_SPRITE_AFFIN 1, 0x0, -0xff, -0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 20, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_8, 0x009F, 44, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_63
+AnimSprite_YushaSpinShield2_63:  @ 0x5DD7A8
+    ANIM_SPRITE_AFFIN 2, -0x2b, -0xfc, -0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, 0x0, -0xff, -0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 21, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x0200, 0x009F, 45, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_64
+AnimSprite_YushaSpinShield2_64:  @ 0x5DD7E4
+    ANIM_SPRITE_AFFIN 1, 0xdd, -0x7f, -0x7f, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 23, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_65
+AnimSprite_YushaSpinShield2_65:  @ 0x5DD808
+    ANIM_SPRITE_AFFIN 1, 0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_66
+AnimSprite_YushaSpinShield2_66:  @ 0x5DD82C
+    ANIM_SPRITE_AFFIN 1, 0xdd, 0x80, 0x80, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_67
+AnimSprite_YushaSpinShield2_67:  @ 0x5DD850
+    ANIM_SPRITE_AFFIN 1, 0x0, 0xff, 0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_68
+AnimSprite_YushaSpinShield2_68:  @ 0x5DD874
+    ANIM_SPRITE_AFFIN 1, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_69
+AnimSprite_YushaSpinShield2_69:  @ 0x5DD898
+    ANIM_SPRITE_AFFIN 1, -0xf7, -0x43, -0x43, 0xf7
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_70
+AnimSprite_YushaSpinShield2_70:  @ 0x5DD8BC
+    ANIM_SPRITE_AFFIN 1, -0x56, -0xf0, -0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 26, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_71
+AnimSprite_YushaSpinShield2_71:  @ 0x5DD8E0
+    ANIM_SPRITE_AFFIN 1, 0x6c, -0xe7, -0xe7, -0x6c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 26, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_72
+AnimSprite_YushaSpinShield2_72:  @ 0x5DD904
+    ANIM_SPRITE_AFFIN 1, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 26, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_73
+AnimSprite_YushaSpinShield2_73:  @ 0x5DD928
+    ANIM_SPRITE_AFFIN 1, 0xc3, 0xa4, 0xa4, -0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 27, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_74
+AnimSprite_YushaSpinShield2_74:  @ 0x5DD94C
+    ANIM_SPRITE_AFFIN 1, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 27, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_75
+AnimSprite_YushaSpinShield2_75:  @ 0x5DD970
+    ANIM_SPRITE_AFFIN 1, -0xfb, -0x2d, -0x2d, 0xfb
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 28, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_76
+AnimSprite_YushaSpinShield2_76:  @ 0x5DD994
+    ANIM_SPRITE_AFFIN 1, -0x7f, -0xde, -0xde, 0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 28, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_77
+AnimSprite_YushaSpinShield2_77:  @ 0x5DD9B8
+    ANIM_SPRITE_AFFIN 1, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 30, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_78
+AnimSprite_YushaSpinShield2_78:  @ 0x5DD9DC
+    ANIM_SPRITE_AFFIN 1, 0xe8, -0x6b, -0x6b, -0xe8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 31, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_79
+AnimSprite_YushaSpinShield2_79:  @ 0x5DDA00
+    ANIM_SPRITE_AFFIN 1, 0xf0, 0x57, 0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_80
+AnimSprite_YushaSpinShield2_80:  @ 0x5DDA24
+    ANIM_SPRITE_AFFIN 1, 0x57, 0xf0, 0xf0, -0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -81
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_81
+AnimSprite_YushaSpinShield2_81:  @ 0x5DDA48
+    ANIM_SPRITE_AFFIN 1, -0x57, 0xf0, 0xf0, 0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -78
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_82
+AnimSprite_YushaSpinShield2_82:  @ 0x5DDA6C
+    ANIM_SPRITE_AFFIN 1, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -70
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_83
+AnimSprite_YushaSpinShield2_83:  @ 0x5DDA90
+    ANIM_SPRITE_AFFIN 1, -0xc3, -0xa5, -0xa5, 0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -61
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_84
+AnimSprite_YushaSpinShield2_84:  @ 0x5DDAB4
+    ANIM_SPRITE_AFFIN 1, 0x80, -0xdd, -0xdd, -0x80
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -56
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield2_85
+AnimSprite_YushaSpinShield2_85:  @ 0x5DDAD8
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x001F, -8, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_YushaSpinShieldOBJ_RightTypeA
+AnimScr_YushaSpinShieldOBJ_RightTypeA: @ 0x5DDAF0
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_1, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_2, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_3, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_4, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_5, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_6, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_7, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_8, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_9, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_10, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_11, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_12, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_13, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_14, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_15, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_16, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_17, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_18, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_19, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_20, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_21, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_22, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_23, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_24, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_25, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_26, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_27, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_28, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_29, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_30, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_31, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_32, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_33, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_34, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_35, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_36, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_37, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_38, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_39, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_40, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_41, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_42, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_43, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_44, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_45, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_46, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_47, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_48, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_49, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_50, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_51, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_52, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_53, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_54, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_55, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_56, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_57, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_58, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_59, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_60, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_61, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_62, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_63, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_85, 2
+    ANIMSCR_LOOP
+
+.global AnimScr_YushaSpinShieldOBJ2_LeftTypeA
+AnimScr_YushaSpinShieldOBJ2_LeftTypeA: @ 0x5DDBF4
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_64, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_65, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_66, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_67, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_68, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_69, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_70, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_71, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_72, 1
+    ANIMSCR_LOOP
+
+.global AnimScr_YushaSpinShieldOBJ3_LeftTypeA
+AnimScr_YushaSpinShieldOBJ3_LeftTypeA: @ 0x5DDC1C
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_73, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_74, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_75, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_76, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_77, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_78, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_79, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_80, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_81, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_82, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_83, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield2_84, 2
+    ANIMSCR_LOOP
+
+.global AnimSprite_YushaSpinShield3_1
+AnimSprite_YushaSpinShield3_1:  @ 0x5DDC50
+    ANIM_SPRITE ATTR0_SQUARE, 0xA000, 0x001C, -32, -51
+    ANIM_SPRITE ATTR0_SQUARE, 0x6000, 0x003A, -25, -37
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_2
+AnimSprite_YushaSpinShield3_2:  @ 0x5DDC74
+    ANIM_SPRITE_AFFIN 2, -0xf7, -0x41, 0x41, -0xf7
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -31, -54
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -24, -40
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_3
+AnimSprite_YushaSpinShield3_3:  @ 0x5DDCB0
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc3, 0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0xa1, -0xc6, 0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -31, -56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -28, -43
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_4
+AnimSprite_YushaSpinShield3_4:  @ 0x5DDCEC
+    ANIM_SPRITE_AFFIN 2, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -31, -58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -29, -47
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_5
+AnimSprite_YushaSpinShield3_5:  @ 0x5DDD28
+    ANIM_SPRITE_AFFIN 2, 0x41, -0xf7, 0xf7, 0x41
+    ANIM_SPRITE_AFFIN 2, 0x67, -0xea, 0xea, 0x67
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -32, -60
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -32, -54
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_6
+AnimSprite_YushaSpinShield3_6:  @ 0x5DDD64
+    ANIM_SPRITE_AFFIN 2, 0x92, -0xd2, 0xd2, 0x92
+    ANIM_SPRITE_AFFIN 2, 0xaa, -0xbe, 0xbe, 0xaa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -32, -62
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -30, -58
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_7
+AnimSprite_YushaSpinShield3_7:  @ 0x5DDDA0
+    ANIM_SPRITE_AFFIN 2, 0xe7, -0x6c, 0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, 0xdf, -0x7c, 0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -33, -64
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -28, -63
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_8
+AnimSprite_YushaSpinShield3_8:  @ 0x5DDDDC
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, -34, -66
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x003A, -26, -64
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_9
+AnimSprite_YushaSpinShield3_9:  @ 0x5DDE00
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, 0xe9, 0x68, -0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -33, -68
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -22, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_10
+AnimSprite_YushaSpinShield3_10:  @ 0x5DDE3C
+    ANIM_SPRITE_AFFIN 2, 0xae, 0xbb, -0xbb, 0xae
+    ANIM_SPRITE_AFFIN 2, 0xc4, 0xa4, -0xa4, 0xc4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -71
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -22, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_11
+AnimSprite_YushaSpinShield3_11:  @ 0x5DDE78
+    ANIM_SPRITE_AFFIN 2, 0x57, 0xf0, -0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, 0xab, 0xbe, -0xbe, 0xab
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -74
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -20, -68
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_12
+AnimSprite_YushaSpinShield3_12:  @ 0x5DDEB4
+    ANIM_SPRITE_AFFIN 2, -0x42, 0xf7, -0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, 0x1a, 0xfe, -0xfe, 0x1a
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -76
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -19, -66
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_13
+AnimSprite_YushaSpinShield3_13:  @ 0x5DDEF0
+    ANIM_SPRITE_AFFIN 2, -0x92, 0xd1, -0xd1, -0x92
+    ANIM_SPRITE_AFFIN 2, -0x7f, 0xdd, -0xdd, -0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -79
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -20, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_14
+AnimSprite_YushaSpinShield3_14:  @ 0x5DDF2C
+    ANIM_SPRITE_AFFIN 2, -0xdd, 0x80, -0x80, -0xdd
+    ANIM_SPRITE_AFFIN 2, -0xdf, 0x7c, -0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -81
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -22, -66
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_15
+AnimSprite_YushaSpinShield3_15:  @ 0x5DDF68
+    ANIM_SPRITE_AFFIN 2, -0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE_AFFIN 2, -0xff, -0xc, 0xc, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -34, -83
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -26, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_16
+AnimSprite_YushaSpinShield3_16:  @ 0x5DDFA4
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -86
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -29, -71
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_17
+AnimSprite_YushaSpinShield3_17:  @ 0x5DDFE0
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc3, 0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0xa1, -0xc6, 0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -88
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -32, -75
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_18
+AnimSprite_YushaSpinShield3_18:  @ 0x5DE01C
+    ANIM_SPRITE_AFFIN 2, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -91
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -33, -80
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_19
+AnimSprite_YushaSpinShield3_19:  @ 0x5DE058
+    ANIM_SPRITE_AFFIN 2, 0x56, -0xf0, 0xf0, 0x56
+    ANIM_SPRITE_AFFIN 2, 0x67, -0xea, 0xea, 0x67
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -94
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -34, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_20
+AnimSprite_YushaSpinShield3_20:  @ 0x5DE094
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc4, 0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, 0xaa, -0xbe, 0xbe, 0xaa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -35, -95
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -32, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_21
+AnimSprite_YushaSpinShield3_21:  @ 0x5DE0D0
+    ANIM_SPRITE_AFFIN 2, 0xe7, -0x6c, 0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, 0xdf, -0x7c, 0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -36, -96
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -31, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_22
+AnimSprite_YushaSpinShield3_22:  @ 0x5DE10C
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, -36, -98
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x003A, -28, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_23
+AnimSprite_YushaSpinShield3_23:  @ 0x5DE130
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, 0xe9, 0x68, -0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -36, -100
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -26, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_24
+AnimSprite_YushaSpinShield3_24:  @ 0x5DE16C
+    ANIM_SPRITE_AFFIN 2, 0xa4, 0xc4, -0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, 0xc4, 0xa4, -0xa4, 0xc4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -37, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -24, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_25
+AnimSprite_YushaSpinShield3_25:  @ 0x5DE1A8
+    ANIM_SPRITE_AFFIN 2, 0x42, 0xf7, -0xf7, 0x42
+    ANIM_SPRITE_AFFIN 2, 0xab, 0xbe, -0xbe, 0xab
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -37, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -23, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_26
+AnimSprite_YushaSpinShield3_26:  @ 0x5DE1E4
+    ANIM_SPRITE_AFFIN 2, -0x6b, 0xe8, -0xe8, -0x6b
+    ANIM_SPRITE_AFFIN 2, -0x7f, 0xdd, -0xdd, -0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -37, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -23, -90
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_27
+AnimSprite_YushaSpinShield3_27:  @ 0x5DE220
+    ANIM_SPRITE_AFFIN 2, -0xa4, 0xc4, -0xc4, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0xdf, 0x7c, -0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -38, -104
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -25, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_28
+AnimSprite_YushaSpinShield3_28:  @ 0x5DE25C
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xdf, 0x7c, -0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -38, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -28, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_29
+AnimSprite_YushaSpinShield3_29:  @ 0x5DE298
+    ANIM_SPRITE_AFFIN 2, -0xfc, 0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xf9, 0x39, -0x39, -0xf9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -38, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -29, -90
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_30
+AnimSprite_YushaSpinShield3_30:  @ 0x5DE2D4
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xff, -0xc, 0xc, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -39, -106
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -32, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_31
+AnimSprite_YushaSpinShield3_31:  @ 0x5DE310
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -39, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -33, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_32
+AnimSprite_YushaSpinShield3_32:  @ 0x5DE34C
+    ANIM_SPRITE_AFFIN 2, -0xdd, -0x7f, 0x7f, -0xdd
+    ANIM_SPRITE_AFFIN 2, -0xeb, -0x63, 0x63, -0xeb
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -40, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -36, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_33
+AnimSprite_YushaSpinShield3_33:  @ 0x5DE388
+    ANIM_SPRITE_AFFIN 2, -0xc4, -0xa4, 0xa4, -0xc4
+    ANIM_SPRITE_AFFIN 2, -0xa1, -0xc6, 0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -40, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -36, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_34
+AnimSprite_YushaSpinShield3_34:  @ 0x5DE3C4
+    ANIM_SPRITE_AFFIN 2, -0x80, -0xdd, 0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, -0xa1, -0xc6, 0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -40, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -37, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_35
+AnimSprite_YushaSpinShield3_35:  @ 0x5DE400
+    ANIM_SPRITE_AFFIN 2, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -41, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -39, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_36
+AnimSprite_YushaSpinShield3_36:  @ 0x5DE43C
+    ANIM_SPRITE_AFFIN 2, 0x0, -0xff, 0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, 0x3d, -0xf8, 0xf8, 0x3d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -41, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -39, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_37
+AnimSprite_YushaSpinShield3_37:  @ 0x5DE478
+    ANIM_SPRITE_AFFIN 2, 0x2b, -0xfc, 0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, 0x3d, -0xf8, 0xf8, 0x3d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -41, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -40, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_38
+AnimSprite_YushaSpinShield3_38:  @ 0x5DE4B4
+    ANIM_SPRITE_AFFIN 2, 0x56, -0xf0, 0xf0, 0x56
+    ANIM_SPRITE_AFFIN 2, 0x67, -0xea, 0xea, 0x67
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -42, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -40, -102
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_39
+AnimSprite_YushaSpinShield3_39:  @ 0x5DE4F0
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc4, 0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, 0xaa, -0xbe, 0xbe, 0xaa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -42, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -40, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_40
+AnimSprite_YushaSpinShield3_40:  @ 0x5DE52C
+    ANIM_SPRITE_AFFIN 2, 0xd1, -0x93, 0x93, 0xd1
+    ANIM_SPRITE_AFFIN 2, 0xdf, -0x7c, 0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -42, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -38, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_41
+AnimSprite_YushaSpinShield3_41:  @ 0x5DE568
+    ANIM_SPRITE_AFFIN 2, 0xf3, -0x4f, 0x4f, 0xf3
+    ANIM_SPRITE_AFFIN 2, 0xdf, -0x7c, 0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -43, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -37, -106
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_42
+AnimSprite_YushaSpinShield3_42:  @ 0x5DE5A4
+    ANIM_SPRITE_AFFIN 2, 0xfb, -0x2d, 0x2d, 0xfb
+    ANIM_SPRITE_AFFIN 2, 0xf9, -0x3a, 0x3a, 0xf9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -43, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -36, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_43
+AnimSprite_YushaSpinShield3_43:  @ 0x5DE5E0
+    ANIM_SPRITE_AFFIN 2, 0xfc, 0x2c, -0x2c, 0xfc
+    ANIM_SPRITE_AFFIN 2, 0xfa, 0x35, -0x35, 0xfa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -43, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -34, -109
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_44
+AnimSprite_YushaSpinShield3_44:  @ 0x5DE61C
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, 0xfa, 0x35, -0x35, 0xfa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -44, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -33, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_45
+AnimSprite_YushaSpinShield3_45:  @ 0x5DE658
+    ANIM_SPRITE_AFFIN 2, 0xdd, 0x7f, -0x7f, 0xdd
+    ANIM_SPRITE_AFFIN 2, 0xe9, 0x68, -0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -44, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -33, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_46
+AnimSprite_YushaSpinShield3_46:  @ 0x5DE694
+    ANIM_SPRITE_AFFIN 1, 0xc4, 0xa4, -0xa4, 0xc4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -45, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_16, 0x003A, -33, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_47
+AnimSprite_YushaSpinShield3_47:  @ 0x5DE6C4
+    ANIM_SPRITE_AFFIN 2, 0x92, 0xd1, -0xd1, 0x92
+    ANIM_SPRITE_AFFIN 2, 0xab, 0xbe, -0xbe, 0xab
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -45, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -32, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_48
+AnimSprite_YushaSpinShield3_48:  @ 0x5DE700
+    ANIM_SPRITE_AFFIN 2, 0x57, 0xf0, -0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, 0x80, 0xdd, -0xdd, 0x80
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -46, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -31, -104
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_49
+AnimSprite_YushaSpinShield3_49:  @ 0x5DE73C
+    ANIM_SPRITE_AFFIN 2, 0x0, 0xff, -0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, 0x1a, 0xfe, -0xfe, 0x1a
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -46, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -30, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_50
+AnimSprite_YushaSpinShield3_50:  @ 0x5DE778
+    ANIM_SPRITE_AFFIN 2, -0x42, 0xf7, -0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, 0x1a, 0xfe, -0xfe, 0x1a
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -47, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -33, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_51
+AnimSprite_YushaSpinShield3_51:  @ 0x5DE7B4
+    ANIM_SPRITE_AFFIN 1, -0x7f, 0xdd, -0xdd, -0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -47, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_16, 0x003A, -33, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_52
+AnimSprite_YushaSpinShield3_52:  @ 0x5DE7E4
+    ANIM_SPRITE_AFFIN 2, -0xb4, 0xb5, -0xb5, -0xb4
+    ANIM_SPRITE_AFFIN 2, -0xdf, 0x7c, -0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -47, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -34, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_53
+AnimSprite_YushaSpinShield3_53:  @ 0x5DE820
+    ANIM_SPRITE_AFFIN 2, -0xd1, 0x93, -0x93, -0xd1
+    ANIM_SPRITE_AFFIN 2, -0xdf, 0x7c, -0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -48, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -35, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_54
+AnimSprite_YushaSpinShield3_54:  @ 0x5DE85C
+    ANIM_SPRITE_AFFIN 2, -0xe7, 0x6c, -0x6c, -0xe7
+    ANIM_SPRITE_AFFIN 2, -0xdf, 0x7c, -0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -48, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -37, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_55
+AnimSprite_YushaSpinShield3_55:  @ 0x5DE898
+    ANIM_SPRITE_AFFIN 2, -0xfc, 0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xf1, 0x53, -0x53, -0xf1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -49, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -39, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_56
+AnimSprite_YushaSpinShield3_56:  @ 0x5DE8D4
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, -0xff, -0xc, 0xc, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -49, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -42, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_57
+AnimSprite_YushaSpinShield3_57:  @ 0x5DE910
+    ANIM_SPRITE_AFFIN 2, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, -0xfc, -0x2c, 0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -45, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_58
+AnimSprite_YushaSpinShield3_58:  @ 0x5DE94C
+    ANIM_SPRITE_AFFIN 2, -0xd1, -0x92, 0x92, -0xd1
+    ANIM_SPRITE_AFFIN 2, -0xa1, -0xc6, 0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -46, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_59
+AnimSprite_YushaSpinShield3_59:  @ 0x5DE988
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc3, 0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, -0xa1, -0xc6, 0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -47, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_60
+AnimSprite_YushaSpinShield3_60:  @ 0x5DE9C4
+    ANIM_SPRITE_AFFIN 2, -0x80, -0xdd, 0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -50, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -48, -98
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_61
+AnimSprite_YushaSpinShield3_61:  @ 0x5DEA00
+    ANIM_SPRITE_AFFIN 2, -0x42, -0xf7, 0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, -0x7c, -0xdf, 0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -51, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -50, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_62
+AnimSprite_YushaSpinShield3_62:  @ 0x5DEA3C
+    ANIM_SPRITE_AFFIN 2, 0x0, -0xff, 0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, 0x23, -0xfd, 0xfd, 0x23
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -52, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -52, -102
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_63
+AnimSprite_YushaSpinShield3_63:  @ 0x5DEA78
+    ANIM_SPRITE_AFFIN 2, 0x2b, -0xfc, 0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, 0x23, -0xfd, 0xfd, 0x23
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -53, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, -52, -103
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_64
+AnimSprite_YushaSpinShield3_64:  @ 0x5DEAB4
+    ANIM_SPRITE_AFFIN 1, -0xdd, -0x7f, 0x7f, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -55, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_65
+AnimSprite_YushaSpinShield3_65:  @ 0x5DEAD8
+    ANIM_SPRITE_AFFIN 1, -0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_66
+AnimSprite_YushaSpinShield3_66:  @ 0x5DEAFC
+    ANIM_SPRITE_AFFIN 1, -0xdd, 0x80, -0x80, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_67
+AnimSprite_YushaSpinShield3_67:  @ 0x5DEB20
+    ANIM_SPRITE_AFFIN 1, 0x0, 0xff, -0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_68
+AnimSprite_YushaSpinShield3_68:  @ 0x5DEB44
+    ANIM_SPRITE_AFFIN 1, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_69
+AnimSprite_YushaSpinShield3_69:  @ 0x5DEB68
+    ANIM_SPRITE_AFFIN 1, 0xf7, -0x43, 0x43, 0xf7
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -57, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_70
+AnimSprite_YushaSpinShield3_70:  @ 0x5DEB8C
+    ANIM_SPRITE_AFFIN 1, 0x56, -0xf0, 0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -58, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_71
+AnimSprite_YushaSpinShield3_71:  @ 0x5DEBB0
+    ANIM_SPRITE_AFFIN 1, -0x6c, -0xe7, 0xe7, -0x6c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -58, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_72
+AnimSprite_YushaSpinShield3_72:  @ 0x5DEBD4
+    ANIM_SPRITE_AFFIN 1, -0xf0, -0x57, 0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -58, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_73
+AnimSprite_YushaSpinShield3_73:  @ 0x5DEBF8
+    ANIM_SPRITE_AFFIN 1, -0xc3, 0xa4, -0xa4, -0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -59, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_74
+AnimSprite_YushaSpinShield3_74:  @ 0x5DEC1C
+    ANIM_SPRITE_AFFIN 1, 0xb5, 0xb4, -0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -59, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_75
+AnimSprite_YushaSpinShield3_75:  @ 0x5DEC40
+    ANIM_SPRITE_AFFIN 1, 0xfb, -0x2d, 0x2d, 0xfb
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -60, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_76
+AnimSprite_YushaSpinShield3_76:  @ 0x5DEC64
+    ANIM_SPRITE_AFFIN 1, 0x7f, -0xde, 0xde, 0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -60, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_77
+AnimSprite_YushaSpinShield3_77:  @ 0x5DEC88
+    ANIM_SPRITE_AFFIN 1, -0x58, -0xf0, 0xf0, -0x58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -62, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_78
+AnimSprite_YushaSpinShield3_78:  @ 0x5DECAC
+    ANIM_SPRITE_AFFIN 1, -0xe8, -0x6b, 0x6b, -0xe8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -63, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_79
+AnimSprite_YushaSpinShield3_79:  @ 0x5DECD0
+    ANIM_SPRITE_AFFIN 1, -0xf0, 0x57, -0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_80
+AnimSprite_YushaSpinShield3_80:  @ 0x5DECF4
+    ANIM_SPRITE_AFFIN 1, -0x57, 0xf0, -0xf0, -0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -81
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_81
+AnimSprite_YushaSpinShield3_81:  @ 0x5DED18
+    ANIM_SPRITE_AFFIN 1, 0x57, 0xf0, -0xf0, 0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -78
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_82
+AnimSprite_YushaSpinShield3_82:  @ 0x5DED3C
+    ANIM_SPRITE_AFFIN 1, 0xf0, 0x57, -0x57, 0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -70
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_83
+AnimSprite_YushaSpinShield3_83:  @ 0x5DED60
+    ANIM_SPRITE_AFFIN 1, 0xc3, -0xa5, 0xa5, 0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -61
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_84
+AnimSprite_YushaSpinShield3_84:  @ 0x5DED84
+    ANIM_SPRITE_AFFIN 1, -0x80, -0xdd, 0xdd, -0x80
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -64, -56
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield3_85
+AnimSprite_YushaSpinShield3_85:  @ 0x5DEDA8
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x001F, 0, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_YushaSpinShieldOBJ_LeftTypeB
+AnimScr_YushaSpinShieldOBJ_LeftTypeB: @ 0x5DEDC0
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_1, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_2, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_3, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_4, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_5, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_6, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_7, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_8, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_9, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_10, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_11, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_12, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_13, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_14, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_15, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_16, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_17, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_18, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_19, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_20, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_21, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_22, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_23, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_24, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_25, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_26, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_27, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_28, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_29, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_30, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_31, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_32, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_33, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_34, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_35, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_36, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_37, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_38, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_39, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_40, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_41, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_42, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_43, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_44, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_45, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_46, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_47, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_48, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_49, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_50, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_51, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_52, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_53, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_54, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_55, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_56, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_57, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_58, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_59, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_60, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_61, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_62, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_63, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_85, 2
+    ANIMSCR_LOOP
+
+.global AnimScr_YushaSpinShieldOBJ2_RightTypeB
+AnimScr_YushaSpinShieldOBJ2_RightTypeB: @ 0x5DEEC4
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_64, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_65, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_66, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_67, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_68, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_69, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_70, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_71, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_72, 1
+    ANIMSCR_LOOP
+
+.global AnimScr_YushaSpinShieldOBJ3_RightTypeB
+AnimScr_YushaSpinShieldOBJ3_RightTypeB: @ 0x5DEEEC
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_73, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_74, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_75, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_76, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_77, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_78, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_79, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_80, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_81, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_82, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_83, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield3_84, 2
+    ANIMSCR_LOOP
+
+.global AnimSprite_YushaSpinShield4_1
+AnimSprite_YushaSpinShield4_1:  @ 0x5DEF20
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, 0xA000, 0x001C, 0, -51
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, 0x6000, 0x003A, 9, -37
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_2
+AnimSprite_YushaSpinShield4_2:  @ 0x5DEF44
+    ANIM_SPRITE_AFFIN 2, 0xf7, -0x41, -0x41, -0xf7
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -1, -54
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 8, -40
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_3
+AnimSprite_YushaSpinShield4_3:  @ 0x5DEF80
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc3, -0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0xa1, -0xc6, -0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -1, -56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 12, -43
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_4
+AnimSprite_YushaSpinShield4_4:  @ 0x5DEFBC
+    ANIM_SPRITE_AFFIN 2, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, -1, -58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 13, -47
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_5
+AnimSprite_YushaSpinShield4_5:  @ 0x5DEFF8
+    ANIM_SPRITE_AFFIN 2, -0x41, -0xf7, -0xf7, 0x41
+    ANIM_SPRITE_AFFIN 2, -0x67, -0xea, -0xea, 0x67
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 0, -60
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 16, -54
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_6
+AnimSprite_YushaSpinShield4_6:  @ 0x5DF034
+    ANIM_SPRITE_AFFIN 2, -0x92, -0xd2, -0xd2, 0x92
+    ANIM_SPRITE_AFFIN 2, -0xaa, -0xbe, -0xbe, 0xaa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 0, -62
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 14, -58
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_7
+AnimSprite_YushaSpinShield4_7:  @ 0x5DF070
+    ANIM_SPRITE_AFFIN 2, -0xe7, -0x6c, -0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, -0xdf, -0x7c, -0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 1, -64
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 12, -63
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_8
+AnimSprite_YushaSpinShield4_8:  @ 0x5DF0AC
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, 2, -66
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x003A, 10, -64
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_9
+AnimSprite_YushaSpinShield4_9:  @ 0x5DF0D0
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, -0xe9, 0x68, 0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 1, -68
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 6, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_10
+AnimSprite_YushaSpinShield4_10:  @ 0x5DF10C
+    ANIM_SPRITE_AFFIN 2, -0xae, 0xbb, 0xbb, 0xae
+    ANIM_SPRITE_AFFIN 2, -0xc4, 0xa4, 0xa4, 0xc4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -71
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 6, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_11
+AnimSprite_YushaSpinShield4_11:  @ 0x5DF148
+    ANIM_SPRITE_AFFIN 2, -0x57, 0xf0, 0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, -0xab, 0xbe, 0xbe, 0xab
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -74
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 4, -68
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_12
+AnimSprite_YushaSpinShield4_12:  @ 0x5DF184
+    ANIM_SPRITE_AFFIN 2, 0x42, 0xf7, 0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, -0x1a, 0xfe, 0xfe, 0x1a
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -76
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 3, -66
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_13
+AnimSprite_YushaSpinShield4_13:  @ 0x5DF1C0
+    ANIM_SPRITE_AFFIN 2, 0x92, 0xd1, 0xd1, -0x92
+    ANIM_SPRITE_AFFIN 2, 0x7f, 0xdd, 0xdd, -0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -79
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 4, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_14
+AnimSprite_YushaSpinShield4_14:  @ 0x5DF1FC
+    ANIM_SPRITE_AFFIN 2, 0xdd, 0x80, 0x80, -0xdd
+    ANIM_SPRITE_AFFIN 2, 0xdf, 0x7c, 0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -81
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 6, -66
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_15
+AnimSprite_YushaSpinShield4_15:  @ 0x5DF238
+    ANIM_SPRITE_AFFIN 2, 0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE_AFFIN 2, 0xff, -0xc, -0xc, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 2, -83
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 10, -67
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_16
+AnimSprite_YushaSpinShield4_16:  @ 0x5DF274
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -86
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 13, -71
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_17
+AnimSprite_YushaSpinShield4_17:  @ 0x5DF2B0
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc3, -0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0xa1, -0xc6, -0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -88
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 16, -75
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_18
+AnimSprite_YushaSpinShield4_18:  @ 0x5DF2EC
+    ANIM_SPRITE_AFFIN 2, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -91
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 17, -80
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_19
+AnimSprite_YushaSpinShield4_19:  @ 0x5DF328
+    ANIM_SPRITE_AFFIN 2, -0x56, -0xf0, -0xf0, 0x56
+    ANIM_SPRITE_AFFIN 2, -0x67, -0xea, -0xea, 0x67
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -94
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 18, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_20
+AnimSprite_YushaSpinShield4_20:  @ 0x5DF364
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc4, -0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, -0xaa, -0xbe, -0xbe, 0xaa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 3, -95
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 16, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_21
+AnimSprite_YushaSpinShield4_21:  @ 0x5DF3A0
+    ANIM_SPRITE_AFFIN 2, -0xe7, -0x6c, -0x6c, 0xe7
+    ANIM_SPRITE_AFFIN 2, -0xdf, -0x7c, -0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 4, -96
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 15, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_22
+AnimSprite_YushaSpinShield4_22:  @ 0x5DF3DC
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x001C, 4, -98
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x003A, 12, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_23
+AnimSprite_YushaSpinShield4_23:  @ 0x5DF400
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, -0xe9, 0x68, 0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 4, -100
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 10, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_24
+AnimSprite_YushaSpinShield4_24:  @ 0x5DF43C
+    ANIM_SPRITE_AFFIN 2, -0xa4, 0xc4, 0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, -0xc4, 0xa4, 0xa4, 0xc4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 5, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 8, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_25
+AnimSprite_YushaSpinShield4_25:  @ 0x5DF478
+    ANIM_SPRITE_AFFIN 2, -0x42, 0xf7, 0xf7, 0x42
+    ANIM_SPRITE_AFFIN 2, -0xab, 0xbe, 0xbe, 0xab
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 5, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 7, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_26
+AnimSprite_YushaSpinShield4_26:  @ 0x5DF4B4
+    ANIM_SPRITE_AFFIN 2, 0x6b, 0xe8, 0xe8, -0x6b
+    ANIM_SPRITE_AFFIN 2, 0x7f, 0xdd, 0xdd, -0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 5, -102
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 7, -90
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_27
+AnimSprite_YushaSpinShield4_27:  @ 0x5DF4F0
+    ANIM_SPRITE_AFFIN 2, 0xa4, 0xc4, 0xc4, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0xdf, 0x7c, 0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 6, -104
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 9, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_28
+AnimSprite_YushaSpinShield4_28:  @ 0x5DF52C
+    ANIM_SPRITE_AFFIN 2, 0xf0, 0x57, 0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xdf, 0x7c, 0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 6, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 12, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_29
+AnimSprite_YushaSpinShield4_29:  @ 0x5DF568
+    ANIM_SPRITE_AFFIN 2, 0xfc, 0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xf9, 0x39, 0x39, -0xf9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 6, -105
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 13, -90
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_30
+AnimSprite_YushaSpinShield4_30:  @ 0x5DF5A4
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xff, -0xc, -0xc, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 7, -106
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 16, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_31
+AnimSprite_YushaSpinShield4_31:  @ 0x5DF5E0
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 7, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 17, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_32
+AnimSprite_YushaSpinShield4_32:  @ 0x5DF61C
+    ANIM_SPRITE_AFFIN 2, 0xdd, -0x7f, -0x7f, -0xdd
+    ANIM_SPRITE_AFFIN 2, 0xeb, -0x63, -0x63, -0xeb
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 8, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 20, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_33
+AnimSprite_YushaSpinShield4_33:  @ 0x5DF658
+    ANIM_SPRITE_AFFIN 2, 0xc4, -0xa4, -0xa4, -0xc4
+    ANIM_SPRITE_AFFIN 2, 0xa1, -0xc6, -0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 8, -107
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 20, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_34
+AnimSprite_YushaSpinShield4_34:  @ 0x5DF694
+    ANIM_SPRITE_AFFIN 2, 0x80, -0xdd, -0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, 0xa1, -0xc6, -0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 8, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 21, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_35
+AnimSprite_YushaSpinShield4_35:  @ 0x5DF6D0
+    ANIM_SPRITE_AFFIN 2, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 9, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 23, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_36
+AnimSprite_YushaSpinShield4_36:  @ 0x5DF70C
+    ANIM_SPRITE_AFFIN 2, 0x0, -0xff, -0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, -0x3d, -0xf8, -0xf8, 0x3d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 9, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 23, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_37
+AnimSprite_YushaSpinShield4_37:  @ 0x5DF748
+    ANIM_SPRITE_AFFIN 2, -0x2b, -0xfc, -0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, -0x3d, -0xf8, -0xf8, 0x3d
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 9, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 24, -101
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_38
+AnimSprite_YushaSpinShield4_38:  @ 0x5DF784
+    ANIM_SPRITE_AFFIN 2, -0x56, -0xf0, -0xf0, 0x56
+    ANIM_SPRITE_AFFIN 2, -0x67, -0xea, -0xea, 0x67
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 10, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 24, -102
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_39
+AnimSprite_YushaSpinShield4_39:  @ 0x5DF7C0
+    ANIM_SPRITE_AFFIN 2, -0xa4, -0xc4, -0xc4, 0xa4
+    ANIM_SPRITE_AFFIN 2, -0xaa, -0xbe, -0xbe, 0xaa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 10, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 24, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_40
+AnimSprite_YushaSpinShield4_40:  @ 0x5DF7FC
+    ANIM_SPRITE_AFFIN 2, -0xd1, -0x93, -0x93, 0xd1
+    ANIM_SPRITE_AFFIN 2, -0xdf, -0x7c, -0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 10, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 22, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_41
+AnimSprite_YushaSpinShield4_41:  @ 0x5DF838
+    ANIM_SPRITE_AFFIN 2, -0xf3, -0x4f, -0x4f, 0xf3
+    ANIM_SPRITE_AFFIN 2, -0xdf, -0x7c, -0x7c, 0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 11, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 21, -106
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_42
+AnimSprite_YushaSpinShield4_42:  @ 0x5DF874
+    ANIM_SPRITE_AFFIN 2, -0xfb, -0x2d, -0x2d, 0xfb
+    ANIM_SPRITE_AFFIN 2, -0xf9, -0x3a, -0x3a, 0xf9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 11, -108
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 20, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_43
+AnimSprite_YushaSpinShield4_43:  @ 0x5DF8B0
+    ANIM_SPRITE_AFFIN 2, -0xfc, 0x2c, 0x2c, 0xfc
+    ANIM_SPRITE_AFFIN 2, -0xfa, 0x35, 0x35, 0xfa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 11, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 18, -109
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_44
+AnimSprite_YushaSpinShield4_44:  @ 0x5DF8EC
+    ANIM_SPRITE_AFFIN 2, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE_AFFIN 2, -0xfa, 0x35, 0x35, 0xfa
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 12, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 17, -108
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_45
+AnimSprite_YushaSpinShield4_45:  @ 0x5DF928
+    ANIM_SPRITE_AFFIN 2, -0xdd, 0x7f, 0x7f, 0xdd
+    ANIM_SPRITE_AFFIN 2, -0xe9, 0x68, 0x68, 0xe9
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 12, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 17, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_46
+AnimSprite_YushaSpinShield4_46:  @ 0x5DF964
+    ANIM_SPRITE_AFFIN 1, -0xc4, 0xa4, 0xa4, 0xc4
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 13, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_16, 0x003A, 17, -107
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_47
+AnimSprite_YushaSpinShield4_47:  @ 0x5DF994
+    ANIM_SPRITE_AFFIN 2, -0x92, 0xd1, 0xd1, 0x92
+    ANIM_SPRITE_AFFIN 2, -0xab, 0xbe, 0xbe, 0xab
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 13, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 16, -105
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_48
+AnimSprite_YushaSpinShield4_48:  @ 0x5DF9D0
+    ANIM_SPRITE_AFFIN 2, -0x57, 0xf0, 0xf0, 0x57
+    ANIM_SPRITE_AFFIN 2, -0x80, 0xdd, 0xdd, 0x80
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 14, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 15, -104
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_49
+AnimSprite_YushaSpinShield4_49:  @ 0x5DFA0C
+    ANIM_SPRITE_AFFIN 2, 0x0, 0xff, 0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, -0x1a, 0xfe, 0xfe, 0x1a
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 14, -109
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 14, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_50
+AnimSprite_YushaSpinShield4_50:  @ 0x5DFA48
+    ANIM_SPRITE_AFFIN 2, 0x42, 0xf7, 0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, -0x1a, 0xfe, 0xfe, 0x1a
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 15, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 17, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_51
+AnimSprite_YushaSpinShield4_51:  @ 0x5DFA84
+    ANIM_SPRITE_AFFIN 1, 0x7f, 0xdd, 0xdd, -0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 15, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_16, 0x003A, 17, -99
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_52
+AnimSprite_YushaSpinShield4_52:  @ 0x5DFAB4
+    ANIM_SPRITE_AFFIN 2, 0xb4, 0xb5, 0xb5, -0xb4
+    ANIM_SPRITE_AFFIN 2, 0xdf, 0x7c, 0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 15, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 18, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_53
+AnimSprite_YushaSpinShield4_53:  @ 0x5DFAF0
+    ANIM_SPRITE_AFFIN 2, 0xd1, 0x93, 0x93, -0xd1
+    ANIM_SPRITE_AFFIN 2, 0xdf, 0x7c, 0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 16, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 19, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_54
+AnimSprite_YushaSpinShield4_54:  @ 0x5DFB2C
+    ANIM_SPRITE_AFFIN 2, 0xe7, 0x6c, 0x6c, -0xe7
+    ANIM_SPRITE_AFFIN 2, 0xdf, 0x7c, 0x7c, -0xdf
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 16, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 21, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_55
+AnimSprite_YushaSpinShield4_55:  @ 0x5DFB68
+    ANIM_SPRITE_AFFIN 2, 0xfc, 0x2c, 0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xf1, 0x53, 0x53, -0xf1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 17, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 23, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_56
+AnimSprite_YushaSpinShield4_56:  @ 0x5DFBA4
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE_AFFIN 2, 0xff, -0xc, -0xc, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 17, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 26, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_57
+AnimSprite_YushaSpinShield4_57:  @ 0x5DFBE0
+    ANIM_SPRITE_AFFIN 2, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE_AFFIN 2, 0xfc, -0x2c, -0x2c, -0xfc
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 29, -95
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_58
+AnimSprite_YushaSpinShield4_58:  @ 0x5DFC1C
+    ANIM_SPRITE_AFFIN 2, 0xd1, -0x92, -0x92, -0xd1
+    ANIM_SPRITE_AFFIN 2, 0xa1, -0xc6, -0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 30, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_59
+AnimSprite_YushaSpinShield4_59:  @ 0x5DFC58
+    ANIM_SPRITE_AFFIN 2, 0xa4, -0xc3, -0xc3, -0xa4
+    ANIM_SPRITE_AFFIN 2, 0xa1, -0xc6, -0xc6, -0xa1
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 31, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_60
+AnimSprite_YushaSpinShield4_60:  @ 0x5DFC94
+    ANIM_SPRITE_AFFIN 2, 0x80, -0xdd, -0xdd, -0x80
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 18, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 32, -98
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_61
+AnimSprite_YushaSpinShield4_61:  @ 0x5DFCD0
+    ANIM_SPRITE_AFFIN 2, 0x42, -0xf7, -0xf7, -0x42
+    ANIM_SPRITE_AFFIN 2, 0x7c, -0xdf, -0xdf, -0x7c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 19, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 34, -100
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_62
+AnimSprite_YushaSpinShield4_62:  @ 0x5DFD0C
+    ANIM_SPRITE_AFFIN 2, 0x0, -0xff, -0xff, 0x0
+    ANIM_SPRITE_AFFIN 2, -0x23, -0xfd, -0xfd, 0x23
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 20, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 36, -102
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_63
+AnimSprite_YushaSpinShield4_63:  @ 0x5DFD48
+    ANIM_SPRITE_AFFIN 2, -0x2b, -0xfc, -0xfc, 0x2b
+    ANIM_SPRITE_AFFIN 2, -0x23, -0xfd, -0xfd, 0x23
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 21, -110
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, 0x4200, 0x003A, 36, -103
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_64
+AnimSprite_YushaSpinShield4_64:  @ 0x5DFD84
+    ANIM_SPRITE_AFFIN 1, 0xdd, -0x7f, -0x7f, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 23, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_65
+AnimSprite_YushaSpinShield4_65:  @ 0x5DFDA8
+    ANIM_SPRITE_AFFIN 1, 0xff, 0x0, 0x0, -0xff
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_66
+AnimSprite_YushaSpinShield4_66:  @ 0x5DFDCC
+    ANIM_SPRITE_AFFIN 1, 0xdd, 0x80, 0x80, -0xdd
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_67
+AnimSprite_YushaSpinShield4_67:  @ 0x5DFDF0
+    ANIM_SPRITE_AFFIN 1, 0x0, 0xff, 0xff, 0x0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_68
+AnimSprite_YushaSpinShield4_68:  @ 0x5DFE14
+    ANIM_SPRITE_AFFIN 1, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_69
+AnimSprite_YushaSpinShield4_69:  @ 0x5DFE38
+    ANIM_SPRITE_AFFIN 1, -0xf7, -0x43, -0x43, 0xf7
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 25, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_70
+AnimSprite_YushaSpinShield4_70:  @ 0x5DFE5C
+    ANIM_SPRITE_AFFIN 1, -0x56, -0xf0, -0xf0, 0x56
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 26, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_71
+AnimSprite_YushaSpinShield4_71:  @ 0x5DFE80
+    ANIM_SPRITE_AFFIN 1, 0x6c, -0xe7, -0xe7, -0x6c
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 26, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_72
+AnimSprite_YushaSpinShield4_72:  @ 0x5DFEA4
+    ANIM_SPRITE_AFFIN 1, 0xf0, -0x57, -0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 26, -97
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_73
+AnimSprite_YushaSpinShield4_73:  @ 0x5DFEC8
+    ANIM_SPRITE_AFFIN 1, 0xc3, 0xa4, 0xa4, -0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 27, -96
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_74
+AnimSprite_YushaSpinShield4_74:  @ 0x5DFEEC
+    ANIM_SPRITE_AFFIN 1, -0xb5, 0xb4, 0xb4, 0xb5
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 27, -94
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_75
+AnimSprite_YushaSpinShield4_75:  @ 0x5DFF10
+    ANIM_SPRITE_AFFIN 1, -0xfb, -0x2d, -0x2d, 0xfb
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 28, -93
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_76
+AnimSprite_YushaSpinShield4_76:  @ 0x5DFF34
+    ANIM_SPRITE_AFFIN 1, -0x7f, -0xde, -0xde, 0x7f
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 28, -92
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_77
+AnimSprite_YushaSpinShield4_77:  @ 0x5DFF58
+    ANIM_SPRITE_AFFIN 1, 0x58, -0xf0, -0xf0, -0x58
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 30, -91
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_78
+AnimSprite_YushaSpinShield4_78:  @ 0x5DFF7C
+    ANIM_SPRITE_AFFIN 1, 0xe8, -0x6b, -0x6b, -0xe8
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 31, -89
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_79
+AnimSprite_YushaSpinShield4_79:  @ 0x5DFFA0
+    ANIM_SPRITE_AFFIN 1, 0xf0, 0x57, 0x57, -0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -85
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_80
+AnimSprite_YushaSpinShield4_80:  @ 0x5DFFC4
+    ANIM_SPRITE_AFFIN 1, 0x57, 0xf0, 0xf0, -0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -81
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_81
+AnimSprite_YushaSpinShield4_81:  @ 0x5DFFE8
+    ANIM_SPRITE_AFFIN 1, -0x57, 0xf0, 0xf0, 0x57
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -78
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_82
+AnimSprite_YushaSpinShield4_82:  @ 0x5E000C
+    ANIM_SPRITE_AFFIN 1, -0xf0, 0x57, 0x57, 0xf0
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -70
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_83
+AnimSprite_YushaSpinShield4_83:  @ 0x5E0030
+    ANIM_SPRITE_AFFIN 1, -0xc3, -0xa5, -0xa5, 0xc3
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -61
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_84
+AnimSprite_YushaSpinShield4_84:  @ 0x5E0054
+    ANIM_SPRITE_AFFIN 1, 0x80, -0xdd, -0xdd, -0x80
+    ANIM_SPRITE ATTR0_SQUARE + OBJ_ROT_SCALE_ON, ATTR1_SIZE_32, 0x001C, 32, -56
+    ANIM_SPRITE_END
+
+.global AnimSprite_YushaSpinShield4_85
+AnimSprite_YushaSpinShield4_85:  @ 0x5E0078
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x001F, -8, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_YushaSpinShieldOBJ_RightTypeB
+AnimScr_YushaSpinShieldOBJ_RightTypeB: @ 0x5E0090
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_1, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_2, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_3, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_4, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_5, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_6, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_7, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_8, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_9, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_10, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_11, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_12, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_13, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_14, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_15, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_16, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_17, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_18, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_19, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_20, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_21, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_22, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_23, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_24, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_25, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_26, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_27, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_28, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_29, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_30, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_31, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_32, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_33, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_34, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_35, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_36, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_37, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_38, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_39, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_40, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_41, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_42, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_43, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_44, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_45, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_46, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_47, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_48, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_49, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_50, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_51, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_52, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_53, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_54, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_55, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_56, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_57, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_58, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_59, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_60, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_61, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_62, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_63, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_85, 2
+    ANIMSCR_LOOP
+
+.global AnimScr_YushaSpinShieldOBJ2_LeftTypeB
+AnimScr_YushaSpinShieldOBJ2_LeftTypeB: @ 0x5E0194
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_64, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_65, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_66, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_67, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_68, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_69, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_70, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_71, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_72, 1
+    ANIMSCR_LOOP
+
+.global AnimScr_YushaSpinShieldOBJ3_LeftTypeB
+AnimScr_YushaSpinShieldOBJ3_LeftTypeB: @ 0x5E01BC
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_73, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_74, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_75, 1
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_76, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_77, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_78, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_79, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_80, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_81, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_82, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_83, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_YushaSpinShield4_84, 2
+    ANIMSCR_LOOP
+
+/**
+ * Sunakemuri
+ */
+.global AnimSprite_EfxSunakemuriOBJ1_1
+AnimSprite_EfxSunakemuriOBJ1_R_1:  @ 0x5E01F0
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0000, -16, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_32, 0x0004, 16, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ1_2
+AnimSprite_EfxSunakemuriOBJ1_R_2:  @ 0x5E0214
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0006, -13, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_16, 0x000A, 19, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ1_3
+AnimSprite_EfxSunakemuriOBJ1_R_3:  @ 0x5E0238
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x000B, -16, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_32, 0x000F, 16, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ1_4
+AnimSprite_EfxSunakemuriOBJ1_R_4:  @ 0x5E025C
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0011, -7, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_16, 0x0015, 25, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxSunakemuriOBJ1_R
+AnimScr_EfxSunakemuriOBJ1_R: @ 0x5E0280
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_R_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_R_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_R_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_R_4, 1
+    ANIMSCR_BLOCKED
+
+.global AnimSprite_EfxSunakemuriOBJ1_L_1
+AnimSprite_EfxSunakemuriOBJ1_L_1:  @ 0x5E0294
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0000, -16, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_32, 0x0004, -32, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ1_L_2
+AnimSprite_EfxSunakemuriOBJ1_L_2:  @ 0x5E02B8
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0006, -19, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_16, 0x000A, -27, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ1_L_3
+AnimSprite_EfxSunakemuriOBJ1_L_3:  @ 0x5E02DC
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x000B, -16, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_32, 0x000F, -32, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ1_L_4
+AnimSprite_EfxSunakemuriOBJ1_L_4:  @ 0x5E0300
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0011, -25, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_16, 0x0015, -33, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxSunakemuriOBJ1_L
+AnimScr_EfxSunakemuriOBJ1_L: @ 0x5E0324
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_L_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_L_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_L_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ1_L_4, 1
+    ANIMSCR_BLOCKED
+
+.global AnimSprite_EfxSunakemuriOBJ2_R_1
+AnimSprite_EfxSunakemuriOBJ2_R_1:  @ 0x5E0338
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0000, -48, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_32, 0x0004, -64, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ2_R_2
+AnimSprite_EfxSunakemuriOBJ2_R_2:  @ 0x5E035C
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0006, -51, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_16, 0x000A, -59, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ2_R_3
+AnimSprite_EfxSunakemuriOBJ2_R_3:  @ 0x5E0380
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x000B, -48, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_32, 0x000F, -64, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ2_R_4
+AnimSprite_EfxSunakemuriOBJ2_R_4:  @ 0x5E03A4
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0011, -57, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_16, 0x0015, -65, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxSunakemuriOBJ2_R
+AnimScr_EfxSunakemuriOBJ2_R: @ 0x5F1858
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_R_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_R_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_R_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_R_4, 1
+    ANIMSCR_BLOCKED
+
+.global AnimSprite_EfxSunakemuriOBJ2_L_1
+AnimSprite_EfxSunakemuriOBJ2_L_1:  @ 0x5F186C
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0000, 16, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_32, 0x0004, 48, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ2_L_2
+AnimSprite_EfxSunakemuriOBJ2_L_2:  @ 0x5F1890
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0006, 19, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_16, 0x000A, 51, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ2_L_3
+AnimSprite_EfxSunakemuriOBJ2_L_3:  @ 0x5F18B4
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x000B, 16, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_32, 0x000F, 48, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ2_L_4
+AnimSprite_EfxSunakemuriOBJ2_L_4:  @ 0x5F18D8
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0011, 25, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_16, 0x0015, 57, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxSunakemuriOBJ2_L
+AnimScr_EfxSunakemuriOBJ2_L: @ 0x5F18FC
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_L_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_L_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_L_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ2_L_4, 1
+    ANIMSCR_BLOCKED
+
+.global AnimSprite_EfxSunakemuriOBJ3_R_1
+AnimSprite_EfxSunakemuriOBJ3_R_1:  @ 0x5F1910
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0000, -8, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_32, 0x0004, 24, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ3_R_2
+AnimSprite_EfxSunakemuriOBJ3_R_2:  @ 0x5F1934
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0006, -5, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_16, 0x000A, 27, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ3_R_3
+AnimSprite_EfxSunakemuriOBJ3_R_3:  @ 0x5F1958
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x000B, -8, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_32, 0x000F, 24, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ3_R_4
+AnimSprite_EfxSunakemuriOBJ3_R_4:  @ 0x5F197C
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_32, 0x0011, 1, -8
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_16, 0x0015, 33, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxSunakemuriOBJ3_R
+AnimScr_EfxSunakemuriOBJ3_R: @ 0x5F19A0
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_R_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_R_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_R_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_R_4, 1
+    ANIMSCR_BLOCKED
+
+.global AnimSprite_EfxSunakemuriOBJ3_L_1
+AnimSprite_EfxSunakemuriOBJ3_L_1:  @ 0x5F19B4
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0000, -24, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_32, 0x0004, -40, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ3_L_2
+AnimSprite_EfxSunakemuriOBJ3_L_2:  @ 0x5F19D8
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0006, -27, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_16, 0x000A, -35, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ3_L_3
+AnimSprite_EfxSunakemuriOBJ3_L_3:  @ 0x5F19FC
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x000B, -24, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_32, 0x000F, -40, -8
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxSunakemuriOBJ3_L_4
+AnimSprite_EfxSunakemuriOBJ3_L_4:  @ 0x5F1A20
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_32, 0x0011, -33, -8
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_16, 0x0015, -41, -8
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxSunakemuriOBJ3_L
+AnimScr_EfxSunakemuriOBJ3_L: @ 0x5F1A44
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_L_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_L_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_L_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxSunakemuriOBJ3_L_4, 1
+    ANIMSCR_BLOCKED
+
+.global AnimSprite_EfxMantBatabata1_R_1
+AnimSprite_EfxMantBatabata1_R_1:  @ 0x5F1A58
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0088, 9, -17
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x008C, 41, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x00C8, 9, -1
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x00CA, 25, -1
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, 17, -25
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata1_R_2
+AnimSprite_EfxMantBatabata1_R_2:  @ 0x5F1AA0
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x008D, 9, -17
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x0091, 41, -17
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00CD, 9, -1
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CF, 25, -1
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00E8, 9, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EA, 25, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, 17, -25
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata1_R_3
+AnimSprite_EfxMantBatabata1_R_3:  @ 0x5F1B00
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0092, 9, -17
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x0096, 41, -17
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00D2, 9, -1
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00D4, 25, -1
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00D5, 33, -1
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00E8, 9, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EA, 25, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, 17, -25
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata1_R_4
+AnimSprite_EfxMantBatabata1_R_4:  @ 0x5F1B6C
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0097, 9, -17
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x009B, 41, -17
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00D7, 9, -1
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00D9, 25, -1
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00E8, 9, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EA, 25, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, 17, -25
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00DA, 33, -1
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxMantBatabata1_R
+AnimScr_EfxMantBatabata1_R: @ 0x5F1BD8
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_R_1, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_R_2, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_R_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_R_4, 2
+    ANIMSCR_LOOP
+
+.global AnimSprite_EfxMantBatabata1_L_1
+AnimSprite_EfxMantBatabata1_L_1:  @ 0x5F1BEC
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0088, -41, -17
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x008C, -49, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x00C8, -25, -1
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x00CA, -33, -1
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, -25, -25
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata1_L_2
+AnimSprite_EfxMantBatabata1_L_2:  @ 0x5F1C34
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x008D, -41, -17
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x0091, -49, -17
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00CD, -25, -1
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CF, -33, -1
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00E8, -25, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EA, -33, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, -25, -25
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata1_L_3
+AnimSprite_EfxMantBatabata1_L_3:  @ 0x5F1C94
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0092, -41, -17
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x0096, -49, -17
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00D2, -25, -1
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00D4, -33, -1
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00D5, -49, -1
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00E8, -25, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EA, -33, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, -25, -25
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata1_L_4
+AnimSprite_EfxMantBatabata1_L_4:  @ 0x5F1D00
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0097, -41, -17
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x009B, -49, -17
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00D7, -25, -1
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00D9, -33, -1
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00E8, -25, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EA, -33, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, -25, -25
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00DA, -49, -1
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxMantBatabata1_L
+AnimScr_EfxMantBatabata1_L: @ 0x5F1D6C
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_L_1, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_L_2, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_L_3, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata1_L_4, 2
+    ANIMSCR_LOOP
+
+.global AnimSprite_EfxMantBatabata2_R_1
+AnimSprite_EfxMantBatabata2_R_1:  @ 0x5F1D80
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0000, 4, -17
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x0004, 36, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x0041, 12, -1
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x0043, 28, -1
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0060, 4, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, 14, -25
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata2_R_2
+AnimSprite_EfxMantBatabata2_R_2:  @ 0x5F1DE0
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0005, 12, -17
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x0045, 12, -1
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_16, 0x0064, 4, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, 14, -25
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x0000, 4, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0043, 28, -1
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata2_R_3
+AnimSprite_EfxMantBatabata2_R_3:  @ 0x5F1E40
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0009, 12, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x0049, 12, -1
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0068, 4, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x006B, 28, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, 14, -25
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x0000, 4, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0043, 28, -1
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata2_R_4
+AnimSprite_EfxMantBatabata2_R_4:  @ 0x5F1EAC
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x000D, 12, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x004D, 12, -1
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x006C, 4, 7
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0063, 28, 7
+    ANIM_SPRITE ATTR0_TALL, ATTR1_SIZE_8, 0x0000, 4, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, 14, -25
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x0043, 28, -1
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxMantBatabata2_R
+AnimScr_EfxMantBatabata2_R: @ 0x5F1F18
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_R_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_R_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_R_3, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_R_4, 2
+    ANIMSCR_LOOP
+
+.global AnimSprite_EfxMantBatabata2_L_1
+AnimSprite_EfxMantBatabata2_L_1:  @ 0x5F1F2C
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0000, -36, -17
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x0004, -44, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x0041, -28, -1
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x0043, -36, -1
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0060, -12, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, -22, -25
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata2_L_2
+AnimSprite_EfxMantBatabata2_L_2:  @ 0x5F1F8C
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0005, -44, -17
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x0045, -28, -1
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_16, 0x0064, -36, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, -22, -25
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x0000, -12, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0043, -36, -1
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata2_L_3
+AnimSprite_EfxMantBatabata2_L_3:  @ 0x5F1FEC
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0009, -44, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x0049, -28, -1
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0068, -12, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x006B, -36, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, -22, -25
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x0000, -12, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0043, -36, -1
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata2_L_4
+AnimSprite_EfxMantBatabata2_L_4:  @ 0x5F2058
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x000D, -44, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x004D, -28, -1
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x006C, -12, 7
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0063, -36, 7
+    ANIM_SPRITE_XFLIP ATTR0_TALL, ATTR1_SIZE_8, 0x0000, -12, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0044, -4, -17
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0040, -22, -25
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x0043, -36, -1
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxMantBatabata2_L
+AnimScr_EfxMantBatabata2_L: @ 0x5F20C4
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_L_1, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_L_2, 2
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_L_3, 3
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata2_L_4, 2
+    ANIMSCR_LOOP
+
+.global AnimSprite_EfxMantBatabata3_R_1
+AnimSprite_EfxMantBatabata3_R_1:  @ 0x5F20D8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x00CC, -18, -24
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00F0, -10, -8
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00F2, 6, -8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x00C7, -10, 0
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EB, 22, 8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0008, -17, -31
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x000C, 15, -31
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_16, 0x0048, -17, -15
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x004C, 15, -15
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00A6, -25, -23
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, -25, -15
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata3_R_2
+AnimSprite_EfxMantBatabata3_R_2:  @ 0x5F2168
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x00CC, -18, -24
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00F0, -10, -8
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00F2, 6, -8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x00C7, -10, 0
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EB, 22, 8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0068, -19, -26
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x006C, 13, -26
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_16, 0x00A8, -19, -10
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00AC, 13, -10
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata3_R_3
+AnimSprite_EfxMantBatabata3_R_3:  @ 0x5F21E0
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x00CC, -18, -24
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x00F0, -10, -8
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00F2, 6, -8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x00C7, -10, 0
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EB, 22, 8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x000E, -18, -24
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_16, 0x0012, 14, -24
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x00A7, -26, -16
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x004F, 14, -8
+    ANIM_SPRITE ATTR0_SQUARE, ATTR1_SIZE_8, 0x004E, 6, -8
+    ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_8, 0x0051, -2, -32
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxMantBatabata3_R
+AnimScr_EfxMantBatabata3_R: @ 0x5F2270
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata3_R_1, 5
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata3_R_2, 5
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata3_R_3, 5
+    ANIMSCR_LOOP
+
+.global AnimSprite_EfxMantBatabata3_L_1
+AnimSprite_EfxMantBatabata3_L_1:  @ 0x5F2280
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x00CC, -14, -24
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00F0, -6, -8
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00F2, -14, -8
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x00C7, -22, 0
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EB, -30, 8
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0008, -15, -31
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x000C, -31, -31
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_16, 0x0048, -15, -15
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x004C, -31, -15
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00A6, 17, -23
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00CB, 17, -15
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata3_L_2
+AnimSprite_EfxMantBatabata3_L_2:  @ 0x5F2310
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x00CC, -14, -24
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00F0, -6, -8
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00F2, -14, -8
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x00C7, -22, 0
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EB, -30, 8
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x0068, -13, -26
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x006C, -29, -26
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_16, 0x00A8, -13, -10
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00AC, -29, -10
+    ANIM_SPRITE_END
+
+.global AnimSprite_EfxMantBatabata3_L_3
+AnimSprite_EfxMantBatabata3_L_3:  @ 0x5F2388
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x00CC, -14, -24
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x00F0, -6, -8
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00F2, -14, -8
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x00C7, -22, 0
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00EB, -30, 8
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_32, 0x000E, -14, -24
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_16, 0x0012, -30, -24
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x00A7, 18, -16
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x004F, -30, -8
+    ANIM_SPRITE_XFLIP ATTR0_SQUARE, ATTR1_SIZE_8, 0x004E, -14, -8
+    ANIM_SPRITE_XFLIP ATTR0_WIDE, ATTR1_SIZE_8, 0x0051, -14, -32
+    ANIM_SPRITE_END
+
+.global AnimScr_EfxMantBatabata3_L
+AnimScr_EfxMantBatabata3_L: @ 0x5E0F88
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata3_L_1, 5
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata3_L_2, 5
+    ANIMSCR_FORCE_SPRITE AnimSprite_EfxMantBatabata3_L_3, 5
+    ANIMSCR_LOOP
