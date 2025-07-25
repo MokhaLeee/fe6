@@ -1012,7 +1012,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_0804DE04
 // func_fe6_0804DE4C
 // func_fe6_0804DE84
-// func_fe6_0804DF30
+// StartSpellAnimBallista
 // func_fe6_0804DF80
 // func_fe6_0804E040
 // func_fe6_0804E0B8
@@ -1024,53 +1024,53 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_0804E2F8
 // func_fe6_0804E3C0
 // func_fe6_0804E3FC
-// func_fe6_0804E448
-// func_fe6_0804E484
-// func_fe6_0804E540
-// func_fe6_0804E5B0
-// func_fe6_0804E5E4
-// func_fe6_0804E61C
-// func_fe6_0804E6BC
-// func_fe6_0804E744
-// func_fe6_0804E778
+// StartSpellAnimBindingBlade
+// EfxHurtmut_Loop
+// NewEfxHurtmutOBJ
+// EfxHurtmutOBJ_Loop
+// StartSpellAnimFireBreath
+// EfxFirebreath_Loop
+// NewEfxFirebreathOBJ
+// EfxFirebreathOBJ_Loop
+// NewEfxFirebreathBG
 // func_fe6_0804E814
-// func_fe6_0804E848
+// NewEfxFirebreathBGCOL
 // func_fe6_0804E884
-// func_fe6_0804E8CC
-// func_fe6_0804E908
-// func_fe6_0804E988
-// func_fe6_0804E9FC
-// func_fe6_0804EA14
-// func_fe6_0804EA4C
-// func_fe6_0804EAD4
-// func_fe6_0804EB24
-// func_fe6_0804EB7C
-// func_fe6_0804EBB8
-// func_fe6_0804EC04
-// func_fe6_0804EC84
-// func_fe6_0804ECB8
-// func_fe6_0804ECF4
-// func_fe6_0804ED94
-// func_fe6_0804EE18
-// func_fe6_0804EE9C
-// func_fe6_0804EED8
-// func_fe6_0804EF24
-// func_fe6_0804EF84
-// func_fe6_0804EFB4
-// func_fe6_0804EFF8
-// func_fe6_0804F03C
-// func_fe6_0804F144
-// func_fe6_0804F1A4
-// func_fe6_0804F1FC
-// func_fe6_0804F288
-// func_fe6_0804F2D0
-// func_fe6_0804F354
-// func_fe6_0804F3B8
-// func_fe6_0804F450
-// func_fe6_0804F484
-// func_fe6_0804F4C8
-// func_fe6_0804F510
-// func_fe6_0804F594
+// StartSpellAnimIceBreath
+// EfxIcebreath_Loop
+// NewEfxIcebreathOBJ
+// EfxIcebreathOBJ_Loop
+// StartSpellAnimDarkBreath
+// EfxDarkbreath_Loop
+// NewEfxDarkbreathBG
+// EfxDarkbreathBG_Loop
+// NewEfxDarkbreathBGCOL
+// EfxDarkbreathBGCOL_Loop
+// NewEfxDarkbreathOBJ
+// EfxDarkbreathOBJ_Loop
+// StartSpellAnimThunder
+// EfxThunder_Loop
+// NewEfxThunderBG
+// EfxThunderBG_Loop
+// NewEfxThunderBGCOL
+// EfxThunderBGCOL_Loop
+// NewEfxThunderOBJ
+// EfxThunderOBJ_Loop
+// StartSpellAnimFire
+// StartSpellAnimElfire
+// EfxFire_Loop
+// NewEfxFireBG
+// EfxFireBG_Loop
+// NewEfxFireOBJ
+// EfxFireOBJ_Loop
+// NewEfxFireHITBG
+// EfxFireHITBG_Loop
+// NewEfxElfireBG
+// EfxElfireBG_Loop
+// NewEfxElfireBGCOL
+// EfxElfireBGCOL_Loop
+// NewEfxElfireOBJ
+// EfxElfireOBJ_Loop
 // func_fe6_0804F5C4
 // func_fe6_0804F600
 // func_fe6_0804F738
@@ -1862,36 +1862,36 @@ extern CONST_DATA struct ProcScr ProcScr_EfxSongBG[];
 // ??? gUnk_085D10EC
 // ??? gUnk_085D1104
 // ??? gUnk_085D111C
-// ??? gUnk_085D113C
-// ??? gUnk_085D1154
-// ??? gUnk_085D116C
-// ??? gUnk_085D1184
-// ??? gUnk_085D119C
+// ??? ProcScr_EfxHurtmut
+// ??? ProcScr_EfxHurtmutOBJ
+// ??? ProcScr_EfxFirebreath
+// ??? ProcScr_EfxFirebreathOBJ
+// ??? ProcScr_EfxFirebreathBG
 // ??? gUnk_085D11B4
-// ??? gUnk_085D11D4
-// ??? gUnk_085D11EC
-// ??? gUnk_085D120C
-// ??? gUnk_085D1224
-// ??? gUnk_085D123C
-// ??? gUnk_085D126C
-// ??? gUnk_085D128C
-// ??? gUnk_085D12A4
-// ??? gUnk_085D12BC
-// ??? gUnk_085D12D4
-// ??? gUnk_085D12DC
-// ??? gUnk_085D12E4
-// ??? gUnk_085D1304
-// ??? gUnk_085D131C
-// ??? gUnk_085D1334
-// ??? gUnk_085D134C
-// ??? gUnk_085D137C
-// ??? gUnk_085D13AC
-// ??? gUnk_085D13C4
-// ??? gUnk_085D13DC
-// ??? gUnk_085D1430
-// ??? gUnk_085D1484
-// ??? gUnk_085D149C
-// ??? gUnk_085D14BC
+// ??? ProcScr_EfxIcebreath
+// ??? ProcScr_EfxIcebreathOBJ
+// ??? ProcScr_EfxDarkbreath
+// ??? ProcScr_EfxDarkbreathBG
+// ??? Tsa_EfxDarkbreathBG
+// ??? ProcScr_EfxDarkbreathBGCOL
+// ??? ProcScr_EfxDarkbreathOBJ
+// ??? ProcScr_EfxThunder
+// ??? ProcScr_EfxThunderBG
+// ??? TsaLut_EfxThunderBG_L
+// ??? TsaLut_EfxThunderBG_R
+// ??? ProcScr_EfxThunderBGCOL
+// ??? ProcScr_EfxThunderOBJ
+// ??? ProcScr_EfxFire
+// ??? ProcScr_EfxFireBG
+// ??? TsaLut_EfxFireBG_L
+// ??? TsaLut_EfxFireBG_R
+// ??? ProcScr_EfxFireOBJ
+// ??? ProcScr_EfxFireHITBG
+// ??? ImgLut_EfxFireHITBG
+// ??? TsaLut_EfxFireHITBG
+// ??? ProcScr_EfxElfireBG
+// ??? ProcScr_EfxElfireBGCOL
+// ??? ProcScr_EfxElfireOBJ
 // ??? gUnk_085D14D4
 // ??? gUnk_085D14EC
 // ??? gUnk_085D1504
@@ -2122,8 +2122,8 @@ extern u32 AnimScr_EfxTeyariObjType1Left[];
 // ??? gUnk_085D4D98
 extern u32 AnimScr_EfxDanceObj[];
 extern u32 AnimScr_EfxSongFE6[];
-// ??? gUnk_085D6218
-// ??? gUnk_085D6E78
+extern u32 AnimScr_EfxBindingBlade_Right[];
+extern u32 AnimScr_EfxBindingBlade_Left[];
 extern u32 AnimScr_HurtmutEff00OBJ1_Right[];
 extern u32 AnimScr_HurtmutEff01OBJ1_Right[];
 extern u32 AnimScr_HurtmutEff00OBJ1_Left[];
@@ -2132,11 +2132,11 @@ extern u32 AnimScr_HurtmutEff00OBJ2_Right[];
 extern u32 AnimScr_HurtmutEff01OBJ2_Right[];
 extern u32 AnimScr_HurtmutEff00OBJ2_Left[];
 extern u32 AnimScr_HurtmutEff01OBJ2_Left[];
-// ??? gUnk_085D8608
-// ??? gUnk_085D9208
-// ??? gUnk_085D9E38
-// ??? gUnk_085DAA68
-// ??? gUnk_085DB6A4
+extern u32 AnimScr_FirebreathOBJ_Right[];
+extern u32 AnimScr_FirebreathOBJ_Left[];
+// ??? AnimScr_IcebreathOBJ_Right
+// ??? AnimScr_IcebreathOBJ_Left
+// ??? AnimScr_DarkBreath_Close
 extern u32 AnimScr_YushaSpinShieldOBJ_LeftTypeA[];
 extern u32 AnimScr_YushaSpinShieldOBJ2_RightTypeA[];
 extern u32 AnimScr_YushaSpinShieldOBJ3_RightTypeA[];
@@ -2161,14 +2161,14 @@ extern u32 AnimScr_EfxMantBatabata2_R[];
 extern u32 AnimScr_EfxMantBatabata2_L[];
 extern u32 AnimScr_EfxMantBatabata3_R[];
 extern u32 AnimScr_EfxMantBatabata3_L[];
-// ??? AnimScr_EfxMantBatabata4_R
-// ??? gUnk_085E2508
-// ??? AnimScr_EfxMantBatabata5_R
-// ??? gUnk_085E294C
-// ??? gUnk_085E2CA8
-// ??? gUnk_085E2CD4
-// ??? gUnk_085E3AA4
-// ??? gUnk_085E48C4
+// ??? AnimScr_EfxThunderOBJ_R
+// ??? AnimScr_EfxThunderOBJ_L
+// ??? AnimScr_EfxFireOBJ_L_Front
+// ??? AnimScr_EfxFireOBJ_L_Back
+// ??? AnimScr_EfxFireOBJ_R_Front
+// ??? AnimScr_EfxFireOBJ_R_Back
+// ??? AnimScr_EfxElfireOBJ_R
+// ??? AnimScr_EfxElfireOBJ_L
 // ??? gUnk_085E5858
 // ??? gUnk_085E5C10
 // ??? gUnk_085E5C2C

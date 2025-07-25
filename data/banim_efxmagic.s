@@ -39,124 +39,124 @@ gUnk_085D1104: @ 085D1104
 gUnk_085D111C: @ 085D111C
 	.incbin "fe6-base.gba", 0x5D111C, (0x5D113C - 0x5D111C) @ length: 0020
 
-	.global gUnk_085D113C
-gUnk_085D113C: @ 085D113C
+	.global ProcScr_EfxHurtmut
+ProcScr_EfxHurtmut: @ 085D113C
 	.incbin "fe6-base.gba", 0x5D113C, (0x5D1154 - 0x5D113C) @ length: 0018
 
-	.global gUnk_085D1154
-gUnk_085D1154: @ 085D1154
+	.global ProcScr_EfxHurtmutOBJ
+ProcScr_EfxHurtmutOBJ: @ 085D1154
 	.incbin "fe6-base.gba", 0x5D1154, (0x5D116C - 0x5D1154) @ length: 0018
 
-	.global gUnk_085D116C
-gUnk_085D116C: @ 085D116C
+	.global ProcScr_EfxFirebreath
+ProcScr_EfxFirebreath: @ 085D116C
 	.incbin "fe6-base.gba", 0x5D116C, (0x5D1184 - 0x5D116C) @ length: 0018
 
-	.global gUnk_085D1184
-gUnk_085D1184: @ 085D1184
+	.global ProcScr_EfxFirebreathOBJ
+ProcScr_EfxFirebreathOBJ: @ 085D1184
 	.incbin "fe6-base.gba", 0x5D1184, (0x5D119C - 0x5D1184) @ length: 0018
 
-	.global gUnk_085D119C
-gUnk_085D119C: @ 085D119C
+	.global ProcScr_EfxFirebreathBG
+ProcScr_EfxFirebreathBG: @ 085D119C
 	.incbin "fe6-base.gba", 0x5D119C, (0x5D11B4 - 0x5D119C) @ length: 0018
 
 	.global gUnk_085D11B4
 gUnk_085D11B4: @ 085D11B4
 	.incbin "fe6-base.gba", 0x5D11B4, (0x5D11D4 - 0x5D11B4) @ length: 0020
 
-	.global gUnk_085D11D4
-gUnk_085D11D4: @ 085D11D4
+	.global ProcScr_EfxIcebreath
+ProcScr_EfxIcebreath: @ 085D11D4
 	.incbin "fe6-base.gba", 0x5D11D4, (0x5D11EC - 0x5D11D4) @ length: 0018
 
-	.global gUnk_085D11EC
-gUnk_085D11EC: @ 085D11EC
+	.global ProcScr_EfxIcebreathOBJ
+ProcScr_EfxIcebreathOBJ: @ 085D11EC
 	.incbin "fe6-base.gba", 0x5D11EC, (0x5D120C - 0x5D11EC) @ length: 0020
 
-	.global gUnk_085D120C
-gUnk_085D120C: @ 085D120C
+	.global ProcScr_EfxDarkbreath
+ProcScr_EfxDarkbreath: @ 085D120C
 	.incbin "fe6-base.gba", 0x5D120C, (0x5D1224 - 0x5D120C) @ length: 0018
 
-	.global gUnk_085D1224
-gUnk_085D1224: @ 085D1224
+	.global ProcScr_EfxDarkbreathBG
+ProcScr_EfxDarkbreathBG: @ 085D1224
 	.incbin "fe6-base.gba", 0x5D1224, (0x5D123C - 0x5D1224) @ length: 0018
 
-	.global gUnk_085D123C
-gUnk_085D123C: @ 085D123C
+	.global Tsa_EfxDarkbreathBG
+Tsa_EfxDarkbreathBG: @ 085D123C
 	.incbin "fe6-base.gba", 0x5D123C, (0x5D126C - 0x5D123C) @ length: 0030
 
-	.global gUnk_085D126C
-gUnk_085D126C: @ 085D126C
+	.global ProcScr_EfxDarkbreathBGCOL
+ProcScr_EfxDarkbreathBGCOL: @ 085D126C
 	.incbin "fe6-base.gba", 0x5D126C, (0x5D128C - 0x5D126C) @ length: 0020
 
-	.global gUnk_085D128C
-gUnk_085D128C: @ 085D128C
+	.global ProcScr_EfxDarkbreathOBJ
+ProcScr_EfxDarkbreathOBJ: @ 085D128C
 	.incbin "fe6-base.gba", 0x5D128C, (0x5D12A4 - 0x5D128C) @ length: 0018
 
-	.global gUnk_085D12A4
-gUnk_085D12A4: @ 085D12A4
+	.global ProcScr_EfxThunder
+ProcScr_EfxThunder: @ 085D12A4
 	.incbin "fe6-base.gba", 0x5D12A4, (0x5D12BC - 0x5D12A4) @ length: 0018
 
-	.global gUnk_085D12BC
-gUnk_085D12BC: @ 085D12BC
+	.global ProcScr_EfxThunderBG
+ProcScr_EfxThunderBG: @ 085D12BC
 	.incbin "fe6-base.gba", 0x5D12BC, (0x5D12D4 - 0x5D12BC) @ length: 0018
 
-	.global gUnk_085D12D4
-gUnk_085D12D4: @ 085D12D4
+	.global TsaLut_EfxThunderBG_L
+TsaLut_EfxThunderBG_L: @ 085D12D4
 	.incbin "fe6-base.gba", 0x5D12D4, (0x5D12DC - 0x5D12D4) @ length: 0008
 
-	.global gUnk_085D12DC
-gUnk_085D12DC: @ 085D12DC
+	.global TsaLut_EfxThunderBG_R
+TsaLut_EfxThunderBG_R: @ 085D12DC
 	.incbin "fe6-base.gba", 0x5D12DC, (0x5D12E4 - 0x5D12DC) @ length: 0008
 
-	.global gUnk_085D12E4
-gUnk_085D12E4: @ 085D12E4
+	.global ProcScr_EfxThunderBGCOL
+ProcScr_EfxThunderBGCOL: @ 085D12E4
 	.incbin "fe6-base.gba", 0x5D12E4, (0x5D1304 - 0x5D12E4) @ length: 0020
 
-	.global gUnk_085D1304
-gUnk_085D1304: @ 085D1304
+	.global ProcScr_EfxThunderOBJ
+ProcScr_EfxThunderOBJ: @ 085D1304
 	.incbin "fe6-base.gba", 0x5D1304, (0x5D131C - 0x5D1304) @ length: 0018
 
-	.global gUnk_085D131C
-gUnk_085D131C: @ 085D131C
+	.global ProcScr_EfxFire
+ProcScr_EfxFire: @ 085D131C
 	.incbin "fe6-base.gba", 0x5D131C, (0x5D1334 - 0x5D131C) @ length: 0018
 
-	.global gUnk_085D1334
-gUnk_085D1334: @ 085D1334
+	.global ProcScr_EfxFireBG
+ProcScr_EfxFireBG: @ 085D1334
 	.incbin "fe6-base.gba", 0x5D1334, (0x5D134C - 0x5D1334) @ length: 0018
 
-	.global gUnk_085D134C
-gUnk_085D134C: @ 085D134C
+	.global TsaLut_EfxFireBG_L
+TsaLut_EfxFireBG_L: @ 085D134C
 	.incbin "fe6-base.gba", 0x5D134C, (0x5D137C - 0x5D134C) @ length: 0030
 
-	.global gUnk_085D137C
-gUnk_085D137C: @ 085D137C
+	.global TsaLut_EfxFireBG_R
+TsaLut_EfxFireBG_R: @ 085D137C
 	.incbin "fe6-base.gba", 0x5D137C, (0x5D13AC - 0x5D137C) @ length: 0030
 
-	.global gUnk_085D13AC
-gUnk_085D13AC: @ 085D13AC
+	.global ProcScr_EfxFireOBJ
+ProcScr_EfxFireOBJ: @ 085D13AC
 	.incbin "fe6-base.gba", 0x5D13AC, (0x5D13C4 - 0x5D13AC) @ length: 0018
 
-	.global gUnk_085D13C4
-gUnk_085D13C4: @ 085D13C4
+	.global ProcScr_EfxFireHITBG
+ProcScr_EfxFireHITBG: @ 085D13C4
 	.incbin "fe6-base.gba", 0x5D13C4, (0x5D13DC - 0x5D13C4) @ length: 0018
 
-	.global gUnk_085D13DC
-gUnk_085D13DC: @ 085D13DC
+	.global ImgLut_EfxFireHITBG
+ImgLut_EfxFireHITBG: @ 085D13DC
 	.incbin "fe6-base.gba", 0x5D13DC, (0x5D1430 - 0x5D13DC) @ length: 0054
 
-	.global gUnk_085D1430
-gUnk_085D1430: @ 085D1430
+	.global TsaLut_EfxFireHITBG
+TsaLut_EfxFireHITBG: @ 085D1430
 	.incbin "fe6-base.gba", 0x5D1430, (0x5D1484 - 0x5D1430) @ length: 0054
 
-	.global gUnk_085D1484
-gUnk_085D1484: @ 085D1484
+	.global ProcScr_EfxElfireBG
+ProcScr_EfxElfireBG: @ 085D1484
 	.incbin "fe6-base.gba", 0x5D1484, (0x5D149C - 0x5D1484) @ length: 0018
 
-	.global gUnk_085D149C
-gUnk_085D149C: @ 085D149C
+	.global ProcScr_EfxElfireBGCOL
+ProcScr_EfxElfireBGCOL: @ 085D149C
 	.incbin "fe6-base.gba", 0x5D149C, (0x5D14BC - 0x5D149C) @ length: 0020
 
-	.global gUnk_085D14BC
-gUnk_085D14BC: @ 085D14BC
+	.global ProcScr_EfxElfireOBJ
+ProcScr_EfxElfireOBJ: @ 085D14BC
 	.incbin "fe6-base.gba", 0x5D14BC, (0x5D14D4 - 0x5D14BC) @ length: 0018
 
 	.global gUnk_085D14D4

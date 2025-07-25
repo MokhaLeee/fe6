@@ -717,10 +717,10 @@ func_fe6_0805CD68: @ 0x0805CD68
 	adds r2, r3, #0
 	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
-	ldr r0, .L0805CDAC @ =gUnk_0812D80C
+	ldr r0, .L0805CDAC @ =Pal_EfxThunderOBJ
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, .L0805CDB0 @ =gUnk_0812D374
+	ldr r0, .L0805CDB0 @ =Img_EfxThunderOBJ
 	movs r1, #0x80
 	lsls r1, r1, #5
 	bl SpellFx_RegisterObjGfx
@@ -731,8 +731,8 @@ func_fe6_0805CD68: @ 0x0805CD68
 	.align 2, 0
 .L0805CDA4: .4byte gUnk_08606104
 .L0805CDA8: .4byte gUnk_085E5858
-.L0805CDAC: .4byte gUnk_0812D80C
-.L0805CDB0: .4byte gUnk_0812D374
+.L0805CDAC: .4byte Pal_EfxThunderOBJ
+.L0805CDB0: .4byte Img_EfxThunderOBJ
 
 	thumb_func_start func_fe6_0805CDB4
 func_fe6_0805CDB4: @ 0x0805CDB4

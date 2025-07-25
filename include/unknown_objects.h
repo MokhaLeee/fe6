@@ -255,13 +255,13 @@ extern u8 const Tsa_EkrPopup[];
 // extern ??? FrameLut_EfxSongOBJ
 // extern ??? gUnk_08119D56
 // extern ??? gUnk_08119D78
-// extern ??? gUnk_08119DEA
-// extern ??? gUnk_08119E30
-// extern ??? gUnk_08119ED2
-// extern ??? gUnk_08119EDC
-// extern ??? gUnk_08119F1E
-// extern ??? gUnk_08119F50
-// extern ??? gUnk_08119FA6
+// extern ??? FrameConf_EfxDarkbreathBG
+// extern ??? FrameConf_EfxDarkbreathBGCOL
+// extern ??? FrameConf_EfxThunderBG
+// extern ??? FrameConf_EfxThunderBGCOL
+// extern ??? FrameConf_EfxFireBG
+// extern ??? FrameConf_EfxFireHITBG
+// extern ??? FrameConf_EfxElfireBGCOL
 // extern ??? gUnk_08119FFC
 // extern ??? gUnk_0811A06A
 // extern ??? gUnk_0811A098
@@ -349,14 +349,14 @@ extern const u16 Tsa_EfxSongBG[];
 // extern ??? gUnk_0811E36C
 // extern ??? gUnk_0811F22C
 // extern ??? gUnk_0811F32C
-// extern ??? gUnk_0811F6F4
-extern u16 Unk_Img_081203F4[];
+// extern ??? Img_BreathSprites
+extern u16 Pal_EfxBindingBlade[];
 extern u16 Img_EfxHurtmutEff00OBJ1[];
 extern u16 Img_EfxHurtmutEff00OBJ2[];
 extern u16 Pal_EfxHurtmutEff00OBJ[];
-// extern ??? gUnk_081214B8
-// extern ??? gUnk_081214D8
-// extern ??? gUnk_081214F8
+// extern ??? Pal_IceBreathSprites
+// extern ??? Pal_DarkBreathSprites
+// extern ??? Img_EfxDarkbreathBG
 extern u16 Img_EfxCriricalEffectBG[];
 extern u16 Pal_EfxCriricalEffectBG[];
 extern u16 Tsa_EfxCriricalEffectBG_L[];
@@ -411,22 +411,22 @@ extern u16 Img_EfxSunakemuriOBJ[];
 extern u16 Pal_EfxSunakemuriOBJ1[];
 extern u16 Pal_EfxSunakemuriOBJ2[];
 extern u16 Pal_EfxSunakemuriOBJ3[];
-// extern ??? gUnk_0812C68C
-// extern ??? gUnk_0812CF48
-// extern ??? gUnk_0812D374
-// extern ??? gUnk_0812D80C
-// extern ??? gUnk_0812D8AC
-// extern ??? gUnk_0812E4A4
-// extern ??? gUnk_0812F9DC
-// extern ??? gUnk_0812FFD8
-// extern ??? gUnk_08138BF0
-// extern ??? gUnk_0813A6F8
-// extern ??? gUnk_0813B6B4
-// extern ??? gUnk_0813B8B4
-// extern ??? gUnk_0813BA64
-// extern ??? gUnk_0813BAFC
-// extern ??? gUnk_0813BD74
-// extern ??? gUnk_0813E75C
+// extern ??? Img_EfxThunderBG
+// extern ??? Pal_EfxThunderBGCOL
+// extern ??? Img_EfxThunderOBJ
+// extern ??? Pal_EfxThunderOBJ
+// extern ??? Img_EfxFireBG
+// extern ??? Pal_EfxFireBG
+// extern ??? Img_EfxFireOBJ
+// extern ??? Pal_EfxFireOBJ
+// extern ??? Pal_EfxFireHITBG
+// extern ??? Img_EfxElfireBG
+// extern ??? Pal_EfxElfireBGCOL
+// extern ??? Tsa_EfxElfireBG
+// extern ??? Tsa_FireBreathBg
+// extern ??? Img_EfxElfireOBJ
+// extern ??? Pal_EfxElfireOBJ
+// extern ??? Pal_BoltingBg
 // extern ??? gUnk_081408CC
 // extern ??? gUnk_08141320
 // extern ??? gUnk_08142EAC

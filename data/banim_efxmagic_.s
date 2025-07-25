@@ -19,16 +19,16 @@ gEkrSpellAnimLut: @ 0x005D0DA0
 	.4byte 0x00000000
 	.4byte StartSpellAnimSong
 	.4byte func_fe6_0804DE4C
-	.4byte func_fe6_0804DF30
+	.4byte StartSpellAnimBallista
 	.4byte func_fe6_0804E0E8
-	.4byte func_fe6_0804E448
-	.4byte func_fe6_0804E5E4
-	.4byte func_fe6_0804E8CC
-	.4byte func_fe6_0804EA14
-	.4byte func_fe6_0804EFB4
-	.4byte func_fe6_0804EFF8
+	.4byte StartSpellAnimBindingBlade
+	.4byte StartSpellAnimFireBreath
+	.4byte StartSpellAnimIceBreath
+	.4byte StartSpellAnimDarkBreath
+	.4byte StartSpellAnimFire
+	.4byte StartSpellAnimElfire
 	.4byte func_fe6_080513AC
-	.4byte func_fe6_0804ECB8
+	.4byte StartSpellAnimThunder
 	.4byte func_fe6_0804FC28
 	.4byte func_fe6_0804F5C4
 	.4byte func_fe6_0805007C
