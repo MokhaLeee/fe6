@@ -2,30 +2,6 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.global ProcScr_EfxSpecalEffect
-ProcScr_EfxSpecalEffect: @ 085D373C
-	.incbin "fe6-base.gba", 0x5D373C, (0x5D3754 - 0x5D373C) @ length: 0018
-
-	.global ProcScr_EfxSRankWeaponEffect
-ProcScr_EfxSRankWeaponEffect: @ 085D3754
-	.incbin "fe6-base.gba", 0x5D3754, (0x5D376C - 0x5D3754) @ length: 0018
-
-	.global gUnk_085D376C
-gUnk_085D376C: @ 085D376C
-	.incbin "fe6-base.gba", 0x5D376C, (0x5D3784 - 0x5D376C) @ length: 0018
-
-	.global gUnk_085D3784
-gUnk_085D3784: @ 085D3784
-	.incbin "fe6-base.gba", 0x5D3784, (0x5D379C - 0x5D3784) @ length: 0018
-
-	.global gUnk_085D379C
-gUnk_085D379C: @ 085D379C
-	.incbin "fe6-base.gba", 0x5D379C, (0x5D37B4 - 0x5D379C) @ length: 0018
-
-	.global gUnk_085D37B4
-gUnk_085D37B4: @ 085D37B4
-	.incbin "fe6-base.gba", 0x5D37B4, (0x5D38A4 - 0x5D37B4) @ length: 00F0
-
 	.global gUnk_085D38A4
 gUnk_085D38A4: @ 085D38A4
 	.incbin "fe6-base.gba", 0x5D38A4, (0x5D38BC - 0x5D38A4) @ length: 0018

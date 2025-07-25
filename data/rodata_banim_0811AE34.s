@@ -188,16 +188,16 @@ Tsa_EfxCriricalEffectBG_L: @ 08123D1C
 Tsa_EfxCriricalEffectBG_R: @ 081241BC
 	.incbin "fe6-base.gba", 0x1241BC, (0x124618 - 0x1241BC) @ length: 045C
 
-	.global gUnk_08124618
-gUnk_08124618: @ 08124618
+	.global Img_EfxSRankWeaponEffectBG
+Img_EfxSRankWeaponEffectBG: @ 08124618
 	.incbin "fe6-base.gba", 0x124618, (0x1246D8 - 0x124618) @ length: 00C0
 
-	.global gUnk_081246D8
-gUnk_081246D8: @ 081246D8
+	.global Pal_EfxSRankWeaponEffectBG
+Pal_EfxSRankWeaponEffectBG: @ 081246D8
 	.incbin "fe6-base.gba", 0x1246D8, (0x1246F8 - 0x1246D8) @ length: 0020
 
-	.global gUnk_081246F8
-gUnk_081246F8: @ 081246F8
+	.global Tsa_EfxSRankWeaponEffectBG
+Tsa_EfxSRankWeaponEffectBG: @ 081246F8
 	.incbin "fe6-base.gba", 0x1246F8, (0x12479C - 0x1246F8) @ length: 00A4
 
 	.global Img_EfxNormalEffectBG

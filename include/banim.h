@@ -1405,20 +1405,38 @@ void NewEfxSongFE6(struct Anim *anim);
 void EfxSongFE6_Loop(struct ProcEfxOBJ *proc);
 void NewEfxDanceOBJ(struct Anim *anim);
 void EfxDanceOBJ_Loop(struct ProcEfxOBJ *proc);
-void NewEfx_Unk_08057754(struct Anim *anim, int duration, int hi);
-void ProEfx_Unk085D371C_1(struct ProcEfxBG *proc);
-void ProEfx_Unk085D371C_2(struct ProcEfxBG *proc);
-// NewEfxSpecalEffect
-// EfxSpecalEffect_Null
-// NewEfxSRankWeaponEffect
-// EfxSRankWeaponEffect_Loop
-// NewEfxSRankWeaponEffectBG
-// func_fe6_08057A0C
-// func_fe6_08057A34
-// NewEfxSRankWeaponEffectSCR
-// func_fe6_08057A7C
-// func_fe6_08057B2C
-// func_fe6_08057B4C
+void NewEfxMosaicEffect(struct Anim *anim, int duration, int hi);
+void EfxMosaicEffect_1(struct ProcEfxBG *proc);
+void EfxMosaicEffect_2(struct ProcEfxBG *proc);
+
+struct ProcEfxSRankSCR2 {
+    PROC_HEADER;
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ i16 timer;
+    /* 2E */ i16 terminator;
+
+    STRUCT_PAD(0x30, 0x44);
+
+    /* 44 */ u32 unk44;
+
+    STRUCT_PAD(0x48, 0x5C);
+
+    /* 5C */ struct ProcEfx *seff_scr1;
+};
+extern EWRAM_OVERLAY(banim) i16 gEfxSpecalEffectExist[2];
+
+void NewEfxSpecalEffect(struct Anim * anim);
+void EfxSpecalEffect_Null(ProcPtr proc);
+void NewEfxSRankWeaponEffect(struct Anim * anim);
+void EfxSRankWeaponEffect_Loop(struct ProcEfx * proc);
+void NewEfxSRankWeaponEffectBG(struct Anim * anim);
+void EfxSRankWeaponEffectBG_Loop(struct ProcEfxBG * proc);
+void HBlank_EfxSRankWeaponEffectSCR(void);
+void NewEfxSRankWeaponEffectSCR(void);
+ void EfxSRankWeaponEffectSCR_Loop(struct ProcEfx * proc);
+void NewEfxSRankWeaponEffectSCR2(struct ProcEfx *seff_scr);
+void EfxSRankWeaponEffectSCR2_Loop(struct ProcEfxSRankSCR2 * proc);
 // func_fe6_08057B90
 // func_fe6_08057BB0
 // func_fe6_08057BF8
@@ -2059,13 +2077,13 @@ extern CONST_DATA struct ProcScr ProcScr_EfxSunakemuriOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxKingPika[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSongFE6[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDanceOBJ[];
-// ??? ProcScr_EfxUnk_085D371C
-// ??? ProcScr_EfxSpecalEffect
-// ??? ProcScr_EfxSRankWeaponEffect
-// ??? gUnk_085D376C
-// ??? gUnk_085D3784
-// ??? gUnk_085D379C
-// ??? gUnk_085D37B4
+extern CONST_DATA struct ProcScr ProcScr_EfxMosaicEffect[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSpecalEffect[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSRankWeaponEffect[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSRankWeaponEffectBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSRankWeaponEffectSCR[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSRankWeaponEffectSCR2[];
+extern CONST_DATA i16 EfxSRankWeaponEffectSCR_Ref[];
 // ??? gUnk_085D38A4
 // ??? gUnk_085D38BC
 // ??? gUnk_085D38D4

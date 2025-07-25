@@ -406,17 +406,25 @@ extern i16 SHOULD_BE_CONST gSinLut[];
     gPal[0] = (color); \
     EnablePalSync()
 
+/* MOSAIC */
+#define MOSAIC_LO2BG(_mosaic) ({ \
+    int ___mosaic = _mosaic; \
+    int __local_mosaic_lo = (u8)___mosaic & 0xF; \
+    int __local_mosaic_hi = ___mosaic << 4; \
+    \
+    (__local_mosaic_hi | __local_mosaic_lo); \
+})
 
 #if BUGFIX
-
-#define SetMosaic(bg, size) \
-    gDispIo.bg##bg##_ct.mosaic = true; \
-    gDispIo.mosaic = size;
-
+#define SetMosaicDisp(_mosaic) { \
+    gDispIo.mosaic = MOSAIC_LO2BG(_mosaic); \
+}
 #else
-
-#define SetMosaic(bg_idx, size) \
-    gDispIo.bg##bg_idx##_ct.mosaic = true; \
-    *((u8 *) &gDispIo.mosaic) = size;
-
+#define SetMosaicDisp(_mosaic) { \
+    int __local_mosaic = _mosaic; \
+    u8 *__pr_disp = ((u8 *) &gDispIo); \
+    u8 *__pr_mosaic = __pr_disp + 0x38; \
+    \
+    *__pr_mosaic = MOSAIC_LO2BG(__local_mosaic); \
+}
 #endif

@@ -136,6 +136,7 @@ enum
     SONG_EC = 0xEC, // no damage
     SONG_EE = 0xEE, // efx singer
     SONG_EF = 0xEF, // efx song
+    SONG_F0 = 0xF0, // efx special effect
     SONG_FD = 0xFD, // manim
     SONG_10F = 0x10F,
     SONG_269 = 0x269,

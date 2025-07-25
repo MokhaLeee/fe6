@@ -361,9 +361,9 @@ extern u16 Img_EfxCriricalEffectBG[];
 extern u16 Pal_EfxCriricalEffectBG[];
 extern u16 Tsa_EfxCriricalEffectBG_L[];
 extern u16 Tsa_EfxCriricalEffectBG_R[];
-// extern ??? gUnk_08124618
-// extern ??? gUnk_081246D8
-// extern ??? gUnk_081246F8
+extern u16 Img_EfxSRankWeaponEffectBG[];
+extern u16 Pal_EfxSRankWeaponEffectBG[];
+extern u16 Tsa_EfxSRankWeaponEffectBG[];
 extern u16 Img_EfxNormalEffectBG[];
 extern u16 Pal_EfxNormalEffectBG[];
 extern u16 Tsa1_EfxNormalEffectBG[];

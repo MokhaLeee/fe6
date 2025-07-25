@@ -1,5 +1,8 @@
 #include "prelude.h"
 #include "proc.h"
+#include "unit.h"
+#include "item.h"
+#include "battle.h"
 #include "oam.h"
 #include "util.h"
 #include "hardware.h"
@@ -795,9 +798,9 @@ void EfxSongFE6_Loop(struct ProcEfxOBJ * proc)
  * C45: dancer
  */
 struct ProcScr CONST_DATA ProcScr_EfxDanceOBJ[] = {
-    PROC_NAME_DEBUG("efxDanceOBJ"),
-    PROC_REPEAT(EfxDanceOBJ_Loop),
-    PROC_END,
+	PROC_NAME_DEBUG("efxDanceOBJ"),
+	PROC_REPEAT(EfxDanceOBJ_Loop),
+	PROC_END,
 };
 
 void NewEfxDanceOBJ(struct Anim *anim)
@@ -833,54 +836,44 @@ void EfxDanceOBJ_Loop(struct ProcEfxOBJ *proc)
 }
 
 /**
- * UNK
+ * Unused mosaic effect
  */
-struct ProcScr CONST_DATA ProcScr_EfxUnk_085D371C[] =
+struct ProcScr CONST_DATA ProcScr_EfxMosaicEffect[] =
 {
-    PROC_19,
-    PROC_REPEAT(ProEfx_Unk085D371C_1),
-    PROC_REPEAT(ProEfx_Unk085D371C_2),
-    PROC_END,
+	PROC_19,
+	PROC_REPEAT(EfxMosaicEffect_1),
+	PROC_REPEAT(EfxMosaicEffect_2),
+	PROC_END,
 };
 
-void NewEfx_Unk_08057754(struct Anim *anim, int duration, int hi)
+void NewEfxMosaicEffect(struct Anim *anim, int duration, int hi)
 {
-	register int mosaic asm("r2");
 	struct ProcEfxBG *proc;
 
 	if (GetEkrDragonStateType() != 0)
 		return;
 
 	gEfxBgSemaphore++;
-	proc = SpawnProc(ProcScr_EfxUnk_085D371C, PROC_TREE_3);
+	proc = SpawnProc(ProcScr_EfxMosaicEffect, PROC_TREE_3);
 	proc->anim = anim;
 
-	mosaic = 0;
 	proc->timer = 0;
 	proc->terminator = duration;
 	proc->unk30 = hi;
 
-	SetMosaic(3, mosaic);
+	gDispIo.bg3_ct.mosaic = true;
+	SetMosaicDisp(0);
 }
 
-#if NONMATCHING
-
-void ProEfx_Unk085D371C_1(struct ProcEfxBG *proc)
+void EfxMosaicEffect_1(struct ProcEfxBG *proc)
 {
-	int ret;
-	u8 *disp;
-	u8 *mosaic;
-
-	ret = Interpolate(
+	int ret = Interpolate(
 		INTERPOLATE_LINEAR,
 		0, proc->unk30,
 		proc->timer, proc->terminator
 	);
 
-	disp = ((u8 *) &gDispIo);
-	mosaic = disp + 0x38;
-
-	*mosaic = (ret & 0xF) | (ret << 4);
+	SetMosaicDisp(ret);
 
 	if (++proc->timer > proc->terminator) {
 		proc->timer = 0;
@@ -888,55 +881,190 @@ void ProEfx_Unk085D371C_1(struct ProcEfxBG *proc)
 	}
 }
 
-#else
-
-NAKEDFUNC
-void ProEfx_Unk085D371C_1(struct ProcEfxBG *proc)
+void EfxMosaicEffect_2(struct ProcEfxBG *proc)
 {
-asm("\
-	.syntax unified\n\
-	push {r4, lr}\n\
-	sub sp, #4\n\
-	adds r4, r0, #0\n\
-	movs r0, #0x30\n\
-	ldrsh r2, [r4, r0]\n\
-	movs r1, #0x2c\n\
-	ldrsh r3, [r4, r1]\n\
-	movs r1, #0x2e\n\
-	ldrsh r0, [r4, r1]\n\
-	str r0, [sp]\n\
-	movs r0, #0\n\
-	movs r1, #0\n\
-	bl Interpolate\n\
-	ldr r2, .L080577F0 @ =gDispIo\n\
-	adds r2, #0x38\n\
-	movs r3, #0xf\n\
-	adds r1, r0, #0\n\
-	ands r1, r3\n\
-	lsls r0, r0, #4\n\
-	orrs r0, r1\n\
-	strb r0, [r2]\n\
-	ldrh r0, [r4, #0x2c]\n\
-	adds r0, #1\n\
-	strh r0, [r4, #0x2c]\n\
-	lsls r0, r0, #0x10\n\
-	ldrh r2, [r4, #0x2e]\n\
-	lsls r1, r2, #0x10\n\
-	cmp r0, r1\n\
-	ble .L080577E6\n\
-	movs r0, #0\n\
-	strh r0, [r4, #0x2c]\n\
-	adds r0, r4, #0\n\
-	bl Proc_Break\n\
-.L080577E6:\n\
-	add sp, #4\n\
-	pop {r4}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-.L080577F0: .4byte gDispIo\n\
-	.syntax divided\n\
-");
+	int ret = Interpolate(
+		INTERPOLATE_LINEAR,
+		proc->unk30, 0,
+		proc->timer, proc->terminator
+	);
+
+	SetMosaicDisp(ret);
+
+	if (++proc->timer > proc->terminator) {
+		gEfxBgSemaphore--;
+		gDispIo.bg3_ct.mosaic = false;
+		SetMosaicDisp(0);
+		Proc_Break(proc);
+	}
 }
 
+/**
+ * Shinning effect for legend weapon
+ */
+struct ProcScr CONST_DATA ProcScr_EfxSpecalEffect[] = {
+	PROC_NAME_DEBUG("efxSpecalEffect"),
+	PROC_REPEAT(EfxSpecalEffect_Null),
+	PROC_END,
+};
+
+void NewEfxSpecalEffect(struct Anim *anim)
+{
+	struct ProcEfx * proc;
+	struct Anim *anim1, *anim2;
+
+	if (gEfxSpecalEffectExist[GetAnimPosition(anim)] == false) {
+		register int is_legency asm("r1");
+		struct BattleUnit *bu;
+
+		gEfxSpecalEffectExist[GetAnimPosition(anim)] = true;
+
+		if (GetAnimPosition(anim) == POS_L)
+			bu = gpEkrBattleUnitLeft;
+		else
+			bu = gpEkrBattleUnitRight;
+
+#if 0
+		// FE8
+		not_legency = !(IsWeaponLegency(bu->weapon_before) == false);
 #endif
+		(void)GetItemKind(bu->weapon_before);
+		is_legency = (GetItemRequiredExp(bu->weapon_before) == 0xFB) ? true : false;
+
+		if (!is_legency) {
+			anim1 = gAnims[GetAnimPosition(anim) * 2];
+			anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
+
+			anim1->flags3 |= ANIM_BIT3_BLOCKEND;
+			anim2->flags3 |= ANIM_BIT3_BLOCKEND;
+			return;
+		}
+	} else {
+		anim1 = gAnims[GetAnimPosition(anim) * 2];
+		anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
+
+		anim1->flags3 |= ANIM_BIT3_BLOCKEND;
+		anim2->flags3 |= ANIM_BIT3_BLOCKEND;
+		return;
+	}
+
+	proc = SpawnProc(ProcScr_EfxSpecalEffect, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0x0;
+	PlaySFX(SONG_F0, 0x100, 0x78, 0x0);
+	NewEfxSRankWeaponEffect(anim);
+}
+
+void EfxSpecalEffect_Null(ProcPtr proc)
+{
+	Proc_Break(proc);
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxSRankWeaponEffect[] = {
+	PROC_NAME_DEBUG("efxSRankWeaponEffect"),
+	PROC_REPEAT(EfxSRankWeaponEffect_Loop),
+	PROC_END,
+};
+
+void NewEfxSRankWeaponEffect(struct Anim *anim)
+{
+	struct ProcEfx * proc;
+
+	SpellFx_SetBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxSRankWeaponEffect, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0x0;
+}
+
+void EfxSRankWeaponEffect_Loop(struct ProcEfx * proc)
+{
+	int time = ++proc->timer;
+
+	if (time == 1) {
+		NewEfxSRankWeaponEffectBG(proc->anim);
+		return;
+	}
+
+	if (time == 0x15) {
+		NewEfxRestWINH_(proc->anim, 0x2D, HBlank_EfxSRankWeaponEffectSCR);
+		NewEfxSRankWeaponEffectSCR();
+		return;
+	}
+
+	if (time == 0x46) {
+		struct Anim *anim1, *anim2;
+
+		anim1 = gAnims[GetAnimPosition(proc->anim) * 2];
+		anim2 = gAnims[GetAnimPosition(proc->anim) * 2 + 1];
+		
+		anim1->flags3 |= ANIM_BIT3_BLOCKEND;
+		anim2->flags3 |= ANIM_BIT3_BLOCKEND;
+		Proc_Break(proc);
+	}
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxSRankWeaponEffectBG[] = {
+	PROC_NAME_DEBUG("efxSRankWeaponEffectBG"),
+	PROC_REPEAT(EfxSRankWeaponEffectBG_Loop),
+	PROC_END,
+};
+
+void NewEfxSRankWeaponEffectBG(struct Anim *anim)
+{
+	struct ProcEfxBG * proc;
+
+	proc = SpawnProc(ProcScr_EfxSRankWeaponEffectBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+
+	SpellFx_RegisterBgGfx(Img_EfxSRankWeaponEffectBG, 0x2000);
+	SpellFx_RegisterBgPal(Pal_EfxSRankWeaponEffectBG, 0x20);
+	SpellFx_WriteBgMap(proc->anim, Tsa_EfxSRankWeaponEffectBG, Tsa_EfxSRankWeaponEffectBG);
+	SpellFx_SetSomeColorEffect();
+}
+
+void EfxSRankWeaponEffectBG_Loop(struct ProcEfxBG * proc)
+{
+	if (++proc->timer == 0x3C) {
+		SpellFx_ClearBG1();
+		SpellFx_ClearColorEffects();
+		Proc_Break(proc);
+	}
+}
+
+void HBlank_EfxSRankWeaponEffectSCR(void)
+{
+	if (!(REG_DISPSTAT & DISPSTAT_VBLANK))
+		REG_BG1VOFS = *gpBg1ScrollOffset++;
+}
+
+struct ProcScr CONST_DATA ProcScr_EfxSRankWeaponEffectSCR[] = {
+	PROC_NAME_DEBUG("efxSRankWeaponEffectSCR"),
+	PROC_REPEAT(EfxSRankWeaponEffectSCR_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxSRankWeaponEffectSCR2[] = {
+	PROC_NAME_DEBUG("efxSRankWeaponEffectSCR2"),
+	PROC_REPEAT(EfxSRankWeaponEffectSCR2_Loop),
+	PROC_END,
+};
+
+CONST_DATA i16 EfxSRankWeaponEffectSCR_Ref[] = {
+	0xFF00, 0xFF05, 0xFF09, 0xFF0E, 0xFF12, 0xFF16, 0xFF1B, 0xFF1F,
+	0xFF23, 0xFF28, 0xFF2C, 0xFF30, 0xFF35, 0xFF39, 0xFF3D, 0xFF42,
+	0xFF46, 0xFF4A, 0xFF4F, 0xFF53, 0xFF57, 0xFF5C, 0xFF60, 0xFF64,
+	0xFF69, 0xFF6D, 0xFF71, 0xFF76, 0xFF7A, 0xFF7E, 0xFF83, 0xFF87,
+	0xFF8B, 0xFF90, 0xFF94, 0xFF98, 0xFF9D, 0xFFA1, 0xFFA5, 0xFFAA,
+	0xFFAE, 0xFFB2, 0xFFB7, 0xFFBB, 0xFFBF, 0xFFC4, 0xFFC8, 0xFFCC,
+	0xFFD1, 0xFFD5, 0xFFD9, 0xFFDE, 0xFFE2, 0xFFE6, 0xFFEB, 0xFFEF,
+	0xFFF3, 0xFFF8, 0xFFFC, 0x0000, 0x0000, 0x0004, 0x0008, 0x000D,
+	0x0011, 0x0015, 0x001A, 0x001E, 0x0022, 0x0027, 0x002B, 0x002F,
+	0x0034, 0x0038, 0x003C, 0x0041, 0x0045, 0x0049, 0x004E, 0x0052,
+	0x0056, 0x005B, 0x005F, 0x0063, 0x0068, 0x006C, 0x0070, 0x0075,
+	0x0079, 0x007D, 0x0082, 0x0086, 0x008A, 0x008F, 0x0093, 0x0097,
+	0x009C, 0x00A0, 0x00A4, 0x00A9, 0x00AD, 0x00B1, 0x00B6, 0x00BA,
+	0x00BE, 0x00C3, 0x00C7, 0x00CB, 0x00D0, 0x00D4, 0x00D8, 0x00DD,
+	0x00E1, 0x00E5, 0x00EA, 0x00EE, 0x00F2, 0x00F7, 0x00FB, 0x0100,
+};

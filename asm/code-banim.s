@@ -1,326 +1,26 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start ProEfx_Unk085D371C_2
-ProEfx_Unk085D371C_2: @ 0x080577F4
-	push {r4, r5, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	movs r0, #0x30
-	ldrsh r1, [r4, r0]
-	movs r2, #0x2c
-	ldrsh r3, [r4, r2]
-	movs r2, #0x2e
-	ldrsh r0, [r4, r2]
-	str r0, [sp]
-	movs r0, #0
-	movs r2, #0
-	bl Interpolate
-	ldr r3, .L08057858 @ =gDispIo
-	adds r5, r3, #0
-	adds r5, #0x38
-	movs r2, #0xf
-	adds r1, r0, #0
-	ands r1, r2
-	lsls r0, r0, #4
-	orrs r0, r1
-	strb r0, [r5]
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	ldrh r2, [r4, #0x2e]
-	lsls r1, r2, #0x10
-	cmp r0, r1
-	ble .L0805784E
-	ldr r1, .L0805785C @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	movs r0, #0x41
-	rsbs r0, r0, #0
-	ldrb r1, [r3, #0x18]
-	ands r0, r1
-	strb r0, [r3, #0x18]
-	movs r0, #0
-	strb r0, [r5]
-	adds r0, r4, #0
-	bl Proc_Break
-.L0805784E:
-	add sp, #4
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08057858: .4byte gDispIo
-.L0805785C: .4byte gEfxBgSemaphore
 
-	thumb_func_start NewEfxSpecalEffect
-NewEfxSpecalEffect: @ 0x08057860
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r4, .L08057894 @ =gEfxSpecalEffectExist
-	bl GetAnimPosition
-	lsls r0, r0, #1
-	adds r0, r0, r4
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #0
-	bne .L080578BC
-	adds r0, r5, #0
-	bl GetAnimPosition
-	lsls r0, r0, #1
-	adds r0, r0, r4
-	movs r1, #1
-	strh r1, [r0]
-	adds r0, r5, #0
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L0805789C
-	ldr r0, .L08057898 @ =gpEkrBattleUnitLeft
-	b .L0805789E
-	.align 2, 0
-.L08057894: .4byte gEfxSpecalEffectExist
-.L08057898: .4byte gpEkrBattleUnitLeft
-.L0805789C:
-	ldr r0, .L080578EC @ =gpEkrBattleUnitRight
-.L0805789E:
-	ldr r0, [r0]
-	adds r4, r0, #0
-	adds r4, #0x4a
-	ldrh r0, [r4]
-	bl GetItemKind
-	ldrh r0, [r4]
-	bl GetItemRequiredExp
-	movs r1, #0
-	cmp r0, #0xfb
-	bne .L080578B8
-	movs r1, #1
-.L080578B8:
-	cmp r1, #0
-	bne .L080578F4
-.L080578BC:
-	ldr r4, .L080578F0 @ =gAnims
-	adds r0, r5, #0
-	bl GetAnimPosition
-	lsls r0, r0, #3
-	adds r0, r0, r4
-	ldr r6, [r0]
-	adds r0, r5, #0
-	bl GetAnimPosition
-	lsls r0, r0, #1
-	adds r0, #1
-	lsls r0, r0, #2
-	adds r0, r0, r4
-	ldr r2, [r0]
-	movs r1, #0x40
-	ldrh r0, [r6, #0x10]
-	orrs r0, r1
-	strh r0, [r6, #0x10]
-	ldrh r0, [r2, #0x10]
-	orrs r0, r1
-	strh r0, [r2, #0x10]
-	b .L08057916
-	.align 2, 0
-.L080578EC: .4byte gpEkrBattleUnitRight
-.L080578F0: .4byte gAnims
-.L080578F4:
-	ldr r0, .L0805791C @ =ProcScr_EfxSpecalEffect
-	movs r1, #3
-	bl SpawnProc
-	str r5, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #0xf0
-	movs r2, #0x78
-	movs r3, #0
-	bl PlaySFX
-	adds r0, r5, #0
-	bl NewEfxSRankWeaponEffect
-.L08057916:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805791C: .4byte ProcScr_EfxSpecalEffect
-
-	thumb_func_start EfxSpecalEffect_Null
-EfxSpecalEffect_Null: @ 0x08057920
-	push {lr}
-	bl Proc_Break
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start NewEfxSRankWeaponEffect
-NewEfxSRankWeaponEffect: @ 0x0805792C
-	push {r4, lr}
-	adds r4, r0, #0
-	bl SpellFx_SetBG1Position
-	ldr r0, .L08057948 @ =ProcScr_EfxSRankWeaponEffect
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08057948: .4byte ProcScr_EfxSRankWeaponEffect
-
-	thumb_func_start EfxSRankWeaponEffect_Loop
-EfxSRankWeaponEffect_Loop: @ 0x0805794C
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	ldrh r0, [r6, #0x2c]
-	adds r0, #1
-	strh r0, [r6, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #1
-	bne .L08057966
-	ldr r0, [r6, #0x5c]
-	bl NewEfxSRankWeaponEffectBG
-	b .L080579B6
-.L08057966:
-	cmp r0, #0x15
-	bne .L08057980
-	ldr r0, [r6, #0x5c]
-	ldr r2, .L0805797C @ =func_fe6_08057A34
-	movs r1, #0x2d
-	bl NewEfxRestWINH_
-	bl NewEfxSRankWeaponEffectSCR
-	b .L080579B6
-	.align 2, 0
-.L0805797C: .4byte func_fe6_08057A34
-.L08057980:
-	cmp r0, #0x46
-	bne .L080579B6
-	ldr r5, .L080579BC @ =gAnims
-	ldr r0, [r6, #0x5c]
-	bl GetAnimPosition
-	lsls r0, r0, #3
-	adds r0, r0, r5
-	ldr r4, [r0]
-	ldr r0, [r6, #0x5c]
-	bl GetAnimPosition
-	lsls r0, r0, #1
-	adds r0, #1
-	lsls r0, r0, #2
-	adds r0, r0, r5
-	ldr r2, [r0]
-	movs r0, #0x40
-	ldrh r1, [r4, #0x10]
-	orrs r1, r0
-	strh r1, [r4, #0x10]
-	ldrh r1, [r2, #0x10]
-	orrs r0, r1
-	strh r0, [r2, #0x10]
-	adds r0, r6, #0
-	bl Proc_Break
-.L080579B6:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080579BC: .4byte gAnims
-
-	thumb_func_start NewEfxSRankWeaponEffectBG
-NewEfxSRankWeaponEffectBG: @ 0x080579C0
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r0, .L080579FC @ =gUnk_085D376C
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r5, [r4, #0x5c]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldr r0, .L08057A00 @ =gUnk_08124618
-	movs r1, #0x80
-	lsls r1, r1, #6
-	bl SpellFx_RegisterBgGfx
-	ldr r0, .L08057A04 @ =gUnk_081246D8
-	movs r1, #0x20
-	bl SpellFx_RegisterBgPal
-	ldr r0, [r4, #0x5c]
-	ldr r2, .L08057A08 @ =gUnk_081246F8
-	adds r1, r2, #0
-	bl SpellFx_WriteBgMap
-	bl SpellFx_SetSomeColorEffect
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080579FC: .4byte gUnk_085D376C
-.L08057A00: .4byte gUnk_08124618
-.L08057A04: .4byte gUnk_081246D8
-.L08057A08: .4byte gUnk_081246F8
-
-	thumb_func_start func_fe6_08057A0C
-func_fe6_08057A0C: @ 0x08057A0C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x3c
-	bne .L08057A2C
-	bl SpellFx_ClearBG1
-	bl SpellFx_ClearColorEffects
-	adds r0, r4, #0
-	bl Proc_Break
-.L08057A2C:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_08057A34
-func_fe6_08057A34: @ 0x08057A34
-	ldr r0, .L08057A50 @ =0x04000004
-	ldrh r1, [r0]
-	movs r0, #1
-	ands r0, r1
-	cmp r0, #0
-	bne .L08057A4E
-	ldr r3, .L08057A54 @ =0x04000016
-	ldr r2, .L08057A58 @ =gpBg1ScrollOffset
-	ldr r0, [r2]
-	ldrh r1, [r0]
-	strh r1, [r3]
-	adds r0, #2
-	str r0, [r2]
-.L08057A4E:
-	bx lr
-	.align 2, 0
-.L08057A50: .4byte 0x04000004
-.L08057A54: .4byte 0x04000016
-.L08057A58: .4byte gpBg1ScrollOffset
 
 	thumb_func_start NewEfxSRankWeaponEffectSCR
 NewEfxSRankWeaponEffectSCR: @ 0x08057A5C
 	push {lr}
-	ldr r0, .L08057A78 @ =gUnk_085D3784
+	ldr r0, .L08057A78 @ =ProcScr_EfxSRankWeaponEffectSCR
 	movs r1, #3
 	bl SpawnProc
 	movs r1, #0
 	strh r1, [r0, #0x2c]
 	strh r1, [r0, #0x2e]
 	str r1, [r0, #0x44]
-	bl func_fe6_08057B2C
+	bl NewEfxSRankWeaponEffectSCR2
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08057A78: .4byte gUnk_085D3784
+.L08057A78: .4byte ProcScr_EfxSRankWeaponEffectSCR
 
-	thumb_func_start func_fe6_08057A7C
-func_fe6_08057A7C: @ 0x08057A7C
+	thumb_func_start EfxSRankWeaponEffectSCR_Loop
+EfxSRankWeaponEffectSCR_Loop: @ 0x08057A7C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -345,7 +45,7 @@ func_fe6_08057A7C: @ 0x08057A7C
 	lsls r1, r1, #0x10
 	mov ip, r1
 	movs r7, #0x88
-	ldr r6, .L08057AEC @ =gUnk_085D37B4
+	ldr r6, .L08057AEC @ =EfxSRankWeaponEffectSCR_Ref
 .L08057AAA:
 	cmp r3, #0x77
 	bhi .L08057B04
@@ -375,7 +75,7 @@ func_fe6_08057A7C: @ 0x08057A7C
 .L08057AE0: .4byte gpBg2ScrollOffsetTable2
 .L08057AE4: .4byte gpBg1ScrollOffsetList1
 .L08057AE8: .4byte gpBg1ScrollOffsetList2
-.L08057AEC: .4byte gUnk_085D37B4
+.L08057AEC: .4byte EfxSRankWeaponEffectSCR_Ref
 .L08057AF0: .4byte 0x0000FF78
 .L08057AF4:
 	cmp r1, r7
@@ -411,11 +111,11 @@ func_fe6_08057A7C: @ 0x08057A7C
 	.align 2, 0
 .L08057B28: .4byte 0xFFFF0000
 
-	thumb_func_start func_fe6_08057B2C
-func_fe6_08057B2C: @ 0x08057B2C
+	thumb_func_start NewEfxSRankWeaponEffectSCR2
+NewEfxSRankWeaponEffectSCR2: @ 0x08057B2C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L08057B48 @ =gUnk_085D379C
+	ldr r0, .L08057B48 @ =ProcScr_EfxSRankWeaponEffectSCR2
 	movs r1, #3
 	bl SpawnProc
 	movs r1, #0
@@ -427,10 +127,10 @@ func_fe6_08057B2C: @ 0x08057B2C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08057B48: .4byte gUnk_085D379C
+.L08057B48: .4byte ProcScr_EfxSRankWeaponEffectSCR2
 
-	thumb_func_start func_fe6_08057B4C
-func_fe6_08057B4C: @ 0x08057B4C
+	thumb_func_start EfxSRankWeaponEffectSCR2_Loop
+EfxSRankWeaponEffectSCR2_Loop: @ 0x08057B4C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
