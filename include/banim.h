@@ -1015,31 +1015,31 @@ void EfxDance_Loop(struct ProcEfx *proc);
 void StartSpellAnimBallista(struct Anim *anim);
 void EfxShooter_Loop(struct ProcEfx *proc);
 void NewEfxShooterOBJ(struct Anim *anim);
-void EfxShooterOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxShooterOBJ_Loop(struct ProcEfxOBJ *proc);
 void StartSpellAnimEckesachs(struct Anim *anim);
 void EfxEckesachs_Loop(struct ProcEfx *proc);
-void NewEfxEckesachsBG(struct Anim *anim);
+void NewEfxEckesachsBG(struct Anim *anim, int duration);
 void EfxEckesachsBG_Loop(struct ProcEfxBG *proc);
-void NewEfxEckesachsBGCOL1(struct Anim *anim);
-void EfxEckesachsBGCOL1_Loop(struct ProcEfxBGCOL *proc);
-void NewEfxEckesachsBGCOL2(struct Anim *anim);
-void EfxEckesachsBGCOL2_Loop(struct ProcEfxBGCOL *proc);
+void Pal_EfxEckesachsBGCtrl(struct Anim *anim, int duration);
+void EfxEckesachsBGCtrl_Loop(struct ProcEfxBG *proc);
+void NewEfxEckesachsBGCOL(struct Anim *anim);
+void EfxEckesachsBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void StartSpellAnimBindingBlade(struct Anim *anim);
 void EfxHurtmut_Loop(struct ProcEfx *proc);
 void NewEfxHurtmutOBJ(struct Anim *anim);
-void EfxHurtmutOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxHurtmutOBJ_Loop(struct ProcEfxOBJ *proc);
 void StartSpellAnimFireBreath(struct Anim *anim);
 void EfxFirebreath_Loop(struct ProcEfx *proc);
 void NewEfxFirebreathOBJ(struct Anim *anim);
-void EfxFirebreathOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxFirebreathOBJ_Loop(struct ProcEfxOBJ *proc);
 void NewEfxFirebreathBG(struct Anim *anim);
-void func_fe6_0804E814(struct ProcEfxBG *proc);
+void EfxFirebreathBG_Loop(struct ProcEfxBG *proc);
 void NewEfxFirebreathBGCOL(struct Anim *anim);
-void func_fe6_0804E884(struct ProcEfxBGCOL *proc);
+void EfxFirebreathBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void StartSpellAnimIceBreath(struct Anim *anim);
 void EfxIcebreath_Loop(struct ProcEfx *proc);
 void NewEfxIcebreathOBJ(struct Anim *anim);
-void EfxIcebreathOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxIcebreathOBJ_OnEnd(struct ProcEfxOBJ *proc);
 void StartSpellAnimDarkBreath(struct Anim *anim);
 void EfxDarkbreath_Loop(struct ProcEfx *proc);
 void NewEfxDarkbreathBG(struct Anim *anim);
@@ -1047,7 +1047,7 @@ void EfxDarkbreathBG_Loop(struct ProcEfxBG *proc);
 void NewEfxDarkbreathBGCOL(struct Anim *anim);
 void EfxDarkbreathBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxDarkbreathOBJ(struct Anim *anim);
-void EfxDarkbreathOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxDarkbreathOBJ_Loop(struct ProcEfxOBJ *proc);
 void StartSpellAnimThunder(struct Anim *anim);
 void EfxThunder_Loop(struct ProcEfx *proc);
 void NewEfxThunderBG(struct Anim *anim);
@@ -1055,14 +1055,14 @@ void EfxThunderBG_Loop(struct ProcEfxBG *proc);
 void NewEfxThunderBGCOL(struct Anim *anim);
 void EfxThunderBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxThunderOBJ(struct Anim *anim);
-void EfxThunderOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxThunderOBJ_Loop(struct ProcEfxOBJ *proc);
 void StartSpellAnimFire(struct Anim *anim);
 void StartSpellAnimElfire(struct Anim *anim);
 void EfxFire_Loop(struct ProcEfx *proc);
 void NewEfxFireBG(struct Anim *anim);
 void EfxFireBG_Loop(struct ProcEfxBG *proc);
 void NewEfxFireOBJ(struct Anim *anim);
-void EfxFireOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxFireOBJ_Loop(struct ProcEfxOBJ *proc);
 void NewEfxFireHITBG(struct Anim *anim);
 void EfxFireHITBG_Loop(struct ProcEfxBG *proc);
 void NewEfxElfireBG(struct Anim *anim);
@@ -1070,7 +1070,7 @@ void EfxElfireBG_Loop(struct ProcEfxBG *proc);
 void NewEfxElfireBGCOL(struct Anim *anim);
 void EfxElfireBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxElfireOBJ(struct Anim *anim);
-void EfxElfireOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void EfxElfireOBJ_Loop(struct ProcEfxOBJ *proc);
 // StartSpellAnimFimbulvetr
 // func_fe6_0804F600
 // func_fe6_0804F738
@@ -1856,44 +1856,44 @@ extern CONST_DATA struct ProcScr ProcScr_EfxSong[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSongBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSongBGCOL[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDance[];
-// ??? ProcScr_EfxShooter
-// ??? ProcScr_EfxShooterOBJ
-// ??? ProcScr_EfxEckesachs
-// ??? ProcScr_EfxEckesachsBG
-// ??? ProcScr_EfxEckesachsBGCOL1
-// ??? ProcScr_EfxEckesachsBGCOL2
-// ??? ProcScr_EfxHurtmut
-// ??? ProcScr_EfxHurtmutOBJ
-// ??? ProcScr_EfxFirebreath
-// ??? ProcScr_EfxFirebreathOBJ
-// ??? ProcScr_EfxFirebreathBG
-// ??? gUnk_085D11B4
-// ??? ProcScr_EfxIcebreath
-// ??? ProcScr_EfxIcebreathOBJ
-// ??? ProcScr_EfxDarkbreath
-// ??? ProcScr_EfxDarkbreathBG
-// ??? Tsa_EfxDarkbreathBG
-// ??? ProcScr_EfxDarkbreathBGCOL
-// ??? ProcScr_EfxDarkbreathOBJ
-// ??? ProcScr_EfxThunder
-// ??? ProcScr_EfxThunderBG
-// ??? TsaLut_EfxThunderBG_L
-// ??? TsaLut_EfxThunderBG_R
-// ??? ProcScr_EfxThunderBGCOL
-// ??? ProcScr_EfxThunderOBJ
-// ??? ProcScr_EfxFire
-// ??? ProcScr_EfxFireBG
-// ??? TsaLut_EfxFireBG_L
-// ??? TsaLut_EfxFireBG_R
-// ??? ProcScr_EfxFireOBJ
-// ??? ProcScr_EfxFireHITBG
-// ??? ImgLut_EfxFireHITBG
-// ??? TsaLut_EfxFireHITBG
-// ??? ProcScr_EfxElfireBG
-// ??? ProcScr_EfxElfireBGCOL
-// ??? ProcScr_EfxElfireOBJ
-// ??? gUnk_085D14D4
-// ??? gUnk_085D14EC
+extern CONST_DATA struct ProcScr ProcScr_EfxShooter[];
+extern CONST_DATA struct ProcScr ProcScr_EfxShooterOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxEckesachs[];
+extern CONST_DATA struct ProcScr ProcScr_EfxEckesachsBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxEckesachsBGCtrl[];
+extern CONST_DATA struct ProcScr ProcScr_EfxEckesachsBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHurtmut[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHurtmutOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFirebreath[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFirebreathOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFirebreathBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFirebreathBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxIcebreath[];
+extern CONST_DATA struct ProcScr ProcScr_EfxIcebreathOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxDarkbreath[];
+extern CONST_DATA struct ProcScr ProcScr_EfxDarkbreathBG[];
+extern CONST_DATA u16 *Tsa_EfxDarkbreathBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxDarkbreathBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxDarkbreathOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxThunder[];
+extern CONST_DATA struct ProcScr ProcScr_EfxThunderBG[];
+extern CONST_DATA u16 *TsaLut_EfxThunderBG_L[];
+extern CONST_DATA u16 *TsaLut_EfxThunderBG_R[];
+extern CONST_DATA struct ProcScr ProcScr_EfxThunderBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxThunderOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFire[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFireBG[];
+extern CONST_DATA u16 *TsaLut_EfxFireBG_L[];
+extern CONST_DATA u16 *TsaLut_EfxFireBG_R[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFireOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFireHITBG[];
+extern CONST_DATA u16 *ImgLut_EfxFireHITBG[];
+extern CONST_DATA u16 *TsaLut_EfxFireHITBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxElfireBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxElfireBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxElfireOBJ[];
+extern CONST_DATA struct ProcScr gUnk_085D14D4[];
+extern CONST_DATA struct ProcScr gUnk_085D14EC[];
 // ??? gUnk_085D1504
 // ??? gUnk_085D151C
 // ??? gUnk_085D1534
@@ -2118,12 +2118,12 @@ extern u32 AnimScr_EfxTeyariObjType0Right[];
 extern u32 AnimScr_EfxTeyariObjType0Left[];
 extern u32 AnimScr_EfxTeyariObjType1Right[];
 extern u32 AnimScr_EfxTeyariObjType1Left[];
-// ??? AnimScr_EfxShooterOBJ_L
-// ??? AnimScr_EfxShooterOBJ_R
+extern u32 AnimScr_EfxShooterOBJ_L[];
+extern u32 AnimScr_EfxShooterOBJ_R[];
 extern u32 AnimScr_EfxDanceObj[];
 extern u32 AnimScr_EfxSongFE6[];
-extern u32 AnimScr_EfxBindingBlade_Right[];
-extern u32 AnimScr_EfxBindingBlade_Left[];
+extern u32 AnimScr_EfxBindingBlade_L[];
+extern u32 AnimScr_EfxBindingBlade_R[];
 extern u32 AnimScr_HurtmutEff00OBJ1_Right[];
 extern u32 AnimScr_HurtmutEff01OBJ1_Right[];
 extern u32 AnimScr_HurtmutEff00OBJ1_Left[];
@@ -2132,11 +2132,11 @@ extern u32 AnimScr_HurtmutEff00OBJ2_Right[];
 extern u32 AnimScr_HurtmutEff01OBJ2_Right[];
 extern u32 AnimScr_HurtmutEff00OBJ2_Left[];
 extern u32 AnimScr_HurtmutEff01OBJ2_Left[];
-extern u32 AnimScr_FirebreathOBJ_Right[];
-extern u32 AnimScr_FirebreathOBJ_Left[];
-// ??? AnimScr_IcebreathOBJ_Right
-// ??? AnimScr_IcebreathOBJ_Left
-// ??? AnimScr_DarkBreath_Close
+extern u32 AnimScr_FirebreathOBJ_L[];
+extern u32 AnimScr_FirebreathOBJ_R[];
+extern u32 AnimScr_IcebreathOBJ_R[];
+extern u32 AnimScr_IcebreathOBJ_L[];
+extern u32 AnimScr_DarkBreath[];
 extern u32 AnimScr_YushaSpinShieldOBJ_LeftTypeA[];
 extern u32 AnimScr_YushaSpinShieldOBJ2_RightTypeA[];
 extern u32 AnimScr_YushaSpinShieldOBJ3_RightTypeA[];
@@ -2161,14 +2161,14 @@ extern u32 AnimScr_EfxMantBatabata2_R[];
 extern u32 AnimScr_EfxMantBatabata2_L[];
 extern u32 AnimScr_EfxMantBatabata3_R[];
 extern u32 AnimScr_EfxMantBatabata3_L[];
-// ??? AnimScr_EfxThunderOBJ_R
-// ??? AnimScr_EfxThunderOBJ_L
-// ??? AnimScr_EfxFireOBJ_L_Front
-// ??? AnimScr_EfxFireOBJ_L_Back
-// ??? AnimScr_EfxFireOBJ_R_Front
-// ??? AnimScr_EfxFireOBJ_R_Back
-// ??? AnimScr_EfxElfireOBJ_R
-// ??? AnimScr_EfxElfireOBJ_L
+extern u32 AnimScr_EfxThunderOBJ_R[];
+extern u32 AnimScr_EfxThunderOBJ_L[];
+extern u32 AnimScr_EfxFireOBJ_L_Front[];
+extern u32 AnimScr_EfxFireOBJ_L_Back[];
+extern u32 AnimScr_EfxFireOBJ_R_Front[];
+extern u32 AnimScr_EfxFireOBJ_R_Back[];
+extern u32 AnimScr_EfxElfireOBJ_R[];
+extern u32 AnimScr_EfxElfireOBJ_L[];
 // ??? gUnk_085E5858
 // ??? gUnk_085E5C10
 // ??? gUnk_085E5C2C

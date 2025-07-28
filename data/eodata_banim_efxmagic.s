@@ -1,45 +1,5 @@
 	.section .rodata
 
-	.global FrameLut_EfxSongBGCOL
-FrameLut_EfxSongBGCOL: @ 08119CDC
-	.incbin "fe6-base.gba", 0x119CDC, (0x119D56 - 0x119CDC) @ length: 007A
-
-	.global FrameConf_EfxEckesachsBGCOL2
-FrameConf_EfxEckesachsBGCOL2: @ 08119D56
-	.incbin "fe6-base.gba", 0x119D56, (0x119D78 - 0x119D56) @ length: 0022
-
-	.global gUnk_08119D78
-gUnk_08119D78: @ 08119D78
-	.incbin "fe6-base.gba", 0x119D78, (0x119DEA - 0x119D78) @ length: 0072
-
-	.global FrameConf_EfxDarkbreathBG
-FrameConf_EfxDarkbreathBG: @ 08119DEA
-	.incbin "fe6-base.gba", 0x119DEA, (0x119E30 - 0x119DEA) @ length: 0046
-
-	.global FrameConf_EfxDarkbreathBGCOL
-FrameConf_EfxDarkbreathBGCOL: @ 08119E30
-	.incbin "fe6-base.gba", 0x119E30, (0x119ED2 - 0x119E30) @ length: 00A2
-
-	.global FrameConf_EfxThunderBG
-FrameConf_EfxThunderBG: @ 08119ED2
-	.incbin "fe6-base.gba", 0x119ED2, (0x119EDC - 0x119ED2) @ length: 000A
-
-	.global FrameConf_EfxThunderBGCOL
-FrameConf_EfxThunderBGCOL: @ 08119EDC
-	.incbin "fe6-base.gba", 0x119EDC, (0x119F1E - 0x119EDC) @ length: 0042
-
-	.global FrameConf_EfxFireBG
-FrameConf_EfxFireBG: @ 08119F1E
-	.incbin "fe6-base.gba", 0x119F1E, (0x119F50 - 0x119F1E) @ length: 0032
-
-	.global FrameConf_EfxFireHITBG
-FrameConf_EfxFireHITBG: @ 08119F50
-	.incbin "fe6-base.gba", 0x119F50, (0x119FA6 - 0x119F50) @ length: 0056
-
-	.global FrameConf_EfxElfireBGCOL
-FrameConf_EfxElfireBGCOL: @ 08119FA6
-	.incbin "fe6-base.gba", 0x119FA6, (0x119FFC - 0x119FA6) @ length: 0056
-
 	.global gUnk_08119FFC
 gUnk_08119FFC: @ 08119FFC
 	.incbin "fe6-base.gba", 0x119FFC, (0x11A06A - 0x119FFC) @ length: 006E

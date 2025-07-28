@@ -253,15 +253,15 @@ extern u8 const Tsa_EkrPopup[];
 // extern ??? gUnk_08118330
 // extern ??? gUnk_08119CD8
 extern u16 const FrameLut_EfxSongBGCOL[];
-// extern ??? FrameConf_EfxEckesachsBGCOL2
-// extern ??? gUnk_08119D78
-// extern ??? FrameConf_EfxDarkbreathBG
-// extern ??? FrameConf_EfxDarkbreathBGCOL
-// extern ??? FrameConf_EfxThunderBG
-// extern ??? FrameConf_EfxThunderBGCOL
-// extern ??? FrameConf_EfxFireBG
-// extern ??? FrameConf_EfxFireHITBG
-// extern ??? FrameConf_EfxElfireBGCOL
+extern u16 const FrameConf_EfxEckesachsBGCOL[];
+extern u16 const gUnk_08119D78[];
+extern u16 const FrameConf_EfxDarkbreathBG[];
+extern u16 const FrameConf_EfxDarkbreathBGCOL[];
+extern u16 const FrameConf_EfxThunderBG[];
+extern u16 const FrameConf_EfxThunderBGCOL[];
+extern u16 const FrameConf_EfxFireBG[];
+extern u16 const FrameConf_EfxFireHITBG[];
+extern u16 const FrameConf_EfxElfireBGCOL[];
 // extern ??? gUnk_08119FFC
 // extern ??? gUnk_0811A06A
 // extern ??? gUnk_0811A098
@@ -346,17 +346,29 @@ extern const u16 Pal_EfxSongFE6[];
 extern const u8 Img_EfxSongBG[];
 extern const u16 Pal_EfxSongBG[];
 extern const u16 Tsa_EfxSongBG[];
-// extern ??? Img_EfxEckesachsBG
-// extern ??? Pal_EfxEckesachsBGCOL2
-// extern ??? Tsa_EfxEckesachsBG
-// extern ??? Img_BreathSprites
+extern const u8 Img_EfxEckesachsBG[];
+extern const u16 Pal_EfxEckesachsBG[];
+extern const u16 Tsa_EfxEckesachsBG[];
+extern const u8 Img_BreathSprites[];
 extern u16 Pal_EfxBindingBlade[];
 extern u16 Img_EfxHurtmutEff00OBJ1[];
 extern u16 Img_EfxHurtmutEff00OBJ2[];
 extern u16 Pal_EfxHurtmutEff00OBJ[];
-// extern ??? Pal_IceBreathSprites
-// extern ??? Pal_DarkBreathSprites
-// extern ??? Img_EfxDarkbreathBG
+extern u16 Pal_IceBreathSprites[];
+extern u16 Pal_DarkBreathSprites[];
+extern u16 Img_EfxDarkbreathBG[];
+extern u16 Tsa_EfxDarkbreathBG1[];
+extern u16 Tsa_EfxDarkbreathBG2[];
+extern u16 Tsa_EfxDarkbreathBG3[];
+extern u16 Tsa_EfxDarkbreathBG4[];
+extern u16 Tsa_EfxDarkbreathBG5[];
+extern u16 Tsa_EfxDarkbreathBG6[];
+extern u16 Tsa_EfxDarkbreathBG7[];
+extern u16 Tsa_EfxDarkbreathBG8[];
+extern u16 Tsa_EfxDarkbreathBG9[];
+extern u16 Tsa_EfxDarkbreathBG10[];
+extern u16 Tsa_EfxDarkbreathBG11[];
+extern u16 Tsa_EfxDarkbreathBG12[];
 extern u16 Img_EfxCriricalEffectBG[];
 extern u16 Pal_EfxCriricalEffectBG[];
 extern u16 Tsa_EfxCriricalEffectBG_L[];
@@ -411,23 +423,81 @@ extern u16 Img_EfxSunakemuriOBJ[];
 extern u16 Pal_EfxSunakemuriOBJ1[];
 extern u16 Pal_EfxSunakemuriOBJ2[];
 extern u16 Pal_EfxSunakemuriOBJ3[];
-// extern ??? Img_EfxThunderBG
-// extern ??? Pal_EfxThunderBGCOL
-// extern ??? Img_EfxThunderOBJ
-// extern ??? Pal_EfxThunderOBJ
-// extern ??? Img_EfxFireBG
-// extern ??? Pal_EfxFireBG
-// extern ??? Img_EfxFireOBJ
-// extern ??? Pal_EfxFireOBJ
-// extern ??? Pal_EfxFireHITBG
-// extern ??? Img_EfxElfireBG
-// extern ??? Pal_EfxElfireBGCOL
-// extern ??? Tsa_EfxElfireBG
-// extern ??? Tsa_FireBreathBg
-// extern ??? Img_EfxElfireOBJ
-// extern ??? Pal_EfxElfireOBJ
-// extern ??? Pal_BoltingBg
-// extern ??? Pal_EfxForblazeBG1
+extern u16 Img_EfxThunderBG[];
+extern u16 Pal_EfxThunderBGCOL[];
+extern u16 Tsa_EfxThuderBg1[];
+extern u16 Tsa_EfxThuderBg2[];
+extern u16 Img_EfxThunderOBJ[];
+extern u16 Pal_EfxThunderOBJ[];
+extern u16 Img_EfxFireBG[];
+extern u16 Pal_EfxFireBG[];
+extern u16 Tsa_EfxFireBG_0812E4C4[];
+extern u16 Tsa_EfxFireBG_0812E56C[];
+extern u16 Tsa_EfxFireBG_0812E614[];
+extern u16 Tsa_EfxFireBG_0812E6CC[];
+extern u16 Tsa_EfxFireBG_0812E794[];
+extern u16 Tsa_EfxFireBG_0812E864[];
+extern u16 Tsa_EfxFireBG_0812E964[];
+extern u16 Tsa_EfxFireBG_0812EA6C[];
+extern u16 Tsa_EfxFireBG_0812EB80[];
+extern u16 Tsa_EfxFireBG_0812ECB8[];
+extern u16 Tsa_EfxFireBG_0812EDBC[];
+extern u16 Tsa_EfxFireBG_0812EE90[];
+extern u16 Tsa_EfxFireBG_0812EF50[];
+extern u16 Tsa_EfxFireBG_0812EFF8[];
+extern u16 Tsa_EfxFireBG_0812F0A0[];
+extern u16 Tsa_EfxFireBG_0812F158[];
+extern u16 Tsa_EfxFireBG_0812F220[];
+extern u16 Tsa_EfxFireBG_0812F2F0[];
+extern u16 Tsa_EfxFireBG_0812F3F0[];
+extern u16 Tsa_EfxFireBG_0812F4F8[];
+extern u16 Tsa_EfxFireBG_0812F60C[];
+extern u16 Tsa_EfxFireBG_0812F744[];
+extern u16 Tsa_EfxFireBG_0812F848[];
+extern u16 Tsa_EfxFireBG_0812F91C[];
+extern u16 Img_EfxFireOBJ[];
+extern u16 Pal_EfxFireOBJ[];
+extern u16 Img_EfxFireHITBG_0812FFF8[];
+extern u16 Img_EfxFireHITBG_08130D34[];
+extern u16 Img_EfxFireHITBG_08131A10[];
+extern u16 Img_EfxFireHITBG_08132838[];
+extern u16 Img_EfxFireHITBG_0813382C[];
+extern u16 Img_EfxFireHITBG_08134AC8[];
+extern u16 Img_EfxFireHITBG_08135694[];
+extern u16 Img_EfxFireHITBG_0813628C[];
+extern u16 Img_EfxFireHITBG_08136DE4[];
+extern u16 Img_EfxFireHITBG_081378E0[];
+extern u16 Img_EfxFireHITBG_081382E8[];
+extern u16 Tsa_EfxFireHITBG_08138C10[];
+extern u16 Tsa_EfxFireHITBG_08138CBC[];
+extern u16 Tsa_EfxFireHITBG_08138D74[];
+extern u16 Tsa_EfxFireHITBG_08138E40[];
+extern u16 Tsa_EfxFireHITBG_08138F20[];
+extern u16 Tsa_EfxFireHITBG_08139014[];
+extern u16 Tsa_EfxFireHITBG_0813912C[];
+extern u16 Tsa_EfxFireHITBG_08139258[];
+extern u16 Tsa_EfxFireHITBG_08139390[];
+extern u16 Tsa_EfxFireHITBG_081394D4[];
+extern u16 Tsa_EfxFireHITBG_08139628[];
+extern u16 Tsa_EfxFireHITBG_08139780[];
+extern u16 Tsa_EfxFireHITBG_081398E8[];
+extern u16 Tsa_EfxFireHITBG_08139A54[];
+extern u16 Tsa_EfxFireHITBG_08139BD0[];
+extern u16 Tsa_EfxFireHITBG_08139D64[];
+extern u16 Tsa_EfxFireHITBG_08139F04[];
+extern u16 Tsa_EfxFireHITBG_0813A0A4[];
+extern u16 Tsa_EfxFireHITBG_0813A244[];
+extern u16 Tsa_EfxFireHITBG_0813A3E4[];
+extern u16 Tsa_EfxFireHITBG_0813A574[];
+extern u16 Pal_EfxFireHITBG[];
+extern u16 Img_EfxElfireBG[];
+extern u16 Pal_EfxElfireBGCOL[];
+extern u16 Tsa_EfxElfireBG[];
+extern u16 Tsa_FireBreathBg[];
+extern u16 Img_EfxElfireOBJ[];
+extern u16 Pal_EfxElfireOBJ[];
+extern u16 Pal_BoltingBg[];
+extern u16 Pal_EfxForblazeBG1[];
 // extern ??? gUnk_08141320
 // extern ??? gUnk_08142EAC
 // extern ??? gUnk_08143A38
