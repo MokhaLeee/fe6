@@ -702,6 +702,8 @@ SECTIONS
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
+        . = ALIGN(4); src/banim_efxmagic.o(.rodata);
+        . = ALIGN(4); data/eodata_banim_efxmagic.o(.rodata);
         . = ALIGN(4); src/banim_efxhit.o(.rodata);
         . = ALIGN(4); src/banim_efxmisc.o(.rodata);
         . = ALIGN(4); data/rodata_banim_0811AE34.o(.rodata);

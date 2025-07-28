@@ -18,41 +18,41 @@ gEkrSpellAnimLut: @ 0x005D0DA0
 	.4byte 0x00000000
 	.4byte 0x00000000
 	.4byte StartSpellAnimSong
-	.4byte func_fe6_0804DE4C
+	.4byte StartSpellAnimDance
 	.4byte StartSpellAnimBallista
-	.4byte func_fe6_0804E0E8
+	.4byte StartSpellAnimEckesachs
 	.4byte StartSpellAnimBindingBlade
 	.4byte StartSpellAnimFireBreath
 	.4byte StartSpellAnimIceBreath
 	.4byte StartSpellAnimDarkBreath
 	.4byte StartSpellAnimFire
 	.4byte StartSpellAnimElfire
-	.4byte func_fe6_080513AC
+	.4byte StartSpellAnimForblaze
 	.4byte StartSpellAnimThunder
-	.4byte func_fe6_0804FC28
-	.4byte func_fe6_0804F5C4
-	.4byte func_fe6_0805007C
-	.4byte func_fe6_080503BC
-	.4byte func_fe6_08050860
-	.4byte func_fe6_08050DE0
-	.4byte func_fe6_0805100C
-	.4byte func_fe6_08052090
-	.4byte func_fe6_08051CD0
-	.4byte func_fe6_080529EC
-	.4byte func_fe6_08053764
-	.4byte func_fe6_08053DC8
-	.4byte func_fe6_08054558
-	.4byte func_fe6_080546A8
-	.4byte func_fe6_08054848
-	.4byte func_fe6_080549E8
-	.4byte func_fe6_08055234
-	.4byte func_fe6_08055264
-	.4byte func_fe6_080556BC
-	.4byte func_fe6_0805595C
-	.4byte func_fe6_08055BF4
-	.4byte func_fe6_08055F24
-	.4byte func_fe6_080561A0
-	.4byte func_fe6_080567AC
+	.4byte StartSpellAnimBolting
+	.4byte StartSpellAnimFimbulvetr
+	.4byte StartSpellAnimAircalibur
+	.4byte StartSpellAnimFlux
+	.4byte StartSpellAnimNosferatu
+	.4byte StartSpellAnimLightning
+	.4byte StartSpellAnimPurge
+	.4byte StartSpellAnimAureola
+	.4byte StartSpellAnimDivine
+	.4byte StartSpellAnimApocalypse
+	.4byte StartSpellAnimEclipse
+	.4byte StartSpellAnimFenrir
+	.4byte StartSpellAnimHeal
+	.4byte StartSpellAnimMend
+	.4byte StartSpellAnimRecover
+	.4byte StartSpellAnimPhysic
+	.4byte StartSpellAnimFortify
+	.4byte StartSpellAnimLatona
+	.4byte StartSpellAnimRestore
+	.4byte StartSpellAnimSilence
+	.4byte StartSpellAnimSleep
+	.4byte StartSpellAnimHammerne
+	.4byte StartSpellAnimBerserk
+	.4byte StartSpellAnimBarrier
 	.4byte 0x00000000
 	.4byte 0x00000000
 	.4byte 0x00000000

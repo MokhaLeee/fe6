@@ -22,7 +22,7 @@ def generate_unsymboled_const_data():
 
 def write_data(fs, fh, symbol, start, end):
     # fh.write(f'// ??? {symbol}\n')
-    fh.write(f'extern u8 {symbol}[];\n')
+    fh.write(f'extern u16 {symbol}[];\n')
 
     fs.write(f'\n\t.global {symbol}\n')
     fs.write(f'{symbol}:\t@ 0x{symbol[5:5+8]}\n')
