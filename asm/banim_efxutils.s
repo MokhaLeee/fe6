@@ -420,8 +420,8 @@ EfxChapterMapFadeOUT: @ 0x0805B9A4
 	.align 2, 0
 .L0805B9C4: .4byte gPal
 
-	thumb_func_start func_fe6_0805B9C8
-func_fe6_0805B9C8: @ 0x0805B9C8
+	thumb_func_start BanimSpawnRandB
+BanimSpawnRandB: @ 0x0805B9C8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl RandNextB

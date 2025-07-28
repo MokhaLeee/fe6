@@ -4,8 +4,8 @@
 
 	.incbin "fe6-base.gba", 0x5E4940, (0x5E5858 - 0x5E4940)
 
-	.global gUnk_085E5858
-gUnk_085E5858: @ 085E5858
+	.global AnimScr_EfxThunderstormOBJ
+AnimScr_EfxThunderstormOBJ: @ 085E5858
 	.incbin "fe6-base.gba", 0x5E5858, (0x5E5C10 - 0x5E5858) @ length: 03B8
 
 	.global gUnk_085E5C10
@@ -28,36 +28,36 @@ gUnk_085E5C3C: @ 085E5C3C
 gUnk_085E5C44: @ 085E5C44
 	.incbin "fe6-base.gba", 0x5E5C44, (0x5E79F8 - 0x5E5C44) @ length: 1DB4
 
-	.global gUnk_085E79F8
-gUnk_085E79F8: @ 085E79F8
+	.global AnimScr_EfxFimbulvetrOBJ1
+AnimScr_EfxFimbulvetrOBJ1: @ 085E79F8
 	.incbin "fe6-base.gba", 0x5E79F8, (0x5E7A64 - 0x5E79F8) @ length: 006C
 
-	.global gUnk_085E7A64
-gUnk_085E7A64: @ 085E7A64
+	.global AnimScr_EfxFimbulvetrOBJ2Fall
+AnimScr_EfxFimbulvetrOBJ2Fall: @ 085E7A64
 	.incbin "fe6-base.gba", 0x5E7A64, (0x5E7AC4 - 0x5E7A64) @ length: 0060
 
-	.global gUnk_085E7AC4
-gUnk_085E7AC4: @ 085E7AC4
+	.global AnimScr_FimbulvetrOBJ2Fall_TypeA
+AnimScr_FimbulvetrOBJ2Fall_TypeA: @ 085E7AC4
 	.incbin "fe6-base.gba", 0x5E7AC4, (0x5E7ACC - 0x5E7AC4) @ length: 0008
 
-	.global gUnk_085E7ACC
-gUnk_085E7ACC: @ 085E7ACC
+	.global AnimScr_FimbulvetrOBJ2Fall_TypeB
+AnimScr_FimbulvetrOBJ2Fall_TypeB: @ 085E7ACC
 	.incbin "fe6-base.gba", 0x5E7ACC, (0x5E90AC - 0x5E7ACC) @ length: 15E0
 
-	.global gUnk_085E90AC
-gUnk_085E90AC: @ 085E90AC
+	.global AnimScr_EfxAlacaliburOBJ_RF
+AnimScr_EfxAlacaliburOBJ_RF: @ 085E90AC
 	.incbin "fe6-base.gba", 0x5E90AC, (0x5E9160 - 0x5E90AC) @ length: 00B4
 
-	.global gUnk_085E9160
-gUnk_085E9160: @ 085E9160
+	.global AnimScr_EfxAlacaliburOBJ_RB
+AnimScr_EfxAlacaliburOBJ_RB: @ 085E9160
 	.incbin "fe6-base.gba", 0x5E9160, (0x5EA7F0 - 0x5E9160) @ length: 1690
 
-	.global gUnk_085EA7F0
-gUnk_085EA7F0: @ 085EA7F0
+	.global AnimScr_EfxAlacaliburOBJ_LF
+AnimScr_EfxAlacaliburOBJ_LF: @ 085EA7F0
 	.incbin "fe6-base.gba", 0x5EA7F0, (0x5EA8A4 - 0x5EA7F0) @ length: 00B4
 
-	.global gUnk_085EA8A4
-gUnk_085EA8A4: @ 085EA8A4
+	.global AnimScr_EfxAlacaliburOBJ_LB
+AnimScr_EfxAlacaliburOBJ_LB: @ 085EA8A4
 	.incbin "fe6-base.gba", 0x5EA8A4, (0x5EABC0 - 0x5EA8A4) @ length: 031C
 
 	.global gUnk_085EABC0

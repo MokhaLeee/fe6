@@ -1161,7 +1161,7 @@ func_fe6_080587C0: @ 0x080587C0
 	adds r1, r2, r6
 	strh r1, [r0, #4]
 	ldr r0, [r4, #0x5c]
-	ldr r1, .L0805881C @ =gUnk_081AC0F4
+	ldr r1, .L0805881C @ =Pal_EfxFimbulvetrOBJ
 	bl func_fe6_08058130
 	ldr r0, [r4, #0x5c]
 	ldr r1, .L08058820 @ =gUnk_081ABEA0
@@ -1172,7 +1172,7 @@ func_fe6_080587C0: @ 0x080587C0
 	.align 2, 0
 .L08058814: .4byte gUnk_085D3AB0
 .L08058818: .4byte gUnk_085F0A14
-.L0805881C: .4byte gUnk_081AC0F4
+.L0805881C: .4byte Pal_EfxFimbulvetrOBJ
 .L08058820: .4byte gUnk_081ABEA0
 
 	thumb_func_start func_fe6_08058824

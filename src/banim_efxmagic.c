@@ -2286,7 +2286,7 @@ void NewEfxDarkbreathBGCOL(struct Anim *anim)
     proc->timer = 0;
     proc->frame = 0;
     proc->frame_config = frames;
-    proc->pal = Pal_BoltingBg;
+    proc->pal = Pal_EfxThunderstormBG;
 }
 
 void EfxDarkbreathBGCOL_Loop(struct ProcEfxBGCOL * proc)

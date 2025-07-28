@@ -725,8 +725,8 @@ Img_EfxElfireOBJ: @ 0813BAFC
 Pal_EfxElfireOBJ: @ 0813BD74
 	.incbin "fe6-base.gba", 0x13BD74, (0x13E75C - 0x13BD74) @ length: 29E8
 
-	.global Pal_BoltingBg
-Pal_BoltingBg: @ 0813E75C
+	.global Pal_EfxThunderstormBG
+Pal_EfxThunderstormBG: @ 0813E75C
 	.incbin "fe6-base.gba", 0x13E75C, (0x1408CC - 0x13E75C) @ length: 2170
 
 	.global Pal_EfxForblazeBG1
@@ -773,32 +773,32 @@ gUnk_08143EE4: @ 08143EE4
 gUnk_08144A00: @ 08144A00
 	.incbin "fe6-base.gba", 0x144A00, (0x14A498 - 0x144A00) @ length: 5A98
 
-	.global gUnk_0814A498
-gUnk_0814A498: @ 0814A498
+	.global Pal_EfxFimbulvetrBG
+Pal_EfxFimbulvetrBG: @ 0814A498
 	.incbin "fe6-base.gba", 0x14A498, (0x1521C0 - 0x14A498) @ length: 7D28
 
-	.global gUnk_081521C0
-gUnk_081521C0: @ 081521C0
+	.global Pal_EfxFimbulvetrBGTR
+Pal_EfxFimbulvetrBGTR: @ 081521C0
 	.incbin "fe6-base.gba", 0x1521C0, (0x152E78 - 0x1521C0) @ length: 0CB8
 
-	.global gUnk_08152E78
-gUnk_08152E78: @ 08152E78
+	.global Img_EfxFimbulvetrOBJ
+Img_EfxFimbulvetrOBJ: @ 08152E78
 	.incbin "fe6-base.gba", 0x152E78, (0x159D98 - 0x152E78) @ length: 6F20
 
-	.global gUnk_08159D98
-gUnk_08159D98: @ 08159D98
+	.global Img_EfxAlacaliburBG
+Img_EfxAlacaliburBG: @ 08159D98
 	.incbin "fe6-base.gba", 0x159D98, (0x15B364 - 0x159D98) @ length: 15CC
 
-	.global gUnk_0815B364
-gUnk_0815B364: @ 0815B364
+	.global Pal_EfxAlacaliburBGCOL
+Pal_EfxAlacaliburBGCOL: @ 0815B364
 	.incbin "fe6-base.gba", 0x15B364, (0x15B910 - 0x15B364) @ length: 05AC
 
-	.global gUnk_0815B910
-gUnk_0815B910: @ 0815B910
+	.global Img_EfxAlacaliburOBJ
+Img_EfxAlacaliburOBJ: @ 0815B910
 	.incbin "fe6-base.gba", 0x15B910, (0x15BED4 - 0x15B910) @ length: 05C4
 
-	.global gUnk_0815BED4
-gUnk_0815BED4: @ 0815BED4
+	.global Pal_EfxAlacaliburOBJ
+Pal_EfxAlacaliburOBJ: @ 0815BED4
 	.incbin "fe6-base.gba", 0x15BED4, (0x15F880 - 0x15BED4) @ length: 39AC
 
 	.global gUnk_0815F880
@@ -961,8 +961,8 @@ gUnk_081ABCA0: @ 081ABCA0
 gUnk_081ABEA0: @ 081ABEA0
 	.incbin "fe6-base.gba", 0x1ABEA0, (0x1AC0F4 - 0x1ABEA0) @ length: 0254
 
-	.global gUnk_081AC0F4
-gUnk_081AC0F4: @ 081AC0F4
+	.global Pal_EfxFimbulvetrOBJ
+Pal_EfxFimbulvetrOBJ: @ 081AC0F4
 	.incbin "fe6-base.gba", 0x1AC0F4, (0x1AC114 - 0x1AC0F4) @ length: 0020
 
 	.global gUnk_081AC114
