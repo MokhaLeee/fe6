@@ -146,10 +146,10 @@ AnimScr_EfxTeyariObjType1Right: @ 085D4998
 AnimScr_EfxTeyariObjType1Left: @ 085D4BF8
 	.incbin "fe6-base.gba", 0x5D4BF8, (0x5D4CFC - 0x5D4BF8) @ length: 0104
 
-	.global gUnk_085D4CFC
-gUnk_085D4CFC: @ 085D4CFC
+	.global AnimScr_EfxShooterOBJ_L
+AnimScr_EfxShooterOBJ_L: @ 085D4CFC
 	.incbin "fe6-base.gba", 0x5D4CFC, (0x5D4D98 - 0x5D4CFC) @ length: 009C
 
-	.global gUnk_085D4D98
-gUnk_085D4D98: @ 085D4D98
+	.global AnimScr_EfxShooterOBJ_R
+AnimScr_EfxShooterOBJ_R: @ 085D4D98
 	.incbin "fe6-base.gba", 0x5D4D98, (0x5D4DB0 - 0x5D4D98) @ length: 07F8

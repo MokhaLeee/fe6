@@ -1,11 +1,11 @@
 	.section .rodata
 
-	.global FrameLut_EfxSongOBJ
-FrameLut_EfxSongOBJ: @ 08119CDC
+	.global FrameLut_EfxSongBGCOL
+FrameLut_EfxSongBGCOL: @ 08119CDC
 	.incbin "fe6-base.gba", 0x119CDC, (0x119D56 - 0x119CDC) @ length: 007A
 
-	.global gUnk_08119D56
-gUnk_08119D56: @ 08119D56
+	.global FrameConf_EfxEckesachsBGCOL2
+FrameConf_EfxEckesachsBGCOL2: @ 08119D56
 	.incbin "fe6-base.gba", 0x119D56, (0x119D78 - 0x119D56) @ length: 0022
 
 	.global gUnk_08119D78
@@ -88,8 +88,8 @@ gUnk_0811A27C: @ 0811A27C
 gUnk_0811A302: @ 0811A302
 	.incbin "fe6-base.gba", 0x11A302, (0x11A478 - 0x11A302) @ length: 0176
 
-	.global gUnk_0811A478
-gUnk_0811A478: @ 0811A478
+	.global FrameConf_EfxForblazeBG1
+FrameConf_EfxForblazeBG1: @ 0811A478
 	.incbin "fe6-base.gba", 0x11A478, (0x11A50E - 0x11A478) @ length: 0096
 
 	.global gUnk_0811A50E

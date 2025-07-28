@@ -125,16 +125,16 @@ Pal_EfxSongBG: @ 0811CD14
 Tsa_EfxSongBG: @ 0811D0D4
 	.incbin "fe6-base.gba", 0x11D0D4, (0x11E36C - 0x11D0D4) @ length: 1298
 
-	.global gUnk_0811E36C
-gUnk_0811E36C: @ 0811E36C
+	.global Img_EfxEckesachsBG
+Img_EfxEckesachsBG: @ 0811E36C
 	.incbin "fe6-base.gba", 0x11E36C, (0x11F22C - 0x11E36C) @ length: 0EC0
 
-	.global gUnk_0811F22C
-gUnk_0811F22C: @ 0811F22C
+	.global Pal_EfxEckesachsBGCOL2
+Pal_EfxEckesachsBGCOL2: @ 0811F22C
 	.incbin "fe6-base.gba", 0x11F22C, (0x11F32C - 0x11F22C) @ length: 0100
 
-	.global gUnk_0811F32C
-gUnk_0811F32C: @ 0811F32C
+	.global Tsa_EfxEckesachsBG
+Tsa_EfxEckesachsBG: @ 0811F32C
 	.incbin "fe6-base.gba", 0x11F32C, (0x11F6F4 - 0x11F32C) @ length: 03C8
 
 	.global Img_BreathSprites
@@ -449,8 +449,8 @@ Pal_EfxElfireOBJ: @ 0813BD74
 Pal_BoltingBg: @ 0813E75C
 	.incbin "fe6-base.gba", 0x13E75C, (0x1408CC - 0x13E75C) @ length: 2170
 
-	.global gUnk_081408CC
-gUnk_081408CC: @ 081408CC
+	.global Pal_EfxForblazeBG1
+Pal_EfxForblazeBG1: @ 081408CC
 	.incbin "fe6-base.gba", 0x1408CC, (0x141320 - 0x1408CC) @ length: 0A54
 
 	.global gUnk_08141320

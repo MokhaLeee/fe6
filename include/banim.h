@@ -139,7 +139,7 @@ struct ProcEfxBGCOL {
     STRUCT_PAD(0x34, 0x44);
     /* 44 */ u32 frame;
     /* 48 */ const u16 * frame_config;
-    /* 4C */ void * pal;
+    /* 4C */ const u16 * pal;
     STRUCT_PAD(0x50, 0x5C);
     /* 5C */ struct  BaSprite *anim;
 };
@@ -1006,72 +1006,72 @@ void NewEfxTeyariOBJ(struct Anim *anim, int type);
 void EfxTeyariObj_Loop(struct ProcEfxMagicOBJ *proc);
 void StartSpellAnimSong(struct Anim *anim);
 void EfxSong_Loop(struct ProcEfx *proc);
-void StartSubSpell_EfxSongBG(struct Anim *anim);
+void NewEfxSongBG(struct Anim *anim);
 void EfxSongBG_Loop(struct ProcEfxBG *proc);
-void StartSubSpell_EfxSongOBJ(struct Anim *anim);
-// func_fe6_0804DE04
-// func_fe6_0804DE4C
-// func_fe6_0804DE84
-// StartSpellAnimBallista
-// func_fe6_0804DF80
-// func_fe6_0804E040
-// func_fe6_0804E0B8
-// func_fe6_0804E0E8
-// func_fe6_0804E124
-// func_fe6_0804E1C0
-// func_fe6_0804E280
-// func_fe6_0804E2B4
-// func_fe6_0804E2F8
-// func_fe6_0804E3C0
-// func_fe6_0804E3FC
-// StartSpellAnimBindingBlade
-// EfxHurtmut_Loop
-// NewEfxHurtmutOBJ
-// EfxHurtmutOBJ_Loop
-// StartSpellAnimFireBreath
-// EfxFirebreath_Loop
-// NewEfxFirebreathOBJ
-// EfxFirebreathOBJ_Loop
-// NewEfxFirebreathBG
-// func_fe6_0804E814
-// NewEfxFirebreathBGCOL
-// func_fe6_0804E884
-// StartSpellAnimIceBreath
-// EfxIcebreath_Loop
-// NewEfxIcebreathOBJ
-// EfxIcebreathOBJ_Loop
-// StartSpellAnimDarkBreath
-// EfxDarkbreath_Loop
-// NewEfxDarkbreathBG
-// EfxDarkbreathBG_Loop
-// NewEfxDarkbreathBGCOL
-// EfxDarkbreathBGCOL_Loop
-// NewEfxDarkbreathOBJ
-// EfxDarkbreathOBJ_Loop
-// StartSpellAnimThunder
-// EfxThunder_Loop
-// NewEfxThunderBG
-// EfxThunderBG_Loop
-// NewEfxThunderBGCOL
-// EfxThunderBGCOL_Loop
-// NewEfxThunderOBJ
-// EfxThunderOBJ_Loop
-// StartSpellAnimFire
-// StartSpellAnimElfire
-// EfxFire_Loop
-// NewEfxFireBG
-// EfxFireBG_Loop
-// NewEfxFireOBJ
-// EfxFireOBJ_Loop
-// NewEfxFireHITBG
-// EfxFireHITBG_Loop
-// NewEfxElfireBG
-// EfxElfireBG_Loop
-// NewEfxElfireBGCOL
-// EfxElfireBGCOL_Loop
-// NewEfxElfireOBJ
-// EfxElfireOBJ_Loop
-// func_fe6_0804F5C4
+void NewEfxSongBGCOL(struct Anim *anim);
+void EfxSongBGCOL_Loop(struct ProcEfxBGCOL *proc);
+void StartSpellAnimDance(struct Anim *anim);
+void EfxDance_Loop(struct ProcEfx *proc);
+void StartSpellAnimBallista(struct Anim *anim);
+void EfxShooter_Loop(struct ProcEfx *proc);
+void NewEfxShooterOBJ(struct Anim *anim);
+void EfxShooterOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void StartSpellAnimEckesachs(struct Anim *anim);
+void EfxEckesachs_Loop(struct ProcEfx *proc);
+void NewEfxEckesachsBG(struct Anim *anim);
+void EfxEckesachsBG_Loop(struct ProcEfxBG *proc);
+void NewEfxEckesachsBGCOL1(struct Anim *anim);
+void EfxEckesachsBGCOL1_Loop(struct ProcEfxBGCOL *proc);
+void NewEfxEckesachsBGCOL2(struct Anim *anim);
+void EfxEckesachsBGCOL2_Loop(struct ProcEfxBGCOL *proc);
+void StartSpellAnimBindingBlade(struct Anim *anim);
+void EfxHurtmut_Loop(struct ProcEfx *proc);
+void NewEfxHurtmutOBJ(struct Anim *anim);
+void EfxHurtmutOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void StartSpellAnimFireBreath(struct Anim *anim);
+void EfxFirebreath_Loop(struct ProcEfx *proc);
+void NewEfxFirebreathOBJ(struct Anim *anim);
+void EfxFirebreathOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void NewEfxFirebreathBG(struct Anim *anim);
+void func_fe6_0804E814(struct ProcEfxBG *proc);
+void NewEfxFirebreathBGCOL(struct Anim *anim);
+void func_fe6_0804E884(struct ProcEfxBGCOL *proc);
+void StartSpellAnimIceBreath(struct Anim *anim);
+void EfxIcebreath_Loop(struct ProcEfx *proc);
+void NewEfxIcebreathOBJ(struct Anim *anim);
+void EfxIcebreathOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void StartSpellAnimDarkBreath(struct Anim *anim);
+void EfxDarkbreath_Loop(struct ProcEfx *proc);
+void NewEfxDarkbreathBG(struct Anim *anim);
+void EfxDarkbreathBG_Loop(struct ProcEfxBG *proc);
+void NewEfxDarkbreathBGCOL(struct Anim *anim);
+void EfxDarkbreathBGCOL_Loop(struct ProcEfxBGCOL *proc);
+void NewEfxDarkbreathOBJ(struct Anim *anim);
+void EfxDarkbreathOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void StartSpellAnimThunder(struct Anim *anim);
+void EfxThunder_Loop(struct ProcEfx *proc);
+void NewEfxThunderBG(struct Anim *anim);
+void EfxThunderBG_Loop(struct ProcEfxBG *proc);
+void NewEfxThunderBGCOL(struct Anim *anim);
+void EfxThunderBGCOL_Loop(struct ProcEfxBGCOL *proc);
+void NewEfxThunderOBJ(struct Anim *anim);
+void EfxThunderOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void StartSpellAnimFire(struct Anim *anim);
+void StartSpellAnimElfire(struct Anim *anim);
+void EfxFire_Loop(struct ProcEfx *proc);
+void NewEfxFireBG(struct Anim *anim);
+void EfxFireBG_Loop(struct ProcEfxBG *proc);
+void NewEfxFireOBJ(struct Anim *anim);
+void EfxFireOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+void NewEfxFireHITBG(struct Anim *anim);
+void EfxFireHITBG_Loop(struct ProcEfxBG *proc);
+void NewEfxElfireBG(struct Anim *anim);
+void EfxElfireBG_Loop(struct ProcEfxBG *proc);
+void NewEfxElfireBGCOL(struct Anim *anim);
+void EfxElfireBGCOL_Loop(struct ProcEfxBGCOL *proc);
+void NewEfxElfireOBJ(struct Anim *anim);
+void EfxElfireOBJ_Loop(struct ProcEfxMagicOBJ *proc);
+// StartSpellAnimFimbulvetr
 // func_fe6_0804F600
 // func_fe6_0804F738
 // func_fe6_0804F7BC
@@ -1083,7 +1083,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_0804F9E8
 // func_fe6_0804FA14
 // func_fe6_0804FB6C
-// func_fe6_0804FC28
+// StartSpellAnimBolting
 // func_fe6_0804FC64
 // func_fe6_0804FD24
 // func_fe6_0804FD78
@@ -1097,7 +1097,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_0804FF94
 // func_fe6_0804FFD8
 // func_fe6_08050038
-// func_fe6_0805007C
+// StartSpellAnimAircalibur
 // func_fe6_080500B8
 // func_fe6_080501B8
 // func_fe6_08050228
@@ -1105,7 +1105,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_080502C0
 // func_fe6_08050308
 // func_fe6_08050390
-// func_fe6_080503BC
+// StartSpellAnimFlux
 // func_fe6_080503F8
 // func_fe6_080504F0
 // func_fe6_080505A0
@@ -1118,7 +1118,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_080507D4
 // func_fe6_08050810
 // func_fe6_0805083C
-// func_fe6_08050860
+// StartSpellAnimNosferatu
 // func_fe6_0805089C
 // func_fe6_080509E4
 // func_fe6_08050A70
@@ -1129,11 +1129,11 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08050D04
 // func_fe6_08050D68
 // func_fe6_08050D98
-// func_fe6_08050DE0
+// StartSpellAnimLightning
 // func_fe6_08050E1C
 // func_fe6_08050ED4
 // func_fe6_08050F54
-// func_fe6_0805100C
+// StartSpellAnimPurge
 // func_fe6_08051050
 // func_fe6_0805108C
 // func_fe6_080511BC
@@ -1142,13 +1142,13 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_080512BC
 // func_fe6_08051328
 // func_fe6_08051394
-// func_fe6_080513AC
-// func_fe6_080513E8
-// func_fe6_0805151C
+// StartSpellAnimForblaze
+// EfxForblaze_Loop
+// NewEfxForblazeBG1
 // func_fe6_080515A0
 // func_fe6_08051624
 // func_fe6_0805166C
-// func_fe6_080516B8
+// NewEfxForblazeBGCOL1
 // func_fe6_080516D8
 // func_fe6_080516EC
 // func_fe6_08051700
@@ -1165,7 +1165,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08051C00
 // func_fe6_08051C30
 // func_fe6_08051C5C
-// func_fe6_08051CD0
+// StartSpellAnimDivine
 // func_fe6_08051D0C
 // func_fe6_08051DFC
 // func_fe6_08051E80
@@ -1173,7 +1173,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08051F88
 // func_fe6_08051FEC
 // func_fe6_08052060
-// func_fe6_08052090
+// StartSpellAnimAureola
 // func_fe6_080520CC
 // func_fe6_08052238
 // func_fe6_080522D0
@@ -1191,7 +1191,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08052878
 // func_fe6_080528CC
 // func_fe6_08052974
-// func_fe6_080529EC
+// StartSpellAnimApocalypse
 // func_fe6_08052A28
 // func_fe6_08052BA8
 // func_fe6_08052C34
@@ -1222,7 +1222,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08053568
 // func_fe6_080535F8
 // func_fe6_080536C4
-// func_fe6_08053764
+// StartSpellAnimEclipse
 // func_fe6_080537A0
 // func_fe6_08053954
 // func_fe6_080539C4
@@ -1237,7 +1237,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08053CFC
 // func_fe6_08053D5C
 // func_fe6_08053DB0
-// func_fe6_08053DC8
+// StartSpellAnimFenrir
 // func_fe6_08053E04
 // func_fe6_08053FF4
 // func_fe6_08054084
@@ -1254,13 +1254,13 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_0805440C
 // func_fe6_08054458
 // func_fe6_080544D8
-// func_fe6_08054558
+// StartSpellAnimHeal
 // func_fe6_08054580
-// func_fe6_080546A8
+// StartSpellAnimMend
 // func_fe6_080546D0
-// func_fe6_08054848
+// StartSpellAnimRecover
 // func_fe6_08054870
-// func_fe6_080549E8
+// StartSpellAnimPhysic
 // func_fe6_08054A10
 // func_fe6_08054B98
 // func_fe6_08054C54
@@ -1279,8 +1279,8 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_080550EC
 // func_fe6_08055134
 // func_fe6_08055200
-// func_fe6_08055234
-// func_fe6_08055264
+// StartSpellAnimFortify
+// StartSpellAnimLatona
 // func_fe6_08055294
 // func_fe6_08055364
 // func_fe6_080553B4
@@ -1290,19 +1290,19 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08055580
 // func_fe6_08055628
 // func_fe6_08055674
-// func_fe6_080556BC
+// StartSpellAnimRestore
 // func_fe6_080556F8
 // func_fe6_0805581C
 // func_fe6_08055870
 // func_fe6_080558D4
 // func_fe6_0805594C
-// func_fe6_0805595C
+// StartSpellAnimSilence
 // func_fe6_08055998
 // func_fe6_08055AA0
 // func_fe6_08055B2C
 // func_fe6_08055B84
 // func_fe6_08055BDC
-// func_fe6_08055BF4
+// StartSpellAnimSleep
 // func_fe6_08055C30
 // func_fe6_08055D30
 // func_fe6_08055DBC
@@ -1312,13 +1312,13 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_08055ED0
 // func_fe6_08055EF4
 // func_fe6_08055F14
-// func_fe6_08055F24
+// StartSpellAnimHammerne
 // func_fe6_08055F60
 // func_fe6_08056080
 // func_fe6_080560D4
 // func_fe6_08056138
 // func_fe6_08056190
-// func_fe6_080561A0
+// StartSpellAnimBerserk
 // func_fe6_080561DC
 // func_fe6_080562C0
 // func_fe6_080563E0
@@ -1337,7 +1337,7 @@ void StartSubSpell_EfxSongOBJ(struct Anim *anim);
 // func_fe6_080566F8
 // func_fe6_08056734
 // func_fe6_08056770
-// func_fe6_080567AC
+// StartSpellAnimBarrier
 // func_fe6_080567E8
 // func_fe6_080568B4
 // func_fe6_08056910
@@ -1854,14 +1854,14 @@ extern CONST_DATA struct ProcScr ProcScr_EfxTeyari[];
 extern CONST_DATA struct ProcScr ProcScr_EfxTeyariOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSong[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSongBG[];
-// ??? ProcScr_EfxSongOBJ
-// ??? gUnk_085D108C
-// ??? gUnk_085D10A4
-// ??? gUnk_085D10BC
-// ??? gUnk_085D10D4
-// ??? gUnk_085D10EC
-// ??? gUnk_085D1104
-// ??? gUnk_085D111C
+extern CONST_DATA struct ProcScr ProcScr_EfxSongBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxDance[];
+// ??? ProcScr_EfxShooter
+// ??? ProcScr_EfxShooterOBJ
+// ??? ProcScr_EfxEckesachs
+// ??? ProcScr_EfxEckesachsBG
+// ??? ProcScr_EfxEckesachsBGCOL1
+// ??? ProcScr_EfxEckesachsBGCOL2
 // ??? ProcScr_EfxHurtmut
 // ??? ProcScr_EfxHurtmutOBJ
 // ??? ProcScr_EfxFirebreath
@@ -1939,10 +1939,10 @@ extern CONST_DATA struct ProcScr ProcScr_EfxSongBG[];
 // ??? gUnk_085D2100
 // ??? gUnk_085D2120
 // ??? gUnk_085D2158
-// ??? gUnk_085D2178
-// ??? gUnk_085D2190
-// ??? gUnk_085D21A8
-// ??? gUnk_085D21DC
+// ??? ProcScr_EfxForblaze
+// ??? ProcScr_EfxForblazeBG1
+// ??? Tsas_EfxForblazeBG1
+// ??? Img_EfxForblazeBG1
 // ??? gUnk_085D2210
 // ??? gUnk_085D2230
 // ??? gUnk_085D2270
@@ -2118,8 +2118,8 @@ extern u32 AnimScr_EfxTeyariObjType0Right[];
 extern u32 AnimScr_EfxTeyariObjType0Left[];
 extern u32 AnimScr_EfxTeyariObjType1Right[];
 extern u32 AnimScr_EfxTeyariObjType1Left[];
-// ??? gUnk_085D4CFC
-// ??? gUnk_085D4D98
+// ??? AnimScr_EfxShooterOBJ_L
+// ??? AnimScr_EfxShooterOBJ_R
 extern u32 AnimScr_EfxDanceObj[];
 extern u32 AnimScr_EfxSongFE6[];
 extern u32 AnimScr_EfxBindingBlade_Right[];

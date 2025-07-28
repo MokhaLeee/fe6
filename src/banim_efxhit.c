@@ -197,7 +197,7 @@ void EfxCriricalEffectBGCOL_Loop(struct ProcEfxBGCOL *proc)
 	int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
 
 	if (ret >= 0) {
-		u16 *pal = proc->pal;
+		const u16 *pal = proc->pal;
 
 		SpellFx_RegisterBgPal(pal + BGPAL_OFFSET(ret), 0x20);
 		return;

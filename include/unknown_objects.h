@@ -252,8 +252,8 @@ extern u8 const Tsa_EkrPopup[];
 // extern ??? gUnk_08117B90
 // extern ??? gUnk_08118330
 // extern ??? gUnk_08119CD8
-// extern ??? FrameLut_EfxSongOBJ
-// extern ??? gUnk_08119D56
+extern u16 const FrameLut_EfxSongBGCOL[];
+// extern ??? FrameConf_EfxEckesachsBGCOL2
 // extern ??? gUnk_08119D78
 // extern ??? FrameConf_EfxDarkbreathBG
 // extern ??? FrameConf_EfxDarkbreathBGCOL
@@ -274,7 +274,7 @@ extern u8 const Tsa_EkrPopup[];
 // extern ??? gUnk_0811A276
 // extern ??? gUnk_0811A27C
 // extern ??? gUnk_0811A302
-// extern ??? gUnk_0811A478
+// extern ??? FrameConf_EfxForblazeBG1
 // extern ??? gUnk_0811A50E
 // extern ??? gUnk_0811A520
 // extern ??? gUnk_0811A530
@@ -346,9 +346,9 @@ extern const u16 Pal_EfxSongFE6[];
 extern const u8 Img_EfxSongBG[];
 extern const u16 Pal_EfxSongBG[];
 extern const u16 Tsa_EfxSongBG[];
-// extern ??? gUnk_0811E36C
-// extern ??? gUnk_0811F22C
-// extern ??? gUnk_0811F32C
+// extern ??? Img_EfxEckesachsBG
+// extern ??? Pal_EfxEckesachsBGCOL2
+// extern ??? Tsa_EfxEckesachsBG
 // extern ??? Img_BreathSprites
 extern u16 Pal_EfxBindingBlade[];
 extern u16 Img_EfxHurtmutEff00OBJ1[];
@@ -427,7 +427,7 @@ extern u16 Pal_EfxSunakemuriOBJ3[];
 // extern ??? Img_EfxElfireOBJ
 // extern ??? Pal_EfxElfireOBJ
 // extern ??? Pal_BoltingBg
-// extern ??? gUnk_081408CC
+// extern ??? Pal_EfxForblazeBG1
 // extern ??? gUnk_08141320
 // extern ??? gUnk_08142EAC
 // extern ??? gUnk_08143A38

@@ -1127,8 +1127,8 @@ void EfxSong_Loop(struct ProcEfx *proc)
     proc->timer++;
 
     if (proc->timer == 39) {
-        StartSubSpell_EfxSongBG(anim);
-        StartSubSpell_EfxSongOBJ(anim);
+        NewEfxSongBG(anim);
+        NewEfxSongBGCOL(anim);
 
 #if FE8U
         NewEfxRestWINH_(anim, 130, 1);
@@ -1160,7 +1160,13 @@ void EfxSong_Loop(struct ProcEfx *proc)
     }
 }
 
-void StartSubSpell_EfxSongBG(struct Anim *anim)
+struct ProcScr CONST_DATA ProcScr_EfxSongBG[] = {
+    PROC_NAME_DEBUG("efxSongBG"),
+    PROC_REPEAT(EfxSongBG_Loop),
+    PROC_END,
+};
+
+void NewEfxSongBG(struct Anim *anim)
 {
     struct ProcEfxBG *proc;
 
@@ -1187,3 +1193,107 @@ void EfxSongBG_Loop(struct ProcEfxBG *proc)
         Proc_Break(proc);
     }
 }
+
+struct ProcScr CONST_DATA ProcScr_EfxSongBGCOL[] = {
+    PROC_NAME_DEBUG("efxSongBGCOL"),
+    PROC_MARK(PROC_MARK_PAL_CHG),
+    PROC_REPEAT(EfxSongBGCOL_Loop),
+    PROC_END,
+};
+
+void NewEfxSongBGCOL(struct Anim *anim)
+{
+    struct ProcEfxBGCOL *proc;
+
+    gEfxBgSemaphore++;
+
+    proc = SpawnProc(ProcScr_EfxSongBGCOL, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->frame = 0;
+    proc->frame_config = FrameLut_EfxSongBGCOL;
+    proc->pal = Pal_EfxSongBG;
+}
+
+void EfxSongBGCOL_Loop(struct ProcEfxBGCOL *proc)
+{
+    int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+    if (ret >= 0) {
+        const u16 *pal = proc->pal;
+
+        SpellFx_RegisterBgPal(pal + PAL_OFFSET(ret), 0x20);
+        return;
+    }
+
+    if (ret == -1) {
+        gEfxBgSemaphore--;
+        Proc_Break(proc);
+    }
+}
+
+/**
+ * Dance
+ */
+struct ProcScr CONST_DATA ProcScr_EfxDance[] =
+{
+    PROC_NAME_DEBUG("efxDance"),
+    PROC_REPEAT(EfxDance_Loop),
+    PROC_END,
+};
+
+
+void StartSpellAnimDance(struct Anim *anim)
+{
+    struct ProcEfx * proc;
+
+    SpellFx_Begin();
+    SpellFx_SetBG1Position();
+
+    proc = SpawnProc(ProcScr_EfxDance, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
+
+void EfxDance_Loop(struct ProcEfx *proc)
+{
+    struct Anim * anim = GetAnimAnotherSide(proc->anim);
+
+    proc->timer++;
+
+    if (proc->timer == 25) {
+        NewEfxSongBG(anim);
+        NewEfxSongBGCOL(anim);
+
+        PlaySFX(SONG_EF, 0x100, anim->xPosition, 1);
+    }
+
+    if (proc->timer == 55) {
+        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+
+        StartBattleAnimStatusChgHitEffects(anim, proc->hitted);
+
+        if (GetAnimPosition(anim) == 0)
+            CpuFastCopy(gpEfxUnitPaletteBackup[0], gPal + PAL_OFFSET(0x17), 0x20);
+        else
+            CpuFastCopy(gpEfxUnitPaletteBackup[1], gPal + PAL_OFFSET(0x19), 0x20);
+
+        EnableEfxStatusUnits(anim);
+        return;
+    }
+
+    if (proc->timer == 100) {
+        anim->flags3 |= ANIM_BIT3_NEXT_ROUND_START;
+        SpellFx_Finish();
+        Proc_Break(proc);
+    }
+}
+
+/**
+ * Ballista
+ */
+
+/**
+ * Eckesachs
+ */

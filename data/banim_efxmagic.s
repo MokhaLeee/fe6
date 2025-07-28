@@ -3,40 +3,28 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.global ProcScr_EfxSongBG
-ProcScr_EfxSongBG: @ 085D1054
-	.incbin "fe6-base.gba", 0x5D1054, (0x5D106C - 0x5D1054) @ length: 0018
-
-	.global ProcScr_EfxSongOBJ
-ProcScr_EfxSongOBJ: @ 085D106C
-	.incbin "fe6-base.gba", 0x5D106C, (0x5D108C - 0x5D106C) @ length: 0020
-
-	.global gUnk_085D108C
-gUnk_085D108C: @ 085D108C
-	.incbin "fe6-base.gba", 0x5D108C, (0x5D10A4 - 0x5D108C) @ length: 0018
-
-	.global gUnk_085D10A4
-gUnk_085D10A4: @ 085D10A4
+	.global ProcScr_EfxShooter
+ProcScr_EfxShooter: @ 085D10A4
 	.incbin "fe6-base.gba", 0x5D10A4, (0x5D10BC - 0x5D10A4) @ length: 0018
 
-	.global gUnk_085D10BC
-gUnk_085D10BC: @ 085D10BC
+	.global ProcScr_EfxShooterOBJ
+ProcScr_EfxShooterOBJ: @ 085D10BC
 	.incbin "fe6-base.gba", 0x5D10BC, (0x5D10D4 - 0x5D10BC) @ length: 0018
 
-	.global gUnk_085D10D4
-gUnk_085D10D4: @ 085D10D4
+	.global ProcScr_EfxEckesachs
+ProcScr_EfxEckesachs: @ 085D10D4
 	.incbin "fe6-base.gba", 0x5D10D4, (0x5D10EC - 0x5D10D4) @ length: 0018
 
-	.global gUnk_085D10EC
-gUnk_085D10EC: @ 085D10EC
+	.global ProcScr_EfxEckesachsBG
+ProcScr_EfxEckesachsBG: @ 085D10EC
 	.incbin "fe6-base.gba", 0x5D10EC, (0x5D1104 - 0x5D10EC) @ length: 0018
 
-	.global gUnk_085D1104
-gUnk_085D1104: @ 085D1104
+	.global ProcScr_EfxEckesachsBGCOL1
+ProcScr_EfxEckesachsBGCOL1: @ 085D1104
 	.incbin "fe6-base.gba", 0x5D1104, (0x5D111C - 0x5D1104) @ length: 0018
 
-	.global gUnk_085D111C
-gUnk_085D111C: @ 085D111C
+	.global ProcScr_EfxEckesachsBGCOL2
+ProcScr_EfxEckesachsBGCOL2: @ 085D111C
 	.incbin "fe6-base.gba", 0x5D111C, (0x5D113C - 0x5D111C) @ length: 0020
 
 	.global ProcScr_EfxHurtmut
@@ -347,20 +335,20 @@ gUnk_085D2120: @ 085D2120
 gUnk_085D2158: @ 085D2158
 	.incbin "fe6-base.gba", 0x5D2158, (0x5D2178 - 0x5D2158) @ length: 0020
 
-	.global gUnk_085D2178
-gUnk_085D2178: @ 085D2178
+	.global ProcScr_EfxForblaze
+ProcScr_EfxForblaze: @ 085D2178
 	.incbin "fe6-base.gba", 0x5D2178, (0x5D2190 - 0x5D2178) @ length: 0018
 
-	.global gUnk_085D2190
-gUnk_085D2190: @ 085D2190
+	.global ProcScr_EfxForblazeBG1
+ProcScr_EfxForblazeBG1: @ 085D2190
 	.incbin "fe6-base.gba", 0x5D2190, (0x5D21A8 - 0x5D2190) @ length: 0018
 
-	.global gUnk_085D21A8
-gUnk_085D21A8: @ 085D21A8
+	.global Tsas_EfxForblazeBG1
+Tsas_EfxForblazeBG1: @ 085D21A8
 	.incbin "fe6-base.gba", 0x5D21A8, (0x5D21DC - 0x5D21A8) @ length: 0034
 
-	.global gUnk_085D21DC
-gUnk_085D21DC: @ 085D21DC
+	.global Img_EfxForblazeBG1
+Img_EfxForblazeBG1: @ 085D21DC
 	.incbin "fe6-base.gba", 0x5D21DC, (0x5D2210 - 0x5D21DC) @ length: 0034
 
 	.global gUnk_085D2210

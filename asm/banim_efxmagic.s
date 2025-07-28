@@ -1,177 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start StartSubSpell_EfxSongOBJ
-StartSubSpell_EfxSongOBJ: @ 0x0804DDC8
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r1, .L0804DDF4 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L0804DDF8 @ =ProcScr_EfxSongOBJ
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	str r1, [r0, #0x44]
-	ldr r1, .L0804DDFC @ =FrameLut_EfxSongOBJ
-	str r1, [r0, #0x48]
-	ldr r1, .L0804DE00 @ =Pal_EfxSongBG
-	str r1, [r0, #0x4c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804DDF4: .4byte gEfxBgSemaphore
-.L0804DDF8: .4byte ProcScr_EfxSongOBJ
-.L0804DDFC: .4byte FrameLut_EfxSongOBJ
-.L0804DE00: .4byte Pal_EfxSongBG
-
-	thumb_func_start func_fe6_0804DE04
-func_fe6_0804DE04: @ 0x0804DE04
-	push {r4, lr}
-	adds r4, r0, #0
-	adds r0, #0x2c
-	adds r1, r4, #0
-	adds r1, #0x44
-	ldr r2, [r4, #0x48]
-	bl EfxAdvanceFrameLut
-	lsls r0, r0, #0x10
-	asrs r1, r0, #0x10
-	cmp r1, #0
-	blt .L0804DE2A
-	ldr r0, [r4, #0x4c]
-	lsls r1, r1, #5
-	adds r0, r0, r1
-	movs r1, #0x20
-	bl SpellFx_RegisterBgPal
-	b .L0804DE40
-.L0804DE2A:
-	movs r0, #1
-	rsbs r0, r0, #0
-	cmp r1, r0
-	bne .L0804DE40
-	ldr r1, .L0804DE48 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	adds r0, r4, #0
-	bl Proc_Break
-.L0804DE40:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804DE48: .4byte gEfxBgSemaphore
-
-	thumb_func_start func_fe6_0804DE4C
-func_fe6_0804DE4C: @ 0x0804DE4C
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	bl SpellFx_Begin
-	bl SpellFx_SetBG1Position
-	ldr r0, .L0804DE80 @ =gUnk_085D108C
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r5, [r4, #0x5c]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r5, #0
-	bl GetAnimRoundTypeAnotherSide
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	bl CheckRoundMiss
-	adds r4, #0x29
-	strb r0, [r4]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804DE80: .4byte gUnk_085D108C
-
-	thumb_func_start func_fe6_0804DE84
-func_fe6_0804DE84: @ 0x0804DE84
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r0, [r5, #0x5c]
-	bl GetAnimAnotherSide
-	adds r4, r0, #0
-	ldrh r0, [r5, #0x2c]
-	adds r0, #1
-	movs r6, #0
-	strh r0, [r5, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x19
-	bne .L0804DEBC
-	adds r0, r4, #0
-	bl StartSubSpell_EfxSongBG
-	adds r0, r4, #0
-	bl StartSubSpell_EfxSongOBJ
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #2
-	ldrsh r2, [r4, r0]
-	movs r0, #0xef
-	movs r3, #1
-	bl PlaySFX
-.L0804DEBC:
-	movs r1, #0x2c
-	ldrsh r0, [r5, r1]
-	cmp r0, #0x37
-	bne .L0804DF14
-	movs r0, #9
-	ldrh r1, [r4, #0x10]
-	orrs r0, r1
-	strh r0, [r4, #0x10]
-	adds r0, r5, #0
-	adds r0, #0x29
-	ldrb r1, [r0]
-	adds r0, r4, #0
-	bl StartBattleAnimStatusChgHitEffects
-	adds r0, r4, #0
-	bl GetAnimPosition
-	cmp r0, #0
-	bne .L0804DEF8
-	ldr r0, .L0804DEF0 @ =gpEfxUnitPaletteBackup
-	ldr r0, [r0]
-	ldr r1, .L0804DEF4 @ =gPal+0x2E0
-	movs r2, #8
-	bl CpuFastSet
-	b .L0804DF04
-	.align 2, 0
-.L0804DEF0: .4byte gpEfxUnitPaletteBackup
-.L0804DEF4: .4byte gPal+0x2E0
-.L0804DEF8:
-	ldr r0, .L0804DF0C @ =gpEfxUnitPaletteBackup
-	ldr r0, [r0, #4]
-	ldr r1, .L0804DF10 @ =gPal+0x320
-	movs r2, #8
-	bl CpuFastSet
-.L0804DF04:
-	adds r0, r4, #0
-	bl EnableEfxStatusUnits
-	b .L0804DF2A
-	.align 2, 0
-.L0804DF0C: .4byte gpEfxUnitPaletteBackup
-.L0804DF10: .4byte gPal+0x320
-.L0804DF14:
-	cmp r0, #0x64
-	bne .L0804DF2A
-	movs r0, #2
-	ldrh r1, [r4, #0x10]
-	orrs r0, r1
-	strh r0, [r4, #0x10]
-	bl SpellFx_Finish
-	adds r0, r5, #0
-	bl Proc_Break
-.L0804DF2A:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
 
 	thumb_func_start StartSpellAnimBallista
 StartSpellAnimBallista: @ 0x0804DF30
@@ -179,7 +8,7 @@ StartSpellAnimBallista: @ 0x0804DF30
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl SpellFx_SetBG1Position
-	ldr r0, .L0804DF7C @ =gUnk_085D10A4
+	ldr r0, .L0804DF7C @ =ProcScr_EfxShooter
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -207,10 +36,10 @@ StartSpellAnimBallista: @ 0x0804DF30
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804DF7C: .4byte gUnk_085D10A4
+.L0804DF7C: .4byte ProcScr_EfxShooter
 
-	thumb_func_start func_fe6_0804DF80
-func_fe6_0804DF80: @ 0x0804DF80
+	thumb_func_start EfxShooter_Loop
+EfxShooter_Loop: @ 0x0804DF80
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, [r5, #0x5c]
@@ -248,7 +77,7 @@ func_fe6_0804DF80: @ 0x0804DF80
 	cmp r0, #0x2a
 	bne .L0804DFD4
 	adds r0, r6, #0
-	bl func_fe6_0804E040
+	bl NewEfxShooterOBJ
 	b .L0804E038
 .L0804DFD4:
 	cmp r0, #0x2d
@@ -302,8 +131,8 @@ func_fe6_0804DF80: @ 0x0804DF80
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0804E040
-func_fe6_0804E040: @ 0x0804E040
+	thumb_func_start NewEfxShooterOBJ
+NewEfxShooterOBJ: @ 0x0804E040
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -311,7 +140,7 @@ func_fe6_0804E040: @ 0x0804E040
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L0804E098 @ =gUnk_085D10BC
+	ldr r0, .L0804E098 @ =ProcScr_EfxShooterOBJ
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -319,8 +148,8 @@ func_fe6_0804E040: @ 0x0804E040
 	movs r7, #0
 	movs r0, #0
 	strh r0, [r4, #0x2c]
-	ldr r3, .L0804E09C @ =gUnk_085D4CFC
-	ldr r2, .L0804E0A0 @ =gUnk_085D4D98
+	ldr r3, .L0804E09C @ =AnimScr_EfxShooterOBJ_L
+	ldr r2, .L0804E0A0 @ =AnimScr_EfxShooterOBJ_R
 	str r2, [sp]
 	adds r0, r5, #0
 	adds r1, r3, #0
@@ -344,9 +173,9 @@ func_fe6_0804E040: @ 0x0804E040
 	b .L0804E0A8
 	.align 2, 0
 .L0804E094: .4byte gEfxBgSemaphore
-.L0804E098: .4byte gUnk_085D10BC
-.L0804E09C: .4byte gUnk_085D4CFC
-.L0804E0A0: .4byte gUnk_085D4D98
+.L0804E098: .4byte ProcScr_EfxShooterOBJ
+.L0804E09C: .4byte AnimScr_EfxShooterOBJ_L
+.L0804E0A0: .4byte AnimScr_EfxShooterOBJ_R
 .L0804E0A4:
 	movs r1, #0x93
 	lsls r1, r1, #8
@@ -360,8 +189,8 @@ func_fe6_0804E040: @ 0x0804E040
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0804E0B8
-func_fe6_0804E0B8: @ 0x0804E0B8
+	thumb_func_start EfxShooterOBJ_Loop
+EfxShooterOBJ_Loop: @ 0x0804E0B8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0x2c]
@@ -386,14 +215,14 @@ func_fe6_0804E0B8: @ 0x0804E0B8
 	.align 2, 0
 .L0804E0E4: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_0804E0E8
-func_fe6_0804E0E8: @ 0x0804E0E8
+	thumb_func_start StartSpellAnimEckesachs
+StartSpellAnimEckesachs: @ 0x0804E0E8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
-	ldr r0, .L0804E120 @ =gUnk_085D10D4
+	ldr r0, .L0804E120 @ =ProcScr_EfxEckesachs
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -411,10 +240,10 @@ func_fe6_0804E0E8: @ 0x0804E0E8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804E120: .4byte gUnk_085D10D4
+.L0804E120: .4byte ProcScr_EfxEckesachs
 
-	thumb_func_start func_fe6_0804E124
-func_fe6_0804E124: @ 0x0804E124
+	thumb_func_start EfxEckesachs_Loop
+EfxEckesachs_Loop: @ 0x0804E124
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
@@ -440,12 +269,12 @@ func_fe6_0804E124: @ 0x0804E124
 	bl NewEfxFarAttackWithDistance
 	adds r0, r5, #0
 	movs r1, #9
-	bl func_fe6_0804E1C0
+	bl NewEfxEckesachsBG
 	adds r0, r5, #0
 	movs r1, #9
-	bl func_fe6_0804E2B4
+	bl NewEfxEckesachsBGCOL1
 	adds r0, r5, #0
-	bl func_fe6_0804E3C0
+	bl NewEfxEckesachsBGCOL2
 	movs r0, #0x86
 	lsls r0, r0, #1
 	movs r1, #0x80
@@ -486,8 +315,8 @@ func_fe6_0804E124: @ 0x0804E124
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0804E1C0
-func_fe6_0804E1C0: @ 0x0804E1C0
+	thumb_func_start NewEfxEckesachsBG
+NewEfxEckesachsBG: @ 0x0804E1C0
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -496,7 +325,7 @@ func_fe6_0804E1C0: @ 0x0804E1C0
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L0804E224 @ =gUnk_085D10EC
+	ldr r0, .L0804E224 @ =ProcScr_EfxEckesachsBG
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -504,14 +333,14 @@ func_fe6_0804E1C0: @ 0x0804E1C0
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	strh r6, [r4, #0x2e]
-	ldr r0, .L0804E228 @ =gUnk_0811F22C
+	ldr r0, .L0804E228 @ =Pal_EfxEckesachsBGCOL2
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
-	ldr r0, .L0804E22C @ =gUnk_0811E36C
+	ldr r0, .L0804E22C @ =Img_EfxEckesachsBG
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterBgGfx
-	ldr r0, .L0804E230 @ =gUnk_0811F32C
+	ldr r0, .L0804E230 @ =Tsa_EfxEckesachsBG
 	ldr r5, .L0804E234 @ =gEkrTsaBuffer
 	adds r1, r5, #0
 	bl LZ77UnCompWram
@@ -531,10 +360,10 @@ func_fe6_0804E1C0: @ 0x0804E1C0
 	b .L0804E250
 	.align 2, 0
 .L0804E220: .4byte gEfxBgSemaphore
-.L0804E224: .4byte gUnk_085D10EC
-.L0804E228: .4byte gUnk_0811F22C
-.L0804E22C: .4byte gUnk_0811E36C
-.L0804E230: .4byte gUnk_0811F32C
+.L0804E224: .4byte ProcScr_EfxEckesachsBG
+.L0804E228: .4byte Pal_EfxEckesachsBGCOL2
+.L0804E22C: .4byte Img_EfxEckesachsBG
+.L0804E230: .4byte Tsa_EfxEckesachsBG
 .L0804E234: .4byte gEkrTsaBuffer
 .L0804E238: .4byte gBg1Tm
 .L0804E23C:
@@ -570,8 +399,8 @@ func_fe6_0804E1C0: @ 0x0804E1C0
 .L0804E278: .4byte gBg1Tm
 .L0804E27C: .4byte gDispIo
 
-	thumb_func_start func_fe6_0804E280
-func_fe6_0804E280: @ 0x0804E280
+	thumb_func_start EfxEckesachsBG_Loop
+EfxEckesachsBG_Loop: @ 0x0804E280
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0x2c]
@@ -597,8 +426,8 @@ func_fe6_0804E280: @ 0x0804E280
 	.align 2, 0
 .L0804E2B0: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_0804E2B4
-func_fe6_0804E2B4: @ 0x0804E2B4
+	thumb_func_start NewEfxEckesachsBGCOL1
+NewEfxEckesachsBGCOL1: @ 0x0804E2B4
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -606,7 +435,7 @@ func_fe6_0804E2B4: @ 0x0804E2B4
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L0804E2E8 @ =gUnk_085D1104
+	ldr r0, .L0804E2E8 @ =ProcScr_EfxEckesachsBGCOL1
 	movs r1, #3
 	bl SpawnProc
 	adds r6, r0, #0
@@ -622,7 +451,7 @@ func_fe6_0804E2B4: @ 0x0804E2B4
 	b .L0804E2F0
 	.align 2, 0
 .L0804E2E4: .4byte gEfxBgSemaphore
-.L0804E2E8: .4byte gUnk_085D1104
+.L0804E2E8: .4byte ProcScr_EfxEckesachsBGCOL1
 .L0804E2EC:
 	movs r0, #0xd8
 	rsbs r0, r0, #0
@@ -632,8 +461,8 @@ func_fe6_0804E2B4: @ 0x0804E2B4
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0804E2F8
-func_fe6_0804E2F8: @ 0x0804E2F8
+	thumb_func_start EfxEckesachsBGCOL1_Loop
+EfxEckesachsBGCOL1_Loop: @ 0x0804E2F8
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -728,36 +557,36 @@ func_fe6_0804E2F8: @ 0x0804E2F8
 .L0804E3B8: .4byte gBg1Tm
 .L0804E3BC: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_0804E3C0
-func_fe6_0804E3C0: @ 0x0804E3C0
+	thumb_func_start NewEfxEckesachsBGCOL2
+NewEfxEckesachsBGCOL2: @ 0x0804E3C0
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r1, .L0804E3EC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L0804E3F0 @ =gUnk_085D111C
+	ldr r0, .L0804E3F0 @ =ProcScr_EfxEckesachsBGCOL2
 	movs r1, #3
 	bl SpawnProc
 	str r4, [r0, #0x5c]
 	movs r1, #0
 	strh r1, [r0, #0x2c]
 	str r1, [r0, #0x44]
-	ldr r1, .L0804E3F4 @ =gUnk_08119D56
+	ldr r1, .L0804E3F4 @ =FrameConf_EfxEckesachsBGCOL2
 	str r1, [r0, #0x48]
-	ldr r1, .L0804E3F8 @ =gUnk_0811F22C
+	ldr r1, .L0804E3F8 @ =Pal_EfxEckesachsBGCOL2
 	str r1, [r0, #0x4c]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L0804E3EC: .4byte gEfxBgSemaphore
-.L0804E3F0: .4byte gUnk_085D111C
-.L0804E3F4: .4byte gUnk_08119D56
-.L0804E3F8: .4byte gUnk_0811F22C
+.L0804E3F0: .4byte ProcScr_EfxEckesachsBGCOL2
+.L0804E3F4: .4byte FrameConf_EfxEckesachsBGCOL2
+.L0804E3F8: .4byte Pal_EfxEckesachsBGCOL2
 
-	thumb_func_start func_fe6_0804E3FC
-func_fe6_0804E3FC: @ 0x0804E3FC
+	thumb_func_start EfxEckesachsBGCOL2_Loop
+EfxEckesachsBGCOL2_Loop: @ 0x0804E3FC
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x2c
@@ -2904,8 +2733,8 @@ EfxElfireOBJ_Loop: @ 0x0804F594
 	.align 2, 0
 .L0804F5C0: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_0804F5C4
-func_fe6_0804F5C4: @ 0x0804F5C4
+	thumb_func_start StartSpellAnimFimbulvetr
+StartSpellAnimFimbulvetr: @ 0x0804F5C4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -3676,8 +3505,8 @@ func_fe6_0804FB6C: @ 0x0804FB6C
 	.align 2, 0
 .L0804FC24: .4byte gUnk_085E7ACC
 
-	thumb_func_start func_fe6_0804FC28
-func_fe6_0804FC28: @ 0x0804FC28
+	thumb_func_start StartSpellAnimBolting
+StartSpellAnimBolting: @ 0x0804FC28
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -4210,8 +4039,8 @@ func_fe6_08050038: @ 0x08050038
 .L08050074: .4byte gEfxPal
 .L08050078: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_0805007C
-func_fe6_0805007C: @ 0x0805007C
+	thumb_func_start StartSpellAnimAircalibur
+StartSpellAnimAircalibur: @ 0x0805007C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -4604,8 +4433,8 @@ func_fe6_08050390: @ 0x08050390
 	.align 2, 0
 .L080503B8: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_080503BC
-func_fe6_080503BC: @ 0x080503BC
+	thumb_func_start StartSpellAnimFlux
+StartSpellAnimFlux: @ 0x080503BC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -5167,8 +4996,8 @@ func_fe6_0805083C: @ 0x0805083C
 	.align 2, 0
 .L0805085C: .4byte gUnk_085EB1DC
 
-	thumb_func_start func_fe6_08050860
-func_fe6_08050860: @ 0x08050860
+	thumb_func_start StartSpellAnimNosferatu
+StartSpellAnimNosferatu: @ 0x08050860
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -5839,8 +5668,8 @@ func_fe6_08050D98: @ 0x08050D98
 	.align 2, 0
 .L08050DDC: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08050DE0
-func_fe6_08050DE0: @ 0x08050DE0
+	thumb_func_start StartSpellAnimLightning
+StartSpellAnimLightning: @ 0x08050DE0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -6097,8 +5926,8 @@ func_fe6_08050F54: @ 0x08050F54
 	.align 2, 0
 .L08051008: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_0805100C
-func_fe6_0805100C: @ 0x0805100C
+	thumb_func_start StartSpellAnimPurge
+StartSpellAnimPurge: @ 0x0805100C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -6539,14 +6368,14 @@ func_fe6_08051394: @ 0x08051394
 	.align 2, 0
 .L080513A8: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_080513AC
-func_fe6_080513AC: @ 0x080513AC
+	thumb_func_start StartSpellAnimForblaze
+StartSpellAnimForblaze: @ 0x080513AC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl NewEfxSpellCast
 	bl SpellFx_SetBG1Position
-	ldr r0, .L080513E4 @ =gUnk_085D2178
+	ldr r0, .L080513E4 @ =ProcScr_EfxForblaze
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -6564,10 +6393,10 @@ func_fe6_080513AC: @ 0x080513AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080513E4: .4byte gUnk_085D2178
+.L080513E4: .4byte ProcScr_EfxForblaze
 
-	thumb_func_start func_fe6_080513E8
-func_fe6_080513E8: @ 0x080513E8
+	thumb_func_start EfxForblaze_Loop
+EfxForblaze_Loop: @ 0x080513E8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r6, r0, #0
@@ -6595,8 +6424,8 @@ func_fe6_080513E8: @ 0x080513E8
 	cmp r1, r0
 	bne .L08051448
 	adds r0, r5, #0
-	bl func_fe6_0805151C
-	bl func_fe6_080516B8
+	bl NewEfxForblazeBG1
+	bl NewEfxForblazeBGCOL1
 	adds r0, r5, #0
 	movs r1, #0xa0
 	bl func_fe6_08051624
@@ -6705,15 +6534,15 @@ func_fe6_080513E8: @ 0x080513E8
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805151C
-func_fe6_0805151C: @ 0x0805151C
+	thumb_func_start NewEfxForblazeBG1
+NewEfxForblazeBG1: @ 0x0805151C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r1, .L08051570 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L08051574 @ =gUnk_085D2190
+	ldr r0, .L08051574 @ =ProcScr_EfxForblazeBG1
 	movs r1, #3
 	bl SpawnProc
 	adds r5, r0, #0
@@ -6721,14 +6550,14 @@ func_fe6_0805151C: @ 0x0805151C
 	movs r0, #0
 	strh r0, [r5, #0x2c]
 	str r0, [r5, #0x44]
-	ldr r0, .L08051578 @ =gUnk_0811A478
+	ldr r0, .L08051578 @ =FrameConf_EfxForblazeBG1
 	str r0, [r5, #0x48]
-	ldr r0, .L0805157C @ =gUnk_085D21A8
+	ldr r0, .L0805157C @ =Tsas_EfxForblazeBG1
 	str r0, [r5, #0x4c]
 	str r0, [r5, #0x50]
-	ldr r0, .L08051580 @ =gUnk_085D21DC
+	ldr r0, .L08051580 @ =Img_EfxForblazeBG1
 	str r0, [r5, #0x54]
-	ldr r0, .L08051584 @ =gUnk_081408CC
+	ldr r0, .L08051584 @ =Pal_EfxForblazeBG1
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
 	ldr r0, .L08051588 @ =gEkrDistanceType
@@ -6747,11 +6576,11 @@ func_fe6_0805151C: @ 0x0805151C
 	b .L08051596
 	.align 2, 0
 .L08051570: .4byte gEfxBgSemaphore
-.L08051574: .4byte gUnk_085D2190
-.L08051578: .4byte gUnk_0811A478
-.L0805157C: .4byte gUnk_085D21A8
-.L08051580: .4byte gUnk_085D21DC
-.L08051584: .4byte gUnk_081408CC
+.L08051574: .4byte ProcScr_EfxForblazeBG1
+.L08051578: .4byte FrameConf_EfxForblazeBG1
+.L0805157C: .4byte Tsas_EfxForblazeBG1
+.L08051580: .4byte Img_EfxForblazeBG1
+.L08051584: .4byte Pal_EfxForblazeBG1
 .L08051588: .4byte gEkrDistanceType
 .L0805158C:
 	movs r0, #1
@@ -6845,7 +6674,7 @@ func_fe6_08051624: @ 0x08051624
 	str r1, [r0, #0x44]
 	ldr r1, .L08051664 @ =gUnk_0811A50E
 	str r1, [r0, #0x48]
-	ldr r1, .L08051668 @ =gUnk_081408CC
+	ldr r1, .L08051668 @ =Pal_EfxForblazeBG1
 	str r1, [r0, #0x4c]
 	adds r0, r1, #0
 	movs r1, #0x20
@@ -6857,7 +6686,7 @@ func_fe6_08051624: @ 0x08051624
 .L0805165C: .4byte gEfxBgSemaphore
 .L08051660: .4byte gUnk_085D2210
 .L08051664: .4byte gUnk_0811A50E
-.L08051668: .4byte gUnk_081408CC
+.L08051668: .4byte Pal_EfxForblazeBG1
 
 	thumb_func_start func_fe6_0805166C
 func_fe6_0805166C: @ 0x0805166C
@@ -6899,8 +6728,8 @@ func_fe6_0805166C: @ 0x0805166C
 	.align 2, 0
 .L080516B4: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_080516B8
-func_fe6_080516B8: @ 0x080516B8
+	thumb_func_start NewEfxForblazeBGCOL1
+NewEfxForblazeBGCOL1: @ 0x080516B8
 	push {lr}
 	ldr r0, .L080516D0 @ =gEfxBgSemaphore
 	ldr r1, [r0]
@@ -7652,8 +7481,8 @@ func_fe6_08051C5C: @ 0x08051C5C
 .L08051CC8: .4byte gSinLut
 .L08051CCC: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08051CD0
-func_fe6_08051CD0: @ 0x08051CD0
+	thumb_func_start StartSpellAnimDivine
+StartSpellAnimDivine: @ 0x08051CD0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -8102,8 +7931,8 @@ func_fe6_08052060: @ 0x08052060
 	.align 2, 0
 .L0805208C: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08052090
-func_fe6_08052090: @ 0x08052090
+	thumb_func_start StartSpellAnimAureola
+StartSpellAnimAureola: @ 0x08052090
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -9248,8 +9077,8 @@ func_fe6_08052974: @ 0x08052974
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080529EC
-func_fe6_080529EC: @ 0x080529EC
+	thumb_func_start StartSpellAnimApocalypse
+StartSpellAnimApocalypse: @ 0x080529EC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -10915,8 +10744,8 @@ func_fe6_080536C4: @ 0x080536C4
 .L0805375C: .4byte gSinLut
 .L08053760: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08053764
-func_fe6_08053764: @ 0x08053764
+	thumb_func_start StartSpellAnimEclipse
+StartSpellAnimEclipse: @ 0x08053764
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -11693,8 +11522,8 @@ func_fe6_08053DB0: @ 0x08053DB0
 	.align 2, 0
 .L08053DC4: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08053DC8
-func_fe6_08053DC8: @ 0x08053DC8
+	thumb_func_start StartSpellAnimFenrir
+StartSpellAnimFenrir: @ 0x08053DC8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -12613,8 +12442,8 @@ func_fe6_080544D8: @ 0x080544D8
 .L08054550: .4byte gSinLut
 .L08054554: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08054558
-func_fe6_08054558: @ 0x08054558
+	thumb_func_start StartSpellAnimHeal
+StartSpellAnimHeal: @ 0x08054558
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
@@ -12774,8 +12603,8 @@ func_fe6_08054580: @ 0x08054580
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_080546A8
-func_fe6_080546A8: @ 0x080546A8
+	thumb_func_start StartSpellAnimMend
+StartSpellAnimMend: @ 0x080546A8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
@@ -12973,8 +12802,8 @@ func_fe6_080546D0: @ 0x080546D0
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08054848
-func_fe6_08054848: @ 0x08054848
+	thumb_func_start StartSpellAnimRecover
+StartSpellAnimRecover: @ 0x08054848
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
@@ -13172,8 +13001,8 @@ func_fe6_08054870: @ 0x08054870
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_080549E8
-func_fe6_080549E8: @ 0x080549E8
+	thumb_func_start StartSpellAnimPhysic
+StartSpellAnimPhysic: @ 0x080549E8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
@@ -14219,8 +14048,8 @@ func_fe6_08055200: @ 0x08055200
 	.align 2, 0
 .L08055230: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08055234
-func_fe6_08055234: @ 0x08055234
+	thumb_func_start StartSpellAnimFortify
+StartSpellAnimFortify: @ 0x08055234
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
@@ -14241,8 +14070,8 @@ func_fe6_08055234: @ 0x08055234
 	.align 2, 0
 .L08055260: .4byte gUnk_085D2F4C
 
-	thumb_func_start func_fe6_08055264
-func_fe6_08055264: @ 0x08055264
+	thumb_func_start StartSpellAnimLatona
+StartSpellAnimLatona: @ 0x08055264
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
@@ -14769,8 +14598,8 @@ func_fe6_08055674: @ 0x08055674
 	.align 2, 0
 .L080556B8: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_080556BC
-func_fe6_080556BC: @ 0x080556BC
+	thumb_func_start StartSpellAnimRestore
+StartSpellAnimRestore: @ 0x080556BC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -15086,8 +14915,8 @@ func_fe6_0805594C: @ 0x0805594C
 	.align 2, 0
 .L08055958: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_0805595C
-func_fe6_0805595C: @ 0x0805595C
+	thumb_func_start StartSpellAnimSilence
+StartSpellAnimSilence: @ 0x0805595C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -15393,8 +15222,8 @@ func_fe6_08055BDC: @ 0x08055BDC
 	.align 2, 0
 .L08055BF0: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08055BF4
-func_fe6_08055BF4: @ 0x08055BF4
+	thumb_func_start StartSpellAnimSleep
+StartSpellAnimSleep: @ 0x08055BF4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -15780,8 +15609,8 @@ func_fe6_08055F14: @ 0x08055F14
 	.align 2, 0
 .L08055F20: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_08055F24
-func_fe6_08055F24: @ 0x08055F24
+	thumb_func_start StartSpellAnimHammerne
+StartSpellAnimHammerne: @ 0x08055F24
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -16079,8 +15908,8 @@ func_fe6_08056190: @ 0x08056190
 	.align 2, 0
 .L0805619C: .4byte gEfxBgSemaphore
 
-	thumb_func_start func_fe6_080561A0
-func_fe6_080561A0: @ 0x080561A0
+	thumb_func_start StartSpellAnimBerserk
+StartSpellAnimBerserk: @ 0x080561A0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
@@ -16798,8 +16627,8 @@ func_fe6_08056770: @ 0x08056770
 .L080567A4: .4byte gUnk_081B7F68
 .L080567A8: .4byte gUnk_081B7B48
 
-	thumb_func_start func_fe6_080567AC
-func_fe6_080567AC: @ 0x080567AC
+	thumb_func_start StartSpellAnimBarrier
+StartSpellAnimBarrier: @ 0x080567AC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
