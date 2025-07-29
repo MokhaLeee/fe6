@@ -202,8 +202,8 @@ extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_0811228E
 // extern ??? gUnk_08112298
 // extern ??? gUnk_081122C0
-// extern ??? gUnk_081122C5
-// extern ??? gUnk_081122CA
+// extern ??? BanimTypesPosLeft
+// extern ??? BanimTypesPosRight
 // extern ??? gUnk_081122D0
 // extern ??? gUnk_081122DA
 // extern ??? gUnk_08112370
@@ -262,11 +262,11 @@ extern u16 const FrameConf_EfxThunderBGCOL[];
 extern u16 const FrameConf_EfxFireBG[];
 extern u16 const FrameConf_EfxFireHITBG[];
 extern u16 const FrameConf_EfxElfireBGCOL[];
-// extern ??? gUnk_08119FFC
-// extern ??? gUnk_0811A06A
-// extern ??? gUnk_0811A098
-// extern ??? gUnk_0811A0DE
-// extern ??? gUnk_0811A0E8
+// extern ??? FrameConf_EfxFimbulvetrBGTR
+// extern ??? FrameConf_EfxFimbulvetrBG
+// extern ??? FrameConf_EfxThunderstormBG
+// extern ??? FrameConf_EfxAlacaliburBG
+// extern ??? FrameConf_EfxAlacaliburBGCOL
 // extern ??? gUnk_0811A102
 // extern ??? gUnk_0811A134
 // extern ??? gUnk_0811A1AA
@@ -315,9 +315,9 @@ extern const u16 FrameConf_EfxNormalEffectBG[];
 // extern ??? FrameConfig_EfxMagFcastBg3
 // extern ??? FrameConfig_EfxMagFcastBg4
 // extern ??? FrameConf_EfxMagdhisEffectBG
-// extern ??? gUnk_0811AF20
-// extern ??? gUnk_0811AF52
-// extern ??? gUnk_0811AF5C
+// extern ??? FrameLut_EfxopFireBG
+// extern ??? FrameLut_EfxopThunderBG
+// extern ??? FrameLut_EfxopThunderBGCOL
 // extern ??? gUnk_0811AF9E
 // extern ??? gUnk_0811AFA4
 extern const u8 Img_TeonoOBJ[];
@@ -496,7 +496,7 @@ extern u16 Tsa_EfxElfireBG[];
 extern u16 Tsa_FireBreathBg[];
 extern u16 Img_EfxElfireOBJ[];
 extern u16 Pal_EfxElfireOBJ[];
-extern u16 Pal_BoltingBg[];
+extern u16 Pal_EfxThunderstormBG[];
 extern u16 Pal_EfxForblazeBG1[];
 // extern ??? gUnk_08141320
 // extern ??? gUnk_08142EAC
@@ -508,13 +508,13 @@ extern u16 Pal_EfxForblazeBG1[];
 // extern ??? gUnk_08143DA8
 // extern ??? gUnk_08143EE4
 // extern ??? gUnk_08144A00
-// extern ??? gUnk_0814A498
-// extern ??? gUnk_081521C0
-// extern ??? gUnk_08152E78
-// extern ??? gUnk_08159D98
-// extern ??? gUnk_0815B364
-// extern ??? gUnk_0815B910
-// extern ??? gUnk_0815BED4
+// extern ??? Pal_EfxFimbulvetrBG
+// extern ??? Pal_EfxFimbulvetrBGTR
+// extern ??? Img_EfxFimbulvetrOBJ
+// extern ??? Img_EfxAlacaliburBG
+// extern ??? Pal_EfxAlacaliburBGCOL
+// extern ??? Img_EfxAlacaliburOBJ
+// extern ??? Pal_EfxAlacaliburOBJ
 // extern ??? gUnk_0815F880
 // extern ??? gUnk_0815F8A0
 // extern ??? gUnk_08161DDC
@@ -555,7 +555,7 @@ extern u16 Pal_EfxForblazeBG1[];
 // extern ??? gUnk_081AB340
 // extern ??? gUnk_081ABCA0
 // extern ??? gUnk_081ABEA0
-// extern ??? gUnk_081AC0F4
+// extern ??? Pal_EfxFimbulvetrOBJ
 // extern ??? gUnk_081AC114
 // extern ??? gUnk_081AC90C
 // extern ??? gUnk_081AD26C

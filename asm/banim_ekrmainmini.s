@@ -117,7 +117,7 @@ func_fe6_0804B930: @ 0x0804B930
 	cmp r0, #0
 	bne .L0804BA5C
 	adds r0, r4, #0
-	bl func_fe6_08058158
+	bl StartClassReelSpellAnim
 .L0804BA5C:
 	ldr r0, [r4, #0x20]
 	adds r0, #4

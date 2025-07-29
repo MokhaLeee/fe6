@@ -1,23 +1,23 @@
 	.section .rodata
 
-	.global gUnk_08119FFC
-gUnk_08119FFC: @ 08119FFC
+	.global FrameConf_EfxFimbulvetrBGTR
+FrameConf_EfxFimbulvetrBGTR: @ 08119FFC
 	.incbin "fe6-base.gba", 0x119FFC, (0x11A06A - 0x119FFC) @ length: 006E
 
-	.global gUnk_0811A06A
-gUnk_0811A06A: @ 0811A06A
+	.global FrameConf_EfxFimbulvetrBG
+FrameConf_EfxFimbulvetrBG: @ 0811A06A
 	.incbin "fe6-base.gba", 0x11A06A, (0x11A098 - 0x11A06A) @ length: 002E
 
-	.global gUnk_0811A098
-gUnk_0811A098: @ 0811A098
+	.global FrameConf_EfxThunderstormBG
+FrameConf_EfxThunderstormBG: @ 0811A098
 	.incbin "fe6-base.gba", 0x11A098, (0x11A0DE - 0x11A098) @ length: 0046
 
-	.global gUnk_0811A0DE
-gUnk_0811A0DE: @ 0811A0DE
+	.global FrameConf_EfxAlacaliburBG
+FrameConf_EfxAlacaliburBG: @ 0811A0DE
 	.incbin "fe6-base.gba", 0x11A0DE, (0x11A0E8 - 0x11A0DE) @ length: 000A
 
-	.global gUnk_0811A0E8
-gUnk_0811A0E8: @ 0811A0E8
+	.global FrameConf_EfxAlacaliburBGCOL
+FrameConf_EfxAlacaliburBGCOL: @ 0811A0E8
 	.incbin "fe6-base.gba", 0x11A0E8, (0x11A102 - 0x11A0E8) @ length: 001A
 
 	.global gUnk_0811A102

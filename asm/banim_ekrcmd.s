@@ -638,7 +638,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 .L0804A184: .4byte gUnk_08112266
 .L0804A188:
 	movs r0, #2
-	bl func_fe6_0805B9C8
+	bl BanimSpawnRandB
 	cmp r0, #1
 	beq .L0804A1AC
 	cmp r0, #1

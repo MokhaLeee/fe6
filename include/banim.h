@@ -1072,41 +1072,41 @@ void EfxElfireBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxElfireOBJ(struct Anim *anim);
 void EfxElfireOBJ_Loop(struct ProcEfxOBJ *proc);
 // StartSpellAnimFimbulvetr
-// func_fe6_0804F600
-// func_fe6_0804F738
-// func_fe6_0804F7BC
-// func_fe6_0804F820
-// func_fe6_0804F8A4
-// func_fe6_0804F908
-// func_fe6_0804F96C
-// func_fe6_0804F99C
-// func_fe6_0804F9E8
-// func_fe6_0804FA14
-// func_fe6_0804FB6C
+// EfxFimbulvetr_Loop
+// NewEfxFimbulvetrBGTR
+// EfxFimbulvetrBGTR_Loop
+// NewEfxFimbulvetrBG
+// EfxFimbulvetrBG_Loop
+// NewEfxFimbulvetrOBJ
+// EfxFimbulvetrOBJ_Loop
+// NewEfxFimbulvetrOBJ2
+// EfxFimbulvetrOBJ2_Loop
+// NewEfxFimbulvetrOBJ2Fall
+// EfxFimbulvetrOBJ2Fall_Loop
 // StartSpellAnimBolting
-// func_fe6_0804FC64
-// func_fe6_0804FD24
-// func_fe6_0804FD78
-// func_fe6_0804FDD4
-// func_fe6_0804FDF8
-// func_fe6_0804FE3C
-// func_fe6_0804FE60
-// func_fe6_0804FE84
-// func_fe6_0804FEB8
-// func_fe6_0804FF1C
-// func_fe6_0804FF94
-// func_fe6_0804FFD8
-// func_fe6_08050038
+// EfxThunderstorm_Loop
+// NewEfxThunderstormBG
+// EfxThunderstormBG_Loop
+// NewEfxThunderstormOBJ
+// EfxThunderstormOBJ_LoopA
+// EfxThunderstormOBJ_LoopB
+// NewEfxThunderstormCOLOR
+// EfxThunderstormCOLOR_LoopA
+// EfxThunderstormCOLOR_LoopB
+// EfxThunderstormCOLOR_LoopC
+// NewEfxThunderstormDARK
+// EfxThunderstormDARK_LoopA
+// EfxThunderstormDARK_LoopB
 // StartSpellAnimAircalibur
-// func_fe6_080500B8
-// func_fe6_080501B8
-// func_fe6_08050228
-// func_fe6_0805027C
-// func_fe6_080502C0
-// func_fe6_08050308
-// func_fe6_08050390
+// EfxAlacalibur_Loop
+// NewEfxAlacaliburBG
+// EfxAlacaliburBG_Loop
+// NewEfxAlacaliburBGCOL
+// EfxAlacaliburBGCOL_Loop
+// NewEfxAlacaliburOBJ
+// EfxAlacaliburOBJ_Loop
 // StartSpellAnimFlux
-// func_fe6_080503F8
+// EfxMistyrain_Loop
 // func_fe6_080504F0
 // func_fe6_080505A0
 // func_fe6_08050650
@@ -1449,30 +1449,30 @@ void EndActiveClassReelSpell(void);
 void EndActiveClassReelBgColorProc(void);
 void SetActiveClassReelSpell(ProcPtr proc);
 void SetActiveCRSpellBgColorProc(ProcPtr proc);
-// func_fe6_08057F58
-// func_fe6_08057F60
-// func_fe6_08057FB8
-// func_fe6_08057FE8
-// func_fe6_0805803C
-// func_fe6_080580A8
-// func_fe6_080580D8
-// func_fe6_08058100
-// func_fe6_08058130
-// func_fe6_08058158
-// func_fe6_0805817C
-// func_fe6_08058180
-// func_fe6_080581A0
-// func_fe6_080581C0
-// func_fe6_08058220
-// func_fe6_0805826C
-// func_fe6_080582EC
-// func_fe6_08058310
-// func_fe6_08058330
-// func_fe6_08058358
-// func_fe6_080583B4
-// func_fe6_08058438
-// func_fe6_0805846C
-// func_fe6_080584AC
+// GetMagicEffectBufferFor
+// SetCRSpellBgPosition
+// ClearCRSpellBgTmBuf
+// CRSpellCreateFrontAnim
+// CRSpell_WriteBgMap
+// CRSpell_RegisterBgGfx
+// CRSpell_RegisterBgPal
+// CRSpell_RegisterObjGfx
+// CRSpell_RegisterObjPal
+// StartClassReelSpellAnim
+// StartClassReelSpellAnimDummy
+// StartClassReelSpellAnimFire
+// EfxopFire_Loop
+// NewEfxopFireBG
+// EfxopFireBG_Loop
+// NewEfxopFireOBJ
+// EfxopFireOBJ_Loop
+// StartClassReelSpellAnimThunder
+// EfxopThunder_Loop
+// NewEfxopThunderBG
+// EfxopThunderBG_Loop
+// NewEfxopThunderBGCOL
+// EfxopThunderBGCOL_Loop
+// NewEfxopThunderOBJ
 // func_fe6_08058528
 // func_fe6_0805854C
 // func_fe6_08058568
@@ -1508,7 +1508,7 @@ void EfxSplitColorPetrify(u16 * src, u8 * dst, u32 length);
 void func_fe6_0805B88C(i8 * src1, i8 * src2, i16 * pal, u32 length, int ref);
 void EfxDecodeSplitedPalette(u16 * dst, i8 * src1, i8 * src2, i16 * src3, u32 length, int ref, int unk);
 void EfxChapterMapFadeOUT(int speed);
-int func_fe6_0805B9C8(int a);
+int BanimSpawnRandB(int a);
 
 struct ProcEkrSubAnimeEmulator {
     PROC_HEADER;
@@ -1892,29 +1892,29 @@ extern CONST_DATA u16 *TsaLut_EfxFireHITBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxElfireBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxElfireBGCOL[];
 extern CONST_DATA struct ProcScr ProcScr_EfxElfireOBJ[];
-extern CONST_DATA struct ProcScr gUnk_085D14D4[];
-extern CONST_DATA struct ProcScr gUnk_085D14EC[];
-// ??? gUnk_085D1504
-// ??? gUnk_085D151C
-// ??? gUnk_085D1534
-// ??? gUnk_085D154C
-// ??? gUnk_085D1578
-// ??? gUnk_085D15A4
-// ??? gUnk_085D15BC
-// ??? gUnk_085D15D4
-// ??? gUnk_085D15EC
-// ??? gUnk_085D1604
-// ??? gUnk_085D161C
-// ??? gUnk_085D1648
-// ??? gUnk_085D1674
-// ??? gUnk_085D169C
-// ??? gUnk_085D16DC
-// ??? gUnk_085D16FC
-// ??? gUnk_085D1714
-// ??? gUnk_085D172C
-// ??? gUnk_085D1734
-// ??? gUnk_085D1754
-// ??? gUnk_085D176C
+extern CONST_DATA struct ProcScr ProcScr_EfxFimbulvetr[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFimbulvetrBGTR[];
+// ??? TsaLut_EfxFimbulvetrBGTR
+// ??? ImgLut_EfxFimbulvetrBGTR
+// ??? ProcScr_EfxFimbulvetrBG
+// ??? TsaLut_EfxFimbulvetrBG
+// ??? ImgLut_EfxFimbulvetrBG
+// ??? ProcScr_EfxFimbulvetrOBJ
+// ??? ProcScr_EfxFimbulvetrOBJ2
+// ??? ProcScr_EfxFimbulvetrOBJ2Fall
+// ??? ProcScr_EfxThunderstorm
+// ??? ProcScr_EfxThunderstormBG
+// ??? ImgLut_EfxThunderstormBG
+// ??? TsaLut_EfxThunderstormBG
+// ??? ProcScr_EfxThunderstormOBJ
+// ??? ProcScr_EfxThunderstormCOLOR
+// ??? ProcScr_EfxThunderstormDARK
+// ??? PorcScr_EfxAlacalibur
+// ??? ProcScr_EfxAlacaliburBG
+// ??? TsaLut_EfxAlacaliburBG
+// ??? ProcScr_EfxAlacaliburBGCOL
+// ??? ProcScr_EfxAlacaliburOBJ
+// ??? ProcScr_EfxMistyrain
 // ??? gUnk_085D1784
 // ??? gUnk_085D179C
 // ??? gUnk_085D1840
@@ -2088,16 +2088,16 @@ extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffect[];
 extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffectBG[];
 extern CONST_DATA u16 *TsaLut_EfxMagdhisEffectBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxMantBatabata[];
-// ??? gUnk_085D3904
-// ??? gUnk_085D3924
-// ??? gUnk_085D394C
-// ??? gUnk_085D3964
-// ??? gUnk_085D3994
-// ??? gUnk_085D39AC
-// ??? gUnk_085D39D4
-// ??? gUnk_085D39EC
-// ??? gUnk_085D39F4
-// ??? gUnk_085D3A14
+// ??? gClassReelSpellAnimFuncLut
+// ??? ProcScr_EfxopFire
+// ??? ProcScr_EfxopFireBG
+// ??? TsaLut_EfxopFireBG
+// ??? ProcScr_EfxopFireOBJ
+// ??? ProcScr_EfxopThunder
+// ??? ProcScr_EfxopThunderBG
+// ??? TsaLut_EfxopThunderBG
+// ??? ProcScr_EfxopThunderBGCOL
+// ??? ProcScr_EfxopThunderOBJ
 // ??? gUnk_085D3A2C
 // ??? gUnk_085D3A54
 // ??? gUnk_085D3A6C
@@ -2169,20 +2169,20 @@ extern u32 AnimScr_EfxFireOBJ_R_Front[];
 extern u32 AnimScr_EfxFireOBJ_R_Back[];
 extern u32 AnimScr_EfxElfireOBJ_R[];
 extern u32 AnimScr_EfxElfireOBJ_L[];
-// ??? gUnk_085E5858
+// ??? AnimScr_EfxThunderstormOBJ
 // ??? gUnk_085E5C10
 // ??? gUnk_085E5C2C
 // ??? gUnk_085E5C34
 // ??? gUnk_085E5C3C
 // ??? gUnk_085E5C44
-// ??? gUnk_085E79F8
-// ??? gUnk_085E7A64
-// ??? gUnk_085E7AC4
-// ??? gUnk_085E7ACC
-// ??? gUnk_085E90AC
-// ??? gUnk_085E9160
-// ??? gUnk_085EA7F0
-// ??? gUnk_085EA8A4
+// ??? AnimScr_EfxFimbulvetrOBJ1
+// ??? AnimScr_EfxFimbulvetrOBJ2Fall
+// ??? AnimScr_FimbulvetrOBJ2Fall_TypeA
+// ??? AnimScr_FimbulvetrOBJ2Fall_TypeB
+// ??? AnimScr_EfxAlacaliburOBJ_RF
+// ??? AnimScr_EfxAlacaliburOBJ_RB
+// ??? AnimScr_EfxAlacaliburOBJ_LF
+// ??? AnimScr_EfxAlacaliburOBJ_LB
 // ??? gUnk_085EABC0
 // ??? gUnk_085EAC34
 // ??? gUnk_085EADB0

@@ -710,7 +710,7 @@ func_fe6_0805CD68: @ 0x0805CD68
 	bl SpawnProc
 	adds r5, r0, #0
 	str r4, [r5, #0x5c]
-	ldr r3, .L0805CDA8 @ =gUnk_085E5858
+	ldr r3, .L0805CDA8 @ =AnimScr_EfxThunderstormOBJ
 	str r3, [sp]
 	adds r0, r4, #0
 	adds r1, r3, #0
@@ -730,7 +730,7 @@ func_fe6_0805CD68: @ 0x0805CD68
 	bx r0
 	.align 2, 0
 .L0805CDA4: .4byte gUnk_08606104
-.L0805CDA8: .4byte gUnk_085E5858
+.L0805CDA8: .4byte AnimScr_EfxThunderstormOBJ
 .L0805CDAC: .4byte Pal_EfxThunderOBJ
 .L0805CDB0: .4byte Img_EfxThunderOBJ
 

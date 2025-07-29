@@ -50,12 +50,12 @@ gUnk_08112298: @ 08112298
 gUnk_081122C0: @ 081122C0
 	.incbin "fe6-base.gba", 0x1122C0, (0x1122C5 - 0x1122C0) @ length: 0005
 
-	.global gUnk_081122C5
-gUnk_081122C5: @ 081122C5
+	.global BanimTypesPosLeft
+BanimTypesPosLeft: @ 081122C5
 	.incbin "fe6-base.gba", 0x1122C5, (0x1122CA - 0x1122C5) @ length: 0005
 
-	.global gUnk_081122CA
-gUnk_081122CA: @ 081122CA
+	.global BanimTypesPosRight
+BanimTypesPosRight: @ 081122CA
 	.incbin "fe6-base.gba", 0x1122CA, (0x1122D0 - 0x1122CA) @ length: 0006
 
 	.global gUnk_081122D0
