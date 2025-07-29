@@ -1,3 +1,4 @@
+#!/bin/python3
 
 import sys
 
@@ -25,14 +26,14 @@ def pointer_offsets(rom_filename, value):
     return tuple(pointer_iter(rom_filename, value))
 
 def main(args):
+    rom = "fe6-base.gba"
     rom_addr_base = 0x08000000
 
     try:
-        rom    = args[0] # rom file name
-        target = rom_addr_base + (int(args[1], base = 0) & 0x01FFFFFF) # pointer (int)
+        target = rom_addr_base + (int(args[0], base = 0) & 0x01FFFFFF) # pointer (int)
 
     except IndexError:
-        sys.exit(f"Usage: {sys.argv[0]} ROM ADDR")
+        sys.exit(f"Usage: {sys.argv[0]} ADDR")
 
     for offset in pointer_offsets(rom, target):
         print(f"{(rom_addr_base + offset):08X}")

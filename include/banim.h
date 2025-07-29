@@ -1449,30 +1449,30 @@ void EndActiveClassReelSpell(void);
 void EndActiveClassReelBgColorProc(void);
 void SetActiveClassReelSpell(ProcPtr proc);
 void SetActiveCRSpellBgColorProc(ProcPtr proc);
-// func_fe6_08057F58
-// func_fe6_08057F60
-// func_fe6_08057FB8
-// func_fe6_08057FE8
-// func_fe6_0805803C
-// func_fe6_080580A8
-// func_fe6_080580D8
-// func_fe6_08058100
-// func_fe6_08058130
-// func_fe6_08058158
-// func_fe6_0805817C
-// func_fe6_08058180
-// func_fe6_080581A0
-// func_fe6_080581C0
-// func_fe6_08058220
-// func_fe6_0805826C
-// func_fe6_080582EC
-// func_fe6_08058310
-// func_fe6_08058330
-// func_fe6_08058358
-// func_fe6_080583B4
-// func_fe6_08058438
-// func_fe6_0805846C
-// func_fe6_080584AC
+// GetMagicEffectBufferFor
+// SetCRSpellBgPosition
+// ClearCRSpellBgTmBuf
+// CRSpellCreateFrontAnim
+// CRSpell_WriteBgMap
+// CRSpell_RegisterBgGfx
+// CRSpell_RegisterBgPal
+// CRSpell_RegisterObjGfx
+// CRSpell_RegisterObjPal
+// StartClassReelSpellAnim
+// StartClassReelSpellAnimDummy
+// StartClassReelSpellAnimFire
+// EfxopFire_Loop
+// NewEfxopFireBG
+// EfxopFireBG_Loop
+// NewEfxopFireOBJ
+// EfxopFireOBJ_Loop
+// StartClassReelSpellAnimThunder
+// EfxopThunder_Loop
+// NewEfxopThunderBG
+// EfxopThunderBG_Loop
+// NewEfxopThunderBGCOL
+// EfxopThunderBGCOL_Loop
+// NewEfxopThunderOBJ
 // func_fe6_08058528
 // func_fe6_0805854C
 // func_fe6_08058568
@@ -2088,16 +2088,16 @@ extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffect[];
 extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffectBG[];
 extern CONST_DATA u16 *TsaLut_EfxMagdhisEffectBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxMantBatabata[];
-// ??? gUnk_085D3904
-// ??? gUnk_085D3924
-// ??? gUnk_085D394C
-// ??? gUnk_085D3964
-// ??? gUnk_085D3994
-// ??? gUnk_085D39AC
-// ??? gUnk_085D39D4
-// ??? gUnk_085D39EC
-// ??? gUnk_085D39F4
-// ??? gUnk_085D3A14
+// ??? gClassReelSpellAnimFuncLut
+// ??? ProcScr_EfxopFire
+// ??? ProcScr_EfxopFireBG
+// ??? TsaLut_EfxopFireBG
+// ??? ProcScr_EfxopFireOBJ
+// ??? ProcScr_EfxopThunder
+// ??? ProcScr_EfxopThunderBG
+// ??? TsaLut_EfxopThunderBG
+// ??? ProcScr_EfxopThunderBGCOL
+// ??? ProcScr_EfxopThunderOBJ
 // ??? gUnk_085D3A2C
 // ??? gUnk_085D3A54
 // ??? gUnk_085D3A6C

@@ -1,16 +1,16 @@
 	.section .rodata
 
 
-	.global gUnk_0811AF20
-gUnk_0811AF20: @ 0811AF20
+	.global FrameLut_EfxopFireBG
+FrameLut_EfxopFireBG: @ 0811AF20
 	.incbin "fe6-base.gba", 0x11AF20, (0x11AF52 - 0x11AF20) @ length: 0032
 
-	.global gUnk_0811AF52
-gUnk_0811AF52: @ 0811AF52
+	.global FrameLut_EfxopThunderBG
+FrameLut_EfxopThunderBG: @ 0811AF52
 	.incbin "fe6-base.gba", 0x11AF52, (0x11AF5C - 0x11AF52) @ length: 000A
 
-	.global gUnk_0811AF5C
-gUnk_0811AF5C: @ 0811AF5C
+	.global FrameLut_EfxopThunderBGCOL
+FrameLut_EfxopThunderBGCOL: @ 0811AF5C
 	.incbin "fe6-base.gba", 0x11AF5C, (0x11AF9E - 0x11AF5C) @ length: 0042
 
 	.global gUnk_0811AF9E

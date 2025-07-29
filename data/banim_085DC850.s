@@ -2,11 +2,7 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.incbin "fe6-base.gba", 0x5E4940, (0x5E5858 - 0x5E4940)
-
-	.global AnimScr_EfxThunderstormOBJ
-AnimScr_EfxThunderstormOBJ: @ 085E5858
-	.incbin "fe6-base.gba", 0x5E5858, (0x5E5C10 - 0x5E5858) @ length: 03B8
+	.incbin "fe6-base.gba", 0x5E59E8, (0x5E5C10 - 0x5E59E8) @ length: 03B8
 
 	.global gUnk_085E5C10
 gUnk_085E5C10: @ 085E5C10

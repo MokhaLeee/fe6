@@ -202,8 +202,8 @@ extern i16 const gEfxQuakeVec_08111FC6[];
 // extern ??? gUnk_0811228E
 // extern ??? gUnk_08112298
 // extern ??? gUnk_081122C0
-// extern ??? gUnk_081122C5
-// extern ??? gUnk_081122CA
+// extern ??? BanimTypesPosLeft
+// extern ??? BanimTypesPosRight
 // extern ??? gUnk_081122D0
 // extern ??? gUnk_081122DA
 // extern ??? gUnk_08112370
@@ -315,9 +315,9 @@ extern const u16 FrameConf_EfxNormalEffectBG[];
 // extern ??? FrameConfig_EfxMagFcastBg3
 // extern ??? FrameConfig_EfxMagFcastBg4
 // extern ??? FrameConf_EfxMagdhisEffectBG
-// extern ??? gUnk_0811AF20
-// extern ??? gUnk_0811AF52
-// extern ??? gUnk_0811AF5C
+// extern ??? FrameLut_EfxopFireBG
+// extern ??? FrameLut_EfxopThunderBG
+// extern ??? FrameLut_EfxopThunderBGCOL
 // extern ??? gUnk_0811AF9E
 // extern ??? gUnk_0811AFA4
 extern const u8 Img_TeonoOBJ[];

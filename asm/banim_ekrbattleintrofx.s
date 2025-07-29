@@ -800,14 +800,14 @@ func_fe6_08048A64: @ 0x08048A64
 	lsls r0, r0, #4
 	adds r0, #8
 	strh r0, [r4, #0x3c]
-	ldr r1, .L08048BC0 @ =gUnk_081122C5
+	ldr r1, .L08048BC0 @ =BanimTypesPosLeft
 	ldr r2, .L08048B78 @ =gEkrDistanceType
 	movs r3, #0
 	ldrsh r0, [r2, r3]
 	adds r0, r0, r1
 	ldrb r5, [r0]
 	strh r5, [r4, #0x36]
-	ldr r1, .L08048BC4 @ =gUnk_081122CA
+	ldr r1, .L08048BC4 @ =BanimTypesPosRight
 	movs r3, #0
 	ldrsh r0, [r2, r3]
 	adds r0, r0, r1
@@ -846,8 +846,8 @@ func_fe6_08048A64: @ 0x08048A64
 .L08048BB4: .4byte gUnk_Banim_02003080
 .L08048BB8: .4byte 0x06014000
 .L08048BBC: .4byte gEkrBmLocation
-.L08048BC0: .4byte gUnk_081122C5
-.L08048BC4: .4byte gUnk_081122CA
+.L08048BC0: .4byte BanimTypesPosLeft
+.L08048BC4: .4byte BanimTypesPosRight
 .L08048BC8: .4byte gEkrInitPosReal
 .L08048BCC: .4byte gUnk_081122D0
 .L08048BD0:

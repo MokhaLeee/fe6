@@ -530,7 +530,7 @@ InitLeftAnim: @ 0x0804B37C
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	mov sb, r1
-	ldr r0, .L0804B488 @ =gUnk_081122C5
+	ldr r0, .L0804B488 @ =BanimTypesPosLeft
 	ldr r1, .L0804B48C @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r1, [r1, r2]
@@ -643,7 +643,7 @@ InitLeftAnim: @ 0x0804B37C
 	bx r0
 	.align 2, 0
 .L0804B484: .4byte gUnk_08112298
-.L0804B488: .4byte gUnk_081122C5
+.L0804B488: .4byte BanimTypesPosLeft
 .L0804B48C: .4byte gEkrDistanceType
 .L0804B490: .4byte gEkrXPosBase
 .L0804B494: .4byte gUnk_081122D0
@@ -675,7 +675,7 @@ InitRightAnim: @ 0x0804B4C0
 	adds r1, #3
 	adds r1, r1, r2
 	ldrb r7, [r1]
-	ldr r1, .L0804B5AC @ =gUnk_081122CA
+	ldr r1, .L0804B5AC @ =BanimTypesPosRight
 	ldr r0, .L0804B5B0 @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r0, [r0, r2]
@@ -778,7 +778,7 @@ InitRightAnim: @ 0x0804B4C0
 	bx r0
 	.align 2, 0
 .L0804B5A8: .4byte gUnk_08112298
-.L0804B5AC: .4byte gUnk_081122CA
+.L0804B5AC: .4byte BanimTypesPosRight
 .L0804B5B0: .4byte gEkrDistanceType
 .L0804B5B4: .4byte gEkrXPosBase
 .L0804B5B8: .4byte gEkrYPosBase

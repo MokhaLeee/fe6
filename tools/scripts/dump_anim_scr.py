@@ -44,7 +44,7 @@ def dump_one_part(rom_data, off):
             sprite_ptr = data & 0x08FFFFFC
             ANIM_SPRITE = try_get_ptr_symbol(sprite_ptr)
             if ANIM_SPRITE == None:
-                ANIM_SPRITE = f"{sprite_ptr:08X}"
+                ANIM_SPRITE = f"0x{sprite_ptr:08X}"
 
             print(f"    ANIMSCR_FORCE_SPRITE " + ANIM_SPRITE + f", {time}")
 
@@ -85,7 +85,7 @@ def dump_one_part(rom_data, off):
     return off
 
 def main(args):
-    rom = "fe6.gba"
+    rom = "fe6-base.gba"
 
     try:
         start = eval(args[1])
@@ -120,7 +120,7 @@ def main(args):
             if off_end <= off:
                 break
 
-        print(f"// End at: {off + 0x08000000:08X}")
+        print(f"// End at: 0x{off + 0x08000000:08X}")
 
 if __name__ == '__main__':
     main(sys.argv)

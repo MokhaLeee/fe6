@@ -567,7 +567,7 @@ SECTIONS
         asm/banim_efxmagic.o(.text);
         src/banim_efxhit.o(.text);
         src/banim_efxmisc.o(.text);
-        asm/code-banim.o(.text);
+        asm/banim_efxop.o(.text);
         src/banim_dragon.o(.text);
         src/banim_dragonfx_manakete.o(.text);
         src/banim_dragonfx_fae.o(.text);
@@ -813,7 +813,7 @@ SECTIONS
         . = ALIGN(4); data/banim_efxmagic.o(.data);
         . = ALIGN(4); src/banim_efxhit.o(.data);
         . = ALIGN(4); src/banim_efxmisc.o(.data);
-        . = ALIGN(4); data/banim_085D3474.o(.data);
+        . = ALIGN(4); data/banim_efxop.o(.data);
         . = ALIGN(4); src/banim_scripts.o(.data);
         . = ALIGN(4); data/banim_085DC850.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
