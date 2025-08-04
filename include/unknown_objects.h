@@ -190,8 +190,8 @@ extern i16 const gEfxQuakePureVec10[];
 extern i16 const gEfxQuakePureVec11[];
 extern i16 const gEfxQuakeVec_08111F30[];
 extern i16 const gEfxQuakeVec_08111FC6[];
-// extern ??? gUnk_08112234
-// extern ??? gUnk_0811223E
+// extern ??? RoundTypes_NormalPhy
+// extern ??? RoundTypes_NormalMag
 // extern ??? gUnk_08112248
 // extern ??? gUnk_08112252
 // extern ??? gUnk_0811225C
@@ -233,9 +233,9 @@ extern u8 const Img_BarNumfx[];
 extern u8 const Tsa_EkrExpBar[];
 extern u16 const Pal_EkrExpBar[];
 // extern ??? gUnk_08113D70
-// extern ??? gUnk_08113F98
-// extern ??? gUnk_08113FB8
-// extern ??? gUnk_08113FD8
+extern u16 const Pal_08113F98[];
+extern u16 const Pal_08113FB8[];
+extern u16 const Pal_08113FD8[];
 extern u8 const Img_BanimArcherFBallistaIntro[];
 extern u8 const Img_BanimArcherMBallistaIntro[];
 extern u8 const Img_BanimSnipperFBallistaIntro[];

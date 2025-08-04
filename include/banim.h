@@ -14,7 +14,9 @@ enum EkrDistanceType_idx {
     EKR_DISTANCE_FAR,
     EKR_DISTANCE_FARFAR,
     EKR_DISTANCE_MONOCOMBAT,
-    EKR_DISTANCE_PROMOTION
+    EKR_DISTANCE_PROMOTION,
+
+    EKR_DISTANCE_MAX
 };
 
 extern i16 gEkrDistanceType;
@@ -222,7 +224,7 @@ extern u16 gpBg1ScrollOffsetList2[];
 extern int gEfxMagicChk_N;
 extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
-extern u16 * gpBanimTriAtkPalettes[2];
+extern const u16 * gpBanimTriAtkPalettes[2];
 extern const u8 * gBanimUnitChgForceImg[2];
 extern i16 gBanimBG;
 extern i16 gEkrInitialHitSide;
@@ -256,6 +258,7 @@ extern i16 gEkrGaugeHit[2];
 extern i16 gEkrGaugeDmg[2];
 extern i16 gEkrGaugeCrt[2];
 extern i16 gEkrBmLocation[4];
+extern i16 gAnimRoundData[4];
 extern i16 gEfxHpLutOff[2];
 extern u16 gEfxHpLut[22];
 extern i16 gBanimIdx[2];
@@ -713,7 +716,7 @@ void UnsetMapStaffAnim(i16 * out, u16 pos, u16 weapon);
 void ParseBattleHitToBanimCmd(void);
 bool CheckBattleHasHit(void);
 int GetBanimUniquePal(struct Unit * unit);
-u16 * GetBanimTriangleAttackPalette(i16 bid, u16 item);
+const u16 * GetBanimTriangleAttackPalette(i16 bid, u16 item);
 
 enum banim_faction_palette_idx {
     BANIMPAL_BLUE = 0,
@@ -738,9 +741,9 @@ enum anim_round_type {
 };
 
 i16 GetBattleAnimRoundType(int index);
-i16 GetBattleAnimRoundTypeFlags(int);
+i16 func_fe6_0804A57C(int);
 
-#define GetRoundFlagByAnim(aAnim) (GetBattleAnimRoundTypeFlags((aAnim->nextRoundId - 1) * 2 + GetAnimPosition(aAnim)))
+#define GetRoundFlagByAnim(aAnim) (func_fe6_0804A57C((aAnim->nextRoundId - 1) * 2 + GetAnimPosition(aAnim)))
 
 i16 GetEfxHp(int index);
 // func_fe6_0804A5C0
@@ -755,7 +758,7 @@ void InitMainAnims(void);
 void InitBattleAnimFrame(int round_type_left, int round_type_right);
 void InitLeftAnim(int round_type);
 void InitRightAnim(int round_type);
-void SwitchAISFrameDataFromBARoundType(struct BaSprite *anim, int type);
+void LoadAnimFrame(struct BaSprite *anim, int type);
 int GetAnimLayer(struct BaSprite *anim);
 int GetAnimPosition(struct BaSprite *anim);
 int CheckRoundMiss(i16 type);
@@ -1071,15 +1074,15 @@ void NewEfxElfireBGCOL(struct Anim *anim);
 void EfxElfireBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxElfireOBJ(struct Anim *anim);
 void EfxElfireOBJ_Loop(struct ProcEfxOBJ *proc);
-// StartSpellAnimFimbulvetr
-// EfxFimbulvetr_Loop
-// NewEfxFimbulvetrBGTR
-// EfxFimbulvetrBGTR_Loop
-// NewEfxFimbulvetrBG
+void StartSpellAnimFimbulvetr(struct Anim *anim);
+void EfxFimbulvetr_Loop(struct ProcEfx *proc);
+void NewEfxFimbulvetrBGTR(struct Anim *anim);
+void EfxFimbulvetrBGTR_Loop(struct ProcEfxBG * proc);
+void NewEfxFimbulvetrBG(struct Anim *anim);
 // EfxFimbulvetrBG_Loop
-// NewEfxFimbulvetrOBJ
+void NewEfxFimbulvetrOBJ(struct Anim *anim);
 // EfxFimbulvetrOBJ_Loop
-// NewEfxFimbulvetrOBJ2
+void NewEfxFimbulvetrOBJ2(struct Anim *anim);
 // EfxFimbulvetrOBJ2_Loop
 // NewEfxFimbulvetrOBJ2Fall
 // EfxFimbulvetrOBJ2Fall_Loop

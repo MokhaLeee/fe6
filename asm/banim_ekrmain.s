@@ -792,8 +792,8 @@ InitRightAnim: @ 0x0804B4C0
 .L0804B5D8: .4byte gUnk_Banim_020099C0
 .L0804B5DC: .4byte gAnims
 
-	thumb_func_start SwitchAISFrameDataFromBARoundType
-SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
+	thumb_func_start LoadAnimFrame
+LoadAnimFrame: @ 0x0804B5E0
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0

@@ -282,6 +282,7 @@ SECTIONS
         . = 0x0203CD10 - __ewram_overlay_end; gBanimFloorfx = .;
         . = 0x0203CD14 - __ewram_overlay_end; gEkrDistanceType = .;
         . = 0x0203CD16 - __ewram_overlay_end; gEkrBmLocation = .;
+        . = 0x0203CD1E - __ewram_overlay_end; gAnimRoundData = .;
         . = 0x0203CD46 - __ewram_overlay_end; gEfxHpLutOff = .;
         . = 0x0203CD4A - __ewram_overlay_end; gEfxHpLut = .;
         . = 0x0203CD76 - __ewram_overlay_end; gBanimIdx = .;
@@ -559,6 +560,7 @@ SECTIONS
         asm/banim_ekrbattleintrofx.o(.text);
         src/banim_setup.o(.text);
         asm/banim_ekrcmd.o(.text);
+        src/banim_ekrcmd.o(.text);
         asm/banim_main.o(.text);
         asm/banim_ekrmain.o(.text);
         asm/banim_ekrmainmini.o(.text);
@@ -701,6 +703,8 @@ SECTIONS
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
+        . = ALIGN(4); src/banim_ekrbattleintro.o(.rodata);
+        . = ALIGN(4); src/banim_ekrcmd.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
         . = ALIGN(4); src/banim_efxmagic.o(.rodata);
         . = ALIGN(4); data/eodata_banim_efxmagic.o(.rodata);

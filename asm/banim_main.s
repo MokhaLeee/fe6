@@ -448,10 +448,10 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r2, #0
 	mov r1, r8
 	str r2, [sp]
-	bl SwitchAISFrameDataFromBARoundType
+	bl LoadAnimFrame
 	adds r0, r6, #0
 	mov r1, r8
-	bl SwitchAISFrameDataFromBARoundType
+	bl LoadAnimFrame
 	movs r1, #4
 	ldr r2, [sp]
 	ldrh r0, [r2, #0x10]
@@ -565,10 +565,10 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 .L0804AAEE:
 	adds r0, r2, #0
 	mov r1, r8
-	bl SwitchAISFrameDataFromBARoundType
+	bl LoadAnimFrame
 	adds r0, r6, #0
 	mov r1, r8
-	bl SwitchAISFrameDataFromBARoundType
+	bl LoadAnimFrame
 	b .L0804AD8A
 	.align 2, 0
 .L0804AB00: .4byte gUnk_081122C0
@@ -980,7 +980,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r2, #0
 	mov r1, r8
 	str r2, [sp]
-	bl SwitchAISFrameDataFromBARoundType
+	bl LoadAnimFrame
 	ldr r4, .L0804AE5C @ =0x0000FFFD
 	b .L0804AED0
 	.align 2, 0
@@ -1039,7 +1039,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r2, #0
 	mov r1, r8
 	str r2, [sp]
-	bl SwitchAISFrameDataFromBARoundType
+	bl LoadAnimFrame
 	ldr r4, .L0804AF14 @ =0x00007FFF
 .L0804AED0:
 	adds r0, r4, #0
@@ -1059,7 +1059,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r6, [r0]
 	adds r0, r6, #0
 	mov r1, r8
-	bl SwitchAISFrameDataFromBARoundType
+	bl LoadAnimFrame
 	ldrh r0, [r6, #0x10]
 	ands r4, r0
 	orrs r4, r5

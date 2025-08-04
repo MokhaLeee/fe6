@@ -342,16 +342,19 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	sub sp, #0x24
 	ldr r0, .L08049F58 @ =gBattleHits
 	str r0, [sp, #4]
+
+	@ gpEkrTriangleUnits
 	ldr r0, .L08049F5C @ =gpEkrTriangleUnits
 	movs r3, #0
 	str r3, [r0, #4]
 	str r3, [r0]
+
 	ldr r2, .L08049F60 @ =gEkrDistanceType
 	movs r5, #0
 	ldrsh r1, [r2, r5]
 	cmp r1, #4
 	bne .L08049F6C
-	ldr r0, .L08049F64 @ =0x0203CD1E
+	ldr r0, .L08049F64 @ =gAnimRoundData
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	ldr r2, .L08049F68 @ =0x0000FFFF
@@ -362,12 +365,12 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldrh r5, [r0, #6]
 	orrs r1, r5
 	strh r1, [r0, #6]
-	b .L0804A46E
+	b .L_return_0804A46E
 	.align 2, 0
 .L08049F58: .4byte gBattleHits
 .L08049F5C: .4byte gpEkrTriangleUnits
 .L08049F60: .4byte gEkrDistanceType
-.L08049F64: .4byte 0x0203CD1E
+.L08049F64: .4byte gAnimRoundData
 .L08049F68: .4byte 0x0000FFFF
 .L08049F6C:
 	ldr r1, .L08049F94 @ =gBattleSt
@@ -376,7 +379,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ands r0, r1
 	cmp r0, #0
 	beq .L08049FA0
-	ldr r2, .L08049F98 @ =0x0203CD1E
+	ldr r2, .L08049F98 @ =gAnimRoundData
 	movs r0, #6
 	strh r0, [r2]
 	strh r3, [r2, #2]
@@ -388,23 +391,28 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldrh r5, [r2, #6]
 	orrs r0, r5
 	strh r0, [r2, #6]
-	b .L0804A46E
+	b .L_return_0804A46E
 	.align 2, 0
 .L08049F94: .4byte gBattleSt
-.L08049F98: .4byte 0x0203CD1E
+.L08049F98: .4byte gAnimRoundData
 .L08049F9C: .4byte 0x0000FFFF
 .L08049FA0:
+
 	ldrh r2, [r2]
 	str r2, [sp, #0x18]
 	str r2, [sp, #0x1c]
+
+	@ unk_sp_20 = 0
 	movs r0, #0
 	str r0, [sp, #0x20]
+
 	ldr r0, .L0804A0A4 @ =gpEkrBattleUnitLeft
 	ldr r0, [r0]
 	str r0, [sp, #8]
 	ldr r0, .L0804A0A8 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	str r0, [sp, #0xc]
+
 	ldr r0, [sp, #8]
 	adds r0, #0x4a
 	ldrh r0, [r0]
@@ -494,7 +502,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldr r5, .L0804A0B0 @ =gEkrGaugeHp
 	ldr r0, .L0804A0B4 @ =0x0000FFFF
 	adds r3, r0, #0
-	ldr r1, .L0804A0B8 @ =0x0203CD1E
+	ldr r1, .L0804A0B8 @ =gAnimRoundData
 .L0804A06A:
 	ldrh r0, [r1]
 	orrs r0, r3
@@ -532,7 +540,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 .L0804A0AC: .4byte gEfxHpLut
 .L0804A0B0: .4byte gEkrGaugeHp
 .L0804A0B4: .4byte 0x0000FFFF
-.L0804A0B8: .4byte 0x0203CD1E
+.L0804A0B8: .4byte gAnimRoundData
 .L0804A0BC:
 	movs r0, #8
 	ands r0, r1
@@ -627,10 +635,10 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L0804A180
-	ldr r0, .L0804A17C @ =gUnk_08112234
+	ldr r0, .L0804A17C @ =RoundTypes_NormalPhy
 	b .L0804A1B6
 	.align 2, 0
-.L0804A17C: .4byte gUnk_08112234
+.L0804A17C: .4byte RoundTypes_NormalPhy
 .L0804A180:
 	ldr r0, .L0804A184 @ =gUnk_08112266
 	b .L0804A1B6
@@ -680,11 +688,11 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L0804A1E4
-	ldr r0, .L0804A1E0 @ =gUnk_0811223E
+	ldr r0, .L0804A1E0 @ =RoundTypes_NormalMag
 	b .L0804A1E6
 	.align 2, 0
 .L0804A1DC: .4byte gUnk_0811228E
-.L0804A1E0: .4byte gUnk_0811223E
+.L0804A1E0: .4byte RoundTypes_NormalMag
 .L0804A1E4:
 	ldr r0, .L0804A1F4 @ =gUnk_08112266
 .L0804A1E6:
@@ -708,7 +716,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldrh r0, [r1]
 	mov r5, sb
 	strh r0, [r5]
-	ldr r1, .L0804A280 @ =0x0203CD1E
+	ldr r1, .L0804A280 @ =gAnimRoundData
 	ldr r2, [sp, #0x10]
 	lsls r0, r2, #2
 	adds r5, r0, r1
@@ -767,7 +775,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	b .L0804A454
 	.align 2, 0
 .L0804A27C: .4byte gUnk_0811225C
-.L0804A280: .4byte 0x0203CD1E
+.L0804A280: .4byte gAnimRoundData
 .L0804A284: .4byte gBanimPosIsTarget
 .L0804A288: .4byte gEfxHpLut
 .L0804A28C: .4byte 0xFFFF8000
@@ -1010,9 +1018,9 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	movs r0, #0x80
 	ands r0, r1
 	cmp r0, #0
-	bne .L0804A46E
+	bne .L_return_0804A46E
 	b .L0804A0BC
-.L0804A46E:
+.L_return_0804A46E:
 	add sp, #0x24
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -1023,208 +1031,3 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	bx r0
 	.align 2, 0
 .L0804A480: .4byte gEfxHpLut
-
-	thumb_func_start CheckBattleHasHit
-CheckBattleHasHit: @ 0x0804A484
-	ldr r1, .L0804A494 @ =gBattleHits
-	movs r0, #2
-	ldrb r1, [r1, #2]
-	ands r0, r1
-	cmp r0, #0
-	bne .L0804A498
-	movs r0, #0
-	b .L0804A49A
-	.align 2, 0
-.L0804A494: .4byte gBattleHits
-.L0804A498:
-	movs r0, #1
-.L0804A49A:
-	bx lr
-
-	thumb_func_start GetBanimUniquePal
-GetBanimUniquePal: @ 0x0804A49C
-	ldr r2, [r0]
-	ldr r1, [r0, #4]
-	ldr r0, [r2, #0x28]
-	ldr r1, [r1, #0x24]
-	orrs r0, r1
-	lsrs r0, r0, #8
-	movs r1, #1
-	ands r0, r1
-	adds r2, #0x23
-	adds r2, r2, r0
-	ldrb r0, [r2]
-	subs r0, #1
-	bx lr
-	.align 2, 0
-
-	thumb_func_start GetBanimTriangleAttackPalette
-GetBanimTriangleAttackPalette: @ 0x0804A4B8
-	push {lr}
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x67
-	bne .L0804A4F8
-	adds r0, r1, #0
-	bl GetItemIid
-	cmp r0, #0x31
-	beq .L0804A4E8
-	cmp r0, #0x31
-	bgt .L0804A4DA
-	cmp r0, #0x30
-	beq .L0804A4E0
-	b .L0804A4F8
-.L0804A4DA:
-	cmp r0, #0x32
-	beq .L0804A4F0
-	b .L0804A4F8
-.L0804A4E0:
-	ldr r0, .L0804A4E4 @ =gUnk_08113FB8
-	b .L0804A4FA
-	.align 2, 0
-.L0804A4E4: .4byte gUnk_08113FB8
-.L0804A4E8:
-	ldr r0, .L0804A4EC @ =gUnk_08113F98
-	b .L0804A4FA
-	.align 2, 0
-.L0804A4EC: .4byte gUnk_08113F98
-.L0804A4F0:
-	ldr r0, .L0804A4F4 @ =gUnk_08113FD8
-	b .L0804A4FA
-	.align 2, 0
-.L0804A4F4: .4byte gUnk_08113FD8
-.L0804A4F8:
-	movs r0, #0
-.L0804A4FA:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start GetBanimFactionPalette
-GetBanimFactionPalette: @ 0x0804A500
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r1, r0, #0
-	cmp r0, #0x40
-	beq .L0804A51C
-	cmp r0, #0x40
-	ble .L0804A524
-	cmp r1, #0x80
-	beq .L0804A518
-	cmp r1, #0xc0
-	beq .L0804A520
-	b .L0804A524
-.L0804A518:
-	movs r0, #1
-	b .L0804A526
-.L0804A51C:
-	movs r0, #2
-	b .L0804A526
-.L0804A520:
-	movs r0, #3
-	b .L0804A526
-.L0804A524:
-	movs r0, #0
-.L0804A526:
-	bx lr
-
-	thumb_func_start EkrPrepareBanimfx
-EkrPrepareBanimfx: @ 0x0804A528
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	lsls r4, r1, #0x10
-	lsrs r4, r4, #0x10
-	bl GetAnimPosition
-	ldr r1, .L0804A550 @ =gBanimIdx
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	strh r4, [r0]
-	bl UpdateBanimFrame
-	adds r0, r5, #0
-	movs r1, #6
-	bl SwitchAISFrameDataFromBARoundType
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804A550: .4byte gBanimIdx
-
-	thumb_func_start GetBattleAnimRoundType
-GetBattleAnimRoundType: @ 0x0804A554
-	ldr r1, .L0804A570 @ =0x0203CD1E
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	ldrh r2, [r0]
-	movs r3, #0
-	ldrsh r1, [r0, r3]
-	movs r0, #1
-	rsbs r0, r0, #0
-	cmp r1, r0
-	beq .L0804A578
-	ldr r0, .L0804A574 @ =0x00000FFF
-	ands r0, r2
-	b .L0804A57A
-	.align 2, 0
-.L0804A570: .4byte 0x0203CD1E
-.L0804A574: .4byte 0x00000FFF
-.L0804A578:
-	adds r0, r1, #0
-.L0804A57A:
-	bx lr
-
-	thumb_func_start GetBattleAnimRoundTypeFlags
-GetBattleAnimRoundTypeFlags: @ 0x0804A57C
-	ldr r1, .L0804A59C @ =0x0203CD1E
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	ldrh r2, [r0]
-	movs r3, #0
-	ldrsh r1, [r0, r3]
-	movs r0, #1
-	rsbs r0, r0, #0
-	cmp r1, r0
-	beq .L0804A5A4
-	ldr r0, .L0804A5A0 @ =0xFFFFF000
-	ands r0, r2
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	b .L0804A5A6
-	.align 2, 0
-.L0804A59C: .4byte 0x0203CD1E
-.L0804A5A0: .4byte 0xFFFFF000
-.L0804A5A4:
-	movs r0, #0
-.L0804A5A6:
-	bx lr
-
-	thumb_func_start GetEfxHp
-GetEfxHp: @ 0x0804A5A8
-	ldr r1, .L0804A5B8 @ =gEfxHpLut
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	ldr r1, .L0804A5BC @ =0x00000FFF
-	ldrh r0, [r0]
-	ands r1, r0
-	adds r0, r1, #0
-	bx lr
-	.align 2, 0
-.L0804A5B8: .4byte gEfxHpLut
-.L0804A5BC: .4byte 0x00000FFF
-
-	thumb_func_start func_fe6_0804A5C0
-func_fe6_0804A5C0: @ 0x0804A5C0
-	ldr r1, .L0804A5D4 @ =gEfxHpLut
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	ldr r1, .L0804A5D8 @ =0xFFFFF000
-	ldrh r0, [r0]
-	ands r1, r0
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	adds r0, r1, #0
-	bx lr
-	.align 2, 0
-.L0804A5D4: .4byte gEfxHpLut
-.L0804A5D8: .4byte 0xFFFFF000
