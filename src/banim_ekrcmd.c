@@ -87,6 +87,7 @@ const u16 RoundTypes_Dragon3[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_INVALID
 };
 
+// https://decomp.me/scratch/EcNSg
 #if 0
 void ParseBattleHitToBanimCmd(void)
 {
@@ -206,7 +207,7 @@ void ParseBattleHitToBanimCmd(void)
 				*act_round = RoundTypes_CriticalPhy[round];
 			else
 				*act_round = RoundTypes_CriticalMag[round];
-		} else if (cur_is_dark_breath == false) {
+		} else if (cur_is_dark_breath == 0) {
 			if (!UnitKnowsMagic(actor_unit))
 				*act_round = RoundTypes_NormalPhy[round];
 			else
@@ -241,6 +242,99 @@ void ParseBattleHitToBanimCmd(void)
 			tar_round = RoundTypes_TargetMiss[round];
 		} else
 			tar_round = RoundTypes_TargetHitted[round];
+
+		gAnimRoundData[ANIM_REF_OFFSET(round, POS_L)] = round_info[POS_L];
+		gAnimRoundData[ANIM_REF_OFFSET(round, POS_R)] = round_info[POS_R];
+
+		if ((hit->attributes & BATTLE_HIT_ATTR_MISS) == 0) {
+			if (hit->attributes & BATTLE_HIT_ATTR_DEVIL) {
+				/* devil */
+				if (gBanimPosIsTarget[POS_L] == is_target) {
+					i16 new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
+
+					if (new_hp < 0)
+						new_hp = 0;
+
+					hpoff_l++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_l, POS_L)] = new_hp;
+					gAnimRoundData[ANIM_REF_OFFSET(round, POS_L)] |= ANIM_ROUND_DEVIL;
+				} else {
+					i16 new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
+
+					if (new_hp < 0)
+						new_hp = 0;
+
+					hpoff_r++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_r, POS_R)] = new_hp;
+					gAnimRoundData[ANIM_REF_OFFSET(round, POS_R)] |= ANIM_ROUND_DEVIL;
+				}
+			} else if (hit->attributes & BATTLE_HIT_ATTR_HPSTEAL) {
+				/* devil */
+				if (gBanimPosIsTarget[POS_L] == is_target) {
+					i16 new_hp;
+
+					/* target */
+					new_hp= GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
+					if (new_hp < 0)
+						new_hp = 0;
+
+					hpoff_r++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_r, POS_R)] = new_hp;
+
+					/* actor */
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) + hit->damage;
+					if (new_hp > gBanimMaxHP[POS_L])
+						new_hp = gBanimMaxHP[POS_L];
+
+					hpoff_l++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_l, POS_L)] = new_hp;
+				} else {
+					i16 new_hp;
+
+					/* target */
+					new_hp= GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
+					if (new_hp < 0)
+						new_hp = 0;
+
+					hpoff_l++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_l, POS_L)] = new_hp;
+
+					/* actor */
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) + hit->damage;
+					if (new_hp > gBanimMaxHP[POS_R])
+						new_hp = gBanimMaxHP[POS_R];
+
+					hpoff_r++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_r, POS_R)] = new_hp;
+				}
+			} else {
+				/* normal */
+				if (gBanimPosIsTarget[POS_L] == is_target) {
+					i16 new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
+
+					if (new_hp < 0)
+						new_hp = 0;
+
+					hpoff_r++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_r, POS_R)] = new_hp;
+
+					if (hit->attributes & BATTLE_HIT_ATTR_POISON)
+						gAnimRoundData[ANIM_REF_OFFSET(round, POS_R)] |= ANIM_ROUND_POISON;
+
+				} else {
+					i16 new_hp= GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
+
+					if (new_hp < 0)
+						new_hp = 0;
+
+					hpoff_l++;
+					gEfxHpLut[ANIM_REF_OFFSET(hpoff_l, POS_L)] = new_hp;
+
+					if (hit->attributes & BATTLE_HIT_ATTR_POISON)
+						gAnimRoundData[ANIM_REF_OFFSET(round, POS_L)] |= ANIM_ROUND_POISON;
+				}
+			}
+		}
 	}
 }
 #endif

@@ -9,6 +9,8 @@
 #include "battle.h"
 #include "face.h"
 
+#define ANIM_REF_OFFSET(off_ref_round, off_ref_pos) ((off_ref_round) * 2 + off_ref_pos)
+
 enum EkrDistanceType_idx {
     EKR_DISTANCE_CLOSE,
     EKR_DISTANCE_FAR,
@@ -737,7 +739,7 @@ enum anim_round_type {
     ANIM_ROUND_SILENCER = 0x1000,
     ANIM_ROUND_POISON = 0x2000,
     ANIM_ROUND_BIT14 = 0x4000,
-    ANIM_ROUND_DEVIL = 0x8000,    
+    ANIM_ROUND_DEVIL = 0x8000,
 };
 
 i16 GetBattleAnimRoundType(int index);

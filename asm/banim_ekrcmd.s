@@ -748,6 +748,8 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	mov r1, sp
 	ldrh r0, [r1, #2]
 	strh r0, [r4]
+
+
 	ldr r2, [sp, #4]
 	ldrh r1, [r2]
 	movs r0, #2
