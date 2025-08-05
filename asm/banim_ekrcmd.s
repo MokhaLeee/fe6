@@ -438,6 +438,8 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	movs r1, #1
 	str r1, [sp, #0x1c]
 .L08049FE8:
+
+
 	ldr r4, [sp, #8]
 	adds r4, #0x4a
 	ldrh r0, [r4]
@@ -460,6 +462,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	movs r2, #1
 	str r2, [sp, #0x1c]
 .L0804A014:
+
 	ldrh r0, [r4]
 	bl GetItemIid
 	cmp r0, #0x7f
@@ -480,6 +483,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	movs r5, #1
 	str r5, [sp, #0x1c]
 .L0804A03C:
+
 	ldrh r0, [r4]
 	bl GetItemIid
 	cmp r0, #0x53
@@ -497,6 +501,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	movs r2, #1
 	str r2, [sp, #0x20]
 .L0804A05E:
+
 	movs r2, #0
 	ldr r4, .L0804A0AC @ =gEfxHpLut
 	ldr r5, .L0804A0B0 @ =gEkrGaugeHp
@@ -524,10 +529,12 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	adds r2, #1
 	cmp r2, #0x13
 	bls .L0804A082
+
 	ldrh r0, [r5]
 	strh r0, [r4]
 	ldrh r0, [r5, #2]
 	strh r0, [r4, #2]
+
 	movs r2, #0
 	str r2, [sp, #0x10]
 	mov r8, r2
@@ -555,6 +562,8 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldr r2, [sp, #0x14]
 	cmp r0, r2
 	bne .L0804A0FC
+
+	# if (gBanimPosIsTarget == is_target) {
 	mov r5, sp
 	movs r0, #2
 	add r0, sp
@@ -589,6 +598,8 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	movs r0, #1
 	strh r0, [r1]
 .L0804A118:
+
+	@ if (hit->attributes & BATTLE_HIT_ATTR_TRIANGLE_ATTACK)
 	movs r2, #0x80
 	lsls r2, r2, #3
 	adds r0, r2, #0
@@ -604,6 +615,8 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldr r0, [r1, #0x10]
 	str r0, [r2, #4]
 .L0804A134:
+
+	@ if (hit->attributes & BATTLE_HIT_ATTR_CRIT)
 	movs r0, #1
 	ldr r2, [sp, #4]
 	ldrh r2, [r2]
@@ -615,18 +628,18 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L0804A160
-	ldr r0, .L0804A15C @ =gUnk_08112248
+	ldr r0, .L0804A15C @ =RoundTypes_CriticalPhy
 	b .L0804A1B6
 	.align 2, 0
 .L0804A150: .4byte gEkrInitialHitSide
 .L0804A154: .4byte gpEkrTriangleUnits
 .L0804A158: .4byte gBattleSt
-.L0804A15C: .4byte gUnk_08112248
+.L0804A15C: .4byte RoundTypes_CriticalPhy
 .L0804A160:
-	ldr r0, .L0804A164 @ =gUnk_08112270
+	ldr r0, .L0804A164 @ =RoundTypes_CriticalMag
 	b .L0804A1B6
 	.align 2, 0
-.L0804A164: .4byte gUnk_08112270
+.L0804A164: .4byte RoundTypes_CriticalMag
 .L0804A168:
 	cmp r3, #0
 	bne .L0804A188
@@ -640,10 +653,10 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	.align 2, 0
 .L0804A17C: .4byte RoundTypes_NormalPhy
 .L0804A180:
-	ldr r0, .L0804A184 @ =gUnk_08112266
+	ldr r0, .L0804A184 @ =RoundTypes_NormalMag
 	b .L0804A1B6
 	.align 2, 0
-.L0804A184: .4byte gUnk_08112266
+.L0804A184: .4byte RoundTypes_NormalMag
 .L0804A188:
 	movs r0, #2
 	bl BanimSpawnRandB
@@ -659,17 +672,17 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	beq .L0804A1B4
 	b .L0804A1C0
 .L0804A1A2:
-	ldr r0, .L0804A1A8 @ =gUnk_0811227A
+	ldr r0, .L0804A1A8 @ =RoundTypes_Dragon1
 	b .L0804A1B6
 	.align 2, 0
-.L0804A1A8: .4byte gUnk_0811227A
+.L0804A1A8: .4byte RoundTypes_Dragon1
 .L0804A1AC:
-	ldr r0, .L0804A1B0 @ =gUnk_08112284
+	ldr r0, .L0804A1B0 @ =RoundTypes_Dragon2
 	b .L0804A1B6
 	.align 2, 0
-.L0804A1B0: .4byte gUnk_08112284
+.L0804A1B0: .4byte RoundTypes_Dragon2
 .L0804A1B4:
-	ldr r0, .L0804A1DC @ =gUnk_0811228E
+	ldr r0, .L0804A1DC @ =RoundTypes_Dragon3
 .L0804A1B6:
 	lsls r1, r4, #0x10
 	asrs r1, r1, #0xf
@@ -677,6 +690,8 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldrh r0, [r1]
 	strh r0, [r5]
 .L0804A1C0:
+
+	@ check for target
 	movs r0, #2
 	ldr r1, [sp, #4]
 	ldrh r1, [r1]
@@ -688,26 +703,26 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L0804A1E4
-	ldr r0, .L0804A1E0 @ =RoundTypes_NormalMag
+	ldr r0, .L0804A1E0 @ =RoundTypes_MissedPhy
 	b .L0804A1E6
 	.align 2, 0
-.L0804A1DC: .4byte gUnk_0811228E
-.L0804A1E0: .4byte RoundTypes_NormalMag
+.L0804A1DC: .4byte RoundTypes_Dragon3
+.L0804A1E0: .4byte RoundTypes_MissedPhy
 .L0804A1E4:
-	ldr r0, .L0804A1F4 @ =gUnk_08112266
+	ldr r0, .L0804A1F4 @ =RoundTypes_NormalMag
 .L0804A1E6:
 	lsls r1, r4, #0x10
 	asrs r1, r1, #0xf
 	adds r1, r1, r0
 	ldrh r0, [r1]
 	strh r0, [r5]
-	ldr r0, .L0804A1F8 @ =gUnk_08112252
+	ldr r0, .L0804A1F8 @ =RoundTypes_TargetMiss
 	b .L0804A1FE
 	.align 2, 0
-.L0804A1F4: .4byte gUnk_08112266
-.L0804A1F8: .4byte gUnk_08112252
+.L0804A1F4: .4byte RoundTypes_NormalMag
+.L0804A1F8: .4byte RoundTypes_TargetMiss
 .L0804A1FC:
-	ldr r0, .L0804A27C @ =gUnk_0811225C
+	ldr r0, .L0804A27C @ =RoundTypes_TargetHitted
 .L0804A1FE:
 	mov r2, sl
 	lsls r1, r2, #0x10
@@ -716,12 +731,14 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	ldrh r0, [r1]
 	mov r5, sb
 	strh r0, [r5]
+
 	ldr r1, .L0804A280 @ =gAnimRoundData
 	ldr r2, [sp, #0x10]
 	lsls r0, r2, #2
 	adds r5, r0, r1
 	mov r0, sp
 	ldrh r0, [r0]
+
 	movs r6, #0
 	strh r0, [r5]
 	lsls r0, r2, #1
@@ -774,7 +791,7 @@ ParseBattleHitToBanimCmd: @ 0x08049F1C
 	orrs r0, r1
 	b .L0804A454
 	.align 2, 0
-.L0804A27C: .4byte gUnk_0811225C
+.L0804A27C: .4byte RoundTypes_TargetHitted
 .L0804A280: .4byte gAnimRoundData
 .L0804A284: .4byte gBanimPosIsTarget
 .L0804A288: .4byte gEfxHpLut

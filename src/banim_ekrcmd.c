@@ -15,7 +15,7 @@ const u16 RoundTypes_NormalPhy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_HIT_CLOSE
 };
 
-const u16 RoundTypes_NormalMag[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_MissedPhy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_MISS_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_NONCRIT_FAR,
@@ -23,7 +23,7 @@ const u16 RoundTypes_NormalMag[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_MISS_CLOSE
 };
 
-const u16 gUnk_08112248[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_CriticalPhy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_CRIT_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_CRIT_FAR,
@@ -31,7 +31,7 @@ const u16 gUnk_08112248[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_CRIT_CLOSE
 };
 
-const u16 gUnk_08112252[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_TargetMiss[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_TAKING_MISS_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_TAKING_MISS_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_TAKING_MISS_FAR,
@@ -39,7 +39,7 @@ const u16 gUnk_08112252[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_TAKING_MISS_CLOSE
 };
 
-const u16 gUnk_0811225C[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_TargetHitted[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_TAKING_HIT_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_TAKING_HIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_TAKING_HIT_FAR,
@@ -47,7 +47,7 @@ const u16 gUnk_0811225C[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_TAKING_HIT_CLOSE
 };
 
-const u16 gUnk_08112266[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_NormalMag[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_NONCRIT_FAR,
@@ -55,7 +55,7 @@ const u16 gUnk_08112266[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_HIT_CLOSE
 };
 
-const u16 gUnk_08112270[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_CriticalMag[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_CRIT_FAR,
@@ -63,7 +63,7 @@ const u16 gUnk_08112270[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_CRIT_CLOSE
 };
 
-const u16 gUnk_0811227A[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_Dragon1[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_HIT_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_HIT_CLOSE,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_HIT_CLOSE,
@@ -71,7 +71,7 @@ const u16 gUnk_0811227A[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_INVALID
 };
 
-const u16 gUnk_08112284[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_Dragon2[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_NONCRIT_FAR,
@@ -79,7 +79,7 @@ const u16 gUnk_08112284[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_INVALID
 };
 
-const u16 gUnk_0811228E[EKR_DISTANCE_MAX] = {
+const u16 RoundTypes_Dragon3[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_CRIT_FAR,
@@ -90,9 +90,13 @@ const u16 gUnk_0811228E[EKR_DISTANCE_MAX] = {
 #if 0
 void ParseBattleHitToBanimCmd(void)
 {
+	int i;
+	u16 round_info[2];
+	int round, hpoff_l, hpoff_r;
 	int local_distance_types[2];
-	int unk_sp_20;
+	int is_dark_breath;
 	struct BattleUnit *battle_units[2];
+	struct BattleHit *hit = gBattleHits;
 
 	gpEkrTriangleUnits[POS_L] = NULL;
 	gpEkrTriangleUnits[POS_R] = NULL;
@@ -118,10 +122,126 @@ void ParseBattleHitToBanimCmd(void)
 	local_distance_types[POS_L] = gEkrDistanceType;
 	local_distance_types[POS_R] = gEkrDistanceType;
 
-	unk_sp_20 = 0;
+	is_dark_breath = false;
 
 	battle_units[POS_L] = gpEkrBattleUnitLeft;
 	battle_units[POS_R] = gpEkrBattleUnitRight;
+
+	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_RUNESWORD  && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
+		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
+	if (GetItemIid(battle_units[POS_R]->weapon_before) == IID_RUNESWORD  && (local_distance_types[POS_R] == ANIM_ROUND_HIT_CLOSE))
+		local_distance_types[POS_R] = ANIM_ROUND_CRIT_CLOSE;
+
+	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_HANDAXE    && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
+		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
+	if (GetItemIid(battle_units[POS_R]->weapon_before) == IID_HANDAXE    && (local_distance_types[POS_R] == ANIM_ROUND_HIT_CLOSE))
+		local_distance_types[POS_R] = ANIM_ROUND_CRIT_CLOSE;
+
+	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_TOMAHAWK   && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
+		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
+	if (GetItemIid(battle_units[POS_R]->weapon_before) == IID_TOMAHAWK   && (local_distance_types[POS_R] == ANIM_ROUND_HIT_CLOSE))
+		local_distance_types[POS_R] = ANIM_ROUND_CRIT_CLOSE;
+
+	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_FIRESTONE  && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
+		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
+
+	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_DARKBREATH && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
+		is_dark_breath = true;
+
+	for (i = 0; i < 0x14; i++)
+		gAnimRoundData[i] = 0xFFFF;
+
+	for (i = 0; i < 0x14; i++)
+		gEfxHpLut[2 + i] = 0xFFFF;
+
+	gEfxHpLut[0] = gEkrGaugeHp[0];
+	gEfxHpLut[1] = gEkrGaugeHp[1];
+
+	round = 0;
+	hpoff_l = 0;
+	hpoff_r = 0;
+
+	for (; (hit->info & BATTLE_HIT_INFO_END) == 0; hit++, round++) {
+		int is_target;
+		u16 *act_round, *tar_round;
+		int act_distance, tar_distance;
+		struct Unit *actor_unit;
+		int cur_is_dark_breath;
+
+		if (hit->info & BATTLE_HIT_INFO_ACTORB)
+			is_target = true;
+		else
+			is_target = false;
+
+		if (gBanimPosIsTarget == is_target) {
+			act_round = &round_info[POS_L];
+			tar_round = &round_info[POS_R];
+			act_distance = local_distance_types[POS_L];
+			tar_distance = local_distance_types[POS_R];
+			actor_unit = &battle_units[POS_L]->unit;
+			cur_is_dark_breath = is_dark_breath;
+
+			if (round == 0)
+				gEkrInitialHitSide = POS_L;
+		} else {
+			act_round = &round_info[POS_R];
+			tar_round = &round_info[POS_L];
+			act_distance = local_distance_types[POS_R];
+			tar_distance = local_distance_types[POS_L];
+			actor_unit = &battle_units[POS_R]->unit;
+			cur_is_dark_breath = is_dark_breath;
+
+			if (round == 0)
+				gEkrInitialHitSide = POS_R;
+		}
+
+		if (hit->attributes & BATTLE_HIT_ATTR_TRIANGLE_ATTACK) {
+			gpEkrTriangleUnits[0] = gBattleSt.extra_unit_a;
+			gpEkrTriangleUnits[1] = gBattleSt.extra_unit_b;
+		}
+
+		/* Check for attacker */
+		if (hit->attributes & BATTLE_HIT_ATTR_CRIT) {
+			if (!UnitKnowsMagic(actor_unit))
+				*act_round = RoundTypes_CriticalPhy[round];
+			else
+				*act_round = RoundTypes_CriticalMag[round];
+		} else if (cur_is_dark_breath == false) {
+			if (!UnitKnowsMagic(actor_unit))
+				*act_round = RoundTypes_NormalPhy[round];
+			else
+				*act_round = RoundTypes_NormalMag[round];
+		} else {
+			// Idunn!
+			switch (BanimSpawnRandB(2)) {
+			case 0:
+				*act_round = RoundTypes_Dragon1[round];
+				break;
+
+			case 1:
+				*act_round = RoundTypes_Dragon2[round];
+				break;
+
+			case 2:
+				*act_round = RoundTypes_Dragon3[round];
+				break;
+			}
+		}
+
+		/* Check for defender */
+		if (hit->attributes & BATTLE_HIT_ATTR_MISS) {
+			/**
+			 * Make sure to ignore critical anim?
+			 */
+			if (!UnitKnowsMagic(actor_unit))
+				*act_round = RoundTypes_MissedPhy[round];
+			else
+				*act_round = RoundTypes_NormalMag[round];
+
+			tar_round = RoundTypes_TargetMiss[round];
+		} else
+			tar_round = RoundTypes_TargetHitted[round];
+	}
 }
 #endif
 
