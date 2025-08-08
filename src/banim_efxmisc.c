@@ -112,10 +112,10 @@ void EfxYushaSpinShieldOBJ_1(struct ProcEfxOBJ *proc)
 
 void EfxYushaSpinShieldOBJ_2(struct ProcEfxOBJ *proc)
 {
-	if (!(proc->anim->flags3 & ANIM_BIT3_C01_BLOCKING_IN_BATTLE))
+	if (!(proc->anim->flags3 & ANIM_BIT3_C01_BLOCK_END_PREBATTLE))
 		return;
 
-	if (!(proc->anim->flags3 & ANIM_BIT3_HIT_EFFECT_APPLIED))
+	if (!(proc->anim->flags3 & ANIM_BIT3_C01_BLOCK_END_INBATTLE))
 		return;
 
 	proc->timer = 0;
@@ -1316,10 +1316,10 @@ void EfxMantBatabata_1(struct ProcEfxOBJ *proc)
 {
     proc->anim2->xPosition = proc->anim->xPosition;
 
-    if (!(proc->anim->flags3 & ANIM_BIT3_C01_BLOCKING_IN_BATTLE))
+    if (!(proc->anim->flags3 & ANIM_BIT3_C01_BLOCK_END_PREBATTLE))
         return;
 
-    if (!(proc->anim->flags3 & ANIM_BIT3_HIT_EFFECT_APPLIED))
+    if (!(proc->anim->flags3 & ANIM_BIT3_C01_BLOCK_END_INBATTLE))
         return;
 
     Proc_Break(proc);

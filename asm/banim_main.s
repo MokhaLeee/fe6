@@ -18,7 +18,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	mov sb, r2
 	cmp r7, #0
 	bne .L0804A5FC
-	bl .L0804AF52
+	bl .L_continue
 .L0804A5FC:
 	movs r0, #0xf0
 	lsls r0, r0, #8
@@ -27,14 +27,14 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	mov r8, r1
 	cmp r1, #0
 	bne .L0804A60E
-	bl .L0804AF52
+	bl .L_continue
 .L0804A60E:
 	movs r0, #0x80
 	lsls r0, r0, #5
 	ands r0, r1
 	cmp r0, #0
 	bne .L0804A61A
-	b .L0804AD94
+	b .L_end_cmd_exec
 .L0804A61A:
 	ldrb r0, [r7, #0x14]
 	cmp r0, #0
@@ -49,7 +49,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r3, r0, #0
 	cmp r1, #0x4a
 	bls .L0804A634
-	b .L0804AD82
+	b .L_case_default
 .L0804A634:
 	lsls r0, r1, #2
 	ldr r1, .L0804A644 @ =.L0804A648
@@ -60,30 +60,30 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 .L0804A640: .4byte gAnims
 .L0804A644: .4byte .L0804A648
 .L0804A648: @ jump table
-	.4byte .L0804AD82 @ case 0
-	.4byte .L0804A774 @ case 1
-	.4byte .L0804A7B4 @ case 2
-	.4byte .L0804A7C8 @ case 3
-	.4byte .L0804A7EE @ case 4
-	.4byte .L0804A874 @ case 5
-	.4byte .L0804A8C8 @ case 6
-	.4byte .L0804AD82 @ case 7
-	.4byte .L0804A8F8 @ case 8
-	.4byte .L0804A8F8 @ case 9
-	.4byte .L0804A8F8 @ case 10
-	.4byte .L0804A8F8 @ case 11
-	.4byte .L0804A8F8 @ case 12
-	.4byte .L0804A968 @ case 13
-	.4byte .L0804AD82 @ case 14
-	.4byte .L0804AD82 @ case 15
-	.4byte .L0804AD82 @ case 16
-	.4byte .L0804AD82 @ case 17
-	.4byte .L0804AD82 @ case 18
+	.4byte .L_case_default @ case 0
+	.4byte .L_case_1 @ case 1
+	.4byte .L_case_2 @ case 2
+	.4byte .L_case_3 @ case 3
+	.4byte .L_case_4 @ case 4
+	.4byte .L_case_5 @ case 5
+	.4byte .L_case_6 @ case 6
+	.4byte .L_case_default @ case 7
+	.4byte .L_case_8 @ case 8
+	.4byte .L_case_8 @ case 9
+	.4byte .L_case_8 @ case 10
+	.4byte .L_case_8 @ case 11
+	.4byte .L_case_8 @ case 12
+	.4byte .L_case_D @ case 13
+	.4byte .L_case_default @ case 14
+	.4byte .L_case_default @ case 15
+	.4byte .L_case_default @ case 16
+	.4byte .L_case_default @ case 17
+	.4byte .L_case_default @ case 18
 	.4byte .L0804AB08 @ case 19
 	.4byte .L0804AB38 @ case 20
 	.4byte .L0804AB4C @ case 21
-	.4byte .L0804AD82 @ case 22
-	.4byte .L0804AD82 @ case 23
+	.4byte .L_case_default @ case 22
+	.4byte .L_case_default @ case 23
 	.4byte .L0804AB60 @ case 24
 	.4byte .L0804AD60 @ case 25
 	.4byte .L0804AB9C @ case 26
@@ -135,14 +135,14 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	.4byte .L0804AD76 @ case 72
 	.4byte .L0804AD76 @ case 73
 	.4byte .L0804AD76 @ case 74
-.L0804A774:
+.L_case_1:
 	ldr r0, .L0804A784 @ =gAnimC01Blocking
 	ldr r0, [r0]
 	cmp r0, #1
 	bne .L0804A788
 	ldr r0, [r7, #0x24]
 	str r0, [r7, #0x20]
-	b .L0804AD82
+	b .L_case_default
 	.align 2, 0
 .L0804A784: .4byte gAnimC01Blocking
 .L0804A788:
@@ -157,12 +157,12 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ands r0, r1
 	cmp r0, #0
 	bne .L0804A79E
-	b .L0804AD82
+	b .L_case_default
 .L0804A79E:
 	bl CheckEkrHitDone
 	cmp r0, #1
 	beq .L0804A7A8
-	b .L0804AD82
+	b .L_case_default
 .L0804A7A8:
 	ldr r0, .L0804A7B0 @ =0x0000FFF2
 	ldrh r2, [r7, #0x10]
@@ -170,19 +170,19 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	b .L0804ACDA
 	.align 2, 0
 .L0804A7B0: .4byte 0x0000FFF2
-.L0804A7B4:
+.L_case_2:
 	ldrh r1, [r7, #0x10]
 	movs r0, #1
 	ands r0, r1
 	cmp r0, #0
 	bne .L0804A7C0
-	b .L0804AD82
+	b .L_case_default
 .L0804A7C0:
 	ldr r0, .L0804A7C4 @ =0x0000FFFE
 	b .L0804ACD8
 	.align 2, 0
 .L0804A7C4: .4byte 0x0000FFFE
-.L0804A7C8:
+.L_case_3:
 	ldrh r1, [r7, #0x10]
 	movs r2, #0x20
 	movs r0, #0x20
@@ -201,7 +201,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 .L0804A7EA:
 	ldrh r1, [r7, #0x10]
 	b .L0804ACCA
-.L0804A7EE:
+.L_case_4:
 	ldrh r1, [r7, #0x10]
 	movs r2, #0x20
 	movs r0, #0x20
@@ -219,7 +219,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ands r0, r2
 	cmp r0, #0
 	bne .L0804A810
-	b .L0804AD82
+	b .L_case_default
 .L0804A810:
 	ldr r1, .L0804A86C @ =0x0000FFDF
 	ands r1, r2
@@ -247,11 +247,11 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r2, [sp]
 	cmp r0, #1
 	beq .L0804A84C
-	b .L0804AD82
+	b .L_case_default
 .L0804A84C:
 	cmp r2, #0
 	bne .L0804A852
-	b .L0804AD82
+	b .L_case_default
 .L0804A852:
 	ldrh r0, [r2, #0x10]
 	orrs r0, r5
@@ -261,14 +261,14 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804A866
-	b .L0804AD82
+	b .L_case_default
 .L0804A866:
 	adds r0, r4, #0
 	b .L0804A958
 	.align 2, 0
 .L0804A86C: .4byte 0x0000FFDF
 .L0804A870: .4byte 0x0000FFBF
-.L0804A874:
+.L_case_5:
 	ldrh r1, [r7, #0x10]
 	movs r2, #0x20
 	movs r0, #0x20
@@ -286,7 +286,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ands r0, r2
 	cmp r0, #0
 	bne .L0804A896
-	b .L0804AD82
+	b .L_case_default
 .L0804A896:
 	ldr r1, .L0804A8C0 @ =0x0000FFDF
 	ands r1, r2
@@ -302,21 +302,21 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804A8B6
-	b .L0804AD82
+	b .L_case_default
 .L0804A8B6:
 	adds r0, r7, #0
 	bl StartSpellAnimation
-	b .L0804AD82
+	b .L_case_default
 	.align 2, 0
 .L0804A8C0: .4byte 0x0000FFDF
 .L0804A8C4: .4byte 0x0000FFBF
-.L0804A8C8:
+.L_case_6:
 	adds r0, r7, #0
 	bl GetAnimAnotherSide
 	adds r2, r0, #0
 	cmp r2, #0
 	bne .L0804A8D6
-	b .L0804AD82
+	b .L_case_default
 .L0804A8D6:
 	str r2, [sp]
 	bl GetAnimNextRoundTypeAnotherSide
@@ -328,19 +328,19 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r2, [sp]
 	cmp r8, r0
 	bne .L0804A8EE
-	b .L0804AD82
+	b .L_case_default
 .L0804A8EE:
 	movs r0, #2
 	ldrh r3, [r2, #0x10]
 	orrs r0, r3
 	strh r0, [r2, #0x10]
-	b .L0804AD82
-.L0804A8F8:
+	b .L_case_default
+.L_case_8:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804A904
-	b .L0804AD82
+	b .L_case_default
 .L0804A904:
 	adds r0, r7, #0
 	bl GetAnimAnotherSide
@@ -368,7 +368,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 .L0804A93C:
 	cmp r2, #0
 	bne .L0804A942
-	b .L0804AD82
+	b .L_case_default
 .L0804A942:
 	movs r0, #9
 	ldrh r1, [r2, #0x10]
@@ -386,8 +386,8 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r2, [sp]
 	adds r0, r2, #0
 	bl StartBattleAnimHitEffectsDefault
-	b .L0804AD82
-.L0804A968:
+	b .L_case_default
+.L_case_D:
 	adds r0, r7, #0
 	bl GetAnimNextRoundType
 	lsls r0, r0, #0x10
@@ -411,7 +411,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r2, [sp]
 	cmp r0, #9
 	bls .L0804A99E
-	b .L0804AD82
+	b .L_case_default
 .L0804A99E:
 	lsls r0, r0, #2
 	ldr r1, .L0804A9AC @ =.L0804A9B0
@@ -583,13 +583,13 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r1, #0
 	orrs r0, r2
 	strh r0, [r7, #0x10]
-	b .L0804AD82
+	b .L_case_default
 .L0804AB1C:
 	ldr r1, .L0804AB30 @ =gEfxTeonoState
 	ldr r0, [r1]
 	cmp r0, #1
 	beq .L0804AB26
-	b .L0804AD82
+	b .L_case_default
 .L0804AB26:
 	movs r0, #0
 	str r0, [r1]
@@ -604,28 +604,28 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AB44
-	b .L0804AD82
+	b .L_case_default
 .L0804AB44:
 	movs r0, #3
 	bl NewEfxQuake
-	b .L0804AD82
+	b .L_case_default
 .L0804AB4C:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AB58
-	b .L0804AD82
+	b .L_case_default
 .L0804AB58:
 	movs r0, #0
 	bl NewEfxQuake
-	b .L0804AD82
+	b .L_case_default
 .L0804AB60:
 	ldrh r1, [r7, #0x10]
 	movs r0, #1
 	ands r0, r1
 	cmp r0, #0
 	bne .L0804AB6C
-	b .L0804AD82
+	b .L_case_default
 .L0804AB6C:
 	ldr r0, .L0804AB94 @ =0x0000FFFE
 	ands r0, r1
@@ -644,7 +644,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	movs r0, #0x8c
 	strh r0, [r7, #0xa]
 	bl BasSort
-	b .L0804AD82
+	b .L_case_default
 	.align 2, 0
 .L0804AB94: .4byte 0x0000FFFE
 .L0804AB98: .4byte 0x0000F3FF
@@ -653,7 +653,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804ABA8
-	b .L0804AD82
+	b .L_case_default
 .L0804ABA8:
 	adds r0, r7, #0
 	bl GetAnimAnotherSide
@@ -683,100 +683,100 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	asrs r0, r0, #0x10
 	cmp r0, #2
 	bne .L0804ABEA
-	b .L0804AD82
+	b .L_case_default
 .L0804ABEA:
 	adds r0, r7, #0
 	bl NewEfxNormalEffect
-	b .L0804AD82
+	b .L_case_default
 .L0804ABF2:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804ABFE
-	b .L0804AD82
+	b .L_case_default
 .L0804ABFE:
 	adds r0, r7, #0
 	movs r1, #0
 	bl NewEfxYushaSpinShield
-	b .L0804AD82
+	b .L_case_default
 .L0804AC08:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AC14
-	b .L0804AD82
+	b .L_case_default
 .L0804AC14:
 	adds r0, r7, #0
 	movs r1, #1
 	bl NewEfxYushaSpinShield
-	b .L0804AD82
+	b .L_case_default
 .L0804AC1E:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AC2A
-	b .L0804AD82
+	b .L_case_default
 .L0804AC2A:
 	adds r0, r7, #0
 	bl NewEfxHurtmutEff00
-	b .L0804AD82
+	b .L_case_default
 .L0804AC32:
 	adds r0, r7, #0
 	bl GetAnimLayer
-	b .L0804AD82
+	b .L_case_default
 .L0804AC3A:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AC46
-	b .L0804AD82
+	b .L_case_default
 .L0804AC46:
 	adds r0, r7, #0
 	movs r1, #0
 	bl NewEfxMagfcast
-	b .L0804AD82
+	b .L_case_default
 .L0804AC50:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AC5C
-	b .L0804AD82
+	b .L_case_default
 .L0804AC5C:
 	adds r0, r7, #0
 	movs r1, #1
 	bl NewEfxMagfcast
-	b .L0804AD82
+	b .L_case_default
 .L0804AC66:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AC72
-	b .L0804AD82
+	b .L_case_default
 .L0804AC72:
 	adds r0, r7, #0
 	movs r1, #0
 	bl NewEfxSunakemuri
-	b .L0804AD82
+	b .L_case_default
 .L0804AC7C:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	beq .L0804AC88
-	b .L0804AD82
+	b .L_case_default
 .L0804AC88:
 	adds r0, r7, #0
 	movs r1, #1
 	bl NewEfxSunakemuri
-	b .L0804AD82
+	b .L_case_default
 .L0804AC92:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
-	bne .L0804AD82
+	bne .L_case_default
 	adds r0, r7, #0
 	movs r1, #2
 	bl NewEfxSunakemuri
-	b .L0804AD82
+	b .L_case_default
 .L0804ACA6:
 	ldrh r1, [r7, #0x10]
 	movs r2, #0x20
@@ -790,15 +790,15 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
-	bne .L0804AD82
+	bne .L_case_default
 	adds r0, r7, #0
 	bl NewEfxKingPika
-	b .L0804AD82
+	b .L_case_default
 .L0804ACCA:
 	movs r0, #0x40
 	ands r0, r1
 	cmp r0, #0
-	beq .L0804AD82
+	beq .L_case_default
 	ldr r0, .L0804ACE4 @ =0x0000FFDF
 	ands r0, r1
 	ldr r1, .L0804ACE8 @ =0x0000FFBF
@@ -810,7 +810,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r0, [r7, #0x20]
 	adds r0, #4
 	str r0, [r7, #0x20]
-	b .L0804AD82
+	b .L_case_default
 	.align 2, 0
 .L0804ACE4: .4byte 0x0000FFDF
 .L0804ACE8: .4byte 0x0000FFBF
@@ -821,7 +821,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
-	bne .L0804AD82
+	bne .L_case_default
 	adds r0, r7, #0
 	bl GetAnimPosition
 	ldr r1, .L0804AD10 @ =gEkrXPosReal
@@ -830,7 +830,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldrh r1, [r0]
 	adds r1, #0x20
 	strh r1, [r0]
-	b .L0804AD82
+	b .L_case_default
 	.align 2, 0
 .L0804AD10: .4byte gEkrXPosReal
 .L0804AD14:
@@ -840,7 +840,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
-	bne .L0804AD82
+	bne .L_case_default
 	adds r0, r7, #0
 	bl GetAnimPosition
 	ldr r1, .L0804AD38 @ =gEkrXPosReal
@@ -849,43 +849,43 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldrh r1, [r0]
 	subs r1, #0x20
 	strh r1, [r0]
-	b .L0804AD82
+	b .L_case_default
 	.align 2, 0
 .L0804AD38: .4byte gEkrXPosReal
 .L0804AD3C:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
-	bne .L0804AD82
+	bne .L_case_default
 	adds r0, r7, #0
 	bl NewEfxSongFE6
-	b .L0804AD82
+	b .L_case_default
 .L0804AD4E:
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
-	bne .L0804AD82
+	bne .L_case_default
 	adds r0, r7, #0
 	bl NewEfxDanceOBJ
-	b .L0804AD82
+	b .L_case_default
 .L0804AD60:
 	subs r0, r3, #1
 	adds r0, r2, r0
 	ldrb r1, [r0]
 	adds r0, r7, #0
 	bl EfxPlaySEwithCmdCtrl
-	b .L0804AD82
+	b .L_case_default
 .L0804AD6E:
 	adds r0, r7, #0
 	bl NewEfxMantBatabata
-	b .L0804AD82
+	b .L_case_default
 .L0804AD76:
 	subs r0, r3, #1
 	adds r0, r2, r0
 	ldrb r1, [r0]
 	adds r0, r7, #0
 	bl EfxPlaySEwithCmdCtrl
-.L0804AD82:
+.L_case_default:
 	ldrb r0, [r7, #0x14]
 	subs r0, #1
 	strb r0, [r7, #0x14]
@@ -896,7 +896,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldrh r1, [r7, #0xc]
 	ands r0, r1
 	strh r0, [r7, #0xc]
-.L0804AD94:
+.L_end_cmd_exec:
 	movs r0, #0x80
 	lsls r0, r0, #6
 	mov r2, r8
@@ -955,7 +955,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldr r0, [r0]
 	cmp r0, #1
 	beq .L0804AE10
-	b .L0804AF52
+	b .L_continue
 .L0804AE10:
 	ldrh r1, [r7, #0x10]
 	movs r0, #2
@@ -1011,7 +1011,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldrh r2, [r6, #0x10]
 	ands r4, r2
 	strh r4, [r6, #0x10]
-	b .L0804AF52
+	b .L_continue
 	.align 2, 0
 .L0804AE90: .4byte gAnims
 .L0804AE94: .4byte 0x0000FFFD
@@ -1029,7 +1029,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	movs r0, #1
 	rsbs r0, r0, #0
 	cmp r8, r0
-	beq .L0804AF52
+	beq .L_continue
 	ldr r6, .L0804AF10 @ =gAnims
 	adds r0, r7, #0
 	bl GetAnimPosition
@@ -1071,7 +1071,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	ldrh r0, [r6, #0xe]
 	adds r0, #1
 	strh r0, [r6, #0xe]
-	b .L0804AF52
+	b .L_continue
 	.align 2, 0
 .L0804AF10: .4byte gAnims
 .L0804AF14: .4byte 0x00007FFF
@@ -1079,7 +1079,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r7, #0
 	bl GetAnimLayer
 	cmp r0, #0
-	bne .L0804AF52
+	bne .L_continue
 	adds r0, r7, #0
 	bl GetAnimPosition
 	adds r1, r0, #0
@@ -1093,7 +1093,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	movs r0, #1
 	rsbs r0, r0, #0
 	cmp r8, r0
-	bne .L0804AF52
+	bne .L_continue
 	adds r0, r7, #0
 	bl GetAnimPosition
 	ldr r1, .L0804AF6C @ =gBanimDoneFlag
@@ -1101,7 +1101,7 @@ BattleAIS_ExecCommands: @ 0x0804A5DC
 	adds r0, r0, r1
 	movs r1, #1
 	str r1, [r0]
-.L0804AF52:
+.L_continue:
 	mov r2, sb
 	cmp r2, #3
 	bhi .L0804AF5C

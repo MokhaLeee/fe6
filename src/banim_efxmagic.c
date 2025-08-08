@@ -547,7 +547,7 @@ void EfxDummyMagic_Loop(struct ProcEfxMagic *proc)
     int time = ++proc->timer;
 
     if (time == 1) {
-        anim_other->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        anim_other->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         return;
     }
 
@@ -591,7 +591,7 @@ void EfxTeono_Loop(struct ProcEfxMagic *proc)
         NewEfxTeonoOBJ(proc->anim);
 
         if (proc->timer == 1) {
-            animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+            animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
             StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
@@ -791,7 +791,7 @@ void EfxArrow_Loop(struct ProcEfx *proc)
         PlaySFX(SONG_CC, 0x100, proc->anim->xPosition, 1);
 
         if (proc->timer == 1) {
-            animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+            animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
             StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
@@ -1021,7 +1021,7 @@ void EfxTeyari_Loop(struct ProcEfx *proc)
         if (proc->timer == 1) {
             struct Anim *animc = GetAnimAnotherSide(proc->anim);
 
-            animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+            animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
             StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
@@ -1143,7 +1143,7 @@ void EfxSong_Loop(struct ProcEfx *proc)
     }
 
     if (proc->timer == 69) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimStatusChgHitEffects(anim, proc->hitted);
 
@@ -1305,7 +1305,7 @@ void EfxDance_Loop(struct ProcEfx *proc)
     }
 
     if (proc->timer == 55) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimStatusChgHitEffects(anim, proc->hitted);
 
@@ -1375,7 +1375,7 @@ void EfxShooter_Loop(struct ProcEfx * proc)
     }
 
     if (timer == 45) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -1491,7 +1491,7 @@ void EfxEckesachs_Loop(struct ProcEfx *proc)
     }
 
     if (time == 10) {
-        anim_other->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        anim_other->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         StartBattleAnimHitEffectsDefault(anim_other, proc->hitted);
 
         if (!proc->hitted)
@@ -1690,7 +1690,7 @@ void EfxHurtmut_Loop(struct ProcEfx * proc)
 
         NewEfxFlashBgWhite(proc->anim, 6);
 
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -1802,7 +1802,7 @@ void EfxFirebreath_Loop(struct ProcEfx * proc)
     }
 
     if (timer == 15) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -2015,7 +2015,7 @@ void EfxIcebreath_Loop(struct ProcEfx * proc)
     timer = proc->timer;
 
     if (timer == 4) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -2121,7 +2121,7 @@ void EfxDarkbreath_Loop(struct ProcEfx * proc)
     timer = proc->timer;
 
     if (timer == 4) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -2391,7 +2391,7 @@ void EfxThunder_Loop(struct ProcEfx * proc)
     }
 
     if (cur == (frame + 4)) {
-        animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         StartBattleAnimHitEffectsDefault(animc, proc->hitted);
         PlaySFX(0xF5, 0x100, animc->xPosition, 1);
 
@@ -2637,7 +2637,7 @@ void EfxFire_Loop(struct ProcEfx * proc)
     }
 
     if (time == r7) {
-        animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
         if (proc->hitted != EKR_HITTED)
@@ -3124,7 +3124,7 @@ void EfxFimbulvetr_Loop(struct ProcEfx *proc)
         NewEfxALPHA(anim, 24, 16, 16, 0, 0);
         PlaySFX(0x123, 0x100, anim->xPosition, 1);
     } else if (proc->timer == duration + 88) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
         if (!proc->hitted)
