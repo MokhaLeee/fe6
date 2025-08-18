@@ -322,7 +322,7 @@ NewEkrBaseKaiten: @ 0x08048574
 	ldr r0, [r0]
 	cmp r0, #1
 	bne .L0804878E
-	ldr r1, .L080487A4 @ =gUnk_081122D0
+	ldr r1, .L080487A4 @ =BanimLeftDefaultPos
 	ldr r0, .L080487A8 @ =gEkrDistanceType
 	movs r3, #0
 	ldrsh r0, [r0, r3]
@@ -341,7 +341,7 @@ NewEkrBaseKaiten: @ 0x08048574
 .L08048798: .4byte ProcScr_EkrBaseKaiten
 .L0804879C: .4byte gEkrBmLocation
 .L080487A0: .4byte gEkrInitPosReal
-.L080487A4: .4byte gUnk_081122D0
+.L080487A4: .4byte BanimLeftDefaultPos
 .L080487A8: .4byte gEkrDistanceType
 .L080487AC: .4byte AnimScrs_EkrBaseKaiten2
 .L080487B0:
@@ -414,7 +414,7 @@ NewEkrBaseKaiten: @ 0x08048574
 	ldr r0, [r0]
 	cmp r0, #0
 	bne .L0804884C
-	ldr r1, .L08048868 @ =gUnk_081122D0
+	ldr r1, .L08048868 @ =BanimLeftDefaultPos
 	ldr r0, .L0804886C @ =gEkrDistanceType
 	movs r3, #0
 	ldrsh r0, [r0, r3]
@@ -434,7 +434,7 @@ NewEkrBaseKaiten: @ 0x08048574
 .L0804885C: .4byte ProcScr_EkrBaseKaiten
 .L08048860: .4byte gEkrBmLocation
 .L08048864: .4byte gEkrInitPosReal
-.L08048868: .4byte gUnk_081122D0
+.L08048868: .4byte BanimLeftDefaultPos
 .L0804886C: .4byte gEkrDistanceType
 .L08048870: .4byte AnimScrs_EkrBaseKaiten3
 .L08048874:
@@ -695,12 +695,12 @@ NewEkrUnitKakudai: @ 0x080489E8
 func_fe6_08048A64: @ 0x08048A64
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r1, .L08048B74 @ =gUnk_081122C0
+	ldr r1, .L08048B74 @ =BanimDefaultStandingTypes
 	ldr r0, .L08048B78 @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	adds r0, r0, r1
-	ldr r1, .L08048B7C @ =gUnk_08112298
+	ldr r1, .L08048B7C @ =BanimDefaultModeConfig
 	ldrb r0, [r0]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -724,30 +724,30 @@ func_fe6_08048A64: @ 0x08048A64
 	ldrh r3, [r5]
 	cmp r3, #1
 	bne .L08048AC2
-	ldr r0, .L08048B8C @ =gUnk_Banim_02000054
+	ldr r0, .L08048B8C @ =gpBanimModesLeft
 	ldr r1, [r0]
 	lsls r0, r6, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L08048B90 @ =gUnk_Banim_0200F1C0
+	ldr r0, .L08048B90 @ =gBanimScrs
 	adds r1, r1, r0
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #8]
-	ldr r2, .L08048B94 @ =gUnk_Banim_020041C0
+	ldr r2, .L08048B94 @ =gBanimOamBufs
 	adds r1, r1, r2
 	str r1, [r4, #0x54]
-	ldr r1, .L08048B98 @ =gUnk_Banim_02000080
+	ldr r1, .L08048B98 @ =gBanimImgSheetBufs
 	bl LZ77UnCompWram
 .L08048AC2:
 	ldrh r5, [r5, #2]
 	cmp r5, #1
 	bne .L08048AE6
-	ldr r0, .L08048B9C @ =gUnk_Banim_02000058
+	ldr r0, .L08048B9C @ =gpBanimModesRight
 	ldr r1, [r0]
 	lsls r0, r6, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L08048BA0 @ =gUnk_Banim_02011BC0
+	ldr r0, .L08048BA0 @ =gBanimScrs + 0x2A00
 	adds r1, r1, r0
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #8]
@@ -771,7 +771,7 @@ func_fe6_08048A64: @ 0x08048A64
 	bl LZ77UnCompWram
 .L08048B00:
 	ldr r1, .L08048BB8 @ =0x06014000
-	ldr r0, .L08048B98 @ =gUnk_Banim_02000080
+	ldr r0, .L08048B98 @ =gBanimImgSheetBufs
 	movs r2, #0x80
 	lsls r2, r2, #7
 	bl RegisterDataMove
@@ -817,7 +817,7 @@ func_fe6_08048A64: @ 0x08048A64
 	ldr r0, [r0]
 	cmp r0, #0
 	bne .L08048BD0
-	ldr r0, .L08048BCC @ =gUnk_081122D0
+	ldr r0, .L08048BCC @ =BanimLeftDefaultPos
 	movs r5, #0
 	ldrsh r1, [r2, r5]
 	lsls r1, r1, #1
@@ -827,18 +827,18 @@ func_fe6_08048A64: @ 0x08048A64
 	strh r0, [r4, #0x38]
 	b .L08048BE0
 	.align 2, 0
-.L08048B74: .4byte gUnk_081122C0
+.L08048B74: .4byte BanimDefaultStandingTypes
 .L08048B78: .4byte gEkrDistanceType
-.L08048B7C: .4byte gUnk_08112298
+.L08048B7C: .4byte BanimDefaultModeConfig
 .L08048B80: .4byte gBattleSt
 .L08048B84: .4byte gPal
 .L08048B88: .4byte gBanimValid
-.L08048B8C: .4byte gUnk_Banim_02000054
-.L08048B90: .4byte gUnk_Banim_0200F1C0
-.L08048B94: .4byte gUnk_Banim_020041C0
-.L08048B98: .4byte gUnk_Banim_02000080
-.L08048B9C: .4byte gUnk_Banim_02000058
-.L08048BA0: .4byte gUnk_Banim_02011BC0
+.L08048B8C: .4byte gpBanimModesLeft
+.L08048B90: .4byte gBanimScrs
+.L08048B94: .4byte gBanimOamBufs
+.L08048B98: .4byte gBanimImgSheetBufs
+.L08048B9C: .4byte gpBanimModesRight
+.L08048BA0: .4byte gBanimScrs + 0x2A00
 .L08048BA4: .4byte gUnk_Banim_020099C0
 .L08048BA8: .4byte gUnk_Banim_02002080
 .L08048BAC: .4byte gBanimUnitChgForceImg
@@ -849,9 +849,9 @@ func_fe6_08048A64: @ 0x08048A64
 .L08048BC0: .4byte BanimTypesPosLeft
 .L08048BC4: .4byte BanimTypesPosRight
 .L08048BC8: .4byte gEkrInitPosReal
-.L08048BCC: .4byte gUnk_081122D0
+.L08048BCC: .4byte BanimLeftDefaultPos
 .L08048BD0:
-	ldr r0, .L08048BEC @ =gUnk_081122D0
+	ldr r0, .L08048BEC @ =BanimLeftDefaultPos
 	movs r3, #0
 	ldrsh r1, [r2, r3]
 	lsls r1, r1, #1
@@ -866,7 +866,7 @@ func_fe6_08048A64: @ 0x08048A64
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08048BEC: .4byte gUnk_081122D0
+.L08048BEC: .4byte BanimLeftDefaultPos
 
 	thumb_func_start func_fe6_08048BF0
 func_fe6_08048BF0: @ 0x08048BF0

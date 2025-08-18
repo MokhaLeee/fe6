@@ -88,6 +88,8 @@ enum
     BAS_INS_KIND_FRAME   = 6,
 };
 
+#define BAS_CMD(x) (x)
+
 enum
 {
     // Command Identifiers
@@ -135,28 +137,22 @@ enum anim_flag2
 
 enum anim_flag3
 {
-    ANIM_BIT3_TAKE_BACK_ENABLE   = (1 << 0),
-    ANIM_BIT3_NEXT_ROUND_START   = (1 << 1),
-
-    /**
-     * If set, C01 will block the anim
-     * set bit when hit effect applied
-     * and then cleared after hitted
-     */
-    ANIM_BIT3_C01_BLOCKING_IN_BATTLE = (1 << 2),
-    ANIM_BIT3_HIT_EFFECT_APPLIED = (1 << 3),
-    ANIM_BIT3_0010               = (1 << 4),
-    ANIM_BIT3_BLOCKING           = (1 << 5),
-    ANIM_BIT3_BLOCKEND           = (1 << 6),
-    ANIM_BIT3_0080               = (1 << 7),
-    ANIM_BIT3_0100               = (1 << 8),
-    ANIM_BIT3_0200               = (1 << 9),
-    ANIM_BIT3_0400               = (1 << 10),
-    ANIM_BIT3_0800               = (1 << 11),
-    ANIM_BIT3_1000               = (1 << 12),
-    ANIM_BIT3_2000               = (1 << 13),
-    ANIM_BIT3_4000               = (1 << 14),
-    ANIM_BIT3_NEW_ROUND_START    = (1 << 15),
+    ANIM_BIT3_C02_BLOCK_END           = (1 << 0),
+    ANIM_BIT3_NEXT_ROUND_START        = (1 << 1),
+    ANIM_BIT3_C01_BLOCK_END_PREBATTLE = (1 << 2),
+    ANIM_BIT3_C01_BLOCK_END_INBATTLE  = (1 << 3),
+    ANIM_BIT3_0010                    = (1 << 4),
+    ANIM_BIT3_BLOCKING                = (1 << 5),
+    ANIM_BIT3_BLOCKEND                = (1 << 6),
+    ANIM_BIT3_UNUSED_0080             = (1 << 7),
+    ANIM_BIT3_UNUSED_0100             = (1 << 8),
+    ANIM_BIT3_UNUSED_0200             = (1 << 9),
+    ANIM_BIT3_UNUSED_0400             = (1 << 10),
+    ANIM_BIT3_UNUSED_0800             = (1 << 11),
+    ANIM_BIT3_UNUSED_1000             = (1 << 12),
+    ANIM_BIT3_UNUSED_2000             = (1 << 13),
+    ANIM_BIT3_4000                    = (1 << 14),
+    ANIM_BIT3_NEW_ROUND_START         = (1 << 15),
 };
 
 void BasUpdateAll(void);

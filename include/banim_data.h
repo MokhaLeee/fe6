@@ -25,10 +25,11 @@ struct BattleAnimTerrain {
     int null_1; // useless, always 00
 };
 
-struct BanimModeData {
-    const u32 * unk0;
-    const u32 * img;
-    u32 unk2;
+struct BanimScrFrame {
+    // disassemble of ANIMSCR_FRAME
+    u32 prefix;
+    const u32 *img;
+    u32 oam_offset;
 };
 
 extern int BANIM_MODE_armm_sp1[];

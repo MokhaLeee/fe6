@@ -9,12 +9,16 @@
 #include "battle.h"
 #include "face.h"
 
+#define ANIM_REF_OFFSET(off_ref_round, off_ref_pos) ((off_ref_round) * 2 + off_ref_pos)
+
 enum EkrDistanceType_idx {
     EKR_DISTANCE_CLOSE,
     EKR_DISTANCE_FAR,
     EKR_DISTANCE_FARFAR,
     EKR_DISTANCE_MONOCOMBAT,
-    EKR_DISTANCE_PROMOTION
+    EKR_DISTANCE_PROMOTION,
+
+    EKR_DISTANCE_MAX
 };
 
 extern i16 gEkrDistanceType;
@@ -82,6 +86,16 @@ enum ekr_hit {
     EKR_HITTED = 0,
     EKR_MISS
 };
+
+enum banim_sprites_size {
+    BAS_SCR_MAX_SIZE = 0x2A00,
+    BAS_OAM_MAX_SIZE = 0x57F0,
+    BAS_IMG_MAX_SIZE = 0x1000,
+};
+
+extern u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
+extern u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
+extern u8 gBanimImgSheetBufs[2 * BAS_IMG_MAX_SIZE];
 
 struct ProcEfx {
     PROC_HEADER;
@@ -186,6 +200,8 @@ struct ProcEfxOBJ {
     /* 68 */ struct  BaSprite *anim4;
 };
 
+extern int *gpBanimModesLeft;
+extern int *gpBanimModesRight;
 extern int gEkrDebugTimer;
 extern int gEkrDebugFlag1;
 extern int gEkrDebugFlag2;
@@ -222,7 +238,7 @@ extern u16 gpBg1ScrollOffsetList2[];
 extern int gEfxMagicChk_N;
 extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
-extern u16 * gpBanimTriAtkPalettes[2];
+extern const u16 * gpBanimTriAtkPalettes[2];
 extern const u8 * gBanimUnitChgForceImg[2];
 extern i16 gBanimBG;
 extern i16 gEkrInitialHitSide;
@@ -256,6 +272,7 @@ extern i16 gEkrGaugeHit[2];
 extern i16 gEkrGaugeDmg[2];
 extern i16 gEkrGaugeCrt[2];
 extern i16 gEkrBmLocation[4];
+extern i16 gAnimRoundData[4];
 extern i16 gEfxHpLutOff[2];
 extern u16 gEfxHpLut[22];
 extern i16 gBanimIdx[2];
@@ -713,7 +730,7 @@ void UnsetMapStaffAnim(i16 * out, u16 pos, u16 weapon);
 void ParseBattleHitToBanimCmd(void);
 bool CheckBattleHasHit(void);
 int GetBanimUniquePal(struct Unit * unit);
-u16 * GetBanimTriangleAttackPalette(i16 bid, u16 item);
+const u16 * GetBanimTriangleAttackPalette(i16 bid, u16 item);
 
 enum banim_faction_palette_idx {
     BANIMPAL_BLUE = 0,
@@ -734,20 +751,20 @@ enum anim_round_type {
     ANIM_ROUND_SILENCER = 0x1000,
     ANIM_ROUND_POISON = 0x2000,
     ANIM_ROUND_BIT14 = 0x4000,
-    ANIM_ROUND_DEVIL = 0x8000,    
+    ANIM_ROUND_DEVIL = 0x8000,
 };
 
 i16 GetBattleAnimRoundType(int index);
-i16 GetBattleAnimRoundTypeFlags(int);
+i16 func_fe6_0804A57C(int);
 
-#define GetRoundFlagByAnim(aAnim) (GetBattleAnimRoundTypeFlags((aAnim->nextRoundId - 1) * 2 + GetAnimPosition(aAnim)))
+#define GetRoundFlagByAnim(aAnim) (func_fe6_0804A57C((aAnim->nextRoundId - 1) * 2 + GetAnimPosition(aAnim)))
 
 i16 GetEfxHp(int index);
 // func_fe6_0804A5C0
 void BattleAIS_ExecCommands(void);
-// NewEkrChienCHR
+void NewEkrChienCHR(struct Anim *anim);
 // EkrChienCHRMain
-// RegisterAISSheetGraphics
+void RegisterAISSheetGraphics(struct Anim *anim);
 // func_fe6_0804AFD4
 // GetBanimPalette
 void UpdateBanimFrame(void);
@@ -755,7 +772,7 @@ void InitMainAnims(void);
 void InitBattleAnimFrame(int round_type_left, int round_type_right);
 void InitLeftAnim(int round_type);
 void InitRightAnim(int round_type);
-void SwitchAISFrameDataFromBARoundType(struct BaSprite *anim, int type);
+void LoadAnimFrame(struct BaSprite *anim, int type);
 int GetAnimLayer(struct BaSprite *anim);
 int GetAnimPosition(struct BaSprite *anim);
 int CheckRoundMiss(i16 type);
@@ -1071,15 +1088,15 @@ void NewEfxElfireBGCOL(struct Anim *anim);
 void EfxElfireBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxElfireOBJ(struct Anim *anim);
 void EfxElfireOBJ_Loop(struct ProcEfxOBJ *proc);
-// StartSpellAnimFimbulvetr
-// EfxFimbulvetr_Loop
-// NewEfxFimbulvetrBGTR
-// EfxFimbulvetrBGTR_Loop
-// NewEfxFimbulvetrBG
+void StartSpellAnimFimbulvetr(struct Anim *anim);
+void EfxFimbulvetr_Loop(struct ProcEfx *proc);
+void NewEfxFimbulvetrBGTR(struct Anim *anim);
+void EfxFimbulvetrBGTR_Loop(struct ProcEfxBG * proc);
+void NewEfxFimbulvetrBG(struct Anim *anim);
 // EfxFimbulvetrBG_Loop
-// NewEfxFimbulvetrOBJ
+void NewEfxFimbulvetrOBJ(struct Anim *anim);
 // EfxFimbulvetrOBJ_Loop
-// NewEfxFimbulvetrOBJ2
+void NewEfxFimbulvetrOBJ2(struct Anim *anim);
 // EfxFimbulvetrOBJ2_Loop
 // NewEfxFimbulvetrOBJ2Fall
 // EfxFimbulvetrOBJ2Fall_Loop
@@ -1360,7 +1377,7 @@ void NewEfxDamageMojiEffect(struct BaSprite *anim, int hitted);
 void EfxDamageMojiEffect_Loop(struct ProcEfx *proc);
 void NewEfxDamageMojiEffectOBJ(struct Anim *anim, int hitted);
 void EfxDamageMojiEffectOBJ_Loop(struct ProcEfxDamageMojiEffectOBJ *proc);
-void NewEfxPierceCritical(struct Anim *anim);
+void NewEfxCriricalEffect(struct Anim *anim);
 void EfxCriricalEffect_Loop(struct ProcEfx *proc);
 void NewEfxCriricalEffectBG(struct Anim *anim);
 void EfxCriricalEffectBG_Loop(struct ProcEfxBG *proc);
@@ -2311,3 +2328,47 @@ extern CONST_DATA struct ProcScr ProcScr_EkrTriangle[];
 // ??? gBattleBGDataTable
 extern CONST_DATA AnimScr AnimScr_EkrPopup[];
 extern CONST_DATA struct ProcScr ProcScr_EkrPopup[];
+
+extern i16 const gEfxNoDmgBgShakeOff[];
+extern i16 const gEfxQuakePureVec1[];
+extern i16 const gEfxQuakePureVec2[];
+extern i16 const gEfxQuakePureVec3[];
+extern i16 const gEfxQuakePureVec4[];
+extern i16 const gEfxQuakePureVec5[];
+extern i16 const gEfxQuakePureVec6[];
+extern i16 const gEfxQuakeVec_08111E14[];
+extern i16 const gEfxQuakePureVec7[];
+extern i16 const gEfxQuakePureVec8[];
+extern i16 const gEfxQuakePureVec9[];
+extern i16 const gEfxQuakePureVec10[];
+extern i16 const gEfxQuakePureVec11[];
+extern i16 const gEfxQuakeVec_08111F30[];
+extern i16 const gEfxQuakeVec_08111FC6[];
+// extern ??? RoundTypes_NormalPhy
+// extern ??? RoundTypes_MissedPhy
+// extern ??? RoundTypes_CriticalPhy
+// extern ??? RoundTypes_TargetMiss
+// extern ??? RoundTypes_TargetHitted
+// extern ??? RoundTypes_NormalMag
+// extern ??? RoundTypes_CriticalMag
+// extern ??? RoundTypes_Dragon1
+// extern ??? RoundTypes_Dragon2
+// extern ??? RoundTypes_Dragon3
+extern const u8 BanimDefaultModeConfig[ANIM_ROUND_MAX * 4];
+extern const u8 BanimDefaultStandingTypes[5];
+extern const u8 BanimTypesPosLeft[5];
+extern const u8 BanimTypesPosRight[5];
+extern const u16 BanimLeftDefaultPos[5];
+// extern ??? gUnk_081122DA
+// extern ??? gUnk_08112370
+// extern ??? gUnk_081125E0
+// extern ??? gUnk_081127F0
+// extern ??? gUnk_08112840
+// extern ??? gUnk_081128AC
+// extern ??? gUnk_081128FC
+// extern ??? gUnk_08112968
+// extern ??? gUnk_08112A1C
+extern u8 const gUnk_08112AD0[];
+extern u8 const gUnk_08112BA4[];
+// extern ??? gUnk_08112C84
+// extern ??? gUnk_08112CD4

@@ -547,7 +547,7 @@ void EfxDummyMagic_Loop(struct ProcEfxMagic *proc)
     int time = ++proc->timer;
 
     if (time == 1) {
-        anim_other->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        anim_other->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         return;
     }
 
@@ -591,12 +591,12 @@ void EfxTeono_Loop(struct ProcEfxMagic *proc)
         NewEfxTeonoOBJ(proc->anim);
 
         if (proc->timer == 1) {
-            animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+            animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
             StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
                 if (CheckRoundCrit(proc->anim) == true)
-                    NewEfxPierceCritical(animc);
+                    NewEfxCriricalEffect(animc);
                 else if (proc->hitted != false)
                     return;
                 else
@@ -791,12 +791,12 @@ void EfxArrow_Loop(struct ProcEfx *proc)
         PlaySFX(SONG_CC, 0x100, proc->anim->xPosition, 1);
 
         if (proc->timer == 1) {
-            animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+            animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
             StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
                 if (CheckRoundCrit(proc->anim) == true)
-                    NewEfxPierceCritical(animc);
+                    NewEfxCriricalEffect(animc);
                 else if (proc->hitted != false)
                     return;
                 else
@@ -1021,12 +1021,12 @@ void EfxTeyari_Loop(struct ProcEfx *proc)
         if (proc->timer == 1) {
             struct Anim *animc = GetAnimAnotherSide(proc->anim);
 
-            animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+            animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
             StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
                 if (CheckRoundCrit(proc->anim) == true)
-                    NewEfxPierceCritical(animc);
+                    NewEfxCriricalEffect(animc);
                 else if (proc->hitted != false)
                     return;
                 else
@@ -1143,7 +1143,7 @@ void EfxSong_Loop(struct ProcEfx *proc)
     }
 
     if (proc->timer == 69) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimStatusChgHitEffects(anim, proc->hitted);
 
@@ -1305,7 +1305,7 @@ void EfxDance_Loop(struct ProcEfx *proc)
     }
 
     if (proc->timer == 55) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimStatusChgHitEffects(anim, proc->hitted);
 
@@ -1375,13 +1375,13 @@ void EfxShooter_Loop(struct ProcEfx * proc)
     }
 
     if (timer == 45) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
         if (GetEfxHpChangeType(anim) != 2) {
             if (CheckRoundCrit(proc->anim) == 1)
-                NewEfxPierceCritical(anim);
+                NewEfxCriricalEffect(anim);
             else {
                 if (proc->hitted)
                     return;
@@ -1491,7 +1491,7 @@ void EfxEckesachs_Loop(struct ProcEfx *proc)
     }
 
     if (time == 10) {
-        anim_other->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        anim_other->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         StartBattleAnimHitEffectsDefault(anim_other, proc->hitted);
 
         if (!proc->hitted)
@@ -1690,7 +1690,7 @@ void EfxHurtmut_Loop(struct ProcEfx * proc)
 
         NewEfxFlashBgWhite(proc->anim, 6);
 
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -1802,7 +1802,7 @@ void EfxFirebreath_Loop(struct ProcEfx * proc)
     }
 
     if (timer == 15) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -2015,7 +2015,7 @@ void EfxIcebreath_Loop(struct ProcEfx * proc)
     timer = proc->timer;
 
     if (timer == 4) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -2121,7 +2121,7 @@ void EfxDarkbreath_Loop(struct ProcEfx * proc)
     timer = proc->timer;
 
     if (timer == 4) {
-        anim->flags3 |= (ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED);
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
 
         StartBattleAnimHitEffectsDefault(anim, proc->hitted);
 
@@ -2391,7 +2391,7 @@ void EfxThunder_Loop(struct ProcEfx * proc)
     }
 
     if (cur == (frame + 4)) {
-        animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         StartBattleAnimHitEffectsDefault(animc, proc->hitted);
         PlaySFX(0xF5, 0x100, animc->xPosition, 1);
 
@@ -2637,7 +2637,7 @@ void EfxFire_Loop(struct ProcEfx * proc)
     }
 
     if (time == r7) {
-        animc->flags3 |= ANIM_BIT3_TAKE_BACK_ENABLE | ANIM_BIT3_HIT_EFFECT_APPLIED;
+        animc->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
         StartBattleAnimHitEffectsDefault(animc, proc->hitted);
 
         if (proc->hitted != EKR_HITTED)
@@ -3076,3 +3076,62 @@ void EfxElfireOBJ_Loop(struct ProcEfxOBJ * proc)
 /**
  * Fimbulvetr
  */
+struct ProcScr CONST_DATA ProcScr_EfxFimbulvetr[] =
+{
+    PROC_NAME_DEBUG("efxFimbulvetr"),
+    PROC_REPEAT(EfxFimbulvetr_Loop),
+    PROC_END,
+};
+
+void StartSpellAnimFimbulvetr(struct Anim *anim)
+{
+    struct ProcEfx *proc;
+
+    SpellFx_Begin();
+    NewEfxSpellCast();
+
+    SpellFx_SetBG1Position();
+
+    proc = SpawnProc(ProcScr_EfxFimbulvetr, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
+
+void EfxFimbulvetr_Loop(struct ProcEfx *proc)
+{
+    struct Anim * anim = GetAnimAnotherSide(proc->anim);
+    int duration = EfxGetCamMovDuration();
+
+    proc->timer++;
+
+    if (proc->timer == 1)
+        NewEfxFarAttackWithDistance(proc->anim, -1);
+
+    if (proc->timer == duration + 1) {
+        NewEfxFimbulvetrBGTR(anim);
+        NewEfxFimbulvetrOBJ2(anim);
+        SetBlendAlpha(0, 16);
+        NewEfxALPHA(anim, 0, 16, 0, 16, 0);
+        PlaySFX(0x122, 0x100, anim->xPosition, 1);
+    }
+
+    if (proc->timer == duration + 82)
+        NewEfxFlashBgWhite(proc->anim, 4);
+    else if (proc->timer == duration + 85) {
+        NewEfxFimbulvetrBG(anim);
+        NewEfxFimbulvetrOBJ(anim);
+        NewEfxALPHA(anim, 24, 16, 16, 0, 0);
+        PlaySFX(0x123, 0x100, anim->xPosition, 1);
+    } else if (proc->timer == duration + 88) {
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
+        StartBattleAnimHitEffectsDefault(anim, proc->hitted);
+
+        if (!proc->hitted)
+            EfxPlayHittedSFX(anim);
+    } else if ((proc->timer != duration + 136) && (proc->timer == duration + 161)) {
+        SpellFx_Finish();
+        EndEfxSpellCastAsync();
+        Proc_Break(proc);
+    }
+}

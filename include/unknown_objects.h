@@ -175,49 +175,6 @@ extern u8 const gUnk_08307E50[]; // tsa (compressed): statscreen page C frame
 extern u8 const gUnk_08308070[]; // tsa (compressed): statscreen page B battle stat box
 extern u8 const gUnk_083080AC[]; // tsa: statscreen page B equipped weapon background
 
-extern i16 const gEfxNoDmgBgShakeOff[];
-extern i16 const gEfxQuakePureVec1[];
-extern i16 const gEfxQuakePureVec2[];
-extern i16 const gEfxQuakePureVec3[];
-extern i16 const gEfxQuakePureVec4[];
-extern i16 const gEfxQuakePureVec5[];
-extern i16 const gEfxQuakePureVec6[];
-extern i16 const gEfxQuakeVec_08111E14[];
-extern i16 const gEfxQuakePureVec7[];
-extern i16 const gEfxQuakePureVec8[];
-extern i16 const gEfxQuakePureVec9[];
-extern i16 const gEfxQuakePureVec10[];
-extern i16 const gEfxQuakePureVec11[];
-extern i16 const gEfxQuakeVec_08111F30[];
-extern i16 const gEfxQuakeVec_08111FC6[];
-// extern ??? gUnk_08112234
-// extern ??? gUnk_0811223E
-// extern ??? gUnk_08112248
-// extern ??? gUnk_08112252
-// extern ??? gUnk_0811225C
-// extern ??? gUnk_08112266
-// extern ??? gUnk_08112270
-// extern ??? gUnk_0811227A
-// extern ??? gUnk_08112284
-// extern ??? gUnk_0811228E
-// extern ??? gUnk_08112298
-// extern ??? gUnk_081122C0
-// extern ??? BanimTypesPosLeft
-// extern ??? BanimTypesPosRight
-// extern ??? gUnk_081122D0
-// extern ??? gUnk_081122DA
-// extern ??? gUnk_08112370
-// extern ??? gUnk_081125E0
-// extern ??? gUnk_081127F0
-// extern ??? gUnk_08112840
-// extern ??? gUnk_081128AC
-// extern ??? gUnk_081128FC
-// extern ??? gUnk_08112968
-// extern ??? gUnk_08112A1C
-extern u8 const gUnk_08112AD0[];
-extern u8 const gUnk_08112BA4[];
-// extern ??? gUnk_08112C84
-// extern ??? gUnk_08112CD4
 extern u8 const Img_EfxSideHitDmgCrit[];
 extern u8 const Img_EfxArrowWTA[];
 extern u16 Img_EkrGaugeNumber[];
@@ -233,9 +190,9 @@ extern u8 const Img_BarNumfx[];
 extern u8 const Tsa_EkrExpBar[];
 extern u16 const Pal_EkrExpBar[];
 // extern ??? gUnk_08113D70
-// extern ??? gUnk_08113F98
-// extern ??? gUnk_08113FB8
-// extern ??? gUnk_08113FD8
+extern u16 const Pal_08113F98[];
+extern u16 const Pal_08113FB8[];
+extern u16 const Pal_08113FD8[];
 extern u8 const Img_BanimArcherFBallistaIntro[];
 extern u8 const Img_BanimArcherMBallistaIntro[];
 extern u8 const Img_BanimSnipperFBallistaIntro[];

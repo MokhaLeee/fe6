@@ -1,53 +1,11 @@
 	.section .rodata
 
-	.incbin "fe6-base.gba", 0x112174, (0x112234 - 0x112174)
-
-	.global gUnk_08112234
-gUnk_08112234: @ 08112234
-	.incbin "fe6-base.gba", 0x112234, (0x11223E - 0x112234) @ length: 000A
-
-	.global gUnk_0811223E
-gUnk_0811223E: @ 0811223E
-	.incbin "fe6-base.gba", 0x11223E, (0x112248 - 0x11223E) @ length: 000A
-
-	.global gUnk_08112248
-gUnk_08112248: @ 08112248
-	.incbin "fe6-base.gba", 0x112248, (0x112252 - 0x112248) @ length: 000A
-
-	.global gUnk_08112252
-gUnk_08112252: @ 08112252
-	.incbin "fe6-base.gba", 0x112252, (0x11225C - 0x112252) @ length: 000A
-
-	.global gUnk_0811225C
-gUnk_0811225C: @ 0811225C
-	.incbin "fe6-base.gba", 0x11225C, (0x112266 - 0x11225C) @ length: 000A
-
-	.global gUnk_08112266
-gUnk_08112266: @ 08112266
-	.incbin "fe6-base.gba", 0x112266, (0x112270 - 0x112266) @ length: 000A
-
-	.global gUnk_08112270
-gUnk_08112270: @ 08112270
-	.incbin "fe6-base.gba", 0x112270, (0x11227A - 0x112270) @ length: 000A
-
-	.global gUnk_0811227A
-gUnk_0811227A: @ 0811227A
-	.incbin "fe6-base.gba", 0x11227A, (0x112284 - 0x11227A) @ length: 000A
-
-	.global gUnk_08112284
-gUnk_08112284: @ 08112284
-	.incbin "fe6-base.gba", 0x112284, (0x11228E - 0x112284) @ length: 000A
-
-	.global gUnk_0811228E
-gUnk_0811228E: @ 0811228E
-	.incbin "fe6-base.gba", 0x11228E, (0x112298 - 0x11228E) @ length: 000A
-
-	.global gUnk_08112298
-gUnk_08112298: @ 08112298
+	.global BanimDefaultModeConfig
+BanimDefaultModeConfig: @ 08112298
 	.incbin "fe6-base.gba", 0x112298, (0x1122C0 - 0x112298) @ length: 0028
 
-	.global gUnk_081122C0
-gUnk_081122C0: @ 081122C0
+	.global BanimDefaultStandingTypes
+BanimDefaultStandingTypes: @ 081122C0
 	.incbin "fe6-base.gba", 0x1122C0, (0x1122C5 - 0x1122C0) @ length: 0005
 
 	.global BanimTypesPosLeft
@@ -58,8 +16,8 @@ BanimTypesPosLeft: @ 081122C5
 BanimTypesPosRight: @ 081122CA
 	.incbin "fe6-base.gba", 0x1122CA, (0x1122D0 - 0x1122CA) @ length: 0006
 
-	.global gUnk_081122D0
-gUnk_081122D0: @ 081122D0
+	.global BanimLeftDefaultPos
+BanimLeftDefaultPos: @ 081122D0
 	.incbin "fe6-base.gba", 0x1122D0, (0x1122DA - 0x1122D0) @ length: 000A
 
 	.global gUnk_081122DA
@@ -174,16 +132,16 @@ Pal_EkrExpBar: @ 08113D50
 gUnk_08113D70: @ 08113D70
 	.incbin "fe6-base.gba", 0x113D70, (0x113F98 - 0x113D70) @ length: 0228
 
-	.global gUnk_08113F98
-gUnk_08113F98: @ 08113F98
+	.global Pal_08113F98
+Pal_08113F98: @ 08113F98
 	.incbin "fe6-base.gba", 0x113F98, (0x113FB8 - 0x113F98) @ length: 0020
 
-	.global gUnk_08113FB8
-gUnk_08113FB8: @ 08113FB8
+	.global Pal_08113FB8
+Pal_08113FB8: @ 08113FB8
 	.incbin "fe6-base.gba", 0x113FB8, (0x113FD8 - 0x113FB8) @ length: 0020
 
-	.global gUnk_08113FD8
-gUnk_08113FD8: @ 08113FD8
+	.global Pal_08113FD8
+Pal_08113FD8: @ 08113FD8
 	.incbin "fe6-base.gba", 0x113FD8, (0x113FF8 - 0x113FD8) @ length: 0020
 
 	.global Img_BanimArcherFBallistaIntro

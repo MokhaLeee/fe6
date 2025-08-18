@@ -73,7 +73,7 @@ void EkrFae_StartTransfer(struct ProcEkrDragon * proc)
     {
         proc->timer = 0;
         EkrPrepareBanimfx(proc->anim, 0x6B); /* Fae tranfer anim */
-        SwitchAISFrameDataFromBARoundType(proc->anim, BANIM_MODE_NORMAL_ATK);
+        LoadAnimFrame(proc->anim, BANIM_MODE_NORMAL_ATK);
         Proc_Break(proc);
     }
 }
@@ -122,7 +122,7 @@ void EkrFae_WaitBattleDone(struct ProcEkrDragon * proc)
     EfxPlaySE(0xDD, 0x100);
     M4aPlayWithPostionCtrl(0xDD, proc->anim->xPosition, 1);
     EkrPrepareBanimfx(proc->anim, 0x6C); /* Fae dragon anim for enemy */
-    SwitchAISFrameDataFromBARoundType(proc->anim, BANIM_MODE_NORMAL_ATK);
+    LoadAnimFrame(proc->anim, BANIM_MODE_NORMAL_ATK);
     StartEkrFaeTransferfx(proc->anim);
     Proc_Break(proc);
 }

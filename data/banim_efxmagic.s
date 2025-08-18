@@ -3,10 +3,6 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.global ProcScr_EfxFimbulvetr
-ProcScr_EfxFimbulvetr: @ 085D14D4
-	.incbin "fe6-base.gba", 0x5D14D4, (0x5D14EC - 0x5D14D4) @ length: 0018
-
 	.global ProcScr_EfxFimbulvetrBGTR
 ProcScr_EfxFimbulvetrBGTR: @ 085D14EC
 	.incbin "fe6-base.gba", 0x5D14EC, (0x5D1504 - 0x5D14EC) @ length: 0018

@@ -171,9 +171,9 @@ UpdateBanimFrame: @ 0x0804B048
 	ldr r2, .L0804B0F8 @ =gBanimTable
 	adds r6, r0, r2
 	ldr r0, [r6, #0x10]
-	ldr r1, .L0804B110 @ =gUnk_Banim_0200F1C0
+	ldr r1, .L0804B110 @ =gBanimScrs
 	bl LZ77UnCompWram
-	ldr r1, .L0804B114 @ =gUnk_Banim_02000054
+	ldr r1, .L0804B114 @ =gpBanimModesLeft
 	ldr r0, [r6, #0xc]
 	str r0, [r1]
 	adds r0, r7, #0
@@ -219,7 +219,7 @@ UpdateBanimFrame: @ 0x0804B048
 	cmp r7, #0x74
 	beq .L0804B130
 	ldr r0, [r6, #0x18]
-	ldr r1, .L0804B12C @ =gUnk_Banim_020041C0
+	ldr r1, .L0804B12C @ =gBanimOamBufs
 	bl LZ77UnCompWram
 	b .L0804B138
 	.align 2, 0
@@ -229,17 +229,17 @@ UpdateBanimFrame: @ 0x0804B048
 .L0804B104: .4byte gBanimIdx
 .L0804B108: .4byte gBanimFactionPal
 .L0804B10C: .4byte gBanimUniquePal
-.L0804B110: .4byte gUnk_Banim_0200F1C0
-.L0804B114: .4byte gUnk_Banim_02000054
+.L0804B110: .4byte gBanimScrs
+.L0804B114: .4byte gpBanimModesLeft
 .L0804B118: .4byte gUnk_Banim_02004080
 .L0804B11C: .4byte 0x087FC008
 .L0804B120: .4byte gpEfxUnitPaletteBackup
 .L0804B124: .4byte gPal+0x2E0
 .L0804B128: .4byte gpBanimTriAtkPalettes
-.L0804B12C: .4byte gUnk_Banim_020041C0
+.L0804B12C: .4byte gBanimOamBufs
 .L0804B130:
 	ldr r0, [r6, #0x14]
-	ldr r1, .L0804B254 @ =gUnk_Banim_020041C0
+	ldr r1, .L0804B254 @ =gBanimOamBufs
 	bl LZ77UnCompWram
 .L0804B138:
 	ldr r4, .L0804B258 @ =gUnk_Banim_020099B0
@@ -266,9 +266,9 @@ UpdateBanimFrame: @ 0x0804B048
 	mov r1, sl
 	adds r6, r0, r1
 	ldr r0, [r6, #0x10]
-	ldr r1, .L0804B26C @ =gUnk_Banim_02011BC0
+	ldr r1, .L0804B26C @ =gBanimScrs + 0x2A00
 	bl LZ77UnCompWram
-	ldr r1, .L0804B270 @ =gUnk_Banim_02000058
+	ldr r1, .L0804B270 @ =gpBanimModesRight
 	ldr r0, [r6, #0xc]
 	str r0, [r1]
 	adds r0, r7, #0
@@ -377,14 +377,14 @@ UpdateBanimFrame: @ 0x0804B048
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804B254: .4byte gUnk_Banim_020041C0
+.L0804B254: .4byte gBanimOamBufs
 .L0804B258: .4byte gUnk_Banim_020099B0
 .L0804B25C: .4byte gBanimValid
 .L0804B260: .4byte gBanimIdx
 .L0804B264: .4byte gBanimFactionPal
 .L0804B268: .4byte gBanimUniquePal
-.L0804B26C: .4byte gUnk_Banim_02011BC0
-.L0804B270: .4byte gUnk_Banim_02000058
+.L0804B26C: .4byte gBanimScrs + 0x2A00
+.L0804B270: .4byte gpBanimModesRight
 .L0804B274: .4byte gUnk_Banim_02004120
 .L0804B278: .4byte 0x087FC008
 .L0804B27C: .4byte gpEfxUnitPaletteBackup
@@ -515,7 +515,7 @@ InitLeftAnim: @ 0x0804B37C
 	mov r6, r8
 	push {r6, r7}
 	adds r7, r0, #0
-	ldr r2, .L0804B484 @ =gUnk_08112298
+	ldr r2, .L0804B484 @ =BanimDefaultModeConfig
 	lsls r1, r7, #2
 	adds r0, r1, r2
 	ldrb r5, [r0]
@@ -537,7 +537,7 @@ InitLeftAnim: @ 0x0804B37C
 	adds r0, r1, r0
 	ldrb r4, [r0]
 	ldr r3, .L0804B490 @ =gEkrXPosBase
-	ldr r0, .L0804B494 @ =gUnk_081122D0
+	ldr r0, .L0804B494 @ =BanimLeftDefaultPos
 	lsls r1, r1, #1
 	adds r1, r1, r0
 	ldrh r1, [r1]
@@ -552,12 +552,12 @@ InitLeftAnim: @ 0x0804B37C
 	ldr r1, .L0804B4A0 @ =gEkrYPosReal
 	movs r0, #0x58
 	strh r0, [r1]
-	ldr r0, .L0804B4A4 @ =gUnk_Banim_02000054
+	ldr r0, .L0804B4A4 @ =gpBanimModesLeft
 	ldr r1, [r0]
 	lsls r0, r5, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L0804B4A8 @ =gUnk_Banim_0200F1C0
+	ldr r0, .L0804B4A8 @ =gBanimScrs
 	adds r0, r1, r0
 	cmp r5, #0xff
 	bne .L0804B3E4
@@ -587,19 +587,19 @@ InitLeftAnim: @ 0x0804B37C
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strb r7, [r2, #0x12]
-	ldr r0, .L0804B4B4 @ =gUnk_Banim_02000080
+	ldr r0, .L0804B4B4 @ =gBanimImgSheetBufs
 	str r0, [r2, #0x2c]
-	ldr r0, .L0804B4B8 @ =gUnk_Banim_020041C0
+	ldr r0, .L0804B4B8 @ =gBanimOamBufs
 	str r0, [r2, #0x30]
 	ldr r0, .L0804B4BC @ =gAnims
 	str r2, [r0]
-	ldr r0, .L0804B4A4 @ =gUnk_Banim_02000054
+	ldr r0, .L0804B4A4 @ =gpBanimModesLeft
 	ldr r1, [r0]
 	mov r2, r8
 	lsls r0, r2, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L0804B4A8 @ =gUnk_Banim_0200F1C0
+	ldr r0, .L0804B4A8 @ =gBanimScrs
 	adds r0, r1, r0
 	cmp r2, #0xff
 	bne .L0804B438
@@ -629,9 +629,9 @@ InitLeftAnim: @ 0x0804B37C
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strb r7, [r2, #0x12]
-	ldr r0, .L0804B4B4 @ =gUnk_Banim_02000080
+	ldr r0, .L0804B4B4 @ =gBanimImgSheetBufs
 	str r0, [r2, #0x2c]
-	ldr r0, .L0804B4B8 @ =gUnk_Banim_020041C0
+	ldr r0, .L0804B4B8 @ =gBanimOamBufs
 	str r0, [r2, #0x30]
 	ldr r0, .L0804B4BC @ =gAnims
 	str r2, [r0, #4]
@@ -642,27 +642,27 @@ InitLeftAnim: @ 0x0804B37C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804B484: .4byte gUnk_08112298
+.L0804B484: .4byte BanimDefaultModeConfig
 .L0804B488: .4byte BanimTypesPosLeft
 .L0804B48C: .4byte gEkrDistanceType
 .L0804B490: .4byte gEkrXPosBase
-.L0804B494: .4byte gUnk_081122D0
+.L0804B494: .4byte BanimLeftDefaultPos
 .L0804B498: .4byte gEkrYPosBase
 .L0804B49C: .4byte gEkrXPosReal
 .L0804B4A0: .4byte gEkrYPosReal
-.L0804B4A4: .4byte gUnk_Banim_02000054
-.L0804B4A8: .4byte gUnk_Banim_0200F1C0
+.L0804B4A4: .4byte gpBanimModesLeft
+.L0804B4A8: .4byte gBanimScrs
 .L0804B4AC: .4byte AnimScr_DefaultAnim
 .L0804B4B0: .4byte gEkrBgPosition
-.L0804B4B4: .4byte gUnk_Banim_02000080
-.L0804B4B8: .4byte gUnk_Banim_020041C0
+.L0804B4B4: .4byte gBanimImgSheetBufs
+.L0804B4B8: .4byte gBanimOamBufs
 .L0804B4BC: .4byte gAnims
 
 	thumb_func_start InitRightAnim
 InitRightAnim: @ 0x0804B4C0
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
-	ldr r2, .L0804B5A8 @ =gUnk_08112298
+	ldr r2, .L0804B5A8 @ =BanimDefaultModeConfig
 	lsls r1, r5, #2
 	adds r0, r1, r2
 	ldrb r3, [r0]
@@ -691,12 +691,12 @@ InitRightAnim: @ 0x0804B4C0
 	ldr r1, .L0804B5C0 @ =gEkrYPosReal
 	movs r0, #0x58
 	strh r0, [r1, #2]
-	ldr r0, .L0804B5C4 @ =gUnk_Banim_02000058
+	ldr r0, .L0804B5C4 @ =gpBanimModesRight
 	ldr r1, [r0]
 	lsls r0, r3, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L0804B5C8 @ =gUnk_Banim_02011BC0
+	ldr r0, .L0804B5C8 @ =gBanimScrs + 0x2A00
 	adds r0, r1, r0
 	cmp r3, #0xff
 	bne .L0804B512
@@ -732,12 +732,12 @@ InitRightAnim: @ 0x0804B4C0
 	str r0, [r2, #0x30]
 	ldr r0, .L0804B5DC @ =gAnims
 	str r2, [r0, #8]
-	ldr r0, .L0804B5C4 @ =gUnk_Banim_02000058
+	ldr r0, .L0804B5C4 @ =gpBanimModesRight
 	ldr r1, [r0]
 	lsls r0, r6, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L0804B5C8 @ =gUnk_Banim_02011BC0
+	ldr r0, .L0804B5C8 @ =gBanimScrs + 0x2A00
 	adds r0, r1, r0
 	cmp r6, #0xff
 	bne .L0804B564
@@ -777,30 +777,30 @@ InitRightAnim: @ 0x0804B4C0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804B5A8: .4byte gUnk_08112298
+.L0804B5A8: .4byte BanimDefaultModeConfig
 .L0804B5AC: .4byte BanimTypesPosRight
 .L0804B5B0: .4byte gEkrDistanceType
 .L0804B5B4: .4byte gEkrXPosBase
 .L0804B5B8: .4byte gEkrYPosBase
 .L0804B5BC: .4byte gEkrXPosReal
 .L0804B5C0: .4byte gEkrYPosReal
-.L0804B5C4: .4byte gUnk_Banim_02000058
-.L0804B5C8: .4byte gUnk_Banim_02011BC0
+.L0804B5C4: .4byte gpBanimModesRight
+.L0804B5C8: .4byte gBanimScrs + 0x2A00
 .L0804B5CC: .4byte AnimScr_DefaultAnim
 .L0804B5D0: .4byte gEkrBgPosition
 .L0804B5D4: .4byte gUnk_Banim_02002080
 .L0804B5D8: .4byte gUnk_Banim_020099C0
 .L0804B5DC: .4byte gAnims
 
-	thumb_func_start SwitchAISFrameDataFromBARoundType
-SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
+	thumb_func_start LoadAnimFrame
+LoadAnimFrame: @ 0x0804B5E0
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
 	bl GetAnimLayer
 	cmp r0, #0
 	bne .L0804B600
-	ldr r0, .L0804B5FC @ =gUnk_08112298
+	ldr r0, .L0804B5FC @ =BanimDefaultModeConfig
 	lsls r1, r6, #2
 	adds r2, r1, r0
 	ldrb r5, [r2]
@@ -808,9 +808,9 @@ SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
 	adds r1, r1, r0
 	b .L0804B60E
 	.align 2, 0
-.L0804B5FC: .4byte gUnk_08112298
+.L0804B5FC: .4byte BanimDefaultModeConfig
 .L0804B600:
-	ldr r2, .L0804B62C @ =gUnk_08112298
+	ldr r2, .L0804B62C @ =BanimDefaultModeConfig
 	lsls r1, r6, #2
 	adds r0, r1, #2
 	adds r0, r0, r2
@@ -825,32 +825,32 @@ SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
 	bl GetAnimPosition
 	cmp r0, #0
 	bne .L0804B638
-	ldr r0, .L0804B630 @ =gUnk_Banim_02000054
+	ldr r0, .L0804B630 @ =gpBanimModesLeft
 	ldr r1, [r0]
 	lsls r0, r5, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L0804B634 @ =gUnk_Banim_0200F1C0
+	ldr r0, .L0804B634 @ =gBanimScrs
 	b .L0804B644
 	.align 2, 0
-.L0804B62C: .4byte gUnk_08112298
-.L0804B630: .4byte gUnk_Banim_02000054
-.L0804B634: .4byte gUnk_Banim_0200F1C0
+.L0804B62C: .4byte BanimDefaultModeConfig
+.L0804B630: .4byte gpBanimModesLeft
+.L0804B634: .4byte gBanimScrs
 .L0804B638:
-	ldr r0, .L0804B64C @ =gUnk_Banim_02000058
+	ldr r0, .L0804B64C @ =gpBanimModesRight
 	ldr r1, [r0]
 	lsls r0, r5, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, .L0804B650 @ =gUnk_Banim_02011BC0
+	ldr r0, .L0804B650 @ =gBanimScrs + 0x2A00
 .L0804B644:
 	adds r1, r1, r0
 	str r1, [r4, #0x24]
 	str r1, [r4, #0x20]
 	b .L0804B65E
 	.align 2, 0
-.L0804B64C: .4byte gUnk_Banim_02000058
-.L0804B650: .4byte gUnk_Banim_02011BC0
+.L0804B64C: .4byte gpBanimModesRight
+.L0804B650: .4byte gBanimScrs + 0x2A00
 .L0804B654:
 	ldr r0, .L0804B6A4 @ =AnimScr_DefaultAnim
 	str r0, [r4, #0x24]
@@ -884,7 +884,7 @@ SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
 	lsls r1, r1, #2
 	subs r1, r1, r0
 	lsls r1, r1, #0xb
-	ldr r0, .L0804B6AC @ =gUnk_Banim_020041C0
+	ldr r0, .L0804B6AC @ =gBanimOamBufs
 	adds r1, r1, r0
 	str r1, [r4, #0x30]
 	bl BasSort
@@ -894,7 +894,7 @@ SwitchAISFrameDataFromBARoundType: @ 0x0804B5E0
 	.align 2, 0
 .L0804B6A4: .4byte AnimScr_DefaultAnim
 .L0804B6A8: .4byte 0x0000F3FF
-.L0804B6AC: .4byte gUnk_Banim_020041C0
+.L0804B6AC: .4byte gBanimOamBufs
 
 	thumb_func_start GetAnimLayer
 GetAnimLayer: @ 0x0804B6B0
