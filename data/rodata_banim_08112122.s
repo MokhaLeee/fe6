@@ -26,7 +26,23 @@ gUnk_081122DA: @ 081122DA
 
 	.global gUnk_08112370
 gUnk_08112370: @ 08112370
-	.incbin "fe6-base.gba", 0x112370, (0x1125E0 - 0x112370) @ length: 0270
+	.incbin "fe6-base.gba", 0x112370, (0x112380 - 0x112370) @ length: 0270
+
+	.global TsaConf_BanimTmA_08112380
+TsaConf_BanimTmA_08112380:	@ 0x08112380
+	.incbin "fe6-base.gba", 0x112380, 0x112418 - 0x112380
+
+	.global TsaConf_BanimTmA_08112418
+TsaConf_BanimTmA_08112418:	@ 0x08112418
+	.incbin "fe6-base.gba", 0x112418, 0x1124B0 - 0x112418
+
+	.global TsaConf_BanimTmA_081124B0
+TsaConf_BanimTmA_081124B0:	@ 0x081124B0
+	.incbin "fe6-base.gba", 0x1124B0, 0x112548 - 0x1124B0
+
+	.global TsaConf_BanimTmA_08112548
+TsaConf_BanimTmA_08112548:	@ 0x08112548
+	.incbin "fe6-base.gba", 0x112548, 0x1125E0 - 0x112548
 
 	.global gUnk_081125E0
 gUnk_081125E0: @ 081125E0

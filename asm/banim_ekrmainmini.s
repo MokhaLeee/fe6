@@ -156,7 +156,7 @@ func_fe6_0804B930: @ 0x0804B930
 	cmp r1, r0
 	beq .L0804BAAA
 	adds r0, r4, #0
-	bl RegisterAISSheetGraphics
+	bl SyncBanimImage
 	ldr r0, [r4, #0x28]
 	str r0, [r6, #0x28]
 .L0804BAAA:
@@ -1275,7 +1275,7 @@ func_fe6_0804C330: @ 0x0804C330
 	adds r7, r0, #0
 	movs r4, #0
 	mov sl, r4
-	ldr r0, .L0804C374 @ =gUnk_085CBDB0
+	ldr r0, .L0804C374 @ =TsaConfs_BanimTmA
 	movs r2, #0xc
 	ldrsh r1, [r7, r2]
 	lsls r2, r1, #3
@@ -1300,7 +1300,7 @@ func_fe6_0804C330: @ 0x0804C330
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-.L0804C374: .4byte gUnk_085CBDB0
+.L0804C374: .4byte TsaConfs_BanimTmA
 .L0804C378: .4byte .L0804C37C
 .L0804C37C: @ jump table
 	.4byte .L0804C390 @ case 0

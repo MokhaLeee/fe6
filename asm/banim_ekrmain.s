@@ -1,144 +1,7 @@
 	.include "macro.inc"
 	.syntax unified
 
-	.section .data
-
-	.global AnimScr_DefaultAnim
-AnimScr_DefaultAnim: @ 085CBDA0
-	.incbin "fe6-base.gba", 0x5CBDA0, (0x5CBDB0 - 0x5CBDA0) @ length: 0010
-
-	.global gUnk_085CBDB0
-gUnk_085CBDB0: @ 085CBDB0
-	.incbin "fe6-base.gba", 0x5CBDB0, (0x5CBDD8 - 0x5CBDB0) @ length: 0028
-
-	.global ProcScr_EkrChienCHR
-ProcScr_EkrChienCHR: @ 085CBDD8
-	.incbin "fe6-base.gba", 0x5CBDD8, (0x5CBDF0 - 0x5CBDD8) @ length: 0018
-
 	.section .text
-	thumb_func_start NewEkrChienCHR
-NewEkrChienCHR: @ 0x0804AF70
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, .L0804AF84 @ =ProcScr_EkrChienCHR
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804AF84: .4byte ProcScr_EkrChienCHR
-
-	thumb_func_start EkrChienCHRMain
-EkrChienCHRMain: @ 0x0804AF88
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl RegisterAISSheetGraphics
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start RegisterAISSheetGraphics
-RegisterAISSheetGraphics: @ 0x0804AFA0
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, .L0804AFCC @ =0x000003FF
-	ldrh r0, [r5, #8]
-	ands r4, r0
-	lsls r4, r4, #5
-	ldr r0, .L0804AFD0 @ =0x06010000
-	adds r4, r4, r0
-	ldr r0, [r5, #0x28]
-	ldr r1, [r5, #0x2c]
-	bl LZ77UnCompWram
-	ldr r0, [r5, #0x2c]
-	movs r2, #0x80
-	lsls r2, r2, #6
-	adds r1, r4, #0
-	bl RegisterDataMove
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0804AFCC: .4byte 0x000003FF
-.L0804AFD0: .4byte 0x06010000
-
-	thumb_func_start func_fe6_0804AFD4
-func_fe6_0804AFD4: @ 0x0804AFD4
-	adds r2, r0, #0
-	ldr r0, .L0804AFF8 @ =gBanimUniquePaletteDisabled
-	lsls r1, r1, #1
-	adds r1, r1, r0
-	movs r3, #0
-	ldrsh r0, [r1, r3]
-	cmp r0, #0
-	beq .L0804AFF4
-	movs r1, #0
-	adds r3, r2, #0
-	adds r3, #0x80
-.L0804AFEA:
-	ldm r3!, {r0}
-	stm r2!, {r0}
-	adds r1, #1
-	cmp r1, #7
-	bls .L0804AFEA
-.L0804AFF4:
-	bx lr
-	.align 2, 0
-.L0804AFF8: .4byte gBanimUniquePaletteDisabled
-
-	thumb_func_start GetBanimPalette
-GetBanimPalette: @ 0x0804AFFC
-	adds r2, r0, #0
-	cmp r1, #0
-	bne .L0804B00C
-	ldr r0, .L0804B008 @ =gpEkrBattleUnitLeft
-	b .L0804B00E
-	.align 2, 0
-.L0804B008: .4byte gpEkrBattleUnitLeft
-.L0804B00C:
-	ldr r0, .L0804B024 @ =gpEkrBattleUnitRight
-.L0804B00E:
-	ldr r0, [r0]
-	ldr r0, [r0, #4]
-	ldrb r0, [r0, #4]
-	cmp r0, #0x11
-	beq .L0804B036
-	cmp r0, #0x11
-	bhi .L0804B028
-	cmp r0, #0x10
-	beq .L0804B032
-	b .L0804B042
-	.align 2, 0
-.L0804B024: .4byte gpEkrBattleUnitRight
-.L0804B028:
-	cmp r0, #0x12
-	beq .L0804B03A
-	cmp r0, #0x13
-	beq .L0804B03E
-	b .L0804B042
-.L0804B032:
-	movs r0, #0xe
-	b .L0804B044
-.L0804B036:
-	movs r0, #0xf
-	b .L0804B044
-.L0804B03A:
-	movs r0, #4
-	b .L0804B044
-.L0804B03E:
-	movs r0, #5
-	b .L0804B044
-.L0804B042:
-	adds r0, r2, #0
-.L0804B044:
-	bx lr
-	.align 2, 0
 
 	thumb_func_start UpdateBanimFrame
 UpdateBanimFrame: @ 0x0804B048
@@ -183,7 +46,7 @@ UpdateBanimFrame: @ 0x0804B048
 	ldr r1, .L0804B0F8 @ =gBanimTable
 	adds r0, r0, r1
 	ldr r0, [r0, #0x1c]
-	ldr r5, .L0804B118 @ =gUnk_Banim_02004080
+	ldr r5, .L0804B118 @ =gBanimPaletteLeft
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	movs r0, #1
@@ -191,14 +54,14 @@ UpdateBanimFrame: @ 0x0804B048
 	cmp r4, r0
 	beq .L0804B0C4
 	lsls r0, r4, #4
-	ldr r2, .L0804B11C @ =0x087FC008
+	ldr r2, .L0804B11C @ =gBanimCharaPalTable
 	adds r0, r0, r2
 	ldr r0, [r0, #0xc]
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	adds r0, r5, #0
 	movs r1, #0
-	bl func_fe6_0804AFD4
+	bl ApplyBanimUniquePalette
 .L0804B0C4:
 	ldr r1, .L0804B120 @ =gpEfxUnitPaletteBackup
 	mov r2, r8
@@ -231,8 +94,8 @@ UpdateBanimFrame: @ 0x0804B048
 .L0804B10C: .4byte gBanimUniquePal
 .L0804B110: .4byte gBanimScrs
 .L0804B114: .4byte gpBanimModesLeft
-.L0804B118: .4byte gUnk_Banim_02004080
-.L0804B11C: .4byte 0x087FC008
+.L0804B118: .4byte gBanimPaletteLeft
+.L0804B11C: .4byte gBanimCharaPalTable
 .L0804B120: .4byte gpEfxUnitPaletteBackup
 .L0804B124: .4byte gPal+0x2E0
 .L0804B128: .4byte gpBanimTriAtkPalettes
@@ -277,7 +140,7 @@ UpdateBanimFrame: @ 0x0804B048
 	lsls r0, r0, #5
 	add r0, sl
 	ldr r0, [r0, #0x1c]
-	ldr r5, .L0804B274 @ =gUnk_Banim_02004120
+	ldr r5, .L0804B274 @ =gBanimPaletteRight
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	movs r0, #1
@@ -285,14 +148,14 @@ UpdateBanimFrame: @ 0x0804B048
 	cmp r4, r0
 	beq .L0804B1A6
 	lsls r0, r4, #4
-	ldr r2, .L0804B278 @ =0x087FC008
+	ldr r2, .L0804B278 @ =gBanimCharaPalTable
 	adds r0, r0, r2
 	ldr r0, [r0, #0xc]
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	adds r0, r5, #0
 	movs r1, #1
-	bl func_fe6_0804AFD4
+	bl ApplyBanimUniquePalette
 .L0804B1A6:
 	ldr r1, .L0804B27C @ =gpEfxUnitPaletteBackup
 	mov r2, r8
@@ -342,7 +205,7 @@ UpdateBanimFrame: @ 0x0804B048
 	cmp r4, r7
 	beq .L0804B218
 	lsls r0, r4, #4
-	ldr r2, .L0804B278 @ =0x087FC008
+	ldr r2, .L0804B278 @ =gBanimCharaPalTable
 	adds r0, r0, r2
 	ldr r0, [r0, #0xc]
 	str r0, [r5]
@@ -364,7 +227,7 @@ UpdateBanimFrame: @ 0x0804B048
 	cmp r4, r7
 	beq .L0804B246
 	lsls r0, r4, #4
-	ldr r1, .L0804B278 @ =0x087FC008
+	ldr r1, .L0804B278 @ =gBanimCharaPalTable
 	adds r0, r0, r1
 	ldr r0, [r0, #0xc]
 	str r0, [r5, #4]
@@ -385,8 +248,8 @@ UpdateBanimFrame: @ 0x0804B048
 .L0804B268: .4byte gBanimUniquePal
 .L0804B26C: .4byte gBanimScrs + 0x2A00
 .L0804B270: .4byte gpBanimModesRight
-.L0804B274: .4byte gUnk_Banim_02004120
-.L0804B278: .4byte 0x087FC008
+.L0804B274: .4byte gBanimPaletteRight
+.L0804B278: .4byte gBanimCharaPalTable
 .L0804B27C: .4byte gpEfxUnitPaletteBackup
 .L0804B280: .4byte gPal+0x320
 .L0804B284: .4byte gpBanimTriAtkPalettes

@@ -480,7 +480,7 @@ void BattleAIS_ExecCommands(void)
 				if (gBanimUnitChgForceImg[GetAnimPosition(anim)] == NULL)
 					if (!(anim->flags3 & ANIM_BIT3_4000))
 						if (gpImgSheet[GetAnimPosition(anim)] != anim->imgSheet) {
-							RegisterAISSheetGraphics(anim);
+							SyncBanimImage(anim);
 							gpImgSheet[GetAnimPosition(anim)] = anim->imgSheet;
 						}
 			}

@@ -121,8 +121,8 @@ SECTIONS
         . = 0x001080; gUnk_Banim_02001080 = .;
         . = 0x002080; gUnk_Banim_02002080 = .;
         . = 0x003080; gUnk_Banim_02003080 = .;
-        . = 0x004080; gUnk_Banim_02004080 = .;
-        . = 0x004120; gUnk_Banim_02004120 = .;
+        . = 0x004080; gBanimPaletteLeft = .;
+        . = 0x004120; gBanimPaletteRight = .;
         . = 0x0041C0; gBanimOamBufs = .;
         . = 0x0099B0; gUnk_Banim_020099B0 = .;
         . = 0x0099C0; gUnk_Banim_020099C0 = .;
@@ -561,6 +561,7 @@ SECTIONS
         asm/banim_ekrcmd.o(.text);
         src/banim_ekrcmd.o(.text);
         src/banim_main.o(.text);
+        src/banim_ekrmain.o(.text);
         asm/banim_ekrmain.o(.text);
         asm/banim_ekrmainmini.o(.text);
         asm/banim_ekrarena.o(.text);
@@ -808,6 +809,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrbattleintro.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrmain.o(.data);
+        . = ALIGN(4); src/banim_ekrmain.o(.data);
         . = ALIGN(4); asm/banim_ekrmainmini.o(.data);
         . = ALIGN(4); asm/banim_ekrarena.o(.data);
         . = ALIGN(4); data/data_banim_085CCC40.o(.data);

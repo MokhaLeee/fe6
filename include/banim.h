@@ -61,7 +61,9 @@ enum video_banim {
     OBPAL_EFX_5 = 5,
     OBPAL_EFX_BG = 6,
     OBPAL_EFX_UNIT_L = 7,
+    OBPAL_EFX_UNIT_BAK_L = 8,
     OBPAL_EFX_UNIT_R = 9,
+    OBPAL_EFX_UNIT_BAK_R = 10,
     OBPAL_EFXHPBAR_L = 11,
     OBPAL_EFXHPBAR_R = 12,
     OBPAL_EFX_ITEM_L = 13,
@@ -213,6 +215,8 @@ extern u16 gEkrYPosBase[2];
 extern struct Vec2i gEkrBg0QuakeVec;
 extern u16 * gpEfxUnitPaletteBackup[2];
 extern i16 gEkrDebugModeMaybe;
+extern u16 gBanimPaletteLeft[0x50];
+extern u16 gBanimPaletteRight[0x50];
 extern u16 gEfxPal[0x130];
 extern struct Font gBanimFont;
 extern struct Text gBanimText[20];
@@ -763,10 +767,10 @@ i16 GetEfxHp(int index);
 // func_fe6_0804A5C0
 void BattleAIS_ExecCommands(void);
 void NewEkrChienCHR(struct Anim *anim);
-// EkrChienCHRMain
-void RegisterAISSheetGraphics(struct Anim *anim);
-// func_fe6_0804AFD4
-// GetBanimPalette
+void EkrChienCHR_Loop(struct ProcEfx *proc);
+void SyncBanimImage(struct Anim *anim);
+void ApplyBanimUniquePalette(u32 *buf, int pos);
+int GetBanimPalette(int banim_id, int pos);
 void UpdateBanimFrame(void);
 void InitMainAnims(void);
 void InitBattleAnimFrame(int round_type_left, int round_type_right);
@@ -1833,7 +1837,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrWindowAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrNamewinAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBaseAppear[];
 extern CONST_DATA AnimScr AnimScr_DefaultAnim[];
-// ??? gUnk_085CBDB0
+// ??? TsaConfs_BanimTmA
 extern CONST_DATA struct ProcScr ProcScr_EkrChienCHR[];
 extern CONST_DATA struct ProcScr ProcScr_EfxAnimeDrv[];
 extern CONST_DATA struct ProcScr ProcScr_EkrUnitMainMini[];
@@ -2361,6 +2365,10 @@ extern const u8 BanimTypesPosRight[5];
 extern const u16 BanimLeftDefaultPos[5];
 // extern ??? gUnk_081122DA
 // extern ??? gUnk_08112370
+extern u16 TsaConf_BanimTmA_08112380[];
+extern u16 TsaConf_BanimTmA_08112418[];
+extern u16 TsaConf_BanimTmA_081124B0[];
+extern u16 TsaConf_BanimTmA_08112548[];
 // extern ??? gUnk_081125E0
 // extern ??? gUnk_081127F0
 // extern ??? gUnk_08112840

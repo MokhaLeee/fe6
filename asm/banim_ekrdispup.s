@@ -518,7 +518,7 @@ func_fe6_080444EC: @ 0x080444EC
 	ldr r1, [r3, #0x10]
 	str r1, [r0, #4]
 	ldr r2, .L080445FC @ =gUnk_Banim_0200003C
-	ldr r1, .L08044600 @ =gUnk_085CBDB0
+	ldr r1, .L08044600 @ =TsaConfs_BanimTmA
 	movs r3, #0
 	ldrsh r0, [r6, r3]
 	lsls r0, r0, #3
@@ -572,7 +572,7 @@ func_fe6_080444EC: @ 0x080444EC
 .L080445F4: .4byte gPlaySt
 .L080445F8: .4byte gUnk_Banim_02000044
 .L080445FC: .4byte gUnk_Banim_0200003C
-.L08044600: .4byte gUnk_085CBDB0
+.L08044600: .4byte TsaConfs_BanimTmA
 .L08044604: .4byte gEkrSnowWeather
 
 	thumb_func_start EfxPrepareScreenFx
