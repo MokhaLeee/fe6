@@ -87,6 +87,16 @@ enum ekr_hit {
     EKR_MISS
 };
 
+enum banim_sprites_size {
+    BAS_SCR_MAX_SIZE = 0x2A00,
+    BAS_OAM_MAX_SIZE = 0x57F0,
+    BAS_IMG_MAX_SIZE = 0x1000,
+};
+
+extern u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
+extern u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
+extern u8 gBanimImgSheetBufs[2 * BAS_IMG_MAX_SIZE];
+
 struct ProcEfx {
     PROC_HEADER;
 
@@ -190,6 +200,8 @@ struct ProcEfxOBJ {
     /* 68 */ struct  BaSprite *anim4;
 };
 
+extern int *gpBanimModesLeft;
+extern int *gpBanimModesRight;
 extern int gEkrDebugTimer;
 extern int gEkrDebugFlag1;
 extern int gEkrDebugFlag2;
@@ -750,9 +762,9 @@ i16 func_fe6_0804A57C(int);
 i16 GetEfxHp(int index);
 // func_fe6_0804A5C0
 void BattleAIS_ExecCommands(void);
-// NewEkrChienCHR
+void NewEkrChienCHR(struct Anim *anim);
 // EkrChienCHRMain
-// RegisterAISSheetGraphics
+void RegisterAISSheetGraphics(struct Anim *anim);
 // func_fe6_0804AFD4
 // GetBanimPalette
 void UpdateBanimFrame(void);
@@ -1365,7 +1377,7 @@ void NewEfxDamageMojiEffect(struct BaSprite *anim, int hitted);
 void EfxDamageMojiEffect_Loop(struct ProcEfx *proc);
 void NewEfxDamageMojiEffectOBJ(struct Anim *anim, int hitted);
 void EfxDamageMojiEffectOBJ_Loop(struct ProcEfxDamageMojiEffectOBJ *proc);
-void NewEfxPierceCritical(struct Anim *anim);
+void NewEfxCriricalEffect(struct Anim *anim);
 void EfxCriricalEffect_Loop(struct ProcEfx *proc);
 void NewEfxCriricalEffectBG(struct Anim *anim);
 void EfxCriricalEffectBG_Loop(struct ProcEfxBG *proc);
@@ -2316,3 +2328,47 @@ extern CONST_DATA struct ProcScr ProcScr_EkrTriangle[];
 // ??? gBattleBGDataTable
 extern CONST_DATA AnimScr AnimScr_EkrPopup[];
 extern CONST_DATA struct ProcScr ProcScr_EkrPopup[];
+
+extern i16 const gEfxNoDmgBgShakeOff[];
+extern i16 const gEfxQuakePureVec1[];
+extern i16 const gEfxQuakePureVec2[];
+extern i16 const gEfxQuakePureVec3[];
+extern i16 const gEfxQuakePureVec4[];
+extern i16 const gEfxQuakePureVec5[];
+extern i16 const gEfxQuakePureVec6[];
+extern i16 const gEfxQuakeVec_08111E14[];
+extern i16 const gEfxQuakePureVec7[];
+extern i16 const gEfxQuakePureVec8[];
+extern i16 const gEfxQuakePureVec9[];
+extern i16 const gEfxQuakePureVec10[];
+extern i16 const gEfxQuakePureVec11[];
+extern i16 const gEfxQuakeVec_08111F30[];
+extern i16 const gEfxQuakeVec_08111FC6[];
+// extern ??? RoundTypes_NormalPhy
+// extern ??? RoundTypes_MissedPhy
+// extern ??? RoundTypes_CriticalPhy
+// extern ??? RoundTypes_TargetMiss
+// extern ??? RoundTypes_TargetHitted
+// extern ??? RoundTypes_NormalMag
+// extern ??? RoundTypes_CriticalMag
+// extern ??? RoundTypes_Dragon1
+// extern ??? RoundTypes_Dragon2
+// extern ??? RoundTypes_Dragon3
+extern const u8 BanimDefaultModeConfig[ANIM_ROUND_MAX * 4];
+extern const u8 BanimDefaultStandingTypes[5];
+extern const u8 BanimTypesPosLeft[5];
+extern const u8 BanimTypesPosRight[5];
+extern const u16 BanimLeftDefaultPos[5];
+// extern ??? gUnk_081122DA
+// extern ??? gUnk_08112370
+// extern ??? gUnk_081125E0
+// extern ??? gUnk_081127F0
+// extern ??? gUnk_08112840
+// extern ??? gUnk_081128AC
+// extern ??? gUnk_081128FC
+// extern ??? gUnk_08112968
+// extern ??? gUnk_08112A1C
+extern u8 const gUnk_08112AD0[];
+extern u8 const gUnk_08112BA4[];
+// extern ??? gUnk_08112C84
+// extern ??? gUnk_08112CD4

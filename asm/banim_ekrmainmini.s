@@ -209,7 +209,7 @@ func_fe6_0804BAF0: @ 0x0804BAF0
 	bl GetAnimLayer
 	cmp r0, #0
 	bne .L0804BB40
-	ldr r3, .L0804BB48 @ =gUnk_08112298
+	ldr r3, .L0804BB48 @ =BanimDefaultModeConfig
 	ldrh r1, [r6, #6]
 	lsls r0, r1, #5
 	ldr r1, .L0804BB4C @ =gBanimTable
@@ -246,7 +246,7 @@ func_fe6_0804BAF0: @ 0x0804BAF0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804BB48: .4byte gUnk_08112298
+.L0804BB48: .4byte BanimDefaultModeConfig
 .L0804BB4C: .4byte gBanimTable
 .L0804BB50: .4byte 0x000057F0
 
@@ -261,7 +261,7 @@ func_fe6_0804BB54: @ 0x0804BB54
 	adds r6, r0, #0
 	ldr r0, .L0804BBD8 @ =gBanimTable
 	mov sb, r0
-	ldr r2, .L0804BBDC @ =gUnk_08112298
+	ldr r2, .L0804BBDC @ =BanimDefaultModeConfig
 	ldrh r3, [r6, #8]
 	lsls r1, r3, #2
 	adds r0, r1, r2
@@ -319,7 +319,7 @@ func_fe6_0804BB54: @ 0x0804BB54
 	b .L0804BBF6
 	.align 2, 0
 .L0804BBD8: .4byte gBanimTable
-.L0804BBDC: .4byte gUnk_08112298
+.L0804BBDC: .4byte BanimDefaultModeConfig
 .L0804BBE0: .4byte AnimScr_DefaultAnim
 .L0804BBE4: .4byte 0x000057F0
 .L0804BBE8:
@@ -439,7 +439,7 @@ func_fe6_0804BCC8: @ 0x0804BCC8
 	adds r6, r0, #0
 	ldr r0, .L0804BD38 @ =gBanimTable
 	mov sb, r0
-	ldr r2, .L0804BD3C @ =gUnk_08112298
+	ldr r2, .L0804BD3C @ =BanimDefaultModeConfig
 	ldrh r1, [r6, #8]
 	lsls r0, r1, #2
 	adds r1, r0, r2
@@ -489,7 +489,7 @@ func_fe6_0804BCC8: @ 0x0804BCC8
 	b .L0804BD56
 	.align 2, 0
 .L0804BD38: .4byte gBanimTable
-.L0804BD3C: .4byte gUnk_08112298
+.L0804BD3C: .4byte BanimDefaultModeConfig
 .L0804BD40: .4byte AnimScr_DefaultAnim
 .L0804BD44: .4byte 0x000057F0
 .L0804BD48:

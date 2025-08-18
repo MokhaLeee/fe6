@@ -596,7 +596,7 @@ void EfxTeono_Loop(struct ProcEfxMagic *proc)
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
                 if (CheckRoundCrit(proc->anim) == true)
-                    NewEfxPierceCritical(animc);
+                    NewEfxCriricalEffect(animc);
                 else if (proc->hitted != false)
                     return;
                 else
@@ -796,7 +796,7 @@ void EfxArrow_Loop(struct ProcEfx *proc)
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
                 if (CheckRoundCrit(proc->anim) == true)
-                    NewEfxPierceCritical(animc);
+                    NewEfxCriricalEffect(animc);
                 else if (proc->hitted != false)
                     return;
                 else
@@ -1026,7 +1026,7 @@ void EfxTeyari_Loop(struct ProcEfx *proc)
 
             if (GetEfxHpChangeType(animc) != EFX_HPT_NOT_CHANGE) {
                 if (CheckRoundCrit(proc->anim) == true)
-                    NewEfxPierceCritical(animc);
+                    NewEfxCriricalEffect(animc);
                 else if (proc->hitted != false)
                     return;
                 else
@@ -1381,7 +1381,7 @@ void EfxShooter_Loop(struct ProcEfx * proc)
 
         if (GetEfxHpChangeType(anim) != 2) {
             if (CheckRoundCrit(proc->anim) == 1)
-                NewEfxPierceCritical(anim);
+                NewEfxCriricalEffect(anim);
             else {
                 if (proc->hitted)
                     return;

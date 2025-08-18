@@ -88,7 +88,7 @@ struct ProcScr CONST_DATA ProcScr_EfxCriricalEffect[] = {
     PROC_END
 };
 
-void NewEfxPierceCritical(struct Anim *anim)
+void NewEfxCriricalEffect(struct Anim *anim)
 {
 	struct ProcEfx *proc;
 
@@ -98,7 +98,7 @@ void NewEfxPierceCritical(struct Anim *anim)
 
 	is_pierce = GetRoundFlagByAnim(anim1) & ANIM_ROUND_PIERCE;
 	if (is_pierce != 0) {
-		NewEfxPierceCriticalEffect(anim);
+		NewEfxCriricalEffectEffect(anim);
 		return;
 	}
 #endif
