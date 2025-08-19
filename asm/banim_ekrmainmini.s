@@ -1042,7 +1042,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	ldr r2, .L0804C190 @ =gUnk_085CCE38
+	ldr r2, .L0804C190 @ =AnimScr_EkrMainMini_L_Far
 	str r0, [sp]
 	movs r0, #0
 	str r0, [sp, #4]
@@ -1051,7 +1051,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	movs r0, #0x20
 	b .L0804C1E4
 	.align 2, 0
-.L0804C190: .4byte gUnk_085CCE38
+.L0804C190: .4byte AnimScr_EkrMainMini_L_Far
 .L0804C194:
 	movs r1, #2
 	ldrsh r0, [r6, r1]
@@ -1064,7 +1064,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	ldr r2, .L0804C1BC @ =gUnk_085CCE38
+	ldr r2, .L0804C1BC @ =AnimScr_EkrMainMini_L_Far
 	str r0, [sp]
 	movs r0, #0
 	str r0, [sp, #4]
@@ -1073,7 +1073,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	movs r0, #0x40
 	b .L0804C1E4
 	.align 2, 0
-.L0804C1BC: .4byte gUnk_085CCE38
+.L0804C1BC: .4byte AnimScr_EkrMainMini_L_Far
 .L0804C1C0:
 	movs r1, #2
 	ldrsh r0, [r6, r1]
@@ -1157,7 +1157,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	ldr r2, .L0804C27C @ =gUnk_085CCDAC
+	ldr r2, .L0804C27C @ =AnimScr_EkrMainMini_R_Far
 	str r0, [sp]
 	movs r0, #0
 	str r0, [sp, #4]
@@ -1166,7 +1166,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	movs r0, #0xb0
 	b .L0804C2D0
 	.align 2, 0
-.L0804C27C: .4byte gUnk_085CCDAC
+.L0804C27C: .4byte AnimScr_EkrMainMini_R_Far
 .L0804C280:
 	movs r1, #8
 	ldrsh r0, [r6, r1]
@@ -1179,7 +1179,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	ldr r2, .L0804C2A8 @ =gUnk_085CCDAC
+	ldr r2, .L0804C2A8 @ =AnimScr_EkrMainMini_R_Far
 	str r0, [sp]
 	movs r0, #0
 	str r0, [sp, #4]
@@ -1188,7 +1188,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	movs r0, #0xb0
 	b .L0804C2D0
 	.align 2, 0
-.L0804C2A8: .4byte gUnk_085CCDAC
+.L0804C2A8: .4byte AnimScr_EkrMainMini_R_Far
 .L0804C2AC:
 	movs r1, #8
 	ldrsh r0, [r6, r1]
@@ -1201,7 +1201,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	ldr r2, .L0804C2E8 @ =gUnk_085CCDAC
+	ldr r2, .L0804C2E8 @ =AnimScr_EkrMainMini_R_Far
 	str r0, [sp]
 	movs r0, #0
 	str r0, [sp, #4]
@@ -1222,7 +1222,7 @@ func_fe6_0804BF40: @ 0x0804BF40
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0804C2E8: .4byte gUnk_085CCDAC
+.L0804C2E8: .4byte AnimScr_EkrMainMini_R_Far
 
 	thumb_func_start func_fe6_0804C2EC
 func_fe6_0804C2EC: @ 0x0804C2EC
@@ -1427,8 +1427,8 @@ func_fe6_0804C330: @ 0x0804C330
 .L0804C470: .4byte 0xFFFFFA96
 .L0804C474: .4byte gBg2Tm
 
-	thumb_func_start func_fe6_0804C478
-func_fe6_0804C478: @ 0x0804C478
+	thumb_func_start BanimCopyBgTM
+BanimCopyBgTM: @ 0x0804C478
 	push {lr}
 	sub sp, #0x10
 	lsls r1, r1, #0x10

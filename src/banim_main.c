@@ -205,11 +205,11 @@ void BattleAIS_ExecCommands(void)
 								register int tmp_val asm("r1");
 
 								anim1->sprData = tmp_ptr = (tmp_ptr = anim1->sprDataPool) + (tmp_val = scr_start->oam_offset);
-								anim2->sprData = tmp_ptr = anim2->sprDataPool + BAS_OAM_MAX_SIZE;
+								anim2->sprData = tmp_ptr = anim2->sprDataPool + BAS_OAM_REF_MAX_SIZE;
 							}
 #else
 							anim1->sprData = anim1->sprDataPool + scr_start->oam_offset;
-							anim2->sprData = anim2->sprDataPool + BAS_OAM_MAX_SIZE;
+							anim2->sprData = anim2->sprDataPool + BAS_OAM_REF_MAX_SIZE;
 #endif
 
 							if (gBanimUnitChgForceImg[GetAnimPosition(anim)] == NULL) {

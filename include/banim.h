@@ -91,7 +91,8 @@ enum ekr_hit {
 
 enum banim_sprites_size {
     BAS_SCR_MAX_SIZE = 0x2A00,
-    BAS_OAM_MAX_SIZE = 0x57F0,
+    BAS_OAM_REF_MAX_SIZE = 0x57F0,
+    BAS_OAM_MAX_SIZE = BAS_OAM_REF_MAX_SIZE + 0x10,
     BAS_IMG_MAX_SIZE = 0x1000,
 };
 
@@ -202,6 +203,8 @@ struct ProcEfxOBJ {
     /* 68 */ struct  BaSprite *anim4;
 };
 
+extern void *gUnk_Banim_02000034[2];
+extern u16 *gpBanimTerrainPalette[2];
 extern int *gpBanimModesLeft;
 extern int *gpBanimModesRight;
 extern int gEkrDebugTimer;
@@ -253,8 +256,8 @@ extern u32 gEfxBgSemaphore;
 extern u32 gEfxHpBarResireFlag;
 extern u32 gUnk_Banim_0201774C;
 extern u32 gEfxTeonoState;
-extern struct Vec2i gEkrBg2QuakeVec;
 extern u32 gUnk_Banim_02017754;
+extern struct Vec2i gEkrBg2QuakeVec;
 extern u32 gEkrBgPosition;
 extern i16 gBanimEffectiveness[2];
 extern i16 gBanimUniquePaletteDisabled[2];
@@ -445,7 +448,7 @@ void func_fe6_08045D6C(struct ProcEfxFarAttack * unused, int x);
 void func_fe6_08045DA4(struct ProcEfxFarAttack *proc);
 void func_fe6_08045DDC(struct ProcEfxFarAttack *proc);
 void func_fe6_08045E50(struct ProcEfxFarAttack *proc);
-void func_fe6_08045EE8(int);
+void BanimSetBg2Position(int);
 
 struct ProcEfxQuake {
     /* 00 */ PROC_HEADER;
@@ -831,7 +834,7 @@ void func_fe6_0804BF40(struct BanimUnkStructComm *buf); // FE8: sub_805AA68
 // func_fe6_0804C2EC
 // func_fe6_0804C318
 // func_fe6_0804C330
-// func_fe6_0804C478
+// BanimCopyBgTM
 void SetBanimArenaFlag(int flag);
 int GetBattleAnimArenaFlag(void);
 void func_fe6_0804C50C(int x);
@@ -1846,8 +1849,8 @@ extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
 // ??? gUnk_085CBE78
 // ??? Pals_ArenaBattleBg
 // ??? gUnk_085CCC40
-// ??? gUnk_085CCDAC
-// ??? gUnk_085CCE38
+extern CONST_DATA AnimScr AnimScr_EkrMainMini_R_Far[];
+extern CONST_DATA AnimScr AnimScr_EkrMainMini_L_Far[];
 // ??? gUnk_085CCEB8
 // ??? gUnk_085CCF38
 extern u32 AnimScr_NoDamage[];

@@ -5,12 +5,12 @@
 gUnk_085CCC40: @ 085CCC40
 	.incbin "fe6-base.gba", 0x5CCC40, (0x5CCDAC - 0x5CCC40) @ length: 016C
 
-	.global gUnk_085CCDAC
-gUnk_085CCDAC: @ 085CCDAC
+	.global AnimScr_EkrMainMini_R_Far
+AnimScr_EkrMainMini_R_Far: @ 085CCDAC
 	.incbin "fe6-base.gba", 0x5CCDAC, (0x5CCE38 - 0x5CCDAC) @ length: 008C
 
-	.global gUnk_085CCE38
-gUnk_085CCE38: @ 085CCE38
+	.global AnimScr_EkrMainMini_L_Far
+AnimScr_EkrMainMini_L_Far: @ 085CCE38
 	.incbin "fe6-base.gba", 0x5CCE38, (0x5CCEB8 - 0x5CCE38) @ length: 0080
 
 	.global gUnk_085CCEB8

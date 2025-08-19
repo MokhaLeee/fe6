@@ -105,7 +105,7 @@ void func_fe6_08045DA4(struct ProcEfxFarAttack * proc)
     if (GetEkrDragonStateType() != 0)
         EkrDragonTmCpyExt(proc->unk_32);
 
-    func_fe6_08045EE8(proc->unk_32);
+    BanimSetBg2Position(proc->unk_32);
     proc->timer = 0;
     Proc_Break(proc);
 }
@@ -120,7 +120,7 @@ void func_fe6_08045DDC(struct ProcEfxFarAttack * proc)
     if (GetEkrDragonStateType() != 0)
         EkrDragonTmCpyExt(gEkrBgPosition);
 
-    func_fe6_08045EE8(gEkrBgPosition);
+    BanimSetBg2Position(gEkrBgPosition);
 
     if (GetBattleAnimArenaFlag() != 0)
         func_fe6_0804C50C(gEkrBgPosition);
@@ -144,7 +144,7 @@ void func_fe6_08045E50(struct ProcEfxFarAttack * proc)
     if (GetEkrDragonStateType() != 0)
         EkrDragonTmCpyExt(gEkrBgPosition);
 
-    func_fe6_08045EE8(gEkrBgPosition);
+    BanimSetBg2Position(gEkrBgPosition);
 
     if (GetBattleAnimArenaFlag() != 0)
         func_fe6_0804C50C(gEkrBgPosition);
@@ -164,7 +164,7 @@ void func_fe6_08045E50(struct ProcEfxFarAttack * proc)
     }
 }
 
-void func_fe6_08045EE8(int xPos)
+void BanimSetBg2Position(int xPos)
 {
     u16 * p;
     int a;

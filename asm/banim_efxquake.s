@@ -122,18 +122,18 @@ NewEfxHitQuake: @ 0x080462BC
 	strh r0, [r5, #0x36]
 	movs r0, #0x68
 	strh r0, [r5, #0x3e]
-	ldr r0, .L080463B0 @ =gUnk_085CCE38
+	ldr r0, .L080463B0 @ =AnimScr_EkrMainMini_L_Far
 	b .L080463BE
 	.align 2, 0
 .L080463A8: .4byte gEkrBgPosition
 .L080463AC: .4byte gEkrXPosBase
-.L080463B0: .4byte gUnk_085CCE38
+.L080463B0: .4byte AnimScr_EkrMainMini_L_Far
 .L080463B4:
 	movs r0, #0xb0
 	strh r0, [r5, #0x36]
 	movs r0, #0x68
 	strh r0, [r5, #0x3e]
-	ldr r0, .L080463E4 @ =gUnk_085CCDAC
+	ldr r0, .L080463E4 @ =AnimScr_EkrMainMini_R_Far
 .L080463BE:
 	movs r1, #5
 	bl BasCreate
@@ -153,7 +153,7 @@ NewEfxHitQuake: @ 0x080462BC
 	lsls r0, r0, #6
 	b .L080463F0
 	.align 2, 0
-.L080463E4: .4byte gUnk_085CCDAC
+.L080463E4: .4byte AnimScr_EkrMainMini_R_Far
 .L080463E8: .4byte gUnk_Banim_02017754
 .L080463EC:
 	movs r0, #0xf3
@@ -171,7 +171,7 @@ NewEfxHitQuake: @ 0x080462BC
 	movs r2, #0x80
 	lsls r2, r2, #4
 	bl RegisterDataMove
-	ldr r4, .L0804645C @ =gUnk_Banim_02000044
+	ldr r4, .L0804645C @ =gpBanimTerrainPalette
 	mov r0, sb
 	bl GetAnimPosition
 	lsls r0, r0, #2
@@ -190,10 +190,10 @@ NewEfxHitQuake: @ 0x080462BC
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl func_fe6_0804C478
+	bl BanimCopyBgTM
 	ldr r0, .L08046468 @ =gEkrBgPosition
 	ldr r0, [r0]
-	bl func_fe6_08045EE8
+	bl BanimSetBg2Position
 .L08046446:
 	pop {r3, r4}
 	mov r8, r3
@@ -204,7 +204,7 @@ NewEfxHitQuake: @ 0x080462BC
 	.align 2, 0
 .L08046454: .4byte gUnk_Banim_02000034
 .L08046458: .4byte 0x06011800
-.L0804645C: .4byte gUnk_Banim_02000044
+.L0804645C: .4byte gpBanimTerrainPalette
 .L08046460: .4byte gPal+0x260
 .L08046464: .4byte gEkrDistanceType
 .L08046468: .4byte gEkrBgPosition
@@ -262,7 +262,7 @@ EfxHitQuake_Loop: @ 0x0804646C
 .L080464D6:
 	ldr r0, .L08046580 @ =gEkrBgPosition
 	ldr r0, [r0]
-	bl func_fe6_08045EE8
+	bl BanimSetBg2Position
 .L080464DE:
 	ldr r0, [r6, #0x64]
 	cmp r0, #0

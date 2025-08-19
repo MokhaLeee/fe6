@@ -512,7 +512,7 @@ func_fe6_080444EC: @ 0x080444EC
 .L08044578:
 	ldr r0, .L080445F4 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	ldr r0, .L080445F8 @ =gUnk_Banim_02000044
+	ldr r0, .L080445F8 @ =gpBanimTerrainPalette
 	ldr r1, [r5, #0x10]
 	str r1, [r0]
 	ldr r1, [r3, #0x10]
@@ -570,7 +570,7 @@ func_fe6_080444EC: @ 0x080444EC
 .L080445EC: .4byte gUnk_Banim_02014DC0
 .L080445F0: .4byte 0xFFFFF800
 .L080445F4: .4byte gPlaySt
-.L080445F8: .4byte gUnk_Banim_02000044
+.L080445F8: .4byte gpBanimTerrainPalette
 .L080445FC: .4byte gUnk_Banim_0200003C
 .L08044600: .4byte TsaConfs_BanimTmA
 .L08044604: .4byte gEkrSnowWeather

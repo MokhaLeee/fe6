@@ -110,7 +110,7 @@ SECTIONS
         . = 0x000030; gEkrBg0QuakeVec = .;
         . = 0x000034; gUnk_Banim_02000034 = .;
         . = 0x00003C; gUnk_Banim_0200003C = .;
-        . = 0x000044; gUnk_Banim_02000044 = .;
+        . = 0x000044; gpBanimTerrainPalette = .;
         . = 0x00004C; gpEfxUnitPaletteBackup = .;
         . = 0x000054; gpBanimModesLeft = .;
         . = 0x000058; gpBanimModesRight = .;
@@ -124,8 +124,6 @@ SECTIONS
         . = 0x004080; gBanimPaletteLeft = .;
         . = 0x004120; gBanimPaletteRight = .;
         . = 0x0041C0; gBanimOamBufs = .;
-        . = 0x0099B0; gUnk_Banim_020099B0 = .;
-        . = 0x0099C0; gUnk_Banim_020099C0 = .;
         . = 0x00F1C0; gBanimScrs = .;
         . = 0x0145C0; gUnk_Banim_020145C0 = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
@@ -563,6 +561,7 @@ SECTIONS
         src/banim_main.o(.text);
         src/banim_ekrmain.o(.text);
         asm/banim_ekrmain.o(.text);
+        src/banim_info.o(.text);
         asm/banim_ekrmainmini.o(.text);
         asm/banim_ekrarena.o(.text);
         src/banim_efxmagic.o(.text);

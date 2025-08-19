@@ -751,7 +751,7 @@ func_fe6_08048A64: @ 0x08048A64
 	adds r1, r1, r0
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #8]
-	ldr r2, .L08048BA4 @ =gUnk_Banim_020099C0
+	ldr r2, .L08048BA4 @ =gBanimOamBufs + 0x5800
 	adds r1, r1, r2
 	str r1, [r4, #0x58]
 	ldr r1, .L08048BA8 @ =gUnk_Banim_02002080
@@ -839,7 +839,7 @@ func_fe6_08048A64: @ 0x08048A64
 .L08048B98: .4byte gBanimImgSheetBufs
 .L08048B9C: .4byte gpBanimModesRight
 .L08048BA0: .4byte gBanimScrs + 0x2A00
-.L08048BA4: .4byte gUnk_Banim_020099C0
+.L08048BA4: .4byte gBanimOamBufs + 0x5800
 .L08048BA8: .4byte gUnk_Banim_02002080
 .L08048BAC: .4byte gBanimUnitChgForceImg
 .L08048BB0: .4byte gUnk_Banim_02001080
