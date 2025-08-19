@@ -39,7 +39,7 @@ void LoadAnimFrame(struct Anim *anim, int type)
 	anim->flags2 &= ANIM_BIT2_FRONT_FRAME | ANIM_BIT2_POS_RIGHT | ANIM_BIT2_0400;
 	anim->currentRoundType = type;
 	anim->cqSize = 0;
-	anim->sprDataPool = gBanimOamBufs + GetAnimPosition(anim) * BAS_OAM_REF_MAX_SIZE;
+	anim->sprDataPool = gBanimOamBufs + GetAnimPosition(anim) * BAS_OAM_MAX_SIZE;
 	BasSort();
 }
 

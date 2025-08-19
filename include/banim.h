@@ -291,6 +291,7 @@ extern u32 gUnk_Banim_02017728;
 extern u32 gEkrDeadExist;
 extern u32 gEkrDeadEventExist;
 extern u32 gEfxQuakeExist;
+extern u32 gEfxHitQuakeExist;
 extern i16 gEkrHitNow[];
 extern u8 gSpellAnimBgfx[];
 extern u16 gEkrBarfxBuf[];
@@ -467,9 +468,9 @@ struct ProcEfxQuake {
     /* 44 */ const i16 * vec;
     /* 48 */ int unk_48;
     STRUCT_PAD(0x4C, 0x5C);
-    /* 5C */ struct BaSprite *anim_l;
-    /* 60 */ struct BaSprite *anim_r;
-    /* 64 */ struct BaSprite * unk_64;
+    /* 5C */ struct Anim *anim_l;
+    /* 60 */ struct Anim *anim_r;
+    /* 64 */ struct Anim *unk_64;
 };
 
 #define SetEkrBg2QuakeVec(_x, _y) \
@@ -482,7 +483,7 @@ ProcPtr NewEfxHitQuakePure(void);
 void EfxHitQuakePure_Loop(struct ProcEfxQuake *proc);
 ProcPtr NewEfxQuake(int type);
 void EfxQuake_Loop(struct ProcEfxQuake *proc);
-void NewEfxHitQuake(struct BaSprite *anim1, struct BaSprite *anim2, int kind);
+void NewEfxHitQuake(struct Anim *anim1, struct Anim *anim2, int kind);
 void EfxHitQuake_Loop(struct ProcEfxQuake *proc);
 
 struct ProcEfxFlashing {
@@ -498,14 +499,14 @@ struct ProcEfxFlashing {
 
     STRUCT_PAD(0x32, 0x5C);
 
-    /* 5C */ struct BaSprite *anim;
+    /* 5C */ struct Anim *anim;
 };
 
-void NewEfxFlashBgWhite(struct BaSprite *anim, int duartion);
-void NewEfxFlashBgRed(struct BaSprite *anim, int duartion);
+void NewEfxFlashBgWhite(struct Anim *anim, int duartion);
+void NewEfxFlashBgRed(struct Anim *anim, int duartion);
 void EfxFlashBg_Loop(struct ProcEfxFlashing *proc);
 void EfxFlashRestorePalSync(struct ProcEfxFlashing *proc);
-void NewEfxWhiteIN(struct BaSprite *anim, int duartion, int duartion2);
+void NewEfxWhiteIN(struct Anim *anim, int duartion, int duartion2);
 void EfxWhiteIn_Loop1(struct ProcEfxFlashing *proc);
 void EfxWhiteIn_Loop2(struct ProcEfxFlashing *proc);
 void EfxBlackInRestorePalSync(struct ProcEfxFlashing *proc);
@@ -536,13 +537,13 @@ struct ProcEfxHpBarColorChange {
 
 extern struct ProcEfxHpBarColorChange * gpProcEfxHpBarColorChange;
 
-void NewEfxHpBarColorChange(struct BaSprite *anim);
+void NewEfxHpBarColorChange(struct Anim *anim);
 void EndEfxHPBarColorChange(void);
 void DisableEfxHpBarColorChange(void);
 void EnableEfxHpBarColorChange(void);
 void EfxHpBarColorChange_Loop(struct ProcEfxHpBarColorChange *proc);
 
-void NewEfxFlashUnit(struct BaSprite *anim, u16 dura1, u16 dura2, int c);
+void NewEfxFlashUnit(struct Anim *anim, u16 dura1, u16 dura2, int c);
 void EfxFlashUnit_Loop(struct ProcEfxFlashing *proc);
 void EfxFlashUnit_RestorePal(struct ProcEfxFlashing *proc);
 
@@ -571,12 +572,12 @@ struct ProcEfxStatusUnit {
 
 extern struct ProcEfxStatusUnit * gpProcEfxStatusUnits[2];
 
-void NewEfxStatusUnit(struct BaSprite *anim);
-void EndEfxStatusUnits(struct BaSprite *anim);
-void DisableEfxStatusUnits(struct BaSprite *anim);
-void EnableEfxStatusUnits(struct BaSprite *anim);
-void SetUnitEfxDebuff(struct BaSprite *anim, int debuff);
-u32 GetUnitEfxDebuff(struct BaSprite *anim);
+void NewEfxStatusUnit(struct Anim *anim);
+void EndEfxStatusUnits(struct Anim *anim);
+void DisableEfxStatusUnits(struct Anim *anim);
+void EnableEfxStatusUnits(struct Anim *anim);
+void SetUnitEfxDebuff(struct Anim *anim, int debuff);
+u32 GetUnitEfxDebuff(struct Anim *anim);
 void EfxStatusUnitFlashing(struct Anim *anim, int r, int g, int b);
 void EfxStatusUnit_Loop(struct ProcEfxStatusUnit *proc);
 void EfxStatusUnit_End(struct ProcEfxStatusUnit *proc);
@@ -633,14 +634,14 @@ void SpellFx_SetBG1Position(void);
 void SpellFx_ClearBG1(void);
 void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearColorEffects(void);
-void StartBattleAnimHitEffectsDefault(struct BaSprite *anim, int type);
+void StartBattleAnimHitEffectsDefault(struct Anim *anim, int type);
 void func_fe6_08047610(struct Anim *anim, int type);
-void StartBattleAnimHitEffects(struct BaSprite *anim, int type, int quake_normal, int quake_crit);
-void StartBattleAnimResireHitEffects(struct BaSprite *anim, int type);
-void StartBattleAnimStatusChgHitEffects(struct BaSprite *anim, int type);
-struct BaSprite * EfxCreateFrontAnim(struct BaSprite *anim, const AnimScr * scr1, const AnimScr * scr2, const AnimScr * scr3, const AnimScr * scr4);
+void StartBattleAnimHitEffects(struct Anim *anim, int type, int quake_normal, int quake_crit);
+void StartBattleAnimResireHitEffects(struct Anim *anim, int type);
+void StartBattleAnimStatusChgHitEffects(struct Anim *anim, int type);
+struct Anim * EfxCreateFrontAnim(struct Anim *anim, const AnimScr * scr1, const AnimScr * scr2, const AnimScr * scr3, const AnimScr * scr4);
 void SpellFx_WriteBgMapUncomp(struct Anim *anim, const u16 * src1, const u16 * src2);
-void SpellFx_WriteBgMap(struct BaSprite *anim, const u16 * src1, const u16 * src2);
+void SpellFx_WriteBgMap(struct Anim *anim, const u16 * src1, const u16 * src2);
 void SpellFx_WriteBgMapExt(struct Anim *anim, const u16 * src, int width, int height);
 void SpellFx_RegisterObjGfx(const void * img, u32 size);
 void SpellFx_RegisterObjPal(const u16 * pal, u32 size);
@@ -748,7 +749,7 @@ enum banim_faction_palette_idx {
 
 int GetBanimFactionPalette(u32 faction);
 
-void EkrPrepareBanimfx(struct BaSprite *anim, i16);
+void EkrPrepareBanimfx(struct Anim *anim, i16);
 
 enum anim_round_type {
     ANIM_ROUND_BIT8 = 0x0100,
@@ -779,18 +780,18 @@ void InitMainAnims(void);
 void InitBattleAnimFrame(int round_type_left, int round_type_right);
 void InitLeftAnim(int round_type);
 void InitRightAnim(int round_type);
-void LoadAnimFrame(struct BaSprite *anim, int type);
-int GetAnimLayer(struct BaSprite *anim);
-int GetAnimPosition(struct BaSprite *anim);
+void LoadAnimFrame(struct Anim *anim, int type);
+int GetAnimLayer(struct Anim *anim);
+int GetAnimPosition(struct Anim *anim);
 int CheckRoundMiss(i16 type);
 int CheckRound1(i16 type);
 int CheckRound2(i16 type);
 int CheckRoundCrit(struct Anim *anim);
-struct BaSprite * GetAnimAnotherSide(struct BaSprite *anim);
-i16 GetAnimRoundType(struct BaSprite *anim);
-i16 GetAnimNextRoundType(struct BaSprite *anim);
-i16 GetAnimRoundTypeAnotherSide(struct BaSprite *anim);
-i16 GetAnimNextRoundTypeAnotherSide(struct BaSprite *anim);
+struct Anim * GetAnimAnotherSide(struct Anim *anim);
+i16 GetAnimRoundType(struct Anim *anim);
+i16 GetAnimNextRoundType(struct Anim *anim);
+i16 GetAnimRoundTypeAnotherSide(struct Anim *anim);
+i16 GetAnimNextRoundTypeAnotherSide(struct Anim *anim);
 void SetAnimStateHidden(int pos);
 void SetAnimStateUnHidden(int pos);
 // func_fe6_0804B930
@@ -834,7 +835,7 @@ void func_fe6_0804BF40(struct BanimUnkStructComm *buf); // FE8: sub_805AA68
 // func_fe6_0804C2EC
 // func_fe6_0804C318
 // func_fe6_0804C330
-// BanimCopyBgTM
+void BanimCopyBgTM(i16 distance, i16 pos);
 void SetBanimArenaFlag(int flag);
 int GetBattleAnimArenaFlag(void);
 void func_fe6_0804C50C(int x);
@@ -1380,7 +1381,7 @@ struct ProcEfxDamageMojiEffectOBJ {
     /* 60 */ struct ProcEkrSubAnimeEmulator *sub_proc;
 };
 
-void NewEfxDamageMojiEffect(struct BaSprite *anim, int hitted);
+void NewEfxDamageMojiEffect(struct Anim *anim, int hitted);
 void EfxDamageMojiEffect_Loop(struct ProcEfx *proc);
 void NewEfxDamageMojiEffectOBJ(struct Anim *anim, int hitted);
 void EfxDamageMojiEffectOBJ_Loop(struct ProcEfxDamageMojiEffectOBJ *proc);
