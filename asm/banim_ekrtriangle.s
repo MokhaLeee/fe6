@@ -2,6 +2,45 @@
 
 	.syntax unified
 
+	.section .data
+
+	.global ProcScr_EkrTriangle
+ProcScr_EkrTriangle: @ 08606314
+	.incbin "fe6-base.gba", 0x606314, (0x60632C - 0x606314) @ length: 0018
+
+	.global ProcScr_EkrTriPegasusKnight
+ProcScr_EkrTriPegasusKnight: @ 0860632C
+	.incbin "fe6-base.gba", 0x60632C, (0x606344 - 0x60632C) @ length: 0018
+
+	.global ProcScr_EkrTriPegasusKnightBG
+ProcScr_EkrTriPegasusKnightBG: @ 08606344
+	.incbin "fe6-base.gba", 0x606344, (0x60635C - 0x606344) @ length: 0018
+
+	.global TsaArray_EkrTriPegagusBG
+TsaArray_EkrTriPegagusBG: @ 0860635C
+	.incbin "fe6-base.gba", 0x60635C, (0x606374 - 0x60635C) @ length: 0018
+
+	.global ProcScr_EkrTriPegasusKnightOBJ
+ProcScr_EkrTriPegasusKnightOBJ: @ 08606374
+	.incbin "fe6-base.gba", 0x606374, (0x60638C - 0x606374) @ length: 0018
+
+	.global ProcScr_EkrTriArmorKnight
+ProcScr_EkrTriArmorKnight: @ 0860638C
+	.incbin "fe6-base.gba", 0x60638C, (0x6063A4 - 0x60638C) @ length: 0018
+
+	.global ProcScr_EkrTriArmorKnightOBJ
+ProcScr_EkrTriArmorKnightOBJ: @ 086063A4
+	.incbin "fe6-base.gba", 0x6063A4, (0x6063BC - 0x6063A4) @ length: 0018
+
+	.global ProcScr_EkrTriArmorKnightOBJ2
+ProcScr_EkrTriArmorKnightOBJ2: @ 086063BC
+	.incbin "fe6-base.gba", 0x6063BC, (0x6063DC - 0x6063BC) @ length: 0020
+
+	.global ProcScr_EfxTriangleQUAKE
+ProcScr_EfxTriangleQUAKE: @ 086063DC
+	.incbin "fe6-base.gba", 0x6063DC, (0x6063F4 - 0x6063DC)
+
+	.section .text
 	thumb_func_start CheckEkrTriangleInvalid
 CheckEkrTriangleInvalid: @ 0x0805E560
 	ldr r0, .L0805E56C @ =gEkrTriangleInvalid
@@ -40,8 +79,8 @@ NewEkrTriangle: @ 0x0805E578
 .L0805E594: .4byte ProcScr_EkrTriangle
 .L0805E598: .4byte gEkrTriangleInvalid
 
-	thumb_func_start func_fe6_0805E59C
-func_fe6_0805E59C: @ 0x0805E59C
+	thumb_func_start EkrTriangle_Loop
+EkrTriangle_Loop: @ 0x0805E59C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -193,7 +232,7 @@ func_fe6_0805E59C: @ 0x0805E59C
 	mov r1, sb
 	mov r2, sl
 	mov r3, r8
-	bl func_fe6_0805EA38
+	bl NewEkrTriArmorKnight
 	ldr r0, .L0805E6D0 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	adds r0, #0x4a
@@ -289,7 +328,7 @@ func_fe6_0805E59C: @ 0x0805E59C
 	mov r1, sb
 	mov r2, sl
 	mov r3, r8
-	bl func_fe6_0805E7A0
+	bl NewEkrTriPegasusKnight
 	cmp r5, #0x2a
 	bne .L0805E780
 	ldr r1, .L0805E77C @ =gEkrTriangleInvalid
@@ -315,8 +354,8 @@ func_fe6_0805E59C: @ 0x0805E59C
 	.align 2, 0
 .L0805E79C: .4byte gEkrTriangleInvalid
 
-	thumb_func_start func_fe6_0805E7A0
-func_fe6_0805E7A0: @ 0x0805E7A0
+	thumb_func_start NewEkrTriPegasusKnight
+NewEkrTriPegasusKnight: @ 0x0805E7A0
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -325,7 +364,7 @@ func_fe6_0805E7A0: @ 0x0805E7A0
 	adds r6, r2, #0
 	mov r8, r3
 	ldr r7, [sp, #0x18]
-	ldr r0, .L0805E7D4 @ =gUnk_0860632C
+	ldr r0, .L0805E7D4 @ =ProcScr_EkrTriPegasusKnight
 	movs r1, #3
 	bl SpawnProc
 	str r4, [r0, #0x5c]
@@ -342,10 +381,10 @@ func_fe6_0805E7A0: @ 0x0805E7A0
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805E7D4: .4byte gUnk_0860632C
+.L0805E7D4: .4byte ProcScr_EkrTriPegasusKnight
 
-	thumb_func_start func_fe6_0805E7D8
-func_fe6_0805E7D8: @ 0x0805E7D8
+	thumb_func_start EkrTriPegasusKnight_Loop
+EkrTriPegasusKnight_Loop: @ 0x0805E7D8
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
@@ -362,7 +401,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	ldr r2, [r4, #0x44]
 	ldr r3, [r4, #0x4c]
 	movs r1, #0
-	bl func_fe6_0805E964
+	bl NewEkrTriPegasusKnightOBJ
 .L0805E7FE:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x1c
@@ -378,12 +417,12 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	ldr r3, [r4, #0x4c]
 	adds r0, r5, #0
 	movs r1, #0
-	bl func_fe6_0805E890
+	bl NewEkrTriPegasusKnightBG
 	ldr r0, [r4, #0x5c]
 	ldr r2, [r4, #0x48]
 	ldr r3, [r4, #0x50]
 	movs r1, #1
-	bl func_fe6_0805E964
+	bl NewEkrTriPegasusKnightOBJ
 	movs r0, #0x9a
 	lsls r0, r0, #2
 	movs r1, #0x80
@@ -408,7 +447,7 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	ldr r3, [r4, #0x50]
 	adds r0, r5, #0
 	movs r1, #1
-	bl func_fe6_0805E890
+	bl NewEkrTriPegasusKnightBG
 	movs r0, #0x9a
 	lsls r0, r0, #2
 	movs r1, #0x80
@@ -434,14 +473,14 @@ func_fe6_0805E7D8: @ 0x0805E7D8
 	.align 2, 0
 .L0805E88C: .4byte gEkrTriangleInvalid
 
-	thumb_func_start func_fe6_0805E890
-func_fe6_0805E890: @ 0x0805E890
+	thumb_func_start NewEkrTriPegasusKnightBG
+NewEkrTriPegasusKnightBG: @ 0x0805E890
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r6, r2, #0
 	adds r7, r3, #0
-	ldr r0, .L0805E8B8 @ =gUnk_08606344
+	ldr r0, .L0805E8B8 @ =ProcScr_EkrTriPegasusKnightBG
 	movs r1, #3
 	bl SpawnProc
 	adds r1, r0, #0
@@ -453,19 +492,19 @@ func_fe6_0805E890: @ 0x0805E890
 	bne .L0805E8C4
 	ldr r0, .L0805E8BC @ =gpBanimTriAtkPalettes
 	ldr r2, [r0]
-	ldr r0, .L0805E8C0 @ =gUnk_081CA054
+	ldr r0, .L0805E8C0 @ =FrameArray_EkrTriPegagusBGLeft
 	b .L0805E8CA
 	.align 2, 0
-.L0805E8B8: .4byte gUnk_08606344
+.L0805E8B8: .4byte ProcScr_EkrTriPegasusKnightBG
 .L0805E8BC: .4byte gpBanimTriAtkPalettes
-.L0805E8C0: .4byte gUnk_081CA054
+.L0805E8C0: .4byte FrameArray_EkrTriPegagusBGLeft
 .L0805E8C4:
 	ldr r0, .L0805E900 @ =gpBanimTriAtkPalettes
 	ldr r2, [r0, #4]
-	ldr r0, .L0805E904 @ =gUnk_081CA062
+	ldr r0, .L0805E904 @ =FrameArray_EkrTriPegagusBGRight
 .L0805E8CA:
 	str r0, [r1, #0x48]
-	ldr r0, .L0805E908 @ =gUnk_0860635C
+	ldr r0, .L0805E908 @ =TsaArray_EkrTriPegagusBG
 	str r0, [r1, #0x4c]
 	str r0, [r1, #0x50]
 	ldr r4, .L0805E90C @ =gSpellAnimBgfx
@@ -475,13 +514,13 @@ func_fe6_0805E890: @ 0x0805E890
 	adds r0, r4, #0
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
-	ldr r0, .L0805E910 @ =gUnk_081CA070
+	ldr r0, .L0805E910 @ =Img_TriPegasusKnightBG
 	cmp r6, #0
 	beq .L0805E8F2
-	ldr r0, .L0805E914 @ =gUnk_081CB404
+	ldr r0, .L0805E914 @ =Img_TriFalconKnightSwordBG
 	cmp r7, #0
 	bne .L0805E8F2
-	ldr r0, .L0805E918 @ =gUnk_081CAA14
+	ldr r0, .L0805E918 @ =Img_TriFalconKnightLanceBG
 .L0805E8F2:
 	movs r1, #0x80
 	lsls r1, r1, #6
@@ -491,15 +530,15 @@ func_fe6_0805E890: @ 0x0805E890
 	bx r0
 	.align 2, 0
 .L0805E900: .4byte gpBanimTriAtkPalettes
-.L0805E904: .4byte gUnk_081CA062
-.L0805E908: .4byte gUnk_0860635C
+.L0805E904: .4byte FrameArray_EkrTriPegagusBGRight
+.L0805E908: .4byte TsaArray_EkrTriPegagusBG
 .L0805E90C: .4byte gSpellAnimBgfx
-.L0805E910: .4byte gUnk_081CA070
-.L0805E914: .4byte gUnk_081CB404
-.L0805E918: .4byte gUnk_081CAA14
+.L0805E910: .4byte Img_TriPegasusKnightBG
+.L0805E914: .4byte Img_TriFalconKnightSwordBG
+.L0805E918: .4byte Img_TriFalconKnightLanceBG
 
-	thumb_func_start func_fe6_0805E91C
-func_fe6_0805E91C: @ 0x0805E91C
+	thumb_func_start EfxTriPegasusKnightBG_Loop
+EfxTriPegasusKnightBG_Loop: @ 0x0805E91C
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x2c
@@ -535,8 +574,8 @@ func_fe6_0805E91C: @ 0x0805E91C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805E964
-func_fe6_0805E964: @ 0x0805E964
+	thumb_func_start NewEkrTriPegasusKnightOBJ
+NewEkrTriPegasusKnightOBJ: @ 0x0805E964
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -546,7 +585,7 @@ func_fe6_0805E964: @ 0x0805E964
 	adds r4, r1, #0
 	mov r8, r2
 	mov sb, r3
-	ldr r0, .L0805E998 @ =gUnk_08606374
+	ldr r0, .L0805E998 @ =ProcScr_EkrTriPegasusKnightOBJ
 	movs r1, #3
 	bl SpawnProc
 	adds r5, r0, #0
@@ -559,18 +598,18 @@ func_fe6_0805E964: @ 0x0805E964
 	strh r0, [r5, #0x2e]
 	ldr r0, .L0805E99C @ =gpBanimTriAtkPalettes
 	ldr r6, [r0]
-	ldr r3, .L0805E9A0 @ =gUnk_086068A4
+	ldr r3, .L0805E9A0 @ =AnimScr_TriAtkLeft
 	b .L0805E9AE
 	.align 2, 0
-.L0805E998: .4byte gUnk_08606374
+.L0805E998: .4byte ProcScr_EkrTriPegasusKnightOBJ
 .L0805E99C: .4byte gpBanimTriAtkPalettes
-.L0805E9A0: .4byte gUnk_086068A4
+.L0805E9A0: .4byte AnimScr_TriAtkLeft
 .L0805E9A4:
 	movs r0, #0x11
 	strh r0, [r5, #0x2e]
 	ldr r0, .L0805E9F8 @ =gpBanimTriAtkPalettes
 	ldr r6, [r0, #4]
-	ldr r3, .L0805E9FC @ =gUnk_08606BD8
+	ldr r3, .L0805E9FC @ =AnimScr_TriAtkRight
 .L0805E9AE:
 	str r3, [sp]
 	adds r0, r7, #0
@@ -585,15 +624,15 @@ func_fe6_0805E964: @ 0x0805E964
 	adds r0, r4, #0
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, .L0805EA04 @ =gUnk_081CC428
+	ldr r0, .L0805EA04 @ =Img_TriPegasusKnightOBJ
 	mov r1, r8
 	cmp r1, #0
 	beq .L0805E9E0
-	ldr r0, .L0805EA08 @ =gUnk_081CD7AC
+	ldr r0, .L0805EA08 @ =Img_TriFalconKnightSwordOBJ
 	mov r1, sb
 	cmp r1, #0
 	bne .L0805E9E0
-	ldr r0, .L0805EA0C @ =gUnk_081CCDE0
+	ldr r0, .L0805EA0C @ =Img_TriFalconKnightLanceOBJ
 .L0805E9E0:
 	movs r1, #0x80
 	lsls r1, r1, #5
@@ -607,14 +646,14 @@ func_fe6_0805E964: @ 0x0805E964
 	bx r0
 	.align 2, 0
 .L0805E9F8: .4byte gpBanimTriAtkPalettes
-.L0805E9FC: .4byte gUnk_08606BD8
+.L0805E9FC: .4byte AnimScr_TriAtkRight
 .L0805EA00: .4byte gBuf_Banim
-.L0805EA04: .4byte gUnk_081CC428
-.L0805EA08: .4byte gUnk_081CD7AC
-.L0805EA0C: .4byte gUnk_081CCDE0
+.L0805EA04: .4byte Img_TriPegasusKnightOBJ
+.L0805EA08: .4byte Img_TriFalconKnightSwordOBJ
+.L0805EA0C: .4byte Img_TriFalconKnightLanceOBJ
 
-	thumb_func_start func_fe6_0805EA10
-func_fe6_0805EA10: @ 0x0805EA10
+	thumb_func_start EkrTriPegasusKnightOBJ_Loop
+EkrTriPegasusKnightOBJ_Loop: @ 0x0805EA10
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0x2c]
@@ -635,8 +674,8 @@ func_fe6_0805EA10: @ 0x0805EA10
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805EA38
-func_fe6_0805EA38: @ 0x0805EA38
+	thumb_func_start NewEkrTriArmorKnight
+NewEkrTriArmorKnight: @ 0x0805EA38
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -645,7 +684,7 @@ func_fe6_0805EA38: @ 0x0805EA38
 	adds r6, r2, #0
 	mov r8, r3
 	ldr r7, [sp, #0x18]
-	ldr r0, .L0805EA6C @ =gUnk_0860638C
+	ldr r0, .L0805EA6C @ =ProcScr_EkrTriArmorKnight
 	movs r1, #3
 	bl SpawnProc
 	str r4, [r0, #0x5c]
@@ -662,10 +701,10 @@ func_fe6_0805EA38: @ 0x0805EA38
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805EA6C: .4byte gUnk_0860638C
+.L0805EA6C: .4byte ProcScr_EkrTriArmorKnight
 
-	thumb_func_start func_fe6_0805EA70
-func_fe6_0805EA70: @ 0x0805EA70
+	thumb_func_start EkrTriArmorKnight_Loop
+EkrTriArmorKnight_Loop: @ 0x0805EA70
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -682,7 +721,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	ldr r3, [r5, #0x4c]
 	ldr r4, [r5, #0x50]
 	str r4, [sp]
-	bl func_fe6_0805EB40
+	bl NewEkrTriArmorKnightOBJ
 	movs r1, #0x80
 	lsls r1, r1, #1
 	ldr r0, [r5, #0x5c]
@@ -699,7 +738,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	ldr r2, [r5, #0x44]
 	ldr r3, [r5, #0x4c]
 	movs r1, #0
-	bl func_fe6_0805ED1C
+	bl NewEkrTriArmorKnightOBJ2
 	movs r1, #0x80
 	lsls r1, r1, #1
 	ldr r0, [r5, #0x5c]
@@ -717,7 +756,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	bl NewEfxFlashBgWhite
 	ldr r0, [r5, #0x5c]
 	movs r1, #0xa
-	bl func_fe6_0805EE9C
+	bl NewEfxTriangleQUAKE
 .L0805EAE0:
 	ldrh r3, [r5, #0x2c]
 	cmp r3, #0x4f
@@ -726,7 +765,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	ldr r2, [r5, #0x48]
 	ldr r3, [r5, #0x50]
 	movs r1, #1
-	bl func_fe6_0805ED1C
+	bl NewEkrTriArmorKnightOBJ2
 	movs r1, #0x80
 	lsls r1, r1, #1
 	ldr r0, [r5, #0x5c]
@@ -751,7 +790,7 @@ func_fe6_0805EA70: @ 0x0805EA70
 	bl NewEfxFlashBgWhite
 	ldr r0, [r5, #0x5c]
 	movs r1, #0xa
-	bl func_fe6_0805EE9C
+	bl NewEfxTriangleQUAKE
 .L0805EB26:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x78
@@ -766,8 +805,8 @@ func_fe6_0805EA70: @ 0x0805EA70
 	.align 2, 0
 .L0805EB3C: .4byte gEkrTriangleInvalid
 
-	thumb_func_start func_fe6_0805EB40
-func_fe6_0805EB40: @ 0x0805EB40
+	thumb_func_start NewEkrTriArmorKnightOBJ
+NewEkrTriArmorKnightOBJ: @ 0x0805EB40
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -777,7 +816,7 @@ func_fe6_0805EB40: @ 0x0805EB40
 	adds r4, r1, #0
 	mov sb, r2
 	adds r6, r3, #0
-	ldr r0, .L0805EB78 @ =gUnk_086063A4
+	ldr r0, .L0805EB78 @ =ProcScr_EkrTriArmorKnightOBJ
 	movs r1, #3
 	bl SpawnProc
 	adds r5, r0, #0
@@ -791,35 +830,35 @@ func_fe6_0805EB40: @ 0x0805EB40
 	ldr r7, [r0]
 	cmp r4, #0
 	bne .L0805EB88
-	ldr r3, .L0805EB80 @ =gUnk_08606C70
-	ldr r6, .L0805EB84 @ =gUnk_081CE154
+	ldr r3, .L0805EB80 @ =AnimScr_TriKnightOBJ
+	ldr r6, .L0805EB84 @ =Img_TriKnightOBJ
 	b .L0805EBB4
 	.align 2, 0
-.L0805EB78: .4byte gUnk_086063A4
+.L0805EB78: .4byte ProcScr_EkrTriArmorKnightOBJ
 .L0805EB7C: .4byte gpBanimTriAtkPalettes
-.L0805EB80: .4byte gUnk_08606C70
-.L0805EB84: .4byte gUnk_081CE154
+.L0805EB80: .4byte AnimScr_TriKnightOBJ
+.L0805EB84: .4byte Img_TriKnightOBJ
 .L0805EB88:
 	cmp r6, #1
 	beq .L0805EBA0
 	cmp r6, #1
 	bhs .L0805EBB0
-	ldr r3, .L0805EB98 @ =gUnk_08606D00
-	ldr r6, .L0805EB9C @ =gUnk_081CE474
+	ldr r3, .L0805EB98 @ =AnimScr_TriGenerialLanceOBJ
+	ldr r6, .L0805EB9C @ =Img_TriGenerialLanceOBJ
 	b .L0805EBB4
 	.align 2, 0
-.L0805EB98: .4byte gUnk_08606D00
-.L0805EB9C: .4byte gUnk_081CE474
+.L0805EB98: .4byte AnimScr_TriGenerialLanceOBJ
+.L0805EB9C: .4byte Img_TriGenerialLanceOBJ
 .L0805EBA0:
-	ldr r3, .L0805EBA8 @ =gUnk_08606D90
-	ldr r6, .L0805EBAC @ =gUnk_081CE848
+	ldr r3, .L0805EBA8 @ =AnimScr_TriGenerialAxeOBJ
+	ldr r6, .L0805EBAC @ =Img_TriGenerialAxeOBJ
 	b .L0805EBB4
 	.align 2, 0
-.L0805EBA8: .4byte gUnk_08606D90
-.L0805EBAC: .4byte gUnk_081CE848
+.L0805EBA8: .4byte AnimScr_TriGenerialAxeOBJ
+.L0805EBAC: .4byte Img_TriGenerialAxeOBJ
 .L0805EBB0:
-	ldr r3, .L0805EBF4 @ =gUnk_08606E1C
-	ldr r6, .L0805EBF8 @ =gUnk_081CEC7C
+	ldr r3, .L0805EBF4 @ =AnimScr_TriGenerialHandAxeOBJ
+	ldr r6, .L0805EBF8 @ =Img_TriGenerialHandAxeOBJ
 .L0805EBB4:
 	str r3, [sp]
 	mov r0, r8
@@ -846,40 +885,40 @@ func_fe6_0805EB40: @ 0x0805EB40
 	mov r0, sb
 	cmp r0, #0
 	bne .L0805EC14
-	ldr r3, .L0805EC0C @ =gUnk_08606C70
-	ldr r6, .L0805EC10 @ =gUnk_081CE154
+	ldr r3, .L0805EC0C @ =AnimScr_TriKnightOBJ
+	ldr r6, .L0805EC10 @ =Img_TriKnightOBJ
 	b .L0805EC40
 	.align 2, 0
-.L0805EBF4: .4byte gUnk_08606E1C
-.L0805EBF8: .4byte gUnk_081CEC7C
+.L0805EBF4: .4byte AnimScr_TriGenerialHandAxeOBJ
+.L0805EBF8: .4byte Img_TriGenerialHandAxeOBJ
 .L0805EBFC: .4byte 0x00008840
 .L0805EC00: .4byte gBuf_Banim
 .L0805EC04: .4byte gPal+0x300
 .L0805EC08: .4byte gpBanimTriAtkPalettes
-.L0805EC0C: .4byte gUnk_08606C70
-.L0805EC10: .4byte gUnk_081CE154
+.L0805EC0C: .4byte AnimScr_TriKnightOBJ
+.L0805EC10: .4byte Img_TriKnightOBJ
 .L0805EC14:
 	ldr r0, [sp, #0x20]
 	cmp r0, #1
 	beq .L0805EC2C
 	cmp r0, #1
 	bhs .L0805EC3C
-	ldr r3, .L0805EC24 @ =gUnk_08606D00
-	ldr r6, .L0805EC28 @ =gUnk_081CE474
+	ldr r3, .L0805EC24 @ =AnimScr_TriGenerialLanceOBJ
+	ldr r6, .L0805EC28 @ =Img_TriGenerialLanceOBJ
 	b .L0805EC40
 	.align 2, 0
-.L0805EC24: .4byte gUnk_08606D00
-.L0805EC28: .4byte gUnk_081CE474
+.L0805EC24: .4byte AnimScr_TriGenerialLanceOBJ
+.L0805EC28: .4byte Img_TriGenerialLanceOBJ
 .L0805EC2C:
-	ldr r3, .L0805EC34 @ =gUnk_08606D90
-	ldr r6, .L0805EC38 @ =gUnk_081CE848
+	ldr r3, .L0805EC34 @ =AnimScr_TriGenerialAxeOBJ
+	ldr r6, .L0805EC38 @ =Img_TriGenerialAxeOBJ
 	b .L0805EC40
 	.align 2, 0
-.L0805EC34: .4byte gUnk_08606D90
-.L0805EC38: .4byte gUnk_081CE848
+.L0805EC34: .4byte AnimScr_TriGenerialAxeOBJ
+.L0805EC38: .4byte Img_TriGenerialAxeOBJ
 .L0805EC3C:
-	ldr r3, .L0805ECA8 @ =gUnk_08606E1C
-	ldr r6, .L0805ECAC @ =gUnk_081CEC7C
+	ldr r3, .L0805ECA8 @ =AnimScr_TriGenerialHandAxeOBJ
+	ldr r6, .L0805ECAC @ =Img_TriGenerialHandAxeOBJ
 .L0805EC40:
 	str r3, [sp]
 	mov r0, r8
@@ -927,16 +966,16 @@ func_fe6_0805EB40: @ 0x0805EB40
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805ECA8: .4byte gUnk_08606E1C
-.L0805ECAC: .4byte gUnk_081CEC7C
+.L0805ECA8: .4byte AnimScr_TriGenerialHandAxeOBJ
+.L0805ECAC: .4byte Img_TriGenerialHandAxeOBJ
 .L0805ECB0: .4byte 0x0000A880
 .L0805ECB4: .4byte gBuf_Banim + 0x800
 .L0805ECB8: .4byte gPal+0x340
 .L0805ECBC: .4byte 0x06010800
 .L0805ECC0: .4byte 0xFFFFF800
 
-	thumb_func_start func_fe6_0805ECC4
-func_fe6_0805ECC4: @ 0x0805ECC4
+	thumb_func_start EkrTriArmorKnightOBJ_Loop
+EkrTriArmorKnightOBJ_Loop: @ 0x0805ECC4
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -979,8 +1018,8 @@ func_fe6_0805ECC4: @ 0x0805ECC4
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805ED1C
-func_fe6_0805ED1C: @ 0x0805ED1C
+	thumb_func_start NewEkrTriArmorKnightOBJ2
+NewEkrTriArmorKnightOBJ2: @ 0x0805ED1C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -990,7 +1029,7 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	adds r5, r1, #0
 	adds r6, r2, #0
 	adds r7, r3, #0
-	ldr r0, .L0805ED58 @ =gUnk_086063BC
+	ldr r0, .L0805ED58 @ =ProcScr_EkrTriArmorKnightOBJ2
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -1011,7 +1050,7 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	ldr r0, [r0]
 	b .L0805ED64
 	.align 2, 0
-.L0805ED58: .4byte gUnk_086063BC
+.L0805ED58: .4byte ProcScr_EkrTriArmorKnightOBJ2
 .L0805ED5C: .4byte gpBanimTriAtkPalettes
 .L0805ED60:
 	ldr r0, .L0805ED70 @ =gpBanimTriAtkPalettes
@@ -1020,34 +1059,34 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	mov sb, r0
 	cmp r6, #0
 	bne .L0805ED7C
-	ldr r3, .L0805ED74 @ =gUnk_08606F0C
-	ldr r6, .L0805ED78 @ =gUnk_081CF03C
+	ldr r3, .L0805ED74 @ =AnimScr_TriKnightAtkOBJ
+	ldr r6, .L0805ED78 @ =Img_TriKnightAtkOBJ
 	b .L0805EDA8
 	.align 2, 0
 .L0805ED70: .4byte gpBanimTriAtkPalettes
-.L0805ED74: .4byte gUnk_08606F0C
-.L0805ED78: .4byte gUnk_081CF03C
+.L0805ED74: .4byte AnimScr_TriKnightAtkOBJ
+.L0805ED78: .4byte Img_TriKnightAtkOBJ
 .L0805ED7C:
 	cmp r7, #1
 	beq .L0805ED94
 	cmp r7, #1
 	bhs .L0805EDA4
-	ldr r3, .L0805ED8C @ =gUnk_08607084
-	ldr r6, .L0805ED90 @ =gUnk_081CF574
+	ldr r3, .L0805ED8C @ =AnimScr_TriGenerialLanceAtkOBJ
+	ldr r6, .L0805ED90 @ =Img_TriGenerialLanceAtkOBJ
 	b .L0805EDA8
 	.align 2, 0
-.L0805ED8C: .4byte gUnk_08607084
-.L0805ED90: .4byte gUnk_081CF574
+.L0805ED8C: .4byte AnimScr_TriGenerialLanceAtkOBJ
+.L0805ED90: .4byte Img_TriGenerialLanceAtkOBJ
 .L0805ED94:
-	ldr r3, .L0805ED9C @ =gUnk_086071D8
-	ldr r6, .L0805EDA0 @ =gUnk_081CFCB0
+	ldr r3, .L0805ED9C @ =AnimScr_TriGenerialAxeAtkOBJ
+	ldr r6, .L0805EDA0 @ =Img_TriGenerialAxeAtkOBJ
 	b .L0805EDA8
 	.align 2, 0
-.L0805ED9C: .4byte gUnk_086071D8
-.L0805EDA0: .4byte gUnk_081CFCB0
+.L0805ED9C: .4byte AnimScr_TriGenerialAxeAtkOBJ
+.L0805EDA0: .4byte Img_TriGenerialAxeAtkOBJ
 .L0805EDA4:
-	ldr r3, .L0805EDD4 @ =gUnk_086074A0
-	ldr r6, .L0805EDD8 @ =gUnk_081D043C
+	ldr r3, .L0805EDD4 @ =AnimScr_TriGenerialHandAxeAtkOBJ
+	ldr r6, .L0805EDD8 @ =Img_TriGenerialHandAxeAtkOBJ
 .L0805EDA8:
 	str r3, [sp]
 	mov r0, r8
@@ -1070,8 +1109,8 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	adds r1, #0x10
 	b .L0805EDF2
 	.align 2, 0
-.L0805EDD4: .4byte gUnk_086074A0
-.L0805EDD8: .4byte gUnk_081D043C
+.L0805EDD4: .4byte AnimScr_TriGenerialHandAxeAtkOBJ
+.L0805EDD8: .4byte Img_TriGenerialHandAxeAtkOBJ
 .L0805EDDC:
 	ldrh r0, [r1, #4]
 	adds r0, #2
@@ -1111,8 +1150,8 @@ func_fe6_0805ED1C: @ 0x0805ED1C
 	.align 2, 0
 .L0805EE28: .4byte gBuf_Banim
 
-	thumb_func_start func_fe6_0805EE2C
-func_fe6_0805EE2C: @ 0x0805EE2C
+	thumb_func_start EkrTriArmorKnightOBJ2_Loop1
+EkrTriArmorKnightOBJ2_Loop1: @ 0x0805EE2C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -1149,8 +1188,8 @@ func_fe6_0805EE2C: @ 0x0805EE2C
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0805EE74
-func_fe6_0805EE74: @ 0x0805EE74
+	thumb_func_start EkrTriArmorKnightOBJ2_Loop2
+EkrTriArmorKnightOBJ2_Loop2: @ 0x0805EE74
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0x2c]
@@ -1171,8 +1210,8 @@ func_fe6_0805EE74: @ 0x0805EE74
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805EE9C
-func_fe6_0805EE9C: @ 0x0805EE9C
+	thumb_func_start NewEfxTriangleQUAKE
+NewEfxTriangleQUAKE: @ 0x0805EE9C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
@@ -1180,7 +1219,7 @@ func_fe6_0805EE9C: @ 0x0805EE9C
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, .L0805EED0 @ =gUnk_086063DC
+	ldr r0, .L0805EED0 @ =ProcScr_EfxTriangleQUAKE
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -1197,10 +1236,10 @@ func_fe6_0805EE9C: @ 0x0805EE9C
 	bx r0
 	.align 2, 0
 .L0805EECC: .4byte gEfxBgSemaphore
-.L0805EED0: .4byte gUnk_086063DC
+.L0805EED0: .4byte ProcScr_EfxTriangleQUAKE
 
-	thumb_func_start func_fe6_0805EED4
-func_fe6_0805EED4: @ 0x0805EED4
+	thumb_func_start EfxTriangleQUAKE_Loop
+EfxTriangleQUAKE_Loop: @ 0x0805EED4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1250,7 +1289,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl func_fe6_08044230
+	bl EkrDispUP_SetPositionSync
 	bl GetEkrDragonStateType
 	cmp r0, #0
 	beq .L0805EF58
@@ -1339,7 +1378,7 @@ func_fe6_0805EED4: @ 0x0805EED4
 	rsbs r1, r6, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl func_fe6_08044230
+	bl EkrDispUP_SetPositionSync
 	bl GetEkrDragonStateType
 	cmp r0, #0
 	beq .L0805F012

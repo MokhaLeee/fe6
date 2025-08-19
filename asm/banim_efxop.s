@@ -397,9 +397,9 @@ NewEfxopFireBG: @ 0x080581C0
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	str r0, [r4, #0x44]
-	ldr r0, .L08058210 @ =FrameLut_EfxopFireBG
+	ldr r0, .L08058210 @ =FrameArray_EfxopFireBG
 	str r0, [r4, #0x48]
-	ldr r0, .L08058214 @ =TsaLut_EfxopFireBG
+	ldr r0, .L08058214 @ =TsaArray_EfxopFireBG
 	str r0, [r4, #0x4c]
 	ldr r1, .L08058218 @ =Pal_EfxFireBG
 	adds r0, r5, #0
@@ -417,8 +417,8 @@ NewEfxopFireBG: @ 0x080581C0
 	bx r0
 	.align 2, 0
 .L0805820C: .4byte ProcScr_EfxopFireBG
-.L08058210: .4byte FrameLut_EfxopFireBG
-.L08058214: .4byte TsaLut_EfxopFireBG
+.L08058210: .4byte FrameArray_EfxopFireBG
+.L08058214: .4byte TsaArray_EfxopFireBG
 .L08058218: .4byte Pal_EfxFireBG
 .L0805821C: .4byte Img_EfxFireBG
 
@@ -589,9 +589,9 @@ NewEfxopThunderBG: @ 0x08058358
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	str r0, [r4, #0x44]
-	ldr r0, .L080583A4 @ =FrameLut_EfxopThunderBG
+	ldr r0, .L080583A4 @ =FrameArray_EfxopThunderBG
 	str r0, [r4, #0x48]
-	ldr r0, .L080583A8 @ =TsaLut_EfxopThunderBG
+	ldr r0, .L080583A8 @ =TsaArray_EfxopThunderBG
 	str r0, [r4, #0x4c]
 	ldr r1, .L080583AC @ =Pal_EfxThunderBGCOL
 	adds r0, r5, #0
@@ -609,8 +609,8 @@ NewEfxopThunderBG: @ 0x08058358
 	bx r0
 	.align 2, 0
 .L080583A0: .4byte ProcScr_EfxopThunderBG
-.L080583A4: .4byte FrameLut_EfxopThunderBG
-.L080583A8: .4byte TsaLut_EfxopThunderBG
+.L080583A4: .4byte FrameArray_EfxopThunderBG
+.L080583A8: .4byte TsaArray_EfxopThunderBG
 .L080583AC: .4byte Pal_EfxThunderBGCOL
 .L080583B0: .4byte Img_EfxThunderBG
 
@@ -693,7 +693,7 @@ NewEfxopThunderBGCOL: @ 0x08058438
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	str r0, [r4, #0x44]
-	ldr r0, .L08058464 @ =FrameLut_EfxopThunderBGCOL
+	ldr r0, .L08058464 @ =FrameArray_EfxopThunderBGCOL
 	str r0, [r4, #0x48]
 	ldr r0, .L08058468 @ =Pal_EfxThunderBGCOL
 	str r0, [r4, #0x4c]
@@ -702,7 +702,7 @@ NewEfxopThunderBGCOL: @ 0x08058438
 	bx r0
 	.align 2, 0
 .L08058460: .4byte ProcScr_EfxopThunderBGCOL
-.L08058464: .4byte FrameLut_EfxopThunderBGCOL
+.L08058464: .4byte FrameArray_EfxopThunderBGCOL
 .L08058468: .4byte Pal_EfxThunderBGCOL
 
 	thumb_func_start EfxopThunderBGCOL_Loop

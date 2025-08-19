@@ -193,7 +193,7 @@ SECTIONS
         . = 0x01E3E4; gpBg1ScrollOffsetList1 = .;
         . = 0x01E524; gpBg1ScrollOffsetList2 = .;
         . = 0x01E7A4; gEfxMagicChk_N = .;
-        . = 0x01E7A8; gUnk_Banim_0201E7A8 = .;
+        . = 0x01E7A8; gEfxPurgeCounter = .;
         . = 0x01E7AC; EkrDragonProcs = .;
         . = 0x01E7B4; gEkrDragonDeamonProcs = .;
         . = 0x01E7BC; gpProcEkrIdunnBodyFlashing = .;
@@ -831,7 +831,10 @@ SECTIONS
         . = ALIGN(4); asm/banim_ekrclasschg.o(.data);
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
         . = ALIGN(4); asm/banim_ekrlvup.o(.data);
-        . = ALIGN(4); data/data-code-banim2.o(.data);
+        . = ALIGN(4); asm/banim_ekrtriangle.o(.data);
+        . = ALIGN(4); src/banim_ekrtriangle_data.o(.data);
+        . = ALIGN(4); src/banim_bg.o(.data);
+        . = ALIGN(4); src/banim_ekrpopup_data.o(.data);
         . = ALIGN(4); src/banim_ekrpopup.o(.data);
         . = ALIGN(4); src/gamedata.o(.data);
         . = ALIGN(4), data/data-portrait.o(.data);

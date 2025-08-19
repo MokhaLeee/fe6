@@ -530,7 +530,7 @@ void EkrManaketeDeamon_Loop(struct ProcEkrDragonDeamon * proc)
     case 0:
         proc->timer = 0;
         proc->frame = 0;
-        proc->conf = FrameLut_EkrManaketefxNormalAttack;
+        proc->conf = FrameArray_EkrManaketefxNormalAttack;
         proc->pal = Pal_EkrManaketefx;
         proc->fxtype = 2;
         break;
@@ -539,7 +539,7 @@ void EkrManaketeDeamon_Loop(struct ProcEkrDragonDeamon * proc)
     case 1:
         proc->timer = 0;
         proc->frame = 0;
-        proc->conf = FrameLut_EkrManaketefxCriticalAttack;
+        proc->conf = FrameArray_EkrManaketefxCriticalAttack;
         proc->pal = Pal_EkrManaketefx;
         proc->fxtype = 2;
         break;

@@ -14,8 +14,8 @@ ProcScr_EfxopFire: @ 085D3924
 ProcScr_EfxopFireBG: @ 085D394C
 	.incbin "fe6-base.gba", 0x5D394C, (0x5D3964 - 0x5D394C) @ length: 0018
 
-	.global TsaLut_EfxopFireBG
-TsaLut_EfxopFireBG: @ 085D3964
+	.global TsaArray_EfxopFireBG
+TsaArray_EfxopFireBG: @ 085D3964
 	.incbin "fe6-base.gba", 0x5D3964, (0x5D3994 - 0x5D3964) @ length: 0030
 
 	.global ProcScr_EfxopFireOBJ
@@ -30,8 +30,8 @@ ProcScr_EfxopThunder: @ 085D39AC
 ProcScr_EfxopThunderBG: @ 085D39D4
 	.incbin "fe6-base.gba", 0x5D39D4, (0x5D39EC - 0x5D39D4) @ length: 0018
 
-	.global TsaLut_EfxopThunderBG
-TsaLut_EfxopThunderBG: @ 085D39EC
+	.global TsaArray_EfxopThunderBG
+TsaArray_EfxopThunderBG: @ 085D39EC
 	.incbin "fe6-base.gba", 0x5D39EC, (0x5D39F4 - 0x5D39EC) @ length: 0008
 
 	.global ProcScr_EfxopThunderBGCOL

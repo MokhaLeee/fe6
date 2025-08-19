@@ -95,8 +95,8 @@ func_fe6_0804421C: @ 0x0804421C
 	.align 2, 0
 .L0804422C: .4byte gpProcEkrDispUP
 
-	thumb_func_start func_fe6_08044230
-func_fe6_08044230: @ 0x08044230
+	thumb_func_start EkrDispUP_SetPositionSync
+EkrDispUP_SetPositionSync: @ 0x08044230
 	ldr r2, .L08044240 @ =gpProcEkrDispUP
 	ldr r2, [r2]
 	strh r0, [r2, #0x32]

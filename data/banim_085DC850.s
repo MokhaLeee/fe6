@@ -4,8 +4,8 @@
 
 	.incbin "fe6-base.gba", 0x5E59E8, (0x5E5C10 - 0x5E59E8) @ length: 03B8
 
-	.global gUnk_085E5C10
-gUnk_085E5C10: @ 085E5C10
+	.global AnimScr_EfxForblazeOBJ2
+AnimScr_EfxForblazeOBJ2: @ 085E5C10
 	.incbin "fe6-base.gba", 0x5E5C10, (0x5E5C2C - 0x5E5C10) @ length: 001C
 
 	.global gUnk_085E5C2C
@@ -56,32 +56,32 @@ AnimScr_EfxAlacaliburOBJ_LF: @ 085EA7F0
 AnimScr_EfxAlacaliburOBJ_LB: @ 085EA8A4
 	.incbin "fe6-base.gba", 0x5EA8A4, (0x5EABC0 - 0x5EA8A4) @ length: 031C
 
-	.global gUnk_085EABC0
-gUnk_085EABC0: @ 085EABC0
+	.global AnimScr_EfxMistyrainOBJ1_1
+AnimScr_EfxMistyrainOBJ1_1: @ 085EABC0
 	.incbin "fe6-base.gba", 0x5EABC0, (0x5EAC34 - 0x5EABC0) @ length: 0074
 
 	.global gUnk_085EAC34
 gUnk_085EAC34: @ 085EAC34
 	.incbin "fe6-base.gba", 0x5EAC34, (0x5EADB0 - 0x5EAC34) @ length: 017C
 
-	.global gUnk_085EADB0
-gUnk_085EADB0: @ 085EADB0
+	.global AnimScr_EfxMistyrainOBJ1_2
+AnimScr_EfxMistyrainOBJ1_2: @ 085EADB0
 	.incbin "fe6-base.gba", 0x5EADB0, (0x5EB1A8 - 0x5EADB0) @ length: 03F8
 
-	.global gUnk_085EB1A8
-gUnk_085EB1A8: @ 085EB1A8
+	.global AnimScr_EfxMistyrainOBJ2_1
+AnimScr_EfxMistyrainOBJ2_1: @ 085EB1A8
 	.incbin "fe6-base.gba", 0x5EB1A8, (0x5EB1DC - 0x5EB1A8) @ length: 0034
 
-	.global gUnk_085EB1DC
-gUnk_085EB1DC: @ 085EB1DC
+	.global AnimScr_EfxMistyrainOBJ2_2
+AnimScr_EfxMistyrainOBJ2_2: @ 085EB1DC
 	.incbin "fe6-base.gba", 0x5EB1DC, (0x5EB264 - 0x5EB1DC) @ length: 0088
 
-	.global gUnk_085EB264
-gUnk_085EB264: @ 085EB264
+	.global AnimScr_EfxMistyrainOBJ1_3
+AnimScr_EfxMistyrainOBJ1_3: @ 085EB264
 	.incbin "fe6-base.gba", 0x5EB264, (0x5EB83C - 0x5EB264) @ length: 05D8
 
-	.global gUnk_085EB83C
-gUnk_085EB83C: @ 085EB83C
+	.global AnimScr_EfxDivineOBJ
+AnimScr_EfxDivineOBJ: @ 085EB83C
 	.incbin "fe6-base.gba", 0x5EB83C, (0x5EBF40 - 0x5EB83C) @ length: 0704
 
 	.global gUnk_085EBF40
@@ -128,8 +128,8 @@ gUnk_085ED8F8: @ 085ED8F8
 gUnk_085ED924: @ 085ED924
 	.incbin "fe6-base.gba", 0x5ED924, (0x5EDCC8 - 0x5ED924) @ length: 03A4
 
-	.global gUnk_085EDCC8
-gUnk_085EDCC8: @ 085EDCC8
+	.global AnimScr_EfxPurgeOBJ
+AnimScr_EfxPurgeOBJ: @ 085EDCC8
 	.incbin "fe6-base.gba", 0x5EDCC8, (0x5F0A14 - 0x5EDCC8) @ length: 2D4C
 
 	.global gUnk_085F0A14

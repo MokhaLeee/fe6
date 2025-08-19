@@ -18,7 +18,7 @@ void SpellFx_Finish(void)
     gEfxSpellAnimExists = false;
 }
 
-void SpellFx_SetBG1Position(void)
+void SpellFx_ClearBG1Position(void)
 {
     SetBgOffset(BG_1, 0, 0);
 }

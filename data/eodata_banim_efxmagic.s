@@ -1,75 +1,43 @@
 	.section .rodata
 
-	.global FrameConf_EfxFimbulvetrBGTR
-FrameConf_EfxFimbulvetrBGTR: @ 08119FFC
-	.incbin "fe6-base.gba", 0x119FFC, (0x11A06A - 0x119FFC) @ length: 006E
-
-	.global FrameConf_EfxFimbulvetrBG
-FrameConf_EfxFimbulvetrBG: @ 0811A06A
-	.incbin "fe6-base.gba", 0x11A06A, (0x11A098 - 0x11A06A) @ length: 002E
-
-	.global FrameConf_EfxThunderstormBG
-FrameConf_EfxThunderstormBG: @ 0811A098
-	.incbin "fe6-base.gba", 0x11A098, (0x11A0DE - 0x11A098) @ length: 0046
-
-	.global FrameConf_EfxAlacaliburBG
-FrameConf_EfxAlacaliburBG: @ 0811A0DE
-	.incbin "fe6-base.gba", 0x11A0DE, (0x11A0E8 - 0x11A0DE) @ length: 000A
-
-	.global FrameConf_EfxAlacaliburBGCOL
-FrameConf_EfxAlacaliburBGCOL: @ 0811A0E8
-	.incbin "fe6-base.gba", 0x11A0E8, (0x11A102 - 0x11A0E8) @ length: 001A
-
-	.global gUnk_0811A102
-gUnk_0811A102: @ 0811A102
-	.incbin "fe6-base.gba", 0x11A102, (0x11A134 - 0x11A102) @ length: 0032
-
-	.global gUnk_0811A134
-gUnk_0811A134: @ 0811A134
-	.incbin "fe6-base.gba", 0x11A134, (0x11A1AA - 0x11A134) @ length: 0076
-
-	.global gUnk_0811A1AA
-gUnk_0811A1AA: @ 0811A1AA
-	.incbin "fe6-base.gba", 0x11A1AA, (0x11A218 - 0x11A1AA) @ length: 006E
-
 	.global gUnk_0811A218
 gUnk_0811A218: @ 0811A218
 	.incbin "fe6-base.gba", 0x11A218, (0x11A276 - 0x11A218) @ length: 005E
 
-	.global gUnk_0811A276
-gUnk_0811A276: @ 0811A276
+	.global FrameConf_EfxResireBG2
+FrameConf_EfxResireBG2: @ 0811A276
 	.incbin "fe6-base.gba", 0x11A276, (0x11A27C - 0x11A276) @ length: 0006
 
-	.global gUnk_0811A27C
-gUnk_0811A27C: @ 0811A27C
+	.global FrameConf_EfxLightningBG
+FrameConf_EfxLightningBG: @ 0811A27C
 	.incbin "fe6-base.gba", 0x11A27C, (0x11A302 - 0x11A27C) @ length: 0086
 
-	.global gUnk_0811A302
-gUnk_0811A302: @ 0811A302
+	.global FrameArray_EfxPurgeBG
+FrameArray_EfxPurgeBG: @ 0811A302
 	.incbin "fe6-base.gba", 0x11A302, (0x11A478 - 0x11A302) @ length: 0176
 
 	.global FrameConf_EfxForblazeBG1
 FrameConf_EfxForblazeBG1: @ 0811A478
 	.incbin "fe6-base.gba", 0x11A478, (0x11A50E - 0x11A478) @ length: 0096
 
-	.global gUnk_0811A50E
-gUnk_0811A50E: @ 0811A50E
+	.global FrameArray_EfxForblazeBGCOL1
+FrameArray_EfxForblazeBGCOL1: @ 0811A50E
 	.incbin "fe6-base.gba", 0x11A50E, (0x11A520 - 0x11A50E) @ length: 0012
 
 	.global gUnk_0811A520
 gUnk_0811A520: @ 0811A520
 	.incbin "fe6-base.gba", 0x11A520, (0x11A530 - 0x11A520) @ length: 0010
 
-	.global gUnk_0811A530
-gUnk_0811A530: @ 0811A530
+	.global FrameArray_EfxDivineBG
+FrameArray_EfxDivineBG: @ 0811A530
 	.incbin "fe6-base.gba", 0x11A530, (0x11A59E - 0x11A530) @ length: 006E
 
-	.global gUnk_0811A59E
-gUnk_0811A59E: @ 0811A59E
+	.global FrameArray_EfxDivineBG2
+FrameArray_EfxDivineBG2: @ 0811A59E
 	.incbin "fe6-base.gba", 0x11A59E, (0x11A5AC - 0x11A59E) @ length: 000E
 
-	.global gUnk_0811A5AC
-gUnk_0811A5AC: @ 0811A5AC
+	.global FrameArray_EfxDivineBG3
+FrameArray_EfxDivineBG3: @ 0811A5AC
 	.incbin "fe6-base.gba", 0x11A5AC, (0x11A602 - 0x11A5AC) @ length: 0056
 
 	.global gUnk_0811A602

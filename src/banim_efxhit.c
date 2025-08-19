@@ -103,7 +103,7 @@ void NewEfxCriricalEffect(struct Anim *anim)
 	}
 #endif
 
-	SpellFx_SetBG1Position();
+	SpellFx_ClearBG1Position();
 
 	proc = SpawnProc(ProcScr_EfxCriricalEffect, PROC_TREE_3);
 	proc->anim = anim;
@@ -219,7 +219,7 @@ void NewEfxNormalEffect(struct Anim *anim)
 {
 	struct ProcEfx *proc;
 
-	SpellFx_SetBG1Position();
+	SpellFx_ClearBG1Position();
 
 #if FE8
 {

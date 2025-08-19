@@ -635,7 +635,7 @@ NewEkrIdunnExitAnim1: @ 0x0805AB5C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	adds r4, r0, #0
-	ldr r0, .L0805ABB0 @ =gUnk_08604A6C
+	ldr r0, .L0805ABB0 @ =ProcScr_EkrIdunnExitAnim1
 	movs r1, #3
 	bl SpawnProc
 	adds r5, r0, #0
@@ -671,7 +671,7 @@ NewEkrIdunnExitAnim1: @ 0x0805AB5C
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805ABB0: .4byte gUnk_08604A6C
+.L0805ABB0: .4byte ProcScr_EkrIdunnExitAnim1
 .L0805ABB4: .4byte Tsa_EkrIdunn_081C4E28
 .L0805ABB8: .4byte gEkrTsaBuffer
 .L0805ABBC: .4byte gBg3Tm

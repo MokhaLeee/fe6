@@ -4,7 +4,6 @@
 
 	.section .text
 
-
 	thumb_func_start EfxHitQuake_Loop
 EfxHitQuake_Loop: @ 0x0804646C
 	push {r4, r5, r6, r7, lr}
@@ -128,7 +127,7 @@ EfxHitQuake_Loop: @ 0x0804646C
 	rsbs r1, r4, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl func_fe6_08044230
+	bl EkrDispUP_SetPositionSync
 .L08046576:
 	adds r0, r6, #0
 	bl Proc_End
@@ -260,7 +259,7 @@ EfxHitQuake_Loop: @ 0x0804646C
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl func_fe6_08044230
+	bl EkrDispUP_SetPositionSync
 .L08046696:
 	bl GetEkrDragonStateType
 	cmp r0, #0

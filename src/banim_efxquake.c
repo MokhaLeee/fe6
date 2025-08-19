@@ -93,12 +93,10 @@ struct ProcScr CONST_DATA ProcScr_EfxQuake[] =
 
 ProcPtr NewEfxQuake(int kind)
 {
-	struct ProcEfxQuake * proc;
+	struct ProcEfxQuake *proc;
 
 	if (gEfxFarAttackExist == 1)
-	{
 		return NULL;
-	}
 
 	gEfxQuakeExist = 1;
 	proc = SpawnProc(ProcScr_EfxQuake, PROC_TREE_3);
