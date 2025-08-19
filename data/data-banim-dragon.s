@@ -26,8 +26,8 @@ gUnk_08604A18: @ 08604A18
 gUnk_08604A3C: @ 08604A3C
 	.incbin "fe6-base.gba", 0x604A3C, (0x604A6C - 0x604A3C) @ length: 0030
 
-	.global gUnk_08604A6C
-gUnk_08604A6C: @ 08604A6C
+	.global ProcScr_EkrIdunnExitAnim1
+ProcScr_EkrIdunnExitAnim1: @ 08604A6C
 	.incbin "fe6-base.gba", 0x604A6C, (0x604A9C - 0x604A6C) @ length: 0030
 
 	.global gUnk_08604A9C

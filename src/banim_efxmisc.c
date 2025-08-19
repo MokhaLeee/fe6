@@ -339,7 +339,7 @@ void NewEfxMagfcast(struct Anim *anim, int type)
     if (gEfxBgSemaphore != 0)
         return;
 
-    SpellFx_SetBG1Position();
+    SpellFx_ClearBG1Position();
     proc = SpawnProc(ProcScr_EfxMagfcast, PROC_TREE_3);
 
     proc->anim = anim;
@@ -971,7 +971,7 @@ void NewEfxSRankWeaponEffect(struct Anim *anim)
 {
 	struct ProcEfx *proc;
 
-	SpellFx_SetBG1Position();
+	SpellFx_ClearBG1Position();
 
 	proc = SpawnProc(ProcScr_EfxSRankWeaponEffect, PROC_TREE_3);
 	proc->anim = anim;
@@ -1152,7 +1152,7 @@ void NewEfxMagdhisEffect(struct Anim *anim)
 {
 	struct ProcEfx *proc;
 
-	SpellFx_SetBG1Position();
+	SpellFx_ClearBG1Position();
 	proc = SpawnProc(ProcScr_EfxMagdhisEffect, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
@@ -1176,7 +1176,7 @@ struct ProcScr CONST_DATA ProcScr_EfxMagdhisEffectBG[] = {
 	PROC_END,
 };
 
-CONST_DATA u16 * TsaLut_EfxMagdhisEffectBG[] = {
+CONST_DATA u16 * TsaArray_EfxMagdhisEffectBG[] = {
 	Tsa1_EfxMagdhisEffectBG,
 	Tsa2_EfxMagdhisEffectBG,
 	Tsa3_EfxMagdhisEffectBG,
@@ -1207,8 +1207,8 @@ void NewEfxMagdhisEffectBG(struct Anim *anim, int arg1)
 	proc->unk30 = arg1;
 	proc->frame = 0;
 	proc->frame_config = FrameConf_EfxMagdhisEffectBG;
-	proc->tsal = TsaLut_EfxMagdhisEffectBG;
-	proc->tsar = TsaLut_EfxMagdhisEffectBG;
+	proc->tsal = TsaArray_EfxMagdhisEffectBG;
+	proc->tsar = TsaArray_EfxMagdhisEffectBG;
 
 	SpellFx_RegisterBgPal(Pal_EfxMagdhisEffectBG, 0x20);
 	SpellFx_RegisterBgGfx(Img_EfxMagdhisEffectBG, 0x2000);

@@ -167,7 +167,7 @@ struct ProcScr CONST_DATA ProcScr_EkrFaefx[] =
     PROC_END,
 };
 
-const u16 * CONST_DATA TsaLut_EkrFaefx[] =
+const u16 * CONST_DATA TsaArray_EkrFaefx[] =
 {
     Tsa_EkrFaefx1,
     Tsa_EkrFaefx2,
@@ -194,9 +194,9 @@ void StartEkrFaeTransferfx(struct BaSprite * anim)
     proc->timer = 0;
     proc->frame = 0;
 
-    proc->frame_config = FrameLut_EkrFaefx;
-    proc->tsal = TsaLut_EkrFaefx;
-    proc->tsar = TsaLut_EkrFaefx;
+    proc->frame_config = FrameArray_EkrFaefx;
+    proc->tsal = TsaArray_EkrFaefx;
+    proc->tsar = TsaArray_EkrFaefx;
 
     SpellFx_RegisterBgGfx(Img_EkrFaefx, 0x2000);
     SpellFx_RegisterBgPal(Pal_EkrFaefx, 0x20);

@@ -95,8 +95,8 @@ func_fe6_0804421C: @ 0x0804421C
 	.align 2, 0
 .L0804422C: .4byte gpProcEkrDispUP
 
-	thumb_func_start func_fe6_08044230
-func_fe6_08044230: @ 0x08044230
+	thumb_func_start EkrDispUP_SetPositionSync
+EkrDispUP_SetPositionSync: @ 0x08044230
 	ldr r2, .L08044240 @ =gpProcEkrDispUP
 	ldr r2, [r2]
 	strh r0, [r2, #0x32]
@@ -512,13 +512,13 @@ func_fe6_080444EC: @ 0x080444EC
 .L08044578:
 	ldr r0, .L080445F4 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	ldr r0, .L080445F8 @ =gUnk_Banim_02000044
+	ldr r0, .L080445F8 @ =gpBanimTerrainPalette
 	ldr r1, [r5, #0x10]
 	str r1, [r0]
 	ldr r1, [r3, #0x10]
 	str r1, [r0, #4]
 	ldr r2, .L080445FC @ =gUnk_Banim_0200003C
-	ldr r1, .L08044600 @ =gUnk_085CBDB0
+	ldr r1, .L08044600 @ =TsaConfs_BanimTmA
 	movs r3, #0
 	ldrsh r0, [r6, r3]
 	lsls r0, r0, #3
@@ -570,9 +570,9 @@ func_fe6_080444EC: @ 0x080444EC
 .L080445EC: .4byte gUnk_Banim_02014DC0
 .L080445F0: .4byte 0xFFFFF800
 .L080445F4: .4byte gPlaySt
-.L080445F8: .4byte gUnk_Banim_02000044
+.L080445F8: .4byte gpBanimTerrainPalette
 .L080445FC: .4byte gUnk_Banim_0200003C
-.L08044600: .4byte gUnk_085CBDB0
+.L08044600: .4byte TsaConfs_BanimTmA
 .L08044604: .4byte gEkrSnowWeather
 
 	thumb_func_start EfxPrepareScreenFx

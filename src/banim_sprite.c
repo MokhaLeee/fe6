@@ -97,7 +97,7 @@ struct BaSprite * BasCreate2(void const * script)
 
     bas->cqSize = 0;
 
-    bas->unk2C = NULL;
+    bas->imgBuf = NULL;
     bas->sprDataPool = NULL;
     bas->unk40 = NULL;
     bas->unk_44 = NULL;
@@ -135,7 +135,7 @@ struct BaSprite * BasCreate(void const * script, u16 displayPriority)
 
     bas->cqSize = 0;
 
-    bas->unk2C = NULL;
+    bas->imgBuf = NULL;
     bas->sprDataPool = NULL;
     bas->unk40 = NULL;
     bas->unk_44 = NULL;

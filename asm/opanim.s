@@ -2910,7 +2910,7 @@ func_fe6_08099DA4: @ 0x08099DA4
 	movs r1, #0x10
 	orrs r0, r1
 	strb r0, [r2, #1]
-	ldr r4, .L08099E3C @ =gUnk_08141320
+	ldr r4, .L08099E3C @ =Img1_EfxForblazeBG2
 	movs r0, #1
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -2918,7 +2918,7 @@ func_fe6_08099DA4: @ 0x08099DA4
 	adds r1, r1, r3
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L08099E44 @ =gUnk_08143AB8
+	ldr r0, .L08099E44 @ =Tsa1_EfxForblazeBG2
 	ldr r4, .L08099E48 @ =gBuf
 	adds r1, r4, #0
 	bl Decompress
@@ -2945,9 +2945,9 @@ func_fe6_08099DA4: @ 0x08099DA4
 	bx r0
 	.align 2, 0
 .L08099E38: .4byte gDispIo
-.L08099E3C: .4byte gUnk_08141320
+.L08099E3C: .4byte Img1_EfxForblazeBG2
 .L08099E40: .4byte 0x06000020
-.L08099E44: .4byte gUnk_08143AB8
+.L08099E44: .4byte Tsa1_EfxForblazeBG2
 .L08099E48: .4byte gBuf
 .L08099E4C: .4byte gBg1Tm
 

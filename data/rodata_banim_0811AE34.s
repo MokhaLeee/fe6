@@ -1,16 +1,16 @@
 	.section .rodata
 
 
-	.global FrameLut_EfxopFireBG
-FrameLut_EfxopFireBG: @ 0811AF20
+	.global FrameArray_EfxopFireBG
+FrameArray_EfxopFireBG: @ 0811AF20
 	.incbin "fe6-base.gba", 0x11AF20, (0x11AF52 - 0x11AF20) @ length: 0032
 
-	.global FrameLut_EfxopThunderBG
-FrameLut_EfxopThunderBG: @ 0811AF52
+	.global FrameArray_EfxopThunderBG
+FrameArray_EfxopThunderBG: @ 0811AF52
 	.incbin "fe6-base.gba", 0x11AF52, (0x11AF5C - 0x11AF52) @ length: 000A
 
-	.global FrameLut_EfxopThunderBGCOL
-FrameLut_EfxopThunderBGCOL: @ 0811AF5C
+	.global FrameArray_EfxopThunderBGCOL
+FrameArray_EfxopThunderBGCOL: @ 0811AF5C
 	.incbin "fe6-base.gba", 0x11AF5C, (0x11AF9E - 0x11AF5C) @ length: 0042
 
 	.global gUnk_0811AF9E
@@ -733,44 +733,44 @@ Pal_EfxThunderstormBG: @ 0813E75C
 Pal_EfxForblazeBG1: @ 081408CC
 	.incbin "fe6-base.gba", 0x1408CC, (0x141320 - 0x1408CC) @ length: 0A54
 
-	.global gUnk_08141320
-gUnk_08141320: @ 08141320
+	.global Img1_EfxForblazeBG2
+Img1_EfxForblazeBG2: @ 08141320
 	.incbin "fe6-base.gba", 0x141320, (0x142EAC - 0x141320) @ length: 1B8C
 
-	.global gUnk_08142EAC
-gUnk_08142EAC: @ 08142EAC
+	.global Img2_EfxForblazeBG2
+Img2_EfxForblazeBG2: @ 08142EAC
 	.incbin "fe6-base.gba", 0x142EAC, (0x143A38 - 0x142EAC) @ length: 0B8C
 
-	.global gUnk_08143A38
-gUnk_08143A38: @ 08143A38
+	.global Pal1_EfxForblazeBG2
+Pal1_EfxForblazeBG2: @ 08143A38
 	.incbin "fe6-base.gba", 0x143A38, (0x143A58 - 0x143A38) @ length: 0020
 
-	.global gUnk_08143A58
-gUnk_08143A58: @ 08143A58
+	.global Pal2_EfxForblazeBG2
+Pal2_EfxForblazeBG2: @ 08143A58
 	.incbin "fe6-base.gba", 0x143A58, (0x143A78 - 0x143A58) @ length: 0020
 
-	.global gUnk_08143A78
-gUnk_08143A78: @ 08143A78
+	.global Pal3_EfxForblazeBG2
+Pal3_EfxForblazeBG2: @ 08143A78
 	.incbin "fe6-base.gba", 0x143A78, (0x143A98 - 0x143A78) @ length: 0020
 
-	.global gUnk_08143A98
-gUnk_08143A98: @ 08143A98
+	.global Pal4_EfxForblazeBG2
+Pal4_EfxForblazeBG2: @ 08143A98
 	.incbin "fe6-base.gba", 0x143A98, (0x143AB8 - 0x143A98) @ length: 0020
 
-	.global gUnk_08143AB8
-gUnk_08143AB8: @ 08143AB8
+	.global Tsa1_EfxForblazeBG2
+Tsa1_EfxForblazeBG2: @ 08143AB8
 	.incbin "fe6-base.gba", 0x143AB8, (0x143DA8 - 0x143AB8) @ length: 02F0
 
-	.global gUnk_08143DA8
-gUnk_08143DA8: @ 08143DA8
+	.global Tsa2_EfxForblazeBG2
+Tsa2_EfxForblazeBG2: @ 08143DA8
 	.incbin "fe6-base.gba", 0x143DA8, (0x143EE4 - 0x143DA8) @ length: 013C
 
-	.global gUnk_08143EE4
-gUnk_08143EE4: @ 08143EE4
+	.global Img_EfxForblazeOBJ
+Img_EfxForblazeOBJ: @ 08143EE4
 	.incbin "fe6-base.gba", 0x143EE4, (0x144A00 - 0x143EE4) @ length: 0B1C
 
-	.global gUnk_08144A00
-gUnk_08144A00: @ 08144A00
+	.global Pal_EfxForblazeOBJ
+Pal_EfxForblazeOBJ: @ 08144A00
 	.incbin "fe6-base.gba", 0x144A00, (0x14A498 - 0x144A00) @ length: 5A98
 
 	.global Pal_EfxFimbulvetrBG
@@ -801,48 +801,48 @@ Img_EfxAlacaliburOBJ: @ 0815B910
 Pal_EfxAlacaliburOBJ: @ 0815BED4
 	.incbin "fe6-base.gba", 0x15BED4, (0x15F880 - 0x15BED4) @ length: 39AC
 
-	.global gUnk_0815F880
-gUnk_0815F880: @ 0815F880
+	.global Pal_EfxMistyrainBG1
+Pal_EfxMistyrainBG1: @ 0815F880
 	.incbin "fe6-base.gba", 0x15F880, (0x15F8A0 - 0x15F880) @ length: 0020
 
-	.global gUnk_0815F8A0
-gUnk_0815F8A0: @ 0815F8A0
+	.global Pal_EfxMistyrainBG2
+Pal_EfxMistyrainBG2: @ 0815F8A0
 	.incbin "fe6-base.gba", 0x15F8A0, (0x161DDC - 0x15F8A0) @ length: 253C
 
-	.global gUnk_08161DDC
-gUnk_08161DDC: @ 08161DDC
+	.global Img_EfxMistyrainOBJ1_1
+Img_EfxMistyrainOBJ1_1: @ 08161DDC
 	.incbin "fe6-base.gba", 0x161DDC, (0x1621DC - 0x161DDC) @ length: 0400
 
-	.global gUnk_081621DC
-gUnk_081621DC: @ 081621DC
+	.global Img_EfxMistyrainOBJ1_2
+Img_EfxMistyrainOBJ1_2: @ 081621DC
 	.incbin "fe6-base.gba", 0x1621DC, (0x16261C - 0x1621DC) @ length: 0440
 
-	.global gUnk_0816261C
-gUnk_0816261C: @ 0816261C
+	.global Img_EfxMistyrainOBJ1_3
+Img_EfxMistyrainOBJ1_3: @ 0816261C
 	.incbin "fe6-base.gba", 0x16261C, (0x1629D4 - 0x16261C) @ length: 03B8
 
-	.global gUnk_081629D4
-gUnk_081629D4: @ 081629D4
+	.global Pal_EfxMistyrainOBJ1
+Pal_EfxMistyrainOBJ1: @ 081629D4
 	.incbin "fe6-base.gba", 0x1629D4, (0x16B328 - 0x1629D4) @ length: 8954
 
-	.global gUnk_0816B328
-gUnk_0816B328: @ 0816B328
+	.global Pal_EfxResireBG
+Pal_EfxResireBG: @ 0816B328
 	.incbin "fe6-base.gba", 0x16B328, (0x176A4C - 0x16B328) @ length: B724
 
-	.global gUnk_08176A4C
-gUnk_08176A4C: @ 08176A4C
+	.global Pal_EfxDivineBG3
+Pal_EfxDivineBG3: @ 08176A4C
 	.incbin "fe6-base.gba", 0x176A4C, (0x176A6C - 0x176A4C) @ length: 0020
 
-	.global gUnk_08176A6C
-gUnk_08176A6C: @ 08176A6C
+	.global Pal_EfxDivineBG
+Pal_EfxDivineBG: @ 08176A6C
 	.incbin "fe6-base.gba", 0x176A6C, (0x17AAC0 - 0x176A6C) @ length: 4054
 
-	.global gUnk_0817AAC0
-gUnk_0817AAC0: @ 0817AAC0
+	.global Img_EfxDivineOBJ
+Img_EfxDivineOBJ: @ 0817AAC0
 	.incbin "fe6-base.gba", 0x17AAC0, (0x17AC2C - 0x17AAC0) @ length: 016C
 
-	.global gUnk_0817AC2C
-gUnk_0817AC2C: @ 0817AC2C
+	.global Pal_EfxDivineOBJ
+Pal_EfxDivineOBJ: @ 0817AC2C
 	.incbin "fe6-base.gba", 0x17AC2C, (0x17AC4C - 0x17AC2C) @ length: 0020
 
 	.global gUnk_0817AC4C
@@ -937,12 +937,12 @@ gUnk_0819875C: @ 0819875C
 gUnk_0819877C: @ 0819877C
 	.incbin "fe6-base.gba", 0x19877C, (0x1AAECC - 0x19877C) @ length: 12750
 
-	.global gUnk_081AAECC
-gUnk_081AAECC: @ 081AAECC
+	.global Img_EfxPurgeOBJ
+Img_EfxPurgeOBJ: @ 081AAECC
 	.incbin "fe6-base.gba", 0x1AAECC, (0x1AB190 - 0x1AAECC) @ length: 02C4
 
-	.global gUnk_081AB190
-gUnk_081AB190: @ 081AB190
+	.global Pal_EfxPurgeOBJ
+Pal_EfxPurgeOBJ: @ 081AB190
 	.incbin "fe6-base.gba", 0x1AB190, (0x1AB1B0 - 0x1AB190) @ length: 0020
 
 	.global gUnk_081AB1B0
@@ -1097,8 +1097,8 @@ gUnk_081BBBB4: @ 081BBBB4
 gUnk_081BC0A8: @ 081BC0A8
 	.incbin "fe6-base.gba", 0x1BC0A8, (0x1BC0C8 - 0x1BC0A8) @ length: 0020
 
-	.global FrameLut_EkrManaketefxNormalAttack
-FrameLut_EkrManaketefxNormalAttack: @ 081BC0C8
+	.global FrameArray_EkrManaketefxNormalAttack
+FrameArray_EkrManaketefxNormalAttack: @ 081BC0C8
 	.short 0, 3
 	.short 1, 3
 	.short 2, 3
@@ -1110,15 +1110,15 @@ FrameLut_EkrManaketefxNormalAttack: @ 081BC0C8
 	.short 8, 3
 	.short -2
 
-	.global FrameLut_EkrManaketefxCriticalAttack
-FrameLut_EkrManaketefxCriticalAttack: @ 081BC0EE
+	.global FrameArray_EkrManaketefxCriticalAttack
+FrameArray_EkrManaketefxCriticalAttack: @ 081BC0EE
 	.short 9, 2
 	.short 10, 2
 	.short 11, 10
 	.short -1
 
-	.global FrameLut_EkrFaefx
-FrameLut_EkrFaefx: @ 081BC0FC
+	.global FrameArray_EkrFaefx
+FrameArray_EkrFaefx: @ 081BC0FC
 	.incbin "fe6-base.gba", 0x1BC0FC, (0x1BC132 - 0x1BC0FC) @ length: 0036
 
 	.global gUnk_081BC132

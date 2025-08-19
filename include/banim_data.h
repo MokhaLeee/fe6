@@ -18,6 +18,8 @@ struct BattleAnimCharaPal {
     char * pal;
 };
 
+extern struct BattleAnimCharaPal gBanimCharaPalTable[];
+
 struct BattleAnimTerrain {
     char abbr[12];
     char * tileset;
