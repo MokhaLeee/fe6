@@ -432,13 +432,13 @@ int EfxGetCamMovDuration(void)
         return 0x0;
 }
 
-void EfxTmFilA(u32 val)
+void EfxTmFillA(u32 val)
 {
     u16 * dst = gTmA_Banim;
     CpuFill32(val, dst, sizeof(gTmA_Banim));
 }
 
-void EfxTmFilB(u32 val)
+void EfxTmFillB(u32 val)
 {
     u16 * dst = gTmB_Banim;
     CpuFill32(val, dst, sizeof(gTmB_Banim));

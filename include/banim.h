@@ -50,6 +50,8 @@ enum banim_mode_index {
 enum video_banim {
     BGPAL_EFX_0 = 0,
     BGPAL_EFX_SPELL_BG = 1,
+    BGPAL_EFX_2 = 2,
+    BGPAL_EFX_3 = 3,
     BGPAL_EFX_4 = 4,
     BGPAL_EFXDRAGON_L = 6,
     BGPAL_EFXDRAGON_R = 7,
@@ -71,6 +73,7 @@ enum video_banim {
 
     VRAMOFF_BANIM_SPELL_OBJ = 0x0800,
     VRAMOFF_BANIM_SPELL_BG  = 0x2000,
+    VRAMOFF_BANIM_8000 = 0x8000,
 
     VRAMOFF_OBJ_EKRGAUGE_SUBFIX = 0x3800,
     VRAMOFF_OBJ_EKRGAUGE_NUM_L  = 0x3A00,
@@ -91,9 +94,10 @@ enum ekr_hit {
 
 enum banim_sprites_size {
     BAS_SCR_MAX_SIZE = 0x2A00,
-    BAS_OAM_REF_MAX_SIZE = 0x57F0,
-    BAS_OAM_MAX_SIZE = BAS_OAM_REF_MAX_SIZE + 0x10,
+    BAS_OAM_MAX_SIZE = 0x5800,
     BAS_IMG_MAX_SIZE = 0x1000,
+
+    BAS_OAM_REF_MAX_SIZE = BAS_OAM_MAX_SIZE - 0x10,
 };
 
 extern u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
@@ -203,8 +207,8 @@ struct ProcEfxOBJ {
     /* 68 */ struct  BaSprite *anim4;
 };
 
-extern void *gUnk_Banim_02000034[2];
-extern u16 *gpBanimTerrainPalette[2];
+extern void *gpBanimTerrainfxBufs[2];
+extern u16 *gpBanimTerrainPalBufs[2];
 extern int *gpBanimModesLeft;
 extern int *gpBanimModesRight;
 extern int gEkrDebugTimer;
@@ -232,6 +236,7 @@ extern u32 gUnk_Banim_0201E0F8;
 extern u32 gBanimDoneFlag[2];
 extern ProcPtr gpProcEfxAnimeDrv;
 extern const void * gpImgSheet[2];
+extern ProcPtr gpProcEkrTogiColor;
 extern int gEkrBg2ScrollFlip;
 extern u16 * gpBg2ScrollOffsetStart;
 extern u16 * gpBg2ScrollOffset;
@@ -361,7 +366,7 @@ void AsyncEkrDispUP(void);
 void UnAsyncEkrDispUP(void);
 // EkrDispUP_Loop
 void EfxClearScreenFx(void);
-// func_fe6_080444EC
+// EkrDispUp_PutTerrainfx
 void EfxPrepareScreenFx(void);
 int GetBanimInitPosReal(void);
 void EkrEfxStatusClear(void);
@@ -654,8 +659,8 @@ void func_fe6_08047B6C(const u16 * src, u16 * dst, u32 a, u32 b, u32 c);
 i16 EfxAdvanceFrameLut(i16 * ptime, i16 * pcount, const i16 lut[]);
 void func_fe6_08047C1C(void);
 int EfxGetCamMovDuration(void);
-void EfxTmFilA(u32 val);
-void EfxTmFilB(u32 val);
+void EfxTmFillA(u32 val);
+void EfxTmFillB(u32 val);
 void SetEkrFrontAnimPostion(int pos, i16 x, i16 y);
 bool SetupBanim(void);
 void BeginAnimsOnBattleAnimations(void);
@@ -795,67 +800,127 @@ i16 GetAnimRoundTypeAnotherSide(struct Anim *anim);
 i16 GetAnimNextRoundTypeAnotherSide(struct Anim *anim);
 void SetAnimStateHidden(int pos);
 void SetAnimStateUnHidden(int pos);
-// func_fe6_0804B930
-// func_fe6_0804BACC
-// func_fe6_0804BAF0
-// func_fe6_0804BB54
-// func_fe6_0804BCC8
-// func_fe6_0804BE14
-// func_fe6_0804BE20
-// func_fe6_0804BE3C
-// func_fe6_0804BE4C
-// func_fe6_0804BE6C
-// func_fe6_0804BE80
+
+/**
+ * ekrmainmini
+ */
+struct EkrMainMiniBuf {
+    /* 00 */ u8 valid;
+    /* 01 */ u8 faction_pal;
+    /* 02 */ u16 x, y;
+    /* 06 */ u16 bid;
+
+    // i16 chara_pal;
+
+    /* 08 */ u16 round_type;
+    /* 0A */ u16 pos;
+    /* 0C */ u16 oam2_chr;
+    /* 0E */ u16 oam2_pal;
+    /* 10 */ struct Anim *anim1, *anim2;
+    /* 18 */ u16 *img_buf;
+    /* 1C */ u16 *pal_buf;
+    /* 20 */ u16 *oam_buf;
+    /* 24 */ u8  *scr_buf;
+    /* 28 */ const u16 *img_sheet;
+    /* 2C */ void *magicfx_buf;
+    /* 30 */ ProcPtr proc;
+};
+
+void EkrMainMini_ExecCommands(struct EkrMainMiniBuf *buf, struct Anim *anim);
+void EkrMainMini_C01_Blocking(struct Anim *anim);
+void EkrMainMini_C0D_ExecNextRoundAfterAttack(struct Anim *anim);
+void EkrMainMini_InitAnim(struct EkrMainMiniBuf *buf);
+void EkrMainMini_UpdateAnim(struct EkrMainMiniBuf *buf);
+void EkrMainMini_ChangeAnim(struct EkrMainMiniBuf *buf, int bid);
+void EkrMainMini_SetAnimPosition(struct EkrMainMiniBuf *buf, u16 x, u16 y);
+void EkrMainMini_SetAnimLayer(struct EkrMainMiniBuf *buf, u16 layer);
+bool EkrMainMini_CheckBlocking(struct EkrMainMiniBuf *buf);
+void EkrMainMini_EndBlock(struct EkrMainMiniBuf *buf);
+bool EkrMainMini_CheckDone(struct EkrMainMiniBuf *buf);
 void NewEfxAnimeDrvProc(void);
 void EndEfxAnimeDrvProc(void);
-void ExecAllBas(void);
+void EkrAnimeDrv_Loop(void);
 
-struct BanimUnkStructComm
-{
-    /* 00 */ i16 terrain_l; // terrain L
-    /* 02 */ i16 pal_l; // pal ID L
-    /* 04 */ i16 chr_l; // chr L
-    /* 06 */ i16 terrain_r;
-    /* 08 */ i16 pal_r;
-    /* 0A */ i16 chr_r; // chr R
-    /* 0C */ i16 distance;
-    /* 0E */ i16 unk0E;
-    /* 10 */ u16 unk10;
-    /* 14 */ ProcPtr proc14; // sub emulator proc a
-    /* 18 */ ProcPtr proc18; // sub emulator proc b
-    /* 1C */ void * unk1C;
-    /* 20 */ void * unk20;
-    /* 24 */ void * unk24;
+struct ProcEkrUnitMainMini {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x5C);
+
+    struct EkrMainMiniBuf *buf;
 };
-extern struct BanimUnkStructComm gUnk_Banim_0201E0FC;
 
-// NewEkrUnitMainMini
-// func_fe6_0804BF00
-// func_fe6_0804BF24
-void func_fe6_0804BF40(struct BanimUnkStructComm *buf); // FE8: sub_805AA68
-// func_fe6_0804C2EC
-// func_fe6_0804C318
-// func_fe6_0804C330
+void NewEkrUnitMainMini(struct EkrMainMiniBuf *buf);
+void EndEkrMainMini(struct EkrMainMiniBuf *buf);
+void EkrMainMini_Loop(struct ProcEkrUnitMainMini *proc);
+
+/**
+ * EkrTerrainfx
+ */
+struct EkrTerrainfxDesc {
+    /* 00 */ i16 terrain_l;
+    /* 02 */ i16 pal_l;
+    /* 04 */ i16 chr_l;
+    /* 06 */ i16 terrain_r;
+    /* 0A */ i16 pal_r;
+    /* 08 */ i16 chr_r;
+    /* 0C */ i16 distance;
+    /* 0E */ i16 bg_index;
+
+    /* 10 */ u16 _pad_10;
+
+    /* 14 */ struct ProcEkrSubAnimeEmulator *proc1;
+    /* 18 */ struct ProcEkrSubAnimeEmulator *proc2;
+    /* 1C */ int vram_offset;
+    /* 20 */ u8 *img_buf;
+
+    /* 24 */ int _pad_24;
+};
+
+extern struct EkrTerrainfxDesc gEkrTerrainfxDesc, gEkrLvupTerrainfxDesc;
+
+void NewEkrTerrainfx(struct EkrTerrainfxDesc *desc); // FE8: sub_805AA68
+void EndEkrTerrainfx(struct EkrTerrainfxDesc *desc);
+void EkrTerrainfx_SetPosition(struct EkrTerrainfxDesc *desc, i16 x1, i16 y1, i16 x2, i16 y2);
+void EkrTerrainfx_PutTiles(struct EkrTerrainfxDesc *desc);
 void BanimCopyBgTM(i16 distance, i16 pos);
+
+/**
+ * EkrArena
+ */
 void SetBanimArenaFlag(int flag);
 int GetBattleAnimArenaFlag(void);
-void func_fe6_0804C50C(int x);
+void EkrArena_ChangeBg3Offset(int x);
 void PlayDeathSoundForArena(void);
-void func_fe6_0804C56C(void);
+void StopArenaBgmWhenSpeedUp(void);
 void BeginAnimsOnBattle_Arena(void);
 void ExecBattleAnimArenaExit(void);
 void NewEkrTogiInitPROC(void);
-// func_fe6_0804C5D0
-// func_fe6_0804C658
-// func_fe6_0804C6CC
-// func_fe6_0804C730
-// func_fe6_0804C744
-// func_fe6_0804C75C
-// func_fe6_0804C788
-// func_fe6_0804C7EC
-// func_fe6_0804C818
-// func_fe6_0804C84C
-// func_fe6_0804C860
+void EkrTogiInit_Init(struct ProcEfxBG *proc);
+void EkrTogiInit_LoadGfx(struct ProcEfxBG *proc);
+void EkrTogiInit_Loop(struct ProcEfxBG *proc);
+void EkrTogiInit_End(struct ProcEfxBG *proc);
+void NewEkrTogiEndPROC(void);
+void EkrTogiEnd_Init(struct ProcEfxBG *proc);
+void EkrTogiEnd_Loop(struct ProcEfxBG *proc);
+void EkrTogiEnd_End(struct ProcEfxBG *proc);
+
+struct ProcEkrTogiColor {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const u16 * frame_config;
+    /* 4C */ const u16 **pal;
+};
+
+void NewEkrTogiColor(void);
+void EndEkrTogiColor(void);
+void EkrTogiColor_Loop(struct ProcEkrTogiColor *proc);
 
 /* efxmagic */
 void StartSpellAnimation(struct Anim *anim);
@@ -1484,7 +1549,7 @@ void SetActiveCRSpellBgColorProc(ProcPtr proc);
 // CRSpell_RegisterBgPal
 // CRSpell_RegisterObjGfx
 // CRSpell_RegisterObjPal
-// StartClassReelSpellAnim
+void StartClassReelSpellAnim(struct Anim *anim);
 // StartClassReelSpellAnimDummy
 // StartClassReelSpellAnimFire
 // EfxopFire_Loop
@@ -1842,19 +1907,19 @@ extern CONST_DATA struct ProcScr ProcScr_EkrWindowAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrNamewinAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBaseAppear[];
 extern CONST_DATA AnimScr AnimScr_DefaultAnim[];
-// ??? TsaConfs_BanimTmA
+extern CONST_DATA u16 *TsaConfs_BanimTmA[];
 extern CONST_DATA struct ProcScr ProcScr_EkrChienCHR[];
 extern CONST_DATA struct ProcScr ProcScr_EfxAnimeDrv[];
 extern CONST_DATA struct ProcScr ProcScr_EkrUnitMainMini[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
-// ??? gUnk_085CBE50
-// ??? gUnk_085CBE78
+// ??? ProcScr_EkrTogiEndPROC
+// ??? ProcScr_EkrTogiColor
 // ??? Pals_ArenaBattleBg
 // ??? gUnk_085CCC40
-extern CONST_DATA AnimScr AnimScr_EkrMainMini_R_Far[];
-extern CONST_DATA AnimScr AnimScr_EkrMainMini_L_Far[];
-// ??? gUnk_085CCEB8
-// ??? gUnk_085CCF38
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Far[];
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Far[];
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Close[];
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Close[];
 extern u32 AnimScr_NoDamage[];
 extern u32 AnimScr_Miss[];
 
@@ -2367,8 +2432,8 @@ extern const u8 BanimDefaultStandingTypes[5];
 extern const u8 BanimTypesPosLeft[5];
 extern const u8 BanimTypesPosRight[5];
 extern const u16 BanimLeftDefaultPos[5];
-// extern ??? gUnk_081122DA
-// extern ??? gUnk_08112370
+extern const u16 Tsa_EkrTerrainfx_081122DA[];
+// extern ??? FrameArray_EkrTogiColor
 extern u16 TsaConf_BanimTmA_08112380[];
 extern u16 TsaConf_BanimTmA_08112418[];
 extern u16 TsaConf_BanimTmA_081124B0[];

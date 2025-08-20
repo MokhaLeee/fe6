@@ -289,11 +289,11 @@ void NewEfxHitQuake(struct Anim *anim1, struct Anim *anim2, int kind)
 	if (GetAnimPosition(anim1) == POS_L) {
 		proc->unk_36 = 64;
 		proc->unk_3e = 104;
-		anim = BasCreate(AnimScr_EkrMainMini_L_Far, 5);
+		anim = BasCreate(AnimScr_EkrTerrainfx_L_Far, 5);
 	} else {
 		proc->unk_36 = 176;
 		proc->unk_3e = 104;
-		anim = BasCreate(AnimScr_EkrMainMini_R_Far, 5);
+		anim = BasCreate(AnimScr_EkrTerrainfx_R_Far, 5);
 	}
 
 	anim->xPosition = proc->unk_36 - x;
@@ -306,9 +306,9 @@ void NewEfxHitQuake(struct Anim *anim1, struct Anim *anim2, int kind)
 
 	proc->unk_64 = anim;
 
-	RegisterDataMove(gUnk_Banim_02000034[GetAnimPosition(anim1)], (void *)0x06011800, 0x800);
+	RegisterDataMove(gpBanimTerrainfxBufs[GetAnimPosition(anim1)], (void *)0x06011800, 0x800);
 
-	CpuFastCopy(gpBanimTerrainPalette[GetAnimPosition(anim1)], gPal + 0x130, PLTT_SIZE_4BPP);
+	CpuFastCopy(gpBanimTerrainPalBufs[GetAnimPosition(anim1)], gPal + 0x130, PLTT_SIZE_4BPP);
 	EnablePalSync();
 
 	BanimCopyBgTM(gEkrDistanceType, GetAnimPosition(anim1));

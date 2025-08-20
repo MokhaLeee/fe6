@@ -205,9 +205,11 @@ extern u8 const Img_EkrPopup[];
 extern u8 const Img_EkrUnkPopup[];
 extern u16 const Pal_EkrPopup[];
 extern u8 const Tsa_EkrPopup[];
-// extern ??? gUnk_08115524
-// extern ??? gUnk_08117B90
-// extern ??? gUnk_08118330
+extern u8 const Img_ArenaBattleBg[];
+extern u8 const Tsa_ArenaBattleBg[];
+extern u16 const Pal_ArenaBattleBg_A[];
+extern u16 const Pal_ArenaBattleBg_B[];
+extern u16 const Pal_ArenaBattleBg_C[];
 // extern ??? gUnk_08119CD8
 extern u16 const FrameArray_EfxSongBGCOL[];
 extern u16 const FrameConf_EfxEckesachsBGCOL[];

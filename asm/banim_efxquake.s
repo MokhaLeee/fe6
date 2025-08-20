@@ -63,8 +63,8 @@ EfxHitQuake_Loop: @ 0x0804646C
 	cmp r0, #0
 	beq .L080464EE
 	bl BasRemove
-	ldr r0, .L08046584 @ =gUnk_Banim_0201E0FC
-	bl func_fe6_0804C330
+	ldr r0, .L08046584 @ =gEkrTerrainfxDesc
+	bl EkrTerrainfx_PutTiles
 .L080464EE:
 	ldr r3, .L08046588 @ =gEkrXPosReal
 	movs r4, #0
@@ -134,7 +134,7 @@ EfxHitQuake_Loop: @ 0x0804646C
 	b .L08046786
 	.align 2, 0
 .L08046580: .4byte gEkrBgPosition
-.L08046584: .4byte gUnk_Banim_0201E0FC
+.L08046584: .4byte gEkrTerrainfxDesc
 .L08046588: .4byte gEkrXPosReal
 .L0804658C: .4byte gEkrYPosReal
 .L08046590: .4byte gEfxHitQuakeExist

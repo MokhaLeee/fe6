@@ -27,6 +27,8 @@ struct BattleAnimTerrain {
     int null_1; // useless, always 00
 };
 
+extern const struct BattleAnimTerrain gBanimTerrainTable[];
+
 struct BanimScrFrame {
     // disassemble of ANIMSCR_FRAME
     u32 prefix;

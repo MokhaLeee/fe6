@@ -1999,7 +1999,7 @@ func_fe6_08095334: @ 0x08095334
 	ldr r0, .L08095848 @ =0x0200DF24
 	str r0, [r4, #0x20]
 	adds r0, r4, #0
-	bl func_fe6_0804BF40
+	bl NewEkrTerrainfx
 	movs r3, #0x98
 	lsls r3, r3, #1
 	movs r0, #0x68
@@ -2007,7 +2007,7 @@ func_fe6_08095334: @ 0x08095334
 	adds r0, r4, #0
 	movs r1, #0xd0
 	movs r2, #0x68
-	bl func_fe6_0804C318
+	bl EkrTerrainfx_SetPosition
 	ldr r0, .L0809584C @ =func_fe6_080951FC
 	bl SetOnHBlankA
 	add sp, #0x38
@@ -2164,7 +2164,7 @@ func_fe6_08095850: @ 0x08095850
 	adds r4, #0x44
 	ldrb r1, [r4]
 	movs r2, #0x58
-	bl func_fe6_0804BE20
+	bl EkrMainMini_SetAnimPosition
 	ldr r0, .L08095978 @ =0x0200DEFC
 	ldrb r3, [r4]
 	adds r1, r3, #0
@@ -2172,7 +2172,7 @@ func_fe6_08095850: @ 0x08095850
 	adds r3, #0x30
 	movs r2, #0x68
 	str r2, [sp]
-	bl func_fe6_0804C318
+	bl EkrTerrainfx_SetPosition
 	ldr r0, [r7, #0x40]
 	movs r1, #0x78
 	bl func_fe6_08095D40
@@ -2230,7 +2230,7 @@ func_fe6_0809597C: @ 0x0809597C
 	cmp r0, #0
 	beq .L080959DA
 	ldr r0, .L08095A1C @ =0x02000400
-	bl func_fe6_0804BE4C
+	bl EkrMainMini_CheckBlocking
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L080959EC
@@ -2239,7 +2239,7 @@ func_fe6_0809597C: @ 0x0809597C
 	bne .L080959E8
 .L080959DA:
 	ldr r0, .L08095A1C @ =0x02000400
-	bl func_fe6_0804BE80
+	bl EkrMainMini_CheckDone
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L080959E8
@@ -2261,7 +2261,7 @@ func_fe6_0809597C: @ 0x0809597C
 	cmp r2, #0xff
 	bne .L08095A20
 	ldr r0, .L08095A1C @ =0x02000400
-	bl func_fe6_0804BE6C
+	bl EkrMainMini_EndBlock
 	adds r1, r4, #0
 	adds r1, #0x3e
 	movs r0, #0
@@ -2283,7 +2283,7 @@ func_fe6_0809597C: @ 0x0809597C
 	ldrb r0, [r1]
 	strh r0, [r5, #8]
 	adds r0, r5, #0
-	bl func_fe6_0804BCC8
+	bl EkrMainMini_UpdateAnim
 	ldrh r1, [r4, #0x2e]
 	lsls r0, r1, #2
 	adds r0, r0, r7
@@ -2291,7 +2291,7 @@ func_fe6_0809597C: @ 0x0809597C
 	cmp r0, #4
 	bne .L08095A4A
 	adds r0, r5, #0
-	bl func_fe6_0804BE6C
+	bl EkrMainMini_EndBlock
 .L08095A4A:
 	adds r1, r4, #0
 	adds r1, #0x3e
@@ -2328,10 +2328,10 @@ func_fe6_08095A74: @ 0x08095A74
 	bl EndTalk
 	bl EndActiveClassReelBgColorProc
 	ldr r0, .L08095AB0 @ =0x0200DEFC
-	bl func_fe6_0804C2EC
+	bl EndEkrTerrainfx
 	bl EndActiveClassReelSpell
 	ldr r0, .L08095AB4 @ =0x02000400
-	bl func_fe6_0804BF00
+	bl EndEkrMainMini
 	ldr r0, [r4, #0x40]
 	cmp r0, #0
 	beq .L08095AA2

@@ -1243,6 +1243,7 @@ void func_fe6_0808F060(struct ProcPlayRank *proc)
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
+// https://decomp.me/scratch/1SJ6v
 #if !NONMATCHING
 NAKEDFUNC
 void PlayRank_Loop(struct ProcPlayRank *proc)

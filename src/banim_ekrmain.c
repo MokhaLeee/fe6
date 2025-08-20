@@ -16,7 +16,7 @@ CONST_DATA AnimScr AnimScr_DefaultAnim[] = {
 	ANIMSCR_BLOCKED
 };
 
-CONST_DATA void *TsaConfs_BanimTmA[] = {
+CONST_DATA u16 *TsaConfs_BanimTmA[] = {
 	TsaConf_BanimTmA_08112380,
 	TsaConf_BanimTmA_08112418,
 	TsaConf_BanimTmA_081124B0,
@@ -144,7 +144,7 @@ void UpdateBanimFrame(void)
 		else
 			LZ77UnCompWram(tmp_banim->oam_r, gBanimOamBufs);
 
-		*(u32 *)(gBanimOamBufs + 0x57F0) = 1;
+		*(u32 *)(gBanimOamBufs + BAS_OAM_REF_MAX_SIZE) = 1;
 	}
 
 	if (gBanimValid[POS_R] == true) {
@@ -171,7 +171,7 @@ void UpdateBanimFrame(void)
 
 		LZ77UnCompWram(banim[bid].oam_r, &gBanimOamBufs[0x5800]);
 
-		*(u32 *)(gBanimOamBufs + 0x5800 + 0x57F0) = 1;
+		*(u32 *)(gBanimOamBufs + 0x5800 + BAS_OAM_REF_MAX_SIZE) = 1;
 	}
 
 	/* triangle*/
