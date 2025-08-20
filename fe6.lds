@@ -176,7 +176,7 @@ SECTIONS
         . = 0x01E0F0; gUnk_Banim_0201E0F0 = .;
         . = 0x01E0F4; gProcEkrBaseAppearExist = .;
         . = 0x01E0F8; gUnk_Banim_0201E0F8 = .;
-        . = 0x01E0FC; gEkrTerrainfxData = .;
+        . = 0x01E0FC; gEkrTerrainfxDesc = .;
         . = 0x01E124; gBanimDoneFlag = .;
         . = 0x01E12C; gEkrBgPosition = .;
         . = 0x01E138; gpProcEfxAnimeDrv = .;
@@ -211,7 +211,7 @@ SECTIONS
         . = 0x01F05C; gUnk_Banim_0201F05C = .;
         . = 0x01F07C; gUnk_Banim_0201F07C = .;
         . = 0x01F080; gUnk_Banim_0201F080 = .;
-        . = 0x01F084; gEkrLvupTerrainfxData = .;
+        . = 0x01F084; gEkrLvupTerrainfxDesc = .;
         . = 0x01F0AC; gpEkrLvupUnit = .;
         . = 0x01F0B0; gpEkrLvupBattleUnit = .;
         . = 0x01F0B4; gEkrLvupPreLevel = .;
@@ -563,7 +563,7 @@ SECTIONS
         asm/banim_ekrmain.o(.text);
         src/banim_info.o(.text);
         src/banim_ekrmainmini.o(.text);
-        asm/banim_ekrmainmini.o(.text);
+        src/banim_ekrterrainfx.o(.text);
         asm/banim_ekrarena.o(.text);
         src/banim_efxmagic.o(.text);
         asm/banim_efxmagic.o(.text);

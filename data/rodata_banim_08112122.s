@@ -20,8 +20,8 @@ BanimTypesPosRight: @ 081122CA
 BanimLeftDefaultPos: @ 081122D0
 	.incbin "fe6-base.gba", 0x1122D0, (0x1122DA - 0x1122D0) @ length: 000A
 
-	.global gUnk_081122DA
-gUnk_081122DA: @ 081122DA
+	.global Tsa_EkrTerrainfx_081122DA
+Tsa_EkrTerrainfx_081122DA: @ 081122DA
 	.incbin "fe6-base.gba", 0x1122DA, (0x112370 - 0x1122DA) @ length: 0096
 
 	.global gUnk_08112370

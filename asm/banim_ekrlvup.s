@@ -168,7 +168,7 @@ EkrLvup_Init: @ 0x0805D604
 	push {r5, r6, r7}
 	sub sp, #8
 	mov sb, r0
-	ldr r7, .L0805D6B4 @ =gEkrLvupTerrainfxData
+	ldr r7, .L0805D6B4 @ =gEkrLvupTerrainfxDesc
 	movs r4, #0
 	str r4, [sp]
 	ldr r5, .L0805D6B8 @ =gBg1Tm
@@ -244,7 +244,7 @@ EkrLvup_Init: @ 0x0805D604
 	strh r0, [r7, #6]
 	b .L0805D6F6
 	.align 2, 0
-.L0805D6B4: .4byte gEkrLvupTerrainfxData
+.L0805D6B4: .4byte gEkrLvupTerrainfxDesc
 .L0805D6B8: .4byte gBg1Tm
 .L0805D6BC: .4byte 0x01000200
 .L0805D6C0: .4byte gBg2Tm
@@ -268,7 +268,7 @@ EkrLvup_Init: @ 0x0805D604
 	cmp r0, #0
 	bne .L0805D71E
 	adds r0, r7, #0
-	bl EkrMainMini_PutTerrainfx
+	bl NewEkrTerrainfx
 	ldr r3, [r7, #0x14]
 	ldr r0, [r3, #0x4c]
 	ldr r2, .L0805D89C @ =0x0000F3FF
@@ -1304,12 +1304,12 @@ func_fe6_0805DF90: @ 0x0805DF90
 	push {r4, r5, r6, lr}
 	sub sp, #0x2c
 	adds r5, r0, #0
-	ldr r4, .L0805E09C @ =gEkrLvupTerrainfxData
+	ldr r4, .L0805E09C @ =gEkrLvupTerrainfxDesc
 	bl GetBattleAnimArenaFlag
 	cmp r0, #0
 	bne .L0805DFA6
 	adds r0, r4, #0
-	bl func_fe6_0804C2EC
+	bl EndEkrTerrainfx
 .L0805DFA6:
 	movs r1, #0xc0
 	lsls r1, r1, #7
@@ -1363,7 +1363,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	movs r2, #0
 	bl SetBgOffset
 	mov r0, sp
-	bl EkrMainMini_PutTerrainfx
+	bl NewEkrTerrainfx
 .L0805E020:
 	ldr r2, [r5, #0x5c]
 	ldr r1, .L0805E0B0 @ =0x0000F3FF
@@ -1424,7 +1424,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	strb r0, [r3, #0x14]
 	b .L0805E0EC
 	.align 2, 0
-.L0805E09C: .4byte gEkrLvupTerrainfxData
+.L0805E09C: .4byte gEkrLvupTerrainfxDesc
 .L0805E0A0: .4byte gBanimFloorfx
 .L0805E0A4: .4byte gEkrDistanceType
 .L0805E0A8: .4byte gBanimTerrainfxBuf

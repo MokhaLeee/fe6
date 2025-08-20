@@ -1999,7 +1999,7 @@ func_fe6_08095334: @ 0x08095334
 	ldr r0, .L08095848 @ =0x0200DF24
 	str r0, [r4, #0x20]
 	adds r0, r4, #0
-	bl EkrMainMini_PutTerrainfx
+	bl NewEkrTerrainfx
 	movs r3, #0x98
 	lsls r3, r3, #1
 	movs r0, #0x68
@@ -2007,7 +2007,7 @@ func_fe6_08095334: @ 0x08095334
 	adds r0, r4, #0
 	movs r1, #0xd0
 	movs r2, #0x68
-	bl func_fe6_0804C318
+	bl EkrTerrainfx_SetPosition
 	ldr r0, .L0809584C @ =func_fe6_080951FC
 	bl SetOnHBlankA
 	add sp, #0x38
@@ -2172,7 +2172,7 @@ func_fe6_08095850: @ 0x08095850
 	adds r3, #0x30
 	movs r2, #0x68
 	str r2, [sp]
-	bl func_fe6_0804C318
+	bl EkrTerrainfx_SetPosition
 	ldr r0, [r7, #0x40]
 	movs r1, #0x78
 	bl func_fe6_08095D40
@@ -2328,7 +2328,7 @@ func_fe6_08095A74: @ 0x08095A74
 	bl EndTalk
 	bl EndActiveClassReelBgColorProc
 	ldr r0, .L08095AB0 @ =0x0200DEFC
-	bl func_fe6_0804C2EC
+	bl EndEkrTerrainfx
 	bl EndActiveClassReelSpell
 	ldr r0, .L08095AB4 @ =0x02000400
 	bl EndEkrMainMini

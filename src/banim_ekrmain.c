@@ -16,7 +16,7 @@ CONST_DATA AnimScr AnimScr_DefaultAnim[] = {
 	ANIMSCR_BLOCKED
 };
 
-CONST_DATA void *TsaConfs_BanimTmA[] = {
+CONST_DATA u16 *TsaConfs_BanimTmA[] = {
 	TsaConf_BanimTmA_08112380,
 	TsaConf_BanimTmA_08112418,
 	TsaConf_BanimTmA_081124B0,

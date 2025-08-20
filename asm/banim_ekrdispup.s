@@ -445,7 +445,7 @@ EkrDispUp_PutTerrainfx: @ 0x080444EC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r4, .L0804452C @ =gEkrTerrainfxData
+	ldr r4, .L0804452C @ =gEkrTerrainfxDesc
 	ldr r2, .L08044530 @ =gBanimFloorfx
 	movs r0, #0
 	ldrsh r1, [r2, r0]
@@ -474,7 +474,7 @@ EkrDispUp_PutTerrainfx: @ 0x080444EC
 	ldr r0, .L0804453C @ =gBanimTerrainfxBuf
 	b .L08044576
 	.align 2, 0
-.L0804452C: .4byte gEkrTerrainfxData
+.L0804452C: .4byte gEkrTerrainfxDesc
 .L08044530: .4byte gBanimFloorfx
 .L08044534: .4byte gBanimTerrainTable
 .L08044538: .4byte gEkrDistanceType
@@ -559,7 +559,7 @@ EkrDispUp_PutTerrainfx: @ 0x080444EC
 	ldrh r0, [r0]
 	strh r0, [r4, #0x10]
 	adds r0, r4, #0
-	bl EkrMainMini_PutTerrainfx
+	bl NewEkrTerrainfx
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}

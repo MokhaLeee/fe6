@@ -162,7 +162,7 @@ void PutManaketeBodyIntro2(struct ProcEkrDragon * proc)
 {
     LZ77UnCompWram(Img_ManaketeBodyIntro2, gSpellAnimBgfx);
     LZ77UnCompWram(Tsa_ManaketeBodyIntro2, gEkrTsaBuffer);
-    EfxTmFilB(0);
+    EfxTmFillB(0);
 
     if (GetAnimPosition(proc->anim) == POS_L)
     {
@@ -189,7 +189,7 @@ void PutManaketeBodyIntro1(struct ProcEkrDragon * proc)
 {
     LZ77UnCompWram(Img_ManaketeBodyIntro1, gSpellAnimBgfx);
     LZ77UnCompWram(Tsa_ManaketeBodyIntro1, gEkrTsaBuffer);
-    EfxTmFilB(0);
+    EfxTmFillB(0);
 
     if (GetAnimPosition(proc->anim) == POS_L)
     {
@@ -216,7 +216,7 @@ void PutManaketeBodyStd(struct ProcEkrDragon * proc)
 {
     LZ77UnCompWram(Img_ManaketeBodyStd, gSpellAnimBgfx);
     LZ77UnCompWram(Tsa_ManaketeBodyStd, gEkrTsaBuffer);
-    EfxTmFilB(0);
+    EfxTmFillB(0);
 
     if (GetAnimPosition(proc->anim) == POS_L)
     {
@@ -292,7 +292,7 @@ void PutManaketeTotalImg(struct ProcEkrDragon * proc)
 
     LZ77UnCompWram(Img_081BE490, gSpellAnimBgfx);
     RegisterVramMove(gSpellAnimBgfx, CHR_SIZE * BGCHR_EKRDRAGON_400, CHR_SIZE * 0x100);
-    EfxTmFilB(0);
+    EfxTmFillB(0);
 
     pos = GetAnimPosition(proc->anim);
     if (pos == POS_L)

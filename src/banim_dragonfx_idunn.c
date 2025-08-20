@@ -76,7 +76,7 @@ void EkrIdunn_InitBodyfx(struct ProcEkrDragon * proc)
     LZ77UnCompVram(Img_EkrIdunn_081C1C94, (void *)BG_VRAM + 0x8000);
     LZ77UnCompWram(Tsa_EkrIdunn_081C5AAC, gEkrTsaBuffer);
 
-    EfxTmFilB(0x001F001F);
+    EfxTmFillB(0x001F001F);
     TmFill(gBg3Tm, 0x1F);
     EnableBgSync(BG3_SYNC_BIT);
 
@@ -385,7 +385,7 @@ ProcPtr NewEkrDragonfx_IdunnBaseAppear(struct BaSprite * anim)
     proc->flag = EDRAGONFX_FLAG_START;
     proc->timer = 0;
 
-    EkrMainMini_PutTerrainfx(&gEkrTerrainfxData);
+    NewEkrTerrainfx(&gEkrTerrainfxDesc);
     CpuFastCopy(PAL_BG(BGPAL_EFX_4), gEkrBgPaletteBackup3, 0x40);
     EfxPalBlackInOut(PAL_BG(BGPAL_EFX_0), 4, 2, 0x10);
     return proc;

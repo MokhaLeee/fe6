@@ -655,8 +655,8 @@ void func_fe6_08047B6C(const u16 * src, u16 * dst, u32 a, u32 b, u32 c);
 i16 EfxAdvanceFrameLut(i16 * ptime, i16 * pcount, const i16 lut[]);
 void func_fe6_08047C1C(void);
 int EfxGetCamMovDuration(void);
-void EfxTmFilA(u32 val);
-void EfxTmFilB(u32 val);
+void EfxTmFillA(u32 val);
+void EfxTmFillB(u32 val);
 void SetEkrFrontAnimPostion(int pos, i16 x, i16 y);
 bool SetupBanim(void);
 void BeginAnimsOnBattleAnimations(void);
@@ -850,35 +850,39 @@ void EndEkrMainMini(struct EkrMainMiniBuf *buf);
 void EkrMainMini_Loop(struct ProcEkrUnitMainMini *proc);
 
 /**
- * ekrterrainfx
+ * EkrTerrainfx
  */
-struct EkrTerrainfxData
-{
-    /* 00 */ i16 terrain_l; // terrain L
-    /* 02 */ i16 pal_l; // pal ID L
-    /* 04 */ i16 chr_l; // chr L
+struct EkrTerrainfxDesc {
+    /* 00 */ i16 terrain_l;
+    /* 02 */ i16 pal_l;
+    /* 04 */ i16 chr_l;
     /* 06 */ i16 terrain_r;
-    /* 08 */ i16 pal_r;
-    /* 0A */ i16 chr_r; // chr R
+    /* 0A */ i16 pal_r;
+    /* 08 */ i16 chr_r;
     /* 0C */ i16 distance;
     /* 0E */ i16 bg_index;
 
     /* 10 */ u16 _pad_10;
 
-    /* 14 */ ProcPtr proc1;
-    /* 18 */ ProcPtr proc2;
+    /* 14 */ struct ProcEkrSubAnimeEmulator *proc1;
+    /* 18 */ struct ProcEkrSubAnimeEmulator *proc2;
     /* 1C */ int vram_offset;
-    /* 20 */ void * img_buf;
+    /* 20 */ u8 *img_buf;
 
     /* 24 */ int _pad_24;
 };
-extern struct EkrTerrainfxData gEkrTerrainfxData, gEkrLvupTerrainfxData;
 
-void EkrMainMini_PutTerrainfx(struct EkrTerrainfxData *buf); // FE8: sub_805AA68
-// func_fe6_0804C2EC
-// func_fe6_0804C318
-// func_fe6_0804C330
+extern struct EkrTerrainfxDesc gEkrTerrainfxDesc, gEkrLvupTerrainfxDesc;
+
+void NewEkrTerrainfx(struct EkrTerrainfxDesc *desc); // FE8: sub_805AA68
+void EndEkrTerrainfx(struct EkrTerrainfxDesc *desc);
+void EkrTerrainfx_SetPosition(struct EkrTerrainfxDesc *desc, i16 x1, i16 y1, i16 x2, i16 y2);
+void EkrTerrainfx_PutTiles(struct EkrTerrainfxDesc *desc);
 void BanimCopyBgTM(i16 distance, i16 pos);
+
+/**
+ * EkrArena
+ */
 void SetBanimArenaFlag(int flag);
 int GetBattleAnimArenaFlag(void);
 void func_fe6_0804C50C(int x);
@@ -1884,7 +1888,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrWindowAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrNamewinAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBaseAppear[];
 extern CONST_DATA AnimScr AnimScr_DefaultAnim[];
-// ??? TsaConfs_BanimTmA
+extern CONST_DATA u16 *TsaConfs_BanimTmA[];
 extern CONST_DATA struct ProcScr ProcScr_EkrChienCHR[];
 extern CONST_DATA struct ProcScr ProcScr_EfxAnimeDrv[];
 extern CONST_DATA struct ProcScr ProcScr_EkrUnitMainMini[];
@@ -1893,10 +1897,10 @@ extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
 // ??? gUnk_085CBE78
 // ??? Pals_ArenaBattleBg
 // ??? gUnk_085CCC40
-extern CONST_DATA AnimScr AnimScr_EkrMainMini_R_Far[];
-extern CONST_DATA AnimScr AnimScr_EkrMainMini_L_Far[];
-// ??? gUnk_085CCEB8
-// ??? gUnk_085CCF38
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Far[];
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Far[];
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Close[];
+extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Close[];
 extern u32 AnimScr_NoDamage[];
 extern u32 AnimScr_Miss[];
 
@@ -2409,7 +2413,7 @@ extern const u8 BanimDefaultStandingTypes[5];
 extern const u8 BanimTypesPosLeft[5];
 extern const u8 BanimTypesPosRight[5];
 extern const u16 BanimLeftDefaultPos[5];
-// extern ??? gUnk_081122DA
+extern const u16 Tsa_EkrTerrainfx_081122DA[];
 // extern ??? gUnk_08112370
 extern u16 TsaConf_BanimTmA_08112380[];
 extern u16 TsaConf_BanimTmA_08112418[];
