@@ -50,6 +50,8 @@ enum banim_mode_index {
 enum video_banim {
     BGPAL_EFX_0 = 0,
     BGPAL_EFX_SPELL_BG = 1,
+    BGPAL_EFX_2 = 2,
+    BGPAL_EFX_3 = 3,
     BGPAL_EFX_4 = 4,
     BGPAL_EFXDRAGON_L = 6,
     BGPAL_EFXDRAGON_R = 7,
@@ -71,6 +73,7 @@ enum video_banim {
 
     VRAMOFF_BANIM_SPELL_OBJ = 0x0800,
     VRAMOFF_BANIM_SPELL_BG  = 0x2000,
+    VRAMOFF_BANIM_8000 = 0x8000,
 
     VRAMOFF_OBJ_EKRGAUGE_SUBFIX = 0x3800,
     VRAMOFF_OBJ_EKRGAUGE_NUM_L  = 0x3A00,
@@ -233,6 +236,7 @@ extern u32 gUnk_Banim_0201E0F8;
 extern u32 gBanimDoneFlag[2];
 extern ProcPtr gpProcEfxAnimeDrv;
 extern const void * gpImgSheet[2];
+extern ProcPtr gpProcEkrTogiColor;
 extern int gEkrBg2ScrollFlip;
 extern u16 * gpBg2ScrollOffsetStart;
 extern u16 * gpBg2ScrollOffset;
@@ -885,23 +889,38 @@ void BanimCopyBgTM(i16 distance, i16 pos);
  */
 void SetBanimArenaFlag(int flag);
 int GetBattleAnimArenaFlag(void);
-void func_fe6_0804C50C(int x);
+void EkrArena_ChangeBg3Offset(int x);
 void PlayDeathSoundForArena(void);
-void func_fe6_0804C56C(void);
+void StopArenaBgmWhenSpeedUp(void);
 void BeginAnimsOnBattle_Arena(void);
 void ExecBattleAnimArenaExit(void);
 void NewEkrTogiInitPROC(void);
-// func_fe6_0804C5D0
-// func_fe6_0804C658
-// func_fe6_0804C6CC
-// func_fe6_0804C730
-// func_fe6_0804C744
-// func_fe6_0804C75C
-// func_fe6_0804C788
-// func_fe6_0804C7EC
-// func_fe6_0804C818
-// func_fe6_0804C84C
-// func_fe6_0804C860
+void EkrTogiInit_Init(struct ProcEfxBG *proc);
+void EkrTogiInit_LoadGfx(struct ProcEfxBG *proc);
+void EkrTogiInit_Loop(struct ProcEfxBG *proc);
+void EkrTogiInit_End(struct ProcEfxBG *proc);
+void NewEkrTogiEndPROC(void);
+void EkrTogiEnd_Init(struct ProcEfxBG *proc);
+void EkrTogiEnd_Loop(struct ProcEfxBG *proc);
+void EkrTogiEnd_End(struct ProcEfxBG *proc);
+
+struct ProcEkrTogiColor {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const u16 * frame_config;
+    /* 4C */ const u16 **pal;
+};
+
+void NewEkrTogiColor(void);
+void EndEkrTogiColor(void);
+void EkrTogiColor_Loop(struct ProcEkrTogiColor *proc);
 
 /* efxmagic */
 void StartSpellAnimation(struct Anim *anim);
@@ -1893,8 +1912,8 @@ extern CONST_DATA struct ProcScr ProcScr_EkrChienCHR[];
 extern CONST_DATA struct ProcScr ProcScr_EfxAnimeDrv[];
 extern CONST_DATA struct ProcScr ProcScr_EkrUnitMainMini[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
-// ??? gUnk_085CBE50
-// ??? gUnk_085CBE78
+// ??? ProcScr_EkrTogiEndPROC
+// ??? ProcScr_EkrTogiColor
 // ??? Pals_ArenaBattleBg
 // ??? gUnk_085CCC40
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Far[];
@@ -2414,7 +2433,7 @@ extern const u8 BanimTypesPosLeft[5];
 extern const u8 BanimTypesPosRight[5];
 extern const u16 BanimLeftDefaultPos[5];
 extern const u16 Tsa_EkrTerrainfx_081122DA[];
-// extern ??? gUnk_08112370
+// extern ??? FrameArray_EkrTogiColor
 extern u16 TsaConf_BanimTmA_08112380[];
 extern u16 TsaConf_BanimTmA_08112418[];
 extern u16 TsaConf_BanimTmA_081124B0[];

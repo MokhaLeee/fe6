@@ -84,6 +84,8 @@ enum
     SONG_8B = 0x8B, // manim
     SONG_8C = 0x8C,
     SONG_8D = 0x8D, // manim (unlock?)
+    SONG_8E = 0x8E,
+    SONG_8F = 0x8F,
     SONG_90 = 0x90,
     SONG_91 = 0x91,
     SONG_92 = 0x92,

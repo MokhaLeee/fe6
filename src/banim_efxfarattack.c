@@ -123,7 +123,7 @@ void func_fe6_08045DDC(struct ProcEfxFarAttack * proc)
     BanimSetBg2Position(gEkrBgPosition);
 
     if (GetBattleAnimArenaFlag() != 0)
-        func_fe6_0804C50C(gEkrBgPosition);
+        EkrArena_ChangeBg3Offset(gEkrBgPosition);
 
     proc->timer++;
 
@@ -147,7 +147,7 @@ void func_fe6_08045E50(struct ProcEfxFarAttack * proc)
     BanimSetBg2Position(gEkrBgPosition);
 
     if (GetBattleAnimArenaFlag() != 0)
-        func_fe6_0804C50C(gEkrBgPosition);
+        EkrArena_ChangeBg3Offset(gEkrBgPosition);
 
     proc->timer++;
 

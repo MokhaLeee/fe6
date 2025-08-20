@@ -490,7 +490,7 @@ void EkrBattleInRound(struct ProcEkrBattle * proc)
                 }
                 else if (proc->yield_arena == TRUE)
                 {
-                    func_fe6_0804C56C();
+                    StopArenaBgmWhenSpeedUp();
                     ArenaSetResult(ARENA_RESULT_YIELD);
                     gBanimExpGain[POS_R] = 0;
                     ret = 1;
