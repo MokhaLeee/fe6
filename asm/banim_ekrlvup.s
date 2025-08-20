@@ -168,7 +168,7 @@ EkrLvup_Init: @ 0x0805D604
 	push {r5, r6, r7}
 	sub sp, #8
 	mov sb, r0
-	ldr r7, .L0805D6B4 @ =gUnk_Banim_0201F084
+	ldr r7, .L0805D6B4 @ =gEkrLvupTerrainfxData
 	movs r4, #0
 	str r4, [sp]
 	ldr r5, .L0805D6B8 @ =gBg1Tm
@@ -226,7 +226,7 @@ EkrLvup_Init: @ 0x0805D604
 	strh r0, [r7, #0xe]
 	ldr r0, .L0805D6E0 @ =0x06010000
 	str r0, [r7, #0x1c]
-	ldr r0, .L0805D6E4 @ =gUnk_Banim_020145C0
+	ldr r0, .L0805D6E4 @ =gBanimTerrainfxBuf
 	str r0, [r7, #0x20]
 	ldr r0, .L0805D6E8 @ =gEkrSnowWeather
 	ldrh r0, [r0]
@@ -244,7 +244,7 @@ EkrLvup_Init: @ 0x0805D604
 	strh r0, [r7, #6]
 	b .L0805D6F6
 	.align 2, 0
-.L0805D6B4: .4byte gUnk_Banim_0201F084
+.L0805D6B4: .4byte gEkrLvupTerrainfxData
 .L0805D6B8: .4byte gBg1Tm
 .L0805D6BC: .4byte 0x01000200
 .L0805D6C0: .4byte gBg2Tm
@@ -256,7 +256,7 @@ EkrLvup_Init: @ 0x0805D604
 .L0805D6D8: .4byte gEkrDistanceType
 .L0805D6DC: .4byte 0x0000FFFF
 .L0805D6E0: .4byte 0x06010000
-.L0805D6E4: .4byte gUnk_Banim_020145C0
+.L0805D6E4: .4byte gBanimTerrainfxBuf
 .L0805D6E8: .4byte gEkrSnowWeather
 .L0805D6EC: .4byte gEkrInitPosReal
 .L0805D6F0:
@@ -268,7 +268,7 @@ EkrLvup_Init: @ 0x0805D604
 	cmp r0, #0
 	bne .L0805D71E
 	adds r0, r7, #0
-	bl func_fe6_0804BF40
+	bl EkrMainMini_PutTerrainfx
 	ldr r3, [r7, #0x14]
 	ldr r0, [r3, #0x4c]
 	ldr r2, .L0805D89C @ =0x0000F3FF
@@ -1304,7 +1304,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	push {r4, r5, r6, lr}
 	sub sp, #0x2c
 	adds r5, r0, #0
-	ldr r4, .L0805E09C @ =gUnk_Banim_0201F084
+	ldr r4, .L0805E09C @ =gEkrLvupTerrainfxData
 	bl GetBattleAnimArenaFlag
 	cmp r0, #0
 	bne .L0805DFA6
@@ -1350,7 +1350,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	movs r0, #2
 	strh r0, [r4, #0xe]
 	str r6, [sp, #0x1c]
-	ldr r0, .L0805E0A8 @ =gUnk_Banim_020145C0
+	ldr r0, .L0805E0A8 @ =gBanimTerrainfxBuf
 	str r0, [sp, #0x20]
 	ldr r0, .L0805E0AC @ =gEkrSnowWeather
 	ldrh r0, [r0]
@@ -1363,7 +1363,7 @@ func_fe6_0805DF90: @ 0x0805DF90
 	movs r2, #0
 	bl SetBgOffset
 	mov r0, sp
-	bl func_fe6_0804BF40
+	bl EkrMainMini_PutTerrainfx
 .L0805E020:
 	ldr r2, [r5, #0x5c]
 	ldr r1, .L0805E0B0 @ =0x0000F3FF
@@ -1424,10 +1424,10 @@ func_fe6_0805DF90: @ 0x0805DF90
 	strb r0, [r3, #0x14]
 	b .L0805E0EC
 	.align 2, 0
-.L0805E09C: .4byte gUnk_Banim_0201F084
+.L0805E09C: .4byte gEkrLvupTerrainfxData
 .L0805E0A0: .4byte gBanimFloorfx
 .L0805E0A4: .4byte gEkrDistanceType
-.L0805E0A8: .4byte gUnk_Banim_020145C0
+.L0805E0A8: .4byte gBanimTerrainfxBuf
 .L0805E0AC: .4byte gEkrSnowWeather
 .L0805E0B0: .4byte 0x0000F3FF
 .L0805E0B4: .4byte gBg1Tm

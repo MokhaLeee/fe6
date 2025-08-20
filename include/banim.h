@@ -91,9 +91,10 @@ enum ekr_hit {
 
 enum banim_sprites_size {
     BAS_SCR_MAX_SIZE = 0x2A00,
-    BAS_OAM_REF_MAX_SIZE = 0x57F0,
-    BAS_OAM_MAX_SIZE = BAS_OAM_REF_MAX_SIZE + 0x10,
+    BAS_OAM_MAX_SIZE = 0x5800,
     BAS_IMG_MAX_SIZE = 0x1000,
+
+    BAS_OAM_REF_MAX_SIZE = BAS_OAM_MAX_SIZE - 0x10,
 };
 
 extern u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
@@ -203,8 +204,8 @@ struct ProcEfxOBJ {
     /* 68 */ struct  BaSprite *anim4;
 };
 
-extern void *gUnk_Banim_02000034[2];
-extern u16 *gpBanimTerrainPalette[2];
+extern void *gpBanimTerrainfxBufs[2];
+extern u16 *gpBanimTerrainPalBufs[2];
 extern int *gpBanimModesLeft;
 extern int *gpBanimModesRight;
 extern int gEkrDebugTimer;
@@ -361,7 +362,7 @@ void AsyncEkrDispUP(void);
 void UnAsyncEkrDispUP(void);
 // EkrDispUP_Loop
 void EfxClearScreenFx(void);
-// func_fe6_080444EC
+// EkrDispUp_PutTerrainfx
 void EfxPrepareScreenFx(void);
 int GetBanimInitPosReal(void);
 void EkrEfxStatusClear(void);
@@ -795,22 +796,63 @@ i16 GetAnimRoundTypeAnotherSide(struct Anim *anim);
 i16 GetAnimNextRoundTypeAnotherSide(struct Anim *anim);
 void SetAnimStateHidden(int pos);
 void SetAnimStateUnHidden(int pos);
-// func_fe6_0804B930
-// func_fe6_0804BACC
-// func_fe6_0804BAF0
-// func_fe6_0804BB54
-// func_fe6_0804BCC8
-// func_fe6_0804BE14
-// func_fe6_0804BE20
-// func_fe6_0804BE3C
-// func_fe6_0804BE4C
-// func_fe6_0804BE6C
-// func_fe6_0804BE80
+
+/**
+ * ekrmainmini
+ */
+struct EkrMainMiniBuf {
+    /* 00 */ u8 valid;
+    /* 01 */ u8 faction_pal;
+    /* 02 */ u16 x, y;
+    /* 06 */ u16 bid;
+
+    // i16 chara_pal;
+
+    /* 08 */ u16 round_type;
+    /* 0A */ u16 pos;
+    /* 0C */ u16 oam2_chr;
+    /* 0E */ u16 oam2_pal;
+    /* 10 */ struct Anim *anim1, *anim2;
+    /* 18 */ u16 *img_buf;
+    /* 1C */ u16 *pal_buf;
+    /* 20 */ u16 *oam_buf;
+    /* 24 */ u8  *scr_buf;
+    /* 28 */ const u16 *img_sheet;
+    /* 2C */ void *magicfx_buf;
+    /* 30 */ ProcPtr proc;
+};
+
+void EkrMainMini_ExecCommands(struct EkrMainMiniBuf *buf, struct Anim *anim);
+void EkrMainMini_C01_Blocking(struct Anim *anim);
+void EkrMainMini_C0D_ExecNextRoundAfterAttack(struct Anim *anim);
+void EkrMainMini_InitAnim(struct EkrMainMiniBuf *buf);
+void EkrMainMini_UpdateAnim(struct EkrMainMiniBuf *buf);
+void EkrMainMini_ChangeAnim(struct EkrMainMiniBuf *buf, int bid);
+void EkrMainMini_SetAnimPosition(struct EkrMainMiniBuf *buf, u16 x, u16 y);
+void EkrMainMini_SetAnimLayer(struct EkrMainMiniBuf *buf, u16 layer);
+bool EkrMainMini_CheckBlocking(struct EkrMainMiniBuf *buf);
+void EkrMainMini_EndBlock(struct EkrMainMiniBuf *buf);
+bool EkrMainMini_CheckDone(struct EkrMainMiniBuf *buf);
 void NewEfxAnimeDrvProc(void);
 void EndEfxAnimeDrvProc(void);
-void ExecAllBas(void);
+void EkrAnimeDrv_Loop(void);
 
-struct BanimUnkStructComm
+struct ProcEkrUnitMainMini {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x5C);
+
+    struct EkrMainMiniBuf *buf;
+};
+
+void NewEkrUnitMainMini(struct EkrMainMiniBuf *buf);
+void EndEkrMainMini(struct EkrMainMiniBuf *buf);
+void EkrMainMini_Loop(struct ProcEkrUnitMainMini *proc);
+
+/**
+ * ekrterrainfx
+ */
+struct EkrTerrainfxData
 {
     /* 00 */ i16 terrain_l; // terrain L
     /* 02 */ i16 pal_l; // pal ID L
@@ -819,20 +861,20 @@ struct BanimUnkStructComm
     /* 08 */ i16 pal_r;
     /* 0A */ i16 chr_r; // chr R
     /* 0C */ i16 distance;
-    /* 0E */ i16 unk0E;
-    /* 10 */ u16 unk10;
-    /* 14 */ ProcPtr proc14; // sub emulator proc a
-    /* 18 */ ProcPtr proc18; // sub emulator proc b
-    /* 1C */ void * unk1C;
-    /* 20 */ void * unk20;
-    /* 24 */ void * unk24;
-};
-extern struct BanimUnkStructComm gUnk_Banim_0201E0FC;
+    /* 0E */ i16 bg_index;
 
-// NewEkrUnitMainMini
-// func_fe6_0804BF00
-// func_fe6_0804BF24
-void func_fe6_0804BF40(struct BanimUnkStructComm *buf); // FE8: sub_805AA68
+    /* 10 */ u16 _pad_10;
+
+    /* 14 */ ProcPtr proc1;
+    /* 18 */ ProcPtr proc2;
+    /* 1C */ int vram_offset;
+    /* 20 */ void * img_buf;
+
+    /* 24 */ int _pad_24;
+};
+extern struct EkrTerrainfxData gEkrTerrainfxData, gEkrLvupTerrainfxData;
+
+void EkrMainMini_PutTerrainfx(struct EkrTerrainfxData *buf); // FE8: sub_805AA68
 // func_fe6_0804C2EC
 // func_fe6_0804C318
 // func_fe6_0804C330
@@ -1484,7 +1526,7 @@ void SetActiveCRSpellBgColorProc(ProcPtr proc);
 // CRSpell_RegisterBgPal
 // CRSpell_RegisterObjGfx
 // CRSpell_RegisterObjPal
-// StartClassReelSpellAnim
+void StartClassReelSpellAnim(struct Anim *anim);
 // StartClassReelSpellAnimDummy
 // StartClassReelSpellAnimFire
 // EfxopFire_Loop

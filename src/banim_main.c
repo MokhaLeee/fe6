@@ -23,7 +23,7 @@ void BattleAIS_ExecCommands(void)
 		if (type & ANIM_BIT2_COMMAND) {
 			while (1) {
 				if (anim->cqSize == 0)
-					goto L_pre_cmd_loop_end;
+					goto L_cmd_loop_end;
 
 				switch (anim->cq[anim->cqSize - 1]) {
 				case 0:
@@ -218,7 +218,7 @@ void BattleAIS_ExecCommands(void)
 									gpImgSheet[GetAnimPosition(anim1)] = anim1->imgSheet;
 								}
 							}
-							goto L_pre_cmd_loop_end;
+							goto L_cmd_loop_end;
 						}
 						/* fall through */
 
@@ -232,7 +232,7 @@ void BattleAIS_ExecCommands(void)
 					case ANIM_ROUND_TAKING_HIT_FAR:
 						LoadAnimFrame(anim1, type);
 						LoadAnimFrame(anim2, type);
-						goto L_pre_cmd_loop_end;
+						goto L_cmd_loop_end;
 						break;
 					}
 					break;
@@ -462,17 +462,17 @@ void BattleAIS_ExecCommands(void)
 				anim->cqSize--;
 			}
 
-		L_pre_cmd_loop_end:
+		L_cmd_loop_end:
 			anim->flags2 &= ~(ANIM_BIT2_COMMAND |
-							ANIM_BIT2_0800 |
-							ANIM_BIT2_0080 |
-							ANIM_BIT2_0040 |
-							ANIM_BIT2_0020 |
-							ANIM_BIT2_0010 |
-							ANIM_BIT2_0008 |
-							ANIM_BIT2_0004 |
-							ANIM_BIT2_0002 |
-							ANIM_BIT2_0001);
+							  ANIM_BIT2_0800 |
+							  ANIM_BIT2_0080 |
+							  ANIM_BIT2_0040 |
+							  ANIM_BIT2_0020 |
+							  ANIM_BIT2_0010 |
+							  ANIM_BIT2_0008 |
+							  ANIM_BIT2_0004 |
+							  ANIM_BIT2_0002 |
+							  ANIM_BIT2_0001);
 		}
 
 		if (type & ANIM_BIT2_FRAME) {
@@ -486,15 +486,15 @@ void BattleAIS_ExecCommands(void)
 			}
 
 			anim->flags2 &= ~(ANIM_BIT2_FRAME |
-							ANIM_BIT2_0800 |
-							ANIM_BIT2_0080 |
-							ANIM_BIT2_0040 |
-							ANIM_BIT2_0020 |
-							ANIM_BIT2_0010 |
-							ANIM_BIT2_0008 |
-							ANIM_BIT2_0004 |
-							ANIM_BIT2_0002 |
-							ANIM_BIT2_0001);
+							  ANIM_BIT2_0800 |
+							  ANIM_BIT2_0080 |
+							  ANIM_BIT2_0040 |
+							  ANIM_BIT2_0020 |
+							  ANIM_BIT2_0010 |
+							  ANIM_BIT2_0008 |
+							  ANIM_BIT2_0004 |
+							  ANIM_BIT2_0002 |
+							  ANIM_BIT2_0001);
 		}
 
 		if ((type & ANIM_BIT2_STOP) || (gAnimC01Blocking == true)) {

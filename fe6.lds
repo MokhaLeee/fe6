@@ -108,9 +108,9 @@ SECTIONS
         . = 0x000028; gEkrXPosBase = .;
         . = 0x00002C; gEkrYPosBase = .;
         . = 0x000030; gEkrBg0QuakeVec = .;
-        . = 0x000034; gUnk_Banim_02000034 = .;
-        . = 0x00003C; gUnk_Banim_0200003C = .;
-        . = 0x000044; gpBanimTerrainPalette = .;
+        . = 0x000034; gpBanimTerrainfxBufs = .;
+        . = 0x00003C; gpBanimTerrainTsaBufs = .;
+        . = 0x000044; gpBanimTerrainPalBufs = .;
         . = 0x00004C; gpEfxUnitPaletteBackup = .;
         . = 0x000054; gpBanimModesLeft = .;
         . = 0x000058; gpBanimModesRight = .;
@@ -125,7 +125,7 @@ SECTIONS
         . = 0x004120; gBanimPaletteRight = .;
         . = 0x0041C0; gBanimOamBufs = .;
         . = 0x00F1C0; gBanimScrs = .;
-        . = 0x0145C0; gUnk_Banim_020145C0 = .;
+        . = 0x0145C0; gBanimTerrainfxBuf = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
         . = 0x0165C0; gEfxPal = .;
         . = 0x0169C0; Buf_EkrGaugeNumImg = .;
@@ -176,7 +176,7 @@ SECTIONS
         . = 0x01E0F0; gUnk_Banim_0201E0F0 = .;
         . = 0x01E0F4; gProcEkrBaseAppearExist = .;
         . = 0x01E0F8; gUnk_Banim_0201E0F8 = .;
-        . = 0x01E0FC; gUnk_Banim_0201E0FC = .;
+        . = 0x01E0FC; gEkrTerrainfxData = .;
         . = 0x01E124; gBanimDoneFlag = .;
         . = 0x01E12C; gEkrBgPosition = .;
         . = 0x01E138; gpProcEfxAnimeDrv = .;
@@ -211,7 +211,7 @@ SECTIONS
         . = 0x01F05C; gUnk_Banim_0201F05C = .;
         . = 0x01F07C; gUnk_Banim_0201F07C = .;
         . = 0x01F080; gUnk_Banim_0201F080 = .;
-        . = 0x01F084; gUnk_Banim_0201F084 = .;
+        . = 0x01F084; gEkrLvupTerrainfxData = .;
         . = 0x01F0AC; gpEkrLvupUnit = .;
         . = 0x01F0B0; gpEkrLvupBattleUnit = .;
         . = 0x01F0B4; gEkrLvupPreLevel = .;
@@ -562,6 +562,7 @@ SECTIONS
         src/banim_ekrmain.o(.text);
         asm/banim_ekrmain.o(.text);
         src/banim_info.o(.text);
+        src/banim_ekrmainmini.o(.text);
         asm/banim_ekrmainmini.o(.text);
         asm/banim_ekrarena.o(.text);
         src/banim_efxmagic.o(.text);
@@ -809,7 +810,7 @@ SECTIONS
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmain.o(.data);
-        . = ALIGN(4); asm/banim_ekrmainmini.o(.data);
+        . = ALIGN(4); src/banim_ekrmainmini.o(.data);
         . = ALIGN(4); asm/banim_ekrarena.o(.data);
         . = ALIGN(4); data/data_banim_085CCC40.o(.data);
         . = ALIGN(4); data/banim_efxmagic_.o(.data);

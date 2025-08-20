@@ -394,7 +394,7 @@ EfxClearScreenFx: @ 0x08044390
 	bl GetBattleAnimArenaFlag
 	cmp r0, #0
 	bne .L08044498
-	bl func_fe6_080444EC
+	bl EkrDispUp_PutTerrainfx
 	b .L080444A4
 	.align 2, 0
 .L08044484: .4byte gDispIo
@@ -440,19 +440,19 @@ EfxClearScreenFx: @ 0x08044390
 	.align 2, 0
 .L080444E8: .4byte gDispIo
 
-	thumb_func_start func_fe6_080444EC
-func_fe6_080444EC: @ 0x080444EC
+	thumb_func_start EkrDispUp_PutTerrainfx
+EkrDispUp_PutTerrainfx: @ 0x080444EC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r4, .L0804452C @ =gUnk_Banim_0201E0FC
+	ldr r4, .L0804452C @ =gEkrTerrainfxData
 	ldr r2, .L08044530 @ =gBanimFloorfx
 	movs r0, #0
 	ldrsh r1, [r2, r0]
 	lsls r0, r1, #1
 	adds r0, r0, r1
 	lsls r0, r0, #3
-	ldr r3, .L08044534 @ =0x087EA008
+	ldr r3, .L08044534 @ =gBanimTerrainTable
 	adds r5, r0, r3
 	movs r6, #2
 	ldrsh r1, [r2, r6]
@@ -471,22 +471,22 @@ func_fe6_080444EC: @ 0x080444EC
 	bge .L08044564
 	cmp r1, #0
 	beq .L08044548
-	ldr r0, .L0804453C @ =gUnk_Banim_020145C0
+	ldr r0, .L0804453C @ =gBanimTerrainfxBuf
 	b .L08044576
 	.align 2, 0
-.L0804452C: .4byte gUnk_Banim_0201E0FC
+.L0804452C: .4byte gEkrTerrainfxData
 .L08044530: .4byte gBanimFloorfx
-.L08044534: .4byte 0x087EA008
+.L08044534: .4byte gBanimTerrainTable
 .L08044538: .4byte gEkrDistanceType
-.L0804453C: .4byte gUnk_Banim_020145C0
+.L0804453C: .4byte gBanimTerrainfxBuf
 .L08044540:
-	ldr r7, .L0804455C @ =gUnk_Banim_020145C0
+	ldr r7, .L0804455C @ =gBanimTerrainfxBuf
 	mov ip, r7
 	cmp r1, #4
 	bne .L08044578
 .L08044548:
-	ldr r0, .L08044560 @ =gUnk_Banim_02000034
-	ldr r1, .L0804455C @ =gUnk_Banim_020145C0
+	ldr r0, .L08044560 @ =gpBanimTerrainfxBufs
+	ldr r1, .L0804455C @ =gBanimTerrainfxBuf
 	str r1, [r0]
 	movs r7, #0x80
 	lsls r7, r7, #5
@@ -495,10 +495,10 @@ func_fe6_080444EC: @ 0x080444EC
 	mov ip, r1
 	b .L08044578
 	.align 2, 0
-.L0804455C: .4byte gUnk_Banim_020145C0
-.L08044560: .4byte gUnk_Banim_02000034
+.L0804455C: .4byte gBanimTerrainfxBuf
+.L08044560: .4byte gpBanimTerrainfxBufs
 .L08044564:
-	ldr r0, .L080445E8 @ =gUnk_Banim_02000034
+	ldr r0, .L080445E8 @ =gpBanimTerrainfxBufs
 	ldr r1, .L080445EC @ =gUnk_Banim_02014DC0
 	str r1, [r0]
 	movs r7, #0x80
@@ -512,12 +512,12 @@ func_fe6_080444EC: @ 0x080444EC
 .L08044578:
 	ldr r0, .L080445F4 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	ldr r0, .L080445F8 @ =gpBanimTerrainPalette
+	ldr r0, .L080445F8 @ =gpBanimTerrainPalBufs
 	ldr r1, [r5, #0x10]
 	str r1, [r0]
 	ldr r1, [r3, #0x10]
 	str r1, [r0, #4]
-	ldr r2, .L080445FC @ =gUnk_Banim_0200003C
+	ldr r2, .L080445FC @ =gpBanimTerrainTsaBufs
 	ldr r1, .L08044600 @ =TsaConfs_BanimTmA
 	movs r3, #0
 	ldrsh r0, [r6, r3]
@@ -559,19 +559,19 @@ func_fe6_080444EC: @ 0x080444EC
 	ldrh r0, [r0]
 	strh r0, [r4, #0x10]
 	adds r0, r4, #0
-	bl func_fe6_0804BF40
+	bl EkrMainMini_PutTerrainfx
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080445E8: .4byte gUnk_Banim_02000034
+.L080445E8: .4byte gpBanimTerrainfxBufs
 .L080445EC: .4byte gUnk_Banim_02014DC0
 .L080445F0: .4byte 0xFFFFF800
 .L080445F4: .4byte gPlaySt
-.L080445F8: .4byte gpBanimTerrainPalette
-.L080445FC: .4byte gUnk_Banim_0200003C
+.L080445F8: .4byte gpBanimTerrainPalBufs
+.L080445FC: .4byte gpBanimTerrainTsaBufs
 .L08044600: .4byte TsaConfs_BanimTmA
 .L08044604: .4byte gEkrSnowWeather
 

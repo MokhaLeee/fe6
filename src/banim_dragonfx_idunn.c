@@ -385,7 +385,7 @@ ProcPtr NewEkrDragonfx_IdunnBaseAppear(struct BaSprite * anim)
     proc->flag = EDRAGONFX_FLAG_START;
     proc->timer = 0;
 
-    func_fe6_0804BF40(&gUnk_Banim_0201E0FC);
+    EkrMainMini_PutTerrainfx(&gEkrTerrainfxData);
     CpuFastCopy(PAL_BG(BGPAL_EFX_4), gEkrBgPaletteBackup3, 0x40);
     EfxPalBlackInOut(PAL_BG(BGPAL_EFX_0), 4, 2, 0x10);
     return proc;

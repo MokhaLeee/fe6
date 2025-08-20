@@ -144,7 +144,7 @@ void UpdateBanimFrame(void)
 		else
 			LZ77UnCompWram(tmp_banim->oam_r, gBanimOamBufs);
 
-		*(u32 *)(gBanimOamBufs + 0x57F0) = 1;
+		*(u32 *)(gBanimOamBufs + BAS_OAM_REF_MAX_SIZE) = 1;
 	}
 
 	if (gBanimValid[POS_R] == true) {
@@ -171,7 +171,7 @@ void UpdateBanimFrame(void)
 
 		LZ77UnCompWram(banim[bid].oam_r, &gBanimOamBufs[0x5800]);
 
-		*(u32 *)(gBanimOamBufs + 0x5800 + 0x57F0) = 1;
+		*(u32 *)(gBanimOamBufs + 0x5800 + BAS_OAM_REF_MAX_SIZE) = 1;
 	}
 
 	/* triangle*/

@@ -38,7 +38,7 @@ struct BaSprite
 
     /* 3C */ void const * sprData;
     /* 40 */ void const * unk40;
-    /* 44 */ void const * unk_44;
+    /* 44 */ void * priv;
 };
 
 #define Anim BaSprite /* Macro for FE8U */
