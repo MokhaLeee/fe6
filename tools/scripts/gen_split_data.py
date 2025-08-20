@@ -5,7 +5,7 @@
 
 import os, sys, subprocess
 
-def generate_unsymboled_const_data():
+def generate_unsymboled_const_data(prefix):
     list = {}
 
     _identifier = ""
@@ -16,7 +16,7 @@ def generate_unsymboled_const_data():
             continue
 
         ptr = eval(line[start_offse:start_offse+10])
-        list[ptr] = f"gUnk_{ptr:08X}"
+        list[ptr] = f"{prefix}_{ptr:08X}"
 
     return sorted(list.values())
 
@@ -25,7 +25,7 @@ def write_data(fs, fh, symbol, start, end):
     fh.write(f'extern u16 {symbol}[];\n')
 
     fs.write(f'\n\t.global {symbol}\n')
-    fs.write(f'{symbol}:\t@ 0x{symbol[5:5+8]}\n')
+    fs.write(f'{symbol}:\t@ 0x{symbol[-6:]}\n')
     fs.write(f'\t.incbin "fe6-base.gba", 0x{start:06X}, 0x{end:06X} - 0x{start:06X}\n')
 
 def main(args):
@@ -35,18 +35,23 @@ def main(args):
     except IndexError:
         sys.exit(f"Usage: {args[0]} OUT_FILE_S OUT_FILE_H")
 
-    symbols = generate_unsymboled_const_data()
+    try:
+        prefix = args[3]
+    except IndexError:
+        prefix = "gUnk"
+
+    symbols = generate_unsymboled_const_data(prefix)
 
     with open(out_s, 'w') as fs, open(out_h, 'w') as fh:
         for i in range(len(symbols)):
             symbol = symbols[i]
-            off1 = eval(f'0x{symbol[7:7+6]}')
+            off1 = eval(f'0x{symbol[-6:]}')
 
             if i == (len(symbols) - 1):
                 off2 = 0
             else:
                 symbol2 = symbols[i + 1]
-                off2 = eval(f'0x{symbol2[7:7+6]}')
+                off2 = eval(f'0x{symbol2[-6:]}')
 
             print(symbol)
 

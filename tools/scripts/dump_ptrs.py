@@ -47,7 +47,7 @@ def dump_one_part(rom_data, off):
         off = dump_one_word(rom_data, off)
 
         if try_get_ptr_symbol(off | 0x08000000) != None:
-            print("")
+            # print("")
             break
 
     return off
@@ -76,14 +76,14 @@ def main(args):
             if name == None:
                 name = f"gUnknown_08{off:06X}"
 
-            print(f"\t.global {name}")
-            print(f"{name}: @ 0x{off:08X}")
+            # print(f"\t.global {name}")
+            # print(f"{name}: @ 0x{off:08X}")
             off = dump_one_part(rom_data, off)
 
             if off_end <= off:
                 break
 
-        print(f"// End at: {off + 0x08000000:08X}")
+        # print(f"// End at: {off + 0x08000000:08X}")
 
 if __name__ == '__main__':
     main(sys.argv)

@@ -1,7 +1,7 @@
 	.section .rodata
 
-	.global gUnk_0811A218
-gUnk_0811A218: @ 0811A218
+	.global FrameConf_EfxResireBG3
+FrameConf_EfxResireBG3: @ 0811A218
 	.incbin "fe6-base.gba", 0x11A218, (0x11A276 - 0x11A218) @ length: 005E
 
 	.global FrameConf_EfxResireBG2
