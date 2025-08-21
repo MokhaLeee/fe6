@@ -4,8 +4,8 @@
 gSongTable:
     .incbin "fe6-base.gba", 0x3994d8, (0x39A840 - 0x3994d8)
 
-    .global dummy_song
-    dummy_song:	@ 0x39A840
+.global dummy_song
+dummy_song:	@ 0x39A840
     .byte	0		@ trackCount
     .byte	0		@ blockCount
     .byte	0		@ priority
