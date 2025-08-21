@@ -904,7 +904,7 @@ func_fe6_080585DC: @ 0x080585DC
 	str r0, [r4, #0x48]
 	ldr r0, .L08058628 @ =gUnk_085D3A6C
 	str r0, [r4, #0x4c]
-	ldr r1, .L0805862C @ =gUnk_081AB1B0
+	ldr r1, .L0805862C @ =TsaArray_EfxLiveBG_B_R
 	adds r0, r5, #0
 	bl CRSpell_RegisterBgGfx
 	ldr r0, [r6, #0x24]
@@ -919,7 +919,7 @@ func_fe6_080585DC: @ 0x080585DC
 .L08058620: .4byte gUnk_085D3A54
 .L08058624: .4byte gUnk_0811AF9E
 .L08058628: .4byte gUnk_085D3A6C
-.L0805862C: .4byte gUnk_081AB1B0
+.L0805862C: .4byte TsaArray_EfxLiveBG_B_R
 
 	thumb_func_start func_fe6_08058630
 func_fe6_08058630: @ 0x08058630
@@ -974,7 +974,7 @@ func_fe6_0805867C: @ 0x0805867C
 	str r0, [r4, #0x44]
 	ldr r0, .L080586A8 @ =gUnk_0811AFA4
 	str r0, [r4, #0x48]
-	ldr r0, .L080586AC @ =gUnk_081ABCA0
+	ldr r0, .L080586AC @ =PalArray1_EfxLiveBGCOL
 	str r0, [r4, #0x4c]
 	pop {r4, r5}
 	pop {r0}
@@ -982,7 +982,7 @@ func_fe6_0805867C: @ 0x0805867C
 	.align 2, 0
 .L080586A4: .4byte gUnk_085D3A70
 .L080586A8: .4byte gUnk_0811AFA4
-.L080586AC: .4byte gUnk_081ABCA0
+.L080586AC: .4byte PalArray1_EfxLiveBGCOL
 
 	thumb_func_start func_fe6_080586B0
 func_fe6_080586B0: @ 0x080586B0
@@ -1146,7 +1146,7 @@ func_fe6_080587C0: @ 0x080587C0
 	strh r0, [r4, #0x2c]
 	movs r0, #0x33
 	strh r0, [r4, #0x2e]
-	ldr r3, .L08058818 @ =gUnk_085F0A14
+	ldr r3, .L08058818 @ =AnimScr_EfxLiveOBJ
 	adds r0, r5, #0
 	movs r1, #1
 	adds r2, r3, #0
@@ -1164,16 +1164,16 @@ func_fe6_080587C0: @ 0x080587C0
 	ldr r1, .L0805881C @ =Pal_EfxFimbulvetrOBJ
 	bl CRSpell_RegisterObjPal
 	ldr r0, [r4, #0x5c]
-	ldr r1, .L08058820 @ =gUnk_081ABEA0
+	ldr r1, .L08058820 @ =Img_EfxLiveOBJ
 	bl CRSpell_RegisterObjGfx
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L08058814: .4byte gUnk_085D3AB0
-.L08058818: .4byte gUnk_085F0A14
+.L08058818: .4byte AnimScr_EfxLiveOBJ
 .L0805881C: .4byte Pal_EfxFimbulvetrOBJ
-.L08058820: .4byte gUnk_081ABEA0
+.L08058820: .4byte Img_EfxLiveOBJ
 
 	thumb_func_start func_fe6_08058824
 func_fe6_08058824: @ 0x08058824

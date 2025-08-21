@@ -3,7 +3,7 @@
 #include "util.h"
 #include "banim.h"
 
-CONST_DATA short gUnk_08605A94[0x140] = {
+CONST_DATA short PosArray_EfxApocalypseBGCtrl[0x140] = {
     0,   0,   0,
     1,   1,   1,
     2,   2,

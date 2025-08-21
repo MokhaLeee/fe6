@@ -75,7 +75,7 @@ void EfxRestRST_Loop(struct ProcEfx *proc)
 
     for (i = 0; i < 0x78; buf++, i++) {
         val1 += proc->unk48;
-        *buf = (((gUnk_08605A94[val1] *proc->frame) << 8) >> 0x10) + gDispIo.bg_off[BG_1].x;
+        *buf = (((PosArray_EfxApocalypseBGCtrl[val1] *proc->frame) << 8) >> 0x10) + gDispIo.bg_off[BG_1].x;
     }
 
     if (++proc->timer == proc->unk44)

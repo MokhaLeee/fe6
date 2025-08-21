@@ -60,8 +60,8 @@ AnimScr_EfxAlacaliburOBJ_LB: @ 085EA8A4
 AnimScr_EfxMistyrainOBJ1_1: @ 085EABC0
 	.incbin "fe6-base.gba", 0x5EABC0, (0x5EAC34 - 0x5EABC0) @ length: 0074
 
-	.global gUnk_085EAC34
-gUnk_085EAC34: @ 085EAC34
+	.global AnimScr_EfxHazymoonOBJ3RND
+AnimScr_EfxHazymoonOBJ3RND: @ 085EAC34
 	.incbin "fe6-base.gba", 0x5EAC34, (0x5EADB0 - 0x5EAC34) @ length: 017C
 
 	.global AnimScr_EfxMistyrainOBJ1_2
@@ -84,60 +84,60 @@ AnimScr_EfxMistyrainOBJ1_3: @ 085EB264
 AnimScr_EfxDivineOBJ: @ 085EB83C
 	.incbin "fe6-base.gba", 0x5EB83C, (0x5EBF40 - 0x5EB83C) @ length: 0704
 
-	.global gUnk_085EBF40
-gUnk_085EBF40: @ 085EBF40
+	.global AnimScr_EfxApocalypseOBJ2_1
+AnimScr_EfxApocalypseOBJ2_1: @ 085EBF40
 	.incbin "fe6-base.gba", 0x5EBF40, (0x5EBF50 - 0x5EBF40) @ length: 0010
 
-	.global gUnk_085EBF50
-gUnk_085EBF50: @ 085EBF50
+	.global AnimScr_EfxApocalypseOBJ3RND_1
+AnimScr_EfxApocalypseOBJ3RND_1: @ 085EBF50
 	.incbin "fe6-base.gba", 0x5EBF50, (0x5EBF58 - 0x5EBF50) @ length: 0008
 
-	.global gUnk_085EBF58
-gUnk_085EBF58: @ 085EBF58
+	.global AnimScr_EfxApocalypseOBJ3RND_2
+AnimScr_EfxApocalypseOBJ3RND_2: @ 085EBF58
 	.incbin "fe6-base.gba", 0x5EBF58, (0x5EBF60 - 0x5EBF58) @ length: 0008
 
-	.global gUnk_085EBF60
-gUnk_085EBF60: @ 085EBF60
+	.global AnimScr_EfxApocalypseOBJ3RND_3
+AnimScr_EfxApocalypseOBJ3RND_3: @ 085EBF60
 	.incbin "fe6-base.gba", 0x5EBF60, (0x5EC478 - 0x5EBF60) @ length: 0518
 
-	.global gUnk_085EC478
-gUnk_085EC478: @ 085EC478
+	.global AnimScr_EfxApocalypseOBJ2_2
+AnimScr_EfxApocalypseOBJ2_2: @ 085EC478
 	.incbin "fe6-base.gba", 0x5EC478, (0x5EC630 - 0x5EC478) @ length: 01B8
 
-	.global gUnk_085EC630
-gUnk_085EC630: @ 085EC630
+	.global AnimScr_EfxHazymoonOBJ2_1
+AnimScr_EfxHazymoonOBJ2_1: @ 085EC630
 	.incbin "fe6-base.gba", 0x5EC630, (0x5EC938 - 0x5EC630) @ length: 0308
 
-	.global gUnk_085EC938
-gUnk_085EC938: @ 085EC938
+	.global AnimScr_EfxHazymoonOBJ2_2
+AnimScr_EfxHazymoonOBJ2_2: @ 085EC938
 	.incbin "fe6-base.gba", 0x5EC938, (0x5ECC34 - 0x5EC938) @ length: 02FC
 
-	.global gUnk_085ECC34
-gUnk_085ECC34: @ 085ECC34
+	.global AnimScr_EfxHazymoonOBJ2_3
+AnimScr_EfxHazymoonOBJ2_3: @ 085ECC34
 	.incbin "fe6-base.gba", 0x5ECC34, (0x5ED8CC - 0x5ECC34) @ length: 0C98
 
-	.global gUnk_085ED8CC
-gUnk_085ED8CC: @ 085ED8CC
+	.global AnimScr_EfxFenrirOBJ2Chiri1
+AnimScr_EfxFenrirOBJ2Chiri1: @ 085ED8CC
 	.incbin "fe6-base.gba", 0x5ED8CC, (0x5ED8F8 - 0x5ED8CC) @ length: 002C
 
-	.global gUnk_085ED8F8
-gUnk_085ED8F8: @ 085ED8F8
+	.global AnimScr_EfxFenrirOBJ2Chiri2
+AnimScr_EfxFenrirOBJ2Chiri2: @ 085ED8F8
 	.incbin "fe6-base.gba", 0x5ED8F8, (0x5ED924 - 0x5ED8F8) @ length: 002C
 
-	.global gUnk_085ED924
-gUnk_085ED924: @ 085ED924
+	.global AnimScr_EfxFenrirOBJ
+AnimScr_EfxFenrirOBJ: @ 085ED924
 	.incbin "fe6-base.gba", 0x5ED924, (0x5EDCC8 - 0x5ED924) @ length: 03A4
 
 	.global AnimScr_EfxPurgeOBJ
 AnimScr_EfxPurgeOBJ: @ 085EDCC8
 	.incbin "fe6-base.gba", 0x5EDCC8, (0x5F0A14 - 0x5EDCC8) @ length: 2D4C
 
-	.global gUnk_085F0A14
-gUnk_085F0A14: @ 085F0A14
+	.global AnimScr_EfxLiveOBJ
+AnimScr_EfxLiveOBJ: @ 085F0A14
 	.incbin "fe6-base.gba", 0x5F0A14, (0x5F0AA4 - 0x5F0A14) @ length: 0090
 
-	.global gUnk_085F0AA4
-gUnk_085F0AA4: @ 085F0AA4
+	.global AnimScr_EfxReserveOBJ
+AnimScr_EfxReserveOBJ: @ 085F0AA4
 	.incbin "fe6-base.gba", 0x5F0AA4, (0x5F1FC0 - 0x5F0AA4) @ length: 151C
 
 	.global gUnk_085F1FC0
@@ -224,30 +224,30 @@ gUnk_08602FAC: @ 08602FAC
 gUnk_086030FC: @ 086030FC
 	.incbin "fe6-base.gba", 0x6030FC, (0x603B1C - 0x6030FC) @ length: 0A20
 
-	.global gUnk_08603B1C
-gUnk_08603B1C: @ 08603B1C
+	.global AnimScr_EfxAureolaOBJCtrl1
+AnimScr_EfxAureolaOBJCtrl1: @ 08603B1C
 	.incbin "fe6-base.gba", 0x603B1C, (0x603B24 - 0x603B1C) @ length: 0008
 
-	.global gUnk_08603B24
-gUnk_08603B24: @ 08603B24
+	.global AnimScr_EfxAureolaOBJCtrl2
+AnimScr_EfxAureolaOBJCtrl2: @ 08603B24
 	.incbin "fe6-base.gba", 0x603B24, (0x603B2C - 0x603B24) @ length: 0008
 
-	.global gUnk_08603B2C
-gUnk_08603B2C: @ 08603B2C
+	.global AnimScr_EfxAureolaOBJCtrl3
+AnimScr_EfxAureolaOBJCtrl3: @ 08603B2C
 	.incbin "fe6-base.gba", 0x603B2C, (0x603B34 - 0x603B2C) @ length: 0008
 
-	.global gUnk_08603B34
-gUnk_08603B34: @ 08603B34
+	.global AnimScr_EfxAureolaOBJ2_1
+AnimScr_EfxAureolaOBJ2_1: @ 08603B34
 	.incbin "fe6-base.gba", 0x603B34, (0x603B58 - 0x603B34) @ length: 0024
 
-	.global gUnk_08603B58
-gUnk_08603B58: @ 08603B58
+	.global AnimScr_EfxAureolaOBJ2_2
+AnimScr_EfxAureolaOBJ2_2: @ 08603B58
 	.incbin "fe6-base.gba", 0x603B58, (0x603BA4 - 0x603B58) @ length: 004C
 
-	.global gUnk_08603BA4
-gUnk_08603BA4: @ 08603BA4
+	.global AnimScr_EfxAureolaOBJ3_1
+AnimScr_EfxAureolaOBJ3_1: @ 08603BA4
 	.incbin "fe6-base.gba", 0x603BA4, (0x603BC0 - 0x603BA4) @ length: 001C
 
-	.global gUnk_08603BC0
-gUnk_08603BC0: @ 08603BC0
+	.global AnimScr_EfxAureolaOBJ3_2
+AnimScr_EfxAureolaOBJ3_2: @ 08603BC0
 	.incbin "fe6-base.gba", 0x603BC0, (0x6046D8 - 0x603BC0) @ length: 0B18

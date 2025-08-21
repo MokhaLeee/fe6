@@ -1265,109 +1265,109 @@ void NewEfxDivineBG3(struct Anim *anim);
 void NewEfxDivineOBJ(struct Anim *anim);
 // EfxDivineOBJ_Loop
 void StartSpellAnimAureola(struct Anim *anim);
-// func_fe6_080520CC
-// func_fe6_08052238
-// func_fe6_080522D0
-// func_fe6_08052334
-// func_fe6_0805238C
-// func_fe6_08052460
-// func_fe6_080524A8
-// func_fe6_080524F4
-// func_fe6_08052544
-// func_fe6_08052598
-// func_fe6_0805267C
-// func_fe6_080526F4
-// func_fe6_080527A4
-// func_fe6_08052848
-// func_fe6_08052878
-// func_fe6_080528CC
-// func_fe6_08052974
+// EfxAureola_Loop
+// NewEfxAureolaBG
+// EfxAureolaBG_Loop
+// NewEfxAureolaBG2
+// EfxAureolaBG2_Loop
+// NewEfxAureolaBG2COL
+// EfxAureolaBG2COL_Loop
+// NewEfxAureolaOBJ
+// EfxAureolaOBJ_Loop
+// NewEfxAureolaOBJCtrl
+// EfxAureolaOBJCtrl_Loop
+// NewEfxAureolaOBJ2
+// EfxAureolaOBJ2_Loop
+// NewEfxAureolaOBJ3
+// EfxAureolaOBJ3_Loop
+// NewEfxAureolaOBJ3Ctrl
+// EfxAureolaOBJ3Ctrl_Loop
 // StartSpellAnimApocalypse
-// func_fe6_08052A28
-// func_fe6_08052BA8
-// func_fe6_08052C34
-// func_fe6_08052C68
-// func_fe6_08052C9C
-// func_fe6_08052D40
-// func_fe6_08052D8C
-// func_fe6_08052DF4
-// func_fe6_08052E30
-// func_fe6_08052E9C
-// func_fe6_08052F28
-// func_fe6_08052FB4
-// func_fe6_0805304C
-// func_fe6_0805308C
-// func_fe6_080530E4
-// func_fe6_08053114
-// func_fe6_0805315C
-// func_fe6_0805318C
-// func_fe6_080531C4
-// func_fe6_080531F4
-// func_fe6_08053218
-// func_fe6_0805327C
-// func_fe6_08053340
-// func_fe6_08053420
-// func_fe6_080534BC
-// func_fe6_080534FC
-// func_fe6_08053530
-// func_fe6_08053568
-// func_fe6_080535F8
-// func_fe6_080536C4
+// EfxApocalypse_Loop
+// NewEfxApocalypseBG
+// EfxApocalypseBG_Loop
+// NewEfxApocalypseBGCtrl
+// EfxApocalypseBGCtrl_Loop
+// NewEfxApocalypseBGCOL
+// EfxApocalypseBGCOL_Loop
+// NewEfxApocalypseOBJ
+// EfxApocalypseOBJ_Loop1
+// EfxApocalypseOBJ_Loop2
+// EfxApocalypseOBJ_Loop3
+// EfxApocalypseOBJ_Loop4
+// NewEfxApocalypseBGCOL2
+// EfxApocalypseBGCOL2_Loop
+// NewEfxApocalypseDummy
+// EfxApocalypseDummy_Loop
+// NewEfxApocalypseBgFlash1
+// EfxApocalypseBgFlash1_Loop
+// NewEfxApocalypseBgFlash2
+// EfxApocalypseBgFlash2_Loop1
+// EfxApocalypseBgFlash2_Loop2
+// NewEfxApocalypseBG2
+// EfxApocalypseBG2_Loop
+// NewEfxApocalypseOBJ2
+// EfxApocalypseOBJ2_Loop1
+// EfxApocalypseOBJ2_Loop2
+// NewEfxApocalypseOBJ3
+// EfxApocalypseOBJ3_Loop
+// NewEfxApocalypseOBJ3RND
+// EfxApocalypseOBJ3RND_Loop
 // StartSpellAnimEclipse
-// func_fe6_080537A0
-// func_fe6_08053954
-// func_fe6_080539C4
-// func_fe6_08053A44
-// func_fe6_08053A98
-// func_fe6_08053AFC
-// func_fe6_08053B88
-// func_fe6_08053BA0
-// func_fe6_08053BFC
-// func_fe6_08053C58
-// func_fe6_08053CB4
-// func_fe6_08053CFC
-// func_fe6_08053D5C
-// func_fe6_08053DB0
+// EfxHazymoon_Loop
+// NewEfxHazymoonBG1
+// NewEfxHazymoonBG2
+// NewEfxHazymoonBG3
+// EfxHazymoonBG_Loop
+// NewEfxHazymoonOBJ2
+// EfxHazymoonOBJ2_OnEnd
+// EfxHazymoonOBJ2_Loop1
+// EfxHazymoonOBJ2_Loop2
+// EfxHazymoonOBJ2_Loop3
+// NewEfxHazymoonOBJ3
+// EfxHazymoonOBJ3_Loop
+// NewEfxHazymoonOBJ3RND
+// EfxHazymoonOBJ3RND_Loop
 // StartSpellAnimFenrir
-// func_fe6_08053E04
-// func_fe6_08053FF4
-// func_fe6_08054084
-// func_fe6_080540A0
-// func_fe6_080540D0
-// func_fe6_08054118
-// func_fe6_08054128
-// func_fe6_08054168
-// func_fe6_080541C8
-// func_fe6_080541FC
-// func_fe6_0805428C
-// func_fe6_08054310
-// func_fe6_080543C4
-// func_fe6_0805440C
-// func_fe6_08054458
-// func_fe6_080544D8
+// EfxFenrir_Loop
+// NewEfxFenrirBG
+// EfxFenrirBG_OnEnd
+// EfxFenrirBG_Loop
+// NewEfxFenrirBGCOL
+// EfxFenrirBGCOL_OnEnd
+// EfxFenrirBGCOL_Loop
+// NewEfxFenrirOBJ
+// EfxFenrirOBJ_Loop
+// NewEfxFenrirBG2_A
+// NewEfxFenrirBG2_B
+// EfxFenrirBG2_Loop
+// NewEfxFenrirOBJ2
+// EfxFenrirOBJ2_Loop
+// NewEfxFenrirOBJ2Chiri
+// EfxFenrirOBJ2Chiri_Loop
 // StartSpellAnimHeal
-// func_fe6_08054580
+// EfxLive_Loop
 // StartSpellAnimMend
-// func_fe6_080546D0
+// EfxRelive_Loop
 // StartSpellAnimRecover
-// func_fe6_08054870
+// EfxRecover_Loop
 // StartSpellAnimPhysic
-// func_fe6_08054A10
-// func_fe6_08054B98
-// func_fe6_08054C54
-// func_fe6_08054D08
-// func_fe6_08054D78
-// func_fe6_08054DE8
-// func_fe6_08054E58
-// func_fe6_08054EA0
-// func_fe6_08054EDC
-// func_fe6_08054EF8
-// func_fe6_08054F8C
-// func_fe6_08054FEC
-// func_fe6_08055050
-// func_fe6_08055084
-// func_fe6_080550B8
-// func_fe6_080550EC
+// EfxReblow_Loop
+// NewEfxLiveBG_A
+// NewEfxLiveBG_B
+// EfxLiveBG_Loop
+// NewEfxLiveBGCOL_A
+// NewEfxLiveBGCOL_B
+// EfxLiveBGCOL_Loop
+// NewEfxLiveALPHA
+// EfxLiveALPHA_Delay
+// EfxLiveALPHA_Loop
+// NewEfxLiveOBJ
+// NewEfxReserveOBJ
+// EfxLiveOBJ_Loop
+// EfxReserveOBJ_Loop1
+// EfxReserveOBJ_Loop2
+// NewEfxReblowOBJ
 // func_fe6_08055134
 // func_fe6_08055200
 // StartSpellAnimFortify
@@ -2032,8 +2032,8 @@ extern CONST_DATA struct ProcScr ProcScr_EfxPurgeOBJRND[];
 extern CONST_DATA struct ProcScr ProcScr_EfxPurgeOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblaze[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBG1[];
-// ??? Tsas_EfxForblazeBG1
-// ??? Img_EfxForblazeBG1
+// ??? TsaArray_EfxForblazeBG1
+// ??? ImgArray_EfxForblazeBG1
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBGCOL1[];
 // ??? gUnk_085D2230
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeOBJ[];
@@ -2053,62 +2053,62 @@ extern CONST_DATA u16 *ImgArray_EfxDivineBG3[];
 extern CONST_DATA u16 *TsaArray_EfxDivineBG3[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDivineOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxAureola[];
-// ??? gUnk_085D2518
-// ??? gUnk_085D2530
-// ??? gUnk_085D2544
-// ??? gUnk_085D2558
-// ??? gUnk_085D2570
-// ??? gUnk_085D2590
-// ??? gUnk_085D25A8
-// ??? gUnk_085D25C0
-// ??? gUnk_085D25D8
-// ??? gUnk_085D25F0
-// ??? gUnk_085D2608
-// ??? gUnk_085D2620
-// ??? gUnk_085D2638
-// ??? gUnk_085D2658
-// ??? gUnk_085D2678
-// ??? gUnk_085D26B0
-// ??? gUnk_085D26D0
-// ??? gUnk_085D26F0
-// ??? gUnk_085D2708
-// ??? gUnk_085D2720
-// ??? gUnk_085D2740
-// ??? gUnk_085D2758
-// ??? gUnk_085D2768
-// ??? gUnk_085D2778
-// ??? gUnk_085D2798
-// ??? gUnk_085D27B0
-// ??? gUnk_085D287C
-// ??? gUnk_085D2944
-// ??? gUnk_085D2A0C
-// ??? gUnk_085D2A24
-// ??? gUnk_085D2A3C
-// ??? gUnk_085D2A54
-// ??? gUnk_085D2AC0
-// ??? gUnk_085D2B2C
-// ??? gUnk_085D2B74
-// ??? gUnk_085D2B8C
-// ??? gUnk_085D2BA4
-// ??? gUnk_085D2BC4
-// ??? gUnk_085D2BDC
-// ??? gUnk_085D2BFC
-// ??? gUnk_085D2C24
-// ??? gUnk_085D2C3C
-// ??? gUnk_085D2C54
-// ??? gUnk_085D2D20
-// ??? gUnk_085D2DEC
-// ??? gUnk_085D2E04
-// ??? gUnk_085D2E1C
-// ??? gUnk_085D2E3C
-// ??? gUnk_085D2E54
-// ??? gUnk_085D2E6C
-// ??? gUnk_085D2E84
-// ??? gUnk_085D2E9C
-// ??? gUnk_085D2EB4
-// ??? gUnk_085D2ED4
-// ??? gUnk_085D2EF4
-// ??? gUnk_085D2F0C
+// ??? ProcScr_EfxAureolaBG
+// ??? ImgArray_EfxAureolaBG
+// ??? TsaArray_EfxAureolaBG
+// ??? ProcScr_EfxAureolaBG2
+// ??? ProcScr_EfxAureolaBG2COL
+// ??? ProcScr_EfxAureolaOBJ
+// ??? ProcScr_EfxAureolaOBJCtrl
+// ??? ProcScr_EfxAureolaOBJ2
+// ??? ProcScr_EfxAureolaOBJ3
+// ??? ProcScr_EfxAureolaOBJ3Ctrl
+// ??? ProcScr_EfxApocalypse
+// ??? ProcScr_EfxApocalypseBG
+// ??? ProcScr_EfxApocalypseBGCtrl
+// ??? ProcScr_EfxApocalypseBGCOL
+// ??? ProcScr_EfxApocalypseOBJ
+// ??? AnimArray_EfxApocalypseOBJ
+// ??? ProcScr_EfxApocalypseBGCOL2
+// ??? ProcScr_EfxApocalypseDummy
+// ??? ProcScr_EfxApocalypseBgFlash1
+// ??? ProcScr_EfxApocalypseBgFlash2
+// ??? ProcScr_EfxApocalypseBG2
+// ??? ImgArray_EfxApocalypseBG2
+// ??? TsaArray_EfxApocalypseBG2
+// ??? ProcScr_EfxApocalypseOBJ2
+// ??? ProcScr_EfxApocalypseOBJ3
+extern int DuraArray_EfxApocalypseOBJ3RND[];
+// ??? LoArray_EfxApocalypseOBJ3RND
+// ??? StateArray_EfxApocalypseOBJ3RND
+// ??? ProcScr_EfxApocalypseOBJ3RND
+// ??? ProcScr_EfxHazymoon
+// ??? ProcScr_EfxHazymoonBG
+// ??? TsaArray_EfxHazymoonBG
+// ??? ImgArray_EfxHazymoonBG
+// ??? ProcScr_EfxHazymoonOBJ2
+// ??? ProcScr_EfxHazymoonOBJ3
+// ??? gEclipseAnimSpriteCoordinates
+// ??? ProcScr_EfxHazymoonOBJ3RND
+// ??? ProcScr_EfxFenrir
+// ??? ProcScr_EfxFenrirBG
+// ??? ProcScr_EfxFenrirBGCOL
+// ??? ProcScr_EfxFenrirOBJ
+// ??? ProcScr_EfxFenrirBG2
+// ??? ImgArray_EfxFenrirBG2_A
+// ??? TsaArray_EfxFenrirBG2_A
+// ??? ProcScr_EfxFenrirOBJ2
+// ??? ProcScr_EfxFenrirOBJ2Chiri
+// ??? gFenrirSpriteAngles
+// ??? ProcScr_EfxLive
+// ??? ProcScr_EfxRelive
+// ??? ProcScr_EfxRecover
+// ??? ProcScr_EfxReblow
+// ??? ProcScr_EfxLiveBG
+// ??? ProcScr_EfxLiveBGCOL
+// ??? ProcScr_EfxLiveALPHA
+// ??? ProcScr_EfxLiveOBJ
+// ??? ProcScr_EfxReserveOBJ
 // ??? gUnk_085D2F2C
 // ??? gUnk_085D2F4C
 // ??? gUnk_085D2F64
@@ -2275,26 +2275,26 @@ extern CONST_DATA AnimScr AnimScr_EfxAlacaliburOBJ_RB[];
 extern CONST_DATA AnimScr AnimScr_EfxAlacaliburOBJ_LF[];
 extern CONST_DATA AnimScr AnimScr_EfxAlacaliburOBJ_LB[];
 extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ1_1[];
-extern CONST_DATA AnimScr gUnk_085EAC34[];
+extern CONST_DATA AnimScr AnimScr_EfxHazymoonOBJ3RND[];
 extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ1_2[];
 extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ2_1[];
 extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ2_2[];
 extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ1_3[];
 extern CONST_DATA AnimScr AnimScr_EfxDivineOBJ[];
-// ??? gUnk_085EBF40
-// ??? gUnk_085EBF50
-// ??? gUnk_085EBF58
-// ??? gUnk_085EBF60
-// ??? gUnk_085EC478
-// ??? gUnk_085EC630
-// ??? gUnk_085EC938
-// ??? gUnk_085ECC34
-// ??? gUnk_085ED8CC
-// ??? gUnk_085ED8F8
-// ??? gUnk_085ED924
+// ??? AnimScr_EfxApocalypseOBJ2_1
+// ??? AnimScr_EfxApocalypseOBJ3RND_1
+// ??? AnimScr_EfxApocalypseOBJ3RND_2
+// ??? AnimScr_EfxApocalypseOBJ3RND_3
+// ??? AnimScr_EfxApocalypseOBJ2_2
+// ??? AnimScr_EfxHazymoonOBJ2_1
+// ??? AnimScr_EfxHazymoonOBJ2_2
+// ??? AnimScr_EfxHazymoonOBJ2_3
+// ??? AnimScr_EfxFenrirOBJ2Chiri1
+// ??? AnimScr_EfxFenrirOBJ2Chiri2
+// ??? AnimScr_EfxFenrirOBJ
 // ??? AnimScr_EfxPurgeOBJ
-// ??? gUnk_085F0A14
-// ??? gUnk_085F0AA4
+// ??? AnimScr_EfxLiveOBJ
+// ??? AnimScr_EfxReserveOBJ
 // ??? gUnk_085F1FC0
 // ??? gUnk_085F2034
 // ??? gUnk_085F35C0
@@ -2316,13 +2316,13 @@ extern CONST_DATA AnimScr AnimScr_EfxDivineOBJ[];
 // ??? gUnk_085FEEEC
 // ??? gUnk_08602FAC
 // ??? gUnk_086030FC
-// ??? gUnk_08603B1C
-// ??? gUnk_08603B24
-// ??? gUnk_08603B2C
-// ??? gUnk_08603B34
-// ??? gUnk_08603B58
-// ??? gUnk_08603BA4
-// ??? gUnk_08603BC0
+// ??? AnimScr_EfxAureolaOBJCtrl1
+// ??? AnimScr_EfxAureolaOBJCtrl2
+// ??? AnimScr_EfxAureolaOBJCtrl3
+// ??? AnimScr_EfxAureolaOBJ2_1
+// ??? AnimScr_EfxAureolaOBJ2_2
+// ??? AnimScr_EfxAureolaOBJ3_1
+// ??? AnimScr_EfxAureolaOBJ3_2
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonMoveBg3[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonBark[];
 extern CONST_DATA struct ProcScr ProcScr_EkrManakete[];
@@ -2353,7 +2353,7 @@ extern AnimScr AnimScr_ManaketeEnter3[];
 extern AnimScr AnimScr_ManaketeExit1[];
 extern CONST_DATA AnimScr AnimScr_EkrIdunnDeamon1[];
 extern CONST_DATA AnimScr AnimScr_EkrIdunnDeamon2[];
-extern i16 gUnk_08605A94[];
+extern i16 PosArray_EfxApocalypseBGCtrl[];
 // ??? gEfxTmyPalRefs
 extern CONST_DATA struct ProcScr ProcScr_EkrSubAnimeEmulator[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSoundSE[];

@@ -256,11 +256,111 @@ ProcScr_EfxResireBG2: @ 085D19A4
 
 	.global ImgArray_EfxResireBG
 ImgArray_EfxResireBG: @ 085D19BC
-	.incbin "fe6-base.gba", 0x5D19BC, (0x5D1A88 - 0x5D19BC) @ length: 00CC
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081629F4
+	.4byte Img_EfxResireBG_081634C4
+	.4byte Img_EfxResireBG_081634C4
+	.4byte Img_EfxResireBG_081634C4
+	.4byte Img_EfxResireBG_0816406C
+	.4byte Img_EfxResireBG_0816406C
+	.4byte Img_EfxResireBG_08164BC4
+	.4byte Img_EfxResireBG_08164BC4
+	.4byte Img_EfxResireBG_08165678
+	.4byte Img_EfxResireBG_08165678
+	.4byte Img_EfxResireBG_08166148
+	.4byte Img_EfxResireBG_08166148
+	.4byte Img_EfxResireBG_08166148
+	.4byte Img_EfxResireBG_08166E0C
+	.4byte Img_EfxResireBG_08166E0C
+	.4byte Img_EfxResireBG_08166E0C
+	.4byte Img_EfxResireBG_08167710
+	.4byte Img_EfxResireBG_08167710
+	.4byte Img_EfxResireBG_08167710
+	.4byte Img_EfxResireBG_08167710
+	.4byte Img_EfxResireBG_08167710
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_08167C64
+	.4byte Img_EfxResireBG_0816857C
+	.4byte Img_EfxResireBG_0816857C
+	.4byte Img_EfxResireBG_0816857C
+	.4byte Img_EfxResireBG_0816857C
+	.4byte Img_EfxResireBG_081691B0
+	.4byte Img_EfxResireBG_081691B0
+	.4byte Img_EfxResireBG_081691B0
+	.4byte Img_EfxResireBG_08169E54
+	.4byte Img_EfxResireBG_08169E54
+	.4byte Img_EfxResireBG_08169E54
+	.4byte Img_EfxResireBG_0816AA48
+	.4byte Img_EfxResireBG_0816AA48
+	.4byte Img_EfxResireBG_0816AA48
+	.4byte Img_EfxResireBG_0816AA48
+	.4byte Img_EfxResireBG_0816AA48
 
 	.global TsaArray_EfxResireBG
 TsaArray_EfxResireBG: @ 085D1A88
-	.incbin "fe6-base.gba", 0x5D1A88, (0x5D1B54 - 0x5D1A88) @ length: 00CC
+	.4byte Tsa_EfxResireBG_0816B348
+	.4byte Tsa_EfxResireBG_0816B478
+	.4byte Tsa_EfxResireBG_0816B524
+	.4byte Tsa_EfxResireBG_0816B5D4
+	.4byte Tsa_EfxResireBG_0816B68C
+	.4byte Tsa_EfxResireBG_0816B74C
+	.4byte Tsa_EfxResireBG_0816B818
+	.4byte Tsa_EfxResireBG_0816B8F8
+	.4byte Tsa_EfxResireBG_0816B9E0
+	.4byte Tsa_EfxResireBG_0816BAE8
+	.4byte Tsa_EfxResireBG_0816BC04
+	.4byte Tsa_EfxResireBG_0816BD40
+	.4byte Tsa_EfxResireBG_0816BE90
+	.4byte Tsa_EfxResireBG_0816BFE8
+	.4byte Tsa_EfxResireBG_0816C140
+	.4byte Tsa_EfxResireBG_0816C294
+	.4byte Tsa_EfxResireBG_0816C3E4
+	.4byte Tsa_EfxResireBG_0816C534
+	.4byte Tsa_EfxResireBG_0816C66C
+	.4byte Tsa_EfxResireBG_0816C798
+	.4byte Tsa_EfxResireBG_0816C8B4
+	.4byte Tsa_EfxResireBG_0816C9C0
+	.4byte Tsa_EfxResireBG_0816CAB8
+	.4byte Tsa_EfxResireBG_0816CBA4
+	.4byte Tsa_EfxResireBG_0816CC74
+	.4byte Tsa_EfxResireBG_0816CD30
+	.4byte Tsa_EfxResireBG_0816CDE4
+	.4byte Tsa_EfxResireBG_0816CE94
+	.4byte Tsa_EfxResireBG_0816CF40
+	.4byte Tsa_EfxResireBG_0816CFE8
+	.4byte Tsa_EfxResireBG_0816D09C
+	.4byte Tsa_EfxResireBG_0816D15C
+	.4byte Tsa_EfxResireBG_0816D228
+	.4byte Tsa_EfxResireBG_0816D2F0
+	.4byte Tsa_EfxResireBG_0816D3B8
+	.4byte Tsa_EfxResireBG_0816D48C
+	.4byte Tsa_EfxResireBG_0816D568
+	.4byte Tsa_EfxResireBG_0816D650
+	.4byte Tsa_EfxResireBG_0816D744
+	.4byte Tsa_EfxResireBG_0816D84C
+	.4byte Tsa_EfxResireBG_0816D954
+	.4byte Tsa_EfxResireBG_0816DA78
+	.4byte Tsa_EfxResireBG_0816DB98
+	.4byte Tsa_EfxResireBG_0816DCB4
+	.4byte Tsa_EfxResireBG_0816DDC4
+	.4byte Tsa_EfxResireBG_0816DED0
+	.4byte Tsa_EfxResireBG_0816DFD0
+	.4byte Tsa_EfxResireBG_0816E0C0
+	.4byte Tsa_EfxResireBG_0816E19C
+	.4byte Tsa_EfxResireBG_0816E268
+	.4byte Tsa_EfxResireBG_0816E320
 
 	.global ProcScr_EfxResireRST
 ProcScr_EfxResireRST: @ 085D1B54
@@ -276,15 +376,111 @@ ProcScr_EfxLightningBG: @ 085D1B84
 
 	.global ImgArray_EfxLightningBG
 ImgArray_EfxLightningBG: @ 085D1B9C
-	.incbin "fe6-base.gba", 0x5D1B9C, (0x5D1C20 - 0x5D1B9C) @ length: 0084
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156200
+	.4byte Img_EfxLightningBG_08156518
+	.4byte Img_EfxLightningBG_08156518
+	.4byte Img_EfxLightningBG_08156518
+	.4byte Img_EfxLightningBG_081571C8
+	.4byte Img_EfxLightningBG_081571C8
+	.4byte Img_EfxLightningBG_081571C8
+	.4byte Img_EfxLightningBG_081571C8
+	.4byte Img_EfxLightningBG_081571C8
 
 	.global PalArray_EfxLightningBG
 PalArray_EfxLightningBG: @ 085D1C20
-	.incbin "fe6-base.gba", 0x5D1C20, (0x5D1CA4 - 0x5D1C20) @ length: 0084
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157C08
+	.4byte Pal_EfxLightningBG_08157C08
+	.4byte Pal_EfxLightningBG_08157C08
+	.4byte Pal_EfxLightningBG_08157C08
+	.4byte Pal_EfxLightningBG_08157C08
+	.4byte Pal_EfxLightningBG_08157C08
+	.4byte Pal_EfxLightningBG_08157C08
+	.4byte Pal_EfxLightningBG_08157C08
 
 	.global TsaArray_EfxLightningBG
 TsaArray_EfxLightningBG: @ 085D1CA4
-	.incbin "fe6-base.gba", 0x5D1CA4, (0x5D1D28 - 0x5D1CA4) @ length: 0084
+	.4byte Tsa_EfxLightningBG_08157C28
+	.4byte Tsa_EfxLightningBG_08157D4C
+	.4byte Tsa_EfxLightningBG_08157E6C
+	.4byte Tsa_EfxLightningBG_08157F78
+	.4byte Tsa_EfxLightningBG_08158074
+	.4byte Tsa_EfxLightningBG_0815815C
+	.4byte Tsa_EfxLightningBG_08158244
+	.4byte Tsa_EfxLightningBG_08158328
+	.4byte Tsa_EfxLightningBG_08158404
+	.4byte Tsa_EfxLightningBG_081584E4
+	.4byte Tsa_EfxLightningBG_081585D8
+	.4byte Tsa_EfxLightningBG_081586CC
+	.4byte Tsa_EfxLightningBG_081587D0
+	.4byte Tsa_EfxLightningBG_081588D8
+	.4byte Tsa_EfxLightningBG_081589F0
+	.4byte Tsa_EfxLightningBG_08158B14
+	.4byte Tsa_EfxLightningBG_08158C28
+	.4byte Tsa_EfxLightningBG_08158CD8
+	.4byte Tsa_EfxLightningBG_08158DE0
+	.4byte Tsa_EfxLightningBG_08158F1C
+	.4byte Tsa_EfxLightningBG_08159090
+	.4byte Tsa_EfxLightningBG_08159228
+	.4byte Tsa_EfxLightningBG_0815939C
+	.4byte Tsa_EfxLightningBG_081594A8
+	.4byte Tsa_EfxLightningBG_0815957C
+	.4byte Tsa_EfxLightningBG_0815961C
+	.4byte Tsa_EfxLightningBG_0815973C
+	.4byte Tsa_EfxLightningBG_08159858
+	.4byte Tsa_EfxLightningBG_0815996C
+	.4byte Tsa_EfxLightningBG_08159A64
+	.4byte Tsa_EfxLightningBG_08159B4C
+	.4byte Tsa_EfxLightningBG_08159C1C
+	.4byte Tsa_EfxLightningBG_08159CE0
 
 	.global ProcScr_EfxPurge
 ProcScr_EfxPurge: @ 085D1D28
@@ -296,15 +492,246 @@ ProcScr_EfxPurgeBG: @ 085D1D40
 
 	.global ImgArray_EfxPurgeBG
 ImgArray_EfxPurgeBG: @ 085D1D58
-	.incbin "fe6-base.gba", 0x5D1D58, (0x5D1E90 - 0x5D1D58) @ length: 0138
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_081531C8
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_08153A90
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_081541E0
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_08154BA4
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxLightningBG_081556F8
+	.4byte Img_EfxPurgeBG_0819879C
+	.4byte Img_EfxPurgeBG_0819879C
+	.4byte Img_EfxPurgeBG_08198CF8
+	.4byte Img_EfxPurgeBG_08198CF8
+	.4byte Img_EfxPurgeBG_08199374
+	.4byte Img_EfxPurgeBG_08199374
+	.4byte Img_EfxPurgeBG_081999C0
+	.4byte Img_EfxPurgeBG_081999C0
+	.4byte Img_EfxPurgeBG_0819A174
+	.4byte Img_EfxPurgeBG_0819A174
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte Img_EfxPurgeBG_0819A87C
+	.4byte Img_EfxPurgeBG_0819AD98
+	.4byte Img_EfxPurgeBG_0819B698
+	.4byte Img_EfxPurgeBG_0819C04C
+	.4byte Img_EfxPurgeBG_0819C9C0
+	.4byte Img_EfxPurgeBG_0819D394
+	.4byte Img_EfxPurgeBG_0819D394
+	.4byte Img_EfxPurgeBG_0819E398
+	.4byte Img_EfxPurgeBG_0819E398
+	.4byte Img_EfxPurgeBG_0819F1E8
+	.4byte Img_EfxPurgeBG_0819FCCC
+	.4byte Img_EfxPurgeBG_081A0874
+	.4byte Img_EfxPurgeBG_081A1410
+	.4byte Img_EfxPurgeBG_081A1ED0
+	.4byte Img_EfxPurgeBG_081A2948
 
 	.global PalArray_EfxPurgeBG
 PalArray_EfxPurgeBG: @ 085D1E90
-	.incbin "fe6-base.gba", 0x5D1E90, (0x5D1FC8 - 0x5D1E90) @ length: 0138
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxLightningBG_08157BE8
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte Pal_EfxPurgeBG_081A3C4C
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
+	.4byte Pal_EfxPurgeBG_081A3C6C
 
 	.global TsaArray_EfxPurgeBG
 TsaArray_EfxPurgeBG: @ 085D1FC8
-	.incbin "fe6-base.gba", 0x5D1FC8, (0x5D2100 - 0x5D1FC8) @ length: 0138
+	.4byte Tsa_EfxPurgeBG_081A3C8C
+	.4byte Tsa_EfxPurgeBG_081A3DB0
+	.4byte Tsa_EfxPurgeBG_081A3ED0
+	.4byte Tsa_EfxPurgeBG_081A3FDC
+	.4byte Tsa_EfxPurgeBG_081A40D8
+	.4byte Tsa_EfxPurgeBG_081A41C0
+	.4byte Tsa_EfxPurgeBG_081A42A8
+	.4byte Tsa_EfxPurgeBG_081A4388
+	.4byte Tsa_EfxPurgeBG_081A4464
+	.4byte Tsa_EfxPurgeBG_081A4544
+	.4byte Tsa_EfxPurgeBG_081A4638
+	.4byte Tsa_EfxPurgeBG_081A472C
+	.4byte Tsa_EfxPurgeBG_081A4830
+	.4byte Tsa_EfxPurgeBG_081A4938
+	.4byte Tsa_EfxPurgeBG_081A4A50
+	.4byte Tsa_EfxPurgeBG_081A4B74
+	.4byte Tsa_EfxPurgeBG_081A4C88
+	.4byte Tsa_EfxPurgeBG_081A4DAC
+	.4byte Tsa_EfxPurgeBG_081A4ED0
+	.4byte Tsa_EfxPurgeBG_081A4FE0
+	.4byte Tsa_EfxPurgeBG_081A50E0
+	.4byte Tsa_EfxPurgeBG_081A51C8
+	.4byte Tsa_EfxPurgeBG_081A52A8
+	.4byte Tsa_EfxPurgeBG_081A5384
+	.4byte Tsa_EfxPurgeBG_081A5460
+	.4byte Tsa_EfxPurgeBG_081A5544
+	.4byte Tsa_EfxPurgeBG_081A5638
+	.4byte Tsa_EfxPurgeBG_081A5728
+	.4byte Tsa_EfxPurgeBG_081A582C
+	.4byte Tsa_EfxPurgeBG_081A5934
+	.4byte Tsa_EfxPurgeBG_081A5A48
+	.4byte Tsa_EfxPurgeBG_081A5B6C
+	.4byte Tsa_EfxPurgeBG_081A5C80
+	.4byte Tsa_EfxPurgeBG_081A5DA4
+	.4byte Tsa_EfxPurgeBG_081A5EC4
+	.4byte Tsa_EfxPurgeBG_081A5FD0
+	.4byte Tsa_EfxPurgeBG_081A60CC
+	.4byte Tsa_EfxPurgeBG_081A61B4
+	.4byte Tsa_EfxPurgeBG_081A629C
+	.4byte Tsa_EfxPurgeBG_081A637C
+	.4byte Tsa_EfxPurgeBG_081A6458
+	.4byte Tsa_EfxPurgeBG_081A6538
+	.4byte Tsa_EfxPurgeBG_081A662C
+	.4byte Tsa_EfxPurgeBG_081A6720
+	.4byte Tsa_EfxPurgeBG_081A6824
+	.4byte Tsa_EfxPurgeBG_081A692C
+	.4byte Tsa_EfxPurgeBG_081A6A44
+	.4byte Tsa_EfxPurgeBG_081A6B68
+	.4byte Tsa_EfxPurgeBG_081A6C78
+	.4byte Tsa_EfxPurgeBG_081A6E8C
+	.4byte Tsa_EfxPurgeBG_081A7048
+	.4byte Tsa_EfxPurgeBG_081A7224
+	.4byte Tsa_EfxPurgeBG_081A7428
+	.4byte Tsa_EfxPurgeBG_081A7630
+	.4byte Tsa_EfxPurgeBG_081A7844
+	.4byte Tsa_EfxPurgeBG_081A7AA4
+	.4byte Tsa_EfxPurgeBG_081A7CD8
+	.4byte Tsa_EfxPurgeBG_081A7F4C
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte Tsa_EfxPurgeBG_081A8194
+	.4byte Tsa_EfxPurgeBG_081A84F4
+	.4byte Tsa_EfxPurgeBG_081A8848
+	.4byte Tsa_EfxPurgeBG_081A8B58
+	.4byte Tsa_EfxPurgeBG_081A8E3C
+	.4byte Tsa_EfxPurgeBG_081A910C
+	.4byte Tsa_EfxPurgeBG_081A93A4
+	.4byte Tsa_EfxPurgeBG_081A963C
+	.4byte Tsa_EfxPurgeBG_081A9868
+	.4byte Tsa_EfxPurgeBG_081A9B1C
+	.4byte Tsa_EfxPurgeBG_081A9DDC
+	.4byte Tsa_EfxPurgeBG_081AA10C
+	.4byte Tsa_EfxPurgeBG_081AA45C
+	.4byte Tsa_EfxPurgeBG_081AA7D4
+	.4byte Tsa_EfxPurgeBG_081AAB5C
 
 	.global ProcScr_EfxPurgeOBJRND
 ProcScr_EfxPurgeOBJRND: @ 085D2100
@@ -326,13 +753,37 @@ ProcScr_EfxForblaze: @ 085D2178
 ProcScr_EfxForblazeBG1: @ 085D2190
 	.incbin "fe6-base.gba", 0x5D2190, (0x5D21A8 - 0x5D2190) @ length: 0018
 
-	.global Tsas_EfxForblazeBG1
-Tsas_EfxForblazeBG1: @ 085D21A8
-	.incbin "fe6-base.gba", 0x5D21A8, (0x5D21DC - 0x5D21A8) @ length: 0034
+	.global TsaArray_EfxForblazeBG1
+TsaArray_EfxForblazeBG1: @ 085D21A8
+	.4byte Tsa_EfxForblazeBG1_0814092C
+	.4byte Tsa_EfxForblazeBG1_081409DC
+	.4byte Tsa_EfxForblazeBG1_08140A98
+	.4byte Tsa_EfxForblazeBG1_08140B60
+	.4byte Tsa_EfxForblazeBG1_08140C30
+	.4byte Tsa_EfxForblazeBG1_08140D00
+	.4byte Tsa_EfxForblazeBG1_08140DCC
+	.4byte Tsa_EfxForblazeBG1_08140E98
+	.4byte Tsa_EfxForblazeBG1_08140F7C
+	.4byte Tsa_EfxForblazeBG1_08141050
+	.4byte Tsa_EfxForblazeBG1_08141114
+	.4byte Tsa_EfxForblazeBG1_081411D4
+	.4byte Tsa_EfxForblazeBG1_08141288
 
-	.global Img_EfxForblazeBG1
-Img_EfxForblazeBG1: @ 085D21DC
-	.incbin "fe6-base.gba", 0x5D21DC, (0x5D2210 - 0x5D21DC) @ length: 0034
+	.global ImgArray_EfxForblazeBG1
+ImgArray_EfxForblazeBG1: @ 085D21DC
+	.4byte Img_EfxForblazeBG1_0813F5E0
+	.4byte Img_EfxForblazeBG1_0813F5E0
+	.4byte Img_EfxForblazeBG1_0813F5E0
+	.4byte Img_EfxForblazeBG1_0813F5E0
+	.4byte Img_EfxForblazeBG1_0813F5E0
+	.4byte Img_EfxForblazeBG1_0813F5E0
+	.4byte Img_EfxForblazeBG1_0813FF7C
+	.4byte Img_EfxForblazeBG1_0813FF7C
+	.4byte Img_EfxForblazeBG1_0813FF7C
+	.4byte Img_EfxForblazeBG1_0813FF7C
+	.4byte Img_EfxForblazeBG1_0813FF7C
+	.4byte Img_EfxForblazeBG1_0813FF7C
+	.4byte Img_EfxForblazeBG1_0813FF7C
 
 	.global ProcScr_EfxForblazeBGCOL1
 ProcScr_EfxForblazeBGCOL1: @ 085D2210
@@ -380,27 +831,109 @@ ProcScr_EfxDivineBG: @ 085D2370
 
 	.global ImgArray_EfxDivineBG
 ImgArray_EfxDivineBG: @ 085D2388
-	.incbin "fe6-base.gba", 0x5D2388, (0x5D23D8 - 0x5D2388) @ length: 0050
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
 
 	.global TsaArray_EfxDivineBG
 TsaArray_EfxDivineBG: @ 085D23D8
-	.incbin "fe6-base.gba", 0x5D23D8, (0x5D2428 - 0x5D23D8) @ length: 0050
+	.4byte Tsa_EfxDivineBG1_08179AB8
+	.4byte Tsa_EfxDivineBG1_08179B58
+	.4byte Tsa_EfxDivineBG1_08179C00
+	.4byte Tsa_EfxDivineBG1_08179CA8
+	.4byte Tsa_EfxDivineBG1_08179D58
+	.4byte Tsa_EfxDivineBG1_08179E10
+	.4byte Tsa_EfxDivineBG1_08179EDC
+	.4byte Tsa_EfxDivineBG1_08179FA8
+	.4byte Tsa_EfxDivineBG1_0817A07C
+	.4byte Tsa_EfxDivineBG1_0817A154
+	.4byte Tsa_EfxDivineBG1_0817A230
+	.4byte Tsa_EfxDivineBG1_0817A30C
+	.4byte Tsa_EfxDivineBG1_0817A3F0
+	.4byte Tsa_EfxDivineBG1_0817A4A4
+	.4byte Tsa_EfxDivineBG1_0817A540
+	.4byte Tsa_EfxDivineBG1_0817A5DC
+	.4byte Tsa_EfxDivineBG1_0817A678
+	.4byte Tsa_EfxDivineBG1_0817A714
+	.4byte Tsa_EfxDivineBG1_0817A7B0
+	.4byte Tsa_EfxDivineBG1_0817A84C
 
 	.global ImgArray_EfxDivineBG2
 ImgArray_EfxDivineBG2: @ 085D2428
-	.incbin "fe6-base.gba", 0x5D2428, (0x5D2434 - 0x5D2428) @ length: 000C
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
+	.4byte Img_EfxDivineBG1_081762DC
 
 	.global TsaArray_EfxDivineBG2
 TsaArray_EfxDivineBG2: @ 085D2434
-	.incbin "fe6-base.gba", 0x5D2434, (0x5D2440 - 0x5D2434) @ length: 000C
+	.4byte Tsa_EfxDivineBG2_0817A8E8
+	.4byte Tsa_EfxDivineBG2_0817A984
+	.4byte Tsa_EfxDivineBG2_0817AA20
 
 	.global ImgArray_EfxDivineBG3
 ImgArray_EfxDivineBG3: @ 085D2440
-	.incbin "fe6-base.gba", 0x5D2440, (0x5D2494 - 0x5D2440) @ length: 0054
+	.4byte Img_EfxDivineBG3_0816E3CC
+	.4byte Img_EfxDivineBG3_0816E3CC
+	.4byte Img_EfxDivineBG3_0816E980
+	.4byte Img_EfxDivineBG3_0816F048
+	.4byte Img_EfxDivineBG3_0816F688
+	.4byte Img_EfxDivineBG3_0816FC90
+	.4byte Img_EfxDivineBG3_081702F0
+	.4byte Img_EfxDivineBG3_08170960
+	.4byte Img_EfxDivineBG3_08170F9C
+	.4byte Img_EfxDivineBG3_081715E4
+	.4byte Img_EfxDivineBG3_08171CE8
+	.4byte Img_EfxDivineBG3_081724A0
+	.4byte Img_EfxDivineBG3_08172C94
+	.4byte Img_EfxDivineBG3_0817346C
+	.4byte Img_EfxDivineBG3_08173C88
+	.4byte Img_EfxDivineBG3_08174408
+	.4byte Img_EfxDivineBG3_08174B9C
+	.4byte Img_EfxDivineBG3_081752D0
+	.4byte Img_EfxDivineBG3_081752D0
+	.4byte Img_EfxDivineBG3_08175D7C
+	.4byte Img_EfxDivineBG3_08175D7C
 
 	.global TsaArray_EfxDivineBG3
 TsaArray_EfxDivineBG3: @ 085D2494
-	.incbin "fe6-base.gba", 0x5D2494, (0x5D24E8 - 0x5D2494) @ length: 0054
+	.4byte Tsa_EfxDivineBG3_08176A8C
+	.4byte Tsa_EfxDivineBG3_08176C20
+	.4byte Tsa_EfxDivineBG3_08176E24
+	.4byte Tsa_EfxDivineBG3_081770F4
+	.4byte Tsa_EfxDivineBG3_081773C4
+	.4byte Tsa_EfxDivineBG3_08177674
+	.4byte Tsa_EfxDivineBG3_08177928
+	.4byte Tsa_EfxDivineBG3_08177BB4
+	.4byte Tsa_EfxDivineBG3_08177E38
+	.4byte Tsa_EfxDivineBG3_081780AC
+	.4byte Tsa_EfxDivineBG3_08178340
+	.4byte Tsa_EfxDivineBG3_081785C8
+	.4byte Tsa_EfxDivineBG3_08178864
+	.4byte Tsa_EfxDivineBG3_08178AEC
+	.4byte Tsa_EfxDivineBG3_08178D68
+	.4byte Tsa_EfxDivineBG3_08178F98
+	.4byte Tsa_EfxDivineBG3_081791E8
+	.4byte Tsa_EfxDivineBG3_08179418
+	.4byte Tsa_EfxDivineBG3_08179610
+	.4byte Tsa_EfxDivineBG3_081797F4
+	.4byte Tsa_EfxDivineBG3_08179990
 
 	.global ProcScr_EfxDivineOBJ
 ProcScr_EfxDivineOBJ: @ 085D24E8
@@ -410,228 +943,228 @@ ProcScr_EfxDivineOBJ: @ 085D24E8
 ProcScr_EfxAureola: @ 085D2500
 	.incbin "fe6-base.gba", 0x5D2500, (0x5D2518 - 0x5D2500) @ length: 0018
 
-	.global gUnk_085D2518
-gUnk_085D2518: @ 085D2518
+	.global ProcScr_EfxAureolaBG
+ProcScr_EfxAureolaBG: @ 085D2518
 	.incbin "fe6-base.gba", 0x5D2518, (0x5D2530 - 0x5D2518) @ length: 0018
 
-	.global gUnk_085D2530
-gUnk_085D2530: @ 085D2530
+	.global ImgArray_EfxAureolaBG
+ImgArray_EfxAureolaBG: @ 085D2530
 	.incbin "fe6-base.gba", 0x5D2530, (0x5D2544 - 0x5D2530) @ length: 0014
 
-	.global gUnk_085D2544
-gUnk_085D2544: @ 085D2544
+	.global TsaArray_EfxAureolaBG
+TsaArray_EfxAureolaBG: @ 085D2544
 	.incbin "fe6-base.gba", 0x5D2544, (0x5D2558 - 0x5D2544) @ length: 0014
 
-	.global gUnk_085D2558
-gUnk_085D2558: @ 085D2558
+	.global ProcScr_EfxAureolaBG2
+ProcScr_EfxAureolaBG2: @ 085D2558
 	.incbin "fe6-base.gba", 0x5D2558, (0x5D2570 - 0x5D2558) @ length: 0018
 
-	.global gUnk_085D2570
-gUnk_085D2570: @ 085D2570
+	.global ProcScr_EfxAureolaBG2COL
+ProcScr_EfxAureolaBG2COL: @ 085D2570
 	.incbin "fe6-base.gba", 0x5D2570, (0x5D2590 - 0x5D2570) @ length: 0020
 
-	.global gUnk_085D2590
-gUnk_085D2590: @ 085D2590
+	.global ProcScr_EfxAureolaOBJ
+ProcScr_EfxAureolaOBJ: @ 085D2590
 	.incbin "fe6-base.gba", 0x5D2590, (0x5D25A8 - 0x5D2590) @ length: 0018
 
-	.global gUnk_085D25A8
-gUnk_085D25A8: @ 085D25A8
+	.global ProcScr_EfxAureolaOBJCtrl
+ProcScr_EfxAureolaOBJCtrl: @ 085D25A8
 	.incbin "fe6-base.gba", 0x5D25A8, (0x5D25C0 - 0x5D25A8) @ length: 0018
 
-	.global gUnk_085D25C0
-gUnk_085D25C0: @ 085D25C0
+	.global ProcScr_EfxAureolaOBJ2
+ProcScr_EfxAureolaOBJ2: @ 085D25C0
 	.incbin "fe6-base.gba", 0x5D25C0, (0x5D25D8 - 0x5D25C0) @ length: 0018
 
-	.global gUnk_085D25D8
-gUnk_085D25D8: @ 085D25D8
+	.global ProcScr_EfxAureolaOBJ3
+ProcScr_EfxAureolaOBJ3: @ 085D25D8
 	.incbin "fe6-base.gba", 0x5D25D8, (0x5D25F0 - 0x5D25D8) @ length: 0018
 
-	.global gUnk_085D25F0
-gUnk_085D25F0: @ 085D25F0
+	.global ProcScr_EfxAureolaOBJ3Ctrl
+ProcScr_EfxAureolaOBJ3Ctrl: @ 085D25F0
 	.incbin "fe6-base.gba", 0x5D25F0, (0x5D2608 - 0x5D25F0) @ length: 0018
 
-	.global gUnk_085D2608
-gUnk_085D2608: @ 085D2608
+	.global ProcScr_EfxApocalypse
+ProcScr_EfxApocalypse: @ 085D2608
 	.incbin "fe6-base.gba", 0x5D2608, (0x5D2620 - 0x5D2608) @ length: 0018
 
-	.global gUnk_085D2620
-gUnk_085D2620: @ 085D2620
+	.global ProcScr_EfxApocalypseBG
+ProcScr_EfxApocalypseBG: @ 085D2620
 	.incbin "fe6-base.gba", 0x5D2620, (0x5D2638 - 0x5D2620) @ length: 0018
 
-	.global gUnk_085D2638
-gUnk_085D2638: @ 085D2638
+	.global ProcScr_EfxApocalypseBGCtrl
+ProcScr_EfxApocalypseBGCtrl: @ 085D2638
 	.incbin "fe6-base.gba", 0x5D2638, (0x5D2658 - 0x5D2638) @ length: 0020
 
-	.global gUnk_085D2658
-gUnk_085D2658: @ 085D2658
+	.global ProcScr_EfxApocalypseBGCOL
+ProcScr_EfxApocalypseBGCOL: @ 085D2658
 	.incbin "fe6-base.gba", 0x5D2658, (0x5D2678 - 0x5D2658) @ length: 0020
 
-	.global gUnk_085D2678
-gUnk_085D2678: @ 085D2678
+	.global ProcScr_EfxApocalypseOBJ
+ProcScr_EfxApocalypseOBJ: @ 085D2678
 	.incbin "fe6-base.gba", 0x5D2678, (0x5D26B0 - 0x5D2678) @ length: 0038
 
-	.global gUnk_085D26B0
-gUnk_085D26B0: @ 085D26B0
+	.global AnimArray_EfxApocalypseOBJ
+AnimArray_EfxApocalypseOBJ: @ 085D26B0
 	.incbin "fe6-base.gba", 0x5D26B0, (0x5D26D0 - 0x5D26B0) @ length: 0020
 
-	.global gUnk_085D26D0
-gUnk_085D26D0: @ 085D26D0
+	.global ProcScr_EfxApocalypseBGCOL2
+ProcScr_EfxApocalypseBGCOL2: @ 085D26D0
 	.incbin "fe6-base.gba", 0x5D26D0, (0x5D26F0 - 0x5D26D0) @ length: 0020
 
-	.global gUnk_085D26F0
-gUnk_085D26F0: @ 085D26F0
+	.global ProcScr_EfxApocalypseDummy
+ProcScr_EfxApocalypseDummy: @ 085D26F0
 	.incbin "fe6-base.gba", 0x5D26F0, (0x5D2708 - 0x5D26F0) @ length: 0018
 
-	.global gUnk_085D2708
-gUnk_085D2708: @ 085D2708
+	.global ProcScr_EfxApocalypseBgFlash1
+ProcScr_EfxApocalypseBgFlash1: @ 085D2708
 	.incbin "fe6-base.gba", 0x5D2708, (0x5D2720 - 0x5D2708) @ length: 0018
 
-	.global gUnk_085D2720
-gUnk_085D2720: @ 085D2720
+	.global ProcScr_EfxApocalypseBgFlash2
+ProcScr_EfxApocalypseBgFlash2: @ 085D2720
 	.incbin "fe6-base.gba", 0x5D2720, (0x5D2740 - 0x5D2720) @ length: 0020
 
-	.global gUnk_085D2740
-gUnk_085D2740: @ 085D2740
+	.global ProcScr_EfxApocalypseBG2
+ProcScr_EfxApocalypseBG2: @ 085D2740
 	.incbin "fe6-base.gba", 0x5D2740, (0x5D2758 - 0x5D2740) @ length: 0018
 
-	.global gUnk_085D2758
-gUnk_085D2758: @ 085D2758
+	.global ImgArray_EfxApocalypseBG2
+ImgArray_EfxApocalypseBG2: @ 085D2758
 	.incbin "fe6-base.gba", 0x5D2758, (0x5D2768 - 0x5D2758) @ length: 0010
 
-	.global gUnk_085D2768
-gUnk_085D2768: @ 085D2768
+	.global TsaArray_EfxApocalypseBG2
+TsaArray_EfxApocalypseBG2: @ 085D2768
 	.incbin "fe6-base.gba", 0x5D2768, (0x5D2778 - 0x5D2768) @ length: 0010
 
-	.global gUnk_085D2778
-gUnk_085D2778: @ 085D2778
+	.global ProcScr_EfxApocalypseOBJ2
+ProcScr_EfxApocalypseOBJ2: @ 085D2778
 	.incbin "fe6-base.gba", 0x5D2778, (0x5D2798 - 0x5D2778) @ length: 0020
 
-	.global gUnk_085D2798
-gUnk_085D2798: @ 085D2798
+	.global ProcScr_EfxApocalypseOBJ3
+ProcScr_EfxApocalypseOBJ3: @ 085D2798
 	.incbin "fe6-base.gba", 0x5D2798, (0x5D27B0 - 0x5D2798) @ length: 0018
 
-	.global gUnk_085D27B0
-gUnk_085D27B0: @ 085D27B0
+	.global DuraArray_EfxApocalypseOBJ3RND
+DuraArray_EfxApocalypseOBJ3RND: @ 085D27B0
 	.incbin "fe6-base.gba", 0x5D27B0, (0x5D287C - 0x5D27B0) @ length: 00CC
 
-	.global gUnk_085D287C
-gUnk_085D287C: @ 085D287C
+	.global LoArray_EfxApocalypseOBJ3RND
+LoArray_EfxApocalypseOBJ3RND: @ 085D287C
 	.incbin "fe6-base.gba", 0x5D287C, (0x5D2944 - 0x5D287C) @ length: 00C8
 
-	.global gUnk_085D2944
-gUnk_085D2944: @ 085D2944
+	.global StateArray_EfxApocalypseOBJ3RND
+StateArray_EfxApocalypseOBJ3RND: @ 085D2944
 	.incbin "fe6-base.gba", 0x5D2944, (0x5D2A0C - 0x5D2944) @ length: 00C8
 
-	.global gUnk_085D2A0C
-gUnk_085D2A0C: @ 085D2A0C
+	.global ProcScr_EfxApocalypseOBJ3RND
+ProcScr_EfxApocalypseOBJ3RND: @ 085D2A0C
 	.incbin "fe6-base.gba", 0x5D2A0C, (0x5D2A24 - 0x5D2A0C) @ length: 0018
 
-	.global gUnk_085D2A24
-gUnk_085D2A24: @ 085D2A24
+	.global ProcScr_EfxHazymoon
+ProcScr_EfxHazymoon: @ 085D2A24
 	.incbin "fe6-base.gba", 0x5D2A24, (0x5D2A3C - 0x5D2A24) @ length: 0018
 
-	.global gUnk_085D2A3C
-gUnk_085D2A3C: @ 085D2A3C
+	.global ProcScr_EfxHazymoonBG
+ProcScr_EfxHazymoonBG: @ 085D2A3C
 	.incbin "fe6-base.gba", 0x5D2A3C, (0x5D2A54 - 0x5D2A3C) @ length: 0018
 
-	.global gUnk_085D2A54
-gUnk_085D2A54: @ 085D2A54
+	.global TsaArray_EfxHazymoonBG
+TsaArray_EfxHazymoonBG: @ 085D2A54
 	.incbin "fe6-base.gba", 0x5D2A54, (0x5D2AC0 - 0x5D2A54) @ length: 006C
 
-	.global gUnk_085D2AC0
-gUnk_085D2AC0: @ 085D2AC0
+	.global ImgArray_EfxHazymoonBG
+ImgArray_EfxHazymoonBG: @ 085D2AC0
 	.incbin "fe6-base.gba", 0x5D2AC0, (0x5D2B2C - 0x5D2AC0) @ length: 006C
 
-	.global gUnk_085D2B2C
-gUnk_085D2B2C: @ 085D2B2C
+	.global ProcScr_EfxHazymoonOBJ2
+ProcScr_EfxHazymoonOBJ2: @ 085D2B2C
 	.incbin "fe6-base.gba", 0x5D2B2C, (0x5D2B74 - 0x5D2B2C) @ length: 0048
 
-	.global gUnk_085D2B74
-gUnk_085D2B74: @ 085D2B74
+	.global ProcScr_EfxHazymoonOBJ3
+ProcScr_EfxHazymoonOBJ3: @ 085D2B74
 	.incbin "fe6-base.gba", 0x5D2B74, (0x5D2B8C - 0x5D2B74) @ length: 0018
 
-	.global gUnk_085D2B8C
-gUnk_085D2B8C: @ 085D2B8C
+	.global gEclipseAnimSpriteCoordinates
+gEclipseAnimSpriteCoordinates: @ 085D2B8C
 	.incbin "fe6-base.gba", 0x5D2B8C, (0x5D2BA4 - 0x5D2B8C) @ length: 0018
 
-	.global gUnk_085D2BA4
-gUnk_085D2BA4: @ 085D2BA4
+	.global ProcScr_EfxHazymoonOBJ3RND
+ProcScr_EfxHazymoonOBJ3RND: @ 085D2BA4
 	.incbin "fe6-base.gba", 0x5D2BA4, (0x5D2BC4 - 0x5D2BA4) @ length: 0020
 
-	.global gUnk_085D2BC4
-gUnk_085D2BC4: @ 085D2BC4
+	.global ProcScr_EfxFenrir
+ProcScr_EfxFenrir: @ 085D2BC4
 	.incbin "fe6-base.gba", 0x5D2BC4, (0x5D2BDC - 0x5D2BC4) @ length: 0018
 
-	.global gUnk_085D2BDC
-gUnk_085D2BDC: @ 085D2BDC
+	.global ProcScr_EfxFenrirBG
+ProcScr_EfxFenrirBG: @ 085D2BDC
 	.incbin "fe6-base.gba", 0x5D2BDC, (0x5D2BFC - 0x5D2BDC) @ length: 0020
 
-	.global gUnk_085D2BFC
-gUnk_085D2BFC: @ 085D2BFC
+	.global ProcScr_EfxFenrirBGCOL
+ProcScr_EfxFenrirBGCOL: @ 085D2BFC
 	.incbin "fe6-base.gba", 0x5D2BFC, (0x5D2C24 - 0x5D2BFC) @ length: 0028
 
-	.global gUnk_085D2C24
-gUnk_085D2C24: @ 085D2C24
+	.global ProcScr_EfxFenrirOBJ
+ProcScr_EfxFenrirOBJ: @ 085D2C24
 	.incbin "fe6-base.gba", 0x5D2C24, (0x5D2C3C - 0x5D2C24) @ length: 0018
 
-	.global gUnk_085D2C3C
-gUnk_085D2C3C: @ 085D2C3C
+	.global ProcScr_EfxFenrirBG2
+ProcScr_EfxFenrirBG2: @ 085D2C3C
 	.incbin "fe6-base.gba", 0x5D2C3C, (0x5D2C54 - 0x5D2C3C) @ length: 0018
 
-	.global gUnk_085D2C54
-gUnk_085D2C54: @ 085D2C54
+	.global ImgArray_EfxFenrirBG2_A
+ImgArray_EfxFenrirBG2_A: @ 085D2C54
 	.incbin "fe6-base.gba", 0x5D2C54, (0x5D2D20 - 0x5D2C54) @ length: 00CC
 
-	.global gUnk_085D2D20
-gUnk_085D2D20: @ 085D2D20
+	.global TsaArray_EfxFenrirBG2_A
+TsaArray_EfxFenrirBG2_A: @ 085D2D20
 	.incbin "fe6-base.gba", 0x5D2D20, (0x5D2DEC - 0x5D2D20) @ length: 00CC
 
-	.global gUnk_085D2DEC
-gUnk_085D2DEC: @ 085D2DEC
+	.global ProcScr_EfxFenrirOBJ2
+ProcScr_EfxFenrirOBJ2: @ 085D2DEC
 	.incbin "fe6-base.gba", 0x5D2DEC, (0x5D2E04 - 0x5D2DEC) @ length: 0018
 
-	.global gUnk_085D2E04
-gUnk_085D2E04: @ 085D2E04
+	.global ProcScr_EfxFenrirOBJ2Chiri
+ProcScr_EfxFenrirOBJ2Chiri: @ 085D2E04
 	.incbin "fe6-base.gba", 0x5D2E04, (0x5D2E1C - 0x5D2E04) @ length: 0018
 
-	.global gUnk_085D2E1C
-gUnk_085D2E1C: @ 085D2E1C
+	.global gFenrirSpriteAngles
+gFenrirSpriteAngles: @ 085D2E1C
 	.incbin "fe6-base.gba", 0x5D2E1C, (0x5D2E3C - 0x5D2E1C) @ length: 0020
 
-	.global gUnk_085D2E3C
-gUnk_085D2E3C: @ 085D2E3C
+	.global ProcScr_EfxLive
+ProcScr_EfxLive: @ 085D2E3C
 	.incbin "fe6-base.gba", 0x5D2E3C, (0x5D2E54 - 0x5D2E3C) @ length: 0018
 
-	.global gUnk_085D2E54
-gUnk_085D2E54: @ 085D2E54
+	.global ProcScr_EfxRelive
+ProcScr_EfxRelive: @ 085D2E54
 	.incbin "fe6-base.gba", 0x5D2E54, (0x5D2E6C - 0x5D2E54) @ length: 0018
 
-	.global gUnk_085D2E6C
-gUnk_085D2E6C: @ 085D2E6C
+	.global ProcScr_EfxRecover
+ProcScr_EfxRecover: @ 085D2E6C
 	.incbin "fe6-base.gba", 0x5D2E6C, (0x5D2E84 - 0x5D2E6C) @ length: 0018
 
-	.global gUnk_085D2E84
-gUnk_085D2E84: @ 085D2E84
+	.global ProcScr_EfxReblow
+ProcScr_EfxReblow: @ 085D2E84
 	.incbin "fe6-base.gba", 0x5D2E84, (0x5D2E9C - 0x5D2E84) @ length: 0018
 
-	.global gUnk_085D2E9C
-gUnk_085D2E9C: @ 085D2E9C
+	.global ProcScr_EfxLiveBG
+ProcScr_EfxLiveBG: @ 085D2E9C
 	.incbin "fe6-base.gba", 0x5D2E9C, (0x5D2EB4 - 0x5D2E9C) @ length: 0018
 
-	.global gUnk_085D2EB4
-gUnk_085D2EB4: @ 085D2EB4
+	.global ProcScr_EfxLiveBGCOL
+ProcScr_EfxLiveBGCOL: @ 085D2EB4
 	.incbin "fe6-base.gba", 0x5D2EB4, (0x5D2ED4 - 0x5D2EB4) @ length: 0020
 
-	.global gUnk_085D2ED4
-gUnk_085D2ED4: @ 085D2ED4
+	.global ProcScr_EfxLiveALPHA
+ProcScr_EfxLiveALPHA: @ 085D2ED4
 	.incbin "fe6-base.gba", 0x5D2ED4, (0x5D2EF4 - 0x5D2ED4) @ length: 0020
 
-	.global gUnk_085D2EF4
-gUnk_085D2EF4: @ 085D2EF4
+	.global ProcScr_EfxLiveOBJ
+ProcScr_EfxLiveOBJ: @ 085D2EF4
 	.incbin "fe6-base.gba", 0x5D2EF4, (0x5D2F0C - 0x5D2EF4) @ length: 0018
 
-	.global gUnk_085D2F0C
-gUnk_085D2F0C: @ 085D2F0C
+	.global ProcScr_EfxReserveOBJ
+ProcScr_EfxReserveOBJ: @ 085D2F0C
 	.incbin "fe6-base.gba", 0x5D2F0C, (0x5D2F2C - 0x5D2F0C) @ length: 0020
 
 	.global gUnk_085D2F2C
