@@ -1,8 +1,5 @@
 OUTPUT_ARCH(arm)
 
-gMusicPlayerTable       = 0x0839946C;
-gSongTable              = 0x083994D8;
-
 gNumMusicPlayers = 9;
 gMaxLines = 0;
 
@@ -394,6 +391,8 @@ SECTIONS
 
         . = 0x001570; Text_GoldBox = .;
 
+        . = 0x001578; data/sound_music_player_table.o(.bss);
+
         . = 0x002158; src/gbasram.o(.bss);
         . = ALIGN(4); *libgcc.a:dp-bit.o(.bss);
         . = ALIGN(4); *libgcc.a:fp-bit.o(.bss);
@@ -452,17 +451,18 @@ SECTIONS
         . = 0x005284; bool_opanim_03005284 = .;
         . = 0x005290; gUnk_03005290 = .;
         . = 0x0052B0; *(.iwram.gSoundInfo);
-        . = 0x006260; gMusicPlayer_03006260 = .;
-        . = 0x0062A0; gMusicPlayer_030062A0 = .;
+        . = 0x006260; gMPlayInfo_SE4_BMP2 = .;
+        . = 0x0062A0; gMPlayInfo_SE5_BMP3 = .;
         . = 0x0062E0; gMusicPlayer_FightBgm = .;
         . = 0x006320; *(.iwram.gMPlayJumpTable);
         . = 0x0063B0; *(.iwram.gCgbChans);
-        . = 0x0064B0; gMusicPlayer_030064B0 = .;
+        . = 0x0064B0; gMPlayInfo_SE6_BMP4 = .;
         . = 0x0064F0; gMusicPlayer_MainBgm = .;
-        . = 0x006530; gMusicPlayer_03006530 = .;
-        . = 0x006570; gMusicPlayer_03006570 = .;
+        . = 0x006530; gMPlayInfo_SE1_SYS1 = .;
+        . = 0x006570; gMPlayInfo_SE3_BMP1 = .;
         . = 0x0065B0; *(.iwram.gMPlayMemAccArea);
-        . = 0x006600; gMusicPlayer_03006600 = .;
+        . = 0x0065C0; gMPlayInfo_SE7_EVT = .;
+        . = 0x006600; gMPlayInfo_SE2_SYS2 = .;
         . = 0x006640; ReadSramFast = .;
         . = 0x006644; VerifySramFast = .;
 
@@ -748,7 +748,10 @@ SECTIONS
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
-        . = ALIGN(4); data/rodata_lib.o(.rodata);
+        . = ALIGN(4); data/sound_voicegroups.o(.rodata);
+        . = ALIGN(4); data/sound_programmable_waves.o(.rodata);
+        . = ALIGN(4); data/sound_music_player_table.o(.rodata);
+        . = ALIGN(4); data/sound_data.o(.rodata);
 
         /* .data */
         . = ALIGN(4); src/hardware.o(.data);

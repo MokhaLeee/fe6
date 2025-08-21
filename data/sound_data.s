@@ -1,6 +1,17 @@
     .section .rodata
 
-    .incbin "fe6-base.gba", 0x381254, (0x57A61C - 0x381254) @ length: 1F93C8
+.global gSongTable
+gSongTable:
+    .incbin "fe6-base.gba", 0x3994d8, (0x39A840 - 0x3994d8)
+
+    .global dummy_song
+    dummy_song:	@ 0x39A840
+    .byte	0		@ trackCount
+    .byte	0		@ blockCount
+    .byte	0		@ priority
+    .byte	0		@ reverb
+
+    .incbin "fe6-base.gba", 0x39A844, (0x57A61C - 0x39A844)
 
     .global Song_Unk_0857A61C
 Song_Unk_0857A61C: @ 0857A61C
