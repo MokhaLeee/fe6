@@ -2594,7 +2594,7 @@ void func_fe6_0806631C(struct ManimSomethingProc_08066294 * proc)
     func_fe6_08067324();
     SetBlendAlpha(0x10, 0x10);
     Decompress(gUnk_082DFAD4, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    ApplyPalette(gUnk_081B4274, BGPAL_MANIM_4);
+    ApplyPalette(Pal_EfxHammarneBG, BGPAL_MANIM_4);
     proc->unk_48 = 0;
     proc->unk_4A = 0;
 }
@@ -2663,7 +2663,7 @@ void func_fe6_080665E4(struct Unit * unit)
 void func_fe6_0806664C(struct ManimSomethingProc_08066294 * proc)
 {
     PlaySeSpacial(SONG_82, proc->x);
-    ApplyPalette(Pal_Unk_081B1710, BGPAL_MANIM_4);
+    ApplyPalette(Pal_EfxRestBG, BGPAL_MANIM_4);
 }
 
 void func_fe6_08066678(struct ManimSomethingProc_08066294 * proc)
@@ -2734,8 +2734,8 @@ void func_fe6_08066784(struct ManimSomethingProc_0806671C * proc)
     SetBgOffset(2, 0, 0);
     func_fe6_08067324();
 
-    Decompress(gUnk_081B7468, OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
-    ApplyPalette(gUnk_081B7650, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_EfxHammarneOBJ, OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
+    ApplyPalette(Pal_EfxRestOBJ, 0x10 + OBPAL_MANIM_4);
 
     StartSpriteAnimProc(gUnk_082E0A14, proc->x, proc->y - 16, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
 }
@@ -2957,7 +2957,7 @@ void func_fe6_08066E64(struct ManimSomethingProc_08066DFC * proc)
     SetBlendAlpha(0x10, 0x10);
 
     Decompress(gUnk_082E1884, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    ApplyPalette(gUnk_081B8934, BGPAL_MANIM_4);
+    ApplyPalette(Pal_EfxMshieldBG, BGPAL_MANIM_4);
 
     proc->unk_48 = 0;
     proc->unk_4A = 0;

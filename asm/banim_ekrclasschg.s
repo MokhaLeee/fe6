@@ -764,11 +764,11 @@ func_fe6_0805CDCC: @ 0x0805CDCC
 	ldr r0, .L0805CEC0 @ =gUnk_08127778
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
-	ldr r0, .L0805CEC4 @ =gUnk_081B4E9C
+	ldr r0, .L0805CEC4 @ =Img_EfxBerserkBG
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterBgGfx
-	ldr r0, .L0805CEC8 @ =gUnk_081B4F9C
+	ldr r0, .L0805CEC8 @ =Tsa_EfxBerserkBG
 	ldr r1, .L0805CECC @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -866,8 +866,8 @@ func_fe6_0805CDCC: @ 0x0805CDCC
 	.align 2, 0
 .L0805CEBC: .4byte gUnk_08606124
 .L0805CEC0: .4byte gUnk_08127778
-.L0805CEC4: .4byte gUnk_081B4E9C
-.L0805CEC8: .4byte gUnk_081B4F9C
+.L0805CEC4: .4byte Img_EfxBerserkBG
+.L0805CEC8: .4byte Tsa_EfxBerserkBG
 .L0805CECC: .4byte gBg1Tm
 .L0805CED0: .4byte gDispIo
 .L0805CED4: .4byte 0x0000FFE0

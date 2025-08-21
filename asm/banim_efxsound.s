@@ -142,8 +142,8 @@ func_fe6_0805BD64: @ 0x0805BD64
 	.align 2, 0
 .L0805BD88: .4byte gBmSt
 
-	thumb_func_start func_fe6_0805BD8C
-func_fe6_0805BD8C: @ 0x0805BD8C
+	thumb_func_start EfxStopBGM1
+EfxStopBGM1: @ 0x0805BD8C
 	push {lr}
 	ldr r0, .L0805BD98 @ =gMusicPlayer_FightBgm
 	bl m4aMPlayStop

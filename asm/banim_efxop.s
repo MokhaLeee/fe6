@@ -904,7 +904,7 @@ func_fe6_080585DC: @ 0x080585DC
 	str r0, [r4, #0x48]
 	ldr r0, .L08058628 @ =gUnk_085D3A6C
 	str r0, [r4, #0x4c]
-	ldr r1, .L0805862C @ =TsaArray_EfxLiveBG_B_R
+	ldr r1, .L0805862C @ =Img_EfxHealCommon
 	adds r0, r5, #0
 	bl CRSpell_RegisterBgGfx
 	ldr r0, [r6, #0x24]
@@ -919,7 +919,7 @@ func_fe6_080585DC: @ 0x080585DC
 .L08058620: .4byte gUnk_085D3A54
 .L08058624: .4byte gUnk_0811AF9E
 .L08058628: .4byte gUnk_085D3A6C
-.L0805862C: .4byte TsaArray_EfxLiveBG_B_R
+.L0805862C: .4byte Img_EfxHealCommon
 
 	thumb_func_start func_fe6_08058630
 func_fe6_08058630: @ 0x08058630

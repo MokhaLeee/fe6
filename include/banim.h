@@ -262,7 +262,7 @@ extern u32 gEfxBgSemaphore;
 extern u32 gEfxHpBarResireFlag;
 extern u32 gUnk_Banim_0201774C;
 extern u32 gEfxTeonoState;
-extern u32 gUnk_Banim_02017754;
+extern u32 gEfxTerrainLayerLow;
 extern struct Vec2i gEkrBg2QuakeVec;
 extern u32 gEkrBgPosition;
 extern i16 gBanimEffectiveness[2];
@@ -657,7 +657,7 @@ void func_fe6_08047B10(const u16 * src, u16 * dst, u32 cur, u32 len_src, u32 len
 void func_fe6_08047B3C(const u16 * src, u16 * dst, u32 cur, u32 len_src, u32 len_dst);
 void func_fe6_08047B6C(const u16 * src, u16 * dst, u32 a, u32 b, u32 c);
 i16 EfxAdvanceFrameLut(i16 * ptime, i16 * pcount, const i16 lut[]);
-void func_fe6_08047C1C(void);
+void PutEfxTerrainToLowerLayer(void);
 int EfxGetCamMovDuration(void);
 void EfxTmFillA(u32 val);
 void EfxTmFillB(u32 val);
@@ -1368,73 +1368,73 @@ void StartSpellAnimAureola(struct Anim *anim);
 // EfxReserveOBJ_Loop1
 // EfxReserveOBJ_Loop2
 // NewEfxReblowOBJ
-// func_fe6_08055134
-// func_fe6_08055200
+// EfxReblowOBJ_Loop1
+// EfxReblowOBJ_Loop2
 // StartSpellAnimFortify
 // StartSpellAnimLatona
-// func_fe6_08055294
-// func_fe6_08055364
-// func_fe6_080553B4
-// func_fe6_08055434
-// func_fe6_08055480
-// func_fe6_080554C8
-// func_fe6_08055580
-// func_fe6_08055628
-// func_fe6_08055674
+// EfxReserve_Loop
+// NewEfxReserveBG
+// EfxReserveBG_Loop
+// NewEfxReserveBGCOL
+// EfxReserveBGCOL_Loop
+// NewEfxReserveBG2
+// EfxReserveBG2_Loop
+// NewEfxReserveBGCOL2
+// EfxReserveBGCOL2_Loop
 // StartSpellAnimRestore
-// func_fe6_080556F8
-// func_fe6_0805581C
-// func_fe6_08055870
-// func_fe6_080558D4
-// func_fe6_0805594C
+// EfxRest_Loop
+// NewEfxRestBG
+// EfxRestBG_Loop
+// NewEfxRestOBJ
+// EfxRestOBJ_Loop
 // StartSpellAnimSilence
-// func_fe6_08055998
-// func_fe6_08055AA0
-// func_fe6_08055B2C
-// func_fe6_08055B84
-// func_fe6_08055BDC
+// EfxSilence_Loop
+// NewEfxSilenceBG
+// EfxSilenceBG_Loop
+// NewEfxSilenceOBJ
+// EfxSilenceOBJ_OnEnd
 // StartSpellAnimSleep
-// func_fe6_08055C30
-// func_fe6_08055D30
-// func_fe6_08055DBC
-// func_fe6_08055E14
-// func_fe6_08055E6C
-// func_fe6_08055EC0
-// func_fe6_08055ED0
-// func_fe6_08055EF4
-// func_fe6_08055F14
+// EfxSleep_Loop
+// NewEfxSleepBG
+// EfxSleepBG_Loop
+// NewEfxSleepOBJ
+// NewEfxSleepOBJ2
+// EfxSleepOBJ_OnEnd
+// NewEfxSleepSE
+// EfxSleepSE_PlaySE
+// EfxSleepSE_OnEnd
 // StartSpellAnimHammerne
-// func_fe6_08055F60
-// func_fe6_08056080
-// func_fe6_080560D4
-// func_fe6_08056138
-// func_fe6_08056190
+// EfxHammarne_Loop
+// NewEfxHammarneBG
+// EfxHammarneBG_Loop
+// NewEfxHammarneOBJ
+// EfxHammarneOBJ_OnEnd
 // StartSpellAnimBerserk
-// func_fe6_080561DC
-// func_fe6_080562C0
-// func_fe6_080563E0
-// func_fe6_08056444
-// func_fe6_08056470
-// func_fe6_080564D4
-// func_fe6_080564E4
-// func_fe6_0805653C
-// func_fe6_08056554
-// func_fe6_08056590
-// func_fe6_080565CC
-// func_fe6_08056608
-// func_fe6_08056644
-// func_fe6_08056680
-// func_fe6_080566BC
-// func_fe6_080566F8
-// func_fe6_08056734
-// func_fe6_08056770
+// EfxBerserk_Loop
+// NewEfxBerserkBG
+// EfxBerserkBG_Loop
+// NewEfxBerserkCLONE
+// EfxBerserkCLONE_Loop
+// EfxBerserkCLONE_OnEnd
+// NewEfxBerserkOBJ
+// EfxBerserkOBJ_OnEnd
+// EfxBerserkOBJ_Loop1
+// EfxBerserkOBJ_Loop3
+// EfxBerserkOBJ_Loop5
+// EfxBerserkOBJ_Loop7
+// EfxBerserkOBJ_Loop9
+// EfxBerserkOBJ_Loop2
+// EfxBerserkOBJ_Loop4
+// EfxBerserkOBJ_Loop6
+// EfxBerserkOBJ_Loop8
+// EfxBerserkOBJ_Loop10
 // StartSpellAnimBarrier
-// func_fe6_080567E8
-// func_fe6_080568B4
-// func_fe6_08056910
-// func_fe6_08056968
-// func_fe6_080569C0
-// func_fe6_08056A00
+// EfxMshield_Loop
+// NewEfxMshieldBG
+// EfxMshieldBG_Loop
+// NewEfxMshieldOBJ
+// NewEfxMshieldOBJ2
+// EfxMshieldOBJ_OnEnd
 
 struct ProcEfxDamageMojiEffectOBJ {
     PROC_HEADER;
@@ -1636,7 +1636,7 @@ void EfxPlaySE(int songid, int volume);
 // func_fe6_0805BD04
 void DoM4aSongNumStop(int num);
 // func_fe6_0805BD64
-// func_fe6_0805BD8C
+void EfxStopBGM1(void);
 void UnregisterEfxSoundSeExist(void);
 // func_fe6_0805BDA8
 // func_fe6_0805BDB4
@@ -1926,7 +1926,7 @@ extern u32 AnimScr_Miss[];
 typedef void (* SpellAnimFunc)(struct Anim *anim);
 extern CONST_DATA SpellAnimFunc gEkrSpellAnimLut[];
 
-extern u32 AnimScr_ManaketeFlame[];
+extern u32 AnimScr_Common[];
 extern CONST_DATA struct ProcScr ProcScr_EfxRestRST[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDummyRST[];
 extern CONST_DATA struct ProcScr ProcScr_EfxRestWIN[];
@@ -2109,43 +2109,43 @@ extern int DuraArray_EfxApocalypseOBJ3RND[];
 // ??? ProcScr_EfxLiveALPHA
 // ??? ProcScr_EfxLiveOBJ
 // ??? ProcScr_EfxReserveOBJ
-// ??? gUnk_085D2F2C
-// ??? gUnk_085D2F4C
-// ??? gUnk_085D2F64
-// ??? gUnk_085D2F7C
-// ??? gUnk_085D2F8C
-// ??? gUnk_085D2FAC
-// ??? gUnk_085D2FC4
-// ??? gUnk_085D2FC8
-// ??? gUnk_085D2FE8
-// ??? gUnk_085D3000
-// ??? gUnk_085D3018
-// ??? gUnk_085D304C
-// ??? gUnk_085D3080
-// ??? gUnk_085D30A0
-// ??? gUnk_085D30B8
-// ??? gUnk_085D30D0
-// ??? gUnk_085D3118
-// ??? gUnk_085D3138
-// ??? gUnk_085D3150
-// ??? gUnk_085D3168
-// ??? gUnk_085D31A8
-// ??? gUnk_085D31C8
-// ??? gUnk_085D31E8
-// ??? gUnk_085D3230
-// ??? gUnk_085D3248
-// ??? gUnk_085D3260
-// ??? gUnk_085D3294
-// ??? gUnk_085D32C8
-// ??? gUnk_085D32E8
-// ??? gUnk_085D3300
-// ??? gUnk_085D3318
-// ??? gUnk_085D3338
-// ??? gUnk_085D33F0
-// ??? gUnk_085D3408
-// ??? gUnk_085D3420
-// ??? gUnk_085D3434
-// ??? gUnk_085D3454
+// ??? ProcScr_EfxReblowOBJ
+// ??? ProcScr_EfxReserve
+// ??? ProcScr_EfxReserveBG
+// ??? TsaArray_EfxReserveBG
+// ??? ProcScr_EfxReserveBGCOL
+// ??? ProcScr_EfxReserveBG2
+// ??? TsaArray_EfxReserveBG2
+// ??? ProcScr_EfxReserveBGCOL2
+// ??? ProcScr_EfxRest
+// ??? ProcScr_EfxRestBG
+// ??? TsaArray_EfxRestBG
+// ??? ImgArray_EfxRestBG
+// ??? ProcScr_EfxRestOBJ
+// ??? ProcScr_EfxSilence
+// ??? ProcScr_EfxSilenceBG
+// ??? TsaArray_EfxSilenceBG
+// ??? ProcScr_EfxSilenceOBJ
+// ??? ProcScr_EfxSleep
+// ??? ProcScr_EfxSleepBG
+// ??? TsaArray_EfxSleepBG
+// ??? ProcScr_EfxSleepOBJ
+// ??? ProcScr_EfxSleepOBJ2
+// ??? ProcScr_EfxSleepSE
+// ??? ProcScr_EfxHammarne
+// ??? ProcScr_EfxHammarneBG
+// ??? TsaArray_EfxHammarneBG
+// ??? ImgArray_EfxHammarneBG
+// ??? ProcScr_EfxHammarneOBJ
+// ??? ProcScr_EfxBerserk
+// ??? ProcScr_EfxBerserkBG
+// ??? ProcScr_EfxBerserkCLONE
+// ??? ProcScr_EfxBerserkOBJ
+// ??? ProcScr_EfxMshield
+// ??? ProcScr_EfxMshieldBG
+// ??? TsaArray_EfxMshieldBG
+// ??? ProcScr_EfxMshieldOBJ
+// ??? ProcScr_EfxMshieldOBJ2
 extern CONST_DATA struct ProcScr ProcScr_EfxDamageMojiEffect[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDamageMojiEffectOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxCriricalEffect[];
@@ -2262,10 +2262,10 @@ extern u32 AnimScr_EfxElfireOBJ_R[];
 extern u32 AnimScr_EfxElfireOBJ_L[];
 extern CONST_DATA AnimScr AnimScr_EfxThunderstormOBJ[];
 // ??? AnimScr_EfxForblazeOBJ2
-// ??? gUnk_085E5C2C
-// ??? gUnk_085E5C34
-// ??? gUnk_085E5C3C
-// ??? gUnk_085E5C44
+// ??? AnimScr_EfxForblazeOBJ3
+// ??? AnimScr_EfxForblazeOBJ4
+// ??? AnimScr_EfxForblazeOBJ5
+// ??? AnimScr_EfxForblazeOBJ6
 extern CONST_DATA AnimScr AnimScr_EfxFimbulvetrOBJ1[];
 extern CONST_DATA AnimScr AnimScr_EfxFimbulvetrOBJ2Fall[];
 extern CONST_DATA AnimScr AnimScr_FimbulvetrOBJ2Fall_TypeA[];
@@ -2295,27 +2295,27 @@ extern CONST_DATA AnimScr AnimScr_EfxDivineOBJ[];
 // ??? AnimScr_EfxPurgeOBJ
 // ??? AnimScr_EfxLiveOBJ
 // ??? AnimScr_EfxReserveOBJ
-// ??? gUnk_085F1FC0
-// ??? gUnk_085F2034
-// ??? gUnk_085F35C0
-// ??? gUnk_085F3634
-// ??? gUnk_085F63A8
-// ??? gUnk_085F6674
-// ??? gUnk_085F9358
-// ??? gUnk_085FE3C4
-// ??? gUnk_085FE544
-// ??? gUnk_085FEAF8
-// ??? gUnk_085FEB0C
-// ??? gUnk_085FEB20
-// ??? gUnk_085FEB34
-// ??? gUnk_085FEB48
-// ??? gUnk_085FEEBC
-// ??? gUnk_085FEEC8
-// ??? gUnk_085FEED4
-// ??? gUnk_085FEEE0
-// ??? gUnk_085FEEEC
-// ??? gUnk_08602FAC
-// ??? gUnk_086030FC
+// ??? AnimScr_EfxReblowOBJ_L_A
+// ??? AnimScr_EfxReblowOBJ_L_B
+// ??? AnimScr_EfxReblowOBJ_R_A
+// ??? AnimScr_EfxReblowOBJ_R_B
+// ??? AnimScr_EfxRestOBJ
+// ??? AnimScr_EfxSilenceOBJ
+// ??? AnimScr_EfxHammarneOBJ
+// ??? AnimScr_EfxSleepOBJ2
+// ??? AnimScr_EfxSleepOBJ
+// ??? AnimScr_EfxBerserk1
+// ??? AnimScr_EfxBerserk2
+// ??? AnimScr_EfxBerserk3
+// ??? AnimScr_EfxBerserk4
+// ??? AnimScr_EfxBerserk5
+// ??? AnimScr_EfxBerserk6
+// ??? AnimScr_EfxBerserk7
+// ??? AnimScr_EfxBerserk8
+// ??? AnimScr_EfxBerserk9
+// ??? AnimScr_EfxBerserk10
+// ??? AnimScr_EfxMshieldOBJ
+// ??? AnimScr_EfxMshieldOBJ2
 // ??? AnimScr_EfxAureolaOBJCtrl1
 // ??? AnimScr_EfxAureolaOBJCtrl2
 // ??? AnimScr_EfxAureolaOBJCtrl3

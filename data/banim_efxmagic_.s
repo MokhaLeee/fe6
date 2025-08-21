@@ -63,7 +63,7 @@ gEkrSpellAnimLut: @ 0x005D0DA0
 AnimSprite_ManaketeFlame:
     ANIM_SPRITE_END
 
-	.global AnimScr_ManaketeFlame
-AnimScr_ManaketeFlame: @ 085D0E8C
+	.global AnimScr_Common
+AnimScr_Common: @ 085D0E8C
     ANIMSCR_FORCE_SPRITE AnimSprite_ManaketeFlame, 1
     ANIMSCR_BLOCKED

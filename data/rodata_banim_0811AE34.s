@@ -2417,8 +2417,8 @@ Img_EfxPurgeOBJ: @ 081AAECC
 Pal_EfxPurgeOBJ: @ 081AB190
 	.incbin "fe6-base.gba", 0x1AB190, (0x1AB1B0 - 0x1AB190) @ length: 0020
 
-	.global TsaArray_EfxLiveBG_B_R
-TsaArray_EfxLiveBG_B_R: @ 081AB1B0
+	.global Img_EfxHealCommon
+Img_EfxHealCommon: @ 081AB1B0
 	.incbin "fe6-base.gba", 0x1AB1B0, (0x1AB340 - 0x1AB1B0) @ length: 0190
 
 	.global TsaArray_EfxLiveBG_B_L
@@ -2457,92 +2457,92 @@ PalArray3_EfxLiveBGCOL: @ 081ADBCC
 PalArray2_EfxLiveBGCOL: @ 081ADDEC
 	.incbin "fe6-base.gba", 0x1ADDEC, (0x1AE88C - 0x1ADDEC) @ length: 0AA0
 
-	.global gUnk_081AE88C
-gUnk_081AE88C: @ 081AE88C
+	.global PalArray1_EfxReserveBGCOL
+PalArray1_EfxReserveBGCOL: @ 081AE88C
 	.incbin "fe6-base.gba", 0x1AE88C, (0x1AEA8C - 0x1AE88C) @ length: 0200
 
-	.global gUnk_081AEA8C
-gUnk_081AEA8C: @ 081AEA8C
+	.global PalArray2_EfxReserveBGCOL
+PalArray2_EfxReserveBGCOL: @ 081AEA8C
 	.incbin "fe6-base.gba", 0x1AEA8C, (0x1AEC8C - 0x1AEA8C) @ length: 0200
 
-	.global gUnk_081AEC8C
-gUnk_081AEC8C: @ 081AEC8C
+	.global PalArray2_EfxReserveBGCOL2
+PalArray2_EfxReserveBGCOL2: @ 081AEC8C
 	.incbin "fe6-base.gba", 0x1AEC8C, (0x1B1710 - 0x1AEC8C) @ length: 2A84
 
-	.global Pal_Unk_081B1710
-Pal_Unk_081B1710: @ 081B1710
+	.global Pal_EfxRestBG
+Pal_EfxRestBG: @ 081B1710
 	.incbin "fe6-base.gba", 0x1B1710, (0x1B2348 - 0x1B1710) @ length: 0C38
 
-	.global gUnk_081B2348
-gUnk_081B2348: @ 081B2348
+	.global Img_EfxSilenceBG
+Img_EfxSilenceBG: @ 081B2348
 	.incbin "fe6-base.gba", 0x1B2348, (0x1B3D34 - 0x1B2348) @ length: 19EC
 
-	.global gUnk_081B3D34
-gUnk_081B3D34: @ 081B3D34
+	.global Img_EfxSilenceOBJ
+Img_EfxSilenceOBJ: @ 081B3D34
 	.incbin "fe6-base.gba", 0x1B3D34, (0x1B4254 - 0x1B3D34) @ length: 0520
 
-	.global gUnk_081B4254
-gUnk_081B4254: @ 081B4254
+	.global Pal_EfxSilenceBG
+Pal_EfxSilenceBG: @ 081B4254
 	.incbin "fe6-base.gba", 0x1B4254, (0x1B4274 - 0x1B4254) @ length: 0020
 
-	.global gUnk_081B4274
-gUnk_081B4274: @ 081B4274
+	.global Pal_EfxHammarneBG
+Pal_EfxHammarneBG: @ 081B4274
 	.incbin "fe6-base.gba", 0x1B4274, (0x1B4E9C - 0x1B4274) @ length: 0C28
 
-	.global gUnk_081B4E9C
-gUnk_081B4E9C: @ 081B4E9C
+	.global Img_EfxBerserkBG
+Img_EfxBerserkBG: @ 081B4E9C
 	.incbin "fe6-base.gba", 0x1B4E9C, (0x1B4F9C - 0x1B4E9C) @ length: 0100
 
-	.global gUnk_081B4F9C
-gUnk_081B4F9C: @ 081B4F9C
+	.global Tsa_EfxBerserkBG
+Tsa_EfxBerserkBG: @ 081B4F9C
 	.incbin "fe6-base.gba", 0x1B4F9C, (0x1B57BC - 0x1B4F9C) @ length: 0820
 
-	.global gUnk_081B57BC
-gUnk_081B57BC: @ 081B57BC
+	.global Img_EfxSleepBG
+Img_EfxSleepBG: @ 081B57BC
 	.incbin "fe6-base.gba", 0x1B57BC, (0x1B6688 - 0x1B57BC) @ length: 0ECC
 
-	.global gUnk_081B6688
-gUnk_081B6688: @ 081B6688
+	.global Pal_EfxSleepBG
+Pal_EfxSleepBG: @ 081B6688
 	.incbin "fe6-base.gba", 0x1B6688, (0x1B7468 - 0x1B6688) @ length: 0DE0
 
-	.global gUnk_081B7468
-gUnk_081B7468: @ 081B7468
+	.global Img_EfxHammarneOBJ
+Img_EfxHammarneOBJ: @ 081B7468
 	.incbin "fe6-base.gba", 0x1B7468, (0x1B7650 - 0x1B7468) @ length: 01E8
 
-	.global gUnk_081B7650
-gUnk_081B7650: @ 081B7650
+	.global Pal_EfxRestOBJ
+Pal_EfxRestOBJ: @ 081B7650
 	.incbin "fe6-base.gba", 0x1B7650, (0x1B7670 - 0x1B7650) @ length: 0020
 
-	.global gUnk_081B7670
-gUnk_081B7670: @ 081B7670
+	.global Pal_EfxHammarneOBJ
+Pal_EfxHammarneOBJ: @ 081B7670
 	.incbin "fe6-base.gba", 0x1B7670, (0x1B7690 - 0x1B7670) @ length: 0020
 
-	.global gUnk_081B7690
-gUnk_081B7690: @ 081B7690
+	.global Pal_EfxBerserkBG
+Pal_EfxBerserkBG: @ 081B7690
 	.incbin "fe6-base.gba", 0x1B7690, (0x1B76B0 - 0x1B7690) @ length: 0020
 
-	.global gUnk_081B76B0
-gUnk_081B76B0: @ 081B76B0
+	.global Img_EfxBerserk1
+Img_EfxBerserk1: @ 081B76B0
 	.incbin "fe6-base.gba", 0x1B76B0, (0x1B7B48 - 0x1B76B0) @ length: 0498
 
-	.global gUnk_081B7B48
-gUnk_081B7B48: @ 081B7B48
+	.global Img_EfxBerserk2
+Img_EfxBerserk2: @ 081B7B48
 	.incbin "fe6-base.gba", 0x1B7B48, (0x1B7F68 - 0x1B7B48) @ length: 0420
 
-	.global gUnk_081B7F68
-gUnk_081B7F68: @ 081B7F68
+	.global Pal_EfxBerserk
+Pal_EfxBerserk: @ 081B7F68
 	.incbin "fe6-base.gba", 0x1B7F68, (0x1B80A8 - 0x1B7F68) @ length: 0140
 
-	.global gUnk_081B80A8
-gUnk_081B80A8: @ 081B80A8
+	.global Img_EfxMshieldBG
+Img_EfxMshieldBG: @ 081B80A8
 	.incbin "fe6-base.gba", 0x1B80A8, (0x1B8934 - 0x1B80A8) @ length: 088C
 
-	.global gUnk_081B8934
-gUnk_081B8934: @ 081B8934
+	.global Pal_EfxMshieldBG
+Pal_EfxMshieldBG: @ 081B8934
 	.incbin "fe6-base.gba", 0x1B8934, (0x1B8E44 - 0x1B8934) @ length: 0510
 
-	.global gUnk_081B8E44
-gUnk_081B8E44: @ 081B8E44
+	.global Pal_EfxMshieldOBJ
+Pal_EfxMshieldOBJ: @ 081B8E44
 	.incbin "fe6-base.gba", 0x1B8E44, (0x1B8E64 - 0x1B8E44) @ length: 0020
 
 	.global Img_EfxAureolaBG2

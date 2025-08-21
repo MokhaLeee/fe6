@@ -1167,150 +1167,150 @@ ProcScr_EfxLiveOBJ: @ 085D2EF4
 ProcScr_EfxReserveOBJ: @ 085D2F0C
 	.incbin "fe6-base.gba", 0x5D2F0C, (0x5D2F2C - 0x5D2F0C) @ length: 0020
 
-	.global gUnk_085D2F2C
-gUnk_085D2F2C: @ 085D2F2C
+	.global ProcScr_EfxReblowOBJ
+ProcScr_EfxReblowOBJ: @ 085D2F2C
 	.incbin "fe6-base.gba", 0x5D2F2C, (0x5D2F4C - 0x5D2F2C) @ length: 0020
 
-	.global gUnk_085D2F4C
-gUnk_085D2F4C: @ 085D2F4C
+	.global ProcScr_EfxReserve
+ProcScr_EfxReserve: @ 085D2F4C
 	.incbin "fe6-base.gba", 0x5D2F4C, (0x5D2F64 - 0x5D2F4C) @ length: 0018
 
-	.global gUnk_085D2F64
-gUnk_085D2F64: @ 085D2F64
+	.global ProcScr_EfxReserveBG
+ProcScr_EfxReserveBG: @ 085D2F64
 	.incbin "fe6-base.gba", 0x5D2F64, (0x5D2F7C - 0x5D2F64) @ length: 0018
 
-	.global gUnk_085D2F7C
-gUnk_085D2F7C: @ 085D2F7C
+	.global TsaArray_EfxReserveBG
+TsaArray_EfxReserveBG: @ 085D2F7C
 	.incbin "fe6-base.gba", 0x5D2F7C, (0x5D2F8C - 0x5D2F7C) @ length: 0010
 
-	.global gUnk_085D2F8C
-gUnk_085D2F8C: @ 085D2F8C
+	.global ProcScr_EfxReserveBGCOL
+ProcScr_EfxReserveBGCOL: @ 085D2F8C
 	.incbin "fe6-base.gba", 0x5D2F8C, (0x5D2FAC - 0x5D2F8C) @ length: 0020
 
-	.global gUnk_085D2FAC
-gUnk_085D2FAC: @ 085D2FAC
+	.global ProcScr_EfxReserveBG2
+ProcScr_EfxReserveBG2: @ 085D2FAC
 	.incbin "fe6-base.gba", 0x5D2FAC, (0x5D2FC4 - 0x5D2FAC) @ length: 0018
 
-	.global gUnk_085D2FC4
-gUnk_085D2FC4: @ 085D2FC4
+	.global TsaArray_EfxReserveBG2
+TsaArray_EfxReserveBG2: @ 085D2FC4
 	.incbin "fe6-base.gba", 0x5D2FC4, (0x5D2FC8 - 0x5D2FC4) @ length: 0004
 
-	.global gUnk_085D2FC8
-gUnk_085D2FC8: @ 085D2FC8
+	.global ProcScr_EfxReserveBGCOL2
+ProcScr_EfxReserveBGCOL2: @ 085D2FC8
 	.incbin "fe6-base.gba", 0x5D2FC8, (0x5D2FE8 - 0x5D2FC8) @ length: 0020
 
-	.global gUnk_085D2FE8
-gUnk_085D2FE8: @ 085D2FE8
+	.global ProcScr_EfxRest
+ProcScr_EfxRest: @ 085D2FE8
 	.incbin "fe6-base.gba", 0x5D2FE8, (0x5D3000 - 0x5D2FE8) @ length: 0018
 
-	.global gUnk_085D3000
-gUnk_085D3000: @ 085D3000
+	.global ProcScr_EfxRestBG
+ProcScr_EfxRestBG: @ 085D3000
 	.incbin "fe6-base.gba", 0x5D3000, (0x5D3018 - 0x5D3000) @ length: 0018
 
-	.global gUnk_085D3018
-gUnk_085D3018: @ 085D3018
+	.global TsaArray_EfxRestBG
+TsaArray_EfxRestBG: @ 085D3018
 	.incbin "fe6-base.gba", 0x5D3018, (0x5D304C - 0x5D3018) @ length: 0034
 
-	.global gUnk_085D304C
-gUnk_085D304C: @ 085D304C
+	.global ImgArray_EfxRestBG
+ImgArray_EfxRestBG: @ 085D304C
 	.incbin "fe6-base.gba", 0x5D304C, (0x5D3080 - 0x5D304C) @ length: 0034
 
-	.global gUnk_085D3080
-gUnk_085D3080: @ 085D3080
+	.global ProcScr_EfxRestOBJ
+ProcScr_EfxRestOBJ: @ 085D3080
 	.incbin "fe6-base.gba", 0x5D3080, (0x5D30A0 - 0x5D3080) @ length: 0020
 
-	.global gUnk_085D30A0
-gUnk_085D30A0: @ 085D30A0
+	.global ProcScr_EfxSilence
+ProcScr_EfxSilence: @ 085D30A0
 	.incbin "fe6-base.gba", 0x5D30A0, (0x5D30B8 - 0x5D30A0) @ length: 0018
 
-	.global gUnk_085D30B8
-gUnk_085D30B8: @ 085D30B8
+	.global ProcScr_EfxSilenceBG
+ProcScr_EfxSilenceBG: @ 085D30B8
 	.incbin "fe6-base.gba", 0x5D30B8, (0x5D30D0 - 0x5D30B8) @ length: 0018
 
-	.global gUnk_085D30D0
-gUnk_085D30D0: @ 085D30D0
+	.global TsaArray_EfxSilenceBG
+TsaArray_EfxSilenceBG: @ 085D30D0
 	.incbin "fe6-base.gba", 0x5D30D0, (0x5D3118 - 0x5D30D0) @ length: 0048
 
-	.global gUnk_085D3118
-gUnk_085D3118: @ 085D3118
+	.global ProcScr_EfxSilenceOBJ
+ProcScr_EfxSilenceOBJ: @ 085D3118
 	.incbin "fe6-base.gba", 0x5D3118, (0x5D3138 - 0x5D3118) @ length: 0020
 
-	.global gUnk_085D3138
-gUnk_085D3138: @ 085D3138
+	.global ProcScr_EfxSleep
+ProcScr_EfxSleep: @ 085D3138
 	.incbin "fe6-base.gba", 0x5D3138, (0x5D3150 - 0x5D3138) @ length: 0018
 
-	.global gUnk_085D3150
-gUnk_085D3150: @ 085D3150
+	.global ProcScr_EfxSleepBG
+ProcScr_EfxSleepBG: @ 085D3150
 	.incbin "fe6-base.gba", 0x5D3150, (0x5D3168 - 0x5D3150) @ length: 0018
 
-	.global gUnk_085D3168
-gUnk_085D3168: @ 085D3168
+	.global TsaArray_EfxSleepBG
+TsaArray_EfxSleepBG: @ 085D3168
 	.incbin "fe6-base.gba", 0x5D3168, (0x5D31A8 - 0x5D3168) @ length: 0040
 
-	.global gUnk_085D31A8
-gUnk_085D31A8: @ 085D31A8
+	.global ProcScr_EfxSleepOBJ
+ProcScr_EfxSleepOBJ: @ 085D31A8
 	.incbin "fe6-base.gba", 0x5D31A8, (0x5D31C8 - 0x5D31A8) @ length: 0020
 
-	.global gUnk_085D31C8
-gUnk_085D31C8: @ 085D31C8
+	.global ProcScr_EfxSleepOBJ2
+ProcScr_EfxSleepOBJ2: @ 085D31C8
 	.incbin "fe6-base.gba", 0x5D31C8, (0x5D31E8 - 0x5D31C8) @ length: 0020
 
-	.global gUnk_085D31E8
-gUnk_085D31E8: @ 085D31E8
+	.global ProcScr_EfxSleepSE
+ProcScr_EfxSleepSE: @ 085D31E8
 	.incbin "fe6-base.gba", 0x5D31E8, (0x5D3230 - 0x5D31E8) @ length: 0048
 
-	.global gUnk_085D3230
-gUnk_085D3230: @ 085D3230
+	.global ProcScr_EfxHammarne
+ProcScr_EfxHammarne: @ 085D3230
 	.incbin "fe6-base.gba", 0x5D3230, (0x5D3248 - 0x5D3230) @ length: 0018
 
-	.global gUnk_085D3248
-gUnk_085D3248: @ 085D3248
+	.global ProcScr_EfxHammarneBG
+ProcScr_EfxHammarneBG: @ 085D3248
 	.incbin "fe6-base.gba", 0x5D3248, (0x5D3260 - 0x5D3248) @ length: 0018
 
-	.global gUnk_085D3260
-gUnk_085D3260: @ 085D3260
+	.global TsaArray_EfxHammarneBG
+TsaArray_EfxHammarneBG: @ 085D3260
 	.incbin "fe6-base.gba", 0x5D3260, (0x5D3294 - 0x5D3260) @ length: 0034
 
-	.global gUnk_085D3294
-gUnk_085D3294: @ 085D3294
+	.global ImgArray_EfxHammarneBG
+ImgArray_EfxHammarneBG: @ 085D3294
 	.incbin "fe6-base.gba", 0x5D3294, (0x5D32C8 - 0x5D3294) @ length: 0034
 
-	.global gUnk_085D32C8
-gUnk_085D32C8: @ 085D32C8
+	.global ProcScr_EfxHammarneOBJ
+ProcScr_EfxHammarneOBJ: @ 085D32C8
 	.incbin "fe6-base.gba", 0x5D32C8, (0x5D32E8 - 0x5D32C8) @ length: 0020
 
-	.global gUnk_085D32E8
-gUnk_085D32E8: @ 085D32E8
+	.global ProcScr_EfxBerserk
+ProcScr_EfxBerserk: @ 085D32E8
 	.incbin "fe6-base.gba", 0x5D32E8, (0x5D3300 - 0x5D32E8) @ length: 0018
 
-	.global gUnk_085D3300
-gUnk_085D3300: @ 085D3300
+	.global ProcScr_EfxBerserkBG
+ProcScr_EfxBerserkBG: @ 085D3300
 	.incbin "fe6-base.gba", 0x5D3300, (0x5D3318 - 0x5D3300) @ length: 0018
 
-	.global gUnk_085D3318
-gUnk_085D3318: @ 085D3318
+	.global ProcScr_EfxBerserkCLONE
+ProcScr_EfxBerserkCLONE: @ 085D3318
 	.incbin "fe6-base.gba", 0x5D3318, (0x5D3338 - 0x5D3318) @ length: 0020
 
-	.global gUnk_085D3338
-gUnk_085D3338: @ 085D3338
+	.global ProcScr_EfxBerserkOBJ
+ProcScr_EfxBerserkOBJ: @ 085D3338
 	.incbin "fe6-base.gba", 0x5D3338, (0x5D33F0 - 0x5D3338) @ length: 00B8
 
-	.global gUnk_085D33F0
-gUnk_085D33F0: @ 085D33F0
+	.global ProcScr_EfxMshield
+ProcScr_EfxMshield: @ 085D33F0
 	.incbin "fe6-base.gba", 0x5D33F0, (0x5D3408 - 0x5D33F0) @ length: 0018
 
-	.global gUnk_085D3408
-gUnk_085D3408: @ 085D3408
+	.global ProcScr_EfxMshieldBG
+ProcScr_EfxMshieldBG: @ 085D3408
 	.incbin "fe6-base.gba", 0x5D3408, (0x5D3420 - 0x5D3408) @ length: 0018
 
-	.global gUnk_085D3420
-gUnk_085D3420: @ 085D3420
+	.global TsaArray_EfxMshieldBG
+TsaArray_EfxMshieldBG: @ 085D3420
 	.incbin "fe6-base.gba", 0x5D3420, (0x5D3434 - 0x5D3420) @ length: 0014
 
-	.global gUnk_085D3434
-gUnk_085D3434: @ 085D3434
+	.global ProcScr_EfxMshieldOBJ
+ProcScr_EfxMshieldOBJ: @ 085D3434
 	.incbin "fe6-base.gba", 0x5D3434, (0x5D3454 - 0x5D3434) @ length: 0020
 
-	.global gUnk_085D3454
-gUnk_085D3454: @ 085D3454
+	.global ProcScr_EfxMshieldOBJ2
+ProcScr_EfxMshieldOBJ2: @ 085D3454
 	.incbin "fe6-base.gba", 0x5D3454, (0x5D3474 - 0x5D3454) @ length: 0020

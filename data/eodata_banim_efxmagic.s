@@ -108,46 +108,46 @@ FrameArray3_EfxLiveBGCOL: @ 0811A934
 FrameArray4_EfxLiveBGCOL: @ 0811A966
 	.incbin "fe6-base.gba", 0x11A966, (0x11A9A8 - 0x11A966) @ length: 0042
 
-	.global gUnk_0811A9A8
-gUnk_0811A9A8: @ 0811A9A8
+	.global FrameArray_EfxReserveBG
+FrameArray_EfxReserveBG: @ 0811A9A8
 	.incbin "fe6-base.gba", 0x11A9A8, (0x11A9BA - 0x11A9A8) @ length: 0012
 
-	.global gUnk_0811A9BA
-gUnk_0811A9BA: @ 0811A9BA
+	.global EfxReserveBG_Songs
+EfxReserveBG_Songs: @ 0811A9BA
 	.incbin "fe6-base.gba", 0x11A9BA, (0x11A9C2 - 0x11A9BA) @ length: 0008
 
-	.global gUnk_0811A9C2
-gUnk_0811A9C2: @ 0811A9C2
+	.global EfxReserveBG_SongLocs
+EfxReserveBG_SongLocs: @ 0811A9C2
 	.incbin "fe6-base.gba", 0x11A9C2, (0x11A9CA - 0x11A9C2) @ length: 0008
 
-	.global gUnk_0811A9CA
-gUnk_0811A9CA: @ 0811A9CA
+	.global FrameArray_EfxReserveBGCOL
+FrameArray_EfxReserveBGCOL: @ 0811A9CA
 	.incbin "fe6-base.gba", 0x11A9CA, (0x11AACC - 0x11A9CA) @ length: 0102
 
-	.global gUnk_0811AACC
-gUnk_0811AACC: @ 0811AACC
+	.global FrameArray_EfxReserveBG2
+FrameArray_EfxReserveBG2: @ 0811AACC
 	.incbin "fe6-base.gba", 0x11AACC, (0x11AAD2 - 0x11AACC) @ length: 0006
 
-	.global gUnk_0811AAD2
-gUnk_0811AAD2: @ 0811AAD2
+	.global FrameArray_EfxReserveBGCOL2
+FrameArray_EfxReserveBGCOL2: @ 0811AAD2
 	.incbin "fe6-base.gba", 0x11AAD2, (0x11ABB0 - 0x11AAD2) @ length: 00DE
 
-	.global gUnk_0811ABB0
-gUnk_0811ABB0: @ 0811ABB0
+	.global FrameArray_EfxRestBG
+FrameArray_EfxRestBG: @ 0811ABB0
 	.incbin "fe6-base.gba", 0x11ABB0, (0x11ABE6 - 0x11ABB0) @ length: 0036
 
-	.global gUnk_0811ABE6
-gUnk_0811ABE6: @ 0811ABE6
+	.global FrameArray_EfxSilenceBG
+FrameArray_EfxSilenceBG: @ 0811ABE6
 	.incbin "fe6-base.gba", 0x11ABE6, (0x11AC30 - 0x11ABE6) @ length: 004A
 
-	.global gUnk_0811AC30
-gUnk_0811AC30: @ 0811AC30
+	.global FrameArray_EfxSleepBG
+FrameArray_EfxSleepBG: @ 0811AC30
 	.incbin "fe6-base.gba", 0x11AC30, (0x11AD32 - 0x11AC30) @ length: 0102
 
-	.global gUnk_0811AD32
-gUnk_0811AD32: @ 0811AD32
+	.global FrameArray_EfxHammarneBG
+FrameArray_EfxHammarneBG: @ 0811AD32
 	.incbin "fe6-base.gba", 0x11AD32, (0x11AD68 - 0x11AD32) @ length: 0036
 
-	.global gUnk_0811AD68
-gUnk_0811AD68: @ 0811AD68
+	.global FrameArray_EfxMshieldBG
+FrameArray_EfxMshieldBG: @ 0811AD68
 	.incbin "fe6-base.gba", 0x11AD68, (0x11AE34 - 0x11AD68) @ length: 00CC

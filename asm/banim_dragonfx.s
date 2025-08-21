@@ -1206,7 +1206,7 @@ EkrDragonDeath_Loop: @ 0x0805AFEC
 	movs r1, #0x80
 	lsls r1, r1, #1
 	bl EfxPlaySE
-	bl func_fe6_0805BD8C
+	bl EfxStopBGM1
 	adds r0, r4, #0
 	bl Proc_Break
 .L0805B012:

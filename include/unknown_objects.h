@@ -114,7 +114,7 @@ extern u16 const Pal_UiStatBar_ThemeGreen[];
 extern u8 const Img_UiUnitNameFrame[];
 extern u16 const Pal_UiUnitNameFrame[];
 
-extern u16 const Pal_Unk_081B1710[]; // manim
+extern u16 const Pal_EfxRestBG[]; // manim
 
 extern u8 const Tsa_StatusScreen_FactionInfoFrame[]; // tsa
 extern u8 const Tsa_StatusScreen_PlaytimeFrame[]; // tsa
@@ -256,17 +256,17 @@ extern u16 const FrameConf_EfxElfireBGCOL[];
 // extern ??? FrameArray2_EfxLiveBGCOL
 // extern ??? FrameArray3_EfxLiveBGCOL
 // extern ??? FrameArray4_EfxLiveBGCOL
-// extern ??? gUnk_0811A9A8
-// extern ??? gUnk_0811A9BA
-// extern ??? gUnk_0811A9C2
-// extern ??? gUnk_0811A9CA
-// extern ??? gUnk_0811AACC
-// extern ??? gUnk_0811AAD2
-// extern ??? gUnk_0811ABB0
-// extern ??? gUnk_0811ABE6
-// extern ??? gUnk_0811AC30
-// extern ??? gUnk_0811AD32
-// extern ??? gUnk_0811AD68
+// extern ??? FrameArray_EfxReserveBG
+// extern ??? EfxReserveBG_Songs
+// extern ??? EfxReserveBG_SongLocs
+// extern ??? FrameArray_EfxReserveBGCOL
+// extern ??? FrameArray_EfxReserveBG2
+// extern ??? FrameArray_EfxReserveBGCOL2
+// extern ??? FrameArray_EfxRestBG
+// extern ??? FrameArray_EfxSilenceBG
+// extern ??? FrameArray_EfxSleepBG
+// extern ??? FrameArray_EfxHammarneBG
+// extern ??? FrameArray_EfxMshieldBG
 extern const u16 Frames_EfxCriricalEffectBGCOL[];
 extern const u16 FrameConf_EfxNormalEffectBG[];
 // extern ??? FrameConfig_EfxMagFcastBg1
@@ -881,7 +881,7 @@ extern u16 Tsa_EfxPurgeBG_081AA7D4[];
 extern u16 Tsa_EfxPurgeBG_081AAB5C[];
 extern u16 Img_EfxPurgeOBJ[];
 extern u16 Pal_EfxPurgeOBJ[];
-// extern ??? TsaArray_EfxLiveBG_B_R
+// extern ??? Img_EfxHealCommon
 // extern ??? TsaArray_EfxLiveBG_B_L
 // extern ??? PalArray1_EfxLiveBGCOL
 // extern ??? Img_EfxLiveOBJ
@@ -891,28 +891,28 @@ extern u16 Pal_EfxFimbulvetrOBJ[];
 // extern ??? TsaArray_EfxLiveBG_A_R
 // extern ??? PalArray3_EfxLiveBGCOL
 // extern ??? PalArray2_EfxLiveBGCOL
-// extern ??? gUnk_081AE88C
-// extern ??? gUnk_081AEA8C
-// extern ??? gUnk_081AEC8C
-extern u16 const Pal_Unk_081B1710[];
-// extern ??? gUnk_081B2348
-// extern ??? gUnk_081B3D34
-// extern ??? gUnk_081B4254
-// extern ??? gUnk_081B4274
-// extern ??? gUnk_081B4E9C
-// extern ??? gUnk_081B4F9C
-// extern ??? gUnk_081B57BC
-// extern ??? gUnk_081B6688
-// extern ??? gUnk_081B7468
-// extern ??? gUnk_081B7650
-// extern ??? gUnk_081B7670
-// extern ??? gUnk_081B7690
-// extern ??? gUnk_081B76B0
-// extern ??? gUnk_081B7B48
-// extern ??? gUnk_081B7F68
-// extern ??? gUnk_081B80A8
-// extern ??? gUnk_081B8934
-// extern ??? gUnk_081B8E44
+// extern ??? PalArray1_EfxReserveBGCOL
+// extern ??? PalArray2_EfxReserveBGCOL
+// extern ??? PalArray2_EfxReserveBGCOL2
+extern u16 const Pal_EfxRestBG[];
+// extern ??? Img_EfxSilenceBG
+// extern ??? Img_EfxSilenceOBJ
+// extern ??? Pal_EfxSilenceBG
+// extern ??? Pal_EfxHammarneBG
+// extern ??? Img_EfxBerserkBG
+// extern ??? Tsa_EfxBerserkBG
+// extern ??? Img_EfxSleepBG
+// extern ??? Pal_EfxSleepBG
+// extern ??? Img_EfxHammarneOBJ
+// extern ??? Pal_EfxRestOBJ
+// extern ??? Pal_EfxHammarneOBJ
+// extern ??? Pal_EfxBerserkBG
+// extern ??? Img_EfxBerserk1
+// extern ??? Img_EfxBerserk2
+// extern ??? Pal_EfxBerserk
+// extern ??? Img_EfxMshieldBG
+// extern ??? Pal_EfxMshieldBG
+// extern ??? Pal_EfxMshieldOBJ
 // extern ??? Img_EfxAureolaBG2
 // extern ??? Pal_EfxAureolaBG
 // extern ??? Pal_EfxAureolaBG2

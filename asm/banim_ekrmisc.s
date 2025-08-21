@@ -100,7 +100,7 @@ EkrEfxStatusClear: @ 0x08044900
 	str r4, [r0]
 	ldr r0, .L08044994 @ =gEfxTeonoState
 	str r4, [r0]
-	ldr r0, .L08044998 @ =gUnk_Banim_02017754
+	ldr r0, .L08044998 @ =gEfxTerrainLayerLow
 	str r4, [r0]
 	ldr r0, .L0804499C @ =gEkrBg2QuakeVec
 	strh r4, [r0]
@@ -141,7 +141,7 @@ EkrEfxStatusClear: @ 0x08044900
 .L0804498C: .4byte gEfxHpBarResireFlag
 .L08044990: .4byte gUnk_Banim_0201774C
 .L08044994: .4byte gEfxTeonoState
-.L08044998: .4byte gUnk_Banim_02017754
+.L08044998: .4byte gEfxTerrainLayerLow
 .L0804499C: .4byte gEkrBg2QuakeVec
 .L080449A0: .4byte gUnk_Banim_0201775C
 .L080449A4: .4byte gEfxSpecalEffectExist

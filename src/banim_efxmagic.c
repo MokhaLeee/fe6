@@ -4100,7 +4100,7 @@ void NewEfxMistyrainOBJ(struct Anim *anim)
 
     GetAnimAnotherSide(anim);
 
-    scr = AnimScr_ManaketeFlame;
+    scr = AnimScr_Common;
     proc->anim2 = EfxCreateFrontAnim(proc->anim, scr, scr, scr, scr);
 }
 
@@ -4115,7 +4115,7 @@ struct ProcEfxOBJ * NewEfxMistyrainOBJ2(struct Anim *anim)
     proc->anim = anim;
     GetAnimAnotherSide(anim);
 
-    scr = AnimScr_ManaketeFlame;
+    scr = AnimScr_Common;
     proc->anim2 = EfxCreateFrontAnim(proc->anim, scr, scr, scr, scr);
     proc->anim2->yPosition -= 4;
 

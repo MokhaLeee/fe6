@@ -417,9 +417,9 @@ i16 EfxAdvanceFrameLut(i16 *ptime, i16 *pcount, const i16 lut[])
     }
 }
 
-void func_fe6_08047C1C(void)
+void PutEfxTerrainToLowerLayer(void)
 {
-    gUnk_Banim_02017754 = true;
+    gEfxTerrainLayerLow = true;
 }
 
 int EfxGetCamMovDuration(void)
