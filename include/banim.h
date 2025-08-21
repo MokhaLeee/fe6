@@ -1912,9 +1912,9 @@ extern CONST_DATA struct ProcScr ProcScr_EkrChienCHR[];
 extern CONST_DATA struct ProcScr ProcScr_EfxAnimeDrv[];
 extern CONST_DATA struct ProcScr ProcScr_EkrUnitMainMini[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
-// ??? ProcScr_EkrTogiEndPROC
-// ??? ProcScr_EkrTogiColor
-// ??? Pals_ArenaBattleBg
+extern CONST_DATA struct ProcScr ProcScr_EkrTogiEndPROC[];
+extern CONST_DATA struct ProcScr ProcScr_EkrTogiColor[];
+// ??? Pals_ArenaBattleBg[];
 // ??? gUnk_085CCC40
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Far[];
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Far[];
@@ -2032,10 +2032,10 @@ extern CONST_DATA struct ProcScr ProcScr_EfxPurgeOBJRND[];
 extern CONST_DATA struct ProcScr ProcScr_EfxPurgeOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblaze[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBG1[];
-// ??? TsaArray_EfxForblazeBG1
-// ??? ImgArray_EfxForblazeBG1
+extern CONST_DATA u16 *TsaArray_EfxForblazeBG1[];
+extern CONST_DATA u16 *ImgArray_EfxForblazeBG1[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBGCOL1[];
-// ??? gUnk_085D2230
+extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBGCtrl1[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeOBJ[];
 // ??? gUnk_085D2288
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeOBJ2[];
@@ -2053,99 +2053,99 @@ extern CONST_DATA u16 *ImgArray_EfxDivineBG3[];
 extern CONST_DATA u16 *TsaArray_EfxDivineBG3[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDivineOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxAureola[];
-// ??? ProcScr_EfxAureolaBG
-// ??? ImgArray_EfxAureolaBG
-// ??? TsaArray_EfxAureolaBG
-// ??? ProcScr_EfxAureolaBG2
-// ??? ProcScr_EfxAureolaBG2COL
-// ??? ProcScr_EfxAureolaOBJ
-// ??? ProcScr_EfxAureolaOBJCtrl
-// ??? ProcScr_EfxAureolaOBJ2
-// ??? ProcScr_EfxAureolaOBJ3
-// ??? ProcScr_EfxAureolaOBJ3Ctrl
-// ??? ProcScr_EfxApocalypse
-// ??? ProcScr_EfxApocalypseBG
-// ??? ProcScr_EfxApocalypseBGCtrl
-// ??? ProcScr_EfxApocalypseBGCOL
-// ??? ProcScr_EfxApocalypseOBJ
-// ??? AnimArray_EfxApocalypseOBJ
-// ??? ProcScr_EfxApocalypseBGCOL2
-// ??? ProcScr_EfxApocalypseDummy
-// ??? ProcScr_EfxApocalypseBgFlash1
-// ??? ProcScr_EfxApocalypseBgFlash2
-// ??? ProcScr_EfxApocalypseBG2
-// ??? ImgArray_EfxApocalypseBG2
-// ??? TsaArray_EfxApocalypseBG2
-// ??? ProcScr_EfxApocalypseOBJ2
-// ??? ProcScr_EfxApocalypseOBJ3
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaBG[];
+extern CONST_DATA u16 *ImgArray_EfxAureolaBG[];
+extern CONST_DATA u16 *TsaArray_EfxAureolaBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaBG2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaBG2COL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaOBJCtrl[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaOBJ2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaOBJ3[];
+extern CONST_DATA struct ProcScr ProcScr_EfxAureolaOBJ3Ctrl[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypse[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBGCtrl[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ[];
+// ??? AnimArray_EfxApocalypseOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBGCOL2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseDummy[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBgFlash1[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBgFlash2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBG2[];
+extern CONST_DATA u16 *ImgArray_EfxApocalypseBG2[];
+extern CONST_DATA u16 *TsaArray_EfxApocalypseBG2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ3[];
 extern int DuraArray_EfxApocalypseOBJ3RND[];
-// ??? LoArray_EfxApocalypseOBJ3RND
-// ??? StateArray_EfxApocalypseOBJ3RND
-// ??? ProcScr_EfxApocalypseOBJ3RND
-// ??? ProcScr_EfxHazymoon
-// ??? ProcScr_EfxHazymoonBG
-// ??? TsaArray_EfxHazymoonBG
-// ??? ImgArray_EfxHazymoonBG
-// ??? ProcScr_EfxHazymoonOBJ2
-// ??? ProcScr_EfxHazymoonOBJ3
-// ??? gEclipseAnimSpriteCoordinates
-// ??? ProcScr_EfxHazymoonOBJ3RND
-// ??? ProcScr_EfxFenrir
-// ??? ProcScr_EfxFenrirBG
-// ??? ProcScr_EfxFenrirBGCOL
-// ??? ProcScr_EfxFenrirOBJ
-// ??? ProcScr_EfxFenrirBG2
-// ??? ImgArray_EfxFenrirBG2_A
-// ??? TsaArray_EfxFenrirBG2_A
-// ??? ProcScr_EfxFenrirOBJ2
-// ??? ProcScr_EfxFenrirOBJ2Chiri
-// ??? gFenrirSpriteAngles
-// ??? ProcScr_EfxLive
-// ??? ProcScr_EfxRelive
-// ??? ProcScr_EfxRecover
-// ??? ProcScr_EfxReblow
-// ??? ProcScr_EfxLiveBG
-// ??? ProcScr_EfxLiveBGCOL
-// ??? ProcScr_EfxLiveALPHA
-// ??? ProcScr_EfxLiveOBJ
-// ??? ProcScr_EfxReserveOBJ
-// ??? ProcScr_EfxReblowOBJ
-// ??? ProcScr_EfxReserve
-// ??? ProcScr_EfxReserveBG
-// ??? TsaArray_EfxReserveBG
-// ??? ProcScr_EfxReserveBGCOL
-// ??? ProcScr_EfxReserveBG2
-// ??? TsaArray_EfxReserveBG2
-// ??? ProcScr_EfxReserveBGCOL2
-// ??? ProcScr_EfxRest
-// ??? ProcScr_EfxRestBG
-// ??? TsaArray_EfxRestBG
-// ??? ImgArray_EfxRestBG
-// ??? ProcScr_EfxRestOBJ
-// ??? ProcScr_EfxSilence
-// ??? ProcScr_EfxSilenceBG
-// ??? TsaArray_EfxSilenceBG
-// ??? ProcScr_EfxSilenceOBJ
-// ??? ProcScr_EfxSleep
-// ??? ProcScr_EfxSleepBG
-// ??? TsaArray_EfxSleepBG
-// ??? ProcScr_EfxSleepOBJ
-// ??? ProcScr_EfxSleepOBJ2
-// ??? ProcScr_EfxSleepSE
-// ??? ProcScr_EfxHammarne
-// ??? ProcScr_EfxHammarneBG
-// ??? TsaArray_EfxHammarneBG
-// ??? ImgArray_EfxHammarneBG
-// ??? ProcScr_EfxHammarneOBJ
-// ??? ProcScr_EfxBerserk
-// ??? ProcScr_EfxBerserkBG
-// ??? ProcScr_EfxBerserkCLONE
-// ??? ProcScr_EfxBerserkOBJ
-// ??? ProcScr_EfxMshield
-// ??? ProcScr_EfxMshieldBG
-// ??? TsaArray_EfxMshieldBG
-// ??? ProcScr_EfxMshieldOBJ
-// ??? ProcScr_EfxMshieldOBJ2
+// ??? LoArray_EfxApocalypseOBJ3RND[];
+// ??? StateArray_EfxApocalypseOBJ3RND[];
+extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ3RND[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHazymoon[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonBG[];
+extern CONST_DATA u16 *TsaArray_EfxHazymoonBG[];
+extern CONST_DATA u16 *ImgArray_EfxHazymoonBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonOBJ2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonOBJ3[];
+// ??? gEclipseAnimSpriteCoordinates[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonOBJ3RND[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFenrir[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFenrirBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFenrirBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFenrirOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFenrirBG2[];
+extern CONST_DATA u16 *ImgArray_EfxFenrirBG2_A[];
+extern CONST_DATA u16 *TsaArray_EfxFenrirBG2_A[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFenrirOBJ2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxFenrirOBJ2Chiri[];
+// ??? gFenrirSpriteAngles[];
+extern CONST_DATA struct ProcScr ProcScr_EfxLive[];
+extern CONST_DATA struct ProcScr ProcScr_EfxRelive[];
+extern CONST_DATA struct ProcScr ProcScr_EfxRecover[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReblow[];
+extern CONST_DATA struct ProcScr ProcScr_EfxLiveBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxLiveBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxLiveALPHA[];
+extern CONST_DATA struct ProcScr ProcScr_EfxLiveOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReserveOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReblowOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReserve[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReserveBG[];
+extern CONST_DATA u16 *TsaArray_EfxReserveBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReserveBGCOL[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReserveBG2[];
+extern CONST_DATA u16 *TsaArray_EfxReserveBG2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxReserveBGCOL2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxRest[];
+extern CONST_DATA struct ProcScr ProcScr_EfxRestBG[];
+extern CONST_DATA u16 *TsaArray_EfxRestBG[];
+extern CONST_DATA u16 *ImgArray_EfxRestBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxRestOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSilence[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSilenceBG[];
+extern CONST_DATA u16 *TsaArray_EfxSilenceBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSilenceOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSleep[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSleepBG[];
+extern CONST_DATA u16 *TsaArray_EfxSleepBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSleepOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSleepOBJ2[];
+extern CONST_DATA struct ProcScr ProcScr_EfxSleepSE[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHammarne[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHammarneBG[];
+extern CONST_DATA u16 *TsaArray_EfxHammarneBG[];
+extern CONST_DATA u16 *ImgArray_EfxHammarneBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxHammarneOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxBerserk[];
+extern CONST_DATA struct ProcScr ProcScr_EfxBerserkBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxBerserkCLONE[];
+extern CONST_DATA struct ProcScr ProcScr_EfxBerserkOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxMshield[];
+extern CONST_DATA struct ProcScr ProcScr_EfxMshieldBG[];
+extern CONST_DATA u16 *TsaArray_EfxMshieldBG[];
+extern CONST_DATA struct ProcScr ProcScr_EfxMshieldOBJ[];
+extern CONST_DATA struct ProcScr ProcScr_EfxMshieldOBJ2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDamageMojiEffect[];
 extern CONST_DATA struct ProcScr ProcScr_EfxDamageMojiEffectOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxCriricalEffect[];
@@ -2261,11 +2261,11 @@ extern u32 AnimScr_EfxFireOBJ_R_Back[];
 extern u32 AnimScr_EfxElfireOBJ_R[];
 extern u32 AnimScr_EfxElfireOBJ_L[];
 extern CONST_DATA AnimScr AnimScr_EfxThunderstormOBJ[];
-// ??? AnimScr_EfxForblazeOBJ2
-// ??? AnimScr_EfxForblazeOBJ3
-// ??? AnimScr_EfxForblazeOBJ4
-// ??? AnimScr_EfxForblazeOBJ5
-// ??? AnimScr_EfxForblazeOBJ6
+extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ2[];
+extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ3[];
+extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ4[];
+extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ5[];
+extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ6[];
 extern CONST_DATA AnimScr AnimScr_EfxFimbulvetrOBJ1[];
 extern CONST_DATA AnimScr AnimScr_EfxFimbulvetrOBJ2Fall[];
 extern CONST_DATA AnimScr AnimScr_FimbulvetrOBJ2Fall_TypeA[];
@@ -2281,48 +2281,48 @@ extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ2_1[];
 extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ2_2[];
 extern CONST_DATA AnimScr AnimScr_EfxMistyrainOBJ1_3[];
 extern CONST_DATA AnimScr AnimScr_EfxDivineOBJ[];
-// ??? AnimScr_EfxApocalypseOBJ2_1
-// ??? AnimScr_EfxApocalypseOBJ3RND_1
-// ??? AnimScr_EfxApocalypseOBJ3RND_2
-// ??? AnimScr_EfxApocalypseOBJ3RND_3
-// ??? AnimScr_EfxApocalypseOBJ2_2
-// ??? AnimScr_EfxHazymoonOBJ2_1
-// ??? AnimScr_EfxHazymoonOBJ2_2
-// ??? AnimScr_EfxHazymoonOBJ2_3
-// ??? AnimScr_EfxFenrirOBJ2Chiri1
-// ??? AnimScr_EfxFenrirOBJ2Chiri2
-// ??? AnimScr_EfxFenrirOBJ
-// ??? AnimScr_EfxPurgeOBJ
-// ??? AnimScr_EfxLiveOBJ
-// ??? AnimScr_EfxReserveOBJ
-// ??? AnimScr_EfxReblowOBJ_L_A
-// ??? AnimScr_EfxReblowOBJ_L_B
-// ??? AnimScr_EfxReblowOBJ_R_A
-// ??? AnimScr_EfxReblowOBJ_R_B
-// ??? AnimScr_EfxRestOBJ
-// ??? AnimScr_EfxSilenceOBJ
-// ??? AnimScr_EfxHammarneOBJ
-// ??? AnimScr_EfxSleepOBJ2
-// ??? AnimScr_EfxSleepOBJ
-// ??? AnimScr_EfxBerserk1
-// ??? AnimScr_EfxBerserk2
-// ??? AnimScr_EfxBerserk3
-// ??? AnimScr_EfxBerserk4
-// ??? AnimScr_EfxBerserk5
-// ??? AnimScr_EfxBerserk6
-// ??? AnimScr_EfxBerserk7
-// ??? AnimScr_EfxBerserk8
-// ??? AnimScr_EfxBerserk9
-// ??? AnimScr_EfxBerserk10
-// ??? AnimScr_EfxMshieldOBJ
-// ??? AnimScr_EfxMshieldOBJ2
-// ??? AnimScr_EfxAureolaOBJCtrl1
-// ??? AnimScr_EfxAureolaOBJCtrl2
-// ??? AnimScr_EfxAureolaOBJCtrl3
-// ??? AnimScr_EfxAureolaOBJ2_1
-// ??? AnimScr_EfxAureolaOBJ2_2
-// ??? AnimScr_EfxAureolaOBJ3_1
-// ??? AnimScr_EfxAureolaOBJ3_2
+extern CONST_DATA AnimScr AnimScr_EfxApocalypseOBJ2_1[];
+extern CONST_DATA AnimScr AnimScr_EfxApocalypseOBJ3RND_1[];
+extern CONST_DATA AnimScr AnimScr_EfxApocalypseOBJ3RND_2[];
+extern CONST_DATA AnimScr AnimScr_EfxApocalypseOBJ3RND_3[];
+extern CONST_DATA AnimScr AnimScr_EfxApocalypseOBJ2_2[];
+extern CONST_DATA AnimScr AnimScr_EfxHazymoonOBJ2_1[];
+extern CONST_DATA AnimScr AnimScr_EfxHazymoonOBJ2_2[];
+extern CONST_DATA AnimScr AnimScr_EfxHazymoonOBJ2_3[];
+extern CONST_DATA AnimScr AnimScr_EfxFenrirOBJ2Chiri1[];
+extern CONST_DATA AnimScr AnimScr_EfxFenrirOBJ2Chiri2[];
+extern CONST_DATA AnimScr AnimScr_EfxFenrirOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxPurgeOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxLiveOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxReserveOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxReblowOBJ_L_A[];
+extern CONST_DATA AnimScr AnimScr_EfxReblowOBJ_L_B[];
+extern CONST_DATA AnimScr AnimScr_EfxReblowOBJ_R_A[];
+extern CONST_DATA AnimScr AnimScr_EfxReblowOBJ_R_B[];
+extern CONST_DATA AnimScr AnimScr_EfxRestOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxSilenceOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxHammarneOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxSleepOBJ2[];
+extern CONST_DATA AnimScr AnimScr_EfxSleepOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk1[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk2[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk3[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk4[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk5[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk6[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk7[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk8[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk9[];
+extern CONST_DATA AnimScr AnimScr_EfxBerserk10[];
+extern CONST_DATA AnimScr AnimScr_EfxMshieldOBJ[];
+extern CONST_DATA AnimScr AnimScr_EfxMshieldOBJ2[];
+extern CONST_DATA AnimScr AnimScr_EfxAureolaOBJCtrl1[];
+extern CONST_DATA AnimScr AnimScr_EfxAureolaOBJCtrl2[];
+extern CONST_DATA AnimScr AnimScr_EfxAureolaOBJCtrl3[];
+extern CONST_DATA AnimScr AnimScr_EfxAureolaOBJ2_1[];
+extern CONST_DATA AnimScr AnimScr_EfxAureolaOBJ2_2[];
+extern CONST_DATA AnimScr AnimScr_EfxAureolaOBJ3_1[];
+extern CONST_DATA AnimScr AnimScr_EfxAureolaOBJ3_2[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonMoveBg3[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonBark[];
 extern CONST_DATA struct ProcScr ProcScr_EkrManakete[];

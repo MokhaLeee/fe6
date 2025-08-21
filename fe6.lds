@@ -825,7 +825,6 @@ SECTIONS
         . = ALIGN(4); src/banim_efxmisc.o(.data);
         . = ALIGN(4); data/banim_efxop.o(.data);
         . = ALIGN(4); src/banim_scripts.o(.data);
-        . = ALIGN(4); data/banim_085DC850.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
         . = ALIGN(4); src/banim_dragonfx_fae.o(.data);

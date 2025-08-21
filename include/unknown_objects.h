@@ -761,29 +761,131 @@ extern u16 Tsa_EfxDivineBG2_0817AA20[];
 extern u16 Img_EfxDivineOBJ[];
 extern u16 Pal_EfxDivineOBJ[];
 // extern ??? gUnk_0817AC4C
-// extern ??? Pal_EfxApocalypse_0817B418
+extern u16  Pal_EfxApocalypse_0817B418[];
 // extern ??? gUnk_0817B438
-// extern ??? Img_EfxApocalypseOBJ
-// extern ??? Pal_EfxApocalypseOBJ
+extern u16  Img_EfxApocalypseOBJ[];
+extern u16  Pal_EfxApocalypseOBJ[];
 // extern ??? Pals_EfxApocalypseBGCOL2
-// extern ??? Pal_EfxApocalypseBG2
-// extern ??? Img_EfxApocalypseOBJ2_1
-// extern ??? Img_EfxApocalypseOBJ2_2
-// extern ??? Pal_EfxHazymoonBG2
-// extern ??? Pal_EfxHazymoonBG3
-// extern ??? Img_EfxHazymoonOBJ2_1
-// extern ??? Img_EfxHazymoonOBJ2_2
-// extern ??? Img_EfxHazymoonOBJ2_3
-// extern ??? Pal_EfxHazymoonOBJ2
-// extern ??? Img_EfxFenrirBG
-// extern ??? PalArray_EfxFenrirBGCOL
-// extern ??? Tsa_EfxFenrirBG
-// extern ??? Pal_EfxFenrirBG2_A
-// extern ??? Pal_EfxFenrirBG2_B
-// extern ??? Img_EfxFenrirOBJ
-// extern ??? Pal_EfxFenrirOBJ
-// extern ??? Pal_EfxFenrirOBJ2
-extern u16 Img_EfxPurgeBG_00000000[];
+extern u16 Img_EfxApocalypseBG2_0817BBD4[];
+extern u16 Img_EfxApocalypseBG2_0817D4E0[];
+extern u16 Img_EfxApocalypseBG2_0817ED8C[];
+extern u16 Img_EfxApocalypseBG2_081804F4[];
+extern u16  Pal_EfxApocalypseBG2[];
+extern u16 Tsa_EfxApocalypseBG2_08181E80[];
+extern u16 Tsa_EfxApocalypseBG2_08182320[];
+extern u16 Tsa_EfxApocalypseBG2_081827B0[];
+extern u16 Tsa_EfxApocalypseBG2_08182C4C[];
+extern u16  Img_EfxApocalypseOBJ2_1[];
+extern u16  Img_EfxApocalypseOBJ2_2[];
+extern u16 Img_EfxHazymoonBG_0818398C[];
+extern u16 Img_EfxHazymoonBG_08183CD4[];
+extern u16 Img_EfxHazymoonBG_081845A8[];
+extern u16 Img_EfxHazymoonBG_081855E4[];
+extern u16 Img_EfxHazymoonBG_08186250[];
+extern u16 Img_EfxHazymoonBG_08186E6C[];
+extern u16 Img_EfxHazymoonBG_081879C4[];
+extern u16 Img_EfxHazymoonBG_08188518[];
+extern u16 Img_EfxHazymoonBG_08188FC8[];
+extern u16 Img_EfxHazymoonBG_081899F0[];
+extern u16 Img_EfxHazymoonBG_0818A2EC[];
+extern u16 Img_EfxHazymoonBG_0818ABB8[];
+extern u16 Img_EfxHazymoonBG_0818B438[];
+extern u16  Pal_EfxHazymoonBG2[];
+extern u16  Pal_EfxHazymoonBG3[];
+extern u16 Tsa_EfxHazymoonBG_0818BC0C[];
+extern u16 Tsa_EfxHazymoonBG_0818BDB0[];
+extern u16 Tsa_EfxHazymoonBG_0818BE50[];
+extern u16 Tsa_EfxHazymoonBG_0818BEF0[];
+extern u16 Tsa_EfxHazymoonBG_0818BFA4[];
+extern u16 Tsa_EfxHazymoonBG_0818C058[];
+extern u16 Tsa_EfxHazymoonBG_0818C10C[];
+extern u16 Tsa_EfxHazymoonBG_0818C1E8[];
+extern u16 Tsa_EfxHazymoonBG_0818C2C4[];
+extern u16 Tsa_EfxHazymoonBG_0818C3D8[];
+extern u16 Tsa_EfxHazymoonBG_0818C4EC[];
+extern u16 Tsa_EfxHazymoonBG_0818C600[];
+extern u16 Tsa_EfxHazymoonBG_0818C714[];
+extern u16 Tsa_EfxHazymoonBG_0818C828[];
+extern u16 Tsa_EfxHazymoonBG_0818C934[];
+extern u16 Tsa_EfxHazymoonBG_0818CA0C[];
+extern u16 Tsa_EfxHazymoonBG_0818CB1C[];
+extern u16 Tsa_EfxHazymoonBG_0818CC84[];
+extern u16 Tsa_EfxHazymoonBG_0818CE48[];
+extern u16 Tsa_EfxHazymoonBG_0818D00C[];
+extern u16 Tsa_EfxHazymoonBG_0818D1C8[];
+extern u16 Tsa_EfxHazymoonBG_0818D378[];
+extern u16 Tsa_EfxHazymoonBG_0818D528[];
+extern u16 Tsa_EfxHazymoonBG_0818D6D8[];
+extern u16 Tsa_EfxHazymoonBG_0818D87C[];
+extern u16 Tsa_EfxHazymoonBG_0818DA14[];
+extern u16 Tsa_EfxHazymoonBG_0818DBA4[];
+extern u16  Img_EfxHazymoonOBJ2_1[];
+extern u16  Img_EfxHazymoonOBJ2_2[];
+extern u16  Img_EfxHazymoonOBJ2_3[];
+extern u16  Pal_EfxHazymoonOBJ2[];
+extern u16  Img_EfxFenrirBG[];
+extern u16  Pal_EfxFenrirBGCOL[];
+extern u16  Tsa_EfxFenrirBG[];
+extern u16 Img_EfxFenrirBG2_A_0818F5EC[];
+extern u16 Img_EfxFenrirBG2_A_08190804[];
+extern u16 Img_EfxFenrirBG2_A_08191B54[];
+extern u16 Img_EfxFenrirBG2_A_081929D0[];
+extern u16  Pal_EfxFenrirBG2_A[];
+extern u16  Pal_EfxFenrirBG2_B[];
+extern u16 Tsa_EfxFenrirBG2_A_081935D8[];
+extern u16 Tsa_EfxFenrirBG2_A_08193694[];
+extern u16 Tsa_EfxFenrirBG2_A_08193750[];
+extern u16 Tsa_EfxFenrirBG2_A_0819380C[];
+extern u16 Tsa_EfxFenrirBG2_A_081938C8[];
+extern u16 Tsa_EfxFenrirBG2_A_08193984[];
+extern u16 Tsa_EfxFenrirBG2_A_08193A40[];
+extern u16 Tsa_EfxFenrirBG2_A_08193B44[];
+extern u16 Tsa_EfxFenrirBG2_A_08193C48[];
+extern u16 Tsa_EfxFenrirBG2_A_08193D4C[];
+extern u16 Tsa_EfxFenrirBG2_A_08193E50[];
+extern u16 Tsa_EfxFenrirBG2_A_08193F54[];
+extern u16 Tsa_EfxFenrirBG2_A_08194058[];
+extern u16 Tsa_EfxFenrirBG2_A_08194198[];
+extern u16 Tsa_EfxFenrirBG2_A_081942DC[];
+extern u16 Tsa_EfxFenrirBG2_A_08194420[];
+extern u16 Tsa_EfxFenrirBG2_A_08194564[];
+extern u16 Tsa_EfxFenrirBG2_A_081946A8[];
+extern u16 Tsa_EfxFenrirBG2_A_081947EC[];
+extern u16 Tsa_EfxFenrirBG2_A_0819496C[];
+extern u16 Tsa_EfxFenrirBG2_A_08194AF0[];
+extern u16 Tsa_EfxFenrirBG2_A_08194C74[];
+extern u16 Tsa_EfxFenrirBG2_A_08194DD4[];
+extern u16 Tsa_EfxFenrirBG2_A_08194F34[];
+extern u16 Tsa_EfxFenrirBG2_A_08195094[];
+extern u16 Tsa_EfxFenrirBG2_A_08195238[];
+extern u16 Tsa_EfxFenrirBG2_A_081953DC[];
+extern u16 Tsa_EfxFenrirBG2_A_08195580[];
+extern u16 Tsa_EfxFenrirBG2_A_081956F0[];
+extern u16 Tsa_EfxFenrirBG2_A_08195860[];
+extern u16 Tsa_EfxFenrirBG2_A_081959D0[];
+extern u16 Tsa_EfxFenrirBG2_A_08195B74[];
+extern u16 Tsa_EfxFenrirBG2_A_08195D18[];
+extern u16 Tsa_EfxFenrirBG2_A_08195EBC[];
+extern u16 Tsa_EfxFenrirBG2_A_08196030[];
+extern u16 Tsa_EfxFenrirBG2_A_081961A4[];
+extern u16 Tsa_EfxFenrirBG2_A_08196318[];
+extern u16 Tsa_EfxFenrirBG2_A_081964C8[];
+extern u16 Tsa_EfxFenrirBG2_A_08196678[];
+extern u16 Tsa_EfxFenrirBG2_A_08196828[];
+extern u16 Tsa_EfxFenrirBG2_A_0819699C[];
+extern u16 Tsa_EfxFenrirBG2_A_08196B10[];
+extern u16 Tsa_EfxFenrirBG2_A_08196C84[];
+extern u16 Tsa_EfxFenrirBG2_A_08196E38[];
+extern u16 Tsa_EfxFenrirBG2_A_08196FEC[];
+extern u16 Tsa_EfxFenrirBG2_A_081971A0[];
+extern u16 Tsa_EfxFenrirBG2_A_08197318[];
+extern u16 Tsa_EfxFenrirBG2_A_08197490[];
+extern u16 Tsa_EfxFenrirBG2_A_08197608[];
+extern u16 Tsa_EfxFenrirBG2_A_08197860[];
+extern u16 Tsa_EfxFenrirBG2_A_08197A68[];
+extern u16  Img_EfxFenrirOBJ[];
+extern u16  Pal_EfxFenrirOBJ[];
+extern u16  Pal_EfxFenrirOBJ2[];
 extern u16 Img_EfxPurgeBG_0819879C[];
 extern u16 Img_EfxPurgeBG_08198CF8[];
 extern u16 Img_EfxPurgeBG_08199374[];
@@ -881,44 +983,124 @@ extern u16 Tsa_EfxPurgeBG_081AA7D4[];
 extern u16 Tsa_EfxPurgeBG_081AAB5C[];
 extern u16 Img_EfxPurgeOBJ[];
 extern u16 Pal_EfxPurgeOBJ[];
-// extern ??? Img_EfxHealCommon
-// extern ??? TsaArray_EfxLiveBG_B_L
-// extern ??? PalArray1_EfxLiveBGCOL
-// extern ??? Img_EfxLiveOBJ
+extern u16  Img_EfxHealCommon[];
+extern u16  Tsa_Uncomp_EfxLiveBG_BB_L[];
+// extern ??? Pals1_EfxLiveBGCOL[];
+extern u16  Img_EfxLiveOBJ[];
 extern u16 Pal_EfxFimbulvetrOBJ[];
-// extern ??? Img_EfxLiveBG
-// extern ??? TsaArray_EfxLiveBG_A_L
-// extern ??? TsaArray_EfxLiveBG_A_R
-// extern ??? PalArray3_EfxLiveBGCOL
-// extern ??? PalArray2_EfxLiveBGCOL
-// extern ??? PalArray1_EfxReserveBGCOL
-// extern ??? PalArray2_EfxReserveBGCOL
-// extern ??? PalArray2_EfxReserveBGCOL2
+extern u16  Img_EfxLiveBG[];
+extern u16  Tsa_Uncomp_EfxLiveBG_BA_L[];
+extern u16  Tsa_Uncomp_EfxLiveBG_BA_R[];
+// extern ??? Pals3_EfxLiveBGCOL[];
+// extern ??? Pals2_EfxLiveBGCOL[];
+extern u16 Tsa_EfxReserveBG_081ADFEC[];
+extern u16 Tsa_EfxReserveBG_081AE0F8[];
+extern u16 Tsa_EfxReserveBG_081AE1F8[];
+extern u16 Tsa_EfxReserveBG_081AE304[];
+extern u16 Tsa_EfxReserveBG2_081AE410[];
+// extern ??? Pals1_EfxReserveBGCOL[];
+// extern ??? Pals2_EfxReserveBGCOL[];
+// extern ??? Pals2_EfxReserveBGCOL2[];
+extern u16 Img_EfxRestBG_081AFC70[];
+extern u16 Img_EfxRestBG_081B029C[];
+extern u16 Img_EfxRestBG_081B0994[];
+extern u16 Img_EfxRestBG_081B0FB4[];
 extern u16 const Pal_EfxRestBG[];
-// extern ??? Img_EfxSilenceBG
-// extern ??? Img_EfxSilenceOBJ
-// extern ??? Pal_EfxSilenceBG
-// extern ??? Pal_EfxHammarneBG
-// extern ??? Img_EfxBerserkBG
-// extern ??? Tsa_EfxBerserkBG
-// extern ??? Img_EfxSleepBG
-// extern ??? Pal_EfxSleepBG
-// extern ??? Img_EfxHammarneOBJ
-// extern ??? Pal_EfxRestOBJ
-// extern ??? Pal_EfxHammarneOBJ
-// extern ??? Pal_EfxBerserkBG
-// extern ??? Img_EfxBerserk1
-// extern ??? Img_EfxBerserk2
-// extern ??? Pal_EfxBerserk
-// extern ??? Img_EfxMshieldBG
-// extern ??? Pal_EfxMshieldBG
-// extern ??? Pal_EfxMshieldOBJ
-// extern ??? Img_EfxAureolaBG2
-// extern ??? Pal_EfxAureolaBG
-// extern ??? Pal_EfxAureolaBG2
-// extern ??? Tsa_EfxAureolaBG2
-// extern ??? Img_EfxAureolaOBJ
-// extern ??? Pal_EfxAureolaOBJ
+extern u16 Tsa_EfxRestBG_081B1730[];
+extern u16 Tsa_EfxRestBG_081B17DC[];
+extern u16 Tsa_EfxRestBG_081B1890[];
+extern u16 Tsa_EfxRestBG_081B1950[];
+extern u16 Tsa_EfxRestBG_081B1A18[];
+extern u16 Tsa_EfxRestBG_081B1AF4[];
+extern u16 Tsa_EfxRestBG_081B1BD4[];
+extern u16 Tsa_EfxRestBG_081B1CBC[];
+extern u16 Tsa_EfxRestBG_081B1DAC[];
+extern u16 Tsa_EfxRestBG_081B1EAC[];
+extern u16 Tsa_EfxRestBG_081B1FB8[];
+extern u16 Tsa_EfxRestBG_081B20D8[];
+extern u16 Tsa_EfxRestBG_081B2208[];
+extern u16  Img_EfxSilenceBG[];
+extern u16 Tsa_EfxSilenceBG_081B2E10[];
+extern u16 Tsa_EfxSilenceBG_081B2F0C[];
+extern u16 Tsa_EfxSilenceBG_081B2FF4[];
+extern u16 Tsa_EfxSilenceBG_081B30DC[];
+extern u16 Tsa_EfxSilenceBG_081B31C4[];
+extern u16 Tsa_EfxSilenceBG_081B32C0[];
+extern u16 Tsa_EfxSilenceBG_081B33A8[];
+extern u16 Tsa_EfxSilenceBG_081B3440[];
+extern u16 Tsa_EfxSilenceBG_081B3528[];
+extern u16 Tsa_EfxSilenceBG_081B35C0[];
+extern u16 Tsa_EfxSilenceBG_081B36A8[];
+extern u16 Tsa_EfxSilenceBG_081B37A4[];
+extern u16 Tsa_EfxSilenceBG_081B383C[];
+extern u16 Tsa_EfxSilenceBG_081B3924[];
+extern u16 Tsa_EfxSilenceBG_081B39BC[];
+extern u16 Tsa_EfxSilenceBG_081B3AB8[];
+extern u16 Tsa_EfxSilenceBG_081B3B50[];
+extern u16 Tsa_EfxSilenceBG_081B3C60[];
+extern u16  Img_EfxSilenceOBJ[];
+extern u16  Pal_EfxSilenceBG[];
+extern u16 const Pal_EfxHammarneBG[];
+extern u16 Tsa_EfxHammarneBG_081B4294[];
+extern u16 Tsa_EfxHammarneBG_081B4340[];
+extern u16 Tsa_EfxHammarneBG_081B43F0[];
+extern u16 Tsa_EfxHammarneBG_081B44B0[];
+extern u16 Tsa_EfxHammarneBG_081B4578[];
+extern u16 Tsa_EfxHammarneBG_081B4650[];
+extern u16 Tsa_EfxHammarneBG_081B472C[];
+extern u16 Tsa_EfxHammarneBG_081B4814[];
+extern u16 Tsa_EfxHammarneBG_081B4904[];
+extern u16 Tsa_EfxHammarneBG_081B4A04[];
+extern u16 Tsa_EfxHammarneBG_081B4B10[];
+extern u16 Tsa_EfxHammarneBG_081B4C30[];
+extern u16 Tsa_EfxHammarneBG_081B4D60[];
+extern u16  Img_EfxBerserkBG[];
+extern u16  Tsa_EfxBerserkBG[];
+extern u16  Img_EfxSleepBG[];
+extern u16  Pal_EfxSleepBG[];
+extern u16 Tsa_EfxSleepBG_081B66A8[];
+extern u16 Tsa_EfxSleepBG_081B6784[];
+extern u16 Tsa_EfxSleepBG_081B6860[];
+extern u16 Tsa_EfxSleepBG_081B693C[];
+extern u16 Tsa_EfxSleepBG_081B6A18[];
+extern u16 Tsa_EfxSleepBG_081B6AF4[];
+extern u16 Tsa_EfxSleepBG_081B6BD0[];
+extern u16 Tsa_EfxSleepBG_081B6CAC[];
+extern u16 Tsa_EfxSleepBG_081B6D88[];
+extern u16 Tsa_EfxSleepBG_081B6E64[];
+extern u16 Tsa_EfxSleepBG_081B6F40[];
+extern u16 Tsa_EfxSleepBG_081B701C[];
+extern u16 Tsa_EfxSleepBG_081B70F8[];
+extern u16 Tsa_EfxSleepBG_081B71D4[];
+extern u16 Tsa_EfxSleepBG_081B72B0[];
+extern u16 Tsa_EfxSleepBG_081B738C[];
+extern u16 const Img_EfxHammarneOBJ[];
+extern u16 const Pal_EfxRestOBJ[];
+extern u16  Pal_EfxHammarneOBJ[];
+extern u16  Pal_EfxBerserkBG[];
+extern u16  Img_EfxBerserk1[];
+extern u16  Img_EfxBerserk2[];
+extern u16  Pal_EfxBerserk[];
+extern u16  Img_EfxMshieldBG[];
+extern u16 const Pal_EfxMshieldBG[];
+extern u16 Tsa_EfxMshieldBG_081B8974[];
+extern u16 Tsa_EfxMshieldBG_081B8A2C[];
+extern u16 Tsa_EfxMshieldBG_081B8AF0[];
+extern u16 Tsa_EfxMshieldBG_081B8BE0[];
+extern u16 Tsa_EfxMshieldBG_081B8D10[];
+extern u16  Pal_EfxMshieldOBJ[];
+extern u16  Img_EfxAureolaBG2[];
+extern u16 Img_EfxAureolaBG_081BA374[];
+extern u16  Pal_EfxAureolaBG[];
+extern u16  Pal_EfxAureolaBG2[];
+extern u16 Tsa_EfxAureolaBG_081BB3DC[];
+extern u16  Tsa_EfxAureolaBG2[];
+extern u16 Tsa_EfxAureolaBG_081BB75C[];
+extern u16 Tsa_EfxAureolaBG_081BB8E0[];
+extern u16 Tsa_EfxAureolaBG_081BBA04[];
+extern u16 Tsa_EfxAureolaBG_081BBB00[];
+extern u16  Img_EfxAureolaOBJ[];
+extern u16  Pal_EfxAureolaOBJ[];
 extern i16 const FrameArray_EkrManaketefxNormalAttack[];
 extern i16 const FrameArray_EkrManaketefxCriticalAttack[];
 extern i16 const FrameArray_EkrFaefx[];

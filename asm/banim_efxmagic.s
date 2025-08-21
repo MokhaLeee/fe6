@@ -1741,14 +1741,14 @@ NewEfxForblazeBGCtrl1: @ 0x080516B8
 	ldr r1, [r0]
 	adds r1, #1
 	str r1, [r0]
-	ldr r0, .L080516D4 @ =gUnk_085D2230
+	ldr r0, .L080516D4 @ =ProcScr_EfxForblazeBGCtrl1
 	movs r1, #3
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L080516D0: .4byte gEfxBgSemaphore
-.L080516D4: .4byte gUnk_085D2230
+.L080516D4: .4byte ProcScr_EfxForblazeBGCtrl1
 
 	thumb_func_start EfxForblazeBGCtrl1_Loop1
 EfxForblazeBGCtrl1_Loop1: @ 0x080516D8
@@ -6913,7 +6913,7 @@ NewEfxFenrirBGCOL: @ 0x080540D0
 	str r1, [r0, #0x44]
 	ldr r1, .L08054110 @ =FrameArray_EfxFenrirBGCOL
 	str r1, [r0, #0x48]
-	ldr r1, .L08054114 @ =PalArray_EfxFenrirBGCOL
+	ldr r1, .L08054114 @ =Pal_EfxFenrirBGCOL
 	str r1, [r0, #0x4c]
 	adds r0, r1, #0
 	movs r1, #0x20
@@ -6925,7 +6925,7 @@ NewEfxFenrirBGCOL: @ 0x080540D0
 .L08054108: .4byte gEfxBgSemaphore
 .L0805410C: .4byte ProcScr_EfxFenrirBGCOL
 .L08054110: .4byte FrameArray_EfxFenrirBGCOL
-.L08054114: .4byte PalArray_EfxFenrirBGCOL
+.L08054114: .4byte Pal_EfxFenrirBGCOL
 
 	thumb_func_start EfxFenrirBGCOL_OnEnd
 EfxFenrirBGCOL_OnEnd: @ 0x08054118
@@ -8239,9 +8239,9 @@ NewEfxLiveBG_A: @ 0x08054B98
 	strb r0, [r1]
 	ldr r0, .L08054BE8 @ =FrameArray3_EfxLiveBG
 	str r0, [r5, #0x48]
-	ldr r0, .L08054BEC @ =TsaArray_EfxLiveBG_A_L
+	ldr r0, .L08054BEC @ =Tsa_Uncomp_EfxLiveBG_BA_L
 	str r0, [r5, #0x4c]
-	ldr r0, .L08054BF0 @ =TsaArray_EfxLiveBG_A_R
+	ldr r0, .L08054BF0 @ =Tsa_Uncomp_EfxLiveBG_BA_R
 	str r0, [r5, #0x50]
 	ldr r0, .L08054BF4 @ =Img_EfxLiveBG
 	movs r1, #0xa8
@@ -8252,8 +8252,8 @@ NewEfxLiveBG_A: @ 0x08054B98
 .L08054BE0: .4byte gEfxBgSemaphore
 .L08054BE4: .4byte ProcScr_EfxLiveBG
 .L08054BE8: .4byte FrameArray3_EfxLiveBG
-.L08054BEC: .4byte TsaArray_EfxLiveBG_A_L
-.L08054BF0: .4byte TsaArray_EfxLiveBG_A_R
+.L08054BEC: .4byte Tsa_Uncomp_EfxLiveBG_BA_L
+.L08054BF0: .4byte Tsa_Uncomp_EfxLiveBG_BA_R
 .L08054BF4: .4byte Img_EfxLiveBG
 .L08054BF8:
 	adds r1, r5, #0
@@ -8262,7 +8262,7 @@ NewEfxLiveBG_A: @ 0x08054B98
 	strb r0, [r1]
 	ldr r0, .L08054C30 @ =FrameArray1_EfxLiveBG
 	str r0, [r5, #0x48]
-	ldr r0, .L08054C34 @ =TsaArray_EfxLiveBG_B_L
+	ldr r0, .L08054C34 @ =Tsa_Uncomp_EfxLiveBG_BB_L
 	str r0, [r5, #0x4c]
 	str r0, [r5, #0x50]
 	ldr r0, .L08054C38 @ =Img_EfxHealCommon
@@ -8283,7 +8283,7 @@ NewEfxLiveBG_A: @ 0x08054B98
 	b .L08054C44
 	.align 2, 0
 .L08054C30: .4byte FrameArray1_EfxLiveBG
-.L08054C34: .4byte TsaArray_EfxLiveBG_B_L
+.L08054C34: .4byte Tsa_Uncomp_EfxLiveBG_BB_L
 .L08054C38: .4byte Img_EfxHealCommon
 .L08054C3C: .4byte gEkrDistanceType
 .L08054C40:
@@ -8325,9 +8325,9 @@ NewEfxLiveBG_B: @ 0x08054C54
 	bhi .L08054CFE
 	ldr r0, .L08054CA4 @ =FrameArray4_EfxLiveBG
 	str r0, [r5, #0x48]
-	ldr r0, .L08054CA8 @ =TsaArray_EfxLiveBG_A_L
+	ldr r0, .L08054CA8 @ =Tsa_Uncomp_EfxLiveBG_BA_L
 	str r0, [r5, #0x4c]
-	ldr r0, .L08054CAC @ =TsaArray_EfxLiveBG_A_R
+	ldr r0, .L08054CAC @ =Tsa_Uncomp_EfxLiveBG_BA_R
 	str r0, [r5, #0x50]
 	ldr r0, .L08054CB0 @ =Img_EfxLiveBG
 	movs r1, #0xa8
@@ -8338,13 +8338,13 @@ NewEfxLiveBG_B: @ 0x08054C54
 .L08054C9C: .4byte gEfxBgSemaphore
 .L08054CA0: .4byte ProcScr_EfxLiveBG
 .L08054CA4: .4byte FrameArray4_EfxLiveBG
-.L08054CA8: .4byte TsaArray_EfxLiveBG_A_L
-.L08054CAC: .4byte TsaArray_EfxLiveBG_A_R
+.L08054CA8: .4byte Tsa_Uncomp_EfxLiveBG_BA_L
+.L08054CAC: .4byte Tsa_Uncomp_EfxLiveBG_BA_R
 .L08054CB0: .4byte Img_EfxLiveBG
 .L08054CB4:
 	ldr r0, .L08054CE4 @ =FrameArray2_EfxLiveBG
 	str r0, [r5, #0x48]
-	ldr r0, .L08054CE8 @ =TsaArray_EfxLiveBG_B_L
+	ldr r0, .L08054CE8 @ =Tsa_Uncomp_EfxLiveBG_BB_L
 	str r0, [r5, #0x4c]
 	str r0, [r5, #0x50]
 	ldr r0, .L08054CEC @ =Img_EfxHealCommon
@@ -8365,7 +8365,7 @@ NewEfxLiveBG_B: @ 0x08054C54
 	b .L08054CF8
 	.align 2, 0
 .L08054CE4: .4byte FrameArray2_EfxLiveBG
-.L08054CE8: .4byte TsaArray_EfxLiveBG_B_L
+.L08054CE8: .4byte Tsa_Uncomp_EfxLiveBG_BB_L
 .L08054CEC: .4byte Img_EfxHealCommon
 .L08054CF0: .4byte gEkrDistanceType
 .L08054CF4:
@@ -8473,27 +8473,27 @@ NewEfxLiveBGCOL_A: @ 0x08054D78
 	str r0, [r1, #0x48]
 	cmp r5, #0
 	bne .L08054DCC
-	ldr r0, .L08054DC8 @ =PalArray1_EfxLiveBGCOL
+	ldr r0, .L08054DC8 @ =Pals1_EfxLiveBGCOL
 	b .L08054DDA
 	.align 2, 0
 .L08054DC4: .4byte FrameArray4_EfxLiveBGCOL
-.L08054DC8: .4byte PalArray1_EfxLiveBGCOL
+.L08054DC8: .4byte Pals1_EfxLiveBGCOL
 .L08054DCC:
 	cmp r5, #1
 	bne .L08054DD8
-	ldr r0, .L08054DD4 @ =PalArray2_EfxLiveBGCOL
+	ldr r0, .L08054DD4 @ =Pals2_EfxLiveBGCOL
 	b .L08054DDA
 	.align 2, 0
-.L08054DD4: .4byte PalArray2_EfxLiveBGCOL
+.L08054DD4: .4byte Pals2_EfxLiveBGCOL
 .L08054DD8:
-	ldr r0, .L08054DE4 @ =PalArray3_EfxLiveBGCOL
+	ldr r0, .L08054DE4 @ =Pals3_EfxLiveBGCOL
 .L08054DDA:
 	str r0, [r1, #0x4c]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08054DE4: .4byte PalArray3_EfxLiveBGCOL
+.L08054DE4: .4byte Pals3_EfxLiveBGCOL
 
 	thumb_func_start NewEfxLiveBGCOL_B
 NewEfxLiveBGCOL_B: @ 0x08054DE8
@@ -8533,27 +8533,27 @@ NewEfxLiveBGCOL_B: @ 0x08054DE8
 	str r0, [r1, #0x48]
 	cmp r5, #0
 	bne .L08054E3C
-	ldr r0, .L08054E38 @ =PalArray1_EfxLiveBGCOL
+	ldr r0, .L08054E38 @ =Pals1_EfxLiveBGCOL
 	b .L08054E4A
 	.align 2, 0
 .L08054E34: .4byte FrameArray4_EfxLiveBGCOL
-.L08054E38: .4byte PalArray1_EfxLiveBGCOL
+.L08054E38: .4byte Pals1_EfxLiveBGCOL
 .L08054E3C:
 	cmp r5, #1
 	bne .L08054E48
-	ldr r0, .L08054E44 @ =PalArray2_EfxLiveBGCOL
+	ldr r0, .L08054E44 @ =Pals2_EfxLiveBGCOL
 	b .L08054E4A
 	.align 2, 0
-.L08054E44: .4byte PalArray2_EfxLiveBGCOL
+.L08054E44: .4byte Pals2_EfxLiveBGCOL
 .L08054E48:
-	ldr r0, .L08054E54 @ =PalArray3_EfxLiveBGCOL
+	ldr r0, .L08054E54 @ =Pals3_EfxLiveBGCOL
 .L08054E4A:
 	str r0, [r1, #0x4c]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08054E54: .4byte PalArray3_EfxLiveBGCOL
+.L08054E54: .4byte Pals3_EfxLiveBGCOL
 
 	thumb_func_start EfxLiveBGCOL_Loop
 EfxLiveBGCOL_Loop: @ 0x08054E58
@@ -9313,22 +9313,22 @@ NewEfxReserveBGCOL: @ 0x08055434
 	str r0, [r1, #0x48]
 	cmp r5, #0
 	bne .L08055470
-	ldr r0, .L0805546C @ =PalArray1_EfxReserveBGCOL
+	ldr r0, .L0805546C @ =Pals1_EfxReserveBGCOL
 	b .L08055472
 	.align 2, 0
 .L08055460: .4byte gEfxBgSemaphore
 .L08055464: .4byte ProcScr_EfxReserveBGCOL
 .L08055468: .4byte FrameArray_EfxReserveBGCOL
-.L0805546C: .4byte PalArray1_EfxReserveBGCOL
+.L0805546C: .4byte Pals1_EfxReserveBGCOL
 .L08055470:
-	ldr r0, .L0805547C @ =PalArray2_EfxReserveBGCOL
+	ldr r0, .L0805547C @ =Pals2_EfxReserveBGCOL
 .L08055472:
 	str r0, [r1, #0x4c]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805547C: .4byte PalArray2_EfxReserveBGCOL
+.L0805547C: .4byte Pals2_EfxReserveBGCOL
 
 	thumb_func_start EfxReserveBGCOL_Loop
 EfxReserveBGCOL_Loop: @ 0x08055480
@@ -9550,22 +9550,22 @@ NewEfxReserveBGCOL2: @ 0x08055628
 	str r0, [r1, #0x48]
 	cmp r5, #0
 	bne .L08055664
-	ldr r0, .L08055660 @ =PalArray1_EfxLiveBGCOL
+	ldr r0, .L08055660 @ =Pals1_EfxLiveBGCOL
 	b .L08055666
 	.align 2, 0
 .L08055654: .4byte gEfxBgSemaphore
 .L08055658: .4byte ProcScr_EfxReserveBGCOL2
 .L0805565C: .4byte FrameArray_EfxReserveBGCOL2
-.L08055660: .4byte PalArray1_EfxLiveBGCOL
+.L08055660: .4byte Pals1_EfxLiveBGCOL
 .L08055664:
-	ldr r0, .L08055670 @ =PalArray2_EfxReserveBGCOL2
+	ldr r0, .L08055670 @ =Pals2_EfxReserveBGCOL2
 .L08055666:
 	str r0, [r1, #0x4c]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08055670: .4byte PalArray2_EfxReserveBGCOL2
+.L08055670: .4byte Pals2_EfxReserveBGCOL2
 
 	thumb_func_start EfxReserveBGCOL2_Loop
 EfxReserveBGCOL2_Loop: @ 0x08055674

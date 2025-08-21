@@ -499,7 +499,7 @@ extern u16 const Pal_EfxHammarneBG[]; // pal
 extern u8 const gUnk_082E07A8[]; // ???
 extern u8 const gUnk_082DF868[]; // ??? ^
 extern u8 const gUnk_08307928[]; // ???
-extern u8 const Img_EfxHammarneOBJ[]; // img
+// extern u8 const Img_EfxHammarneOBJ[]; // img
 extern u16 const Pal_EfxRestOBJ[]; // pal
 extern u16 const gUnk_082E0A14[]; // sprite anim
 extern u8 const gUnk_082E161C[]; // img

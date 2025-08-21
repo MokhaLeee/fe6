@@ -974,7 +974,7 @@ func_fe6_0805867C: @ 0x0805867C
 	str r0, [r4, #0x44]
 	ldr r0, .L080586A8 @ =gUnk_0811AFA4
 	str r0, [r4, #0x48]
-	ldr r0, .L080586AC @ =PalArray1_EfxLiveBGCOL
+	ldr r0, .L080586AC @ =Pals1_EfxLiveBGCOL
 	str r0, [r4, #0x4c]
 	pop {r4, r5}
 	pop {r0}
@@ -982,7 +982,7 @@ func_fe6_0805867C: @ 0x0805867C
 	.align 2, 0
 .L080586A4: .4byte gUnk_085D3A70
 .L080586A8: .4byte gUnk_0811AFA4
-.L080586AC: .4byte PalArray1_EfxLiveBGCOL
+.L080586AC: .4byte Pals1_EfxLiveBGCOL
 
 	thumb_func_start func_fe6_080586B0
 func_fe6_080586B0: @ 0x080586B0
