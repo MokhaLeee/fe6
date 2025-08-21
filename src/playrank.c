@@ -1243,198 +1243,9 @@ void func_fe6_0808F060(struct ProcPlayRank *proc)
 	EnableBgSync(BG0_SYNC_BIT);
 }
 
-// https://decomp.me/scratch/1SJ6v
-#if !NONMATCHING
-NAKEDFUNC
 void PlayRank_Loop(struct ProcPlayRank *proc)
 {
-asm("\
-	.syntax unified\n\
-	push {r4, r5, r6, r7, lr}\n\
-	adds r4, r0, #0\n\
-	movs r1, #0x30\n\
-	ldrsh r0, [r4, r1]\n\
-	cmp r0, #0\n\
-	beq .L0808F0B0\n\
-	ldr r0, .L0808F12C @ =unk_02016A1C\n\
-	ldrh r0, [r0]\n\
-	bl func_fe6_0808EC78\n\
-	movs r0, #0\n\
-	strh r0, [r4, #0x30]\n\
-.L0808F0B0:\n\
-	ldr r7, .L0808F130 @ =unk_02016A26\n\
-	ldrh r0, [r7]\n\
-	cmp r0, #8\n\
-	bhi .L0808F0CC\n\
-	ldrh r0, [r4, #0x2e]\n\
-	adds r1, r0, #1\n\
-	strh r1, [r4, #0x2e]\n\
-	lsls r0, r0, #0x10\n\
-	asrs r0, r0, #0x10\n\
-	cmp r0, #3\n\
-	bgt .L0808F0C8\n\
-	b .L0808F220\n\
-.L0808F0C8:\n\
-	movs r0, #0\n\
-	strh r0, [r4, #0x2e]\n\
-.L0808F0CC:\n\
-	ldr r5, .L0808F12C @ =unk_02016A1C\n\
-	ldrh r2, [r5]\n\
-	adds r2, #1\n\
-	strh r2, [r5]\n\
-	movs r6, #0xff\n\
-	ands r2, r6\n\
-	movs r0, #0\n\
-	movs r1, #0\n\
-	bl SetBgOffset\n\
-	ldrh r1, [r7]\n\
-	cmp r1, #0xc\n\
-	bls .L0808F0F8\n\
-	ldr r0, .L0808F134 @ =unk_02016A1E\n\
-	ldrh r2, [r0]\n\
-	adds r2, #1\n\
-	strh r2, [r0]\n\
-	ands r2, r6\n\
-	movs r0, #1\n\
-	movs r1, #0\n\
-	bl SetBgOffset\n\
-.L0808F0F8:\n\
-	ldr r2, .L0808F138 @ =unk_02016A22\n\
-	ldrh r5, [r5]\n\
-	ldrh r1, [r2]\n\
-	subs r0, r5, r1\n\
-	movs r1, #0xf0\n\
-	ands r0, r1\n\
-	asrs r1, r0, #3\n\
-	ldr r0, .L0808F13C @ =unk_02016A20\n\
-	adds r3, r0, #0\n\
-	ldrh r0, [r3]\n\
-	cmp r1, r0\n\
-	bne .L0808F112\n\
-	b .L0808F220\n\
-.L0808F112:\n\
-	strh r1, [r3]\n\
-	movs r0, #1\n\
-	strh r0, [r4, #0x30]\n\
-	ldrh r0, [r7]\n\
-	cmp r0, #0xe\n\
-	bls .L0808F120\n\
-	b .L0808F218\n\
-.L0808F120:\n\
-	lsls r0, r0, #2\n\
-	ldr r1, .L0808F140 @ =.L0808F144\n\
-	adds r0, r0, r1\n\
-	ldr r0, [r0]\n\
-	mov pc, r0\n\
-	.align 2, 0\n\
-.L0808F12C: .4byte unk_02016A1C\n\
-.L0808F130: .4byte unk_02016A26\n\
-.L0808F134: .4byte unk_02016A1E\n\
-.L0808F138: .4byte unk_02016A22\n\
-.L0808F13C: .4byte unk_02016A20\n\
-.L0808F140: .4byte .L0808F144\n\
-.L0808F144: @ jump table\n\
-	.4byte .L0808F180 @ case 0\n\
-	.4byte .L0808F218 @ case 1\n\
-	.4byte .L0808F218 @ case 2\n\
-	.4byte .L0808F218 @ case 3\n\
-	.4byte .L0808F218 @ case 4\n\
-	.4byte .L0808F218 @ case 5\n\
-	.4byte .L0808F218 @ case 6\n\
-	.4byte .L0808F218 @ case 7\n\
-	.4byte .L0808F18E @ case 8\n\
-	.4byte .L0808F1A4 @ case 9\n\
-	.4byte .L0808F218 @ case 10\n\
-	.4byte .L0808F1BC @ case 11\n\
-	.4byte .L0808F218 @ case 12\n\
-	.4byte .L0808F1C4 @ case 13\n\
-	.4byte .L0808F1EC @ case 14\n\
-.L0808F180:\n\
-	ldrh r0, [r3]\n\
-	bl PlayRank_ChapterTurns_DrawTurn\n\
-	lsls r0, r0, #0x18\n\
-	cmp r0, #0\n\
-	beq .L0808F220\n\
-	b .L0808F218\n\
-.L0808F18E:\n\
-	ldr r0, .L0808F1A0 @ =gBg0Tm\n\
-	movs r1, #0\n\
-	bl TmFill\n\
-	movs r0, #1\n\
-	bl EnableBgSync\n\
-	b .L0808F218\n\
-	.align 2, 0\n\
-.L0808F1A0: .4byte gBg0Tm\n\
-.L0808F1A4:\n\
-	movs r1, #0x80\n\
-	strh r1, [r2]\n\
-	ldr r0, .L0808F1B8 @ =unk_02016A1C\n\
-	strh r1, [r0]\n\
-	movs r0, #0\n\
-	strh r0, [r3]\n\
-	bl SetupPlayRanks\n\
-	b .L0808F218\n\
-	.align 2, 0\n\
-.L0808F1B8: .4byte unk_02016A1C\n\
-.L0808F1BC:\n\
-	ldrh r0, [r3]\n\
-	bl func_fe6_0808EB94\n\
-	b .L0808F218\n\
-.L0808F1C4:\n\
-	ldrh r0, [r3]\n\
-	bl PlayRank_PutTotalPlayTime\n\
-	ldr r2, .L0808F1E8 @ =gDispIo\n\
-	adds r2, #0x36\n\
-	movs r0, #1\n\
-	ldrb r1, [r2]\n\
-	orrs r0, r1\n\
-	movs r1, #2\n\
-	orrs r0, r1\n\
-	movs r1, #4\n\
-	orrs r0, r1\n\
-	movs r1, #8\n\
-	orrs r0, r1\n\
-	movs r1, #0x10\n\
-	orrs r0, r1\n\
-	strb r0, [r2]\n\
-	b .L0808F218\n\
-	.align 2, 0\n\
-.L0808F1E8: .4byte gDispIo\n\
-.L0808F1EC:\n\
-	ldr r1, .L0808F20C @ =unk_02016A2A\n\
-	movs r0, #0\n\
-	strh r0, [r1]\n\
-	ldr r0, .L0808F210 @ =ProcScr_0868B730\n\
-	movs r1, #3\n\
-	bl SpawnProc\n\
-	ldr r0, .L0808F214 @ =ProcScr_0868B6D8\n\
-	movs r1, #3\n\
-	bl SpawnProc\n\
-	adds r0, r4, #0\n\
-	bl Proc_Break\n\
-	b .L0808F220\n\
-	.align 2, 0\n\
-.L0808F20C: .4byte unk_02016A2A\n\
-.L0808F210: .4byte ProcScr_0868B730\n\
-.L0808F214: .4byte ProcScr_0868B6D8\n\
-.L0808F218:\n\
-	ldr r1, .L0808F228 @ =unk_02016A26\n\
-	ldrh r0, [r1]\n\
-	adds r0, #1\n\
-	strh r0, [r1]\n\
-.L0808F220:\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-.L0808F228: .4byte unk_02016A26\n\
-	.syntax divided\n\
-");
-}
-#else
-void PlayRank_Loop(struct ProcPlayRank *proc)
-{
-	int tmp1;
+	int tmp1, tmp2;
 
 	if (proc->unk_30 != 0) {
 		func_fe6_0808EC78(unk_02016A1C);
@@ -1442,17 +1253,15 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 	}
 
 	if (unk_02016A26 <= 8) {
-		proc->unk_2E++;
-		if (proc->unk_2E < 4)
+		if (proc->unk_2E++ < 4)
 			return;
+		proc->unk_2E = 0;
 	}
-
-	proc->unk_2E = 0;
 
 	unk_02016A1C++;
 	SetBgOffset(BG_0, 0, unk_02016A1C & 0xFF);
 
-	if (unk_02016A26 >= 0xC) {
+	if (unk_02016A26 > 0xC) {
 		unk_02016A1E++;
 		SetBgOffset(BG_1, 0, unk_02016A1E & 0xFF);
 	}
@@ -1460,6 +1269,8 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 	tmp1 = ((unk_02016A1C - unk_02016A22) & 0xF0) >> 3;
 	if (tmp1 == unk_02016A20)
 		return;
+
+	unk_02016A20 = tmp1;
 
 	proc->unk_30 = true;
 
@@ -1476,10 +1287,12 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 		break;
 
 	case 9:
-		unk_02016A22 = 0x80;
-		unk_02016A1C = 0x80;
-		unk_02016A20 = 0;
-		SetupPlayRanks(0);
+		tmp1 = 0x80;
+		unk_02016A22 = tmp1;
+		unk_02016A1C = tmp1;
+		tmp2 = 0;
+		unk_02016A20 = tmp2;
+		SetupPlayRanks(tmp2);
 		break;
 
 	case 11:
@@ -1496,6 +1309,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 		SpawnProc(ProcScr_0868B730, PROC_TREE_3);
 		SpawnProc(ProcScr_0868B6D8, PROC_TREE_3);
 		Proc_Break(proc);
+		return;
 		break;
 
 	default:
@@ -1504,7 +1318,6 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 
 	unk_02016A26++;
 }
-#endif
 
 void PlayRank_Idle(ProcPtr proc)
 {
