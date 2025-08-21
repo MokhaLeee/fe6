@@ -427,7 +427,7 @@ EfxResireBG_Loop2: @ 0x08050B94
 	strh r3, [r4, #0x2c]
 	strh r3, [r4, #0x2e]
 	str r3, [r4, #0x44]
-	ldr r0, .L08050C20 @ =gUnk_0811A218
+	ldr r0, .L08050C20 @ =FrameConf_EfxResireBG3
 	str r0, [r4, #0x48]
 	ldr r0, .L08050C24 @ =TsaArray_EfxResireBG
 	str r0, [r4, #0x4c]
@@ -453,7 +453,7 @@ EfxResireBG_Loop2: @ 0x08050B94
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08050C20: .4byte gUnk_0811A218
+.L08050C20: .4byte FrameConf_EfxResireBG3
 .L08050C24: .4byte TsaArray_EfxResireBG
 .L08050C28: .4byte ImgArray_EfxResireBG
 .L08050C2C: .4byte gEkrDistanceType

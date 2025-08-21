@@ -723,11 +723,67 @@ Img_EfxElfireOBJ: @ 0813BAFC
 
 	.global Pal_EfxElfireOBJ
 Pal_EfxElfireOBJ: @ 0813BD74
-	.incbin "fe6-base.gba", 0x13BD74, (0x13E75C - 0x13BD74) @ length: 29E8
+	.incbin "fe6-base.gba", 0x13BD74, 0x20
+
+	.global Img_EfxThunderstormBG_0813BD94
+Img_EfxThunderstormBG_0813BD94:	@ 0x13BD94
+	.incbin "fe6-base.gba", 0x13BD94, 0x13C964 - 0x13BD94
+
+	.global Img_EfxThunderstormBG_0813C964
+Img_EfxThunderstormBG_0813C964:	@ 0x13C964
+	.incbin "fe6-base.gba", 0x13C964, 0x13D9D0 - 0x13C964
+
+	.global Img_EfxThunderstormBG_0813D9D0
+Img_EfxThunderstormBG_0813D9D0:	@ 0x13D9D0
+	.incbin "fe6-base.gba", 0x13D9D0, 0x13E75C - 0x13D9D0
 
 	.global Pal_EfxThunderstormBG
 Pal_EfxThunderstormBG: @ 0813E75C
-	.incbin "fe6-base.gba", 0x13E75C, (0x1408CC - 0x13E75C) @ length: 2170
+	.incbin "fe6-base.gba", 0x13E75C, 0x60
+
+	.global Tsa_EfxThunderstormBG_0813E7BC
+Tsa_EfxThunderstormBG_0813E7BC:	@ 0x13E7BC
+	.incbin "fe6-base.gba", 0x13E7BC, 0x13E950 - 0x13E7BC
+
+	.global Tsa_EfxThunderstormBG_0813E950
+Tsa_EfxThunderstormBG_0813E950:	@ 0x13E950
+	.incbin "fe6-base.gba", 0x13E950, 0x13EB58 - 0x13E950
+
+	.global Tsa_EfxThunderstormBG_0813EB58
+Tsa_EfxThunderstormBG_0813EB58:	@ 0x13EB58
+	.incbin "fe6-base.gba", 0x13EB58, 0x13ECBC - 0x13EB58
+
+	.global Tsa_EfxThunderstormBG_0813ECBC
+Tsa_EfxThunderstormBG_0813ECBC:	@ 0x13ECBC
+	.incbin "fe6-base.gba", 0x13ECBC, 0x13ED9C - 0x13ECBC
+
+	.global Tsa_EfxThunderstormBG_0813ED9C
+Tsa_EfxThunderstormBG_0813ED9C:	@ 0x13ED9C
+	.incbin "fe6-base.gba", 0x13ED9C, 0x13EEB4 - 0x13ED9C
+
+	.global Tsa_EfxThunderstormBG_0813EEB4
+Tsa_EfxThunderstormBG_0813EEB4:	@ 0x13EEB4
+	.incbin "fe6-base.gba", 0x13EEB4, 0x13F060 - 0x13EEB4
+
+	.global Tsa_EfxThunderstormBG_0813F060
+Tsa_EfxThunderstormBG_0813F060:	@ 0x13F060
+	.incbin "fe6-base.gba", 0x13F060, 0x13F180 - 0x13F060
+
+	.global Tsa_EfxThunderstormBG_0813F180
+Tsa_EfxThunderstormBG_0813F180:	@ 0x13F180
+	.incbin "fe6-base.gba", 0x13F180, 0x13F26C - 0x13F180
+
+	.global Tsa_EfxThunderstormBG_0813F26C
+Tsa_EfxThunderstormBG_0813F26C:	@ 0x13F26C
+	.incbin "fe6-base.gba", 0x13F26C, 0x13F354 - 0x13F26C
+
+	.global Tsa_EfxThunderstormBG_0813F354
+Tsa_EfxThunderstormBG_0813F354:	@ 0x13F354
+	.incbin "fe6-base.gba", 0x13F354, 0x13F3EC - 0x13F354
+
+	.global Tsa_EfxThunderstormBG_0813F3EC
+Tsa_EfxThunderstormBG_0813F3EC:	@ 0x13F3EC
+	.incbin "fe6-base.gba", 0x13F3EC, 0x1408CC - 0x13F3EC
 
 	.global Pal_EfxForblazeBG1
 Pal_EfxForblazeBG1: @ 081408CC
@@ -771,15 +827,123 @@ Img_EfxForblazeOBJ: @ 08143EE4
 
 	.global Pal_EfxForblazeOBJ
 Pal_EfxForblazeOBJ: @ 08144A00
-	.incbin "fe6-base.gba", 0x144A00, (0x14A498 - 0x144A00) @ length: 5A98
+	.incbin "fe6-base.gba", 0x144A00, 0x20
+
+	.global Img_EfxFimbulvetrBG_08144A20
+Img_EfxFimbulvetrBG_08144A20:	@ 0x144A20
+	.incbin "fe6-base.gba", 0x144A20, 0x145CF0 - 0x144A20
+
+	.global Img_EfxFimbulvetrBG_08145CF0
+Img_EfxFimbulvetrBG_08145CF0:	@ 0x145CF0
+	.incbin "fe6-base.gba", 0x145CF0, 0x1475A0 - 0x145CF0
+
+	.global Img_EfxFimbulvetrBG_081475A0
+Img_EfxFimbulvetrBG_081475A0:	@ 0x1475A0
+	.incbin "fe6-base.gba", 0x1475A0, 0x1489E4 - 0x1475A0
+
+	.global Img_EfxFimbulvetrBG_081489E4
+Img_EfxFimbulvetrBG_081489E4:	@ 0x1489E4
+	.incbin "fe6-base.gba", 0x1489E4, 0x14A498 - 0x1489E4
 
 	.global Pal_EfxFimbulvetrBG
 Pal_EfxFimbulvetrBG: @ 0814A498
-	.incbin "fe6-base.gba", 0x14A498, (0x1521C0 - 0x14A498) @ length: 7D28
+	.incbin "fe6-base.gba", 0x14A498, (0x14A4B8 - 0x14A498) @ length: 7D28
+
+	.global Tsa_EfxFimbulvetrBG_0814A4B8
+Tsa_EfxFimbulvetrBG_0814A4B8:	@ 0x14A4B8
+	.incbin "fe6-base.gba", 0x14A4B8, 0x14A55C - 0x14A4B8
+
+	.global Tsa_EfxFimbulvetrBG_0814A55C
+Tsa_EfxFimbulvetrBG_0814A55C:	@ 0x14A55C
+	.incbin "fe6-base.gba", 0x14A55C, 0x14A604 - 0x14A55C
+
+	.global Tsa_EfxFimbulvetrBG_0814A604
+Tsa_EfxFimbulvetrBG_0814A604:	@ 0x14A604
+	.incbin "fe6-base.gba", 0x14A604, 0x14A6C0 - 0x14A604
+
+	.global Tsa_EfxFimbulvetrBG_0814A6C0
+Tsa_EfxFimbulvetrBG_0814A6C0:	@ 0x14A6C0
+	.incbin "fe6-base.gba", 0x14A6C0, 0x14A794 - 0x14A6C0
+
+	.global Tsa_EfxFimbulvetrBG_0814A794
+Tsa_EfxFimbulvetrBG_0814A794:	@ 0x14A794
+	.incbin "fe6-base.gba", 0x14A794, 0x14A890 - 0x14A794
+
+	.global Tsa_EfxFimbulvetrBG_0814A890
+Tsa_EfxFimbulvetrBG_0814A890:	@ 0x14A890
+	.incbin "fe6-base.gba", 0x14A890, 0x14A9D0 - 0x14A890
+
+	.global Tsa_EfxFimbulvetrBG_0814A9D0
+Tsa_EfxFimbulvetrBG_0814A9D0:	@ 0x14A9D0
+	.incbin "fe6-base.gba", 0x14A9D0, 0x14AB68 - 0x14A9D0
+
+	.global Tsa_EfxFimbulvetrBG_0814AB68
+Tsa_EfxFimbulvetrBG_0814AB68:	@ 0x14AB68
+	.incbin "fe6-base.gba", 0x14AB68, 0x14AD3C - 0x14AB68
+
+	.global Tsa_EfxFimbulvetrBG_0814AD3C
+Tsa_EfxFimbulvetrBG_0814AD3C:	@ 0x14AD3C
+	.incbin "fe6-base.gba", 0x14AD3C, 0x14AF4C - 0x14AD3C
+
+	.global Tsa_EfxFimbulvetrBG_0814AF4C
+Tsa_EfxFimbulvetrBG_0814AF4C:	@ 0x14AF4C
+	.incbin "fe6-base.gba", 0x14AF4C, 0x14B16C - 0x14AF4C
+
+	.global Tsa_EfxFimbulvetrBG_0814B16C
+Tsa_EfxFimbulvetrBG_0814B16C:	@ 0x14B16C
+	.incbin "fe6-base.gba", 0x14B16C, 0x14B39C - 0x14B16C
+
+	.global Img_EfxFimbulvetrBGTR_0814B39C
+Img_EfxFimbulvetrBGTR_0814B39C:	@ 0x14B39C
+	.incbin "fe6-base.gba", 0x14B39C, 0x14C5A4 - 0x14B39C
+
+	.global Img_EfxFimbulvetrBGTR_0814C5A4
+Img_EfxFimbulvetrBGTR_0814C5A4:	@ 0x14C5A4
+	.incbin "fe6-base.gba", 0x14C5A4, 0x14D700 - 0x14C5A4
+
+	.global Img_EfxFimbulvetrBGTR_0814D700
+Img_EfxFimbulvetrBGTR_0814D700:	@ 0x14D700
+	.incbin "fe6-base.gba", 0x14D700, 0x14E784 - 0x14D700
+
+	.global Img_EfxFimbulvetrBGTR_0814E784
+Img_EfxFimbulvetrBGTR_0814E784:	@ 0x14E784
+	.incbin "fe6-base.gba", 0x14E784, 0x14FBC4 - 0x14E784
+
+	.global Img_EfxFimbulvetrBGTR_0814FBC4
+Img_EfxFimbulvetrBGTR_0814FBC4:	@ 0x14FBC4
+	.incbin "fe6-base.gba", 0x14FBC4, 0x150F7C - 0x14FBC4
+
+	.global Img_EfxFimbulvetrBGTR_08150F7C
+Img_EfxFimbulvetrBGTR_08150F7C:	@ 0x150F7C
+	.incbin "fe6-base.gba", 0x150F7C, 0x1521C0 - 0x150F7C
 
 	.global Pal_EfxFimbulvetrBGTR
 Pal_EfxFimbulvetrBGTR: @ 081521C0
-	.incbin "fe6-base.gba", 0x1521C0, (0x152E78 - 0x1521C0) @ length: 0CB8
+	.incbin "fe6-base.gba", 0x1521C0, (0x1521E0 - 0x1521C0) @ length: 0CB8
+
+	.global Tsa_EfxFimbulvetrBGTR_081521E0
+Tsa_EfxFimbulvetrBGTR_081521E0:	@ 0x081521E0
+	.incbin "fe6-base.gba", 0x1521E0, 0x1523CC - 0x1521E0
+
+	.global Tsa_EfxFimbulvetrBGTR_081523CC
+Tsa_EfxFimbulvetrBGTR_081523CC:	@ 0x081523CC
+	.incbin "fe6-base.gba", 0x1523CC, 0x1525A4 - 0x1523CC
+
+	.global Tsa_EfxFimbulvetrBGTR_081525A4
+Tsa_EfxFimbulvetrBGTR_081525A4:	@ 0x081525A4
+	.incbin "fe6-base.gba", 0x1525A4, 0x15276C - 0x1525A4
+
+	.global Tsa_EfxFimbulvetrBGTR_0815276C
+Tsa_EfxFimbulvetrBGTR_0815276C:	@ 0x0815276C
+	.incbin "fe6-base.gba", 0x15276C, 0x1529A0 - 0x15276C
+
+	.global Tsa_EfxFimbulvetrBGTR_081529A0
+Tsa_EfxFimbulvetrBGTR_081529A0:	@ 0x081529A0
+	.incbin "fe6-base.gba", 0x1529A0, 0x152BE8 - 0x1529A0
+
+	.global Tsa_EfxFimbulvetrBGTR_08152BE8
+Tsa_EfxFimbulvetrBGTR_08152BE8:	@ 0x08152BE8
+	.incbin "fe6-base.gba", 0x152BE8, 0x152E78 - 0x152BE8
 
 	.global Img_EfxFimbulvetrOBJ
 Img_EfxFimbulvetrOBJ: @ 08152E78
@@ -791,7 +955,15 @@ Img_EfxAlacaliburBG: @ 08159D98
 
 	.global Pal_EfxAlacaliburBGCOL
 Pal_EfxAlacaliburBGCOL: @ 0815B364
-	.incbin "fe6-base.gba", 0x15B364, (0x15B910 - 0x15B364) @ length: 05AC
+	.incbin "fe6-base.gba", 0x15B364, 0xC0
+
+	.global Tsa_EfxAlacaliburBG_0815B424
+Tsa_EfxAlacaliburBG_0815B424:	@ 0x15B424
+	.incbin "fe6-base.gba", 0x15B424, 0x15B5AC - 0x15B424
+
+	.global Tsa_EfxAlacaliburBG_0815B5AC
+Tsa_EfxAlacaliburBG_0815B5AC:	@ 0x15B5AC
+	.incbin "fe6-base.gba", 0x15B5AC, 0x15B910 - 0x15B5AC
 
 	.global Img_EfxAlacaliburOBJ
 Img_EfxAlacaliburOBJ: @ 0815B910
@@ -799,15 +971,203 @@ Img_EfxAlacaliburOBJ: @ 0815B910
 
 	.global Pal_EfxAlacaliburOBJ
 Pal_EfxAlacaliburOBJ: @ 0815BED4
-	.incbin "fe6-base.gba", 0x15BED4, (0x15F880 - 0x15BED4) @ length: 39AC
+	.incbin "fe6-base.gba", 0x15BED4, 0x20
+
+	.global Img_EfxMistyrainBG_0815BEF4
+Img_EfxMistyrainBG_0815BEF4:	@ 0x15BEF4
+	.incbin "fe6-base.gba", 0x15BEF4, 0x15CAC4 - 0x15BEF4
+
+	.global Img_EfxMistyrainBG_0815CAC4
+Img_EfxMistyrainBG_0815CAC4:	@ 0x15CAC4
+	.incbin "fe6-base.gba", 0x15CAC4, 0x15D7D4 - 0x15CAC4
+
+	.global Img_EfxMistyrainBG_0815D7D4
+Img_EfxMistyrainBG_0815D7D4:	@ 0x15D7D4
+	.incbin "fe6-base.gba", 0x15D7D4, 0x15EA30 - 0x15D7D4
+
+	.global Img_EfxMistyrainBG_0815EA30
+Img_EfxMistyrainBG_0815EA30:	@ 0x15EA30
+	.incbin "fe6-base.gba", 0x15EA30, 0x15F0B4 - 0x15EA30
+
+	.global Img_EfxMistyrainBG_0815F0B4
+Img_EfxMistyrainBG_0815F0B4:	@ 0x15F0B4
+	.incbin "fe6-base.gba", 0x15F0B4, 0x15F610 - 0x15F0B4
+
+	.global Img_EfxMistyrainBG_0815F610
+Img_EfxMistyrainBG_0815F610:	@ 0x15F610
+	.incbin "fe6-base.gba", 0x15F610, 0x15F880 - 0x15F610
 
 	.global Pal_EfxMistyrainBG1
 Pal_EfxMistyrainBG1: @ 0815F880
-	.incbin "fe6-base.gba", 0x15F880, (0x15F8A0 - 0x15F880) @ length: 0020
+	.incbin "fe6-base.gba", 0x15F880, 0x20
 
 	.global Pal_EfxMistyrainBG2
 Pal_EfxMistyrainBG2: @ 0815F8A0
-	.incbin "fe6-base.gba", 0x15F8A0, (0x161DDC - 0x15F8A0) @ length: 253C
+	.incbin "fe6-base.gba", 0x15F8A0, 0x20
+
+	.global Tsa_EfxMistyrainBG_0815F8C0
+Tsa_EfxMistyrainBG_0815F8C0:	@ 0x15F8C0
+	.incbin "fe6-base.gba", 0x15F8C0, 0x15F9BC - 0x15F8C0
+
+	.global Tsa_EfxMistyrainBG_0815F9BC
+Tsa_EfxMistyrainBG_0815F9BC:	@ 0x15F9BC
+	.incbin "fe6-base.gba", 0x15F9BC, 0x15FABC - 0x15F9BC
+
+	.global Tsa_EfxMistyrainBG_0815FABC
+Tsa_EfxMistyrainBG_0815FABC:	@ 0x15FABC
+	.incbin "fe6-base.gba", 0x15FABC, 0x15FBC0 - 0x15FABC
+
+	.global Tsa_EfxMistyrainBG_0815FBC0
+Tsa_EfxMistyrainBG_0815FBC0:	@ 0x15FBC0
+	.incbin "fe6-base.gba", 0x15FBC0, 0x15FCB8 - 0x15FBC0
+
+	.global Tsa_EfxMistyrainBG_0815FCB8
+Tsa_EfxMistyrainBG_0815FCB8:	@ 0x15FCB8
+	.incbin "fe6-base.gba", 0x15FCB8, 0x15FDC4 - 0x15FCB8
+
+	.global Tsa_EfxMistyrainBG_0815FDC4
+Tsa_EfxMistyrainBG_0815FDC4:	@ 0x15FDC4
+	.incbin "fe6-base.gba", 0x15FDC4, 0x15FED0 - 0x15FDC4
+
+	.global Tsa_EfxMistyrainBG_0815FED0
+Tsa_EfxMistyrainBG_0815FED0:	@ 0x15FED0
+	.incbin "fe6-base.gba", 0x15FED0, 0x15FFF0 - 0x15FED0
+
+	.global Tsa_EfxMistyrainBG_0815FFF0
+Tsa_EfxMistyrainBG_0815FFF0:	@ 0x15FFF0
+	.incbin "fe6-base.gba", 0x15FFF0, 0x160114 - 0x15FFF0
+
+	.global Tsa_EfxMistyrainBG_08160114
+Tsa_EfxMistyrainBG_08160114:	@ 0x160114
+	.incbin "fe6-base.gba", 0x160114, 0x1601FC - 0x160114
+
+	.global Tsa_EfxMistyrainBG_081601FC
+Tsa_EfxMistyrainBG_081601FC:	@ 0x1601FC
+	.incbin "fe6-base.gba", 0x1601FC, 0x1602D8 - 0x1601FC
+
+	.global Tsa_EfxMistyrainBG_081602D8
+Tsa_EfxMistyrainBG_081602D8:	@ 0x1602D8
+	.incbin "fe6-base.gba", 0x1602D8, 0x160398 - 0x1602D8
+
+	.global Tsa_EfxMistyrainBG_08160398
+Tsa_EfxMistyrainBG_08160398:	@ 0x160398
+	.incbin "fe6-base.gba", 0x160398, 0x160450 - 0x160398
+
+	.global Tsa_EfxMistyrainBG_08160450
+Tsa_EfxMistyrainBG_08160450:	@ 0x160450
+	.incbin "fe6-base.gba", 0x160450, 0x1604F8 - 0x160450
+
+	.global Tsa_EfxMistyrainBG_081604F8
+Tsa_EfxMistyrainBG_081604F8:	@ 0x1604F8
+	.incbin "fe6-base.gba", 0x1604F8, 0x1605B4 - 0x1604F8
+
+	.global Tsa_EfxMistyrainBG_081605B4
+Tsa_EfxMistyrainBG_081605B4:	@ 0x1605B4
+	.incbin "fe6-base.gba", 0x1605B4, 0x16068C - 0x1605B4
+
+	.global Tsa_EfxMistyrainBG_0816068C
+Tsa_EfxMistyrainBG_0816068C:	@ 0x16068C
+	.incbin "fe6-base.gba", 0x16068C, 0x16076C - 0x16068C
+
+	.global Tsa_EfxMistyrainBG_0816076C
+Tsa_EfxMistyrainBG_0816076C:	@ 0x16076C
+	.incbin "fe6-base.gba", 0x16076C, 0x16085C - 0x16076C
+
+	.global Tsa_EfxMistyrainBG_0816085C
+Tsa_EfxMistyrainBG_0816085C:	@ 0x16085C
+	.incbin "fe6-base.gba", 0x16085C, 0x160958 - 0x16085C
+
+	.global Tsa_EfxMistyrainBG_08160958
+Tsa_EfxMistyrainBG_08160958:	@ 0x160958
+	.incbin "fe6-base.gba", 0x160958, 0x160A4C - 0x160958
+
+	.global Tsa_EfxMistyrainBG_08160A4C
+Tsa_EfxMistyrainBG_08160A4C:	@ 0x160A4C
+	.incbin "fe6-base.gba", 0x160A4C, 0x160B44 - 0x160A4C
+
+	.global Tsa_EfxMistyrainBG_08160B44
+Tsa_EfxMistyrainBG_08160B44:	@ 0x160B44
+	.incbin "fe6-base.gba", 0x160B44, 0x160C30 - 0x160B44
+
+	.global Tsa_EfxMistyrainBG_08160C30
+Tsa_EfxMistyrainBG_08160C30:	@ 0x160C30
+	.incbin "fe6-base.gba", 0x160C30, 0x160D14 - 0x160C30
+
+	.global Tsa_EfxMistyrainBG_08160D14
+Tsa_EfxMistyrainBG_08160D14:	@ 0x160D14
+	.incbin "fe6-base.gba", 0x160D14, 0x160DEC - 0x160D14
+
+	.global Tsa_EfxMistyrainBG_08160DEC
+Tsa_EfxMistyrainBG_08160DEC:	@ 0x160DEC
+	.incbin "fe6-base.gba", 0x160DEC, 0x160EBC - 0x160DEC
+
+	.global Tsa_EfxMistyrainBG_08160EBC
+Tsa_EfxMistyrainBG_08160EBC:	@ 0x160EBC
+	.incbin "fe6-base.gba", 0x160EBC, 0x160F88 - 0x160EBC
+
+	.global Tsa_EfxMistyrainBG_08160F88
+Tsa_EfxMistyrainBG_08160F88:	@ 0x160F88
+	.incbin "fe6-base.gba", 0x160F88, 0x161050 - 0x160F88
+
+	.global Tsa_EfxMistyrainBG_08161050
+Tsa_EfxMistyrainBG_08161050:	@ 0x161050
+	.incbin "fe6-base.gba", 0x161050, 0x161104 - 0x161050
+
+	.global Tsa_EfxMistyrainBG_08161104
+Tsa_EfxMistyrainBG_08161104:	@ 0x161104
+	.incbin "fe6-base.gba", 0x161104, 0x1611B8 - 0x161104
+
+	.global Tsa_EfxMistyrainBG_081611B8
+Tsa_EfxMistyrainBG_081611B8:	@ 0x1611B8
+	.incbin "fe6-base.gba", 0x1611B8, 0x161258 - 0x1611B8
+
+	.global Tsa_EfxMistyrainBG_08161258
+Tsa_EfxMistyrainBG_08161258:	@ 0x161258
+	.incbin "fe6-base.gba", 0x161258, 0x16130C - 0x161258
+
+	.global Tsa_EfxMistyrainBG_0816130C
+Tsa_EfxMistyrainBG_0816130C:	@ 0x16130C
+	.incbin "fe6-base.gba", 0x16130C, 0x1613C8 - 0x16130C
+
+	.global Tsa_EfxMistyrainBG_081613C8
+Tsa_EfxMistyrainBG_081613C8:	@ 0x1613C8
+	.incbin "fe6-base.gba", 0x1613C8, 0x1614A4 - 0x1613C8
+
+	.global Tsa_EfxMistyrainBG_081614A4
+Tsa_EfxMistyrainBG_081614A4:	@ 0x1614A4
+	.incbin "fe6-base.gba", 0x1614A4, 0x16158C - 0x1614A4
+
+	.global Tsa_EfxMistyrainBG_0816158C
+Tsa_EfxMistyrainBG_0816158C:	@ 0x16158C
+	.incbin "fe6-base.gba", 0x16158C, 0x1616B0 - 0x16158C
+
+	.global Tsa_EfxMistyrainBG_081616B0
+Tsa_EfxMistyrainBG_081616B0:	@ 0x1616B0
+	.incbin "fe6-base.gba", 0x1616B0, 0x1617D0 - 0x1616B0
+
+	.global Tsa_EfxMistyrainBG_081617D0
+Tsa_EfxMistyrainBG_081617D0:	@ 0x1617D0
+	.incbin "fe6-base.gba", 0x1617D0, 0x1618DC - 0x1617D0
+
+	.global Tsa_EfxMistyrainBG_081618DC
+Tsa_EfxMistyrainBG_081618DC:	@ 0x1618DC
+	.incbin "fe6-base.gba", 0x1618DC, 0x1619E8 - 0x1618DC
+
+	.global Tsa_EfxMistyrainBG_081619E8
+Tsa_EfxMistyrainBG_081619E8:	@ 0x1619E8
+	.incbin "fe6-base.gba", 0x1619E8, 0x161AE4 - 0x1619E8
+
+	.global Tsa_EfxMistyrainBG_08161AE4
+Tsa_EfxMistyrainBG_08161AE4:	@ 0x161AE4
+	.incbin "fe6-base.gba", 0x161AE4, 0x161BE4 - 0x161AE4
+
+	.global Tsa_EfxMistyrainBG_08161BE4
+Tsa_EfxMistyrainBG_08161BE4:	@ 0x161BE4
+	.incbin "fe6-base.gba", 0x161BE4, 0x161CE0 - 0x161BE4
+
+	.global Tsa_EfxMistyrainBG_08161CE0
+Tsa_EfxMistyrainBG_08161CE0:	@ 0x161CE0
+	.incbin "fe6-base.gba", 0x161CE0, 0x161DDC - 0x161CE0
 
 	.global Img_EfxMistyrainOBJ1_1
 Img_EfxMistyrainOBJ1_1: @ 08161DDC
