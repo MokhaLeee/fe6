@@ -151,7 +151,7 @@ SECTIONS
         . = 0x017748; gEfxHpBarResireFlag = .;
         . = 0x01774C; gUnk_Banim_0201774C = .;
         . = 0x017750; gEfxTeonoState = .;
-        . = 0x017754; gUnk_Banim_02017754 = .;
+        . = 0x017754; gEfxTerrainLayerLow = .;
         . = 0x017758; gEkrBg2QuakeVec = .;
         . = 0x01775C; gUnk_Banim_0201775C = .;
         . = 0x017760; gEfxSpecalEffectExist = .;
@@ -825,7 +825,6 @@ SECTIONS
         . = ALIGN(4); src/banim_efxmisc.o(.data);
         . = ALIGN(4); data/banim_efxop.o(.data);
         . = ALIGN(4); src/banim_scripts.o(.data);
-        . = ALIGN(4); data/banim_085DC850.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
         . = ALIGN(4); src/banim_dragonfx_fae.o(.data);

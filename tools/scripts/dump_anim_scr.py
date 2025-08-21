@@ -56,7 +56,9 @@ def dump_one_part(rom_data, off):
                     break
 
                 case 1: # ANFMT_INS_TYPE_END
-                    print("[ERROR]: ANFMT_INS_TYPE_END")
+                    print("    ANIMSCR_DISABLED")
+                    break
+                    # print("[ERROR]: ANFMT_INS_TYPE_END" + f"0x{data:08X}")
 
                 case 2: # ANFMT_INS_TYPE_LOOP
                     print("    ANIMSCR_LOOP")
@@ -109,7 +111,8 @@ def main(args):
         while True:
             name = try_get_ptr_symbol(off + 0x08000000)
             if name == None:
-                name = f"AnimScr_{PreName}_{index}"
+                # name = f"AnimScr_{PreName}_{index}"
+                name = f"AnimScr_{(off + 0x08000000):08X}"
 
             print(f".global {name}")
             print(f"{name}: @ 0x{off:06X}")

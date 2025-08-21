@@ -364,7 +364,7 @@ void StartManaketeTransferAnim(struct BaSprite * anim, int type)
         proc = SpawnProc(ProcScr_EkrManaketeExitfx, PROC_TREE_3);
 
     proc->anim = anim;
-    proc->animfx = animfx = EfxCreateFrontAnim(anim, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame);
+    proc->animfx = animfx = EfxCreateFrontAnim(anim, AnimScr_Common, AnimScr_Common, AnimScr_Common, AnimScr_Common);
     animfx->oam2 = OAM2_CHR(0x200) + OAM2_LAYER(1) + OAM2_PAL(2);
     animfx->oam01 |= OAM1_AFFINE_ID(2);
     animfx->yPosition += 8;

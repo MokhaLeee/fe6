@@ -209,7 +209,7 @@ void NewEfxHurtmutEff00OBJ(struct Anim *anim)
 	proc = SpawnProc(ProcScr_EfxHurtmutEff00OBJ, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
-	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame);
+	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_Common, AnimScr_Common, AnimScr_Common, AnimScr_Common);
 }
 
 void EfxHurtmutEff00OBJ_1(struct ProcEfxOBJ *proc)
@@ -275,7 +275,7 @@ void NewEfxHurtmutEff01OBJ(struct Anim *anim)
 	proc = SpawnProc(ProcScr_EfxHurtmutEff01OBJ, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
-	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame, AnimScr_ManaketeFlame);
+	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_Common, AnimScr_Common, AnimScr_Common, AnimScr_Common);
 }
 
 void EfxHurtmutEff01OBJ_1(struct ProcEfxOBJ *proc)

@@ -299,7 +299,7 @@ void NewEfxHitQuake(struct Anim *anim1, struct Anim *anim2, int kind)
 	anim->xPosition = proc->unk_36 - x;
 	anim->yPosition = proc->unk_3e;
 
-	if (gUnk_Banim_02017754 == 1)
+	if (gEfxTerrainLayerLow == 1)
 		anim->oam2 = OAM2_CHR(0xC0) + OAM2_LAYER(1) + OAM2_PAL(3);
 	else
 		anim->oam2 = OAM2_CHR(0xC0) + OAM2_LAYER(3) + OAM2_PAL(3);

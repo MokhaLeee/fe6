@@ -75,7 +75,7 @@ void EfxRestRST_Loop(struct ProcEfx *proc)
 
     for (i = 0; i < 0x78; buf++, i++) {
         val1 += proc->unk48;
-        *buf = (((gUnk_08605A94[val1] *proc->frame) << 8) >> 0x10) + gDispIo.bg_off[BG_1].x;
+        *buf = (((PosArray_EfxApocalypseBGCtrl[val1] *proc->frame) << 8) >> 0x10) + gDispIo.bg_off[BG_1].x;
     }
 
     if (++proc->timer == proc->unk44)
@@ -4100,7 +4100,7 @@ void NewEfxMistyrainOBJ(struct Anim *anim)
 
     GetAnimAnotherSide(anim);
 
-    scr = AnimScr_ManaketeFlame;
+    scr = AnimScr_Common;
     proc->anim2 = EfxCreateFrontAnim(proc->anim, scr, scr, scr, scr);
 }
 
@@ -4115,7 +4115,7 @@ struct ProcEfxOBJ * NewEfxMistyrainOBJ2(struct Anim *anim)
     proc->anim = anim;
     GetAnimAnotherSide(anim);
 
-    scr = AnimScr_ManaketeFlame;
+    scr = AnimScr_Common;
     proc->anim2 = EfxCreateFrontAnim(proc->anim, scr, scr, scr, scr);
     proc->anim2->yPosition -= 4;
 
