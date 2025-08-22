@@ -189,41 +189,41 @@ void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
 void RemoveSioPid(fu8 pid);
 void func_fe6_0807921C(void);
-void func_fe6_08079250(struct UnkProc_08678DE0 * proc);
-void func_fe6_080792C8(struct UnkProc_08678DE0 * proc);
-void func_fe6_08079388(struct UnkProc_08678DE0 * proc);
+void func_fe6_08079250(struct UnkProc_08678DE0 *proc);
+void func_fe6_080792C8(struct UnkProc_08678DE0 *proc);
+void func_fe6_08079388(struct UnkProc_08678DE0 *proc);
 void func_fe6_080793F0(struct PrepMenuProc * parent);
 bool IsUnitMandatoryDeploy(struct Unit * unit);
-void InitPrepScreenMainMenu(struct PrepMenuProc * proc);
+void InitPrepScreenMainMenu(struct PrepMenuProc *proc);
 void PrepUnit_DrawLeftUnitInfo(struct Unit * unit, u16 * tm);
 void PrepScreen_ReloadLeftUnitInfo(struct Unit * unit);
-void func_fe6_0807979C(struct UnkProc_08678E00 * proc);
+void func_fe6_0807979C(struct UnkProc_08678E00 *proc);
 void func_fe6_080797DC(struct PrepMenuProc * parent);
-void func_fe6_08079804(struct PrepMenuProc * proc);
-void func_fe6_080798EC(struct PrepMenuProc * proc);
-void func_fe6_08079928(struct PrepMenuProc * proc, int unit_id_or_pid, bool by_pid);
+void func_fe6_08079804(struct PrepMenuProc *proc);
+void func_fe6_080798EC(struct PrepMenuProc *proc);
+void func_fe6_08079928(struct PrepMenuProc *proc, int unit_id_or_pid, bool by_pid);
 void ReorderPlayerUnitsBasedOnDeployment(void);
-void func_fe6_08079A94(struct PrepMenuProc * proc);
-void func_fe6_08079BC8(struct UnkProc_08678E18 * proc);
-void func_fe6_08079C38(struct UnkProc_08678E18 * proc);
+void func_fe6_08079A94(struct PrepMenuProc *proc);
+void func_fe6_08079BC8(struct UnkProc_08678E18 *proc);
+void func_fe6_08079C38(struct UnkProc_08678E18 *proc);
 struct UnkProc_08678E18 * func_fe6_08079D70(struct PrepMenuProc * parent);
-void func_fe6_08079D84(struct PrepMenuProc * proc);
-void PrepUnit_DrawPickLeftBar(struct PrepMenuProc * proc);
-void PrepUnit_DrawUnitListNames(struct PrepMenuProc * proc, fu8 row);
+void func_fe6_08079D84(struct PrepMenuProc *proc);
+void PrepUnit_DrawPickLeftBar(struct PrepMenuProc *proc);
+void PrepUnit_DrawUnitListNames(struct PrepMenuProc *proc, fu8 row);
 void RearrangeMandatoryDeployUnits(void);
 void SioResetUnitItems(void);
-void func_fe6_0807A1C8(struct PrepMenuProc * proc, bool load_sprites);
-void PrepMenu_InitScreenExt(struct PrepMenuProc * proc);
-void PrepMenu_InitScreen(struct PrepMenuProc * proc);
-void PrepScreen_DrawScreenInfo(struct PrepMenuProc * proc);
-void PrepMenu_InitExt(struct PrepMenuProc * proc);
-fi8 PrepUnitSel_Loop(struct PrepMenuProc * proc);
-void func_fe6_0807ABF4(struct PrepMenuProc * proc);
-void func_fe6_0807AC9C(struct PrepMenuProc * proc);
-void func_fe6_0807ACE8(struct PrepMenuProc * proc);
-void PrepMenu_EndIfNoUnit(struct PrepMenuProc * proc);
-void PrepMenu_Init(struct PrepMenuProc * proc);
-void PrepMenu_Loop(struct PrepMenuProc * proc);
+void func_fe6_0807A1C8(struct PrepMenuProc *proc, bool load_sprites);
+void PrepMenu_InitScreenExt(struct PrepMenuProc *proc);
+void PrepMenu_InitScreen(struct PrepMenuProc *proc);
+void PrepScreen_DrawScreenInfo(struct PrepMenuProc *proc);
+void PrepMenu_InitExt(struct PrepMenuProc *proc);
+fi8 PrepUnitSel_Loop(struct PrepMenuProc *proc);
+void func_fe6_0807ABF4(struct PrepMenuProc *proc);
+void func_fe6_0807AC9C(struct PrepMenuProc *proc);
+void func_fe6_0807ACE8(struct PrepMenuProc *proc);
+void PrepMenu_EndIfNoUnit(struct PrepMenuProc *proc);
+void PrepMenu_Init(struct PrepMenuProc *proc);
+void PrepMenu_Loop(struct PrepMenuProc *proc);
 // func_fe6_0807B0DC
 // func_fe6_0807B0E4
 // PrepUnit_HandleScrollUp
@@ -243,20 +243,20 @@ struct ProcPrepFade {
     u16 timer;
 };
 
-void PrepMenuFade_Init(struct ProcPrepFade * proc);
-void PrepMenuFadeOut_Loop(struct ProcPrepFade * proc);
-void PrepMenuFadeIn_Loop(struct ProcPrepFade * proc);
+void PrepMenuFade_Init(struct ProcPrepFade *proc);
+void PrepMenuFadeOut_Loop(struct ProcPrepFade *proc);
+void PrepMenuFadeIn_Loop(struct ProcPrepFade *proc);
 void StartPrepMenuFadeOut(ProcPtr proc);
 void StartPrepMenuFadeIn(ProcPtr proc);
 
-void func_fe6_0807B8B0(struct PrepScreenDispProc * proc, int idx);
-void func_fe6_0807B8CC(struct PrepScreenDispProc * proc, fu8 x, fu8 y, int chidx);
+void func_fe6_0807B8B0(struct PrepScreenDispProc *proc, int idx);
+void func_fe6_0807B8CC(struct PrepScreenDispProc *proc, fu8 x, fu8 y, int chidx);
 void func_fe6_0807B90C(u8 a, u8 b, int c);
-void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc);
-void PrepMenu_DrawGmapSprites(struct PrepScreenDispProc * proc);
-void func_fe6_0807BE88(struct PrepScreenDispProc * proc);
-void func_fe6_0807BF70(struct PrepScreenDispProc * proc);
-void func_fe6_0807C090(struct PrepScreenDispProc * proc);
+void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc *proc);
+void PrepMenu_DrawGmapSprites(struct PrepScreenDispProc *proc);
+void func_fe6_0807BE88(struct PrepScreenDispProc *proc);
+void func_fe6_0807BF70(struct PrepScreenDispProc *proc);
+void func_fe6_0807C090(struct PrepScreenDispProc *proc);
 // PrepScreenDisp_Init
 // PrepScreenDisp_Loop
 // PrepScreenDisp_End
@@ -264,7 +264,7 @@ void func_fe6_0807C090(struct PrepScreenDispProc * proc);
 ProcPtr StartPrepScreenDisp(ProcPtr parent);
 
 struct PrepMenuItem {
-    /* 00 */ void (* func)(struct PrepMenuProc * proc);
+    /* 00 */ void (* func)(struct PrepMenuProc *proc);
     /* 04 */ int desc;
     /* 08 */ u8 color;
     /* 09 */ fu8 is_submenu;
@@ -295,27 +295,27 @@ enum PrepMenuItemIndex {
 extern struct PrepMenuItem gPrepMenuItems[0x10];
 
 // func_fe6_0807C520
-void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc);
-void PrepScreenMenu_OnItems(struct PrepMenuProc * proc);
-void func_fe6_0807C840(struct PrepMenuProc * proc);
-void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc);
-void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc);
-void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc);
-void PrepScreenSubMenu_AllItems(struct PrepMenuProc * proc);
-void PrepScreenSubMenu_Shop(struct PrepMenuProc * proc);
+void PrepScreenMenu_OnPickUnits(struct PrepMenuProc *proc);
+void PrepScreenMenu_OnItems(struct PrepMenuProc *proc);
+void func_fe6_0807C840(struct PrepMenuProc *proc);
+void PrepScreenSubMenu_OnTrade(struct PrepMenuProc *proc);
+void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc *proc);
+void PrepScreenSubMenu_Convoy(struct PrepMenuProc *proc);
+void PrepScreenSubMenu_AllItems(struct PrepMenuProc *proc);
+void PrepScreenSubMenu_Shop(struct PrepMenuProc *proc);
 // func_fe6_0807CAD4
-void PrepScreenMenu_Augury(struct PrepMenuProc * proc);
+void PrepScreenMenu_Augury(struct PrepMenuProc *proc);
 // func_fe6_0807CB40
-void PrepScreenMenu_OnSave(struct PrepMenuProc * proc);
-void PrepScreenMenu_OnCheckMap(struct PrepMenuProc * proc);
-void PrepScreenSubMenu_StartBattle(struct PrepMenuProc * proc);
+void PrepScreenMenu_OnSave(struct PrepMenuProc *proc);
+void PrepScreenMenu_OnCheckMap(struct PrepMenuProc *proc);
+void PrepScreenSubMenu_StartBattle(struct PrepMenuProc *proc);
 void ResetPrepMenuItem(void);
-void SetPrepScreenMenuItem(void(*func)(struct PrepMenuProc * proc), fu8 is_submenu, int name, fu8 color, int desc, fu8 index);
-bool PrepMenuOnSelected(struct PrepMenuProc * proc);
+void SetPrepScreenMenuItem(void(*func)(struct PrepMenuProc *proc), fu8 is_submenu, int name, fu8 color, int desc, fu8 index);
+bool PrepMenuOnSelected(struct PrepMenuProc *proc);
 fu8 GetPrepMenuItemAmount(fu8 arg_0);
 void PutPrepScreenMenuItems(struct Text * text, fu8 arg_1, u16 * tm, fu8 arg_3);
-void PrepMenuHelpbox(struct PrepMenuProc * proc);
-u8 GetPrepScreenMenuCurrentItemIndex(struct PrepMenuProc * proc);
+void PrepMenuHelpbox(struct PrepMenuProc *proc);
+u8 GetPrepScreenMenuCurrentItemIndex(struct PrepMenuProc *proc);
 void SetPrepMenuItemUsability(u8 index, u8 color);
 u8 GetPrepScreenMenuDispItemIndex(u8 disp_idx, fu8 is_submenu);
 
@@ -335,8 +335,8 @@ struct ProcPrepfx_08679368 {
     /* 3C */ struct Text * text3;
 };
 
-void func_fe6_0807CF78(struct ProcPrepfx_08679368 * proc);
-void func_fe6_0807CFA0(struct ProcPrepfx_08679368 * proc);
+void func_fe6_0807CF78(struct ProcPrepfx_08679368 *proc);
+void func_fe6_0807CFA0(struct ProcPrepfx_08679368 *proc);
 // func_fe6_0807CFA4
 // func_fe6_0807CFB8
 
@@ -348,15 +348,15 @@ struct ProcPrepfx_086793A8 {
     /* 30 */ int obj_offset;
 };
 
-void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 * proc);
-void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 * proc);
+void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 *proc);
+void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 *proc);
 ProcPtr func_fe6_0807D074(ProcPtr parent);
 
-void func_fe6_0807D088(struct ProcPrepfx_086793A8 * proc);
-void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 * proc);
+void func_fe6_0807D088(struct ProcPrepfx_086793A8 *proc);
+void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc);
 // func_fe6_0807D16C
-void func_fe6_0807D180(struct ProcPrepfx_086793A8 * proc);
-void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 * proc);
+void func_fe6_0807D180(struct ProcPrepfx_086793A8 *proc);
+void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc);
 // func_fe6_0807D2E0
 // func_fe6_0807D2F4
 // func_fe6_0807D338
@@ -373,18 +373,18 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 * proc);
 // func_fe6_0807DF60
 void func_fe6_0807DFEC(u8 a, int timer, int obj_off);
 // func_fe6_0807E06C
-void func_fe6_0807E0D4(struct GenericProc * proc);
-void func_fe6_0807E41C(struct GenericProc * proc);
+void func_fe6_0807E0D4(struct GenericProc *proc);
+void func_fe6_0807E41C(struct GenericProc *proc);
 // func_fe6_0807E544
-void func_fe6_0807E5A8(struct GenericProc * proc);
-void func_fe6_0807EB70(struct GenericProc * proc);
-void func_fe6_0807EDBC(struct GenericProc * proc);
+void func_fe6_0807E5A8(struct GenericProc *proc);
+void func_fe6_0807EB70(struct GenericProc *proc);
+void func_fe6_0807EDBC(struct GenericProc *proc);
 // func_fe6_0807FBE8
-void func_fe6_0807FCFC(struct GenericProc * proc);
-void func_fe6_0807FF98(struct GenericProc * proc);
-void func_fe6_08080284(struct GenericProc * proc);
-void func_fe6_080813E8(struct GenericProc * proc);
-void func_fe6_08081540(struct GenericProc * proc);
+void func_fe6_0807FCFC(struct GenericProc *proc);
+void func_fe6_0807FF98(struct GenericProc *proc);
+void func_fe6_08080284(struct GenericProc *proc);
+void func_fe6_080813E8(struct GenericProc *proc);
+void func_fe6_08081540(struct GenericProc *proc);
 
 void StartPrepSubItemScreen(struct PrepMenuProc * parent, int type);
 void func_fe6_080815E4(struct Unit * unit, ProcPtr parent);
