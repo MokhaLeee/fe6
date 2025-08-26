@@ -35,7 +35,7 @@ struct ProcScr CONST_DATA ProcScr_EfxRestRST[] =
     PROC_END,
 };
 
-ProcPtr NewEfxRestRST(struct Anim *anim, int unk44, int unk48, int frame, int speed)
+ProcPtr NewEfxRestRST(struct Anim *anim, int duration, int step, int frame, int speed)
 {
     struct ProcEfx *proc;
 
@@ -45,8 +45,8 @@ ProcPtr NewEfxRestRST(struct Anim *anim, int unk44, int unk48, int frame, int sp
     proc->anim = anim;
     proc->timer = 0,
     proc->step = 0;
-    proc->unk44 = unk44;
-    proc->unk48 = unk48;
+    proc->unk44 = duration;
+    proc->unk48 = step;
     proc->frame = frame;
     proc->speed = speed;
 

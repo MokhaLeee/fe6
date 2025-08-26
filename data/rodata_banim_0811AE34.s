@@ -291,11 +291,119 @@ Tsa9_EfxNormalEffectBG:
 
 	.global TsaA_EfxNormalEffectBG
 TsaA_EfxNormalEffectBG:
-    .incbin "fe6-base.gba", 0x125394, 0x127778 - 0x125394
+    .incbin "fe6-base.gba", 0x125394, 0x12542C - 0x125394
 
-	.global gUnk_08127778
-gUnk_08127778: @ 08127778
-	.incbin "fe6-base.gba", 0x127778, (0x129504 - 0x127778) @ length: 1D8C
+	.global Img_EkrClasschgBG_0812542C
+Img_EkrClasschgBG_0812542C:	@ 0x12542C
+	.incbin "fe6-base.gba", 0x12542C, 0x1269BC - 0x12542C
+
+	.global Img_EkrClasschgBG_081269BC
+Img_EkrClasschgBG_081269BC:	@ 0x1269BC
+	.incbin "fe6-base.gba", 0x1269BC, 0x127738 - 0x1269BC
+
+	.global Pal_EkrClasschgBG_08127738
+Pal_EkrClasschgBG_08127738:	@ 0x127738
+	.incbin "fe6-base.gba", 0x127738, 0x20
+
+	.global Pal_EkrClasschgBG_08127758
+Pal_EkrClasschgBG_08127758:	@ 0x127758
+	.incbin "fe6-base.gba", 0x127758, 0x20
+
+	.global Pal_EfxClasschgFIN
+Pal_EfxClasschgFIN: @ 08127778
+	.incbin "fe6-base.gba", 0x127778, 0x20
+
+	.global Tsa_EkrClasschgBG_08127798
+Tsa_EkrClasschgBG_08127798:	@ 0x127798
+	.incbin "fe6-base.gba", 0x127798, 0x127950 - 0x127798
+
+	.global Tsa_EkrClasschgBG_08127950
+Tsa_EkrClasschgBG_08127950:	@ 0x127950
+	.incbin "fe6-base.gba", 0x127950, 0x127AE4 - 0x127950
+
+	.global Tsa_EkrClasschgBG_08127AE4
+Tsa_EkrClasschgBG_08127AE4:	@ 0x127AE4
+	.incbin "fe6-base.gba", 0x127AE4, 0x127C9C - 0x127AE4
+
+	.global Tsa_EkrClasschgBG_08127C9C
+Tsa_EkrClasschgBG_08127C9C:	@ 0x127C9C
+	.incbin "fe6-base.gba", 0x127C9C, 0x127E60 - 0x127C9C
+
+	.global Tsa_EkrClasschgBG_08127E60
+Tsa_EkrClasschgBG_08127E60:	@ 0x127E60
+	.incbin "fe6-base.gba", 0x127E60, 0x127F9C - 0x127E60
+
+	.global Tsa_EkrClasschgBG_08127F9C
+Tsa_EkrClasschgBG_08127F9C:	@ 0x127F9C
+	.incbin "fe6-base.gba", 0x127F9C, 0x128034 - 0x127F9C
+
+	.global Tsa_EkrClasschgBG_08128034
+Tsa_EkrClasschgBG_08128034:	@ 0x128034
+	.incbin "fe6-base.gba", 0x128034, 0x128128 - 0x128034
+
+	.global Tsa_EkrClasschgBG_08128128
+Tsa_EkrClasschgBG_08128128:	@ 0x128128
+	.incbin "fe6-base.gba", 0x128128, 0x128218 - 0x128128
+
+	.global Tsa_EkrClasschgBG_08128218
+Tsa_EkrClasschgBG_08128218:	@ 0x128218
+	.incbin "fe6-base.gba", 0x128218, 0x128308 - 0x128218
+
+	.global Tsa_EkrClasschgBG_08128308
+Tsa_EkrClasschgBG_08128308:	@ 0x128308
+	.incbin "fe6-base.gba", 0x128308, 0x128470 - 0x128308
+
+	.global Tsa_EkrClasschgBG_08128470
+Tsa_EkrClasschgBG_08128470:	@ 0x128470
+	.incbin "fe6-base.gba", 0x128470, 0x128584 - 0x128470
+
+	.global Tsa_EkrClasschgBG_08128584
+Tsa_EkrClasschgBG_08128584:	@ 0x128584
+	.incbin "fe6-base.gba", 0x128584, 0x128700 - 0x128584
+
+	.global Tsa_EkrClasschgBG_08128700
+Tsa_EkrClasschgBG_08128700:	@ 0x128700
+	.incbin "fe6-base.gba", 0x128700, 0x128828 - 0x128700
+
+	.global Tsa_EkrClasschgBG_08128828
+Tsa_EkrClasschgBG_08128828:	@ 0x128828
+	.incbin "fe6-base.gba", 0x128828, 0x128A0C - 0x128828
+
+	.global Tsa_EkrClasschgBG_08128A0C
+Tsa_EkrClasschgBG_08128A0C:	@ 0x128A0C
+	.incbin "fe6-base.gba", 0x128A0C, 0x128B5C - 0x128A0C
+
+	.global Tsa_EkrClasschgBG_08128B5C
+Tsa_EkrClasschgBG_08128B5C:	@ 0x128B5C
+	.incbin "fe6-base.gba", 0x128B5C, 0x128CE8 - 0x128B5C
+
+	.global Tsa_EkrClasschgBG_08128CE8
+Tsa_EkrClasschgBG_08128CE8:	@ 0x128CE8
+	.incbin "fe6-base.gba", 0x128CE8, 0x128DD4 - 0x128CE8
+
+	.global Tsa_EkrClasschgBG_08128DD4
+Tsa_EkrClasschgBG_08128DD4:	@ 0x128DD4
+	.incbin "fe6-base.gba", 0x128DD4, 0x128EB4 - 0x128DD4
+
+	.global Tsa_EkrClasschgBG_08128EB4
+Tsa_EkrClasschgBG_08128EB4:	@ 0x128EB4
+	.incbin "fe6-base.gba", 0x128EB4, 0x128FAC - 0x128EB4
+
+	.global Tsa_EkrClasschgBG_08128FAC
+Tsa_EkrClasschgBG_08128FAC:	@ 0x128FAC
+	.incbin "fe6-base.gba", 0x128FAC, 0x1290D0 - 0x128FAC
+
+	.global Tsa_EkrClasschgBG_081290D0
+Tsa_EkrClasschgBG_081290D0:	@ 0x1290D0
+	.incbin "fe6-base.gba", 0x1290D0, 0x12921C - 0x1290D0
+
+	.global Tsa_EkrClasschgBG_0812921C
+Tsa_EkrClasschgBG_0812921C:	@ 0x12921C
+	.incbin "fe6-base.gba", 0x12921C, 0x12938C - 0x12921C
+
+	.global Tsa_EkrClasschgBG_0812938C
+Tsa_EkrClasschgBG_0812938C:	@ 0x12938C
+	.incbin "fe6-base.gba", 0x12938C, 0x129504 - 0x12938C
 
 	.global Img_EfxMagfcastBG
 Img_EfxMagfcastBG: @ 08129504
@@ -3113,8 +3221,8 @@ Tsa_EfxHammarneBG_081B4C30:	@ 0x1B4C30
 Tsa_EfxHammarneBG_081B4D60:	@ 0x1B4D60
 	.incbin "fe6-base.gba", 0x1B4D60, 0x1B4E9C - 0x1B4D60
 
-	.global Img_EfxBerserkBG
-Img_EfxBerserkBG: @ 081B4E9C
+	.global Img_EfxClasschgFIN
+Img_EfxClasschgFIN: @ 081B4E9C
 	.incbin "fe6-base.gba", 0x1B4E9C, (0x1B4F9C - 0x1B4E9C) @ length: 0100
 
 	.global Tsa_EfxBerserkBG

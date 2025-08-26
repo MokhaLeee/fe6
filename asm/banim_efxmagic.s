@@ -11067,7 +11067,7 @@ NewEfxBerserkBG: @ 0x080562C0
 	ldr r0, .L080563C0 @ =Pal_EfxBerserkBG
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
-	ldr r0, .L080563C4 @ =Img_EfxBerserkBG
+	ldr r0, .L080563C4 @ =Img_EfxClasschgFIN
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterBgGfx
@@ -11170,7 +11170,7 @@ NewEfxBerserkBG: @ 0x080562C0
 .L080563B8: .4byte gEfxBgSemaphore
 .L080563BC: .4byte ProcScr_EfxBerserkBG
 .L080563C0: .4byte Pal_EfxBerserkBG
-.L080563C4: .4byte Img_EfxBerserkBG
+.L080563C4: .4byte Img_EfxClasschgFIN
 .L080563C8: .4byte Tsa_EfxBerserkBG
 .L080563CC: .4byte gBg1Tm
 .L080563D0: .4byte gDispIo
