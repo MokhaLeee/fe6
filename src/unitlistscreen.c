@@ -313,7 +313,7 @@ void func_fe6_08074668(bool use_win1)
     }
 }
 
-void func_fe6_08074778(struct UnitListScreenProc * proc)
+void UnitList_StartStatScreen(struct UnitListScreenProc * proc)
 {
     EndAllMus();
     Proc_End(proc->sprites_proc);
@@ -338,13 +338,13 @@ void func_fe6_08074778(struct UnitListScreenProc * proc)
     proc->unk_29 = 4;
 }
 
-void func_fe6_08074804(struct UnitListScreenProc * proc)
+void UnitList_ResetFromStatScreen(struct UnitListScreenProc * proc)
 {
     func_fe6_08074EF0(proc);
     SetDispEnable(0, 0, 0, 0, 0);
 }
 
-void func_fe6_08074830(struct UnitListScreenProc * proc)
+void UnitList_ResetDispFromStatScreen(struct UnitListScreenProc * proc)
 {
     SetDispEnable(1, 1, 1, 1, 1);
 }
@@ -1126,7 +1126,7 @@ void func_fe6_08075570(struct UnitListScreenProc * proc)
     }
 }
 
-void func_fe6_08075D34(struct UnitListScreenProc * proc)
+void UnitList_OnEnd(struct UnitListScreenProc * proc)
 {
     if (proc->mode == UNITLIST_MODE_PREPMENU)
     {
@@ -1158,7 +1158,7 @@ void func_fe6_08075D34(struct UnitListScreenProc * proc)
     ClearIcons();
 }
 
-void func_fe6_08075DF8(struct UnitListScreenProc * proc)
+void UnitList_StartPageChange(struct UnitListScreenProc * proc)
 {
     int i;
 
@@ -1818,7 +1818,7 @@ PROC_LABEL(1),
     PROC_CALL(StartFastFadeToBlack),
     PROC_REPEAT(WhileFadeExists),
 
-    PROC_CALL(func_fe6_08075D34),
+    PROC_CALL(UnitList_OnEnd),
 
     PROC_CALL(UnlockBmDisplay),
     PROC_CALL(InitBmDisplay),
@@ -1829,17 +1829,17 @@ PROC_LABEL(1),
     PROC_GOTO(4),
 
 PROC_LABEL(2),
-    PROC_CALL(func_fe6_08075DF8),
+    PROC_CALL(UnitList_StartPageChange),
     PROC_REPEAT(func_fe6_08075E94),
     PROC_REPEAT(func_fe6_08076060),
     PROC_GOTO(1),
 
 PROC_LABEL(3),
-    PROC_CALL(func_fe6_08074778),
+    PROC_CALL(UnitList_StartStatScreen),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08074804),
+    PROC_CALL(UnitList_ResetFromStatScreen),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08074830),
+    PROC_CALL(UnitList_ResetDispFromStatScreen),
     PROC_GOTO(1),
 
 PROC_LABEL(4),
@@ -1854,7 +1854,7 @@ void StartUnitListScreen(void)
     proc->mode = UNITLIST_MODE_FIELD;
 }
 
-struct ProcScr CONST_DATA gUnk_08678594[] =
+struct ProcScr CONST_DATA ProcScr_UnitListScreen_PrepMenu[] =
 {
     PROC_19,
     PROC_SLEEP(1),
@@ -1865,19 +1865,19 @@ PROC_LABEL(1),
     PROC_REPEAT(func_fe6_08075570),
     PROC_CALL(StartMidFadeToBlack),
     PROC_REPEAT(WhileFadeExists),
-    PROC_CALL(func_fe6_08075D34),
+    PROC_CALL(UnitList_OnEnd),
     PROC_GOTO(4),
 PROC_LABEL(2),
-    PROC_CALL(func_fe6_08075DF8),
+    PROC_CALL(UnitList_StartPageChange),
     PROC_REPEAT(func_fe6_08075E94),
     PROC_REPEAT(func_fe6_08076060),
     PROC_GOTO(1),
 PROC_LABEL(3),
-    PROC_CALL(func_fe6_08074778),
+    PROC_CALL(UnitList_StartStatScreen),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08074804),
+    PROC_CALL(UnitList_ResetFromStatScreen),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08074830),
+    PROC_CALL(UnitList_ResetDispFromStatScreen),
     PROC_GOTO(1),
 PROC_LABEL(4),
     PROC_END,
@@ -1889,16 +1889,16 @@ void func_fe6_08076250(ProcPtr parent)
 
     if (parent == NULL)
     {
-        proc = SpawnProc(gUnk_08678594, PROC_TREE_3);
+        proc = SpawnProc(ProcScr_UnitListScreen_PrepMenu, PROC_TREE_3);
     }
     else
     {
-        proc = SpawnProcLocking(gUnk_08678594, parent);
+        proc = SpawnProcLocking(ProcScr_UnitListScreen_PrepMenu, parent);
     }
 
     proc->mode = UNITLIST_MODE_PREPMENU;
 
-    if (func_fe6_08036984() == 1)
+    if (CheckInLinkArena() == 1)
     {
         proc->unk_3C = 1;
         proc->unk_3A = 5;
@@ -1924,14 +1924,14 @@ PROC_LABEL(1),
     PROC_REPEAT(func_fe6_08075570),
     PROC_CALL(StartFastFadeToBlack),
     PROC_REPEAT(WhileFadeExists),
-    PROC_CALL(func_fe6_08075D34),
+    PROC_CALL(UnitList_OnEnd),
     PROC_GOTO(4),
 PROC_LABEL(3),
-    PROC_CALL(func_fe6_08074778),
+    PROC_CALL(UnitList_StartStatScreen),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08074804),
+    PROC_CALL(UnitList_ResetFromStatScreen),
     PROC_SLEEP(1),
-    PROC_CALL(func_fe6_08074830),
+    PROC_CALL(UnitList_ResetDispFromStatScreen),
     PROC_GOTO(1),
 PROC_LABEL(4),
     PROC_END,
@@ -1953,17 +1953,17 @@ void StartUnitListScreenForSoloAnim(ProcPtr parent)
     proc->mode = UNITLIST_MODE_SOLOANIM;
 }
 
-void func_fe6_080762E4(ProcPtr parent)
+void StartUnitListScreenUnk(ProcPtr parent)
 {
     struct UnitListScreenProc * proc;
 
     if (parent == NULL)
     {
-        proc = SpawnProc(gUnk_08678594, PROC_TREE_3);
+        proc = SpawnProc(ProcScr_UnitListScreen_PrepMenu, PROC_TREE_3);
     }
     else
     {
-        proc = SpawnProcLocking(gUnk_08678594, parent);
+        proc = SpawnProcLocking(ProcScr_UnitListScreen_PrepMenu, parent);
     }
 
     proc->mode = UNITLIST_MODE_4;

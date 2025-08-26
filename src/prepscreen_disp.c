@@ -756,7 +756,7 @@ void PrepMenu_DrawGmapSprites(struct PrepScreenDispProc * proc)
     if (proc->cursor_y < 0x20)
         ypos = 0x74;
 
-    if ((proc->proc_parent->unk_2C & 1) == 0 && proc->chidx != 0)
+    if ((proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA) == 0 && proc->chidx != 0)
     {
         u8 chidx;
         if ((1 & proc->chidx) != 0)
@@ -1036,7 +1036,7 @@ void func_fe6_0807C090(struct PrepScreenDispProc * proc)
 
     if (proc->unk_31 == 0)
     {
-        if (proc->proc_parent->unk_2C & 1)
+        if (proc->proc_parent->link_arena_flag & 1)
             goto L2;
 
         func_fe6_0807BF70(proc);
@@ -1053,7 +1053,7 @@ L0:
     proc->unk_48++;
 
 L1:
-    if ((proc->proc_parent->unk_2C & 1) == 0)
+    if ((proc->proc_parent->link_arena_flag & 1) == 0)
         return;
 
 L2:

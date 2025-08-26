@@ -822,7 +822,7 @@ u32 DiscardItemMenu_ExtraEntry_Display(struct MenuProc * menu, struct MenuEntPro
     int item = gBmSt.inventory_item_overflow;
 
     Text_SetColor(&ent->text, TEXT_COLOR_SYSTEM_BLUE);
-    func_fe6_080167E4(&ent->text, item, gBg0Tm + TM_OFFSET(ent->x, ent->y));
+    DrawItemMenuLineNoColor(&ent->text, item, gBg0Tm + TM_OFFSET(ent->x, ent->y));
 
     EnableBgSync(BG0_SYNC_BIT);
 
@@ -1820,15 +1820,15 @@ static void ChapterIntro_Init(struct GenericProc * proc)
 
     SetWin0Box(0, 0, 0, 0);
 
-    func_fe6_08070CB4(8, BGPAL_CHAPTERINTRO_0);
-    func_fe6_08070CB4(0, BGPAL_CHAPTERINTRO_1);
+    PutChapterTitlePalettle(8, BGPAL_CHAPTERINTRO_0);
+    PutChapterTitlePalettle(0, BGPAL_CHAPTERINTRO_1);
 
-    func_fe6_08070D78(BGCHR_CHAPTERINTRO_80);
+    PutChapterTitleBG2(BGCHR_CHAPTERINTRO_80);
 
-    func_fe6_08070D08(BGCHR_CHAPTERINTRO_100, func_fe6_08070E0C(&gPlaySt));
+    PutChapterTitleGfx(BGCHR_CHAPTERINTRO_100, GetChapterTitleExtra(&gPlaySt));
 
-    func_fe6_08070DE8(gBg1Tm + TM_OFFSET(0, 8), BGPAL_CHAPTERINTRO_0);
-    func_fe6_08070DA8(gBg0Tm + TM_OFFSET(3, 9), BGPAL_CHAPTERINTRO_1);
+    PutChapterTitleBgDefaultTSA(gBg1Tm + TM_OFFSET(0, 8), BGPAL_CHAPTERINTRO_0);
+    PutChapterTitleTextTSA(gBg0Tm + TM_OFFSET(3, 9), BGPAL_CHAPTERINTRO_1);
 
     ColorFadeInit();
     func_fe6_08001E68(BGPAL_CHAPTERINTRO_0, 2, 0x40, -1);

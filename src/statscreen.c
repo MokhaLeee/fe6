@@ -466,7 +466,7 @@ void PutStatScreenItemsPage(void)
 
     for (i = 0; (i < ITEMSLOT_INV_COUNT) && (item = gStatScreenSt.unit->items[i]); i++)
     {
-        func_fe6_08016860(gStatScreenSt.text + STATSCREEN_TEXT_ITEM_A + i,
+        DrawItemStatScreenLine(gStatScreenSt.text + STATSCREEN_TEXT_ITEM_A + i,
             item, IsItemDisplayUseable(gStatScreenSt.unit, item),
             gUiTmScratchA + TM_OFFSET(1, 1 + i * 2));
     }

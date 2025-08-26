@@ -379,12 +379,9 @@ void func_fe6_0807D358(struct PrepSubItemProc *proc)
 	u16 item_amt = GetUnitItemCount(proc->unit);
 
 	for (j = 0, i = 0; i < item_amt; j++, i++)
-	{
-		icons[j] = GetItemIcon(unit->items);
-	}
+		icons[j] = GetItemIcon(unit->items[i]);
 
-	if (gUnk_0201636A != 0)
-	{
+	if (gUnk_0201636A != 0) {
 
 	}
 }
@@ -507,3 +504,4 @@ u16 CONST_DATA Sprite_086795F0[] = {
 	1,
 	OAM0_SHAPE_8x32, OAM1_SIZE_8x32, 0,
 };
+

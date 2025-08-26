@@ -1809,7 +1809,7 @@ func_fe6_0807E0D4: @ 0x0807E0D4
 	lsls r1, r1, #2
 	movs r2, #0x60
 	bl ApplyPaletteExt
-	ldr r0, .L0807E2D8 @ =gUnk_0831AABC
+	ldr r0, .L0807E2D8 @ =Pal_Sio_0831AABC
 	movs r1, #0xc0
 	lsls r1, r1, #2
 	movs r2, #0x40
@@ -1897,7 +1897,7 @@ func_fe6_0807E0D4: @ 0x0807E0D4
 .L0807E2CC: .4byte 0x020155E8
 .L0807E2D0: .4byte 0x02015638
 .L0807E2D4: .4byte Pal_SpinningArrow
-.L0807E2D8: .4byte gUnk_0831AABC
+.L0807E2D8: .4byte Pal_Sio_0831AABC
 .L0807E2DC: .4byte gUnk_0831A248
 .L0807E2E0: .4byte gUnk_08319EE8
 .L0807E2E4: .4byte gBg0Tm+0x500
@@ -8528,7 +8528,7 @@ func_fe6_0808171C: @ 0x0808171C
 	ldr r0, .L08081964 @ =gUnk_0831AB1C
 	ldr r1, .L08081968 @ =0x06011000
 	bl Decompress
-	ldr r0, .L0808196C @ =gUnk_0831AABC
+	ldr r0, .L0808196C @ =Pal_Sio_0831AABC
 	movs r1, #0xc0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -8569,7 +8569,7 @@ func_fe6_0808171C: @ 0x0808171C
 .L08081960: .4byte Pal_SpinningArrow
 .L08081964: .4byte gUnk_0831AB1C
 .L08081968: .4byte 0x06011000
-.L0808196C: .4byte gUnk_0831AABC
+.L0808196C: .4byte Pal_Sio_0831AABC
 
 	thumb_func_start func_fe6_08081970
 func_fe6_08081970: @ 0x08081970

@@ -13,17 +13,9 @@
 #include "chapter.h"
 #include "chapterinfo.h"
 #include "ui.h"
-#include "eventfunctions.h"
 
 #include "constants/videoalloc_global.h"
-#include "constants/chapters.h"
 #include "constants/songs.h"
-
-struct Unk_0203D404
-{
-    u16 unk_00;
-    u16 unk_02;
-};
 
 struct Unk_0203D40C
 {
@@ -69,163 +61,8 @@ struct HelpBoxPrintProc2
     /* 5C */ i32 msg; // Maybe other proc?
 };
 
-extern u8 const gUnk_0830C804[]; // img
-extern u8 const gUnk_0830CFE0[]; // img
-extern u8 const gUnk_0830D4F0[]; // tsa
-extern u8 const gUnk_08308A78[]; // img
-extern u16 const Pal_08100A48[]; // pal
-
-struct Unk_0203D404 EWRAM_DATA gUnk_0203D404 = { 0 };
 int EWRAM_DATA unused_0203D408 = 0;
 struct Unk_0203D40C EWRAM_DATA gUnk_0203D40C = { { 0 } };
-
-void func_fe6_08070CB4(int flags, int pal)
-{
-    u16 const * pal_src;
-
-    if (flags & 8)
-    {
-        ApplyPalette(Pal_Unk_0830D5E4, pal);
-        return;
-    }
-
-    pal_src = (flags & 1) != 0
-        ? Pal_Unk_08309474
-        : Pal_Unk_083094F4;
-
-    if (flags & 2)
-        pal_src = pal_src + 0x10;
-
-    if (flags & 4)
-        pal_src = pal_src + 0x20;
-
-    ApplyPalette(pal_src, pal);
-}
-
-u8 const * CONST_DATA gUnk_08677F20[] =
-{
-    // TODO
-
-    (void *) 0x0830D9C0,
-    (void *) 0x0830DDBC,
-    (void *) 0x0830E1DC,
-    (void *) 0x0830E640,
-    (void *) 0x0830EA4C,
-    (void *) 0x0830EDC8,
-    (void *) 0x0830F250,
-    (void *) 0x0830F6C4,
-    (void *) 0x0830F9B8,
-    (void *) 0x0830FE60,
-    (void *) 0x083102CC,
-    (void *) 0x083107A8,
-    (void *) 0x08310BBC,
-    (void *) 0x08311094,
-    (void *) 0x083114AC,
-    (void *) 0x08311890,
-    (void *) 0x08311D54,
-    (void *) 0x08312158,
-    (void *) 0x083124FC,
-    (void *) 0x083129A0,
-    (void *) 0x08312D20,
-    (void *) 0x08313104,
-    (void *) 0x083135C0,
-    (void *) 0x0831394C,
-    (void *) 0x08313D38,
-    (void *) 0x083140C8,
-    (void *) 0x083144E4,
-    (void *) 0x083149C8,
-    (void *) 0x08314E14,
-    (void *) 0x083151E8,
-    (void *) 0x0831569C,
-    (void *) 0x08315AC0,
-    (void *) 0x08315F88,
-    (void *) 0x08316354,
-    (void *) 0x083167EC,
-    (void *) 0x08316C00,
-    (void *) 0x08317014,
-    (void *) 0x08317484,
-    (void *) 0x08317858,
-    (void *) 0x08317AA4,
-    (void *) 0x08317D94,
-    (void *) 0x08318040,
-    (void *) 0x0831833C,
-    (void *) 0x08318658,
-};
-
-void func_fe6_08070D08(int chr, int title_id)
-{
-    // TODO: is this really chapter?
-    if (title_id < 0 || title_id >= CHAPTER_COUNT)
-        title_id = CHAPTER_21X;
-
-    gUnk_0203D404.unk_02 = chr & 0x3FF;
-    Decompress(gUnk_08677F20[title_id], ((void *) VRAM) + chr * CHR_SIZE);
-}
-
-void func_fe6_08070D48(int chr)
-{
-    gUnk_0203D404.unk_00 = chr & 0x3FF;
-    Decompress(gUnk_0830C804, ((void *) VRAM) + chr * CHR_SIZE);
-}
-
-void func_fe6_08070D78(int chr)
-{
-    gUnk_0203D404.unk_00 = chr & 0x3FF;
-    Decompress(gUnk_0830CFE0, ((void *) VRAM) + chr * CHR_SIZE);
-}
-
-void func_fe6_08070DA8(u16 * tm, int pal)
-{
-    int i, tile = TILEREF(gUnk_0203D404.unk_02, pal);
-
-    for (i = 0; i < 0x40; i++)
-        *tm++ = tile++;
-}
-
-void func_fe6_08070DC8(u16 * tm, int pal)
-{
-    int i, tile = TILEREF(gUnk_0203D404.unk_00, pal);
-
-    for (i = 0; i < 0x80; i++)
-        *tm++ = tile++;
-}
-
-void func_fe6_08070DE8(u16 * tm, int pal)
-{
-    TmApplyTsa(tm, gUnk_0830D4F0, TILEREF(gUnk_0203D404.unk_00, pal));
-}
-
-int func_fe6_08070E0C(struct PlaySt const * play_st)
-{
-    if (play_st == NULL)
-        return 0x26;
-
-    switch (play_st->chapter)
-    {
-
-    case -1:
-    case 0x28 ... 0x2C:
-        return 0x2B;
-
-    default:
-        if ((play_st->flags & PLAY_FLAG_COMPLETE) != 0)
-        {
-            switch (play_st->ending_id)
-            {
-                case TRUE_ENDING:
-                    return 0x2A;
-
-                case NORMAL_ENDING:
-                    return 0x29;
-
-                case FALSE_ENDING:
-                    return 0x28;
-            }
-        }
-
-        return GetChapterInfo(play_st->chapter)->title_id;
-    }
-}
 
 void LoadHelpBoxGfx(void * vram, int pal)
 {

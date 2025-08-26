@@ -1766,7 +1766,7 @@ void BrightenPalette(int palid)
     }
 }
 
-void func_fe6_08015504(u8 const * src, u8 * dst, int size)
+void SioMemCpy(u8 const * src, u8 * dst, int size)
 {
     while (size != 0)
     {

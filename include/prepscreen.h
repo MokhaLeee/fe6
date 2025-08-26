@@ -63,7 +63,7 @@ struct PrepMenuProc
     /* 29 */ u8 unk_29;
     /* 2A */ u8 in_unit_sel_screen;
     /* 2B */ u8 unk_2B;
-    /* 2C */ u8 unk_2C;
+    /* 2C */ u8 link_arena_flag;
     /* 2D */ u8 unk_2D; // size of gPrepUnitList?
     /* 2E */ u8 max_counter;
     /* 2F */ u8 cur_counter;
@@ -80,7 +80,7 @@ struct PrepMenuProc
     /* 3B */ u8 sub2_action;
     /* 3C */ u8 a_button_actions; // Bit1:selection unit, Bit2:Start battle
     /* 3D */ u8 do_help;
-    /* 3E */ u8 unk_3E;
+    /* 3E */ u8 end_prep;
     /* 3F */ u8 unk_3F;
     /* 40 */ u16 unk_40;
     /* 42 */ u16 scroll_timer;
@@ -218,14 +218,14 @@ void PrepMenu_InitScreen(struct PrepMenuProc *proc);
 void PrepScreen_DrawScreenInfo(struct PrepMenuProc *proc);
 void PrepMenu_InitExt(struct PrepMenuProc *proc);
 fi8 PrepUnitSel_Loop(struct PrepMenuProc *proc);
-void func_fe6_0807ABF4(struct PrepMenuProc *proc);
-void func_fe6_0807AC9C(struct PrepMenuProc *proc);
+void PrepSubMenu_FinishMoving(struct PrepMenuProc *proc);
+void PrepMenu_CancelAction(struct PrepMenuProc *proc);
 void func_fe6_0807ACE8(struct PrepMenuProc *proc);
 void PrepMenu_EndIfNoUnit(struct PrepMenuProc *proc);
 void PrepMenu_Init(struct PrepMenuProc *proc);
 void PrepMenu_Loop(struct PrepMenuProc *proc);
-// func_fe6_0807B0DC
-// func_fe6_0807B0E4
+// AtMenu_SetEndFlag
+// AtMenu_ResetBmUiEffect
 // PrepUnit_HandleScrollUp
 // PrepUnit_HandleScrollDown
 // AtMenu_StartSubmenu
@@ -557,7 +557,7 @@ extern u32 const gUnk_0831A268[]; // img(lz)
 extern u32 const Img_SpinningArrow[]; // img(lz)
 extern u32 const gUnk_08326930[]; // img(lz)
 extern u16 const Pal_SpinningArrow[]; // pal
-extern u16 const gUnk_0831AABC[]; // pal (x2)
+extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
 extern u16 const gUnk_08326E64[]; // pal (x4)
 extern u16 const gUnk_08327108[]; // pal
 extern u32 const gUnk_08321FA4[]; // img(lz)

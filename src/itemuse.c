@@ -746,7 +746,7 @@ u32 RepairItemMenu_Entry_Display(struct MenuProc * menu, struct MenuEntProc * en
     int item = GetUnit(gAction.target)->items[ent->id];
     int isRepairable = IsItemRepairable(item);
 
-    func_fe6_08016720(&ent->text, item, isRepairable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
+    DrawItemMenuLineLong(&ent->text, item, isRepairable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
     EnableBgSync(BG0_SYNC_BIT);
 
     return 0;

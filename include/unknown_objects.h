@@ -128,7 +128,7 @@ extern u16 const Pal_SpinningArrow[];
 // extern ??? gUnk_0831A088
 // extern ??? gUnk_0831A248
 // extern ??? gUnk_0831A268
-// extern ??? gUnk_0831AABC
+// extern ??? Pal_Sio_0831AABC
 extern u16 const Pal_0831AAFC[];
 // extern ??? gUnk_0831AB1C
 // extern ??? gUnk_0831B068
@@ -1339,6 +1339,57 @@ extern u16 const Pal_Unk_08309474[];
 extern u16 const Pal_Unk_083094F4[];
 extern u16 const Pal_Unk_0830D5E4[];
 
+extern u8 const Img_ChapterTitleBG1[]; // img
+extern u8 const Img_ChapterTitleBG2[]; // img
+extern u8 const Tsa_ChapterTitleFxDefaultBG[]; // tsa
+extern u8 const gUnk_08308A78[]; // img
+extern u16 const Pal_08100A48[]; // pal
+
+extern u16 Img_ChapterTitle_0830D9C0[];
+extern u16 Img_ChapterTitle_0830DDBC[];
+extern u16 Img_ChapterTitle_0830E1DC[];
+extern u16 Img_ChapterTitle_0830E640[];
+extern u16 Img_ChapterTitle_0830EA4C[];
+extern u16 Img_ChapterTitle_0830EDC8[];
+extern u16 Img_ChapterTitle_0830F250[];
+extern u16 Img_ChapterTitle_0830F6C4[];
+extern u16 Img_ChapterTitle_0830F9B8[];
+extern u16 Img_ChapterTitle_0830FE60[];
+extern u16 Img_ChapterTitle_083102CC[];
+extern u16 Img_ChapterTitle_083107A8[];
+extern u16 Img_ChapterTitle_08310BBC[];
+extern u16 Img_ChapterTitle_08311094[];
+extern u16 Img_ChapterTitle_083114AC[];
+extern u16 Img_ChapterTitle_08311890[];
+extern u16 Img_ChapterTitle_08311D54[];
+extern u16 Img_ChapterTitle_08312158[];
+extern u16 Img_ChapterTitle_083124FC[];
+extern u16 Img_ChapterTitle_083129A0[];
+extern u16 Img_ChapterTitle_08312D20[];
+extern u16 Img_ChapterTitle_08313104[];
+extern u16 Img_ChapterTitle_083135C0[];
+extern u16 Img_ChapterTitle_0831394C[];
+extern u16 Img_ChapterTitle_08313D38[];
+extern u16 Img_ChapterTitle_083140C8[];
+extern u16 Img_ChapterTitle_083144E4[];
+extern u16 Img_ChapterTitle_083149C8[];
+extern u16 Img_ChapterTitle_08314E14[];
+extern u16 Img_ChapterTitle_083151E8[];
+extern u16 Img_ChapterTitle_0831569C[];
+extern u16 Img_ChapterTitle_08315AC0[];
+extern u16 Img_ChapterTitle_08315F88[];
+extern u16 Img_ChapterTitle_08316354[];
+extern u16 Img_ChapterTitle_083167EC[];
+extern u16 Img_ChapterTitle_08316C00[];
+extern u16 Img_ChapterTitle_08317014[];
+extern u16 Img_ChapterTitle_08317484[];
+extern u16 Img_ChapterTitle_08317858[];
+extern u16 Img_ChapterTitle_08317AA4[];
+extern u16 Img_ChapterTitle_08317D94[];
+extern u16 Img_ChapterTitle_08318040[];
+extern u16 Img_ChapterTitle_0831833C[];
+extern u16 Img_ChapterTitle_08318658[];
+
 extern u8 const Img_MapUiElements[];
 
 extern u16 const Pal_UnitMapUiFrame_Blue[];
@@ -1512,9 +1563,9 @@ extern const u16 gUnk_083278AC[];
 extern const u8 gUnk_083278EC[];
 extern const u16 gUnk_083280B0[];
 extern const u8 gUnk_0832A130[];
-extern const u8 gUnk_0832A29C[];
+extern const u8 Img_SupportMenu[];
 extern const u8 gUnk_0832B554[];
-extern const u16 gUnk_0832BDE8[];
+extern const u16 Pal_SupportMenu[];
 extern const u16 Img_XmapObj[];
 extern const u16 Pal_XmapObj[];
 extern const u16 gUnk_0832C35C[];

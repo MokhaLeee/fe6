@@ -186,7 +186,7 @@ void SaveMenu_PutScreen(struct SaveMenuProc * proc)
     ApplyPalettes(gUnk_083278AC, 2, 2);
     Decompress(Img_MuralBackground, ((void *) VRAM) + GetBgChrOffset(0) + CHR_SIZE * BGCHR_SAVEMENU_0);
     TmApplyTsa(gBg0Tm, gUnk_083278EC, 0);
-    ApplyPalettes(gUnk_0832BDE8, 0x11, 8);
+    ApplyPalettes(Pal_SupportMenu, 0x11, 8);
     LoadHelpBoxGfx(OBJ_VRAM0 + CHR_SIZE * OBCHR_SAVEMENU_1C0, OBPAL_SAVEMENU_9);
     func_fe6_080895A0(gUnk_0832C35C, gUnk_Savemenu_02000404, 2);
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
@@ -196,7 +196,7 @@ void SaveMenu_PutScreen(struct SaveMenuProc * proc)
     gDispIo.win_ct.win0_enable_blend = 1;
     gDispIo.win_ct.win1_enable_blend = 1;
 
-    Decompress(gUnk_0832A29C, OBJ_VRAM0 + 0x1000);
+    Decompress(Img_SupportMenu, OBJ_VRAM0 + 0x1000);
 
     if (proc->unk_2E == UNK_SAVEMENU_6)
     {
@@ -683,11 +683,11 @@ void func_fe6_08088870(struct SaveMenuProc * proc)
         {
             // tyvm Eebit
             // TODO: there's probably something better to do here
-            func_fe6_08070D08(((u32)(proc->selected_id * 0x800 + 0x16800) & 0x0001FFFF) >> 5, proc->unk_37[proc->selected_id]);
+            PutChapterTitleGfx(((u32)(proc->selected_id * 0x800 + 0x16800) & 0x0001FFFF) >> 5, proc->unk_37[proc->selected_id]);
         }
         else
         {
-            func_fe6_08070D08(((u32)(proc->selected_id * 0x800 + 0x16800) & 0x0001FFFF) >> 5, -1);
+            PutChapterTitleGfx(((u32)(proc->selected_id * 0x800 + 0x16800) & 0x0001FFFF) >> 5, -1);
         }
 
         func_fe6_0808A9F4(proc->selected_id);

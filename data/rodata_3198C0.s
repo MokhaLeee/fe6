@@ -24,8 +24,8 @@ gUnk_0831A248: @ 0831A248
 gUnk_0831A268: @ 0831A268
 	.incbin "fe6-base.gba", 0x31A268, (0x31AABC - 0x31A268) @ length: 0854
 
-	.global gUnk_0831AABC
-gUnk_0831AABC: @ 0831AABC
+	.global Pal_Sio_0831AABC
+Pal_Sio_0831AABC: @ 0831AABC
 	.incbin "fe6-base.gba", 0x31AABC, (0x31AAFC - 0x31AABC) @ length: 0040
 
 	.global Pal_0831AAFC

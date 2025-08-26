@@ -88,7 +88,7 @@ SECTIONS
         . = 0x001520; gUnk_Sio_02001520 = .;
         . = 0x001524; gUnk_Sio_02001524 = .;
         . = 0x001528; gUnk_Sio_02001528 = .;
-        . = 0x00152C; gUnk_Sio_0200152C = .;
+        . = 0x00152C; gSioImgBuf = .;
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -255,6 +255,22 @@ SECTIONS
         . = ALIGN(4); src/ai_decide.o(ewram_data);
         . = ALIGN(4); src/ai_080326C4.o(ewram_data);
 
+        /* SIO */
+        . = 0x0203B218 - __ewram_overlay_end; gSioOutgoing = .;
+        . = 0x0203B618 - __ewram_overlay_end; gSioIncoming = .;
+        . = 0x0203C618 - __ewram_overlay_end; gLinkArenaSt = .;
+        . = 0x0203C67C - __ewram_overlay_end; gSioText_0203C67C = .;
+        . = 0x0203C6A4 - __ewram_overlay_end; gSioText_0203C6A4 = .;
+        . = 0x0203C704 - __ewram_overlay_end; gSioSaveConfig = .;
+        . = 0x0203C708 - __ewram_overlay_end; gSioText_0203C708 = .;
+        . = 0x0203C758 - __ewram_overlay_end; gSioFont_0203C758 = .;
+        . = 0x0203C770 - __ewram_overlay_end; gLinkArenaTeamList = .;
+        . = 0x0203C900 - __ewram_overlay_end; gSioTexts = .;
+        . = 0x0203C920 - __ewram_overlay_end; gKeyInputSequenceBuffer = .;
+        . = 0x0203C940 - __ewram_overlay_end; gKeyInputSequenceTimer = .;
+        . = 0x0203C984 - __ewram_overlay_end; gSioBmSt = .;
+        . = 0x0203C9D0 - __ewram_overlay_end; Unk_Sio_0203C9D0 = .;
+
         . = 0x0203C9D4 - __ewram_overlay_end;
         . = ALIGN(4); src/ui.o(ewram_data);
         . = ALIGN(4); src/mapselect.o(ewram_data);
@@ -327,6 +343,7 @@ SECTIONS
         . = 0x0203D3DC - __ewram_overlay_end;
         . = ALIGN(4); src/statscreen.o(ewram_data);
         . = ALIGN(4); src/helpbox.o(ewram_data);
+        . = ALIGN(4); src/chapter_title.o(ewram_data);
         . = ALIGN(4); src/helpbox_2.o(ewram_data);
         . = ALIGN(4); SioPidPool = .;
 
@@ -367,16 +384,16 @@ SECTIONS
         . = ALIGN(4); src/ai_script.o(.bss);
         . = ALIGN(4); src/ai_battle.o(.bss);
 
-        . = 0x0013B8; gUnk_030013B8 = .;
-        . = 0x0013BC; gUnk_030013BC = .;
+        . = 0x0013B8; sSioCnt = .;
+        . = 0x0013BC; sSioId = .;
         . = 0x0013C0; gUnk_030013C0 = .;
         . = 0x0013C4; gUnk_030013C4 = .;
         . = 0x0013C8; gUnk_030013C8 = .;
         . = 0x0013CA; gUnk_030013CA = .;
-        . = 0x0013D0; gUnk_030013D0 = .;
-        . = 0x0013D8; gUnk_030013D8 = .;
-        . = 0x0013E0; gUnk_030013E0 = .;
-        . = 0x0013E4; gUnk_030013E4 = .;
+        . = 0x0013D0; sReadCursor = .;
+        . = 0x0013D8; sRecvCursor = .;
+        . = 0x0013E0; gCurrentKeyInSeqIndex = .;
+        . = 0x0013E4; gTargetKeyInSeqIndex = .;
         . = 0x0013E8; gUnk_030013E8 = .;
         . = 0x0013F0; gUnk_030013F0 = .;
         . = 0x001404; gUnk_03001404 = .;
@@ -432,8 +449,8 @@ SECTIONS
         . = 0x0044D4; gUnk_030044D4 = .;
         . = 0x0044E0; gUnk_030044E0 = .;
         . = 0x0044E6; gUnk_030044E6 = .;
-        . = 0x004568; gUnk_03004568 = .;
-        . = 0x00456C; gUnk_0300456C = .;
+        . = 0x004568; gSioStateId = .;
+        . = 0x00456C; gSioMsgBuf = .;
         . = 0x004570; *(COMMON.AiDecideFunc);
         . = 0x004580; gUnk_03004580 = .;
         . = 0x004600; *(COMMON.gManimDebugStObj);
@@ -593,6 +610,7 @@ SECTIONS
         src/eventfunctions.o(.text);
         src/statscreen.o(.text);
         src/helpbox.o(.text);
+        src/chapter_title.o(.text);
         src/helpbox_2.o(.text);
         src/mapui.o(.text);
         src/sioerror.o(.text);
@@ -727,6 +745,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_307544.o(.rodata);
         . = ALIGN(4); src/statscreen.o(.rodata);
         . = ALIGN(4); src/helpbox.o(.rodata);
+        . = ALIGN(4); src/chapter_title.o(.rodata);
         . = ALIGN(4); src/helpbox_2.o(.rodata);
         . = ALIGN(4); src/statusscreen.o(.rodata);
         . = ALIGN(4); data/rodata_3198C0.o(.rodata);
@@ -857,6 +876,7 @@ SECTIONS
         . = ALIGN(4); src/eventfunctions.o(.data);
         . = ALIGN(4); src/statscreen.o(.data);
         . = ALIGN(4); src/helpbox.o(.data);
+        . = ALIGN(4); src/chapter_title.o(.data);
         . = ALIGN(4); src/helpbox_2.o(.data);
         . = ALIGN(4); src/mapui.o(.data);
         . = ALIGN(4); src/statusscreen.o(.data);
