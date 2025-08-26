@@ -265,17 +265,18 @@ SECTIONS
         . = 0x0203C708 - __ewram_overlay_end; gSioText_0203C708 = .;
         . = 0x0203C758 - __ewram_overlay_end; gSioFont_0203C758 = .;
         . = 0x0203C770 - __ewram_overlay_end; gLinkArenaTeamList = .;
+        . = 0x0203C83C - __ewram_overlay_end; gSioResultRankings = .;
         . = 0x0203C900 - __ewram_overlay_end; gSioTexts = .;
         . = 0x0203C920 - __ewram_overlay_end; gKeyInputSequenceBuffer = .;
         . = 0x0203C940 - __ewram_overlay_end; gKeyInputSequenceTimer = .;
+        . = 0x0203C980 - __ewram_overlay_end; gSioXmapOption = .;
         . = 0x0203C984 - __ewram_overlay_end; gSioBmSt = .;
+        . = 0x0203C993 - __ewram_overlay_end; Sio_Unk_0203C993 = .;
         . = 0x0203C9D0 - __ewram_overlay_end; Unk_Sio_0203C9D0 = .;
 
         . = 0x0203C9D4 - __ewram_overlay_end;
         . = ALIGN(4); src/ui.o(ewram_data);
         . = ALIGN(4); src/mapselect.o(ewram_data);
-
-        . = 0x0203CCE4 - __ewram_overlay_end;
         . = ALIGN(4); src/banim_ekrbattle.o(ewram_data);
 
         . = 0x0203CCF2 - __ewram_overlay_end; gBanimBG = .;

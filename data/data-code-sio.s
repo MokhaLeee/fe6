@@ -145,9 +145,13 @@ gUnk_Sio_0810F350: @ 0810F350
 gUnk_Sio_0810F35A: @ 0810F35A
 	.incbin "fe6-base.gba", 0x10F35A, (0x10F360 - 0x10F35A) @ length: 0006
 
-	.global gUnk_Sio_0810F360
-gUnk_Sio_0810F360: @ 0810F360
-	.incbin "fe6-base.gba", 0x10F360, (0x10F374 - 0x10F360) @ length: 0014
+	.global gSioMenuProcArray
+gSioMenuProcArray: @ 0810F360
+	.4byte ProcScr_SIOTERM
+	.4byte ProcScr_SIOPRA
+	.4byte ProcScr_SIOBAT
+	.4byte ProcScr_SIORESULT
+	.4byte ProcScr_SIO_RuleSettings
 
 	.global gUnk_Sio_0810F374
 gUnk_Sio_0810F374: @ 0810F374
@@ -353,7 +357,11 @@ ProcScr_LinkArenaPostBattle_DrawSprites: @ 085C9D18
 
 	.global ProcScr_SioPostBattle_PlayMusic
 ProcScr_SioPostBattle_PlayMusic: @ 085C9D98
-	.incbin "fe6-base.gba", 0x5C9D98, (0x5C9E88 - 0x5C9D98) @ length: 00F0
+	.incbin "fe6-base.gba", 0x5C9D98, (0x5C9DC0 - 0x5C9D98) @ length: 00F0
+
+	.global ProcScr_SIOPRA
+ProcScr_SIOPRA:
+	.incbin "fe6-base.gba", 0x5C9DC0, (0x5C9E88 - 0x5C9DC0)
 
 	.global gUnk_Sio_085C9E88
 gUnk_Sio_085C9E88: @ 085C9E88
@@ -361,11 +369,27 @@ gUnk_Sio_085C9E88: @ 085C9E88
 
 	.global gUnk_Sio_085C9EA8
 gUnk_Sio_085C9EA8: @ 085C9EA8
-	.incbin "fe6-base.gba", 0x5C9EA8, (0x5CA364 - 0x5C9EA8) @ length: 04BC
+	.incbin "fe6-base.gba", 0x5C9EA8, (0x5C9EAC - 0x5C9EA8) @ length: 04BC
 
-	.global gUnk_Sio_085CA364
-gUnk_Sio_085CA364: @ 085CA364
-	.incbin "fe6-base.gba", 0x5CA364, (0x5CA404 - 0x5CA364) @ length: 00A0
+	.global ProcScr_SIOBAT
+ProcScr_SIOBAT:
+	.incbin "fe6-base.gba", 0x5C9EAC, (0x5CA1A4 - 0x5C9EAC)
+
+	.global ProcScr_SIOTERM
+ProcScr_SIOTERM:
+	.incbin "fe6-base.gba", 0x5CA1A4, (0x5CA30C - 0x5CA1A4)
+
+	.global ProcScr_SIORESULT
+ProcScr_SIORESULT:
+	.incbin "fe6-base.gba", 0x5CA30C, (0x5CA364 - 0x5CA30C)
+
+	.global ProcScr_SIORESULT_NewHighScore
+ProcScr_SIORESULT_NewHighScore: @ 085CA364
+	.incbin "fe6-base.gba", 0x5CA364, (0x5CA3BC - 0x5CA364) @ length: 00A0
+
+	.global ProcScr_SIO_RuleSettings
+ProcScr_SIO_RuleSettings:
+	.incbin "fe6-base.gba", 0x5CA3BC, (0x5CA404 - 0x5CA3BC)
 
 	.global gUnk_Sio_085CA404
 gUnk_Sio_085CA404: @ 085CA404
@@ -375,24 +399,24 @@ gUnk_Sio_085CA404: @ 085CA404
 gUnk_Sio_085CA424: @ 085CA424
 	.incbin "fe6-base.gba", 0x5CA424, (0x5CA444 - 0x5CA424) @ length: 0020
 
-	.global gUnk_Sio_085CA444
-gUnk_Sio_085CA444: @ 085CA444
+	.global ProcScr_SIOMENU
+ProcScr_SIOMENU: @ 085CA444
 	.incbin "fe6-base.gba", 0x5CA444, (0x5CA504 - 0x5CA444) @ length: 00C0
 
-	.global gUnk_Sio_085CA504
-gUnk_Sio_085CA504: @ 085CA504
+	.global EventScr_SioXMapTransfer
+EventScr_SioXMapTransfer: @ 085CA504
 	.incbin "fe6-base.gba", 0x5CA504, (0x5CA638 - 0x5CA504) @ length: 0134
 
-	.global gUnk_Sio_085CA638
-gUnk_Sio_085CA638: @ 085CA638
+	.global ProcScr_SioMenuBurstFx
+ProcScr_SioMenuBurstFx: @ 085CA638
 	.incbin "fe6-base.gba", 0x5CA638, (0x5CA6B8 - 0x5CA638) @ length: 0080
 
-	.global gUnk_Sio_085CA6B8
-gUnk_Sio_085CA6B8: @ 085CA6B8
+	.global EventScr_SioXmap_085CA6B8
+EventScr_SioXmap_085CA6B8: @ 085CA6B8
 	.incbin "fe6-base.gba", 0x5CA6B8, (0x5CA6F4 - 0x5CA6B8) @ length: 003C
 
-	.global gUnk_Sio_085CA6F4
-gUnk_Sio_085CA6F4: @ 085CA6F4
+	.global ProcScr_LinkArenaPointsBox
+ProcScr_LinkArenaPointsBox: @ 085CA6F4
 	.incbin "fe6-base.gba", 0x5CA6F4, (0x5CA70C - 0x5CA6F4) @ length: 0018
 
 	.global gUnk_Sio_085CA70C
@@ -407,12 +431,12 @@ gUnk_Sio_085CA72C: @ 085CA72C
 gUnk_Sio_085CA752: @ 085CA752
 	.incbin "fe6-base.gba", 0x5CA752, (0x5CA778 - 0x5CA752) @ length: 0026
 
-	.global gUnk_Sio_085CA778
-gUnk_Sio_085CA778: @ 085CA778
+	.global ProcScr_LinkArena_PointsNumberMover
+ProcScr_LinkArena_PointsNumberMover: @ 085CA778
 	.incbin "fe6-base.gba", 0x5CA778, (0x5CA7B8 - 0x5CA778) @ length: 0040
 
-	.global gUnk_Sio_085CA7B8
-gUnk_Sio_085CA7B8: @ 085CA7B8
+	.global ProcScr_LinkArena_PointsSpriteText
+ProcScr_LinkArena_PointsSpriteText: @ 085CA7B8
 	.incbin "fe6-base.gba", 0x5CA7B8, (0x5CA7E0 - 0x5CA7B8) @ length: 0028
 
 	.global gUnk_Sio_085CA7E0

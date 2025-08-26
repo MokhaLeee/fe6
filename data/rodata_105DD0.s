@@ -14,8 +14,8 @@ gUnk_081065C8: @ 081065C8
 gUnk_08106784: @ 08106784
 	.incbin "fe6-base.gba", 0x106784, (0x106CC8 - 0x106784) @ length: 0544
 
-	.global gUnk_08106CC8
-gUnk_08106CC8: @ 08106CC8
+	.global Img_SioMenuBgSlide
+Img_SioMenuBgSlide: @ 08106CC8
 	.incbin "fe6-base.gba", 0x106CC8, (0x107820 - 0x106CC8) @ length: 0B58
 
 	.global Img_TacticianSelObj
@@ -42,8 +42,8 @@ Img_LinkArenaPlacementRanks: @ 08108B14
 Img_LinkArenaActiveBannerFx: @ 08109290
 	.incbin "fe6-base.gba", 0x109290, (0x1094B0 - 0x109290) @ length: 0220
 
-	.global gUnk_081094B0
-gUnk_081094B0: @ 081094B0
+	.global Img_LAPointsBox
+Img_LAPointsBox: @ 081094B0
 	.incbin "fe6-base.gba", 0x1094B0, (0x109648 - 0x1094B0) @ length: 0198
 
 	.global gUnk_08109648
@@ -54,8 +54,8 @@ gUnk_08109648: @ 08109648
 gUnk_08109854: @ 08109854
 	.incbin "fe6-base.gba", 0x109854, (0x1099A0 - 0x109854) @ length: 014C
 
-	.global gUnk_081099A0
-gUnk_081099A0: @ 081099A0
+	.global Pal_SioMenuBgSlide
+Pal_SioMenuBgSlide: @ 081099A0
 	.incbin "fe6-base.gba", 0x1099A0, (0x109A00 - 0x1099A0) @ length: 0060
 
 	.global Pal_TacticianSelObj
