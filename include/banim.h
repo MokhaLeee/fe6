@@ -1211,14 +1211,14 @@ void EfxMistyrainOBJ2_Loop1(struct ProcEfxOBJ *proc);
 void EfxMistyrainOBJ2_Loop2(struct ProcEfxOBJ *proc);
 void StartSpellAnimNosferatu(struct Anim *anim);
 // EfxResire_Loop
-void NewEfxResireBG(struct Anim *anim);
+void NewEfxResireBG(struct Anim *anim, int type);
 void NewEfxResireBG2(struct Anim *anim);
 // EfxResireBG_Loop1
 // EfxResireBG_Loop2
 // EfxResireBG_Loop3
 // EfxResireBG_Loop4
 // EfxResireBG2_Loop
-void NewEfxResireRST(struct Anim *anim);
+void NewEfxResireRST(struct Anim *anim, ProcPtr proc_rst, int duration);
 // EfxResireRST_Loop
 void StartSpellAnimLightning(struct Anim *anim);
 // EfxLightning_Loop

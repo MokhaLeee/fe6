@@ -4201,6 +4201,71 @@ void EfxMistyrainOBJ2_Loop2(struct ProcEfxOBJ *proc)
  * Nosferatu
  */
 
+ void StartSpellAnimNosferatu(struct Anim * anim)
+{
+    struct ProcEfx * proc;
+
+    SpellFx_Begin();
+    NewEfxSpellCast();
+    SpellFx_ClearBG1Position();
+
+    proc = SpawnProc(ProcScr_EfxResire, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
+
+void EfxResire_Loop(struct ProcEfx * proc)
+{
+    struct Anim * anim = GetAnimAnotherSide(proc->anim);
+    int duration = EfxGetCamMovDuration();
+
+    proc->timer++;
+
+    if (proc->timer == 1)
+        NewEfxFarAttackWithDistance(proc->anim, -1);
+
+    if (proc->timer == duration + 1) {
+        SetBlendAlpha(0, 16);
+        NewEfxALPHA(anim, 0, 10, 0, 16, 0);
+        NewEfxALPHA(anim, 0x28, 0x28, 16, 0, 0);
+        NewEfxResireBG2(anim);
+        PlaySFX(0x124, 0x100, anim->xPosition, 1);
+        return;
+    }
+
+    if (proc->timer == duration + 15) {
+        NewEfxResireRST(anim, NewEfxRestRST(anim, 0x52, 15, 0, 2), 0x3C);
+        NewEfxRestWINH(anim, 0x53, gDispIo.bg_off[BG_1].x, EfxRestWINH_DefaultHblank);
+        return;
+    }
+
+    if (proc->timer == duration + 0x64) {
+        NewEfxResireBG(anim, proc->hitted);
+        PlaySFX(0x125, 0x100, anim->xPosition, 1);
+        return;
+    }
+
+    if (proc->timer == duration + 0x69) {
+        anim->flags3 |= (ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE);
+
+        StartBattleAnimResireHitEffects(anim, proc->hitted);
+
+        if (!proc->hitted)
+            EfxPlayHittedSFX(anim);
+
+        return;
+    }
+
+    if (proc->timer == duration + 0x96)
+        return;
+
+    if (proc->timer == duration + 0xAA) {
+        SpellFx_Finish();
+        Proc_Break(proc);
+    }
+}
+
 const u16 FrameConf_EfxResireBG[] = {
     1, 3,
     2, 2,
