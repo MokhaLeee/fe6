@@ -628,6 +628,7 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
+        asm/secretscreen.o(.text);
         src/secretscreen.o(.text);
         src/save_core.o(.text);
         src/save_stats.o(.text);
