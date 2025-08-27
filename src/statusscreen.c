@@ -255,7 +255,7 @@ void func_fe6_08073AC8(struct StatusScreenProc * proc)
 
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
 
-    print_proc = SpawnProc(ProcScr_Unk_08677FD0, PROC_TREE_3);
+    print_proc = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
     print_proc->font = NULL;
     print_proc->line = 0;
@@ -269,7 +269,7 @@ void func_fe6_08073AC8(struct StatusScreenProc * proc)
 
     GetStringTextBox(print_proc->str_it, &gStatusScreenSt.trial_something_width, &gStatusScreenSt.trial_something_height);
 
-    func_fe6_08071274(print_proc);
+    TypeWritter_Loop(print_proc);
     Proc_End(print_proc);
 
     SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM);

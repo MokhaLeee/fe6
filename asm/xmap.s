@@ -1870,7 +1870,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 	movs r1, #0xe0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r1, .L0808BBB0 @ =gUnk_08345440
+	ldr r1, .L0808BBB0 @ =Tsa_EndingPInfoBG
 	movs r2, #0xe0
 	lsls r2, r2, #7
 	mov r0, sb
@@ -1918,7 +1918,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 .L0808BBA4: .4byte 0x00006140
 .L0808BBA8: .4byte Img_MonologueBG
 .L0808BBAC: .4byte gUnk_0832CA9C
-.L0808BBB0: .4byte gUnk_08345440
+.L0808BBB0: .4byte Tsa_EndingPInfoBG
 .L0808BBB4: .4byte gUnk_0832CAFC
 .L0808BBB8: .4byte 0x06012000
 .L0808BBBC: .4byte gUnk_0832CC90

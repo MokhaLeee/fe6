@@ -102,13 +102,13 @@ int func_fe6_08036DEC(void);
 // SioTeamList_StartUnitList
 // SioTeamList_WaitForUnitListScreen
 // func_fe6_0803784C
-// SioTeamList_08037878
+// SioTeamList_Loop_SubSel
 // func_fe6_08037D74
-// func_fe6_08037D8C
+// SioTeamList_SubSel_Switching
 // func_fe6_08037E14
 // SioTeamList_StartEraseTeamSubMenu
 // SioTeamList_EraseTeam_KeyHandler
-// func_fe6_08038004
+// SioTeamList_LoadTeam_Dummy
 // GetTacticianTextConf
 // func_fe6_08038040
 // TacticianDrawCharacters
@@ -476,21 +476,21 @@ bool func_fe6_08090D54(void);
 void StartCharacterEndings(void);
 // func_fe6_08090F48
 void StartGameCredit(void);
-// func_fe6_0809101C
-// func_fe6_0809104C
-// func_fe6_080910DC
-// func_fe6_080911D0
+// PersonEndingHasSupporter
+// EndingPInfoFadeOutExt
+// HBlank_Ending_SinglePInfo
+// HBlank_Ending_DyadPInfo
 void func_fe6_080914DC(void);
 void func_fe6_0809154C(void);
 // func_fe6_08091588
 // CharacterEnding2_InitDisp
-// CollectEndingCharacters
+// PopNextEndingPerson
 // func_fe6_080916AC
-// func_fe6_0809172C
-// func_fe6_08091880
-// func_fe6_08091918
-// func_fe6_0809195C
-// func_fe6_08091A08
+// EndingPInfo1Detail_PutText
+// EndingPInfo1Detail_WaitingTypewritter
+// EndingPInfo1_DrawDetails
+// EndingPInfo1_StartMerge
+// EndingPInfo1_Idle
 // func_fe6_08091A24
 // func_fe6_08091A4C
 // func_fe6_08091A64
@@ -499,13 +499,13 @@ void func_fe6_0809154C(void);
 // func_fe6_08091C40
 // func_fe6_08091D70
 // func_fe6_08091E08
-// CharacterEnding2_InitExt
+// Ending_DrawDyadPInfo
 // CharacterEnding2_Loop
 // CharacterEnding2_End
 // func_fe6_08092028
-// func_fe6_08092040
-// func_fe6_08092054
-// Ending_DrawPInfoText
+// PersonEndingInfo_Init
+// PersonEndingInfo_Loop
+// Ending_DrawPInfoTitle
 
 /* worldmap.h */
 /* monologue.h */

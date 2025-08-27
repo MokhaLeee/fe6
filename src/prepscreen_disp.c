@@ -125,7 +125,7 @@ void func_fe6_0807B8B0(struct PrepScreenDispProc * proc, int idx)
     proc->unk_44 = TRUE;
 }
 
-void func_fe6_0807B8CC(struct PrepScreenDispProc * proc, fu8 x, fu8 y, int chidx)
+void PrepDisp_SetWorlMapInfo(struct PrepScreenDispProc * proc, fu8 x, fu8 y, int chidx)
 {
     proc->cursor_x = x;
     proc->cursor_y = y;
@@ -134,7 +134,7 @@ void func_fe6_0807B8CC(struct PrepScreenDispProc * proc, fu8 x, fu8 y, int chidx
     proc->disp_y = GetChapterInfo(gPlaySt.chapter)->gmap_dispy;
 }
 
-void func_fe6_0807B90C(u8 a, u8 b, int c)
+void PrepDisp_PutPickLeftBar(u8 a, u8 b, int c)
 {
     u8 _c = c;
     u8 e = ((b / 8) % 6) * 2;
@@ -171,29 +171,16 @@ void func_fe6_0807B90C(u8 a, u8 b, int c)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-/* https://decomp.me/scratch/W8G6F */
-#if NONMATCHING
 void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc)
 {
     u8 i;
     int r6, r8;
     u32 x, y;
-    i16 ydiff_mod, ydiff_quo;
-    u16 uydiff_mod, uydiff_quo;
-    int ydiff = proc->proc_parent->yDiff_cur;
+    i16 ydiff_mod;
+    u32 ydiff_quo;
 
-#if NONMATCHING
-    ydiff_mod = proc->proc_parent->yDiff_cur % 16;
-    ydiff_quo = proc->proc_parent->yDiff_cur / 16;
-#else
-    int tmp1 = proc->proc_parent->yDiff_cur;
-    int tmp2 = -tmp1;
-    if ((-tmp1) < 0)
-        tmp2 = -tmp1 + 0xF;
-
-    uydiff_mod = ydiff_mod = -tmp1 - ((tmp2 >> 4) << 4);
-    uydiff_quo = ydiff_quo = (u8)(proc->proc_parent->yDiff_cur / 16);
-#endif
+    ydiff_mod = -proc->proc_parent->yDiff_cur % 16;
+    ydiff_quo = (u8)(proc->proc_parent->yDiff_cur / 16);
 
     if (proc->unk_40 != proc->proc_parent->yDiff_cur)
     {
@@ -215,55 +202,47 @@ void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc)
         proc->unk_29 = FALSE;
     }
 
-    x = proc->proc_parent->unk_31;
-    if (x != 0xFF)
+    if (proc->proc_parent->unk_31 != 0xFF)
     {
-        u32 y = x;
-        u16 yd;
-        
-        y = y >> 1;
-        yd = (u32)ydiff_quo;
+        u32 tmp = proc->proc_parent->unk_31 / 2 - ydiff_quo;
 
-        y = y - yd;
-        if (y <= 6)
-        {
+        if (tmp <= 6)
             PutFrozenUiHand(
-                (x & 1) * 0x40 + 0x70,
-                y * 0x10 + (i16)ydiff_quo + 0x28
+                (proc->proc_parent->unk_31 & 1) * 0x40 + 0x70,
+                tmp * 0x10 + ydiff_mod + 0x28
             );
-        }
     }
 
     i = 0;
-    r6 = (u32)ydiff_quo * 2;
-    r8 = (i16)ydiff_mod + 0x28;
+    r6 = ydiff_quo << 1;
+    r8 = ydiff_mod + 0x28;
 
     for (; i < 0xE; i++)
     {
-        int list_idx, x, y;
+        int list_idx, y2;
 
         list_idx = r6 + i;
         if (list_idx >= proc->proc_parent->unk_2D)
             continue;
 
-        y = (i >> 1) * 0x10 + r8;
-        if (y <= 0x27)
+        y2 = (i >> 1) * 0x10 + r8;
+        if (y2 <= 0x27)
             continue;
 
         PutUnitSprite(
             3,
             (i & 1) * 0x40 + 0x70,
-            y,
+            y2,
             GetUnitFromPrepList(list_idx));
     }
 
-    if (ydiff_quo == 0)
+    if (ydiff_mod == 0)
         return;
 
     for (; i < 0x10; i++)
     {
         int list_idx = r6 + i;
-        int y = ydiff_quo + 0x28;
+        y = ydiff_mod + 0x28;
 
         if (list_idx >= proc->proc_parent->unk_2D)
             continue;
@@ -276,317 +255,6 @@ void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc)
         );
     }
 }
-#else
-
-NAKEDFUNC
-void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc)
-{
-asm("\
-	.syntax unified\n\
-	push {r4, r5, r6, r7, lr}\n\
-	mov r7, sl\n\
-	mov r6, sb\n\
-	mov r5, r8\n\
-	push {r5, r6, r7}\n\
-	sub sp, #8\n\
-	mov sl, r0\n\
-	ldr r0, [r0, #0x14]\n\
-	adds r0, #0x44\n\
-	ldrh r2, [r0]\n\
-	rsbs r1, r2, #0\n\
-	adds r0, r1, #0\n\
-	cmp r1, #0\n\
-	bge .L0807B9EA\n\
-	adds r0, #0xf\n\
-.L0807B9EA:\n\
-	asrs r0, r0, #4\n\
-	lsls r0, r0, #4\n\
-	subs r0, r1, r0\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	str r0, [sp]\n\
-	lsrs r0, r2, #4\n\
-	lsls r0, r0, #0x18\n\
-	lsrs r0, r0, #0x18\n\
-	str r0, [sp, #4]\n\
-	mov r0, sl\n\
-	adds r0, #0x40\n\
-	ldrh r0, [r0]\n\
-	cmp r0, r2\n\
-	beq .L0807BAAC\n\
-	ldr r0, .L0807BAA8 @ =gDispIo\n\
-	mov ip, r0\n\
-	@ SetWinEnable\n\
-	movs r0, #0x20\n\
-	mov r1, ip\n\
-	ldrb r1, [r1, #1]\n\
-	orrs r0, r1\n\
-	movs r1, #0x40\n\
-	orrs r0, r1\n\
-	movs r1, #0x7f\n\
-	ands r0, r1\n\
-	mov r2, ip\n\
-	strb r0, [r2, #1]\n\
-	@ SetWin1Layers\n\
-	mov r1, ip\n\
-	adds r1, #0x35\n\
-	movs r2, #1\n\
-	ldrb r0, [r1]\n\
-	orrs r0, r2\n\
-	movs r6, #2\n\
-	orrs r0, r6\n\
-	movs r3, #5\n\
-	rsbs r3, r3, #0\n\
-	mov sb, r3\n\
-	ands r0, r3\n\
-	movs r5, #8\n\
-	orrs r0, r5\n\
-	movs r4, #0x10\n\
-	orrs r0, r4\n\
-	strb r0, [r1]\n\
-	@ SetWin0Layers\n\
-	mov r3, ip\n\
-	adds r3, #0x34\n\
-	ldrb r0, [r3]\n\
-	orrs r0, r2\n\
-	orrs r0, r6\n\
-	movs r1, #4\n\
-	orrs r0, r1\n\
-	orrs r0, r5\n\
-	orrs r0, r4\n\
-	strb r0, [r3]\n\
-	@ SetWin0Box\n\
-	mov r0, ip\n\
-	adds r0, #0x2d\n\
-	movs r3, #0\n\
-	strb r3, [r0]\n\
-	adds r0, #4\n\
-	movs r1, #0x28\n\
-	mov r8, r1\n\
-	mov r1, r8\n\
-	strb r1, [r0]\n\
-	subs r0, #5\n\
-	movs r4, #0xf0\n\
-	strb r4, [r0]\n\
-	mov r1, ip\n\
-	adds r1, #0x30\n\
-	movs r0, #0x98\n\
-	strb r0, [r1]\n\
-	@ SetWin1Box\n\
-	mov r0, ip\n\
-	adds r0, #0x2f\n\
-	strb r3, [r0]\n\
-	adds r0, #4\n\
-	strb r3, [r0]\n\
-	subs r0, #5\n\
-	strb r4, [r0]\n\
-	adds r0, #4\n\
-	mov r3, r8\n\
-	strb r3, [r0]\n\
-	@ SetWOutLayers\n\
-	adds r1, #6\n\
-	ldrb r0, [r1]\n\
-	orrs r2, r0\n\
-	orrs r2, r6\n\
-	mov r3, sb\n\
-	ands r2, r3\n\
-	orrs r2, r5\n\
-	movs r0, #0x11\n\
-	rsbs r0, r0, #0\n\
-	ands r2, r0\n\
-	strb r2, [r1]\n\
-	mov r1, sl\n\
-	adds r1, #0x29\n\
-	movs r0, #1\n\
-	strb r0, [r1]\n\
-	b .L0807BB2A\n\
-	.align 2, 0\n\
-.L0807BAA8: .4byte gDispIo\n\
-.L0807BAAC:\n\
-	mov r7, sl\n\
-	adds r7, #0x29\n\
-	ldrb r0, [r7]\n\
-	cmp r0, #1\n\
-	bne .L0807BB2A\n\
-	ldr r1, .L0807BBFC @ =gDispIo\n\
-	mov r8, r1\n\
-	@ SetWinEnable\n\
-	movs r0, #0x20\n\
-	ldrb r2, [r1, #1]\n\
-	orrs r0, r2\n\
-	movs r1, #0x41\n\
-	rsbs r1, r1, #0\n\
-	ands r0, r1\n\
-	movs r1, #0x7f\n\
-	ands r0, r1\n\
-	mov r3, r8\n\
-	strb r0, [r3, #1]\n\
-	@ SetWin1Layers\n\
-	mov r2, r8\n\
-	adds r2, #0x35\n\
-	movs r1, #1\n\
-	ldrb r0, [r2]\n\
-	orrs r0, r1\n\
-	movs r6, #2\n\
-	orrs r0, r6\n\
-	movs r3, #4\n\
-	orrs r0, r3\n\
-	movs r5, #8\n\
-	orrs r0, r5\n\
-	movs r4, #0x10\n\
-	orrs r0, r4\n\
-	strb r0, [r2]\n\
-	@ SetWin0Layers\n\
-	subs r2, #1\n\
-	ldrb r0, [r2]\n\
-	orrs r0, r1\n\
-	orrs r0, r6\n\
-	orrs r0, r3\n\
-	orrs r0, r5\n\
-	orrs r0, r4\n\
-	strb r0, [r2]\n\
-	@ SetWin0Box\n\
-	mov r0, r8\n\
-	adds r0, #0x2d\n\
-	movs r3, #0\n\
-	strb r3, [r0]\n\
-	subs r2, #3\n\
-	movs r0, #0x28\n\
-	strb r0, [r2]\n\
-	subs r2, #5\n\
-	movs r0, #0xf0\n\
-	strb r0, [r2]\n\
-	adds r2, #4\n\
-	movs r0, #0x98\n\
-	strb r0, [r2]\n\
-	@ SetWOutLayers\n\
-	adds r2, #6\n\
-	ldrb r0, [r2]\n\
-	orrs r1, r0\n\
-	orrs r1, r6\n\
-	movs r0, #5\n\
-	rsbs r0, r0, #0\n\
-	ands r1, r0\n\
-	orrs r1, r5\n\
-	orrs r1, r4\n\
-	strb r1, [r2]\n\
-	strb r3, [r7]\n\
-.L0807BB2A:\n\
-	mov r1, sl\n\
-	ldr r0, [r1, #0x14]\n\
-	adds r1, r0, #0\n\
-	adds r1, #0x31\n\
-	ldrb r0, [r1]\n\
-	ldr r2, [sp]\n\
-	lsls r7, r2, #0x10\n\
-	cmp r0, #0xff\n\
-	beq .L0807BB5C\n\
-	adds r2, r0, #0\n\
-	lsrs r0, r2, #1\n\
-	ldr r3, [sp, #4]\n\
-	subs r1, r0, r3\n\
-	cmp r1, #6\n\
-	bhi .L0807BB5C\n\
-	movs r0, #1\n\
-	ands r2, r0\n\
-	lsls r0, r2, #6\n\
-	adds r0, #0x70\n\
-	lsls r1, r1, #4\n\
-	asrs r2, r7, #0x10\n\
-	adds r1, r1, r2\n\
-	adds r1, #0x28\n\
-	bl PutFrozenUiHand\n\
-.L0807BB5C:\n\
-	movs r5, #0\n\
-	ldr r0, [sp, #4]\n\
-	lsls r6, r0, #1\n\
-	asrs r0, r7, #0x10\n\
-	adds r0, #0x28\n\
-	mov r8, r0\n\
-.L0807BB68:\n\
-	adds r3, r6, r5\n\
-	mov r1, sl\n\
-	ldr r0, [r1, #0x14]\n\
-	adds r0, #0x2d\n\
-	ldrb r0, [r0]\n\
-	cmp r3, r0\n\
-	bge .L0807BB9A\n\
-	lsrs r0, r5, #1\n\
-	lsls r0, r0, #4\n\
-	mov r2, r8\n\
-	adds r4, r0, r2\n\
-	cmp r4, #0x27\n\
-	ble .L0807BB9A\n\
-	movs r1, #1\n\
-	ands r1, r5\n\
-	lsls r1, r1, #6\n\
-	adds r1, #0x70\n\
-	ldr r2, .L0807BC00 @ =gPrepUnitList\n\
-	lsls r0, r3, #2\n\
-	adds r0, r0, r2\n\
-	ldr r3, [r0]\n\
-	movs r0, #3\n\
-	adds r2, r4, #0\n\
-	bl PutUnitSprite\n\
-.L0807BB9A:\n\
-	adds r0, r5, #1\n\
-	lsls r0, r0, #0x18\n\
-	lsrs r5, r0, #0x18\n\
-	cmp r5, #0xd\n\
-	bls .L0807BB68\n\
-	asrs r0, r7, #0x10\n\
-	cmp r0, #0\n\
-	beq .L0807BBEA\n\
-	cmp r5, #0xf\n\
-	bhi .L0807BBEA\n\
-	adds r7, r0, #0\n\
-	adds r7, #0x28\n\
-.L0807BBB2:\n\
-	adds r4, r6, r5\n\
-	mov r3, sl\n\
-	ldr r0, [r3, #0x14]\n\
-	adds r0, #0x2d\n\
-	ldrb r0, [r0]\n\
-	cmp r4, r0\n\
-	bge .L0807BBE0\n\
-	movs r1, #1\n\
-	ands r1, r5\n\
-	lsls r1, r1, #6\n\
-	adds r1, #0x70\n\
-	lsrs r2, r5, #1\n\
-	lsls r2, r2, #4\n\
-	adds r2, r2, r7\n\
-	movs r0, #0xff\n\
-	ands r2, r0\n\
-	ldr r3, .L0807BC00 @ =gPrepUnitList\n\
-	lsls r0, r4, #2\n\
-	adds r0, r0, r3\n\
-	ldr r3, [r0]\n\
-	movs r0, #3\n\
-	bl PutUnitSprite\n\
-.L0807BBE0:\n\
-	adds r0, r5, #1\n\
-	lsls r0, r0, #0x18\n\
-	lsrs r5, r0, #0x18\n\
-	cmp r5, #0xf\n\
-	bls .L0807BBB2\n\
-.L0807BBEA:\n\
-	add sp, #8\n\
-	pop {r3, r4, r5}\n\
-	mov r8, r3\n\
-	mov sb, r4\n\
-	mov sl, r5\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-.L0807BBFC: .4byte gDispIo\n\
-.L0807BC00: .4byte gPrepUnitList\n\
-	.syntax divided\n\
-");
-}
-
-#endif
 
 u16 CONST_DATA Sprite_08679048[] =
 {
@@ -911,7 +579,7 @@ u16 CONST_DATA * Sprites_0867922C[] =
     Sprite_0867921C,
 };
 
-void func_fe6_0807BE88(struct PrepScreenDispProc * proc)
+void PrepDisp_PutHand(struct PrepScreenDispProc * proc)
 {
     struct PrepMenuProc * parent = proc->proc_parent;
 
@@ -980,7 +648,7 @@ void func_fe6_0807BF70(struct PrepScreenDispProc * proc)
     }
 }
 
-void func_fe6_0807C090(struct PrepScreenDispProc * proc)
+void PrepDisp_PutTitleSprite(struct PrepScreenDispProc * proc)
 {
     int i, x;
 
@@ -1123,18 +791,18 @@ void PrepScreenDisp_Loop(struct PrepScreenDispProc * proc)
         PrepUnit_DrawSMSAndObjs(proc);
 
         if (proc->proc_parent->yDiff_cur != 0)
-            func_fe6_0807B90C(0, proc->unk_32, 1);
+            PrepDisp_PutPickLeftBar(0, proc->unk_32, 1);
         else
-            func_fe6_0807B90C(0, proc->unk_32, 0);
+            PrepDisp_PutPickLeftBar(0, proc->unk_32, 0);
 
         if (((proc->proc_parent->yDiff_cur / 0x10 + 7) * 2) < proc->proc_parent->unk_2D)
-            func_fe6_0807B90C(1, proc->unk_32, 1);
+            PrepDisp_PutPickLeftBar(1, proc->unk_32, 1);
         else
-            func_fe6_0807B90C(1, proc->unk_32, 0);
+            PrepDisp_PutPickLeftBar(1, proc->unk_32, 0);
     }
 
-    func_fe6_0807BE88(proc);
-    func_fe6_0807C090(proc);
+    PrepDisp_PutHand(proc);
+    PrepDisp_PutTitleSprite(proc);
 
     if ((++proc->unk_32 / 8) > 5)
         proc->unk_32 = 0;

@@ -63,6 +63,8 @@ SECTIONS
         . = 0x015698; gPrepSubMenuIcons = .;
         . = 0x01636A; gUnk_0201636A = .;
         . = 0x016874; gUnk_02016874 = .; /* big jump here? */
+        . = 0x0168F0;
+        . = ALIGN(4); src/secretscreen.o(ewram_overlay_0);
         . = 0x0169CC;
         . = ALIGN(4); src/augury.o(ewram_overlay_0);
     }
@@ -346,7 +348,7 @@ SECTIONS
         . = ALIGN(4); src/helpbox.o(ewram_data);
         . = ALIGN(4); src/chapter_title.o(ewram_data);
         . = ALIGN(4); src/helpbox_2.o(ewram_data);
-        . = ALIGN(4); SioPidPool = .;
+        . = ALIGN(4); src/secretscreen.o(ewram_data);
 
         . = 0x0203D524 - __ewram_overlay_end;
         . = ALIGN(4); src/save_core.o(ewram_data);
@@ -626,6 +628,7 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
+        src/secretscreen.o(.text);
         src/save_core.o(.text);
         src/save_stats.o(.text);
         src/save_game.o(.text);

@@ -24,6 +24,15 @@ u8 EWRAM_DATA gUnk_0203D524[0xA] = { 0 };
 
 bool EWRAM_DATA gIsSramWorking = FALSE;
 
+u8 *func_fe6_080841EC(void)
+{
+    gUnk_0203D524[0] = 0;
+
+    return gUnk_0203D524;
+}
+
+void func_fe6_080841F8(void) {}
+
 void SramInit(void)
 {
     u32 buf[2];

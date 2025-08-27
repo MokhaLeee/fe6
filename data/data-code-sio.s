@@ -1,3 +1,4 @@
+	.include "asm_proc.inc"
 
 	.section .rodata
 
@@ -41,8 +42,8 @@ gUnk_Sio_0810F190: @ 0810F190
 gUnk_Sio_0810F19C: @ 0810F19C
 	.incbin "fe6-base.gba", 0x10F19C, (0x10F19F - 0x10F19C) @ length: 0003
 
-	.global gUnk_Sio_0810F19F
-gUnk_Sio_0810F19F: @ 0810F19F
+	.global gXposArray_SioTeamListSwicthing
+gXposArray_SioTeamListSwicthing: @ 0810F19F
 	.incbin "fe6-base.gba", 0x10F19F, (0x10F1AC - 0x10F19F) @ length: 000D
 
 	.global gUnk_Sio_0810F1AC
@@ -323,9 +324,9 @@ ProcScr_SioHOLD: @ 085C99E0
 gUnk_Sio_085C99F8: @ 085C99F8
 	.incbin "fe6-base.gba", 0x5C99F8, (0x5C9A08 - 0x5C99F8) @ length: 0010
 
-	.global gUnk_Sio_085C9A08
-gUnk_Sio_085C9A08: @ 085C9A08
-	.incbin "fe6-base.gba", 0x5C9A08, (0x5C9A18 - 0x5C9A08) @ length: 0010
+	.global KeyList_SioSecretTeam
+KeyList_SioSecretTeam: @ 085C9A08
+	.short 0x20, 0x20, 0x10, 0x10, 0x200, 0x200, 0x8, -1
 
 	.global gSioKeyList_085C9A18
 gSioKeyList_085C9A18: @ 085C9A18
@@ -341,7 +342,76 @@ gUnk_Sio_085C9AD4: @ 085C9AD4
 
 	.global ProcScr_SioTeamList
 ProcScr_SioTeamList: @ 085C9AE0
-	.incbin "fe6-base.gba", 0x5C9AE0, (0x5C9CF8 - 0x5C9AE0) @ length: 0218
+	PROC_SLEEP 0
+PROC_LABEL 0
+	PROC_CALL SioTeamList_Init
+PROC_LABEL 1
+	PROC_CALL SioTeamList_SetupGfx
+	PROC_CALL FadeInBlackSpeed20
+	PROC_SLEEP 0
+	PROC_CALL func_fe6_0803EFA8
+PROC_LABEL 2
+	PROC_REPEAT SioTeamList_Loop_MainKeyHandler
+PROC_LABEL 3
+	PROC_REPEAT SioTeamList_Loop_SubSel
+	PROC_GOTO 9
+PROC_LABEL 4
+	PROC_CALL func_fe6_0803EF9C
+	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_SLEEP 0
+	PROC_CALL SioTeamList_StartUnitList
+	PROC_REPEAT SioTeamList_WaitForUnitListScreen
+	PROC_CALL SioTeamList_SetupGfx
+	PROC_CALL FadeInBlackSpeed20
+	PROC_SLEEP 0
+	PROC_CALL func_fe6_0803EFA8
+	PROC_GOTO 2
+PROC_LABEL 5
+	PROC_REPEAT SioTeamList_SubSel_Switching
+PROC_LABEL 6
+	PROC_REPEAT func_fe6_08037E14
+PROC_LABEL 7
+	PROC_CALL SioTeamList_StartEraseTeamSubMenu
+	PROC_REPEAT SioTeamList_EraseTeam_KeyHandler
+	PROC_GOTO 3
+PROC_LABEL 8
+	PROC_CALL func_fe6_0803EF9C
+	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_SLEEP 0
+	PROC_CALL SioTeamList_LoadTeam_Dummy
+	PROC_SLEEP 0
+	PROC_GOTO 1
+PROC_LABEL 9
+	PROC_CALL func_fe6_0803EF9C
+	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_SLEEP 0
+	PROC_END
+
+	.global ProcScr_Unk_085C9C40
+ProcScr_Unk_085C9C40: @ 085C9C40
+	PROC_SLEEP 0
+	PROC_CALL Tactician_InitScreen
+	PROC_CALL FadeInBlackSpeed20
+	PROC_SLEEP 0
+	PROC_CALL func_fe6_0803EFA8
+PROC_LABEL 0
+	PROC_REPEAT Tactician_Loop
+	PROC_GOTO 2
+PROC_LABEL 1
+	PROC_CALL Tactician_SetVBlank
+	PROC_REPEAT func_fe6_080388A4
+	PROC_CALL func_fe6_080388E4
+	PROC_REPEAT func_fe6_08038910
+	PROC_GOTO 0
+PROC_LABEL 3
+	PROC_CALL NameSelect_DrawName
+	PROC_REPEAT func_fe6_08038990
+	PROC_GOTO 0
+PROC_LABEL 2
+	PROC_CALL func_fe6_0803EF9C
+	PROC_CALL FadeInBlackWithCallBack_Speed20
+	PROC_SLEEP 0
+	PROC_END
 
 	.global SpriteArray_Sio_085C9CF8
 SpriteArray_Sio_085C9CF8: @ 085C9CF8

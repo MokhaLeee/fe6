@@ -87,7 +87,7 @@ struct PrepMenuProc
     /* 44 */ u16 yDiff_cur;
     /* 46 */ STRUCT_PAD(0x46, 0x48);
     /* 48 */ struct Unit * unit1, * unit2;
-    /* 50 */ struct PrepScreenDispProc * unk_50;
+    /* 50 */ struct PrepScreenDispProc * disp_proc;
     /* 54 */ STRUCT_PAD(0x54, 0x58);
     /* 58 */ ProcPtr procbg;
     /* 5C */ struct UnkProc_08678E18 * unk_5C;
@@ -181,8 +181,6 @@ extern struct Unit * gPrepUnitList[];
 #define GetUnitFromPrepList(index) (gPrepUnitList[(index)])
 #define RegisterPrepUnitList(index, unit) (gPrepUnitList[(index)] = (unit))
 
-enum { SID_PID_POOL_SIZE = 5 };
-extern u8 SioPidPool[SID_PID_POOL_SIZE];
 extern u8 gPrepMenuItemCnt;
 
 void ResetSioPidPool(void);
@@ -250,13 +248,13 @@ void StartPrepMenuFadeOut(ProcPtr proc);
 void StartPrepMenuFadeIn(ProcPtr proc);
 
 void func_fe6_0807B8B0(struct PrepScreenDispProc *proc, int idx);
-void func_fe6_0807B8CC(struct PrepScreenDispProc *proc, fu8 x, fu8 y, int chidx);
-void func_fe6_0807B90C(u8 a, u8 b, int c);
+void PrepDisp_SetWorlMapInfo(struct PrepScreenDispProc *proc, fu8 x, fu8 y, int chidx);
+void PrepDisp_PutPickLeftBar(u8 a, u8 b, int c);
 void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc *proc);
 void PrepMenu_DrawGmapSprites(struct PrepScreenDispProc *proc);
-void func_fe6_0807BE88(struct PrepScreenDispProc *proc);
+void PrepDisp_PutHand(struct PrepScreenDispProc *proc);
 void func_fe6_0807BF70(struct PrepScreenDispProc *proc);
-void func_fe6_0807C090(struct PrepScreenDispProc *proc);
+void PrepDisp_PutTitleSprite(struct PrepScreenDispProc *proc);
 // PrepScreenDisp_Init
 // PrepScreenDisp_Loop
 // PrepScreenDisp_End
@@ -435,41 +433,6 @@ ProcPtr func_fe6_08082CF4(ProcPtr parent);
 void func_fe6_08082D08(ProcPtr proc, int unused_1, fu16 obpal);
 void func_fe6_08082D54(ProcPtr proc, int msg_order_idx);
 void func_fe6_08082DA4(ProcPtr proc, int oam1, int, int);
-// func_fe6_08082E74
-// func_fe6_08082EC0
-// func_fe6_08082EEC
-// func_fe6_08082F18
-// func_fe6_08082F54
-// func_fe6_08082FE8
-// func_fe6_08083078
-// func_fe6_080830AC
-// func_fe6_08083180
-// func_fe6_080832A0
-// func_fe6_08083378
-// func_fe6_0808344C
-// func_fe6_0808347C
-// func_fe6_080834B4
-// func_fe6_0808357C
-// func_fe6_08083618
-// func_fe6_08083688
-// func_fe6_08083750
-// func_fe6_080837C8
-// func_fe6_080838FC
-// func_fe6_08083900
-// func_fe6_08083930
-// func_fe6_08083944
-// func_fe6_08083A68
-// func_fe6_08083B8C
-// func_fe6_08083BC4
-// func_fe6_08083E70
-// func_fe6_08083F40
-// func_fe6_08083FF0
-// func_fe6_08084134
-// func_fe6_08084138
-// func_fe6_08084168
-// func_fe6_080841B4
-// func_fe6_080841EC
-// func_fe6_080841F8
 
 extern struct Text gPrepScreenText_PickLeftBar;
 extern struct Text gUnk_0200E864[];
@@ -544,12 +507,8 @@ extern struct ProcScr ProcScr_086796F4[];
 extern struct ProcScr ProcScr_0867971C[];
 extern struct ProcScr ProcScr_0867973C[];
 // ??? Msgs_08679754
-// ??? gUnk_0867976C
-// ??? gUnk_08679774
-// ??? gUnk_0867978C
-// ??? gUnk_086797D0
-// ??? gUnk_08679820
-// ??? gUnk_08679924
+// ??? Sprite_Prep_0867976C
+extern struct ProcScr ProcScr_Prep_08679774[];
 
 extern u16 const gUnk_08320FCE[]; // tiles
 extern u16 const gUnk_08326EE6[]; // tiles

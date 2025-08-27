@@ -419,7 +419,7 @@ extern u16 const Pal_Fin[];
 extern u8 const Img_Credit_08344CD0[];
 extern u16 const Tsa_Credit_0834523C[];
 extern u16 const Pal_Credit_08345420[];
-// extern const ??? gUnk_08345440
+// extern const ??? Tsa_EndingPInfoBG
 // extern const ??? gUnk_08345934
 // extern const ??? gUnk_08346184
 // extern const ??? gUnk_083461C4

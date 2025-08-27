@@ -5142,8 +5142,8 @@ func_fe6_0803784C: @ 0x0803784C
 	bx lr
 	.align 2, 0
 
-	thumb_func_start SioTeamList_08037878
-SioTeamList_08037878: @ 0x08037878
+	thumb_func_start SioTeamList_Loop_SubSel
+SioTeamList_Loop_SubSel: @ 0x08037878
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5155,7 +5155,7 @@ SioTeamList_08037878: @ 0x08037878
 	mov sb, r0
 	ldr r1, [r7, #0x2c]
 	str r1, [sp, #4]
-	ldr r0, .L080378BC @ =gUnk_Sio_085C9A08
+	ldr r0, .L080378BC @ =KeyList_SioSecretTeam
 	bl SioIsKeyInputSequenceComplete
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -5176,7 +5176,7 @@ SioTeamList_08037878: @ 0x08037878
 	bl Proc_Goto
 	b .L08037D64
 	.align 2, 0
-.L080378BC: .4byte gUnk_Sio_085C9A08
+.L080378BC: .4byte KeyList_SioSecretTeam
 .L080378C0: .4byte gLinkArenaTeamList
 .L080378C4:
 	ldr r1, [sp, #4]
@@ -5765,12 +5765,12 @@ func_fe6_08037D74: @ 0x08037D74
 	bge .L08037D80
 	bx lr
 
-	thumb_func_start func_fe6_08037D8C
-func_fe6_08037D8C: @ 0x08037D8C
+	thumb_func_start SioTeamList_SubSel_Switching
+SioTeamList_SubSel_Switching: @ 0x08037D8C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r6, [r4, #0x2c]
-	ldr r0, .L08037DF0 @ =gUnk_Sio_0810F19F
+	ldr r0, .L08037DF0 @ =gXposArray_SioTeamListSwicthing
 	ldr r1, [r4, #0x44]
 	adds r1, r1, r0
 	movs r5, #0
@@ -5818,7 +5818,7 @@ func_fe6_08037D8C: @ 0x08037D8C
 	strb r0, [r1]
 	b .L08037E0C
 	.align 2, 0
-.L08037DF0: .4byte gUnk_Sio_0810F19F
+.L08037DF0: .4byte gXposArray_SioTeamListSwicthing
 .L08037DF4: .4byte gDispIo
 .L08037DF8:
 	lsls r1, r5, #0x10
@@ -5840,7 +5840,7 @@ func_fe6_08037E14: @ 0x08037E14
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r6, [r4, #0x2c]
-	ldr r1, .L08037E7C @ =gUnk_Sio_0810F19F
+	ldr r1, .L08037E7C @ =gXposArray_SioTeamListSwicthing
 	ldr r0, [r4, #0x44]
 	adds r0, r0, r1
 	movs r5, #0
@@ -5889,7 +5889,7 @@ func_fe6_08037E14: @ 0x08037E14
 	str r7, [r6, #0x48]
 	b .L08037E98
 	.align 2, 0
-.L08037E7C: .4byte gUnk_Sio_0810F19F
+.L08037E7C: .4byte gXposArray_SioTeamListSwicthing
 .L08037E80: .4byte gDispIo
 .L08037E84:
 	lsls r1, r5, #0x10
@@ -6072,8 +6072,8 @@ SioTeamList_EraseTeam_KeyHandler: @ 0x08037F04
 	.align 2, 0
 .L08038000: .4byte gBg0Tm+0x1E
 
-	thumb_func_start func_fe6_08038004
-func_fe6_08038004: @ 0x08038004
+	thumb_func_start SioTeamList_LoadTeam_Dummy
+SioTeamList_LoadTeam_Dummy: @ 0x08038004
 	push {r4, r5, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
@@ -6085,7 +6085,7 @@ func_fe6_08038004: @ 0x08038004
 	mov r2, sp
 	bl ReadMultiArenaSaveTeam
 	adds r0, r5, #0
-	bl func_fe6_08084168
+	bl NewGeneralSecretScreen
 	add sp, #0x10
 	pop {r4, r5}
 	pop {r0}

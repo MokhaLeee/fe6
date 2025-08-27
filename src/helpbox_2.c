@@ -208,7 +208,7 @@ int DrawHelpBoxStaffLabels(int item)
     return 1; // TODO: what?
 }
 
-void func_fe6_08071274(struct HelpBoxPrintProc * proc)
+void TypeWritter_Loop(struct HelpBoxPrintProc * proc)
 {
     int i;
 
@@ -253,9 +253,9 @@ void func_fe6_08071274(struct HelpBoxPrintProc * proc)
     SetTextFont(NULL);
 }
 
-struct ProcScr CONST_DATA ProcScr_Unk_08677FD0[] =
+struct ProcScr CONST_DATA ProcScr_TypeWritter[] =
 {
-    PROC_REPEAT(func_fe6_08071274),
+    PROC_REPEAT(TypeWritter_Loop),
     PROC_END,
 };
 
@@ -373,9 +373,9 @@ void func_fe6_08071410(struct HelpBoxStartPrintProc * proc)
     Text_SetColor(&gUnk_0203D40C.text[2], TEXT_COLOR_4DEF);
     SetTextFont(NULL);
 
-    Proc_EndEach(ProcScr_Unk_08677FD0);
+    Proc_EndEach(ProcScr_TypeWritter);
 
-    print_proc = SpawnProc(ProcScr_Unk_08677FD0, PROC_TREE_3);
+    print_proc = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
     print_proc->font = &gUnk_0203D40C.font;
     print_proc->text[0] = &gUnk_0203D40C.text[0];
     print_proc->text[1] = &gUnk_0203D40C.text[1];
@@ -438,7 +438,7 @@ void func_fe6_08071514(void)
     SpriteText_DrawBackground(&gUnk_0203D40C.text[1]);
     SpriteText_DrawBackground(&gUnk_0203D40C.text[2]);
 
-    Proc_EndEach(ProcScr_Unk_08677FD0);
+    Proc_EndEach(ProcScr_TypeWritter);
     Proc_EndEach(gUnk_08677FF8);
 
     SetTextFont(NULL);

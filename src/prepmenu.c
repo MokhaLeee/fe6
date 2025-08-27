@@ -26,6 +26,7 @@
 #include "prepphase.h"
 #include "savemenu.h"
 #include "augury.h"
+#include "secretscreen.h"
 #include "unitlistscreen.h"
 
 #include "constants/pids.h"
@@ -960,7 +961,7 @@ void PrepMenu_InitExt(struct PrepMenuProc * proc)
 
     PrepMenu_InitScreen(proc);
 
-    func_fe6_0807B8CC((proc->unk_50 = StartPrepScreenDisp(proc)),
+    PrepDisp_SetWorlMapInfo((proc->disp_proc = StartPrepScreenDisp(proc)),
         GetChapterInfo(gPlaySt.chapter)->gmap_cursorx * 8,
         GetChapterInfo(gPlaySt.chapter)->gmap_cursory * 8,
         GetChapterInfo(gPlaySt.chapter)->number_id);
@@ -984,7 +985,7 @@ fi8 PrepUnitSel_Loop(struct PrepMenuProc * proc)
         if ((proc->a_button_actions & 1) != 0 && proc->cur_counter != 0)
         {
             Proc_Goto(proc, L_PREPMENU_5);
-            proc->unk_50->unk_2A = 1;
+            proc->disp_proc->unk_2A = 1;
             PlaySe(SONG_6A);
         }
         else
@@ -1113,7 +1114,7 @@ void PrepMenu_CancelAction(struct PrepMenuProc * proc)
 
 void func_fe6_0807ACE8(struct PrepMenuProc * proc)
 {
-    Proc_Goto(proc->unk_50, 2);
+    Proc_Goto(proc->disp_proc, 2);
     EndGreenText();
 }
 
@@ -1136,7 +1137,7 @@ void PrepMenu_EndIfNoUnit(struct PrepMenuProc * proc)
 
         Proc_Goto(proc, L_PREPMENU_B);
 
-        proc->unk_50 = NULL;
+        proc->disp_proc = NULL;
     }
 }
 
@@ -1205,7 +1206,7 @@ void PrepMenu_Loop(struct PrepMenuProc * proc)
                 if (proc->do_help != FALSE)
                     PrepMenuHelpbox(proc);
                 if (proc->submenu_level == 1)
-                    func_fe6_0807B8B0(proc->unk_50, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
+                    func_fe6_0807B8B0(proc->disp_proc, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
     
                 PlaySe(0x66);
             }
@@ -1237,7 +1238,7 @@ void PrepMenu_Loop(struct PrepMenuProc * proc)
             else if (_pre_idx == 1)
             {
                 proc->unk_29 = 0;
-                func_fe6_0807B8B0(proc->unk_50, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
+                func_fe6_0807B8B0(proc->disp_proc, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
                 func_fe6_08079A94(proc);
                 proc->unk_32 = proc->list_num_cur;
                 proc->list_num_cur = proc->unk_31;
@@ -1296,8 +1297,8 @@ void AtMenu_ResetBmUiEffect(struct PrepMenuProc * proc)
     EndGreenText();
     Proc_End(proc->procbg);
 
-    if (proc->unk_50)
-        Proc_Goto(proc->unk_50, 0x5);
+    if (proc->disp_proc)
+        Proc_Goto(proc->disp_proc, 0x5);
 
     InitPlayerDeployUnitPositions();
     ResetUnitSprites();
@@ -1427,7 +1428,7 @@ void AtMenu_OnSubmenuEnd(struct PrepMenuProc * proc)
     case PREP_SUB2ACT_DISCARD_ITEM:
     case PREP_SUB2ACT_CHECK_ALL_ITEM:
         PrepMenu_InitScreenExt(proc);
-        Proc_Goto(proc->unk_50, 0x0);
+        Proc_Goto(proc->disp_proc, 0x0);
         func_fe6_080829E8(proc, -1);
         break;
 
@@ -1439,14 +1440,14 @@ void AtMenu_OnSubmenuEnd(struct PrepMenuProc * proc)
     case PREP_SUB2ACT_ARMORY:
         StartBgm(0x22, NULL);
         PrepMenu_InitScreen(proc);
-        Proc_Goto(proc->unk_50, 0x0);
+        Proc_Goto(proc->disp_proc, 0x0);
         break;
 
     case PREP_SUB2ACT_STATSCREEN:
     case PREP_SUB2ACT_8:
     case PREP_SUB2ACT_9:
         PrepMenu_InitScreen(proc);
-        Proc_Goto(proc->unk_50, 0x0);
+        Proc_Goto(proc->disp_proc, 0x0);
         break;
 
     default:

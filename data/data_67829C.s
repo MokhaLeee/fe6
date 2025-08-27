@@ -1,3 +1,5 @@
+	.include "asm_proc.inc"
+
     .data
 
 	.global Sprites_086795F8
@@ -36,26 +38,35 @@ ProcScr_0867973C: @ 0867973C
 Msgs_08679754: @ 08679754
 	.incbin "fe6-base.gba", 0x679754, (0x67976C - 0x679754) @ length: 0018
 
-	.global gUnk_0867976C
-gUnk_0867976C: @ 0867976C
+	.global Sprite_Prep_0867976C
+Sprite_Prep_0867976C: @ 0867976C
 	.incbin "fe6-base.gba", 0x67976C, (0x679774 - 0x67976C) @ length: 0008
 
-	.global gUnk_08679774
-gUnk_08679774: @ 08679774
+	.global ProcScr_Prep_08679774
+ProcScr_Prep_08679774: @ 08679774
 	.incbin "fe6-base.gba", 0x679774, (0x67978C - 0x679774) @ length: 0018
 
 	.global gUnk_0867978C
 gUnk_0867978C: @ 0867978C
 	.incbin "fe6-base.gba", 0x67978C, (0x6797D0 - 0x67978C) @ length: 0044
 
-	.global gUnk_086797D0
-gUnk_086797D0: @ 086797D0
+	.global ProcScr_Prep_Password
+ProcScr_Prep_Password: @ 086797D0
 	.incbin "fe6-base.gba", 0x6797D0, (0x679820 - 0x6797D0) @ length: 0050
 
 	.global gUnk_08679820
 gUnk_08679820: @ 08679820
 	.incbin "fe6-base.gba", 0x679820, (0x679924 - 0x679820) @ length: 0104
 
-	.global gUnk_08679924
-gUnk_08679924: @ 08679924
-	.incbin "fe6-base.gba", 0x679924, (0x679974 - 0x679924) @ length: 0050
+	.global ProcScr_SecretScreen
+ProcScr_SecretScreen: @ 08679924
+	PROC_SLEEP 0
+	PROC_CALL SecretScreen_Init
+	PROC_CALL StartMidFadeFromBlack
+	PROC_REPEAT WhileFadeExists
+	PROC_REPEAT SecretScreen_Loop_Dummy
+	PROC_CALL StartMidFadeToBlack
+	PROC_REPEAT WhileFadeExists
+PROC_LABEL 0
+	PROC_CALL SecretScreen_End
+	PROC_END
