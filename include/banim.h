@@ -171,12 +171,12 @@ struct ProcEfxRST
 
     STRUCT_PAD(0x29, 0x2C);
     /* 2C */ i16 timer;
-    /* 2E */ i16 unk2E;
+    /* 2E */ i16 duration;
     /* 30 */ i16 unk30;
     STRUCT_PAD(0x32, 0x5C);
     /* 5C */ struct  BaSprite *anim;
     STRUCT_PAD(0x60, 0x64);
-    /* 64 */ ProcPtr unk64;
+    /* 64 */ ProcPtr efxproc;
 };
 
 struct ProcEfxOBJ {
@@ -1231,7 +1231,7 @@ void NewEfxPurgeBG(struct Anim *anim);
 // EfxPurgeBG_Loop
 void NewEfxPurgeOBJRND(struct Anim *anim);
 // EfxPurgeOBJRND_Loop
-void NewEfxPurgeOBJ(struct Anim *anim);
+void NewEfxPurgeOBJ(struct Anim *anim, int x, int y);
 // EfxPurgeOBJ_OnEnd
 void StartSpellAnimForblaze(struct Anim *anim);
 // EfxForblaze_Loop
@@ -2071,7 +2071,7 @@ extern CONST_DATA u16 *ImgArray_EfxPurgeBG[];
 extern CONST_DATA u16 *PalArray_EfxPurgeBG[];
 extern CONST_DATA u16 *TsaArray_EfxPurgeBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxPurgeOBJRND[];
-// ??? Vecs_EfxPurgeOBJRND
+extern CONST_DATA int Vecs_EfxPurgeOBJRND[];
 extern CONST_DATA struct ProcScr ProcScr_EfxPurgeOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblaze[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBG1[];
@@ -2476,7 +2476,7 @@ extern const u8 BanimTypesPosLeft[5];
 extern const u8 BanimTypesPosRight[5];
 extern const u16 BanimLeftDefaultPos[5];
 extern const u16 Tsa_EkrTerrainfx_081122DA[];
-// extern ??? FrameArray_EkrTogiColor
+extern u16 const FrameArray_EkrTogiColor[];
 extern u16 TsaConf_BanimTmA_08112380[];
 extern u16 TsaConf_BanimTmA_08112418[];
 extern u16 TsaConf_BanimTmA_081124B0[];
@@ -2539,62 +2539,62 @@ extern u16 const FrameConf_EfxThunderBGCOL[];
 extern u16 const FrameConf_EfxFireBG[];
 extern u16 const FrameConf_EfxFireHITBG[];
 extern u16 const FrameConf_EfxElfireBGCOL[];
-// extern ??? FrameConf_EfxFimbulvetrBGTR
-// extern ??? FrameConf_EfxFimbulvetrBG
-// extern ??? FrameConf_EfxThunderstormBG
-// extern ??? FrameConf_EfxAlacaliburBG
-// extern ??? FrameConf_EfxAlacaliburBGCOL
-// extern ??? FrameConf_EfxMistyrainBG1
-// extern ??? FrameConf_EfxMistyrainBG2
-// extern ??? FrameConf_EfxResireBG
-// extern ??? FrameConf_EfxResireBG3
-// extern ??? FrameConf_EfxResireBG2
-// extern ??? FrameConf_EfxLightningBG
-// extern ??? FrameArray_EfxPurgeBG
-// extern ??? FrameConf_EfxForblazeBG1
-// extern ??? FrameArray_EfxForblazeBGCOL1
+extern u16 const FrameConf_EfxFimbulvetrBGTR[];
+extern u16 const FrameConf_EfxFimbulvetrBG[];
+extern u16 const FrameConf_EfxThunderstormBG[];
+extern u16 const FrameConf_EfxAlacaliburBG[];
+extern u16 const FrameConf_EfxAlacaliburBGCOL[];
+extern u16 const FrameConf_EfxMistyrainBG1[];
+extern u16 const FrameConf_EfxMistyrainBG2[];
+extern u16 const FrameConf_EfxResireBG[];
+extern u16 const FrameConf_EfxResireBG3[];
+extern u16 const FrameConf_EfxResireBG2[];
+extern u16 const FrameConf_EfxLightningBG[];
+extern u16 const FrameArray_EfxPurgeBG[];
+extern u16 const FrameConf_EfxForblazeBG1[];
+extern u16 const FrameArray_EfxForblazeBGCOL1[];
 // extern ??? gUnk_0811A520
-// extern ??? FrameArray_EfxDivineBG
-// extern ??? FrameArray_EfxDivineBG2
-// extern ??? FrameArray_EfxDivineBG3
-// extern ??? FrameArray_EfxAureolaBG
-// extern ??? FrameArray_EfxAureolaBG2COL
-// extern ??? FrameArray_EfxApocalypseBGCOL2
-// extern ??? FrameArray_EfxApocalypseBG2
-// extern ??? FrameArray_EfxHazymoonBG1
-// extern ??? FrameArray_EfxHazymoonBG2
-// extern ??? FrameArray_EfxHazymoonBG3
-// extern ??? FrameArray_EfxFenrirBGCOL
-// extern ??? FrameArray_EfxFenrirBG2_A
-// extern ??? FrameArray1_EfxLiveBG
-// extern ??? FrameArray2_EfxLiveBG
-// extern ??? FrameArray3_EfxLiveBG
-// extern ??? FrameArray4_EfxLiveBG
-// extern ??? FrameArray1_EfxLiveBGCOL
-// extern ??? FrameArray2_EfxLiveBGCOL
-// extern ??? FrameArray3_EfxLiveBGCOL
-// extern ??? FrameArray4_EfxLiveBGCOL
-// extern ??? FrameArray_EfxReserveBG
-// extern ??? EfxReserveBG_Songs
-// extern ??? EfxReserveBG_SongLocs
-// extern ??? FrameArray_EfxReserveBGCOL
-// extern ??? FrameArray_EfxReserveBG2
-// extern ??? FrameArray_EfxReserveBGCOL2
-// extern ??? FrameArray_EfxRestBG
-// extern ??? FrameArray_EfxSilenceBG
-// extern ??? FrameArray_EfxSleepBG
-// extern ??? FrameArray_EfxHammarneBG
-// extern ??? FrameArray_EfxMshieldBG
+extern u16 const FrameArray_EfxDivineBG[];
+extern u16 const FrameArray_EfxDivineBG2[];
+extern u16 const FrameArray_EfxDivineBG3[];
+extern u16 const FrameArray_EfxAureolaBG[];
+extern u16 const FrameArray_EfxAureolaBG2COL[];
+extern u16 const FrameArray_EfxApocalypseBGCOL2[];
+extern u16 const FrameArray_EfxApocalypseBG2[];
+extern u16 const FrameArray_EfxHazymoonBG1[];
+extern u16 const FrameArray_EfxHazymoonBG2[];
+extern u16 const FrameArray_EfxHazymoonBG3[];
+extern u16 const FrameArray_EfxFenrirBGCOL[];
+extern u16 const FrameArray_EfxFenrirBG2_A[];
+extern u16 const FrameArray1_EfxLiveBG[];
+extern u16 const FrameArray2_EfxLiveBG[];
+extern u16 const FrameArray3_EfxLiveBG[];
+extern u16 const FrameArray4_EfxLiveBG[];
+extern u16 const FrameArray1_EfxLiveBGCOL[];
+extern u16 const FrameArray2_EfxLiveBGCOL[];
+extern u16 const FrameArray3_EfxLiveBGCOL[];
+extern u16 const FrameArray4_EfxLiveBGCOL[];
+extern u16 const FrameArray_EfxReserveBG[];
+extern u16 const SfxArray_EfxReserveBG[];
+extern u16 const SfxLocArray_EfxReserveBG[];
+extern u16 const FrameArray_EfxReserveBGCOL[];
+extern u16 const FrameArray_EfxReserveBG2[];
+extern u16 const FrameArray_EfxReserveBGCOL2[];
+extern u16 const FrameArray_EfxRestBG[];
+extern u16 const FrameArray_EfxSilenceBG[];
+extern u16 const FrameArray_EfxSleepBG[];
+extern u16 const FrameArray_EfxHammarneBG[];
+extern u16 const FrameArray_EfxMshieldBG[];
 extern const u16 Frames_EfxCriricalEffectBGCOL[];
 extern const u16 FrameConf_EfxNormalEffectBG[];
-// extern ??? FrameConfig_EfxMagFcastBg1
-// extern ??? FrameConfig_EfxMagFcastBg2
-// extern ??? FrameConfig_EfxMagFcastBg3
-// extern ??? FrameConfig_EfxMagFcastBg4
-// extern ??? FrameConf_EfxMagdhisEffectBG
-// extern ??? FrameArray_EfxopFireBG
-// extern ??? FrameArray_EfxopThunderBG
-// extern ??? FrameArray_EfxopThunderBGCOL
+extern u16 const FrameConfig_EfxMagFcastBg1[];
+extern u16 const FrameConfig_EfxMagFcastBg2[];
+extern u16 const FrameConfig_EfxMagFcastBg3[];
+extern u16 const FrameConfig_EfxMagFcastBg4[];
+extern u16 const FrameConf_EfxMagdhisEffectBG[];
+extern u16 const FrameArray_EfxopFireBG[];
+extern u16 const FrameArray_EfxopThunderBG[];
+extern u16 const FrameArray_EfxopThunderBGCOL[];
 // extern ??? gUnk_0811AF9E
 // extern ??? gUnk_0811AFA4
 extern const u8 Img_TeonoOBJ[];

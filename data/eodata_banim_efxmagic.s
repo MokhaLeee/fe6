@@ -112,12 +112,12 @@ FrameArray4_EfxLiveBGCOL: @ 0811A966
 FrameArray_EfxReserveBG: @ 0811A9A8
 	.incbin "fe6-base.gba", 0x11A9A8, (0x11A9BA - 0x11A9A8) @ length: 0012
 
-	.global EfxReserveBG_Songs
-EfxReserveBG_Songs: @ 0811A9BA
+	.global SfxArray_EfxReserveBG
+SfxArray_EfxReserveBG: @ 0811A9BA
 	.incbin "fe6-base.gba", 0x11A9BA, (0x11A9C2 - 0x11A9BA) @ length: 0008
 
-	.global EfxReserveBG_SongLocs
-EfxReserveBG_SongLocs: @ 0811A9C2
+	.global SfxLocArray_EfxReserveBG
+SfxLocArray_EfxReserveBG: @ 0811A9C2
 	.incbin "fe6-base.gba", 0x11A9C2, (0x11A9CA - 0x11A9C2) @ length: 0008
 
 	.global FrameArray_EfxReserveBGCOL
