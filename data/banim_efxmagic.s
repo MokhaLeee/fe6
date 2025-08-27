@@ -1,11 +1,15 @@
 
 	.include "animscr.inc"
 	.include "gba_sprites.inc"
+	.include "asm_proc.inc"
+
 	.section .data
 
 	.global ProcScr_EfxFimbulvetrBGTR
 ProcScr_EfxFimbulvetrBGTR: @ 085D14EC
-	.incbin "fe6-base.gba", 0x5D14EC, (0x5D1504 - 0x5D14EC) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFimbulvetrBGTR_Loop
+	PROC_END
 
 	.global TsaArray_EfxFimbulvetrBGTR
 TsaArray_EfxFimbulvetrBGTR: @ 085D1504
@@ -27,7 +31,9 @@ ImgArray_EfxFimbulvetrBGTR: @ 085D151C
 
 	.global ProcScr_EfxFimbulvetrBG
 ProcScr_EfxFimbulvetrBG: @ 085D1534
-	.incbin "fe6-base.gba", 0x5D1534, (0x5D154C - 0x5D1534) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFimbulvetrBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxFimbulvetrBG
 TsaArray_EfxFimbulvetrBG: @ 085D154C
@@ -59,23 +65,33 @@ ImgArray_EfxFimbulvetrBG: @ 085D1578
 
 	.global ProcScr_EfxFimbulvetrOBJ
 ProcScr_EfxFimbulvetrOBJ: @ 085D15A4
-	.incbin "fe6-base.gba", 0x5D15A4, (0x5D15BC - 0x5D15A4) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFimbulvetrOBJ_Loop
+	PROC_END
 
 	.global ProcScr_EfxFimbulvetrOBJ2
 ProcScr_EfxFimbulvetrOBJ2: @ 085D15BC
-	.incbin "fe6-base.gba", 0x5D15BC, (0x5D15D4 - 0x5D15BC) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFimbulvetrOBJ2_Loop
+	PROC_END
 
 	.global ProcScr_EfxFimbulvetrOBJ2Fall
 ProcScr_EfxFimbulvetrOBJ2Fall: @ 085D15D4
-	.incbin "fe6-base.gba", 0x5D15D4, (0x5D15EC - 0x5D15D4) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFimbulvetrOBJ2Fall_Loop
+	PROC_END
 
 	.global ProcScr_EfxThunderstorm
 ProcScr_EfxThunderstorm: @ 085D15EC
-	.incbin "fe6-base.gba", 0x5D15EC, (0x5D1604 - 0x5D15EC) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxThunderstorm_Loop
+	PROC_END
 
 	.global ProcScr_EfxThunderstormBG
 ProcScr_EfxThunderstormBG: @ 085D1604
-	.incbin "fe6-base.gba", 0x5D1604, (0x5D161C - 0x5D1604) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxThunderstormBG_Loop
+	PROC_END
 
 	.global ImgArray_EfxThunderstormBG
 ImgArray_EfxThunderstormBG: @ 085D161C
@@ -107,23 +123,41 @@ TsaArray_EfxThunderstormBG: @ 085D1648
 
 	.global ProcScr_EfxThunderstormOBJ
 ProcScr_EfxThunderstormOBJ: @ 085D1674
-	.incbin "fe6-base.gba", 0x5D1674, (0x5D169C - 0x5D1674) @ length: 0028
+	PROC_19
+	PROC_REPEAT EfxThunderstormOBJ_Loop
+	PROC_SLEEP 100
+	PROC_REPEAT EfxThunderstormOBJ_End
+	PROC_END
 
 	.global ProcScr_EfxThunderstormCOLOR
 ProcScr_EfxThunderstormCOLOR: @ 085D169C
-	.incbin "fe6-base.gba", 0x5D169C, (0x5D16DC - 0x5D169C) @ length: 0040
+	PROC_19
+	PROC_SLEEP 94
+	PROC_REPEAT EfxThunderstormCOLOR_LoopA
+	PROC_SLEEP 3
+	PROC_REPEAT EfxThunderstormCOLOR_LoopB
+	PROC_SLEEP 20
+	PROC_REPEAT EfxThunderstormCOLOR_LoopC
+	PROC_END
 
 	.global ProcScr_EfxThunderstormDARK
 ProcScr_EfxThunderstormDARK: @ 085D16DC
-	.incbin "fe6-base.gba", 0x5D16DC, (0x5D16FC - 0x5D16DC) @ length: 0020
+	PROC_19
+	PROC_REPEAT EfxThunderstormDARK_LoopA
+	PROC_REPEAT EfxThunderstormDARK_LoopB
+	PROC_END
 
 	.global ProcScr_EfxAlacalibur
 ProcScr_EfxAlacalibur: @ 085D16FC
-	.incbin "fe6-base.gba", 0x5D16FC, (0x5D1714 - 0x5D16FC) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAlacalibur_Loop
+	PROC_END
 
 	.global ProcScr_EfxAlacaliburBG
 ProcScr_EfxAlacaliburBG: @ 085D1714
-	.incbin "fe6-base.gba", 0x5D1714, (0x5D172C - 0x5D1714) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAlacaliburBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxAlacaliburBG
 TsaArray_EfxAlacaliburBG: @ 085D172C
@@ -132,19 +166,28 @@ TsaArray_EfxAlacaliburBG: @ 085D172C
 
 	.global ProcScr_EfxAlacaliburBGCOL
 ProcScr_EfxAlacaliburBGCOL: @ 085D1734
-	.incbin "fe6-base.gba", 0x5D1734, (0x5D1754 - 0x5D1734) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxAlacaliburBGCOL_Loop
+	PROC_END
 
 	.global ProcScr_EfxAlacaliburOBJ
 ProcScr_EfxAlacaliburOBJ: @ 085D1754
-	.incbin "fe6-base.gba", 0x5D1754, (0x5D176C - 0x5D1754) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAlacaliburOBJ_Loop
+	PROC_END
 
 	.global ProcScr_EfxMistyrain
 ProcScr_EfxMistyrain: @ 085D176C
-	.incbin "fe6-base.gba", 0x5D176C, (0x5D1784 - 0x5D176C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxMistyrain_Loop
+	PROC_END
 
 	.global ProcScr_EfxMistyrainBG
 ProcScr_EfxMistyrainBG: @ 085D1784
-	.incbin "fe6-base.gba", 0x5D1784, (0x5D179C - 0x5D1784) @ length: 0018
+	PROC_19
+	PROC_REPEAT NewEfxMistyrainBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxMistyrainBG
 TsaArray_EfxMistyrainBG: @ 085D179C
@@ -236,23 +279,45 @@ ImgArray_EfxMistyrainBG: @ 085D1840
 
 	.global ProcScr_EfxMistyrainOBJ
 ProcScr_EfxMistyrainOBJ: @ 085D18E4
-	.incbin "fe6-base.gba", 0x5D18E4, (0x5D192C - 0x5D18E4) @ length: 0048
+	PROC_19
+	PROC_ONEND EfxMistyrainOBJ_OnEnd
+	PROC_REPEAT EfxMistyrainOBJ1_Loop1
+	PROC_SLEEP 80
+	PROC_REPEAT EfxMistyrainOBJ1_Loop2
+	PROC_SLEEP 11
+	PROC_REPEAT EfxMistyrainOBJ1_Loop3
+	PROC_SLEEP 22
+	PROC_END
 
 	.global ProcScr_EfxMistyrainOBJ2
 ProcScr_EfxMistyrainOBJ2: @ 085D192C
-	.incbin "fe6-base.gba", 0x5D192C, (0x5D195C - 0x5D192C) @ length: 0030
+	PROC_19
+	PROC_ONEND EfxMistyrainOBJ_OnEnd
+	PROC_REPEAT EfxMistyrainOBJ2_Loop1
+	PROC_SLEEP 14
+	PROC_REPEAT EfxMistyrainOBJ2_Loop2
+	PROC_END
 
 	.global ProcScr_EfxResire
 ProcScr_EfxResire: @ 085D195C
-	.incbin "fe6-base.gba", 0x5D195C, (0x5D1974 - 0x5D195C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxResire_Loop
+	PROC_END
 
 	.global ProcScr_EfxResireBG
 ProcScr_EfxResireBG: @ 085D1974
-	.incbin "fe6-base.gba", 0x5D1974, (0x5D19A4 - 0x5D1974) @ length: 0030
+	PROC_19
+	PROC_REPEAT EfxResireBG_Loop1
+	PROC_REPEAT EfxResireBG_Loop2
+	PROC_REPEAT EfxResireBG_Loop3
+	PROC_REPEAT EfxResireBG_Loop4
+	PROC_END
 
 	.global ProcScr_EfxResireBG2
 ProcScr_EfxResireBG2: @ 085D19A4
-	.incbin "fe6-base.gba", 0x5D19A4, (0x5D19BC - 0x5D19A4) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxResireBG2_Loop
+	PROC_END
 
 	.global ImgArray_EfxResireBG
 ImgArray_EfxResireBG: @ 085D19BC
@@ -364,15 +429,21 @@ TsaArray_EfxResireBG: @ 085D1A88
 
 	.global ProcScr_EfxResireRST
 ProcScr_EfxResireRST: @ 085D1B54
-	.incbin "fe6-base.gba", 0x5D1B54, (0x5D1B6C - 0x5D1B54) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxResireRST_Loop
+	PROC_END
 
 	.global ProcScr_EfxLightning
 ProcScr_EfxLightning: @ 085D1B6C
-	.incbin "fe6-base.gba", 0x5D1B6C, (0x5D1B84 - 0x5D1B6C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxLightning_Loop
+	PROC_END
 
 	.global ProcScr_EfxLightningBG
 ProcScr_EfxLightningBG: @ 085D1B84
-	.incbin "fe6-base.gba", 0x5D1B84, (0x5D1B9C - 0x5D1B84) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxLightningBG_Loop
+	PROC_END
 
 	.global ImgArray_EfxLightningBG
 ImgArray_EfxLightningBG: @ 085D1B9C
@@ -484,11 +555,15 @@ TsaArray_EfxLightningBG: @ 085D1CA4
 
 	.global ProcScr_EfxPurge
 ProcScr_EfxPurge: @ 085D1D28
-	.incbin "fe6-base.gba", 0x5D1D28, (0x5D1D40 - 0x5D1D28) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxPurge_Loop
+	PROC_END
 
 	.global ProcScr_EfxPurgeBG
 ProcScr_EfxPurgeBG: @ 085D1D40
-	.incbin "fe6-base.gba", 0x5D1D40, (0x5D1D58 - 0x5D1D40) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxPurgeBG_Loop
+	PROC_END
 
 	.global ImgArray_EfxPurgeBG
 ImgArray_EfxPurgeBG: @ 085D1D58
@@ -735,23 +810,40 @@ TsaArray_EfxPurgeBG: @ 085D1FC8
 
 	.global ProcScr_EfxPurgeOBJRND
 ProcScr_EfxPurgeOBJRND: @ 085D2100
-	.incbin "fe6-base.gba", 0x5D2100, (0x5D2120 - 0x5D2100) @ length: 0020
+	PROC_19
+	PROC_REPEAT EfxPurgeOBJRND_Loop
+	PROC_SLEEP 69
+	PROC_END
 
 	.global Vecs_EfxPurgeOBJRND
 Vecs_EfxPurgeOBJRND: @ 085D2120
-	.incbin "fe6-base.gba", 0x5D2120, (0x5D2158 - 0x5D2120) @ length: 0038
+	.4byte 0xD0, 0x30
+	.4byte 0xA0, 0x90
+	.4byte 0x40, 0x40
+	.4byte 0xC0, 0x60
+	.4byte 0x80, 0x30
+	.4byte 0x20, 0x60
+	.4byte 0x50, 0x80
 
 	.global ProcScr_EfxPurgeOBJ
 ProcScr_EfxPurgeOBJ: @ 085D2158
-	.incbin "fe6-base.gba", 0x5D2158, (0x5D2178 - 0x5D2158) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxPurgeOBJ_OnEnd
+	PROC_SLEEP 69
+	PROC_END
 
 	.global ProcScr_EfxForblaze
 ProcScr_EfxForblaze: @ 085D2178
-	.incbin "fe6-base.gba", 0x5D2178, (0x5D2190 - 0x5D2178) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblaze_Loop
+	PROC_END
 
 	.global ProcScr_EfxForblazeBG1
 ProcScr_EfxForblazeBG1: @ 085D2190
-	.incbin "fe6-base.gba", 0x5D2190, (0x5D21A8 - 0x5D2190) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblazeBG1_Loop
+	PROC_END
+
 
 	.global TsaArray_EfxForblazeBG1
 TsaArray_EfxForblazeBG1: @ 085D21A8
@@ -787,47 +879,94 @@ ImgArray_EfxForblazeBG1: @ 085D21DC
 
 	.global ProcScr_EfxForblazeBGCOL1
 ProcScr_EfxForblazeBGCOL1: @ 085D2210
-	.incbin "fe6-base.gba", 0x5D2210, (0x5D2230 - 0x5D2210) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxForblazeBGCOL1_Loop
+	PROC_END
 
 	.global ProcScr_EfxForblazeBGCtrl1
 ProcScr_EfxForblazeBGCtrl1: @ 085D2230
-	.incbin "fe6-base.gba", 0x5D2230, (0x5D2270 - 0x5D2230) @ length: 0040
+	PROC_19
+	PROC_SLEEP 35
+	PROC_REPEAT EfxForblazeBGCtrl1_Loop1
+	PROC_SLEEP 35
+	PROC_REPEAT EfxForblazeBGCtrl1_Loop2
+	PROC_SLEEP 35
+	PROC_REPEAT EfxForblazeBGCtrl1_Loop3
+	PROC_END
 
 	.global ProcScr_EfxForblazeOBJ
 ProcScr_EfxForblazeOBJ: @ 085D2270
-	.incbin "fe6-base.gba", 0x5D2270, (0x5D2288 - 0x5D2270) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblazeOBJ_Loop
+	PROC_END
 
 	.global gUnk_085D2288
 gUnk_085D2288: @ 085D2288
-	.incbin "fe6-base.gba", 0x5D2288, (0x5D22E0 - 0x5D2288) @ length: 0058
+	.4byte 0x14
+	.4byte 0x6B
+	.4byte 0xE4
+	.4byte 0x2C
+	.4byte 0xC3
+	.4byte 0x54
+	.4byte 0x85
+	.4byte 0x1B
+	.4byte 0xAC
+	.4byte 0xDA
+	.4byte 0x40
+	.4byte 0x6C
+	.4byte 0x94
+	.4byte 0xE5
+	.4byte 0xBF
+	.4byte 0x56
+	.4byte 0x20
+	.4byte 0x81
+	.4byte 0x0D
+	.4byte 0x88
+	.4byte 0xAC
+	.4byte -1
 
 	.global ProcScr_EfxForblazeOBJ2
 ProcScr_EfxForblazeOBJ2: @ 085D22E0
-	.incbin "fe6-base.gba", 0x5D22E0, (0x5D22F8 - 0x5D22E0) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblazeOBJ2_Loop
+	PROC_END
 
 	.global ProcScr_EfxForblazeBG2
 ProcScr_EfxForblazeBG2: @ 085D22F8
-	.incbin "fe6-base.gba", 0x5D22F8, (0x5D2310 - 0x5D22F8) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblazeBG2_Loop
+	PROC_END
 
 	.global ProcScr_EfxForblazeOBJCtrl
 ProcScr_EfxForblazeOBJCtrl: @ 085D2310
-	.incbin "fe6-base.gba", 0x5D2310, (0x5D2328 - 0x5D2310) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblazeOBJCtrl_Loop
+	PROC_END
 
 	.global ProcScr_EfxForblazeOBJFall
 ProcScr_EfxForblazeOBJFall: @ 085D2328
-	.incbin "fe6-base.gba", 0x5D2328, (0x5D2340 - 0x5D2328) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblazeOBJFall_Loop
+	PROC_END
 
 	.global ProcScr_EfxForblazeRST
 ProcScr_EfxForblazeRST: @ 085D2340
-	.incbin "fe6-base.gba", 0x5D2340, (0x5D2358 - 0x5D2340) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxForblazeRST_Loop
+	PROC_END
 
 	.global ProcScr_EfxDivine
 ProcScr_EfxDivine: @ 085D2358
-	.incbin "fe6-base.gba", 0x5D2358, (0x5D2370 - 0x5D2358) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxDivine_Loop
+	PROC_END
 
 	.global ProcScr_EfxDivineBG
 ProcScr_EfxDivineBG: @ 085D2370
-	.incbin "fe6-base.gba", 0x5D2370, (0x5D2388 - 0x5D2370) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxDivineBG_Loop
+	PROC_END
 
 	.global ImgArray_EfxDivineBG
 ImgArray_EfxDivineBG: @ 085D2388
@@ -937,15 +1076,21 @@ TsaArray_EfxDivineBG3: @ 085D2494
 
 	.global ProcScr_EfxDivineOBJ
 ProcScr_EfxDivineOBJ: @ 085D24E8
-	.incbin "fe6-base.gba", 0x5D24E8, (0x5D2500 - 0x5D24E8) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxDivineOBJ_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureola
 ProcScr_EfxAureola: @ 085D2500
-	.incbin "fe6-base.gba", 0x5D2500, (0x5D2518 - 0x5D2500) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureola_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureolaBG
 ProcScr_EfxAureolaBG: @ 085D2518
-	.incbin "fe6-base.gba", 0x5D2518, (0x5D2530 - 0x5D2518) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureolaBG_Loop
+	PROC_END
 
 	.global ImgArray_EfxAureolaBG
 ImgArray_EfxAureolaBG: @ 085D2530
@@ -965,75 +1110,125 @@ TsaArray_EfxAureolaBG: @ 085D2544
 
 	.global ProcScr_EfxAureolaBG2
 ProcScr_EfxAureolaBG2: @ 085D2558
-	.incbin "fe6-base.gba", 0x5D2558, (0x5D2570 - 0x5D2558) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureolaBG2_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureolaBG2COL
 ProcScr_EfxAureolaBG2COL: @ 085D2570
-	.incbin "fe6-base.gba", 0x5D2570, (0x5D2590 - 0x5D2570) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxAureolaBG2COL_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureolaOBJ
 ProcScr_EfxAureolaOBJ: @ 085D2590
-	.incbin "fe6-base.gba", 0x5D2590, (0x5D25A8 - 0x5D2590) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureolaOBJ_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureolaOBJCtrl
 ProcScr_EfxAureolaOBJCtrl: @ 085D25A8
-	.incbin "fe6-base.gba", 0x5D25A8, (0x5D25C0 - 0x5D25A8) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureolaOBJCtrl_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureolaOBJ2
 ProcScr_EfxAureolaOBJ2: @ 085D25C0
-	.incbin "fe6-base.gba", 0x5D25C0, (0x5D25D8 - 0x5D25C0) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureolaOBJ2_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureolaOBJ3
 ProcScr_EfxAureolaOBJ3: @ 085D25D8
-	.incbin "fe6-base.gba", 0x5D25D8, (0x5D25F0 - 0x5D25D8) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureolaOBJ3_Loop
+	PROC_END
 
 	.global ProcScr_EfxAureolaOBJ3Ctrl
 ProcScr_EfxAureolaOBJ3Ctrl: @ 085D25F0
-	.incbin "fe6-base.gba", 0x5D25F0, (0x5D2608 - 0x5D25F0) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxAureolaOBJ3Ctrl_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypse
 ProcScr_EfxApocalypse: @ 085D2608
-	.incbin "fe6-base.gba", 0x5D2608, (0x5D2620 - 0x5D2608) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxApocalypse_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypseBG
 ProcScr_EfxApocalypseBG: @ 085D2620
-	.incbin "fe6-base.gba", 0x5D2620, (0x5D2638 - 0x5D2620) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxApocalypseBG_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypseBGCtrl
 ProcScr_EfxApocalypseBGCtrl: @ 085D2638
-	.incbin "fe6-base.gba", 0x5D2638, (0x5D2658 - 0x5D2638) @ length: 0020
+	PROC_19
+	PROC_SLEEP 145
+	PROC_REPEAT EfxApocalypseBGCtrl_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypseBGCOL
 ProcScr_EfxApocalypseBGCOL: @ 085D2658
-	.incbin "fe6-base.gba", 0x5D2658, (0x5D2678 - 0x5D2658) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxApocalypseBGCOL_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypseOBJ
 ProcScr_EfxApocalypseOBJ: @ 085D2678
-	.incbin "fe6-base.gba", 0x5D2678, (0x5D26B0 - 0x5D2678) @ length: 0038
+	PROC_19
+	PROC_SLEEP 195
+	PROC_REPEAT EfxApocalypseOBJ_Loop1
+	PROC_REPEAT EfxApocalypseOBJ_Loop2
+	PROC_REPEAT EfxApocalypseOBJ_Loop3
+	PROC_REPEAT EfxApocalypseOBJ_Loop4
+	PROC_END
 
 	.global AnimArray_EfxApocalypseOBJ
 AnimArray_EfxApocalypseOBJ: @ 085D26B0
-	.incbin "fe6-base.gba", 0x5D26B0, (0x5D26D0 - 0x5D26B0) @ length: 0020
+	.4byte AnimScr_085EB93C
+	.4byte AnimScr_085EB944
+	.4byte AnimScr_085EB94C
+	.4byte AnimScr_085EB954
+	.4byte AnimScr_085EB95C
+	.4byte AnimScr_085EB964
+	.4byte AnimScr_085EB96C
+	.4byte AnimScr_085EB974
 
 	.global ProcScr_EfxApocalypseBGCOL2
 ProcScr_EfxApocalypseBGCOL2: @ 085D26D0
-	.incbin "fe6-base.gba", 0x5D26D0, (0x5D26F0 - 0x5D26D0) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxApocalypseBGCOL2_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypseDummy
 ProcScr_EfxApocalypseDummy: @ 085D26F0
-	.incbin "fe6-base.gba", 0x5D26F0, (0x5D2708 - 0x5D26F0) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxApocalypseDummy_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypseBgFlash1
 ProcScr_EfxApocalypseBgFlash1: @ 085D2708
-	.incbin "fe6-base.gba", 0x5D2708, (0x5D2720 - 0x5D2708) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxApocalypseBgFlash1_Loop
+	PROC_END
 
 	.global ProcScr_EfxApocalypseBgFlash2
 ProcScr_EfxApocalypseBgFlash2: @ 085D2720
-	.incbin "fe6-base.gba", 0x5D2720, (0x5D2740 - 0x5D2720) @ length: 0020
+	PROC_19
+	PROC_REPEAT EfxApocalypseBgFlash2_Loop1
+	PROC_REPEAT EfxApocalypseBgFlash2_Loop2
+	PROC_END
 
 	.global ProcScr_EfxApocalypseBG2
 ProcScr_EfxApocalypseBG2: @ 085D2740
-	.incbin "fe6-base.gba", 0x5D2740, (0x5D2758 - 0x5D2740) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxApocalypseBG2_Loop
+	PROC_END
 
 	.global ImgArray_EfxApocalypseBG2
 ImgArray_EfxApocalypseBG2: @ 085D2758
@@ -1051,11 +1246,16 @@ TsaArray_EfxApocalypseBG2: @ 085D2768
 
 	.global ProcScr_EfxApocalypseOBJ2
 ProcScr_EfxApocalypseOBJ2: @ 085D2778
-	.incbin "fe6-base.gba", 0x5D2778, (0x5D2798 - 0x5D2778) @ length: 0020
+	PROC_19
+	PROC_REPEAT EfxApocalypseOBJ2_Loop1
+	PROC_REPEAT EfxApocalypseOBJ2_Loop2
+	PROC_END
 
 	.global ProcScr_EfxApocalypseOBJ3
 ProcScr_EfxApocalypseOBJ3: @ 085D2798
-	.incbin "fe6-base.gba", 0x5D2798, (0x5D27B0 - 0x5D2798) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxApocalypseOBJ3_Loop
+	PROC_END
 
 	.global DuraArray_EfxApocalypseOBJ3RND
 DuraArray_EfxApocalypseOBJ3RND: @ 085D27B0
@@ -1071,15 +1271,21 @@ StateArray_EfxApocalypseOBJ3RND: @ 085D2944
 
 	.global ProcScr_EfxApocalypseOBJ3RND
 ProcScr_EfxApocalypseOBJ3RND: @ 085D2A0C
-	.incbin "fe6-base.gba", 0x5D2A0C, (0x5D2A24 - 0x5D2A0C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxApocalypseOBJ3RND_Loop
+	PROC_END
 
 	.global ProcScr_EfxHazymoon
 ProcScr_EfxHazymoon: @ 085D2A24
-	.incbin "fe6-base.gba", 0x5D2A24, (0x5D2A3C - 0x5D2A24) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxHazymoon_Loop
+	PROC_END
 
 	.global ProcScr_EfxHazymoonBG
 ProcScr_EfxHazymoonBG: @ 085D2A3C
-	.incbin "fe6-base.gba", 0x5D2A3C, (0x5D2A54 - 0x5D2A3C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxHazymoonBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxHazymoonBG
 TsaArray_EfxHazymoonBG: @ 085D2A54
@@ -1143,39 +1349,70 @@ ImgArray_EfxHazymoonBG: @ 085D2AC0
 
 	.global ProcScr_EfxHazymoonOBJ2
 ProcScr_EfxHazymoonOBJ2: @ 085D2B2C
-	.incbin "fe6-base.gba", 0x5D2B2C, (0x5D2B74 - 0x5D2B2C) @ length: 0048
+	PROC_19
+	PROC_ONEND EfxHazymoonOBJ2_OnEnd
+	PROC_REPEAT EfxHazymoonOBJ2_Loop1
+	PROC_REPEAT EfxHazymoonOBJ2_Loop2
+	PROC_REPEAT EfxHazymoonOBJ2_Loop3
+	PROC_REPEAT EfxHazymoonOBJ2_Loop1
+	PROC_REPEAT EfxHazymoonOBJ2_Loop2
+	PROC_REPEAT EfxHazymoonOBJ2_Loop3
+	PROC_END
 
 	.global ProcScr_EfxHazymoonOBJ3
 ProcScr_EfxHazymoonOBJ3: @ 085D2B74
-	.incbin "fe6-base.gba", 0x5D2B74, (0x5D2B8C - 0x5D2B74) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxHazymoonOBJ3_Loop
+	PROC_END
 
 	.global gEclipseAnimSpriteCoordinates
 gEclipseAnimSpriteCoordinates: @ 085D2B8C
-	.incbin "fe6-base.gba", 0x5D2B8C, (0x5D2BA4 - 0x5D2B8C) @ length: 0018
+	.short 0x60, 0x38
+	.short 0x30, 0x68
+	.short 0xA0, 0x40
+	.short 0x58, 0x88
+	.short 0xA0, 0x88
+	.short 0xC0, 0x60
 
 	.global ProcScr_EfxHazymoonOBJ3RND
 ProcScr_EfxHazymoonOBJ3RND: @ 085D2BA4
-	.incbin "fe6-base.gba", 0x5D2BA4, (0x5D2BC4 - 0x5D2BA4) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxHazymoonOBJ3RND_Loop
+	PROC_SLEEP 100
+	PROC_END
 
 	.global ProcScr_EfxFenrir
 ProcScr_EfxFenrir: @ 085D2BC4
-	.incbin "fe6-base.gba", 0x5D2BC4, (0x5D2BDC - 0x5D2BC4) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFenrir_Loop
+	PROC_END
 
 	.global ProcScr_EfxFenrirBG
 ProcScr_EfxFenrirBG: @ 085D2BDC
-	.incbin "fe6-base.gba", 0x5D2BDC, (0x5D2BFC - 0x5D2BDC) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxFenrirBG_OnEnd
+	PROC_REPEAT EfxFenrirBG_Loop
+	PROC_END
 
 	.global ProcScr_EfxFenrirBGCOL
 ProcScr_EfxFenrirBGCOL: @ 085D2BFC
-	.incbin "fe6-base.gba", 0x5D2BFC, (0x5D2C24 - 0x5D2BFC) @ length: 0028
+	PROC_19
+	PROC_MARK 10
+	PROC_ONEND EfxFenrirBGCOL_OnEnd
+	PROC_REPEAT EfxFenrirBGCOL_Loop
+	PROC_END
 
 	.global ProcScr_EfxFenrirOBJ
 ProcScr_EfxFenrirOBJ: @ 085D2C24
-	.incbin "fe6-base.gba", 0x5D2C24, (0x5D2C3C - 0x5D2C24) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFenrirOBJ_Loop
+	PROC_END
 
 	.global ProcScr_EfxFenrirBG2
 ProcScr_EfxFenrirBG2: @ 085D2C3C
-	.incbin "fe6-base.gba", 0x5D2C3C, (0x5D2C54 - 0x5D2C3C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFenrirBG2_Loop
+	PROC_END
 
 	.global ImgArray_EfxFenrirBG2_A
 ImgArray_EfxFenrirBG2_A: @ 085D2C54
@@ -1287,63 +1524,95 @@ TsaArray_EfxFenrirBG2_A: @ 085D2D20
 
 	.global ProcScr_EfxFenrirOBJ2
 ProcScr_EfxFenrirOBJ2: @ 085D2DEC
-	.incbin "fe6-base.gba", 0x5D2DEC, (0x5D2E04 - 0x5D2DEC) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFenrirOBJ2_Loop
+	PROC_END
 
 	.global ProcScr_EfxFenrirOBJ2Chiri
 ProcScr_EfxFenrirOBJ2Chiri: @ 085D2E04
-	.incbin "fe6-base.gba", 0x5D2E04, (0x5D2E1C - 0x5D2E04) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxFenrirOBJ2Chiri_Loop
+	PROC_END
 
 	.global gFenrirSpriteAngles
 gFenrirSpriteAngles: @ 085D2E1C
-	.incbin "fe6-base.gba", 0x5D2E1C, (0x5D2E3C - 0x5D2E1C) @ length: 0020
+	.4byte 184, 85, 66, 119, 158, 39, 135, 210
 
 	.global ProcScr_EfxLive
 ProcScr_EfxLive: @ 085D2E3C
-	.incbin "fe6-base.gba", 0x5D2E3C, (0x5D2E54 - 0x5D2E3C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxLive_Loop
+	PROC_END
 
 	.global ProcScr_EfxRelive
 ProcScr_EfxRelive: @ 085D2E54
-	.incbin "fe6-base.gba", 0x5D2E54, (0x5D2E6C - 0x5D2E54) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxRelive_Loop
+	PROC_END
 
 	.global ProcScr_EfxRecover
 ProcScr_EfxRecover: @ 085D2E6C
-	.incbin "fe6-base.gba", 0x5D2E6C, (0x5D2E84 - 0x5D2E6C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxRecover_Loop
+	PROC_END
 
 	.global ProcScr_EfxReblow
 ProcScr_EfxReblow: @ 085D2E84
-	.incbin "fe6-base.gba", 0x5D2E84, (0x5D2E9C - 0x5D2E84) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxReblow_Loop
+	PROC_END
 
 	.global ProcScr_EfxLiveBG
 ProcScr_EfxLiveBG: @ 085D2E9C
-	.incbin "fe6-base.gba", 0x5D2E9C, (0x5D2EB4 - 0x5D2E9C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxLiveBG_Loop
+	PROC_END
 
 	.global ProcScr_EfxLiveBGCOL
 ProcScr_EfxLiveBGCOL: @ 085D2EB4
-	.incbin "fe6-base.gba", 0x5D2EB4, (0x5D2ED4 - 0x5D2EB4) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxLiveBGCOL_Loop
+	PROC_END
 
 	.global ProcScr_EfxLiveALPHA
 ProcScr_EfxLiveALPHA: @ 085D2ED4
-	.incbin "fe6-base.gba", 0x5D2ED4, (0x5D2EF4 - 0x5D2ED4) @ length: 0020
+	PROC_19
+	PROC_REPEAT EfxLiveALPHA_Delay
+	PROC_REPEAT EfxLiveALPHA_Loop
+	PROC_END
 
 	.global ProcScr_EfxLiveOBJ
 ProcScr_EfxLiveOBJ: @ 085D2EF4
-	.incbin "fe6-base.gba", 0x5D2EF4, (0x5D2F0C - 0x5D2EF4) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxLiveOBJ_Loop
+	PROC_END
 
 	.global ProcScr_EfxReserveOBJ
 ProcScr_EfxReserveOBJ: @ 085D2F0C
-	.incbin "fe6-base.gba", 0x5D2F0C, (0x5D2F2C - 0x5D2F0C) @ length: 0020
+	PROC_19
+	PROC_REPEAT EfxReserveOBJ_Loop1
+	PROC_REPEAT EfxReserveOBJ_Loop2
+	PROC_END
 
 	.global ProcScr_EfxReblowOBJ
 ProcScr_EfxReblowOBJ: @ 085D2F2C
-	.incbin "fe6-base.gba", 0x5D2F2C, (0x5D2F4C - 0x5D2F2C) @ length: 0020
+	PROC_19
+	PROC_REPEAT EfxReblowOBJ_Loop1
+	PROC_REPEAT EfxReblowOBJ_Loop2
+	PROC_END
 
 	.global ProcScr_EfxReserve
 ProcScr_EfxReserve: @ 085D2F4C
-	.incbin "fe6-base.gba", 0x5D2F4C, (0x5D2F64 - 0x5D2F4C) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxReserve_Loop
+	PROC_END
 
 	.global ProcScr_EfxReserveBG
 ProcScr_EfxReserveBG: @ 085D2F64
-	.incbin "fe6-base.gba", 0x5D2F64, (0x5D2F7C - 0x5D2F64) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxReserveBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxReserveBG
 TsaArray_EfxReserveBG: @ 085D2F7C
@@ -1354,11 +1623,16 @@ TsaArray_EfxReserveBG: @ 085D2F7C
 
 	.global ProcScr_EfxReserveBGCOL
 ProcScr_EfxReserveBGCOL: @ 085D2F8C
-	.incbin "fe6-base.gba", 0x5D2F8C, (0x5D2FAC - 0x5D2F8C) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxReserveBGCOL_Loop
+	PROC_END
 
 	.global ProcScr_EfxReserveBG2
 ProcScr_EfxReserveBG2: @ 085D2FAC
-	.incbin "fe6-base.gba", 0x5D2FAC, (0x5D2FC4 - 0x5D2FAC) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxReserveBG2_Loop
+	PROC_END
 
 	.global TsaArray_EfxReserveBG2
 TsaArray_EfxReserveBG2: @ 085D2FC4
@@ -1366,15 +1640,22 @@ TsaArray_EfxReserveBG2: @ 085D2FC4
 
 	.global ProcScr_EfxReserveBGCOL2
 ProcScr_EfxReserveBGCOL2: @ 085D2FC8
-	.incbin "fe6-base.gba", 0x5D2FC8, (0x5D2FE8 - 0x5D2FC8) @ length: 0020
+	PROC_19
+	PROC_MARK 10
+	PROC_REPEAT EfxReserveBGCOL2_Loop
+	PROC_END
 
 	.global ProcScr_EfxRest
 ProcScr_EfxRest: @ 085D2FE8
-	.incbin "fe6-base.gba", 0x5D2FE8, (0x5D3000 - 0x5D2FE8) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxRest_Loop
+	PROC_END
 
 	.global ProcScr_EfxRestBG
 ProcScr_EfxRestBG: @ 085D3000
-	.incbin "fe6-base.gba", 0x5D3000, (0x5D3018 - 0x5D3000) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxRestBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxRestBG
 TsaArray_EfxRestBG: @ 085D3018
@@ -1410,15 +1691,22 @@ ImgArray_EfxRestBG: @ 085D304C
 
 	.global ProcScr_EfxRestOBJ
 ProcScr_EfxRestOBJ: @ 085D3080
-	.incbin "fe6-base.gba", 0x5D3080, (0x5D30A0 - 0x5D3080) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxRestOBJ_Loop
+	PROC_SLEEP 80
+	PROC_END
 
 	.global ProcScr_EfxSilence
 ProcScr_EfxSilence: @ 085D30A0
-	.incbin "fe6-base.gba", 0x5D30A0, (0x5D30B8 - 0x5D30A0) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxSilence_Loop
+	PROC_END
 
 	.global ProcScr_EfxSilenceBG
 ProcScr_EfxSilenceBG: @ 085D30B8
-	.incbin "fe6-base.gba", 0x5D30B8, (0x5D30D0 - 0x5D30B8) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxSilenceBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxSilenceBG
 TsaArray_EfxSilenceBG: @ 085D30D0
@@ -1443,15 +1731,22 @@ TsaArray_EfxSilenceBG: @ 085D30D0
 
 	.global ProcScr_EfxSilenceOBJ
 ProcScr_EfxSilenceOBJ: @ 085D3118
-	.incbin "fe6-base.gba", 0x5D3118, (0x5D3138 - 0x5D3118) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxSilenceOBJ_OnEnd
+	PROC_SLEEP 40
+	PROC_END
 
 	.global ProcScr_EfxSleep
 ProcScr_EfxSleep: @ 085D3138
-	.incbin "fe6-base.gba", 0x5D3138, (0x5D3150 - 0x5D3138) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxSleep_Loop
+	PROC_END
 
 	.global ProcScr_EfxSleepBG
 ProcScr_EfxSleepBG: @ 085D3150
-	.incbin "fe6-base.gba", 0x5D3150, (0x5D3168 - 0x5D3150) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxSleepBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxSleepBG
 TsaArray_EfxSleepBG: @ 085D3168
@@ -1474,23 +1769,41 @@ TsaArray_EfxSleepBG: @ 085D3168
 
 	.global ProcScr_EfxSleepOBJ
 ProcScr_EfxSleepOBJ: @ 085D31A8
-	.incbin "fe6-base.gba", 0x5D31A8, (0x5D31C8 - 0x5D31A8) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxSleepOBJ_OnEnd
+	PROC_SLEEP 80
+	PROC_END
 
 	.global ProcScr_EfxSleepOBJ2
 ProcScr_EfxSleepOBJ2: @ 085D31C8
-	.incbin "fe6-base.gba", 0x5D31C8, (0x5D31E8 - 0x5D31C8) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxSleepOBJ_OnEnd
+	PROC_SLEEP 200
+	PROC_END
 
 	.global ProcScr_EfxSleepSE
 ProcScr_EfxSleepSE: @ 085D31E8
-	.incbin "fe6-base.gba", 0x5D31E8, (0x5D3230 - 0x5D31E8) @ length: 0048
+	PROC_19
+	PROC_ONEND EfxSleepSE_OnEnd
+	PROC_SLEEP 1
+	PROC_CALL EfxSleepSE_PlaySE
+	PROC_SLEEP 54
+	PROC_CALL EfxSleepSE_PlaySE
+	PROC_SLEEP 65
+	PROC_CALL EfxSleepSE_PlaySE
+	PROC_END
 
 	.global ProcScr_EfxHammarne
 ProcScr_EfxHammarne: @ 085D3230
-	.incbin "fe6-base.gba", 0x5D3230, (0x5D3248 - 0x5D3230) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxHammarne_Loop
+	PROC_END
 
 	.global ProcScr_EfxHammarneBG
 ProcScr_EfxHammarneBG: @ 085D3248
-	.incbin "fe6-base.gba", 0x5D3248, (0x5D3260 - 0x5D3248) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxHammarneBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxHammarneBG
 TsaArray_EfxHammarneBG: @ 085D3260
@@ -1526,31 +1839,67 @@ ImgArray_EfxHammarneBG: @ 085D3294
 
 	.global ProcScr_EfxHammarneOBJ
 ProcScr_EfxHammarneOBJ: @ 085D32C8
-	.incbin "fe6-base.gba", 0x5D32C8, (0x5D32E8 - 0x5D32C8) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxHammarneOBJ_OnEnd
+	PROC_SLEEP 80
+	PROC_END
 
 	.global ProcScr_EfxBerserk
 ProcScr_EfxBerserk: @ 085D32E8
-	.incbin "fe6-base.gba", 0x5D32E8, (0x5D3300 - 0x5D32E8) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxBerserk_Loop
+	PROC_END
 
 	.global ProcScr_EfxBerserkBG
 ProcScr_EfxBerserkBG: @ 085D3300
-	.incbin "fe6-base.gba", 0x5D3300, (0x5D3318 - 0x5D3300) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxBerserkBG_Loop
+	PROC_END
 
 	.global ProcScr_EfxBerserkCLONE
 ProcScr_EfxBerserkCLONE: @ 085D3318
-	.incbin "fe6-base.gba", 0x5D3318, (0x5D3338 - 0x5D3318) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxBerserkCLONE_OnEnd
+	PROC_REPEAT EfxBerserkCLONE_Loop
+	PROC_END
 
 	.global ProcScr_EfxBerserkOBJ
 ProcScr_EfxBerserkOBJ: @ 085D3338
-	.incbin "fe6-base.gba", 0x5D3338, (0x5D33F0 - 0x5D3338) @ length: 00B8
+	PROC_19
+	PROC_ONEND EfxBerserkOBJ_OnEnd
+	PROC_REPEAT EfxBerserkOBJ_Loop1
+	PROC_SLEEP 7
+	PROC_REPEAT EfxBerserkOBJ_Loop2
+	PROC_SLEEP 3
+	PROC_REPEAT EfxBerserkOBJ_Loop3
+	PROC_SLEEP 7
+	PROC_REPEAT EfxBerserkOBJ_Loop4
+	PROC_SLEEP 3
+	PROC_REPEAT EfxBerserkOBJ_Loop5
+	PROC_SLEEP 7
+	PROC_REPEAT EfxBerserkOBJ_Loop6
+	PROC_SLEEP 3
+	PROC_REPEAT EfxBerserkOBJ_Loop7
+	PROC_SLEEP 7
+	PROC_REPEAT EfxBerserkOBJ_Loop8
+	PROC_SLEEP 3
+	PROC_REPEAT EfxBerserkOBJ_Loop9
+	PROC_SLEEP 7
+	PROC_REPEAT EfxBerserkOBJ_Loop10
+	PROC_SLEEP 17
+	PROC_END
 
 	.global ProcScr_EfxMshield
 ProcScr_EfxMshield: @ 085D33F0
-	.incbin "fe6-base.gba", 0x5D33F0, (0x5D3408 - 0x5D33F0) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxMshield_Loop
+	PROC_END
 
 	.global ProcScr_EfxMshieldBG
 ProcScr_EfxMshieldBG: @ 085D3408
-	.incbin "fe6-base.gba", 0x5D3408, (0x5D3420 - 0x5D3408) @ length: 0018
+	PROC_19
+	PROC_REPEAT EfxMshieldBG_Loop
+	PROC_END
 
 	.global TsaArray_EfxMshieldBG
 TsaArray_EfxMshieldBG: @ 085D3420
@@ -1562,8 +1911,14 @@ TsaArray_EfxMshieldBG: @ 085D3420
 
 	.global ProcScr_EfxMshieldOBJ
 ProcScr_EfxMshieldOBJ: @ 085D3434
-	.incbin "fe6-base.gba", 0x5D3434, (0x5D3454 - 0x5D3434) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxMshieldOBJ_OnEnd
+	PROC_SLEEP 220
+	PROC_END
 
 	.global ProcScr_EfxMshieldOBJ2
 ProcScr_EfxMshieldOBJ2: @ 085D3454
-	.incbin "fe6-base.gba", 0x5D3454, (0x5D3474 - 0x5D3454) @ length: 0020
+	PROC_19
+	PROC_ONEND EfxMshieldOBJ_OnEnd
+	PROC_SLEEP 110
+	PROC_END

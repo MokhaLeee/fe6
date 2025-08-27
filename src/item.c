@@ -318,7 +318,7 @@ bool CanUnitUseStaff(struct Unit * unit, int item)
     return (unit_exp >= required_wexp) ? TRUE : FALSE;
 }
 
-void func_fe6_08016694(struct Text * text, int item, bool is_usable, u16 * tm)
+void DrawItemMenuLine(struct Text * text, int item, bool is_usable, u16 * tm)
 {
     Text_SetParams(text, 0, (is_usable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
     Text_DrawString(text, GetItemName(item));
@@ -330,7 +330,7 @@ void func_fe6_08016694(struct Text * text, int item, bool is_usable, u16 * tm)
     PutIcon(tm, GetItemIcon(item), TILEREF(0, BGPAL_ICONS));
 }
 
-void func_fe6_08016720(struct Text * text, int item, bool is_usable, u16 * tm)
+void DrawItemMenuLineLong(struct Text * text, int item, bool is_usable, u16 * tm)
 {
     Text_SetParams(text, 0, (is_usable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
     Text_DrawString(text, GetItemName(item));
@@ -344,7 +344,7 @@ void func_fe6_08016720(struct Text * text, int item, bool is_usable, u16 * tm)
     PutIcon(tm, GetItemIcon(item), TILEREF(0, BGPAL_ICONS));
 }
 
-void func_fe6_080167E4(struct Text * text, int item, u16 * tm)
+void DrawItemMenuLineNoColor(struct Text * text, int item, u16 * tm)
 {
     Text_SetCursor(text, 0);
     Text_DrawString(text, GetItemName(item));
@@ -356,7 +356,7 @@ void func_fe6_080167E4(struct Text * text, int item, u16 * tm)
     PutIcon(tm, GetItemIcon(item), TILEREF(0, BGPAL_ICONS));
 }
 
-void func_fe6_08016860(struct Text * text, int item, bool is_usable, u16 * tm)
+void DrawItemStatScreenLine(struct Text * text, int item, bool is_usable, u16 * tm)
 {
     int color;
 

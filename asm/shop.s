@@ -1970,7 +1970,7 @@ DrawShopItemPriceLine: @ 0x08097444
 	ldr r3, [r7, #0xc]
 	ldr r0, [r7]
 	adds r1, r4, #0
-	bl func_fe6_08016694
+	bl DrawItemMenuLine
 	ldr r0, [r7, #0xc]
 	adds r4, r0, #0
 	adds r4, #0x22
@@ -2010,7 +2010,7 @@ DrawShopItemLine: @ 0x080974A0
 	ldr r3, [r7, #0xc]
 	ldr r0, [r7]
 	adds r1, r4, #0
-	bl func_fe6_08016694
+	bl DrawItemMenuLine
 	ldr r1, [r7, #4]
 	adds r0, r1, #0
 	bl func_fe6_080975C8

@@ -75,7 +75,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
             if (cur_counter != 0)
             {
                 Proc_Goto(proc, 0x5);
-                proc->unk_50->unk_2A = TRUE;
+                proc->disp_proc->unk_2A = TRUE;
                 PlaySe(SONG_6A);
             }
             else
@@ -89,7 +89,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
 
             if (unit->flags & UNIT_FLAG_NOT_DEPLOYED)
             {
-                if ((proc->unk_2C & 1) == 0 || func_fe6_08082B74(unit) != 0)
+                if ((proc->link_arena_flag & 1) == 0 || func_fe6_08082B74(unit) != 0)
                 {
                     if (proc->max_counter > proc->cur_counter)
                     {
@@ -117,7 +117,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
             }
             else
             {
-                if ((proc->unk_2C & 1) || IsUnitMandatoryDeploy(unit) == FALSE)
+                if ((proc->link_arena_flag & 1) || IsUnitMandatoryDeploy(unit) == FALSE)
                 {
                     GetUnitFromPrepList(proc->list_num_cur)->flags |= UNIT_FLAG_TURN_ENDED | UNIT_FLAG_NOT_DEPLOYED;
                     RemoveSioPid(UNIT_PID(GetUnitFromPrepList(proc->list_num_cur)));
@@ -188,7 +188,7 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
     {
         if (proc->unk_2D != 1)
         {
-            func_fe6_0807B8B0(proc->unk_50, 5);
+            func_fe6_0807B8B0(proc->disp_proc, 5);
             proc->list_num_cur = proc->unk_32;
             proc->unk_29 = 1;
             func_fe6_0807C840(proc);

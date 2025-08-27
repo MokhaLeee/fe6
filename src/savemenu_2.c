@@ -566,7 +566,7 @@ void func_fe6_080898F0(struct UnkProc_0868A28C * proc)
     proc->unk_3A = 0;
     proc->unk_3B = 40;
 
-    func_fe6_08070D48(0xAC << 4);
+    PutChapterTitleBG1(0xAC << 4);
 
     for (i = 0; i < 3; i++)
     {
@@ -574,12 +574,12 @@ void func_fe6_080898F0(struct UnkProc_0868A28C * proc)
 
         if (proc->proc_parent->unk_37[i] != 0xFF)
         {
-            func_fe6_08070D08(((u32) (0x16800 + 0x800 * i) & 0x1FFFF) >> 5,
+            PutChapterTitleGfx(((u32) (0x16800 + 0x800 * i) & 0x1FFFF) >> 5,
                 proc->proc_parent->unk_37[i]);
         }
         else
         {
-            func_fe6_08070D08(((u32) (0x16800 + 0x800 * i) & 0x1FFFF) >> 5, -1);
+            PutChapterTitleGfx(((u32) (0x16800 + 0x800 * i) & 0x1FFFF) >> 5, -1);
         }
     }
 
@@ -1337,7 +1337,7 @@ void func_fe6_0808A918(fu8 save_id, struct SaveMenuProc * proc)
         {
             ReadGameSavePlaySt(save_id, &play_st);
 
-            proc->unk_37[save_id] = func_fe6_08070E0C(&play_st);
+            proc->unk_37[save_id] = GetChapterTitleExtra(&play_st);
             proc->unk_44[save_id] = play_st.time_saved;
 
             if ((play_st.flags & PLAY_FLAG_COMPLETE) != 0)
@@ -1381,8 +1381,8 @@ void func_fe6_0808A9F4(fu8 save_id)
         if (i != save_id)
             flags |= 2;
 
-        func_fe6_08070CB4(flags | 1, 0x1A + i * 2);
-        func_fe6_08070CB4(flags | 0, 0x1B + i * 2);
+        PutChapterTitlePalettle(flags | 1, 0x1A + i * 2);
+        PutChapterTitlePalettle(flags | 0, 0x1B + i * 2);
     }
 
     EnablePalSync();

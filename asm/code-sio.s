@@ -3,33 +3,33 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_080350C8
-func_fe6_080350C8: @ 0x080350C8
+	thumb_func_start SioPollingMsg
+SioPollingMsg: @ 0x080350C8
 	push {r4, r5, lr}
-	ldr r4, .L080350DC @ =gUnk_03004568
+	ldr r4, .L080350DC @ =gSioStateId
 	ldr r3, [r4]
 	cmp r3, #0
 	beq .L080350E4
 	cmp r3, #1
 	beq .L08035150
-	ldr r0, .L080350E0 @ =gUnk_030013BC
+	ldr r0, .L080350E0 @ =sSioId
 	ldr r0, [r0]
 	b .L080351DA
 	.align 2, 0
-.L080350DC: .4byte gUnk_03004568
-.L080350E0: .4byte gUnk_030013BC
+.L080350DC: .4byte gSioStateId
+.L080350E0: .4byte sSioId
 .L080350E4:
 	ldr r0, .L08035134 @ =0x04000134
 	strh r3, [r0]
 	ldr r2, .L08035138 @ =0x04000128
-	ldr r0, .L0803513C @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803513C @ =gSioSt
 	ldr r0, [r0]
 	ldr r1, .L08035140 @ =0x00001B78
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	mvns r0, r0
 	strh r0, [r2, #2]
-	ldr r1, .L08035144 @ =gUnk_030013B8
+	ldr r1, .L08035144 @ =sSioCnt
 	movs r5, #0xc0
 	lsls r5, r5, #7
 	adds r0, r5, #0
@@ -42,7 +42,7 @@ func_fe6_080350C8: @ 0x080350C8
 	ands r0, r2
 	cmp r0, #0
 	beq .L080351D6
-	ldr r1, .L08035148 @ =gUnk_030013BC
+	ldr r1, .L08035148 @ =sSioId
 	movs r0, #4
 	ands r2, r0
 	lsls r0, r2, #0x10
@@ -62,10 +62,10 @@ func_fe6_080350C8: @ 0x080350C8
 	.align 2, 0
 .L08035134: .4byte 0x04000134
 .L08035138: .4byte 0x04000128
-.L0803513C: .4byte gUnk_Sio_085C98F4
+.L0803513C: .4byte gSioSt
 .L08035140: .4byte 0x00001B78
-.L08035144: .4byte gUnk_030013B8
-.L08035148: .4byte gUnk_030013BC
+.L08035144: .4byte sSioCnt
+.L08035148: .4byte sSioId
 .L0803514C: .4byte gUnk_030044D4
 .L08035150:
 	ldr r0, .L08035184 @ =0x04000128
@@ -73,7 +73,7 @@ func_fe6_080350C8: @ 0x080350C8
 	adds r2, r0, #0
 	ldr r0, .L08035188 @ =gUnk_030044D4
 	ldr r0, [r0]
-	ldr r3, .L0803518C @ =gUnk_Sio_085C98F4
+	ldr r3, .L0803518C @ =gSioSt
 	cmp r0, #0
 	beq .L08035198
 	movs r0, #0x40
@@ -85,7 +85,7 @@ func_fe6_080350C8: @ 0x080350C8
 	ldrh r1, [r1, #0x14]
 	cmp r1, r0
 	beq .L08035198
-	ldr r1, .L08035194 @ =gUnk_030013BC
+	ldr r1, .L08035194 @ =sSioId
 	movs r0, #0x30
 	ands r2, r0
 	lsrs r0, r2, #4
@@ -96,9 +96,9 @@ func_fe6_080350C8: @ 0x080350C8
 	.align 2, 0
 .L08035184: .4byte 0x04000128
 .L08035188: .4byte gUnk_030044D4
-.L0803518C: .4byte gUnk_Sio_085C98F4
+.L0803518C: .4byte gSioSt
 .L08035190: .4byte 0x0000FFFF
-.L08035194: .4byte gUnk_030013BC
+.L08035194: .4byte sSioId
 .L08035198:
 	ldr r2, .L080351B8 @ =0x04000128
 	ldr r0, [r3]
@@ -107,11 +107,11 @@ func_fe6_080350C8: @ 0x080350C8
 	ldrh r0, [r0]
 	mvns r0, r0
 	strh r0, [r2, #2]
-	ldr r0, .L080351C0 @ =gUnk_030013BC
+	ldr r0, .L080351C0 @ =sSioId
 	ldr r0, [r0]
 	cmp r0, #0
 	beq .L080351C8
-	ldr r1, .L080351C4 @ =gUnk_030013B8
+	ldr r1, .L080351C4 @ =sSioCnt
 	movs r3, #0xc0
 	lsls r3, r3, #7
 	adds r0, r3, #0
@@ -119,10 +119,10 @@ func_fe6_080350C8: @ 0x080350C8
 	.align 2, 0
 .L080351B8: .4byte 0x04000128
 .L080351BC: .4byte 0x00001B78
-.L080351C0: .4byte gUnk_030013BC
-.L080351C4: .4byte gUnk_030013B8
+.L080351C0: .4byte sSioId
+.L080351C4: .4byte sSioCnt
 .L080351C8:
-	ldr r1, .L080351E0 @ =gUnk_030013B8
+	ldr r1, .L080351E0 @ =sSioCnt
 	movs r5, #0xc1
 	lsls r5, r5, #7
 	adds r0, r5, #0
@@ -138,10 +138,10 @@ func_fe6_080350C8: @ 0x080350C8
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L080351E0: .4byte gUnk_030013B8
+.L080351E0: .4byte sSioCnt
 
-	thumb_func_start func_fe6_080351E4
-func_fe6_080351E4: @ 0x080351E4
+	thumb_func_start GetSioIndex
+GetSioIndex: @ 0x080351E4
 	ldr r0, .L080351F0 @ =0x04000128
 	ldrh r1, [r0]
 	movs r0, #0x30
@@ -156,7 +156,7 @@ func_fe6_080351F4: @ 0x080351F4
 	push {r4, r5, lr}
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	ldr r3, .L0803521C @ =gUnk_Sio_085C98F4
+	ldr r3, .L0803521C @ =gSioSt
 	ldr r3, [r3]
 	ldr r5, .L08035220 @ =0x00001B78
 	adds r4, r3, r5
@@ -167,19 +167,19 @@ func_fe6_080351F4: @ 0x080351F4
 	adds r5, #4
 	adds r3, r3, r5
 	strh r2, [r3]
-	ldr r0, .L08035228 @ =gUnk_030013B8
+	ldr r0, .L08035228 @ =sSioCnt
 	strb r1, [r0]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803521C: .4byte gUnk_Sio_085C98F4
+.L0803521C: .4byte gSioSt
 .L08035220: .4byte 0x00001B78
 .L08035224: .4byte 0x00001B7A
-.L08035228: .4byte gUnk_030013B8
+.L08035228: .4byte sSioCnt
 
-	thumb_func_start func_fe6_0803522C
-func_fe6_0803522C: @ 0x0803522C
+	thumb_func_start ResetSioSW
+ResetSioSW: @ 0x0803522C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -187,7 +187,7 @@ func_fe6_0803522C: @ 0x0803522C
 	ldr r0, .L0803537C @ =gUnk_030044D0
 	movs r3, #0
 	str r3, [r0]
-	ldr r2, .L08035380 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08035380 @ =gSioSt
 	ldr r0, [r2]
 	movs r1, #0
 	strh r3, [r0, #0x22]
@@ -246,7 +246,7 @@ func_fe6_0803522C: @ 0x0803522C
 	movs r3, #0
 	ldr r5, .L08035390 @ =gUnk_03004580
 	movs r2, #0
-	ldr r4, .L08035380 @ =gUnk_Sio_085C98F4
+	ldr r4, .L08035380 @ =gSioSt
 .L080352B0:
 	adds r0, r3, r5
 	strb r2, [r0]
@@ -259,7 +259,7 @@ func_fe6_0803522C: @ 0x0803522C
 	cmp r3, #0x7f
 	ble .L080352B0
 	movs r4, #0
-	ldr r5, .L08035380 @ =gUnk_Sio_085C98F4
+	ldr r5, .L08035380 @ =gSioSt
 	movs r1, #0
 	movs r2, #0x9a
 	lsls r2, r2, #1
@@ -281,7 +281,7 @@ func_fe6_0803522C: @ 0x0803522C
 	cmp r4, #0x1f
 	ble .L080352CE
 	movs r4, #0
-	ldr r2, .L08035380 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08035380 @ =gSioSt
 	mov ip, r2
 	movs r5, #0
 	movs r7, #0x8c
@@ -313,7 +313,7 @@ func_fe6_0803522C: @ 0x0803522C
 	mov r1, sb
 	strh r0, [r1]
 	movs r1, #0
-	ldr r0, .L08035398 @ =0x0203B218
+	ldr r0, .L08035398 @ =gSioOutgoing
 	movs r3, #0x80
 	lsls r3, r3, #2
 .L08035330:
@@ -323,13 +323,13 @@ func_fe6_0803522C: @ 0x0803522C
 	cmp r3, #0
 	bne .L08035330
 	movs r4, #0
-	ldr r2, .L0803539C @ =gUnk_030013D0
+	ldr r2, .L0803539C @ =sReadCursor
 	mov r8, r2
 	movs r5, #0
 	ldr r0, .L080353A0 @ =0x000001FF
 	mov ip, r0
-	ldr r7, .L080353A4 @ =0x0203B618
-	ldr r6, .L080353A8 @ =gUnk_030013D8
+	ldr r7, .L080353A4 @ =gSioIncoming
+	ldr r6, .L080353A8 @ =sRecvCursor
 .L0803534A:
 	lsls r0, r4, #1
 	mov r1, r8
@@ -358,22 +358,22 @@ func_fe6_0803522C: @ 0x0803522C
 	bx r0
 	.align 2, 0
 .L0803537C: .4byte gUnk_030044D0
-.L08035380: .4byte gUnk_Sio_085C98F4
+.L08035380: .4byte gSioSt
 .L08035384: .4byte 0x00001B74
 .L08035388: .4byte gUnk_030013C8
 .L0803538C: .4byte gUnk_030013CA
 .L08035390: .4byte gUnk_03004580
 .L08035394: .4byte 0x000012B4
-.L08035398: .4byte 0x0203B218
-.L0803539C: .4byte gUnk_030013D0
+.L08035398: .4byte gSioOutgoing
+.L0803539C: .4byte sReadCursor
 .L080353A0: .4byte 0x000001FF
-.L080353A4: .4byte 0x0203B618
-.L080353A8: .4byte gUnk_030013D8
+.L080353A4: .4byte gSioIncoming
+.L080353A8: .4byte sRecvCursor
 
-	thumb_func_start func_fe6_080353AC
-func_fe6_080353AC: @ 0x080353AC
+	thumb_func_start SioInit_SW
+SioInit_SW: @ 0x080353AC
 	push {r4, lr}
-	ldr r2, .L08035408 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08035408 @ =gSioSt
 	ldr r0, [r2]
 	movs r4, #0
 	strb r4, [r0]
@@ -407,26 +407,26 @@ func_fe6_080353AC: @ 0x080353AC
 	movs r2, #0x88
 	bl func_fe6_080351F4
 	movs r0, #0
-	bl func_fe6_08036494
-	bl func_fe6_0803522C
+	bl SetXmapTransferState
+	bl ResetSioSW
 	ldr r0, .L08035410 @ =gUnk_030013C4
 	str r4, [r0]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08035408: .4byte gUnk_Sio_085C98F4
+.L08035408: .4byte gSioSt
 .L0803540C: .4byte 0x00004321
 .L08035410: .4byte gUnk_030013C4
 
-	thumb_func_start func_fe6_08035414
-func_fe6_08035414: @ 0x08035414
+	thumb_func_start SioInit_HW
+SioInit_HW: @ 0x08035414
 	push {r4, lr}
 	ldr r0, .L08035464 @ =0x04000134
 	movs r3, #0
 	strh r3, [r0]
 	ldr r2, .L08035468 @ =0x04000128
-	ldr r1, .L0803546C @ =gUnk_030013B8
+	ldr r1, .L0803546C @ =sSioCnt
 	movs r4, #0x80
 	lsls r4, r4, #6
 	adds r0, r4, #0
@@ -440,9 +440,9 @@ func_fe6_08035414: @ 0x08035414
 	movs r0, #0
 	str r0, [r1]
 	str r0, [r2]
-	ldr r1, .L0803547C @ =gUnk_03004568
+	ldr r1, .L0803547C @ =gSioStateId
 	str r0, [r1]
-	ldr r1, .L08035480 @ =gUnk_030013BC
+	ldr r1, .L08035480 @ =sSioId
 	subs r0, #1
 	str r0, [r1]
 	ldr r1, .L08035484 @ =func_fe6_080354F0
@@ -462,18 +462,18 @@ func_fe6_08035414: @ 0x08035414
 	.align 2, 0
 .L08035464: .4byte 0x04000134
 .L08035468: .4byte 0x04000128
-.L0803546C: .4byte gUnk_030013B8
+.L0803546C: .4byte sSioCnt
 .L08035470: .4byte 0x0400010E
 .L08035474: .4byte gUnk_030044D4
 .L08035478: .4byte gUnk_030044D0
-.L0803547C: .4byte gUnk_03004568
-.L08035480: .4byte gUnk_030013BC
+.L0803547C: .4byte gSioStateId
+.L08035480: .4byte sSioId
 .L08035484: .4byte func_fe6_080354F0
 .L08035488: .4byte func_fe6_08035880
 .L0803548C: .4byte 0x04000200
 
-	thumb_func_start func_fe6_08035490
-func_fe6_08035490: @ 0x08035490
+	thumb_func_start SioReleaseIrq
+SioReleaseIrq: @ 0x08035490
 	push {lr}
 	ldr r1, .L080354D4 @ =0x04000134
 	movs r2, #0x80
@@ -488,9 +488,9 @@ func_fe6_08035490: @ 0x08035490
 	movs r0, #0
 	str r0, [r1]
 	str r0, [r2]
-	ldr r1, .L080354E0 @ =gUnk_03004568
+	ldr r1, .L080354E0 @ =gSioStateId
 	str r0, [r1]
-	ldr r1, .L080354E4 @ =gUnk_030013BC
+	ldr r1, .L080354E4 @ =sSioId
 	subs r0, #1
 	str r0, [r1]
 	movs r0, #7
@@ -510,8 +510,8 @@ func_fe6_08035490: @ 0x08035490
 .L080354D4: .4byte 0x04000134
 .L080354D8: .4byte gUnk_030044D4
 .L080354DC: .4byte gUnk_030044D0
-.L080354E0: .4byte gUnk_03004568
-.L080354E4: .4byte gUnk_030013BC
+.L080354E0: .4byte gSioStateId
+.L080354E4: .4byte sSioId
 .L080354E8: .4byte 0x04000200
 .L080354EC: .4byte 0x0000FF3F
 
@@ -528,7 +528,7 @@ func_fe6_080354F0: @ 0x080354F0
 	ldr r0, .L08035584 @ =gUnk_030044D4
 	movs r2, #1
 	str r2, [r0]
-	ldr r1, .L08035588 @ =gUnk_Sio_085C98F4
+	ldr r1, .L08035588 @ =gSioSt
 	ldr r0, [r1]
 	mov r3, sb
 	strb r3, [r0, #0x1e]
@@ -557,7 +557,7 @@ func_fe6_080354F0: @ 0x080354F0
 	ldr r0, [r0]
 	str r0, [sp]
 	str r1, [sp, #4]
-	ldr r1, .L0803559C @ =gUnk_030013B8
+	ldr r1, .L0803559C @ =sSioCnt
 	movs r2, #0xc0
 	lsls r2, r2, #7
 	adds r0, r2, #0
@@ -577,7 +577,7 @@ func_fe6_080354F0: @ 0x080354F0
 	beq .L080355A8
 	cmp r0, sl
 	beq .L080355A8
-	ldr r1, .L08035588 @ =gUnk_Sio_085C98F4
+	ldr r1, .L08035588 @ =gSioSt
 	ldr r0, [r1]
 	adds r0, #0xb
 	adds r2, r0, r5
@@ -596,12 +596,12 @@ func_fe6_080354F0: @ 0x080354F0
 	b .L080355E2
 	.align 2, 0
 .L08035584: .4byte gUnk_030044D4
-.L08035588: .4byte gUnk_Sio_085C98F4
+.L08035588: .4byte gSioSt
 .L0803558C: .4byte gUnk_030044D0
 .L08035590: .4byte 0x0400010E
 .L08035594: .4byte 0x04000128
 .L08035598: .4byte 0x04000120
-.L0803559C: .4byte gUnk_030013B8
+.L0803559C: .4byte sSioCnt
 .L080355A0: .4byte 0x00007FFF
 .L080355A4: .4byte 0x0000FFFF
 .L080355A8:
@@ -612,7 +612,7 @@ func_fe6_080354F0: @ 0x080354F0
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne .L080355E2
-	ldr r0, .L080355D4 @ =gUnk_Sio_085C98F4
+	ldr r0, .L080355D4 @ =gSioSt
 	ldr r1, [r0]
 	adds r0, r1, #0
 	adds r0, #0x12
@@ -627,7 +627,7 @@ func_fe6_080354F0: @ 0x080354F0
 	adds r1, #1
 	b .L080355E0
 	.align 2, 0
-.L080355D4: .4byte gUnk_Sio_085C98F4
+.L080355D4: .4byte gSioSt
 .L080355D8:
 	adds r0, r1, #0
 	adds r0, #0x1a
@@ -636,15 +636,15 @@ func_fe6_080354F0: @ 0x080354F0
 .L080355E0:
 	strb r1, [r0]
 .L080355E2:
-	ldr r3, .L0803563C @ =gUnk_Sio_085C98F4
+	ldr r3, .L0803563C @ =gSioSt
 	mov r8, r3
 	ldr r6, [r3]
 	adds r3, r6, #0
 	adds r3, #0x12
 	adds r3, r3, r7
 	mov ip, r3
-	ldr r1, .L08035640 @ =0x0203B618
-	ldr r2, .L08035644 @ =gUnk_030013D8
+	ldr r1, .L08035640 @ =gSioIncoming
+	ldr r2, .L08035644 @ =sRecvCursor
 	adds r2, r7, r2
 	ldrh r3, [r2]
 	lsls r0, r3, #3
@@ -681,9 +681,9 @@ func_fe6_080354F0: @ 0x080354F0
 	beq .L080356B0
 	b .L08035708
 	.align 2, 0
-.L0803563C: .4byte gUnk_Sio_085C98F4
-.L08035640: .4byte 0x0203B618
-.L08035644: .4byte gUnk_030013D8
+.L0803563C: .4byte gSioSt
+.L08035640: .4byte gSioIncoming
+.L08035644: .4byte sRecvCursor
 .L08035648: .4byte 0x0000FFFF
 .L0803564C: .4byte 0x000001FF
 .L08035650:
@@ -693,7 +693,7 @@ func_fe6_080354F0: @ 0x080354F0
 	ldrh r0, [r0]
 	cmp r0, r3
 	beq .L08035676
-	ldr r1, .L080356A4 @ =0x0203B218
+	ldr r1, .L080356A4 @ =gSioOutgoing
 	lsls r0, r3, #1
 	adds r0, r0, r1
 	ldrh r1, [r0]
@@ -704,7 +704,7 @@ func_fe6_080354F0: @ 0x080354F0
 	ands r1, r3
 	strh r1, [r2]
 	movs r1, #1
-	bl func_fe6_08036078
+	bl SioSend16
 .L08035676:
 	ldr r1, [r4]
 	movs r0, #6
@@ -727,7 +727,7 @@ func_fe6_080354F0: @ 0x080354F0
 	.align 2, 0
 .L0803569C: .4byte gUnk_030013CA
 .L080356A0: .4byte gUnk_030013C8
-.L080356A4: .4byte 0x0203B218
+.L080356A4: .4byte gSioOutgoing
 .L080356A8: .4byte 0x00001B7C
 .L080356AC: .4byte 0x0400010C
 .L080356B0:
@@ -738,7 +738,7 @@ func_fe6_080354F0: @ 0x080354F0
 	adds r0, r6, #0
 	adds r0, #0x30
 	movs r1, #1
-	bl func_fe6_08036078
+	bl SioSend16
 	mov r0, r8
 	ldr r1, [r0]
 	ldr r0, .L08035720 @ =0x00005FFF
@@ -770,7 +770,7 @@ func_fe6_080354F0: @ 0x080354F0
 	mov r2, sb
 	cmp r2, #0
 	bne .L08035708
-	ldr r0, .L08035728 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035728 @ =gSioSt
 	ldr r0, [r0]
 	ldr r3, .L0803572C @ =0x00001B7E
 	adds r0, r0, r3
@@ -791,7 +791,7 @@ func_fe6_080354F0: @ 0x080354F0
 	.align 2, 0
 .L08035720: .4byte 0x00005FFF
 .L08035724: .4byte 0x00009ABC
-.L08035728: .4byte gUnk_Sio_085C98F4
+.L08035728: .4byte gSioSt
 .L0803572C: .4byte 0x00001B7E
 .L08035730: .4byte gUnk_030044D0
 
@@ -799,7 +799,7 @@ func_fe6_080354F0: @ 0x080354F0
 func_fe6_08035734: @ 0x08035734
 	push {r4, r5, r6, lr}
 	sub sp, #4
-	ldr r0, .L08035770 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035770 @ =gSioSt
 	ldr r2, [r0]
 	adds r5, r0, #0
 	ldrh r0, [r2, #4]
@@ -830,7 +830,7 @@ func_fe6_08035734: @ 0x08035734
 	beq .L080357B4
 	b .L080357DC
 	.align 2, 0
-.L08035770: .4byte gUnk_Sio_085C98F4
+.L08035770: .4byte gSioSt
 .L08035774:
 	cmp r0, #3
 	bne .L080357DC
@@ -845,7 +845,7 @@ func_fe6_08035734: @ 0x08035734
 	strb r0, [r1]
 	bl StartSioErrorScreen
 .L0803578E:
-	ldr r4, .L08035800 @ =gUnk_Sio_085C98F4
+	ldr r4, .L08035800 @ =gSioSt
 	ldr r0, [r4]
 	ldrb r0, [r0, #1]
 	cmp r0, #0
@@ -864,9 +864,9 @@ func_fe6_08035734: @ 0x08035734
 	bl StartSioErrorScreen
 .L080357B4:
 	movs r4, #0
-	ldr r5, .L08035800 @ =gUnk_Sio_085C98F4
+	ldr r5, .L08035800 @ =gSioSt
 .L080357B8:
-	ldr r0, .L08035800 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035800 @ =gSioSt
 	ldr r1, [r0]
 	adds r0, r1, #0
 	adds r0, #0x1a
@@ -903,7 +903,7 @@ func_fe6_08035734: @ 0x08035734
 	strh r0, [r1, #4]
 	b .L08035874
 	.align 2, 0
-.L08035800: .4byte gUnk_Sio_085C98F4
+.L08035800: .4byte gSioSt
 .L08035804:
 	mov r0, sp
 	bl func_fe6_080361A4
@@ -913,7 +913,7 @@ func_fe6_08035734: @ 0x08035734
 	adds r1, #6
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl func_fe6_08035DC8
+	bl SioSend
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	ble .L08035832
@@ -927,7 +927,7 @@ func_fe6_08035734: @ 0x08035734
 	adds r0, #0x2e
 	strb r6, [r0]
 .L08035832:
-	ldr r2, .L0803584C @ =gUnk_Sio_085C98F4
+	ldr r2, .L0803584C @ =gSioSt
 	ldr r1, [r2]
 	ldrb r0, [r1, #0x10]
 	adds r0, #1
@@ -939,7 +939,7 @@ func_fe6_08035734: @ 0x08035734
 	strb r0, [r4, #0x10]
 	b .L08035874
 	.align 2, 0
-.L0803584C: .4byte gUnk_Sio_085C98F4
+.L0803584C: .4byte gSioSt
 .L08035850:
 	subs r0, #2
 	lsls r0, r0, #0x18
@@ -954,7 +954,7 @@ func_fe6_08035734: @ 0x08035734
 	adds r0, #0x30
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl func_fe6_08036078
+	bl SioSend16
 	ldr r1, [r5]
 	ldr r0, .L0803587C @ =0x00005FFF
 	strh r0, [r1, #0x30]
@@ -972,7 +972,7 @@ func_fe6_08035880: @ 0x08035880
 	movs r0, #0
 	strh r0, [r1]
 	ldr r2, .L0803589C @ =0x04000128
-	ldr r1, .L080358A0 @ =gUnk_030013B8
+	ldr r1, .L080358A0 @ =sSioCnt
 	movs r3, #0xc1
 	lsls r3, r3, #7
 	adds r0, r3, #0
@@ -983,7 +983,7 @@ func_fe6_08035880: @ 0x08035880
 	.align 2, 0
 .L08035898: .4byte 0x0400010E
 .L0803589C: .4byte 0x04000128
-.L080358A0: .4byte gUnk_030013B8
+.L080358A0: .4byte sSioCnt
 
 	thumb_func_start func_fe6_080358A4
 func_fe6_080358A4: @ 0x080358A4
@@ -1019,7 +1019,7 @@ func_fe6_080358DC: @ 0x080358DC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r0, .L08035930 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035930 @ =gSioSt
 	ldr r2, [r0]
 	ldrb r1, [r2, #1]
 	cmp r1, #1
@@ -1036,7 +1036,7 @@ func_fe6_080358DC: @ 0x080358DC
 .L080358FC:
 	lsls r4, r7, #0x18
 	asrs r0, r4, #0x18
-	ldr r5, .L08035930 @ =gUnk_Sio_085C98F4
+	ldr r5, .L08035930 @ =gSioSt
 	ldr r1, [r5]
 	adds r1, #0x32
 	bl func_fe6_08035EC0
@@ -1061,7 +1061,7 @@ func_fe6_080358DC: @ 0x080358DC
 	beq .L08035948
 	b .L08035C42
 	.align 2, 0
-.L08035930: .4byte gUnk_Sio_085C98F4
+.L08035930: .4byte gSioSt
 .L08035934:
 	cmp r0, #0x2e
 	beq .L08035948
@@ -1075,7 +1075,7 @@ func_fe6_080358DC: @ 0x080358DC
 	beq .L08035948
 	b .L08035C42
 .L08035948:
-	ldr r6, .L080359A0 @ =gUnk_Sio_085C98F4
+	ldr r6, .L080359A0 @ =gSioSt
 	ldr r3, [r6]
 	adds r5, r3, #0
 	adds r5, #0x32
@@ -1103,7 +1103,7 @@ func_fe6_080358DC: @ 0x080358DC
 	ldrh r0, [r0]
 	cmp r4, r0
 	beq .L080359A8
-	ldr r0, .L080359A4 @ =gUnk_0300456C
+	ldr r0, .L080359A4 @ =gSioMsgBuf
 	movs r1, #0x1e
 	strb r1, [r0]
 	ldrb r3, [r3, #6]
@@ -1117,15 +1117,15 @@ func_fe6_080358DC: @ 0x080358DC
 	ldrh r1, [r1]
 	strh r1, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	b .L080358FC
 	.align 2, 0
-.L080359A0: .4byte gUnk_Sio_085C98F4
-.L080359A4: .4byte gUnk_0300456C
+.L080359A0: .4byte gSioSt
+.L080359A4: .4byte gSioMsgBuf
 .L080359A8:
 	adds r0, r5, #0
 	bl func_fe6_08036130
-	ldr r0, .L080359D0 @ =gUnk_0300456C
+	ldr r0, .L080359D0 @ =gSioMsgBuf
 	movs r1, #0x1e
 	strb r1, [r0]
 	ldr r2, [r6]
@@ -1143,13 +1143,13 @@ func_fe6_080358DC: @ 0x080358DC
 	strh r1, [r0, #2]
 	b .L08035A68
 	.align 2, 0
-.L080359D0: .4byte gUnk_0300456C
+.L080359D0: .4byte gSioMsgBuf
 .L080359D4:
 	movs r2, #0
 	lsls r1, r7, #4
 	adds r0, r7, #1
 	mov r8, r0
-	ldr r0, .L08035A38 @ =0x0203C618
+	ldr r0, .L08035A38 @ =gLinkArenaSt
 	subs r1, r1, r7
 	adds r3, #0x38
 	adds r0, #0xa1
@@ -1167,7 +1167,7 @@ func_fe6_080358DC: @ 0x080358DC
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L08035A12
-	ldr r0, .L08035A3C @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035A3C @ =gSioSt
 	ldr r0, [r0]
 	ldrb r1, [r0]
 	ldrb r2, [r5, #2]
@@ -1184,7 +1184,7 @@ func_fe6_080358DC: @ 0x080358DC
 	cmp r0, #1
 	bne .L08035A44
 .L08035A20:
-	ldr r0, .L08035A3C @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035A3C @ =gSioSt
 	ldr r2, [r0]
 	movs r0, #6
 	ldrsb r0, [r2, r0]
@@ -1192,17 +1192,17 @@ func_fe6_080358DC: @ 0x080358DC
 	beq .L08035A2E
 	b .L08035C42
 .L08035A2E:
-	ldr r0, .L08035A40 @ =gUnk_0300456C
+	ldr r0, .L08035A40 @ =gSioMsgBuf
 	movs r1, #0x16
 	strb r1, [r0]
 	ldrb r1, [r2, #6]
 	b .L08035A64
 	.align 2, 0
-.L08035A38: .4byte 0x0203C618
-.L08035A3C: .4byte gUnk_Sio_085C98F4
-.L08035A40: .4byte gUnk_0300456C
+.L08035A38: .4byte gLinkArenaSt
+.L08035A3C: .4byte gSioSt
+.L08035A40: .4byte gSioMsgBuf
 .L08035A44:
-	ldr r0, .L08035A70 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035A70 @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #6
 	ldrsb r0, [r1, r0]
@@ -1217,7 +1217,7 @@ func_fe6_080358DC: @ 0x080358DC
 	beq .L08035A5E
 	movs r2, #0x17
 .L08035A5E:
-	ldr r0, .L08035A74 @ =gUnk_0300456C
+	ldr r0, .L08035A74 @ =gSioMsgBuf
 	strb r2, [r0]
 	ldrb r1, [r1, #6]
 .L08035A64:
@@ -1225,11 +1225,11 @@ func_fe6_080358DC: @ 0x080358DC
 	strh r7, [r0, #2]
 .L08035A68:
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	b .L08035C42
 	.align 2, 0
-.L08035A70: .4byte gUnk_Sio_085C98F4
-.L08035A74: .4byte gUnk_0300456C
+.L08035A70: .4byte gSioSt
+.L08035A74: .4byte gSioMsgBuf
 .L08035A78:
 	ldr r0, [r5]
 	adds r5, r0, #0
@@ -1260,7 +1260,7 @@ func_fe6_080358DC: @ 0x080358DC
 	.4byte .L08035C42 @ case 9
 	.4byte .L08035ADC @ case 10
 .L08035AC4:
-	ldr r0, .L08035AD8 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035AD8 @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #1
 	ldrb r5, [r5, #1]
@@ -1270,9 +1270,9 @@ func_fe6_080358DC: @ 0x080358DC
 	strb r0, [r1, #0xa]
 	b .L08035C3E
 	.align 2, 0
-.L08035AD8: .4byte gUnk_Sio_085C98F4
+.L08035AD8: .4byte gSioSt
 .L08035ADC:
-	ldr r6, .L08035B80 @ =gUnk_Sio_085C98F4
+	ldr r6, .L08035B80 @ =gSioSt
 	ldr r3, [r6]
 	adds r0, r3, #0
 	adds r0, #0x2e
@@ -1359,7 +1359,7 @@ func_fe6_080358DC: @ 0x080358DC
 	strb r3, [r0, #0x10]
 	b .L08035C42
 	.align 2, 0
-.L08035B80: .4byte gUnk_Sio_085C98F4
+.L08035B80: .4byte gSioSt
 .L08035B84: .4byte gUnk_030013C0
 .L08035B88: .4byte 0x00001B74
 .L08035B8C:
@@ -1370,7 +1370,7 @@ func_fe6_080358DC: @ 0x080358DC
 	mov r8, r7
 	cmp r0, #0
 	bne .L08035C42
-	ldr r3, .L08035BCC @ =gUnk_Sio_085C98F4
+	ldr r3, .L08035BCC @ =gSioSt
 	ldr r0, [r3]
 	movs r1, #6
 	ldrsb r1, [r0, r1]
@@ -1394,7 +1394,7 @@ func_fe6_080358DC: @ 0x080358DC
 	ldr r1, [r3]
 	b .L08035BF0
 	.align 2, 0
-.L08035BCC: .4byte gUnk_Sio_085C98F4
+.L08035BCC: .4byte gSioSt
 .L08035BD0:
 	ldrb r0, [r5, #2]
 	bl func_fe6_08035CB0
@@ -1403,7 +1403,7 @@ func_fe6_080358DC: @ 0x080358DC
 	mov r8, r7
 	cmp r0, #0
 	bne .L08035C42
-	ldr r2, .L08035BF8 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08035BF8 @ =gSioSt
 	ldr r0, [r2]
 	adds r0, #0xb
 	ldrh r5, [r5, #2]
@@ -1416,16 +1416,16 @@ func_fe6_080358DC: @ 0x080358DC
 	strh r0, [r1, #4]
 	b .L08035C42
 	.align 2, 0
-.L08035BF8: .4byte gUnk_Sio_085C98F4
+.L08035BF8: .4byte gSioSt
 .L08035BFC:
-	ldr r0, .L08035C30 @ =0x0203C618
+	ldr r0, .L08035C30 @ =gLinkArenaSt
 	adds r0, #0x9c
 	ldrh r1, [r5, #2]
 	adds r0, r1, r0
 	movs r4, #0
 	movs r2, #1
 	strb r2, [r0]
-	ldr r3, .L08035C34 @ =gUnk_Sio_085C98F4
+	ldr r3, .L08035C34 @ =gSioSt
 	ldr r0, [r3]
 	adds r0, #0xb
 	ldrh r1, [r5, #2]
@@ -1445,8 +1445,8 @@ func_fe6_080358DC: @ 0x080358DC
 	strb r4, [r0]
 	b .L08035C3E
 	.align 2, 0
-.L08035C30: .4byte 0x0203C618
-.L08035C34: .4byte gUnk_Sio_085C98F4
+.L08035C30: .4byte gLinkArenaSt
+.L08035C34: .4byte gSioSt
 .L08035C38:
 	ldrb r0, [r5, #1]
 	bl func_fe6_080358A4
@@ -1526,7 +1526,7 @@ func_fe6_08035C84: @ 0x08035C84
 func_fe6_08035CB0: @ 0x08035CB0
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r1, .L08035CCC @ =gUnk_Sio_085C98F4
+	ldr r1, .L08035CCC @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #9]
 	asrs r1, r0
@@ -1538,7 +1538,7 @@ func_fe6_08035CB0: @ 0x08035CB0
 	movs r0, #0
 	b .L08035CD2
 	.align 2, 0
-.L08035CCC: .4byte gUnk_Sio_085C98F4
+.L08035CCC: .4byte gSioSt
 .L08035CD0:
 	movs r0, #1
 .L08035CD2:
@@ -1548,7 +1548,7 @@ func_fe6_08035CB0: @ 0x08035CB0
 func_fe6_08035CD4: @ 0x08035CD4
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r1, .L08035CF0 @ =gUnk_Sio_085C98F4
+	ldr r1, .L08035CF0 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #8]
 	asrs r1, r0
@@ -1560,7 +1560,7 @@ func_fe6_08035CD4: @ 0x08035CD4
 	movs r0, #0
 	b .L08035CF6
 	.align 2, 0
-.L08035CF0: .4byte gUnk_Sio_085C98F4
+.L08035CF0: .4byte gSioSt
 .L08035CF4:
 	movs r0, #1
 .L08035CF6:
@@ -1569,7 +1569,7 @@ func_fe6_08035CD4: @ 0x08035CD4
 	thumb_func_start func_fe6_08035CF8
 func_fe6_08035CF8: @ 0x08035CF8
 	push {r4, lr}
-	ldr r2, .L08035D24 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08035D24 @ =gSioSt
 	ldr r3, [r2]
 	ldrh r1, [r3, #2]
 	movs r0, #0
@@ -1591,7 +1591,7 @@ func_fe6_08035CF8: @ 0x08035CF8
 	strb r0, [r1]
 	b .L08035D34
 	.align 2, 0
-.L08035D24: .4byte gUnk_Sio_085C98F4
+.L08035D24: .4byte gSioSt
 .L08035D28: .4byte 0x04000128
 .L08035D2C:
 	ldr r0, [r2]
@@ -1616,7 +1616,7 @@ func_fe6_08035CF8: @ 0x08035CF8
 
 	thumb_func_start func_fe6_08035D4C
 func_fe6_08035D4C: @ 0x08035D4C
-	ldr r0, .L08035D68 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08035D68 @ =gSioSt
 	ldr r0, [r0]
 	ldr r2, .L08035D6C @ =0x00001B75
 	adds r1, r0, r2
@@ -1631,7 +1631,7 @@ func_fe6_08035D4C: @ 0x08035D4C
 	subs r0, r2, r0
 	b .L08035D7A
 	.align 2, 0
-.L08035D68: .4byte gUnk_Sio_085C98F4
+.L08035D68: .4byte gSioSt
 .L08035D6C: .4byte 0x00001B75
 .L08035D70: .4byte 0x00001B74
 .L08035D74:
@@ -1646,7 +1646,7 @@ func_fe6_08035D7C: @ 0x08035D7C
 	push {r4, lr}
 	movs r2, #0
 	movs r1, #0
-	ldr r4, .L08035DBC @ =gUnk_Sio_085C98F4
+	ldr r4, .L08035DBC @ =gSioSt
 	ldr r0, [r4]
 	adds r3, r0, #0
 	adds r3, #0xb
@@ -1680,7 +1680,7 @@ func_fe6_08035D7C: @ 0x08035D7C
 	movs r0, #1
 	b .L08035DC2
 	.align 2, 0
-.L08035DBC: .4byte gUnk_Sio_085C98F4
+.L08035DBC: .4byte gSioSt
 .L08035DC0:
 	movs r0, #0
 .L08035DC2:
@@ -1688,8 +1688,8 @@ func_fe6_08035D7C: @ 0x08035D7C
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_08035DC8
-func_fe6_08035DC8: @ 0x08035DC8
+	thumb_func_start SioSend
+SioSend: @ 0x08035DC8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1707,7 +1707,7 @@ func_fe6_08035DC8: @ 0x08035DC8
 	lsrs r5, r1, #0x11
 	ldr r1, .L08035E6C @ =0x00004FFF
 	adds r4, r5, r1
-	ldr r2, .L08035E70 @ =0x0203B218
+	ldr r2, .L08035E70 @ =gSioOutgoing
 	lsls r0, r3, #1
 	adds r0, r0, r2
 	strh r1, [r0]
@@ -1775,7 +1775,7 @@ func_fe6_08035DC8: @ 0x08035DC8
 	.align 2, 0
 .L08035E68: .4byte gUnk_030013CA
 .L08035E6C: .4byte 0x00004FFF
-.L08035E70: .4byte 0x0203B218
+.L08035E70: .4byte gSioOutgoing
 .L08035E74: .4byte 0x000001FF
 .L08035E78: .4byte gUnk_030013C8
 .L08035E7C:
@@ -1830,19 +1830,19 @@ func_fe6_08035EC0: @ 0x08035EC0
 	mov r8, r1
 	movs r2, #0
 	str r2, [sp, #0xc]
-	ldr r1, .L08035F38 @ =gUnk_030013D0
+	ldr r1, .L08035F38 @ =sReadCursor
 	lsrs r3, r0, #0x18
 	str r3, [sp]
 	asrs r2, r0, #0x17
 	adds r3, r2, r1
-	ldr r0, .L08035F3C @ =gUnk_030013D8
+	ldr r0, .L08035F3C @ =sRecvCursor
 	adds r7, r2, r0
 	ldrh r5, [r7]
 	mov sl, r1
 	ldrh r0, [r3]
 	cmp r0, r5
 	beq .L08035FC2
-	ldr r1, .L08035F40 @ =0x0203B618
+	ldr r1, .L08035F40 @ =gSioIncoming
 	ldrh r4, [r3]
 	lsls r0, r4, #3
 	adds r0, r2, r0
@@ -1881,16 +1881,16 @@ func_fe6_08035EC0: @ 0x08035EC0
 	bne .L08035F14
 	b .L08035F7A
 	.align 2, 0
-.L08035F38: .4byte gUnk_030013D0
-.L08035F3C: .4byte gUnk_030013D8
-.L08035F40: .4byte 0x0203B618
+.L08035F38: .4byte sReadCursor
+.L08035F3C: .4byte sRecvCursor
+.L08035F40: .4byte gSioIncoming
 .L08035F44: .4byte 0x00004FFF
 .L08035F48: .4byte 0x000001FF
 .L08035F4C:
 	ldr r1, [sp]
 	lsls r0, r1, #0x18
 	asrs r1, r0, #0x17
-	ldr r3, .L08035F6C @ =gUnk_030013D8
+	ldr r3, .L08035F6C @ =sRecvCursor
 	adds r2, r1, r3
 	add r1, sl
 	ldrh r2, [r2]
@@ -1904,7 +1904,7 @@ func_fe6_08035EC0: @ 0x08035EC0
 	subs r0, r0, r1
 	b .L08035F72
 	.align 2, 0
-.L08035F6C: .4byte gUnk_030013D8
+.L08035F6C: .4byte sRecvCursor
 .L08035F70:
 	subs r0, r2, r1
 .L08035F72:
@@ -2051,11 +2051,11 @@ func_fe6_08035EC0: @ 0x08035EC0
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_08036078
-func_fe6_08036078: @ 0x08036078
+	thumb_func_start SioSend16
+SioSend16: @ 0x08036078
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L08036090 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08036090 @ =gSioSt
 	ldr r3, [r0]
 	movs r2, #6
 	ldrsb r2, [r3, r2]
@@ -2066,7 +2066,7 @@ func_fe6_08036078: @ 0x08036078
 	adds r0, r2, #0
 	b .L080360B6
 	.align 2, 0
-.L08036090: .4byte gUnk_Sio_085C98F4
+.L08036090: .4byte gSioSt
 .L08036094:
 	ldr r2, .L080360BC @ =0x04000128
 	ldrh r0, [r4]
@@ -2077,7 +2077,7 @@ func_fe6_08036078: @ 0x08036078
 	bne .L080360B4
 	cmp r1, #0
 	bge .L080360B4
-	ldr r1, .L080360C0 @ =gUnk_030013B8
+	ldr r1, .L080360C0 @ =sSioCnt
 	movs r3, #0xc1
 	lsls r3, r3, #7
 	adds r0, r3, #0
@@ -2092,14 +2092,14 @@ func_fe6_08036078: @ 0x08036078
 	bx r1
 	.align 2, 0
 .L080360BC: .4byte 0x04000128
-.L080360C0: .4byte gUnk_030013B8
+.L080360C0: .4byte sSioCnt
 
 	thumb_func_start func_fe6_080360C4
 func_fe6_080360C4: @ 0x080360C4
 	push {r4, r5, r6, r7, lr}
 	adds r2, r1, #0
-	ldr r1, .L080360EC @ =gUnk_030013D0
-	ldr r0, .L080360F0 @ =gUnk_030013D8
+	ldr r1, .L080360EC @ =sReadCursor
+	ldr r0, .L080360F0 @ =sRecvCursor
 	ldrh r3, [r1]
 	ldrh r0, [r0]
 	cmp r3, r0
@@ -2116,12 +2116,12 @@ func_fe6_080360C4: @ 0x080360C4
 	rsbs r0, r0, #0
 	b .L08036122
 	.align 2, 0
-.L080360EC: .4byte gUnk_030013D0
-.L080360F0: .4byte gUnk_030013D8
+.L080360EC: .4byte sReadCursor
+.L080360F0: .4byte sRecvCursor
 .L080360F4: .4byte 0x00007FFF
 .L080360F8:
 	movs r4, #0
-	ldr r6, .L08036128 @ =0x0203B618
+	ldr r6, .L08036128 @ =gSioIncoming
 	ldr r5, .L0803612C @ =0x000001FF
 	adds r3, r1, #0
 .L08036100:
@@ -2147,14 +2147,14 @@ func_fe6_080360C4: @ 0x080360C4
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08036128: .4byte 0x0203B618
+.L08036128: .4byte gSioIncoming
 .L0803612C: .4byte 0x000001FF
 
 	thumb_func_start func_fe6_08036130
 func_fe6_08036130: @ 0x08036130
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r3, .L08036198 @ =gUnk_Sio_085C98F4
+	ldr r3, .L08036198 @ =gSioSt
 	ldr r2, [r3]
 	ldr r0, .L0803619C @ =0x00001B77
 	adds r1, r2, r0
@@ -2206,7 +2206,7 @@ func_fe6_08036130: @ 0x08036130
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036198: .4byte gUnk_Sio_085C98F4
+.L08036198: .4byte gSioSt
 .L0803619C: .4byte 0x00001B77
 .L080361A0: .4byte 0x000012B4
 
@@ -2214,7 +2214,7 @@ func_fe6_08036130: @ 0x08036130
 func_fe6_080361A4: @ 0x080361A4
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
-	ldr r0, .L080361F4 @ =gUnk_Sio_085C98F4
+	ldr r0, .L080361F4 @ =gSioSt
 	ldr r3, [r0]
 	ldr r0, .L080361F8 @ =0x00001B74
 	adds r4, r3, r0
@@ -2252,7 +2252,7 @@ func_fe6_080361A4: @ 0x080361A4
 	adds r0, #4
 	b .L08036202
 	.align 2, 0
-.L080361F4: .4byte gUnk_Sio_085C98F4
+.L080361F4: .4byte gSioSt
 .L080361F8: .4byte 0x00001B74
 .L080361FC: .4byte gUnk_030013C0
 .L08036200:
@@ -2262,8 +2262,8 @@ func_fe6_080361A4: @ 0x080361A4
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_08036208
-func_fe6_08036208: @ 0x08036208
+	thumb_func_start SioEmitData
+SioEmitData: @ 0x08036208
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2273,7 +2273,7 @@ func_fe6_08036208: @ 0x08036208
 	ldr r6, .L080362A4 @ =gUnk_030013C4
 	movs r0, #1
 	str r0, [r6]
-	ldr r4, .L080362A8 @ =gUnk_Sio_085C98F4
+	ldr r4, .L080362A8 @ =gSioSt
 	ldr r1, [r4]
 	ldr r2, .L080362AC @ =0x00001B75
 	adds r0, r1, r2
@@ -2346,11 +2346,11 @@ func_fe6_08036208: @ 0x08036208
 	bx r1
 	.align 2, 0
 .L080362A4: .4byte gUnk_030013C4
-.L080362A8: .4byte gUnk_Sio_085C98F4
+.L080362A8: .4byte gSioSt
 .L080362AC: .4byte 0x00001B75
 
-	thumb_func_start func_fe6_080362B0
-func_fe6_080362B0: @ 0x080362B0
+	thumb_func_start SioReceiveData
+SioReceiveData: @ 0x080362B0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2361,7 +2361,7 @@ func_fe6_080362B0: @ 0x080362B0
 	str r1, [sp]
 	mov sl, r2
 .L080362C2:
-	ldr r0, .L080362F0 @ =gUnk_Sio_085C98F4
+	ldr r0, .L080362F0 @ =gSioSt
 	mov r8, r0
 	ldr r2, [r0]
 	ldr r7, .L080362F4 @ =0x00001B76
@@ -2385,7 +2385,7 @@ func_fe6_080362B0: @ 0x080362B0
 	movs r0, #0
 	b .L08036424
 	.align 2, 0
-.L080362F0: .4byte gUnk_Sio_085C98F4
+.L080362F0: .4byte gSioSt
 .L080362F4: .4byte 0x00001B76
 .L080362F8: .4byte 0x000012B4
 .L080362FC:
@@ -2397,7 +2397,7 @@ func_fe6_080362B0: @ 0x080362B0
 	ldrh r0, [r0]
 	cmp r1, r0
 	beq .L08036348
-	ldr r0, .L08036344 @ =gUnk_0300456C
+	ldr r0, .L08036344 @ =gSioMsgBuf
 	movs r1, #0x1e
 	strb r1, [r0]
 	ldrb r2, [r2, #6]
@@ -2412,7 +2412,7 @@ func_fe6_080362B0: @ 0x080362B0
 	movs r4, #0
 	strh r1, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	strb r4, [r5, #4]
 	mov r3, r8
 	ldr r0, [r3]
@@ -2424,7 +2424,7 @@ func_fe6_080362B0: @ 0x080362B0
 	adds r1, r1, r7
 	b .L080363B6
 	.align 2, 0
-.L08036344: .4byte gUnk_0300456C
+.L08036344: .4byte gSioMsgBuf
 .L08036348:
 	movs r2, #0
 	ldrh r3, [r6, #4]
@@ -2453,10 +2453,10 @@ func_fe6_080362B0: @ 0x080362B0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L080363CC
-	ldr r0, .L080363C0 @ =gUnk_0300456C
+	ldr r0, .L080363C0 @ =gSioMsgBuf
 	movs r1, #0x1e
 	strb r1, [r0]
-	ldr r4, .L080363C4 @ =gUnk_Sio_085C98F4
+	ldr r4, .L080363C4 @ =gSioSt
 	ldr r2, [r4]
 	ldrb r3, [r2, #6]
 	lsls r1, r3, #4
@@ -2471,7 +2471,7 @@ func_fe6_080362B0: @ 0x080362B0
 	movs r5, #0
 	strh r1, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	strb r5, [r6]
 	ldr r0, [r4]
 	ldr r2, .L080363C8 @ =0x00001B76
@@ -2488,14 +2488,14 @@ func_fe6_080362B0: @ 0x080362B0
 	strb r0, [r1]
 	b .L080362C2
 	.align 2, 0
-.L080363C0: .4byte gUnk_0300456C
-.L080363C4: .4byte gUnk_Sio_085C98F4
+.L080363C0: .4byte gSioMsgBuf
+.L080363C4: .4byte gSioSt
 .L080363C8: .4byte 0x00001B76
 .L080363CC:
 	movs r0, #0
 	strb r0, [r6]
 	ldrb r5, [r6, #1]
-	ldr r4, .L08036434 @ =gUnk_Sio_085C98F4
+	ldr r4, .L08036434 @ =gSioSt
 	ldr r2, [r4]
 	lsls r1, r5, #1
 	adds r0, r2, #0
@@ -2517,7 +2517,7 @@ func_fe6_080362B0: @ 0x080362B0
 	strb r0, [r1]
 	ldr r0, [sp]
 	strb r5, [r0]
-	ldr r0, .L0803643C @ =gUnk_0300456C
+	ldr r0, .L0803643C @ =gSioMsgBuf
 	movs r1, #0x1e
 	strb r1, [r0]
 	ldr r2, [r4]
@@ -2533,7 +2533,7 @@ func_fe6_080362B0: @ 0x080362B0
 	ldrh r1, [r2]
 	strh r1, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	ldrh r0, [r6, #4]
 .L08036424:
 	add sp, #4
@@ -2545,9 +2545,9 @@ func_fe6_080362B0: @ 0x080362B0
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08036434: .4byte gUnk_Sio_085C98F4
+.L08036434: .4byte gSioSt
 .L08036438: .4byte 0x00001B76
-.L0803643C: .4byte gUnk_0300456C
+.L0803643C: .4byte gSioMsgBuf
 
 	thumb_func_start func_fe6_08036440
 func_fe6_08036440: @ 0x08036440
@@ -2556,19 +2556,19 @@ func_fe6_08036440: @ 0x08036440
 	ldr r1, .L0803647C @ =0x00007FFF
 	mov r0, sp
 	strh r1, [r0]
-	ldr r0, .L08036480 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08036480 @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #0
 	strb r0, [r1, #1]
 	mov r0, sp
 	movs r1, #1
-	bl func_fe6_08036078
+	bl SioSend16
 	ldr r1, .L08036484 @ =gUnk_030013CA
 	ldr r0, .L08036488 @ =gUnk_030013C8
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r3, .L0803648C @ =gUnk_030013D0
-	ldr r2, .L08036490 @ =gUnk_030013D8
+	ldr r3, .L0803648C @ =sReadCursor
+	ldr r2, .L08036490 @ =sRecvCursor
 	movs r1, #3
 .L08036468:
 	ldrh r0, [r3]
@@ -2583,21 +2583,21 @@ func_fe6_08036440: @ 0x08036440
 	bx r0
 	.align 2, 0
 .L0803647C: .4byte 0x00007FFF
-.L08036480: .4byte gUnk_Sio_085C98F4
+.L08036480: .4byte gSioSt
 .L08036484: .4byte gUnk_030013CA
 .L08036488: .4byte gUnk_030013C8
-.L0803648C: .4byte gUnk_030013D0
-.L08036490: .4byte gUnk_030013D8
+.L0803648C: .4byte sReadCursor
+.L08036490: .4byte sRecvCursor
 
-	thumb_func_start func_fe6_08036494
-func_fe6_08036494: @ 0x08036494
-	ldr r1, .L080364A0 @ =gUnk_Sio_085C98F4
+	thumb_func_start SetXmapTransferState
+SetXmapTransferState: @ 0x08036494
+	ldr r1, .L080364A0 @ =gSioSt
 	ldr r1, [r1]
 	adds r1, #0x21
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-.L080364A0: .4byte gUnk_Sio_085C98F4
+.L080364A0: .4byte gSioSt
 
 	thumb_func_start func_fe6_080364A4
 func_fe6_080364A4: @ 0x080364A4
@@ -2606,7 +2606,7 @@ func_fe6_080364A4: @ 0x080364A4
 	ldr r1, .L080364F8 @ =0x00007FFF
 	mov r0, sp
 	strh r1, [r0]
-	ldr r1, .L080364FC @ =gUnk_Sio_085C98F4
+	ldr r1, .L080364FC @ =gSioSt
 	ldr r0, [r1]
 	movs r2, #0
 	strb r2, [r0, #1]
@@ -2616,13 +2616,13 @@ func_fe6_080364A4: @ 0x080364A4
 	strh r2, [r0]
 	mov r0, sp
 	movs r1, #1
-	bl func_fe6_08036078
+	bl SioSend16
 	ldr r1, .L08036504 @ =gUnk_030013CA
 	ldr r0, .L08036508 @ =gUnk_030013C8
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r3, .L0803650C @ =gUnk_030013D0
-	ldr r2, .L08036510 @ =gUnk_030013D8
+	ldr r3, .L0803650C @ =sReadCursor
+	ldr r2, .L08036510 @ =sRecvCursor
 	movs r1, #3
 .L080364D4:
 	ldrh r0, [r3]
@@ -2632,7 +2632,7 @@ func_fe6_080364A4: @ 0x080364A4
 	subs r1, #1
 	cmp r1, #0
 	bge .L080364D4
-	ldr r0, .L080364FC @ =gUnk_Sio_085C98F4
+	ldr r0, .L080364FC @ =gSioSt
 	ldr r2, [r0]
 	ldr r0, .L08036514 @ =0x00001B7E
 	adds r1, r2, r0
@@ -2645,12 +2645,12 @@ func_fe6_080364A4: @ 0x080364A4
 	bx r0
 	.align 2, 0
 .L080364F8: .4byte 0x00007FFF
-.L080364FC: .4byte gUnk_Sio_085C98F4
+.L080364FC: .4byte gSioSt
 .L08036500: .4byte 0x00001B7C
 .L08036504: .4byte gUnk_030013CA
 .L08036508: .4byte gUnk_030013C8
-.L0803650C: .4byte gUnk_030013D0
-.L08036510: .4byte gUnk_030013D8
+.L0803650C: .4byte sReadCursor
+.L08036510: .4byte sRecvCursor
 .L08036514: .4byte 0x00001B7E
 
 	thumb_func_start func_fe6_08036518
@@ -2660,7 +2660,7 @@ func_fe6_08036518: @ 0x08036518
 	ldr r1, .L08036574 @ =0x00002586
 	mov r0, sp
 	strh r1, [r0]
-	ldr r3, .L08036578 @ =gUnk_Sio_085C98F4
+	ldr r3, .L08036578 @ =gSioSt
 	ldr r1, [r3]
 	movs r2, #0
 	movs r0, #0
@@ -2676,8 +2676,8 @@ func_fe6_08036518: @ 0x08036518
 	ldrh r0, [r0]
 	strh r0, [r1]
 	adds r4, r3, #0
-	ldr r3, .L08036588 @ =gUnk_030013D0
-	ldr r2, .L0803658C @ =gUnk_030013D8
+	ldr r3, .L08036588 @ =sReadCursor
+	ldr r2, .L0803658C @ =sRecvCursor
 	movs r1, #3
 .L08036548:
 	ldrh r0, [r3]
@@ -2696,28 +2696,28 @@ func_fe6_08036518: @ 0x08036518
 	movs r1, #1
 	rsbs r1, r1, #0
 	mov r0, sp
-	bl func_fe6_08036078
+	bl SioSend16
 	add sp, #4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L08036574: .4byte 0x00002586
-.L08036578: .4byte gUnk_Sio_085C98F4
+.L08036578: .4byte gSioSt
 .L0803657C: .4byte 0x00001B7C
 .L08036580: .4byte gUnk_030013CA
 .L08036584: .4byte gUnk_030013C8
-.L08036588: .4byte gUnk_030013D0
-.L0803658C: .4byte gUnk_030013D8
+.L08036588: .4byte sReadCursor
+.L0803658C: .4byte sRecvCursor
 
-	thumb_func_start func_fe6_08036590
-func_fe6_08036590: @ 0x08036590
+	thumb_func_start XMapTransfer_08036590
+XMapTransfer_08036590: @ 0x08036590
 	push {r4, lr}
 	sub sp, #4
 	ldr r1, .L080365EC @ =0x00002586
 	mov r0, sp
 	strh r1, [r0]
-	ldr r3, .L080365F0 @ =gUnk_Sio_085C98F4
+	ldr r3, .L080365F0 @ =gSioSt
 	ldr r1, [r3]
 	movs r2, #0
 	movs r0, #0
@@ -2733,8 +2733,8 @@ func_fe6_08036590: @ 0x08036590
 	ldrh r0, [r0]
 	strh r0, [r1]
 	adds r4, r3, #0
-	ldr r3, .L08036600 @ =gUnk_030013D0
-	ldr r2, .L08036604 @ =gUnk_030013D8
+	ldr r3, .L08036600 @ =sReadCursor
+	ldr r2, .L08036604 @ =sRecvCursor
 	movs r1, #3
 .L080365C0:
 	ldrh r0, [r3]
@@ -2753,19 +2753,19 @@ func_fe6_08036590: @ 0x08036590
 	movs r1, #1
 	rsbs r1, r1, #0
 	mov r0, sp
-	bl func_fe6_08036078
+	bl SioSend16
 	add sp, #4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L080365EC: .4byte 0x00002586
-.L080365F0: .4byte gUnk_Sio_085C98F4
+.L080365F0: .4byte gSioSt
 .L080365F4: .4byte 0x00001B7C
 .L080365F8: .4byte gUnk_030013CA
 .L080365FC: .4byte gUnk_030013C8
-.L08036600: .4byte gUnk_030013D0
-.L08036604: .4byte gUnk_030013D8
+.L08036600: .4byte sReadCursor
+.L08036604: .4byte sRecvCursor
 
 	thumb_func_start func_fe6_08036608
 func_fe6_08036608: @ 0x08036608
@@ -2783,7 +2783,7 @@ func_fe6_0803661C: @ 0x0803661C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r5, .L08036678 @ =gUnk_Sio_085C98F4
+	ldr r5, .L08036678 @ =gSioSt
 	ldr r1, [r5]
 	adds r2, r1, #0
 	adds r2, #0x2e
@@ -2796,7 +2796,7 @@ func_fe6_0803661C: @ 0x0803661C
 	strh r0, [r1, #0x2a]
 	strh r0, [r1, #0x28]
 	strh r0, [r1, #0x26]
-	bl func_fe6_0803522C
+	bl ResetSioSW
 	mov r1, sp
 	adds r0, r4, #0
 	adds r0, #0x34
@@ -2814,7 +2814,7 @@ func_fe6_0803661C: @ 0x0803661C
 	strb r0, [r1, #3]
 	mov r0, sp
 	movs r1, #4
-	bl func_fe6_08036208
+	bl SioEmitData
 	ldr r0, [r5]
 	adds r0, #0x2e
 	movs r1, #1
@@ -2824,7 +2824,7 @@ func_fe6_0803661C: @ 0x0803661C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036678: .4byte gUnk_Sio_085C98F4
+.L08036678: .4byte gSioSt
 
 	thumb_func_start func_fe6_0803667C
 func_fe6_0803667C: @ 0x0803667C
@@ -2835,7 +2835,7 @@ func_fe6_0803667C: @ 0x0803667C
 	beq .L0803668A
 	bl _call_via_r1
 .L0803668A:
-	ldr r5, .L080366E8 @ =gUnk_Sio_085C98F4
+	ldr r5, .L080366E8 @ =gSioSt
 	ldr r1, [r5]
 	adds r0, r1, #0
 	adds r0, #0x2e
@@ -2863,7 +2863,7 @@ func_fe6_0803667C: @ 0x0803667C
 .L080366BE:
 	ldr r0, [r4, #0x30]
 	movs r1, #0x7a
-	bl func_fe6_08036208
+	bl SioEmitData
 	ldr r0, [r5]
 	adds r0, #0x2e
 	movs r1, #1
@@ -2881,12 +2881,12 @@ func_fe6_0803667C: @ 0x0803667C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080366E8: .4byte gUnk_Sio_085C98F4
+.L080366E8: .4byte gSioSt
 
 	thumb_func_start func_fe6_080366EC
 func_fe6_080366EC: @ 0x080366EC
 	push {lr}
-	ldr r2, .L08036710 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08036710 @ =gSioSt
 	ldr r1, [r2]
 	adds r3, r1, #0
 	adds r3, #0x2e
@@ -2899,11 +2899,11 @@ func_fe6_080366EC: @ 0x080366EC
 	strh r0, [r1, #0x2a]
 	strh r0, [r1, #0x28]
 	strh r0, [r1, #0x26]
-	bl func_fe6_0803522C
+	bl ResetSioSW
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036710: .4byte gUnk_Sio_085C98F4
+.L08036710: .4byte gSioSt
 
 	thumb_func_start func_fe6_08036714
 func_fe6_08036714: @ 0x08036714
@@ -2913,7 +2913,7 @@ func_fe6_08036714: @ 0x08036714
 	add r1, sp, #4
 	mov r0, sp
 	movs r2, #0
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L08036750
@@ -2955,7 +2955,7 @@ func_fe6_08036758: @ 0x08036758
 	ldr r0, [r4, #0x30]
 	mov r1, sp
 	movs r2, #0
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L080367E2
@@ -2977,7 +2977,7 @@ func_fe6_08036758: @ 0x08036758
 	adds r0, r5, #0
 	mov r1, sp
 	movs r2, #0
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L080367E2
@@ -3031,8 +3031,8 @@ func_fe6_08036758: @ 0x08036758
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08036804
-func_fe6_08036804: @ 0x08036804
+	thumb_func_start StartSioBigSend
+StartSioBigSend: @ 0x08036804
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -3098,8 +3098,8 @@ func_fe6_08036804: @ 0x08036804
 	.align 2, 0
 .L08036880: .4byte gUnk_Sio_085C98F8
 
-	thumb_func_start func_fe6_08036884
-func_fe6_08036884: @ 0x08036884
+	thumb_func_start StartSioBigReceive
+StartSioBigReceive: @ 0x08036884
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
@@ -3122,8 +3122,8 @@ func_fe6_08036884: @ 0x08036884
 	.align 2, 0
 .L080368AC: .4byte gUnk_Sio_085C9918
 
-	thumb_func_start func_fe6_080368B0
-func_fe6_080368B0: @ 0x080368B0
+	thumb_func_start IsSioBigTransferActive
+IsSioBigTransferActive: @ 0x080368B0
 	push {lr}
 	ldr r0, .L080368CC @ =gUnk_Sio_085C98F8
 	bl FindProc
@@ -3145,8 +3145,8 @@ func_fe6_080368B0: @ 0x080368B0
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_080368DC
-func_fe6_080368DC: @ 0x080368DC
+	thumb_func_start SioStrCpy
+SioStrCpy: @ 0x080368DC
 	movs r3, #0
 	b .L080368E8
 .L080368E0:
@@ -3164,12 +3164,12 @@ func_fe6_080368DC: @ 0x080368DC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_080368F8
-func_fe6_080368F8: @ 0x080368F8
+	thumb_func_start SIOCON_Init
+SIOCON_Init: @ 0x080368F8
 	push {lr}
-	bl func_fe6_08035414
-	bl func_fe6_080353AC
-	ldr r2, .L08036914 @ =gUnk_Sio_085C98F4
+	bl SioInit_HW
+	bl SioInit_SW
+	ldr r2, .L08036914 @ =gSioSt
 	ldr r1, [r2]
 	movs r3, #0
 	movs r0, #1
@@ -3179,34 +3179,34 @@ func_fe6_080368F8: @ 0x080368F8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036914: .4byte gUnk_Sio_085C98F4
+.L08036914: .4byte gSioSt
 
-	thumb_func_start func_fe6_08036918
-func_fe6_08036918: @ 0x08036918
+	thumb_func_start SIOCON_Loop
+SIOCON_Loop: @ 0x08036918
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
 	ldr r0, .L0803695C @ =0x00002586
 	mov r1, sp
 	strh r0, [r1]
-	bl func_fe6_080350C8
+	bl SioPollingMsg
 	movs r5, #1
 	rsbs r5, r5, #0
 	cmp r0, r5
 	beq .L08036954
-	ldr r4, .L08036960 @ =gUnk_Sio_085C98F4
+	ldr r4, .L08036960 @ =gSioSt
 	ldr r1, [r4]
 	movs r0, #0
 	strb r0, [r1, #0x11]
 	ldr r1, [r4]
 	movs r0, #5
 	strh r0, [r1, #4]
-	bl func_fe6_080351E4
+	bl GetSioIndex
 	ldr r1, [r4]
 	strb r0, [r1, #6]
 	mov r0, sp
 	adds r1, r5, #0
-	bl func_fe6_08036078
+	bl SioSend16
 	adds r0, r6, #0
 	bl Proc_Break
 .L08036954:
@@ -3216,10 +3216,10 @@ func_fe6_08036918: @ 0x08036918
 	bx r0
 	.align 2, 0
 .L0803695C: .4byte 0x00002586
-.L08036960: .4byte gUnk_Sio_085C98F4
+.L08036960: .4byte gSioSt
 
-	thumb_func_start func_fe6_08036964
-func_fe6_08036964: @ 0x08036964
+	thumb_func_start SetBmStLinkArenaFlag
+SetBmStLinkArenaFlag: @ 0x08036964
 	ldr r0, .L08036970 @ =gBmSt
 	movs r1, #0x40
 	ldrb r2, [r0, #4]
@@ -3229,8 +3229,8 @@ func_fe6_08036964: @ 0x08036964
 	.align 2, 0
 .L08036970: .4byte gBmSt
 
-	thumb_func_start func_fe6_08036974
-func_fe6_08036974: @ 0x08036974
+	thumb_func_start UnsetBmStLinkArenaFlag
+UnsetBmStLinkArenaFlag: @ 0x08036974
 	ldr r1, .L08036980 @ =gBmSt
 	movs r0, #0xbf
 	ldrb r2, [r1, #4]
@@ -3240,8 +3240,8 @@ func_fe6_08036974: @ 0x08036974
 	.align 2, 0
 .L08036980: .4byte gBmSt
 
-	thumb_func_start func_fe6_08036984
-func_fe6_08036984: @ 0x08036984
+	thumb_func_start CheckInLinkArena
+CheckInLinkArena: @ 0x08036984
 	ldr r0, .L08036990 @ =gBmSt
 	ldrb r0, [r0, #4]
 	lsrs r0, r0, #6
@@ -3253,12 +3253,12 @@ func_fe6_08036984: @ 0x08036984
 
 	thumb_func_start func_fe6_08036994
 func_fe6_08036994: @ 0x08036994
-	ldr r1, .L0803699C @ =0x0203C618
+	ldr r1, .L0803699C @ =gLinkArenaSt
 	movs r0, #0xff
 	strb r0, [r1, #4]
 	bx lr
 	.align 2, 0
-.L0803699C: .4byte 0x0203C618
+.L0803699C: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_080369A0
 func_fe6_080369A0: @ 0x080369A0
@@ -3361,7 +3361,7 @@ func_fe6_08036A40: @ 0x08036A40
 func_fe6_08036A54: @ 0x08036A54
 	push {lr}
 	adds r2, r0, #0
-	ldr r0, .L08036A74 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08036A74 @ =gSioSt
 	ldr r0, [r0]
 	ldr r1, .L08036A78 @ =0x00009ABC
 	strh r1, [r0, #0x30]
@@ -3376,13 +3376,13 @@ func_fe6_08036A54: @ 0x08036A54
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036A74: .4byte gUnk_Sio_085C98F4
+.L08036A74: .4byte gSioSt
 .L08036A78: .4byte 0x00009ABC
 .L08036A7C: .4byte 0x00001B7E
 
 	thumb_func_start func_fe6_08036A80
 func_fe6_08036A80: @ 0x08036A80
-	ldr r0, .L08036A90 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08036A90 @ =gSioSt
 	ldr r2, [r0]
 	movs r1, #6
 	ldrsb r1, [r2, r1]
@@ -3391,23 +3391,23 @@ func_fe6_08036A80: @ 0x08036A80
 	strb r0, [r2, #0xa]
 	bx lr
 	.align 2, 0
-.L08036A90: .4byte gUnk_Sio_085C98F4
+.L08036A90: .4byte gSioSt
 
 	thumb_func_start func_fe6_08036A94
 func_fe6_08036A94: @ 0x08036A94
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, .L08036AD4 @ =gUnk_0300456C
+	ldr r0, .L08036AD4 @ =gSioMsgBuf
 	movs r2, #0
 	movs r1, #0x19
 	strb r1, [r0]
-	ldr r4, .L08036AD8 @ =gUnk_Sio_085C98F4
+	ldr r4, .L08036AD8 @ =gSioSt
 	ldr r1, [r4]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
 	strh r2, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	ldr r4, [r4]
 	ldrb r0, [r4, #9]
 	ldrb r1, [r4, #0xa]
@@ -3427,11 +3427,11 @@ func_fe6_08036A94: @ 0x08036A94
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036AD4: .4byte gUnk_0300456C
-.L08036AD8: .4byte gUnk_Sio_085C98F4
+.L08036AD4: .4byte gSioMsgBuf
+.L08036AD8: .4byte gSioSt
 
-	thumb_func_start func_fe6_08036ADC
-func_fe6_08036ADC: @ 0x08036ADC
+	thumb_func_start SioHold_Loop
+SioHold_Loop: @ 0x08036ADC
 	push {lr}
 	adds r2, r0, #0
 	ldr r1, [r2, #0x30]
@@ -3447,8 +3447,8 @@ func_fe6_08036ADC: @ 0x08036ADC
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08036AF8
-func_fe6_08036AF8: @ 0x08036AF8
+	thumb_func_start StartSioHold
+StartSioHold: @ 0x08036AF8
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -3457,7 +3457,7 @@ func_fe6_08036AF8: @ 0x08036AF8
 	adds r6, r2, #0
 	mov r8, r3
 	ldr r7, [sp, #0x18]
-	ldr r0, .L08036B24 @ =gUnk_Sio_085C99E0
+	ldr r0, .L08036B24 @ =ProcScr_SioHOLD
 	adds r1, r4, #0
 	bl SpawnProc
 	str r5, [r0, #0x2c]
@@ -3471,17 +3471,17 @@ func_fe6_08036AF8: @ 0x08036AF8
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08036B24: .4byte gUnk_Sio_085C99E0
+.L08036B24: .4byte ProcScr_SioHOLD
 
-	thumb_func_start func_fe6_08036B28
-func_fe6_08036B28: @ 0x08036B28
+	thumb_func_start EndSioHold
+EndSioHold: @ 0x08036B28
 	push {lr}
-	ldr r0, .L08036B34 @ =gUnk_Sio_085C99E0
+	ldr r0, .L08036B34 @ =ProcScr_SioHOLD
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036B34: .4byte gUnk_Sio_085C99E0
+.L08036B34: .4byte ProcScr_SioHOLD
 
 	thumb_func_start func_fe6_08036B38
 func_fe6_08036B38: @ 0x08036B38
@@ -3490,8 +3490,8 @@ func_fe6_08036B38: @ 0x08036B38
 	str r2, [r0, #0x30]
 	bx lr
 
-	thumb_func_start func_fe6_08036B40
-func_fe6_08036B40: @ 0x08036B40
+	thumb_func_start ClearSioBG
+ClearSioBG: @ 0x08036B40
 	push {lr}
 	movs r0, #0
 	movs r1, #0
@@ -3527,8 +3527,8 @@ func_fe6_08036B40: @ 0x08036B40
 .L08036B90: .4byte gBg1Tm
 .L08036B94: .4byte gBg2Tm
 
-	thumb_func_start func_fe6_08036B98
-func_fe6_08036B98: @ 0x08036B98
+	thumb_func_start ClearSioAllBGs
+ClearSioAllBGs: @ 0x08036B98
 	push {lr}
 	movs r0, #0
 	movs r1, #0
@@ -3568,13 +3568,13 @@ func_fe6_08036B98: @ 0x08036B98
 .L08036BF4: .4byte gBg2Tm
 .L08036BF8: .4byte gBg3Tm
 
-	thumb_func_start func_fe6_08036BFC
-func_fe6_08036BFC: @ 0x08036BFC
+	thumb_func_start SioPutText
+SioPutText: @ 0x08036BFC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r4, r1, #0
 	lsls r1, r4, #3
-	ldr r0, .L08036C28 @ =0x0203C900
+	ldr r0, .L08036C28 @ =gSioTexts
 	adds r5, r1, r0
 	adds r0, r5, #0
 	bl ClearText
@@ -3590,7 +3590,7 @@ func_fe6_08036BFC: @ 0x08036BFC
 	bl PutText
 	b .L08036C56
 	.align 2, 0
-.L08036C28: .4byte 0x0203C900
+.L08036C28: .4byte gSioTexts
 .L08036C2C: .4byte gBg2Tm+0x2
 .L08036C30:
 	adds r0, r6, #0
@@ -3618,7 +3618,7 @@ func_fe6_08036BFC: @ 0x08036BFC
 	thumb_func_start func_fe6_08036C60
 func_fe6_08036C60: @ 0x08036C60
 	push {r4, r5, lr}
-	ldr r5, .L08036CA4 @ =0x0203C67C
+	ldr r5, .L08036CA4 @ =gSioText_0203C67C
 	movs r4, #5
 .L08036C66:
 	adds r0, r5, #0
@@ -3628,7 +3628,7 @@ func_fe6_08036C60: @ 0x08036C60
 	subs r4, #1
 	cmp r4, #0
 	bge .L08036C66
-	ldr r5, .L08036CA8 @ =0x0203C624
+	ldr r5, .L08036CA8 @ =gLinkArenaSt + 0xC
 	movs r4, #0xa
 .L08036C7A:
 	adds r0, r5, #0
@@ -3638,7 +3638,7 @@ func_fe6_08036C60: @ 0x08036C60
 	subs r4, #1
 	cmp r4, #0
 	bge .L08036C7A
-	ldr r5, .L08036CAC @ =0x0203C900
+	ldr r5, .L08036CAC @ =gSioTexts
 	movs r4, #1
 .L08036C8E:
 	adds r0, r5, #0
@@ -3652,16 +3652,16 @@ func_fe6_08036C60: @ 0x08036C60
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036CA4: .4byte 0x0203C67C
-.L08036CA8: .4byte 0x0203C624
-.L08036CAC: .4byte 0x0203C900
+.L08036CA4: .4byte gSioText_0203C67C
+.L08036CA8: .4byte gLinkArenaSt + 0xC
+.L08036CAC: .4byte gSioTexts
 
-	thumb_func_start func_fe6_08036CB0
-func_fe6_08036CB0: @ 0x08036CB0
+	thumb_func_start SioSetNormalWeapons
+SioSetNormalWeapons: @ 0x08036CB0
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
-	ldr r1, .L08036D04 @ =gUnk_Sio_0810F151
+	ldr r1, .L08036D04 @ =Sio_ItemLists_0810F151
 	mov r0, sp
 	movs r2, #8
 	bl memcpy
@@ -3702,10 +3702,10 @@ func_fe6_08036CB0: @ 0x08036CB0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036D04: .4byte gUnk_Sio_0810F151
+.L08036D04: .4byte Sio_ItemLists_0810F151
 
-	thumb_func_start func_fe6_08036D08
-func_fe6_08036D08: @ 0x08036D08
+	thumb_func_start SioPlaySe
+SioPlaySe: @ 0x08036D08
 	push {r4, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -3734,7 +3734,7 @@ func_fe6_08036D08: @ 0x08036D08
 	thumb_func_start func_fe6_08036D3C
 func_fe6_08036D3C: @ 0x08036D3C
 	push {r4, lr}
-	ldr r4, .L08036D5C @ =0x0203C704
+	ldr r4, .L08036D5C @ =gSioSaveConfig
 	adds r0, r4, #0
 	bl ReadMultiArenaSaveConfig
 	movs r0, #8
@@ -3747,10 +3747,10 @@ func_fe6_08036D3C: @ 0x08036D3C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036D5C: .4byte 0x0203C704
+.L08036D5C: .4byte gSioSaveConfig
 
-	thumb_func_start func_fe6_08036D60
-func_fe6_08036D60: @ 0x08036D60
+	thumb_func_start SioIsKeyInputSequenceComplete
+SioIsKeyInputSequenceComplete: @ 0x08036D60
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, .L08036D84 @ =gKeySt
@@ -3759,31 +3759,31 @@ func_fe6_08036D60: @ 0x08036D60
 	adds r3, r4, #0
 	cmp r3, #0
 	bne .L08036D90
-	ldr r1, .L08036D88 @ =0x0203C940
+	ldr r1, .L08036D88 @ =gKeyInputSequenceTimer
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
 	cmp r0, #0x13
 	ble .L08036DE4
-	ldr r0, .L08036D8C @ =gUnk_030013E4
+	ldr r0, .L08036D8C @ =gTargetKeyInSeqIndex
 	str r3, [r1]
 	str r3, [r0]
 	b .L08036DE4
 	.align 2, 0
 .L08036D84: .4byte gKeySt
-.L08036D88: .4byte 0x0203C940
-.L08036D8C: .4byte gUnk_030013E4
+.L08036D88: .4byte gKeyInputSequenceTimer
+.L08036D8C: .4byte gTargetKeyInSeqIndex
 .L08036D90:
-	ldr r0, .L08036DC4 @ =0x0203C940
+	ldr r0, .L08036DC4 @ =gKeyInputSequenceTimer
 	movs r6, #0
 	str r6, [r0]
-	ldr r1, .L08036DC8 @ =0x0203C920
-	ldr r2, .L08036DCC @ =gUnk_030013E0
+	ldr r1, .L08036DC8 @ =gKeyInputSequenceBuffer
+	ldr r2, .L08036DCC @ =gCurrentKeyInSeqIndex
 	ldr r0, [r2]
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
-	ldr r1, .L08036DD0 @ =gUnk_030013E4
+	ldr r1, .L08036DD0 @ =gTargetKeyInSeqIndex
 	ldr r4, [r1]
 	lsls r0, r4, #1
 	adds r0, r0, r5
@@ -3801,10 +3801,10 @@ func_fe6_08036D60: @ 0x08036D60
 	movs r0, #1
 	b .L08036DE6
 	.align 2, 0
-.L08036DC4: .4byte 0x0203C940
-.L08036DC8: .4byte 0x0203C920
-.L08036DCC: .4byte gUnk_030013E0
-.L08036DD0: .4byte gUnk_030013E4
+.L08036DC4: .4byte gKeyInputSequenceTimer
+.L08036DC8: .4byte gKeyInputSequenceBuffer
+.L08036DCC: .4byte gCurrentKeyInSeqIndex
+.L08036DD0: .4byte gTargetKeyInSeqIndex
 .L08036DD4: .4byte 0x0000FFFF
 .L08036DD8:
 	str r6, [r1]
@@ -3824,28 +3824,28 @@ func_fe6_08036D60: @ 0x08036D60
 	thumb_func_start func_fe6_08036DEC
 func_fe6_08036DEC: @ 0x08036DEC
 	push {lr}
-	ldr r0, .L08036DFC @ =gUnk_Sio_085C9A18
-	bl func_fe6_08036D60
+	ldr r0, .L08036DFC @ =gSioKeyList_085C9A18
+	bl SioIsKeyInputSequenceComplete
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08036DFC: .4byte gUnk_Sio_085C9A18
+.L08036DFC: .4byte gSioKeyList_085C9A18
 
-	thumb_func_start func_fe6_08036E00
-func_fe6_08036E00: @ 0x08036E00
+	thumb_func_start StartLinkArenaTeamList
+StartLinkArenaTeamList: @ 0x08036E00
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L08036E10 @ =gUnk_Sio_085C9AE0
+	ldr r0, .L08036E10 @ =ProcScr_SioTeamList
 	bl SpawnProcLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08036E10: .4byte gUnk_Sio_085C9AE0
+.L08036E10: .4byte ProcScr_SioTeamList
 
-	thumb_func_start func_fe6_08036E14
-func_fe6_08036E14: @ 0x08036E14
+	thumb_func_start SioTeamList_Init
+SioTeamList_Init: @ 0x08036E14
 	mov ip, r0
 	mov r2, ip
 	adds r2, #0x4a
@@ -3877,23 +3877,23 @@ func_fe6_08036E14: @ 0x08036E14
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_08036E50
-func_fe6_08036E50: @ 0x08036E50
+	thumb_func_start CanBuildNewLinkArenaTeam
+CanBuildNewLinkArenaTeam: @ 0x08036E50
 	push {r4, lr}
-	ldr r0, .L08036E5C @ =0x0203C618
+	ldr r0, .L08036E5C @ =gLinkArenaSt
 	ldrb r0, [r0, #0xa]
 	cmp r0, #0
 	bne .L08036E64
 	b .L08036E7C
 	.align 2, 0
-.L08036E5C: .4byte 0x0203C618
+.L08036E5C: .4byte gLinkArenaSt
 .L08036E60:
 	movs r0, #1
 	b .L08036E7E
 .L08036E64:
 	movs r2, #0
 	movs r3, #0x80
-	ldr r1, .L08036E84 @ =0x0203C770
+	ldr r1, .L08036E84 @ =gLinkArenaTeamList
 .L08036E6A:
 	adds r0, r3, #0
 	ldrb r4, [r1, #0xf]
@@ -3911,14 +3911,14 @@ func_fe6_08036E50: @ 0x08036E50
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08036E84: .4byte 0x0203C770
+.L08036E84: .4byte gLinkArenaTeamList
 
-	thumb_func_start func_fe6_08036E88
-func_fe6_08036E88: @ 0x08036E88
+	thumb_func_start CanDirectlyBuildNewLinkArenaTeam
+CanDirectlyBuildNewLinkArenaTeam: @ 0x08036E88
 	push {r4, lr}
 	movs r2, #0
 	movs r3, #0x80
-	ldr r1, .L08036EA0 @ =0x0203C770
+	ldr r1, .L08036EA0 @ =gLinkArenaTeamList
 .L08036E90:
 	adds r0, r3, #0
 	ldrb r4, [r1, #0xf]
@@ -3928,7 +3928,7 @@ func_fe6_08036E88: @ 0x08036E88
 	movs r0, #1
 	b .L08036EAE
 	.align 2, 0
-.L08036EA0: .4byte 0x0203C770
+.L08036EA0: .4byte gLinkArenaTeamList
 .L08036EA4:
 	adds r1, #0x14
 	adds r2, #1
@@ -3940,8 +3940,8 @@ func_fe6_08036E88: @ 0x08036E88
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_08036EB4
-func_fe6_08036EB4: @ 0x08036EB4
+	thumb_func_start GetSioTeams
+GetSioTeams: @ 0x08036EB4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -3951,7 +3951,7 @@ func_fe6_08036EB4: @ 0x08036EB4
 	lsls r1, r1, #0x18
 	lsrs r4, r1, #0x18
 	movs r7, #0
-	ldr r1, .L08036EE4 @ =gUnk_Sio_085C9AC8
+	ldr r1, .L08036EE4 @ =gSioTeamListConfigLut
 	lsls r0, r4, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
@@ -3966,7 +3966,7 @@ func_fe6_08036EB4: @ 0x08036EB4
 	movs r6, #0
 	b .L08036F54
 	.align 2, 0
-.L08036EE4: .4byte gUnk_Sio_085C9AC8
+.L08036EE4: .4byte gSioTeamListConfigLut
 .L08036EE8:
 	movs r6, #0
 	mov r1, sb
@@ -3977,7 +3977,7 @@ func_fe6_08036EB4: @ 0x08036EB4
 	mov r8, r0
 	movs r7, #0
 .L08036EF8:
-	ldr r0, .L08036F14 @ =0x0203C770
+	ldr r0, .L08036F14 @ =gLinkArenaTeamList
 	adds r4, r7, r0
 	adds r0, r6, #0
 	adds r1, r4, #0
@@ -3991,11 +3991,11 @@ func_fe6_08036EB4: @ 0x08036EB4
 	strb r6, [r4, #0xf]
 	b .L08036F30
 	.align 2, 0
-.L08036F14: .4byte 0x0203C770
+.L08036F14: .4byte gLinkArenaTeamList
 .L08036F18:
-	ldr r0, .L08036F50 @ =gUnk_Sio_0810F164
+	ldr r0, .L08036F50 @ =SioText_NoData
 	adds r1, r4, #0
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	ldrb r0, [r5, #5]
 	strb r0, [r4, #0x10]
 	movs r0, #0x80
@@ -4020,12 +4020,12 @@ func_fe6_08036EB4: @ 0x08036EB4
 	adds r7, r6, #0
 	b .L08036F92
 	.align 2, 0
-.L08036F50: .4byte gUnk_Sio_0810F164
+.L08036F50: .4byte SioText_NoData
 .L08036F54:
 	lsls r0, r7, #2
 	adds r5, r0, r7
 	lsls r1, r5, #2
-	ldr r0, .L08036FA4 @ =0x0203C770
+	ldr r0, .L08036FA4 @ =gLinkArenaTeamList
 	adds r4, r1, r0
 	adds r0, r6, #0
 	adds r1, r4, #0
@@ -4061,10 +4061,10 @@ func_fe6_08036EB4: @ 0x08036EB4
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08036FA4: .4byte 0x0203C770
+.L08036FA4: .4byte gLinkArenaTeamList
 
-	thumb_func_start func_fe6_08036FA8
-func_fe6_08036FA8: @ 0x08036FA8
+	thumb_func_start DrawLinkArenaTeamName
+DrawLinkArenaTeamName: @ 0x08036FA8
 	push {r4, r5, r6, lr}
 	mov r6, sb
 	mov r5, r8
@@ -4072,7 +4072,7 @@ func_fe6_08036FA8: @ 0x08036FA8
 	adds r5, r0, #0
 	lsls r0, r5, #3
 	mov r8, r0
-	ldr r6, .L08037010 @ =0x0203C624
+	ldr r6, .L08037010 @ =gLinkArenaSt + 0xC
 	adds r0, r0, r6
 	mov sb, r0
 	bl ClearText
@@ -4082,7 +4082,7 @@ func_fe6_08036FA8: @ 0x08036FA8
 	lsls r4, r5, #2
 	adds r4, r4, r5
 	lsls r4, r4, #2
-	ldr r0, .L08037014 @ =0x0203C770
+	ldr r0, .L08037014 @ =gLinkArenaTeamList
 	adds r4, r4, r0
 	mov r0, sb
 	adds r1, r4, #0
@@ -4113,20 +4113,20 @@ func_fe6_08036FA8: @ 0x08036FA8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08037010: .4byte 0x0203C624
-.L08037014: .4byte 0x0203C770
+.L08037010: .4byte gLinkArenaSt + 0xC
+.L08037014: .4byte gLinkArenaTeamList
 .L08037018: .4byte 0x00000FFF
 .L0803701C: .4byte gBg1Tm+0x16
 
-	thumb_func_start func_fe6_08037020
-func_fe6_08037020: @ 0x08037020
+	thumb_func_start DrawAllLinkArenaTeams
+DrawAllLinkArenaTeams: @ 0x08037020
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	movs r4, #0
 	b .L08037030
 .L08037028:
 	adds r0, r4, #0
-	bl func_fe6_08036FA8
+	bl DrawLinkArenaTeamName
 	adds r4, #1
 .L08037030:
 	ldr r0, [r5, #0x38]
@@ -4144,7 +4144,7 @@ func_fe6_0803703C: @ 0x0803703C
 	sub sp, #8
 	adds r4, r0, #0
 	lsls r1, r1, #0x18
-	ldr r0, .L0803707C @ =gUnk_Sio_085C9AC8
+	ldr r0, .L0803707C @ =gSioTeamListConfigLut
 	lsrs r1, r1, #0x16
 	adds r1, r1, r0
 	ldr r1, [r1]
@@ -4153,13 +4153,13 @@ func_fe6_0803703C: @ 0x0803703C
 	ldr r0, [r4, #0x38]
 	cmp r6, r0
 	bge .L080370C8
-	ldr r0, .L08037080 @ =0x0203C618
+	ldr r0, .L08037080 @ =gLinkArenaSt
 	adds r5, r0, #0
 	adds r5, #0xc
-	ldr r3, .L08037084 @ =0x0203C770
+	ldr r3, .L08037084 @ =gLinkArenaTeamList
 	movs r2, #0
 .L08037064:
-	ldr r0, .L08037084 @ =0x0203C770
+	ldr r0, .L08037084 @ =gLinkArenaTeamList
 	adds r1, r2, r0
 	movs r0, #0x80
 	ldrb r7, [r1, #0xf]
@@ -4172,9 +4172,9 @@ func_fe6_0803703C: @ 0x0803703C
 	ldrb r0, [r0, #4]
 	b .L08037090
 	.align 2, 0
-.L0803707C: .4byte gUnk_Sio_085C9AC8
-.L08037080: .4byte 0x0203C618
-.L08037084: .4byte 0x0203C770
+.L0803707C: .4byte gSioTeamListConfigLut
+.L08037080: .4byte gLinkArenaSt
+.L08037084: .4byte gLinkArenaTeamList
 .L08037088:
 	ldr r0, [r4, #0x3c]
 	lsls r0, r0, #4
@@ -4221,16 +4221,16 @@ func_fe6_0803703C: @ 0x0803703C
 .L080370DC: .4byte 0x00000FFF
 .L080370E0: .4byte gBg1Tm+0x16
 
-	thumb_func_start func_fe6_080370E4
-func_fe6_080370E4: @ 0x080370E4
+	thumb_func_start SioTeamList_EraseTeam
+SioTeamList_EraseTeam: @ 0x080370E4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
 	adds r7, r0, #0
 	ldr r5, [r7, #0x40]
-	ldr r1, .L08037168 @ =gUnk_Sio_085C9AC8
-	ldr r0, .L0803716C @ =0x0203C618
+	ldr r1, .L08037168 @ =gSioTeamListConfigLut
+	ldr r0, .L0803716C @ =gLinkArenaSt
 	mov sb, r0
 	ldrb r2, [r0]
 	lsls r0, r2, #2
@@ -4242,7 +4242,7 @@ func_fe6_080370E4: @ 0x080370E4
 	adds r0, r4, #1
 	bl GetUnit
 	adds r6, r0, #0
-	ldr r0, .L08037170 @ =0x0203C770
+	ldr r0, .L08037170 @ =gLinkArenaTeamList
 	lsls r4, r4, #2
 	adds r4, r4, r0
 	movs r0, #0x7f
@@ -4253,9 +4253,9 @@ func_fe6_080370E4: @ 0x080370E4
 	adds r1, r6, #0
 	adds r2, r4, #0
 	bl ReadMultiArenaSaveTeam
-	ldr r0, .L08037174 @ =gUnk_Sio_0810F164
+	ldr r0, .L08037174 @ =SioText_NoData
 	adds r1, r4, #0
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	ldr r0, [r7, #0x3c]
 	lsls r0, r0, #4
 	add r0, r8
@@ -4268,8 +4268,8 @@ func_fe6_080370E4: @ 0x080370E4
 	orrs r0, r1
 	strb r0, [r4, #0xf]
 	adds r0, r5, #0
-	bl func_fe6_08036FA8
-	bl func_fe6_08036E88
+	bl DrawLinkArenaTeamName
+	bl CanDirectlyBuildNewLinkArenaTeam
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L08037178
@@ -4282,10 +4282,10 @@ func_fe6_080370E4: @ 0x080370E4
 	bl Proc_Goto
 	b .L0803718C
 	.align 2, 0
-.L08037168: .4byte gUnk_Sio_085C9AC8
-.L0803716C: .4byte 0x0203C618
-.L08037170: .4byte 0x0203C770
-.L08037174: .4byte gUnk_Sio_0810F164
+.L08037168: .4byte gSioTeamListConfigLut
+.L0803716C: .4byte gLinkArenaSt
+.L08037170: .4byte gLinkArenaTeamList
+.L08037174: .4byte SioText_NoData
 .L08037178:
 	adds r0, r7, #0
 	adds r0, #0x4d
@@ -4306,7 +4306,7 @@ func_fe6_080370E4: @ 0x080370E4
 	adds r1, #0x28
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	movs r0, #2
 	bl EnableBgSync
 	pop {r3, r4}
@@ -4316,8 +4316,8 @@ func_fe6_080370E4: @ 0x080370E4
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080371B4
-func_fe6_080371B4: @ 0x080371B4
+	thumb_func_start SioTeamList_SwapTeams
+SioTeamList_SwapTeams: @ 0x080371B4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -4327,7 +4327,7 @@ func_fe6_080371B4: @ 0x080371B4
 	adds r0, #0x53
 	ldrb r0, [r0]
 	mov r8, r0
-	ldr r2, .L0803721C @ =0x0203C770
+	ldr r2, .L0803721C @ =gLinkArenaTeamList
 	lsls r5, r0, #2
 	add r5, r8
 	lsls r0, r5, #2
@@ -4357,9 +4357,9 @@ func_fe6_080371B4: @ 0x080371B4
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L08037224
-	ldr r0, .L08037220 @ =gUnk_Sio_0810F164
+	ldr r0, .L08037220 @ =SioText_NoData
 	adds r1, r6, #0
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	movs r3, #0x80
 	rsbs r3, r3, #0
 	adds r1, r3, #0
@@ -4367,8 +4367,8 @@ func_fe6_080371B4: @ 0x080371B4
 	orrs r0, r1
 	b .L08037226
 	.align 2, 0
-.L0803721C: .4byte 0x0203C770
-.L08037220: .4byte gUnk_Sio_0810F164
+.L0803721C: .4byte gLinkArenaTeamList
+.L08037220: .4byte SioText_NoData
 .L08037224:
 	mov r0, r8
 .L08037226:
@@ -4379,7 +4379,7 @@ func_fe6_080371B4: @ 0x080371B4
 	bl GetUnit
 	adds r1, r0, #0
 	lsls r4, r4, #2
-	ldr r0, .L08037260 @ =0x0203C770
+	ldr r0, .L08037260 @ =gLinkArenaTeamList
 	adds r4, r4, r0
 	adds r0, r7, #0
 	adds r2, r4, #0
@@ -4387,9 +4387,9 @@ func_fe6_080371B4: @ 0x080371B4
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L08037268
-	ldr r0, .L08037264 @ =gUnk_Sio_0810F164
+	ldr r0, .L08037264 @ =SioText_NoData
 	adds r1, r4, #0
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	movs r2, #0x80
 	rsbs r2, r2, #0
 	adds r1, r2, #0
@@ -4398,15 +4398,15 @@ func_fe6_080371B4: @ 0x080371B4
 	strb r0, [r4, #0xf]
 	b .L0803726A
 	.align 2, 0
-.L08037260: .4byte 0x0203C770
-.L08037264: .4byte gUnk_Sio_0810F164
+.L08037260: .4byte gLinkArenaTeamList
+.L08037264: .4byte SioText_NoData
 .L08037268:
 	strb r7, [r4, #0xf]
 .L0803726A:
 	adds r0, r7, #0
-	bl func_fe6_08036FA8
+	bl DrawLinkArenaTeamName
 	mov r0, r8
-	bl func_fe6_08036FA8
+	bl DrawLinkArenaTeamName
 	mov r3, sb
 	ldr r0, [r3, #0x38]
 	lsls r0, r0, #0x18
@@ -4417,7 +4417,7 @@ func_fe6_080371B4: @ 0x080371B4
 	adds r1, #0x28
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	mov r1, sb
 	ldr r0, [r1, #0x30]
 	bl Proc_End
@@ -4445,13 +4445,13 @@ func_fe6_080372B0: @ 0x080372B0
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	movs r6, #0
-	ldr r2, .L08037324 @ =gUnk_Sio_085C9AC8
+	ldr r2, .L08037324 @ =gSioTeamListConfigLut
 	lsls r1, r0, #2
 	adds r1, r1, r2
 	ldr r7, [r1]
 	cmp r0, #1
 	bne .L08037334
-	ldr r1, .L08037328 @ =0x0203C618
+	ldr r1, .L08037328 @ =gLinkArenaSt
 	ldrb r0, [r1, #5]
 	adds r0, #2
 	cmp r6, r0
@@ -4467,7 +4467,7 @@ func_fe6_080372B0: @ 0x080372B0
 	adds r4, r7, r4
 	ldr r0, .L08037330 @ =gUnk_Sio_0810F170
 	adds r1, r4, #0
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	adds r0, r5, #0
 	bl ClearText
 	movs r0, #0xa
@@ -4488,13 +4488,13 @@ func_fe6_080372B0: @ 0x080372B0
 	cmp r6, r0
 	blt .L080372E4
 .L0803731A:
-	ldr r0, .L08037328 @ =0x0203C618
+	ldr r0, .L08037328 @ =gLinkArenaSt
 	ldrb r0, [r0, #5]
 	adds r0, #2
 	b .L08037394
 	.align 2, 0
-.L08037324: .4byte gUnk_Sio_085C9AC8
-.L08037328: .4byte 0x0203C618
+.L08037324: .4byte gSioTeamListConfigLut
+.L08037328: .4byte gLinkArenaSt
 .L0803732C: .4byte 0x0203C944
 .L08037330: .4byte gUnk_Sio_0810F170
 .L08037334:
@@ -4523,7 +4523,7 @@ func_fe6_080372B0: @ 0x080372B0
 	movs r5, #1
 .L08037362:
 	lsls r4, r6, #3
-	ldr r0, .L08037390 @ =0x0203C67C
+	ldr r0, .L08037390 @ =gSioText_0203C67C
 	adds r4, r4, r0
 	adds r0, r4, #0
 	bl ClearText
@@ -4543,7 +4543,7 @@ func_fe6_080372B0: @ 0x080372B0
 	adds r6, #1
 	b .L08037334
 	.align 2, 0
-.L08037390: .4byte 0x0203C67C
+.L08037390: .4byte gSioText_0203C67C
 .L08037394:
 	add sp, #4
 	pop {r3, r4}
@@ -4554,11 +4554,11 @@ func_fe6_080372B0: @ 0x080372B0
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_080373A4
-func_fe6_080373A4: @ 0x080373A4
+	thumb_func_start GetLATeamListHelpTextId
+GetLATeamListHelpTextId: @ 0x080373A4
 	adds r3, r0, #0
-	ldr r2, .L080373C0 @ =gUnk_Sio_085C9AC8
-	ldr r0, .L080373C4 @ =0x0203C618
+	ldr r2, .L080373C0 @ =gSioTeamListConfigLut
+	ldr r0, .L080373C4 @ =gLinkArenaSt
 	ldrb r1, [r0]
 	lsls r0, r1, #2
 	adds r0, r0, r2
@@ -4571,8 +4571,8 @@ func_fe6_080373A4: @ 0x080373A4
 	ldrh r0, [r0, #2]
 	b .L080373DA
 	.align 2, 0
-.L080373C0: .4byte gUnk_Sio_085C9AC8
-.L080373C4: .4byte 0x0203C618
+.L080373C0: .4byte gSioTeamListConfigLut
+.L080373C4: .4byte gLinkArenaSt
 .L080373C8:
 	ldr r0, [r3, #0x3c]
 	cmp r0, #0
@@ -4588,36 +4588,36 @@ func_fe6_080373A4: @ 0x080373A4
 	.align 2, 0
 .L080373DC: .4byte 0x000006D1
 
-	thumb_func_start func_fe6_080373E0
-func_fe6_080373E0: @ 0x080373E0
+	thumb_func_start SioTeamList_SetupGfx
+SioTeamList_SetupGfx: @ 0x080373E0
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
 	sub sp, #0x10
 	adds r7, r0, #0
 	ldr r4, .L080375C0 @ =Pal_Text
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r0, .L080375C4 @ =gUnk_08107820
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r0, .L080375C4 @ =Img_TacticianSelObj
 	ldr r1, .L080375C8 @ =0x06014800
 	bl Decompress
 	movs r0, #0
 	movs r1, #2
-	bl func_fe6_0803FAA4
+	bl Sio_RestartBgSlide
 	ldr r0, .L080375CC @ =gBg2Tm+0x112
-	ldr r1, .L080375D0 @ =gUnk_08109DF4
+	ldr r1, .L080375D0 @ =Tsa_Sio_08109DF4
 	movs r2, #0x80
 	lsls r2, r2, #5
 	bl TmApplyTsa_thm
-	ldr r0, .L080375D4 @ =gUnk_08109A00
+	ldr r0, .L080375D4 @ =Pal_TacticianSelObj
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x80
 	bl ApplyPaletteExt
-	ldr r0, .L080375D8 @ =gUnk_081080D4
+	ldr r0, .L080375D8 @ =Img_Sio_081080D4
 	ldr r1, .L080375DC @ =0x06016000
 	bl Decompress
-	ldr r0, .L080375E0 @ =gUnk_0831AABC
+	ldr r0, .L080375E0 @ =Pal_Sio_0831AABC
 	movs r1, #0x88
 	lsls r1, r1, #2
 	movs r2, #0x40
@@ -4638,7 +4638,7 @@ func_fe6_080373E0: @ 0x080373E0
 	cmp r3, #0
 	bge .L0803743E
 	bl EnablePalSync
-	ldr r0, .L080375E8 @ =0x0203C758
+	ldr r0, .L080375E8 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
@@ -4647,9 +4647,9 @@ func_fe6_080373E0: @ 0x080373E0
 	bl ResetUnitSprites
 	bl ForceSyncUnitSpriteSheet
 	ldr r0, [r7, #0x3c]
-	ldr r1, .L080375EC @ =0x0203C618
+	ldr r1, .L080375EC @ =gLinkArenaSt
 	ldrb r1, [r1]
-	bl func_fe6_08036EB4
+	bl GetSioTeams
 	str r0, [r7, #0x38]
 	adds r6, r7, #0
 	adds r6, #0x5c
@@ -4669,13 +4669,13 @@ func_fe6_080373E0: @ 0x080373E0
 	adds r1, #8
 	movs r0, #1
 	strb r0, [r1]
-	ldr r4, .L080375EC @ =0x0203C618
+	ldr r4, .L080375EC @ =gLinkArenaSt
 	ldrb r0, [r4]
 	adds r1, r7, #0
 	bl func_fe6_080372B0
 	str r0, [r7, #0x34]
 	adds r0, r7, #0
-	bl func_fe6_08037020
+	bl DrawAllLinkArenaTeams
 	ldr r1, [r7, #0x34]
 	adds r0, r7, #0
 	add r2, sp, #8
@@ -4774,11 +4774,11 @@ func_fe6_080373E0: @ 0x080373E0
 	strb r2, [r0]
 	ldr r0, [r7, #0x2c]
 	ldr r1, .L080375F4 @ =gUnk_Sio_0810F19C
-	ldr r4, .L080375EC @ =0x0203C618
+	ldr r4, .L080375EC @ =gLinkArenaSt
 	ldrb r2, [r4]
 	adds r1, r2, r1
 	ldrb r1, [r1]
-	bl func_fe6_0803FC3C
+	bl StartLinkArenaTitleBanner
 	ldr r0, .L080375F8 @ =gUnk_Sio_085C9AD4
 	ldrb r3, [r4]
 	lsls r1, r3, #2
@@ -4794,11 +4794,11 @@ func_fe6_080373E0: @ 0x080373E0
 	movs r3, #8
 	bl func_fe6_0803FD40
 	adds r0, r7, #0
-	bl func_fe6_080373A4
+	bl GetLATeamListHelpTextId
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	movs r0, #0xf
 	bl EnableBgSync
 	add sp, #0x10
@@ -4809,24 +4809,24 @@ func_fe6_080373E0: @ 0x080373E0
 	bx r0
 	.align 2, 0
 .L080375C0: .4byte Pal_Text
-.L080375C4: .4byte gUnk_08107820
+.L080375C4: .4byte Img_TacticianSelObj
 .L080375C8: .4byte 0x06014800
 .L080375CC: .4byte gBg2Tm+0x112
-.L080375D0: .4byte gUnk_08109DF4
-.L080375D4: .4byte gUnk_08109A00
-.L080375D8: .4byte gUnk_081080D4
+.L080375D0: .4byte Tsa_Sio_08109DF4
+.L080375D4: .4byte Pal_TacticianSelObj
+.L080375D8: .4byte Img_Sio_081080D4
 .L080375DC: .4byte 0x06016000
-.L080375E0: .4byte gUnk_0831AABC
+.L080375E0: .4byte Pal_Sio_0831AABC
 .L080375E4: .4byte gPal
-.L080375E8: .4byte 0x0203C758
-.L080375EC: .4byte 0x0203C618
+.L080375E8: .4byte gSioFont_0203C758
+.L080375EC: .4byte gLinkArenaSt
 .L080375F0: .4byte gDispIo
 .L080375F4: .4byte gUnk_Sio_0810F19C
 .L080375F8: .4byte gUnk_Sio_085C9AD4
 .L080375FC: .4byte gUnk_Sio_0810F190
 
-	thumb_func_start func_fe6_08037600
-func_fe6_08037600: @ 0x08037600
+	thumb_func_start SioTeamList_Main_HandleDPadInput
+SioTeamList_Main_HandleDPadInput: @ 0x08037600
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	lsls r1, r1, #0x18
@@ -4881,8 +4881,8 @@ func_fe6_08037600: @ 0x08037600
 	.align 2, 0
 .L08037660: .4byte gKeySt
 
-	thumb_func_start func_fe6_08037664
-func_fe6_08037664: @ 0x08037664
+	thumb_func_start SioTeamList_Loop_MainKeyHandler
+SioTeamList_Loop_MainKeyHandler: @ 0x08037664
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4890,8 +4890,8 @@ func_fe6_08037664: @ 0x08037664
 	push {r5, r6, r7}
 	adds r4, r0, #0
 	ldr r6, [r4, #0x3c]
-	ldr r1, .L08037730 @ =gUnk_Sio_085C9AC8
-	ldr r0, .L08037734 @ =0x0203C618
+	ldr r1, .L08037730 @ =gSioTeamListConfigLut
+	ldr r0, .L08037734 @ =gLinkArenaSt
 	mov r8, r0
 	ldrb r2, [r0]
 	lsls r0, r2, #2
@@ -4917,12 +4917,12 @@ func_fe6_08037664: @ 0x08037664
 	lsls r3, r3, #0x18
 	lsrs r3, r3, #0x18
 	movs r2, #0
-	bl func_fe6_08037600
+	bl SioTeamList_Main_HandleDPadInput
 	ldr r0, [r4, #0x3c]
 	cmp r6, r0
 	beq .L080376E2
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r5, #0
 	adds r0, #0x3a
 	adds r1, r0, r6
@@ -4936,11 +4936,11 @@ func_fe6_08037664: @ 0x08037664
 	adds r0, r4, #0
 	bl func_fe6_0803703C
 	adds r0, r4, #0
-	bl func_fe6_080373A4
+	bl GetLATeamListHelpTextId
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 .L080376E2:
 	ldr r0, .L08037738 @ =gKeySt
 	ldr r1, [r0]
@@ -4971,7 +4971,7 @@ func_fe6_08037664: @ 0x08037664
 	cmp r0, #7
 	bne .L0803773C
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r4, #0
 	movs r1, #9
 	bl Proc_Goto
@@ -4980,22 +4980,22 @@ func_fe6_08037664: @ 0x08037664
 	strb r0, [r1, #3]
 	b .L080377CE
 	.align 2, 0
-.L08037730: .4byte gUnk_Sio_085C9AC8
-.L08037734: .4byte 0x0203C618
+.L08037730: .4byte gSioTeamListConfigLut
+.L08037734: .4byte gLinkArenaSt
 .L08037738: .4byte gKeySt
 .L0803773C:
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r4, #0
 	bl Proc_Break
 	b .L08037774
 .L0803774A:
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	b .L08037774
 .L08037752:
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r1, r4, #0
 	adds r1, #0x52
 	movs r0, #8
@@ -5018,11 +5018,11 @@ func_fe6_08037664: @ 0x08037664
 	cmp r0, #0
 	beq .L08037796
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r4, #0
 	movs r1, #9
 	bl Proc_Goto
-	ldr r1, .L080377E0 @ =0x0203C618
+	ldr r1, .L080377E0 @ =gLinkArenaSt
 	movs r0, #0xff
 	strb r0, [r1, #3]
 .L08037796:
@@ -5047,7 +5047,7 @@ func_fe6_08037664: @ 0x08037664
 	movs r0, #0x6a
 	bl m4aSongNumStart
 .L080377C0:
-	ldr r1, .L080377E0 @ =0x0203C618
+	ldr r1, .L080377E0 @ =gLinkArenaSt
 	movs r0, #0
 	strb r0, [r1, #3]
 	adds r0, r4, #0
@@ -5063,22 +5063,22 @@ func_fe6_08037664: @ 0x08037664
 	bx r0
 	.align 2, 0
 .L080377DC: .4byte gKeySt
-.L080377E0: .4byte 0x0203C618
+.L080377E0: .4byte gLinkArenaSt
 .L080377E4: .4byte gPlaySt
 
-	thumb_func_start func_fe6_080377E8
-func_fe6_080377E8: @ 0x080377E8
+	thumb_func_start SioTeamList_StartUnitList
+SioTeamList_StartUnitList: @ 0x080377E8
 	push {r4, lr}
 	sub sp, #0x10
 	adds r4, r0, #0
 	ldr r0, [r4, #0x2c]
 	bl Proc_End
-	bl func_fe6_0803FB74
+	bl Sio_EndBackgroundSlide
 	bl InitUnits
 	movs r0, #1
 	bl GetUnit
 	adds r1, r0, #0
-	ldr r3, .L08037828 @ =0x0203C770
+	ldr r3, .L08037828 @ =gLinkArenaTeamList
 	ldr r2, [r4, #0x40]
 	lsls r0, r2, #2
 	adds r0, r0, r2
@@ -5088,19 +5088,19 @@ func_fe6_080377E8: @ 0x080377E8
 	mov r2, sp
 	bl ReadMultiArenaSaveTeam
 	adds r0, r4, #0
-	bl func_fe6_080762E4
+	bl StartUnitListScreenUnk
 	add sp, #0x10
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08037828: .4byte 0x0203C770
+.L08037828: .4byte gLinkArenaTeamList
 
-	thumb_func_start func_fe6_0803782C
-func_fe6_0803782C: @ 0x0803782C
+	thumb_func_start SioTeamList_WaitForUnitListScreen
+SioTeamList_WaitForUnitListScreen: @ 0x0803782C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L08037848 @ =gUnk_08678594
+	ldr r0, .L08037848 @ =ProcScr_UnitListScreen_PrepMenu
 	bl FindProc
 	cmp r0, #0
 	bne .L08037840
@@ -5111,12 +5111,12 @@ func_fe6_0803782C: @ 0x0803782C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08037848: .4byte gUnk_08678594
+.L08037848: .4byte ProcScr_UnitListScreen_PrepMenu
 
 	thumb_func_start func_fe6_0803784C
 func_fe6_0803784C: @ 0x0803784C
 	movs r1, #0
-	ldr r2, .L08037868 @ =0x0203C618
+	ldr r2, .L08037868 @ =gLinkArenaSt
 	ldrb r0, [r2, #5]
 	adds r0, #2
 	cmp r1, r0
@@ -5131,7 +5131,7 @@ func_fe6_0803784C: @ 0x0803784C
 	movs r0, #0
 	b .L08037874
 	.align 2, 0
-.L08037868: .4byte 0x0203C618
+.L08037868: .4byte gLinkArenaSt
 .L0803786C:
 	adds r1, #1
 	cmp r1, r2
@@ -5142,8 +5142,8 @@ func_fe6_0803784C: @ 0x0803784C
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_08037878
-func_fe6_08037878: @ 0x08037878
+	thumb_func_start SioTeamList_Loop_SubSel
+SioTeamList_Loop_SubSel: @ 0x08037878
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5155,12 +5155,12 @@ func_fe6_08037878: @ 0x08037878
 	mov sb, r0
 	ldr r1, [r7, #0x2c]
 	str r1, [sp, #4]
-	ldr r0, .L080378BC @ =gUnk_Sio_085C9A08
-	bl func_fe6_08036D60
+	ldr r0, .L080378BC @ =KeyList_SioSecretTeam
+	bl SioIsKeyInputSequenceComplete
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L080378C4
-	ldr r0, .L080378C0 @ =0x0203C770
+	ldr r0, .L080378C0 @ =gLinkArenaTeamList
 	mov r2, sb
 	lsls r1, r2, #2
 	add r1, sb
@@ -5176,8 +5176,8 @@ func_fe6_08037878: @ 0x08037878
 	bl Proc_Goto
 	b .L08037D64
 	.align 2, 0
-.L080378BC: .4byte gUnk_Sio_085C9A08
-.L080378C0: .4byte 0x0203C770
+.L080378BC: .4byte KeyList_SioSecretTeam
+.L080378C0: .4byte gLinkArenaTeamList
 .L080378C4:
 	ldr r1, [sp, #4]
 	adds r1, #0x44
@@ -5220,7 +5220,7 @@ func_fe6_08037878: @ 0x08037878
 	bl func_fe6_08036B38
 .L08037916:
 	movs r0, #4
-	bl func_fe6_08040530
+	bl ScrollMultiArenaTeamSprites
 	ldr r1, [r7, #0x40]
 	mov r0, sl
 	ldrb r0, [r0]
@@ -5251,7 +5251,7 @@ func_fe6_08037878: @ 0x08037878
 .L08037954:
 	movs r0, #4
 	rsbs r0, r0, #0
-	bl func_fe6_08040530
+	bl ScrollMultiArenaTeamSprites
 	ldr r1, [r7, #0x40]
 	mov r2, sl
 	ldrb r2, [r2]
@@ -5268,7 +5268,7 @@ func_fe6_08037878: @ 0x08037878
 	adds r1, #0x28
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	b .L08037D64
 .L08037982:
 	ldr r1, [r7, #0x40]
@@ -5315,7 +5315,7 @@ func_fe6_08037878: @ 0x08037878
 	.4byte .L08037BBA @ case 6
 	.4byte .L08037B2C @ case 7
 .L080379E8:
-	ldr r0, .L08037A10 @ =0x0203C770
+	ldr r0, .L08037A10 @ =gLinkArenaTeamList
 	mov r2, sb
 	lsls r1, r2, #2
 	add r1, sb
@@ -5329,19 +5329,19 @@ func_fe6_08037878: @ 0x08037878
 	b .L08037B24
 .L08037A00:
 	movs r0, #2
-	bl func_fe6_08036D08
-	ldr r1, .L08037A14 @ =0x0203C618
+	bl SioPlaySe
+	ldr r1, .L08037A14 @ =gLinkArenaSt
 	ldr r0, [r7, #0x40]
 	strb r0, [r1, #3]
 	b .L08037A30
 	.align 2, 0
-.L08037A10: .4byte 0x0203C770
-.L08037A14: .4byte 0x0203C618
+.L08037A10: .4byte gLinkArenaTeamList
+.L08037A14: .4byte gLinkArenaSt
 .L08037A18:
 	movs r0, #2
-	bl func_fe6_08036D08
-	ldr r2, .L08037A38 @ =0x0203C618
-	ldr r1, .L08037A3C @ =0x0203C770
+	bl SioPlaySe
+	ldr r2, .L08037A38 @ =gLinkArenaSt
+	ldr r1, .L08037A3C @ =gLinkArenaTeamList
 	mov r3, sb
 	lsls r0, r3, #2
 	add r0, sb
@@ -5354,10 +5354,10 @@ func_fe6_08037878: @ 0x08037878
 	bl Proc_Break
 	b .L08037D64
 	.align 2, 0
-.L08037A38: .4byte 0x0203C618
-.L08037A3C: .4byte 0x0203C770
+.L08037A38: .4byte gLinkArenaSt
+.L08037A3C: .4byte gLinkArenaTeamList
 .L08037A40:
-	ldr r0, .L08037A68 @ =0x0203C770
+	ldr r0, .L08037A68 @ =gLinkArenaTeamList
 	mov r2, sb
 	lsls r1, r2, #2
 	add r1, sb
@@ -5369,13 +5369,13 @@ func_fe6_08037878: @ 0x08037878
 	cmp r0, #0
 	bne .L08037B24
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r7, #0
 	movs r1, #4
 	bl Proc_Goto
 	b .L08037D64
 	.align 2, 0
-.L08037A68: .4byte 0x0203C770
+.L08037A68: .4byte gLinkArenaTeamList
 .L08037A6C:
 	ldr r0, [r7, #0x38]
 	cmp r0, #1
@@ -5383,7 +5383,7 @@ func_fe6_08037878: @ 0x08037878
 	b .L08037BBA
 .L08037A74:
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r7, #0
 	adds r0, #0x53
 	mov r3, sb
@@ -5398,7 +5398,7 @@ func_fe6_08037878: @ 0x08037878
 	adds r0, r7, #0
 	movs r1, #0x50
 	movs r3, #0x88
-	bl func_fe6_08036AF8
+	bl StartSioHold
 	str r0, [r7, #0x30]
 	mov r1, sb
 	adds r1, #1
@@ -5428,12 +5428,12 @@ func_fe6_08037878: @ 0x08037878
 .L08037ACC: .4byte gKeySt
 .L08037AD0:
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r7, #0
-	bl func_fe6_080371B4
+	bl SioTeamList_SwapTeams
 	b .L08037BBA
 .L08037ADE:
-	ldr r0, .L08037B20 @ =0x0203C770
+	ldr r0, .L08037B20 @ =gLinkArenaTeamList
 	mov r2, sb
 	lsls r1, r2, #2
 	add r1, sb
@@ -5445,7 +5445,7 @@ func_fe6_08037878: @ 0x08037878
 	cmp r0, #0
 	bne .L08037B24
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	mov r0, sb
 	mov r3, sl
 	ldrb r3, [r3]
@@ -5457,26 +5457,26 @@ func_fe6_08037878: @ 0x08037878
 	adds r0, r7, #0
 	movs r1, #0x50
 	movs r3, #0x88
-	bl func_fe6_08036AF8
+	bl StartSioHold
 	str r0, [r7, #0x30]
 	adds r0, r7, #0
 	movs r1, #7
 	bl Proc_Goto
 	b .L08037BBA
 	.align 2, 0
-.L08037B20: .4byte 0x0203C770
+.L08037B20: .4byte gLinkArenaTeamList
 .L08037B24:
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	b .L08037BBA
 .L08037B2C:
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	mov r0, sb
 	lsls r4, r0, #2
 	add r4, sb
 	lsls r4, r4, #2
-	ldr r0, .L08037BE4 @ =0x0203C770
+	ldr r0, .L08037BE4 @ =gLinkArenaTeamList
 	adds r4, r4, r0
 	movs r1, #0x53
 	adds r1, r1, r7
@@ -5489,8 +5489,8 @@ func_fe6_08037878: @ 0x08037878
 	ldr r6, .L08037BE8 @ =0x0203C944
 	adds r1, r1, r6
 	adds r0, r4, #0
-	bl func_fe6_080368DC
-	ldr r5, .L08037BEC @ =0x0203C618
+	bl SioStrCpy
+	ldr r5, .L08037BEC @ =gLinkArenaSt
 	adds r0, r5, #6
 	mov r1, r8
 	ldrb r1, [r1]
@@ -5545,7 +5545,7 @@ func_fe6_08037878: @ 0x08037878
 	cmp r0, #0
 	beq .L08037C0E
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r1, r7, #0
 	adds r1, #0x52
 	ldrb r0, [r1]
@@ -5557,9 +5557,9 @@ func_fe6_08037878: @ 0x08037878
 	bl Proc_End
 	b .L08037D64
 	.align 2, 0
-.L08037BE4: .4byte 0x0203C770
+.L08037BE4: .4byte gLinkArenaTeamList
 .L08037BE8: .4byte 0x0203C944
-.L08037BEC: .4byte 0x0203C618
+.L08037BEC: .4byte gLinkArenaSt
 .L08037BF0: .4byte gKeySt
 .L08037BF4:
 	cmp r0, #8
@@ -5597,7 +5597,7 @@ func_fe6_08037878: @ 0x08037878
 	movs r0, #0x6a
 	bl m4aSongNumStart
 .L08037C3A:
-	ldr r1, .L08037CC0 @ =0x0203C618
+	ldr r1, .L08037CC0 @ =gLinkArenaSt
 	movs r0, #0
 	strb r0, [r1, #3]
 	adds r0, r7, #0
@@ -5632,7 +5632,7 @@ func_fe6_08037878: @ 0x08037878
 	bl func_fe6_08036B38
 .L08037C7E:
 	movs r0, #4
-	bl func_fe6_08040530
+	bl ScrollMultiArenaTeamSprites
 	mov r1, sl
 	ldrb r0, [r1]
 	subs r0, #1
@@ -5654,12 +5654,12 @@ func_fe6_08037878: @ 0x08037878
 	adds r1, #0x28
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	b .L08037CCE
 	.align 2, 0
 .L08037CB8: .4byte gKeySt
 .L08037CBC: .4byte gPlaySt
-.L08037CC0: .4byte 0x0203C618
+.L08037CC0: .4byte gLinkArenaSt
 .L08037CC4:
 	ldr r0, [r7, #0x40]
 	cmp r0, #0
@@ -5700,7 +5700,7 @@ func_fe6_08037878: @ 0x08037878
 .L08037D0C:
 	movs r0, #4
 	rsbs r0, r0, #0
-	bl func_fe6_08040530
+	bl ScrollMultiArenaTeamSprites
 	mov r1, sl
 	ldrb r0, [r1]
 	adds r0, #1
@@ -5722,7 +5722,7 @@ func_fe6_08037878: @ 0x08037878
 	adds r1, #0x28
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	b .L08037D58
 	.align 2, 0
 .L08037D48: .4byte gKeySt
@@ -5738,7 +5738,7 @@ func_fe6_08037878: @ 0x08037878
 	cmp sb, r0
 	beq .L08037D64
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L08037D64:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -5765,12 +5765,12 @@ func_fe6_08037D74: @ 0x08037D74
 	bge .L08037D80
 	bx lr
 
-	thumb_func_start func_fe6_08037D8C
-func_fe6_08037D8C: @ 0x08037D8C
+	thumb_func_start SioTeamList_SubSel_Switching
+SioTeamList_SubSel_Switching: @ 0x08037D8C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r6, [r4, #0x2c]
-	ldr r0, .L08037DF0 @ =gUnk_Sio_0810F19F
+	ldr r0, .L08037DF0 @ =gXposArray_SioTeamListSwicthing
 	ldr r1, [r4, #0x44]
 	adds r1, r1, r0
 	movs r5, #0
@@ -5818,7 +5818,7 @@ func_fe6_08037D8C: @ 0x08037D8C
 	strb r0, [r1]
 	b .L08037E0C
 	.align 2, 0
-.L08037DF0: .4byte gUnk_Sio_0810F19F
+.L08037DF0: .4byte gXposArray_SioTeamListSwicthing
 .L08037DF4: .4byte gDispIo
 .L08037DF8:
 	lsls r1, r5, #0x10
@@ -5840,7 +5840,7 @@ func_fe6_08037E14: @ 0x08037E14
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r6, [r4, #0x2c]
-	ldr r1, .L08037E7C @ =gUnk_Sio_0810F19F
+	ldr r1, .L08037E7C @ =gXposArray_SioTeamListSwicthing
 	ldr r0, [r4, #0x44]
 	adds r0, r0, r1
 	movs r5, #0
@@ -5889,7 +5889,7 @@ func_fe6_08037E14: @ 0x08037E14
 	str r7, [r6, #0x48]
 	b .L08037E98
 	.align 2, 0
-.L08037E7C: .4byte gUnk_Sio_0810F19F
+.L08037E7C: .4byte gXposArray_SioTeamListSwicthing
 .L08037E80: .4byte gDispIo
 .L08037E84:
 	lsls r1, r5, #0x10
@@ -5906,15 +5906,15 @@ func_fe6_08037E14: @ 0x08037E14
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08037EA0
-func_fe6_08037EA0: @ 0x08037EA0
+	thumb_func_start SioTeamList_StartEraseTeamSubMenu
+SioTeamList_StartEraseTeamSubMenu: @ 0x08037EA0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r1, r5, #0
 	adds r1, #0x55
 	movs r0, #1
 	strb r0, [r1]
-	bl func_fe6_080410BC
+	bl SioPutSupportMenuImage
 	adds r1, r5, #0
 	adds r1, #0x48
 	ldr r0, [r5, #0x40]
@@ -5930,7 +5930,7 @@ func_fe6_08037EA0: @ 0x08037EA0
 	adds r0, #5
 .L08037EC8:
 	str r0, [r5, #0x58]
-	ldr r4, .L08037EF8 @ =0x0203C6A4
+	ldr r4, .L08037EF8 @ =gSioText_0203C6A4
 	adds r0, r4, #0
 	bl ClearText
 	ldr r1, .L08037EFC @ =gUnk_Sio_0810F1AC
@@ -5949,19 +5949,19 @@ func_fe6_08037EA0: @ 0x08037EA0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08037EF8: .4byte 0x0203C6A4
+.L08037EF8: .4byte gSioText_0203C6A4
 .L08037EFC: .4byte gUnk_Sio_0810F1AC
 .L08037F00: .4byte gBg0Tm+0x1E
 
-	thumb_func_start func_fe6_08037F04
-func_fe6_08037F04: @ 0x08037F04
+	thumb_func_start SioTeamList_EraseTeam_KeyHandler
+SioTeamList_EraseTeam_KeyHandler: @ 0x08037F04
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r1, [r4, #0x58]
 	lsls r1, r1, #3
 	adds r1, #0x18
 	movs r0, #0x60
-	bl func_fe6_080410F8
+	bl PutLinkArenaChoiceBannerSprite
 	ldr r0, .L08037FA8 @ =gKeySt
 	ldr r1, [r0]
 	movs r0, #0x20
@@ -5977,7 +5977,7 @@ func_fe6_08037F04: @ 0x08037F04
 	movs r0, #0
 	strb r0, [r1]
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L08037F36:
 	ldr r0, .L08037FA8 @ =gKeySt
 	ldr r1, [r0]
@@ -5994,7 +5994,7 @@ func_fe6_08037F04: @ 0x08037F04
 	movs r0, #1
 	strb r0, [r5]
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L08037F58:
 	ldrb r1, [r5]
 	lsls r0, r1, #2
@@ -6013,7 +6013,7 @@ func_fe6_08037F04: @ 0x08037F04
 	cmp r0, #0
 	beq .L08037FB0
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	ldr r0, [r4, #0x30]
 	bl Proc_End
 	ldr r0, [r4, #0x58]
@@ -6044,13 +6044,13 @@ func_fe6_08037F04: @ 0x08037F04
 	cmp r0, #0
 	bne .L08037FD2
 	adds r0, r4, #0
-	bl func_fe6_080370E4
+	bl SioTeamList_EraseTeam
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	b .L08037FD8
 .L08037FD2:
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L08037FD8:
 	ldr r0, [r4, #0x58]
 	adds r0, #4
@@ -6072,8 +6072,8 @@ func_fe6_08037F04: @ 0x08037F04
 	.align 2, 0
 .L08038000: .4byte gBg0Tm+0x1E
 
-	thumb_func_start func_fe6_08038004
-func_fe6_08038004: @ 0x08038004
+	thumb_func_start SioTeamList_LoadTeam_Dummy
+SioTeamList_LoadTeam_Dummy: @ 0x08038004
 	push {r4, r5, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
@@ -6085,24 +6085,24 @@ func_fe6_08038004: @ 0x08038004
 	mov r2, sp
 	bl ReadMultiArenaSaveTeam
 	adds r0, r5, #0
-	bl func_fe6_08084168
+	bl NewGeneralSecretScreen
 	add sp, #0x10
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803802C
-func_fe6_0803802C: @ 0x0803802C
+	thumb_func_start GetTacticianTextConf
+GetTacticianTextConf: @ 0x0803802C
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r1, #0x34
 	muls r0, r1, r0
-	ldr r1, .L0803803C @ =gUnk_Sio_0810DBCC
+	ldr r1, .L0803803C @ =gTacticianTextConf
 	adds r0, r0, r1
 	bx lr
 	.align 2, 0
-.L0803803C: .4byte gUnk_Sio_0810DBCC
+.L0803803C: .4byte gTacticianTextConf
 
 	thumb_func_start func_fe6_08038040
 func_fe6_08038040: @ 0x08038040
@@ -6115,7 +6115,7 @@ func_fe6_08038040: @ 0x08038040
 	movs r6, #0
 	adds r5, r0, #0
 	adds r5, #0x31
-	ldr r1, .L0803811C @ =0x0203C708
+	ldr r1, .L0803811C @ =gSioText_0203C708
 	mov r8, r1
 	adds r7, r0, #0
 	adds r7, #0x30
@@ -6153,7 +6153,7 @@ func_fe6_08038040: @ 0x08038040
 	ldrsh r1, [r0, r3]
 	movs r0, #0x34
 	muls r1, r0, r1
-	ldr r0, .L08038124 @ =gUnk_Sio_0810DBCC
+	ldr r0, .L08038124 @ =gTacticianTextConf
 	adds r4, r1, r0
 	ldrb r1, [r7]
 	lsls r0, r1, #1
@@ -6215,13 +6215,13 @@ func_fe6_08038040: @ 0x08038040
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803811C: .4byte 0x0203C708
+.L0803811C: .4byte gSioText_0203C708
 .L08038120: .4byte gUnk_Sio_0810EFD2
-.L08038124: .4byte gUnk_Sio_0810DBCC
+.L08038124: .4byte gTacticianTextConf
 .L08038128: .4byte gBg1Tm
 
-	thumb_func_start func_fe6_0803812C
-func_fe6_0803812C: @ 0x0803812C
+	thumb_func_start TacticianDrawCharacters
+TacticianDrawCharacters: @ 0x0803812C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, .L08038158 @ =0x0203C910
@@ -6243,8 +6243,8 @@ func_fe6_0803812C: @ 0x0803812C
 .L08038158: .4byte 0x0203C910
 .L0803815C: .4byte gBg0Tm+0x158
 
-	thumb_func_start func_fe6_08038160
-func_fe6_08038160: @ 0x08038160
+	thumb_func_start Tactician_InitScreen
+Tactician_InitScreen: @ 0x08038160
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	adds r6, r0, #0
@@ -6252,12 +6252,12 @@ func_fe6_08038160: @ 0x08038160
 	add r0, sp, #8
 	movs r2, #0xa
 	bl memcpy
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r0, .L08038270 @ =gUnk_08107820
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r0, .L08038270 @ =Img_TacticianSelObj
 	ldr r1, .L08038274 @ =0x06014800
 	bl Decompress
-	ldr r0, .L08038278 @ =gUnk_08109A00
+	ldr r0, .L08038278 @ =Pal_TacticianSelObj
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -6269,13 +6269,13 @@ func_fe6_08038160: @ 0x08038160
 	bl ApplyPaletteExt
 	movs r0, #0
 	movs r1, #0
-	bl func_fe6_0803FAA4
+	bl Sio_RestartBgSlide
 	ldr r0, .L08038280 @ =gBg2Tm+0x200
 	ldr r1, .L08038284 @ =gUnk_0810A044
 	movs r2, #0x80
 	lsls r2, r2, #5
 	bl TmApplyTsa_thm
-	ldr r0, .L08038288 @ =0x0203C758
+	ldr r0, .L08038288 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
@@ -6305,7 +6305,7 @@ func_fe6_08038160: @ 0x08038160
 	strb r4, [r0]
 	movs r0, #6
 	strh r0, [r6, #0x32]
-	bl func_fe6_0803802C
+	bl GetTacticianTextConf
 	ldrh r1, [r0, #0x24]
 	subs r1, #4
 	ldrh r2, [r0, #0x26]
@@ -6316,7 +6316,7 @@ func_fe6_08038160: @ 0x08038160
 	adds r0, r6, #0
 	adds r0, #0x37
 	strb r4, [r0]
-	ldr r5, .L08038294 @ =0x0203C708
+	ldr r5, .L08038294 @ =gSioText_0203C708
 	movs r4, #9
 .L08038212:
 	adds r0, r5, #0
@@ -6326,13 +6326,13 @@ func_fe6_08038160: @ 0x08038160
 	subs r4, #1
 	cmp r4, #0
 	bge .L08038212
-	ldr r4, .L08038298 @ =0x0203C6A4
+	ldr r4, .L08038298 @ =gSioText_0203C6A4
 	adds r0, r4, #0
 	movs r1, #0xc
 	bl InitText
 	ldr r0, [r6, #0x2c]
 	movs r1, #3
-	bl func_fe6_0803FC3C
+	bl StartLinkArenaTitleBanner
 	subs r4, #0x8c
 	ldrb r0, [r4]
 	str r0, [sp]
@@ -6360,21 +6360,21 @@ func_fe6_08038160: @ 0x08038160
 	bx r0
 	.align 2, 0
 .L0803826C: .4byte gUnk_Sio_0810F1BD
-.L08038270: .4byte gUnk_08107820
+.L08038270: .4byte Img_TacticianSelObj
 .L08038274: .4byte 0x06014800
-.L08038278: .4byte gUnk_08109A00
+.L08038278: .4byte Pal_TacticianSelObj
 .L0803827C: .4byte gUnk_08109C40
 .L08038280: .4byte gBg2Tm+0x200
 .L08038284: .4byte gUnk_0810A044
-.L08038288: .4byte 0x0203C758
+.L08038288: .4byte gSioFont_0203C758
 .L0803828C: .4byte 0x01000007
 .L08038290: .4byte 0x0203C910
-.L08038294: .4byte 0x0203C708
-.L08038298: .4byte 0x0203C6A4
+.L08038294: .4byte gSioText_0203C708
+.L08038298: .4byte gSioText_0203C6A4
 .L0803829C: .4byte 0x0203C918
 
-	thumb_func_start func_fe6_080382A0
-func_fe6_080382A0: @ 0x080382A0
+	thumb_func_start SioUpdateTeam
+SioUpdateTeam: @ 0x080382A0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -6418,7 +6418,7 @@ func_fe6_080382A0: @ 0x080382A0
 	adds r0, r4, #0
 	adds r1, r7, #0
 	movs r2, #0x48
-	bl func_fe6_08015504
+	bl SioMemCpy
 .L080382FE:
 	adds r7, #0x48
 	adds r6, #1
@@ -6438,8 +6438,8 @@ func_fe6_080382A0: @ 0x080382A0
 	.align 2, 0
 .L08038320: .4byte SioPidPool
 
-	thumb_func_start func_fe6_08038324
-func_fe6_08038324: @ 0x08038324
+	thumb_func_start Tactician_MoveHand
+Tactician_MoveHand: @ 0x08038324
 	push {r4, r5, r6, r7, lr}
 	mov ip, r0
 	lsls r5, r1, #1
@@ -6450,7 +6450,7 @@ func_fe6_08038324: @ 0x08038324
 	ldrsh r1, [r2, r0]
 	movs r0, #0x34
 	muls r0, r1, r0
-	ldr r7, .L0803837C @ =gUnk_Sio_0810DBCC
+	ldr r7, .L0803837C @ =gTacticianTextConf
 	adds r2, r0, r7
 	mov r1, ip
 	adds r1, #0x30
@@ -6487,10 +6487,10 @@ func_fe6_08038324: @ 0x08038324
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803837C: .4byte gUnk_Sio_0810DBCC
+.L0803837C: .4byte gTacticianTextConf
 
-	thumb_func_start func_fe6_08038380
-func_fe6_08038380: @ 0x08038380
+	thumb_func_start TacticianTryAppendChar
+TacticianTryAppendChar: @ 0x08038380
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r7, r1, #0
@@ -6500,7 +6500,7 @@ func_fe6_08038380: @ 0x08038380
 	cmp r0, #0xd
 	bhi .L080383EC
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r4, r5, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -6512,7 +6512,7 @@ func_fe6_08038380: @ 0x08038380
 	ldrb r1, [r6]
 	adds r1, #0x3a
 	adds r1, r5, r1
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	ldrb r1, [r6]
 	lsrs r0, r1, #1
 	lsls r0, r0, #1
@@ -6535,7 +6535,7 @@ func_fe6_08038380: @ 0x08038380
 	strb r0, [r6]
 .L080383D8:
 	adds r0, r5, #0
-	bl func_fe6_0803812C
+	bl TacticianDrawCharacters
 	adds r1, r5, #0
 	adds r1, #0x37
 	movs r0, #0
@@ -6545,14 +6545,14 @@ func_fe6_08038380: @ 0x08038380
 .L080383E8: .4byte 0x00003FFF
 .L080383EC:
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L080383F2:
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080383F8
-func_fe6_080383F8: @ 0x080383F8
+	thumb_func_start TacticianTryDeleteChar
+TacticianTryDeleteChar: @ 0x080383F8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r5, #0
@@ -6561,7 +6561,7 @@ func_fe6_080383F8: @ 0x080383F8
 	cmp r0, #0
 	beq .L08038448
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	ldrb r1, [r4]
 	lsrs r0, r1, #1
 	lsls r0, r0, #1
@@ -6590,18 +6590,18 @@ func_fe6_080383F8: @ 0x080383F8
 	adds r0, #0x37
 	strb r2, [r0]
 	adds r0, r5, #0
-	bl func_fe6_0803812C
+	bl TacticianDrawCharacters
 	b .L0803844E
 .L08038448:
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L0803844E:
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08038454
-func_fe6_08038454: @ 0x08038454
+	thumb_func_start SaveTactician
+SaveTactician: @ 0x08038454
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r5, #0
@@ -6610,19 +6610,19 @@ func_fe6_08038454: @ 0x08038454
 	cmp r0, #0
 	beq .L08038480
 	movs r0, #2
-	bl func_fe6_08036D08
-	ldr r0, .L0803847C @ =0x0203C618
+	bl SioPlaySe
+	ldr r0, .L0803847C @ =gLinkArenaSt
 	ldrb r1, [r0, #3]
 	adds r0, r4, #0
-	bl func_fe6_080382A0
+	bl SioUpdateTeam
 	adds r0, r5, #0
 	bl Proc_Break
 	b .L08038486
 	.align 2, 0
-.L0803847C: .4byte 0x0203C618
+.L0803847C: .4byte gLinkArenaSt
 .L08038480:
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L08038486:
 	pop {r4, r5}
 	pop {r0}
@@ -6647,10 +6647,10 @@ func_fe6_0803848C: @ 0x0803848C
 	cmp r3, #0
 	bne .L080384BC
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl func_fe6_08038380
+	bl TacticianTryAppendChar
 	b .L0803857A
 .L080384BC:
 	adds r7, r4, #0
@@ -6682,7 +6682,7 @@ func_fe6_0803848C: @ 0x0803848C
 	adds r0, r3, #0
 	ldrh r1, [r1]
 	ands r0, r1
-	bl func_fe6_0803802C
+	bl GetTacticianTextConf
 	mov sl, r0
 	ldrb r1, [r7]
 	lsrs r0, r1, #1
@@ -6707,7 +6707,7 @@ func_fe6_0803848C: @ 0x0803848C
 	cmp r0, #0
 	beq .L08038560
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	lsls r0, r5, #1
 	adds r0, r0, r5
 	lsls r0, r0, #2
@@ -6720,9 +6720,9 @@ func_fe6_0803848C: @ 0x0803848C
 	mov r3, sb
 	lsls r2, r3, #1
 	subs r1, r1, r2
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	adds r0, r4, #0
-	bl func_fe6_0803812C
+	bl TacticianDrawCharacters
 	adds r0, r4, #0
 	adds r0, #0x37
 	mov r1, sp
@@ -6737,14 +6737,14 @@ func_fe6_0803848C: @ 0x0803848C
 	cmp r2, #0
 	bne .L0803857A
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	b .L0803857A
 .L0803856E:
 	mov r3, r8
 	cmp r3, #0
 	bne .L0803857A
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L0803857A:
 	movs r0, #0
 .L0803857C:
@@ -6757,8 +6757,8 @@ func_fe6_0803848C: @ 0x0803848C
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_0803858C
-func_fe6_0803858C: @ 0x0803858C
+	thumb_func_start Tactician_LoopCore
+Tactician_LoopCore: @ 0x0803858C
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
@@ -6772,7 +6772,7 @@ func_fe6_0803858C: @ 0x0803858C
 	adds r0, r5, #0
 	movs r1, #0
 	adds r2, r6, #0
-	bl func_fe6_08038324
+	bl Tactician_MoveHand
 .L080385AA:
 	ldr r1, [r4]
 	movs r0, #0x80
@@ -6783,7 +6783,7 @@ func_fe6_0803858C: @ 0x0803858C
 	adds r0, r5, #0
 	movs r1, #1
 	adds r2, r6, #0
-	bl func_fe6_08038324
+	bl Tactician_MoveHand
 .L080385C0:
 	ldr r1, [r4]
 	movs r0, #0x20
@@ -6794,7 +6794,7 @@ func_fe6_0803858C: @ 0x0803858C
 	adds r0, r5, #0
 	movs r1, #2
 	adds r2, r6, #0
-	bl func_fe6_08038324
+	bl Tactician_MoveHand
 .L080385D6:
 	ldr r1, [r4]
 	movs r0, #0x10
@@ -6805,7 +6805,7 @@ func_fe6_0803858C: @ 0x0803858C
 	adds r0, r5, #0
 	movs r1, #3
 	adds r2, r6, #0
-	bl func_fe6_08038324
+	bl Tactician_MoveHand
 .L080385EC:
 	ldr r1, [r4]
 	movs r0, #1
@@ -6838,17 +6838,17 @@ func_fe6_0803858C: @ 0x0803858C
 .L08038634:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl func_fe6_08038380
+	bl TacticianTryAppendChar
 	b .L080386C6
 .L0803863E:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl func_fe6_080383F8
+	bl TacticianTryDeleteChar
 	b .L080386C6
 .L08038648:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl func_fe6_08038454
+	bl SaveTactician
 	b .L080386C6
 .L08038652:
 	adds r0, r5, #0
@@ -6870,7 +6870,7 @@ func_fe6_0803858C: @ 0x0803858C
 	cmp r0, #0
 	beq .L080386A2
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	movs r0, #0
 	strb r0, [r4]
 	adds r1, r5, #0
@@ -6884,7 +6884,7 @@ func_fe6_0803858C: @ 0x0803858C
 	cmp r0, #1
 	beq .L080386A2
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	movs r1, #0
 	movs r0, #1
 .L08038698:
@@ -6895,7 +6895,7 @@ func_fe6_0803858C: @ 0x0803858C
 	b .L0803877E
 .L080386A2:
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	b .L080386C6
 .L080386AA:
 	adds r4, r5, #0
@@ -6904,13 +6904,13 @@ func_fe6_0803858C: @ 0x0803858C
 	cmp r1, #2
 	beq .L080386C0
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	movs r1, #0
 	movs r0, #2
 	b .L08038698
 .L080386C0:
 	movs r0, #0
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L080386C6:
 	ldr r0, .L080386E0 @ =gKeySt
 	ldr r1, [r0]
@@ -6959,7 +6959,7 @@ func_fe6_0803858C: @ 0x0803858C
 	beq .L08038726
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl func_fe6_080383F8
+	bl TacticianTryDeleteChar
 .L08038726:
 	ldr r1, [r4]
 	movs r0, #8
@@ -6968,7 +6968,7 @@ func_fe6_0803858C: @ 0x0803858C
 	cmp r0, #0
 	beq .L0803873C
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	movs r0, #5
 	strh r0, [r5, #0x32]
 .L0803873C:
@@ -6979,7 +6979,7 @@ func_fe6_0803858C: @ 0x0803858C
 	cmp r0, #0
 	beq .L0803878C
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r4, r5, #0
 	adds r4, #0x30
 	ldrb r0, [r4]
@@ -7001,7 +7001,7 @@ func_fe6_0803858C: @ 0x0803858C
 	adds r0, r5, #0
 	movs r1, #0
 	adds r2, r6, #0
-	bl func_fe6_08038324
+	bl Tactician_MoveHand
 .L0803877E:
 	adds r0, r5, #0
 	movs r1, #1
@@ -7021,11 +7021,11 @@ func_fe6_0803858C: @ 0x0803858C
 	beq .L080387A8
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl func_fe6_080383F8
+	bl TacticianTryDeleteChar
 	b .L080387B6
 .L080387A8:
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r5, #0
 	movs r1, #3
 	bl Proc_Goto
@@ -7034,35 +7034,35 @@ func_fe6_0803858C: @ 0x0803858C
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_080387BC
-func_fe6_080387BC: @ 0x080387BC
+	thumb_func_start Tactician_Loop
+Tactician_Loop: @ 0x080387BC
 	push {r4, r5, lr}
 	sub sp, #0x18
 	adds r5, r0, #0
 	movs r1, #0x32
 	ldrsh r0, [r5, r1]
-	bl func_fe6_0803802C
+	bl GetTacticianTextConf
 	adds r4, r0, #0
 	ldrh r0, [r5, #0x32]
 	strh r0, [r5, #0x34]
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl func_fe6_0803858C
+	bl Tactician_LoopCore
 	ldrh r0, [r5, #0x34]
 	ldrh r1, [r5, #0x32]
 	cmp r0, r1
 	beq .L080387E6
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L080387E6:
 	movs r1, #0x32
 	ldrsh r0, [r5, r1]
-	bl func_fe6_0803802C
+	bl GetTacticianTextConf
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r0, #0x3a
 	add r1, sp, #8
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	add r1, sp, #8
 	movs r0, #0
 	strb r0, [r1, #0xc]
@@ -7081,14 +7081,14 @@ func_fe6_080387BC: @ 0x080387BC
 	adds r4, #0x30
 	ldrb r4, [r4]
 	str r4, [sp, #4]
-	bl func_fe6_080406B8
+	bl UpdateNameEntrySpriteDraw
 	add sp, #0x18
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803882C
-func_fe6_0803882C: @ 0x0803882C
+	thumb_func_start Tactician_VBlank
+Tactician_VBlank: @ 0x0803882C
 	ldr r0, .L08038854 @ =0x04000006
 	ldrh r0, [r0]
 	adds r0, #1
@@ -7133,18 +7133,18 @@ func_fe6_0803882C: @ 0x0803882C
 .L08038884: .4byte 0x04000052
 .L08038888: .4byte gUnk_030013E8
 
-	thumb_func_start func_fe6_0803888C
-func_fe6_0803888C: @ 0x0803888C
+	thumb_func_start Tactician_SetVBlank
+Tactician_SetVBlank: @ 0x0803888C
 	push {lr}
 	adds r0, #0x38
 	movs r1, #0
 	strb r1, [r0]
-	ldr r0, .L080388A0 @ =func_fe6_0803882C
+	ldr r0, .L080388A0 @ =Tactician_VBlank
 	bl SetOnHBlankA
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080388A0: .4byte func_fe6_0803882C
+.L080388A0: .4byte Tactician_VBlank
 
 	thumb_func_start func_fe6_080388A4
 func_fe6_080388A4: @ 0x080388A4
@@ -7237,14 +7237,14 @@ func_fe6_08038910: @ 0x08038910
 	.align 2, 0
 .L08038950: .4byte gUnk_030013E8
 
-	thumb_func_start func_fe6_08038954
-func_fe6_08038954: @ 0x08038954
+	thumb_func_start NameSelect_DrawName
+NameSelect_DrawName: @ 0x08038954
 	push {r4, lr}
 	adds r0, #0x39
 	movs r1, #1
 	strb r1, [r0]
-	bl func_fe6_080410BC
-	ldr r4, .L08038984 @ =0x0203C6A4
+	bl SioPutSupportMenuImage
+	ldr r4, .L08038984 @ =gSioText_0203C6A4
 	adds r0, r4, #0
 	bl ClearText
 	ldr r1, .L08038988 @ =gUnk_Sio_0810F1C8
@@ -7259,7 +7259,7 @@ func_fe6_08038954: @ 0x08038954
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08038984: .4byte 0x0203C6A4
+.L08038984: .4byte gSioText_0203C6A4
 .L08038988: .4byte gUnk_Sio_0810F1C8
 .L0803898C: .4byte gBg0Tm+0x316
 
@@ -7269,7 +7269,7 @@ func_fe6_08038990: @ 0x08038990
 	adds r5, r0, #0
 	movs r0, #0x40
 	movs r1, #0x58
-	bl func_fe6_080410F8
+	bl PutLinkArenaChoiceBannerSprite
 	ldr r0, .L08038A20 @ =gKeySt
 	ldr r1, [r0]
 	movs r0, #0x20
@@ -7285,7 +7285,7 @@ func_fe6_08038990: @ 0x08038990
 	movs r0, #0
 	strb r0, [r1]
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L080389BE:
 	ldr r0, .L08038A20 @ =gKeySt
 	ldr r1, [r0]
@@ -7302,7 +7302,7 @@ func_fe6_08038990: @ 0x08038990
 	movs r0, #1
 	strb r0, [r4]
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L080389E0:
 	ldrb r1, [r4]
 	lsls r0, r1, #2
@@ -7319,7 +7319,7 @@ func_fe6_08038990: @ 0x08038990
 	cmp r0, #0
 	beq .L08038A28
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	ldr r0, .L08038A24 @ =gBg0Tm+0x316
 	movs r1, #0xc
 	movs r2, #2
@@ -7342,7 +7342,7 @@ func_fe6_08038990: @ 0x08038990
 	cmp r0, #0
 	bne .L08038A50
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	ldr r1, .L08038A4C @ =0x0203C918
 	movs r0, #1
 	strb r0, [r1]
@@ -7354,7 +7354,7 @@ func_fe6_08038990: @ 0x08038990
 .L08038A4C: .4byte 0x0203C918
 .L08038A50:
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L08038A56:
 	ldr r0, .L08038A74 @ =gBg0Tm+0x316
 	movs r1, #0xc
@@ -7372,8 +7372,8 @@ func_fe6_08038990: @ 0x08038990
 	.align 2, 0
 .L08038A74: .4byte gBg0Tm+0x316
 
-	thumb_func_start func_fe6_08038A78
-func_fe6_08038A78: @ 0x08038A78
+	thumb_func_start SioPostBattleSprites_Init
+SioPostBattleSprites_Init: @ 0x08038A78
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x40
@@ -7396,8 +7396,8 @@ func_fe6_08038A78: @ 0x08038A78
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08038AA4
-func_fe6_08038AA4: @ 0x08038AA4
+	thumb_func_start SioPostBattleSprites_Loop_DrawSlideIn
+SioPostBattleSprites_Loop_DrawSlideIn: @ 0x08038AA4
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -7452,7 +7452,7 @@ func_fe6_08038AA4: @ 0x08038AA4
 	ldr r1, [r6, #0x30]
 	ldr r2, [r6, #0x34]
 	subs r2, #0x10
-	ldr r3, .L08038BA8 @ =gUnk_Sio_085C9D08
+	ldr r3, .L08038BA8 @ =SpriteArray_Sio_085C9D08
 	movs r0, #0x43
 	adds r0, r0, r6
 	mov r8, r0
@@ -7467,7 +7467,7 @@ func_fe6_08038AA4: @ 0x08038AA4
 	adds r1, #0x48
 	ldr r2, [r6, #0x34]
 	subs r2, #6
-	ldr r3, .L08038BAC @ =gUnk_Sio_085C9CF8
+	ldr r3, .L08038BAC @ =SpriteArray_Sio_085C9CF8
 	adds r5, r6, #0
 	adds r5, #0x42
 	ldrb r7, [r5]
@@ -7481,7 +7481,7 @@ func_fe6_08038AA4: @ 0x08038AA4
 	adds r1, #0x60
 	ldr r2, [r6, #0x34]
 	adds r2, #8
-	ldr r3, .L08038BB0 @ =gUnk_Sio_0810F220
+	ldr r3, .L08038BB0 @ =Sprite_Sio_0810F220
 	str r4, [sp]
 	movs r0, #4
 	bl PutSprite
@@ -7489,7 +7489,7 @@ func_fe6_08038AA4: @ 0x08038AA4
 	adds r1, #0x40
 	ldr r2, [r6, #0x34]
 	adds r2, #8
-	ldr r3, .L08038BB4 @ =gUnk_Sio_0810F256
+	ldr r3, .L08038BB4 @ =Sprite_Sio_0810F256
 	mov r4, r8
 	ldrb r4, [r4]
 	lsls r0, r4, #2
@@ -7502,7 +7502,7 @@ func_fe6_08038AA4: @ 0x08038AA4
 	adds r1, #0x70
 	ldr r2, [r6, #0x34]
 	subs r2, #8
-	ldr r3, .L08038BB8 @ =gUnk_Sio_0810F228
+	ldr r3, .L08038BB8 @ =Sprite_Sio_0810F228
 	movs r0, #0xf
 	ldrb r7, [r5]
 	ands r0, r7
@@ -7518,7 +7518,7 @@ func_fe6_08038AA4: @ 0x08038AA4
 	adds r1, r0, #0
 	adds r1, #0x7c
 	ldr r2, [r6, #0x34]
-	ldr r3, .L08038BBC @ =gUnk_Sio_0810F242
+	ldr r3, .L08038BBC @ =Sprite_Sio_0810F242
 	ldrb r0, [r5]
 	cmp r0, #3
 	beq .L08038BC0
@@ -7527,12 +7527,12 @@ func_fe6_08038AA4: @ 0x08038AA4
 	adds r0, r0, r4
 	b .L08038BC2
 	.align 2, 0
-.L08038BA8: .4byte gUnk_Sio_085C9D08
-.L08038BAC: .4byte gUnk_Sio_085C9CF8
-.L08038BB0: .4byte gUnk_Sio_0810F220
-.L08038BB4: .4byte gUnk_Sio_0810F256
-.L08038BB8: .4byte gUnk_Sio_0810F228
-.L08038BBC: .4byte gUnk_Sio_0810F242
+.L08038BA8: .4byte SpriteArray_Sio_085C9D08
+.L08038BAC: .4byte SpriteArray_Sio_085C9CF8
+.L08038BB0: .4byte Sprite_Sio_0810F220
+.L08038BB4: .4byte Sprite_Sio_0810F256
+.L08038BB8: .4byte Sprite_Sio_0810F228
+.L08038BBC: .4byte Sprite_Sio_0810F242
 .L08038BC0:
 	movs r0, #0x40
 .L08038BC2:
@@ -7544,7 +7544,7 @@ func_fe6_08038AA4: @ 0x08038AA4
 	adds r1, #0xd0
 	ldr r2, [r6, #0x34]
 	subs r2, #8
-	ldr r3, .L08038C00 @ =gUnk_Sio_0810F25E
+	ldr r3, .L08038C00 @ =Sprite_Sio_0810F25E
 	ldrb r4, [r5]
 	adds r0, r4, #0
 	adds r0, #0xa
@@ -7567,10 +7567,10 @@ func_fe6_08038AA4: @ 0x08038AA4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08038C00: .4byte gUnk_Sio_0810F25E
+.L08038C00: .4byte Sprite_Sio_0810F25E
 
-	thumb_func_start func_fe6_08038C04
-func_fe6_08038C04: @ 0x08038C04
+	thumb_func_start SioPostBattleSprites_Loop_DrawStatic
+SioPostBattleSprites_Loop_DrawStatic: @ 0x08038C04
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -7579,7 +7579,7 @@ func_fe6_08038C04: @ 0x08038C04
 	ldr r1, [r5, #0x30]
 	ldr r2, [r5, #0x34]
 	subs r2, #0x10
-	ldr r3, .L08038CB4 @ =gUnk_Sio_085C9D08
+	ldr r3, .L08038CB4 @ =SpriteArray_Sio_085C9D08
 	movs r0, #0x43
 	adds r0, r0, r5
 	mov r8, r0
@@ -7595,7 +7595,7 @@ func_fe6_08038C04: @ 0x08038C04
 	adds r1, #0x48
 	ldr r2, [r5, #0x34]
 	subs r2, #6
-	ldr r3, .L08038CB8 @ =gUnk_Sio_085C9CF8
+	ldr r3, .L08038CB8 @ =SpriteArray_Sio_085C9CF8
 	adds r6, r5, #0
 	adds r6, #0x42
 	ldrb r7, [r6]
@@ -7609,7 +7609,7 @@ func_fe6_08038C04: @ 0x08038C04
 	adds r1, #0x60
 	ldr r2, [r5, #0x34]
 	adds r2, #8
-	ldr r3, .L08038CBC @ =gUnk_Sio_0810F220
+	ldr r3, .L08038CBC @ =Sprite_Sio_0810F220
 	str r4, [sp]
 	movs r0, #4
 	bl PutSprite
@@ -7617,7 +7617,7 @@ func_fe6_08038C04: @ 0x08038C04
 	adds r1, #0x40
 	ldr r2, [r5, #0x34]
 	adds r2, #8
-	ldr r3, .L08038CC0 @ =gUnk_Sio_0810F256
+	ldr r3, .L08038CC0 @ =Sprite_Sio_0810F256
 	mov r4, r8
 	ldrb r4, [r4]
 	lsls r0, r4, #2
@@ -7630,7 +7630,7 @@ func_fe6_08038C04: @ 0x08038C04
 	adds r1, #0x70
 	ldr r2, [r5, #0x34]
 	subs r2, #8
-	ldr r3, .L08038CC4 @ =gUnk_Sio_0810F228
+	ldr r3, .L08038CC4 @ =Sprite_Sio_0810F228
 	movs r0, #0xf
 	ldrb r7, [r6]
 	ands r0, r7
@@ -7646,7 +7646,7 @@ func_fe6_08038C04: @ 0x08038C04
 	adds r1, r0, #0
 	adds r1, #0x7c
 	ldr r2, [r5, #0x34]
-	ldr r3, .L08038CC8 @ =gUnk_Sio_0810F242
+	ldr r3, .L08038CC8 @ =Sprite_Sio_0810F242
 	ldrb r0, [r6]
 	cmp r0, #3
 	beq .L08038CCC
@@ -7655,12 +7655,12 @@ func_fe6_08038C04: @ 0x08038C04
 	adds r0, r0, r6
 	b .L08038CCE
 	.align 2, 0
-.L08038CB4: .4byte gUnk_Sio_085C9D08
-.L08038CB8: .4byte gUnk_Sio_085C9CF8
-.L08038CBC: .4byte gUnk_Sio_0810F220
-.L08038CC0: .4byte gUnk_Sio_0810F256
-.L08038CC4: .4byte gUnk_Sio_0810F228
-.L08038CC8: .4byte gUnk_Sio_0810F242
+.L08038CB4: .4byte SpriteArray_Sio_085C9D08
+.L08038CB8: .4byte SpriteArray_Sio_085C9CF8
+.L08038CBC: .4byte Sprite_Sio_0810F220
+.L08038CC0: .4byte Sprite_Sio_0810F256
+.L08038CC4: .4byte Sprite_Sio_0810F228
+.L08038CC8: .4byte Sprite_Sio_0810F242
 .L08038CCC:
 	movs r0, #0x40
 .L08038CCE:
@@ -7672,7 +7672,7 @@ func_fe6_08038C04: @ 0x08038C04
 	adds r1, #0xd0
 	ldr r2, [r5, #0x34]
 	subs r2, #8
-	ldr r3, .L08038D10 @ =gUnk_Sio_0810F25E
+	ldr r3, .L08038D10 @ =Sprite_Sio_0810F25E
 	adds r0, r5, #0
 	adds r0, #0x42
 	ldrb r4, [r0]
@@ -7696,10 +7696,10 @@ func_fe6_08038C04: @ 0x08038C04
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08038D10: .4byte gUnk_Sio_0810F25E
+.L08038D10: .4byte Sprite_Sio_0810F25E
 
-	thumb_func_start func_fe6_08038D14
-func_fe6_08038D14: @ 0x08038D14
+	thumb_func_start StartDrawLinkArenaRankSprites
+StartDrawLinkArenaRankSprites: @ 0x08038D14
 	push {r4, r5, r6, lr}
 	mov r6, sb
 	mov r5, r8
@@ -7715,7 +7715,7 @@ func_fe6_08038D14: @ 0x08038D14
 	lsrs r6, r6, #0x18
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
-	ldr r0, .L08038D60 @ =gUnk_Sio_085C9D18
+	ldr r0, .L08038D60 @ =ProcScr_LinkArenaPostBattle_DrawSprites
 	mov r1, r8
 	bl SpawnProc
 	adds r1, r0, #0
@@ -7738,7 +7738,7 @@ func_fe6_08038D14: @ 0x08038D14
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08038D60: .4byte gUnk_Sio_085C9D18
+.L08038D60: .4byte ProcScr_LinkArenaPostBattle_DrawSprites
 
 	thumb_func_start func_fe6_08038D64
 func_fe6_08038D64: @ 0x08038D64
@@ -7845,7 +7845,7 @@ func_fe6_08038DEC: @ 0x08038DEC
 	cmp r5, #2
 	bgt .L08038E4C
 	adds r1, r7, r1
-	ldr r0, .L08038E48 @ =0x0203C708
+	ldr r0, .L08038E48 @ =gSioText_0203C708
 	movs r2, #0
 	adds r3, r4, #0
 	bl Text_InsertDrawString
@@ -7853,7 +7853,7 @@ func_fe6_08038DEC: @ 0x08038DEC
 	.align 2, 0
 .L08038E40: .4byte gFont_Unk_Sio_02001000
 .L08038E44: .4byte 0x0203C6B9
-.L08038E48: .4byte 0x0203C708
+.L08038E48: .4byte gSioText_0203C708
 .L08038E4C:
 	ldr r0, .L08038E8C @ =0x0203C710
 	movs r2, #0
@@ -7889,11 +7889,11 @@ func_fe6_08038DEC: @ 0x08038DEC
 	.align 2, 0
 .L08038E8C: .4byte 0x0203C710
 
-	thumb_func_start func_fe6_08038E90
-func_fe6_08038E90: @ 0x08038E90
+	thumb_func_start SioPostBattle_StartMusicProc
+SioPostBattle_StartMusicProc: @ 0x08038E90
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L08038EB0 @ =gUnk_Sio_085C9D98
+	ldr r0, .L08038EB0 @ =ProcScr_SioPostBattle_PlayMusic
 	adds r1, r4, #0
 	bl SpawnProc
 	adds r1, r0, #0
@@ -7907,7 +7907,7 @@ func_fe6_08038E90: @ 0x08038E90
 	movs r0, #1
 	b .L08038EB6
 	.align 2, 0
-.L08038EB0: .4byte gUnk_Sio_085C9D98
+.L08038EB0: .4byte ProcScr_SioPostBattle_PlayMusic
 .L08038EB4:
 	movs r0, #0
 .L08038EB6:
@@ -7917,40 +7917,40 @@ func_fe6_08038E90: @ 0x08038E90
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_08038EC0
-func_fe6_08038EC0: @ 0x08038EC0
+	thumb_func_start SioPostBattle_Init
+SioPostBattle_Init: @ 0x08038EC0
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r0, .L08039024 @ =gUnk_08107820
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r0, .L08039024 @ =Img_TacticianSelObj
 	ldr r1, .L08039028 @ =0x06014800
 	bl Decompress
-	ldr r0, .L0803902C @ =gUnk_081088E8
+	ldr r0, .L0803902C @ =Img_LinkArenaPlayerBanners
 	ldr r1, .L08039030 @ =0x06016000
 	bl Decompress
-	ldr r0, .L08039034 @ =gUnk_08108B14
+	ldr r0, .L08039034 @ =Img_LinkArenaPlacementRanks
 	ldr r1, .L08039038 @ =0x06016800
 	bl Decompress
-	ldr r0, .L0803903C @ =gUnk_08109A00
+	ldr r0, .L0803903C @ =Pal_TacticianSelObj
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x80
 	bl ApplyPaletteExt
-	ldr r0, .L08039040 @ =gUnk_08109BA0
+	ldr r0, .L08039040 @ =Pal_LinkArenaPlacementRanks
 	movs r1, #0xb8
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L08039044 @ =gUnk_08109290
+	ldr r0, .L08039044 @ =Img_LinkArenaActiveBannerFx
 	ldr r1, .L08039048 @ =0x06000C00
 	bl Decompress
-	ldr r0, .L0803904C @ =gUnk_08109BE0
+	ldr r0, .L0803904C @ =Pal_LinkArenaActiveBannerFx
 	movs r1, #0x40
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r4, .L08039050 @ =gUnk_0810BAE0
+	ldr r4, .L08039050 @ =Img_LinkArenaPostBattleBg
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -7959,13 +7959,13 @@ func_fe6_08038EC0: @ 0x08038EC0
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L08039054 @ =gUnk_0810D134
+	ldr r0, .L08039054 @ =Pal_LinkArenaPostBattleBg
 	movs r1, #0xa0
 	lsls r1, r1, #1
 	movs r2, #0x80
 	bl ApplyPaletteExt
 	ldr r0, .L08039058 @ =gBg3Tm
-	ldr r1, .L0803905C @ =gUnk_0810D1B4
+	ldr r1, .L0803905C @ =Tsa_LinkArenaPostBattleBg
 	movs r2, #0
 	bl TmApplyTsa_thm
 	ldr r0, .L08039060 @ =gFont_Unk_Sio_02001000
@@ -7980,7 +7980,7 @@ func_fe6_08038EC0: @ 0x08038EC0
 	movs r0, #0
 	bl SetTextFontGlyphs
 	bl ResetTextFont
-	ldr r4, .L0803906C @ =0x0203C708
+	ldr r4, .L0803906C @ =gSioText_0203C708
 	movs r5, #1
 .L08038F60:
 	adds r0, r4, #0
@@ -7992,7 +7992,7 @@ func_fe6_08038EC0: @ 0x08038EC0
 	subs r5, #1
 	cmp r5, #0
 	bge .L08038F60
-	ldr r0, .L08039070 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08039070 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r2, [r0, #7]
 	adds r1, r6, #0
@@ -8065,7 +8065,7 @@ func_fe6_08038EC0: @ 0x08038EC0
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
 	adds r0, r6, #0
-	bl func_fe6_08038E90
+	bl SioPostBattle_StartMusicProc
 	movs r0, #8
 	bl EnableBgSync
 	add sp, #4
@@ -8073,33 +8073,33 @@ func_fe6_08038EC0: @ 0x08038EC0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08039024: .4byte gUnk_08107820
+.L08039024: .4byte Img_TacticianSelObj
 .L08039028: .4byte 0x06014800
-.L0803902C: .4byte gUnk_081088E8
+.L0803902C: .4byte Img_LinkArenaPlayerBanners
 .L08039030: .4byte 0x06016000
-.L08039034: .4byte gUnk_08108B14
+.L08039034: .4byte Img_LinkArenaPlacementRanks
 .L08039038: .4byte 0x06016800
-.L0803903C: .4byte gUnk_08109A00
-.L08039040: .4byte gUnk_08109BA0
-.L08039044: .4byte gUnk_08109290
+.L0803903C: .4byte Pal_TacticianSelObj
+.L08039040: .4byte Pal_LinkArenaPlacementRanks
+.L08039044: .4byte Img_LinkArenaActiveBannerFx
 .L08039048: .4byte 0x06000C00
-.L0803904C: .4byte gUnk_08109BE0
-.L08039050: .4byte gUnk_0810BAE0
-.L08039054: .4byte gUnk_0810D134
+.L0803904C: .4byte Pal_LinkArenaActiveBannerFx
+.L08039050: .4byte Img_LinkArenaPostBattleBg
+.L08039054: .4byte Pal_LinkArenaPostBattleBg
 .L08039058: .4byte gBg3Tm
-.L0803905C: .4byte gUnk_0810D1B4
+.L0803905C: .4byte Tsa_LinkArenaPostBattleBg
 .L08039060: .4byte gFont_Unk_Sio_02001000
 .L08039064: .4byte 0x06012000
 .L08039068: .4byte Pal_Text
-.L0803906C: .4byte 0x0203C708
-.L08039070: .4byte gUnk_Sio_085C98F4
+.L0803906C: .4byte gSioText_0203C708
+.L08039070: .4byte gSioSt
 .L08039074: .4byte 0x01000010
 .L08039078: .4byte gDispIo
 .L0803907C: .4byte 0x0000FFE0
 .L08039080: .4byte 0x0000E0FF
 
-	thumb_func_start func_fe6_08039084
-func_fe6_08039084: @ 0x08039084
+	thumb_func_start SioPostBattle_Loop_Main
+SioPostBattle_Loop_Main: @ 0x08039084
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -8137,7 +8137,7 @@ func_fe6_08039084: @ 0x08039084
 	bl func_fe6_08038D64
 	movs r0, #4
 	bl EnableBgSync
-	ldr r2, .L08039128 @ =0x0203C984
+	ldr r2, .L08039128 @ =gSioBmSt
 	ldrb r1, [r5]
 	subs r1, #1
 	lsls r0, r1, #3
@@ -8153,7 +8153,7 @@ func_fe6_08039084: @ 0x08039084
 	str r1, [sp]
 	adds r0, r4, #0
 	movs r1, #0x28
-	bl func_fe6_08038D14
+	bl StartDrawLinkArenaRankSprites
 	ldrb r2, [r5]
 	subs r2, #1
 	lsls r2, r2, #2
@@ -8177,10 +8177,10 @@ func_fe6_08039084: @ 0x08039084
 	bx r0
 	.align 2, 0
 .L08039124: .4byte gUnk_Sio_0810F26C
-.L08039128: .4byte 0x0203C984
+.L08039128: .4byte gSioBmSt
 
-	thumb_func_start func_fe6_0803912C
-func_fe6_0803912C: @ 0x0803912C
+	thumb_func_start SioPostBattle_AwaitAPress
+SioPostBattle_AwaitAPress: @ 0x0803912C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl func_fe6_08040F70
@@ -8215,8 +8215,8 @@ func_fe6_0803912C: @ 0x0803912C
 .L08039170: .4byte gSongTable
 .L08039174: .4byte 0x0000040C
 
-	thumb_func_start func_fe6_08039178
-func_fe6_08039178: @ 0x08039178
+	thumb_func_start SioPostBattleMusic_PlayFanfare
+SioPostBattleMusic_PlayFanfare: @ 0x08039178
 	push {lr}
 	ldr r0, [r0, #0x58]
 	cmp r0, #0
@@ -8245,8 +8245,8 @@ func_fe6_08039178: @ 0x08039178
 	.align 2, 0
 .L080391AC: .4byte gPlaySt
 
-	thumb_func_start func_fe6_080391B0
-func_fe6_080391B0: @ 0x080391B0
+	thumb_func_start SioPostBattleMusic_PlayStandardBgm
+SioPostBattleMusic_PlayStandardBgm: @ 0x080391B0
 	push {lr}
 	movs r0, #0x4a
 	movs r1, #0
@@ -8344,7 +8344,7 @@ func_fe6_080391C0: @ 0x080391C0
 	adds r0, r1, r0
 	adds r6, #4
 	adds r1, r1, r6
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	mov r2, r8
 	cmp r2, r7
 	bgt .L08039206
@@ -8386,7 +8386,7 @@ func_fe6_080391C0: @ 0x080391C0
 	ands r0, r2
 	orrs r0, r3
 	strb r0, [r4]
-	ldr r0, .L080392EC @ =gUnk_Sio_085C98F4
+	ldr r0, .L080392EC @ =gSioSt
 	ldr r0, [r0]
 	movs r2, #6
 	ldrsb r2, [r0, r2]
@@ -8396,7 +8396,7 @@ func_fe6_080391C0: @ 0x080391C0
 	adds r0, r0, r2
 	adds r5, #4
 	adds r1, r1, r5
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	adds r0, r7, #0
 .L080392D8:
 	add sp, #8
@@ -8409,7 +8409,7 @@ func_fe6_080391C0: @ 0x080391C0
 	bx r1
 	.align 2, 0
 .L080392E8: .4byte 0x0203C838
-.L080392EC: .4byte gUnk_Sio_085C98F4
+.L080392EC: .4byte gSioSt
 .L080392F0: .4byte 0x0203C6B9
 
 	thumb_func_start func_fe6_080392F4
@@ -8419,7 +8419,7 @@ func_fe6_080392F4: @ 0x080392F4
 	mov r6, r8
 	push {r6, r7}
 	adds r7, r0, #0
-	ldr r0, .L08039364 @ =0x0203C618
+	ldr r0, .L08039364 @ =gLinkArenaSt
 	adds r1, r0, #0
 	adds r1, #0xec
 	ldrb r1, [r1]
@@ -8433,8 +8433,8 @@ func_fe6_080392F4: @ 0x080392F4
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
-	ldr r1, .L08039368 @ =0x0203C984
-	ldr r0, .L0803936C @ =gUnk_Sio_085C98F4
+	ldr r1, .L08039368 @ =gSioBmSt
+	ldr r0, .L0803936C @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -8462,12 +8462,12 @@ func_fe6_080392F4: @ 0x080392F4
 	beq .L08039374
 	adds r0, r1, #0
 	adds r1, r7, #0
-	bl func_fe6_0803AE58
+	bl StartSioResultNewHighScore
 	b .L0803937A
 	.align 2, 0
-.L08039364: .4byte 0x0203C618
-.L08039368: .4byte 0x0203C984
-.L0803936C: .4byte gUnk_Sio_085C98F4
+.L08039364: .4byte gLinkArenaSt
+.L08039368: .4byte gSioBmSt
+.L0803936C: .4byte gSioSt
 .L08039370: .4byte 0x0203C838
 .L08039374:
 	movs r0, #1
@@ -8495,7 +8495,7 @@ func_fe6_08039388: @ 0x08039388
 	bl memcpy
 	bl InitUnits
 	movs r6, #0
-	ldr r1, .L08039410 @ =0x0203C618
+	ldr r1, .L08039410 @ =gLinkArenaSt
 	ldrb r0, [r1, #5]
 	adds r0, #2
 	cmp r6, r0
@@ -8535,23 +8535,23 @@ func_fe6_08039388: @ 0x08039388
 	movs r0, #0
 	strb r0, [r5, #0x19]
 	movs r0, #4
-	ldr r1, .L0803941C @ =0x0203C704
+	ldr r1, .L0803941C @ =gSioSaveConfig
 	ldrb r1, [r1]
 	ands r0, r1
 	cmp r0, #0
 	bne .L08039420
 	adds r0, r5, #0
-	bl func_fe6_08036CB0
+	bl SioSetNormalWeapons
 	b .L08039426
 	.align 2, 0
 .L0803940C: .4byte gUnk_Sio_0810F294
-.L08039410: .4byte 0x0203C618
+.L08039410: .4byte gLinkArenaSt
 .L08039414: .4byte 0x0203C6B9
 .L08039418: .4byte 0x0203C9A8
-.L0803941C: .4byte 0x0203C704
+.L0803941C: .4byte gSioSaveConfig
 .L08039420:
 	adds r0, r5, #0
-	bl func_fe6_08040CA8
+	bl SioSetUniqueWeapons
 .L08039426:
 	cmp r7, #0
 	bne .L08039434
@@ -8564,7 +8564,7 @@ func_fe6_08039388: @ 0x08039388
 	cmp r6, #0
 	beq .L0803944C
 	movs r0, #1
-	ldr r1, .L08039498 @ =0x0203C704
+	ldr r1, .L08039498 @ =gSioSaveConfig
 	ldrb r1, [r1]
 	ands r0, r1
 	cmp r0, #0
@@ -8584,14 +8584,14 @@ func_fe6_08039388: @ 0x08039388
 	cmp r6, r0
 	blt .L080393B0
 .L08039460:
-	ldr r0, .L0803949C @ =0x0203C984
+	ldr r0, .L0803949C @ =gSioBmSt
 	movs r1, #0
 	strb r1, [r0]
-	ldr r2, .L080394A0 @ =gUnk_Sio_085C98F4
+	ldr r2, .L080394A0 @ =gSioSt
 	ldr r0, [r2]
 	strb r1, [r0, #6]
 	ldr r3, [r2]
-	ldr r1, .L080394A4 @ =0x0203C618
+	ldr r1, .L080394A4 @ =gLinkArenaSt
 	ldrb r0, [r1, #5]
 	add r0, sp
 	ldrb r0, [r0]
@@ -8613,31 +8613,31 @@ func_fe6_08039388: @ 0x08039388
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08039498: .4byte 0x0203C704
-.L0803949C: .4byte 0x0203C984
-.L080394A0: .4byte gUnk_Sio_085C98F4
-.L080394A4: .4byte 0x0203C618
+.L08039498: .4byte gSioSaveConfig
+.L0803949C: .4byte gSioBmSt
+.L080394A0: .4byte gSioSt
+.L080394A4: .4byte gLinkArenaSt
 
-	thumb_func_start func_fe6_080394A8
-func_fe6_080394A8: @ 0x080394A8
+	thumb_func_start NewSIOMAIN2
+NewSIOMAIN2: @ 0x080394A8
 	push {lr}
-	ldr r0, .L080394B8 @ =gUnk_Sio_085CAD04
+	ldr r0, .L080394B8 @ =ProcScr_SIOMAIN2
 	movs r1, #2
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080394B8: .4byte gUnk_Sio_085CAD04
+.L080394B8: .4byte ProcScr_SIOMAIN2
 
-	thumb_func_start func_fe6_080394BC
-func_fe6_080394BC: @ 0x080394BC
+	thumb_func_start SIOPRA_BranchAfterMain2
+SIOPRA_BranchAfterMain2: @ 0x080394BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, .L080394F4 @ =gUnk_Sio_085CAD04
+	ldr r0, .L080394F4 @ =ProcScr_SIOMAIN2
 	bl FindProc
 	cmp r0, #0
 	bne .L080394EE
-	ldr r5, .L080394F8 @ =0x0203C618
+	ldr r5, .L080394F8 @ =gLinkArenaSt
 	ldrb r0, [r5, #0xb]
 	cmp r0, #1
 	bne .L080394DA
@@ -8659,8 +8659,8 @@ func_fe6_080394BC: @ 0x080394BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080394F4: .4byte gUnk_Sio_085CAD04
-.L080394F8: .4byte 0x0203C618
+.L080394F4: .4byte ProcScr_SIOMAIN2
+.L080394F8: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_080394FC
 func_fe6_080394FC: @ 0x080394FC
@@ -8697,26 +8697,26 @@ func_fe6_080394FC: @ 0x080394FC
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08039550
-func_fe6_08039550: @ 0x08039550
+	thumb_func_start SioBat_EndHandler
+SioBat_EndHandler: @ 0x08039550
 	push {lr}
-	ldr r0, .L08039568 @ =gUnk_Sio_085C9968
+	ldr r0, .L08039568 @ =ProcScr_SIOVSYNC
 	bl Proc_EndEach
-	ldr r0, .L0803956C @ =gUnk_Sio_085C9990
+	ldr r0, .L0803956C @ =ProcScr_SIOMAIN
 	bl Proc_EndEach
-	ldr r0, .L08039570 @ =gUnk_Sio_085C9940
+	ldr r0, .L08039570 @ =ProcScr_SIOCON
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08039568: .4byte gUnk_Sio_085C9968
-.L0803956C: .4byte gUnk_Sio_085C9990
-.L08039570: .4byte gUnk_Sio_085C9940
+.L08039568: .4byte ProcScr_SIOVSYNC
+.L0803956C: .4byte ProcScr_SIOMAIN
+.L08039570: .4byte ProcScr_SIOCON
 
-	thumb_func_start func_fe6_08039574
-func_fe6_08039574: @ 0x08039574
+	thumb_func_start SioBat_ReleaseIrq
+SioBat_ReleaseIrq: @ 0x08039574
 	push {lr}
-	bl func_fe6_08035490
+	bl SioReleaseIrq
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8730,7 +8730,7 @@ func_fe6_08039580: @ 0x08039580
 	push {r5, r6, r7}
 	sub sp, #4
 	movs r6, #0
-	ldr r0, .L080395F8 @ =0x0203C618
+	ldr r0, .L080395F8 @ =gLinkArenaSt
 	mov sb, r0
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -8743,7 +8743,7 @@ func_fe6_08039580: @ 0x08039580
 	mov r0, sb
 	adds r0, #0x9c
 	adds r5, r6, r0
-	ldr r0, .L080395FC @ =gUnk_Sio_085C98F4
+	ldr r0, .L080395FC @ =gSioSt
 	ldr r0, [r0]
 	adds r0, #0xb
 	adds r0, r0, r6
@@ -8780,8 +8780,8 @@ func_fe6_08039580: @ 0x08039580
 	bl ApplyPaletteExt
 	b .L08039626
 	.align 2, 0
-.L080395F8: .4byte 0x0203C618
-.L080395FC: .4byte gUnk_Sio_085C98F4
+.L080395F8: .4byte gLinkArenaSt
+.L080395FC: .4byte gSioSt
 .L08039600: .4byte gUnk_Sio_085C99B0
 .L08039604: .4byte gUnk_08109C60
 .L08039608:
@@ -8793,7 +8793,7 @@ func_fe6_08039580: @ 0x08039580
 	mov r3, sl
 	bl PutDrawTextCentered
 	lsls r0, r6, #5
-	ldr r1, .L0803964C @ =gUnk_08109A00
+	ldr r1, .L0803964C @ =Pal_TacticianSelObj
 	adds r0, r0, r1
 	mov r1, r8
 	movs r2, #0x20
@@ -8819,22 +8819,22 @@ func_fe6_08039580: @ 0x08039580
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803964C: .4byte gUnk_08109A00
+.L0803964C: .4byte Pal_TacticianSelObj
 
 	thumb_func_start func_fe6_08039650
 func_fe6_08039650: @ 0x08039650
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	adds r6, r0, #0
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r0, .L0803976C @ =gUnk_08107820
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r0, .L0803976C @ =Img_TacticianSelObj
 	ldr r1, .L08039770 @ =0x06014800
 	bl Decompress
-	ldr r0, .L08039774 @ =gUnk_081088E8
+	ldr r0, .L08039774 @ =Img_LinkArenaPlayerBanners
 	ldr r1, .L08039778 @ =0x06016000
 	bl Decompress
-	ldr r0, .L0803977C @ =gUnk_081080D4
+	ldr r0, .L0803977C @ =Img_Sio_081080D4
 	ldr r1, .L08039780 @ =0x06016800
 	bl Decompress
 	movs r4, #0x98
@@ -8851,12 +8851,12 @@ func_fe6_08039650: @ 0x08039650
 	bge .L0803967C
 	movs r0, #0
 	movs r1, #2
-	bl func_fe6_0803FAA4
-	ldr r4, .L08039788 @ =0x0203C618
+	bl Sio_RestartBgSlide
+	ldr r4, .L08039788 @ =gLinkArenaSt
 	ldrb r0, [r4, #3]
 	add r1, sp, #8
 	bl ReadMultiArenaSaveTeamName
-	ldr r0, .L0803978C @ =0x0203C758
+	ldr r0, .L0803978C @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
@@ -8891,11 +8891,11 @@ func_fe6_08039650: @ 0x08039650
 	movs r0, #0xc0
 	movs r1, #0x10
 	adds r2, r6, #0
-	bl func_fe6_0803F9C4
+	bl StartLinkArenaButtonSpriteDraw
 	movs r0, #0x48
 	movs r1, #0x20
 	adds r2, r6, #0
-	bl func_fe6_08040F00
+	bl StartLinkArenaVersusSpriteDraw
 	str r0, [r6, #0x2c]
 	ldr r0, .L08039794 @ =gUnk_Sio_085C9E88
 	bl SetFaceConfig
@@ -8908,11 +8908,11 @@ func_fe6_08039650: @ 0x08039650
 	bl StartFace
 	ldr r0, [r6, #0x2c]
 	ldr r1, .L08039798 @ =gUnk_Sio_0810F19C
-	ldr r4, .L08039788 @ =0x0203C618
+	ldr r4, .L08039788 @ =gLinkArenaSt
 	ldrb r2, [r4]
 	adds r1, r2, r1
 	ldrb r1, [r1]
-	bl func_fe6_0803FC3C
+	bl StartLinkArenaTitleBanner
 	ldr r0, .L0803979C @ =gUnk_Sio_085C9AD4
 	ldrb r3, [r4]
 	lsls r1, r3, #2
@@ -8931,7 +8931,7 @@ func_fe6_08039650: @ 0x08039650
 	ldr r1, .L080397A4 @ =0x000006D7
 	adds r0, r0, r1
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	ldr r2, .L080397A8 @ =gDispIo
 	movs r0, #0x21
 	rsbs r0, r0, #0
@@ -8948,15 +8948,15 @@ func_fe6_08039650: @ 0x08039650
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803976C: .4byte gUnk_08107820
+.L0803976C: .4byte Img_TacticianSelObj
 .L08039770: .4byte 0x06014800
-.L08039774: .4byte gUnk_081088E8
+.L08039774: .4byte Img_LinkArenaPlayerBanners
 .L08039778: .4byte 0x06016000
-.L0803977C: .4byte gUnk_081080D4
+.L0803977C: .4byte Img_Sio_081080D4
 .L08039780: .4byte 0x06016800
 .L08039784: .4byte gUnk_08109C60
-.L08039788: .4byte 0x0203C618
-.L0803978C: .4byte 0x0203C758
+.L08039788: .4byte gLinkArenaSt
+.L0803978C: .4byte gSioFont_0203C758
 .L08039790: .4byte gUnk_030044E6
 .L08039794: .4byte gUnk_Sio_085C9E88
 .L08039798: .4byte gUnk_Sio_0810F19C
@@ -8973,28 +8973,28 @@ func_fe6_080397AC: @ 0x080397AC
 	ldr r1, .L080397E4 @ =0x00002586
 	mov r0, sp
 	strh r1, [r0]
-	ldr r0, .L080397E8 @ =gUnk_Sio_085C9968
+	ldr r0, .L080397E8 @ =ProcScr_SIOVSYNC
 	movs r1, #0
 	bl SpawnProc
-	ldr r0, .L080397EC @ =gUnk_Sio_085C9990
+	ldr r0, .L080397EC @ =ProcScr_SIOMAIN
 	adds r1, r4, #0
 	bl SpawnProc
-	ldr r0, .L080397F0 @ =gUnk_Sio_085C9940
+	ldr r0, .L080397F0 @ =ProcScr_SIOCON
 	adds r1, r4, #0
 	bl SpawnProc
 	movs r1, #1
 	rsbs r1, r1, #0
 	mov r0, sp
-	bl func_fe6_08036078
+	bl SioSend16
 	add sp, #4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L080397E4: .4byte 0x00002586
-.L080397E8: .4byte gUnk_Sio_085C9968
-.L080397EC: .4byte gUnk_Sio_085C9990
-.L080397F0: .4byte gUnk_Sio_085C9940
+.L080397E8: .4byte ProcScr_SIOVSYNC
+.L080397EC: .4byte ProcScr_SIOMAIN
+.L080397F0: .4byte ProcScr_SIOCON
 
 	thumb_func_start func_fe6_080397F4
 func_fe6_080397F4: @ 0x080397F4
@@ -9009,7 +9009,7 @@ func_fe6_080397F4: @ 0x080397F4
 	mov r0, sp
 	strb r1, [r0]
 	bl func_fe6_08039580
-	ldr r0, .L08039838 @ =gUnk_Sio_085C9940
+	ldr r0, .L08039838 @ =ProcScr_SIOCON
 	bl FindProc
 	cmp r0, #0
 	beq .L08039840
@@ -9023,16 +9023,16 @@ func_fe6_080397F4: @ 0x080397F4
 	b .L08039A0A
 .L08039826:
 	movs r0, #1
-	bl func_fe6_08036D08
-	bl func_fe6_0803F9F4
+	bl SioPlaySe
+	bl EndLinkArenaButtonSpriteDraw
 	b .L08039874
 	.align 2, 0
 .L08039834: .4byte 0x0203C91C
-.L08039838: .4byte gUnk_Sio_085C9940
+.L08039838: .4byte ProcScr_SIOCON
 .L0803983C: .4byte gKeySt
 .L08039840:
-	bl func_fe6_0803F9F4
-	ldr r2, .L08039888 @ =gUnk_Sio_085C98F4
+	bl EndLinkArenaButtonSpriteDraw
+	ldr r2, .L08039888 @ =gSioSt
 	ldr r1, [r2]
 	movs r0, #6
 	ldrsb r0, [r1, r0]
@@ -9059,14 +9059,14 @@ func_fe6_080397F4: @ 0x080397F4
 	cmp r0, #2
 	bne .L0803988C
 .L08039874:
-	bl func_fe6_08039550
-	bl func_fe6_08039574
+	bl SioBat_EndHandler
+	bl SioBat_ReleaseIrq
 	adds r0, r4, #0
 	movs r1, #2
 	bl Proc_Goto
 	b .L08039A0A
 	.align 2, 0
-.L08039888: .4byte gUnk_Sio_085C98F4
+.L08039888: .4byte gSioSt
 .L0803988C:
 	bl func_fe6_08035CF8
 	lsls r0, r0, #0x18
@@ -9079,19 +9079,19 @@ func_fe6_080397F4: @ 0x080397F4
 	cmp r6, #0
 	beq .L080398CC
 .L080398A2:
-	bl func_fe6_08039550
-	bl func_fe6_08039574
+	bl SioBat_EndHandler
+	bl SioBat_ReleaseIrq
 	adds r0, r4, #0
 	bl func_fe6_080397AC
 	movs r0, #0
 	str r0, [r4, #0x30]
 	ldr r0, .L080398C8 @ =0x000006D7
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	movs r0, #0xc0
 	movs r1, #0x10
 	adds r2, r4, #0
-	bl func_fe6_0803F9C4
+	bl StartLinkArenaButtonSpriteDraw
 	b .L08039A0A
 	.align 2, 0
 .L080398C8: .4byte 0x000006D7
@@ -9113,7 +9113,7 @@ func_fe6_080397F4: @ 0x080397F4
 	str r0, [r4, #0x30]
 	ldr r0, .L08039950 @ =0x000006D9
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 .L080398F4:
 	ldr r0, .L08039954 @ =gKeySt
 	ldr r1, [r0]
@@ -9139,12 +9139,12 @@ func_fe6_080397F4: @ 0x080397F4
 	cmp r3, #3
 	ble .L08039912
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	bl func_fe6_08035C58
-	ldr r2, .L08039958 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08039958 @ =gSioSt
 	ldr r1, [r2]
 	strb r0, [r1, #7]
-	ldr r0, .L0803995C @ =0x0203C618
+	ldr r0, .L0803995C @ =gLinkArenaSt
 	ldr r1, [r2]
 	ldrb r1, [r1, #7]
 	adds r0, #0xa0
@@ -9155,14 +9155,14 @@ func_fe6_080397F4: @ 0x080397F4
 	strb r0, [r1]
 	mov r0, sp
 	movs r1, #4
-	bl func_fe6_08036208
+	bl SioEmitData
 	str r0, [r4, #0x34]
 	b .L080399D2
 	.align 2, 0
 .L08039950: .4byte 0x000006D9
 .L08039954: .4byte gKeySt
-.L08039958: .4byte gUnk_Sio_085C98F4
-.L0803995C: .4byte 0x0203C618
+.L08039958: .4byte gSioSt
+.L0803995C: .4byte gLinkArenaSt
 .L08039960:
 	ldr r0, [r4, #0x30]
 	cmp r0, #1
@@ -9172,9 +9172,9 @@ func_fe6_080397F4: @ 0x080397F4
 	movs r0, #0xdb
 	lsls r0, r0, #3
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 .L08039974:
-	ldr r5, .L080399DC @ =gUnk_Sio_085C98F4
+	ldr r5, .L080399DC @ =gSioSt
 	ldr r1, [r5]
 	movs r0, #6
 	ldrsb r0, [r1, r0]
@@ -9188,7 +9188,7 @@ func_fe6_080397F4: @ 0x080397F4
 	add r1, sp, #4
 	mov r0, sp
 	movs r2, #0
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L080399E4
@@ -9209,10 +9209,10 @@ func_fe6_080397F4: @ 0x080397F4
 	cmp r3, #3
 	ble .L080399AC
 	bl func_fe6_08035C58
-	ldr r2, .L080399DC @ =gUnk_Sio_085C98F4
+	ldr r2, .L080399DC @ =gSioSt
 	ldr r1, [r2]
 	strb r0, [r1, #7]
-	ldr r0, .L080399E0 @ =0x0203C618
+	ldr r0, .L080399E0 @ =gLinkArenaSt
 	ldr r1, [r2]
 	ldrb r1, [r1, #7]
 	adds r0, #0xa0
@@ -9223,8 +9223,8 @@ func_fe6_080397F4: @ 0x080397F4
 	bl Proc_Break
 	b .L08039A0A
 	.align 2, 0
-.L080399DC: .4byte gUnk_Sio_085C98F4
-.L080399E0: .4byte 0x0203C618
+.L080399DC: .4byte gSioSt
+.L080399E0: .4byte gLinkArenaSt
 .L080399E4:
 	bl GetGameTime
 	movs r1, #0x26
@@ -9234,14 +9234,14 @@ func_fe6_080397F4: @ 0x080397F4
 	ldr r0, .L08039A14 @ =gUnk_030044E0
 	movs r1, #0x1c
 	strb r1, [r0]
-	ldr r1, .L08039A18 @ =gUnk_Sio_085C98F4
+	ldr r1, .L08039A18 @ =gSioSt
 	ldr r2, [r1]
 	ldrb r1, [r2, #6]
 	strb r1, [r0, #1]
 	ldrb r1, [r2]
 	strh r1, [r0, #2]
 	movs r1, #0x16
-	bl func_fe6_08035DC8
+	bl SioSend
 .L08039A0A:
 	add sp, #8
 	pop {r4, r5, r6}
@@ -9249,7 +9249,7 @@ func_fe6_080397F4: @ 0x080397F4
 	bx r0
 	.align 2, 0
 .L08039A14: .4byte gUnk_030044E0
-.L08039A18: .4byte gUnk_Sio_085C98F4
+.L08039A18: .4byte gSioSt
 
 	thumb_func_start func_fe6_08039A1C
 func_fe6_08039A1C: @ 0x08039A1C
@@ -9260,9 +9260,9 @@ func_fe6_08039A1C: @ 0x08039A1C
 	ldr r0, [r1]
 	adds r3, r0, #1
 	str r3, [r1]
-	ldr r0, .L08039A78 @ =0x0203C618
+	ldr r0, .L08039A78 @ =gLinkArenaSt
 	adds r0, #0xa0
-	ldr r1, .L08039A7C @ =gUnk_Sio_085C98F4
+	ldr r1, .L08039A7C @ =gSioSt
 	ldr r2, [r1]
 	ldrb r0, [r0]
 	ldrb r1, [r2, #7]
@@ -9273,27 +9273,27 @@ func_fe6_08039A1C: @ 0x08039A1C
 	cmp r3, r0
 	ble .L08039A84
 .L08039A44:
-	bl func_fe6_08039550
-	bl func_fe6_08039574
+	bl SioBat_EndHandler
+	bl SioBat_ReleaseIrq
 	adds r0, r4, #0
 	bl func_fe6_080397AC
 	movs r0, #0
 	str r0, [r4, #0x30]
 	ldr r0, .L08039A80 @ =0x000006D7
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	movs r0, #0xc0
 	movs r1, #0x10
 	adds r2, r4, #0
-	bl func_fe6_0803F9C4
+	bl StartLinkArenaButtonSpriteDraw
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Goto
 	b .L08039AA8
 	.align 2, 0
 .L08039A74: .4byte 0x0203C91C
-.L08039A78: .4byte 0x0203C618
-.L08039A7C: .4byte gUnk_Sio_085C98F4
+.L08039A78: .4byte gLinkArenaSt
+.L08039A7C: .4byte gSioSt
 .L08039A80: .4byte 0x000006D7
 .L08039A84:
 	movs r0, #6
@@ -9334,8 +9334,8 @@ func_fe6_08039ABC: @ 0x08039ABC
 	movs r0, #0xdb
 	lsls r0, r0, #3
 	movs r1, #1
-	bl func_fe6_08036BFC
-	ldr r0, .L08039B54 @ =gUnk_Sio_085C98F4
+	bl SioPutText
+	ldr r0, .L08039B54 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -9343,7 +9343,7 @@ func_fe6_08039ABC: @ 0x08039ABC
 	cmp r0, #0
 	bne .L08039B3E
 	bl GetGameTime
-	ldr r4, .L08039B58 @ =0x0203C618
+	ldr r4, .L08039B58 @ =gLinkArenaSt
 	adds r5, r4, #0
 	adds r5, #0xa0
 	ldrb r1, [r5]
@@ -9385,7 +9385,7 @@ func_fe6_08039ABC: @ 0x08039ABC
 	bl RandGetSt
 	mov r0, sp
 	movs r1, #0x10
-	bl func_fe6_08036208
+	bl SioEmitData
 	str r0, [r7, #0x34]
 .L08039B3E:
 	adds r0, r7, #0
@@ -9399,8 +9399,8 @@ func_fe6_08039ABC: @ 0x08039ABC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08039B54: .4byte gUnk_Sio_085C98F4
-.L08039B58: .4byte 0x0203C618
+.L08039B54: .4byte gSioSt
+.L08039B58: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_08039B5C
 func_fe6_08039B5C: @ 0x08039B5C
@@ -9408,7 +9408,7 @@ func_fe6_08039B5C: @ 0x08039B5C
 	sub sp, #0x14
 	adds r5, r0, #0
 	ldr r7, [r5, #0x2c]
-	ldr r0, .L08039B98 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08039B98 @ =gSioSt
 	ldr r2, [r0]
 	movs r4, #6
 	ldrsb r4, [r2, r4]
@@ -9427,13 +9427,13 @@ func_fe6_08039B5C: @ 0x08039B5C
 	bne .L08039C20
 	ldr r0, .L08039B9C @ =0x000006DD
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	str r4, [r7, #0x38]
 	adds r0, r5, #0
 	bl Proc_Break
 	b .L08039C20
 	.align 2, 0
-.L08039B98: .4byte gUnk_Sio_085C98F4
+.L08039B98: .4byte gSioSt
 .L08039B9C: .4byte 0x000006DD
 .L08039BA0:
 	bl GetGameTime
@@ -9445,11 +9445,11 @@ func_fe6_08039B5C: @ 0x08039B5C
 	add r1, sp, #0x10
 	mov r0, sp
 	movs r2, #0
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L08039C20
-	ldr r4, .L08039C28 @ =0x0203C618
+	ldr r4, .L08039C28 @ =gLinkArenaSt
 	mov r0, sp
 	adds r4, #0xec
 	movs r3, #1
@@ -9490,7 +9490,7 @@ func_fe6_08039B5C: @ 0x08039B5C
 	bl RandSetSt
 	ldr r0, .L08039C2C @ =0x000006DD
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	str r6, [r7, #0x38]
 	adds r0, r5, #0
 	bl Proc_Break
@@ -9500,7 +9500,7 @@ func_fe6_08039B5C: @ 0x08039B5C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08039C28: .4byte 0x0203C618
+.L08039C28: .4byte gLinkArenaSt
 .L08039C2C: .4byte 0x000006DD
 
 	thumb_func_start func_fe6_08039C30
@@ -9524,7 +9524,7 @@ func_fe6_08039C30: @ 0x08039C30
 	ldrb r0, [r4]
 	adds r0, #1
 	strb r0, [r4]
-	ldr r1, .L08039CA8 @ =0x0203C618
+	ldr r1, .L08039CA8 @ =gLinkArenaSt
 	adds r1, #0xa0
 	ldrb r0, [r4]
 	ldrb r1, [r1]
@@ -9550,7 +9550,7 @@ func_fe6_08039C30: @ 0x08039C30
 	bne .L08039CD0
 	adds r0, r6, #0
 	adds r0, #0x3b
-	ldr r1, .L08039CB0 @ =gUnk_Sio_085C98F4
+	ldr r1, .L08039CB0 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r2, [r0]
 	adds r4, r0, #0
@@ -9561,21 +9561,21 @@ func_fe6_08039C30: @ 0x08039C30
 	ldr r1, .L08039CB4 @ =0x000006DF
 	adds r0, r2, r1
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	b .L08039CC0
 	.align 2, 0
-.L08039CA8: .4byte 0x0203C618
+.L08039CA8: .4byte gLinkArenaSt
 .L08039CAC: .4byte gPlaySt
-.L08039CB0: .4byte gUnk_Sio_085C98F4
+.L08039CB0: .4byte gSioSt
 .L08039CB4: .4byte 0x000006DF
 .L08039CB8:
 	ldr r0, .L08039CD8 @ =0x000006DE
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 .L08039CC0:
 	ldrb r0, [r4]
 	str r0, [r7, #0x38]
-	ldr r1, .L08039CDC @ =0x0203C984
+	ldr r1, .L08039CDC @ =gSioBmSt
 	ldrb r0, [r4]
 	strb r0, [r1]
 	adds r0, r6, #0
@@ -9586,7 +9586,7 @@ func_fe6_08039C30: @ 0x08039C30
 	bx r0
 	.align 2, 0
 .L08039CD8: .4byte 0x000006DE
-.L08039CDC: .4byte 0x0203C984
+.L08039CDC: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_08039CE0
 func_fe6_08039CE0: @ 0x08039CE0
@@ -9613,7 +9613,7 @@ func_fe6_08039CFC: @ 0x08039CFC
 	movs r1, #0
 	bl SetUnitStatus
 	strb r4, [r5, #0x19]
-	ldr r1, .L08039D24 @ =0x0203C618
+	ldr r1, .L08039D24 @ =gLinkArenaSt
 	adds r1, #0xec
 	movs r0, #4
 	ldrb r1, [r1]
@@ -9621,13 +9621,13 @@ func_fe6_08039CFC: @ 0x08039CFC
 	cmp r0, #0
 	bne .L08039D28
 	adds r0, r5, #0
-	bl func_fe6_08036CB0
+	bl SioSetNormalWeapons
 	b .L08039D2E
 	.align 2, 0
-.L08039D24: .4byte 0x0203C618
+.L08039D24: .4byte gLinkArenaSt
 .L08039D28:
 	adds r0, r5, #0
-	bl func_fe6_08040CA8
+	bl SioSetUniqueWeapons
 .L08039D2E:
 	pop {r4, r5}
 	pop {r0}
@@ -9641,7 +9641,7 @@ func_fe6_08039D34: @ 0x08039D34
 	mov r5, r8
 	push {r5, r6, r7}
 	mov sb, r0
-	ldr r0, .L08039DF0 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08039DF0 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -9653,7 +9653,7 @@ func_fe6_08039D34: @ 0x08039D34
 	movs r0, #0
 	str r0, [r1]
 	bl InitUnits
-	ldr r0, .L08039DF8 @ =0x0203C618
+	ldr r0, .L08039DF8 @ =gLinkArenaSt
 	ldrb r0, [r0, #3]
 	ldr r4, .L08039DFC @ =gUnk_Sio_085C9EA8
 	ldr r1, [r4]
@@ -9681,7 +9681,7 @@ func_fe6_08039D34: @ 0x08039D34
 	bne .L08039DAC
 	adds r0, r5, #0
 	bl GetUnitChibiId
-	ldr r1, .L08039DF0 @ =gUnk_Sio_085C98F4
+	ldr r1, .L08039DF0 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #6]
 	lsls r1, r1, #0x18
@@ -9694,12 +9694,12 @@ func_fe6_08039D34: @ 0x08039D34
 	adds r6, #1
 	cmp r6, #4
 	ble .L08039D6E
-	ldr r2, .L08039DF0 @ =gUnk_Sio_085C98F4
+	ldr r2, .L08039DF0 @ =gSioSt
 	mov r3, sb
 	adds r3, #0x64
 	mov r4, sb
 	adds r4, #0x4c
-	ldr r0, .L08039DF8 @ =0x0203C618
+	ldr r0, .L08039DF8 @ =gLinkArenaSt
 	movs r1, #0
 	movs r6, #3
 	adds r0, #0x9f
@@ -9726,9 +9726,9 @@ func_fe6_08039D34: @ 0x08039D34
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08039DF0: .4byte gUnk_Sio_085C98F4
+.L08039DF0: .4byte gSioSt
 .L08039DF4: .4byte 0x0203C91C
-.L08039DF8: .4byte 0x0203C618
+.L08039DF8: .4byte gLinkArenaSt
 .L08039DFC: .4byte gUnk_Sio_085C9EA8
 .L08039E00: .4byte 0x0203C9A8
 
@@ -9783,7 +9783,7 @@ func_fe6_08039E04: @ 0x08039E04
 	ldr r0, [r2]
 	adds r0, r0, r1
 	movs r1, #0x28
-	bl func_fe6_08036208
+	bl SioEmitData
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	mov r3, r8
@@ -9791,8 +9791,8 @@ func_fe6_08039E04: @ 0x08039E04
 	ldrh r2, [r4]
 	adds r2, #1
 	strh r2, [r4]
-	ldr r1, .L08039F74 @ =0x0203C618
-	ldr r0, .L08039F78 @ =gUnk_Sio_085C98F4
+	ldr r1, .L08039F74 @ =gLinkArenaSt
+	ldr r0, .L08039F78 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -9810,14 +9810,14 @@ func_fe6_08039E04: @ 0x08039E04
 	mov r0, sp
 	adds r1, r6, #0
 	movs r2, #0
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L08039F18
 	ldrb r0, [r6]
 	lsls r4, r0, #6
 	adds r4, #1
-	ldr r1, .L08039F74 @ =0x0203C618
+	ldr r1, .L08039F74 @ =gLinkArenaSt
 	mov sb, r1
 	mov r7, sb
 	adds r7, #0x9c
@@ -9844,7 +9844,7 @@ func_fe6_08039E04: @ 0x08039E04
 	bne .L08039EFA
 	adds r0, r5, #0
 	bl GetUnitChibiId
-	ldr r1, .L08039F7C @ =0x0203C984
+	ldr r1, .L08039F7C @ =gSioBmSt
 	ldrb r3, [r6]
 	lsls r2, r3, #1
 	adds r1, #0x24
@@ -9893,7 +9893,7 @@ func_fe6_08039E04: @ 0x08039E04
 	mov r0, sl
 	cmp r0, #0
 	bne .L08039F5C
-	ldr r0, .L08039F78 @ =gUnk_Sio_085C98F4
+	ldr r0, .L08039F78 @ =gSioSt
 	ldr r2, [r0]
 	movs r1, #6
 	ldrsb r1, [r2, r1]
@@ -9914,9 +9914,9 @@ func_fe6_08039E04: @ 0x08039E04
 	.align 2, 0
 .L08039F6C: .4byte gPlaySt
 .L08039F70: .4byte gUnk_Sio_085C9EA8
-.L08039F74: .4byte 0x0203C618
-.L08039F78: .4byte gUnk_Sio_085C98F4
-.L08039F7C: .4byte 0x0203C984
+.L08039F74: .4byte gLinkArenaSt
+.L08039F78: .4byte gSioSt
+.L08039F7C: .4byte gSioBmSt
 .L08039F80: .4byte 0x0203C6B4
 
 	thumb_func_start func_fe6_08039F84
@@ -9958,16 +9958,16 @@ func_fe6_08039F84: @ 0x08039F84
 	ble .L08039FCC
 	bl StartSioErrorScreen
 .L08039FCC:
-	ldr r0, .L0803A01C @ =gUnk_0300456C
+	ldr r0, .L0803A01C @ =gSioMsgBuf
 	movs r1, #0x19
 	strb r1, [r0]
-	ldr r4, .L0803A020 @ =gUnk_Sio_085C98F4
+	ldr r4, .L0803A020 @ =gSioSt
 	ldr r1, [r4]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
 	strh r6, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	ldr r4, [r4]
 	ldr r1, [r5, #0x58]
 	movs r0, #0x8c
@@ -9995,17 +9995,17 @@ func_fe6_08039F84: @ 0x08039F84
 	.align 2, 0
 .L0803A014: .4byte gPlaySt
 .L0803A018: .4byte 0x0203C91C
-.L0803A01C: .4byte gUnk_0300456C
-.L0803A020: .4byte gUnk_Sio_085C98F4
+.L0803A01C: .4byte gSioMsgBuf
+.L0803A020: .4byte gSioSt
 .L0803A024: .4byte gUnk_Sio_085C99C8
 
 	thumb_func_start func_fe6_0803A028
 func_fe6_0803A028: @ 0x0803A028
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	bl func_fe6_08040F50
+	bl ClearSioBG
+	bl InitSioBG
+	bl EndLinkArenaVersusSpriteDraw
 	movs r0, #3
 	bl EndFaceById
 	ldr r4, .L0803A07C @ =0x0203C66C
@@ -10025,7 +10025,7 @@ func_fe6_0803A028: @ 0x0803A028
 	bl SpawnProc
 	movs r0, #0
 	movs r1, #0
-	bl func_fe6_0803FAA4
+	bl Sio_RestartBgSlide
 	movs r0, #0xf
 	bl EnableBgSync
 	pop {r4, r5}
@@ -10037,17 +10037,17 @@ func_fe6_0803A028: @ 0x0803A028
 .L0803A084: .4byte gBg2Tm+0x312
 .L0803A088: .4byte gUnk_Sio_085C99C8
 
-	thumb_func_start func_fe6_0803A08C
-func_fe6_0803A08C: @ 0x0803A08C
+	thumb_func_start func_SioBat_0803A08C
+func_SioBat_0803A08C: @ 0x0803A08C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
 	sub sp, #0xc
 	mov sb, r0
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r4, .L0803A1A8 @ =gUnk_08108514
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r4, .L0803A1A8 @ =Img_LinkArenaRankIcons
 	movs r0, #1
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -10055,26 +10055,26 @@ func_fe6_0803A08C: @ 0x0803A08C
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L0803A1B0 @ =gUnk_08109A80
+	ldr r0, .L0803A1B0 @ =Pal_LinkArenaRankIcons
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0803A1B4 @ =gUnk_08107820
+	ldr r0, .L0803A1B4 @ =Img_TacticianSelObj
 	ldr r1, .L0803A1B8 @ =0x06014800
 	bl Decompress
-	ldr r0, .L0803A1BC @ =gUnk_08109A00
+	ldr r0, .L0803A1BC @ =Pal_TacticianSelObj
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x80
 	bl ApplyPaletteExt
 	movs r0, #0
 	bl func_fe6_0803FB08
-	ldr r0, .L0803A1C0 @ =0x0203C758
+	ldr r0, .L0803A1C0 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl ResetTextFont
 	bl func_fe6_08036C60
 	add r0, sp, #8
-	bl func_fe6_0803AE70
+	bl LoadLinkArenaRuleSettings
 	movs r0, #1
 	movs r1, #0xfe
 	movs r2, #0
@@ -10082,10 +10082,10 @@ func_fe6_0803A08C: @ 0x0803A08C
 	movs r5, #0
 	movs r7, #0xc0
 	lsls r7, r7, #1
-	ldr r6, .L0803A1C4 @ =gUnk_Sio_0810F298
+	ldr r6, .L0803A1C4 @ =gLinkArenaRuleData
 .L0803A0FE:
 	lsls r4, r5, #3
-	ldr r1, .L0803A1C8 @ =0x0203C624
+	ldr r1, .L0803A1C8 @ =gLinkArenaSt + 0xC
 	mov r8, r1
 	add r4, r8
 	adds r0, r4, #0
@@ -10111,18 +10111,18 @@ func_fe6_0803A08C: @ 0x0803A08C
 	adds r5, #1
 	cmp r5, #2
 	ble .L0803A0FE
-	ldr r5, .L0803A1C4 @ =gUnk_Sio_0810F298
+	ldr r5, .L0803A1C4 @ =gLinkArenaRuleData
 	ldr r0, [r5, #0x18]
 	lsls r0, r0, #1
 	ldr r4, .L0803A1D0 @ =gBg1Tm+0x23C
 	adds r0, r0, r4
 	movs r1, #0
-	bl func_fe6_0803A680
+	bl DrawLinkArenaModeIcon
 	ldr r0, [r5, #0x1c]
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #1
-	bl func_fe6_0803A680
+	bl DrawLinkArenaModeIcon
 	ldr r0, .L0803A1D4 @ =gUnk_Sio_0810F19C
 	mov r4, r8
 	subs r4, #0xc
@@ -10130,7 +10130,7 @@ func_fe6_0803A08C: @ 0x0803A08C
 	adds r0, r2, r0
 	ldrb r1, [r0]
 	mov r0, sb
-	bl func_fe6_0803FC3C
+	bl StartLinkArenaTitleBanner
 	ldr r0, .L0803A1D8 @ =gUnk_Sio_085C9AD4
 	ldrb r3, [r4]
 	lsls r1, r3, #2
@@ -10147,7 +10147,7 @@ func_fe6_0803A08C: @ 0x0803A08C
 	bl func_fe6_0803FD40
 	ldr r0, .L0803A1E0 @ =0x000006DA
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	movs r0, #0xf
 	bl EnableBgSync
 	add sp, #0xc
@@ -10158,15 +10158,15 @@ func_fe6_0803A08C: @ 0x0803A08C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803A1A8: .4byte gUnk_08108514
+.L0803A1A8: .4byte Img_LinkArenaRankIcons
 .L0803A1AC: .4byte 0x06000C00
-.L0803A1B0: .4byte gUnk_08109A80
-.L0803A1B4: .4byte gUnk_08107820
+.L0803A1B0: .4byte Pal_LinkArenaRankIcons
+.L0803A1B4: .4byte Img_TacticianSelObj
 .L0803A1B8: .4byte 0x06014800
-.L0803A1BC: .4byte gUnk_08109A00
-.L0803A1C0: .4byte 0x0203C758
-.L0803A1C4: .4byte gUnk_Sio_0810F298
-.L0803A1C8: .4byte 0x0203C624
+.L0803A1BC: .4byte Pal_TacticianSelObj
+.L0803A1C0: .4byte gSioFont_0203C758
+.L0803A1C4: .4byte gLinkArenaRuleData
+.L0803A1C8: .4byte gLinkArenaSt + 0xC
 .L0803A1CC: .4byte gBg0Tm+0xC
 .L0803A1D0: .4byte gBg1Tm+0x23C
 .L0803A1D4: .4byte gUnk_Sio_0810F19C
@@ -10174,24 +10174,24 @@ func_fe6_0803A08C: @ 0x0803A08C
 .L0803A1DC: .4byte gUnk_Sio_0810F190
 .L0803A1E0: .4byte 0x000006DA
 
-	thumb_func_start func_fe6_0803A1E4
-func_fe6_0803A1E4: @ 0x0803A1E4
+	thumb_func_start XMapTransfer_0803A1E4
+XMapTransfer_0803A1E4: @ 0x0803A1E4
 	push {lr}
 	movs r0, #3
-	bl func_fe6_08036494
+	bl SetXmapTransferState
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803A1F0
-func_fe6_0803A1F0: @ 0x0803A1F0
+	thumb_func_start XmapTransfer_End
+XmapTransfer_End: @ 0x0803A1F0
 	push {lr}
 	movs r0, #0
-	bl func_fe6_08036494
+	bl SetXmapTransferState
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803A1FC
-func_fe6_0803A1FC: @ 0x0803A1FC
+	thumb_func_start SioTerm_Init
+SioTerm_Init: @ 0x0803A1FC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -10206,23 +10206,23 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 	adds r0, r5, #0
 	movs r2, #6
 	bl memcpy
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r0, .L0803A2DC @ =gUnk_08107820
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r0, .L0803A2DC @ =Img_TacticianSelObj
 	ldr r1, .L0803A2E0 @ =0x06014800
 	bl Decompress
 	movs r0, #0
 	movs r1, #4
-	bl func_fe6_0803FAA4
-	ldr r0, .L0803A2E4 @ =0x0203C758
+	bl Sio_RestartBgSlide
+	ldr r0, .L0803A2E4 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
 	movs r0, #0xc0
 	movs r1, #0x10
 	adds r2, r7, #0
-	bl func_fe6_0803F9C4
-	ldr r4, .L0803A2E8 @ =0x0203C900
+	bl StartLinkArenaButtonSpriteDraw
+	ldr r4, .L0803A2E8 @ =gSioTexts
 	adds r0, r4, #0
 	movs r1, #0x18
 	bl InitText
@@ -10232,10 +10232,10 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 	bl InitText
 	ldr r0, .L0803A2EC @ =0x000006DB
 	movs r1, #0
-	bl func_fe6_08036BFC
+	bl SioPutText
 	ldr r0, .L0803A2F0 @ =0x000006DC
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	movs r0, #1
 	rsbs r0, r0, #0
 	str r0, [r7, #0x4c]
@@ -10263,7 +10263,7 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 	add r1, sp, #8
 	bl ReadGameSavePlaySt
 	add r0, sp, #8
-	bl func_fe6_08070E0C
+	bl GetChapterTitleExtra
 	adds r2, r7, #0
 	adds r2, #0x2c
 	mov r1, sl
@@ -10289,10 +10289,10 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 	b .L0803A2F8
 	.align 2, 0
 .L0803A2D8: .4byte gUnk_Sio_0810F2D4
-.L0803A2DC: .4byte gUnk_08107820
+.L0803A2DC: .4byte Img_TacticianSelObj
 .L0803A2E0: .4byte 0x06014800
-.L0803A2E4: .4byte 0x0203C758
-.L0803A2E8: .4byte 0x0203C900
+.L0803A2E4: .4byte gSioFont_0203C758
+.L0803A2E8: .4byte gSioTexts
 .L0803A2EC: .4byte 0x000006DB
 .L0803A2F0: .4byte 0x000006DC
 .L0803A2F4:
@@ -10358,25 +10358,25 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 .L0803A360:
 	movs r0, #1
 	movs r1, #4
-	bl func_fe6_08070CB4
+	bl PutChapterTitlePalettle
 	movs r0, #3
 	movs r1, #5
-	bl func_fe6_08070CB4
+	bl PutChapterTitlePalettle
 	movs r0, #5
 	movs r1, #6
-	bl func_fe6_08070CB4
+	bl PutChapterTitlePalettle
 	movs r0, #0
 	movs r1, #7
-	bl func_fe6_08070CB4
+	bl PutChapterTitlePalettle
 	movs r0, #2
 	movs r1, #8
-	bl func_fe6_08070CB4
+	bl PutChapterTitlePalettle
 	movs r0, #4
 	movs r1, #9
-	bl func_fe6_08070CB4
+	bl PutChapterTitlePalettle
 	movs r0, #0xd0
 	lsls r0, r0, #1
-	bl func_fe6_08070D48
+	bl PutChapterTitleBG1
 	movs r0, #0xa0
 	lsls r0, r0, #1
 	mov sl, r0
@@ -10410,19 +10410,19 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 	adds r0, r5, r0
 	ldr r1, [r4]
 	adds r1, #4
-	bl func_fe6_08070DC8
+	bl PutChapterTitleBgTSA
 	mov r1, sb
 	lsls r0, r1, #0xf
 	lsrs r0, r0, #0x14
 	ldr r2, [sp, #0x48]
 	ldm r2!, {r1}
 	str r2, [sp, #0x48]
-	bl func_fe6_08070D08
+	bl PutChapterTitleGfx
 	ldr r0, .L0803A45C @ =gBg0Tm+0x6
 	add r0, sl
 	ldm r4!, {r1}
 	adds r1, #7
-	bl func_fe6_08070DA8
+	bl PutChapterTitleTextTSA
 	movs r0, #0x80
 	lsls r0, r0, #1
 	add sl, r0
@@ -10450,8 +10450,8 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 	strb r0, [r2, #1]
 	adds r0, r7, #0
 	movs r1, #1
-	bl func_fe6_0803FC3C
-	ldr r0, .L0803A464 @ =0x0203C618
+	bl StartLinkArenaTitleBanner
+	ldr r0, .L0803A464 @ =gLinkArenaSt
 	ldrb r0, [r0]
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -10474,7 +10474,7 @@ func_fe6_0803A1FC: @ 0x0803A1FC
 .L0803A458: .4byte gBg1Tm+0x6
 .L0803A45C: .4byte gBg0Tm+0x6
 .L0803A460: .4byte gDispIo
-.L0803A464: .4byte 0x0203C618
+.L0803A464: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803A468
 func_fe6_0803A468: @ 0x0803A468
@@ -10581,7 +10581,7 @@ func_fe6_0803A4F4: @ 0x0803A4F4
 	cmp r5, r0
 	beq .L0803A52E
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L0803A52E:
 	ldr r4, .L0803A56C @ =gKeySt
 	ldr r1, [r4]
@@ -10591,7 +10591,7 @@ func_fe6_0803A4F4: @ 0x0803A4F4
 	cmp r0, #0
 	beq .L0803A548
 	movs r0, #2
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r6, #0
 	bl Proc_Break
 .L0803A548:
@@ -10602,7 +10602,7 @@ func_fe6_0803A4F4: @ 0x0803A4F4
 	cmp r0, #0
 	beq .L0803A562
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r6, #0
 	movs r1, #4
 	bl Proc_Goto
@@ -10630,7 +10630,7 @@ func_fe6_0803A570: @ 0x0803A570
 	ldrb r2, [r1, #0x1d]
 	ands r0, r2
 	strb r0, [r1, #0x1d]
-	ldr r1, .L0803A5A8 @ =0x0203C618
+	ldr r1, .L0803A5A8 @ =gLinkArenaSt
 	ldr r0, [r4, #0x48]
 	strb r0, [r1, #4]
 	bl ApplyUnitSpritePalettes
@@ -10640,13 +10640,13 @@ func_fe6_0803A570: @ 0x0803A570
 	bx r0
 	.align 2, 0
 .L0803A5A4: .4byte gPlaySt
-.L0803A5A8: .4byte 0x0203C618
+.L0803A5A8: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803A5AC
 func_fe6_0803A5AC: @ 0x0803A5AC
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0803A5C4 @ =0x0203C618
+	ldr r0, .L0803A5C4 @ =gLinkArenaSt
 	ldrb r0, [r0, #3]
 	cmp r0, #0xff
 	bne .L0803A5C0
@@ -10657,13 +10657,13 @@ func_fe6_0803A5AC: @ 0x0803A5AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803A5C4: .4byte 0x0203C618
+.L0803A5C4: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803A5C8
 func_fe6_0803A5C8: @ 0x0803A5C8
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0803A5E0 @ =0x0203C618
+	ldr r0, .L0803A5E0 @ =gLinkArenaSt
 	ldrb r0, [r0, #4]
 	cmp r0, #0xff
 	bne .L0803A5DC
@@ -10674,10 +10674,10 @@ func_fe6_0803A5C8: @ 0x0803A5C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803A5E0: .4byte 0x0203C618
+.L0803A5E0: .4byte gLinkArenaSt
 
-	thumb_func_start func_fe6_0803A5E4
-func_fe6_0803A5E4: @ 0x0803A5E4
+	thumb_func_start SioTerm_WaitAtMenu
+SioTerm_WaitAtMenu: @ 0x0803A5E4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, .L0803A600 @ =ProcScr_AtMenu
@@ -10703,11 +10703,11 @@ func_fe6_0803A604: @ 0x0803A604
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803A634
-	bl func_fe6_08036B98
-	bl func_fe6_0803FB74
+	bl ClearSioAllBGs
+	bl Sio_EndBackgroundSlide
 	bl func_fe6_0803FC60
 	bl func_fe6_0803FDD8
-	bl func_fe6_0803F9F4
+	bl EndLinkArenaButtonSpriteDraw
 	bl StartPrepAtMenu
 	adds r0, r4, #0
 	movs r1, #5
@@ -10719,8 +10719,8 @@ func_fe6_0803A604: @ 0x0803A604
 	.align 2, 0
 .L0803A63C: .4byte 0x0203C918
 
-	thumb_func_start func_fe6_0803A640
-func_fe6_0803A640: @ 0x0803A640
+	thumb_func_start DrawLinkArenaRankIcon
+DrawLinkArenaRankIcon: @ 0x0803A640
 	adds r3, r0, #0
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -10755,8 +10755,8 @@ func_fe6_0803A640: @ 0x0803A640
 	.align 2, 0
 .L0803A67C: .4byte 0x00004060
 
-	thumb_func_start func_fe6_0803A680
-func_fe6_0803A680: @ 0x0803A680
+	thumb_func_start DrawLinkArenaModeIcon
+DrawLinkArenaModeIcon: @ 0x0803A680
 	push {r4, lr}
 	lsls r1, r1, #0x12
 	movs r2, #0xa0
@@ -10786,8 +10786,8 @@ func_fe6_0803A680: @ 0x0803A680
 .L0803A6B4: .4byte 0x00006001
 .L0803A6B8: .4byte 0x00006003
 
-	thumb_func_start func_fe6_0803A6BC
-func_fe6_0803A6BC: @ 0x0803A6BC
+	thumb_func_start DrawLinkArenaRankingRow
+DrawLinkArenaRankingRow: @ 0x0803A6BC
 	push {r4, r5, r6, lr}
 	mov r6, sb
 	mov r5, r8
@@ -10850,8 +10850,8 @@ func_fe6_0803A6BC: @ 0x0803A6BC
 .L0803A740: .4byte gUnk_Sio_0810F2DC
 .L0803A744: .4byte gUnk_Sio_0810F2E0
 
-	thumb_func_start func_fe6_0803A748
-func_fe6_0803A748: @ 0x0803A748
+	thumb_func_start DrawLinkArenaRankings
+DrawLinkArenaRankings: @ 0x0803A748
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -10859,7 +10859,7 @@ func_fe6_0803A748: @ 0x0803A748
 	push {r5, r6, r7}
 	sub sp, #4
 	movs r6, #0
-	ldr r0, .L0803A7DC @ =0x0203C83C
+	ldr r0, .L0803A7DC @ =gSioResultRankings
 	ldr r1, .L0803A7E0 @ =gBg1Tm+0x4
 	mov sl, r1
 	subs r7, r0, #4
@@ -10869,7 +10869,7 @@ func_fe6_0803A748: @ 0x0803A748
 	mov r8, r0
 .L0803A766:
 	lsls r5, r6, #3
-	ldr r0, .L0803A7E4 @ =0x0203C708
+	ldr r0, .L0803A7E4 @ =gSioText_0203C708
 	adds r5, r5, r0
 	adds r0, r5, #0
 	bl ClearText
@@ -10889,12 +10889,12 @@ func_fe6_0803A748: @ 0x0803A748
 	str r0, [sp]
 	adds r0, r5, #0
 	mov r1, r8
-	bl func_fe6_0803A6BC
+	bl DrawLinkArenaRankingRow
 	lsls r4, r6, #7
 	mov r1, sl
 	adds r0, r4, r1
 	adds r1, r6, #0
-	bl func_fe6_0803A640
+	bl DrawLinkArenaRankIcon
 	mov r0, sl
 	adds r0, #6
 	adds r4, r4, r0
@@ -10905,7 +10905,7 @@ func_fe6_0803A748: @ 0x0803A748
 	lsls r1, r0, #0x1b
 	lsrs r1, r1, #0x1f
 	mov r0, sb
-	bl func_fe6_0803A680
+	bl DrawLinkArenaModeIcon
 	adds r7, #0x14
 	movs r1, #0x80
 	add sb, r1
@@ -10923,12 +10923,12 @@ func_fe6_0803A748: @ 0x0803A748
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803A7DC: .4byte 0x0203C83C
+.L0803A7DC: .4byte gSioResultRankings
 .L0803A7E0: .4byte gBg1Tm+0x4
-.L0803A7E4: .4byte 0x0203C708
+.L0803A7E4: .4byte gSioText_0203C708
 
-	thumb_func_start func_fe6_0803A7E8
-func_fe6_0803A7E8: @ 0x0803A7E8
+	thumb_func_start SioResult_Init
+SioResult_Init: @ 0x0803A7E8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	adds r7, r0, #0
@@ -10936,9 +10936,9 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	add r0, sp, #8
 	movs r2, #8
 	bl memcpy
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r4, .L0803A9A8 @ =gUnk_08108514
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r4, .L0803A9A8 @ =Img_LinkArenaRankIcons
 	movs r0, #1
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -10950,27 +10950,27 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	movs r1, #0x80
 	movs r2, #0x40
 	bl ApplyPaletteExt
-	ldr r0, .L0803A9B4 @ =gUnk_08109A80
+	ldr r0, .L0803A9B4 @ =Pal_LinkArenaRankIcons
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0803A9B8 @ =gUnk_08107820
+	ldr r0, .L0803A9B8 @ =Img_TacticianSelObj
 	ldr r1, .L0803A9BC @ =0x06014800
 	bl Decompress
-	ldr r0, .L0803A9C0 @ =gUnk_08109A00
+	ldr r0, .L0803A9C0 @ =Pal_TacticianSelObj
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x80
 	bl ApplyPaletteExt
 	movs r0, #0
 	movs r1, #2
-	bl func_fe6_0803FAA4
+	bl Sio_RestartBgSlide
 	ldr r0, .L0803A9C4 @ =gBg2Tm+0x102
 	ldr r1, .L0803A9C8 @ =gUnk_0810A318
 	movs r2, #0x80
 	lsls r2, r2, #5
 	bl TmApplyTsa_thm
-	ldr r0, .L0803A9CC @ =0x0203C758
+	ldr r0, .L0803A9CC @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
@@ -10988,7 +10988,7 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	movs r0, #1
 	movs r1, #0
 	bl SetBgOffset
-	ldr r5, .L0803A9D0 @ =0x0203C708
+	ldr r5, .L0803A9D0 @ =gSioText_0203C708
 	movs r4, #9
 .L0803A880:
 	adds r0, r5, #0
@@ -10998,7 +10998,7 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	subs r4, #1
 	cmp r4, #0
 	bge .L0803A880
-	ldr r4, .L0803A9D4 @ =0x0203C900
+	ldr r4, .L0803A9D4 @ =gSioTexts
 	adds r0, r4, #0
 	movs r1, #0x18
 	bl InitText
@@ -11033,10 +11033,10 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	bl PutText
 	ldr r0, .L0803A9EC @ =0x000006D3
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	ldr r0, .L0803A9F0 @ =0x0203C838
 	bl ReadMultiArenaSaveRankings
-	bl func_fe6_0803A748
+	bl DrawLinkArenaRankings
 	ldr r1, .L0803A9F4 @ =gDispIo
 	mov ip, r1
 	movs r0, #0x20
@@ -11099,8 +11099,8 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	bl func_fe6_08040A80
 	adds r0, r7, #0
 	movs r1, #5
-	bl func_fe6_0803FC3C
-	ldr r0, .L0803A9F8 @ =0x0203C618
+	bl StartLinkArenaTitleBanner
+	ldr r0, .L0803A9F8 @ =gLinkArenaSt
 	ldrb r0, [r0]
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -11112,7 +11112,7 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	movs r0, #0xc0
 	movs r1, #0x10
 	adds r2, r7, #0
-	bl func_fe6_0803F9C4
+	bl StartLinkArenaButtonSpriteDraw
 	movs r0, #0xf
 	bl EnableBgSync
 	add sp, #0x10
@@ -11121,18 +11121,18 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 	bx r0
 	.align 2, 0
 .L0803A9A4: .4byte gUnk_Sio_0810F2E3
-.L0803A9A8: .4byte gUnk_08108514
+.L0803A9A8: .4byte Img_LinkArenaRankIcons
 .L0803A9AC: .4byte 0x06000C00
 .L0803A9B0: .4byte gUnk_08109AC0
-.L0803A9B4: .4byte gUnk_08109A80
-.L0803A9B8: .4byte gUnk_08107820
+.L0803A9B4: .4byte Pal_LinkArenaRankIcons
+.L0803A9B8: .4byte Img_TacticianSelObj
 .L0803A9BC: .4byte 0x06014800
-.L0803A9C0: .4byte gUnk_08109A00
+.L0803A9C0: .4byte Pal_TacticianSelObj
 .L0803A9C4: .4byte gBg2Tm+0x102
 .L0803A9C8: .4byte gUnk_0810A318
-.L0803A9CC: .4byte 0x0203C758
-.L0803A9D0: .4byte 0x0203C708
-.L0803A9D4: .4byte 0x0203C900
+.L0803A9CC: .4byte gSioFont_0203C758
+.L0803A9D0: .4byte gSioText_0203C708
+.L0803A9D4: .4byte gSioTexts
 .L0803A9D8: .4byte gUnk_Sio_0810F2EC
 .L0803A9DC: .4byte gUnk_Sio_0810F2F8
 .L0803A9E0: .4byte gUnk_Sio_0810F300
@@ -11141,7 +11141,7 @@ func_fe6_0803A7E8: @ 0x0803A7E8
 .L0803A9EC: .4byte 0x000006D3
 .L0803A9F0: .4byte 0x0203C838
 .L0803A9F4: .4byte gDispIo
-.L0803A9F8: .4byte 0x0203C618
+.L0803A9F8: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803A9FC
 func_fe6_0803A9FC: @ 0x0803A9FC
@@ -11178,7 +11178,7 @@ func_fe6_0803A9FC: @ 0x0803A9FC
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
 	movs r0, #0xa
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	b .L0803AAEE
 .L0803AA42:
 	ldr r0, .L0803AAF4 @ =gKeySt
@@ -11194,7 +11194,7 @@ func_fe6_0803A9FC: @ 0x0803A9FC
 	cmp r0, #0
 	beq .L0803AA88
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	ldrh r0, [r4, #0x36]
 	subs r0, #4
 	strh r0, [r4, #0x36]
@@ -11212,7 +11212,7 @@ func_fe6_0803A9FC: @ 0x0803A9FC
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
 	movs r0, #0xa
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 .L0803AA88:
 	ldr r0, .L0803AAF4 @ =gKeySt
 	ldr r1, [r0]
@@ -11228,7 +11228,7 @@ func_fe6_0803A9FC: @ 0x0803A9FC
 	cmp r0, #9
 	bgt .L0803AAD4
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	ldrh r0, [r4, #0x36]
 	adds r0, #4
 	strh r0, [r4, #0x36]
@@ -11248,7 +11248,7 @@ func_fe6_0803A9FC: @ 0x0803A9FC
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
 	movs r0, #0xa
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 .L0803AAD4:
 	ldr r0, .L0803AAF4 @ =gKeySt
 	ldr r1, [r0]
@@ -11258,7 +11258,7 @@ func_fe6_0803A9FC: @ 0x0803A9FC
 	cmp r0, #0
 	beq .L0803AAEE
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	adds r0, r4, #0
 	bl Proc_Break
 .L0803AAEE:
@@ -11286,8 +11286,8 @@ func_fe6_0803AAF8: @ 0x0803AAF8
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803AB10
-func_fe6_0803AB10: @ 0x0803AB10
+	thumb_func_start SioResult_NewHS_Init
+SioResult_NewHS_Init: @ 0x0803AB10
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -11299,9 +11299,9 @@ func_fe6_0803AB10: @ 0x0803AB10
 	add r0, sp, #8
 	movs r2, #7
 	bl memcpy
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r4, .L0803AD1C @ =gUnk_08108514
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r4, .L0803AD1C @ =Img_LinkArenaRankIcons
 	movs r0, #1
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -11313,30 +11313,30 @@ func_fe6_0803AB10: @ 0x0803AB10
 	movs r1, #0x80
 	movs r2, #0x40
 	bl ApplyPaletteExt
-	ldr r0, .L0803AD28 @ =gUnk_08109A80
+	ldr r0, .L0803AD28 @ =Pal_LinkArenaRankIcons
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0803AD2C @ =gUnk_08107820
+	ldr r0, .L0803AD2C @ =Img_TacticianSelObj
 	ldr r1, .L0803AD30 @ =0x06014800
 	bl Decompress
 	ldr r0, .L0803AD34 @ =gUnk_08109648
 	ldr r1, .L0803AD38 @ =0x06016000
 	bl Decompress
-	ldr r0, .L0803AD3C @ =gUnk_08109BE0
+	ldr r0, .L0803AD3C @ =Pal_LinkArenaActiveBannerFx
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	movs r0, #0
 	movs r1, #0
-	bl func_fe6_0803FAA4
+	bl Sio_RestartBgSlide
 	ldr r0, .L0803AD40 @ =gBg2Tm+0x102
 	ldr r1, .L0803AD44 @ =gUnk_0810A318
 	movs r2, #0x80
 	lsls r2, r2, #5
 	bl TmApplyTsa_thm
-	ldr r0, .L0803AD48 @ =0x0203C758
+	ldr r0, .L0803AD48 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
@@ -11364,7 +11364,7 @@ func_fe6_0803AB10: @ 0x0803AB10
 	movs r0, #1
 	movs r1, #0
 	bl SetBgOffset
-	ldr r5, .L0803AD4C @ =0x0203C708
+	ldr r5, .L0803AD4C @ =gSioText_0203C708
 	movs r4, #9
 .L0803ABCE:
 	adds r0, r5, #0
@@ -11374,7 +11374,7 @@ func_fe6_0803AB10: @ 0x0803AB10
 	subs r4, #1
 	cmp r4, #0
 	bge .L0803ABCE
-	ldr r4, .L0803AD50 @ =0x0203C900
+	ldr r4, .L0803AD50 @ =gSioTexts
 	adds r0, r4, #0
 	movs r1, #0x18
 	bl InitText
@@ -11409,7 +11409,7 @@ func_fe6_0803AB10: @ 0x0803AB10
 	bl PutText
 	ldr r0, .L0803AD68 @ =0x0203C838
 	bl ReadMultiArenaSaveRankings
-	bl func_fe6_0803A748
+	bl DrawLinkArenaRankings
 	ldr r1, .L0803AD6C @ =gDispIo
 	mov ip, r1
 	movs r0, #0x20
@@ -11492,7 +11492,7 @@ func_fe6_0803AB10: @ 0x0803AB10
 	mov r1, sb
 	orrs r2, r1
 	strb r2, [r0]
-	ldr r0, .L0803AD70 @ =0x0203C618
+	ldr r0, .L0803AD70 @ =gLinkArenaSt
 	ldrb r0, [r0]
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -11520,20 +11520,20 @@ func_fe6_0803AB10: @ 0x0803AB10
 	bx r0
 	.align 2, 0
 .L0803AD18: .4byte gUnk_Sio_0810F30D
-.L0803AD1C: .4byte gUnk_08108514
+.L0803AD1C: .4byte Img_LinkArenaRankIcons
 .L0803AD20: .4byte 0x06000C00
 .L0803AD24: .4byte gUnk_08109AC0
-.L0803AD28: .4byte gUnk_08109A80
-.L0803AD2C: .4byte gUnk_08107820
+.L0803AD28: .4byte Pal_LinkArenaRankIcons
+.L0803AD2C: .4byte Img_TacticianSelObj
 .L0803AD30: .4byte 0x06014800
 .L0803AD34: .4byte gUnk_08109648
 .L0803AD38: .4byte 0x06016000
-.L0803AD3C: .4byte gUnk_08109BE0
+.L0803AD3C: .4byte Pal_LinkArenaActiveBannerFx
 .L0803AD40: .4byte gBg2Tm+0x102
 .L0803AD44: .4byte gUnk_0810A318
-.L0803AD48: .4byte 0x0203C758
-.L0803AD4C: .4byte 0x0203C708
-.L0803AD50: .4byte 0x0203C900
+.L0803AD48: .4byte gSioFont_0203C758
+.L0803AD4C: .4byte gSioText_0203C708
+.L0803AD50: .4byte gSioTexts
 .L0803AD54: .4byte gUnk_Sio_0810F2EC
 .L0803AD58: .4byte gUnk_Sio_0810F2F8
 .L0803AD5C: .4byte gUnk_Sio_0810F300
@@ -11541,10 +11541,10 @@ func_fe6_0803AB10: @ 0x0803AB10
 .L0803AD64: .4byte gBg0Tm+0x14A
 .L0803AD68: .4byte 0x0203C838
 .L0803AD6C: .4byte gDispIo
-.L0803AD70: .4byte 0x0203C618
+.L0803AD70: .4byte gLinkArenaSt
 
-	thumb_func_start func_fe6_0803AD74
-func_fe6_0803AD74: @ 0x0803AD74
+	thumb_func_start SioResult_NewHS_LoopScroll
+SioResult_NewHS_LoopScroll: @ 0x0803AD74
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -11585,7 +11585,7 @@ func_fe6_0803AD74: @ 0x0803AD74
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
 	movs r0, #0xa
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	mov r1, r8
 	ldr r0, [r1, #0x30]
 	adds r0, #2
@@ -11615,7 +11615,7 @@ func_fe6_0803AD74: @ 0x0803AD74
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
 	movs r0, #0xa
-	bl func_fe6_08040AEC
+	bl UpdateLinkArenaMenuScrollBar
 	mov r1, r8
 	ldr r0, [r1, #0x30]
 	adds r0, #2
@@ -11638,8 +11638,8 @@ func_fe6_0803AD74: @ 0x0803AD74
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803AE30
-func_fe6_0803AE30: @ 0x0803AE30
+	thumb_func_start SioResult_NewHS_AwaitAPress
+SioResult_NewHS_AwaitAPress: @ 0x0803AE30
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, .L0803AE54 @ =gKeySt
@@ -11660,22 +11660,22 @@ func_fe6_0803AE30: @ 0x0803AE30
 	.align 2, 0
 .L0803AE54: .4byte gKeySt
 
-	thumb_func_start func_fe6_0803AE58
-func_fe6_0803AE58: @ 0x0803AE58
+	thumb_func_start StartSioResultNewHighScore
+StartSioResultNewHighScore: @ 0x0803AE58
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0803AE6C @ =gUnk_Sio_085CA364
+	ldr r0, .L0803AE6C @ =ProcScr_SIORESULT_NewHighScore
 	bl SpawnProcLocking
 	str r4, [r0, #0x3c]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803AE6C: .4byte gUnk_Sio_085CA364
+.L0803AE6C: .4byte ProcScr_SIORESULT_NewHighScore
 
-	thumb_func_start func_fe6_0803AE70
-func_fe6_0803AE70: @ 0x0803AE70
-	ldr r1, .L0803AE8C @ =0x0203C618
+	thumb_func_start LoadLinkArenaRuleSettings
+LoadLinkArenaRuleSettings: @ 0x0803AE70
+	ldr r1, .L0803AE8C @ =gLinkArenaSt
 	adds r1, #0xec
 	ldrb r2, [r1]
 	lsls r1, r2, #0x1f
@@ -11689,12 +11689,12 @@ func_fe6_0803AE70: @ 0x0803AE70
 	strb r2, [r0, #2]
 	bx lr
 	.align 2, 0
-.L0803AE8C: .4byte 0x0203C618
+.L0803AE8C: .4byte gLinkArenaSt
 
-	thumb_func_start func_fe6_0803AE90
-func_fe6_0803AE90: @ 0x0803AE90
+	thumb_func_start SaveLinkArenaRuleSettings
+SaveLinkArenaRuleSettings: @ 0x0803AE90
 	push {r4, r5, lr}
-	ldr r5, .L0803AECC @ =0x0203C618
+	ldr r5, .L0803AECC @ =gLinkArenaSt
 	adds r5, #0xec
 	movs r4, #1
 	ldrb r2, [r0]
@@ -11723,7 +11723,7 @@ func_fe6_0803AE90: @ 0x0803AE90
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803AECC: .4byte 0x0203C618
+.L0803AECC: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803AED0
 func_fe6_0803AED0: @ 0x0803AED0
@@ -11741,7 +11741,7 @@ func_fe6_0803AED0: @ 0x0803AED0
 	str r2, [sp, #4]
 	movs r7, #0
 	lsls r1, r0, #1
-	ldr r2, .L0803AF70 @ =gUnk_Sio_0810F298
+	ldr r2, .L0803AF70 @ =gLinkArenaRuleData
 	mov r8, r2
 	adds r1, r1, r0
 	adds r1, #6
@@ -11756,7 +11756,7 @@ func_fe6_0803AED0: @ 0x0803AED0
 	mov sb, r2
 	adds r5, r1, #0
 .L0803AF08:
-	ldr r4, .L0803AF74 @ =0x0203C67C
+	ldr r4, .L0803AF74 @ =gSioText_0203C67C
 	adds r4, r6, r4
 	adds r0, r4, #0
 	bl ClearText
@@ -11803,12 +11803,12 @@ func_fe6_0803AED0: @ 0x0803AED0
 	bx r0
 	.align 2, 0
 .L0803AF6C: .4byte gUnk_Sio_0810F314
-.L0803AF70: .4byte gUnk_Sio_0810F298
-.L0803AF74: .4byte 0x0203C67C
+.L0803AF70: .4byte gLinkArenaRuleData
+.L0803AF74: .4byte gSioText_0203C67C
 .L0803AF78: .4byte gBg0Tm
 
-	thumb_func_start func_fe6_0803AF7C
-func_fe6_0803AF7C: @ 0x0803AF7C
+	thumb_func_start SioRuleSettings_Init
+SioRuleSettings_Init: @ 0x0803AF7C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -11821,9 +11821,9 @@ func_fe6_0803AF7C: @ 0x0803AF7C
 	adds r0, r6, #0
 	movs r2, #9
 	bl memcpy
-	bl func_fe6_08036B40
-	bl func_fe6_0803FA14
-	ldr r4, .L0803B0EC @ =gUnk_08108514
+	bl ClearSioBG
+	bl InitSioBG
+	ldr r4, .L0803B0EC @ =Img_LinkArenaRankIcons
 	movs r0, #1
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -11831,21 +11831,21 @@ func_fe6_0803AF7C: @ 0x0803AF7C
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L0803B0F4 @ =gUnk_08109A80
+	ldr r0, .L0803B0F4 @ =Pal_LinkArenaRankIcons
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0803B0F8 @ =gUnk_08107820
+	ldr r0, .L0803B0F8 @ =Img_TacticianSelObj
 	ldr r1, .L0803B0FC @ =0x06014800
 	bl Decompress
-	ldr r0, .L0803B100 @ =gUnk_08109A00
+	ldr r0, .L0803B100 @ =Pal_TacticianSelObj
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x80
 	bl ApplyPaletteExt
 	movs r0, #0
 	bl func_fe6_0803FB08
-	ldr r0, .L0803B104 @ =0x0203C758
+	ldr r0, .L0803B104 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl ResetTextFont
 	bl func_fe6_08036C60
@@ -11861,13 +11861,13 @@ func_fe6_0803AF7C: @ 0x0803AF7C
 	movs r2, #0
 	bl SetBgOffset
 	add r0, sp, #8
-	bl func_fe6_0803AE70
+	bl LoadLinkArenaRuleSettings
 	mov r3, r8
 	ldr r0, [r3, #0x2c]
 	ldr r4, [r3, #0x30]
 	movs r2, #0x30
 	ldrsh r1, [r3, r2]
-	ldr r5, .L0803B108 @ =gUnk_Sio_0810F298
+	ldr r5, .L0803B108 @ =gLinkArenaRuleData
 	mov r3, sp
 	adds r3, r3, r4
 	adds r3, #8
@@ -11895,7 +11895,7 @@ func_fe6_0803AF7C: @ 0x0803AF7C
 	lsls r6, r6, #1
 .L0803B044:
 	lsls r4, r7, #3
-	ldr r0, .L0803B10C @ =0x0203C624
+	ldr r0, .L0803B10C @ =gLinkArenaSt + 0xC
 	mov sb, r0
 	add r4, sb
 	adds r0, r4, #0
@@ -11921,22 +11921,22 @@ func_fe6_0803AF7C: @ 0x0803AF7C
 	adds r7, #1
 	cmp r7, #2
 	ble .L0803B044
-	ldr r5, .L0803B108 @ =gUnk_Sio_0810F298
+	ldr r5, .L0803B108 @ =gLinkArenaRuleData
 	ldr r0, [r5, #0x18]
 	lsls r0, r0, #1
 	ldr r4, .L0803B114 @ =gBg1Tm+0x23C
 	adds r0, r0, r4
 	movs r1, #0
-	bl func_fe6_0803A680
+	bl DrawLinkArenaModeIcon
 	ldr r0, [r5, #0x1c]
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #1
-	bl func_fe6_0803A680
+	bl DrawLinkArenaModeIcon
 	mov r1, r8
 	ldr r0, [r1, #0x2c]
 	movs r1, #6
-	bl func_fe6_0803FC3C
+	bl StartLinkArenaTitleBanner
 	mov r0, sb
 	subs r0, #0xc
 	ldrb r0, [r0]
@@ -11954,7 +11954,7 @@ func_fe6_0803AF7C: @ 0x0803AF7C
 	ldr r4, .L0803B118 @ =0x000006D4
 	adds r0, r0, r4
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	movs r0, #0xf
 	bl EnableBgSync
 	add sp, #0x18
@@ -11967,21 +11967,21 @@ func_fe6_0803AF7C: @ 0x0803AF7C
 	bx r0
 	.align 2, 0
 .L0803B0E8: .4byte gUnk_Sio_0810F31C
-.L0803B0EC: .4byte gUnk_08108514
+.L0803B0EC: .4byte Img_LinkArenaRankIcons
 .L0803B0F0: .4byte 0x06000C00
-.L0803B0F4: .4byte gUnk_08109A80
-.L0803B0F8: .4byte gUnk_08107820
+.L0803B0F4: .4byte Pal_LinkArenaRankIcons
+.L0803B0F8: .4byte Img_TacticianSelObj
 .L0803B0FC: .4byte 0x06014800
-.L0803B100: .4byte gUnk_08109A00
-.L0803B104: .4byte 0x0203C758
-.L0803B108: .4byte gUnk_Sio_0810F298
-.L0803B10C: .4byte 0x0203C624
+.L0803B100: .4byte Pal_TacticianSelObj
+.L0803B104: .4byte gSioFont_0203C758
+.L0803B108: .4byte gLinkArenaRuleData
+.L0803B10C: .4byte gLinkArenaSt + 0xC
 .L0803B110: .4byte gBg0Tm+0xC
 .L0803B114: .4byte gBg1Tm+0x23C
 .L0803B118: .4byte 0x000006D4
 
-	thumb_func_start func_fe6_0803B11C
-func_fe6_0803B11C: @ 0x0803B11C
+	thumb_func_start SioRuleSettings_Loop
+SioRuleSettings_Loop: @ 0x0803B11C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r6, r0, #0
@@ -11995,14 +11995,14 @@ func_fe6_0803B11C: @ 0x0803B11C
 	cmp r0, #0
 	beq .L0803B146
 	movs r0, #1
-	bl func_fe6_08036D08
-	ldr r0, .L0803B23C @ =0x0203C704
+	bl SioPlaySe
+	ldr r0, .L0803B23C @ =gSioSaveConfig
 	bl WriteMultiArenaSaveConfig
 	adds r0, r6, #0
 	bl Proc_Break
 .L0803B146:
 	mov r0, sp
-	bl func_fe6_0803AE70
+	bl LoadLinkArenaRuleSettings
 	ldr r1, [r5]
 	movs r0, #0x40
 	ldrh r1, [r1, #6]
@@ -12074,11 +12074,11 @@ func_fe6_0803B11C: @ 0x0803B11C
 	lsrs r4, r0, #0x18
 .L0803B1D4:
 	mov r0, sp
-	bl func_fe6_0803AE90
+	bl SaveLinkArenaRuleSettings
 	cmp r4, #0
 	beq .L0803B22E
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	ldr r5, [r6, #0x30]
 	cmp r5, #1
 	bne .L0803B1EE
@@ -12088,7 +12088,7 @@ func_fe6_0803B11C: @ 0x0803B11C
 	ldr r0, [r6, #0x2c]
 	lsls r1, r5, #0x10
 	asrs r1, r1, #0x10
-	ldr r3, .L0803B240 @ =gUnk_Sio_0810F298
+	ldr r3, .L0803B240 @ =gLinkArenaRuleData
 	mov r2, sp
 	adds r4, r2, r5
 	lsls r2, r5, #2
@@ -12114,7 +12114,7 @@ func_fe6_0803B11C: @ 0x0803B11C
 	ldr r1, .L0803B244 @ =0x000006D4
 	adds r0, r0, r1
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 .L0803B22E:
 	add sp, #4
 	pop {r4, r5, r6, r7}
@@ -12122,8 +12122,8 @@ func_fe6_0803B11C: @ 0x0803B11C
 	bx r0
 	.align 2, 0
 .L0803B238: .4byte gKeySt
-.L0803B23C: .4byte 0x0203C704
-.L0803B240: .4byte gUnk_Sio_0810F298
+.L0803B23C: .4byte gSioSaveConfig
+.L0803B240: .4byte gLinkArenaRuleData
 .L0803B244: .4byte 0x000006D4
 
 	thumb_func_start func_fe6_0803B248
@@ -12180,8 +12180,8 @@ func_fe6_0803B248: @ 0x0803B248
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_0803B2AC
-func_fe6_0803B2AC: @ 0x0803B2AC
+	thumb_func_start SioHaskValidSaveSlot
+SioHaskValidSaveSlot: @ 0x0803B2AC
 	push {r4, lr}
 	movs r4, #0
 .L0803B2B0:
@@ -12208,13 +12208,13 @@ func_fe6_0803B2AC: @ 0x0803B2AC
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803B2DC
-func_fe6_0803B2DC: @ 0x0803B2DC
+	thumb_func_start SioMenu_Init
+SioMenu_Init: @ 0x0803B2DC
 	push {lr}
-	bl func_fe6_0803B2AC
-	ldr r1, .L0803B308 @ =0x0203C618
+	bl SioHaskValidSaveSlot
+	ldr r1, .L0803B308 @ =gLinkArenaSt
 	strb r0, [r1, #0xa]
-	ldr r1, .L0803B30C @ =0x0203C920
+	ldr r1, .L0803B30C @ =gKeyInputSequenceBuffer
 	movs r2, #0
 	adds r0, r1, #0
 	adds r0, #0x1e
@@ -12224,23 +12224,23 @@ func_fe6_0803B2DC: @ 0x0803B2DC
 	cmp r0, r1
 	bge .L0803B2EE
 	movs r1, #0
-	ldr r3, .L0803B310 @ =gUnk_030013E0
-	ldr r2, .L0803B314 @ =gUnk_030013E4
-	ldr r0, .L0803B318 @ =0x0203C940
+	ldr r3, .L0803B310 @ =gCurrentKeyInSeqIndex
+	ldr r2, .L0803B314 @ =gTargetKeyInSeqIndex
+	ldr r0, .L0803B318 @ =gKeyInputSequenceTimer
 	str r1, [r0]
 	str r1, [r2]
 	str r1, [r3]
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803B308: .4byte 0x0203C618
-.L0803B30C: .4byte 0x0203C920
-.L0803B310: .4byte gUnk_030013E0
-.L0803B314: .4byte gUnk_030013E4
-.L0803B318: .4byte 0x0203C940
+.L0803B308: .4byte gLinkArenaSt
+.L0803B30C: .4byte gKeyInputSequenceBuffer
+.L0803B310: .4byte gCurrentKeyInSeqIndex
+.L0803B314: .4byte gTargetKeyInSeqIndex
+.L0803B318: .4byte gKeyInputSequenceTimer
 
-	thumb_func_start func_fe6_0803B31C
-func_fe6_0803B31C: @ 0x0803B31C
+	thumb_func_start SioMenu_LoadGraphics
+SioMenu_LoadGraphics: @ 0x0803B31C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	adds r6, r0, #0
@@ -12248,7 +12248,7 @@ func_fe6_0803B31C: @ 0x0803B31C
 	add r0, sp, #8
 	movs r2, #5
 	bl memcpy
-	ldr r4, .L0803B3B4 @ =0x0203C704
+	ldr r4, .L0803B3B4 @ =gSioSaveConfig
 	adds r0, r4, #0
 	bl ReadMultiArenaSaveConfig
 	ldrb r4, [r4]
@@ -12258,19 +12258,19 @@ func_fe6_0803B31C: @ 0x0803B31C
 	adds r5, #0x59
 	movs r4, #0
 	strb r0, [r5]
-	bl func_fe6_0803FA14
-	ldr r0, .L0803B3B8 @ =gUnk_08106CC8
+	bl InitSioBG
+	ldr r0, .L0803B3B8 @ =Img_SioMenuBgSlide
 	ldr r1, .L0803B3BC @ =0x06014800
 	bl Decompress
-	ldr r0, .L0803B3C0 @ =gUnk_081099A0
+	ldr r0, .L0803B3C0 @ =Pal_SioMenuBgSlide
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x60
 	bl ApplyPaletteExt
 	movs r0, #0
 	movs r1, #4
-	bl func_fe6_0803FAA4
-	ldr r0, .L0803B3C4 @ =0x0203C758
+	bl Sio_RestartBgSlide
+	ldr r0, .L0803B3C4 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
@@ -12305,11 +12305,11 @@ func_fe6_0803B31C: @ 0x0803B31C
 	b .L0803B3CC
 	.align 2, 0
 .L0803B3B0: .4byte gUnk_Sio_0810F35A
-.L0803B3B4: .4byte 0x0203C704
-.L0803B3B8: .4byte gUnk_08106CC8
+.L0803B3B4: .4byte gSioSaveConfig
+.L0803B3B8: .4byte Img_SioMenuBgSlide
 .L0803B3BC: .4byte 0x06014800
-.L0803B3C0: .4byte gUnk_081099A0
-.L0803B3C4: .4byte 0x0203C758
+.L0803B3C0: .4byte Pal_SioMenuBgSlide
+.L0803B3C4: .4byte gSioFont_0203C758
 .L0803B3C8:
 	movs r1, #1
 	movs r0, #4
@@ -12318,7 +12318,7 @@ func_fe6_0803B31C: @ 0x0803B31C
 	adds r0, r6, #0
 	adds r0, #0x44
 	strb r1, [r0]
-	ldr r0, .L0803B454 @ =0x0203C618
+	ldr r0, .L0803B454 @ =gLinkArenaSt
 	ldrb r0, [r0, #1]
 	str r0, [r6, #0x48]
 	adds r2, r6, #0
@@ -12347,7 +12347,7 @@ func_fe6_0803B31C: @ 0x0803B31C
 	bge .L0803B3EC
 	ldr r0, [r6, #0x2c]
 	movs r1, #0
-	bl func_fe6_0803FC3C
+	bl StartLinkArenaTitleBanner
 	movs r4, #0
 	str r4, [sp]
 	ldr r0, [r6, #0x2c]
@@ -12376,11 +12376,11 @@ func_fe6_0803B31C: @ 0x0803B31C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803B454: .4byte 0x0203C618
+.L0803B454: .4byte gLinkArenaSt
 .L0803B458: .4byte gUnk_Sio_085CA404
 
-	thumb_func_start func_fe6_0803B45C
-func_fe6_0803B45C: @ 0x0803B45C
+	thumb_func_start SioMenu_0803B45C
+SioMenu_0803B45C: @ 0x0803B45C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -12433,12 +12433,12 @@ func_fe6_0803B45C: @ 0x0803B45C
 	movs r1, #0
 	bl func_fe6_0803B248
 	movs r1, #0
-	bl func_fe6_08036BFC
+	bl SioPutText
 	adds r0, r7, #0
 	movs r1, #1
 	bl func_fe6_0803B248
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	ldr r0, .L0803B504 @ =gUnk_Sio_0810F350
 	ldrb r1, [r0, #1]
 	adds r1, #8
@@ -12460,8 +12460,8 @@ func_fe6_0803B45C: @ 0x0803B45C
 	.align 2, 0
 .L0803B504: .4byte gUnk_Sio_0810F350
 
-	thumb_func_start func_fe6_0803B508
-func_fe6_0803B508: @ 0x0803B508
+	thumb_func_start SioMenu_0803B508
+SioMenu_0803B508: @ 0x0803B508
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -12536,8 +12536,8 @@ func_fe6_0803B508: @ 0x0803B508
 	.align 2, 0
 .L0803B59C: .4byte gUnk_Sio_0810F350
 
-	thumb_func_start func_fe6_0803B5A0
-func_fe6_0803B5A0: @ 0x0803B5A0
+	thumb_func_start SioMenu_RestartGraphics
+SioMenu_RestartGraphics: @ 0x0803B5A0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -12549,7 +12549,7 @@ func_fe6_0803B5A0: @ 0x0803B5A0
 	add r0, sp, #8
 	movs r2, #5
 	bl memcpy
-	ldr r4, .L0803B640 @ =0x0203C704
+	ldr r4, .L0803B640 @ =gSioSaveConfig
 	adds r0, r4, #0
 	bl ReadMultiArenaSaveConfig
 	ldrb r4, [r4]
@@ -12559,19 +12559,19 @@ func_fe6_0803B5A0: @ 0x0803B5A0
 	adds r5, #0x59
 	movs r4, #0
 	strb r0, [r5]
-	bl func_fe6_0803FA14
-	ldr r0, .L0803B644 @ =gUnk_08106CC8
+	bl InitSioBG
+	ldr r0, .L0803B644 @ =Img_SioMenuBgSlide
 	ldr r1, .L0803B648 @ =0x06014800
 	bl Decompress
-	ldr r0, .L0803B64C @ =gUnk_081099A0
+	ldr r0, .L0803B64C @ =Pal_SioMenuBgSlide
 	movs r1, #0x98
 	lsls r1, r1, #2
 	movs r2, #0x60
 	bl ApplyPaletteExt
 	movs r0, #0
 	movs r1, #4
-	bl func_fe6_0803FAA4
-	ldr r0, .L0803B650 @ =0x0203C758
+	bl Sio_RestartBgSlide
+	ldr r0, .L0803B650 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
@@ -12606,11 +12606,11 @@ func_fe6_0803B5A0: @ 0x0803B5A0
 	b .L0803B658
 	.align 2, 0
 .L0803B63C: .4byte gUnk_Sio_0810F35A
-.L0803B640: .4byte 0x0203C704
-.L0803B644: .4byte gUnk_08106CC8
+.L0803B640: .4byte gSioSaveConfig
+.L0803B644: .4byte Img_SioMenuBgSlide
 .L0803B648: .4byte 0x06014800
-.L0803B64C: .4byte gUnk_081099A0
-.L0803B650: .4byte 0x0203C758
+.L0803B64C: .4byte Pal_SioMenuBgSlide
+.L0803B650: .4byte gSioFont_0203C758
 .L0803B654:
 	movs r1, #1
 	movs r0, #4
@@ -12619,7 +12619,7 @@ func_fe6_0803B5A0: @ 0x0803B5A0
 	adds r0, r6, #0
 	adds r0, #0x44
 	strb r1, [r0]
-	ldr r0, .L0803B724 @ =0x0203C618
+	ldr r0, .L0803B724 @ =gLinkArenaSt
 	ldrb r0, [r0, #1]
 	str r0, [r6, #0x48]
 	adds r2, r6, #0
@@ -12659,7 +12659,7 @@ func_fe6_0803B5A0: @ 0x0803B5A0
 	bge .L0803B688
 	ldr r0, [r6, #0x2c]
 	movs r1, #0
-	bl func_fe6_0803FC3C
+	bl StartLinkArenaTitleBanner
 	ldr r1, .L0803B728 @ =gUnk_Sio_0810F350
 	ldr r0, [r6, #0x48]
 	lsls r0, r0, #1
@@ -12688,12 +12688,12 @@ func_fe6_0803B5A0: @ 0x0803B5A0
 	movs r1, #0
 	bl func_fe6_0803B248
 	movs r1, #0
-	bl func_fe6_08036BFC
+	bl SioPutText
 	adds r0, r6, #0
 	movs r1, #1
 	bl func_fe6_0803B248
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	bl func_fe6_0803CF9C
 	movs r0, #0x39
 	movs r1, #0
@@ -12708,12 +12708,12 @@ func_fe6_0803B5A0: @ 0x0803B5A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803B724: .4byte 0x0203C618
+.L0803B724: .4byte gLinkArenaSt
 .L0803B728: .4byte gUnk_Sio_0810F350
 .L0803B72C: .4byte gUnk_Sio_085CA424
 
-	thumb_func_start func_fe6_0803B730
-func_fe6_0803B730: @ 0x0803B730
+	thumb_func_start SioMenu_HandleDPadInput
+SioMenu_HandleDPadInput: @ 0x0803B730
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -12729,7 +12729,7 @@ func_fe6_0803B730: @ 0x0803B730
 	ands r0, r1
 	cmp r0, #0
 	beq .L0803B77A
-	ldr r1, .L0803B82C @ =0x0203C618
+	ldr r1, .L0803B82C @ =gLinkArenaSt
 	ldrb r0, [r1, #5]
 	subs r0, #1
 	strb r0, [r1, #5]
@@ -12749,7 +12749,7 @@ func_fe6_0803B730: @ 0x0803B730
 	movs r3, #0x1f
 	bl func_fe6_08040084
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L0803B77A:
 	ldr r0, .L0803B828 @ =gKeySt
 	ldr r1, [r0]
@@ -12758,7 +12758,7 @@ func_fe6_0803B730: @ 0x0803B730
 	ands r0, r1
 	cmp r0, #0
 	beq .L0803B7B0
-	ldr r4, .L0803B82C @ =0x0203C618
+	ldr r4, .L0803B82C @ =gLinkArenaSt
 	ldrb r0, [r4, #5]
 	adds r0, #1
 	strb r0, [r4, #5]
@@ -12774,7 +12774,7 @@ func_fe6_0803B730: @ 0x0803B730
 	movs r3, #4
 	bl func_fe6_08040084
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 .L0803B7B0:
 	ldr r1, .L0803B828 @ =gKeySt
 	ldr r2, [r1]
@@ -12843,25 +12843,25 @@ func_fe6_0803B730: @ 0x0803B730
 	bx r0
 	.align 2, 0
 .L0803B828: .4byte gKeySt
-.L0803B82C: .4byte 0x0203C618
+.L0803B82C: .4byte gLinkArenaSt
 
-	thumb_func_start func_fe6_0803B830
-func_fe6_0803B830: @ 0x0803B830
+	thumb_func_start SioMenu_Loop_HandleKeyInput
+SioMenu_Loop_HandleKeyInput: @ 0x0803B830
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, [r4, #0x48]
 	ldr r0, .L0803B928 @ =gUnk_Sio_085C99F8
-	bl func_fe6_08036D60
+	bl SioIsKeyInputSequenceComplete
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803B860
-	ldr r1, .L0803B92C @ =0x0203C618
+	ldr r1, .L0803B92C @ =gLinkArenaSt
 	ldr r0, [r4, #0x48]
 	strb r0, [r1]
 	strb r0, [r1, #1]
 	movs r0, #3
 	bl EndFaceById
-	ldr r0, .L0803B930 @ =gUnk_Sio_085CA638
+	ldr r0, .L0803B930 @ =ProcScr_SioMenuBurstFx
 	adds r1, r4, #0
 	bl SpawnProcLocking
 	adds r0, r4, #0
@@ -12870,12 +12870,12 @@ func_fe6_0803B830: @ 0x0803B830
 .L0803B860:
 	adds r0, r4, #0
 	movs r1, #5
-	bl func_fe6_0803B730
+	bl SioMenu_HandleDPadInput
 	ldr r0, [r4, #0x48]
 	cmp r5, r0
 	beq .L0803B8DA
 	movs r0, #3
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	lsls r0, r5, #2
 	adds r1, r4, #0
 	adds r1, #0x2c
@@ -12903,12 +12903,12 @@ func_fe6_0803B830: @ 0x0803B830
 	movs r1, #0
 	bl func_fe6_0803B248
 	movs r1, #0
-	bl func_fe6_08036BFC
+	bl SioPutText
 	adds r0, r4, #0
 	movs r1, #1
 	bl func_fe6_0803B248
 	movs r1, #1
-	bl func_fe6_08036BFC
+	bl SioPutText
 	ldr r1, .L0803B934 @ =gUnk_Sio_0810F350
 	ldr r0, [r4, #0x48]
 	lsls r0, r0, #1
@@ -12931,8 +12931,8 @@ func_fe6_0803B830: @ 0x0803B830
 	movs r0, #0
 	str r0, [r4, #0x54]
 	movs r0, #2
-	bl func_fe6_08036D08
-	ldr r1, .L0803B92C @ =0x0203C618
+	bl SioPlaySe
+	ldr r1, .L0803B92C @ =gLinkArenaSt
 	ldr r0, [r4, #0x48]
 	strb r0, [r1]
 	adds r0, r4, #0
@@ -12945,10 +12945,10 @@ func_fe6_0803B830: @ 0x0803B830
 	cmp r0, #0
 	beq .L0803B922
 	movs r0, #1
-	bl func_fe6_08036D08
+	bl SioPlaySe
 	movs r0, #2
 	bl FadeBgmOut
-	ldr r1, .L0803B92C @ =0x0203C618
+	ldr r1, .L0803B92C @ =gLinkArenaSt
 	movs r0, #0xff
 	strb r0, [r1]
 	adds r0, r4, #0
@@ -12959,13 +12959,13 @@ func_fe6_0803B830: @ 0x0803B830
 	bx r0
 	.align 2, 0
 .L0803B928: .4byte gUnk_Sio_085C99F8
-.L0803B92C: .4byte 0x0203C618
-.L0803B930: .4byte gUnk_Sio_085CA638
+.L0803B92C: .4byte gLinkArenaSt
+.L0803B930: .4byte ProcScr_SioMenuBurstFx
 .L0803B934: .4byte gUnk_Sio_0810F350
 .L0803B938: .4byte gKeySt
 
-	thumb_func_start func_fe6_0803B93C
-func_fe6_0803B93C: @ 0x0803B93C
+	thumb_func_start SioMenu_0803B93C
+SioMenu_0803B93C: @ 0x0803B93C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -12973,7 +12973,7 @@ func_fe6_0803B93C: @ 0x0803B93C
 	push {r5, r6, r7}
 	sub sp, #8
 	adds r5, r0, #0
-	ldr r4, .L0803B9E8 @ =0x0203C618
+	ldr r4, .L0803B9E8 @ =gLinkArenaSt
 	ldrb r0, [r4]
 	cmp r0, #0xff
 	bne .L0803B958
@@ -13052,16 +13052,16 @@ func_fe6_0803B93C: @ 0x0803B93C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803B9E8: .4byte 0x0203C618
+.L0803B9E8: .4byte gLinkArenaSt
 .L0803B9EC: .4byte gUnk_Sio_0810F350
 
-	thumb_func_start func_fe6_0803B9F0
-func_fe6_0803B9F0: @ 0x0803B9F0
+	thumb_func_start SioMenu_End
+SioMenu_End: @ 0x0803B9F0
 	push {r4, r5, r6, lr}
 	sub sp, #0x14
 	adds r6, r0, #0
 	mov r1, sp
-	ldr r0, .L0803BA40 @ =gUnk_Sio_0810F360
+	ldr r0, .L0803BA40 @ =gSioMenuProcArray
 	ldm r0!, {r2, r3, r4}
 	stm r1!, {r2, r3, r4}
 	ldm r0!, {r2, r3}
@@ -13077,22 +13077,22 @@ func_fe6_0803B9F0: @ 0x0803B9F0
 	subs r4, #1
 	cmp r4, #0
 	bge .L0803BA0E
-	ldr r1, .L0803BA44 @ =0x0203C618
+	ldr r1, .L0803BA44 @ =gLinkArenaSt
 	ldrb r2, [r1]
 	adds r0, r2, #0
 	cmp r0, #0xff
 	bne .L0803BA4C
 	bl EndBmVSync
-	bl func_fe6_0803FB74
-	bl func_fe6_08036974
+	bl Sio_EndBackgroundSlide
+	bl UnsetBmStLinkArenaFlag
 	ldr r0, .L0803BA48 @ =ProcScr_DebugMonitor
 	bl Proc_EndEach
 	adds r0, r6, #0
 	bl Proc_End
 	b .L0803BA5C
 	.align 2, 0
-.L0803BA40: .4byte gUnk_Sio_0810F360
-.L0803BA44: .4byte 0x0203C618
+.L0803BA40: .4byte gSioMenuProcArray
+.L0803BA44: .4byte gLinkArenaSt
 .L0803BA48: .4byte ProcScr_DebugMonitor
 .L0803BA4C:
 	strb r2, [r1, #1]
@@ -13108,12 +13108,12 @@ func_fe6_0803B9F0: @ 0x0803B9F0
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803BA64
-func_fe6_0803BA64: @ 0x0803BA64
+	thumb_func_start StartLinkArenaMainMenu
+StartLinkArenaMainMenu: @ 0x0803BA64
 	push {r4, lr}
 	adds r4, r0, #0
 	bl UnpackUiWindowFrameGraphics
-	ldr r0, .L0803BAC8 @ =0x0203C758
+	ldr r0, .L0803BAC8 @ =gSioFont_0203C758
 	ldr r1, .L0803BACC @ =0x06001800
 	movs r2, #0xc0
 	movs r3, #0
@@ -13125,12 +13125,12 @@ func_fe6_0803BA64: @ 0x0803BA64
 	bne .L0803BA88
 	bl WriteNewMultiArenaSave
 .L0803BA88:
-	ldr r1, .L0803BAD0 @ =0x0203C618
+	ldr r1, .L0803BAD0 @ =gLinkArenaSt
 	movs r0, #0
 	strb r0, [r1, #5]
 	strb r0, [r1, #3]
 	strb r0, [r1, #1]
-	bl func_fe6_08036964
+	bl SetBmStLinkArenaFlag
 	bl func_fe6_0803CE7C
 	bl StartBmVSync
 	ldr r1, .L0803BAD4 @ =gPlaySt
@@ -13143,7 +13143,7 @@ func_fe6_0803BA64: @ 0x0803BA64
 	ldrb r2, [r1, #0x1d]
 	ands r0, r2
 	strb r0, [r1, #0x1d]
-	ldr r0, .L0803BAD8 @ =gUnk_Sio_085CA444
+	ldr r0, .L0803BAD8 @ =ProcScr_SIOMENU
 	adds r1, r4, #0
 	bl SpawnProcLocking
 	ldr r0, .L0803BADC @ =ProcScr_DebugMonitor
@@ -13153,20 +13153,20 @@ func_fe6_0803BA64: @ 0x0803BA64
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803BAC8: .4byte 0x0203C758
+.L0803BAC8: .4byte gSioFont_0203C758
 .L0803BACC: .4byte 0x06001800
-.L0803BAD0: .4byte 0x0203C618
+.L0803BAD0: .4byte gLinkArenaSt
 .L0803BAD4: .4byte gPlaySt
-.L0803BAD8: .4byte gUnk_Sio_085CA444
+.L0803BAD8: .4byte ProcScr_SIOMENU
 .L0803BADC: .4byte ProcScr_DebugMonitor
 
-	thumb_func_start func_fe6_0803BAE0
-func_fe6_0803BAE0: @ 0x0803BAE0
+	thumb_func_start XMapTransfer_0803BAE0
+XMapTransfer_0803BAE0: @ 0x0803BAE0
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
 	movs r4, #0
-	ldr r0, .L0803BB08 @ =gUnk_Sio_085C9940
+	ldr r0, .L0803BB08 @ =ProcScr_SIOCON
 	bl FindProc
 	cmp r0, #0
 	beq .L0803BB10
@@ -13181,10 +13181,10 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	movs r1, #4
 	b .L0803BBA8
 	.align 2, 0
-.L0803BB08: .4byte gUnk_Sio_085C9940
+.L0803BB08: .4byte ProcScr_SIOCON
 .L0803BB0C: .4byte gKeySt
 .L0803BB10:
-	ldr r0, .L0803BB30 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803BB30 @ =gSioSt
 	ldr r2, [r0]
 	movs r0, #6
 	ldrsb r0, [r2, r0]
@@ -13202,7 +13202,7 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	movs r1, #0
 	b .L0803BBA8
 	.align 2, 0
-.L0803BB30: .4byte gUnk_Sio_085C98F4
+.L0803BB30: .4byte gSioSt
 .L0803BB34:
 	movs r1, #0
 	adds r2, #0x1a
@@ -13220,7 +13220,7 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803BB60
-	ldr r6, .L0803BB68 @ =gUnk_Sio_085C98F4
+	ldr r6, .L0803BB68 @ =gSioSt
 	ldr r2, [r6]
 	ldrb r0, [r2, #0x1e]
 	cmp r0, #0x3c
@@ -13232,7 +13232,7 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	movs r1, #0
 	b .L0803BBA8
 	.align 2, 0
-.L0803BB68: .4byte gUnk_Sio_085C98F4
+.L0803BB68: .4byte gSioSt
 .L0803BB6C:
 	ldr r0, .L0803BBB0 @ =gUnk_030044E0
 	movs r1, #0x1c
@@ -13242,7 +13242,7 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	ldrb r1, [r2]
 	strh r1, [r0, #2]
 	movs r1, #0xa
-	bl func_fe6_08035DC8
+	bl SioSend
 	ldr r0, [r6]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -13258,7 +13258,7 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	strb r0, [r1]
 	mov r0, sp
 	movs r1, #4
-	bl func_fe6_08036208
+	bl SioEmitData
 	adds r0, r5, #0
 	movs r1, #3
 .L0803BBA8:
@@ -13269,7 +13269,7 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	.align 2, 0
 .L0803BBB0: .4byte gUnk_030044E0
 .L0803BBB4:
-	ldr r4, .L0803BBE8 @ =gUnk_Sio_085C98F4
+	ldr r4, .L0803BBE8 @ =gSioSt
 	ldr r1, [r4]
 	movs r0, #3
 	ldrb r2, [r1, #9]
@@ -13294,7 +13294,7 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	bl EventGotoLabel
 	b .L0803BBAC
 	.align 2, 0
-.L0803BBE8: .4byte gUnk_Sio_085C98F4
+.L0803BBE8: .4byte gSioSt
 .L0803BBEC:
 	movs r0, #1
 .L0803BBEE:
@@ -13304,11 +13304,11 @@ func_fe6_0803BAE0: @ 0x0803BAE0
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803BBF8
-func_fe6_0803BBF8: @ 0x0803BBF8
+	thumb_func_start XMapTransfer_0803BBF8
+XMapTransfer_0803BBF8: @ 0x0803BBF8
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0803BC14 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803BC14 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #9]
 	cmp r0, #3
@@ -13320,23 +13320,23 @@ func_fe6_0803BBF8: @ 0x0803BBF8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803BC14: .4byte gUnk_Sio_085C98F4
+.L0803BC14: .4byte gSioSt
 
-	thumb_func_start func_fe6_0803BC18
-func_fe6_0803BC18: @ 0x0803BC18
+	thumb_func_start XMapTransfer_0803BC18
+XMapTransfer_0803BC18: @ 0x0803BC18
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
 	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne .L0803BC30
-	ldr r1, .L0803BC2C @ =0x0203C980
+	ldr r1, .L0803BC2C @ =gSioXmapOption
 	movs r0, #0
 	b .L0803BC34
 	.align 2, 0
-.L0803BC2C: .4byte 0x0203C980
+.L0803BC2C: .4byte gSioXmapOption
 .L0803BC30:
-	ldr r1, .L0803BC5C @ =0x0203C980
+	ldr r1, .L0803BC5C @ =gSioXmapOption
 	movs r0, #1
 .L0803BC34:
 	str r0, [r1]
@@ -13345,7 +13345,7 @@ func_fe6_0803BC18: @ 0x0803BC18
 	ldr r1, [r4]
 	strb r1, [r0]
 	movs r1, #4
-	bl func_fe6_08036208
+	bl SioEmitData
 	ldr r0, [r4]
 	cmp r0, #0
 	beq .L0803BC52
@@ -13358,16 +13358,16 @@ func_fe6_0803BC18: @ 0x0803BC18
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803BC5C: .4byte 0x0203C980
+.L0803BC5C: .4byte gSioXmapOption
 
-	thumb_func_start func_fe6_0803BC60
-func_fe6_0803BC60: @ 0x0803BC60
+	thumb_func_start XMapTransfer_0803BC60
+XMapTransfer_0803BC60: @ 0x0803BC60
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
 	movs r4, #0
 	movs r1, #0
-	ldr r0, .L0803BCA8 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803BCA8 @ =gSioSt
 	ldr r0, [r0]
 	adds r2, r0, #0
 	adds r2, #0x1a
@@ -13385,7 +13385,7 @@ func_fe6_0803BC60: @ 0x0803BC60
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803BC9A
-	ldr r0, .L0803BCA8 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803BCA8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x1e]
 	cmp r0, #0x3c
@@ -13400,12 +13400,12 @@ func_fe6_0803BC60: @ 0x0803BC60
 	movs r0, #0
 	b .L0803BCD0
 	.align 2, 0
-.L0803BCA8: .4byte gUnk_Sio_085C98F4
+.L0803BCA8: .4byte gSioSt
 .L0803BCAC:
 	add r1, sp, #4
 	mov r0, sp
 	movs r2, #0
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L0803BCCE
@@ -13425,8 +13425,8 @@ func_fe6_0803BC60: @ 0x0803BC60
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_0803BCD8
-func_fe6_0803BCD8: @ 0x0803BCD8
+	thumb_func_start PutXMapProgressPercent
+PutXMapProgressPercent: @ 0x0803BCD8
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -13457,8 +13457,8 @@ func_fe6_0803BCD8: @ 0x0803BCD8
 .L0803BD18: .4byte gUnk_Sio_0810F374
 .L0803BD1C: .4byte gBg0Tm+0x31E
 
-	thumb_func_start func_fe6_0803BD20
-func_fe6_0803BD20: @ 0x0803BD20
+	thumb_func_start DrawXMapSendProgress
+DrawXMapSendProgress: @ 0x0803BD20
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -13479,10 +13479,10 @@ func_fe6_0803BD20: @ 0x0803BD20
 	ldrb r0, [r5]
 	adds r0, #1
 	strb r0, [r5]
-	ldr r0, .L0803BD84 @ =0x0203C67C
+	ldr r0, .L0803BD84 @ =gSioText_0203C67C
 	ldr r1, .L0803BD88 @ =gUnk_Sio_0810F378
 	ldrb r2, [r5]
-	bl func_fe6_0803BCD8
+	bl PutXMapProgressPercent
 	movs r0, #0x80
 	lsls r0, r0, #1
 	ldr r2, .L0803BD8C @ =gBg0Tm+0x3DC
@@ -13506,12 +13506,12 @@ func_fe6_0803BD20: @ 0x0803BD20
 	bx r0
 	.align 2, 0
 .L0803BD80: .4byte gPlaySt
-.L0803BD84: .4byte 0x0203C67C
+.L0803BD84: .4byte gSioText_0203C67C
 .L0803BD88: .4byte gUnk_Sio_0810F378
 .L0803BD8C: .4byte gBg0Tm+0x3DC
 
-	thumb_func_start func_fe6_0803BD90
-func_fe6_0803BD90: @ 0x0803BD90
+	thumb_func_start DrawXMapReceiveProgress
+DrawXMapReceiveProgress: @ 0x0803BD90
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r5, r0, #0
@@ -13532,10 +13532,10 @@ func_fe6_0803BD90: @ 0x0803BD90
 	ldrb r0, [r5]
 	adds r0, #1
 	strb r0, [r5]
-	ldr r0, .L0803BDF4 @ =0x0203C67C
+	ldr r0, .L0803BDF4 @ =gSioText_0203C67C
 	ldr r1, .L0803BDF8 @ =gUnk_Sio_0810F380
 	ldrb r2, [r5]
-	bl func_fe6_0803BCD8
+	bl PutXMapProgressPercent
 	movs r0, #0x80
 	lsls r0, r0, #1
 	ldr r2, .L0803BDFC @ =gBg0Tm+0x3DC
@@ -13559,19 +13559,19 @@ func_fe6_0803BD90: @ 0x0803BD90
 	bx r0
 	.align 2, 0
 .L0803BDF0: .4byte gPlaySt
-.L0803BDF4: .4byte 0x0203C67C
+.L0803BDF4: .4byte gSioText_0203C67C
 .L0803BDF8: .4byte gUnk_Sio_0810F380
 .L0803BDFC: .4byte gBg0Tm+0x3DC
 
-	thumb_func_start func_fe6_0803BE00
-func_fe6_0803BE00: @ 0x0803BE00
+	thumb_func_start StartXMapTransfer
+StartXMapTransfer: @ 0x0803BE00
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
-	ldr r0, .L0803BE44 @ =0x0203C758
+	ldr r0, .L0803BE44 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
-	ldr r0, .L0803BE48 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803BE48 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -13587,25 +13587,25 @@ func_fe6_0803BE00: @ 0x0803BE00
 	adds r1, r4, #0
 	adds r2, r5, #0
 	bl _call_via_r3
-	ldr r2, .L0803BE58 @ =func_fe6_0803BD20
+	ldr r2, .L0803BE58 @ =DrawXMapSendProgress
 	str r6, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0
-	bl func_fe6_08036804
+	bl StartSioBigSend
 	b .L0803BE66
 	.align 2, 0
-.L0803BE44: .4byte 0x0203C758
-.L0803BE48: .4byte gUnk_Sio_085C98F4
+.L0803BE44: .4byte gSioFont_0203C758
+.L0803BE48: .4byte gSioSt
 .L0803BE4C: .4byte ReadSramFast
 .L0803BE50: .4byte 0x0E007000
 .L0803BE54: .4byte gUnk_Sio_02000000
-.L0803BE58: .4byte func_fe6_0803BD20
+.L0803BE58: .4byte DrawXMapSendProgress
 .L0803BE5C:
 	ldr r0, .L0803BE70 @ =gUnk_Sio_02000000
-	ldr r1, .L0803BE74 @ =func_fe6_0803BD90
+	ldr r1, .L0803BE74 @ =DrawXMapReceiveProgress
 	adds r2, r6, #0
-	bl func_fe6_08036884
+	bl StartSioBigReceive
 .L0803BE66:
 	add sp, #4
 	pop {r4, r5, r6}
@@ -13613,12 +13613,12 @@ func_fe6_0803BE00: @ 0x0803BE00
 	bx r0
 	.align 2, 0
 .L0803BE70: .4byte gUnk_Sio_02000000
-.L0803BE74: .4byte func_fe6_0803BD90
+.L0803BE74: .4byte DrawXMapReceiveProgress
 
-	thumb_func_start func_fe6_0803BE78
-func_fe6_0803BE78: @ 0x0803BE78
+	thumb_func_start XMapTransfer_AwaitCompletion
+XMapTransfer_AwaitCompletion: @ 0x0803BE78
 	push {lr}
-	bl func_fe6_080368B0
+	bl IsSioBigTransferActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803BE88
@@ -13634,7 +13634,7 @@ func_fe6_0803BE78: @ 0x0803BE78
 	bl m4aSongNumStart
 .L0803BE98:
 	bl InitTalkTextFont
-	ldr r0, .L0803BEC0 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803BEC0 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -13653,13 +13653,13 @@ func_fe6_0803BE78: @ 0x0803BE78
 	bx r1
 	.align 2, 0
 .L0803BEBC: .4byte gPlaySt
-.L0803BEC0: .4byte gUnk_Sio_085C98F4
+.L0803BEC0: .4byte gSioSt
 .L0803BEC4: .4byte gUnk_Sio_02000000
 .L0803BEC8: .4byte 0x0E007000
 
-	thumb_func_start func_fe6_0803BECC
-func_fe6_0803BECC: @ 0x0803BECC
-	ldr r0, .L0803BEDC @ =gUnk_Sio_085C98F4
+	thumb_func_start XMapTransfer_0803BECC
+XMapTransfer_0803BECC: @ 0x0803BECC
+	ldr r0, .L0803BEDC @ =gSioSt
 	ldr r2, [r0]
 	movs r1, #6
 	ldrsb r1, [r2, r1]
@@ -13668,22 +13668,22 @@ func_fe6_0803BECC: @ 0x0803BECC
 	strb r0, [r2, #0xa]
 	bx lr
 	.align 2, 0
-.L0803BEDC: .4byte gUnk_Sio_085C98F4
+.L0803BEDC: .4byte gSioSt
 
-	thumb_func_start func_fe6_0803BEE0
-func_fe6_0803BEE0: @ 0x0803BEE0
+	thumb_func_start XMapTransfer_0803BEE0
+XMapTransfer_0803BEE0: @ 0x0803BEE0
 	push {r4, lr}
-	ldr r0, .L0803BF0C @ =gUnk_0300456C
+	ldr r0, .L0803BF0C @ =gSioMsgBuf
 	movs r2, #0
 	movs r1, #0x19
 	strb r1, [r0]
-	ldr r4, .L0803BF10 @ =gUnk_Sio_085C98F4
+	ldr r4, .L0803BF10 @ =gSioSt
 	ldr r1, [r4]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
 	strh r2, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 	ldr r4, [r4]
 	ldrb r0, [r4, #9]
 	ldrb r1, [r4, #0xa]
@@ -13694,8 +13694,8 @@ func_fe6_0803BEE0: @ 0x0803BEE0
 	movs r0, #1
 	b .L0803BF20
 	.align 2, 0
-.L0803BF0C: .4byte gUnk_0300456C
-.L0803BF10: .4byte gUnk_Sio_085C98F4
+.L0803BF0C: .4byte gSioMsgBuf
+.L0803BF10: .4byte gSioSt
 .L0803BF14:
 	movs r1, #6
 	ldrsb r1, [r4, r1]
@@ -13709,8 +13709,8 @@ func_fe6_0803BEE0: @ 0x0803BEE0
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803BF28
-func_fe6_0803BF28: @ 0x0803BF28
+	thumb_func_start XMapTransfer_0803BF28
+XMapTransfer_0803BF28: @ 0x0803BF28
 	push {r4, lr}
 	sub sp, #0xc
 	movs r0, #6
@@ -13722,13 +13722,13 @@ func_fe6_0803BF28: @ 0x0803BF28
 	movs r2, #0x10
 	movs r3, #6
 	bl PutUiWindowFrame
-	ldr r0, .L0803BF7C @ =0x0203C758
+	ldr r0, .L0803BF7C @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
-	ldr r0, .L0803BF80 @ =0x0203C67C
+	ldr r0, .L0803BF80 @ =gSioText_0203C67C
 	ldr r1, .L0803BF84 @ =gUnk_Sio_0810F388
 	movs r2, #0
-	bl func_fe6_0803BCD8
+	bl PutXMapProgressPercent
 	movs r0, #0x80
 	lsls r0, r0, #1
 	ldr r2, .L0803BF88 @ =gBg0Tm+0x3DC
@@ -13747,13 +13747,13 @@ func_fe6_0803BF28: @ 0x0803BF28
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803BF7C: .4byte 0x0203C758
-.L0803BF80: .4byte 0x0203C67C
+.L0803BF7C: .4byte gSioFont_0203C758
+.L0803BF80: .4byte gSioText_0203C67C
 .L0803BF84: .4byte gUnk_Sio_0810F388
 .L0803BF88: .4byte gBg0Tm+0x3DC
 
-	thumb_func_start func_fe6_0803BF8C
-func_fe6_0803BF8C: @ 0x0803BF8C
+	thumb_func_start XmapTransfer_SetDisp
+XmapTransfer_SetDisp: @ 0x0803BF8C
 	ldr r2, .L0803BFAC @ =gDispIo
 	adds r2, #0x36
 	movs r0, #1
@@ -13787,18 +13787,18 @@ func_fe6_0803BFB0: @ 0x0803BFB0
 	subs r4, #1
 	cmp r4, #0
 	bge .L0803BFC0
-	bl func_fe6_0803FA14
+	bl InitSioBG
 	movs r0, #0
 	movs r1, #0
-	bl func_fe6_0803FAA4
-	ldr r0, .L0803C000 @ =gUnk_Sio_085C98F4
+	bl Sio_RestartBgSlide
+	ldr r0, .L0803C000 @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #3
 	strb r0, [r1]
-	ldr r0, .L0803C004 @ =0x0203C758
+	ldr r0, .L0803C004 @ =gSioFont_0203C758
 	bl SetTextFont
 	bl InitSystemTextFont
-	ldr r0, .L0803C008 @ =0x0203C67C
+	ldr r0, .L0803C008 @ =gSioText_0203C67C
 	movs r1, #0xa
 	bl InitTextDb
 	movs r0, #1
@@ -13807,33 +13807,33 @@ func_fe6_0803BFB0: @ 0x0803BFB0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803C000: .4byte gUnk_Sio_085C98F4
-.L0803C004: .4byte 0x0203C758
-.L0803C008: .4byte 0x0203C67C
+.L0803C000: .4byte gSioSt
+.L0803C004: .4byte gSioFont_0203C758
+.L0803C008: .4byte gSioText_0203C67C
 
-	thumb_func_start func_fe6_0803C00C
-func_fe6_0803C00C: @ 0x0803C00C
+	thumb_func_start StartEvent_SioXMapTransfer
+StartEvent_SioXMapTransfer: @ 0x0803C00C
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0803C024 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803C024 @ =gSioSt
 	ldr r2, [r0]
 	movs r0, #3
 	strb r0, [r2]
-	ldr r0, .L0803C028 @ =gUnk_Sio_085CA504
+	ldr r0, .L0803C028 @ =EventScr_SioXMapTransfer
 	bl StartEventLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803C024: .4byte gUnk_Sio_085C98F4
-.L0803C028: .4byte gUnk_Sio_085CA504
+.L0803C024: .4byte gSioSt
+.L0803C028: .4byte EventScr_SioXMapTransfer
 
 	thumb_func_start func_fe6_0803C02C
 func_fe6_0803C02C: @ 0x0803C02C
 	push {lr}
-	bl func_fe6_08036B40
-	bl func_fe6_08039550
-	bl func_fe6_08039574
-	bl func_fe6_080353AC
+	bl ClearSioBG
+	bl SioBat_EndHandler
+	bl SioBat_ReleaseIrq
+	bl SioInit_SW
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -13872,16 +13872,16 @@ func_fe6_0803C060: @ 0x0803C060
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803C080
-func_fe6_0803C080: @ 0x0803C080
+	thumb_func_start StartEvent_SioXmap_0803C080
+StartEvent_SioXmap_0803C080: @ 0x0803C080
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0803C090 @ =gUnk_Sio_085CA6B8
+	ldr r0, .L0803C090 @ =EventScr_SioXmap_085CA6B8
 	bl StartEventLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803C090: .4byte gUnk_Sio_085CA6B8
+.L0803C090: .4byte EventScr_SioXmap_085CA6B8
 
 	thumb_func_start func_fe6_0803C094
 func_fe6_0803C094: @ 0x0803C094
@@ -13889,7 +13889,7 @@ func_fe6_0803C094: @ 0x0803C094
 	mov r7, r8
 	push {r7}
 	mov r8, r0
-	ldr r0, .L0803C0D8 @ =0x0203C618
+	ldr r0, .L0803C0D8 @ =gLinkArenaSt
 	adds r1, r0, #0
 	adds r1, #0xa0
 	ldrb r3, [r1]
@@ -13902,7 +13902,7 @@ func_fe6_0803C094: @ 0x0803C094
 	movs r6, #0
 	cmp r6, r3
 	bge .L0803C13A
-	ldr r4, .L0803C0DC @ =0x0203C993
+	ldr r4, .L0803C0DC @ =Sio_Unk_0203C993
 	adds r5, r4, #5
 	mov r2, r8
 .L0803C0BC:
@@ -13920,15 +13920,15 @@ func_fe6_0803C094: @ 0x0803C094
 	blt .L0803C0BC
 	b .L0803C13A
 	.align 2, 0
-.L0803C0D8: .4byte 0x0203C618
-.L0803C0DC: .4byte 0x0203C993
+.L0803C0D8: .4byte gLinkArenaSt
+.L0803C0DC: .4byte Sio_Unk_0203C993
 .L0803C0E0:
 	movs r6, #0
 	subs r0, r3, #2
 	mov ip, r0
 	cmp r6, r3
 	bge .L0803C100
-	ldr r0, .L0803C104 @ =0x0203C984
+	ldr r0, .L0803C104 @ =gSioBmSt
 	adds r2, r0, #0
 	adds r2, #0x14
 	mov r1, r8
@@ -13944,7 +13944,7 @@ func_fe6_0803C094: @ 0x0803C094
 	movs r6, #0
 	b .L0803C134
 	.align 2, 0
-.L0803C104: .4byte 0x0203C984
+.L0803C104: .4byte gSioBmSt
 .L0803C108:
 	adds r5, r0, #0
 	adds r7, r6, #1
@@ -13982,8 +13982,8 @@ func_fe6_0803C094: @ 0x0803C094
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803C144
-func_fe6_0803C144: @ 0x0803C144
+	thumb_func_start DrawLinkArenaPointsBox
+DrawLinkArenaPointsBox: @ 0x0803C144
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -14030,8 +14030,8 @@ func_fe6_0803C144: @ 0x0803C144
 .L0803C19C: .4byte gBg1Tm
 .L0803C1A0: .4byte gBg0Tm
 
-	thumb_func_start func_fe6_0803C1A4
-func_fe6_0803C1A4: @ 0x0803C1A4
+	thumb_func_start LAPointsBox_LoadBoxes
+LAPointsBox_LoadBoxes: @ 0x0803C1A4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -14039,10 +14039,10 @@ func_fe6_0803C1A4: @ 0x0803C1A4
 	push {r5, r6, r7}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r0, .L0803C264 @ =gUnk_081094B0
+	ldr r0, .L0803C264 @ =Img_LAPointsBox
 	ldr r1, .L0803C268 @ =0x06002000
 	bl Decompress
-	ldr r0, .L0803C26C @ =gUnk_08109A00
+	ldr r0, .L0803C26C @ =Pal_TacticianSelObj
 	movs r1, #0x40
 	movs r2, #0x80
 	bl ApplyPaletteExt
@@ -14057,7 +14057,7 @@ func_fe6_0803C1A4: @ 0x0803C1A4
 	adds r6, #0x2c
 	ldr r7, .L0803C274 @ =gUnk_Sio_0810F400
 .L0803C1DC:
-	ldr r0, .L0803C278 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803C278 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -14071,7 +14071,7 @@ func_fe6_0803C1A4: @ 0x0803C1A4
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803C23E
-	ldr r0, .L0803C27C @ =0x0203C984
+	ldr r0, .L0803C27C @ =gSioBmSt
 	mov r8, r0
 	adds r0, #0xa
 	adds r0, r5, r0
@@ -14102,7 +14102,7 @@ func_fe6_0803C1A4: @ 0x0803C1A4
 	str r0, [sp]
 	adds r0, r6, #0
 	adds r3, r4, #0
-	bl func_fe6_0803C144
+	bl DrawLinkArenaPointsBox
 .L0803C23E:
 	adds r6, #8
 	adds r7, #2
@@ -14122,22 +14122,22 @@ func_fe6_0803C1A4: @ 0x0803C1A4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803C264: .4byte gUnk_081094B0
+.L0803C264: .4byte Img_LAPointsBox
 .L0803C268: .4byte 0x06002000
-.L0803C26C: .4byte gUnk_08109A00
+.L0803C26C: .4byte Pal_TacticianSelObj
 .L0803C270: .4byte gUnk_Sio_0810F390
 .L0803C274: .4byte gUnk_Sio_0810F400
-.L0803C278: .4byte gUnk_Sio_085C98F4
-.L0803C27C: .4byte 0x0203C984
+.L0803C278: .4byte gSioSt
+.L0803C27C: .4byte gSioBmSt
 .L0803C280: .4byte gUnk_08109C60
 
-	thumb_func_start func_fe6_0803C284
-func_fe6_0803C284: @ 0x0803C284
+	thumb_func_start LAPointsBox_Dummy
+LAPointsBox_Dummy: @ 0x0803C284
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803C288
-func_fe6_0803C288: @ 0x0803C288
+	thumb_func_start StartLinkArenaPointsBox
+StartLinkArenaPointsBox: @ 0x0803C288
 	push {lr}
 	movs r0, #0
 	movs r1, #0
@@ -14147,27 +14147,27 @@ func_fe6_0803C288: @ 0x0803C288
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r0, .L0803C2AC @ =gUnk_Sio_085CA6F4
+	ldr r0, .L0803C2AC @ =ProcScr_LinkArenaPointsBox
 	movs r1, #3
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803C2AC: .4byte gUnk_Sio_085CA6F4
+.L0803C2AC: .4byte ProcScr_LinkArenaPointsBox
 
-	thumb_func_start func_fe6_0803C2B0
-func_fe6_0803C2B0: @ 0x0803C2B0
+	thumb_func_start EndLinkArenaPointsBox
+EndLinkArenaPointsBox: @ 0x0803C2B0
 	push {lr}
-	ldr r0, .L0803C2C0 @ =gUnk_Sio_085CA6F4
+	ldr r0, .L0803C2C0 @ =ProcScr_LinkArenaPointsBox
 	bl Proc_EndEach
 	bl ClearUi
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803C2C0: .4byte gUnk_Sio_085CA6F4
+.L0803C2C0: .4byte ProcScr_LinkArenaPointsBox
 
-	thumb_func_start func_fe6_0803C2C4
-func_fe6_0803C2C4: @ 0x0803C2C4
+	thumb_func_start PointsNumberMover_Init
+PointsNumberMover_Init: @ 0x0803C2C4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r0, #0x33
@@ -14177,7 +14177,7 @@ func_fe6_0803C2C4: @ 0x0803C2C4
 	ldr r1, .L0803C314 @ =gUnk_Sio_0810F3A0
 	adds r2, r5, #0
 	adds r2, #0x32
-	ldr r0, .L0803C318 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803C318 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -14208,7 +14208,7 @@ func_fe6_0803C2C4: @ 0x0803C2C4
 	b .L0803C344
 	.align 2, 0
 .L0803C314: .4byte gUnk_Sio_0810F3A0
-.L0803C318: .4byte gUnk_Sio_085C98F4
+.L0803C318: .4byte gSioSt
 .L0803C31C:
 	movs r1, #0xe
 	ldrsb r1, [r4, r1]
@@ -14265,8 +14265,8 @@ func_fe6_0803C2C4: @ 0x0803C2C4
 .L0803C388: .4byte gFont_Unk_Sio_02001000
 .L0803C38C: .4byte gText_Unk_Sio_02001018
 
-	thumb_func_start func_fe6_0803C390
-func_fe6_0803C390: @ 0x0803C390
+	thumb_func_start PointsNumberMover_LoopNumberEmerge
+PointsNumberMover_LoopNumberEmerge: @ 0x0803C390
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -14417,8 +14417,8 @@ func_fe6_0803C390: @ 0x0803C390
 .L0803C4C4: .4byte Sprite_32x16
 .L0803C4C8: .4byte 0x00009340
 
-	thumb_func_start func_fe6_0803C4CC
-func_fe6_0803C4CC: @ 0x0803C4CC
+	thumb_func_start PointsNumberMover_LoopMoveToPointsBox
+PointsNumberMover_LoopMoveToPointsBox: @ 0x0803C4CC
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
@@ -14466,8 +14466,8 @@ func_fe6_0803C4CC: @ 0x0803C4CC
 .L0803C528: .4byte Sprite_32x16
 .L0803C52C: .4byte 0x00009340
 
-	thumb_func_start func_fe6_0803C530
-func_fe6_0803C530: @ 0x0803C530
+	thumb_func_start DrawLinkArenaScoreNumber
+DrawLinkArenaScoreNumber: @ 0x0803C530
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -14501,14 +14501,14 @@ func_fe6_0803C530: @ 0x0803C530
 	.align 2, 0
 .L0803C574: .4byte gBg0Tm
 
-	thumb_func_start func_fe6_0803C578
-func_fe6_0803C578: @ 0x0803C578
+	thumb_func_start PointsNumberMover_InitScoreChange
+PointsNumberMover_InitScoreChange: @ 0x0803C578
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r1, .L0803C5D8 @ =gUnk_Sio_0810F3A0
 	adds r2, r6, #0
 	adds r2, #0x32
-	ldr r0, .L0803C5DC @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803C5DC @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -14539,7 +14539,7 @@ func_fe6_0803C578: @ 0x0803C578
 	ldr r3, [r6, #0x38]
 	ldr r4, [r6, #0x34]
 	subs r3, r3, r4
-	bl func_fe6_0803C530
+	bl DrawLinkArenaScoreNumber
 	str r5, [r6, #0x3c]
 	ldr r0, [r6, #0x38]
 	ldr r1, [r6, #0x34]
@@ -14550,11 +14550,11 @@ func_fe6_0803C578: @ 0x0803C578
 	bx r0
 	.align 2, 0
 .L0803C5D8: .4byte gUnk_Sio_0810F3A0
-.L0803C5DC: .4byte gUnk_Sio_085C98F4
+.L0803C5DC: .4byte gSioSt
 .L0803C5E0: .4byte gUnk_Sio_0810F400
 
-	thumb_func_start func_fe6_0803C5E4
-func_fe6_0803C5E4: @ 0x0803C5E4
+	thumb_func_start PointsNumberMover_TickScore
+PointsNumberMover_TickScore: @ 0x0803C5E4
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -14576,13 +14576,13 @@ func_fe6_0803C5E4: @ 0x0803C5E4
 	movs r3, #0x2c
 	ldrsh r2, [r4, r3]
 	adds r3, r5, #0
-	bl func_fe6_0803C530
+	bl DrawLinkArenaScoreNumber
 	ldr r0, [r4, #0x44]
 	cmp r0, r5
 	beq .L0803C63C
 	adds r1, r4, #0
 	adds r1, #0x32
-	ldr r0, .L0803C66C @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803C66C @ =gSioSt
 	ldr r0, [r0]
 	ldrb r1, [r1]
 	ldrb r0, [r0, #6]
@@ -14604,7 +14604,7 @@ func_fe6_0803C5E4: @ 0x0803C5E4
 	bls .L0803C664
 	movs r0, #0
 	str r0, [r4, #0x3c]
-	ldr r0, .L0803C674 @ =0x0203C984
+	ldr r0, .L0803C674 @ =gSioBmSt
 	adds r1, r4, #0
 	adds r1, #0x32
 	ldrb r1, [r1]
@@ -14621,12 +14621,12 @@ func_fe6_0803C5E4: @ 0x0803C5E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803C66C: .4byte gUnk_Sio_085C98F4
+.L0803C66C: .4byte gSioSt
 .L0803C670: .4byte gPlaySt
-.L0803C674: .4byte 0x0203C984
+.L0803C674: .4byte gSioBmSt
 
-	thumb_func_start func_fe6_0803C678
-func_fe6_0803C678: @ 0x0803C678
+	thumb_func_start PointsNumberMover_AwaitEnd
+PointsNumberMover_AwaitEnd: @ 0x0803C678
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, [r1, #0x3c]
@@ -14640,8 +14640,8 @@ func_fe6_0803C678: @ 0x0803C678
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803C690
-func_fe6_0803C690: @ 0x0803C690
+	thumb_func_start PointsSpriteText_Init
+PointsSpriteText_Init: @ 0x0803C690
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, .L0803C6B4 @ =gFont_Unk_Sio_02001000
@@ -14661,8 +14661,8 @@ func_fe6_0803C690: @ 0x0803C690
 .L0803C6B4: .4byte gFont_Unk_Sio_02001000
 .L0803C6B8: .4byte gText_Unk_Sio_02001018
 
-	thumb_func_start func_fe6_0803C6BC
-func_fe6_0803C6BC: @ 0x0803C6BC
+	thumb_func_start PointsSpriteText_LoopIn
+PointsSpriteText_LoopIn: @ 0x0803C6BC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -14791,8 +14791,8 @@ func_fe6_0803C6BC: @ 0x0803C6BC
 .L0803C7D0: .4byte Sprite_16x16
 .L0803C7D4: .4byte 0x00009358
 
-	thumb_func_start func_fe6_0803C7D8
-func_fe6_0803C7D8: @ 0x0803C7D8
+	thumb_func_start PointsSpriteText_LoopOut
+PointsSpriteText_LoopOut: @ 0x0803C7D8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -14920,8 +14920,8 @@ func_fe6_0803C7D8: @ 0x0803C7D8
 .L0803C8E8: .4byte Sprite_16x16
 .L0803C8EC: .4byte 0x00009358
 
-	thumb_func_start func_fe6_0803C8F0
-func_fe6_0803C8F0: @ 0x0803C8F0
+	thumb_func_start NewSioPointsSpriteText
+NewSioPointsSpriteText: @ 0x0803C8F0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -14959,7 +14959,7 @@ func_fe6_0803C8F0: @ 0x0803C8F0
 	movs r1, #0
 	mov r8, r1
 .L0803C946:
-	ldr r0, .L0803C9D8 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803C9D8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -14974,7 +14974,7 @@ func_fe6_0803C8F0: @ 0x0803C8F0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803C9F4
-	ldr r6, .L0803C9E0 @ =0x0203C984
+	ldr r6, .L0803C9E0 @ =gSioBmSt
 	lsls r5, r4, #3
 	adds r0, r6, #0
 	adds r0, #0x30
@@ -14982,7 +14982,7 @@ func_fe6_0803C8F0: @ 0x0803C8F0
 	ldr r0, [r7]
 	cmp r0, #0
 	beq .L0803C9EC
-	ldr r0, .L0803C9E4 @ =gUnk_Sio_085CA778
+	ldr r0, .L0803C9E4 @ =ProcScr_LinkArena_PointsNumberMover
 	ldr r1, [sp, #0x34]
 	bl SpawnProcLocking
 	adds r2, r0, #0
@@ -15026,10 +15026,10 @@ func_fe6_0803C8F0: @ 0x0803C8F0
 .L0803C9CC: .4byte gFont_Unk_Sio_02001000
 .L0803C9D0: .4byte 0x06016800
 .L0803C9D4: .4byte gText_Unk_Sio_02001018
-.L0803C9D8: .4byte gUnk_Sio_085C98F4
+.L0803C9D8: .4byte gSioSt
 .L0803C9DC: .4byte gUnk_Sio_0810F3A0
-.L0803C9E0: .4byte 0x0203C984
-.L0803C9E4: .4byte gUnk_Sio_085CA778
+.L0803C9E0: .4byte gSioBmSt
+.L0803C9E4: .4byte ProcScr_LinkArena_PointsNumberMover
 .L0803C9E8: .4byte 9999
 .L0803C9EC:
 	mov r0, sp
@@ -15047,7 +15047,7 @@ func_fe6_0803C8F0: @ 0x0803C8F0
 	mov r0, sb
 	cmp r0, #0
 	beq .L0803CA1E
-	ldr r0, .L0803CA24 @ =gUnk_Sio_085CA7B8
+	ldr r0, .L0803CA24 @ =ProcScr_LinkArena_PointsSpriteText
 	ldr r1, [sp, #0x34]
 	bl SpawnProcLocking
 	ldr r1, [sp, #8]
@@ -15060,7 +15060,7 @@ func_fe6_0803C8F0: @ 0x0803C8F0
 	movs r0, #1
 	b .L0803CA2A
 	.align 2, 0
-.L0803CA24: .4byte gUnk_Sio_085CA7B8
+.L0803CA24: .4byte ProcScr_LinkArena_PointsSpriteText
 .L0803CA28:
 	movs r0, #0
 .L0803CA2A:
@@ -15074,22 +15074,22 @@ func_fe6_0803C8F0: @ 0x0803C8F0
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803CA3C
-func_fe6_0803CA3C: @ 0x0803CA3C
+	thumb_func_start StartSioPoints1
+StartSioPoints1: @ 0x0803CA3C
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	bl func_fe6_0803C288
+	bl StartLinkArenaPointsBox
 	ldr r2, .L0803CA68 @ =gUnk_Sio_0810F408
 	str r4, [sp]
 	movs r0, #0x58
 	movs r1, #0x3c
 	movs r3, #1
-	bl func_fe6_0803C8F0
+	bl NewSioPointsSpriteText
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne .L0803CA5E
-	bl func_fe6_0803C2B0
+	bl EndLinkArenaPointsBox
 .L0803CA5E:
 	add sp, #4
 	pop {r4}
@@ -15098,18 +15098,18 @@ func_fe6_0803CA3C: @ 0x0803CA3C
 	.align 2, 0
 .L0803CA68: .4byte gUnk_Sio_0810F408
 
-	thumb_func_start func_fe6_0803CA6C
-func_fe6_0803CA6C: @ 0x0803CA6C
+	thumb_func_start StartSioPoints2
+StartSioPoints2: @ 0x0803CA6C
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	bl func_fe6_0803C288
+	bl StartLinkArenaPointsBox
 	ldr r2, .L0803CA8C @ =gUnk_Sio_0810F408
 	str r4, [sp]
 	movs r0, #0x58
 	movs r1, #0x3c
 	movs r3, #0
-	bl func_fe6_0803C8F0
+	bl NewSioPointsSpriteText
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -15165,7 +15165,7 @@ func_fe6_0803CAC8: @ 0x0803CAC8
 	thumb_func_start func_fe6_0803CAD8
 func_fe6_0803CAD8: @ 0x0803CAD8
 	movs r1, #0
-	ldr r3, .L0803CAF4 @ =0x0203C984
+	ldr r3, .L0803CAF4 @ =gSioBmSt
 	adds r2, r3, #0
 	adds r2, #0xa
 .L0803CAE0:
@@ -15179,7 +15179,7 @@ func_fe6_0803CAD8: @ 0x0803CAD8
 	beq .L0803CB06
 	b .L0803CB14
 	.align 2, 0
-.L0803CAF4: .4byte 0x0203C984
+.L0803CAF4: .4byte gSioBmSt
 .L0803CAF8:
 	cmp r0, #3
 	beq .L0803CB0E
@@ -15249,7 +15249,7 @@ func_fe6_0803CB3C: @ 0x0803CB3C
 	strb r6, [r1, #2]
 	ldr r0, [sp]
 	strb r0, [r1, #3]
-	ldr r0, .L0803CB7C @ =0x0203C618
+	ldr r0, .L0803CB7C @ =gLinkArenaSt
 	ldrb r0, [r0]
 	cmp r0, #2
 	beq .L0803CB80
@@ -15257,11 +15257,11 @@ func_fe6_0803CB3C: @ 0x0803CB3C
 	b .L0803CB8C
 	.align 2, 0
 .L0803CB78: .4byte gUnk_0300140C
-.L0803CB7C: .4byte 0x0203C618
+.L0803CB7C: .4byte gLinkArenaSt
 .L0803CB80:
 	adds r0, r1, #0
 	movs r1, #4
-	bl func_fe6_08036208
+	bl SioEmitData
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 .L0803CB8C:
@@ -15441,7 +15441,7 @@ func_fe6_0803CCD4: @ 0x0803CCD4
 	sub sp, #4
 	movs r7, #0
 .L0803CCE2:
-	ldr r0, .L0803CD60 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803CD60 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -15506,7 +15506,7 @@ func_fe6_0803CCD4: @ 0x0803CCD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803CD60: .4byte gUnk_Sio_085C98F4
+.L0803CD60: .4byte gSioSt
 .L0803CD64: .4byte gUnk_Sio_0810F390
 .L0803CD68: .4byte gUnk_Sio_0810F3B0
 .L0803CD6C: .4byte gUnk_Sio_0810F42B
@@ -15573,7 +15573,7 @@ func_fe6_0803CDD4: @ 0x0803CDD4
 	ldr r0, .L0803CE4C @ =gUnk_Sio_0810F390
 	mov sl, r0
 .L0803CDE6:
-	ldr r0, .L0803CE50 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803CE50 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -15626,7 +15626,7 @@ func_fe6_0803CDD4: @ 0x0803CDD4
 	b .L0803CE60
 	.align 2, 0
 .L0803CE4C: .4byte gUnk_Sio_0810F390
-.L0803CE50: .4byte gUnk_Sio_085C98F4
+.L0803CE50: .4byte gSioSt
 .L0803CE54: .4byte gUnk_030013F0
 .L0803CE58: .4byte gUnk_Sio_0810F42B
 .L0803CE5C:
@@ -15720,7 +15720,7 @@ func_fe6_0803CEDC: @ 0x0803CEDC
 	thumb_func_start func_fe6_0803CF14
 func_fe6_0803CF14: @ 0x0803CF14
 	push {r4, lr}
-	ldr r0, .L0803CF4C @ =0x0203C984
+	ldr r0, .L0803CF4C @ =gSioBmSt
 	movs r1, #0
 	movs r2, #3
 	adds r0, #0xd
@@ -15751,7 +15751,7 @@ func_fe6_0803CF14: @ 0x0803CF14
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803CF4C: .4byte 0x0203C984
+.L0803CF4C: .4byte gSioBmSt
 .L0803CF50: .4byte gUnk_030013F0
 .L0803CF54: .4byte 0x0203C98E
 
@@ -15777,13 +15777,13 @@ func_fe6_0803CF70: @ 0x0803CF70
 	bl ForceSyncUnitSpriteSheet
 	bl func_fe6_0803CF58
 	bl InitSystemTextFont
-	ldr r1, .L0803CF98 @ =0x0203C984
+	ldr r1, .L0803CF98 @ =gSioBmSt
 	movs r0, #0xff
 	strb r0, [r1, #3]
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803CF98: .4byte 0x0203C984
+.L0803CF98: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803CF9C
 func_fe6_0803CF9C: @ 0x0803CF9C
@@ -15828,13 +15828,13 @@ func_fe6_0803CFE4: @ 0x0803CFE4
 	push {r4, r5, lr}
 	movs r0, #0
 	bl InitBgs
-	bl func_fe6_08036B40
+	bl ClearSioBG
 	bl func_fe6_0803CEDC
 	bl func_fe6_0803CF14
-	ldr r4, .L0803D084 @ =0x0203C984
+	ldr r4, .L0803D084 @ =gSioBmSt
 	movs r5, #0
 	strb r5, [r4, #9]
-	ldr r0, .L0803D088 @ =0x0203C618
+	ldr r0, .L0803D088 @ =gLinkArenaSt
 	strb r5, [r0, #0xb]
 	ldr r0, .L0803D08C @ =gUnk_Sio_085CA7E0
 	ldrb r1, [r4]
@@ -15891,8 +15891,8 @@ func_fe6_0803CFE4: @ 0x0803CFE4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803D084: .4byte 0x0203C984
-.L0803D088: .4byte 0x0203C618
+.L0803D084: .4byte gSioBmSt
+.L0803D088: .4byte gLinkArenaSt
 .L0803D08C: .4byte gUnk_Sio_085CA7E0
 .L0803D090: .4byte gUnk_030013F0
 .L0803D094: .4byte gUnk_03001404
@@ -15903,7 +15903,7 @@ func_fe6_0803CFE4: @ 0x0803CFE4
 func_fe6_0803D0A0: @ 0x0803D0A0
 	push {r4, r5, lr}
 	ldr r0, .L0803D0E0 @ =gUnk_030013F0
-	ldr r1, .L0803D0E4 @ =0x0203C984
+	ldr r1, .L0803D0E4 @ =gSioBmSt
 	ldrb r1, [r1, #4]
 	adds r0, r1, r0
 	ldrb r0, [r0]
@@ -15930,7 +15930,7 @@ func_fe6_0803D0A0: @ 0x0803D0A0
 	bx r0
 	.align 2, 0
 .L0803D0E0: .4byte gUnk_030013F0
-.L0803D0E4: .4byte 0x0203C984
+.L0803D0E4: .4byte gSioBmSt
 .L0803D0E8: .4byte gUnk_03001410
 
 	thumb_func_start func_fe6_0803D0EC
@@ -15957,7 +15957,7 @@ func_fe6_0803D0EC: @ 0x0803D0EC
 func_fe6_0803D110: @ 0x0803D110
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0803D124 @ =0x0203C618
+	ldr r0, .L0803D124 @ =gLinkArenaSt
 	ldrb r0, [r0]
 	cmp r0, #1
 	beq .L0803D128
@@ -15965,7 +15965,7 @@ func_fe6_0803D110: @ 0x0803D110
 	beq .L0803D13C
 	b .L0803D168
 	.align 2, 0
-.L0803D124: .4byte 0x0203C618
+.L0803D124: .4byte gLinkArenaSt
 .L0803D128:
 	ldr r0, .L0803D134 @ =gPlaySt
 	ldrb r0, [r0, #0xf]
@@ -15978,7 +15978,7 @@ func_fe6_0803D110: @ 0x0803D110
 .L0803D138: .4byte gUnk_Sio_085CAC14
 .L0803D13C:
 	ldr r0, .L0803D154 @ =gPlaySt
-	ldr r1, .L0803D158 @ =gUnk_Sio_085C98F4
+	ldr r1, .L0803D158 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r0, [r0, #0xf]
 	ldrb r1, [r1, #6]
@@ -15992,7 +15992,7 @@ func_fe6_0803D110: @ 0x0803D110
 	b .L0803D168
 	.align 2, 0
 .L0803D154: .4byte gPlaySt
-.L0803D158: .4byte gUnk_Sio_085C98F4
+.L0803D158: .4byte gSioSt
 .L0803D15C: .4byte gUnk_Sio_085CA974
 .L0803D160:
 	ldr r0, .L0803D174 @ =gUnk_Sio_085CAB24
@@ -16012,7 +16012,7 @@ func_fe6_0803D178: @ 0x0803D178
 	push {r4, lr}
 	adds r3, r0, #0
 	movs r1, #0
-	ldr r0, .L0803D190 @ =0x0203C618
+	ldr r0, .L0803D190 @ =gLinkArenaSt
 	ldrb r2, [r0]
 	cmp r2, #1
 	bne .L0803D194
@@ -16021,7 +16021,7 @@ func_fe6_0803D178: @ 0x0803D178
 	bne .L0803D1A4
 	b .L0803D19A
 	.align 2, 0
-.L0803D190: .4byte 0x0203C618
+.L0803D190: .4byte gLinkArenaSt
 .L0803D194:
 	ldrb r0, [r0, #0xb]
 	cmp r0, #2
@@ -16032,7 +16032,7 @@ func_fe6_0803D178: @ 0x0803D178
 	bl Proc_Goto
 	b .L0803D1FE
 .L0803D1A4:
-	ldr r0, .L0803D1B8 @ =0x0203C984
+	ldr r0, .L0803D1B8 @ =gSioBmSt
 	ldrb r2, [r0, #1]
 	adds r0, r2, #0
 	cmp r0, #0xff
@@ -16042,7 +16042,7 @@ func_fe6_0803D178: @ 0x0803D178
 	bl Proc_Goto
 	b .L0803D1FE
 	.align 2, 0
-.L0803D1B8: .4byte 0x0203C984
+.L0803D1B8: .4byte gSioBmSt
 .L0803D1BC:
 	ldr r0, .L0803D1C4 @ =gPlaySt
 	strb r2, [r0, #0xf]
@@ -16058,7 +16058,7 @@ func_fe6_0803D178: @ 0x0803D178
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq .L0803D1CC
-	ldr r4, .L0803D204 @ =0x0203C984
+	ldr r4, .L0803D204 @ =gSioBmSt
 	strb r1, [r4, #2]
 	adds r0, r1, #1
 	strb r0, [r4, #3]
@@ -16082,14 +16082,14 @@ func_fe6_0803D178: @ 0x0803D178
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803D204: .4byte 0x0203C984
+.L0803D204: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803D208
 func_fe6_0803D208: @ 0x0803D208
 	push {r4, r5, r6, r7, lr}
 	movs r5, #4
-	ldr r3, .L0803D260 @ =0x0203C984
-	ldr r0, .L0803D264 @ =gUnk_Sio_085C98F4
+	ldr r3, .L0803D260 @ =gSioBmSt
+	ldr r0, .L0803D264 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16099,7 +16099,7 @@ func_fe6_0803D208: @ 0x0803D208
 	adds r2, #0x14
 	adds r0, r0, r2
 	ldr r7, [r0]
-	ldr r1, .L0803D268 @ =0x0203C618
+	ldr r1, .L0803D268 @ =gLinkArenaSt
 	adds r1, #0xec
 	movs r0, #2
 	ldrb r1, [r1]
@@ -16116,7 +16116,7 @@ func_fe6_0803D208: @ 0x0803D208
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803D254
-	ldr r0, .L0803D264 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803D264 @ =gSioSt
 	ldr r0, [r0]
 	movs r1, #6
 	ldrsb r1, [r0, r1]
@@ -16131,9 +16131,9 @@ func_fe6_0803D208: @ 0x0803D208
 	movs r5, #3
 	b .L0803D2A0
 	.align 2, 0
-.L0803D260: .4byte 0x0203C984
-.L0803D264: .4byte gUnk_Sio_085C98F4
-.L0803D268: .4byte 0x0203C618
+.L0803D260: .4byte gSioBmSt
+.L0803D264: .4byte gSioSt
+.L0803D268: .4byte gLinkArenaSt
 .L0803D26C:
 	adds r0, r4, #0
 	b .L0803D2A2
@@ -16147,7 +16147,7 @@ func_fe6_0803D208: @ 0x0803D208
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803D296
-	ldr r0, .L0803D2A8 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803D2A8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16171,7 +16171,7 @@ func_fe6_0803D208: @ 0x0803D208
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0803D2A8: .4byte gUnk_Sio_085C98F4
+.L0803D2A8: .4byte gSioSt
 
 	thumb_func_start func_fe6_0803D2AC
 func_fe6_0803D2AC: @ 0x0803D2AC
@@ -16195,7 +16195,7 @@ func_fe6_0803D2CC: @ 0x0803D2CC
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	mov ip, r1
-	ldr r1, .L0803D2FC @ =0x0203C984
+	ldr r1, .L0803D2FC @ =gSioBmSt
 	ldrb r2, [r1, #2]
 	adds r5, r2, #0
 	strb r2, [r1, #3]
@@ -16213,7 +16213,7 @@ func_fe6_0803D2CC: @ 0x0803D2CC
 	adds r0, r4, r0
 	b .L0803D33A
 	.align 2, 0
-.L0803D2FC: .4byte 0x0203C984
+.L0803D2FC: .4byte gSioBmSt
 .L0803D300: .4byte gUnk_Sio_085CA7E4
 .L0803D304:
 	movs r0, #0x80
@@ -16279,7 +16279,7 @@ func_fe6_0803D2CC: @ 0x0803D2CC
 	cmp r4, #0
 	beq .L0803D3B8
 	lsrs r1, r1, #0x1e
-	ldr r0, .L0803D3A0 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803D3A0 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16299,7 +16299,7 @@ func_fe6_0803D2CC: @ 0x0803D2CC
 	.align 2, 0
 .L0803D398: .4byte gUnk_Sio_085CA7E4
 .L0803D39C: .4byte gUnk_030013F0
-.L0803D3A0: .4byte gUnk_Sio_085C98F4
+.L0803D3A0: .4byte gSioSt
 .L0803D3A4:
 	adds r0, r2, #1
 	lsls r0, r0, #0x18
@@ -16320,7 +16320,7 @@ func_fe6_0803D2CC: @ 0x0803D2CC
 	thumb_func_start func_fe6_0803D3C0
 func_fe6_0803D3C0: @ 0x0803D3C0
 	push {r4, r5, r6, r7, lr}
-	ldr r6, .L0803D42C @ =0x0203C984
+	ldr r6, .L0803D42C @ =gSioBmSt
 	ldrb r0, [r6, #2]
 	ldrb r1, [r6, #3]
 	cmp r0, r1
@@ -16352,7 +16352,7 @@ func_fe6_0803D3C0: @ 0x0803D3C0
 	adds r0, r6, r7
 	ldrb r0, [r0]
 	lsrs r1, r0, #6
-	ldr r0, .L0803D434 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803D434 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16369,9 +16369,9 @@ func_fe6_0803D3C0: @ 0x0803D3C0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803D42C: .4byte 0x0203C984
+.L0803D42C: .4byte gSioBmSt
 .L0803D430: .4byte gUnk_030013F0
-.L0803D434: .4byte gUnk_Sio_085C98F4
+.L0803D434: .4byte gSioSt
 
 	thumb_func_start func_fe6_0803D438
 func_fe6_0803D438: @ 0x0803D438
@@ -16413,8 +16413,8 @@ func_fe6_0803D438: @ 0x0803D438
 func_fe6_0803D478: @ 0x0803D478
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r2, .L0803D4AC @ =0x0203C984
-	ldr r1, .L0803D4B0 @ =0x0203C618
+	ldr r2, .L0803D4AC @ =gSioBmSt
+	ldr r1, .L0803D4B0 @ =gLinkArenaSt
 	adds r1, #0xa0
 	ldrb r3, [r1]
 	lsls r0, r3, #1
@@ -16422,7 +16422,7 @@ func_fe6_0803D478: @ 0x0803D478
 	ldrb r2, [r2, #9]
 	cmp r2, r0
 	blt .L0803D4A0
-	bl func_fe6_0803C2B0
+	bl EndLinkArenaPointsBox
 	ldr r0, .L0803D4B4 @ =gUnk_Sio_085CA958
 	bl StartEvent
 	adds r0, r4, #0
@@ -16435,8 +16435,8 @@ func_fe6_0803D478: @ 0x0803D478
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803D4AC: .4byte 0x0203C984
-.L0803D4B0: .4byte 0x0203C618
+.L0803D4AC: .4byte gSioBmSt
+.L0803D4B0: .4byte gLinkArenaSt
 .L0803D4B4: .4byte gUnk_Sio_085CA958
 
 	thumb_func_start func_fe6_0803D4B8
@@ -16465,7 +16465,7 @@ func_fe6_0803D4D0: @ 0x0803D4D0
 	mov r0, sp
 	movs r2, #2
 	bl memcpy
-	ldr r0, .L0803D5B4 @ =0x0203C984
+	ldr r0, .L0803D5B4 @ =gSioBmSt
 	mov r8, r0
 	ldrb r1, [r0, #2]
 	mov sb, r1
@@ -16495,7 +16495,7 @@ func_fe6_0803D4D0: @ 0x0803D4D0
 	beq .L0803D5E4
 	ldrb r0, [r7]
 	lsrs r1, r0, #6
-	ldr r0, .L0803D5C8 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803D5C8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16555,12 +16555,12 @@ func_fe6_0803D4D0: @ 0x0803D4D0
 	b .L0803D6BC
 	.align 2, 0
 .L0803D5B0: .4byte gUnk_Sio_0810F430
-.L0803D5B4: .4byte 0x0203C984
+.L0803D5B4: .4byte gSioBmSt
 .L0803D5B8: .4byte gKeySt
 .L0803D5BC: .4byte gActiveUnitId
 .L0803D5C0: .4byte gUnk_030013F0
 .L0803D5C4: .4byte gActiveUnit
-.L0803D5C8: .4byte gUnk_Sio_085C98F4
+.L0803D5C8: .4byte gSioSt
 .L0803D5CC: .4byte gPlaySt
 .L0803D5D0: .4byte gUnk_03001410
 .L0803D5D4:
@@ -16604,7 +16604,7 @@ func_fe6_0803D4D0: @ 0x0803D4D0
 	ands r0, r1
 	cmp r0, #0
 	beq .L0803D658
-	bl func_fe6_0803C2B0
+	bl EndLinkArenaPointsBox
 	ldr r0, .L0803D650 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
@@ -16658,7 +16658,7 @@ func_fe6_0803D4D0: @ 0x0803D4D0
 	adds r1, r4, #0
 	movs r2, #0
 	bl PutMapCursor
-	ldr r0, .L0803D6D8 @ =0x0203C984
+	ldr r0, .L0803D6D8 @ =gSioBmSt
 	ldrb r0, [r0, #2]
 	cmp sb, r0
 	beq .L0803D6BC
@@ -16681,13 +16681,13 @@ func_fe6_0803D4D0: @ 0x0803D4D0
 .L0803D6CC: .4byte gActiveUnit
 .L0803D6D0: .4byte gUnk_03001408
 .L0803D6D4: .4byte gUnk_03001404
-.L0803D6D8: .4byte 0x0203C984
+.L0803D6D8: .4byte gSioBmSt
 .L0803D6DC: .4byte gPlaySt
 
 	thumb_func_start func_fe6_0803D6E0
 func_fe6_0803D6E0: @ 0x0803D6E0
 	push {lr}
-	bl func_fe6_0803C288
+	bl StartLinkArenaPointsBox
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -16701,7 +16701,7 @@ func_fe6_0803D6EC: @ 0x0803D6EC
 	push {r5, r6, r7}
 	sub sp, #8
 	mov r8, r0
-	ldr r6, .L0803D7C4 @ =0x0203C984
+	ldr r6, .L0803D7C4 @ =gSioBmSt
 	ldrb r0, [r6, #2]
 	str r0, [sp, #4]
 	ldr r1, .L0803D7C8 @ =gKeySt
@@ -16788,13 +16788,13 @@ func_fe6_0803D6EC: @ 0x0803D6EC
 	movs r0, #3
 	movs r3, #0
 	bl func_fe6_0803CB3C
-	bl func_fe6_0803C2B0
+	bl EndLinkArenaPointsBox
 	mov r0, r8
 	movs r1, #7
 	bl Proc_Goto
 	b .L0803D892
 	.align 2, 0
-.L0803D7C4: .4byte 0x0203C984
+.L0803D7C4: .4byte gSioBmSt
 .L0803D7C8: .4byte gKeySt
 .L0803D7CC: .4byte gActiveUnitId
 .L0803D7D0: .4byte gUnk_030013F0
@@ -16869,7 +16869,7 @@ func_fe6_0803D6EC: @ 0x0803D6EC
 	.align 2, 0
 .L0803D874: .4byte gActiveUnit
 .L0803D878:
-	ldr r0, .L0803D8A4 @ =0x0203C984
+	ldr r0, .L0803D8A4 @ =gSioBmSt
 	ldr r1, [sp, #4]
 	ldrb r0, [r0, #2]
 	cmp r1, r0
@@ -16891,7 +16891,7 @@ func_fe6_0803D6EC: @ 0x0803D6EC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803D8A4: .4byte 0x0203C984
+.L0803D8A4: .4byte gSioBmSt
 .L0803D8A8: .4byte gPlaySt
 
 	thumb_func_start func_fe6_0803D8AC
@@ -16899,7 +16899,7 @@ func_fe6_0803D8AC: @ 0x0803D8AC
 	push {r4, lr}
 	adds r4, r0, #0
 	bl ResetTextFont
-	ldr r1, .L0803D8EC @ =0x0203C984
+	ldr r1, .L0803D8EC @ =gSioBmSt
 	movs r0, #0xff
 	strb r0, [r1, #6]
 	ldr r0, .L0803D8F0 @ =gUnk_030013F0
@@ -16923,7 +16923,7 @@ func_fe6_0803D8AC: @ 0x0803D8AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803D8EC: .4byte 0x0203C984
+.L0803D8EC: .4byte gSioBmSt
 .L0803D8F0: .4byte gUnk_030013F0
 .L0803D8F4: .4byte gActiveUnit
 .L0803D8F8: .4byte gUnk_Sio_085CB384
@@ -16940,7 +16940,7 @@ func_fe6_0803D8FC: @ 0x0803D8FC
 	lsrs r0, r0, #0x18
 	cmp r4, r0
 	bne .L0803D92E
-	ldr r0, .L0803D934 @ =0x0203C984
+	ldr r0, .L0803D934 @ =gSioBmSt
 	ldrb r0, [r0, #6]
 	cmp r0, #0
 	bne .L0803D928
@@ -16957,7 +16957,7 @@ func_fe6_0803D8FC: @ 0x0803D8FC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803D934: .4byte 0x0203C984
+.L0803D934: .4byte gSioBmSt
 .L0803D938: .4byte gActiveUnit
 
 	thumb_func_start func_fe6_0803D93C
@@ -16966,7 +16966,7 @@ func_fe6_0803D93C: @ 0x0803D93C
 	adds r4, r0, #0
 	ldr r0, .L0803D974 @ =gActiveUnit
 	ldr r0, [r0]
-	ldr r6, .L0803D978 @ =0x0203C984
+	ldr r6, .L0803D978 @ =gSioBmSt
 	ldrb r2, [r6, #7]
 	lsls r1, r2, #1
 	adds r0, #0x1c
@@ -16989,7 +16989,7 @@ func_fe6_0803D93C: @ 0x0803D93C
 	b .L0803D9FE
 	.align 2, 0
 .L0803D974: .4byte gActiveUnit
-.L0803D978: .4byte 0x0203C984
+.L0803D978: .4byte gSioBmSt
 .L0803D97C:
 	adds r0, r5, #0
 	bl GetItemMinRange
@@ -17000,11 +17000,11 @@ func_fe6_0803D93C: @ 0x0803D93C
 	adds r1, r0, #0
 	cmp r1, #2
 	bne .L0803D99C
-	ldr r0, .L0803D998 @ =0x0203C984
+	ldr r0, .L0803D998 @ =gSioBmSt
 	strb r1, [r0, #6]
 	b .L0803D9FE
 	.align 2, 0
-.L0803D998: .4byte 0x0203C984
+.L0803D998: .4byte gSioBmSt
 .L0803D99C:
 	adds r0, r5, #0
 	bl GetItemMinRange
@@ -17015,14 +17015,14 @@ func_fe6_0803D93C: @ 0x0803D93C
 	bl GetItemMaxRange
 	cmp r0, #3
 	bne .L0803D9BC
-	ldr r0, .L0803D9B8 @ =0x0203C984
+	ldr r0, .L0803D9B8 @ =gSioBmSt
 	strb r4, [r0, #6]
 	b .L0803D9FE
 	.align 2, 0
-.L0803D9B8: .4byte 0x0203C984
+.L0803D9B8: .4byte gSioBmSt
 .L0803D9BC:
 	ldr r0, .L0803D9DC @ =gUnk_030013F0
-	ldr r4, .L0803D9E0 @ =0x0203C984
+	ldr r4, .L0803D9E0 @ =gSioBmSt
 	ldrb r1, [r4, #5]
 	adds r0, r1, r0
 	ldrb r0, [r0]
@@ -17037,7 +17037,7 @@ func_fe6_0803D93C: @ 0x0803D93C
 	b .L0803D9FE
 	.align 2, 0
 .L0803D9DC: .4byte gUnk_030013F0
-.L0803D9E0: .4byte 0x0203C984
+.L0803D9E0: .4byte gSioBmSt
 .L0803D9E4:
 	adds r0, r5, #0
 	bl GetItemMinRange
@@ -17068,7 +17068,7 @@ func_fe6_0803DA04: @ 0x0803DA04
 	movs r0, #0
 	mov sl, r0
 	ldr r4, .L0803DA60 @ =gUnk_030013F0
-	ldr r7, .L0803DA64 @ =0x0203C984
+	ldr r7, .L0803DA64 @ =gSioBmSt
 	ldrb r1, [r7, #4]
 	adds r0, r1, r4
 	ldrb r0, [r0]
@@ -17100,7 +17100,7 @@ func_fe6_0803DA04: @ 0x0803DA04
 	b .L0803DAD8
 	.align 2, 0
 .L0803DA60: .4byte gUnk_030013F0
-.L0803DA64: .4byte 0x0203C984
+.L0803DA64: .4byte gSioBmSt
 .L0803DA68: .4byte gActiveUnit
 .L0803DA6C:
 	ldr r0, .L0803DAC4 @ =gActiveUnit
@@ -17230,7 +17230,7 @@ func_fe6_0803DB6C: @ 0x0803DB6C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, .L0803DBA0 @ =gUnk_030013F0
-	ldr r6, .L0803DBA4 @ =0x0203C984
+	ldr r6, .L0803DBA4 @ =gSioBmSt
 	ldrb r1, [r6, #5]
 	adds r0, r1, r0
 	ldrb r0, [r0]
@@ -17252,7 +17252,7 @@ func_fe6_0803DB6C: @ 0x0803DB6C
 	b .L0803DBB4
 	.align 2, 0
 .L0803DBA0: .4byte gUnk_030013F0
-.L0803DBA4: .4byte 0x0203C984
+.L0803DBA4: .4byte gSioBmSt
 .L0803DBA8: .4byte gUnk_03001410
 .L0803DBAC:
 	ldr r0, [r5, #0x34]
@@ -17265,7 +17265,7 @@ func_fe6_0803DB6C: @ 0x0803DB6C
 	ands r0, r1
 	strh r0, [r4, #0xc]
 	bl RefreshUnitSprites
-	ldr r1, .L0803DBF0 @ =0x0203C984
+	ldr r1, .L0803DBF0 @ =gSioBmSt
 	ldrb r0, [r1, #5]
 	strb r0, [r1, #2]
 	adds r0, #1
@@ -17286,7 +17286,7 @@ func_fe6_0803DB6C: @ 0x0803DB6C
 	b .L0803DC2E
 	.align 2, 0
 .L0803DBEC: .4byte 0x0000FFFE
-.L0803DBF0: .4byte 0x0203C984
+.L0803DBF0: .4byte gSioBmSt
 .L0803DBF4: .4byte gUnk_030013F0
 .L0803DBF8:
 	movs r0, #0x80
@@ -17332,7 +17332,7 @@ func_fe6_0803DC3C: @ 0x0803DC3C
 	sub sp, #0xc
 	adds r6, r0, #0
 	ldr r4, .L0803DCB4 @ =gUnk_030013F0
-	ldr r5, .L0803DCB8 @ =0x0203C984
+	ldr r5, .L0803DCB8 @ =gSioBmSt
 	ldrb r1, [r5, #4]
 	adds r0, r1, r4
 	ldrb r0, [r0]
@@ -17363,7 +17363,7 @@ func_fe6_0803DC3C: @ 0x0803DC3C
 	mov r0, r8
 	movs r2, #6
 	movs r3, #5
-	bl func_fe6_0803F8E0
+	bl NewSioWarpFx
 	ldr r1, [r5, #4]
 	mov r0, sb
 	str r0, [sp]
@@ -17372,7 +17372,7 @@ func_fe6_0803DC3C: @ 0x0803DC3C
 	adds r0, r4, #0
 	movs r2, #8
 	movs r3, #5
-	bl func_fe6_0803F8E0
+	bl NewSioWarpFx
 	add sp, #0xc
 	pop {r3, r4}
 	mov r8, r3
@@ -17382,7 +17382,7 @@ func_fe6_0803DC3C: @ 0x0803DC3C
 	bx r0
 	.align 2, 0
 .L0803DCB4: .4byte gUnk_030013F0
-.L0803DCB8: .4byte 0x0203C984
+.L0803DCB8: .4byte gSioBmSt
 .L0803DCBC: .4byte gUnk_03001410
 
 	thumb_func_start func_fe6_0803DCC0
@@ -17390,7 +17390,7 @@ func_fe6_0803DCC0: @ 0x0803DCC0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r4, .L0803DD18 @ =gUnk_030013F0
-	ldr r5, .L0803DD1C @ =0x0203C984
+	ldr r5, .L0803DD1C @ =gSioBmSt
 	ldrb r1, [r5, #4]
 	adds r0, r1, r4
 	ldrb r0, [r0]
@@ -17428,7 +17428,7 @@ func_fe6_0803DCC0: @ 0x0803DCC0
 	bx r0
 	.align 2, 0
 .L0803DD18: .4byte gUnk_030013F0
-.L0803DD1C: .4byte 0x0203C984
+.L0803DD1C: .4byte gSioBmSt
 .L0803DD20: .4byte gUnk_Sio_0810F432
 .L0803DD24: .4byte gUnk_03001410
 .L0803DD28: .4byte 0x0000FFFE
@@ -17446,7 +17446,7 @@ func_fe6_0803DD30: @ 0x0803DD30
 	cmp r0, #1
 	beq .L0803DD9E
 	ldr r4, .L0803DDA8 @ =gUnk_030013F0
-	ldr r5, .L0803DDAC @ =0x0203C984
+	ldr r5, .L0803DDAC @ =gSioBmSt
 	ldrb r1, [r5, #4]
 	adds r0, r1, r4
 	ldrb r0, [r0]
@@ -17491,7 +17491,7 @@ func_fe6_0803DD30: @ 0x0803DD30
 	bx r0
 	.align 2, 0
 .L0803DDA8: .4byte gUnk_030013F0
-.L0803DDAC: .4byte 0x0203C984
+.L0803DDAC: .4byte gSioBmSt
 .L0803DDB0: .4byte gAction
 .L0803DDB4: .4byte gUnk_0300140C
 .L0803DDB8: .4byte gBmSt
@@ -17506,7 +17506,7 @@ func_fe6_0803DDC0: @ 0x0803DDC0
 	push {r5, r6, r7}
 	mov sl, r0
 	ldr r0, .L0803DEAC @ =gUnk_030013F0
-	ldr r1, .L0803DEB0 @ =0x0203C984
+	ldr r1, .L0803DEB0 @ =gSioBmSt
 	mov r8, r1
 	ldrb r2, [r1, #4]
 	adds r1, r2, r0
@@ -17554,9 +17554,9 @@ func_fe6_0803DDC0: @ 0x0803DDC0
 	strb r5, [r0]
 	strb r3, [r7, #9]
 	adds r0, r6, #0
-	bl func_fe6_08040CA8
+	bl SioSetUniqueWeapons
 	adds r0, r7, #0
-	bl func_fe6_08040CA8
+	bl SioSetUniqueWeapons
 	adds r0, r6, #0
 	movs r1, #0
 	bl SetUnitStatus
@@ -17605,12 +17605,12 @@ func_fe6_0803DDC0: @ 0x0803DDC0
 	b .L0803DEC6
 	.align 2, 0
 .L0803DEAC: .4byte gUnk_030013F0
-.L0803DEB0: .4byte 0x0203C984
+.L0803DEB0: .4byte gSioBmSt
 .L0803DEB4: .4byte gBattleUnitA
 .L0803DEB8: .4byte gBattleUnitB
 .L0803DEBC: .4byte 0x0000FFFE
 .L0803DEC0:
-	ldr r1, .L0803DEDC @ =0x0203C984
+	ldr r1, .L0803DEDC @ =gSioBmSt
 	movs r0, #0
 	strb r0, [r1, #9]
 .L0803DEC6:
@@ -17624,7 +17624,7 @@ func_fe6_0803DDC0: @ 0x0803DDC0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803DEDC: .4byte 0x0203C984
+.L0803DEDC: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803DEE0
 func_fe6_0803DEE0: @ 0x0803DEE0
@@ -17636,7 +17636,7 @@ func_fe6_0803DEE0: @ 0x0803DEE0
 	sub sp, #0x18
 	str r0, [sp, #0xc]
 	ldr r1, .L0803DF4C @ =gUnk_030013F0
-	ldr r0, .L0803DF50 @ =0x0203C984
+	ldr r0, .L0803DF50 @ =gSioBmSt
 	mov sb, r0
 	ldrb r2, [r0, #4]
 	adds r0, r2, r1
@@ -17681,7 +17681,7 @@ func_fe6_0803DEE0: @ 0x0803DEE0
 	b .L0803DF90
 	.align 2, 0
 .L0803DF4C: .4byte gUnk_030013F0
-.L0803DF50: .4byte 0x0203C984
+.L0803DF50: .4byte gSioBmSt
 .L0803DF54: .4byte gUnk_03001410
 .L0803DF58:
 	adds r0, r4, #0
@@ -17708,7 +17708,7 @@ func_fe6_0803DEE0: @ 0x0803DEE0
 	ldr r0, [sp, #0xc]
 	str r0, [sp, #8]
 	adds r0, r4, #0
-	bl func_fe6_0803F8E0
+	bl NewSioWarpFx
 .L0803DF90:
 	movs r0, #4
 	mov r1, r8
@@ -17721,7 +17721,7 @@ func_fe6_0803DEE0: @ 0x0803DEE0
 	cmp r0, #0
 	bne .L0803DFC0
 .L0803DFA4:
-	ldr r0, .L0803DFBC @ =0x0203C984
+	ldr r0, .L0803DFBC @ =gSioBmSt
 	mov r3, sl
 	lsrs r1, r3, #6
 	adds r0, #0xa
@@ -17732,7 +17732,7 @@ func_fe6_0803DEE0: @ 0x0803DEE0
 	b .L0803E006
 	.align 2, 0
 .L0803DFB8: .4byte gUnk_Sio_0810F3B0
-.L0803DFBC: .4byte 0x0203C984
+.L0803DFBC: .4byte gSioBmSt
 .L0803DFC0:
 	mov r0, r8
 	bl StartMu
@@ -17766,7 +17766,7 @@ func_fe6_0803DEE0: @ 0x0803DEE0
 	ldr r0, [sp, #0xc]
 	str r0, [sp, #8]
 	mov r0, r8
-	bl func_fe6_0803F8E0
+	bl NewSioWarpFx
 .L0803E006:
 	bl func_fe6_0803CAC8
 	ldr r0, [sp, #0xc]
@@ -17837,7 +17837,7 @@ func_fe6_0803E028: @ 0x0803E028
 	bne .L0803E098
 	cmp r7, #0
 	beq .L0803E098
-	ldr r0, .L0803E0B0 @ =0x0203C984
+	ldr r0, .L0803E0B0 @ =gSioBmSt
 	adds r0, #0xa
 	adds r0, r2, r0
 	strb r6, [r0]
@@ -17853,7 +17853,7 @@ func_fe6_0803E028: @ 0x0803E028
 	bx r0
 	.align 2, 0
 .L0803E0AC: .4byte gUnk_030013F0
-.L0803E0B0: .4byte 0x0203C984
+.L0803E0B0: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803E0B4
 func_fe6_0803E0B4: @ 0x0803E0B4
@@ -17862,7 +17862,7 @@ func_fe6_0803E0B4: @ 0x0803E0B4
 	push {r7}
 	mov r8, r0
 	ldr r0, .L0803E154 @ =gUnk_030013F0
-	ldr r5, .L0803E158 @ =0x0203C984
+	ldr r5, .L0803E158 @ =gSioBmSt
 	ldrb r2, [r5, #4]
 	adds r1, r2, r0
 	ldrb r7, [r1]
@@ -17910,8 +17910,8 @@ func_fe6_0803E0B4: @ 0x0803E0B4
 	bne .L0803E176
 .L0803E11A:
 	adds r4, r1, #0
-	ldr r2, .L0803E158 @ =0x0203C984
-	ldr r3, .L0803E160 @ =0x0203C618
+	ldr r2, .L0803E158 @ =gSioBmSt
+	ldr r3, .L0803E160 @ =gLinkArenaSt
 	adds r3, #0xa0
 	ldrb r7, [r3]
 	ldrb r1, [r2, #0xe]
@@ -17939,9 +17939,9 @@ func_fe6_0803E0B4: @ 0x0803E0B4
 	b .L0803E166
 	.align 2, 0
 .L0803E154: .4byte gUnk_030013F0
-.L0803E158: .4byte 0x0203C984
+.L0803E158: .4byte gSioBmSt
 .L0803E15C: .4byte 0x0000FFFE
-.L0803E160: .4byte 0x0203C618
+.L0803E160: .4byte gLinkArenaSt
 .L0803E164:
 	lsrs r4, r6, #6
 .L0803E166:
@@ -17988,24 +17988,24 @@ func_fe6_0803E1B0: @ 0x0803E1B0
 	ands r0, r1
 	cmp r0, #0
 	beq .L0803E1D8
-	ldr r0, .L0803E1E0 @ =gUnk_0300456C
+	ldr r0, .L0803E1E0 @ =gSioMsgBuf
 	movs r2, #0
 	movs r1, #0x14
 	strb r1, [r0]
-	ldr r1, .L0803E1E4 @ =gUnk_Sio_085C98F4
+	ldr r1, .L0803E1E4 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
 	strh r2, [r0, #2]
 	movs r1, #4
-	bl func_fe6_08035DC8
+	bl SioSend
 .L0803E1D8:
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L0803E1DC: .4byte gKeySt
-.L0803E1E0: .4byte gUnk_0300456C
-.L0803E1E4: .4byte gUnk_Sio_085C98F4
+.L0803E1E0: .4byte gSioMsgBuf
+.L0803E1E4: .4byte gSioSt
 
 	thumb_func_start func_fe6_0803E1E8
 func_fe6_0803E1E8: @ 0x0803E1E8
@@ -18036,7 +18036,7 @@ func_fe6_0803E204: @ 0x0803E204
 	ldr r2, .L0803E230 @ =func_fe6_0803E1E8
 	adds r0, r4, #0
 	add r1, sp, #4
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L0803E2AC
@@ -18072,7 +18072,7 @@ func_fe6_0803E204: @ 0x0803E204
 	.align 2, 0
 .L0803E258: .4byte 0x0203C988
 .L0803E25C:
-	bl func_fe6_0803C2B0
+	bl EndLinkArenaPointsBox
 	add r1, sp, #4
 	ldrb r2, [r1]
 	lsls r0, r2, #4
@@ -18080,7 +18080,7 @@ func_fe6_0803E204: @ 0x0803E204
 	ldr r1, .L0803E288 @ =0x0203C6B9
 	adds r0, r0, r1
 	ldr r1, .L0803E28C @ =gUnk_03001428
-	bl func_fe6_080368DC
+	bl SioStrCpy
 	ldr r0, .L0803E290 @ =gUnk_Sio_085CA884
 	movs r1, #0x60
 	movs r2, #0
@@ -18095,7 +18095,7 @@ func_fe6_0803E204: @ 0x0803E204
 .L0803E28C: .4byte gUnk_03001428
 .L0803E290: .4byte gUnk_Sio_085CA884
 .L0803E294:
-	bl func_fe6_0803C2B0
+	bl EndLinkArenaPointsBox
 	ldr r0, .L0803E2B8 @ =gUnk_Sio_085CA8A4
 	movs r1, #0x60
 	movs r2, #0
@@ -18137,7 +18137,7 @@ func_fe6_0803E2D0: @ 0x0803E2D0
 	ldr r2, .L0803E2F8 @ =func_fe6_0803E2BC
 	adds r0, r4, #0
 	add r1, sp, #4
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L0803E360
@@ -18263,7 +18263,7 @@ func_fe6_0803E3C8: @ 0x0803E3C8
 	ldr r2, .L0803E3F0 @ =func_fe6_0803E3B4
 	adds r0, r4, #0
 	mov r1, sp
-	bl func_fe6_080362B0
+	bl SioReceiveData
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq .L0803E496
@@ -18311,7 +18311,7 @@ func_fe6_0803E3C8: @ 0x0803E3C8
 .L0803E438: .4byte 0x0000FFFE
 .L0803E43C:
 	ldr r4, .L0803E4A4 @ =gUnk_030013F0
-	ldr r5, .L0803E4A8 @ =0x0203C984
+	ldr r5, .L0803E4A8 @ =gSioBmSt
 	ldrb r1, [r5, #4]
 	adds r0, r1, r4
 	ldrb r0, [r0]
@@ -18360,7 +18360,7 @@ func_fe6_0803E3C8: @ 0x0803E3C8
 	bx r0
 	.align 2, 0
 .L0803E4A4: .4byte gUnk_030013F0
-.L0803E4A8: .4byte 0x0203C984
+.L0803E4A8: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803E4AC
 func_fe6_0803E4AC: @ 0x0803E4AC
@@ -18457,7 +18457,7 @@ func_fe6_0803E514: @ 0x0803E514
 	cmp r5, r0
 	blt .L0803E52A
 .L0803E55E:
-	ldr r0, .L0803E580 @ =0x0203C984
+	ldr r0, .L0803E580 @ =gSioBmSt
 	asrs r1, r7, #6
 	lsls r1, r1, #2
 	adds r0, #0x14
@@ -18474,7 +18474,7 @@ func_fe6_0803E514: @ 0x0803E514
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0803E580: .4byte 0x0203C984
+.L0803E580: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803E584
 func_fe6_0803E584: @ 0x0803E584
@@ -18488,7 +18488,7 @@ func_fe6_0803E584: @ 0x0803E584
 	ands r0, r1
 	cmp r0, #0
 	beq .L0803E5BC
-	bl func_fe6_0803C2B0
+	bl EndLinkArenaPointsBox
 	str r4, [r5, #0x58]
 	ldr r0, .L0803E5C8 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
@@ -18528,7 +18528,7 @@ func_fe6_0803E5D0: @ 0x0803E5D0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0803E614
-	ldr r5, .L0803E628 @ =0x0203C984
+	ldr r5, .L0803E628 @ =gSioBmSt
 	adds r0, r5, #0
 	adds r0, #0xa
 	adds r0, r4, r0
@@ -18556,7 +18556,7 @@ func_fe6_0803E5D0: @ 0x0803E5D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803E628: .4byte 0x0203C984
+.L0803E628: .4byte gSioBmSt
 .L0803E62C: .4byte gPlaySt
 
 	thumb_func_start func_fe6_0803E630
@@ -18702,7 +18702,7 @@ func_fe6_0803E660: @ 0x0803E660
 .L0803E73A:
 	add r0, sp, #4
 	strh r5, [r0, #4]
-	ldr r0, .L0803E7C8 @ =0x0203C984
+	ldr r0, .L0803E7C8 @ =gSioBmSt
 	ldrb r0, [r0, #2]
 	lsls r0, r0, #6
 	mov sb, r0
@@ -18765,7 +18765,7 @@ func_fe6_0803E660: @ 0x0803E660
 .L0803E7BC: .4byte gPlaySt
 .L0803E7C0: .4byte gActiveUnitId
 .L0803E7C4: .4byte gActiveUnit
-.L0803E7C8: .4byte 0x0203C984
+.L0803E7C8: .4byte gSioBmSt
 .L0803E7CC: .4byte gUnk_0300140C
 .L0803E7D0:
 	movs r0, #1
@@ -18990,7 +18990,7 @@ func_fe6_0803E964: @ 0x0803E964
 	mov sl, r0
 	movs r7, #0
 .L0803E984:
-	ldr r0, .L0803EA20 @ =gUnk_Sio_085C98F4
+	ldr r0, .L0803EA20 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -19067,7 +19067,7 @@ func_fe6_0803E964: @ 0x0803E964
 	bx r0
 	.align 2, 0
 .L0803EA1C: .4byte gUnk_Sio_085CA8B4
-.L0803EA20: .4byte gUnk_Sio_085C98F4
+.L0803EA20: .4byte gSioSt
 .L0803EA24: .4byte gUnk_Sio_0810F390
 .L0803EA28: .4byte gUnk_030013F0
 .L0803EA2C: .4byte Sprite_16x16
@@ -19114,7 +19114,7 @@ func_fe6_0803EA54: @ 0x0803EA54
 func_fe6_0803EA74: @ 0x0803EA74
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0803EA8C @ =0x0203C984
+	ldr r0, .L0803EA8C @ =gSioBmSt
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	bne .L0803EA90
@@ -19123,7 +19123,7 @@ func_fe6_0803EA74: @ 0x0803EA74
 	bl Proc_Goto
 	b .L0803EAA2
 	.align 2, 0
-.L0803EA8C: .4byte 0x0203C984
+.L0803EA8C: .4byte gSioBmSt
 .L0803EA90:
 	bl EndAllMus
 	ldr r0, .L0803EAA8 @ =gPlaySt
@@ -19141,7 +19141,7 @@ func_fe6_0803EA74: @ 0x0803EA74
 	thumb_func_start func_fe6_0803EAAC
 func_fe6_0803EAAC: @ 0x0803EAAC
 	push {lr}
-	ldr r2, .L0803EAC0 @ =0x0203C984
+	ldr r2, .L0803EAC0 @ =gSioBmSt
 	ldrb r1, [r2, #8]
 	cmp r1, #0
 	bne .L0803EAC4
@@ -19150,7 +19150,7 @@ func_fe6_0803EAAC: @ 0x0803EAAC
 	bl Proc_Goto
 	b .L0803EAD6
 	.align 2, 0
-.L0803EAC0: .4byte 0x0203C984
+.L0803EAC0: .4byte gSioBmSt
 .L0803EAC4:
 	bl EndAllMus
 	ldr r0, .L0803EADC @ =gPlaySt
@@ -19169,7 +19169,7 @@ func_fe6_0803EAAC: @ 0x0803EAAC
 func_fe6_0803EAE0: @ 0x0803EAE0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0803EAF8 @ =0x0203C984
+	ldr r0, .L0803EAF8 @ =gSioBmSt
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	bne .L0803EAFC
@@ -19178,11 +19178,11 @@ func_fe6_0803EAE0: @ 0x0803EAE0
 	bl Proc_Goto
 	b .L0803EB18
 	.align 2, 0
-.L0803EAF8: .4byte 0x0203C984
+.L0803EAF8: .4byte gSioBmSt
 .L0803EAFC:
 	bl EndAllMus
 	bl EndAllMus
-	ldr r1, .L0803EB20 @ =0x0203C618
+	ldr r1, .L0803EB20 @ =gLinkArenaSt
 	movs r0, #1
 	strb r0, [r1, #0xb]
 	movs r0, #0xff
@@ -19195,23 +19195,23 @@ func_fe6_0803EAE0: @ 0x0803EAE0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803EB20: .4byte 0x0203C618
+.L0803EB20: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803EB24
 func_fe6_0803EB24: @ 0x0803EB24
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	movs r6, #0
-	ldr r1, .L0803EB38 @ =0x0203C618
+	ldr r1, .L0803EB38 @ =gLinkArenaSt
 	ldrb r0, [r1]
 	cmp r0, #1
 	bne .L0803EB3C
 	strb r0, [r1, #0xb]
 	b .L0803EB8E
 	.align 2, 0
-.L0803EB38: .4byte 0x0203C618
+.L0803EB38: .4byte gLinkArenaSt
 .L0803EB3C:
-	ldr r2, .L0803EBA0 @ =0x0203C984
+	ldr r2, .L0803EBA0 @ =gSioBmSt
 	adds r4, r1, #0
 	adds r4, #0xa0
 	ldrb r0, [r4]
@@ -19263,7 +19263,7 @@ func_fe6_0803EB24: @ 0x0803EB24
 	bl Proc_Goto
 	b .L0803EBB6
 	.align 2, 0
-.L0803EBA0: .4byte 0x0203C984
+.L0803EBA0: .4byte gSioBmSt
 .L0803EBA4: .4byte gPlaySt
 .L0803EBA8:
 	ldrb r0, [r3, #0xf]
@@ -19280,7 +19280,7 @@ func_fe6_0803EB24: @ 0x0803EB24
 func_fe6_0803EBBC: @ 0x0803EBBC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, .L0803EBDC @ =0x0203C618
+	ldr r1, .L0803EBDC @ =gLinkArenaSt
 	ldrb r0, [r1]
 	cmp r0, #1
 	bne .L0803EBE0
@@ -19292,7 +19292,7 @@ func_fe6_0803EBBC: @ 0x0803EBBC
 	bl Proc_Goto
 	b .L0803EBF2
 	.align 2, 0
-.L0803EBDC: .4byte 0x0203C618
+.L0803EBDC: .4byte gLinkArenaSt
 .L0803EBE0:
 	movs r0, #2
 	strb r0, [r1, #0xb]
@@ -19311,8 +19311,8 @@ func_fe6_0803EBF8: @ 0x0803EBF8
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	movs r5, #0
-	ldr r2, .L0803EC64 @ =0x0203C984
-	ldr r0, .L0803EC68 @ =0x0203C618
+	ldr r2, .L0803EC64 @ =gSioBmSt
+	ldr r0, .L0803EC68 @ =gLinkArenaSt
 	adds r4, r0, #0
 	adds r4, #0xa0
 	ldrb r0, [r4]
@@ -19363,8 +19363,8 @@ func_fe6_0803EBF8: @ 0x0803EBF8
 	bl Proc_Goto
 	b .L0803EC7E
 	.align 2, 0
-.L0803EC64: .4byte 0x0203C984
-.L0803EC68: .4byte 0x0203C618
+.L0803EC64: .4byte gSioBmSt
+.L0803EC68: .4byte gLinkArenaSt
 .L0803EC6C: .4byte gPlaySt
 .L0803EC70:
 	ldrb r0, [r3, #0xf]
@@ -19381,7 +19381,7 @@ func_fe6_0803EBF8: @ 0x0803EBF8
 func_fe6_0803EC84: @ 0x0803EC84
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, .L0803ECA4 @ =0x0203C618
+	ldr r1, .L0803ECA4 @ =gLinkArenaSt
 	movs r0, #2
 	strb r0, [r1, #0xb]
 	movs r0, #0xff
@@ -19393,7 +19393,7 @@ func_fe6_0803EC84: @ 0x0803EC84
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803ECA4: .4byte 0x0203C618
+.L0803ECA4: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803ECA8
 func_fe6_0803ECA8: @ 0x0803ECA8
@@ -19404,7 +19404,7 @@ func_fe6_0803ECA8: @ 0x0803ECA8
 	ldrb r4, [r2, #0xf]
 	lsls r1, r4, #6
 	str r1, [r0, #0x5c]
-	ldr r0, .L0803ECCC @ =0x0203C984
+	ldr r0, .L0803ECCC @ =gSioBmSt
 	adds r0, #0xa
 	ldrb r2, [r2, #0xf]
 	adds r0, r2, r0
@@ -19414,7 +19414,7 @@ func_fe6_0803ECA8: @ 0x0803ECA8
 	bx r0
 	.align 2, 0
 .L0803ECC8: .4byte gPlaySt
-.L0803ECCC: .4byte 0x0203C984
+.L0803ECCC: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803ECD0
 func_fe6_0803ECD0: @ 0x0803ECD0
@@ -19506,20 +19506,20 @@ func_fe6_0803ED74: @ 0x0803ED74
 	adds r1, r0, #0
 	cmp r1, #1
 	bne .L0803ED8C
-	ldr r0, .L0803ED88 @ =0x0203C984
+	ldr r0, .L0803ED88 @ =gSioBmSt
 	strb r1, [r0, #8]
 	b .L0803ED92
 	.align 2, 0
-.L0803ED88: .4byte 0x0203C984
+.L0803ED88: .4byte gSioBmSt
 .L0803ED8C:
-	ldr r1, .L0803ED98 @ =0x0203C984
+	ldr r1, .L0803ED98 @ =gSioBmSt
 	movs r0, #0
 	strb r0, [r1, #8]
 .L0803ED92:
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803ED98: .4byte 0x0203C984
+.L0803ED98: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803ED9C
 func_fe6_0803ED9C: @ 0x0803ED9C
@@ -19593,7 +19593,7 @@ func_fe6_0803EDEC: @ 0x0803EDEC
 	str r0, [r4, #0x5c]
 	b .L0803EDF0
 .L0803EE28:
-	ldr r3, .L0803EE5C @ =0x0203C984
+	ldr r3, .L0803EE5C @ =gSioBmSt
 	ldr r0, [r4, #0x58]
 	lsls r0, r0, #3
 	adds r1, r3, #0
@@ -19611,7 +19611,7 @@ func_fe6_0803EDEC: @ 0x0803EDEC
 	adds r2, #0x2c
 	strb r0, [r2]
 	adds r0, r4, #0
-	bl func_fe6_0803CA6C
+	bl StartSioPoints2
 	ldr r0, [r4, #0x5c]
 	adds r0, #1
 	str r0, [r4, #0x5c]
@@ -19620,13 +19620,13 @@ func_fe6_0803EDEC: @ 0x0803EDEC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803EE5C: .4byte 0x0203C984
+.L0803EE5C: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_0803EE60
 func_fe6_0803EE60: @ 0x0803EE60
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L0803EE78 @ =0x0203C618
+	ldr r0, .L0803EE78 @ =gLinkArenaSt
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne .L0803EE74
@@ -19637,7 +19637,7 @@ func_fe6_0803EE60: @ 0x0803EE60
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803EE78: .4byte 0x0203C618
+.L0803EE78: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_0803EE7C
 func_fe6_0803EE7C: @ 0x0803EE7C
@@ -19771,21 +19771,21 @@ func_fe6_0803EF4C: @ 0x0803EF4C
 
 	thumb_func_start func_fe6_0803EF9C
 func_fe6_0803EF9C: @ 0x0803EF9C
-	ldr r1, .L0803EFA4 @ =0x0203C9D0
+	ldr r1, .L0803EFA4 @ =Unk_Sio_0203C9D0
 	movs r0, #1
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-.L0803EFA4: .4byte 0x0203C9D0
+.L0803EFA4: .4byte Unk_Sio_0203C9D0
 
 	thumb_func_start func_fe6_0803EFA8
 func_fe6_0803EFA8: @ 0x0803EFA8
-	ldr r1, .L0803EFB0 @ =0x0203C9D0
+	ldr r1, .L0803EFB0 @ =Unk_Sio_0203C9D0
 	movs r0, #0
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-.L0803EFB0: .4byte 0x0203C9D0
+.L0803EFB0: .4byte Unk_Sio_0203C9D0
 
 	thumb_func_start func_fe6_0803EFB4
 func_fe6_0803EFB4: @ 0x0803EFB4
@@ -20859,11 +20859,11 @@ func_fe6_0803F7E4: @ 0x0803F7E4
 .L0803F818: .4byte gBg2Tm
 .L0803F81C: .4byte gDispIo
 
-	thumb_func_start func_fe6_0803F820
-func_fe6_0803F820: @ 0x0803F820
+	thumb_func_start NewSioWarp
+NewSioWarp: @ 0x0803F820
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0803F84C @ =gUnk_Sio_085CAEB4
+	ldr r0, .L0803F84C @ =ProcScr_SIOWARP
 	movs r1, #2
 	bl SpawnProc
 	ldr r2, [r4, #0x2c]
@@ -20883,10 +20883,10 @@ func_fe6_0803F820: @ 0x0803F820
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803F84C: .4byte gUnk_Sio_085CAEB4
+.L0803F84C: .4byte ProcScr_SIOWARP
 
-	thumb_func_start func_fe6_0803F850
-func_fe6_0803F850: @ 0x0803F850
+	thumb_func_start SioWarpFx_0803F850
+SioWarpFx_0803F850: @ 0x0803F850
 	push {lr}
 	ldr r0, [r0, #0x30]
 	movs r1, #0
@@ -20895,16 +20895,16 @@ func_fe6_0803F850: @ 0x0803F850
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0803F860
-func_fe6_0803F860: @ 0x0803F860
+	thumb_func_start SioWarpFx_HideMoveUnit
+SioWarpFx_HideMoveUnit: @ 0x0803F860
 	push {lr}
 	ldr r0, [r0, #0x30]
 	bl HideMu
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803F86C
-func_fe6_0803F86C: @ 0x0803F86C
+	thumb_func_start SioWarpFx_SetMUPosition
+SioWarpFx_SetMUPosition: @ 0x0803F86C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -20923,8 +20923,8 @@ func_fe6_0803F86C: @ 0x0803F86C
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803F890
-func_fe6_0803F890: @ 0x0803F890
+	thumb_func_start SioWarpFx_ShowMoveUnit
+SioWarpFx_ShowMoveUnit: @ 0x0803F890
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r1, [r4, #0x3c]
@@ -20941,19 +20941,19 @@ func_fe6_0803F890: @ 0x0803F890
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803F8B0
-func_fe6_0803F8B0: @ 0x0803F8B0
+	thumb_func_start SioWarpFx_0803F8B0
+SioWarpFx_0803F8B0: @ 0x0803F8B0
 	push {lr}
 	ldr r0, [r0, #0x30]
 	bl func_fe6_0803F694
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803F8BC
-func_fe6_0803F8BC: @ 0x0803F8BC
+	thumb_func_start SioWarpFx_AwaitSioWarp
+SioWarpFx_AwaitSioWarp: @ 0x0803F8BC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0803F8DC @ =gUnk_Sio_085CAEB4
+	ldr r0, .L0803F8DC @ =ProcScr_SIOWARP
 	bl FindProc
 	rsbs r1, r0, #0
 	orrs r1, r0
@@ -20966,10 +20966,10 @@ func_fe6_0803F8BC: @ 0x0803F8BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803F8DC: .4byte gUnk_Sio_085CAEB4
+.L0803F8DC: .4byte ProcScr_SIOWARP
 
-	thumb_func_start func_fe6_0803F8E0
-func_fe6_0803F8E0: @ 0x0803F8E0
+	thumb_func_start NewSioWarpFx
+NewSioWarpFx: @ 0x0803F8E0
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -20983,13 +20983,13 @@ func_fe6_0803F8E0: @ 0x0803F8E0
 	lsrs r4, r0, #0x18
 	cmp r1, #0
 	beq .L0803F908
-	ldr r0, .L0803F904 @ =gUnk_Sio_085CAEE4
+	ldr r0, .L0803F904 @ =ProcScr_SIOWARPFX
 	bl SpawnProcLocking
 	b .L0803F910
 	.align 2, 0
-.L0803F904: .4byte gUnk_Sio_085CAEE4
+.L0803F904: .4byte ProcScr_SIOWARPFX
 .L0803F908:
-	ldr r0, .L0803F934 @ =gUnk_Sio_085CAEE4
+	ldr r0, .L0803F934 @ =ProcScr_SIOWARPFX
 	movs r1, #2
 	bl SpawnProc
 .L0803F910:
@@ -21011,10 +21011,10 @@ func_fe6_0803F8E0: @ 0x0803F8E0
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0803F934: .4byte gUnk_Sio_085CAEE4
+.L0803F934: .4byte ProcScr_SIOWARPFX
 
-	thumb_func_start func_fe6_0803F938
-func_fe6_0803F938: @ 0x0803F938
+	thumb_func_start NewSioWarpFxPartial
+NewSioWarpFxPartial: @ 0x0803F938
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -21028,13 +21028,13 @@ func_fe6_0803F938: @ 0x0803F938
 	lsrs r4, r0, #0x18
 	cmp r1, #0
 	beq .L0803F960
-	ldr r0, .L0803F95C @ =gUnk_Sio_085CAF5C
+	ldr r0, .L0803F95C @ =ProcScr_SioWarpFxPartial
 	bl SpawnProcLocking
 	b .L0803F968
 	.align 2, 0
-.L0803F95C: .4byte gUnk_Sio_085CAF5C
+.L0803F95C: .4byte ProcScr_SioWarpFxPartial
 .L0803F960:
-	ldr r0, .L0803F98C @ =gUnk_Sio_085CAF5C
+	ldr r0, .L0803F98C @ =ProcScr_SioWarpFxPartial
 	movs r1, #2
 	bl SpawnProc
 .L0803F968:
@@ -21056,15 +21056,15 @@ func_fe6_0803F938: @ 0x0803F938
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0803F98C: .4byte gUnk_Sio_085CAF5C
+.L0803F98C: .4byte ProcScr_SioWarpFxPartial
 
-	thumb_func_start func_fe6_0803F990
-func_fe6_0803F990: @ 0x0803F990
+	thumb_func_start PutLinkArenaButtonSpriteAt
+PutLinkArenaButtonSpriteAt: @ 0x0803F990
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
 	adds r2, r1, #0
-	ldr r3, .L0803F9B0 @ =gUnk_Sio_0810F434
+	ldr r3, .L0803F9B0 @ =Sprite_LinkArenaBButton
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #4
@@ -21075,27 +21075,27 @@ func_fe6_0803F990: @ 0x0803F990
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803F9B0: .4byte gUnk_Sio_0810F434
+.L0803F9B0: .4byte Sprite_LinkArenaBButton
 
-	thumb_func_start func_fe6_0803F9B4
-func_fe6_0803F9B4: @ 0x0803F9B4
+	thumb_func_start LAButtonSprites_Loop
+LAButtonSprites_Loop: @ 0x0803F9B4
 	push {lr}
 	ldr r2, [r0, #0x2c]
 	ldr r1, [r0, #0x30]
 	adds r0, r2, #0
-	bl func_fe6_0803F990
+	bl PutLinkArenaButtonSpriteAt
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0803F9C4
-func_fe6_0803F9C4: @ 0x0803F9C4
+	thumb_func_start StartLinkArenaButtonSpriteDraw
+StartLinkArenaButtonSpriteDraw: @ 0x0803F9C4
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
 	adds r6, r0, #0
 	mov r8, r1
 	adds r5, r2, #0
-	ldr r4, .L0803F9F0 @ =gUnk_Sio_085CAF9C
+	ldr r4, .L0803F9F0 @ =ProcScr_LAButtonSpriteDraw
 	adds r0, r4, #0
 	bl Proc_EndEach
 	adds r0, r4, #0
@@ -21110,12 +21110,12 @@ func_fe6_0803F9C4: @ 0x0803F9C4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803F9F0: .4byte gUnk_Sio_085CAF9C
+.L0803F9F0: .4byte ProcScr_LAButtonSpriteDraw
 
-	thumb_func_start func_fe6_0803F9F4
-func_fe6_0803F9F4: @ 0x0803F9F4
+	thumb_func_start EndLinkArenaButtonSpriteDraw
+EndLinkArenaButtonSpriteDraw: @ 0x0803F9F4
 	push {r4, lr}
-	ldr r4, .L0803FA10 @ =gUnk_Sio_085CAF9C
+	ldr r4, .L0803FA10 @ =ProcScr_LAButtonSpriteDraw
 	adds r0, r4, #0
 	bl FindProc
 	cmp r0, #0
@@ -21127,10 +21127,10 @@ func_fe6_0803F9F4: @ 0x0803F9F4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803FA10: .4byte gUnk_Sio_085CAF9C
+.L0803FA10: .4byte ProcScr_LAButtonSpriteDraw
 
-	thumb_func_start func_fe6_0803FA14
-func_fe6_0803FA14: @ 0x0803FA14
+	thumb_func_start InitSioBG
+InitSioBG: @ 0x0803FA14
 	push {r4, lr}
 	sub sp, #0x18
 	ldr r1, .L0803FA90 @ =gUnk_Sio_0810F442
@@ -21162,7 +21162,7 @@ func_fe6_0803FA14: @ 0x0803FA14
 	orrs r0, r1
 	strb r0, [r3, #0x18]
 	bl ApplySystemGraphics
-	ldr r0, .L0803FA98 @ =gUnk_08109A80
+	ldr r0, .L0803FA98 @ =Pal_LinkArenaRankIcons
 	movs r1, #0xc0
 	lsls r1, r1, #2
 	movs r2, #0x40
@@ -21188,12 +21188,12 @@ func_fe6_0803FA14: @ 0x0803FA14
 	.align 2, 0
 .L0803FA90: .4byte gUnk_Sio_0810F442
 .L0803FA94: .4byte gDispIo
-.L0803FA98: .4byte gUnk_08109A80
+.L0803FA98: .4byte Pal_LinkArenaRankIcons
 .L0803FA9C: .4byte Img_MuralBackground
 .L0803FAA0: .4byte Pal_LinkArenaMuralBackground
 
-	thumb_func_start func_fe6_0803FAA4
-func_fe6_0803FAA4: @ 0x0803FAA4
+	thumb_func_start Sio_RestartBgSlide
+Sio_RestartBgSlide: @ 0x0803FAA4
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
@@ -21297,8 +21297,8 @@ func_fe6_0803FB08: @ 0x0803FB08
 .L0803FB6C: .4byte ProcScr_BackgroundSlide
 .L0803FB70: .4byte 0x0000027F
 
-	thumb_func_start func_fe6_0803FB74
-func_fe6_0803FB74: @ 0x0803FB74
+	thumb_func_start Sio_EndBackgroundSlide
+Sio_EndBackgroundSlide: @ 0x0803FB74
 	push {lr}
 	ldr r0, .L0803FB80 @ =ProcScr_BackgroundSlide
 	bl Proc_EndEach
@@ -21307,8 +21307,8 @@ func_fe6_0803FB74: @ 0x0803FB74
 	.align 2, 0
 .L0803FB80: .4byte ProcScr_BackgroundSlide
 
-	thumb_func_start func_fe6_0803FB84
-func_fe6_0803FB84: @ 0x0803FB84
+	thumb_func_start SioCopyVRAM
+SioCopyVRAM: @ 0x0803FB84
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -21366,7 +21366,7 @@ func_fe6_0803FBC4: @ 0x0803FBC4
 	ldr r1, .L0803FC10 @ =0x06014000
 	movs r2, #8
 	movs r3, #2
-	bl func_fe6_0803FB84
+	bl SioCopyVRAM
 	ldr r0, .L0803FC14 @ =gBg2Tm
 	ldr r1, .L0803FC18 @ =gUnk_08109D78
 	movs r2, #0x80
@@ -21401,8 +21401,8 @@ func_fe6_0803FC1C: @ 0x0803FC1C
 	.align 2, 0
 .L0803FC38: .4byte gUnk_Sio_085CAFB4
 
-	thumb_func_start func_fe6_0803FC3C
-func_fe6_0803FC3C: @ 0x0803FC3C
+	thumb_func_start StartLinkArenaTitleBanner
+StartLinkArenaTitleBanner: @ 0x0803FC3C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
@@ -21564,7 +21564,7 @@ func_fe6_0803FD40: @ 0x0803FD40
 	adds r1, r5, #0
 	movs r2, #1
 	movs r3, #2
-	bl func_fe6_0803FB84
+	bl SioCopyVRAM
 	adds r5, #0x20
 	adds r4, #1
 	cmp r4, r6
@@ -21689,7 +21689,7 @@ func_fe6_0803FE64: @ 0x0803FE64
 	mov r0, sp
 	movs r2, #0x20
 	bl memcpy
-	ldr r0, .L0803FEAC @ =0x0203C9D0
+	ldr r0, .L0803FEAC @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -21716,7 +21716,7 @@ func_fe6_0803FE64: @ 0x0803FE64
 	bx r0
 	.align 2, 0
 .L0803FEA8: .4byte gUnk_Sio_0810F50A
-.L0803FEAC: .4byte 0x0203C9D0
+.L0803FEAC: .4byte Unk_Sio_0203C9D0
 .L0803FEB0: .4byte gPal
 
 	thumb_func_start func_fe6_0803FEB4
@@ -21865,7 +21865,7 @@ func_fe6_0803FEB4: @ 0x0803FEB4
 	ldrsh r2, [r7, r3]
 	adds r2, #8
 	ldr r3, .L0804000C @ =gUnk_Sio_085CB020
-	ldr r0, .L08040010 @ =0x0203C618
+	ldr r0, .L08040010 @ =gLinkArenaSt
 	ldrb r0, [r0, #5]
 	lsls r0, r0, #2
 	adds r0, r0, r3
@@ -21888,7 +21888,7 @@ func_fe6_0803FEB4: @ 0x0803FEB4
 .L08040004: .4byte Sprite_8x16
 .L08040008: .4byte Sprite_8x16_HFlipped
 .L0804000C: .4byte gUnk_Sio_085CB020
-.L08040010: .4byte 0x0203C618
+.L08040010: .4byte gLinkArenaSt
 
 	thumb_func_start func_fe6_08040014
 func_fe6_08040014: @ 0x08040014
@@ -21977,7 +21977,7 @@ func_fe6_080400A0: @ 0x080400A0
 	mov r0, sp
 	movs r2, #0x20
 	bl memcpy
-	ldr r0, .L080400F0 @ =0x0203C9D0
+	ldr r0, .L080400F0 @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -22006,7 +22006,7 @@ func_fe6_080400A0: @ 0x080400A0
 	.align 2, 0
 .L080400E8: .4byte gUnk_08109BC0
 .L080400EC: .4byte gUnk_Sio_0810F50A
-.L080400F0: .4byte 0x0203C9D0
+.L080400F0: .4byte Unk_Sio_0203C9D0
 .L080400F4: .4byte gPal
 .L080400F8: .4byte 0x0000033E
 
@@ -22019,7 +22019,7 @@ func_fe6_080400FC: @ 0x080400FC
 	mov r0, sp
 	movs r2, #0x20
 	bl memcpy
-	ldr r0, .L0804014C @ =0x0203C9D0
+	ldr r0, .L0804014C @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -22049,7 +22049,7 @@ func_fe6_080400FC: @ 0x080400FC
 	.align 2, 0
 .L08040144: .4byte gUnk_08109C20
 .L08040148: .4byte gUnk_Sio_0810F50A
-.L0804014C: .4byte 0x0203C9D0
+.L0804014C: .4byte Unk_Sio_0203C9D0
 .L08040150: .4byte gPal
 
 	thumb_func_start func_fe6_08040154
@@ -22061,7 +22061,7 @@ func_fe6_08040154: @ 0x08040154
 	push {r5, r6, r7}
 	sub sp, #8
 	adds r7, r0, #0
-	ldr r0, .L08040194 @ =0x0203C618
+	ldr r0, .L08040194 @ =gLinkArenaSt
 	ldrb r0, [r0]
 	cmp r0, #1
 	beq .L0804016C
@@ -22088,7 +22088,7 @@ func_fe6_08040154: @ 0x08040154
 	lsls r0, r0, #4
 	b .L080401A0
 	.align 2, 0
-.L08040194: .4byte 0x0203C618
+.L08040194: .4byte gLinkArenaSt
 .L08040198: .4byte gUnk_Sio_085CB044
 .L0804019C:
 	movs r0, #0x80
@@ -22119,7 +22119,7 @@ func_fe6_08040154: @ 0x08040154
 	str r0, [sp]
 	movs r0, #4
 	adds r2, r5, #0
-	ldr r3, .L080402BC @ =gUnk_Sio_0810F52A
+	ldr r3, .L080402BC @ =Sprite_LinkArena_NAMEBANNER
 	bl PutSprite
 	adds r0, r7, #0
 	adds r0, #0x3a
@@ -22146,7 +22146,7 @@ func_fe6_08040154: @ 0x08040154
 	ldr r0, [r7, #0x40]
 	cmp r0, #0
 	beq .L080402B4
-	ldr r0, .L080402C4 @ =0x0203C9D0
+	ldr r0, .L080402C4 @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -22230,9 +22230,9 @@ func_fe6_08040154: @ 0x08040154
 	bl func_fe6_080400FC
 	b .L0804036A
 	.align 2, 0
-.L080402BC: .4byte gUnk_Sio_0810F52A
+.L080402BC: .4byte Sprite_LinkArena_NAMEBANNER
 .L080402C0: .4byte gUnk_Sio_0810F544
-.L080402C4: .4byte 0x0203C9D0
+.L080402C4: .4byte Unk_Sio_0203C9D0
 .L080402C8: .4byte gPal
 .L080402CC: .4byte Pal_0831AAFC
 .L080402D0: .4byte 0x0000031A
@@ -22311,7 +22311,7 @@ func_fe6_08040154: @ 0x08040154
 .L08040366:
 	bl func_fe6_080400A0
 .L0804036A:
-	ldr r0, .L080403B8 @ =0x0203C618
+	ldr r0, .L080403B8 @ =gLinkArenaSt
 	movs r1, #0x80
 	lsls r1, r1, #4
 	mov r8, r1
@@ -22329,7 +22329,7 @@ func_fe6_08040154: @ 0x08040154
 	beq .L08040390
 	movs r0, #0xc0
 	movs r1, #0x10
-	bl func_fe6_0803F990
+	bl PutLinkArenaButtonSpriteAt
 .L08040390:
 	ldr r0, [r7, #0x48]
 	cmp r0, #0
@@ -22352,7 +22352,7 @@ func_fe6_08040154: @ 0x08040154
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080403B8: .4byte 0x0203C618
+.L080403B8: .4byte gLinkArenaSt
 .L080403BC: .4byte gUnk_Sio_085CB07A
 
 	thumb_func_start func_fe6_080403C0
@@ -22545,8 +22545,8 @@ func_fe6_080404E8: @ 0x080404E8
 	.align 2, 0
 .L0804052C: .4byte gUnk_Sio_085CB0D4
 
-	thumb_func_start func_fe6_08040530
-func_fe6_08040530: @ 0x08040530
+	thumb_func_start ScrollMultiArenaTeamSprites
+ScrollMultiArenaTeamSprites: @ 0x08040530
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, .L08040548 @ =gUnk_Sio_085CB0D4
@@ -22564,7 +22564,7 @@ func_fe6_08040530: @ 0x08040530
 func_fe6_0804054C: @ 0x0804054C
 	push {r4, r5, r6, lr}
 	ldr r5, .L08040590 @ =gUnk_08109C00
-	ldr r0, .L08040594 @ =0x0203C9D0
+	ldr r0, .L08040594 @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -22598,7 +22598,7 @@ func_fe6_0804054C: @ 0x0804054C
 	bx r0
 	.align 2, 0
 .L08040590: .4byte gUnk_08109C00
-.L08040594: .4byte 0x0203C9D0
+.L08040594: .4byte Unk_Sio_0203C9D0
 .L08040598: .4byte gPal
 .L0804059C: .4byte 0x00000336
 
@@ -22643,7 +22643,7 @@ func_fe6_080405A0: @ 0x080405A0
 	movs r1, #0x60
 	movs r2, #0x20
 	bl PutSprite
-	ldr r3, .L08040634 @ =gUnk_Sio_0810F52A
+	ldr r3, .L08040634 @ =Sprite_LinkArena_NAMEBANNER
 	movs r0, #0x80
 	lsls r0, r0, #4
 	str r0, [sp]
@@ -22673,7 +22673,7 @@ func_fe6_080405A0: @ 0x080405A0
 .L08040628: .4byte gUnk_Sio_085CB0EC
 .L0804062C: .4byte gUnk_Sio_0810F57C
 .L08040630: .4byte gUnk_Sio_085CB044
-.L08040634: .4byte gUnk_Sio_0810F52A
+.L08040634: .4byte Sprite_LinkArena_NAMEBANNER
 .L08040638: .4byte gUnk_Sio_085CB0F4
 .L0804063C:
 	ldr r3, [r7]
@@ -22697,7 +22697,7 @@ func_fe6_080405A0: @ 0x080405A0
 	bne .L0804066A
 	movs r0, #0xc0
 	movs r1, #0x10
-	bl func_fe6_0803F990
+	bl PutLinkArenaButtonSpriteAt
 .L0804066A:
 	bl func_fe6_0804054C
 	add sp, #4
@@ -22739,8 +22739,8 @@ func_fe6_0804067C: @ 0x0804067C
 	.align 2, 0
 .L080406B4: .4byte gUnk_Sio_085CB108
 
-	thumb_func_start func_fe6_080406B8
-func_fe6_080406B8: @ 0x080406B8
+	thumb_func_start UpdateNameEntrySpriteDraw
+UpdateNameEntrySpriteDraw: @ 0x080406B8
 	push {r4, r5, lr}
 	ldr r4, [sp, #0xc]
 	ldr r5, [sp, #0x10]
@@ -22802,7 +22802,7 @@ func_fe6_080406D0: @ 0x080406D0
 	bl PutUiHand
 	movs r0, #0xc0
 	movs r1, #0x10
-	bl func_fe6_0803F990
+	bl PutLinkArenaButtonSpriteAt
 	add sp, #4
 	pop {r3}
 	mov r8, r3
@@ -22842,7 +22842,7 @@ func_fe6_08040770: @ 0x08040770
 	push {lr}
 	adds r1, r0, #0
 	ldr r2, .L0804079C @ =gUnk_08109C00
-	ldr r0, .L080407A0 @ =0x0203C9D0
+	ldr r0, .L080407A0 @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -22862,7 +22862,7 @@ func_fe6_08040770: @ 0x08040770
 	bx r0
 	.align 2, 0
 .L0804079C: .4byte gUnk_08109C00
-.L080407A0: .4byte 0x0203C9D0
+.L080407A0: .4byte Unk_Sio_0203C9D0
 .L080407A4: .4byte gPal
 
 	thumb_func_start func_fe6_080407A8
@@ -23286,8 +23286,8 @@ func_fe6_08040A80: @ 0x08040A80
 	.align 2, 0
 .L08040AE8: .4byte gUnk_Sio_085CB174
 
-	thumb_func_start func_fe6_08040AEC
-func_fe6_08040AEC: @ 0x08040AEC
+	thumb_func_start UpdateLinkArenaMenuScrollBar
+UpdateLinkArenaMenuScrollBar: @ 0x08040AEC
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r7, r0, #0x18
@@ -23486,8 +23486,8 @@ func_fe6_08040C7C: @ 0x08040C7C
 	.align 2, 0
 .L08040C8C: .4byte gMusicPlayer_MainBgm
 
-	thumb_func_start func_fe6_08040C90
-func_fe6_08040C90: @ 0x08040C90
+	thumb_func_start SioSetUniqueWeaponUnbreakable
+SioSetUniqueWeaponUnbreakable: @ 0x08040C90
 	lsls r1, r1, #1
 	adds r0, #0x1c
 	adds r2, r0, r1
@@ -23502,15 +23502,15 @@ func_fe6_08040C90: @ 0x08040C90
 .L08040CA6:
 	bx lr
 
-	thumb_func_start func_fe6_08040CA8
-func_fe6_08040CA8: @ 0x08040CA8
+	thumb_func_start SioSetUniqueWeapons
+SioSetUniqueWeapons: @ 0x08040CA8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	movs r4, #0
 .L08040CAE:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl func_fe6_08040C90
+	bl SioSetUniqueWeaponUnbreakable
 	adds r4, #1
 	cmp r4, #4
 	ble .L08040CAE
@@ -23519,11 +23519,11 @@ func_fe6_08040CA8: @ 0x08040CA8
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08040CC4
-func_fe6_08040CC4: @ 0x08040CC4
+	thumb_func_start LAVersusSpriteDraw_Flashing
+LAVersusSpriteDraw_Flashing: @ 0x08040CC4
 	push {r4, r5, r6, lr}
-	ldr r5, .L08040D08 @ =gUnk_08109BE0
-	ldr r0, .L08040D0C @ =0x0203C9D0
+	ldr r5, .L08040D08 @ =Pal_LinkArenaActiveBannerFx
+	ldr r0, .L08040D0C @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -23556,13 +23556,13 @@ func_fe6_08040CC4: @ 0x08040CC4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08040D08: .4byte gUnk_08109BE0
-.L08040D0C: .4byte 0x0203C9D0
+.L08040D08: .4byte Pal_LinkArenaActiveBannerFx
+.L08040D0C: .4byte Unk_Sio_0203C9D0
 .L08040D10: .4byte gPal
 .L08040D14: .4byte 0x00000322
 
-	thumb_func_start func_fe6_08040D18
-func_fe6_08040D18: @ 0x08040D18
+	thumb_func_start LAVersusSpriteDraw_Loop
+LAVersusSpriteDraw_Loop: @ 0x08040D18
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -23589,7 +23589,7 @@ func_fe6_08040D18: @ 0x08040D18
 	adds r0, r0, r3
 	str r0, [sp]
 	movs r0, #4
-	ldr r3, .L08040EE4 @ =gUnk_Sio_0810F52A
+	ldr r3, .L08040EE4 @ =Sprite_LinkArena_NAMEBANNER
 	bl PutSprite
 	ldr r4, .L08040EE8 @ =gSinLut+0x80
 	movs r1, #0
@@ -23723,7 +23723,7 @@ func_fe6_08040D18: @ 0x08040D18
 	ldr r2, [r7, #0x30]
 	ldr r3, [sp, #4]
 	adds r2, r2, r3
-	ldr r3, .L08040EF4 @ =gUnk_Sio_085CB1E4
+	ldr r3, .L08040EF4 @ =SpriteArray_LAVersusPlayerNumbers
 	mov r4, sb
 	lsls r0, r4, #2
 	adds r0, r0, r3
@@ -23770,11 +23770,11 @@ func_fe6_08040D18: @ 0x08040D18
 	ldr r2, [r7, #0x30]
 	adds r2, r2, r0
 	adds r2, #0x12
-	ldr r3, .L08040EFC @ =gUnk_Sio_0810F664
+	ldr r3, .L08040EFC @ =Sprite_Sio_0810F664
 	str r4, [sp]
 	movs r0, #4
 	bl PutSprite
-	bl func_fe6_08040CC4
+	bl LAVersusSpriteDraw_Flashing
 .L08040ED2:
 	add sp, #8
 	pop {r3, r4, r5}
@@ -23785,23 +23785,23 @@ func_fe6_08040D18: @ 0x08040D18
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08040EE4: .4byte gUnk_Sio_0810F52A
+.L08040EE4: .4byte Sprite_LinkArena_NAMEBANNER
 .L08040EE8: .4byte gSinLut+0x80
 .L08040EEC: .4byte gSinLut
 .L08040EF0: .4byte 0x0000014F
-.L08040EF4: .4byte gUnk_Sio_085CB1E4
+.L08040EF4: .4byte SpriteArray_LAVersusPlayerNumbers
 .L08040EF8: .4byte gUnk_Sio_0810F65C
-.L08040EFC: .4byte gUnk_Sio_0810F664
+.L08040EFC: .4byte Sprite_Sio_0810F664
 
-	thumb_func_start func_fe6_08040F00
-func_fe6_08040F00: @ 0x08040F00
+	thumb_func_start StartLinkArenaVersusSpriteDraw
+StartLinkArenaVersusSpriteDraw: @ 0x08040F00
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
 	adds r6, r0, #0
 	mov r8, r1
 	adds r5, r2, #0
-	ldr r4, .L08040F4C @ =gUnk_Sio_085CB1F4
+	ldr r4, .L08040F4C @ =ProcScr_LAVersusSpriteDraw
 	adds r0, r4, #0
 	bl Proc_EndEach
 	adds r0, r4, #0
@@ -23833,33 +23833,33 @@ func_fe6_08040F00: @ 0x08040F00
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08040F4C: .4byte gUnk_Sio_085CB1F4
+.L08040F4C: .4byte ProcScr_LAVersusSpriteDraw
 
-	thumb_func_start func_fe6_08040F50
-func_fe6_08040F50: @ 0x08040F50
+	thumb_func_start EndLinkArenaVersusSpriteDraw
+EndLinkArenaVersusSpriteDraw: @ 0x08040F50
 	push {lr}
-	ldr r0, .L08040F5C @ =gUnk_Sio_085CB1F4
+	ldr r0, .L08040F5C @ =ProcScr_LAVersusSpriteDraw
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08040F5C: .4byte gUnk_Sio_085CB1F4
+.L08040F5C: .4byte ProcScr_LAVersusSpriteDraw
 
-	thumb_func_start func_fe6_08040F60
-func_fe6_08040F60: @ 0x08040F60
+	thumb_func_start GetLinkArenaVersusSpriteDraw
+GetLinkArenaVersusSpriteDraw: @ 0x08040F60
 	push {lr}
-	ldr r0, .L08040F6C @ =gUnk_Sio_085CB1F4
+	ldr r0, .L08040F6C @ =ProcScr_LAVersusSpriteDraw
 	bl FindProc
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08040F6C: .4byte gUnk_Sio_085CB1F4
+.L08040F6C: .4byte ProcScr_LAVersusSpriteDraw
 
 	thumb_func_start func_fe6_08040F70
 func_fe6_08040F70: @ 0x08040F70
 	push {r4, r5, lr}
-	ldr r5, .L08040FB4 @ =gUnk_08109BE0
-	ldr r0, .L08040FB8 @ =0x0203C9D0
+	ldr r5, .L08040FB4 @ =Pal_LinkArenaActiveBannerFx
+	ldr r0, .L08040FB8 @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -23892,15 +23892,15 @@ func_fe6_08040F70: @ 0x08040F70
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08040FB4: .4byte gUnk_08109BE0
-.L08040FB8: .4byte 0x0203C9D0
+.L08040FB4: .4byte Pal_LinkArenaActiveBannerFx
+.L08040FB8: .4byte Unk_Sio_0203C9D0
 .L08040FBC: .4byte gPal
 
 	thumb_func_start func_fe6_08040FC0
 func_fe6_08040FC0: @ 0x08040FC0
 	push {r4, r5, r6, lr}
-	ldr r5, .L08041004 @ =gUnk_08109BE0
-	ldr r0, .L08041008 @ =0x0203C9D0
+	ldr r5, .L08041004 @ =Pal_LinkArenaActiveBannerFx
+	ldr r0, .L08041008 @ =Unk_Sio_0203C9D0
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -23933,8 +23933,8 @@ func_fe6_08040FC0: @ 0x08040FC0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08041004: .4byte gUnk_08109BE0
-.L08041008: .4byte 0x0203C9D0
+.L08041004: .4byte Pal_LinkArenaActiveBannerFx
+.L08041008: .4byte Unk_Sio_0203C9D0
 .L0804100C: .4byte gPal
 .L08041010: .4byte 0x00000262
 
@@ -23987,7 +23987,7 @@ func_fe6_08041060: @ 0x08041060
 	cmp r0, #0x79
 	bhi .L08041082
 	ldr r1, [r1, #0x2c]
-	ldr r3, .L08041088 @ =gUnk_Sio_0810F672
+	ldr r3, .L08041088 @ =Sprite_Sio_0810F672
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #4
@@ -23998,7 +23998,7 @@ func_fe6_08041060: @ 0x08041060
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08041088: .4byte gUnk_Sio_0810F672
+.L08041088: .4byte Sprite_Sio_0810F672
 
 	thumb_func_start func_fe6_0804108C
 func_fe6_0804108C: @ 0x0804108C
@@ -24008,7 +24008,7 @@ func_fe6_0804108C: @ 0x0804108C
 	adds r6, r0, #0
 	mov r8, r1
 	adds r5, r2, #0
-	ldr r4, .L080410B8 @ =gUnk_Sio_085CB204
+	ldr r4, .L080410B8 @ =ProcScr_Sio_085CB204
 	adds r0, r4, #0
 	bl Proc_EndEach
 	adds r0, r4, #0
@@ -24023,21 +24023,21 @@ func_fe6_0804108C: @ 0x0804108C
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L080410B8: .4byte gUnk_Sio_085CB204
+.L080410B8: .4byte ProcScr_Sio_085CB204
 
-	thumb_func_start func_fe6_080410BC
-func_fe6_080410BC: @ 0x080410BC
+	thumb_func_start SioPutSupportMenuImage
+SioPutSupportMenuImage: @ 0x080410BC
 	push {r4, lr}
-	ldr r0, .L080410E8 @ =gUnk_0832A29C
-	ldr r4, .L080410EC @ =gUnk_Sio_0200152C
+	ldr r0, .L080410E8 @ =Img_SupportMenu
+	ldr r4, .L080410EC @ =gSioImgBuf
 	adds r1, r4, #0
 	bl Decompress
 	ldr r1, .L080410F0 @ =0x06016800
 	adds r0, r4, #0
 	movs r2, #6
 	movs r3, #4
-	bl func_fe6_0803FB84
-	ldr r0, .L080410F4 @ =gUnk_0832BDE8
+	bl SioCopyVRAM
+	ldr r0, .L080410F4 @ =Pal_SupportMenu
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -24046,18 +24046,18 @@ func_fe6_080410BC: @ 0x080410BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080410E8: .4byte gUnk_0832A29C
-.L080410EC: .4byte gUnk_Sio_0200152C
+.L080410E8: .4byte Img_SupportMenu
+.L080410EC: .4byte gSioImgBuf
 .L080410F0: .4byte 0x06016800
-.L080410F4: .4byte gUnk_0832BDE8
+.L080410F4: .4byte Pal_SupportMenu
 
-	thumb_func_start func_fe6_080410F8
-func_fe6_080410F8: @ 0x080410F8
+	thumb_func_start PutLinkArenaChoiceBannerSprite
+PutLinkArenaChoiceBannerSprite: @ 0x080410F8
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
 	adds r2, r1, #0
-	ldr r3, .L08041118 @ =gUnk_Sio_0810F6A4
+	ldr r3, .L08041118 @ =Sprite_LinkArena_ChoiceBanner
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #1
@@ -24068,10 +24068,10 @@ func_fe6_080410F8: @ 0x080410F8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08041118: .4byte gUnk_Sio_0810F6A4
+.L08041118: .4byte Sprite_LinkArena_ChoiceBanner
 
-	thumb_func_start func_fe6_0804111C
-func_fe6_0804111C: @ 0x0804111C
+	thumb_func_start SioAttackItemMenu_Usability
+SioAttackItemMenu_Usability: @ 0x0804111C
 	push {r4, r5, lr}
 	ldr r5, .L08041148 @ =gActiveUnit
 	ldr r0, [r5]
@@ -24110,21 +24110,21 @@ func_fe6_0804111C: @ 0x0804111C
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_08041168
-func_fe6_08041168: @ 0x08041168
+	thumb_func_start SioAttackItemMenu_Effect
+SioAttackItemMenu_Effect: @ 0x08041168
 	adds r0, r1, #0
 	adds r0, #0x3d
 	ldrb r0, [r0]
 	cmp r0, #1
 	beq .L08041184
-	ldr r0, .L08041180 @ =0x0203C984
+	ldr r0, .L08041180 @ =gSioBmSt
 	adds r1, #0x3c
 	ldrb r1, [r1]
 	strb r1, [r0, #7]
 	movs r0, #0x84
 	b .L08041186
 	.align 2, 0
-.L08041180: .4byte 0x0203C984
+.L08041180: .4byte gSioBmSt
 .L08041184:
 	movs r0, #8
 .L08041186:
@@ -24132,7 +24132,7 @@ func_fe6_08041168: @ 0x08041168
 
 	thumb_func_start func_fe6_08041188
 func_fe6_08041188: @ 0x08041188
-	ldr r2, .L08041198 @ =0x0203C984
+	ldr r2, .L08041198 @ =gSioBmSt
 	adds r1, #0x3c
 	ldrb r0, [r1]
 	adds r0, #1
@@ -24140,10 +24140,10 @@ func_fe6_08041188: @ 0x08041188
 	movs r0, #0x17
 	bx lr
 	.align 2, 0
-.L08041198: .4byte 0x0203C984
+.L08041198: .4byte gSioBmSt
 
-	thumb_func_start func_fe6_0804119C
-func_fe6_0804119C: @ 0x0804119C
+	thumb_func_start SioAttackItemMenu_OnDraw
+SioAttackItemMenu_OnDraw: @ 0x0804119C
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
 	ldr r0, .L080411F8 @ =gActiveUnit
@@ -24180,7 +24180,7 @@ func_fe6_0804119C: @ 0x0804119C
 	ldr r1, .L080411FC @ =gBg0Tm
 	adds r3, r3, r1
 	adds r1, r6, #0
-	bl func_fe6_08016694
+	bl DrawItemMenuLine
 	movs r0, #1
 	bl EnableBgSync
 	pop {r4, r5, r6}
@@ -24192,19 +24192,19 @@ func_fe6_0804119C: @ 0x0804119C
 
 	thumb_func_start func_fe6_08041200
 func_fe6_08041200: @ 0x08041200
-	ldr r1, .L0804120C @ =0x0203C984
+	ldr r1, .L0804120C @ =gSioBmSt
 	movs r0, #0
 	strb r0, [r1, #6]
 	movs r0, #0x1b
 	bx lr
 	.align 2, 0
-.L0804120C: .4byte 0x0203C984
+.L0804120C: .4byte gSioBmSt
 
 	thumb_func_start func_fe6_08041210
 func_fe6_08041210: @ 0x08041210
 	push {r4, r5, r6, r7, lr}
 	adds r2, r0, #0
-	ldr r1, .L08041278 @ =0x0203C984
+	ldr r1, .L08041278 @ =gSioBmSt
 	movs r0, #0
 	strb r0, [r1, #6]
 	adds r7, r2, #0
@@ -24252,6 +24252,6 @@ func_fe6_08041210: @ 0x08041210
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08041278: .4byte 0x0203C984
+.L08041278: .4byte gSioBmSt
 .L0804127C: .4byte gBg0Tm
 .L08041280: .4byte gBg1Tm

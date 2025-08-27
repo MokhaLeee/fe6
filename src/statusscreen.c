@@ -150,12 +150,12 @@ void func_fe6_080736C8(void)
 {
     int hard_flag = (gPlaySt.flags & PLAY_FLAG_HARD) != 0 ? 4 : 0;
 
-    func_fe6_08070CB4(hard_flag + 0, BGPAL_STATUSSCREEN_4);
-    func_fe6_08070CB4(hard_flag + 1, BGPAL_STATUSSCREEN_5);
-    func_fe6_08070D08(0x400 + BGCHR_B_STATUSSCREEN_3C0, func_fe6_08070E0C(&gPlaySt));
-    func_fe6_08070D48(BGCHR_STATUSSCREEN_280);
-    func_fe6_08070DA8(gBg2Tm + TM_OFFSET(3, 1), BGPAL_STATUSSCREEN_4);
-    func_fe6_08070DC8(gBg1Tm + TM_OFFSET(3, 0), BGPAL_STATUSSCREEN_5);
+    PutChapterTitlePalettle(hard_flag + 0, BGPAL_STATUSSCREEN_4);
+    PutChapterTitlePalettle(hard_flag + 1, BGPAL_STATUSSCREEN_5);
+    PutChapterTitleGfx(0x400 + BGCHR_B_STATUSSCREEN_3C0, GetChapterTitleExtra(&gPlaySt));
+    PutChapterTitleBG1(BGCHR_STATUSSCREEN_280);
+    PutChapterTitleTextTSA(gBg2Tm + TM_OFFSET(3, 1), BGPAL_STATUSSCREEN_4);
+    PutChapterTitleBgTSA(gBg1Tm + TM_OFFSET(3, 0), BGPAL_STATUSSCREEN_5);
 }
 
 void func_fe6_0807372C(struct StatusScreenProc * proc)
@@ -255,7 +255,7 @@ void func_fe6_08073AC8(struct StatusScreenProc * proc)
 
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
 
-    print_proc = SpawnProc(ProcScr_Unk_08677FD0, PROC_TREE_3);
+    print_proc = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
 
     print_proc->font = NULL;
     print_proc->line = 0;
@@ -269,7 +269,7 @@ void func_fe6_08073AC8(struct StatusScreenProc * proc)
 
     GetStringTextBox(print_proc->str_it, &gStatusScreenSt.trial_something_width, &gStatusScreenSt.trial_something_height);
 
-    func_fe6_08071274(print_proc);
+    TypeWritter_Loop(print_proc);
     Proc_End(print_proc);
 
     SetTextFontGlyphs(TEXT_GLYPHS_SYSTEM);

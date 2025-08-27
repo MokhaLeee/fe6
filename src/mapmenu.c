@@ -578,7 +578,7 @@ u32 UnitAttackItemMenu_Entry_Display(struct MenuProc * menu, struct MenuEntProc 
     int item = gActiveUnit->items[ent->id];
     bool is_usable = CanUnitUseWeapon(gActiveUnit, item);
 
-    func_fe6_08016694(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
+    DrawItemMenuLine(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
 
     return 0;
 }
@@ -854,7 +854,7 @@ u32 UnitItemMenu_Entry_Display(struct MenuProc * menu, struct MenuEntProc * ent)
 
     is_usable = CanUnitUseItem(gActiveUnit, item);
 
-    func_fe6_08016694(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
+    DrawItemMenuLine(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
     EnableBgSync(BG0_SYNC_BIT);
 }
 
@@ -1101,7 +1101,7 @@ u32 UnitAttackBallista_Entry_Display(struct MenuProc * menu, struct MenuEntProc 
     bool is_usable = (ent->availability == MENU_ENTRY_ENABLED) ? TRUE : FALSE;
     int item = GetBallistaItemAt(gActiveUnit->x, gActiveUnit->y);
 
-    func_fe6_08016694(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
+    DrawItemMenuLine(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
 }
 
 fu8 UnitAttackBallista_Entry_Select(struct MenuProc * menu, struct MenuEntProc * ent)
@@ -1572,7 +1572,7 @@ u32 StealItemMenu_Entry_Display(struct MenuProc * menu, struct MenuEntProc * ent
     int item = GetUnit(gAction.target)->items[ent->id];
     bool is_usable = IsItemStealable(item);
 
-    func_fe6_08016694(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
+    DrawItemMenuLine(&ent->text, item, is_usable, gBg0Tm + TM_OFFSET(ent->x, ent->y));
 }
 
 fu8 StealItemMenu_Entry_Select(struct MenuProc * menu, struct MenuEntProc * ent)

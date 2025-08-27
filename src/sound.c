@@ -70,12 +70,12 @@ bool IsBgmPlaying(void)
 
 void func_fe6_08002F9C(int volume)
 {
-    m4aMPlayVolumeControl(&gMusicPlayer_03006530, 0xFFFF, volume);
-    m4aMPlayVolumeControl(&gMusicPlayer_03006600, 0xFFFF, volume);
-    m4aMPlayVolumeControl(&gMusicPlayer_03006570, 0xFFFF, volume);
-    m4aMPlayVolumeControl(&gMusicPlayer_03006260, 0xFFFF, volume);
-    m4aMPlayVolumeControl(&gMusicPlayer_030062A0, 0xFFFF, volume);
-    m4aMPlayVolumeControl(&gMusicPlayer_030064B0, 0xFFFF, volume);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE1_SYS1, 0xFFFF, volume);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE2_SYS2, 0xFFFF, volume);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE3_BMP1, 0xFFFF, volume);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE4_BMP2, 0xFFFF, volume);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE5_BMP3, 0xFFFF, volume);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE6_BMP4, 0xFFFF, volume);
 }
 
 void SetBgmVolume(int volume)
@@ -100,12 +100,12 @@ void EarthQuakeSoundFadeOut(int speed)
     if (speed == 0)
         speed = 6;
 
-    m4aMPlayFadeOut(&gMusicPlayer_03006530, speed);
-    m4aMPlayFadeOut(&gMusicPlayer_03006600, speed);
-    m4aMPlayFadeOut(&gMusicPlayer_03006570, speed);
-    m4aMPlayFadeOut(&gMusicPlayer_03006260, speed);
-    m4aMPlayFadeOut(&gMusicPlayer_030062A0, speed);
-    m4aMPlayFadeOut(&gMusicPlayer_030064B0, speed);
+    m4aMPlayFadeOut(&gMPlayInfo_SE1_SYS1, speed);
+    m4aMPlayFadeOut(&gMPlayInfo_SE2_SYS2, speed);
+    m4aMPlayFadeOut(&gMPlayInfo_SE3_BMP1, speed);
+    m4aMPlayFadeOut(&gMPlayInfo_SE4_BMP2, speed);
+    m4aMPlayFadeOut(&gMPlayInfo_SE5_BMP3, speed);
+    m4aMPlayFadeOut(&gMPlayInfo_SE6_BMP4, speed);
 }
 
 void StartBgmCore(int song, struct MusicPlayer * music_player)

@@ -2,6 +2,15 @@
 
 	.syntax unified
 
+	.section .rodata
+	.global gUnk_081C9EF4
+gUnk_081C9EF4: @ 081C9EF4
+	.incbin "fe6-base.gba", 0x1C9EF4, (0x1C9F14 - 0x1C9EF4) @ length: 0020
+
+	.global gUnk_081C9F14
+gUnk_081C9F14: @ 081C9F14
+	.incbin "fe6-base.gba", 0x1C9F14, (0x1C9F34 - 0x1C9F14) @ length: 0020
+
 	.section .data
 	.global ProcScr_EfxSoundSE
 ProcScr_EfxSoundSE: @ 08605D40

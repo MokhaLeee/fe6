@@ -184,8 +184,8 @@ Tsa_Credit_0834523C: @ 0834523C
 Pal_Credit_08345420: @ 08345420
 	.incbin "fe6-base.gba", 0x345420, (0x345440 - 0x345420) @ length: 0020
 
-	.global gUnk_08345440
-gUnk_08345440: @ 08345440
+	.global Tsa_EndingPInfoBG
+Tsa_EndingPInfoBG: @ 08345440
 	.incbin "fe6-base.gba", 0x345440, (0x345934 - 0x345440) @ length: 04F4
 
 	.global gUnk_08345934

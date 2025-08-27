@@ -125,7 +125,7 @@ void WriteNewMultiArenaSave(void)
         ranking_ent.player_count = gInitialMultiArenaRankings[i].player_count;
         ranking_ent.mode = gInitialMultiArenaRankings[i].mode;
         ranking_ent.points = gInitialMultiArenaRankings[i].points;
-        func_fe6_080368DC(gInitialMultiArenaRankings[i].name, ranking_ent.name);
+        SioStrCpy(gInitialMultiArenaRankings[i].name, ranking_ent.name);
 
         WriteAndVerifySramFast(&ranking_ent, &dst->rankings[i], sizeof(ranking_ent));
     }
@@ -156,7 +156,7 @@ bool ReadMultiArenaSaveTeamName(int team, char * dst)
     if (gMultiArenaSaveTeamBufA.name[0] == 0)
         return FALSE;
 
-    func_fe6_080368DC(gMultiArenaSaveTeamBufA.name, dst);
+    SioStrCpy(gMultiArenaSaveTeamBufA.name, dst);
 
     return TRUE;
 }
