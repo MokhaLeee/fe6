@@ -138,8 +138,8 @@ func_fe6_080988BC: @ 0x080988BC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_080988C0
-func_fe6_080988C0: @ 0x080988C0
+	thumb_func_start OpAnin6_ResetBG
+OpAnin6_ResetBG: @ 0x080988C0
 	push {lr}
 	ldr r0, .L08098924 @ =BgConf_OpAnim_0869161C
 	bl InitBgs
@@ -2834,7 +2834,7 @@ func_fe6_08099D3C: @ 0x08099D3C
 	.align 2, 0
 .L08099D54: .4byte bool_opanim_03005284
 .L08099D58:
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	ldr r2, .L08099DA0 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -2877,7 +2877,7 @@ func_fe6_08099D3C: @ 0x08099D3C
 func_fe6_08099DA4: @ 0x08099DA4
 	push {r4, lr}
 	sub sp, #0x10
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	ldr r2, .L08099E38 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -4411,10 +4411,10 @@ func_fe6_0809A900: @ 0x0809A900
 .L0809A9E4: .4byte 0x0000FFE0
 .L0809A9E8: .4byte 0x0000E0FF
 
-	thumb_func_start func_fe6_0809A9EC
-func_fe6_0809A9EC: @ 0x0809A9EC
+	thumb_func_start OpAnim_PutThunderStormGfx
+OpAnim_PutThunderStormGfx: @ 0x0809A9EC
 	push {r4, lr}
-	ldr r4, .L0809AA14 @ =gUnk_0837ACD0
+	ldr r4, .L0809AA14 @ =Img_OpAnimThunderStorm
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -4423,15 +4423,15 @@ func_fe6_0809A9EC: @ 0x0809A9EC
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L0809AA18 @ =gUnk_0837C844
+	ldr r0, .L0809AA18 @ =Tsa_OpAnimThunderStorm
 	ldr r1, .L0809AA1C @ =gBuf
 	bl Decompress
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809AA14: .4byte gUnk_0837ACD0
-.L0809AA18: .4byte gUnk_0837C844
+.L0809AA14: .4byte Img_OpAnimThunderStorm
+.L0809AA18: .4byte Tsa_OpAnimThunderStorm
 .L0809AA1C: .4byte gBuf
 
 	thumb_func_start func_fe6_0809AA20
@@ -4475,8 +4475,8 @@ func_fe6_0809AA20: @ 0x0809AA20
 .L0809AA70: .4byte gUnk_08691E10
 .L0809AA74: .4byte gBuf
 
-	thumb_func_start func_fe6_0809AA78
-func_fe6_0809AA78: @ 0x0809AA78
+	thumb_func_start OpAnin6_StartBGM
+OpAnin6_StartBGM: @ 0x0809AA78
 	push {lr}
 	ldr r0, .L0809AA94 @ =bool_opanim_03005284
 	ldrb r0, [r0]
@@ -4493,8 +4493,8 @@ func_fe6_0809AA78: @ 0x0809AA78
 	.align 2, 0
 .L0809AA94: .4byte bool_opanim_03005284
 
-	thumb_func_start func_fe6_0809AA98
-func_fe6_0809AA98: @ 0x0809AA98
+	thumb_func_start OpAnin6_PutThunderStormGfx
+OpAnin6_PutThunderStormGfx: @ 0x0809AA98
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, .L0809AAB0 @ =bool_opanim_03005284
@@ -4508,7 +4508,7 @@ func_fe6_0809AA98: @ 0x0809AA98
 	.align 2, 0
 .L0809AAB0: .4byte bool_opanim_03005284
 .L0809AAB4:
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	bl SetAllBlackPals
 	ldr r2, .L0809AAEC @ =gDispIo
 	movs r0, #1
@@ -4524,7 +4524,7 @@ func_fe6_0809AA98: @ 0x0809AA98
 	movs r1, #0x10
 	orrs r0, r1
 	strb r0, [r2, #1]
-	bl func_fe6_0809A9EC
+	bl OpAnim_PutThunderStormGfx
 	adds r0, r5, #0
 	adds r0, #0x64
 	strh r4, [r0]
@@ -4537,8 +4537,8 @@ func_fe6_0809AA98: @ 0x0809AA98
 	.align 2, 0
 .L0809AAEC: .4byte gDispIo
 
-	thumb_func_start func_fe6_0809AAF0
-func_fe6_0809AAF0: @ 0x0809AAF0
+	thumb_func_start OpAnin6_StartThunderStorm
+OpAnin6_StartThunderStorm: @ 0x0809AAF0
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r7, r6, #0
@@ -4571,7 +4571,7 @@ func_fe6_0809AAF0: @ 0x0809AAF0
 	ldrb r0, [r5]
 	ldrb r1, [r5, #1]
 	bl func_fe6_0809AA20
-	ldr r0, .L0809AB48 @ =ProcScr_OpAnim_08691EB8
+	ldr r0, .L0809AB48 @ =ProcScr_OpAninThunderStorm
 	adds r1, r6, #0
 	bl SpawnProc
 	ldrh r0, [r5, #2]
@@ -4584,7 +4584,7 @@ func_fe6_0809AAF0: @ 0x0809AAF0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809AB48: .4byte ProcScr_OpAnim_08691EB8
+.L0809AB48: .4byte ProcScr_OpAninThunderStorm
 
 	thumb_func_start func_fe6_0809AB4C
 func_fe6_0809AB4C: @ 0x0809AB4C
@@ -4750,8 +4750,8 @@ func_fe6_0809AC74: @ 0x0809AC74
 .L0809AC8C: .4byte Pal_AllBlack
 .L0809AC90: .4byte gPal
 
-	thumb_func_start func_fe6_0809AC94
-func_fe6_0809AC94: @ 0x0809AC94
+	thumb_func_start OpAnim6_PutIdunnGfx
+OpAnim6_PutIdunnGfx: @ 0x0809AC94
 	push {r4, r5, lr}
 	ldr r0, .L0809AD20 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
@@ -4765,7 +4765,7 @@ func_fe6_0809AC94: @ 0x0809AC94
 	adds r0, r5, #0
 	movs r1, #0
 	bl TmFill
-	ldr r4, .L0809AD28 @ =gUnk_0837CB8C
+	ldr r4, .L0809AD28 @ =Img_OpAnim_Dragon
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -4818,7 +4818,7 @@ func_fe6_0809AC94: @ 0x0809AC94
 	.align 2, 0
 .L0809AD20: .4byte gPlaySt
 .L0809AD24: .4byte gBg0Tm
-.L0809AD28: .4byte gUnk_0837CB8C
+.L0809AD28: .4byte Img_OpAnim_Dragon
 .L0809AD2C: .4byte gUnk_0837EEB4
 .L0809AD30: .4byte gUnk_0837F418
 .L0809AD34: .4byte gDispIo
@@ -5524,7 +5524,7 @@ func_fe6_0809B280: @ 0x0809B280
 	.align 2, 0
 .L0809B298: .4byte bool_opanim_03005284
 .L0809B29C:
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	bl SetAllBlackPals
 	ldr r2, .L0809B2F0 @ =gDispIo
 	movs r0, #2

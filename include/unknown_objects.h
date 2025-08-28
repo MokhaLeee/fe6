@@ -498,13 +498,13 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? gUnk_0837AAE8
 // extern const ??? gUnk_0837AB18
 // extern const ??? gUnk_0837ACB0
-// extern const ??? gUnk_0837ACD0
-// extern const ??? gUnk_0837C844
+// extern const ??? Img_OpAnimThunderStorm
+// extern const ??? Tsa_OpAnimThunderStorm
 // extern const ??? gUnk_0837CB0C
 // extern const ??? gUnk_0837CB2C
 // extern const ??? gUnk_0837CB4C
 // extern const ??? gUnk_0837CB6C
-// extern const ??? gUnk_0837CB8C
+// extern const ??? Img_OpAnim_Dragon
 // extern const ??? gUnk_0837EEB4
 // extern const ??? gUnk_0837F418
 // extern const ??? Img_OpAnimGlyphs

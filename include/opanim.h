@@ -11,7 +11,7 @@ extern bool bool_opanim_03005284;
 // OpAnim_OnEnd
 // OpAnim_Init
 // func_fe6_080988BC
-// func_fe6_080988C0
+// OpAnin6_ResetBG
 void func_fe6_0809892C(int arg_0, int arg_1, int arg_2, int arg_3, int arg_4);
 // OpAnim_StartBGM
 // OpAnim_Start
@@ -131,18 +131,18 @@ void func_fe6_0809892C(int arg_0, int arg_1, int arg_2, int arg_3, int arg_4);
 // func_fe6_0809A8A4
 // func_fe6_0809A8B4
 // func_fe6_0809A900
-// func_fe6_0809A9EC
+// OpAnim_PutThunderStormGfx
 // func_fe6_0809AA20
-// func_fe6_0809AA78
-// func_fe6_0809AA98
-// func_fe6_0809AAF0
+// OpAnin6_StartBGM
+// OpAnin6_PutThunderStormGfx
+// OpAnin6_StartThunderStorm
 // func_fe6_0809AB4C
 // func_fe6_0809ABA8
 // func_fe6_0809ABF0
 // func_fe6_0809AC34
 // func_fe6_0809AC54
 // func_fe6_0809AC74
-// func_fe6_0809AC94
+// OpAnim6_PutIdunnGfx
 // func_fe6_0809AD3C
 // func_fe6_0809AD64
 // func_fe6_0809AD88
@@ -211,7 +211,7 @@ extern CONST_DATA struct ProcScr ProcScr_OpAnim[];
 // extern CONST_DATA ??? BgConf_OpAnim_08691DF8
 // extern CONST_DATA ??? gUnk_08691E10
 // extern CONST_DATA ??? gUnk_08691E30
-// extern CONST_DATA ??? ProcScr_OpAnim_08691EB8
+// extern CONST_DATA ??? ProcScr_OpAninThunderStorm
 // extern CONST_DATA ??? BgConf_OpAnim_086920A0
 // extern CONST_DATA ??? BgConf_OpAnim_086920B8
 extern CONST_DATA struct ProcScr ProcScr_OpAnim_Nintendo[];

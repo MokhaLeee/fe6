@@ -444,12 +444,12 @@ gUnk_08691E30: @ 08691E30
 	.global ProcScr_OpAnim6
 ProcScr_OpAnim6: @ 08691E48
 	PROC_MARK 9
-	PROC_CALL func_fe6_0809AA78
-	PROC_CALL func_fe6_0809AA98
+	PROC_CALL OpAnin6_StartBGM
+	PROC_CALL OpAnin6_PutThunderStormGfx
 	PROC_SLEEP 30
-	PROC_REPEAT func_fe6_0809AAF0
+	PROC_REPEAT OpAnin6_StartThunderStorm
 	PROC_SLEEP 6
-	PROC_CALL func_fe6_0809AC94
+	PROC_CALL OpAnim6_PutIdunnGfx
 	PROC_SLEEP 1
 	PROC_CALL func_fe6_0809AD3C
 	PROC_SLEEP 0
@@ -458,8 +458,8 @@ ProcScr_OpAnim6: @ 08691E48
 	PROC_CALL func_fe6_08098C94
 	PROC_END
 
-	.global ProcScr_OpAnim_08691EB8
-ProcScr_OpAnim_08691EB8: @ 08691EB8
+	.global ProcScr_OpAninThunderStorm
+ProcScr_OpAninThunderStorm: @ 08691EB8
 	PROC_CALL func_fe6_0809AB4C
 	PROC_SLEEP 1
 	PROC_CALL func_fe6_0809ABA8
