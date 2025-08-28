@@ -91,43 +91,43 @@ ProcScr_0868BB7C: @ 0868BB7C
 	PROC_REPEAT func_fe6_08090660
 	PROC_END
 
-	.global ProcScr_0868BB9C
-ProcScr_0868BB9C: @ 0868BB9C
+	.global ProcScr_EndingCredit
+ProcScr_EndingCredit: @ 0868BB9C
 	PROC_19
-	PROC_CALL func_fe6_08090674
+	PROC_CALL EndingCredit_Init
 	PROC_CALL FadeInBlackSpeed08
 	PROC_SLEEP 1
-	PROC_REPEAT func_fe6_08090720
+	PROC_REPEAT EndingCredit_WaitingDisp
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 1
 	PROC_SLEEP 60
-	PROC_CALL func_fe6_08090740
+	PROC_CALL EndingCredit_Ending
 	PROC_END
 
-	.global ProcScr_Credit_0868BBEC
-ProcScr_Credit_0868BBEC: @ 0868BBEC
+	.global ProcScr_EndingCopyRight
+ProcScr_EndingCopyRight: @ 0868BBEC
 	PROC_19
 	PROC_SLEEP 60
-	PROC_CALL func_credit_0809076C
+	PROC_CALL EndingCopyRight_Init
 	PROC_CALL FadeInBlackSpeed08
 	PROC_SLEEP 1
-	PROC_REPEAT func_credit_08090834
+	PROC_REPEAT EndingCopyRight_Loop
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 1
 	PROC_CALL_ARG _FadeBgmOut, 6
 	PROC_SLEEP 90
 	PROC_END
 
-	.global ProcScr_0868BC44
-ProcScr_0868BC44: @ 0868BC44
+	.global ProcScr_EndingStep1_PutaMonologue
+ProcScr_EndingStep1_PutaMonologue: @ 0868BC44
 	PROC_19
-	PROC_CALL func_fe6_080908A4
+	PROC_CALL EndingStep1_Init
 	PROC_CALL FadeInBlackSpeed08
 	PROC_SLEEP 1
-	PROC_REPEAT func_fe6_08090A20
+	PROC_REPEAT EndingStep1_Loop
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 1
-	PROC_CALL func_fe6_08090880
+	PROC_CALL EndingStep1_End
 	PROC_END
 
 	.global ProcScr_Fin
@@ -159,13 +159,13 @@ ProcScr_0868BDB4: @ 0868BDB4
 	PROC_SLEEP 1
 	PROC_END
 
-	.global ProcScr_CharacterEndingsCredit
-ProcScr_CharacterEndingsCredit: @ 0868BDF4
+	.global ProcScr_Ending
+ProcScr_Ending: @ 0868BDF4
 	PROC_19
 	PROC_CALL LockGame
 	PROC_CALL LockBmDisplay
-	PROC_CALL EndingCredit_Init
-	PROC_REPEAT EndingCredit_Loop
+	PROC_CALL Ending_Init
+	PROC_REPEAT Ending_Loop
 	PROC_CALL UnlockGame
 	PROC_END
 

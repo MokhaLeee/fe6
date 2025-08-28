@@ -284,12 +284,12 @@ gUnk_0837EEB4: @ 0837EEB4
 gUnk_0837F418: @ 0837F418
 	.incbin "fe6-base.gba", 0x37F418, (0x37F478 - 0x37F418) @ length: 0060
 
-	.global gUnk_0837F478
-gUnk_0837F478: @ 0837F478
+	.global Img_OpAnimGlyphs
+Img_OpAnimGlyphs: @ 0837F478
 	.incbin "fe6-base.gba", 0x37F478, (0x380ECC - 0x37F478) @ length: 1A54
 
-	.global gUnk_08380ECC
-gUnk_08380ECC: @ 08380ECC
+	.global Pal_OpAnimGlyphs
+Pal_OpAnimGlyphs: @ 08380ECC
 	.incbin "fe6-base.gba", 0x380ECC, (0x380F4C - 0x380ECC) @ length: 0080
 
 	.global gUnk_08380F4C

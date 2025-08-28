@@ -270,9 +270,9 @@ void EpilogueCredit_FadeBg(struct ProcEpilogueCredit * proc);
 void Epilogue_StartCredit(ProcPtr parent);
 void RemoveEndingMonologueBG(void);
 
-void EpilogueMonologue_Init(void);
-void DrawEpilogueMonologue(ProcPtr parent);
-bool EpilogueMonologueExists(void);
+void EndingTimeFlowMonologue_Init(void);
+void DrawEndingTimeFlowMonologue(ProcPtr parent);
+bool EndingTimeFlowMonologueExists(void);
 
 void Epilogue_RemoveEventEngineBG(struct EventProc * proc);
 void Epilogue_RemoveEventEngineNoMap(struct EventProc * proc);
@@ -289,10 +289,10 @@ struct UnkProc_086768C4
     /* 64 */ u16 unk_64;
 };
 
-void func_fe6_0806DE5C(struct UnkProc_086768C4 * proc);
-void func_fe6_0806DE78(struct UnkProc_086768C4 * proc);
-void func_fe6_0806DEA0(ProcPtr parent);
-void func_fe6_0806DEB4(void);
+void EndingBgmLooper_Init(struct UnkProc_086768C4 * proc);
+void EndingBgmLooper_Ioop(struct UnkProc_086768C4 * proc);
+void NewEndingBgmLooper(ProcPtr parent);
+void EndEndingBgmLooper(void);
 
 void RenderMapForDirectJump(void);
 

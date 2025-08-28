@@ -2465,7 +2465,7 @@ CONST_DATA u8 MoveScr_TrueEnding_08676805[] = {
 };
 
 // 0x8676810
-CONST_DATA u8 MoveScr_TrueEnding_08676810[] = {
+CONST_DATA u8 MoveScr_Epilogue_FaeWwww[] = {
     MOVE_CMD_SET_SPEED, 32,
     MOVE_CMD_MOVE_LEFT,
     MOVE_CMD_MOVE_DOWN,
@@ -2487,7 +2487,7 @@ CONST_DATA u8 MoveScr_TrueEnding_08676810[] = {
 };
 
 // 0x8676823
-CONST_DATA u8 MoveScr_TrueEnding_08676823[] = {
+CONST_DATA u8 MoveScr_Epilogue_FaeExit[] = {
     MOVE_CMD_SET_SPEED, 22,
     MOVE_CMD_MOVE_RIGHT,
     MOVE_CMD_MOVE_DOWN,
@@ -2616,7 +2616,7 @@ void EpilogueCredit_FadeBg(struct ProcEpilogueCredit * proc)
         if (proc->unk_64++ > 11)
             Proc_Break(proc);
 
-        func_fe6_08001E68(0, 0x20, 0x20, -1);
+        AdvancePalFadeStep(0, 0x20, 0x20, -1);
         ColorFadeTick2();
     }
 }
@@ -2636,9 +2636,9 @@ void RemoveEndingMonologueBG(void)
     CpuFastFill(0, (void *) VRAM + 0x300 * CHR_SIZE, CHR_SIZE * 0x100);
 }
 
-struct ProcScr CONST_DATA ProcScr_EpilogueMonologue[] =
+struct ProcScr CONST_DATA ProcScr_EndingTimeFlowMonologue[] =
 {
-    PROC_CALL(EpilogueMonologue_Init),
+    PROC_CALL(EndingTimeFlowMonologue_Init),
     PROC_CALL(StartSlowFadeFromBlack),
     PROC_REPEAT(WhileFadeExists),
     PROC_SLEEP(120),
@@ -2647,7 +2647,7 @@ struct ProcScr CONST_DATA ProcScr_EpilogueMonologue[] =
     PROC_END,
 };
 
-void EpilogueMonologue_Init(void)
+void EndingTimeFlowMonologue_Init(void)
 {
     SetDispEnable(1, 0, 0, 0, 0);
 
@@ -2657,19 +2657,19 @@ void EpilogueMonologue_Init(void)
     ResetText();
     InitTalkTextFont();
 
-    InitText(&Text_EpilogueMonologue, 14);
-    PutDrawText(&Text_EpilogueMonologue, gBg0Tm + TM_OFFSET(8, 9),
+    InitText(&Text_EndingTimeFlowMonologue, 14);
+    PutDrawText(&Text_EndingTimeFlowMonologue, gBg0Tm + TM_OFFSET(8, 9),
         TEXT_COLOR_0123, 0, 0, DecodeMsg(MSG_24A));
 }
 
-void DrawEpilogueMonologue(ProcPtr parent)
+void DrawEndingTimeFlowMonologue(ProcPtr parent)
 {
-    SpawnProc(ProcScr_EpilogueMonologue, parent);
+    SpawnProc(ProcScr_EndingTimeFlowMonologue, parent);
 }
 
-bool EpilogueMonologueExists(void)
+bool EndingTimeFlowMonologueExists(void)
 {
-    if (FindProc(ProcScr_EpilogueMonologue) != NULL)
+    if (FindProc(ProcScr_EndingTimeFlowMonologue) != NULL)
         return TRUE;
 
     Proc_EndEach(ProcScr_DemoMonologueDisp);
@@ -2714,20 +2714,20 @@ void func_fe6_0806DE40(void)
     PlaySe(SONG_6A);
 }
 
-struct ProcScr CONST_DATA ProcScr_Unk_086768C4[] =
+struct ProcScr CONST_DATA ProcScr_EndingBgmLooper[] =
 {
-    PROC_CALL(func_fe6_0806DE5C),
-    PROC_REPEAT(func_fe6_0806DE78),
+    PROC_CALL(EndingBgmLooper_Init),
+    PROC_REPEAT(EndingBgmLooper_Ioop),
     PROC_END,
 };
 
-void func_fe6_0806DE5C(struct UnkProc_086768C4 * proc)
+void EndingBgmLooper_Init(struct UnkProc_086768C4 * proc)
 {
     StartBgm(SONG_43, NULL);
     proc->unk_64 = 17600;
 }
 
-void func_fe6_0806DE78(struct UnkProc_086768C4 * proc)
+void EndingBgmLooper_Ioop(struct UnkProc_086768C4 * proc)
 {
     proc->unk_64--;
 
@@ -2738,14 +2738,14 @@ void func_fe6_0806DE78(struct UnkProc_086768C4 * proc)
     }
 }
 
-void func_fe6_0806DEA0(ProcPtr parent)
+void NewEndingBgmLooper(ProcPtr parent)
 {
-    SpawnProc(ProcScr_Unk_086768C4, parent);
+    SpawnProc(ProcScr_EndingBgmLooper, parent);
 }
 
-void func_fe6_0806DEB4(void)
+void EndEndingBgmLooper(void)
 {
-    Proc_EndEach(ProcScr_Unk_086768C4);
+    Proc_EndEach(ProcScr_EndingBgmLooper);
 }
 
 bool GameEnding_TryBuildGreatLycia(void)
@@ -3185,8 +3185,8 @@ EvtLabel(4)
     EvtSleep(120)
     EvtFunc(ClearTalk)
     EvtFunc(EndAllProcsMark1)
-    EvtFunc(DrawEpilogueMonologue)
-    EvtFuncWhile(EpilogueMonologueExists)
+    EvtFunc(DrawEndingTimeFlowMonologue)
+    EvtFuncWhile(EndingTimeFlowMonologueExists)
     EvtSetBgm(SONG_26)
     EvtFadeToBlack(16)
     EvtExitMap
@@ -3211,7 +3211,7 @@ EvtLabel(4)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_08676805)
     EvtMoveWait
     EvtSleep(15)
-    EvtFunc(func_fe6_0806DEA0)
+    EvtFunc(NewEndingBgmLooper)
     EvtTalk(MSG_24C)
     EvtFunc(func_fe6_0806DC24)
     EvtTalkContinue
@@ -3220,11 +3220,11 @@ EvtLabel(4)
     EvtTalkContinue
     EvtSleep(15)
     EvtTalkContinue
-    EvtMoveUnitScript(PID_FAE, MoveScr_TrueEnding_08676810)
+    EvtMoveUnitScript(PID_FAE, MoveScr_Epilogue_FaeWwww)
     EvtTalkContinue
     EvtClearTalk
     EvtMoveWait
-    EvtMoveUnitScript(PID_FAE, MoveScr_TrueEnding_08676823)
+    EvtMoveUnitScript(PID_FAE, MoveScr_Epilogue_FaeExit)
     EvtMoveWait
     EvtSleep(60)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_08676831)
@@ -3246,7 +3246,7 @@ EvtLabel(4)
     EvtSleep(420)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_0867683C)
     EvtSleep(256)
-    EvtFunc(func_fe6_08090620)
+    EvtFunc(EndingStepAdvance)
     EvtFuncWhile(func_fe6_08090D54)
     EvtFadeToBlack(4)
     EvtExitMap

@@ -84,7 +84,7 @@ struct HardModeBonusLevelsOverrideEnt
 };
 
 extern struct HardModeBonusLevelsOverrideEnt CONST_DATA gHardModeBonusLevelsOverrideList[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_086768C4[];
+extern struct ProcScr CONST_DATA ProcScr_EndingBgmLooper[];
 
 void StartEventFromInfo(struct EventInfo const * info);
 struct EventInfo * SearchAvailableEvent(struct EventInfo * info);
@@ -203,8 +203,8 @@ extern struct ProcScr CONST_DATA ProcScr_DemoMonologueDisp[];
 extern u32 EWRAM_DATA gUnk_0203D368;
 extern u32 EWRAM_DATA gDemoMonologueId;
 extern struct Text EWRAM_DATA Texts_DemoMonologue[];
-extern struct Text EWRAM_DATA Text_EpilogueMonologue;
-extern struct ProcScr CONST_DATA ProcScr_EpilogueMonologue[];
+extern struct Text EWRAM_DATA Text_EndingTimeFlowMonologue;
+extern struct ProcScr CONST_DATA ProcScr_EndingTimeFlowMonologue[];
 extern struct ProcScr CONST_DATA ProcScr_TrueEnding_SortAllies[];
 extern u8 EWRAM_DATA gUnk_0203D3D8; // ending related value
 extern EventScr const * CONST_DATA EventScrs_DemoScene[];

@@ -44,7 +44,7 @@ struct ProcScr CONST_DATA ProcScr_GameController[] =
 PROC_LABEL(L_GAMECTRL_OPENINGSEQ),
     PROC_CALL(ForceEnableSounds),
 
-    PROC_START_CHILD_LOCKING(ProcScr_OpeningSequence),
+    PROC_START_CHILD_LOCKING(ProcScr_OpAnim),
 
     PROC_CALL(GC_PostIntro),
     PROC_YIELD,

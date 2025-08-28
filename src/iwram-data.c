@@ -160,7 +160,7 @@ IWRAM_DATA u8 Pad_Common_0300527C[4] = {};
 IWRAM_DATA u8 gUnk_03005280[4] = {};
 IWRAM_DATA bool bool_opanim_03005284 = false;
 IWRAM_DATA u8 Pad_Common_03005285[11] = {};
-IWRAM_DATA int gUnk_03005290[8] = {};
+IWRAM_DATA int gOpAnimStep[8] = {};
 
 /**
  * m4a

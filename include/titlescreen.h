@@ -49,3 +49,4 @@ extern struct ProcScr CONST_DATA ProcScr_Title_08692298[];
 extern u16 CONST_DATA Sprite_086922F0[];
 extern u16 CONST_DATA Sprite_086922F8[];
 extern u16 CONST_DATA Sprite_08692300[];
+extern struct ProcScr CONST_DATA ProcScr_TitleScreenFromOp[];

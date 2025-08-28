@@ -352,7 +352,7 @@ SECTIONS
         . = ALIGN(4); Texts_DemoMonologue = .;
 
         . = 0x0203D3A0 - __ewram_overlay_end;
-        . = ALIGN(4); Text_EpilogueMonologue = .;
+        . = ALIGN(4); Text_EndingTimeFlowMonologue = .;
 
         . = 0x0203D3D8 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203D3D8 = .; . = . + 1;

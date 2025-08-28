@@ -172,16 +172,16 @@ Img_Fin: @ 083449F8
 Pal_Fin: @ 08344CB0
 	.incbin "fe6-base.gba", 0x344CB0, (0x344CD0 - 0x344CB0) @ length: 0020
 
-	.global Img_Credit_08344CD0
-Img_Credit_08344CD0: @ 08344CD0
+	.global Img_Ending_CopyRight
+Img_Ending_CopyRight: @ 08344CD0
 	.incbin "fe6-base.gba", 0x344CD0, (0x34523C - 0x344CD0) @ length: 056C
 
-	.global Tsa_Credit_0834523C
-Tsa_Credit_0834523C: @ 0834523C
+	.global Tsa_Ending_CopyRight
+Tsa_Ending_CopyRight: @ 0834523C
 	.incbin "fe6-base.gba", 0x34523C, (0x345420 - 0x34523C) @ length: 01E4
 
-	.global Pal_Credit_08345420
-Pal_Credit_08345420: @ 08345420
+	.global Pal_Ending_CopyRight
+Pal_Ending_CopyRight: @ 08345420
 	.incbin "fe6-base.gba", 0x345420, (0x345440 - 0x345420) @ length: 0020
 
 	.global Tsa_EndingPInfoBG
