@@ -32,6 +32,21 @@ struct UnkStruct_020169C4 {
 	u16 unk_06;
 };
 
+struct UnkStruct_SecretScreen_030048C0 {
+	/* 00 */ u16 total_turn;
+	/* 02 */ u16 winning_rate;
+	/* 04 */ u16 dead_allies;
+	/* 06 */ u16 total_level_gained;
+	/* 08 */ u16 total_asset;
+	/* 0A */ u16 unk_0A;
+	/* 0C */ u16 total_power;
+	/* 0E */ u8 hours, minutes, secounds;
+	/* 11 */ u8 unk_11;
+};
+
+extern IWRAM_DATA struct UnkStruct_SecretScreen_030048C0 gSecretScreen_030048C0;
+
+
 void func_fe6_08082E74(int a, int b);
 // func_fe6_08082EC0
 u32 GetSecretScreenRN(void);

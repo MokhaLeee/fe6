@@ -19,9 +19,7 @@ static char const sSaveMarker[] = "AGB-FE6";
 
 struct SramMain * CONST_DATA gSramMain = CART_SRAM;
 
-// TODO: this doesn't belong here
 u8 EWRAM_DATA gUnk_0203D524[0xA] = { 0 };
-
 bool EWRAM_DATA gIsSramWorking = FALSE;
 
 u8 *func_fe6_080841EC(void)

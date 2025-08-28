@@ -817,7 +817,7 @@ InitPassword: @ 0x080834B4
 	ldr r0, .L08083574 @ =Unk_020168F4
 	ldr r0, [r0]
 	str r0, [r1]
-	ldr r6, .L08083578 @ =gUnk_030048C0
+	ldr r6, .L08083578 @ =gSecretScreen_030048C0
 	ldrb r2, [r6, #0x11]
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -890,7 +890,7 @@ InitPassword: @ 0x080834B4
 	.align 2, 0
 .L08083570: .4byte gSecretScreenRN
 .L08083574: .4byte Unk_020168F4
-.L08083578: .4byte gUnk_030048C0
+.L08083578: .4byte gSecretScreen_030048C0
 
 	thumb_func_start func_fe6_0808357C
 func_fe6_0808357C: @ 0x0808357C
@@ -905,7 +905,7 @@ func_fe6_0808357C: @ 0x0808357C
 	adds r1, r6, #0
 	movs r2, #1
 	bl SecretRnGetter_08082FE8
-	ldr r4, .L08083614 @ =gUnk_030048C0
+	ldr r4, .L08083614 @ =gSecretScreen_030048C0
 	strb r0, [r4, #0x11]
 	adds r0, r5, #0
 	adds r1, r6, #0
@@ -958,14 +958,14 @@ func_fe6_0808357C: @ 0x0808357C
 	.align 2, 0
 .L0808360C: .4byte gSecretScreenRN
 .L08083610: .4byte Unk_020168F4
-.L08083614: .4byte gUnk_030048C0
+.L08083614: .4byte gSecretScreen_030048C0
 
 	thumb_func_start func_fe6_08083618
 func_fe6_08083618: @ 0x08083618
 	push {r4, lr}
 	sub sp, #0xc
 	bl PlayRank_GetTotalTurn
-	ldr r4, .L08083654 @ =gUnk_030048C0
+	ldr r4, .L08083654 @ =gSecretScreen_030048C0
 	strh r0, [r4]
 	bl PlayRank_GetWinningRate
 	strh r0, [r4, #2]
@@ -986,7 +986,7 @@ func_fe6_08083618: @ 0x08083618
 	movs r0, #1
 	b .L0808365E
 	.align 2, 0
-.L08083654: .4byte gUnk_030048C0
+.L08083654: .4byte gSecretScreen_030048C0
 .L08083658: .4byte gPlaySt
 .L0808365C:
 	movs r0, #0
@@ -997,7 +997,7 @@ func_fe6_08083618: @ 0x08083618
 	add r3, sp, #8
 	mov r1, sp
 	bl FormatTime
-	ldr r1, .L08083684 @ =gUnk_030048C0
+	ldr r1, .L08083684 @ =gSecretScreen_030048C0
 	ldr r0, [sp]
 	strb r0, [r1, #0xe]
 	ldr r0, [sp, #4]
@@ -1009,7 +1009,7 @@ func_fe6_08083618: @ 0x08083618
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08083684: .4byte gUnk_030048C0
+.L08083684: .4byte gSecretScreen_030048C0
 
 	thumb_func_start PrintPassword
 PrintPassword: @ 0x08083688
@@ -1120,7 +1120,7 @@ func_fe6_08083750: @ 0x08083750
 	ldr r0, .L080837C0 @ =gBg2Tm+0x4
 	mov r8, r0
 	adds r0, r4, r0
-	ldr r6, .L080837C4 @ =gUnk_030048C0
+	ldr r6, .L080837C4 @ =gSecretScreen_030048C0
 	ldrh r2, [r6]
 	movs r1, #2
 	bl PutNumberOrBlank
@@ -1163,7 +1163,7 @@ func_fe6_08083750: @ 0x08083750
 	bx r0
 	.align 2, 0
 .L080837C0: .4byte gBg2Tm+0x4
-.L080837C4: .4byte gUnk_030048C0
+.L080837C4: .4byte gSecretScreen_030048C0
 
 	thumb_func_start func_fe6_080837C8
 func_fe6_080837C8: @ 0x080837C8

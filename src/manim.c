@@ -43,9 +43,6 @@ u16 EWRAM_DATA gManimScanlineBufB[DISPLAY_HEIGHT * 2] = { 0 };
 u16 * EWRAM_DATA gManimScanlineBufs[2] = { 0 };
 u16 * EWRAM_DATA gManimActiveScanlineBuf = NULL;
 
-struct UnkSt_030046D0 COMMON_DATA(gUnk_030046D0) gUnk_030046D0[0x10] = { 0 };
-u16 COMMON_DATA(gUnk_03004750) gUnk_03004750[10 * 0x10] = { 0 }; // map palette save
-
 // GARBAGE START
 // TODO: organize
 
@@ -1381,7 +1378,7 @@ char const * CONST_DATA gManimDebugParamLabelList[] =
     NULL, // end
 };
 
-struct ManimDebugSt COMMON_DATA(gManimDebugStObj) gManimDebugStObj = { 0 };
+extern IWRAM_DATA struct ManimDebugSt gManimDebugStObj;
 struct ManimDebugSt * CONST_DATA gManimDebugSt = &gManimDebugStObj;
 
 struct ManimDebugProc

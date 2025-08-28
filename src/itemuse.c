@@ -27,10 +27,10 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
+extern IWRAM_DATA struct Unit gStatGainSimUnit;
+
 // TODO: map-menu.h
 extern struct ProcScr CONST_DATA ProcScr_BackToUnitMenu[];
-
-extern struct Unit gStatGainSimUnit;
 
 static bool HasSelectTarget(struct Unit * unit, void (* list_targets)(struct Unit * unit));
 

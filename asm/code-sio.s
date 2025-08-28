@@ -54,7 +54,7 @@ SioPollingMsg: @ 0x080350C8
 	rsbs r0, r0, #0
 	str r0, [r1]
 .L08035128:
-	ldr r0, .L0803514C @ =gUnk_030044D4
+	ldr r0, .L0803514C @ =gUnk_Sio_030044D4
 	str r3, [r0]
 	movs r0, #1
 	str r0, [r4]
@@ -66,12 +66,12 @@ SioPollingMsg: @ 0x080350C8
 .L08035140: .4byte 0x00001B78
 .L08035144: .4byte sSioCnt
 .L08035148: .4byte sSioId
-.L0803514C: .4byte gUnk_030044D4
+.L0803514C: .4byte gUnk_Sio_030044D4
 .L08035150:
 	ldr r0, .L08035184 @ =0x04000128
 	ldrh r0, [r0]
 	adds r2, r0, #0
-	ldr r0, .L08035188 @ =gUnk_030044D4
+	ldr r0, .L08035188 @ =gUnk_Sio_030044D4
 	ldr r0, [r0]
 	ldr r3, .L0803518C @ =gSioSt
 	cmp r0, #0
@@ -95,7 +95,7 @@ SioPollingMsg: @ 0x080350C8
 	b .L080351DA
 	.align 2, 0
 .L08035184: .4byte 0x04000128
-.L08035188: .4byte gUnk_030044D4
+.L08035188: .4byte gUnk_Sio_030044D4
 .L0803518C: .4byte gSioSt
 .L08035190: .4byte 0x0000FFFF
 .L08035194: .4byte sSioId
@@ -184,7 +184,7 @@ ResetSioSW: @ 0x0803522C
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
-	ldr r0, .L0803537C @ =gUnk_030044D0
+	ldr r0, .L0803537C @ =gUnk_Sio_030044D0
 	movs r3, #0
 	str r3, [r0]
 	ldr r2, .L08035380 @ =gSioSt
@@ -244,7 +244,7 @@ ResetSioSW: @ 0x0803522C
 	cmp r3, #3
 	ble .L08035280
 	movs r3, #0
-	ldr r5, .L08035390 @ =gUnk_03004580
+	ldr r5, .L08035390 @ =gUnk_Sio_03004580
 	movs r2, #0
 	ldr r4, .L08035380 @ =gSioSt
 .L080352B0:
@@ -357,12 +357,12 @@ ResetSioSW: @ 0x0803522C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803537C: .4byte gUnk_030044D0
+.L0803537C: .4byte gUnk_Sio_030044D0
 .L08035380: .4byte gSioSt
 .L08035384: .4byte 0x00001B74
 .L08035388: .4byte gUnk_030013C8
 .L0803538C: .4byte gUnk_030013CA
-.L08035390: .4byte gUnk_03004580
+.L08035390: .4byte gUnk_Sio_03004580
 .L08035394: .4byte 0x000012B4
 .L08035398: .4byte gSioOutgoing
 .L0803539C: .4byte sReadCursor
@@ -435,8 +435,8 @@ SioInit_HW: @ 0x08035414
 	strh r0, [r2]
 	ldr r0, .L08035470 @ =0x0400010E
 	strh r3, [r0]
-	ldr r2, .L08035474 @ =gUnk_030044D4
-	ldr r1, .L08035478 @ =gUnk_030044D0
+	ldr r2, .L08035474 @ =gUnk_Sio_030044D4
+	ldr r1, .L08035478 @ =gUnk_Sio_030044D0
 	movs r0, #0
 	str r0, [r1]
 	str r0, [r2]
@@ -464,8 +464,8 @@ SioInit_HW: @ 0x08035414
 .L08035468: .4byte 0x04000128
 .L0803546C: .4byte sSioCnt
 .L08035470: .4byte 0x0400010E
-.L08035474: .4byte gUnk_030044D4
-.L08035478: .4byte gUnk_030044D0
+.L08035474: .4byte gUnk_Sio_030044D4
+.L08035478: .4byte gUnk_Sio_030044D0
 .L0803547C: .4byte gSioStateId
 .L08035480: .4byte sSioId
 .L08035484: .4byte func_fe6_080354F0
@@ -483,8 +483,8 @@ SioReleaseIrq: @ 0x08035490
 	subs r1, #0xc
 	movs r0, #0
 	strh r0, [r1]
-	ldr r2, .L080354D8 @ =gUnk_030044D4
-	ldr r1, .L080354DC @ =gUnk_030044D0
+	ldr r2, .L080354D8 @ =gUnk_Sio_030044D4
+	ldr r1, .L080354DC @ =gUnk_Sio_030044D0
 	movs r0, #0
 	str r0, [r1]
 	str r0, [r2]
@@ -508,8 +508,8 @@ SioReleaseIrq: @ 0x08035490
 	bx r0
 	.align 2, 0
 .L080354D4: .4byte 0x04000134
-.L080354D8: .4byte gUnk_030044D4
-.L080354DC: .4byte gUnk_030044D0
+.L080354D8: .4byte gUnk_Sio_030044D4
+.L080354DC: .4byte gUnk_Sio_030044D0
 .L080354E0: .4byte gSioStateId
 .L080354E4: .4byte sSioId
 .L080354E8: .4byte 0x04000200
@@ -525,14 +525,14 @@ func_fe6_080354F0: @ 0x080354F0
 	sub sp, #0xc
 	movs r0, #0
 	mov sb, r0
-	ldr r0, .L08035584 @ =gUnk_030044D4
+	ldr r0, .L08035584 @ =gUnk_Sio_030044D4
 	movs r2, #1
 	str r2, [r0]
 	ldr r1, .L08035588 @ =gSioSt
 	ldr r0, [r1]
 	mov r3, sb
 	strb r3, [r0, #0x1e]
-	ldr r0, .L0803558C @ =gUnk_030044D0
+	ldr r0, .L0803558C @ =gUnk_Sio_030044D0
 	str r2, [r0]
 	ldr r0, [r1]
 	strb r3, [r0, #8]
@@ -595,9 +595,9 @@ func_fe6_080354F0: @ 0x080354F0
 	strb r0, [r1, #8]
 	b .L080355E2
 	.align 2, 0
-.L08035584: .4byte gUnk_030044D4
+.L08035584: .4byte gUnk_Sio_030044D4
 .L08035588: .4byte gSioSt
-.L0803558C: .4byte gUnk_030044D0
+.L0803558C: .4byte gUnk_Sio_030044D0
 .L08035590: .4byte 0x0400010E
 .L08035594: .4byte 0x04000128
 .L08035598: .4byte 0x04000120
@@ -777,7 +777,7 @@ func_fe6_080354F0: @ 0x080354F0
 	movs r1, #1
 	strh r1, [r0]
 .L08035708:
-	ldr r1, .L08035730 @ =gUnk_030044D0
+	ldr r1, .L08035730 @ =gUnk_Sio_030044D0
 	movs r0, #0
 	str r0, [r1]
 	add sp, #0xc
@@ -793,7 +793,7 @@ func_fe6_080354F0: @ 0x080354F0
 .L08035724: .4byte 0x00009ABC
 .L08035728: .4byte gSioSt
 .L0803572C: .4byte 0x00001B7E
-.L08035730: .4byte gUnk_030044D0
+.L08035730: .4byte gUnk_Sio_030044D0
 
 	thumb_func_start func_fe6_08035734
 func_fe6_08035734: @ 0x08035734
@@ -8874,7 +8874,7 @@ func_fe6_08039650: @ 0x08039650
 	ble .L080396B8
 	bl func_fe6_08039580
 	movs r5, #0
-	ldr r2, .L08039790 @ =gUnk_030044E6
+	ldr r2, .L08039790 @ =gSioBuf_030044E0 + 6
 .L080396CE:
 	adds r0, r5, r2
 	mov r1, sp
@@ -8957,7 +8957,7 @@ func_fe6_08039650: @ 0x08039650
 .L08039784: .4byte gUnk_08109C60
 .L08039788: .4byte gLinkArenaSt
 .L0803978C: .4byte gSioFont_0203C758
-.L08039790: .4byte gUnk_030044E6
+.L08039790: .4byte gSioBuf_030044E0 + 6
 .L08039794: .4byte gUnk_Sio_085C9E88
 .L08039798: .4byte gUnk_Sio_0810F19C
 .L0803979C: .4byte gUnk_Sio_085C9AD4
@@ -9231,7 +9231,7 @@ func_fe6_080397F4: @ 0x080397F4
 	bl __umodsi3
 	cmp r0, #0
 	bne .L08039A0A
-	ldr r0, .L08039A14 @ =gUnk_030044E0
+	ldr r0, .L08039A14 @ =gSioBuf_030044E0
 	movs r1, #0x1c
 	strb r1, [r0]
 	ldr r1, .L08039A18 @ =gSioSt
@@ -9248,7 +9248,7 @@ func_fe6_080397F4: @ 0x080397F4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08039A14: .4byte gUnk_030044E0
+.L08039A14: .4byte gSioBuf_030044E0
 .L08039A18: .4byte gSioSt
 
 	thumb_func_start func_fe6_08039A1C
@@ -13234,7 +13234,7 @@ XMapTransfer_0803BAE0: @ 0x0803BAE0
 	.align 2, 0
 .L0803BB68: .4byte gSioSt
 .L0803BB6C:
-	ldr r0, .L0803BBB0 @ =gUnk_030044E0
+	ldr r0, .L0803BBB0 @ =gSioBuf_030044E0
 	movs r1, #0x1c
 	strb r1, [r0]
 	ldrb r1, [r2, #6]
@@ -13267,7 +13267,7 @@ XMapTransfer_0803BAE0: @ 0x0803BAE0
 	movs r0, #0
 	b .L0803BBEE
 	.align 2, 0
-.L0803BBB0: .4byte gUnk_030044E0
+.L0803BBB0: .4byte gSioBuf_030044E0
 .L0803BBB4:
 	ldr r4, .L0803BBE8 @ =gSioSt
 	ldr r1, [r4]

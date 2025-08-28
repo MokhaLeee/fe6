@@ -4595,7 +4595,7 @@ Ending_DrawDyadPInfo: @ 0x08091E28
 	adds r1, r4, #0
 	movs r3, #0
 	bl StartFace
-	ldr r1, .L08091F58 @ =gUnk_030048D4
+	ldr r1, .L08091F58 @ =gEndingInfoFaceProc
 	str r0, [r1]
 	movs r0, #0
 	movs r1, #0
@@ -4662,7 +4662,7 @@ Ending_DrawDyadPInfo: @ 0x08091E28
 .L08091F4C: .4byte Tsa_EndingPInfoBG
 .L08091F50: .4byte 0x0600D800
 .L08091F54: .4byte 0x01000800
-.L08091F58: .4byte gUnk_030048D4
+.L08091F58: .4byte gEndingInfoFaceProc
 .L08091F5C: .4byte gpAuguryFaceProc
 .L08091F60: .4byte unk_02016B44
 .L08091F64: .4byte ProcScr_EndingPInfoFadeOut
@@ -4691,7 +4691,7 @@ CharacterEnding2_Loop: @ 0x08091F6C
 	ldr r0, [r4, #0x2c]
 	cmp r0, #0x2c
 	bgt .L08091FF0
-	ldr r0, .L08091FB8 @ =gUnk_030048D4
+	ldr r0, .L08091FB8 @ =gEndingInfoFaceProc
 	ldr r1, [r0]
 	ldr r2, .L08091FBC @ =unk_02016B90
 	movs r0, #0xbe
@@ -4710,7 +4710,7 @@ CharacterEnding2_Loop: @ 0x08091F6C
 	strh r0, [r1, #0x2e]
 	b .L08091FF0
 	.align 2, 0
-.L08091FB8: .4byte gUnk_030048D4
+.L08091FB8: .4byte gEndingInfoFaceProc
 .L08091FBC: .4byte unk_02016B90
 .L08091FC0: .4byte unk_02016B8A
 .L08091FC4: .4byte gpAuguryFaceProc

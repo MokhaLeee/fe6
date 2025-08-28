@@ -39,10 +39,7 @@ int EWRAM_DATA pad_02023B1C = 0;
 static struct KeySt EWRAM_DATA gKeyStObj = { 0 };
 struct KeySt * CONST_DATA gKeySt = &gKeyStObj;
 
-struct DispIo COMMON_DATA(gDispIo) gDispIo = { 0 };
-
-Func COMMON_DATA(gOnHBlankA) gOnHBlankA = NULL;
-Func COMMON_DATA(gOnHBlankB) gOnHBlankB = NULL;
+extern IWRAM_DATA Func gOnHBlankA, gOnHBlankB;
 
 u32 GetGameTime(void)
 {

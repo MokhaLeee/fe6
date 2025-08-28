@@ -432,75 +432,9 @@ SECTIONS
         . = ALIGN(4); *libgcc.a:dp-bit.o(.bss);
         . = ALIGN(4); *libgcc.a:fp-bit.o(.bss);
 
-        . = ALIGN(4); *(.iwram.SoundMainRam);
+        . = ALIGN(4); src/iwram-data.o(iwram_data);
 
-        /* COMMON */
-        . = 0x0026A0; *(COMMON.gOamLoPutIt);
-        . = 0x0026B0; *(COMMON.gDispIo);
-        . = 0x002720; gIrqFuncs = .;
-        . = 0x002758; MapFloodCoreRamFunc = .;
-        . = 0x00275C; *(COMMON.gOamAffinePutId);
-        . = 0x002760; PutOamHiRamFunc = .;
-        . = 0x002764; *(COMMON.gOnHBlankA);
-        . = 0x002770; *(COMMON.gOam);
-        . = 0x002D70; DrawGlyphRamFunc = .;
-        . = 0x002D74; *(COMMON.gOamHiPutIt);
-        . = 0x002D78; *(COMMON.gOnHBlankB);
-        . = 0x002D80; RamFuncArea = .;
-        . = 0x003780; DecodeStringRamFunc = .;
-        . = 0x003784; PutOamLoRamFunc = .;
-        . = 0x003788; *(COMMON.gOamAffinePutIt);
-        . = 0x003790; IntrMainRam = .;
-        . = 0x003F90; MapFloodCoreStepRamFunc = .;
-        . = 0x003FA0; gEventScriptQueueIt = .;
-        . = 0x003FB0; gEventScriptQueue = .;
-        . = 0x003FD0; gSpriteAllocIt = .;
-        . = 0x004000; *(COMMON.gFaces);
-        . = 0x004010; gWorkingMap = .;
-        . = 0x004020; gMapFloodSquareBufB = .;
-        . = 0x004220; gWorkingMovTable = .;
-        . = 0x004260; gStatGainSimUnit = .;
-        . = 0x0042B0; gMapFloodSquareBufA = .;
-        . = 0x0044B0; gActiveUnit = .;
-        . = 0x0044C0; gMapFloodSt = .;
-        . = 0x0044D0; gUnk_030044D0 = .;
-        . = 0x0044D4; gUnk_030044D4 = .;
-        . = 0x0044E0; gUnk_030044E0 = .;
-        . = 0x0044E6; gUnk_030044E6 = .;
-        . = 0x004568; gSioStateId = .;
-        . = 0x00456C; gSioMsgBuf = .;
-        . = 0x004570; *(COMMON.AiDecideFunc);
-        . = 0x004580; gUnk_03004580 = .;
-        . = 0x004600; *(COMMON.gManimDebugStObj);
-        . = 0x0046D0; *(COMMON.gUnk_030046D0);
-        . = 0x004750; *(COMMON.gUnk_03004750);
-        . = 0x004890; gPermanentFlagBits = .;
-        . = 0x004898; gChapterFlagBits = .;
-        . = 0x0048A4; gEndingMonologueState = .;
-        . = 0x0048A8; gUnk_030048A8 = .;
-        . = 0x0048B8; gEndingMonologueTextDone = .;
-        . = 0x0048C0; gUnk_030048C0 = .;
-        . = 0x0048D4; gUnk_030048D4 = .;
-        . = 0x0048E0; gWmArrowSt = .;
-        . = 0x005280; gUnk_03005280 = .;
-        . = 0x005284; bool_opanim_03005284 = .;
-        . = 0x005290; gUnk_03005290 = .;
-        . = 0x0052B0; *(.iwram.gSoundInfo);
-        . = 0x006260; gMPlayInfo_SE4_BMP2 = .;
-        . = 0x0062A0; gMPlayInfo_SE5_BMP3 = .;
-        . = 0x0062E0; gMusicPlayer_FightBgm = .;
-        . = 0x006320; *(.iwram.gMPlayJumpTable);
-        . = 0x0063B0; *(.iwram.gCgbChans);
-        . = 0x0064B0; gMPlayInfo_SE6_BMP4 = .;
-        . = 0x0064F0; gMusicPlayer_MainBgm = .;
-        . = 0x006530; gMPlayInfo_SE1_SYS1 = .;
-        . = 0x006570; gMPlayInfo_SE3_BMP1 = .;
-        . = 0x0065B0; *(.iwram.gMPlayMemAccArea);
-        . = 0x0065C0; gMPlayInfo_SE7_EVT = .;
-        . = 0x006600; gMPlayInfo_SE2_SYS2 = .;
-        . = 0x006640; ReadSramFast = .;
-        . = 0x006644; VerifySramFast = .;
-
+        /* stack: 0x03006648 ~ 0x03007E60 */
         . = 0x008000; /* end */
     }
 

@@ -14,12 +14,6 @@ struct OamSection
 static struct OamSection sOamHi;
 static struct OamSection sOamLo;
 
-u16 COMMON_DATA(gOam) gOam[0x200] = { 0 };
-u16 * COMMON_DATA(gOamHiPutIt) gOamHiPutIt = NULL;
-u16 * COMMON_DATA(gOamLoPutIt) gOamLoPutIt = NULL;
-struct OamView * COMMON_DATA(gOamAffinePutIt) gOamAffinePutIt = NULL;
-u16 COMMON_DATA(gOamAffinePutId) gOamAffinePutId = 0;
-
 void InitOam(int loSz)
 {
     sOamLo.buf = gOam;
