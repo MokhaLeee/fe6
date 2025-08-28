@@ -1772,4 +1772,66 @@ void func_fe6_0808F838(struct Proc_0868B88C *proc)
 	proc->unk_2E = 0;
 }
 
-void func_fe6_0808F844(struct Proc_0868B88C *proc);
+void func_fe6_0808F844(struct Proc_0868B88C *proc)
+{
+	switch (proc->unk_2E) {
+	case 0:
+		if (proc->unk_2A < 0x5A) {
+			func_fe6_0808F7D0(INTERPOLATE_LINEAR, 0, 0xF, proc->unk_2A, 0x5A, 0x10 + OBPAL_PLAYRANK_3);
+			proc->unk_2A++;
+			return;
+		}
+		break;
+
+	case 2:
+		if (proc->unk_2A < 0x78) {
+			func_fe6_0808F7D0(INTERPOLATE_LINEAR, 0xF, 0, proc->unk_2A, 0x78, 0x10 + OBPAL_PLAYRANK_3);
+			proc->unk_2A++;
+			return;
+		}
+		break;
+
+	case 0x11:
+		proc->unk_2E = 0;
+		return;
+
+	default:
+		break;
+	}
+
+	proc->unk_2A = 0;
+	proc->unk_2E++;
+}
+
+void func_fe6_0808F8B8(ProcPtr proc)
+{
+	SetObjAffine(0xA, 0x100, 0, 0, 0x100);
+	SetObjAffineAuto(0x1F, 0, 2, 0x100);
+
+	unk_02016A2A = (unk_02016A2D) ? 1 : 2;
+
+	SpawnProc(ProcScr_0868B730, PROC_TREE_3);
+	SpawnProc(ProcScr_0868B80C, PROC_TREE_3);
+	SpawnProc(ProcScr_0868B88C, PROC_TREE_3);
+}
+
+void func_fe6_0808F984(ProcPtr proc)
+{
+	int i;
+
+	for (i = 0; i < (gpPlayRankSt->step + 1); i++) {
+		int oam0_y, oam1_x, oam2;
+
+		oam1_x = (gpPlayRankSt->xs[i] + 6) * 8;
+		oam0_y = (gpPlayRankSt->ys[i] + 0) * 8;
+
+		if (i == gpPlayRankSt->step) {
+			oam1_x |= 0x3E00;
+			oam0_y |= 0x0100;
+		}
+
+		oam2 = gpPlayRankSt->unk_5E[i] * 2 + 0xC0;
+
+		PutSpriteExt(4, oam1_x, oam0_y, gpPlayRankSt->objs[i], OAM2_PAL(i + OBPAL_PLAYRANK_4) | oam2);
+	}
+}
