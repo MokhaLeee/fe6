@@ -327,6 +327,7 @@ clean:
 
 %/mu.o:             CFLAG_OPT := -O0
 %/manim.o:          CFLAG_OPT := -O0
+%/scanline.o:          CFLAG_OPT := -O0
 
 %/gbasram.o:        CFLAG_OPT := -O1
 %/shop.o:           CFLAG_OPT := -O0

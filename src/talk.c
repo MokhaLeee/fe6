@@ -18,6 +18,7 @@
 #include "unit.h"
 #include "chapter.h"
 #include "ui.h"
+#include "scanline.h"
 #include "shop.h"
 #include "worldmap.h"
 #include "banim_ekrbattle.h"

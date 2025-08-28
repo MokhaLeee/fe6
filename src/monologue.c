@@ -4,6 +4,7 @@
 #include "util.h"
 #include "manim.h"
 #include "armfunc.h"
+#include "scanline.h"
 #include "sound.h"
 #include "constants/songs.h"
 

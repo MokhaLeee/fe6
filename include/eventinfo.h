@@ -211,21 +211,4 @@ extern EventScr const * CONST_DATA EventScrs_DemoScene[];
 extern struct ProcScr CONST_DATA ProcScr_EndingMonologueText[];
 extern struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeIn[];
 extern struct ProcScr CONST_DATA ProcScr_Epilogue_BgmFadeOut[];
-extern u8 gEndingMonologueState; // COMMON
-extern u8 gEndingMonologueTextDone; // COMMON
-extern u8 const Img_EndingMonologueText1[]; // img
-extern u8 const Img_EndingMonologueText3[]; // img
-extern u8 const Img_EndingMonologueText4[]; // img
-extern u8 const Img_08352160[]; // img
-extern i8 CONST_DATA Ctrl_EndingMonologueText1[];
-extern i8 CONST_DATA Ctrl_EndingMonologueText2[];
-extern i8 CONST_DATA Ctrl_EndingMonologueText3[];
-extern i8 CONST_DATA Ctrl_EndingMonologueText4[];
-extern struct ProcScr CONST_DATA ProcScr_EndingMonologue[];
-
-extern u8 const Img_EndingMonologue[]; // img
-extern u8 const Tsa_EndingMonologue[]; // tm
-extern u8 const Zpal_EndingMonologue[]; // compressed pal
-extern u16 const Pal_EndingMonologueText[]; // pal
-extern u16 CONST_DATA BgConf_EndingMonologue[]; // bg config
 extern i8 EWRAM_DATA gEndingSceneDispEnPidList[];

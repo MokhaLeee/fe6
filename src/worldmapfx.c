@@ -11,6 +11,7 @@
 #include "talk.h"
 #include "mapui.h"
 #include "manim.h"
+#include "scanline.h"
 #include "debugtext.h"
 #include "spriteanim.h"
 #include "chapterinfo.h"

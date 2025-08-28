@@ -562,8 +562,10 @@ SECTIONS
         src/spellassoc.o(.text);
         src/mu.o(.text);
         src/manim.o(.text);
+        src/scanline.o(.text);
         src/eventinfo.o(.text);
         src/eventfunctions.o(.text);
+        src/ending_monologue.o(.text);
         src/statscreen.o(.text);
         src/helpbox.o(.text);
         src/chapter_title.o(.text);
@@ -702,6 +704,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_279E60.o(.rodata);
         . = ALIGN(4); src/mu.o(.rodata);
         . = ALIGN(4); src/manim.o(.rodata);
+        . = ALIGN(4); src/scanline.o(.rodata);
         . = ALIGN(4); data/rodata_307544.o(.rodata);
         . = ALIGN(4); src/statscreen.o(.rodata);
         . = ALIGN(4); src/helpbox.o(.rodata);
@@ -830,10 +833,12 @@ SECTIONS
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); data/data-code-mu.o(.data);
         . = ALIGN(4); src/manim.o(.data);
+        . = ALIGN(4); src/scanline.o(.data);
         . = ALIGN(4); src/eventinfo.o(.data);
         . = ALIGN(4); data/data_66618C.o(.data);
         . = ALIGN(4); src/chapterevents.o(.data);
         . = ALIGN(4); src/eventfunctions.o(.data);
+        . = ALIGN(4); src/ending_monologue.o(.data);
         . = ALIGN(4); src/statscreen.o(.data);
         . = ALIGN(4); src/helpbox.o(.data);
         . = ALIGN(4); src/chapter_title.o(.data);
