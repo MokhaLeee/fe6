@@ -34,10 +34,10 @@ struct UnkStruct_020169C4 {
 
 void func_fe6_08082E74(int a, int b);
 // func_fe6_08082EC0
-int GetSecretScreenRN(void);
+u32 GetSecretScreenRN(void);
 // func_fe6_08082F18
 // func_fe6_08082F54
-// func_fe6_08082FE8
+u32 SecretRnGetter_08082FE8(int a, int b, int round);
 // func_fe6_08083078
 // func_fe6_080830AC
 // func_fe6_08083180
@@ -56,7 +56,7 @@ void ModifyPassword(void (*func)(int a, int b));
 // func_fe6_08083930
 void func_fe6_08083944(int a, int b);
 // func_fe6_08083A68
-int func_fe6_08083B8C(int a, int b);
+int GetFlattenArrayOffset(int line, int col);
 void func_fe6_08083BC4(struct Unit *units[], int count);
 void PrintSecretScreenTexts(struct Text *text, const u8 *table);
 void PutSecretScreenLineNumber(int line);

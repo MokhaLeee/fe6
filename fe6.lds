@@ -1,5 +1,20 @@
 OUTPUT_ARCH(arm)
 
+MEMORY
+{
+    rom   : ORIGIN = 0x08000000, LENGTH = 32M
+    iwram : ORIGIN = 0x03000000, LENGTH = 32K
+    ewram : ORIGIN = 0x02000000, LENGTH = 256K
+}
+
+__text_start            =       ORIGIN(rom);
+__ewram_start           =       ORIGIN(ewram);
+__iwram_start           =       ORIGIN(iwram);
+__iwram_top             =       ORIGIN(iwram) + LENGTH(iwram);;
+__sp_irq                =       __iwram_top - 0x060;
+__sp_usr                =       __sp_irq - 0x1A0;
+__irq_flags             =       0x03007ff8;
+
 gNumMusicPlayers = 9;
 gMaxLines = 0;
 

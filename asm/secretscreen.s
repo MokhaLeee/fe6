@@ -197,8 +197,8 @@ func_fe6_08082F54: @ 0x08082F54
 	.align 2, 0
 .L08082FE4: .4byte 0x020168E8
 
-	thumb_func_start func_fe6_08082FE8
-func_fe6_08082FE8: @ 0x08082FE8
+	thumb_func_start SecretRnGetter_08082FE8
+SecretRnGetter_08082FE8: @ 0x08082FE8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -904,53 +904,53 @@ func_fe6_0808357C: @ 0x0808357C
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #1
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	ldr r4, .L08083614 @ =gUnk_030048C0
 	strb r0, [r4, #0x11]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x10
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strh r0, [r4]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x10
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strh r0, [r4, #2]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #7
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strh r0, [r4, #4]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0xc
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strh r0, [r4, #6]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x18
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	str r0, [r4, #8]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0xc
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strh r0, [r4, #0xc]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0xa
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r4, #0xe]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #6
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r4, #0xf]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #6
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r4, #0x10]
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1492,57 +1492,57 @@ func_fe6_08083A68: @ 0x08083A68
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #8
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #1
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #1]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #2]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #6
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #3]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #4]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #5]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #6]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #7]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #8]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #9]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #5
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r6, #0xa]
 	mov r0, sl
 	adds r0, #0xb
@@ -1553,7 +1553,7 @@ func_fe6_08083A68: @ 0x08083A68
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #3
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r4]
 	adds r4, #1
 	subs r5, #1
@@ -1566,7 +1566,7 @@ func_fe6_08083A68: @ 0x08083A68
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #8
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	strb r0, [r4]
 	adds r4, #1
 	subs r5, #1
@@ -1585,7 +1585,7 @@ func_fe6_08083A68: @ 0x08083A68
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #2
-	bl func_fe6_08082FE8
+	bl SecretRnGetter_08082FE8
 	adds r1, r4, r5
 	strb r0, [r1]
 	adds r4, #1
@@ -1604,390 +1604,3 @@ func_fe6_08083A68: @ 0x08083A68
 .L08083B80: .4byte gSecretScreenData
 .L08083B84: .4byte 0x0203D4B3
 .L08083B88: .4byte Unk_0203D518
-
-	thumb_func_start func_fe6_08083B8C
-func_fe6_08083B8C: @ 0x08083B8C
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	movs r1, #0
-	movs r0, #0
-.L08083B96:
-	adds r3, r0, #1
-	adds r2, r3, #0
-	cmp r3, #4
-	bgt .L08083BB4
-.L08083B9E:
-	cmp r0, r5
-	bne .L08083BAC
-	cmp r2, r4
-	bne .L08083BAC
-	lsls r0, r1, #0x18
-	lsrs r0, r0, #0x18
-	b .L08083BBC
-.L08083BAC:
-	adds r1, #1
-	adds r2, #1
-	cmp r2, #4
-	ble .L08083B9E
-.L08083BB4:
-	adds r0, r3, #0
-	cmp r0, #4
-	ble .L08083B96
-	movs r0, #0
-.L08083BBC:
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start func_fe6_08083BC4
-func_fe6_08083BC4: @ 0x08083BC4
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #0x1c
-	str r0, [sp]
-	str r1, [sp, #4]
-	movs r0, #0
-	str r0, [sp, #8]
-	cmp r0, r1
-	bge .L08083CD8
-	ldr r1, .L08083E60 @ =gSecretScreenData
-	mov sl, r1
-	movs r3, #0x1f
-	mov sb, r0
-	ldr r5, [sp]
-	str r0, [sp, #0x10]
-	mov r7, sl
-.L08083BEA:
-	ldr r0, [r5]
-	ldr r0, [r0]
-	ldrb r0, [r0, #4]
-	strb r0, [r7]
-
-	ldr r0, [r5]
-	ldr r1, [r0]
-	ldr r2, [r0, #4]
-	ldr r0, [r1, #0x28]
-	ldr r1, [r2, #0x24]
-	orrs r0, r1
-	lsrs r0, r0, #8
-	movs r1, #1
-	ands r0, r1
-	strb r0, [r7, #1]
-
-	ldr r1, [r5]
-	adds r0, r3, #0
-	ldrb r1, [r1, #8]
-	ands r0, r1
-	strb r0, [r7, #2]
-
-	ldr r1, [r5]
-	movs r0, #0x3f
-	ldrb r1, [r1, #0x10]
-	ands r0, r1
-	strb r0, [r7, #3]
-
-	ldr r1, [r5]
-	adds r0, r3, #0
-	ldrb r1, [r1, #0x12]
-	ands r0, r1
-	strb r0, [r7, #4]
-
-	ldr r1, [r5]
-	adds r0, r3, #0
-	ldrb r1, [r1, #0x13]
-	ands r0, r1
-	strb r0, [r7, #5]
-
-	ldr r1, [r5]
-	adds r0, r3, #0
-	ldrb r1, [r1, #0x14]
-	ands r0, r1
-	strb r0, [r7, #6]
-
-	ldr r1, [r5]
-	adds r0, r3, #0
-	ldrb r1, [r1, #0x15]
-	ands r0, r1
-	strb r0, [r7, #7]
-
-	ldr r1, [r5]
-	adds r0, r3, #0
-	ldrb r1, [r1, #0x16]
-	ands r0, r1
-	strb r0, [r7, #8]
-
-	ldr r1, [r5]
-	adds r0, r3, #0
-	ldrb r1, [r1, #0x17]
-	ands r0, r1
-	strb r0, [r7, #9]
-
-	ldr r1, [r5]
-	ldr r2, [r1, #4]
-	ldr r0, [r1]
-	ldrb r2, [r2, #0x11]
-	ldrb r0, [r0, #0x13]
-	adds r0, r2, r0
-	ldrb r1, [r1, #0x18]
-	adds r0, r1, r0
-	movs r1, #0x1f
-	ands r0, r1
-	strb r0, [r7, #0xa]
-
-	movs r6, #0
-	ldr r0, [sp, #0x10]
-	mov r8, r0
-	mov r0, sl
-	adds r0, #0xb
-	mov r1, sb
-	adds r4, r1, r0
-.L08083C7A:
-	ldr r0, [r5]
-	adds r0, #0x26
-	adds r0, r0, r6
-	ldrb r0, [r0]
-	str r3, [sp, #0x18]
-	bl GetWeaponLevelFromExp
-	movs r1, #7
-	ands r0, r1
-	strb r0, [r4]
-	adds r4, #1
-	adds r6, #1
-	ldr r3, [sp, #0x18]
-	cmp r6, #7
-	ble .L08083C7A
-
-	movs r6, #0
-	ldr r4, .L08083E64 @ =0x0203D4B3
-	add r4, sb
-.L08083C9E:
-	ldr r0, [sp]
-	add r0, r8
-	ldr r0, [r0]
-	lsls r1, r6, #1
-	adds r0, #0x1c
-	adds r0, r0, r1
-	ldrh r0, [r0]
-	str r3, [sp, #0x18]
-	bl GetItemIid
-	strb r0, [r4]
-	adds r4, #1
-	adds r6, #1
-	ldr r3, [sp, #0x18]
-	cmp r6, #4
-	ble .L08083C9E
-	movs r0, #0x18
-	add sb, r0
-	adds r5, #4
-	ldr r1, [sp, #0x10]
-	adds r1, #4
-	str r1, [sp, #0x10]
-	adds r7, #0x18
-	ldr r0, [sp, #8]
-	adds r0, #1
-	str r0, [sp, #8]
-	ldr r1, [sp, #4]
-	cmp r0, r1
-	blt .L08083BEA
-.L08083CD8:
-	ldr r4, .L08083E68 @ =gSecretScreenRN
-	bl GetGameTime
-	lsls r0, r0, #0xd
-	lsrs r0, r0, #0x10
-	str r0, [r4]
-	ldr r0, [sp, #8]
-	cmp r0, #4
-	bgt .L08083DA6
-	ldr r1, .L08083E60 @ =gSecretScreenData
-	mov sl, r1
-	movs r0, #0x1f
-	mov r8, r0
-	ldr r1, [sp, #8]
-	lsls r0, r1, #1
-	adds r0, r0, r1
-	lsls r0, r0, #3
-	mov sb, r0
-	mov r5, sb
-	add r5, sl
-.L08083D00:
-	movs r0, #0
-	strb r0, [r5]
-	bl GetSecretScreenRN
-	movs r1, #1
-	ands r1, r0
-	strb r1, [r5, #1]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #2]
-	bl GetSecretScreenRN
-	movs r1, #0x3f
-	ands r1, r0
-	strb r1, [r5, #3]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #4]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #5]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #6]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #7]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #8]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #9]
-	bl GetSecretScreenRN
-	mov r1, r8
-	ands r0, r1
-	strb r0, [r5, #0xa]
-	mov r0, sl
-	adds r0, #0xb
-	mov r1, sb
-	adds r4, r1, r0
-	movs r7, #7
-	movs r6, #7
-.L08083D74:
-	bl GetSecretScreenRN
-	ands r0, r7
-	strb r0, [r4]
-	adds r4, #1
-	subs r6, #1
-	cmp r6, #0
-	bge .L08083D74
-	ldr r4, .L08083E64 @ =0x0203D4B3
-	add r4, sb
-	movs r6, #4
-.L08083D8A:
-	bl GetSecretScreenRN
-	strb r0, [r4]
-	adds r4, #1
-	subs r6, #1
-	cmp r6, #0
-	bge .L08083D8A
-	movs r0, #0x18
-	add sb, r0
-	adds r5, #0x18
-	mov r0, sl
-	adds r0, #0x60
-	cmp r5, r0
-	ble .L08083D00
-.L08083DA6:
-	ldr r1, .L08083E6C @ =Unk_0203D518
-	movs r2, #0
-	adds r0, r1, #0
-	adds r0, #9
-.L08083DAE:
-	strb r2, [r0]
-	subs r0, #1
-	cmp r0, r1
-	bge .L08083DAE
-	movs r1, #0
-	str r1, [sp, #8]
-	ldr r0, [sp, #4]
-	cmp r1, r0
-	bge .L08083E50
-.L08083DC0:
-	ldr r1, [sp, #8]
-	lsls r0, r1, #2
-	ldr r1, [sp]
-	adds r4, r0, r1
-	ldr r0, [r4]
-	bl GetUnitSupportCount
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	str r0, [sp, #0xc]
-	movs r6, #0
-	ldr r2, [sp, #8]
-	adds r2, #1
-	cmp r6, r0
-	bge .L08083E48
-	mov r8, r4
-.L08083DE0:
-	mov r1, r8
-	ldr r0, [r1]
-	adds r1, r6, #0
-	str r2, [sp, #0x14]
-	bl GetUnitSupportPid
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	mov sb, r0
-	ldr r2, [sp, #0x14]
-	adds r5, r2, #0
-	adds r0, r6, #1
-	mov sl, r0
-	ldr r1, [sp, #4]
-	cmp r2, r1
-	bge .L08083E40
-	lsls r0, r2, #1
-	adds r0, r0, r2
-	lsls r0, r0, #3
-	ldr r1, .L08083E60 @ =gSecretScreenData
-	adds r7, r0, r1
-.L08083E0A:
-	ldrb r0, [r7]
-	cmp r0, sb
-	bne .L08083E36
-	ldr r0, [sp, #8]
-	adds r1, r5, #0
-	str r2, [sp, #0x14]
-	bl func_fe6_08083B8C
-	adds r4, r0, #0
-	mov r1, r8
-	ldr r0, [r1]
-	adds r1, r6, #0
-	bl GetUnitSupportLevel
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	ldr r1, .L08083E6C @ =Unk_0203D518
-	adds r4, r4, r1
-	movs r1, #3
-	ands r0, r1
-	strb r0, [r4]
-	ldr r2, [sp, #0x14]
-.L08083E36:
-	adds r7, #0x18
-	adds r5, #1
-	ldr r0, [sp, #4]
-	cmp r5, r0
-	blt .L08083E0A
-.L08083E40:
-	mov r6, sl
-	ldr r1, [sp, #0xc]
-	cmp r6, r1
-	blt .L08083DE0
-.L08083E48:
-	str r2, [sp, #8]
-	ldr r0, [sp, #4]
-	cmp r2, r0
-	blt .L08083DC0
-.L08083E50:
-	add sp, #0x1c
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08083E60: .4byte gSecretScreenData
-.L08083E64: .4byte 0x0203D4B3
-.L08083E68: .4byte gSecretScreenRN
-.L08083E6C: .4byte Unk_0203D518

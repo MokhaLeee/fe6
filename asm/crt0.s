@@ -1,5 +1,6 @@
 
 	.text
+	.include "asm_gbaio.inc"
 
 	.syntax unified
 	.arm
@@ -23,102 +24,125 @@ _entry:
 	.byte 0x46, 0x49, 0x52, 0x45, 0x45, 0x4D, 0x42, 0x4C, 0x45, 0x4D, 0x36, 0x00, 0x41, 0x46, 0x45, 0x4A
 	.byte 0x30, 0x31, 0x96, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xCC, 0x00, 0x00
 
+.global crt0
 crt0:
+	@ Switch to IRQ Mode
 	mov r0, #0x12
 	msr cpsr_fc, r0
-	ldr sp, .L080000F8 @ =0x03007FA0
+	ldr sp, ___sp_irq
+
+	@ Switch to System Mode
 	mov r0, #0x1f
 	msr cpsr_fc, r0
-	ldr sp, .L080000F4 @ =0x03007E00
-	ldr r1, .L0800021C @ =0x03007FFC
-	add r0, pc, #0x18 @ =IrqMain
+	ldr sp, ___sp_usr
+
+	@ Setup IRQ
+	ldr r1, =INTR_VECTOR
+	adr r0, IrqMain
 	str r0, [r1]
-	ldr r1, .L08000220 @ =AgbMain
+
+	@ Jump to main
+	ldr r1, =AgbMain
 	mov lr, pc
 	bx r1
-.L080000F0:
-	.byte 0xF2, 0xFF, 0xFF, 0xEA
-.L080000F4: .4byte 0x03007E00
-.L080000F8: .4byte 0x03007FA0
+	b crt0
 
-	.arm
+___sp_usr:	.word __sp_usr
+___sp_irq:	.word __sp_irq
 
-	.global IrqMain
-	.type   IrqMain, function
 
-IrqMain: @ 0x080000FC
-	mov r3, #0x4000000
-	add r3, r3, #0x200
+.global IrqMain
+IrqMain:
+	@ Reserve IE & spsr
+	mov r3, REG_BASE
+	add r3, r3, REG_OFFSET_IE
 	ldr r2, [r3]
 	lsl r1, r2, #0x10
 	lsr r1, r1, #0x10
 	mrs r0, spsr
 	push {r0, r1, r3, lr}
+
+irq_search:
 	and r1, r2, r2, lsr #16
-	ands r0, r1, #0x2000
-.L08000120:
-	bne .L08000120
+	ands r0, r1, INTR_FLAG_GAMEPAK
+
+@ when the cart is removed from the GBA.
+panic_gamepak:
+	bne panic_gamepak
+
 	mov r2, #0
-	ands r0, r1, #1
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_VBLANK
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #2
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_HBLANK
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #4
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_VCOUNT
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #8
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_TIMER0
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x10
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_TIMER1
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x20
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_TIMER2
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x40
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_TIMER3
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x80
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_SERIAL
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x100
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_DMA0
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x200
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_DMA1
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x400
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_DMA2
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x800
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_DMA3
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x1000
-	bne .L080001CC
+	ands r0, r1, INTR_FLAG_KEYPAD
+	bne handle_normal_irq
 	add r2, r2, #4
-	ands r0, r1, #0x2000
-.L080001C8:
-	bne .L080001C8
-.L080001CC:
+	ands r0, r1, INTR_FLAG_GAMEPAK
+
+@ when the cart is removed from the GBA.
+panic_gamepak2:
+	bne panic_gamepak2
+
+handle_normal_irq:
 	strh r0, [r3, #2]
-	mrs r3, apsr
+
+	@ Switch to System Mode
+	mrs r3, cpsr
 	bic r3, r3, #0xdf
 	orr r3, r3, #0x1f
 	msr cpsr_fc, r3
-	ldr r1, .L08000224 @ =gIrqFuncs
+
+	@ jump to irq-handler
+	ldr r1, =gIrqFuncs
 	add r1, r1, r2
 	ldr r0, [r1]
 	stmdb sp!, {lr}
-	add lr, pc, #0x0 @ =0x080001F8
+	add lr, pc, #0	@ post_irq
 	bx r0
-.L080001F8:
-	@ TODO: decode this into arm
+post_irq:
+	ldmia sp!, {lr}
 
-	.byte 0x00, 0x40, 0xBD, 0xE8, 0x00, 0x30, 0x0F, 0xE1
-	.byte 0xDF, 0x30, 0xC3, 0xE3, 0x92, 0x30, 0x83, 0xE3, 0x03, 0xF0, 0x29, 0xE1, 0x0B, 0x40, 0xBD, 0xE8
-	.byte 0xB0, 0x10, 0xC3, 0xE1, 0x00, 0xF0, 0x69, 0xE1, 0x1E, 0xFF, 0x2F, 0xE1
-.L0800021C: .4byte 0x03007FFC
-.L08000220: .4byte AgbMain
-.L08000224: .4byte gIrqFuncs
+	@ Reset to IRQ Mode, also disable irq interrupt
+	mrs r3, cpsr_fc
+	bic r3, r3, 0xDF
+	orr r3, r3, 0x92
+	msr cpsr_fc, r3
+
+	@ Restore original spsr & IE
+	pop {r0, r1, r3, lr}
+	strh r1, [r3]
+	msr spsr_fc, r0
+	bx lr

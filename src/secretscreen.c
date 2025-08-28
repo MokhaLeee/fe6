@@ -22,73 +22,120 @@ EWRAM_OVERLAY(0) u8 Unk_02016924[0xA0] = {};
 EWRAM_OVERLAY(0) struct UnkStruct_020169C4 Unk_020169C4 = {};
 
 #if 0
+void func_fe6_08083A68(int a, int b)
+{
+	int i, j;
+
+	gSecretScreenRN = Unk_020168F4;
+
+	for (i = 0; &gSecretScreenData[i] < &gSecretScreenData[5]; i++) {
+		gSecretScreenData[i].numbers[0]  = SecretRnGetter_08082FE8(b, a, 8);
+		gSecretScreenData[i].numbers[1]  = SecretRnGetter_08082FE8(b, a, 1);
+		gSecretScreenData[i].numbers[2]  = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[3]  = SecretRnGetter_08082FE8(b, a, 6);
+		gSecretScreenData[i].numbers[4]  = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[5]  = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[6]  = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[7]  = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[8]  = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[9]  = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[10] = SecretRnGetter_08082FE8(b, a, 5);
+
+		for (j = 0; j < 8; j++)
+			gSecretScreenData[i].numbers[11 + j] = SecretRnGetter_08082FE8(b, a, 3);
+
+		for (j = 0; j < 5; j++)
+			gSecretScreenData[i].numbers[19 + j] = SecretRnGetter_08082FE8(b, a, 8);
+	}
+
+	for (j = 0; j < 10; j++)
+		Unk_0203D518[j] = SecretRnGetter_08082FE8(b, a, 9);
+}
+#endif
+
+int GetFlattenArrayOffset(int line, int col)
+{
+	int i, j;
+	int ret = 0;
+
+	for (i = 0; i < 5; i++) {
+		for (j = (i + 1); j < 5; j++) {
+			if (i == line && j == col)
+				return (u8)ret;
+
+			ret++;
+		}
+    }
+    return 0;
+}
+
 void func_fe6_08083BC4(struct Unit *units[], int count)
 {
 	int i, j, k;
 
 	for (i = 0; i < count; i++) {
-		struct SecretScreenData *data = &gSecretScreenData[i];
+		_UNUSED struct Unit *u = units[i];
 
-		data->numbers[0] = units[i]->pinfo->id;
-		data->numbers[1] = !!(UNIT_ATTRIBUTES(units[i]) & UNIT_ATTR_PROMOTED);
-		data->numbers[2] = units[i]->level & 0x1F;
-		data->numbers[3] = units[i]->max_hp & 0x3F;
-		data->numbers[4] = units[i]->pow & 0x3F;
-		data->numbers[5] = units[i]->skl & 0x3F;
-		data->numbers[6] = units[i]->spd & 0x3F;
-		data->numbers[7] = units[i]->def & 0x3F;
-		data->numbers[8] = units[i]->res & 0x3F;
-		data->numbers[9] = units[i]->lck & 0x3F;
-		data->numbers[10] = UNIT_CON(units[i]) & 0x1F;
+		gSecretScreenData[i].numbers[0] = units[i]->pinfo->id;
+		gSecretScreenData[i].numbers[1] = !!(UNIT_ATTRIBUTES(units[i]) & UNIT_ATTR_PROMOTED);
+		gSecretScreenData[i].numbers[2] = units[i]->level & 0x1F;
+		gSecretScreenData[i].numbers[3] = units[i]->max_hp & 0x3F;
+		gSecretScreenData[i].numbers[4] = units[i]->pow & 0x1F;
+		gSecretScreenData[i].numbers[5] = units[i]->skl & 0x1F;
+		gSecretScreenData[i].numbers[6] = units[i]->spd & 0x1F;
+		gSecretScreenData[i].numbers[7] = units[i]->def & 0x1F;
+		gSecretScreenData[i].numbers[8] = units[i]->res & 0x1F;
+		gSecretScreenData[i].numbers[9] = units[i]->lck & 0x1F;
+		gSecretScreenData[i].numbers[10] = UNIT_CON(units[i]) & 0x1F;
 
 		for (j = 0; j < 8; j++)
-			data->numbers[11 + j] = GetWeaponLevelFromExp(units[i]->wexp[j]) & 7;
+			gSecretScreenData[i].numbers[11 + j] = GetWeaponLevelFromExp(units[i]->wexp[j]) & 7;
 
 		for (j = 0; j < 5; j++)
-			data->numbers[j] = GetItemIid(units[i]->items[j]);
+			gSecretScreenData[i].numbers[0x13 + j] = GetItemIid(units[i]->items[j]);
 	}
 
-	gSecretScreenRN = (u16)GetGameTime() / 8;
+	gSecretScreenRN = (GetGameTime() << 0xD) >> 0x10;
 
 	for (; i < SID_PID_POOL_SIZE; i++) {
-		struct SecretScreenData *data = &gSecretScreenData[i];
-
-		data->numbers[0] = 0;
-		data->numbers[1] = !!GetSecretScreenRN();
-		data->numbers[2] = GetSecretScreenRN() & 0x1F;
-		data->numbers[3] = GetSecretScreenRN() & 0x3F;
-		data->numbers[4] = GetSecretScreenRN() & 0x3F;
-		data->numbers[5] = GetSecretScreenRN() & 0x3F;
-		data->numbers[6] = GetSecretScreenRN() & 0x3F;
-		data->numbers[7] = GetSecretScreenRN() & 0x3F;
-		data->numbers[8] = GetSecretScreenRN() & 0x3F;
-		data->numbers[9] = GetSecretScreenRN() & 0x3F;
-		data->numbers[10] = GetSecretScreenRN() & 0x1F;
+#ifndef NONMATCHING
+		asm("":::"r0");
+#endif
+		gSecretScreenData[i].numbers[0] = 0;
+		gSecretScreenData[i].numbers[1] = GetSecretScreenRN() % 2;
+		gSecretScreenData[i].numbers[2] = GetSecretScreenRN() % 0x20;
+		gSecretScreenData[i].numbers[3] = GetSecretScreenRN() % 0x40;
+		gSecretScreenData[i].numbers[4] = GetSecretScreenRN() % 0x20;
+		gSecretScreenData[i].numbers[5] = GetSecretScreenRN() % 0x20;
+		gSecretScreenData[i].numbers[6] = GetSecretScreenRN() % 0x20;
+		gSecretScreenData[i].numbers[7] = GetSecretScreenRN() % 0x20;
+		gSecretScreenData[i].numbers[8] = GetSecretScreenRN() % 0x20;
+		gSecretScreenData[i].numbers[9] = GetSecretScreenRN() % 0x20;
+		gSecretScreenData[i].numbers[10] = GetSecretScreenRN() % 0x20;
 
 		for (j = 0; j < 8; j++)
-			data->numbers[11 + j] = GetSecretScreenRN() & 7;
+			gSecretScreenData[i].numbers[11 + j] = GetSecretScreenRN() % 8;
 
 		for (j = 0; j < 5; j++)
-			data->numbers[j] = GetSecretScreenRN();
+			gSecretScreenData[i].numbers[0x13 + j] = GetSecretScreenRN();
 	}
 
 	for (i = 0; i < 10; i++)
 		Unk_0203D518[i] = 0;
 
 	for (i = 0; i < count; i++) {
-		int supp = (u8)GetUnitSupportCount(units[i]);
+		u8 supp = GetUnitSupportCount(units[i]);
 
 		for (j = 0; j < supp; j++) {
 			u8 pid = GetUnitSupportPid(units[i], j);
 
 			for (k = (i + 1); k < count; k++) {
 				int tmp_r4, supp_lv;
-				struct SecretScreenData *data = &gSecretScreenData[k];
 
-				if (data->numbers[0] == pid)
+				if (gSecretScreenData[k].numbers[0] != pid)
 					continue;
 
-				tmp_r4 = func_fe6_08083B8C(j, k);
+				tmp_r4 = GetFlattenArrayOffset(i, k);
 				supp_lv = GetUnitSupportLevel(units[i], j);
 
 				Unk_0203D518[(u8)tmp_r4] = supp_lv & 3;
@@ -96,7 +143,6 @@ void func_fe6_08083BC4(struct Unit *units[], int count)
 		}
 	}
 }
-#endif
 
 void PrintSecretScreenTexts(struct Text *text, const u8 *table)
 {

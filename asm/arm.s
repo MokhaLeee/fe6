@@ -104,7 +104,7 @@ TmApplyTsa: @ 0x0800043C
 PutOamHi: @ 0x08000494
 	push {r4, r5, r6, r7}
 	ldr r7, .L08000490 @ =gOamHiPutIt
-.L0800049C:
+PutOamLoExt:
 	ldr r5, [r7]
 	ldrh r4, [r2]
 	tst r4, r4
@@ -151,11 +151,14 @@ PutOamHi: @ 0x08000494
 PutOamLo: @ 0x08000534
 	push {r4, r5, r6, r7}
 	ldr r7, .L08000530 @ =gOamLoPutIt
-	b .L0800049C
-.L08000540:
+	b PutOamLoExt
+
+
+DrawGlyph_Ref:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00
-.L08000560: .4byte 0x08000540
+
+pr_DrawGlyph_Ref: .4byte DrawGlyph_Ref
 
 	arm_func_start DrawGlyph
 DrawGlyph: @ 0x08000564
@@ -164,7 +167,7 @@ DrawGlyph: @ 0x08000564
 	mov sl, #0x10000
 	sub sl, sl, #1
 .L08000574:
-	ldr r4, .L08000560 @ =0x08000540
+	ldr r4, pr_DrawGlyph_Ref @ DrawGlyph_Ref
 	ldr r5, [r4, r3, lsl #2]
 	ldr r4, [r2]
 	umull r5, r6, r4, r5
@@ -208,14 +211,14 @@ DrawGlyph: @ 0x08000564
 	pop {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
 
-	arm_func_start func_fe6_08000620
-func_fe6_08000620: @ 0x08000620
+	arm_func_start DrawGlyph_Unused
+DrawGlyph_Unused: @ 0x08000620
 	push {r4, r5, r6, r7, r8, sb, sl}
 	mov sb, #7
 	mov sl, #0x10000
 	sub sl, sl, #1
 .L08000630:
-	ldr r4, .L08000560 @ =0x08000540
+	ldr r4, pr_DrawGlyph_Ref @ DrawGlyph_Ref
 	ldr r5, [r4, r3, lsl #2]
 	ldr r4, [r2]
 	umull r5, r6, r4, r5
