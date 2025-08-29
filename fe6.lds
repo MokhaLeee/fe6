@@ -734,9 +734,11 @@ SECTIONS
         . = ALIGN(4); data/sound_voicegroups.o(.rodata);
         . = ALIGN(4); data/sound_programmable_waves.o(.rodata);
         . = ALIGN(4); data/sound_music_player_table.o(.rodata);
-        . = ALIGN(4); data/sound_data.o(.rodata);
+        . = ALIGN(4); data/sounds/sound_table.o(.rodata);
+        . = ALIGN(4); data/sounds/songs/songs.o(.rodata);
 
         /* .data */
+        . = ALIGN(4); src/gbasram.o(.rodata);
         . = ALIGN(4); src/hardware.o(.data);
         . = ALIGN(4); src/sound.o(.data);
         . = ALIGN(4); src/proc.o(.data);

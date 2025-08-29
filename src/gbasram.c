@@ -1,5 +1,11 @@
+#include "prelude.h"
 #include "gbasram.h"
 #include "gbaio.h"
+
+void ReadSramFast_Core(u8 const *src, u8 *dest, u32 size);
+
+const char AgbLibSramVersion[] = "SRAM_F_V102";
+// void (* CONST_DATA pr_ReadSramFast_Core)(u8 const *src, u8 *dest, u32 size) = ReadSramFast_Core;
 
 static u16 verifySramFast_Work[80]; // buffer to hold code of VerifySramFast_Core
 static u16 readSramFast_Work[64];  // buffer to hold code of ReadSramFast_Core

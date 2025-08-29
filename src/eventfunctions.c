@@ -1445,22 +1445,22 @@ void Chapter8_WeakenNorthWestWall(void)
 
 void func_fe6_0806CFA0(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857B774);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_028);
 }
 
 void func_fe6_0806CFB8(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857C95C);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_02B);
 }
 
 void func_fe6_0806CFD0(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857C1E4);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_02A);
 }
 
 void func_fe6_0806CFE8(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857A61C);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_026);
 }
 
 void func_fe6_0806D000(void)

@@ -68,9 +68,9 @@ CFLAG_OPT := -O2
 ASFLAGS := -mcpu=arm7tdmi $(INC_FLAG)
 
 LDS := $(BUILD_NAME).lds
-C_SRCS := $(wildcard $(SRC_DIR)/*.c)
-ASM_SRCS := $(wildcard $(SRC_DIR)/*.s) $(wildcard $(ASM_DIR)/*.s)
-DATA_SRCS := $(wildcard data/*.s)
+C_SRCS := $(shell find $(SRC_DIR) -name *.c)
+ASM_SRCS := $(shell find $(SRC_DIR) -name *.s) $(shell find $(ASM_DIR) -name *.s)
+DATA_SRCS := $(shell find data/ -name *.s)
 
 C_GENERATED :=
 
