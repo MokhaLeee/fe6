@@ -8,7 +8,9 @@ from dump_sound import *
 SONGTABLE_AMT = 0x26D
 PR_SONGTABLE  = 0x3994D8
 
-LOCAL_CONFIG_DUMP_TONE = False
+max_tone_pr = 0
+
+LOCAL_CONFIG_DUMP_TONE = True
 LOCAL_CONFIG_DUMP_SONG_TABLE = False
 
 SKIPPED_SONGS = [] # list(range(1, 0x47)) + [0x54, 0x55, 0x56]
@@ -54,6 +56,9 @@ if __name__ == '__main__':
 			song = Song(song_name, header, ReadU16(rom_data, song_addr + 4), ReadU16(rom_data, song_addr + 6))
 			print("")
 
+			if max_tone_pr < header.tone:
+				max_tone_pr = header.tone
+
 		songs.append(song)
 
 	if LOCAL_CONFIG_DUMP_TONE:
@@ -69,3 +74,6 @@ if __name__ == '__main__':
 		print("NewSongTable:")
 		for song in songs:
 			print(f"    song {song.name}, {song.ms}, {song.me}")
+
+	print("@ info:")
+	print(f"@ max_tone: {max_tone_pr:08X}")

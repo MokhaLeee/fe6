@@ -426,7 +426,7 @@ SECTIONS
 
         . = 0x001570; Text_GoldBox = .;
 
-        . = 0x001578; data/sound_music_player_table.o(.bss);
+        . = 0x001578; data/sounds/music_player_table.o(.bss);
 
         . = 0x002158; src/gbasram.o(.bss);
         . = ALIGN(4); *libgcc.a:dp-bit.o(.bss);
@@ -731,11 +731,13 @@ SECTIONS
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
-        . = ALIGN(4); data/sound_voicegroups.o(.rodata);
-        . = ALIGN(4); data/sound_programmable_waves.o(.rodata);
-        . = ALIGN(4); data/sound_music_player_table.o(.rodata);
-        . = ALIGN(4); data/sounds/sound_table.o(.rodata);
-        . = ALIGN(4); data/sounds/songs/songs.o(.rodata);
+        . = ALIGN(4); data/sounds/voicegroups.o(.rodata);
+        . = ALIGN(4); data/sounds/keysplit_tables.o(.rodata);
+        . = ALIGN(4); data/sounds/programmable_waves.o(.rodata);
+        . = ALIGN(4); data/sounds/music_player_table.o(.rodata);
+        . = ALIGN(4); data/sounds/song_table.o(.rodata);
+        . = ALIGN(4); data/sounds/direct_sounds.o(.rodata);
+        . = ALIGN(4); data/sounds/songs.o(.rodata);
 
         /* .data */
         . = ALIGN(4); src/gbasram.o(.rodata);

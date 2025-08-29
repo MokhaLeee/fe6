@@ -1315,7 +1315,7 @@ song_001:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08381254                @ tone
+    .word voicegroup_08381254       @ tone
     .word song_001_track0           @ tracks 0x085671E4
     .word song_001_track1           @ tracks 0x08567308
     .word song_001_track2           @ tracks 0x08567434
@@ -3186,7 +3186,7 @@ song_002:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08381854                @ tone
+    .word voicegroup_08381854       @ tone
     .word song_002_track0           @ tracks 0x0856797C
     .word song_002_track1           @ tracks 0x08567A75
     .word song_002_track2           @ tracks 0x08567B6F
@@ -5423,7 +5423,7 @@ song_003:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08381E54                @ tone
+    .word voicegroup_08381E54       @ tone
     .word song_003_track0           @ tracks 0x0856842C
     .word song_003_track1           @ tracks 0x0856862E
     .word song_003_track2           @ tracks 0x08568831
@@ -6561,7 +6561,7 @@ song_004:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08382454                @ tone
+    .word voicegroup_08382454       @ tone
     .word song_004_track0           @ tracks 0x08569244
     .word song_004_track1           @ tracks 0x0856935C
     .word song_004_track2           @ tracks 0x08569473
@@ -7998,7 +7998,7 @@ song_005:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08382A54                @ tone
+    .word voicegroup_08382A54       @ tone
     .word song_005_track0           @ tracks 0x08569880
     .word song_005_track1           @ tracks 0x08569C39
     .word song_005_track2           @ tracks 0x08569D6D
@@ -8820,7 +8820,7 @@ song_006:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08383054                @ tone
+    .word voicegroup_08383054       @ tone
     .word song_006_track0           @ tracks 0x0856A158
     .word song_006_track1           @ tracks 0x0856A24C
     .word song_006_track2           @ tracks 0x0856A2EE
@@ -9739,7 +9739,7 @@ song_007:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08383654                @ tone
+    .word voicegroup_08383654       @ tone
     .word song_007_track0           @ tracks 0x0856A5BC
     .word song_007_track1           @ tracks 0x0856A809
     .word song_007_track2           @ tracks 0x0856A890
@@ -12599,7 +12599,7 @@ song_008:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083838A0                @ tone
+    .word voicegroup_083838A0       @ tone
     .word song_008_track0           @ tracks 0x0856AB8C
     .word song_008_track1           @ tracks 0x0856AE00
     .word song_008_track2           @ tracks 0x0856B0A8
@@ -14448,7 +14448,7 @@ song_009:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08383EA0                @ tone
+    .word voicegroup_08383EA0       @ tone
     .word song_009_track0           @ tracks 0x0856B964
     .word song_009_track1           @ tracks 0x0856BD64
     .word song_009_track2           @ tracks 0x0856BE3A
@@ -15453,7 +15453,7 @@ song_00A:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08384188                @ tone
+    .word voicegroup_08384188       @ tone
     .word song_00A_track0           @ tracks 0x0856C260
     .word song_00A_track1           @ tracks 0x0856C37B
     .word song_00A_track2           @ tracks 0x0856C438
@@ -16633,7 +16633,7 @@ song_00B:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08384788                @ tone
+    .word voicegroup_08384788       @ tone
     .word song_00B_track0           @ tracks 0x0856C844
     .word song_00B_track1           @ tracks 0x0856C996
     .word song_00B_track2           @ tracks 0x0856CA58
@@ -19563,7 +19563,7 @@ song_00C:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08384D88                @ tone
+    .word voicegroup_08384D88       @ tone
     .word song_00C_track0           @ tracks 0x0856CF2C
     .word song_00C_track1           @ tracks 0x0856D14F
     .word song_00C_track2           @ tracks 0x0856D2CE
@@ -21922,7 +21922,7 @@ song_00D:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08385388                @ tone
+    .word voicegroup_08385388       @ tone
     .word song_00D_track0           @ tracks 0x0856DD0C
     .word song_00D_track1           @ tracks 0x0856DEED
     .word song_00D_track2           @ tracks 0x0856E0CD
@@ -23632,7 +23632,7 @@ song_00E:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08385988                @ tone
+    .word voicegroup_08385988       @ tone
     .word song_00E_track0           @ tracks 0x0856EA0C
     .word song_00E_track1           @ tracks 0x0856EBDA
     .word song_00E_track2           @ tracks 0x0856ECE2
@@ -24696,7 +24696,7 @@ song_00F:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08385F88                @ tone
+    .word voicegroup_08385F88       @ tone
     .word song_00F_track0           @ tracks 0x0856F31C
     .word song_00F_track1           @ tracks 0x0856F57E
     .word song_00F_track2           @ tracks 0x0856F640
@@ -26318,7 +26318,7 @@ song_010:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08386264                @ tone
+    .word voicegroup_08386264       @ tone
     .word song_010_track0           @ tracks 0x0856F864
     .word song_010_track1           @ tracks 0x0856FA2A
     .word song_010_track2           @ tracks 0x0856FC32
@@ -27483,7 +27483,7 @@ song_011:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08386864                @ tone
+    .word voicegroup_08386864       @ tone
     .word song_011_track0           @ tracks 0x08570208
     .word song_011_track1           @ tracks 0x085702E1
     .word song_011_track2           @ tracks 0x085703B1
@@ -28470,7 +28470,7 @@ song_012:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08386E64                @ tone
+    .word voicegroup_08386E64       @ tone
     .word song_012_track0           @ tracks 0x08570854
     .word song_012_track1           @ tracks 0x085709B6
     .word song_012_track2           @ tracks 0x08570B1E
@@ -30420,7 +30420,7 @@ song_013:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08387464                @ tone
+    .word voicegroup_08387464       @ tone
     .word song_013_track0           @ tracks 0x08570E4C
     .word song_013_track1           @ tracks 0x085710FD
     .word song_013_track2           @ tracks 0x08571356
@@ -31966,7 +31966,7 @@ song_014:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08387A64                @ tone
+    .word voicegroup_08387A64       @ tone
     .word song_014_track0           @ tracks 0x0857191C
     .word song_014_track1           @ tracks 0x08571A88
     .word song_014_track2           @ tracks 0x08571B8D
@@ -33323,7 +33323,7 @@ song_015:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08387CBC                @ tone
+    .word voicegroup_08387CBC       @ tone
     .word song_015_track0           @ tracks 0x085720A4
     .word song_015_track1           @ tracks 0x085720CF
     .word song_015_track2           @ tracks 0x085721DF
@@ -34618,7 +34618,7 @@ song_016:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083882BC                @ tone
+    .word voicegroup_083882BC       @ tone
     .word song_016_track0           @ tracks 0x085727D8
     .word song_016_track1           @ tracks 0x08572839
     .word song_016_track2           @ tracks 0x08572A2D
@@ -36323,7 +36323,7 @@ song_017:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083888BC                @ tone
+    .word voicegroup_083888BC       @ tone
     .word song_017_track0           @ tracks 0x08572E90
     .word song_017_track1           @ tracks 0x085733D9
     .word song_017_track2           @ tracks 0x08573450
@@ -37649,7 +37649,7 @@ song_018:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08388EBC                @ tone
+    .word voicegroup_08388EBC       @ tone
     .word song_018_track0           @ tracks 0x08573A54
     .word song_018_track1           @ tracks 0x08573C0D
     .word song_018_track2           @ tracks 0x08573D13
@@ -40374,7 +40374,7 @@ song_019:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0xB2                      @ reverb
-    .word 0x083894BC                @ tone
+    .word voicegroup_083894BC       @ tone
     .word song_019_track0           @ tracks 0x0857422C
     .word song_019_track1           @ tracks 0x0857428F
     .word song_019_track2           @ tracks 0x08574468
@@ -40837,7 +40837,7 @@ song_01A:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08389ABC                @ tone
+    .word voicegroup_08389ABC       @ tone
     .word song_01A_track0           @ tracks 0x08574DE4
     .word song_01A_track1           @ tracks 0x08574E0D
     .word song_01A_track2           @ tracks 0x08574EDC
@@ -41104,7 +41104,7 @@ song_01B:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08389D38                @ tone
+    .word voicegroup_08389D38       @ tone
     .word song_01B_track0           @ tracks 0x08574FDC
     .word song_01B_track1           @ tracks 0x08575023
     .word song_01B_track2           @ tracks 0x0857509E
@@ -41881,7 +41881,7 @@ song_01C:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08389FB4                @ tone
+    .word voicegroup_08389FB4       @ tone
     .word song_01C_track0           @ tracks 0x0857511C
     .word song_01C_track1           @ tracks 0x08575362
     .word song_01C_track2           @ tracks 0x08575409
@@ -43494,7 +43494,7 @@ song_01E:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838A29C                @ tone
+    .word voicegroup_0838A29C       @ tone
     .word song_01E_track0           @ tracks 0x085755E8
     .word song_01E_track1           @ tracks 0x0857566B
     .word song_01E_track2           @ tracks 0x085757FD
@@ -45732,7 +45732,7 @@ song_01F:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838A89C                @ tone
+    .word voicegroup_0838A89C       @ tone
     .word song_01F_track0           @ tracks 0x08575F08
     .word song_01F_track1           @ tracks 0x08575F7F
     .word song_01F_track2           @ tracks 0x0857613B
@@ -47190,7 +47190,7 @@ song_020:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838AE9C                @ tone
+    .word voicegroup_0838AE9C       @ tone
     .word song_020_track0           @ tracks 0x08576ADC
     .word song_020_track1           @ tracks 0x08576CDE
     .word song_020_track2           @ tracks 0x08576E1C
@@ -48437,7 +48437,7 @@ song_021:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838B49C                @ tone
+    .word voicegroup_0838B49C       @ tone
     .word song_021_track0           @ tracks 0x08577384
     .word song_021_track1           @ tracks 0x085773D5
     .word song_021_track2           @ tracks 0x08577460
@@ -49262,7 +49262,7 @@ song_022:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838BA9C                @ tone
+    .word voicegroup_0838BA9C       @ tone
     .word song_022_track0           @ tracks 0x085779E8
     .word song_022_track1           @ tracks 0x08577AB5
     .word song_022_track2           @ tracks 0x08577B69
@@ -52270,7 +52270,7 @@ song_023:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838C09C                @ tone
+    .word voicegroup_0838C09C       @ tone
     .word song_023_track0           @ tracks 0x08577F8C
     .word song_023_track1           @ tracks 0x08578340
     .word song_023_track2           @ tracks 0x0857853D
@@ -53708,7 +53708,7 @@ song_024:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838C69C                @ tone
+    .word voicegroup_0838C69C       @ tone
     .word song_024_track0           @ tracks 0x08578E6C
     .word song_024_track1           @ tracks 0x0857903D
     .word song_024_track2           @ tracks 0x085791DC
@@ -55258,7 +55258,7 @@ song_025:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838CC9C                @ tone
+    .word voicegroup_0838CC9C       @ tone
     .word song_025_track0           @ tracks 0x08579764
     .word song_025_track1           @ tracks 0x085798F4
     .word song_025_track2           @ tracks 0x08579AFF
@@ -56384,7 +56384,7 @@ song_026:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838D29C                @ tone
+    .word voicegroup_0838D29C       @ tone
     .word song_026_track0           @ tracks 0x0857A014
     .word song_026_track1           @ tracks 0x0857A1A4
     .word song_026_track2           @ tracks 0x0857A2A5
@@ -58008,7 +58008,7 @@ song_027:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838D578                @ tone
+    .word voicegroup_0838D578       @ tone
     .word song_027_track0           @ tracks 0x0857A63C
     .word song_027_track1           @ tracks 0x0857A6E0
     .word song_027_track2           @ tracks 0x0857A86E
@@ -59489,7 +59489,7 @@ song_028:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838DB78                @ tone
+    .word voicegroup_0838DB78       @ tone
     .word song_028_track0           @ tracks 0x0857AF64
     .word song_028_track1           @ tracks 0x0857B056
     .word song_028_track2           @ tracks 0x0857B1A3
@@ -60001,7 +60001,7 @@ song_029:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838E178                @ tone
+    .word voicegroup_0838E178       @ tone
     .word song_029_track0           @ tracks 0x0857B798
     .word song_029_track1           @ tracks 0x0857B846
     .word song_029_track2           @ tracks 0x0857B8DA
@@ -61204,7 +61204,7 @@ song_02A:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838E19C                @ tone
+    .word voicegroup_0838E19C       @ tone
     .word song_02A_track0           @ tracks 0x0857BAA8
     .word song_02A_track1           @ tracks 0x0857BC3B
     .word song_02A_track2           @ tracks 0x0857BD24
@@ -62606,7 +62606,7 @@ song_02B:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838E79C                @ tone
+    .word voicegroup_0838E79C       @ tone
     .word song_02B_track0           @ tracks 0x0857C204
     .word song_02B_track1           @ tracks 0x0857C331
     .word song_02B_track2           @ tracks 0x0857C3C3
@@ -63544,7 +63544,7 @@ song_02C:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838EAD8                @ tone
+    .word voicegroup_0838EAD8       @ tone
     .word song_02C_track0           @ tracks 0x0857C97C
     .word song_02C_track1           @ tracks 0x0857CA66
     .word song_02C_track2           @ tracks 0x0857CACF
@@ -64179,7 +64179,7 @@ song_02D:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838F0D8                @ tone
+    .word voicegroup_0838F0D8       @ tone
     .word song_02D_track0           @ tracks 0x0857CEB0
     .word song_02D_track1           @ tracks 0x0857CFA0
     .word song_02D_track2           @ tracks 0x0857D0FF
@@ -65642,7 +65642,7 @@ song_02E:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838F6D8                @ tone
+    .word voicegroup_0838F6D8       @ tone
     .word song_02E_track0           @ tracks 0x0857D338
     .word song_02E_track1           @ tracks 0x0857D41A
     .word song_02E_track2           @ tracks 0x0857D6C0
@@ -66441,7 +66441,7 @@ song_031:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838FCD8                @ tone
+    .word voicegroup_0838FCD8       @ tone
     .word song_031_track0           @ tracks 0x0857DCAC
     .word song_031_track1           @ tracks 0x0857DE18
     .word song_031_track2           @ tracks 0x0857DEC2
@@ -67490,7 +67490,7 @@ song_032:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0838FF9C                @ tone
+    .word voicegroup_0838FF9C       @ tone
     .word song_032_track0           @ tracks 0x0857E27C
     .word song_032_track1           @ tracks 0x0857E5A3
     .word song_032_track2           @ tracks 0x0857E738
@@ -68642,7 +68642,7 @@ song_033:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0839059C                @ tone
+    .word voicegroup_0839059C       @ tone
     .word song_033_track0           @ tracks 0x0857E8A8
     .word song_033_track1           @ tracks 0x0857E9BC
     .word song_033_track2           @ tracks 0x0857EA87
@@ -72580,7 +72580,7 @@ song_034:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08390B9C                @ tone
+    .word voicegroup_08390B9C       @ tone
     .word song_034_track0           @ tracks 0x0857EF34
     .word song_034_track1           @ tracks 0x0857F114
     .word song_034_track2           @ tracks 0x0857F2FF
@@ -74335,7 +74335,7 @@ song_035:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0839119C                @ tone
+    .word voicegroup_0839119C       @ tone
     .word song_035_track0           @ tracks 0x08580548
     .word song_035_track1           @ tracks 0x085806F9
     .word song_035_track2           @ tracks 0x08580813
@@ -75967,7 +75967,7 @@ song_036:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x0839179C                @ tone
+    .word voicegroup_0839179C       @ tone
     .word song_036_track0           @ tracks 0x08580FDC
     .word song_036_track1           @ tracks 0x0858106D
     .word song_036_track2           @ tracks 0x08581182
@@ -76261,7 +76261,7 @@ song_037:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08391B14                @ tone
+    .word voicegroup_08391B14       @ tone
     .word song_037_track0           @ tracks 0x08581844
     .word song_037_track1           @ tracks 0x0858187E
     .word song_037_track2           @ tracks 0x085818B5
@@ -77188,7 +77188,7 @@ song_038:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08391DFC                @ tone
+    .word voicegroup_08391DFC       @ tone
     .word song_038_track0           @ tracks 0x085819C8
     .word song_038_track1           @ tracks 0x08581ABF
     .word song_038_track2           @ tracks 0x08581BB4
@@ -77629,7 +77629,7 @@ song_039:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083923FC                @ tone
+    .word voicegroup_083923FC       @ tone
     .word song_039_track0           @ tracks 0x08581EB4
     .word song_039_track1           @ tracks 0x08581F37
     .word song_039_track2           @ tracks 0x08581F98
@@ -78437,7 +78437,7 @@ song_03A:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083929FC                @ tone
+    .word voicegroup_083929FC       @ tone
     .word song_03A_track0           @ tracks 0x08582194
     .word song_03A_track1           @ tracks 0x085822C9
     .word song_03A_track2           @ tracks 0x085823A9
@@ -79285,7 +79285,7 @@ song_03B:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08392FFC                @ tone
+    .word voicegroup_08392FFC       @ tone
     .word song_03B_track0           @ tracks 0x08582698
     .word song_03B_track1           @ tracks 0x085827BE
     .word song_03B_track2           @ tracks 0x08582873
@@ -80782,7 +80782,7 @@ song_03C:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083938A8                @ tone
+    .word voicegroup_083938A8       @ tone
     .word song_03C_track0           @ tracks 0x08582C58
     .word song_03C_track1           @ tracks 0x08582E87
     .word song_03C_track2           @ tracks 0x08582F05
@@ -81246,7 +81246,7 @@ song_03D:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08393EA8                @ tone
+    .word voicegroup_08393EA8       @ tone
     .word song_03D_track0           @ tracks 0x08583550
     .word song_03D_track1           @ tracks 0x085835EE
     .word song_03D_track2           @ tracks 0x08583676
@@ -82284,7 +82284,7 @@ song_03E:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083944A8                @ tone
+    .word voicegroup_083944A8       @ tone
     .word song_03E_track0           @ tracks 0x08583818
     .word song_03E_track1           @ tracks 0x085838B6
     .word song_03E_track2           @ tracks 0x0858393E
@@ -83202,7 +83202,7 @@ song_03F:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08394AA8                @ tone
+    .word voicegroup_08394AA8       @ tone
     .word song_03F_track0           @ tracks 0x08583DE8
     .word song_03F_track1           @ tracks 0x08583E56
     .word song_03F_track2           @ tracks 0x08583EBE
@@ -83656,7 +83656,7 @@ song_040:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08394E20                @ tone
+    .word voicegroup_08394E20       @ tone
     .word song_040_track0           @ tracks 0x085843E8
     .word song_040_track1           @ tracks 0x085844C2
     .word song_040_track2           @ tracks 0x08584565
@@ -83951,7 +83951,7 @@ song_041:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08394E20                @ tone
+    .word voicegroup_08394E20       @ tone
     .word song_041_track0           @ tracks 0x085846E8
     .word song_041_track1           @ tracks 0x085847A1
     .word song_041_track2           @ tracks 0x08584810
@@ -86298,7 +86298,7 @@ song_042:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08395420                @ tone
+    .word voicegroup_08395420       @ tone
     .word song_042_track0           @ tracks 0x08584894
     .word song_042_track1           @ tracks 0x08584B7B
     .word song_042_track2           @ tracks 0x08584E10
@@ -90031,7 +90031,7 @@ song_043:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08395A20                @ tone
+    .word voicegroup_08395A20       @ tone
     .word song_043_track0           @ tracks 0x08585438
     .word song_043_track1           @ tracks 0x085858C0
     .word song_043_track2           @ tracks 0x08585B8C
@@ -90435,7 +90435,7 @@ song_044:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08395DE0                @ tone
+    .word voicegroup_08395DE0       @ tone
     .word song_044_track0           @ tracks 0x085868B4
     .word song_044_track1           @ tracks 0x0858693E
     .word song_044_track2           @ tracks 0x0858694E
@@ -90777,7 +90777,7 @@ song_045:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083960D4                @ tone
+    .word voicegroup_083960D4       @ tone
     .word song_045_track0           @ tracks 0x08586A84
     .word song_045_track1           @ tracks 0x08586AF0
     .word song_045_track2           @ tracks 0x08586B4C
@@ -90923,7 +90923,7 @@ song_046:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083963C8                @ tone
+    .word voicegroup_083963C8       @ tone
     .word song_046_track0           @ tracks 0x08586C10
     .word song_046_track1           @ tracks 0x08586C87
     .word song_046_track2           @ tracks 0x08586CBA
@@ -91932,7 +91932,7 @@ song_047:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x083966BC                @ tone
+    .word voicegroup_083966BC       @ tone
     .word song_047_track0           @ tracks 0x08586D00
     .word song_047_track1           @ tracks 0x08586EC4
     .word song_047_track2           @ tracks 0x08586F33
@@ -92971,7 +92971,7 @@ song_048:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08396938                @ tone
+    .word voicegroup_08396938       @ tone
     .word song_048_track0           @ tracks 0x0858716C
     .word song_048_track1           @ tracks 0x085872B1
     .word song_048_track2           @ tracks 0x085873A6
@@ -93737,7 +93737,7 @@ song_049:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08396F38                @ tone
+    .word voicegroup_08396F38       @ tone
     .word song_049_track0           @ tracks 0x08587744
     .word song_049_track1           @ tracks 0x085877C0
     .word song_049_track2           @ tracks 0x08587822
@@ -94152,7 +94152,7 @@ song_04A:
     .byte 0x00                      @ blockCount
     .byte 0x0A                      @ priority
     .byte 0x9E                      @ reverb
-    .word 0x08397538                @ tone
+    .word voicegroup_08397538       @ tone
     .word song_04A_track0           @ tracks 0x08587BE0
     .word song_04A_track1           @ tracks 0x08587C80
     .word song_04A_track2           @ tracks 0x08587D8F
@@ -94242,7 +94242,7 @@ song_05A:
     .byte 0x00                      @ blockCount
     .byte 0x3C                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_05A_track0           @ tracks 0x08587E04
     .word song_05A_track1           @ tracks 0x08587E22
     .word song_05A_track2           @ tracks 0x08587E3E
@@ -94319,7 +94319,7 @@ song_05B:
     .byte 0x00                      @ blockCount
     .byte 0x3C                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_05B_track0           @ tracks 0x08587E7C
     .word song_05B_track1           @ tracks 0x08587E95
     .word song_05B_track2           @ tracks 0x08587EAC
@@ -94516,7 +94516,7 @@ song_05C:
     .byte 0x00                      @ blockCount
     .byte 0x3C                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_05C_track0           @ tracks 0x08587EE8
     .word song_05C_track1           @ tracks 0x08587F08
     .word song_05C_track2           @ tracks 0x08587F2A
@@ -94571,7 +94571,7 @@ song_060:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_060_track0           @ tracks 0x08587FD8
     .word song_060_track1           @ tracks 0x08587FF3
 
@@ -94640,7 +94640,7 @@ song_061:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_061_track0           @ tracks 0x0858801C
 
 
@@ -94664,7 +94664,7 @@ song_065:
     .byte 0x00                      @ blockCount
     .byte 0x1E                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_065_track0           @ tracks 0x0858806C
 
 
@@ -94686,7 +94686,7 @@ song_066:
     .byte 0x00                      @ blockCount
     .byte 0x1E                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_066_track0           @ tracks 0x08588088
 
 
@@ -94708,7 +94708,7 @@ song_067:
     .byte 0x00                      @ blockCount
     .byte 0x1E                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_067_track0           @ tracks 0x085880A4
 
 
@@ -94743,7 +94743,7 @@ song_068:
     .byte 0x00                      @ blockCount
     .byte 0x1F                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_068_track0           @ tracks 0x085880C0
 
 
@@ -94787,7 +94787,7 @@ song_069:
     .byte 0x00                      @ blockCount
     .byte 0x1F                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_069_track0           @ tracks 0x085880EC
 
 
@@ -94831,7 +94831,7 @@ song_06A:
     .byte 0x00                      @ blockCount
     .byte 0x20                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_06A_track0           @ tracks 0x08588124
 
 
@@ -94872,7 +94872,7 @@ song_06B:
     .byte 0x00                      @ blockCount
     .byte 0x1F                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_06B_track0           @ tracks 0x0858815C
 
 
@@ -94899,7 +94899,7 @@ song_06C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_06C_track0           @ tracks 0x0858818C
 
 
@@ -95062,7 +95062,7 @@ song_06D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_06D_track0           @ tracks 0x085881B0
     .word song_06D_track1           @ tracks 0x085881F2
     .word song_06D_track2           @ tracks 0x08588243
@@ -95086,7 +95086,7 @@ song_06E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_06E_track0           @ tracks 0x0858828C
 
 
@@ -95168,7 +95168,7 @@ song_06F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_06F_track0           @ tracks 0x085882A8
 
 
@@ -95214,7 +95214,7 @@ song_070:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_070_track0           @ tracks 0x08588300
     .word song_070_track1           @ tracks 0x08588315
 
@@ -95259,7 +95259,7 @@ song_071:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_071_track0           @ tracks 0x08588338
     .word song_071_track1           @ tracks 0x0858834C
 
@@ -95298,7 +95298,7 @@ song_072:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_072_track0           @ tracks 0x08588370
 
 
@@ -95411,7 +95411,7 @@ song_073:
     .byte 0x00                      @ blockCount
     .byte 0x3C                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_073_track0           @ tracks 0x0858839C
     .word song_073_track1           @ tracks 0x085883CA
 
@@ -95553,7 +95553,7 @@ song_074:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_074_track0           @ tracks 0x0858841C
 
 
@@ -95575,7 +95575,7 @@ song_075:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_075_track0           @ tracks 0x085884BC
 
 
@@ -95637,7 +95637,7 @@ song_076:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_076_track0           @ tracks 0x085884D8
     .word song_076_track1           @ tracks 0x085884F4
 
@@ -95694,7 +95694,7 @@ song_077:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_077_track0           @ tracks 0x08588524
     .word song_077_track1           @ tracks 0x0858853D
 
@@ -95809,7 +95809,7 @@ song_078:
     .byte 0x00                      @ blockCount
     .byte 0x1E                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_078_track0           @ tracks 0x08588568
     .word song_078_track1           @ tracks 0x085885AC
 
@@ -95924,7 +95924,7 @@ song_079:
     .byte 0x00                      @ blockCount
     .byte 0x1E                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_079_track0           @ tracks 0x085885F4
     .word song_079_track1           @ tracks 0x08588638
 
@@ -95947,7 +95947,7 @@ song_07A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_07A_track0           @ tracks 0x08588680
 
 
@@ -96025,7 +96025,7 @@ song_07B:
     .byte 0x00                      @ blockCount
     .byte 0x1E                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_07B_track0           @ tracks 0x0858869C
     .word song_07B_track1           @ tracks 0x085886C4
 
@@ -96054,7 +96054,7 @@ song_07C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_07C_track0           @ tracks 0x085886F8
 
 
@@ -96090,7 +96090,7 @@ song_07D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_07D_track0           @ tracks 0x08588718
     .word song_07D_track1           @ tracks 0x08588727
 
@@ -96159,7 +96159,7 @@ song_07E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_07E_track0           @ tracks 0x08588748
     .word song_07E_track1           @ tracks 0x08588767
 
@@ -96236,7 +96236,7 @@ song_07F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_07F_track0           @ tracks 0x08588798
 
 
@@ -96271,7 +96271,7 @@ song_080:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_080_track0           @ tracks 0x08588800
 
 
@@ -96373,7 +96373,7 @@ song_081:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_081_track0           @ tracks 0x08588834
 
 
@@ -96438,7 +96438,7 @@ song_082:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_082_track0           @ tracks 0x085888A4
 
 
@@ -96482,7 +96482,7 @@ song_083:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_083_track0           @ tracks 0x085888F4
 
 
@@ -96504,7 +96504,7 @@ song_084:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_084_track0           @ tracks 0x08588924
 
 
@@ -96529,7 +96529,7 @@ song_085:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_085_track0           @ tracks 0x08588940
 
 
@@ -96594,7 +96594,7 @@ song_086:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_086_track0           @ tracks 0x0858895C
 
 
@@ -96677,7 +96677,7 @@ song_087:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_087_track0           @ tracks 0x085889AC
 
 
@@ -96738,7 +96738,7 @@ song_088:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_088_track0           @ tracks 0x08588A18
 
 
@@ -96819,7 +96819,7 @@ song_089:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_089_track0           @ tracks 0x08588A64
 
 
@@ -96900,7 +96900,7 @@ song_08A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_08A_track0           @ tracks 0x08588AD0
 
 
@@ -96987,7 +96987,7 @@ song_08B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_08B_track0           @ tracks 0x08588B3C
 
 
@@ -97109,7 +97109,7 @@ song_08C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_08C_track0           @ tracks 0x08588BB4
 
 
@@ -97255,7 +97255,7 @@ song_08D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_08D_track0           @ tracks 0x08588C54
     .word song_08D_track1           @ tracks 0x08588C8D
 
@@ -97366,7 +97366,7 @@ song_08E:
     .byte 0x00                      @ blockCount
     .byte 0x32                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_08E_track0           @ tracks 0x08588CFC
 
 
@@ -97497,7 +97497,7 @@ song_08F:
     .byte 0x00                      @ blockCount
     .byte 0x33                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_08F_track0           @ tracks 0x08588D78
 
 
@@ -97686,7 +97686,7 @@ song_090:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_090_track0           @ tracks 0x08588E1C
     .word song_090_track1           @ tracks 0x08588E76
 
@@ -97871,7 +97871,7 @@ song_091:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_091_track0           @ tracks 0x08588EEC
     .word song_091_track1           @ tracks 0x08588F62
     .word song_091_track2           @ tracks 0x08588FD8
@@ -97896,7 +97896,7 @@ song_092:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_092_track0           @ tracks 0x08589008
 
 
@@ -97918,7 +97918,7 @@ song_093:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_093_track0           @ tracks 0x08589024
 
 
@@ -97943,7 +97943,7 @@ song_094:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x083977FC                @ tone
+    .word voicegroup_083977FC       @ tone
     .word song_094_track0           @ tracks 0x08589040
 
 
@@ -97966,7 +97966,7 @@ song_096:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_096_track0           @ tracks 0x0858905C
 
 
@@ -97989,7 +97989,7 @@ song_097:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_097_track0           @ tracks 0x08589078
 
 
@@ -98012,7 +98012,7 @@ song_098:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_098_track0           @ tracks 0x08589094
 
 
@@ -98035,7 +98035,7 @@ song_099:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_099_track0           @ tracks 0x085890B0
 
 
@@ -98058,7 +98058,7 @@ song_09A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_09A_track0           @ tracks 0x085890CC
 
 
@@ -98081,7 +98081,7 @@ song_09B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_09B_track0           @ tracks 0x085890E8
 
 
@@ -98104,7 +98104,7 @@ song_09C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_09C_track0           @ tracks 0x08589104
 
 
@@ -98127,7 +98127,7 @@ song_09D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_09D_track0           @ tracks 0x08589120
 
 
@@ -98150,7 +98150,7 @@ song_09E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_09E_track0           @ tracks 0x0858913C
 
 
@@ -98173,7 +98173,7 @@ song_09F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_09F_track0           @ tracks 0x08589158
 
 
@@ -98196,7 +98196,7 @@ song_0A0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A0_track0           @ tracks 0x08589174
 
 
@@ -98219,7 +98219,7 @@ song_0A1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A1_track0           @ tracks 0x08589190
 
 
@@ -98242,7 +98242,7 @@ song_0A2:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A2_track0           @ tracks 0x085891AC
 
 
@@ -98265,7 +98265,7 @@ song_0A3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A3_track0           @ tracks 0x085891C8
 
 
@@ -98288,7 +98288,7 @@ song_0A4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A4_track0           @ tracks 0x085891E4
 
 
@@ -98311,7 +98311,7 @@ song_0A5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A5_track0           @ tracks 0x08589200
 
 
@@ -98334,7 +98334,7 @@ song_0A6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A6_track0           @ tracks 0x0858921C
 
 
@@ -98357,7 +98357,7 @@ song_0A7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A7_track0           @ tracks 0x08589238
 
 
@@ -98436,7 +98436,7 @@ song_0A8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A8_track0           @ tracks 0x08589254
     .word song_0A8_track1           @ tracks 0x08589299
 
@@ -98489,7 +98489,7 @@ song_0A9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0A9_track0           @ tracks 0x085892C0
 
 
@@ -98567,7 +98567,7 @@ song_0AA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0AA_track0           @ tracks 0x085892FC
 
 
@@ -98590,7 +98590,7 @@ song_0AB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0AB_track0           @ tracks 0x08589364
 
 
@@ -98612,7 +98612,7 @@ song_0AC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0AC_track0           @ tracks 0x08589380
 
 
@@ -98635,7 +98635,7 @@ song_0AF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0AF_track0           @ tracks 0x0858939C
 
 
@@ -98657,7 +98657,7 @@ song_0B0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B0_track0           @ tracks 0x085893B8
 
 
@@ -98679,7 +98679,7 @@ song_0B1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B1_track0           @ tracks 0x085893D4
 
 
@@ -98803,7 +98803,7 @@ song_0B3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B3_track0           @ tracks 0x085893F0
     .word song_0B3_track1           @ tracks 0x08589433
 
@@ -98829,7 +98829,7 @@ song_0B4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B4_track0           @ tracks 0x08589480
 
 
@@ -98853,7 +98853,7 @@ song_0B5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B5_track0           @ tracks 0x0858949C
 
 
@@ -98877,7 +98877,7 @@ song_0B6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B6_track0           @ tracks 0x085894B8
 
 
@@ -98900,7 +98900,7 @@ song_0B7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B7_track0           @ tracks 0x085894D4
 
 
@@ -99044,7 +99044,7 @@ song_0B8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B8_track0           @ tracks 0x085894F0
     .word song_0B8_track1           @ tracks 0x08589521
 
@@ -99068,7 +99068,7 @@ song_0B9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0B9_track0           @ tracks 0x0858959C
 
 
@@ -99094,7 +99094,7 @@ song_0BA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0BA_track0           @ tracks 0x085895B8
 
 
@@ -99149,7 +99149,7 @@ song_0BB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0BB_track0           @ tracks 0x085895D8
 
 
@@ -99172,7 +99172,7 @@ song_0BC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0BC_track0           @ tracks 0x08589628
 
 
@@ -99216,7 +99216,7 @@ song_0BD:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0BD_track0           @ tracks 0x08589644
 
 
@@ -99260,7 +99260,7 @@ song_0BE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0BE_track0           @ tracks 0x08589688
 
 
@@ -99300,7 +99300,7 @@ song_0BF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0BF_track0           @ tracks 0x085896CC
 
 
@@ -99839,7 +99839,7 @@ song_0C4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0C4_track0           @ tracks 0x085896FC
 
 
@@ -100843,7 +100843,7 @@ song_0C5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0C5_track0           @ tracks 0x08589920
     .word song_0C5_track1           @ tracks 0x08589961
     .word song_0C5_track2           @ tracks 0x08589BD8
@@ -101197,7 +101197,7 @@ song_0C6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0C6_track0           @ tracks 0x08589E60
     .word song_0C6_track1           @ tracks 0x08589F2F
 
@@ -101701,7 +101701,7 @@ song_0C7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_0C7_track0           @ tracks 0x0858A088
 
 
@@ -101723,7 +101723,7 @@ song_0C8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0C8_track0           @ tracks 0x0858A28C
 
 
@@ -101745,7 +101745,7 @@ song_0C9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0C9_track0           @ tracks 0x0858A2A8
 
 
@@ -101767,7 +101767,7 @@ song_0CA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0CA_track0           @ tracks 0x0858A2C4
 
 
@@ -101789,7 +101789,7 @@ song_0CB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0CB_track0           @ tracks 0x0858A2E0
 
 
@@ -101811,7 +101811,7 @@ song_0CC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0CC_track0           @ tracks 0x0858A2FC
 
 
@@ -101833,7 +101833,7 @@ song_0CD:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0CD_track0           @ tracks 0x0858A318
 
 
@@ -101855,7 +101855,7 @@ song_0CE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0CE_track0           @ tracks 0x0858A334
 
 
@@ -101877,7 +101877,7 @@ song_0CF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0CF_track0           @ tracks 0x0858A350
 
 
@@ -101899,7 +101899,7 @@ song_0D0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D0_track0           @ tracks 0x0858A36C
 
 
@@ -101939,7 +101939,7 @@ song_0D1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D1_track0           @ tracks 0x0858A388
 
 
@@ -101961,7 +101961,7 @@ song_0D2:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D2_track0           @ tracks 0x0858A3C4
 
 
@@ -101983,7 +101983,7 @@ song_0D3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D3_track0           @ tracks 0x0858A3E0
 
 
@@ -102005,7 +102005,7 @@ song_0D4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D4_track0           @ tracks 0x0858A3FC
 
 
@@ -102027,7 +102027,7 @@ song_0D5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D5_track0           @ tracks 0x0858A418
 
 
@@ -102050,7 +102050,7 @@ song_0D6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D6_track0           @ tracks 0x0858A434
 
 
@@ -102073,7 +102073,7 @@ song_0D7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D7_track0           @ tracks 0x0858A450
 
 
@@ -102195,7 +102195,7 @@ song_0D8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0D8_track0           @ tracks 0x0858A46C
 
 
@@ -102269,7 +102269,7 @@ song_0DC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0DC_track0           @ tracks 0x0858A50C
 
 
@@ -102342,7 +102342,7 @@ song_0DD:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0DD_track0           @ tracks 0x0858A568
 
 
@@ -102427,7 +102427,7 @@ song_0DE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0DE_track0           @ tracks 0x0858A5C8
 
 
@@ -102490,7 +102490,7 @@ song_0DF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0DF_track0           @ tracks 0x0858A644
 
 
@@ -102574,7 +102574,7 @@ song_0E0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E0_track0           @ tracks 0x0858A68C
 
 
@@ -102606,7 +102606,7 @@ song_0E1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E1_track0           @ tracks 0x0858A6E8
 
 
@@ -102630,7 +102630,7 @@ song_0E2:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E2_track0           @ tracks 0x0858A714
 
 
@@ -102658,7 +102658,7 @@ song_0E3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E3_track0           @ tracks 0x0858A730
 
 
@@ -102687,7 +102687,7 @@ song_0E4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E4_track0           @ tracks 0x0858A750
 
 
@@ -102715,7 +102715,7 @@ song_0E5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E5_track0           @ tracks 0x0858A770
 
 
@@ -102743,7 +102743,7 @@ song_0E6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E6_track0           @ tracks 0x0858A790
 
 
@@ -102767,7 +102767,7 @@ song_0E7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E7_track0           @ tracks 0x0858A7B0
 
 
@@ -103129,7 +103129,7 @@ song_0E8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E8_track0           @ tracks 0x0858A7CC
     .word song_0E8_track1           @ tracks 0x0858A7E1
 
@@ -103385,7 +103385,7 @@ song_0E9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0E9_track0           @ tracks 0x0858A954
     .word song_0E9_track1           @ tracks 0x0858A965
 
@@ -103408,7 +103408,7 @@ song_0EA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0EA_track0           @ tracks 0x0858AA68
 
 
@@ -103430,7 +103430,7 @@ song_0EB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0EB_track0           @ tracks 0x0858AA84
 
 
@@ -103453,7 +103453,7 @@ song_0EC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0EC_track0           @ tracks 0x0858AAA0
 
 
@@ -103487,7 +103487,7 @@ song_0ED:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0ED_track0           @ tracks 0x0858AABC
 
 
@@ -103534,7 +103534,7 @@ song_0EE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0EE_track0           @ tracks 0x0858AAEC
 
 
@@ -103557,7 +103557,7 @@ song_0EF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0EF_track0           @ tracks 0x0858AB24
 
 
@@ -103579,7 +103579,7 @@ song_0F0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_0F0_track0           @ tracks 0x0858AB40
 
 
@@ -103602,7 +103602,7 @@ song_0F1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F1_track0           @ tracks 0x0858AB5C
 
 
@@ -103625,7 +103625,7 @@ song_0F2:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F2_track0           @ tracks 0x0858AB78
 
 
@@ -103726,7 +103726,7 @@ song_0F3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F3_track0           @ tracks 0x0858AB94
 
 
@@ -103748,7 +103748,7 @@ song_0F4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F4_track0           @ tracks 0x0858AC0C
 
 
@@ -103773,7 +103773,7 @@ song_0F5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F5_track0           @ tracks 0x0858AC28
 
 
@@ -103867,7 +103867,7 @@ song_0F6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F6_track0           @ tracks 0x0858AC44
 
 
@@ -103958,7 +103958,7 @@ song_0F7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F7_track0           @ tracks 0x0858ACC8
 
 
@@ -103981,7 +103981,7 @@ song_0F8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F8_track0           @ tracks 0x0858AD34
 
 
@@ -104127,7 +104127,7 @@ song_0F9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0F9_track0           @ tracks 0x0858AD50
 
 
@@ -104209,7 +104209,7 @@ song_0FA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0FA_track0           @ tracks 0x0858ADF0
 
 
@@ -104265,7 +104265,7 @@ song_0FB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0FB_track0           @ tracks 0x0858AE50
 
 
@@ -104287,7 +104287,7 @@ song_0FC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0FC_track0           @ tracks 0x0858AE90
 
 
@@ -104369,7 +104369,7 @@ song_0FD:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0FD_track0           @ tracks 0x0858AEAC
 
 
@@ -104451,7 +104451,7 @@ song_0FE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0FE_track0           @ tracks 0x0858AF14
 
 
@@ -104533,7 +104533,7 @@ song_0FF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_0FF_track0           @ tracks 0x0858AF88
 
 
@@ -104640,7 +104640,7 @@ song_100:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_100_track0           @ tracks 0x0858AFFC
 
 
@@ -104730,7 +104730,7 @@ song_101:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_101_track0           @ tracks 0x0858B088
 
 
@@ -104825,7 +104825,7 @@ song_102:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_102_track0           @ tracks 0x0858B0EC
 
 
@@ -105061,7 +105061,7 @@ song_103:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_103_track0           @ tracks 0x0858B154
 
 
@@ -105101,7 +105101,7 @@ song_104:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_104_track0           @ tracks 0x0858B248
 
 
@@ -105307,7 +105307,7 @@ song_105:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_105_track0           @ tracks 0x0858B274
     .word song_105_track1           @ tracks 0x0858B34B
 
@@ -105452,7 +105452,7 @@ song_106:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_106_track0           @ tracks 0x0858B378
 
 
@@ -105477,7 +105477,7 @@ song_108:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_108_track0           @ tracks 0x0858B428
 
 
@@ -105500,7 +105500,7 @@ song_109:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_109_track0           @ tracks 0x0858B444
 
 
@@ -105575,7 +105575,7 @@ song_10A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_10A_track0           @ tracks 0x0858B460
 
 
@@ -105641,7 +105641,7 @@ song_10B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_10B_track0           @ tracks 0x0858B4B0
 
 
@@ -105691,7 +105691,7 @@ song_10C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_10C_track0           @ tracks 0x0858B4F8
 
 
@@ -105813,7 +105813,7 @@ song_10D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_10D_track0           @ tracks 0x0858B530
 
 
@@ -105917,7 +105917,7 @@ song_10E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_10E_track0           @ tracks 0x0858B5E8
 
 
@@ -106021,7 +106021,7 @@ song_10F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_10F_track0           @ tracks 0x0858B668
 
 
@@ -106115,7 +106115,7 @@ song_110:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_110_track0           @ tracks 0x0858B6E8
 
 
@@ -106209,7 +106209,7 @@ song_111:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_111_track0           @ tracks 0x0858B754
 
 
@@ -106302,7 +106302,7 @@ song_112:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_112_track0           @ tracks 0x0858B7C0
 
 
@@ -106395,7 +106395,7 @@ song_113:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_113_track0           @ tracks 0x0858B834
 
 
@@ -106594,7 +106594,7 @@ song_114:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_114_track0           @ tracks 0x0858B8A8
 
 
@@ -106619,7 +106619,7 @@ song_117:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_117_track0           @ tracks 0x0858B98C
 
 
@@ -106641,7 +106641,7 @@ song_118:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_118_track0           @ tracks 0x0858B9A8
 
 
@@ -106680,7 +106680,7 @@ song_119:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_119_track0           @ tracks 0x0858B9C4
 
 
@@ -106704,7 +106704,7 @@ song_11A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_11A_track0           @ tracks 0x0858B9F8
 
 
@@ -106728,7 +106728,7 @@ song_11B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_11B_track0           @ tracks 0x0858BA14
 
 
@@ -106753,7 +106753,7 @@ song_11C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_11C_track0           @ tracks 0x0858BA30
 
 
@@ -106776,7 +106776,7 @@ song_11D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_11D_track0           @ tracks 0x0858BA4C
 
 
@@ -106856,7 +106856,7 @@ song_11E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_11E_track0           @ tracks 0x0858BA68
 
 
@@ -106902,7 +106902,7 @@ song_11F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_11F_track0           @ tracks 0x0858BAD4
 
 
@@ -106938,7 +106938,7 @@ song_120:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_120_track0           @ tracks 0x0858BB08
 
 
@@ -106973,7 +106973,7 @@ song_121:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_121_track0           @ tracks 0x0858BB30
 
 
@@ -107306,7 +107306,7 @@ song_122:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_122_track0           @ tracks 0x0858BB58
 
 
@@ -107330,7 +107330,7 @@ song_123:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_123_track0           @ tracks 0x0858BCE0
 
 
@@ -107355,7 +107355,7 @@ song_124:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_124_track0           @ tracks 0x0858BD00
 
 
@@ -107380,7 +107380,7 @@ song_125:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_125_track0           @ tracks 0x0858BD20
 
 
@@ -107433,7 +107433,7 @@ song_126:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_126_track0           @ tracks 0x0858BD3C
 
 
@@ -107456,7 +107456,7 @@ song_127:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_127_track0           @ tracks 0x0858BD78
 
 
@@ -107511,7 +107511,7 @@ song_128:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_128_track0           @ tracks 0x0858BD94
 
 
@@ -107599,7 +107599,7 @@ song_129:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_129_track0           @ tracks 0x0858BDE0
 
 
@@ -107666,7 +107666,7 @@ song_12A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_12A_track0           @ tracks 0x0858BE3C
 
 
@@ -107752,7 +107752,7 @@ song_12B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_12B_track0           @ tracks 0x0858BE94
 
 
@@ -107903,7 +107903,7 @@ song_12C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_12C_track0           @ tracks 0x0858BF14
 
 
@@ -108077,7 +108077,7 @@ song_12D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_12D_track0           @ tracks 0x0858BFC4
 
 
@@ -108136,7 +108136,7 @@ song_12E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_12E_track0           @ tracks 0x0858C0A0
     .word song_12E_track1           @ tracks 0x0858C0C5
 
@@ -108336,7 +108336,7 @@ song_12F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_12F_track0           @ tracks 0x0858C0F4
 
 
@@ -108422,7 +108422,7 @@ song_130:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_130_track0           @ tracks 0x0858C220
 
 
@@ -108448,7 +108448,7 @@ song_131:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_131_track0           @ tracks 0x0858C27C
 
 
@@ -108471,7 +108471,7 @@ song_132:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_132_track0           @ tracks 0x0858C29C
 
 
@@ -108517,7 +108517,7 @@ song_133:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_133_track0           @ tracks 0x0858C2B8
 
 
@@ -108563,7 +108563,7 @@ song_134:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_134_track0           @ tracks 0x0858C2EC
 
 
@@ -108610,7 +108610,7 @@ song_135:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_135_track0           @ tracks 0x0858C32C
 
 
@@ -108632,7 +108632,7 @@ song_136:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_136_track0           @ tracks 0x0858C364
 
 
@@ -108708,7 +108708,7 @@ song_137:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_137_track0           @ tracks 0x0858C380
 
 
@@ -108926,7 +108926,7 @@ song_138:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_138_track0           @ tracks 0x0858C3F0
 
 
@@ -108955,7 +108955,7 @@ song_139:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_139_track0           @ tracks 0x0858C4D8
 
 
@@ -109021,7 +109021,7 @@ song_13A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_13A_track0           @ tracks 0x0858C4F8
 
 
@@ -109047,7 +109047,7 @@ song_13B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_13B_track0           @ tracks 0x0858C540
 
 
@@ -109072,7 +109072,7 @@ song_13C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_13C_track0           @ tracks 0x0858C560
 
 
@@ -109183,7 +109183,7 @@ song_13D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_13D_track0           @ tracks 0x0858C57C
 
 
@@ -109205,7 +109205,7 @@ song_13E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_13E_track0           @ tracks 0x0858C608
 
 
@@ -109235,7 +109235,7 @@ song_13F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_13F_track0           @ tracks 0x0858C624
 
 
@@ -109340,7 +109340,7 @@ song_140:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_140_track0           @ tracks 0x0858C648
 
 
@@ -109362,7 +109362,7 @@ song_141:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_141_track0           @ tracks 0x0858C6C4
 
 
@@ -109384,7 +109384,7 @@ song_142:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_142_track0           @ tracks 0x0858C6E0
 
 
@@ -109407,7 +109407,7 @@ song_143:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_143_track0           @ tracks 0x0858C6FC
 
 
@@ -109648,7 +109648,7 @@ song_144:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0xB2                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_144_track0           @ tracks 0x0858C718
     .word song_144_track1           @ tracks 0x0858C73E
 
@@ -110103,7 +110103,7 @@ song_145:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_145_track0           @ tracks 0x0858C82C
     .word song_145_track1           @ tracks 0x0858C917
 
@@ -110746,7 +110746,7 @@ song_146:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398018                @ tone
+    .word voicegroup_08398018       @ tone
     .word song_146_track0           @ tracks 0x0858CA5C
     .word song_146_track1           @ tracks 0x0858CB5F
     .word song_146_track2           @ tracks 0x0858CC67
@@ -110793,7 +110793,7 @@ song_147:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398570                @ tone
+    .word voicegroup_08398570       @ tone
     .word song_147_track0           @ tracks 0x0858CD8C
 
 
@@ -110815,7 +110815,7 @@ song_14A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_14A_track0           @ tracks 0x0858CDC0
 
 
@@ -110837,7 +110837,7 @@ song_14B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_14B_track0           @ tracks 0x0858CDDC
 
 
@@ -110859,7 +110859,7 @@ song_14C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_14C_track0           @ tracks 0x0858CDF8
 
 
@@ -110881,7 +110881,7 @@ song_14D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_14D_track0           @ tracks 0x0858CE14
 
 
@@ -110903,7 +110903,7 @@ song_14E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_14E_track0           @ tracks 0x0858CE30
 
 
@@ -110925,7 +110925,7 @@ song_14F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_14F_track0           @ tracks 0x0858CE4C
 
 
@@ -110947,7 +110947,7 @@ song_150:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_150_track0           @ tracks 0x0858CE68
 
 
@@ -110969,7 +110969,7 @@ song_151:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_151_track0           @ tracks 0x0858CE84
 
 
@@ -110991,7 +110991,7 @@ song_154:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_154_track0           @ tracks 0x0858CEA0
 
 
@@ -111013,7 +111013,7 @@ song_155:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_155_track0           @ tracks 0x0858CEBC
 
 
@@ -111035,7 +111035,7 @@ song_156:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_156_track0           @ tracks 0x0858CED8
 
 
@@ -111057,7 +111057,7 @@ song_157:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_157_track0           @ tracks 0x0858CEF4
 
 
@@ -111079,7 +111079,7 @@ song_158:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_158_track0           @ tracks 0x0858CF10
 
 
@@ -111101,7 +111101,7 @@ song_159:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_159_track0           @ tracks 0x0858CF2C
 
 
@@ -111123,7 +111123,7 @@ song_15A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_15A_track0           @ tracks 0x0858CF48
 
 
@@ -111145,7 +111145,7 @@ song_15B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_15B_track0           @ tracks 0x0858CF64
 
 
@@ -111167,7 +111167,7 @@ song_15E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_15E_track0           @ tracks 0x0858CF80
 
 
@@ -111189,7 +111189,7 @@ song_15F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_15F_track0           @ tracks 0x0858CF9C
 
 
@@ -111211,7 +111211,7 @@ song_160:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_160_track0           @ tracks 0x0858CFB8
 
 
@@ -111233,7 +111233,7 @@ song_161:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_161_track0           @ tracks 0x0858CFD4
 
 
@@ -111255,7 +111255,7 @@ song_162:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_162_track0           @ tracks 0x0858CFF0
 
 
@@ -111277,7 +111277,7 @@ song_163:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_163_track0           @ tracks 0x0858D00C
 
 
@@ -111299,7 +111299,7 @@ song_164:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_164_track0           @ tracks 0x0858D028
 
 
@@ -111321,7 +111321,7 @@ song_165:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_165_track0           @ tracks 0x0858D044
 
 
@@ -111343,7 +111343,7 @@ song_168:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_168_track0           @ tracks 0x0858D060
 
 
@@ -111365,7 +111365,7 @@ song_169:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_169_track0           @ tracks 0x0858D07C
 
 
@@ -111387,7 +111387,7 @@ song_16A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_16A_track0           @ tracks 0x0858D098
 
 
@@ -111409,7 +111409,7 @@ song_16B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_16B_track0           @ tracks 0x0858D0B4
 
 
@@ -111431,7 +111431,7 @@ song_16C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_16C_track0           @ tracks 0x0858D0D0
 
 
@@ -111453,7 +111453,7 @@ song_16D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_16D_track0           @ tracks 0x0858D0EC
 
 
@@ -111475,7 +111475,7 @@ song_16E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_16E_track0           @ tracks 0x0858D108
 
 
@@ -111497,7 +111497,7 @@ song_16F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_16F_track0           @ tracks 0x0858D124
 
 
@@ -111519,7 +111519,7 @@ song_172:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_172_track0           @ tracks 0x0858D140
 
 
@@ -111541,7 +111541,7 @@ song_173:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_173_track0           @ tracks 0x0858D15C
 
 
@@ -111563,7 +111563,7 @@ song_174:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_174_track0           @ tracks 0x0858D178
 
 
@@ -111585,7 +111585,7 @@ song_175:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_175_track0           @ tracks 0x0858D194
 
 
@@ -111607,7 +111607,7 @@ song_176:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_176_track0           @ tracks 0x0858D1B0
 
 
@@ -111629,7 +111629,7 @@ song_177:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_177_track0           @ tracks 0x0858D1CC
 
 
@@ -111651,7 +111651,7 @@ song_178:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_178_track0           @ tracks 0x0858D1E8
 
 
@@ -111673,7 +111673,7 @@ song_179:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_179_track0           @ tracks 0x0858D204
 
 
@@ -111695,7 +111695,7 @@ song_17C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_17C_track0           @ tracks 0x0858D220
 
 
@@ -111717,7 +111717,7 @@ song_17D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_17D_track0           @ tracks 0x0858D23C
 
 
@@ -111739,7 +111739,7 @@ song_17E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_17E_track0           @ tracks 0x0858D258
 
 
@@ -111761,7 +111761,7 @@ song_17F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_17F_track0           @ tracks 0x0858D274
 
 
@@ -111783,7 +111783,7 @@ song_180:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_180_track0           @ tracks 0x0858D290
 
 
@@ -111805,7 +111805,7 @@ song_181:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_181_track0           @ tracks 0x0858D2AC
 
 
@@ -111827,7 +111827,7 @@ song_182:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_182_track0           @ tracks 0x0858D2C8
 
 
@@ -111849,7 +111849,7 @@ song_183:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_183_track0           @ tracks 0x0858D2E4
 
 
@@ -111871,7 +111871,7 @@ song_186:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_186_track0           @ tracks 0x0858D300
 
 
@@ -111893,7 +111893,7 @@ song_187:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_187_track0           @ tracks 0x0858D31C
 
 
@@ -111915,7 +111915,7 @@ song_188:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_188_track0           @ tracks 0x0858D338
 
 
@@ -111937,7 +111937,7 @@ song_189:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_189_track0           @ tracks 0x0858D354
 
 
@@ -111959,7 +111959,7 @@ song_18A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_18A_track0           @ tracks 0x0858D370
 
 
@@ -111981,7 +111981,7 @@ song_18B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_18B_track0           @ tracks 0x0858D38C
 
 
@@ -112003,7 +112003,7 @@ song_18C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_18C_track0           @ tracks 0x0858D3A8
 
 
@@ -112025,7 +112025,7 @@ song_18D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_18D_track0           @ tracks 0x0858D3C4
 
 
@@ -112047,7 +112047,7 @@ song_190:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_190_track0           @ tracks 0x0858D3E0
 
 
@@ -112069,7 +112069,7 @@ song_191:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_191_track0           @ tracks 0x0858D3FC
 
 
@@ -112091,7 +112091,7 @@ song_192:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_192_track0           @ tracks 0x0858D418
 
 
@@ -112113,7 +112113,7 @@ song_193:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_193_track0           @ tracks 0x0858D434
 
 
@@ -112135,7 +112135,7 @@ song_194:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_194_track0           @ tracks 0x0858D450
 
 
@@ -112157,7 +112157,7 @@ song_195:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_195_track0           @ tracks 0x0858D46C
 
 
@@ -112179,7 +112179,7 @@ song_19A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_19A_track0           @ tracks 0x0858D488
 
 
@@ -112201,7 +112201,7 @@ song_19B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_19B_track0           @ tracks 0x0858D4A4
 
 
@@ -112223,7 +112223,7 @@ song_19C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_19C_track0           @ tracks 0x0858D4C0
 
 
@@ -112245,7 +112245,7 @@ song_19D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_19D_track0           @ tracks 0x0858D4DC
 
 
@@ -112267,7 +112267,7 @@ song_19E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_19E_track0           @ tracks 0x0858D4F8
 
 
@@ -112289,7 +112289,7 @@ song_19F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_19F_track0           @ tracks 0x0858D514
 
 
@@ -112311,7 +112311,7 @@ song_1A4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1A4_track0           @ tracks 0x0858D530
 
 
@@ -112333,7 +112333,7 @@ song_1A5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1A5_track0           @ tracks 0x0858D54C
 
 
@@ -112355,7 +112355,7 @@ song_1A6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1A6_track0           @ tracks 0x0858D568
 
 
@@ -112377,7 +112377,7 @@ song_1A7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1A7_track0           @ tracks 0x0858D584
 
 
@@ -112399,7 +112399,7 @@ song_1A8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1A8_track0           @ tracks 0x0858D5A0
 
 
@@ -112421,7 +112421,7 @@ song_1A9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1A9_track0           @ tracks 0x0858D5BC
 
 
@@ -112443,7 +112443,7 @@ song_1AE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1AE_track0           @ tracks 0x0858D5D8
 
 
@@ -112465,7 +112465,7 @@ song_1AF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1AF_track0           @ tracks 0x0858D5F4
 
 
@@ -112487,7 +112487,7 @@ song_1B0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1B0_track0           @ tracks 0x0858D610
 
 
@@ -112509,7 +112509,7 @@ song_1B1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1B1_track0           @ tracks 0x0858D62C
 
 
@@ -112531,7 +112531,7 @@ song_1B2:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1B2_track0           @ tracks 0x0858D648
 
 
@@ -112553,7 +112553,7 @@ song_1B3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1B3_track0           @ tracks 0x0858D664
 
 
@@ -112575,7 +112575,7 @@ song_1B8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1B8_track0           @ tracks 0x0858D680
 
 
@@ -112597,7 +112597,7 @@ song_1B9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1B9_track0           @ tracks 0x0858D69C
 
 
@@ -112619,7 +112619,7 @@ song_1BA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1BA_track0           @ tracks 0x0858D6B8
 
 
@@ -112643,7 +112643,7 @@ song_1BB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1BB_track0           @ tracks 0x0858D6D4
 
 
@@ -112665,7 +112665,7 @@ song_1BC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1BC_track0           @ tracks 0x0858D6F0
 
 
@@ -112687,7 +112687,7 @@ song_1BD:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1BD_track0           @ tracks 0x0858D70C
 
 
@@ -112709,7 +112709,7 @@ song_1C2:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1C2_track0           @ tracks 0x0858D728
 
 
@@ -112731,7 +112731,7 @@ song_1C3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1C3_track0           @ tracks 0x0858D744
 
 
@@ -112753,7 +112753,7 @@ song_1C4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1C4_track0           @ tracks 0x0858D760
 
 
@@ -112775,7 +112775,7 @@ song_1C5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1C5_track0           @ tracks 0x0858D77C
 
 
@@ -112797,7 +112797,7 @@ song_1C6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1C6_track0           @ tracks 0x0858D798
 
 
@@ -112819,7 +112819,7 @@ song_1C7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1C7_track0           @ tracks 0x0858D7B4
 
 
@@ -112841,7 +112841,7 @@ song_1CC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1CC_track0           @ tracks 0x0858D7D0
 
 
@@ -112863,7 +112863,7 @@ song_1CD:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1CD_track0           @ tracks 0x0858D7EC
 
 
@@ -112885,7 +112885,7 @@ song_1CE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1CE_track0           @ tracks 0x0858D808
 
 
@@ -112907,7 +112907,7 @@ song_1CF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1CF_track0           @ tracks 0x0858D824
 
 
@@ -112929,7 +112929,7 @@ song_1D0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1D0_track0           @ tracks 0x0858D840
 
 
@@ -112951,7 +112951,7 @@ song_1D1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1D1_track0           @ tracks 0x0858D85C
 
 
@@ -112973,7 +112973,7 @@ song_1D6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1D6_track0           @ tracks 0x0858D878
 
 
@@ -112995,7 +112995,7 @@ song_1D7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1D7_track0           @ tracks 0x0858D894
 
 
@@ -113017,7 +113017,7 @@ song_1D8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1D8_track0           @ tracks 0x0858D8B0
 
 
@@ -113039,7 +113039,7 @@ song_1D9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1D9_track0           @ tracks 0x0858D8CC
 
 
@@ -113061,7 +113061,7 @@ song_1DA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1DA_track0           @ tracks 0x0858D8E8
 
 
@@ -113083,7 +113083,7 @@ song_1DB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1DB_track0           @ tracks 0x0858D904
 
 
@@ -113105,7 +113105,7 @@ song_1E0:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1E0_track0           @ tracks 0x0858D920
 
 
@@ -113127,7 +113127,7 @@ song_1E1:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1E1_track0           @ tracks 0x0858D93C
 
 
@@ -113149,7 +113149,7 @@ song_1E2:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1E2_track0           @ tracks 0x0858D958
 
 
@@ -113171,7 +113171,7 @@ song_1E3:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1E3_track0           @ tracks 0x0858D974
 
 
@@ -113193,7 +113193,7 @@ song_1E4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1E4_track0           @ tracks 0x0858D990
 
 
@@ -113215,7 +113215,7 @@ song_1E5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1E5_track0           @ tracks 0x0858D9AC
 
 
@@ -113237,7 +113237,7 @@ song_1EA:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1EA_track0           @ tracks 0x0858D9C8
 
 
@@ -113259,7 +113259,7 @@ song_1EB:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1EB_track0           @ tracks 0x0858D9E4
 
 
@@ -113281,7 +113281,7 @@ song_1EC:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1EC_track0           @ tracks 0x0858DA00
 
 
@@ -113303,7 +113303,7 @@ song_1ED:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1ED_track0           @ tracks 0x0858DA1C
 
 
@@ -113325,7 +113325,7 @@ song_1EE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1EE_track0           @ tracks 0x0858DA38
 
 
@@ -113347,7 +113347,7 @@ song_1EF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1EF_track0           @ tracks 0x0858DA54
 
 
@@ -113369,7 +113369,7 @@ song_1F4:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1F4_track0           @ tracks 0x0858DA70
 
 
@@ -113391,7 +113391,7 @@ song_1F5:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1F5_track0           @ tracks 0x0858DA8C
 
 
@@ -113413,7 +113413,7 @@ song_1F6:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1F6_track0           @ tracks 0x0858DAA8
 
 
@@ -113435,7 +113435,7 @@ song_1F7:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1F7_track0           @ tracks 0x0858DAC4
 
 
@@ -113457,7 +113457,7 @@ song_1F8:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1F8_track0           @ tracks 0x0858DAE0
 
 
@@ -113479,7 +113479,7 @@ song_1F9:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1F9_track0           @ tracks 0x0858DAFC
 
 
@@ -113501,7 +113501,7 @@ song_1FE:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1FE_track0           @ tracks 0x0858DB18
 
 
@@ -113523,7 +113523,7 @@ song_1FF:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_1FF_track0           @ tracks 0x0858DB34
 
 
@@ -113545,7 +113545,7 @@ song_200:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_200_track0           @ tracks 0x0858DB50
 
 
@@ -113567,7 +113567,7 @@ song_201:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_201_track0           @ tracks 0x0858DB6C
 
 
@@ -113589,7 +113589,7 @@ song_202:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_202_track0           @ tracks 0x0858DB88
 
 
@@ -113611,7 +113611,7 @@ song_203:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_203_track0           @ tracks 0x0858DBA4
 
 
@@ -113633,7 +113633,7 @@ song_208:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_208_track0           @ tracks 0x0858DBC0
 
 
@@ -113655,7 +113655,7 @@ song_209:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_209_track0           @ tracks 0x0858DBDC
 
 
@@ -113677,7 +113677,7 @@ song_20A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_20A_track0           @ tracks 0x0858DBF8
 
 
@@ -113699,7 +113699,7 @@ song_20B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_20B_track0           @ tracks 0x0858DC14
 
 
@@ -113721,7 +113721,7 @@ song_20C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_20C_track0           @ tracks 0x0858DC30
 
 
@@ -113743,7 +113743,7 @@ song_20D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_20D_track0           @ tracks 0x0858DC4C
 
 
@@ -113765,7 +113765,7 @@ song_212:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_212_track0           @ tracks 0x0858DC68
 
 
@@ -113787,7 +113787,7 @@ song_213:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_213_track0           @ tracks 0x0858DC84
 
 
@@ -113809,7 +113809,7 @@ song_214:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_214_track0           @ tracks 0x0858DCA0
 
 
@@ -113831,7 +113831,7 @@ song_215:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_215_track0           @ tracks 0x0858DCBC
 
 
@@ -113853,7 +113853,7 @@ song_216:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_216_track0           @ tracks 0x0858DCD8
 
 
@@ -113875,7 +113875,7 @@ song_217:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_217_track0           @ tracks 0x0858DCF4
 
 
@@ -113897,7 +113897,7 @@ song_21C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_21C_track0           @ tracks 0x0858DD10
 
 
@@ -113919,7 +113919,7 @@ song_21D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_21D_track0           @ tracks 0x0858DD2C
 
 
@@ -113941,7 +113941,7 @@ song_21E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_21E_track0           @ tracks 0x0858DD48
 
 
@@ -113963,7 +113963,7 @@ song_21F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_21F_track0           @ tracks 0x0858DD64
 
 
@@ -113985,7 +113985,7 @@ song_220:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_220_track0           @ tracks 0x0858DD80
 
 
@@ -114007,7 +114007,7 @@ song_221:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_221_track0           @ tracks 0x0858DD9C
 
 
@@ -114029,7 +114029,7 @@ song_226:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_226_track0           @ tracks 0x0858DDB8
 
 
@@ -114051,7 +114051,7 @@ song_227:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_227_track0           @ tracks 0x0858DDD4
 
 
@@ -114073,7 +114073,7 @@ song_228:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_228_track0           @ tracks 0x0858DDF0
 
 
@@ -114095,7 +114095,7 @@ song_229:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_229_track0           @ tracks 0x0858DE0C
 
 
@@ -114117,7 +114117,7 @@ song_22A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_22A_track0           @ tracks 0x0858DE28
 
 
@@ -114139,7 +114139,7 @@ song_22B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_22B_track0           @ tracks 0x0858DE44
 
 
@@ -114161,7 +114161,7 @@ song_230:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_230_track0           @ tracks 0x0858DE60
 
 
@@ -114183,7 +114183,7 @@ song_231:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_231_track0           @ tracks 0x0858DE7C
 
 
@@ -114205,7 +114205,7 @@ song_232:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_232_track0           @ tracks 0x0858DE98
 
 
@@ -114227,7 +114227,7 @@ song_233:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_233_track0           @ tracks 0x0858DEB4
 
 
@@ -114249,7 +114249,7 @@ song_234:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_234_track0           @ tracks 0x0858DED0
 
 
@@ -114271,7 +114271,7 @@ song_235:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_235_track0           @ tracks 0x0858DEEC
 
 
@@ -114293,7 +114293,7 @@ song_23A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_23A_track0           @ tracks 0x0858DF08
 
 
@@ -114315,7 +114315,7 @@ song_23B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_23B_track0           @ tracks 0x0858DF24
 
 
@@ -114337,7 +114337,7 @@ song_23C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_23C_track0           @ tracks 0x0858DF40
 
 
@@ -114359,7 +114359,7 @@ song_23D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_23D_track0           @ tracks 0x0858DF5C
 
 
@@ -114381,7 +114381,7 @@ song_23E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_23E_track0           @ tracks 0x0858DF78
 
 
@@ -114403,7 +114403,7 @@ song_23F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_23F_track0           @ tracks 0x0858DF94
 
 
@@ -114425,7 +114425,7 @@ song_244:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_244_track0           @ tracks 0x0858DFB0
 
 
@@ -114447,7 +114447,7 @@ song_245:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_245_track0           @ tracks 0x0858DFCC
 
 
@@ -114469,7 +114469,7 @@ song_246:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_246_track0           @ tracks 0x0858DFE8
 
 
@@ -114491,7 +114491,7 @@ song_247:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_247_track0           @ tracks 0x0858E004
 
 
@@ -114513,7 +114513,7 @@ song_248:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_248_track0           @ tracks 0x0858E020
 
 
@@ -114535,7 +114535,7 @@ song_249:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_249_track0           @ tracks 0x0858E03C
 
 
@@ -114557,7 +114557,7 @@ song_24E:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_24E_track0           @ tracks 0x0858E058
 
 
@@ -114579,7 +114579,7 @@ song_24F:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_24F_track0           @ tracks 0x0858E074
 
 
@@ -114601,7 +114601,7 @@ song_250:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_250_track0           @ tracks 0x0858E090
 
 
@@ -114623,7 +114623,7 @@ song_251:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_251_track0           @ tracks 0x0858E0AC
 
 
@@ -114645,7 +114645,7 @@ song_252:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_252_track0           @ tracks 0x0858E0C8
 
 
@@ -114667,7 +114667,7 @@ song_253:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_253_track0           @ tracks 0x0858E0E4
 
 
@@ -114689,7 +114689,7 @@ song_258:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_258_track0           @ tracks 0x0858E100
 
 
@@ -114711,7 +114711,7 @@ song_259:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_259_track0           @ tracks 0x0858E11C
 
 
@@ -114733,7 +114733,7 @@ song_25A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_25A_track0           @ tracks 0x0858E138
 
 
@@ -114755,7 +114755,7 @@ song_25B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_25B_track0           @ tracks 0x0858E154
 
 
@@ -114777,7 +114777,7 @@ song_25C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_25C_track0           @ tracks 0x0858E170
 
 
@@ -114799,7 +114799,7 @@ song_25D:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08398E40                @ tone
+    .word voicegroup_08398E40       @ tone
     .word song_25D_track0           @ tracks 0x0858E18C
 
 
@@ -114821,7 +114821,7 @@ song_262:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_262_track0           @ tracks 0x0858E1A8
 
 
@@ -114843,7 +114843,7 @@ song_263:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_263_track0           @ tracks 0x0858E1C4
 
 
@@ -114866,7 +114866,7 @@ song_264:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_264_track0           @ tracks 0x0858E1E0
 
 
@@ -114889,7 +114889,7 @@ song_265:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_265_track0           @ tracks 0x0858E1FC
 
 
@@ -114911,7 +114911,7 @@ song_266:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_266_track0           @ tracks 0x0858E218
 
 
@@ -114933,7 +114933,7 @@ song_267:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_267_track0           @ tracks 0x0858E234
 
 
@@ -114955,7 +114955,7 @@ song_268:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x0839887C                @ tone
+    .word voicegroup_0839887C       @ tone
     .word song_268_track0           @ tracks 0x0858E250
 
 
@@ -115274,7 +115274,7 @@ song_269:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_269_track0           @ tracks 0x0858E26C
     .word song_269_track1           @ tracks 0x0858E349
 
@@ -115416,7 +115416,7 @@ song_26A:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_26A_track0           @ tracks 0x0858E438
 
 
@@ -115471,7 +115471,7 @@ song_26B:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_26B_track0           @ tracks 0x0858E4DC
 
 
@@ -115494,5 +115494,5 @@ song_26C:
     .byte 0x00                      @ blockCount
     .byte 0x14                      @ priority
     .byte 0x00                      @ reverb
-    .word 0x08397BF8                @ tone
+    .word voicegroup_08397BF8       @ tone
     .word song_26C_track0           @ tracks 0x0858E524

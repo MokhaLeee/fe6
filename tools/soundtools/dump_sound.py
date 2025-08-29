@@ -3,8 +3,11 @@
 
 import sys
 from local_util import *
+from symbols import try_get_ptr_symbol
 
 CONFIG_DUMP_TONE = False
+
+max_tone_pr = 0
 
 class TrackInfo:
 	def __init__(self, name, addr):
@@ -51,7 +54,7 @@ class ToneData:
 
 class WaveData:
 	def __init__(self, rom_data, addr, tone_type):
-		self.name = f"wav_0x{addr:08X}"
+		self.name = f"wav_{(addr | 0x08000000):08X}"
 		self.addr = addr
 
 		self.type = ReadU16(rom_data, addr + 0x00)
@@ -75,29 +78,32 @@ def find_wav_index_by_crc(wav_groups, crc):
 
 	return -1
 
+def dump_wave(wav, rom_data):
+	print(".align 4")
+	print(f"{wav.name}: @ 0x{wav.addr:08X}")
+	format_print(f".short 0x{wav.type:04X}", "type")
+	format_print(f".short 0x{wav.status:04X}", "status")
+	format_print(f".word  0x{wav.freq:08X}", "freq")
+	format_print(f".word  0x{wav.loopStart:08X}", "loopStart")
+	format_print(f".word  0x{wav.size:08X}", "size")
+
+	print("    .byte ", end=' ')
+	for i in range(wav.size):
+		print(f"0x{rom_data[wav.addr + 0x10 + i]:02X}", end='')
+
+		if i >= (wav.size - 1):
+			print("")
+		elif (i + 1) % 16 == 0:
+			print("")
+			print("    .byte ", end=' ')
+		else:
+			print(",", end=' ')
+
+	print("")
+
 def dump_all_wavs(rom_data, wav_groups):
 	for wav in wav_groups:
-		print(".align 4")
-		print(f"{wav.name}: @ 0x{wav.addr:08X}")
-		format_print(f".short 0x{wav.type:04X}", "type")
-		format_print(f".short 0x{wav.status:04X}", "status")
-		format_print(f".word  0x{wav.freq:08X}", "freq")
-		format_print(f".word  0x{wav.loopStart:08X}", "loopStart")
-		format_print(f".word  0x{wav.size:08X}", "size")
-
-		print("    .byte ", end=' ')
-		for i in range(wav.size):
-			print(f"0x{rom_data[wav.addr + 0x10 + i]:02X}", end='')
-
-			if i >= (wav.size - 1):
-				print("")
-			elif (i + 1) % 16 == 0:
-				print("")
-				print("    .byte ", end=' ')
-			else:
-				print(",", end=' ')
-
-		print("")
+		dump_wave(wav, rom_data)
 
 class voice_keysplit_all_buffer:
 	def __init__(self, name, addr):
@@ -341,7 +347,10 @@ def dump_sound_header(song_header):
 		if CONFIG_DUMP_TONE:
 			format_print(f".word {song_header.name}_tone", "tone")
 		else:
-			format_print(f".word 0x{song_header.tone:08X}", "tone")
+			tone_sym_name = try_get_ptr_symbol(song_header.tone)
+			if tone_sym_name == None:
+				tone_sym_name = f"0x{song_header.tone:08X}"
+			format_print(f".word {tone_sym_name}", "tone")
 
 		for i in range(song_header.trackCount):
 			track = song_header.tracks[i]

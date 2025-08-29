@@ -631,7 +631,3 @@ dummy_song:	@ 0x39A840
     .byte	0		@ blockCount
     .byte	0		@ priority
     .byte	0		@ reverb
-
-.global DirectSounds
-DirectSounds: @ 0x39A844
-    .incbin "fe6-base.gba", 0x39A844, (0x5671E4 - 0x39A844)
