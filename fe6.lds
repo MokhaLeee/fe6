@@ -595,6 +595,7 @@ SECTIONS
         src/config.o(.text);
         src/augury.o(.text);
         src/playrank.o(.text);
+        src/ending_credit.o(.text);
         asm/playrank_0808F33C.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
@@ -864,6 +865,7 @@ SECTIONS
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); src/playrank.o(.data);
+        . = ALIGN(4); src/ending_credit.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);

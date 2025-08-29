@@ -2,14 +2,14 @@
 
 	.data
 
-	.global ProcScr_0868B8AC
-ProcScr_0868B8AC: @ 0868B8AC
+	.global ProcScr_PlayRankTrialOBJ
+ProcScr_PlayRankTrialOBJ: @ 0868B8AC
 	PROC_19
-	PROC_CALL func_fe6_0808E6FC
+	PROC_CALL NewPlayRankTrialOBJ_Time
 	PROC_SLEEP 30
-	PROC_CALL func_fe6_0808F8B8
+	PROC_CALL PlayRankTrialOBJ_Init
 	PROC_SLEEP 20
-	PROC_REPEAT func_fe6_0808F984
+	PROC_REPEAT PlayRankTrialOBJ_Loop
 	PROC_END
 
 	.global ProcScr_PlayRank
@@ -38,17 +38,17 @@ PROC_LABEL 1
 	PROC_CALL UnlockGame
 	PROC_END
 
-	.global ProcScr_0868B99C
-ProcScr_0868B99C: @ 0868B99C
+	.global ProcScr_PlayRankTrail
+ProcScr_PlayRankTrail: @ 0868B99C
 	PROC_19
 	PROC_CALL_ARG _StartBgm, 53
 	PROC_CALL LockGame
 	PROC_CALL PlayRank_InitBgConf
-	PROC_CALL func_fe6_0808FA14
+	PROC_CALL PlayRankTrail_Init
 	PROC_CALL FadeInBlackSpeed08
 	PROC_SLEEP 1
 	PROC_CALL StartGreenText
-	PROC_REPEAT func_fe6_0808FD14
+	PROC_REPEAT PlayRankTrail_Loop
 	PROC_CALL PlayRank_End1
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 1
@@ -172,8 +172,8 @@ ProcScr_Ending: @ 0868BDF4
 	.global ProcScr_GameCredit
 ProcScr_GameCredit: @ 0868BE2C
 	PROC_19
-	PROC_CALL func_fe6_0808FEC0
-	PROC_REPEAT func_fe6_08090F48
+	PROC_CALL GameCredit_Init
+	PROC_REPEAT GameCredit_Loop
 	PROC_END
 
 	.global ProcScr_EndingPInfo1Detail

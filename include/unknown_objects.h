@@ -371,7 +371,7 @@ extern u8 const Tsa_UnitBurstMapUi_Frame3[];
 extern u8 const Tsa_UnitBurstMapUi_Frame4[];
 extern u8 const Tsa_UnitBurstMapUi_Frame5[];
 
-extern u8 const Img_Unk_083092CC[];
+extern u8 const Img_PlayRankTimeOBJ[];
 
 // extern const ??? gUnk_08336CD0
 // extern const ??? gUnk_08336CF0
@@ -388,7 +388,7 @@ extern u8 const Tsa_0833BE84[];
 extern u8 const Tsa_0833BF08[];
 extern u16 const Pal_MuralBackground[];
 extern u16 const Pal_0833C01C[];
-extern u16 const Pal_0833C03C[];
+extern u16 const Pal_PlayRankTimeOBJ[];
 extern u8 const Img_0833C09C[];
 extern u8 const Tsa_0833C1D8[];
 extern u8 const Tsa_0833C234[];
@@ -398,28 +398,28 @@ extern u8 const Img_Unk_0833C378[];
 extern u16 const Pal_Unk_0833C944[];
 extern u8 const Img_WorldMap_PlayRank[];
 extern u8 const Tsa_08340ED8[];
-extern u16 const Pal_0834138C[];
-extern u8 const Img_PlayRank_083413CC[];
-extern u16 const Pal_08341DA0[];
+extern u16 const Pal_PlayRankWmBG[];
+extern u8 const Img_PlayRankFogBG[];
+extern u16 const Pal_PlayRankFogBG[];
 extern u8 const Img_PlayRank[];
 extern u8 const Img_PlayRankCharacters[];
 extern u16 const Pal_08342A98[];
 extern u16 const Pal_08342AB8[];
 extern u16 const Pal_08342AD8[];
 extern u8 const Tsa_08342AF8[];
-// extern const ??? gUnk_08342B54
-extern const u16 Pal_08343358[];
-extern u8 const Img_08343398[];
-extern u8 const Img_08343A80[];
-extern u8 const Img_08343FAC[];
-// extern const ??? gUnk_083442C4
+extern u8 const Img_PlayRankMissionCompletesOBJ[];
+extern const u16 Pal_PlayRankMissionCompletesOBJ[];
+extern u8 const Img_CreditGlyph_Cap[];
+extern u8 const Img_CreditGlyph_Low[];
+extern u8 const Img_CreditGlyph_Narrow[];
+extern const u16 Pal_CreditCharacterGlyph[];
 // extern const ??? gUnk_08344304
 extern u8 const Img_Fin[];
 extern u16 const Pal_Fin[];
 extern u8 const Img_Ending_CopyRight[];
 extern u16 const Tsa_Ending_CopyRight[];
 extern u16 const Pal_Ending_CopyRight[];
-// extern const ??? Tsa_EndingPInfoBG
+extern u16 const Tsa_EndingPInfoBG[];
 // extern const ??? gUnk_08345934
 // extern const ??? gUnk_08346184
 // extern const ??? gUnk_083461C4

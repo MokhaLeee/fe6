@@ -365,7 +365,7 @@ void StatusScreen_Init(struct StatusScreenProc * proc)
     ApplyIconPalette(1, 6);
     ApplyIconPalette(1, 0x10 + 3);
 
-    Decompress(Img_Unk_083092CC, (void *) VRAM + CHR_SIZE * (0x400 + BGCHR_B_STATUSSCREEN_380));
+    Decompress(Img_PlayRankTimeOBJ, (void *) VRAM + CHR_SIZE * (0x400 + BGCHR_B_STATUSSCREEN_380));
     Decompress(Img_Unk_0833C378, (void *) VRAM + CHR_SIZE * 0);
     Decompress(gUnk_083080D0, (void *) OBJ_VRAM0 + CHR_SIZE * 0x240);
 

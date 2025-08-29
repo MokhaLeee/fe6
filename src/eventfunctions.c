@@ -37,6 +37,7 @@
 #include "save_stats.h"
 #include "banim.h"
 #include "opanim.h"
+#include "ending_credit.h"
 #include "ending_monologue.h"
 #include "chapterunits.h"
 
@@ -2596,20 +2597,20 @@ void func_fe6_0806DC38(void)
     Proc_EndEach(ProcScr_Unk_08676854);
 }
 
-struct ProcScr CONST_DATA ProcScr_EpilogueCreditDisp[] =
+struct ProcScr CONST_DATA ProcScr_EndingCreditFade[] =
 {
-    PROC_CALL(EpilogueCredit_Init),
-    PROC_REPEAT(EpilogueCredit_FadeBg),
+    PROC_CALL(EndingCreditFade_Init),
+    PROC_REPEAT(EndingCreditFade_FadeBg),
     PROC_CALL(StartGameCredit),
     PROC_END,
 };
 
-void EpilogueCredit_Init(struct ProcEpilogueCredit * proc)
+void EndingCreditFade_Init(struct ProcEndingCreditFade * proc)
 {
     proc->unk_64 = 0;
 }
 
-void EpilogueCredit_FadeBg(struct ProcEpilogueCredit * proc)
+void EndingCreditFade_FadeBg(struct ProcEndingCreditFade * proc)
 {
     if (GetGameTime() % 8 == 0)
     {
@@ -2623,7 +2624,7 @@ void EpilogueCredit_FadeBg(struct ProcEpilogueCredit * proc)
 
 void Epilogue_StartCredit(ProcPtr parent)
 {
-    SpawnProc(ProcScr_EpilogueCreditDisp, parent);
+    SpawnProc(ProcScr_EndingCreditFade, parent);
 }
 
 void RemoveEndingMonologueBG(void)
