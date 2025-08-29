@@ -17,6 +17,7 @@
 #include "armfunc.h"
 #include "save_stats.h"
 #include "save_xmap.h"
+#include "gamecontroller.h"
 #include "chapterinfo.h"
 #include "constants/chapters.h"
 #include "constants/msg.h"
@@ -332,13 +333,13 @@ CONST_DATA struct UnkStruct_0868b508 Unk_0868B574[] = {
 	{ 0xFF, 0x00, 0x00, 0x00 },
 };
 
-CONST_DATA struct UnkStruct_0868B5B0 gUnk_0868B5B0[] = {
+CONST_DATA struct UnkStruct_0868B5B0 gPlayRankMissonObjInfo[] = {
 	{ Unk_0868B508, 0x0E, 0x00 },
 	{ Unk_0868B534, 0x10, 0x12 },
 	{ Unk_0868B574, 0x1C, 0x12 }
 };
 
-void func_fe6_0808DD40(void)
+void SetupPlayRanks(void)
 {
 	int i;
 
@@ -671,7 +672,7 @@ void func_fe6_0808E434(struct Proc_0868B700 *proc)
 	SetObjAffineAuto(proc->layer, 0, 0x100, x_scale);
 }
 
-u16 CONST_DATA Sprite_0868B720[] = {
+u16 CONST_DATA Sprite_PlayRankTrial_Time[] = {
 	2,
 	OAM0_SHAPE_32x8, OAM1_SIZE_32x8, 0,
 	OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x4),
@@ -693,7 +694,7 @@ void func_fe6_0808E4E8(struct Proc_0868B730 *proc)
 	proc->timer = 0;
 	proc->total_sprites = 0;
 
-	ref = gUnk_0868B5B0[unk_02016A2A].unk_00;
+	ref = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].unk_00;
 
 	while (ref[proc->total_sprites].chr != -1)
 		proc->total_sprites++;
@@ -711,11 +712,11 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 
 	val = 0;
 
-	y= 0x100 - unk_02016A1E;
-	if (unk_02016A2A == 0) {
+	y= 0x100 - gPlayRankBg1Offset;
+	if (gPlayRankMissonObjSelect == 0) {
 		y = OAM1_X(y + 0x80); // ?
 
-		PutOamHi(0xA2, y, Sprite_0868B720, OAM2_PAL(OBPAL_PLAYRANK_2) + OBCHR_PLAYRANK_84);
+		PutOamHi(0xA2, y, Sprite_PlayRankTrial_Time, OAM2_PAL(BGPAL_PLAYRANK_TIME) + OBCHR_PLAYRANK_84);
 	}
 
 	if (++proc->timer < 0xF) {
@@ -727,10 +728,10 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 		}
 	}
 
-	ref = gUnk_0868B5B0[unk_02016A2A].unk_00;
+	ref = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].unk_00;
 	for (i = 0; i < gPlayRankLayer; i++) {
-		int oam1 = gUnk_0868B5B0[unk_02016A2A].x + val + (i << 9);
-		int oam0 = gUnk_0868B5B0[unk_02016A2A].y + 0x108;
+		int oam1 = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].x + val + (i << 9);
+		int oam0 = gPlayRankMissonObjInfo[gPlayRankMissonObjSelect].y + 0x108;
 
 
 		PutSpriteExt(
@@ -745,30 +746,30 @@ void func_fe6_0808E5F0(struct Proc_0868B730 *proc)
 	}
 }
 
-struct ProcScr CONST_DATA ProcScr_0868B750[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankTrialOBJ_Time[] = {
 	PROC_19,
-	PROC_REPEAT(func_fe6_0808E6E0),
+	PROC_REPEAT(PlayRankTrialOBJ_Time_Loop),
 	PROC_END,
 };
 
-void func_fe6_0808E6E0(void)
+void PlayRankTrialOBJ_Time_Loop(void)
 {
-	PutOamHi(0x58, 0x3E, Sprite_0868B720, 0x2084);
+	PutOamHi(0x58, 0x3E, Sprite_PlayRankTrial_Time,  OAM2_CHR(OBCHR_PLAYRANK_84) + OAM2_PAL(BGPAL_PLAYRANK_TIME));
 }
 
-void func_fe6_0808E6FC(void)
+void NewPlayRankTrialOBJ_Time(void)
 {
-	SpawnProc(ProcScr_0868B750, PROC_TREE_3);
+	SpawnProc(ProcScr_PlayRankTrialOBJ_Time, PROC_TREE_3);
 }
 
-struct ProcScr CONST_DATA ProcScr_0868B768[] = {
+struct ProcScr CONST_DATA ProcScr_PlayRankFogHandler[] = {
 	PROC_19,
-	PROC_CALL(func_fe6_0808E710),
-	PROC_REPEAT(func_fe6_0808E730),
+	PROC_CALL(PlayRankFogHandler_Init),
+	PROC_REPEAT(PlayRankFogHandler_Loop),
 	PROC_END,
 };
 
-void func_fe6_0808E710(void)
+void PlayRankFogHandler_Init(void)
 {
 	gpPlayRankSt->x = 0;
 	gpPlayRankSt->y = 0;
@@ -777,7 +778,7 @@ void func_fe6_0808E710(void)
 	gpPlayRankSt->step = 0;
 }
 
-void func_fe6_0808E730(void)
+void PlayRankFogHandler_Loop(void)
 {
 	gpPlayRankSt->x_step += 3;
 	gpPlayRankSt->y_step += 1;
@@ -934,7 +935,7 @@ bool PlayRank_ChapterTurns_DrawTurn(int line)
 	return true;
 }
 
-void SetupPlayRanks(int line)
+void PutPlayRankTexts(int line)
 {
 	int i;
 
@@ -1026,7 +1027,7 @@ void func_fe6_0808EC78(int x)
 
 // https://decomp.me/scratch/r3WgO
 NAKEDFUNC
-void func_fe6_0808ECD0(u16 *tm, int a, int b)
+void FillPlayRankFogsToBG(u16 *tm, int a, int b)
 {
 asm("\
 	.syntax unified\n\
@@ -1184,12 +1185,12 @@ void PlayRank_InitDisplay(void)
 	gPlayRankCurChapter = 0;
 	unk_02016A26 = 0;
 	unk_02016A2C = 0;
-	unk_02016A1C = 0x80;
-	unk_02016A1E = 0xE0;
-	unk_02016A20 = 0xFF;
+	gPlayRankBg0Offset = 0x80;
+	gPlayRankBg1Offset = 0xE0;
+	gPlayRankDispLine = 0xFF;
 
 	SetBgOffset(BG_0, 0, 0x80);
-	SetBgOffset(BG_1, 0, unk_02016A1E);
+	SetBgOffset(BG_1, 0, gPlayRankBg1Offset);
 	SetBgOffset(BG_2, 0, 0);
 	SetBgOffset(BG_3, 0, 0);
 
@@ -1210,24 +1211,24 @@ void PlayRank_InitDisplay(void)
 	SetBlendTargetA(0, 0, 1, 0, 0);
 	SetBlendTargetB(0, 0, 0, 1, 0);
 
-	func_fe6_0808DD40();
+	SetupPlayRanks();
 
-	ApplyBgPalettes(Pal_0834138C, BGPAL_PLAYRANK_4, 2);
-	ApplyBgPalette(Pal_08341DA0, BGPAL_PLAYRANK_6);
-	ApplyObPalette(Pal_0833C03C, OBPAL_PLAYRANK_2);
-	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_3);
+	ApplyBgPalettes(Pal_PlayRankWmBG, BGPAL_PLAYRANK_WM, 2);
+	ApplyBgPalette(Pal_PlayRankFogBG, BGPAL_PLAYRANK_FOG);
+	ApplyObPalette(Pal_PlayRankTimeOBJ, BGPAL_PLAYRANK_TIME);
+	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_MISSION);
 	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_B);
 
-	Decompress(Img_Unk_083092CC, OBJ_VRAM0 + BGCHR_PLAYRANK_80 * CHR_SIZE);
+	Decompress(Img_PlayRankTimeOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_TIME * CHR_SIZE);
 	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + BGCHR_PLAYRANK_C0 * CHR_SIZE);
 	Decompress(Img_PlayRank, OBJ_VRAM0 + BGCHR_PLAYRANK_180 * CHR_SIZE);
-	Decompress(Img_PlayRank_083413CC, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
+	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
 	Decompress(Img_WorldMap_PlayRank, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
 	TmApplyTsa(gBg1Tm + TM_OFFSET(0x13, 0x10), Tsa_08342AF8, OAM2_PAL(BGPAL_PLAYRANK_1));
-	func_fe6_0808ECD0(gBg2Tm, 0x280, BGPAL_PLAYRANK_6);
-	TmApplyTsa(gBg3Tm, Tsa_08340ED8, OAM2_PAL(BGPAL_PLAYRANK_4));
+	FillPlayRankFogsToBG(gBg2Tm, 0x280, BGPAL_PLAYRANK_FOG);
+	TmApplyTsa(gBg3Tm, Tsa_08340ED8, OAM2_PAL(BGPAL_PLAYRANK_WM));
 
-	SpawnProc(ProcScr_0868B768, PROC_TREE_3);
+	SpawnProc(ProcScr_PlayRankFogHandler, PROC_TREE_3);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 }
 
@@ -1236,7 +1237,7 @@ void func_fe6_0808F060(struct ProcPlayRank *proc)
 
 	proc->unk_2E = 4;
 	proc->unk_30 = 0;
-	unk_02016A1C = unk_02016A22 = 0x7A;
+	gPlayRankBg0Offset = gPlayRankBg0MoveStep = 0x7A;
 
 	PlayRank_ChapterTurns_DrawTurn(0);
 	gPlayRankCurChapter = 0;
@@ -1248,7 +1249,7 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 	int tmp1, tmp2;
 
 	if (proc->unk_30 != 0) {
-		func_fe6_0808EC78(unk_02016A1C);
+		func_fe6_0808EC78(gPlayRankBg0Offset);
 		proc->unk_30 = 0;
 	}
 
@@ -1258,25 +1259,25 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 		proc->unk_2E = 0;
 	}
 
-	unk_02016A1C++;
-	SetBgOffset(BG_0, 0, unk_02016A1C & 0xFF);
+	gPlayRankBg0Offset++;
+	SetBgOffset(BG_0, 0, gPlayRankBg0Offset & 0xFF);
 
 	if (unk_02016A26 > 0xC) {
-		unk_02016A1E++;
-		SetBgOffset(BG_1, 0, unk_02016A1E & 0xFF);
+		gPlayRankBg1Offset++;
+		SetBgOffset(BG_1, 0, gPlayRankBg1Offset & 0xFF);
 	}
 
-	tmp1 = ((unk_02016A1C - unk_02016A22) & 0xF0) >> 3;
-	if (tmp1 == unk_02016A20)
+	tmp1 = ((gPlayRankBg0Offset - gPlayRankBg0MoveStep) & 0xF0) >> 3;
+	if (tmp1 == gPlayRankDispLine)
 		return;
 
-	unk_02016A20 = tmp1;
+	gPlayRankDispLine = tmp1;
 
 	proc->unk_30 = true;
 
 	switch (unk_02016A26) {
 	case 0:
-		if (!PlayRank_ChapterTurns_DrawTurn(unk_02016A20))
+		if (!PlayRank_ChapterTurns_DrawTurn(gPlayRankDispLine))
 			return;
 
 		break;
@@ -1288,24 +1289,24 @@ void PlayRank_Loop(struct ProcPlayRank *proc)
 
 	case 9:
 		tmp1 = 0x80;
-		unk_02016A22 = tmp1;
-		unk_02016A1C = tmp1;
+		gPlayRankBg0MoveStep = tmp1;
+		gPlayRankBg0Offset = tmp1;
 		tmp2 = 0;
-		unk_02016A20 = tmp2;
-		SetupPlayRanks(tmp2);
+		gPlayRankDispLine = tmp2;
+		PutPlayRankTexts(tmp2);
 		break;
 
 	case 11:
-		func_fe6_0808EB94(unk_02016A20);
+		func_fe6_0808EB94(gPlayRankDispLine);
 		break;
 
 	case 13:
-		PlayRank_PutTotalPlayTime(unk_02016A20);
+		PlayRank_PutTotalPlayTime(gPlayRankDispLine);
 		SetWOutLayers(1, 1, 1, 1, 1);
 		break;
 
 	case 14:
-		unk_02016A2A = 0;
+		gPlayRankMissonObjSelect = 0;
 		SpawnProc(ProcScr_0868B730, PROC_TREE_3);
 		SpawnProc(ProcScr_0868B6D8, PROC_TREE_3);
 		Proc_Break(proc);
@@ -1343,12 +1344,12 @@ void PlayRank_End1(ProcPtr proc)
 void PlayRank_End2(ProcPtr proc)
 {
 	Proc_EndEach(ProcScr_0868B648);
-	Proc_EndEach(ProcScr_0868B768);
+	Proc_EndEach(ProcScr_PlayRankFogHandler);
 	Proc_EndEach(ProcScr_0868B730);
 	Proc_EndEach(ProcScr_0868B6D8);
 	Proc_EndEach(ProcScr_0868B80C);
-	Proc_EndEach(ProcScr_0868B8AC);
-	Proc_EndEach(ProcScr_0868B750);
+	Proc_EndEach(ProcScr_PlayRankTrialOBJ);
+	Proc_EndEach(ProcScr_PlayRankTrialOBJ_Time);
 }
 
 void PlayRank_End3(ProcPtr proc)
@@ -1416,7 +1417,7 @@ u8 PlayRankGetter_XmapTactics(void)
 
 	total_turn = chapter_stat->chapter_turn;
 
-	if (unk_02016A2D == 0)
+	if (gPlayRankMissionCompleted == 0)
 		return PALYRANK_D;
 
 	i = 0;
@@ -1752,12 +1753,12 @@ void func_fe6_0808F7D0(int method, int lo, int hi, int x, int end, int pal_bank)
 	int ret = Interpolate(method, lo, hi, x, end);
 
 	CpuFastCopy(
-		(unk_02016A2D) ? Pal_08343358 : (Pal_08343358 + 0x10),
+		(gPlayRankMissionCompleted) ? Pal_PlayRankMissionCompletesOBJ : (Pal_PlayRankMissionCompletesOBJ + 0x10),
 		PAL_BG(pal_bank),
 		0x20
 	);
 
-	if (unk_02016A2D)
+	if (gPlayRankMissionCompleted)
 		AuguryPaletteModify2(PAL_BG(BGPAL_PLAYRANK_0), pal_bank, 1, 7, ret);
 	else
 		AuguryPaletteModify1(PAL_BG(BGPAL_PLAYRANK_0), pal_bank, 1, 11, ret);
@@ -1772,4 +1773,170 @@ void func_fe6_0808F838(struct Proc_0868B88C *proc)
 	proc->unk_2E = 0;
 }
 
-void func_fe6_0808F844(struct Proc_0868B88C *proc);
+void func_fe6_0808F844(struct Proc_0868B88C *proc)
+{
+	switch (proc->unk_2E) {
+	case 0:
+		if (proc->unk_2A < 0x5A) {
+			func_fe6_0808F7D0(INTERPOLATE_LINEAR, 0, 0xF, proc->unk_2A, 0x5A, 0x10 + OBPAL_PLAYRANK_MISSION);
+			proc->unk_2A++;
+			return;
+		}
+		break;
+
+	case 2:
+		if (proc->unk_2A < 0x78) {
+			func_fe6_0808F7D0(INTERPOLATE_LINEAR, 0xF, 0, proc->unk_2A, 0x78, 0x10 + OBPAL_PLAYRANK_MISSION);
+			proc->unk_2A++;
+			return;
+		}
+		break;
+
+	case 0x11:
+		proc->unk_2E = 0;
+		return;
+
+	default:
+		break;
+	}
+
+	proc->unk_2A = 0;
+	proc->unk_2E++;
+}
+
+void PlayRankTrialOBJ_Init(ProcPtr proc)
+{
+	SetObjAffine(0xA, 0x100, 0, 0, 0x100);
+	SetObjAffineAuto(0x1F, 0, 2, 0x100);
+
+	gPlayRankMissonObjSelect = (gPlayRankMissionCompleted) ? 1 : 2;
+
+	SpawnProc(ProcScr_0868B730, PROC_TREE_3);
+	SpawnProc(ProcScr_0868B80C, PROC_TREE_3);
+	SpawnProc(ProcScr_0868B88C, PROC_TREE_3);
+}
+
+void PlayRankTrialOBJ_Loop(ProcPtr proc)
+{
+	int i;
+
+	for (i = 0; i < (gpPlayRankSt->step + 1); i++) {
+		int oam0_y, oam1_x, oam2;
+
+		oam1_x = (gpPlayRankSt->xs[i] + 6) * 8;
+		oam0_y = (gpPlayRankSt->ys[i] + 0) * 8;
+
+		if (i == gpPlayRankSt->step) {
+			oam1_x |= 0x3E00;
+			oam0_y |= 0x0100;
+		}
+
+		oam2 = gpPlayRankSt->unk_5E[i] * 2 + 0xC0;
+
+		PutSpriteExt(4, oam1_x, oam0_y, gpPlayRankSt->objs[i], OAM2_PAL(i + OBPAL_PLAYRANK_4) | oam2);
+	}
+}
+
+void PlayRankTrail_Init(ProcPtr proc)
+{
+	int i;
+	struct ChapterStats *chapter_states;
+
+	gPlayRankMissionCompleted = HasNextChapter();
+
+	ResetText();
+	UnpackUiWindowFrameGraphics();
+	ResetTextFont();
+	PlayRank_InitTexts();
+
+	SetDispEnable(1, 1, 1, 1, 1);
+
+	SetBgOffset(BG_0, 0, 0);
+	SetBgOffset(BG_1, 0, 0);
+	SetBgOffset(BG_2, 0, 0);
+	SetBgOffset(BG_3, 0, 0);
+
+	SetWinEnable(1, 0, 0);
+	SetWin0Box(0, 0x18, -0x10, -0x78);
+	SetWin0Layers(1, 1, 1, 1, 1);
+	SetWOutLayers(0, 1, 1, 1, 1);
+
+	gDispIo.win_ct.win0_enable_blend = true;
+	gDispIo.win_ct.wout_enable_blend = true;
+
+	TmFill(gBg0Tm, 0);
+	TmFill(gBg1Tm, 0);
+	TmFill(gBg2Tm, 0);
+	TmFill(gBg3Tm, 0);
+
+	SetBlendAlpha(6, 0x10);
+	SetBlendTargetA(0, 0, 1, 0, 0);
+	SetBlendTargetB(0, 0, 0, 1, 0);
+
+	SetupXmapPlayRanks();
+
+	ApplyBgPalettes(Pal_PlayRankWmBG, BGPAL_PLAYRANK_WM, 2);
+	ApplyBgPalette(Pal_PlayRankFogBG, BGPAL_PLAYRANK_FOG);
+	ApplyObPalette(Pal_PlayRankTimeOBJ, BGPAL_PLAYRANK_TIME);
+	ApplyObPalette(
+		gPlayRankMissionCompleted == false
+			? Pal_PlayRankMissionCompletesOBJ + 0x10
+			: Pal_PlayRankMissionCompletesOBJ,
+		OBPAL_PLAYRANK_MISSION);
+	ApplyObPalette(Pal_08342A98, OBPAL_PLAYRANK_B);
+
+	Decompress(Img_PlayRankTimeOBJ, OBJ_VRAM0 + OBCHR_PLAYRANK_TIME * CHR_SIZE);
+	Decompress(Img_PlayRankCharacters, OBJ_VRAM0 + BGCHR_PLAYRANK_C0 * CHR_SIZE);
+	Decompress(Img_PlayRankMissionCompletesOBJ, OBJ_VRAM0 + BGCHR_PLAYRANK_180 * CHR_SIZE);
+	Decompress(Img_PlayRankFogBG, (u8 *)BG_VRAM + BGCHR_PLAYRANK_680 * CHR_SIZE);
+	Decompress(Img_WorldMap_PlayRank, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
+	FillPlayRankFogsToBG(gBg2Tm, 0x280, BGPAL_PLAYRANK_FOG);
+	TmApplyTsa(gBg3Tm, Tsa_08340ED8, OAM2_PAL(BGPAL_PLAYRANK_WM));
+
+	for (i = 0; i < PLAYRANK_TRAIL_TEXT_MAX; i++)
+		InitText(&gpPlayRankSt->texts_rank_name[i], 6);
+
+	chapter_states = GetXmapChapterStats();
+
+	PutNumber(gBg0Tm + TM_OFFSET(5, 7), TEXT_COLOR_SYSTEM_BLUE, chapter_states->chapter_turn);
+	PutDrawText(NULL, gBg0Tm + TM_OFFSET(6, 7), TEXT_COLOR_SYSTEM_WHITE, 0, 6, DecodeMsg(MSG_Turn));
+	PutTime(gBg0Tm + TM_OFFSET(18, 7), TEXT_COLOR_SYSTEM_BLUE, chapter_states->chapter_time * 180, true);
+
+	for (i = 0; i < PLAYRANK_TRAIL_TEXT_MAX; i++) {
+		PutDrawText(
+			&gpPlayRankSt->texts_rank_name[i],
+			gBg0Tm + TM_OFFSET(gTotalPlayRankConf2[i].x - 1, gTotalPlayRankConf2[i].y),
+			gTotalPlayRankConf2[i].color,
+			0, 6,
+			DecodeMsg(gTotalPlayRankConf2[i].msg)
+		);
+	}
+
+	SpawnProc(ProcScr_PlayRankFogHandler, PROC_TREE_3);
+	SpawnProc(ProcScr_PlayRankTrialOBJ, PROC_TREE_3);
+	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+}
+
+void PlayRankTrail_Loop(ProcPtr proc)
+{
+	if (gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_B))
+		if (gpPlayRankSt->step == 3)
+			Proc_Break(proc);
+}
+
+void NewPlayRank_unused(ProcPtr proc)
+{
+	if (!proc)
+		SpawnProc(ProcScr_PlayRank, PROC_TREE_3);
+	else
+		SpawnProcLocking(ProcScr_PlayRank, proc);
+}
+
+void NewPlayRankTrail(ProcPtr proc)
+{
+	if (!proc)
+		SpawnProc(ProcScr_PlayRankTrail, PROC_TREE_3);
+	else
+		SpawnProcLocking(ProcScr_PlayRankTrail, proc);
+}
+

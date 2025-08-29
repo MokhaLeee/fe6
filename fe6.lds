@@ -1,5 +1,20 @@
 OUTPUT_ARCH(arm)
 
+MEMORY
+{
+    rom   : ORIGIN = 0x08000000, LENGTH = 32M
+    iwram : ORIGIN = 0x03000000, LENGTH = 32K
+    ewram : ORIGIN = 0x02000000, LENGTH = 256K
+}
+
+__text_start            =       ORIGIN(rom);
+__ewram_start           =       ORIGIN(ewram);
+__iwram_start           =       ORIGIN(iwram);
+__iwram_top             =       ORIGIN(iwram) + LENGTH(iwram);;
+__sp_irq                =       __iwram_top - 0x060;
+__sp_usr                =       __sp_irq - 0x1A0;
+__irq_flags             =       0x03007ff8;
+
 gNumMusicPlayers = 9;
 gMaxLines = 0;
 
@@ -337,7 +352,7 @@ SECTIONS
         . = ALIGN(4); Texts_DemoMonologue = .;
 
         . = 0x0203D3A0 - __ewram_overlay_end;
-        . = ALIGN(4); Text_EpilogueMonologue = .;
+        . = ALIGN(4); Text_EndingTimeFlowMonologue = .;
 
         . = 0x0203D3D8 - __ewram_overlay_end;
         . = ALIGN(1); gUnk_0203D3D8 = .; . = . + 1;
@@ -411,81 +426,15 @@ SECTIONS
 
         . = 0x001570; Text_GoldBox = .;
 
-        . = 0x001578; data/sound_music_player_table.o(.bss);
+        . = 0x001578; data/sounds/music_player_table.o(.bss);
 
         . = 0x002158; src/gbasram.o(.bss);
         . = ALIGN(4); *libgcc.a:dp-bit.o(.bss);
         . = ALIGN(4); *libgcc.a:fp-bit.o(.bss);
 
-        . = ALIGN(4); *(.iwram.SoundMainRam);
+        . = ALIGN(4); src/iwram-data.o(iwram_data);
 
-        /* COMMON */
-        . = 0x0026A0; *(COMMON.gOamLoPutIt);
-        . = 0x0026B0; *(COMMON.gDispIo);
-        . = 0x002720; gIrqFuncs = .;
-        . = 0x002758; MapFloodCoreRamFunc = .;
-        . = 0x00275C; *(COMMON.gOamAffinePutId);
-        . = 0x002760; PutOamHiRamFunc = .;
-        . = 0x002764; *(COMMON.gOnHBlankA);
-        . = 0x002770; *(COMMON.gOam);
-        . = 0x002D70; DrawGlyphRamFunc = .;
-        . = 0x002D74; *(COMMON.gOamHiPutIt);
-        . = 0x002D78; *(COMMON.gOnHBlankB);
-        . = 0x002D80; RamFuncArea = .;
-        . = 0x003780; DecodeStringRamFunc = .;
-        . = 0x003784; PutOamLoRamFunc = .;
-        . = 0x003788; *(COMMON.gOamAffinePutIt);
-        . = 0x003790; IntrMainRam = .;
-        . = 0x003F90; MapFloodCoreStepRamFunc = .;
-        . = 0x003FA0; gEventScriptQueueIt = .;
-        . = 0x003FB0; gEventScriptQueue = .;
-        . = 0x003FD0; gSpriteAllocIt = .;
-        . = 0x004000; *(COMMON.gFaces);
-        . = 0x004010; gWorkingMap = .;
-        . = 0x004020; gMapFloodSquareBufB = .;
-        . = 0x004220; gWorkingMovTable = .;
-        . = 0x004260; gStatGainSimUnit = .;
-        . = 0x0042B0; gMapFloodSquareBufA = .;
-        . = 0x0044B0; gActiveUnit = .;
-        . = 0x0044C0; gMapFloodSt = .;
-        . = 0x0044D0; gUnk_030044D0 = .;
-        . = 0x0044D4; gUnk_030044D4 = .;
-        . = 0x0044E0; gUnk_030044E0 = .;
-        . = 0x0044E6; gUnk_030044E6 = .;
-        . = 0x004568; gSioStateId = .;
-        . = 0x00456C; gSioMsgBuf = .;
-        . = 0x004570; *(COMMON.AiDecideFunc);
-        . = 0x004580; gUnk_03004580 = .;
-        . = 0x004600; *(COMMON.gManimDebugStObj);
-        . = 0x0046D0; *(COMMON.gUnk_030046D0);
-        . = 0x004750; *(COMMON.gUnk_03004750);
-        . = 0x004890; gPermanentFlagBits = .;
-        . = 0x004898; gChapterFlagBits = .;
-        . = 0x0048A4; gEndingMonologueState = .;
-        . = 0x0048A8; gUnk_030048A8 = .;
-        . = 0x0048B8; gEndingMonologueTextDone = .;
-        . = 0x0048C0; gUnk_030048C0 = .;
-        . = 0x0048D4; gUnk_030048D4 = .;
-        . = 0x0048E0; gWmArrowSt = .;
-        . = 0x005280; gUnk_03005280 = .;
-        . = 0x005284; bool_opanim_03005284 = .;
-        . = 0x005290; gUnk_03005290 = .;
-        . = 0x0052B0; *(.iwram.gSoundInfo);
-        . = 0x006260; gMPlayInfo_SE4_BMP2 = .;
-        . = 0x0062A0; gMPlayInfo_SE5_BMP3 = .;
-        . = 0x0062E0; gMusicPlayer_FightBgm = .;
-        . = 0x006320; *(.iwram.gMPlayJumpTable);
-        . = 0x0063B0; *(.iwram.gCgbChans);
-        . = 0x0064B0; gMPlayInfo_SE6_BMP4 = .;
-        . = 0x0064F0; gMusicPlayer_MainBgm = .;
-        . = 0x006530; gMPlayInfo_SE1_SYS1 = .;
-        . = 0x006570; gMPlayInfo_SE3_BMP1 = .;
-        . = 0x0065B0; *(.iwram.gMPlayMemAccArea);
-        . = 0x0065C0; gMPlayInfo_SE7_EVT = .;
-        . = 0x006600; gMPlayInfo_SE2_SYS2 = .;
-        . = 0x006640; ReadSramFast = .;
-        . = 0x006644; VerifySramFast = .;
-
+        /* stack: 0x03006648 ~ 0x03007E60 */
         . = 0x008000; /* end */
     }
 
@@ -613,8 +562,10 @@ SECTIONS
         src/spellassoc.o(.text);
         src/mu.o(.text);
         src/manim.o(.text);
+        src/scanline.o(.text);
         src/eventinfo.o(.text);
         src/eventfunctions.o(.text);
+        src/ending_monologue.o(.text);
         src/statscreen.o(.text);
         src/helpbox.o(.text);
         src/chapter_title.o(.text);
@@ -644,6 +595,7 @@ SECTIONS
         src/config.o(.text);
         src/augury.o(.text);
         src/playrank.o(.text);
+        src/ending_credit.o(.text);
         asm/playrank_0808F33C.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
@@ -753,6 +705,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_279E60.o(.rodata);
         . = ALIGN(4); src/mu.o(.rodata);
         . = ALIGN(4); src/manim.o(.rodata);
+        . = ALIGN(4); src/scanline.o(.rodata);
         . = ALIGN(4); data/rodata_307544.o(.rodata);
         . = ALIGN(4); src/statscreen.o(.rodata);
         . = ALIGN(4); src/helpbox.o(.rodata);
@@ -778,12 +731,16 @@ SECTIONS
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
-        . = ALIGN(4); data/sound_voicegroups.o(.rodata);
-        . = ALIGN(4); data/sound_programmable_waves.o(.rodata);
-        . = ALIGN(4); data/sound_music_player_table.o(.rodata);
-        . = ALIGN(4); data/sound_data.o(.rodata);
+        . = ALIGN(4); data/sounds/voicegroups.o(.rodata);
+        . = ALIGN(4); data/sounds/keysplit_tables.o(.rodata);
+        . = ALIGN(4); data/sounds/programmable_waves.o(.rodata);
+        . = ALIGN(4); data/sounds/music_player_table.o(.rodata);
+        . = ALIGN(4); data/sounds/song_table.o(.rodata);
+        . = ALIGN(4); data/sounds/direct_sounds.o(.rodata);
+        . = ALIGN(4); data/sounds/songs.o(.rodata);
 
         /* .data */
+        . = ALIGN(4); src/gbasram.o(.rodata);
         . = ALIGN(4); src/hardware.o(.data);
         . = ALIGN(4); src/sound.o(.data);
         . = ALIGN(4); src/proc.o(.data);
@@ -881,10 +838,12 @@ SECTIONS
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); data/data-code-mu.o(.data);
         . = ALIGN(4); src/manim.o(.data);
+        . = ALIGN(4); src/scanline.o(.data);
         . = ALIGN(4); src/eventinfo.o(.data);
         . = ALIGN(4); data/data_66618C.o(.data);
         . = ALIGN(4); src/chapterevents.o(.data);
         . = ALIGN(4); src/eventfunctions.o(.data);
+        . = ALIGN(4); src/ending_monologue.o(.data);
         . = ALIGN(4); src/statscreen.o(.data);
         . = ALIGN(4); src/helpbox.o(.data);
         . = ALIGN(4); src/chapter_title.o(.data);
@@ -910,6 +869,7 @@ SECTIONS
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); src/playrank.o(.data);
+        . = ALIGN(4); src/ending_credit.o(.data);
         . = ALIGN(4); data/data.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);

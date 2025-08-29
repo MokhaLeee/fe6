@@ -60,8 +60,8 @@ Pal_MuralBackground: @ 0833BFDC
 Pal_0833C01C: @ 0833C01C
 	.incbin "fe6-base.gba", 0x33C01C, (0x33C03C - 0x33C01C) @ length: 0020
 
-	.global Pal_0833C03C
-Pal_0833C03C: @ 0833C03C
+	.global Pal_PlayRankTimeOBJ
+Pal_PlayRankTimeOBJ: @ 0833C03C
 	.incbin "fe6-base.gba", 0x33C03C, (0x33C09C - 0x33C03C) @ length: 0060
 
 	.global Img_0833C09C
@@ -100,16 +100,16 @@ Img_WorldMap_PlayRank: @ 0833C984
 Tsa_08340ED8: @ 08340ED8
 	.incbin "fe6-base.gba", 0x340ED8, (0x34138C - 0x340ED8) @ length: 04B4
 
-	.global Pal_0834138C
-Pal_0834138C: @ 0834138C
+	.global Pal_PlayRankWmBG
+Pal_PlayRankWmBG: @ 0834138C
 	.incbin "fe6-base.gba", 0x34138C, (0x3413CC - 0x34138C) @ length: 0040
 
-	.global Img_PlayRank_083413CC
-Img_PlayRank_083413CC: @ 083413CC
+	.global Img_PlayRankFogBG
+Img_PlayRankFogBG: @ 083413CC
 	.incbin "fe6-base.gba", 0x3413CC, (0x341DA0 - 0x3413CC) @ length: 09D4
 
-	.global Pal_08341DA0
-Pal_08341DA0: @ 08341DA0
+	.global Pal_PlayRankFogBG
+Pal_PlayRankFogBG: @ 08341DA0
 	.incbin "fe6-base.gba", 0x341DA0, (0x341DC0 - 0x341DA0) @ length: 0020
 
 	.global Img_PlayRank
@@ -136,28 +136,28 @@ Pal_08342AD8: @ 08342AD8
 Tsa_08342AF8: @ 08342AF8
 	.incbin "fe6-base.gba", 0x342AF8, (0x342B54 - 0x342AF8) @ length: 005C
 
-	.global gUnk_08342B54
-gUnk_08342B54: @ 08342B54
+	.global Img_PlayRankMissionCompletesOBJ
+Img_PlayRankMissionCompletesOBJ: @ 08342B54
 	.incbin "fe6-base.gba", 0x342B54, (0x343358 - 0x342B54) @ length: 0804
 
-	.global Pal_08343358
-Pal_08343358: @ 08343358
+	.global Pal_PlayRankMissionCompletesOBJ
+Pal_PlayRankMissionCompletesOBJ: @ 08343358
 	.incbin "fe6-base.gba", 0x343358, (0x343398 - 0x343358) @ length: 0040
 
-	.global Img_08343398
-Img_08343398: @ 08343398
+	.global Img_CreditGlyph_Cap
+Img_CreditGlyph_Cap: @ 08343398
 	.incbin "fe6-base.gba", 0x343398, (0x343A80 - 0x343398) @ length: 06E8
 
-	.global Img_08343A80
-Img_08343A80: @ 08343A80
+	.global Img_CreditGlyph_Low
+Img_CreditGlyph_Low: @ 08343A80
 	.incbin "fe6-base.gba", 0x343A80, (0x343FAC - 0x343A80) @ length: 052C
 
-	.global Img_08343FAC
-Img_08343FAC: @ 08343FAC
+	.global Img_CreditGlyph_Narrow
+Img_CreditGlyph_Narrow: @ 08343FAC
 	.incbin "fe6-base.gba", 0x343FAC, (0x3442C4 - 0x343FAC) @ length: 0318
 
-	.global gUnk_083442C4
-gUnk_083442C4: @ 083442C4
+	.global Pal_CreditCharacterGlyph
+Pal_CreditCharacterGlyph: @ 083442C4
 	.incbin "fe6-base.gba", 0x3442C4, (0x344304 - 0x3442C4) @ length: 0040
 
 	.global gUnk_08344304
@@ -172,16 +172,16 @@ Img_Fin: @ 083449F8
 Pal_Fin: @ 08344CB0
 	.incbin "fe6-base.gba", 0x344CB0, (0x344CD0 - 0x344CB0) @ length: 0020
 
-	.global Img_Credit_08344CD0
-Img_Credit_08344CD0: @ 08344CD0
+	.global Img_Ending_CopyRight
+Img_Ending_CopyRight: @ 08344CD0
 	.incbin "fe6-base.gba", 0x344CD0, (0x34523C - 0x344CD0) @ length: 056C
 
-	.global Tsa_Credit_0834523C
-Tsa_Credit_0834523C: @ 0834523C
+	.global Tsa_Ending_CopyRight
+Tsa_Ending_CopyRight: @ 0834523C
 	.incbin "fe6-base.gba", 0x34523C, (0x345420 - 0x34523C) @ length: 01E4
 
-	.global Pal_Credit_08345420
-Pal_Credit_08345420: @ 08345420
+	.global Pal_Ending_CopyRight
+Pal_Ending_CopyRight: @ 08345420
 	.incbin "fe6-base.gba", 0x345420, (0x345440 - 0x345420) @ length: 0020
 
 	.global Tsa_EndingPInfoBG

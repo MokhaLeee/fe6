@@ -2,668 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_0808F844
-func_fe6_0808F844: @ 0x0808F844
-	push {r4, lr}
-	sub sp, #8
-	adds r4, r0, #0
-	movs r1, #0x2e
-	ldrsh r0, [r4, r1]
-	cmp r0, #2
-	beq .L0808F87C
-	cmp r0, #2
-	bgt .L0808F85C
-	cmp r0, #0
-	beq .L0808F862
-	b .L0808F8A4
-.L0808F85C:
-	cmp r0, #0x11
-	beq .L0808F8A0
-	b .L0808F8A4
-.L0808F862:
-	movs r1, #0x2a
-	ldrsh r0, [r4, r1]
-	cmp r0, #0x59
-	bgt .L0808F8A4
-	adds r3, r0, #0
-	movs r0, #0x5a
-	str r0, [sp]
-	movs r0, #0x13
-	str r0, [sp, #4]
-	movs r0, #0
-	movs r1, #0
-	movs r2, #0xf
-	b .L0808F894
-.L0808F87C:
-	movs r1, #0x2a
-	ldrsh r0, [r4, r1]
-	cmp r0, #0x77
-	bgt .L0808F8A4
-	adds r3, r0, #0
-	movs r0, #0x78
-	str r0, [sp]
-	movs r0, #0x13
-	str r0, [sp, #4]
-	movs r0, #0
-	movs r1, #0xf
-	movs r2, #0
-.L0808F894:
-	bl func_fe6_0808F7D0
-	ldrh r0, [r4, #0x2a]
-	adds r0, #1
-	strh r0, [r4, #0x2a]
-	b .L0808F8AE
-.L0808F8A0:
-	movs r0, #0
-	b .L0808F8AC
-.L0808F8A4:
-	movs r0, #0
-	strh r0, [r4, #0x2a]
-	ldrh r0, [r4, #0x2e]
-	adds r0, #1
-.L0808F8AC:
-	strh r0, [r4, #0x2e]
-.L0808F8AE:
-	add sp, #8
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0808F8B8
-func_fe6_0808F8B8: @ 0x0808F8B8
-	push {r4, r5, r6, lr}
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6}
-	sub sp, #4
-	movs r0, #0x80
-	lsls r0, r0, #1
-	mov r8, r0
-	str r0, [sp]
-	movs r0, #0xa
-	mov r1, r8
-	movs r2, #0
-	movs r3, #0
-	bl SetObjAffine
-	ldr r4, .L0808F96C @ =gSinLut
-	movs r1, #0x80
-	adds r1, r1, r4
-	mov sb, r1
-	movs r2, #0
-	ldrsh r0, [r1, r2]
-	lsls r0, r0, #4
-	movs r1, #2
-	bl Div
-	adds r6, r0, #0
-	lsls r6, r6, #0x10
-	asrs r6, r6, #0x10
-	movs r1, #0
-	ldrsh r0, [r4, r1]
-	rsbs r0, r0, #0
-	lsls r0, r0, #4
-	mov r1, r8
-	bl Div
-	adds r5, r0, #0
-	lsls r5, r5, #0x10
-	asrs r5, r5, #0x10
-	movs r2, #0
-	ldrsh r0, [r4, r2]
-	lsls r0, r0, #4
-	movs r1, #2
-	bl Div
-	adds r4, r0, #0
-	lsls r4, r4, #0x10
-	asrs r4, r4, #0x10
-	mov r1, sb
-	movs r2, #0
-	ldrsh r0, [r1, r2]
-	lsls r0, r0, #4
-	mov r1, r8
-	bl Div
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	str r0, [sp]
-	movs r0, #0x1f
-	adds r1, r6, #0
-	adds r2, r5, #0
-	adds r3, r4, #0
-	bl SetObjAffine
-	ldr r2, .L0808F970 @ =unk_02016A2A
-	ldr r0, .L0808F974 @ =unk_02016A2D
-	ldrb r0, [r0]
-	movs r1, #2
-	cmp r0, #0
-	beq .L0808F944
-	movs r1, #1
-.L0808F944:
-	strh r1, [r2]
-	ldr r0, .L0808F978 @ =ProcScr_0868B730
-	movs r1, #3
-	bl SpawnProc
-	ldr r0, .L0808F97C @ =ProcScr_0868B80C
-	movs r1, #3
-	bl SpawnProc
-	ldr r0, .L0808F980 @ =ProcScr_0868B88C
-	movs r1, #3
-	bl SpawnProc
-	add sp, #4
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808F96C: .4byte gSinLut
-.L0808F970: .4byte unk_02016A2A
-.L0808F974: .4byte unk_02016A2D
-.L0808F978: .4byte ProcScr_0868B730
-.L0808F97C: .4byte ProcScr_0868B80C
-.L0808F980: .4byte ProcScr_0868B88C
-
-	thumb_func_start func_fe6_0808F984
-func_fe6_0808F984: @ 0x0808F984
-	push {r4, r5, r6, r7, lr}
-	sub sp, #4
-	movs r6, #0
-	ldr r1, .L0808FA10 @ =gpPlayRankSt
-	ldr r0, [r1]
-	adds r0, #0x9f
-	ldrb r0, [r0]
-	adds r0, #1
-	cmp r6, r0
-	bge .L0808FA08
-	adds r7, r1, #0
-.L0808F99A:
-	ldr r3, [r7]
-	lsls r1, r6, #1
-	adds r0, r3, #0
-	adds r0, #0x42
-	adds r0, r0, r1
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	adds r0, #6
-	lsls r5, r0, #3
-	adds r0, r3, #0
-	adds r0, #0x50
-	adds r0, r0, r1
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	lsls r4, r0, #3
-	adds r0, r3, #0
-	adds r0, #0x9f
-	ldrb r0, [r0]
-	cmp r6, r0
-	bne .L0808F9CE
-	movs r0, #0xf8
-	lsls r0, r0, #6
-	orrs r5, r0
-	movs r0, #0x80
-	lsls r0, r0, #1
-	orrs r4, r0
-.L0808F9CE:
-	adds r0, r3, #0
-	adds r0, #0x5e
-	adds r0, r0, r1
-	ldrh r0, [r0]
-	lsls r2, r0, #1
-	adds r2, #0xc0
-	lsls r1, r6, #2
-	adds r0, r3, #0
-	adds r0, #0x7c
-	adds r0, r0, r1
-	ldr r3, [r0]
-	adds r0, r6, #4
-	movs r1, #0xf
-	ands r0, r1
-	lsls r0, r0, #0xc
-	orrs r0, r2
-	str r0, [sp]
-	movs r0, #4
-	adds r1, r5, #0
-	adds r2, r4, #0
-	bl PutSpriteExt
-	adds r6, #1
-	ldr r0, [r7]
-	adds r0, #0x9f
-	ldrb r0, [r0]
-	adds r0, #1
-	cmp r6, r0
-	blt .L0808F99A
-.L0808FA08:
-	add sp, #4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808FA10: .4byte gpPlayRankSt
-
-	thumb_func_start func_fe6_0808FA14
-func_fe6_0808FA14: @ 0x0808FA14
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #8
-	bl HasNextChapter
-	ldr r1, .L0808FCA0 @ =unk_02016A2D
-	strb r0, [r1]
-	bl ResetText
-	bl UnpackUiWindowFrameGraphics
-	bl ResetTextFont
-	bl PlayRank_InitTexts
-	ldr r7, .L0808FCA4 @ =gDispIo
-	movs r4, #1
-	ldrb r0, [r7, #1]
-	orrs r0, r4
-	movs r2, #2
-	mov sb, r2
-	mov r6, sb
-	orrs r0, r6
-	movs r1, #4
-	mov r8, r1
-	mov r2, r8
-	orrs r0, r2
-	movs r6, #8
-	orrs r0, r6
-	movs r5, #0x10
-	orrs r0, r5
-	strb r0, [r7, #1]
-	movs r0, #0
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #1
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #2
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #3
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r2, #0x20
-	ldrb r0, [r7, #1]
-	orrs r0, r2
-	movs r1, #0x41
-	rsbs r1, r1, #0
-	ands r0, r1
-	movs r1, #0x7f
-	ands r0, r1
-	strb r0, [r7, #1]
-	adds r0, r7, #0
-	adds r0, #0x2d
-	movs r1, #0
-	mov sl, r1
-	mov r6, sl
-	strb r6, [r0]
-	adds r1, r7, #0
-	adds r1, #0x31
-	movs r0, #0x18
-	strb r0, [r1]
-	subs r1, #5
-	movs r0, #0xf0
-	strb r0, [r1]
-	adds r1, #4
-	movs r0, #0x88
-	strb r0, [r1]
-	adds r1, #4
-	ldrb r0, [r1]
-	orrs r4, r0
-	mov r6, sb
-	orrs r4, r6
-	mov r0, r8
-	orrs r4, r0
-	movs r6, #8
-	orrs r4, r6
-	orrs r4, r5
-	adds r3, r7, #0
-	adds r3, #0x36
-	movs r0, #2
-	rsbs r0, r0, #0
-	ldrb r6, [r3]
-	ands r0, r6
-	mov r6, sb
-	orrs r0, r6
-	mov r6, r8
-	orrs r0, r6
-	movs r6, #8
-	orrs r0, r6
-	orrs r0, r5
-	orrs r4, r2
-	strb r4, [r1]
-	orrs r0, r2
-	strb r0, [r3]
-	ldr r0, .L0808FCA8 @ =gBg0Tm
-	movs r1, #0
-	bl TmFill
-	ldr r0, .L0808FCAC @ =gBg1Tm
-	movs r1, #0
-	bl TmFill
-	ldr r5, .L0808FCB0 @ =gBg2Tm
-	adds r0, r5, #0
-	movs r1, #0
-	bl TmFill
-	ldr r6, .L0808FCB4 @ =gBg3Tm
-	adds r0, r6, #0
-	movs r1, #0
-	bl TmFill
-	adds r2, r7, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x40
-	orrs r0, r1
-	strb r0, [r2]
-	adds r1, r7, #0
-	adds r1, #0x44
-	movs r0, #6
-	strb r0, [r1]
-	adds r1, #1
-	movs r0, #0x10
-	strb r0, [r1]
-	adds r0, r7, #0
-	adds r0, #0x46
-	mov r2, sl
-	strb r2, [r0]
-	ldr r0, .L0808FCB8 @ =0x0000FFE0
-	ldrh r1, [r7, #0x3c]
-	ands r0, r1
-	movs r1, #4
-	orrs r0, r1
-	ldr r1, .L0808FCBC @ =0x0000E0FF
-	ands r0, r1
-	movs r2, #0x80
-	lsls r2, r2, #4
-	adds r1, r2, #0
-	orrs r0, r1
-	strh r0, [r7, #0x3c]
-	bl SetupXmapPlayRanks
-	ldr r0, .L0808FCC0 @ =Pal_0834138C
-	movs r1, #0x80
-	movs r2, #0x40
-	bl ApplyPaletteExt
-	ldr r0, .L0808FCC4 @ =Pal_08341DA0
-	movs r1, #0xc0
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, .L0808FCC8 @ =Pal_0833C03C
-	movs r1, #0x90
-	lsls r1, r1, #2
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r2, .L0808FCCC @ =Pal_08343358
-	ldr r1, .L0808FCA0 @ =unk_02016A2D
-	ldrb r0, [r1]
-	cmp r0, #0
-	bne .L0808FB7C
-	adds r2, #0x20
-.L0808FB7C:
-	movs r1, #0x98
-	lsls r1, r1, #2
-	adds r0, r2, #0
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, .L0808FCD0 @ =Pal_08342A98
-	movs r1, #0xd8
-	lsls r1, r1, #2
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, .L0808FCD4 @ =Img_Unk_083092CC
-	ldr r1, .L0808FCD8 @ =0x06011000
-	bl Decompress
-	ldr r0, .L0808FCDC @ =Img_PlayRankCharacters
-	ldr r1, .L0808FCE0 @ =0x06011800
-	bl Decompress
-	ldr r0, .L0808FCE4 @ =gUnk_08342B54
-	ldr r1, .L0808FCE8 @ =0x06013000
-	bl Decompress
-	ldr r0, .L0808FCEC @ =Img_PlayRank_083413CC
-	ldr r1, .L0808FCF0 @ =0x0600D000
-	bl Decompress
-	ldr r4, .L0808FCF4 @ =Img_WorldMap_PlayRank
-	movs r0, #3
-	bl GetBgChrOffset
-	adds r1, r0, #0
-	movs r2, #0xc0
-	lsls r2, r2, #0x13
-	adds r1, r1, r2
-	adds r0, r4, #0
-	bl Decompress
-	movs r1, #0xa0
-	lsls r1, r1, #2
-	adds r0, r5, #0
-	movs r2, #6
-	bl func_fe6_0808ECD0
-	ldr r1, .L0808FCF8 @ =Tsa_08340ED8
-	movs r2, #0x80
-	lsls r2, r2, #7
-	adds r0, r6, #0
-	bl TmApplyTsa_thm
-	ldr r5, .L0808FCFC @ =gpPlayRankSt
-	movs r4, #0xe8
-	movs r6, #3
-.L0808FBE8:
-	ldr r0, [r5]
-	adds r0, r0, r4
-	movs r1, #6
-	bl InitText
-	adds r4, #8
-	subs r6, #1
-	cmp r6, #0
-	bge .L0808FBE8
-	bl GetXmapChapterStats
-	adds r5, r0, #0
-	ldr r4, .L0808FD00 @ =gBg0Tm+0x1CA
-	ldr r2, [r5]
-	lsls r2, r2, #0x10
-	lsrs r2, r2, #0x16
-	adds r0, r4, #0
-	movs r1, #2
-	bl PutNumber
-	ldr r0, .L0808FD04 @ =0x00000725
-	bl DecodeMsg
-	adds r1, r4, #2
-	movs r2, #6
-	str r2, [sp]
-	str r0, [sp, #4]
-	movs r0, #0
-	movs r2, #0
-	movs r3, #0
-	bl PutDrawText
-	adds r4, #0x1a
-	movs r0, #0xb4
-	ldrh r5, [r5, #2]
-	adds r2, r5, #0
-	muls r2, r0, r2
-	adds r0, r4, #0
-	movs r1, #2
-	movs r3, #1
-	bl PutTime
-	movs r7, #0xe8
-	ldr r5, .L0808FD08 @ =gTotalPlayRankConf2
-	movs r6, #3
-.L0808FC42:
-	ldrh r0, [r5]
-	bl DecodeMsg
-	adds r4, r0, #0
-	ldr r0, .L0808FCFC @ =gpPlayRankSt
-	ldr r0, [r0]
-	adds r0, r0, r7
-	ldrb r2, [r5, #0xd]
-	lsls r1, r2, #5
-	subs r1, #1
-	ldrb r2, [r5, #0xc]
-	adds r1, r2, r1
-	lsls r1, r1, #1
-	ldr r2, .L0808FCA8 @ =gBg0Tm
-	adds r1, r1, r2
-	ldr r2, [r5, #4]
-	movs r3, #6
-	str r3, [sp]
-	str r4, [sp, #4]
-	movs r3, #0
-	bl PutDrawText
-	adds r7, #8
-	adds r5, #0x10
-	subs r6, #1
-	cmp r6, #0
-	bge .L0808FC42
-	ldr r0, .L0808FD0C @ =ProcScr_0868B768
-	movs r1, #3
-	bl SpawnProc
-	ldr r0, .L0808FD10 @ =ProcScr_0868B8AC
-	movs r1, #3
-	bl SpawnProc
-	movs r0, #0xf
-	bl EnableBgSync
-	add sp, #8
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808FCA0: .4byte unk_02016A2D
-.L0808FCA4: .4byte gDispIo
-.L0808FCA8: .4byte gBg0Tm
-.L0808FCAC: .4byte gBg1Tm
-.L0808FCB0: .4byte gBg2Tm
-.L0808FCB4: .4byte gBg3Tm
-.L0808FCB8: .4byte 0x0000FFE0
-.L0808FCBC: .4byte 0x0000E0FF
-.L0808FCC0: .4byte Pal_0834138C
-.L0808FCC4: .4byte Pal_08341DA0
-.L0808FCC8: .4byte Pal_0833C03C
-.L0808FCCC: .4byte Pal_08343358
-.L0808FCD0: .4byte Pal_08342A98
-.L0808FCD4: .4byte Img_Unk_083092CC
-.L0808FCD8: .4byte 0x06011000
-.L0808FCDC: .4byte Img_PlayRankCharacters
-.L0808FCE0: .4byte 0x06011800
-.L0808FCE4: .4byte gUnk_08342B54
-.L0808FCE8: .4byte 0x06013000
-.L0808FCEC: .4byte Img_PlayRank_083413CC
-.L0808FCF0: .4byte 0x0600D000
-.L0808FCF4: .4byte Img_WorldMap_PlayRank
-.L0808FCF8: .4byte Tsa_08340ED8
-.L0808FCFC: .4byte gpPlayRankSt
-.L0808FD00: .4byte gBg0Tm+0x1CA
-.L0808FD04: .4byte 0x00000725
-.L0808FD08: .4byte gTotalPlayRankConf2
-.L0808FD0C: .4byte ProcScr_0868B768
-.L0808FD10: .4byte ProcScr_0868B8AC
-
-	thumb_func_start func_fe6_0808FD14
-func_fe6_0808FD14: @ 0x0808FD14
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, .L0808FD3C @ =gKeySt
-	ldr r1, [r0]
-	movs r0, #3
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq .L0808FD38
-	ldr r0, .L0808FD40 @ =gpPlayRankSt
-	ldr r0, [r0]
-	adds r0, #0x9f
-	ldrb r0, [r0]
-	cmp r0, #3
-	bne .L0808FD38
-	adds r0, r2, #0
-	bl Proc_Break
-.L0808FD38:
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808FD3C: .4byte gKeySt
-.L0808FD40: .4byte gpPlayRankSt
-
-	thumb_func_start func_fe6_0808FD44
-func_fe6_0808FD44: @ 0x0808FD44
-	push {lr}
-	adds r1, r0, #0
-	cmp r1, #0
-	bne .L0808FD5C
-	ldr r0, .L0808FD58 @ =ProcScr_PlayRank
-	movs r1, #3
-	bl SpawnProc
-	b .L0808FD62
-	.align 2, 0
-.L0808FD58: .4byte ProcScr_PlayRank
-.L0808FD5C:
-	ldr r0, .L0808FD68 @ =ProcScr_PlayRank
-	bl SpawnProcLocking
-.L0808FD62:
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808FD68: .4byte ProcScr_PlayRank
-
-	thumb_func_start func_fe6_0808FD6C
-func_fe6_0808FD6C: @ 0x0808FD6C
-	push {lr}
-	adds r1, r0, #0
-	cmp r1, #0
-	bne .L0808FD84
-	ldr r0, .L0808FD80 @ =ProcScr_0868B99C
-	movs r1, #3
-	bl SpawnProc
-	b .L0808FD8A
-	.align 2, 0
-.L0808FD80: .4byte ProcScr_0868B99C
-.L0808FD84:
-	ldr r0, .L0808FD90 @ =ProcScr_0868B99C
-	bl SpawnProcLocking
-.L0808FD8A:
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808FD90: .4byte ProcScr_0868B99C
-
-	thumb_func_start func_fe6_0808FD94
-func_fe6_0808FD94: @ 0x0808FD94
-	push {r4, lr}
-	ldr r4, .L0808FDCC @ =gUnk_083442C4
-	adds r0, r4, #0
-	movs r1, #0x80
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	movs r1, #0xa0
-	lsls r1, r1, #2
-	adds r0, r4, #0
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, .L0808FDD0 @ =Img_08343398
-	ldr r1, .L0808FDD4 @ =0x06015000
-	bl Decompress
-	ldr r0, .L0808FDD8 @ =Img_08343A80
-	ldr r1, .L0808FDDC @ =0x06014000
-	bl Decompress
-	ldr r0, .L0808FDE0 @ =Img_08343FAC
-	ldr r1, .L0808FDE4 @ =0x06001000
-	bl Decompress
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808FDCC: .4byte gUnk_083442C4
-.L0808FDD0: .4byte Img_08343398
-.L0808FDD4: .4byte 0x06015000
-.L0808FDD8: .4byte Img_08343A80
-.L0808FDDC: .4byte 0x06014000
-.L0808FDE0: .4byte Img_08343FAC
-.L0808FDE4: .4byte 0x06001000
-
 	thumb_func_start func_fe6_0808FDE8
 func_fe6_0808FDE8: @ 0x0808FDE8
 	push {r4, r5, r6, r7, lr}
@@ -712,8 +50,8 @@ func_fe6_0808FDE8: @ 0x0808FDE8
 	.align 2, 0
 .L0808FE38: .4byte 0xFFFF0000
 
-	thumb_func_start func_fe6_0808FE3C
-func_fe6_0808FE3C: @ 0x0808FE3C
+	thumb_func_start EndingCredit_SetupGfx
+EndingCredit_SetupGfx: @ 0x0808FE3C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl UnpackUiWindowFrameGraphics
@@ -721,13 +59,13 @@ func_fe6_0808FE3C: @ 0x0808FE3C
 	movs r3, #0
 	movs r0, #0
 	strh r0, [r4]
-	ldr r0, .L0808FEA4 @ =unk_02016A3C
+	ldr r0, .L0808FEA4 @ =gCreditInfoDispStep
 	strb r3, [r0]
 	ldr r0, .L0808FEA8 @ =unk_02016A3D
 	strb r3, [r0]
 	ldr r0, .L0808FEAC @ =unk_02016A3F
 	strb r3, [r0]
-	ldr r0, .L0808FEB0 @ =unk_02016A40
+	ldr r0, .L0808FEB0 @ =gEndingStep
 	strb r3, [r0]
 	ldr r4, .L0808FEB4 @ =gDispIo
 	adds r2, r4, #0
@@ -760,56 +98,56 @@ func_fe6_0808FE3C: @ 0x0808FE3C
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r4, #0x3c]
-	bl func_fe6_0808FD94
+	bl SetupCreditCharacterGlyphs
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808FEA4: .4byte unk_02016A3C
+.L0808FEA4: .4byte gCreditInfoDispStep
 .L0808FEA8: .4byte unk_02016A3D
 .L0808FEAC: .4byte unk_02016A3F
-.L0808FEB0: .4byte unk_02016A40
+.L0808FEB0: .4byte gEndingStep
 .L0808FEB4: .4byte gDispIo
 .L0808FEB8: .4byte 0x0000FFE0
 .L0808FEBC: .4byte 0x0000E0FF
 
-	thumb_func_start func_fe6_0808FEC0
-func_fe6_0808FEC0: @ 0x0808FEC0
+	thumb_func_start GameCredit_Init
+GameCredit_Init: @ 0x0808FEC0
 	push {lr}
-	ldr r2, .L0808FED4 @ =unk_02016A41
+	ldr r2, .L0808FED4 @ =gEndingDispType
 	movs r1, #1
 	strb r1, [r2]
-	bl func_fe6_0808FE3C
-	bl func_fe6_08091588
+	bl EndingCredit_SetupGfx
+	bl SetupEndingPInfo2Uids
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808FED4: .4byte unk_02016A41
+.L0808FED4: .4byte gEndingDispType
 
-	thumb_func_start func_fe6_0808FED8
-func_fe6_0808FED8: @ 0x0808FED8
+	thumb_func_start EndingCredit_ReinitType2
+EndingCredit_ReinitType2: @ 0x0808FED8
 	push {lr}
-	ldr r2, .L0808FEEC @ =unk_02016A41
+	ldr r2, .L0808FEEC @ =gEndingDispType
 	movs r1, #2
 	strb r1, [r2]
-	bl func_fe6_0808FE3C
-	bl func_fe6_08091588
+	bl EndingCredit_SetupGfx
+	bl SetupEndingPInfo2Uids
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808FEEC: .4byte unk_02016A41
+.L0808FEEC: .4byte gEndingDispType
 
-	thumb_func_start func_fe6_0808FEF0
-func_fe6_0808FEF0: @ 0x0808FEF0
+	thumb_func_start EndingCredit_ReinitType0
+EndingCredit_ReinitType0: @ 0x0808FEF0
 	push {lr}
-	ldr r2, .L0808FF00 @ =unk_02016A41
+	ldr r2, .L0808FF00 @ =gEndingDispType
 	movs r1, #0
 	strb r1, [r2]
-	bl func_fe6_0808FE3C
+	bl EndingCredit_SetupGfx
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808FF00: .4byte unk_02016A41
+.L0808FF00: .4byte gEndingDispType
 
 	thumb_func_start func_fe6_0808FF04
 func_fe6_0808FF04: @ 0x0808FF04
@@ -956,7 +294,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	str r6, [sp, #8]
 	movs r3, #0
 	mov ip, r3
-	ldr r1, .L08090054 @ =unk_02016A3C
+	ldr r1, .L08090054 @ =gCreditInfoDispStep
 	ldrb r6, [r1]
 	lsls r0, r6, #1
 	adds r0, r0, r6
@@ -993,7 +331,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	b .L080902BA
 	.align 2, 0
 .L08090050: .4byte gCreditInfo
-.L08090054: .4byte unk_02016A3C
+.L08090054: .4byte gCreditInfoDispStep
 .L08090058: .4byte unk_02016A3F
 .L0809005C:
 	mov r0, sl
@@ -1679,20 +1017,20 @@ func_fe6_0809060C: @ 0x0809060C
 	.align 2, 0
 .L0809061C: .4byte ProcScr_0868BB5C
 
-	thumb_func_start func_fe6_08090620
-func_fe6_08090620: @ 0x08090620
-	ldr r1, .L0809062C @ =unk_02016A40
+	thumb_func_start EndingStepAdvance
+EndingStepAdvance: @ 0x08090620
+	ldr r1, .L0809062C @ =gEndingStep
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-.L0809062C: .4byte unk_02016A40
+.L0809062C: .4byte gEndingStep
 
 	thumb_func_start func_fe6_08090630
 func_fe6_08090630: @ 0x08090630
 	movs r1, #0
-	ldr r0, .L08090640 @ =unk_02016A3C
+	ldr r0, .L08090640 @ =gCreditInfoDispStep
 	ldrb r0, [r0]
 	cmp r0, #0x31
 	bls .L0809063C
@@ -1701,7 +1039,7 @@ func_fe6_08090630: @ 0x08090630
 	adds r0, r1, #0
 	bx lr
 	.align 2, 0
-.L08090640: .4byte unk_02016A3C
+.L08090640: .4byte gCreditInfoDispStep
 
 	thumb_func_start func_fe6_08090644
 func_fe6_08090644: @ 0x08090644
@@ -1709,28 +1047,28 @@ func_fe6_08090644: @ 0x08090644
 	ldr r1, .L08090658 @ =unk_02016A3F
 	movs r0, #0xff
 	strb r0, [r1]
-	ldr r0, .L0809065C @ =unk_02016A3C
+	ldr r0, .L0809065C @ =gCreditInfoDispStep
 	ldrb r0, [r0]
 	bl func_fe6_080902F0
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L08090658: .4byte unk_02016A3F
-.L0809065C: .4byte unk_02016A3C
+.L0809065C: .4byte gCreditInfoDispStep
 
 	thumb_func_start func_fe6_08090660
 func_fe6_08090660: @ 0x08090660
 	push {lr}
-	ldr r1, .L08090670 @ =unk_02016A3C
+	ldr r1, .L08090670 @ =gCreditInfoDispStep
 	ldrb r1, [r1]
 	bl func_fe6_0808FFE0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08090670: .4byte unk_02016A3C
+.L08090670: .4byte gCreditInfoDispStep
 
-	thumb_func_start func_fe6_08090674
-func_fe6_08090674: @ 0x08090674
+	thumb_func_start EndingCredit_Init
+EndingCredit_Init: @ 0x08090674
 	push {r4, lr}
 	adds r0, #0x64
 	movs r4, #0
@@ -1785,7 +1123,7 @@ func_fe6_08090674: @ 0x08090674
 	ldr r0, .L08090718 @ =gBg1Tm
 	movs r1, #0
 	bl TmFill
-	bl func_fe6_0808FD94
+	bl SetupCreditCharacterGlyphs
 	ldr r0, .L0809071C @ =ProcScr_0868BB7C
 	movs r1, #3
 	bl SpawnProc
@@ -1803,8 +1141,8 @@ func_fe6_08090674: @ 0x08090674
 .L08090718: .4byte gBg1Tm
 .L0809071C: .4byte ProcScr_0868BB7C
 
-	thumb_func_start func_fe6_08090720
-func_fe6_08090720: @ 0x08090720
+	thumb_func_start EndingCredit_WaitingDisp
+EndingCredit_WaitingDisp: @ 0x08090720
 	push {lr}
 	adds r2, r0, #0
 	adds r0, #0x64
@@ -1822,8 +1160,8 @@ func_fe6_08090720: @ 0x08090720
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08090740
-func_fe6_08090740: @ 0x08090740
+	thumb_func_start EndingCredit_Ending
+EndingCredit_Ending: @ 0x08090740
 	push {lr}
 	ldr r1, .L08090760 @ =unk_02016A3F
 	movs r0, #0
@@ -1842,8 +1180,8 @@ func_fe6_08090740: @ 0x08090740
 .L08090764: .4byte gBg0Tm
 .L08090768: .4byte ProcScr_0868BB7C
 
-	thumb_func_start func_credit_0809076C
-func_credit_0809076C: @ 0x0809076C
+	thumb_func_start EndingCopyRight_Init
+EndingCopyRight_Init: @ 0x0809076C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, .L08090814 @ =BgConf_0868BA24
@@ -1894,11 +1232,11 @@ func_credit_0809076C: @ 0x0809076C
 	adds r0, r4, #0
 	movs r1, #0
 	bl TmFill
-	ldr r0, .L08090828 @ =Pal_Credit_08345420
+	ldr r0, .L08090828 @ =Pal_Ending_CopyRight
 	movs r1, #0x40
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r5, .L0809082C @ =Img_Credit_08344CD0
+	ldr r5, .L0809082C @ =Img_Ending_CopyRight
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1910,7 +1248,7 @@ func_credit_0809076C: @ 0x0809076C
 	movs r1, #0xa3
 	lsls r1, r1, #1
 	adds r4, r4, r1
-	ldr r1, .L08090830 @ =Tsa_Credit_0834523C
+	ldr r1, .L08090830 @ =Tsa_Ending_CopyRight
 	movs r2, #0x80
 	lsls r2, r2, #6
 	adds r0, r4, #0
@@ -1926,12 +1264,12 @@ func_credit_0809076C: @ 0x0809076C
 .L0809081C: .4byte 0x0000FFE0
 .L08090820: .4byte 0x0000E0FF
 .L08090824: .4byte gBg0Tm
-.L08090828: .4byte Pal_Credit_08345420
-.L0809082C: .4byte Img_Credit_08344CD0
-.L08090830: .4byte Tsa_Credit_0834523C
+.L08090828: .4byte Pal_Ending_CopyRight
+.L0809082C: .4byte Img_Ending_CopyRight
+.L08090830: .4byte Tsa_Ending_CopyRight
 
-	thumb_func_start func_credit_08090834
-func_credit_08090834: @ 0x08090834
+	thumb_func_start EndingCopyRight_Loop
+EndingCopyRight_Loop: @ 0x08090834
 	push {lr}
 	adds r2, r0, #0
 	adds r1, r2, #0
@@ -1976,8 +1314,8 @@ func_fe6_08090854: @ 0x08090854
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08090880
-func_fe6_08090880: @ 0x08090880
+	thumb_func_start EndingStep1_End
+EndingStep1_End: @ 0x08090880
 	push {lr}
 	movs r0, #0
 	movs r1, #0
@@ -1995,8 +1333,8 @@ func_fe6_08090880: @ 0x08090880
 	.align 2, 0
 .L080908A0: .4byte gDispIo
 
-	thumb_func_start func_fe6_080908A4
-func_fe6_080908A4: @ 0x080908A4
+	thumb_func_start EndingStep1_Init
+EndingStep1_Init: @ 0x080908A4
 	push {r4, r5, r6, lr}
 	adds r0, #0x64
 	movs r4, #0
@@ -2160,8 +1498,8 @@ func_fe6_080908A4: @ 0x080908A4
 .L08090A18: .4byte 0x00000167
 .L08090A1C: .4byte 0x00000187
 
-	thumb_func_start func_fe6_08090A20
-func_fe6_08090A20: @ 0x08090A20
+	thumb_func_start EndingStep1_Loop
+EndingStep1_Loop: @ 0x08090A20
 	push {lr}
 	adds r2, r0, #0
 	adds r1, r2, #0
@@ -2551,21 +1889,21 @@ func_fe6_08090D34: @ 0x08090D34
 
 	thumb_func_start func_fe6_08090D54
 func_fe6_08090D54: @ 0x08090D54
-	ldr r0, .L08090D60 @ =unk_02016A40
+	ldr r0, .L08090D60 @ =gEndingStep
 	ldrb r0, [r0]
 	cmp r0, #1
 	bls .L08090D64
 	movs r0, #0
 	b .L08090D66
 	.align 2, 0
-.L08090D60: .4byte unk_02016A40
+.L08090D60: .4byte gEndingStep
 .L08090D64:
 	movs r0, #1
 .L08090D66:
 	bx lr
 
-	thumb_func_start EndingCredit_Init
-EndingCredit_Init: @ 0x08090D68
+	thumb_func_start Ending_Init
+Ending_Init: @ 0x08090D68
 	push {lr}
 	adds r0, #0x64
 	movs r1, #0
@@ -2574,8 +1912,8 @@ EndingCredit_Init: @ 0x08090D68
 	pop {r0}
 	bx r0
 
-	thumb_func_start EndingCredit_Loop
-EndingCredit_Loop: @ 0x08090D78
+	thumb_func_start Ending_Loop
+Ending_Loop: @ 0x08090D78
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x64
@@ -2617,7 +1955,7 @@ EndingCredit_Loop: @ 0x08090D78
 .L08090DD0: .4byte unk_02016A3E
 .L08090DD4:
 	ldr r2, .L08090DFC @ =gCreditInfo
-	ldr r1, .L08090E00 @ =unk_02016A3C
+	ldr r1, .L08090E00 @ =gCreditInfoDispStep
 	ldrb r3, [r1]
 	lsls r0, r3, #1
 	adds r0, r0, r3
@@ -2626,19 +1964,19 @@ EndingCredit_Loop: @ 0x08090D78
 	ldr r0, [r0]
 	cmp r0, #1
 	bne .L08090E0C
-	ldr r0, .L08090E04 @ =unk_02016A41
+	ldr r0, .L08090E04 @ =gEndingDispType
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq .L08090E68
-	ldr r0, .L08090E08 @ =ProcScr_0868BC44
+	ldr r0, .L08090E08 @ =ProcScr_EndingStep1_PutaMonologue
 	adds r1, r4, #0
 	bl SpawnProcLocking
 	b .L08090E68
 	.align 2, 0
 .L08090DFC: .4byte gCreditInfo
-.L08090E00: .4byte unk_02016A3C
-.L08090E04: .4byte unk_02016A41
-.L08090E08: .4byte ProcScr_0868BC44
+.L08090E00: .4byte gCreditInfoDispStep
+.L08090E04: .4byte gEndingDispType
+.L08090E08: .4byte ProcScr_EndingStep1_PutaMonologue
 .L08090E0C:
 	cmp r0, #2
 	bne .L08090E60
@@ -2647,7 +1985,7 @@ EndingCredit_Loop: @ 0x08090D78
 	lsrs r0, r0, #0x18
 	cmp r0, #0x3f
 	bhi .L08090E38
-	ldr r0, .L08090E30 @ =unk_02016A41
+	ldr r0, .L08090E30 @ =gEndingDispType
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq .L08090E38
@@ -2656,7 +1994,7 @@ EndingCredit_Loop: @ 0x08090D78
 	bl SpawnProcLocking
 	b .L08090E4A
 	.align 2, 0
-.L08090E30: .4byte unk_02016A41
+.L08090E30: .4byte gEndingDispType
 .L08090E34: .4byte ProcScr_EndingPInfo1
 .L08090E38:
 	bl func_fe6_08090BA0
@@ -2677,7 +2015,7 @@ EndingCredit_Loop: @ 0x08090D78
 .L08090E58: .4byte ProcScr_0868BDB4
 .L08090E5C: .4byte unk_02016A3E
 .L08090E60:
-	ldr r0, .L08090E7C @ =ProcScr_0868BB9C
+	ldr r0, .L08090E7C @ =ProcScr_EndingCredit
 	adds r1, r4, #0
 	bl SpawnProcLocking
 .L08090E68:
@@ -2692,7 +2030,7 @@ EndingCredit_Loop: @ 0x08090D78
 	strh r0, [r1]
 	b .L08090F2A
 	.align 2, 0
-.L08090E7C: .4byte ProcScr_0868BB9C
+.L08090E7C: .4byte ProcScr_EndingCredit
 .L08090E80: .4byte unk_02016A3E
 .L08090E84:
 	ldr r2, .L08090EB4 @ =unk_02016A3E
@@ -2701,7 +2039,7 @@ EndingCredit_Loop: @ 0x08090D78
 	ands r0, r1
 	cmp r0, #0
 	beq .L08090E98
-	ldr r1, .L08090EB8 @ =unk_02016A3C
+	ldr r1, .L08090EB8 @ =gCreditInfoDispStep
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
@@ -2723,18 +2061,18 @@ EndingCredit_Loop: @ 0x08090D78
 	b .L08090F2A
 	.align 2, 0
 .L08090EB4: .4byte unk_02016A3E
-.L08090EB8: .4byte unk_02016A3C
+.L08090EB8: .4byte gCreditInfoDispStep
 .L08090EBC: .4byte unk_02016A3D
 .L08090EC0:
-	ldr r0, .L08090ECC @ =ProcScr_Credit_0868BBEC
+	ldr r0, .L08090ECC @ =ProcScr_EndingCopyRight
 .L08090EC2:
 	adds r1, r4, #0
 	bl SpawnProcLocking
 	b .L08090F10
 	.align 2, 0
-.L08090ECC: .4byte ProcScr_Credit_0868BBEC
+.L08090ECC: .4byte ProcScr_EndingCopyRight
 .L08090ED0:
-	bl func_fe6_0806DEB4
+	bl EndEndingBgmLooper
 	ldr r0, .L08090ED8 @ =ProcScr_PlayRank
 	b .L08090EC2
 	.align 2, 0
@@ -2743,7 +2081,7 @@ EndingCredit_Loop: @ 0x08090D78
 	movs r0, #0x36
 	movs r1, #0
 	bl StartBgm
-	bl func_fe6_08091588
+	bl SetupEndingPInfo2Uids
 	adds r1, r4, #0
 	adds r1, #0x64
 	ldrh r0, [r1]
@@ -2751,7 +2089,7 @@ EndingCredit_Loop: @ 0x08090D78
 	strh r0, [r1]
 .L08090EF2:
 	movs r0, #0
-	bl func_fe6_080916AC
+	bl PopNextEnding2Person
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #0x3f
@@ -2787,19 +2125,19 @@ EndingCredit_Loop: @ 0x08090D78
 StartCharacterEndings: @ 0x08090F34
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L08090F44 @ =ProcScr_CharacterEndingsCredit
+	ldr r0, .L08090F44 @ =ProcScr_Ending
 	bl SpawnProcLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08090F44: .4byte ProcScr_CharacterEndingsCredit
+.L08090F44: .4byte ProcScr_Ending
 
-	thumb_func_start func_fe6_08090F48
-func_fe6_08090F48: @ 0x08090F48
+	thumb_func_start GameCredit_Loop
+GameCredit_Loop: @ 0x08090F48
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, .L08090F68 @ =gCreditInfo
-	ldr r3, .L08090F6C @ =unk_02016A3C
+	ldr r3, .L08090F6C @ =gCreditInfoDispStep
 	ldrb r2, [r3]
 	lsls r1, r2, #1
 	adds r1, r1, r2
@@ -2814,7 +2152,7 @@ func_fe6_08090F48: @ 0x08090F48
 	b .L08090FFC
 	.align 2, 0
 .L08090F68: .4byte gCreditInfo
-.L08090F6C: .4byte unk_02016A3C
+.L08090F6C: .4byte gCreditInfoDispStep
 .L08090F70:
 	adds r0, r5, #0
 	adds r0, #0x64
@@ -2851,7 +2189,7 @@ func_fe6_08090F48: @ 0x08090F48
 	ldrb r0, [r3]
 	adds r0, #1
 	strb r0, [r3]
-	ldr r0, .L08090FE0 @ =unk_02016A40
+	ldr r0, .L08090FE0 @ =gEndingStep
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq .L08090FF2
@@ -2865,10 +2203,10 @@ func_fe6_08090F48: @ 0x08090F48
 	bl EnableBgSync
 	adds r0, r5, #0
 	bl Proc_Break
-	bl func_fe6_08090620
+	bl EndingStepAdvance
 	b .L08090FF2
 	.align 2, 0
-.L08090FE0: .4byte unk_02016A40
+.L08090FE0: .4byte gEndingStep
 .L08090FE4: .4byte gBg0Tm
 .L08090FE8: .4byte gBg1Tm
 .L08090FEC:
@@ -2876,7 +2214,7 @@ func_fe6_08090F48: @ 0x08090F48
 	adds r0, #1
 	strh r0, [r4]
 .L08090FF2:
-	ldr r0, .L08091004 @ =unk_02016A3C
+	ldr r0, .L08091004 @ =gCreditInfoDispStep
 	ldrb r1, [r0]
 	adds r0, r5, #0
 	bl func_fe6_0808FFE0
@@ -2885,7 +2223,7 @@ func_fe6_08090F48: @ 0x08090F48
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08091004: .4byte unk_02016A3C
+.L08091004: .4byte gCreditInfoDispStep
 
 	thumb_func_start StartGameCredit
 StartGameCredit: @ 0x08091008
@@ -3492,17 +2830,17 @@ func_fe6_0809154C: @ 0x0809154C
 	.align 2, 0
 .L08091584: .4byte 0x0203DC70
 
-	thumb_func_start func_fe6_08091588
-func_fe6_08091588: @ 0x08091588
+	thumb_func_start SetupEndingPInfo2Uids
+SetupEndingPInfo2Uids: @ 0x08091588
 	ldr r0, .L08091594 @ =gCurEndingUid
 	movs r1, #1
 	strb r1, [r0]
-	ldr r0, .L08091598 @ =unk_02016B89
+	ldr r0, .L08091598 @ =EndingUid_02016B89
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
 .L08091594: .4byte gCurEndingUid
-.L08091598: .4byte unk_02016B89
+.L08091598: .4byte EndingUid_02016B89
 
 	thumb_func_start CharacterEnding2_InitDisp
 CharacterEnding2_InitDisp: @ 0x0809159C
@@ -3630,8 +2968,8 @@ PopNextEndingPerson: @ 0x0809164C
 .L080916A4: .4byte gCurEndingUid
 .L080916A8: .4byte gEndingSceneDispEnPidList
 
-	thumb_func_start func_fe6_080916AC
-func_fe6_080916AC: @ 0x080916AC
+	thumb_func_start PopNextEnding2Person
+PopNextEnding2Person: @ 0x080916AC
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -3641,7 +2979,7 @@ func_fe6_080916AC: @ 0x080916AC
 	.align 2, 0
 .L080916B8: .4byte gCurEndingUid
 .L080916BC:
-	ldr r0, .L08091724 @ =unk_02016B89
+	ldr r0, .L08091724 @ =EndingUid_02016B89
 .L080916BE:
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
@@ -3697,7 +3035,7 @@ func_fe6_080916AC: @ 0x080916AC
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08091724: .4byte unk_02016B89
+.L08091724: .4byte EndingUid_02016B89
 .L08091728: .4byte 0x0203DC70
 
 	thumb_func_start EndingPInfo1Detail_PutText
@@ -4312,7 +3650,7 @@ func_fe6_08091C40: @ 0x08091C40
 	push {r5, r6, r7}
 	sub sp, #8
 	mov sl, r0
-	ldr r0, .L08091D18 @ =unk_02016B89
+	ldr r0, .L08091D18 @ =EndingUid_02016B89
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4400,7 +3738,7 @@ func_fe6_08091C40: @ 0x08091C40
 	str r1, [r2, #0x54]
 	b .L08091D38
 	.align 2, 0
-.L08091D18: .4byte unk_02016B89
+.L08091D18: .4byte EndingUid_02016B89
 .L08091D1C: .4byte ProcScr_TypeWritter
 .L08091D20: .4byte Texts_02016B78
 .L08091D24: .4byte gBg0Tm+0x1A
@@ -4445,7 +3783,7 @@ func_fe6_08091C40: @ 0x08091C40
 func_fe6_08091D70: @ 0x08091D70
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, .L08091DF8 @ =unk_02016B89
+	ldr r0, .L08091DF8 @ =EndingUid_02016B89
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4508,7 +3846,7 @@ func_fe6_08091D70: @ 0x08091D70
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08091DF8: .4byte unk_02016B89
+.L08091DF8: .4byte EndingUid_02016B89
 .L08091DFC: .4byte ProcScr_TypeWritter
 .L08091E00: .4byte Texts_02016B78
 .L08091E04: .4byte 0x00000A6E
@@ -4544,14 +3882,14 @@ Ending_DrawDyadPInfo: @ 0x08091E28
 	mov sl, r0
 	strb r0, [r7]
 	movs r0, #0
-	bl func_fe6_080916AC
+	bl PopNextEnding2Person
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 	ldr r1, .L08091F40 @ =gCurEndingUid
 	adds r0, r4, #1
 	strb r0, [r1]
 	movs r0, #1
-	bl func_fe6_080916AC
+	bl PopNextEnding2Person
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18
 	cmp r6, #0x3f
@@ -4559,7 +3897,7 @@ Ending_DrawDyadPInfo: @ 0x08091E28
 	movs r0, #0
 	strb r0, [r7]
 .L08091E60:
-	ldr r1, .L08091F44 @ =unk_02016B89
+	ldr r1, .L08091F44 @ =EndingUid_02016B89
 	adds r0, r6, #1
 	strb r0, [r1]
 	bl ResetText
@@ -4595,7 +3933,7 @@ Ending_DrawDyadPInfo: @ 0x08091E28
 	adds r1, r4, #0
 	movs r3, #0
 	bl StartFace
-	ldr r1, .L08091F58 @ =gUnk_030048D4
+	ldr r1, .L08091F58 @ =gEndingInfoFaceProc
 	str r0, [r1]
 	movs r0, #0
 	movs r1, #0
@@ -4657,12 +3995,12 @@ Ending_DrawDyadPInfo: @ 0x08091E28
 	.align 2, 0
 .L08091F3C: .4byte unk_02016B8A
 .L08091F40: .4byte gCurEndingUid
-.L08091F44: .4byte unk_02016B89
+.L08091F44: .4byte EndingUid_02016B89
 .L08091F48: .4byte gBg3Tm
 .L08091F4C: .4byte Tsa_EndingPInfoBG
 .L08091F50: .4byte 0x0600D800
 .L08091F54: .4byte 0x01000800
-.L08091F58: .4byte gUnk_030048D4
+.L08091F58: .4byte gEndingInfoFaceProc
 .L08091F5C: .4byte gpAuguryFaceProc
 .L08091F60: .4byte unk_02016B44
 .L08091F64: .4byte ProcScr_EndingPInfoFadeOut
@@ -4691,7 +4029,7 @@ CharacterEnding2_Loop: @ 0x08091F6C
 	ldr r0, [r4, #0x2c]
 	cmp r0, #0x2c
 	bgt .L08091FF0
-	ldr r0, .L08091FB8 @ =gUnk_030048D4
+	ldr r0, .L08091FB8 @ =gEndingInfoFaceProc
 	ldr r1, [r0]
 	ldr r2, .L08091FBC @ =unk_02016B90
 	movs r0, #0xbe
@@ -4710,7 +4048,7 @@ CharacterEnding2_Loop: @ 0x08091F6C
 	strh r0, [r1, #0x2e]
 	b .L08091FF0
 	.align 2, 0
-.L08091FB8: .4byte gUnk_030048D4
+.L08091FB8: .4byte gEndingInfoFaceProc
 .L08091FBC: .4byte unk_02016B90
 .L08091FC0: .4byte unk_02016B8A
 .L08091FC4: .4byte gpAuguryFaceProc

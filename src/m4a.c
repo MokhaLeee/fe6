@@ -1,6 +1,7 @@
 #include "m4a.h"
 
 #include "prelude.h"
+#include "hardware.h"
 
 #define MPLAY_JUMP_TABLE_FUNC(n) (*(gMPlayJumpTable + (n)))
 
@@ -71,21 +72,6 @@ extern void ply_xiecv(struct MusicPlayer *, struct MusicPlayerTrack *);
 extern void ply_xiecl(struct MusicPlayer *, struct MusicPlayerTrack *);
 extern void ply_xleng(struct MusicPlayer *, struct MusicPlayerTrack *);
 extern void ply_xswee(struct MusicPlayer *, struct MusicPlayerTrack *);
-
-SECTION(".iwram.SoundMainRam") ALIGNED(4)
-u8 SoundMainRam[0x400] = { 0 };
-
-SECTION(".iwram.gSoundInfo")
-struct SoundInfo gSoundInfo = { 0 };
-
-SECTION(".iwram.gMPlayJumpTable")
-MPlayFunc gMPlayJumpTable[36] = { 0 };
-
-SECTION(".iwram.gCgbChans")
-struct CgbChannel gCgbChans[4] = { { 0 } };
-
-SECTION(".iwram.gMPlayMemAccArea")
-u8 gMPlayMemAccArea[0x10] = { 0 };
 
 typedef void (* XcmdFunc)(struct MusicPlayer *, struct MusicPlayerTrack *);
 

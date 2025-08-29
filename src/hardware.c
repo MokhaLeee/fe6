@@ -39,10 +39,7 @@ int EWRAM_DATA pad_02023B1C = 0;
 static struct KeySt EWRAM_DATA gKeyStObj = { 0 };
 struct KeySt * CONST_DATA gKeySt = &gKeyStObj;
 
-struct DispIo COMMON_DATA(gDispIo) gDispIo = { 0 };
-
-Func COMMON_DATA(gOnHBlankA) gOnHBlankA = NULL;
-Func COMMON_DATA(gOnHBlankB) gOnHBlankB = NULL;
+extern IWRAM_DATA Func gOnHBlankA, gOnHBlankB;
 
 u32 GetGameTime(void)
 {
@@ -542,23 +539,23 @@ void func_fe6_08001D44(u16 const * in_pal, int bank, int count, int component_st
     }
 }
 
-void func_fe6_08001E68(int a, int b, int c, int d)
+void AdvancePalFadeStep(int pal, int num, int fade_col, int speed)
 {
     int pal_idx;
     int color_idx;
-    int dst_offset = a * 16;
+    int dst_offset = pal * 16;
 
     u16 const * src = gPal + dst_offset;
 
-    for (pal_idx = 0; pal_idx < b; ++pal_idx)
+    for (pal_idx = 0; pal_idx < num; ++pal_idx)
     {
-        gFadeComponentStep[a + pal_idx] = d;
+        gFadeComponentStep[pal + pal_idx] = speed;
 
         for (color_idx = 0; color_idx < 16; ++color_idx)
         {
-            gFadeComponents[dst_offset++] = RGB_GET_RED(*src) + c;
-            gFadeComponents[dst_offset++] = RGB_GET_GREEN(*src) + c;
-            gFadeComponents[dst_offset++] = RGB_GET_BLUE(*src) + c;
+            gFadeComponents[dst_offset++] = RGB_GET_RED(*src) + fade_col;
+            gFadeComponents[dst_offset++] = RGB_GET_GREEN(*src) + fade_col;
+            gFadeComponents[dst_offset++] = RGB_GET_BLUE(*src) + fade_col;
 
             src++;
         }

@@ -1831,7 +1831,7 @@ static void ChapterIntro_Init(struct GenericProc * proc)
     PutChapterTitleTextTSA(gBg0Tm + TM_OFFSET(3, 9), BGPAL_CHAPTERINTRO_1);
 
     ColorFadeInit();
-    func_fe6_08001E68(BGPAL_CHAPTERINTRO_0, 2, 0x40, -1);
+    AdvancePalFadeStep(BGPAL_CHAPTERINTRO_0, 2, 0x40, -1);
     ColorFadeTick();
 
     EnablePalSync();

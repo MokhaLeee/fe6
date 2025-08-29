@@ -44,7 +44,7 @@ struct ProcScr CONST_DATA ProcScr_GameController[] =
 PROC_LABEL(L_GAMECTRL_OPENINGSEQ),
     PROC_CALL(ForceEnableSounds),
 
-    PROC_START_CHILD_LOCKING(ProcScr_OpeningSequence),
+    PROC_START_CHILD_LOCKING(ProcScr_OpAnim),
 
     PROC_CALL(GC_PostIntro),
     PROC_YIELD,
@@ -145,7 +145,7 @@ PROC_LABEL(L_GAMECTRL_POSTTRIAL),
 
     PROC_CALL(GC_ClearSuspend),
 
-    PROC_CALL(func_fe6_0808FD6C),
+    PROC_CALL(NewPlayRankTrail),
     PROC_YIELD,
 
     PROC_GOTO(L_GAMECTRL_TITLE),

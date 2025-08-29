@@ -16,6 +16,7 @@
 #include "chapter.h"
 #include "unitsprite.h"
 #include "playrank.h"
+#include "ending_credit.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
 #include "constants/faces.h"
@@ -102,23 +103,23 @@ EWRAM_OVERLAY(0) i8 gAuguryChoice = 0;
 EWRAM_OVERLAY(0) struct Text gAuguryTexts[7] = {};
 EWRAM_OVERLAY(0) i16 ProcAugury_0868AFF0_EndEnable = 0;
 EWRAM_OVERLAY(0) i16 unk_02016A1A = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A1C = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A1E = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A20 = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A22 = 0;
+EWRAM_OVERLAY(0) u16 gPlayRankBg0Offset = 0;
+EWRAM_OVERLAY(0) u16 gPlayRankBg1Offset = 0;
+EWRAM_OVERLAY(0) u16 gPlayRankDispLine = 0;
+EWRAM_OVERLAY(0) u16 gPlayRankBg0MoveStep = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankCurChapter = 0;
 EWRAM_OVERLAY(0) u16 unk_02016A26 = 0;
 EWRAM_OVERLAY(0) u16 gPlayRankLayer = 0;
-EWRAM_OVERLAY(0) u16 unk_02016A2A = 0;
+EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A2C = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A2D = 0;
+EWRAM_OVERLAY(0) u8 gPlayRankMissionCompleted = 0;
 EWRAM_OVERLAY(0) u16 gPlayRanks[7] = {};
-EWRAM_OVERLAY(0) u8 unk_02016A3C = 0;
+EWRAM_OVERLAY(0) u8 gCreditInfoDispStep = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A3D = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A3E = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A3F = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A40 = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A41 = 0;
+EWRAM_OVERLAY(0) u8 gEndingStep = 0;
+EWRAM_OVERLAY(0) u8 gEndingDispType = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A42 = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A43 = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A44[0x7F] = {};
@@ -127,7 +128,7 @@ EWRAM_OVERLAY(0) u8 unk_02016B44 = 0;
 EWRAM_OVERLAY(0) struct Text Texts_02016B48[6] = {};
 EWRAM_OVERLAY(0) struct Text Texts_02016B78[2] = {};
 EWRAM_OVERLAY(0) u8 gCurEndingUid = 0;
-EWRAM_OVERLAY(0) u8 unk_02016B89 = 0;
+EWRAM_OVERLAY(0) u8 EndingUid_02016B89 = 0;
 EWRAM_OVERLAY(0) u8 unk_02016B8A = 0;
 EWRAM_OVERLAY(0) ProcPtr gpAuguryFaceProc = NULL;
 EWRAM_OVERLAY(0) u16 unk_02016B90 = 0;

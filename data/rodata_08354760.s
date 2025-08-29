@@ -248,12 +248,12 @@ gUnk_0837AB18: @ 0837AB18
 gUnk_0837ACB0: @ 0837ACB0
 	.incbin "fe6-base.gba", 0x37ACB0, (0x37ACD0 - 0x37ACB0) @ length: 0020
 
-	.global gUnk_0837ACD0
-gUnk_0837ACD0: @ 0837ACD0
+	.global Img_OpAnimThunderStorm
+Img_OpAnimThunderStorm: @ 0837ACD0
 	.incbin "fe6-base.gba", 0x37ACD0, (0x37C844 - 0x37ACD0) @ length: 1B74
 
-	.global gUnk_0837C844
-gUnk_0837C844: @ 0837C844
+	.global Tsa_OpAnimThunderStorm
+Tsa_OpAnimThunderStorm: @ 0837C844
 	.incbin "fe6-base.gba", 0x37C844, (0x37CB0C - 0x37C844) @ length: 02C8
 
 	.global gUnk_0837CB0C
@@ -272,8 +272,8 @@ gUnk_0837CB4C: @ 0837CB4C
 gUnk_0837CB6C: @ 0837CB6C
 	.incbin "fe6-base.gba", 0x37CB6C, (0x37CB8C - 0x37CB6C) @ length: 0020
 
-	.global gUnk_0837CB8C
-gUnk_0837CB8C: @ 0837CB8C
+	.global Img_OpAnim_Dragon
+Img_OpAnim_Dragon: @ 0837CB8C
 	.incbin "fe6-base.gba", 0x37CB8C, (0x37EEB4 - 0x37CB8C) @ length: 2328
 
 	.global gUnk_0837EEB4
@@ -284,12 +284,12 @@ gUnk_0837EEB4: @ 0837EEB4
 gUnk_0837F418: @ 0837F418
 	.incbin "fe6-base.gba", 0x37F418, (0x37F478 - 0x37F418) @ length: 0060
 
-	.global gUnk_0837F478
-gUnk_0837F478: @ 0837F478
+	.global Img_OpAnimGlyphs
+Img_OpAnimGlyphs: @ 0837F478
 	.incbin "fe6-base.gba", 0x37F478, (0x380ECC - 0x37F478) @ length: 1A54
 
-	.global gUnk_08380ECC
-gUnk_08380ECC: @ 08380ECC
+	.global Pal_OpAnimGlyphs
+Pal_OpAnimGlyphs: @ 08380ECC
 	.incbin "fe6-base.gba", 0x380ECC, (0x380F4C - 0x380ECC) @ length: 0080
 
 	.global gUnk_08380F4C

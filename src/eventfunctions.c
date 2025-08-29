@@ -37,6 +37,8 @@
 #include "save_stats.h"
 #include "banim.h"
 #include "opanim.h"
+#include "ending_credit.h"
+#include "ending_monologue.h"
 #include "chapterunits.h"
 
 #include "constants/flags.h"
@@ -1443,22 +1445,22 @@ void Chapter8_WeakenNorthWestWall(void)
 
 void func_fe6_0806CFA0(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857B774);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_028);
 }
 
 void func_fe6_0806CFB8(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857C95C);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_02B);
 }
 
 void func_fe6_0806CFD0(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857C1E4);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_02A);
 }
 
 void func_fe6_0806CFE8(void)
 {
-    m4aMPlayStart(&gMusicPlayer_MainBgm, &Song_Unk_0857A61C);
+    m4aMPlayStart(&gMusicPlayer_MainBgm, &song_026);
 }
 
 void func_fe6_0806D000(void)
@@ -2464,7 +2466,7 @@ CONST_DATA u8 MoveScr_TrueEnding_08676805[] = {
 };
 
 // 0x8676810
-CONST_DATA u8 MoveScr_TrueEnding_08676810[] = {
+CONST_DATA u8 MoveScr_Epilogue_FaeWwww[] = {
     MOVE_CMD_SET_SPEED, 32,
     MOVE_CMD_MOVE_LEFT,
     MOVE_CMD_MOVE_DOWN,
@@ -2486,7 +2488,7 @@ CONST_DATA u8 MoveScr_TrueEnding_08676810[] = {
 };
 
 // 0x8676823
-CONST_DATA u8 MoveScr_TrueEnding_08676823[] = {
+CONST_DATA u8 MoveScr_Epilogue_FaeExit[] = {
     MOVE_CMD_SET_SPEED, 22,
     MOVE_CMD_MOVE_RIGHT,
     MOVE_CMD_MOVE_DOWN,
@@ -2595,34 +2597,34 @@ void func_fe6_0806DC38(void)
     Proc_EndEach(ProcScr_Unk_08676854);
 }
 
-struct ProcScr CONST_DATA ProcScr_EpilogueCreditDisp[] =
+struct ProcScr CONST_DATA ProcScr_EndingCreditFade[] =
 {
-    PROC_CALL(EpilogueCredit_Init),
-    PROC_REPEAT(EpilogueCredit_FadeBg),
+    PROC_CALL(EndingCreditFade_Init),
+    PROC_REPEAT(EndingCreditFade_FadeBg),
     PROC_CALL(StartGameCredit),
     PROC_END,
 };
 
-void EpilogueCredit_Init(struct ProcEpilogueCredit * proc)
+void EndingCreditFade_Init(struct ProcEndingCreditFade * proc)
 {
     proc->unk_64 = 0;
 }
 
-void EpilogueCredit_FadeBg(struct ProcEpilogueCredit * proc)
+void EndingCreditFade_FadeBg(struct ProcEndingCreditFade * proc)
 {
     if (GetGameTime() % 8 == 0)
     {
         if (proc->unk_64++ > 11)
             Proc_Break(proc);
 
-        func_fe6_08001E68(0, 0x20, 0x20, -1);
+        AdvancePalFadeStep(0, 0x20, 0x20, -1);
         ColorFadeTick2();
     }
 }
 
 void Epilogue_StartCredit(ProcPtr parent)
 {
-    SpawnProc(ProcScr_EpilogueCreditDisp, parent);
+    SpawnProc(ProcScr_EndingCreditFade, parent);
 }
 
 void RemoveEndingMonologueBG(void)
@@ -2635,9 +2637,9 @@ void RemoveEndingMonologueBG(void)
     CpuFastFill(0, (void *) VRAM + 0x300 * CHR_SIZE, CHR_SIZE * 0x100);
 }
 
-struct ProcScr CONST_DATA ProcScr_EpilogueMonologue[] =
+struct ProcScr CONST_DATA ProcScr_EndingTimeFlowMonologue[] =
 {
-    PROC_CALL(EpilogueMonologue_Init),
+    PROC_CALL(EndingTimeFlowMonologue_Init),
     PROC_CALL(StartSlowFadeFromBlack),
     PROC_REPEAT(WhileFadeExists),
     PROC_SLEEP(120),
@@ -2646,7 +2648,7 @@ struct ProcScr CONST_DATA ProcScr_EpilogueMonologue[] =
     PROC_END,
 };
 
-void EpilogueMonologue_Init(void)
+void EndingTimeFlowMonologue_Init(void)
 {
     SetDispEnable(1, 0, 0, 0, 0);
 
@@ -2656,19 +2658,19 @@ void EpilogueMonologue_Init(void)
     ResetText();
     InitTalkTextFont();
 
-    InitText(&Text_EpilogueMonologue, 14);
-    PutDrawText(&Text_EpilogueMonologue, gBg0Tm + TM_OFFSET(8, 9),
+    InitText(&Text_EndingTimeFlowMonologue, 14);
+    PutDrawText(&Text_EndingTimeFlowMonologue, gBg0Tm + TM_OFFSET(8, 9),
         TEXT_COLOR_0123, 0, 0, DecodeMsg(MSG_24A));
 }
 
-void DrawEpilogueMonologue(ProcPtr parent)
+void DrawEndingTimeFlowMonologue(ProcPtr parent)
 {
-    SpawnProc(ProcScr_EpilogueMonologue, parent);
+    SpawnProc(ProcScr_EndingTimeFlowMonologue, parent);
 }
 
-bool EpilogueMonologueExists(void)
+bool EndingTimeFlowMonologueExists(void)
 {
-    if (FindProc(ProcScr_EpilogueMonologue) != NULL)
+    if (FindProc(ProcScr_EndingTimeFlowMonologue) != NULL)
         return TRUE;
 
     Proc_EndEach(ProcScr_DemoMonologueDisp);
@@ -2713,20 +2715,20 @@ void func_fe6_0806DE40(void)
     PlaySe(SONG_6A);
 }
 
-struct ProcScr CONST_DATA ProcScr_Unk_086768C4[] =
+struct ProcScr CONST_DATA ProcScr_EndingBgmLooper[] =
 {
-    PROC_CALL(func_fe6_0806DE5C),
-    PROC_REPEAT(func_fe6_0806DE78),
+    PROC_CALL(EndingBgmLooper_Init),
+    PROC_REPEAT(EndingBgmLooper_Ioop),
     PROC_END,
 };
 
-void func_fe6_0806DE5C(struct UnkProc_086768C4 * proc)
+void EndingBgmLooper_Init(struct UnkProc_086768C4 * proc)
 {
     StartBgm(SONG_43, NULL);
     proc->unk_64 = 17600;
 }
 
-void func_fe6_0806DE78(struct UnkProc_086768C4 * proc)
+void EndingBgmLooper_Ioop(struct UnkProc_086768C4 * proc)
 {
     proc->unk_64--;
 
@@ -2737,14 +2739,14 @@ void func_fe6_0806DE78(struct UnkProc_086768C4 * proc)
     }
 }
 
-void func_fe6_0806DEA0(ProcPtr parent)
+void NewEndingBgmLooper(ProcPtr parent)
 {
-    SpawnProc(ProcScr_Unk_086768C4, parent);
+    SpawnProc(ProcScr_EndingBgmLooper, parent);
 }
 
-void func_fe6_0806DEB4(void)
+void EndEndingBgmLooper(void)
 {
-    Proc_EndEach(ProcScr_Unk_086768C4);
+    Proc_EndEach(ProcScr_EndingBgmLooper);
 }
 
 bool GameEnding_TryBuildGreatLycia(void)
@@ -3131,7 +3133,7 @@ EventScr CONST_DATA EventScr_TrueEnding_IndunnNotDie[] =
     EvtExitMap
     EvtFunc(ClearTalk)
     EvtFunc(StartEndingMonologue0)
-    EvtFuncWhile(EndEndingMonologue)
+    EvtFuncWhile(EndingMonologueExists)
     EvtFadeBgmOut(4)
     EvtSleep(120)
     EvtSetBgm(SONG_34)
@@ -3184,8 +3186,8 @@ EvtLabel(4)
     EvtSleep(120)
     EvtFunc(ClearTalk)
     EvtFunc(EndAllProcsMark1)
-    EvtFunc(DrawEpilogueMonologue)
-    EvtFuncWhile(EpilogueMonologueExists)
+    EvtFunc(DrawEndingTimeFlowMonologue)
+    EvtFuncWhile(EndingTimeFlowMonologueExists)
     EvtSetBgm(SONG_26)
     EvtFadeToBlack(16)
     EvtExitMap
@@ -3210,7 +3212,7 @@ EvtLabel(4)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_08676805)
     EvtMoveWait
     EvtSleep(15)
-    EvtFunc(func_fe6_0806DEA0)
+    EvtFunc(NewEndingBgmLooper)
     EvtTalk(MSG_24C)
     EvtFunc(func_fe6_0806DC24)
     EvtTalkContinue
@@ -3219,11 +3221,11 @@ EvtLabel(4)
     EvtTalkContinue
     EvtSleep(15)
     EvtTalkContinue
-    EvtMoveUnitScript(PID_FAE, MoveScr_TrueEnding_08676810)
+    EvtMoveUnitScript(PID_FAE, MoveScr_Epilogue_FaeWwww)
     EvtTalkContinue
     EvtClearTalk
     EvtMoveWait
-    EvtMoveUnitScript(PID_FAE, MoveScr_TrueEnding_08676823)
+    EvtMoveUnitScript(PID_FAE, MoveScr_Epilogue_FaeExit)
     EvtMoveWait
     EvtSleep(60)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_08676831)
@@ -3245,7 +3247,7 @@ EvtLabel(4)
     EvtSleep(420)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_0867683C)
     EvtSleep(256)
-    EvtFunc(func_fe6_08090620)
+    EvtFunc(EndingStepAdvance)
     EvtFuncWhile(func_fe6_08090D54)
     EvtFadeToBlack(4)
     EvtExitMap
@@ -3298,7 +3300,7 @@ EvtLabel(20)
     EvtExitMap
     EvtFunc(ClearTalk)
     EvtFunc(StartEndingMonologue1)
-    EvtFuncWhile(EndEndingMonologue)
+    EvtFuncWhile(EndingMonologueExists)
     EvtFadeBgmOut(4)
     EvtSleep(120)
     EvtSetBgm(SONG_34)
@@ -3352,9 +3354,9 @@ EvtLabel(4)
     EvtFunc(ClearTalk)
     EvtFunc(EndAllProcsMark1)
     EvtFunc(StartEndingMonologue2)
-    EvtFuncWhile(EndEndingMonologue)
+    EvtFuncWhile(EndingMonologueExists)
     EvtSleep(75)
-    EvtFunc(func_fe6_0808FED8)
+    EvtFunc(EndingCredit_ReinitType2)
     EvtJump(EventScr_CharacterEnding)
 
     EvtClearSkip
@@ -3441,9 +3443,9 @@ EventScr CONST_DATA EventScr_FalseEnding[] =
     EvtSleep(75)
     EvtSetBgm(SONG_34)
     EvtFunc(StartEndingMonologue3)
-    EvtFuncWhile(EndEndingMonologue)
+    EvtFuncWhile(EndingMonologueExists)
     EvtSleep(128)
-    EvtFunc(func_fe6_0808FEF0)
+    EvtFunc(EndingCredit_ReinitType0)
     EvtJump(EventScr_CharacterEnding)
 
     EvtClearSkip
@@ -3486,283 +3488,3 @@ void func_fe6_0806E32C(void)
     }
 }
 
-i8 CONST_DATA Ctrl_EndingMonologueText1[] = {
-    0, 1, -1,
-    2, 3, 4, 5, -1,
-    6, 7, 8, 9, -1, -1,
-    10,
-    -3
-};
-
-i8 CONST_DATA Ctrl_EndingMonologueText2[] = {
-    11, 12, -1,
-    2, 3, 4, 5, -1,
-    6, 7, 8, 9, -1, -1,
-    10,
-    -3
-};
-
-i8 CONST_DATA Ctrl_EndingMonologueText3[] = {
-    0, 1, 2, 3, -1,
-    4, 5, 6, 7, 8,
-    -3
-};
-
-i8 CONST_DATA Ctrl_EndingMonologueText4[] = {
-    0, 1, -1,
-    2, 3, -1,
-    4, 5, 6, 7, -1,
-    8, 9, 10, 11, 12, -1,
-    13, 14, -1,
-    15, -2, -1,
-    1, 2, 3, -1, -1,
-    4,
-    -3
-};
-
-struct ProcScr CONST_DATA ProcScr_EndingMonologueText[] =
-{
-    PROC_CALL(EndingMonologueText_Init),
-    PROC_REPEAT(EndingMonologueText_Loop),
-    PROC_END,
-};
-
-void EndingMonologueText_Init(struct ProcEndingMonologueText * proc)
-{
-    if (gEndingMonologueState == 0)
-    {
-        Decompress(Img_EndingMonologueText1, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText1;
-        proc->bg_x = -28;
-    }
-    else if (gEndingMonologueState == 1)
-    {
-        Decompress(Img_EndingMonologueText1, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText2;
-        proc->bg_x = -28;
-    }
-    else if (gEndingMonologueState == 2)
-    {
-        Decompress(Img_EndingMonologueText3, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText3;
-        proc->bg_x = -48;
-    }
-    else if (gEndingMonologueState == 3)
-    {
-        Decompress(Img_EndingMonologueText4, (void *) VRAM + 1 * CHR_SIZE);
-        proc->ctrl_y = Ctrl_EndingMonologueText4;
-        proc->bg_x = -24;
-    }
-
-    proc->delay_timer = 0;
-    proc->bg_y = -144;
-    proc->main_timer = 0;
-    proc->paulse_timer = 0;
-
-    EndingMonologue_MoveText(0, proc->ctrl_y[0]);
-    SetBgOffset(0, proc->bg_x, proc->bg_y);
-}
-
-void EndingMonologueText_Loop(struct ProcEndingMonologueText * proc)
-{
-    proc->delay_timer++;
-
-    if (proc->delay_timer < 7)
-        return;
-
-    proc->delay_timer = 0;
-
-    proc->bg_y++;
-    SetBgOffset(0, proc->bg_x, proc->bg_y);
-
-    proc->main_timer++;
-
-    if ((proc->main_timer % 24) != 0)
-        return;
-
-    if (proc->paulse_timer != 0)
-    {
-        EndingMonologue_MoveText(proc->main_timer / 8, -3);
-    }
-    else
-    {
-        if (proc->ctrl_y[proc->main_timer / 24] == -2 && proc->ctrl_y == Ctrl_EndingMonologueText4)
-        {
-            Decompress(Img_08352160, (void *) VRAM + 1 * CHR_SIZE);
-        }
-
-        EndingMonologue_MoveText(proc->main_timer / 8, proc->ctrl_y[proc->main_timer / 24]);
-    }
-
-    if (proc->paulse_timer != 0 || proc->ctrl_y[proc->main_timer / 24] == -3)
-    {
-        proc->paulse_timer++;
-
-        if (proc->paulse_timer == 4)
-            gEndingMonologueTextDone = true;
-    }
-}
-
-void EndingMonologue_PutText(ProcPtr parent)
-{
-    SpawnProc(ProcScr_EndingMonologueText, parent);
-}
-
-u16 CONST_DATA BgConf_EndingMonologue[] = {
-    // tile offset  map offset  screen size
-    0x0000,         0xE000,     0,          // BG 0
-    0x0000,         0xE800,     0,          // BG 1
-    0x8000,         0xF000,     1,          // BG 2
-    0x0000,         0xF800,     0,          // BG 3
-};
-
-void EndingMonologue_Init(void)
-{
-    int i;
-
-    InitBgs(BgConf_EndingMonologue);
-    DisableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
-
-    gDispIo.disp_ct.mode = DISPCNT_BG_MODE_REGULAR;
-    SetDispEnable(1, 0, 1, 0, 0);
-    SetWinEnable(0, 0, 0);
-
-    SetBlendAlpha(0x10, 0x10);
-    SetBlendTargetA(1, 0, 0, 0, 0);
-    SetBlendTargetB(0, 0, 1, 0, 0);
-
-    UnpackUiWindowFrameGraphics();
-
-    TmFill(gBg0Tm, 0);
-    TmFill(gBg1Tm, 0);
-    SetBgOffset(2, 0, 0);
-
-    Decompress(Img_EndingMonologue, (void *) VRAM + GetBgChrOffset(2));
-    Decompress(Tsa_EndingMonologue, gBg2Tm);
-    Decompress(Zpal_EndingMonologue, gBuf);
-
-    for (i = 0; i < 8; i++)
-    {
-        EfxPalBlackInOut((u16 *) gBuf, i, 1, 2);
-    }
-
-    ApplyPalettes(gBuf, 0, 0x10);
-    gPal[0] = 0;
-    ApplyPalette(Pal_EndingMonologueText, 15);
-
-    func_fe6_0809892C(1, 0, 1, 0, 1);
-
-    InitScanlineEffect();
-    SetOnHBlankA(OnHBlank_08069FD8);
-    Scanline_SetupMonologue();
-
-    gEndingMonologueTextDone = false;
-
-    EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
-}
-
-void EndingMonologue_MoveText(int x, int y)
-{
-    int iy, ix;
-
-    if (y == -2)
-        y = 0;
-
-    for (iy = -1; iy < 3; iy++)
-    {
-        u16 * tm = gBg0Tm + TM_OFFSET(0, (x + iy) & 0x1F);
-
-        if (iy == -1 || iy == 2)
-        {
-            for (ix = 0; ix < 0x20; ix++)
-                *tm++ = 0;
-        }
-        else if (y == -1 || y == -3)
-        {
-            for (ix = 0; ix < 0x20; ix++)
-                *tm++ = 0;
-        }
-        else
-        {
-            // TODO: constants
-            int base = TILEREF(y * 0x40 + iy * 0x20 + 1, 15);
-
-            for (ix = 0; ix < 0x20; ix++)
-                *tm++ = base + ix;
-        }
-    }
-
-    EnableBgSync(BG0_SYNC_BIT);
-}
-
-void EndingMonologue_Loop(ProcPtr proc)
-{
-    if (gEndingMonologueTextDone != 0)
-        Proc_Break(proc);
-}
-
-void EndingMonologue_End(void)
-{
-    SetOnHBlankA(NULL);
-}
-
-void func_fe6_0806E73C(void)
-{
-    InitBgs(NULL);
-
-    SetDispEnable(1, 1, 1, 1, 1);
-
-    CpuFastFill(0, (void *) VRAM + GetBgChrOffset(3), CHR_SIZE);
-    CpuFastFill(0, (void *) VRAM + 0x6000, 0x2000); // TODO: constants
-}
-
-struct ProcScr CONST_DATA ProcScr_EndingMonologue[] =
-{
-    PROC_SLEEP(15),
-    PROC_CALL(EndingMonologue_Init),
-    PROC_CALL(FadeInBlackSpeed08),
-    PROC_SLEEP(1),
-    PROC_CALL(EndingMonologue_PutText),
-    PROC_REPEAT(EndingMonologue_Loop),
-    PROC_SLEEP(300),
-PROC_LABEL(99),
-    PROC_CALL(FadeInBlackWithCallBack_Speed08),
-    PROC_SLEEP(1),
-    PROC_CALL(EndingMonologue_End),
-    PROC_END,
-};
-
-void StartEndingMonologue0(ProcPtr parent)
-{
-    gEndingMonologueState = 0;
-    SpawnProc(ProcScr_EndingMonologue, parent);
-}
-
-void StartEndingMonologue1(ProcPtr parent)
-{
-    gEndingMonologueState = 1;
-    SpawnProc(ProcScr_EndingMonologue, parent);
-}
-
-void StartEndingMonologue2(ProcPtr parent)
-{
-    gEndingMonologueState = 2;
-    SpawnProc(ProcScr_EndingMonologue, parent);
-}
-
-void StartEndingMonologue3(ProcPtr parent)
-{
-    gEndingMonologueState = 3;
-    SpawnProc(ProcScr_EndingMonologue, parent);
-}
-
-bool EndEndingMonologue(void)
-{
-    if (FindProc(ProcScr_EndingMonologue) != NULL)
-        return TRUE;
-
-    Proc_EndEach(ProcScr_EndingMonologueText);
-    RemoveEndingMonologueBG();
-
-    return FALSE;
-}

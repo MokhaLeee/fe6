@@ -20,16 +20,16 @@ PostGameOverHandler: @ 0x080987B8
 	thumb_func_start func_fe6_080987D4
 func_fe6_080987D4: @ 0x080987D4
 	push {lr}
-	ldr r0, .L080987E4 @ =ProcScr_OpeningSequence
+	ldr r0, .L080987E4 @ =ProcScr_OpAnim
 	movs r1, #3
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080987E4: .4byte ProcScr_OpeningSequence
+.L080987E4: .4byte ProcScr_OpAnim
 
-	thumb_func_start func_fe6_080987E8
-func_fe6_080987E8: @ 0x080987E8
+	thumb_func_start OpAnimfxTerminator_Loop
+OpAnimfxTerminator_Loop: @ 0x080987E8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, .L08098824 @ =gKeySt
@@ -89,15 +89,15 @@ func_fe6_0809882C: @ 0x0809882C
 .L0809885C: .4byte gPal
 .L08098860: .4byte gDispIo
 
-	thumb_func_start func_fe6_08098864
-func_fe6_08098864: @ 0x08098864
+	thumb_func_start OpAnim_OnEnd
+OpAnim_OnEnd: @ 0x08098864
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_08098868
-func_fe6_08098868: @ 0x08098868
+	thumb_func_start OpAnim_Init
+OpAnim_Init: @ 0x08098868
 	push {lr}
-	ldr r0, .L080988B0 @ =gUnk_08691604
+	ldr r0, .L080988B0 @ =BgConf_OpAnim_08691604
 	bl InitBgs
 	ldr r2, .L080988B4 @ =gDispIo
 	movs r0, #1
@@ -122,14 +122,14 @@ func_fe6_08098868: @ 0x08098868
 	bl SetAllBlackPals
 	bl EnablePalSync
 	movs r0, #0
-	bl func_fe6_08098AD8
+	bl OpAnim_SetupGlyph
 	ldr r1, .L080988B8 @ =bool_opanim_03005284
 	movs r0, #0
 	strb r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080988B0: .4byte gUnk_08691604
+.L080988B0: .4byte BgConf_OpAnim_08691604
 .L080988B4: .4byte gDispIo
 .L080988B8: .4byte bool_opanim_03005284
 
@@ -138,10 +138,10 @@ func_fe6_080988BC: @ 0x080988BC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_080988C0
-func_fe6_080988C0: @ 0x080988C0
+	thumb_func_start OpAnin6_ResetBG
+OpAnin6_ResetBG: @ 0x080988C0
 	push {lr}
-	ldr r0, .L08098924 @ =gUnk_0869161C
+	ldr r0, .L08098924 @ =BgConf_OpAnim_0869161C
 	bl InitBgs
 	bl Clear4bppFirstTm
 	ldr r3, .L08098928 @ =gDispIo
@@ -188,7 +188,7 @@ func_fe6_080988C0: @ 0x080988C0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098924: .4byte gUnk_0869161C
+.L08098924: .4byte BgConf_OpAnim_0869161C
 .L08098928: .4byte gDispIo
 
 	thumb_func_start func_fe6_0809892C
@@ -294,8 +294,8 @@ func_fe6_0809892C: @ 0x0809892C
 	.align 2, 0
 .L080989F4: .4byte gDispIo
 
-	thumb_func_start func_fe6_080989F8
-func_fe6_080989F8: @ 0x080989F8
+	thumb_func_start OpAnim_StartBGM
+OpAnim_StartBGM: @ 0x080989F8
 	push {lr}
 	ldr r0, .L08098A14 @ =bool_opanim_03005284
 	ldrb r0, [r0]
@@ -312,12 +312,12 @@ func_fe6_080989F8: @ 0x080989F8
 	.align 2, 0
 .L08098A14: .4byte bool_opanim_03005284
 
-	thumb_func_start func_fe6_08098A18
-func_fe6_08098A18: @ 0x08098A18
+	thumb_func_start OpAnim_Start
+OpAnim_Start: @ 0x08098A18
 	push {r4, lr}
 	adds r1, r0, #0
-	ldr r4, .L08098A3C @ =gUnk_08691634
-	ldr r3, .L08098A40 @ =gUnk_03005290
+	ldr r4, .L08098A3C @ =ProcScr_OpAnim_08691634
+	ldr r3, .L08098A40 @ =gOpAnimStep
 	movs r0, #0
 	adds r2, r3, #0
 	adds r2, #0x1c
@@ -332,8 +332,8 @@ func_fe6_08098A18: @ 0x08098A18
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098A3C: .4byte gUnk_08691634
-.L08098A40: .4byte gUnk_03005290
+.L08098A3C: .4byte ProcScr_OpAnim_08691634
+.L08098A40: .4byte gOpAnimStep
 
 	thumb_func_start func_fe6_08098A44
 func_fe6_08098A44: @ 0x08098A44
@@ -349,12 +349,12 @@ func_fe6_08098A4C: @ 0x08098A4C
 	str r1, [r0, #0x54]
 	bx lr
 
-	thumb_func_start func_fe6_08098A54
-func_fe6_08098A54: @ 0x08098A54
+	thumb_func_start OpAnimAdvance
+OpAnimAdvance: @ 0x08098A54
 	push {lr}
-	ldr r0, .L08098A70 @ =gUnk_08691634
+	ldr r0, .L08098A70 @ =ProcScr_OpAnim_08691634
 	bl FindProc
-	ldr r2, .L08098A74 @ =gUnk_03005290
+	ldr r2, .L08098A74 @ =gOpAnimStep
 	ldr r1, [r2]
 	adds r1, #1
 	str r1, [r2]
@@ -365,8 +365,8 @@ func_fe6_08098A54: @ 0x08098A54
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098A70: .4byte gUnk_08691634
-.L08098A74: .4byte gUnk_03005290
+.L08098A70: .4byte ProcScr_OpAnim_08691634
+.L08098A74: .4byte gOpAnimStep
 
 	thumb_func_start func_fe6_08098A78
 func_fe6_08098A78: @ 0x08098A78
@@ -432,22 +432,22 @@ func_fe6_08098ACC: @ 0x08098ACC
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08098AD8
-func_fe6_08098AD8: @ 0x08098AD8
+	thumb_func_start OpAnim_SetupGlyph
+OpAnim_SetupGlyph: @ 0x08098AD8
 	push {lr}
 	lsls r0, r0, #5
-	ldr r1, .L08098AF8 @ =gUnk_08380ECC
+	ldr r1, .L08098AF8 @ =Pal_OpAnimGlyphs
 	adds r0, r0, r1
 	movs r1, #0xf8
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	bl func_fe6_0809937C
-	bl func_fe6_08099404
+	bl PutImg_OpAnimGlyphs
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098AF8: .4byte gUnk_08380ECC
+.L08098AF8: .4byte Pal_OpAnimGlyphs
 
 	thumb_func_start func_fe6_08098AFC
 func_fe6_08098AFC: @ 0x08098AFC
@@ -457,7 +457,7 @@ func_fe6_08098AFC: @ 0x08098AFC
 	mov r5, r8
 	push {r5, r6, r7}
 	adds r7, r0, #0
-	ldr r1, .L08098B74 @ =gUnk_08691738
+	ldr r1, .L08098B74 @ =Msgs_OpAnim_08691738
 	lsls r0, r7, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
@@ -512,7 +512,7 @@ func_fe6_08098AFC: @ 0x08098AFC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098B74: .4byte gUnk_08691738
+.L08098B74: .4byte Msgs_OpAnim_08691738
 .L08098B78: .4byte gUnk_08691778
 .L08098B7C: .4byte gUnk_08691498
 
@@ -525,7 +525,7 @@ func_fe6_08098B80: @ 0x08098B80
 	adds r6, r1, #0
 	adds r4, r2, #0
 	adds r5, r3, #0
-	ldr r0, .L08098BB0 @ =gUnk_086917D8
+	ldr r0, .L08098BB0 @ =ProcScr_086917D8
 	movs r1, #3
 	bl SpawnProc
 	adds r1, r0, #0
@@ -541,7 +541,7 @@ func_fe6_08098B80: @ 0x08098B80
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098BB0: .4byte gUnk_086917D8
+.L08098BB0: .4byte ProcScr_086917D8
 
 	thumb_func_start func_fe6_08098BB4
 func_fe6_08098BB4: @ 0x08098BB4
@@ -622,7 +622,7 @@ func_fe6_08098C00: @ 0x08098C00
 	.align 2, 0
 .L08098C38: .4byte gUnk_08691778
 .L08098C3C:
-	ldr r0, .L08098C74 @ =gUnk_08691858
+	ldr r0, .L08098C74 @ =ProcScr_08691858
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -648,7 +648,7 @@ func_fe6_08098C00: @ 0x08098C00
 	adds r6, #2
 	b .L08098C80
 	.align 2, 0
-.L08098C74: .4byte gUnk_08691858
+.L08098C74: .4byte ProcScr_08691858
 .L08098C78:
 	adds r0, r5, #0
 	bl Proc_Break
@@ -672,12 +672,12 @@ func_fe6_08098C90: @ 0x08098C90
 	thumb_func_start func_fe6_08098C94
 func_fe6_08098C94: @ 0x08098C94
 	push {lr}
-	ldr r0, .L08098CA0 @ =gUnk_08691858
+	ldr r0, .L08098CA0 @ =ProcScr_08691858
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098CA0: .4byte gUnk_08691858
+.L08098CA0: .4byte ProcScr_08691858
 
 	thumb_func_start func_fe6_08098CA4
 func_fe6_08098CA4: @ 0x08098CA4
@@ -685,13 +685,13 @@ func_fe6_08098CA4: @ 0x08098CA4
 	ldr r0, .L08098CB8 @ =0x02002800
 	movs r1, #0
 	str r1, [r0]
-	ldr r0, .L08098CBC @ =gUnk_08691858
+	ldr r0, .L08098CBC @ =ProcScr_08691858
 	bl Proc_BreakEach
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L08098CB8: .4byte 0x02002800
-.L08098CBC: .4byte gUnk_08691858
+.L08098CBC: .4byte ProcScr_08691858
 
 	thumb_func_start func_fe6_08098CC0
 func_fe6_08098CC0: @ 0x08098CC0
@@ -1445,13 +1445,13 @@ func_fe6_08099194: @ 0x08099194
 	thumb_func_start func_fe6_080992B8
 func_fe6_080992B8: @ 0x080992B8
 	push {lr}
-	ldr r0, .L080992C8 @ =gUnk_08691858
+	ldr r0, .L080992C8 @ =ProcScr_08691858
 	ldr r1, .L080992CC @ =func_fe6_080992D0
 	bl Proc_ForEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080992C8: .4byte gUnk_08691858
+.L080992C8: .4byte ProcScr_08691858
 .L080992CC: .4byte func_fe6_080992D0
 
 	thumb_func_start func_fe6_080992D0
@@ -1644,10 +1644,10 @@ func_fe6_080993E8: @ 0x080993E8
 	.align 2, 0
 .L08099400: .4byte gUnk_03005280
 
-	thumb_func_start func_fe6_08099404
-func_fe6_08099404: @ 0x08099404
+	thumb_func_start PutImg_OpAnimGlyphs
+PutImg_OpAnimGlyphs: @ 0x08099404
 	push {lr}
-	ldr r0, .L08099418 @ =gUnk_0837F478
+	ldr r0, .L08099418 @ =Img_OpAnimGlyphs
 	ldr r1, .L0809941C @ =0x02000000
 	bl Decompress
 	ldr r1, .L08099420 @ =0x02002800
@@ -1656,7 +1656,7 @@ func_fe6_08099404: @ 0x08099404
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099418: .4byte gUnk_0837F478
+.L08099418: .4byte Img_OpAnimGlyphs
 .L0809941C: .4byte 0x02000000
 .L08099420: .4byte 0x02002800
 
@@ -1752,7 +1752,7 @@ func_fe6_0809947C: @ 0x0809947C
 	mov r1, sb
 	cmp r1, #0
 	beq .L08099500
-	ldr r0, .L080994FC @ =gUnk_08691890
+	ldr r0, .L080994FC @ =ProcScr_08691890
 	mov r1, sl
 	bl SpawnProc
 	str r7, [r0, #0x30]
@@ -1765,7 +1765,7 @@ func_fe6_0809947C: @ 0x0809947C
 .L080994F0: .4byte 0x000003FF
 .L080994F4: .4byte 0x06010000
 .L080994F8: .4byte 0x02000000
-.L080994FC: .4byte gUnk_08691890
+.L080994FC: .4byte ProcScr_08691890
 .L08099500:
 	ldr r2, .L0809951C @ =0x0000FFFF
 	adds r0, r4, #0
@@ -2016,7 +2016,7 @@ func_fe6_08099654: @ 0x08099654
 	movs r0, #0xf
 	bl EnableBgSync
 	movs r0, #1
-	bl func_fe6_08098AD8
+	bl OpAnim_SetupGlyph
 	movs r0, #1
 	str r0, [sp]
 	movs r1, #1
@@ -2458,7 +2458,7 @@ func_fe6_08099A2C: @ 0x08099A2C
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
 	movs r0, #2
-	bl func_fe6_08098AD8
+	bl OpAnim_SetupGlyph
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2639,7 +2639,7 @@ func_fe6_08099BA8: @ 0x08099BA8
 	thumb_func_start func_fe6_08099BCC
 func_fe6_08099BCC: @ 0x08099BCC
 	push {lr}
-	ldr r0, .L08099BE0 @ =gUnk_08691B20
+	ldr r0, .L08099BE0 @ =ProcScr_OpAnim_08691B20
 	bl FindProc
 	adds r0, #0x64
 	ldrh r0, [r0]
@@ -2648,7 +2648,7 @@ func_fe6_08099BCC: @ 0x08099BCC
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08099BE0: .4byte gUnk_08691B20
+.L08099BE0: .4byte ProcScr_OpAnim_08691B20
 
 	thumb_func_start func_fe6_08099BE4
 func_fe6_08099BE4: @ 0x08099BE4
@@ -2657,7 +2657,7 @@ func_fe6_08099BE4: @ 0x08099BE4
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r0, .L08099CB8 @ =gUnk_08691B38
+	ldr r0, .L08099CB8 @ =BgConf_OpAnim_08691B38
 	bl InitBgs
 	movs r0, #0xf
 	bl DisableBgSync
@@ -2757,7 +2757,7 @@ func_fe6_08099BE4: @ 0x08099BE4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099CB8: .4byte gUnk_08691B38
+.L08099CB8: .4byte BgConf_OpAnim_08691B38
 .L08099CBC: .4byte gDispIo
 .L08099CC0: .4byte gDispIo+0x45
 .L08099CC4: .4byte 0x0000FFE0
@@ -2766,7 +2766,7 @@ func_fe6_08099BE4: @ 0x08099BE4
 	thumb_func_start func_fe6_08099CCC
 func_fe6_08099CCC: @ 0x08099CCC
 	push {lr}
-	ldr r0, .L08099D34 @ =gUnk_08691B50
+	ldr r0, .L08099D34 @ =BgConf_OpAnim_08691B50
 	bl InitBgs
 	movs r0, #0xf
 	bl DisableBgSync
@@ -2815,7 +2815,7 @@ func_fe6_08099CCC: @ 0x08099CCC
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099D34: .4byte gUnk_08691B50
+.L08099D34: .4byte BgConf_OpAnim_08691B50
 .L08099D38: .4byte gDispIo
 
 	thumb_func_start func_fe6_08099D3C
@@ -2834,7 +2834,7 @@ func_fe6_08099D3C: @ 0x08099D3C
 	.align 2, 0
 .L08099D54: .4byte bool_opanim_03005284
 .L08099D58:
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	ldr r2, .L08099DA0 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -2877,7 +2877,7 @@ func_fe6_08099D3C: @ 0x08099D3C
 func_fe6_08099DA4: @ 0x08099DA4
 	push {r4, lr}
 	sub sp, #0x10
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	ldr r2, .L08099E38 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -3057,7 +3057,7 @@ func_fe6_08099EC0: @ 0x08099EC0
 	orrs r0, r2
 	strb r0, [r3, #1]
 	movs r0, #1
-	bl func_fe6_08098AD8
+	bl OpAnim_SetupGlyph
 	movs r0, #0xf
 	bl EnableBgSync
 	ldr r4, .L08099F88 @ =gUnk_08379D2C
@@ -3078,7 +3078,7 @@ func_fe6_08099EC0: @ 0x08099EC0
 	bl InitScanlineEffect
 	ldr r0, .L08099F90 @ =OnHBlank_0806A040
 	bl SetOnHBlankA
-	ldr r0, .L08099F94 @ =gUnk_08691CC0
+	ldr r0, .L08099F94 @ =ProcScr_OpAnim_08691CC0
 	mov r1, r8
 	bl SpawnProc
 	pop {r3}
@@ -3093,7 +3093,7 @@ func_fe6_08099EC0: @ 0x08099EC0
 .L08099F88: .4byte gUnk_08379D2C
 .L08099F8C: .4byte gPal
 .L08099F90: .4byte OnHBlank_0806A040
-.L08099F94: .4byte gUnk_08691CC0
+.L08099F94: .4byte ProcScr_OpAnim_08691CC0
 
 	thumb_func_start func_fe6_08099F98
 func_fe6_08099F98: @ 0x08099F98
@@ -3325,7 +3325,7 @@ func_fe6_0809A114: @ 0x0809A114
 func_fe6_0809A13C: @ 0x0809A13C
 	push {r4, lr}
 	adds r1, r0, #0
-	ldr r0, .L0809A1AC @ =gUnk_08691CA8
+	ldr r0, .L0809A1AC @ =ProcScr_OpAnim_08691CA8
 	bl SpawnProc
 	adds r4, r0, #0
 	bl RandNextB
@@ -3368,7 +3368,7 @@ func_fe6_0809A13C: @ 0x0809A13C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809A1AC: .4byte gUnk_08691CA8
+.L0809A1AC: .4byte ProcScr_OpAnim_08691CA8
 .L0809A1B0: .4byte gUnk_08380F5A
 .L0809A1B4: .4byte 0x00000101
 
@@ -3569,11 +3569,11 @@ func_fe6_0809A2CC: @ 0x0809A2CC
 	strh r6, [r0]
 	movs r0, #0xf
 	bl EnableBgSync
-	ldr r0, .L0809A3A0 @ =gUnk_08691DE8
+	ldr r0, .L0809A3A0 @ =ProcScr_OpAnim_08691DE8
 	adds r1, r7, #0
 	bl SpawnProc
 	movs r0, #3
-	bl func_fe6_08098AD8
+	bl OpAnim_SetupGlyph
 	movs r0, #1
 	str r0, [sp]
 	movs r1, #1
@@ -3596,7 +3596,7 @@ func_fe6_0809A2CC: @ 0x0809A2CC
 .L0809A394: .4byte gUnk_08376DF4
 .L0809A398: .4byte gBuf
 .L0809A39C: .4byte gPal
-.L0809A3A0: .4byte gUnk_08691DE8
+.L0809A3A0: .4byte ProcScr_OpAnim_08691DE8
 
 	thumb_func_start func_fe6_0809A3A4
 func_fe6_0809A3A4: @ 0x0809A3A4
@@ -4301,7 +4301,7 @@ func_fe6_0809A8B4: @ 0x0809A8B4
 	thumb_func_start func_fe6_0809A900
 func_fe6_0809A900: @ 0x0809A900
 	push {r4, r5, lr}
-	ldr r0, .L0809A9DC @ =gUnk_08691DF8
+	ldr r0, .L0809A9DC @ =BgConf_OpAnim_08691DF8
 	bl InitBgs
 	movs r0, #0xf
 	bl DisableBgSync
@@ -4406,15 +4406,15 @@ func_fe6_0809A900: @ 0x0809A900
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809A9DC: .4byte gUnk_08691DF8
+.L0809A9DC: .4byte BgConf_OpAnim_08691DF8
 .L0809A9E0: .4byte gDispIo
 .L0809A9E4: .4byte 0x0000FFE0
 .L0809A9E8: .4byte 0x0000E0FF
 
-	thumb_func_start func_fe6_0809A9EC
-func_fe6_0809A9EC: @ 0x0809A9EC
+	thumb_func_start OpAnim_PutThunderStormGfx
+OpAnim_PutThunderStormGfx: @ 0x0809A9EC
 	push {r4, lr}
-	ldr r4, .L0809AA14 @ =gUnk_0837ACD0
+	ldr r4, .L0809AA14 @ =Img_OpAnimThunderStorm
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -4423,15 +4423,15 @@ func_fe6_0809A9EC: @ 0x0809A9EC
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L0809AA18 @ =gUnk_0837C844
+	ldr r0, .L0809AA18 @ =Tsa_OpAnimThunderStorm
 	ldr r1, .L0809AA1C @ =gBuf
 	bl Decompress
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809AA14: .4byte gUnk_0837ACD0
-.L0809AA18: .4byte gUnk_0837C844
+.L0809AA14: .4byte Img_OpAnimThunderStorm
+.L0809AA18: .4byte Tsa_OpAnimThunderStorm
 .L0809AA1C: .4byte gBuf
 
 	thumb_func_start func_fe6_0809AA20
@@ -4475,8 +4475,8 @@ func_fe6_0809AA20: @ 0x0809AA20
 .L0809AA70: .4byte gUnk_08691E10
 .L0809AA74: .4byte gBuf
 
-	thumb_func_start func_fe6_0809AA78
-func_fe6_0809AA78: @ 0x0809AA78
+	thumb_func_start OpAnin6_StartBGM
+OpAnin6_StartBGM: @ 0x0809AA78
 	push {lr}
 	ldr r0, .L0809AA94 @ =bool_opanim_03005284
 	ldrb r0, [r0]
@@ -4493,8 +4493,8 @@ func_fe6_0809AA78: @ 0x0809AA78
 	.align 2, 0
 .L0809AA94: .4byte bool_opanim_03005284
 
-	thumb_func_start func_fe6_0809AA98
-func_fe6_0809AA98: @ 0x0809AA98
+	thumb_func_start OpAnin6_PutThunderStormGfx
+OpAnin6_PutThunderStormGfx: @ 0x0809AA98
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, .L0809AAB0 @ =bool_opanim_03005284
@@ -4508,7 +4508,7 @@ func_fe6_0809AA98: @ 0x0809AA98
 	.align 2, 0
 .L0809AAB0: .4byte bool_opanim_03005284
 .L0809AAB4:
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	bl SetAllBlackPals
 	ldr r2, .L0809AAEC @ =gDispIo
 	movs r0, #1
@@ -4524,7 +4524,7 @@ func_fe6_0809AA98: @ 0x0809AA98
 	movs r1, #0x10
 	orrs r0, r1
 	strb r0, [r2, #1]
-	bl func_fe6_0809A9EC
+	bl OpAnim_PutThunderStormGfx
 	adds r0, r5, #0
 	adds r0, #0x64
 	strh r4, [r0]
@@ -4537,8 +4537,8 @@ func_fe6_0809AA98: @ 0x0809AA98
 	.align 2, 0
 .L0809AAEC: .4byte gDispIo
 
-	thumb_func_start func_fe6_0809AAF0
-func_fe6_0809AAF0: @ 0x0809AAF0
+	thumb_func_start OpAnin6_StartThunderStorm
+OpAnin6_StartThunderStorm: @ 0x0809AAF0
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r7, r6, #0
@@ -4571,7 +4571,7 @@ func_fe6_0809AAF0: @ 0x0809AAF0
 	ldrb r0, [r5]
 	ldrb r1, [r5, #1]
 	bl func_fe6_0809AA20
-	ldr r0, .L0809AB48 @ =gUnk_08691EB8
+	ldr r0, .L0809AB48 @ =ProcScr_OpAninThunderStorm
 	adds r1, r6, #0
 	bl SpawnProc
 	ldrh r0, [r5, #2]
@@ -4584,7 +4584,7 @@ func_fe6_0809AAF0: @ 0x0809AAF0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809AB48: .4byte gUnk_08691EB8
+.L0809AB48: .4byte ProcScr_OpAninThunderStorm
 
 	thumb_func_start func_fe6_0809AB4C
 func_fe6_0809AB4C: @ 0x0809AB4C
@@ -4750,8 +4750,8 @@ func_fe6_0809AC74: @ 0x0809AC74
 .L0809AC8C: .4byte Pal_AllBlack
 .L0809AC90: .4byte gPal
 
-	thumb_func_start func_fe6_0809AC94
-func_fe6_0809AC94: @ 0x0809AC94
+	thumb_func_start OpAnim6_PutIdunnGfx
+OpAnim6_PutIdunnGfx: @ 0x0809AC94
 	push {r4, r5, lr}
 	ldr r0, .L0809AD20 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
@@ -4765,7 +4765,7 @@ func_fe6_0809AC94: @ 0x0809AC94
 	adds r0, r5, #0
 	movs r1, #0
 	bl TmFill
-	ldr r4, .L0809AD28 @ =gUnk_0837CB8C
+	ldr r4, .L0809AD28 @ =Img_OpAnim_Dragon
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -4818,7 +4818,7 @@ func_fe6_0809AC94: @ 0x0809AC94
 	.align 2, 0
 .L0809AD20: .4byte gPlaySt
 .L0809AD24: .4byte gBg0Tm
-.L0809AD28: .4byte gUnk_0837CB8C
+.L0809AD28: .4byte Img_OpAnim_Dragon
 .L0809AD2C: .4byte gUnk_0837EEB4
 .L0809AD30: .4byte gUnk_0837F418
 .L0809AD34: .4byte gDispIo
@@ -5090,7 +5090,7 @@ func_fe6_0809AF30: @ 0x0809AF30
 	movs r0, #0xd
 	bl EnableBgSync
 	movs r0, #2
-	bl func_fe6_08098AD8
+	bl OpAnim_SetupGlyph
 	movs r0, #1
 	str r0, [sp]
 	movs r1, #0
@@ -5303,7 +5303,7 @@ func_fe6_0809B0A4: @ 0x0809B0A4
 	thumb_func_start func_fe6_0809B0E8
 func_fe6_0809B0E8: @ 0x0809B0E8
 	push {r4, r5, lr}
-	ldr r0, .L0809B180 @ =gUnk_086920A0
+	ldr r0, .L0809B180 @ =BgConf_OpAnim_086920A0
 	bl InitBgs
 	movs r0, #0xf
 	bl DisableBgSync
@@ -5376,13 +5376,13 @@ func_fe6_0809B0E8: @ 0x0809B0E8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809B180: .4byte gUnk_086920A0
+.L0809B180: .4byte BgConf_OpAnim_086920A0
 .L0809B184: .4byte gDispIo
 
 	thumb_func_start func_fe6_0809B188
 func_fe6_0809B188: @ 0x0809B188
 	push {lr}
-	ldr r0, .L0809B210 @ =gUnk_086920B8
+	ldr r0, .L0809B210 @ =BgConf_OpAnim_086920B8
 	bl InitBgs
 	movs r0, #0xf
 	bl DisableBgSync
@@ -5447,7 +5447,7 @@ func_fe6_0809B188: @ 0x0809B188
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809B210: .4byte gUnk_086920B8
+.L0809B210: .4byte BgConf_OpAnim_086920B8
 .L0809B214: .4byte gDispIo
 .L0809B218: .4byte 0x0000FFE0
 .L0809B21C: .4byte 0x0000E0FF
@@ -5524,7 +5524,7 @@ func_fe6_0809B280: @ 0x0809B280
 	.align 2, 0
 .L0809B298: .4byte bool_opanim_03005284
 .L0809B29C:
-	bl func_fe6_080988C0
+	bl OpAnin6_ResetBG
 	bl SetAllBlackPals
 	ldr r2, .L0809B2F0 @ =gDispIo
 	movs r0, #2
@@ -5556,7 +5556,7 @@ func_fe6_0809B280: @ 0x0809B280
 	adds r0, #1
 	strb r4, [r0]
 	movs r0, #0
-	bl func_fe6_08098AD8
+	bl OpAnim_SetupGlyph
 	bl func_fe6_08098AC0
 .L0809B2E8:
 	pop {r4}

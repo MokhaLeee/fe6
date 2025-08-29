@@ -13,8 +13,6 @@
 
 struct AiDecision EWRAM_DATA gAiDecision = {};
 
-void (* COMMON_DATA(AiDecideFunc) AiDecideFunc)(void) = NULL;
-
 static void (* CONST_DATA sAllDecideFuncs[])(void) =
 {
     AiDecideHealOrEscape,

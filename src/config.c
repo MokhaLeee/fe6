@@ -491,8 +491,8 @@ void Config_Init(struct UiConfigProc * proc)
     TmFill(gBg2Tm, 0);
     TmFill(gBg3Tm, 0);
 
-    ApplyPalette(Pal_0833C03C, 4);
-    ApplyPalette(Pal_0833C03C, 0x12);
+    ApplyPalette(Pal_PlayRankTimeOBJ, 4);
+    ApplyPalette(Pal_PlayRankTimeOBJ, 0x12);
     Decompress(Img_0833B958, OBJ_VRAM0 + 0x1800);
     Decompress(Img_0833BB28, (void *)BG_VRAM + 0x4000);
     Decompress(Img_0833BB14, (void *)BG_VRAM + 0x5000 + GetBgChrOffset(BG_2));

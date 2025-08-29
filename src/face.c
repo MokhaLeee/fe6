@@ -199,8 +199,6 @@ struct ProcScr CONST_DATA ProcScr_FaceEndIn8Frames[] =
     PROC_END,
 };
 
-struct FaceProc * COMMON_DATA(gFaces) gFaces[FACE_SLOT_COUNT] = { 0 };
-
 struct FaceVramEnt EWRAM_DATA gFaceConfig[FACE_SLOT_COUNT] = { 0 };
 
 struct FaceInfo const * GetFaceInfo(int fid)
