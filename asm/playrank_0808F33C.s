@@ -50,8 +50,8 @@ func_fe6_0808FDE8: @ 0x0808FDE8
 	.align 2, 0
 .L0808FE38: .4byte 0xFFFF0000
 
-	thumb_func_start func_fe6_0808FE3C
-func_fe6_0808FE3C: @ 0x0808FE3C
+	thumb_func_start EndingCredit_SetupGfx
+EndingCredit_SetupGfx: @ 0x0808FE3C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl UnpackUiWindowFrameGraphics
@@ -114,40 +114,40 @@ func_fe6_0808FE3C: @ 0x0808FE3C
 	thumb_func_start GameCredit_Init
 GameCredit_Init: @ 0x0808FEC0
 	push {lr}
-	ldr r2, .L0808FED4 @ =unk_02016A41
+	ldr r2, .L0808FED4 @ =gEndingDispType
 	movs r1, #1
 	strb r1, [r2]
-	bl func_fe6_0808FE3C
+	bl EndingCredit_SetupGfx
 	bl SetupEndingPInfo2Uids
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808FED4: .4byte unk_02016A41
+.L0808FED4: .4byte gEndingDispType
 
-	thumb_func_start func_fe6_0808FED8
-func_fe6_0808FED8: @ 0x0808FED8
+	thumb_func_start EndingCredit_ReinitType2
+EndingCredit_ReinitType2: @ 0x0808FED8
 	push {lr}
-	ldr r2, .L0808FEEC @ =unk_02016A41
+	ldr r2, .L0808FEEC @ =gEndingDispType
 	movs r1, #2
 	strb r1, [r2]
-	bl func_fe6_0808FE3C
+	bl EndingCredit_SetupGfx
 	bl SetupEndingPInfo2Uids
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808FEEC: .4byte unk_02016A41
+.L0808FEEC: .4byte gEndingDispType
 
-	thumb_func_start func_fe6_0808FEF0
-func_fe6_0808FEF0: @ 0x0808FEF0
+	thumb_func_start EndingCredit_ReinitType0
+EndingCredit_ReinitType0: @ 0x0808FEF0
 	push {lr}
-	ldr r2, .L0808FF00 @ =unk_02016A41
+	ldr r2, .L0808FF00 @ =gEndingDispType
 	movs r1, #0
 	strb r1, [r2]
-	bl func_fe6_0808FE3C
+	bl EndingCredit_SetupGfx
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808FF00: .4byte unk_02016A41
+.L0808FF00: .4byte gEndingDispType
 
 	thumb_func_start func_fe6_0808FF04
 func_fe6_0808FF04: @ 0x0808FF04
@@ -1964,7 +1964,7 @@ Ending_Loop: @ 0x08090D78
 	ldr r0, [r0]
 	cmp r0, #1
 	bne .L08090E0C
-	ldr r0, .L08090E04 @ =unk_02016A41
+	ldr r0, .L08090E04 @ =gEndingDispType
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq .L08090E68
@@ -1975,7 +1975,7 @@ Ending_Loop: @ 0x08090D78
 	.align 2, 0
 .L08090DFC: .4byte gCreditInfo
 .L08090E00: .4byte gCreditInfoDispStep
-.L08090E04: .4byte unk_02016A41
+.L08090E04: .4byte gEndingDispType
 .L08090E08: .4byte ProcScr_EndingStep1_PutaMonologue
 .L08090E0C:
 	cmp r0, #2
@@ -1985,7 +1985,7 @@ Ending_Loop: @ 0x08090D78
 	lsrs r0, r0, #0x18
 	cmp r0, #0x3f
 	bhi .L08090E38
-	ldr r0, .L08090E30 @ =unk_02016A41
+	ldr r0, .L08090E30 @ =gEndingDispType
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq .L08090E38
@@ -1994,7 +1994,7 @@ Ending_Loop: @ 0x08090D78
 	bl SpawnProcLocking
 	b .L08090E4A
 	.align 2, 0
-.L08090E30: .4byte unk_02016A41
+.L08090E30: .4byte gEndingDispType
 .L08090E34: .4byte ProcScr_EndingPInfo1
 .L08090E38:
 	bl func_fe6_08090BA0

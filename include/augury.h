@@ -76,7 +76,7 @@ extern EWRAM_OVERLAY(0) u8 unk_02016A3D;
 extern EWRAM_OVERLAY(0) u8 unk_02016A3E;
 extern EWRAM_OVERLAY(0) u8 unk_02016A3F;
 extern EWRAM_OVERLAY(0) u8 gEndingStep;
-extern EWRAM_OVERLAY(0) u8 unk_02016A41;
+extern EWRAM_OVERLAY(0) u8 gEndingDispType;
 extern EWRAM_OVERLAY(0) u8 unk_02016A42;
 extern EWRAM_OVERLAY(0) u8 unk_02016A43;
 extern EWRAM_OVERLAY(0) u8 unk_02016A44[0x7F];

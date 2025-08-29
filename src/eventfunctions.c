@@ -3356,7 +3356,7 @@ EvtLabel(4)
     EvtFunc(StartEndingMonologue2)
     EvtFuncWhile(EndingMonologueExists)
     EvtSleep(75)
-    EvtFunc(func_fe6_0808FED8)
+    EvtFunc(EndingCredit_ReinitType2)
     EvtJump(EventScr_CharacterEnding)
 
     EvtClearSkip
@@ -3445,7 +3445,7 @@ EventScr CONST_DATA EventScr_FalseEnding[] =
     EvtFunc(StartEndingMonologue3)
     EvtFuncWhile(EndingMonologueExists)
     EvtSleep(128)
-    EvtFunc(func_fe6_0808FEF0)
+    EvtFunc(EndingCredit_ReinitType0)
     EvtJump(EventScr_CharacterEnding)
 
     EvtClearSkip

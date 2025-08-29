@@ -14,10 +14,10 @@ enum video_alloc_credit {
 
 // SetupCreditCharacterGlyphs
 // func_fe6_0808FDE8
-// func_fe6_0808FE3C
+// EndingCredit_SetupGfx
 // GameCredit_Init
-void func_fe6_0808FED8(void);
-void func_fe6_0808FEF0(void);
+void EndingCredit_ReinitType2(void);
+void EndingCredit_ReinitType0(void);
 // func_fe6_0808FF04
 // func_fe6_0808FF9C
 // func_fe6_0808FFE0
