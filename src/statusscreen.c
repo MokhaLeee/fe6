@@ -38,13 +38,13 @@ extern struct StatusScreenSt gStatusScreenSt;
 void StatusScreenFadeIn_Init(struct StatusScreenProc * proc)
 {
     proc->clock = 3;
-    ColorFadeSetupFromBlack(+8);
+    ColFadeFromBlack(+8);
 }
 
 void StatusScreenFadeOut_Init(struct StatusScreenProc * proc)
 {
     proc->clock = 3;
-    ColorFadeSetupFromColorToBlack(-8);
+    ColFadeToBlack(-8);
 }
 
 void StatusScreenFade_Loop(struct StatusScreenProc * proc)

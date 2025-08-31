@@ -7,7 +7,10 @@
  */
 	.global ProcScr_TitleScreenHandler
 ProcScr_TitleScreenHandler: @ 08691480
-	.incbin "fe6-base.gba", 0x691480, (0x691494 - 0x691480) @ length: 0014
+	PROC_START_CHILD_LOCKING ProcScr_TitleScreen
+	PROC_END
+
+	.incbin "fe6-base.gba", 0x691490, 4
 
 	.global gUnk_08691494
 gUnk_08691494: @ 08691494
@@ -313,7 +316,7 @@ BgConf_OpAnim_08691B50: @ 08691B50
 ProcScr_OpAnim4: @ 08691B68
 	PROC_MARK 9
 	PROC_CALL func_fe6_08099D3C
-	PROC_START_CHILD ProcScr_Unk_08691C80
+	PROC_START_CHILD ProcScr_OpAnimSparksOBJ
 	PROC_SLEEP 30
 	PROC_SLEEP 20
 	PROC_CALL func_fe6_08099DA4
@@ -335,7 +338,7 @@ ProcScr_OpAnim4: @ 08691B68
 	PROC_CALL func_fe6_08099644
 	PROC_SLEEP 0
 	PROC_SLEEP 1
-	PROC_END_EACH ProcScr_Unk_08691C80
+	PROC_END_EACH ProcScr_OpAnimSparksOBJ
 	PROC_END
 
 	.global ProcScr_Unk_08691C38
@@ -356,18 +359,18 @@ ProcScr_Unk_08691C58: @ 08691C58
 gUnk_08691C78: @ 08691C78
 	.incbin "fe6-base.gba", 0x691C78, 8
 
-	.global ProcScr_Unk_08691C80
-ProcScr_Unk_08691C80: @ 08691C80
+	.global ProcScr_OpAnimSparksOBJ
+ProcScr_OpAnimSparksOBJ: @ 08691C80
 	PROC_END_IF_DUP
-	PROC_CALL func_fe6_0809A0E0
-	PROC_REPEAT func_fe6_0809A0F4
+	PROC_CALL OpAnimSparksOBJ_Init
+	PROC_REPEAT OpAnimSparksOBJ_Loop
 	PROC_SLEEP 30
 	PROC_END
 
-	.global ProcScr_OpAnim_08691CA8
-ProcScr_OpAnim_08691CA8: @ 08691CA8
-	PROC_CALL func_fe6_0809A1B8
-	PROC_REPEAT func_fe6_0809A1C0
+	.global ProcScr_OpAnimSparksOBJFALL
+ProcScr_OpAnimSparksOBJFALL: @ 08691CA8
+	PROC_CALL OpAnimSparksOBJFALL_Init
+	PROC_REPEAT OpAnimSparksOBJFALL_Loop
 	PROC_END
 
 	.global ProcScr_OpAnim_08691CC0
@@ -589,7 +592,7 @@ ProcScr_TitleScreenFromOp: @ 08692130
 	PROC_CALL func_fe6_0809B590
 	PROC_REPEAT func_fe6_0809B608
 	PROC_START_CHILD ProcScr_Title_086922C8
-	PROC_START_CHILD_LOCKING 0x08692268
+	PROC_START_CHILD_LOCKING ProcScr_Title_08692268
 	PROC_START_CHILD_LOCKING ProcScr_Title_08692280
 	PROC_SLEEP 0
 	PROC_CALL Title_InitDisp

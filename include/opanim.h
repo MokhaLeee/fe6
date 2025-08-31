@@ -105,12 +105,12 @@ void func_fe6_0809892C(int arg_0, int arg_1, int arg_2, int arg_3, int arg_4);
 // func_fe6_0809A048
 // func_fe6_0809A068
 // func_fe6_0809A0A8
-// func_fe6_0809A0E0
-// func_fe6_0809A0F4
-// func_fe6_0809A114
+// OpAnimSparksOBJ_Init
+// OpAnimSparksOBJ_Loop
+// PutOpAnimSparksObjGfx
 // func_fe6_0809A13C
-// func_fe6_0809A1B8
-// func_fe6_0809A1C0
+// OpAnimSparksOBJFALL_Init
+// OpAnimSparksOBJFALL_Loop
 // func_fe6_0809A264
 // func_fe6_0809A26C
 // func_fe6_0809A2CC
@@ -205,7 +205,7 @@ extern CONST_DATA struct ProcScr ProcScr_OpAnim[];
 // extern CONST_DATA ??? BgConf_OpAnim_08691B38
 // extern CONST_DATA ??? BgConf_OpAnim_08691B50
 // extern CONST_DATA ??? gUnk_08691C78
-// extern CONST_DATA ??? ProcScr_OpAnim_08691CA8
+// extern CONST_DATA ??? ProcScr_OpAnimSparksOBJFALL
 // extern CONST_DATA ??? ProcScr_OpAnim_08691CC0
 // extern CONST_DATA ??? ProcScr_OpAnim_08691DE8
 // extern CONST_DATA ??? BgConf_OpAnim_08691DF8

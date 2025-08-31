@@ -496,8 +496,8 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? gUnk_0837AA68
 // extern const ??? gUnk_0837AAC8
 // extern const ??? gUnk_0837AAE8
-// extern const ??? gUnk_0837AB18
-// extern const ??? gUnk_0837ACB0
+// extern const ??? Img_OpAnimSparksOBJ
+// extern const ??? Pal_OpAnimSparksOBJ
 // extern const ??? Img_OpAnimThunderStorm
 // extern const ??? Tsa_OpAnimThunderStorm
 // extern const ??? gUnk_0837CB0C

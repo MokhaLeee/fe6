@@ -240,12 +240,12 @@ gUnk_0837AAC8: @ 0837AAC8
 gUnk_0837AAE8: @ 0837AAE8
 	.incbin "fe6-base.gba", 0x37AAE8, (0x37AB18 - 0x37AAE8) @ length: 0030
 
-	.global gUnk_0837AB18
-gUnk_0837AB18: @ 0837AB18
+	.global Img_OpAnimSparksOBJ
+Img_OpAnimSparksOBJ: @ 0837AB18
 	.incbin "fe6-base.gba", 0x37AB18, (0x37ACB0 - 0x37AB18) @ length: 0198
 
-	.global gUnk_0837ACB0
-gUnk_0837ACB0: @ 0837ACB0
+	.global Pal_OpAnimSparksOBJ
+Pal_OpAnimSparksOBJ: @ 0837ACB0
 	.incbin "fe6-base.gba", 0x37ACB0, (0x37ACD0 - 0x37ACB0) @ length: 0020
 
 	.global Img_OpAnimThunderStorm

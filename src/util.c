@@ -1031,24 +1031,24 @@ struct FadeCoreProc
     /* 29 */ STRUCT_PAD(0x29, 0x4C);
     /* 4C */ Func on_end;
     /* 50 */ STRUCT_PAD(0x50, 0x54);
-    /* 54 */ int unk_54;
-    /* 58 */ int unk_58;
-    /* 5C */ int unk_5C;
+    /* 54 */ int step;
+    /* 58 */ int paluse_timer;
+    /* 5C */ int progress;
 };
 
-void func_fe6_08014A38(struct FadeCoreProc * proc);
-i8 func_fe6_08014A68(struct FadeCoreProc * proc);
-void func_fe6_08014A44(struct FadeCoreProc * proc);
+void ColFade_Init(struct FadeCoreProc * proc);
+bool ColFade_Step(struct FadeCoreProc * proc);
+void ColFade_Loop(struct FadeCoreProc * proc);
 
 struct ProcScr CONST_DATA ProcScr_FadeCore[] =
 {
     PROC_MARK(PROC_MARK_PAL_CHG),
 
-    PROC_CALL(func_fe6_08014A38),
+    PROC_CALL(ColFade_Init),
     PROC_YIELD,
 
-    PROC_CALL(func_fe6_08014A68),
-    PROC_REPEAT(func_fe6_08014A44),
+    PROC_CALL(ColFade_Step),
+    PROC_REPEAT(ColFade_Loop),
 
     PROC_END,
 };
@@ -1064,14 +1064,14 @@ void StartFadeCore(int kind, int speed, ProcPtr parent, Func end_callback)
 
     static struct FadeKindEnt const table[] =
     {
-        { SpawnProc,        ColorFadeSetupFromBlack,        +1 }, // from black
-        { SpawnProc,        ColorFadeSetupFromColorToBlack, -1 }, // to black
-        { SpawnProcLocking, ColorFadeSetupFromBlack,        +1 }, // from black locking
-        { SpawnProcLocking, ColorFadeSetupFromColorToBlack, -1 }, // to black locking
-        { SpawnProc,        ColorFadeSetupFromWhite,        -1 }, // from white
-        { SpawnProc,        ColorFadeSetupFromColorToWhite, +1 }, // to white
-        { SpawnProcLocking, ColorFadeSetupFromWhite,        -1 }, // from white locking
-        { SpawnProcLocking, ColorFadeSetupFromColorToWhite, +1 }, // to white locking
+        { SpawnProc,        ColFadeFromBlack,        +1 }, // from black
+        { SpawnProc,        ColFadeToBlack, -1 }, // to black
+        { SpawnProcLocking, ColFadeFromBlack,        +1 }, // from black locking
+        { SpawnProcLocking, ColFadeToBlack, -1 }, // to black locking
+        { SpawnProc,        ColFadeFromWhite,        -1 }, // from white
+        { SpawnProc,        ColFadeToWhite, +1 }, // to white
+        { SpawnProcLocking, ColFadeFromWhite,        -1 }, // from white locking
+        { SpawnProcLocking, ColFadeToWhite, +1 }, // to white locking
     };
 
     ProcPtr (* spawn_proc)(struct ProcScr const * scr, ProcPtr parent);
@@ -1083,10 +1083,10 @@ void StartFadeCore(int kind, int speed, ProcPtr parent, Func end_callback)
     spawn_proc = table[kind].spawn_proc;
     proc = spawn_proc(ProcScr_FadeCore, parent);
 
-    proc->unk_54 = speed;
+    proc->step = speed;
     proc->on_end = end_callback;
 
-    component_step = proc->unk_54 >> 4;
+    component_step = proc->step >> 4;
 
     if (component_step == 0)
         component_step = 1;
@@ -1096,21 +1096,21 @@ void StartFadeCore(int kind, int speed, ProcPtr parent, Func end_callback)
     setup_color_fade(component_step * table[kind].unit);
 }
 
-void func_fe6_08014A28(void)
+void EndFadeCore(void)
 {
     Proc_EndEach(ProcScr_FadeCore);
 }
 
-void func_fe6_08014A38(struct FadeCoreProc * proc)
+void ColFade_Init(struct FadeCoreProc * proc)
 {
-    proc->unk_58 = 0;
-    proc->unk_5C = 0;
+    proc->paluse_timer = 0;
+    proc->progress = 0;
     proc->on_end = NULL;
 }
 
-void func_fe6_08014A44(struct FadeCoreProc * proc)
+void ColFade_Loop(struct FadeCoreProc * proc)
 {
-    if (!func_fe6_08014A68(proc))
+    if (!ColFade_Step(proc))
     {
         if (proc->on_end)
             proc->on_end();
@@ -1119,22 +1119,22 @@ void func_fe6_08014A44(struct FadeCoreProc * proc)
     }
 }
 
-bool func_fe6_08014A68(struct FadeCoreProc * proc)
+bool ColFade_Step(struct FadeCoreProc * proc)
 {
-    proc->unk_58 += proc->unk_54;
-    proc->unk_5C += proc->unk_54;
+    proc->paluse_timer += proc->step;
+    proc->progress += proc->step;
 
-    if (proc->unk_58 < 0x10)
-    { 
-        if (proc->unk_5C != proc->unk_54)
+    if (proc->paluse_timer < 0x10)
+    {
+        if (proc->progress != proc->step)
             return TRUE;
     }
     else
     {
-        proc->unk_58 = proc->unk_58 - 0x10;
+        proc->paluse_timer = proc->paluse_timer - 0x10;
     }
 
-    if (proc->unk_5C >= 0x200)
+    if (proc->progress >= 0x200)
         return FALSE;
 
     ColorFadeTick();
@@ -1145,17 +1145,17 @@ bool func_fe6_08014A68(struct FadeCoreProc * proc)
 
 void func_fe6_08014AB8(void)
 {
-    func_fe6_08001F88(0x10, 0x10, 0);
-    func_fe6_08014ADC();
+    ColFadeSet(0x10, 0x10, 0);
+    RemoveFadeCoreCallBack();
 }
 
 void func_fe6_08014ACC(int a, int b)
 {
-    func_fe6_08001F88(a, b, 0);
-    func_fe6_08014ADC();
+    ColFadeSet(a, b, 0);
+    RemoveFadeCoreCallBack();
 }
 
-void func_fe6_08014ADC(void)
+void RemoveFadeCoreCallBack(void)
 {
     struct FadeCoreProc * proc = FindProc(ProcScr_FadeCore);
 

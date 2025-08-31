@@ -3272,11 +3272,11 @@ func_fe6_0809A0A8: @ 0x0809A0A8
 .L0809A0D8: .4byte gUnk_08379D0C
 .L0809A0DC: .4byte gPal
 
-	thumb_func_start func_fe6_0809A0E0
-func_fe6_0809A0E0: @ 0x0809A0E0
+	thumb_func_start OpAnimSparksOBJ_Init
+OpAnimSparksOBJ_Init: @ 0x0809A0E0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl func_fe6_0809A114
+	bl PutOpAnimSparksObjGfx
 	adds r4, #0x64
 	movs r0, #0
 	strh r0, [r4]
@@ -3284,8 +3284,8 @@ func_fe6_0809A0E0: @ 0x0809A0E0
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0809A0F4
-func_fe6_0809A0F4: @ 0x0809A0F4
+	thumb_func_start OpAnimSparksOBJ_Loop
+OpAnimSparksOBJ_Loop: @ 0x0809A0F4
 	push {lr}
 	adds r2, r0, #0
 	adds r0, #0x64
@@ -3303,13 +3303,13 @@ func_fe6_0809A0F4: @ 0x0809A0F4
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0809A114
-func_fe6_0809A114: @ 0x0809A114
+	thumb_func_start PutOpAnimSparksObjGfx
+PutOpAnimSparksObjGfx: @ 0x0809A114
 	push {lr}
-	ldr r0, .L0809A130 @ =gUnk_0837AB18
+	ldr r0, .L0809A130 @ =Img_OpAnimSparksOBJ
 	ldr r1, .L0809A134 @ =0x06010000
 	bl Decompress
-	ldr r0, .L0809A138 @ =gUnk_0837ACB0
+	ldr r0, .L0809A138 @ =Pal_OpAnimSparksOBJ
 	movs r1, #0x88
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -3317,15 +3317,15 @@ func_fe6_0809A114: @ 0x0809A114
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809A130: .4byte gUnk_0837AB18
+.L0809A130: .4byte Img_OpAnimSparksOBJ
 .L0809A134: .4byte 0x06010000
-.L0809A138: .4byte gUnk_0837ACB0
+.L0809A138: .4byte Pal_OpAnimSparksOBJ
 
 	thumb_func_start func_fe6_0809A13C
 func_fe6_0809A13C: @ 0x0809A13C
 	push {r4, lr}
 	adds r1, r0, #0
-	ldr r0, .L0809A1AC @ =ProcScr_OpAnim_08691CA8
+	ldr r0, .L0809A1AC @ =ProcScr_OpAnimSparksOBJFALL
 	bl SpawnProc
 	adds r4, r0, #0
 	bl RandNextB
@@ -3368,19 +3368,19 @@ func_fe6_0809A13C: @ 0x0809A13C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0809A1AC: .4byte ProcScr_OpAnim_08691CA8
+.L0809A1AC: .4byte ProcScr_OpAnimSparksOBJFALL
 .L0809A1B0: .4byte gUnk_08380F5A
 .L0809A1B4: .4byte 0x00000101
 
-	thumb_func_start func_fe6_0809A1B8
-func_fe6_0809A1B8: @ 0x0809A1B8
+	thumb_func_start OpAnimSparksOBJFALL_Init
+OpAnimSparksOBJFALL_Init: @ 0x0809A1B8
 	movs r1, #0
 	strh r1, [r0, #0x32]
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_0809A1C0
-func_fe6_0809A1C0: @ 0x0809A1C0
+	thumb_func_start OpAnimSparksOBJFALL_Loop
+OpAnimSparksOBJFALL_Loop: @ 0x0809A1C0
 	push {r4, r5, lr}
 	sub sp, #4
 	mov ip, r0

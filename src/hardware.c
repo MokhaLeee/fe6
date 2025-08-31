@@ -517,7 +517,7 @@ void ColorFadeInit(void)
         gFadeComponentStep[i] = 0;
 }
 
-void func_fe6_08001D44(u16 const * in_pal, int bank, int count, int component_step)
+void ColFadeDirect(u16 const * in_pal, int bank, int count, int component_step)
 {
     int pal_idx, color_idx;
 
@@ -539,7 +539,7 @@ void func_fe6_08001D44(u16 const * in_pal, int bank, int count, int component_st
     }
 }
 
-void AdvancePalFadeStep(int pal, int num, int fade_col, int speed)
+void ColFadeStep(int pal, int num, int fade_col, int speed)
 {
     int pal_idx;
     int color_idx;
@@ -562,15 +562,15 @@ void AdvancePalFadeStep(int pal, int num, int fade_col, int speed)
     }
 }
 
-void func_fe6_08001F88(int a, int b, int c)
+void ColFadeSet(int a, int b, int component_step)
 {
     int i;
 
     for (i = a; i < a + b; i++)
-        gFadeComponentStep[i] = c;
+        gFadeComponentStep[i] = component_step;
 }
 
-void ColorFadeSetupFromColorToBlack(fi8 component_step)
+void ColFadeToBlack(fi8 component_step)
 {
     int i, j;
 
@@ -587,7 +587,7 @@ void ColorFadeSetupFromColorToBlack(fi8 component_step)
     }
 }
 
-void ColorFadeSetupFromBlack(fi8 component_step)
+void ColFadeFromBlack(fi8 component_step)
 {
     int i, j;
 
@@ -604,7 +604,7 @@ void ColorFadeSetupFromBlack(fi8 component_step)
     }
 }
 
-void ColorFadeSetupFromColorToWhite(fi8 component_step)
+void ColFadeToWhite(fi8 component_step)
 {
     int i, j;
 
@@ -621,7 +621,7 @@ void ColorFadeSetupFromColorToWhite(fi8 component_step)
     }
 }
 
-void ColorFadeSetupFromWhite(fi8 component_step)
+void ColFadeFromWhite(fi8 component_step)
 {
     int i, j;
 
@@ -638,7 +638,7 @@ void ColorFadeSetupFromWhite(fi8 component_step)
     }
 }
 
-void ColorFadeTick2(void)
+void ColFadeTick(void)
 {
     // This is a C implementation of the handwritten ARM function ColorFadeTick
     // with the addition of EnablePalSync at the end

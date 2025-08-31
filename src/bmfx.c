@@ -1831,7 +1831,7 @@ static void ChapterIntro_Init(struct GenericProc * proc)
     PutChapterTitleTextTSA(gBg0Tm + TM_OFFSET(3, 9), BGPAL_CHAPTERINTRO_1);
 
     ColorFadeInit();
-    AdvancePalFadeStep(BGPAL_CHAPTERINTRO_0, 2, 0x40, -1);
+    ColFadeStep(BGPAL_CHAPTERINTRO_0, 2, 0x40, -1);
     ColorFadeTick();
 
     EnablePalSync();
@@ -1961,7 +1961,7 @@ static void ChapterIntro_Begin_0801E220(struct GenericProc * proc)
     proc->unk4C = 13;
 
     ColorFadeInit();
-    func_fe6_08001D44(gPal + 0x10*BGPAL_CHAPTERINTRO_FOG, BGPAL_CHAPTERINTRO_FOG, 2, -1);
+    ColFadeDirect(gPal + 0x10*BGPAL_CHAPTERINTRO_FOG, BGPAL_CHAPTERINTRO_FOG, 2, -1);
 }
 
 static void ChapterIntro_Loop_0801E244(struct GenericProc * proc)
@@ -2026,10 +2026,10 @@ static void ChapterIntro_BeginFadeToMap(struct GenericProc * proc)
 {
     ColorFadeInit();
 
-    func_fe6_08001D44(gPal + 0x10*BGPAL_TILESET, 6, 10, +1);
-    func_fe6_08001D44(gPal + 0x10*(0x10+OBPAL_10), 0x10+OBPAL_10, 6, +1);
-    func_fe6_08001D44(gPal + 0x10*(0x10+OBPAL_SYSTEM_OBJECTS), 0x10+OBPAL_SYSTEM_OBJECTS, 2, +1);
-    func_fe6_08001D44(gPal + 0x10*(0x10+OBPAL_7), 0x10+OBPAL_7, 1, +1);
+    ColFadeDirect(gPal + 0x10*BGPAL_TILESET, 6, 10, +1);
+    ColFadeDirect(gPal + 0x10*(0x10+OBPAL_10), 0x10+OBPAL_10, 6, +1);
+    ColFadeDirect(gPal + 0x10*(0x10+OBPAL_SYSTEM_OBJECTS), 0x10+OBPAL_SYSTEM_OBJECTS, 2, +1);
+    ColFadeDirect(gPal + 0x10*(0x10+OBPAL_7), 0x10+OBPAL_7, 1, +1);
 
     ColorFadeTick();
     EnablePalSync();
@@ -2102,7 +2102,7 @@ static void ChapterIntro_LoopFastCloseText(struct GenericProc * proc)
 static void ChapterIntro_BeginFadeOut(struct GenericProc * proc)
 {
     ColorFadeInit();
-    func_fe6_08001D44(gPal, 0, 6, -2);
+    ColFadeDirect(gPal, 0, 6, -2);
 
     proc->unk4C = 15;
 
@@ -2132,10 +2132,10 @@ static void ChapterIntro_BeginFastFadeToMap(struct GenericProc * proc)
 
     ColorFadeInit();
 
-    func_fe6_08001D44(gPal + 0x10*BGPAL_TILESET, 6, 10, +2);
-    func_fe6_08001D44(gPal + 0x10*(0x10+OBPAL_10), 0x10+OBPAL_10, 6, +2);
-    func_fe6_08001D44(gPal + 0x10*(0x10+OBPAL_SYSTEM_OBJECTS), 0x10+OBPAL_SYSTEM_OBJECTS, 2, +2);
-    func_fe6_08001D44(gPal + 0x10*(0x10+OBPAL_7), 0x10+OBPAL_7, 1, +2);
+    ColFadeDirect(gPal + 0x10*BGPAL_TILESET, 6, 10, +2);
+    ColFadeDirect(gPal + 0x10*(0x10+OBPAL_10), 0x10+OBPAL_10, 6, +2);
+    ColFadeDirect(gPal + 0x10*(0x10+OBPAL_SYSTEM_OBJECTS), 0x10+OBPAL_SYSTEM_OBJECTS, 2, +2);
+    ColFadeDirect(gPal + 0x10*(0x10+OBPAL_7), 0x10+OBPAL_7, 1, +2);
 
     ColorFadeTick();
     EnablePalSync();
@@ -2250,8 +2250,8 @@ static void GameOverScreen_Init(struct GenericProc * proc)
     SetBlendTargetB(0, 0, 0, 1, 0);
 
     ColorFadeInit();
-    func_fe6_08001D44(gPal + 0x10*BGPAL_GAMEOVER_TEXT, BGPAL_GAMEOVER_TEXT, 1, +1);
-    func_fe6_08001D44(gPal + 0x10*BGPAL_GAMEOVER_4, BGPAL_GAMEOVER_4, 1, +1);
+    ColFadeDirect(gPal + 0x10*BGPAL_GAMEOVER_TEXT, BGPAL_GAMEOVER_TEXT, 1, +1);
+    ColFadeDirect(gPal + 0x10*BGPAL_GAMEOVER_4, BGPAL_GAMEOVER_4, 1, +1);
 
     proc->unk4C = 21;
 
@@ -2294,8 +2294,8 @@ static void GameOverScreen_LoopIdle(struct GenericProc * proc)
 static void GameOverScreen_BeginFadeOut(struct GenericProc * proc)
 {
     ColorFadeInit();
-    func_fe6_08001D44(gPal + 0x10*BGPAL_GAMEOVER_TEXT, BGPAL_GAMEOVER_TEXT, 1, -1);
-    func_fe6_08001D44(gPal + 0x10*BGPAL_GAMEOVER_4, BGPAL_GAMEOVER_4, 1, -1);
+    ColFadeDirect(gPal + 0x10*BGPAL_GAMEOVER_TEXT, BGPAL_GAMEOVER_TEXT, 1, -1);
+    ColFadeDirect(gPal + 0x10*BGPAL_GAMEOVER_4, BGPAL_GAMEOVER_4, 1, -1);
 
     FadeBgmOut(4);
 }

@@ -2617,8 +2617,8 @@ void EndingCreditFade_FadeBg(struct ProcEndingCreditFade * proc)
         if (proc->unk_64++ > 11)
             Proc_Break(proc);
 
-        AdvancePalFadeStep(0, 0x20, 0x20, -1);
-        ColorFadeTick2();
+        ColFadeStep(0, 0x20, 0x20, -1);
+        ColFadeTick();
     }
 }
 
