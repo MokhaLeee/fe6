@@ -1,55 +1,116 @@
+	.include "asm_proc.inc"
 	.data
 
-	.global ProcScr_ClassDemo_0868FEDC
-ProcScr_ClassDemo_0868FEDC: @ 0868FEDC
-	.incbin "fe6-base.gba", 0x68FEDC, (0x68FEFC - 0x68FEDC) @ length: 0020
+	.global ProcScr_OpInfo_0868FEDC
+ProcScr_OpInfo_0868FEDC: @ 0868FEDC
+	PROC_19
+	PROC_SLEEP 0
+	PROC_CALL func_fe6_0809480C
+	PROC_END
 
-	.global ProcScr_ClassDemo_0868FEFC
-ProcScr_ClassDemo_0868FEFC: @ 0868FEFC
-	.incbin "fe6-base.gba", 0x68FEFC, (0x68FF4C - 0x68FEFC) @ length: 0050
+	.global ProcScr_OpInfoEnter
+ProcScr_OpInfoEnter: @ 0868FEFC
+	PROC_19
+	PROC_CALL StartFastFadeFromBlack
+	PROC_REPEAT WhileFadeExists
+	PROC_SLEEP 1
+	PROC_CALL OpInfoEnter_Init
+	PROC_REPEAT OpInfoEnter_Loop_In
+	PROC_REPEAT OpInfoEnter_Loop_Out
+PROC_LABEL 4
+	PROC_CALL OpInfoEnter_OnEnd
+	PROC_END
 
-	.global gUnk_0868FF4C
-gUnk_0868FF4C: @ 0868FF4C
-	.incbin "fe6-base.gba", 0x68FF4C, (0x68FF84 - 0x68FF4C) @ length: 0038
+	.global ProcScr_OpInfoView
+ProcScr_OpInfoView: @ 0868FF4C
+	PROC_19
+	PROC_SLEEP 1
+	PROC_CALL OpInfoView_Init
+	PROC_REPEAT OpInfoView_Loop_FadeIn
+	PROC_REPEAT OpInfoView_Loop_Display
+	PROC_REPEAT OpInfoView_Loop_FadeOut
+	PROC_END
 
-	.global gUnk_0868FF84
-gUnk_0868FF84: @ 0868FF84
-	.incbin "fe6-base.gba", 0x68FF84, (0x68FFCC - 0x68FF84) @ length: 0048
+	.global ProcScr_OpInfoIcon
+ProcScr_OpInfoIcon: @ 0868FF84
+	PROC_19
+	PROC_SLEEP 1
+	PROC_CALL OpInfoIcon_Init
+	PROC_REPEAT OpInfoIcon_Loop_FadeIn
+	PROC_REPEAT OpInfoIcon_LoopA
+	PROC_REPEAT OpInfoIcon_LoopB
+PROC_LABEL 4
+	PROC_REPEAT OpInfoIcon_Loop_FadeOut
+	PROC_END
 
-	.global gUnk_0868FFCC
-gUnk_0868FFCC: @ 0868FFCC
-	.incbin "fe6-base.gba", 0x68FFCC, (0x690014 - 0x68FFCC) @ length: 0048
+	.global ProcScr_ClassInfoDisp
+ProcScr_ClassInfoDisp: @ 0868FFCC
+	PROC_SLEEP 0
+	PROC_CALL ClassInfoDisp_ExecEkrMainMini
+	PROC_SLEEP 2
+	PROC_REPEAT ClassInfoDisp_Loop_Intro
+	PROC_REPEAT ClassInfoDisp_Loop_Main
+	PROC_REPEAT ClassInfoDisp_Block
+PROC_LABEL 4
+	PROC_CALL ClassInfoDisp_OnEnd
+	PROC_END
 
 	.global gUnk_08690014
 gUnk_08690014: @ 08690014
-	.incbin "fe6-base.gba", 0x690014, (0x69006C - 0x690014) @ length: 0058
+	PROC_19
+	PROC_SLEEP 3
+	PROC_CALL func_fe6_08095AE0
+	PROC_REPEAT func_fe6_08095BCC
+PROC_LABEL 4
+	PROC_CALL func_fe6_08095D28
+	PROC_END
 
-	.global gUnk_0869006C
-gUnk_0869006C: @ 0869006C
-	.incbin "fe6-base.gba", 0x69006C, (0x6900BC - 0x69006C) @ length: 0050
+	.global Sprite_OpInfo_0869004C
+Sprite_OpInfo_0869004C:
+	.incbin "fe6-base.gba", 0x69004C, (0x690054 - 0x69004C)
 
-	.global gUnk_086900BC
-gUnk_086900BC: @ 086900BC
+	.global Sprite_OpInfo_08690054
+Sprite_OpInfo_08690054:
+	.incbin "fe6-base.gba", 0x690054, (0x69005C - 0x690054)
+
+	.global Sprite_OpInfo_0869005C
+Sprite_OpInfo_0869005C:
+	.incbin "fe6-base.gba", 0x69005C, (0x690064 - 0x69005C)
+
+	.global Sprite_OpInfo_08690064
+Sprite_OpInfo_08690064:
+	.incbin "fe6-base.gba", 0x690064, (0x69006C - 0x690064)
+
+	.global Sprites_OpInfo_0869006C
+Sprites_OpInfo_0869006C: @ 0869006C
+	.incbin "fe6-base.gba", 0x69006C, 0x10
+
+	.global Sprite_OpInfo_0869007C
+Sprite_OpInfo_0869007C:
+	.incbin "fe6-base.gba", 0x69007C, (0x6900BC - 0x69007C)
+
+	.global Sprites_OpInfo_086900BC
+Sprites_OpInfo_086900BC: @ 086900BC
 	.incbin "fe6-base.gba", 0x6900BC, (0x6900DC - 0x6900BC) @ length: 0020
 
-	.global gUnk_086900DC
-gUnk_086900DC: @ 086900DC
+	.global Sprite_OpInfo_086900DC
+Sprite_OpInfo_086900DC: @ 086900DC
 	.incbin "fe6-base.gba", 0x6900DC, (0x6900F0 - 0x6900DC) @ length: 0014
 
-	.global gUnk_086900F0
-gUnk_086900F0: @ 086900F0
+	.global Sprite_OpInfo_086900F0
+Sprite_OpInfo_086900F0: @ 086900F0
 	.incbin "fe6-base.gba", 0x6900F0, (0x6900F8 - 0x6900F0) @ length: 0008
 
-	.global gUnk_086900F8
-gUnk_086900F8: @ 086900F8
+	.global Sprite_OpInfo_086900F8
+Sprite_OpInfo_086900F8: @ 086900F8
 	.incbin "fe6-base.gba", 0x6900F8, (0x690100 - 0x6900F8) @ length: 0008
 
-	.global gUnk_08690100
-gUnk_08690100: @ 08690100
+	.global Sprite_OpInfo_08690100
+Sprite_OpInfo_08690100: @ 08690100
 	.incbin "fe6-base.gba", 0x690100, (0x690288 - 0x690100) @ length: 0188
 
-	.global gUnk_08690288
-gUnk_08690288: @ 08690288
+	.global Sprites_OpInfo_08690288
+Sprites_OpInfo_08690288: @ 08690288
 	.incbin "fe6-base.gba", 0x690288, (0x69056C - 0x690288) @ length: 02E4
 
 	.global gUnk_0869056C
