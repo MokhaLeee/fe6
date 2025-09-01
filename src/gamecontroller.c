@@ -14,7 +14,7 @@
 #include "save_game.h"
 #include "save_xmap.h"
 #include "savemenu.h"
-#include "class_demo.h"
+#include "opinfo.h"
 #include "opanim.h"
 #include "augury.h"
 #include "playrank.h"

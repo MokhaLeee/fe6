@@ -3,14 +3,14 @@
 #include "prelude.h"
 #include "proc.h"
 
-enum ClassDemoModeIndex {
+enum OpInfoModeIndex {
     OPINFO_STATE_0,
     OPINFO_STATE_IDLE,
     OPINFO_STATE_2,
     OPINFO_STATE_3,
 };
 
-enum ClassDemoProcLabel {
+enum OpInfoProcLabel {
     PL_OPINFO_BRANMCH = 1,
     PL_OPINFO_IDLE = 2,
     PL_OPINFO_NAME_INTRO = 4,
@@ -18,7 +18,7 @@ enum ClassDemoProcLabel {
     PL_OPINFO_END_EXT = 6,
 };
 
-struct ProcClassDemo {
+struct ProcOpInfo {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x2A);
@@ -37,13 +37,13 @@ struct ProcClassDemo {
     /* 40 */ int proc_start_time;
 };
 
-void OpInfo_Init(struct ProcClassDemo *proc);
-void OpInfo_Branch(struct ProcClassDemo *proc);
-void OpInfo_PostAnim(struct ProcClassDemo *proc);
-void OpInfo_Idle(struct ProcClassDemo *proc);
-void OpInfo_FadeBgmOut(struct ProcClassDemo *proc);
-void OpInfo_EndSubProcs(struct ProcClassDemo *proc);
-void OpInfo_End(struct ProcClassDemo *proc);
+void OpInfo_Init(struct ProcOpInfo *proc);
+void OpInfo_Branch(struct ProcOpInfo *proc);
+void OpInfo_PostAnim(struct ProcOpInfo *proc);
+void OpInfo_Idle(struct ProcOpInfo *proc);
+void OpInfo_FadeBgmOut(struct ProcOpInfo *proc);
+void OpInfo_EndSubProcs(struct ProcOpInfo *proc);
+void OpInfo_End(struct ProcOpInfo *proc);
 void StartClassDemo(u8 arg_0, ProcPtr parent);
 // func_fe6_0809480C
 void func_fe6_0809485C(u8 a);
@@ -53,7 +53,7 @@ void func_fe6_0809485C(u8 a);
 // OpInfoEnter_Loop_In
 // OpInfoEnter_Loop_Out
 // OpInfoEnter_OnEnd
-ProcPtr NewOpInfoEnter(struct ProcClassDemo *proc, int a);
+ProcPtr NewOpInfoEnter(struct ProcOpInfo *proc, int a);
 // OpInfoView_Init
 // OpInfoView_Loop_FadeIn
 // OpInfoView_Loop_Display
@@ -75,7 +75,7 @@ ProcPtr NewOpInfoEnter(struct ProcClassDemo *proc, int a);
 // ClassInfoDisp_Loop_Main
 // ClassInfoDisp_Block
 // ClassInfoDisp_OnEnd
-ProcPtr StartClassAnimDisplay(struct ProcClassDemo *proc, int index);
+ProcPtr StartClassAnimDisplay(struct ProcOpInfo *proc, int index);
 // func_fe6_08095AE0
 // func_fe6_08095BCC
 // func_fe6_08095D28

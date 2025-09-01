@@ -5,7 +5,7 @@
 #include "hardware.h"
 #include "savemenu.h"
 #include "gamecontroller.h"
-#include "class_demo.h"
+#include "opinfo.h"
 
 struct ProcScr CONST_DATA ProcScr_OpInfo[] = {
 	PROC_NAME_DEBUG("opinfo"),
@@ -36,7 +36,7 @@ PROC_LABEL(PL_OPINFO_END_EXT),
 	PROC_END,
 };
 
-void OpInfo_Init(struct ProcClassDemo *proc)
+void OpInfo_Init(struct ProcOpInfo *proc)
 {
 	gDispIo.disp_ct.mode = 0;
 
@@ -63,7 +63,7 @@ void OpInfo_Init(struct ProcClassDemo *proc)
 	proc->unk_32 = 0;
 }
 
-void OpInfo_Branch(struct ProcClassDemo *proc)
+void OpInfo_Branch(struct ProcOpInfo *proc)
 {
 	proc->proc_run_time = GetGameTime() - proc->proc_start_time;
 
@@ -102,7 +102,7 @@ void OpInfo_Branch(struct ProcClassDemo *proc)
 	proc->timer = 0;
 }
 
-void OpInfo_PostAnim(struct ProcClassDemo *proc)
+void OpInfo_PostAnim(struct ProcOpInfo *proc)
 {
 	if (proc->anim_proc != NULL)
 		Proc_Goto(proc->anim_proc, 4);
@@ -113,7 +113,7 @@ void OpInfo_PostAnim(struct ProcClassDemo *proc)
 	proc->mode = OPINFO_STATE_IDLE;
 }
 
-void OpInfo_Idle(struct ProcClassDemo *proc)
+void OpInfo_Idle(struct ProcOpInfo *proc)
 {
 	if (gKeySt->held & (KEY_BUTTON_A | KEY_BUTTON_B | KEY_BUTTON_START) && proc->unk_32 == 0) {
 		SetNextGameAction(GAME_ACTION_0);
@@ -131,12 +131,12 @@ void OpInfo_Idle(struct ProcClassDemo *proc)
 		func_fe6_0809485C(proc->timer);
 }
 
-void OpInfo_FadeBgmOut(struct ProcClassDemo *proc)
+void OpInfo_FadeBgmOut(struct ProcOpInfo *proc)
 {
 	FadeBgmOut(1);
 }
 
-void OpInfo_EndSubProcs(struct ProcClassDemo *proc)
+void OpInfo_EndSubProcs(struct ProcOpInfo *proc)
 {
 	if (proc->subproc1 != NULL)
 		Proc_Goto(proc->subproc1, 4);
@@ -145,7 +145,7 @@ void OpInfo_EndSubProcs(struct ProcClassDemo *proc)
 		Proc_Goto(proc->anim_proc, 4);
 }
 
-void OpInfo_End(struct ProcClassDemo *proc)
+void OpInfo_End(struct ProcOpInfo *proc)
 {
 	EndEfxAnimeDrvProc();
 	CleanupGame(proc);
@@ -153,7 +153,7 @@ void OpInfo_End(struct ProcClassDemo *proc)
 
 void StartClassDemo(u8 class_set, ProcPtr parent)
 {
-	struct ProcClassDemo *proc;
+	struct ProcOpInfo *proc;
 
 	proc = SpawnProcLocking(ProcScr_OpInfo, parent);
 	proc->class_set = class_set;
