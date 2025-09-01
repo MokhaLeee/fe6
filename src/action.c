@@ -58,12 +58,12 @@ struct ProcScr CONST_DATA ProcScr_DeathDropAnim[] =
     PROC_END,
 };
 
-void CombatAction_MaybeSkipPostBanimDeathFades(struct GenericProc * proc);
-void CombatAction_PostBanimDeathFades(struct GenericProc * proc);
-void CombatAction_PostBanimDeathFadesEnd(struct GenericProc * proc);
-void CombatAction_DoHandleDeaths(struct GenericProc * proc);
-void ArenaAction_MaybeSkipDeathFades(struct GenericProc * proc);
-void ArenaAction_DoHandleDeaths(struct GenericProc * proc);
+void CombatAction_MaybeSkipPostBanimDeathFades(struct Proc * proc);
+void CombatAction_PostBanimDeathFades(struct Proc * proc);
+void CombatAction_PostBanimDeathFadesEnd(struct Proc * proc);
+void CombatAction_DoHandleDeaths(struct Proc * proc);
+void ArenaAction_MaybeSkipDeathFades(struct Proc * proc);
+void ArenaAction_DoHandleDeaths(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_CombatAction[] =
 {
@@ -420,13 +420,13 @@ void KillUnitOnArenaDeath(struct Unit * unit)
     }
 }
 
-void CombatAction_MaybeSkipPostBanimDeathFades(struct GenericProc * proc)
+void CombatAction_MaybeSkipPostBanimDeathFades(struct Proc * proc)
 {
     if ((gBattleSt.flags & BATTLE_FLAG_MAPANIMS) || (gBattleUnitA.unit.hp != 0 && gBattleUnitB.unit.hp != 0))
         Proc_Goto(proc, 1);
 }
 
-void CombatAction_PostBanimDeathFades(struct GenericProc * proc)
+void CombatAction_PostBanimDeathFades(struct Proc * proc)
 {
     struct MuProc * mu;
 
@@ -456,12 +456,12 @@ void CombatAction_PostBanimDeathFades(struct GenericProc * proc)
     }
 }
 
-void CombatAction_PostBanimDeathFadesEnd(struct GenericProc * proc)
+void CombatAction_PostBanimDeathFadesEnd(struct Proc * proc)
 {
     EndMu(proc->ptr);
 }
 
-void CombatAction_DoHandleDeaths(struct GenericProc * proc)
+void CombatAction_DoHandleDeaths(struct Proc * proc)
 {
     struct Unit * unit_a = GetUnit(gBattleUnitA.unit.id);
     struct Unit * unit_b = GetUnit(gBattleUnitB.unit.id);
@@ -481,7 +481,7 @@ void func_fe6_0802A7F4(void)
         StartBgmExt(song, 6, NULL);
 }
 
-void ArenaAction_MaybeSkipDeathFades(struct GenericProc * proc)
+void ArenaAction_MaybeSkipDeathFades(struct Proc * proc)
 {
     // prevent playing any animations for battler B (which would be the arena opponent, not on the map)
     gBattleUnitB.unit.hp = 1;
@@ -490,7 +490,7 @@ void ArenaAction_MaybeSkipDeathFades(struct GenericProc * proc)
         Proc_Goto(proc, 1);
 }
 
-void ArenaAction_DoHandleDeaths(struct GenericProc * proc)
+void ArenaAction_DoHandleDeaths(struct Proc * proc)
 {
     KillUnitOnArenaDeath(gActiveUnit);
     DropRescueOnDeath(proc, gActiveUnit);

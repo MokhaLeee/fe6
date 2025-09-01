@@ -92,7 +92,7 @@ void ResetBmSt(void)
     gBmSt.lock = lock;
 }
 
-void StartChapter(struct GenericProc * parent)
+void StartChapter(struct Proc * parent)
 {
     InitBgs(NULL);
 
@@ -159,7 +159,7 @@ void JumpToChapterDirectly(void)
     SetDispEnable(1, 1, 1, 0, 0);
 }
 
-void ResumeChapterFromSuspend(struct GenericProc * parent)
+void ResumeChapterFromSuspend(struct Proc * parent)
 {
     ProcPtr mapmain;
 
@@ -256,9 +256,9 @@ void InitBmDisplay(void)
     InitSystemTextFont();
 }
 
-ProcPtr StartMapMain(struct GenericProc * parent)
+ProcPtr StartMapMain(struct Proc * parent)
 {
-    struct GenericProc * proc = SpawnProc(ProcScr_BmMain, PROC_TREE_2);
+    struct Proc * proc = SpawnProc(ProcScr_BmMain, PROC_TREE_2);
     proc->ptr = parent;
 
     parent->proc_lock_cnt++;
@@ -271,8 +271,8 @@ ProcPtr StartMapMain(struct GenericProc * parent)
 
 void EndMapMain(void)
 {
-    struct GenericProc * mapmain;
-    struct GenericProc * parent;
+    struct Proc * mapmain;
+    struct Proc * parent;
 
     Proc_EndEachMarked(PROC_MARK_1);
 

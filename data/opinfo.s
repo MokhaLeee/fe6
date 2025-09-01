@@ -1,13 +1,6 @@
 	.include "asm_proc.inc"
 	.data
 
-	.global ProcScr_OpInfo_0868FEDC
-ProcScr_OpInfo_0868FEDC: @ 0868FEDC
-	PROC_19
-	PROC_SLEEP 0
-	PROC_CALL func_fe6_0809480C
-	PROC_END
-
 	.global ProcScr_OpInfoEnter
 ProcScr_OpInfoEnter: @ 0868FEFC
 	PROC_19

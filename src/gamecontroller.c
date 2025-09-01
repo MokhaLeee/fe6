@@ -285,7 +285,7 @@ void GC_FastStartCheck(struct GameController * proc)
 
 void EndIfNotGameController(ProcPtr proc)
 {
-    if (((struct GenericProc *) proc)->proc_mark == PROC_MARK_GAMECTRL)
+    if (((struct Proc *) proc)->proc_mark == PROC_MARK_GAMECTRL)
         return;
 
     Proc_End(proc);

@@ -3,38 +3,45 @@
 #include "prelude.h"
 #include "proc.h"
 
+enum videoalloc_opinfo {
+	OBPAL_OFINFOVIEW_LETTER_REF = 0,
+	OBPAL_OFINFOVIEW_LETTER0 = 1,
+	OBPAL_OFINFOICON_LINE = 14,
+	OBPAL_OFINFOICON = 15,
+};
+
 enum OpInfoModeIndex {
-    OPINFO_STATE_0,
-    OPINFO_STATE_IDLE,
-    OPINFO_STATE_2,
-    OPINFO_STATE_3,
+	OPINFO_STATE_0,
+	OPINFO_STATE_IDLE,
+	OPINFO_STATE_2,
+	OPINFO_STATE_3,
 };
 
 enum OpInfoProcLabel {
-    PL_OPINFO_BRANMCH = 1,
-    PL_OPINFO_IDLE = 2,
-    PL_OPINFO_NAME_INTRO = 4,
-    PL_OPINFO_END_TITLE = 5,
-    PL_OPINFO_END_EXT = 6,
+	PL_OPINFO_BRANMCH = 1,
+	PL_OPINFO_IDLE = 2,
+	PL_OPINFO_NAME_INTRO = 4,
+	PL_OPINFO_END_TITLE = 5,
+	PL_OPINFO_END_EXT = 6,
 };
 
 struct ProcOpInfo {
-    PROC_HEADER;
+	PROC_HEADER;
 
-    STRUCT_PAD(0x29, 0x2A);
+	STRUCT_PAD(0x29, 0x2A);
 
-    /* 2A */ u16 timer;
-    /* 2C */ u8 mode;
-    /* 2D */ u8 class_set;
-    /* 2E */ u8 unk_2E;
-    /* 2F */ u8 unk_2F;
-    /* 30 */ u8 unk_30;
-    /* 31 */ u8 unk_31, unk_32;
+	/* 2A */ u16 fade_speed;
+	/* 2C */ u8 mode;
+	/* 2D */ u8 class_set;
+	/* 2E */ u8 unk_2E;
+	/* 2F */ u8 unk_2F;
+	/* 30 */ u8 unk_30;
+	/* 31 */ u8 unk_31, unk_32;
 
-    /* 34 */ ProcPtr subproc1;
-    /* 38 */ ProcPtr anim_proc;
-    /* 3C */ int proc_run_time;
-    /* 40 */ int proc_start_time;
+	/* 34 */ ProcPtr subproc1;
+	/* 38 */ ProcPtr anim_proc;
+	/* 3C */ int proc_run_time;
+	/* 40 */ int proc_start_time;
 };
 
 void OpInfo_Init(struct ProcOpInfo *proc);
@@ -45,10 +52,29 @@ void OpInfo_FadeBgmOut(struct ProcOpInfo *proc);
 void OpInfo_EndSubProcs(struct ProcOpInfo *proc);
 void OpInfo_End(struct ProcOpInfo *proc);
 void StartClassDemo(u8 arg_0, ProcPtr parent);
-// func_fe6_0809480C
-void func_fe6_0809485C(u8 a);
-// func_fe6_08094878
-// OpInfoEnter_Init
+
+struct ProcOpInfoFadeOut {
+	PROC_HEADER;
+
+	/* 2A */ u16 speed;
+};
+
+void OpInfoFadeOut_Sync(struct ProcOpInfoFadeOut *proc);
+void OpInfo_FadeOut(u8 speed);
+
+void PutOpInfoViewLetter(u16 char_base, u8 char_index, int x, int y, u16 x_scale, u16 y_scale, u8 pal_off);
+
+struct ProcOpInfoEnter {
+	PROC_HEADER;
+
+	/* 2A */ u16 timer;
+	/* 2C */ u16 unk_2C;
+	/* 2E */ u8 unk_2E;
+	/* 2F */ u8 unk_2F;
+	/* 30 */ u8 type;
+};
+
+void OpInfoEnter_Init(struct ProcOpInfoEnter *proc);
 // func_fe6_08094B28
 // OpInfoEnter_Loop_In
 // OpInfoEnter_Loop_Out
@@ -84,20 +110,20 @@ ProcPtr StartClassAnimDisplay(struct ProcOpInfo *proc, int index);
 // func_fe6_08095D48
 // func_fe6_08095D58
 
-// extern CONST_DATA ??? ProcScr_OpInfo
-// extern CONST_DATA ??? ProcScr_OpInfo_0868FEDC
-// extern CONST_DATA ??? ProcScr_OpInfoEnter
-// extern CONST_DATA ??? ProcScr_OpInfoView
-// extern CONST_DATA ??? ProcScr_OpInfoIcon
-// extern CONST_DATA ??? ProcScr_ClassInfoDisp
+extern CONST_DATA struct ProcScr ProcScr_OpInfo[];
+extern CONST_DATA struct ProcScr ProcScr_OpInfoFadeOut[];
+extern CONST_DATA struct ProcScr ProcScr_OpInfoEnter[];
+extern CONST_DATA struct ProcScr ProcScr_OpInfoView[];
+extern CONST_DATA struct ProcScr ProcScr_OpInfoIcon[];
+extern CONST_DATA struct ProcScr ProcScr_ClassInfoDisp[];
 // extern CONST_DATA ??? gUnk_08690014
-// extern CONST_DATA ??? Sprites_OpInfo_0869006C
-// extern CONST_DATA ??? Sprites_OpInfo_086900BC
-// extern CONST_DATA ??? Sprite_OpInfo_086900DC
-// extern CONST_DATA ??? Sprite_OpInfo_086900F0
-// extern CONST_DATA ??? Sprite_OpInfo_086900F8
-// extern CONST_DATA ??? Sprite_OpInfo_08690100
-// extern CONST_DATA ??? Sprites_OpInfo_08690288
+extern CONST_DATA u16 *Sprites_OpInfo_0869006C[];
+extern CONST_DATA u16 *Sprites_OpInfo_086900BC[];
+extern CONST_DATA u16 Sprite_OpInfo_086900DC[];
+extern CONST_DATA u16 Sprite_OpInfo_086900F0[];
+extern CONST_DATA u16 Sprite_OpInfo_086900F8[];
+extern CONST_DATA u16 Sprite_OpInfo_08690100[];
+extern CONST_DATA u16 *Sprites_OpInfo_08690288[];
 extern CONST_DATA u8 gUnk_0869056C[][4];
 // extern CONST_DATA ??? gUnk_0869058C
 // extern CONST_DATA ??? gUnk_086905B0

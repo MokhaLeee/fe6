@@ -110,6 +110,19 @@ SECTIONS
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
     . = __ewram_overlay_beg;
+    ewram_overlay_opanim (NOLOAD) : ALIGN(4)
+    {
+    }
+    __ewram_overlay_end = MAX(., __ewram_overlay_end);
+
+    . = __ewram_overlay_beg;
+    ewram_overlay_opinfo (NOLOAD) : ALIGN(4)
+    {
+        . = ALIGN(4); src/opinfo.o(ewram_overlay_opinfo);
+    }
+    __ewram_overlay_end = MAX(., __ewram_overlay_end);
+
+    . = __ewram_overlay_beg;
     ewram_overlay_banim (NOLOAD) : ALIGN(4)
     {
         . = 0x000000; gAnims = .;

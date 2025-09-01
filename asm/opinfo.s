@@ -2,219 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start func_fe6_0809480C
-func_fe6_0809480C: @ 0x0809480C
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r3, .L08094854 @ =gPal
-	ldr r2, .L08094858 @ =0x02000000
-	movs r1, #0x80
-	lsls r1, r1, #2
-.L08094818:
-	ldrh r0, [r3]
-	strh r0, [r2]
-	adds r3, #2
-	adds r2, #2
-	subs r1, #1
-	cmp r1, #0
-	bne .L08094818
-	ldr r4, .L08094858 @ =0x02000000
-	ldrh r5, [r5, #0x2a]
-	lsrs r3, r5, #1
-	adds r0, r4, #0
-	movs r1, #0
-	movs r2, #0x20
-	bl EfxPalBlackInOut
-	ldr r2, .L08094854 @ =gPal
-	movs r1, #0x80
-	lsls r1, r1, #2
-.L0809483C:
-	ldrh r0, [r4]
-	strh r0, [r2]
-	adds r4, #2
-	adds r2, #2
-	subs r1, #1
-	cmp r1, #0
-	bne .L0809483C
-	bl EnablePalSync
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08094854: .4byte gPal
-.L08094858: .4byte 0x02000000
-
-	thumb_func_start func_fe6_0809485C
-func_fe6_0809485C: @ 0x0809485C
-	push {r4, lr}
-	adds r4, r0, #0
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	ldr r0, .L08094874 @ =ProcScr_OpInfo_0868FEDC
-	movs r1, #4
-	bl SpawnProc
-	strh r4, [r0, #0x2a]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08094874: .4byte ProcScr_OpInfo_0868FEDC
-
-	thumb_func_start func_fe6_08094878
-func_fe6_08094878: @ 0x08094878
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #0x10
-	str r2, [sp, #8]
-	str r3, [sp, #0xc]
-	ldr r2, [sp, #0x30]
-	ldr r3, [sp, #0x34]
-	ldr r4, [sp, #0x38]
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	str r0, [sp, #4]
-	lsls r1, r1, #0x18
-	lsrs r7, r1, #0x18
-	lsls r2, r2, #0x10
-	lsrs r2, r2, #0x10
-	mov sl, r2
-	lsls r3, r3, #0x10
-	lsrs r3, r3, #0x10
-	mov r8, r3
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	movs r5, #1
-	ldr r2, .L080948D4 @ =gPal
-	movs r0, #0x80
-	lsls r0, r0, #1
-	ldr r1, .L080948D8 @ =0x0000021E
-	adds r6, r2, r1
-	adds r0, r4, r0
-	lsls r1, r7, #5
-	lsls r0, r0, #1
-	adds r0, r0, r2
-	adds r3, r0, #2
-	ldr r0, .L080948DC @ =0x00000222
-	adds r1, r1, r0
-	adds r1, r1, r2
-.L080948C4:
-	adds r0, r5, r4
-	cmp r0, #0xf
-	ble .L080948E0
-	ldrh r0, [r6]
-	strh r0, [r1]
-	adds r2, r7, #1
-	mov sb, r2
-	b .L080948E8
-	.align 2, 0
-.L080948D4: .4byte gPal
-.L080948D8: .4byte 0x0000021E
-.L080948DC: .4byte 0x00000222
-.L080948E0:
-	ldrh r0, [r3]
-	strh r0, [r1]
-	adds r0, r7, #1
-	mov sb, r0
-.L080948E8:
-	adds r1, #2
-	adds r3, #2
-	adds r5, #1
-	cmp r5, #0xf
-	ble .L080948C4
-	bl EnablePalSync
-	mov r1, sl
-	cmp r1, #7
-	bhi .L08094900
-	movs r2, #8
-	mov sl, r2
-.L08094900:
-	mov r3, r8
-	cmp r3, #7
-	bhi .L0809490A
-	movs r0, #8
-	mov r8, r0
-.L0809490A:
-	ldr r4, .L080949A8 @ =gSinLut
-	ldr r1, .L080949AC @ =gSinLut+0x80
-	movs r2, #0
-	ldrsh r0, [r1, r2]
-	lsls r0, r0, #4
-	mov r1, sl
-	bl Div
-	adds r6, r0, #0
-	lsls r6, r6, #0x10
-	asrs r6, r6, #0x10
-	movs r3, #0
-	ldrsh r0, [r4, r3]
-	rsbs r0, r0, #0
-	lsls r0, r0, #4
-	mov r1, r8
-	bl Div
-	adds r5, r0, #0
-	lsls r5, r5, #0x10
-	asrs r5, r5, #0x10
-	movs r1, #0
-	ldrsh r0, [r4, r1]
-	lsls r0, r0, #4
-	mov r1, sl
-	bl Div
-	adds r4, r0, #0
-	lsls r4, r4, #0x10
-	asrs r4, r4, #0x10
-	ldr r2, .L080949AC @ =gSinLut+0x80
-	movs r3, #0
-	ldrsh r0, [r2, r3]
-	lsls r0, r0, #4
-	mov r1, r8
-	bl Div
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	str r0, [sp]
-	adds r0, r7, #0
-	adds r1, r6, #0
-	adds r2, r5, #0
-	adds r3, r4, #0
-	bl SetObjAffine
-	ldr r0, .L080949B0 @ =0x000001FF
-	ldr r1, [sp, #8]
-	ands r1, r0
-	str r1, [sp, #8]
-	lsls r1, r7, #9
-	ldr r2, [sp, #8]
-	adds r1, r2, r1
-	ldr r3, [sp, #0xc]
-	ands r3, r0
-	str r3, [sp, #0xc]
-	ldr r2, .L080949B4 @ =Sprites_OpInfo_08690288
-	ldr r3, [sp, #4]
-	adds r0, r3, r7
-	lsls r0, r0, #2
-	adds r0, r0, r2
-	ldr r3, [r0]
-	movs r0, #0xf
-	mov r2, sb
-	ands r2, r0
-	lsls r0, r2, #0xc
-	str r0, [sp]
-	movs r0, #4
-	ldr r2, [sp, #0xc]
-	bl PutSpriteExt
-	add sp, #0x10
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080949A8: .4byte gSinLut
-.L080949AC: .4byte gSinLut+0x80
-.L080949B0: .4byte 0x000001FF
-.L080949B4: .4byte Sprites_OpInfo_08690288
 
 	thumb_func_start OpInfoEnter_Init
 OpInfoEnter_Init: @ 0x080949B8
@@ -235,6 +22,7 @@ OpInfoEnter_Init: @ 0x080949B8
 	movs r1, #0x7f
 	ands r0, r1
 	strb r0, [r2, #1]
+
 	movs r0, #0
 	strh r0, [r5, #0x2a]
 	adds r2, r5, #0
@@ -288,6 +76,7 @@ OpInfoEnter_Init: @ 0x080949B8
 	bne .L08094A2C
 	adds r0, r4, #1
 	strb r0, [r7]
+
 .L08094A42:
 	movs r0, #0
 	mov r2, r8
@@ -313,25 +102,25 @@ OpInfoEnter_Init: @ 0x080949B8
 	ldrb r0, [r0]
 	cmp r0, #0x13
 	bls .L08094A84
-	ldr r0, .L08094A7C @ =gUnk_08357140
+	ldr r0, .L08094A7C @ =Img_OpInfoViewLettersA
 	ldr r1, .L08094A80 @ =0x06010000
 	bl Decompress
 	b .L08094A8C
 	.align 2, 0
 .L08094A78: .4byte Sprites_OpInfo_08690288
-.L08094A7C: .4byte gUnk_08357140
+.L08094A7C: .4byte Img_OpInfoViewLettersA
 .L08094A80: .4byte 0x06010000
 .L08094A84:
-	ldr r0, .L08094B0C @ =gUnk_08354780
+	ldr r0, .L08094B0C @ =Img_OpInfoViewLettersB
 	ldr r1, .L08094B10 @ =0x06010000
 	bl Decompress
 .L08094A8C:
-	ldr r0, .L08094B14 @ =gUnk_08354760
+	ldr r0, .L08094B14 @ =Pal_OpInfoViewLetters
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r4, .L08094B18 @ =gUnk_0835A368
+	ldr r4, .L08094B18 @ =Pal_OpInfoViewIcon
 	movs r1, #0xf0
 	lsls r1, r1, #2
 	adds r0, r4, #0
@@ -342,7 +131,7 @@ OpInfoEnter_Init: @ 0x080949B8
 	adds r0, r4, #0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L08094B1C @ =gUnk_083599AC
+	ldr r0, .L08094B1C @ =Img_OpInfoViewIcon
 	ldr r1, .L08094B20 @ =0x06016000
 	bl Decompress
 	mov r1, sl
@@ -386,11 +175,11 @@ OpInfoEnter_Init: @ 0x080949B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08094B0C: .4byte gUnk_08354780
+.L08094B0C: .4byte Img_OpInfoViewLettersB
 .L08094B10: .4byte 0x06010000
-.L08094B14: .4byte gUnk_08354760
-.L08094B18: .4byte gUnk_0835A368
-.L08094B1C: .4byte gUnk_083599AC
+.L08094B14: .4byte Pal_OpInfoViewLetters
+.L08094B18: .4byte Pal_OpInfoViewIcon
+.L08094B1C: .4byte Img_OpInfoViewIcon
 .L08094B20: .4byte 0x06016000
 .L08094B24: .4byte 0x000001FF
 
@@ -725,7 +514,7 @@ OpInfoView_Loop_FadeIn: @ 0x08094CEC
 	mov r1, sb
 	adds r2, r5, #0
 	adds r3, r4, #0
-	bl func_fe6_08094878
+	bl PutOpInfoViewLetter
 	ldrh r0, [r7, #0x2a]
 	adds r0, #4
 	strh r0, [r7, #0x2a]
@@ -768,7 +557,7 @@ OpInfoView_Loop_FadeIn: @ 0x08094CEC
 	str r0, [sp, #8]
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl func_fe6_08094878
+	bl PutOpInfoViewLetter
 	ldrh r0, [r7, #0x2a]
 	adds r0, #0x10
 	strh r0, [r7, #0x2a]
@@ -807,7 +596,7 @@ OpInfoView_Loop_Display: @ 0x08094E20
 	movs r5, #0
 	str r5, [sp, #8]
 	movs r3, #0x18
-	bl func_fe6_08094878
+	bl PutOpInfoViewLetter
 	strh r5, [r4, #0x2a]
 	add sp, #0xc
 	pop {r4, r5}
@@ -872,7 +661,7 @@ OpInfoView_Loop_FadeOut: @ 0x08094E4C
 	str r0, [sp, #8]
 	adds r0, r3, #0
 	movs r3, #0x18
-	bl func_fe6_08094878
+	bl PutOpInfoViewLetter
 	movs r0, #0x80
 	lsls r0, r0, #1
 	ldrh r7, [r4, #0x2a]

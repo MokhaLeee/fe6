@@ -1,23 +1,23 @@
 	.section .rodata
 
-	.global gUnk_08354760
-gUnk_08354760: @ 08354760
+	.global Pal_OpInfoViewLetters
+Pal_OpInfoViewLetters: @ 08354760
 	.incbin "fe6-base.gba", 0x354760, (0x354780 - 0x354760) @ length: 0020
 
-	.global gUnk_08354780
-gUnk_08354780: @ 08354780
+	.global Img_OpInfoViewLettersB
+Img_OpInfoViewLettersB: @ 08354780
 	.incbin "fe6-base.gba", 0x354780, (0x357140 - 0x354780) @ length: 29C0
 
-	.global gUnk_08357140
-gUnk_08357140: @ 08357140
+	.global Img_OpInfoViewLettersA
+Img_OpInfoViewLettersA: @ 08357140
 	.incbin "fe6-base.gba", 0x357140, (0x3599AC - 0x357140) @ length: 286C
 
-	.global gUnk_083599AC
-gUnk_083599AC: @ 083599AC
+	.global Img_OpInfoViewIcon
+Img_OpInfoViewIcon: @ 083599AC
 	.incbin "fe6-base.gba", 0x3599AC, (0x35A368 - 0x3599AC) @ length: 09BC
 
-	.global gUnk_0835A368
-gUnk_0835A368: @ 0835A368
+	.global Pal_OpInfoViewIcon
+Pal_OpInfoViewIcon: @ 0835A368
 	.incbin "fe6-base.gba", 0x35A368, (0x35A3E8 - 0x35A368) @ length: 0080
 
 	.global gUnk_0835A3E8

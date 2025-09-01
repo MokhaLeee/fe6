@@ -296,14 +296,14 @@ void Popup_FadeBgmIn(struct PopupProc * proc)
         StartBgmVolumeChange(0x80, 0x100, 16, proc);
 }
 
-void PopupIconSprite_OnIdle(struct GenericProc * proc)
+void PopupIconSprite_OnIdle(struct Proc * proc)
 {
     PutOamHi(proc->x, proc->y, Sprite_16x16, (u16) proc->unk4A);
 }
 
 void Popup_Display(struct PopupProc * proc)
 {
-    struct GenericProc * gproc;
+    struct Proc * gproc;
 
     struct Text text;
 
@@ -454,7 +454,7 @@ void Event_FadeOutOfSkip(struct EventProc * proc)
     SpawnProcLocking(ProcScr_SceneEndFade, proc);
 }
 
-void FadeFromBg_FadeToBlack(struct GenericProc * proc)
+void FadeFromBg_FadeToBlack(struct Proc * proc)
 {
     if (((struct EventProc *) proc->proc_parent)->flags & EVENT_FLAG_SKIPPED)
         return;
@@ -462,7 +462,7 @@ void FadeFromBg_FadeToBlack(struct GenericProc * proc)
     StartMidLockingFadeToBlack(proc);
 }
 
-void FadeFromBg_FadeFromBlack(struct GenericProc * proc)
+void FadeFromBg_FadeFromBlack(struct Proc * proc)
 {
     struct EventProc * evproc = proc->proc_parent;
 
@@ -470,7 +470,7 @@ void FadeFromBg_FadeFromBlack(struct GenericProc * proc)
         StartMidLockingFadeFromBlack(proc);
 }
 
-void FadeFromBg_ClearScreen(struct GenericProc * proc)
+void FadeFromBg_ClearScreen(struct Proc * proc)
 {
     InitBmDisplay();
     UnlockBmDisplay();
@@ -485,7 +485,7 @@ void FadeFromBg_ClearScreen(struct GenericProc * proc)
     ClearTalk();
 }
 
-void FadeFromSkip_Start(struct GenericProc * proc)
+void FadeFromSkip_Start(struct Proc * proc)
 {
     struct EventProc * evproc = proc->proc_parent;
 
@@ -1260,7 +1260,7 @@ bool TryMoveUnitDisplayed(ProcPtr proc, struct Unit * unit, int x, int y)
 
 bool DisplayMovement(struct EventProc * proc, struct Unit * unit, u8 const * movescr)
 {
-    struct GenericProc * gproc;
+    struct Proc * gproc;
 
     struct MuProc * mu = StartMu(unit);
 
@@ -1292,11 +1292,11 @@ bool DisplayMovement(struct EventProc * proc, struct Unit * unit, u8 const * mov
     return TRUE;
 }
 
-void WaitForMu_0800F094(struct GenericProc * proc)
+void WaitForMu_0800F094(struct Proc * proc)
 {
 }
 
-void WaitForMu_OnLoop(struct GenericProc * proc)
+void WaitForMu_OnLoop(struct Proc * proc)
 {
     struct MuProc * mu = proc->ptr;
     struct Unit * unit;
@@ -1930,7 +1930,7 @@ int EvtCmd_FlashCursorPosition(struct EventProc * proc)
 {
     // script[0]: position
 
-    struct GenericProc * gproc;
+    struct Proc * gproc;
     short x, y;
 
     if (proc->flags & EVENT_FLAG_SKIPPED)
@@ -1953,7 +1953,7 @@ int EvtCmd_FlashCursorPid(struct EventProc * proc)
 {
     // script[0]: pid
 
-    struct GenericProc * gproc;
+    struct Proc * gproc;
 
     struct Unit * unit = GetUnitByPid(proc->script[0]);
 
@@ -1978,12 +1978,12 @@ void EventFlashCursorWait(struct EventProc * proc)
     proc->on_idle = NULL;
 }
 
-void FlashCursor_OnInit(struct GenericProc * proc)
+void FlashCursor_OnInit(struct Proc * proc)
 {
     proc->unk58 = 60;
 }
 
-void FlashCursor_OnLoop(struct GenericProc * proc)
+void FlashCursor_OnLoop(struct Proc * proc)
 {
     if (--proc->unk58 <= 0)
         Proc_Break(proc);
@@ -1995,7 +1995,7 @@ int EvtCmd_PutCursor(struct EventProc * proc)
 {
     // script[0]: position
 
-    struct GenericProc * gproc;
+    struct Proc * gproc;
     short x, y;
 
     if (proc->flags & EVENT_FLAG_SKIPPED)
@@ -2012,7 +2012,7 @@ int EvtCmd_PutCursor(struct EventProc * proc)
     return EVENT_CMDRET_YIELD;
 }
 
-void EventCursor_OnLoop(struct GenericProc * proc)
+void EventCursor_OnLoop(struct Proc * proc)
 {
     PutMapCursor(proc->timer1 << 4, proc->timer2 << 4, MAP_CURSOR_DEFAULT);
 }
@@ -2545,7 +2545,7 @@ int EvtCmd_SetWeather(struct EventProc * proc)
 {
     // script[0]: weather id
 
-    struct GenericProc * gproc;
+    struct Proc * gproc;
 
     gproc = SpawnProcLocking(ProcScr_WeatherChangeFade, proc);
     gproc->timer1 = proc->script[0];
@@ -2553,7 +2553,7 @@ int EvtCmd_SetWeather(struct EventProc * proc)
     return EVENT_CMDRET_YIELD;
 }
 
-void DoChangeWeather(struct GenericProc * proc)
+void DoChangeWeather(struct Proc * proc)
 {
     SetWeather(proc->timer1);
 }
@@ -3196,7 +3196,7 @@ void StartSupportLevelGaindPopup(ProcPtr parent)
 
 void StartGiveItem(struct Unit * unit, u16 iid, ProcPtr parent)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     u32 intParent = (u32) parent;
 
@@ -3209,12 +3209,12 @@ void StartGiveItem(struct Unit * unit, u16 iid, ProcPtr parent)
     proc->ptr = unit;
 }
 
-void GiveItem_DoPopup(struct GenericProc * proc)
+void GiveItem_DoPopup(struct Proc * proc)
 {
     StartPopup_08012120(proc->unk58, proc);
 }
 
-void GiveItem_DoGiveItem(struct GenericProc * proc)
+void GiveItem_DoGiveItem(struct Proc * proc)
 {
     HandleGiveUnitItem(proc->ptr, CreateItem(proc->unk58), proc);
 }

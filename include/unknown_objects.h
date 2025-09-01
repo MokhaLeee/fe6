@@ -436,11 +436,11 @@ extern u8 const Img_08352160[];
 extern u16 const Pal_EndingMonologueText[];
 extern const int gUnk_08353328[];
 // extern const ??? gUnk_08354728
-// extern const ??? gUnk_08354760
-// extern const ??? gUnk_08354780
-// extern const ??? gUnk_08357140
-// extern const ??? gUnk_083599AC
-// extern const ??? gUnk_0835A368
+// extern const ??? Pal_OpInfoViewLetters
+// extern const ??? Img_OpInfoViewLettersB
+// extern const ??? Img_OpInfoViewLettersA
+// extern const ??? Img_OpInfoViewIcon
+// extern const ??? Pal_OpInfoViewIcon
 // extern const ??? gUnk_0835A3E8
 // extern const ??? gUnk_0835A5D0
 // extern const ??? gUnk_0835A5F0

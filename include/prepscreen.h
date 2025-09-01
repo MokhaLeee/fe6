@@ -371,18 +371,18 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc);
 // func_fe6_0807DF60
 void func_fe6_0807DFEC(u8 a, int timer, int obj_off);
 // func_fe6_0807E06C
-void func_fe6_0807E0D4(struct GenericProc *proc);
-void func_fe6_0807E41C(struct GenericProc *proc);
+void func_fe6_0807E0D4(struct Proc *proc);
+void func_fe6_0807E41C(struct Proc *proc);
 // func_fe6_0807E544
-void func_fe6_0807E5A8(struct GenericProc *proc);
-void func_fe6_0807EB70(struct GenericProc *proc);
-void func_fe6_0807EDBC(struct GenericProc *proc);
+void func_fe6_0807E5A8(struct Proc *proc);
+void func_fe6_0807EB70(struct Proc *proc);
+void func_fe6_0807EDBC(struct Proc *proc);
 // func_fe6_0807FBE8
-void func_fe6_0807FCFC(struct GenericProc *proc);
-void func_fe6_0807FF98(struct GenericProc *proc);
-void func_fe6_08080284(struct GenericProc *proc);
-void func_fe6_080813E8(struct GenericProc *proc);
-void func_fe6_08081540(struct GenericProc *proc);
+void func_fe6_0807FCFC(struct Proc *proc);
+void func_fe6_0807FF98(struct Proc *proc);
+void func_fe6_08080284(struct Proc *proc);
+void func_fe6_080813E8(struct Proc *proc);
+void func_fe6_08081540(struct Proc *proc);
 
 void StartPrepSubItemScreen(struct PrepMenuProc * parent, int type);
 void func_fe6_080815E4(struct Unit * unit, ProcPtr parent);

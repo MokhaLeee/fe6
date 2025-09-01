@@ -46,7 +46,7 @@ static bool AiDummyAction(struct AiPerformProc * proc);
 static bool AiEscapeAction(struct AiPerformProc * proc);
 static bool AiWaitAndClearScreenAction(struct AiPerformProc * proc);
 
-static void AiActionCursor_Idle(struct GenericProc * proc);
+static void AiActionCursor_Idle(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_AiActionCursor[] =
 {
@@ -91,7 +91,7 @@ PROC_LABEL(1),
     PROC_END,
 };
 
-void AiActionCursor_Idle(struct GenericProc * proc)
+void AiActionCursor_Idle(struct Proc * proc)
 {
     PutMapCursor(proc->x, proc->y, proc->unk58);
 
@@ -103,7 +103,7 @@ void AiActionCursor_Idle(struct GenericProc * proc)
 
 void AiStartActionCursor(int x, int y, int kind, ProcPtr parent)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     proc = SpawnProcLocking(ProcScr_AiActionCursor, parent);
 

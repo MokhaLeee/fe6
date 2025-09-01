@@ -58,41 +58,41 @@ static void SetTalkFaceLayer(int talk_face, int toBack);
 static void MoveTalkFace(int talkFaceFrom, int talkFaceTo);
 static bool IsTalkFaceMoving(void);
 static void StartTalkFaceMove(int talkFaceFrom, int talkFaceTo, bool isSwap);
-static void TalkFaceMove_OnInit(struct GenericProc * proc);
-static void TalkFaceMove_OnIdle(struct GenericProc * proc);
+static void TalkFaceMove_OnInit(struct Proc * proc);
+static void TalkFaceMove_OnIdle(struct Proc * proc);
 static void Talk_OnEnd(ProcPtr proc);
-static void TalkPause_OnIdle(struct GenericProc * proc);
-static void TalkWaitForInput_OnIdle(struct GenericProc * proc);
-static void TalkShiftClearAll_OnInit(struct GenericProc * proc);
-static void TalkShiftClearAll_OnIdle(struct GenericProc * proc);
+static void TalkPause_OnIdle(struct Proc * proc);
+static void TalkWaitForInput_OnIdle(struct Proc * proc);
+static void TalkShiftClearAll_OnInit(struct Proc * proc);
+static void TalkShiftClearAll_OnIdle(struct Proc * proc);
 static void StartTalkChoice(struct TalkChoiceEnt const * choices, struct Text * text, u16 * tm, int defaultChoice, int color, ProcPtr parent);
 static void TalkChoice_OnIdle(struct TalkChoiceProc * proc);
-static void TalkShiftClear_OnInit(struct GenericProc * proc);
-static void TalkShiftClear_OnIdle(struct GenericProc * proc);
+static void TalkShiftClear_OnInit(struct Proc * proc);
+static void TalkShiftClear_OnIdle(struct Proc * proc);
 static int GetTalkPauseCmdDuration(int cmd);
 static void PutTalkBubble(int xAnchor, int yAnchor, int width, int height);
 static void StartOpenTalkBubble(void);
 static void TalkSpritePrepNextChar_Step1(ProcPtr proc);
 static void TalkSpritePrepNextChar_Step2(ProcPtr proc);
-static void TalkOpenBubble_OnIdle(struct GenericProc * proc);
+static void TalkOpenBubble_OnIdle(struct Proc * proc);
 static void InitTalkTextWin(int x, int y, int width, int height);
-static void TalkOpen_OnEnd(struct GenericProc * proc);
-static void TalkOpen_InitBlend(struct GenericProc * proc);
-static void TalkOpen_PutTalkBubble(struct GenericProc * proc);
-static void TalkOpen_OnIdle(struct GenericProc * proc);
+static void TalkOpen_OnEnd(struct Proc * proc);
+static void TalkOpen_InitBlend(struct Proc * proc);
+static void TalkOpen_PutTalkBubble(struct Proc * proc);
+static void TalkOpen_OnIdle(struct Proc * proc);
 static void StartTalkOpen(int talk_face, ProcPtr parent);
 static bool TalkHasCorrectBubble(void);
 static int GetTalkFaceHPos(int talk_face);
 static void SetTalkFaceDisp(int talk_face, int faceDisp);
 static void SetTalkFaceMouthMove(int talk_face);
 static void SetTalkFaceNoMouthMove(int talk_face);
-static void TalkPutSpriteText_OnIdle(struct GenericProc * proc);
-static void TalkPutSpriteText_OnEnd(struct GenericProc * proc);
+static void TalkPutSpriteText_OnIdle(struct Proc * proc);
+static void TalkPutSpriteText_OnEnd(struct Proc * proc);
 static int GetStrTalkLen(char const * str, bool isBubbleOpen);
-static void TalkDebug_Unk_0800CA88(struct GenericProc * proc);
-static void TalkDebug_Unk_0800CAA0(struct GenericProc * proc);
-static void TalkDebug_OnInit(struct GenericProc * proc);
-static void TalkDebug_OnIdle(struct GenericProc * proc);
+static void TalkDebug_Unk_0800CA88(struct Proc * proc);
+static void TalkDebug_Unk_0800CAA0(struct Proc * proc);
+static void TalkDebug_OnInit(struct Proc * proc);
+static void TalkDebug_OnIdle(struct Proc * proc);
 static void TalkBgSync(int bgflags);
 
 #define TALK_TEXT_BY_LINE(line) (sTalkText + ((line) + sTalkSt->top_text_num) % sTalkSt->lines)
@@ -669,7 +669,7 @@ void ResumeTalk(void)
 
 static int TalkInterpret(ProcPtr proc)
 {
-    struct GenericProc * gproc;
+    struct Proc * gproc;
     int i;
 
     for (;TRUE;)
@@ -1079,7 +1079,7 @@ static bool IsTalkFaceMoving(void)
 
 static void StartTalkFaceMove(int talkFaceFrom, int talkFaceTo, bool isSwap)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     int slot = GetFaceIdByX(GetTalkFaceHPos(talkFaceFrom) * 8);
 
@@ -1094,7 +1094,7 @@ static void StartTalkFaceMove(int talkFaceFrom, int talkFaceTo, bool isSwap)
     proc->unk6A = isSwap;
 }
 
-static void TalkFaceMove_OnInit(struct GenericProc * proc)
+static void TalkFaceMove_OnInit(struct Proc * proc)
 {
     proc->unk58 = 0;
 
@@ -1110,7 +1110,7 @@ static void TalkFaceMove_OnInit(struct GenericProc * proc)
     }
 }
 
-static void TalkFaceMove_OnIdle(struct GenericProc * proc)
+static void TalkFaceMove_OnIdle(struct Proc * proc)
 {
     if (proc->unk5C > 16)
     {
@@ -1148,7 +1148,7 @@ static void Talk_OnEnd(ProcPtr proc)
     Proc_EndEach(ProcScr_TalkShiftClearAll);
 }
 
-static void TalkPause_OnIdle(struct GenericProc * proc)
+static void TalkPause_OnIdle(struct Proc * proc)
 {
     if (proc->timer1 == 0)
     {
@@ -1159,7 +1159,7 @@ static void TalkPause_OnIdle(struct GenericProc * proc)
     proc->timer1--;
 }
 
-static void TalkWaitForInput_OnIdle(struct GenericProc * proc)
+static void TalkWaitForInput_OnIdle(struct Proc * proc)
 {
     int frame = (GetGameTime() / 2) % 0x10;
 
@@ -1180,19 +1180,19 @@ static void TalkWaitForInput_OnIdle(struct GenericProc * proc)
         Proc_Break(proc);
 }
 
-void func_fe6_0800AD58(struct GenericProc * proc)
+void func_fe6_0800AD58(struct Proc * proc)
 {
 }
 
 void StartTalkWaitForInput(ProcPtr parent, int x, int y)
 {
-    struct GenericProc * proc = SpawnProcLocking(ProcScr_TalkWaitForInput, parent);
+    struct Proc * proc = SpawnProcLocking(ProcScr_TalkWaitForInput, parent);
 
     proc->timer1 = x;
     proc->timer2 = y;
 }
 
-static void TalkShiftClearAll_OnInit(struct GenericProc * proc)
+static void TalkShiftClearAll_OnInit(struct Proc * proc)
 {
     TmFillRect(gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 4),
         sTalkSt->active_width-2, sTalkSt->lines*2, 0);
@@ -1215,7 +1215,7 @@ static void TalkShiftClearAll_OnInit(struct GenericProc * proc)
     }
 }
 
-static void TalkShiftClearAll_OnIdle(struct GenericProc * proc)
+static void TalkShiftClearAll_OnIdle(struct Proc * proc)
 {
     proc->timer1 = proc->timer1 + 1;
 
@@ -1300,7 +1300,7 @@ void TalkChoice_OnIdle(struct TalkChoiceProc * proc)
     PutUiHand(proc->x_disp + (proc->selectedChoice - 1) * 40 - 4, proc->y_disp);
 }
 
-static void TalkShiftClear_OnInit(struct GenericProc * proc)
+static void TalkShiftClear_OnInit(struct Proc * proc)
 {
     TmFillRect(gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 4),
         sTalkSt->active_width-2, sTalkSt->lines*2, 0);
@@ -1310,7 +1310,7 @@ static void TalkShiftClear_OnInit(struct GenericProc * proc)
     proc->timer1 = 0;
 }
 
-static void TalkShiftClear_OnIdle(struct GenericProc * proc)
+static void TalkShiftClear_OnIdle(struct Proc * proc)
 {
     proc->timer1 = proc->timer1 + 1;
 
@@ -1494,11 +1494,11 @@ static void PutTalkBubble(int xAnchor, int yAnchor, int width, int height)
 
 static void StartOpenTalkBubble(void)
 {
-    struct GenericProc * proc = SpawnProc(ProcScr_TalkOpenBubble, PROC_TREE_3);
+    struct Proc * proc = SpawnProc(ProcScr_TalkOpenBubble, PROC_TREE_3);
     proc->timer1 = 0;
 }
 
-static void TalkOpenBubble_OnIdle(struct GenericProc * proc)
+static void TalkOpenBubble_OnIdle(struct Proc * proc)
 {
     u8 const * img_list[] =
     {
@@ -1600,11 +1600,11 @@ void PutTalkBubbleTm(int x, int y, int width, int height)
     gBg1Tm[TM_OFFSET(x + width, y + height)] = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE) + TILE_HFLIP + TILE_VFLIP;
 }
 
-static void TalkOpen_OnEnd(struct GenericProc * proc)
+static void TalkOpen_OnEnd(struct Proc * proc)
 {
 }
 
-static void TalkOpen_InitBlend(struct GenericProc * proc)
+static void TalkOpen_InitBlend(struct Proc * proc)
 {
     proc->unk58 = 0;
 
@@ -1619,13 +1619,13 @@ static void TalkOpen_InitBlend(struct GenericProc * proc)
     SetBlendAlpha(0, 0x10);
 }
 
-static void TalkOpen_PutTalkBubble(struct GenericProc * proc)
+static void TalkOpen_PutTalkBubble(struct Proc * proc)
 {
     PutTalkBubble(proc->timer1, proc->timer2, proc->unk68, proc->unk6A);
     Proc_Break(proc);
 }
 
-static void TalkOpen_OnIdle(struct GenericProc * proc)
+static void TalkOpen_OnIdle(struct Proc * proc)
 {
     int var;
 
@@ -1642,7 +1642,7 @@ static void TalkOpen_OnIdle(struct GenericProc * proc)
 
 static void StartTalkOpen(int talk_face, ProcPtr parent)
 {
-    struct GenericProc * proc = SpawnProcLocking(ProcScr_TalkOpen, parent);
+    struct Proc * proc = SpawnProcLocking(ProcScr_TalkOpen, parent);
 
     proc->timer1 = GetTalkFaceHPos(talk_face);
     proc->timer2 = 8;
@@ -1764,7 +1764,7 @@ void PrintStringToTexts(struct Text ** texts, char const * str, int x, int y)
     PutText(texts[line], gBg0Tm + TM_OFFSET(x, line*2 + y));
 }
 
-static void TalkPutSpriteText_OnIdle(struct GenericProc * proc)
+static void TalkPutSpriteText_OnIdle(struct Proc * proc)
 {
     PutSprite(3,
         proc->x, proc->y, Sprite_TalkTextBack,
@@ -1780,14 +1780,14 @@ static void ClearHBlankA(void)
     SetOnHBlankA(NULL);
 }
 
-static void TalkPutSpriteText_OnEnd(struct GenericProc * proc)
+static void TalkPutSpriteText_OnEnd(struct Proc * proc)
 {
     CallDelayed(ClearHBlankA, 1);
 }
 
 void StartPutTalkSpriteText(int x, int y, int chr, int palid, ProcPtr parent)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     proc = FindProc(ProcScr_TalkPutSpriteText);
 
@@ -2018,23 +2018,23 @@ void StartTalkDebug(void)
     SpawnProc(ProcScr_TalkDebug, PROC_TREE_3);
 }
 
-static void TalkDebug_Unk_0800CA88(struct GenericProc * proc)
+static void TalkDebug_Unk_0800CA88(struct Proc * proc)
 {
     proc->unk34 = 1;
 }
 
-static void TalkDebug_Unk_0800CAA0(struct GenericProc * proc)
+static void TalkDebug_Unk_0800CAA0(struct Proc * proc)
 {
     DisplayBackground(BACKGROUND_7);
 }
 
-static void TalkDebug_OnInit(struct GenericProc * proc)
+static void TalkDebug_OnInit(struct Proc * proc)
 {
     proc->x = 0;
     TalkDebug_Unk_0800CA88(proc);
 }
 
-static void TalkDebug_OnIdle(struct GenericProc * proc)
+static void TalkDebug_OnIdle(struct Proc * proc)
 {
     int msg = proc->x;
 

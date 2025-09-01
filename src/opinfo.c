@@ -2,10 +2,14 @@
 #include "proc.h"
 #include "banim.h"
 #include "sound.h"
+#include "oam.h"
+#include "sprite.h"
 #include "hardware.h"
 #include "savemenu.h"
 #include "gamecontroller.h"
 #include "opinfo.h"
+
+EWRAM_OVERLAY(opinfo) u16 gOpInfoPalettes[0x200] = {};
 
 struct ProcScr CONST_DATA ProcScr_OpInfo[] = {
 	PROC_NAME_DEBUG("opinfo"),
@@ -46,7 +50,7 @@ void OpInfo_Init(struct ProcOpInfo *proc)
 
 	proc->unk_2E = 0;
 	proc->unk_30 = gUnk_0869056C[proc->class_set][0];
-	proc->timer = 0;
+	proc->fade_speed = 0;
 	proc->subproc1 = NULL;
 	proc->anim_proc = NULL;
 	proc->subproc1 = NewOpInfoEnter(proc, proc->unk_30);
@@ -99,7 +103,7 @@ void OpInfo_Branch(struct ProcOpInfo *proc)
 		break;
 	}
 
-	proc->timer = 0;
+	proc->fade_speed = 0;
 }
 
 void OpInfo_PostAnim(struct ProcOpInfo *proc)
@@ -121,14 +125,14 @@ void OpInfo_Idle(struct ProcOpInfo *proc)
 		Proc_Goto(proc, PL_OPINFO_NAME_INTRO);
 	}
 
-	if (proc->timer == 0)
+	if (proc->fade_speed == 0)
 		EndActiveClassReelBgColorProc();
 
-	if ((++proc->timer / 2) > 0xD) {
+	if ((++proc->fade_speed / 2) > 0xD) {
 		SetDispEnable(0, 0, 0, 0, 0);
 		Proc_Break(proc);
 	} else
-		func_fe6_0809485C(proc->timer);
+		OpInfo_FadeOut(proc->fade_speed);
 }
 
 void OpInfo_FadeBgmOut(struct ProcOpInfo *proc)
@@ -158,3 +162,92 @@ void StartClassDemo(u8 class_set, ProcPtr parent)
 	proc = SpawnProcLocking(ProcScr_OpInfo, parent);
 	proc->class_set = class_set;
 }
+
+struct ProcScr CONST_DATA ProcScr_OpInfoFadeOut[] = {
+	PROC_19,
+	PROC_SLEEP(0),
+	PROC_CALL(OpInfoFadeOut_Sync),
+	PROC_END,
+};
+
+void OpInfoFadeOut_Sync(struct ProcOpInfoFadeOut *proc)
+{
+	int i;
+
+	for (i = 0; i < 0x200; i++)
+		gOpInfoPalettes[i] = gPal[i];
+
+	EfxPalBlackInOut(gOpInfoPalettes, 0, 0x20, proc->speed / 2);
+
+	for (i = 0; i < 0x200; i++)
+		gPal[i] = gOpInfoPalettes[i];
+
+	EnablePalSync();
+}
+
+void OpInfo_FadeOut(u8 speed)
+{
+	struct ProcOpInfoFadeOut *proc;
+
+	proc = SpawnProc(ProcScr_OpInfoFadeOut, PROC_TREE_4);
+	proc->speed = speed;
+}
+
+void PutOpInfoViewLetter(u16 char_base, u8 char_index, int x, int y, u16 x_scale, u16 y_scale, u8 pal_off)
+{
+	int i, pal;
+
+	/**
+	 * Copy palette
+	 */
+	for (i = 1; i < 0x10; i++) {
+		if ((i + pal_off) >= 0x10) {
+			int tmp = 0xF;
+
+			gPal[0x100 + OBPAL_OFINFOVIEW_LETTER0 * 0x10 + char_index * 0x10 + i]
+				= gPal[0x100 + OBPAL_OFINFOVIEW_LETTER_REF * 0x10 + tmp];
+
+			pal = char_index + 1;
+		} else {
+			gPal[0x100 + OBPAL_OFINFOVIEW_LETTER0 * 0x10 + char_index * 0x10 + i]
+				= gPal[0x100 + OBPAL_OFINFOVIEW_LETTER_REF * 0x10 + i + pal_off];
+
+			pal = char_index + 1;
+		}
+	}
+	EnablePalSync();
+
+	if (x_scale < 8)
+		x_scale = 8;
+
+	if (y_scale < 8)
+		y_scale = 8;
+
+	SetObjAffineAuto(char_index, 0, x_scale, y_scale);
+
+
+	PutSpriteExt(
+		4,
+		OAM1_X(x) + (char_index << 9),
+		OAM1_X(y),
+		Sprites_OpInfo_08690288[char_base + char_index],
+		OAM2_PAL(pal)
+	);
+}
+
+#if 0
+void OpInfoEnter_Init(struct ProcOpInfoEnter *proc)
+{
+	int i;
+	const u16 *pr_sprites;
+
+	SetWinEnable(0, 0, 0);
+
+	proc->timer = 0;
+
+	if (proc->type == 0) {
+		proc->unk_2F = 0;
+		pr_sprites = Sprites_OpInfo_08690288;
+	}
+}
+#endif

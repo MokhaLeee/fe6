@@ -42,7 +42,7 @@ enum
 // in main.c
 extern void PutBuildInfo(u16 * tm);
 
-static void DebugTextFrame_DoPut(struct GenericProc * proc);
+static void DebugTextFrame_DoPut(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_DebugMonitor[] =
 {
@@ -65,7 +65,7 @@ void func_fe6_0801A5AC(void)
         UnitApplyBonusLevels(unit, 20);
 }
 
-static void DebugTextFrame_DoPut(struct GenericProc * proc)
+static void DebugTextFrame_DoPut(struct Proc * proc)
 {
     struct Text text;
 
@@ -86,7 +86,7 @@ static void DebugTextFrame_DoPut(struct GenericProc * proc)
 
 void PutDebugTextFrame(int x, int y, int width, char const * str)
 {
-    struct GenericProc * proc = SpawnProc(ProcScr_DebugTextFrame, PROC_TREE_3);
+    struct Proc * proc = SpawnProc(ProcScr_DebugTextFrame, PROC_TREE_3);
 
     proc->x = x;
     proc->y = y;
@@ -161,7 +161,7 @@ u32 func_fe6_0801A760(struct MenuProc * menu, struct MenuEntProc * ent)
         JTEXT("　ＯＮ"),
     };
 
-    struct GenericProc * proc = FindProc(ProcScr_DebugMonitor);
+    struct Proc * proc = FindProc(ProcScr_DebugMonitor);
 
     ClearText(&ent->text);
 
@@ -177,7 +177,7 @@ u32 func_fe6_0801A760(struct MenuProc * menu, struct MenuEntProc * ent)
 
 fu8 func_fe6_0801A7D4(struct MenuProc * menu, struct MenuEntProc * ent)
 {
-    struct GenericProc * proc = FindProc(ProcScr_DebugMonitor);
+    struct Proc * proc = FindProc(ProcScr_DebugMonitor);
 
     if (gKeySt->pressed & (KEY_BUTTON_A | KEY_DPAD_RIGHT | KEY_DPAD_LEFT))
     {
@@ -210,7 +210,7 @@ u32 func_fe6_0801A820(struct MenuProc * menu, struct MenuEntProc * ent)
         [DEBUG_WEATHER_FLAMES]    = TEXT("溶岩", "Flames"),
     };
 
-    struct GenericProc * proc = FindProc(ProcScr_DebugMonitor);
+    struct Proc * proc = FindProc(ProcScr_DebugMonitor);
 
     ClearText(&ent->text);
 
@@ -228,7 +228,7 @@ fu8 func_fe6_0801A89C(struct MenuProc * menu, struct MenuEntProc * ent)
 {
     if (gKeySt->pressed & (KEY_BUTTON_A | KEY_DPAD_RIGHT | KEY_DPAD_LEFT))
     {
-        struct GenericProc * proc = FindProc(ProcScr_DebugMonitor);
+        struct Proc * proc = FindProc(ProcScr_DebugMonitor);
 
         proc->unk58++;
         func_fe6_0801A820(menu, ent);
