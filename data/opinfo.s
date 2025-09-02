@@ -130,8 +130,8 @@ gUnk_086909A4: @ 086909A4
 gUnk_08690A53: @ 08690A53
 	.incbin "fe6-base.gba", 0x690A53, (0x690A99 - 0x690A53) @ length: 0046
 
-	.global gUnk_08690A99
-gUnk_08690A99: @ 08690A99
+	.global gClassDemoData
+gClassDemoData: @ 08690A99
 	.incbin "fe6-base.gba", 0x690A99, (0x690C14 - 0x690A99) @ length: 017B
 
 	.global gUnk_08690C14

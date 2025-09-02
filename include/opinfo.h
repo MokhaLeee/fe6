@@ -17,6 +17,15 @@ enum OpInfoModeIndex {
 	OPINFO_STATE_3,
 };
 
+struct ClassDemoData {
+	STRUCT_PAD(0x00, 0x2C);
+
+	u8 jids_2C[5];
+	u8 jids_31[8];
+};
+
+extern CONST_DATA struct ClassDemoData *gClassDemoData;
+
 enum OpInfoProcLabel {
 	PL_OPINFO_BRANMCH = 1,
 	PL_OPINFO_IDLE = 2,
@@ -70,8 +79,8 @@ struct ProcOpInfoEnter {
 	/* 2A */ u16 timer;
 	/* 2C */ u16 unk_2C;
 	/* 2E */ u8 unk_2E;
-	/* 2F */ u8 unk_2F;
-	/* 30 */ u8 type;
+	/* 2F */ u8 char_count;
+	/* 30 */ u8 sprit_count;
 };
 
 void OpInfoEnter_Init(struct ProcOpInfoEnter *proc);
@@ -94,13 +103,19 @@ ProcPtr NewOpInfoEnter(struct ProcOpInfo *proc, int a);
 // OpInfoIcon_LoopB
 // OpInfoIcon_Loop_FadeOut
 // NewOpInfoIcon
-// func_fe6_080951FC
-// func_fe6_0809525C
-// ClassInfoDisp_ExecEkrMainMini
-// ClassInfoDisp_Loop_Intro
-// ClassInfoDisp_Loop_Main
-// ClassInfoDisp_Block
-// ClassInfoDisp_OnEnd
+
+struct ProcClassInfoDisp {
+	PROC_HEADER;
+};
+
+void HBlank_ClassInfoDisp(void);
+void OpInfo_EfxmagicMiniCallBack(void);
+void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc);
+void ClassInfoDisp_Loop_Intro(struct ProcClassInfoDisp *proc);
+void ClassInfoDisp_Loop_Main(struct ProcClassInfoDisp *proc);
+void ClassInfoDisp_Block(struct ProcClassInfoDisp *proc);
+void ClassInfoDisp_OnEnd(struct ProcClassInfoDisp *proc);
+
 ProcPtr StartClassAnimDisplay(struct ProcOpInfo *proc, int index);
 // func_fe6_08095AE0
 // func_fe6_08095BCC
@@ -130,6 +145,6 @@ extern CONST_DATA u8 gUnk_0869056C[][4];
 // extern CONST_DATA ??? gUnk_086905F8
 // extern CONST_DATA ??? gUnk_086909A4
 // extern CONST_DATA ??? gUnk_08690A53
-// extern CONST_DATA ??? gUnk_08690A99
+// extern CONST_DATA ??? gClassDemoData
 // extern CONST_DATA ??? gUnk_08690C14
 // extern CONST_DATA ??? gUnk_08690D44

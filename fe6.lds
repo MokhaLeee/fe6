@@ -119,6 +119,7 @@ SECTIONS
     ewram_overlay_opinfo (NOLOAD) : ALIGN(4)
     {
         . = ALIGN(4); src/opinfo.o(ewram_overlay_opinfo);
+        . = ALIGN(4); src/opinfo_classdemo.o(ewram_overlay_opinfo);
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -615,6 +616,8 @@ SECTIONS
         src/monologue.o(.text);
         src/opinfo.o(.text);
         asm/opinfo.o(.text);
+        src/opinfo_classdemo.o(.text);
+        asm/opinfo_classdemo.o(.text);
         src/shop.o(.text);
         asm/shop.o(.text);
         src/arena_ui.o(.text);
@@ -742,6 +745,8 @@ SECTIONS
         . = ALIGN(4); data/rodata.o(.rodata);
         . = ALIGN(4); src/worldmapfx.o(.rodata);
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
+        . = ALIGN(4); src/opinfo_classdemo.o(.rodata);
+        . = ALIGN(4); data/rodata_0835C80C.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
         . = ALIGN(4); data/sounds/voicegroups.o(.rodata);

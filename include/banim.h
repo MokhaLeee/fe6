@@ -822,7 +822,7 @@ struct EkrMainMiniDesc {
     /* 20 */ u16 *oam_buf;
     /* 24 */ u8  *scr_buf;
     /* 28 */ const u16 *img_sheet;
-    /* 2C */ void *magicfx_buf;
+    /* 2C */ void *magicfx_desc;
     /* 30 */ ProcPtr proc;
 };
 

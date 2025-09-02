@@ -238,16 +238,29 @@ void PutOpInfoViewLetter(u16 char_base, u8 char_index, int x, int y, u16 x_scale
 #if 0
 void OpInfoEnter_Init(struct ProcOpInfoEnter *proc)
 {
-	int i;
+	int i, j;
 	const u16 *pr_sprites;
 
 	SetWinEnable(0, 0, 0);
 
 	proc->timer = 0;
 
-	if (proc->type == 0) {
-		proc->unk_2F = 0;
+	if (proc->sprit_count == 0) {
+		proc->char_count = 0;
 		pr_sprites = Sprites_OpInfo_08690288;
+	} else {
+		int count = 0;
+
+		pr_sprites = Sprites_OpInfo_08690288;
+
+		for (i = 0; i < proc->sprit_count; i++) {
+			for (j = 0; j < proc->char_count; j++) {
+				if (pr_sprites[++count] == NULL)
+					break;
+			}
+		}
+
+		proc->char_count = count + 1;
 	}
 }
 #endif

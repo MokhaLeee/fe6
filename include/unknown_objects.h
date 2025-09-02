@@ -448,8 +448,8 @@ extern const int gUnk_08353328[];
 // extern const ??? gUnk_0835AB28
 // extern const ??? gUnk_0835B040
 // extern const ??? gUnk_0835C034
-// extern const ??? gUnk_0835C80C
-// extern const ??? gUnk_0835C824
+// extern const ??? OpInfoClassIntroMsgs
+// extern const ??? Str_OpInfo_Mag
 // extern const ??? gUnk_0835C829
 // extern const ??? String_ShopGoldG
 // extern const ??? gUnk_0835CA78
