@@ -201,7 +201,7 @@ void WriteSaveBlockInfo(struct SaveBlockInfo * block_info, int save_id)
     block_info->magic16 = SAVE_MAGIC16;
 
 #if BUGFIX
-    chuck->offset = SramAddrToOffset(GetSaveWriteAddr(save_id));
+    block_info->offset = SramAddrToOffset(GetSaveWriteAddr(save_id));
 #else
     block_info->offset = (uintptr_t)GetSaveWriteAddr(save_id);
 #endif
@@ -343,8 +343,8 @@ bool IsMultiArenaAvailable(void)
     solved this problem accidentally LOL.
     */
 
-#ifdef BUGFIX
-    return FLASE;
+#if BUGFIX
+    return FALSE;
 #endif
 }
 
