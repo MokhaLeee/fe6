@@ -187,7 +187,7 @@ bool func_fe6_0806D028(void);
 void func_fe6_0806D064(void);
 void func_fe6_0806D0E4(void);
 // func_fe6_0806D0FC
-bool func_fe6_0806D150(void);
+bool HaveAllLegendaryWeapons(void);
 void func_fe6_0806D17C(void);
 void func_fe6_0806D194(void);
 void func_fe6_0806D1AC(void);

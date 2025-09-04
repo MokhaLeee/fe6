@@ -1534,8 +1534,15 @@ bool func_fe6_0806D0FC(int iid)
 
     FOR_UNITS_FACTION(FACTION_BLUE, unit,
     {
+#if BUGFIX
+        // BUG: If Merlinus is holding an item and he retreats, the game counts the item as not being owned, despite him not
+        // permanently dying. If he's holding a legendary weapon in chapter 22 and retreats, we're locked out of the true ending.
+        if ((unit->flags & UNIT_FLAG_DEAD) != 0 && UNIT_PID(unit) != PID_MERLINUS)
+            continue;
+#else
         if ((unit->flags & UNIT_FLAG_DEAD) != 0)
             continue;
+#endif
 
         for (i = 0; i < ITEMSLOT_INV_COUNT; i++)
         {
@@ -1547,7 +1554,7 @@ bool func_fe6_0806D0FC(int iid)
     return FALSE;
 }
 
-bool func_fe6_0806D150(void)
+bool HaveAllLegendaryWeapons(void)
 {
     u8 const * it;
 
