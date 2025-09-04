@@ -200,7 +200,7 @@ u8 CONST_DATA gUnk_08672458[] =
 EventScr CONST_DATA EventScr_Unk_08672464[] =
 {
     EvtFadeBgmOut(1)
-    EvtGotoIfNotFunc(7, func_fe6_0806D150)
+    EvtGotoIfNotFunc(7, HaveAllLegendaryWeapons)
 
     EvtFadeToBlack(16)
     EvtExitMap
