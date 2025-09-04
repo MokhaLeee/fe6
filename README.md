@@ -18,7 +18,7 @@ GBAFE decompilation progress history can be found on [laqieer's FE decomp portal
 ```bash
 # install dependence
 sudo apt update
-sudo apt install -y build-essential gcc-arm-none-eabi binutils-arm-none-eabi
+sudo apt install -y build-essential gcc-arm-none-eabi binutils-arm-none-eabi libpng-dev
 python -m pip install requests argparse numpy pillow
 ./tools/install_agbcc.sh
 ./build_tools.sh
