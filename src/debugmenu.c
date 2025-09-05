@@ -394,7 +394,7 @@ fu8 func_fe6_0801AABC(struct MenuProc * menu)
 #endif
 }
 
-void func_fe6_0801AAE0(void)
+void StartDebugMenu_LoadGame(void)
 {
     SetMainFunc(OnMain);
     SetOnVBlank(OnVBlank);
@@ -406,13 +406,13 @@ void func_fe6_0801AAE0(void)
     if (!IsSramWorking())
         PutDrawText(NULL, gBg0Tm + TM_OFFSET(0, 18), 0, 0, 30, JTEXT("ＳＲＡＭが装着されていません"));
 
-    StartMuralBackground(StartMenu(&MenuInfo_Debug_085C742C), (u8 *) BG_VRAM + CHR_SIZE * 0x580, -1);
+    StartMuralBackground(StartMenu(&MenuInfo_Debug_LoadGame), (u8 *) BG_VRAM + CHR_SIZE * 0x580, -1);
 
     PutBuildInfo(gBg2Tm + TM_OFFSET(0, 1));
     DebugPutStr(gBg2Tm + TM_OFFSET(0, 2), "DB INTERRUPT AVAILABLE");
 }
 
-fu8 func_fe6_0801AB64(struct MenuProc * menu)
+fu8 DebugMenu_OnInit_LoadGame(struct MenuProc * menu)
 {
     struct SaveBlockInfo blockInfo;
 
@@ -436,7 +436,7 @@ fu8 func_fe6_0801AB64(struct MenuProc * menu)
     }
 }
 
-fu8 func_fe6_0801ABE8(struct MenuProc * menu)
+fu8 DebugMenu_OnEnd_LoadGame(struct MenuProc * menu)
 {
     EndFaceById(0);
     EndFaceById(1);
@@ -532,12 +532,12 @@ fu8 func_fe6_0801AD50(struct MenuProc * menu, struct MenuEntProc * ent)
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 
-fu8 func_fe6_0801AD6C(struct MenuEntInfo const * info, int id)
+fu8 DebugMenu_Avaliable_LoadAltSuspend(struct MenuEntInfo const * info, int id)
 {
     return !IsValidSuspendSave(SAVE_SUSPEND_ALT) ? MENU_ENTRY_DISABLED : MENU_ENTRY_ENABLED;
 }
 
-fu8 func_fe6_0801AD84(struct MenuProc * menu, struct MenuEntProc * ent)
+fu8 DebugMenu_OnSelect_LoadAltSuspend(struct MenuProc * menu, struct MenuEntProc * ent)
 {
     if (ent->availability != 0)
         return MENU_ACTION_SE_6B;
@@ -551,12 +551,12 @@ fu8 func_fe6_0801AD84(struct MenuProc * menu, struct MenuEntProc * ent)
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }
 
-fu8 func_fe6_0801ADB4(struct MenuEntInfo const * info, int id)
+fu8 DebugMenu_Avaliable_LoadMainSuspend(struct MenuEntInfo const * info, int id)
 {
     return !IsValidSuspendSave(SAVE_SUSPEND) ? MENU_ENTRY_DISABLED : MENU_ENTRY_ENABLED;
 }
 
-fu8 func_fe6_0801ADCC(struct MenuProc * menu, struct MenuEntProc * ent)
+fu8 DebugMenu_OnSelect_LoadMainSuspend(struct MenuProc * menu, struct MenuEntProc * ent)
 {
     if (ent->availability != 0)
         return MENU_ACTION_SE_6B;
@@ -612,7 +612,7 @@ fu8 func_fe6_0801AEB8(struct MenuProc * menu, struct MenuEntProc * ent)
     return 0;
 }
 
-fu8 func_fe6_0801AEBC(struct MenuProc * menu, struct MenuEntProc * ent)
+fu8 DebugMenu_OnSelect_ReleaseEntry(struct MenuProc * menu, struct MenuEntProc * ent)
 {
     StartGame();
 
