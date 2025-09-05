@@ -37,11 +37,11 @@ static bool HasSelectTarget(struct Unit * unit, void (* list_targets)(struct Uni
 static void SetStaffUseAction(struct Unit * unit);
 static void SetItemUseAction(struct Unit * unit);
 
-static void WarpSelect_Init(struct GenericProc * proc);
-static void WarpSelect_Loop(struct GenericProc * proc);
-static void WarpSelect_HandleConfirm(struct GenericProc * proc);
-static void WarpSelect_HandleCancel(struct GenericProc * proc);
-static void WarpSelect_End(struct GenericProc * proc);
+static void WarpSelect_Init(struct Proc * proc);
+static void WarpSelect_Loop(struct Proc * proc);
+static void WarpSelect_HandleConfirm(struct Proc * proc);
+static void WarpSelect_HandleCancel(struct Proc * proc);
+static void WarpSelect_End(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_SquareSelectWarp[] =
 {
@@ -515,7 +515,7 @@ void DoUseRescueStaff(struct Unit * unit, void (* list_targets)(struct Unit * un
         DecodeMsg(MSG_C2A));
 }
 
-static void WarpSelect_Init(struct GenericProc * proc)
+static void WarpSelect_Init(struct Proc * proc)
 {
     struct SpriteAnim * anim;
 
@@ -546,7 +546,7 @@ static void WarpSelect_Init(struct GenericProc * proc)
     proc->unk4A = 2; // neither TRUE nor FALSE
 }
 
-static void WarpSelect_Loop(struct GenericProc * proc)
+static void WarpSelect_Loop(struct Proc * proc)
 {
     bool warpAllowed = gMapMovementSigned[gBmSt.cursor.y][gBmSt.cursor.x] != -1;
 
@@ -598,7 +598,7 @@ static void WarpSelect_Loop(struct GenericProc * proc)
     proc->unk4A = warpAllowed;
 }
 
-static void WarpSelect_HandleConfirm(struct GenericProc * proc)
+static void WarpSelect_HandleConfirm(struct Proc * proc)
 {
     ResetTextFont();
     EndLimitView();
@@ -613,7 +613,7 @@ static void WarpSelect_HandleConfirm(struct GenericProc * proc)
         gActiveUnit->y);
 }
 
-static void WarpSelect_HandleCancel(struct GenericProc * proc)
+static void WarpSelect_HandleCancel(struct Proc * proc)
 {
     ResetTextFont();
     EndLimitView();
@@ -626,7 +626,7 @@ static void WarpSelect_HandleCancel(struct GenericProc * proc)
     SpawnProc(ProcScr_BackToUnitMenu, PROC_TREE_3);
 }
 
-static void WarpSelect_End(struct GenericProc * proc)
+static void WarpSelect_End(struct Proc * proc)
 {
     EndLimitView();
     EndSpriteAnim(proc->ptr);

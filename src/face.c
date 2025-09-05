@@ -601,14 +601,14 @@ void PutFace80x72(u16 * tm, int fid, int chr, int pal)
     }
 }
 
-void EndFacePtr(struct GenericProc * proc)
+void EndFacePtr(struct Proc * proc)
 {
     EndFace(proc->ptr);
 }
 
 void EndFaceIn8Frames(struct FaceProc * proc)
 {
-    struct GenericProc * gproc;
+    struct Proc * gproc;
 
     gproc = SpawnProc(ProcScr_FaceEndIn8Frames, PROC_TREE_3);
     gproc->ptr = proc;

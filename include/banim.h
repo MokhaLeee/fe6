@@ -804,7 +804,7 @@ void SetAnimStateUnHidden(int pos);
 /**
  * ekrmainmini
  */
-struct EkrMainMiniBuf {
+struct EkrMainMiniDesc {
     /* 00 */ u8 valid;
     /* 01 */ u8 faction_pal;
     /* 02 */ u16 x, y;
@@ -822,21 +822,21 @@ struct EkrMainMiniBuf {
     /* 20 */ u16 *oam_buf;
     /* 24 */ u8  *scr_buf;
     /* 28 */ const u16 *img_sheet;
-    /* 2C */ void *magicfx_buf;
+    /* 2C */ void *magicfx_desc;
     /* 30 */ ProcPtr proc;
 };
 
-void EkrMainMini_ExecCommands(struct EkrMainMiniBuf *buf, struct Anim *anim);
+void EkrMainMini_ExecCommands(struct EkrMainMiniDesc *desc, struct Anim *anim);
 void EkrMainMini_C01_Blocking(struct Anim *anim);
 void EkrMainMini_C0D_ExecNextRoundAfterAttack(struct Anim *anim);
-void EkrMainMini_InitAnim(struct EkrMainMiniBuf *buf);
-void EkrMainMini_UpdateAnim(struct EkrMainMiniBuf *buf);
-void EkrMainMini_ChangeAnim(struct EkrMainMiniBuf *buf, int bid);
-void EkrMainMini_SetAnimPosition(struct EkrMainMiniBuf *buf, u16 x, u16 y);
-void EkrMainMini_SetAnimLayer(struct EkrMainMiniBuf *buf, u16 layer);
-bool EkrMainMini_CheckBlocking(struct EkrMainMiniBuf *buf);
-void EkrMainMini_EndBlock(struct EkrMainMiniBuf *buf);
-bool EkrMainMini_CheckDone(struct EkrMainMiniBuf *buf);
+void EkrMainMini_InitAnim(struct EkrMainMiniDesc *desc);
+void EkrMainMini_UpdateAnim(struct EkrMainMiniDesc *desc);
+void EkrMainMini_ChangeAnim(struct EkrMainMiniDesc *desc, int bid);
+void EkrMainMini_SetAnimPosition(struct EkrMainMiniDesc *desc, u16 x, u16 y);
+void EkrMainMini_SetAnimLayer(struct EkrMainMiniDesc *desc, u16 layer);
+bool EkrMainMini_CheckBlocking(struct EkrMainMiniDesc *desc);
+void EkrMainMini_EndBlock(struct EkrMainMiniDesc *desc);
+bool EkrMainMini_CheckDone(struct EkrMainMiniDesc *desc);
 void NewEfxAnimeDrvProc(void);
 void EndEfxAnimeDrvProc(void);
 void EkrAnimeDrv_Loop(void);
@@ -846,11 +846,11 @@ struct ProcEkrUnitMainMini {
 
     STRUCT_PAD(0x29, 0x5C);
 
-    struct EkrMainMiniBuf *buf;
+    struct EkrMainMiniDesc *desc;
 };
 
-void NewEkrUnitMainMini(struct EkrMainMiniBuf *buf);
-void EndEkrMainMini(struct EkrMainMiniBuf *buf);
+void NewEkrUnitMainMini(struct EkrMainMiniDesc *desc);
+void EndEkrMainMini(struct EkrMainMiniDesc *desc);
 void EkrMainMini_Loop(struct ProcEkrUnitMainMini *proc);
 
 /**

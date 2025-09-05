@@ -436,11 +436,11 @@ extern u8 const Img_08352160[];
 extern u16 const Pal_EndingMonologueText[];
 extern const int gUnk_08353328[];
 // extern const ??? gUnk_08354728
-// extern const ??? gUnk_08354760
-// extern const ??? gUnk_08354780
-// extern const ??? gUnk_08357140
-// extern const ??? gUnk_083599AC
-// extern const ??? gUnk_0835A368
+// extern const ??? Pal_OpInfoViewLetters
+// extern const ??? Img_OpInfoViewLettersB
+// extern const ??? Img_OpInfoViewLettersA
+// extern const ??? Img_OpInfoViewIcon
+// extern const ??? Pal_OpInfoViewIcon
 // extern const ??? gUnk_0835A3E8
 // extern const ??? gUnk_0835A5D0
 // extern const ??? gUnk_0835A5F0
@@ -448,8 +448,8 @@ extern const int gUnk_08353328[];
 // extern const ??? gUnk_0835AB28
 // extern const ??? gUnk_0835B040
 // extern const ??? gUnk_0835C034
-// extern const ??? gUnk_0835C80C
-// extern const ??? gUnk_0835C824
+// extern const ??? OpInfoClassIntroMsgs
+// extern const ??? Str_OpInfo_Mag
 // extern const ??? gUnk_0835C829
 // extern const ??? String_ShopGoldG
 // extern const ??? gUnk_0835CA78
@@ -496,8 +496,8 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? gUnk_0837AA68
 // extern const ??? gUnk_0837AAC8
 // extern const ??? gUnk_0837AAE8
-// extern const ??? gUnk_0837AB18
-// extern const ??? gUnk_0837ACB0
+// extern const ??? Img_OpAnimSparksOBJ
+// extern const ??? Pal_OpAnimSparksOBJ
 // extern const ??? Img_OpAnimThunderStorm
 // extern const ??? Tsa_OpAnimThunderStorm
 // extern const ??? gUnk_0837CB0C

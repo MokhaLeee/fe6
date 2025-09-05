@@ -115,10 +115,14 @@ void Title_InitDisp(struct ProcTitle * proc)
     SpawnProc(ProcScr_Title_08692298, proc);
 }
 
-struct ProcScr CONST_DATA ProcScr_Title_08692258[] =
-{
+struct ProcScr CONST_DATA ProcScr_Title_08692258[] = {
     PROC_CALL(func_fe6_0809B53C),
     PROC_REPEAT(func_fe6_0809B54C),
+
+    // PROC_END ?
+};
+
+struct ProcScr CONST_DATA ProcScr_Title_08692268[] = {
     PROC_CALL(func_fe6_0809B69C),
     PROC_REPEAT(func_fe6_0809B6A4),
     PROC_END,

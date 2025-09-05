@@ -169,9 +169,9 @@ PROC_LABEL(L_TRADEMENU_END),
     PROC_END
 };
 
-static void TradeMenu_HelpBox_OnInit(struct GenericProc * proc);
-static void TradeMenu_HelpBox_OnLoop(struct GenericProc * proc);
-static void TradeMenu_HelpBox_OnEnd(struct GenericProc * proc);
+static void TradeMenu_HelpBox_OnInit(struct Proc * proc);
+static void TradeMenu_HelpBox_OnLoop(struct Proc * proc);
+static void TradeMenu_HelpBox_OnEnd(struct Proc * proc);
 
 struct ProcScr CONST_DATA ProcScr_TradeMenu_HelpBox[] =
 {
@@ -525,7 +525,7 @@ static void TradeMenu_ClearDisplay(struct TradeMenuProc * proc)
     EndFaceById(1);
 }
 
-static void TradeMenu_HelpBox_OnInit(struct GenericProc * proc)
+static void TradeMenu_HelpBox_OnInit(struct Proc * proc)
 {
     struct TradeMenuProc * tradeMenu = proc->proc_parent;
 
@@ -550,7 +550,7 @@ static void TradeMenu_HelpBox_OnInit(struct GenericProc * proc)
     gKeySt->pressed = gKeySt->pressed &~ (KEY_BUTTON_B | KEY_BUTTON_R);
 }
 
-static void TradeMenu_HelpBox_OnLoop(struct GenericProc * proc)
+static void TradeMenu_HelpBox_OnLoop(struct Proc * proc)
 {
     struct TradeMenuProc * tradeMenu = proc->proc_parent;
 
@@ -580,7 +580,7 @@ static void TradeMenu_HelpBox_OnLoop(struct GenericProc * proc)
     }
 }
 
-static void TradeMenu_HelpBox_OnEnd(struct GenericProc * proc)
+static void TradeMenu_HelpBox_OnEnd(struct Proc * proc)
 {
     struct TradeMenuProc * tradeMenu = proc->proc_parent;
 

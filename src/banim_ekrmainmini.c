@@ -5,7 +5,7 @@
 #include "banim.h"
 #include "banim_data.h"
 
-void EkrMainMini_ExecCommands(struct EkrMainMiniBuf *buf, struct Anim *anim)
+void EkrMainMini_ExecCommands(struct EkrMainMiniDesc *desc, struct Anim *anim)
 {
 	int type;
 
@@ -72,9 +72,9 @@ void EkrMainMini_ExecCommands(struct EkrMainMiniBuf *buf, struct Anim *anim)
 	}
 
 	if (type & ANIM_BIT2_FRAME) {
-		if (GetAnimLayer(anim) == 0 && buf->img_sheet != anim->imgSheet) {
+		if (GetAnimLayer(anim) == 0 && desc->img_sheet != anim->imgSheet) {
 			SyncBanimImage(anim);
-			buf->img_sheet = anim->imgSheet;
+			desc->img_sheet = anim->imgSheet;
 		}
 
 		anim->flags2 &= ~(ANIM_BIT2_FRAME |
@@ -109,17 +109,17 @@ void EkrMainMini_C0D_ExecNextRoundAfterAttack(struct Anim * anim)
 	register const void *tmp_ptr;
 	register struct BanimScrFrame *scr_start asm("r1");
 	register int scr_offset asm("r0");
-	struct EkrMainMiniBuf *buf = anim->priv;
+	struct EkrMainMiniDesc *desc = anim->priv;
 
 	if (GetAnimLayer(anim) == 0) {
 		const u8 *mode_conf = BanimDefaultModeConfig;
-		struct BattleAnim *banim_data = buf->bid + gBanimTable;
+		struct BattleAnim *banim_data = desc->bid + gBanimTable;
 		const int *banim_mode = banim_data->modes;
 
-		struct Anim *anim1 = buf->anim1;
-		struct Anim *anim2 = buf->anim2;
+		struct Anim *anim1 = desc->anim1;
+		struct Anim *anim2 = desc->anim2;
 
-		const u8 *scr_buf = tmp_ptr = buf->scr_buf;
+		const u8 *scr_buf = tmp_ptr = desc->scr_buf;
 		int frame_idx = mode_conf[ANIM_ROUND_TAKING_HIT_CLOSE * 4 + 0];
 
 		scr_offset = banim_mode[frame_idx];
@@ -133,14 +133,14 @@ void EkrMainMini_C0D_ExecNextRoundAfterAttack(struct Anim * anim)
 		anim1->sprData = anim1->sprDataPool + scr_start->oam_offset;
 		anim2->sprData = anim2->sprDataPool + BAS_OAM_REF_MAX_SIZE;
 #endif
-		if (buf->img_sheet != anim->imgSheet) {
+		if (desc->img_sheet != anim->imgSheet) {
 			NewEkrChienCHR(anim);
-			buf->img_sheet = anim->imgSheet;
+			desc->img_sheet = anim->imgSheet;
 		}
 	}
 }
 
-void EkrMainMini_InitAnim(struct EkrMainMiniBuf *buf)
+void EkrMainMini_InitAnim(struct EkrMainMiniDesc *desc)
 {
 	int mode1, mode2;
 	int priority1, priority2;
@@ -153,19 +153,19 @@ void EkrMainMini_InitAnim(struct EkrMainMiniBuf *buf)
 
 	banim = gBanimTable;
 
-	mode1     = BanimDefaultModeConfig[buf->round_type * 4 + 0];
-	priority1 = BanimDefaultModeConfig[buf->round_type * 4 + 1];
-	mode2     = BanimDefaultModeConfig[buf->round_type * 4 + 2];
-	priority2 = BanimDefaultModeConfig[buf->round_type * 4 + 3];
+	mode1     = BanimDefaultModeConfig[desc->round_type * 4 + 0];
+	priority1 = BanimDefaultModeConfig[desc->round_type * 4 + 1];
+	mode2     = BanimDefaultModeConfig[desc->round_type * 4 + 2];
+	priority2 = BanimDefaultModeConfig[desc->round_type * 4 + 3];
 
 	/**
 	 * scr
 	 */
-	LZ77UnCompWram(banim[buf->bid].script, buf->scr_buf);
+	LZ77UnCompWram(banim[desc->bid].script, desc->scr_buf);
 
-	tmp_banim = &banim[buf->bid];
+	tmp_banim = &banim[desc->bid];
 	modes = tmp_banim->modes;
-	scr_buf = buf->scr_buf;
+	scr_buf = desc->scr_buf;
 
 	scr1 = AnimScr_DefaultAnim;
 	if (mode1 != (u8)BANIM_MODE_INVALID)
@@ -178,13 +178,13 @@ void EkrMainMini_InitAnim(struct EkrMainMiniBuf *buf)
 	/**
 	 * oam
 	 */
-	if (buf->pos == POS_L) {
-		oam_buf = (u8 *)buf->oam_buf;
+	if (desc->pos == POS_L) {
+		oam_buf = (u8 *)desc->oam_buf;
 
 		LZ77UnCompWram(tmp_banim->oam_l, oam_buf);
 		*(u32 *)(oam_buf + BAS_OAM_REF_MAX_SIZE) = 1;
 	} else {
-		oam_buf = (u8 *)buf->oam_buf;
+		oam_buf = (u8 *)desc->oam_buf;
 
 		LZ77UnCompWram(tmp_banim->oam_r, oam_buf);
 		*(u32 *)(oam_buf + BAS_OAM_REF_MAX_SIZE) = 1;
@@ -194,44 +194,44 @@ void EkrMainMini_InitAnim(struct EkrMainMiniBuf *buf)
 	 * front anim
 	 */
 	anim = BasCreate(scr1, priority1);
-	anim->sprDataPool = buf->oam_buf;
-	anim->xPosition = buf->x;
-	anim->yPosition = buf->y;
-	anim->oam2 = (buf->oam2_pal * 0x1000) | OAM2_LAYER(2) | buf->oam2_chr;
-	anim->flags2 |= (buf->pos << 9) | ANIM_BIT2_0400 | ANIM_BIT2_BACK_FRAME;
+	anim->sprDataPool = desc->oam_buf;
+	anim->xPosition = desc->x;
+	anim->yPosition = desc->y;
+	anim->oam2 = (desc->oam2_pal * 0x1000) | OAM2_LAYER(2) | desc->oam2_chr;
+	anim->flags2 |= (desc->pos << 9) | ANIM_BIT2_0400 | ANIM_BIT2_BACK_FRAME;
 	anim->nextRoundId = 0;
-	anim->currentRoundType = buf->round_type;
-	anim->imgBuf = buf->img_buf;
+	anim->currentRoundType = desc->round_type;
+	anim->imgBuf = desc->img_buf;
 
-	buf->anim1 = anim;
-	anim->priv = buf;
+	desc->anim1 = anim;
+	anim->priv = desc;
 
 	/**
 	 * back anim
 	 */
 	anim = BasCreate(scr2, priority2);
-	anim->sprDataPool = buf->oam_buf;
-	anim->xPosition = buf->x;
-	anim->yPosition = buf->y;
-	anim->oam2 = (buf->oam2_pal * 0x1000) | OAM2_LAYER(2) | buf->oam2_chr;
-	anim->flags2 |= (buf->pos << 9) | ANIM_BIT2_0400 | ANIM_BIT2_FRONT_FRAME;
+	anim->sprDataPool = desc->oam_buf;
+	anim->xPosition = desc->x;
+	anim->yPosition = desc->y;
+	anim->oam2 = (desc->oam2_pal * 0x1000) | OAM2_LAYER(2) | desc->oam2_chr;
+	anim->flags2 |= (desc->pos << 9) | ANIM_BIT2_0400 | ANIM_BIT2_FRONT_FRAME;
 	anim->nextRoundId = 0;
-	anim->currentRoundType = buf->round_type;
-	anim->imgBuf = buf->img_buf;
+	anim->currentRoundType = desc->round_type;
+	anim->imgBuf = desc->img_buf;
 
-	buf->anim2 = anim;
-	anim->priv = buf;
+	desc->anim2 = anim;
+	anim->priv = desc;
 
 	/**
 	 * pal
 	 */
-	LZ77UnCompWram(banim[buf->bid].pal, buf->pal_buf);
-	CpuFastCopy(buf->pal_buf + PAL_OFFSET(buf->faction_pal), gPal + 0x10 * 0x10 + PAL_OFFSET(buf->oam2_pal), 0x20);
-	buf->img_sheet = NULL; // ?
+	LZ77UnCompWram(banim[desc->bid].pal, desc->pal_buf);
+	CpuFastCopy(desc->pal_buf + PAL_OFFSET(desc->faction_pal), gPal + 0x10 * 0x10 + PAL_OFFSET(desc->oam2_pal), 0x20);
+	desc->img_sheet = NULL; // ?
 	EnablePalSync();
 }
 
-void EkrMainMini_UpdateAnim(struct EkrMainMiniBuf *buf)
+void EkrMainMini_UpdateAnim(struct EkrMainMiniDesc *desc)
 {
 	int mode1, mode2;
 	struct Anim *anim;
@@ -243,17 +243,17 @@ void EkrMainMini_UpdateAnim(struct EkrMainMiniBuf *buf)
 
 	banim = gBanimTable;
 
-	mode1 = BanimDefaultModeConfig[buf->round_type * 4 + 0];
-	mode2 = BanimDefaultModeConfig[buf->round_type * 4 + 2];
+	mode1 = BanimDefaultModeConfig[desc->round_type * 4 + 0];
+	mode2 = BanimDefaultModeConfig[desc->round_type * 4 + 2];
 
 	/**
 	 * scr
 	 */
-	LZ77UnCompWram(banim[buf->bid].script, buf->scr_buf);
+	LZ77UnCompWram(banim[desc->bid].script, desc->scr_buf);
 
-	tmp_banim = &banim[buf->bid];
+	tmp_banim = &banim[desc->bid];
 	modes = tmp_banim->modes;
-	scr_buf = buf->scr_buf;
+	scr_buf = desc->scr_buf;
 
 	scr1 = AnimScr_DefaultAnim;
 	if (mode1 != (u8)BANIM_MODE_INVALID)
@@ -266,13 +266,13 @@ void EkrMainMini_UpdateAnim(struct EkrMainMiniBuf *buf)
 	/**
 	 * oam
 	 */
-	if (buf->pos == POS_L) {
-		oam_buf = (u8 *)buf->oam_buf;
+	if (desc->pos == POS_L) {
+		oam_buf = (u8 *)desc->oam_buf;
 
 		LZ77UnCompWram(tmp_banim->oam_l, oam_buf);
 		*(u32 *)(oam_buf + BAS_OAM_REF_MAX_SIZE) = 1;
 	} else {
-		oam_buf = (u8 *)buf->oam_buf;
+		oam_buf = (u8 *)desc->oam_buf;
 
 		LZ77UnCompWram(tmp_banim->oam_r, oam_buf);
 		*(u32 *)(oam_buf + BAS_OAM_REF_MAX_SIZE) = 1;
@@ -281,88 +281,88 @@ void EkrMainMini_UpdateAnim(struct EkrMainMiniBuf *buf)
 	/**
 	 * front anim
 	 */
-	anim = buf->anim1;
+	anim = desc->anim1;
 	anim->script = scr1;
 	anim->scrCur = scr1;
-	anim->sprDataPool = buf->oam_buf;
-	anim->xPosition = buf->x;
-	anim->yPosition = buf->y;
-	anim->oam2 = (buf->oam2_pal * 0x1000) | OAM2_LAYER(2) | buf->oam2_chr;
+	anim->sprDataPool = desc->oam_buf;
+	anim->xPosition = desc->x;
+	anim->yPosition = desc->y;
+	anim->oam2 = (desc->oam2_pal * 0x1000) | OAM2_LAYER(2) | desc->oam2_chr;
 	anim->flags2 &= ANIM_BIT2_FRONT_FRAME | ANIM_BIT2_POS_RIGHT | ANIM_BIT2_0400;
 	anim->flags3 = 0;
 	anim->timer = 0;
 	anim->nextRoundId = 0;
-	anim->currentRoundType = buf->round_type;
-	anim->imgBuf = buf->img_buf;
+	anim->currentRoundType = desc->round_type;
+	anim->imgBuf = desc->img_buf;
 
 	anim->cqSize = 0;
-	buf->anim1 = anim;
+	desc->anim1 = anim;
 
 	/**
 	 * back anim
 	 */
-	anim = buf->anim2;
+	anim = desc->anim2;
 	anim->script = scr2;
 	anim->scrCur = scr2;
-	anim->sprDataPool = buf->oam_buf;
-	anim->xPosition = buf->x;
-	anim->yPosition = buf->y;
-	anim->oam2 = (buf->oam2_pal * 0x1000) | OAM2_LAYER(2) | buf->oam2_chr;
+	anim->sprDataPool = desc->oam_buf;
+	anim->xPosition = desc->x;
+	anim->yPosition = desc->y;
+	anim->oam2 = (desc->oam2_pal * 0x1000) | OAM2_LAYER(2) | desc->oam2_chr;
 	anim->flags2 &= ANIM_BIT2_FRONT_FRAME | ANIM_BIT2_POS_RIGHT | ANIM_BIT2_0400;
 	anim->flags3 = 0;
 	anim->timer = 0;
 	anim->nextRoundId = 0;
-	anim->currentRoundType = buf->round_type;
-	anim->imgBuf = buf->img_buf;
+	anim->currentRoundType = desc->round_type;
+	anim->imgBuf = desc->img_buf;
 
 	anim->cqSize = 0;
-	buf->anim2 = anim;
+	desc->anim2 = anim;
 
 	/**
 	 * pal
 	 */
-	LZ77UnCompWram(banim[buf->bid].pal, buf->pal_buf);
-	CpuFastCopy(buf->pal_buf + PAL_OFFSET(buf->faction_pal), gPal + 0x10 * 0x10 + PAL_OFFSET(buf->oam2_pal), 0x20);
+	LZ77UnCompWram(banim[desc->bid].pal, desc->pal_buf);
+	CpuFastCopy(desc->pal_buf + PAL_OFFSET(desc->faction_pal), gPal + 0x10 * 0x10 + PAL_OFFSET(desc->oam2_pal), 0x20);
 	EnablePalSync();
 }
 
-void EkrMainMini_ChangeAnim(struct EkrMainMiniBuf *buf, int bid)
+void EkrMainMini_ChangeAnim(struct EkrMainMiniDesc *desc, int bid)
 {
-	buf->bid = bid;
-	EkrMainMini_UpdateAnim(buf);
+	desc->bid = bid;
+	EkrMainMini_UpdateAnim(desc);
 }
 
-void EkrMainMini_SetAnimPosition(struct EkrMainMiniBuf *buf, u16 x, u16 y)
+void EkrMainMini_SetAnimPosition(struct EkrMainMiniDesc *desc, u16 x, u16 y)
 {
 	struct Anim * anim;
 
-	buf->x = x;
-	buf->y = y;
+	desc->x = x;
+	desc->y = y;
 
-	anim = buf->anim1;
-	anim->xPosition = buf->x;
-	anim->yPosition = buf->y;
+	anim = desc->anim1;
+	anim->xPosition = desc->x;
+	anim->yPosition = desc->y;
 
-	anim = buf->anim2;
-	anim->xPosition = buf->x;
-	anim->yPosition = buf->y;
+	anim = desc->anim2;
+	anim->xPosition = desc->x;
+	anim->yPosition = desc->y;
 }
 
-void EkrMainMini_SetAnimLayer(struct EkrMainMiniBuf *buf, u16 layer)
+void EkrMainMini_SetAnimLayer(struct EkrMainMiniDesc *desc, u16 layer)
 {
 	struct Anim * anim;
 
-	anim = buf->anim1;
+	anim = desc->anim1;
 	anim->oam2 = layer << 10;
 
-	anim = buf->anim2;
+	anim = desc->anim2;
 	anim->oam2 = layer << 10;
 }
 
-bool EkrMainMini_CheckBlocking(struct EkrMainMiniBuf *buf)
+bool EkrMainMini_CheckBlocking(struct EkrMainMiniDesc *desc)
 {
-	struct Anim * anim1 = buf->anim1;
-	struct Anim * anim2 = buf->anim2;
+	struct Anim * anim1 = desc->anim1;
+	struct Anim * anim2 = desc->anim2;
 
 	if (anim1->nextRoundId == (u16)-2)
 		return true;
@@ -373,20 +373,20 @@ bool EkrMainMini_CheckBlocking(struct EkrMainMiniBuf *buf)
 	return false;
 }
 
-void EkrMainMini_EndBlock(struct EkrMainMiniBuf *buf)
+void EkrMainMini_EndBlock(struct EkrMainMiniDesc *desc)
 {
 	struct Anim * anim;
 
-	anim = buf->anim1;
+	anim = desc->anim1;
 	anim->flags3 |= ANIM_BIT3_C01_BLOCK_END_INBATTLE;
 
-	anim = buf->anim2;
+	anim = desc->anim2;
 	anim->flags3 |= ANIM_BIT3_C01_BLOCK_END_INBATTLE;
 }
 
-bool EkrMainMini_CheckDone(struct EkrMainMiniBuf *buf)
+bool EkrMainMini_CheckDone(struct EkrMainMiniDesc *desc)
 {
-	struct Anim * anim = buf->anim1;
+	struct Anim * anim = desc->anim1;
 
 	if (anim->nextRoundId != (u16)-1)
 		return false;
@@ -424,32 +424,32 @@ struct ProcScr CONST_DATA ProcScr_EkrUnitMainMini[] = {
 	PROC_END,
 };
 
-void NewEkrUnitMainMini(struct EkrMainMiniBuf *buf)
+void NewEkrUnitMainMini(struct EkrMainMiniDesc *desc)
 {
 	struct ProcEkrUnitMainMini * proc = SpawnProc(ProcScr_EkrUnitMainMini, PROC_TREE_4);
 
-	EkrMainMini_InitAnim(buf);
+	EkrMainMini_InitAnim(desc);
 
-	proc->buf = buf;
-	buf->proc = proc;
-	buf->valid = true;
+	proc->desc = desc;
+	desc->proc = proc;
+	desc->valid = true;
 }
 
-void EndEkrMainMini(struct EkrMainMiniBuf *buf)
+void EndEkrMainMini(struct EkrMainMiniDesc *desc)
 {
-	BasRemove(buf->anim1);
-	BasRemove(buf->anim2);
+	BasRemove(desc->anim1);
+	BasRemove(desc->anim2);
 
-	buf->anim1 = 0;
-	buf->anim2 = 0;
+	desc->anim1 = 0;
+	desc->anim2 = 0;
 
-	Proc_End(buf->proc);
+	Proc_End(desc->proc);
 }
 
 void EkrMainMini_Loop(struct ProcEkrUnitMainMini * proc)
 {
-	struct EkrMainMiniBuf *buf = proc->buf;
+	struct EkrMainMiniDesc *desc = proc->desc;
 
-	EkrMainMini_ExecCommands(buf, buf->anim1);
-	EkrMainMini_ExecCommands(buf, buf->anim2);
+	EkrMainMini_ExecCommands(desc, desc->anim1);
+	EkrMainMini_ExecCommands(desc, desc->anim2);
 }

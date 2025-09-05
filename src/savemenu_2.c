@@ -495,7 +495,7 @@ u16 const * CONST_DATA gUnk_0868A260[] =
 
 void func_fe6_08089684(ProcPtr proc)
 {
-    struct SaveMenuProc * sm_proc = ((struct GenericProc *) proc)->proc_parent;
+    struct SaveMenuProc * sm_proc = ((struct Proc *) proc)->proc_parent;
 
     fu8 y, x;
     u16 hours, minutes, seconds;

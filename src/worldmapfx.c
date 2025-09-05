@@ -318,12 +318,12 @@ struct ProcScr CONST_DATA ProcScr_WmSpriteDisp[] =
     PROC_REPEAT(WmSpriteDisp_Loop),
 };
 
-void WmSpriteDisp_Init(struct GenericProc * proc)
+void WmSpriteDisp_Init(struct Proc * proc)
 {
     proc->timer1 = 0;
 }
 
-void WmSpriteDisp_Loop(struct GenericProc * proc)
+void WmSpriteDisp_Loop(struct Proc * proc)
 {
     int pal_off;
 
@@ -433,14 +433,14 @@ void StartWmZoomIntro(ProcPtr parent)
     SpawnProcLocking(ProcScr_WmZoomIntro, parent);
 }
 
-void WmZoomIntro_Init(struct GenericProc * proc)
+void WmZoomIntro_Init(struct Proc * proc)
 {
     proc->unk44 = 0x200;
     proc->unk48 = 0x80;
     proc->timer1 = 0;
 }
 
-void WmZoomIntro_Loop(struct GenericProc * proc)
+void WmZoomIntro_Loop(struct Proc * proc)
 {
     int val1 = Interpolate(INTERPOLATE_RCUBIC, 0x8000, 0,     proc->timer1, 35);
     int val2 = Interpolate(INTERPOLATE_RCUBIC, 0x400,  0x100, proc->timer1++, 35);
@@ -460,7 +460,7 @@ struct ProcScr CONST_DATA ProcScr_WmRotIntro[] =
     PROC_END,
 };
 
-void WmRotIntro_Init(struct GenericProc * proc)
+void WmRotIntro_Init(struct Proc * proc)
 {
     proc->timer1 = 0;
     InitScanlineEffect();
@@ -483,7 +483,7 @@ void WmRotIntro_Init(struct GenericProc * proc)
     SetBlendBrighten(proc->timer1);
 }
 
-void WmRotIntro_Loop(struct GenericProc * proc)
+void WmRotIntro_Loop(struct Proc * proc)
 {
     func_fe6_08069DA4(0x78, 0x50, Interpolate(INTERPOLATE_RCUBIC, 1, 200, proc->timer1, 45));
     SetBlendBrighten(Interpolate(INTERPOLATE_LINEAR, 0x10, 0, proc->timer1, 40));
@@ -492,7 +492,7 @@ void WmRotIntro_Loop(struct GenericProc * proc)
         Proc_Break(proc);
 }
 
-void WmRotIntro_End(struct GenericProc * proc)
+void WmRotIntro_End(struct Proc * proc)
 {
     SetBlendNone();
     SetOnHBlankA(NULL);

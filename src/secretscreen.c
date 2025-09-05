@@ -21,14 +21,16 @@ EWRAM_OVERLAY(0) int gSecretScreenRN = 0;
 EWRAM_OVERLAY(0) u8 Unk_02016924[0xA0] = {};
 EWRAM_OVERLAY(0) struct UnkStruct_020169C4 Unk_020169C4 = {};
 
-#if 0
 void func_fe6_08083A68(int a, int b)
 {
-	int i, j;
+	int i, j, k;
+	struct SecretScreenData *data;
 
 	gSecretScreenRN = Unk_020168F4;
 
-	for (i = 0; &gSecretScreenData[i] < &gSecretScreenData[5]; i++) {
+	data = gSecretScreenData;
+
+	for (i = 0; i < 5; i++) {
 		gSecretScreenData[i].numbers[0]  = SecretRnGetter_08082FE8(b, a, 8);
 		gSecretScreenData[i].numbers[1]  = SecretRnGetter_08082FE8(b, a, 1);
 		gSecretScreenData[i].numbers[2]  = SecretRnGetter_08082FE8(b, a, 5);
@@ -48,10 +50,9 @@ void func_fe6_08083A68(int a, int b)
 			gSecretScreenData[i].numbers[19 + j] = SecretRnGetter_08082FE8(b, a, 8);
 	}
 
-	for (j = 0; j < 10; j++)
-		Unk_0203D518[j] = SecretRnGetter_08082FE8(b, a, 9);
+	for (i = 0; i < 10; i++)
+		Unk_0203D518[i] = SecretRnGetter_08082FE8(b, a, 2);
 }
-#endif
 
 int GetFlattenArrayOffset(int line, int col)
 {
@@ -65,8 +66,8 @@ int GetFlattenArrayOffset(int line, int col)
 
 			ret++;
 		}
-    }
-    return 0;
+	}
+	return 0;
 }
 
 void func_fe6_08083BC4(struct Unit *units[], int count)

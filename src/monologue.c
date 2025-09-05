@@ -32,12 +32,12 @@ void StartIntroMonologue(ProcPtr proc)
     SpawnProcLocking(ProcScr_Monologue, proc);
 }
 
-void Monologue_End(struct GenericProc * proc)
+void Monologue_End(struct Proc * proc)
 {
     SetOnHBlankA(NULL);
 }
 
-void Monologue_Init(struct GenericProc * proc)
+void Monologue_Init(struct Proc * proc)
 {
     CONST_DATA static u16 bg_config[12] =
     {
@@ -114,7 +114,7 @@ void MonologueSetTm(u16 * tm, int tm_ref)
     }
 }
 
-void Monologue_Loop(struct GenericProc * proc)
+void Monologue_Loop(struct Proc * proc)
 {
     if (proc->timer1 == 0x390)
     {
@@ -144,13 +144,13 @@ struct ProcScr CONST_DATA ProcScr_MonologueDisp[] =
 #endif
 };
 
-void MonologueDisp_Init(struct GenericProc * proc)
+void MonologueDisp_Init(struct Proc * proc)
 {
     proc->timer1 = 0;
     proc->timer2 = 0;
 }
 
-void MonologueDisp_Loop(struct GenericProc * proc)
+void MonologueDisp_Loop(struct Proc * proc)
 {
     if (proc->timer1++ > 2)
     {

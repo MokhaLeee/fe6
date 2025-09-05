@@ -847,7 +847,7 @@ void PlayerPhase_0801BD08(ProcPtr proc)
     SetBlendNone();
 }
 
-void OpenLimitView_Init(struct GenericProc * proc)
+void OpenLimitView_Init(struct Proc * proc)
 {
     RegisterVramMove(Img_LimitViewSquares + 5 * 4 * CHR_SIZE, CHR_SIZE * (BGCHR_LIMITVIEW + 4), CHR_SIZE * 4);
 
@@ -862,7 +862,7 @@ void OpenLimitView_Init(struct GenericProc * proc)
     }
 }
 
-void OpenLimitView_Loop(struct GenericProc * proc)
+void OpenLimitView_Loop(struct Proc * proc)
 {
     RegisterVramMove(gOpenLimitViewImgLut[proc->unk4C], CHR_SIZE * BGCHR_LIMITVIEW, 4 * CHR_SIZE);
 
@@ -872,7 +872,7 @@ void OpenLimitView_Loop(struct GenericProc * proc)
         Proc_Break(proc);
 }
 
-void LimitView_Init(struct GenericProc * proc)
+void LimitView_Init(struct Proc * proc)
 {
     int ix, iy;
 
@@ -914,7 +914,7 @@ void LimitView_Init(struct GenericProc * proc)
     InitBmBgLayers();
 }
 
-void LimitView_Loop(struct GenericProc * proc)
+void LimitView_Loop(struct Proc * proc)
 {
     int frame = (GetGameTime() / 2) & 0x1F;
 
@@ -928,7 +928,7 @@ void LimitView_Loop(struct GenericProc * proc)
         ApplyPaletteExt(Pal_LimitViewGreen + frame, 0x20*(BGPAL_LIMITVIEW+1) + 2, 0x20);
 }
 
-void LimitView_Deinit(struct GenericProc * proc)
+void LimitView_Deinit(struct Proc * proc)
 {
     if (proc->unk4A & LIMITVIEW_BLUE)
     {
@@ -945,7 +945,7 @@ void LimitView_Deinit(struct GenericProc * proc)
 
 void StartLimitView(int flags)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     if ((proc = FindProc(ProcScr_LimitView)))
     {

@@ -81,24 +81,24 @@ struct MenuEntInfo CONST_DATA MenuEntInfo_DebugCpControl[] =
     { 0 }, // end
 };
 
-struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_085C65F8[] =
+struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_LoadGame[] =
 {
     {
         .label = JTEXT("　リリースエントリ"),
         .available = MenuEntryEnabled,
-        .on_select = func_fe6_0801AEBC,
+        .on_select = DebugMenu_OnSelect_ReleaseEntry,
     },
 
     {
         .label = JTEXT("　どこでも再開"),
-        .available = func_fe6_0801ADB4,
-        .on_select = func_fe6_0801ADCC,
+        .available = DebugMenu_Avaliable_LoadMainSuspend,
+        .on_select = DebugMenu_OnSelect_LoadMainSuspend,
     },
 
     {
         .label = JTEXT("　手再開"),
-        .available = func_fe6_0801AD6C,
-        .on_select = func_fe6_0801AD84,
+        .available = DebugMenu_Avaliable_LoadAltSuspend,
+        .on_select = DebugMenu_OnSelect_LoadAltSuspend,
     },
 
     { 0 }, // end
@@ -114,8 +114,8 @@ struct MenuEntInfo CONST_DATA MenuEntInfo_Debug_085C6688[] =
 
     {
         .label = JTEXT("　手再開"),
-        .available = func_fe6_0801AD6C,
-        .on_select = func_fe6_0801AD84,
+        .available = DebugMenu_Avaliable_LoadAltSuspend,
+        .on_select = DebugMenu_OnSelect_LoadAltSuspend,
     },
 
     { 0 }, // end
@@ -813,12 +813,12 @@ struct MenuInfo CONST_DATA MenuInfo_DebugCpControl =
     .on_b_press = func_fe6_0801A748,
 };
 
-struct MenuInfo CONST_DATA MenuInfo_Debug_085C742C =
+struct MenuInfo CONST_DATA MenuInfo_Debug_LoadGame =
 {
     .rect = { 9, 4, 12, 0 },
-    .entries = MenuEntInfo_Debug_085C65F8,
-    .on_init = func_fe6_0801AB64,
-    .on_end = func_fe6_0801ABE8,
+    .entries = MenuEntInfo_Debug_LoadGame,
+    .on_init = DebugMenu_OnInit_LoadGame,
+    .on_end = DebugMenu_OnEnd_LoadGame,
 };
 
 struct MenuInfo CONST_DATA MenuInfo_Debug_085C7450 =

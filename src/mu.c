@@ -422,7 +422,7 @@ struct MuProc * StartMuScripted(u16 x, u16 y, u16 jid, int pal, u8 const * moves
     return mu;
 }
 
-void MuStepSe_Init(struct GenericProc * proc)
+void MuStepSe_Init(struct Proc * proc)
 {
     proc->unk58 = 0;
     proc->timer1 = 0;
@@ -431,12 +431,12 @@ void MuStepSe_Init(struct GenericProc * proc)
     proc->timer2 = 0;
 }
 
-void MuStepSe_PlaySeA(struct GenericProc * proc)
+void MuStepSe_PlaySeA(struct Proc * proc)
 {
     PlaySeSpacial(proc->unk58, proc->timer1);
 }
 
-void MuStepSe_PlaySeB(struct GenericProc * proc)
+void MuStepSe_PlaySeB(struct Proc * proc)
 {
     if (proc->unk5C != 0)
         PlaySeSpacial(proc->unk5C, proc->timer2);
@@ -444,7 +444,7 @@ void MuStepSe_PlaySeB(struct GenericProc * proc)
 
 void StartPlayMuStepSe(int song, int alt_offset, int x)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     proc = FindProc(ProcScr_MuStepSe);
 
@@ -982,7 +982,7 @@ u16 const * GetMuAnimForJid(u16 jid)
 
 void StartMuDeathFade(struct MuProc * mu)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     mu->state = MU_STATE_DEATHFADE;
 
@@ -1002,7 +1002,7 @@ void StartMuDeathFade(struct MuProc * mu)
     PlaySe(SONG_D6);
 }
 
-void MuDeathFade_OnLoop(struct GenericProc * proc)
+void MuDeathFade_OnLoop(struct Proc * proc)
 {
     SetBlendConfig(0, (proc->timer1--) >> 1, 0x10, 0);
 
@@ -1045,7 +1045,7 @@ void StartMuFadeIntoFlash(struct MuProc * mu, int flash)
 
 void StartMuFadeFromFlash(struct MuProc * mu)
 {
-    struct GenericProc * proc;
+    struct Proc * proc;
 
     StartPalFade(gPal + ((0x20 * (0x10 + mu->config->pal)) >> 1), 0x10 + OBPAL_MU_FADE, 8, mu);
 
@@ -1053,7 +1053,7 @@ void StartMuFadeFromFlash(struct MuProc * mu)
     proc->ptr = mu;
 }
 
-void MuRestorePalInfo_Apply(struct GenericProc * proc)
+void MuRestorePalInfo_Apply(struct Proc * proc)
 {
     struct MuProc * mu = proc->ptr;
     mu->sprite_anim->oam2 = mu->config->chr + OAM2_PAL(mu->config->pal) + OAM2_LAYER(2);
