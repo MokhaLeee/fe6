@@ -16,7 +16,7 @@ GBAFE decompilation progress history can be found on [laqieer's FE decomp portal
 - get a copy of the original rom (still required for every build for now), put it in this folder and name it `fe6-base.gba`.
 
 ```bash
-# install dependence
+# install dependencies
 sudo apt update
 sudo apt install -y build-essential gcc-arm-none-eabi binutils-arm-none-eabi libpng-dev
 python -m pip install requests argparse numpy pillow
@@ -28,6 +28,19 @@ make compare
 ```
 
 In the future, a native GCC or GCC-like C compiler (such as clang) will be required to build tools, there is just no tool to build yet.
+
+## Building with Docker
+
+If you're on Windows, MacOS, or a Linux distribution without the necessary packages, you can build the project using [Docker](https://www.docker.com/get-started/), which will create a small Virtual Machine (VM) with all the tools you need.
+
+- Download [Docker Desktop](https://docs.docker.com/get-started/get-docker/) and open it.
+- Download our Dockerfile. Open a terminal and navigate to the Dockerfile's location.
+- `docker build --tag fe6_image .` to build our Docker image.
+- `docker run -it --name fe6_container fe6_image` to create a VM and boot into its shell.
+
+The VM will have all dependencies preinstalled, and a `setup.sh` script which you can run to automatically clone the repo and build agbcc+tools. All you have to do is copy your ROM to the repo's root and run `make compare` to build the project. To copy files between the VM and host, use the [`docker cp` command](https://docs.docker.com/reference/cli/docker/container/cp/#examples)
+
+On subsequent runs, you can start the VM again with `docker start -ai fe6_container`. Many IDEs and text editors, such as Visual Studio Code and CLion, have Docker integration and can connect to your VM for easy development.
 
 ## Contributing
 
