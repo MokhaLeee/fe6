@@ -13,7 +13,7 @@ enum video_alloc_credit {
 };
 
 // SetupCreditCharacterGlyphs
-// func_fe6_0808FDE8
+// PutEndingCreditTm
 // EndingCredit_SetupGfx
 // GameCredit_Init
 void EndingCredit_ReinitType2(void);

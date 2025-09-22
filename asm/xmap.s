@@ -1858,7 +1858,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 	mov r0, r8
 	movs r2, #0xf
 	movs r3, #0xa
-	bl func_fe6_0808FDE8
+	bl PutEndingCreditTm
 	ldr r4, .L0808BBA8 @ =Img_MonologueBG
 	movs r0, #3
 	bl GetBgChrOffset
