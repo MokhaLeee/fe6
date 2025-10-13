@@ -4,6 +4,7 @@
 #include "proc.h"
 #include "ui.h"
 #include "augury.h"
+#include "playrank.h"
 #include "ending_credit.h"
 
 void SetupCreditCharacterGlyphs(void)
@@ -120,3 +121,39 @@ void EndingCredit_ReinitType0(struct ProcEndingCredit *proc)
 	gEndingDispType = ENDING_DISP_0;
 	EndingCredit_Reinit(proc);
 }
+
+u8 func_fe6_0808FF04(struct ProcEndingfx *proc, int b, int c)
+{
+	if (unk_02016A42 <= 0x13) {
+		unk_02016A43[proc->unk_4C] = 0x16;
+		unk_02016AC3[proc->unk_4C] = c >> 1;
+	}
+
+	else if (unk_02016AC3[proc->unk_4C] != 0) {
+		unk_02016AC3[proc->unk_4C]--;
+	} else {
+		unk_02016A43[proc->unk_4C] += 4;
+
+		if (unk_02016A43[proc->unk_4C] > b)
+			unk_02016A43[proc->unk_4C] = b;
+
+		return unk_02016A43[proc->unk_4C++];
+	}
+
+	proc->unk_4C++;
+	return 0xF0;
+}
+
+int func_fe6_0808FF9C(int a, int b, int c)
+{
+	int i;
+
+	for (i = 0; gUnk_0868BB1C[i].unk_0 != 0; i++) {
+		if (gUnk_0868BB1C[i].unk_0 == b && gUnk_0868BB1C[i].unk_1 == c) {
+			a = gUnk_0868BB1C[i].unk_2 + a - 8;
+            break;
+		}
+	}
+	return a;
+}
+

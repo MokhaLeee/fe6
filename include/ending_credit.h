@@ -27,6 +27,14 @@ struct ProcEndingCredit {
 	u16 unk_64;
 };
 
+struct ProcEndingfx {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x4C);
+
+	i16 unk_4C;
+};
+
 // SetupCreditCharacterGlyphs
 // PutEndingCreditTm
 // EndingCredit_Reinit
