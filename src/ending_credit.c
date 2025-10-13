@@ -2,6 +2,8 @@
 #include "hardware.h"
 #include "util.h"
 #include "proc.h"
+#include "ui.h"
+#include "augury.h"
 #include "ending_credit.h"
 
 void SetupCreditCharacterGlyphs(void)
@@ -81,3 +83,40 @@ asm("\
 ");
 }
 #endif
+
+void EndingCredit_Reinit(struct ProcEndingCredit *proc)
+{
+	UnpackUiWindowFrameGraphics();
+
+	proc->unk_64 = 0;
+	gCreditInfoDispStep = 0;
+	unk_02016A3D = 0;
+	unk_02016A3F = 0;
+	gEndingStep = 0;
+
+	SetBlendAlpha(0, 0x10);
+	SetBlendTargetA(1, 1, 0, 0, 0);
+	SetBlendTargetB(0, 0, 1, 1, 0);
+
+	SetupCreditCharacterGlyphs();
+}
+
+void GameCredit_Init(struct ProcEndingCredit *proc)
+{
+	gEndingDispType = ENDING_DISP_1;
+	EndingCredit_Reinit(proc);
+	SetupEndingPInfo2Uids();
+}
+
+void EndingCredit_ReinitType2(struct ProcEndingCredit *proc)
+{
+	gEndingDispType = ENDING_DISP_2;
+	EndingCredit_Reinit(proc);
+	SetupEndingPInfo2Uids();
+}
+
+void EndingCredit_ReinitType0(struct ProcEndingCredit *proc)
+{
+	gEndingDispType = ENDING_DISP_0;
+	EndingCredit_Reinit(proc);
+}
