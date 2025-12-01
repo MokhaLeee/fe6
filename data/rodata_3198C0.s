@@ -80,8 +80,8 @@ gUnk_083215B8: @ 083215B8
 gUnk_08321EE4: @ 08321EE4
 	.incbin "fe6-base.gba", 0x321EE4, (0x321F24 - 0x321EE4) @ length: 0040
 
-	.global gUnk_08321F24
-gUnk_08321F24: @ 08321F24
+	.global gUnk_Ui_Pal_08321F24
+gUnk_Ui_Pal_08321F24: @ 08321F24
 	.incbin "fe6-base.gba", 0x321F24, (0x321FA4 - 0x321F24) @ length: 0080
 
 	.global gUnk_08321FA4

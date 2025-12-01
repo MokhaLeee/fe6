@@ -319,7 +319,15 @@ extern CONST_DATA struct ProcScr ProcScr_PlayRank[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRankTrail[];
 // extern CONST_DATA ??? BgConf_0868BA24
 // extern CONST_DATA ??? gUnk_0868BA3C
-// extern CONST_DATA ??? gUnk_0868BB1C
+
+struct UnkStruct_0868BB1C {
+	u8 unk_0;
+	u8 unk_1;
+	u8 unk_2;
+	u8 unk_3;
+};
+
+extern CONST_DATA struct UnkStruct_0868BB1C gUnk_0868BB1C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB3C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB5C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB7C[];

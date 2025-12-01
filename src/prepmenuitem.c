@@ -89,7 +89,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
 
             if (unit->flags & UNIT_FLAG_NOT_DEPLOYED)
             {
-                if ((proc->link_arena_flag & 1) == 0 || func_fe6_08082B74(unit) != 0)
+                if ((proc->link_arena_flag & 1) == 0 || CanUnitUseWeaponsInArena(unit) != 0)
                 {
                     if (proc->max_counter > proc->cur_counter)
                     {
@@ -106,7 +106,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
                 }
                 else
                 {
-                    PrepMenuStartHelpbox(
+                    StartPrepErrorHelpbox(
                         (proc->list_num_cur & 1) * 0x40 + 0x70,
                         proc->hand_y_pos * 0x10 + 0x28,
                         MSG_6C1,
@@ -212,7 +212,7 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
         {
             proc->unit1 = GetUnitFromPrepList(proc->unk_31);
             proc->unit2 = GetUnitFromPrepList(proc->list_num_cur);
-            func_fe6_080829E8(proc, 1);
+            NewSallyCir2(proc, 1);
             proc->sub2_action = 2;
             Proc_Goto(proc, 3);
             PlaySe(SONG_6A);
@@ -231,7 +231,7 @@ void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc)
         else
         {
             proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
-            func_fe6_080829E8(proc, 1);
+            NewSallyCir2(proc, 1);
             proc->sub2_action = 4;
             Proc_Goto(proc, 3);
             PlaySe(SONG_6A);
@@ -244,7 +244,7 @@ void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc)
     if (proc->unk_29 == 0)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
-        func_fe6_080829E8(proc, 1);
+        NewSallyCir2(proc, 1);
         proc->sub2_action = 3;
         Proc_Goto(proc, 3);
         PlaySe(SONG_6A);
@@ -256,7 +256,7 @@ void PrepScreenSubMenu_AllItems(struct PrepMenuProc * proc)
     if (proc->unk_29 == 0)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
-        func_fe6_080829E8(proc, 1);
+        NewSallyCir2(proc, 1);
         proc->sub2_action = 5;
         Proc_Goto(proc, 3);
         PlaySe(SONG_6A);

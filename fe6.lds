@@ -77,7 +77,9 @@ SECTIONS
         . = 0x0155E4; gPrepMenuItemCnt = .;
         . = 0x015698; gPrepSubMenuIcons = .;
         . = 0x01636A; gUnk_0201636A = .;
-        . = 0x016874; gUnk_02016874 = .; /* big jump here? */
+        . = 0x01636C; sSallyCirWinH_obj = .;
+        . = 0x01686C; sSallyCirWinH = .;
+        . = 0x016874; gUnk_Pal_02016874 = .; /* big jump here? */
         . = 0x0168F0;
         . = ALIGN(4); src/secretscreen.o(ewram_overlay_0);
         . = 0x0169CC;
@@ -593,6 +595,8 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
+        src/prep_sallycir.o(.text);
+        src/prep_utils.o(.text);
         asm/secretscreen.o(.text);
         src/secretscreen.o(.text);
         src/save_core.o(.text);
@@ -874,6 +878,9 @@ SECTIONS
         . = ALIGN(4); src/prepmenuitem.o(.data);
         . = ALIGN(4); src/prepscreenfx.o(.data);
         . = ALIGN(4); data/data_67829C.o(.data);
+        . = ALIGN(4); src/prep_sallycir.o(.data);
+        . = ALIGN(4); src/prep_utils.o(.data);
+        . = ALIGN(4); asm/secretscreen.o(.data);
         . = ALIGN(4); src/chapterunits.o(.data);
         . = ALIGN(4); data/data_mapchangeinfo.o(.data);
         . = ALIGN(4); src/save_core.o(.data);

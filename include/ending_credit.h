@@ -12,12 +12,35 @@ enum video_alloc_credit {
 	OBCHR_CREDIT_GLYPH_LOW = 0x200,
 };
 
+enum ending_disp_type {
+	ENDING_DISP_0 = 0,
+	ENDING_DISP_1,
+	ENDING_DISP_2,
+	ENDING_DISP_3,
+};
+
+struct ProcEndingCredit {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x64);
+
+	u16 unk_64;
+};
+
+struct ProcEndingfx {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x4C);
+
+	i16 unk_4C;
+};
+
 // SetupCreditCharacterGlyphs
-// func_fe6_0808FDE8
-// EndingCredit_SetupGfx
+// PutEndingCreditTm
+// EndingCredit_Reinit
 // GameCredit_Init
-void EndingCredit_ReinitType2(void);
-void EndingCredit_ReinitType0(void);
+void EndingCredit_ReinitType2(struct ProcEndingCredit *proc);
+void EndingCredit_ReinitType0(struct ProcEndingCredit *proc);
 // func_fe6_0808FF04
 // func_fe6_0808FF9C
 // func_fe6_0808FFE0
@@ -57,7 +80,7 @@ void StartGameCredit(void);
 // HBlank_Ending_DyadPInfo
 void func_fe6_080914DC(void);
 void func_fe6_0809154C(void);
-// SetupEndingPInfo2Uids
+void SetupEndingPInfo2Uids(void);
 // CharacterEnding2_InitDisp
 // PopNextEndingPerson
 // PopNextEnding2Person

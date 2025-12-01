@@ -1,6 +1,35 @@
 	.include "macro.inc"
+	.include "asm_proc.inc"
 
 	.syntax unified
+
+	.data
+	.global gUnk_0867978C
+gUnk_0867978C: @ 0867978C
+	.incbin "fe6-base.gba", 0x67978C, (0x6797D0 - 0x67978C) @ length: 0044
+
+	.global ProcScr_Prep_Password
+ProcScr_Prep_Password: @ 086797D0
+	.incbin "fe6-base.gba", 0x6797D0, (0x679820 - 0x6797D0) @ length: 0050
+
+	.global gUnk_08679820
+gUnk_08679820: @ 08679820
+	.incbin "fe6-base.gba", 0x679820, (0x679924 - 0x679820) @ length: 0104
+
+	.global ProcScr_SecretScreen
+ProcScr_SecretScreen: @ 08679924
+	PROC_SLEEP 0
+	PROC_CALL SecretScreen_Init
+	PROC_CALL StartMidFadeFromBlack
+	PROC_REPEAT WhileFadeExists
+	PROC_REPEAT SecretScreen_Loop_Dummy
+	PROC_CALL StartMidFadeToBlack
+	PROC_REPEAT WhileFadeExists
+PROC_LABEL 0
+	PROC_CALL SecretScreen_End
+	PROC_END
+
+	.text
 
 	thumb_func_start func_fe6_08082E74
 func_fe6_08082E74: @ 0x08082E74
