@@ -14,27 +14,25 @@
 
 #include "prepscreen.h"
 
-#if 0
-u8 func_fe6_08082A08(void)
+u8 GetTotalSupplyItemCount(void)
 {
 	u8 i, ret = 0;
 	const u16 *supply = GetSupplyItems();
 
 	for (i = 0; i < 100; i++) {
-		if (supply[i] == 0)
+		if (supply[i] != 0)
+			ret++;
+		else
 			break;
-
-		ret++;
 	}
 	return ret;
 }
-#endif
 
 struct ProcScr CONST_DATA ProcScr_ViewCounter[] = {
-    PROC_NAME_DEBUG("ViewCounter"),
-    PROC_SLEEP(0),
-    PROC_REPEAT(ViewCounter_Loop),
-    PROC_END,
+	PROC_NAME_DEBUG("ViewCounter"),
+	PROC_SLEEP(0),
+	PROC_REPEAT(ViewCounter_Loop),
+	PROC_END,
 };
 
 void ViewCounter_Loop(struct ViewCounterProc *proc)
@@ -49,10 +47,10 @@ void ViewCounter_Loop(struct ViewCounterProc *proc)
 
 void StartViewCounter(u16 frames, ProcPtr parent)
 {
-    struct ViewCounterProc *proc = SpawnProc(ProcScr_ViewCounter, parent);
+	struct ViewCounterProc *proc = SpawnProc(ProcScr_ViewCounter, parent);
 
-    proc->counter = 0;
-    proc->targetFrameCount = frames;
+	proc->counter = 0;
+	proc->targetFrameCount = frames;
 
 	SetDispEnable(0, 0, 0, 0, 0);
 }
@@ -73,9 +71,9 @@ void TryUnlockProc(ProcPtr proc)
 }
 
 struct ProcScr CONST_DATA ProcScr_PrepErrorHelpboxLister[] = {
-    PROC_SLEEP(1),
-    PROC_REPEAT(PrepHbKeyListener_Loop),
-    PROC_END,
+	PROC_SLEEP(1),
+	PROC_REPEAT(PrepHbKeyListener_Loop),
+	PROC_END,
 };
 
 void PrepHbKeyListener_Loop(ProcPtr proc)
@@ -197,7 +195,7 @@ void func_fe6_08082D08(struct Proc_Prep_08679774 *proc, int unused_1, fu16 obpal
 {
 	proc->vram = OBJ_VRAM0 + 0x6000;
 
-    obpal = (obpal & 0xF) + 0x10;
+	obpal = (obpal & 0xF) + 0x10;
 
 	InitSpriteTextFont(&proc->font, (void *)proc->vram, (obpal));
 	ApplyPalette(Pal_Text + 0x10, (obpal));
@@ -227,26 +225,26 @@ void func_fe6_08082D54(struct Proc_Prep_08679774 *proc, int msg_order_idx)
 }
 
 u16 CONST_DATA Sprite_Prep_0867976C[] = {
-    1,
-    OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_AFFINE_ID(1), OAM2_LAYER(3),
+	1,
+	OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_AFFINE_ID(1), OAM2_LAYER(3),
 };
 
 void func_fe6_08082DA4(struct Proc_Prep_08679774 *proc, int x, int y, u32 scale)
 {
-    int _y = y;
-    u16 _scale;
-    struct Proc_Prep_08679774 *_proc;
-    scale <<= 16;
-    scale >>= 16;
+	int _y = y;
+	u16 _scale;
+	struct Proc_Prep_08679774 *_proc;
+	scale <<= 16;
+	scale >>= 16;
 	_scale = scale;
-    _proc = proc;
+	_proc = proc;
 
 	if (scale >= 0x10) {
 		int i;
-        int tmp;
+		int tmp;
 
-        y += 8;
-        tmp = scale;
+		y += 8;
+		tmp = scale;
 		_y = y - (tmp /= 32);
 
 		SetObjAffineAuto(1, 0, 0x100, _scale);
@@ -257,7 +255,7 @@ void func_fe6_08082DA4(struct Proc_Prep_08679774 *proc, int x, int y, u32 scale)
 }
 
 struct ProcScr CONST_DATA ProcScr_Prep_08679774[] = {
-    PROC_SLEEP(0),
-    PROC_BLOCK,
+	PROC_SLEEP(0),
+	PROC_BLOCK,
 	PROC_END
 };

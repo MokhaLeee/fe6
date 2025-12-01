@@ -17,11 +17,3 @@ ProcScr_0867966C: @ 0867966C
 	.global ProcScr_0867968C
 ProcScr_0867968C: @ 0867968C
 	.incbin "fe6-base.gba", 0x67968C, (0x6796C4 - 0x67968C) @ length: 0038
-
-	.global ProcScr_086796C4
-ProcScr_086796C4: @ 086796C4
-	.incbin "fe6-base.gba", 0x6796C4, (0x6796F4 - 0x6796C4) @ length: 0030
-
-	.global ProcScr_086796F4
-ProcScr_086796F4: @ 086796F4
-	.incbin "fe6-base.gba", 0x6796F4, (0x67971C - 0x6796F4) @ length: 0028

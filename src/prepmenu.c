@@ -1429,7 +1429,7 @@ void AtMenu_OnSubmenuEnd(struct PrepMenuProc * proc)
     case PREP_SUB2ACT_CHECK_ALL_ITEM:
         PrepMenu_InitScreenExt(proc);
         Proc_Goto(proc->disp_proc, 0x0);
-        func_fe6_080829E8(proc, -1);
+        NewSallyCir2(proc, -1);
         break;
 
     case PREP_SUB2ACT_SAVEMENU:

@@ -408,15 +408,32 @@ void func_fe6_08082320(ProcPtr self, int arg_1, int arg_2, int arg_3, int arg_4,
 // func_fe6_08082498
 // func_fe6_0808255C
 ProcPtr func_fe6_08082560(ProcPtr parent);
-// func_fe6_08082574
-// func_fe6_080825B8
-// func_fe6_08082708
-// func_fe6_080827CC
-// func_fe6_080827D8
-// func_fe6_080827F8
-// func_fe6_080828B8
-void func_fe6_080829E8(ProcPtr parent, i8);
-// func_fe6_08082A08
+
+struct Win1H {
+    /* 00 */ u8 left;
+    /* 01 */ u8 right;
+};
+
+extern struct Win1H sSallyCirWinH_obj[2][160];
+extern struct Win1H *sSallyCirWinH[2];
+
+struct ProcSallyCir {
+    PROC_HEADER;
+
+    /* 29 */ u8 timer;
+    /* 2A */ i8 direct;
+    /* 2C */ int pos;
+};
+
+void SallyCir1_HBlank(void);
+void SallyCir1_Init(struct ProcSallyCir *proc);
+void SallyCir1_Loop(struct ProcSallyCir *proc);
+void SallyCir1_End(struct ProcSallyCir *proc);
+ProcPtr NewSallyCir1(ProcPtr parent, i8 direct);
+void SallyCir2_Init(struct ProcSallyCir *proc);
+void SallyCir2_Loop(struct ProcSallyCir *proc);
+ProcPtr NewSallyCir2(ProcPtr parent, i8 direct);
+u8 GetTotalSupplyItemCount(void);
 
 struct ViewCounterProc {
     /* 00 */ PROC_HEADER;
@@ -520,8 +537,8 @@ extern CONST_DATA u16 Sprite_08679598[];
 // ??? Sprites_08679654
 extern struct ProcScr ProcScr_0867966C[];
 extern struct ProcScr ProcScr_0867968C[];
-extern struct ProcScr ProcScr_086796C4[];
-extern struct ProcScr ProcScr_086796F4[];
+extern struct ProcScr ProcScr_SallyCir1[];
+extern struct ProcScr ProcScr_SallyCir2[];
 extern struct ProcScr ProcScr_ViewCounter[];
 extern struct ProcScr ProcScr_PrepErrorHelpboxLister[];
 extern int Msgs_08679754[];

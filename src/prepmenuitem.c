@@ -212,7 +212,7 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
         {
             proc->unit1 = GetUnitFromPrepList(proc->unk_31);
             proc->unit2 = GetUnitFromPrepList(proc->list_num_cur);
-            func_fe6_080829E8(proc, 1);
+            NewSallyCir2(proc, 1);
             proc->sub2_action = 2;
             Proc_Goto(proc, 3);
             PlaySe(SONG_6A);
@@ -231,7 +231,7 @@ void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc)
         else
         {
             proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
-            func_fe6_080829E8(proc, 1);
+            NewSallyCir2(proc, 1);
             proc->sub2_action = 4;
             Proc_Goto(proc, 3);
             PlaySe(SONG_6A);
@@ -244,7 +244,7 @@ void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc)
     if (proc->unk_29 == 0)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
-        func_fe6_080829E8(proc, 1);
+        NewSallyCir2(proc, 1);
         proc->sub2_action = 3;
         Proc_Goto(proc, 3);
         PlaySe(SONG_6A);
@@ -256,7 +256,7 @@ void PrepScreenSubMenu_AllItems(struct PrepMenuProc * proc)
     if (proc->unk_29 == 0)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
-        func_fe6_080829E8(proc, 1);
+        NewSallyCir2(proc, 1);
         proc->sub2_action = 5;
         Proc_Goto(proc, 3);
         PlaySe(SONG_6A);
