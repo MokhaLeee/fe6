@@ -33,6 +33,7 @@ enum prepscreen_text_idx {
 #define BGPAL_PREPMENU_E 0x0E
 #define BGPAL_PREPMENU_F 0x0F
 
+#define OBPAL_PREPMENU_0 0x00
 #define OBPAL_PREPMENU_2 0x02 // ..4
 #define OBPAL_PREPMENU_4 0x04
 #define OBPAL_PREPMENU_5 0x05
@@ -416,23 +417,40 @@ ProcPtr func_fe6_08082560(ProcPtr parent);
 // func_fe6_080828B8
 void func_fe6_080829E8(ProcPtr parent, i8);
 // func_fe6_08082A08
-// func_fe6_08082A40
-// func_fe6_08082A7C
-// func_fe6_08082ABC
-// func_fe6_08082AC8
-// func_fe6_08082AD8
-void PrepMenuStartHelpbox(int x, int y, int msg, ProcPtr parent);
-// func_fe6_08082B1C
-// func_fe6_08082B44
-bool func_fe6_08082B74(struct Unit * unit);
-// func_fe6_08082B98
-// func_fe6_08082C34
-// func_fe6_08082C80
-void func_fe6_08082CBC(void);
+
+struct ViewCounterProc {
+    /* 00 */ PROC_HEADER;
+    /* 2A */ u16 targetFrameCount;
+    /* 2C */ u16 counter;
+};
+
+void ViewCounter_Loop(struct ViewCounterProc *proc);
+void StartViewCounter(u16 frames, ProcPtr parent);
+void TryLockProc(ProcPtr);
+void TryUnlockProc(ProcPtr);
+void PrepHbKeyListener_Loop(ProcPtr proc);
+ProcPtr StartPrepErrorHelpbox(int x, int y, int msg, ProcPtr parent);
+bool IsWeaponUsable(struct Unit *unit, int weapon);
+int CountUnitUsableWeapons(struct Unit *unit);
+bool CanUnitUseWeaponsInArena(struct Unit * unit);
+// CheckValidLinkArenaItemSwap
+// CheckValidLinkArenaItemSupply
+// PrepCanUnitPutItemToSupply
+void SetupPrepUiPalette(void);
+
+struct Proc_Prep_08679774 {
+    PROC_HEADER;
+
+    /* 2C */ u16 *vram;
+    /* 30 */ struct Font font;
+    /* 48 */ struct Text text;
+    /* 50 */ int oam2;
+};
+
 ProcPtr func_fe6_08082CF4(ProcPtr parent);
-void func_fe6_08082D08(ProcPtr proc, int unused_1, fu16 obpal);
-void func_fe6_08082D54(ProcPtr proc, int msg_order_idx);
-void func_fe6_08082DA4(ProcPtr proc, int oam1, int, int);
+void func_fe6_08082D08(struct Proc_Prep_08679774 *proc, int unused_1, fu16 obpal);
+void func_fe6_08082D54(struct Proc_Prep_08679774 *proc, int msg_order_idx);
+void func_fe6_08082DA4(struct Proc_Prep_08679774 *proc, int x, int y, u32 scale);
 
 extern struct Text gPrepScreenText_PickLeftBar;
 extern struct Text gUnk_0200E864[];
@@ -504,10 +522,10 @@ extern struct ProcScr ProcScr_0867966C[];
 extern struct ProcScr ProcScr_0867968C[];
 extern struct ProcScr ProcScr_086796C4[];
 extern struct ProcScr ProcScr_086796F4[];
-extern struct ProcScr ProcScr_0867971C[];
-extern struct ProcScr ProcScr_0867973C[];
-// ??? Msgs_08679754
-// ??? Sprite_Prep_0867976C
+extern struct ProcScr ProcScr_ViewCounter[];
+extern struct ProcScr ProcScr_PrepErrorHelpboxLister[];
+extern int Msgs_08679754[];
+extern CONST_DATA u16 Sprite_Prep_0867976C[];
 extern struct ProcScr ProcScr_Prep_08679774[];
 
 extern u16 const gUnk_08320FCE[]; // tiles

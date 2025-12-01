@@ -716,7 +716,7 @@ void PrepMenu_InitScreenExt(struct PrepMenuProc * proc)
     ApplySystemObjectsGraphics();
     ResetUnitSprites();
     StartGreenText(proc);
-    func_fe6_08082CBC();
+    SetupPrepUiPalette();
 
     if ((proc->link_arena_flag & PREPMENU_FLAG_MULTIARENA) != 0)
     {

@@ -399,7 +399,7 @@ void UnitListScreenSprites_Main(struct UnitListScreenSpritesProc * proc)
 
     if (proc->unk_38 != proc->main_proc->unk_40 || (proc->main_proc->unk_40 % 0x10) != 0)
     {
-        gPal[0x19E] = gUnk_02016874.unk_10;
+        gPal[0x19E] = gUnk_Pal_02016874[8];
         EnablePalSync();
 
         proc->unk_3C = 0x20;
@@ -413,7 +413,7 @@ void UnitListScreenSprites_Main(struct UnitListScreenSpritesProc * proc)
     }
     else
     {
-        gPal[0x19E] = gUnk_02016874.unk_00[(proc->unk_3C / 4) & 0x0F];
+        gPal[0x19E] = gUnk_Pal_02016874[(proc->unk_3C / 4) & 0x0F];
         EnablePalSync();
 
         if (proc->unk_3A == 1)
@@ -625,7 +625,7 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
     Decompress(gUnk_083215B8, OBJ_VRAM0 + OBCHR_UNITLIST_240 * CHR_SIZE);
     ApplyPalette(gUnk_08321EE4, 0x10 + OBPAL_UNITLIST_9);
 
-    func_fe6_08082CBC();
+    SetupPrepUiPalette();
     TmApplyTsa(gBg1Tm, gUnk_083210A0, TILEREF(0, BGPAL_WINDOWFRAME));
 
     for (i = 0; i < 7 ; i++)
@@ -740,7 +740,7 @@ void func_fe6_080753A0(struct UnitListScreenProc * proc)
 
     if ((gSortedUnits[idx]->unit->flags & UNIT_FLAG_NOT_DEPLOYED) != 0)
     {
-        if (proc->unk_3C == 0 || func_fe6_08082B74(gSortedUnits[idx]->unit))
+        if (proc->unk_3C == 0 || CanUnitUseWeaponsInArena(gSortedUnits[idx]->unit))
         {
             if (proc->unk_3A > proc->unk_3B)
             {
@@ -757,7 +757,7 @@ void func_fe6_080753A0(struct UnitListScreenProc * proc)
         }
         else
         {
-            PrepMenuStartHelpbox(0, proc->unk_2C * 16 + 0x38, MSG_6C1, proc);
+            StartPrepErrorHelpbox(0, proc->unk_2C * 16 + 0x38, MSG_6C1, proc);
         }
 
         return;

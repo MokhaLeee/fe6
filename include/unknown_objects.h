@@ -142,7 +142,7 @@ extern u32 const Img_SpinningArrow[];
 // extern ??? gUnk_083210A0
 // extern ??? gUnk_083215B8
 // extern ??? gUnk_08321EE4
-// extern ??? gUnk_08321F24
+extern u16 const gUnk_Ui_Pal_08321F24[3 * 0x10];
 // extern ??? gUnk_08321FA4
 // extern ??? gUnk_08326910
 // extern ??? gUnk_08326930

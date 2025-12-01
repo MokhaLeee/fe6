@@ -89,7 +89,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
 
             if (unit->flags & UNIT_FLAG_NOT_DEPLOYED)
             {
-                if ((proc->link_arena_flag & 1) == 0 || func_fe6_08082B74(unit) != 0)
+                if ((proc->link_arena_flag & 1) == 0 || CanUnitUseWeaponsInArena(unit) != 0)
                 {
                     if (proc->max_counter > proc->cur_counter)
                     {
@@ -106,7 +106,7 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
                 }
                 else
                 {
-                    PrepMenuStartHelpbox(
+                    StartPrepErrorHelpbox(
                         (proc->list_num_cur & 1) * 0x40 + 0x70,
                         proc->hand_y_pos * 0x10 + 0x28,
                         MSG_6C1,
