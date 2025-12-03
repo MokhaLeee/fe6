@@ -901,8 +901,8 @@ ProcScr_EfxForblazeOBJ: @ 085D2270
 	PROC_REPEAT EfxForblazeOBJ_Loop
 	PROC_END
 
-	.global gUnk_085D2288
-gUnk_085D2288: @ 085D2288
+	.global DuraArray_EfxForblazeOBJ
+DuraArray_EfxForblazeOBJ: @ 085D2288
 	.4byte 0x14
 	.4byte 0x6B
 	.4byte 0xE4
