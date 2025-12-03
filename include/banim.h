@@ -1244,10 +1244,10 @@ void NewEfxForblazeBGCtrl1(void);
 // EfxForblazeBGCtrl1_Loop1
 // EfxForblazeBGCtrl1_Loop2
 // EfxForblazeBGCtrl1_Loop3
-void NewEfxForblazeOBJ(struct Anim *anim, int duration);
+void NewEfxForblazeObjHandle(struct Anim *anim, int duration);
+// EfxForblazeObjHandle_Loop
+void NewEfxForblazeOBJ(struct Anim *anim, int x, int y);
 // EfxForblazeOBJ_Loop
-void NewEfxForblazeOBJ2(struct Anim *anim);
-// EfxForblazeOBJ2_Loop
 void NewEfxForblazeBG2(struct Anim *anim, int duration);
 // EfxForblazeBG2_Loop
 void NewEfxForblazeOBJCtrl(struct Anim *anim);
@@ -2080,9 +2080,9 @@ extern CONST_DATA u16 *TsaArray_EfxForblazeBG1[];
 extern CONST_DATA u16 *ImgArray_EfxForblazeBG1[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBGCOL1[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBGCtrl1[];
+extern CONST_DATA struct ProcScr ProcScr_EfxForblazeObjHandle[];
+extern CONST_DATA int XposArray_EfxForblazeOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeOBJ[];
-// ??? DuraArray_EfxForblazeOBJ
-extern CONST_DATA struct ProcScr ProcScr_EfxForblazeOBJ2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeBG2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeOBJCtrl[];
 extern CONST_DATA struct ProcScr ProcScr_EfxForblazeOBJFall[];
@@ -2305,7 +2305,7 @@ extern u32 AnimScr_EfxFireOBJ_R_Back[];
 extern u32 AnimScr_EfxElfireOBJ_R[];
 extern u32 AnimScr_EfxElfireOBJ_L[];
 extern CONST_DATA AnimScr AnimScr_EfxThunderstormOBJ[];
-extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ2[];
+extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ[];
 extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ3[];
 extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ4[];
 extern CONST_DATA AnimScr AnimScr_EfxForblazeOBJ5[];

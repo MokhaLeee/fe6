@@ -895,14 +895,14 @@ ProcScr_EfxForblazeBGCtrl1: @ 085D2230
 	PROC_REPEAT EfxForblazeBGCtrl1_Loop3
 	PROC_END
 
-	.global ProcScr_EfxForblazeOBJ
-ProcScr_EfxForblazeOBJ: @ 085D2270
+	.global ProcScr_EfxForblazeObjHandle
+ProcScr_EfxForblazeObjHandle: @ 085D2270
 	PROC_19
-	PROC_REPEAT EfxForblazeOBJ_Loop
+	PROC_REPEAT EfxForblazeObjHandle_Loop
 	PROC_END
 
-	.global DuraArray_EfxForblazeOBJ
-DuraArray_EfxForblazeOBJ: @ 085D2288
+	.global XposArray_EfxForblazeOBJ
+XposArray_EfxForblazeOBJ: @ 085D2288
 	.4byte 0x14
 	.4byte 0x6B
 	.4byte 0xE4
@@ -926,10 +926,10 @@ DuraArray_EfxForblazeOBJ: @ 085D2288
 	.4byte 0xAC
 	.4byte -1
 
-	.global ProcScr_EfxForblazeOBJ2
-ProcScr_EfxForblazeOBJ2: @ 085D22E0
+	.global ProcScr_EfxForblazeOBJ
+ProcScr_EfxForblazeOBJ: @ 085D22E0
 	PROC_19
-	PROC_REPEAT EfxForblazeOBJ2_Loop
+	PROC_REPEAT EfxForblazeOBJ_Loop
 	PROC_END
 
 	.global ProcScr_EfxForblazeBG2
