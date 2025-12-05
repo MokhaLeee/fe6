@@ -3,7 +3,7 @@
 
 import sys, ctypes
 
-def dump_one_part(rom_data, off):
+def dump_one_part_x8(rom_data, off):
     data1 = int.from_bytes(rom_data[off + 0:off + 2], 'little')
     off = off + 2
     data2 = int.from_bytes(rom_data[off + 0:off + 2], 'little')
@@ -22,6 +22,18 @@ def dump_one_part(rom_data, off):
     off = off + 2
     print(f"    0x{data1:04X}, 0x{data2:04X}, 0x{data3:04X}, 0x{data4:04X}, 0x{data5:04X}, 0x{data6:04X}, 0x{data7:04X}, 0x{data8:04X},")
     return off
+
+def dump_one_part_x2(rom_data, off):
+    data1 = int.from_bytes(rom_data[off + 0:off + 2], 'little')
+    off = off + 2
+    data2 = int.from_bytes(rom_data[off + 0:off + 2], 'little')
+    off = off + 2
+    print(f"0x{data1:X}, {data2},")
+    return off
+
+def dump_one_part(rom_data, off):
+    # return dump_one_part_x8(rom_data, off)
+    return dump_one_part_x2(rom_data, off)
 
 def main(args):
     rom = "fe6-base.gba"
