@@ -1,33 +1,5 @@
 	.section .rodata
 
-	.global FrameConf_EfxResireBG3
-FrameConf_EfxResireBG3: @ 0811A218
-	.incbin "fe6-base.gba", 0x11A218, (0x11A276 - 0x11A218) @ length: 005E
-
-	.global FrameConf_EfxResireBG2
-FrameConf_EfxResireBG2: @ 0811A276
-	.incbin "fe6-base.gba", 0x11A276, (0x11A27C - 0x11A276) @ length: 0006
-
-	.global FrameConf_EfxLightningBG
-FrameConf_EfxLightningBG: @ 0811A27C
-	.incbin "fe6-base.gba", 0x11A27C, (0x11A302 - 0x11A27C) @ length: 0086
-
-	.global FrameArray_EfxPurgeBG
-FrameArray_EfxPurgeBG: @ 0811A302
-	.incbin "fe6-base.gba", 0x11A302, (0x11A478 - 0x11A302) @ length: 0176
-
-	.global FrameConf_EfxForblazeBG1
-FrameConf_EfxForblazeBG1: @ 0811A478
-	.incbin "fe6-base.gba", 0x11A478, (0x11A50E - 0x11A478) @ length: 0096
-
-	.global FrameArray_EfxForblazeBGCOL1
-FrameArray_EfxForblazeBGCOL1: @ 0811A50E
-	.incbin "fe6-base.gba", 0x11A50E, (0x11A520 - 0x11A50E) @ length: 0012
-
-	.global gUnk_0811A520
-gUnk_0811A520: @ 0811A520
-	.incbin "fe6-base.gba", 0x11A520, (0x11A530 - 0x11A520) @ length: 0010
-
 	.global FrameArray_EfxDivineBG
 FrameArray_EfxDivineBG: @ 0811A530
 	.incbin "fe6-base.gba", 0x11A530, (0x11A59E - 0x11A530) @ length: 006E

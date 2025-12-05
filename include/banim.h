@@ -1252,7 +1252,7 @@ void NewEfxForblazeBG2(struct Anim *anim, int duration);
 // EfxForblazeBG2_Loop
 void NewEfxForblazeOBJCtrl(struct Anim *anim);
 // EfxForblazeOBJCtrl_Loop
-void NewEfxForblazeOBJFall(struct Anim *anim);
+void NewEfxForblazeOBJFall(struct Anim *anim, int duration, int unused);
 // EfxForblazeOBJFall_Loop
 void HBlank_EfxForblaze(void);
 void NewEfxForblazeRST(int duration);
