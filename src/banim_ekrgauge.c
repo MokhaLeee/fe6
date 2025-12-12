@@ -182,17 +182,17 @@ void func_fe6_08043980(struct Anim * anim, int a, int b)
 
             if (b < temp)
             {
-                anim->sprData = gUnk_085CB688;
+                anim->sprData = AnimSprite_EkrGauge_085CB688;
                 return;
             }
         }
         else
         {
-            anim->sprData = gUnk_085CB6A0;
+            anim->sprData = AnimSprite_EkrGauge_085CB6A0;
             return;
         }
 
-        anim->sprData = gUnk_085CB6B8;
+        anim->sprData = AnimSprite_EkrGauge_085CB6B8;
     }
     else
     {
@@ -202,17 +202,17 @@ void func_fe6_08043980(struct Anim * anim, int a, int b)
 
             if (b < temp)
             {
-                anim->sprData = gUnk_085CB6D0;
+                anim->sprData = AnimSprite_EkrGauge_085CB6D0;
                 return;
             }
         }
         else
         {
-            anim->sprData = gUnk_085CB6E8;
+            anim->sprData = AnimSprite_EkrGauge_085CB6E8;
             return;
         }
 
-        anim->sprData = gUnk_085CB700;
+        anim->sprData = AnimSprite_EkrGauge_085CB700;
     }
 }
 
@@ -220,7 +220,7 @@ void func_fe6_08043980(struct Anim * anim, int a, int b)
 
 void EkrGauge_Loop(struct ProcEkrGauge * proc)
 {
-    struct Anim AStack_130;
+    struct Anim local_anim;
     u16 auStack_e8[12];
     u16 local_d0[4];
     struct BaSpriteData auStack_c8[8];
@@ -375,50 +375,50 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         RegisterDataMove((u16 *)gUnk_Banim_02016DC0 + 0x20, (void *)0x06013DC0, 0x40);
     }
 
-    AStack_130.oam2 = 0x000051CE;
-    AStack_130.oam2 |= proc->unk44;
+    local_anim.oam2 = 0x000051CE;
+    local_anim.oam2 |= proc->unk44;
 
-    AStack_130.xPosition = x + 9;
-    AStack_130.yPosition = y + 0x91;
-    AStack_130.flags2 = 0;
+    local_anim.xPosition = x + 9;
+    local_anim.yPosition = y + 0x91;
+    local_anim.flags2 = 0;
 
     if (CheckEkrHitNow(POS_L) != 1) {
-        AStack_130.sprData = gUnk_085CB5B0;
-        AStack_130.oam01 = 0;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB5B0;
+        local_anim.oam01 = 0;
     } else {
-        AStack_130.sprData = auStack_c8;
-        AStack_130.oam01 = 0x200;
-        AStack_130.xPosition = AStack_130.xPosition - 8;
-        AStack_130.yPosition = AStack_130.yPosition - 8;
-        BanimUpdateSpriteRotScale(gUnk_085CB5B0, auStack_c8, 0x100, 0x80, 1);
+        local_anim.sprData = auStack_c8;
+        local_anim.oam01 = 0x200;
+        local_anim.xPosition = local_anim.xPosition - 8;
+        local_anim.yPosition = local_anim.yPosition - 8;
+        BanimUpdateSpriteRotScale(AnimSprite_EkrGauge_085CB5B0, auStack_c8, 0x100, 0x80, 1);
     }
 
     if (proc->unk4C == 0) {
-        BasPutOam(&AStack_130);
+        BasPutOam(&local_anim);
     }
 
-    AStack_130.oam01 = 0;
+    local_anim.oam01 = 0;
 
-    AStack_130.oam2 = 0x000061EE;
-    AStack_130.oam2 |= proc->unk44;
+    local_anim.oam2 = 0x000061EE;
+    local_anim.oam2 |= proc->unk44;
 
-    AStack_130.xPosition = x + 0x81;
-    AStack_130.yPosition = y + 0x91;
-    AStack_130.flags2 = 0;
+    local_anim.xPosition = x + 0x81;
+    local_anim.yPosition = y + 0x91;
+    local_anim.flags2 = 0;
 
     if (CheckEkrHitNow(POS_R) != 1) {
-        AStack_130.sprData = gUnk_085CB5B0;
-        AStack_130.oam01 = 0;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB5B0;
+        local_anim.oam01 = 0;
     } else {
-        AStack_130.sprData = auStack_c8;
-        AStack_130.oam01 = 0x200;
-        AStack_130.xPosition = AStack_130.xPosition - 8;
-        AStack_130.yPosition = AStack_130.yPosition - 8;
-        BanimUpdateSpriteRotScale(gUnk_085CB5B0, auStack_c8, 0x100, 0x80, 1);
+        local_anim.sprData = auStack_c8;
+        local_anim.oam01 = 0x200;
+        local_anim.xPosition = local_anim.xPosition - 8;
+        local_anim.yPosition = local_anim.yPosition - 8;
+        BanimUpdateSpriteRotScale(AnimSprite_EkrGauge_085CB5B0, auStack_c8, 0x100, 0x80, 1);
     }
 
     if (proc->unk50 == 0) {
-        BasPutOam(&AStack_130);
+        BasPutOam(&local_anim);
     }
 
     uVar15 = (r7_ - 0x28);
@@ -442,12 +442,12 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         sVar5 = 0x28;
     }
 
-    AStack_130.oam2 = 0xb000;
-    AStack_130.oam2 |= proc->unk44;
+    local_anim.oam2 = 0xb000;
+    local_anim.oam2 |= proc->unk44;
 
-    AStack_130.oam01 = 0;
-    AStack_130.xPosition = x + 0x1d;
-    AStack_130.sprData = gUnk_085CB580;
+    local_anim.oam01 = 0;
+    local_anim.xPosition = x + 0x1d;
+    local_anim.sprData = AnimSprite_EkrGauge_085CB580;
 
     if (proc->unk4C == 0) {
         if (uVar8 != 0) {
@@ -456,12 +456,12 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
                 func_fe6_080435EC(auStack_e8, gUnk_Banim_02016E40);
             }
 
-            AStack_130.yPosition = y + 0x8e;
-            AStack_130.oam2 &= 0xfc00;
-            AStack_130.oam2 |= 0;
-            AStack_130.flags2 = 0;
+            local_anim.yPosition = y + 0x8e;
+            local_anim.oam2 &= 0xfc00;
+            local_anim.oam2 |= 0;
+            local_anim.flags2 = 0;
 
-            BasPutOam(&AStack_130);
+            BasPutOam(&local_anim);
         }
 
         func_fe6_0805B380(auStack_e8, sVar16, sVar5);
@@ -471,16 +471,16 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         }
 
         if (uVar8 != 0) {
-            AStack_130.yPosition = y + 0x95;
+            local_anim.yPosition = y + 0x95;
         } else {
-            AStack_130.yPosition = y + 0x91;
+            local_anim.yPosition = y + 0x91;
         }
 
-        AStack_130.oam2 &= 0xfc00;
-        AStack_130.oam2 |= 0x20;
-        AStack_130.flags2 = 0;
+        local_anim.oam2 &= 0xfc00;
+        local_anim.oam2 |= 0x20;
+        local_anim.flags2 = 0;
 
-        BasPutOam(&AStack_130);
+        BasPutOam(&local_anim);
     }
 
     uVar15 = (r8_ - 0x28);
@@ -504,12 +504,12 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         sVar5 = 0x28;
     }
 
-    AStack_130.oam2 = 0xc000;
-    AStack_130.oam2 |= proc->unk44;
+    local_anim.oam2 = 0xc000;
+    local_anim.oam2 |= proc->unk44;
 
-    AStack_130.oam01 = 0;
-    AStack_130.xPosition = x + 0x95;
-    AStack_130.sprData = gUnk_085CB580;
+    local_anim.oam01 = 0;
+    local_anim.xPosition = x + 0x95;
+    local_anim.sprData = AnimSprite_EkrGauge_085CB580;
 
     if (proc->unk50 == 0) {
         if (uVar8 != 0) {
@@ -518,12 +518,12 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
                 func_fe6_080435EC(auStack_e8, gUnk_Banim_02017040);
             }
 
-            AStack_130.yPosition = y + 0x8e;
-            AStack_130.oam2 &= 0xfc00;
-            AStack_130.oam2 |= 0x10;
-            AStack_130.flags2 = 0;
+            local_anim.yPosition = y + 0x8e;
+            local_anim.oam2 &= 0xfc00;
+            local_anim.oam2 |= 0x10;
+            local_anim.flags2 = 0;
 
-            BasPutOam(&AStack_130);
+            BasPutOam(&local_anim);
         }
 
         func_fe6_0805B380(auStack_e8, sVar16, sVar5);
@@ -533,16 +533,16 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         }
 
         if (uVar8 != 0) {
-            AStack_130.yPosition = y + 0x95;
+            local_anim.yPosition = y + 0x95;
         } else {
-            AStack_130.yPosition = y + 0x91;
+            local_anim.yPosition = y + 0x91;
         }
 
-        AStack_130.oam2 &= 0xfc00;
-        AStack_130.oam2 |= 0x30;
-        AStack_130.flags2 = 0;
+        local_anim.oam2 &= 0xfc00;
+        local_anim.oam2 |= 0x30;
+        local_anim.flags2 = 0;
 
-        BasPutOam(&AStack_130);
+        BasPutOam(&local_anim);
     }
 
     if (hp_changed == 1) {
@@ -550,95 +550,93 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
     }
 
     if (proc->unk4C == 0) {
-        AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnk_085CB5C8;
-        AStack_130.oam2 = 0x000051D0;
-        AStack_130.oam2 |= proc->unk44;
+        local_anim.oam01 = 0;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB5C8;
+        local_anim.oam2 = 0x000051D0;
+        local_anim.oam2 |= proc->unk44;
 
-        AStack_130.xPosition = x + 0xf;
-        AStack_130.yPosition = y + 0x70;
-        AStack_130.flags2 = 0;
-        BasPutOam(&AStack_130);
-        AStack_130.oam01 = 0;
+        local_anim.xPosition = x + 0xf;
+        local_anim.yPosition = y + 0x70;
+        local_anim.flags2 = 0;
+        BasPutOam(&local_anim);
+        local_anim.oam01 = 0;
 
-        AStack_130.sprData = gUnk_085CB5F8;
-        AStack_130.oam2 = 0x000051C0;
-        AStack_130.oam2 |= proc->unk44;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB5F8;
+        local_anim.oam2 = 0x000051C0;
+        local_anim.oam2 |= proc->unk44;
 
-        AStack_130.xPosition = x + 0x65;
-        AStack_130.yPosition = y + 0x78;
-        AStack_130.flags2 = 0;
-        BasPutOam(&AStack_130);
+        local_anim.xPosition = x + 0x65;
+        local_anim.yPosition = y + 0x78;
+        local_anim.flags2 = 0;
+        BasPutOam(&local_anim);
     }
 
     if (proc->unk50 == 0) {
-        AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnk_085CB5C8;
-        AStack_130.oam2 = 0x000061F0;
-        AStack_130.oam2 |= proc->unk44;
+        local_anim.oam01 = 0;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB5C8;
+        local_anim.oam2 = 0x000061F0;
+        local_anim.oam2 |= proc->unk44;
 
-        AStack_130.xPosition = x + 0xd7;
-        AStack_130.yPosition = y + 0x70;
-        AStack_130.flags2 = 0;
-        BasPutOam(&AStack_130);
+        local_anim.xPosition = x + 0xd7;
+        local_anim.yPosition = y + 0x70;
+        local_anim.flags2 = 0;
+        BasPutOam(&local_anim);
 
-        AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnk_085CB634;
-        AStack_130.oam2 = 0x000061C0;
-        AStack_130.oam2 |= proc->unk44;
+        local_anim.oam01 = 0;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB634;
+        local_anim.oam2 = 0x000061C0;
+        local_anim.oam2 |= proc->unk44;
 
-        AStack_130.xPosition = x + 0x87;
-        AStack_130.yPosition = y + 0x78;
-        AStack_130.flags2 = 0;
-        BasPutOam(&AStack_130);
+        local_anim.xPosition = x + 0x87;
+        local_anim.yPosition = y + 0x78;
+        local_anim.flags2 = 0;
+        BasPutOam(&local_anim);
     }
 
     if (proc->unk4C == 0) {
-        AStack_130.oam01 = 0;
+        local_anim.oam01 = 0;
         if (gBanimWtaBonus[0] != 0) {
-            func_fe6_08043980((void*)&AStack_130, gBanimWtaBonus[0], clk);
-            AStack_130.oam2 = 0x1ca;
-            AStack_130.oam2 |= proc->unk44;
+            func_fe6_08043980((void*)&local_anim, gBanimWtaBonus[0], clk);
+            local_anim.oam2 = 0x1ca;
+            local_anim.oam2 |= proc->unk44;
 
-            AStack_130.xPosition = x + 0x36;
-            AStack_130.yPosition = y + 0x7a;
-            AStack_130.flags2 = 0;
-            BasPutOam(&AStack_130);
+            local_anim.xPosition = x + 0x36;
+            local_anim.yPosition = y + 0x7a;
+            local_anim.flags2 = 0;
+            BasPutOam(&local_anim);
         }
 
-        AStack_130.sprData = gUnk_085CB670;
-        AStack_130.oam2 = 0x0000D1DC;
-        AStack_130.oam2 |= proc->unk44;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB670;
+        local_anim.oam2 = 0x0000D1DC;
+        local_anim.oam2 |= proc->unk44;
 
-        AStack_130.xPosition = x + 0x2c;
-        AStack_130.yPosition = y + 0x7a;
-        AStack_130.flags2 = 0;
-        BasPutOam(&AStack_130);
+        local_anim.xPosition = x + 0x2c;
+        local_anim.yPosition = y + 0x7a;
+        local_anim.flags2 = 0;
+        BasPutOam(&local_anim);
     }
 
     if (proc->unk50 == 0) {
-        AStack_130.oam01 = 0;
+        local_anim.oam01 = 0;
         if (gBanimWtaBonus[1] != 0) {
 
-            func_fe6_08043980((void*)&AStack_130, gBanimWtaBonus[1], clk);
-            AStack_130.oam2 = 0x1ca;
-            AStack_130.oam2 |= proc->unk44;
+            func_fe6_08043980((void*)&local_anim, gBanimWtaBonus[1], clk);
+            local_anim.oam2 = 0x1ca;
+            local_anim.oam2 |= proc->unk44;
 
-            AStack_130.xPosition = x + 0x85;
-            AStack_130.yPosition = y + 0x7a;
-            AStack_130.flags2 = 0;
-            BasPutOam(&AStack_130);
+            local_anim.xPosition = x + 0x85;
+            local_anim.yPosition = y + 0x7a;
+            local_anim.flags2 = 0;
+            BasPutOam(&local_anim);
         }
 
-        AStack_130.sprData = gUnk_085CB670;
-        AStack_130.oam2 = 0x0000E1DE;
-        AStack_130.oam2 |= proc->unk44;
+        local_anim.sprData = AnimSprite_EkrGauge_085CB670;
+        local_anim.oam2 = 0x0000E1DE;
+        local_anim.oam2 |= proc->unk44;
 
-        AStack_130.xPosition = x + 0x7b;
-        AStack_130.yPosition = y + 0x7a;
-        AStack_130.flags2 = 0;
-        BasPutOam(&AStack_130);
+        local_anim.xPosition = x + 0x7b;
+        local_anim.yPosition = y + 0x7a;
+        local_anim.flags2 = 0;
+        BasPutOam(&local_anim);
     }
-
-    return;
 }
