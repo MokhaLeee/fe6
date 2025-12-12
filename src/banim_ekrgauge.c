@@ -218,37 +218,38 @@ void func_fe6_08043980(struct Anim * anim, int a, int b)
 
 #define gBg0Tm2D ((u16 (*)[1])gBg0Tm)
 
-#if 0
-void ekrGaugeMain(struct ProcEkrGauge * proc)
+void EkrGauge_Loop(struct ProcEkrGauge * proc)
 {
     struct Anim AStack_130;
     u16 auStack_e8[12];
     u16 local_d0[4];
     struct BaSpriteData auStack_c8[8];
+    i16 r4;
+    i32 r6;
+    i32 r7;
+    i32 r8;
+    i32 r9;
     i16 r7_;
     i16 r6_;
     i16 r8_;
     i16 sp_d4;
-    int spD8;
-    int spDC;
-    int x;
-    int y;
-    int clk;
+    i32 hp_changed;
+    i32 spDC;
+    i32 x;
+    i32 y;
+    i32 clk;
     i16 uVar8;
     i16 sVar16;
     i16 sVar5;
     i16 uVar15;
 
-    spD8 = 0;
-    clk = DivRem(GetGameClock() / 8, 3);
+    hp_changed = 0;
+    clk = DivRem(GetGameTime() / 8, 3);
 
     if (proc->valid == 1)
         return;
 
     if (proc->battle_init == 0) {
-        i16 r4;
-        int r6, r7, r8, r9;
-
         r4 = proc->unk3A >> 3;
         r7 = (r4 << 5) + 0x1A0;
 
@@ -262,24 +263,24 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
         r8 = (7 - r6) * 30;
 
         switch (gEkrDistanceType) {
-        case 0:
-        case 1:
-        case 2:
-            r9 = 0;
-            spDC = 15;
+            case 0:
+            case 1:
+            case 2:
+                r9 = 0;
+                spDC = 15;
 
-            break;
+                break;
 
-        case 3:
-        case 4:
-        default:
-            spDC = 8;
-            r9 = 8;
+            case 3:
+            case 4:
+            default:
+                spDC = 8;
+                r9 = 8;
 
-            break;
+                break;
         }
 
-        FillBGRect(gBg0Tm + 0x1A0, 30, 8, 0, 0x80);
+        FillBGRect(gBg0Tm + 0x1A0, 30, 8, 0, 0x9f);
 
         if (0 == proc->unk4C) {
             EfxTmCpyBG(gUnk_08112AD0 + r8, &gBg0Tm2D[r7][r9], 15, r6, -1, -1);
@@ -287,12 +288,9 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
         }
 
         if (0 == proc->unk50) {
-            void * ptr;
-            
-            if (0 == proc->unk4C)
-                ptr = gUnk_08112BA4 + r8;
-            else
-                ptr = gUnk_08112BA4 + r8;
+            void *ptr;
+
+            ptr = (u8 *)gUnk_08112BA4 + r8;
 
             EfxTmCpyBG(ptr, &gBg0Tm2D[r7][spDC], 16, r6, -1, -1);
             func_fe6_0805B01C(&gBg0Tm2D[r7][spDC], 16, r6, 3, 128);
@@ -302,10 +300,10 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
     }
 
     if (gEkrGaugeHpBak[0] != gEkrGaugeHp[0])
-        spD8 = 1;
+        hp_changed = 1;
 
     if (gEkrGaugeHpBak[1] != gEkrGaugeHp[1])
-        spD8 = 1;
+        hp_changed = 1;
 
     gEkrGaugeHpBak[0] = gEkrGaugeHp[0];
     gEkrGaugeHpBak[1] = gEkrGaugeHp[1];
@@ -317,7 +315,7 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
 
     switch (gEkrDistanceType) {
         case 3:
-            if (gBanimValid[0] == 1) {
+            if (gBanimValid[POS_L] == 1) {
                 x = proc->unk32 + 0x38;
             } else {
                 x = proc->unk32 - 0x38;
@@ -357,19 +355,9 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
         local_d0[2] = 0xb;
     }
 
-    if (gEkrGaugeHp[0] > 0x50) {
-        local_d0[0] = 0xc;
-        local_d0[1] = 0xc;
-    }
-
-    if (gEkrGaugeHp[1] > 0x50) {
-        local_d0[2] = 0xc;
-        local_d0[3] = 0xc;
-    }
-
-    if (spD8 == 1) {
-        int i;
-        int j;
+    if (hp_changed == 1) {
+        i32 i;
+        i32 j;
 
         CpuFastFill(0, gUnk_Banim_02016DC0, 0x80);
 
@@ -377,24 +365,24 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
             for (j = 0; j < 2; j++) {
                 CpuCopy16(
                     Img_EkrGaugeNumber + local_d0[i * 2 + j] * 0x10,
-                    gUnk_Banim_02016DC0 + ((i * 0x20) + (j * 0x10)),
+                    (u16 *)gUnk_Banim_02016DC0 + ((i * 0x20) + (j * 0x10)),
                     0x20
                 );
             }
         }
 
         RegisterDataMove(gUnk_Banim_02016DC0 + 0x00, (void *)0x060139C0, 0x40);
-        RegisterDataMove(gUnk_Banim_02016DC0 + 0x20, (void *)0x06013DC0, 0x40);
+        RegisterDataMove((u16 *)gUnk_Banim_02016DC0 + 0x20, (void *)0x06013DC0, 0x40);
     }
 
     AStack_130.oam2 = 0x000051CE;
     AStack_130.oam2 |= proc->unk44;
-    
+
     AStack_130.xPosition = x + 9;
     AStack_130.yPosition = y + 0x91;
     AStack_130.flags2 = 0;
 
-    if (CheckEkrHitNow(0) != 1) {
+    if (CheckEkrHitNow(POS_L) != 1) {
         AStack_130.sprData = gUnk_085CB5B0;
         AStack_130.oam01 = 0;
     } else {
@@ -410,15 +398,15 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
     }
 
     AStack_130.oam01 = 0;
-    
-    AStack_130.oam2 = 0x0000C1EE;
+
+    AStack_130.oam2 = 0x000061EE;
     AStack_130.oam2 |= proc->unk44;
-    
+
     AStack_130.xPosition = x + 0x81;
     AStack_130.yPosition = y + 0x91;
     AStack_130.flags2 = 0;
 
-    if (CheckEkrHitNow(1) != 1) {
+    if (CheckEkrHitNow(POS_R) != 1) {
         AStack_130.sprData = gUnk_085CB5B0;
         AStack_130.oam01 = 0;
     } else {
@@ -437,34 +425,26 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
     uVar8 = (r6_ - 0x28);
     sVar16 = (r7_);
     sVar5 = (r6_);
-        
-    if (uVar15 > 0x28) {
-        uVar15 = 0x28;
-    }
-    
-    if (uVar8 > 0x28) {
-        uVar8 = 0x28;
-    }
-    
+
     if ((uVar15) < 0) {
         uVar15 = 0;
     }
-    
+
     if ((uVar8) < 0) {
         uVar8 = 0;
     }
-    
+
     if ((sVar16) > 0x28) {
         sVar16 = 0x28;
     }
-    
+
     if (sVar5 > 0x28) {
         sVar5 = 0x28;
     }
 
     AStack_130.oam2 = 0xb000;
     AStack_130.oam2 |= proc->unk44;
-    
+
     AStack_130.oam01 = 0;
     AStack_130.xPosition = x + 0x1d;
     AStack_130.sprData = gUnk_085CB580;
@@ -472,21 +452,21 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
     if (proc->unk4C == 0) {
         if (uVar8 != 0) {
             func_fe6_0805B380(auStack_e8, uVar15, uVar8);
-            if (spD8 == 1) {
+            if (hp_changed == 1) {
                 func_fe6_080435EC(auStack_e8, gUnk_Banim_02016E40);
             }
-            
+
             AStack_130.yPosition = y + 0x8e;
             AStack_130.oam2 &= 0xfc00;
             AStack_130.oam2 |= 0;
             AStack_130.flags2 = 0;
-            
+
             BasPutOam(&AStack_130);
         }
-        
+
         func_fe6_0805B380(auStack_e8, sVar16, sVar5);
-        
-        if (spD8 == 1) {
+
+        if (hp_changed == 1) {
             func_fe6_080435EC(auStack_e8, gUnk_Banim_02017240);
         }
 
@@ -499,7 +479,7 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
         AStack_130.oam2 &= 0xfc00;
         AStack_130.oam2 |= 0x20;
         AStack_130.flags2 = 0;
-        
+
         BasPutOam(&AStack_130);
     }
 
@@ -507,34 +487,26 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
     uVar8 = (sp_d4 - 0x28);
     sVar16 = (r8_);
     sVar5 = (sp_d4);
-    
-    if (uVar15 > 0x28) {
-        uVar15 = 0x28;
-    }
 
-    if (uVar8 > 0x28) {
-        uVar8 = 0x28;
-    }
-    
     if ((uVar15) < 0) {
         uVar15 = 0;
     }
-    
+
     if ((uVar8) < 0) {
         uVar8 = 0;
     }
-    
+
     if (sVar16 > 0x28) {
         sVar16 = 0x28;
     }
-    
+
     if (sVar5 > 0x28) {
         sVar5 = 0x28;
     }
 
     AStack_130.oam2 = 0xc000;
     AStack_130.oam2 |= proc->unk44;
-    
+
     AStack_130.oam01 = 0;
     AStack_130.xPosition = x + 0x95;
     AStack_130.sprData = gUnk_085CB580;
@@ -542,130 +514,131 @@ void ekrGaugeMain(struct ProcEkrGauge * proc)
     if (proc->unk50 == 0) {
         if (uVar8 != 0) {
             func_fe6_0805B380(auStack_e8, uVar15, uVar8);
-            if (spD8 == 1) {
+            if (hp_changed == 1) {
                 func_fe6_080435EC(auStack_e8, gUnk_Banim_02017040);
             }
-            
+
             AStack_130.yPosition = y + 0x8e;
             AStack_130.oam2 &= 0xfc00;
             AStack_130.oam2 |= 0x10;
             AStack_130.flags2 = 0;
-            
-            AnimDisplay(&AStack_130);
+
+            BasPutOam(&AStack_130);
         }
 
         func_fe6_0805B380(auStack_e8, sVar16, sVar5);
-        
-        if (spD8 == 1) {
-            func_fe6_080435EC(auStack_e8, gUnk_Banim_02017448);
+
+        if (hp_changed == 1) {
+            func_fe6_080435EC(auStack_e8, gUnk_Banim_02017440);
         }
-        
+
         if (uVar8 != 0) {
             AStack_130.yPosition = y + 0x95;
         } else {
             AStack_130.yPosition = y + 0x91;
         }
-        
+
         AStack_130.oam2 &= 0xfc00;
         AStack_130.oam2 |= 0x30;
         AStack_130.flags2 = 0;
-        
-        AnimDisplay(&AStack_130);
+
+        BasPutOam(&AStack_130);
     }
 
-    if (spD8 == 1) {
-        RegisterDataMove((void *)gUnk_Banim_02016E48, (void *)0x06013000, 0x800);
+    if (hp_changed == 1) {
+        RegisterDataMove((void *)gUnk_Banim_02016E40, (void *)0x06013000, 0x800);
     }
 
     if (proc->unk4C == 0) {
         AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnknown_085B9424;
-        AStack_130.oam2 = 0x0000B1D0;
+        AStack_130.sprData = gUnk_085CB5C8;
+        AStack_130.oam2 = 0x000051D0;
         AStack_130.oam2 |= proc->unk44;
-        
-        AStack_130.xPosition = x + 0x12;
+
+        AStack_130.xPosition = x + 0xf;
         AStack_130.yPosition = y + 0x70;
         AStack_130.flags2 = 0;
-        AnimDisplay(&AStack_130);
+        BasPutOam(&AStack_130);
         AStack_130.oam01 = 0;
-        
-        AStack_130.sprData = gUnknown_085B949C;
-        AStack_130.oam2 = 0x0000B1C0;
+
+        AStack_130.sprData = gUnk_085CB5F8;
+        AStack_130.oam2 = 0x000051C0;
         AStack_130.oam2 |= proc->unk44;
-        
+
         AStack_130.xPosition = x + 0x65;
         AStack_130.yPosition = y + 0x78;
         AStack_130.flags2 = 0;
-        AnimDisplay(&AStack_130);
+        BasPutOam(&AStack_130);
     }
 
     if (proc->unk50 == 0) {
         AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnknown_085B9424;
-        AStack_130.oam2 = 0x0000C1F0;
+        AStack_130.sprData = gUnk_085CB5C8;
+        AStack_130.oam2 = 0x000061F0;
         AStack_130.oam2 |= proc->unk44;
-        
-        AStack_130.xPosition = x + 0xd8;
+
+        AStack_130.xPosition = x + 0xd7;
         AStack_130.yPosition = y + 0x70;
         AStack_130.flags2 = 0;
-        AnimDisplay(&AStack_130);
+        BasPutOam(&AStack_130);
 
         AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnknown_085B94F0;
-        AStack_130.oam2 = 0x0000C1C0;
+        AStack_130.sprData = gUnk_085CB634;
+        AStack_130.oam2 = 0x000061C0;
         AStack_130.oam2 |= proc->unk44;
-        
+
         AStack_130.xPosition = x + 0x87;
         AStack_130.yPosition = y + 0x78;
         AStack_130.flags2 = 0;
-        AnimDisplay(&AStack_130);
+        BasPutOam(&AStack_130);
     }
 
     if (proc->unk4C == 0) {
         AStack_130.oam01 = 0;
         if (gBanimWtaBonus[0] != 0) {
-            sub_8051238((void*)&AStack_130, gBanimWtaBonus[0], clk);
+            func_fe6_08043980((void*)&AStack_130, gBanimWtaBonus[0], clk);
             AStack_130.oam2 = 0x1ca;
             AStack_130.oam2 |= proc->unk44;
-            
+
             AStack_130.xPosition = x + 0x36;
-            AStack_130.yPosition = y + 0x79;
+            AStack_130.yPosition = y + 0x7a;
             AStack_130.flags2 = 0;
-            AnimDisplay(&AStack_130);
+            BasPutOam(&AStack_130);
         }
 
-        AStack_130.sprData = gUnknown_085B9544;
+        AStack_130.sprData = gUnk_085CB670;
         AStack_130.oam2 = 0x0000D1DC;
         AStack_130.oam2 |= proc->unk44;
-        
+
         AStack_130.xPosition = x + 0x2c;
-        AStack_130.yPosition = y + 0x79;
+        AStack_130.yPosition = y + 0x7a;
         AStack_130.flags2 = 0;
-        AnimDisplay(&AStack_130);
+        BasPutOam(&AStack_130);
     }
-    
+
     if (proc->unk50 == 0) {
         AStack_130.oam01 = 0;
         if (gBanimWtaBonus[1] != 0) {
-            
-            sub_8051238((void*)&AStack_130, gBanimWtaBonus[1], clk);
+
+            func_fe6_08043980((void*)&AStack_130, gBanimWtaBonus[1], clk);
             AStack_130.oam2 = 0x1ca;
             AStack_130.oam2 |= proc->unk44;
-            
+
             AStack_130.xPosition = x + 0x85;
-            AStack_130.yPosition = y + 0x79;
+            AStack_130.yPosition = y + 0x7a;
             AStack_130.flags2 = 0;
-            AnimDisplay(&AStack_130);
+            BasPutOam(&AStack_130);
         }
-        
-        AStack_130.sprData = gUnknown_085B9544;
+
+        AStack_130.sprData = gUnk_085CB670;
         AStack_130.oam2 = 0x0000E1DE;
         AStack_130.oam2 |= proc->unk44;
-        
+
         AStack_130.xPosition = x + 0x7b;
-        AStack_130.yPosition = y + 0x79;
+        AStack_130.yPosition = y + 0x7a;
         AStack_130.flags2 = 0;
-        AnimDisplay(&AStack_130);
+        BasPutOam(&AStack_130);
     }
+
+    return;
 }
-#endif

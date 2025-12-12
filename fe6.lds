@@ -530,7 +530,6 @@ SECTIONS
         src/banim_ekrbattle.o(.text);
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
-        asm/banim_ekrgauge.o(.text);
         asm/banim_ekrdispup.o(.text);
         asm/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
