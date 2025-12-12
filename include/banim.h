@@ -334,7 +334,9 @@ extern struct ProcEkrGauge * gpProcEkrGauge;
 extern EWRAM_OVERLAY(banim) u16 Buf_EkrGaugeNumImg[0x200];
 extern EWRAM_OVERLAY(banim) u16 gUnk_Banim_02016DC0[];
 extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02016E40[0x200];
+extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02017040[0x200];
 extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02017240[0x200];
+extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02017440[0x200];
 extern EWRAM_OVERLAY(banim) u16 gEkrGaugeDecoder[18];
 
 // EkrGaugeModDec
@@ -1895,10 +1897,10 @@ extern CONST_DATA struct ProcScr ProcScr_EkrLvupFan[];
 extern CONST_DATA struct ProcScr ProcScr_EkrGauge[];
 extern CONST_DATA u16 gUnk_085CB580[];
 extern CONST_DATA u16 gUnk_085CB5B0[];
-// ??? gUnk_085CB5C8
-// ??? gUnk_085CB5F8
-// ??? gUnk_085CB634
-// ??? gUnk_085CB670
+extern CONST_DATA u8 gUnk_085CB5C8[];
+extern CONST_DATA u8 gUnk_085CB5F8[];
+extern CONST_DATA u8 gUnk_085CB634[];
+extern CONST_DATA u8 gUnk_085CB670[];
 extern CONST_DATA u16 gUnk_085CB688[];
 extern CONST_DATA u16 gUnk_085CB6A0[];
 extern CONST_DATA u16 gUnk_085CB6A0[];
