@@ -134,7 +134,7 @@ extern u16 const Pal_0831AAFC[];
 // extern ??? gUnk_0831B068
 extern u8 const Img_MonologueBG[];
 extern u8 const Tsa_MonologueBG[];
-// extern ??? gUnk_08320436
+extern u16 Tsa_MonologueScrollingBG[30 * 40];
 extern u16 const Pal_MonologueBG[];
 extern u32 const Img_SpinningArrow[];
 // extern ??? gUnk_08320EEC

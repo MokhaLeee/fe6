@@ -48,9 +48,9 @@ Img_MonologueBG: @ 0831B0A8
 Tsa_MonologueBG: @ 08320434
 	.incbin "fe6-base.gba", 0x320434, (0x320436 - 0x320434) @ length: 0002
 
-	.global gUnk_08320436
-gUnk_08320436: @ 08320436
-	.incbin "fe6-base.gba", 0x320436, (0x320D98 - 0x320436) @ length: 0962
+	.global Tsa_MonologueScrollingBG
+Tsa_MonologueScrollingBG: @ 08320436
+	.incbin "fe6-base.gba", 0x320436, (0x320D98 - 0x320436) @ length: 0962 (30 * 40 * 2)
 
 	.global Pal_MonologueBG
 Pal_MonologueBG: @ 08320D98

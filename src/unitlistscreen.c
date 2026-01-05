@@ -357,7 +357,7 @@ void UnitListScreenSprites_Init(struct UnitListScreenSpritesProc * proc)
     proc->unk_38 = proc->main_proc->unk_40;
     proc->unk_3A = 0;
     proc->unk_30 = 0;
-    proc->unk_34 = func_fe6_0808230C(proc);
+    proc->unk_34 = StartMenuScrollBar(proc);
 
     func_fe6_08082320(proc->unk_34, 0xE0, 0x40, 10, proc->main_proc->unk_40, gUnk_0200CD38, 6);
 
