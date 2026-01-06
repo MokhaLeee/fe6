@@ -592,6 +592,8 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
+        asm/prep_subscreen_discard.o(.text);
+        src/prep_subscreen_discard.o(.text);
         asm/prep_menuscrollbar.o(.text);
         src/prep_menuscrollbar.o(.text);
         src/prep_080823A0.o(.text);
@@ -879,7 +881,7 @@ SECTIONS
         . = ALIGN(4); src/prepscreen_disp.o(.data);
         . = ALIGN(4); src/prepmenuitem.o(.data);
         . = ALIGN(4); src/prepscreenfx.o(.data);
-        . = ALIGN(4); data/data_67829C.o(.data);
+        . = ALIGN(4); src/prep_subscreen_discard.o(.data);
         . = ALIGN(4); src/prep_menuscrollbar.o(.data);
         . = ALIGN(4); src/prep_bgscroll.o(.data);
         . = ALIGN(4); src/prep_sallycir.o(.data);

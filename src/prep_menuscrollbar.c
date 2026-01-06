@@ -5,6 +5,16 @@
 #include "sprite.h"
 #include "prepscreen.h"
 
+u16 CONST_DATA Sprite_08679578[] = {
+	1,
+	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1),
+};
+
+u16 CONST_DATA Sprite_08679580[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x1),
+};
+
 u16 CONST_DATA Sprite_MenuScrollContainer[] = {
 	1,
 	OAM0_SHAPE_8x32, OAM1_SIZE_8x32, OAM2_CHR(0x1),
