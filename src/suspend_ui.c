@@ -4,6 +4,7 @@
 #include "action.h"
 #include "save_game.h"
 #include "eventscript.h"
+#include "gamecontroller.h"
 #include "constants/msg.h"
 
 #include "suspend_ui.h"
@@ -53,4 +54,10 @@ void WriteSuspandPlaterIdle(void)
 {
     gAction.suspend_point = SUSPEND_POINT_PLAYER_PHASE;
     WriteSuspendSave(SAVE_SUSPEND);
+}
+
+void PostGameOverHandler(ProcPtr proc)
+{
+	SetNextGameAction(GAME_ACTION_0);
+	EventEndBattleMap(proc);
 }

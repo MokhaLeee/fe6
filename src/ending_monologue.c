@@ -173,7 +173,7 @@ void EndingMonologue_Init(void)
     gPal[0] = 0;
     ApplyPalette(Pal_EndingMonologueText, 15);
 
-    func_fe6_0809892C(1, 0, 1, 0, 1);
+    OpAnim_SetWin0Layers(1, 0, 1, 0, 1);
 
     InitScanlineEffect();
     SetOnHBlankA(OnHBlank_08069FD8);

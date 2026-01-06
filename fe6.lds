@@ -630,6 +630,7 @@ SECTIONS
         asm/shop.o(.text);
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
+        src/opanim.o(.text);
         asm/opanim.o(.text);
         src/titlescreen.o(.text);
 
@@ -912,7 +913,8 @@ SECTIONS
         . = ALIGN(4); data/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);
         . = ALIGN(4); src/suspend_ui.o(.data);
-        . = ALIGN(4); data/data_08691480.o(.data);
+        . = ALIGN(4); src/opanim.o(.data);
+        . = ALIGN(4); data/opanim.o(.data);
         . = ALIGN(4); src/titlescreen.o(.data);
 
         . = ALIGN(4); data/data_692308.o(.data);

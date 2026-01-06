@@ -1,161 +1,6 @@
 	.include "asm_proc.inc"
 	.data
 
-/**
- * PROC_START_CHILD_LOCKING(0x086921E8)
- * PROC_END
- */
-	.global ProcScr_TitleScreenHandler
-ProcScr_TitleScreenHandler: @ 08691480
-	PROC_START_CHILD_LOCKING ProcScr_TitleScreen
-	PROC_END
-
-	.incbin "fe6-base.gba", 0x691490, 4
-
-	.global gUnk_08691494
-gUnk_08691494: @ 08691494
-	.incbin "fe6-base.gba", 0x691494, (0x691498 - 0x691494) @ length: 0004
-
-	.global gUnk_08691498
-gUnk_08691498: @ 08691498
-	.incbin "fe6-base.gba", 0x691498, (0x69149C - 0x691498) @ length: 0004
-
-	.global gUnk_0869149C
-gUnk_0869149C: @ 0869149C
-	.incbin "fe6-base.gba", 0x69149C, (0x6914A0 - 0x69149C) @ length: 0004
-
-	.global gUnk_086914A0
-gUnk_086914A0: @ 086914A0
-	.incbin "fe6-base.gba", 0x6914A0, (0x6914A4 - 0x6914A0) @ length: 0004
-
-	.global gUnk_086914A4
-gUnk_086914A4: @ 086914A4
-	.incbin "fe6-base.gba", 0x6914A4, (0x6914A8 - 0x6914A4) @ length: 0004
-
-	.global gUnk_086914A8
-gUnk_086914A8: @ 086914A8
-	.incbin "fe6-base.gba", 0x6914A8, (0x6914AC - 0x6914A8) @ length: 0004
-
-	.global gUnk_086914AC
-gUnk_086914AC: @ 086914AC
-	.incbin "fe6-base.gba", 0x6914AC, (0x6914B0 - 0x6914AC) @ length: 0004
-
-	.global gUnk_086914B0
-gUnk_086914B0: @ 086914B0
-	.incbin "fe6-base.gba", 0x6914B0, (0x6914B4 - 0x6914B0) @ length: 0004
-
-	.global gUnk_086914B4
-gUnk_086914B4: @ 086914B4
-	.incbin "fe6-base.gba", 0x6914B4, (0x6914B8 - 0x6914B4) @ length: 0004
-
-	.global gUnk_086914B8
-gUnk_086914B8: @ 086914B8
-	.incbin "fe6-base.gba", 0x6914B8, (0x6914BC - 0x6914B8) @ length: 0004
-
-	.global gUnk_086914BC
-gUnk_086914BC: @ 086914BC
-	.incbin "fe6-base.gba", 0x6914BC, (0x6914C0 - 0x6914BC) @ length: 0004
-
-	.global gUnk_086914C0
-gUnk_086914C0: @ 086914C0
-	.incbin "fe6-base.gba", 0x6914C0, (0x6914C4 - 0x6914C0) @ length: 0004
-
-	.global gUnk_086914C4
-gUnk_086914C4: @ 086914C4
-	.incbin "fe6-base.gba", 0x6914C4, (0x6914C8 - 0x6914C4) @ length: 0004
-
-	.global gUnk_086914C8
-gUnk_086914C8: @ 086914C8
-	.incbin "fe6-base.gba", 0x6914C8, (0x6914CC - 0x6914C8) @ length: 0004
-
-	.global gUnk_086914CC
-gUnk_086914CC: @ 086914CC
-	.incbin "fe6-base.gba", 0x6914CC, (0x6914D0 - 0x6914CC) @ length: 0004
-
-	.global gUnk_086914D0
-gUnk_086914D0: @ 086914D0
-	.incbin "fe6-base.gba", 0x6914D0, (0x6914D4 - 0x6914D0) @ length: 0004
-
-	.global gUnk_086914D4
-gUnk_086914D4: @ 086914D4
-	.incbin "fe6-base.gba", 0x6914D4, (0x6914D8 - 0x6914D4) @ length: 0004
-
-	.global gUnk_086914D8
-gUnk_086914D8: @ 086914D8
-	.incbin "fe6-base.gba", 0x6914D8, (0x6914DC - 0x6914D8) @ length: 0004
-
-	.global gUnk_086914DC
-gUnk_086914DC: @ 086914DC
-	.incbin "fe6-base.gba", 0x6914DC, (0x6914E0 - 0x6914DC) @ length: 0004
-
-	.global gUnk_086914E0
-gUnk_086914E0: @ 086914E0
-	.incbin "fe6-base.gba", 0x6914E0, (0x6914F0 - 0x6914E0) @ length: 0010
-
-	.global gUnk_086914F0
-gUnk_086914F0: @ 086914F0
-	.incbin "fe6-base.gba", 0x6914F0, (0x6914F4 - 0x6914F0) @ length: 0004
-
-	.global gUnk_086914F4
-gUnk_086914F4: @ 086914F4
-	.incbin "fe6-base.gba", 0x6914F4, (0x6914F8 - 0x6914F4) @ length: 0004
-
-	.global gUnk_086914F8
-gUnk_086914F8: @ 086914F8
-	.incbin "fe6-base.gba", 0x6914F8, 4
-
-	.global ProcScr_OpAnimfxTerminator
-ProcScr_OpAnimfxTerminator: @ 086914FC
-	PROC_REPEAT OpAnimfxTerminator_Loop
-	PROC_END
-
-	.global ProcScr_OpAnim
-ProcScr_OpAnim: @ 0869150C
-	PROC_ONEND OpAnim_OnEnd
-	PROC_CALL OpAnim_Init
-	PROC_SLEEP 0
-	PROC_START_CHILD ProcScr_OpAnimfxTerminator
-	PROC_SLEEP 0
-	PROC_START_CHILD_LOCKING ProcScr_OpAnim_Nintendo
-	PROC_SLEEP 0
-	PROC_CALL OpAnim_StartBGM
-	PROC_CALL OpAnim_Start
-	PROC_START_CHILD_LOCKING ProcScr_OpAnim1
-	PROC_SLEEP 0
-	PROC_CALL OpAnimAdvance
-	PROC_START_CHILD_LOCKING ProcScr_OpAnim2
-	PROC_SLEEP 0
-	PROC_CALL OpAnimAdvance
-	PROC_START_CHILD_LOCKING ProcScr_OpAnim3
-	PROC_SLEEP 0
-	PROC_CALL OpAnimAdvance
-	PROC_START_CHILD_LOCKING ProcScr_OpAnim4
-	PROC_SLEEP 0
-	PROC_CALL OpAnimAdvance
-	PROC_START_CHILD_LOCKING ProcScr_OpAnim5
-	PROC_SLEEP 0
-	PROC_CALL OpAnimAdvance
-	PROC_START_CHILD_LOCKING ProcScr_OpAnim6
-	PROC_SLEEP 0
-	PROC_CALL OpAnimAdvance
-	PROC_END_EACH ProcScr_OpAnimfxTerminator
-	PROC_START_CHILD_LOCKING ProcScr_TitleScreenFromOp
-	PROC_SLEEP 0
-	PROC_END
-
-	.global BgConf_OpAnim_08691604
-BgConf_OpAnim_08691604: @ 08691604
-	.incbin "fe6-base.gba", 0x691604, (0x69161C - 0x691604) @ length: 0018
-
-	.global BgConf_OpAnim_0869161C
-BgConf_OpAnim_0869161C: @ 0869161C
-	.incbin "fe6-base.gba", 0x69161C, (0x691634 - 0x69161C) @ length: 0018
-
-	.global ProcScr_OpAnim_08691634
-ProcScr_OpAnim_08691634: @ 08691634
-	PROC_CALL func_fe6_08098A44
-	PROC_REPEAT func_fe6_08098A4C
-
 	.global gUnk_08691644
 gUnk_08691644: @ 08691644
 	.incbin "fe6-base.gba", 0x691644, (0x6916E5 - 0x691644) @ length: 00A1
@@ -229,7 +74,7 @@ ProcScr_OpAnim1: @ 08691930
 	PROC_CALL FadeInBlackSpeed04
 	PROC_SLEEP 0
 	PROC_SLEEP 60
-	PROC_CALL func_fe6_08098A78
+	PROC_CALL PutOpAnimSubtitle0
 	PROC_SLEEP 30
 	PROC_CALL func_fe6_08099750
 	PROC_SLEEP 230
@@ -266,7 +111,7 @@ ProcScr_OpAnim2: @ 08691A00
 	PROC_SLEEP 0
 	PROC_SLEEP 60
 	PROC_CALL func_fe6_08099A2C
-	PROC_CALL func_fe6_08098A84
+	PROC_CALL PutOpAnimSubtitle1
 	PROC_SLEEP 40
 	PROC_START_CHILD ProcScr_Unk_08691AC0
 	PROC_SLEEP 80
@@ -329,7 +174,7 @@ ProcScr_OpAnim4: @ 08691B68
 	PROC_SLEEP 0
 	PROC_START_CHILD ProcScr_Unk_08691C58
 	PROC_SLEEP 10
-	PROC_CALL func_fe6_08098A9C
+	PROC_CALL PutOpAnimSubtitle3
 	PROC_SLEEP 100
 	PROC_BREAK_EACH ProcScr_Unk_08691C58
 	PROC_SLEEP 240
@@ -388,7 +233,7 @@ ProcScr_OpAnim3: @ 08691CE0
 	PROC_SLEEP 0
 	PROC_START_CHILD ProcScr_Unk_08691DB8
 	PROC_SLEEP 30
-	PROC_CALL func_fe6_08098A90
+	PROC_CALL PutOpAnimSubtitle2
 	PROC_SLEEP 84
 	PROC_START_CHILD ProcScr_Unk_08691D88
 	PROC_SLEEP 270
@@ -396,7 +241,7 @@ ProcScr_OpAnim3: @ 08691CE0
 	PROC_SLEEP 40
 	PROC_CALL func_fe6_08098C94
 	PROC_SLEEP 30
-	PROC_CALL func_fe6_08098ACC
+	PROC_CALL PutOpAnimSubtitle7
 	PROC_SLEEP 90
 	PROC_START_CHILD_LOCKING ProcScr_Unk_08691D70
 	PROC_END
@@ -447,10 +292,10 @@ gUnk_08691E30: @ 08691E30
 	.global ProcScr_OpAnim6
 ProcScr_OpAnim6: @ 08691E48
 	PROC_MARK 9
-	PROC_CALL OpAnin6_StartBGM
-	PROC_CALL OpAnin6_PutThunderStormGfx
+	PROC_CALL OpAnim6_StartBGM
+	PROC_CALL OpAnim6_PutThunderStormGfx
 	PROC_SLEEP 30
-	PROC_REPEAT OpAnin6_StartThunderStorm
+	PROC_REPEAT OpAnim6_StartThunderStorm
 	PROC_SLEEP 6
 	PROC_CALL OpAnim6_PutIdunnGfx
 	PROC_SLEEP 1
@@ -461,8 +306,8 @@ ProcScr_OpAnim6: @ 08691E48
 	PROC_CALL func_fe6_08098C94
 	PROC_END
 
-	.global ProcScr_OpAninThunderStorm
-ProcScr_OpAninThunderStorm: @ 08691EB8
+	.global ProcScr_OpAnimThunderStorm
+ProcScr_OpAnimThunderStorm: @ 08691EB8
 	PROC_CALL func_fe6_0809AB4C
 	PROC_SLEEP 1
 	PROC_CALL func_fe6_0809ABA8
@@ -489,7 +334,7 @@ ProcScr_OpAnim5: @ 08691F18
 	PROC_CALL FadeInBlackSpeed08Unk
 	PROC_SLEEP 0
 	PROC_SLEEP 30
-	PROC_CALL func_fe6_08098AA8
+	PROC_CALL PutOpAnimSubtitle4
 	PROC_SLEEP 80
 	PROC_BREAK_EACH ProcScr_Unk_08692060
 	PROC_SLEEP 180
@@ -499,7 +344,7 @@ ProcScr_OpAnim5: @ 08691F18
 	PROC_SLEEP 0
 	PROC_CALL func_fe6_08098C94
 	PROC_SLEEP 60
-	PROC_CALL func_fe6_08098AB4
+	PROC_CALL PutOpAnimSubtitle5
 	PROC_SLEEP 290
 	PROC_CALL FadeInBlackWithCallBack_Speed04
 	PROC_SLEEP 0
@@ -516,7 +361,7 @@ ProcScr_Unk_08691FF8: @ 08691FF8
 	PROC_SLEEP 0
 	PROC_START_CHILD 0x08692078
 	PROC_SLEEP 60
-	PROC_CALL func_fe6_08098AB4
+	PROC_CALL PutOpAnimSubtitle5
 	PROC_SLEEP 300
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 0

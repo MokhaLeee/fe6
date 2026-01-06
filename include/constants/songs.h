@@ -40,6 +40,7 @@ enum
     SONG_3E = 0x3E,
     SONG_3F = 0x3F,
     SONG_41 = 0x41,
+    SONG_42 = 0x42,
     SONG_43 = 0x43,
     SONG_44 = 0x44,
     SONG_45 = 0x45,
