@@ -15,11 +15,3 @@ AffinityBonuses: @ 0866350C
     .global gCreditInfo
 gCreditInfo: @ 0866354C
     .incbin "fe6-base.gba", 0x66354C, (0x6637A4 - 0x66354C) @ length: 0258
-
-    .global ChapterInfoTable
-ChapterInfoTable: @ 086637A4
-    .incbin "fe6-base.gba", 0x6637A4, (0x664398 - 0x6637A4) @ length: 0BF4
-
-    .global ChapterAssets
-ChapterAssets: @ 08664398
-    .incbin "fe6-base.gba", 0x664398, (0x66472C - 0x664398) @ length: 0394
