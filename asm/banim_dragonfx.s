@@ -2,74 +2,9 @@
 
 	.syntax unified
 
-	thumb_func_start NewEkrIdunnExitAnim2
-NewEkrIdunnExitAnim2: @ 0x0805A658
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	adds r4, r0, #0
-	mov r8, r1
-	adds r6, r2, #0
-	ldr r0, .L0805A6A8 @ =ProcScr_EkrDragonfx_IdunnExit2
-	movs r1, #3
-	bl SpawnProc
-	adds r5, r0, #0
-	str r4, [r5, #0x5c]
-	adds r1, r5, #0
-	adds r1, #0x29
-	movs r0, #0
-	strb r0, [r1]
-	strh r0, [r5, #0x2c]
-	strh r6, [r5, #0x2e]
-	mov r0, r8
-	strh r0, [r5, #0x30]
-	ldr r4, .L0805A6AC @ =gPal+0xC0
-	ldr r1, .L0805A6B0 @ =gEkrBgPaletteBackup1
-	adds r0, r4, #0
-	movs r2, #8
-	bl CpuFastSet
-	movs r0, #0x88
-	lsls r0, r0, #2
-	adds r4, r4, r0
-	ldr r1, .L0805A6B4 @ =gEkrBgPaletteBackup2
-	adds r0, r4, #0
-	movs r2, #8
-	bl CpuFastSet
-	adds r0, r5, #0
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0805A6A8: .4byte ProcScr_EkrDragonfx_IdunnExit2
-.L0805A6AC: .4byte gPal+0xC0
-.L0805A6B0: .4byte gEkrBgPaletteBackup1
-.L0805A6B4: .4byte gEkrBgPaletteBackup2
 
-	thumb_func_start func_fe6_0805A6B8
-func_fe6_0805A6B8: @ 0x0805A6B8
-	push {lr}
-	adds r2, r0, #0
-	ldrh r0, [r2, #0x2c]
-	adds r0, #1
-	strh r0, [r2, #0x2c]
-	lsls r0, r0, #0x10
-	ldrh r3, [r2, #0x30]
-	lsls r1, r3, #0x10
-	cmp r0, r1
-	bne .L0805A6D6
-	movs r0, #0
-	strh r0, [r2, #0x2c]
-	adds r0, r2, #0
-	bl Proc_Break
-.L0805A6D6:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0805A6DC
-func_fe6_0805A6DC: @ 0x0805A6DC
+	thumb_func_start EkrDragonfx_IdunnExit2_Loop2
+EkrDragonfx_IdunnExit2_Loop2: @ 0x0805A6DC
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
@@ -132,8 +67,8 @@ func_fe6_0805A6DC: @ 0x0805A6DC
 .L0805A760: .4byte gPal+0xC0
 .L0805A764: .4byte gEkrBgPaletteBackup2
 
-	thumb_func_start func_fe6_0805A768
-func_fe6_0805A768: @ 0x0805A768
+	thumb_func_start EkrDragonfx_IdunnExit2_Done
+EkrDragonfx_IdunnExit2_Done: @ 0x0805A768
 	push {lr}
 	adds r1, r0, #0
 	adds r1, #0x29

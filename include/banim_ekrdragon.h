@@ -65,9 +65,7 @@ struct ProcEkrDragonFx {
     /* 2A */ u16 unk2A;
     /* 2C */ i16 timer;
     /* 2E */ i16 counter;
-
-    STRUCT_PAD(0x30, 0x32);
-
+    /* 30 */ i16 delay;
     /* 32 */ u16 x;
     /* 34 */ i16 x_hi;
 
@@ -300,9 +298,9 @@ void EkrDragonfx_IdunnBodyAnime_Main(struct ProcEkrDragonFx * proc);
 void EkrDragonfx_IdunnBodyAnime_End(struct ProcEkrDragonFx * proc);
 
 ProcPtr NewEkrIdunnExitAnim2(struct BaSprite * anim, int, int);
-// func_fe6_0805A6B8
-// func_fe6_0805A6DC
-// func_fe6_0805A768
+void EkrDragonfx_IdunnExit2_Delay(struct ProcEkrDragonFx *proc);
+void EkrDragonfx_IdunnExit2_Loop2(struct ProcEkrDragonFx *proc);
+void EkrDragonfx_IdunnExit2_Done(struct ProcEkrDragonFx *proc);
 ProcPtr NewEkrIdunnIntroDeamon1(struct BaSprite * anim);
 // func_fe6_0805A7C0
 ProcPtr NewEkrIdunnIntroDeamon2(struct BaSprite * anim);

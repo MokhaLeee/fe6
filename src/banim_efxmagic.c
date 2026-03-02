@@ -5787,3 +5787,149 @@ void EfxDivineOBJ_Loop(struct ProcEfxOBJ *proc)
 		Proc_Break(proc);
 	}
 }
+
+/**
+ * Aureola
+ */
+void StartSpellAnimAureola(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxAureola, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
+
+void EfxAureola_Loop(struct ProcEfx *proc)
+{
+	struct Anim *anim = GetAnimAnotherSide(proc->anim);
+	int duration = EfxGetCamMovDuration();
+
+	proc->timer++;
+
+	if (proc->timer == 1)
+		NewEfxFarAttackWithDistance(proc->anim, -1);
+
+	if (proc->timer == duration + 1) {
+		NewEfxAureolaBG(anim);
+
+		SetBlendAlpha(0, 0x10);
+		NewEfxALPHA(anim, 0, 0x20, 0, 0x10, 0);
+		NewEfxAureolaOBJ(anim, 0xAA);
+		PlaySFX(SONG_12A, 0x100, anim->xPosition, 1);
+		return;
+	}
+
+	if (proc->timer == duration + 0x11B) {
+		PlaySFX(SONG_12B, 0x100, anim->xPosition, 1);
+		return;
+	}
+
+	if (proc->timer == duration + 0x13B) {
+		NewEfxAureolaOBJ2(anim, 0x19);
+		return;
+	}
+
+	if (proc->timer == duration + 0x154) {
+		NewEfxFlashBgWhite(anim, 0xC);
+		anim->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+		StartBattleAnimHitEffectsAlt(anim, proc->hitted);
+
+		if (proc->hitted == EKR_HITTED)
+			EfxPlayHittedSFX(anim);
+
+		return;
+	}
+
+	if (proc->timer == duration + 0x15A) {
+		PlaySFX(SONG_12C, 0x100,0x78, 0);
+		NewEfxMagicQUAKE(anim, 0x64);
+		NewEfxAureolaBG2(anim, 0x64);
+		NewEfxAureolaBG2COL(anim, 0x64);
+		NewEfxALPHA(anim, 0x46, 0x1E, 0x10, 0, 0);
+		NewEfxAureolaOBJ3(anim);
+		return;
+	}
+
+	if (proc->timer == duration + 0x1EA) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxAureolaBG(struct Anim *anim)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxAureolaBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxAureolaBG;
+	proc->tsal = TsaArray_EfxAureolaBG;
+	proc->img  = ImgArray_EfxAureolaBG;
+
+	SpellFx_RegisterBgPal(Pal_EfxAureolaBG, 0x20);
+	SpellFx_ClearBG1Position();
+	SpellFx_SetSomeColorEffect();
+
+	if (gEkrDistanceType == EKR_DISTANCE_CLOSE) {	
+		if (GetAnimPosition(proc->anim) == POS_L)
+			SetBgOffset(BG_1, 0xF8, 0x0);
+		else
+			SetBgOffset(BG_1, 0x18, 0x0);
+	} else {
+		if (GetAnimPosition(proc->anim) == POS_L)
+			SetBgOffset(BG_1, 0x10, 0x0);
+	}
+}
+
+void EfxAureolaBG_Loop(struct ProcEfxBG *proc)
+{
+	int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		u16 **buf = proc->tsal;
+		u16 **img = proc->img;
+
+		SpellFx_RegisterBgGfx(img[ret], 0x2000);
+		SpellFx_WriteBgMapExt(proc->anim, buf[ret],0x20, 0x14);
+		return;
+	}
+
+	if (ret == -1) {
+		SpellFx_ClearBG1();
+		gEfxBgSemaphore--;
+		SpellFx_ClearColorEffects();
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxAureolaBG2(struct Anim *anim, int duration)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxAureolaBG2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = duration;
+	proc->unk32 = 0;
+	proc->unk3A = 0;
+	proc->unk34 = 0;
+	proc->unk3C = 0;
+
+	SpellFx_RegisterBgGfx(Img_EfxAureolaBG2, 0x2000);
+	SpellFx_RegisterBgPal(Pal_EfxAureolaBG2, 0x20);
+	SpellFx_ClearBG1Position();
+	SpellFx_SetSomeColorEffect();
+}

@@ -137,7 +137,9 @@ struct ProcEfxBG {
     /* 30 */ i16 unk30;
     /* 32 */ i16 unk32;
     /* 34 */ i16 unk34;
-    STRUCT_PAD(0x36, 0x3C);
+    /* 36 */ i16 unk36;
+    /* 38 */ i16 unk38;
+    /* 3A */ i16 unk3A;
     /* 3C */ i16 unk3C;
     STRUCT_PAD(0x3E, 0x44);
     /* 44 */ u32 frame;
@@ -644,7 +646,7 @@ void SpellFx_ClearBG1(void);
 void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearColorEffects(void);
 void StartBattleAnimHitEffectsDefault(struct Anim *anim, int type);
-void func_fe6_08047610(struct Anim *anim, int type);
+void StartBattleAnimHitEffectsAlt(struct Anim *anim, int type);
 void StartBattleAnimHitEffects(struct Anim *anim, int type, int quake_normal, int quake_crit);
 void StartBattleAnimResireHitEffects(struct Anim *anim, int type);
 void StartBattleAnimStatusChgHitEffects(struct Anim *anim, int type);
@@ -1269,23 +1271,23 @@ void NewEfxDivineOBJ(struct Anim *anim);
 // EfxDivineOBJ_Loop
 void StartSpellAnimAureola(struct Anim *anim);
 // EfxAureola_Loop
-// NewEfxAureolaBG
+void NewEfxAureolaBG(struct Anim *anim);
 // EfxAureolaBG_Loop
-// NewEfxAureolaBG2
+void NewEfxAureolaBG2(struct Anim *anim, int duration);
 // EfxAureolaBG2_Loop
-// NewEfxAureolaBG2COL
+void NewEfxAureolaBG2COL(struct Anim *anim, int);
 // EfxAureolaBG2COL_Loop
-// NewEfxAureolaOBJ
+void NewEfxAureolaOBJ(struct Anim *anim, int);
 // EfxAureolaOBJ_Loop
-// NewEfxAureolaOBJCtrl
+void NewEfxAureolaOBJCtrl(struct Anim *anim);
 // EfxAureolaOBJCtrl_Loop
-// NewEfxAureolaOBJ2
+void NewEfxAureolaOBJ2(struct Anim *anim, int);
 // EfxAureolaOBJ2_Loop
-// NewEfxAureolaOBJ3
+void NewEfxAureolaOBJ3(struct Anim *anim);
 // EfxAureolaOBJ3_Loop
-// NewEfxAureolaOBJ3Ctrl
+void NewEfxAureolaOBJ3Ctrl(struct Anim *anim);
 // EfxAureolaOBJ3Ctrl_Loop
-// StartSpellAnimApocalypse
+void StartSpellAnimApocalypse(struct Anim *anim);
 // EfxApocalypse_Loop
 // NewEfxApocalypseBG
 // EfxApocalypseBG_Loop

@@ -463,3 +463,39 @@ void EkrDragonfx_IdunnBodyAnime_End(struct ProcEkrDragonFx * proc)
     SetBgOffset(BG_3, proc->x, proc->y);
     Proc_Break(proc);
 }
+
+struct ProcScr CONST_DATA ProcScr_EkrDragonfx_IdunnExit2[] = {
+    PROC_19,
+    PROC_REPEAT(EkrDragonfx_IdunnExit2_Delay),
+    PROC_REPEAT(EkrDragonfx_IdunnExit2_Loop2),
+    PROC_REPEAT(EkrDragonfx_IdunnExit2_Done),
+    PROC_END,
+};
+
+ProcPtr NewEkrIdunnExitAnim2(struct BaSprite *anim, int delay, int counter)
+{
+    struct ProcEkrDragonFx *proc;
+
+    proc = SpawnProc(ProcScr_EkrDragonfx_IdunnExit2, PROC_TREE_3);
+
+    proc->anim = anim;
+    proc->flag = EDRAGONFX_FLAG_START;
+    proc->timer = 0;
+    proc->counter = counter;
+    proc->delay = delay;
+
+    CpuFastCopy(PAL_BG(BGPAL_EFXDRAGON_L), gEkrBgPaletteBackup1, 0x20);
+    CpuFastCopy(PAL_OBJ(OBPAL_EFX_UNIT_L), gEkrBgPaletteBackup2, 0x20);
+
+    return proc;
+}
+
+void EkrDragonfx_IdunnExit2_Delay(struct ProcEkrDragonFx *proc)
+{
+    proc->timer++;
+
+    if (proc->timer == proc->delay) {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}

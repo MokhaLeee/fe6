@@ -2,10 +2,6 @@
 	.include "animscr.inc"
 	.include "gba_sprites.inc"
 
-	.global ProcScr_EkrDragonfx_IdunnExit2
-ProcScr_EkrDragonfx_IdunnExit2: @ 086049A8
-	.incbin "fe6-base.gba", 0x6049A8, (0x6049D0 - 0x6049A8) @ length: 0028
-
 	.global ProcScr_EkrIdunnDeamon1
 ProcScr_EkrIdunnDeamon1: @ 086049D0
 	.incbin "fe6-base.gba", 0x6049D0, (0x6049E8 - 0x6049D0) @ length: 0018
