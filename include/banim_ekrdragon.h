@@ -3,7 +3,7 @@
 #include "prelude.h"
 #include "banim_sprite.h"
 
-extern ProcPtr gpProcEkrIdunnBodyFlashing;
+extern ProcPtr gpProcEkrIdunnBodyMain;
 
 enum EkrDragonfxState_idx {
 	DRAGONFX_STATE_0 = 0,
@@ -84,6 +84,7 @@ struct ProcEkrDragonFx {
 	STRUCT_PAD(0x54, 0x5C);
 
 	/* 5C */ struct BaSprite *anim;
+	/* 60 */ struct BaSprite *sub_anim;
 };
 
 struct ProcEkrDragon {
@@ -301,17 +302,40 @@ ProcPtr NewEkrIdunnExitAnim2(struct BaSprite *anim, int, int);
 void EkrDragonfx_IdunnExit2_Delay(struct ProcEkrDragonFx *proc);
 void EkrDragonfx_IdunnExit2_Loop2(struct ProcEkrDragonFx *proc);
 void EkrDragonfx_IdunnExit2_Done(struct ProcEkrDragonFx *proc);
+
 ProcPtr NewEkrIdunnIntroDeamon1(struct BaSprite *anim);
-// func_fe6_0805A7C0
+void EkrIdunnDeamon1_Loop(struct ProcEkrDragonFx *proc);
 ProcPtr NewEkrIdunnIntroDeamon2(struct BaSprite *anim);
-// func_fe6_0805A82C
-void NewEkrIdunnBodyFlashing(struct BaSprite *anim);
-void EndEkrIdunnBodyFlashing(void);
-// func_fe6_0805A8B0
-void NewEfxAvoidForIdunn(struct BaSprite *anim);
-// func_fe6_0805A9F8
-// func_fe6_0805AAA0
-// func_fe6_0805AB50
+void EkrIdunnDeamon2_Loop(struct ProcEkrDragonFx *proc);
+
+struct ProcEkrIdunnfx {
+	PROC_HEADER;
+
+	/* 29 */ u8 flag;
+
+	STRUCT_PAD(0x2A, 0x2C);
+
+	/* 2C */ i16 timer;
+	/* 2E */ i16 duration;
+
+	STRUCT_PAD(0x30, 0x44);
+
+	/* 44 */ u32 frame;
+	/* 48 */ const u16 *frame_config;
+	/* 4C */ const u16 **tsa;
+	/* 50 */ const u16 **tsa_unused;
+	/* 54 */ int round;
+	/* 58 */ u16 **pal_unused;
+	/* 5C */ struct BaSprite *anim;
+};
+
+ProcPtr NewEkrIdunnBodyMain(struct BaSprite *anim);
+void EndEkrIdunnBodyMain(void);
+void EkrIdunnBodyMain_Loop(struct ProcEkrIdunnfx *proc);
+ProcPtr NewEfxAvoidForIdunn(struct BaSprite *anim);
+void EfxAvoidForIdunn_Loop1(struct ProcEkrIdunnfx *proc);
+void EfxAvoidForIdunn_Loop2(struct ProcEkrIdunnfx *proc);
+void EfxAvoidForIdunn_Loop3(struct ProcEkrIdunnfx *proc);
 ProcPtr NewEkrIdunnExitAnim1(struct BaSprite *anim);
 // func_fe6_0805ABC0
 // func_fe6_0805AC54

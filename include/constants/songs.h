@@ -220,6 +220,7 @@ enum
     SONG_13E,
     SONG_13F,
     SONG_140 = 0x140,
+    SONG_143 = 0x143,
     SONG_269 = 0x269,
     SONG_26A = 0x26A,
 };

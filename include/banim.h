@@ -2387,9 +2387,9 @@ extern CONST_DATA struct ProcScr ProcScr_EkrDragonfx_IdunnBodyAnime[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonfx_IdunnExit2[];
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon1[];
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeamon2[];
-extern CONST_DATA struct ProcScr ProcScr_EkrIdunnBodyFlashing[];
-// ??? gUnk_08604A18
-// ??? gUnk_08604A3C
+extern CONST_DATA struct ProcScr ProcScr_EkrIdunnBodyMain[];
+extern const u16 * CONST_DATA TsaArray_EkrIdunnBody[];
+extern CONST_DATA struct ProcScr ProcScr_EkrIdunnAvoid[];
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnExitAnim1[];
 // ??? gUnk_08604A9C
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonDeath[];
@@ -3454,11 +3454,11 @@ extern u16  Pal_EfxAureolaOBJ[];
 extern i16 const FrameArray_EkrManaketefxNormalAttack[];
 extern i16 const FrameArray_EkrManaketefxCriticalAttack[];
 extern i16 const FrameArray_EkrFaefx[];
-// extern ??? gUnk_081BC132
-// extern ??? gUnk_081BC140
-// extern ??? gUnk_081BC15E
-// extern ??? gUnk_081BC17C
-// extern ??? gUnk_081BC19A
+extern i16 const FrameArray_EkrIdunnBody0[];
+extern i16 const FrameArray_EkrIdunnBody1[];
+extern i16 const FrameArray_EkrIdunnBody2[];
+extern i16 const FrameArray_EkrIdunnBody3[];
+extern i16 const FrameArray_EkrIdunnBody4[];
 extern u8 const Img_ManaketeBodyIntro2[];
 extern u8 const Img_ManaketeBodyIntro1[];
 extern u8 const Img_ManaketeBodyStd[];
@@ -3477,7 +3477,15 @@ extern u16 const Pal_081C4DE8[];
 extern u8 const Tsa_EkrIdunn_081C4E28[];
 extern u8 const Tsa_EkrIdunn_081C5264[];
 extern u8 const Tsa_EkrIdunn_081C5688[];
-extern u8 const Tsa_EkrIdunn_081C5AAC[];
+extern u16 const Tsa_EkrIdunnBody0[];
+extern u16 const Tsa_EkrIdunnBody1[];
+extern u16 const Tsa_EkrIdunnBody2[];
+extern u16 const Tsa_EkrIdunnBody3[];
+extern u16 const Tsa_EkrIdunnBody4[];
+extern u16 const Tsa_EkrIdunnBody5[];
+extern u16 const Tsa_EkrIdunnBody6[];
+extern u16 const Tsa_EkrIdunnBody7[];
+extern u16 const Tsa_EkrIdunnBody8[];
 extern u8 const Img_EkrFaefx[];
 extern u16 const Pal_EkrFaefx[];
 extern u16 const Tsa_EkrFaefx1[];

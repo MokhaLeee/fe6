@@ -2,6 +2,7 @@
 #include "proc.h"
 #include "util.h"
 #include "map.h"
+#include "oam.h"
 #include "hardware.h"
 
 #include "banim_sprite.h"
@@ -9,6 +10,8 @@
 #include "banim_data.h"
 #include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
+
+#include "constants/songs.h"
 
 struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[] = {
 	PROC_19,
@@ -72,7 +75,7 @@ void EkrIdunn_InitBanimfx(struct ProcEkrDragon *proc)
 void EkrIdunn_InitBodyfx(struct ProcEkrDragon *proc)
 {
 	LZ77UnCompVram(Img_EkrIdunn_081C1C94, (u8 *)BG_VRAM + 0x8000);
-	LZ77UnCompWram(Tsa_EkrIdunn_081C5AAC, gEkrTsaBuffer);
+	LZ77UnCompWram(Tsa_EkrIdunnBody0, gEkrTsaBuffer);
 
 	EfxTmFillB(0x001F001F);
 	TmFill(gBg3Tm, 0x1F);
@@ -195,7 +198,7 @@ void EkrIdunn_BodyFallInAndTriggerBattleStart(struct ProcEkrDragon *proc)
 		SetAnimStateUnHidden(GetAnimPosition(proc->anim));
 		CpuFastCopy(gEkrBgPaletteBackup1, gPal + PAL_OFFSET(6), 0x20);
 		gEkrDragonfxState[GetAnimPosition(proc->anim)] = TRUE;
-		NewEkrIdunnBodyFlashing(proc->anim);
+		NewEkrIdunnBodyMain(proc->anim);
 		Proc_Break(proc);
 		return;
 	}
@@ -211,7 +214,7 @@ void EkrIdunn_BodyFallInAndTriggerBattleStart(struct ProcEkrDragon *proc)
 		gEkrDragonDeamonProcs[1]->fxtype = 1;
 		SetAnimStateUnHidden(GetAnimPosition(proc->anim));
 		gEkrDragonfxState[GetAnimPosition(proc->anim)] = TRUE;
-		NewEkrIdunnBodyFlashing(proc->anim);
+		NewEkrIdunnBodyMain(proc->anim);
 		Proc_Break(proc);
 		return;
 	}
@@ -222,7 +225,7 @@ void EkrIdunn_BlockingInBattle(struct ProcEkrDragon *proc)
 	if (gEkrDragonState[GetAnimPosition(proc->anim)] != DRAGON_STATE_ENDING)
 		return;
 
-	EndEkrIdunnBodyFlashing();
+	EndEkrIdunnBodyMain();
 
 	if (gEkrDragonFastenConf[GetAnimPosition(proc->anim)] == 1)
 		proc->procfx = NewEkrIdunnExitAnim1(proc->anim);
@@ -460,7 +463,7 @@ struct ProcScr CONST_DATA ProcScr_EkrDragonfx_IdunnExit2[] = {
 	PROC_END,
 };
 
-ProcPtr NewEkrIdunnExitAnim2(struct BaSprite *anim, int delay, int counter)
+ProcPtr NewEkrIdunnExitAnim2(struct BaSprite *anim, int delay, int duration)
 {
 	struct ProcEkrDragonFx *proc;
 
@@ -469,7 +472,7 @@ ProcPtr NewEkrIdunnExitAnim2(struct BaSprite *anim, int delay, int counter)
 	proc->anim = anim;
 	proc->flag = EDRAGONFX_FLAG_START;
 	proc->timer = 0;
-	proc->counter = counter;
+	proc->counter = duration;
 	proc->delay = delay;
 
 	CpuFastCopy(PAL_BG(BGPAL_EFXDRAGON_L), gEkrBgPaletteBackup1, 0x20);
@@ -486,4 +489,302 @@ void EkrDragonfx_IdunnExit2_Delay(struct ProcEkrDragonFx *proc)
 		proc->timer = 0;
 		Proc_Break(proc);
 	}
+}
+
+void EkrDragonfx_IdunnExit2_Loop2(struct ProcEkrDragonFx *proc)
+{
+	int val = Interpolate(INTERPOLATE_SQUARE, 0, 0x10, proc->timer, proc->counter);
+	i16 time;
+
+	CpuFastCopy(gEkrBgPaletteBackup1, PAL_BG(BGPAL_EFXDRAGON_L), 0x20);
+	CpuFastCopy(gEkrBgPaletteBackup2, PAL_OBJ(OBPAL_EFX_UNIT_L), 0x20);
+
+	EfxPalBlackInOut(PAL_BG(0), BGPAL_EFXDRAGON_L, 1, val);
+	EfxPalBlackInOut(PAL_BG(0), OBPAL_EFX_UNIT_L + 0x10, 1, val);
+
+	EnablePalSync();
+
+	time = ++proc->timer;
+	if (time == (proc->counter + 1)) {
+		proc->flag = EDRAGONFX_FLAG_DONE;
+		Proc_Break(proc);
+	}
+}
+
+void EkrDragonfx_IdunnExit2_Done(struct ProcEkrDragonFx *proc)
+{
+	if (proc->flag == EDRAGONFX_FLAG_END)
+		Proc_Break(proc);
+}
+
+struct ProcScr CONST_DATA ProcScr_EkrIdunnDeamon1[] = {
+	PROC_19,
+	PROC_REPEAT(EkrIdunnDeamon1_Loop),
+	PROC_END,
+};
+
+ProcPtr NewEkrIdunnIntroDeamon1(struct BaSprite *anim)
+{
+	struct ProcEkrDragonFx *proc;
+	struct BaSprite *new_anim;
+
+	proc = SpawnProc(ProcScr_EkrIdunnDeamon1, PROC_TREE_3);
+	proc->anim = anim;
+
+	new_anim = BasCreate(AnimScr_EkrIdunnDeamon1, 0x78);
+
+	new_anim->oam2 = OAM2_PAL(OBPAL_EFX_UNIT_L)
+		+ OAM2_LAYER(2) + OAM2_CHR(VRAMOFF_OBJ_4000 / 0x20);
+
+	new_anim->xPosition = proc->x = 0x180;
+	new_anim->yPosition = proc->y = 0x180;
+
+	proc->sub_anim = new_anim;
+	proc->flag = EDRAGONFX_FLAG_START;
+	return proc;
+}
+
+void EkrIdunnDeamon1_Loop(struct ProcEkrDragonFx *proc)
+{
+	struct BaSprite *anim = proc->sub_anim;
+
+	anim->xPosition = proc->x;
+	anim->yPosition = proc->y;
+
+	if (proc->flag == EDRAGONFX_FLAG_DONE) {
+		BasRemove(proc->sub_anim);
+		Proc_Break(proc);
+	}
+}
+
+ProcPtr NewEkrIdunnIntroDeamon2(struct BaSprite *anim)
+{
+	struct ProcEkrDragonFx *proc;
+	struct BaSprite *new_anim;
+
+	proc = SpawnProc(ProcScr_EkrIdunnDeamon2, PROC_TREE_3);
+	proc->anim = anim;
+
+	new_anim = BasCreate(AnimScr_EkrIdunnDeamon2, 0x78);
+
+	new_anim->oam2 = OAM2_PAL(OBPAL_EFX_UNIT_L)
+		+ OAM2_LAYER(2) + OAM2_CHR(VRAMOFF_OBJ_4000 / 0x20);
+
+	new_anim->xPosition = 0x180;
+	new_anim->yPosition = 0x180;
+
+	proc->sub_anim = new_anim;
+	proc->flag = EDRAGONFX_FLAG_START;
+	return proc;
+}
+
+struct ProcScr CONST_DATA ProcScr_EkrIdunnDeamon2[] = {
+	PROC_19,
+	PROC_REPEAT(EkrIdunnDeamon2_Loop),
+	PROC_END,
+};
+
+void EkrIdunnDeamon2_Loop(struct ProcEkrDragonFx *proc)
+{
+	struct BaSprite *anim = proc->sub_anim;
+
+	anim->xPosition = proc->x;
+	anim->yPosition = proc->y;
+
+	if (proc->flag == EDRAGONFX_FLAG_DONE) {
+		BasRemove(proc->sub_anim);
+		Proc_Break(proc);
+	}
+}
+
+struct ProcScr CONST_DATA ProcScr_EkrIdunnBodyMain[] = {
+	PROC_19,
+	PROC_REPEAT(EkrIdunnBodyMain_Loop),
+	PROC_END,
+};
+
+const u16 *CONST_DATA TsaArray_EkrIdunnBody[] = {
+	Tsa_EkrIdunnBody0,
+	Tsa_EkrIdunnBody1,
+	Tsa_EkrIdunnBody2,
+	Tsa_EkrIdunnBody3,
+	Tsa_EkrIdunnBody4,
+	Tsa_EkrIdunnBody5,
+	Tsa_EkrIdunnBody6,
+	Tsa_EkrIdunnBody7,
+	Tsa_EkrIdunnBody8
+};
+
+ProcPtr NewEkrIdunnBodyMain(struct BaSprite *anim)
+{
+	struct ProcEkrIdunnfx *proc;
+
+	proc = SpawnProc(ProcScr_EkrIdunnBodyMain, PROC_TREE_3);
+
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->duration = false;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EkrIdunnBody0;
+	proc->tsa = TsaArray_EkrIdunnBody;
+	proc->round = anim->currentRoundType;
+
+	gpProcEkrIdunnBodyMain = proc;
+	return proc;
+}
+
+void EndEkrIdunnBodyMain(void)
+{
+	if (gpProcEkrIdunnBodyMain) {
+		Proc_End(gpProcEkrIdunnBodyMain);
+		gpProcEkrIdunnBodyMain = NULL;
+	}
+}
+
+void EkrIdunnBodyMain_Loop(struct ProcEkrIdunnfx *proc)
+{
+	int ret;
+	int round = proc->anim->currentRoundType;
+
+	if (proc->round != round) {
+		proc->round = round;
+		proc->timer = 0;
+		proc->duration = false;
+		proc->frame = 0;
+
+		switch (round) {
+		case ANIM_ROUND_HIT_CLOSE:
+		case ANIM_ROUND_MISS_CLOSE:
+			proc->frame_config = FrameArray_EkrIdunnBody1;
+			break;
+
+		case ANIM_ROUND_NONCRIT_FAR:
+			proc->frame_config = FrameArray_EkrIdunnBody2;
+			break;
+
+		case ANIM_ROUND_CRIT_FAR:
+			proc->frame_config = FrameArray_EkrIdunnBody3;
+			break;
+
+		case ANIM_ROUND_CRIT_CLOSE:
+			proc->frame_config = FrameArray_EkrIdunnBody4;
+			NewEfxMagdhisEffect(proc->anim);
+			break;
+
+		case ANIM_ROUND_TAKING_MISS_CLOSE:
+		case ANIM_ROUND_TAKING_MISS_FAR:
+		case ANIM_ROUND_TAKING_HIT_CLOSE:
+		case ANIM_ROUND_STANDING:
+		case ANIM_ROUND_TAKING_HIT_FAR:
+			proc->frame_config = FrameArray_EkrIdunnBody0;
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	ret = EfxAdvanceFrameLut(&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		EkrDragonTmCpy3((const u8 *)proc->tsa[ret]);
+		return;
+	}
+
+	if (ret == -4) {
+		if (proc->duration == 0) {
+			struct Anim *anim_b = GetAnimAnotherSide(proc->anim);
+
+			if (anim_b->flags3 & ANIM_BIT2_0008)
+				proc->duration = 1;
+
+			return;
+		}
+
+		if (CheckEkrHitDone() == true) {
+			proc->timer = 0;
+			proc->duration = 0;
+			proc->frame++;
+		}
+	}
+}
+
+struct ProcScr CONST_DATA ProcScr_EkrIdunnAvoid[] = {
+	PROC_19,
+	PROC_REPEAT(EfxAvoidForIdunn_Loop1),
+	PROC_SLEEP(20),
+	PROC_REPEAT(EfxAvoidForIdunn_Loop2),
+	PROC_REPEAT(EfxAvoidForIdunn_Loop3),
+	PROC_END,
+};
+
+ProcPtr NewEfxAvoidForIdunn(struct BaSprite *anim)
+{
+	struct ProcEkrIdunnfx *proc;
+
+	proc = SpawnProc(ProcScr_EkrIdunnAvoid, PROC_TREE_3);
+
+	proc->anim = anim;
+	proc->flag = EDRAGONFX_FLAG_START;
+	proc->timer = 0;
+	proc->duration = 0x10;
+
+	CpuFastCopy(PAL_BG(BGPAL_EFXDRAGON_L), gEkrBgPaletteBackup1, 0x20);
+	CpuFastCopy(PAL_OBJ(OBPAL_EFX_UNIT_L), gEkrBgPaletteBackup2, 0x20);
+
+	EfxPlaySE(SONG_143, 0x100);
+
+	return proc;
+}
+
+void EfxAvoidForIdunn_Loop1(struct ProcEkrIdunnfx *proc)
+{
+	int val = Interpolate(INTERPOLATE_SQUARE, 0, 0x10, proc->timer, proc->duration);
+	i16 time;
+
+	CpuFastCopy(gEkrBgPaletteBackup1, PAL_BG(BGPAL_EFXDRAGON_L), 0x20);
+	CpuFastCopy(gEkrBgPaletteBackup2, PAL_OBJ(OBPAL_EFX_UNIT_L), 0x20);
+
+	EfxPalBlackInOut(PAL_BG(0), BGPAL_EFXDRAGON_L, 1, val);
+	EfxPalBlackInOut(PAL_BG(0), OBPAL_EFX_UNIT_L + 0x10, 1, val);
+
+	PAL_OBJ(OBPAL_EFX_UNIT_L)[14] = gEkrBgPaletteBackup2[14];
+	PAL_OBJ(OBPAL_EFX_UNIT_L)[15] = gEkrBgPaletteBackup2[15];
+
+	EnablePalSync();
+
+	time = ++proc->timer;
+	if (time == (proc->duration + 1)) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EfxAvoidForIdunn_Loop2(struct ProcEkrIdunnfx *proc)
+{
+	int val = Interpolate(INTERPOLATE_SQUARE, 0x10, 0, proc->timer, proc->duration);
+	i16 time;
+
+	CpuFastCopy(gEkrBgPaletteBackup1, PAL_BG(BGPAL_EFXDRAGON_L), 0x20);
+	CpuFastCopy(gEkrBgPaletteBackup2, PAL_OBJ(OBPAL_EFX_UNIT_L), 0x20);
+
+	EfxPalBlackInOut(PAL_BG(0), BGPAL_EFXDRAGON_L, 1, val);
+	EfxPalBlackInOut(PAL_BG(0), OBPAL_EFX_UNIT_L + 0x10, 1, val);
+
+	PAL_OBJ(OBPAL_EFX_UNIT_L)[14] = gEkrBgPaletteBackup2[14];
+	PAL_OBJ(OBPAL_EFX_UNIT_L)[15] = gEkrBgPaletteBackup2[15];
+
+	EnablePalSync();
+
+	time = ++proc->timer;
+	if (time == (proc->duration + 1)) {
+		proc->timer = 0;
+		proc->flag = EDRAGONFX_FLAG_DONE;
+		Proc_Break(proc);
+	}
+}
+
+void EfxAvoidForIdunn_Loop3(struct ProcEkrIdunnfx *proc)
+{
+	Proc_Break(proc);
 }

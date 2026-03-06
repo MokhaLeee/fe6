@@ -3433,25 +3433,100 @@ FrameArray_EkrManaketefxCriticalAttack: @ 081BC0EE
 FrameArray_EkrFaefx: @ 081BC0FC
 	.incbin "fe6-base.gba", 0x1BC0FC, (0x1BC132 - 0x1BC0FC) @ length: 0036
 
-	.global gUnk_081BC132
-gUnk_081BC132: @ 081BC132
-	.incbin "fe6-base.gba", 0x1BC132, (0x1BC140 - 0x1BC132) @ length: 000E
+	.global FrameArray_EkrIdunnBody0
+FrameArray_EkrIdunnBody0: @ 081BC132
+	.short 0, 15
+	.short 1, 15
+	.short 2, 15
+	.short -2
 
-	.global gUnk_081BC140
-gUnk_081BC140: @ 081BC140
-	.incbin "fe6-base.gba", 0x1BC140, (0x1BC15E - 0x1BC140) @ length: 001E
+	.global FrameArray_EkrIdunnBody1
+FrameArray_EkrIdunnBody1: @ 081BC140
+	.short 0, 9
+	.short 3, 4
+	.short 4, 20
+	.short 3, 4
+	.short 0, 1
+	.short -4, 0
+	.short 0, 8
+	.short -2
 
-	.global gUnk_081BC15E
-gUnk_081BC15E: @ 081BC15E
-	.incbin "fe6-base.gba", 0x1BC15E, (0x1BC17C - 0x1BC15E) @ length: 001E
+	.global FrameArray_EkrIdunnBody2
+FrameArray_EkrIdunnBody2: @ 081BC15E
+	.short 0, 9
+	.short 3, 4
+	.short 4, 18
+	.short -4, 0
+	.short 4, 17
+	.short 3, 4
+	.short 1, 8
+	.short -2
 
-	.global gUnk_081BC17C
-gUnk_081BC17C: @ 081BC17C
-	.incbin "fe6-base.gba", 0x1BC17C, (0x1BC19A - 0x1BC17C) @ length: 001E
+	.global FrameArray_EkrIdunnBody3
+FrameArray_EkrIdunnBody3: @ 081BC17C
+	.short 0, 9
+	.short 3, 4
+	.short 4, 9
+	.short -4, 0
+	.short 4, 7
+	.short 3, 4
+	.short 0, 10
+	.short -2
 
-	.global gUnk_081BC19A
-gUnk_081BC19A: @ 081BC19A
-	.incbin "fe6-base.gba", 0x1BC19A, (0x1BC268 - 0x1BC19A) @ length: 00CE
+	.global FrameArray_EkrIdunnBody4
+FrameArray_EkrIdunnBody4: @ 081BC19A
+	.short 0, 9
+	.short 3, 4
+	.short 4, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 5, 2
+	.short 6, 2
+	.short 7, 2
+	.short 8, 2
+	.short 7, 1
+	.short -4, 0
+	.short 3, 4
+	.short 0, 4
+	.short -2
 
 	.global Img_ManaketeBodyIntro2
 Img_ManaketeBodyIntro2: @ 081BC268
@@ -3525,9 +3600,41 @@ Tsa_EkrIdunn_081C5264: @ 081C5264
 Tsa_EkrIdunn_081C5688: @ 081C5688
 	.incbin "fe6-base.gba", 0x1C5688, (0x1C5AAC - 0x1C5688) @ length: 0424
 
-	.global Tsa_EkrIdunn_081C5AAC
-Tsa_EkrIdunn_081C5AAC: @ 081C5AAC
-	.incbin "fe6-base.gba", 0x1C5AAC, (0x1C864C - 0x1C5AAC) @ length: 2BA0
+	.global Tsa_EkrIdunnBody0
+Tsa_EkrIdunnBody0:
+	.incbin "fe6-base.gba", 0x1C5AAC, (0x1C5DFC - 0x1C5AAC)
+
+	.global Tsa_EkrIdunnBody1
+Tsa_EkrIdunnBody1:
+	.incbin "fe6-base.gba", 0x1C5DFC, (0x1C6138 - 0x1C5DFC)
+
+	.global Tsa_EkrIdunnBody2
+Tsa_EkrIdunnBody2:
+	.incbin "fe6-base.gba", 0x1C6138, (0x1C6470 - 0x1C6138)
+
+	.global Tsa_EkrIdunnBody3
+Tsa_EkrIdunnBody3:
+	.incbin "fe6-base.gba", 0x1C6470, (0x1C6788 - 0x1C6470)
+
+	.global Tsa_EkrIdunnBody4
+Tsa_EkrIdunnBody4:
+	.incbin "fe6-base.gba", 0x1C6788, (0x1C6A90 - 0x1C6788)
+
+	.global Tsa_EkrIdunnBody5
+Tsa_EkrIdunnBody5:
+	.incbin "fe6-base.gba", 0x1C6A90, (0x1C6D48 - 0x1C6A90)
+
+	.global Tsa_EkrIdunnBody6
+Tsa_EkrIdunnBody6:
+	.incbin "fe6-base.gba", 0x1C6D48, (0x1C6F2C - 0x1C6D48)
+
+	.global Tsa_EkrIdunnBody7
+Tsa_EkrIdunnBody7:
+	.incbin "fe6-base.gba", 0x1C6F2C, (0x1C71EC - 0x1C6F2C)
+
+	.global Tsa_EkrIdunnBody8
+Tsa_EkrIdunnBody8:
+	.incbin "fe6-base.gba", 0x1C71EC, (0x1C864C - 0x1C71EC)
 
 	.global Img_EkrFaefx
 Img_EkrFaefx: @ 081C864C

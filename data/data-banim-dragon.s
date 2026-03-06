@@ -2,26 +2,6 @@
 	.include "animscr.inc"
 	.include "gba_sprites.inc"
 
-	.global ProcScr_EkrIdunnDeamon1
-ProcScr_EkrIdunnDeamon1: @ 086049D0
-	.incbin "fe6-base.gba", 0x6049D0, (0x6049E8 - 0x6049D0) @ length: 0018
-
-	.global ProcScr_EkrIdunnDeamon2
-ProcScr_EkrIdunnDeamon2: @ 086049E8
-	.incbin "fe6-base.gba", 0x6049E8, (0x604A00 - 0x6049E8) @ length: 0018
-
-	.global ProcScr_EkrIdunnBodyFlashing
-ProcScr_EkrIdunnBodyFlashing: @ 08604A00
-	.incbin "fe6-base.gba", 0x604A00, (0x604A18 - 0x604A00) @ length: 0018
-
-	.global gUnk_08604A18
-gUnk_08604A18: @ 08604A18
-	.incbin "fe6-base.gba", 0x604A18, (0x604A3C - 0x604A18) @ length: 0024
-
-	.global gUnk_08604A3C
-gUnk_08604A3C: @ 08604A3C
-	.incbin "fe6-base.gba", 0x604A3C, (0x604A6C - 0x604A3C) @ length: 0030
-
 	.global ProcScr_EkrIdunnExitAnim1
 ProcScr_EkrIdunnExitAnim1: @ 08604A6C
 	.incbin "fe6-base.gba", 0x604A6C, (0x604A9C - 0x604A6C) @ length: 0030
