@@ -226,7 +226,7 @@ SECTIONS
         . = 0x01E7B4; gEkrDragonDeamonProcs = .;
         . = 0x01E7BC; gpProcEkrIdunnBodyMain = .;
         . = 0x01E7C0; gEkrDragonfxState = .;
-        . = 0x01E7C4; gEkrDragonFastenConf = .;
+        . = 0x01E7C4; gEkrDragonDeadFlags = .;
         . = 0x01E7C8; gEkrDragonState = .;
         . = 0x01E7CC; gUnk_Banim_0201E7CC = .;
         . = 0x01EFCC; gEkrBgPaletteBackup1 = .;
@@ -562,7 +562,6 @@ SECTIONS
         src/banim_dragonfx_manakete.o(.text);
         src/banim_dragonfx_fae.o(.text);
         src/banim_dragonfx_idunn.o(.text);
-        asm/banim_dragonfx.o(.text);
         src/banim_efxutils.o(.text);
         asm/banim_efxutils.o(.text);
         asm/banim_efxsound.o(.text);
@@ -847,7 +846,7 @@ SECTIONS
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
         . = ALIGN(4); src/banim_dragonfx_fae.o(.data);
         . = ALIGN(4); src/banim_dragonfx_idunn.o(.data);
-        . = ALIGN(4); data/data-banim-dragon.o(.data);
+        . = ALIGN(4); src/banim_dragonfx.o(.data);
         . = ALIGN(4); src/banim_efxutils.o(.data);
         . = ALIGN(4); asm/banim_efxutils.o(.data);
         . = ALIGN(4); asm/banim_efxsound.o(.data);

@@ -19,8 +19,8 @@ void ResetEkrDragonStatus(void)
     gpProcEkrIdunnBodyMain = NULL;
     gEkrDragonfxState[POS_L] = FALSE;
     gEkrDragonfxState[POS_R] = FALSE;
-    gEkrDragonFastenConf[POS_L] = 0;
-    gEkrDragonFastenConf[POS_R] = 0;
+    gEkrDragonDeadFlags[POS_L] = 0;
+    gEkrDragonDeadFlags[POS_R] = 0;
     gEkrDragonState[POS_L] = DRAGON_STATE_DEFAULT;
     gEkrDragonState[POS_R] = DRAGON_STATE_DEFAULT;
 }
@@ -105,7 +105,7 @@ u32 GetEkrDragonStateTypeIdunn(void)
 
 bool CheckSkipDragonTransfer(struct BaSprite * anim)
 {
-    if (*CheckEkrDragonFasten(anim) == TRUE)
+    if (*GetEkrDragonDeadFlag(anim) == TRUE)
         return TRUE;
 
     if (gEkrDistanceType != EKR_DISTANCE_FARFAR || GetAnimPosition(anim) == gEkrInitPosReal)
@@ -119,9 +119,9 @@ u16 * GetEkrDragonWeapon(int pos)
     return gEkrDragonJid + pos;
 }
 
-u16 * CheckEkrDragonFasten(struct BaSprite * anim)
+u16 * GetEkrDragonDeadFlag(struct BaSprite * anim)
 {
-    return gEkrDragonFastenConf + GetAnimPosition(anim);
+    return gEkrDragonDeadFlags + GetAnimPosition(anim);
 }
 
 ProcPtr GetEkrDragonProc(struct BaSprite * anim)
@@ -383,7 +383,7 @@ int CheckEkrDragonWorking(void)
     if (GetEkrDragonStateTypeIdunn() == 0)
         return 0;
 
-    if (*CheckEkrDragonFasten(MAIN_ANIM_FRONT(POS_L)) != 1)
+    if (*GetEkrDragonDeadFlag(MAIN_ANIM_FRONT(POS_L)) != 1)
         return 0;
 
     return 1;

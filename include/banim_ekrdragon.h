@@ -12,7 +12,7 @@ enum EkrDragonfxState_idx {
 };
 extern u16 gEkrDragonfxState[2];
 
-extern u16 gEkrDragonFastenConf[2];
+extern u16 gEkrDragonDeadFlags[2];
 
 enum EkrDragonState_idx {
 	DRAGON_STATE_DEFAULT = 0,
@@ -23,7 +23,7 @@ enum EkrDragonState_idx {
 extern u16 gEkrDragonState[2];
 extern u16 gUnk_Banim_0201E7CC[];
 extern u16 gEkrDragonJid[2];
-extern u16 gEkrDragonFastenConf[2];
+extern u16 gEkrDragonDeadFlags[2];
 extern u16 gEkrBgPaletteBackup1[0x20];
 extern u16 gEkrBgPaletteBackup2[0x20];
 extern u16 gEkrBgPaletteBackup3[0x40];
@@ -47,7 +47,7 @@ u32 GetEkrDragonStateType(void);
 u32 GetEkrDragonStateTypeIdunn(void);
 bool CheckSkipDragonTransfer(struct BaSprite *anim);
 u16 *GetEkrDragonWeapon(int pos);
-u16 *CheckEkrDragonFasten(struct BaSprite *anim);
+u16 *GetEkrDragonDeadFlag(struct BaSprite *anim);
 ProcPtr GetEkrDragonProc(struct BaSprite *anim);
 void EndEkrDragonDaemon(struct BaSprite *anim);
 void SetDragonBasLayer(u8 layer);
@@ -327,6 +327,7 @@ struct ProcEkrIdunnfx {
 	/* 54 */ int round;
 	/* 58 */ u16 **pal_unused;
 	/* 5C */ struct BaSprite *anim;
+	/* 60 */ ProcPtr procfx;
 };
 
 ProcPtr NewEkrIdunnBodyMain(struct BaSprite *anim);
@@ -336,15 +337,36 @@ ProcPtr NewEfxAvoidForIdunn(struct BaSprite *anim);
 void EfxAvoidForIdunn_Loop1(struct ProcEkrIdunnfx *proc);
 void EfxAvoidForIdunn_Loop2(struct ProcEkrIdunnfx *proc);
 void EfxAvoidForIdunn_Loop3(struct ProcEkrIdunnfx *proc);
+
 ProcPtr NewEkrIdunnExitAnim1(struct BaSprite *anim);
-// func_fe6_0805ABC0
-// func_fe6_0805AC54
-// func_fe6_0805ADE4
-// func_fe6_0805AE08
-// func_fe6_0805AE1C
-// func_fe6_0805AE6C
-// func_fe6_0805AEDC
-// func_fe6_0805AF34
-// func_fe6_0805AFA4
+void EkrIdunnExitAnim1_Loop1(struct ProcEkrIdunnfx *proc);
+void EkrIdunnExitAnim1_Loop2(struct ProcEkrIdunnfx *proc);
+void EkrIdunnExitAnim1_Loop3(struct ProcEkrIdunnfx *proc);
+void EkrIdunnExitAnim1_Loop4(struct ProcEkrIdunnfx *proc);
+
+struct ProcIdunnfxFlashing {
+	PROC_HEADER;
+
+	/* 29 */ u8 flag;
+
+	STRUCT_PAD(0x2A, 0x2C);
+
+	/* 2C */ i16 timer;
+	/* 2E */ i16 duration;
+
+	STRUCT_PAD(0x30, 0x44);
+
+	int dura0, dura1, dura2;
+
+	STRUCT_PAD(0x50, 0x5C);
+
+	/* 5C */ struct BaSprite *anim;
+};
+
+void NewEkrIdunnDeadFlashing(struct BaSprite *anim, int t0, int t1, int t2);
+void EkrIdunnDeadFlashing_Loop1(struct ProcIdunnfxFlashing *proc);
+void EkrIdunnDeadFlashing_Loop2(struct ProcIdunnfxFlashing *proc);
+void EkrIdunnDeadFlashing_Loop3(struct ProcIdunnfxFlashing *proc);
+void EkrIdunnDeadFlashing_Loop4(struct ProcIdunnfxFlashing *proc);
 void StartEkrDragonDeath(void);
-// EkrDragonDeath_Loop
+void EkrDragonDeath_Loop(struct ProcEkrIdunnfx *proc);

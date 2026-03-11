@@ -170,16 +170,16 @@ void EfxDead_StartPika(struct ProcEfxDead * proc)
             anim1->flags |= BAS_BIT_HIDDEN;
             anim2->flags |= BAS_BIT_HIDDEN;
             PutManaketeTotalImg(GetEkrDragonProc(proc->anim1));
-            *CheckEkrDragonFasten(proc->anim1) = true;
+            *GetEkrDragonDeadFlag(proc->anim1) = true;
         }
         else if ((EDRAGON_TYPE_IDUNN_L | EDRAGON_TYPE_IDUNN_R) & conf)
         {
-             *CheckEkrDragonFasten(proc->anim1) = true;
+             *GetEkrDragonDeadFlag(proc->anim1) = true;
         }
         else if ((EDRAGON_TYPE_FAE_L | EDRAGON_TYPE_FAE_R) & conf)
         {
             NewEfxDeadPika(proc->anim1, proc->anim2);
-            *CheckEkrDragonFasten(proc->anim1) = true;
+            *GetEkrDragonDeadFlag(proc->anim1) = true;
         }
         else
         {

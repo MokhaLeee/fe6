@@ -2391,7 +2391,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrIdunnBodyMain[];
 extern const u16 * CONST_DATA TsaArray_EkrIdunnBody[];
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnAvoid[];
 extern CONST_DATA struct ProcScr ProcScr_EkrIdunnExitAnim1[];
-// ??? gUnk_08604A9C
+extern CONST_DATA struct ProcScr ProcScr_EkrIdunnDeadFlashing[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDragonDeath[];
 extern AnimScr AnimScr_ManaketeEnter1[];
 extern AnimScr AnimScr_ManaketeExit3[];
