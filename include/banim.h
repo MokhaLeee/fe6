@@ -267,6 +267,7 @@ extern u32 gUnk_Banim_0201774C;
 extern u32 gEfxTeonoState;
 extern u32 gEfxTerrainLayerLow;
 extern struct Vec2i gEkrBg2QuakeVec;
+extern i16 gUnk_Banim_0201775C[2];
 extern u32 gEkrBgPosition;
 extern i16 gBanimEffectiveness[2];
 extern i16 gBanimUniquePaletteDisabled[2];
@@ -2512,7 +2513,7 @@ extern u8 const Img_EkrExpBarChange[];
 extern u8 const Img_BarNumfx[];
 extern u8 const Tsa_EkrExpBar[];
 extern u16 const Pal_EkrExpBar[];
-// extern ??? gUnk_08113D70
+extern u8 const gUnk_08113D70[];
 extern u16 const Pal_08113F98[];
 extern u16 const Pal_08113FB8[];
 extern u16 const Pal_08113FD8[];

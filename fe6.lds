@@ -531,7 +531,7 @@ SECTIONS
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
         asm/banim_ekrdispup.o(.text);
-        asm/banim_ekrmisc.o(.text);
+        src/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
         src/banim_efxdeath.o(.text);
         src/banim_efxfarattack.o(.text);
