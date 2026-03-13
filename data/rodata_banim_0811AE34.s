@@ -1,26 +1,5 @@
 	.section .rodata
 
-
-	.global FrameArray_EfxopFireBG
-FrameArray_EfxopFireBG: @ 0811AF20
-	.incbin "fe6-base.gba", 0x11AF20, (0x11AF52 - 0x11AF20) @ length: 0032
-
-	.global FrameArray_EfxopThunderBG
-FrameArray_EfxopThunderBG: @ 0811AF52
-	.incbin "fe6-base.gba", 0x11AF52, (0x11AF5C - 0x11AF52) @ length: 000A
-
-	.global FrameArray_EfxopThunderBGCOL
-FrameArray_EfxopThunderBGCOL: @ 0811AF5C
-	.incbin "fe6-base.gba", 0x11AF5C, (0x11AF9E - 0x11AF5C) @ length: 0042
-
-	.global gUnk_0811AF9E
-gUnk_0811AF9E: @ 0811AF9E
-	.incbin "fe6-base.gba", 0x11AF9E, (0x11AFA4 - 0x11AF9E) @ length: 0006
-
-	.global gUnk_0811AFA4
-gUnk_0811AFA4: @ 0811AFA4
-	.incbin "fe6-base.gba", 0x11AFA4, (0x11AFE8 - 0x11AFA4) @ length: 0044
-
 	.global Img_TeonoOBJ
 Img_TeonoOBJ: @ 0811AFE8
 	.incbin "fe6-base.gba", 0x11AFE8, (0x11B3E8 - 0x11AFE8) @ length: 0400

@@ -1541,47 +1541,79 @@ void EfxMagdhisEffectBG_Loop(struct ProcEfxBG *proc);
 void NewEfxMantBatabata(struct Anim *anim);
 void EfxMantBatabata_1(struct ProcEfxOBJ *proc);
 void EfxMantBatabata_2(struct ProcEfxOBJ *proc);
+
+enum efxopmagic_index {
+    CRSPELL_DUMMY,
+    CRSPELL_FIRE,
+    CRSPELL_THUNDER,
+    CRSPELL_HEAL,
+};
+
+struct EfxopMagicDesc {
+    /* 00 */ u16 magicFuncIdx;
+    /* 02 */ s16 xOffsetBg;
+    /* 04 */ s16 yOffsetBg;
+    /* 06 */ u16 xOffsetObj;
+    /* 08 */ u16 yOffsetObj;
+    /* 0A */ u16 bgChr;
+    /* 0C */ u16 bgPalId;
+    /* 0E */ u16 objChr;
+    /* 10 */ u16 objPalId;
+    /* 12 */ u16 bg;
+    /* 14 */ u16 * bgTmBuf;
+    /* 18 */ void * bgImgBuf; // Used for decompression
+    /* 1C */ void * bgTsaBuf; // Used for decompression
+    /* 20 */ void * objImgBuf; // Used for decompression
+    /* 24 */ void (*resetCallback)(void);
+};
+
+extern EWRAM_DATA ProcPtr gpActiveClassReelSpellProc;
+extern EWRAM_DATA ProcPtr gpActiveCRSpellBgColorProc;
+
+extern void (* CONST_DATA gClassReelSpellAnimFuncLut[8])(struct Anim *anim);
+
 void ResetClassReelSpell(void);
 void EndActiveClassReelSpell(void);
 void EndActiveClassReelBgColorProc(void);
 void SetActiveClassReelSpell(ProcPtr proc);
 void SetActiveCRSpellBgColorProc(ProcPtr proc);
-// GetMagicEffectBufferFor
-// SetCRSpellBgPosition
-// ClearCRSpellBgTmBuf
-// CRSpellCreateFrontAnim
-// CRSpell_WriteBgMap
-// CRSpell_RegisterBgGfx
-// CRSpell_RegisterBgPal
-// CRSpell_RegisterObjGfx
-// CRSpell_RegisterObjPal
+struct EfxopMagicDesc *GetMagicEffectBufferFor(struct Anim *anim);
+void SetCRSpellBgPosition(struct Anim *anim, struct EfxopMagicDesc *magicFx);
+void ClearCRSpellBgTmBuf(struct Anim *anim);
+struct Anim *CRSpellCreateFrontAnim(struct Anim *anim, u16 scrIdx, void *scrA, void *scrB);
+void CRSpell_WriteBgMap(struct Anim *anim, u16 notFlipped, void *src, u16 isCompressed);
+void CRSpell_RegisterBgGfx(struct Anim *anim, const void *src);
+void CRSpell_RegisterBgPal(struct Anim *anim, const u16 *src);
+void CRSpell_RegisterObjGfx(struct Anim *anim, const void *src);
+void CRSpell_RegisterObjPal(struct Anim *anim, const u16 *src);
 void StartClassReelSpellAnim(struct Anim *anim);
-// StartClassReelSpellAnimDummy
-// StartClassReelSpellAnimFire
-// EfxopFire_Loop
-// NewEfxopFireBG
-// EfxopFireBG_Loop
-// NewEfxopFireOBJ
-// EfxopFireOBJ_Loop
-// StartClassReelSpellAnimThunder
-// EfxopThunder_Loop
-// NewEfxopThunderBG
-// EfxopThunderBG_Loop
-// NewEfxopThunderBGCOL
-// EfxopThunderBGCOL_Loop
-// NewEfxopThunderOBJ
-// func_fe6_08058528
-// func_fe6_0805854C
-// func_fe6_08058568
-// func_fe6_080585DC
-// func_fe6_08058630
-// func_fe6_0805867C
-// func_fe6_080586B0
-// func_fe6_080586F0
-// func_fe6_08058720
-// func_fe6_0805873C
-// func_fe6_080587C0
-// func_fe6_08058824
+void StartClassReelSpellAnimDummy(struct Anim *anim);
+void StartClassReelSpellAnimFire(struct Anim *anim);
+void EfxopFire_Loop(struct ProcEfx *proc);
+void NewEfxopFireBG(struct Anim *anim, struct ProcEfx *proc);
+void EfxopFireBG_Loop(struct ProcEfxBG *proc);
+void NewEfxopFireOBJ(struct Anim *anim, struct ProcEfx *proc);
+void EfxopFireOBJ_Loop(struct ProcEfxOBJ *proc);
+void StartClassReelSpellAnimThunder(struct Anim *anim);
+void EfxopThunder_Loop(struct ProcEfx *proc);
+void NewEfxopThunderBG(struct Anim *anim, struct ProcEfx *proc);
+void EfxopThunderBG_Loop(struct ProcEfxBG *proc);
+void NewEfxopThunderBGCOL(struct Anim *anim, struct ProcEfx *proc);
+void EfxopThunderBGCOL_Loop(struct ProcEfxBGCOL *proc);
+void NewEfxopThunderOBJ(struct Anim *anim, struct ProcEfx *proc);
+void EfxopThunderOBJ_Loop(struct ProcEfxOBJ *proc);
+void StartClassReelSpellAnimHeal(struct Anim *anim);
+void EfxopLive_Loop(struct ProcEfx *proc);
+void NewEfxopLiveBG(struct Anim *anim, struct ProcEfx *proc);
+void EfxopLiveBG_Loop(struct ProcEfxBG *proc);
+void NewEfxopLiveBGCOL(struct Anim *anim, struct ProcEfx *proc);
+void EfxopLiveBGCOL_Loop(struct ProcEfxBGCOL *proc);
+void NewEfxopLiveALPHA(struct Anim * anim,
+    int timer, int delay, int type, struct ProcEfx *unused);
+void EfxopLiveALPHA_Loop1(struct ProcEfxALPHA *proc);
+void EfxopLiveALPHA_Loop2(struct ProcEfxALPHA *proc);
+void NewEfxopLiveOBJ(struct Anim *anim, struct ProcEfx *proc);
+void EfxopLiveOBJ_Loop(struct ProcEfxOBJ *proc);
 
 /* banim_ekrdragon.h */
 
@@ -2228,7 +2260,6 @@ extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffect[];
 extern CONST_DATA struct ProcScr ProcScr_EfxMagdhisEffectBG[];
 extern CONST_DATA u16 *TsaArray_EfxMagdhisEffectBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxMantBatabata[];
-// ??? gClassReelSpellAnimFuncLut
 extern CONST_DATA struct ProcScr ProcScr_EfxopFire[];
 extern CONST_DATA struct ProcScr ProcScr_EfxopFireBG[];
 extern CONST_DATA u16 *TsaArray_EfxopFireBG[];
@@ -2238,12 +2269,12 @@ extern CONST_DATA struct ProcScr ProcScr_EfxopThunderBG[];
 extern CONST_DATA u16 *TsaArray_EfxopThunderBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxopThunderBGCOL[];
 extern CONST_DATA struct ProcScr ProcScr_EfxopThunderOBJ[];
-// ??? gUnk_085D3A2C
-// ??? gUnk_085D3A54
-// ??? gUnk_085D3A6C
-// ??? gUnk_085D3A70
-// ??? gUnk_085D3A90
-// ??? gUnk_085D3AB0
+extern CONST_DATA struct ProcScr ProcScr_EfxopLive[];
+// ??? ProcScr_EfxopLiveBG
+// ??? TsaArray_EfxopLiveBG
+// ??? ProcScr_EfxopLiveBGCOL
+// ??? ProcScr_EfxopLiveALPHA
+// ??? ProcScr_EfxopLiveOBJ
 extern u32 AnimScr_TeonoObjCloseRight[];
 extern u32 AnimScr_TeonoObjFarRight[];
 extern u32 AnimScr_TeonoObj2Right[];
@@ -2601,8 +2632,8 @@ extern u16 const FrameConf_EfxMagdhisEffectBG[];
 extern u16 const FrameArray_EfxopFireBG[];
 extern u16 const FrameArray_EfxopThunderBG[];
 extern u16 const FrameArray_EfxopThunderBGCOL[];
-// extern ??? gUnk_0811AF9E
-// extern ??? gUnk_0811AFA4
+// extern ??? frames
+// extern ??? frames_EfxopLiveBGCOL
 extern const u8 Img_TeonoOBJ[];
 extern const u16 Pal_TeonoOBJ[];
 extern const u8 Img_EfxArrowOBJ[];
@@ -3336,7 +3367,7 @@ extern u16 Img_EfxPurgeOBJ[];
 extern u16 Pal_EfxPurgeOBJ[];
 extern u16  Img_EfxHealCommon[];
 extern u16  Tsa_Uncomp_EfxLiveBG_BB_L[];
-// extern ??? Pals1_EfxLiveBGCOL[];
+extern u16 Pals1_EfxLiveBGCOL[];
 extern u16  Img_EfxLiveOBJ[];
 extern u16 Pal_EfxFimbulvetrOBJ[];
 extern u16  Img_EfxLiveBG[];

@@ -350,6 +350,7 @@ SECTIONS
 
         . = 0x0203CDD4 - __ewram_overlay_end;
         . = ALIGN(4); src/banim_ekrarena.o(ewram_data);
+        . = ALIGN(4); src/banim_efxopmagic.o(ewram_data);
 
         . = 0x0203CDE0 - __ewram_overlay_end; gEkrDragonJid = .;
 
@@ -557,7 +558,7 @@ SECTIONS
         asm/banim_efxmagic.o(.text);
         src/banim_efxhit.o(.text);
         src/banim_efxmisc.o(.text);
-        asm/banim_efxop.o(.text);
+        src/banim_efxopmagic.o(.text);
         src/banim_dragon.o(.text);
         src/banim_dragonfx_manakete.o(.text);
         src/banim_dragonfx_fae.o(.text);
@@ -718,6 +719,7 @@ SECTIONS
         . = ALIGN(4); data/eodata_banim_efxmagic.o(.rodata);
         . = ALIGN(4); src/banim_efxhit.o(.rodata);
         . = ALIGN(4); src/banim_efxmisc.o(.rodata);
+        . = ALIGN(4); src/banim_efxopmagic.o(.rodata);
         . = ALIGN(4); data/rodata_banim_0811AE34.o(.rodata);
         . = ALIGN(4); src/banim_efxutils.o(.rodata);
         . = ALIGN(4); asm/banim_efxsound.o(.rodata);
@@ -840,7 +842,7 @@ SECTIONS
         . = ALIGN(4); data/banim_efxmagic.o(.data);
         . = ALIGN(4); src/banim_efxhit.o(.data);
         . = ALIGN(4); src/banim_efxmisc.o(.data);
-        . = ALIGN(4); data/banim_efxop.o(.data);
+        . = ALIGN(4); src/banim_efxopmagic.o(.data);
         . = ALIGN(4); src/banim_scripts.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
