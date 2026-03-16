@@ -4,10 +4,6 @@
 
 	.section .data
 
-	.global ProcScr_EkrTriangle
-ProcScr_EkrTriangle: @ 08606314
-	.incbin "fe6-base.gba", 0x606314, (0x60632C - 0x606314) @ length: 0018
-
 	.global ProcScr_EkrTriPegasusKnight
 ProcScr_EkrTriPegasusKnight: @ 0860632C
 	.incbin "fe6-base.gba", 0x60632C, (0x606344 - 0x60632C) @ length: 0018
@@ -41,43 +37,6 @@ ProcScr_EfxTriangleQUAKE: @ 086063DC
 	.incbin "fe6-base.gba", 0x6063DC, (0x6063F4 - 0x6063DC)
 
 	.section .text
-	thumb_func_start CheckEkrTriangleInvalid
-CheckEkrTriangleInvalid: @ 0x0805E560
-	ldr r0, .L0805E56C @ =gEkrTriangleInvalid
-	ldr r0, [r0]
-	cmp r0, #1
-	beq .L0805E570
-	movs r0, #0
-	b .L0805E572
-	.align 2, 0
-.L0805E56C: .4byte gEkrTriangleInvalid
-.L0805E570:
-	movs r0, #1
-.L0805E572:
-	bx lr
-
-	thumb_func_start DebugEkrTriangleMsg
-DebugEkrTriangleMsg: @ 0x0805E574
-	bx lr
-	.align 2, 0
-
-	thumb_func_start NewEkrTriangle
-NewEkrTriangle: @ 0x0805E578
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, .L0805E594 @ =ProcScr_EkrTriangle
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	ldr r1, .L0805E598 @ =gEkrTriangleInvalid
-	movs r0, #0
-	str r0, [r1]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805E594: .4byte ProcScr_EkrTriangle
-.L0805E598: .4byte gEkrTriangleInvalid
 
 	thumb_func_start EkrTriangle_Loop
 EkrTriangle_Loop: @ 0x0805E59C

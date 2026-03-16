@@ -248,7 +248,8 @@ SECTIONS
         . = 0x01F0C8; gEkrLvupPostStatus = .;
         . = 0x01F0D8; gUnk_Banim_0201F0D8 = .;
         . = 0x01F0DA; gUnk_Banim_0201F0DA = .;
-        . = 0x01F0DC; gEkrTriangleInvalid = .;
+        . = 0x01F0DC;
+        . = ALIGN(4); src/banim_ekrtriangle.o(ewram_overlay_banim);
         . = 0x01F0E0; gpProcEkrPopup = .;
         . = 0x01F0E4; gEkrPopupDone = .;
         . = 0x01F0E8; /* end */
@@ -569,6 +570,7 @@ SECTIONS
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
         asm/banim_ekrlvup.o(.text);
+        src/banim_ekrtriangle.o(.text);
         asm/banim_ekrtriangle.o(.text);
         src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
@@ -855,6 +857,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrclasschg.o(.data);
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
         . = ALIGN(4); asm/banim_ekrlvup.o(.data);
+        . = ALIGN(4); src/banim_ekrtriangle.o(.data);
         . = ALIGN(4); asm/banim_ekrtriangle.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle_data.o(.data);
         . = ALIGN(4); src/banim_bg.o(.data);

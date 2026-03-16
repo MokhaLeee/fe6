@@ -1531,7 +1531,7 @@ void NewEfxSRankWeaponEffectBG(struct Anim *anim);
 void EfxSRankWeaponEffectBG_Loop(struct ProcEfxBG *proc);
 void HBlank_EfxSRankWeaponEffectSCR(void);
 void NewEfxSRankWeaponEffectSCR(void);
- void EfxSRankWeaponEffectSCR_Loop(struct ProcEfx *proc);
+void EfxSRankWeaponEffectSCR_Loop(struct ProcEfx *proc);
 void NewEfxSRankWeaponEffectSCR2(struct ProcEfx *seff_scr);
 void EfxSRankWeaponEffectSCR2_Loop(struct ProcEfxSRankSCR2 *proc);
 void NewEfxMagdhisEffect(struct Anim *anim);
@@ -1857,19 +1857,31 @@ void func_fe6_0805E104(struct ProcEkrlvup *proc);
 // func_fe6_0805E454
 // func_fe6_0805E4D4
 // func_fe6_0805E510
+
+enum ekrtriangle_types {
+    EKR_TRI_JTYPE_DEFAULT = 0,
+    EKR_TRI_JTYPE_PROMOTED,
+
+    EKR_TRI_WTYPE_DEFAULT = 0,
+    EKR_TRI_WTYPE_ALTERNATIVE,
+    EKR_TRI_WTYPE_ALTERNATIVE2,
+};
+
+extern int gEkrTriangleInvalid;
+
 bool CheckEkrTriangleInvalid(void);
 void DebugEkrTriangleMsg(void);
 void NewEkrTriangle(struct BaSprite *anim);
-// EkrTriangle_Loop
-// NewEkrTriPegasusKnight
+void EkrTriangle_Loop(struct ProcEfx *proc);
+ProcPtr NewEkrTriPegasusKnight(struct Anim * anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
 // EkrTriPegasusKnight_Loop
 // NewEkrTriPegasusKnightBG
 // EfxTriPegasusKnightBG_Loop
 // NewEkrTriPegasusKnightOBJ
 // EkrTriPegasusKnightOBJ_Loop
-// NewEkrTriArmorKnight
+ProcPtr NewEkrTriArmorKnight(struct Anim * anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
 // EkrTriArmorKnight_Loop
-// NewEkrTriArmorKnightOBJ
+ProcPtr NewEkrTriArmorKnightOBJ(struct Anim * anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
 // EkrTriArmorKnightOBJ_Loop
 // NewEkrTriArmorKnightOBJ2
 // EkrTriArmorKnightOBJ2_Loop1
