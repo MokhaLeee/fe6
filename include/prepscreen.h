@@ -145,7 +145,7 @@ struct UnkProc_08678DE0
     /* 30 */ u16 unk_30;
 };
 
-struct UnkProc_08678E00
+struct ProcPrepUnitPinfoAsync
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x48);
@@ -213,8 +213,8 @@ bool IsUnitMandatoryDeploy(struct Unit * unit);
 void InitPrepScreenMainMenu(struct PrepMenuProc *proc);
 void PrepUnit_DrawLeftUnitInfo(struct Unit * unit, u16 * tm);
 void PrepScreen_ReloadLeftUnitInfo(struct Unit * unit);
-void func_fe6_0807979C(struct UnkProc_08678E00 *proc);
-void func_fe6_080797DC(struct PrepMenuProc * parent);
+void PrepUnitUpdatePinfoAsync_work(struct ProcPrepUnitPinfoAsync *proc);
+void UpdatePrepUnitPinfoAsync(struct PrepMenuProc * parent);
 void func_fe6_08079804(struct PrepMenuProc *proc);
 void func_fe6_080798EC(struct PrepMenuProc *proc);
 void func_fe6_08079928(struct PrepMenuProc *proc, int unit_id_or_pid, bool by_pid);
@@ -390,22 +390,28 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc);
 void func_fe6_0807DFEC(u8 a, int timer, int obj_off);
 // func_fe6_0807E06C
 
-void func_fe6_0807E0D4(struct Proc *proc);
-void func_fe6_0807E41C(struct Proc *proc);
+enum proclabel_prep_subitem_screen {
+    PL_PREP_SUBITEM_VIEWALL = 0,
+    PL_PREP_SUBITEM_TRADE = 2,
+    PL_PREP_SUBITEM_CONVOY = 4,
+};
+
+void PrepSubItemScreen_Init(struct Proc *proc);
+void PrepSubItem_StartTradeScreen(struct Proc *proc);
 // func_fe6_0807E544
 void func_fe6_0807E5A8(struct Proc *proc);
-void func_fe6_0807EB70(struct Proc *proc);
+void PrepSubItem_StartViewAllScreen(struct Proc *proc);
 void func_fe6_0807EDBC(struct Proc *proc);
 // func_fe6_0807FBE8
-void func_fe6_0807FCFC(struct Proc *proc);
-void func_fe6_0807FF98(struct Proc *proc);
-void func_fe6_08080284(struct Proc *proc);
+void PrepSubItem_StartSupplyScreen(struct Proc *proc);
+void PrepSubItem_SelLoop1(struct Proc *proc);
+void PrepSubItem_SelLoop2(struct Proc *proc);
 void func_fe6_080813E8(struct Proc *proc);
-void func_fe6_08081540(struct Proc *proc);
+void PrepSubItem_OnEnd(struct Proc *proc);
 
 void StartPrepSubItemScreen(struct PrepMenuProc * parent, int type);
-void func_fe6_080815E4(struct Unit * unit, ProcPtr parent);
-void func_fe6_08081620(struct Unit * unit, ProcPtr parent);
+void StartBmSupply(struct Unit * unit, ProcPtr parent);
+void StartBmSupplyForDrop(struct Unit * unit, ProcPtr parent);
 // func_fe6_0808165C
 // func_fe6_0808166C
 
@@ -590,7 +596,7 @@ extern struct ProcScr ProcScr_08679388[];
 extern struct ProcScr ProcScr_086793A8[];
 extern struct ProcScr ProcScr_086793C8[];
 extern struct ProcScr ProcScr_PrepSubItemScreen[];
-extern struct ProcScr ProcScr_08679490[];
+extern struct ProcScr ProcScr_BmSupplyScreen[];
 extern struct ProcScr ProcScr_PrepDiscardItemScreen[];
 extern struct ProcScr ProcScr_PrepDiscardHand[];
 extern CONST_DATA u16 Sprite_08679578[];

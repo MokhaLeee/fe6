@@ -1663,8 +1663,8 @@ func_fe6_0807E06C: @ 0x0807E06C
 	.align 2, 0
 .L0807E0D0: .4byte gBg0Tm
 
-	thumb_func_start func_fe6_0807E0D4
-func_fe6_0807E0D4: @ 0x0807E0D4
+	thumb_func_start PrepSubItemScreen_Init
+PrepSubItemScreen_Init: @ 0x0807E0D4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2032,8 +2032,8 @@ func_fe6_0807E0D4: @ 0x0807E0D4
 .L0807E414: .4byte 0x02015688
 .L0807E418: .4byte gBg0Tm
 
-	thumb_func_start func_fe6_0807E41C
-func_fe6_0807E41C: @ 0x0807E41C
+	thumb_func_start PrepSubItem_StartTradeScreen
+PrepSubItem_StartTradeScreen: @ 0x0807E41C
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -2957,8 +2957,8 @@ func_fe6_0807E5A8: @ 0x0807E5A8
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_0807EB70
-func_fe6_0807EB70: @ 0x0807EB70
+	thumb_func_start PrepSubItem_StartViewAllScreen
+PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5062,8 +5062,8 @@ func_fe6_0807FBE8: @ 0x0807FBE8
 .L0807FCF4: .4byte 0x02015638
 .L0807FCF8: .4byte gUnk_0201636A
 
-	thumb_func_start func_fe6_0807FCFC
-func_fe6_0807FCFC: @ 0x0807FCFC
+	thumb_func_start PrepSubItem_StartSupplyScreen
+PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5379,8 +5379,8 @@ func_fe6_0807FCFC: @ 0x0807FCFC
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0807FF98
-func_fe6_0807FF98: @ 0x0807FF98
+	thumb_func_start PrepSubItem_SelLoop1
+PrepSubItem_SelLoop1: @ 0x0807FF98
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -5740,8 +5740,8 @@ func_fe6_0807FF98: @ 0x0807FF98
 	.align 2, 0
 .L08080280: .4byte HelpboxMsg_0867929C
 
-	thumb_func_start func_fe6_08080284
-func_fe6_08080284: @ 0x08080284
+	thumb_func_start PrepSubItem_SelLoop2
+PrepSubItem_SelLoop2: @ 0x08080284
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -8086,8 +8086,8 @@ func_fe6_080813E8: @ 0x080813E8
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08081540
-func_fe6_08081540: @ 0x08081540
+	thumb_func_start PrepSubItem_OnEnd
+PrepSubItem_OnEnd: @ 0x08081540
 	push {lr}
 	adds r2, r0, #0
 	adds r0, #0x2d
@@ -8165,20 +8165,20 @@ StartPrepSubItemScreen: @ 0x080815BC
 	.align 2, 0
 .L080815E0: .4byte ProcScr_PrepSubItemScreen
 
-	thumb_func_start func_fe6_080815E4
-func_fe6_080815E4: @ 0x080815E4
+	thumb_func_start StartBmSupply
+StartBmSupply: @ 0x080815E4
 	push {r4, lr}
 	adds r4, r0, #0
 	cmp r1, #0
 	bne .L080815FC
-	ldr r0, .L080815F8 @ =ProcScr_08679490
+	ldr r0, .L080815F8 @ =ProcScr_BmSupplyScreen
 	movs r1, #3
 	bl SpawnProc
 	b .L08081602
 	.align 2, 0
-.L080815F8: .4byte ProcScr_08679490
+.L080815F8: .4byte ProcScr_BmSupplyScreen
 .L080815FC:
-	ldr r0, .L0808161C @ =ProcScr_08679490
+	ldr r0, .L0808161C @ =ProcScr_BmSupplyScreen
 	bl SpawnProcLocking
 .L08081602:
 	adds r2, r0, #0
@@ -8195,22 +8195,22 @@ func_fe6_080815E4: @ 0x080815E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808161C: .4byte ProcScr_08679490
+.L0808161C: .4byte ProcScr_BmSupplyScreen
 
-	thumb_func_start func_fe6_08081620
-func_fe6_08081620: @ 0x08081620
+	thumb_func_start StartBmSupplyForDrop
+StartBmSupplyForDrop: @ 0x08081620
 	push {r4, lr}
 	adds r4, r0, #0
 	cmp r1, #0
 	bne .L08081638
-	ldr r0, .L08081634 @ =ProcScr_08679490
+	ldr r0, .L08081634 @ =ProcScr_BmSupplyScreen
 	movs r1, #3
 	bl SpawnProc
 	b .L0808163E
 	.align 2, 0
-.L08081634: .4byte ProcScr_08679490
+.L08081634: .4byte ProcScr_BmSupplyScreen
 .L08081638:
-	ldr r0, .L08081658 @ =ProcScr_08679490
+	ldr r0, .L08081658 @ =ProcScr_BmSupplyScreen
 	bl SpawnProcLocking
 .L0808163E:
 	adds r1, r0, #0
@@ -8226,4 +8226,4 @@ func_fe6_08081620: @ 0x08081620
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08081658: .4byte ProcScr_08679490
+.L08081658: .4byte ProcScr_BmSupplyScreen
