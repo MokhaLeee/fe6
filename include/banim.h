@@ -711,8 +711,37 @@ void func_fe6_080483E0(struct ProcEkrBattleEnding *proc);
 void func_fe6_08048470(struct ProcEkrBattleEnding *proc);
 void func_fe6_0804855C(struct ProcEkrBattleEnding *proc);
 
+struct ProcEkrBaseKaiten {
+    PROC_HEADER;
+
+    /* 29 */ u8 unk29;
+    /* 2A */ u16 unk2A;
+    /* 2C */ s16 timer;
+    /* 2E */ s16 terminator;
+    /* 30 */ u16 unk30;
+
+    /* 32 */ s16 x1;
+    /* 34 */ s16 x2;
+    /* 36 */ s16 unk36;
+
+    /* 38 */ STRUCT_PAD(0x38, 0x3A);
+
+    /* 3A */ s16 y1;
+    /* 3C */ s16 y2;
+    /* 3E */ s16 unk3E;
+
+    /* 40 */ STRUCT_PAD(0x40, 0x44);
+
+    /* 44 */ int type;
+
+    /* 48 */ STRUCT_PAD(0x48, 0x5C);
+
+    /* 5C */ struct Anim *anim;
+    /* 60 */ const u16 *unk60;
+};
+
 void NewEkrBaseKaiten(int identifier);
-// func_fe6_0804894C
+void EkrBaseKaiten_Loop(struct ProcEkrBaseKaiten *proc);
 void NewEkrUnitKakudai(int identifier);
 // func_fe6_08048A64
 // func_fe6_08048BF0
@@ -1867,6 +1896,20 @@ enum ekrtriangle_types {
     EKR_TRI_WTYPE_ALTERNATIVE2,
 };
 
+struct ProcEkrTriClass {
+    PROC_HEADER;
+
+    /* 2E */ STRUCT_PAD(0x29, 0x2C);
+    /* 2C */ s16 timer;
+    /* 2E */ STRUCT_PAD(0x2E, 0x44);
+    /* 44 */ int etype1;
+    /* 48 */ int etype2;
+    /* 4C */ int ewtype1;
+    /* 50 */ int ewtype2;
+    /* 54 */ STRUCT_PAD(0x54, 0x5C);
+    /* 5C */ struct Anim *anim;
+};
+
 extern int gEkrTriangleInvalid;
 
 bool CheckEkrTriangleInvalid(void);
@@ -1986,15 +2029,15 @@ extern CONST_DATA struct ProcScr ProcScr_Ekrbattleending[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBaseKaiten[];
 // ??? Imgs_EkrBaseKaiten1
 // ??? Imgs_EkrBaseKaiten2
-extern CONST_DATA AnimScr AnimScrs_EkrBaseKaiten1[];
-extern CONST_DATA AnimScr AnimScrs_EkrBaseKaiten2[];
-extern CONST_DATA AnimScr AnimScrs_EkrBaseKaiten3[];
-extern CONST_DATA AnimScr AnimScrs_EkrBaseKaiten4[];
-extern CONST_DATA AnimScr AnimScrs_EkrBaseKaiten5[];
-extern CONST_DATA AnimScr AnimScrs_EkrBaseKaiten6[];
-// ??? gUnk_085CBCC8
-// ??? gUnk_085CBCE8
-// ??? gUnk_085CBD08
+extern CONST_DATA AnimScr *AnimScrs_EkrBaseKaiten1[];
+extern CONST_DATA AnimScr *AnimScrs_EkrBaseKaiten2[];
+extern CONST_DATA AnimScr *AnimScrs_EkrBaseKaiten3[];
+extern CONST_DATA AnimScr *AnimScrs_EkrBaseKaiten4[];
+extern CONST_DATA AnimScr *AnimScrs_EkrBaseKaiten5[];
+extern CONST_DATA AnimScr *AnimScrs_EkrBaseKaiten6[];
+extern const u16 *CONST_DATA EkrBaseKaiten_Table1[];
+extern const u16 *CONST_DATA EkrBaseKaiten_Table2[];
+extern const u16 *CONST_DATA EkrBaseKaiten_Table3[];
 extern CONST_DATA struct ProcScr ProcScr_EkrUnitKakudai[];
 extern CONST_DATA struct ProcScr ProcScr_EkrWindowAppear[];
 extern CONST_DATA struct ProcScr ProcScr_EkrNamewinAppear[];
@@ -2013,6 +2056,30 @@ extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Far[];
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Far[];
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Close[];
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Close[];
+extern u32 AnimScr_EkrBaseKaiten_085CE168[];
+extern u32 AnimScr_EkrBaseKaiten_085CE18C[];
+extern u32 AnimScr_EkrBaseKaiten_085CEDF8[];
+extern u32 AnimScr_EkrBaseKaiten_085CEE18[];
+extern u32 AnimScr_EkrBaseKaiten_085CEE3C[];
+extern u32 AnimScr_EkrBaseKaiten_085CEE60[];
+extern u32 AnimScr_EkrBaseKaiten_085CEE80[];
+extern u32 AnimScr_EkrBaseKaiten_085CEEA4[];
+extern u32 AnimScr_EkrBaseKaiten_085CF6A8[];
+extern u32 AnimScr_EkrBaseKaiten_085CF6CC[];
+extern u32 AnimScr_EkrBaseKaiten_085CF6F0[];
+extern u32 AnimScr_EkrBaseKaiten_085CF714[];
+extern u32 AnimScr_EkrBaseKaiten_085D04E8[];
+extern u32 AnimScr_EkrBaseKaiten_085D050C[];
+extern u32 AnimScr_EkrBaseKaiten_085D0530[];
+extern u32 AnimScr_EkrBaseKaiten_085D0554[];
+extern u32 AnimScr_EkrBaseKaiten_085D0578[];
+extern u32 AnimScr_EkrBaseKaiten_085D059C[];
+extern u32 AnimScr_EkrBaseKaiten_085D05C0[];
+extern u32 AnimScr_EkrBaseKaiten_085D05E4[];
+extern u32 AnimScr_EkrBaseKaiten_085D0D10[];
+extern u32 AnimScr_EkrBaseKaiten_085D0D34[];
+extern u32 AnimScr_EkrBaseKaiten_085D0D58[];
+extern u32 AnimScr_EkrBaseKaiten_085D0D7C[];
 extern u32 AnimScr_NoDamage[];
 extern u32 AnimScr_Miss[];
 
@@ -2577,7 +2644,12 @@ extern u8 const Tsa_ArenaBattleBg[];
 extern u16 const Pal_ArenaBattleBg_A[];
 extern u16 const Pal_ArenaBattleBg_B[];
 extern u16 const Pal_ArenaBattleBg_C[];
-// extern ??? gUnk_08119CD8
+extern u8 const Img_EkrBaseKaiten1[];
+extern u8 const Img_EkrBaseKaiten2[];
+extern u8 const Img_EkrBaseKaiten3[];
+extern u8 const Img_EkrBaseKaiten4[];
+extern u8 const Img_EkrBaseKaiten5[];
+extern u16 const Pal_EkrBaseKaiten[];
 extern u16 const FrameArray_EfxSongBGCOL[];
 extern u16 const FrameConf_EfxEckesachsBGCOL[];
 extern u16 const gUnk_08119D78[];

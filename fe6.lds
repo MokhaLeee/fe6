@@ -542,6 +542,7 @@ SECTIONS
         src/banim_efxflashing.o(.text);
         src/banim_ekrutils.o(.text);
         src/banim_ekrbattleintro.o(.text);
+        src/banim_ekrbattleintrofx.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);
         src/banim_setup.o(.text);
         asm/banim_ekrcmd.o(.text);
@@ -712,6 +713,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
         . = ALIGN(4); src/banim_ekrbattleintro.o(.rodata);
+        . = ALIGN(4); src/banim_ekrbattleintrofx.o(.rodata);
         . = ALIGN(4); src/banim_ekrcmd.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
         . = ALIGN(4); src/banim_ekrterrainfx.o(.rodata);
@@ -833,6 +835,7 @@ SECTIONS
         . = ALIGN(4); asm/banim_efxquake.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);
         . = ALIGN(4); src/banim_ekrbattleintro.o(.data);
+        . = ALIGN(4); src/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmain.o(.data);

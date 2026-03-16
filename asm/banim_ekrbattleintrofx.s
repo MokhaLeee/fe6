@@ -3,54 +3,6 @@
 
 	.section .data
 
-	.global ProcScr_EkrBaseKaiten
-ProcScr_EkrBaseKaiten: @ 085CBBB0
-	.incbin "fe6-base.gba", 0x5CBBB0, (0x5CBBC8 - 0x5CBBB0) @ length: 0018
-
-	.global Imgs_EkrBaseKaiten1
-Imgs_EkrBaseKaiten1: @ 085CBBC8
-	.incbin "fe6-base.gba", 0x5CBBC8, (0x5CBBE8 - 0x5CBBC8) @ length: 0020
-
-	.global Imgs_EkrBaseKaiten2
-Imgs_EkrBaseKaiten2: @ 085CBBE8
-	.incbin "fe6-base.gba", 0x5CBBE8, (0x5CBC08 - 0x5CBBE8) @ length: 0020
-
-	.global AnimScrs_EkrBaseKaiten1
-AnimScrs_EkrBaseKaiten1: @ 085CBC08
-	.incbin "fe6-base.gba", 0x5CBC08, (0x5CBC28 - 0x5CBC08) @ length: 0020
-
-	.global AnimScrs_EkrBaseKaiten2
-AnimScrs_EkrBaseKaiten2: @ 085CBC28
-	.incbin "fe6-base.gba", 0x5CBC28, (0x5CBC48 - 0x5CBC28) @ length: 0020
-
-	.global AnimScrs_EkrBaseKaiten3
-AnimScrs_EkrBaseKaiten3: @ 085CBC48
-	.incbin "fe6-base.gba", 0x5CBC48, (0x5CBC68 - 0x5CBC48) @ length: 0020
-
-	.global AnimScrs_EkrBaseKaiten4
-AnimScrs_EkrBaseKaiten4: @ 085CBC68
-	.incbin "fe6-base.gba", 0x5CBC68, (0x5CBC88 - 0x5CBC68) @ length: 0020
-
-	.global AnimScrs_EkrBaseKaiten5
-AnimScrs_EkrBaseKaiten5: @ 085CBC88
-	.incbin "fe6-base.gba", 0x5CBC88, (0x5CBCA8 - 0x5CBC88) @ length: 0020
-
-	.global AnimScrs_EkrBaseKaiten6
-AnimScrs_EkrBaseKaiten6: @ 085CBCA8
-	.incbin "fe6-base.gba", 0x5CBCA8, (0x5CBCC8 - 0x5CBCA8) @ length: 0020
-
-	.global gUnk_085CBCC8
-gUnk_085CBCC8: @ 085CBCC8
-	.incbin "fe6-base.gba", 0x5CBCC8, (0x5CBCE8 - 0x5CBCC8) @ length: 0020
-
-	.global gUnk_085CBCE8
-gUnk_085CBCE8: @ 085CBCE8
-	.incbin "fe6-base.gba", 0x5CBCE8, (0x5CBD08 - 0x5CBCE8) @ length: 0020
-
-	.global gUnk_085CBD08
-gUnk_085CBD08: @ 085CBD08
-	.incbin "fe6-base.gba", 0x5CBD08, (0x5CBD28 - 0x5CBD08) @ length: 0020
-
 	.global ProcScr_EkrUnitKakudai
 ProcScr_EkrUnitKakudai: @ 085CBD28
 	.incbin "fe6-base.gba", 0x5CBD28, (0x5CBD50 - 0x5CBD28) @ length: 0028
@@ -181,7 +133,7 @@ NewEkrBaseKaiten: @ 0x08048574
 	adds r6, r1, #0
 	ldr r1, .L08048674 @ =0x06010000
 	bl LZ77UnCompVram
-	ldr r0, .L08048678 @ =gUnk_08119CD8
+	ldr r0, .L08048678 @ =Pal_EkrBaseKaiten
 	ldr r1, .L0804867C @ =gPal+0x280
 	movs r2, #1
 	bl CpuFastSet
@@ -201,7 +153,7 @@ NewEkrBaseKaiten: @ 0x08048574
 	.align 2, 0
 .L08048670: .4byte Imgs_EkrBaseKaiten2
 .L08048674: .4byte 0x06010000
-.L08048678: .4byte gUnk_08119CD8
+.L08048678: .4byte Pal_EkrBaseKaiten
 .L0804867C: .4byte gPal+0x280
 .L08048680: .4byte gEkrDistanceType
 .L08048684: .4byte .L08048688
@@ -286,10 +238,10 @@ NewEkrBaseKaiten: @ 0x08048574
 	ldrh r0, [r5, #0x3c]
 .L08048732:
 	strh r0, [r2, #4]
-	ldr r0, .L08048738 @ =gUnk_085CBCC8
+	ldr r0, .L08048738 @ =EkrBaseKaiten_Table1
 	b .L08048936
 	.align 2, 0
-.L08048738: .4byte gUnk_085CBCC8
+.L08048738: .4byte EkrBaseKaiten_Table1
 .L0804873C:
 	ldr r0, .L08048798 @ =ProcScr_EkrBaseKaiten
 	movs r1, #3
@@ -376,7 +328,7 @@ NewEkrBaseKaiten: @ 0x08048574
 	ldrh r0, [r5, #0x3c]
 .L080487EA:
 	strh r0, [r2, #4]
-	ldr r0, .L08048858 @ =gUnk_085CBCE8
+	ldr r0, .L08048858 @ =EkrBaseKaiten_Table2
 	adds r0, r6, r0
 	ldr r0, [r0]
 	str r0, [r5, #0x60]
@@ -430,7 +382,7 @@ NewEkrBaseKaiten: @ 0x08048574
 	ldr r0, .L08048870 @ =AnimScrs_EkrBaseKaiten3
 	b .L08048876
 	.align 2, 0
-.L08048858: .4byte gUnk_085CBCE8
+.L08048858: .4byte EkrBaseKaiten_Table2
 .L0804885C: .4byte ProcScr_EkrBaseKaiten
 .L08048860: .4byte gEkrBmLocation
 .L08048864: .4byte gEkrInitPosReal
@@ -532,7 +484,7 @@ NewEkrBaseKaiten: @ 0x08048574
 	ldrh r0, [r5, #0x3c]
 .L08048932:
 	strh r0, [r2, #4]
-	ldr r0, .L08048948 @ =gUnk_085CBD08
+	ldr r0, .L08048948 @ =EkrBaseKaiten_Table3
 .L08048936:
 	adds r0, r6, r0
 	ldr r0, [r0]
@@ -545,10 +497,10 @@ NewEkrBaseKaiten: @ 0x08048574
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08048948: .4byte gUnk_085CBD08
+.L08048948: .4byte EkrBaseKaiten_Table3
 
-	thumb_func_start func_fe6_0804894C
-func_fe6_0804894C: @ 0x0804894C
+	thumb_func_start EkrBaseKaiten_Loop
+EkrBaseKaiten_Loop: @ 0x0804894C
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
