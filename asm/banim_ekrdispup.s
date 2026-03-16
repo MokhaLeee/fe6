@@ -18,7 +18,7 @@ NewEkrDispUP: @ 0x08044198
 	str r0, [r4]
 	movs r0, #0
 	movs r1, #0
-	bl func_fe6_0804421C
+	bl EkrDispUP_SetPositionUnsync
 	bl func_fe6_080441DC
 	bl UnAsyncEkrDispUP
 	bl UnsyncEkrDispUP
@@ -82,8 +82,8 @@ func_fe6_0804420C: @ 0x0804420C
 	.align 2, 0
 .L08044218: .4byte gpProcEkrDispUP
 
-	thumb_func_start func_fe6_0804421C
-func_fe6_0804421C: @ 0x0804421C
+	thumb_func_start EkrDispUP_SetPositionUnsync
+EkrDispUP_SetPositionUnsync: @ 0x0804421C
 	ldr r2, .L0804422C @ =gpProcEkrDispUP
 	ldr r2, [r2]
 	movs r3, #0

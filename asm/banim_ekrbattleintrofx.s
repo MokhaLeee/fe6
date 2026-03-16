@@ -1229,14 +1229,14 @@ NewEkrNamewinAppear: @ 0x08048E88
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	movs r0, #0
-	bl func_fe6_0804421C
+	bl EkrDispUP_SetPositionUnsync
 	b .L08048EC4
 	.align 2, 0
 .L08048EB8: .4byte ProcScr_EkrNamewinAppear
 .L08048EBC:
 	movs r0, #0
 	movs r1, #0
-	bl func_fe6_0804421C
+	bl EkrDispUP_SetPositionUnsync
 .L08048EC4:
 	ldr r1, .L08048ED4 @ =gUnk_Banim_0201E0F0
 	movs r0, #1
@@ -1339,7 +1339,7 @@ func_fe6_08048F0C: @ 0x08048F0C
 	lsls r1, r0, #0x10
 	lsrs r1, r1, #0x10
 	movs r0, #0
-	bl func_fe6_0804421C
+	bl EkrDispUP_SetPositionUnsync
 .L08048F7E:
 	add sp, #4
 	pop {r4}

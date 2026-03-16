@@ -364,7 +364,7 @@ void EndEkrDispUP(void);
 // func_fe6_080441EC
 void func_fe6_080441FC(void);
 void func_fe6_0804420C(void);
-// func_fe6_0804421C
+// EkrDispUP_SetPositionUnsync
 void EkrDispUP_SetPositionSync(u16 x, u16 y);
 void SyncEkrDispUP(void);
 void UnsyncEkrDispUP(void);
