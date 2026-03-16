@@ -54,7 +54,7 @@ void StartBattleAnimHitEffectsDefault(struct Anim * anim, int type)
     StartBattleAnimHitEffects(anim, type, 3, 4);
 }
 
-void func_fe6_08047610(struct Anim * anim, int type)
+void StartBattleAnimHitEffectsAlt(struct Anim * anim, int type)
 {
     StartBattleAnimHitEffects(anim, type, 5, 5);
 }

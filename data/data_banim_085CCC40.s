@@ -82,12 +82,4 @@ AnimScr_EkrTerrainfx_L_Close: @ 0x5CCF38
 	ANIMSCR_FORCE_SPRITE AnimSprite_EkrTerrainfx_L_Close, 4
 	ANIMSCR_BLOCKED
 
-	.incbin "fe6-base.gba", 0x5CCF40, (0x5CDCA4 - 0x5CCF40) @ length: 0D6C
-
-	.global AnimScr_NoDamage
-AnimScr_NoDamage: @ 085CDCA4
-	.incbin "fe6-base.gba", 0x5CDCA4, (0x5CDD18 - 0x5CDCA4) @ length: 0074
-
-	.global AnimScr_Miss
-AnimScr_Miss: @ 085CDD18
-	.incbin "fe6-base.gba", 0x5CDD18, (0x5D0DA0 - 0x5CDD18) @ length: 3088
+	.incbin "fe6-base.gba", 0x5CCF40, (0x5CCFB4 - 0x5CCF40)

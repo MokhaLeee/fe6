@@ -262,4 +262,4 @@ BanimBG_081E09CC:	@ 0x081E09CC
 
 	.global BanimBG_081E0BF4
 BanimBG_081E0BF4:	@ 0x081E0BF4
-	.incbin "fe6-base.gba", 0x1E0BF4, 0x2563F4 - 0x1E0BF4 @ len=???
+	.incbin "fe6-base.gba", 0x1E0BF4, 0x1E0DD8 - 0x1E0BF4

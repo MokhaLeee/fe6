@@ -532,7 +532,7 @@ void EkrBattleTriggerEnding(struct ProcEkrBattle * proc)
 
 void EkrBattleWaitNamewinAppear(struct ProcEkrBattle * proc)
 {
-    int pos, ret, _ret;
+    int pos;
 
     if (gEkrHpBarCount != 0)
         return;
@@ -546,7 +546,7 @@ void EkrBattleWaitNamewinAppear(struct ProcEkrBattle * proc)
     proc->timer = 0;
     proc->proc_repeat_func = (ProcFunc)EkrBattleWaitForPostBattleAct;
 
-    if (GetEkrDragonStateTypeIdunn() != FALSE && *CheckEkrDragonFasten(MAIN_ANIM_FRONT(POS_L)) == TRUE)
+    if (GetEkrDragonStateTypeIdunn() != FALSE && *GetEkrDragonDeadFlag(MAIN_ANIM_FRONT(POS_L)) == TRUE)
         return;
 
     if (gBanimExpGain[POS_L] != 0)

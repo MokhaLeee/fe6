@@ -106,12 +106,12 @@ Tsa_EndingMonologue: @ 08373F80
 Zpal_EndingMonologue: @ 08374670
 	.incbin "fe6-base.gba", 0x374670, (0x3747A4 - 0x374670) @ length: 0134
 
-	.global gUnk_083747A4
-gUnk_083747A4: @ 083747A4
+	.global Img_OpAnim_083747A4
+Img_OpAnim_083747A4: @ 083747A4
 	.incbin "fe6-base.gba", 0x3747A4, (0x375888 - 0x3747A4) @ length: 10E4
 
-	.global gUnk_08375888
-gUnk_08375888: @ 08375888
+	.global Pal_OpAnim_08375888
+Pal_OpAnim_08375888: @ 08375888
 	.incbin "fe6-base.gba", 0x375888, (0x3758A8 - 0x375888) @ length: 0020
 
 	.global gUnk_083758A8
@@ -130,24 +130,24 @@ gUnk_08375ADC: @ 08375ADC
 gUnk_08375B64: @ 08375B64
 	.incbin "fe6-base.gba", 0x375B64, (0x375B84 - 0x375B64) @ length: 0020
 
-	.global gUnk_08375B84
-gUnk_08375B84: @ 08375B84
+	.global Tsa_OpAnim_08375B84
+Tsa_OpAnim_08375B84: @ 08375B84
 	.incbin "fe6-base.gba", 0x375B84, (0x376B70 - 0x375B84) @ length: 0FEC
 
 	.global gUnk_08376B70
 gUnk_08376B70: @ 08376B70
 	.incbin "fe6-base.gba", 0x376B70, (0x376DF4 - 0x376B70) @ length: 0284
 
-	.global gUnk_08376DF4
-gUnk_08376DF4: @ 08376DF4
+	.global Pal_Lz_OpAnim_Fog
+Pal_Lz_OpAnim_Fog: @ 08376DF4
 	.incbin "fe6-base.gba", 0x376DF4, (0x376FDC - 0x376DF4) @ length: 01E8
 
-	.global gUnk_08376FDC
-gUnk_08376FDC: @ 08376FDC
+	.global Img_OpAnim_Fog
+Img_OpAnim_Fog: @ 08376FDC
 	.incbin "fe6-base.gba", 0x376FDC, (0x378C60 - 0x376FDC) @ length: 1C84
 
-	.global gUnk_08378C60
-gUnk_08378C60: @ 08378C60
+	.global Tsa_OpAnim_Fog
+Tsa_OpAnim_Fog: @ 08378C60
 	.incbin "fe6-base.gba", 0x378C60, (0x378F54 - 0x378C60) @ length: 02F4
 
 	.global gUnk_08378F54

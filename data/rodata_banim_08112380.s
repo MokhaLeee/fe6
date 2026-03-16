@@ -202,9 +202,26 @@ Pal_ArenaBattleBg_B:
 Pal_ArenaBattleBg_C:
 	.incbin "fe6-base.gba", 0x118430, 0x80
 
-	// ?
-	.incbin "fe6-base.gba", 0x1184B0, (0x119CD8 - 0x1184B0)
+	.global Img_EkrBaseKaiten1
+Img_EkrBaseKaiten1:
+	.incbin "fe6-base.gba", 0x1184B0, (0x1189B4 - 0x1184B0)
 
-	.global gUnk_08119CD8
-gUnk_08119CD8: @ 08119CD8
+	.global Img_EkrBaseKaiten2
+Img_EkrBaseKaiten2:
+	.incbin "fe6-base.gba", 0x1189B4, (0x118E40 - 0x1189B4)
+
+	.global Img_EkrBaseKaiten3
+Img_EkrBaseKaiten3:
+	.incbin "fe6-base.gba", 0x118E40, (0x119298 - 0x118E40)
+
+	.global Img_EkrBaseKaiten4
+Img_EkrBaseKaiten4:
+	.incbin "fe6-base.gba", 0x119298, (0x1197CC - 0x119298)
+
+	.global Img_EkrBaseKaiten5
+Img_EkrBaseKaiten5:
+	.incbin "fe6-base.gba", 0x1197CC, (0x119CD8 - 0x1197CC)
+
+	.global Pal_EkrBaseKaiten
+Pal_EkrBaseKaiten: @ 08119CD8
 	.incbin "fe6-base.gba", 0x119CD8, (0x119CDC - 0x119CD8) @ length: 0004

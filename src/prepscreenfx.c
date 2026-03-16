@@ -158,7 +158,7 @@ struct ProcScr CONST_DATA ProcScr_08679388[] = {
 	PROC_END,
 };
 
-void func_fe6_0807CFB8(int a, int b, int c)
+void dummy_0807CFB8(int a, int b, int c)
 {
 	return;
 }
@@ -189,7 +189,7 @@ void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 *proc)
 			proc->proc_parent->unk31 * 0x10 + 0x48);
 	}
 
-	func_fe6_0807CFB8(0, 4, proc->timer);
+	dummy_0807CFB8(0, 4, proc->timer);
 	proc->timer++;
 }
 
@@ -240,7 +240,7 @@ void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc)
 		gUnk_0201636A,
 		7);
 
-	func_fe6_0807CFB8(3, 4, proc->timer);
+	dummy_0807CFB8(3, 4, proc->timer);
 
 	proc->timer++;
 }
@@ -310,7 +310,7 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc)
 	}
 
 	if (proc->proc_parent->unk2D <= 3)
-		func_fe6_0807CFB8(2, 4, proc->timer);
+		dummy_0807CFB8(2, 4, proc->timer);
 
 	proc->timer++;
 }
@@ -406,102 +406,3 @@ PROC_LABEL(6),
 	PROC_CALL(UnlockGame),
 	PROC_END,
 };
-
-struct ProcScr CONST_DATA ProcScr_PrepDiscardItemScreen[] = {
-	PROC_19,
-	PROC_SLEEP(1),
-	PROC_CALL(func_fe6_0808171C),
-PROC_LABEL(0),
-	PROC_REPEAT(func_fe6_08081970),
-PROC_LABEL(1),
-	PROC_CALL(func_fe6_08081DF8),
-	PROC_END,
-};
-
-struct ProcScr CONST_DATA ProcScr_08679558[] = {
-	PROC_19,
-	PROC_CALL(func_fe6_08081E50),
-	PROC_REPEAT(func_fe6_08081E58),
-	PROC_END,
-};
-
-u16 CONST_DATA Sprite_08679578[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1),
-};
-
-u16 CONST_DATA Sprite_08679580[] = {
-	1,
-	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x1),
-};
-
-u16 CONST_DATA Sprite_08679588[] = {
-	1,
-	OAM0_SHAPE_8x32, OAM1_SIZE_8x32, OAM2_CHR(0x1),
-};
-
-u16 CONST_DATA Sprite_08679590[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x15),
-};
-
-u16 CONST_DATA Sprite_08679598[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x16),
-};
-
-u16 CONST_DATA Sprite_086795A0[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x14),
-};
-
-u16 CONST_DATA Sprite_086795A8[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xC),
-};
-
-u16 CONST_DATA Sprite_086795B0[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xD),
-};
-
-u16 CONST_DATA Sprite_086795B8[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xE),
-};
-
-u16 CONST_DATA Sprite_086795C0[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xF),
-};
-
-u16 CONST_DATA Sprite_086795C8[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x10),
-};
-
-u16 CONST_DATA Sprite_086795D0[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x11),
-};
-
-u16 CONST_DATA Sprite_086795D8[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x12),
-};
-
-u16 CONST_DATA Sprite_086795E0[] = {
-	1,
-	OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x13),
-};
-
-u16 CONST_DATA Sprite_086795E8[] = {
-	1,
-	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, 0,
-};
-
-u16 CONST_DATA Sprite_086795F0[] = {
-	1,
-	OAM0_SHAPE_8x32, OAM1_SIZE_8x32, 0,
-};
-

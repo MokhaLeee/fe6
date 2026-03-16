@@ -224,9 +224,9 @@ SECTIONS
         . = 0x01E7A8; gEfxPurgeCounter = .;
         . = 0x01E7AC; EkrDragonProcs = .;
         . = 0x01E7B4; gEkrDragonDeamonProcs = .;
-        . = 0x01E7BC; gpProcEkrIdunnBodyFlashing = .;
+        . = 0x01E7BC; gpProcEkrIdunnBodyMain = .;
         . = 0x01E7C0; gEkrDragonfxState = .;
-        . = 0x01E7C4; gEkrDragonFastenConf = .;
+        . = 0x01E7C4; gEkrDragonDeadFlags = .;
         . = 0x01E7C8; gEkrDragonState = .;
         . = 0x01E7CC; gUnk_Banim_0201E7CC = .;
         . = 0x01EFCC; gEkrBgPaletteBackup1 = .;
@@ -248,7 +248,8 @@ SECTIONS
         . = 0x01F0C8; gEkrLvupPostStatus = .;
         . = 0x01F0D8; gUnk_Banim_0201F0D8 = .;
         . = 0x01F0DA; gUnk_Banim_0201F0DA = .;
-        . = 0x01F0DC; gEkrTriangleInvalid = .;
+        . = 0x01F0DC;
+        . = ALIGN(4); src/banim_ekrtriangle.o(ewram_overlay_banim);
         . = 0x01F0E0; gpProcEkrPopup = .;
         . = 0x01F0E4; gEkrPopupDone = .;
         . = 0x01F0E8; /* end */
@@ -350,6 +351,7 @@ SECTIONS
 
         . = 0x0203CDD4 - __ewram_overlay_end;
         . = ALIGN(4); src/banim_ekrarena.o(ewram_data);
+        . = ALIGN(4); src/banim_efxopmagic.o(ewram_data);
 
         . = 0x0203CDE0 - __ewram_overlay_end; gEkrDragonJid = .;
 
@@ -531,7 +533,7 @@ SECTIONS
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
         asm/banim_ekrdispup.o(.text);
-        asm/banim_ekrmisc.o(.text);
+        src/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
         src/banim_efxdeath.o(.text);
         src/banim_efxfarattack.o(.text);
@@ -540,6 +542,7 @@ SECTIONS
         src/banim_efxflashing.o(.text);
         src/banim_ekrutils.o(.text);
         src/banim_ekrbattleintro.o(.text);
+        src/banim_ekrbattleintrofx.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);
         src/banim_setup.o(.text);
         asm/banim_ekrcmd.o(.text);
@@ -557,18 +560,18 @@ SECTIONS
         asm/banim_efxmagic.o(.text);
         src/banim_efxhit.o(.text);
         src/banim_efxmisc.o(.text);
-        asm/banim_efxop.o(.text);
+        src/banim_efxopmagic.o(.text);
         src/banim_dragon.o(.text);
         src/banim_dragonfx_manakete.o(.text);
         src/banim_dragonfx_fae.o(.text);
         src/banim_dragonfx_idunn.o(.text);
-        asm/banim_dragonfx.o(.text);
         src/banim_efxutils.o(.text);
         asm/banim_efxutils.o(.text);
         asm/banim_efxsound.o(.text);
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
         asm/banim_ekrlvup.o(.text);
+        src/banim_ekrtriangle.o(.text);
         asm/banim_ekrtriangle.o(.text);
         src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
@@ -592,6 +595,13 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
+        asm/prep_subscreen_discard.o(.text);
+        src/prep_subscreen_discard.o(.text);
+        asm/prep_menuscrollbar.o(.text);
+        src/prep_menuscrollbar.o(.text);
+        src/prep_080823A0.o(.text);
+        asm/prep_bgscroll.o(.text);
+        src/prep_bgscroll.o(.text);
         src/prep_sallycir.o(.text);
         src/prep_utils.o(.text);
         asm/secretscreen.o(.text);
@@ -623,6 +633,7 @@ SECTIONS
         asm/shop.o(.text);
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
+        src/opanim.o(.text);
         asm/opanim.o(.text);
         src/titlescreen.o(.text);
 
@@ -702,6 +713,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
         . = ALIGN(4); src/banim_ekrbattleintro.o(.rodata);
+        . = ALIGN(4); src/banim_ekrbattleintrofx.o(.rodata);
         . = ALIGN(4); src/banim_ekrcmd.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
         . = ALIGN(4); src/banim_ekrterrainfx.o(.rodata);
@@ -711,11 +723,13 @@ SECTIONS
         . = ALIGN(4); data/eodata_banim_efxmagic.o(.rodata);
         . = ALIGN(4); src/banim_efxhit.o(.rodata);
         . = ALIGN(4); src/banim_efxmisc.o(.rodata);
+        . = ALIGN(4); src/banim_efxopmagic.o(.rodata);
         . = ALIGN(4); data/rodata_banim_0811AE34.o(.rodata);
         . = ALIGN(4); src/banim_efxutils.o(.rodata);
         . = ALIGN(4); asm/banim_efxsound.o(.rodata);
         . = ALIGN(4); src/banim_ekrclasschg.o(.rodata);
         . = ALIGN(4); data/rodata_banim_081C9EF4.o(.rodata);
+        . = ALIGN(4); data/rodata_chapterinfo1.o(.rodata);
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
         . = ALIGN(4); src/gamedatainfo.o(.rodata);
@@ -821,30 +835,34 @@ SECTIONS
         . = ALIGN(4); asm/banim_efxquake.o(.data);
         . = ALIGN(4); src/banim_efxflashing.o(.data);
         . = ALIGN(4); src/banim_ekrbattleintro.o(.data);
+        . = ALIGN(4); src/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmainmini.o(.data);
         . = ALIGN(4); src/banim_ekrarena.o(.data);
         . = ALIGN(4); data/data_banim_085CCC40.o(.data);
+        . = ALIGN(4); src/banim_efxhit_data.o(.data);
+        . = ALIGN(4); src/banim_ekrbattleintrofx_data.o(.data);
         . = ALIGN(4); data/banim_efxmagic_.o(.data);
         . = ALIGN(4); src/banim_efxmagic.o(.data);
         . = ALIGN(4); data/banim_efxmagic.o(.data);
         . = ALIGN(4); src/banim_efxhit.o(.data);
         . = ALIGN(4); src/banim_efxmisc.o(.data);
-        . = ALIGN(4); data/banim_efxop.o(.data);
+        . = ALIGN(4); src/banim_efxopmagic.o(.data);
         . = ALIGN(4); src/banim_scripts.o(.data);
         . = ALIGN(4); src/banim_dragon.o(.data);
         . = ALIGN(4); src/banim_dragonfx_manakete.o(.data);
         . = ALIGN(4); src/banim_dragonfx_fae.o(.data);
         . = ALIGN(4); src/banim_dragonfx_idunn.o(.data);
-        . = ALIGN(4); data/data-banim-dragon.o(.data);
+        . = ALIGN(4); src/banim_dragonfx.o(.data);
         . = ALIGN(4); src/banim_efxutils.o(.data);
         . = ALIGN(4); asm/banim_efxutils.o(.data);
         . = ALIGN(4); asm/banim_efxsound.o(.data);
         . = ALIGN(4); src/banim_ekrclasschg.o(.data);
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
         . = ALIGN(4); asm/banim_ekrlvup.o(.data);
+        . = ALIGN(4); src/banim_ekrtriangle.o(.data);
         . = ALIGN(4); asm/banim_ekrtriangle.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle_data.o(.data);
         . = ALIGN(4); src/banim_bg.o(.data);
@@ -854,6 +872,7 @@ SECTIONS
         . = ALIGN(4), data/data-portrait.o(.data);
         . = ALIGN(4); src/gamedatainfo.o(.data);
         . = ALIGN(4), data/data-game-info.o(.data);
+        . = ALIGN(4), data/chapterinfo.o(.data);
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); data/data-code-mu.o(.data);
         . = ALIGN(4); src/manim.o(.data);
@@ -874,7 +893,9 @@ SECTIONS
         . = ALIGN(4); src/prepscreen_disp.o(.data);
         . = ALIGN(4); src/prepmenuitem.o(.data);
         . = ALIGN(4); src/prepscreenfx.o(.data);
-        . = ALIGN(4); data/data_67829C.o(.data);
+        . = ALIGN(4); src/prep_subscreen_discard.o(.data);
+        . = ALIGN(4); src/prep_menuscrollbar.o(.data);
+        . = ALIGN(4); src/prep_bgscroll.o(.data);
         . = ALIGN(4); src/prep_sallycir.o(.data);
         . = ALIGN(4); src/prep_utils.o(.data);
         . = ALIGN(4); asm/secretscreen.o(.data);
@@ -903,7 +924,8 @@ SECTIONS
         . = ALIGN(4); data/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);
         . = ALIGN(4); src/suspend_ui.o(.data);
-        . = ALIGN(4); data/data_08691480.o(.data);
+        . = ALIGN(4); src/opanim.o(.data);
+        . = ALIGN(4); data/opanim.o(.data);
         . = ALIGN(4); src/titlescreen.o(.data);
 
         . = ALIGN(4); data/data_692308.o(.data);

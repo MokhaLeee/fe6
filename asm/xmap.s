@@ -1481,7 +1481,7 @@ func_fe6_0808B7B4: @ 0x0808B7B4
 	lsls r0, r1, #4
 	subs r0, r0, r1
 	lsls r0, r0, #2
-	ldr r1, .L0808B84C @ =gUnk_08320436
+	ldr r1, .L0808B84C @ =Tsa_MonologueScrollingBG
 	adds r3, r0, r1
 .L0808B7F6:
 	mov r0, ip
@@ -1525,7 +1525,7 @@ func_fe6_0808B7B4: @ 0x0808B7B4
 	bx r0
 	.align 2, 0
 .L0808B848: .4byte gBg3Tm
-.L0808B84C: .4byte gUnk_08320436
+.L0808B84C: .4byte Tsa_MonologueScrollingBG
 .L0808B850: .4byte 0x0400001E
 
 	thumb_func_start func_fe6_0808B854
@@ -1574,7 +1574,7 @@ func_fe6_0808B854: @ 0x0808B854
 	ands r0, r1
 	cmp r0, #0
 	bne .L0808B90E
-	ldr r5, .L0808B91C @ =gUnk_08320436
+	ldr r5, .L0808B91C @ =Tsa_MonologueScrollingBG
 	lsrs r0, r1, #3
 	subs r4, r0, #1
 	movs r1, #0x1f
@@ -1631,7 +1631,7 @@ func_fe6_0808B854: @ 0x0808B854
 	bx r0
 	.align 2, 0
 .L0808B918: .4byte 0x0400001E
-.L0808B91C: .4byte gUnk_08320436
+.L0808B91C: .4byte Tsa_MonologueScrollingBG
 .L0808B920: .4byte gBg3Tm
 .L0808B924: .4byte 0x06007800
 
