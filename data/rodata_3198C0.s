@@ -1,7 +1,7 @@
     .section .rodata
 
-	.global gUnk_083198CC
-gUnk_083198CC: @ 083198CC
+	.global Img_Prep_083198CC
+Img_Prep_083198CC: @ 083198CC
 	.incbin "fe6-base.gba", 0x3198CC, (0x319E88 - 0x3198CC) @ length: 05BC
 
 	.global Pal_SpinningArrow
@@ -32,8 +32,8 @@ Pal_Sio_0831AABC: @ 0831AABC
 Pal_0831AAFC: @ 0831AAFC
 	.incbin "fe6-base.gba", 0x31AAFC, (0x31AB1C - 0x31AAFC) @ length: 0020
 
-	.global gUnk_0831AB1C
-gUnk_0831AB1C: @ 0831AB1C
+	.global Img_Prep_0831AB1C
+Img_Prep_0831AB1C: @ 0831AB1C
 	.incbin "fe6-base.gba", 0x31AB1C, (0x31B068 - 0x31AB1C) @ length: 054C
 
 	.global gUnk_0831B068

@@ -612,7 +612,7 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
         SortUnitList(proc->sort_key, proc->sort_order);
     }
 
-    Decompress(gUnk_083198CC, OBJ_VRAM0 + OBCHR_UNITLIST_390 * CHR_SIZE);
+    Decompress(Img_Prep_083198CC, OBJ_VRAM0 + OBCHR_UNITLIST_390 * CHR_SIZE);
     ApplyPalettes(Pal_SpinningArrow, 0x10 + OBPAL_UNITLIST_1, 3);
 
     TmFill(gBg0Tm, 0);

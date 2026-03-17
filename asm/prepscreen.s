@@ -43,11 +43,11 @@ func_fe6_0807D358: @ 0x0807D358
 	cmp r4, r6
 	blo .L0807D382
 .L0807D3A6:
-	ldr r6, .L0807D45C @ =gUnk_0201636A
+	ldr r6, .L0807D45C @ =gPrep_Unk_0201636A
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq .L0807D3D8
-	ldr r2, .L0807D460 @ =0x02015D28
+	ldr r2, .L0807D460 @ =gPrep_Unk_02015D28
 	mov r0, r8
 	adds r0, #0x50
 	ldrh r0, [r0]
@@ -84,7 +84,7 @@ func_fe6_0807D358: @ 0x0807D358
 	ldrh r6, [r6]
 	cmp r4, r6
 	bhs .L0807D424
-	ldr r6, .L0807D460 @ =0x02015D28
+	ldr r6, .L0807D460 @ =gPrep_Unk_02015D28
 .L0807D3F8:
 	lsls r0, r4, #2
 	adds r0, r0, r6
@@ -103,7 +103,7 @@ func_fe6_0807D358: @ 0x0807D358
 	adds r0, #9
 	cmp r4, r0
 	bge .L0807D424
-	ldr r0, .L0807D45C @ =gUnk_0201636A
+	ldr r0, .L0807D45C @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r4, r0
 	blo .L0807D3F8
@@ -140,8 +140,8 @@ func_fe6_0807D358: @ 0x0807D358
 	movs r4, #1
 	b .L0807D492
 	.align 2, 0
-.L0807D45C: .4byte gUnk_0201636A
-.L0807D460: .4byte 0x02015D28
+.L0807D45C: .4byte gPrep_Unk_0201636A
+.L0807D460: .4byte gPrep_Unk_02015D28
 .L0807D464: .4byte gPrepSubMenuIcons
 .L0807D468:
 	adds r0, r2, #1
@@ -202,7 +202,7 @@ func_fe6_0807D4A8: @ 0x0807D4A8
 	adds r0, r6, #0
 	adds r0, #0x44
 	bl ClearText
-	ldr r0, .L0807D4FC @ =gUnk_0201636A
+	ldr r0, .L0807D4FC @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807D508
@@ -218,7 +218,7 @@ func_fe6_0807D4A8: @ 0x0807D4A8
 	bl TmFillRect_thm
 	b .L0807D692
 	.align 2, 0
-.L0807D4FC: .4byte gUnk_0201636A
+.L0807D4FC: .4byte gPrep_Unk_0201636A
 .L0807D500: .4byte gBg0Tm
 .L0807D504: .4byte gBg1Tm
 .L0807D508:
@@ -265,7 +265,7 @@ func_fe6_0807D4A8: @ 0x0807D4A8
 	adds r0, r6, #0
 	movs r2, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r0, r4, #0
 	bl GetStringLineEnd
 	adds r4, r0, #0
@@ -447,7 +447,7 @@ func_fe6_0807D6C0: @ 0x0807D6C0
 .L0807D6F6:
 	mov r1, sl
 	lsls r0, r1, #3
-	ldr r1, .L0807D82C @ =0x020155E8
+	ldr r1, .L0807D82C @ =gPrepTexts1
 	adds r0, r0, r1
 	adds r0, r5, r0
 	bl ClearText
@@ -496,7 +496,7 @@ func_fe6_0807D6C0: @ 0x0807D6C0
 	orrs r2, r0
 	mov r1, sl
 	lsls r0, r1, #3
-	ldr r1, .L0807D82C @ =0x020155E8
+	ldr r1, .L0807D82C @ =gPrepTexts1
 	adds r0, r0, r1
 	ldr r3, [sp, #0xc]
 	adds r4, r3, r0
@@ -590,7 +590,7 @@ func_fe6_0807D6C0: @ 0x0807D6C0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807D82C: .4byte 0x020155E8
+.L0807D82C: .4byte gPrepTexts1
 .L0807D830: .4byte gBg0Tm
 
 	thumb_func_start func_fe6_0807D834
@@ -604,11 +604,11 @@ func_fe6_0807D834: @ 0x0807D834
 	lsls r0, r0, #0x19
 	lsrs r0, r0, #0x18
 	mov sl, r0
-	ldr r1, .L0807D8A8 @ =gUnk_0201636A
+	ldr r1, .L0807D8A8 @ =gPrep_Unk_0201636A
 	movs r0, #0
 	strh r0, [r1]
 	movs r4, #0
-	ldr r0, .L0807D8AC @ =0x02016368
+	ldr r0, .L0807D8AC @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	cmp r4, r0
 	bge .L0807D8A2
@@ -617,11 +617,11 @@ func_fe6_0807D834: @ 0x0807D834
 	adds r0, #1
 	adds r0, r0, r7
 	mov r8, r0
-	ldr r0, .L0807D8B4 @ =0x020156E8
+	ldr r0, .L0807D8B4 @ =gPrepTexts4
 	mov sb, r0
 	adds r6, r1, #0
 .L0807D866:
-	ldr r1, .L0807D8B8 @ =0x02015D28
+	ldr r1, .L0807D8B8 @ =gPrep_Unk_02015D28
 	lsls r0, r4, #2
 	adds r5, r0, r1
 	ldrh r0, [r5, #2]
@@ -647,7 +647,7 @@ func_fe6_0807D834: @ 0x0807D834
 	strh r0, [r6]
 .L0807D898:
 	adds r4, #1
-	ldr r0, .L0807D8AC @ =0x02016368
+	ldr r0, .L0807D8AC @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	cmp r4, r0
 	blt .L0807D866
@@ -655,17 +655,17 @@ func_fe6_0807D834: @ 0x0807D834
 	movs r2, #1
 	b .L0807D8C2
 	.align 2, 0
-.L0807D8A8: .4byte gUnk_0201636A
-.L0807D8AC: .4byte 0x02016368
+.L0807D8A8: .4byte gPrep_Unk_0201636A
+.L0807D8AC: .4byte gPrep_Unk_02016368
 .L0807D8B0: .4byte gUnk_08679354
-.L0807D8B4: .4byte 0x020156E8
-.L0807D8B8: .4byte 0x02015D28
+.L0807D8B4: .4byte gPrepTexts4
+.L0807D8B8: .4byte gPrep_Unk_02015D28
 .L0807D8BC:
 	lsls r0, r2, #1
 	adds r0, r0, r2
 	adds r2, r0, #1
 .L0807D8C2:
-	ldr r1, .L0807D8E0 @ =gUnk_0201636A
+	ldr r1, .L0807D8E0 @ =gPrep_Unk_0201636A
 	ldrh r0, [r1]
 	movs r1, #3
 	str r2, [sp]
@@ -681,14 +681,14 @@ func_fe6_0807D834: @ 0x0807D834
 	adds r4, r2, #0
 	b .L0807D946
 	.align 2, 0
-.L0807D8E0: .4byte gUnk_0201636A
+.L0807D8E0: .4byte gPrep_Unk_0201636A
 .L0807D8E4:
 	subs r7, r4, r2
 	adds r4, #1
 	mov sb, r4
 	cmp r7, #0
 	blt .L0807D944
-	ldr r1, .L0807D9D0 @ =0x020156E8
+	ldr r1, .L0807D9D0 @ =gPrepTexts4
 	mov r8, r1
 .L0807D8F2:
 	lsls r0, r7, #2
@@ -733,7 +733,7 @@ func_fe6_0807D834: @ 0x0807D834
 .L0807D944:
 	mov r4, sb
 .L0807D946:
-	ldr r0, .L0807D9D4 @ =gUnk_0201636A
+	ldr r0, .L0807D9D4 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r4, r0
 	blt .L0807D8E4
@@ -746,7 +746,7 @@ func_fe6_0807D834: @ 0x0807D834
 .L0807D95C:
 	movs r7, #0
 	movs r4, #0
-	ldr r0, .L0807D9D8 @ =0x02016368
+	ldr r0, .L0807D9D8 @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	cmp r4, r0
 	bge .L0807D9B2
@@ -755,10 +755,10 @@ func_fe6_0807D834: @ 0x0807D834
 	adds r0, #1
 	adds r0, r0, r6
 	mov r8, r0
-	ldr r2, .L0807D9D0 @ =0x020156E8
+	ldr r2, .L0807D9D0 @ =gPrepTexts4
 	mov sb, r2
 .L0807D976:
-	ldr r1, .L0807D9E0 @ =0x02015D28
+	ldr r1, .L0807D9E0 @ =gPrep_Unk_02015D28
 	lsls r0, r4, #2
 	adds r5, r0, r1
 	ldrh r0, [r5, #2]
@@ -775,7 +775,7 @@ func_fe6_0807D834: @ 0x0807D834
 	cmp r1, r0
 	bls .L0807D9A8
 .L0807D998:
-	ldr r0, .L0807D9D4 @ =gUnk_0201636A
+	ldr r0, .L0807D9D4 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	adds r0, r0, r7
 	lsls r0, r0, #2
@@ -785,13 +785,13 @@ func_fe6_0807D834: @ 0x0807D834
 	adds r7, #1
 .L0807D9A8:
 	adds r4, #1
-	ldr r0, .L0807D9D8 @ =0x02016368
+	ldr r0, .L0807D9D8 @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	cmp r4, r0
 	blt .L0807D976
 .L0807D9B2:
-	ldr r0, .L0807D9E0 @ =0x02015D28
-	ldr r1, .L0807D9D0 @ =0x020156E8
+	ldr r0, .L0807D9E0 @ =gPrep_Unk_02015D28
+	ldr r1, .L0807D9D0 @ =gPrepTexts4
 	movs r2, #0xc8
 	lsls r2, r2, #3
 	bl memcpy
@@ -804,11 +804,11 @@ func_fe6_0807D834: @ 0x0807D834
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807D9D0: .4byte 0x020156E8
-.L0807D9D4: .4byte gUnk_0201636A
-.L0807D9D8: .4byte 0x02016368
+.L0807D9D0: .4byte gPrepTexts4
+.L0807D9D4: .4byte gPrep_Unk_0201636A
+.L0807D9D8: .4byte gPrep_Unk_02016368
 .L0807D9DC: .4byte gUnk_08679354
-.L0807D9E0: .4byte 0x02015D28
+.L0807D9E0: .4byte gPrep_Unk_02015D28
 
 	thumb_func_start func_fe6_0807D9E4
 func_fe6_0807D9E4: @ 0x0807D9E4
@@ -829,7 +829,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	adds r0, r5, #0
 	movs r1, #0
 	bl TmFill
-	ldr r6, .L0807DAC8 @ =gUnk_0201636A
+	ldr r6, .L0807DAC8 @ =gPrep_Unk_0201636A
 	ldrh r0, [r6]
 	cmp r0, #0
 	bne .L0807DA40
@@ -891,7 +891,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	lsls r4, r4, #1
 	ldr r0, .L0807DAC4 @ =gBg2Tm
 	adds r4, r4, r0
-	ldr r0, .L0807DAD0 @ =0x02015D28
+	ldr r0, .L0807DAD0 @ =gPrep_Unk_02015D28
 	mov r1, r8
 	lsls r5, r1, #2
 	adds r7, r5, r0
@@ -918,9 +918,9 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	b .L0807DAD6
 	.align 2, 0
 .L0807DAC4: .4byte gBg2Tm
-.L0807DAC8: .4byte gUnk_0201636A
+.L0807DAC8: .4byte gPrep_Unk_0201636A
 .L0807DACC: .4byte gUnk_08327294
-.L0807DAD0: .4byte 0x02015D28
+.L0807DAD0: .4byte gPrep_Unk_02015D28
 .L0807DAD4:
 	movs r2, #0
 .L0807DAD6:
@@ -938,7 +938,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 .L0807DAEC:
 	adds r0, r7, #0
 	bl Text_SetColor
-	ldr r0, .L0807DB74 @ =0x02015D28
+	ldr r0, .L0807DB74 @ =gPrep_Unk_02015D28
 	adds r5, r5, r0
 	ldrh r0, [r5, #2]
 	bl GetItemName
@@ -983,7 +983,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	adds r0, #7
 	cmp r8, r0
 	bge .L0807DB5E
-	ldr r0, .L0807DB7C @ =gUnk_0201636A
+	ldr r0, .L0807DB7C @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r8, r0
 	bhs .L0807DB5E
@@ -1000,9 +1000,9 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807DB74: .4byte 0x02015D28
+.L0807DB74: .4byte gPrep_Unk_02015D28
 .L0807DB78: .4byte gBg2Tm
-.L0807DB7C: .4byte gUnk_0201636A
+.L0807DB7C: .4byte gPrep_Unk_0201636A
 
 	thumb_func_start func_fe6_0807DB80
 func_fe6_0807DB80: @ 0x0807DB80
@@ -1049,7 +1049,7 @@ func_fe6_0807DB80: @ 0x0807DB80
 	adds r4, r4, r5
 	lsls r4, r4, #1
 	adds r4, r4, r6
-	ldr r1, .L0807DC18 @ =0x02015D28
+	ldr r1, .L0807DC18 @ =gPrep_Unk_02015D28
 	mov r2, r8
 	lsls r0, r2, #2
 	adds r5, r0, r1
@@ -1076,7 +1076,7 @@ func_fe6_0807DB80: @ 0x0807DB80
 	b .L0807DC1E
 	.align 2, 0
 .L0807DC14: .4byte gBg2Tm
-.L0807DC18: .4byte 0x02015D28
+.L0807DC18: .4byte gPrep_Unk_02015D28
 .L0807DC1C:
 	movs r2, #0
 .L0807DC1E:
@@ -1097,7 +1097,7 @@ func_fe6_0807DB80: @ 0x0807DB80
 	adds r0, r7, #0
 	movs r1, #0
 	bl Text_SetCursor
-	ldr r1, .L0807DCB0 @ =0x02015D28
+	ldr r1, .L0807DCB0 @ =gPrep_Unk_02015D28
 	mov r2, r8
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -1148,7 +1148,7 @@ func_fe6_0807DB80: @ 0x0807DB80
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807DCB0: .4byte 0x02015D28
+.L0807DCB0: .4byte gPrep_Unk_02015D28
 .L0807DCB4: .4byte gBg2Tm
 
 	thumb_func_start func_fe6_0807DCB8
@@ -1177,7 +1177,7 @@ func_fe6_0807DCB8: @ 0x0807DCB8
 	movs r2, #1
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r0, .L0807DD08 @ =gUnk_0201636A
+	ldr r0, .L0807DD08 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807DD0C
@@ -1190,7 +1190,7 @@ func_fe6_0807DCB8: @ 0x0807DCB8
 	b .L0807DDB0
 	.align 2, 0
 .L0807DD04: .4byte gBg0Tm+0x1E
-.L0807DD08: .4byte gUnk_0201636A
+.L0807DD08: .4byte gPrep_Unk_0201636A
 .L0807DD0C:
 	cmp r4, #0
 	bne .L0807DD58
@@ -1299,14 +1299,14 @@ func_fe6_0807DDC8: @ 0x0807DDC8
 	movs r2, #1
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r0, .L0807DE58 @ =0x02015690
+	ldr r0, .L0807DE58 @ =gPrepTexts3 + 0x8
 	mov r1, r8
 	adds r1, #0x24
 	ldr r2, .L0807DE5C @ =gUnk_083272A4
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #4
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r0, r4, r5
 	lsls r0, r0, #1
 	add r0, r8
@@ -1338,7 +1338,7 @@ func_fe6_0807DDC8: @ 0x0807DDC8
 	bx r0
 	.align 2, 0
 .L0807DE54: .4byte gBg0Tm
-.L0807DE58: .4byte 0x02015690
+.L0807DE58: .4byte gPrepTexts3 + 0x8
 .L0807DE5C: .4byte gUnk_083272A4
 
 	thumb_func_start func_fe6_0807DE60
@@ -1348,11 +1348,11 @@ func_fe6_0807DE60: @ 0x0807DE60
 	adds r4, r0, #0
 	movs r2, #0
 	movs r3, #0
-	ldr r0, .L0807DEC0 @ =0x02016368
+	ldr r0, .L0807DEC0 @ =gPrep_Unk_02016368
 	ldrh r1, [r0]
 	cmp r2, r1
 	bhs .L0807DE9C
-	ldr r6, .L0807DEC4 @ =0x02015D28
+	ldr r6, .L0807DEC4 @ =gPrep_Unk_02015D28
 	adds r5, r0, #0
 .L0807DE78:
 	lsls r0, r3, #2
@@ -1395,8 +1395,8 @@ func_fe6_0807DE60: @ 0x0807DE60
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807DEC0: .4byte 0x02016368
-.L0807DEC4: .4byte 0x02015D28
+.L0807DEC0: .4byte gPrep_Unk_02016368
+.L0807DEC4: .4byte gPrep_Unk_02015D28
 
 	thumb_func_start func_fe6_0807DEC8
 func_fe6_0807DEC8: @ 0x0807DEC8
@@ -1455,7 +1455,7 @@ func_fe6_0807DEC8: @ 0x0807DEC8
 	adds r0, r6, r0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L0807DF5C @ =0x02015638
+	ldr r0, .L0807DF5C @ =gPrepTexts2
 	ldr r2, [r6, #0x54]
 	ldrh r4, [r4]
 	lsrs r3, r4, #4
@@ -1471,7 +1471,7 @@ func_fe6_0807DEC8: @ 0x0807DEC8
 	bx r0
 	.align 2, 0
 .L0807DF58: .4byte gUnk_08679354
-.L0807DF5C: .4byte 0x02015638
+.L0807DF5C: .4byte gPrepTexts2
 
 	thumb_func_start func_fe6_0807DF60
 func_fe6_0807DF60: @ 0x0807DF60
@@ -1479,7 +1479,7 @@ func_fe6_0807DF60: @ 0x0807DF60
 	lsls r1, r1, #0x18
 	lsls r2, r2, #0x10
 	lsrs r5, r2, #0x10
-	ldr r6, .L0807DFD4 @ =0x02015D28
+	ldr r6, .L0807DFD4 @ =gPrep_Unk_02015D28
 	lsls r4, r5, #2
 	adds r4, r4, r6
 	ldr r3, [r4]
@@ -1496,9 +1496,9 @@ func_fe6_0807DF60: @ 0x0807DF60
 	cmp r0, #0
 	bne .L0807DFE0
 	adds r2, r5, #0
-	ldr r0, .L0807DFD8 @ =0x02016368
+	ldr r0, .L0807DFD8 @ =gPrep_Unk_02016368
 	adds r4, r0, #0
-	ldr r7, .L0807DFDC @ =gUnk_0201636A
+	ldr r7, .L0807DFDC @ =gPrep_Unk_0201636A
 	ldrh r0, [r4]
 	cmp r2, r0
 	bhs .L0807DFC0
@@ -1535,9 +1535,9 @@ func_fe6_0807DF60: @ 0x0807DF60
 	movs r0, #1
 	b .L0807DFE6
 	.align 2, 0
-.L0807DFD4: .4byte 0x02015D28
-.L0807DFD8: .4byte 0x02016368
-.L0807DFDC: .4byte gUnk_0201636A
+.L0807DFD4: .4byte gPrep_Unk_02015D28
+.L0807DFD8: .4byte gPrep_Unk_02016368
+.L0807DFDC: .4byte gPrep_Unk_0201636A
 .L0807DFE0:
 	bl func_fe6_0807DE60
 	movs r0, #0
@@ -1772,7 +1772,7 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 	movs r0, #4
 	bl ApplyIconPalettes
 	bl UnpackUiWindowFrameGraphics
-	ldr r4, .L0807E2C8 @ =0x02015688
+	ldr r4, .L0807E2C8 @ =gPrepTexts3
 	adds r0, r4, #0
 	movs r1, #6
 	bl InitText
@@ -1781,7 +1781,7 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 	movs r1, #5
 	bl InitTextDb
 	movs r4, #0
-	ldr r6, .L0807E2CC @ =0x020155E8
+	ldr r6, .L0807E2CC @ =gPrepTexts1
 .L0807E1D0:
 	lsls r0, r4, #3
 	adds r0, r0, r6
@@ -1793,7 +1793,7 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 	cmp r4, #4
 	bls .L0807E1D0
 	movs r4, #0
-	ldr r6, .L0807E2D0 @ =0x02015638
+	ldr r6, .L0807E2D0 @ =gPrepTexts2
 .L0807E1E8:
 	lsls r0, r4, #3
 	adds r0, r0, r6
@@ -1861,10 +1861,10 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 	ldrb r3, [r3]
 	cmp r3, #3
 	bhi .L0807E300
-	ldr r0, .L0807E2F0 @ =gUnk_0831AB1C
+	ldr r0, .L0807E2F0 @ =Img_Prep_0831AB1C
 	ldr r1, .L0807E2F4 @ =0x06011000
 	bl Decompress
-	ldr r0, .L0807E2F8 @ =gUnk_083198CC
+	ldr r0, .L0807E2F8 @ =Img_Prep_083198CC
 	ldr r1, .L0807E2FC @ =0x06017200
 	bl Decompress
 	ldr r1, [r5, #0x14]
@@ -1893,9 +1893,9 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 .L0807E2BC: .4byte gBg0Tm
 .L0807E2C0: .4byte gBg1Tm
 .L0807E2C4: .4byte gBg2Tm
-.L0807E2C8: .4byte 0x02015688
-.L0807E2CC: .4byte 0x020155E8
-.L0807E2D0: .4byte 0x02015638
+.L0807E2C8: .4byte gPrepTexts3
+.L0807E2CC: .4byte gPrepTexts1
+.L0807E2D0: .4byte gPrepTexts2
 .L0807E2D4: .4byte Pal_SpinningArrow
 .L0807E2D8: .4byte Pal_Sio_0831AABC
 .L0807E2DC: .4byte gUnk_0831A248
@@ -1903,12 +1903,12 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 .L0807E2E4: .4byte gBg0Tm+0x500
 .L0807E2E8: .4byte gUnk_0831A088
 .L0807E2EC: .4byte gBg1Tm+0x500
-.L0807E2F0: .4byte gUnk_0831AB1C
+.L0807E2F0: .4byte Img_Prep_0831AB1C
 .L0807E2F4: .4byte 0x06011000
-.L0807E2F8: .4byte gUnk_083198CC
+.L0807E2F8: .4byte Img_Prep_083198CC
 .L0807E2FC: .4byte 0x06017200
 .L0807E300:
-	ldr r0, .L0807E40C @ =gUnk_083198CC
+	ldr r0, .L0807E40C @ =Img_Prep_083198CC
 	ldr r1, .L0807E410 @ =0x06015000
 	bl Decompress
 	ldr r0, [r5, #0x60]
@@ -1929,7 +1929,7 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 	movs r2, #0xe
 	movs r3, #0xc
 	bl PutUiWindowFrame
-	ldr r4, .L0807E414 @ =0x02015688
+	ldr r4, .L0807E414 @ =gPrepTexts3
 	adds r0, r4, #0
 	bl ClearText
 	adds r0, r4, #0
@@ -2027,9 +2027,9 @@ PrepSubItemScreen_Init: @ 0x0807E0D4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807E40C: .4byte gUnk_083198CC
+.L0807E40C: .4byte Img_Prep_083198CC
 .L0807E410: .4byte 0x06015000
-.L0807E414: .4byte 0x02015688
+.L0807E414: .4byte gPrepTexts3
 .L0807E418: .4byte gBg0Tm
 
 	thumb_func_start PrepSubItem_StartTradeScreen
@@ -2044,7 +2044,7 @@ PrepSubItem_StartTradeScreen: @ 0x0807E41C
 	movs r2, #0xe
 	movs r3, #0xc
 	bl PutUiWindowFrame
-	ldr r4, .L0807E4B8 @ =0x02015690
+	ldr r4, .L0807E4B8 @ =gPrepTexts3 + 0x8
 	adds r0, r4, #0
 	bl ClearText
 	adds r0, r4, #0
@@ -2100,7 +2100,7 @@ PrepSubItem_StartTradeScreen: @ 0x0807E41C
 	strb r0, [r1]
 	b .L0807E4C6
 	.align 2, 0
-.L0807E4B8: .4byte 0x02015690
+.L0807E4B8: .4byte gPrepTexts3 + 0x8
 .L0807E4BC: .4byte gBg0Tm+0x30
 .L0807E4C0:
 	adds r0, r5, #0
@@ -2975,7 +2975,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	movs r2, #0xf
 	movs r3, #0x10
 	bl PutUiWindowFrame
-	ldr r0, .L0807ED78 @ =0x02016368
+	ldr r0, .L0807ED78 @ =gPrep_Unk_02016368
 	strh r4, [r0]
 	movs r4, #1
 .L0807EB9A:
@@ -3033,8 +3033,8 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	movs r3, #0
 	cmp r3, r2
 	bhs .L0807EC46
-	ldr r7, .L0807ED7C @ =0x02015D28
-	ldr r4, .L0807ED78 @ =0x02016368
+	ldr r7, .L0807ED7C @ =gPrep_Unk_02015D28
+	ldr r4, .L0807ED78 @ =gPrep_Unk_02016368
 	movs r0, #0x1c
 	adds r0, r0, r5
 	mov ip, r0
@@ -3068,14 +3068,14 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	mov r4, sb
 	cmp r4, #0x3f
 	ble .L0807EB9A
-	ldr r1, .L0807ED78 @ =0x02016368
+	ldr r1, .L0807ED78 @ =gPrep_Unk_02016368
 	ldrh r4, [r1]
 	movs r2, #0
 	mov r3, sl
 	ldrh r0, [r3]
 	cmp r0, #0
 	beq .L0807EC8C
-	ldr r7, .L0807ED7C @ =0x02015D28
+	ldr r7, .L0807ED7C @ =gPrep_Unk_02015D28
 	movs r5, #0
 	adds r3, r1, #0
 .L0807EC60:
@@ -3122,7 +3122,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	ldr r0, [sp, #0x14]
 	mov r1, r8
 	bl func_fe6_080823A0
-	ldr r0, .L0807ED80 @ =0x02015638
+	ldr r0, .L0807ED80 @ =gPrepTexts2
 	ldr r2, [r6, #0x54]
 	mov r1, r8
 	ldrh r1, [r1]
@@ -3147,8 +3147,8 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	orrs r0, r7
 	ldr r1, [sp, #0x20]
 	strb r0, [r1]
-	ldr r0, .L0807ED84 @ =0x02015690
-	ldr r2, .L0807ED7C @ =0x02015D28
+	ldr r0, .L0807ED84 @ =gPrepTexts3 + 0x8
+	ldr r2, .L0807ED7C @ =gPrep_Unk_02015D28
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r1, r3, #4
@@ -3187,7 +3187,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	ldr r0, [r6, #0x60]
 	ldrh r1, [r7]
 	str r1, [sp]
-	ldr r1, .L0807ED88 @ =gUnk_0201636A
+	ldr r1, .L0807ED88 @ =gPrep_Unk_0201636A
 	ldrh r1, [r1]
 	str r1, [sp, #4]
 	movs r1, #7
@@ -3210,11 +3210,11 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	bl NewSallyCir2
 	b .L0807ED96
 	.align 2, 0
-.L0807ED78: .4byte 0x02016368
-.L0807ED7C: .4byte 0x02015D28
-.L0807ED80: .4byte 0x02015638
-.L0807ED84: .4byte 0x02015690
-.L0807ED88: .4byte gUnk_0201636A
+.L0807ED78: .4byte gPrep_Unk_02016368
+.L0807ED7C: .4byte gPrep_Unk_02015D28
+.L0807ED80: .4byte gPrepTexts2
+.L0807ED84: .4byte gPrepTexts3 + 0x8
+.L0807ED88: .4byte gPrep_Unk_0201636A
 .L0807ED8C:
 	cmp r0, #1
 	bne .L0807ED96
@@ -3582,7 +3582,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	mov r3, r8
 	ldr r0, [r3, #0x54]
 	ldrb r1, [r6]
-	ldr r3, .L0807F168 @ =0x02015D28
+	ldr r3, .L0807F168 @ =gPrep_Unk_02015D28
 	mov r2, r8
 	adds r2, #0x50
 	ldrh r2, [r2]
@@ -3612,7 +3612,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl .L0807FA9A
 	.align 2, 0
 .L0807F164: .4byte gKeySt
-.L0807F168: .4byte 0x02015D28
+.L0807F168: .4byte gPrep_Unk_02015D28
 .L0807F16C: .4byte 0x000006C2
 .L0807F170:
 	ldr r0, .L0807F220 @ =gPlaySt
@@ -3659,7 +3659,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldr r1, [r0, #0x54]
 	movs r0, #0
 	bl func_fe6_0807D6C0
-	ldr r0, .L0807F224 @ =0x02015638
+	ldr r0, .L0807F224 @ =gPrepTexts2
 	mov r1, r8
 	ldr r2, [r1, #0x54]
 	ldrh r1, [r4]
@@ -3667,8 +3667,8 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	str r5, [sp]
 	movs r1, #1
 	bl func_fe6_0807D9E4
-	ldr r0, .L0807F228 @ =0x02015690
-	ldr r2, .L0807F22C @ =0x02015D28
+	ldr r0, .L0807F228 @ =gPrepTexts3 + 0x8
+	ldr r2, .L0807F22C @ =gPrep_Unk_02015D28
 	ldrh r4, [r4]
 	lsrs r1, r4, #4
 	ldrb r3, [r6]
@@ -3696,9 +3696,9 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl .L0807FA9A
 	.align 2, 0
 .L0807F220: .4byte gPlaySt
-.L0807F224: .4byte 0x02015638
-.L0807F228: .4byte 0x02015690
-.L0807F22C: .4byte 0x02015D28
+.L0807F224: .4byte gPrepTexts2
+.L0807F228: .4byte gPrepTexts3 + 0x8
+.L0807F22C: .4byte gPrep_Unk_02015D28
 .L0807F230:
 	ldr r1, .L0807F294 @ =gKeySt
 	ldr r0, [r1]
@@ -3835,7 +3835,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne .L0807F410
-	ldr r0, .L0807F35C @ =gUnk_0201636A
+	ldr r0, .L0807F35C @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807F364
@@ -3849,10 +3849,10 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	b .L0807F410
 	.align 2, 0
 .L0807F358: .4byte gKeySt
-.L0807F35C: .4byte gUnk_0201636A
+.L0807F35C: .4byte gPrep_Unk_0201636A
 .L0807F360: .4byte gPlaySt
 .L0807F364:
-	ldr r2, .L0807F3D8 @ =0x02015D28
+	ldr r2, .L0807F3D8 @ =gPrep_Unk_02015D28
 	mov r1, r8
 	adds r1, #0x2e
 	mov r0, r8
@@ -3907,7 +3907,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	strb r0, [r6]
 	b .L0807F3E2
 	.align 2, 0
-.L0807F3D8: .4byte 0x02015D28
+.L0807F3D8: .4byte gPrep_Unk_02015D28
 .L0807F3DC: .4byte gPlaySt
 .L0807F3E0:
 	strb r5, [r6]
@@ -3971,7 +3971,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r0, #0
 	bne .L0807F4A4
-	ldr r0, .L0807F49C @ =gUnk_0201636A
+	ldr r0, .L0807F49C @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807F466
@@ -3992,7 +3992,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	lsls r3, r3, #5
 	subs r3, #0x48
 	subs r1, r1, r3
-	ldr r4, .L0807F4A0 @ =0x02015D28
+	ldr r4, .L0807F4A0 @ =gPrep_Unk_02015D28
 	mov r3, r8
 	adds r3, #0x50
 	ldrh r3, [r3]
@@ -4004,8 +4004,8 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl StartItemHelpBox
 	b .L0807FA9A
 	.align 2, 0
-.L0807F49C: .4byte gUnk_0201636A
-.L0807F4A0: .4byte 0x02015D28
+.L0807F49C: .4byte gPrep_Unk_0201636A
+.L0807F4A0: .4byte gPrep_Unk_02015D28
 .L0807F4A4:
 	ldr r3, .L0807F548 @ =gKeySt
 	ldr r1, [r3]
@@ -4049,7 +4049,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrh r0, [r5]
 	cmp r0, #0
 	beq .L0807F55C
-	ldr r0, .L0807F550 @ =0x02015638
+	ldr r0, .L0807F550 @ =gPrepTexts2
 	ldrh r1, [r5]
 	lsrs r2, r1, #4
 	subs r2, #1
@@ -4063,7 +4063,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl func_fe6_0807DB80
 	mov r0, r8
 	bl func_fe6_0807D358
-	ldr r1, .L0807F554 @ =0x02015D28
+	ldr r1, .L0807F554 @ =gPrep_Unk_02015D28
 	ldrh r2, [r5]
 	lsrs r0, r2, #4
 	ldrb r6, [r6]
@@ -4075,7 +4075,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r3, r0
 	beq .L0807F538
-	ldr r0, .L0807F558 @ =0x02015690
+	ldr r0, .L0807F558 @ =gPrepTexts3 + 0x8
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
@@ -4092,9 +4092,9 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	.align 2, 0
 .L0807F548: .4byte gKeySt
 .L0807F54C: .4byte gPlaySt
-.L0807F550: .4byte 0x02015638
-.L0807F554: .4byte 0x02015D28
-.L0807F558: .4byte 0x02015690
+.L0807F550: .4byte gPrepTexts2
+.L0807F554: .4byte gPrep_Unk_02015D28
+.L0807F558: .4byte gPrepTexts3 + 0x8
 .L0807F55C:
 	mov r4, r8
 	adds r4, #0x2f
@@ -4113,7 +4113,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r6]
 	subs r0, #1
 	strb r0, [r6]
-	ldr r1, .L0807F5C4 @ =0x02015D28
+	ldr r1, .L0807F5C4 @ =gPrep_Unk_02015D28
 	mov r0, r8
 	adds r0, #0x50
 	ldrh r0, [r0]
@@ -4126,7 +4126,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r3, r0
 	beq .L0807F5A6
-	ldr r0, .L0807F5C8 @ =0x02015690
+	ldr r0, .L0807F5C8 @ =gPrepTexts3 + 0x8
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
@@ -4148,8 +4148,8 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl PutUiEntryHover
 	b .L0807FA9A
 	.align 2, 0
-.L0807F5C4: .4byte 0x02015D28
-.L0807F5C8: .4byte 0x02015690
+.L0807F5C4: .4byte gPrep_Unk_02015D28
+.L0807F5C8: .4byte gPrepTexts3 + 0x8
 .L0807F5CC:
 	ldr r2, .L0807F664 @ =gKeySt
 	ldr r1, [r2]
@@ -4179,7 +4179,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bls .L0807F5FE
 	b .L0807F710
 .L0807F5FE:
-	ldr r3, .L0807F668 @ =gUnk_0201636A
+	ldr r3, .L0807F668 @ =gPrep_Unk_0201636A
 	cmp r1, #5
 	bne .L0807F678
 	mov r5, r8
@@ -4190,7 +4190,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrh r0, [r3]
 	cmp r1, r0
 	bge .L0807F678
-	ldr r0, .L0807F66C @ =0x02015638
+	ldr r0, .L0807F66C @ =gPrepTexts2
 	adds r2, r1, #0
 	mov r1, r8
 	ldr r3, [r1, #0x54]
@@ -4200,7 +4200,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl func_fe6_0807DB80
 	mov r0, r8
 	bl func_fe6_0807D358
-	ldr r1, .L0807F670 @ =0x02015D28
+	ldr r1, .L0807F670 @ =gPrep_Unk_02015D28
 	ldrh r2, [r5]
 	lsrs r0, r2, #4
 	ldrb r6, [r6]
@@ -4212,7 +4212,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r4, [r1]
 	cmp r3, r4
 	beq .L0807F650
-	ldr r0, .L0807F674 @ =0x02015690
+	ldr r0, .L0807F674 @ =gPrepTexts3 + 0x8
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
@@ -4229,10 +4229,10 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	b .L0807F6EE
 	.align 2, 0
 .L0807F664: .4byte gKeySt
-.L0807F668: .4byte gUnk_0201636A
-.L0807F66C: .4byte 0x02015638
-.L0807F670: .4byte 0x02015D28
-.L0807F674: .4byte 0x02015690
+.L0807F668: .4byte gPrep_Unk_0201636A
+.L0807F66C: .4byte gPrepTexts2
+.L0807F670: .4byte gPrep_Unk_02015D28
+.L0807F674: .4byte gPrepTexts3 + 0x8
 .L0807F678:
 	mov r5, r8
 	adds r5, #0x50
@@ -4263,7 +4263,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r4]
 	adds r0, #1
 	strb r0, [r4]
-	ldr r1, .L0807F704 @ =0x02015D28
+	ldr r1, .L0807F704 @ =gPrep_Unk_02015D28
 	ldrh r5, [r5]
 	lsrs r0, r5, #4
 	ldrb r4, [r4]
@@ -4274,7 +4274,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r2, [r1]
 	cmp r0, r2
 	beq .L0807F6D4
-	ldr r0, .L0807F708 @ =0x02015690
+	ldr r0, .L0807F708 @ =gPrepTexts3 + 0x8
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
@@ -4304,8 +4304,8 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl m4aSongNumStart
 	b .L0807FA9A
 	.align 2, 0
-.L0807F704: .4byte 0x02015D28
-.L0807F708: .4byte 0x02015690
+.L0807F704: .4byte gPrep_Unk_02015D28
+.L0807F708: .4byte gPrepTexts3 + 0x8
 .L0807F70C: .4byte gPlaySt
 .L0807F710:
 	ldr r3, .L0807F780 @ =gKeySt
@@ -4547,7 +4547,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl func_fe6_080823A0
-	ldr r0, .L0807F960 @ =0x02015638
+	ldr r0, .L0807F960 @ =gPrepTexts2
 	mov r1, r8
 	ldr r2, [r1, #0x54]
 	ldrh r1, [r5]
@@ -4569,7 +4569,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-	ldr r1, .L0807F964 @ =0x02015D28
+	ldr r1, .L0807F964 @ =gPrep_Unk_02015D28
 	ldrh r5, [r5]
 	lsrs r0, r5, #4
 	ldrb r4, [r4]
@@ -4580,12 +4580,12 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r4, r0
 	bne .L0807F940
-	ldr r0, .L0807F968 @ =gUnk_0201636A
+	ldr r0, .L0807F968 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807F94C
 .L0807F940:
-	ldr r0, .L0807F96C @ =0x02015690
+	ldr r0, .L0807F96C @ =gPrepTexts3 + 0x8
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
@@ -4601,10 +4601,10 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	movs r0, #7
 	b .L0807FA6E
 	.align 2, 0
-.L0807F960: .4byte 0x02015638
-.L0807F964: .4byte 0x02015D28
-.L0807F968: .4byte gUnk_0201636A
-.L0807F96C: .4byte 0x02015690
+.L0807F960: .4byte gPrepTexts2
+.L0807F964: .4byte gPrep_Unk_02015D28
+.L0807F968: .4byte gPrep_Unk_0201636A
+.L0807F96C: .4byte gPrepTexts3 + 0x8
 .L0807F970:
 	mov r1, r8
 	adds r1, #0x45
@@ -4683,7 +4683,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L0807FA74 @ =0x02015638
+	ldr r0, .L0807FA74 @ =gPrepTexts2
 	mov r3, r8
 	ldr r2, [r3, #0x54]
 	ldrh r1, [r4]
@@ -4704,7 +4704,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-	ldr r1, .L0807FA78 @ =0x02015D28
+	ldr r1, .L0807FA78 @ =gPrep_Unk_02015D28
 	ldrh r4, [r4]
 	lsrs r0, r4, #4
 	ldrb r5, [r5]
@@ -4715,12 +4715,12 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r4, r0
 	bne .L0807FA50
-	ldr r0, .L0807FA7C @ =gUnk_0201636A
+	ldr r0, .L0807FA7C @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807FA5C
 .L0807FA50:
-	ldr r0, .L0807FA80 @ =0x02015690
+	ldr r0, .L0807FA80 @ =gPrepTexts3 + 0x8
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
@@ -4739,10 +4739,10 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	strb r0, [r1]
 	b .L0807FA9A
 	.align 2, 0
-.L0807FA74: .4byte 0x02015638
-.L0807FA78: .4byte 0x02015D28
-.L0807FA7C: .4byte gUnk_0201636A
-.L0807FA80: .4byte 0x02015690
+.L0807FA74: .4byte gPrepTexts2
+.L0807FA78: .4byte gPrep_Unk_02015D28
+.L0807FA7C: .4byte gPrep_Unk_0201636A
+.L0807FA80: .4byte gPrepTexts3 + 0x8
 .L0807FA84:
 	mov r1, r8
 	adds r1, #0x45
@@ -4815,7 +4815,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl StartItemHelpBox
 	b .L0807FB52
 .L0807FB0C:
-	ldr r0, .L0807FB20 @ =gUnk_0201636A
+	ldr r0, .L0807FB20 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807FB24
@@ -4826,7 +4826,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	movs r0, #1
 	b .L0807FB50
 	.align 2, 0
-.L0807FB20: .4byte gUnk_0201636A
+.L0807FB20: .4byte gPrep_Unk_0201636A
 .L0807FB24:
 	ldrb r3, [r1]
 	lsls r0, r3, #3
@@ -4840,7 +4840,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	lsls r3, r3, #5
 	subs r3, #0x48
 	subs r1, r1, r3
-	ldr r4, .L0807FBC8 @ =0x02015D28
+	ldr r4, .L0807FBC8 @ =gPrep_Unk_02015D28
 	ldrh r5, [r5]
 	lsrs r3, r5, #4
 	adds r2, r2, r3
@@ -4912,7 +4912,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	movs r0, #2
 	b .L0807FBD6
 	.align 2, 0
-.L0807FBC8: .4byte 0x02015D28
+.L0807FBC8: .4byte gPrep_Unk_02015D28
 .L0807FBCC: .4byte gDispIo
 .L0807FBD0:
 	cmp r1, #1
@@ -4997,7 +4997,7 @@ func_fe6_0807FBE8: @ 0x0807FBE8
 	movs r2, #0xf
 	movs r3, #0x10
 	bl PutUiWindowFrame
-	ldr r0, .L0807FCF4 @ =0x02015638
+	ldr r0, .L0807FCF4 @ =gPrepTexts2
 	ldr r2, [r7, #0x54]
 	adds r4, r7, #0
 	adds r4, #0x50
@@ -5021,7 +5021,7 @@ func_fe6_0807FBE8: @ 0x0807FBE8
 	ldr r0, [r7, #0x60]
 	ldrh r1, [r4]
 	str r1, [sp]
-	ldr r1, .L0807FCF8 @ =gUnk_0201636A
+	ldr r1, .L0807FCF8 @ =gPrep_Unk_0201636A
 	ldrh r1, [r1]
 	str r1, [sp, #4]
 	movs r1, #7
@@ -5059,8 +5059,8 @@ func_fe6_0807FBE8: @ 0x0807FBE8
 	bx r0
 	.align 2, 0
 .L0807FCF0: .4byte gDispIo
-.L0807FCF4: .4byte 0x02015638
-.L0807FCF8: .4byte gUnk_0201636A
+.L0807FCF4: .4byte gPrepTexts2
+.L0807FCF8: .4byte gPrep_Unk_0201636A
 
 	thumb_func_start PrepSubItem_StartSupplyScreen
 PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
@@ -5106,7 +5106,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	adds r0, r6, #0
 	adds r0, #0x31
 	strb r5, [r0]
-	ldr r1, .L0807FDBC @ =0x02016368
+	ldr r1, .L0807FDBC @ =gPrep_Unk_02016368
 	strh r5, [r1]
 	movs r2, #0
 	ldrh r0, [r3]
@@ -5114,7 +5114,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	adds r5, #0x46
 	cmp r0, #0
 	beq .L0807FD9C
-	ldr r0, .L0807FDC0 @ =0x02015D28
+	ldr r0, .L0807FDC0 @ =gPrep_Unk_02015D28
 	mov ip, r0
 	movs r7, #0
 	adds r4, r1, #0
@@ -5154,8 +5154,8 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 .L0807FDB0: .4byte gBg0Tm+0x1E
 .L0807FDB4: .4byte gBg1Tm+0x1E
 .L0807FDB8: .4byte gBg2Tm+0x1E
-.L0807FDBC: .4byte 0x02016368
-.L0807FDC0: .4byte 0x02015D28
+.L0807FDBC: .4byte gPrep_Unk_02016368
+.L0807FDC0: .4byte gPrep_Unk_02015D28
 .L0807FDC4:
 	movs r0, #0
 .L0807FDC6:
@@ -5206,20 +5206,20 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	bne .L0807FE26
 	movs r2, #1
 .L0807FE26:
-	ldr r4, .L0807FE6C @ =0x02015638
+	ldr r4, .L0807FE6C @ =gPrepTexts2
 	ldr r5, .L0807FE70 @ =gBg2Tm+0x12A
 	ldr r0, .L0807FE74 @ =gUnk_083272AC
 	str r0, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r3, r4, #0
 	adds r3, #8
 	adds r1, r5, #0
 	adds r1, #0x80
 	movs r2, #0
-	ldr r7, .L0807FE78 @ =0x02016368
+	ldr r7, .L0807FE78 @ =gPrep_Unk_02016368
 	ldrh r0, [r7]
 	cmp r0, #0
 	bne .L0807FE4C
@@ -5229,7 +5229,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	str r0, [sp]
 	adds r0, r3, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r0, r6, #0
 	adds r0, #0x4c
 	ldrb r0, [r0]
@@ -5240,10 +5240,10 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	movs r0, #2
 	b .L0807FEA6
 	.align 2, 0
-.L0807FE6C: .4byte 0x02015638
+.L0807FE6C: .4byte gPrepTexts2
 .L0807FE70: .4byte gBg2Tm+0x12A
 .L0807FE74: .4byte gUnk_083272AC
-.L0807FE78: .4byte 0x02016368
+.L0807FE78: .4byte gPrep_Unk_02016368
 .L0807FE7C: .4byte gUnk_083272B8
 .L0807FE80:
 	adds r3, r4, #0
@@ -5261,7 +5261,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	str r0, [sp]
 	adds r0, r3, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r1, r6, #0
 	adds r1, #0x49
 	movs r0, #3
@@ -5317,7 +5317,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	adds r0, r6, #0
 	movs r1, #7
 	bl Proc_Goto
-	ldr r1, .L0807FF48 @ =0x02015D28
+	ldr r1, .L0807FF48 @ =gPrep_Unk_02015D28
 	mov r2, sb
 	ldrh r2, [r2]
 	lsrs r0, r2, #4
@@ -5339,7 +5339,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	b .L0807FF86
 	.align 2, 0
 .L0807FF44: .4byte gUnk_083272C4
-.L0807FF48: .4byte 0x02015D28
+.L0807FF48: .4byte gPrep_Unk_02015D28
 .L0807FF4C: .4byte 0x00000C47
 .L0807FF50:
 	cmp r0, #3
@@ -5601,7 +5601,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 .L08080150:
 	cmp r4, #1
 	bne .L08080178
-	ldr r0, .L08080170 @ =0x02016368
+	ldr r0, .L08080170 @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080184
@@ -5614,12 +5614,12 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 	bl m4aSongNumStart
 	b .L080801FC
 	.align 2, 0
-.L08080170: .4byte 0x02016368
+.L08080170: .4byte gPrep_Unk_02016368
 .L08080174: .4byte gPlaySt
 .L08080178:
 	cmp r4, #2
 	bne .L080801FC
-	ldr r0, .L08080198 @ =0x02016368
+	ldr r0, .L08080198 @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L080801A0
@@ -5633,7 +5633,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 	bl m4aSongNumStart
 	b .L08080274
 	.align 2, 0
-.L08080198: .4byte 0x02016368
+.L08080198: .4byte gPrep_Unk_02016368
 .L0808019C: .4byte gPlaySt
 .L080801A0:
 	ldr r0, .L0808020C @ =gPlaySt
@@ -5661,7 +5661,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 	movs r2, #0x1f
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r1, .L0808021C @ =0x02015D28
+	ldr r1, .L0808021C @ =gPrep_Unk_02015D28
 	adds r0, r5, #0
 	adds r0, #0x50
 	ldrh r0, [r0]
@@ -5688,7 +5688,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 .L08080210: .4byte gBg0Tm
 .L08080214: .4byte gBg1Tm
 .L08080218: .4byte gBg2Tm
-.L0808021C: .4byte 0x02015D28
+.L0808021C: .4byte gPrep_Unk_02015D28
 .L08080220:
 	ldr r1, [r7]
 	movs r0, #0x80
@@ -5976,13 +5976,13 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bl DecodeMsg
-	ldr r1, .L080804B4 @ =0x02015688
+	ldr r1, .L080804B4 @ =gPrepTexts3
 	str r0, [sp]
 	adds r0, r1, #0
 	adds r1, r5, #0
 	movs r2, #0
 	adds r3, r4, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	ldr r1, [r6, #0x54]
 	movs r0, #0
 	bl func_fe6_0807D6C0
@@ -6010,7 +6010,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L080804A8: .4byte gBg0Tm
 .L080804AC: .4byte gBg1Tm
 .L080804B0: .4byte gBg2Tm
-.L080804B4: .4byte 0x02015688
+.L080804B4: .4byte gPrepTexts3
 .L080804B8:
 	ldr r0, .L080805D4 @ =gKeySt
 	ldr r1, [r0]
@@ -6092,9 +6092,9 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r3, [r7]
 	adds r0, r3, r0
 	lsls r1, r0, #0x10
-	ldr r4, .L080805DC @ =0x02016368
+	ldr r4, .L080805DC @ =gPrep_Unk_02016368
 	adds r5, r4, #0
-	ldr r2, .L080805E0 @ =gUnk_0201636A
+	ldr r2, .L080805E0 @ =gPrep_Unk_0201636A
 	mov ip, r2
 	adds r3, r6, #0
 	adds r3, #0x4b
@@ -6102,7 +6102,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r2, [r4]
 	cmp r0, r2
 	bge .L08080588
-	ldr r3, .L080805E4 @ =0x02015D28
+	ldr r3, .L080805E4 @ =gPrep_Unk_02015D28
 .L0808056E:
 	asrs r1, r1, #0x10
 	lsls r2, r1, #2
@@ -6128,7 +6128,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	mov r1, r8
 	bl func_fe6_080823A0
-	ldr r0, .L080805E8 @ =0x02015638
+	ldr r0, .L080805E8 @ =gPrepTexts2
 	ldr r2, [r6, #0x54]
 	mov r4, r8
 	ldrh r4, [r4]
@@ -6156,10 +6156,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	.align 2, 0
 .L080805D4: .4byte gKeySt
 .L080805D8: .4byte gPlaySt
-.L080805DC: .4byte 0x02016368
-.L080805E0: .4byte gUnk_0201636A
-.L080805E4: .4byte 0x02015D28
-.L080805E8: .4byte 0x02015638
+.L080805DC: .4byte gPrep_Unk_02016368
+.L080805E0: .4byte gPrep_Unk_0201636A
+.L080805E4: .4byte gPrep_Unk_02015D28
+.L080805E8: .4byte gPrepTexts2
 .L080805EC: .4byte gAction
 .L080805F0:
 	movs r0, #2
@@ -6218,7 +6218,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r2, #0x13
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r1, .L080806A8 @ =0x02015D28
+	ldr r1, .L080806A8 @ =gPrep_Unk_02015D28
 	mov r4, r8
 	ldrh r4, [r4]
 	lsrs r0, r4, #4
@@ -6233,7 +6233,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl func_fe6_0807D4A8
 	movs r0, #3
 	bl EnableBgSync
-	ldr r0, .L080806AC @ =0x02016368
+	ldr r0, .L080806AC @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080692
@@ -6247,8 +6247,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L0808069C: .4byte gPlaySt
 .L080806A0: .4byte gBg0Tm
 .L080806A4: .4byte gBg1Tm
-.L080806A8: .4byte 0x02015D28
-.L080806AC: .4byte 0x02016368
+.L080806A8: .4byte gPrep_Unk_02015D28
+.L080806AC: .4byte gPrep_Unk_02016368
 .L080806B0:
 	ldr r1, .L080806F8 @ =gKeySt
 	ldr r0, [r1]
@@ -6417,7 +6417,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r1, [r0]
 	adds r0, r6, #0
 	bl func_fe6_0807DEC8
-	ldr r0, .L080808CC @ =0x02016368
+	ldr r0, .L080808CC @ =gPrep_Unk_02016368
 	ldrh r0, [r0]
 	lsls r2, r0, #0x10
 	asrs r1, r2, #0x10
@@ -6428,7 +6428,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov r8, r3
 	cmp r1, r0
 	blt .L08080842
-	ldr r0, .L080808D0 @ =0x02015D28
+	ldr r0, .L080808D0 @ =gPrep_Unk_02015D28
 	mov sl, r0
 	movs r1, #0
 	mov sb, r1
@@ -6451,7 +6451,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	cmp r1, r0
 	bge .L08080820
 .L08080842:
-	ldr r3, .L080808D0 @ =0x02015D28
+	ldr r3, .L080808D0 @ =gPrep_Unk_02015D28
 	mov r0, r8
 	ldrh r0, [r0]
 	lsrs r1, r0, #4
@@ -6471,11 +6471,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r0, r0, #2
 	adds r0, r0, r3
 	strb r2, [r0]
-	ldr r1, .L080808CC @ =0x02016368
+	ldr r1, .L080808CC @ =gPrep_Unk_02016368
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
-	ldr r1, .L080808D4 @ =gUnk_0201636A
+	ldr r1, .L080808D4 @ =gPrep_Unk_0201636A
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
@@ -6513,12 +6513,12 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl .L080813D2
 	.align 2, 0
 .L080808C8: .4byte gPlaySt
-.L080808CC: .4byte 0x02016368
-.L080808D0: .4byte 0x02015D28
-.L080808D4: .4byte gUnk_0201636A
+.L080808CC: .4byte gPrep_Unk_02016368
+.L080808D0: .4byte gPrep_Unk_02015D28
+.L080808D4: .4byte gPrep_Unk_0201636A
 .L080808D8: .4byte gAction
 .L080808DC:
-	ldr r0, .L08080914 @ =0x02015638
+	ldr r0, .L08080914 @ =gPrepTexts2
 	ldr r2, [r6, #0x54]
 	mov r4, r8
 	ldrh r4, [r4]
@@ -6545,7 +6545,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	strb r0, [r7]
 	b .L08080A3E
 	.align 2, 0
-.L08080914: .4byte 0x02015638
+.L08080914: .4byte gPrepTexts2
 .L08080918:
 	movs r0, #0x50
 	adds r0, r0, r6
@@ -6560,7 +6560,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	beq .L08080930
 	b .L08080A3E
 .L08080930:
-	ldr r0, .L08080A04 @ =gUnk_0201636A
+	ldr r0, .L08080A04 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080A1C
@@ -6588,7 +6588,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r2, [r7]
 	adds r0, r2, r0
 	lsls r0, r0, #2
-	ldr r3, .L08080A0C @ =0x02015D28
+	ldr r3, .L08080A0C @ =gPrep_Unk_02015D28
 	adds r0, r0, r3
 	ldrh r0, [r0, #2]
 	strh r0, [r1]
@@ -6600,11 +6600,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r1, [r7]
 	adds r0, r1, r0
 	lsls r1, r0, #0x10
-	ldr r4, .L08080A10 @ =0x02016368
+	ldr r4, .L08080A10 @ =gPrep_Unk_02016368
 	ldrh r2, [r4]
 	cmp r0, r2
 	bge .L080809AA
-	ldr r3, .L08080A0C @ =0x02015D28
+	ldr r3, .L08080A0C @ =gPrep_Unk_02015D28
 .L08080990:
 	asrs r1, r1, #0x10
 	lsls r2, r1, #2
@@ -6620,18 +6620,18 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	cmp r0, r2
 	blt .L08080990
 .L080809AA:
-	ldr r4, .L08080A10 @ =0x02016368
+	ldr r4, .L08080A10 @ =gPrep_Unk_02016368
 	ldrh r0, [r4]
 	subs r0, #1
 	strh r0, [r4]
-	ldr r1, .L08080A04 @ =gUnk_0201636A
+	ldr r1, .L08080A04 @ =gPrep_Unk_0201636A
 	ldrh r0, [r1]
 	subs r0, #1
 	strh r0, [r1]
 	adds r0, r7, #0
 	mov r1, r8
 	bl func_fe6_080823A0
-	ldr r0, .L08080A14 @ =0x02015638
+	ldr r0, .L08080A14 @ =gPrepTexts2
 	ldr r2, [r6, #0x54]
 	mov r3, r8
 	ldrh r1, [r3]
@@ -6662,11 +6662,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	strb r0, [r2]
 	b .L08080A3E
 	.align 2, 0
-.L08080A04: .4byte gUnk_0201636A
+.L08080A04: .4byte gPrep_Unk_0201636A
 .L08080A08: .4byte gPlaySt
-.L08080A0C: .4byte 0x02015D28
-.L08080A10: .4byte 0x02016368
-.L08080A14: .4byte 0x02015638
+.L08080A0C: .4byte gPrep_Unk_02015D28
+.L08080A10: .4byte gPrep_Unk_02016368
+.L08080A14: .4byte gPrepTexts2
 .L08080A18: .4byte gAction
 .L08080A1C:
 	ldr r0, .L08080A90 @ =gPlaySt
@@ -6692,11 +6692,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	beq .L08080A48
 	b .L08080B60
 .L08080A48:
-	ldr r0, .L08080A94 @ =gUnk_0201636A
+	ldr r0, .L08080A94 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080B3C
-	ldr r1, .L08080A98 @ =0x02015D28
+	ldr r1, .L08080A98 @ =gPrep_Unk_02015D28
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r0, r3, #4
@@ -6727,8 +6727,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	b .L08080E2E
 	.align 2, 0
 .L08080A90: .4byte gPlaySt
-.L08080A94: .4byte gUnk_0201636A
-.L08080A98: .4byte 0x02015D28
+.L08080A94: .4byte gPrep_Unk_0201636A
+.L08080A98: .4byte gPrep_Unk_02015D28
 .L08080A9C: .4byte 0x00000C33
 .L08080AA0:
 	ldr r0, .L08080B20 @ =gPlaySt
@@ -6752,7 +6752,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r2, #0xc
 	movs r3, #7
 	bl PutUiWindowFrame
-	ldr r4, .L08080B24 @ =0x020155E8
+	ldr r4, .L08080B24 @ =gPrepTexts1
 	ldr r5, .L08080B28 @ =gBg0Tm+0x148
 	ldr r0, .L08080B2C @ =gUnk_083272CC
 	str r0, [sp]
@@ -6760,7 +6760,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r0, r4, #0
 	adds r0, #8
 	adds r1, r5, #6
@@ -6768,7 +6768,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r0, r4, #0
 	adds r0, #0x10
 	adds r1, r5, #0
@@ -6777,7 +6777,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	adds r4, #0x18
 	adds r5, #0xca
 	ldr r0, .L08080B38 @ =gUnk_083272E8
@@ -6786,11 +6786,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl func_fe6_08082360
+	bl PrepPutText
 	bl .L080812FA
 	.align 2, 0
 .L08080B20: .4byte gPlaySt
-.L08080B24: .4byte 0x020155E8
+.L08080B24: .4byte gPrepTexts1
 .L08080B28: .4byte gBg0Tm+0x148
 .L08080B2C: .4byte gUnk_083272CC
 .L08080B30: .4byte gUnk_083272D4
@@ -6872,7 +6872,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov sl, r1
 	b .L080812FA
 .L08080BCE:
-	ldr r0, .L08080C2C @ =gUnk_0201636A
+	ldr r0, .L08080C2C @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	adds r7, r6, #0
 	adds r7, #0x2e
@@ -6910,7 +6910,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r2, r2, #5
 	subs r2, #0x48
 	subs r1, r1, r2
-	ldr r2, .L08080C30 @ =0x02015D28
+	ldr r2, .L08080C30 @ =gPrep_Unk_02015D28
 	mov ip, r2
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -6921,8 +6921,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl StartItemHelpBox
 	b .L080812FA
 	.align 2, 0
-.L08080C2C: .4byte gUnk_0201636A
-.L08080C30: .4byte 0x02015D28
+.L08080C2C: .4byte gPrep_Unk_0201636A
+.L08080C30: .4byte gPrep_Unk_02015D28
 .L08080C34:
 	adds r0, r6, #0
 	adds r0, #0x2f
@@ -6988,7 +6988,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0x66
 	bl m4aSongNumStart
 .L08080CAC:
-	ldr r0, .L08080CE8 @ =0x02015638
+	ldr r0, .L08080CE8 @ =gPrepTexts2
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -7015,7 +7015,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	b .L08080DC2
 	.align 2, 0
 .L08080CE4: .4byte gPlaySt
-.L08080CE8: .4byte 0x02015638
+.L08080CE8: .4byte gPrepTexts2
 .L08080CEC:
 	ldrb r0, [r7]
 	movs r4, #0x45
@@ -7086,7 +7086,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r2, #0x50
 	adds r2, r2, r6
 	mov r8, r2
-	ldr r3, .L08080DD0 @ =gUnk_0201636A
+	ldr r3, .L08080DD0 @ =gPrep_Unk_0201636A
 	mov ip, r3
 	cmp r1, #5
 	bne .L08080DDC
@@ -7104,7 +7104,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0x66
 	bl m4aSongNumStart
 .L08080D92:
-	ldr r0, .L08080DD8 @ =0x02015638
+	ldr r0, .L08080DD8 @ =gPrepTexts2
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -7135,9 +7135,9 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov sl, r3
 	b .L080812FA
 	.align 2, 0
-.L08080DD0: .4byte gUnk_0201636A
+.L08080DD0: .4byte gPrep_Unk_0201636A
 .L08080DD4: .4byte gPlaySt
-.L08080DD8: .4byte 0x02015638
+.L08080DD8: .4byte gPrepTexts2
 .L08080DDC:
 	mov r4, r8
 	ldrh r4, [r4]
@@ -7625,7 +7625,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L080811E0 @ =0x02015638
+	ldr r0, .L080811E0 @ =gPrepTexts2
 	ldr r2, [r6, #0x54]
 	ldrh r1, [r4]
 	lsrs r3, r1, #4
@@ -7655,7 +7655,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #7
 	b .L080812C0
 	.align 2, 0
-.L080811E0: .4byte 0x02015638
+.L080811E0: .4byte gPrepTexts2
 .L080811E4:
 	adds r1, r6, #0
 	adds r1, #0x45
@@ -7738,7 +7738,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L080812D0 @ =0x02015638
+	ldr r0, .L080812D0 @ =gPrepTexts2
 	ldr r2, [r6, #0x54]
 	ldrh r5, [r4]
 	lsrs r3, r5, #4
@@ -7775,7 +7775,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov sl, r2
 	b .L080812FA
 	.align 2, 0
-.L080812D0: .4byte 0x02015638
+.L080812D0: .4byte gPrepTexts2
 .L080812D4:
 	adds r1, r6, #0
 	adds r1, #0x45
@@ -7844,7 +7844,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl StartItemHelpBox
 	b .L08081392
 .L08081352:
-	ldr r0, .L08081368 @ =gUnk_0201636A
+	ldr r0, .L08081368 @ =gPrep_Unk_0201636A
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0808136C
@@ -7855,7 +7855,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #1
 	b .L08081390
 	.align 2, 0
-.L08081368: .4byte gUnk_0201636A
+.L08081368: .4byte gPrep_Unk_0201636A
 .L0808136C:
 	adds r0, r6, #0
 	adds r0, #0x2f
@@ -7868,7 +7868,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r2, r2, #5
 	subs r2, #0x48
 	subs r1, r1, r2
-	ldr r3, .L080813E4 @ =0x02015D28
+	ldr r3, .L080813E4 @ =gPrep_Unk_02015D28
 	lsls r2, r5, #2
 	adds r2, r2, r3
 	ldrh r2, [r2, #2]
@@ -7881,7 +7881,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r1, [r1]
 	cmp r1, #2
 	bne .L080813B6
-	ldr r1, .L080813E4 @ =0x02015D28
+	ldr r1, .L080813E4 @ =gPrep_Unk_02015D28
 	mov r2, r8
 	ldrh r2, [r2]
 	lsrs r0, r2, #4
@@ -7918,7 +7918,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080813E4: .4byte 0x02015D28
+.L080813E4: .4byte gPrep_Unk_02015D28
 
 	thumb_func_start func_fe6_080813E8
 func_fe6_080813E8: @ 0x080813E8
@@ -7954,7 +7954,7 @@ func_fe6_080813E8: @ 0x080813E8
 	ldrb r0, [r2]
 	subs r1, #7
 	strb r0, [r1]
-	ldr r5, .L0808145C @ =0x02015D28
+	ldr r5, .L0808145C @ =gPrep_Unk_02015D28
 	ldrh r1, [r3]
 	lsrs r0, r1, #4
 	ldrb r1, [r2]
@@ -7980,7 +7980,7 @@ func_fe6_080813E8: @ 0x080813E8
 	strb r1, [r0]
 	b .L08081536
 	.align 2, 0
-.L0808145C: .4byte 0x02015D28
+.L0808145C: .4byte gPrep_Unk_02015D28
 .L08081460:
 	adds r1, r4, #0
 	adds r1, #0x2f
@@ -8027,7 +8027,7 @@ func_fe6_080813E8: @ 0x080813E8
 	ldrb r1, [r1]
 	adds r0, #0x39
 	strb r1, [r0]
-	ldr r7, .L080814FC @ =0x02015D28
+	ldr r7, .L080814FC @ =gPrep_Unk_02015D28
 	adds r5, r4, #0
 	adds r5, #0x2e
 	adds r6, r4, #0
@@ -8053,7 +8053,7 @@ func_fe6_080813E8: @ 0x080813E8
 .L080814F0: .4byte gBg0Tm+0x1E
 .L080814F4: .4byte gBg1Tm+0x1E
 .L080814F8: .4byte gBg2Tm+0x1E
-.L080814FC: .4byte 0x02015D28
+.L080814FC: .4byte gPrep_Unk_02015D28
 .L08081500:
 	ldrb r0, [r1]
 	bl GetUnitByPid

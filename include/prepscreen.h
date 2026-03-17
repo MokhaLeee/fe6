@@ -24,6 +24,7 @@ enum prepscreen_videoalloc {
     BGCHR_PREPMENU_240 = 0x240,
     BGCHR_PREPMENU_700 = 0x700,
 
+    OBCHR_PREPMENU_080 = 0x080,
     OBCHR_PREPMENU_240 = 0x240,
     OBCHR_PREPMENU_380 = 0x380,
     OBCHR_PREPMENU_390 = 0x390,
@@ -38,6 +39,7 @@ enum prepscreen_videoalloc {
     OBPAL_PREPMENU_4 = 0x04,
     OBPAL_PREPMENU_5 = 0x05,
     OBPAL_PREPMENU_6 = 0x06,
+    OBPAL_PREPMENU_8 = 0x08,
     OBPAL_PREPMENU_D = 0x0D,
 };
 
@@ -200,6 +202,10 @@ extern struct Unit * gPrepUnitList[];
 #define RegisterPrepUnitList(index, unit) (gPrepUnitList[(index)] = (unit))
 
 extern u8 gPrepMenuItemCnt;
+
+extern struct Text gPrepTexts1[10];
+extern struct Text gPrepTexts2[10];
+extern struct Text gPrepTexts3[2];
 
 void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
@@ -378,7 +384,7 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc);
 // func_fe6_0807D338
 // func_fe6_0807D358
 // func_fe6_0807D4A8
-// func_fe6_0807D6C0
+void func_fe6_0807D6C0(int, struct Unit *unit);
 // func_fe6_0807D834
 // func_fe6_0807D9E4
 // func_fe6_0807DB80
@@ -412,21 +418,36 @@ void PrepSubItem_OnEnd(struct Proc *proc);
 void StartPrepSubItemScreen(struct PrepMenuProc * parent, int type);
 void StartBmSupply(struct Unit * unit, ProcPtr parent);
 void StartBmSupplyForDrop(struct Unit * unit, ProcPtr parent);
-// func_fe6_0808165C
-// func_fe6_0808166C
 
 struct ProcPrepDiscardScreen {
-	PROC_HEADER;
+	PROC_HEADER_EXT(struct PrepMenuProc);
 
-	STRUCT_PAD(0x29, 0x2C);
+    /* 29 */ u8 unk_29;
+
+	STRUCT_PAD(0x2A, 0x2C);
 
 	/* 2C */ u8 in_arena;
 	/* 2D */ u8 unk_2D;
 	/* 2E */ u8 y;
 	/* 2F */ u8 unk_2F;
 	/* 30 */ u8 x;
+    /* 31 */ u8 unk_31;
+
+    STRUCT_PAD(0x32, 0x45);
+
+    /* 45 */ u8 unk_45;
+
+    STRUCT_PAD(0x46, 0x50);
+
+    /* 50 */ u16 unk_50;
+    /* 52 */ u16 unk_52;
+
+    /* 54 */ struct Unit *unit1;
+    /* 58 */ struct Unit *unit2;
 };
 
+void PrepDiscardUpdateInfoWindow(struct ProcPrepDiscardScreen *proc);
+void func_fe6_0808166C(struct Text *text, bool disp);
 void PrepDiscard_Init(struct ProcPrepDiscardScreen *proc);
 void PrepDiscard_Loop(struct ProcPrepDiscardScreen *proc);
 void PrepDiscard_End(struct ProcPrepDiscardScreen *proc);
@@ -465,7 +486,7 @@ void MenuScroll_Loop(struct MenuScrollBarProc *proc);
 ProcPtr StartMenuScrollBar(ProcPtr parent);
 void func_fe6_08082320(struct PrepSubItemfxProc *proc, int a, int b, int c, int d, int e, int f);
 void func_fe6_08082348(struct PrepSubItemfxProc *proc, int a, u8 b);
-void func_fe6_08082360(struct Text *th, u16 *tm, int color, int x, const char *str);
+void PrepPutText(struct Text *th, u16 *tm, int color, int x, const char *str);
 void func_fe6_080823A0(u8 * a, u16 * b);
 
 struct Proc_0867968C {
@@ -550,8 +571,8 @@ extern u8 gUnk_0200E7D4;
 extern struct Text gUnk_0200E88C[];
 extern u16 gPrepFadePal[0x200];
 extern u8 gUnk_020104A4[]; // img buf
-extern int gPrepSubMenuIcons[];
-extern u16 gUnk_0201636A;
+extern int gPrepSubMenuIcons[20];
+extern u16 gPrep_Unk_0201636A;
 
 extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
 extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeOut[];

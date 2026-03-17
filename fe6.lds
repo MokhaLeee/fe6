@@ -75,8 +75,14 @@ SECTIONS
         . = 0x0104A4; gUnk_020104A4 = .; /* buf? */
         . = 0x0154A4; gPrepMenuItems = .;
         . = 0x0155E4; gPrepMenuItemCnt = .;
+        . = 0x0155E8; gPrepTexts1 = .;
+        . = 0x015638; gPrepTexts2 = .;
+        . = 0x015688; gPrepTexts3 = .;
         . = 0x015698; gPrepSubMenuIcons = .;
-        . = 0x01636A; gUnk_0201636A = .;
+        . = 0x0156E8; gPrepTexts4 = .;
+        . = 0x015D28; gPrep_Unk_02015D28 = .;
+        . = 0x016368; gPrep_Unk_02016368 = .;
+        . = 0x01636A; gPrep_Unk_0201636A = .;
         . = 0x01636C; sSallyCirWinH_obj = .;
         . = 0x01686C; sSallyCirWinH = .;
         . = 0x016874; gUnk_Pal_02016874 = .; /* big jump here? */
@@ -594,6 +600,7 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
+        src/prep_subscreen_discard1.o(.text);
         asm/prep_subscreen_discard.o(.text);
         src/prep_subscreen_discard.o(.text);
         asm/prep_menuscrollbar.o(.text);
@@ -751,6 +758,7 @@ SECTIONS
         . = ALIGN(4); src/prepmenuitem.o(.rodata);
         . = ALIGN(4); src/prepscreenfx.o(.rodata);
         . = ALIGN(4); data/rodata_327254.o(.rodata);
+        . = ALIGN(4); src/prep_subscreen_discard1.o(.rodata);
         . = ALIGN(4); src/save_core.o(.rodata);
         . = ALIGN(4); src/save_multiarena.o(.rodata);
         . = ALIGN(4); data/rodata_3273E4.o(.rodata);
