@@ -346,30 +346,6 @@ void func_fe6_0807D338(void)
 		gPrepSubMenuIcons[i] = 0xFF;
 }
 
-struct ProcScr CONST_DATA ProcScr_PrepSubItemScreen[] = {
-	PROC_19,
-	PROC_YIELD,
-	PROC_CALL(PrepSubItemScreen_Init),
-PROC_LABEL(PL_PREP_SUBITEM_VIEWALL),
-	PROC_CALL(PrepSubItem_StartViewAllScreen),
-PROC_LABEL(1),
-	PROC_REPEAT(func_fe6_0807EDBC),
-PROC_LABEL(PL_PREP_SUBITEM_TRADE),
-	PROC_CALL(PrepSubItem_StartTradeScreen),
-PROC_LABEL(3),
-	PROC_REPEAT(func_fe6_0807E5A8),
-PROC_LABEL(PL_PREP_SUBITEM_CONVOY),
-	PROC_CALL(PrepSubItem_StartSupplyScreen),
-PROC_LABEL(5),
-	PROC_REPEAT(PrepSubItem_SelLoop1),
-	PROC_REPEAT(PrepSubItem_SelLoop2),
-PROC_LABEL(7),
-	PROC_CALL(func_fe6_080813E8),
-PROC_LABEL(6),
-	PROC_CALL(PrepSubItem_OnEnd),
-	PROC_END,
-};
-
 #if 0
 void func_fe6_0807D358(struct PrepSubItemProc *proc)
 {
@@ -386,23 +362,3 @@ void func_fe6_0807D358(struct PrepSubItemProc *proc)
 	}
 }
 #endif
-
-struct ProcScr CONST_DATA ProcScr_BmSupplyScreen[] = {
-	PROC_19,
-	PROC_CALL(LockGame),
-	PROC_YIELD,
-	PROC_CALL(PrepSubItemScreen_Init),
-PROC_LABEL(4),
-	PROC_CALL(PrepSubItem_StartSupplyScreen),
-	PROC_YIELD,
-PROC_LABEL(5),
-	PROC_REPEAT(PrepSubItem_SelLoop1),
-PROC_LABEL(7),
-	PROC_YIELD,
-	PROC_REPEAT(PrepSubItem_SelLoop2),
-PROC_LABEL(6),
-	PROC_CALL(PrepSubItem_OnEnd),
-	PROC_YIELD,
-	PROC_CALL(UnlockGame),
-	PROC_END,
-};

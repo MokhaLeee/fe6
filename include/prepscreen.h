@@ -47,20 +47,6 @@ struct UnkProc_08678E18;
 struct PrepScreenDispProc;
 struct PrepSubItemProc;
 
-enum PREP_SUB2_ACTION_IDX {
-    PREP_SUB2ACT_NONE,
-    PREP_SUB2ACT_1,
-    PREP_SUB2ACT_TRADE_ITEM = 2,
-    PREP_SUB2ACT_CONVOY,
-    PREP_SUB2ACT_DISCARD_ITEM,
-    PREP_SUB2ACT_CHECK_ALL_ITEM,
-    PREP_SUB2ACT_STATSCREEN,
-    PREP_SUB2ACT_SAVEMENU,
-    PREP_SUB2ACT_8,
-    PREP_SUB2ACT_9,
-    PREP_SUB2ACT_ARMORY,
-};
-
 struct PrepMenuProc
 {
     /* 00 */ PROC_HEADER;
@@ -90,7 +76,7 @@ struct PrepMenuProc
     /* 42 */ u16 scroll_timer;
     /* 44 */ u16 yDiff_cur;
     /* 46 */ STRUCT_PAD(0x46, 0x48);
-    /* 48 */ struct Unit * unit1, * unit2;
+    /* 48 */ struct Unit *unit1, *unit2;
     /* 50 */ struct PrepScreenDispProc * disp_proc;
     /* 54 */ STRUCT_PAD(0x54, 0x58);
     /* 58 */ ProcPtr procbg;
@@ -114,11 +100,26 @@ struct PrepSubItemfxProc {
     u16 unk_38;
 };
 
+enum PREP_SUB2_ACTION_IDX {
+    PREP_SUB2ACT_NONE,
+    PREP_SUB2ACT_1,
+    PREP_SUB2ACT_TRADE_ITEM = 2,
+    PREP_SUB2ACT_CONVOY,
+    PREP_SUB2ACT_DISCARD_ITEM,
+    PREP_SUB2ACT_CHECK_ALL_ITEM,
+    PREP_SUB2ACT_STATSCREEN,
+    PREP_SUB2ACT_SAVEMENU,
+    PREP_SUB2ACT_8,
+    PREP_SUB2ACT_9,
+    PREP_SUB2ACT_ARMORY,
+};
+
 struct PrepSubItemProc {
     PROC_HEADER_EXT(struct PrepMenuProc);
 
-    STRUCT_PAD(0x29, 0x2B);
+    STRUCT_PAD(0x29, 0x2A);
 
+    /* 2A */ u8 unk2A;
     /* 2B */ u8 unk2B;
     /* 2C */ u8 unk2C, unk2D;
     /* 2E */ u8 unk2E, unk2F;
@@ -128,13 +129,18 @@ struct PrepSubItemProc {
 
     /* 46 */ u8 unk46;
 
-    STRUCT_PAD(0x47, 0x50);
+    STRUCT_PAD(0x47, 0x4B);
+
+    /* 4B */ u8 unk4B;
+
+    STRUCT_PAD(0x4C, 0x50);
 
     /* 50 */ u16 unk50;
-    /* 54 */ struct Unit * unit;
+    /* 54 */ struct Unit *unit;
 
-    STRUCT_PAD(0x58, 0x60);
+    STRUCT_PAD(0x58, 0x5C);
 
+    /* 5C */ ProcPtr subproc1;
     /* 60 */ ProcPtr unk60;
 };
 
@@ -151,14 +157,14 @@ struct ProcPrepUnitPinfoAsync
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x48);
-    /* 48 */ struct Unit * unit;
+    /* 48 */ struct Unit *unit;
 };
 
 struct UnkProc_08678E18
 {
     /* 00 */ PROC_HEADER_EXT(struct PrepMenuProc);
     /* 29 */ STRUCT_PAD(0x29, 0x2C);
-    /* 2C */ struct Unit * unit;
+    /* 2C */ struct Unit *unit;
     /* 30 */ struct PrepMenuProc * main_proc;
     /* 34 */ u8 unk_34;
     /* 35 */ u8 unk_35;
@@ -214,13 +220,13 @@ void func_fe6_0807921C(void);
 void func_fe6_08079250(struct UnkProc_08678DE0 *proc);
 void func_fe6_080792C8(struct UnkProc_08678DE0 *proc);
 void func_fe6_08079388(struct UnkProc_08678DE0 *proc);
-void func_fe6_080793F0(struct PrepMenuProc * parent);
-bool IsUnitMandatoryDeploy(struct Unit * unit);
+void func_fe6_080793F0(struct PrepMenuProc *parent);
+bool IsUnitMandatoryDeploy(struct Unit *unit);
 void InitPrepScreenMainMenu(struct PrepMenuProc *proc);
-void PrepUnit_DrawLeftUnitInfo(struct Unit * unit, u16 * tm);
-void PrepScreen_ReloadLeftUnitInfo(struct Unit * unit);
+void PrepUnit_DrawLeftUnitInfo(struct Unit *unit, u16 * tm);
+void PrepScreen_ReloadLeftUnitInfo(struct Unit *unit);
 void PrepUnitUpdatePinfoAsync_work(struct ProcPrepUnitPinfoAsync *proc);
-void UpdatePrepUnitPinfoAsync(struct PrepMenuProc * parent);
+void UpdatePrepUnitPinfoAsync(struct PrepMenuProc *parent);
 void func_fe6_08079804(struct PrepMenuProc *proc);
 void func_fe6_080798EC(struct PrepMenuProc *proc);
 void func_fe6_08079928(struct PrepMenuProc *proc, int unit_id_or_pid, bool by_pid);
@@ -228,7 +234,7 @@ void ReorderPlayerUnitsBasedOnDeployment(void);
 void func_fe6_08079A94(struct PrepMenuProc *proc);
 void func_fe6_08079BC8(struct UnkProc_08678E18 *proc);
 void func_fe6_08079C38(struct UnkProc_08678E18 *proc);
-struct UnkProc_08678E18 * func_fe6_08079D70(struct PrepMenuProc * parent);
+struct UnkProc_08678E18 * func_fe6_08079D70(struct PrepMenuProc *parent);
 void func_fe6_08079D84(struct PrepMenuProc *proc);
 void PrepUnit_DrawPickLeftBar(struct PrepMenuProc *proc);
 void PrepUnit_DrawUnitListNames(struct PrepMenuProc *proc, fu8 row);
@@ -400,6 +406,7 @@ enum proclabel_prep_subitem_screen {
     PL_PREP_SUBITEM_VIEWALL = 0,
     PL_PREP_SUBITEM_TRADE = 2,
     PL_PREP_SUBITEM_CONVOY = 4,
+    PL_PREP_SUBITEM_5 = 5,
 };
 
 void PrepSubItemScreen_Init(struct Proc *proc);
@@ -410,14 +417,13 @@ void PrepSubItem_StartViewAllScreen(struct Proc *proc);
 void func_fe6_0807EDBC(struct Proc *proc);
 // func_fe6_0807FBE8
 void PrepSubItem_StartSupplyScreen(struct Proc *proc);
-void PrepSubItem_SelLoop1(struct Proc *proc);
-void PrepSubItem_SelLoop2(struct Proc *proc);
-void func_fe6_080813E8(struct Proc *proc);
-void PrepSubItem_OnEnd(struct Proc *proc);
-
-void StartPrepSubItemScreen(struct PrepMenuProc * parent, int type);
-void StartBmSupply(struct Unit * unit, ProcPtr parent);
-void StartBmSupplyForDrop(struct Unit * unit, ProcPtr parent);
+void PrepSubItem_SelLoop1(struct PrepSubItemProc *proc);
+void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc);
+void func_fe6_080813E8(struct PrepSubItemProc *proc);
+void PrepSubItem_OnEnd(struct PrepSubItemProc *proc);
+void StartPrepSubItemScreen(struct PrepMenuProc *parent, u8 type);
+void StartBmSupply(struct Unit *unit, ProcPtr parent);
+void StartBmSupplyForDrop(struct Unit *unit, ProcPtr parent);
 
 struct ProcPrepDiscardScreen {
 	PROC_HEADER_EXT(struct PrepMenuProc);
@@ -541,7 +547,7 @@ void PrepHbKeyListener_Loop(ProcPtr proc);
 ProcPtr StartPrepErrorHelpbox(int x, int y, int msg, ProcPtr parent);
 bool IsWeaponUsable(struct Unit *unit, int weapon);
 int CountUnitUsableWeapons(struct Unit *unit);
-bool CanUnitUseWeaponsInArena(struct Unit * unit);
+bool CanUnitUseWeaponsInArena(struct Unit *unit);
 // CheckValidLinkArenaItemSwap
 // CheckValidLinkArenaItemSupply
 // PrepCanUnitPutItemToSupply
