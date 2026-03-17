@@ -572,7 +572,6 @@ SECTIONS
         src/banim_ekrlvup.o(.text);
         asm/banim_ekrlvup.o(.text);
         src/banim_ekrtriangle.o(.text);
-        asm/banim_ekrtriangle.o(.text);
         src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
         src/spellassoc.o(.text);
@@ -728,6 +727,8 @@ SECTIONS
         . = ALIGN(4); src/banim_efxutils.o(.rodata);
         . = ALIGN(4); asm/banim_efxsound.o(.rodata);
         . = ALIGN(4); src/banim_ekrclasschg.o(.rodata);
+        . = ALIGN(4); src/banim_ekrlvup.o(.rodata);
+        . = ALIGN(4); src/banim_ekrtriangle.o(.rodata);
         . = ALIGN(4); data/rodata_banim_081C9EF4.o(.rodata);
         . = ALIGN(4); data/rodata_chapterinfo1.o(.rodata);
         . = ALIGN(4); data/tilesetanim.o(.rodata);
@@ -863,7 +864,6 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
         . = ALIGN(4); asm/banim_ekrlvup.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle.o(.data);
-        . = ALIGN(4); asm/banim_ekrtriangle.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle_data.o(.data);
         . = ALIGN(4); src/banim_bg.o(.data);
         . = ALIGN(4); src/banim_ekrpopup_data.o(.data);
