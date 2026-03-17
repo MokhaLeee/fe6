@@ -106,10 +106,10 @@ void func_fe6_080792C8(struct UnkProc_08678DE0 *proc)
 
 		proc->unk_30 = 0;
 
-		if (proc->proc_parent->in_unit_sel_screen == 0)
-			proc->proc_parent->in_unit_sel_screen = 1;
+		if (proc->proc_parent->not_in_upper_menu == 0)
+			proc->proc_parent->not_in_upper_menu = 1;
 		else
-			proc->proc_parent->in_unit_sel_screen = 0;
+			proc->proc_parent->not_in_upper_menu = 0;
 
 		PrepScreen_DrawScreenInfo(proc->proc_parent);
 
@@ -733,12 +733,12 @@ void PrepMenu_InitScreenExt(struct PrepMenuProc *proc)
 
 	InitPrepScreenMainMenu(proc);
 
-	if (proc->in_unit_sel_screen == 1)
+	if (proc->not_in_upper_menu == 1)
 		func_fe6_08079804(proc);
 
-	if (proc->unk_29 == 0)
+	if (proc->sel_unit == 0)
 		func_fe6_08079A94(proc);
-	else if (proc->unk_29 == 1)
+	else if (proc->sel_unit == 1)
 		func_fe6_08079D84(proc);
 
 	PrepScreen_DrawScreenInfo(proc);
@@ -782,7 +782,7 @@ void PrepScreen_DrawScreenInfo(struct PrepMenuProc *proc)
 {
 	int i, j;
 
-	if (proc->in_unit_sel_screen == 0) {
+	if (proc->not_in_upper_menu == 0) {
 		u16 const * tiles = gUnk_08326EE6;
 
 		SetBgChrOffset(2, 0x8000);
@@ -839,8 +839,8 @@ void PrepMenu_InitExt(struct PrepMenuProc *proc)
 	proc->yDiff_cur = 0;
 	proc->list_num_cur = 0;
 	proc->unk_31 = 0xFF;
-	proc->unk_29 = 0;
-	proc->in_unit_sel_screen = 0;
+	proc->sel_unit = 0;
+	proc->not_in_upper_menu = 0;
 	proc->unk_2B = 0;
 	proc->hand_y_pos = 0;
 
@@ -869,7 +869,7 @@ void PrepMenu_InitExt(struct PrepMenuProc *proc)
 
 	PrepMenu_InitScreen(proc);
 
-	PrepDisp_SetWorlMapInfo((proc->disp_proc = StartPrepScreenDisp(proc)),
+	PrepDisp_SetWorlMapInfo((proc->disp_proc = StartPrepUpperDisp(proc)),
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursorx * 8,
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursory * 8,
 		GetChapterInfo(gPlaySt.chapter)->number_id);
@@ -978,7 +978,7 @@ void PrepMenu_CancelAction(struct PrepMenuProc *proc)
 		Proc_Goto(proc, L_PREPMENU_6);
 	} else if (proc->submenu_level == 1) {
 		PrepSubMenu_FinishMoving(proc);
-		proc->unk_29 = 1;
+		proc->sel_unit = 1;
 		func_fe6_08079D84(proc);
 		proc->submenu_level = 0;
 	}
@@ -986,7 +986,7 @@ void PrepMenu_CancelAction(struct PrepMenuProc *proc)
 	PlaySe(SONG_6B);
 }
 
-void func_fe6_0807ACE8(struct PrepMenuProc *proc)
+void PrepItem_BlockUpperfxDisp(struct PrepMenuProc *proc)
 {
 	Proc_Goto(proc->disp_proc, 2);
 	EndGreenText();
@@ -1025,7 +1025,7 @@ void PrepMenu_Loop(struct PrepMenuProc *proc)
 	u8 pre_item = proc->disp_idx[proc->submenu_level];
 	u8 pre_idx = proc->submenu_level;
 
-	switch (proc->unk_29) {
+	switch (proc->sel_unit) {
 	case 0:
 		if (proc->do_help && (gKeySt->pressed & (KEY_BUTTON_B | KEY_BUTTON_R))) {
 			CloseHelpBox();
@@ -1087,7 +1087,7 @@ void PrepMenu_Loop(struct PrepMenuProc *proc)
 				else
 					Proc_Goto(proc, 0xA);
 			} else if (_pre_idx == 1) {
-				proc->unk_29 = 0;
+				proc->sel_unit = 0;
 				func_fe6_0807B8B0(proc->disp_proc, GetPrepScreenMenuDispItemIndex(proc->disp_idx[1], 1) - 5);
 				func_fe6_08079A94(proc);
 				proc->unk_32 = proc->list_num_cur;
@@ -1197,28 +1197,28 @@ void AtMenu_StartSubmenu(struct PrepMenuProc *proc)
 	switch (proc->sub2_action) {
 	case PREP_SUB2ACT_TRADE_ITEM:
 		StartPrepSubItemScreen(proc, PL_PREP_SUBITEM_TRADE);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		break;
 
 	case PREP_SUB2ACT_DISCARD_ITEM:
 		StartPrepDiscardItemScreen(proc);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		break;
 
 	case PREP_SUB2ACT_CONVOY:
 		StartPrepSubItemScreen(proc, PL_PREP_SUBITEM_CONVOY);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		break;
 
 	case PREP_SUB2ACT_CHECK_ALL_ITEM:
 		StartPrepSubItemScreen(proc, PL_PREP_SUBITEM_VIEWALL);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		break;
 
 	case PREP_SUB2ACT_8:
 		Proc_End(proc->procbg);
 		SpawnProcLocking(ProcScr_Augury, proc);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		SetDispEnable(0, 0, 0, 0, 0);
 		break;
 
@@ -1227,27 +1227,27 @@ void AtMenu_StartSubmenu(struct PrepMenuProc *proc)
 		StartBgmVolumeChange(0x100, 0x80, 0x20, NULL);
 		InitPlayerDeployUnitPositions();
 		StartSaveMenu(proc);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		SetDispEnable(0, 0, 0, 0, 0);
 		break;
 
 	case PREP_SUB2ACT_9:
 		Proc_End(proc->procbg);
 		func_fe6_08076250(proc);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		SetDispEnable(0, 0, 0, 0, 0);
 		break;
 
 	case PREP_SUB2ACT_ARMORY:
 		Proc_End(proc->procbg);
 		StartDefaultArmoryScreen(GetUnitFromPrepList(proc->list_num_cur), proc);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		SetDispEnable(0, 0, 0, 0, 0);
 		break;
 
 	case PREP_SUB2ACT_STATSCREEN:
 		Proc_End(proc->procbg);
-		func_fe6_0807ACE8(proc);
+		PrepItem_BlockUpperfxDisp(proc);
 		SetDispEnable(0, 0, 0, 0, 0);
 		SetStatScreenExcludedUnitFlags(UNIT_FLAG_DEAD);
 		StartStatScreen(GetUnitFromPrepList(proc->list_num_cur), proc);
@@ -1346,7 +1346,7 @@ void func_fe6_0807B4C0(struct PrepMenuProc *proc)
 	if (proc->scroll_timer == 0)
 	{
 		proc->unk_29 = TRUE;
-		proc->in_unit_sel_screen = TRUE;
+		proc->not_in_upper_menu = TRUE;
 		proc->unk_2B = TRUE;
 
 		PrepScreen_DrawScreenInfo(proc);
@@ -1531,7 +1531,7 @@ void func_fe6_0807B5A0(struct PrepMenuProc *proc)
 		u8 pid;
 
 		proc->unk_29 = 0;
-		proc->in_unit_sel_screen = 0;
+		proc->not_in_upper_menu = 0;
 		func_fe6_08079A94(proc);
 		Proc_Break(proc);
 

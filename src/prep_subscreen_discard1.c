@@ -19,7 +19,7 @@
 
 void PrepDiscardUpdateInfoWindow(struct ProcPrepDiscardScreen *proc)
 {
-	UpdateEquipInfoWindow(proc->y);
+	UpdateEquipInfoWindow(proc->sel_slot);
 }
 
 const char gUnk_083272F0[] = "本当に";
@@ -78,14 +78,14 @@ void PrepDiscard_Init(struct ProcPrepDiscardScreen *proc)
 	StartEquipInfoWindow(proc, proc->unit1, 0x10, 0xB);
 
 	proc->unk_2F = 0;
-	proc->y = 0;
-	proc->x = 0;
+	proc->sel_slot = 0;
+	proc->sel_yes = 0;
 	proc->unk_31 = 0;
 	proc->unk_45 = 0;
 	proc->unk_50 = 0;
-	proc->in_arena = false;
+	proc->sub_sel = false;
 	proc->unk_52 = 0;
-	proc->unk_29 = 0;
+	proc->in_helpbox = false;
 	proc->unk_2D = 0;
 
 	SetBgOffset(BG_0, 0, 0);
@@ -101,7 +101,7 @@ void PrepDiscard_Init(struct ProcPrepDiscardScreen *proc)
 	func_fe6_0807D6C0(0, proc->unit1);
 	PutUiEntryHover(
 		proc->unk_2F * 14 + 2,
-		proc->y * 2 + 9,
+		proc->sel_slot * 2 + 9,
 		12);
 
 	PrepPutText(

@@ -3195,7 +3195,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	movs r1, #0xe0
 	movs r2, #0x34
 	movs r3, #0xb
-	bl func_fe6_08082320
+	bl UpdatePrepMenuScrollBar
 	movs r0, #0xf
 	bl EnableBgSync
 	ldr r0, [sp, #0xc]
@@ -5029,7 +5029,7 @@ func_fe6_0807FBE8: @ 0x0807FBE8
 	movs r1, #0xe0
 	movs r2, #0x30
 	movs r3, #0xc
-	bl func_fe6_08082320
+	bl UpdatePrepMenuScrollBar
 	adds r0, r7, #0
 	adds r0, #0x2f
 	ldrb r2, [r0]
@@ -5094,7 +5094,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0xd
-	bl func_fe6_08082320
+	bl UpdatePrepMenuScrollBar
 	adds r4, r6, #0
 	adds r4, #0x30
 	ldrb r0, [r4]
@@ -7942,7 +7942,7 @@ func_fe6_080813E8: @ 0x080813E8
 	str r1, [sp, #8]
 	movs r2, #0
 	movs r3, #0xd
-	bl func_fe6_08082320
+	bl UpdatePrepMenuScrollBar
 	adds r3, r4, #0
 	adds r3, #0x50
 	ldrh r0, [r3]

@@ -10,10 +10,10 @@ void PrepSubItem_OnEnd(struct PrepSubItemProc *proc)
 {
     if (proc->unk2D != PL_PREP_SUBITEM_5) {
         if (proc->unk2A == 0)
-            proc->proc_parent->unk_39 = proc->unk46;
+            proc->proc_parent->unk_39 = proc->convoy_page;
 
         if (proc->unk2A == 4)
-            proc->proc_parent->unk_3A = proc->unk46;
+            proc->proc_parent->unk_3A = proc->convoy_page;
 
         InitBmBgLayers();
     } else {

@@ -115,7 +115,7 @@ void StartPrepMenuFadeIn(ProcPtr proc)
     SpawnProcLocking(ProcScr_PrepMenuFadeIn, proc);
 }
 
-void func_fe6_0807B8B0(struct PrepScreenDispProc * proc, int idx)
+void func_fe6_0807B8B0(struct PrepUpperDispProc * proc, int idx)
 {
     u8 _idx = idx;
 
@@ -125,7 +125,7 @@ void func_fe6_0807B8B0(struct PrepScreenDispProc * proc, int idx)
     proc->unk_44 = TRUE;
 }
 
-void PrepDisp_SetWorlMapInfo(struct PrepScreenDispProc * proc, fu8 x, fu8 y, int chidx)
+void PrepDisp_SetWorlMapInfo(struct PrepUpperDispProc * proc, fu8 x, fu8 y, int chidx)
 {
     proc->cursor_x = x;
     proc->cursor_y = y;
@@ -171,7 +171,7 @@ void PrepDisp_PutPickLeftBar(u8 a, u8 b, int c)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-void PrepUnit_DrawSMSAndObjs(struct PrepScreenDispProc * proc)
+void PrepUnit_DrawSMSAndObjs(struct PrepUpperDispProc * proc)
 {
     u8 i;
     int r6, r8;
@@ -415,7 +415,7 @@ u16 CONST_DATA * Sprites_0867913C[12] =
     Sprite_08679132,
 };
 
-void PrepMenu_DrawGmapSprites(struct PrepScreenDispProc * proc)
+void PrepMenu_DrawGmapSprites(struct PrepUpperDispProc * proc)
 {
     u8 order[6] = { 8, 5, 4, 3, 4, 5 };
     u32 unk33;
@@ -579,11 +579,11 @@ u16 CONST_DATA * Sprites_0867922C[] =
     Sprite_0867921C,
 };
 
-void PrepDisp_PutHand(struct PrepScreenDispProc * proc)
+void PrepDisp_PutHand(struct PrepUpperDispProc * proc)
 {
     struct PrepMenuProc * parent = proc->proc_parent;
 
-    switch (parent->unk_29) {
+    switch (parent->sel_unit) {
     case 0:
         if (parent->submenu_level == 0)
             PutUiHand(0xC, parent->disp_idx[0] * 0x10 + 0x28);
@@ -617,7 +617,7 @@ void PrepDisp_PutHand(struct PrepScreenDispProc * proc)
     }
 }
 
-void func_fe6_0807BF70(struct PrepScreenDispProc * proc)
+void func_fe6_0807BF70(struct PrepUpperDispProc * proc)
 {
     struct PrepMenuProc * parent = proc->proc_parent;
 
@@ -648,7 +648,7 @@ void func_fe6_0807BF70(struct PrepScreenDispProc * proc)
     }
 }
 
-void PrepDisp_PutTitleSprite(struct PrepScreenDispProc * proc)
+void PrepDisp_PutTitleSprite(struct PrepUpperDispProc * proc)
 {
     int i, x;
 
@@ -731,7 +731,7 @@ L2:
     PutSpriteExt(4, OAM1_X((x >> 1) + 0xBC), 8, Sprite_086791BE, 0x4000);
 }
 
-void PrepScreenDisp_Init(struct PrepScreenDispProc * proc)
+void PrepUpperDisp_Init(struct PrepUpperDispProc * proc)
 {
     proc->unk_2A = 0;
     proc->unk_3E = 0;
@@ -743,8 +743,8 @@ void PrepScreenDisp_Init(struct PrepScreenDispProc * proc)
     proc->unk_2B = proc->proc_parent->disp_idx[proc->proc_parent->submenu_level];
     proc->unk_2C = proc->proc_parent->submenu_level;
     proc->unk_3A = 0xA0;
-    proc->unk_2D = proc->proc_parent->unk_29;
-    proc->unk_2E = proc->proc_parent->in_unit_sel_screen;
+    proc->unk_2D = proc->proc_parent->sel_unit;
+    proc->unk_2E = proc->proc_parent->not_in_upper_menu;
     proc->unk_2F = proc->proc_parent->unk_2B;
     proc->unk_30 = 0;
     proc->unk_32 = 0;
@@ -767,10 +767,10 @@ void PrepScreenDisp_Init(struct PrepScreenDispProc * proc)
     }
 }
 
-void PrepScreenDisp_Loop(struct PrepScreenDispProc * proc)
+void PrepUpperDisp_Loop(struct PrepUpperDispProc * proc)
 {
-    if (proc->proc_parent->in_unit_sel_screen != proc->unk_2E)
-        proc->unk_2E = proc->proc_parent->in_unit_sel_screen;
+    if (proc->proc_parent->not_in_upper_menu != proc->unk_2E)
+        proc->unk_2E = proc->proc_parent->not_in_upper_menu;
 
     if (proc->proc_parent->unk_2B != proc->unk_2F)
     {
@@ -781,7 +781,7 @@ void PrepScreenDisp_Loop(struct PrepScreenDispProc * proc)
 
     SyncUnitSpriteSheet();
 
-    if (proc->proc_parent->in_unit_sel_screen == FALSE)
+    if (proc->proc_parent->not_in_upper_menu == FALSE)
     {
         PrepMenu_DrawGmapSprites(proc);
     }
@@ -832,34 +832,34 @@ void PrepScreenDisp_Loop(struct PrepScreenDispProc * proc)
     proc->unk_3E++;
 }
 
-void PrepScreenDisp_End(struct PrepScreenDispProc * proc)
+void PrepUpperDisp_End(struct PrepUpperDispProc * proc)
 {
     return;
 }
 
-void PrepScreenDisp_Block(struct PrepScreenDispProc * proc)
+void PrepUpperDisp_Block(struct PrepUpperDispProc * proc)
 {
     return;
 }
 
-struct ProcScr CONST_DATA ProcScr_PrepScreenDisp[] = {
+struct ProcScr CONST_DATA ProcScr_PrepUpperDisp[] = {
     PROC_19,
 PROC_LABEL(0),
     PROC_SLEEP(1),
-    PROC_CALL(PrepScreenDisp_Init),
+    PROC_CALL(PrepUpperDisp_Init),
 PROC_LABEL(1),
-    PROC_REPEAT(PrepScreenDisp_Loop),
+    PROC_REPEAT(PrepUpperDisp_Loop),
     PROC_GOTO(5),
 PROC_LABEL(2),
-    PROC_REPEAT(PrepScreenDisp_Block),
+    PROC_REPEAT(PrepUpperDisp_Block),
 PROC_LABEL(5),
-    PROC_CALL(PrepScreenDisp_End),
+    PROC_CALL(PrepUpperDisp_End),
     PROC_END,
 };
 
-ProcPtr StartPrepScreenDisp(ProcPtr parent)
+ProcPtr StartPrepUpperDisp(ProcPtr parent)
 {
-    struct PrepScreenDispProc * proc;
-    proc = SpawnProc(ProcScr_PrepScreenDisp, parent);
+    struct PrepUpperDispProc * proc;
+    proc = SpawnProc(ProcScr_PrepUpperDisp, parent);
     proc->unk_3C = 0;
 }

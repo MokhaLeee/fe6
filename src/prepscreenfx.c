@@ -179,14 +179,14 @@ void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 *proc)
 	PutSpriteExt(0xB, 0xB0,	   0, Sprite_086792A8, proc->obj_offset / 0x20);
 
 	PutUiHand(
-		proc->proc_parent->unk2F * 0x70 + 0x10,
-		proc->proc_parent->unk2E * 0x10 + 0x48);
+		proc->proc_parent->hand_disp_x * 0x70 + 0x10,
+		proc->proc_parent->hand_disp_y * 0x10 + 0x48);
 
 	if (proc->proc_parent->unk30 != 0xFF)
 	{
 		PutFrozenUiHand(
 			proc->proc_parent->unk30 * 0x70 + 0x10,
-			proc->proc_parent->unk31 * 0x10 + 0x48);
+			proc->proc_parent->sel_action * 0x10 + 0x48);
 	}
 
 	dummy_0807CFB8(0, 4, proc->timer);
@@ -220,23 +220,23 @@ void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc)
 	PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
 	PutSpriteExt(0xB, 0xB0,	   0, Sprite_086792A8, proc->obj_offset / 0x20);
 
-	if (proc->proc_parent->unk2C == 100)
+	if (proc->proc_parent->menu_scrolling_pos == 100)
 		PutFrozenUiHand(
 			0x80,
-			proc->proc_parent->unk31 * 0x10 + 0x28);
+			proc->proc_parent->sel_action * 0x10 + 0x28);
 
-	func_fe6_0807DFEC(proc->proc_parent->unk46, proc->timer, proc->obj_offset);
+	func_fe6_0807DFEC(proc->proc_parent->convoy_page, proc->timer, proc->obj_offset);
 
 	PutUiHand(
-		proc->proc_parent->unk2F * 0x70 + 0x10,
-		proc->proc_parent->unk2E * 0x10 + 0x48 - (proc->proc_parent->unk2F * 0x20));
+		proc->proc_parent->hand_disp_x * 0x70 + 0x10,
+		proc->proc_parent->hand_disp_y * 0x10 + 0x48 - (proc->proc_parent->hand_disp_x * 0x20));
 
-	func_fe6_08082320(
+	UpdatePrepMenuScrollBar(
 		proc->proc_parent->unk60,
 		0xE0,
 		0x30,
 		0xC,
-		proc->proc_parent->unk50,
+		proc->proc_parent->menu_scroll_bar_disp_idx,
 		gPrep_Unk_0201636A,
 		7);
 
@@ -273,38 +273,38 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc)
 {
 	PutSpriteExt(0xB, 0x88,	   0, Sprite_086792C4, proc->obj_offset / 0x20);
 
-	if (proc->proc_parent->unk2B == 0) {
+	if (proc->proc_parent->in_sel_action_menu == 0) {
 		PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
 
 		PutUiHand(
 			0xA0,
-			proc->proc_parent->unk31 * 0x10 + 0x48);
+			proc->proc_parent->sel_action * 0x10 + 0x48);
 	} else {
-		if (proc->proc_parent->unk31 != 2)
+		if (proc->proc_parent->sel_action != 2)
 			PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
 
-		if (proc->proc_parent->unk2C == 20) {
+		if (proc->proc_parent->menu_scrolling_pos == 20) {
 			PutFrozenUiHand(
-				proc->proc_parent->unk2F * 0x70 + 0x10,
-				proc->proc_parent->unk2E * 0x10 + 0x48 - (proc->proc_parent->unk2F * 0x20));
+				proc->proc_parent->hand_disp_x * 0x70 + 0x10,
+				proc->proc_parent->hand_disp_y * 0x10 + 0x48 - (proc->proc_parent->hand_disp_x * 0x20));
 
 			PutUiHand(
 				proc->proc_parent->unk30 * 0x20 + 0x24,
 				0x40);
 		} else {
 			PutUiHand(
-				proc->proc_parent->unk2F * 0x70 + 0x10,
-				proc->proc_parent->unk2E * 0x10 + 0x48 - (proc->proc_parent->unk2F * 0x20));
+				proc->proc_parent->hand_disp_x * 0x70 + 0x10,
+				proc->proc_parent->hand_disp_y * 0x10 + 0x48 - (proc->proc_parent->hand_disp_x * 0x20));
 		}
 
-		func_fe6_0807DFEC(proc->proc_parent->unk46, proc->timer, proc->obj_offset);
+		func_fe6_0807DFEC(proc->proc_parent->convoy_page, proc->timer, proc->obj_offset);
 
-		func_fe6_08082320(
+		UpdatePrepMenuScrollBar(
 			proc->proc_parent->unk60,
 			0xE0,
 			0x30,
 			0xC,
-			proc->proc_parent->unk50,
+			proc->proc_parent->menu_scroll_bar_disp_idx,
 			gPrep_Unk_0201636A,
 			7);
 	}

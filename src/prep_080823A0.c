@@ -4,7 +4,7 @@
 #include "text.h"
 #include "prepscreen.h"
 
-void func_fe6_08082320(struct PrepSubItemfxProc *proc, int a, int b, int c, int d, int e, int f)
+void UpdatePrepMenuScrollBar(struct PrepSubItemfxProc *proc, int a, int b, int c, int d, int e, int f)
 {
 	proc->unk_2A[0] = a;
 	proc->unk_2A[1] = b;
