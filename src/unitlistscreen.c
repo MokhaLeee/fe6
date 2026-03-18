@@ -359,7 +359,7 @@ void UnitListScreenSprites_Init(struct UnitListScreenSpritesProc * proc)
     proc->unk_30 = 0;
     proc->unk_34 = StartMenuScrollBar(proc);
 
-    UpdatePrepMenuScrollBar(proc->unk_34, 0xE0, 0x40, 10, proc->main_proc->unk_40, gUnk_0200CD38, 6);
+    SetPrepMenuScrollBarBaseInfo(proc->unk_34, 0xE0, 0x40, 10, proc->main_proc->unk_40, gUnk_0200CD38, 6);
 
     ForceSyncUnitSpriteSheet();
 }
@@ -384,7 +384,7 @@ void UnitListScreenSprites_Main(struct UnitListScreenSpritesProc * proc)
     PutSpriteExt(0x0D, 0x20, 0x08, gUnk_08678818[proc->main_proc->page], OAM2_PAL(9));
     PutSpriteExt(0x0D, 0xA0, 0, Sprite_08678758, OAM2_PAL(9));
 
-    UpdatePrepMenuScrollBar(proc->unk_34, 0xE0, 0x40, 0x0A, proc->main_proc->unk_40, gUnk_0200CD38, 6);
+    SetPrepMenuScrollBarBaseInfo(proc->unk_34, 0xE0, 0x40, 0x0A, proc->main_proc->unk_40, gUnk_0200CD38, 6);
 
     if (proc->main_proc->unk_29 > 2)
     {

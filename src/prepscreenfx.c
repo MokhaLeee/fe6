@@ -231,8 +231,8 @@ void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc)
 		proc->proc_parent->hand_disp_x * 0x70 + 0x10,
 		proc->proc_parent->hand_disp_y * 0x10 + 0x48 - (proc->proc_parent->hand_disp_x * 0x20));
 
-	UpdatePrepMenuScrollBar(
-		proc->proc_parent->unk60,
+	SetPrepMenuScrollBarBaseInfo(
+		proc->proc_parent->proc_menuscroll,
 		0xE0,
 		0x30,
 		0xC,
@@ -299,8 +299,8 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc)
 
 		func_fe6_0807DFEC(proc->proc_parent->convoy_page, proc->timer, proc->obj_offset);
 
-		UpdatePrepMenuScrollBar(
-			proc->proc_parent->unk60,
+		SetPrepMenuScrollBarBaseInfo(
+			proc->proc_parent->proc_menuscroll,
 			0xE0,
 			0x30,
 			0xC,

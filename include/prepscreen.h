@@ -22,14 +22,19 @@ enum prepscreen_text_idx {
 enum prepscreen_videoalloc {
     BGCHR_PREPMENU_230 = 0x230,
     BGCHR_PREPMENU_240 = 0x240,
+    BGCHR_PREPMENU_280 = 0x280,
+    BGCHR_PREPMENU_328 = 0x328,
+    BGCHR_PREPMENU_368 = 0x368,
     BGCHR_PREPMENU_700 = 0x700,
 
     OBCHR_PREPMENU_080 = 0x080,
     OBCHR_PREPMENU_240 = 0x240,
+    OBCHR_PREPMENU_280 = 0x280,
     OBCHR_PREPMENU_380 = 0x380,
     OBCHR_PREPMENU_390 = 0x390,
 
     BGPAL_PREPMENU_2 = 0x02,
+    BGPAL_PREPMENU_3 = 0x03,
     BGPAL_PREPMENU_A = 0x0A,
     BGPAL_PREPMENU_E = 0x0E,
     BGPAL_PREPMENU_F = 0x0F,
@@ -46,6 +51,7 @@ enum prepscreen_videoalloc {
 struct UnkProc_08678E18;
 struct PrepUpperDispProc;
 struct PrepSubItemProc;
+struct MenuScrollBarProc;
 
 struct PrepMenuProc
 {
@@ -75,29 +81,14 @@ struct PrepMenuProc
     /* 40 */ u16 unk_40;
     /* 42 */ u16 scroll_timer;
     /* 44 */ u16 yDiff_cur;
-    /* 46 */ STRUCT_PAD(0x46, 0x48);
+    /* 46 */ u8 unk_46;
+    /* 47 */ u8 unk_47;
     /* 48 */ struct Unit *unit1, *unit2;
     /* 50 */ struct PrepUpperDispProc * disp_proc;
     /* 54 */ STRUCT_PAD(0x54, 0x58);
     /* 58 */ ProcPtr procbg;
     /* 5C */ struct UnkProc_08678E18 * unk_5C;
     /* 60 */ ProcPtr unk_60;
-};
-
-struct PrepSubItemfxProc {
-    PROC_HEADER;
-
-    u8 unk_29;
-    u8 unk_2A[3];
-    u8 unk_2D; // pad
-    u16 unk_2E;
-    u16 unk_30;
-    u16 unk_32;
-    u8 unk_34;
-    u8 unk_35; // pad
-
-    u16 unk_36;
-    u16 unk_38;
 };
 
 enum PREP_SUB2_ACTION_IDX {
@@ -112,41 +103,6 @@ enum PREP_SUB2_ACTION_IDX {
     PREP_SUB2ACT_8,
     PREP_SUB2ACT_9,
     PREP_SUB2ACT_ARMORY,
-};
-
-struct PrepSubItemProc {
-    PROC_HEADER_EXT(struct PrepMenuProc);
-
-    STRUCT_PAD(0x29, 0x2A);
-
-    /* 2A */ u8 unk2A;
-    /* 2B */ u8 in_sel_action_menu;
-    /* 2C */ u8 menu_scrolling_pos;
-    /* 2D */ u8 unk2D;
-    /* 2E */ u8 hand_disp_y;
-    /* 2F */ u8 hand_disp_x;
-    /* 30 */ u8 unk30;
-    /* 31 */ u8 sel_action; /* save/load.. */
-
-    STRUCT_PAD(0x32, 0x45);
-
-    /* 46 */ u8 convoy_scrolling_pos;
-    /* 46 */ u8 convoy_page;
-
-    STRUCT_PAD(0x47, 0x4B);
-
-    /* 4B */ u8 unk4B;
-
-    STRUCT_PAD(0x4C, 0x50);
-
-    /* 50 */ u16 menu_scroll_bar_disp_idx;
-    /* 52 */ u16 timer;
-    /* 54 */ struct Unit *unit;
-
-    STRUCT_PAD(0x58, 0x5C);
-
-    /* 5C */ ProcPtr subproc1;
-    /* 60 */ ProcPtr unk60;
 };
 
 #define SYDIFF(proc) (*((i16 *)&(proc)->yDiff_cur))
@@ -217,6 +173,13 @@ extern u8 gPrepMenuItemCnt;
 extern struct Text gPrepTexts1[10];
 extern struct Text gPrepTexts2[10];
 extern struct Text gPrepTexts3[2];
+
+struct PrepItemlData {
+    u8 unk_00;
+    u8 unk_01;
+    u16 item;
+};
+extern struct PrepItemlData gPrepItemlData[];
 
 void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
@@ -405,7 +368,6 @@ void func_fe6_0807D6C0(int, struct Unit *unit);
 // func_fe6_0807DEC8
 // func_fe6_0807DF60
 void func_fe6_0807DFEC(u8 a, int timer, int obj_off);
-// func_fe6_0807E06C
 
 enum proclabel_prep_subitem_screen {
     PL_PREP_SUBITEM_VIEWALL = 0,
@@ -414,17 +376,60 @@ enum proclabel_prep_subitem_screen {
     PL_PREP_SUBITEM_5 = 5,
 };
 
-void PrepSubItemScreen_Init(struct Proc *proc);
-void PrepSubItem_StartTradeScreen(struct Proc *proc);
+enum {
+    PREP_SUB2U2D_0,
+    PREP_SUB2U2D_1,
+    PREP_SUB2U2D_2,
+    PREP_SUB2U2D_3,
+    PREP_SUB2U2D_4,
+};
+
+struct PrepSubItemProc {
+    PROC_HEADER_EXT(struct PrepMenuProc);
+
+    /* 29 */ u8 unk29;
+    /* 2A */ u8 unk2A;
+    /* 2B */ u8 in_sel_action_menu;
+    /* 2C */ u8 menu_scrolling_pos;
+    /* 2D */ u8 unk2D;
+    /* 2E */ u8 hand_disp_y;
+    /* 2F */ u8 hand_disp_x;
+    /* 30 */ u8 unk30;
+    /* 31 */ u8 sel_action; /* save/load.. */
+    /* 32 */ u8 unk_32[9];
+    /* 3B */ u8 unk_3B[9];
+    /* 44 */ u8 unk_44;
+    /* 45 */ u8 convoy_scrolling_pos;
+    /* 46 */ u8 convoy_page;
+    /* 47 */ u8 unk_47;
+    /* 48 */ u8 unk_48;
+
+    STRUCT_PAD(0x49, 0x4B);
+
+    /* 4B */ u8 unk4B;
+    /* 4C */ u8 unk_4C;
+    /* 4D */ u8 unk_4D;
+    /* 4E */ u16 unk_4E;
+    /* 50 */ u16 menu_scroll_bar_disp_idx;
+    /* 52 */ u16 timer;
+    /* 54 */ struct Unit *unit1;
+    /* 58 */ struct Unit *unit2;
+    /* 5C */ ProcPtr subproc1;
+    /* 60 */ ProcPtr proc_menuscroll;
+};
+
+void func_fe6_0807E06C(bool act);
+void PrepSubItemScreen_Init(struct PrepSubItemProc *proc);
+void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc);
 // func_fe6_0807E544
-void func_fe6_0807E5A8(struct Proc *proc);
-void PrepSubItem_StartViewAllScreen(struct Proc *proc);
-void func_fe6_0807EDBC(struct Proc *proc);
+void PrepSubItem_0807E5A8(struct PrepSubItemProc *proc);
+void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc);
+void func_fe6_0807EDBC(struct PrepSubItemProc *proc);
 // func_fe6_0807FBE8
-void PrepSubItem_StartSupplyScreen(struct Proc *proc);
+void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc);
 void PrepSubItem_SelLoop1(struct PrepSubItemProc *proc);
 void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc);
-void func_fe6_080813E8(struct PrepSubItemProc *proc);
+void PrepSubItem_HandleAction(struct PrepSubItemProc *proc);
 void PrepSubItem_OnEnd(struct PrepSubItemProc *proc);
 void StartPrepSubItemScreen(struct PrepMenuProc *parent, u8 type);
 void StartBmSupply(struct Unit *unit, ProcPtr parent);
@@ -479,7 +484,9 @@ ProcPtr NewPrepDiscardHand(ProcPtr parent);
 struct MenuScrollBarProc {
     PROC_HEADER;
 
-    /* 2A */ u16 xBase;
+    /* 2A */ u8 unk_29;
+    /* 2A */ u8 xBase;
+    /* 2B */ u8 unk_2B;
     /* 2C */ u8 yBase;
     /* 2D */ u8 numSegments;
     /* 2E */ u16 currentSegment;
@@ -495,8 +502,9 @@ struct MenuScrollBarProc {
 void MenuScroll_Init(struct MenuScrollBarProc *proc);
 void MenuScroll_Loop(struct MenuScrollBarProc *proc);
 ProcPtr StartMenuScrollBar(ProcPtr parent);
-void UpdatePrepMenuScrollBar(struct PrepSubItemfxProc *proc, int a, int b, int c, int d, int e, int f);
-void func_fe6_08082348(struct PrepSubItemfxProc *proc, int a, u8 b);
+void SetPrepMenuScrollBarBaseInfo(struct MenuScrollBarProc *proc,
+        int x, int b, int y, int seg, int total, int len);
+void SetPrepMenuScrollBarOam2Info(struct MenuScrollBarProc *proc, int chr, u8 pal);
 void PrepPutText(struct Text *th, u16 *tm, int color, int x, const char *str);
 void func_fe6_080823A0(u8 * a, u16 * b);
 

@@ -4,24 +4,24 @@
 #include "text.h"
 #include "prepscreen.h"
 
-void UpdatePrepMenuScrollBar(struct PrepSubItemfxProc *proc, int a, int b, int c, int d, int e, int f)
+void SetPrepMenuScrollBarBaseInfo(struct MenuScrollBarProc *proc, int a, int b, int c, int d, int e, int f)
 {
-	proc->unk_2A[0] = a;
-	proc->unk_2A[1] = b;
-	proc->unk_2A[2] = c;
+	proc->xBase = a;
+	proc->unk_2B = b;
+	proc->yBase = c;
 
-	proc->unk_2E = d;
-	proc->unk_32 = e;
-	proc->unk_34 = f;
+	proc->currentSegment = d;
+	proc->numTotalRows = e;
+	proc->numVisibleRows = f;
 }
 
-void func_fe6_08082348(struct PrepSubItemfxProc *proc, int a, u8 b)
+void SetPrepMenuScrollBarOam2Info(struct MenuScrollBarProc *proc, int a, u8 b)
 {
 	if (a < 0)
 		a = a + 0x1F;
 
-	proc->unk_36 = a >> 5;
-	proc->unk_38 = b << 12;
+	proc->oam2Chr = a >> 5;
+	proc->oam2Pal = b << 12;
 }
 
 void PrepPutText(struct Text *th, u16 *tm, int color, int x, const char *str)

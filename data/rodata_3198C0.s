@@ -8,16 +8,16 @@ Img_Prep_083198CC: @ 083198CC
 Pal_SpinningArrow: @ 08319E88
 	.incbin "fe6-base.gba", 0x319E88, (0x319EE8 - 0x319E88) @ length: 0060
 
-	.global gUnk_08319EE8
-gUnk_08319EE8: @ 08319EE8
+	.global Img_Prep_08319EE8
+Img_Prep_08319EE8: @ 08319EE8
 	.incbin "fe6-base.gba", 0x319EE8, (0x31A088 - 0x319EE8) @ length: 01A0
 
-	.global gUnk_0831A088
-gUnk_0831A088: @ 0831A088
+	.global Img_Prep_0831A088
+Img_Prep_0831A088: @ 0831A088
 	.incbin "fe6-base.gba", 0x31A088, (0x31A248 - 0x31A088) @ length: 01C0
 
-	.global gUnk_0831A248
-gUnk_0831A248: @ 0831A248
+	.global Pal_Prep_0831A248
+Pal_Prep_0831A248: @ 0831A248
 	.incbin "fe6-base.gba", 0x31A248, (0x31A268 - 0x31A248) @ length: 0020
 
 	.global gUnk_0831A268
