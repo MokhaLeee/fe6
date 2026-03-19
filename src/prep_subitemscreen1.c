@@ -13,7 +13,9 @@
 #include "armfunc.h"
 #include "helpbox.h"
 #include "prepscreen.h"
+
 #include "constants/videoalloc_global.h"
+#include "constants/msg.h"
 
 void func_fe6_0807E06C(bool act)
 {
@@ -94,8 +96,8 @@ void PrepSubItemScreen_Init(struct PrepSubItemProc *proc)
 		Decompress(Img_Prep_0831AB1C, OBJ_VRAM0 + 0x1000);
 		Decompress(Img_Prep_083198CC, OBJ_VRAM0 + OBCHR_PREPMENU_390 * CHR_SIZE);
 
-		proc->unit1 = proc->proc_parent->unit1;
-		proc->unit2 = proc->proc_parent->unit2;
+		proc->units[0] = proc->proc_parent->unit1;
+		proc->units[1] = proc->proc_parent->unit2;
 
 		SetPrepMenuScrollBarOam2Info(proc->proc_menuscroll,
 			OBCHR_PREPMENU_390 * CHR_SIZE, OBPAL_PREPMENU_2);
@@ -121,11 +123,11 @@ void PrepSubItemScreen_Init(struct PrepSubItemProc *proc)
 
 		ClearText(text);
 		Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
-		Text_SetCursor(text, (0x30 - GetStringTextLen(DecodeMsg(proc->unit1->pinfo->msg_name))) / 2);
-		Text_DrawString(text, DecodeMsg(proc->unit1->pinfo->msg_name));
+		Text_SetCursor(text, (0x30 - GetStringTextLen(DecodeMsg(proc->units[0]->pinfo->msg_name))) / 2);
+		Text_DrawString(text, DecodeMsg(proc->units[0]->pinfo->msg_name));
 		PutText(text, gBg0Tm);
-		func_fe6_0807D6C0(0, proc->unit1);
-		StartFace(0, GetUnitFid(proc->unit1), 0x40, -4, FACE_DISP_KIND(FACE_96x80_FLIPPED));
+		func_fe6_0807D6C0(0, proc->units[0]);
+		StartFace(0, GetUnitFid(proc->units[0]), 0x40, -4, FACE_DISP_KIND(FACE_96x80_FLIPPED));
 	}
 
 	SetBgOffset(BG_0, 0, 0);
@@ -155,14 +157,14 @@ void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc)
 
 	ClearText(text);
 	Text_SetColor(text, TEXT_COLOR_SYSTEM_WHITE);
-	Text_SetCursor(text, (0x28 - GetStringTextLen(DecodeMsg(proc->unit2->pinfo->msg_name))) / 2);
-	Text_DrawString(text, DecodeMsg(proc->unit2->pinfo->msg_name));
+	Text_SetCursor(text, (0x28 - GetStringTextLen(DecodeMsg(proc->units[1]->pinfo->msg_name))) / 2);
+	Text_DrawString(text, DecodeMsg(proc->units[1]->pinfo->msg_name));
 	PutText(text, gBg0Tm + TM_OFFSET(0x18, 0));
-	func_fe6_0807D6C0(POS_R, proc->unit2);
-	StartFace(1, GetUnitFid(proc->unit2), 0xAC, -4, FACE_DISP_KIND(FACE_96x80));
+	func_fe6_0807D6C0(POS_R, proc->units[1]);
+	StartFace(1, GetUnitFid(proc->units[1]), 0xAC, -4, FACE_DISP_KIND(FACE_96x80));
 
 	if (proc->unk2D != 3) {
-		if (GetUnitItemCount(proc->unit1) == 0)
+		if (GetUnitItemCount(proc->units[0]) == 0)
 			proc->hand_disp_x = POS_R;
 		else
 			proc->hand_disp_x = POS_L;
@@ -192,8 +194,8 @@ void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc)
 
 void func_fe6_0807E544(struct PrepSubItemProc *proc)
 {
-	proc->unk_3B[0] = GetUnitItemCount(proc->unit1);
-	proc->unk_3B[1] = GetUnitItemCount(proc->unit2);
+	proc->unk_3B[0] = GetUnitItemCount(proc->units[0]);
+	proc->unk_3B[1] = GetUnitItemCount(proc->units[1]);
 
 	if (proc->unk30 == 1)
 		if (proc->unk29 == 0)
@@ -206,9 +208,13 @@ void func_fe6_0807E544(struct PrepSubItemProc *proc)
 				proc->unk_3B[1]++;
 }
 
+/* https://decomp.me/scratch/dzJUy */
 #if 0
 void PrepSubItem_0807E5A8(struct PrepSubItemProc *proc)
 {
+	int pre_sel_y = proc->hand_disp_y;
+	int pre_sel_x = proc->hand_disp_x;
+
 	func_fe6_0807E544(proc);
 
 	if (proc->unk29 == 2 && (gKeySt->pressed & (KEY_BUTTON_A | KEY_BUTTON_R))) {
@@ -280,12 +286,11 @@ void PrepSubItem_0807E5A8(struct PrepSubItemProc *proc)
 			proc->hand_disp_y * 2 + 9,
 			0xC);
 
-		if (proc->hand_disp_y != 0) {
-			proc->hand_disp_y--;
+		if (proc->hand_disp_y < (proc->unk_3B[proc->hand_disp_x] - 1)) {
+			proc->hand_disp_y++;
 			PlaySe(0x66);
-		} else if (gKeySt->pressed & KEY_DPAD_UP) {
-			// First pressed, report warnning
-			proc->hand_disp_y = proc->unk_3B[proc->hand_disp_x] - 1;
+		} else if (gKeySt->pressed & KEY_DPAD_DOWN) {
+			proc->hand_disp_y = 0;
 			PlaySe(0x66);
 		}
 
@@ -293,6 +298,115 @@ void PrepSubItem_0807E5A8(struct PrepSubItemProc *proc)
 			proc->hand_disp_x * 14 + 2,
 			proc->hand_disp_y * 2 + 9,
 			0xC);
+	} else if ((gKeySt->repeated & KEY_BUTTON_A) && (proc->unk29 == 0)) {
+		PlaySe(0x6A);
+
+		if (proc->unk30 == 0xFF) {
+			proc->unk30 = proc->hand_disp_x;
+			proc->sel_action = proc->hand_disp_y;
+
+			RemoveUiEntryHover(
+				proc->hand_disp_x * 14 + 2,
+				proc->hand_disp_y * 2 + 9,
+				0xC);
+
+			proc->hand_disp_x = (proc->hand_disp_x + 1) & 1;
+
+			if (GetUnitItemCount(proc->units[proc->hand_disp_x] < 5))
+				proc->hand_disp_y = proc->unk_3B[proc->hand_disp_x];
+
+			PutUiEntryHover(
+				proc->hand_disp_x * 14 + 2,
+				proc->hand_disp_y * 2 + 9,
+				0xC);
+		} else {
+			if ((proc->unk_4C != 0) && CheckValidLinkArenaItemSwap(
+					proc->units[proc->unk30], proc->sel_action,
+					proc->units[proc->hand_disp_x], proc->hand_disp_y)) {
+
+					StartPrepErrorHelpbox(
+						proc->hand_disp_x * 0x70 + 0x10,
+						proc->hand_disp_y * 0x10 + 0x48,
+						MSG_6C2, proc);
+			} else {
+				int tmp = proc->units[proc->unk30]->items[proc->sel_action];
+
+				proc->units[proc->unk30]->items[proc->sel_action] =
+					proc->units[proc->hand_disp_x]->items[proc->hand_disp_y];
+
+				proc->units[proc->hand_disp_x]->items[proc->hand_disp_y] = tmp;
+
+				RemoveUiEntryHover(
+					proc->hand_disp_x * 14 + 2,
+					proc->hand_disp_y * 2 + 9,
+					0xC);
+
+				UnitRemoveInvalidItems(proc->units[0]);
+				UnitRemoveInvalidItems(proc->units[1]);
+
+				func_fe6_0807D6C0(0, proc->units[0]);
+				func_fe6_0807D6C0(0, proc->units[1]);
+
+				if (proc->units[proc->unk30]->items[proc->sel_action]) {
+					proc->hand_disp_x = proc->sel_action;
+					proc->hand_disp_y = proc->unk30;
+				} else if (GetUnitItemCount(proc->units[proc->unk30]) > 0) {
+					proc->hand_disp_x = proc->unk30;
+					proc->hand_disp_y = proc->sel_action;
+				} else {
+					proc->hand_disp_y = 0;
+				}
+
+				proc->unk30 = 0xFF;
+
+				PutUiEntryHover(
+					proc->hand_disp_x * 14 + 2,
+					proc->hand_disp_y * 2 + 9,
+					0xC);
+			}
+		}
+	} else if ((gKeySt->repeated & KEY_BUTTON_B)) {
+		PlaySe(0x6B);
+
+		if (proc->unk30 == 0xFF) {
+			if (proc->unk2A == 0)
+				Proc_Goto(proc, PL_PREP_SUBITEM_7);
+			else {
+				NewSallyCir2(proc, 1);
+				Proc_Goto(proc, PL_PREP_SUBITEM_6);
+			}
+		} else {
+			RemoveUiEntryHover(
+				proc->hand_disp_x * 14 + 2,
+				proc->hand_disp_y * 2 + 9,
+				0xC);
+
+			proc->hand_disp_x = proc->unk30;
+			proc->hand_disp_y = proc->sel_action;
+			proc->unk30 = 0xFF;
+
+			PutUiEntryHover(
+				proc->hand_disp_x * 14 + 2,
+				proc->hand_disp_y * 2 + 9,
+				0xC);
+		}
+	} else if ((gKeySt->repeated & KEY_BUTTON_R) && (proc->unk29 == 0)) {
+		if (proc->units[proc->hand_disp_x]->items[proc->hand_disp_y]) {
+			proc->unk29 = 2;
+			StartItemHelpBox(
+				proc->hand_disp_x * 0x70 + 0x10,
+				proc->hand_disp_y * 0x10 + 0x48,
+				proc->units[proc->hand_disp_x]->items[proc->hand_disp_y]);
+		}
+	}
+
+	if (proc->unk29 == 2) {
+		if ((proc->hand_disp_y != pre_sel_y) || (proc->hand_disp_x != pre_sel_x)) {
+			StartItemHelpBox(
+				proc->hand_disp_x * 0x70 + 0x10,
+				proc->hand_disp_y * 0x10 + 0x48,
+				proc->units[proc->hand_disp_x]->items[proc->hand_disp_y]);
+		}
 	}
 }
 #endif
