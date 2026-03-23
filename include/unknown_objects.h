@@ -122,15 +122,15 @@ extern u8 const gUnk_08309408[]; // compressed tsa
 extern u8 const gUnk_0833C6F4[]; // tsa
 extern u8 const gUnk_0833C8D8[]; // tsa
 
-// extern ??? gUnk_083198CC
+extern u8 const Img_Prep_083198CC[]; // img
 extern u16 const Pal_SpinningArrow[];
-// extern ??? gUnk_08319EE8
-// extern ??? gUnk_0831A088
-// extern ??? gUnk_0831A248
+extern u8 const Img_Prep_08319EE8[];
+extern u8 const Img_Prep_0831A088[];
+extern u16 const Pal_Prep_0831A248[];
 // extern ??? gUnk_0831A268
-// extern ??? Pal_Sio_0831AABC
+extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
 extern u16 const Pal_0831AAFC[];
-// extern ??? gUnk_0831AB1C
+extern u8 const Img_Prep_0831AB1C[]; // img
 // extern ??? gUnk_0831B068
 extern u8 const Img_MonologueBG[];
 extern u8 const Tsa_MonologueBG[];

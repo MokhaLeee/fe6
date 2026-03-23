@@ -56,6 +56,42 @@ void EndEkrLevelUp(void)
     Proc_End(gpProcEkrLevelup);
 }
 
+const char EkrLvupMsgsStr[8][5] = {
+    TEXT("ＨＰ", "hp"),
+    TEXT("力",   "str"),
+    TEXT("技",   "skl"),
+    TEXT("速さ", "spd"),
+    TEXT("幸運", "lck"),
+    TEXT("守備", "def"),
+    TEXT("魔防", "res"),
+    TEXT("体格", "con")
+};
+
+const char EkrLvupMsgsMag[8][5] = {
+    TEXT("ＨＰ", "hp"),
+    TEXT("魔力",  "str"),
+    TEXT("技",   "skl"),
+    TEXT("速さ", "spd"),
+    TEXT("幸運", "lck"),
+    TEXT("守備", "def"),
+    TEXT("魔防", "res"),
+    TEXT("体格", "con")
+};
+
+const u16 sEfxLvupPartsPos[] = {
+    TM_OFFSET(2, 11),
+    TM_OFFSET(2, 13),
+    TM_OFFSET(2, 15),
+    TM_OFFSET(2, 17),
+
+    TM_OFFSET(10, 11),
+    TM_OFFSET(10, 13),
+    TM_OFFSET(10, 15),
+    TM_OFFSET(10, 17),
+};
+
+const char gMsg_Lv[] = TEXT("ＬＶ", "LV");
+
 void EkrLvup_InitStatusText(struct ProcEkrlvup *proc)
 {
     int i;

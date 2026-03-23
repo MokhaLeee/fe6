@@ -1406,7 +1406,7 @@ fu8 UnitActionMenu_Supply_Select(struct MenuProc * menu, struct MenuEntProc * en
 {
     gAction.id = ACTION_TRADED_NOCHANGES;
 
-    func_fe6_080815E4(gActiveUnit, NULL);
+    StartBmSupply(gActiveUnit, NULL);
 
     return MENU_ACTION_NOCURSOR | MENU_ACTION_END | MENU_ACTION_SE_6A | MENU_ACTION_CLEAR;
 }

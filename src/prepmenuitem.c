@@ -60,13 +60,13 @@ void func_fe6_0807C520(int a, int b)
 
 void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         proc->a_button_actions |= 1;
         Proc_Goto(proc, 9);
         PlaySe(SONG_6A);
     }
-    else if (proc->unk_29 == 1)
+    else if (proc->sel_unit == 1)
     {
         int cur_counter = proc->cur_counter;
 
@@ -139,18 +139,18 @@ void PrepScreenMenu_OnPickUnits(struct PrepMenuProc * proc)
 
 void PrepScreenMenu_OnItems(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         Proc_Goto(proc, 0x9);
         PlaySe(SONG_6A);
     }
-    else if (proc->unk_29 == 1)
+    else if (proc->sel_unit == 1)
     {
         proc->unk_31 = proc->list_num_cur;
         proc->unk_32 = proc->list_num_cur;
         proc->unk_40 = proc->yDiff_cur;
         proc->unk_37 = proc->hand_y_pos;
-        proc->unk_29 = 0;
+        proc->sel_unit = 0;
         proc->submenu_level = 1;
         PlaySe(SONG_6A);
         func_fe6_08079A94(proc);
@@ -184,13 +184,13 @@ void func_fe6_0807C840(struct PrepMenuProc * proc)
 
 void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         if (proc->unk_2D != 1)
         {
             func_fe6_0807B8B0(proc->disp_proc, 5);
             proc->list_num_cur = proc->unk_32;
-            proc->unk_29 = 1;
+            proc->sel_unit = 1;
             func_fe6_0807C840(proc);
             func_fe6_08079D84(proc);
             func_fe6_080798EC(proc);
@@ -202,7 +202,7 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
             return;
         }
     }
-    else if (proc->unk_29 == 1)
+    else if (proc->sel_unit == 1)
     {
         if (proc->list_num_cur == proc->unk_31 || (GetUnitItemCount(GetUnitFromPrepList(proc->list_num_cur)) + GetUnitItemCount(GetUnitFromPrepList(proc->unk_31))) == 0)
         {
@@ -222,7 +222,7 @@ void PrepScreenSubMenu_OnTrade(struct PrepMenuProc * proc)
 
 void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         if (GetUnitItemCount(GetUnitFromPrepList(proc->list_num_cur)) == 0)
         {
@@ -241,7 +241,7 @@ void PrepScreenSubMenu_OnDiscard(struct PrepMenuProc * proc)
 
 void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
         NewSallyCir2(proc, 1);
@@ -253,7 +253,7 @@ void PrepScreenSubMenu_Convoy(struct PrepMenuProc * proc)
 
 void PrepScreenSubMenu_AllItems(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         proc->unit1 = GetUnitFromPrepList(proc->list_num_cur);
         NewSallyCir2(proc, 1);
@@ -265,7 +265,7 @@ void PrepScreenSubMenu_AllItems(struct PrepMenuProc * proc)
 
 void PrepScreenSubMenu_Shop(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
         proc->sub2_action = 10;
@@ -275,7 +275,7 @@ void PrepScreenSubMenu_Shop(struct PrepMenuProc * proc)
 
 void func_fe6_0807CAD4(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         proc->submenu_level = 2;
         PlaySe(SONG_6A);
@@ -285,7 +285,7 @@ void func_fe6_0807CAD4(struct PrepMenuProc * proc)
 
 void PrepScreenMenu_Augury(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
         proc->sub2_action = 8;
@@ -295,7 +295,7 @@ void PrepScreenMenu_Augury(struct PrepMenuProc * proc)
 
 void func_fe6_0807CB40(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
         proc->sub2_action = 9;
@@ -305,7 +305,7 @@ void func_fe6_0807CB40(struct PrepMenuProc * proc)
 
 void PrepScreenMenu_OnSave(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         PlaySe(SONG_6A);
         proc->sub2_action = 7;
@@ -315,7 +315,7 @@ void PrepScreenMenu_OnSave(struct PrepMenuProc * proc)
 
 void PrepScreenMenu_OnCheckMap(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         Proc_Goto(proc, 0x6);
         PlaySe(SONG_6A);
@@ -324,7 +324,7 @@ void PrepScreenMenu_OnCheckMap(struct PrepMenuProc * proc)
 
 void PrepScreenSubMenu_StartBattle(struct PrepMenuProc * proc)
 {
-    if (proc->unk_29 == 0)
+    if (proc->sel_unit == 0)
     {
         if (proc->cur_counter != 0)
         {

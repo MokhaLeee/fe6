@@ -158,7 +158,7 @@ struct ProcScr CONST_DATA ProcScr_ReturnFromStatScreen[] =
 
 static int DiscardItem_StartItemSelect(ProcPtr proc);
 static int DiscardItem_PostItemSelect(ProcPtr proc);
-static int DiscardItem_0801C58C(ProcPtr proc);
+static int DiscardItem_SendToConvoy(ProcPtr proc);
 static int DiscardItem_0801C59C(ProcPtr proc);
 
 struct ProcScr CONST_DATA ProcScr_DiscardItem[] =
@@ -167,7 +167,7 @@ struct ProcScr CONST_DATA ProcScr_DiscardItem[] =
     PROC_CALL_2(DiscardItem_PostItemSelect),
     PROC_SLEEP(1),
 
-    PROC_CALL_2(DiscardItem_0801C58C),
+    PROC_CALL_2(DiscardItem_SendToConvoy),
     PROC_CALL_2(DiscardItem_0801C59C),
 
 PROC_LABEL(99),
@@ -785,9 +785,9 @@ static int DiscardItem_PostItemSelect(ProcPtr proc)
     return FALSE;
 }
 
-static int DiscardItem_0801C58C(ProcPtr proc)
+static int DiscardItem_SendToConvoy(ProcPtr proc)
 {
-    func_fe6_08081620(NULL, proc);
+    StartBmSupplyForDrop(NULL, proc);
     return FALSE;
 }
 

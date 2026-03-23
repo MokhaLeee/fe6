@@ -1,29 +1,5 @@
 	.section .rodata
 
-	.global EkrLvupMsgsStr
-EkrLvupMsgsStr: @ 081C9FEC
-	.incbin "fe6-base.gba", 0x1C9FEC, (0x1CA014 - 0x1C9FEC) @ length: 0028
-
-	.global EkrLvupMsgsMag
-EkrLvupMsgsMag: @ 081CA014
-	.incbin "fe6-base.gba", 0x1CA014, (0x1CA03C - 0x1CA014) @ length: 0028
-
-	.global sEfxLvupPartsPos
-sEfxLvupPartsPos: @ 081CA03C
-	.incbin "fe6-base.gba", 0x1CA03C, (0x1CA04C - 0x1CA03C) @ length: 0010
-
-	.global gMsg_Lv
-gMsg_Lv: @ 081CA04C
-	.incbin "fe6-base.gba", 0x1CA04C, (0x1CA054 - 0x1CA04C) @ length: 0008
-
-	.global FrameArray_EkrTriPegagusBGLeft
-FrameArray_EkrTriPegagusBGLeft: @ 081CA054
-	.incbin "fe6-base.gba", 0x1CA054, (0x1CA062 - 0x1CA054) @ length: 000E
-
-	.global FrameArray_EkrTriPegagusBGRight
-FrameArray_EkrTriPegagusBGRight: @ 081CA062
-	.incbin "fe6-base.gba", 0x1CA062, (0x1CA070 - 0x1CA062) @ length: 000E
-
 	.global Img_TriPegasusKnightBG
 Img_TriPegasusKnightBG: @ 081CA070
 	.incbin "fe6-base.gba", 0x1CA070, (0x1CAA14 - 0x1CA070) @ length: 09A4
@@ -34,7 +10,31 @@ Img_TriFalconKnightLanceBG: @ 081CAA14
 
 	.global Img_TriFalconKnightSwordBG
 Img_TriFalconKnightSwordBG: @ 081CB404
-	.incbin "fe6-base.gba", 0x1CB404, (0x1CC428 - 0x1CB404) @ length: 1024
+	.incbin "fe6-base.gba", 0x1CB404, (0x1CBE04 - 0x1CB404) @ length: 1024
+
+	.global EkrTriPegagus_081CBE04
+EkrTriPegagus_081CBE04:	@ 0x1CBE04
+	.incbin "fe6-base.gba", 0x1CBE04, 0x1CBF18 - 0x1CBE04
+
+	.global EkrTriPegagus_081CBF18
+EkrTriPegagus_081CBF18:	@ 0x1CBF18
+	.incbin "fe6-base.gba", 0x1CBF18, 0x1CC03C - 0x1CBF18
+
+	.global EkrTriPegagus_081CC03C
+EkrTriPegagus_081CC03C:	@ 0x1CC03C
+	.incbin "fe6-base.gba", 0x1CC03C, 0x1CC114 - 0x1CC03C
+
+	.global EkrTriPegagus_081CC114
+EkrTriPegagus_081CC114:	@ 0x1CC114
+	.incbin "fe6-base.gba", 0x1CC114, 0x1CC230 - 0x1CC114
+
+	.global EkrTriPegagus_081CC230
+EkrTriPegagus_081CC230:	@ 0x1CC230
+	.incbin "fe6-base.gba", 0x1CC230, 0x1CC354 - 0x1CC230
+
+	.global EkrTriPegagus_081CC354
+EkrTriPegagus_081CC354:	@ 0x1CC354
+	.incbin "fe6-base.gba", 0x1CC354, 0x1CC428 - 0x1CC354
 
 	.global Img_TriPegasusKnightOBJ
 Img_TriPegasusKnightOBJ: @ 081CC428

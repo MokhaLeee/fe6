@@ -59,11 +59,11 @@ void PrepDiscardHand_Loop(struct ProcPrepDiscardHand *proc)
 
 	PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, OAM2_CHR(OBCHR_PREPMENU_390));
 
-	if (proc->proc_parent->in_arena == true) {
-		PutUiHand(proc->proc_parent->x * 0x20 + 0x9C, 0x40);
-		PutFrozenUiHand(0x10, proc->proc_parent->y * 0x10 + 0x48);
+	if (proc->proc_parent->sub_sel == true) {
+		PutUiHand(proc->proc_parent->sel_yes * 0x20 + 0x9C, 0x40);
+		PutFrozenUiHand(0x10, proc->proc_parent->sel_slot * 0x10 + 0x48);
 	} else {
-		PutUiHand(0x10, proc->proc_parent->y * 0x10 + 0x48);
+		PutUiHand(0x10, proc->proc_parent->sel_slot * 0x10 + 0x48);
 	}
 
 	proc->timer++;

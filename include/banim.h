@@ -127,6 +127,20 @@ struct ProcEfx {
     ProcPtr unk_64;
 };
 
+struct ProcEfx2 {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+    /* 2E */ s16 terminator;
+
+    STRUCT_PAD(0x30, 0x5C);
+
+    /* 5C */ struct Anim *anim;
+    /* 60 */ ProcPtr procfx;
+};
+
 struct ProcEfxBG {
     PROC_HEADER;
 
@@ -1637,7 +1651,7 @@ void NewEfxopLiveBG(struct Anim *anim, struct ProcEfx *proc);
 void EfxopLiveBG_Loop(struct ProcEfxBG *proc);
 void NewEfxopLiveBGCOL(struct Anim *anim, struct ProcEfx *proc);
 void EfxopLiveBGCOL_Loop(struct ProcEfxBGCOL *proc);
-void NewEfxopLiveALPHA(struct Anim * anim,
+void NewEfxopLiveALPHA(struct Anim *anim,
     int timer, int delay, int type, struct ProcEfx *unused);
 void EfxopLiveALPHA_Loop1(struct ProcEfxALPHA *proc);
 void EfxopLiveALPHA_Loop2(struct ProcEfxALPHA *proc);
@@ -1844,8 +1858,8 @@ extern u16 gEkrLvupScrollPos2;
 extern int gEkrLvupApfxUnexist;
 
 extern const u16 sEfxLvupPartsPos[];
-extern CONST_DATA char EkrLvupMsgsStr[][5];
-extern CONST_DATA char EkrLvupMsgsMag[][5];
+extern const char EkrLvupMsgsStr[][5];
+extern const char EkrLvupMsgsMag[][5];
 
 bool CheckEkrLvupDone(void);
 void EndEkrLevelUp(void);
@@ -1916,21 +1930,21 @@ bool CheckEkrTriangleInvalid(void);
 void DebugEkrTriangleMsg(void);
 void NewEkrTriangle(struct BaSprite *anim);
 void EkrTriangle_Loop(struct ProcEfx *proc);
-ProcPtr NewEkrTriPegasusKnight(struct Anim * anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
-// EkrTriPegasusKnight_Loop
-// NewEkrTriPegasusKnightBG
-// EfxTriPegasusKnightBG_Loop
-// NewEkrTriPegasusKnightOBJ
-// EkrTriPegasusKnightOBJ_Loop
-ProcPtr NewEkrTriArmorKnight(struct Anim * anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
-// EkrTriArmorKnight_Loop
-ProcPtr NewEkrTriArmorKnightOBJ(struct Anim * anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
-// EkrTriArmorKnightOBJ_Loop
-// NewEkrTriArmorKnightOBJ2
-// EkrTriArmorKnightOBJ2_Loop1
-// EkrTriArmorKnightOBJ2_Loop2
-// NewEfxTriangleQUAKE
-// EfxTriangleQUAKE_Loop
+ProcPtr NewEkrTriPegasusKnight(struct Anim *anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
+void EkrTriPegasusKnight_Loop(struct ProcEkrTriClass *proc);
+void NewEkrTriPegasusKnightBG(struct Anim *anim, u32 pos, u32 etype, u32 ewtype);
+void EfxTriPegasusKnightBG_Loop(struct ProcEfxBG *proc);
+void NewEkrTriPegasusKnightOBJ(struct Anim *anim, u32 pos, u32 etype, u32 ewtype);
+void EkrTriPegasusKnightOBJ_Loop(struct ProcEfxOBJ *proc);
+ProcPtr NewEkrTriArmorKnight(struct Anim *anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
+void EkrTriArmorKnight_Loop(struct ProcEkrTriClass *proc);
+void NewEkrTriArmorKnightOBJ(struct Anim *anim, u32 etype1, u32 etype2, u32 ewtype1, u32 ewtype2);
+void EkrTriArmorKnightOBJ_Loop(struct ProcEfxOBJ *proc);
+void NewEkrTriArmorKnightOBJ2(struct Anim *anim, u32 pos, u32 etype, u32 ewtype);
+void EkrTriArmorKnightOBJ2_Loop1(struct ProcEfxOBJ *proc);
+void EkrTriArmorKnightOBJ2_Loop2(struct ProcEfxOBJ *proc);
+void NewEfxTriangleQUAKE(struct Anim *anim, int duration);
+void EfxTriangleQUAKE_Loop(struct ProcEfx2 *proc);
 
 extern CONST_DATA u16 *gBattleBGDataTable[];
 
@@ -2542,7 +2556,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrLevelup[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriangle[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriPegasusKnight[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriPegasusKnightBG[];
-extern CONST_DATA const u16 *TsaArray_EkrTriPegagusBG[];
+extern CONST_DATA u16 *TsaArray_EkrTriPegagusBG[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriPegasusKnightOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriArmorKnight[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriArmorKnightOBJ[];
@@ -3627,6 +3641,12 @@ extern const i16 FrameArray_EkrTriPegagusBGRight[];
 extern const u16 Img_TriPegasusKnightBG[];
 extern const u16 Img_TriFalconKnightLanceBG[];
 extern const u16 Img_TriFalconKnightSwordBG[];
+extern u16 EkrTriPegagus_081CBE04[];
+extern u16 EkrTriPegagus_081CBF18[];
+extern u16 EkrTriPegagus_081CC03C[];
+extern u16 EkrTriPegagus_081CC114[];
+extern u16 EkrTriPegagus_081CC230[];
+extern u16 EkrTriPegagus_081CC354[];
 extern const u16 Img_TriPegasusKnightOBJ[];
 extern const u16 Img_TriFalconKnightLanceOBJ[];
 extern const u16 Img_TriFalconKnightSwordOBJ[];

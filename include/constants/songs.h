@@ -136,6 +136,7 @@ enum
     SONG_D6 = 0xD6,
     SONG_D8 = 0xD8, // crit?
     SONG_E1 = 0xE1, // efx dancer
+    SONG_E2 = 0xE2, // ekrtriangle armor knight
     SONG_EC = 0xEC, // no damage
     SONG_EE = 0xEE, // efx singer
     SONG_EF = 0xEF, // efx song
@@ -225,6 +226,7 @@ enum
     SONG_145 = 0x145,
     SONG_146 = 0x146,
     SONG_147 = 0x147,
+    SONG_268 = 0x268,
     SONG_269 = 0x269,
     SONG_26A = 0x26A,
 };
