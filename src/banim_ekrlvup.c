@@ -210,3 +210,50 @@ void EkrLvup_InitStatusText(struct ProcEkrlvup *proc)
     Text_DrawNumber(th, gEkrLvupPreLevel);
     PutText(th, gBg2Tm + TM_OFFSET(13, 7));
 }
+
+void Ekrlvup_PutBaseStatus(struct ProcEkrlvup *proc, int index)
+{
+    struct Text *text = &gBanimText[EKRLVUP_STAT_CLASS + index];
+
+    ClearText(text);
+    Text_SetCursor(text, 8);
+    Text_SetColor(text, TEXT_COLOR_SYSTEM_BLUE);
+    Text_DrawNumber(text, gEkrLvupBaseStatus[index]);
+    PutText(text, gBg2Tm + TM_OFFSET(3, 0) + sEfxLvupPartsPos[index]);
+}
+
+void Ekrlvup_PutJobname(struct ProcEkrlvup *proc)
+{
+    struct Text *text = &gBanimText[EKRLVUP_TEXT_16];
+
+    ClearText(text);
+    Text_DrawString(text, DecodeMsg(gpEkrLvupUnit->jinfo->msg_name));
+    PutText(text, gBg2Tm + TM_OFFSET(2, 7));
+}
+
+void Ekrlvup_PutPreLevel(struct ProcEkrlvup *proc)
+{
+    struct Text *text = &gBanimText[EKRLVUP_TEXT_18];
+
+    ClearText(text);
+    Text_SetCursor(text, 8);
+    Text_SetColor(text, TEXT_COLOR_SYSTEM_BLUE);
+    Text_DrawNumber(text, gEkrLvupPreLevel);
+    PutText(text, gBg2Tm + TM_OFFSET(13, 7));
+}
+
+void NewEkrLevelup(struct Anim *anim)
+{
+    struct ProcEkrlvup *proc;
+
+    gpProcEkrLevelup = proc = SpawnProc(ProcScr_EkrLevelup, PROC_TREE_3);
+    proc->anim_this = anim;
+    proc->anim_other = GetAnimAnotherSide(anim);
+    proc->timer = 0;
+    proc->finished = false;
+
+    if (gEkrDistanceType != EKR_DISTANCE_PROMOTION)
+        proc->is_promotion = false;
+    else
+        proc->is_promotion = true;
+}

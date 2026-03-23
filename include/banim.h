@@ -1826,7 +1826,10 @@ enum ekr_lvup_status_index {
 
     EKRLVUP_STAT_PNAME = EKRLVUP_STAT_MAX,
     EKRLVUP_STAT_LVPRE_MSG,
-    EKRLVUP_STAT_LVPRE_VAL
+    EKRLVUP_STAT_LVPRE_VAL,
+
+    EKRLVUP_TEXT_16 = 0x10,
+    EKRLVUP_TEXT_18 = 0x12,
 };
 
 struct ProcEkrlvup {
@@ -1864,9 +1867,9 @@ extern const char EkrLvupMsgsMag[][5];
 bool CheckEkrLvupDone(void);
 void EndEkrLevelUp(void);
 // EkrLvup_InitStatusText
-// func_fe6_0805D4E0
-// func_fe6_0805D538
-// func_fe6_0805D570
+// Ekrlvup_PutBaseStatus
+// Ekrlvup_PutJobname
+// Ekrlvup_PutPreLevel
 void NewEkrLevelup(struct BaSprite *anim);
 void EkrLvup_Init(struct ProcEkrlvup *proc);
 void EkrLvup_InitLevelUpBox(struct ProcEkrlvup *proc);
@@ -2548,7 +2551,7 @@ extern CONST_DATA struct ProcScr ProcScr_EfxBlackInOutUnit[];
 extern CONST_DATA struct ProcScr ProcScr_EfxClasschgRST[];
 extern CONST_DATA struct FaceVramEnt FaceConfig_EkrLevelup[];
 extern CONST_DATA struct ProcScr ProcScr_EkrLevelup[];
-// ??? gUnk_08606254
+// ??? ProcScr_Ekrlvup_08606254
 // ??? gUnk_0860626C
 // ??? gUnk_0860628C
 // ??? gUnk_086062AC

@@ -4,8 +4,8 @@
 
 	.section .data
 
-	.global gUnk_08606254
-gUnk_08606254: @ 08606254
+	.global ProcScr_Ekrlvup_08606254
+ProcScr_Ekrlvup_08606254: @ 08606254
 	.incbin "fe6-base.gba", 0x606254, (0x60626C - 0x606254) @ length: 0018
 
 	.global gUnk_0860626C
@@ -25,139 +25,6 @@ gUnk_086062EC: @ 086062EC
 	.incbin "fe6-base.gba", 0x6062EC, (0x606314 - 0x6062EC) @ length: 0028
 
 	.section .text
-
-	thumb_func_start func_fe6_0805D4E0
-func_fe6_0805D4E0: @ 0x0805D4E0
-	push {r4, r5, lr}
-	adds r4, r1, #0
-	lsls r5, r4, #3
-	ldr r0, .L0805D528 @ =gBanimText + 0x40
-	adds r5, r5, r0
-	adds r0, r5, #0
-	bl ClearText
-	adds r0, r5, #0
-	movs r1, #8
-	bl Text_SetCursor
-	adds r0, r5, #0
-	movs r1, #2
-	bl Text_SetColor
-	ldr r0, .L0805D52C @ =gEkrLvupBaseStatus
-	lsls r4, r4, #1
-	adds r0, r4, r0
-	ldrh r1, [r0]
-	adds r0, r5, #0
-	bl Text_DrawNumber
-	ldr r0, .L0805D530 @ =sEfxLvupPartsPos
-	adds r4, r4, r0
-	ldrh r4, [r4]
-	lsls r1, r4, #1
-	ldr r0, .L0805D534 @ =gBg2Tm+0x6
-	adds r1, r1, r0
-	adds r0, r5, #0
-	bl PutText
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805D528: .4byte gBanimText + 0x40
-.L0805D52C: .4byte gEkrLvupBaseStatus
-.L0805D530: .4byte sEfxLvupPartsPos
-.L0805D534: .4byte gBg2Tm+0x6
-
-	thumb_func_start func_fe6_0805D538
-func_fe6_0805D538: @ 0x0805D538
-	push {r4, lr}
-	ldr r4, .L0805D564 @ =gBanimText + 0x80
-	adds r0, r4, #0
-	bl ClearText
-	ldr r0, .L0805D568 @ =gpEkrLvupUnit
-	ldr r0, [r0]
-	ldr r0, [r0, #4]
-	ldrh r0, [r0]
-	bl DecodeMsg
-	adds r1, r0, #0
-	adds r0, r4, #0
-	bl Text_DrawString
-	ldr r1, .L0805D56C @ =gBg2Tm+0x1C4
-	adds r0, r4, #0
-	bl PutText
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805D564: .4byte gBanimText + 0x80
-.L0805D568: .4byte gpEkrLvupUnit
-.L0805D56C: .4byte gBg2Tm+0x1C4
-
-	thumb_func_start func_fe6_0805D570
-func_fe6_0805D570: @ 0x0805D570
-	push {r4, lr}
-	ldr r4, .L0805D5A4 @ =gBanimText + 0x90
-	adds r0, r4, #0
-	bl ClearText
-	adds r0, r4, #0
-	movs r1, #8
-	bl Text_SetCursor
-	adds r0, r4, #0
-	movs r1, #2
-	bl Text_SetColor
-	ldr r0, .L0805D5A8 @ =gEkrLvupPreLevel
-	ldrh r1, [r0]
-	adds r0, r4, #0
-	bl Text_DrawNumber
-	ldr r1, .L0805D5AC @ =gBg2Tm+0x1DA
-	adds r0, r4, #0
-	bl PutText
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805D5A4: .4byte gBanimText + 0x90
-.L0805D5A8: .4byte gEkrLvupPreLevel
-.L0805D5AC: .4byte gBg2Tm+0x1DA
-
-	thumb_func_start NewEkrLevelup
-NewEkrLevelup: @ 0x0805D5B0
-	push {r4, r5, r6, lr}
-	adds r4, r0, #0
-	ldr r5, .L0805D5E8 @ =gpProcEkrLevelup
-	ldr r0, .L0805D5EC @ =ProcScr_EkrLevelup
-	movs r1, #3
-	bl SpawnProc
-	adds r6, r0, #0
-	str r6, [r5]
-	str r4, [r6, #0x5c]
-	adds r0, r4, #0
-	bl GetAnimAnotherSide
-	str r0, [r6, #0x60]
-	movs r1, #0
-	movs r0, #0
-	strh r0, [r6, #0x2c]
-	adds r0, r6, #0
-	adds r0, #0x29
-	strb r1, [r0]
-	ldr r0, .L0805D5F0 @ =gEkrDistanceType
-	ldrh r0, [r0]
-	cmp r0, #4
-	beq .L0805D5F4
-	adds r0, r6, #0
-	adds r0, #0x2a
-	strb r1, [r0]
-	b .L0805D5FC
-	.align 2, 0
-.L0805D5E8: .4byte gpProcEkrLevelup
-.L0805D5EC: .4byte ProcScr_EkrLevelup
-.L0805D5F0: .4byte gEkrDistanceType
-.L0805D5F4:
-	adds r1, r6, #0
-	adds r1, #0x2a
-	movs r0, #1
-	strb r0, [r1]
-.L0805D5FC:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
 
 	thumb_func_start EkrLvup_Init
 EkrLvup_Init: @ 0x0805D604
@@ -916,13 +783,13 @@ func_fe6_0805DC2C: @ 0x0805DC2C
 	ldr r0, [r0]
 	str r0, [r1]
 	adds r0, r5, #0
-	bl func_fe6_0805D538
+	bl Ekrlvup_PutJobname
 	ldr r1, .L0805DCAC @ =gEkrLvupPreLevel
 	ldr r0, .L0805DCB0 @ =gEkrLvupPostLevel
 	ldrh r0, [r0]
 	strh r0, [r1]
 	adds r0, r5, #0
-	bl func_fe6_0805D570
+	bl Ekrlvup_PutPreLevel
 	movs r0, #0
 	strh r0, [r5, #0x2c]
 	movs r0, #8
@@ -1003,7 +870,7 @@ func_fe6_0805DD08: @ 0x0805DD08
 	ldrh r0, [r0]
 	strh r0, [r1]
 	adds r0, r5, #0
-	bl func_fe6_0805D570
+	bl Ekrlvup_PutPreLevel
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x76
@@ -1100,7 +967,7 @@ func_fe6_0805DDA8: @ 0x0805DDA8
 	movs r2, #0x2e
 	ldrsh r1, [r4, r2]
 	adds r0, r4, #0
-	bl func_fe6_0805D4E0
+	bl Ekrlvup_PutBaseStatus
 	movs r0, #0x76
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -1503,7 +1370,7 @@ func_fe6_0805E140: @ 0x0805E140
 	adds r6, r1, #0
 	mov r8, r2
 	adds r4, r3, #0
-	ldr r0, .L0805E17C @ =gUnk_08606254
+	ldr r0, .L0805E17C @ =ProcScr_Ekrlvup_08606254
 	movs r1, #3
 	bl SpawnProc
 	movs r1, #0
@@ -1525,7 +1392,7 @@ func_fe6_0805E140: @ 0x0805E140
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L0805E17C: .4byte gUnk_08606254
+.L0805E17C: .4byte ProcScr_Ekrlvup_08606254
 
 	thumb_func_start func_fe6_0805E180
 func_fe6_0805E180: @ 0x0805E180
