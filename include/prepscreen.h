@@ -374,6 +374,8 @@ enum proclabel_prep_subitem_screen {
     PL_PREP_SUBITEM_TRADE = 2,
     PL_PREP_SUBITEM_CONVOY = 4,
     PL_PREP_SUBITEM_5 = 5,
+    PL_PREP_SUBITEM_6 = 6,
+    PL_PREP_SUBITEM_7 = 7,
 };
 
 enum {
@@ -412,8 +414,7 @@ struct PrepSubItemProc {
     /* 4E */ u16 unk_4E;
     /* 50 */ u16 menu_scroll_bar_disp_idx;
     /* 52 */ u16 timer;
-    /* 54 */ struct Unit *unit1;
-    /* 58 */ struct Unit *unit2;
+    /* 54 */ struct Unit *units[2];
     /* 5C */ ProcPtr subproc1;
     /* 60 */ ProcPtr proc_menuscroll;
 };
@@ -421,7 +422,7 @@ struct PrepSubItemProc {
 void func_fe6_0807E06C(bool act);
 void PrepSubItemScreen_Init(struct PrepSubItemProc *proc);
 void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc);
-// func_fe6_0807E544
+void func_fe6_0807E544(struct PrepSubItemProc *proc);
 void PrepSubItem_0807E5A8(struct PrepSubItemProc *proc);
 void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc);
 void func_fe6_0807EDBC(struct PrepSubItemProc *proc);
@@ -561,9 +562,9 @@ ProcPtr StartPrepErrorHelpbox(int x, int y, int msg, ProcPtr parent);
 bool IsWeaponUsable(struct Unit *unit, int weapon);
 int CountUnitUsableWeapons(struct Unit *unit);
 bool CanUnitUseWeaponsInArena(struct Unit *unit);
-// CheckValidLinkArenaItemSwap
-// CheckValidLinkArenaItemSupply
-// PrepCanUnitPutItemToSupply
+bool CheckValidLinkArenaItemSwap(struct Unit *unit1, int slot1, struct Unit *unit2, int slot2);
+bool CheckValidLinkArenaItemSupply(struct Unit *unit, int slot, int weapon);
+bool PrepCanUnitPutItemToSupply(struct Unit *unit, int slot);
 void SetupPrepUiPalette(void);
 
 struct Proc_Prep_08679774 {

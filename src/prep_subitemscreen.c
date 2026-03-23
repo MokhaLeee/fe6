@@ -44,7 +44,7 @@ void PrepSubItem_HandleAction(struct PrepSubItemProc *proc)
 			proc->unk_48 = gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_01;
 			Proc_Goto(proc, PL_PREP_SUBITEM_CONVOY);
 		} else {
-			proc->unit2 = GetUnitByPid(gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_00);
+			proc->units[1] = GetUnitByPid(gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_00);
 			proc->hand_disp_y = gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_01;
 			Proc_Goto(proc, PL_PREP_SUBITEM_TRADE);
 		}
@@ -97,7 +97,7 @@ PROC_LABEL(PL_PREP_SUBITEM_CONVOY),
 PROC_LABEL(5),
 	PROC_REPEAT(PrepSubItem_SelLoop1),
 	PROC_REPEAT(PrepSubItem_SelLoop2),
-PROC_LABEL(7),
+PROC_LABEL(PL_PREP_SUBITEM_7),
 	PROC_CALL(PrepSubItem_HandleAction),
 PROC_LABEL(6),
 	PROC_CALL(PrepSubItem_OnEnd),
@@ -143,7 +143,7 @@ void StartBmSupply(struct Unit *unit, ProcPtr parent)
 		proc = SpawnProcLocking(ProcScr_BmSupplyScreen, parent);
 
 	proc->unk2D = 4; // TODO: enum
-	proc->unit1 = unit;
+	proc->units[0] = unit;
 	proc->unk4B = 0;
 }
 
@@ -157,6 +157,6 @@ void StartBmSupplyForDrop(struct Unit *unit, ProcPtr parent)
 		proc = SpawnProcLocking(ProcScr_BmSupplyScreen, parent);
 
 	proc->unk2D = 4; // TODO: enum
-	proc->unit1 = unit;
+	proc->units[0] = unit;
 	proc->unk4B = 1;
 }

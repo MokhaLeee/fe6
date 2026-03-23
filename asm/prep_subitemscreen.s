@@ -352,6 +352,8 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	b .L0807EB1A
 	.align 2, 0
 .L0807E854: .4byte gPlaySt
+
+@ KEY_BUTTON_A
 .L0807E858:
 	mov r3, r8
 	ldr r1, [r3]
@@ -384,17 +386,20 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	mov sb, r0
 	cmp r1, #0xff
 	bne .L0807E8FC
+
 	adds r5, r6, #0
 	adds r5, #0x2f
 	ldrb r0, [r5]
 	mov r7, sb
 	strb r0, [r7]
+
 	adds r4, r6, #0
 	adds r4, #0x2e
 	ldrb r0, [r4]
 	adds r1, r6, #0
 	adds r1, #0x31
 	strb r0, [r1]
+
 	ldrb r1, [r5]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -405,11 +410,13 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	adds r1, #9
 	movs r2, #0xc
 	bl RemoveUiEntryHover
+
 	ldrb r0, [r5]
 	adds r0, #1
 	movs r1, #1
 	ands r0, r1
 	strb r0, [r5]
+
 	lsls r1, r0, #2
 	adds r0, r6, #0
 	adds r0, #0x54
@@ -482,11 +489,12 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	.align 2, 0
 .L0807E954: .4byte 0x000006C2
 .L0807E958:
-	mov r1, sb
+	mov r1, sb @ unk30
 	ldrb r1, [r1]
 	lsls r0, r1, #2
 	adds r0, r7, r0
 	ldr r1, [r0]
+
 	mov r8, sl
 	mov r2, r8
 	ldrb r2, [r2]
@@ -495,6 +503,7 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	adds r1, r1, r0
 	ldrh r3, [r1]
 	mov ip, r3
+
 	ldrb r2, [r5]
 	lsls r0, r2, #2
 	adds r0, r7, r0
@@ -505,6 +514,7 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	strh r0, [r1]
+
 	ldrb r1, [r5]
 	lsls r0, r1, #2
 	adds r0, r7, r0
@@ -515,6 +525,7 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	adds r0, r0, r1
 	mov r3, ip
 	strh r3, [r0]
+
 	ldrb r1, [r5]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -558,10 +569,10 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	bl GetUnitItemCount
 	cmp r0, #0
 	ble .L0807EA08
-	mov r2, sb
+	mov r2, sb @ unk30
 	ldrb r0, [r2]
-	strb r0, [r5]
-	mov r3, sl
+	strb r0, [r5] @ hand_disp_x
+	mov r3, sl @ sel_action
 	ldrb r0, [r3]
 	subs r0, #1
 	b .L0807EA0A
@@ -637,12 +648,15 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	bl RemoveUiEntryHover
 	ldrb r0, [r7]
 	strb r0, [r4]
+
 	adds r0, r6, #0
 	adds r0, #0x31
 	ldrb r0, [r0]
 	strb r0, [r5]
+
 	movs r0, #0xff
 	strb r0, [r7]
+
 	ldrb r3, [r4]
 	lsls r0, r3, #3
 	subs r0, r0, r3
@@ -665,6 +679,7 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne .L0807EB1A
+
 	adds r3, r6, #0
 	adds r3, #0x2f
 	ldrb r7, [r3]
@@ -686,6 +701,7 @@ PrepSubItem_0807E5A8: @ 0x0807E5A8
 	movs r0, #2
 	ldr r7, [sp, #8]
 	strb r0, [r7]
+
 	ldrb r2, [r3]
 	lsls r0, r2, #3
 	subs r0, r0, r2
