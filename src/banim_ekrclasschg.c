@@ -7,6 +7,8 @@
 #include "banim_sprite.h"
 #include "constants/songs.h"
 
+EWRAM_OVERLAY(banim) struct ProcEfx *gpProcEkrClasschg = NULL;
+
 bool EkrClasschgFinished(void)
 {
 	if (gpProcEkrClasschg->hitted == true)

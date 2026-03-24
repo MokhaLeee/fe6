@@ -11,6 +11,9 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
+EWRAM_OVERLAY(banim) struct ProcEkrPopup *gpProcEkrPopup = NULL;
+EWRAM_OVERLAY(banim) int gEkrPopupDone = false;
+
 bool CheckEkrPopupDone(void)
 {
     if (gEkrPopupDone == true)

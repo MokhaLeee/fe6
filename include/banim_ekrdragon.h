@@ -12,8 +12,6 @@ enum EkrDragonfxState_idx {
 };
 extern u16 gEkrDragonfxState[2];
 
-extern u16 gEkrDragonDeadFlags[2];
-
 enum EkrDragonState_idx {
 	DRAGON_STATE_DEFAULT = 0,
 	DRAGON_STATE_1 = 1,
@@ -21,12 +19,12 @@ enum EkrDragonState_idx {
 };
 
 extern u16 gEkrDragonState[2];
-extern u16 gUnk_Banim_0201E7CC[];
+extern u16 gEkrDragonTsaBuffer[];
 extern u16 gEkrDragonJid[2];
 extern u16 gEkrDragonDeadFlags[2];
-extern u16 gEkrBgPaletteBackup1[0x20];
-extern u16 gEkrBgPaletteBackup2[0x20];
-extern u16 gEkrBgPaletteBackup3[0x40];
+extern u16 gEkrBgPaletteBackup1[0x10];
+extern u16 gEkrBgPaletteBackup2[0x10];
+extern u16 gEkrBgPaletteBackup3[0x20];
 
 void ResetEkrDragonStatus(void);
 bool EkrDragonIntroDone(struct BaSprite *anim);

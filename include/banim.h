@@ -272,8 +272,9 @@ extern u16 gpBg2ScrollOffsetTable2[];
 extern int gEkrBg1ScrollFlip;
 extern u16 * gpBg1ScrollOffsetStart;
 extern u16 * gpBg1ScrollOffset;
-extern u16 gpBg1ScrollOffsetList1[];
-extern u16 gpBg1ScrollOffsetList2[];
+extern u16 gpBg1ScrollOffsetList1[0xA0];
+extern u16 gpBg1ScrollOffsetList2[0xA0];
+extern u16 gpBg1ScrollOffsetList3_unused[0xA0];
 extern int gEfxMagicChk_N;
 extern int gEfxPurgeCounter;
 extern u8 gEkrPids[2];
@@ -1793,7 +1794,7 @@ struct ProcEkrClasschgRST {
     /* 64 */ struct ProcEfx *procfx;
 };
 
-extern struct ProcEfx * CONST_DATA gpProcEkrClasschg;
+extern struct ProcEfx *gpProcEkrClasschg;
 
 bool EkrClasschgFinished(void);
 void EndEkrClasschg(void);

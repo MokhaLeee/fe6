@@ -12,6 +12,16 @@
 #include "banim_ekrbattle.h"
 #include "banim_ekrdragon.h"
 
+EWRAM_OVERLAY(banim) struct ProcEkrDragon *EkrDragonProcs[2] = {};
+EWRAM_OVERLAY(banim) struct ProcEkrDragonDeamon *gEkrDragonDeamonProcs[2] = {};
+EWRAM_OVERLAY(banim) ProcPtr gpProcEkrIdunnBodyMain = NULL;
+EWRAM_OVERLAY(banim) u16 gEkrDragonfxState[2] = {};
+EWRAM_OVERLAY(banim) u16 gEkrDragonDeadFlags[2] = {};
+EWRAM_OVERLAY(banim) u16 gEkrDragonState[2] = {};
+EWRAM_OVERLAY(banim) u16 gEkrDragonTsaBuffer[0x800 / sizeof(*gEkrDragonTsaBuffer)] = {};
+
+EWRAM_DATA u16 gEkrDragonJid[2] = {};
+
 void ResetEkrDragonStatus(void)
 {
     EkrDragonProcs[POS_L] = NULL;
@@ -437,7 +447,7 @@ void EkrDragonTmCpy3(const u8 * tsa)
 {
     int loc;
 
-    LZ77UnCompWram(tsa, gUnk_Banim_0201E7CC);
+    LZ77UnCompWram(tsa, gEkrDragonTsaBuffer);
 
     if (gEkrDistanceType == EKR_DISTANCE_CLOSE)
         loc = TM_OFFSET(1, 1);
@@ -447,7 +457,7 @@ void EkrDragonTmCpy3(const u8 * tsa)
         loc = TM_OFFSET(3, 0);
 
     EfxTmCpyExt(
-        gUnk_Banim_0201E7CC,
+        gEkrDragonTsaBuffer,
         -1,
         gTmB_Banim + loc,
         EFX_BG_WIDTH, 30, 22,

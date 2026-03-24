@@ -19,6 +19,20 @@
 #include "banim.h"
 #include "banim_ekrdragon.h"
 
+EWRAM_OVERLAY(banim) struct ProcEkrlvup *gpProcEkrLevelup = NULL;
+EWRAM_OVERLAY(banim) u32 gUnk_Banim_0201F05C[8] = {};
+EWRAM_OVERLAY(banim) ProcPtr gpProcEfxPartsofScroll = NULL;
+EWRAM_OVERLAY(banim) ProcPtr gpProcEfxleveluphb = NULL;
+EWRAM_OVERLAY(banim) struct EkrTerrainfxDesc gEkrLvupTerrainfxDesc = {};
+EWRAM_OVERLAY(banim) struct Unit *gpEkrLvupUnit = NULL;
+EWRAM_OVERLAY(banim) struct BattleUnit *gpEkrLvupBattleUnit = NULL;
+EWRAM_OVERLAY(banim) u16 gEkrLvupPreLevel = 0;
+EWRAM_OVERLAY(banim) u16 gEkrLvupPostLevel = 0;
+EWRAM_OVERLAY(banim) u16 gEkrLvupBaseStatus[EKRLVUP_STAT_MAX] = {};
+EWRAM_OVERLAY(banim) u16 gEkrLvupPostStatus[EKRLVUP_STAT_MAX] = {};
+EWRAM_OVERLAY(banim) u16 gEkrLvupScrollPos1 = 0;
+EWRAM_OVERLAY(banim) u16 gEkrLvupScrollPos2 = 0;
+
 struct FaceVramEnt CONST_DATA FaceConfig_EkrLevelup[] = {
 	[0] = { 0, 0xF },
 	[1] = {0},
