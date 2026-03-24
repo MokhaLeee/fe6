@@ -158,12 +158,12 @@ Tm_LevelUpFrame: @ 08114FCC
 Pal_LevelUpFrame: @ 081150C8
 	.incbin "fe6-base.gba", 0x1150C8, (0x1150E8 - 0x1150C8) @ length: 0020
 
-	.global gUnk_081150E8
-gUnk_081150E8: @ 081150E8
+	.global Img_LvupApfx
+Img_LvupApfx: @ 081150E8
 	.incbin "fe6-base.gba", 0x1150E8, (0x1152FC - 0x1150E8) @ length: 0214
 
-	.global gUnk_081152FC
-gUnk_081152FC: @ 081152FC
+	.global Pal_LvupApfx
+Pal_LvupApfx: @ 081152FC
 	.incbin "fe6-base.gba", 0x1152FC, (0x11531C - 0x1152FC) @ length: 0020
 
 	.global Img_EkrPopup

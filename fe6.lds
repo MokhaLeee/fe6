@@ -576,7 +576,6 @@ SECTIONS
         asm/banim_efxsound.o(.text);
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
-        asm/banim_ekrlvup.o(.text);
         asm/banim_ekrlvupfx.o(.text);
         src/banim_ekrtriangle.o(.text);
         src/banim_bg.o(.text);

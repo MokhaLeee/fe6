@@ -3,12 +3,16 @@
 #include "face.h"
 #include "unit.h"
 #include "battle.h"
+#include "face.h"
 #include "text.h"
 #include "msg.h"
 #include "oam.h"
 #include "hardware.h"
 #include "move.h"
+#include "util.h"
+#include "manim.h"
 #include "constants/iids.h"
+#include "constants/songs.h"
 #include "constants/videoalloc_banim.h"
 #include "constants/videoalloc_global.h"
 
@@ -351,7 +355,372 @@ void EkrLvup_Init(struct ProcEkrlvup *proc)
 	DisableEfxWeaponIcon();
 	DisableEfxHpBarColorChange();
 
-    SetWinEnable(0, 0, 0);
-    SetBlendNone();
-    Proc_Break(proc);
+	SetWinEnable(0, 0, 0);
+	SetBlendNone();
+	Proc_Break(proc);
+}
+
+void EkrLvup_InitLevelUpBox(struct ProcEkrlvup *proc)
+{
+	int fid;
+	struct BattleUnit *bu1 = gpEkrBattleUnitLeft;
+	struct BattleUnit *bu2 = gpEkrBattleUnitRight;
+	struct Anim *anim = proc->anim_this;
+
+	LZ77UnCompWram(Img_LevelUpFrame, gSpellAnimBgfx);
+	LZ77UnCompWram(Tm_LevelUpFrame, gEkrTsaBuffer);
+	EfxTmCpyBG(gEkrTsaBuffer, gBg1Tm + TM_OFFSET(0, 0x6),
+		0x20, 0x14, BGPAL_EFX_SPELL_BG, OAM2_CHR(VRAMOFF_BANIM_SPELL_BG / CHR_SIZE));
+	RegisterDataMove(gSpellAnimBgfx, (void *)BG_VRAM + VRAMOFF_BANIM_SPELL_BG, 0x400);
+	CpuFastCopy(Pal_LevelUpFrame, PAL_BG(BGPAL_EFX_SPELL_BG), 0x20);
+	LZ77UnCompWram(Img_LvupApfx, gBuf_Banim);
+	RegisterDataMove(gBuf_Banim, OBJ_VRAM0 + VRAMOFF_OBJ_1400, 0xC00);
+	CpuFastCopy(Pal_LvupApfx, PAL_OBJ(OBPAL_EFX_SPELL_BG), 0x20);
+	EnablePalSync();
+
+	if (proc->is_promotion == false) {
+		struct Proc08606254 *child;
+
+		child = func_fe6_0805E140(anim->xPosition, 0x30, AnimScr_EkrlvupfxUnk_085CCC40, 0);
+		child->unk_4C = 0x10A0;
+		proc->timer = 0;
+	} else
+		proc->timer = EKR_LVUP_UI_BASE;
+
+	if (GetAnimPosition(anim) == POS_L)
+		fid = bu1->unit.pinfo->fid;
+	else
+		fid = bu2->unit.pinfo->fid;
+
+	SetFaceConfig(FaceConfig_EkrLevelup);
+	StartFace(0, fid, 0xBC, EKR_LVUP_UI_BASE, 0x42);
+	gFaces[0]->y_disp = 0xA0;
+
+	CpuFastFill16(0, gBg2Tm, 0x800);
+	EkrLvup_InitStatusText(proc);
+	Proc_Break(proc);
+}
+
+void EkrLvup_SetBgs(struct ProcEkrlvup *proc)
+{
+	SetOnHBlankA(EkrLvupHBlank);
+
+	EnableBgSync(BG0_SYNC_BIT);
+	EnableBgSync(BG2_SYNC_BIT);
+	EnableBgSync(BG1_SYNC_BIT);
+	EnablePalSync();
+
+	Proc_Break(proc);
+}
+
+void EkrLvup_InitPalette(struct ProcEkrlvup *proc)
+{
+	if (++proc->timer > EKR_LVUP_UI_BASE) {
+
+		proc->timer = 0;
+
+		proc->scroll_timer[0] = 0;
+		proc->scroll_timer[1] = 0;
+		proc->scroll_timer[2] = -2;
+		proc->scroll_timer[3] = -4;
+
+		CpuFastCopy(PAL_BG(0), gEfxPal, 0x400);
+
+		Proc_Break(proc);
+	}
+}
+
+void EkrLvup_PutWindowOnScreen(struct ProcEkrlvup *proc)
+{
+	int a, b, c, d, pos, pal;
+
+	a = proc->scroll_timer[0];
+	b = proc->scroll_timer[1];
+	c = proc->scroll_timer[2];
+	d = proc->scroll_timer[3];
+
+	LIMIT_AREA2(a, 0, 8);
+	LIMIT_AREA2(b, 0, 8);
+	LIMIT_AREA2(c, 0, 8);
+	LIMIT_AREA2(d, 0, 8);
+
+	proc->scroll_timer[0]++;
+	proc->scroll_timer[1]++;
+	proc->scroll_timer[2]++;
+	proc->scroll_timer[3]++;
+
+	pos = Interpolate(INTERPOLATE_LINEAR, -EKR_LVUP_UI_BASE, 0, a, 8);
+	pal = Interpolate(INTERPOLATE_LINEAR, 0, 8, b, 8);
+
+	gEkrLvupScrollPos1 = Interpolate(INTERPOLATE_LINEAR, 0x90, 0, c, 8);
+	gEkrLvupScrollPos2 = Interpolate(INTERPOLATE_LINEAR, 0x90, 0, d, 8);
+
+	gFaces[0]->y_disp = EKR_LVUP_UI_BASE - pos;
+
+	CpuFastCopy(gEfxPal, PAL_BG(0), 0x400);
+	EfxPalBlackInOut(PAL_BG(0), 2, 4, pal);
+	EfxPalBlackInOut(PAL_BG(0), 0x13, 0xC, pal);
+	EnablePalSync();
+
+	if (++proc->timer > 0x14) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EkrLvup_PrepareApGfx(struct ProcEkrlvup *proc)
+{
+	int i;
+
+	StartManimLevelUpStatGainLabels(
+		OAM2_CHR(VRAMOFF_OBJ_1400 / CHR_SIZE), OBPAL_EFX_SPELL_BG, 1, PROC_TREE_3);
+
+	Proc_Break(proc);
+
+	for (i = 0; i < 8; i++)
+		gUnk_Banim_0201F05C[i] = 0;
+}
+
+void EkrLvup_Promo_WindowScroll0(struct ProcEkrlvup *proc)
+{
+	if (proc->is_promotion == false) {
+		Proc_Break(proc);
+		return;
+	}
+
+	SetOnHBlankA(EfxPartsofScroll2HBlank);
+
+	Proc_End(gpProcEfxPartsofScroll);
+	gpProcEfxPartsofScroll = NewEfxPartsofScroll2();
+
+	EfxPlaySE(SONG_76, 0x100);
+	M4aPlayWithPostionCtrl(SONG_76, 0x38, 0);
+	
+	proc->timer = 0;
+	proc->index = 8;
+	Proc_Break(proc);
+}
+
+void EkrLvup_Promo_DrawPromoNewClassName(struct ProcEkrlvup *proc)
+{
+	if (proc->is_promotion == false) {
+		Proc_Break(proc);
+		return;
+	}
+
+	gEkrLvupScrollPos1 = Interpolate(1, 0, 0x1000, proc->timer, proc->index);
+
+	if (++proc->timer > proc->index) {
+		gpEkrLvupUnit = &gpEkrLvupBattleUnit->unit;
+		Ekrlvup_PutJobname(proc);
+
+		gEkrLvupPreLevel = gEkrLvupPostLevel;
+		Ekrlvup_PutPreLevel(proc);
+
+		proc->timer = 0;
+		proc->index = 8;
+
+		Proc_Break(proc);
+	}
+}
+
+void EkrLvup_Promo_WindowScroll1(struct ProcEkrlvup *proc)
+{
+	if (proc->is_promotion == false) {
+		Proc_Break(proc);
+		return;
+	}
+
+	gEkrLvupScrollPos1 = Interpolate(4, 0x1000, 0, proc->timer, proc->index);
+	if (++proc->timer > proc->index)
+		Proc_Break(proc);
+}
+
+void EkrLvup_DrawNewLevel(struct ProcEkrlvup *proc)
+{
+	if (proc->is_promotion == false) {
+		proc->timer = 0;
+		StartManimLevelUpStatGainLabelAnim(0x84, 0x3C, 0, 0);
+		gEkrLvupPreLevel = gEkrLvupPostLevel;
+		Ekrlvup_PutPreLevel(proc);
+		EfxPlaySE(SONG_76, 0x100);
+		M4aPlayWithPostionCtrl(SONG_76, 0x38, 0);
+		Proc_Break(proc);
+		return;
+	}
+
+	Proc_End(gpProcEfxPartsofScroll);
+	gpProcEfxPartsofScroll = NewEfxPartsofScroll();
+	proc->timer = 0;
+	proc->index = 0;
+	Proc_Break(proc);
+}
+
+void EkrLvup_InitCounterForMainAnim(struct ProcEkrlvup *proc)
+{
+	if (proc->is_promotion != false) {
+		Proc_Break(proc);
+		return;
+	}
+
+	if (++proc->timer < 0x1E) {
+		proc->timer = 0;
+		proc->index = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EkrLvup_MainAnime(struct ProcEkrlvup *proc)
+{
+	int base, diff;
+	s16 stat_index;
+
+	if (++proc->timer == 0x14) {
+		proc->timer = 0;
+
+		for (; proc->index != EKRLVUP_STAT_MAX; proc->index++) {
+			base = gEkrLvupBaseStatus[proc->index];
+			diff = gEkrLvupPostStatus[proc->index] - base;
+
+			if (diff != 0) {
+				gEkrLvupBaseStatus[proc->index] = gEkrLvupPostStatus[proc->index];
+				Ekrlvup_PutBaseStatus(proc, proc->index);
+				EfxPlaySE(SONG_76, 0x100);
+				M4aPlayWithPostionCtrl(SONG_76, 0x38, 0);
+
+				StartManimLevelUpStatGainLabelAnim(
+					0x35 + (sEfxLvupPartsPos[proc->index] & 0x1F) * 8,
+					6 + (sEfxLvupPartsPos[proc->index] & 0x7E0) / 4,
+					proc->index + 1,
+					diff);
+
+				if (proc->index == EKRLVUP_STAT_HP) {
+					gBanimMaxHP[1] = gEkrLvupBaseStatus[proc->index];
+					gEkrGaugeHpBak[1] = -1;
+				}
+				proc->timer = 0;
+				break;
+			}
+		}
+	}
+
+	if (proc->index == EKRLVUP_STAT_MAX) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EkrLvup_SetHBlank(struct ProcEkrlvup *proc)
+{
+	if (++proc->timer > 0x3B) {
+		proc->timer = 0;
+		EndManimLevelUpStatGainLabels();
+		SetOnHBlankA(EkrLvupHBlank);
+		Proc_Break(proc);
+	}
+}
+
+void EkrLvup_DoNothing(struct ProcEkrlvup *proc)
+{
+	Proc_Break(proc);
+}
+
+void EkrLvup_PutWindowOffScreen(struct ProcEkrlvup *proc)
+{
+	int i, pos, pal;
+
+	gEkrLvupScrollPos1 = Interpolate(INTERPOLATE_LINEAR, 0, 0x90, proc->timer, 8);
+	gEkrLvupScrollPos2 = Interpolate(INTERPOLATE_LINEAR, 0, 0x90, proc->timer, 8);
+
+	pos = Interpolate(INTERPOLATE_LINEAR, 0, -EKR_LVUP_UI_BASE, proc->timer, 8);
+	pal = Interpolate(INTERPOLATE_LINEAR, 8, 0, proc->timer, 8);
+
+	gFaces[0]->y_disp = EKR_LVUP_UI_BASE - pos;
+
+	CpuFastCopy(gEfxPal, PAL_BG(0), 0x400);
+	EfxPalBlackInOut(PAL_BG(0), 2, 4, pal);
+	EfxPalBlackInOut(PAL_BG(0), 0x13, 0xC, pal);
+	EnablePalSync();
+
+	/* Maybe some debug routine? */
+	for (i = 0; i < 8; i++)
+		;
+
+	if (++proc->timer > 8) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EkrLvup_ResetScreen(struct ProcEkrlvup *proc)
+{
+	struct EkrTerrainfxDesc *buf;
+	struct EkrTerrainfxDesc _buf;
+
+	buf = &gEkrLvupTerrainfxDesc;
+
+	if (GetBattleAnimArenaFlag() == false)
+		EndEkrTerrainfx(buf);
+
+	SetBgTilemapOffset(0, 0x6000);
+	SetBgTilemapOffset(1, 0x6800);
+	SetBgTilemapOffset(2, 0x7000);
+
+	SetBgScreenSize(1, 0);
+	SetBgScreenSize(2, 0);
+
+	buf = &_buf;
+
+	buf->terrain_l = gBanimFloorfx[0];
+	buf->pal_l = OBPAL_EFX_4;
+	buf->chr_l = VRAMOFF_OBJ_5000 / CHR_SIZE;
+	buf->terrain_r = gBanimFloorfx[1];
+	buf->pal_r = OBPAL_EFX_5;
+	buf->chr_r = VRAMOFF_OBJ_5000 / CHR_SIZE;
+	buf->distance = gEkrDistanceType;
+	buf->bg_index = BG_2;
+	buf->vram_offset = 0;
+	buf->img_buf = gBanimBuf_20145C0;
+	buf->unk_10 = gEkrSnowWeather;
+
+	if (GetBattleAnimArenaFlag() == false) {
+		SetBgOffset(2, 0, 0);
+		NewEkrTerrainfx(&_buf);
+	}
+
+	proc->anim_this->oam2 &= ~OAM2_LAYER(0x3);
+	proc->anim_this->oam2 |=  OAM2_LAYER(0x2);
+	proc->anim_other->oam2 &= ~OAM2_LAYER(0x3);
+	proc->anim_other->oam2 |=  OAM2_LAYER(0x2);
+
+	CpuFastFill(0, gBg1Tm, 0x800);
+	EnableBgSync(BG1_SYNC_BIT);
+	EkrGauge_Setup44(0);
+
+	if (*GetEkrDragonWeapon(POS_L) == IID_FIRESTONE) {
+		gDispIo.bg0_ct.priority = 0;
+		gDispIo.bg1_ct.priority = 1;
+		gDispIo.bg3_ct.priority = 2;
+		gDispIo.bg2_ct.priority = 3;
+	} else {
+		gDispIo.bg0_ct.priority = 0;
+		gDispIo.bg1_ct.priority = 1;
+		gDispIo.bg2_ct.priority = 2;
+		gDispIo.bg3_ct.priority = 3;
+	}
+
+	EndFaceById(0);
+	Proc_Break(proc);
+}
+
+void EkrLvup_OnEnd(struct ProcEkrlvup *proc)
+{
+	Proc_End(gpProcEfxPartsofScroll);
+	Proc_End(gpProcEfxleveluphb);
+
+	EnableEfxStatusUnits(proc->anim_this);
+	EnableEfxStatusUnits(proc->anim_other);
+	EnableEfxWeaponIcon();
+	EnableEfxHpBarColorChange();
+	proc->finished = true;
 }

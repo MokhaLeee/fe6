@@ -81,6 +81,7 @@ enum video_banim {
     VRAMOFF_BANIM_7000 = 0x7000,
     VRAMOFF_BANIM_8000 = 0x8000,
 
+    VRAMOFF_OBJ_1400 = 0x1400,
     VRAMOFF_OBJ_2000 = 0x2000,
     VRAMOFF_OBJ_2800 = 0x2800,
     VRAMOFF_OBJ_EKRGAUGE_SUBFIX = 0x3800,
@@ -90,6 +91,7 @@ enum video_banim {
     VRAMOFF_OBJ_EKRGAUGE_ARROW  = 0x3C00,
     VRAMOFF_OBJ_EKRGAUGE_NUM_R  = 0x3E00,
     VRAMOFF_OBJ_4000            = 0x4000,
+    VRAMOFF_OBJ_5000            = 0x5000,
     VRAMOFF_OBJ_6000            = 0x6000,
 
     VRAMOFF_BG_EKRLVUP_FONT = 0x2400,
@@ -1840,6 +1842,8 @@ enum ekr_lvup_status_index {
     EKRLVUP_TEXT_18 = 0x12,
 };
 
+#define EKR_LVUP_UI_BASE 0x50
+
 struct ProcEkrlvup {
     PROC_HEADER;
 
@@ -1858,6 +1862,7 @@ struct ProcEkrlvup {
 };
 
 extern struct ProcEkrlvup *gpProcEkrLevelup;
+extern u32 gUnk_Banim_0201F05C[8]; // unused actually
 extern ProcPtr gpProcEfxPartsofScroll;
 extern ProcPtr gpProcEfxleveluphb;
 extern struct Unit *gpEkrLvupUnit;
@@ -1876,10 +1881,10 @@ extern const char EkrLvupMsgsMag[][5];
 
 bool CheckEkrLvupDone(void);
 void EndEkrLevelUp(void);
-// EkrLvup_InitStatusText
-// Ekrlvup_PutBaseStatus
-// Ekrlvup_PutJobname
-// Ekrlvup_PutPreLevel
+void EkrLvup_InitStatusText(struct ProcEkrlvup *proc);
+void Ekrlvup_PutBaseStatus(struct ProcEkrlvup *proc, int index);
+void Ekrlvup_PutJobname(struct ProcEkrlvup *proc);
+void Ekrlvup_PutPreLevel(struct ProcEkrlvup *proc);
 void NewEkrLevelup(struct BaSprite *anim);
 void EkrLvup_Init(struct ProcEkrlvup *proc);
 void EkrLvup_InitLevelUpBox(struct ProcEkrlvup *proc);
@@ -1898,22 +1903,49 @@ void EkrLvup_DoNothing(struct ProcEkrlvup *proc);
 void EkrLvup_PutWindowOffScreen(struct ProcEkrlvup *proc);
 void EkrLvup_ResetScreen(struct ProcEkrlvup *proc);
 void EkrLvup_OnEnd(struct ProcEkrlvup *proc);
-// func_fe6_0805E140
-// func_fe6_0805E180
 
+struct Proc08606254 {
+    PROC_HEADER;
+
+    /* 29 */ u8 unk_29;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ i16 unk_2C;
+    /* 2E */ i16 unk_2E;
+
+    STRUCT_PAD(0x30, 0x32);
+
+    /* 32 */ u16 unk_32;
+    /* 34 */ u16 unk_34;
+
+    STRUCT_PAD(0x36, 0x3A);
+
+    /* 3A */ u16 unk_3A;
+    /* 3C */ u16 unk_3C;
+
+    STRUCT_PAD(0x40, 0x44);
+
+    /* 44 */ const AnimScr *scr;
+    /* 48 */ int unk_48;
+    /* 4C */ int unk_4C;
+};
+
+struct Proc08606254 *func_fe6_0805E140(int a, int b, AnimScr *scr, int c);
+void func_fe6_0805E180(struct Proc08606254 *proc);
 ProcPtr NewEfxPartsofScroll(void);
 void EfxUpdatePartsofScroll(void);
 // func_fe6_0805E2BC
 // func_fe6_0805E2C0
-// NewEfxPartsofScroll2
+ProcPtr NewEfxPartsofScroll2(void);
 // func_fe6_0805E2E4
 // func_fe6_0805E2E8
 ProcPtr NewEfxleveluphb(void);
 // func_fe6_0805E43C
 // func_fe6_0805E448
 // func_fe6_0805E454
-// EkrLvupHBlank
-// EfxPartsofScroll2HBlank
+void EkrLvupHBlank(void);
+void EfxPartsofScroll2HBlank(void);
 
 enum ekrtriangle_types {
     EKR_TRI_JTYPE_DEFAULT = 0,
@@ -2079,7 +2111,7 @@ extern CONST_DATA struct ProcScr ProcScr_EkrTogiInitPROC[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTogiEndPROC[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTogiColor[];
 // ??? Pals_ArenaBattleBg[];
-// ??? AnimScr_EkrlvupfxUnk_085CCC40
+extern CONST_DATA AnimScr AnimScr_EkrlvupfxUnk_085CCC40[];
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Far[];
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_L_Far[];
 extern CONST_DATA AnimScr AnimScr_EkrTerrainfx_R_Close[];
@@ -2661,8 +2693,8 @@ extern u8 const Img_BanimSnipperFBallistaIntro[];
 extern u8 const Img_LevelUpFrame[]; // img (stat gains)
 extern u8 const Tm_LevelUpFrame[]; // tiles (stat gains)
 extern u16 const Pal_LevelUpFrame[]; // pal (stat gains)
-// extern ??? gUnk_081150E8
-// extern ??? gUnk_081152FC
+extern u8 const Img_LvupApfx[];
+extern u16 const Pal_LvupApfx[];
 extern u8 const Img_EkrPopup[];
 extern u8 const Img_EkrUnkPopup[];
 extern u16 const Pal_EkrPopup[];

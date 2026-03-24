@@ -292,24 +292,52 @@ void func_fe6_08067498(int bg, int x_inc, int y_inc, ProcPtr parent);
 // PutManimLevelUpStat
 int GetManimLevelUpStatGain(int actor_id, int stat_num);
 int GetManimLevelUpBaseStat(int actor_id, int stat_num);
-// ManimLevelUpStatGainLabel_Finish
-// StartManimLevelUpStatGainLabels
-// EndManimLevelUpStatGainLabels
-// StartManimLevelUpStatGainLabelAnim
+
+struct ManimLevelUpStatGainLabelProc {
+    /* 00 */ PROC_HEADER;
+    /* 29 */ STRUCT_PAD(0x29, 0x2A);
+    /* 2A */ u16 chr;
+    /* 2C */ u16 pal;
+    /* 2E */ u16 sprite_layer;
+};
+
+void ManimLevelUpStatGainLabel_Finish(struct ManimLevelUpStatGainLabelProc * proc);
+void StartManimLevelUpStatGainLabels(int chr, int pal, int sprite_layer, ProcPtr parent);
+
+struct ManimLevelUpProc {
+    /* 00 */ PROC_HEADER;
+    /* 29 */ STRUCT_PAD(0x29, 0x2E);
+    /* 2E */ i16 actor_id;
+    /* 30 */ u8 next_stat_num;
+    /* 31 */ u8 clock;
+    /* 32 */ i16 y_scroll_offset;
+};
+
+void EndManimLevelUpStatGainLabels(void);
+void StartManimLevelUpStatGainLabelAnim(int x, int y, int stat_num, int stat_gain);
 void StartManimLevelUp(int actor_id, ProcPtr parent);
 void InitManimLevelUpWindow(void);
 void ClearManimLevelUpWindow(void);
-// ManimLevelUp_InitMainScreen
-// ManimLevelUpLabelColor_Init
-// ManimLevelUpLabelColor_Loop
-// ManimLevelUp_ScrollIn
-// ManimLevelUp_ScrollOut
-// ManimLevelUp_PutStatGainLabels
-// ManimLevelUp_DimBgm
-// ManimLevelUp_StartLevelUpText
-// ManimLevelUp_EndLevelUpText
-// ManimLevelUp_RestoreBgm
-// func_fe6_080684D8
+void ManimLevelUp_InitMainScreen(struct ManimLevelUpProc * proc);
+
+struct ManimLevelUpLabelColorProc {
+    /* 00 */ PROC_HEADER;
+    /* 29 */ STRUCT_PAD(0x29, 0x54);
+    /* 54 */ i32 clock;
+    /* 58 */ STRUCT_PAD(0x58, 0x64);
+    /* 64 */ i16 pal;
+};
+
+void ManimLevelUpLabelColor_Init(struct ManimLevelUpLabelColorProc * proc);
+void ManimLevelUpLabelColor_Loop(struct ManimLevelUpLabelColorProc * proc);
+void ManimLevelUp_ScrollIn(struct ManimLevelUpProc * proc);
+void ManimLevelUp_ScrollOut(struct ManimLevelUpProc * proc);
+void ManimLevelUp_PutStatGainLabels(struct ManimLevelUpProc * proc);
+void ManimLevelUp_DimBgm(struct ManimLevelUpProc * proc);
+void ManimLevelUp_StartLevelUpText(struct ManimLevelUpProc * proc);
+void ManimLevelUp_EndLevelUpText(struct ManimLevelUpProc * proc);
+void ManimLevelUp_RestoreBgm(struct ManimLevelUpProc * proc);
+void ManimLevelUp_Clear(struct ManimLevelUpProc * proc);
 // func_fe6_080684EC
 // func_fe6_08068524
 // func_fe6_08068578
