@@ -5,11 +5,15 @@
 #include "battle.h"
 #include "text.h"
 #include "msg.h"
+#include "oam.h"
 #include "hardware.h"
+#include "move.h"
+#include "constants/iids.h"
 #include "constants/videoalloc_banim.h"
 #include "constants/videoalloc_global.h"
 
 #include "banim.h"
+#include "banim_ekrdragon.h"
 
 struct FaceVramEnt CONST_DATA FaceConfig_EkrLevelup[] = {
 	[0] = { 0, 0xF },
@@ -24,22 +28,23 @@ struct ProcScr CONST_DATA ProcScr_EkrLevelup[] = {
 	PROC_SLEEP(1),
 
 	PROC_REPEAT(EkrLvup_InitLevelUpBox),
-	PROC_REPEAT(func_fe6_0805DA08),
-	PROC_REPEAT(func_fe6_0805DA38),
-	PROC_REPEAT(func_fe6_0805DA7C),
-	PROC_REPEAT(func_fe6_0805DBA4),
+	PROC_REPEAT(EkrLvup_SetBgs),
+	PROC_REPEAT(EkrLvup_InitPalette),
+	PROC_REPEAT(EkrLvup_PutWindowOnScreen),
+	PROC_REPEAT(EkrLvup_PrepareApGfx),
 	PROC_SLEEP(20),
-	PROC_REPEAT(func_fe6_0805DBD4),
-	PROC_REPEAT(func_fe6_0805DC2C),
-	PROC_REPEAT(func_fe6_0805DCB4),
-	PROC_REPEAT(func_fe6_0805DD08),
-	PROC_REPEAT(func_fe6_0805DD78),
-	PROC_REPEAT(func_fe6_0805DDA8),
-	PROC_REPEAT(func_fe6_0805DE8C),
-	PROC_REPEAT(func_fe6_0805DEBC),
-	PROC_REPEAT(func_fe6_0805DEC8),
-	PROC_REPEAT(func_fe6_0805DF90),
-	PROC_REPEAT(func_fe6_0805E104),
+
+	PROC_REPEAT(EkrLvup_Promo_WindowScroll0),
+	PROC_REPEAT(EkrLvup_Promo_DrawPromoNewClassName),
+	PROC_REPEAT(EkrLvup_Promo_WindowScroll1),
+	PROC_REPEAT(EkrLvup_DrawNewLevel),
+	PROC_REPEAT(EkrLvup_InitCounterForMainAnim),
+	PROC_REPEAT(EkrLvup_MainAnime),
+	PROC_REPEAT(EkrLvup_SetHBlank),
+	PROC_REPEAT(EkrLvup_DoNothing),
+	PROC_REPEAT(EkrLvup_PutWindowOffScreen),
+	PROC_REPEAT(EkrLvup_ResetScreen),
+	PROC_REPEAT(EkrLvup_OnEnd),
 	PROC_END,
 };
 
@@ -256,4 +261,97 @@ void NewEkrLevelup(struct Anim *anim)
 		proc->is_promotion = false;
 	else
 		proc->is_promotion = true;
+}
+
+void EkrLvup_Init(struct ProcEkrlvup *proc)
+{
+	struct EkrTerrainfxDesc *desc = &gEkrLvupTerrainfxDesc;
+
+	CpuFastFill(0, gBg1Tm, 0x800);
+	CpuFastFill(0, gBg2Tm, 0x800);
+
+	RegisterDataMove(gBg1Tm, (u8 *)BG_VRAM + VRAMOFF_BANIM_6800, 0x800);
+	RegisterDataMove(gBg1Tm, (u8 *)BG_VRAM + VRAMOFF_BANIM_7000, 0x800);
+	RegisterDataMove(gBg2Tm, (u8 *)BG_VRAM + VRAMOFF_BANIM_5000, 0x800);
+	RegisterDataMove(gBg2Tm, (u8 *)BG_VRAM + VRAMOFF_BANIM_5800, 0x800);
+
+	desc->terrain_l = gBanimFloorfx[POS_L];
+	desc->pal_l = OBPAL_EFX_FACE;
+	desc->chr_l = VRAMOFF_OBJ_2000 / CHR_SIZE;
+	desc->terrain_r = gBanimFloorfx[POS_R];
+	desc->pal_r = OBPAL_EFX_4;
+	desc->chr_r = VRAMOFF_OBJ_2800 / CHR_SIZE;
+	desc->distance = gEkrDistanceType;
+	desc->bg_index = -1;
+	desc->vram_offset = (int)OBJ_VRAM0; // bug?
+	desc->img_buf = (u8 *)gBanimBuf_20145C0;
+	desc->unk_10 = (u16)gEkrSnowWeather;
+
+	if (gEkrDistanceType == EKR_DISTANCE_FARFAR) {
+		if (gEkrInitPosReal == POS_L)
+			desc->terrain_r = -1;
+		else
+			desc->terrain_l = -1;
+	}
+
+	if (GetBattleAnimArenaFlag() == false) {
+		struct ProcEkrSubAnimeEmulator *emu;
+
+		NewEkrTerrainfx(desc);
+
+		emu = desc->proc1;
+		emu->oam2Base &= (u16)~OAM2_LAYER(0x3);
+		emu->oam2Base |=       OAM2_LAYER(0x3);
+
+		emu = desc->proc2;
+		emu->oam2Base &= (u16)~OAM2_LAYER(0x3);
+		emu->oam2Base |=       OAM2_LAYER(0x3);
+	}
+
+	proc->anim_this->oam2  &= ~OAM2_LAYER(0x3);
+	proc->anim_this->oam2  |=  OAM2_LAYER(0x3);
+	proc->anim_other->oam2 &= ~OAM2_LAYER(0x3);
+	proc->anim_other->oam2 |=  OAM2_LAYER(0x3);
+
+	gDispIo.bg2_ct.priority = 0;
+	gDispIo.bg1_ct.priority = 1;
+	gDispIo.bg0_ct.priority = 2;
+	gDispIo.bg3_ct.priority = 3;
+
+	if (*GetEkrDragonWeapon(POS_L) == IID_FIRESTONE) {
+		proc->anim_other->oam2 &= ~OAM2_LAYER(0x3);
+		proc->anim_other->oam2 |=  OAM2_LAYER(0x2);
+
+		gDispIo.bg0_ct.priority = 2;
+		gDispIo.bg1_ct.priority = 1;
+		gDispIo.bg2_ct.priority = 0;
+		gDispIo.bg3_ct.priority = 2;
+	}
+
+	gEkrLvupScrollPos1 = 0x90;
+	gEkrLvupScrollPos2 = 0x90;
+
+	SetBgOffset(BG_2, 0, 8);
+	SetBgOffset(BG_1, 0, 8);
+
+	SetBgTilemapOffset(BG_0, 0x6000);
+	SetBgTilemapOffset(BG_1, 0x6800);
+	SetBgTilemapOffset(BG_2, 0x5000);
+
+	SetBgScreenSize(BG_1, 1);
+	SetBgScreenSize(BG_2, 1);
+
+	gpProcEfxPartsofScroll = NewEfxPartsofScroll();
+	gpProcEfxleveluphb = NewEfxleveluphb();
+
+	EfxUpdatePartsofScroll();
+	EkrGauge_Setup44(2);
+	DisableEfxStatusUnits(proc->anim_this);
+	DisableEfxStatusUnits(proc->anim_other);
+	DisableEfxWeaponIcon();
+	DisableEfxHpBarColorChange();
+
+    SetWinEnable(0, 0, 0);
+    SetBlendNone();
+    Proc_Break(proc);
 }

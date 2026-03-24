@@ -471,22 +471,22 @@ EkrDispUp_PutTerrainfx: @ 0x080444EC
 	bge .L08044564
 	cmp r1, #0
 	beq .L08044548
-	ldr r0, .L0804453C @ =gBanimTerrainfxBuf
+	ldr r0, .L0804453C @ =gBanimBuf_20145C0
 	b .L08044576
 	.align 2, 0
 .L0804452C: .4byte gEkrTerrainfxDesc
 .L08044530: .4byte gBanimFloorfx
 .L08044534: .4byte gBanimTerrainTable
 .L08044538: .4byte gEkrDistanceType
-.L0804453C: .4byte gBanimTerrainfxBuf
+.L0804453C: .4byte gBanimBuf_20145C0
 .L08044540:
-	ldr r7, .L0804455C @ =gBanimTerrainfxBuf
+	ldr r7, .L0804455C @ =gBanimBuf_20145C0
 	mov ip, r7
 	cmp r1, #4
 	bne .L08044578
 .L08044548:
 	ldr r0, .L08044560 @ =gpBanimTerrainfxBufs
-	ldr r1, .L0804455C @ =gBanimTerrainfxBuf
+	ldr r1, .L0804455C @ =gBanimBuf_20145C0
 	str r1, [r0]
 	movs r7, #0x80
 	lsls r7, r7, #5
@@ -495,7 +495,7 @@ EkrDispUp_PutTerrainfx: @ 0x080444EC
 	mov ip, r1
 	b .L08044578
 	.align 2, 0
-.L0804455C: .4byte gBanimTerrainfxBuf
+.L0804455C: .4byte gBanimBuf_20145C0
 .L08044560: .4byte gpBanimTerrainfxBufs
 .L08044564:
 	ldr r0, .L080445E8 @ =gpBanimTerrainfxBufs

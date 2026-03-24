@@ -161,7 +161,7 @@ SECTIONS
         . = 0x004120; gBanimPaletteRight = .;
         . = 0x0041C0; gBanimOamBufs = .;
         . = 0x00F1C0; gBanimScrs = .;
-        . = 0x0145C0; gBanimTerrainfxBuf = .;
+        . = 0x0145C0; gBanimBuf_20145C0 = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
         . = 0x0165C0; gEfxPal = .;
         . = 0x0169C0; Buf_EkrGaugeNumImg = .;
@@ -243,8 +243,8 @@ SECTIONS
         . = 0x01F054; gpProcEkrClasschg = .;
         . = 0x01F058; gpProcEkrLevelup = .;
         . = 0x01F05C; gUnk_Banim_0201F05C = .;
-        . = 0x01F07C; gUnk_Banim_0201F07C = .;
-        . = 0x01F080; gUnk_Banim_0201F080 = .;
+        . = 0x01F07C; gpProcEfxPartsofScroll = .;
+        . = 0x01F080; gpProcEfxleveluphb = .;
         . = 0x01F084; gEkrLvupTerrainfxDesc = .;
         . = 0x01F0AC; gpEkrLvupUnit = .;
         . = 0x01F0B0; gpEkrLvupBattleUnit = .;
@@ -252,8 +252,8 @@ SECTIONS
         . = 0x01F0B6; gEkrLvupPostLevel = .;
         . = 0x01F0B8; gEkrLvupBaseStatus = .;
         . = 0x01F0C8; gEkrLvupPostStatus = .;
-        . = 0x01F0D8; gUnk_Banim_0201F0D8 = .;
-        . = 0x01F0DA; gUnk_Banim_0201F0DA = .;
+        . = 0x01F0D8; gEkrLvupScrollPos1 = .;
+        . = 0x01F0DA; gEkrLvupScrollPos2 = .;
         . = 0x01F0DC;
         . = ALIGN(4); src/banim_ekrtriangle.o(ewram_overlay_banim);
         . = 0x01F0E0; gpProcEkrPopup = .;
@@ -577,6 +577,7 @@ SECTIONS
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
         asm/banim_ekrlvup.o(.text);
+        asm/banim_ekrlvupfx.o(.text);
         src/banim_ekrtriangle.o(.text);
         src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
@@ -854,7 +855,8 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmainmini.o(.data);
         . = ALIGN(4); src/banim_ekrarena.o(.data);
-        . = ALIGN(4); data/data_banim_085CCC40.o(.data);
+        . = ALIGN(4); src/banim_ekrlvupfx_data.o(.data);
+        . = ALIGN(4); src/banim_ekrterrainfx_data.o(.data);
         . = ALIGN(4); src/banim_efxhit_data.o(.data);
         . = ALIGN(4); src/banim_ekrbattleintrofx_data.o(.data);
         . = ALIGN(4); data/banim_efxmagic_.o(.data);
@@ -874,7 +876,7 @@ SECTIONS
         . = ALIGN(4); asm/banim_efxsound.o(.data);
         . = ALIGN(4); src/banim_ekrclasschg.o(.data);
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
-        . = ALIGN(4); asm/banim_ekrlvup.o(.data);
+        . = ALIGN(4); asm/banim_ekrlvupfx.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle_data.o(.data);
         . = ALIGN(4); src/banim_bg.o(.data);
