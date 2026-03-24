@@ -540,7 +540,7 @@ SECTIONS
         asm/banim_efxsound.o(.text);
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
-        asm/banim_ekrlvupfx.o(.text);
+        src/banim_ekrlvupfx.o(.text);
         src/banim_ekrtriangle.o(.text);
         src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
@@ -839,7 +839,7 @@ SECTIONS
         . = ALIGN(4); asm/banim_efxsound.o(.data);
         . = ALIGN(4); src/banim_ekrclasschg.o(.data);
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
-        . = ALIGN(4); asm/banim_ekrlvupfx.o(.data);
+        . = ALIGN(4); src/banim_ekrlvupfx.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle_data.o(.data);
         . = ALIGN(4); src/banim_bg.o(.data);

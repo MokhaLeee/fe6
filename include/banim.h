@@ -1719,6 +1719,12 @@ struct ProcEkrSubAnimeEmulator {
     /* 50 */ int oamBase;
 };
 
+enum {
+    EKR_SUBANIMEMU_ACT_ONE_TURN,
+    EKR_SUBANIMEMU_ACT_LOOP,
+    EKR_SUBANIMEMU_ACT_END
+};
+
 struct ProcEkrSubAnimeEmulator * NewEkrsubAnimeEmulator(int x, int y, u32 *anim_scr, int type, int oam2Base, int oamBase, ProcPtr parent);
 void EkrsubAnimeEmulator_Loop(struct ProcEkrSubAnimeEmulator *proc);
 int GetAnimSpriteRotScaleX(u32 header);
@@ -1905,46 +1911,46 @@ void EkrLvup_PutWindowOffScreen(struct ProcEkrlvup *proc);
 void EkrLvup_ResetScreen(struct ProcEkrlvup *proc);
 void EkrLvup_OnEnd(struct ProcEkrlvup *proc);
 
-struct Proc08606254 {
+struct ProcEkrlvupSubAnimeEmulator {
     PROC_HEADER;
 
-    /* 29 */ u8 unk_29;
+    /* 29 */ u8 act_type;
 
     STRUCT_PAD(0x2A, 0x2C);
 
-    /* 2C */ i16 unk_2C;
-    /* 2E */ i16 unk_2E;
+    /* 2C */ i16 timer;
+    /* 2E */ i16 scr_offset;
 
     STRUCT_PAD(0x30, 0x32);
 
-    /* 32 */ u16 unk_32;
-    /* 34 */ u16 unk_34;
+    /* 32 */ u16 x1;
+    /* 34 */ u16 x2;
 
     STRUCT_PAD(0x36, 0x3A);
 
-    /* 3A */ u16 unk_3A;
-    /* 3C */ u16 unk_3C;
+    /* 3A */ u16 y1;
+    /* 3C */ u16 y2;
 
     STRUCT_PAD(0x40, 0x44);
 
     /* 44 */ const AnimScr *scr;
-    /* 48 */ int unk_48;
-    /* 4C */ int unk_4C;
+    /* 48 */ const void *sprite_data;
+    /* 4C */ int oam2;
 };
 
-struct Proc08606254 *func_fe6_0805E140(int a, int b, AnimScr *scr, int c);
-void func_fe6_0805E180(struct Proc08606254 *proc);
+ProcPtr NewEkrlvupSubAnimeEmulator(int x, int y, const AnimScr *scr, int act_type);
+void EkrlvupSubAnimeEmulator_Loop(struct ProcEkrlvupSubAnimeEmulator *proc);
 ProcPtr NewEfxPartsofScroll(void);
-void EfxUpdatePartsofScroll(void);
-// func_fe6_0805E2BC
-// func_fe6_0805E2C0
+void EfxPartsofScroll_LoopExt(void);
+void EfxPartsofScroll_OnEnd(ProcPtr proc);
+void EfxPartsofScroll_Loop(ProcPtr proc);
 ProcPtr NewEfxPartsofScroll2(void);
-// func_fe6_0805E2E4
-// func_fe6_0805E2E8
+void EfxPartsofScroll2_OnEnd(ProcPtr proc);
+void EfxPartsofScroll2_Loop(ProcPtr proc);
 ProcPtr NewEfxleveluphb(void);
-// func_fe6_0805E43C
-// func_fe6_0805E448
-// func_fe6_0805E454
+void Efxleveluphb_OnEnd(ProcPtr proc);
+void Efxleveluphb_Init(ProcPtr proc);
+void Efxleveluphb_Loop(ProcPtr proc);
 void EkrLvupHBlank(void);
 void EfxPartsofScroll2HBlank(void);
 
@@ -2595,11 +2601,11 @@ extern CONST_DATA struct ProcScr ProcScr_EfxBlackInOutUnit[];
 extern CONST_DATA struct ProcScr ProcScr_EfxClasschgRST[];
 extern CONST_DATA struct FaceVramEnt FaceConfig_EkrLevelup[];
 extern CONST_DATA struct ProcScr ProcScr_EkrLevelup[];
-// ??? ProcScr_Ekrlvup_08606254
-// ??? gUnk_0860626C
-// ??? gUnk_0860628C
-// ??? gUnk_086062AC
-// ??? gUnk_086062EC
+extern CONST_DATA struct ProcScr ProcScr_EkrlvupSubAnimeEmulator[];
+extern CONST_DATA struct ProcScr ProcScr_EfxPartsofScroll[];
+extern CONST_DATA struct ProcScr ProcScr_EfxPartsofScroll2[];
+extern CONST_DATA s16 EfxPartsofScroll2_RefTable[];
+extern CONST_DATA struct ProcScr ProcScr_Efxleveluphb[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriangle[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriPegasusKnight[];
 extern CONST_DATA struct ProcScr ProcScr_EkrTriPegasusKnightBG[];

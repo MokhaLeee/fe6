@@ -362,7 +362,7 @@ void EkrLvup_Init(struct ProcEkrlvup *proc)
 	gpProcEfxPartsofScroll = NewEfxPartsofScroll();
 	gpProcEfxleveluphb = NewEfxleveluphb();
 
-	EfxUpdatePartsofScroll();
+	EfxPartsofScroll_LoopExt();
 	EkrGauge_Setup44(2);
 	DisableEfxStatusUnits(proc->anim_this);
 	DisableEfxStatusUnits(proc->anim_other);
@@ -393,10 +393,11 @@ void EkrLvup_InitLevelUpBox(struct ProcEkrlvup *proc)
 	EnablePalSync();
 
 	if (proc->is_promotion == false) {
-		struct Proc08606254 *child;
+		struct ProcEkrlvupSubAnimeEmulator *child;
 
-		child = func_fe6_0805E140(anim->xPosition, 0x30, AnimScr_EkrlvupfxUnk_085CCC40, 0);
-		child->unk_4C = 0x10A0;
+		child = NewEkrlvupSubAnimeEmulator(
+			anim->xPosition, 0x30, AnimScr_EkrlvupfxUnk_085CCC40, EKR_SUBANIMEMU_ACT_ONE_TURN);
+		child->oam2 = OAM2_PAL(OBPAL_EFX_SPELL_BG) + OAM2_CHR(VRAMOFF_OBJ_1400 / CHR_SIZE);
 		proc->timer = 0;
 	} else
 		proc->timer = EKR_LVUP_UI_BASE;
