@@ -318,12 +318,12 @@ void EkrLvup_Init(struct ProcEkrlvup *proc)
 		NewEkrTerrainfx(desc);
 
 		emu = desc->proc1;
-		emu->oam2Base &= (u16)~OAM2_LAYER(0x3);
-		emu->oam2Base |=       OAM2_LAYER(0x3);
+		emu->oam2 &= (u16)~OAM2_LAYER(0x3);
+		emu->oam2 |=       OAM2_LAYER(0x3);
 
 		emu = desc->proc2;
-		emu->oam2Base &= (u16)~OAM2_LAYER(0x3);
-		emu->oam2Base |=       OAM2_LAYER(0x3);
+		emu->oam2 &= (u16)~OAM2_LAYER(0x3);
+		emu->oam2 |=       OAM2_LAYER(0x3);
 	}
 
 	proc->anim_this->oam2  &= ~OAM2_LAYER(0x3);
@@ -393,7 +393,7 @@ void EkrLvup_InitLevelUpBox(struct ProcEkrlvup *proc)
 	EnablePalSync();
 
 	if (proc->is_promotion == false) {
-		struct ProcEkrlvupSubAnimeEmulator *child;
+		struct ProcEkrSubAnimeEmulator *child;
 
 		child = NewEkrlvupSubAnimeEmulator(
 			anim->xPosition, 0x30, AnimScr_EkrlvupfxUnk_085CCC40, EKR_SUBANIMEMU_ACT_ONE_TURN);

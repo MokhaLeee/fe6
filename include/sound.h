@@ -18,7 +18,7 @@ extern struct MusicPlayer gMusicPlayer_MainBgm;
 
 int GetCurrentBgmSong(void);
 bool IsBgmPlaying(void);
-void func_fe6_08002F9C(int volume);
+void SetSeVolume(int volume);
 void SetBgmVolume(int volume);
 void FadeBgmOut(int speed);
 void EarthQuakeSoundFadeOut(int speed);

@@ -1684,7 +1684,7 @@ void EkrModifyBarfx(u16 * tm, int);
 // func_fe6_0805B4D8
 void EfxPalBlackInOut(u16 * pal_buf, int line, int length, int ref);
 void EfxPalWhiteInOut(u16 * pal_buf, int line, int length, int ref);
-void EfxPalFlashingInOut(u16 const * pal_buf, int line, int length, int r0, int g0, int b0);
+void EfxPalFlashingInOut(u16 *pal_buf, int line, int length, int r0, int g0, int b0);
 void EfxPalModifyPetrifyEffect(u16 * pal_buf, int line, int length);
 void EfxSplitColor(u16 * pal, u8 * dst, u32 length);
 void EfxSplitColorPetrify(u16 * src, u8 * dst, u32 length);
@@ -1696,27 +1696,30 @@ int BanimSpawnRandB(int a);
 struct ProcEkrSubAnimeEmulator {
     PROC_HEADER;
 
-    /* 29 */ u8 type;
+    /* 29 */ u8 act_type;
     /* 2A */ u8 valid;
+
+    STRUCT_PAD(0x2B, 0x2C);
+
     /* 2C */ i16 timer;
-    /* 2E */ i16 scr_cur;
+    /* 2E */ i16 scr_offset;
 
     STRUCT_PAD(0x30, 0x32);
 
-    /* 32 */ i16 x1;
-    /* 34 */ i16 x2;
+    /* 32 */ u16 x1;
+    /* 34 */ u16 x2;
 
     STRUCT_PAD(0x36, 0x3A);
 
-    /* 3A */ i16 y1;
-    /* 3C */ i16 y2;
+    /* 3A */ u16 y1;
+    /* 3C */ u16 y2;
 
-    STRUCT_PAD(0x3E, 0x44);
+    STRUCT_PAD(0x40, 0x44);
 
-    /* 44 */ u32 *anim_scr;
-    /* 48 */ void * sprite;
-    /* 4C */ int oam2Base;
-    /* 50 */ int oamBase;
+    /* 44 */ const AnimScr *scr;
+    /* 48 */ const void *sprite_data;
+    /* 4C */ int oam2;
+    /* 4C */ int oam;
 };
 
 enum {
@@ -1725,7 +1728,7 @@ enum {
     EKR_SUBANIMEMU_ACT_END
 };
 
-struct ProcEkrSubAnimeEmulator * NewEkrsubAnimeEmulator(int x, int y, u32 *anim_scr, int type, int oam2Base, int oamBase, ProcPtr parent);
+ProcPtr NewEkrsubAnimeEmulator(int x, int y, u32 *anim_scr, int type, int oam2Base, int oamBase, ProcPtr parent);
 void EkrsubAnimeEmulator_Loop(struct ProcEkrSubAnimeEmulator *proc);
 int GetAnimSpriteRotScaleX(u32 header);
 int GetAnimSpriteRotScaleY(u32 header);
@@ -1736,8 +1739,8 @@ void DoM4aSongNumStop(int num);
 // func_fe6_0805BD64
 void EfxStopBGM1(void);
 void UnregisterEfxSoundSeExist(void);
-// func_fe6_0805BDA8
-// func_fe6_0805BDB4
+// RegisterEfxSoundSeExist
+// CheckEfxSoundSeExist
 void M4aPlayWithPostionCtrl(int songid, int x, int flag);
 void EfxPlaySEwithCmdCtrl(struct BaSprite *anim, int cmd);
 // func_fe6_0805C1A0
@@ -1911,35 +1914,8 @@ void EkrLvup_PutWindowOffScreen(struct ProcEkrlvup *proc);
 void EkrLvup_ResetScreen(struct ProcEkrlvup *proc);
 void EkrLvup_OnEnd(struct ProcEkrlvup *proc);
 
-struct ProcEkrlvupSubAnimeEmulator {
-    PROC_HEADER;
-
-    /* 29 */ u8 act_type;
-
-    STRUCT_PAD(0x2A, 0x2C);
-
-    /* 2C */ i16 timer;
-    /* 2E */ i16 scr_offset;
-
-    STRUCT_PAD(0x30, 0x32);
-
-    /* 32 */ u16 x1;
-    /* 34 */ u16 x2;
-
-    STRUCT_PAD(0x36, 0x3A);
-
-    /* 3A */ u16 y1;
-    /* 3C */ u16 y2;
-
-    STRUCT_PAD(0x40, 0x44);
-
-    /* 44 */ const AnimScr *scr;
-    /* 48 */ const void *sprite_data;
-    /* 4C */ int oam2;
-};
-
 ProcPtr NewEkrlvupSubAnimeEmulator(int x, int y, const AnimScr *scr, int act_type);
-void EkrlvupSubAnimeEmulator_Loop(struct ProcEkrlvupSubAnimeEmulator *proc);
+void EkrlvupSubAnimeEmulator_Loop(struct ProcEkrSubAnimeEmulator *proc);
 ProcPtr NewEfxPartsofScroll(void);
 void EfxPartsofScroll_LoopExt(void);
 void EfxPartsofScroll_OnEnd(ProcPtr proc);
@@ -3683,8 +3659,8 @@ extern u16 const Tsa_EkrFaefx9[];
 extern u16 const Tsa_EkrFaefx10[];
 extern u16 const Tsa_EkrFaefx11[];
 extern u16 const Tsa_EkrFaefx12[];
-// extern ??? gUnk_081C9EF4
-// extern ??? gUnk_081C9F14
+extern const s16 gAnimSpriteRotScalePosX[];
+extern const s16 gAnimSpriteRotScalePosY[];
 // extern ??? EkrLvupMsgsStr
 // extern ??? EkrLvupMsgsMag
 // extern ??? sEfxLvupPartsPos

@@ -13,7 +13,7 @@ struct ProcScr CONST_DATA ProcScr_EkrlvupSubAnimeEmulator[] = {
 
 ProcPtr NewEkrlvupSubAnimeEmulator(int x, int y, const AnimScr *scr, int act_type)
 {
-	struct ProcEkrlvupSubAnimeEmulator *proc;
+	struct ProcEkrSubAnimeEmulator *proc;
 
 	proc = SpawnProc(ProcScr_EkrlvupSubAnimeEmulator, PROC_TREE_3);
 
@@ -30,28 +30,15 @@ ProcPtr NewEkrlvupSubAnimeEmulator(int x, int y, const AnimScr *scr, int act_typ
 	return proc;
 }
 
-void EkrlvupSubAnimeEmulator_Loop(struct ProcEkrlvupSubAnimeEmulator *proc)
+void EkrlvupSubAnimeEmulator_Loop(struct ProcEkrSubAnimeEmulator *proc)
 {
 	struct Anim local_anim;
 	const AnimScr *scr = proc->scr;
 
 	if (proc->timer == 0) {
-		int type;
-		AnimScr inst_it;
-		const AnimScr *inst;
+		u32 inst = scr[proc->scr_offset];
 
-#if NONMATCHING
-		inst = &scr[proc->scr_offset];
-#else
-		int tmp =  proc->scr_offset * 4;
-		inst = (void *)tmp = tmp + (const void *)scr;
-#endif
-		inst_it = *inst;
-
-		/* ANINS_GET_TYPE */
-		type = ((u8 *)inst)[3] & 0x3F;
-
-		if (type == BAS_INS_KIND_STOP) {
+		if (BAS_INS_KIND_STOP == ANINS_GET_TYPE(inst)) {
 			switch (proc->act_type) {
 			case EKR_SUBANIMEMU_ACT_ONE_TURN:
 				Proc_Break(proc);
@@ -71,12 +58,12 @@ void EkrlvupSubAnimeEmulator_Loop(struct ProcEkrlvupSubAnimeEmulator *proc)
 			default:
 				break;
 			}
-		} else if (type == BAS_INS_KIND_WAIT) {
-			proc->timer = inst_it;
+		} else if (BAS_INS_KIND_WAIT == ANINS_GET_TYPE(inst)) {
+			proc->timer = inst;
 			proc->scr_offset++;
 		} else {
-			proc->sprite_data = ANINS_FORCESPRITE_GET_ADDRESS(inst_it);
-			proc->timer = ANINS_FORCESPRITE_GET_DELAY(inst_it);
+			proc->sprite_data = ANINS_FORCESPRITE_GET_ADDRESS(inst);
+			proc->timer = ANINS_FORCESPRITE_GET_DELAY(inst);
 			proc->scr_offset++;
 		}
 	}

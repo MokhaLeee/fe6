@@ -2,15 +2,6 @@
 
 	.syntax unified
 
-	.section .rodata
-	.global gUnk_081C9EF4
-gUnk_081C9EF4: @ 081C9EF4
-	.incbin "fe6-base.gba", 0x1C9EF4, (0x1C9F14 - 0x1C9EF4) @ length: 0020
-
-	.global gUnk_081C9F14
-gUnk_081C9F14: @ 081C9F14
-	.incbin "fe6-base.gba", 0x1C9F14, (0x1C9F34 - 0x1C9F14) @ length: 0020
-
 	.section .data
 	.global ProcScr_EfxSoundSE
 ProcScr_EfxSoundSE: @ 08605D40
@@ -47,12 +38,12 @@ EfxPlaySE: @ 0x0805BCA8
 	lsrs r4, r0, #0x18
 	cmp r4, #0
 	bne .L0805BCFA
-	bl func_fe6_0805BDB4
+	bl CheckEfxSoundSeExist
 	cmp r0, #0
 	bne .L0805BCEC
-	bl func_fe6_0805BDA8
+	bl RegisterEfxSoundSeExist
 	adds r0, r5, #0
-	bl func_fe6_08002F9C
+	bl SetSeVolume
 	ldr r0, .L0805BCE8 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
@@ -94,12 +85,12 @@ func_fe6_0805BD04: @ 0x0805BD04
 	bl Proc_Break
 	b .L0805BD4A
 .L0805BD1E:
-	bl func_fe6_0805BDB4
+	bl CheckEfxSoundSeExist
 	cmp r0, #0
 	bne .L0805BD4A
-	bl func_fe6_0805BDA8
+	bl RegisterEfxSoundSeExist
 	ldr r0, [r4, #0x44]
-	bl func_fe6_08002F9C
+	bl SetSeVolume
 	ldr r0, .L0805BD50 @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
@@ -170,8 +161,8 @@ UnregisterEfxSoundSeExist: @ 0x0805BD9C
 	.align 2, 0
 .L0805BDA4: .4byte gUnk_Banim_0201F050
 
-	thumb_func_start func_fe6_0805BDA8
-func_fe6_0805BDA8: @ 0x0805BDA8
+	thumb_func_start RegisterEfxSoundSeExist
+RegisterEfxSoundSeExist: @ 0x0805BDA8
 	ldr r1, .L0805BDB0 @ =gUnk_Banim_0201F050
 	movs r0, #1
 	str r0, [r1]
@@ -179,8 +170,8 @@ func_fe6_0805BDA8: @ 0x0805BDA8
 	.align 2, 0
 .L0805BDB0: .4byte gUnk_Banim_0201F050
 
-	thumb_func_start func_fe6_0805BDB4
-func_fe6_0805BDB4: @ 0x0805BDB4
+	thumb_func_start CheckEfxSoundSeExist
+CheckEfxSoundSeExist: @ 0x0805BDB4
 	ldr r0, .L0805BDBC @ =gUnk_Banim_0201F050
 	ldr r0, [r0]
 	bx lr
