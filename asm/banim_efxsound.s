@@ -2,278 +2,27 @@
 
 	.syntax unified
 
-	.section .rodata
-	.global gUnk_081C9EF4
-gUnk_081C9EF4: @ 081C9EF4
-	.incbin "fe6-base.gba", 0x1C9EF4, (0x1C9F14 - 0x1C9EF4) @ length: 0020
-
-	.global gUnk_081C9F14
-gUnk_081C9F14: @ 081C9F14
-	.incbin "fe6-base.gba", 0x1C9F14, (0x1C9F34 - 0x1C9F14) @ length: 0020
-
 	.section .data
-	.global ProcScr_EfxSoundSE
-ProcScr_EfxSoundSE: @ 08605D40
-	.incbin "fe6-base.gba", 0x605D40, (0x605F18 - 0x605D40) @ length: 01D8
+
+	.incbin "fe6-base.gba", 0x605D58, (0x605F18 - 0x605D58) @ length: 01D8
 
 	.global gBanimBossBGMs
 gBanimBossBGMs: @ 08605F18
 	.incbin "fe6-base.gba", 0x605F18, (0x605F34 - 0x605F18) @ length: 001C
 
-	.global gUnk_08605F34
-gUnk_08605F34: @ 08605F34
+	.global gBanimSongTable1
+gBanimSongTable1: @ 08605F34
 	.incbin "fe6-base.gba", 0x605F34, (0x605F50 - 0x605F34) @ length: 001C
 
-	.global gUnk_08605F50
-gUnk_08605F50: @ 08605F50
+	.global gBanimSongTable2
+gBanimSongTable2: @ 08605F50
 	.incbin "fe6-base.gba", 0x605F50, (0x605F6C - 0x605F50) @ length: 001C
 
-	.global gUnk_08605F6C
-gUnk_08605F6C: @ 08605F6C
+	.global gBanimSongTable3
+gBanimSongTable3: @ 08605F6C
 	.incbin "fe6-base.gba", 0x605F6C, (0x605F88 - 0x605F6C) @ length: 001C
 
 	.section .text
-
-	thumb_func_start EfxPlaySE
-EfxPlaySE: @ 0x0805BCA8
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	adds r5, r1, #0
-	ldr r1, .L0805BCE4 @ =gBmSt
-	movs r0, #0x20
-	ldrb r1, [r1, #4]
-	ands r0, r1
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-	cmp r4, #0
-	bne .L0805BCFA
-	bl func_fe6_0805BDB4
-	cmp r0, #0
-	bne .L0805BCEC
-	bl func_fe6_0805BDA8
-	adds r0, r5, #0
-	bl func_fe6_08002F9C
-	ldr r0, .L0805BCE8 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L0805BCFA
-	lsls r0, r6, #0x10
-	lsrs r0, r0, #0x10
-	bl m4aSongNumStart
-	b .L0805BCFA
-	.align 2, 0
-.L0805BCE4: .4byte gBmSt
-.L0805BCE8: .4byte gPlaySt
-.L0805BCEC:
-	ldr r0, .L0805BD00 @ =ProcScr_EfxSoundSE
-	movs r1, #3
-	bl SpawnProc
-	str r5, [r0, #0x44]
-	str r6, [r0, #0x48]
-	strh r4, [r0, #0x2c]
-.L0805BCFA:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805BD00: .4byte ProcScr_EfxSoundSE
-
-	thumb_func_start func_fe6_0805BD04
-func_fe6_0805BD04: @ 0x0805BD04
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #5
-	bne .L0805BD1E
-	adds r0, r4, #0
-	bl Proc_Break
-	b .L0805BD4A
-.L0805BD1E:
-	bl func_fe6_0805BDB4
-	cmp r0, #0
-	bne .L0805BD4A
-	bl func_fe6_0805BDA8
-	ldr r0, [r4, #0x44]
-	bl func_fe6_08002F9C
-	ldr r0, .L0805BD50 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L0805BD44
-	ldr r0, [r4, #0x48]
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	bl m4aSongNumStart
-.L0805BD44:
-	adds r0, r4, #0
-	bl Proc_Break
-.L0805BD4A:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805BD50: .4byte gPlaySt
-
-	thumb_func_start DoM4aSongNumStop
-DoM4aSongNumStop: @ 0x0805BD54
-	push {lr}
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	bl m4aSongNumStop
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0805BD64
-func_fe6_0805BD64: @ 0x0805BD64
-	push {r4, lr}
-	adds r4, r0, #0
-	adds r2, r1, #0
-	ldr r1, .L0805BD88 @ =gBmSt
-	movs r0, #0x20
-	ldrb r1, [r1, #4]
-	ands r0, r1
-	cmp r0, #0
-	bne .L0805BD82
-	adds r0, r2, #0
-	bl SetBgmVolume
-	adds r0, r4, #0
-	bl OverrideBgm
-.L0805BD82:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805BD88: .4byte gBmSt
-
-	thumb_func_start EfxStopBGM1
-EfxStopBGM1: @ 0x0805BD8C
-	push {lr}
-	ldr r0, .L0805BD98 @ =gMusicPlayer_FightBgm
-	bl m4aMPlayStop
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805BD98: .4byte gMusicPlayer_FightBgm
-
-	thumb_func_start UnregisterEfxSoundSeExist
-UnregisterEfxSoundSeExist: @ 0x0805BD9C
-	ldr r1, .L0805BDA4 @ =gUnk_Banim_0201F050
-	movs r0, #0
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-.L0805BDA4: .4byte gUnk_Banim_0201F050
-
-	thumb_func_start func_fe6_0805BDA8
-func_fe6_0805BDA8: @ 0x0805BDA8
-	ldr r1, .L0805BDB0 @ =gUnk_Banim_0201F050
-	movs r0, #1
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-.L0805BDB0: .4byte gUnk_Banim_0201F050
-
-	thumb_func_start func_fe6_0805BDB4
-func_fe6_0805BDB4: @ 0x0805BDB4
-	ldr r0, .L0805BDBC @ =gUnk_Banim_0201F050
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-.L0805BDBC: .4byte gUnk_Banim_0201F050
-
-	thumb_func_start M4aPlayWithPostionCtrl
-M4aPlayWithPostionCtrl: @ 0x0805BDC0
-	push {r4, r5, r6, lr}
-	adds r4, r0, #0
-	adds r6, r1, #0
-	ldr r1, .L0805BDEC @ =gBmSt
-	movs r0, #0x20
-	ldrb r1, [r1, #4]
-	ands r0, r1
-	cmp r0, #0
-	bne .L0805BE68
-	cmp r2, #0
-	beq .L0805BE38
-	cmp r6, #0x77
-	bgt .L0805BDF0
-	adds r0, r6, #0
-	muls r0, r6, r0
-	movs r1, #0x78
-	bl Div
-	adds r5, r0, #0
-	subs r5, #0x78
-	b .L0805BE04
-	.align 2, 0
-.L0805BDEC: .4byte gBmSt
-.L0805BDF0:
-	movs r0, #0xf0
-	subs r0, r0, r6
-	adds r1, r0, #0
-	muls r1, r0, r1
-	adds r0, r1, #0
-	movs r1, #0x78
-	bl Div
-	movs r1, #0x78
-	subs r5, r1, r0
-.L0805BE04:
-	ldr r2, .L0805BE2C @ =gMusicPlayerTable
-	ldr r0, .L0805BE30 @ =gSongTable
-	lsls r1, r4, #3
-	adds r1, r1, r0
-	ldrh r3, [r1, #4]
-	lsls r0, r3, #1
-	adds r0, r0, r3
-	lsls r0, r0, #2
-	adds r0, r0, r2
-	ldr r4, [r0]
-	adds r0, r4, #0
-	bl m4aMPlayImmInit
-	ldr r1, .L0805BE34 @ =0x0000FFFF
-	lsls r2, r5, #0x18
-	asrs r2, r2, #0x18
-	adds r0, r4, #0
-	bl m4aMPlayPanpotControl
-	b .L0805BE68
-	.align 2, 0
-.L0805BE2C: .4byte gMusicPlayerTable
-.L0805BE30: .4byte gSongTable
-.L0805BE34: .4byte 0x0000FFFF
-.L0805BE38:
-	ldr r2, .L0805BE70 @ =gMusicPlayerTable
-	ldr r0, .L0805BE74 @ =gSongTable
-	lsls r1, r4, #3
-	adds r1, r1, r0
-	ldrh r3, [r1, #4]
-	lsls r0, r3, #1
-	adds r0, r0, r3
-	lsls r0, r0, #2
-	adds r0, r0, r2
-	ldr r4, [r0]
-	adds r0, r4, #0
-	bl m4aMPlayImmInit
-	ldr r5, .L0805BE78 @ =0x0000FFFF
-	adds r0, r6, #0
-	bl Screen2Pan
-	adds r2, r0, #0
-	lsls r2, r2, #0x18
-	asrs r2, r2, #0x18
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl m4aMPlayPanpotControl
-.L0805BE68:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805BE70: .4byte gMusicPlayerTable
-.L0805BE74: .4byte gSongTable
-.L0805BE78: .4byte 0x0000FFFF
 
 	thumb_func_start EfxPlaySEwithCmdCtrl
 EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
@@ -310,7 +59,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 .L0805BEBA:
 	lsls r0, r4, #0x10
 	lsrs r0, r0, #0x10
-	bl func_fe6_0805C1A0
+	bl GetEfxSoundType1FromTerrain
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
 	cmp r4, #0x14
@@ -337,7 +86,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 .L0805BEF2:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl func_fe6_0805C2E0
+	bl GetEfxSoundType2FromBaseCon
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	ldr r4, .L0805BF34 @ =0x0000FFFF
@@ -423,20 +172,20 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	movs r4, #0xd1
 	b .L0805C16C
 .L0805C008:
-	ldr r1, .L0805C00C @ =gUnk_08605F34
+	ldr r1, .L0805C00C @ =gBanimSongTable1
 	b .L0805C0D6
 	.align 2, 0
-.L0805C00C: .4byte gUnk_08605F34
+.L0805C00C: .4byte gBanimSongTable1
 .L0805C010:
-	ldr r1, .L0805C014 @ =gUnk_08605F50
+	ldr r1, .L0805C014 @ =gBanimSongTable2
 	b .L0805C0D6
 	.align 2, 0
-.L0805C014: .4byte gUnk_08605F50
+.L0805C014: .4byte gBanimSongTable2
 .L0805C018:
-	ldr r1, .L0805C01C @ =gUnk_08605F6C
+	ldr r1, .L0805C01C @ =gBanimSongTable3
 	b .L0805C0D6
 	.align 2, 0
-.L0805C01C: .4byte gUnk_08605F6C
+.L0805C01C: .4byte gBanimSongTable3
 .L0805C020:
 	adds r0, r6, #0
 	bl EfxPlayCriticalHittedSFX
@@ -655,8 +404,8 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805C1A0
-func_fe6_0805C1A0: @ 0x0805C1A0
+	thumb_func_start GetEfxSoundType1FromTerrain
+GetEfxSoundType1FromTerrain: @ 0x0805C1A0
 	push {r4, lr}
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
@@ -782,8 +531,8 @@ IsAnimSoundInPosition: @ 0x0805C2B0
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_0805C2E0
-func_fe6_0805C2E0: @ 0x0805C2E0
+	thumb_func_start GetEfxSoundType2FromBaseCon
+GetEfxSoundType2FromBaseCon: @ 0x0805C2E0
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r2, r0, #0
@@ -1053,7 +802,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	beq .L0805C538
 	b .L0805C728
 .L0805C538:
-	ldr r1, .L0805C57C @ =gUnk_Banim_0201F04C
+	ldr r1, .L0805C57C @ =gEkrMainBgmPlaying
 	movs r0, #1
 	str r0, [r1]
 	ldr r1, .L0805C580 @ =gBanimFactionPal
@@ -1078,13 +827,13 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x3a
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 	.align 2, 0
 .L0805C570: .4byte gpEkrBattleUnitLeft
 .L0805C574: .4byte gpEkrBattleUnitRight
 .L0805C578: .4byte gBmSt
-.L0805C57C: .4byte gUnk_Banim_0201F04C
+.L0805C57C: .4byte gEkrMainBgmPlaying
 .L0805C580: .4byte gBanimFactionPal
 .L0805C584: .4byte gEkrInitialHitSide
 .L0805C588:
@@ -1095,7 +844,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x1c
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 	.align 2, 0
 .L0805C59C: .4byte gEkrDistanceType
@@ -1117,7 +866,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x19
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 .L0805C5C4:
 	movs r2, #0
@@ -1152,7 +901,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x17
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 .L0805C5FE:
 	movs r2, #0
@@ -1170,7 +919,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x18
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 .L0805C61E:
 	movs r2, #0
@@ -1183,7 +932,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x15
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 .L0805C636:
 	movs r2, #0
@@ -1208,7 +957,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x16
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 .L0805C666:
 	movs r2, #0
@@ -1231,7 +980,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x40
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 	.align 2, 0
 .L0805C694: .4byte gBattleSt
@@ -1241,7 +990,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x41
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 .L0805C6A8:
 	movs r2, #0
@@ -1262,7 +1011,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0x14
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 	.align 2, 0
 .L0805C6D0: .4byte gBattleSt
@@ -1307,10 +1056,10 @@ EkrPlayMainBGM: @ 0x0805C520
 	movs r1, #0x80
 	lsls r1, r1, #1
 	adds r0, r5, #0
-	bl func_fe6_0805BD64
+	bl EfxOverrideBgm
 	b .L0805C72E
 .L0805C728:
-	ldr r1, .L0805C734 @ =gUnk_Banim_0201F04C
+	ldr r1, .L0805C734 @ =gEkrMainBgmPlaying
 	movs r0, #0
 	str r0, [r1]
 .L0805C72E:
@@ -1318,7 +1067,7 @@ EkrPlayMainBGM: @ 0x0805C520
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0805C734: .4byte gUnk_Banim_0201F04C
+.L0805C734: .4byte gEkrMainBgmPlaying
 
 	thumb_func_start EkrRestoreBGM
 EkrRestoreBGM: @ 0x0805C738
@@ -1332,7 +1081,7 @@ EkrRestoreBGM: @ 0x0805C738
 	ands r0, r1
 	cmp r0, #0
 	bne .L0805C756
-	ldr r0, .L0805C760 @ =gUnk_Banim_0201F04C
+	ldr r0, .L0805C760 @ =gEkrMainBgmPlaying
 	ldr r0, [r0]
 	cmp r0, #0
 	bne .L0805C764
@@ -1341,7 +1090,7 @@ EkrRestoreBGM: @ 0x0805C738
 	b .L0805C768
 	.align 2, 0
 .L0805C75C: .4byte gBmSt
-.L0805C760: .4byte gUnk_Banim_0201F04C
+.L0805C760: .4byte gEkrMainBgmPlaying
 .L0805C764:
 	bl RestoreBgm
 .L0805C768:

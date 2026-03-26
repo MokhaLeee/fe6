@@ -104,18 +104,18 @@ void EkrBaStart_InitBattleScreen(struct ProcEkrBattleStarting *proc)
 		case EKR_DISTANCE_MONOCOMBAT:
 			if (gBanimValid[POS_L] == false) {
 				EkrGauge_Set4C();
-				func_fe6_080441FC();
+				EkrDispUpSet4C();
 			}
 
 			if (gBanimValid[POS_R] == false) {
 				EkrGauge_Set50();
-				func_fe6_0804420C();
+				EkrDispUpSet50();
 			}
 			break;
 
 		case EKR_DISTANCE_PROMOTION:
 			EkrGauge_Set4C();
-			func_fe6_080441FC();
+			EkrDispUpSet4C();
 			break;
 
 		default:

@@ -7,6 +7,7 @@
 #include "banim_ekrbattle.h"
 #include "constants/songs.h"
 
+EWRAM_OVERLAY(banim) ProcPtr gpProcEkrTogiColor = NULL;
 EWRAM_DATA int gBaArenaFlag = 0;
 
 void SetBanimArenaFlag(int flag)

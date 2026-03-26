@@ -68,3 +68,9 @@
         num = max;                  \
     if (num < min)                  \
         num = min;
+
+#define LIMIT_AREA2(num, min, max)  \
+    if (num < min)                  \
+        num = min;                  \
+    else if (num > max)             \
+        num = max;

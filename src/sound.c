@@ -68,7 +68,7 @@ bool IsBgmPlaying(void)
     return sSoundSt.is_song_playing;
 }
 
-void func_fe6_08002F9C(int volume)
+void SetSeVolume(int volume)
 {
     m4aMPlayVolumeControl(&gMPlayInfo_SE1_SYS1, 0xFFFF, volume);
     m4aMPlayVolumeControl(&gMPlayInfo_SE2_SYS2, 0xFFFF, volume);

@@ -152,8 +152,12 @@ SECTIONS
         . = 0x000058; gpBanimModesRight = .;
         . = 0x00005C; gpProcEkrBattle = .;
         . = 0x000060; gpProcEkrGauge = .;
-        . = 0x000064; gpProcEkrDispUP = .;
-        . = 0x000080; gBanimImgSheetBufs = .;
+        . = 0x000064;
+        . = ALIGN(4); src/banim_ekrdispup.o(ewram_overlay_banim);
+
+        /* unused free space: size=0x18 */
+
+        . = ALIGN(32); gBanimImgSheetBufs = .;
         . = 0x001080; gUnk_Banim_02001080 = .;
         . = 0x002080; gUnk_Banim_02002080 = .;
         . = 0x003080; gUnk_Banim_02003080 = .;
@@ -161,7 +165,7 @@ SECTIONS
         . = 0x004120; gBanimPaletteRight = .;
         . = 0x0041C0; gBanimOamBufs = .;
         . = 0x00F1C0; gBanimScrs = .;
-        . = 0x0145C0; gBanimTerrainfxBuf = .;
+        . = 0x0145C0; gBanimBuf_20145C0 = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
         . = 0x0165C0; gEfxPal = .;
         . = 0x0169C0; Buf_EkrGaugeNumImg = .;
@@ -214,51 +218,17 @@ SECTIONS
         . = 0x01E124; gBanimDoneFlag = .;
         . = 0x01E12C; gEkrBgPosition = .;
         . = 0x01E138; gpProcEfxAnimeDrv = .;
-        . = 0x01E13C; gpImgSheet = .;
-        . = 0x01E144; gpProcEkrTogiColor = .;
-        . = 0x01E14C; gEkrBg2ScrollFlip = .;
-        . = 0x01E150; gpBg2ScrollOffsetStart = .;
-        . = 0x01E154; gpBg2ScrollOffset = .;
-        . = 0x01E158; gpBg2ScrollOffsetTable1 = .;
-        . = 0x01E298; gpBg2ScrollOffsetTable2 = .;
-        . = 0x01E3D8; gEkrBg1ScrollFlip = .;
-        . = 0x01E3DC; gpBg1ScrollOffsetStart = .;
-        . = 0x01E3E0; gpBg1ScrollOffset = .;
-        . = 0x01E3E4; gpBg1ScrollOffsetList1 = .;
-        . = 0x01E524; gpBg1ScrollOffsetList2 = .;
-        . = 0x01E7A4; gEfxMagicChk_N = .;
-        . = 0x01E7A8; gEfxPurgeCounter = .;
-        . = 0x01E7AC; EkrDragonProcs = .;
-        . = 0x01E7B4; gEkrDragonDeamonProcs = .;
-        . = 0x01E7BC; gpProcEkrIdunnBodyMain = .;
-        . = 0x01E7C0; gEkrDragonfxState = .;
-        . = 0x01E7C4; gEkrDragonDeadFlags = .;
-        . = 0x01E7C8; gEkrDragonState = .;
-        . = 0x01E7CC; gUnk_Banim_0201E7CC = .;
-        . = 0x01EFCC; gEkrBgPaletteBackup1 = .;
-        . = 0x01EFEC; gEkrBgPaletteBackup2 = .;
-        . = 0x01F00C; gEkrBgPaletteBackup3 = .;
-        . = 0x01F04C; gUnk_Banim_0201F04C = .;
-        . = 0x01F050; gUnk_Banim_0201F050 = .;
-        . = 0x01F054; gpProcEkrClasschg = .;
-        . = 0x01F058; gpProcEkrLevelup = .;
-        . = 0x01F05C; gUnk_Banim_0201F05C = .;
-        . = 0x01F07C; gUnk_Banim_0201F07C = .;
-        . = 0x01F080; gUnk_Banim_0201F080 = .;
-        . = 0x01F084; gEkrLvupTerrainfxDesc = .;
-        . = 0x01F0AC; gpEkrLvupUnit = .;
-        . = 0x01F0B0; gpEkrLvupBattleUnit = .;
-        . = 0x01F0B4; gEkrLvupPreLevel = .;
-        . = 0x01F0B6; gEkrLvupPostLevel = .;
-        . = 0x01F0B8; gEkrLvupBaseStatus = .;
-        . = 0x01F0C8; gEkrLvupPostStatus = .;
-        . = 0x01F0D8; gUnk_Banim_0201F0D8 = .;
-        . = 0x01F0DA; gUnk_Banim_0201F0DA = .;
-        . = 0x01F0DC;
+        . = 0x01E13C; gpImgSheet = .; . = . + 8;
+        . = ALIGN(4); src/banim_ekrarena.o(ewram_overlay_banim);
+        . = ALIGN(4); Banim_unused_0201E148 = .; . = . + 4;
+        . = ALIGN(4); src/banim_efxmagic.o(ewram_overlay_banim);
+        . = ALIGN(4); src/banim_dragon.o(ewram_overlay_banim);
+        . = ALIGN(4); src/banim_dragonfx_idunn.o(ewram_overlay_banim);
+        . = ALIGN(4); src/banim_efxsound.o(ewram_overlay_banim);
+        . = ALIGN(4); src/banim_ekrclasschg.o(ewram_overlay_banim);
+        . = ALIGN(4); src/banim_ekrlvup.o(ewram_overlay_banim);
         . = ALIGN(4); src/banim_ekrtriangle.o(ewram_overlay_banim);
-        . = 0x01F0E0; gpProcEkrPopup = .;
-        . = 0x01F0E4; gEkrPopupDone = .;
-        . = 0x01F0E8; /* end */
+        . = ALIGN(4); src/banim_ekrpopup.o(ewram_overlay_banim);
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -358,10 +328,7 @@ SECTIONS
         . = 0x0203CDD4 - __ewram_overlay_end;
         . = ALIGN(4); src/banim_ekrarena.o(ewram_data);
         . = ALIGN(4); src/banim_efxopmagic.o(ewram_data);
-
-        . = 0x0203CDE0 - __ewram_overlay_end; gEkrDragonJid = .;
-
-        . = 0x0203CDE4 - __ewram_overlay_end;
+        . = ALIGN(4); src/banim_dragon.o(ewram_data);
         . = ALIGN(4); src/manim.o(ewram_data);
         . = ALIGN(4); gUnk_0203D354 = .; . = . + 4;
         . = ALIGN(4); gUnk_0203D358 = .; . = . + 4;
@@ -538,7 +505,8 @@ SECTIONS
         src/banim_ekrbattle.o(.text);
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
-        asm/banim_ekrdispup.o(.text);
+        src/banim_ekrdispup.o(.text);
+        asm/banim_ekrmisc.o(.text);
         src/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
         src/banim_efxdeath.o(.text);
@@ -572,11 +540,11 @@ SECTIONS
         src/banim_dragonfx_fae.o(.text);
         src/banim_dragonfx_idunn.o(.text);
         src/banim_efxutils.o(.text);
-        asm/banim_efxutils.o(.text);
+        src/banim_efxsound.o(.text);
         asm/banim_efxsound.o(.text);
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
-        asm/banim_ekrlvup.o(.text);
+        src/banim_ekrlvupfx.o(.text);
         src/banim_ekrtriangle.o(.text);
         src/banim_bg.o(.text);
         src/banim_ekrpopup.o(.text);
@@ -735,7 +703,6 @@ SECTIONS
         . = ALIGN(4); src/banim_efxopmagic.o(.rodata);
         . = ALIGN(4); data/rodata_banim_0811AE34.o(.rodata);
         . = ALIGN(4); src/banim_efxutils.o(.rodata);
-        . = ALIGN(4); asm/banim_efxsound.o(.rodata);
         . = ALIGN(4); src/banim_ekrclasschg.o(.rodata);
         . = ALIGN(4); src/banim_ekrlvup.o(.rodata);
         . = ALIGN(4); src/banim_ekrtriangle.o(.rodata);
@@ -840,7 +807,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrbattle.o(.data);
         . = ALIGN(4); src/banim_ekrlvupfan.o(.data);
         . = ALIGN(4); asm/banim_ekrgauge.o(.data);
-        . = ALIGN(4); asm/banim_ekrdispup.o(.data);
+        . = ALIGN(4); src/banim_ekrdispup.o(.data);
         . = ALIGN(4); src/banim_efxhpbar.o(.data);
         . = ALIGN(4); src/banim_efxdeath.o(.data);
         . = ALIGN(4); src/banim_efxfarattack.o(.data);
@@ -854,7 +821,8 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmainmini.o(.data);
         . = ALIGN(4); src/banim_ekrarena.o(.data);
-        . = ALIGN(4); data/data_banim_085CCC40.o(.data);
+        . = ALIGN(4); src/banim_ekrlvupfx_data.o(.data);
+        . = ALIGN(4); src/banim_ekrterrainfx_data.o(.data);
         . = ALIGN(4); src/banim_efxhit_data.o(.data);
         . = ALIGN(4); src/banim_ekrbattleintrofx_data.o(.data);
         . = ALIGN(4); data/banim_efxmagic_.o(.data);
@@ -870,11 +838,11 @@ SECTIONS
         . = ALIGN(4); src/banim_dragonfx_idunn.o(.data);
         . = ALIGN(4); src/banim_dragonfx.o(.data);
         . = ALIGN(4); src/banim_efxutils.o(.data);
-        . = ALIGN(4); asm/banim_efxutils.o(.data);
+        . = ALIGN(4); src/banim_efxsound.o(.data);
         . = ALIGN(4); asm/banim_efxsound.o(.data);
         . = ALIGN(4); src/banim_ekrclasschg.o(.data);
         . = ALIGN(4); src/banim_ekrlvup.o(.data);
-        . = ALIGN(4); asm/banim_ekrlvup.o(.data);
+        . = ALIGN(4); src/banim_ekrlvupfx.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle.o(.data);
         . = ALIGN(4); src/banim_ekrtriangle_data.o(.data);
         . = ALIGN(4); src/banim_bg.o(.data);

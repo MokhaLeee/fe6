@@ -2,12 +2,6 @@
 	.include "gba_sprites.inc"
 	.section .data
 
-	.incbin "fe6-base.gba", 0x5CBE9C, (0x5CCC40 - 0x5CBE9C)
-
-	.global gUnk_085CCC40
-gUnk_085CCC40: @ 085CCC40
-	.incbin "fe6-base.gba", 0x5CCC40, (0x5CCD28 - 0x5CCC40) @ length: 016C
-
 .global AnimSprite_EkrTerrainfx_R_Far
 AnimSprite_EkrTerrainfx_R_Far:  @ 0x5CCD28
 	ANIM_SPRITE ATTR0_WIDE, ATTR1_SIZE_32, 0x0000, -48, 8

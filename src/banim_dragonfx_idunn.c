@@ -13,6 +13,10 @@
 
 #include "constants/songs.h"
 
+EWRAM_OVERLAY(banim) u16 gEkrBgPaletteBackup1[0x10] = {};
+EWRAM_OVERLAY(banim) u16 gEkrBgPaletteBackup2[0x10] = {};
+EWRAM_OVERLAY(banim) u16 gEkrBgPaletteBackup3[0x20] = {};
+
 struct ProcScr CONST_DATA ProcScr_EkrDragonIdunn[] = {
 	PROC_19,
 	PROC_REPEAT(EkrIdunn_BgFadeIn),

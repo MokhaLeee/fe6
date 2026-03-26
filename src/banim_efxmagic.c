@@ -8,6 +8,20 @@
 #include "constants/songs.h"
 #include "constants/videoalloc_banim.h"
 
+EWRAM_OVERLAY(banim) int gEkrBg2ScrollFlip = 0;
+EWRAM_OVERLAY(banim) u16 *gpBg2ScrollOffsetStart = NULL;
+EWRAM_OVERLAY(banim) u16 *gpBg2ScrollOffset = NULL;
+EWRAM_OVERLAY(banim) u16 gpBg2ScrollOffsetTable1[0xA0] = {};
+EWRAM_OVERLAY(banim) u16 gpBg2ScrollOffsetTable2[0xA0] = {};
+EWRAM_OVERLAY(banim) int gEkrBg1ScrollFlip = 0;
+EWRAM_OVERLAY(banim) u16 *gpBg1ScrollOffsetStart = NULL;
+EWRAM_OVERLAY(banim) u16 *gpBg1ScrollOffset = NULL;
+EWRAM_OVERLAY(banim) u16 gpBg1ScrollOffsetList1[0xA0] = {};
+EWRAM_OVERLAY(banim) u16 gpBg1ScrollOffsetList2[0xA0] = {};
+EWRAM_OVERLAY(banim) u16 gpBg1ScrollOffsetList3_unused[0xA0] = {};
+EWRAM_OVERLAY(banim) int gEfxMagicChk_N = 0;
+EWRAM_OVERLAY(banim) int gEfxPurgeCounter = 0;
+
 void StartSpellAnimation(struct Anim *anim)
 {
 	i16 index = gEkrSpellAnimIndex[GetAnimPosition(anim)];

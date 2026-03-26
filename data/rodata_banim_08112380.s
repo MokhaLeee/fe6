@@ -18,32 +18,32 @@ TsaConf_BanimTmA_081124B0:	@ 0x081124B0
 TsaConf_BanimTmA_08112548:	@ 0x08112548
 	.incbin "fe6-base.gba", 0x112548, 0x1125E0 - 0x112548
 
-	.global gUnk_081125E0
-gUnk_081125E0: @ 081125E0
+	.global Img_081125E0
+Img_081125E0: @ 081125E0
 	.incbin "fe6-base.gba", 0x1125E0, (0x1127F0 - 0x1125E0) @ length: 0210
 
-	.global gUnk_081127F0
-gUnk_081127F0: @ 081127F0
+	.global Img_081127F0
+Img_081127F0: @ 081127F0
 	.incbin "fe6-base.gba", 0x1127F0, (0x112840 - 0x1127F0) @ length: 0050
 
-	.global gUnk_08112840
-gUnk_08112840: @ 08112840
+	.global Img_08112840
+Img_08112840: @ 08112840
 	.incbin "fe6-base.gba", 0x112840, (0x1128AC - 0x112840) @ length: 006C
 
-	.global gUnk_081128AC
-gUnk_081128AC: @ 081128AC
+	.global Img_081128AC
+Img_081128AC: @ 081128AC
 	.incbin "fe6-base.gba", 0x1128AC, (0x1128FC - 0x1128AC) @ length: 0050
 
-	.global gUnk_081128FC
-gUnk_081128FC: @ 081128FC
+	.global Img_081128FC
+Img_081128FC: @ 081128FC
 	.incbin "fe6-base.gba", 0x1128FC, (0x112968 - 0x1128FC) @ length: 006C
 
-	.global gUnk_08112968
-gUnk_08112968: @ 08112968
+	.global Tsa_EkrDispUP_08112968
+Tsa_EkrDispUP_08112968: @ 08112968
 	.incbin "fe6-base.gba", 0x112968, (0x112A1C - 0x112968) @ length: 00B4
 
-	.global gUnk_08112A1C
-gUnk_08112A1C: @ 08112A1C
+	.global Tsa_EkrDispUP_08112A1C
+Tsa_EkrDispUP_08112A1C: @ 08112A1C
 	.incbin "fe6-base.gba", 0x112A1C, (0x112AD0 - 0x112A1C) @ length: 00B4
 
 	.global gUnk_08112AD0
@@ -54,12 +54,12 @@ gUnk_08112AD0: @ 08112AD0
 gUnk_08112BA4: @ 08112BA4
 	.incbin "fe6-base.gba", 0x112BA4, (0x112C84 - 0x112BA4) @ length: 00E0
 
-	.global gUnk_08112C84
-gUnk_08112C84: @ 08112C84
+	.global Tsa_08112C84
+Tsa_08112C84: @ 08112C84
 	.incbin "fe6-base.gba", 0x112C84, (0x112CD4 - 0x112C84) @ length: 0050
 
-	.global gUnk_08112CD4
-gUnk_08112CD4: @ 08112CD4
+	.global Pal_08112CD4
+Pal_08112CD4: @ 08112CD4
 	.incbin "fe6-base.gba", 0x112CD4, (0x112D54 - 0x112CD4) @ length: 0080
 
 	.global Img_EfxSideHitDmgCrit
@@ -158,12 +158,12 @@ Tm_LevelUpFrame: @ 08114FCC
 Pal_LevelUpFrame: @ 081150C8
 	.incbin "fe6-base.gba", 0x1150C8, (0x1150E8 - 0x1150C8) @ length: 0020
 
-	.global gUnk_081150E8
-gUnk_081150E8: @ 081150E8
+	.global Img_LvupApfx
+Img_LvupApfx: @ 081150E8
 	.incbin "fe6-base.gba", 0x1150E8, (0x1152FC - 0x1150E8) @ length: 0214
 
-	.global gUnk_081152FC
-gUnk_081152FC: @ 081152FC
+	.global Pal_LvupApfx
+Pal_LvupApfx: @ 081152FC
 	.incbin "fe6-base.gba", 0x1152FC, (0x11531C - 0x1152FC) @ length: 0020
 
 	.global Img_EkrPopup
