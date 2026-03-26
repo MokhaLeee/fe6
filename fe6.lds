@@ -152,8 +152,12 @@ SECTIONS
         . = 0x000058; gpBanimModesRight = .;
         . = 0x00005C; gpProcEkrBattle = .;
         . = 0x000060; gpProcEkrGauge = .;
-        . = 0x000064; gpProcEkrDispUP = .;
-        . = 0x000080; gBanimImgSheetBufs = .;
+        . = 0x000064;
+        . = ALIGN(4); src/banim_ekrdispup.o(ewram_overlay_banim);
+
+        /* unused free space: size=0x18 */
+
+        . = ALIGN(32); gBanimImgSheetBufs = .;
         . = 0x001080; gUnk_Banim_02001080 = .;
         . = 0x002080; gUnk_Banim_02002080 = .;
         . = 0x003080; gUnk_Banim_02003080 = .;
@@ -220,8 +224,7 @@ SECTIONS
         . = ALIGN(4); src/banim_efxmagic.o(ewram_overlay_banim);
         . = ALIGN(4); src/banim_dragon.o(ewram_overlay_banim);
         . = ALIGN(4); src/banim_dragonfx_idunn.o(ewram_overlay_banim);
-        . = ALIGN(4); gUnk_Banim_0201F04C = .; . = . + 4;
-        . = ALIGN(4); gUnk_Banim_0201F050 = .; . = . + 4;
+        . = ALIGN(4); src/banim_efxsound.o(ewram_overlay_banim);
         . = ALIGN(4); src/banim_ekrclasschg.o(ewram_overlay_banim);
         . = ALIGN(4); src/banim_ekrlvup.o(ewram_overlay_banim);
         . = ALIGN(4); src/banim_ekrtriangle.o(ewram_overlay_banim);
@@ -502,7 +505,8 @@ SECTIONS
         src/banim_ekrbattle.o(.text);
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
-        asm/banim_ekrdispup.o(.text);
+        src/banim_ekrdispup.o(.text);
+        asm/banim_ekrmisc.o(.text);
         src/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
         src/banim_efxdeath.o(.text);
@@ -536,6 +540,7 @@ SECTIONS
         src/banim_dragonfx_fae.o(.text);
         src/banim_dragonfx_idunn.o(.text);
         src/banim_efxutils.o(.text);
+        src/banim_efxsound.o(.text);
         asm/banim_efxsound.o(.text);
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
@@ -802,7 +807,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrbattle.o(.data);
         . = ALIGN(4); src/banim_ekrlvupfan.o(.data);
         . = ALIGN(4); asm/banim_ekrgauge.o(.data);
-        . = ALIGN(4); asm/banim_ekrdispup.o(.data);
+        . = ALIGN(4); src/banim_ekrdispup.o(.data);
         . = ALIGN(4); src/banim_efxhpbar.o(.data);
         . = ALIGN(4); src/banim_efxdeath.o(.data);
         . = ALIGN(4); src/banim_efxfarattack.o(.data);
@@ -833,6 +838,7 @@ SECTIONS
         . = ALIGN(4); src/banim_dragonfx_idunn.o(.data);
         . = ALIGN(4); src/banim_dragonfx.o(.data);
         . = ALIGN(4); src/banim_efxutils.o(.data);
+        . = ALIGN(4); src/banim_efxsound.o(.data);
         . = ALIGN(4); asm/banim_efxsound.o(.data);
         . = ALIGN(4); src/banim_ekrclasschg.o(.data);
         . = ALIGN(4); src/banim_ekrlvup.o(.data);

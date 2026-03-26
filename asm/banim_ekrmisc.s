@@ -2,291 +2,8 @@
 
 	.syntax unified
 
-	.section .data
-	.global ProcScr_EkrDispUP
-ProcScr_EkrDispUP: @ 085CB718
-	.incbin "fe6-base.gba", 0x5CB718, (0x5CB730 - 0x5CB718) @ length: 0018
 
 	.section .text
-	thumb_func_start NewEkrDispUP
-NewEkrDispUP: @ 0x08044198
-	push {r4, lr}
-	ldr r4, .L080441C0 @ =gpProcEkrDispUP
-	ldr r0, .L080441C4 @ =ProcScr_EkrDispUP
-	movs r1, #5
-	bl SpawnProc
-	str r0, [r4]
-	movs r0, #0
-	movs r1, #0
-	bl EkrDispUP_SetPositionUnsync
-	bl func_fe6_080441DC
-	bl UnAsyncEkrDispUP
-	bl UnsyncEkrDispUP
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080441C0: .4byte gpProcEkrDispUP
-.L080441C4: .4byte ProcScr_EkrDispUP
-
-	thumb_func_start EndEkrDispUP
-EndEkrDispUP: @ 0x080441C8
-	push {lr}
-	ldr r0, .L080441D8 @ =gpProcEkrDispUP
-	ldr r0, [r0]
-	bl Proc_End
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080441D8: .4byte gpProcEkrDispUP
-
-	thumb_func_start func_fe6_080441DC
-func_fe6_080441DC: @ 0x080441DC
-	ldr r0, .L080441E8 @ =gpProcEkrDispUP
-	ldr r1, [r0]
-	movs r0, #0
-	str r0, [r1, #0x4c]
-	str r0, [r1, #0x50]
-	bx lr
-	.align 2, 0
-.L080441E8: .4byte gpProcEkrDispUP
-
-	thumb_func_start func_fe6_080441EC
-func_fe6_080441EC: @ 0x080441EC
-	ldr r0, .L080441F8 @ =gpProcEkrDispUP
-	ldr r1, [r0]
-	movs r0, #1
-	str r0, [r1, #0x4c]
-	str r0, [r1, #0x50]
-	bx lr
-	.align 2, 0
-.L080441F8: .4byte gpProcEkrDispUP
-
-	thumb_func_start func_fe6_080441FC
-func_fe6_080441FC: @ 0x080441FC
-	ldr r0, .L08044208 @ =gpProcEkrDispUP
-	ldr r1, [r0]
-	movs r0, #1
-	str r0, [r1, #0x4c]
-	bx lr
-	.align 2, 0
-.L08044208: .4byte gpProcEkrDispUP
-
-	thumb_func_start func_fe6_0804420C
-func_fe6_0804420C: @ 0x0804420C
-	ldr r0, .L08044218 @ =gpProcEkrDispUP
-	ldr r1, [r0]
-	movs r0, #1
-	str r0, [r1, #0x50]
-	bx lr
-	.align 2, 0
-.L08044218: .4byte gpProcEkrDispUP
-
-	thumb_func_start EkrDispUP_SetPositionUnsync
-EkrDispUP_SetPositionUnsync: @ 0x0804421C
-	ldr r2, .L0804422C @ =gpProcEkrDispUP
-	ldr r2, [r2]
-	movs r3, #0
-	strh r0, [r2, #0x32]
-	strh r1, [r2, #0x3a]
-	adds r2, #0x29
-	strb r3, [r2]
-	bx lr
-	.align 2, 0
-.L0804422C: .4byte gpProcEkrDispUP
-
-	thumb_func_start EkrDispUP_SetPositionSync
-EkrDispUP_SetPositionSync: @ 0x08044230
-	ldr r2, .L08044240 @ =gpProcEkrDispUP
-	ldr r2, [r2]
-	strh r0, [r2, #0x32]
-	strh r1, [r2, #0x3a]
-	adds r2, #0x29
-	movs r0, #1
-	strb r0, [r2]
-	bx lr
-	.align 2, 0
-.L08044240: .4byte gpProcEkrDispUP
-
-	thumb_func_start SyncEkrDispUP
-SyncEkrDispUP: @ 0x08044244
-	ldr r0, .L08044250 @ =gpProcEkrDispUP
-	ldr r0, [r0]
-	adds r0, #0x29
-	movs r1, #1
-	strb r1, [r0]
-	bx lr
-	.align 2, 0
-.L08044250: .4byte gpProcEkrDispUP
-
-	thumb_func_start UnsyncEkrDispUP
-UnsyncEkrDispUP: @ 0x08044254
-	ldr r0, .L08044260 @ =gpProcEkrDispUP
-	ldr r0, [r0]
-	adds r0, #0x29
-	movs r1, #0
-	strb r1, [r0]
-	bx lr
-	.align 2, 0
-.L08044260: .4byte gpProcEkrDispUP
-
-	thumb_func_start AsyncEkrDispUP
-AsyncEkrDispUP: @ 0x08044264
-	ldr r0, .L08044270 @ =gpProcEkrDispUP
-	ldr r0, [r0]
-	adds r0, #0x2a
-	movs r1, #1
-	strb r1, [r0]
-	bx lr
-	.align 2, 0
-.L08044270: .4byte gpProcEkrDispUP
-
-	thumb_func_start UnAsyncEkrDispUP
-UnAsyncEkrDispUP: @ 0x08044274
-	ldr r0, .L08044280 @ =gpProcEkrDispUP
-	ldr r0, [r0]
-	adds r0, #0x2a
-	movs r1, #0
-	strb r1, [r0]
-	bx lr
-	.align 2, 0
-.L08044280: .4byte gpProcEkrDispUP
-
-	thumb_func_start EkrDispUP_Loop
-EkrDispUP_Loop: @ 0x08044284
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #8
-	adds r7, r0, #0
-	adds r0, #0x2a
-	ldrb r0, [r0]
-	cmp r0, #1
-	beq .L08044374
-	adds r0, r7, #0
-	adds r0, #0x29
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne .L08044374
-	ldrh r1, [r7, #0x3a]
-	lsls r0, r1, #0x10
-	asrs r0, r0, #0x13
-	lsls r2, r0, #5
-	mov r8, r2
-	cmp r2, #0
-	bge .L080442B6
-	movs r1, #0
-	mov r8, r1
-.L080442B6:
-	adds r6, r0, #7
-	cmp r6, #6
-	ble .L080442BE
-	movs r6, #6
-.L080442BE:
-	movs r0, #6
-	subs r0, r0, r6
-	lsls r1, r0, #4
-	subs r1, r1, r0
-	lsls r1, r1, #1
-	mov sl, r1
-	ldr r0, .L080442DC @ =gEkrDistanceType
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	cmp r0, #0
-	blt .L080442E0
-	cmp r0, #2
-	bgt .L080442E0
-	movs r4, #0
-	b .L080442E2
-	.align 2, 0
-.L080442DC: .4byte gEkrDistanceType
-.L080442E0:
-	movs r4, #0xf
-.L080442E2:
-	ldr r0, .L08044384 @ =gBg0Tm
-	mov sb, r0
-	movs r0, #0x9f
-	str r0, [sp]
-	mov r0, sb
-	movs r1, #0x1e
-	movs r2, #7
-	movs r3, #0
-	bl FillBGRect
-	cmp r6, #0
-	ble .L0804436E
-	ldr r0, [r7, #0x4c]
-	cmp r0, #0
-	bne .L08044334
-	ldr r0, .L08044388 @ =gUnk_08112968
-	add r0, sl
-	mov r1, r8
-	lsls r5, r1, #1
-	lsls r1, r4, #1
-	add r1, sb
-	adds r5, r5, r1
-	lsls r4, r6, #0x10
-	lsrs r4, r4, #0x10
-	movs r1, #1
-	rsbs r1, r1, #0
-	str r1, [sp]
-	str r1, [sp, #4]
-	adds r1, r5, #0
-	movs r2, #0xf
-	adds r3, r4, #0
-	bl EfxTmCpyBG
-	movs r0, #0x80
-	str r0, [sp]
-	adds r0, r5, #0
-	movs r1, #0xf
-	adds r2, r4, #0
-	movs r3, #2
-	bl func_fe6_0805B01C
-.L08044334:
-	ldr r0, [r7, #0x50]
-	cmp r0, #0
-	bne .L0804436E
-	ldr r0, .L0804438C @ =gUnk_08112A1C
-	add r0, sl
-	mov r2, r8
-	lsls r5, r2, #1
-	movs r2, #0xf
-	lsls r1, r2, #1
-	add r1, sb
-	adds r5, r5, r1
-	lsls r4, r6, #0x10
-	lsrs r4, r4, #0x10
-	movs r1, #1
-	rsbs r1, r1, #0
-	str r1, [sp]
-	str r1, [sp, #4]
-	adds r1, r5, #0
-	adds r3, r4, #0
-	bl EfxTmCpyBG
-	movs r0, #0x80
-	str r0, [sp]
-	adds r0, r5, #0
-	movs r1, #0xf
-	adds r2, r4, #0
-	movs r3, #3
-	bl func_fe6_0805B01C
-.L0804436E:
-	movs r0, #1
-	bl EnableBgSync
-.L08044374:
-	add sp, #8
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08044384: .4byte gBg0Tm
-.L08044388: .4byte gUnk_08112968
-.L0804438C: .4byte gUnk_08112A1C
 
 	thumb_func_start EfxClearScreenFx
 EfxClearScreenFx: @ 0x08044390
@@ -594,7 +311,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	movs r3, #2
 	bl InitTextFont
 	bl SetTextDrawNoClear
-	ldr r0, .L08044654 @ =gUnk_081125E0
+	ldr r0, .L08044654 @ =Img_081125E0
 	ldr r1, .L08044658 @ =0x06001000
 	bl LZ77UnCompVram
 	ldr r0, .L0804465C @ =gBanimValid
@@ -608,7 +325,7 @@ EfxPrepareScreenFx: @ 0x08044608
 .L08044648: .4byte Pal_Text
 .L0804464C: .4byte gBanimFont
 .L08044650: .4byte 0x06001400
-.L08044654: .4byte gUnk_081125E0
+.L08044654: .4byte Img_081125E0
 .L08044658: .4byte 0x06001000
 .L0804465C: .4byte gBanimValid
 .L08044660: .4byte gNopStr
@@ -630,7 +347,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Text_SetCursor
-	ldr r0, .L080446B4 @ =gUnk_081127F0
+	ldr r0, .L080446B4 @ =Img_081127F0
 	ldr r1, .L080446B8 @ =0x06001400
 	bl LZ77UnCompVram
 	adds r0, r4, #0
@@ -646,7 +363,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	.align 2, 0
 .L080446AC: .4byte gpEkrBattleUnitLeft
 .L080446B0: .4byte gBanimText
-.L080446B4: .4byte gUnk_081127F0
+.L080446B4: .4byte Img_081127F0
 .L080446B8: .4byte 0x06001400
 .L080446BC: .4byte gBanimValid
 .L080446C0: .4byte gNopStr
@@ -668,7 +385,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Text_SetCursor
-	ldr r0, .L08044714 @ =gUnk_08112840
+	ldr r0, .L08044714 @ =Img_08112840
 	ldr r1, .L08044718 @ =0x06001580
 	bl LZ77UnCompVram
 	adds r0, r4, #0
@@ -684,7 +401,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	.align 2, 0
 .L0804470C: .4byte gpEkrBattleUnitLeft
 .L08044710: .4byte gBanimText + 0x10
-.L08044714: .4byte gUnk_08112840
+.L08044714: .4byte Img_08112840
 .L08044718: .4byte 0x06001580
 .L0804471C: .4byte gBanimValid
 .L08044720: .4byte gNopStr
@@ -706,7 +423,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Text_SetCursor
-	ldr r0, .L08044774 @ =gUnk_081128AC
+	ldr r0, .L08044774 @ =Img_081128AC
 	ldr r1, .L08044778 @ =0x06001740
 	bl LZ77UnCompVram
 	adds r0, r4, #0
@@ -722,7 +439,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	.align 2, 0
 .L0804476C: .4byte gpEkrBattleUnitRight
 .L08044770: .4byte gBanimText + 0x18
-.L08044774: .4byte gUnk_081128AC
+.L08044774: .4byte Img_081128AC
 .L08044778: .4byte 0x06001740
 .L0804477C: .4byte gBanimValid
 .L08044780: .4byte gNopStr
@@ -744,7 +461,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Text_SetCursor
-	ldr r0, .L08044850 @ =gUnk_081128FC
+	ldr r0, .L08044850 @ =Img_081128FC
 	ldr r1, .L08044854 @ =0x060018C0
 	bl LZ77UnCompVram
 	adds r0, r4, #0
@@ -754,7 +471,7 @@ EfxPrepareScreenFx: @ 0x08044608
 	adds r0, r4, #0
 	movs r1, #0x9f
 	bl TmFill
-	ldr r0, .L0804485C @ =gUnk_08112C84
+	ldr r0, .L0804485C @ =Tsa_08112C84
 	adds r6, r4, #0
 	adds r6, #0x3c
 	movs r1, #1
@@ -772,20 +489,20 @@ EfxPrepareScreenFx: @ 0x08044608
 	movs r1, #1
 	movs r2, #0x14
 	movs r3, #2
-	bl func_fe6_0805B01C
+	bl FillBGSafelyRect
 	str r5, [sp]
 	adds r0, r6, #0
 	movs r1, #1
 	movs r2, #0x14
 	movs r3, #3
-	bl func_fe6_0805B01C
+	bl FillBGSafelyRect
 	movs r0, #1
 	bl EnableBgSync
 	ldr r6, .L08044860 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #5
-	ldr r5, .L08044864 @ =gUnk_08112CD4
+	ldr r5, .L08044864 @ =Pal_08112CD4
 	adds r0, r0, r5
 	ldr r4, .L08044868 @ =gPal+0x40
 	adds r1, r4, #0
@@ -814,11 +531,11 @@ EfxPrepareScreenFx: @ 0x08044608
 	.align 2, 0
 .L08044848: .4byte gpEkrBattleUnitRight
 .L0804484C: .4byte gBanimText + 0x08
-.L08044850: .4byte gUnk_081128FC
+.L08044850: .4byte Img_081128FC
 .L08044854: .4byte 0x060018C0
 .L08044858: .4byte gBg0Tm
-.L0804485C: .4byte gUnk_08112C84
+.L0804485C: .4byte Tsa_08112C84
 .L08044860: .4byte gBanimFactionPal
-.L08044864: .4byte gUnk_08112CD4
+.L08044864: .4byte Pal_08112CD4
 .L08044868: .4byte gPal+0x40
 .L0804486C: .4byte gEkrBg0QuakeVec

@@ -86,19 +86,20 @@ CONST_DATA short PosArray_EfxApocalypseBGCtrl[0x140] = {
 	15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
 };
 
-void func_fe6_0805B01C(u16 *tm, u16 width, u16 height, int pal, int chr)
+void FillBGSafelyRect(u16 *tm, u16 width, u16 height, int pal, int chr)
 {
 	int i, j;
 	u16 tileref, len;
 	u16 *_tm = tm;
 
-	for (i = height; i != 0; i--)
-	{
-		for (j = width; j != 0; j--)
-		{
+	for (i = height; i != 0; i--) {
+		for (j = width; j != 0; j--) {
 			tileref = *_tm;
-			if (pal != -1) tileref = TILEREF(tileref & 0xFFF, pal);
-			if (chr != -1) tileref += chr;
+
+			if (pal != -1)
+				tileref = TILEREF(tileref & 0xFFF, pal);
+			if (chr != -1)
+				tileref += chr;
 
 			*_tm = tileref;
 			_tm++;

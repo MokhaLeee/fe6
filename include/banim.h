@@ -383,21 +383,45 @@ void EnableEkrGauge(void);
 void DisableEkrGauge(void);
 // func_fe6_08043980
 // EkrGauge_Loop
+
+struct ProcEkrDispUP {
+    PROC_HEADER;
+
+    /* 29 */ u8 sync;
+    /* 2A */ u8 asnyc;
+
+    STRUCT_PAD(0x2B, 0x32);
+
+    /* 32 */ u16 x; /* unused actually */
+
+    STRUCT_PAD(0x34, 0x3A);
+
+    /* 3A */ u16 y;
+
+    STRUCT_PAD(0x3C, 0x4C);
+
+    /* 4C */ u32 unk4C;
+    /* 50 */ u32 unk50;
+};
+
+#define gBg0Tm2D ((u16 (*)[1])gBg0Tm)
+
 void NewEkrDispUP(void);
 void EndEkrDispUP(void);
-// func_fe6_080441DC
-// func_fe6_080441EC
-void func_fe6_080441FC(void);
-void func_fe6_0804420C(void);
-// EkrDispUP_SetPositionUnsync
+void EkrDispUpClear4C50(void);
+void EkrDispUpSet4C50(void);
+void EkrDispUpSet4C(void);
+void EkrDispUpSet50(void);
+void EkrDispUP_SetPositionUnsync(u16 x, u16 y);
 void EkrDispUP_SetPositionSync(u16 x, u16 y);
 void SyncEkrDispUP(void);
 void UnsyncEkrDispUP(void);
 void AsyncEkrDispUP(void);
 void UnAsyncEkrDispUP(void);
-// EkrDispUP_Loop
+void EkrDispUP_Loop(struct ProcEkrDispUP *proc);
+
 void EfxClearScreenFx(void);
-// EkrDispUp_PutTerrainfx
+void EfxPrepareScreenFx(void);
 void EfxPrepareScreenFx(void);
 int GetBanimInitPosReal(void);
 void EkrEfxStatusClear(void);
@@ -1671,7 +1695,7 @@ void EfxopLiveOBJ_Loop(struct ProcEfxOBJ *proc);
 
 /* banim_ekrdragon.h */
 
-void func_fe6_0805B01C(u16 * tm, u16 width, u16 height, int pal, int chr);
+void FillBGSafelyRect(u16 * tm, u16 width, u16 height, int pal, int chr);
 void FillBGRect(u16 * tm, u16 width, u16 height, int pal, int chr);
 void func_fe6_0805B0D4(u16 * tm, u16 width, u16 height, int pal, int chr);
 void EfxTmModifyPal(u16 * tm, u16 width, u16 height);
@@ -1733,19 +1757,37 @@ void EkrsubAnimeEmulator_Loop(struct ProcEkrSubAnimeEmulator *proc);
 int GetAnimSpriteRotScaleX(u32 header);
 int GetAnimSpriteRotScaleY(u32 header);
 void BanimUpdateSpriteRotScale(void * src, struct BaSpriteData * out, i16 x, i16 y, int unused);
+
+struct ProcEfxSoundSE {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ int volume;
+    /* 48 */ int index;
+};
+
+extern EWRAM_OVERLAY(banim) int gEkrMainBgmPlaying;
+extern EWRAM_OVERLAY(banim) int gEfxSoundSeExist;
+
 void EfxPlaySE(int songid, int volume);
-// func_fe6_0805BD04
+void EfxSoundSE_Loop(struct ProcEfxSoundSE *proc);
 void DoM4aSongNumStop(int num);
-// func_fe6_0805BD64
+void EfxOverrideBgm(int songid, int volume);
 void EfxStopBGM1(void);
 void UnregisterEfxSoundSeExist(void);
-// RegisterEfxSoundSeExist
-// CheckEfxSoundSeExist
+void RegisterEfxSoundSeExist(void);
+int CheckEfxSoundSeExist(void);
 void M4aPlayWithPostionCtrl(int songid, int x, int flag);
 void EfxPlaySEwithCmdCtrl(struct BaSprite *anim, int cmd);
-// func_fe6_0805C1A0
+u16 GetEfxSoundType1FromTerrain(u16 terrain);
 int IsAnimSoundInPosition(struct Anim *anim);
-// func_fe6_0805C2E0
+u16 GetEfxSoundType2FromBaseCon(u16 basecon);
+
 enum efx_hp_change_type {
     EFX_HPT_CHANGED = 0,
     EFX_HPT_DEFEATED = 1,
@@ -2559,10 +2601,10 @@ extern i16 PosArray_EfxApocalypseBGCtrl[];
 // ??? gEfxTmyPalRefs
 extern CONST_DATA struct ProcScr ProcScr_EkrSubAnimeEmulator[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSoundSE[];
-// ??? gBanimBossBGMs
-// ??? gUnk_08605F34
-// ??? gUnk_08605F50
-// ??? gUnk_08605F6C
+extern CONST_DATA u16 *gBanimBossBGMs[];
+extern CONST_DATA u16 *gBanimSongTable1[];
+extern CONST_DATA u16 *gBanimSongTable2[];
+extern CONST_DATA u16 *gBanimSongTable3[];
 extern CONST_DATA struct ProcScr ProcScr_EkrClasschg[];
 extern CONST_DATA struct ProcScr ProcScr_EfxClasschgBG[];
 extern CONST_DATA u16 *TsaArray_EkrClasschgBG[];
@@ -2640,17 +2682,17 @@ extern u16 TsaConf_BanimTmA_08112380[];
 extern u16 TsaConf_BanimTmA_08112418[];
 extern u16 TsaConf_BanimTmA_081124B0[];
 extern u16 TsaConf_BanimTmA_08112548[];
-// extern ??? gUnk_081125E0
-// extern ??? gUnk_081127F0
-// extern ??? gUnk_08112840
-// extern ??? gUnk_081128AC
-// extern ??? gUnk_081128FC
-// extern ??? gUnk_08112968
-// extern ??? gUnk_08112A1C
+extern u8 const Img_081125E0[];
+extern u8 const Img_081127F0[];
+extern u8 const Img_08112840[];
+extern u8 const Img_081128AC[];
+extern u8 const Img_081128FC[];
+extern u8 const Tsa_EkrDispUP_08112968[];
+extern u8 const Tsa_EkrDispUP_08112A1C[];
 extern u8 const gUnk_08112AD0[];
 extern u8 const gUnk_08112BA4[];
-// extern ??? gUnk_08112C84
-// extern ??? gUnk_08112CD4
+extern u16 const Tsa_08112C84[];
+extern u16 const Pal_08112CD4[];
 
 extern u8 const Img_EfxSideHitDmgCrit[];
 extern u8 const Img_EfxArrowWTA[];
