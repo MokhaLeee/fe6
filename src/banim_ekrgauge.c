@@ -7,6 +7,15 @@
 #include "icon.h"
 #include "hardware.h"
 
+EWRAM_OVERLAY(banim) struct ProcEkrGauge *gpProcEkrGauge = NULL;
+
+EWRAM_DATA i16 gEkrGaugeHp[2] = {};
+EWRAM_DATA i16 gBanimMaxHP[2] = {};
+EWRAM_DATA i16 gEkrGaugeHpBak[2] = {};
+EWRAM_DATA i16 gEkrGaugeHit[2] = {};
+EWRAM_DATA i16 gEkrGaugeDmg[2] = {};
+EWRAM_DATA i16 gEkrGaugeCrt[2] = {};
+
 void func_fe6_080435EC(void *_src, void *_dst)
 {
     u16 *src = _src;
@@ -45,6 +54,12 @@ void EkrGaugeModDec(i16 val, u16 buf[])
     if (buf[0] == 0)
         buf[0] = 11;
 }
+
+struct ProcScr CONST_DATA ProcScr_EkrGauge[] = {
+    PROC_19,
+    PROC_REPEAT(EkrGauge_Loop),
+    PROC_END,
+};
 
 void NewEkrGauge(void)
 {
@@ -182,17 +197,17 @@ void func_fe6_08043980(struct Anim * anim, int a, int b)
 
             if (b < temp)
             {
-                anim->sprData = gUnk_085CB688;
+                anim->sprData = AnimSprite_EkrGauge_7;
                 return;
             }
         }
         else
         {
-            anim->sprData = gUnk_085CB6A0;
+            anim->sprData = AnimSprite_EkrGauge_8;
             return;
         }
 
-        anim->sprData = gUnk_085CB6B8;
+        anim->sprData = AnimSprite_EkrGauge_9;
     }
     else
     {
@@ -202,17 +217,17 @@ void func_fe6_08043980(struct Anim * anim, int a, int b)
 
             if (b < temp)
             {
-                anim->sprData = gUnk_085CB6D0;
+                anim->sprData = AnimSprite_EkrGauge_10;
                 return;
             }
         }
         else
         {
-            anim->sprData = gUnk_085CB6E8;
+            anim->sprData = AnimSprite_EkrGauge_11;
             return;
         }
 
-        anim->sprData = gUnk_085CB700;
+        anim->sprData = AnimSprite_EkrGauge_12;
     }
 }
 
@@ -383,14 +398,14 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
     AStack_130.flags2 = 0;
 
     if (CheckEkrHitNow(POS_L) != 1) {
-        AStack_130.sprData = gUnk_085CB5B0;
+        AStack_130.sprData = AnimSprite_EkrGauge_2;
         AStack_130.oam01 = 0;
     } else {
         AStack_130.sprData = auStack_c8;
         AStack_130.oam01 = 0x200;
         AStack_130.xPosition = AStack_130.xPosition - 8;
         AStack_130.yPosition = AStack_130.yPosition - 8;
-        BanimUpdateSpriteRotScale(gUnk_085CB5B0, auStack_c8, 0x100, 0x80, 1);
+        BanimUpdateSpriteRotScale(AnimSprite_EkrGauge_2, auStack_c8, 0x100, 0x80, 1);
     }
 
     if (proc->unk4C == 0) {
@@ -407,14 +422,14 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
     AStack_130.flags2 = 0;
 
     if (CheckEkrHitNow(POS_R) != 1) {
-        AStack_130.sprData = gUnk_085CB5B0;
+        AStack_130.sprData = AnimSprite_EkrGauge_2;
         AStack_130.oam01 = 0;
     } else {
         AStack_130.sprData = auStack_c8;
         AStack_130.oam01 = 0x200;
         AStack_130.xPosition = AStack_130.xPosition - 8;
         AStack_130.yPosition = AStack_130.yPosition - 8;
-        BanimUpdateSpriteRotScale(gUnk_085CB5B0, auStack_c8, 0x100, 0x80, 1);
+        BanimUpdateSpriteRotScale(AnimSprite_EkrGauge_2, auStack_c8, 0x100, 0x80, 1);
     }
 
     if (proc->unk50 == 0) {
@@ -447,7 +462,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
 
     AStack_130.oam01 = 0;
     AStack_130.xPosition = x + 0x1d;
-    AStack_130.sprData = gUnk_085CB580;
+    AStack_130.sprData = AnimSprite_EkrGauge_1;
 
     if (proc->unk4C == 0) {
         if (uVar8 != 0) {
@@ -509,7 +524,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
 
     AStack_130.oam01 = 0;
     AStack_130.xPosition = x + 0x95;
-    AStack_130.sprData = gUnk_085CB580;
+    AStack_130.sprData = AnimSprite_EkrGauge_1;
 
     if (proc->unk50 == 0) {
         if (uVar8 != 0) {
@@ -551,7 +566,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
 
     if (proc->unk4C == 0) {
         AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnk_085CB5C8;
+        AStack_130.sprData = AnimSprite_EkrGauge_3;
         AStack_130.oam2 = 0x000051D0;
         AStack_130.oam2 |= proc->unk44;
 
@@ -561,7 +576,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         BasPutOam(&AStack_130);
         AStack_130.oam01 = 0;
 
-        AStack_130.sprData = gUnk_085CB5F8;
+        AStack_130.sprData = AnimSprite_EkrGauge_4;
         AStack_130.oam2 = 0x000051C0;
         AStack_130.oam2 |= proc->unk44;
 
@@ -573,7 +588,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
 
     if (proc->unk50 == 0) {
         AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnk_085CB5C8;
+        AStack_130.sprData = AnimSprite_EkrGauge_3;
         AStack_130.oam2 = 0x000061F0;
         AStack_130.oam2 |= proc->unk44;
 
@@ -583,7 +598,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         BasPutOam(&AStack_130);
 
         AStack_130.oam01 = 0;
-        AStack_130.sprData = gUnk_085CB634;
+        AStack_130.sprData = AnimSprite_EkrGauge_5;
         AStack_130.oam2 = 0x000061C0;
         AStack_130.oam2 |= proc->unk44;
 
@@ -606,7 +621,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
             BasPutOam(&AStack_130);
         }
 
-        AStack_130.sprData = gUnk_085CB670;
+        AStack_130.sprData = AnimSprite_EkrGauge_6;
         AStack_130.oam2 = 0x0000D1DC;
         AStack_130.oam2 |= proc->unk44;
 
@@ -630,7 +645,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
             BasPutOam(&AStack_130);
         }
 
-        AStack_130.sprData = gUnk_085CB670;
+        AStack_130.sprData = AnimSprite_EkrGauge_6;
         AStack_130.oam2 = 0x0000E1DE;
         AStack_130.oam2 |= proc->unk44;
 

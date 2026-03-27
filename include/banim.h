@@ -366,7 +366,7 @@ extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02017240[0x200];
 extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02017440[0x200];
 extern EWRAM_OVERLAY(banim) u16 gEkrGaugeDecoder[18];
 
-// EkrGaugeModDec
+void EkrGaugeModDec(i16 val, u16 buf[]);
 void NewEkrGauge(void);
 void EndEkrGauge(void);
 void EkrGauge_Clr4C50(void);
@@ -380,8 +380,8 @@ void EkrGauge_SetInitFlag(void);
 void EkrGauge_ClrInitFlag(void);
 void EnableEkrGauge(void);
 void DisableEkrGauge(void);
-// func_fe6_08043980
-// EkrGauge_Loop
+void func_fe6_08043980(struct Anim * anim, int a, int b);
+void EkrGauge_Loop(struct ProcEkrGauge *proc);
 
 struct ProcEkrDispUP {
     PROC_HEADER;
@@ -2118,19 +2118,19 @@ extern CONST_DATA struct ProcScr ProcScr_EkrBattleDeamon[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBattle[];
 extern CONST_DATA struct ProcScr ProcScr_EkrLvupFan[];
 extern CONST_DATA struct ProcScr ProcScr_EkrGauge[];
-extern CONST_DATA u16 gUnk_085CB580[];
-extern CONST_DATA u16 gUnk_085CB5B0[];
-extern CONST_DATA u8 gUnk_085CB5C8[];
-extern CONST_DATA u8 gUnk_085CB5F8[];
-extern CONST_DATA u8 gUnk_085CB634[];
-extern CONST_DATA u8 gUnk_085CB670[];
-extern CONST_DATA u16 gUnk_085CB688[];
-extern CONST_DATA u16 gUnk_085CB6A0[];
-extern CONST_DATA u16 gUnk_085CB6A0[];
-extern CONST_DATA u16 gUnk_085CB6B8[];
-extern CONST_DATA u16 gUnk_085CB6D0[];
-extern CONST_DATA u16 gUnk_085CB6E8[];
-extern CONST_DATA u16 gUnk_085CB700[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_1[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_2[];
+extern CONST_DATA u8 AnimSprite_EkrGauge_3[];
+extern CONST_DATA u8 AnimSprite_EkrGauge_4[];
+extern CONST_DATA u8 AnimSprite_EkrGauge_5[];
+extern CONST_DATA u8 AnimSprite_EkrGauge_6[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_7[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_8[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_8[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_9[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_10[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_11[];
+extern CONST_DATA u16 AnimSprite_EkrGauge_12[];
 extern CONST_DATA struct ProcScr ProcScr_EkrDispUP[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHpBar[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHpBarResire[];

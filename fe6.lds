@@ -151,8 +151,8 @@ SECTIONS
         . = 0x000054; gpBanimModesLeft = .;
         . = 0x000058; gpBanimModesRight = .;
         . = 0x00005C; gpProcEkrBattle = .;
-        . = 0x000060; gpProcEkrGauge = .;
-        . = 0x000064;
+        . = 0x000060;
+        . = ALIGN(4); src/banim_ekrgauge.o(ewram_overlay_banim);
         . = ALIGN(4); src/banim_ekrdispup.o(ewram_overlay_banim);
 
         /* unused free space: size=0x18 */
@@ -311,12 +311,10 @@ SECTIONS
         . = 0x0203CD88 - __ewram_overlay_end; gpEkrTriangleUnits = .;
         . = 0x0203CD90 - __ewram_overlay_end; gpBanimTriAtkPalettes = .;
         . = 0x0203CD98 - __ewram_overlay_end; gBanimUnitChgForceImg = .;
-        . = 0x0203CDA0 - __ewram_overlay_end; gEkrGaugeHp = .;
-        . = 0x0203CDA4 - __ewram_overlay_end; gBanimMaxHP = .;
-        . = 0x0203CDA8 - __ewram_overlay_end; gEkrGaugeHpBak = .;
-        . = 0x0203CDAC - __ewram_overlay_end; gEkrGaugeHit = .;
-        . = 0x0203CDB0 - __ewram_overlay_end; gEkrGaugeDmg = .;
-        . = 0x0203CDB4 - __ewram_overlay_end; gEkrGaugeCrt = .;
+
+        . = 0x0203CDA0 - __ewram_overlay_end;
+        . = ALIGN(4); src/banim_ekrgauge.o(ewram_data);
+
         . = 0x0203CDB8 - __ewram_overlay_end; gBanimExpPrevious = .;
         . = 0x0203CDBC - __ewram_overlay_end; gBanimExpGain = .;
         . = 0x0203CDC0 - __ewram_overlay_end; gBanimTerrain = .;
@@ -807,7 +805,8 @@ SECTIONS
         . = ALIGN(4); src/mapselect.o(.data);
         . = ALIGN(4); src/banim_ekrbattle.o(.data);
         . = ALIGN(4); src/banim_ekrlvupfan.o(.data);
-        . = ALIGN(4); asm/banim_ekrgauge.o(.data);
+        . = ALIGN(4); src/banim_ekrgauge.o(.data);
+        . = ALIGN(4); src/banim_ekrgauge_data.o(.data);
         . = ALIGN(4); src/banim_ekrdispup.o(.data);
         . = ALIGN(4); src/banim_efxhpbar.o(.data);
         . = ALIGN(4); src/banim_efxdeath.o(.data);
