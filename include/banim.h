@@ -1838,6 +1838,14 @@ i16 GetEfxHpChangeType(struct Anim *anim);
 void EfxPlayHittedSFX(struct Anim *anim);
 void EfxPlayCriticalHittedSFX(struct Anim *anim);
 int EfxCheckRetaliation(int is_retaliation);
+
+enum efx_staff_type {
+    EFX_STAFF_NOPE,
+
+    EFX_STAFF_OFFSENSIVE,
+    EFX_STAFF_HEAL,
+};
+
 int EfxCheckStaffType(int weapon);
 void EkrPlayMainBGM(void);
 void EkrRestoreBGM(void);
