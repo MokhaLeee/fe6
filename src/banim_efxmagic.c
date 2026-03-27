@@ -147,9 +147,9 @@ struct ProcScr CONST_DATA ProcScr_EfxRestWIN[] =
 	PROC_END
 };
 
-void NewEfxRestWIN(struct Anim *anim, int unk44, void * unk54, void * unk58)
+void NewEfxRestWIN(struct Anim *anim, int duration, void *frame_conf, void *bufs)
 {
-	struct ProcEfx *proc;
+	struct ProcEfxRstWIN *proc;
 
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxRestWIN, PROC_TREE_3);
@@ -157,24 +157,24 @@ void NewEfxRestWIN(struct Anim *anim, int unk44, void * unk54, void * unk58)
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->step = 0;
-	proc->unk44 = unk44;
-	proc->unk54 = unk54;
-	proc->unk58 = unk58;
+	proc->duration = duration;
+	proc->frame_conf = frame_conf;
+	proc->bufs = bufs;
 
 	if (GetAnimPosition(GetAnimAnotherSide(anim)) == POS_L)
-		proc->unk32 = 0xFFB8;
+		proc->diff_per_step = -0x48;
 	else
-		proc->unk32 = 0xFFF8;
+		proc->diff_per_step = -8;
 
 	if (gEkrDistanceType != EKR_DISTANCE_CLOSE) {
 		if (GetAnimPosition(anim) == POS_L)
-			proc->unk32 += 0x18;
+			proc->diff_per_step += 0x18;
 		else
-			proc->unk32 -= 0x18;
+			proc->diff_per_step -= 0x18;
 	}
 }
 
-void EfxRestWIN_Loop(struct ProcEfx *proc)
+void EfxRestWIN_Loop(struct ProcEfxRstWIN *proc)
 {
 	u32 i;
 	u16 val2;
@@ -186,9 +186,9 @@ void EfxRestWIN_Loop(struct ProcEfx *proc)
 	else
 		buf = gpBg2ScrollOffsetTable1;
 
-	base = proc->unk54;
+	base = proc->frame_conf;
 	val2 = base[proc->step];
-	buf2 = proc->unk58[val2];
+	buf2 = proc->bufs[val2];
 
 	if (val2 != 0xFFFF) {
 		proc->step++;
@@ -196,8 +196,8 @@ void EfxRestWIN_Loop(struct ProcEfx *proc)
 			if (buf2[0] == 0x7FFF)
 				buf[0] = 0;
 			else {
-				i16 tmp3 = buf2[0] + proc->unk32;
-				i16 tmp4 = buf2[1] + proc->unk32;
+				i16 tmp3 = buf2[0] + proc->diff_per_step;
+				i16 tmp4 = buf2[1] + proc->diff_per_step;
 
 				buf[0] = (tmp3 * 0x100) | tmp4;
 			}
@@ -208,7 +208,7 @@ void EfxRestWIN_Loop(struct ProcEfx *proc)
 	}
 
 	proc->timer++;
-	if (proc->timer == proc->unk44) {
+	if (proc->timer == proc->duration) {
 		gEfxBgSemaphore--;
 		Proc_Break(proc);
 	}
@@ -3937,7 +3937,7 @@ void EfxMistyrain_Loop(struct ProcEfx *proc)
 	}
 
 	if (proc->timer == duration + 131) {
-		proc->unk_64 = NewEfxMistyrainOBJ2(anim);
+		proc->priv2 = NewEfxMistyrainOBJ2(anim);
 		return;
 	}
 
@@ -3948,7 +3948,7 @@ void EfxMistyrain_Loop(struct ProcEfx *proc)
 	}
 
 	if (proc->timer == duration + 170) {
-		Proc_End(proc->unk_64);
+		Proc_End(proc->priv2);
 		return;
 	}
 

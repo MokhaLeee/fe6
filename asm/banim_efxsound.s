@@ -4,24 +4,6 @@
 
 	.section .data
 
-	.incbin "fe6-base.gba", 0x605D58, (0x605F18 - 0x605D58) @ length: 01D8
-
-	.global gBanimBossBGMs
-gBanimBossBGMs: @ 08605F18
-	.incbin "fe6-base.gba", 0x605F18, (0x605F34 - 0x605F18) @ length: 001C
-
-	.global gBanimSongTable1
-gBanimSongTable1: @ 08605F34
-	.incbin "fe6-base.gba", 0x605F34, (0x605F50 - 0x605F34) @ length: 001C
-
-	.global gBanimSongTable2
-gBanimSongTable2: @ 08605F50
-	.incbin "fe6-base.gba", 0x605F50, (0x605F6C - 0x605F50) @ length: 001C
-
-	.global gBanimSongTable3
-gBanimSongTable3: @ 08605F6C
-	.incbin "fe6-base.gba", 0x605F6C, (0x605F88 - 0x605F6C) @ length: 001C
-
 	.section .text
 
 	thumb_func_start EfxPlaySEwithCmdCtrl
@@ -106,7 +88,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	ldr r2, [sp]
 	cmp r0, #0x31
 	bls .L0805BF24
-	b .L0805C16A
+	b .direct_break
 .L0805BF24:
 	lsls r0, r0, #2
 	ldr r1, .L0805BF38 @ =.L0805BF3C
@@ -118,56 +100,56 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 .L0805BF34: .4byte 0x0000FFFF
 .L0805BF38: .4byte .L0805BF3C
 .L0805BF3C: @ jump table
-	.4byte .L0805C004 @ case 0
-	.4byte .L0805C16A @ case 1
-	.4byte .L0805C0D4 @ case 2
-	.4byte .L0805C008 @ case 3
-	.4byte .L0805C010 @ case 4
-	.4byte .L0805C018 @ case 5
-	.4byte .L0805C020 @ case 6
-	.4byte .L0805C040 @ case 7
-	.4byte .L0805C060 @ case 8
-	.4byte .L0805C09E @ case 9
-	.4byte .L0805C0A2 @ case 10
-	.4byte .L0805C0A6 @ case 11
-	.4byte .L0805C0AA @ case 12
-	.4byte .L0805C16A @ case 13
-	.4byte .L0805C16A @ case 14
-	.4byte .L0805C0B4 @ case 15
-	.4byte .L0805C0B8 @ case 16
-	.4byte .L0805C0C0 @ case 17
-	.4byte .L0805C0C6 @ case 18
-	.4byte .L0805C16A @ case 19
-	.4byte .L0805C16A @ case 20
-	.4byte .L0805C16A @ case 21
-	.4byte .L0805C16A @ case 22
-	.4byte .L0805C16A @ case 23
-	.4byte .L0805C16A @ case 24
-	.4byte .L0805C16A @ case 25
-	.4byte .L0805C0D0 @ case 26
-	.4byte .L0805C0D4 @ case 27
-	.4byte .L0805C0EC @ case 28
-	.4byte .L0805C0FC @ case 29
-	.4byte .L0805C100 @ case 30
-	.4byte .L0805C104 @ case 31
-	.4byte .L0805C16A @ case 32
-	.4byte .L0805C16A @ case 33
-	.4byte .L0805C16A @ case 34
-	.4byte .L0805C108 @ case 35
-	.4byte .L0805C11C @ case 36
-	.4byte .L0805C130 @ case 37
-	.4byte .L0805C134 @ case 38
-	.4byte .L0805C13A @ case 39
-	.4byte .L0805C144 @ case 40
-	.4byte .L0805C148 @ case 41
-	.4byte .L0805C14C @ case 42
-	.4byte .L0805C16A @ case 43
-	.4byte .L0805C16A @ case 44
-	.4byte .L0805C152 @ case 45
-	.4byte .L0805C16A @ case 46
-	.4byte .L0805C156 @ case 47
-	.4byte .L0805C15A @ case 48
-	.4byte .L0805C164 @ case 49
+	.4byte .L0805C004 @ case 25
+	.4byte .direct_break @ case 26
+	.4byte .boss_bgm @ case 27
+	.4byte .L0805C008 @ case 28
+	.4byte .L0805C010 @ case 29
+	.4byte .L0805C018 @ case 30
+	.4byte .case_31 @ case 31
+	.4byte .case_32 @ case 7
+	.4byte .case_33 @ case 8
+	.4byte .case_34 @ case 9
+	.4byte .case_35 @ case 10
+	.4byte .case_36 @ case 11
+	.4byte .case_37 @ case 12
+	.4byte .direct_break @ case 13
+	.4byte .direct_break @ case 14
+	.4byte .case_40 @ case 15
+	.4byte .case_41 @ case 16
+	.4byte .case_42 @ case 17
+	.4byte .case_43 @ case 18
+	.4byte .direct_break @ case 19
+	.4byte .direct_break @ case 20
+	.4byte .direct_break @ case 21
+	.4byte .direct_break @ case 22
+	.4byte .direct_break @ case 23
+	.4byte .direct_break @ case 24
+	.4byte .direct_break @ case 25
+	.4byte .case_51 @ case 26
+	.4byte .boss_bgm @ case 27
+	.4byte .case_53 @ case 28
+	.4byte .case_54 @ case 29
+	.4byte .case_55 @ case 30
+	.4byte .case_56 @ case 31
+	.4byte .direct_break @ case 32
+	.4byte .direct_break @ case 33
+	.4byte .direct_break @ case 34
+	.4byte .case_60 @ case 35
+	.4byte .case_61 @ case 36
+	.4byte .case_62 @ case 37
+	.4byte .case_63 @ case 38
+	.4byte .case_64 @ case 39
+	.4byte .case_65 @ case 40
+	.4byte .case_66 @ case 41
+	.4byte .case_67 @ case 42
+	.4byte .direct_break @ case 43
+	.4byte .direct_break @ case 44
+	.4byte .case_70 @ case 45
+	.4byte .direct_break @ case 46
+	.4byte .case_72 @ case 47
+	.4byte .case_73 @ case 48
+	.4byte .case_74 @ case 49
 .L0805C004:
 	movs r4, #0xd1
 	b .L0805C16C
@@ -186,7 +168,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	b .L0805C0D6
 	.align 2, 0
 .L0805C01C: .4byte gBanimSongTable3
-.L0805C020:
+.case_31:
 	adds r0, r6, #0
 	bl EfxPlayCriticalHittedSFX
 	adds r0, r6, #0
@@ -201,7 +183,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	bne .L0805C08E
 	movs r4, #0xd2
 	b .L0805C08E
-.L0805C040:
+.case_32:
 	adds r0, r6, #0
 	bl EfxPlayCriticalHittedSFX
 	adds r0, r6, #0
@@ -216,7 +198,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	bne .L0805C08E
 	movs r4, #0xd3
 	b .L0805C08E
-.L0805C060:
+.case_33:
 	adds r0, r6, #0
 	bl EfxPlayCriticalHittedSFX
 	adds r0, r6, #0
@@ -250,41 +232,41 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
 	b .L0805C16C
-.L0805C09E:
+.case_34:
 	movs r4, #0xc9
 	b .L0805C16C
-.L0805C0A2:
+.case_35:
 	movs r4, #0xc8
 	b .L0805C16C
-.L0805C0A6:
+.case_36:
 	movs r4, #0xca
 	b .L0805C16C
-.L0805C0AA:
+.case_37:
 	ldr r4, .L0805C0B0 @ =0x00000263
 	b .L0805C0EE
 	.align 2, 0
 .L0805C0B0: .4byte 0x00000263
-.L0805C0B4:
+.case_40:
 	movs r4, #0xf6
 	b .L0805C16C
-.L0805C0B8:
+.case_41:
 	ldr r4, .L0805C0BC @ =0x00000141
 	b .L0805C16C
 	.align 2, 0
 .L0805C0BC: .4byte 0x00000141
-.L0805C0C0:
+.case_42:
 	movs r4, #0xa1
 	lsls r4, r4, #1
 	b .L0805C16C
-.L0805C0C6:
+.case_43:
 	ldr r4, .L0805C0CC @ =0x00000267
 	b .L0805C0EE
 	.align 2, 0
 .L0805C0CC: .4byte 0x00000267
-.L0805C0D0:
+.case_51:
 	movs r4, #0xe7
 	b .L0805C16C
-.L0805C0D4:
+.boss_bgm:
 	ldr r1, .L0805C0E8 @ =gBanimBossBGMs
 .L0805C0D6:
 	lsls r0, r7, #2
@@ -298,7 +280,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	b .L0805C16C
 	.align 2, 0
 .L0805C0E8: .4byte gBanimBossBGMs
-.L0805C0EC:
+.case_53:
 	ldr r4, .L0805C0F8 @ =0x00000265
 .L0805C0EE:
 	cmp r5, #0
@@ -307,16 +289,16 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	b .L0805C16C
 	.align 2, 0
 .L0805C0F8: .4byte 0x00000265
-.L0805C0FC:
+.case_54:
 	movs r4, #0xce
 	b .L0805C16C
-.L0805C100:
+.case_55:
 	movs r4, #0xcf
 	b .L0805C16C
-.L0805C104:
+.case_56:
 	movs r4, #0xcb
 	b .L0805C16C
-.L0805C108:
+.case_60:
 	ldr r4, .L0805C118 @ =0x00000263
 	cmp r5, #0
 	bne .L0805C110
@@ -327,7 +309,7 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	b .L0805C16C
 	.align 2, 0
 .L0805C118: .4byte 0x00000263
-.L0805C11C:
+.case_61:
 	ldr r4, .L0805C12C @ =0x00000267
 	cmp r5, #0
 	bne .L0805C124
@@ -338,44 +320,44 @@ EfxPlaySEwithCmdCtrl: @ 0x0805BE7C
 	b .L0805C16C
 	.align 2, 0
 .L0805C12C: .4byte 0x00000267
-.L0805C130:
+.case_62:
 	movs r4, #0xf1
 	b .L0805C16C
-.L0805C134:
+.case_63:
 	movs r4, #0x9b
 	lsls r4, r4, #1
 	b .L0805C16C
-.L0805C13A:
+.case_64:
 	ldr r4, .L0805C140 @ =0x00000117
 	b .L0805C16C
 	.align 2, 0
 .L0805C140: .4byte 0x00000117
-.L0805C144:
+.case_65:
 	movs r4, #0xeb
 	b .L0805C16C
-.L0805C148:
+.case_66:
 	movs r4, #0xea
 	b .L0805C16C
-.L0805C14C:
+.case_67:
 	movs r4, #0x8c
 	lsls r4, r4, #1
 	b .L0805C16C
-.L0805C152:
+.case_70:
 	movs r4, #0xe0
 	b .L0805C16C
-.L0805C156:
+.case_72:
 	movs r4, #0xed
 	b .L0805C16C
-.L0805C15A:
+.case_73:
 	ldr r4, .L0805C160 @ =0x00000135
 	b .L0805C16C
 	.align 2, 0
 .L0805C160: .4byte 0x00000135
-.L0805C164:
+.case_74:
 	movs r4, #0x9a
 	lsls r4, r4, #1
 	b .L0805C16C
-.L0805C16A:
+.direct_break:
 	movs r4, #0
 .L0805C16C:
 	lsls r0, r4, #0x10

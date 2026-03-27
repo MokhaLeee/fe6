@@ -133,8 +133,7 @@ struct ProcEfx {
     /* 54 */ i16 * unk54;
     /* 58 */ i16 ** unk58;
     /* 5C */ struct Anim *anim;
-    /* 60 */ struct Anim * sub_anim;
-    ProcPtr unk_64;
+    /* 60 */ void *priv1, *priv2;
 };
 
 struct ProcEfx2 {
@@ -1009,6 +1008,32 @@ void EkrTogiColor_Loop(struct ProcEkrTogiColor *proc);
 /* efxmagic */
 void StartSpellAnimation(struct Anim *anim);
 void func_fe6_0804C8D0(void);
+
+struct ProcEfxRstWIN {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ i16 timer;
+    /* 2E */ i16 step;
+
+    STRUCT_PAD(0x30, 0x32);
+
+    /* 32 */ u16 diff_per_step;
+
+    STRUCT_PAD(0x34, 0x44);
+
+    /* 44 */ u32 duration;
+    /* 48 */ u32 timer2;
+
+    STRUCT_PAD(0x4C, 0x54);
+
+    /* 54 */ i16 *frame_conf;
+    /* 58 */ i16 **bufs;
+
+    /* 5C */ struct Anim *anim;
+};
+
 ProcPtr NewEfxRestRST(struct Anim *anim, int duration, int step, int frame, int speed);
 void EfxRestRST_End(struct ProcEfx *proc);
 void EfxRestRST_Loop(struct ProcEfx *proc);
@@ -1016,7 +1041,7 @@ void NewDummvRST(struct Anim *anim, int unk44);
 void EfxDummyRST_End(struct ProcEfx *proc);
 void EfxDummyRST_Loop(struct ProcEfx *proc);
 void NewEfxRestWIN(struct Anim *anim, int unk44, void * unk54, void * unk58);
-void EfxRestWIN_Loop(struct ProcEfx *proc);
+void EfxRestWIN_Loop(struct ProcEfxRstWIN *proc);
 void NewEfxRestWINH(struct Anim *anim, int a, i16 b, void (* hblank)(void));
 void NewEfxRestWINH_(struct Anim *anim, int a, void (* hblank)(void));
 void EfxRestWINH_Dummy(struct ProcEfx *proc);
@@ -1758,6 +1783,16 @@ int GetAnimSpriteRotScaleX(u32 header);
 int GetAnimSpriteRotScaleY(u32 header);
 void BanimUpdateSpriteRotScale(void * src, struct BaSpriteData * out, i16 x, i16 y, int unused);
 
+enum efx_sound_type {
+    EFX_SOUNDT_0,
+    EFX_SOUNDT_1,
+    EFX_SOUNDT_2,
+    EFX_SOUNDT_3,
+    EFX_SOUNDT_4,
+    EFX_SOUNDT_5,
+    EFX_SOUNDT_6,
+};
+
 struct ProcEfxSoundSE {
     PROC_HEADER;
 
@@ -1774,6 +1809,11 @@ struct ProcEfxSoundSE {
 extern EWRAM_OVERLAY(banim) int gEkrMainBgmPlaying;
 extern EWRAM_OVERLAY(banim) int gEfxSoundSeExist;
 
+extern CONST_DATA u16 *gBanimBossBGMs[];
+extern CONST_DATA u16 *gBanimSongTable1[];
+extern CONST_DATA u16 *gBanimSongTable2[];
+extern CONST_DATA u16 *gBanimSongTable3[];
+
 void EfxPlaySE(int songid, int volume);
 void EfxSoundSE_Loop(struct ProcEfxSoundSE *proc);
 void DoM4aSongNumStop(int num);
@@ -1783,7 +1823,7 @@ void UnregisterEfxSoundSeExist(void);
 void RegisterEfxSoundSeExist(void);
 int CheckEfxSoundSeExist(void);
 void M4aPlayWithPostionCtrl(int songid, int x, int flag);
-void EfxPlaySEwithCmdCtrl(struct BaSprite *anim, int cmd);
+void EfxPlaySEwithCmdCtrl(struct Anim *anim, int cmd);
 u16 GetEfxSoundType1FromTerrain(u16 terrain);
 int IsAnimSoundInPosition(struct Anim *anim);
 u16 GetEfxSoundType2FromBaseCon(u16 basecon);
@@ -2601,10 +2641,7 @@ extern i16 PosArray_EfxApocalypseBGCtrl[];
 // ??? gEfxTmyPalRefs
 extern CONST_DATA struct ProcScr ProcScr_EkrSubAnimeEmulator[];
 extern CONST_DATA struct ProcScr ProcScr_EfxSoundSE[];
-extern CONST_DATA u16 *gBanimBossBGMs[];
-extern CONST_DATA u16 *gBanimSongTable1[];
-extern CONST_DATA u16 *gBanimSongTable2[];
-extern CONST_DATA u16 *gBanimSongTable3[];
+
 extern CONST_DATA struct ProcScr ProcScr_EkrClasschg[];
 extern CONST_DATA struct ProcScr ProcScr_EfxClasschgBG[];
 extern CONST_DATA u16 *TsaArray_EkrClasschgBG[];

@@ -134,12 +134,27 @@ enum
     SONG_D0 = 0xD0,
     SONG_D1 = 0xD1,
     SONG_D2 = 0xD2,
+    SONG_D3 = 0xD3,
+    SONG_D4 = 0xD4,
     SONG_D5 = 0xD5,
     SONG_D6 = 0xD6,
+    SONG_D7 = 0xD7,
     SONG_D8 = 0xD8, // crit?
+    SONG_D9 = 0xD9,
+    SONG_DA = 0xDA,
+    SONG_DB = 0xDB,
+    SONG_DC = 0xDC,
+    SONG_DD = 0xDD,
+    SONG_DE = 0xDE,
+    SONG_DF = 0xDF,
+    SONG_E0 = 0xE0,
     SONG_E1 = 0xE1, // efx dancer
     SONG_E2 = 0xE2, // ekrtriangle armor knight
+    SONG_E7 = 0xE7,
+    SONG_EA = 0xEA,
+    SONG_EB = 0xEB,
     SONG_EC = 0xEC, // no damage
+    SONG_ED = 0xED,
     SONG_EE = 0xEE, // efx singer
     SONG_EF = 0xEF, // efx song
     SONG_F0 = 0xF0, // efx special effect
@@ -223,11 +238,20 @@ enum
     SONG_13E,
     SONG_13F,
     SONG_140 = 0x140,
+    SONG_141 = 0x141,
+    SONG_142 = 0x142,
     SONG_143 = 0x143,
     SONG_144 = 0x144,
     SONG_145 = 0x145,
     SONG_146 = 0x146,
     SONG_147 = 0x147,
+
+    SONG_262 = 0x262,
+    SONG_263 = 0x263,
+    SONG_264 = 0x264,
+    SONG_265 = 0x265,
+    SONG_266 = 0x266,
+    SONG_267 = 0x267,
     SONG_268 = 0x268,
     SONG_269 = 0x269,
     SONG_26A = 0x26A,
