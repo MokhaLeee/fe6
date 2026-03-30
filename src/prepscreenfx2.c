@@ -18,18 +18,18 @@
 
 extern const char Msg_Prep_Supply[]; // 輸送隊
 
-#if 0
 void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 {
-	int tmp;
+	i8 tmp;
 	struct Text *text;
+	u8 _y = y & 0xF;
 
-	TmFillRect(gBg2Tm + TM_OFFSET(x * 7, y & 0xF), 0x10, 1, 0);
+	TmFillRect(gBg2Tm + TM_OFFSET(x * 14, _y * 2), 0x10, 1, 0);
 	ClearText(&texts[y & 0x7]);
 	PutIcon(
-		gBg2Tm + TM_OFFSET(x * 7 + 1, y & 0xF),
+		gBg2Tm + TM_OFFSET(x * 14 + 2, _y * 2),
 		GetItemIcon(gPrepConvoyData[y].u.info.item),
-		y);
+		0x4000);
 	func_fe6_0807D2F4(GetItemIcon(gPrepConvoyData[y].u.info.item));
 
 	if (unit == NULL || IsItemDisplayUseable(unit, gPrepConvoyData[y].u.info.item) != false)
@@ -42,15 +42,14 @@ void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 	Text_SetColor(text, (tmp == 0) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE);
 	Text_SetCursor(text, 0);
 	Text_DrawString(text, GetItemName(gPrepConvoyData[y].u.info.item));
-	PutText(text, gBg2Tm + TM_OFFSET(x * 7 + 2, y & 0xF));
+	PutText(text, gBg2Tm + TM_OFFSET(x * 14 + 4, _y * 2));
 	PutNumberOrBlank(
-		gBg2Tm + TM_OFFSET(x * 7 + 15, y & 0xF),
-		(tmp == 0) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_BLUE,
+		gBg2Tm + TM_OFFSET(x * 14 + 13, _y * 2),
+		(tmp != 0) ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
 		GetItemUses(gPrepConvoyData[y].u.info.item));
 
 	EnableBgSync(BG2_SYNC_BIT);
 }
-#endif
 
 void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y)
 {

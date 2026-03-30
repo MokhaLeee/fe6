@@ -367,7 +367,7 @@ void func_fe6_0807D358(struct PrepSubItemProc *proc);
 void func_fe6_0807D6C0(int, struct Unit *unit);
 void func_fe6_0807D834(int convoy_page);
 void func_fe6_0807D9E4(struct Text *text, int, struct Unit *unit, int off, int);
-// func_fe6_0807DB80
+void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit);
 void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y);
 void PrepAllItems_PutTotalNum(u8 x, u8 y);
 void PrepAllItems_Update(void);
