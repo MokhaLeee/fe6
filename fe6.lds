@@ -80,8 +80,8 @@ SECTIONS
         . = 0x015688; gPrepTexts3 = .;
         . = 0x015698; gPrepSubMenuIcons = .;
         . = 0x0156E8; gPrepTexts4 = .;
-        . = 0x015D28; gPrepItemlData = .;
-        . = 0x016368; gPrep_Unk_02016368 = .;
+        . = 0x015D28; gPrepConvoyData = .;
+        . = 0x016368; gPrepAllItemsCount = .;
         . = 0x01636A; gPrep_Unk_0201636A = .;
         . = 0x01636C; sSallyCirWinH_obj = .;
         . = 0x01686C; sSallyCirWinH = .;
@@ -567,12 +567,14 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         asm/prepscreen.o(.text);
+        src/prepscreenfx2.o(.text);
         src/prep_subitemscreen1.o(.text);
         asm/prep_subitemscreen.o(.text);
         src/prep_subitemscreen.o(.text);
         src/prep_subscreen_discard1.o(.text);
         asm/prep_subscreen_discard.o(.text);
         src/prep_subscreen_discard.o(.text);
+        src/prep_menuscrollbar1.o(.text);
         asm/prep_menuscrollbar.o(.text);
         src/prep_menuscrollbar.o(.text);
         src/prep_080823A0.o(.text);

@@ -782,7 +782,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	movs r2, #0xf
 	movs r3, #0x10
 	bl PutUiWindowFrame
-	ldr r0, .L0807ED78 @ =gPrep_Unk_02016368
+	ldr r0, .L0807ED78 @ =gPrepAllItemsCount
 	strh r4, [r0]
 	movs r4, #1
 .L0807EB9A:
@@ -840,8 +840,8 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	movs r3, #0
 	cmp r3, r2
 	bhs .L0807EC46
-	ldr r7, .L0807ED7C @ =gPrepItemlData
-	ldr r4, .L0807ED78 @ =gPrep_Unk_02016368
+	ldr r7, .L0807ED7C @ =gPrepConvoyData
+	ldr r4, .L0807ED78 @ =gPrepAllItemsCount
 	movs r0, #0x1c
 	adds r0, r0, r5
 	mov ip, r0
@@ -875,14 +875,14 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	mov r4, sb
 	cmp r4, #0x3f
 	ble .L0807EB9A
-	ldr r1, .L0807ED78 @ =gPrep_Unk_02016368
+	ldr r1, .L0807ED78 @ =gPrepAllItemsCount
 	ldrh r4, [r1]
 	movs r2, #0
 	mov r3, sl
 	ldrh r0, [r3]
 	cmp r0, #0
 	beq .L0807EC8C
-	ldr r7, .L0807ED7C @ =gPrepItemlData
+	ldr r7, .L0807ED7C @ =gPrepConvoyData
 	movs r5, #0
 	adds r3, r1, #0
 .L0807EC60:
@@ -955,7 +955,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	ldr r1, [sp, #0x20]
 	strb r0, [r1]
 	ldr r0, .L0807ED84 @ =gPrepTexts3 + 0x8
-	ldr r2, .L0807ED7C @ =gPrepItemlData
+	ldr r2, .L0807ED7C @ =gPrepConvoyData
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r1, r3, #4
@@ -967,7 +967,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 	ldr r7, [sp, #0x18]
 	ldrb r2, [r7]
 	lsls r0, r2, #3
@@ -1017,8 +1017,8 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	bl NewSallyCir2
 	b .L0807ED96
 	.align 2, 0
-.L0807ED78: .4byte gPrep_Unk_02016368
-.L0807ED7C: .4byte gPrepItemlData
+.L0807ED78: .4byte gPrepAllItemsCount
+.L0807ED7C: .4byte gPrepConvoyData
 .L0807ED80: .4byte gPrepTexts2
 .L0807ED84: .4byte gPrepTexts3 + 0x8
 .L0807ED88: .4byte gPrep_Unk_0201636A
@@ -1389,7 +1389,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	mov r3, r8
 	ldr r0, [r3, #0x54]
 	ldrb r1, [r6]
-	ldr r3, .L0807F168 @ =gPrepItemlData
+	ldr r3, .L0807F168 @ =gPrepConvoyData
 	mov r2, r8
 	adds r2, #0x50
 	ldrh r2, [r2]
@@ -1419,7 +1419,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl .L0807FA9A
 	.align 2, 0
 .L0807F164: .4byte gKeySt
-.L0807F168: .4byte gPrepItemlData
+.L0807F168: .4byte gPrepConvoyData
 .L0807F16C: .4byte 0x000006C2
 .L0807F170:
 	ldr r0, .L0807F220 @ =gPlaySt
@@ -1439,7 +1439,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	lsrs r2, r3, #4
 	ldrb r3, [r5]
 	adds r2, r3, r2
-	bl func_fe6_0807DF60
+	bl PrepAllItems_SwapItems
 	mov r7, r8
 	adds r7, #0x2f
 	ldrb r2, [r7]
@@ -1475,7 +1475,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	movs r1, #1
 	bl func_fe6_0807D9E4
 	ldr r0, .L0807F228 @ =gPrepTexts3 + 0x8
-	ldr r2, .L0807F22C @ =gPrepItemlData
+	ldr r2, .L0807F22C @ =gPrepConvoyData
 	ldrh r4, [r4]
 	lsrs r1, r4, #4
 	ldrb r3, [r6]
@@ -1485,7 +1485,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 	ldrb r2, [r7]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1505,7 +1505,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 .L0807F220: .4byte gPlaySt
 .L0807F224: .4byte gPrepTexts2
 .L0807F228: .4byte gPrepTexts3 + 0x8
-.L0807F22C: .4byte gPrepItemlData
+.L0807F22C: .4byte gPrepConvoyData
 .L0807F230:
 	ldr r1, .L0807F294 @ =gKeySt
 	ldr r0, [r1]
@@ -1659,7 +1659,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 .L0807F35C: .4byte gPrep_Unk_0201636A
 .L0807F360: .4byte gPlaySt
 .L0807F364:
-	ldr r2, .L0807F3D8 @ =gPrepItemlData
+	ldr r2, .L0807F3D8 @ =gPrepConvoyData
 	mov r1, r8
 	adds r1, #0x2e
 	mov r0, r8
@@ -1714,7 +1714,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	strb r0, [r6]
 	b .L0807F3E2
 	.align 2, 0
-.L0807F3D8: .4byte gPrepItemlData
+.L0807F3D8: .4byte gPrepConvoyData
 .L0807F3DC: .4byte gPlaySt
 .L0807F3E0:
 	strb r5, [r6]
@@ -1799,7 +1799,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	lsls r3, r3, #5
 	subs r3, #0x48
 	subs r1, r1, r3
-	ldr r4, .L0807F4A0 @ =gPrepItemlData
+	ldr r4, .L0807F4A0 @ =gPrepConvoyData
 	mov r3, r8
 	adds r3, #0x50
 	ldrh r3, [r3]
@@ -1812,7 +1812,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	b .L0807FA9A
 	.align 2, 0
 .L0807F49C: .4byte gPrep_Unk_0201636A
-.L0807F4A0: .4byte gPrepItemlData
+.L0807F4A0: .4byte gPrepConvoyData
 .L0807F4A4:
 	ldr r3, .L0807F548 @ =gKeySt
 	ldr r1, [r3]
@@ -1870,7 +1870,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl func_fe6_0807DB80
 	mov r0, r8
 	bl func_fe6_0807D358
-	ldr r1, .L0807F554 @ =gPrepItemlData
+	ldr r1, .L0807F554 @ =gPrepConvoyData
 	ldrh r2, [r5]
 	lsrs r0, r2, #4
 	ldrb r6, [r6]
@@ -1886,7 +1886,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 .L0807F538:
 	ldrb r7, [r7]
 	lsls r0, r7, #2
@@ -1900,7 +1900,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 .L0807F548: .4byte gKeySt
 .L0807F54C: .4byte gPlaySt
 .L0807F550: .4byte gPrepTexts2
-.L0807F554: .4byte gPrepItemlData
+.L0807F554: .4byte gPrepConvoyData
 .L0807F558: .4byte gPrepTexts3 + 0x8
 .L0807F55C:
 	mov r4, r8
@@ -1920,7 +1920,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r6]
 	subs r0, #1
 	strb r0, [r6]
-	ldr r1, .L0807F5C4 @ =gPrepItemlData
+	ldr r1, .L0807F5C4 @ =gPrepConvoyData
 	mov r0, r8
 	adds r0, #0x50
 	ldrh r0, [r0]
@@ -1937,7 +1937,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 .L0807F5A6:
 	ldrb r2, [r4]
 	lsls r0, r2, #3
@@ -1955,7 +1955,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl PutUiEntryHover
 	b .L0807FA9A
 	.align 2, 0
-.L0807F5C4: .4byte gPrepItemlData
+.L0807F5C4: .4byte gPrepConvoyData
 .L0807F5C8: .4byte gPrepTexts3 + 0x8
 .L0807F5CC:
 	ldr r2, .L0807F664 @ =gKeySt
@@ -2007,7 +2007,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl func_fe6_0807DB80
 	mov r0, r8
 	bl func_fe6_0807D358
-	ldr r1, .L0807F670 @ =gPrepItemlData
+	ldr r1, .L0807F670 @ =gPrepConvoyData
 	ldrh r2, [r5]
 	lsrs r0, r2, #4
 	ldrb r6, [r6]
@@ -2023,7 +2023,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 .L0807F650:
 	ldrb r7, [r7]
 	lsls r0, r7, #2
@@ -2038,7 +2038,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 .L0807F664: .4byte gKeySt
 .L0807F668: .4byte gPrep_Unk_0201636A
 .L0807F66C: .4byte gPrepTexts2
-.L0807F670: .4byte gPrepItemlData
+.L0807F670: .4byte gPrepConvoyData
 .L0807F674: .4byte gPrepTexts3 + 0x8
 .L0807F678:
 	mov r5, r8
@@ -2070,7 +2070,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r4]
 	adds r0, #1
 	strb r0, [r4]
-	ldr r1, .L0807F704 @ =gPrepItemlData
+	ldr r1, .L0807F704 @ =gPrepConvoyData
 	ldrh r5, [r5]
 	lsrs r0, r5, #4
 	ldrb r4, [r4]
@@ -2085,7 +2085,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 .L0807F6D4:
 	ldrb r2, [r7]
 	lsls r0, r2, #3
@@ -2111,7 +2111,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl m4aSongNumStart
 	b .L0807FA9A
 	.align 2, 0
-.L0807F704: .4byte gPrepItemlData
+.L0807F704: .4byte gPrepConvoyData
 .L0807F708: .4byte gPrepTexts3 + 0x8
 .L0807F70C: .4byte gPlaySt
 .L0807F710:
@@ -2376,7 +2376,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-	ldr r1, .L0807F964 @ =gPrepItemlData
+	ldr r1, .L0807F964 @ =gPrepConvoyData
 	ldrh r5, [r5]
 	lsrs r0, r5, #4
 	ldrb r4, [r4]
@@ -2396,7 +2396,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 .L0807F94C:
 	mov r0, r8
 	bl func_fe6_0807D358
@@ -2409,7 +2409,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	b .L0807FA6E
 	.align 2, 0
 .L0807F960: .4byte gPrepTexts2
-.L0807F964: .4byte gPrepItemlData
+.L0807F964: .4byte gPrepConvoyData
 .L0807F968: .4byte gPrep_Unk_0201636A
 .L0807F96C: .4byte gPrepTexts3 + 0x8
 .L0807F970:
@@ -2511,7 +2511,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-	ldr r1, .L0807FA78 @ =gPrepItemlData
+	ldr r1, .L0807FA78 @ =gPrepConvoyData
 	ldrh r4, [r4]
 	lsrs r0, r4, #4
 	ldrb r5, [r5]
@@ -2531,7 +2531,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r1, [r1]
 	movs r2, #0x18
 	movs r3, #0
-	bl func_fe6_0807DCB8
+	bl PrepAllItems_PutPName
 .L0807FA5C:
 	mov r0, r8
 	bl func_fe6_0807D358
@@ -2547,7 +2547,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	b .L0807FA9A
 	.align 2, 0
 .L0807FA74: .4byte gPrepTexts2
-.L0807FA78: .4byte gPrepItemlData
+.L0807FA78: .4byte gPrepConvoyData
 .L0807FA7C: .4byte gPrep_Unk_0201636A
 .L0807FA80: .4byte gPrepTexts3 + 0x8
 .L0807FA84:
@@ -2647,7 +2647,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	lsls r3, r3, #5
 	subs r3, #0x48
 	subs r1, r1, r3
-	ldr r4, .L0807FBC8 @ =gPrepItemlData
+	ldr r4, .L0807FBC8 @ =gPrepConvoyData
 	ldrh r5, [r5]
 	lsrs r3, r5, #4
 	adds r2, r2, r3
@@ -2719,7 +2719,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	movs r0, #2
 	b .L0807FBD6
 	.align 2, 0
-.L0807FBC8: .4byte gPrepItemlData
+.L0807FBC8: .4byte gPrepConvoyData
 .L0807FBCC: .4byte gDispIo
 .L0807FBD0:
 	cmp r1, #1
@@ -2913,7 +2913,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	adds r0, r6, #0
 	adds r0, #0x31
 	strb r5, [r0]
-	ldr r1, .L0807FDBC @ =gPrep_Unk_02016368
+	ldr r1, .L0807FDBC @ =gPrepAllItemsCount
 	strh r5, [r1]
 	movs r2, #0
 	ldrh r0, [r3]
@@ -2921,7 +2921,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	adds r5, #0x46
 	cmp r0, #0
 	beq .L0807FD9C
-	ldr r0, .L0807FDC0 @ =gPrepItemlData
+	ldr r0, .L0807FDC0 @ =gPrepConvoyData
 	mov ip, r0
 	movs r7, #0
 	adds r4, r1, #0
@@ -2961,8 +2961,8 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 .L0807FDB0: .4byte gBg0Tm+0x1E
 .L0807FDB4: .4byte gBg1Tm+0x1E
 .L0807FDB8: .4byte gBg2Tm+0x1E
-.L0807FDBC: .4byte gPrep_Unk_02016368
-.L0807FDC0: .4byte gPrepItemlData
+.L0807FDBC: .4byte gPrepAllItemsCount
+.L0807FDC0: .4byte gPrepConvoyData
 .L0807FDC4:
 	movs r0, #0
 .L0807FDC6:
@@ -3026,7 +3026,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	adds r1, r5, #0
 	adds r1, #0x80
 	movs r2, #0
-	ldr r7, .L0807FE78 @ =gPrep_Unk_02016368
+	ldr r7, .L0807FE78 @ =gPrepAllItemsCount
 	ldrh r0, [r7]
 	cmp r0, #0
 	bne .L0807FE4C
@@ -3050,7 +3050,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 .L0807FE6C: .4byte gPrepTexts2
 .L0807FE70: .4byte gBg2Tm+0x12A
 .L0807FE74: .4byte gUnk_083272AC
-.L0807FE78: .4byte gPrep_Unk_02016368
+.L0807FE78: .4byte gPrepAllItemsCount
 .L0807FE7C: .4byte gUnk_083272B8
 .L0807FE80:
 	adds r3, r4, #0
@@ -3102,7 +3102,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 .L0807FEE0:
 	movs r0, #0x18
 	movs r1, #0
-	bl func_fe6_0807DDC8
+	bl PrepAllItems_PutTotalNum
 	ldrb r0, [r4]
 	cmp r0, #4
 	bne .L0807FF50
@@ -3124,7 +3124,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	adds r0, r6, #0
 	movs r1, #7
 	bl Proc_Goto
-	ldr r1, .L0807FF48 @ =gPrepItemlData
+	ldr r1, .L0807FF48 @ =gPrepConvoyData
 	mov r2, sb
 	ldrh r2, [r2]
 	lsrs r0, r2, #4
@@ -3146,7 +3146,7 @@ PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
 	b .L0807FF86
 	.align 2, 0
 .L0807FF44: .4byte gUnk_083272C4
-.L0807FF48: .4byte gPrepItemlData
+.L0807FF48: .4byte gPrepConvoyData
 .L0807FF4C: .4byte 0x00000C47
 .L0807FF50:
 	cmp r0, #3
@@ -3408,7 +3408,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 .L08080150:
 	cmp r4, #1
 	bne .L08080178
-	ldr r0, .L08080170 @ =gPrep_Unk_02016368
+	ldr r0, .L08080170 @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080184
@@ -3421,12 +3421,12 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 	bl m4aSongNumStart
 	b .L080801FC
 	.align 2, 0
-.L08080170: .4byte gPrep_Unk_02016368
+.L08080170: .4byte gPrepAllItemsCount
 .L08080174: .4byte gPlaySt
 .L08080178:
 	cmp r4, #2
 	bne .L080801FC
-	ldr r0, .L08080198 @ =gPrep_Unk_02016368
+	ldr r0, .L08080198 @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L080801A0
@@ -3440,7 +3440,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 	bl m4aSongNumStart
 	b .L08080274
 	.align 2, 0
-.L08080198: .4byte gPrep_Unk_02016368
+.L08080198: .4byte gPrepAllItemsCount
 .L0808019C: .4byte gPlaySt
 .L080801A0:
 	ldr r0, .L0808020C @ =gPlaySt
@@ -3468,7 +3468,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 	movs r2, #0x1f
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r1, .L0808021C @ =gPrepItemlData
+	ldr r1, .L0808021C @ =gPrepConvoyData
 	adds r0, r5, #0
 	adds r0, #0x50
 	ldrh r0, [r0]
@@ -3495,7 +3495,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 .L08080210: .4byte gBg0Tm
 .L08080214: .4byte gBg1Tm
 .L08080218: .4byte gBg2Tm
-.L0808021C: .4byte gPrepItemlData
+.L0808021C: .4byte gPrepConvoyData
 .L08080220:
 	ldr r1, [r7]
 	movs r0, #0x80
@@ -3899,7 +3899,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r3, [r7]
 	adds r0, r3, r0
 	lsls r1, r0, #0x10
-	ldr r4, .L080805DC @ =gPrep_Unk_02016368
+	ldr r4, .L080805DC @ =gPrepAllItemsCount
 	adds r5, r4, #0
 	ldr r2, .L080805E0 @ =gPrep_Unk_0201636A
 	mov ip, r2
@@ -3909,7 +3909,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r2, [r4]
 	cmp r0, r2
 	bge .L08080588
-	ldr r3, .L080805E4 @ =gPrepItemlData
+	ldr r3, .L080805E4 @ =gPrepConvoyData
 .L0808056E:
 	asrs r1, r1, #0x10
 	lsls r2, r1, #2
@@ -3944,7 +3944,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	str r1, [sp]
 	movs r1, #1
 	bl func_fe6_0807D9E4
-	bl func_fe6_0807DE60
+	bl PrepAllItems_Update
 	ldr r1, .L080805EC @ =gAction
 	movs r0, #0x19
 	strb r0, [r1, #0x11]
@@ -3963,9 +3963,9 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	.align 2, 0
 .L080805D4: .4byte gKeySt
 .L080805D8: .4byte gPlaySt
-.L080805DC: .4byte gPrep_Unk_02016368
+.L080805DC: .4byte gPrepAllItemsCount
 .L080805E0: .4byte gPrep_Unk_0201636A
-.L080805E4: .4byte gPrepItemlData
+.L080805E4: .4byte gPrepConvoyData
 .L080805E8: .4byte gPrepTexts2
 .L080805EC: .4byte gAction
 .L080805F0:
@@ -4025,7 +4025,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r2, #0x13
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r1, .L080806A8 @ =gPrepItemlData
+	ldr r1, .L080806A8 @ =gPrepConvoyData
 	mov r4, r8
 	ldrh r4, [r4]
 	lsrs r0, r4, #4
@@ -4040,7 +4040,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl func_fe6_0807D4A8
 	movs r0, #3
 	bl EnableBgSync
-	ldr r0, .L080806AC @ =gPrep_Unk_02016368
+	ldr r0, .L080806AC @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080692
@@ -4054,8 +4054,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L0808069C: .4byte gPlaySt
 .L080806A0: .4byte gBg0Tm
 .L080806A4: .4byte gBg1Tm
-.L080806A8: .4byte gPrepItemlData
-.L080806AC: .4byte gPrep_Unk_02016368
+.L080806A8: .4byte gPrepConvoyData
+.L080806AC: .4byte gPrepAllItemsCount
 .L080806B0:
 	ldr r1, .L080806F8 @ =gKeySt
 	ldr r0, [r1]
@@ -4224,7 +4224,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r1, [r0]
 	adds r0, r6, #0
 	bl func_fe6_0807DEC8
-	ldr r0, .L080808CC @ =gPrep_Unk_02016368
+	ldr r0, .L080808CC @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	lsls r2, r0, #0x10
 	asrs r1, r2, #0x10
@@ -4235,7 +4235,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov r8, r3
 	cmp r1, r0
 	blt .L08080842
-	ldr r0, .L080808D0 @ =gPrepItemlData
+	ldr r0, .L080808D0 @ =gPrepConvoyData
 	mov sl, r0
 	movs r1, #0
 	mov sb, r1
@@ -4258,7 +4258,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	cmp r1, r0
 	bge .L08080820
 .L08080842:
-	ldr r3, .L080808D0 @ =gPrepItemlData
+	ldr r3, .L080808D0 @ =gPrepConvoyData
 	mov r0, r8
 	ldrh r0, [r0]
 	lsrs r1, r0, #4
@@ -4278,7 +4278,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r0, r0, #2
 	adds r0, r0, r3
 	strb r2, [r0]
-	ldr r1, .L080808CC @ =gPrep_Unk_02016368
+	ldr r1, .L080808CC @ =gPrepAllItemsCount
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
@@ -4292,7 +4292,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldr r1, [r6, #0x54]
 	movs r0, #0
 	bl func_fe6_0807D6C0
-	bl func_fe6_0807DE60
+	bl PrepAllItems_Update
 	ldr r1, .L080808D8 @ =gAction
 	movs r0, #0x19
 	strb r0, [r1, #0x11]
@@ -4320,8 +4320,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl .L080813D2
 	.align 2, 0
 .L080808C8: .4byte gPlaySt
-.L080808CC: .4byte gPrep_Unk_02016368
-.L080808D0: .4byte gPrepItemlData
+.L080808CC: .4byte gPrepAllItemsCount
+.L080808D0: .4byte gPrepConvoyData
 .L080808D4: .4byte gPrep_Unk_0201636A
 .L080808D8: .4byte gAction
 .L080808DC:
@@ -4395,7 +4395,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r2, [r7]
 	adds r0, r2, r0
 	lsls r0, r0, #2
-	ldr r3, .L08080A0C @ =gPrepItemlData
+	ldr r3, .L08080A0C @ =gPrepConvoyData
 	adds r0, r0, r3
 	ldrh r0, [r0, #2]
 	strh r0, [r1]
@@ -4407,11 +4407,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r1, [r7]
 	adds r0, r1, r0
 	lsls r1, r0, #0x10
-	ldr r4, .L08080A10 @ =gPrep_Unk_02016368
+	ldr r4, .L08080A10 @ =gPrepAllItemsCount
 	ldrh r2, [r4]
 	cmp r0, r2
 	bge .L080809AA
-	ldr r3, .L08080A0C @ =gPrepItemlData
+	ldr r3, .L08080A0C @ =gPrepConvoyData
 .L08080990:
 	asrs r1, r1, #0x10
 	lsls r2, r1, #2
@@ -4427,7 +4427,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	cmp r0, r2
 	blt .L08080990
 .L080809AA:
-	ldr r4, .L08080A10 @ =gPrep_Unk_02016368
+	ldr r4, .L08080A10 @ =gPrepAllItemsCount
 	ldrh r0, [r4]
 	subs r0, #1
 	strh r0, [r4]
@@ -4452,7 +4452,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldr r1, [r6, #0x54]
 	movs r0, #0
 	bl func_fe6_0807D6C0
-	bl func_fe6_0807DE60
+	bl PrepAllItems_Update
 	ldr r1, .L08080A18 @ =gAction
 	movs r0, #0x19
 	strb r0, [r1, #0x11]
@@ -4471,8 +4471,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	.align 2, 0
 .L08080A04: .4byte gPrep_Unk_0201636A
 .L08080A08: .4byte gPlaySt
-.L08080A0C: .4byte gPrepItemlData
-.L08080A10: .4byte gPrep_Unk_02016368
+.L08080A0C: .4byte gPrepConvoyData
+.L08080A10: .4byte gPrepAllItemsCount
 .L08080A14: .4byte gPrepTexts2
 .L08080A18: .4byte gAction
 .L08080A1C:
@@ -4503,7 +4503,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080B3C
-	ldr r1, .L08080A98 @ =gPrepItemlData
+	ldr r1, .L08080A98 @ =gPrepConvoyData
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r0, r3, #4
@@ -4535,7 +4535,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	.align 2, 0
 .L08080A90: .4byte gPlaySt
 .L08080A94: .4byte gPrep_Unk_0201636A
-.L08080A98: .4byte gPrepItemlData
+.L08080A98: .4byte gPrepConvoyData
 .L08080A9C: .4byte 0x00000C33
 .L08080AA0:
 	ldr r0, .L08080B20 @ =gPlaySt
@@ -4717,7 +4717,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r2, r2, #5
 	subs r2, #0x48
 	subs r1, r1, r2
-	ldr r2, .L08080C30 @ =gPrepItemlData
+	ldr r2, .L08080C30 @ =gPrepConvoyData
 	mov ip, r2
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -4729,7 +4729,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	b .L080812FA
 	.align 2, 0
 .L08080C2C: .4byte gPrep_Unk_0201636A
-.L08080C30: .4byte gPrepItemlData
+.L08080C30: .4byte gPrepConvoyData
 .L08080C34:
 	adds r0, r6, #0
 	adds r0, #0x2f
@@ -5675,7 +5675,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r2, r2, #5
 	subs r2, #0x48
 	subs r1, r1, r2
-	ldr r3, .L080813E4 @ =gPrepItemlData
+	ldr r3, .L080813E4 @ =gPrepConvoyData
 	lsls r2, r5, #2
 	adds r2, r2, r3
 	ldrh r2, [r2, #2]
@@ -5688,7 +5688,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r1, [r1]
 	cmp r1, #2
 	bne .L080813B6
-	ldr r1, .L080813E4 @ =gPrepItemlData
+	ldr r1, .L080813E4 @ =gPrepConvoyData
 	mov r2, r8
 	ldrh r2, [r2]
 	lsrs r0, r2, #4
@@ -5725,4 +5725,4 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080813E4: .4byte gPrepItemlData
+.L080813E4: .4byte gPrepConvoyData

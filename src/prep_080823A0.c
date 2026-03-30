@@ -7,8 +7,8 @@
 void SetPrepMenuScrollBarBaseInfo(struct MenuScrollBarProc *proc, int a, int b, int c, int d, int e, int f)
 {
 	proc->xBase = a;
-	proc->unk_2B = b;
-	proc->yBase = c;
+	proc->yBase = b;
+	proc->numSegments = c;
 
 	proc->currentSegment = d;
 	proc->numTotalRows = e;

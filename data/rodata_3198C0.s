@@ -36,8 +36,8 @@ Pal_0831AAFC: @ 0831AAFC
 Img_Prep_0831AB1C: @ 0831AB1C
 	.incbin "fe6-base.gba", 0x31AB1C, (0x31B068 - 0x31AB1C) @ length: 054C
 
-	.global gUnk_0831B068
-gUnk_0831B068: @ 0831B068
+	.global Pal_Prep_0831B068
+Pal_Prep_0831B068: @ 0831B068
 	.incbin "fe6-base.gba", 0x31B068, (0x31B0A8 - 0x31B068) @ length: 0040
 
 	.global Img_MonologueBG

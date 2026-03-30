@@ -174,12 +174,18 @@ extern struct Text gPrepTexts1[10];
 extern struct Text gPrepTexts2[10];
 extern struct Text gPrepTexts3[2];
 
-struct PrepItemlData {
-    u8 unk_00;
-    u8 unk_01;
-    u16 item;
+struct PrepConvoyData {
+    union {
+        struct {
+            u8 unk_00;
+            u8 unk_01;
+            u16 item;
+        } info;
+
+        u32 raw;
+    } u;
 };
-extern struct PrepItemlData gPrepItemlData[];
+extern struct PrepConvoyData gPrepConvoyData[];
 
 void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
@@ -354,19 +360,19 @@ void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc);
 void func_fe6_0807D180(struct ProcPrepfx_086793A8 *proc);
 void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc);
 // func_fe6_0807D2E0
-// func_fe6_0807D2F4
+void func_fe6_0807D2F4(int icon);
 // func_fe6_0807D338
-// func_fe6_0807D358
+void func_fe6_0807D358(struct PrepSubItemProc *proc);
 // func_fe6_0807D4A8
 void func_fe6_0807D6C0(int, struct Unit *unit);
-// func_fe6_0807D834
-// func_fe6_0807D9E4
+void func_fe6_0807D834(int convoy_page);
+void func_fe6_0807D9E4(struct Text *text, int, struct Unit *unit, int off, int);
 // func_fe6_0807DB80
-// func_fe6_0807DCB8
-// func_fe6_0807DDC8
-// func_fe6_0807DE60
-// func_fe6_0807DEC8
-// func_fe6_0807DF60
+void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y);
+void PrepAllItems_PutTotalNum(u8 x, u8 y);
+void PrepAllItems_Update(void);
+void func_fe6_0807DEC8(struct PrepSubItemProc *proc, u16 item);
+bool PrepAllItems_SwapItems(struct Unit *unit, u8 u_slot, u16 c_slot);
 void func_fe6_0807DFEC(u8 a, int timer, int obj_off);
 
 enum proclabel_prep_subitem_screen {
@@ -487,9 +493,9 @@ struct MenuScrollBarProc {
 
     /* 2A */ u8 unk_29;
     /* 2A */ u8 xBase;
-    /* 2B */ u8 unk_2B;
-    /* 2C */ u8 yBase;
-    /* 2D */ u8 numSegments;
+    /* 2B */ u8 yBase;
+    /* 2C */ u8 numSegments;
+    /* 2D */ u8 unk_2D;
     /* 2E */ u16 currentSegment;
     /* 30 */ u16 prevSegment;
     /* 32 */ u16 numTotalRows;
@@ -592,6 +598,7 @@ extern struct Text gUnk_0200E88C[];
 extern u16 gPrepFadePal[0x200];
 extern u8 gUnk_020104A4[]; // img buf
 extern int gPrepSubMenuIcons[20];
+extern u16 gPrepAllItemsCount;
 extern u16 gPrep_Unk_0201636A;
 
 extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
@@ -630,8 +637,8 @@ extern CONST_DATA u16 Sprite_086792A8[];
 extern CONST_DATA u16 Sprite_086792B6[];
 extern CONST_DATA u16 Sprite_086792C4[];
 extern CONST_DATA u16 Sprite_08679326[];
-// ??? Sprites_08679330
-// ??? gUnk_08679354
+extern u16 CONST_DATA *Sprites_08679330[];
+extern u8 CONST_DATA gUnk_08679354[20];
 extern struct ProcScr ProcScr_08679368[];
 extern struct ProcScr ProcScr_08679388[];
 extern struct ProcScr ProcScr_086793A8[];

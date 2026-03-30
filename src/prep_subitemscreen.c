@@ -19,9 +19,9 @@ void PrepSubItem_HandleAction(struct PrepSubItemProc *proc)
 		proc->unk_4E = proc->menu_scroll_bar_disp_idx;
 		proc->unk_47 = proc->hand_disp_y;
 
-		if (gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_00 == 0) {
+		if (gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_00 == 0) {
 			proc->menu_scrolling_pos = 0;
-			proc->unk_48 = gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_01;
+			proc->unk_48 = gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_01;
 			return;
 		}
 	}
@@ -40,12 +40,12 @@ void PrepSubItem_HandleAction(struct PrepSubItemProc *proc)
 	if (proc->unk2D == PREP_SUB2U2D_3) {
 		proc->proc_parent->unk_39 = proc->convoy_page;
 
-		if (gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_00 == 0) {
-			proc->unk_48 = gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_01;
+		if (gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_00 == 0) {
+			proc->unk_48 = gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_01;
 			Proc_Goto(proc, PL_PREP_SUBITEM_CONVOY);
 		} else {
-			proc->units[1] = GetUnitByPid(gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_00);
-			proc->hand_disp_y = gPrepItemlData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].unk_01;
+			proc->units[1] = GetUnitByPid(gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_00);
+			proc->hand_disp_y = gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_01;
 			Proc_Goto(proc, PL_PREP_SUBITEM_TRADE);
 		}
 	} else {

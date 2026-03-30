@@ -24,8 +24,8 @@ gUnk_0832728C: @ 0832728C
 gUnk_08327294: @ 08327294
 	.incbin "fe6-base.gba", 0x327294, (0x3272A4 - 0x327294) @ length: 0010
 
-	.global gUnk_083272A4
-gUnk_083272A4: @ 083272A4
+	.global Msg_Prep_Supply
+Msg_Prep_Supply: @ 083272A4
 	.incbin "fe6-base.gba", 0x3272A4, (0x3272AC - 0x3272A4) @ length: 0008
 
 	.global gUnk_083272AC

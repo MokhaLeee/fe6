@@ -47,7 +47,7 @@ func_fe6_0807D358: @ 0x0807D358
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq .L0807D3D8
-	ldr r2, .L0807D460 @ =gPrepItemlData
+	ldr r2, .L0807D460 @ =gPrepConvoyData
 	mov r0, r8
 	adds r0, #0x50
 	ldrh r0, [r0]
@@ -84,7 +84,7 @@ func_fe6_0807D358: @ 0x0807D358
 	ldrh r6, [r6]
 	cmp r4, r6
 	bhs .L0807D424
-	ldr r6, .L0807D460 @ =gPrepItemlData
+	ldr r6, .L0807D460 @ =gPrepConvoyData
 .L0807D3F8:
 	lsls r0, r4, #2
 	adds r0, r0, r6
@@ -141,7 +141,7 @@ func_fe6_0807D358: @ 0x0807D358
 	b .L0807D492
 	.align 2, 0
 .L0807D45C: .4byte gPrep_Unk_0201636A
-.L0807D460: .4byte gPrepItemlData
+.L0807D460: .4byte gPrepConvoyData
 .L0807D464: .4byte gPrepSubMenuIcons
 .L0807D468:
 	adds r0, r2, #1
@@ -608,7 +608,7 @@ func_fe6_0807D834: @ 0x0807D834
 	movs r0, #0
 	strh r0, [r1]
 	movs r4, #0
-	ldr r0, .L0807D8AC @ =gPrep_Unk_02016368
+	ldr r0, .L0807D8AC @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r4, r0
 	bge .L0807D8A2
@@ -621,7 +621,7 @@ func_fe6_0807D834: @ 0x0807D834
 	mov sb, r0
 	adds r6, r1, #0
 .L0807D866:
-	ldr r1, .L0807D8B8 @ =gPrepItemlData
+	ldr r1, .L0807D8B8 @ =gPrepConvoyData
 	lsls r0, r4, #2
 	adds r5, r0, r1
 	ldrh r0, [r5, #2]
@@ -647,7 +647,7 @@ func_fe6_0807D834: @ 0x0807D834
 	strh r0, [r6]
 .L0807D898:
 	adds r4, #1
-	ldr r0, .L0807D8AC @ =gPrep_Unk_02016368
+	ldr r0, .L0807D8AC @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r4, r0
 	blt .L0807D866
@@ -656,10 +656,10 @@ func_fe6_0807D834: @ 0x0807D834
 	b .L0807D8C2
 	.align 2, 0
 .L0807D8A8: .4byte gPrep_Unk_0201636A
-.L0807D8AC: .4byte gPrep_Unk_02016368
+.L0807D8AC: .4byte gPrepAllItemsCount
 .L0807D8B0: .4byte gUnk_08679354
 .L0807D8B4: .4byte gPrepTexts4
-.L0807D8B8: .4byte gPrepItemlData
+.L0807D8B8: .4byte gPrepConvoyData
 .L0807D8BC:
 	lsls r0, r2, #1
 	adds r0, r0, r2
@@ -746,7 +746,7 @@ func_fe6_0807D834: @ 0x0807D834
 .L0807D95C:
 	movs r7, #0
 	movs r4, #0
-	ldr r0, .L0807D9D8 @ =gPrep_Unk_02016368
+	ldr r0, .L0807D9D8 @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r4, r0
 	bge .L0807D9B2
@@ -758,7 +758,7 @@ func_fe6_0807D834: @ 0x0807D834
 	ldr r2, .L0807D9D0 @ =gPrepTexts4
 	mov sb, r2
 .L0807D976:
-	ldr r1, .L0807D9E0 @ =gPrepItemlData
+	ldr r1, .L0807D9E0 @ =gPrepConvoyData
 	lsls r0, r4, #2
 	adds r5, r0, r1
 	ldrh r0, [r5, #2]
@@ -785,12 +785,12 @@ func_fe6_0807D834: @ 0x0807D834
 	adds r7, #1
 .L0807D9A8:
 	adds r4, #1
-	ldr r0, .L0807D9D8 @ =gPrep_Unk_02016368
+	ldr r0, .L0807D9D8 @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r4, r0
 	blt .L0807D976
 .L0807D9B2:
-	ldr r0, .L0807D9E0 @ =gPrepItemlData
+	ldr r0, .L0807D9E0 @ =gPrepConvoyData
 	ldr r1, .L0807D9D0 @ =gPrepTexts4
 	movs r2, #0xc8
 	lsls r2, r2, #3
@@ -806,9 +806,9 @@ func_fe6_0807D834: @ 0x0807D834
 	.align 2, 0
 .L0807D9D0: .4byte gPrepTexts4
 .L0807D9D4: .4byte gPrep_Unk_0201636A
-.L0807D9D8: .4byte gPrep_Unk_02016368
+.L0807D9D8: .4byte gPrepAllItemsCount
 .L0807D9DC: .4byte gUnk_08679354
-.L0807D9E0: .4byte gPrepItemlData
+.L0807D9E0: .4byte gPrepConvoyData
 
 	thumb_func_start func_fe6_0807D9E4
 func_fe6_0807D9E4: @ 0x0807D9E4
@@ -891,7 +891,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	lsls r4, r4, #1
 	ldr r0, .L0807DAC4 @ =gBg2Tm
 	adds r4, r4, r0
-	ldr r0, .L0807DAD0 @ =gPrepItemlData
+	ldr r0, .L0807DAD0 @ =gPrepConvoyData
 	mov r1, r8
 	lsls r5, r1, #2
 	adds r7, r5, r0
@@ -920,7 +920,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 .L0807DAC4: .4byte gBg2Tm
 .L0807DAC8: .4byte gPrep_Unk_0201636A
 .L0807DACC: .4byte gUnk_08327294
-.L0807DAD0: .4byte gPrepItemlData
+.L0807DAD0: .4byte gPrepConvoyData
 .L0807DAD4:
 	movs r2, #0
 .L0807DAD6:
@@ -938,7 +938,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 .L0807DAEC:
 	adds r0, r7, #0
 	bl Text_SetColor
-	ldr r0, .L0807DB74 @ =gPrepItemlData
+	ldr r0, .L0807DB74 @ =gPrepConvoyData
 	adds r5, r5, r0
 	ldrh r0, [r5, #2]
 	bl GetItemName
@@ -1000,7 +1000,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807DB74: .4byte gPrepItemlData
+.L0807DB74: .4byte gPrepConvoyData
 .L0807DB78: .4byte gBg2Tm
 .L0807DB7C: .4byte gPrep_Unk_0201636A
 
@@ -1049,7 +1049,7 @@ func_fe6_0807DB80: @ 0x0807DB80
 	adds r4, r4, r5
 	lsls r4, r4, #1
 	adds r4, r4, r6
-	ldr r1, .L0807DC18 @ =gPrepItemlData
+	ldr r1, .L0807DC18 @ =gPrepConvoyData
 	mov r2, r8
 	lsls r0, r2, #2
 	adds r5, r0, r1
@@ -1076,7 +1076,7 @@ func_fe6_0807DB80: @ 0x0807DB80
 	b .L0807DC1E
 	.align 2, 0
 .L0807DC14: .4byte gBg2Tm
-.L0807DC18: .4byte gPrepItemlData
+.L0807DC18: .4byte gPrepConvoyData
 .L0807DC1C:
 	movs r2, #0
 .L0807DC1E:
@@ -1097,7 +1097,7 @@ func_fe6_0807DB80: @ 0x0807DB80
 	adds r0, r7, #0
 	movs r1, #0
 	bl Text_SetCursor
-	ldr r1, .L0807DCB0 @ =gPrepItemlData
+	ldr r1, .L0807DCB0 @ =gPrepConvoyData
 	mov r2, r8
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -1148,461 +1148,5 @@ func_fe6_0807DB80: @ 0x0807DB80
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807DCB0: .4byte gPrepItemlData
+.L0807DCB0: .4byte gPrepConvoyData
 .L0807DCB4: .4byte gBg2Tm
-
-	thumb_func_start func_fe6_0807DCB8
-func_fe6_0807DCB8: @ 0x0807DCB8
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #4
-	adds r5, r0, #0
-	lsls r1, r1, #0x18
-	lsrs r4, r1, #0x18
-	adds r6, r4, #0
-	lsls r2, r2, #0x18
-	lsrs r2, r2, #0x18
-	mov r8, r2
-	mov r0, r8
-	str r0, [sp]
-	lsls r3, r3, #0x18
-	lsrs r7, r3, #0x18
-	mov sl, r7
-	ldr r0, .L0807DD04 @ =gBg0Tm+0x1E
-	mov sb, r0
-	movs r1, #0xf
-	movs r2, #1
-	movs r3, #0
-	bl TmFillRect_thm
-	ldr r0, .L0807DD08 @ =gPrep_Unk_0201636A
-	ldrh r0, [r0]
-	cmp r0, #0
-	bne .L0807DD0C
-	mov r0, sb
-	adds r0, #0xa
-	movs r1, #9
-	movs r2, #1
-	movs r3, #0
-	bl TmFillRect_thm
-	b .L0807DDB0
-	.align 2, 0
-.L0807DD04: .4byte gBg0Tm+0x1E
-.L0807DD08: .4byte gPrep_Unk_0201636A
-.L0807DD0C:
-	cmp r4, #0
-	bne .L0807DD58
-	adds r0, r5, #0
-	bl ClearText
-	adds r0, r5, #0
-	movs r1, #0
-	bl Text_SetColor
-	ldr r4, .L0807DD54 @ =gUnk_083272A4
-	adds r0, r4, #0
-	bl GetStringTextLen
-	movs r1, #0x28
-	subs r1, r1, r0
-	lsrs r0, r1, #0x1f
-	adds r1, r1, r0
-	asrs r1, r1, #1
-	adds r0, r5, #0
-	bl Text_SetCursor
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl Text_DrawString
-	lsls r1, r7, #5
-	add r1, r8
-	lsls r1, r1, #1
-	mov r0, sb
-	subs r0, #0x1e
-	adds r1, r1, r0
-	adds r0, r5, #0
-	bl PutText
-	b .L0807DDB0
-	.align 2, 0
-.L0807DD54: .4byte gUnk_083272A4
-.L0807DD58:
-	adds r0, r6, #0
-	bl GetUnitByPid
-	adds r4, r0, #0
-	adds r0, r5, #0
-	bl ClearText
-	adds r0, r5, #0
-	movs r1, #0
-	bl Text_SetColor
-	ldr r0, [r4]
-	ldrh r0, [r0]
-	bl DecodeMsg
-	bl GetStringTextLen
-	movs r1, #0x28
-	subs r1, r1, r0
-	lsrs r0, r1, #0x1f
-	adds r1, r1, r0
-	asrs r1, r1, #1
-	adds r0, r5, #0
-	bl Text_SetCursor
-	ldr r0, [r4]
-	ldrh r0, [r0]
-	bl DecodeMsg
-	adds r1, r0, #0
-	adds r0, r5, #0
-	bl Text_DrawString
-	mov r0, sl
-	lsls r1, r0, #5
-	ldr r0, [sp]
-	adds r1, r1, r0
-	lsls r1, r1, #1
-	mov r0, sb
-	subs r0, #0x1e
-	adds r1, r1, r0
-	adds r0, r5, #0
-	bl PutText
-.L0807DDB0:
-	movs r0, #1
-	bl EnableBgSync
-	add sp, #4
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0807DDC8
-func_fe6_0807DDC8: @ 0x0807DDC8
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	sub sp, #4
-	adds r5, r0, #0
-	adds r4, r1, #0
-	lsls r5, r5, #0x18
-	lsrs r5, r5, #0x18
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	bl GetTotalSupplyItemCount
-	adds r6, r0, #0
-	lsls r6, r6, #0x18
-	lsrs r6, r6, #0x18
-	lsls r4, r4, #5
-	subs r0, r4, #3
-	adds r0, r0, r5
-	lsls r0, r0, #1
-	ldr r1, .L0807DE54 @ =gBg0Tm
-	mov r8, r1
-	add r0, r8
-	movs r1, #6
-	movs r2, #1
-	movs r3, #0
-	bl TmFillRect_thm
-	ldr r0, .L0807DE58 @ =gPrepTexts3 + 0x8
-	mov r1, r8
-	adds r1, #0x24
-	ldr r2, .L0807DE5C @ =gUnk_083272A4
-	str r2, [sp]
-	movs r2, #0
-	movs r3, #4
-	bl PrepPutText
-	adds r0, r4, r5
-	lsls r0, r0, #1
-	add r0, r8
-	movs r1, #2
-	adds r2, r6, #0
-	bl PutNumber
-	adds r0, r4, #4
-	adds r0, r0, r5
-	lsls r0, r0, #1
-	add r0, r8
-	movs r1, #2
-	movs r2, #0x64
-	bl PutNumber
-	adds r4, #1
-	adds r4, r4, r5
-	lsls r4, r4, #1
-	add r4, r8
-	adds r0, r4, #0
-	movs r1, #2
-	movs r2, #0x16
-	bl PutSpecialChar
-	movs r0, #1
-	bl EnableBgSync
-	add sp, #4
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0807DE54: .4byte gBg0Tm
-.L0807DE58: .4byte gPrepTexts3 + 0x8
-.L0807DE5C: .4byte gUnk_083272A4
-
-	thumb_func_start func_fe6_0807DE60
-func_fe6_0807DE60: @ 0x0807DE60
-	push {r4, r5, r6, lr}
-	bl GetSupplyItems
-	adds r4, r0, #0
-	movs r2, #0
-	movs r3, #0
-	ldr r0, .L0807DEC0 @ =gPrep_Unk_02016368
-	ldrh r1, [r0]
-	cmp r2, r1
-	bhs .L0807DE9C
-	ldr r6, .L0807DEC4 @ =gPrepItemlData
-	adds r5, r0, #0
-.L0807DE78:
-	lsls r0, r3, #2
-	adds r1, r0, r6
-	ldrb r0, [r1]
-	cmp r0, #0
-	bne .L0807DE90
-	lsls r0, r2, #1
-	adds r0, r0, r4
-	ldrh r1, [r1, #2]
-	strh r1, [r0]
-	adds r0, r2, #1
-	lsls r0, r0, #0x10
-	lsrs r2, r0, #0x10
-.L0807DE90:
-	adds r0, r3, #1
-	lsls r0, r0, #0x10
-	lsrs r3, r0, #0x10
-	ldrh r0, [r5]
-	cmp r3, r0
-	blo .L0807DE78
-.L0807DE9C:
-	cmp r2, #0x63
-	bhi .L0807DEB2
-	movs r1, #0
-.L0807DEA2:
-	lsls r0, r2, #1
-	adds r0, r0, r4
-	strh r1, [r0]
-	adds r0, r2, #1
-	lsls r0, r0, #0x10
-	lsrs r2, r0, #0x10
-	cmp r2, #0x63
-	bls .L0807DEA2
-.L0807DEB2:
-	movs r0, #0x18
-	movs r1, #0
-	bl func_fe6_0807DDC8
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0807DEC0: .4byte gPrep_Unk_02016368
-.L0807DEC4: .4byte gPrepItemlData
-
-	thumb_func_start func_fe6_0807DEC8
-func_fe6_0807DEC8: @ 0x0807DEC8
-	push {r4, r5, r6, lr}
-	sub sp, #4
-	adds r6, r0, #0
-	lsls r0, r1, #0x10
-	lsrs r0, r0, #0x10
-	bl GetItemKind
-	lsls r0, r0, #0x18
-	lsrs r3, r0, #0x18
-	movs r2, #0
-	ldr r0, .L0807DF58 @ =gUnk_08679354
-	ldrb r1, [r0]
-	cmp r3, r1
-	beq .L0807DF0A
-	ldrb r1, [r0, #1]
-	cmp r3, r1
-	beq .L0807DF0A
-	adds r4, r0, #0
-.L0807DEEC:
-	adds r0, r2, #1
-	lsls r0, r0, #0x18
-	lsrs r2, r0, #0x18
-	cmp r2, #8
-	bhi .L0807DF0A
-	lsls r1, r2, #1
-	adds r0, r1, r4
-	ldrb r0, [r0]
-	cmp r3, r0
-	beq .L0807DF0A
-	adds r0, r1, #1
-	adds r0, r0, r4
-	ldrb r0, [r0]
-	cmp r3, r0
-	bne .L0807DEEC
-.L0807DF0A:
-	adds r5, r6, #0
-	adds r5, #0x46
-	ldrb r0, [r5]
-	cmp r0, r2
-	beq .L0807DF4E
-	strb r2, [r5]
-	adds r0, r6, #0
-	adds r0, #0x32
-	adds r0, r2, r0
-	ldrb r0, [r0]
-	lsls r0, r0, #4
-	adds r4, r6, #0
-	adds r4, #0x50
-	strh r0, [r4]
-	ldrb r0, [r5]
-	bl func_fe6_0807D834
-	ldrb r0, [r5]
-	adds r0, #0x3b
-	adds r0, r6, r0
-	adds r1, r4, #0
-	bl func_fe6_080823A0
-	ldr r0, .L0807DF5C @ =gPrepTexts2
-	ldr r2, [r6, #0x54]
-	ldrh r4, [r4]
-	lsrs r3, r4, #4
-	movs r1, #1
-	str r1, [sp]
-	bl func_fe6_0807D9E4
-	adds r0, r6, #0
-	bl func_fe6_0807D358
-.L0807DF4E:
-	add sp, #4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0807DF58: .4byte gUnk_08679354
-.L0807DF5C: .4byte gPrepTexts2
-
-	thumb_func_start func_fe6_0807DF60
-func_fe6_0807DF60: @ 0x0807DF60
-	push {r4, r5, r6, r7, lr}
-	lsls r1, r1, #0x18
-	lsls r2, r2, #0x10
-	lsrs r5, r2, #0x10
-	ldr r6, .L0807DFD4 @ =gPrepItemlData
-	lsls r4, r5, #2
-	adds r4, r4, r6
-	ldr r3, [r4]
-	lsrs r1, r1, #0x17
-	adds r2, r0, #0
-	adds r2, #0x1c
-	adds r2, r2, r1
-	ldrh r1, [r2]
-	strh r1, [r4, #2]
-	lsrs r3, r3, #0x10
-	strh r3, [r2]
-	bl UnitRemoveInvalidItems
-	ldrh r0, [r4, #2]
-	cmp r0, #0
-	bne .L0807DFE0
-	adds r2, r5, #0
-	ldr r0, .L0807DFD8 @ =gPrep_Unk_02016368
-	adds r4, r0, #0
-	ldr r7, .L0807DFDC @ =gPrep_Unk_0201636A
-	ldrh r0, [r4]
-	cmp r2, r0
-	bhs .L0807DFC0
-	adds r3, r6, #0
-	adds r5, r4, #0
-.L0807DF9C:
-	lsls r0, r2, #2
-	adds r1, r0, r3
-	adds r2, #1
-	lsls r0, r2, #2
-	adds r0, r0, r3
-	ldr r0, [r0]
-	str r0, [r1]
-	ldrb r0, [r1]
-	cmp r0, #0
-	bne .L0807DFB6
-	ldrb r0, [r1, #1]
-	subs r0, #1
-	strb r0, [r1, #1]
-.L0807DFB6:
-	lsls r0, r2, #0x10
-	lsrs r2, r0, #0x10
-	ldrh r0, [r5]
-	cmp r2, r0
-	blo .L0807DF9C
-.L0807DFC0:
-	ldrh r0, [r7]
-	subs r0, #1
-	strh r0, [r7]
-	ldrh r0, [r4]
-	subs r0, #1
-	strh r0, [r4]
-	bl func_fe6_0807DE60
-	movs r0, #1
-	b .L0807DFE6
-	.align 2, 0
-.L0807DFD4: .4byte gPrepItemlData
-.L0807DFD8: .4byte gPrep_Unk_02016368
-.L0807DFDC: .4byte gPrep_Unk_0201636A
-.L0807DFE0:
-	bl func_fe6_0807DE60
-	movs r0, #0
-.L0807DFE6:
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-
-	thumb_func_start func_fe6_0807DFEC
-func_fe6_0807DFEC: @ 0x0807DFEC
-	push {r4, r5, r6, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	adds r5, r2, #0
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	lsls r1, r1, #0x18
-	ldr r3, .L0807E058 @ =gUnk_0831B068
-	ldr r2, .L0807E05C @ =gPal
-	lsrs r1, r1, #0x1a
-	movs r0, #0xf
-	ands r1, r0
-	lsls r1, r1, #1
-	adds r1, r1, r3
-	ldrh r0, [r1]
-	ldr r1, .L0807E060 @ =0x0000025A
-	adds r2, r2, r1
-	strh r0, [r2]
-	bl EnablePalSync
-	lsls r0, r4, #1
-	adds r0, r0, r4
-	lsls r0, r0, #2
-	adds r6, r0, #0
-	adds r6, #0x7c
-	ldr r0, .L0807E064 @ =Sprites_08679330
-	lsls r4, r4, #2
-	adds r4, r4, r0
-	ldr r3, [r4]
-	adds r0, r5, #0
-	cmp r5, #0
-	bge .L0807E02E
-	adds r0, #0x1f
-.L0807E02E:
-	asrs r0, r0, #5
-	movs r1, #0x80
-	lsls r1, r1, #6
-	adds r4, r0, r1
-	str r4, [sp]
-	movs r0, #4
-	adds r1, r6, #0
-	movs r2, #0x18
-	bl PutSprite
-	ldr r3, .L0807E068 @ =Sprite_08679326
-	str r4, [sp]
-	movs r0, #4
-	adds r1, r6, #0
-	movs r2, #0x18
-	bl PutSprite
-	add sp, #4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0807E058: .4byte gUnk_0831B068
-.L0807E05C: .4byte gPal
-.L0807E060: .4byte 0x0000025A
-.L0807E064: .4byte Sprites_08679330
-.L0807E068: .4byte Sprite_08679326

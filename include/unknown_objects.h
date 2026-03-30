@@ -131,7 +131,7 @@ extern u16 const Pal_Prep_0831A248[];
 extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
 extern u16 const Pal_0831AAFC[];
 extern u8 const Img_Prep_0831AB1C[]; // img
-// extern ??? gUnk_0831B068
+extern u16 const Pal_Prep_0831B068[];
 extern u8 const Img_MonologueBG[];
 extern u8 const Tsa_MonologueBG[];
 extern u16 Tsa_MonologueScrollingBG[30 * 40];
