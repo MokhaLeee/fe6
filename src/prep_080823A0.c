@@ -35,21 +35,21 @@ void PrepPutText(struct Text *th, u16 *tm, int color, int x, const char *str)
 
 void func_fe6_080823A0(u8 * a, u16 * b)
 {
-	if (gPrep_Unk_0201636A == 0) {
+	if (gPrepMenuScrollPos == 0) {
 		*a = 0;
 		*b = 0;
 		return;
 	}
 
-	if (gPrep_Unk_0201636A < 8) {
-		if (*a >= gPrep_Unk_0201636A)
-			*a = gPrep_Unk_0201636A - 1;
+	if (gPrepMenuScrollPos < 8) {
+		if (*a >= gPrepMenuScrollPos)
+			*a = gPrepMenuScrollPos - 1;
 
 		*b = 0;
 	} else {
 		int unk = (*b >> 4) + 7;
 
-		if (unk < gPrep_Unk_0201636A) {
+		if (unk < gPrepMenuScrollPos) {
 			if (*a != 6)
 				return;
 
@@ -57,9 +57,9 @@ void func_fe6_080823A0(u8 * a, u16 * b)
 			return;
 		}
 
-		if (unk <= gPrep_Unk_0201636A)
+		if (unk <= gPrepMenuScrollPos)
 			return;
 
-		*b = (gPrep_Unk_0201636A - 7) * 16;
+		*b = (gPrepMenuScrollPos - 7) * 16;
 	}
 }

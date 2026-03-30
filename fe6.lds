@@ -82,7 +82,7 @@ SECTIONS
         . = 0x0156E8; gPrepTexts4 = .;
         . = 0x015D28; gPrepConvoyData = .;
         . = 0x016368; gPrepAllItemsCount = .;
-        . = 0x01636A; gPrep_Unk_0201636A = .;
+        . = 0x01636A; gPrepMenuScrollPos = .;
         . = 0x01636C; sSallyCirWinH_obj = .;
         . = 0x01686C; sSallyCirWinH = .;
         . = 0x016874; gUnk_Pal_02016874 = .; /* big jump here? */
@@ -609,6 +609,7 @@ SECTIONS
         asm/opinfo_classdemo.o(.text);
         src/shop.o(.text);
         asm/shop.o(.text);
+        src/shop2.o(.text);
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
         src/opanim.o(.text);

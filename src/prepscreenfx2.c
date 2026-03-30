@@ -56,7 +56,7 @@ void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y)
 {
 	TmFillRect(gBg0Tm + TM_OFFSET(0xF, 0), 0xF, 1, 0);
 
-	if (gPrep_Unk_0201636A == 0)
+	if (gPrepMenuScrollPos == 0)
 		TmFillRect(gBg0Tm + TM_OFFSET(20, 0), 9, 1, 0);
 	else if (pid == 0) {
 		ClearText(text);
@@ -151,7 +151,7 @@ bool PrepAllItems_SwapItems(struct Unit *unit, u8 u_slot, u16 c_slot)
 				gPrepConvoyData[i].u.info.unk_01--;
 		}
 
-		gPrep_Unk_0201636A--;
+		gPrepMenuScrollPos--;
 		gPrepAllItemsCount--;
 		PrepAllItems_Update();
 		return true;

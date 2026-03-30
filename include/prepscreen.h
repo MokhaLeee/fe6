@@ -599,7 +599,7 @@ extern u16 gPrepFadePal[0x200];
 extern u8 gUnk_020104A4[]; // img buf
 extern int gPrepSubMenuIcons[20];
 extern u16 gPrepAllItemsCount;
-extern u16 gPrep_Unk_0201636A;
+extern u16 gPrepMenuScrollPos;
 
 extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
 extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeOut[];

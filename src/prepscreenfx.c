@@ -237,7 +237,7 @@ void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc)
 		0x30,
 		0xC,
 		proc->proc_parent->menu_scroll_bar_disp_idx,
-		gPrep_Unk_0201636A,
+		gPrepMenuScrollPos,
 		7);
 
 	dummy_0807CFB8(3, 4, proc->timer);
@@ -305,7 +305,7 @@ void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc)
 			0x30,
 			0xC,
 			proc->proc_parent->menu_scroll_bar_disp_idx,
-			gPrep_Unk_0201636A,
+			gPrepMenuScrollPos,
 			7);
 	}
 
@@ -357,7 +357,7 @@ void func_fe6_0807D358(struct PrepSubItemProc *proc)
 	for (j = 0, i = 0; i < item_amt; j++, i++)
 		icons[j] = GetItemIcon(unit->items[i]);
 
-	if (gPrep_Unk_0201636A != 0) {
+	if (gPrepMenuScrollPos != 0) {
 
 	}
 }

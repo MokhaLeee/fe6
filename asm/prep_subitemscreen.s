@@ -994,7 +994,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 	ldr r0, [r6, #0x60]
 	ldrh r1, [r7]
 	str r1, [sp]
-	ldr r1, .L0807ED88 @ =gPrep_Unk_0201636A
+	ldr r1, .L0807ED88 @ =gPrepMenuScrollPos
 	ldrh r1, [r1]
 	str r1, [sp, #4]
 	movs r1, #7
@@ -1021,7 +1021,7 @@ PrepSubItem_StartViewAllScreen: @ 0x0807EB70
 .L0807ED7C: .4byte gPrepConvoyData
 .L0807ED80: .4byte gPrepTexts2
 .L0807ED84: .4byte gPrepTexts3 + 0x8
-.L0807ED88: .4byte gPrep_Unk_0201636A
+.L0807ED88: .4byte gPrepMenuScrollPos
 .L0807ED8C:
 	cmp r0, #1
 	bne .L0807ED96
@@ -1642,7 +1642,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne .L0807F410
-	ldr r0, .L0807F35C @ =gPrep_Unk_0201636A
+	ldr r0, .L0807F35C @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807F364
@@ -1656,7 +1656,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	b .L0807F410
 	.align 2, 0
 .L0807F358: .4byte gKeySt
-.L0807F35C: .4byte gPrep_Unk_0201636A
+.L0807F35C: .4byte gPrepMenuScrollPos
 .L0807F360: .4byte gPlaySt
 .L0807F364:
 	ldr r2, .L0807F3D8 @ =gPrepConvoyData
@@ -1778,7 +1778,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r0, #0
 	bne .L0807F4A4
-	ldr r0, .L0807F49C @ =gPrep_Unk_0201636A
+	ldr r0, .L0807F49C @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807F466
@@ -1811,7 +1811,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl StartItemHelpBox
 	b .L0807FA9A
 	.align 2, 0
-.L0807F49C: .4byte gPrep_Unk_0201636A
+.L0807F49C: .4byte gPrepMenuScrollPos
 .L0807F4A0: .4byte gPrepConvoyData
 .L0807F4A4:
 	ldr r3, .L0807F548 @ =gKeySt
@@ -1986,7 +1986,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bls .L0807F5FE
 	b .L0807F710
 .L0807F5FE:
-	ldr r3, .L0807F668 @ =gPrep_Unk_0201636A
+	ldr r3, .L0807F668 @ =gPrepMenuScrollPos
 	cmp r1, #5
 	bne .L0807F678
 	mov r5, r8
@@ -2036,7 +2036,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	b .L0807F6EE
 	.align 2, 0
 .L0807F664: .4byte gKeySt
-.L0807F668: .4byte gPrep_Unk_0201636A
+.L0807F668: .4byte gPrepMenuScrollPos
 .L0807F66C: .4byte gPrepTexts2
 .L0807F670: .4byte gPrepConvoyData
 .L0807F674: .4byte gPrepTexts3 + 0x8
@@ -2387,7 +2387,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r4, r0
 	bne .L0807F940
-	ldr r0, .L0807F968 @ =gPrep_Unk_0201636A
+	ldr r0, .L0807F968 @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807F94C
@@ -2410,7 +2410,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	.align 2, 0
 .L0807F960: .4byte gPrepTexts2
 .L0807F964: .4byte gPrepConvoyData
-.L0807F968: .4byte gPrep_Unk_0201636A
+.L0807F968: .4byte gPrepMenuScrollPos
 .L0807F96C: .4byte gPrepTexts3 + 0x8
 .L0807F970:
 	mov r1, r8
@@ -2522,7 +2522,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	ldrb r0, [r1]
 	cmp r4, r0
 	bne .L0807FA50
-	ldr r0, .L0807FA7C @ =gPrep_Unk_0201636A
+	ldr r0, .L0807FA7C @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807FA5C
@@ -2548,7 +2548,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	.align 2, 0
 .L0807FA74: .4byte gPrepTexts2
 .L0807FA78: .4byte gPrepConvoyData
-.L0807FA7C: .4byte gPrep_Unk_0201636A
+.L0807FA7C: .4byte gPrepMenuScrollPos
 .L0807FA80: .4byte gPrepTexts3 + 0x8
 .L0807FA84:
 	mov r1, r8
@@ -2622,7 +2622,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	bl StartItemHelpBox
 	b .L0807FB52
 .L0807FB0C:
-	ldr r0, .L0807FB20 @ =gPrep_Unk_0201636A
+	ldr r0, .L0807FB20 @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807FB24
@@ -2633,7 +2633,7 @@ func_fe6_0807EDBC: @ 0x0807EDBC
 	movs r0, #1
 	b .L0807FB50
 	.align 2, 0
-.L0807FB20: .4byte gPrep_Unk_0201636A
+.L0807FB20: .4byte gPrepMenuScrollPos
 .L0807FB24:
 	ldrb r3, [r1]
 	lsls r0, r3, #3
@@ -2828,7 +2828,7 @@ func_fe6_0807FBE8: @ 0x0807FBE8
 	ldr r0, [r7, #0x60]
 	ldrh r1, [r4]
 	str r1, [sp]
-	ldr r1, .L0807FCF8 @ =gPrep_Unk_0201636A
+	ldr r1, .L0807FCF8 @ =gPrepMenuScrollPos
 	ldrh r1, [r1]
 	str r1, [sp, #4]
 	movs r1, #7
@@ -2867,7 +2867,7 @@ func_fe6_0807FBE8: @ 0x0807FBE8
 	.align 2, 0
 .L0807FCF0: .4byte gDispIo
 .L0807FCF4: .4byte gPrepTexts2
-.L0807FCF8: .4byte gPrep_Unk_0201636A
+.L0807FCF8: .4byte gPrepMenuScrollPos
 
 	thumb_func_start PrepSubItem_StartSupplyScreen
 PrepSubItem_StartSupplyScreen: @ 0x0807FCFC
@@ -3901,7 +3901,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r1, r0, #0x10
 	ldr r4, .L080805DC @ =gPrepAllItemsCount
 	adds r5, r4, #0
-	ldr r2, .L080805E0 @ =gPrep_Unk_0201636A
+	ldr r2, .L080805E0 @ =gPrepMenuScrollPos
 	mov ip, r2
 	adds r3, r6, #0
 	adds r3, #0x4b
@@ -3964,7 +3964,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L080805D4: .4byte gKeySt
 .L080805D8: .4byte gPlaySt
 .L080805DC: .4byte gPrepAllItemsCount
-.L080805E0: .4byte gPrep_Unk_0201636A
+.L080805E0: .4byte gPrepMenuScrollPos
 .L080805E4: .4byte gPrepConvoyData
 .L080805E8: .4byte gPrepTexts2
 .L080805EC: .4byte gAction
@@ -4282,7 +4282,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
-	ldr r1, .L080808D4 @ =gPrep_Unk_0201636A
+	ldr r1, .L080808D4 @ =gPrepMenuScrollPos
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
@@ -4322,7 +4322,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L080808C8: .4byte gPlaySt
 .L080808CC: .4byte gPrepAllItemsCount
 .L080808D0: .4byte gPrepConvoyData
-.L080808D4: .4byte gPrep_Unk_0201636A
+.L080808D4: .4byte gPrepMenuScrollPos
 .L080808D8: .4byte gAction
 .L080808DC:
 	ldr r0, .L08080914 @ =gPrepTexts2
@@ -4367,7 +4367,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	beq .L08080930
 	b .L08080A3E
 .L08080930:
-	ldr r0, .L08080A04 @ =gPrep_Unk_0201636A
+	ldr r0, .L08080A04 @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080A1C
@@ -4431,7 +4431,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r0, [r4]
 	subs r0, #1
 	strh r0, [r4]
-	ldr r1, .L08080A04 @ =gPrep_Unk_0201636A
+	ldr r1, .L08080A04 @ =gPrepMenuScrollPos
 	ldrh r0, [r1]
 	subs r0, #1
 	strh r0, [r1]
@@ -4469,7 +4469,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	strb r0, [r2]
 	b .L08080A3E
 	.align 2, 0
-.L08080A04: .4byte gPrep_Unk_0201636A
+.L08080A04: .4byte gPrepMenuScrollPos
 .L08080A08: .4byte gPlaySt
 .L08080A0C: .4byte gPrepConvoyData
 .L08080A10: .4byte gPrepAllItemsCount
@@ -4499,7 +4499,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	beq .L08080A48
 	b .L08080B60
 .L08080A48:
-	ldr r0, .L08080A94 @ =gPrep_Unk_0201636A
+	ldr r0, .L08080A94 @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq .L08080B3C
@@ -4534,7 +4534,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	b .L08080E2E
 	.align 2, 0
 .L08080A90: .4byte gPlaySt
-.L08080A94: .4byte gPrep_Unk_0201636A
+.L08080A94: .4byte gPrepMenuScrollPos
 .L08080A98: .4byte gPrepConvoyData
 .L08080A9C: .4byte 0x00000C33
 .L08080AA0:
@@ -4679,7 +4679,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov sl, r1
 	b .L080812FA
 .L08080BCE:
-	ldr r0, .L08080C2C @ =gPrep_Unk_0201636A
+	ldr r0, .L08080C2C @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	adds r7, r6, #0
 	adds r7, #0x2e
@@ -4728,7 +4728,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl StartItemHelpBox
 	b .L080812FA
 	.align 2, 0
-.L08080C2C: .4byte gPrep_Unk_0201636A
+.L08080C2C: .4byte gPrepMenuScrollPos
 .L08080C30: .4byte gPrepConvoyData
 .L08080C34:
 	adds r0, r6, #0
@@ -4893,7 +4893,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r2, #0x50
 	adds r2, r2, r6
 	mov r8, r2
-	ldr r3, .L08080DD0 @ =gPrep_Unk_0201636A
+	ldr r3, .L08080DD0 @ =gPrepMenuScrollPos
 	mov ip, r3
 	cmp r1, #5
 	bne .L08080DDC
@@ -4942,7 +4942,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov sl, r3
 	b .L080812FA
 	.align 2, 0
-.L08080DD0: .4byte gPrep_Unk_0201636A
+.L08080DD0: .4byte gPrepMenuScrollPos
 .L08080DD4: .4byte gPlaySt
 .L08080DD8: .4byte gPrepTexts2
 .L08080DDC:
@@ -5651,7 +5651,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl StartItemHelpBox
 	b .L08081392
 .L08081352:
-	ldr r0, .L08081368 @ =gPrep_Unk_0201636A
+	ldr r0, .L08081368 @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0808136C
@@ -5662,7 +5662,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #1
 	b .L08081390
 	.align 2, 0
-.L08081368: .4byte gPrep_Unk_0201636A
+.L08081368: .4byte gPrepMenuScrollPos
 .L0808136C:
 	adds r0, r6, #0
 	adds r0, #0x2f

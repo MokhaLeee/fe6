@@ -27,7 +27,7 @@ enum ShopProcLabel {
 struct ProcShop {
     /* 00 */ PROC_HEADER;
 
-    /* 2C */ struct Unit * unit;
+    /* 2C */ struct Unit *unit;
     /* 30 */ u16 shopItems[20];
 
     /* 58 */ u16 unk_58;
@@ -68,80 +68,97 @@ struct ProcShopInit {
     /* 54 */ struct ProcShop * shopproc;
 };
 
+typedef void (* ShopFunc)(struct ProcShop *, int);
+
+struct ShopState {
+    /* 00 */ u16 head_loc;
+    /* 02 */ u16 item_cnt;
+    /* 04 */ u16 lines;
+    /* 06 */ u16 hand_loc;
+    /* 08 */ u16 px_per_line;
+    /* 0A */ u16 trig;
+    /* 0C */ u16 bg2_off;
+    /* 10 */ int bg2_base;
+    /* 14 */ ShopFunc draw_line;
+    /* 18 */ ProcPtr proc;
+    /* 1C */ int head_loc_bak;
+};
+extern CONST_DATA struct ShopState *gpShopSt;
+
 extern struct Text gShopItemTexts[SHOP_TEXT_LINES + 1];
 
-int GetShopFace(struct ProcShop * proc);
-void StartShopDialogue(int msg, struct ProcShop * proc);
-void StartDefaultArmoryScreen(struct Unit * unit, ProcPtr proc);
-void StartArmoryScreenOrphaned(struct Unit * unit, u16 const * iid_list);
-void StartVendorScreenOrphaned(struct Unit * unit, u16 const * iid_list);
-void StartSecretShopScreenOrphaned(struct Unit * unit, u16 const * iid_list);
+int GetShopFace(struct ProcShop *proc);
+void StartShopDialogue(int msg, struct ProcShop *proc);
+void StartDefaultArmoryScreen(struct Unit *unit, ProcPtr proc);
+void StartArmoryScreenOrphaned(struct Unit *unit, u16 const * iid_list);
+void StartVendorScreenOrphaned(struct Unit *unit, u16 const * iid_list);
+void StartSecretShopScreenOrphaned(struct Unit *unit, u16 const * iid_list);
 // StartArmoryScreen
-void StartShopScreen(struct Unit * unit, const u16 * iid_list, u8 type, ProcPtr parent);
-void UpdateShopItemCounts(struct ProcShop * proc);
+void StartShopScreen(struct Unit *unit, const u16 * iid_list, u8 type, ProcPtr parent);
+void UpdateShopItemCounts(struct ProcShop *proc);
 void TalkChoice_OnBuy(void);
 void TalkChoice_OnSell(void);
-void Shop_EntryDialogue(struct ProcShop * proc);
-void Shop_HandleEntryDialoguePrompt(struct ProcShop * proc);
-void Shop_BuyDialogue(struct ProcShop * proc);
-void ShopDrawBuyItemLine(struct ProcShop * proc, int list_idx);
-void ShopDrawSellItemLine(struct ProcShop * proc, int list_idx);
-void Shop_InitBuyState(struct ProcShop * proc);
-void Shop_Loop_BuyKeyHandler(struct ProcShop * proc);
-void Shop_HandleBuyConfirmPrompt(struct ProcShop * proc);
-void Shop_TryAddItemToInventory(struct ProcShop * proc);
-void Shop_HandleSendToConvoyPrompt(struct ProcShop * proc);
-void Shop_NoSendToConvoyDialogue(struct ProcShop * proc);
-void Shop_AddItemToConvoy(struct ProcShop * proc);
-void Shop_SendToConvoyDialogue(struct ProcShop * proc);
-void Shop_CheckIfConvoyFull(struct ProcShop * proc);
-void Shop_ConvoyFullDialogue(struct ProcShop * proc);
-void Shop_AnythingElseDialogue(struct ProcShop * proc);
-void Shop_SellDialogue(struct ProcShop * proc);
-void Shop_InitSellState(struct ProcShop * proc);
-void Shop_Loop_SellKeyHandler(struct ProcShop * proc);
-void Shop_HandleSellConfirmPrompt(struct ProcShop * proc);
-void Shop_SellAnythingElseDialogue(struct ProcShop * proc);
-void Shop_AnythingElseRestartDialogue(struct ProcShop * proc);
-void Shop_AnythingElseContinueDialogue(struct ProcShop * proc);
-void Shop_ExitShopDialogue(struct ProcShop * proc);
-void Shop_OnExit(struct ProcShop * proc);
-void StartShopFadeIn(struct ProcShop * proc);
-void StartShopFadeOut(struct ProcShop * proc);
-void func_fe6_08096B38(struct ProcShop * proc);
+void Shop_EntryDialogue(struct ProcShop *proc);
+void Shop_HandleEntryDialoguePrompt(struct ProcShop *proc);
+void Shop_BuyDialogue(struct ProcShop *proc);
+void ShopDrawBuyItemLine(struct ProcShop *proc, int list_idx);
+void ShopDrawSellItemLine(struct ProcShop *proc, int list_idx);
+void Shop_InitBuyState(struct ProcShop *proc);
+void Shop_Loop_BuyKeyHandler(struct ProcShop *proc);
+void Shop_TryAddItemToInventory(struct ProcShop *proc);
+void Shop_HandleBuyConfirmPrompt(struct ProcShop *proc);
+void Shop_HandleSendToConvoyPrompt(struct ProcShop *proc);
+void Shop_NoSendToConvoyDialogue(struct ProcShop *proc);
+void Shop_AddItemToConvoy(struct ProcShop *proc);
+void Shop_SendToConvoyDialogue(struct ProcShop *proc);
+void Shop_CheckIfConvoyFull(struct ProcShop *proc);
+void Shop_ConvoyFullDialogue(struct ProcShop *proc);
+void Shop_AnythingElseDialogue(struct ProcShop *proc);
+void Shop_SellDialogue(struct ProcShop *proc);
+void Shop_InitSellState(struct ProcShop *proc);
+void Shop_Loop_SellKeyHandler(struct ProcShop *proc);
+void Shop_HandleSellConfirmPrompt(struct ProcShop *proc);
+void Shop_SellAnythingElseDialogue(struct ProcShop *proc);
+void Shop_AnythingElseRestartDialogue(struct ProcShop *proc);
+void Shop_AnythingElseContinueDialogue(struct ProcShop *proc);
+void Shop_ExitShopDialogue(struct ProcShop *proc);
+void Shop_OnExit(struct ProcShop *proc);
+void StartShopFadeIn(struct ProcShop *proc);
+void StartShopFadeOut(struct ProcShop *proc);
+void func_fe6_08096B38(struct ProcShop *proc);
 void StartUiGoldBox(ProcPtr proc);
 // InitGoldBoxText
 // ClearGoldBoxTextTm2Line
 void DisplayGoldBoxText(u16 * tm);
-void ShopInitTexts_OnBuy(struct ProcShop * proc);
+void ShopInitTexts_OnBuy(struct ProcShop *proc);
 // DrawShopSoldItems
 void InitShopBuyStatus(struct ProcShopInit * proc);
-void ShopInitTexts_OnSell(struct ProcShop * proc);
+void ShopInitTexts_OnSell(struct ProcShop *proc);
 // func_fe6_08097354
 void InitShopSellStatus(struct ProcShopInit * proc);
-void DrawShopItemPriceLine(struct Text * text, int item, struct Unit * unit, u16 * tm);
-void DrawShopItemLine(struct Text * text, int item, struct Unit * unit, u16 * tm);
-u16 GetItemPrice(struct Unit *, int);
-// func_fe6_080975A0
-// func_fe6_080975C8
-void GoldBox_OnLoop(struct ProcShop * proc);
+void DrawShopItemPriceLine(struct Text * text, int item, struct Unit *unit, u16 * tm);
+void DrawShopItemLine(struct Text * text, int item, struct Unit *unit, u16 * tm);
+u16 GetItemPurchasePrice(struct Unit *, int);
+u16 GetItemSellPrice(int);
+bool IsItemSellable(int item);
+void GoldBox_OnLoop(struct ProcShop *proc);
 void InitShopScreenConfig(void);
 void _DisplayShopUiArrows(void);
 void DisplayShopUiArrows(void);
 void UnpackUiVArrowGfx(int, int);
 void DisplayUiVArrow(int, int, u16, int);
-void HandleShopBuyAction(struct ProcShop * proc);
+void HandleShopBuyAction(struct ProcShop *proc);
 int ShopTryMoveCursor(int pos, int pre, bool scroll);
-// func_fe6_080979AC
-// ShopTryScrollPage
-// ShopUpdateBg2Offset
-void RegisterShopState(u16, u16 item_cnt, u16 lines, u16 cur_sel, int bg_off, void (* on_draw)(struct ProcShop *, int), struct ProcShop * proc);
+void ShopSt_SetHeadLocBak(int unk);
+int ShopTryScrollPage(int head_loc, int total, int lines, int hand_loc);
+int ShopUpdateBg2Offset(int off, int tar, int trig);
+void RegisterShopState(u16, u16 item_cnt, u16 lines, u16 cur_sel, int bg_off, void (* on_draw)(struct ProcShop *, int), struct ProcShop *proc);
 void Shop_TryMoveHandPage(void);
 u16 ShopSt_GetHeadLoc(void);
 int ShopSt_GetBg2Offset(void);
 u16 ShopSt_GetHandLoc(void);
-// func_fe6_08097D50
-// func_fe6_08097D7C
+// ShopSt_SetLineHeight
+// ShopSt_SetSetPageScrollTrigOffset
 bool IsShopPageScrolling(void);
 bool ShouldDisplayUpArrow(void);
 bool ShouldDisplayDownArrow(void);
@@ -158,4 +175,3 @@ extern CONST_DATA struct ProcScr ProcScr_Shop[];
 // extern CONST_DATA ??? Sprite_ShopGoldBox
 extern CONST_DATA struct ProcScr ProcScr_GoldBox[];
 extern CONST_DATA struct ProcScr ProcScr_ShopDrawHand[];
-// extern CONST_DATA ??? gpShopSt

@@ -331,5 +331,6 @@ clean:
 
 %/gbasram.o:        CFLAG_OPT := -O1
 %/shop.o:           CFLAG_OPT := -O0
+%/shop2.o:          CFLAG_OPT := -O0
 %/arena_ui.o:       CFLAG_OPT := -O0
 %/suspend_ui.o:     CFLAG_OPT := -O0

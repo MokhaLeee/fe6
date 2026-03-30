@@ -43,7 +43,7 @@ func_fe6_0807D358: @ 0x0807D358
 	cmp r4, r6
 	blo .L0807D382
 .L0807D3A6:
-	ldr r6, .L0807D45C @ =gPrep_Unk_0201636A
+	ldr r6, .L0807D45C @ =gPrepMenuScrollPos
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq .L0807D3D8
@@ -103,7 +103,7 @@ func_fe6_0807D358: @ 0x0807D358
 	adds r0, #9
 	cmp r4, r0
 	bge .L0807D424
-	ldr r0, .L0807D45C @ =gPrep_Unk_0201636A
+	ldr r0, .L0807D45C @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r4, r0
 	blo .L0807D3F8
@@ -140,7 +140,7 @@ func_fe6_0807D358: @ 0x0807D358
 	movs r4, #1
 	b .L0807D492
 	.align 2, 0
-.L0807D45C: .4byte gPrep_Unk_0201636A
+.L0807D45C: .4byte gPrepMenuScrollPos
 .L0807D460: .4byte gPrepConvoyData
 .L0807D464: .4byte gPrepSubMenuIcons
 .L0807D468:
@@ -202,7 +202,7 @@ func_fe6_0807D4A8: @ 0x0807D4A8
 	adds r0, r6, #0
 	adds r0, #0x44
 	bl ClearText
-	ldr r0, .L0807D4FC @ =gPrep_Unk_0201636A
+	ldr r0, .L0807D4FC @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne .L0807D508
@@ -218,7 +218,7 @@ func_fe6_0807D4A8: @ 0x0807D4A8
 	bl TmFillRect_thm
 	b .L0807D692
 	.align 2, 0
-.L0807D4FC: .4byte gPrep_Unk_0201636A
+.L0807D4FC: .4byte gPrepMenuScrollPos
 .L0807D500: .4byte gBg0Tm
 .L0807D504: .4byte gBg1Tm
 .L0807D508:
@@ -604,7 +604,7 @@ func_fe6_0807D834: @ 0x0807D834
 	lsls r0, r0, #0x19
 	lsrs r0, r0, #0x18
 	mov sl, r0
-	ldr r1, .L0807D8A8 @ =gPrep_Unk_0201636A
+	ldr r1, .L0807D8A8 @ =gPrepMenuScrollPos
 	movs r0, #0
 	strh r0, [r1]
 	movs r4, #0
@@ -655,7 +655,7 @@ func_fe6_0807D834: @ 0x0807D834
 	movs r2, #1
 	b .L0807D8C2
 	.align 2, 0
-.L0807D8A8: .4byte gPrep_Unk_0201636A
+.L0807D8A8: .4byte gPrepMenuScrollPos
 .L0807D8AC: .4byte gPrepAllItemsCount
 .L0807D8B0: .4byte gUnk_08679354
 .L0807D8B4: .4byte gPrepTexts4
@@ -665,7 +665,7 @@ func_fe6_0807D834: @ 0x0807D834
 	adds r0, r0, r2
 	adds r2, r0, #1
 .L0807D8C2:
-	ldr r1, .L0807D8E0 @ =gPrep_Unk_0201636A
+	ldr r1, .L0807D8E0 @ =gPrepMenuScrollPos
 	ldrh r0, [r1]
 	movs r1, #3
 	str r2, [sp]
@@ -681,7 +681,7 @@ func_fe6_0807D834: @ 0x0807D834
 	adds r4, r2, #0
 	b .L0807D946
 	.align 2, 0
-.L0807D8E0: .4byte gPrep_Unk_0201636A
+.L0807D8E0: .4byte gPrepMenuScrollPos
 .L0807D8E4:
 	subs r7, r4, r2
 	adds r4, #1
@@ -733,7 +733,7 @@ func_fe6_0807D834: @ 0x0807D834
 .L0807D944:
 	mov r4, sb
 .L0807D946:
-	ldr r0, .L0807D9D4 @ =gPrep_Unk_0201636A
+	ldr r0, .L0807D9D4 @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r4, r0
 	blt .L0807D8E4
@@ -775,7 +775,7 @@ func_fe6_0807D834: @ 0x0807D834
 	cmp r1, r0
 	bls .L0807D9A8
 .L0807D998:
-	ldr r0, .L0807D9D4 @ =gPrep_Unk_0201636A
+	ldr r0, .L0807D9D4 @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	adds r0, r0, r7
 	lsls r0, r0, #2
@@ -805,7 +805,7 @@ func_fe6_0807D834: @ 0x0807D834
 	bx r0
 	.align 2, 0
 .L0807D9D0: .4byte gPrepTexts4
-.L0807D9D4: .4byte gPrep_Unk_0201636A
+.L0807D9D4: .4byte gPrepMenuScrollPos
 .L0807D9D8: .4byte gPrepAllItemsCount
 .L0807D9DC: .4byte gUnk_08679354
 .L0807D9E0: .4byte gPrepConvoyData
@@ -829,7 +829,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	adds r0, r5, #0
 	movs r1, #0
 	bl TmFill
-	ldr r6, .L0807DAC8 @ =gPrep_Unk_0201636A
+	ldr r6, .L0807DAC8 @ =gPrepMenuScrollPos
 	ldrh r0, [r6]
 	cmp r0, #0
 	bne .L0807DA40
@@ -918,7 +918,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	b .L0807DAD6
 	.align 2, 0
 .L0807DAC4: .4byte gBg2Tm
-.L0807DAC8: .4byte gPrep_Unk_0201636A
+.L0807DAC8: .4byte gPrepMenuScrollPos
 .L0807DACC: .4byte gUnk_08327294
 .L0807DAD0: .4byte gPrepConvoyData
 .L0807DAD4:
@@ -983,7 +983,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	adds r0, #7
 	cmp r8, r0
 	bge .L0807DB5E
-	ldr r0, .L0807DB7C @ =gPrep_Unk_0201636A
+	ldr r0, .L0807DB7C @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r8, r0
 	bhs .L0807DB5E
@@ -1002,7 +1002,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	.align 2, 0
 .L0807DB74: .4byte gPrepConvoyData
 .L0807DB78: .4byte gBg2Tm
-.L0807DB7C: .4byte gPrep_Unk_0201636A
+.L0807DB7C: .4byte gPrepMenuScrollPos
 
 	thumb_func_start func_fe6_0807DB80
 func_fe6_0807DB80: @ 0x0807DB80

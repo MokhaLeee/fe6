@@ -10,13 +10,17 @@
 #include "talk.h"
 #include "gold.h"
 #include "event.h"
+#include "action.h"
 #include "sound.h"
+#include "supply.h"
 #include "chapter.h"
 #include "hardware.h"
 #include "helpbox.h"
+
 #include "constants/iids.h"
 #include "constants/faces.h"
 #include "constants/msg.h"
+#include "constants/songs.h"
 
 u16 CONST_DATA gDefaultShopItems[] = {
 	IID_IRONSWORD,
@@ -406,7 +410,7 @@ void Shop_Loop_BuyKeyHandler(struct ProcShop *proc)
 		}
 	}
 
-	price = GetItemPrice(proc->unit, proc->shopItems[proc->head_loc]);
+	price = GetItemPurchasePrice(proc->unit, proc->shopItems[proc->head_loc]);
 
 	if (gKeySt->pressed & KEY_BUTTON_A) {
 		if (price > GetGold()) {
@@ -426,3 +430,186 @@ void Shop_Loop_BuyKeyHandler(struct ProcShop *proc)
 		return;
 	}
 }
+
+void Shop_HandleBuyConfirmPrompt(struct ProcShop *proc)
+{
+	switch (GetTalkChoiceResult()) {
+	case TALK_CHOICE_YES:
+		break;
+
+	case TALK_CHOICE_CANCEL:
+	case TALK_CHOICE_NO:
+	default:
+		Proc_Goto(proc, PL_SHOP_BUY);
+		break;
+
+	}
+}
+
+void Shop_TryAddItemToInventory(struct ProcShop *proc)
+{
+	if (proc->unitItemCount >= ITEMSLOT_INV_COUNT) {
+		StartShopDialogue(MSG_SHOP_24, proc);
+		return;
+	}
+
+	UnitAddItem(proc->unit, proc->shopItems[proc->head_loc]);
+	HandleShopBuyAction(proc);
+	Proc_Goto(proc, PL_SHOP_BUY_DONE);
+}
+
+void Shop_HandleSendToConvoyPrompt(struct ProcShop *proc)
+{
+	switch (GetTalkChoiceResult()) {
+	case TALK_CHOICE_YES:
+		break;
+
+	case TALK_CHOICE_CANCEL:
+	case TALK_CHOICE_NO:
+	default:
+		Proc_Goto(proc, PL_SHOP_BUY_FULL_NO_INEVNTORY);
+		break;
+
+	}
+}
+
+void Shop_NoSendToConvoyDialogue(struct ProcShop *proc)
+{
+	StartShopDialogue(MSG_SHOP_2A, proc);
+}
+
+void Shop_AddItemToConvoy(struct ProcShop *proc)
+{
+	AddSupplyItem(proc->shopItems[proc->head_loc]);
+	HandleShopBuyAction(proc);
+}
+
+void Shop_SendToConvoyDialogue(struct ProcShop *proc)
+{
+	StartShopDialogue(MSG_SHOP_27, proc);
+}
+
+void Shop_CheckIfConvoyFull(struct ProcShop * proc)
+{
+	if (CountSupplyItems() < SUPPLY_ITEM_COUNT)
+		Proc_Goto(proc, PL_SHOP_SENDTO_INVENTORY_EXT);
+}
+
+void Shop_ConvoyFullDialogue(struct ProcShop *proc)
+{
+	StartShopDialogue(MSG_SHOP_2D, proc);
+}
+
+void Shop_AnythingElseDialogue(struct ProcShop *proc)
+{
+	StartShopDialogue(MSG_SHOP_0C, proc);
+}
+
+void Shop_SellDialogue(struct ProcShop *proc)
+{
+	StartShopDialogue(MSG_SHOP_0F, proc);
+}
+
+void Shop_InitSellState(struct ProcShop *proc)
+{
+	RegisterShopState(
+		proc->head_loc,
+		proc->unitItemCount,
+		5,
+		0,
+		72,
+		ShopDrawSellItemLine,
+		proc);
+}
+
+void Shop_Loop_SellKeyHandler(struct ProcShop *proc)
+{
+	bool cursor_at_head;
+
+	cursor_at_head = false;
+	Shop_TryMoveHandPage();
+
+	SetBgOffset(BG_2, 0, ShopSt_GetBg2Offset());
+
+	if (proc->head_loc != ShopSt_GetHeadLoc())
+		cursor_at_head = true;
+
+	proc->head_loc = ShopSt_GetHeadLoc();
+	proc->hand_loc = ShopSt_GetHandLoc();
+
+
+	PutUiHand(56, (proc->head_loc * 16) + 0x48 - (proc->hand_loc * 16));
+
+	if (proc->helpTextActive && (cursor_at_head != 0))
+		StartItemHelpBox(56, (proc->head_loc * 16) + 0x48 - (proc->hand_loc * 16), proc->unit->items[proc->head_loc]);
+
+	if (IsShopPageScrolling() != 0)
+		return;
+
+	if (proc->helpTextActive) {
+		if (gKeySt->pressed & (KEY_BUTTON_B | KEY_BUTTON_R)) {
+			proc->helpTextActive = false;
+			CloseHelpBox();
+		}
+		return;
+	} else if (gKeySt->pressed & KEY_BUTTON_R) {
+		proc->helpTextActive = true;
+		StartItemHelpBox(56, (proc->head_loc * 16) + 0x48 - (proc->hand_loc * 16), proc->unit->items[proc->head_loc]);
+		return;
+	}
+
+
+	if (gKeySt->pressed & KEY_BUTTON_A) {
+		if (!IsItemSellable(proc->unit->items[proc->head_loc])) {
+			StartShopDialogue(MSG_SHOP_21, proc);
+			Proc_Goto(proc, PL_SHOP_SELL);
+		} else {
+			SetTalkNumber(GetItemSellPrice(proc->unit->items[proc->head_loc]));
+			StartShopDialogue(MSG_SHOP_1B, proc);
+			Proc_Break(proc);
+		}
+		return;
+	}
+
+	if (gKeySt->pressed & KEY_BUTTON_B) {
+		PlaySe(SONG_6B);
+		Proc_Goto(proc, PL_SHOP_ANYTHING_ELSE);
+		return;
+	}
+}
+
+#if 0
+void Shop_HandleSellConfirmPrompt(struct ProcShop *proc)
+{
+	int gold;
+
+	switch (GetTalkChoiceResult()) {
+	case TALK_CHOICE_YES:
+		PlaySeDelayed(SONG_B9, 8);
+
+		gAction.id = ACTION_SHOPPED;
+
+		gold = GetGold();
+		gold = gold + GetItemSellPrice(proc->unit->items[proc->head_loc]);
+		SetGold(gold);
+
+		UnitRemoveItem(proc->unit, proc->head_loc);
+
+		UpdateShopItemCounts(proc);
+		ShopInitTexts_OnSell(proc);
+		DisplayGoldBoxText(gBg0Tm + TM_OFFSET(0x1B, 6));
+
+		if (proc->unitItemCount == 0) {
+			Proc_Goto(proc, PL_SHOP_SELL_NOITEM);
+		} else {}
+
+		break;
+
+	case TALK_CHOICE_CANCEL:
+	case TALK_CHOICE_NO:
+	default:
+		Proc_Goto(proc, PL_SHOP_SELL);
+		return;
+	}
+}
+#endif
