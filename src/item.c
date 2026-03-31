@@ -605,7 +605,7 @@ char const * GetItemKindString(int kind)
     return strings[kind];
 }
 
-bool IsItemDisplayUseable(struct Unit * unit, int item)
+bool IsItemDisplayUsable(struct Unit * unit, int item)
 {
     if (GetItemAttributes(item) & ITEM_ATTR_WEAPON)
         return CanUnitUseWeapon(unit, item);

@@ -14,42 +14,22 @@
 #include "supply.h"
 #include "chapter.h"
 #include "hardware.h"
-#include "helpbox.h"\
+#include "helpbox.h"
 
 #include "constants/iids.h"
 #include "constants/faces.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
 
-#if 0
 int ShopUpdateBg2Offset(int off, int tar, int trig)
 {
-	if ((off - tar) >= 0)
-	{
-        if ((off - tar) < trig)
-		    goto here;
-	}
-	else if  ((tar - off) >= trig)
-	{
-        here:
+	if ((off - tar) >= 0 ? (off - tar) < trig : (tar - off) < trig)
 		return tar;
-	}
 
-	if ((tar - off) <= 0)
-	{
-        off = off;
-		if ((tar - off) < 0) {
-			off = off + (-trig);
-        }
-	}
-	else
-	{
-		off = off + trig;
-	}
+	off = ((tar - off) <= 0) ? (((tar - off) < 0) ? (off +  -1 * trig) : off) : (off + trig);
 
 	return off;
 }
-#endif
 
 void RegisterShopState(u16 head_loc, u16 item_cnt, u16 lines, u16 hand_loc, int bg2_base, ShopFunc func, struct ProcShop * proc)
 {
@@ -152,6 +132,6 @@ bool func_fe6_08097E2C(int a)
 
 	if (((info->status & MUSICPLAYER_STATUS_TRACK) == 0) && ((info->status & MUSICPLAYER_STATUS_PAUSE) == 0))
 		return false;
-    else
-	    return true;
+	else
+		return true;
 }

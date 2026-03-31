@@ -489,7 +489,7 @@ func_fe6_0807D6C0: @ 0x0807D6C0
 	mov r8, r0
 	ldrh r1, [r0]
 	ldr r0, [sp, #4]
-	bl IsItemDisplayUseable
+	bl IsItemDisplayUsable
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	rsbs r2, r0, #0
@@ -909,7 +909,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	cmp r0, #0
 	beq .L0807DAC0
 	ldrh r1, [r7, #2]
-	bl IsItemDisplayUseable
+	bl IsItemDisplayUsable
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L0807DAD4

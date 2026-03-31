@@ -1,11 +1,11 @@
 	.section .rodata
 
-	.global gUnk_083278AC
-gUnk_083278AC: @ 083278AC
+	.global Pal_CommGameBgScreenInShop
+Pal_CommGameBgScreenInShop: @ 083278AC
 	.incbin "fe6-base.gba", 0x3278AC, (0x3278EC - 0x3278AC) @ length: 0040
 
-	.global gUnk_083278EC
-gUnk_083278EC: @ 083278EC
+	.global Tsa_CommGameBgScreenInShop
+Tsa_CommGameBgScreenInShop: @ 083278EC
 	.incbin "fe6-base.gba", 0x3278EC, (0x3280B0 - 0x3278EC) @ length: 07C4
 
 	.global gUnk_083280B0

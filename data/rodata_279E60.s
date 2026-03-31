@@ -436,8 +436,8 @@ Tsa_ManimInfoFrameRight: @ 082DC918
 Tsa_ShopWindows: @ 082DC944
     .incbin "fe6-base.gba", 0x2DC944, (0x2DCA2C - 0x2DC944) @ length: 00E8
 
-    .global gUnk_082DCA2C
-gUnk_082DCA2C: @ 082DCA2C
+    .global Img_ShopGoldBox
+Img_ShopGoldBox: @ 082DCA2C
     .incbin "fe6-base.gba", 0x2DCA2C, (0x2DCAE4 - 0x2DCA2C) @ length: 00B8
 
     .global Img_ManimRubble

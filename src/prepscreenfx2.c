@@ -32,7 +32,7 @@ void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 		0x4000);
 	func_fe6_0807D2F4(GetItemIcon(gPrepConvoyData[y].u.info.item));
 
-	if (unit == NULL || IsItemDisplayUseable(unit, gPrepConvoyData[y].u.info.item) != false)
+	if (unit == NULL || IsItemDisplayUsable(unit, gPrepConvoyData[y].u.info.item) != false)
 		tmp = 1;
 	else
 		tmp = 0;

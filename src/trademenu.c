@@ -272,7 +272,7 @@ static void TradeMenu_RefreshItemText(struct TradeMenuProc * proc)
 
             if (item)
             {
-                DrawItemMenuLine(&gTradeMenuText[col][row], item, IsItemDisplayUseable(proc->units[col], item),
+                DrawItemMenuLine(&gTradeMenuText[col][row], item, IsItemDisplayUsable(proc->units[col], item),
                     gBg0Tm + TM_OFFSET(xLookup[col] + 1, yLookup[col] + row * 2 + 1));
             }
         }

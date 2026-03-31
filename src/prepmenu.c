@@ -411,14 +411,14 @@ void func_fe6_08079C38(struct UnkProc_08678E18 *proc)
 			GetItemIcon(proc->unit->items[proc->unk_34]), TILEREF(0, BGPAL_ICONS));
 
 		Text_SetColor(&gUnk_0200E864[proc->unk_34],
-			IsItemDisplayUseable(proc->unit, proc->unit->items[proc->unk_34])
+			IsItemDisplayUsable(proc->unit, proc->unit->items[proc->unk_34])
 				? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
 		Text_SetCursor(&gUnk_0200E864[proc->unk_34], 0);
 		Text_DrawString(&gUnk_0200E864[proc->unk_34], GetItemName(proc->unit->items[proc->unk_34]));
 		PutText(&gUnk_0200E864[proc->unk_34], gBg0Tm + TM_OFFSET(3, 9 + proc->unk_34 * 2));
 
 		PutNumberOrBlank(gBg0Tm + TM_OFFSET(11, 9 + proc->unk_34 * 2),
-			IsItemDisplayUseable(proc->unit, proc->unit->items[proc->unk_34])
+			IsItemDisplayUsable(proc->unit, proc->unit->items[proc->unk_34])
 				? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
 			GetItemUses(proc->unit->items[proc->unk_34]));
 
@@ -466,14 +466,14 @@ void func_fe6_08079D84(struct PrepMenuProc *proc)
 			GetItemIcon(unit->items[i]), TILEREF(0, BGPAL_ICONS));
 
 		Text_SetColor(&gUnk_0200E864[i],
-			IsItemDisplayUseable(unit, unit->items[i])
+			IsItemDisplayUsable(unit, unit->items[i])
 				? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
 		Text_SetCursor(&gUnk_0200E864[i], 0);
 		Text_DrawString(&gUnk_0200E864[i], GetItemName(unit->items[i]));
 		PutText(&gUnk_0200E864[i], gBg0Tm + TM_OFFSET(3, 9 + i * 2));
 
 		PutNumberOrBlank(gBg0Tm + TM_OFFSET(11, 9 + i * 2),
-			IsItemDisplayUseable(unit, unit->items[i])
+			IsItemDisplayUsable(unit, unit->items[i])
 				? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
 			GetItemUses(unit->items[i]));
 	}

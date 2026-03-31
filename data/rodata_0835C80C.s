@@ -6,8 +6,8 @@
 String_ShopGoldG: @ 0835CA44
 	.incbin "fe6-base.gba", 0x35CA44, (0x35CA78 - 0x35CA44) @ length: 0034
 
-	.global gUnk_0835CA78
-gUnk_0835CA78: @ 0835CA78
+	.global String_Shop_0835CA78
+String_Shop_0835CA78: @ 0835CA78
 	.incbin "fe6-base.gba", 0x35CA78, (0x35CB90 - 0x35CA78) @ length: 0118
 
 	.global Pal_Title_BG

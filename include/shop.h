@@ -6,7 +6,19 @@
 #include "text.h"
 
 #define SHOP_ITEMS_MAX_AMT 20
-#define SHOP_TEXT_LINES 5
+
+enum videoalloc_shop {
+    BGCHR_SHOP_TALKTEXT = 0x200,
+    BGPAL_SHOP_ICON = 4,
+    BGPAL_SHOP_MAINBG1 = 12,
+    BGPAL_SHOP_MAINBG2 = 14,
+
+    OBJCHR_SHOP_SPINARROW = 0x240,
+    OBJPAL_SHOP_SPINARROW = 3,
+
+    OBJCHR_SHOP_GOLDBOX = 0x260,
+    OBJPAL_SHOP_GOLDBOX = 4,
+};
 
 enum ShopProcLabel {
     PL_SHOP_ENTRY = 0,
@@ -85,7 +97,9 @@ struct ShopState {
 };
 extern CONST_DATA struct ShopState *gpShopSt;
 
+#define SHOP_TEXT_LINES 5
 extern struct Text gShopItemTexts[SHOP_TEXT_LINES + 1];
+extern struct Text Text_GoldBox;
 
 int GetShopFace(struct ProcShop *proc);
 void StartShopDialogue(int msg, struct ProcShop *proc);
@@ -125,16 +139,16 @@ void Shop_ExitShopDialogue(struct ProcShop *proc);
 void Shop_OnExit(struct ProcShop *proc);
 void StartShopFadeIn(struct ProcShop *proc);
 void StartShopFadeOut(struct ProcShop *proc);
-void func_fe6_08096B38(struct ProcShop *proc);
+void Shop_Start(struct ProcShop *proc);
 void StartUiGoldBox(ProcPtr proc);
-// InitGoldBoxText
-// ClearGoldBoxTextTm2Line
-void DisplayGoldBoxText(u16 * tm);
+void InitGoldBoxText(u16 *tm);
+void ClearGoldBoxTextTm2Line(u16 *tm, int lines);
+void DisplayGoldBoxText(u16 *tm);
 void ShopInitTexts_OnBuy(struct ProcShop *proc);
-// DrawShopSoldItems
+void DrawShopSoldItems(struct ProcShop *proc);
 void InitShopBuyStatus(struct ProcShopInit * proc);
 void ShopInitTexts_OnSell(struct ProcShop *proc);
-// func_fe6_08097354
+void ShopDrawDefaultSellItemLine(struct ProcShop *proc);
 void InitShopSellStatus(struct ProcShopInit * proc);
 void DrawShopItemPriceLine(struct Text * text, int item, struct Unit *unit, u16 * tm);
 void DrawShopItemLine(struct Text * text, int item, struct Unit *unit, u16 * tm);
@@ -143,7 +157,7 @@ u16 GetItemSellPrice(int);
 bool IsItemSellable(int item);
 void GoldBox_OnLoop(struct ProcShop *proc);
 void InitShopScreenConfig(void);
-void _DisplayShopUiArrows(void);
+void Shop_DisplayShopUiArrows(struct ProcShop *proc);
 void DisplayShopUiArrows(void);
 void UnpackUiVArrowGfx(int, int);
 void DisplayUiVArrow(int, int, u16, int);
@@ -170,8 +184,8 @@ bool ShouldDisplayDownArrow(void);
 extern CONST_DATA struct ProcScr ProcScr_ShopFadeIn[];
 extern CONST_DATA struct ProcScr ProcScr_ShopFadeOut[];
 extern CONST_DATA struct ProcScr ProcScr_Shop[];
-// extern CONST_DATA ??? ProcScr_ShopBuyInit
-// extern CONST_DATA ??? ProcScr_ShopSellInit
-// extern CONST_DATA ??? Sprite_ShopGoldBox
+extern struct ProcScr CONST_DATA ProcScr_ShopBuyInit[];
+extern struct ProcScr CONST_DATA ProcScr_ShopSellInit[];
+extern CONST_DATA u16 Sprite_ShopGoldBox[];
 extern CONST_DATA struct ProcScr ProcScr_GoldBox[];
 extern CONST_DATA struct ProcScr ProcScr_ShopDrawHand[];

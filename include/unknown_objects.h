@@ -451,8 +451,8 @@ extern const int gUnk_08353328[];
 // extern const ??? OpInfoClassIntroMsgs
 // extern const ??? Str_OpInfo_Mag
 // extern const ??? gUnk_0835C829
-// extern const ??? String_ShopGoldG
-// extern const ??? gUnk_0835CA78
+extern const char String_ShopGoldG[];
+extern const char String_Shop_0835CA78[];
 extern u16 const Pal_Title_BG[];
 extern u8 const Img_Title_BG[];
 extern u8 const Img_Title_Sprites[];
@@ -523,8 +523,8 @@ extern const u16 Pal_OpAnimGlyphs[];
 // extern CONST_DATA ??? Sprite_0868A568
 // extern CONST_DATA ??? Sprite_0868A570
 
-extern const u16 gUnk_083278AC[];
-extern const u8 gUnk_083278EC[];
+extern const u16 Pal_CommGameBgScreenInShop[];
+extern const u8 Tsa_CommGameBgScreenInShop[];
 extern const u16 gUnk_083280B0[];
 extern const u8 gUnk_0832A130[];
 extern const u8 Img_SupportMenu[];

@@ -230,7 +230,7 @@ int GetWeaponLevelFromExp(int wexp);
 char const * GetWeaponLevelStringFromExp(int wexp);
 int GetWeaponLevelSpecialCharFromExp(int wexp);
 char const * GetItemKindString(int kind);
-bool IsItemDisplayUseable(struct Unit * unit, int item);
+bool IsItemDisplayUsable(struct Unit * unit, int item);
 bool Unused_08016C50(struct Unit * unit, int item);
 int GetUnitItemHealAmount(struct Unit * unit, int item);
 int FindUnitItemSlot(struct Unit * unit, int iid);
