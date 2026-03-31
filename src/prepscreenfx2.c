@@ -16,7 +16,50 @@
 #include "prepscreen.h"
 #include "constants/msg.h"
 
+extern const char String_Prep_08327294[];
 extern const char Msg_Prep_Supply[]; // 輸送隊
+
+void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused)
+{
+	u16 i;
+
+	TmFill(gBg2Tm, 0);
+
+	if (gPrepMenuScrollPos == 0) {
+		ClearText(text);
+		Text_SetCursor(text, 0);
+		Text_SetColor(text, TEXT_COLOR_SYSTEM_GRAY);
+		Text_DrawString(text, String_Prep_08327294);
+		PutText(text, gBg2Tm + TM_OFFSET(x * 14 + 4, 0));
+	}
+
+	for (i = off; i < (off + 7) && i < gPrepMenuScrollPos; i++) {
+		bool usable;
+
+		ClearText(&text[i & 7]);
+		Text_SetCursor(&text[i & 7], 0);
+		PutIcon(
+			gBg2Tm + TM_OFFSET(x * 14 + 2, (i * 2) & 0x1F),
+			GetItemIcon(gPrepItemListData[i].u.info.item),
+			OAM2_PAL(OBPAL_PREPMENU_4));
+		func_fe6_0807D2F4(GetItemIcon(gPrepItemListData[i].u.info.item));
+
+		if (!unit || IsItemDisplayUsable(unit, gPrepItemListData[i].u.info.item))
+			usable = true;
+		else
+			usable = false;
+
+		Text_SetColor(&text[i & 7], usable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
+		Text_DrawString(&text[i & 7], GetItemName(gPrepItemListData[i].u.info.item));
+		PutText(&text[i & 7], gBg2Tm + TM_OFFSET(x * 14 + 4, (i * 2) & 0x1F));
+		PutNumberOrBlank(
+			gBg2Tm + TM_OFFSET(x * 14 + 0xD, (i * 2) & 0x1F),
+			usable ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
+			GetItemUses(gPrepItemListData[i].u.info.item));
+	}
+
+	EnableBgSync(BG2_SYNC_BIT);
+}
 
 void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 {
