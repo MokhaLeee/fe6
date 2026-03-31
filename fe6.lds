@@ -368,10 +368,7 @@ SECTIONS
         . = ALIGN(1); gEndingSceneDispEnPidList = .;
 
         . = 0x0203DCB8 - __ewram_overlay_end;
-        . = ALIGN(4); gShopItemTexts = .;
-
-        . = 0x0203DD04 - __ewram_overlay_end;
-        . = ALIGN(4); gShopSt = .;
+        . = ALIGN(4); src/shop.o(ewram_data);
 
         . = 0x02040000 - __ewram_overlay_end; /* end */
     }
@@ -608,8 +605,6 @@ SECTIONS
         src/opinfo_classdemo.o(.text);
         asm/opinfo_classdemo.o(.text);
         src/shop.o(.text);
-        asm/shop.o(.text);
-        src/shop2.o(.text);
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
         src/opanim.o(.text);
@@ -904,7 +899,6 @@ SECTIONS
         . = ALIGN(4); src/opinfo.o(.data);
         . = ALIGN(4); data/opinfo.o(.data);
         . = ALIGN(4); src/shop.o(.data);
-        . = ALIGN(4); data/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);
         . = ALIGN(4); src/suspend_ui.o(.data);
         . = ALIGN(4); src/opanim.o(.data);

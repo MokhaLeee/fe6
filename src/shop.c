@@ -172,6 +172,34 @@ struct ProcScr CONST_DATA ProcScr_ShopSellInit[] = {
 	PROC_END,
 };
 
+u16 CONST_DATA Sprite_ShopGoldBox[] = {
+	9,
+	OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_LAYER(1),
+	OAM0_SHAPE_16x8, OAM1_SIZE_16x8 + OAM1_X(32), OAM2_CHR(0x2) + OAM2_LAYER(1),
+	OAM0_SHAPE_16x8, OAM1_SIZE_16x8 + OAM1_X(48), OAM2_CHR(0x4) + OAM2_LAYER(1),
+	OAM0_SHAPE_32x8 + OAM0_Y(8), OAM1_SIZE_32x8, OAM2_CHR(0x6) + OAM2_LAYER(1),
+	OAM0_SHAPE_16x8 + OAM0_Y(8), OAM1_SIZE_16x8 + OAM1_X(32), OAM2_CHR(0x8) + OAM2_LAYER(1),
+	OAM0_SHAPE_16x8 + OAM0_Y(8), OAM1_SIZE_16x8 + OAM1_X(48), OAM2_CHR(0xA) + OAM2_LAYER(1),
+	OAM0_SHAPE_32x8 + OAM0_Y(16), OAM1_SIZE_32x8, OAM2_CHR(0xC) + OAM2_LAYER(1),
+	OAM0_SHAPE_16x8 + OAM0_Y(16), OAM1_SIZE_16x8 + OAM1_X(32), OAM2_CHR(0xE) + OAM2_LAYER(1),
+	OAM0_SHAPE_16x8 + OAM0_Y(16), OAM1_SIZE_16x8 + OAM1_X(48), OAM2_CHR(0x10) + OAM2_LAYER(1),
+};
+
+struct ProcScr CONST_DATA ProcScr_GoldBox[] = {
+	PROC_REPEAT(GoldBox_OnLoop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_ShopDrawHand[] = {
+	PROC_REPEAT(Shop_DisplayShopUiArrows),
+};
+
+EWRAM_DATA  struct Text gShopItemTexts[SHOP_TEXT_LINES + 1] = {};
+EWRAM_DATA static struct ShopState sShopSt = {};
+CONST_DATA struct ShopState *gpShopSt = &sShopSt;
+
+EWRAM_DATA int gShopHandLocBak = 0;
+
 int GetShopFace(struct ProcShop *proc)
 {
 	return gShopFaces[proc->shopType];
@@ -1042,4 +1070,185 @@ void HandleShopBuyAction(struct ProcShop * proc)
 	DrawShopSoldItems(proc);
 
 	DisplayGoldBoxText(gBg0Tm + TM_OFFSET(27, 6));
+}
+
+int ShopTryMoveCursor(int pos, int pre, bool hscroll_en)
+{
+	int previous;
+
+	if (pos < 0)
+		pos = 0;
+
+	if (pos >= pre)
+		pos = pre - 1;
+
+	previous = pos;
+
+	if (gKeySt->repeated & KEY_DPAD_UP) {
+		if (pos == 0) {
+			if (hscroll_en && (gKeySt->pressed & KEY_DPAD_UP))
+				pos = pre - 1;
+		} else
+			pos--;
+	} else if (gKeySt->repeated & KEY_DPAD_DOWN) {
+		if (pos == (pre - 1)) {
+			if (hscroll_en && (gKeySt->pressed & KEY_DPAD_DOWN))
+				pos = 0;
+		} else
+			pos++;
+	}
+
+	if (previous != pos) {
+		PlaySe(SONG_66);
+	}
+	return pos;
+}
+
+void ShopSt_SetHeadLocBak(int unk)
+{
+	gShopHandLocBak = unk;
+}
+
+int ShopTryScrollPage(int head_loc, int total, int lines, int hand_loc)
+{
+	int __head_loc_bak;
+
+	__head_loc_bak = gShopHandLocBak;
+	gShopHandLocBak = head_loc;
+
+	if (head_loc == __head_loc_bak)
+		return false;
+
+	if (lines > total)
+		return false;
+
+	if (head_loc < __head_loc_bak) {
+		if (hand_loc == 0)
+			return 0;
+
+		if ((head_loc - hand_loc) < 1)
+			return -1;
+	} else {
+		if ((lines + hand_loc) == total)
+		return 0;
+		if ((head_loc - hand_loc) >= (lines - 1))
+		return +1;
+	}
+
+	return false;
+}
+
+int ShopUpdateBg2Offset(int off, int tar, int trig)
+{
+	if ((off - tar) >= 0 ? (off - tar) < trig : (tar - off) < trig)
+		return tar;
+
+	off = ((tar - off) <= 0) ? (((tar - off) < 0) ? (off +  -1 * trig) : off) : (off + trig);
+
+	return off;
+}
+
+void RegisterShopState(u16 head_loc, u16 item_cnt, u16 lines, u16 hand_loc, int bg2_base, ShopFunc func, struct ProcShop * proc)
+{
+
+	ShopSt_SetHeadLocBak(head_loc);
+
+	gpShopSt->head_loc = head_loc;
+	gpShopSt->item_cnt = item_cnt;
+	gpShopSt->lines = lines;
+	gpShopSt->hand_loc = hand_loc;
+	gpShopSt->px_per_line = 16;
+	gpShopSt->trig = 4;
+	gpShopSt->draw_line = func;
+	gpShopSt->proc = proc;
+	gpShopSt->bg2_base = -bg2_base;
+	gpShopSt->bg2_off = hand_loc * 16;
+}
+
+void Shop_TryMoveHandPage(void)
+{
+
+	gpShopSt->head_loc = ShopTryMoveCursor(gpShopSt->head_loc, gpShopSt->item_cnt, 0);
+
+	switch (ShopTryScrollPage(gpShopSt->head_loc, gpShopSt->item_cnt, gpShopSt->lines, gpShopSt->hand_loc)) {
+	case 0:
+	default:
+		break;
+
+	case +1:
+		gpShopSt->hand_loc++;
+		gpShopSt->draw_line(gpShopSt->proc, gpShopSt->hand_loc + gpShopSt->lines - 1);
+		break;
+
+	case -1:
+		gpShopSt->hand_loc--;
+		gpShopSt->draw_line(gpShopSt->proc, gpShopSt->hand_loc);
+		break;
+	}
+
+	gpShopSt->bg2_off = ShopUpdateBg2Offset(
+							gpShopSt->bg2_off,
+							gpShopSt->hand_loc * gpShopSt->px_per_line,
+							gpShopSt->trig);
+}
+
+u16 ShopSt_GetHeadLoc(void)
+{
+	return gpShopSt->head_loc;
+}
+
+int ShopSt_GetBg2Offset(void)
+{
+	return gpShopSt->bg2_base + gpShopSt->bg2_off;
+}
+
+u16 ShopSt_GetHandLoc(void)
+{
+	return gpShopSt->hand_loc;
+}
+
+void ShopSt_SetLineHeight(int px)
+{
+	gpShopSt->px_per_line = px;
+}
+
+void ShopSt_SetSetPageScrollTrigOffset(int trig)
+{
+	gpShopSt->trig = trig;
+}
+
+bool IsShopPageScrolling(void)
+{
+	if (gpShopSt->bg2_off != (gpShopSt->hand_loc * gpShopSt->px_per_line))
+		return true;
+
+	return false;
+}
+
+bool ShouldDisplayUpArrow(void)
+{
+	if (gpShopSt->hand_loc != 0) {
+		return true;
+	}
+
+	return false;
+}
+
+bool ShouldDisplayDownArrow(void)
+{
+	if (gpShopSt->hand_loc + gpShopSt->lines < gpShopSt->item_cnt)
+		return true;
+
+	return false;
+}
+
+
+bool func_fe6_08097E2C(int a)
+{
+	struct MusicPlayer *info = gMusicPlayerTable[gSongTable[0x39].ms].music_player;
+
+	if (((info->status & MUSICPLAYER_STATUS_TRACK) == 0) && ((info->status & MUSICPLAYER_STATUS_PAUSE) == 0))
+		return false;
+	else
+		return true;
 }

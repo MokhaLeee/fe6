@@ -93,7 +93,6 @@ struct ShopState {
     /* 10 */ int bg2_base;
     /* 14 */ ShopFunc draw_line;
     /* 18 */ ProcPtr proc;
-    /* 1C */ int head_loc_bak;
 };
 extern CONST_DATA struct ShopState *gpShopSt;
 
