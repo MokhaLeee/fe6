@@ -6,10 +6,12 @@
 #include "sound.h"
 #include "sprite.h"
 #include "text.h"
+#include "item.h"
 #include "icon.h"
 #include "ui.h"
 #include "prepscreen.h"
 #include "constants/msg.h"
+#include "constants/icons.h"
 
 CONST_DATA int HelpboxMsg_0867929C[3] = { MSG_664, MSG_665, MSG_660 };
 
@@ -349,16 +351,50 @@ void func_fe6_0807D338(void)
 #if 0
 void func_fe6_0807D358(struct PrepSubItemProc *proc)
 {
-	u16 i, j;
+	u16 i, j, k;
 	int icons[ITEMSLOT_INV_COUNT];
-	struct Unit * unit = proc->unit;
-	u16 item_amt = GetUnitItemCount(proc->unit);
+	int bar_disp = proc->menu_scroll_bar_disp_idx;
+	struct Unit *unit = proc->units[0];
+	u16 item_amt = GetUnitItemCount(unit);
 
 	for (j = 0, i = 0; i < item_amt; j++, i++)
 		icons[j] = GetItemIcon(unit->items[i]);
 
 	if (gPrepMenuScrollPos != 0) {
+		icons[j] = ICON_ITEM_KIND_BASE + GetItemKind(gPrepItemListData[
+			proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].u.info.item);
 
+		j++;
+	}
+
+	for (i = bar_disp; (i < (bar_disp + 9)); i++) {
+		if (i > gPrepMenuScrollPos)
+			break;
+
+		icons[j] = GetItemIcon(gPrepItemListData[i].u.info.item);
+		j++;
+	}
+
+	for (; j < 20; j++) {
+		icons[j] = 0xFF;
+	}
+
+	for (j = 0; j < 20; j++) {
+		if (gPrepSubMenuIcons[j] == 0xFF)
+			continue;
+
+		i = 0;
+		for (k = 0; k < 20; k++) {
+			if (gPrepSubMenuIcons[j] == icons[k]) {
+				i = 1;
+				break;
+			}
+		}
+
+		if (i != false) {
+			ClearIcon(gPrepSubMenuIcons[j]);
+			gPrepSubMenuIcons[j] = 0xFF;
+		}
 	}
 }
 #endif
