@@ -80,7 +80,7 @@ SECTIONS
         . = 0x015688; gPrepTexts3 = .;
         . = 0x015698; gPrepSubMenuIcons = .;
         . = 0x0156E8; gPrepTexts4 = .;
-        . = 0x015D28; gPrepConvoyData = .;
+        . = 0x015D28; gPrepItemListData = .;
         . = 0x016368; gPrepAllItemsCount = .;
         . = 0x01636A; gPrepMenuScrollPos = .;
         . = 0x01636C; sSallyCirWinH_obj = .;
@@ -536,8 +536,6 @@ SECTIONS
         src/banim_dragonfx_idunn.o(.text);
         src/banim_efxutils.o(.text);
         src/banim_efxsound.o(.text);
-        asm/banim_efxsound.o(.text);
-        src/banim_efxsound2.o(.text);
         src/banim_ekrclasschg.o(.text);
         src/banim_ekrlvup.o(.text);
         src/banim_ekrlvupfx.o(.text);
@@ -566,7 +564,11 @@ SECTIONS
         asm/prepscreen.o(.text);
         src/prepscreenfx2.o(.text);
         src/prep_subitemscreen1.o(.text);
-        asm/prep_subitemscreen.o(.text);
+        asm/prep_subitemscreen_trade.o(.text);
+        src/prep_subitemscreen_viewall.o(.text);
+        asm/prep_subitemscreen_viewall.o(.text);
+        src/prep_subitemscreen3.o(.text);
+        asm/prep_subitemscreen3.o(.text);
         src/prep_subitemscreen.o(.text);
         src/prep_subscreen_discard1.o(.text);
         asm/prep_subscreen_discard.o(.text);

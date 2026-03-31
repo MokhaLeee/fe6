@@ -47,7 +47,7 @@ func_fe6_0807D358: @ 0x0807D358
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq .L0807D3D8
-	ldr r2, .L0807D460 @ =gPrepConvoyData
+	ldr r2, .L0807D460 @ =gPrepItemListData
 	mov r0, r8
 	adds r0, #0x50
 	ldrh r0, [r0]
@@ -84,7 +84,7 @@ func_fe6_0807D358: @ 0x0807D358
 	ldrh r6, [r6]
 	cmp r4, r6
 	bhs .L0807D424
-	ldr r6, .L0807D460 @ =gPrepConvoyData
+	ldr r6, .L0807D460 @ =gPrepItemListData
 .L0807D3F8:
 	lsls r0, r4, #2
 	adds r0, r0, r6
@@ -141,7 +141,7 @@ func_fe6_0807D358: @ 0x0807D358
 	b .L0807D492
 	.align 2, 0
 .L0807D45C: .4byte gPrepMenuScrollPos
-.L0807D460: .4byte gPrepConvoyData
+.L0807D460: .4byte gPrepItemListData
 .L0807D464: .4byte gPrepSubMenuIcons
 .L0807D468:
 	adds r0, r2, #1
@@ -621,7 +621,7 @@ func_fe6_0807D834: @ 0x0807D834
 	mov sb, r0
 	adds r6, r1, #0
 .L0807D866:
-	ldr r1, .L0807D8B8 @ =gPrepConvoyData
+	ldr r1, .L0807D8B8 @ =gPrepItemListData
 	lsls r0, r4, #2
 	adds r5, r0, r1
 	ldrh r0, [r5, #2]
@@ -659,7 +659,7 @@ func_fe6_0807D834: @ 0x0807D834
 .L0807D8AC: .4byte gPrepAllItemsCount
 .L0807D8B0: .4byte gUnk_08679354
 .L0807D8B4: .4byte gPrepTexts4
-.L0807D8B8: .4byte gPrepConvoyData
+.L0807D8B8: .4byte gPrepItemListData
 .L0807D8BC:
 	lsls r0, r2, #1
 	adds r0, r0, r2
@@ -758,7 +758,7 @@ func_fe6_0807D834: @ 0x0807D834
 	ldr r2, .L0807D9D0 @ =gPrepTexts4
 	mov sb, r2
 .L0807D976:
-	ldr r1, .L0807D9E0 @ =gPrepConvoyData
+	ldr r1, .L0807D9E0 @ =gPrepItemListData
 	lsls r0, r4, #2
 	adds r5, r0, r1
 	ldrh r0, [r5, #2]
@@ -790,7 +790,7 @@ func_fe6_0807D834: @ 0x0807D834
 	cmp r4, r0
 	blt .L0807D976
 .L0807D9B2:
-	ldr r0, .L0807D9E0 @ =gPrepConvoyData
+	ldr r0, .L0807D9E0 @ =gPrepItemListData
 	ldr r1, .L0807D9D0 @ =gPrepTexts4
 	movs r2, #0xc8
 	lsls r2, r2, #3
@@ -808,7 +808,7 @@ func_fe6_0807D834: @ 0x0807D834
 .L0807D9D4: .4byte gPrepMenuScrollPos
 .L0807D9D8: .4byte gPrepAllItemsCount
 .L0807D9DC: .4byte gUnk_08679354
-.L0807D9E0: .4byte gPrepConvoyData
+.L0807D9E0: .4byte gPrepItemListData
 
 	thumb_func_start func_fe6_0807D9E4
 func_fe6_0807D9E4: @ 0x0807D9E4
@@ -891,7 +891,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	lsls r4, r4, #1
 	ldr r0, .L0807DAC4 @ =gBg2Tm
 	adds r4, r4, r0
-	ldr r0, .L0807DAD0 @ =gPrepConvoyData
+	ldr r0, .L0807DAD0 @ =gPrepItemListData
 	mov r1, r8
 	lsls r5, r1, #2
 	adds r7, r5, r0
@@ -920,7 +920,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 .L0807DAC4: .4byte gBg2Tm
 .L0807DAC8: .4byte gPrepMenuScrollPos
 .L0807DACC: .4byte gUnk_08327294
-.L0807DAD0: .4byte gPrepConvoyData
+.L0807DAD0: .4byte gPrepItemListData
 .L0807DAD4:
 	movs r2, #0
 .L0807DAD6:
@@ -938,7 +938,7 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 .L0807DAEC:
 	adds r0, r7, #0
 	bl Text_SetColor
-	ldr r0, .L0807DB74 @ =gPrepConvoyData
+	ldr r0, .L0807DB74 @ =gPrepItemListData
 	adds r5, r5, r0
 	ldrh r0, [r5, #2]
 	bl GetItemName
@@ -1000,6 +1000,6 @@ func_fe6_0807D9E4: @ 0x0807D9E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0807DB74: .4byte gPrepConvoyData
+.L0807DB74: .4byte gPrepItemListData
 .L0807DB78: .4byte gBg2Tm
 .L0807DB7C: .4byte gPrepMenuScrollPos

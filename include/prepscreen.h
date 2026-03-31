@@ -174,18 +174,18 @@ extern struct Text gPrepTexts1[10];
 extern struct Text gPrepTexts2[10];
 extern struct Text gPrepTexts3[2];
 
-struct PrepConvoyData {
+struct PrepItemListEnt {
     union {
         struct {
-            u8 unk_00;
-            u8 unk_01;
+            u8 pid;
+            u8 slot;
             u16 item;
         } info;
 
         u32 raw;
     } u;
 };
-extern struct PrepConvoyData gPrepConvoyData[];
+extern struct PrepItemListEnt gPrepItemListData[];
 
 void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
@@ -356,14 +356,14 @@ ProcPtr func_fe6_0807D074(ProcPtr parent);
 
 void func_fe6_0807D088(struct ProcPrepfx_086793A8 *proc);
 void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc);
-// func_fe6_0807D16C
+ProcPtr func_fe6_0807D16C(ProcPtr parent);
 void func_fe6_0807D180(struct ProcPrepfx_086793A8 *proc);
 void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc);
-// func_fe6_0807D2E0
+ProcPtr func_fe6_0807D2E0(ProcPtr parent);
 void func_fe6_0807D2F4(int icon);
 // func_fe6_0807D338
 void func_fe6_0807D358(struct PrepSubItemProc *proc);
-// func_fe6_0807D4A8
+void func_fe6_0807D4A8(u8 x, u8 y, int item, ProcPtr proc);
 void func_fe6_0807D6C0(int, struct Unit *unit);
 void func_fe6_0807D834(int convoy_page);
 void func_fe6_0807D9E4(struct Text *text, int, struct Unit *unit, int off, int);
@@ -411,9 +411,8 @@ struct PrepSubItemProc {
     /* 46 */ u8 convoy_page;
     /* 47 */ u8 unk_47;
     /* 48 */ u8 unk_48;
-
-    STRUCT_PAD(0x49, 0x4B);
-
+    /* 49 */ u8 unk_49;
+    /* 4A */ u8 unk_4A;
     /* 4B */ u8 unk4B;
     /* 4C */ u8 unk_4C;
     /* 4D */ u8 unk_4D;
@@ -429,10 +428,10 @@ void func_fe6_0807E06C(bool act);
 void PrepSubItemScreen_Init(struct PrepSubItemProc *proc);
 void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc);
 void func_fe6_0807E544(struct PrepSubItemProc *proc);
-void PrepSubItem_0807E5A8(struct PrepSubItemProc *proc);
+void PrepSubItem_Trade_Loop(struct PrepSubItemProc *proc);
 void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc);
-void func_fe6_0807EDBC(struct PrepSubItemProc *proc);
-// func_fe6_0807FBE8
+void PrepSubItem_ViewAll_Loop(struct PrepSubItemProc *proc);
+void func_fe6_0807FBE8(struct PrepSubItemProc *proc);
 void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc);
 void PrepSubItem_SelLoop1(struct PrepSubItemProc *proc);
 void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc);

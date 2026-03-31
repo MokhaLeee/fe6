@@ -28,16 +28,16 @@ gUnk_08327294: @ 08327294
 Msg_Prep_Supply: @ 083272A4
 	.incbin "fe6-base.gba", 0x3272A4, (0x3272AC - 0x3272A4) @ length: 0008
 
-	.global gUnk_083272AC
-gUnk_083272AC: @ 083272AC
+	.global String_Prep_083272AC
+String_Prep_083272AC: @ 083272AC
 	.incbin "fe6-base.gba", 0x3272AC, (0x3272B8 - 0x3272AC) @ length: 000C
 
-	.global gUnk_083272B8
-gUnk_083272B8: @ 083272B8
+	.global String_Prep_083272B8
+String_Prep_083272B8: @ 083272B8
 	.incbin "fe6-base.gba", 0x3272B8, (0x3272C4 - 0x3272B8) @ length: 000C
 
-	.global gUnk_083272C4
-gUnk_083272C4: @ 083272C4
+	.global String_Prep_083272C4
+String_Prep_083272C4: @ 083272C4
 	.incbin "fe6-base.gba", 0x3272C4, (0x3272CC - 0x3272C4) @ length: 0008
 
 	.global gUnk_083272CC

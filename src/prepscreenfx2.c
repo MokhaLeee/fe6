@@ -28,11 +28,11 @@ void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 	ClearText(&texts[y & 0x7]);
 	PutIcon(
 		gBg2Tm + TM_OFFSET(x * 14 + 2, _y * 2),
-		GetItemIcon(gPrepConvoyData[y].u.info.item),
+		GetItemIcon(gPrepItemListData[y].u.info.item),
 		0x4000);
-	func_fe6_0807D2F4(GetItemIcon(gPrepConvoyData[y].u.info.item));
+	func_fe6_0807D2F4(GetItemIcon(gPrepItemListData[y].u.info.item));
 
-	if (unit == NULL || IsItemDisplayUsable(unit, gPrepConvoyData[y].u.info.item) != false)
+	if (unit == NULL || IsItemDisplayUsable(unit, gPrepItemListData[y].u.info.item) != false)
 		tmp = 1;
 	else
 		tmp = 0;
@@ -41,12 +41,12 @@ void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 
 	Text_SetColor(text, (tmp == 0) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE);
 	Text_SetCursor(text, 0);
-	Text_DrawString(text, GetItemName(gPrepConvoyData[y].u.info.item));
+	Text_DrawString(text, GetItemName(gPrepItemListData[y].u.info.item));
 	PutText(text, gBg2Tm + TM_OFFSET(x * 14 + 4, _y * 2));
 	PutNumberOrBlank(
 		gBg2Tm + TM_OFFSET(x * 14 + 13, _y * 2),
 		(tmp != 0) ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
-		GetItemUses(gPrepConvoyData[y].u.info.item));
+		GetItemUses(gPrepItemListData[y].u.info.item));
 
 	EnableBgSync(BG2_SYNC_BIT);
 }
@@ -96,13 +96,13 @@ void PrepAllItems_Update(void)
 	u16 i, j = 0;
 
 	for (i = 0; i < gPrepAllItemsCount; i++) {
-		if (gPrepConvoyData[i].u.info.unk_00 == 0) {
-			supply_items[j] = gPrepConvoyData[i].u.info.item;
+		if (gPrepItemListData[i].u.info.pid == 0) {
+			supply_items[j] = gPrepItemListData[i].u.info.item;
 			j++;
 		}
 	}
 
-	for (; j < 100; j++)
+	for (; j < SUPPLY_ITEM_COUNT; j++)
 		supply_items[j] = 0;
 
 	PrepAllItems_PutTotalNum(0x18, 0);
@@ -134,20 +134,20 @@ bool PrepAllItems_SwapItems(struct Unit *unit, u8 u_slot, u16 c_slot)
 {
 	u32 tmp;
 	
-	tmp = gPrepConvoyData[c_slot].u.raw;
-	gPrepConvoyData[c_slot].u.info.item = unit->items[u_slot];
+	tmp = gPrepItemListData[c_slot].u.raw;
+	gPrepItemListData[c_slot].u.info.item = unit->items[u_slot];
 	unit->items[u_slot] = tmp >> 0x10;
 
 	UnitRemoveInvalidItems(unit);
 
-	if (gPrepConvoyData[c_slot].u.info.item == 0) {
+	if (gPrepItemListData[c_slot].u.info.item == 0) {
 		u16 i;
 
 		for (i = c_slot; i < gPrepAllItemsCount; i++) {
-			gPrepConvoyData[i].u.raw = gPrepConvoyData[i + 1].u.raw;
+			gPrepItemListData[i].u.raw = gPrepItemListData[i + 1].u.raw;
 
-			if (gPrepConvoyData[i].u.info.unk_00 == 0)
-				gPrepConvoyData[i].u.info.unk_01--;
+			if (gPrepItemListData[i].u.info.pid == 0)
+				gPrepItemListData[i].u.info.slot--;
 		}
 
 		gPrepMenuScrollPos--;

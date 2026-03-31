@@ -19,9 +19,9 @@ void PrepSubItem_HandleAction(struct PrepSubItemProc *proc)
 		proc->unk_4E = proc->menu_scroll_bar_disp_idx;
 		proc->unk_47 = proc->hand_disp_y;
 
-		if (gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_00 == 0) {
+		if (gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.pid == 0) {
 			proc->menu_scrolling_pos = 0;
-			proc->unk_48 = gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_01;
+			proc->unk_48 = gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.slot;
 			return;
 		}
 	}
@@ -40,12 +40,12 @@ void PrepSubItem_HandleAction(struct PrepSubItemProc *proc)
 	if (proc->unk2D == PREP_SUB2U2D_3) {
 		proc->proc_parent->unk_39 = proc->convoy_page;
 
-		if (gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_00 == 0) {
-			proc->unk_48 = gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_01;
+		if (gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.pid == 0) {
+			proc->unk_48 = gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.slot;
 			Proc_Goto(proc, PL_PREP_SUBITEM_CONVOY);
 		} else {
-			proc->units[1] = GetUnitByPid(gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_00);
-			proc->hand_disp_y = gPrepConvoyData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.unk_01;
+			proc->units[1] = GetUnitByPid(gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.pid);
+			proc->hand_disp_y = gPrepItemListData[proc->hand_disp_y + proc->menu_scroll_bar_disp_idx / 16].u.info.slot;
 			Proc_Goto(proc, PL_PREP_SUBITEM_TRADE);
 		}
 	} else {
@@ -87,11 +87,11 @@ struct ProcScr CONST_DATA ProcScr_PrepSubItemScreen[] = {
 PROC_LABEL(PL_PREP_SUBITEM_VIEWALL),
 	PROC_CALL(PrepSubItem_StartViewAllScreen),
 PROC_LABEL(1),
-	PROC_REPEAT(func_fe6_0807EDBC),
+	PROC_REPEAT(PrepSubItem_ViewAll_Loop),
 PROC_LABEL(PL_PREP_SUBITEM_TRADE),
 	PROC_CALL(PrepSubItem_StartTradeScreen),
 PROC_LABEL(3),
-	PROC_REPEAT(PrepSubItem_0807E5A8),
+	PROC_REPEAT(PrepSubItem_Trade_Loop),
 PROC_LABEL(PL_PREP_SUBITEM_CONVOY),
 	PROC_CALL(PrepSubItem_StartSupplyScreen),
 PROC_LABEL(5),

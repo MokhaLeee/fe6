@@ -19,7 +19,7 @@ u8 GetTotalSupplyItemCount(void)
 	u8 i, ret = 0;
 	const u16 *supply = GetSupplyItems();
 
-	for (i = 0; i < 100; i++) {
+	for (i = 0; i < SUPPLY_ITEM_COUNT; i++) {
 		if (supply[i] != 0)
 			ret++;
 		else
