@@ -32,8 +32,8 @@ def dump_one_part_x2(rom_data, off):
     return off
 
 def dump_one_part(rom_data, off):
-    # return dump_one_part_x8(rom_data, off)
-    return dump_one_part_x2(rom_data, off)
+    return dump_one_part_x8(rom_data, off)
+    # return dump_one_part_x2(rom_data, off)
 
 def main(args):
     rom = "fe6-base.gba"

@@ -183,9 +183,9 @@ void SaveMenu_PutScreen(struct SaveMenuProc * proc)
 
     ResetTextFont();
     ApplySystemObjectsGraphics();
-    ApplyPalettes(gUnk_083278AC, 2, 2);
+    ApplyPalettes(Pal_CommGameBgScreenInShop, 2, 2);
     Decompress(Img_MuralBackground, ((void *) VRAM) + GetBgChrOffset(0) + CHR_SIZE * BGCHR_SAVEMENU_0);
-    TmApplyTsa(gBg0Tm, gUnk_083278EC, 0);
+    TmApplyTsa(gBg0Tm, Tsa_CommGameBgScreenInShop, 0);
     ApplyPalettes(Pal_SupportMenu, 0x11, 8);
     LoadHelpBoxGfx(OBJ_VRAM0 + CHR_SIZE * OBCHR_SAVEMENU_1C0, OBPAL_SAVEMENU_9);
     func_fe6_080895A0(gUnk_0832C35C, gUnk_Savemenu_02000404, 2);

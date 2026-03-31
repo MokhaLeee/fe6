@@ -25,7 +25,7 @@ enum
     ACTION_DOOR = 0x10,
     // 11?
     ACTION_CHEST = 0x12,
-    // ACTION_SHOPPED,
+    ACTION_SHOPPED = 0x14,
     // ACTION_ARENA,
     ACTION_16 = 0x16,
     ACTION_USEITEM = 0x17,

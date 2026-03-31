@@ -210,7 +210,7 @@ void func_fe6_0807E544(struct PrepSubItemProc *proc)
 
 /* https://decomp.me/scratch/dzJUy */
 #if 0
-void PrepSubItem_0807E5A8(struct PrepSubItemProc *proc)
+void PrepSubItem_Trade_Loop(struct PrepSubItemProc *proc)
 {
 	int pre_sel_y = proc->hand_disp_y;
 	int pre_sel_x = proc->hand_disp_x;
