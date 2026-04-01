@@ -70,7 +70,7 @@ void PrepDiscard_Init(struct ProcPrepDiscardScreen *proc)
 		InitTextDb(&gPrepTexts1[i], 7);
 
 	for (i = 0; i < 4; i++)
-		InitText(&gPrepTexts2[i], 7);
+		InitText(&gPrepTexts1[10 + i], 7);
 
 	proc->unit1 = proc->proc_parent->unit1;
 	proc->unit2 = proc->proc_parent->unit2;

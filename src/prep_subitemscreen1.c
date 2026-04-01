@@ -71,7 +71,7 @@ void PrepSubItemScreen_Init(struct PrepSubItemProc *proc)
 		InitTextDb(&gPrepTexts1[i], 7);
 
 	for (i = 0; i < 8; i++)
-		InitTextDb(&gPrepTexts2[i], 7);
+		InitTextDb(&gPrepTexts1[10 + i], 7);
 
 	ApplyPalettes(Pal_SpinningArrow, 0x10 + OBPAL_PREPMENU_2, 3);
 	ApplyPalettes( Pal_Sio_0831AABC, 0x10 + OBPAL_PREPMENU_8, 2);
@@ -160,7 +160,7 @@ void PrepSubItem_StartTradeScreen(struct PrepSubItemProc *proc)
 	Text_SetCursor(text, (0x28 - GetStringTextLen(DecodeMsg(proc->units[1]->pinfo->msg_name))) / 2);
 	Text_DrawString(text, DecodeMsg(proc->units[1]->pinfo->msg_name));
 	PutText(text, gBg0Tm + TM_OFFSET(0x18, 0));
-	func_fe6_0807D6C0(POS_R, proc->units[1]);
+	func_fe6_0807D6C0(1, proc->units[1]);
 	StartFace(1, GetUnitFid(proc->units[1]), 0xAC, -4, FACE_DISP_KIND(FACE_96x80));
 
 	if (proc->unk2D != 3) {

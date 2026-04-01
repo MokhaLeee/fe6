@@ -42,7 +42,7 @@ void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int 
 			gBg2Tm + TM_OFFSET(x * 14 + 2, (i * 2) & 0x1F),
 			GetItemIcon(gPrepItemListData[i].u.info.item),
 			OAM2_PAL(OBPAL_PREPMENU_4));
-		func_fe6_0807D2F4(GetItemIcon(gPrepItemListData[i].u.info.item));
+		PrepSubItem_InsertIcon(GetItemIcon(gPrepItemListData[i].u.info.item));
 
 		if (!unit || IsItemDisplayUsable(unit, gPrepItemListData[i].u.info.item))
 			usable = true;
@@ -73,7 +73,7 @@ void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 		gBg2Tm + TM_OFFSET(x * 14 + 2, _y * 2),
 		GetItemIcon(gPrepItemListData[y].u.info.item),
 		0x4000);
-	func_fe6_0807D2F4(GetItemIcon(gPrepItemListData[y].u.info.item));
+	PrepSubItem_InsertIcon(GetItemIcon(gPrepItemListData[y].u.info.item));
 
 	if (unit == NULL || IsItemDisplayUsable(unit, gPrepItemListData[y].u.info.item) != false)
 		tmp = 1;
@@ -168,7 +168,7 @@ void func_fe6_0807DEC8(struct PrepSubItemProc *proc, u16 item)
 		proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 0x10;
 		func_fe6_0807D834(proc->convoy_page);
 		func_fe6_080823A0(proc->unk_3B + proc->convoy_page, &proc->menu_scroll_bar_disp_idx);
-		func_fe6_0807D9E4(gPrepTexts2, 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
+		func_fe6_0807D9E4(&gPrepTexts1[10], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
 		func_fe6_0807D358(proc);
 	}
 }
