@@ -293,7 +293,7 @@ PrepDiscard_Loop: @ 0x08081970
 	movs r0, #0x6a
 	bl m4aSongNumStart
 .L08081BBC:
-	ldr r0, .L08081BEC @ =gPrepTexts2
+	ldr r0, .L08081BEC @ =gPrepTexts1 + 0x50
 	movs r1, #1
 	bl func_fe6_0808166C
 	adds r1, r7, #0
@@ -315,7 +315,7 @@ PrepDiscard_Loop: @ 0x08081970
 	b .L08081DB2
 	.align 2, 0
 .L08081BE8: .4byte gPlaySt
-.L08081BEC: .4byte gPrepTexts2
+.L08081BEC: .4byte gPrepTexts1 + 0x50
 .L08081BF0:
 	movs r0, #2
 	ands r0, r1
@@ -479,15 +479,15 @@ PrepDiscard_Loop: @ 0x08081970
 .L08081D3E:
 	adds r0, r7, #0
 	bl PrepDiscardUpdateInfoWindow
-	ldr r0, .L08081D50 @ =gPrepTexts2
+	ldr r0, .L08081D50 @ =gPrepTexts1 + 0x50
 	movs r1, #0
 	bl func_fe6_0808166C
 	mov r0, r8
 	b .L08081D5E
 	.align 2, 0
-.L08081D50: .4byte gPrepTexts2
+.L08081D50: .4byte gPrepTexts1 + 0x50
 .L08081D54:
-	ldr r0, .L08081DEC @ =gPrepTexts2
+	ldr r0, .L08081DEC @ =gPrepTexts1 + 0x50
 	movs r1, #0
 	bl func_fe6_0808166C
 	movs r0, #0
@@ -509,7 +509,7 @@ PrepDiscard_Loop: @ 0x08081970
 	movs r0, #0x6b
 	bl m4aSongNumStart
 .L08081D7E:
-	ldr r0, .L08081DEC @ =gPrepTexts2
+	ldr r0, .L08081DEC @ =gPrepTexts1 + 0x50
 	movs r1, #0
 	bl func_fe6_0808166C
 	movs r0, #0
@@ -566,6 +566,6 @@ PrepDiscard_Loop: @ 0x08081970
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08081DEC: .4byte gPrepTexts2
+.L08081DEC: .4byte gPrepTexts1 + 0x50
 .L08081DF0: .4byte gKeySt
 .L08081DF4: .4byte gPlaySt

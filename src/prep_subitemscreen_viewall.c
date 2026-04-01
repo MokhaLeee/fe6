@@ -66,7 +66,7 @@ void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc)
 	proc->menu_scroll_bar_disp_idx = proc->unk_4E;
 	proc->hand_disp_y = proc->unk_47;
 	func_fe6_080823A0(&proc->hand_disp_y, &proc->menu_scroll_bar_disp_idx);
-	func_fe6_0807D9E4(&gPrepTexts2[0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
+	func_fe6_0807D9E4(&gPrepTexts1[10], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 0);
 	func_fe6_0807D358(proc);
 	proc->convoy_scrolling_pos = 0;
 	proc->hand_disp_x = 1;

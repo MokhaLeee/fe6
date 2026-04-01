@@ -35,6 +35,8 @@ enum prepscreen_videoalloc {
 
     BGPAL_PREPMENU_2 = 0x02,
     BGPAL_PREPMENU_3 = 0x03,
+    BGPAL_PREPMENU_ICON = 0x04,
+    BGPAL_PREPMENU_AFFIN_ICON = BGPAL_PREPMENU_ICON + 1,
     BGPAL_PREPMENU_A = 0x0A,
     BGPAL_PREPMENU_E = 0x0E,
     BGPAL_PREPMENU_F = 0x0F,
@@ -171,7 +173,6 @@ extern struct Unit * gPrepUnitList[];
 extern u8 gPrepMenuItemCnt;
 
 extern struct Text gPrepTexts1[10];
-extern struct Text gPrepTexts2[10];
 extern struct Text gPrepTexts3[2];
 
 struct PrepItemListEnt {
@@ -321,50 +322,42 @@ u8 GetPrepScreenMenuCurrentItemIndex(struct PrepMenuProc *proc);
 void SetPrepMenuItemUsability(u8 index, u8 color);
 u8 GetPrepScreenMenuDispItemIndex(u8 disp_idx, fu8 is_submenu);
 
-struct ProcPrepfx_08679368 {
+struct ProcPrepSubItemSubfx {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x34);
 
-    /* 34 */ struct Text * text1;
-
-    STRUCT_PAD(0x38, 0x3c);
-
-    /* 3C */ struct Text * text2;
-
-    STRUCT_PAD(0x40, 0x44);
-
-    /* 3C */ struct Text * text3;
+    /* 34 */ struct Text texts[3];
 };
 
-void func_fe6_0807CF78(struct ProcPrepfx_08679368 *proc);
-void func_fe6_0807CFA0(struct ProcPrepfx_08679368 *proc);
+void func_fe6_0807CF78(struct ProcPrepSubItemSubfx *proc);
+void func_fe6_0807CFA0(struct ProcPrepSubItemSubfx *proc);
 // func_fe6_0807CFA4
 void dummy_0807CFB8(int a, int b, int c);
 
-struct ProcPrepfx_086793A8 {
+struct ProcPrepSubItemfx {
     PROC_HEADER_EXT(struct PrepSubItemProc);
 
     /* 2A */ u16 timer;
-    /* 2C */ ProcPtr procfx;
+    /* 2C */ struct ProcPrepSubItemSubfx *procfx;
     /* 30 */ int obj_offset;
 };
 
-void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 *proc);
-void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 *proc);
+void func_fe6_0807CFBC(struct ProcPrepSubItemfx *proc);
+void func_fe6_0807CFDC(struct ProcPrepSubItemfx *proc);
 ProcPtr func_fe6_0807D074(ProcPtr parent);
 
-void func_fe6_0807D088(struct ProcPrepfx_086793A8 *proc);
-void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc);
+void func_fe6_0807D088(struct ProcPrepSubItemfx *proc);
+void func_fe6_0807D0A8(struct ProcPrepSubItemfx *proc);
 ProcPtr func_fe6_0807D16C(ProcPtr parent);
-void func_fe6_0807D180(struct ProcPrepfx_086793A8 *proc);
-void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc);
+void func_fe6_0807D180(struct ProcPrepSubItemfx *proc);
+void func_fe6_0807D1AC(struct ProcPrepSubItemfx *proc);
 ProcPtr func_fe6_0807D2E0(ProcPtr parent);
-void func_fe6_0807D2F4(int icon);
-// func_fe6_0807D338
+void PrepSubItem_InsertIcon(int icon);
+void PrepSubItem_ResetIcon(void);
 void func_fe6_0807D358(struct PrepSubItemProc *proc);
-void func_fe6_0807D4A8(u8 x, u8 y, int item, ProcPtr proc);
-void func_fe6_0807D6C0(int, struct Unit *unit);
+void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc);
+void func_fe6_0807D6C0(u8 index, struct Unit *unit);
 void func_fe6_0807D834(int convoy_page);
 void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused);
 void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit);
@@ -420,7 +413,7 @@ struct PrepSubItemProc {
     /* 50 */ u16 menu_scroll_bar_disp_idx;
     /* 52 */ u16 timer;
     /* 54 */ struct Unit *units[2];
-    /* 5C */ ProcPtr subproc1;
+    /* 5C */ struct ProcPrepSubItemfx *subproc1;
     /* 60 */ ProcPtr proc_menuscroll;
 };
 

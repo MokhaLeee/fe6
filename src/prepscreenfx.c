@@ -5,13 +5,23 @@
 #include "oam.h"
 #include "sound.h"
 #include "sprite.h"
+#include "msg.h"
 #include "text.h"
 #include "item.h"
 #include "icon.h"
 #include "ui.h"
+#include "armfunc.h"
+
 #include "prepscreen.h"
+
 #include "constants/msg.h"
 #include "constants/icons.h"
+
+extern const char String_Prep_0832726C[];
+extern const char String_Prep_08327274[];
+extern const char String_Prep_0832727C[];
+extern const char String_Prep_08327284[];
+extern const char String_Prep_0832728C[];
 
 CONST_DATA int HelpboxMsg_0867929C[3] = { MSG_664, MSG_665, MSG_660 };
 
@@ -111,44 +121,16 @@ struct ProcScr CONST_DATA ProcScr_08679368[] = {
 	PROC_END,
 };
 
-#if NONMATCHING
-void func_fe6_0807CF78(struct ProcPrepfx_08679368 *proc)
+void func_fe6_0807CF78(struct ProcPrepSubItemSubfx *proc)
 {
-	InitTextDb(proc->text1, 12);
-	InitTextDb(proc->text2, 12);
-	InitText(proc->text3, 12);
+	InitTextDb(&proc->texts[0], 12);
+	InitTextDb(&proc->texts[1], 12);
+	InitText(&proc->texts[2], 12);
 }
-#else
 
-NAKEDFUNC
-void func_fe6_0807CF78(struct ProcPrepfx_08679368 *proc)
-{
-asm("\
-	.syntax unified\n\
-	push {r4, lr}\n\
-	adds r4, r0, #0\n\
-	adds r0, #0x34\n\
-	movs r1, #0xc\n\
-	bl InitTextDb\n\
-	adds r0, r4, #0\n\
-	adds r0, #0x3c\n\
-	movs r1, #0xc\n\
-	bl InitTextDb\n\
-	adds r0, r4, #0\n\
-	adds r0, #0x44\n\
-	movs r1, #0xc\n\
-	bl InitText\n\
-	pop {r4}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.syntax divided\n\
-");
-}
-#endif
+void func_fe6_0807CFA0(struct ProcPrepSubItemSubfx *proc) {}
 
-void func_fe6_0807CFA0(struct ProcPrepfx_08679368 *proc) {}
-
-struct ProcPrepfx_08679368 * func_fe6_0807CFA4(ProcPtr parent)
+struct ProcPrepSubItemSubfx * func_fe6_0807CFA4(ProcPtr parent)
 {
 	return SpawnProc(ProcScr_08679368, parent);
 }
@@ -165,7 +147,7 @@ void dummy_0807CFB8(int a, int b, int c)
 	return;
 }
 
-void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 *proc)
+void func_fe6_0807CFBC(struct ProcPrepSubItemfx *proc)
 {
 	proc->timer = 0;
 
@@ -175,7 +157,7 @@ void func_fe6_0807CFBC(struct ProcPrepfx_086793A8 *proc)
 		proc->obj_offset = 0x5000;
 }
 
-void func_fe6_0807CFDC(struct ProcPrepfx_086793A8 *proc)
+void func_fe6_0807CFDC(struct ProcPrepSubItemfx *proc)
 {
 	PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
 	PutSpriteExt(0xB, 0xB0,	   0, Sprite_086792A8, proc->obj_offset / 0x20);
@@ -207,7 +189,7 @@ struct ProcScr CONST_DATA ProcScr_086793A8[] = {
 	PROC_END,
 };
 
-void func_fe6_0807D088(struct ProcPrepfx_086793A8 *proc)
+void func_fe6_0807D088(struct ProcPrepSubItemfx *proc)
 {
 	proc->timer = 0;
 
@@ -217,7 +199,7 @@ void func_fe6_0807D088(struct ProcPrepfx_086793A8 *proc)
 		proc->obj_offset = 0x5000;
 }
 
-void func_fe6_0807D0A8(struct ProcPrepfx_086793A8 *proc)
+void func_fe6_0807D0A8(struct ProcPrepSubItemfx *proc)
 {
 	PutSpriteExt(0xB, OAM1_HFLIP, 0, Sprite_086792B6, proc->obj_offset / 0x20);
 	PutSpriteExt(0xB, 0xB0,	   0, Sprite_086792A8, proc->obj_offset / 0x20);
@@ -259,7 +241,7 @@ struct ProcScr CONST_DATA ProcScr_086793C8[] = {
 	PROC_END,
 };
 
-void func_fe6_0807D180(struct ProcPrepfx_086793A8 *proc)
+void func_fe6_0807D180(struct ProcPrepSubItemfx *proc)
 {
 	proc->timer = 0;
 
@@ -271,7 +253,7 @@ void func_fe6_0807D180(struct ProcPrepfx_086793A8 *proc)
 		proc->obj_offset = 0x5000;
 }
 
-void func_fe6_0807D1AC(struct ProcPrepfx_086793A8 *proc)
+void func_fe6_0807D1AC(struct ProcPrepSubItemfx *proc)
 {
 	PutSpriteExt(0xB, 0x88,	   0, Sprite_086792C4, proc->obj_offset / 0x20);
 
@@ -322,7 +304,7 @@ ProcPtr func_fe6_0807D2E0(ProcPtr parent)
 	return SpawnProc(ProcScr_086793C8, parent);
 }
 
-void func_fe6_0807D2F4(int icon)
+void PrepSubItem_InsertIcon(int icon)
 {
 	u8 i;
 
@@ -338,7 +320,7 @@ void func_fe6_0807D2F4(int icon)
 	}
 }
 
-void func_fe6_0807D338(void)
+void PrepSubItem_ResetIcon(void)
 {
 	int i;
 
@@ -348,17 +330,19 @@ void func_fe6_0807D338(void)
 		gPrepSubMenuIcons[i] = 0xFF;
 }
 
-#if 0
 void func_fe6_0807D358(struct PrepSubItemProc *proc)
 {
 	u16 i, j, k;
-	int icons[ITEMSLOT_INV_COUNT];
-	int bar_disp = proc->menu_scroll_bar_disp_idx;
+	int icons[20];
+	u16 bar_disp = proc->menu_scroll_bar_disp_idx / 0x10;
 	struct Unit *unit = proc->units[0];
 	u16 item_amt = GetUnitItemCount(unit);
 
-	for (j = 0, i = 0; i < item_amt; j++, i++)
+	j = 0;
+	for (i = 0; i < item_amt; i++) {
 		icons[j] = GetItemIcon(unit->items[i]);
+		j++;
+	}
 
 	if (gPrepMenuScrollPos != 0) {
 		icons[j] = ICON_ITEM_KIND_BASE + GetItemKind(gPrepItemListData[
@@ -367,34 +351,137 @@ void func_fe6_0807D358(struct PrepSubItemProc *proc)
 		j++;
 	}
 
+	if (bar_disp != 0)
+		bar_disp--;
+
 	for (i = bar_disp; (i < (bar_disp + 9)); i++) {
-		if (i > gPrepMenuScrollPos)
+		if (i >= gPrepMenuScrollPos)
 			break;
 
 		icons[j] = GetItemIcon(gPrepItemListData[i].u.info.item);
 		j++;
 	}
 
-	for (; j < 20; j++) {
+	for (; j < 20; j++)
 		icons[j] = 0xFF;
-	}
 
-	for (j = 0; j < 20; j++) {
-		if (gPrepSubMenuIcons[j] == 0xFF)
+	for (i = 0; i < 20; i++) {
+		i8 used;
+
+		if (gPrepSubMenuIcons[i] == 0xFF)
 			continue;
 
-		i = 0;
+		used = false;
+
 		for (k = 0; k < 20; k++) {
-			if (gPrepSubMenuIcons[j] == icons[k]) {
-				i = 1;
+			if (gPrepSubMenuIcons[i] == icons[k]) {
+				used = true;
 				break;
 			}
 		}
 
-		if (i != false) {
-			ClearIcon(gPrepSubMenuIcons[j]);
-			gPrepSubMenuIcons[j] = 0xFF;
+		if (used == false) {
+			ClearIcon(gPrepSubMenuIcons[i]);
+			gPrepSubMenuIcons[i] = 0xFF;
 		}
 	}
+}
+
+void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc)
+{
+	struct ProcPrepSubItemSubfx *subproc = proc->procfx;
+
+	ClearText(&subproc->texts[0]);
+	ClearText(&subproc->texts[1]);
+	ClearText(&subproc->texts[2]);
+
+	if (gPrepMenuScrollPos == 0) {
+		TmFillRect(gBg0Tm, 0xE, 0x13, 0);
+		TmFillRect(gBg1Tm, 0xE, 0x13, 0);
+	} else {
+		int i;
+		const char *str;
+		struct Text *text;
+		int iy;
+		int tm_offset;
+
+		PutUiWindowFrame(x, y, 0xE, 8, 0);
+
+		switch (GetItemKind(item)) {
+		case ITEM_KIND_ITEM:
+		case ITEM_KIND_STAFF:
+		case ITEM_KIND_DRAGONSTONE:
+			str = DecodeMsg(GetItemUseDescMsg(item));
+			iy  = y + 1;
+			text = &subproc->texts[0];
+			tm_offset = TM_OFFSET(x + 1, iy);
+
+			for (;;) {
+				PrepPutText(
+					text, (u16 *)(gBg0Tm + tm_offset),
+					TEXT_COLOR_SYSTEM_WHITE,
+					0, str);
+
+				str = GetStringLineEnd(str);
+				if (*str == '\0')
+					break;
+
+				str++, tm_offset += TM_OFFSET(0, 1) * 2, text++;
+			}
+			break;
+
+		default:
+			Text_InsertDrawString(&subproc->texts[2], 0,    TEXT_COLOR_SYSTEM_WHITE, String_Prep_0832726C); // affin 属性
+			Text_InsertDrawString(&subproc->texts[0], 2,    TEXT_COLOR_SYSTEM_WHITE, String_Prep_08327274); // wt 威力
+			Text_InsertDrawString(&subproc->texts[1], 2,    TEXT_COLOR_SYSTEM_WHITE, String_Prep_0832727C); // hit 命中
+			Text_InsertDrawString(&subproc->texts[0], 0x32, TEXT_COLOR_SYSTEM_WHITE, String_Prep_08327284); // crit 必殺
+			Text_InsertDrawString(&subproc->texts[1], 0x32, TEXT_COLOR_SYSTEM_WHITE, String_Prep_0832728C); // mt 重さ
+
+			PutText(&subproc->texts[0], gBg0Tm + TM_OFFSET(x + 1, y + 3));
+			PutText(&subproc->texts[2], gBg0Tm + TM_OFFSET(x + 5, y + 1));
+			PutText(&subproc->texts[1], gBg0Tm + TM_OFFSET(x + 1, y + 5));
+
+			PutNumber(gBg0Tm + TM_OFFSET(x + 5,  y + 3), TEXT_COLOR_SYSTEM_BLUE, GetItemMight(item));
+			PutNumber(gBg0Tm + TM_OFFSET(x + 5,  y + 5), TEXT_COLOR_SYSTEM_BLUE, GetItemHit(item));
+			PutNumber(gBg0Tm + TM_OFFSET(x + 11, y + 3), TEXT_COLOR_SYSTEM_BLUE, GetItemCrit(item));
+			PutNumber(gBg0Tm + TM_OFFSET(x + 11, y + 5), TEXT_COLOR_SYSTEM_BLUE, GetItemWeight(item));
+			PutIcon(gBg0Tm + TM_OFFSET(x + 7, y + 1), GetItemKind(item) + ICON_ITEM_KIND_BASE, OAM2_PAL(BGPAL_PREPMENU_AFFIN_ICON));
+			PrepSubItem_InsertIcon(GetItemKind(item) + ICON_ITEM_KIND_BASE);
+			break;
+		}
+	}
+
+	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
+}
+
+// https://decomp.me/scratch/Y15nV
+#if 0
+void func_fe6_0807D6C0(u8 index, struct Unit *unit)
+{
+	u8 i, item_count = GetUnitItemCount(unit);
+
+	for (i = 0; i < ITEMSLOT_INV_COUNT; i++) {
+		ClearText(&gPrepTexts1[index * 10 + i]);
+		TmFillRect(gBg0Tm + TM_OFFSET(0x11, 4) + TM_OFFSET(0, i) + index * 14, 11, 1, 0);
+	}
+
+	for (i = 0; i < ITEMSLOT_INV_COUNT && i < item_count; i++) {
+		bool usable = !!IsItemDisplayUsable(unit, unit->items[i]);
+		struct Text *text = &gPrepTexts1[index * 10 + i];
+
+		Text_SetColor(text, usable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
+		Text_SetCursor(text, 0);
+		Text_DrawString(text, GetItemName(unit->items[i]));
+		PutText(text, gBg0Tm + TM_OFFSET(4, i * 2 + 9) + index * 14);
+		PutNumberOrBlank(
+			gBg0Tm + TM_OFFSET(13, i * 2 + 9) + index * 14,
+			(usable == false) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_BLUE,
+			GetItemUses(unit->items[i]));
+
+		PutIcon(gBg0Tm + TM_OFFSET(2, i * 2 + 9)  + index * 14, GetItemIcon(unit->items[i]), OAM2_PAL(BGPAL_PREPMENU_ICON));
+		PrepSubItem_InsertIcon(GetItemIcon(unit->items[i]));
+	}
+
+	EnableBgSync(BG0_SYNC_BIT);
 }
 #endif

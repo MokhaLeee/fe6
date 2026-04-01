@@ -1,23 +1,23 @@
 	.section .rodata
 
-	.global gUnk_0832726C
-gUnk_0832726C: @ 0832726C
+	.global String_Prep_0832726C
+String_Prep_0832726C: @ 0832726C
 	.incbin "fe6-base.gba", 0x32726C, (0x327274 - 0x32726C) @ length: 0008
 
-	.global gUnk_08327274
-gUnk_08327274: @ 08327274
+	.global String_Prep_08327274
+String_Prep_08327274: @ 08327274
 	.incbin "fe6-base.gba", 0x327274, (0x32727C - 0x327274) @ length: 0008
 
-	.global gUnk_0832727C
-gUnk_0832727C: @ 0832727C
+	.global String_Prep_0832727C
+String_Prep_0832727C: @ 0832727C
 	.incbin "fe6-base.gba", 0x32727C, (0x327284 - 0x32727C) @ length: 0008
 
-	.global gUnk_08327284
-gUnk_08327284: @ 08327284
+	.global String_Prep_08327284
+String_Prep_08327284: @ 08327284
 	.incbin "fe6-base.gba", 0x327284, (0x32728C - 0x327284) @ length: 0008
 
-	.global gUnk_0832728C
-gUnk_0832728C: @ 0832728C
+	.global String_Prep_0832728C
+String_Prep_0832728C: @ 0832728C
 	.incbin "fe6-base.gba", 0x32728C, (0x327294 - 0x32728C) @ length: 0008
 
 	.global String_Prep_08327294
