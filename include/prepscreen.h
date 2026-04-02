@@ -175,6 +175,8 @@ extern u8 gPrepMenuItemCnt;
 extern struct Text gPrepTexts1[10];
 extern struct Text gPrepTexts3[2];
 
+extern u16 gPrepPageItemTable[];
+
 struct PrepItemListEnt {
     union {
         struct {
@@ -358,7 +360,7 @@ void PrepSubItem_ResetIcon(void);
 void func_fe6_0807D358(struct PrepSubItemProc *proc);
 void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc);
 void func_fe6_0807D6C0(u8 index, struct Unit *unit);
-void func_fe6_0807D834(int convoy_page);
+void func_fe6_0807D834(u8 convoy_page);
 void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused);
 void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit);
 void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y);
@@ -630,7 +632,7 @@ extern CONST_DATA u16 Sprite_086792B6[];
 extern CONST_DATA u16 Sprite_086792C4[];
 extern CONST_DATA u16 Sprite_08679326[];
 extern u16 CONST_DATA *Sprites_08679330[];
-extern u8 CONST_DATA gUnk_08679354[20];
+extern u8 CONST_DATA PrepItemKindRefTable[20];
 extern struct ProcScr ProcScr_08679368[];
 extern struct ProcScr ProcScr_08679388[];
 extern struct ProcScr ProcScr_086793A8[];

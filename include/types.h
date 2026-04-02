@@ -82,6 +82,11 @@ struct Vec4i
     int x, y;
 };
 
+struct Vec1u
+{
+    u8 x, y;
+};
+
 // Forward decls for common types
 // TODO: move
 

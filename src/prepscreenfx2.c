@@ -19,6 +19,33 @@
 extern const char String_Prep_08327294[];
 extern const char Msg_Prep_Supply[]; // 輸送隊
 
+#if 0
+void func_fe6_0807D834(u8 kind)
+{
+	int i, j;
+
+	gPrepMenuScrollPos = 0;
+
+	for (i = 0; i < gPrepAllItemsCount; i++) {
+		u8 ikind = GetItemKind(gPrepItemListData[i].u.info.item);
+
+		if (ikind >= PrepItemKindRefTable[kind * 2 + 0] && ikind <= PrepItemKindRefTable[kind * 2 + 1]) {
+			gPrepPageItemTable[gPrepMenuScrollPos] = gPrepItemListData[i].u.info.item;
+			gPrepMenuScrollPos++;
+		}
+	}
+
+	for (j = 1; ; j = j * 3 + 1) {
+		u16 tmp = gPrepMenuScrollPos / 3;
+
+		if (j > tmp)
+			break;
+	}
+
+	for (; i > 0; i = i - j) {}
+}
+#endif
+
 void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused)
 {
 	u16 i;
@@ -159,7 +186,7 @@ void func_fe6_0807DEC8(struct PrepSubItemProc *proc, u16 item)
 	kind = GetItemKind(item);
 
 	for (i = 0; i < 9; i++) {
-		if ((kind == gUnk_08679354[i * 2 + 0]) || (kind == gUnk_08679354[i * 2 + 1]))
+		if ((kind == PrepItemKindRefTable[i * 2 + 0]) || (kind == PrepItemKindRefTable[i * 2 + 1]))
 			break;
 	}
 

@@ -107,10 +107,11 @@ u16 CONST_DATA * Sprites_08679330[] = {
 	Sprite_0867931E,
 };
 
-u8 CONST_DATA gUnk_08679354[20] = {
+u8 CONST_DATA PrepItemKindRefTable[20] = {
 	0, 0, 1, 1, 2, 2,
 	3, 3, 4, 4, 5, 5,
-	6, 6, 7, 7, 9, 11,
+	6, 6, 7, 7,
+	ITEM_KIND_ITEM, ITEM_KIND_DRAGONSTONE,
 	0, 0
 };
 
@@ -461,13 +462,15 @@ void func_fe6_0807D6C0(u8 index, struct Unit *unit)
 	u8 i, item_count = GetUnitItemCount(unit);
 
 	for (i = 0; i < ITEMSLOT_INV_COUNT; i++) {
-		ClearText(&gPrepTexts1[index * 10 + i]);
-		TmFillRect(gBg0Tm + TM_OFFSET(0x11, 4) + TM_OFFSET(0, i) + index * 14, 11, 1, 0);
+		struct Text *text = &gPrepTexts1[i + index * 10];
+
+		ClearText(text);
+		TmFillRect(gBg0Tm + i * 0x40 + 0x122 + index * 14, 11, 1, 0);
 	}
 
-	for (i = 0; i < ITEMSLOT_INV_COUNT && i < item_count; i++) {
+	for (i = 0; (i < ITEMSLOT_INV_COUNT) && (i < item_count); i++) {
 		bool usable = !!IsItemDisplayUsable(unit, unit->items[i]);
-		struct Text *text = &gPrepTexts1[index * 10 + i];
+		struct Text *text = &gPrepTexts1[i + index * 10];
 
 		Text_SetColor(text, usable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
 		Text_SetCursor(text, 0);
@@ -475,7 +478,7 @@ void func_fe6_0807D6C0(u8 index, struct Unit *unit)
 		PutText(text, gBg0Tm + TM_OFFSET(4, i * 2 + 9) + index * 14);
 		PutNumberOrBlank(
 			gBg0Tm + TM_OFFSET(13, i * 2 + 9) + index * 14,
-			(usable == false) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_BLUE,
+			(usable) ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
 			GetItemUses(unit->items[i]));
 
 		PutIcon(gBg0Tm + TM_OFFSET(2, i * 2 + 9)  + index * 14, GetItemIcon(unit->items[i]), OAM2_PAL(BGPAL_PREPMENU_ICON));

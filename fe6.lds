@@ -78,7 +78,7 @@ SECTIONS
         . = 0x0155E8; gPrepTexts1 = .;
         . = 0x015688; gPrepTexts3 = .;
         . = 0x015698; gPrepSubMenuIcons = .;
-        . = 0x0156E8; gPrepTexts4 = .;
+        . = 0x0156E8; gPrepPageItemTable = .;
         . = 0x015D28; gPrepItemListData = .;
         . = 0x016368; gPrepAllItemsCount = .;
         . = 0x01636A; gPrepMenuScrollPos = .;
