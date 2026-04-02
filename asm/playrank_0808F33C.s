@@ -3932,7 +3932,7 @@ Ending_DrawPInfoTitle: @ 0x080920B4
 	cmp r4, #0
 	bne .L08092128
 	ldr r4, .L08092118 @ =gBg1Tm
-	ldr r1, .L0809211C @ =gUnk_083461C4
+	ldr r1, .L0809211C @ =Tsa_GameRank_083461C4
 	movs r5, #0x86
 	lsls r5, r5, #7
 	adds r0, r4, #0
@@ -3941,22 +3941,22 @@ Ending_DrawPInfoTitle: @ 0x080920B4
 	movs r1, #0xd1
 	lsls r1, r1, #1
 	adds r0, r4, r1
-	ldr r1, .L08092120 @ =gUnk_08346330
+	ldr r1, .L08092120 @ =Tsa_GameRank_08346330
 	adds r2, r5, #0
 	bl TmApplyTsa_thm
 	movs r0, #0x98
 	lsls r0, r0, #3
 	adds r4, r4, r0
-	ldr r1, .L08092124 @ =gUnk_083463B4
+	ldr r1, .L08092124 @ =Tsa_GameRank_083463B4
 	adds r0, r4, #0
 	adds r2, r5, #0
 	bl TmApplyTsa_thm
 	b .L0809213E
 	.align 2, 0
 .L08092118: .4byte gBg1Tm
-.L0809211C: .4byte gUnk_083461C4
-.L08092120: .4byte gUnk_08346330
-.L08092124: .4byte gUnk_083463B4
+.L0809211C: .4byte Tsa_GameRank_083461C4
+.L08092120: .4byte Tsa_GameRank_08346330
+.L08092124: .4byte Tsa_GameRank_083463B4
 .L08092128:
 	mov r1, sb
 	lsls r0, r1, #5
@@ -3964,7 +3964,7 @@ Ending_DrawPInfoTitle: @ 0x080920B4
 	lsls r0, r0, #1
 	ldr r1, .L0809225C @ =gBg1Tm
 	adds r0, r0, r1
-	ldr r1, .L08092260 @ =gUnk_083463F4
+	ldr r1, .L08092260 @ =Tsa_GameRank_083463F4
 	movs r2, #0x86
 	lsls r2, r2, #7
 	bl TmApplyTsa_thm
@@ -3997,6 +3997,7 @@ Ending_DrawPInfoTitle: @ 0x080920B4
 	movs r2, #0
 	adds r3, r6, #0
 	bl PutDrawText
+
 	ldr r0, [r7]
 	ldrh r0, [r0]
 	bl DecodeMsg
@@ -4021,6 +4022,7 @@ Ending_DrawPInfoTitle: @ 0x080920B4
 	movs r2, #0
 	adds r3, r6, #0
 	bl PutDrawText
+
 	add r0, sp, #8
 	movs r1, #0xf
 	bl InitText
@@ -4033,6 +4035,7 @@ Ending_DrawPInfoTitle: @ 0x080920B4
 	adds r1, r1, r5
 	add r0, sp, #8
 	bl PutText
+
 	mov r0, sl
 	ldrh r0, [r0, #0xa]
 	lsls r3, r0, #0x12
@@ -4095,7 +4098,7 @@ Ending_DrawPInfoTitle: @ 0x080920B4
 	bx r0
 	.align 2, 0
 .L0809225C: .4byte gBg1Tm
-.L08092260: .4byte gUnk_083463F4
+.L08092260: .4byte Tsa_GameRank_083463F4
 .L08092264: .4byte gPersonEndingInfo
 .L08092268: .4byte gBg0Tm
 .L0809226C: .4byte 0x000009C6

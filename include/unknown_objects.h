@@ -422,10 +422,10 @@ extern u16 const Pal_Ending_CopyRight[];
 extern u16 const Tsa_EndingPInfoBG[];
 // extern const ??? gUnk_08345934
 // extern const ??? gUnk_08346184
-// extern const ??? gUnk_083461C4
-// extern const ??? gUnk_08346330
-// extern const ??? gUnk_083463B4
-// extern const ??? gUnk_083463F4
+extern u8 const Tsa_GameRank_083461C4[];
+extern u8 const Tsa_GameRank_08346330[];
+extern u8 const Tsa_GameRank_083463B4[];
+extern u8 const Tsa_GameRank_083463F4[];
 // extern const ??? gUnk_08346574
 extern u8 const Img_MonologueText[];
 extern u16 const Pal_MonologueText[];
@@ -436,20 +436,20 @@ extern u8 const Img_08352160[];
 extern u16 const Pal_EndingMonologueText[];
 extern const int gUnk_08353328[];
 // extern const ??? gUnk_08354728
-// extern const ??? Pal_OpInfoViewLetters
-// extern const ??? Img_OpInfoViewLettersB
-// extern const ??? Img_OpInfoViewLettersA
-// extern const ??? Img_OpInfoViewIcon
-// extern const ??? Pal_OpInfoViewIcon
-// extern const ??? gUnk_0835A3E8
-// extern const ??? gUnk_0835A5D0
-// extern const ??? gUnk_0835A5F0
-// extern const ??? gUnk_0835AB08
-// extern const ??? gUnk_0835AB28
+extern u16 const Pal_OpInfoViewLetters[];
+extern u8 const Img_OpInfoViewLettersB[];
+extern u8 const Img_OpInfoViewLettersA[];
+extern u8 const Img_OpInfoViewIcon[];
+extern u16 const Pal_OpInfoViewIcon[];
+extern u8 const Img_Op_0835A3E8[];
+extern u16 const Pal_Op_0835A5D0[];
+extern u8 const Tsa_Op_0835A5F0[];
+extern u16 const Pal_Op_0835AB08[];
+extern u8 const Tsa_Op_0835AB28[];
 // extern const ??? gUnk_0835B040
 // extern const ??? gUnk_0835C034
 // extern const ??? OpInfoClassIntroMsgs
-// extern const ??? Str_OpInfo_Mag
+extern char const Str_OpInfo_Mag[];
 // extern const ??? gUnk_0835C829
 extern const char String_ShopGoldG[];
 extern const char String_Shop_0835CA78[];

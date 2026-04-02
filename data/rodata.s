@@ -196,20 +196,20 @@ gUnk_08345934: @ 08345934
 gUnk_08346184: @ 08346184
 	.incbin "fe6-base.gba", 0x346184, (0x3461C4 - 0x346184) @ length: 0040
 
-	.global gUnk_083461C4
-gUnk_083461C4: @ 083461C4
+	.global Tsa_GameRank_083461C4
+Tsa_GameRank_083461C4: @ 083461C4
 	.incbin "fe6-base.gba", 0x3461C4, (0x346330 - 0x3461C4) @ length: 016C
 
-	.global gUnk_08346330
-gUnk_08346330: @ 08346330
+	.global Tsa_GameRank_08346330
+Tsa_GameRank_08346330: @ 08346330
 	.incbin "fe6-base.gba", 0x346330, (0x3463B4 - 0x346330) @ length: 0084
 
-	.global gUnk_083463B4
-gUnk_083463B4: @ 083463B4
+	.global Tsa_GameRank_083463B4
+Tsa_GameRank_083463B4: @ 083463B4
 	.incbin "fe6-base.gba", 0x3463B4, (0x3463F4 - 0x3463B4) @ length: 0040
 
-	.global gUnk_083463F4
-gUnk_083463F4: @ 083463F4
+	.global Tsa_GameRank_083463F4
+Tsa_GameRank_083463F4: @ 083463F4
 	.incbin "fe6-base.gba", 0x3463F4, (0x346574 - 0x3463F4) @ length: 0180
 
 	.global gUnk_08346574

@@ -178,6 +178,15 @@ struct ProcPlayRank {
 	i16 unk_30;
 };
 
+struct PidEndingInfo {
+	/* 00 */ u16 msg_00;
+	/* 02 */ u16 msg_02;
+	/* 04 */ u16 msg_04;
+	/* 06 */ u16 msg_06;
+};
+
+extern CONST_DATA struct PidEndingInfo gPersonEndingInfo[];
+
 void PlayRank_InitTexts(void);
 int PlayRank_ChapterTurns_DrawBase(struct Text *text, int chapter_gaiden, u8 centered);
 bool PlayRank_ChapterTurns_DrawTurn(int line);
@@ -345,4 +354,4 @@ extern CONST_DATA struct ProcScr ProcScr_0868BEEC[];
 extern CONST_DATA struct ProcScr ProcScr_0868BF14[];
 extern CONST_DATA struct ProcScr ProcScr_EndingPInfo2[];
 extern CONST_DATA struct ProcScr ProcScr_EndingPInfoFadeOut[];
-// extern CONST_DATA ??? gPersonEndingInfo
+

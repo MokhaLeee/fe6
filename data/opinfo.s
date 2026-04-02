@@ -110,28 +110,28 @@ Sprites_OpInfo_08690288: @ 08690288
 gUnk_0869056C: @ 0869056C
 	.incbin "fe6-base.gba", 0x69056C, (0x69058C - 0x69056C) @ length: 0020
 
-	.global gUnk_0869058C
-gUnk_0869058C: @ 0869058C
+	.global OpClassDemo_BIDs
+OpClassDemo_BIDs: @ 0869058C
 	.incbin "fe6-base.gba", 0x69058C, (0x6905B0 - 0x69058C) @ length: 0024
 
-	.global gUnk_086905B0
-gUnk_086905B0: @ 086905B0
+	.global OpClassDemo_IntroMsgs
+OpClassDemo_IntroMsgs: @ 086905B0
 	.incbin "fe6-base.gba", 0x6905B0, (0x6905F8 - 0x6905B0) @ length: 0048
 
 	.global gUnk_086905F8
 gUnk_086905F8: @ 086905F8
 	.incbin "fe6-base.gba", 0x6905F8, (0x6909A4 - 0x6905F8) @ length: 03AC
 
-	.global gUnk_086909A4
-gUnk_086909A4: @ 086909A4
+	.global OpClassDemo_MagiConfig
+OpClassDemo_MagiConfig: @ 086909A4
 	.incbin "fe6-base.gba", 0x6909A4, (0x690A53 - 0x6909A4) @ length: 00AF
 
-	.global gUnk_08690A53
-gUnk_08690A53: @ 08690A53
+	.global OpClassDemo_TerrainConfig
+OpClassDemo_TerrainConfig: @ 08690A53
 	.incbin "fe6-base.gba", 0x690A53, (0x690A99 - 0x690A53) @ length: 0046
 
-	.global gClassDemoData
-gClassDemoData: @ 08690A99
+	.global OpClassDemo_JidConfig
+OpClassDemo_JidConfig: @ 08690A99
 	.incbin "fe6-base.gba", 0x690A99, (0x690C14 - 0x690A99) @ length: 017B
 
 	.global gUnk_08690C14

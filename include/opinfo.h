@@ -24,8 +24,6 @@ struct ClassDemoData {
 	u8 jids_31[8];
 };
 
-extern CONST_DATA struct ClassDemoData *gClassDemoData;
-
 enum OpInfoProcLabel {
 	PL_OPINFO_BRANMCH = 1,
 	PL_OPINFO_IDLE = 2,
@@ -106,6 +104,22 @@ ProcPtr NewOpInfoEnter(struct ProcOpInfo *proc, int a);
 
 struct ProcClassInfoDisp {
 	PROC_HEADER;
+
+	/* 2A */ u16 unk_2A;
+	/* 2C */ u16 unk_2C;
+	/* 2E */ u16 unk_2E;
+	/* 30 */ u8 unk_30;
+	/* 31 */ u8 unk_31;
+
+	STRUCT_PAD(0x32, 0x38);
+
+	/* 38 */ u8 unit_status[6];
+	/* 3E */ u8 unk_3E;
+
+	STRUCT_PAD(0x3F, 0x40);
+
+	/* 40 */ ProcPtr proc40;
+	/* 44 */ u8 unk_44;
 };
 
 void HBlank_ClassInfoDisp(void);
@@ -120,7 +134,7 @@ ProcPtr StartClassAnimDisplay(struct ProcOpInfo *proc, int index);
 // func_fe6_08095AE0
 // func_fe6_08095BCC
 // func_fe6_08095D28
-// func_fe6_08095D2C
+ProcPtr func_fe6_08095D2C(ProcPtr parent);
 // func_fe6_08095D40
 // func_fe6_08095D48
 // func_fe6_08095D58
@@ -140,11 +154,19 @@ extern CONST_DATA u16 Sprite_OpInfo_086900F8[];
 extern CONST_DATA u16 Sprite_OpInfo_08690100[];
 extern CONST_DATA u16 *Sprites_OpInfo_08690288[];
 extern CONST_DATA u8 gUnk_0869056C[][4];
-// extern CONST_DATA ??? gUnk_0869058C
-// extern CONST_DATA ??? gUnk_086905B0
+extern CONST_DATA u8 OpClassDemo_BIDs[];
+extern CONST_DATA u16 OpClassDemo_IntroMsgs[];
 // extern CONST_DATA ??? gUnk_086905F8
-// extern CONST_DATA ??? gUnk_086909A4
-// extern CONST_DATA ??? gUnk_08690A53
-// extern CONST_DATA ??? gClassDemoData
+
+struct OpEkrMagiConf {
+	i8 efxmagi_id;
+	i8 x_bg, y_bg;
+	i8 x_ob, y_ob;
+};
+// extern CONST_DATA struct OpEkrMagiConf OpClassDemo_MagiConfig[];
+extern CONST_DATA i8 OpClassDemo_MagiConfig[];
+
+extern CONST_DATA u8 OpClassDemo_TerrainConfig[];
+extern CONST_DATA u8 OpClassDemo_JidConfig[];
 // extern CONST_DATA ??? gUnk_08690C14
 // extern CONST_DATA ??? gUnk_08690D44

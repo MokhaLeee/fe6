@@ -21,11 +21,11 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	ldm r0!, {r2, r3, r6}
 	stm r1!, {r2, r3, r6}
 	movs r6, #4
-	ldr r4, .L0809535C @ =gClassDemoData
+	ldr r4, .L0809535C @ =OpClassDemo_JidConfig
 	b .L08095362
 	.align 2, 0
 .L08095358: .4byte OpInfoClassIntroMsgs
-.L0809535C: .4byte gClassDemoData
+.L0809535C: .4byte OpClassDemo_JidConfig
 .L08095360:
 	adds r6, #1
 .L08095362:
@@ -46,6 +46,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	movs r2, #1
 	str r2, [sp, #0x1c]
 .L08095384:
+
 	movs r0, #0
 	strh r0, [r7, #0x2a]
 	strh r0, [r7, #0x2c]
@@ -66,6 +67,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	ldr r0, .L080953F4 @ =gBg2Tm
 	movs r1, #0
 	bl TmFill
+
 	mov r3, sl
 	ldrb r0, [r3]
 	cmp r0, #0
@@ -75,6 +77,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	mov r8, r4
 	adds r5, r7, #0
 	adds r5, #0x30
+
 	ldr r4, .L080953FC @ =gDispIo
 	adds r6, r7, #0
 	adds r6, #0x38
@@ -139,11 +142,13 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	adds r0, r6, #1
 	strh r0, [r7, #0x2e]
 .L08095448:
+
 	ldrh r1, [r7, #0x2e]
 	lsls r0, r1, #2
 	add r0, r8
 	ldrb r0, [r0]
 	strb r0, [r5]
+
 	movs r0, #2
 	rsbs r0, r0, #0
 	ldrb r2, [r4, #1]
@@ -158,8 +163,10 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	subs r1, #8
 	ands r0, r1
 	strb r0, [r4, #1]
+
 	bl ResetTextFont
 	bl ResetText
+
 	movs r1, #4
 	rsbs r1, r1, #0
 	adds r0, r1, #0
@@ -181,6 +188,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	ldrb r1, [r4, #0x18]
 	orrs r0, r1
 	strb r0, [r4, #0x18]
+
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -206,30 +214,30 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	adds r1, r1, r5
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L080955F4 @ =gUnk_0835AB08
+	ldr r0, .L080955F4 @ =Pal_Op_0835AB08
 	movs r1, #0xa0
 	lsls r1, r1, #1
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, .L080955F8 @ =gBg3Tm
-	ldr r1, .L080955FC @ =gUnk_0835AB28
+	ldr r1, .L080955FC @ =Tsa_Op_0835AB28
 	movs r2, #0xa0
 	lsls r2, r2, #8
 	bl TmApplyTsa_thm
-	ldr r4, .L08095600 @ =gUnk_0835A3E8
+	ldr r4, .L08095600 @ =Img_Op_0835A3E8
 	movs r0, #2
 	bl GetBgChrOffset
 	adds r1, r0, #0
 	adds r1, r1, r5
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L08095604 @ =gUnk_0835A5D0
+	ldr r0, .L08095604 @ =Pal_Op_0835A5D0
 	movs r1, #0x90
 	lsls r1, r1, #1
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, .L08095608 @ =gBg2Tm
-	ldr r1, .L0809560C @ =gUnk_0835A5F0
+	ldr r1, .L0809560C @ =Tsa_Op_0835A5F0
 	movs r2, #0x90
 	lsls r2, r2, #8
 	bl TmApplyTsa_thm
@@ -239,7 +247,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	adds r0, r5, #0
 	movs r1, #0
 	bl TmFill
-	ldr r4, .L08095614 @ =gClassDemoData
+	ldr r4, .L08095614 @ =OpClassDemo_JidConfig
 	mov r2, sl
 	ldrb r2, [r2]
 	adds r0, r2, r4
@@ -288,14 +296,18 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	ldrb r0, [r0, #0x10]
 	ldr r1, [sp, #0x34]
 	strb r0, [r1]
+
 	movs r6, #0
-	ldr r2, .L08095618 @ =0x0200FF24
+	ldr r2, .L08095618 @ =OpClassDemoTexts
 	str r2, [sp, #0x20]
+
 	movs r3, #0x4a
 	adds r3, r3, r5
 	mov sb, r3
+
 	adds r5, #0x42
 	mov r8, r5
+
 	adds r4, r2, #0
 	add r5, sp, #4
 .L080955B2:
@@ -324,16 +336,16 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 .L080955E8: .4byte gUnk_086905F8
 .L080955EC: .4byte gDispIo
 .L080955F0: .4byte Img_MonologueBG
-.L080955F4: .4byte gUnk_0835AB08
+.L080955F4: .4byte Pal_Op_0835AB08
 .L080955F8: .4byte gBg3Tm
-.L080955FC: .4byte gUnk_0835AB28
-.L08095600: .4byte gUnk_0835A3E8
-.L08095604: .4byte gUnk_0835A5D0
+.L080955FC: .4byte Tsa_Op_0835AB28
+.L08095600: .4byte Img_Op_0835A3E8
+.L08095604: .4byte Pal_Op_0835A5D0
 .L08095608: .4byte gBg2Tm
-.L0809560C: .4byte gUnk_0835A5F0
+.L0809560C: .4byte Tsa_Op_0835A5F0
 .L08095610: .4byte gBg0Tm
-.L08095614: .4byte gClassDemoData
-.L08095618: .4byte 0x0200FF24
+.L08095614: .4byte OpClassDemo_JidConfig
+.L08095618: .4byte OpClassDemoTexts
 .L0809561C: .4byte Str_OpInfo_Mag
 .L08095620:
 	ldr r1, [r5]
@@ -369,7 +381,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	bl SetInitTalkTextFont
 	bl ClearTalkText
 	bl EndTalk
-	ldr r1, .L08095800 @ =gUnk_086905B0
+	ldr r1, .L08095800 @ =OpClassDemo_IntroMsgs
 	mov r3, sl
 	ldrb r3, [r3]
 	lsls r0, r3, #1
@@ -392,22 +404,25 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	bl SetTalkFlag
 	movs r0, #4
 	bl SetTalkPrintDelay
-	ldr r0, .L08095804 @ =0x02000400
+	ldr r0, .L08095804 @ =OpEkrMiniDesc
 	movs r2, #0
 	movs r1, #0x82
 	lsls r1, r1, #1
 	strh r1, [r0, #2]
 	movs r1, #0x58
 	strh r1, [r0, #4]
-	ldr r1, .L08095808 @ =gUnk_0869058C
+
+	ldr r1, .L08095808 @ =OpClassDemo_BIDs
 	mov r4, sl
 	ldrb r4, [r4]
 	adds r1, r4, r1
 	ldrb r1, [r1]
 	strh r1, [r0, #6]
+
 	movs r1, #6
 	strh r1, [r0, #8]
 	strb r2, [r0, #1]
+
 	movs r4, #1
 	strh r4, [r0, #0xa]
 	movs r1, #0xc0
@@ -415,17 +430,18 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	strh r1, [r0, #0xc]
 	movs r1, #2
 	strh r1, [r0, #0xe]
-	ldr r1, .L0809580C @ =0x02000434
+	ldr r1, .L0809580C @ =OpEkrMini_ImgBuf
 	str r1, [r0, #0x18]
-	ldr r1, .L08095810 @ =0x02002434
+	ldr r1, .L08095810 @ =OpEkrMini_OamBuf
 	str r1, [r0, #0x20]
-	ldr r1, .L08095814 @ =0x02007C34
+	ldr r1, .L08095814 @ =OpEkrMini_PalBuf
 	str r1, [r0, #0x1c]
-	ldr r1, .L08095818 @ =0x02007CD4
+	ldr r1, .L08095818 @ =OpEkrMini_ScrBuf
 	str r1, [r0, #0x24]
-	ldr r2, .L0809581C @ =0x0200A6D4
+	ldr r2, .L0809581C @ =OpEkrMagiDesc
 	str r2, [r0, #0x2c]
-	ldr r3, .L08095820 @ =gUnk_086909A4
+
+	ldr r3, .L08095820 @ =OpClassDemo_MagiConfig
 	mov r6, sl
 	ldrb r6, [r6]
 	lsls r1, r6, #2
@@ -461,6 +477,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
 	strh r1, [r2, #4]
+
 	mov r6, sl
 	ldrb r6, [r6]
 	lsls r1, r6, #2
@@ -473,6 +490,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
 	strh r1, [r2, #6]
+
 	mov r6, sl
 	ldrb r6, [r6]
 	lsls r1, r6, #2
@@ -485,6 +503,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
 	strh r1, [r2, #8]
+
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	strh r1, [r2, #0xe]
@@ -496,23 +515,25 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	strh r4, [r2, #0x12]
 	ldr r1, .L08095824 @ =gBg1Tm
 	str r1, [r2, #0x14]
-	ldr r1, .L08095828 @ =0x0200A6FC
+	ldr r1, .L08095828 @ =OpEkrMagi_BgImgBuf
 	str r1, [r2, #0x18]
-	ldr r1, .L0809582C @ =0x0200C6FC
+	ldr r1, .L0809582C @ =OpEkrMagi_BgTsaBuf
 	str r1, [r2, #0x1c]
-	ldr r1, .L08095830 @ =0x0200CEFC
+	ldr r1, .L08095830 @ =OpEkrMagi_ObImgBuf
 	str r1, [r2, #0x20]
 	ldr r1, .L08095834 @ =OpInfo_EfxmagicMiniCallBack
 	str r1, [r2, #0x24]
 	bl NewEkrUnitMainMini
-	ldr r4, .L08095838 @ =0x0200DEFC
-	ldr r1, .L0809583C @ =gUnk_08690A53
+
+	ldr r4, .L08095838 @ =OpEkrTerrainDesc
+	ldr r1, .L0809583C @ =OpClassDemo_TerrainConfig
 	mov r2, sl
 	ldrb r2, [r2]
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrb r0, [r0]
 	strh r0, [r4]
+
 	movs r0, #0xa
 	strh r0, [r4, #2]
 	movs r0, #0xe0
@@ -525,6 +546,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	adds r0, r0, r1
 	ldrb r0, [r0]
 	strh r0, [r4, #6]
+
 	movs r0, #0xb
 	strh r0, [r4, #8]
 	movs r0, #0xf0
@@ -535,7 +557,7 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	strh r0, [r4, #0xe]
 	ldr r0, .L08095844 @ =0x06010000
 	str r0, [r4, #0x1c]
-	ldr r0, .L08095848 @ =0x0200DF24
+	ldr r0, .L08095848 @ =OpEkrTerrain_ImgBuf
 	str r0, [r4, #0x20]
 	adds r0, r4, #0
 	bl NewEkrTerrainfx
@@ -558,25 +580,25 @@ ClassInfoDisp_ExecEkrMainMini: @ 0x08095334
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08095800: .4byte gUnk_086905B0
-.L08095804: .4byte 0x02000400
-.L08095808: .4byte gUnk_0869058C
-.L0809580C: .4byte 0x02000434
-.L08095810: .4byte 0x02002434
-.L08095814: .4byte 0x02007C34
-.L08095818: .4byte 0x02007CD4
-.L0809581C: .4byte 0x0200A6D4
-.L08095820: .4byte gUnk_086909A4
+.L08095800: .4byte OpClassDemo_IntroMsgs
+.L08095804: .4byte OpEkrMiniDesc
+.L08095808: .4byte OpClassDemo_BIDs
+.L0809580C: .4byte OpEkrMini_ImgBuf
+.L08095810: .4byte OpEkrMini_OamBuf
+.L08095814: .4byte OpEkrMini_PalBuf
+.L08095818: .4byte OpEkrMini_ScrBuf
+.L0809581C: .4byte OpEkrMagiDesc
+.L08095820: .4byte OpClassDemo_MagiConfig
 .L08095824: .4byte gBg1Tm
-.L08095828: .4byte 0x0200A6FC
-.L0809582C: .4byte 0x0200C6FC
-.L08095830: .4byte 0x0200CEFC
+.L08095828: .4byte OpEkrMagi_BgImgBuf
+.L0809582C: .4byte OpEkrMagi_BgTsaBuf
+.L08095830: .4byte OpEkrMagi_ObImgBuf
 .L08095834: .4byte OpInfo_EfxmagicMiniCallBack
-.L08095838: .4byte 0x0200DEFC
-.L0809583C: .4byte gUnk_08690A53
+.L08095838: .4byte OpEkrTerrainDesc
+.L0809583C: .4byte OpClassDemo_TerrainConfig
 .L08095840: .4byte 0x0000FFFF
 .L08095844: .4byte 0x06010000
-.L08095848: .4byte 0x0200DF24
+.L08095848: .4byte OpEkrTerrain_ImgBuf
 .L0809584C: .4byte HBlank_ClassInfoDisp
 
 	thumb_func_start ClassInfoDisp_Loop_Intro
@@ -698,13 +720,13 @@ ClassInfoDisp_Loop_Intro: @ 0x08095850
 	adds r0, r6, #4
 	strh r0, [r7, #0x2a]
 .L0809593C:
-	ldr r0, .L08095974 @ =0x02000400
+	ldr r0, .L08095974 @ =OpEkrMiniDesc
 	adds r4, r7, #0
 	adds r4, #0x44
 	ldrb r1, [r4]
 	movs r2, #0x58
 	bl EkrMainMini_SetAnimPosition
-	ldr r0, .L08095978 @ =0x0200DEFC
+	ldr r0, .L08095978 @ =OpEkrTerrainDesc
 	ldrb r3, [r4]
 	adds r1, r3, #0
 	subs r1, #0x30
@@ -724,8 +746,8 @@ ClassInfoDisp_Loop_Intro: @ 0x08095850
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08095974: .4byte 0x02000400
-.L08095978: .4byte 0x0200DEFC
+.L08095974: .4byte OpEkrMiniDesc
+.L08095978: .4byte OpEkrTerrainDesc
 
 	thumb_func_start ClassInfoDisp_Loop_Main
 ClassInfoDisp_Loop_Main: @ 0x0809597C
@@ -768,7 +790,7 @@ ClassInfoDisp_Loop_Main: @ 0x0809597C
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq .L080959DA
-	ldr r0, .L08095A1C @ =0x02000400
+	ldr r0, .L08095A1C @ =OpEkrMiniDesc
 	bl EkrMainMini_CheckBlocking
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -777,7 +799,7 @@ ClassInfoDisp_Loop_Main: @ 0x0809597C
 	cmp r0, #0
 	bne .L080959E8
 .L080959DA:
-	ldr r0, .L08095A1C @ =0x02000400
+	ldr r0, .L08095A1C @ =OpEkrMiniDesc
 	bl EkrMainMini_CheckDone
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -799,7 +821,7 @@ ClassInfoDisp_Loop_Main: @ 0x0809597C
 	ldrb r2, [r1]
 	cmp r2, #0xff
 	bne .L08095A20
-	ldr r0, .L08095A1C @ =0x02000400
+	ldr r0, .L08095A1C @ =OpEkrMiniDesc
 	bl EkrMainMini_EndBlock
 	adds r1, r4, #0
 	adds r1, #0x3e
@@ -810,7 +832,7 @@ ClassInfoDisp_Loop_Main: @ 0x0809597C
 	b .L08095A52
 	.align 2, 0
 .L08095A18: .4byte gUnk_086905F8
-.L08095A1C: .4byte 0x02000400
+.L08095A1C: .4byte OpEkrMiniDesc
 .L08095A20:
 	adds r0, r4, #0
 	adds r0, #0x30
@@ -818,7 +840,7 @@ ClassInfoDisp_Loop_Main: @ 0x0809597C
 	ldrb r0, [r6]
 	cmp r0, r2
 	beq .L08095A52
-	ldr r5, .L08095A68 @ =0x02000400
+	ldr r5, .L08095A68 @ =OpEkrMiniDesc
 	ldrb r0, [r1]
 	strh r0, [r5, #8]
 	adds r0, r5, #0
@@ -850,7 +872,7 @@ ClassInfoDisp_Loop_Main: @ 0x0809597C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08095A68: .4byte 0x02000400
+.L08095A68: .4byte OpEkrMiniDesc
 .L08095A6C: .4byte gUnk_086905F8
 
 	thumb_func_start ClassInfoDisp_Block
@@ -866,10 +888,10 @@ ClassInfoDisp_OnEnd: @ 0x08095A74
 	bl SetOnHBlankA
 	bl EndTalk
 	bl EndActiveClassReelBgColorProc
-	ldr r0, .L08095AB0 @ =0x0200DEFC
+	ldr r0, .L08095AB0 @ =OpEkrTerrainDesc
 	bl EndEkrTerrainfx
 	bl EndActiveClassReelSpell
-	ldr r0, .L08095AB4 @ =0x02000400
+	ldr r0, .L08095AB4 @ =OpEkrMiniDesc
 	bl EndEkrMainMini
 	ldr r0, [r4, #0x40]
 	cmp r0, #0
@@ -884,8 +906,8 @@ ClassInfoDisp_OnEnd: @ 0x08095A74
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08095AB0: .4byte 0x0200DEFC
-.L08095AB4: .4byte 0x02000400
+.L08095AB0: .4byte OpEkrTerrainDesc
+.L08095AB4: .4byte OpEkrMiniDesc
 
 	thumb_func_start StartClassAnimDisplay
 StartClassAnimDisplay: @ 0x08095AB8

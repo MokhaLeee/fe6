@@ -738,7 +738,7 @@ OpInfoIcon_Init: @ 0x08094F14
 	movs r4, #0
 	adds r7, r3, #0
 	adds r7, #0x2c
-	ldr r1, .L08094F90 @ =gClassDemoData
+	ldr r1, .L08094F90 @ =OpClassDemo_JidConfig
 	mov r8, r1
 	adds r6, r0, #0
 	adds r5, r2, #0
@@ -773,7 +773,7 @@ OpInfoIcon_Init: @ 0x08094F14
 	.align 2, 0
 .L08094F88: .4byte gPal
 .L08094F8C: .4byte 0x000003FE
-.L08094F90: .4byte gClassDemoData
+.L08094F90: .4byte OpClassDemo_JidConfig
 
 	thumb_func_start func_fe6_08094F94
 func_fe6_08094F94: @ 0x08094F94

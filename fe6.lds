@@ -598,6 +598,7 @@ SECTIONS
         src/playrank.o(.text);
         src/ending_credit.o(.text);
         asm/playrank_0808F33C.o(.text);
+        src/playrank2.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
         src/monologue.o(.text);
