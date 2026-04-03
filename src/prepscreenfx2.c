@@ -195,7 +195,7 @@ void func_fe6_0807DEC8(struct PrepSubItemProc *proc, u16 item)
 		proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 0x10;
 		func_fe6_0807D834(proc->convoy_page);
 		func_fe6_080823A0(proc->unk_3B + proc->convoy_page, &proc->menu_scroll_bar_disp_idx);
-		func_fe6_0807D9E4(&gPrepTexts1[10], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
+		func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
 		func_fe6_0807D358(proc);
 	}
 }

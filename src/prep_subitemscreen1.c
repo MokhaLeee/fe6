@@ -68,10 +68,10 @@ void PrepSubItemScreen_Init(struct PrepSubItemProc *proc)
 	InitTextDb(&gPrepTexts3[1], 5);
 
 	for (i = 0; i < 5; i++)
-		InitTextDb(&gPrepTexts1[i], 7);
+		InitTextDb(&gPrepTexts1[0][i], 7);
 
 	for (i = 0; i < 8; i++)
-		InitTextDb(&gPrepTexts1[10 + i], 7);
+		InitTextDb(&gPrepTexts1[1][i], 7);
 
 	ApplyPalettes(Pal_SpinningArrow, 0x10 + OBPAL_PREPMENU_2, 3);
 	ApplyPalettes( Pal_Sio_0831AABC, 0x10 + OBPAL_PREPMENU_8, 2);

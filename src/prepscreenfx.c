@@ -455,36 +455,38 @@ void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc)
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
 }
 
-// https://decomp.me/scratch/Y15nV
-#if 0
+static inline int Tm_Offset_Inline(int x, int y)
+{
+	return (y << 5) + x;
+}
+
 void func_fe6_0807D6C0(u8 index, struct Unit *unit)
 {
 	u8 i, item_count = GetUnitItemCount(unit);
 
 	for (i = 0; i < ITEMSLOT_INV_COUNT; i++) {
-		struct Text *text = &gPrepTexts1[i + index * 10];
+		struct Text *text = &gPrepTexts1[index][i];
 
 		ClearText(text);
-		TmFillRect(gBg0Tm + i * 0x40 + 0x122 + index * 14, 11, 1, 0);
+		TmFillRect(gBg0Tm + (Tm_Offset_Inline(2, i * 2 + 9) + index * 14), 11, 1, 0);
 	}
 
 	for (i = 0; (i < ITEMSLOT_INV_COUNT) && (i < item_count); i++) {
 		bool usable = !!IsItemDisplayUsable(unit, unit->items[i]);
-		struct Text *text = &gPrepTexts1[i + index * 10];
+		struct Text *text = &gPrepTexts1[index][i];
 
 		Text_SetColor(text, usable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY);
 		Text_SetCursor(text, 0);
 		Text_DrawString(text, GetItemName(unit->items[i]));
-		PutText(text, gBg0Tm + TM_OFFSET(4, i * 2 + 9) + index * 14);
+		PutText(text, gBg0Tm + (Tm_Offset_Inline(4, i * 2 + 9) + index * 14));
 		PutNumberOrBlank(
-			gBg0Tm + TM_OFFSET(13, i * 2 + 9) + index * 14,
+			gBg0Tm + (Tm_Offset_Inline(13, i * 2 + 9) + index * 14),
 			(usable) ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
 			GetItemUses(unit->items[i]));
 
-		PutIcon(gBg0Tm + TM_OFFSET(2, i * 2 + 9)  + index * 14, GetItemIcon(unit->items[i]), OAM2_PAL(BGPAL_PREPMENU_ICON));
+		PutIcon(gBg0Tm + (Tm_Offset_Inline(2, i * 2 + 9) + index * 14), GetItemIcon(unit->items[i]), OAM2_PAL(BGPAL_PREPMENU_ICON));
 		PrepSubItem_InsertIcon(GetItemIcon(unit->items[i]));
 	}
 
 	EnableBgSync(BG0_SYNC_BIT);
 }
-#endif

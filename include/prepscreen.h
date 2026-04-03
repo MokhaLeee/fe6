@@ -172,7 +172,7 @@ extern struct Unit * gPrepUnitList[];
 
 extern u8 gPrepMenuItemCnt;
 
-extern struct Text gPrepTexts1[10];
+extern struct Text gPrepTexts1[2][10];
 extern struct Text gPrepTexts3[2];
 
 extern u16 gPrepPageItemTable[];
