@@ -189,7 +189,7 @@ ProcScr_EndingPInfo1: @ 0868BE74
 	PROC_19
 	PROC_CALL FadeInBlackWithCallBack_Speed40
 	PROC_SLEEP 1
-	PROC_CALL CharacterEnding2_InitDisp
+	PROC_CALL EndingPInfoDisp_InitDisp
 	PROC_CALL EndingPInfo1_StartMerge
 	PROC_CALL FadeInBlackSpeed08
 	PROC_SLEEP 1
@@ -202,44 +202,44 @@ ProcScr_EndingPInfo1: @ 0868BE74
 PROC_LABEL 99
 	PROC_END
 
-	.global ProcScr_0868BEEC
-ProcScr_0868BEEC: @ 0868BEEC
+	.global ProcScr_EndingP1InfoText
+ProcScr_EndingP1InfoText: @ 0868BEEC
 	PROC_19
-	PROC_CALL func_fe6_08091A64
+	PROC_CALL EndingP1InfoText_Init
 	PROC_SLEEP 1
-	PROC_REPEAT func_fe6_08091B94
+	PROC_REPEAT EndingP1InfoText_Loop
 	PROC_END
 
-	.global ProcScr_0868BF14
-ProcScr_0868BF14: @ 0868BF14
+	.global ProcScr_EndingP2InfoText
+ProcScr_EndingP2InfoText: @ 0868BF14
 	PROC_19
-	PROC_CALL func_fe6_08091C40
+	PROC_CALL EndingP2InfoText_Init
 	PROC_SLEEP 1
-	PROC_REPEAT func_fe6_08091D70
+	PROC_REPEAT EndingP2InfoText_Loop
 	PROC_END
 
-	.global ProcScr_EndingPInfo2
-ProcScr_EndingPInfo2: @ 0868BF3C
+	.global ProcScr_EndingPInfoDisp
+ProcScr_EndingPInfoDisp: @ 0868BF3C
 	PROC_19
 	PROC_CALL FadeInBlackWithCallBack_Speed40
 	PROC_SLEEP 1
-	PROC_CALL CharacterEnding2_InitDisp
+	PROC_CALL EndingPInfoDisp_InitDisp
 	PROC_CALL Ending_DrawDyadPInfo
 	PROC_CALL FadeInBlackSpeed08
 	PROC_SLEEP 1
-	PROC_REPEAT CharacterEnding2_Loop
+	PROC_REPEAT EndingPInfoDisp_Loop
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 1
-	PROC_CALL CharacterEnding2_End
+	PROC_CALL EndingPInfoDisp_End
 	PROC_SLEEP 32
 PROC_LABEL 99
 	PROC_END
 
-	.global ProcScr_EndingPInfoFadeOut
-ProcScr_EndingPInfoFadeOut: @ 0868BFAC
+	.global ProcScr_EndingFacePosCtrl
+ProcScr_EndingFacePosCtrl: @ 0868BFAC
 	PROC_19
-	PROC_CALL EndingPInfoFadeOut_Init
-	PROC_REPEAT EndingPInfoFadeOut_Loop
+	PROC_CALL EndingFacePosCtrl_Init
+	PROC_REPEAT EndingFacePosCtrl_Loop
 	PROC_END
 
 	.global gPersonEndingInfo

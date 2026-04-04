@@ -75,14 +75,14 @@ void StartCharacterEndings(void);
 // GameCredit_Loop
 void StartGameCredit(void);
 // PersonEndingHasSupporter
-void EndingPInfoFadeOutExt(void);
+void EndingFacePosCtrlExt(void);
 // HBlank_Ending_SinglePInfo
 void HBlank_Ending_DyadPInfo(void);
 void func_fe6_080914DC(void);
 void func_fe6_0809154C(void);
 void SetupEndingPInfo2Uids(void);
 
-struct ProcharacterEnding2 {
+struct ProcEndingPInfoDisp {
 	PROC_HEADER;
 
 	STRUCT_PAD(0x29, 0x2C);
@@ -90,9 +90,17 @@ struct ProcharacterEnding2 {
 	/* 2C */ int timer;
 };
 
-extern IWRAM_DATA ProcPtr gEndingInfoFaceProc;
+struct ProcEndingPinfoText {
+	PROC_HEADER;
 
-// CharacterEnding2_InitDisp
+	STRUCT_PAD(0x29, 0x54);
+
+	int text_x;
+};
+
+extern IWRAM_DATA ProcPtr gEndingFace1;
+
+// EndingPInfoDisp_InitDisp
 // PopNextEndingPerson
 u8 PopNextEnding2Person(u8 pos);
 // EndingPInfo1Detail_PutText
@@ -102,16 +110,16 @@ u8 PopNextEnding2Person(u8 pos);
 // EndingPInfo1_Idle
 // func_fe6_08091A24
 // func_fe6_08091A4C
-// func_fe6_08091A64
-// func_fe6_08091B94
-void func_fe6_08091C2C(void);
-// func_fe6_08091C40
-// func_fe6_08091D70
-void func_fe6_08091E08(void);
-// Ending_DrawDyadPInfo
-// CharacterEnding2_Loop
-void CharacterEnding2_End(struct ProcharacterEnding2 *proc);
-// EndingPInfo2Exists
-void EndingPInfoFadeOut_Init(ProcPtr proc);
-void EndingPInfoFadeOut_Loop(ProcPtr proc);
+void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc);
+void EndingP1InfoText_Loop(struct ProcEndingPinfoText *proc);
+void SpawnEndingP1InfoText(void);
+void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc);
+void EndingP2InfoText_Loop(struct ProcEndingPinfoText *proc);
+void SpawnEndingP2InfoText(void);
+void Ending_DrawDyadPInfo(struct ProcEndingPInfoDisp *proc);
+void EndingPInfoDisp_Loop(struct ProcEndingPInfoDisp *proc);
+void EndingPInfoDisp_End(struct ProcEndingPInfoDisp *proc);
+bool EndingFacePosCtrlExists(void);
+void EndingFacePosCtrl_Init(ProcPtr proc);
+void EndingFacePosCtrl_Loop(ProcPtr proc);
 void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type);

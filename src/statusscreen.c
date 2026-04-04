@@ -250,7 +250,7 @@ void DrawStatusScreenPageA(int unused)
 
 void func_fe6_08073AC8(struct StatusScreenProc * proc)
 {
-    struct HelpBoxPrintProc * print_proc;
+    struct ProcTypeWritter * print_proc;
     int i;
 
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);

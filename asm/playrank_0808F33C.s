@@ -1829,12 +1829,12 @@ Ending_Loop: @ 0x08090D78
 	lsrs r0, r0, #0x18
 	cmp r0, #0x3f
 	bhi .L08090F10
-	ldr r0, .L08090F0C @ =ProcScr_EndingPInfo2
+	ldr r0, .L08090F0C @ =ProcScr_EndingPInfoDisp
 	adds r1, r4, #0
 	bl SpawnProcLocking
 	b .L08090F2A
 	.align 2, 0
-.L08090F0C: .4byte ProcScr_EndingPInfo2
+.L08090F0C: .4byte ProcScr_EndingPInfoDisp
 .L08090F10:
 	adds r1, r4, #0
 	adds r1, #0x64
@@ -1997,8 +1997,8 @@ PersonEndingHasSupporter: @ 0x0809101C
 	bx r1
 	.align 2, 0
 
-	thumb_func_start EndingPInfoFadeOutExt
-EndingPInfoFadeOutExt: @ 0x0809104C
+	thumb_func_start EndingFacePosCtrlExt
+EndingFacePosCtrlExt: @ 0x0809104C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -2216,7 +2216,7 @@ HBlank_Ending_DyadPInfo: @ 0x080911D0
 	cmp r0, #0
 	bne .L080911E8
 	ldr r2, .L08091214 @ =0x04000010
-	ldr r0, .L08091218 @ =unk_02016B90
+	ldr r0, .L08091218 @ =EndingFaceXPos
 	ldrh r1, [r0]
 	strh r1, [r2]
 	ldr r0, .L0809121C @ =0x04000014
@@ -2226,7 +2226,7 @@ HBlank_Ending_DyadPInfo: @ 0x080911D0
 	cmp r0, #0x50
 	bne .L080911FA
 	ldr r2, .L08091214 @ =0x04000010
-	ldr r0, .L08091218 @ =unk_02016B90
+	ldr r0, .L08091218 @ =EndingFaceXPos
 	ldrh r1, [r0, #2]
 	strh r1, [r2]
 	ldr r0, .L0809121C @ =0x04000014
@@ -2245,7 +2245,7 @@ HBlank_Ending_DyadPInfo: @ 0x080911D0
 	.align 2, 0
 .L08091210: .4byte 0x04000006
 .L08091214: .4byte 0x04000010
-.L08091218: .4byte unk_02016B90
+.L08091218: .4byte EndingFaceXPos
 .L0809121C: .4byte 0x04000014
 .L08091220:
 	cmp r0, #0x68
@@ -2567,18 +2567,18 @@ func_fe6_0809154C: @ 0x0809154C
 
 	thumb_func_start SetupEndingPInfo2Uids
 SetupEndingPInfo2Uids: @ 0x08091588
-	ldr r0, .L08091594 @ =gCurEndingUid
+	ldr r0, .L08091594 @ =gEndingUid1
 	movs r1, #1
 	strb r1, [r0]
-	ldr r0, .L08091598 @ =EndingUid_02016B89
+	ldr r0, .L08091598 @ =gEndingUid2
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-.L08091594: .4byte gCurEndingUid
-.L08091598: .4byte EndingUid_02016B89
+.L08091594: .4byte gEndingUid1
+.L08091598: .4byte gEndingUid2
 
-	thumb_func_start CharacterEnding2_InitDisp
-CharacterEnding2_InitDisp: @ 0x0809159C
+	thumb_func_start EndingPInfoDisp_InitDisp
+EndingPInfoDisp_InitDisp: @ 0x0809159C
 	push {lr}
 	sub sp, #0x18
 	ldr r1, .L08091624 @ =gUnk_08346574
@@ -2654,7 +2654,7 @@ CharacterEnding2_InitDisp: @ 0x0809159C
 	thumb_func_start PopNextEndingPerson
 PopNextEndingPerson: @ 0x0809164C
 	push {r4, r5, lr}
-	ldr r0, .L080916A4 @ =gCurEndingUid
+	ldr r0, .L080916A4 @ =gEndingUid1
 	movs r4, #0
 	ldrsb r4, [r0, r4]
 	cmp r4, #0x3f
@@ -2700,7 +2700,7 @@ PopNextEndingPerson: @ 0x0809164C
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L080916A4: .4byte gCurEndingUid
+.L080916A4: .4byte gEndingUid1
 .L080916A8: .4byte gEndingSceneDispEnPidList
 
 	thumb_func_start PopNextEnding2Person
@@ -2709,12 +2709,12 @@ PopNextEnding2Person: @ 0x080916AC
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq .L080916BC
-	ldr r0, .L080916B8 @ =gCurEndingUid
+	ldr r0, .L080916B8 @ =gEndingUid1
 	b .L080916BE
 	.align 2, 0
-.L080916B8: .4byte gCurEndingUid
+.L080916B8: .4byte gEndingUid1
 .L080916BC:
-	ldr r0, .L08091724 @ =EndingUid_02016B89
+	ldr r0, .L08091724 @ =gEndingUid2
 .L080916BE:
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
@@ -2770,7 +2770,7 @@ PopNextEnding2Person: @ 0x080916AC
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08091724: .4byte EndingUid_02016B89
+.L08091724: .4byte gEndingUid2
 .L08091728: .4byte 0x0203DC70
 
 	thumb_func_start EndingPInfo1Detail_PutText
@@ -2782,7 +2782,7 @@ EndingPInfo1Detail_PutText: @ 0x0809172C
 	push {r5, r6, r7}
 	sub sp, #8
 	str r0, [sp]
-	ldr r0, .L08091808 @ =gCurEndingUid
+	ldr r0, .L08091808 @ =gEndingUid1
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -2874,7 +2874,7 @@ EndingPInfo1Detail_PutText: @ 0x0809172C
 	str r1, [r2, #0x54]
 	b .L08091848
 	.align 2, 0
-.L08091808: .4byte gCurEndingUid
+.L08091808: .4byte gEndingUid1
 .L0809180C: .4byte ProcScr_TypeWritter
 .L08091810: .4byte Texts_02016B48
 .L08091814: .4byte gBg0Tm+0x2
@@ -2935,7 +2935,7 @@ EndingPInfo1Detail_PutText: @ 0x0809172C
 EndingPInfo1Detail_WaitingTypewritter: @ 0x08091880
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, .L08091908 @ =gCurEndingUid
+	ldr r0, .L08091908 @ =gEndingUid1
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -2998,7 +2998,7 @@ EndingPInfo1Detail_WaitingTypewritter: @ 0x08091880
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08091908: .4byte gCurEndingUid
+.L08091908: .4byte gEndingUid1
 .L0809190C: .4byte ProcScr_TypeWritter
 .L08091910: .4byte Texts_02016B48
 .L08091914: .4byte 0x00000A6E
@@ -3007,7 +3007,7 @@ EndingPInfo1Detail_WaitingTypewritter: @ 0x08091880
 EndingPInfo1_DrawDetails: @ 0x08091918
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0809193C @ =gCurEndingUid
+	ldr r0, .L0809193C @ =gEndingUid1
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3022,7 +3022,7 @@ EndingPInfo1_DrawDetails: @ 0x08091918
 	lsls r0, r0, #1
 	b .L08091942
 	.align 2, 0
-.L0809193C: .4byte gCurEndingUid
+.L0809193C: .4byte gEndingUid1
 .L08091940:
 	ldr r0, .L08091954 @ =0x00000352
 .L08091942:
@@ -3047,7 +3047,7 @@ EndingPInfo1_StartMerge: @ 0x0809195C
 	bl PopNextEndingPerson
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r2, .L080919E8 @ =gCurEndingUid
+	ldr r2, .L080919E8 @ =gEndingUid1
 	adds r1, r0, #1
 	strb r1, [r2]
 	bl GetUnit
@@ -3084,7 +3084,7 @@ EndingPInfo1_StartMerge: @ 0x0809195C
 	str r5, [r0, #0x2c]
 	ldr r0, .L080919FC @ =unk_02016B44
 	strb r5, [r0]
-	ldr r0, .L08091A00 @ =ProcScr_EndingPInfoFadeOut
+	ldr r0, .L08091A00 @ =ProcScr_EndingFacePosCtrl
 	movs r1, #0
 	bl SpawnProc
 	ldr r0, .L08091A04 @ =HBlank_Ending_SinglePInfo
@@ -3098,13 +3098,13 @@ EndingPInfo1_StartMerge: @ 0x0809195C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080919E8: .4byte gCurEndingUid
+.L080919E8: .4byte gEndingUid1
 .L080919EC: .4byte gBg3Tm
 .L080919F0: .4byte Tsa_EndingPInfoBG
 .L080919F4: .4byte 0x0600D800
 .L080919F8: .4byte 0x01000800
 .L080919FC: .4byte unk_02016B44
-.L08091A00: .4byte ProcScr_EndingPInfoFadeOut
+.L08091A00: .4byte ProcScr_EndingFacePosCtrl
 .L08091A04: .4byte HBlank_Ending_SinglePInfo
 
 	thumb_func_start EndingPInfo1_Idle
@@ -3131,7 +3131,7 @@ func_fe6_08091A24: @ 0x08091A24
 	bl EndFaceById
 	ldr r0, .L08091A44 @ =ProcScr_TypeWritter
 	bl Proc_EndEach
-	ldr r0, .L08091A48 @ =ProcScr_EndingPInfoFadeOut
+	ldr r0, .L08091A48 @ =ProcScr_EndingFacePosCtrl
 	bl Proc_EndEach
 	movs r0, #0
 	bl SetOnHBlankA
@@ -3139,7 +3139,7 @@ func_fe6_08091A24: @ 0x08091A24
 	bx r0
 	.align 2, 0
 .L08091A44: .4byte ProcScr_TypeWritter
-.L08091A48: .4byte ProcScr_EndingPInfoFadeOut
+.L08091A48: .4byte ProcScr_EndingFacePosCtrl
 
 	thumb_func_start func_fe6_08091A4C
 func_fe6_08091A4C: @ 0x08091A4C
@@ -3155,8 +3155,8 @@ func_fe6_08091A4C: @ 0x08091A4C
 	.align 2, 0
 .L08091A60: .4byte ProcScr_EndingPInfo1
 
-	thumb_func_start func_fe6_08091A64
-func_fe6_08091A64: @ 0x08091A64
+	thumb_func_start EndingP1InfoText_Init
+EndingP1InfoText_Init: @ 0x08091A64
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -3164,7 +3164,7 @@ func_fe6_08091A64: @ 0x08091A64
 	push {r5, r6, r7}
 	sub sp, #8
 	mov sl, r0
-	ldr r0, .L08091B3C @ =gCurEndingUid
+	ldr r0, .L08091B3C @ =gEndingUid1
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3252,7 +3252,7 @@ func_fe6_08091A64: @ 0x08091A64
 	str r1, [r2, #0x54]
 	b .L08091B5C
 	.align 2, 0
-.L08091B3C: .4byte gCurEndingUid
+.L08091B3C: .4byte gEndingUid1
 .L08091B40: .4byte ProcScr_TypeWritter
 .L08091B44: .4byte Texts_02016B48
 .L08091B48: .4byte gBg0Tm+0x4
@@ -3293,11 +3293,11 @@ func_fe6_08091A64: @ 0x08091A64
 	.align 2, 0
 .L08091B90: .4byte gPersonEndingInfo
 
-	thumb_func_start func_fe6_08091B94
-func_fe6_08091B94: @ 0x08091B94
+	thumb_func_start EndingP1InfoText_Loop
+EndingP1InfoText_Loop: @ 0x08091B94
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, .L08091C1C @ =gCurEndingUid
+	ldr r0, .L08091C1C @ =gEndingUid1
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3360,24 +3360,24 @@ func_fe6_08091B94: @ 0x08091B94
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08091C1C: .4byte gCurEndingUid
+.L08091C1C: .4byte gEndingUid1
 .L08091C20: .4byte ProcScr_TypeWritter
 .L08091C24: .4byte Texts_02016B48
 .L08091C28: .4byte 0x00000A6E
 
-	thumb_func_start func_fe6_08091C2C
-func_fe6_08091C2C: @ 0x08091C2C
+	thumb_func_start SpawnEndingP1InfoText
+SpawnEndingP1InfoText: @ 0x08091C2C
 	push {lr}
-	ldr r0, .L08091C3C @ =ProcScr_0868BEEC
+	ldr r0, .L08091C3C @ =ProcScr_EndingP1InfoText
 	movs r1, #3
 	bl SpawnProc
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08091C3C: .4byte ProcScr_0868BEEC
+.L08091C3C: .4byte ProcScr_EndingP1InfoText
 
-	thumb_func_start func_fe6_08091C40
-func_fe6_08091C40: @ 0x08091C40
+	thumb_func_start EndingP2InfoText_Init
+EndingP2InfoText_Init: @ 0x08091C40
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -3385,7 +3385,7 @@ func_fe6_08091C40: @ 0x08091C40
 	push {r5, r6, r7}
 	sub sp, #8
 	mov sl, r0
-	ldr r0, .L08091D18 @ =EndingUid_02016B89
+	ldr r0, .L08091D18 @ =gEndingUid2
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3473,7 +3473,7 @@ func_fe6_08091C40: @ 0x08091C40
 	str r1, [r2, #0x54]
 	b .L08091D38
 	.align 2, 0
-.L08091D18: .4byte EndingUid_02016B89
+.L08091D18: .4byte gEndingUid2
 .L08091D1C: .4byte ProcScr_TypeWritter
 .L08091D20: .4byte Texts_02016B78
 .L08091D24: .4byte gBg0Tm+0x1A
@@ -3513,230 +3513,3 @@ func_fe6_08091C40: @ 0x08091C40
 	bx r0
 	.align 2, 0
 .L08091D6C: .4byte gPersonEndingInfo
-
-	thumb_func_start func_fe6_08091D70
-func_fe6_08091D70: @ 0x08091D70
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	ldr r0, .L08091DF8 @ =EndingUid_02016B89
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	subs r0, #1
-	bl GetUnit
-	movs r1, #4
-	ldrh r0, [r0, #0xc]
-	ands r1, r0
-	cmp r1, #0
-	beq .L08091DEC
-	ldr r4, .L08091DFC @ =ProcScr_TypeWritter
-	adds r0, r4, #0
-	bl FindProc
-	cmp r0, #0
-	bne .L08091DF2
-	adds r0, r4, #0
-	movs r1, #3
-	bl SpawnProc
-	adds r5, r0, #0
-	ldr r0, .L08091E00 @ =Texts_02016B78
-	movs r3, #1
-	adds r2, r0, #0
-	adds r2, #8
-	adds r1, r5, #0
-	adds r1, #0x38
-.L08091DAE:
-	str r2, [r1]
-	subs r2, #8
-	subs r1, #4
-	subs r3, #1
-	cmp r3, #0
-	bge .L08091DAE
-	movs r4, #0
-	ldr r1, [r6, #0x54]
-	bl Text_SetCursor
-	ldr r0, .L08091E04 @ =0x00000A6E
-	bl DecodeMsg
-	str r0, [r5, #0x2c]
-	adds r0, r5, #0
-	adds r0, #0x5c
-	strh r4, [r0]
-	str r4, [r5, #0x30]
-	adds r1, r5, #0
-	adds r1, #0x60
-	movs r0, #4
-	strh r0, [r1]
-	adds r1, #2
-	movs r0, #1
-	strh r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x5e
-	strh r4, [r0]
-	movs r0, #1
-	bl EnableBgSync
-.L08091DEC:
-	adds r0, r6, #0
-	bl Proc_Break
-.L08091DF2:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08091DF8: .4byte EndingUid_02016B89
-.L08091DFC: .4byte ProcScr_TypeWritter
-.L08091E00: .4byte Texts_02016B78
-.L08091E04: .4byte 0x00000A6E
-
-	thumb_func_start func_fe6_08091E08
-func_fe6_08091E08: @ 0x08091E08
-	push {lr}
-	ldr r0, .L08091E20 @ =unk_02016B8A
-	ldrb r0, [r0]
-	cmp r0, #1
-	bne .L08091E1A
-	ldr r0, .L08091E24 @ =ProcScr_0868BF14
-	movs r1, #3
-	bl SpawnProc
-.L08091E1A:
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08091E20: .4byte unk_02016B8A
-.L08091E24: .4byte ProcScr_0868BF14
-
-	thumb_func_start Ending_DrawDyadPInfo
-Ending_DrawDyadPInfo: @ 0x08091E28
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #8
-	mov sb, r0
-	ldr r7, .L08091F3C @ =unk_02016B8A
-	movs r0, #1
-	mov sl, r0
-	strb r0, [r7]
-	movs r0, #0
-	bl PopNextEnding2Person
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-	ldr r1, .L08091F40 @ =gCurEndingUid
-	adds r0, r4, #1
-	strb r0, [r1]
-	movs r0, #1
-	bl PopNextEnding2Person
-	lsls r0, r0, #0x18
-	lsrs r6, r0, #0x18
-	cmp r6, #0x3f
-	ble .L08091E60
-	movs r0, #0
-	strb r0, [r7]
-.L08091E60:
-	ldr r1, .L08091F44 @ =EndingUid_02016B89
-	adds r0, r6, #1
-	strb r0, [r1]
-	bl ResetText
-	ldr r0, .L08091F48 @ =gBg3Tm
-	ldr r1, .L08091F4C @ =Tsa_EndingPInfoBG
-	movs r2, #0x80
-	lsls r2, r2, #6
-	bl TmApplyTsa_thm
-	movs r1, #0
-	mov r8, r1
-	str r1, [sp, #4]
-	ldr r1, .L08091F50 @ =0x0600D800
-	ldr r2, .L08091F54 @ =0x01000800
-	add r0, sp, #4
-	bl CpuFastSet
-	adds r0, r4, #0
-	bl GetUnit
-	adds r5, r0, #0
-	bl GetUnitFid
-	adds r4, r0, #0
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	movs r1, #0xff
-	lsls r1, r1, #8
-	movs r0, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r2, #0xdf
-	lsls r2, r2, #1
-	movs r0, #0x42
-	str r0, [sp]
-	movs r0, #0
-	adds r1, r4, #0
-	movs r3, #0
-	bl StartFace
-	ldr r1, .L08091F58 @ =gEndingInfoFaceProc
-	str r0, [r1]
-	movs r0, #0
-	movs r1, #0
-	adds r2, r5, #0
-	movs r3, #1
-	bl Ending_DrawPInfoTitle
-	ldrb r7, [r7]
-	cmp r7, #1
-	bne .L08091F0C
-	adds r0, r6, #0
-	bl GetUnit
-	adds r5, r0, #0
-	bl GetUnitFid
-	adds r4, r0, #0
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r0, #1
-	movs r2, #0
-	bl SetBgOffset
-	movs r2, #0xce
-	rsbs r2, r2, #0
-	movs r0, #0x43
-	str r0, [sp]
-	movs r0, #1
-	adds r1, r4, #0
-	movs r3, #0x50
-	bl StartFace
-	ldr r1, .L08091F5C @ =gpAuguryFaceProc
-	str r0, [r1]
-	movs r0, #0xb
-	movs r1, #0xa
-	adds r2, r5, #0
-	movs r3, #1
-	bl Ending_DrawPInfoTitle
-.L08091F0C:
-	mov r0, r8
-	mov r1, sb
-	str r0, [r1, #0x2c]
-	ldr r0, .L08091F60 @ =unk_02016B44
-	mov r1, sl
-	strb r1, [r0]
-	ldr r0, .L08091F64 @ =ProcScr_EndingPInfoFadeOut
-	movs r1, #0
-	bl SpawnProc
-	ldr r0, .L08091F68 @ =HBlank_Ending_DyadPInfo
-	bl SetOnHBlankA
-	movs r0, #3
-	bl EnableBgSync
-	add sp, #8
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08091F3C: .4byte unk_02016B8A
-.L08091F40: .4byte gCurEndingUid
-.L08091F44: .4byte EndingUid_02016B89
-.L08091F48: .4byte gBg3Tm
-.L08091F4C: .4byte Tsa_EndingPInfoBG
-.L08091F50: .4byte 0x0600D800
-.L08091F54: .4byte 0x01000800
-.L08091F58: .4byte gEndingInfoFaceProc
-.L08091F5C: .4byte gpAuguryFaceProc
-.L08091F60: .4byte unk_02016B44
-.L08091F64: .4byte ProcScr_EndingPInfoFadeOut
-.L08091F68: .4byte HBlank_Ending_DyadPInfo

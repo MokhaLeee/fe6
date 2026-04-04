@@ -126,11 +126,11 @@ EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81] = {};
 EWRAM_OVERLAY(0) bool unk_02016B44 = 0;
 EWRAM_OVERLAY(0) struct Text Texts_02016B48[6] = {};
 EWRAM_OVERLAY(0) struct Text Texts_02016B78[2] = {};
-EWRAM_OVERLAY(0) u8 gCurEndingUid = 0;
-EWRAM_OVERLAY(0) u8 EndingUid_02016B89 = 0;
-EWRAM_OVERLAY(0) u8 unk_02016B8A = 0;
-EWRAM_OVERLAY(0) ProcPtr gpAuguryFaceProc = NULL;
-EWRAM_OVERLAY(0) u16 unk_02016B90[2] = {};
+EWRAM_OVERLAY(0) u8 gEndingUid1 = 0;
+EWRAM_OVERLAY(0) u8 gEndingUid2 = 0;
+EWRAM_OVERLAY(0) u8 gEndingDisplaySecondUnit = 0;
+EWRAM_OVERLAY(0) ProcPtr gEndingFace2 = NULL;
+EWRAM_OVERLAY(0) u16 EndingFaceXPos[2] = {};
 EWRAM_OVERLAY(0) u8 unk_02016B94[0x100] = {};
 EWRAM_OVERLAY(0) u8 unk_02016C94[0x100] = {};
 

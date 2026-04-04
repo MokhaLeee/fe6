@@ -45,7 +45,7 @@ struct UnkAgainProc
     /* 38 */ u8 pal;
 };
 
-struct HelpBoxPrintProc2
+struct ProcTypeWritter2
 {
     /* 00 */ PROC_HEADER;
     /* 2C */ char const * str;
@@ -208,7 +208,7 @@ int DrawHelpBoxStaffLabels(int item)
     return 1; // TODO: what?
 }
 
-void TypeWritter_Loop(struct HelpBoxPrintProc * proc)
+void TypeWritter_Loop(struct ProcTypeWritter * proc)
 {
     int i;
 
@@ -259,7 +259,7 @@ struct ProcScr CONST_DATA ProcScr_TypeWritter[] =
     PROC_END,
 };
 
-void DemoMonologueDisp_Main(struct HelpBoxPrintProc * proc)
+void DemoMonologueDisp_Main(struct ProcTypeWritter * proc)
 {
     int i;
 
@@ -364,7 +364,7 @@ void func_fe6_080713DC(struct HelpBoxStartPrintProc * proc)
 
 void func_fe6_08071410(struct HelpBoxStartPrintProc * proc)
 {
-    struct HelpBoxPrintProc * print_proc;
+    struct ProcTypeWritter * print_proc;
 
     SetTextFont(&gUnk_0203D40C.font);
     SetTextFontGlyphs(TEXT_GLYPHS_TALK);
@@ -1114,12 +1114,12 @@ void func_fe6_08071D94(int x_box, int y_box, int w_box, int h_box)
     PutSprite(2, x_box + w_box, y_box + h_box, Sprite_8x8_HFlipped_VFlipped, gUnk_0203D460.unk_30 + 0x3E);
 }
 
-void func_fe6_08071F50(struct HelpBoxPrintProc2 * proc)
+void func_fe6_08071F50(struct ProcTypeWritter2 * proc)
 {
     func_fe6_08071C8C(proc->str, &proc->x, &proc->y);
 }
 
-void func_fe6_08071F64(struct HelpBoxPrintProc2 * proc)
+void func_fe6_08071F64(struct ProcTypeWritter2 * proc)
 {
     int i, chars_per_frame, print_delay;
     struct HelpBoxProc * helpbox_proc;
@@ -1214,7 +1214,7 @@ void func_fe6_08071F64(struct HelpBoxPrintProc2 * proc)
     SetTextFont(NULL);
 }
 
-void func_fe6_080720E0(struct HelpBoxPrintProc2 * proc)
+void func_fe6_080720E0(struct ProcTypeWritter2 * proc)
 {
     Proc_Goto(FindProc(gUnk_08678080), 0);
     Proc_Break(proc);
@@ -1231,7 +1231,7 @@ struct ProcScr CONST_DATA ProcScr_HelpBoxPrint_086780E8[] =
 
 void func_fe6_08072100(struct HelpBoxStartPrintProc * proc)
 {
-    struct HelpBoxPrintProc2 * new_proc;
+    struct ProcTypeWritter2 * new_proc;
 
     SetTextFont(&gUnk_0203D460.font);
 

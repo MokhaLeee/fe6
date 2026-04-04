@@ -9,6 +9,7 @@
 #include "oam.h"
 #include "msg.h"
 #include "text.h"
+#include "helpbox.h"
 #include "ui.h"
 #include "util.h"
 #include "armfunc.h"
@@ -27,21 +28,59 @@
 #include "augury.h"
 #include "ending_credit.h"
 
-#if 0
-void Ending_DrawDyadPInfo(struct ProcharacterEnding2 *proc)
+void EndingP2InfoText_Loop(struct ProcEndingPinfoText *proc)
 {
-	u8 uid1, uid2, fid;
-	struct Unit *unit;
+	i8 uid = gEndingUid2;
 
-	unk_02016B8A = true;
-	uid1 = PopNextEnding2Person(POS_L) + 1;
-	gCurEndingUid = uid1;
+	if (GetUnit(uid - 1)->flags & UNIT_FLAG_DEAD) {
+		int i;
+		struct ProcTypeWritter *type_writter;
+
+		if (FindProc(ProcScr_TypeWritter)) {
+			/* waiting for exists typing done */
+			return;
+		}
+
+		type_writter = SpawnProc(ProcScr_TypeWritter, PROC_TREE_3);
+
+		for (i = 0; i < 2; i++)
+			type_writter->text[i] = &Texts_02016B78[i];
+
+		Text_SetCursor(&Texts_02016B78[0], proc->text_x);
+		type_writter->str_it = DecodeMsg(MSG_A6E);
+		type_writter->line = 0;
+		type_writter->font = NULL;
+		type_writter->clock_interval = 4;
+		type_writter->chars_per_print = 1;
+		type_writter->clock = 0;
+		EnableBgSync(BG0_SYNC_BIT);
+	}
+	Proc_Break(proc);
+}
+
+void SpawnEndingP2InfoText(void)
+{
+	if (gEndingDisplaySecondUnit == true)
+		SpawnProc(ProcScr_EndingP2InfoText, PROC_TREE_3);
+}
+
+void Ending_DrawDyadPInfo(struct ProcEndingPInfoDisp *proc)
+{
+	int uid1, uid2;
+	u8 fid;
+	struct Unit *unit;
+	ProcPtr faceproc1;
+	ProcPtr faceproc2;
+
+	gEndingDisplaySecondUnit = true;
+	uid1 = PopNextEnding2Person(POS_L);
+	gEndingUid1 = uid1 + 1;
 
 	uid2 = PopNextEnding2Person(POS_R);
 	if (uid2 >= FACTION_GREEN)
-		unk_02016B8A = false;
+		gEndingDisplaySecondUnit = false;
 
-	EndingUid_02016B89 = uid2 + 1;
+	gEndingUid2 = uid2 + 1;
 
 	ResetText();
 	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x2000);
@@ -50,38 +89,39 @@ void Ending_DrawDyadPInfo(struct ProcharacterEnding2 *proc)
 	unit = GetUnit(uid1);
 	fid = GetUnitFid(unit);
 	SetBgOffset(BG_0, 0xFF00, 0);
-	gEndingInfoFaceProc = StartFace(0, fid, 0x1BE, 0, 0x42);
+	faceproc1 = StartFace(0, fid, 0x1BE, 0, 0x42);
+	gEndingFace1 = faceproc1;
 	Ending_DrawPInfoTitle(0, 0, unit, 1);
 
-	if (unk_02016B8A == true) {
+	if (gEndingDisplaySecondUnit == true) {
 		unit = GetUnit(uid2);
 		fid = GetUnitFid(unit);
 		SetBgOffset(BG_1, 0x100, 0);
-		gpAuguryFaceProc = StartFace(1, fid, -0xCE, 0x50, 0x43);
+		faceproc2 = StartFace(1, fid, -0xCE, 0x50, 0x43);
+		gEndingFace2 = faceproc2;
 		Ending_DrawPInfoTitle(0xB, 0xA, unit, 1);
 	}
 
 	proc->timer = 0;
 	unk_02016B44 = true;
-	SpawnProc(ProcScr_EndingPInfoFadeOut, PROC_TREE_VSYNC);
+	SpawnProc(ProcScr_EndingFacePosCtrl, PROC_TREE_VSYNC);
 	SetOnHBlankA(HBlank_Ending_DyadPInfo);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
 }
-#endif
 
-void CharacterEnding2_Loop(struct ProcharacterEnding2 *proc)
+void EndingPInfoDisp_Loop(struct ProcEndingPInfoDisp *proc)
 {
 	switch (proc->timer) {
 	default:
 		if (proc->timer <= 0x2C){
 			struct FaceProc *faceproc;
 			
-			faceproc = gEndingInfoFaceProc;
-			faceproc->x_disp = 0xBE - unk_02016B90[0];
+			faceproc = gEndingFace1;
+			faceproc->x_disp = 0xBE - EndingFaceXPos[0];
 
-			if (unk_02016B8A == true) {
-				faceproc = gpAuguryFaceProc;
-				faceproc->x_disp = 0x32 - unk_02016B90[1];
+			if (gEndingDisplaySecondUnit == true) {
+				faceproc = gEndingFace2;
+				faceproc->x_disp = 0x32 - EndingFaceXPos[1];
 			}
 		}
 		break;
@@ -92,11 +132,11 @@ void CharacterEnding2_Loop(struct ProcharacterEnding2 *proc)
 		break;
 
 	case 0x3C:
-		func_fe6_08091C2C();
+		SpawnEndingP1InfoText();
 		break;
 
 	case 0xC8:
-		func_fe6_08091E08();
+		SpawnEndingP2InfoText();
 		break;
 
 	case 0x1E0:
@@ -106,35 +146,35 @@ void CharacterEnding2_Loop(struct ProcharacterEnding2 *proc)
 	proc->timer++;
 }
 
-void CharacterEnding2_End(struct ProcharacterEnding2 *proc)
+void EndingPInfoDisp_End(struct ProcEndingPInfoDisp *proc)
 {
 	EndFaceById(0);
 	EndFaceById(1);
 	Proc_EndEach(ProcScr_TypeWritter);
-	Proc_EndEach(ProcScr_EndingPInfoFadeOut);
+	Proc_EndEach(ProcScr_EndingFacePosCtrl);
 	SetOnHBlankA(NULL);
 }
 
-bool EndingPInfo2Exists(void)
+bool EndingFacePosCtrlExists(void)
 {
-	return Proc_Exists(ProcScr_EndingPInfo2);
+	return Proc_Exists(ProcScr_EndingPInfoDisp);
 }
 
-void EndingPInfoFadeOut_Init(ProcPtr proc)
+void EndingFacePosCtrl_Init(ProcPtr proc)
 {
-	unk_02016B90[0] = 0xFF00;
-	unk_02016B90[1] = 0x100;
+	EndingFaceXPos[0] = 0xFF00;
+	EndingFaceXPos[1] = 0x100;
 }
 
-void EndingPInfoFadeOut_Loop(ProcPtr proc)
+void EndingFacePosCtrl_Loop(ProcPtr proc)
 {
-	if (unk_02016B44 != false && unk_02016B90[1] != 0) {
-		struct ProcharacterEnding2 *procfx = FindProc(ProcScr_EndingPInfo2);
+	if (unk_02016B44 != false && EndingFaceXPos[1] != 0) {
+		struct ProcEndingPInfoDisp *procfx = FindProc(ProcScr_EndingPInfoDisp);
 
-		unk_02016B90[0] = Interpolate(INTERPOLATE_RSQUARE, 0xFFFFFF00, 0, procfx->timer, 0x2D);
-		unk_02016B90[1] = Interpolate(INTERPOLATE_RSQUARE, 0x100, 0, procfx->timer, 0x2D);
+		EndingFaceXPos[0] = Interpolate(INTERPOLATE_RSQUARE, 0xFFFFFF00, 0, procfx->timer, 0x2D);
+		EndingFaceXPos[1] = Interpolate(INTERPOLATE_RSQUARE, 0x100, 0, procfx->timer, 0x2D);
 	}
-	EndingPInfoFadeOutExt();
+	EndingFacePosCtrlExt();
 }
 
 void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type)

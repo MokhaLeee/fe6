@@ -145,7 +145,7 @@ IWRAM_DATA struct UnkStruct_SecretScreen_030048C0 gSecretScreen_030048C0 = {};
 /**
  * Play rank
  */
-IWRAM_DATA ProcPtr gEndingInfoFaceProc = NULL;
+IWRAM_DATA ProcPtr gEndingFace1 = NULL;
 IWRAM_DATA u8 Pad_Common_030048D8[8] = {};
 
 /**

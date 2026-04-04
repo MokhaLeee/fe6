@@ -2237,7 +2237,7 @@ EventScr CONST_DATA EventScr_DemoScene[] =
 
 void PutDemoMonologueMsg(void)
 {
-    struct HelpBoxPrintProc * proc;
+    struct ProcTypeWritter * proc;
     int i;
 
     SetDispEnable(1, 0, 0, 0, 0);
