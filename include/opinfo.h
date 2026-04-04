@@ -102,7 +102,9 @@ ProcPtr NewOpInfoEnter(struct ProcOpInfo *proc, int a);
 // OpInfoIcon_Loop_FadeOut
 // NewOpInfoIcon
 
-struct ProcClassInfoDisp {
+struct ProcOpInfoStatusDisp;
+
+struct ProcOpInfoGauge {
 	PROC_HEADER;
 
 	/* 2A */ u16 unk_2A;
@@ -118,34 +120,43 @@ struct ProcClassInfoDisp {
 
 	STRUCT_PAD(0x3F, 0x40);
 
-	/* 40 */ ProcPtr proc40;
+	/* 40 */ struct ProcOpInfoStatusDisp *procfx;
 	/* 44 */ u8 unk_44;
 };
 
-void HBlank_ClassInfoDisp(void);
+struct ProcOpInfoStatusDisp {
+	PROC_HEADER;
+
+	/* 2A */ u16 timer;
+	/* 30 */ struct ProcOpInfoGauge *gauge;
+	/* 34 */ u8 width, pos;
+};
+
+
+void HBlank_OpInfoGauge(void);
 void OpInfo_EfxmagicMiniCallBack(void);
-void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc);
-void ClassInfoDisp_Loop_Intro(struct ProcClassInfoDisp *proc);
-void ClassInfoDisp_Loop_Main(struct ProcClassInfoDisp *proc);
-void ClassInfoDisp_Block(struct ProcClassInfoDisp *proc);
-void ClassInfoDisp_OnEnd(struct ProcClassInfoDisp *proc);
+void OpInfoGauge_ExecEkrMainMini(struct ProcOpInfoGauge *proc);
+void OpInfoGauge_Loop_Intro(struct ProcOpInfoGauge *proc);
+void OpInfoGauge_Loop_Main(struct ProcOpInfoGauge *proc);
+void OpInfoGauge_Block(struct ProcOpInfoGauge *proc);
+void OpInfoGauge_OnEnd(struct ProcOpInfoGauge *proc);
 
 ProcPtr StartClassAnimDisplay(struct ProcOpInfo *proc, int index);
-// func_fe6_08095AE0
-// func_fe6_08095BCC
-// func_fe6_08095D28
-ProcPtr func_fe6_08095D2C(ProcPtr parent);
-// func_fe6_08095D40
-// func_fe6_08095D48
-// func_fe6_08095D58
+void OpInfoStatusDisp_Init(struct ProcOpInfoStatusDisp *proc);
+void OpInfoStatusDisp_Loop(struct ProcOpInfoStatusDisp *proc);
+void func_fe6_08095D28(void);
+ProcPtr StartOpInfoStatusDisp(ProcPtr parent);
+void SetOpOpInfoStatusDispPos(struct ProcOpInfoGauge *proc, int pos);
+void func_fe6_08095D48(void);
+void func_fe6_08095D58(void);
 
 extern CONST_DATA struct ProcScr ProcScr_OpInfo[];
 extern CONST_DATA struct ProcScr ProcScr_OpInfoFadeOut[];
 extern CONST_DATA struct ProcScr ProcScr_OpInfoEnter[];
 extern CONST_DATA struct ProcScr ProcScr_OpInfoView[];
 extern CONST_DATA struct ProcScr ProcScr_OpInfoIcon[];
-extern CONST_DATA struct ProcScr ProcScr_ClassInfoDisp[];
-// extern CONST_DATA ??? gUnk_08690014
+extern CONST_DATA struct ProcScr ProcScr_OpInfoGauge[];
+extern CONST_DATA struct ProcScr ProcScr_OpInfoStatusDisp[];
 extern CONST_DATA u16 *Sprites_OpInfo_0869006C[];
 extern CONST_DATA u16 *Sprites_OpInfo_086900BC[];
 extern CONST_DATA u16 Sprite_OpInfo_086900DC[];

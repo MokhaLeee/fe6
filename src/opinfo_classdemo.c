@@ -39,7 +39,7 @@ struct Unk_086905F8 {
 
 extern struct Unk_086905F8 gUnk_086905F8[];
 
-void HBlank_ClassInfoDisp(void)
+void HBlank_OpInfoGauge(void)
 {
 	u16 vcount = (REG_VCOUNT + 1);
 
@@ -83,7 +83,7 @@ const char Str_OpInfo_Spd[] = TEXT("速さ", "Spd");
 const char Str_OpInfo_Def[] = TEXT("守備", "Def");
 const char Str_OpInfo_Res[] = TEXT("魔防", "Res");
 
-void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
+void OpInfoGauge_ExecEkrMainMini(struct ProcOpInfoGauge *proc)
 {
 	int i, j;
 	register int k asm("r2");
@@ -183,7 +183,7 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 		PutNumber(gBg0Tm + TM_OFFSET(5, 1 + i * 2), TEXT_COLOR_SYSTEM_WHITE, proc->unit_status[i]);
 	}
 
-	proc->proc40 = func_fe6_08095D2C(proc);
+	proc->procfx = StartOpInfoStatusDisp(proc);
 
 	InitTalk(0x100, 2, 0);
 	SetInitTalkTextFont();
@@ -244,7 +244,7 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 
 	NewEkrTerrainfx(&OpEkrTerrainDesc);
 	EkrTerrainfx_SetPosition(&OpEkrTerrainDesc, 0xD0, 0x68, 0x130, 0x68);
-	SetOnHBlankA(HBlank_ClassInfoDisp);
+	SetOnHBlankA(HBlank_OpInfoGauge);
 }
 
 const char Str_OpInfo_Mag[] = TEXT("魔力", "Res");

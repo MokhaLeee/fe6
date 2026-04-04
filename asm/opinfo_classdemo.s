@@ -3,8 +3,8 @@
 	.syntax unified
 
 
-	thumb_func_start ClassInfoDisp_Loop_Intro
-ClassInfoDisp_Loop_Intro: @ 0x08095850
+	thumb_func_start OpInfoGauge_Loop_Intro
+OpInfoGauge_Loop_Intro: @ 0x08095850
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -138,7 +138,7 @@ ClassInfoDisp_Loop_Intro: @ 0x08095850
 	bl EkrTerrainfx_SetPosition
 	ldr r0, [r7, #0x40]
 	movs r1, #0x78
-	bl func_fe6_08095D40
+	bl SetOpOpInfoStatusDispPos
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -151,8 +151,8 @@ ClassInfoDisp_Loop_Intro: @ 0x08095850
 .L08095974: .4byte OpEkrMiniDesc
 .L08095978: .4byte OpEkrTerrainDesc
 
-	thumb_func_start ClassInfoDisp_Loop_Main
-ClassInfoDisp_Loop_Main: @ 0x0809597C
+	thumb_func_start OpInfoGauge_Loop_Main
+OpInfoGauge_Loop_Main: @ 0x0809597C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r6, #0
@@ -277,13 +277,13 @@ ClassInfoDisp_Loop_Main: @ 0x0809597C
 .L08095A68: .4byte OpEkrMiniDesc
 .L08095A6C: .4byte gUnk_086905F8
 
-	thumb_func_start ClassInfoDisp_Block
-ClassInfoDisp_Block: @ 0x08095A70
+	thumb_func_start OpInfoGauge_Block
+OpInfoGauge_Block: @ 0x08095A70
 	bx lr
 	.align 2, 0
 
-	thumb_func_start ClassInfoDisp_OnEnd
-ClassInfoDisp_OnEnd: @ 0x08095A74
+	thumb_func_start OpInfoGauge_OnEnd
+OpInfoGauge_OnEnd: @ 0x08095A74
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -317,7 +317,7 @@ StartClassAnimDisplay: @ 0x08095AB8
 	adds r5, r0, #0
 	lsls r4, r1, #0x18
 	lsrs r4, r4, #0x18
-	ldr r0, .L08095ADC @ =ProcScr_ClassInfoDisp
+	ldr r0, .L08095ADC @ =ProcScr_OpInfoGauge
 	adds r1, r5, #0
 	bl SpawnProc
 	adds r2, r0, #0
@@ -330,10 +330,10 @@ StartClassAnimDisplay: @ 0x08095AB8
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08095ADC: .4byte ProcScr_ClassInfoDisp
+.L08095ADC: .4byte ProcScr_OpInfoGauge
 
-	thumb_func_start func_fe6_08095AE0
-func_fe6_08095AE0: @ 0x08095AE0
+	thumb_func_start OpInfoStatusDisp_Init
+OpInfoStatusDisp_Init: @ 0x08095AE0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -452,8 +452,8 @@ func_fe6_08095AE0: @ 0x08095AE0
 .L08095BC4: .4byte gUnk_0835B040
 .L08095BC8: .4byte gUnk_0835C034
 
-	thumb_func_start func_fe6_08095BCC
-func_fe6_08095BCC: @ 0x08095BCC
+	thumb_func_start OpInfoStatusDisp_Loop
+OpInfoStatusDisp_Loop: @ 0x08095BCC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -634,19 +634,19 @@ func_fe6_08095D28: @ 0x08095D28
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_08095D2C
-func_fe6_08095D2C: @ 0x08095D2C
+	thumb_func_start StartOpInfoStatusDisp
+StartOpInfoStatusDisp: @ 0x08095D2C
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, .L08095D3C @ =gUnk_08690014
+	ldr r0, .L08095D3C @ =ProcScr_OpInfoStatusDisp
 	bl SpawnProc
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08095D3C: .4byte gUnk_08690014
+.L08095D3C: .4byte ProcScr_OpInfoStatusDisp
 
-	thumb_func_start func_fe6_08095D40
-func_fe6_08095D40: @ 0x08095D40
+	thumb_func_start SetOpOpInfoStatusDispPos
+SetOpOpInfoStatusDispPos: @ 0x08095D40
 	adds r0, #0x43
 	strb r1, [r0]
 	bx lr

@@ -36,24 +36,24 @@ PROC_LABEL 4
 	PROC_REPEAT OpInfoIcon_Loop_FadeOut
 	PROC_END
 
-	.global ProcScr_ClassInfoDisp
-ProcScr_ClassInfoDisp: @ 0868FFCC
+	.global ProcScr_OpInfoGauge
+ProcScr_OpInfoGauge: @ 0868FFCC
 	PROC_SLEEP 0
-	PROC_CALL ClassInfoDisp_ExecEkrMainMini
+	PROC_CALL OpInfoGauge_ExecEkrMainMini
 	PROC_SLEEP 2
-	PROC_REPEAT ClassInfoDisp_Loop_Intro
-	PROC_REPEAT ClassInfoDisp_Loop_Main
-	PROC_REPEAT ClassInfoDisp_Block
+	PROC_REPEAT OpInfoGauge_Loop_Intro
+	PROC_REPEAT OpInfoGauge_Loop_Main
+	PROC_REPEAT OpInfoGauge_Block
 PROC_LABEL 4
-	PROC_CALL ClassInfoDisp_OnEnd
+	PROC_CALL OpInfoGauge_OnEnd
 	PROC_END
 
-	.global gUnk_08690014
-gUnk_08690014: @ 08690014
+	.global ProcScr_OpInfoStatusDisp
+ProcScr_OpInfoStatusDisp: @ 08690014
 	PROC_19
 	PROC_SLEEP 3
-	PROC_CALL func_fe6_08095AE0
-	PROC_REPEAT func_fe6_08095BCC
+	PROC_CALL OpInfoStatusDisp_Init
+	PROC_REPEAT OpInfoStatusDisp_Loop
 PROC_LABEL 4
 	PROC_CALL func_fe6_08095D28
 	PROC_END
