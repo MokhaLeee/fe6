@@ -109,7 +109,7 @@ struct ProcClassInfoDisp {
 	/* 2C */ u16 unk_2C;
 	/* 2E */ u16 unk_2E;
 	/* 30 */ u8 unk_30;
-	/* 31 */ u8 unk_31;
+	/* 31 */ u8 index;
 
 	STRUCT_PAD(0x32, 0x38);
 
@@ -166,7 +166,7 @@ struct OpEkrMagiConf {
 // extern CONST_DATA struct OpEkrMagiConf OpClassDemo_MagiConfig[];
 extern CONST_DATA i8 OpClassDemo_MagiConfig[];
 
-extern CONST_DATA u8 OpClassDemo_TerrainConfig[];
+extern CONST_DATA u8 OpClassDemo_TerrainConfig[][2];
 extern CONST_DATA u8 OpClassDemo_JidConfig[];
 // extern CONST_DATA ??? gUnk_08690C14
 // extern CONST_DATA ??? gUnk_08690D44

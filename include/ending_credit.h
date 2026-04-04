@@ -75,15 +75,26 @@ void StartCharacterEndings(void);
 // GameCredit_Loop
 void StartGameCredit(void);
 // PersonEndingHasSupporter
-// EndingPInfoFadeOutExt
+void EndingPInfoFadeOutExt(void);
 // HBlank_Ending_SinglePInfo
-// HBlank_Ending_DyadPInfo
+void HBlank_Ending_DyadPInfo(void);
 void func_fe6_080914DC(void);
 void func_fe6_0809154C(void);
 void SetupEndingPInfo2Uids(void);
+
+struct ProcharacterEnding2 {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x2C);
+
+	/* 2C */ int timer;
+};
+
+extern IWRAM_DATA ProcPtr gEndingInfoFaceProc;
+
 // CharacterEnding2_InitDisp
 // PopNextEndingPerson
-// PopNextEnding2Person
+u8 PopNextEnding2Person(u8 pos);
 // EndingPInfo1Detail_PutText
 // EndingPInfo1Detail_WaitingTypewritter
 // EndingPInfo1_DrawDetails
@@ -93,14 +104,14 @@ void SetupEndingPInfo2Uids(void);
 // func_fe6_08091A4C
 // func_fe6_08091A64
 // func_fe6_08091B94
-// func_fe6_08091C2C
+void func_fe6_08091C2C(void);
 // func_fe6_08091C40
 // func_fe6_08091D70
-// func_fe6_08091E08
+void func_fe6_08091E08(void);
 // Ending_DrawDyadPInfo
 // CharacterEnding2_Loop
-// CharacterEnding2_End
-// func_fe6_08092028
-// PersonEndingInfo_Init
-// PersonEndingInfo_Loop
-// Ending_DrawPInfoTitle
+void CharacterEnding2_End(struct ProcharacterEnding2 *proc);
+// EndingPInfo2Exists
+void EndingPInfoFadeOut_Init(ProcPtr proc);
+void EndingPInfoFadeOut_Loop(ProcPtr proc);
+void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type);

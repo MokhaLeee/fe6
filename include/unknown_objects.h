@@ -419,7 +419,7 @@ extern u16 const Pal_Fin[];
 extern u8 const Img_Ending_CopyRight[];
 extern u16 const Tsa_Ending_CopyRight[];
 extern u16 const Pal_Ending_CopyRight[];
-extern u16 const Tsa_EndingPInfoBG[];
+extern u8 const Tsa_EndingPInfoBG[];
 // extern const ??? gUnk_08345934
 // extern const ??? gUnk_08346184
 extern u8 const Tsa_GameRank_083461C4[];

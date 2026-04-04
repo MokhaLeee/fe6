@@ -80,15 +80,14 @@ extern EWRAM_OVERLAY(0) u8 gEndingDispType;
 extern EWRAM_OVERLAY(0) u8 unk_02016A42;
 extern EWRAM_OVERLAY(0) u8 unk_02016A43[0x80];
 extern EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81];
-extern EWRAM_OVERLAY(0) u8 unk_02016B44;
+extern EWRAM_OVERLAY(0) bool unk_02016B44;
 extern EWRAM_OVERLAY(0) struct Text Texts_02016B48[6];
 extern EWRAM_OVERLAY(0) struct Text Texts_02016B78[2];
 extern EWRAM_OVERLAY(0) u8 gCurEndingUid;
 extern EWRAM_OVERLAY(0) u8 EndingUid_02016B89;
 extern EWRAM_OVERLAY(0) u8 unk_02016B8A;
 extern EWRAM_OVERLAY(0) ProcPtr gpAuguryFaceProc;
-extern EWRAM_OVERLAY(0) u16 unk_02016B90;
-extern EWRAM_OVERLAY(0) u16 unk_02016B92;
+extern EWRAM_OVERLAY(0) u16 unk_02016B90[2];
 extern EWRAM_OVERLAY(0) u8 unk_02016B94[0x100];
 extern EWRAM_OVERLAY(0) u8 unk_02016C94[0x100];
 

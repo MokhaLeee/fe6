@@ -83,20 +83,10 @@ const char Str_OpInfo_Spd[] = TEXT("速さ", "Spd");
 const char Str_OpInfo_Def[] = TEXT("守備", "Def");
 const char Str_OpInfo_Res[] = TEXT("魔防", "Res");
 
-char const *const OpInfoClassIntroMsgs[] = {
-	Str_OpInfo_Hp,
-	Str_OpInfo_Str,
-	Str_OpInfo_Skl,
-	Str_OpInfo_Spd,
-	Str_OpInfo_Def,
-	Str_OpInfo_Res
-};
-
-// https://decomp.me/scratch/zZ7qo
-#if 0
 void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 {
-	int i;
+	int i, j;
+	register int k asm("r2");
 	struct Unk_086905F8 *u_086905F8;
 
 	int use_mag = false;
@@ -111,7 +101,7 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 	};
 
 	for (i = ITEM_KIND_STAFF; i <= ITEM_KIND_ELDER; i++) {
-		if (GetJInfo(OpClassDemo_JidConfig[proc->unk_31])->wexp[i] != 0) {
+		if (GetJInfo(OpClassDemo_JidConfig[proc->index])->wexp[i] != 0) {
 			use_mag = true;
 			break;
 		}
@@ -127,22 +117,24 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 	TmFill(gBg1Tm, 0);
 	TmFill(gBg2Tm, 0);
 
-	if (proc->unk_31 == 0) {
-		u_086905F8 = gUnk_086905F8;
+	if (proc->index == 0) {
 		proc->unk_2E = 0;
-	} else {
-		int j = 0;
-		int k;
-
 		u_086905F8 = gUnk_086905F8;
+	} else {
+		i = 0;
+		k = 0;
+		j = 0;
 
-		for (k = 0; k < proc->unk_31; k++) {
-			while (u_086905F8[++j].unk_01 != 0)
-				;
-		}
-		proc->unk_2E = j + 1;
+		do {
+			do {
+				u_086905F8 = &gUnk_086905F8[++j];
+				++i;
+			} while (u_086905F8->unk_01 != 0);
+			k++;
+		} while(k != proc->index);
+		proc->unk_2E = i + 1;
 	}
-	proc->unk_30 = u_086905F8[proc->unk_2E].unk_00;
+	proc->unk_30 = gUnk_086905F8[proc->unk_2E].unk_00;
 
 	SetDispEnable(0, 0, 0, 0, 0);
 	ResetTextFont();
@@ -169,27 +161,25 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 
 	TmFill(gBg0Tm, 0);
 
-	proc->unit_status[0] = GetJInfo(OpClassDemo_JidConfig[proc->unk_31])->base_hp;
-	proc->unit_status[1] = GetJInfo(OpClassDemo_JidConfig[proc->unk_31])->base_pow;
-	proc->unit_status[2] = GetJInfo(OpClassDemo_JidConfig[proc->unk_31])->base_skl;
-	proc->unit_status[3] = GetJInfo(OpClassDemo_JidConfig[proc->unk_31])->base_spd;
-	proc->unit_status[4] = GetJInfo(OpClassDemo_JidConfig[proc->unk_31])->base_def;
-	proc->unit_status[5] = GetJInfo(OpClassDemo_JidConfig[proc->unk_31])->base_res;
+	proc->unit_status[0] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_hp;
+	proc->unit_status[1] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_pow;
+	proc->unit_status[2] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_skl;
+	proc->unit_status[3] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_spd;
+	proc->unit_status[4] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_def;
+	proc->unit_status[5] = GetJInfo(OpClassDemo_JidConfig[proc->index])->base_res;
 
 	for (i = 0; i < 6; i++) {
-		struct Text *text = &OpClassDemoTexts[i];
-
-		InitText(text, 3);
-		ClearText(text);
-		Text_SetColor(text, TEXT_COLOR_SYSTEM_GOLD);
-		Text_SetCursor(text, 0);
+		InitText(&OpClassDemoTexts[i], 3);
+		ClearText(&OpClassDemoTexts[i]);
+		Text_SetColor(&OpClassDemoTexts[i], TEXT_COLOR_SYSTEM_GOLD);
+		Text_SetCursor(&OpClassDemoTexts[i], 0);
 
 		if (use_mag && i == 1)
 			Text_DrawString(&OpClassDemoTexts[1], Str_OpInfo_Mag);
 		else
-			Text_DrawString(text, msgs[i]);
+			Text_DrawString(&OpClassDemoTexts[i], msgs[i]);
 
-		PutText(text, gBg0Tm + TM_OFFSET(1, 1 + i * 2));
+		PutText(&OpClassDemoTexts[i], gBg0Tm + TM_OFFSET(1, 1 + i * 2));
 		PutNumber(gBg0Tm + TM_OFFSET(5, 1 + i * 2), TEXT_COLOR_SYSTEM_WHITE, proc->unit_status[i]);
 	}
 
@@ -199,7 +189,7 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 	SetInitTalkTextFont();
 	ClearTalkText();
 	EndTalk();
-	StartTalkMsg(2, 15, OpClassDemo_IntroMsgs[proc->unk_31]);
+	StartTalkMsg(2, 15, OpClassDemo_IntroMsgs[proc->index]);
 	SetTalkPrintColor(TEXT_COLOR_SYSTEM_WHITE);
 	SetTalkFlag(TALK_FLAG_INSTANTSHIFT);
 	SetTalkFlag(TALK_FLAG_NOBUBBLE);
@@ -210,7 +200,7 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 
 	OpEkrMiniDesc.x = 0x104;
 	OpEkrMiniDesc.y = 0x58;
-	OpEkrMiniDesc.bid = OpClassDemo_BIDs[proc->unk_31];
+	OpEkrMiniDesc.bid = OpClassDemo_BIDs[proc->index];
 	OpEkrMiniDesc.round_type = ANIM_ROUND_TAKING_HIT_CLOSE;
 	OpEkrMiniDesc.faction_pal = BANIMPAL_BLUE;
 	OpEkrMiniDesc.pos = POS_R;
@@ -222,11 +212,11 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 	OpEkrMiniDesc.scr_buf = OpEkrMini_ScrBuf;
 	OpEkrMiniDesc.magicfx_desc = &OpEkrMagiDesc;
 
-	OpEkrMagiDesc.magicFuncIdx = OpClassDemo_MagiConfig[proc->unk_31 * 5 + 0];
-	OpEkrMagiDesc.xOffsetBg    = OpClassDemo_MagiConfig[proc->unk_31 * 5 + 1];
-	OpEkrMagiDesc.yOffsetBg    = OpClassDemo_MagiConfig[proc->unk_31 * 5 + 2];
-	OpEkrMagiDesc.xOffsetObj   = OpClassDemo_MagiConfig[proc->unk_31 * 5 + 3];
-	OpEkrMagiDesc.yOffsetObj   = OpClassDemo_MagiConfig[proc->unk_31 * 5 + 4];
+	OpEkrMagiDesc.magicFuncIdx = OpClassDemo_MagiConfig[proc->index * 5 + 0];
+	OpEkrMagiDesc.xOffsetBg    = OpClassDemo_MagiConfig[proc->index * 5 + 1];
+	OpEkrMagiDesc.yOffsetBg    = OpClassDemo_MagiConfig[proc->index * 5 + 2];
+	OpEkrMagiDesc.xOffsetObj   = OpClassDemo_MagiConfig[proc->index * 5 + 3];
+	OpEkrMagiDesc.yOffsetObj   = OpClassDemo_MagiConfig[proc->index * 5 + 4];
 	OpEkrMagiDesc.objChr = 0x280;
 	OpEkrMagiDesc.objPalId = 0xF;
 	OpEkrMagiDesc.bgPalId = 0xF;
@@ -241,10 +231,10 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 
 	NewEkrUnitMainMini(&OpEkrMiniDesc);
 
-	OpEkrTerrainDesc.terrain_l = OpClassDemo_TerrainConfig[proc->unk_31 * 2 + POS_L];
+	OpEkrTerrainDesc.terrain_l = OpClassDemo_TerrainConfig[proc->index][POS_L];
 	OpEkrTerrainDesc.pal_l = 0xA;
 	OpEkrTerrainDesc.chr_l = 0x380;
-	OpEkrTerrainDesc.terrain_r = OpClassDemo_TerrainConfig[proc->unk_31 * 2 + POS_R];
+	OpEkrTerrainDesc.terrain_r = OpClassDemo_TerrainConfig[proc->index][POS_R];
 	OpEkrTerrainDesc.pal_r = 0xB;
 	OpEkrTerrainDesc.chr_r = 0x3C0;
 	OpEkrTerrainDesc.distance = EKR_DISTANCE_CLOSE;
@@ -256,7 +246,6 @@ void ClassInfoDisp_ExecEkrMainMini(struct ProcClassInfoDisp *proc)
 	EkrTerrainfx_SetPosition(&OpEkrTerrainDesc, 0xD0, 0x68, 0x130, 0x68);
 	SetOnHBlankA(HBlank_ClassInfoDisp);
 }
-#endif
 
 const char Str_OpInfo_Mag[] = TEXT("魔力", "Res");
 const u8 gUnk_0835C829[0xC] = { 2, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 4 };

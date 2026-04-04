@@ -238,8 +238,8 @@ PROC_LABEL 99
 	.global ProcScr_EndingPInfoFadeOut
 ProcScr_EndingPInfoFadeOut: @ 0868BFAC
 	PROC_19
-	PROC_CALL PersonEndingInfo_Init
-	PROC_REPEAT PersonEndingInfo_Loop
+	PROC_CALL EndingPInfoFadeOut_Init
+	PROC_REPEAT EndingPInfoFadeOut_Loop
 	PROC_END
 
 	.global gPersonEndingInfo
