@@ -40,10 +40,21 @@ Pal_Op_0835AB08: @ 0835AB08
 Tsa_Op_0835AB28: @ 0835AB28
 	.incbin "fe6-base.gba", 0x35AB28, (0x35B040 - 0x35AB28) @ length: 0518
 
-	.global gUnk_0835B040
-gUnk_0835B040: @ 0835B040
-	.incbin "fe6-base.gba", 0x35B040, (0x35C034 - 0x35B040) @ length: 0FF4
+	.global Img_ClassDemoStatus_Fonts
+Img_ClassDemoStatus_Fonts: @ 0835B040
+	.incbin "data/OpInfo/Img_ClassDemoStatus_Fonts.4bpp.lz"
 
-	.global gUnk_0835C034
-gUnk_0835C034: @ 0835C034
-	.incbin "fe6-base.gba", 0x35C034, (0x35C7E4 - 0x35C034) @ length: 07D8
+	.global Pal_ClassDemoStatus_Fonts
+Pal_ClassDemoStatus_Fonts: @ 0835C034
+	.incbin "data/OpInfo/Img_ClassDemoStatus_Fonts.gbapal", 0, 0x20
+	.incbin "data/OpInfo/Img_ClassDemoStatus_Fonts_Shadow.gbapal", 0, 0x20
+
+	@ unused
+	.global Img_IntelligentSystem
+Img_IntelligentSystem:
+	.incbin "data/OpInfo/Img_IntelligentSystem.4bpp.lz"
+
+	@ unused
+	.global Pal_IntelligentSystem
+Pal_IntelligentSystem:
+	.incbin "data/OpInfo/Img_IntelligentSystem.gbapal", 0, 0x20

@@ -446,8 +446,8 @@ extern u16 const Pal_Op_0835A5D0[];
 extern u8 const Tsa_Op_0835A5F0[];
 extern u16 const Pal_Op_0835AB08[];
 extern u8 const Tsa_Op_0835AB28[];
-// extern const ??? gUnk_0835B040
-// extern const ??? gUnk_0835C034
+extern u8 const Img_ClassDemoStatus_Fonts[];
+extern u16 const Pal_ClassDemoStatus_Fonts[];
 // extern const ??? OpInfoClassIntroMsgs
 extern char const Str_OpInfo_Mag[];
 // extern const ??? gUnk_0835C829
@@ -465,15 +465,15 @@ extern u8 const Img_Title_BG3[];
 extern u16 const Pal_Title_BG3[];
 extern u8 const Img_Title_08364438[];
 extern u16 const Pal_Title_08364A94[];
-// extern const ??? gUnk_08364AB4
-// extern const ??? gUnk_083674BC
-// extern const ??? gUnk_08367B30
-// extern const ??? gUnk_0836A094
-// extern const ??? gUnk_0836A494
-// extern const ??? gUnk_0836A888
-// extern const ??? gUnk_0836A9AC
-// extern const ??? gUnk_0836EEFC
-// extern const ??? gUnk_0836F610
+// extern const ??? Img_Title_08364AB4
+// extern const ??? Tsa_OpAnim_083674BC
+// extern const ??? Img_Title_08367B30
+// extern const ??? Tsa_OpAnim_0836A094
+// extern const ??? Tsa_OpAnim_0836A494
+// extern const ??? Pal_OpAnim_0836A888
+// extern const ??? Img_OpAnim_0836A9AC
+// extern const ??? Img_OpAnim_0836EEFC
+// extern const ??? Tsa_OpAnim_0836F610
 // extern const ??? Img_EndingMonologue
 // extern const ??? Tsa_EndingMonologue
 // extern const ??? Zpal_EndingMonologue

@@ -769,7 +769,7 @@ void InitGoldBoxText(u16 *tm)
 	SetTextFont(NULL);
 	InitSystemTextFont();
 	InitText(&Text_GoldBox, 1);
-	PutString(tm, TEXT_COLOR_SYSTEM_GOLD, String_ShopGoldG);
+	PutString(tm, TEXT_COLOR_SYSTEM_GOLD, "Ｇ");
 }
 
 void ClearGoldBoxTextTm2Line(u16 * tm, int col)
@@ -939,7 +939,7 @@ void DrawShopItemLine(struct Text *th, int item, struct Unit *unit, u16 *dst)
 	if (IsItemSellable(item) != 0)
 		PutNumber(dst + 0x11, TEXT_COLOR_SYSTEM_BLUE, GetItemSellPrice(item));
 	else
-		Text_InsertDrawString(th, 0x5C, TEXT_COLOR_SYSTEM_BLUE, String_Shop_0835CA78);
+		Text_InsertDrawString(th, 0x5C, TEXT_COLOR_SYSTEM_BLUE, "ーーーー");
 }
 
 u16 GetItemPurchasePrice(struct Unit *unit, int item)

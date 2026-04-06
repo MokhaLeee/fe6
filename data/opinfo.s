@@ -36,24 +36,24 @@ PROC_LABEL 4
 	PROC_REPEAT OpInfoIcon_Loop_FadeOut
 	PROC_END
 
-	.global ProcScr_OpInfoGauge
-ProcScr_OpInfoGauge: @ 0868FFCC
+	.global ProcScr_ClassDemoMain
+ProcScr_ClassDemoMain: @ 0868FFCC
 	PROC_SLEEP 0
-	PROC_CALL OpInfoGauge_ExecEkrMainMini
+	PROC_CALL ClassDemoMain_ExecEkrMainMini
 	PROC_SLEEP 2
-	PROC_REPEAT OpInfoGauge_Loop_Intro
-	PROC_REPEAT OpInfoGauge_Loop_Main
-	PROC_REPEAT OpInfoGauge_Block
+	PROC_REPEAT ClassDemoMain_Loop_Intro
+	PROC_REPEAT ClassDemoMain_Loop_Main
+	PROC_REPEAT ClassDemoMain_Block
 PROC_LABEL 4
-	PROC_CALL OpInfoGauge_OnEnd
+	PROC_CALL ClassDemoMain_OnEnd
 	PROC_END
 
-	.global ProcScr_OpInfoStatusDisp
-ProcScr_OpInfoStatusDisp: @ 08690014
+	.global ProcScr_ClassDemoStatus
+ProcScr_ClassDemoStatus: @ 08690014
 	PROC_19
 	PROC_SLEEP 3
-	PROC_CALL OpInfoStatusDisp_Init
-	PROC_REPEAT OpInfoStatusDisp_Loop
+	PROC_CALL ClassDemoStatus_Init
+	PROC_REPEAT ClassDemoStatus_Loop
 PROC_LABEL 4
 	PROC_CALL func_fe6_08095D28
 	PROC_END
@@ -132,12 +132,4 @@ OpClassDemo_TerrainConfig: @ 08690A53
 
 	.global OpClassDemo_JidConfig
 OpClassDemo_JidConfig: @ 08690A99
-	.incbin "fe6-base.gba", 0x690A99, (0x690C14 - 0x690A99) @ length: 017B
-
-	.global gUnk_08690C14
-gUnk_08690C14: @ 08690C14
-	.incbin "fe6-base.gba", 0x690C14, (0x690D44 - 0x690C14) @ length: 0130
-
-	.global gUnk_08690D44
-gUnk_08690D44: @ 08690D44
-	.incbin "fe6-base.gba", 0x690D44, (0x690E60 - 0x690D44) @ length: 011C
+	.incbin "fe6-base.gba", 0x690A99, (0x690ABC - 0x690A99)

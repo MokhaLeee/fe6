@@ -740,6 +740,9 @@ SECTIONS
         . = ALIGN(4); src/worldmapfx.o(.rodata);
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
         . = ALIGN(4); src/opinfo_classdemo.o(.rodata);
+        . = ALIGN(4); src/shop.o(.rodata);
+        . = ALIGN(4); src/arena_ui.o(.rodata);
+        . = ALIGN(4); src/suspend_ui.o(.rodata);
         . = ALIGN(4); data/rodata_0835C80C.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
@@ -900,6 +903,7 @@ SECTIONS
         . = ALIGN(4); src/monologue.o(.data);
         . = ALIGN(4); src/opinfo.o(.data);
         . = ALIGN(4); data/opinfo.o(.data);
+        . = ALIGN(4); src/opinfo_classdemo.o(.data);
         . = ALIGN(4); src/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);
         . = ALIGN(4); src/suspend_ui.o(.data);

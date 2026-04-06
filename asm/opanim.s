@@ -1519,24 +1519,24 @@ func_fe6_08099654: @ 0x08099654
 .L0809966C: .4byte bool_opanim_03005284
 .L08099670:
 	bl func_fe6_08099BE4
-	ldr r0, .L08099708 @ =gUnk_0836A494
+	ldr r0, .L08099708 @ =Tsa_OpAnim_0836A494
 	ldr r1, .L0809970C @ =gBg0Tm
 	movs r4, #0xa0
 	lsls r4, r4, #1
 	adds r2, r4, #0
 	movs r3, #0
 	bl func_fe6_080998D4
-	ldr r0, .L08099710 @ =gUnk_083674BC
+	ldr r0, .L08099710 @ =Tsa_OpAnim_083674BC
 	ldr r1, .L08099714 @ =gBg1Tm
 	movs r2, #0
 	movs r3, #1
 	bl func_fe6_080998D4
-	ldr r0, .L08099718 @ =gUnk_0836A094
+	ldr r0, .L08099718 @ =Tsa_OpAnim_0836A094
 	ldr r1, .L0809971C @ =gBg3Tm
 	adds r2, r4, #0
 	movs r3, #3
 	bl func_fe6_080998D4
-	ldr r0, .L08099720 @ =gUnk_0836A888
+	ldr r0, .L08099720 @ =Pal_OpAnim_0836A888
 	ldr r4, .L08099724 @ =gBuf
 	adds r1, r4, #0
 	bl Decompress
@@ -1549,7 +1549,7 @@ func_fe6_08099654: @ 0x08099654
 	strh r5, [r0]
 	movs r0, #6
 	bl SetBlackPal
-	ldr r4, .L0809972C @ =gUnk_08367B30
+	ldr r4, .L0809972C @ =Img_Title_08367B30
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1557,7 +1557,7 @@ func_fe6_08099654: @ 0x08099654
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r4, .L08099734 @ =gUnk_08364AB4
+	ldr r4, .L08099734 @ =Img_Title_08364AB4
 	movs r0, #1
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1582,18 +1582,18 @@ func_fe6_08099654: @ 0x08099654
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099708: .4byte gUnk_0836A494
+.L08099708: .4byte Tsa_OpAnim_0836A494
 .L0809970C: .4byte gBg0Tm
-.L08099710: .4byte gUnk_083674BC
+.L08099710: .4byte Tsa_OpAnim_083674BC
 .L08099714: .4byte gBg1Tm
-.L08099718: .4byte gUnk_0836A094
+.L08099718: .4byte Tsa_OpAnim_0836A094
 .L0809971C: .4byte gBg3Tm
-.L08099720: .4byte gUnk_0836A888
+.L08099720: .4byte Pal_OpAnim_0836A888
 .L08099724: .4byte gBuf
 .L08099728: .4byte gPal
-.L0809972C: .4byte gUnk_08367B30
+.L0809972C: .4byte Img_Title_08367B30
 .L08099730: .4byte 0x06002800
-.L08099734: .4byte gUnk_08364AB4
+.L08099734: .4byte Img_Title_08364AB4
 
 	thumb_func_start func_fe6_08099738
 func_fe6_08099738: @ 0x08099738
@@ -1919,7 +1919,7 @@ func_fe6_0809997C: @ 0x0809997C
 .L08099994: .4byte bool_opanim_03005284
 .L08099998:
 	bl func_fe6_08099CCC
-	ldr r4, .L08099A08 @ =gUnk_0836A9AC
+	ldr r4, .L08099A08 @ =Img_OpAnim_0836A9AC
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1928,10 +1928,10 @@ func_fe6_0809997C: @ 0x0809997C
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L08099A0C @ =gUnk_0836EEFC
+	ldr r0, .L08099A0C @ =Img_OpAnim_0836EEFC
 	ldr r1, .L08099A10 @ =gBg0Tm
 	bl Decompress
-	ldr r0, .L08099A14 @ =gUnk_0836F610
+	ldr r0, .L08099A14 @ =Tsa_OpAnim_0836F610
 	ldr r4, .L08099A18 @ =gBuf
 	adds r1, r4, #0
 	bl Decompress
@@ -1965,10 +1965,10 @@ func_fe6_0809997C: @ 0x0809997C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099A08: .4byte gUnk_0836A9AC
-.L08099A0C: .4byte gUnk_0836EEFC
+.L08099A08: .4byte Img_OpAnim_0836A9AC
+.L08099A0C: .4byte Img_OpAnim_0836EEFC
 .L08099A10: .4byte gBg0Tm
-.L08099A14: .4byte gUnk_0836F610
+.L08099A14: .4byte Tsa_OpAnim_0836F610
 .L08099A18: .4byte gBuf
 .L08099A1C: .4byte gPal
 .L08099A20: .4byte Img_OpAnim_083747A4

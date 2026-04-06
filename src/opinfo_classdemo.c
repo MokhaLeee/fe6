@@ -31,15 +31,9 @@ EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000] = {};
 
 EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6] = {};
 
-struct Unk_086905F8 {
-	u8 unk_00;
-	u8 unk_01;
-	u16 unk_02;
-};
+EWRAM_OVERLAY(opinfo) struct Vec1u unk_opinfo_0200FF54[14] = {};
 
-extern struct Unk_086905F8 gUnk_086905F8[];
-
-void HBlank_OpInfoGauge(void)
+void HBlank_ClassDemoMain(void)
 {
 	u16 vcount = (REG_VCOUNT + 1);
 
@@ -83,7 +77,7 @@ const char Str_OpInfo_Spd[] = TEXT("速さ", "Spd");
 const char Str_OpInfo_Def[] = TEXT("守備", "Def");
 const char Str_OpInfo_Res[] = TEXT("魔防", "Res");
 
-void OpInfoGauge_ExecEkrMainMini(struct ProcOpInfoGauge *proc)
+void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 {
 	int i, j;
 	register int k asm("r2");
@@ -107,11 +101,11 @@ void OpInfoGauge_ExecEkrMainMini(struct ProcOpInfoGauge *proc)
 		}
 	}
 
-	proc->unk_2A = 0;
+	proc->x = 0;
 	proc->unk_2C = 0;
 	proc->unk_2E = 0;
 	proc->unk_3E = 1;
-	proc->unk_44 = 0xFA;
+	proc->anim_x = 0xFA;
 
 	TmFill(gBg0Tm, 0);
 	TmFill(gBg1Tm, 0);
@@ -183,7 +177,7 @@ void OpInfoGauge_ExecEkrMainMini(struct ProcOpInfoGauge *proc)
 		PutNumber(gBg0Tm + TM_OFFSET(5, 1 + i * 2), TEXT_COLOR_SYSTEM_WHITE, proc->unit_status[i]);
 	}
 
-	proc->procfx = StartOpInfoStatusDisp(proc);
+	proc->procfx = StartClassDemoStatus(proc);
 
 	InitTalk(0x100, 2, 0);
 	SetInitTalkTextFont();
@@ -244,8 +238,503 @@ void OpInfoGauge_ExecEkrMainMini(struct ProcOpInfoGauge *proc)
 
 	NewEkrTerrainfx(&OpEkrTerrainDesc);
 	EkrTerrainfx_SetPosition(&OpEkrTerrainDesc, 0xD0, 0x68, 0x130, 0x68);
-	SetOnHBlankA(HBlank_OpInfoGauge);
+	SetOnHBlankA(HBlank_ClassDemoMain);
 }
+
+void ClassDemoMain_Loop_Intro(struct ProcClassDemoMain *proc)
+{
+	proc->anim_x = proc->anim_x - 1 - (0x50 - proc->x) / 14;
+
+	if (proc->anim_x < 180)
+		proc->anim_x = 180;
+
+	SetDispEnable(1, 1, 1, 1, 1);
+	SetWinEnable(1, 0, 0);
+	SetWin0Box(0, 80 - proc->x, 240, proc->x + 80);
+	SetWin0Layers(1, 1, 1, 1, 1);
+	SetWOutLayers(0, 0, 0, 0, 0);
+
+	if (proc->x == 80) {
+		proc->anim_x = 180;
+		proc->x = 0;
+		Proc_Break(proc);
+		func_fe6_08095D48(proc->procfx);
+	} else
+		proc->x += 4;
+
+	EkrMainMini_SetAnimPosition(&OpEkrMiniDesc, proc->anim_x, 88);
+	EkrTerrainfx_SetPosition(&OpEkrTerrainDesc, proc->anim_x - 48, 104, proc->anim_x + 48, 104);
+	SetOpClassDemoStatusPos(proc->procfx, 0x78);
+}
+
+void ClassDemoMain_Loop_Main(struct ProcClassDemoMain *proc)
+{
+	int ret = false;
+
+	if (proc->unk_2C > 0x18F) {
+		proc->opinfo->mode = OPINFO_STATE_2;
+		goto goto_judge_ret;
+	}
+
+	proc->x++;
+	proc->unk_2C++;
+
+	if (gUnk_086905F8[proc->unk_2E].unk_01 == 0)
+		goto goto_judge_ret;
+
+	if (proc->x > gUnk_086905F8[proc->unk_2E].unk_01)
+		goto goto_ret_0;
+
+	if (gUnk_086905F8[proc->unk_2E].unk_01 != 0xFF)
+		goto goto_judge_ret;
+
+	if (proc->unk_3E != 0)
+		if (EkrMainMini_CheckBlocking(&OpEkrMiniDesc) != false)
+			goto goto_ret_0;
+
+	if (proc->unk_3E == 0)
+		if (EkrMainMini_CheckDone(&OpEkrMiniDesc) != false)
+			ret = 1;
+
+goto_judge_ret:
+
+	if (ret == 0)
+		return;
+
+goto_ret_0:
+
+	proc->unk_2E++;
+
+	if (gUnk_086905F8[proc->unk_2E].unk_01 == 0)
+		return;
+
+	if (gUnk_086905F8[proc->unk_2E].unk_00 == 0xFF) {
+		EkrMainMini_EndBlock(&OpEkrMiniDesc);
+		proc->unk_3E = 0;
+	} else if (proc->unk_30 != gUnk_086905F8[proc->unk_2E].unk_00) {
+		OpEkrMiniDesc.round_type = gUnk_086905F8[proc->unk_2E].unk_00;
+		EkrMainMini_UpdateAnim(&OpEkrMiniDesc);
+
+		if (gUnk_086905F8[proc->unk_2E].unk_00 == 4)
+			EkrMainMini_EndBlock(&OpEkrMiniDesc);
+
+		proc->unk_3E = 1;
+	}
+
+	proc->unk_30 = gUnk_086905F8[proc->unk_2E].unk_00;
+	proc->x = 0;
+}
+
+void ClassDemoMain_Block(struct ProcClassDemoMain *proc) {}
+
+void ClassDemoMain_OnEnd(struct ProcClassDemoMain *proc)
+{
+	SetOnHBlankA(NULL);
+	EndTalk();
+	EndActiveClassReelBgColorProc();
+	EndEkrTerrainfx(&OpEkrTerrainDesc);
+	EndActiveClassReelSpell();
+	EndEkrMainMini(&OpEkrMiniDesc);
+
+	if (proc->procfx)
+		Proc_Goto(proc->procfx, 4);
+
+	proc->opinfo->anim_proc = NULL;
+}
+
+ProcPtr StartClassAnimDisplay(struct ProcOpInfo *parent, u8 index)
+{
+	struct ProcClassDemoMain *proc;
+
+	proc = SpawnProc(ProcScr_ClassDemoMain, parent);
+	proc->index = index;
+	proc->opinfo = parent;
+	proc->procfx = NULL;
+
+	return proc;
+}
+
+#if 0
+void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
+{
+	int i;
+	struct ProcClassDemoMain *parent = proc->gauge;
+
+	proc->timer = 0;
+	proc->unk_42 = 0;
+	proc->unk_43 = 250;
+
+	for (i = 0; i < 14; i++) {
+		i8 tmp;
+		int j;
+		struct ClassDisplayFont *font1;
+		i8 *font2;
+
+		unk_opinfo_0200FF54[i].x = 0;
+		unk_opinfo_0200FF54[i].y = 0;
+
+		tmp = gClassDemoNames[parent->index][i * 4 + 0];
+		if (tmp == 0) {
+			proc->x[i] = 0xFF;
+			break;
+		}
+
+		j = 0;
+		font1 = gClassDisplayFont1;
+		font2 = gClassDemoNames;
+		for (;;) {
+			if (font2[4] == NULL)
+				break;
+
+			font1++; font2 += 2; i++;
+		}
+
+		proc->x[i] = j;
+		proc->unk_42 += font1->width - font1->x;
+	}
+
+	Decompress(Img_ClassDemoStatus_Fonts, OBJ_VRAM0);
+	ApplyPalettes(Pal_ClassDemoStatus_Fonts, 0x14, 2);
+}
+#endif
 
 const char Str_OpInfo_Mag[] = TEXT("魔力", "Res");
 const u8 gUnk_0835C829[0xC] = { 2, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 4 };
+
+u16 CONST_DATA Sprite_ClassDemoFont_0[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xD6) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_1[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xD7) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_2[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xD8) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_3[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x10D) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_4[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xD9) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_5[] = {
+	2,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x106) + OAM2_LAYER(3),
+	OAM0_SHAPE_8x8 + OAM0_Y(16), OAM1_SIZE_8x8, OAM2_CHR(0x146) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_6[] = {
+	2,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x107) + OAM2_LAYER(3),
+	OAM0_SHAPE_16x8 + OAM0_Y(16), OAM1_SIZE_16x8, OAM2_CHR(0x147) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_7[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xDA) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_8[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xDB) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_9[] = {
+	2,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x109) + OAM2_LAYER(3),
+	OAM0_SHAPE_8x8 + OAM0_Y(16), OAM1_SIZE_8x8, OAM2_CHR(0x149) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_10[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xDC) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_11[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xDD) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_12[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x10F) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_13[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xDE) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_14[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0xDF) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_15[] = {
+	2,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x10A) + OAM2_LAYER(3),
+	OAM0_SHAPE_16x8 + OAM0_Y(16), OAM1_SIZE_16x8, OAM2_CHR(0x14A) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_16[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x111) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_17[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x112) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_18[] = {
+	1,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x113) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_19[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x114) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_20[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x116) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_21[] = {
+	2,
+	OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x10C) + OAM2_LAYER(3),
+	OAM0_SHAPE_8x8 + OAM0_Y(16), OAM1_SIZE_8x8, OAM2_CHR(0x14C) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_22[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x90) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_23[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x92) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_24[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x94) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_25[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x96) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_26[] = {
+	2,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x100) + OAM2_LAYER(3),
+	OAM0_SHAPE_16x8 + OAM0_Y(16), OAM1_SIZE_16x8, OAM2_CHR(0x140) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_27[] = {
+	2,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x102) + OAM2_LAYER(3),
+	OAM0_SHAPE_16x8 + OAM0_Y(16), OAM1_SIZE_16x8, OAM2_CHR(0x142) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_28[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x118) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_29[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x98) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_30[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x9A) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_31[] = {
+	2,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x104) + OAM2_LAYER(3),
+	OAM0_SHAPE_16x8 + OAM0_Y(16), OAM1_SIZE_16x8, OAM2_CHR(0x144) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_32[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x9C) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_33[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x9E) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_34[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0xD0) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_35[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0xD2) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_ClassDemoFont_36[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0xD4) + OAM2_LAYER(3),
+};
+
+CONST_DATA struct ClassDisplayFont gClassDisplayFont1[] = {
+	{ Sprite_ClassDemoFont_0,  0x61, 0, 8,  0 },
+	{ Sprite_ClassDemoFont_1,  0x62, 0, 8,  0 },
+	{ Sprite_ClassDemoFont_2,  0x63, 0, 7,  0 },
+	{ Sprite_ClassDemoFont_3,  0x64, 0, 8,  0 },
+	{ Sprite_ClassDemoFont_4,  0x65, 0, 7,  0 },
+	{ Sprite_ClassDemoFont_5,  0x66, 1, 7,  0 },
+	{ Sprite_ClassDemoFont_6,  0x67, 1, 10, 0 },
+	{ Sprite_ClassDemoFont_7,  0x68, 0, 8,  0 },
+	{ Sprite_ClassDemoFont_8,  0x69, 0, 7,  0 },
+	{ Sprite_ClassDemoFont_9,  0x6A, 1, 8,  0 },
+	{ Sprite_ClassDemoFont_10, 0x6B, 0, 8, 0  },
+	{ Sprite_ClassDemoFont_11, 0x6C, 0, 6, 0  },
+	{ Sprite_ClassDemoFont_12, 0x6D, 0, 14, 0 },
+	{ Sprite_ClassDemoFont_13, 0x6E, 0, 8, 0  },
+	{ Sprite_ClassDemoFont_14, 0x6F, 0, 8, 0  },
+	{ Sprite_ClassDemoFont_15, 0x70, 2, 12, 0 },
+	{ Sprite_ClassDemoFont_16, 0x72, 0, 6, 0  },
+	{ Sprite_ClassDemoFont_17, 0x73, 0, 6, 0  },
+	{ Sprite_ClassDemoFont_18, 0x74, 0, 7, 0  },
+	{ Sprite_ClassDemoFont_19, 0x75, 0, 9, 0  },
+	{ Sprite_ClassDemoFont_20, 0x77, 0, 12, 0 },
+	{ Sprite_ClassDemoFont_21, 0x79, 0, 8, 0  },
+	{ Sprite_ClassDemoFont_22, 0x41, 1, 15, 0 },
+	{ Sprite_ClassDemoFont_23, 0x42, 1, 14, 0 },
+	{ Sprite_ClassDemoFont_24, 0x44, 1, 15, 0 },
+	{ Sprite_ClassDemoFont_25, 0x46, 1, 15, 0 },
+	{ Sprite_ClassDemoFont_26, 0x47, 1, 13, 0 },
+	{ Sprite_ClassDemoFont_27, 0x48, 0, 15, 6 },
+	{ Sprite_ClassDemoFont_28, 0x4B, 1, 15, 0 },
+	{ Sprite_ClassDemoFont_29, 0x4C, 0, 12, 0 },
+	{ Sprite_ClassDemoFont_30, 0x4D, 0, 15, 0 },
+	{ Sprite_ClassDemoFont_31, 0x4E, 0, 14, 6 },
+	{ Sprite_ClassDemoFont_32, 0x50, 2, 12, 0 },
+	{ Sprite_ClassDemoFont_33, 0x53, 2, 12, 0 },
+	{ Sprite_ClassDemoFont_34, 0x54, 1, 14, 0 },
+	{ Sprite_ClassDemoFont_35, 0x56, 1, 15, 0 },
+	{ Sprite_ClassDemoFont_36, 0x57, 0, 16, 0 },
+	{ NULL, 0, 0, 0, 0 },
+};
+
+const char * CONST_DATA gClassDemoNames[] = {
+	"Lord",
+	"Socialknight",
+	"Paladin",
+	"Archer",
+	"Armorknight",
+	"Priest",
+	"Thief",
+	"Mercenary",
+	"Fighter",
+	"Torubadour",
+	"Myrmidon",
+	"Mage",
+	"Nomad",
+	"Bandit",
+	"Pirate",
+	"Shaman",
+	"Bard",
+	"Dancer",
+	"Pegasusknight",
+	"Dragonknight",
+	"Warrior",
+	"Druid",
+	"Valkyuria",
+	"Hero",
+	"Falconknight",
+	"Berserker",
+	"Sage",
+	"Bishop",
+	"Swordmaster",
+	"Nomadictrooper",
+	"Sniper",
+	"General",
+	"Dragonmaster",
+	"Mamkute",
+	"King"
+};
+
+u16 CONST_DATA Sprite_08690DD0[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690DD8[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x4) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690DE0[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x8) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690DE8[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0xC) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690DF0[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x10) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690DF8[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x14) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690E00[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x18) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690E08[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x1C) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690E10[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x80) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690E18[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x84) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690E20[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x88) + OAM2_LAYER(3),
+};
+
+u16 CONST_DATA Sprite_08690E28[] = {
+	1,
+	OAM0_SHAPE_32x32, OAM1_SIZE_32x32, OAM2_CHR(0x8C) + OAM2_LAYER(3),
+};
+
+CONST_DATA u16 * CONST_DATA Sprites_ClassDemo_Unused[] = {
+	Sprite_08690DD0, Sprite_08690DD8, Sprite_08690DE0, Sprite_08690DE8,
+	Sprite_08690DF0, Sprite_08690DF8, Sprite_08690E00, Sprite_08690E08,
+	Sprite_08690E10, Sprite_08690E18, Sprite_08690E20, Sprite_08690E28,
+};
