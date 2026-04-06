@@ -354,7 +354,7 @@ ProcPtr StartClassAnimDisplay(struct ProcOpInfo *parent, u8 index)
 	return proc;
 }
 
-#if 0
+#if NONMATCHING
 void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
 {
 	int i;
@@ -365,36 +365,155 @@ void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
 	proc->unk_43 = 250;
 
 	for (i = 0; i < 14; i++) {
-		i8 tmp;
+		char ch;
 		int j;
-		struct ClassDisplayFont *font1;
-		i8 *font2;
+		const struct ClassDisplayFont *font;
 
 		unk_opinfo_0200FF54[i].x = 0;
 		unk_opinfo_0200FF54[i].y = 0;
 
-		tmp = gClassDemoNames[parent->index][i * 4 + 0];
-		if (tmp == 0) {
-			proc->x[i] = 0xFF;
+		ch = gClassDemoNames[parent->index][i];
+		if (ch == '\0') {
+			proc->ch_pos[i] = 0xFF;
 			break;
 		}
 
-		j = 0;
-		font1 = gClassDisplayFont1;
-		font2 = gClassDemoNames;
-		for (;;) {
-			if (font2[4] == NULL)
-				break;
-
-			font1++; font2 += 2; i++;
+		for (j = 0, font = gClassDisplayFont1; ; j++) {
+			if (font->sprite && font->ch == ch) {
+				proc->ch_pos[i] = j;
+				proc->unk_42 += font->width - font->x_start;
+			}
 		}
-
-		proc->x[i] = j;
-		proc->unk_42 += font1->width - font1->x;
 	}
 
 	Decompress(Img_ClassDemoStatus_Fonts, OBJ_VRAM0);
 	ApplyPalettes(Pal_ClassDemoStatus_Fonts, 0x14, 2);
+}
+#else
+NAKEDFUNC
+void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
+{
+asm("\
+	.syntax unified\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	mov ip, r0				@ ip = proc\n\
+	ldr r0, [r0, #0x14]\n\
+	mov r1, ip\n\
+	str r0, [r1, #0x30]		@ r1+30 = parent\n\
+	movs r1, #0\n\
+	movs r0, #0\n\
+	mov r2, ip\n\
+	strh r0, [r2, #0x2a]\n\
+	adds r2, #0x42\n\
+	strb r1, [r2]\n\
+	mov r1, ip\n\
+	adds r1, #0x43\n\
+	movs r0, #0xfa\n\
+	strb r0, [r1]\n\
+	movs r4, #0\n\
+	ldr r0, .L08095B48 @ =gClassDemoNames\n\
+	mov sb, r0\n\
+	movs r1, #0x34\n\
+	add r1, ip\n\
+	mov r8, r1\n\
+	adds r7, r2, #0\n\
+	mov sl, sb\n\
+.L08095B16:\n\
+	lsls r0, r4, #2\n\
+	ldr r2, .L08095B4C @ =unk_opinfo_0200FF54\n\
+	adds r0, r0, r2\n\
+	movs r1, #0\n\
+	strb r1, [r0]\n\
+	strb r1, [r0, #1]\n\
+	mov r1, ip\n\
+	ldr r0, [r1, #0x30]\n\
+	adds r0, #0x31\n\
+	ldrb r0, [r0]\n\
+	lsls r3, r0, #2\n\
+	mov r2, sb\n\
+	adds r0, r3, r2\n\
+	ldr r0, [r0]\n\
+	adds r0, r0, r4\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	cmp r0, #0\n\
+	bne .L08095B64\n\
+	mov r0, r8\n\
+	adds r1, r0, r4\n\
+	movs r0, #0xff\n\
+	strb r0, [r1]\n\
+	b .L08095B98\n\
+	.align 2, 0\n\
+.L08095B48: .4byte gClassDemoNames\n\
+.L08095B4C: .4byte unk_opinfo_0200FF54\n\
+.L08095B50:\n\
+	mov r1, r8\n\
+	adds r0, r1, r4\n\
+	strb r5, [r0]\n\
+	ldrb r2, [r3, #6]\n\
+	ldrb r1, [r3, #5]\n\
+	subs r0, r2, r1\n\
+	ldrb r2, [r7]\n\
+	adds r0, r2, r0\n\
+	strb r0, [r7]\n\
+	b .L08095B92\n\
+.L08095B64:\n\
+	movs r5, #0\n\
+	ldr r1, .L08095BBC @ =gClassDisplayFont1\n\
+	ldr r0, [r1]\n\
+	adds r6, r4, #1\n\
+	cmp r0, #0\n\
+	beq .L08095B92\n\
+	mov r2, sl\n\
+	adds r0, r3, r2\n\
+	ldr r0, [r0]\n\
+	adds r0, r0, r4\n\
+	movs r2, #0\n\
+	ldrsb r2, [r0, r2]\n\
+	adds r3, r1, #0\n\
+.L08095B7E:\n\
+	movs r0, #4\n\
+	ldrsb r0, [r3, r0]\n\
+	cmp r0, r2\n\
+	beq .L08095B50\n\
+	adds r1, #8\n\
+	adds r3, #8\n\
+	adds r5, #1\n\
+	ldr r0, [r1]\n\
+	cmp r0, #0\n\
+	bne .L08095B7E\n\
+.L08095B92:\n\
+	adds r4, r6, #0\n\
+	cmp r4, #0xd\n\
+	ble .L08095B16\n\
+.L08095B98:\n\
+	ldr r1, .L08095BC0 @ =0x06010000\n\
+	ldr r0, .L08095BC4 @ =Img_ClassDemoStatus_Fonts\n\
+	bl Decompress\n\
+	ldr r0, .L08095BC8 @ =Pal_ClassDemoStatus_Fonts\n\
+	movs r1, #0xa0\n\
+	lsls r1, r1, #2\n\
+	movs r2, #0x40\n\
+	bl ApplyPaletteExt\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+.L08095BBC: .4byte gClassDisplayFont1\n\
+.L08095BC0: .4byte 0x06010000\n\
+.L08095BC4: .4byte Img_ClassDemoStatus_Fonts\n\
+.L08095BC8: .4byte Pal_ClassDemoStatus_Fonts\n\
+	.syntax divided\n\
+");
 }
 #endif
 

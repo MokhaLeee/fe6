@@ -127,7 +127,7 @@ struct ProcClassDemoStatus {
 	STRUCT_PAD(0x2C, 0x30);
 
 	/* 30 */ struct ProcClassDemoMain *gauge;
-	/* 34 */ u8 x[14];
+	/* 34 */ u8 ch_pos[14];
 	/* 42 */ u8 unk_42;
 	/* 43 */ u8 unk_43;
 };
@@ -203,7 +203,7 @@ extern CONST_DATA u8 OpClassDemo_JidConfig[];
 struct ClassDisplayFont {
 	u16 *sprite;
 	char ch;
-	u8 a, b, c;
+	u8 x_start, width, c;
 };
 
 extern CONST_DATA struct ClassDisplayFont gClassDisplayFont1[];
