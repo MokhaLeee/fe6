@@ -221,11 +221,10 @@ u8 PopNextEndingPerson(void)
 	return uid;
 }
 
-#if NONMATCHING
 u8 PopNextEnding2Person(u8 pos)
 {
 	int uid;
-	i8 _uid;
+	int _uid;
 
 	if (pos != POS_L)
 		_uid = gEndingUid1;
@@ -254,83 +253,6 @@ u8 PopNextEnding2Person(u8 pos)
 
 	return uid;
 }
-#else
-NAKEDFUNC
-u8 PopNextEnding2Person(u8 pos)
-{
-asm("\
-	.syntax unified\n\
-	push {r4, r5, r6, lr}\n\
-	lsls r0, r0, #0x18\n\
-	cmp r0, #0\n\
-	beq .L080916BC\n\
-	ldr r0, .L080916B8 @ =gEndingUid1\n\
-	b .L080916BE\n\
-	.align 2, 0\n\
-.L080916B8: .4byte gEndingUid1\n\
-.L080916BC:\n\
-	ldr r0, .L08091724 @ =gEndingUid2\n\
-.L080916BE:\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	adds r4, r0, #0\n\
-	cmp r4, #0x3f\n\
-	bgt .L08091718\n\
-	movs r6, #1\n\
-	rsbs r6, r6, #0\n\
-.L080916CE:\n\
-	adds r0, r4, #0\n\
-	bl GetUnit\n\
-	cmp r0, #0\n\
-	beq .L08091712\n\
-	ldr r0, [r0]\n\
-	cmp r0, #0\n\
-	beq .L08091712\n\
-	ldrb r0, [r0, #4]\n\
-	cmp r0, #0x42\n\
-	beq .L08091712\n\
-	movs r2, #0\n\
-	ldr r0, .L08091728 @ =gEndingUids1\n\
-	movs r1, #0\n\
-	ldrsb r1, [r0, r1]\n\
-	adds r3, r0, #0\n\
-	cmp r1, r6\n\
-	beq .L08091712\n\
-	adds r5, r3, #0\n\
-	movs r1, #1\n\
-	rsbs r1, r1, #0\n\
-.L080916F8:\n\
-	adds r0, r2, r5\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	cmp r0, r4\n\
-	beq .L08091718\n\
-	adds r2, #1\n\
-	adds r0, r2, r3\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	cmp r0, r1\n\
-	bne .L080916F8\n\
-.L08091712:\n\
-	adds r4, #1\n\
-	cmp r4, #0x3f\n\
-	ble .L080916CE\n\
-.L08091718:\n\
-	lsls r0, r4, #0x18\n\
-	lsrs r0, r0, #0x18\n\
-	pop {r4, r5, r6}\n\
-	pop {r1}\n\
-	bx r1\n\
-	.align 2, 0\n\
-.L08091724: .4byte gEndingUid2\n\
-.L08091728: .4byte gEndingUids1\n\
-	.syntax divided\n\
-");
-}
-#endif
 
 void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 {
