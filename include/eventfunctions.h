@@ -342,7 +342,7 @@ void SetFlagIfDefeatedByBindingBlade(void);
 enum ending_id {
     TRUE_ENDING,
     NORMAL_ENDING,
-    FALSE_ENDING,
+    FAKE_ENDING,
 };
 extern u8 EWRAM_DATA gEndingId;
 

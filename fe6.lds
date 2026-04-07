@@ -363,8 +363,9 @@ SECTIONS
         . = 0x0203DC3C - __ewram_overlay_end;
         . = ALIGN(4); src/xmap.o(ewram_data);
 
-        . = 0x0203DCA7 - __ewram_overlay_end;
-        . = ALIGN(1); gEndingSceneDispEnPidList = .;
+        . = 0x0203DC70 - __ewram_overlay_end;
+        . = ALIGN(4); src/playrank2.o(ewram_data);
+
 
         . = 0x0203DCB8 - __ewram_overlay_end;
         . = ALIGN(4); src/shop.o(ewram_data);
@@ -606,6 +607,7 @@ SECTIONS
         asm/opinfo.o(.text);
         src/opinfo_classdemo.o(.text);
         asm/opinfo_classdemo.o(.text);
+        src/opinfo_classdemo2.o(.text);
         src/shop.o(.text);
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
@@ -737,6 +739,10 @@ SECTIONS
         . = ALIGN(4); src/savemenu.o(.rodata);
         . = ALIGN(4); src/savemenu_2.o(.rodata);
         . = ALIGN(4); data/rodata.o(.rodata);
+        . = ALIGN(4); src/playrank2.o(.rodata);
+        . = ALIGN(4); src/monologue_img.o(.rodata);
+        . = ALIGN(4); src/ending_monologue_img.o(.rodata);
+        . = ALIGN(4); data/data_wmarrow.o(.rodata);
         . = ALIGN(4); src/worldmapfx.o(.rodata);
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
         . = ALIGN(4); src/opinfo_classdemo.o(.rodata);

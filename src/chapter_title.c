@@ -147,7 +147,7 @@ int GetChapterTitleExtra(struct PlaySt const * play_st)
                 case NORMAL_ENDING:
                     return 0x29;
 
-                case FALSE_ENDING:
+                case FAKE_ENDING:
                     return 0x28;
             }
         }

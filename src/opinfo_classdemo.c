@@ -6,13 +6,15 @@
 #include "sprite.h"
 #include "hardware.h"
 #include "savemenu.h"
-#include "opinfo.h"
 #include "unit.h"
 #include "item.h"
 #include "text.h"
 #include "util.h"
 #include "talk.h"
 #include "armfunc.h"
+
+#include "opinfo.h"
+
 #include "constants/jids.h"
 
 EWRAM_OVERLAY(opinfo) struct EkrMainMiniDesc OpEkrMiniDesc = {};
@@ -31,7 +33,7 @@ EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000] = {};
 
 EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6] = {};
 
-EWRAM_OVERLAY(opinfo) struct Vec1u unk_opinfo_0200FF54[14] = {};
+EWRAM_OVERLAY(opinfo) u8 unk_opinfo_0200FF54[14 * 2] = {};
 
 void HBlank_ClassDemoMain(void)
 {
@@ -386,8 +388,8 @@ void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
 		}
 	}
 
-	Decompress(Img_ClassDemoStatus_Fonts, OBJ_VRAM0);
-	ApplyPalettes(Pal_ClassDemoStatus_Fonts, 0x14, 2);
+	Decompress(Img_ClassDemoFont, OBJ_VRAM0);
+	ApplyPalettes(Pal_ClassDemoFont, 0x14, 2);
 }
 #else
 NAKEDFUNC
@@ -493,9 +495,9 @@ asm("\
 	ble .L08095B16\n\
 .L08095B98:\n\
 	ldr r1, .L08095BC0 @ =0x06010000\n\
-	ldr r0, .L08095BC4 @ =Img_ClassDemoStatus_Fonts\n\
+	ldr r0, .L08095BC4 @ =Img_ClassDemoFont\n\
 	bl Decompress\n\
-	ldr r0, .L08095BC8 @ =Pal_ClassDemoStatus_Fonts\n\
+	ldr r0, .L08095BC8 @ =Pal_ClassDemoFont\n\
 	movs r1, #0xa0\n\
 	lsls r1, r1, #2\n\
 	movs r2, #0x40\n\
@@ -510,8 +512,8 @@ asm("\
 	.align 2, 0\n\
 .L08095BBC: .4byte gClassDisplayFont1\n\
 .L08095BC0: .4byte 0x06010000\n\
-.L08095BC4: .4byte Img_ClassDemoStatus_Fonts\n\
-.L08095BC8: .4byte Pal_ClassDemoStatus_Fonts\n\
+.L08095BC4: .4byte Img_ClassDemoFont\n\
+.L08095BC8: .4byte Pal_ClassDemoFont\n\
 	.syntax divided\n\
 ");
 }

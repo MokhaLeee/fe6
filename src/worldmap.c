@@ -271,8 +271,8 @@ void WmArrow_Loop(struct ProcWmArrow * proc)
             conf->x_array[i] = conf->unk_74[r6];
             conf->y_array[i] = conf->unk_A4[r6];
             conf->unk_294[i] = conf->arctan_array[r6 + 1];
-            conf->unk_1A4[i] = conf->unk_244[i] * gUnk_08353328[(conf->unk_294[i] + 0x100) & 0x3FF] / 0x8000;
-            conf->unk_1F4[i] = conf->unk_244[i] * gUnk_08353328[(conf->unk_294[i]) & 0x3FF] / 0x8000;
+            conf->unk_1A4[i] = conf->unk_244[i] * WmArrowConf[(conf->unk_294[i] + 0x100) & 0x3FF] / 0x8000;
+            conf->unk_1F4[i] = conf->unk_244[i] * WmArrowConf[(conf->unk_294[i]) & 0x3FF] / 0x8000;
             conf->unk_F0[i] = 1;
 
             /* Fall through */
@@ -878,14 +878,14 @@ void WmZoomCore(int a, int b, int c, int d, int e, i16 f, i16 g)
     int r7;
 
     if (1 & r5)
-        r7 = (gUnk_08353328[r4 & 0x3FF] + gUnk_08353328[(r4 + 1) & 0x3FF]) >> 1;
+        r7 = (WmArrowConf[r4 & 0x3FF] + WmArrowConf[(r4 + 1) & 0x3FF]) >> 1;
     else
-        r7 =  gUnk_08353328[r4 & 0x3FF];
+        r7 =  WmArrowConf[r4 & 0x3FF];
 
     if (1 & r5)
-        r5 = (gUnk_08353328[(r4 + 0x100) & 0x3FF] + gUnk_08353328[(r4 + 0x101) & 0x3FF]) >> 1;
+        r5 = (WmArrowConf[(r4 + 0x100) & 0x3FF] + WmArrowConf[(r4 + 0x101) & 0x3FF]) >> 1;
     else
-        r5 =  gUnk_08353328[(r4 + 0x100) & 0x3FF];
+        r5 =  WmArrowConf[(r4 + 0x100) & 0x3FF];
 
     a = a / 0x100;
     b = b / 0x100;

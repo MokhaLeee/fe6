@@ -131,8 +131,8 @@ EWRAM_OVERLAY(0) u8 gEndingUid2 = 0;
 EWRAM_OVERLAY(0) u8 gEndingDisplaySecondUnit = 0;
 EWRAM_OVERLAY(0) ProcPtr gEndingFace2 = NULL;
 EWRAM_OVERLAY(0) u16 EndingFaceXPos[2] = {};
-EWRAM_OVERLAY(0) u8 unk_02016B94[0x100] = {};
-EWRAM_OVERLAY(0) u8 unk_02016C94[0x100] = {};
+EWRAM_OVERLAY(0) u16 unk_02016B94[0x80] = {};
+EWRAM_OVERLAY(0) u16 unk_02016C94[0x80] = {};
 
 bool func_fe6_0808D0C0(struct MenuProc *proc)
 {

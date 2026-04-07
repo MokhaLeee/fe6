@@ -420,8 +420,8 @@ extern u8 const Img_Ending_CopyRight[];
 extern u16 const Tsa_Ending_CopyRight[];
 extern u16 const Pal_Ending_CopyRight[];
 extern u8 const Tsa_EndingPInfoBG[];
-// extern const ??? gUnk_08345934
-// extern const ??? gUnk_08346184
+extern u8 const Img_EndingPInfoWindow[];
+extern u16 const Pal_EndingPInfoWindow[];
 extern u8 const Tsa_GameRank_083461C4[];
 extern u8 const Tsa_GameRank_08346330[];
 extern u8 const Tsa_GameRank_083463B4[];
@@ -429,12 +429,12 @@ extern u8 const Tsa_GameRank_083463F4[];
 // extern const ??? gUnk_08346574
 extern u8 const Img_MonologueText[];
 extern u16 const Pal_MonologueText[];
-extern u8 const Img_EndingMonologueText3[];
-extern u8 const Img_EndingMonologueText1[];
-extern u8 const Img_EndingMonologueText4[];
-extern u8 const Img_08352160[];
+extern u8 const Img_EndingMonologueText_a[];
+extern u8 const Img_EndingMonologueText_b[];
+extern u8 const Img_EndingMonologueText_c[];
+extern u8 const Img_EndingMonologueText_d[];
 extern u16 const Pal_EndingMonologueText[];
-extern const int gUnk_08353328[];
+extern const int WmArrowConf[];
 // extern const ??? gUnk_08354728
 extern u16 const Pal_OpInfoViewLetters[];
 extern u8 const Img_OpInfoViewLettersB[];
@@ -446,8 +446,8 @@ extern u16 const Pal_Op_0835A5D0[];
 extern u8 const Tsa_Op_0835A5F0[];
 extern u16 const Pal_Op_0835AB08[];
 extern u8 const Tsa_Op_0835AB28[];
-extern u8 const Img_ClassDemoStatus_Fonts[];
-extern u16 const Pal_ClassDemoStatus_Fonts[];
+extern u8 const Img_ClassDemoFont[];
+extern u16 const Pal_ClassDemoFont[];
 // extern const ??? OpInfoClassIntroMsgs
 extern char const Str_OpInfo_Mag[];
 // extern const ??? gUnk_0835C829

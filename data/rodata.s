@@ -188,12 +188,12 @@ Pal_Ending_CopyRight: @ 08345420
 Tsa_EndingPInfoBG: @ 08345440
 	.incbin "fe6-base.gba", 0x345440, (0x345934 - 0x345440) @ length: 04F4
 
-	.global gUnk_08345934
-gUnk_08345934: @ 08345934
+	.global Img_EndingPInfoWindow
+Img_EndingPInfoWindow: @ 08345934
 	.incbin "fe6-base.gba", 0x345934, (0x346184 - 0x345934) @ length: 0850
 
-	.global gUnk_08346184
-gUnk_08346184: @ 08346184
+	.global Pal_EndingPInfoWindow
+Pal_EndingPInfoWindow: @ 08346184
 	.incbin "fe6-base.gba", 0x346184, (0x3461C4 - 0x346184) @ length: 0040
 
 	.global Tsa_GameRank_083461C4
@@ -211,39 +211,3 @@ Tsa_GameRank_083463B4: @ 083463B4
 	.global Tsa_GameRank_083463F4
 Tsa_GameRank_083463F4: @ 083463F4
 	.incbin "fe6-base.gba", 0x3463F4, (0x346574 - 0x3463F4) @ length: 0180
-
-	.global gUnk_08346574
-gUnk_08346574: @ 08346574
-	.incbin "fe6-base.gba", 0x346574, (0x34658C - 0x346574) @ length: 0018
-
-	.global Img_MonologueText
-Img_MonologueText: @ 0834658C
-	.incbin "fe6-base.gba", 0x34658C, (0x349A78 - 0x34658C) @ length: 34EC
-
-	.global Pal_MonologueText
-Pal_MonologueText: @ 08349A78
-	.incbin "fe6-base.gba", 0x349A78, (0x349A98 - 0x349A78) @ length: 0020
-
-	.global Img_EndingMonologueText3
-Img_EndingMonologueText3: @ 08349A98
-	.incbin "fe6-base.gba", 0x349A98, (0x34B69C - 0x349A98) @ length: 1C04
-
-	.global Img_EndingMonologueText1
-Img_EndingMonologueText1: @ 0834B69C
-	.incbin "fe6-base.gba", 0x34B69C, (0x34E1D4 - 0x34B69C) @ length: 2B38
-
-	.global Img_EndingMonologueText4
-Img_EndingMonologueText4: @ 0834E1D4
-	.incbin "fe6-base.gba", 0x34E1D4, (0x352160 - 0x34E1D4) @ length: 3F8C
-
-	.global Img_08352160
-Img_08352160: @ 08352160
-	.incbin "fe6-base.gba", 0x352160, (0x353308 - 0x352160) @ length: 11A8
-
-	.global Pal_EndingMonologueText
-Pal_EndingMonologueText: @ 08353308
-	.incbin "fe6-base.gba", 0x353308, (0x353328 - 0x353308) @ length: 0020
-
-	.global gUnk_08353328
-gUnk_08353328: @ 08353328
-	.incbin "fe6-base.gba", 0x353328, (0x354728 - 0x353328) @ length: 1400

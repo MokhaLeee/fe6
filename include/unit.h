@@ -373,6 +373,7 @@ extern struct Unit EWRAM_DATA gUnitArrayGreen[UNIT_AMOUNT_GREEN];
 extern struct Unit EWRAM_DATA gUnitArrayPurple[UNIT_AMOUNT_PURPLE];
 
 #define UNIT_FACTION(unit) ((unit)->id & 0xC0)
+#define UNIT_IS_VALID(unit) ((unit) && (unit)->pinfo)
 #define UNIT_PID(unit) ((unit)->pinfo->id)
 #define UNIT_JID(unit) ((unit)->jinfo->id)
 #define UNIT_ATTRIBUTES(unit) (((unit)->pinfo->attributes) | ((unit)->jinfo->attributes))

@@ -176,16 +176,16 @@ ProcScr_GameCredit: @ 0868BE2C
 	PROC_REPEAT GameCredit_Loop
 	PROC_END
 
-	.global ProcScr_EndingPInfo1Detail
-ProcScr_EndingPInfo1Detail: @ 0868BE4C
+	.global ProcScr_EndingP0InfoText
+ProcScr_EndingP0InfoText: @ 0868BE4C
 	PROC_19
-	PROC_CALL EndingPInfo1Detail_PutText
+	PROC_CALL EndingP0InfoText_Init
 	PROC_SLEEP 1
-	PROC_REPEAT EndingPInfo1Detail_WaitingTypewritter
+	PROC_REPEAT EndingP0InfoText_Loop
 	PROC_END
 
-	.global ProcScr_EndingPInfo1
-ProcScr_EndingPInfo1: @ 0868BE74
+	.global ProcScr_EndingPInfo_x1
+ProcScr_EndingPInfo_x1: @ 0868BE74
 	PROC_19
 	PROC_CALL FadeInBlackWithCallBack_Speed40
 	PROC_SLEEP 1
@@ -193,11 +193,11 @@ ProcScr_EndingPInfo1: @ 0868BE74
 	PROC_CALL EndingPInfo1_StartMerge
 	PROC_CALL FadeInBlackSpeed08
 	PROC_SLEEP 1
-	PROC_CALL EndingPInfo1_DrawDetails
+	PROC_CALL EndingPInfo1_PutP0InfoText
 	PROC_REPEAT EndingPInfo1_Idle
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 1
-	PROC_CALL func_fe6_08091A24
+	PROC_CALL EndingPInfo1_End
 	PROC_SLEEP 32
 PROC_LABEL 99
 	PROC_END
@@ -218,8 +218,8 @@ ProcScr_EndingP2InfoText: @ 0868BF14
 	PROC_REPEAT EndingP2InfoText_Loop
 	PROC_END
 
-	.global ProcScr_EndingPInfoDisp
-ProcScr_EndingPInfoDisp: @ 0868BF3C
+	.global ProcScr_EndingPInfo_x2
+ProcScr_EndingPInfo_x2: @ 0868BF3C
 	PROC_19
 	PROC_CALL FadeInBlackWithCallBack_Speed40
 	PROC_SLEEP 1

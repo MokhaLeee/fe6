@@ -2966,9 +2966,9 @@ void GameEnding_PutUnitsOnPosition1(void)
                 break;
 
             default:
-                for (j = 0; gEndingSceneDispEnPidList[j] != -1; j++)
+                for (j = 0; gEndingUids2[j] != -1; j++)
                 {
-                    if (gEndingSceneDispEnPidList[j] == i)
+                    if (gEndingUids2[j] == i)
                     {
                         unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
                         unit->x = gGameEndingPosition1[next_slot].x;
@@ -3036,9 +3036,9 @@ void GameEnding_PutUnitsOnPosition2(void)
                 break;
 
             default:
-                for (j = 0; gEndingSceneDispEnPidList[j] != -1; j++)
+                for (j = 0; gEndingUids2[j] != -1; j++)
                 {
-                    if (gEndingSceneDispEnPidList[j] == i)
+                    if (gEndingUids2[j] == i)
                     {
                         unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
                         unit->x = gGameEndingPosition2[next_slot].x;
@@ -3094,7 +3094,7 @@ void UpdateEndingId(void)
         else
             gEndingId = NORMAL_ENDING;
     } else
-        gEndingId = FALSE_ENDING;
+        gEndingId = FAKE_ENDING;
 }
 
 fu8 GetEndingId(void)
@@ -3480,17 +3480,17 @@ void func_fe6_0806E32C(void)
     {
         case TRUE_ENDING:
             gUnk_0203D3D8 = 0;
-            func_fe6_080914DC();
+            SetupTrueEndingUids();
             return;
 
         case NORMAL_ENDING:
             gUnk_0203D3D8 = 1;
-            func_fe6_080914DC();
+            SetupTrueEndingUids();
             return;
 
-        case FALSE_ENDING:
+        case FAKE_ENDING:
             gUnk_0203D3D8 = 0x80;
-            func_fe6_0809154C();
+            SetupFakeEndingUids();
             return;
     }
 }

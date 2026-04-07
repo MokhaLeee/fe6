@@ -1830,7 +1830,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r4, .L0808BB90 @ =gUnk_08345934
+	ldr r4, .L0808BB90 @ =Img_EndingPInfoWindow
 	movs r0, #1
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1839,7 +1839,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 	adds r1, r1, r5
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, .L0808BB94 @ =gUnk_08346184
+	ldr r0, .L0808BB94 @ =Pal_EndingPInfoWindow
 	movs r1, #0x80
 	movs r2, #0x40
 	bl ApplyPaletteExt
@@ -1910,8 +1910,8 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 .L0808BB84: .4byte gBg2Tm
 .L0808BB88: .4byte gBg3Tm
 .L0808BB8C: .4byte 0x020004AC
-.L0808BB90: .4byte gUnk_08345934
-.L0808BB94: .4byte gUnk_08346184
+.L0808BB90: .4byte Img_EndingPInfoWindow
+.L0808BB94: .4byte Pal_EndingPInfoWindow
 .L0808BB98: .4byte gUnk_0832C5E8
 .L0808BB9C: .4byte 0x0000FF98
 .L0808BBA0: .4byte 0x0000FFC0

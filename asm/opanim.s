@@ -3649,7 +3649,7 @@ func_fe6_0809A6E4: @ 0x0809A6E4
 	movs r0, #4
 	movs r2, #0
 	bl Interpolate
-	ldr r3, .L0809A7F8 @ =gUnk_08353328
+	ldr r3, .L0809A7F8 @ =WmArrowConf
 	mov r6, sl
 	adds r1, r4, r6
 	ldr r2, .L0809A7FC @ =0x000003FF
@@ -3713,7 +3713,7 @@ func_fe6_0809A6E4: @ 0x0809A6E4
 	.align 2, 0
 .L0809A7F0: .4byte gUnk_086914B8
 .L0809A7F4: .4byte gUnk_086914A8
-.L0809A7F8: .4byte gUnk_08353328
+.L0809A7F8: .4byte WmArrowConf
 .L0809A7FC: .4byte 0x000003FF
 .L0809A800: .4byte gUnk_086914A4
 

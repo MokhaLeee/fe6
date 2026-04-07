@@ -348,10 +348,10 @@ extern CONST_DATA struct ProcScr ProcScr_Fin[];
 extern CONST_DATA struct ProcScr ProcScr_0868BDB4[];
 extern CONST_DATA struct ProcScr ProcScr_Ending[];
 extern CONST_DATA struct ProcScr ProcScr_GameCredit[];
-extern CONST_DATA struct ProcScr ProcScr_EndingPInfo1Detail[];
-extern CONST_DATA struct ProcScr ProcScr_EndingPInfo1[];
+extern CONST_DATA struct ProcScr ProcScr_EndingP0InfoText[];
+extern CONST_DATA struct ProcScr ProcScr_EndingPInfo_x1[];
 extern CONST_DATA struct ProcScr ProcScr_EndingP1InfoText[];
 extern CONST_DATA struct ProcScr ProcScr_EndingP2InfoText[];
-extern CONST_DATA struct ProcScr ProcScr_EndingPInfoDisp[];
+extern CONST_DATA struct ProcScr ProcScr_EndingPInfo_x2[];
 extern CONST_DATA struct ProcScr ProcScr_EndingFacePosCtrl[];
 

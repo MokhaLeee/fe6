@@ -161,7 +161,7 @@ extern EWRAM_OVERLAY(opinfo) u8 OpEkrMagi_ObImgBuf[0x1000];
 extern EWRAM_OVERLAY(opinfo) struct EkrTerrainfxDesc OpEkrTerrainDesc;
 extern EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000];
 extern EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6];
-extern EWRAM_OVERLAY(opinfo) struct Vec1u unk_opinfo_0200FF54[14];
+extern EWRAM_OVERLAY(opinfo) u8 unk_opinfo_0200FF54[14 * 2];
 
 extern CONST_DATA struct ProcScr ProcScr_OpInfo[];
 extern CONST_DATA struct ProcScr ProcScr_OpInfoFadeOut[];

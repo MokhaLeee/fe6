@@ -35,6 +35,9 @@ struct ProcEndingfx {
 	i16 unk_4C;
 };
 
+extern EWRAM_DATA i8 gEndingUids1[55];
+extern EWRAM_DATA i8 gEndingUids2[14];
+
 // SetupCreditCharacterGlyphs
 // PutEndingCreditTm
 // EndingCredit_Reinit
@@ -74,13 +77,20 @@ bool func_fe6_08090D54(void);
 void StartCharacterEndings(void);
 // GameCredit_Loop
 void StartGameCredit(void);
-// PersonEndingHasSupporter
+bool PersonEndingHasSupporter(u8 pid);
 void EndingFacePosCtrlExt(void);
-// HBlank_Ending_SinglePInfo
+void HBlank_Ending_SinglePInfo(void);
 void HBlank_Ending_DyadPInfo(void);
-void func_fe6_080914DC(void);
-void func_fe6_0809154C(void);
+void SetupTrueEndingUids(void);
+void SetupFakeEndingUids(void);
 void SetupEndingPInfo2Uids(void);
+
+struct ProcEndingPInfo1 {
+	PROC_HEADER;
+
+	/* 2C */ int timer;
+	/* 30 */ int duration;
+};
 
 struct ProcEndingPInfoDisp {
 	PROC_HEADER;
@@ -101,15 +111,15 @@ struct ProcEndingPinfoText {
 extern IWRAM_DATA ProcPtr gEndingFace1;
 
 // EndingPInfoDisp_InitDisp
-// PopNextEndingPerson
+u8 PopNextEndingPerson(void);
 u8 PopNextEnding2Person(u8 pos);
-// EndingPInfo1Detail_PutText
-// EndingPInfo1Detail_WaitingTypewritter
-// EndingPInfo1_DrawDetails
+// EndingP0InfoText_Init
+// EndingP0InfoText_Loop
+// EndingPInfo1_PutP0InfoText
 // EndingPInfo1_StartMerge
 // EndingPInfo1_Idle
-// func_fe6_08091A24
-// func_fe6_08091A4C
+// EndingPInfo1_End
+// EndingPInfo1Exists
 void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc);
 void EndingP1InfoText_Loop(struct ProcEndingPinfoText *proc);
 void SpawnEndingP1InfoText(void);
