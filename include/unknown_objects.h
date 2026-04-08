@@ -373,13 +373,13 @@ extern u8 const Tsa_UnitBurstMapUi_Frame5[];
 
 extern u8 const Img_PlayRankTimeOBJ[];
 
-// extern const ??? gUnk_08336CD0
-// extern const ??? gUnk_08336CF0
-// extern const ??? gUnk_08336CF8
-// extern const ??? gUnk_08336D00
-// extern const ??? gUnk_08336D3C
-// extern const ??? gUnk_08336D48
-// extern const ??? gUnk_08336D54
+// extern const ??? String_Xmap_08336CD0
+// extern const ??? String_Xmap_08336CF0
+// extern const ??? String_Xmap_08336CF8
+// extern const ??? String_Xmap_08336D00
+// extern const ??? String_Xmap_08336D3C
+// extern const ??? String_Xmap_08336D48
+// extern const ??? String_Xmap_08336D54
 extern u8 const Img_MuralBackground[];
 extern u8 const Img_0833B958[];
 extern u8 const Img_0833BB14[];

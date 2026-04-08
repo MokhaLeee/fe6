@@ -107,10 +107,10 @@ struct ProcClassDemoStatus;
 struct ProcClassDemoMain {
 	PROC_HEADER;
 
-	/* 2A */ u16 x;
-	/* 2C */ u16 unk_2C;
-	/* 2E */ u16 unk_2E;
-	/* 30 */ u8 unk_30;
+	/* 2A */ u16 frame_timer;
+	/* 2C */ u16 total_timer;
+	/* 2E */ u16 ctrl_index;
+	/* 30 */ u8 round_type;
 	/* 31 */ u8 index;
 	/* 34 */ struct ProcOpInfo *opinfo;
 	/* 38 */ u8 unit_status[6];
@@ -181,13 +181,13 @@ extern CONST_DATA u8 gUnk_0869056C[][4];
 extern CONST_DATA u8 OpClassDemo_BIDs[];
 extern CONST_DATA u16 OpClassDemo_IntroMsgs[];
 
-struct Unk_086905F8 {
-	u8 unk_00;
-	u8 unk_01;
+struct OpClassDemoBanimCtrl {
+	u8 round_type;
+	u8 duration;
 	u16 unk_02;
 };
 
-extern struct Unk_086905F8 gUnk_086905F8[];
+extern struct OpClassDemoBanimCtrl gOpClassDemoBanimCtrl[];
 
 struct OpEkrMagiConf {
 	i8 efxmagi_id;
@@ -195,10 +195,10 @@ struct OpEkrMagiConf {
 	i8 x_ob, y_ob;
 };
 // extern CONST_DATA struct OpEkrMagiConf OpClassDemo_MagiConfig[];
-extern CONST_DATA i8 OpClassDemo_MagiConfig[];
+extern CONST_DATA i8 OpClassDemo_MagiConfig[35 * 5];
 
-extern CONST_DATA u8 OpClassDemo_TerrainConfig[][2];
-extern CONST_DATA u8 OpClassDemo_JidConfig[];
+extern CONST_DATA u8 OpClassDemo_TerrainConfig[35][2];
+extern CONST_DATA u8 OpClassDemo_JidConfig[35];
 
 struct ClassDisplayFont {
 	u16 *sprite;

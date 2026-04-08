@@ -449,6 +449,21 @@ JID_DICT = { jid: jid_name(jid) for jid in ALL_JIDS }
 PID_DICT = { pid: pid_name(pid) for pid in ALL_PIDS }
 CHAPTER_DICT = { chapter: chapter_name(chapter) for chapter in ALL_CHAPTERS }
 
+ANIM_ROUND = {
+    0x00: 'ANIM_ROUND_HIT_CLOSE',
+    0x01: 'ANIM_ROUND_CRIT_CLOSE',
+    0x02: 'ANIM_ROUND_NONCRIT_FAR',
+    0x03: 'ANIM_ROUND_CRIT_FAR',
+    0x04: 'ANIM_ROUND_TAKING_MISS_CLOSE',
+    0x05: 'ANIM_ROUND_TAKING_MISS_FAR',
+    0x06: 'ANIM_ROUND_TAKING_HIT_CLOSE',
+    0x07: 'ANIM_ROUND_STANDING',
+    0x08: 'ANIM_ROUND_TAKING_HIT_FAR',
+    0x09: 'ANIM_ROUND_MISS_CLOSE',
+
+    0xFF: 'ANIM_ROUND_INVALID'
+}
+
 IINFO_LAYOUT = [
     ('msg_name', 'H'),
     ('msg_desc', 'H'),

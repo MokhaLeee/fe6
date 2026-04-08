@@ -738,6 +738,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_3278AC.o(.rodata);
         . = ALIGN(4); src/savemenu.o(.rodata);
         . = ALIGN(4); src/savemenu_2.o(.rodata);
+        . = ALIGN(4); data/xmap_rodata.o(.rodata);
         . = ALIGN(4); data/rodata.o(.rodata);
         . = ALIGN(4); src/playrank2.o(.rodata);
         . = ALIGN(4); src/monologue_img.o(.rodata);

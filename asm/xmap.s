@@ -426,19 +426,19 @@ func_fe6_0808AF4C: @ 0x0808AF4C
 	cmp r4, #0
 	bge .L0808AF64
 	ldr r4, .L0808B014 @ =0x0203DC08
-	ldr r1, .L0808B018 @ =gUnk_08336CD0
+	ldr r1, .L0808B018 @ =String_Xmap_08336CD0
 	adds r0, r4, #0
 	bl Text_DrawString
 	adds r0, r4, #0
 	movs r1, #0x80
 	bl Text_SetCursor
-	ldr r1, .L0808B01C @ =gUnk_08336CF0
+	ldr r1, .L0808B01C @ =String_Xmap_08336CF0
 	adds r0, r4, #0
 	bl Text_DrawString
 	adds r0, r4, #0
 	movs r1, #0xa0
 	bl Text_SetCursor
-	ldr r1, .L0808B020 @ =gUnk_08336CF8
+	ldr r1, .L0808B020 @ =String_Xmap_08336CF8
 	adds r0, r4, #0
 	bl Text_DrawString
 	subs r4, #8
@@ -464,7 +464,7 @@ func_fe6_0808AF4C: @ 0x0808AF4C
 	adds r0, r4, #0
 	movs r1, #0
 	bl Text_SetColor
-	ldr r1, .L0808B024 @ =gUnk_08336D00
+	ldr r1, .L0808B024 @ =String_Xmap_08336D00
 	adds r0, r4, #0
 	bl Text_DrawString
 	adds r0, r4, #0
@@ -489,10 +489,10 @@ func_fe6_0808AF4C: @ 0x0808AF4C
 	.align 2, 0
 .L0808B010: .4byte 0x0203DBE8
 .L0808B014: .4byte 0x0203DC08
-.L0808B018: .4byte gUnk_08336CD0
-.L0808B01C: .4byte gUnk_08336CF0
-.L0808B020: .4byte gUnk_08336CF8
-.L0808B024: .4byte gUnk_08336D00
+.L0808B018: .4byte String_Xmap_08336CD0
+.L0808B01C: .4byte String_Xmap_08336CF0
+.L0808B020: .4byte String_Xmap_08336CF8
+.L0808B024: .4byte String_Xmap_08336D00
 
 	thumb_func_start func_fe6_0808B028
 func_fe6_0808B028: @ 0x0808B028
@@ -2459,7 +2459,7 @@ func_fe6_0808BFF0: @ 0x0808BFF0
 	adds r0, r4, #0
 	movs r1, #0
 	bl Text_SetColor
-	ldr r1, .L0808C078 @ =gUnk_08336D3C
+	ldr r1, .L0808C078 @ =String_Xmap_08336D3C
 	adds r0, r4, #0
 	bl Text_DrawString
 	adds r4, #8
@@ -2472,7 +2472,7 @@ func_fe6_0808BFF0: @ 0x0808BFF0
 	adds r0, r4, #0
 	movs r1, #0
 	bl Text_SetColor
-	ldr r1, .L0808C07C @ =gUnk_08336D48
+	ldr r1, .L0808C07C @ =String_Xmap_08336D48
 	adds r0, r4, #0
 	bl Text_DrawString
 	adds r5, #0x38
@@ -2485,7 +2485,7 @@ func_fe6_0808BFF0: @ 0x0808BFF0
 	adds r0, r5, #0
 	movs r1, #0
 	bl Text_SetColor
-	ldr r1, .L0808C080 @ =gUnk_08336D54
+	ldr r1, .L0808C080 @ =String_Xmap_08336D54
 	adds r0, r5, #0
 	bl Text_DrawString
 	movs r0, #0
@@ -2495,9 +2495,9 @@ func_fe6_0808BFF0: @ 0x0808BFF0
 	bx r0
 	.align 2, 0
 .L0808C074: .4byte 0x02000468
-.L0808C078: .4byte gUnk_08336D3C
-.L0808C07C: .4byte gUnk_08336D48
-.L0808C080: .4byte gUnk_08336D54
+.L0808C078: .4byte String_Xmap_08336D3C
+.L0808C07C: .4byte String_Xmap_08336D48
+.L0808C080: .4byte String_Xmap_08336D54
 
 	thumb_func_start func_fe6_0808C084
 func_fe6_0808C084: @ 0x0808C084

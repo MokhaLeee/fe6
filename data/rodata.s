@@ -1,33 +1,5 @@
 	.section .rodata
 
-	.global gUnk_08336CD0
-gUnk_08336CD0: @ 08336CD0
-	.incbin "fe6-base.gba", 0x336CD0, (0x336CF0 - 0x336CD0) @ length: 0020
-
-	.global gUnk_08336CF0
-gUnk_08336CF0: @ 08336CF0
-	.incbin "fe6-base.gba", 0x336CF0, (0x336CF8 - 0x336CF0) @ length: 0008
-
-	.global gUnk_08336CF8
-gUnk_08336CF8: @ 08336CF8
-	.incbin "fe6-base.gba", 0x336CF8, (0x336D00 - 0x336CF8) @ length: 0008
-
-	.global gUnk_08336D00
-gUnk_08336D00: @ 08336D00
-	.incbin "fe6-base.gba", 0x336D00, (0x336D3C - 0x336D00) @ length: 003C
-
-	.global gUnk_08336D3C
-gUnk_08336D3C: @ 08336D3C
-	.incbin "fe6-base.gba", 0x336D3C, (0x336D48 - 0x336D3C) @ length: 000C
-
-	.global gUnk_08336D48
-gUnk_08336D48: @ 08336D48
-	.incbin "fe6-base.gba", 0x336D48, (0x336D54 - 0x336D48) @ length: 000C
-
-	.global gUnk_08336D54
-gUnk_08336D54: @ 08336D54
-	.incbin "fe6-base.gba", 0x336D54, (0x336D5C - 0x336D54) @ length: 0008
-
 	.global Img_MuralBackground
 Img_MuralBackground: @ 08336D5C
 	.incbin "fe6-base.gba", 0x336D5C, (0x33B958 - 0x336D5C) @ length: 4BFC
@@ -166,11 +138,11 @@ gUnk_08344304: @ 08344304
 
 	.global Img_Fin
 Img_Fin: @ 083449F8
-	.incbin "fe6-base.gba", 0x3449F8, (0x344CB0 - 0x3449F8) @ length: 02B8
+	.incbin "data/GameEnding/Img_Fin_len26.4bpp.lz"
 
 	.global Pal_Fin
 Pal_Fin: @ 08344CB0
-	.incbin "fe6-base.gba", 0x344CB0, (0x344CD0 - 0x344CB0) @ length: 0020
+	.incbin "data/GameEnding/Img_Fin_len26.gbapal", 0, 0x20
 
 	.global Img_Ending_CopyRight
 Img_Ending_CopyRight: @ 08344CD0

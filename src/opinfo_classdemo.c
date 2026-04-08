@@ -16,6 +16,7 @@
 #include "opinfo.h"
 
 #include "constants/jids.h"
+#include "constants/terrains.h"
 
 EWRAM_OVERLAY(opinfo) struct EkrMainMiniDesc OpEkrMiniDesc = {};
 EWRAM_OVERLAY(opinfo) u16 OpEkrMini_ImgBuf[0x1000] = {};
@@ -34,6 +35,120 @@ EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000] = {};
 EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6] = {};
 
 EWRAM_OVERLAY(opinfo) u8 unk_opinfo_0200FF54[14 * 2] = {};
+
+CONST_DATA i8 OpClassDemo_MagiConfig[35 * 5] = {
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	3, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	3, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	1, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	3, 0, 0, 0, 0,
+	2, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	1, 0, 0, 0, 0,
+	3, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0,
+};
+
+CONST_DATA u8 OpClassDemo_TerrainConfig[35][2] = {
+	{ 0x14, 0x14 },
+	{ 0x11, 0x00 },
+	{ 0x0B, 0x12 },
+	{ 0x13, 0x13 },
+	{ 0x1B, 0x21 },
+	{ 0x0E, 0x0F },
+	{ 0x06, 0x06 },
+	{ 0x0B, 0x18 },
+	{ 0x01, 0x01 },
+	{ 0x00, 0x11 },
+	{ 0x11, 0x00 },
+	{ 0x09, 0x09 },
+	{ 0x00, 0x00 },
+	{ 0x16, 0x16 },
+	{ 0x0C, 0x0C },
+	{ 0x09, 0x09 },
+	{ 0x13, 0x13 },
+	{ 0x0E, 0x0E },
+	{ 0x19, 0x19 },
+	{ 0x04, 0x04 },
+	{ 0x13, 0x13 },
+	{ 0x09, 0x09 },
+	{ 0x11, 0x00 },
+	{ 0x17, 0x17 },
+	{ 0x0D, 0x0D },
+	{ 0x10, 0x10 },
+	{ 0x09, 0x09 },
+	{ 0x14, 0x14 },
+	{ 0x00, 0x00 },
+	{ 0x00, 0x00 },
+	{ 0x14, 0x14 },
+	{ 0x02, 0x02 },
+	{ 0x16, 0x16 },
+	{ 0x09, 0x09 },
+	{ 0x1A, 0x1A },
+};
+
+CONST_DATA u8 OpClassDemo_JidConfig[35] = {
+	JID_ROY,
+	JID_CAVALIER,
+	JID_PALADIN,
+	JID_ARCHER,
+	JID_ARMOR,
+	JID_CLERIC,
+	JID_THIEF,
+	JID_MERCENARY,
+	JID_FIGHTER,
+	JID_TROUBADOUR,
+	JID_MYRMIDON,
+	JID_MAGE,
+	JID_NOMAD_F,
+	JID_BRIGAND,
+	JID_PIRATE,
+	JID_SHAMAN_F,
+	JID_BARD,
+	JID_DANCER,
+	JID_PEGASUSKNIGHT,
+	JID_WYVERNRIDER,
+	JID_WARRIOR,
+	JID_DRUID,
+	JID_VALKYRIE,
+	JID_HERO,
+	JID_FALCONKNIGHT,
+	JID_BERSERKER,
+	JID_SAGE_F,
+	JID_BISHOP,
+	JID_SWORDMASTER,
+	JID_NOMADTROOPER,
+	JID_SNIPER,
+	JID_GENERAL,
+	JID_WYVERNLORD,
+	JID_MANAKETE,
+	JID_KING
+};
 
 void HBlank_ClassDemoMain(void)
 {
@@ -83,7 +198,7 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 {
 	int i, j;
 	register int k asm("r2");
-	struct Unk_086905F8 *u_086905F8;
+	struct OpClassDemoBanimCtrl *ctrl;
 
 	int use_mag = false;
 
@@ -103,9 +218,9 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 		}
 	}
 
-	proc->x = 0;
-	proc->unk_2C = 0;
-	proc->unk_2E = 0;
+	proc->frame_timer = 0;
+	proc->total_timer = 0;
+	proc->ctrl_index = 0;
 	proc->unk_3E = 1;
 	proc->anim_x = 0xFA;
 
@@ -114,8 +229,8 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 	TmFill(gBg2Tm, 0);
 
 	if (proc->index == 0) {
-		proc->unk_2E = 0;
-		u_086905F8 = gUnk_086905F8;
+		proc->ctrl_index = 0;
+		ctrl = gOpClassDemoBanimCtrl;
 	} else {
 		i = 0;
 		k = 0;
@@ -123,14 +238,14 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 
 		do {
 			do {
-				u_086905F8 = &gUnk_086905F8[++j];
+				ctrl = &gOpClassDemoBanimCtrl[++j];
 				++i;
-			} while (u_086905F8->unk_01 != 0);
+			} while (ctrl->duration != 0);
 			k++;
 		} while(k != proc->index);
-		proc->unk_2E = i + 1;
+		proc->ctrl_index = i + 1;
 	}
-	proc->unk_30 = gUnk_086905F8[proc->unk_2E].unk_00;
+	proc->round_type = gOpClassDemoBanimCtrl[proc->ctrl_index].round_type;
 
 	SetDispEnable(0, 0, 0, 0, 0);
 	ResetTextFont();
@@ -245,24 +360,24 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 
 void ClassDemoMain_Loop_Intro(struct ProcClassDemoMain *proc)
 {
-	proc->anim_x = proc->anim_x - 1 - (0x50 - proc->x) / 14;
+	proc->anim_x = proc->anim_x - 1 - (0x50 - proc->frame_timer) / 14;
 
 	if (proc->anim_x < 180)
 		proc->anim_x = 180;
 
 	SetDispEnable(1, 1, 1, 1, 1);
 	SetWinEnable(1, 0, 0);
-	SetWin0Box(0, 80 - proc->x, 240, proc->x + 80);
+	SetWin0Box(0, 80 - proc->frame_timer, 240, proc->frame_timer + 80);
 	SetWin0Layers(1, 1, 1, 1, 1);
 	SetWOutLayers(0, 0, 0, 0, 0);
 
-	if (proc->x == 80) {
+	if (proc->frame_timer == 80) {
 		proc->anim_x = 180;
-		proc->x = 0;
+		proc->frame_timer = 0;
 		Proc_Break(proc);
 		func_fe6_08095D48(proc->procfx);
 	} else
-		proc->x += 4;
+		proc->frame_timer += 4;
 
 	EkrMainMini_SetAnimPosition(&OpEkrMiniDesc, proc->anim_x, 88);
 	EkrTerrainfx_SetPosition(&OpEkrTerrainDesc, proc->anim_x - 48, 104, proc->anim_x + 48, 104);
@@ -273,21 +388,21 @@ void ClassDemoMain_Loop_Main(struct ProcClassDemoMain *proc)
 {
 	int ret = false;
 
-	if (proc->unk_2C > 0x18F) {
+	if (proc->total_timer > 0x18F) {
 		proc->opinfo->mode = OPINFO_STATE_2;
 		goto goto_judge_ret;
 	}
 
-	proc->x++;
-	proc->unk_2C++;
+	proc->frame_timer++;
+	proc->total_timer++;
 
-	if (gUnk_086905F8[proc->unk_2E].unk_01 == 0)
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration == 0)
 		goto goto_judge_ret;
 
-	if (proc->x > gUnk_086905F8[proc->unk_2E].unk_01)
+	if (proc->frame_timer > gOpClassDemoBanimCtrl[proc->ctrl_index].duration)
 		goto goto_ret_0;
 
-	if (gUnk_086905F8[proc->unk_2E].unk_01 != 0xFF)
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration != 0xFF)
 		goto goto_judge_ret;
 
 	if (proc->unk_3E != 0)
@@ -305,26 +420,26 @@ goto_judge_ret:
 
 goto_ret_0:
 
-	proc->unk_2E++;
+	proc->ctrl_index++;
 
-	if (gUnk_086905F8[proc->unk_2E].unk_01 == 0)
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].duration == 0)
 		return;
 
-	if (gUnk_086905F8[proc->unk_2E].unk_00 == 0xFF) {
+	if (gOpClassDemoBanimCtrl[proc->ctrl_index].round_type == 0xFF) {
 		EkrMainMini_EndBlock(&OpEkrMiniDesc);
 		proc->unk_3E = 0;
-	} else if (proc->unk_30 != gUnk_086905F8[proc->unk_2E].unk_00) {
-		OpEkrMiniDesc.round_type = gUnk_086905F8[proc->unk_2E].unk_00;
+	} else if (proc->round_type != gOpClassDemoBanimCtrl[proc->ctrl_index].round_type) {
+		OpEkrMiniDesc.round_type = gOpClassDemoBanimCtrl[proc->ctrl_index].round_type;
 		EkrMainMini_UpdateAnim(&OpEkrMiniDesc);
 
-		if (gUnk_086905F8[proc->unk_2E].unk_00 == 4)
+		if (gOpClassDemoBanimCtrl[proc->ctrl_index].round_type == 4)
 			EkrMainMini_EndBlock(&OpEkrMiniDesc);
 
 		proc->unk_3E = 1;
 	}
 
-	proc->unk_30 = gUnk_086905F8[proc->unk_2E].unk_00;
-	proc->x = 0;
+	proc->round_type = gOpClassDemoBanimCtrl[proc->ctrl_index].round_type;
+	proc->frame_timer = 0;
 }
 
 void ClassDemoMain_Block(struct ProcClassDemoMain *proc) {}

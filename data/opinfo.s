@@ -118,18 +118,6 @@ OpClassDemo_BIDs: @ 0869058C
 OpClassDemo_IntroMsgs: @ 086905B0
 	.incbin "fe6-base.gba", 0x6905B0, (0x6905F8 - 0x6905B0) @ length: 0048
 
-	.global gUnk_086905F8
-gUnk_086905F8: @ 086905F8
+	.global gOpClassDemoBanimCtrl
+gOpClassDemoBanimCtrl: @ 086905F8
 	.incbin "fe6-base.gba", 0x6905F8, (0x6909A4 - 0x6905F8) @ length: 03AC
-
-	.global OpClassDemo_MagiConfig
-OpClassDemo_MagiConfig: @ 086909A4
-	.incbin "fe6-base.gba", 0x6909A4, (0x690A53 - 0x6909A4) @ length: 00AF
-
-	.global OpClassDemo_TerrainConfig
-OpClassDemo_TerrainConfig: @ 08690A53
-	.incbin "fe6-base.gba", 0x690A53, (0x690A99 - 0x690A53) @ length: 0046
-
-	.global OpClassDemo_JidConfig
-OpClassDemo_JidConfig: @ 08690A99
-	.incbin "fe6-base.gba", 0x690A99, (0x690ABC - 0x690A99)
