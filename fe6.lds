@@ -364,7 +364,7 @@ SECTIONS
         . = ALIGN(4); src/xmap.o(ewram_data);
 
         . = 0x0203DC70 - __ewram_overlay_end;
-        . = ALIGN(4); src/playrank2.o(ewram_data);
+        . = ALIGN(4); src/ending_pinfo.o(ewram_data);
 
 
         . = 0x0203DCB8 - __ewram_overlay_end;
@@ -599,7 +599,8 @@ SECTIONS
         src/playrank.o(.text);
         src/ending_credit.o(.text);
         asm/playrank_0808F33C.o(.text);
-        src/playrank2.o(.text);
+        asm/ending_pinfohblank.o(.text);
+        src/ending_pinfo.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
         src/monologue.o(.text);
@@ -740,7 +741,7 @@ SECTIONS
         . = ALIGN(4); src/savemenu_2.o(.rodata);
         . = ALIGN(4); data/xmap_rodata.o(.rodata);
         . = ALIGN(4); data/rodata.o(.rodata);
-        . = ALIGN(4); src/playrank2.o(.rodata);
+        . = ALIGN(4); src/ending_pinfo.o(.rodata);
         . = ALIGN(4); src/monologue_img.o(.rodata);
         . = ALIGN(4); src/ending_monologue_img.o(.rodata);
         . = ALIGN(4); data/data_wmarrow.o(.rodata);
