@@ -87,99 +87,102 @@ const u16 RoundTypes_Dragon3[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_INVALID
 };
 
-// https://decomp.me/scratch/EcNSg
-#if 0
 void ParseBattleHitToBanimCmd(void)
 {
-	int i;
-	u16 round_info[2];
-	int round, hpoff_l, hpoff_r;
-	int local_distance_types[2];
-	int is_dark_breath;
-	struct BattleUnit *battle_units[2];
-	struct BattleHit *hit = gBattleHits;
+	u32 i;
+	u16 hpoff_l; // r7
+	u16 hpoff_r; // r8
+	u16 round_info[2]; // sp00
+	struct BattleHit *hit; // sp04
+	struct BattleUnit *bul_sp08;
+	struct BattleUnit *bur_sp0C;
+	i32 round; // sp10
+	i32 is_target; // sp14
+	i32 distance_sp18;
+	i32 distance_sp1C;
+	i32 is_dark_breath; // sp20
 
-	gpEkrTriangleUnits[POS_L] = NULL;
-	gpEkrTriangleUnits[POS_R] = NULL;
+	hit = gBattleHits;
+	gpEkrTriangleUnits[POS_L] = gpEkrTriangleUnits[POS_R] = NULL;
 
 	if (gEkrDistanceType == EKR_DISTANCE_PROMOTION) {
-		gAnimRoundData[0 + POS_L] = ANIM_ROUND_TAKING_MISS_CLOSE;
-		gAnimRoundData[0 + POS_R] = ANIM_ROUND_TAKING_MISS_CLOSE;
+		gAnimRoundData[POS_L] = ANIM_ROUND_TAKING_MISS_CLOSE;
+		gAnimRoundData[POS_R] = ANIM_ROUND_TAKING_MISS_CLOSE;
 
-		gAnimRoundData[2 + POS_L] |= 0xFFFF;
-		gAnimRoundData[2 + POS_R] |= 0xFFFF;
+		gAnimRoundData[2 + POS_L] = 0xFFFF;
+		gAnimRoundData[2 + POS_R] = 0xFFFF;
 		return;
 	}
 
 	if (gBattleSt.flags & BATTLE_FLAG_REFRESH) {
-		gAnimRoundData[0 + POS_L] = ANIM_ROUND_TAKING_HIT_CLOSE;
-		gAnimRoundData[0 + POS_R] = ANIM_ROUND_TAKING_HIT_FAR;
+		gAnimRoundData[POS_L] = ANIM_ROUND_TAKING_HIT_CLOSE;
+		gAnimRoundData[POS_R] = 0;
 
-		gAnimRoundData[2 + POS_L] |= 0xFFFF;
-		gAnimRoundData[2 + POS_R] |= 0xFFFF;
+		gAnimRoundData[2 + POS_L] = 0xFFFF;
+		gAnimRoundData[2 + POS_R] = 0xFFFF;
 		return;
 	}
 
-	local_distance_types[POS_L] = gEkrDistanceType;
-	local_distance_types[POS_R] = gEkrDistanceType;
+	distance_sp18 = (u16)gEkrDistanceType;
+	distance_sp1C = distance_sp18;
 
 	is_dark_breath = false;
 
-	battle_units[POS_L] = gpEkrBattleUnitLeft;
-	battle_units[POS_R] = gpEkrBattleUnitRight;
+	bul_sp08 = gpEkrBattleUnitLeft;
+	bur_sp0C = gpEkrBattleUnitRight;
 
-	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_RUNESWORD  && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
-		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
-	if (GetItemIid(battle_units[POS_R]->weapon_before) == IID_RUNESWORD  && (local_distance_types[POS_R] == ANIM_ROUND_HIT_CLOSE))
-		local_distance_types[POS_R] = ANIM_ROUND_CRIT_CLOSE;
+	if (GetItemIid(bul_sp08->weapon_before) == IID_RUNESWORD  && distance_sp18 == ANIM_ROUND_HIT_CLOSE)
+		distance_sp18 = EKR_DISTANCE_FAR;
+	if (GetItemIid(bur_sp0C->weapon_before) == IID_RUNESWORD  && distance_sp1C == ANIM_ROUND_HIT_CLOSE)
+		distance_sp1C = EKR_DISTANCE_FAR;
 
-	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_HANDAXE    && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
-		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
-	if (GetItemIid(battle_units[POS_R]->weapon_before) == IID_HANDAXE    && (local_distance_types[POS_R] == ANIM_ROUND_HIT_CLOSE))
-		local_distance_types[POS_R] = ANIM_ROUND_CRIT_CLOSE;
+	if (GetItemIid(bul_sp08->weapon_before) == IID_HANDAXE    && distance_sp18 == ANIM_ROUND_HIT_CLOSE)
+		distance_sp18 = EKR_DISTANCE_FAR;
+	if (GetItemIid(bur_sp0C->weapon_before) == IID_HANDAXE    && distance_sp1C == ANIM_ROUND_HIT_CLOSE)
+		distance_sp1C = EKR_DISTANCE_FAR;
 
-	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_TOMAHAWK   && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
-		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
-	if (GetItemIid(battle_units[POS_R]->weapon_before) == IID_TOMAHAWK   && (local_distance_types[POS_R] == ANIM_ROUND_HIT_CLOSE))
-		local_distance_types[POS_R] = ANIM_ROUND_CRIT_CLOSE;
+	if (GetItemIid(bul_sp08->weapon_before) == IID_TOMAHAWK   && distance_sp18 == ANIM_ROUND_HIT_CLOSE)
+		distance_sp18 = EKR_DISTANCE_FAR;
+	if (GetItemIid(bur_sp0C->weapon_before) == IID_TOMAHAWK   && distance_sp1C == ANIM_ROUND_HIT_CLOSE)
+		distance_sp1C = EKR_DISTANCE_FAR;
 
-	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_FIRESTONE  && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
-		local_distance_types[POS_L] = ANIM_ROUND_CRIT_CLOSE;
+	if (GetItemIid(bul_sp08->weapon_before) == IID_FIRESTONE  && distance_sp18 == ANIM_ROUND_HIT_CLOSE)
+		distance_sp18 = EKR_DISTANCE_FAR;
 
-	if (GetItemIid(battle_units[POS_L]->weapon_before) == IID_DARKBREATH && (local_distance_types[POS_L] == ANIM_ROUND_HIT_CLOSE))
+	if (GetItemIid(bul_sp08->weapon_before) == IID_DARKBREATH)
 		is_dark_breath = true;
 
-	for (i = 0; i < 0x14; i++)
+	for (i = 0; i < 20; i++)
 		gAnimRoundData[i] = 0xFFFF;
 
-	for (i = 0; i < 0x14; i++)
+	for (i = 0; i < 20; i++)
 		gEfxHpLut[2 + i] = 0xFFFF;
 
 	gEfxHpLut[0] = gEkrGaugeHp[0];
 	gEfxHpLut[1] = gEkrGaugeHp[1];
 
 	round = 0;
-	hpoff_l = 0;
-	hpoff_r = 0;
+	hpoff_l = hpoff_r = 0;
 
 	for (; (hit->info & BATTLE_HIT_INFO_END) == 0; hit++, round++) {
-		int is_target;
-		u16 *act_round, *tar_round;
-		int act_distance, tar_distance;
-		struct Unit *actor_unit;
-		int cur_is_dark_breath;
+		i32 cur_is_dark_breath; // r3
+		i16 act_distance; // r4
+		u16 *act_round; // r5
+		struct Unit *actor_unit; // r6
+		u16 *tar_round; // r9
+		i16 tar_distance; // sl
 
 		if (hit->info & BATTLE_HIT_INFO_ACTORB)
 			is_target = true;
 		else
 			is_target = false;
 
-		if (gBanimPosIsTarget == is_target) {
+		if (gBanimPosIsTarget[POS_L] == is_target) {
 			act_round = &round_info[POS_L];
 			tar_round = &round_info[POS_R];
-			act_distance = local_distance_types[POS_L];
-			tar_distance = local_distance_types[POS_R];
-			actor_unit = &battle_units[POS_L]->unit;
+			act_distance = distance_sp18;
+			tar_distance = distance_sp1C;
+			actor_unit = &bul_sp08->unit;
 			cur_is_dark_breath = is_dark_breath;
 
 			if (round == 0)
@@ -187,10 +190,10 @@ void ParseBattleHitToBanimCmd(void)
 		} else {
 			act_round = &round_info[POS_R];
 			tar_round = &round_info[POS_L];
-			act_distance = local_distance_types[POS_R];
-			tar_distance = local_distance_types[POS_L];
-			actor_unit = &battle_units[POS_R]->unit;
-			cur_is_dark_breath = is_dark_breath;
+			act_distance = distance_sp1C;
+			tar_distance = distance_sp18;
+			actor_unit = &bur_sp0C->unit;
+			cur_is_dark_breath = 0;
 
 			if (round == 0)
 				gEkrInitialHitSide = POS_R;
@@ -204,53 +207,62 @@ void ParseBattleHitToBanimCmd(void)
 		/* Check for attacker */
 		if (hit->attributes & BATTLE_HIT_ATTR_CRIT) {
 			if (!UnitKnowsMagic(actor_unit))
-				*act_round = RoundTypes_CriticalPhy[round];
+				*act_round = RoundTypes_CriticalPhy[act_distance];
 			else
-				*act_round = RoundTypes_CriticalMag[round];
+				*act_round = RoundTypes_CriticalMag[act_distance];
 		} else if (cur_is_dark_breath == 0) {
 			if (!UnitKnowsMagic(actor_unit))
-				*act_round = RoundTypes_NormalPhy[round];
+				*act_round = RoundTypes_NormalPhy[act_distance];
 			else
-				*act_round = RoundTypes_NormalMag[round];
+				*act_round = RoundTypes_NormalMag[act_distance];
 		} else {
 			// Idunn!
 			switch (BanimSpawnRandB(2)) {
 			case 0:
-				*act_round = RoundTypes_Dragon1[round];
+				*act_round = RoundTypes_Dragon1[act_distance];
 				break;
 
 			case 1:
-				*act_round = RoundTypes_Dragon2[round];
+				*act_round = RoundTypes_Dragon2[act_distance];
 				break;
 
 			case 2:
-				*act_round = RoundTypes_Dragon3[round];
+				*act_round = RoundTypes_Dragon3[act_distance];
+				break;
+
+			default:
 				break;
 			}
 		}
 
 		/* Check for defender */
-		if (hit->attributes & BATTLE_HIT_ATTR_MISS) {
+		if (hit->attributes & BATTLE_HIT_ATTR_MISS)
+		{
 			/**
 			 * Make sure to ignore critical anim?
 			 */
 			if (!UnitKnowsMagic(actor_unit))
-				*act_round = RoundTypes_MissedPhy[round];
+				*act_round = RoundTypes_MissedPhy[act_distance];
 			else
-				*act_round = RoundTypes_NormalMag[round];
+				*act_round = RoundTypes_NormalMag[act_distance];
 
-			tar_round = RoundTypes_TargetMiss[round];
-		} else
-			tar_round = RoundTypes_TargetHitted[round];
+			*tar_round = RoundTypes_TargetMiss[tar_distance];
+		}
+		else
+		{
+			*tar_round = RoundTypes_TargetHitted[tar_distance];
+		}
 
 		gAnimRoundData[ANIM_REF_OFFSET(round, POS_L)] = round_info[POS_L];
-		gAnimRoundData[ANIM_REF_OFFSET(round, POS_R)] = round_info[POS_R];
+		tar_round = round_info;
+		gAnimRoundData[ANIM_REF_OFFSET(round, POS_R)] = tar_round[round_info - tar_round + POS_R];
 
 		if ((hit->attributes & BATTLE_HIT_ATTR_MISS) == 0) {
+			i16 new_hp;
 			if (hit->attributes & BATTLE_HIT_ATTR_DEVIL) {
 				/* devil */
 				if (gBanimPosIsTarget[POS_L] == is_target) {
-					i16 new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
 
 					if (new_hp < 0)
 						new_hp = 0;
@@ -259,7 +271,7 @@ void ParseBattleHitToBanimCmd(void)
 					gEfxHpLut[ANIM_REF_OFFSET(hpoff_l, POS_L)] = new_hp;
 					gAnimRoundData[ANIM_REF_OFFSET(round, POS_L)] |= ANIM_ROUND_DEVIL;
 				} else {
-					i16 new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
 
 					if (new_hp < 0)
 						new_hp = 0;
@@ -269,12 +281,11 @@ void ParseBattleHitToBanimCmd(void)
 					gAnimRoundData[ANIM_REF_OFFSET(round, POS_R)] |= ANIM_ROUND_DEVIL;
 				}
 			} else if (hit->attributes & BATTLE_HIT_ATTR_HPSTEAL) {
-				/* devil */
+				/* nosferatu */
 				if (gBanimPosIsTarget[POS_L] == is_target) {
-					i16 new_hp;
 
 					/* target */
-					new_hp= GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
 					if (new_hp < 0)
 						new_hp = 0;
 
@@ -289,10 +300,8 @@ void ParseBattleHitToBanimCmd(void)
 					hpoff_l++;
 					gEfxHpLut[ANIM_REF_OFFSET(hpoff_l, POS_L)] = new_hp;
 				} else {
-					i16 new_hp;
-
 					/* target */
-					new_hp= GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
 					if (new_hp < 0)
 						new_hp = 0;
 
@@ -310,7 +319,7 @@ void ParseBattleHitToBanimCmd(void)
 			} else {
 				/* normal */
 				if (gBanimPosIsTarget[POS_L] == is_target) {
-					i16 new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_r, POS_R)) - hit->damage;
 
 					if (new_hp < 0)
 						new_hp = 0;
@@ -322,7 +331,7 @@ void ParseBattleHitToBanimCmd(void)
 						gAnimRoundData[ANIM_REF_OFFSET(round, POS_R)] |= ANIM_ROUND_POISON;
 
 				} else {
-					i16 new_hp= GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
+					new_hp = GetEfxHp(ANIM_REF_OFFSET(hpoff_l, POS_L)) - hit->damage;
 
 					if (new_hp < 0)
 						new_hp = 0;
@@ -337,7 +346,6 @@ void ParseBattleHitToBanimCmd(void)
 		}
 	}
 }
-#endif
 
 bool CheckBattleHasHit(void)
 {

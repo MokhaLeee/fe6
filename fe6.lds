@@ -514,7 +514,6 @@ SECTIONS
         src/banim_ekrbattleintrofx.o(.text);
         asm/banim_ekrbattleintrofx.o(.text);
         src/banim_setup.o(.text);
-        asm/banim_ekrcmd.o(.text);
         src/banim_ekrcmd.o(.text);
         src/banim_main.o(.text);
         src/banim_ekrmain.o(.text);
