@@ -32,7 +32,7 @@ void PutEndingCreditTm(u16 *tm, u16 oam2, u8 w, u8 h)
 	}
 }
 
-void EndingCredit_Reinit(struct ProcEndingCredit *proc)
+void EndingCredit_Reinit(struct ProcGameCredit *proc)
 {
 	UnpackUiWindowFrameGraphics();
 
@@ -49,21 +49,21 @@ void EndingCredit_Reinit(struct ProcEndingCredit *proc)
 	SetupCreditCharacterGlyphs();
 }
 
-void GameCredit_Init(struct ProcEndingCredit *proc)
+void GameCredit_Init(struct ProcGameCredit *proc)
 {
 	gEndingDispType = ENDING_DISP_1;
 	EndingCredit_Reinit(proc);
 	SetupEndingPInfo2Uids();
 }
 
-void EndingCredit_ReinitType2(struct ProcEndingCredit *proc)
+void EndingCredit_ReinitType2(struct ProcGameCredit *proc)
 {
 	gEndingDispType = ENDING_DISP_2;
 	EndingCredit_Reinit(proc);
 	SetupEndingPInfo2Uids();
 }
 
-void EndingCredit_ReinitType0(struct ProcEndingCredit *proc)
+void EndingCredit_ReinitType0(struct ProcGameCredit *proc)
 {
 	gEndingDispType = ENDING_DISP_0;
 	EndingCredit_Reinit(proc);

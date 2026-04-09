@@ -713,6 +713,8 @@ SECTIONS
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
         . = ALIGN(4); src/gamedatainfo.o(.rodata);
+        . = ALIGN(4); src/ending_credit_info.o(.rodata);
+        . = ALIGN(4); data/chapterinfo_debugname.o(.rodata);
         . = ALIGN(4); data/rodata_279E60.o(.rodata);
         . = ALIGN(4); src/mu.o(.rodata);
         . = ALIGN(4); src/manim.o(.rodata);
@@ -862,6 +864,7 @@ SECTIONS
         . = ALIGN(4), data/data-portrait.o(.data);
         . = ALIGN(4); src/gamedatainfo.o(.data);
         . = ALIGN(4), data/data-game-info.o(.data);
+        . = ALIGN(4), src/ending_credit_info.o(.data);
         . = ALIGN(4), data/chapterinfo.o(.data);
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); data/data-code-mu.o(.data);
@@ -905,6 +908,10 @@ SECTIONS
         . = ALIGN(4); src/playrank.o(.data);
         . = ALIGN(4); src/ending_credit.o(.data);
         . = ALIGN(4); data/data.o(.data);
+        . = ALIGN(4); src/ending_handler.o(.data);
+        . = ALIGN(4); src/ending_pinfo.o(.data);
+        . = ALIGN(4); src/ending_pinfo_data.o(.data);
+        . = ALIGN(4); data/data_68C1DC.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);
         . = ALIGN(4); src/worldmap_eventscr.o(.data);

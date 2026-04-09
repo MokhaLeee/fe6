@@ -11,7 +11,3 @@ gSpellAssoc: @ 08662E4C
     .global AffinityBonuses
 AffinityBonuses: @ 0866350C
     .incbin "fe6-base.gba", 0x66350C, (0x66354C - 0x66350C) @ length: 0040
-
-    .global gCreditInfo
-gCreditInfo: @ 0866354C
-    .incbin "fe6-base.gba", 0x66354C, (0x6637A4 - 0x66354C) @ length: 0258

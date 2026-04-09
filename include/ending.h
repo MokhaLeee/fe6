@@ -19,7 +19,15 @@ enum ending_disp_type {
 	ENDING_DISP_3,
 };
 
-struct ProcEndingCredit {
+struct ProcGameCredit {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x64);
+
+	i16 timer;
+};
+
+struct ProcGameEnding {
 	PROC_HEADER;
 
 	STRUCT_PAD(0x29, 0x64);
@@ -35,6 +43,42 @@ struct ProcEndingfx {
 	i16 unk_4C;
 };
 
+struct CreditInfo {
+	const char *work;
+	const char *name;
+	int pos_maybe;
+};
+
+extern CONST_DATA struct CreditInfo gCreditInfo[];
+
+struct PidEndingInfo {
+	/* 00 */ u16 msg_00;
+	/* 02 */ u16 msg_02;
+	/* 04 */ u16 msg_04;
+	/* 06 */ u16 msg_06;
+};
+
+extern CONST_DATA struct PidEndingInfo gPersonEndingInfo[];
+
+extern EWRAM_OVERLAY(0) u8 gCreditInfoDispStep;
+extern EWRAM_OVERLAY(0) u8 unk_02016A3D;
+
+enum game_ending_flags {
+	GAME_ENDING_FLAG0 = 1 << 0,
+	GAME_ENDING_FLAG1 = 1 << 1,
+	GAME_ENDING_FLAG2 = 1 << 2,
+	GAME_ENDING_FLAG3 = 1 << 3,
+	GAME_ENDING_FLAG4 = 1 << 4,
+	GAME_ENDING_FLAG5 = 1 << 5,
+};
+extern EWRAM_OVERLAY(0) u8 gGameEndingFlag;
+
+extern EWRAM_OVERLAY(0) u8 unk_02016A3F;
+extern EWRAM_OVERLAY(0) u8 gEndingDoneFlag;
+extern EWRAM_OVERLAY(0) u8 gEndingDispType;
+extern EWRAM_OVERLAY(0) u8 unk_02016A42;
+extern EWRAM_OVERLAY(0) u8 unk_02016A43[0x80];
+extern EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81];
 extern EWRAM_OVERLAY(0) bool unk_02016B44;
 extern EWRAM_OVERLAY(0) struct Text Texts_02016B48[6];
 extern EWRAM_OVERLAY(0) struct Text Texts_02016B78[2];
@@ -51,13 +95,13 @@ extern EWRAM_DATA i8 gEndingUids2[14];
 
 void SetupCreditCharacterGlyphs(void);
 void PutEndingCreditTm(u16 *tm, u16 oam2, u8 w, u8 h);
-void EndingCredit_Reinit(struct ProcEndingCredit *proc);
-void GameCredit_Init(struct ProcEndingCredit *proc);
-void EndingCredit_ReinitType2(struct ProcEndingCredit *proc);
-void EndingCredit_ReinitType0(struct ProcEndingCredit *proc);
+void EndingCredit_Reinit(struct ProcGameCredit *proc);
+void GameCredit_Init(struct ProcGameCredit *proc);
+void EndingCredit_ReinitType2(struct ProcGameCredit *proc);
+void EndingCredit_ReinitType0(struct ProcGameCredit *proc);
 u8 func_fe6_0808FF04(struct ProcEndingfx *proc, int b, int c);
 int func_fe6_0808FF9C(int a, int b, int c);
-void func_fe6_0808FFE0(int step);
+void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step);
 void func_fe6_080902F0(int step);
 // func_fe6_080904F0
 // func_fe6_08090508
@@ -65,7 +109,7 @@ void func_fe6_0809058C(void);
 // func_fe6_080905A0
 void func_fe6_0809060C(void);
 void EndingStepAdvance(void);
-// func_fe6_08090630
+int func_fe6_08090630(void);
 // func_fe6_08090644
 // func_fe6_08090660
 // EndingCredit_Init
@@ -79,16 +123,16 @@ void func_fe6_08090854(u16 *tm, int oam2);
 // EndingStep1_Loop
 // Fin_Init
 // Fin_Loop
-// func_fe6_08090BA0
+bool func_fe6_08090BA0(void);
 // func_fe6_08090BC8
 // func_fe6_08090D34
 
 /* ending handler */
 bool CheckGameEndingDone(void);
-// Ending_Init
-// Ending_Loop
-void StartGameEnding(void);
-// GameCredit_Loop
+void Ending_Init(struct ProcGameEnding *proc);
+void Ending_Loop(struct ProcGameEnding *proc);
+void StartGameEnding(ProcPtr parent);
+void GameCredit_Loop(struct ProcGameCredit *proc);
 void StartGameCredit(void);
 
 /* ending pinfo */

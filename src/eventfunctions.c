@@ -2612,12 +2612,12 @@ struct ProcScr CONST_DATA ProcScr_EndingCreditFade[] =
     PROC_END,
 };
 
-void EndingCreditFade_Init(struct ProcEndingCreditFade * proc)
+void EndingCreditFade_Init(struct ProcGameCreditFade * proc)
 {
     proc->unk_64 = 0;
 }
 
-void EndingCreditFade_FadeBg(struct ProcEndingCreditFade * proc)
+void EndingCreditFade_FadeBg(struct ProcGameCreditFade * proc)
 {
     if (GetGameTime() % 8 == 0)
     {

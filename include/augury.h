@@ -71,15 +71,6 @@ extern EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect;
 extern EWRAM_OVERLAY(0) u8 unk_02016A2C;
 extern EWRAM_OVERLAY(0) u8 gPlayRankMissionCompleted;
 extern EWRAM_OVERLAY(0) u16 gPlayRanks[7];
-extern EWRAM_OVERLAY(0) u8 gCreditInfoDispStep;
-extern EWRAM_OVERLAY(0) u8 unk_02016A3D;
-extern EWRAM_OVERLAY(0) u8 unk_02016A3E;
-extern EWRAM_OVERLAY(0) u8 unk_02016A3F;
-extern EWRAM_OVERLAY(0) u8 gEndingDoneFlag;
-extern EWRAM_OVERLAY(0) u8 gEndingDispType;
-extern EWRAM_OVERLAY(0) u8 unk_02016A42;
-extern EWRAM_OVERLAY(0) u8 unk_02016A43[0x80];
-extern EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81];
 
 bool func_fe6_0808D0C0(struct MenuProc *proc);
 fu8 GetAuguryIndex(void);

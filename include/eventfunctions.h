@@ -258,15 +258,15 @@ void func_fe6_0806DBA8(struct UnkProc_08676854 * proc);
 void func_fe6_0806DC24(ProcPtr parent);
 void func_fe6_0806DC38(void);
 
-struct ProcEndingCreditFade
+struct ProcGameCreditFade
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x64);
     /* 64 */ i16 unk_64;
 };
 
-void EndingCreditFade_Init(struct ProcEndingCreditFade * proc);
-void EndingCreditFade_FadeBg(struct ProcEndingCreditFade * proc);
+void EndingCreditFade_Init(struct ProcGameCreditFade * proc);
+void EndingCreditFade_FadeBg(struct ProcGameCreditFade * proc);
 void Epilogue_StartCredit(ProcPtr parent);
 void RemoveEndingMonologueBG(void);
 

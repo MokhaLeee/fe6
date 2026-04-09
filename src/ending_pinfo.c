@@ -348,6 +348,14 @@ u8 PopNextEnding2Person(u8 pos)
 	return uid;
 }
 
+struct ProcScr CONST_DATA ProcScr_EndingP0InfoText[] = {
+	PROC_19,
+	PROC_CALL(EndingP0InfoText_Init),
+	PROC_SLEEP(1),
+	PROC_REPEAT(EndingP0InfoText_Loop),
+	PROC_END,
+};
+
 void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 {
 	int i;
@@ -425,6 +433,24 @@ void EndingP0InfoText_Loop(struct ProcEndingPinfoText *proc)
 	Proc_Break(proc);
 }
 
+struct ProcScr CONST_DATA ProcScr_EndingPInfo_x1[] = {
+	PROC_19,
+	PROC_CALL(FadeInBlackWithCallBack_Speed40),
+	PROC_SLEEP(1),
+	PROC_CALL(EndingPInfoDisp_InitDisp),
+	PROC_CALL(EndingPInfo1_StartMerge),
+	PROC_CALL(FadeInBlackSpeed08),
+	PROC_SLEEP(1),
+	PROC_CALL(EndingPInfo1_PutP0InfoText),
+	PROC_REPEAT(EndingPInfo1_Idle),
+	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_SLEEP(1),
+	PROC_CALL(EndingPInfo1_End),
+	PROC_SLEEP(32),
+PROC_LABEL(99),
+	PROC_END,
+};
+
 void EndingPInfo1_PutP0InfoText(struct ProcEndingPInfo1 *proc)
 {
 	i8 uid = gEndingUid1;
@@ -482,6 +508,14 @@ bool EndingPInfo1Exists(void)
 {
 	return Proc_Exists(ProcScr_EndingPInfo_x1);
 }
+
+struct ProcScr CONST_DATA ProcScr_EndingP1InfoText[] = {
+	PROC_19,
+	PROC_CALL(EndingP1InfoText_Init),
+	PROC_SLEEP(1),
+	PROC_REPEAT(EndingP1InfoText_Loop),
+	PROC_END,
+};
 
 void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc)
 {
@@ -559,6 +593,15 @@ void SpawnEndingP1InfoText(void)
 	SpawnProc(ProcScr_EndingP1InfoText, PROC_TREE_3);
 }
 
+struct ProcScr CONST_DATA ProcScr_EndingP2InfoText[] = {
+	PROC_19,
+	PROC_CALL(EndingP2InfoText_Init),
+	PROC_SLEEP(1),
+	PROC_REPEAT(EndingP2InfoText_Loop),
+	PROC_END,
+};
+
+
 void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc)
 {
 	int i;
@@ -635,6 +678,23 @@ void SpawnEndingP2InfoText(void)
 	if (gEndingDisplaySecondUnit == true)
 		SpawnProc(ProcScr_EndingP2InfoText, PROC_TREE_3);
 }
+
+struct ProcScr CONST_DATA ProcScr_EndingPInfo_x2[] = {
+	PROC_19,
+	PROC_CALL(FadeInBlackWithCallBack_Speed40),
+	PROC_SLEEP(1),
+	PROC_CALL(EndingPInfoDisp_InitDisp),
+	PROC_CALL(Ending_DrawDyadPInfo),
+	PROC_CALL(FadeInBlackSpeed08),
+	PROC_SLEEP(1),
+	PROC_REPEAT(EndingPInfoDisp_Loop),
+	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_SLEEP(1),
+	PROC_CALL(EndingPInfoDisp_End),
+	PROC_SLEEP(32),
+PROC_LABEL(99),
+	PROC_END,
+};
 
 void Ending_DrawDyadPInfo(struct ProcEndingPInfoDisp *proc)
 {
@@ -726,6 +786,13 @@ void EndingPInfoDisp_End(struct ProcEndingPInfoDisp *proc)
 	Proc_EndEach(ProcScr_EndingFacePosCtrl);
 	SetOnHBlankA(NULL);
 }
+
+struct ProcScr CONST_DATA ProcScr_EndingFacePosCtrl[] = {
+	PROC_19,
+	PROC_CALL(EndingFacePosCtrl_Init),
+	PROC_REPEAT(EndingFacePosCtrl_Loop),
+	PROC_END,
+};
 
 bool EndingFacePosCtrlExists(void)
 {
