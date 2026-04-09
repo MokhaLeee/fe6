@@ -37,7 +37,7 @@
 #include "save_stats.h"
 #include "banim.h"
 #include "opanim.h"
-#include "ending_credit.h"
+#include "ending.h"
 #include "ending_monologue.h"
 #include "chapterunits.h"
 
@@ -3255,7 +3255,7 @@ EvtLabel(4)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_0867683C)
     EvtSleep(256)
     EvtFunc(EndingStepAdvance)
-    EvtFuncWhile(func_fe6_08090D54)
+    EvtFuncWhile(CheckGameEndingDone)
     EvtFadeToBlack(4)
     EvtExitMap
     EvtFunc(EndAllProcsMark1)
@@ -3462,7 +3462,7 @@ EventScr CONST_DATA EventScr_FalseEnding[] =
 // EventScr @ 086772DC
 EventScr CONST_DATA EventScr_CharacterEnding[] =
 {
-    EvtFunc(StartCharacterEndings)
+    EvtFunc(StartGameEnding)
     EvtSleep(1)
     EvtFunc(CleanupGame)
     EvtClearSkip

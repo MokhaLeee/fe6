@@ -326,32 +326,3 @@ extern CONST_DATA struct ProcScr ProcScr_0868B88C[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRankTrialOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRank[];
 extern CONST_DATA struct ProcScr ProcScr_PlayRankTrail[];
-// extern CONST_DATA ??? BgConf_0868BA24
-// extern CONST_DATA ??? gUnk_0868BA3C
-
-struct UnkStruct_0868BB1C {
-	u8 unk_0;
-	u8 unk_1;
-	u8 unk_2;
-	u8 unk_3;
-};
-
-extern CONST_DATA struct UnkStruct_0868BB1C gUnk_0868BB1C[];
-extern CONST_DATA struct ProcScr ProcScr_0868BB3C[];
-extern CONST_DATA struct ProcScr ProcScr_0868BB5C[];
-extern CONST_DATA struct ProcScr ProcScr_0868BB7C[];
-extern CONST_DATA struct ProcScr ProcScr_EndingCredit[];
-extern CONST_DATA struct ProcScr ProcScr_EndingCopyRight[];
-extern CONST_DATA struct ProcScr ProcScr_EndingStep1_PutaMonologue[];
-extern CONST_DATA struct ProcScr ProcScr_Fin[];
-// extern CONST_DATA ??? gUnk_0868BCE4
-extern CONST_DATA struct ProcScr ProcScr_0868BDB4[];
-extern CONST_DATA struct ProcScr ProcScr_Ending[];
-extern CONST_DATA struct ProcScr ProcScr_GameCredit[];
-extern CONST_DATA struct ProcScr ProcScr_EndingP0InfoText[];
-extern CONST_DATA struct ProcScr ProcScr_EndingPInfo_x1[];
-extern CONST_DATA struct ProcScr ProcScr_EndingP1InfoText[];
-extern CONST_DATA struct ProcScr ProcScr_EndingP2InfoText[];
-extern CONST_DATA struct ProcScr ProcScr_EndingPInfo_x2[];
-extern CONST_DATA struct ProcScr ProcScr_EndingFacePosCtrl[];
-

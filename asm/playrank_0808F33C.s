@@ -753,13 +753,13 @@ func_fe6_0809060C: @ 0x0809060C
 
 	thumb_func_start EndingStepAdvance
 EndingStepAdvance: @ 0x08090620
-	ldr r1, .L0809062C @ =gEndingStep
+	ldr r1, .L0809062C @ =gEndingDoneFlag
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-.L0809062C: .4byte gEndingStep
+.L0809062C: .4byte gEndingDoneFlag
 
 	thumb_func_start func_fe6_08090630
 func_fe6_08090630: @ 0x08090630
@@ -1621,16 +1621,16 @@ func_fe6_08090D34: @ 0x08090D34
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08090D54
-func_fe6_08090D54: @ 0x08090D54
-	ldr r0, .L08090D60 @ =gEndingStep
+	thumb_func_start CheckGameEndingDone
+CheckGameEndingDone: @ 0x08090D54
+	ldr r0, .L08090D60 @ =gEndingDoneFlag
 	ldrb r0, [r0]
 	cmp r0, #1
 	bls .L08090D64
 	movs r0, #0
 	b .L08090D66
 	.align 2, 0
-.L08090D60: .4byte gEndingStep
+.L08090D60: .4byte gEndingDoneFlag
 .L08090D64:
 	movs r0, #1
 .L08090D66:
@@ -1855,8 +1855,8 @@ Ending_Loop: @ 0x08090D78
 	.align 2, 0
 .L08090F30: .4byte ProcScr_Fin
 
-	thumb_func_start StartCharacterEndings
-StartCharacterEndings: @ 0x08090F34
+	thumb_func_start StartGameEnding
+StartGameEnding: @ 0x08090F34
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, .L08090F44 @ =ProcScr_Ending
@@ -1923,7 +1923,7 @@ GameCredit_Loop: @ 0x08090F48
 	ldrb r0, [r3]
 	adds r0, #1
 	strb r0, [r3]
-	ldr r0, .L08090FE0 @ =gEndingStep
+	ldr r0, .L08090FE0 @ =gEndingDoneFlag
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq .L08090FF2
@@ -1940,7 +1940,7 @@ GameCredit_Loop: @ 0x08090F48
 	bl EndingStepAdvance
 	b .L08090FF2
 	.align 2, 0
-.L08090FE0: .4byte gEndingStep
+.L08090FE0: .4byte gEndingDoneFlag
 .L08090FE4: .4byte gBg0Tm
 .L08090FE8: .4byte gBg1Tm
 .L08090FEC:
@@ -1958,112 +1958,3 @@ GameCredit_Loop: @ 0x08090F48
 	bx r0
 	.align 2, 0
 .L08091004: .4byte gCreditInfoDispStep
-
-	thumb_func_start StartGameCredit
-StartGameCredit: @ 0x08091008
-	push {lr}
-	ldr r0, .L08091018 @ =ProcScr_GameCredit
-	movs r1, #3
-	bl SpawnProc
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08091018: .4byte ProcScr_GameCredit
-
-	thumb_func_start PersonEndingHasSupporter
-PersonEndingHasSupporter: @ 0x0809101C
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	movs r0, #1
-	bl GetUnitByPid
-	adds r5, r0, #0
-	adds r1, r4, #0
-	bl GetUnitSupportNumByPid
-	adds r1, r0, #0
-	adds r0, r5, #0
-	bl GetUnitSupportLevel
-	cmp r0, #2
-	bgt .L08091042
-	movs r0, #0
-	b .L08091044
-.L08091042:
-	movs r0, #1
-.L08091044:
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start EndingFacePosCtrlExt
-EndingFacePosCtrlExt: @ 0x0809104C
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	movs r4, #1
-	ldr r3, .L080910B8 @ =unk_02016B94
-	ldr r2, .L080910BC @ =gPal
-.L0809105A:
-	lsls r1, r4, #1
-	adds r1, r1, r3
-	adds r0, r4, #0
-	adds r0, #0x20
-	lsls r0, r0, #1
-	adds r0, r0, r2
-	ldrh r1, [r1]
-	ldrh r0, [r0]
-	cmp r1, r0
-	beq .L080910C8
-	movs r4, #0
-	ldr r7, .L080910C0 @ =gPal+0x40
-	ldr r0, .L080910B8 @ =unk_02016B94
-	mov r8, r0
-	ldr r5, .L080910C4 @ =unk_02016C94
-	mov sb, r5
-	mov r6, r8
-.L0809107C:
-	adds r0, r7, #0
-	adds r1, r6, #0
-	movs r2, #8
-	bl CpuFastSet
-	mov r0, r8
-	adds r1, r4, #0
-	movs r2, #1
-	adds r3, r4, #0
-	bl EfxPalBlackInOut
-	adds r0, r7, #0
-	adds r0, #0x20
-	adds r1, r5, #0
-	movs r2, #8
-	bl CpuFastSet
-	mov r0, sb
-	adds r1, r4, #0
-	movs r2, #1
-	adds r3, r4, #0
-	bl EfxPalBlackInOut
-	adds r5, #0x20
-	adds r6, #0x20
-	adds r4, #1
-	cmp r4, #7
-	ble .L0809107C
-	b .L080910CE
-	.align 2, 0
-.L080910B8: .4byte unk_02016B94
-.L080910BC: .4byte gPal
-.L080910C0: .4byte gPal+0x40
-.L080910C4: .4byte unk_02016C94
-.L080910C8:
-	adds r4, #1
-	cmp r4, #0xf
-	ble .L0809105A
-.L080910CE:
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-

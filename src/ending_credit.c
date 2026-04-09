@@ -5,7 +5,7 @@
 #include "ui.h"
 #include "augury.h"
 #include "playrank.h"
-#include "ending_credit.h"
+#include "ending.h"
 
 void SetupCreditCharacterGlyphs(void)
 {
@@ -36,11 +36,11 @@ void EndingCredit_Reinit(struct ProcEndingCredit *proc)
 {
 	UnpackUiWindowFrameGraphics();
 
-	proc->unk_64 = 0;
+	proc->timer = 0;
 	gCreditInfoDispStep = 0;
 	unk_02016A3D = 0;
 	unk_02016A3F = 0;
-	gEndingStep = 0;
+	gEndingDoneFlag = 0;
 
 	SetBlendAlpha(0, 0x10);
 	SetBlendTargetA(1, 1, 0, 0, 0);

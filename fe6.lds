@@ -599,7 +599,7 @@ SECTIONS
         src/playrank.o(.text);
         src/ending_credit.o(.text);
         asm/playrank_0808F33C.o(.text);
-        asm/ending_pinfohblank.o(.text);
+        src/ending_handler.o(.text);
         src/ending_pinfo.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);

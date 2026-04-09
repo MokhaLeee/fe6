@@ -1,6 +1,7 @@
 #include "prelude.h"
 #include "proc.h"
 #include "unit.h"
+#include "support.h"
 #include "faction.h"
 #include "item.h"
 #include "util.h"
@@ -27,13 +28,103 @@
 #include "constants/videoalloc_global.h"
 
 #include "playrank.h"
-#include "augury.h"
-#include "ending_credit.h"
+#include "ending.h"
 
 EWRAM_DATA i8 gEndingUids1[55] = {};
 EWRAM_DATA i8 gEndingUids2[14] = {};
 
-#if 0
+bool CheckRoysBestPartner(u8 pid)
+{
+	struct Unit *roy = GetUnitByPid(PID_ROY);
+
+	if (GetUnitSupportLevel(roy, GetUnitSupportNumByPid(roy, pid)) >= SUPPORT_LEVEL_A)
+		return true;
+	else
+		return false;
+
+}
+
+void EndingFacePalCtrl(void)
+{
+	int i;
+
+	for (i = 1; i < 0x10; i++) {
+		if (gEndingPInfoPal1[0][i] != gPal[0x20 + i]) {
+			for (i = 0; i < 8; i++) {
+				CpuFastCopy(PAL_BG(2), gEndingPInfoPal1[i], 0x20);
+				EfxPalBlackInOut(gEndingPInfoPal1[0], i, 1, i);
+				CpuFastCopy(PAL_BG(3), gEndingPInfoPal2[i], 0x20);
+				EfxPalBlackInOut(gEndingPInfoPal2[0], i, 1, i);
+			}
+			return;
+		}
+	}
+}
+
+void HBlank_Ending_SinglePInfo(void)
+{
+	int pal_bank = 0;
+
+	switch (REG_VCOUNT) {
+	case 0x18:
+		REG_BG0VOFS = 4;
+		break;
+
+	case 0:
+	case 0x30:
+		REG_BG0VOFS = pal_bank;
+		break;
+
+	default:
+		break;
+	}
+
+	switch (REG_VCOUNT) {
+	case 0x3C:
+		pal_bank++;
+
+	case 0x3A:
+	case 0x90:
+		pal_bank++;
+
+	case 0x38:
+	case 0x92:
+		pal_bank++;
+
+	case 0x36:
+	case 0x94:
+		pal_bank++;
+
+	case 0x34:
+	case 0x96:
+		pal_bank++;
+
+	case 0x32:
+	case 0x98:
+		pal_bank++;
+
+	case 0x30:
+	case 0x9A:
+		pal_bank++;
+
+	case 0:
+	case 0x9C: {
+			int i;
+			u16 *var_0 = ((u16 *)PLTT) + 0x20;
+			u16 *var_1 = ((u16 *)PLTT) + 0x30;
+
+			for (i = 0; i < 0x10; i++) {
+				var_0[i] = gEndingPInfoPal1[pal_bank][i];
+				var_1[i] = gEndingPInfoPal2[pal_bank][i];
+			}
+		}
+		break;
+
+	default:
+		break;
+	}
+}
+
 void HBlank_Ending_DyadPInfo(void)
 {
 	int i, vcount, pal_bank = 0;
@@ -111,18 +202,21 @@ void HBlank_Ending_DyadPInfo(void)
 		/* fallthrough */
 
 	case 9:
-	case 143:
-		for (i = 0; i < 0x10; i++) {
-			((u16 *)PLTT)[i + 0x20] = unk_02016C94[pal_bank * 0x10 + i];
-			((u16 *)PLTT)[i + 0x30] = unk_02016B94[pal_bank * 0x10 + i];
+	case 143: {
+			u16 *var_0 = ((u16 *)PLTT) + 0x20;
+			u16 *var_1 = ((u16 *)PLTT) + 0x30;
+
+			for (i = 0; i < 0x10; i++) {
+				var_0[i] = gEndingPInfoPal1[pal_bank][i];
+				var_1[i] = gEndingPInfoPal2[pal_bank][i];
+			}
+			break;
 		}
-		break;
 
 	default:
 		break;
 	}
 }
-#endif
 
 void SetupTrueEndingUids(void)
 {
@@ -285,7 +379,7 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 	} else {
 		const char *str;
 
-		if (PersonEndingHasSupporter(pid) != false)
+		if (CheckRoysBestPartner(pid) != false)
 			str = DecodeMsg(gPersonEndingInfo[pid].msg_02);
 		else
 			str = DecodeMsg(gPersonEndingInfo[pid].msg_00);
@@ -652,7 +746,7 @@ void EndingFacePosCtrl_Loop(ProcPtr proc)
 		EndingFaceXPos[0] = Interpolate(INTERPOLATE_RSQUARE, 0xFFFFFF00, 0, procfx->timer, 0x2D);
 		EndingFaceXPos[1] = Interpolate(INTERPOLATE_RSQUARE, 0x100, 0, procfx->timer, 0x2D);
 	}
-	EndingFacePosCtrlExt();
+	EndingFacePalCtrl();
 }
 
 void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type)
