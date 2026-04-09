@@ -10,6 +10,9 @@ enum video_alloc_credit {
 	BGCHR_CREDIT_GLYPH_NARROW = 0x80,
 	OBCHR_CREDIT_GLYPH_CAP = 0x280,
 	OBCHR_CREDIT_GLYPH_LOW = 0x200,
+
+	BGCHR_ENDING_CG = 0x140,
+	BGPAL_ENDING_CG = 6,
 };
 
 enum ending_disp_type {
@@ -61,7 +64,7 @@ struct PidEndingInfo {
 extern CONST_DATA struct PidEndingInfo gPersonEndingInfo[];
 
 extern EWRAM_OVERLAY(0) u8 gCreditInfoDispStep;
-extern EWRAM_OVERLAY(0) u8 unk_02016A3D;
+extern EWRAM_OVERLAY(0) u8 gEndingCgIndex;
 
 enum game_ending_flags {
 	GAME_ENDING_FLAG0 = 1 << 0,
@@ -118,14 +121,14 @@ int func_fe6_08090630(void);
 // EndingCopyRight_Init
 // EndingCopyRight_Loop
 void func_fe6_08090854(u16 *tm, int oam2);
-// EndingStep1_End
-// EndingStep1_Init
-// EndingStep1_Loop
-// Fin_Init
-// Fin_Loop
-bool func_fe6_08090BA0(void);
-// func_fe6_08090BC8
-// func_fe6_08090D34
+void EndingBG_Init(struct ProcGameEnding *proc);
+void EndingStep1_Init(struct ProcGameEnding *proc);
+void EndingStep1_Loop(struct ProcGameEnding *proc);
+void Fin_Init(struct ProcGameEnding *proc);
+void Fin_Loop(struct ProcGameEnding *proc);
+bool CheckDisplayEndingCG(void);
+void EndingBG_Init(struct ProcGameEnding *proc);
+void EndingBG_Loop(struct ProcGameEnding *proc);
 
 /* ending handler */
 bool CheckGameEndingDone(void);
@@ -194,7 +197,7 @@ void EndingFacePosCtrl_Init(ProcPtr proc);
 void EndingFacePosCtrl_Loop(ProcPtr proc);
 void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type);
 
-// extern CONST_DATA ??? BgConf_0868BA24
+extern CONST_DATA u16 BgConf_0868BA24[];
 // extern CONST_DATA ??? gUnk_0868BA3C
 
 struct UnkStruct_0868BB1C {
@@ -212,8 +215,16 @@ extern CONST_DATA struct ProcScr ProcScr_EndingCredit[];
 extern CONST_DATA struct ProcScr ProcScr_EndingCopyRight[];
 extern CONST_DATA struct ProcScr ProcScr_EndingStep1_PutaMonologue[];
 extern CONST_DATA struct ProcScr ProcScr_Fin[];
-// extern CONST_DATA ??? gUnk_0868BCE4
-extern CONST_DATA struct ProcScr ProcScr_0868BDB4[];
+
+struct EndingCgConf {
+	const u8 *img1;
+	const u16 *pal1;
+	const u8 *img2;
+	const u16 *pal2;
+};
+
+extern CONST_DATA struct EndingCgConf gEndingCgConf[];
+extern CONST_DATA struct ProcScr ProcScr_EndingBG[];
 extern CONST_DATA struct ProcScr ProcScr_Ending[];
 extern CONST_DATA struct ProcScr ProcScr_GameCredit[];
 extern CONST_DATA struct ProcScr ProcScr_EndingP0InfoText[];

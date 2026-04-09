@@ -599,6 +599,9 @@ SECTIONS
         src/playrank.o(.text);
         src/ending_credit.o(.text);
         asm/playrank_0808F33C.o(.text);
+        src/ending_credit2.o(.text);
+        src/ending_fin.o(.text);
+        src/ending_cg.o(.text);
         src/ending_handler.o(.text);
         src/ending_pinfo.o(.text);
         src/worldmap.o(.text);
@@ -739,6 +742,7 @@ SECTIONS
         . = ALIGN(4); data/rodata_3273E4.o(.rodata);
         . = ALIGN(4); src/minimap.o(.rodata);
         . = ALIGN(4); data/rodata_3278AC.o(.rodata);
+        . = ALIGN(4); src/ending_cg_img.o(.rodata);
         . = ALIGN(4); src/savemenu.o(.rodata);
         . = ALIGN(4); src/savemenu_2.o(.rodata);
         . = ALIGN(4); data/xmap_rodata.o(.rodata);
@@ -907,7 +911,10 @@ SECTIONS
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); src/playrank.o(.data);
         . = ALIGN(4); src/ending_credit.o(.data);
-        . = ALIGN(4); data/data.o(.data);
+        . = ALIGN(4); data/ending.o(.data);
+        . = ALIGN(4); src/ending_credit2.o(.data);
+        . = ALIGN(4); src/ending_fin.o(.data);
+        . = ALIGN(4); src/ending_cg.o(.data);
         . = ALIGN(4); src/ending_handler.o(.data);
         . = ALIGN(4); src/ending_pinfo.o(.data);
         . = ALIGN(4); src/ending_pinfo_data.o(.data);

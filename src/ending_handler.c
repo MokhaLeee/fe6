@@ -55,8 +55,8 @@ void Ending_Loop(struct ProcGameEnding *proc)
 		} else if (ctrl == 2) {
 			if (PopNextEndingPerson() < (FACTION_BLUE + 0x40) && gEndingDispType != ENDING_DISP_0)
 				SpawnProcLocking(ProcScr_EndingPInfo_x1, proc);
-			else if (func_fe6_08090BA0())
-				SpawnProcLocking(ProcScr_0868BDB4, proc);
+			else if (CheckDisplayEndingCG())
+				SpawnProcLocking(ProcScr_EndingBG, proc);
 
 			gGameEndingFlag |= GAME_ENDING_FLAG1;
 		} else
@@ -70,7 +70,7 @@ void Ending_Loop(struct ProcGameEnding *proc)
 		if (gGameEndingFlag & GAME_ENDING_FLAG0)
 			gCreditInfoDispStep++;
 		if (gGameEndingFlag & GAME_ENDING_FLAG1)
-			unk_02016A3D++;
+			gEndingCgIndex++;
 
 		proc->timer = 0;
 		break;

@@ -129,32 +129,3 @@ ProcScr_EndingStep1_PutaMonologue: @ 0868BC44
 	PROC_SLEEP 1
 	PROC_CALL EndingStep1_End
 	PROC_END
-
-	.global ProcScr_Fin
-ProcScr_Fin: @ 0868BC8C
-	PROC_19
-	PROC_SLEEP 60
-	PROC_CALL Fin_Init
-	PROC_CALL FadeInBlackSpeed08
-	PROC_SLEEP 1
-	PROC_REPEAT Fin_Loop
-	PROC_CALL_ARG _FadeBgmOut, 8
-	PROC_CALL FadeInBlackWithCallBack_Speed08
-	PROC_SLEEP 1
-	PROC_SLEEP 180
-	PROC_END
-
-	.global gUnk_0868BCE4
-gUnk_0868BCE4: @ 0868BCE4
-	.incbin "fe6-base.gba", 0x68BCE4, (0x68BDB4 - 0x68BCE4) @ length: 00D0
-
-	.global ProcScr_0868BDB4
-ProcScr_0868BDB4: @ 0868BDB4
-	PROC_19
-	PROC_CALL func_fe6_08090BC8
-	PROC_CALL FadeInBlackSpeed08
-	PROC_SLEEP 1
-	PROC_REPEAT func_fe6_08090D34
-	PROC_CALL FadeInBlackWithCallBack_Speed08
-	PROC_SLEEP 1
-	PROC_END

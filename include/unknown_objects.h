@@ -538,6 +538,26 @@ extern const u16 gUnk_0832C5E8[];
 extern const u16 gUnk_0832CA9C[];
 extern const u16 gUnk_0832CAFC[];
 extern const u16 gUnk_0832CC90[];
+extern u8 EndingCG_0832CCB0[];
+extern u16 EndingCG_0832DC8C[];
+extern u8 EndingCG_0832DCAC[];
+extern u16 EndingCG_0832EDAC[];
+extern u8 EndingCG_0832EDCC[];
+extern u16 EndingCG_0832FD70[];
+extern u8 EndingCG_0832FD90[];
+extern u16 EndingCG_08330B2C[];
+extern u8 EndingCG_08330B4C[];
+extern u16 EndingCG_08331B9C[];
+extern u8 EndingCG_08331BBC[];
+extern u16 EndingCG_08332E64[];
+extern u8 EndingCG_08332E84[];
+extern u16 EndingCG_08333DD4[];
+extern u8 EndingCG_08333DF4[];
+extern u16 EndingCG_08335060[];
+extern u8 EndingCG_08335080[];
+extern u16 EndingCG_08335CC8[];
+extern u8 EndingCG_08335CE8[];
+extern u16 EndingCG_08336C40[];
 
 /* xmap.h */
 /* config.h */

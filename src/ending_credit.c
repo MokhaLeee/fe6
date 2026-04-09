@@ -38,7 +38,7 @@ void EndingCredit_Reinit(struct ProcGameCredit *proc)
 
 	proc->timer = 0;
 	gCreditInfoDispStep = 0;
-	unk_02016A3D = 0;
+	gEndingCgIndex = 0;
 	unk_02016A3F = 0;
 	gEndingDoneFlag = 0;
 
