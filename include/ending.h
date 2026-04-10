@@ -25,7 +25,11 @@ enum ending_disp_type {
 struct ProcGameCredit {
 	PROC_HEADER;
 
-	STRUCT_PAD(0x29, 0x64);
+	STRUCT_PAD(0x29, 0x4C);
+
+	/* 4C */ i16 unk_4C;
+
+	STRUCT_PAD(0x4E, 0x64);
 
 	i16 timer;
 };
@@ -37,14 +41,6 @@ struct ProcGameEnding {
 
 	i16 timer;
 	u16 step;
-};
-
-struct ProcEndingfx {
-	PROC_HEADER;
-
-	STRUCT_PAD(0x29, 0x4C);
-
-	i16 unk_4C;
 };
 
 struct CreditInfo {
@@ -104,7 +100,7 @@ void EndingCredit_Reinit(struct ProcGameCredit *proc);
 void GameCredit_Init(struct ProcGameCredit *proc);
 void EndingCredit_ReinitType2(struct ProcGameCredit *proc);
 void EndingCredit_ReinitType0(struct ProcGameCredit *proc);
-u8 func_fe6_0808FF04(struct ProcEndingfx *proc, int b, int c);
+u8 func_fe6_0808FF04(struct ProcGameCredit *proc, int b, int c);
 int func_fe6_0808FF9C(int a, int b, int c);
 void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step);
 void EndingCredit_PutJobName(int step);
@@ -211,7 +207,18 @@ void EndingFacePosCtrl_Loop(ProcPtr proc);
 void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type);
 
 extern CONST_DATA u16 BgConf_0868BA24[];
-// extern CONST_DATA ??? gUnk_0868BA3C
+
+struct UnkStruct_0868BA3C {
+	u8 unk_00;
+	u8 unk_01;
+	u8 unk_02;
+	u8 unk_03;
+	u8 unk_04;
+	u8 unk_05;
+
+	u16 _pad_6;
+};
+extern CONST_DATA struct UnkStruct_0868BA3C gUnk_0868BA3C[];
 
 struct UnkStruct_0868BB1C {
 	u8 unk_0;

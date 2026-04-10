@@ -22,20 +22,20 @@ TsaConf_BanimTmA_08112548:	@ 0x08112548
 Img_081125E0: @ 081125E0
 	.incbin "fe6-base.gba", 0x1125E0, (0x1127F0 - 0x1125E0) @ length: 0210
 
-	.global Img_081127F0
-Img_081127F0: @ 081127F0
+	.global Img_EfxLeftNameBox
+Img_EfxLeftNameBox: @ 081127F0
 	.incbin "fe6-base.gba", 0x1127F0, (0x112840 - 0x1127F0) @ length: 0050
 
-	.global Img_08112840
-Img_08112840: @ 08112840
+	.global Img_EfxLeftItemBox
+Img_EfxLeftItemBox: @ 08112840
 	.incbin "fe6-base.gba", 0x112840, (0x1128AC - 0x112840) @ length: 006C
 
-	.global Img_081128AC
-Img_081128AC: @ 081128AC
+	.global Img_EfxRightNameBox
+Img_EfxRightNameBox: @ 081128AC
 	.incbin "fe6-base.gba", 0x1128AC, (0x1128FC - 0x1128AC) @ length: 0050
 
-	.global Img_081128FC
-Img_081128FC: @ 081128FC
+	.global Img_EfxRightItemBox
+Img_EfxRightItemBox: @ 081128FC
 	.incbin "fe6-base.gba", 0x1128FC, (0x112968 - 0x1128FC) @ length: 006C
 
 	.global Tsa_EkrDispUP_08112968

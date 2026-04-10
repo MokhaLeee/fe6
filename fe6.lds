@@ -164,7 +164,7 @@ SECTIONS
         . = 0x004120; gBanimPaletteRight = .;
         . = 0x0041C0; gBanimOamBufs = .;
         . = 0x00F1C0; gBanimScrs = .;
-        . = 0x0145C0; gBanimBuf_20145C0 = .;
+        . = 0x0145C0; gBanimTerrainfxBufObj = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
         . = 0x0165C0; gEfxPal = .;
         . = 0x0169C0; Buf_EkrGaugeNumImg = .;
@@ -501,7 +501,6 @@ SECTIONS
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
         src/banim_ekrdispup.o(.text);
-        asm/banim_ekrmisc.o(.text);
         src/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
         src/banim_efxdeath.o(.text);

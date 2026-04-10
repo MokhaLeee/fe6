@@ -69,7 +69,7 @@ void EndingCredit_ReinitType0(struct ProcGameCredit *proc)
 	EndingCredit_Reinit(proc);
 }
 
-u8 func_fe6_0808FF04(struct ProcEndingfx *proc, int b, int c)
+u8 func_fe6_0808FF04(struct ProcGameCredit *proc, int b, int c)
 {
 	if (unk_02016A42 <= 0x13) {
 		unk_02016A43[proc->unk_4C] = 0x16;

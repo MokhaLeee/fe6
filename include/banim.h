@@ -72,6 +72,12 @@ enum video_banim {
     OBPAL_EFX_ITEM_L = 13,
     OBPAL_EFX_ITEM_R = 14,
 
+    BGCHR_BANIM_080 = 0x80,
+    BGCHR_BANIM_PNAME_L = 0xA0,
+    BGCHR_BANIM_INAME_L = 0xAC,
+    BGCHR_BANIM_PNAME_R = 0xBA,
+    BGCHR_BANIM_INAME_R = 0xC6,
+
     VRAMOFF_BANIM_SPELL_OBJ = 0x0800,
     VRAMOFF_BANIM_SPELL_BG  = 0x2000,
     VRAMOFF_BANIM_SPELL_23E0 = 0x23E0,
@@ -113,7 +119,7 @@ enum banim_sprites_size {
 extern u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
 extern u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
 extern u8 gBanimImgSheetBufs[2 * BAS_IMG_MAX_SIZE];
-extern u8 gBanimBuf_20145C0[0x800];
+extern u8 gBanimTerrainfxBufObj[0x800];
 
 struct ProcEfx {
     PROC_HEADER;
@@ -234,6 +240,7 @@ struct ProcEfxOBJ {
 };
 
 extern void *gpBanimTerrainfxBufs[2];
+extern void *gpBanimTerrainTsaBufs[2];
 extern u16 *gpBanimTerrainPalBufs[2];
 extern int *gpBanimModesLeft;
 extern int *gpBanimModesRight;
@@ -420,7 +427,7 @@ void UnAsyncEkrDispUP(void);
 void EkrDispUP_Loop(struct ProcEkrDispUP *proc);
 
 void EfxClearScreenFx(void);
-void EfxPrepareScreenFx(void);
+void EkrDispUp_PutTerrainfx(void);
 void EfxPrepareScreenFx(void);
 int GetBanimInitPosReal(void);
 void EkrEfxStatusClear(void);
@@ -2114,6 +2121,7 @@ void EkrPopup_WaitWeaponBroken2(struct ProcEkrPopup *proc);
 void EkrPopup_EndingPause(struct ProcEkrPopup *proc);
 void EkrPopup_Blocked(struct ProcEkrPopup *proc);
 
+extern CONST_DATA char gNopStr[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBattleDeamon[];
 extern CONST_DATA struct ProcScr ProcScr_EkrBattle[];
 extern CONST_DATA struct ProcScr ProcScr_EkrLvupFan[];
@@ -2728,10 +2736,10 @@ extern u16 TsaConf_BanimTmA_08112418[];
 extern u16 TsaConf_BanimTmA_081124B0[];
 extern u16 TsaConf_BanimTmA_08112548[];
 extern u8 const Img_081125E0[];
-extern u8 const Img_081127F0[];
-extern u8 const Img_08112840[];
-extern u8 const Img_081128AC[];
-extern u8 const Img_081128FC[];
+extern u8 const Img_EfxLeftNameBox[];
+extern u8 const Img_EfxLeftItemBox[];
+extern u8 const Img_EfxRightNameBox[];
+extern u8 const Img_EfxRightItemBox[];
 extern u8 const Tsa_EkrDispUP_08112968[];
 extern u8 const Tsa_EkrDispUP_08112A1C[];
 extern u8 const gUnk_08112AD0[];
