@@ -121,14 +121,14 @@ int func_fe6_08090630(void);
 // EndingCopyRight_Init
 // EndingCopyRight_Loop
 void func_fe6_08090854(u16 *tm, int oam2);
-void EndingBG_Init(struct ProcGameEnding *proc);
+void EndingCG_Init(struct ProcGameEnding *proc);
 void EndingStep1_Init(struct ProcGameEnding *proc);
 void EndingStep1_Loop(struct ProcGameEnding *proc);
 void Fin_Init(struct ProcGameEnding *proc);
 void Fin_Loop(struct ProcGameEnding *proc);
 bool CheckDisplayEndingCG(void);
-void EndingBG_Init(struct ProcGameEnding *proc);
-void EndingBG_Loop(struct ProcGameEnding *proc);
+void EndingCG_Init(struct ProcGameEnding *proc);
+void EndingCG_Loop(struct ProcGameEnding *proc);
 
 /* ending handler */
 bool CheckGameEndingDone(void);
@@ -224,7 +224,7 @@ struct EndingCgConf {
 };
 
 extern CONST_DATA struct EndingCgConf gEndingCgConf[];
-extern CONST_DATA struct ProcScr ProcScr_EndingBG[];
+extern CONST_DATA struct ProcScr ProcScr_EndingCG[];
 extern CONST_DATA struct ProcScr ProcScr_Ending[];
 extern CONST_DATA struct ProcScr ProcScr_GameCredit[];
 extern CONST_DATA struct ProcScr ProcScr_EndingP0InfoText[];

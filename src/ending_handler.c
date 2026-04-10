@@ -56,7 +56,7 @@ void Ending_Loop(struct ProcGameEnding *proc)
 			if (PopNextEndingPerson() < (FACTION_BLUE + 0x40) && gEndingDispType != ENDING_DISP_0)
 				SpawnProcLocking(ProcScr_EndingPInfo_x1, proc);
 			else if (CheckDisplayEndingCG())
-				SpawnProcLocking(ProcScr_EndingBG, proc);
+				SpawnProcLocking(ProcScr_EndingCG, proc);
 
 			gGameEndingFlag |= GAME_ENDING_FLAG1;
 		} else
