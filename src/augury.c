@@ -284,7 +284,7 @@ void Augury_Init(void)
 
 	TmApplyTsa(gBg1Tm, Tsa_0833C1D8, 0x1180);
 	TmApplyTsa(gBg1Tm + TM_OFFSET(11, 1), Tsa_0833C234, 0x1180);
-	func_fe6_08090854(gBg3Tm, 0x4000);
+	PutEndingLinearTSA(gBg3Tm, 0x4000);
 	ResetTextFont();
 
 	for (i = 0; i < 7; i++) {

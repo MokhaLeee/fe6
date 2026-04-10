@@ -314,3 +314,148 @@ void NewEfxHitQuake(struct Anim *anim1, struct Anim *anim2, int kind)
 	BanimCopyBgTM(gEkrDistanceType, GetAnimPosition(anim1));
 	BanimSetBg2Position(gEkrBgPosition);
 }
+
+void EfxHitQuake_Loop(struct ProcEfxQuake *proc)
+{
+	int x1;
+	int y1;
+	int x2;
+	int y2;
+
+	const i16 *vec = proc->vec;
+
+	if (vec[proc->timer * 2 + 0] == INT16_MAX) {
+		switch (gEkrDistanceType) {
+		case EKR_DISTANCE_CLOSE:
+			SetBgOffset(BG_2, 0, 0);
+
+			if (GetEkrDragonStateType() != 0) {
+#if FE8
+				SetBgOffset(BG_3, 0, 0);
+#else
+				SetBgOffset(BG_3, 0, 0x10);
+#endif
+			}
+
+			break;
+
+		case EKR_DISTANCE_FAR:
+		case EKR_DISTANCE_FARFAR:
+			if (GetEkrDragonStateType() != 0) {
+#if FE8
+				SetBgOffset(BG_3, 0, 0);
+#else
+				SetBgOffset(BG_3, 0, 0x10);
+#endif
+			}
+
+			BanimSetBg2Position(gEkrBgPosition);
+			break;
+		}
+
+		if (proc->unk_64 != NULL) {
+			BasRemove(proc->unk_64);
+			EkrTerrainfx_PutTiles(&gEkrTerrainfxDesc);
+		}
+
+		x1 = gEkrXPosReal[0] - gEkrBgPosition;
+		y1 = gEkrYPosReal[0];
+		x2 = gEkrXPosReal[1] - gEkrBgPosition;
+		y2 = gEkrYPosReal[1];
+
+		SetEkrFrontAnimPostion(0, x1, y1);
+		SetEkrFrontAnimPostion(1, x2, y2);
+
+		gEfxHitQuakeExist = 0;
+
+		if (proc->quake_ui == 1) {
+			if (GetEkrDragonStateType() != 0) {
+#if FE8
+				SetBgOffset(BG_3, 0, 0);
+#else
+				SetBgOffset(BG_3, 0, 0x10);
+#endif
+			}
+
+			SetBgOffset(BG_0, gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y);
+			EkrGauge_Setxy323A(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
+			EkrDispUP_SetPositionSync(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
+		}
+
+		Proc_End(proc);
+	} else {
+		int x;
+		int y;
+
+		if ((proc->timer == 0) && (proc->unk_64 != NULL)) {
+#if FE8
+			FillBGRect(GetAnimPosition(proc->anim_l) * 15 + gBg2Tm + TM_OFFSET(16, 5), 0xf, 5, 0, 0);
+#else
+			FillBGRect(GetAnimPosition(proc->anim_l) * 15 + gBg2Tm + TM_OFFSET(0, 11), 0xF, 5, 0, 0);
+#endif
+		}
+
+		gEkrBg2QuakeVec.x = x = vec[proc->timer * 2 + 0];
+		gEkrBg2QuakeVec.y = y = vec[proc->timer * 2 + 1];
+		// SetEkrBg2QuakeVec(vec[proc->timer * 2 + 0], vec[proc->timer * 2 + 1]);
+
+		proc->timer++;
+
+		if (proc->unk_64 != NULL) {
+			s16 hm = gEkrBgPosition - gEkrXPosBase[GetAnimPosition(proc->anim_l)];
+
+			struct Anim * anim = proc->unk_64;
+
+			anim->xPosition = (proc->unk_36 + gEkrBg2QuakeVec.x) - hm;
+			anim->yPosition = proc->unk_3e - gEkrBg2QuakeVec.y;
+		} else
+			SetBgOffset(BG_2, gEkrBg2QuakeVec.x, gEkrBg2QuakeVec.y);
+
+		if (proc->quake_ui == 1) {
+#if FE8
+			if (GetEkrDragonStateType() != 0)
+				SetBgOffset(BG_3, -x, y);
+#endif
+
+			SetBgOffset(BG_0, gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x, gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y);
+			EkrGauge_Setxy323A(-(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x), -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
+			EkrDispUP_SetPositionSync(
+				-(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x), -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
+		}
+
+		if (GetEkrDragonStateType() != 0) {
+#if FE8
+			SetBgOffset(BG_3, gEkrBg2QuakeVec.x, gEkrBg2QuakeVec.y);
+#else
+			SetBgOffset(BG_3, gEkrBg2QuakeVec.x, gEkrBg2QuakeVec.y + 0x10);
+#endif
+		}
+
+		if (GetEkrDragonStateType() != 0) {
+			x1 = (gEkrXPosReal[0] - gEkrBg2QuakeVec.x) - gEkrBgPosition;
+			y1 = gEkrYPosReal[0] - gEkrBg2QuakeVec.y;
+		} else {
+			x1 = (gEkrXPosReal[0] + gEkrBg2QuakeVec.x) - gEkrBgPosition;
+			y1 = gEkrYPosReal[0] - gEkrBg2QuakeVec.y;
+		}
+
+		x2 = (gEkrXPosReal[1] + gEkrBg2QuakeVec.x) - gEkrBgPosition;
+		y2 = gEkrYPosReal[1] - gEkrBg2QuakeVec.y;
+
+		switch (gEkrDistanceType) {
+		case EKR_DISTANCE_CLOSE:
+			SetEkrFrontAnimPostion(0, x1, y1);
+			SetEkrFrontAnimPostion(1, x2, y2);
+			break;
+
+		case EKR_DISTANCE_FAR:
+		case EKR_DISTANCE_FARFAR:
+			if (GetAnimPosition(proc->anim_l) == 0)
+				SetEkrFrontAnimPostion(0, x1, y1);
+			else
+				SetEkrFrontAnimPostion(1, x2, y2);
+			break;
+		}
+	}
+}
+
