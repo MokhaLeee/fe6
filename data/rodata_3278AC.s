@@ -58,4 +58,4 @@ gUnk_0832CAFC: @ 0832CAFC
 
 	.global gUnk_0832CC90
 gUnk_0832CC90: @ 0832CC90
-	.incbin "fe6-base.gba", 0x32CC90, (0x336C60 - 0x32CC90) @ length: 9FD0
+	.incbin "fe6-base.gba", 0x32CC90, (0x32CCB0 - 0x32CC90) @ length: 9FD0

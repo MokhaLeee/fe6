@@ -42,7 +42,7 @@ struct HelpBoxProc
     // NOTE: there's likely more, need to decompile more files
 };
 
-struct HelpBoxPrintProc
+struct ProcTypeWritter
 {
     /* 00 */ PROC_HEADER;
 
@@ -111,8 +111,8 @@ void PutSpriteTalkBox(int x_box, int y_box, int w_box, int h_box);
 // DrawHelpBoxWeaponLabels
 // DrawHelpBoxWeaponStats
 // DrawHelpBoxStaffLabels
-void TypeWritter_Loop(struct HelpBoxPrintProc * proc);
-void DemoMonologueDisp_Main(struct HelpBoxPrintProc * proc);
+void TypeWritter_Loop(struct ProcTypeWritter * proc);
+void DemoMonologueDisp_Main(struct ProcTypeWritter * proc);
 // func_fe6_08071374
 // func_fe6_080713DC
 // func_fe6_08071410

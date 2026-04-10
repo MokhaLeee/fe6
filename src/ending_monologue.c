@@ -54,25 +54,25 @@ void EndingMonologueText_Init(struct ProcEndingMonologueText * proc)
 {
     if (gEndingMonologueState == 0)
     {
-        Decompress(Img_EndingMonologueText1, (void *) VRAM + 1 * CHR_SIZE);
+        Decompress(Img_EndingMonologueText_b, (void *) VRAM + 1 * CHR_SIZE);
         proc->ctrl_y = Ctrl_EndingMonologueText1;
         proc->bg_x = -28;
     }
     else if (gEndingMonologueState == 1)
     {
-        Decompress(Img_EndingMonologueText1, (void *) VRAM + 1 * CHR_SIZE);
+        Decompress(Img_EndingMonologueText_b, (void *) VRAM + 1 * CHR_SIZE);
         proc->ctrl_y = Ctrl_EndingMonologueText2;
         proc->bg_x = -28;
     }
     else if (gEndingMonologueState == 2)
     {
-        Decompress(Img_EndingMonologueText3, (void *) VRAM + 1 * CHR_SIZE);
+        Decompress(Img_EndingMonologueText_a, (void *) VRAM + 1 * CHR_SIZE);
         proc->ctrl_y = Ctrl_EndingMonologueText3;
         proc->bg_x = -48;
     }
     else if (gEndingMonologueState == 3)
     {
-        Decompress(Img_EndingMonologueText4, (void *) VRAM + 1 * CHR_SIZE);
+        Decompress(Img_EndingMonologueText_c, (void *) VRAM + 1 * CHR_SIZE);
         proc->ctrl_y = Ctrl_EndingMonologueText4;
         proc->bg_x = -24;
     }
@@ -111,7 +111,7 @@ void EndingMonologueText_Loop(struct ProcEndingMonologueText * proc)
     {
         if (proc->ctrl_y[proc->main_timer / 24] == -2 && proc->ctrl_y == Ctrl_EndingMonologueText4)
         {
-            Decompress(Img_08352160, (void *) VRAM + 1 * CHR_SIZE);
+            Decompress(Img_EndingMonologueText_d, (void *) VRAM + 1 * CHR_SIZE);
         }
 
         EndingMonologue_MoveText(proc->main_timer / 8, proc->ctrl_y[proc->main_timer / 24]);

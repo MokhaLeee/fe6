@@ -299,7 +299,7 @@ PrepSubItem_SelLoop1: @ 0x0807FF98
 	ldr r3, [r5, #0x5c]
 	movs r0, #1
 	movs r1, #0xb
-	bl func_fe6_0807D4A8
+	bl PrepItem_PutItemDesc
 .L080801FC:
 	adds r0, r5, #0
 	bl func_fe6_0807FBE8
@@ -584,7 +584,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r2, #0xe
 	movs r3, #0xc
 	bl PutUiWindowFrame
-	bl func_fe6_0807D338
+	bl PrepSubItem_ResetIcon
 	ldr r0, [r6, #0x54]
 	ldr r0, [r0]
 	ldrh r0, [r0]
@@ -751,7 +751,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	mov r1, r8
 	bl func_fe6_080823A0
-	ldr r0, .L080805E8 @ =gPrepTexts2
+	ldr r0, .L080805E8 @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	mov r4, r8
 	ldrh r4, [r4]
@@ -782,7 +782,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L080805DC: .4byte gPrepAllItemsCount
 .L080805E0: .4byte gPrepMenuScrollPos
 .L080805E4: .4byte gPrepItemListData
-.L080805E8: .4byte gPrepTexts2
+.L080805E8: .4byte gPrepTexts1 + 0x50
 .L080805EC: .4byte gAction
 .L080805F0:
 	movs r0, #2
@@ -853,7 +853,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldr r3, [r6, #0x5c]
 	movs r0, #1
 	movs r1, #0xb
-	bl func_fe6_0807D4A8
+	bl PrepItem_PutItemDesc
 	movs r0, #3
 	bl EnableBgSync
 	ldr r0, .L080806AC @ =gPrepAllItemsCount
@@ -1141,7 +1141,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L080808D4: .4byte gPrepMenuScrollPos
 .L080808D8: .4byte gAction
 .L080808DC:
-	ldr r0, .L08080914 @ =gPrepTexts2
+	ldr r0, .L08080914 @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	mov r4, r8
 	ldrh r4, [r4]
@@ -1168,7 +1168,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	strb r0, [r7]
 	b .L08080A3E
 	.align 2, 0
-.L08080914: .4byte gPrepTexts2
+.L08080914: .4byte gPrepTexts1 + 0x50
 .L08080918:
 	movs r0, #0x50
 	adds r0, r0, r6
@@ -1254,7 +1254,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	mov r1, r8
 	bl func_fe6_080823A0
-	ldr r0, .L08080A14 @ =gPrepTexts2
+	ldr r0, .L08080A14 @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	mov r3, r8
 	ldrh r1, [r3]
@@ -1289,7 +1289,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L08080A08: .4byte gPlaySt
 .L08080A0C: .4byte gPrepItemListData
 .L08080A10: .4byte gPrepAllItemsCount
-.L08080A14: .4byte gPrepTexts2
+.L08080A14: .4byte gPrepTexts1 + 0x50
 .L08080A18: .4byte gAction
 .L08080A1C:
 	ldr r0, .L08080A90 @ =gPlaySt
@@ -1611,7 +1611,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0x66
 	bl m4aSongNumStart
 .L08080CAC:
-	ldr r0, .L08080CE8 @ =gPrepTexts2
+	ldr r0, .L08080CE8 @ =gPrepTexts1 + 0x50
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -1638,7 +1638,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	b .L08080DC2
 	.align 2, 0
 .L08080CE4: .4byte gPlaySt
-.L08080CE8: .4byte gPrepTexts2
+.L08080CE8: .4byte gPrepTexts1 + 0x50
 .L08080CEC:
 	ldrb r0, [r7]
 	movs r4, #0x45
@@ -1727,7 +1727,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0x66
 	bl m4aSongNumStart
 .L08080D92:
-	ldr r0, .L08080DD8 @ =gPrepTexts2
+	ldr r0, .L08080DD8 @ =gPrepTexts1 + 0x50
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -1760,7 +1760,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	.align 2, 0
 .L08080DD0: .4byte gPrepMenuScrollPos
 .L08080DD4: .4byte gPlaySt
-.L08080DD8: .4byte gPrepTexts2
+.L08080DD8: .4byte gPrepTexts1 + 0x50
 .L08080DDC:
 	mov r4, r8
 	ldrh r4, [r4]
@@ -2248,7 +2248,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L080811E0 @ =gPrepTexts2
+	ldr r0, .L080811E0 @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	ldrh r1, [r4]
 	lsrs r3, r1, #4
@@ -2278,7 +2278,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #7
 	b .L080812C0
 	.align 2, 0
-.L080811E0: .4byte gPrepTexts2
+.L080811E0: .4byte gPrepTexts1 + 0x50
 .L080811E4:
 	adds r1, r6, #0
 	adds r1, #0x45
@@ -2361,7 +2361,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L080812D0 @ =gPrepTexts2
+	ldr r0, .L080812D0 @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	ldrh r5, [r4]
 	lsrs r3, r5, #4
@@ -2398,7 +2398,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov sl, r2
 	b .L080812FA
 	.align 2, 0
-.L080812D0: .4byte gPrepTexts2
+.L080812D0: .4byte gPrepTexts1 + 0x50
 .L080812D4:
 	adds r1, r6, #0
 	adds r1, #0x45
@@ -2516,7 +2516,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldr r3, [r6, #0x5c]
 	movs r0, #1
 	movs r1, #0xb
-	bl func_fe6_0807D4A8
+	bl PrepItem_PutItemDesc
 .L080813B6:
 	mov r3, sb
 	ldrb r1, [r3]

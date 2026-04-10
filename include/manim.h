@@ -493,7 +493,7 @@ extern u16 const gUnk_082DD4C8[]; // pal
 extern u16 const gUnk_082DD4E8[]; // tm
 extern u8 const gUnk_082DF3D8[]; // img
 extern u16 const gUnk_082DF690[]; // pal
-extern u16 const gUnk_082A8448[]; // sprite anim
+extern u16 const SpriteAnim_082A8448[]; // sprite anim
 extern u8 const gUnk_082E0E14[]; // img
 extern u16 const gUnk_082E10EC[]; // pal
 extern u16 const gUnk_082E110C[]; // sprite anim
@@ -517,14 +517,14 @@ extern u8 const gUnk_082DF844[]; // ???
 extern u8 const gUnk_082DF6B0[]; // img
 extern u16 const gUnk_082DF704[]; // pal
 extern u16 const gUnk_082DF824[]; // colors
-extern u16 const gUnk_082A84A4[]; // sprite anim
+extern u16 const SpriteAnim_082A84A4[]; // sprite anim
 extern u8 const Img_ManimLevelUpStatGain[]; // img
 extern u16 const Pal_ManimLevelUp[]; // pal
 extern u8 const Img_ManimLevelUpStatGainDigits[]; // img (raw)
 extern u16 const SpriteAnim_ManimStatGain[]; // sprite anim
 extern u16 const Pal_ManimLevelUpStatGainCycling[]; // colors
 extern u8 const Img_ManimLevelUpText[]; // img
-extern u16 const gUnk_082A7CBC[]; // sprite anim
+extern u16 const SpriteAnim_082A7CBC[]; // sprite anim
 extern u8 const gUnk_082DD7E8[]; // img
 extern u16 const gUnk_082DD808[]; // pal
 extern u8 const gUnk_082DD848[]; // img

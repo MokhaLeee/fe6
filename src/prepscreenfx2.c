@@ -19,6 +19,33 @@
 extern const char String_Prep_08327294[];
 extern const char Msg_Prep_Supply[]; // 輸送隊
 
+#if 0
+void func_fe6_0807D834(u8 kind)
+{
+	int i, j;
+
+	gPrepMenuScrollPos = 0;
+
+	for (i = 0; i < gPrepAllItemsCount; i++) {
+		u8 ikind = GetItemKind(gPrepItemListData[i].u.info.item);
+
+		if (ikind >= PrepItemKindRefTable[kind * 2 + 0] && ikind <= PrepItemKindRefTable[kind * 2 + 1]) {
+			gPrepPageItemTable[gPrepMenuScrollPos] = gPrepItemListData[i].u.info.item;
+			gPrepMenuScrollPos++;
+		}
+	}
+
+	for (j = 1; ; j = j * 3 + 1) {
+		u16 tmp = gPrepMenuScrollPos / 3;
+
+		if (j > tmp)
+			break;
+	}
+
+	for (; i > 0; i = i - j) {}
+}
+#endif
+
 void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused)
 {
 	u16 i;
@@ -42,7 +69,7 @@ void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int 
 			gBg2Tm + TM_OFFSET(x * 14 + 2, (i * 2) & 0x1F),
 			GetItemIcon(gPrepItemListData[i].u.info.item),
 			OAM2_PAL(OBPAL_PREPMENU_4));
-		func_fe6_0807D2F4(GetItemIcon(gPrepItemListData[i].u.info.item));
+		PrepSubItem_InsertIcon(GetItemIcon(gPrepItemListData[i].u.info.item));
 
 		if (!unit || IsItemDisplayUsable(unit, gPrepItemListData[i].u.info.item))
 			usable = true;
@@ -73,7 +100,7 @@ void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
 		gBg2Tm + TM_OFFSET(x * 14 + 2, _y * 2),
 		GetItemIcon(gPrepItemListData[y].u.info.item),
 		0x4000);
-	func_fe6_0807D2F4(GetItemIcon(gPrepItemListData[y].u.info.item));
+	PrepSubItem_InsertIcon(GetItemIcon(gPrepItemListData[y].u.info.item));
 
 	if (unit == NULL || IsItemDisplayUsable(unit, gPrepItemListData[y].u.info.item) != false)
 		tmp = 1;
@@ -159,7 +186,7 @@ void func_fe6_0807DEC8(struct PrepSubItemProc *proc, u16 item)
 	kind = GetItemKind(item);
 
 	for (i = 0; i < 9; i++) {
-		if ((kind == gUnk_08679354[i * 2 + 0]) || (kind == gUnk_08679354[i * 2 + 1]))
+		if ((kind == PrepItemKindRefTable[i * 2 + 0]) || (kind == PrepItemKindRefTable[i * 2 + 1]))
 			break;
 	}
 
@@ -168,7 +195,7 @@ void func_fe6_0807DEC8(struct PrepSubItemProc *proc, u16 item)
 		proc->menu_scroll_bar_disp_idx = proc->unk_32[proc->convoy_page] * 0x10;
 		func_fe6_0807D834(proc->convoy_page);
 		func_fe6_080823A0(proc->unk_3B + proc->convoy_page, &proc->menu_scroll_bar_disp_idx);
-		func_fe6_0807D9E4(gPrepTexts2, 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
+		func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
 		func_fe6_0807D358(proc);
 	}
 }

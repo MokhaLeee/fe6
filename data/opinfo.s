@@ -36,24 +36,24 @@ PROC_LABEL 4
 	PROC_REPEAT OpInfoIcon_Loop_FadeOut
 	PROC_END
 
-	.global ProcScr_ClassInfoDisp
-ProcScr_ClassInfoDisp: @ 0868FFCC
+	.global ProcScr_ClassDemoMain
+ProcScr_ClassDemoMain: @ 0868FFCC
 	PROC_SLEEP 0
-	PROC_CALL ClassInfoDisp_ExecEkrMainMini
+	PROC_CALL ClassDemoMain_ExecEkrMainMini
 	PROC_SLEEP 2
-	PROC_REPEAT ClassInfoDisp_Loop_Intro
-	PROC_REPEAT ClassInfoDisp_Loop_Main
-	PROC_REPEAT ClassInfoDisp_Block
+	PROC_REPEAT ClassDemoMain_Loop_Intro
+	PROC_REPEAT ClassDemoMain_Loop_Main
+	PROC_REPEAT ClassDemoMain_Block
 PROC_LABEL 4
-	PROC_CALL ClassInfoDisp_OnEnd
+	PROC_CALL ClassDemoMain_OnEnd
 	PROC_END
 
-	.global gUnk_08690014
-gUnk_08690014: @ 08690014
+	.global ProcScr_ClassDemoStatus
+ProcScr_ClassDemoStatus: @ 08690014
 	PROC_19
 	PROC_SLEEP 3
-	PROC_CALL func_fe6_08095AE0
-	PROC_REPEAT func_fe6_08095BCC
+	PROC_CALL ClassDemoStatus_Init
+	PROC_REPEAT ClassDemoStatus_Loop
 PROC_LABEL 4
 	PROC_CALL func_fe6_08095D28
 	PROC_END
@@ -110,34 +110,14 @@ Sprites_OpInfo_08690288: @ 08690288
 gUnk_0869056C: @ 0869056C
 	.incbin "fe6-base.gba", 0x69056C, (0x69058C - 0x69056C) @ length: 0020
 
-	.global gUnk_0869058C
-gUnk_0869058C: @ 0869058C
+	.global OpClassDemo_BIDs
+OpClassDemo_BIDs: @ 0869058C
 	.incbin "fe6-base.gba", 0x69058C, (0x6905B0 - 0x69058C) @ length: 0024
 
-	.global gUnk_086905B0
-gUnk_086905B0: @ 086905B0
+	.global OpClassDemo_IntroMsgs
+OpClassDemo_IntroMsgs: @ 086905B0
 	.incbin "fe6-base.gba", 0x6905B0, (0x6905F8 - 0x6905B0) @ length: 0048
 
-	.global gUnk_086905F8
-gUnk_086905F8: @ 086905F8
+	.global gOpClassDemoBanimCtrl
+gOpClassDemoBanimCtrl: @ 086905F8
 	.incbin "fe6-base.gba", 0x6905F8, (0x6909A4 - 0x6905F8) @ length: 03AC
-
-	.global gUnk_086909A4
-gUnk_086909A4: @ 086909A4
-	.incbin "fe6-base.gba", 0x6909A4, (0x690A53 - 0x6909A4) @ length: 00AF
-
-	.global gUnk_08690A53
-gUnk_08690A53: @ 08690A53
-	.incbin "fe6-base.gba", 0x690A53, (0x690A99 - 0x690A53) @ length: 0046
-
-	.global gClassDemoData
-gClassDemoData: @ 08690A99
-	.incbin "fe6-base.gba", 0x690A99, (0x690C14 - 0x690A99) @ length: 017B
-
-	.global gUnk_08690C14
-gUnk_08690C14: @ 08690C14
-	.incbin "fe6-base.gba", 0x690C14, (0x690D44 - 0x690C14) @ length: 0130
-
-	.global gUnk_08690D44
-gUnk_08690D44: @ 08690D44
-	.incbin "fe6-base.gba", 0x690D44, (0x690E60 - 0x690D44) @ length: 011C

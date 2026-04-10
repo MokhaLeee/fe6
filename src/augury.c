@@ -16,7 +16,7 @@
 #include "chapter.h"
 #include "unitsprite.h"
 #include "playrank.h"
-#include "ending_credit.h"
+#include "ending.h"
 #include "constants/msg.h"
 #include "constants/songs.h"
 #include "constants/faces.h"
@@ -115,25 +115,24 @@ EWRAM_OVERLAY(0) u8 unk_02016A2C = 0;
 EWRAM_OVERLAY(0) u8 gPlayRankMissionCompleted = 0;
 EWRAM_OVERLAY(0) u16 gPlayRanks[7] = {};
 EWRAM_OVERLAY(0) u8 gCreditInfoDispStep = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A3D = 0;
-EWRAM_OVERLAY(0) u8 unk_02016A3E = 0;
+EWRAM_OVERLAY(0) u8 gEndingCgIndex = 0;
+EWRAM_OVERLAY(0) u8 gGameEndingFlag = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A3F = 0;
-EWRAM_OVERLAY(0) u8 gEndingStep = 0;
+EWRAM_OVERLAY(0) u8 gEndingDoneFlag = 0;
 EWRAM_OVERLAY(0) u8 gEndingDispType = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A42 = 0;
 EWRAM_OVERLAY(0) u8 unk_02016A43[0x80] = {};
 EWRAM_OVERLAY(0) u8 unk_02016AC3[0x81] = {};
-EWRAM_OVERLAY(0) u8 unk_02016B44 = 0;
+EWRAM_OVERLAY(0) bool unk_02016B44 = 0;
 EWRAM_OVERLAY(0) struct Text Texts_02016B48[6] = {};
 EWRAM_OVERLAY(0) struct Text Texts_02016B78[2] = {};
-EWRAM_OVERLAY(0) u8 gCurEndingUid = 0;
-EWRAM_OVERLAY(0) u8 EndingUid_02016B89 = 0;
-EWRAM_OVERLAY(0) u8 unk_02016B8A = 0;
-EWRAM_OVERLAY(0) ProcPtr gpAuguryFaceProc = NULL;
-EWRAM_OVERLAY(0) u16 unk_02016B90 = 0;
-EWRAM_OVERLAY(0) u16 unk_02016B92 = 0;
-EWRAM_OVERLAY(0) u8 unk_02016B94[0x100] = {};
-EWRAM_OVERLAY(0) u8 unk_02016C94[0x100] = {};
+EWRAM_OVERLAY(0) i8 gEndingUid1 = 0;
+EWRAM_OVERLAY(0) i8 gEndingUid2 = 0;
+EWRAM_OVERLAY(0) u8 gEndingDisplaySecondUnit = 0;
+EWRAM_OVERLAY(0) ProcPtr gEndingFace2 = NULL;
+EWRAM_OVERLAY(0) u16 EndingFaceXPos[2] = {};
+EWRAM_OVERLAY(0) u16 gEndingPInfoPal1[8][0x10] = {};
+EWRAM_OVERLAY(0) u16 gEndingPInfoPal2[8][0x10] = {};
 
 bool func_fe6_0808D0C0(struct MenuProc *proc)
 {

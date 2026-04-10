@@ -30,7 +30,7 @@ void func_fe6_0807FBE8(struct PrepSubItemProc *proc)
 	SetWOutLayers(1, 1, 0, 1, 1);
 
 	PutUiWindowFrame(15, 4, 15, 16, 0);
-	func_fe6_0807D9E4(&gPrepTexts2[0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
+	func_fe6_0807D9E4(&gPrepTexts1[1][0], 1, proc->units[0], proc->menu_scroll_bar_disp_idx / 0x10, 1);
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 
 	SetBgOffset(
@@ -94,7 +94,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 
 	if (proc->unk4B == 0) {
 		PrepPutText(
-			&gPrepTexts2[0],
+			&gPrepTexts1[1][0],
 			gBg2Tm + TM_OFFSET(0x15, 4),
 			(GetUnitItemCount(proc->units[0]) != 0) 
 				? TEXT_COLOR_SYSTEM_WHITE
@@ -104,7 +104,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 		);
 
 		PrepPutText(
-			&gPrepTexts2[1],
+			&gPrepTexts1[1][1],
 			gBg2Tm + TM_OFFSET(0x15, 6),
 			(gPrepAllItemsCount != 0) 
 				? TEXT_COLOR_SYSTEM_WHITE
@@ -117,7 +117,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 			proc->unk_49 = 2;
 		else {
 			PrepPutText(
-				&gPrepTexts2[2],
+				&gPrepTexts1[1][2],
 				gBg2Tm + TM_OFFSET(0x15, 8),
 				(gPrepAllItemsCount != 0) 
 					? TEXT_COLOR_SYSTEM_WHITE
@@ -150,7 +150,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 			proc->sel_action = 2;
 			func_fe6_0807FBE8(proc);
 			Proc_Goto(proc, PL_PREP_SUBITEM_7);
-			func_fe6_0807D4A8(1, 0xB,
+			PrepItem_PutItemDesc(1, 0xB,
 				gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].u.info.item,
 				proc->subproc1);
 			func_fe6_08071B80(0x10, 0x10, MSG_C47, proc);

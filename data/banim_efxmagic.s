@@ -1259,15 +1259,52 @@ ProcScr_EfxApocalypseOBJ3: @ 085D2798
 
 	.global DuraArray_EfxApocalypseOBJ3RND
 DuraArray_EfxApocalypseOBJ3RND: @ 085D27B0
-	.incbin "fe6-base.gba", 0x5D27B0, (0x5D287C - 0x5D27B0) @ length: 00CC
+	.4byte 43, 38, 44, 36
+	.4byte 43, 41, 50, 44
+	.4byte 48, 35, 36, 34
+	.4byte 44, 45, 35, 35
+	.4byte 49, 38, 35, 44
+	.4byte 50, 46, 31, 45
+	.4byte 36, 50, 48, 42
+	.4byte 45, 36, 30, 41
+	.4byte 40, 44, 32, 34
+	.4byte 32, 34, 35, 36
+	.4byte 46, 33, 33, 45
+	.4byte 50, 33, 37, 39
+	.4byte 42, 49
+	.4byte -1
 
 	.global LoArray_EfxApocalypseOBJ3RND
 LoArray_EfxApocalypseOBJ3RND: @ 085D287C
-	.incbin "fe6-base.gba", 0x5D287C, (0x5D2944 - 0x5D287C) @ length: 00C8
+	.4byte 0x7C34, 0x85C7, 0x3FB2, 0x7C4D
+	.4byte 0x8810, 0xFF13, 0xDB8E, 0xA559
+	.4byte 0x7A6C, 0x585F, 0x9EEA, 0x3365
+	.4byte 0xFD48, 0xA3AB, 0x83C6, 0xC871
+	.4byte 0x5AA4, 0x12F7, 0x2422, 0x267D
+	.4byte 0x7C80, 0xF843, 0xB9FE, 0x2F89
+	.4byte 0xECDC, 0xC58F, 0x1F5A, 0xE595
+	.4byte 0xD5B8, 0x0CDB, 0xCE36, 0x6AA1
+	.4byte 0x0114, 0x8027, 0xE092, 0x00AD
+	.4byte 0xD8F0, 0xF173, 0x106E, 0x09B9
+	.4byte 0x674C, 0x52BF, 0xB7CA, 0x07C5
+	.4byte 0x5628, 0xB60B, 0xD0A6, 0x9CD1
+	.4byte 0xEF84, 0x4D57
 
 	.global StateArray_EfxApocalypseOBJ3RND
 StateArray_EfxApocalypseOBJ3RND: @ 085D2944
-	.incbin "fe6-base.gba", 0x5D2944, (0x5D2A0C - 0x5D2944) @ length: 00C8
+	.4byte 1, 0, 6, 0
+	.4byte 2, 3, 4, 4
+	.4byte 0, 3, 4, 5
+	.4byte 6, 4, 5, 6
+	.4byte 4, 5, 1, 6
+	.4byte 3, 2, 4, 0
+	.4byte 3, 5, 2, 6
+	.4byte 6, 4, 4, 5
+	.4byte 0, 4, 6, 3
+	.4byte 4, 4, 1, 1
+	.4byte 4, 4, 3, 0
+	.4byte 0, 5, 2, 2
+	.4byte 3, 2
 
 	.global ProcScr_EfxApocalypseOBJ3RND
 ProcScr_EfxApocalypseOBJ3RND: @ 085D2A0C

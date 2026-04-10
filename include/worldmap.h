@@ -323,4 +323,4 @@ extern u16 const gUnk_WmArrow_Buf5[];
 extern u16 const gUnk_WmArrow_Buf6[];
 extern u16 const gUnk_WmArrow_Buf7[];
 
-extern const int gUnk_08353328[];
+extern const int WmArrowConf[];

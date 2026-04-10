@@ -1,15 +1,5 @@
 	.section .rodata
 
-	.incbin "fe6-base.gba", 0x35C838, (0x35CA44 - 0x35C838)
-
-	.global String_ShopGoldG
-String_ShopGoldG: @ 0835CA44
-	.incbin "fe6-base.gba", 0x35CA44, (0x35CA78 - 0x35CA44) @ length: 0034
-
-	.global String_Shop_0835CA78
-String_Shop_0835CA78: @ 0835CA78
-	.incbin "fe6-base.gba", 0x35CA78, (0x35CB90 - 0x35CA78) @ length: 0118
-
 	.global Pal_Title_BG
 Pal_Title_BG: @ 0835CB90
 	.incbin "fe6-base.gba", 0x35CB90, (0x35CC90 - 0x35CB90) @ length: 0100
@@ -58,40 +48,40 @@ Img_Title_08364438: @ 08364438
 Pal_Title_08364A94: @ 08364A94
 	.incbin "fe6-base.gba", 0x364A94, (0x364AB4 - 0x364A94) @ length: 0020
 
-	.global gUnk_08364AB4
-gUnk_08364AB4: @ 08364AB4
+	.global Img_Title_08364AB4
+Img_Title_08364AB4: @ 08364AB4
 	.incbin "fe6-base.gba", 0x364AB4, (0x3674BC - 0x364AB4) @ length: 2A08
 
-	.global gUnk_083674BC
-gUnk_083674BC: @ 083674BC
+	.global Tsa_OpAnim_083674BC
+Tsa_OpAnim_083674BC: @ 083674BC
 	.incbin "fe6-base.gba", 0x3674BC, (0x367B30 - 0x3674BC) @ length: 0674
 
-	.global gUnk_08367B30
-gUnk_08367B30: @ 08367B30
+	.global Img_Title_08367B30
+Img_Title_08367B30: @ 08367B30
 	.incbin "fe6-base.gba", 0x367B30, (0x36A094 - 0x367B30) @ length: 2564
 
-	.global gUnk_0836A094
-gUnk_0836A094: @ 0836A094
+	.global Tsa_OpAnim_0836A094
+Tsa_OpAnim_0836A094: @ 0836A094
 	.incbin "fe6-base.gba", 0x36A094, (0x36A494 - 0x36A094) @ length: 0400
 
-	.global gUnk_0836A494
-gUnk_0836A494: @ 0836A494
+	.global Tsa_OpAnim_0836A494
+Tsa_OpAnim_0836A494: @ 0836A494
 	.incbin "fe6-base.gba", 0x36A494, (0x36A888 - 0x36A494) @ length: 03F4
 
-	.global gUnk_0836A888
-gUnk_0836A888: @ 0836A888
+	.global Pal_OpAnim_0836A888
+Pal_OpAnim_0836A888: @ 0836A888
 	.incbin "fe6-base.gba", 0x36A888, (0x36A9AC - 0x36A888) @ length: 0124
 
-	.global gUnk_0836A9AC
-gUnk_0836A9AC: @ 0836A9AC
+	.global Img_OpAnim_0836A9AC
+Img_OpAnim_0836A9AC: @ 0836A9AC
 	.incbin "fe6-base.gba", 0x36A9AC, (0x36EEFC - 0x36A9AC) @ length: 4550
 
-	.global gUnk_0836EEFC
-gUnk_0836EEFC: @ 0836EEFC
+	.global Img_OpAnim_0836EEFC
+Img_OpAnim_0836EEFC: @ 0836EEFC
 	.incbin "fe6-base.gba", 0x36EEFC, (0x36F610 - 0x36EEFC) @ length: 0714
 
-	.global gUnk_0836F610
-gUnk_0836F610: @ 0836F610
+	.global Tsa_OpAnim_0836F610
+Tsa_OpAnim_0836F610: @ 0836F610
 	.incbin "fe6-base.gba", 0x36F610, (0x36F6D4 - 0x36F610) @ length: 00C4
 
 	.global Img_EndingMonologue

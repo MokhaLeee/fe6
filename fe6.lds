@@ -76,10 +76,9 @@ SECTIONS
         . = 0x0154A4; gPrepMenuItems = .;
         . = 0x0155E4; gPrepMenuItemCnt = .;
         . = 0x0155E8; gPrepTexts1 = .;
-        . = 0x015638; gPrepTexts2 = .;
         . = 0x015688; gPrepTexts3 = .;
         . = 0x015698; gPrepSubMenuIcons = .;
-        . = 0x0156E8; gPrepTexts4 = .;
+        . = 0x0156E8; gPrepPageItemTable = .;
         . = 0x015D28; gPrepItemListData = .;
         . = 0x016368; gPrepAllItemsCount = .;
         . = 0x01636A; gPrepMenuScrollPos = .;
@@ -364,8 +363,9 @@ SECTIONS
         . = 0x0203DC3C - __ewram_overlay_end;
         . = ALIGN(4); src/xmap.o(ewram_data);
 
-        . = 0x0203DCA7 - __ewram_overlay_end;
-        . = ALIGN(1); gEndingSceneDispEnPidList = .;
+        . = 0x0203DC70 - __ewram_overlay_end;
+        . = ALIGN(4); src/ending_pinfo.o(ewram_data);
+
 
         . = 0x0203DCB8 - __ewram_overlay_end;
         . = ALIGN(4); src/shop.o(ewram_data);
@@ -598,6 +598,11 @@ SECTIONS
         src/playrank.o(.text);
         src/ending_credit.o(.text);
         asm/playrank_0808F33C.o(.text);
+        src/ending_credit2.o(.text);
+        src/ending_fin.o(.text);
+        src/ending_cg.o(.text);
+        src/ending_handler.o(.text);
+        src/ending_pinfo.o(.text);
         src/worldmap.o(.text);
         src/worldmapfx.o(.text);
         src/monologue.o(.text);
@@ -605,6 +610,7 @@ SECTIONS
         asm/opinfo.o(.text);
         src/opinfo_classdemo.o(.text);
         asm/opinfo_classdemo.o(.text);
+        src/opinfo_classdemo2.o(.text);
         src/shop.o(.text);
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
@@ -709,6 +715,8 @@ SECTIONS
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
         . = ALIGN(4); src/gamedatainfo.o(.rodata);
+        . = ALIGN(4); src/ending_credit_info.o(.rodata);
+        . = ALIGN(4); data/chapterinfo_debugname.o(.rodata);
         . = ALIGN(4); data/rodata_279E60.o(.rodata);
         . = ALIGN(4); src/mu.o(.rodata);
         . = ALIGN(4); src/manim.o(.rodata);
@@ -733,12 +741,21 @@ SECTIONS
         . = ALIGN(4); data/rodata_3273E4.o(.rodata);
         . = ALIGN(4); src/minimap.o(.rodata);
         . = ALIGN(4); data/rodata_3278AC.o(.rodata);
+        . = ALIGN(4); src/ending_cg_img.o(.rodata);
         . = ALIGN(4); src/savemenu.o(.rodata);
         . = ALIGN(4); src/savemenu_2.o(.rodata);
+        . = ALIGN(4); data/xmap_rodata.o(.rodata);
         . = ALIGN(4); data/rodata.o(.rodata);
+        . = ALIGN(4); src/ending_pinfo.o(.rodata);
+        . = ALIGN(4); src/monologue_img.o(.rodata);
+        . = ALIGN(4); src/ending_monologue_img.o(.rodata);
+        . = ALIGN(4); data/data_wmarrow.o(.rodata);
         . = ALIGN(4); src/worldmapfx.o(.rodata);
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
         . = ALIGN(4); src/opinfo_classdemo.o(.rodata);
+        . = ALIGN(4); src/shop.o(.rodata);
+        . = ALIGN(4); src/arena_ui.o(.rodata);
+        . = ALIGN(4); src/suspend_ui.o(.rodata);
         . = ALIGN(4); data/rodata_0835C80C.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
@@ -850,6 +867,7 @@ SECTIONS
         . = ALIGN(4), data/data-portrait.o(.data);
         . = ALIGN(4); src/gamedatainfo.o(.data);
         . = ALIGN(4), data/data-game-info.o(.data);
+        . = ALIGN(4), src/ending_credit_info.o(.data);
         . = ALIGN(4), data/chapterinfo.o(.data);
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); data/data-code-mu.o(.data);
@@ -892,13 +910,21 @@ SECTIONS
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); src/playrank.o(.data);
         . = ALIGN(4); src/ending_credit.o(.data);
-        . = ALIGN(4); data/data.o(.data);
+        . = ALIGN(4); data/ending.o(.data);
+        . = ALIGN(4); src/ending_credit2.o(.data);
+        . = ALIGN(4); src/ending_fin.o(.data);
+        . = ALIGN(4); src/ending_cg.o(.data);
+        . = ALIGN(4); src/ending_handler.o(.data);
+        . = ALIGN(4); src/ending_pinfo.o(.data);
+        . = ALIGN(4); src/ending_pinfo_data.o(.data);
+        . = ALIGN(4); data/data_68C1DC.o(.data);
         . = ALIGN(4); src/worldmap.o(.data);
         . = ALIGN(4); src/worldmapfx.o(.data);
         . = ALIGN(4); src/worldmap_eventscr.o(.data);
         . = ALIGN(4); src/monologue.o(.data);
         . = ALIGN(4); src/opinfo.o(.data);
         . = ALIGN(4); data/opinfo.o(.data);
+        . = ALIGN(4); src/opinfo_classdemo.o(.data);
         . = ALIGN(4); src/shop.o(.data);
         . = ALIGN(4); src/arena_ui.o(.data);
         . = ALIGN(4); src/suspend_ui.o(.data);

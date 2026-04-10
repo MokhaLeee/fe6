@@ -24,10 +24,10 @@ void DrawWmArrowCore(u8 id, i16 b, i16 c, int d)
 {
     PutSpriteAffine(
         id,
-        (gUnk_08353328[(d + 0x100) & 0x3FF] * b) >> 0xF,
-        (gUnk_08353328[(d) & 0x3FF] * c) >> 0xF,
-        -((gUnk_08353328[(d) & 0x3FF] * b) >> 0xF),
-        (gUnk_08353328[(d + 0x100) & 0x3FF] * c) >> 0xF
+        (WmArrowConf[(d + 0x100) & 0x3FF] * b) >> 0xF,
+        (WmArrowConf[(d) & 0x3FF] * c) >> 0xF,
+        -((WmArrowConf[(d) & 0x3FF] * b) >> 0xF),
+        (WmArrowConf[(d + 0x100) & 0x3FF] * c) >> 0xF
     );
 }
 #else
@@ -47,7 +47,7 @@ asm("\
     lsrs r0, r0, #0x18\n\
     lsls r4, r4, #0x10\n\
     asrs r4, r4, #0x10\n\
-    ldr r6, .L080930CC @ =gUnk_08353328\n\
+    ldr r6, .L080930CC @ =WmArrowConf\n\
     movs r2, #0x80\n\
     lsls r2, r2, #1\n\
     adds r1, r3, r2\n\
@@ -89,7 +89,7 @@ asm("\
     pop {r0}\n\
     bx r0\n\
     .align 2, 0\n\
-.L080930CC: .4byte gUnk_08353328\n\
+.L080930CC: .4byte WmArrowConf\n\
 .L080930D0: .4byte 0x000003FF\n\
     .syntax divided\n\
 ");

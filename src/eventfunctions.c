@@ -37,7 +37,7 @@
 #include "save_stats.h"
 #include "banim.h"
 #include "opanim.h"
-#include "ending_credit.h"
+#include "ending.h"
 #include "ending_monologue.h"
 #include "chapterunits.h"
 
@@ -2237,7 +2237,7 @@ EventScr CONST_DATA EventScr_DemoScene[] =
 
 void PutDemoMonologueMsg(void)
 {
-    struct HelpBoxPrintProc * proc;
+    struct ProcTypeWritter * proc;
     int i;
 
     SetDispEnable(1, 0, 0, 0, 0);
@@ -2612,12 +2612,12 @@ struct ProcScr CONST_DATA ProcScr_EndingCreditFade[] =
     PROC_END,
 };
 
-void EndingCreditFade_Init(struct ProcEndingCreditFade * proc)
+void EndingCreditFade_Init(struct ProcGameCreditFade * proc)
 {
     proc->unk_64 = 0;
 }
 
-void EndingCreditFade_FadeBg(struct ProcEndingCreditFade * proc)
+void EndingCreditFade_FadeBg(struct ProcGameCreditFade * proc)
 {
     if (GetGameTime() % 8 == 0)
     {
@@ -2966,9 +2966,9 @@ void GameEnding_PutUnitsOnPosition1(void)
                 break;
 
             default:
-                for (j = 0; gEndingSceneDispEnPidList[j] != -1; j++)
+                for (j = 0; gEndingUids2[j] != -1; j++)
                 {
-                    if (gEndingSceneDispEnPidList[j] == i)
+                    if (gEndingUids2[j] == i)
                     {
                         unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
                         unit->x = gGameEndingPosition1[next_slot].x;
@@ -3036,9 +3036,9 @@ void GameEnding_PutUnitsOnPosition2(void)
                 break;
 
             default:
-                for (j = 0; gEndingSceneDispEnPidList[j] != -1; j++)
+                for (j = 0; gEndingUids2[j] != -1; j++)
                 {
-                    if (gEndingSceneDispEnPidList[j] == i)
+                    if (gEndingUids2[j] == i)
                     {
                         unit->flags &= ~(UNIT_FLAG_HIDDEN | UNIT_FLAG_NOT_DEPLOYED);
                         unit->x = gGameEndingPosition2[next_slot].x;
@@ -3094,7 +3094,7 @@ void UpdateEndingId(void)
         else
             gEndingId = NORMAL_ENDING;
     } else
-        gEndingId = FALSE_ENDING;
+        gEndingId = FAKE_ENDING;
 }
 
 fu8 GetEndingId(void)
@@ -3255,7 +3255,7 @@ EvtLabel(4)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_0867683C)
     EvtSleep(256)
     EvtFunc(EndingStepAdvance)
-    EvtFuncWhile(func_fe6_08090D54)
+    EvtFuncWhile(CheckGameEndingDone)
     EvtFadeToBlack(4)
     EvtExitMap
     EvtFunc(EndAllProcsMark1)
@@ -3462,7 +3462,7 @@ EventScr CONST_DATA EventScr_FalseEnding[] =
 // EventScr @ 086772DC
 EventScr CONST_DATA EventScr_CharacterEnding[] =
 {
-    EvtFunc(StartCharacterEndings)
+    EvtFunc(StartGameEnding)
     EvtSleep(1)
     EvtFunc(CleanupGame)
     EvtClearSkip
@@ -3480,17 +3480,17 @@ void func_fe6_0806E32C(void)
     {
         case TRUE_ENDING:
             gUnk_0203D3D8 = 0;
-            func_fe6_080914DC();
+            SetupTrueEndingUids();
             return;
 
         case NORMAL_ENDING:
             gUnk_0203D3D8 = 1;
-            func_fe6_080914DC();
+            SetupTrueEndingUids();
             return;
 
-        case FALSE_ENDING:
+        case FAKE_ENDING:
             gUnk_0203D3D8 = 0x80;
-            func_fe6_0809154C();
+            SetupFakeEndingUids();
             return;
     }
 }

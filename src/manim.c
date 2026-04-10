@@ -2427,7 +2427,7 @@ void func_fe6_08065E78(struct ManimSomethingProc_08065E08 * proc)
     proc->unk_40 = 0;
     proc->unk_42 = 0;
 
-    StartSpriteAnimProc(gUnk_082A8448, proc->x + 4, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_082A8448, proc->x + 4, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
 
     InitScanlineEffect();
     func_fe6_08069C74();
@@ -3082,8 +3082,8 @@ void func_fe6_080671F4(struct ManimSomethingProc_08066FD8 * proc)
 
         Proc_Break(proc);
 
-        StartSpriteAnimProc(gUnk_082A84A4, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
-        StartSpriteAnimProc(gUnk_082A84A4, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 1, 2);
+        StartSpriteAnimProc(SpriteAnim_082A84A4, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 0, 2);
+        StartSpriteAnimProc(SpriteAnim_082A84A4, proc->x, proc->y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_4), 1, 2);
     }
 }
 
@@ -3630,7 +3630,7 @@ void ManimLevelUp_StartLevelUpText(struct ManimLevelUpProc * proc)
     if (SCREEN_TILE_X(gManimSt.actor[proc->actor_id].unit->x) > 25)
         x = 208;
 
-    StartSpriteAnimProc(gUnk_082A7CBC, x, y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_3), 0, 2);
+    StartSpriteAnimProc(SpriteAnim_082A7CBC, x, y, OAM2_CHR(OBCHR_MANIM_1C0) + OAM2_PAL(OBPAL_MANIM_3), 0, 2);
     PlaySe(SONG_5B);
 }
 

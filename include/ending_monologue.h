@@ -33,10 +33,10 @@ bool EndingMonologueExists(void);
 
 extern u8 gEndingMonologueState;
 extern u8 gEndingMonologueTextDone;
-extern u8 const Img_EndingMonologueText1[]; // img
-extern u8 const Img_EndingMonologueText3[]; // img
-extern u8 const Img_EndingMonologueText4[]; // img
-extern u8 const Img_08352160[]; // img
+extern u8 const Img_EndingMonologueText_b[]; // img
+extern u8 const Img_EndingMonologueText_a[]; // img
+extern u8 const Img_EndingMonologueText_c[]; // img
+extern u8 const Img_EndingMonologueText_d[]; // img
 extern i8 CONST_DATA Ctrl_EndingMonologueText1[];
 extern i8 CONST_DATA Ctrl_EndingMonologueText2[];
 extern i8 CONST_DATA Ctrl_EndingMonologueText3[];

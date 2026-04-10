@@ -3,8 +3,12 @@
 import sys
 import dump_one_sprite
 
-def _dump_sprite(rom_data, off):
-    name = f"Sprite_{off + 0x08000000:08X}"
+def _dump_sprite(rom_data, off, i, PreName):
+    if PreName != None:
+        name = f"Sprite_{PreName}_{i}"
+    else:
+        name = f"Sprite_{off + 0x08000000:08X}"
+
     print(f"u16 CONST_DATA {name}[] =")
     print("{")
 
@@ -36,12 +40,17 @@ def main(args):
     try:
         start = eval(args[1])
     except IndexError:
-        sys.exit(f"Usage: {args[0]} START [END]")
+        sys.exit(f"Usage: {args[0]} START [END] [PRENAME]")
 
     try:
         end = eval(args[2])
     except IndexError:
         end = 0
+
+    try:
+        PreName = args[3]
+    except IndexError:
+        PreName = None
 
     off = start & 0x01FFFFFF
     off_end = end & 0x01FFFFFF
@@ -49,10 +58,14 @@ def main(args):
     with open(rom, 'rb') as f:
         rom_data = f.read()
 
+        i = 0
+
         while True:
-            off = _dump_sprite(rom_data, off)
+            off = _dump_sprite(rom_data, off, i, PreName)
             if off_end <= off:
                 break
+
+            i = i + 1
 
         print(f"// End at: {off + 0x08000000:08X}")
 

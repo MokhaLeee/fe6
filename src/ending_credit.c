@@ -5,7 +5,7 @@
 #include "ui.h"
 #include "augury.h"
 #include "playrank.h"
-#include "ending_credit.h"
+#include "ending.h"
 
 void SetupCreditCharacterGlyphs(void)
 {
@@ -32,15 +32,15 @@ void PutEndingCreditTm(u16 *tm, u16 oam2, u8 w, u8 h)
 	}
 }
 
-void EndingCredit_Reinit(struct ProcEndingCredit *proc)
+void EndingCredit_Reinit(struct ProcGameCredit *proc)
 {
 	UnpackUiWindowFrameGraphics();
 
-	proc->unk_64 = 0;
+	proc->timer = 0;
 	gCreditInfoDispStep = 0;
-	unk_02016A3D = 0;
+	gEndingCgIndex = 0;
 	unk_02016A3F = 0;
-	gEndingStep = 0;
+	gEndingDoneFlag = 0;
 
 	SetBlendAlpha(0, 0x10);
 	SetBlendTargetA(1, 1, 0, 0, 0);
@@ -49,21 +49,21 @@ void EndingCredit_Reinit(struct ProcEndingCredit *proc)
 	SetupCreditCharacterGlyphs();
 }
 
-void GameCredit_Init(struct ProcEndingCredit *proc)
+void GameCredit_Init(struct ProcGameCredit *proc)
 {
 	gEndingDispType = ENDING_DISP_1;
 	EndingCredit_Reinit(proc);
 	SetupEndingPInfo2Uids();
 }
 
-void EndingCredit_ReinitType2(struct ProcEndingCredit *proc)
+void EndingCredit_ReinitType2(struct ProcGameCredit *proc)
 {
 	gEndingDispType = ENDING_DISP_2;
 	EndingCredit_Reinit(proc);
 	SetupEndingPInfo2Uids();
 }
 
-void EndingCredit_ReinitType0(struct ProcEndingCredit *proc)
+void EndingCredit_ReinitType0(struct ProcGameCredit *proc)
 {
 	gEndingDispType = ENDING_DISP_0;
 	EndingCredit_Reinit(proc);

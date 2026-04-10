@@ -373,13 +373,13 @@ extern u8 const Tsa_UnitBurstMapUi_Frame5[];
 
 extern u8 const Img_PlayRankTimeOBJ[];
 
-// extern const ??? gUnk_08336CD0
-// extern const ??? gUnk_08336CF0
-// extern const ??? gUnk_08336CF8
-// extern const ??? gUnk_08336D00
-// extern const ??? gUnk_08336D3C
-// extern const ??? gUnk_08336D48
-// extern const ??? gUnk_08336D54
+// extern const ??? String_Xmap_08336CD0
+// extern const ??? String_Xmap_08336CF0
+// extern const ??? String_Xmap_08336CF8
+// extern const ??? String_Xmap_08336D00
+// extern const ??? String_Xmap_08336D3C
+// extern const ??? String_Xmap_08336D48
+// extern const ??? String_Xmap_08336D54
 extern u8 const Img_MuralBackground[];
 extern u8 const Img_0833B958[];
 extern u8 const Img_0833BB14[];
@@ -419,37 +419,37 @@ extern u16 const Pal_Fin[];
 extern u8 const Img_Ending_CopyRight[];
 extern u16 const Tsa_Ending_CopyRight[];
 extern u16 const Pal_Ending_CopyRight[];
-extern u16 const Tsa_EndingPInfoBG[];
-// extern const ??? gUnk_08345934
-// extern const ??? gUnk_08346184
-// extern const ??? gUnk_083461C4
-// extern const ??? gUnk_08346330
-// extern const ??? gUnk_083463B4
-// extern const ??? gUnk_083463F4
+extern u8 const Tsa_EndingPInfoBG[];
+extern u8 const Img_EndingPInfoWindow[];
+extern u16 const Pal_EndingPInfoWindow[];
+extern u8 const Tsa_GameRank_083461C4[];
+extern u8 const Tsa_GameRank_08346330[];
+extern u8 const Tsa_GameRank_083463B4[];
+extern u8 const Tsa_GameRank_083463F4[];
 // extern const ??? gUnk_08346574
 extern u8 const Img_MonologueText[];
 extern u16 const Pal_MonologueText[];
-extern u8 const Img_EndingMonologueText3[];
-extern u8 const Img_EndingMonologueText1[];
-extern u8 const Img_EndingMonologueText4[];
-extern u8 const Img_08352160[];
+extern u8 const Img_EndingMonologueText_a[];
+extern u8 const Img_EndingMonologueText_b[];
+extern u8 const Img_EndingMonologueText_c[];
+extern u8 const Img_EndingMonologueText_d[];
 extern u16 const Pal_EndingMonologueText[];
-extern const int gUnk_08353328[];
+extern const int WmArrowConf[];
 // extern const ??? gUnk_08354728
-// extern const ??? Pal_OpInfoViewLetters
-// extern const ??? Img_OpInfoViewLettersB
-// extern const ??? Img_OpInfoViewLettersA
-// extern const ??? Img_OpInfoViewIcon
-// extern const ??? Pal_OpInfoViewIcon
-// extern const ??? gUnk_0835A3E8
-// extern const ??? gUnk_0835A5D0
-// extern const ??? gUnk_0835A5F0
-// extern const ??? gUnk_0835AB08
-// extern const ??? gUnk_0835AB28
-// extern const ??? gUnk_0835B040
-// extern const ??? gUnk_0835C034
+extern u16 const Pal_OpInfoViewLetters[];
+extern u8 const Img_OpInfoViewLettersB[];
+extern u8 const Img_OpInfoViewLettersA[];
+extern u8 const Img_OpInfoViewIcon[];
+extern u16 const Pal_OpInfoViewIcon[];
+extern u8 const Img_Op_0835A3E8[];
+extern u16 const Pal_Op_0835A5D0[];
+extern u8 const Tsa_Op_0835A5F0[];
+extern u16 const Pal_Op_0835AB08[];
+extern u8 const Tsa_Op_0835AB28[];
+extern u8 const Img_ClassDemoFont[];
+extern u16 const Pal_ClassDemoFont[];
 // extern const ??? OpInfoClassIntroMsgs
-// extern const ??? Str_OpInfo_Mag
+extern char const Str_OpInfo_Mag[];
 // extern const ??? gUnk_0835C829
 extern const char String_ShopGoldG[];
 extern const char String_Shop_0835CA78[];
@@ -465,15 +465,15 @@ extern u8 const Img_Title_BG3[];
 extern u16 const Pal_Title_BG3[];
 extern u8 const Img_Title_08364438[];
 extern u16 const Pal_Title_08364A94[];
-// extern const ??? gUnk_08364AB4
-// extern const ??? gUnk_083674BC
-// extern const ??? gUnk_08367B30
-// extern const ??? gUnk_0836A094
-// extern const ??? gUnk_0836A494
-// extern const ??? gUnk_0836A888
-// extern const ??? gUnk_0836A9AC
-// extern const ??? gUnk_0836EEFC
-// extern const ??? gUnk_0836F610
+// extern const ??? Img_Title_08364AB4
+// extern const ??? Tsa_OpAnim_083674BC
+// extern const ??? Img_Title_08367B30
+// extern const ??? Tsa_OpAnim_0836A094
+// extern const ??? Tsa_OpAnim_0836A494
+// extern const ??? Pal_OpAnim_0836A888
+// extern const ??? Img_OpAnim_0836A9AC
+// extern const ??? Img_OpAnim_0836EEFC
+// extern const ??? Tsa_OpAnim_0836F610
 // extern const ??? Img_EndingMonologue
 // extern const ??? Tsa_EndingMonologue
 // extern const ??? Zpal_EndingMonologue
@@ -538,6 +538,26 @@ extern const u16 gUnk_0832C5E8[];
 extern const u16 gUnk_0832CA9C[];
 extern const u16 gUnk_0832CAFC[];
 extern const u16 gUnk_0832CC90[];
+extern u8 EndingCG_0832CCB0[];
+extern u16 EndingCG_0832DC8C[];
+extern u8 EndingCG_0832DCAC[];
+extern u16 EndingCG_0832EDAC[];
+extern u8 EndingCG_0832EDCC[];
+extern u16 EndingCG_0832FD70[];
+extern u8 EndingCG_0832FD90[];
+extern u16 EndingCG_08330B2C[];
+extern u8 EndingCG_08330B4C[];
+extern u16 EndingCG_08331B9C[];
+extern u8 EndingCG_08331BBC[];
+extern u16 EndingCG_08332E64[];
+extern u8 EndingCG_08332E84[];
+extern u16 EndingCG_08333DD4[];
+extern u8 EndingCG_08333DF4[];
+extern u16 EndingCG_08335060[];
+extern u8 EndingCG_08335080[];
+extern u16 EndingCG_08335CC8[];
+extern u8 EndingCG_08335CE8[];
+extern u16 EndingCG_08336C40[];
 
 /* xmap.h */
 /* config.h */
