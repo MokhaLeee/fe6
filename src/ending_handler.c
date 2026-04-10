@@ -48,10 +48,10 @@ void Ending_Loop(struct ProcGameEnding *proc)
 			return;
 		}
 
-		ctrl = (u32)gCreditInfo[gCreditInfoDispStep].work;
+		ctrl = (u32)gCreditInfo[gCreditInfoDispStep].job;
 		if (ctrl == 1) {
 			if (gEndingDispType != ENDING_DISP_0)
-				SpawnProcLocking(ProcScr_EndingStep1_PutaMonologue, proc);
+				SpawnProcLocking(ProcScr_EndingStep1_PutFighterMonologue, proc);
 		} else if (ctrl == 2) {
 			if (PopNextEndingPerson() < (FACTION_BLUE + 0x40) && gEndingDispType != ENDING_DISP_0)
 				SpawnProcLocking(ProcScr_EndingPInfo_x1, proc);
@@ -126,7 +126,7 @@ struct ProcScr CONST_DATA ProcScr_GameCredit[] = {
 
 void GameCredit_Loop(struct ProcGameCredit *proc)
 {
-	u32 ctrl = (u32)gCreditInfo[gCreditInfoDispStep].work - 1;
+	u32 ctrl = (u32)gCreditInfo[gCreditInfoDispStep].job - 1;
 
 	if (ctrl <= 1) {
 		gCreditInfoDispStep++;
@@ -135,7 +135,7 @@ void GameCredit_Loop(struct ProcGameCredit *proc)
 
 	switch (proc->timer) {
 	case 0x3C:
-		func_fe6_080902F0(gCreditInfoDispStep);
+		EndingCredit_PutJobName(gCreditInfoDispStep);
 		func_fe6_0809058C();
 		proc->timer++;
 		break;
@@ -154,7 +154,7 @@ void GameCredit_Loop(struct ProcGameCredit *proc)
 			TmFill(gBg1Tm, 0);
 			EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
 			Proc_Break(proc);
-			EndingStepAdvance();
+			TriggerEndingDone();
 		}
 		break;
 

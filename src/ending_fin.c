@@ -43,7 +43,7 @@ void Fin_Init(struct ProcGameEnding *proc)
 
 	Decompress(Img_Fin, (u8 *)BG_VRAM + 0x1000);
 	Decompress(Img_MuralBackground, (u8 *)BG_VRAM + GetBgChrOffset(BG_3));
-	func_fe6_08090854(gBg3Tm, 0x4000);
+	PutEndingLinearTSA(gBg3Tm, 0x4000);
 
 	oam2_base = 0x6080;
 

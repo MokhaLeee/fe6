@@ -28,7 +28,8 @@ def dump_string(rom_data, ptr):
 def dump_one_part(rom_data, off):
     ptr_work  = int.from_bytes(rom_data[off + 0x0:off + 0x4], 'little')
     ptr_name  = int.from_bytes(rom_data[off + 0x4:off + 0x8], 'little')
-    pos_maybe = int.from_bytes(rom_data[off + 0x8:off + 0xC], 'little')
+    x = rom_data[off + 8]
+    y = rom_data[off + 9]
 
     print("\t{")
 
@@ -44,7 +45,8 @@ def dump_one_part(rom_data, off):
         else:
             print(f'\t\t.name = (void *){hex(ptr_name)},')
 
-    print(f'\t\t.pos_maybe = {hex(pos_maybe)},')
+    print(f'\t\t.x = {hex(x)},')
+    print(f'\t\t.y = {hex(y)},')
     print("\t},")
 
     return off + 0xC

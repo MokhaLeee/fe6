@@ -413,11 +413,11 @@ extern u8 const Img_CreditGlyph_Cap[];
 extern u8 const Img_CreditGlyph_Low[];
 extern u8 const Img_CreditGlyph_Narrow[];
 extern const u16 Pal_CreditCharacterGlyph[];
-// extern const ??? gUnk_08344304
+extern u8 const Img_EndingFighterText[];
 extern u8 const Img_Fin[];
 extern u16 const Pal_Fin[];
 extern u8 const Img_Ending_CopyRight[];
-extern u16 const Tsa_Ending_CopyRight[];
+extern u8 const Tsa_Ending_CopyRight[];
 extern u16 const Pal_Ending_CopyRight[];
 extern u8 const Tsa_EndingPInfoBG[];
 extern u8 const Img_EndingPInfoWindow[];

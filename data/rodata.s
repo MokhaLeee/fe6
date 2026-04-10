@@ -132,8 +132,8 @@ Img_CreditGlyph_Narrow: @ 08343FAC
 Pal_CreditCharacterGlyph: @ 083442C4
 	.incbin "fe6-base.gba", 0x3442C4, (0x344304 - 0x3442C4) @ length: 0040
 
-	.global gUnk_08344304
-gUnk_08344304: @ 08344304
+	.global Img_EndingFighterText
+Img_EndingFighterText: @ 08344304
 	.incbin "fe6-base.gba", 0x344304, (0x3449F8 - 0x344304) @ length: 06F4
 
 	.global Img_Fin

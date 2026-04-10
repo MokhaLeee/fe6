@@ -3254,7 +3254,7 @@ EvtLabel(4)
     EvtSleep(420)
     EvtMoveUnitScript(PID_IDUNN, MoveScr_TrueEnding_0867683C)
     EvtSleep(256)
-    EvtFunc(EndingStepAdvance)
+    EvtFunc(TriggerEndingDone)
     EvtFuncWhile(CheckGameEndingDone)
     EvtFadeToBlack(4)
     EvtExitMap

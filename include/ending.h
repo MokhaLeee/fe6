@@ -36,6 +36,7 @@ struct ProcGameEnding {
 	STRUCT_PAD(0x29, 0x64);
 
 	i16 timer;
+	u16 step;
 };
 
 struct ProcEndingfx {
@@ -47,9 +48,10 @@ struct ProcEndingfx {
 };
 
 struct CreditInfo {
-	const char *work;
-	const char *name;
-	int pos_maybe;
+	const char *job;
+	const char *staff;
+	u8 x, y;
+	u16 _pad_;
 };
 
 extern CONST_DATA struct CreditInfo gCreditInfo[];
@@ -105,23 +107,34 @@ void EndingCredit_ReinitType0(struct ProcGameCredit *proc);
 u8 func_fe6_0808FF04(struct ProcEndingfx *proc, int b, int c);
 int func_fe6_0808FF9C(int a, int b, int c);
 void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step);
-void func_fe6_080902F0(int step);
-// func_fe6_080904F0
-// func_fe6_08090508
+void EndingCredit_PutJobName(int step);
+
+void func_fe6_080904F0(struct ProcGameEnding *proc);
+void func_fe6_08090508(struct ProcGameEnding *proc);
 void func_fe6_0809058C(void);
-// func_fe6_080905A0
+void func_fe6_080905A0(struct ProcGameEnding *proc);
 void func_fe6_0809060C(void);
-void EndingStepAdvance(void);
+void TriggerEndingDone(void);
 int func_fe6_08090630(void);
-// func_fe6_08090644
-// func_fe6_08090660
-// EndingCredit_Init
-// EndingCredit_WaitingDisp
-// EndingCredit_Ending
-// EndingCopyRight_Init
-// EndingCopyRight_Loop
-void func_fe6_08090854(u16 *tm, int oam2);
-void EndingCG_Init(struct ProcGameEnding *proc);
+void func_fe6_08090644(ProcPtr proc);
+void func_fe6_08090660(ProcPtr proc);
+void EndingCredit_Init(struct ProcGameEnding *proc);
+void EndingCredit_Loop(struct ProcGameEnding *proc);
+void EndingCredit_End(struct ProcGameEnding *proc);
+
+struct ProcEndingCopyRight {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x4E);
+
+	u16 timer;
+};
+
+void EndingCopyRight_Init(struct ProcEndingCopyRight *proc);
+void EndingCopyRight_Loop(struct ProcEndingCopyRight *proc);
+
+void PutEndingLinearTSA(u16 *tm, int oam2);
+void EndingStep1_End(struct ProcGameEnding *proc);
 void EndingStep1_Init(struct ProcGameEnding *proc);
 void EndingStep1_Loop(struct ProcGameEnding *proc);
 void Fin_Init(struct ProcGameEnding *proc);
@@ -213,7 +226,7 @@ extern CONST_DATA struct ProcScr ProcScr_0868BB5C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB7C[];
 extern CONST_DATA struct ProcScr ProcScr_EndingCredit[];
 extern CONST_DATA struct ProcScr ProcScr_EndingCopyRight[];
-extern CONST_DATA struct ProcScr ProcScr_EndingStep1_PutaMonologue[];
+extern CONST_DATA struct ProcScr ProcScr_EndingStep1_PutFighterMonologue[];
 extern CONST_DATA struct ProcScr ProcScr_Fin[];
 
 struct EndingCgConf {
