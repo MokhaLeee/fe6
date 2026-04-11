@@ -679,6 +679,7 @@ SECTIONS
         . = ALIGN(4); src/unitpanel.o(.rodata);
         . = ALIGN(4); src/battlepreview.o(.rodata);
         . = ALIGN(4); data/rodata_105DD0.o(.rodata);
+        . = ALIGN(4); data/sio_rodata.o(.rodata);
         . = ALIGN(4); src/ai_order.o(.rodata);
         . = ALIGN(4); src/ai_perform.o(.rodata);
         . = ALIGN(4); src/ai_utility.o(.rodata);
@@ -687,7 +688,7 @@ SECTIONS
         . = ALIGN(4); src/ai_battle.o(.rodata);
         . = ALIGN(4); src/ai_080326C4.o(.rodata);
         . = ALIGN(4); src/code_sio.o(.rodata);
-        . = ALIGN(4); data/data-code-sio.o(.rodata);
+        . = ALIGN(4); data/sio_data.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
@@ -813,7 +814,7 @@ SECTIONS
         . = ALIGN(4); src/ai_data.o(.data);
         . = ALIGN(4); src/ai_battle.o(.data);
         . = ALIGN(4); src/ai_080326C4.o(.data);
-        . = ALIGN(4); data/data-code-sio.o(.data);
+        . = ALIGN(4); data/sio_data.o(.data);
         . = ALIGN(4); src/ui.o(.data);
         . = ALIGN(4); src/menu.o(.data);
         . = ALIGN(4); src/mapselect.o(.data);
