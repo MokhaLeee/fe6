@@ -1,0 +1,6 @@
+	.data
+
+	.incbin "fe6-base.gba", 0x692308, (0x69B668 - 0x692308)
+
+	@ FILL(0xFF)
+	.incbin "fe6-base.gba", 0x69B668, (0x6A0000 - 0x69B668)

@@ -930,18 +930,14 @@ SECTIONS
         . = ALIGN(4); data/opanim.o(.data);
         . = ALIGN(4); src/titlescreen.o(.data);
 
-        . = ALIGN(4); data/data_692308.o(.data);
-        . = ALIGN(4); FILL(0xFF);
-
-        . = 0x6A0000;
-        . = ALIGN(4); src/banim_table.o(.data);
-
-        . = ALIGN(4); FILL(0x0);
-
-        . = 0x6A1000;
-        . = ALIGN(4); src/banim_data.o(.data);
-
-        . = ALIGN(4); data/data_7E989C.o(.data);
+        . = ALIGN(4); data/_maybayunused_692308.o(.data);
+        . = ALIGN(4); src/banimdata_table.o(.data);
+        . = ALIGN(4); src/banimdata.o(.data);
+        . = ALIGN(4); data/_maybayunused_7E989C.o(.data);
+        . = ALIGN(4); src/banimdata_terraininfo.o(.rodata);
+        . = ALIGN(4); src/banimdata_terraininfo_data.o(.data);
+        . = ALIGN(4); src/banimdata_charpal.o(.rodata);
+        . = ALIGN(4); src/banimdata_charpal_data.o(.data);
         . = ALIGN(4); FILL(0xFF);
 
         . = 0x800000; /* end */
