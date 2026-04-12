@@ -164,7 +164,7 @@ SECTIONS
         . = 0x004120; gBanimPaletteRight = .;
         . = 0x0041C0; gBanimOamBufs = .;
         . = 0x00F1C0; gBanimScrs = .;
-        . = 0x0145C0; gBanimBuf_20145C0 = .;
+        . = 0x0145C0; gBanimTerrainfxBufObj = .;
         . = 0x014DC0; gUnk_Banim_02014DC0 = .;
         . = 0x0165C0; gEfxPal = .;
         . = 0x0169C0; Buf_EkrGaugeNumImg = .;
@@ -501,7 +501,6 @@ SECTIONS
         src/banim_ekrlvupfan.o(.text);
         src/banim_ekrgauge.o(.text);
         src/banim_ekrdispup.o(.text);
-        asm/banim_ekrmisc.o(.text);
         src/banim_ekrmisc.o(.text);
         src/banim_efxhpbar.o(.text);
         src/banim_efxdeath.o(.text);
@@ -680,6 +679,7 @@ SECTIONS
         . = ALIGN(4); src/unitpanel.o(.rodata);
         . = ALIGN(4); src/battlepreview.o(.rodata);
         . = ALIGN(4); data/rodata_105DD0.o(.rodata);
+        . = ALIGN(4); data/sio_rodata.o(.rodata);
         . = ALIGN(4); src/ai_order.o(.rodata);
         . = ALIGN(4); src/ai_perform.o(.rodata);
         . = ALIGN(4); src/ai_utility.o(.rodata);
@@ -688,7 +688,7 @@ SECTIONS
         . = ALIGN(4); src/ai_battle.o(.rodata);
         . = ALIGN(4); src/ai_080326C4.o(.rodata);
         . = ALIGN(4); src/code_sio.o(.rodata);
-        . = ALIGN(4); data/data-code-sio.o(.rodata);
+        . = ALIGN(4); data/sio_data.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); data/rodata_10F744.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
@@ -709,7 +709,8 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrclasschg.o(.rodata);
         . = ALIGN(4); src/banim_ekrlvup.o(.rodata);
         . = ALIGN(4); src/banim_ekrtriangle.o(.rodata);
-        . = ALIGN(4); data/rodata_banim_081C9EF4.o(.rodata);
+        . = ALIGN(4); src/banim_ekrtriangle_img.o(.rodata);
+        . = ALIGN(4); src/banim_bg_img.o(.rodata);
         . = ALIGN(4); data/rodata_chapterinfo1.o(.rodata);
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
@@ -814,7 +815,7 @@ SECTIONS
         . = ALIGN(4); src/ai_data.o(.data);
         . = ALIGN(4); src/ai_battle.o(.data);
         . = ALIGN(4); src/ai_080326C4.o(.data);
-        . = ALIGN(4); data/data-code-sio.o(.data);
+        . = ALIGN(4); data/sio_data.o(.data);
         . = ALIGN(4); src/ui.o(.data);
         . = ALIGN(4); src/menu.o(.data);
         . = ALIGN(4); src/mapselect.o(.data);
@@ -930,18 +931,14 @@ SECTIONS
         . = ALIGN(4); data/opanim.o(.data);
         . = ALIGN(4); src/titlescreen.o(.data);
 
-        . = ALIGN(4); data/data_692308.o(.data);
-        . = ALIGN(4); FILL(0xFF);
-
-        . = 0x6A0000;
-        . = ALIGN(4); src/banim_table.o(.data);
-
-        . = ALIGN(4); FILL(0x0);
-
-        . = 0x6A1000;
-        . = ALIGN(4); src/banim_data.o(.data);
-
-        . = ALIGN(4); data/data_7E989C.o(.data);
+        . = ALIGN(4); data/_maybayunused_692308.o(.data);
+        . = ALIGN(4); src/banimdata_table.o(.data);
+        . = ALIGN(4); src/banimdata.o(.data);
+        . = ALIGN(4); data/_maybayunused_7E989C.o(.data);
+        . = ALIGN(4); src/banimdata_terraininfo.o(.rodata);
+        . = ALIGN(4); src/banimdata_terraininfo_data.o(.data);
+        . = ALIGN(4); src/banimdata_charpal.o(.rodata);
+        . = ALIGN(4); src/banimdata_charpal_data.o(.data);
         . = ALIGN(4); FILL(0xFF);
 
         . = 0x800000; /* end */

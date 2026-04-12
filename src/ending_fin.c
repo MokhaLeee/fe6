@@ -26,7 +26,7 @@ void Fin_Init(struct ProcGameEnding *proc)
 
 	proc->timer = 0;
 
-	InitBgs(BgConf_0868BA24);
+	InitBgs(BgConf_Ending);
 	SetDispEnable(1, 0, 0, 0, 0);
 	SetBlendConfig(BLEND_EFFECT_NONE, 0, 0, 0);
 	SetBlendTargetA(0, 0, 0, 0, 0);

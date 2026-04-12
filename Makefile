@@ -109,6 +109,7 @@ CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
 # ============
 
 PNG_FILES := $(shell find ./data -type f -name '*.png')
+TSA_FILES := $(shell find ./data -type f -name '*.tsa')
 GBAGFX := tools/gbagfx/gbagfx$(EXE)
 
 %.1bpp: %.png
@@ -141,6 +142,7 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 
 CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz) $(PNG_FILES:%.png=%.4bpp.lz.o)
 CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
+CLEAN_FILES += $(TSA_FILES:%.tsa=%.tsa.lz)
 
 # ==============
 # = Banim data =
@@ -156,7 +158,7 @@ PNG_TO_GBA4BPP := $(PYTHON) $(BANIM_TOOLS)/png_to_4bpp.py
 FK_COMPRESSOR  := $(PYTHON) $(BANIM_TOOLS)/compressor.py
 STRIPER        := $(BANIM_TOOLS)/strip.sh
 
-BANIM_OBJECT := src/banim_data.o
+BANIM_OBJECT := src/banimdata.o
 
 $(BUILD_DIR)/$(BANIM_OBJECT): linker_script_banim.txt $(shell ./tools/banimtools/banim_compressing_linker.py -t linker_script_banim.txt -m)
 	@./tools/banimtools/banim_compressing_linker.py -o $@ -t linker_script_banim.txt -b 0x086A1000 -l $(LD) --objcopy $(OBJCOPY) -c ./tools/banimtools/compressor.py

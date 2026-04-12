@@ -1225,3 +1225,5 @@ CONST_DATA struct BattleAnim gBanimTable[BANIM_MAX] = {
         .pal = BANIM_PAL_sagf_mg1_2,
     },
 };
+
+CONST_DATA u8 BattleAnim_allign[0x6A1000 - 0x6A0F48] = { 0 };

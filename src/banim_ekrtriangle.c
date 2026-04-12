@@ -268,12 +268,12 @@ struct ProcScr CONST_DATA ProcScr_EkrTriPegasusKnightBG[] = {
 };
 
 CONST_DATA u16 *TsaArray_EkrTriPegagusBG[] = {
-	EkrTriPegagus_081CBE04,
-	EkrTriPegagus_081CBF18,
-	EkrTriPegagus_081CC03C,
-	EkrTriPegagus_081CC114,
-	EkrTriPegagus_081CC230,
-	EkrTriPegagus_081CC354,
+	Tsa_EkrTriPegagusBG1,
+	Tsa_EkrTriPegagusBG2,
+	Tsa_EkrTriPegagusBG3,
+	Tsa_EkrTriPegagusBG4,
+	Tsa_EkrTriPegagusBG5,
+	Tsa_EkrTriPegagusBG6,
 };
 
 void NewEkrTriPegasusKnightBG(struct Anim *anim, u32 pos, u32 etype, u32 ewtype)

@@ -192,8 +192,8 @@ void func_fe6_0808F060(struct ProcPlayRank *proc);
 void PlayRank_Loop(struct ProcPlayRank *proc);
 void PlayRank_Idle(ProcPtr proc);
 void PlayRank_End1(ProcPtr proc);
-void PlayRank_End2(ProcPtr proc);
-void PlayRank_End3(ProcPtr proc);
+void PlayRank_PrepareEnd(ProcPtr proc);
+void PlayRank_CheckSkipPassword(ProcPtr proc);
 
 u16 PlayRank_GetTotalTurn(void);
 u8 PlayRankGetter_Tactics(void);
@@ -227,10 +227,10 @@ void func_fe6_0808F7D0(int method, int lo, int hi, int x, int end, int pal_bank)
 void func_fe6_0808F838(struct Proc_0868B88C *proc);
 void func_fe6_0808F844(struct Proc_0868B88C *proc);
 
-// PlayRankTrialOBJ_Init
-// PlayRankTrialOBJ_Loop
-// PlayRankTrail_Init
-// PlayRankTrail_Loop
+void PlayRankTrialOBJ_Init(ProcPtr proc);
+void PlayRankTrialOBJ_Loop(ProcPtr proc);
+void PlayRankTrail_Init(ProcPtr proc);
+void PlayRankTrail_Loop(ProcPtr proc);
 // NewPlayRank_unused
 void NewPlayRankTrail(ProcPtr parent);
 

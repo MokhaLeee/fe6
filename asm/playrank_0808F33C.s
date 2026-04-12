@@ -166,7 +166,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	orrs r3, r4
 	bl PutOamHiRam
 	adds r2, r5, #1
-	ldr r1, .L08090178 @ =gUnk_0868BA3C
+	ldr r1, .L08090178 @ =gEndingCredit_FontObjConf
 	adds r0, r1, #0
 	adds r0, #0xd0
 	ldrb r0, [r0]
@@ -178,7 +178,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	b .L080902A2
 	.align 2, 0
 .L08090174: .4byte Sprite_16x16
-.L08090178: .4byte gUnk_0868BA3C
+.L08090178: .4byte gEndingCredit_FontObjConf
 .L0809017C:
 	cmp r4, #0x60
 	bgt .L08090214
@@ -192,7 +192,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 .L0809018E:
 	cmp r3, #0
 	beq .L080901B4
-	ldr r0, .L080901B0 @ =gUnk_0868BA3C
+	ldr r0, .L080901B0 @ =gEndingCredit_FontObjConf
 	lsls r1, r4, #3
 	adds r0, r1, r0
 	ldrb r0, [r0, #1]
@@ -208,9 +208,9 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	subs r5, r5, r0
 	b .L080901C8
 	.align 2, 0
-.L080901B0: .4byte gUnk_0868BA3C
+.L080901B0: .4byte gEndingCredit_FontObjConf
 .L080901B4:
-	ldr r0, .L0809020C @ =gUnk_0868BA3C
+	ldr r0, .L0809020C @ =gEndingCredit_FontObjConf
 	lsls r2, r4, #3
 	adds r0, r2, r0
 	movs r1, #0x40
@@ -224,7 +224,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	adds r0, r5, #0
 	mov r1, ip
 	mov r2, sl
-	bl func_fe6_0808FF9C
+	bl EndingCredit_FindWordLen
 	adds r5, r0, #0
 	ldr r0, [sp]
 	adds r1, r5, #0
@@ -246,14 +246,14 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	orrs r3, r4
 	bl PutOamHiRam
 	adds r1, r5, #1
-	ldr r0, .L0809020C @ =gUnk_0868BA3C
+	ldr r0, .L0809020C @ =gEndingCredit_FontObjConf
 	adds r0, r6, r0
 	ldrb r3, [r0]
 	adds r5, r3, r1
 	ldrb r3, [r0, #2]
 	b .L0809029E
 	.align 2, 0
-.L0809020C: .4byte gUnk_0868BA3C
+.L0809020C: .4byte gEndingCredit_FontObjConf
 .L08090210: .4byte Sprite_16x16
 .L08090214:
 	subs r4, #0x61
@@ -266,7 +266,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 .L08090222:
 	cmp r3, #0
 	beq .L08090248
-	ldr r0, .L08090244 @ =gUnk_0868BA3C
+	ldr r0, .L08090244 @ =gEndingCredit_FontObjConf
 	lsls r1, r4, #3
 	adds r0, r1, r0
 	ldrb r0, [r0, #4]
@@ -282,9 +282,9 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	subs r5, r5, r0
 	b .L0809025C
 	.align 2, 0
-.L08090244: .4byte gUnk_0868BA3C
+.L08090244: .4byte gEndingCredit_FontObjConf
 .L08090248:
-	ldr r0, .L080902E0 @ =gUnk_0868BA3C
+	ldr r0, .L080902E0 @ =gEndingCredit_FontObjConf
 	lsls r2, r4, #3
 	adds r0, r2, r0
 	movs r1, #0x40
@@ -298,7 +298,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	adds r0, r5, #0
 	mov r1, ip
 	mov r2, sl
-	bl func_fe6_0808FF9C
+	bl EndingCredit_FindWordLen
 	adds r5, r0, #0
 	ldr r0, [sp]
 	adds r1, r5, #0
@@ -320,7 +320,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	orrs r3, r4
 	bl PutOamHiRam
 	adds r1, r5, #1
-	ldr r0, .L080902E0 @ =gUnk_0868BA3C
+	ldr r0, .L080902E0 @ =gEndingCredit_FontObjConf
 	adds r0, r6, r0
 	ldrb r3, [r0, #3]
 	adds r5, r3, r1
@@ -364,229 +364,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080902E0: .4byte gUnk_0868BA3C
+.L080902E0: .4byte gEndingCredit_FontObjConf
 .L080902E4: .4byte Sprite_16x16
 .L080902E8: .4byte gCreditInfo
 .L080902EC: .4byte unk_02016A42
-
-	thumb_func_start EndingCredit_PutJobName
-EndingCredit_PutJobName: @ 0x080902F0
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	adds r5, r0, #0
-	ldr r4, .L08090374 @ =gCreditInfo
-	lsls r0, r5, #1
-	adds r0, r0, r5
-	lsls r0, r0, #2
-	adds r0, r0, r4
-	mov r8, r0
-	ldrb r6, [r0, #8]
-	adds r6, #1				@ r6 = x + 1
-	ldrb r1, [r0, #9]
-	lsls r1, r1, #5
-	mov sl, r1				@ sl = y * 0x20
-	movs r0, #0
-	mov sb, r0				@ sb = 0
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #1
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	ldr r0, .L08090378 @ =unk_02016A42
-	mov r1, sb
-	strb r1, [r0]
-	cmp r5, #0
-	beq .L0809035E
-	subs r1, r5, #1
-	lsls r0, r1, #1
-	adds r0, r0, r1
-	lsls r0, r0, #2
-	adds r0, r0, r4
-	ldrb r0, [r0, #9]
-	lsls r4, r0, #6
-	ldr r0, .L0809037C @ =gBg0Tm
-	adds r0, r4, r0
-	movs r1, #0x1e
-	movs r2, #2
-	movs r3, #0
-	bl TmFillRect_thm
-	ldr r0, .L08090380 @ =gBg1Tm
-	adds r4, r4, r0
-	adds r0, r4, #0
-	movs r1, #0x1e
-	movs r2, #2
-	movs r3, #0
-	bl TmFillRect_thm
-.L0809035E:
-	movs r7, #0x81
-	lsls r7, r7, #7
-	mov r1, r8
-	ldr r0, [r1]
-	cmp r0, #0
-	bne .L0809036C
-	b .L080904D6
-.L0809036C:
-	ldr r1, .L0809037C @ =gBg0Tm
-	mov r8, r1
-	b .L080904CE
-	.align 2, 0
-.L08090374: .4byte gCreditInfo
-.L08090378: .4byte unk_02016A42
-.L0809037C: .4byte gBg0Tm
-.L08090380: .4byte gBg1Tm
-.L08090384:
-	adds r0, r4, #0
-	subs r0, #0xa
-	cmp r0, #0x24
-	bls .L0809038E
-	b .L0809049C
-.L0809038E:
-	lsls r0, r0, #2
-	ldr r1, .L0809039C @ =.L080903A0
-	adds r0, r0, r1
-	ldr r0, [r0]
-	lsls r2, r5, #1
-	mov pc, r0
-	.align 2, 0
-.L0809039C: .4byte .L080903A0
-.L080903A0: @ jump table
-	.4byte .L08090434 @ case 0
-	.4byte .L0809049C @ case 1
-	.4byte .L0809049C @ case 2
-	.4byte .L0809049C @ case 3
-	.4byte .L0809049C @ case 4
-	.4byte .L0809049C @ case 5
-	.4byte .L0809049C @ case 6
-	.4byte .L0809049C @ case 7
-	.4byte .L0809049C @ case 8
-	.4byte .L0809049C @ case 9
-	.4byte .L0809049C @ case 10
-	.4byte .L0809049C @ case 11
-	.4byte .L0809049C @ case 12
-	.4byte .L0809049C @ case 13
-	.4byte .L0809049C @ case 14
-	.4byte .L0809049C @ case 15
-	.4byte .L0809049C @ case 16
-	.4byte .L0809049C @ case 17
-	.4byte .L0809049C @ case 18
-	.4byte .L0809049C @ case 19
-	.4byte .L0809049C @ case 20
-	.4byte .L0809049C @ case 21
-	.4byte .L080904B4 @ case 22
-	.4byte .L0809049C @ case 23
-	.4byte .L0809049C @ case 24
-	.4byte .L0809049C @ case 25
-	.4byte .L0809049C @ case 26
-	.4byte .L0809049C @ case 27
-	.4byte .L08090468 @ case 28
-	.4byte .L0809049C @ case 29
-	.4byte .L0809049C @ case 30
-	.4byte .L0809049C @ case 31
-	.4byte .L0809049C @ case 32
-	.4byte .L0809049C @ case 33
-	.4byte .L08090494 @ case 34
-	.4byte .L0809049C @ case 35
-	.4byte .L08090498 @ case 36
-.L08090434:
-	ldr r0, .L08090460 @ =gCreditInfo
-	lsls r4, r5, #1
-	adds r1, r4, r5
-	lsls r1, r1, #2
-	adds r1, r1, r0
-	ldrb r6, [r1, #8]
-	adds r6, #1
-	movs r0, #0
-	movs r1, #0
-	movs r2, #0xa
-	bl SetBgOffset
-	movs r0, #1
-	movs r1, #0
-	movs r2, #0xfe
-	bl SetBgOffset
-	ldr r0, .L08090464 @ =gBg1Tm
-	mov r8, r0
-	adds r2, r4, #0
-	b .L080904B4
-	.align 2, 0
-.L08090460: .4byte gCreditInfo
-.L08090464: .4byte gBg1Tm
-.L08090468:
-	lsls r2, r6, #0x10
-	asrs r2, r2, #0x10
-	mov r0, sl
-	adds r1, r0, r2
-	lsls r1, r1, #1
-	add r1, r8
-	adds r0, r7, #0
-	adds r0, #0x1c
-	strh r0, [r1]
-	adds r0, #1
-	strh r0, [r1, #2]
-	adds r3, r1, #0
-	adds r3, #0x40
-	adds r0, #0x1f
-	strh r0, [r3]
-	adds r1, #0x42
-	adds r0, #1
-	strh r0, [r1]
-	adds r2, #1
-	lsls r2, r2, #0x10
-	lsrs r6, r2, #0x10
-	b .L080904B2
-.L08090494:
-	movs r4, #0x1a
-	b .L0809049E
-.L08090498:
-	movs r4, #0x1b
-	b .L0809049E
-.L0809049C:
-	subs r4, #0x41
-.L0809049E:
-	lsls r0, r6, #0x10
-	asrs r0, r0, #0x10
-	add r0, sl
-	lsls r0, r0, #1
-	add r0, r8
-	adds r1, r7, r4
-	strh r1, [r0]
-	adds r0, #0x40
-	adds r1, #0x20
-	strh r1, [r0]
-.L080904B2:
-	lsls r2, r5, #1
-.L080904B4:
-	lsls r0, r6, #0x10
-	movs r1, #0x80
-	lsls r1, r1, #9
-	adds r0, r0, r1
-	lsrs r6, r0, #0x10
-	movs r0, #1
-	add sb, r0
-	ldr r1, .L080904EC @ =gCreditInfo
-	adds r0, r2, r5
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	add r0, sb
-.L080904CE:
-	ldrb r4, [r0]
-	cmp r4, #0
-	beq .L080904D6
-	b .L08090384
-.L080904D6:
-	movs r0, #3
-	bl EnableBgSync
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080904EC: .4byte gCreditInfo

@@ -1,23 +1,35 @@
 	.include "macro.inc"
+	.include "asm_proc.inc"
 	.syntax unified
 
 	.section .data
 
 	.global ProcScr_EkrUnitKakudai
 ProcScr_EkrUnitKakudai: @ 085CBD28
-	.incbin "fe6-base.gba", 0x5CBD28, (0x5CBD50 - 0x5CBD28) @ length: 0028
+	PROC_19
+	PROC_REPEAT func_fe6_08048A64
+	PROC_REPEAT func_fe6_08048BF0
+	PROC_REPEAT func_fe6_08048D98
+	PROC_END
 
 	.global ProcScr_EkrWindowAppear
 ProcScr_EkrWindowAppear: @ 085CBD50
-	.incbin "fe6-base.gba", 0x5CBD50, (0x5CBD68 - 0x5CBD50) @ length: 0018
+	PROC_19
+	PROC_REPEAT func_fe6_08048E08
+	PROC_END
 
 	.global ProcScr_EkrNamewinAppear
 ProcScr_EkrNamewinAppear: @ 085CBD68
-	.incbin "fe6-base.gba", 0x5CBD68, (0x5CBD88 - 0x5CBD68) @ length: 0020
+	PROC_19
+	PROC_REPEAT func_fe6_08048EEC
+	PROC_REPEAT func_fe6_08048F0C
+	PROC_END
 
 	.global ProcScr_EkrBaseAppear
 ProcScr_EkrBaseAppear: @ 085CBD88
-	.incbin "fe6-base.gba", 0x5CBD88, (0x5CBDA0 - 0x5CBD88) @ length: 0018
+	PROC_19
+	PROC_REPEAT EkrBaseAppear_Loop
+	PROC_END
 
 	.section .text
 	thumb_func_start NewEkrBaseKaiten

@@ -4,17 +4,147 @@
 #include "util.h"
 #include "proc.h"
 #include "armfunc.h"
-
+#include "sprite.h"
 #include "ending.h"
 
+CONST_DATA struct EndingCreditWordLenConf gEndingCredit_WordLenConf[] = {
+	{ 'a', 't', 9 },
+	{ 't', 'a', 9 },
+	{ 'o', 'm', 7 },
+	{ 'I', 't', 6 },
+	{ 'T', 'o', 7 },
+	{ 'a', 'w', 9 },
+	{ 'r', 'u', 9 },
+	{}
+};
+
+// https://decomp.me/scratch/JebWS
 #if 0
+void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
+{
+	int x = gCreditInfo[step].x * 8 + 0x16;
+	int y = gCreditInfo[step].y * 8;
+	int oam0, index;
+	int i = 0;
+	int unk_r3 = 0;
+	int unk_r12 = 0;
+	u32 ctrl = (u32)gCreditInfo[gCreditInfoDispStep].job - 1;
+
+	if (ctrl <= 1)
+		return;
+
+	proc->unk_4C = 0;
+
+	if (unk_02016A3F != 0)
+		return;
+
+	oam0 = (unk_02016A3F == 1) ? 0 : OAM0_BLEND;
+
+	while (1) {
+		int ch = gCreditInfo[step].job[i];
+
+		if (ch == '\0')
+			break;
+
+		switch (ch) {
+		case '\n':
+			y = y + 0x10;
+			x = gCreditInfo[step].x * 8 + 0x16;
+			break;
+
+		case ' ':
+			x = x + 7;
+			break;
+
+		case '&':
+			index = 0x1C;
+			goto goto_single_char;
+
+		case ',':
+			index = 0x1A;
+			goto goto_single_char;
+
+		case '.':
+			index = 0x1B;
+
+			goto_single_char:
+				PutOamHi(
+					func_fe6_0808FF04(proc, x, y),
+					y | oam0,
+					Sprite_16x16,
+					0x4000 | (0x2A0 + index));
+
+				x = gEndingCredit_FontObjConf[26].unk_00 + x + 1;
+			break;
+
+		default:
+				if (ch < 'a') {
+					int chr;
+
+					index = ch - 'A';
+					chr = (index < 16) ? 0 : 0x20;
+
+					if (unk_r3 != 0) {
+						int tmp = (gEndingCredit_FontObjConf[index].unk_01 + unk_r3) & 0xFF;
+						
+						if (tmp < 0x80)
+							x = x - ((tmp & 0xF) >> 1);
+					} else {
+						int tmp = gEndingCredit_FontObjConf[index].unk_01 & 0x40;
+
+						if (tmp != 0)
+							x = x - 2;
+					}
+					x = EndingCredit_FindWordLen(x, unk_r12, ch);
+					PutOamHi(
+						func_fe6_0808FF04(proc, x, y),
+						y | oam0,
+						Sprite_16x16,
+						0x4000 | (0x280 + chr));
+
+					x = gEndingCredit_FontObjConf[index].unk_02 + x + 1;
+				} else {
+					int chr;
+
+					index = ch - 'a';
+					chr = (index < 16) ? 0 : 0x20;
+
+					if (unk_r3 != 0) {
+						int tmp = (gEndingCredit_FontObjConf[index].unk_01 + unk_r3) & 0xFF;
+						
+						if (tmp < 0x80)
+							x = x - ((tmp & 0xF) >> 1);
+					} else {
+						int tmp = gEndingCredit_FontObjConf[index].unk_01 & 0x40;
+
+						if (tmp != 0)
+							x = x - 2;
+					}
+					x = EndingCredit_FindWordLen(x, unk_r12, ch);
+					PutOamHi(
+						func_fe6_0808FF04(proc, x, y),
+						y | oam0,
+						Sprite_16x16,
+						0x4000 | (0x200 + chr));
+
+					x = gEndingCredit_FontObjConf[index].unk_02 + x + 1;
+				}
+		}
+		unk_r12 = ch;
+		x++, i++;
+	}
+
+	if (unk_02016A42 < 20)
+		unk_02016A42++;
+}
+#endif
+
 void EndingCredit_PutJobName(int step)
 {
 	u16 oam2_base;
 	i16 x = gCreditInfo[step].x + 1;
 	int y = gCreditInfo[step].y * 0x20;
 	int i = 0;
-    int tmp;
 
 	SetBgOffset(BG_0, 0, 0);
 	SetBgOffset(BG_1, 0, 0);
@@ -22,7 +152,7 @@ void EndingCredit_PutJobName(int step)
 	unk_02016A42 = 0;
 
 	if (step != 0) {
-        int _y = gCreditInfo[step - 1].y;
+		int _y = gCreditInfo[step - 1].y;
 
 		TmFillRect(gBg0Tm + TM_OFFSET(0, _y), 30, 2, 0);
 		TmFillRect(gBg1Tm + TM_OFFSET(0, _y), 30, 2, 0);
@@ -47,8 +177,11 @@ void EndingCredit_PutJobName(int step)
 				tm = gBg1Tm;
 				break;
 
+			case ' ':
+				break;
+
 			case '&':
-				tm[x + y] = oam2_base + 0x1C;
+				tm[y + x] = oam2_base + 0x1C;
 				tm[x + y + 1] = oam2_base + 0x1D;
 				tm[x + y + 0x20] = oam2_base + 0x3C;
 				tm[x + y + 0x21] = oam2_base + 0x3D;
@@ -74,13 +207,12 @@ void EndingCredit_PutJobName(int step)
 				tm[x + y + 0x20] = oam2_base + ch + 0x20;
 				break;
 			}
-            x++, i++;
+			x++, i++;
 		}
 	}
 
 	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT);
 }
-#endif
 
 struct ProcScr CONST_DATA ProcScr_0868BB3C[] = {
 	PROC_19,
@@ -187,7 +319,7 @@ struct ProcScr CONST_DATA ProcScr_EndingCredit[] = {
 void EndingCredit_Init(struct ProcGameEnding *proc)
 {
 	proc->timer = 0;
-	InitBgs(BgConf_0868BA24);
+	InitBgs(BgConf_Ending);
 
 	SetDispEnable(1, 1, 0, 0, 1);
 	SetBlendConfig(BLEND_EFFECT_NONE, 0, 0, 0);
@@ -238,7 +370,7 @@ struct ProcScr CONST_DATA ProcScr_EndingCopyRight[] = {
 
 void EndingCopyRight_Init(struct ProcEndingCopyRight *proc)
 {
-	InitBgs(BgConf_0868BA24);
+	InitBgs(BgConf_Ending);
 	proc->timer = 0x230;
 
 	SetDispEnable(1, 0, 0, 0, 0);
@@ -298,7 +430,7 @@ void EndingStep1_Init(struct ProcGameEnding *proc)
 
 	proc->timer = 0;
 
-	InitBgs(BgConf_0868BA24);
+	InitBgs(BgConf_Ending);
 	SetDispEnable(1, 0, 0, 1, 0);
 	SetBlendAlpha(10, 0);
 	SetBlendTargetA(0, 0, 0, 1, 1);

@@ -83,7 +83,7 @@ void func_fe6_08036994(void);
 // SioPlaySe
 // func_fe6_08036D3C
 // SioIsKeyInputSequenceComplete
-int func_fe6_08036DEC(void);
+int CheckDisplayPasswordScreenCombo(void);
 // StartLinkArenaTeamList
 // SioTeamList_Init
 // CanBuildNewLinkArenaTeam

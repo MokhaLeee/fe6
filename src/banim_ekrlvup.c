@@ -302,7 +302,7 @@ void EkrLvup_Init(struct ProcEkrlvup *proc)
 	desc->distance = gEkrDistanceType;
 	desc->bg_index = -1;
 	desc->vram_offset = (int)OBJ_VRAM0; // bug?
-	desc->img_buf = (u8 *)gBanimBuf_20145C0;
+	desc->img_buf = (u8 *)gBanimTerrainfxBufObj;
 	desc->unk_10 = (u16)gEkrSnowWeather;
 
 	if (gEkrDistanceType == EKR_DISTANCE_FARFAR) {
@@ -695,7 +695,7 @@ void EkrLvup_ResetScreen(struct ProcEkrlvup *proc)
 	buf->distance = gEkrDistanceType;
 	buf->bg_index = BG_2;
 	buf->vram_offset = 0;
-	buf->img_buf = gBanimBuf_20145C0;
+	buf->img_buf = gBanimTerrainfxBufObj;
 	buf->unk_10 = gEkrSnowWeather;
 
 	if (GetBattleAnimArenaFlag() == false) {
