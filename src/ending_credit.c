@@ -7,6 +7,14 @@
 #include "playrank.h"
 #include "ending.h"
 
+u16 CONST_DATA BgConf_Ending[] = {
+	// tile offset  map offset  screen size
+	0x0000,         0x6000,     0,          // BG 0
+	0x0000,         0x6800,     0,          // BG 1
+	0x8000,         0x7000,     0,          // BG 2
+	0x8000,         0x7800,     0,          // BG 3
+};
+
 void SetupCreditCharacterGlyphs(void)
 {
 	ApplyPalette(Pal_CreditCharacterGlyph, BGPAL_CREDIT_GLYPH);
@@ -91,16 +99,15 @@ u8 func_fe6_0808FF04(struct ProcGameCredit *proc, int b, int c)
 	return 0xF0;
 }
 
-int func_fe6_0808FF9C(int a, int b, int c)
+int EndingCredit_FindWordLen(int x_cur, int ch1, int ch2)
 {
 	int i;
 
-	for (i = 0; gUnk_0868BB1C[i].unk_0 != 0; i++) {
-		if (gUnk_0868BB1C[i].unk_0 == b && gUnk_0868BB1C[i].unk_1 == c) {
-			a = gUnk_0868BB1C[i].unk_2 + a - 8;
-            break;
+	for (i = 0; gEndingCredit_WordLenConf[i].unk_0 != 0; i++) {
+		if (gEndingCredit_WordLenConf[i].unk_0 == ch1 && gEndingCredit_WordLenConf[i].unk_1 == ch2) {
+			x_cur = gEndingCredit_WordLenConf[i].unk_2 + x_cur - 8;
+			break;
 		}
 	}
-	return a;
+	return x_cur;
 }
-

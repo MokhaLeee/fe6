@@ -3821,17 +3821,17 @@ SioIsKeyInputSequenceComplete: @ 0x08036D60
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_08036DEC
-func_fe6_08036DEC: @ 0x08036DEC
+	thumb_func_start CheckDisplayPasswordScreenCombo
+CheckDisplayPasswordScreenCombo: @ 0x08036DEC
 	push {lr}
-	ldr r0, .L08036DFC @ =gSioKeyList_085C9A18
+	ldr r0, .L08036DFC @ =gSioKeyList_PasswordScreenEN
 	bl SioIsKeyInputSequenceComplete
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
 	bx r1
 	.align 2, 0
-.L08036DFC: .4byte gSioKeyList_085C9A18
+.L08036DFC: .4byte gSioKeyList_PasswordScreenEN
 
 	thumb_func_start StartLinkArenaTeamList
 StartLinkArenaTeamList: @ 0x08036E00

@@ -17,6 +17,7 @@
 #include "armfunc.h"
 #include "save_stats.h"
 #include "save_xmap.h"
+#include "secretscreen.h"
 #include "gamecontroller.h"
 #include "chapterinfo.h"
 #include "constants/chapters.h"
@@ -1184,7 +1185,7 @@ void PlayRank_InitDisplay(void)
 
 	gPlayRankCurChapter = 0;
 	unk_02016A26 = 0;
-	unk_02016A2C = 0;
+	gPasswdScreenDisabled = 0;
 	gPlayRankBg0Offset = 0x80;
 	gPlayRankBg1Offset = 0xE0;
 	gPlayRankDispLine = 0xFF;
@@ -1327,8 +1328,8 @@ void PlayRank_Idle(ProcPtr proc)
 		return;
 	}
 
-	if (func_fe6_08036DEC()) {
-		unk_02016A2C = 1;
+	if (CheckDisplayPasswordScreenCombo()) {
+		gPasswdScreenDisabled = 1;
 		Proc_Break(proc);
 	}
 }
@@ -1341,7 +1342,7 @@ void PlayRank_End1(ProcPtr proc)
 	EndGreenText();
 }
 
-void PlayRank_End2(ProcPtr proc)
+void PlayRank_PrepareEnd(ProcPtr proc)
 {
 	Proc_EndEach(ProcScr_0868B648);
 	Proc_EndEach(ProcScr_PlayRankFogHandler);
@@ -1352,9 +1353,9 @@ void PlayRank_End2(ProcPtr proc)
 	Proc_EndEach(ProcScr_PlayRankTrialOBJ_Time);
 }
 
-void PlayRank_End3(ProcPtr proc)
+void PlayRank_CheckSkipPassword(ProcPtr proc)
 {
-	if (unk_02016A2C == 0)
+	if (gPasswdScreenDisabled == 0)
 		Proc_Goto(proc, 1);
 }
 
@@ -1804,6 +1805,16 @@ void func_fe6_0808F844(struct Proc_0868B88C *proc)
 	proc->unk_2E++;
 }
 
+struct ProcScr CONST_DATA ProcScr_PlayRankTrialOBJ[] = {
+	PROC_19,
+	PROC_CALL(NewPlayRankTrialOBJ_Time),
+	PROC_SLEEP(30),
+	PROC_CALL(PlayRankTrialOBJ_Init),
+	PROC_SLEEP(20),
+	PROC_REPEAT(PlayRankTrialOBJ_Loop),
+	PROC_END,
+};
+
 void PlayRankTrialOBJ_Init(ProcPtr proc)
 {
 	SetObjAffine(0xA, 0x100, 0, 0, 0x100);
@@ -1836,6 +1847,53 @@ void PlayRankTrialOBJ_Loop(ProcPtr proc)
 		PutSpriteExt(4, oam1_x, oam0_y, gpPlayRankSt->objs[i], OAM2_PAL(i + OBPAL_PLAYRANK_4) | oam2);
 	}
 }
+
+struct ProcScr CONST_DATA ProcScr_PlayRank[] = {
+	PROC_19,
+	PROC_CALL_ARG(_StartBgm, 53),
+	PROC_CALL(LockGame),
+	PROC_CALL(PlayRank_InitBgConf),
+	PROC_CALL(PlayRank_InitDisplay),
+	PROC_CALL(FadeInBlackSpeed08),
+	PROC_SLEEP(1),
+	PROC_CALL(StartGreenText),
+	PROC_CALL(func_fe6_0808F060),
+	PROC_REPEAT(PlayRank_Loop),
+	PROC_REPEAT(PlayRank_Idle),
+PROC_LABEL(0),
+	PROC_CALL(PlayRank_End1),
+	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_SLEEP(1),
+	PROC_CALL(PlayRank_PrepareEnd),
+	PROC_CALL(PlayRank_CheckSkipPassword),
+	PROC_CALL(NewPassword),
+PROC_LABEL(1),
+	PROC_CALL(StartFastFadeFromBlack),
+	PROC_REPEAT(WhileFadeExists),
+	PROC_CALL(UnlockGame),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_PlayRankTrail[] =
+{
+	PROC_19,
+	PROC_CALL_ARG(_StartBgm, 53),
+	PROC_CALL(LockGame),
+	PROC_CALL(PlayRank_InitBgConf),
+	PROC_CALL(PlayRankTrail_Init),
+	PROC_CALL(FadeInBlackSpeed08),
+	PROC_SLEEP(1),
+	PROC_CALL(StartGreenText),
+	PROC_REPEAT(PlayRankTrail_Loop),
+	PROC_CALL(PlayRank_End1),
+	PROC_CALL(FadeInBlackWithCallBack_Speed08),
+	PROC_SLEEP(1),
+	PROC_CALL(PlayRank_PrepareEnd),
+	PROC_CALL(StartFastFadeFromBlack),
+	PROC_REPEAT(WhileFadeExists),
+	PROC_CALL(UnlockGame),
+	PROC_END,
+};
 
 void PlayRankTrail_Init(ProcPtr proc)
 {

@@ -328,8 +328,8 @@ gUnk_Sio_085C99F8: @ 085C99F8
 KeyList_SioSecretTeam: @ 085C9A08
 	.short 0x20, 0x20, 0x10, 0x10, 0x200, 0x200, 0x8, -1
 
-	.global gSioKeyList_085C9A18
-gSioKeyList_085C9A18: @ 085C9A18
+	.global gSioKeyList_PasswordScreenEN
+gSioKeyList_PasswordScreenEN: @ 085C9A18
 	.incbin "fe6-base.gba", 0x5C9A18, (0x5C9AC8 - 0x5C9A18) @ length: 00B0
 
 	.global gSioTeamListConfigLut

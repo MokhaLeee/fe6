@@ -166,7 +166,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	orrs r3, r4
 	bl PutOamHiRam
 	adds r2, r5, #1
-	ldr r1, .L08090178 @ =gUnk_0868BA3C
+	ldr r1, .L08090178 @ =gEndingCredit_FontObjConf
 	adds r0, r1, #0
 	adds r0, #0xd0
 	ldrb r0, [r0]
@@ -178,7 +178,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	b .L080902A2
 	.align 2, 0
 .L08090174: .4byte Sprite_16x16
-.L08090178: .4byte gUnk_0868BA3C
+.L08090178: .4byte gEndingCredit_FontObjConf
 .L0809017C:
 	cmp r4, #0x60
 	bgt .L08090214
@@ -192,7 +192,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 .L0809018E:
 	cmp r3, #0
 	beq .L080901B4
-	ldr r0, .L080901B0 @ =gUnk_0868BA3C
+	ldr r0, .L080901B0 @ =gEndingCredit_FontObjConf
 	lsls r1, r4, #3
 	adds r0, r1, r0
 	ldrb r0, [r0, #1]
@@ -208,9 +208,9 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	subs r5, r5, r0
 	b .L080901C8
 	.align 2, 0
-.L080901B0: .4byte gUnk_0868BA3C
+.L080901B0: .4byte gEndingCredit_FontObjConf
 .L080901B4:
-	ldr r0, .L0809020C @ =gUnk_0868BA3C
+	ldr r0, .L0809020C @ =gEndingCredit_FontObjConf
 	lsls r2, r4, #3
 	adds r0, r2, r0
 	movs r1, #0x40
@@ -224,7 +224,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	adds r0, r5, #0
 	mov r1, ip
 	mov r2, sl
-	bl func_fe6_0808FF9C
+	bl EndingCredit_FindWordLen
 	adds r5, r0, #0
 	ldr r0, [sp]
 	adds r1, r5, #0
@@ -246,14 +246,14 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	orrs r3, r4
 	bl PutOamHiRam
 	adds r1, r5, #1
-	ldr r0, .L0809020C @ =gUnk_0868BA3C
+	ldr r0, .L0809020C @ =gEndingCredit_FontObjConf
 	adds r0, r6, r0
 	ldrb r3, [r0]
 	adds r5, r3, r1
 	ldrb r3, [r0, #2]
 	b .L0809029E
 	.align 2, 0
-.L0809020C: .4byte gUnk_0868BA3C
+.L0809020C: .4byte gEndingCredit_FontObjConf
 .L08090210: .4byte Sprite_16x16
 .L08090214:
 	subs r4, #0x61
@@ -266,7 +266,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 .L08090222:
 	cmp r3, #0
 	beq .L08090248
-	ldr r0, .L08090244 @ =gUnk_0868BA3C
+	ldr r0, .L08090244 @ =gEndingCredit_FontObjConf
 	lsls r1, r4, #3
 	adds r0, r1, r0
 	ldrb r0, [r0, #4]
@@ -282,9 +282,9 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	subs r5, r5, r0
 	b .L0809025C
 	.align 2, 0
-.L08090244: .4byte gUnk_0868BA3C
+.L08090244: .4byte gEndingCredit_FontObjConf
 .L08090248:
-	ldr r0, .L080902E0 @ =gUnk_0868BA3C
+	ldr r0, .L080902E0 @ =gEndingCredit_FontObjConf
 	lsls r2, r4, #3
 	adds r0, r2, r0
 	movs r1, #0x40
@@ -298,7 +298,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	adds r0, r5, #0
 	mov r1, ip
 	mov r2, sl
-	bl func_fe6_0808FF9C
+	bl EndingCredit_FindWordLen
 	adds r5, r0, #0
 	ldr r0, [sp]
 	adds r1, r5, #0
@@ -320,7 +320,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	orrs r3, r4
 	bl PutOamHiRam
 	adds r1, r5, #1
-	ldr r0, .L080902E0 @ =gUnk_0868BA3C
+	ldr r0, .L080902E0 @ =gEndingCredit_FontObjConf
 	adds r0, r6, r0
 	ldrb r3, [r0, #3]
 	adds r5, r3, r1
@@ -364,7 +364,7 @@ func_fe6_0808FFE0: @ 0x0808FFE0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080902E0: .4byte gUnk_0868BA3C
+.L080902E0: .4byte gEndingCredit_FontObjConf
 .L080902E4: .4byte Sprite_16x16
 .L080902E8: .4byte gCreditInfo
 .L080902EC: .4byte unk_02016A42

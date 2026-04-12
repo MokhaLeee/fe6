@@ -68,7 +68,7 @@ void ModifyPassword(void (*func)(int a, int b));
 // func_fe6_080837C8
 // func_fe6_080838FC
 // func_fe6_08083900
-// func_fe6_08083930
+void NewPassword(ProcPtr);
 void func_fe6_08083944(int a, int b);
 // func_fe6_08083A68
 int GetFlattenArrayOffset(int line, int col);

@@ -109,6 +109,7 @@ CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
 # ============
 
 PNG_FILES := $(shell find ./data -type f -name '*.png')
+TSA_FILES := $(shell find ./data -type f -name '*.tsa')
 GBAGFX := tools/gbagfx/gbagfx$(EXE)
 
 %.1bpp: %.png
@@ -141,6 +142,7 @@ GBAGFX := tools/gbagfx/gbagfx$(EXE)
 
 CLEAN_FILES += $(PNG_FILES:%.png=%.4bpp) $(PNG_FILES:%.png=%.4bpp.lz) $(PNG_FILES:%.png=%.4bpp.lz.o)
 CLEAN_FILES += $(PNG_FILES:%.png=%.gbapal) $(PNG_FILES:%.png=%.gbapal.lz)
+CLEAN_FILES += $(TSA_FILES:%.tsa=%.tsa.lz)
 
 # ==============
 # = Banim data =

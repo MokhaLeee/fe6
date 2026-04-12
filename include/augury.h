@@ -68,7 +68,7 @@ extern EWRAM_OVERLAY(0) u16 gPlayRankCurChapter;
 extern EWRAM_OVERLAY(0) u16 unk_02016A26;
 extern EWRAM_OVERLAY(0) u16 gPlayRankLayer;
 extern EWRAM_OVERLAY(0) u16 gPlayRankMissonObjSelect;
-extern EWRAM_OVERLAY(0) u8 unk_02016A2C;
+extern EWRAM_OVERLAY(0) u8 gPasswdScreenDisabled;
 extern EWRAM_OVERLAY(0) u8 gPlayRankMissionCompleted;
 extern EWRAM_OVERLAY(0) u16 gPlayRanks[7];
 

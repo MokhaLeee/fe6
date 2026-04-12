@@ -1353,8 +1353,8 @@ func_fe6_08083900: @ 0x08083900
 	.align 2, 0
 .L0808392C: .4byte gDispIo
 
-	thumb_func_start func_fe6_08083930
-func_fe6_08083930: @ 0x08083930
+	thumb_func_start NewPassword
+NewPassword: @ 0x08083930
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, .L08083940 @ =ProcScr_Prep_Password

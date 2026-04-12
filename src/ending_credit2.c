@@ -7,6 +7,17 @@
 #include "sprite.h"
 #include "ending.h"
 
+CONST_DATA struct EndingCreditWordLenConf gEndingCredit_WordLenConf[] = {
+	{ 'a', 't', 9 },
+	{ 't', 'a', 9 },
+	{ 'o', 'm', 7 },
+	{ 'I', 't', 6 },
+	{ 'T', 'o', 7 },
+	{ 'a', 'w', 9 },
+	{ 'r', 'u', 9 },
+	{}
+};
+
 // https://decomp.me/scratch/JebWS
 #if 0
 void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
@@ -63,7 +74,7 @@ void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
 					Sprite_16x16,
 					0x4000 | (0x2A0 + index));
 
-				x = gUnk_0868BA3C[26].unk_00 + x + 1;
+				x = gEndingCredit_FontObjConf[26].unk_00 + x + 1;
 			break;
 
 		default:
@@ -74,24 +85,24 @@ void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
 					chr = (index < 16) ? 0 : 0x20;
 
 					if (unk_r3 != 0) {
-						int tmp = (gUnk_0868BA3C[index].unk_01 + unk_r3) & 0xFF;
+						int tmp = (gEndingCredit_FontObjConf[index].unk_01 + unk_r3) & 0xFF;
 						
 						if (tmp < 0x80)
 							x = x - ((tmp & 0xF) >> 1);
 					} else {
-						int tmp = gUnk_0868BA3C[index].unk_01 & 0x40;
+						int tmp = gEndingCredit_FontObjConf[index].unk_01 & 0x40;
 
 						if (tmp != 0)
 							x = x - 2;
 					}
-					x = func_fe6_0808FF9C(x, unk_r12, ch);
+					x = EndingCredit_FindWordLen(x, unk_r12, ch);
 					PutOamHi(
 						func_fe6_0808FF04(proc, x, y),
 						y | oam0,
 						Sprite_16x16,
 						0x4000 | (0x280 + chr));
 
-					x = gUnk_0868BA3C[index].unk_02 + x + 1;
+					x = gEndingCredit_FontObjConf[index].unk_02 + x + 1;
 				} else {
 					int chr;
 
@@ -99,24 +110,24 @@ void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
 					chr = (index < 16) ? 0 : 0x20;
 
 					if (unk_r3 != 0) {
-						int tmp = (gUnk_0868BA3C[index].unk_01 + unk_r3) & 0xFF;
+						int tmp = (gEndingCredit_FontObjConf[index].unk_01 + unk_r3) & 0xFF;
 						
 						if (tmp < 0x80)
 							x = x - ((tmp & 0xF) >> 1);
 					} else {
-						int tmp = gUnk_0868BA3C[index].unk_01 & 0x40;
+						int tmp = gEndingCredit_FontObjConf[index].unk_01 & 0x40;
 
 						if (tmp != 0)
 							x = x - 2;
 					}
-					x = func_fe6_0808FF9C(x, unk_r12, ch);
+					x = EndingCredit_FindWordLen(x, unk_r12, ch);
 					PutOamHi(
 						func_fe6_0808FF04(proc, x, y),
 						y | oam0,
 						Sprite_16x16,
 						0x4000 | (0x200 + chr));
 
-					x = gUnk_0868BA3C[index].unk_02 + x + 1;
+					x = gEndingCredit_FontObjConf[index].unk_02 + x + 1;
 				}
 		}
 		unk_r12 = ch;
@@ -308,7 +319,7 @@ struct ProcScr CONST_DATA ProcScr_EndingCredit[] = {
 void EndingCredit_Init(struct ProcGameEnding *proc)
 {
 	proc->timer = 0;
-	InitBgs(BgConf_0868BA24);
+	InitBgs(BgConf_Ending);
 
 	SetDispEnable(1, 1, 0, 0, 1);
 	SetBlendConfig(BLEND_EFFECT_NONE, 0, 0, 0);
@@ -359,7 +370,7 @@ struct ProcScr CONST_DATA ProcScr_EndingCopyRight[] = {
 
 void EndingCopyRight_Init(struct ProcEndingCopyRight *proc)
 {
-	InitBgs(BgConf_0868BA24);
+	InitBgs(BgConf_Ending);
 	proc->timer = 0x230;
 
 	SetDispEnable(1, 0, 0, 0, 0);
@@ -419,7 +430,7 @@ void EndingStep1_Init(struct ProcGameEnding *proc)
 
 	proc->timer = 0;
 
-	InitBgs(BgConf_0868BA24);
+	InitBgs(BgConf_Ending);
 	SetDispEnable(1, 0, 0, 1, 0);
 	SetBlendAlpha(10, 0);
 	SetBlendTargetA(0, 0, 0, 1, 1);

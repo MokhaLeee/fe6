@@ -101,7 +101,7 @@ void GameCredit_Init(struct ProcGameCredit *proc);
 void EndingCredit_ReinitType2(struct ProcGameCredit *proc);
 void EndingCredit_ReinitType0(struct ProcGameCredit *proc);
 u8 func_fe6_0808FF04(struct ProcGameCredit *proc, int b, int c);
-int func_fe6_0808FF9C(int a, int b, int c);
+int EndingCredit_FindWordLen(int a, int b, int c);
 void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step);
 void EndingCredit_PutJobName(int step);
 
@@ -206,9 +206,9 @@ void EndingFacePosCtrl_Init(ProcPtr proc);
 void EndingFacePosCtrl_Loop(ProcPtr proc);
 void Ending_DrawPInfoTitle(u8 x, u8 y, struct Unit *unit, u8 type);
 
-extern CONST_DATA u16 BgConf_0868BA24[];
+extern CONST_DATA u16 BgConf_Ending[];
 
-struct UnkStruct_0868BA3C {
+struct EndingCreditFontObjConf {
 	u8 unk_00;
 	u8 unk_01;
 	u8 unk_02;
@@ -218,16 +218,16 @@ struct UnkStruct_0868BA3C {
 
 	u16 _pad_6;
 };
-extern CONST_DATA struct UnkStruct_0868BA3C gUnk_0868BA3C[];
+extern CONST_DATA struct EndingCreditFontObjConf gEndingCredit_FontObjConf[];
 
-struct UnkStruct_0868BB1C {
+struct EndingCreditWordLenConf {
 	u8 unk_0;
 	u8 unk_1;
 	u8 unk_2;
 	u8 unk_3;
 };
 
-extern CONST_DATA struct UnkStruct_0868BB1C gUnk_0868BB1C[];
+extern CONST_DATA struct EndingCreditWordLenConf gEndingCredit_WordLenConf[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB3C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB5C[];
 extern CONST_DATA struct ProcScr ProcScr_0868BB7C[];
