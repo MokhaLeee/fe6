@@ -772,9 +772,11 @@ SECTIONS
         . = ALIGN(4); src/hardware.o(.data);
         . = ALIGN(4); src/sound.o(.data);
         . = ALIGN(4); src/proc.o(.data);
-        . = ALIGN(4); data/data_dbgfont.o(.data);
+        . = ALIGN(4); src/debugtext_img.o(.data);
         . = ALIGN(4); src/text.o(.data);
-        . = ALIGN(4); data/data_textglyphs.o(.data);
+        . = ALIGN(4); src/textglyph_system.o(.data);
+        . = ALIGN(4); src/textglyph_special.o(.data);
+        . = ALIGN(4); src/textglyph_talk.o(.data);
         . = ALIGN(4); src/sprite.o(.data);
         . = ALIGN(4); src/face.o(.data);
         . = ALIGN(4); src/talk.o(.data);
