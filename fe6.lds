@@ -749,7 +749,7 @@ SECTIONS
         . = ALIGN(4); src/ending_pinfo.o(.rodata);
         . = ALIGN(4); src/monologue_img.o(.rodata);
         . = ALIGN(4); src/ending_monologue_img.o(.rodata);
-        . = ALIGN(4); data/data_wmarrow.o(.rodata);
+        . = ALIGN(4); src/trig_high_accuracy.o(.rodata);
         . = ALIGN(4); src/worldmapfx.o(.rodata);
         . = ALIGN(4); data/rodata_08354760.o(.rodata);
         . = ALIGN(4); src/opinfo_classdemo.o(.rodata);
