@@ -1,5 +1,7 @@
 #pragma once
 
+#define TERRAIN(x) (x)
+
 enum
 {
     // Terrain identifiers

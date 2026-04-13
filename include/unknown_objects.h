@@ -434,7 +434,7 @@ extern u8 const Img_EndingMonologueText_b[];
 extern u8 const Img_EndingMonologueText_c[];
 extern u8 const Img_EndingMonologueText_d[];
 extern u16 const Pal_EndingMonologueText[];
-extern const int WmArrowConf[];
+extern const int gSinLut_u32[20 * 0x100];
 // extern const ??? gUnk_08354728
 extern u16 const Pal_OpInfoViewLetters[];
 extern u8 const Img_OpInfoViewLettersB[];
