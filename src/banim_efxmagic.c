@@ -5947,3 +5947,582 @@ void NewEfxAureolaBG2(struct Anim *anim, int duration)
 	SpellFx_ClearBG1Position();
 	SpellFx_SetSomeColorEffect();
 }
+
+void EfxAureolaBG2_Loop(struct ProcEfxBG *proc)
+{
+	if (1 & proc->timer) {
+		int x = (proc->unk32 -= 12);
+		int y = (proc->unk3A += 12);
+
+		gDispIo.bg_off[BG_1].x = x;
+		gDispIo.bg_off[BG_1].y = y;
+
+		LZ77UnCompWram(Tsa_EfxAureolaBG2, gEkrTsaBuffer);
+		EfxTmCpyBG(gEkrTsaBuffer, gBg1Tm, 32, 32, BGPAL_EFX_SPELL_BG, VRAMOFF_BANIM_SPELL_BG / CHR_SIZE);
+		EnableBgSync(BG1_SYNC_BIT);
+	} else {
+		int x = (proc->unk34 += 8);
+		int y = (proc->unk3C += 8);
+
+		gDispIo.bg_off[BG_1].x = x;
+		gDispIo.bg_off[BG_1].y = y;
+
+		LZ77UnCompWram(Tsa_EfxAureolaBG2, gEkrTsaBuffer);
+		EfxTmCpyBgHFlip(gEkrTsaBuffer, gBg1Tm, 32, 32, BGPAL_EFX_SPELL_BG, VRAMOFF_BANIM_SPELL_BG / CHR_SIZE);
+		EnableBgSync(BG1_SYNC_BIT);
+	}
+
+	proc->timer++;
+	if (proc->timer == proc->terminator) {
+		SpellFx_ClearBG1();
+		SpellFx_ClearColorEffects();
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxAureolaBG2COL(struct Anim *anim, int duration)
+{
+	struct ProcEfxBGCOL *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxAureolaBG2COL, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->timer2 = 0;
+	proc->terminator = duration;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxAureolaBG2COL;
+	proc->pal = Pal_EfxAureolaBG2;
+
+	SpellFx_RegisterBgPal(Pal_EfxAureolaBG2, 0x20);
+}
+
+void EfxAureolaBG2COL_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		const u16 *pal = proc->pal;
+
+		SpellFx_RegisterBgPal(pal + PAL_OFFSET(ret), 0x20);
+	}
+
+	proc->timer2++;
+	if (proc->timer2 == proc->terminator) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxAureolaOBJ(struct Anim *anim, int duration)
+{
+	struct ProcEfxMagic *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxAureolaOBJ, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->step = duration;
+	proc->unk30 = 0;
+	proc->unk44 = 10;
+	proc->unk48 = 0;
+
+
+	SpellFx_RegisterObjPal(Pal_EfxAureolaOBJ, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxAureolaOBJ, 0x1000);
+}
+
+void EfxAureolaOBJ_Loop(struct ProcEfxMagic *proc)
+{
+	int i;
+
+	proc->timer++;
+
+	if (proc->timer == proc->step) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+		return;
+	}
+
+	i = ++proc->unk30;
+	if (i == proc->unk44) {
+		proc->unk30 = 0;
+		proc->unk44 = 10;
+		NewEfxAureolaOBJCtrl(proc->anim, proc->unk48++);
+	}
+}
+
+void NewEfxAureolaOBJCtrl(struct Anim *anim, int unused)
+{
+	int rn1, rn2;
+	struct Anim *anim2;
+	struct ProcEfxAureolaOBJ *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxAureolaOBJCtrl, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->step = BanimSpawnRandB(0x1E) + 0x8C;
+
+	rn1 = BanimSpawnRandB(0x1E);
+	rn2 = BanimSpawnRandB(0x1E);
+	proc->unk32 = rn1 + 0x46;
+	proc->unk34 = rn2 + 0x28;
+	proc->unk3A = 0xFFEC;
+	proc->unk3C = 0xA0;
+
+	if (gEkrDistanceType == EKR_DISTANCE_CLOSE) {
+		proc->unk32 = rn1 + 0x5E;
+		proc->unk34 = rn2 + 0x40;
+	}
+
+	if (GetAnimPosition(anim) == POS_R) {
+		proc->unk32 = 0xF0 - proc->unk32;
+		proc->unk34 = 0xF0 - proc->unk34;
+	}
+
+	switch (BanimSpawnRandB(2)) {
+	case 0:
+		anim2 = BasCreate(AnimScr_EfxAureolaOBJCtrl1, 0x78);
+		break;
+
+	case 1:
+		anim2 = BasCreate(AnimScr_EfxAureolaOBJCtrl2, 0x78);
+		break;
+
+	default:
+		anim2 = BasCreate(AnimScr_EfxAureolaOBJCtrl3, 0x78);
+		break;
+	}
+	proc->anim2 = anim2;
+	if (anim2 == NULL) {
+		gEfxBgSemaphore--;
+		Proc_End(proc);
+		return;
+	}
+
+	anim2->oam2 = 0x2440;
+	anim2->xPosition = 0x100;
+	anim2->yPosition = 0x100;
+}
+
+void EfxAureolaOBJCtrl_Loop(struct ProcEfxAureolaOBJ *proc)
+{
+	u16 x, y;
+	struct Anim *anim = proc->anim2;
+
+	if (proc->timer > proc->step) {
+		gEfxBgSemaphore--;
+		BasRemove(anim);
+		Proc_Break(proc);
+		return;
+	}
+
+	x = Interpolate(0, proc->unk32, proc->unk34, proc->timer, proc->step);
+	y = Interpolate(0, proc->unk3A, proc->unk3C, proc->timer, proc->step);
+
+	anim->xPosition = x;
+	anim->yPosition = y;
+	proc->timer++;
+}
+
+void NewEfxAureolaOBJ2(struct Anim *anim, int duration)
+{
+	struct Anim *anim2, *anim3;
+	struct ProcEfxAureolaOBJ *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxAureolaOBJ2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->step = 0;
+	proc->unk30 = duration;
+	proc->unk32 = 0x5B;
+	proc->unk34 = 0x3F;
+	proc->unk3A = 0xFFF6;
+	proc->unk3C = 0x64;
+
+	if (gEkrDistanceType == EKR_DISTANCE_CLOSE) {
+		proc->unk32 = 0x73;
+		proc->unk34 = 0x57;
+	}
+
+	if (GetAnimPosition(anim) == POS_R) {
+		proc->unk32 = 0xF0 - proc->unk32;
+		proc->unk34 = 0xF0 - proc->unk34;
+	}
+
+	anim2 = EfxCreateFrontAnim(anim,
+		AnimScr_EfxAureolaOBJ2_1, AnimScr_EfxAureolaOBJ2_1,
+		AnimScr_EfxAureolaOBJ2_1, AnimScr_EfxAureolaOBJ2_1);
+	proc->anim2 = anim2;
+	anim2->xPosition = proc->unk32;
+	anim2->yPosition = proc->unk3A;
+
+	anim3 = EfxCreateFrontAnim(anim,
+		AnimScr_EfxAureolaOBJ2_2, AnimScr_EfxAureolaOBJ2_2,
+		AnimScr_EfxAureolaOBJ2_2, AnimScr_EfxAureolaOBJ2_2);
+	proc->anim3 = anim3;
+	anim3->xPosition = proc->unk32;
+	anim3->yPosition = proc->unk3A;
+}
+
+void EfxAureolaOBJ2_Loop(struct ProcEfxAureolaOBJ *proc)
+{
+	int x, y;
+	struct Anim *anim2 = proc->anim2;
+	struct Anim *anim3 = proc->anim3;
+
+	anim2->xPosition = anim3->xPosition = Interpolate(0, proc->unk32, proc->unk34, proc->step, proc->unk30);
+	anim2->yPosition = anim3->yPosition = Interpolate(0, proc->unk3A, proc->unk3C, proc->step, proc->unk30);
+
+	proc->timer++;
+	if (proc->timer == 0x11) {
+		proc->timer = 0;
+		anim3->scrCur = anim3->script = AnimScr_EfxAureolaOBJ2_2;
+		anim2->timer = 0;
+	}
+
+	proc->step++;
+	if (proc->step > proc->unk30) {
+		BasRemove(anim2);
+		BasRemove(anim3);
+        gEfxBgSemaphore--;
+		Proc_Break(proc);
+		return;
+	}
+}
+
+void NewEfxAureolaOBJ3(struct Anim *anim)
+{
+	struct ProcEfxAureolaOBJ *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxAureolaOBJ3, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->step = 0;
+	proc->unk44 = 1;
+	proc->unk48 = 0;
+}
+
+void EfxAureolaOBJ3_Loop(struct ProcEfxAureolaOBJ *proc)
+{
+	int i;
+
+	proc->timer++;
+
+	if (proc->timer == 0x2F) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+		return;
+	}
+
+	i = ++proc->step;
+	if (i == proc->unk44) {
+		proc->step = 0;
+		proc->unk44 = 1;
+		NewEfxAureolaOBJ3Ctrl(proc->anim, proc->unk48++);
+	}
+}
+
+void NewEfxAureolaOBJ3Ctrl(struct Anim *anim, int unused)
+{
+	u32 rn, tmp1, tmp2;
+	struct Anim *anim2;
+	struct ProcEfxAureolaOBJ *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxAureolaOBJ3Ctrl, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->step = 20;
+
+	rn = BanimSpawnRandB(0x78);
+	proc->unk32 = rn - 0x3C;
+	proc->unk34 = rn + 0xB4;
+
+	tmp1 = (proc->unk32 * 3) >> 1;
+	tmp2 = (proc->unk34 * 3) >> 1;
+
+	proc->unk3A = tmp1 + 0xC0;
+	proc->unk3C = tmp2 - 0x148;
+
+	switch (BanimSpawnRandB(2)) {
+	case 1:
+		anim2 = BasCreate(AnimScr_EfxAureolaOBJ3_1, 0x78);
+		break;
+
+	default:
+		anim2 = BasCreate(AnimScr_EfxAureolaOBJ3_2, 0x78);
+		break;
+	}
+	proc->anim2 = anim2;
+	if (anim2 == NULL) {
+		gEfxBgSemaphore--;
+		Proc_End(proc);
+		return;
+	}
+
+	anim2->oam2 = 0x2440;
+	anim2->xPosition = 0x100;
+	anim2->yPosition = 0x100;
+}
+
+void EfxAureolaOBJ3Ctrl_Loop(struct ProcEfxAureolaOBJ *proc)
+{
+	u16 x, y;
+	struct Anim *anim = proc->anim2;
+
+	if (proc->timer > proc->step) {
+		gEfxBgSemaphore--;
+		BasRemove(anim);
+		Proc_Break(proc);
+		return;
+	}
+
+	x = Interpolate(0, proc->unk32, proc->unk34, proc->timer, proc->step);
+	y = Interpolate(0, proc->unk3A, proc->unk3C, proc->timer, proc->step);
+
+	anim->xPosition = x;
+	anim->yPosition = y;
+	proc->timer++;
+}
+
+/**
+ * AnimApocalypse
+ */
+void StartSpellAnimApocalypse(struct Anim *anim)
+{
+	struct ProcEfxMagic *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxApocalypse, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
+
+void EfxApocalypse_Loop(struct ProcEfx *proc)
+{
+	struct Anim *anim_other = GetAnimAnotherSide(proc->anim);
+	int duration = EfxGetCamMovDuration();
+
+	proc->timer++;
+
+	if (proc->timer == 1)
+		NewEfxFarAttackWithDistance(proc->anim, -1);
+
+	if (proc->timer == duration + 1) {
+		NewEfxApocalypseBG(anim_other, 0x1D1);
+		NewEfxApocalypseBGCOL(anim_other);
+		NewEfxApocalypseBGCtrl(anim_other);
+		NewEfxApocalypseBgFlash1(anim_other, 0x18B, 10);
+		NewEfxApocalypseBgFlash2(anim_other, 0x19F, 20);
+		NewEfxApocalypseOBJ(anim_other);
+		NewEfxApocalypseBGCOL2(anim_other, 0x1D1);
+		NewEfxApocalypseDummy(
+			anim_other,
+			NewEfxRestRST(anim_other, 0x1D1, 20, 0x80, 3),
+			0x8C);
+		NewEfxRestWINH_(anim_other, 0x1D1, EfxRestWINH_DefaultHblank);
+		PlaySFX(SONG_104, 0x100, 0x78, 0);
+		return;
+	}
+
+	if (proc->timer == duration + 0x92) {
+        PlaySFX(SONG_105, 0x100, 0x78, 0);
+		return;
+	}
+
+	if (proc->timer == duration + 0x1CC) {
+		NewEfxWhiteIN(anim_other, 10, 20);
+		return;
+	}
+
+	if (proc->timer == duration + 0x1D5) {
+		NewEfxApocalypseBG2(anim_other, 0xA0);
+		NewEfxALPHA(anim_other, 0x6E, 0x28, 0x10, 0, 0);
+		NewEfxApocalypseOBJ2(anim_other, 0x8C, 0x18);
+		NewEfxApocalypseOBJ3(anim_other, 0x3C);
+		NewEfxMagicQUAKE(anim_other, 0x5A);
+		PlaySFX(SONG_106, 0x100, 0x78, 0);
+		return;
+	}
+
+	if (proc->timer == duration + 0x20D) {
+		anim_other->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+		StartBattleAnimHitEffectsDefault(anim_other, proc->hitted);
+
+		if (!proc->hitted)
+			EfxPlayHittedSFX(anim_other);
+
+		return;
+	}
+
+	if (proc->timer == duration + 0x271)
+		return;
+
+	if (proc->timer == duration + 0x27B) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+		Proc_Break(proc);
+		return;
+	}
+}
+
+void NewEfxApocalypseBG(struct Anim *anim, int duration)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxApocalypseBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = duration;
+
+	SpellFx_RegisterBgGfx(Img_EfxApocalypseBG, 0x1080);
+	SpellFx_ClearBG1();
+	LZ77UnCompWram(Tsa_EfxApocalypseBG, gEkrTsaBuffer);
+	EfxTmCpyBG(gEkrTsaBuffer, gBg1Tm, 0x20, 0x14, BGPAL_EFX_SPELL_BG, VRAMOFF_BANIM_SPELL_BG / CHR_SIZE);
+
+	SpellFx_SetSomeColorEffect();
+	SetWinEnable(0, 0, 0);
+}
+
+void EfxApocalypseBG_Loop(struct ProcEfxBG *proc)
+{
+	if (++proc->timer == proc->terminator) {
+		SpellFx_ClearBG1();
+		gEfxBgSemaphore--;
+		SpellFx_ClearColorEffects();
+		Proc_End(proc);
+	}
+}
+
+void NewEfxApocalypseBGCtrl(struct Anim *anim)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseBGCtrl, PROC_TREE_3);
+
+	SetBgOffset(BG_1, 0, 0x10);
+	proc->timer = 0;
+	proc->terminator = 0;
+	proc->unk30 = 0;
+}
+
+void EfxApocalypseBGCtrl_Loop(struct ProcEfxBG *proc)
+{
+	u16 ret = Interpolate(INTERPOLATE_LINEAR, 0, 0xFF, proc->unk30, 0x96);
+	int tmp1;
+	i16 tmp2;
+	i16 pos;
+
+	if (proc->unk30 <= 0x96)
+		proc->unk30++;
+
+	tmp1 = proc->terminator & 0xFF;
+	tmp2 = ret;
+
+	pos = PosArray_EfxApocalypseBGCtrl[tmp1] * tmp2;
+    pos = pos >> 8;
+	gDispIo.bg_off[BG_1].x = pos;
+
+	pos = PosArray_EfxApocalypseBGCtrl[tmp1 + 0x40] * tmp2;
+    pos = pos >> 8;
+	gDispIo.bg_off[BG_1].y = pos + 0x10;
+
+	proc->terminator += 2;
+
+	if (!(1 & proc->timer))
+		SetBgOffset(BG_1, 0, 0x10);
+
+	proc->timer++;
+	if (proc->timer == 0x140) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseBGCOL(struct Anim *anim)
+{
+	struct ProcEfxBGCOL *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseBGCOL, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->timer2 = 0x10;
+
+	SpellFx_RegisterBgPal(Pal_EfxApocalypse_0817B418, 0x20);
+	EfxPalBlackInOut(gPal, BGPAL_EFX_SPELL_BG, 1, 0x10);
+	EnablePalSync();
+}
+
+void EfxApocalypseBGCOL_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret = Interpolate(0, 0x10, 0, proc->timer, proc->timer2);
+
+	SpellFx_RegisterBgPal(Pal_EfxApocalypse_0817B418, 0x20);
+	EfxPalBlackInOut(gPal, BGPAL_EFX_SPELL_BG, 1, ret);
+	EnablePalSync();
+
+	proc->timer++;
+	if (proc->timer > proc->timer2) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseOBJ(struct Anim *anim)
+{
+	u32 i;
+	struct ProcEfxOBJ *proc;
+
+	for (i = 0; i < 8; i++) {
+		proc = SpawnProc(ProcScr_EfxApocalypseOBJ, PROC_TREE_3);
+		proc->anim = anim;
+		proc->unk44 = i;
+	}
+
+	SpellFx_RegisterObjPal(Pal_EfxApocalypseOBJ, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxApocalypseOBJ, 0x800);
+}
+
+void EfxApocalypseOBJ_Loop1(struct ProcEfxOBJ *proc)
+{
+	struct Anim *sub_anim;
+	const u32 *scr;
+
+	gEfxBgSemaphore++;
+
+	proc->timer = 0;
+	proc->terminator = 0;
+	proc->unk30 = proc->unk44 << 0xD;
+
+	scr = AnimArray_EfxApocalypseOBJ[proc->unk44];
+	sub_anim = EfxCreateFrontAnim(proc->anim, scr, scr, scr, scr);
+	proc->anim2 = sub_anim;
+
+	sub_anim->oam2 &= 0xF3FF;
+	sub_anim->oam2 |= 0x0400;
+
+	sub_anim->xPosition = 0x100;
+	sub_anim->yPosition = 0x100;
+
+	proc->unk32 = 0x78;
+	proc->unk3A = 0x40;
+
+	Proc_Break(proc);
+}
