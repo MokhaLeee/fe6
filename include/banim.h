@@ -1383,68 +1383,94 @@ void NewEfxDivineOBJ(struct Anim *anim);
 void StartSpellAnimAureola(struct Anim *anim);
 // EfxAureola_Loop
 void NewEfxAureolaBG(struct Anim *anim);
-// EfxAureolaBG_Loop
+void EfxAureolaBG_Loop(struct ProcEfxBG *proc);
 void NewEfxAureolaBG2(struct Anim *anim, int duration);
 // EfxAureolaBG2_Loop
 void NewEfxAureolaBG2COL(struct Anim *anim, int);
 // EfxAureolaBG2COL_Loop
 void NewEfxAureolaOBJ(struct Anim *anim, int);
 // EfxAureolaOBJ_Loop
-void NewEfxAureolaOBJCtrl(struct Anim *anim);
+
+struct ProcEfxAureolaOBJ {
+    PROC_HEADER;
+
+    /* 2B */ STRUCT_PAD(0x29, 0x2C);
+    /* 2C */ i16 timer;
+    /* 2E */ i16 step;
+    /* 30 */ i16 unk30;
+    /* 32 */ i16 unk32;
+    /* 34 */ i16 unk34;
+    /* 36 */ i16 unk36;
+    /* 38 */ i16 unk38;
+    /* 3A */ i16 unk3A;
+    /* 3C */ i16 unk3C;
+    /* 3E */ STRUCT_PAD(0x3E, 0x44);
+    /* 44 */ u32 unk44;
+    /* 48 */ u32 unk48;
+    /* 4C */ u32 frame;
+    /* 50 */ u32 speed;
+    /* 54 */ i16 * unk54;
+    /* 58 */ i16 ** unk58;
+    /* 5C */ struct Anim *anim;
+    /* 60 */ struct Anim *anim2;
+    /* 64 */ struct Anim *anim3;
+};
+
+void NewEfxAureolaOBJCtrl(struct Anim *anim, int);
 // EfxAureolaOBJCtrl_Loop
 void NewEfxAureolaOBJ2(struct Anim *anim, int);
 // EfxAureolaOBJ2_Loop
 void NewEfxAureolaOBJ3(struct Anim *anim);
 // EfxAureolaOBJ3_Loop
-void NewEfxAureolaOBJ3Ctrl(struct Anim *anim);
+void NewEfxAureolaOBJ3Ctrl(struct Anim *anim, int);
 // EfxAureolaOBJ3Ctrl_Loop
 void StartSpellAnimApocalypse(struct Anim *anim);
 // EfxApocalypse_Loop
-// NewEfxApocalypseBG
+void NewEfxApocalypseBG(struct Anim *anim, int);
 // EfxApocalypseBG_Loop
-// NewEfxApocalypseBGCtrl
+void NewEfxApocalypseBGCtrl(struct Anim *anim);
 // EfxApocalypseBGCtrl_Loop
-// NewEfxApocalypseBGCOL
+void NewEfxApocalypseBGCOL(struct Anim *anim);
 // EfxApocalypseBGCOL_Loop
-// NewEfxApocalypseOBJ
+void NewEfxApocalypseOBJ(struct Anim *anim);
 // EfxApocalypseOBJ_Loop1
 // EfxApocalypseOBJ_Loop2
 // EfxApocalypseOBJ_Loop3
 // EfxApocalypseOBJ_Loop4
-// NewEfxApocalypseBGCOL2
+void NewEfxApocalypseBGCOL2(struct Anim *anim, int);
 // EfxApocalypseBGCOL2_Loop
-// NewEfxApocalypseDummy
+void NewEfxApocalypseDummy(struct Anim *anim, ProcPtr, int);
 // EfxApocalypseDummy_Loop
-// NewEfxApocalypseBgFlash1
+void NewEfxApocalypseBgFlash1(struct Anim *anim, int, int);
 // EfxApocalypseBgFlash1_Loop
-// NewEfxApocalypseBgFlash2
+void NewEfxApocalypseBgFlash2(struct Anim *anim, int, int);
 // EfxApocalypseBgFlash2_Loop1
 // EfxApocalypseBgFlash2_Loop2
-// NewEfxApocalypseBG2
+void NewEfxApocalypseBG2(struct Anim *anim, int);
 // EfxApocalypseBG2_Loop
-// NewEfxApocalypseOBJ2
+void NewEfxApocalypseOBJ2(struct Anim *anim, int, int);
 // EfxApocalypseOBJ2_Loop1
 // EfxApocalypseOBJ2_Loop2
-// NewEfxApocalypseOBJ3
+void NewEfxApocalypseOBJ3(struct Anim *anim, int);
 // EfxApocalypseOBJ3_Loop
 // NewEfxApocalypseOBJ3RND
 // EfxApocalypseOBJ3RND_Loop
 // StartSpellAnimEclipse
 // EfxHazymoon_Loop
-// NewEfxHazymoonBG1
-// NewEfxHazymoonBG2
-// NewEfxHazymoonBG3
+void NewEfxHazymoonBG1(struct Anim *anim);
+void NewEfxHazymoonBG2(struct Anim *anim);
+void NewEfxHazymoonBG3(struct Anim *anim);
 // EfxHazymoonBG_Loop
-// NewEfxHazymoonOBJ2
+void NewEfxHazymoonOBJ2(struct Anim *anim);
 // EfxHazymoonOBJ2_OnEnd
 // EfxHazymoonOBJ2_Loop1
 // EfxHazymoonOBJ2_Loop2
 // EfxHazymoonOBJ2_Loop3
-// NewEfxHazymoonOBJ3
+void NewEfxHazymoonOBJ3(struct Anim *anim);
 // EfxHazymoonOBJ3_Loop
-// NewEfxHazymoonOBJ3RND
+void NewEfxHazymoonOBJ3RND(struct Anim *anim, int x, int y);
 // EfxHazymoonOBJ3RND_Loop
-// StartSpellAnimFenrir
+void StartSpellAnimFenrir(struct Anim *anim);
 // EfxFenrir_Loop
 // NewEfxFenrirBG
 // EfxFenrirBG_OnEnd
@@ -2369,7 +2395,7 @@ extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBGCtrl[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBGCOL[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ[];
-// ??? AnimArray_EfxApocalypseOBJ[];
+extern CONST_DATA u32 *AnimArray_EfxApocalypseOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBGCOL2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseDummy[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseBgFlash1[];
@@ -3364,12 +3390,12 @@ extern u16 Tsa_EfxDivineBG2_0817A984[];
 extern u16 Tsa_EfxDivineBG2_0817AA20[];
 extern u16 Img_EfxDivineOBJ[];
 extern u16 Pal_EfxDivineOBJ[];
-// extern ??? gUnk_0817AC4C
-extern u16  Pal_EfxApocalypse_0817B418[];
-// extern ??? gUnk_0817B438
-extern u16  Img_EfxApocalypseOBJ[];
-extern u16  Pal_EfxApocalypseOBJ[];
-// extern ??? Pals_EfxApocalypseBGCOL2
+extern u8 Img_EfxApocalypseBG[];
+extern u16 Pal_EfxApocalypse_0817B418[];
+extern u16 Tsa_EfxApocalypseBG[];
+extern u16 Img_EfxApocalypseOBJ[];
+extern u16 Pal_EfxApocalypseOBJ[];
+extern u16 Pals_EfxApocalypseBGCOL2[];
 extern u16 Img_EfxApocalypseBG2_0817BBD4[];
 extern u16 Img_EfxApocalypseBG2_0817D4E0[];
 extern u16 Img_EfxApocalypseBG2_0817ED8C[];

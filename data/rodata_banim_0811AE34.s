@@ -2032,16 +2032,16 @@ Img_EfxDivineOBJ: @ 0817AAC0
 Pal_EfxDivineOBJ: @ 0817AC2C
 	.incbin "fe6-base.gba", 0x17AC2C, (0x17AC4C - 0x17AC2C) @ length: 0020
 
-	.global gUnk_0817AC4C
-gUnk_0817AC4C: @ 0817AC4C
+	.global Img_EfxApocalypseBG
+Img_EfxApocalypseBG: @ 0817AC4C
 	.incbin "fe6-base.gba", 0x17AC4C, (0x17B418 - 0x17AC4C) @ length: 07CC
 
 	.global Pal_EfxApocalypse_0817B418
 Pal_EfxApocalypse_0817B418: @ 0817B418
 	.incbin "fe6-base.gba", 0x17B418, (0x17B438 - 0x17B418) @ length: 0020
 
-	.global gUnk_0817B438
-gUnk_0817B438: @ 0817B438
+	.global Tsa_EfxApocalypseBG
+Tsa_EfxApocalypseBG: @ 0817B438
 	.incbin "fe6-base.gba", 0x17B438, (0x17B8D0 - 0x17B438) @ length: 0498
 
 	.global Img_EfxApocalypseOBJ
