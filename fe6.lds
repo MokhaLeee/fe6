@@ -876,7 +876,7 @@ SECTIONS
         . = ALIGN(4); src/manim.o(.data);
         . = ALIGN(4); src/scanline.o(.data);
         . = ALIGN(4); src/eventinfo.o(.data);
-        . = ALIGN(4); data/data_66618C.o(.data);
+        . = ALIGN(4); src/eventinfo_data.o(.data);
 
         . = ALIGN(4); src/chapterinfo/event_info/ch0.o(.data);
         . = ALIGN(4); src/chapterinfo/event_info/ch1.o(.data);

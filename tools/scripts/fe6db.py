@@ -32,7 +32,7 @@ def name_to_display(name: str) -> str:
 ALL_IIDS = [1 + x for x in range(0x7F)]
 ALL_PIDS = [1 + x for x in range(0xE2)]
 ALL_JIDS = [1 + x for x in range(0x4B)]
-ALL_CHAPTERS = [x for x in range(0x2D)]
+ALL_CHAPTERS = [x for x in range(0x2F)]
 
 ITEM_NAME_DICT = {
     0x01: "Iron Sword",
@@ -403,7 +403,8 @@ CHAPTER_OVERRIDE_DICT = {
     0x29: 'CHAPTER_TRIAL_B',
     0x2A: 'CHAPTER_TRIAL_C',
     0x2B: 'CHAPTER_TRIAL_D',
-    0x2C: 'CHAPTER_TRIAL_E'}
+    0x2C: 'CHAPTER_TRIAL_E',
+    0x2D: 'TALK_CHAPTER_ANY'}
 
 def iid_name(iid: int) -> str:
     if iid in ITEM_IID_OVERRIDE_DICT:

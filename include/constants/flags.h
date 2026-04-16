@@ -1,5 +1,7 @@
 #pragma once
 
+#define EVT_FLAG(x) (x)
+
 enum
 {
     FLAG_1 = 1,
