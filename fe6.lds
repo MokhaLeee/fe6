@@ -712,6 +712,7 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrtriangle_img.o(.rodata);
         . = ALIGN(4); src/banim_bg_img.o(.rodata);
         . = ALIGN(4); data/rodata_chapterinfo1.o(.rodata);
+        . = ALIGN(4); src/unitsprite_img.o(.rodata);
         . = ALIGN(4); data/tilesetanim.o(.rodata);
         . = ALIGN(4); src/gamedata.o(.rodata);
         . = ALIGN(4); src/gamedatainfo.o(.rodata);
@@ -868,7 +869,9 @@ SECTIONS
         . = ALIGN(4); src/gamedata.o(.data);
         . = ALIGN(4), data/data-portrait.o(.data);
         . = ALIGN(4); src/gamedatainfo.o(.data);
-        . = ALIGN(4), data/data-game-info.o(.data);
+        . = ALIGN(4); src/unitsprite_data.o(.data);
+        . = ALIGN(4); src/spellassoc_data.o(.data);
+        . = ALIGN(4); src/support_bonus.o(.data);
         . = ALIGN(4), src/ending_credit_info.o(.data);
         . = ALIGN(4), data/chapterinfo.o(.data);
         . = ALIGN(4); src/mu.o(.data);

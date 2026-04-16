@@ -418,4 +418,4 @@ gUnk_0824B0B8:	@ 0x0824B0B8
 
 	.global gUnk_0824D240
 gUnk_0824D240:	@ 0x0824D240
-	.incbin "fe6-base.gba", 0x24D240, 0x2563F4 - 0x24D240
+	.incbin "fe6-base.gba", 0x24D240, 0x2504B4 - 0x24D240
