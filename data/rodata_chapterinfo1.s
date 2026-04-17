@@ -124,9 +124,9 @@ gUnk_082376C4:	@ 0x082376C4
 gUnk_082384F8:	@ 0x082384F8
 	.incbin "fe6-base.gba", 0x2384F8, 0x23956C - 0x2384F8
 
-	.global gUnk_0823956C
-gUnk_0823956C:	@ 0x0823956C
-	.incbin "fe6-base.gba", 0x23956C, 0x23AB80 - 0x23956C
+	.global MapAsset01_Tsa
+MapAsset01_Tsa:	@ 0x0823956C
+	.incbin "data/mapassets/MapAsset01_Tsa.tsa.lz"
 
 	.global gUnk_0823AB80
 gUnk_0823AB80:	@ 0x0823AB80
@@ -224,8 +224,8 @@ gUnk_0823C700:	@ 0x0823C700
 gUnk_0823C840:	@ 0x0823C840
 	.incbin "fe6-base.gba", 0x23C840, 0x23C980 - 0x23C840
 
-	.global gUnk_0823C980
-gUnk_0823C980:	@ 0x0823C980
+	.global MapAsset01_Pals
+MapAsset01_Pals:	@ 0x0823C980
 	.incbin "fe6-base.gba", 0x23C980, 0x23CAC0 - 0x23C980
 
 	.global gUnk_0823CAC0
@@ -404,18 +404,18 @@ gUnk_08247230:	@ 0x08247230
 gUnk_082474C8:	@ 0x082474C8
 	.incbin "fe6-base.gba", 0x2474C8, 0x247718 - 0x2474C8
 
-	.global gUnk_08247718
-gUnk_08247718:	@ 0x08247718
-	.incbin "fe6-base.gba", 0x247718, 0x2478F0 - 0x247718
+	.global MapTsa_Chapter1
+MapTsa_Chapter1:	@ 0x08247718
+	.incbin "data/mapassets/MapTsa_Chapter1.tsa.lz"
 
-	.global gUnk_082478F0
-gUnk_082478F0:	@ 0x082478F0
-	.incbin "fe6-base.gba", 0x2478F0, 0x24B0B8 - 0x2478F0
+	.global MapAsset01_Img1
+MapAsset01_Img1:	@ 0x082478F0
+	.incbin "data/mapassets/MapAsset01_Img1.4bpp.lz"
 
 	.global gUnk_0824B0B8
 gUnk_0824B0B8:	@ 0x0824B0B8
 	.incbin "fe6-base.gba", 0x24B0B8, 0x24D240 - 0x24B0B8
 
-	.global gUnk_0824D240
-gUnk_0824D240:	@ 0x0824D240
-	.incbin "fe6-base.gba", 0x24D240, 0x2504B4 - 0x24D240
+	.global MapAsset01_Img2
+MapAsset01_Img2:	@ 0x0824D240
+	.incbin "data/mapassets/MapAsset01_Img2.4bpp.lz"

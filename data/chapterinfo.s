@@ -7,11 +7,11 @@ ChapterInfoTable: @ 086637A4
     .global ChapterAssets
 ChapterAssets: @ 08664398
 	.4byte 0x00000000
-	.4byte gUnk_082478F0
-	.4byte gUnk_0824D240
-	.4byte gUnk_0823C980
-	.4byte gUnk_0823956C
-	.4byte gUnk_08247718
+	.4byte MapAsset01_Img1
+	.4byte MapAsset01_Img2
+	.4byte MapAsset01_Pals
+	.4byte MapAsset01_Tsa
+	.4byte MapTsa_Chapter1
 	.4byte TilesetImgAnim_085C788C
 	.4byte MapChange_Ch0
 	.4byte ChapterEventInfo_Unk_086676F0

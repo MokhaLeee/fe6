@@ -736,7 +736,6 @@ SECTIONS
         . = ALIGN(4); src/prepmenuitem.o(.rodata);
         . = ALIGN(4); src/prepscreenfx.o(.rodata);
         . = ALIGN(4); src/prep_subitemscreen.o(.rodata);
-        . = ALIGN(4); data/rodata_327254.o(.rodata);
         . = ALIGN(4); src/prep_subscreen_discard1.o(.rodata);
         . = ALIGN(4); src/save_core.o(.rodata);
         . = ALIGN(4); src/save_multiarena.o(.rodata);

@@ -1377,7 +1377,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl PutUiWindowFrame
 	ldr r4, .L08080B24 @ =gPrepTexts1
 	ldr r5, .L08080B28 @ =gBg0Tm+0x148
-	ldr r0, .L08080B2C @ =gUnk_083272CC
+	ldr r0, .L08080B2C @ =String_Prep_083272CC
 	str r0, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1387,7 +1387,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r4, #0
 	adds r0, #8
 	adds r1, r5, #6
-	ldr r2, .L08080B30 @ =gUnk_083272D4
+	ldr r2, .L08080B30 @ =String_Prep_083272D4
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0
@@ -1396,14 +1396,14 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, #0x10
 	adds r1, r5, #0
 	adds r1, #0xc2
-	ldr r2, .L08080B34 @ =gUnk_083272E0
+	ldr r2, .L08080B34 @ =String_Prep_Yes
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0
 	bl PrepPutText
 	adds r4, #0x18
 	adds r5, #0xca
-	ldr r0, .L08080B38 @ =gUnk_083272E8
+	ldr r0, .L08080B38 @ =String_Prep_No
 	str r0, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1415,10 +1415,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 .L08080B20: .4byte gPlaySt
 .L08080B24: .4byte gPrepTexts1
 .L08080B28: .4byte gBg0Tm+0x148
-.L08080B2C: .4byte gUnk_083272CC
-.L08080B30: .4byte gUnk_083272D4
-.L08080B34: .4byte gUnk_083272E0
-.L08080B38: .4byte gUnk_083272E8
+.L08080B2C: .4byte String_Prep_083272CC
+.L08080B30: .4byte String_Prep_083272D4
+.L08080B34: .4byte String_Prep_Yes
+.L08080B38: .4byte String_Prep_No
 .L08080B3C:
 	ldr r0, .L08080B5C @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
