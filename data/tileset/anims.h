@@ -86,7 +86,7 @@ extern u16 const Pal_TilesetAnim_085C7B5C_3[];
 extern u16 const Pal_TilesetAnim_085C7B5C_4[];
 extern u16 const Pal_TilesetAnim_085C7B5C_5[];
 
-struct TsImgAnim CONST_DATA TilesetImgAnim_085C788C[] =
+struct TsImgAnim CONST_DATA MapAsset01_Anims[] =
 {
     { 28, 0x1000, Img_TilesetAnim_085C788C_0 },
     { 28, 0x1000, Img_TilesetAnim_085C788C_1 },

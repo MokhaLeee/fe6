@@ -52,8 +52,8 @@ gUnk_08219DEC:	@ 0x08219DEC
 gUnk_0821F654:	@ 0x0821F654
 	.incbin "fe6-base.gba", 0x21F654, 0x222628 - 0x21F654
 
-	.global gUnk_08222628
-gUnk_08222628:	@ 0x08222628
+	.global MapAsset02_Img
+MapAsset02_Img:	@ 0x08222628
 	.incbin "fe6-base.gba", 0x222628, 0x227A24 - 0x222628
 
 	.global gUnk_08227A24
@@ -124,9 +124,9 @@ gUnk_082376C4:	@ 0x082376C4
 gUnk_082384F8:	@ 0x082384F8
 	.incbin "fe6-base.gba", 0x2384F8, 0x23956C - 0x2384F8
 
-	.global MapAsset01_Tsa
-MapAsset01_Tsa:	@ 0x0823956C
-	.incbin "data/mapassets/MapAsset01_Tsa.tsa.lz"
+	.global MapAsset01_TsaConf
+MapAsset01_TsaConf:	@ 0x0823956C
+	.incbin "data/mapassets/MapAsset01_TsaConf.tsa.lz"
 
 	.global gUnk_0823AB80
 gUnk_0823AB80:	@ 0x0823AB80
@@ -164,9 +164,9 @@ gUnk_0823B440:	@ 0x0823B440
 gUnk_0823B580:	@ 0x0823B580
 	.incbin "fe6-base.gba", 0x23B580, 0x23B6C0 - 0x23B580
 
-	.global gUnk_0823B6C0
-gUnk_0823B6C0:	@ 0x0823B6C0
-	.incbin "fe6-base.gba", 0x23B6C0, 0x23B800 - 0x23B6C0
+	.global MapAsset01_NightPal
+MapAsset01_NightPal:	@ 0x0823B6C0
+	.incbin "data/mapassets/MapAsset01_Pal2_ConfImg.gbapal", 0, 0x140
 
 	.global gUnk_0823B800
 gUnk_0823B800:	@ 0x0823B800
@@ -220,13 +220,14 @@ gUnk_0823C5C0:	@ 0x0823C5C0
 gUnk_0823C700:	@ 0x0823C700
 	.incbin "fe6-base.gba", 0x23C700, 0x23C840 - 0x23C700
 
-	.global gUnk_0823C840
-gUnk_0823C840:	@ 0x0823C840
+	.global MapAsset02_Pal
+MapAsset02_Pal:	@ 0x0823C840
 	.incbin "fe6-base.gba", 0x23C840, 0x23C980 - 0x23C840
+	@.incbin "data/mapassets/MapAsset02_ConfImg.gbapal", 0, 0x140
 
-	.global MapAsset01_Pals
-MapAsset01_Pals:	@ 0x0823C980
-	.incbin "fe6-base.gba", 0x23C980, 0x23CAC0 - 0x23C980
+	.global MapAsset01_Pal
+MapAsset01_Pal:	@ 0x0823C980
+	.incbin "data/mapassets/MapAsset01_ConfImg.gbapal", 0, 0x140
 
 	.global gUnk_0823CAC0
 gUnk_0823CAC0:	@ 0x0823CAC0
