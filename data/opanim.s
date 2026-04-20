@@ -13,18 +13,18 @@ gUnk_086916E5: @ 086916E5
 Msgs_OpAnim_08691738: @ 08691738
 	.incbin "fe6-base.gba", 0x691738, (0x691778 - 0x691738) @ length: 0040
 
-	.global gUnk_08691778
-gUnk_08691778: @ 08691778
+	.global gOpAnimSubtitleConf
+gOpAnimSubtitleConf: @ 08691778
 	.incbin "fe6-base.gba", 0x691778, (0x6917D8 - 0x691778) @ length: 0060
 
-	.global ProcScr_086917D8
-ProcScr_086917D8: @ 086917D8
+	.global ProcScr_OpAnimSubtitleDisp
+ProcScr_OpAnimSubtitleDisp: @ 086917D8
 	PROC_MARK 9
-	PROC_CALL func_fe6_08098BB4
-	PROC_REPEAT func_fe6_08098BBC
+	PROC_CALL OpAnimSubtitleDisp_Init
+	PROC_REPEAT OpAnimSubtitleDisp_Wait
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098BDC
-	PROC_REPEAT func_fe6_08098C00
+	PROC_CALL OpAnimSubtitleDisp_Setup
+	PROC_REPEAT OpAnimSubtitleDisp_Loop
 	PROC_END
 
 	.global ProcScr_Unk_08691810
@@ -45,8 +45,8 @@ ProcScr_Unk_08691840: @ 08691840
 	PROC_REPEAT func_fe6_08098EC8
 	PROC_END
 
-	.global ProcScr_08691858
-ProcScr_08691858: @ 08691858
+	.global NewOpAnimSubtitleIntroDisp
+NewOpAnimSubtitleIntroDisp: @ 08691858
 	PROC_MARK 9
 	PROC_SLEEP 0
 	PROC_CALL func_fe6_08098F68

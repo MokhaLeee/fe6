@@ -20699,10 +20699,10 @@ func_fe6_0803F694: @ 0x0803F694
 func_fe6_0803F6C8: @ 0x0803F6C8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L0803F708 @ =gUnk_082DD268
+	ldr r0, .L0803F708 @ =Img_ManimWarp
 	ldr r1, .L0803F70C @ =0x06004400
 	bl Decompress
-	ldr r0, .L0803F710 @ =gUnk_082DD4C8
+	ldr r0, .L0803F710 @ =Pal_ManimWarp
 	movs r1, #0x60
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -20727,9 +20727,9 @@ func_fe6_0803F6C8: @ 0x0803F6C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0803F708: .4byte gUnk_082DD268
+.L0803F708: .4byte Img_ManimWarp
 .L0803F70C: .4byte 0x06004400
-.L0803F710: .4byte gUnk_082DD4C8
+.L0803F710: .4byte Pal_ManimWarp
 
 	thumb_func_start func_fe6_0803F714
 func_fe6_0803F714: @ 0x0803F714
@@ -20746,7 +20746,7 @@ func_fe6_0803F714: @ 0x0803F714
 	str r4, [sp]
 	movs r4, #6
 	str r4, [sp, #4]
-	ldr r4, .L0803F7D0 @ =gUnk_082DD4E8
+	ldr r4, .L0803F7D0 @ =TsaRef_ManimWarp
 	str r4, [sp, #8]
 	ldr r6, .L0803F7D4 @ =gUnk_Sio_085CAE9C
 	adds r5, r7, #0
@@ -20823,7 +20823,7 @@ func_fe6_0803F714: @ 0x0803F714
 	.align 2, 0
 .L0803F7C8: .4byte gBg2Tm
 .L0803F7CC: .4byte 0x00003220
-.L0803F7D0: .4byte gUnk_082DD4E8
+.L0803F7D0: .4byte TsaRef_ManimWarp
 .L0803F7D4: .4byte gUnk_Sio_085CAE9C
 .L0803F7D8: .4byte gDispIo
 .L0803F7DC: .4byte 0x0000FFE0

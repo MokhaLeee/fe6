@@ -160,3 +160,18 @@ void StartBmSupplyForDrop(struct Unit *unit, ProcPtr parent)
 	proc->units[0] = unit;
 	proc->unk4B = 1;
 }
+
+const char String_Prep_0832726C[] = "属性";
+const char String_Prep_08327274[] = "威力";
+const char String_Prep_0832727C[] = "命中";
+const char String_Prep_08327284[] = "必殺";
+const char String_Prep_0832728C[] = "重さ";
+const char String_Prep_08327294[] = "何もありません";
+const char Msg_Prep_Supply[] = "輸送隊";
+const char String_Prep_083272AC[] = "あずける";
+const char String_Prep_083272B8[] = "うけとる";
+const char String_Prep_083272C4[] = "すてる";
+const char String_Prep_083272CC[] = "本当に";
+const char String_Prep_083272D4[] = "すてますか";
+const char String_Prep_Yes[] = TEXT("はい", "Yes");
+const char String_Prep_No[] = TEXT("いいえ", "No");

@@ -4,21 +4,60 @@
 # split data
 
 import os, sys, subprocess
+import symbols
+
+# ========================================================================
+elf = "fe6.elf"
+with open(elf, 'rb') as f:
+    _symbols = { addr: name for addr, name in symbols.from_elf(f) }
+
+def try_get_ptr_symbol(val):
+    is_symbol = False
+
+    ptr = val
+
+    if ptr > 0x08000000 and ptr < 0x09000000:
+        is_symbol = True
+    if ptr > 0x02000000 and ptr < 0x02040000:
+        is_symbol = True
+    if ptr > 0x03000000 and ptr < 0x03008000:
+        is_symbol = True
+
+    if ptr not in _symbols:
+        is_symbol = False
+
+    if is_symbol == True:
+        return _symbols[ptr]
+    else:
+        return None
+# ========================================================================
 
 def generate_unsymboled_const_data(prefix):
-    list = {}
-
     _identifier = ""
     start_offse = 0
-
+    
+    ptrs = []
     for line in sys.stdin.readlines():
         if _identifier != "" and _identifier not in line:
             continue
 
         ptr = eval(line[start_offse:start_offse+10])
-        list[ptr] = f"{prefix}_{ptr:08X}"
+        ptrs.append(ptr)
 
-    return sorted(list.values())
+    sorted_ptrs = sorted(ptrs)
+
+    list = {}
+    sorted_list = []
+    for ptr in sorted_ptrs:
+        symbol = try_get_ptr_symbol(ptr)
+        if symbol == None:
+            symbol = f"{prefix}_{ptr:08X}"
+
+        if ptr not in list:
+            list[ptr] = symbol
+            sorted_list.append(symbol)
+
+    return sorted_list # sorted(list.values())
 
 def write_data(fs, fh, symbol, start, end):
     # fh.write(f'// ??? {symbol}\n')

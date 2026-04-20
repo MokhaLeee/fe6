@@ -2,128 +2,8 @@
 
 	.syntax unified
 
-	thumb_func_start OpAnim_PutSubtitle
-OpAnim_PutSubtitle: @ 0x08098AFC
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	adds r7, r0, #0
-	ldr r1, .L08098B74 @ =Msgs_OpAnim_08691738
-	lsls r0, r7, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bl DecodeMsg
-	adds r4, r0, #0
-	ldr r2, .L08098B78 @ =gUnk_08691778
-	lsls r1, r7, #1
-	adds r1, r1, r7
-	lsls r1, r1, #2
-	adds r0, r2, #0
-	adds r0, #8
-	adds r0, r1, r0
-	ldr r6, [r0]
-	adds r1, r1, r2
-	ldrh r5, [r1]
-	movs r0, #0
-	mov r8, r0
-	cmp r4, #0
-	beq .L08098B66
-	mov sb, r1
-	ldr r1, .L08098B7C @ =gUnk_08691498
-	mov sl, r1
-.L08098B38:
-	adds r0, r7, #0
-	adds r1, r5, #0
-	mov r2, r8
-	adds r3, r4, #0
-	bl func_fe6_08098B80
-	adds r0, r4, #0
-	bl func_fe6_08099358
-	adds r4, r0, #0
-	adds r5, #0x14
-	mov r1, sb
-	ldrh r0, [r1, #2]
-	cmp r0, #0
-	beq .L08098B62
-	mov r1, sl
-	ldr r0, [r1]
-	ldrh r1, [r6]
-	adds r0, r1, r0
-	add r8, r0
-	adds r6, #2
-.L08098B62:
-	cmp r4, #0
-	bne .L08098B38
-.L08098B66:
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08098B74: .4byte Msgs_OpAnim_08691738
-.L08098B78: .4byte gUnk_08691778
-.L08098B7C: .4byte gUnk_08691498
-
-	thumb_func_start func_fe6_08098B80
-func_fe6_08098B80: @ 0x08098B80
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	mov r8, r0
-	adds r6, r1, #0
-	adds r4, r2, #0
-	adds r5, r3, #0
-	ldr r0, .L08098BB0 @ =ProcScr_086917D8
-	movs r1, #3
-	bl SpawnProc
-	adds r1, r0, #0
-	adds r1, #0x44
-	strh r4, [r1]
-	str r5, [r0, #0x4c]
-	str r6, [r0, #0x30]
-	mov r1, r8
-	str r1, [r0, #0x54]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08098BB0: .4byte ProcScr_086917D8
-
-	thumb_func_start func_fe6_08098BB4
-func_fe6_08098BB4: @ 0x08098BB4
-	adds r0, #0x44
-	movs r1, #0
-	strh r1, [r0]
-	bx lr
-
-	thumb_func_start func_fe6_08098BBC
-func_fe6_08098BBC: @ 0x08098BBC
-	push {lr}
-	adds r2, r0, #0
-	adds r1, r2, #0
-	adds r1, #0x44
-	ldrh r0, [r1]
-	subs r0, #1
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bgt .L08098BD6
-	adds r0, r2, #0
-	bl Proc_Break
-.L08098BD6:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_08098BDC
-func_fe6_08098BDC: @ 0x08098BDC
+	thumb_func_start OpAnimSubtitleDisp_Setup
+OpAnimSubtitleDisp_Setup: @ 0x08098BDC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x4c]
@@ -142,8 +22,8 @@ func_fe6_08098BDC: @ 0x08098BDC
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08098C00
-func_fe6_08098C00: @ 0x08098C00
+	thumb_func_start OpAnimSubtitleDisp_Loop
+OpAnimSubtitleDisp_Loop: @ 0x08098C00
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r6, [r5, #0x4c]
@@ -151,7 +31,7 @@ func_fe6_08098C00: @ 0x08098C00
 	lsls r0, r1, #1
 	adds r0, r0, r1
 	lsls r0, r0, #2
-	ldr r1, .L08098C38 @ =gUnk_08691778
+	ldr r1, .L08098C38 @ =gOpAnimSubtitleConf
 	adds r7, r0, r1
 	adds r1, r5, #0
 	adds r1, #0x64
@@ -173,9 +53,9 @@ func_fe6_08098C00: @ 0x08098C00
 	adds r6, #1
 	b .L08098C80
 	.align 2, 0
-.L08098C38: .4byte gUnk_08691778
+.L08098C38: .4byte gOpAnimSubtitleConf
 .L08098C3C:
-	ldr r0, .L08098C74 @ =ProcScr_08691858
+	ldr r0, .L08098C74 @ =NewOpAnimSubtitleIntroDisp
 	movs r1, #3
 	bl SpawnProc
 	adds r4, r0, #0
@@ -201,7 +81,7 @@ func_fe6_08098C00: @ 0x08098C00
 	adds r6, #2
 	b .L08098C80
 	.align 2, 0
-.L08098C74: .4byte ProcScr_08691858
+.L08098C74: .4byte NewOpAnimSubtitleIntroDisp
 .L08098C78:
 	adds r0, r5, #0
 	bl Proc_Break
@@ -225,12 +105,12 @@ func_fe6_08098C90: @ 0x08098C90
 	thumb_func_start func_fe6_08098C94
 func_fe6_08098C94: @ 0x08098C94
 	push {lr}
-	ldr r0, .L08098CA0 @ =ProcScr_08691858
+	ldr r0, .L08098CA0 @ =NewOpAnimSubtitleIntroDisp
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098CA0: .4byte ProcScr_08691858
+.L08098CA0: .4byte NewOpAnimSubtitleIntroDisp
 
 	thumb_func_start func_fe6_08098CA4
 func_fe6_08098CA4: @ 0x08098CA4
@@ -238,13 +118,13 @@ func_fe6_08098CA4: @ 0x08098CA4
 	ldr r0, .L08098CB8 @ =0x02002800
 	movs r1, #0
 	str r1, [r0]
-	ldr r0, .L08098CBC @ =ProcScr_08691858
+	ldr r0, .L08098CBC @ =NewOpAnimSubtitleIntroDisp
 	bl Proc_BreakEach
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L08098CB8: .4byte 0x02002800
-.L08098CBC: .4byte ProcScr_08691858
+.L08098CBC: .4byte NewOpAnimSubtitleIntroDisp
 
 	thumb_func_start func_fe6_08098CC0
 func_fe6_08098CC0: @ 0x08098CC0
@@ -601,7 +481,7 @@ func_fe6_08098F68: @ 0x08098F68
 	ldrh r0, [r5]
 	bl func_fe6_08099424
 	ldrh r0, [r5]
-	ldr r3, .L08098FA0 @ =gUnk_08691778
+	ldr r3, .L08098FA0 @ =gOpAnimSubtitleConf
 	ldr r2, [r4, #0x54]
 	lsls r1, r2, #1
 	adds r1, r1, r2
@@ -617,7 +497,7 @@ func_fe6_08098F68: @ 0x08098F68
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08098FA0: .4byte gUnk_08691778
+.L08098FA0: .4byte gOpAnimSubtitleConf
 .L08098FA4: .4byte 0xFFFFF000
 
 	thumb_func_start func_fe6_08098FA8
@@ -998,13 +878,13 @@ func_fe6_08099194: @ 0x08099194
 	thumb_func_start func_fe6_080992B8
 func_fe6_080992B8: @ 0x080992B8
 	push {lr}
-	ldr r0, .L080992C8 @ =ProcScr_08691858
+	ldr r0, .L080992C8 @ =NewOpAnimSubtitleIntroDisp
 	ldr r1, .L080992CC @ =func_fe6_080992D0
 	bl Proc_ForEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080992C8: .4byte ProcScr_08691858
+.L080992C8: .4byte NewOpAnimSubtitleIntroDisp
 .L080992CC: .4byte func_fe6_080992D0
 
 	thumb_func_start func_fe6_080992D0
@@ -1092,8 +972,8 @@ func_fe6_08099328: @ 0x08099328
 	bx r1
 	.align 2, 0
 
-	thumb_func_start func_fe6_08099358
-func_fe6_08099358: @ 0x08099358
+	thumb_func_start OpAnimSubtitleStringAdvance
+OpAnimSubtitleStringAdvance: @ 0x08099358
 	adds r1, r0, #0
 	b .L08099370
 .L0809935C:
@@ -2043,7 +1923,7 @@ func_fe6_08099A90: @ 0x08099A90
 	adds r1, #0x64
 	movs r0, #0
 	strh r0, [r1]
-	ldr r0, .L08099ACC @ =gUnk_08375908
+	ldr r0, .L08099ACC @ =SpriteAnim_OpAnim_08375908
 	movs r1, #0xd
 	bl StartSpriteAnim
 	str r0, [r4, #0x50]
@@ -2054,7 +1934,7 @@ func_fe6_08099A90: @ 0x08099A90
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099ACC: .4byte gUnk_08375908
+.L08099ACC: .4byte SpriteAnim_OpAnim_08375908
 
 	thumb_func_start func_fe6_08099AD0
 func_fe6_08099AD0: @ 0x08099AD0
@@ -2065,7 +1945,7 @@ func_fe6_08099AD0: @ 0x08099AD0
 	ldrh r0, [r4]
 	cmp r0, #2
 	bne .L08099AEC
-	ldr r0, .L08099B0C @ =gUnk_083758A8
+	ldr r0, .L08099B0C @ =Pal_OpAnim_083758A8
 	ldr r1, .L08099B10 @ =gUnk_086914A0
 	ldr r2, [r1]
 	movs r1, #0x11
@@ -2087,7 +1967,7 @@ func_fe6_08099AD0: @ 0x08099AD0
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099B0C: .4byte gUnk_083758A8
+.L08099B0C: .4byte Pal_OpAnim_083758A8
 .L08099B10: .4byte gUnk_086914A0
 .L08099B14: .4byte Pal_OpAnim_08375888
 
@@ -2665,7 +2545,7 @@ func_fe6_08099F9C: @ 0x08099F9C
 func_fe6_08099FA8: @ 0x08099FA8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, .L08099FCC @ =gUnk_0837AAE8
+	ldr r0, .L08099FCC @ =SpriteAnim_OpAnim_0837AAE8
 	movs r1, #2
 	bl StartSpriteAnim
 	str r0, [r4, #0x50]
@@ -2681,7 +2561,7 @@ func_fe6_08099FA8: @ 0x08099FA8
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08099FCC: .4byte gUnk_0837AAE8
+.L08099FCC: .4byte SpriteAnim_OpAnim_0837AAE8
 
 	thumb_func_start func_fe6_08099FD0
 func_fe6_08099FD0: @ 0x08099FD0

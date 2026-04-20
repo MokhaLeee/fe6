@@ -209,27 +209,27 @@ void PrepUnit_DrawLeftUnitInfo(struct Unit * unit, u16 * tm)
 
 void PrepScreen_ReloadLeftUnitInfo(struct Unit * unit)
 {
-	u16 const * tiles = gUnk_08320FCE;
+	u16 const * tiles = Tsa_PrepLeftUnitInfo;
 	int ix, iy;
 
-	TmFillRect(gUnk_0200E8A4, 29, 29, 0);
+	TmFillRect(gPrepTsaBuf, 29, 29, 0);
 
 	for (iy = 0; iy < 8; iy++)
 		for (ix = 0; ix < 13; ix++)
-			gUnk_0200E8A4[TM_OFFSET(ix, iy + 10)] = tiles[ix + (7 - iy) * 13] + TILEREF(0, 1);
+			gPrepTsaBuf[TM_OFFSET(ix, iy + 10)] = tiles[ix + (7 - iy) * 13] + TILEREF(0, 1);
 
 	ClearText(&gPrepScreenText_LeftPersonName);
 
-	PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(9, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
-	PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(5, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_A);
-	PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(6, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_B);
-	PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(5, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_LV_A);
-	PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(6, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_LV_B);
-	PutSpecialChar(gUnk_0200E8A4 + TM_OFFSET(9, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_EXP_E);
+	PutSpecialChar(gPrepTsaBuf + TM_OFFSET(9, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
+	PutSpecialChar(gPrepTsaBuf + TM_OFFSET(5, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_A);
+	PutSpecialChar(gPrepTsaBuf + TM_OFFSET(6, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_B);
+	PutSpecialChar(gPrepTsaBuf + TM_OFFSET(5, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_LV_A);
+	PutSpecialChar(gPrepTsaBuf + TM_OFFSET(6, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_LV_B);
+	PutSpecialChar(gPrepTsaBuf + TM_OFFSET(9, 1), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_EXP_E);
 
-	PrepUnit_DrawLeftUnitInfo(unit, gUnk_0200E8A4);
+	PrepUnit_DrawLeftUnitInfo(unit, gPrepTsaBuf);
 
-	PutFaceChibi(GetUnitFid(unit), gUnk_0200E8A4 + TM_OFFSET(1, 1),
+	PutFaceChibi(GetUnitFid(unit), gPrepTsaBuf + TM_OFFSET(1, 1),
 		BGCHR_PREPMENU_230, BGPAL_PREPMENU_2, FALSE);
 }
 
@@ -263,7 +263,7 @@ void UpdatePrepUnitPinfoAsync(struct PrepMenuProc * parent)
 
 void func_fe6_08079804(struct PrepMenuProc *proc)
 {
-	u16 const * tiles = gUnk_08320FCE;
+	u16 const * tiles = Tsa_PrepLeftUnitInfo;
 	int ix, iy;
 
 	PutSpecialChar(gBg0Tm + TM_OFFSET(9, 3), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
@@ -698,11 +698,11 @@ void PrepMenu_InitScreenExt(struct PrepMenuProc *proc)
 	InitTextDb(&gPrepScreenText_PickLeftBar, 9);
 	InitText(&gPrepScreenText_LeftPersonName, 7);
 
-	Decompress(gUnk_0831A268, OBJ_VRAM0 + CHR_SIZE * OBCHR_PREPMENU_240);
+	Decompress(Img_Prep_0831A268, OBJ_VRAM0 + CHR_SIZE * OBCHR_PREPMENU_240);
 	ApplyObPalettes(Pal_Sio_0831AABC, OBPAL_PREPMENU_2, 2);
-	Decompress(gUnk_08326930, OBJ_VRAM0 + CHR_SIZE * OBCHR_PREPMENU_380);
-	ApplyObPalettes(gUnk_08326E64, OBPAL_PREPMENU_6, 4);
-	ApplyObPalette(gUnk_08327108, OBPAL_PREPMENU_4);
+	Decompress(Img_Prep_08326930, OBJ_VRAM0 + CHR_SIZE * OBCHR_PREPMENU_380);
+	ApplyObPalettes(Pal_Prep_08326E64, OBPAL_PREPMENU_6, 4);
+	ApplyObPalette(Pal_Prep_08327108, OBPAL_PREPMENU_4);
 
 	for (i = 0; i < 10; i++) {
 		gPal[OBPAL_OFFSET(OBPAL_PREPMENU_6) + 5 + i] =
@@ -726,7 +726,7 @@ void PrepMenu_InitScreenExt(struct PrepMenuProc *proc)
 	SetBgOffset(1, 0, 0);
 	SetBgOffset(2, 0, proc->yDiff_cur - 0x28);
 
-	Decompress(Img_SpinningArrow, (void *) VRAM + CHR_SIZE * BGCHR_PREPMENU_240);
+	Decompress(Img_VeriticalSpinningArrow, (void *) VRAM + CHR_SIZE * BGCHR_PREPMENU_240);
 	ApplyBgPalette(Pal_SpinningArrow, BGPAL_PREPMENU_F);
 
 	ResetPrepMenuItem();
@@ -762,8 +762,8 @@ void PrepMenu_InitScreen(struct PrepMenuProc *proc)
 		proc->procbg = func_fe6_08082560(proc);
 	}
 
-	Decompress(gUnk_08321FA4, gUnk_020104A4);
-	ApplyPalette(gUnk_08326910, BGPAL_PREPMENU_E);
+	Decompress(Img_PrepWorldMap, gUnk_020104A4);
+	ApplyPalette(Pal_PrepWorldMap, BGPAL_PREPMENU_E);
 
 	for (i = 0; i < 12; i++) {
 		CpuFastCopy(
@@ -783,7 +783,7 @@ void PrepScreen_DrawScreenInfo(struct PrepMenuProc *proc)
 	int i, j;
 
 	if (proc->not_in_upper_menu == 0) {
-		u16 const * tiles = gUnk_08326EE6;
+		u16 const * tiles = Tsa_Prep_08326EE6;
 
 		SetBgChrOffset(2, 0x8000);
 		SetBgOffset(2, 0, 0);
@@ -1361,8 +1361,8 @@ void func_fe6_0807B4C0(struct PrepMenuProc *proc)
 	{
 		for (j = 0; j != scroll_timer; j++)
 		{
-			gBg1Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(j - scroll_timer + 13, i)];
-			gBg0Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(j - scroll_timer + 13, i + 10)];
+			gBg1Tm[TM_OFFSET(j, i)] = gPrepTsaBuf[TM_OFFSET(j - scroll_timer + 13, i)];
+			gBg0Tm[TM_OFFSET(j, i)] = gPrepTsaBuf[TM_OFFSET(j - scroll_timer + 13, i + 10)];
 		}
 	}
 
@@ -1431,7 +1431,7 @@ asm("\
 	mov ip, r1\n\
 	cmp r7, #0\n\
 	beq .L0807B56C			@ if (_scroll_timer != 0)\n\
-	ldr r3, .L0807B59C @ =gUnk_0200E8A4\n\
+	ldr r3, .L0807B59C @ =gPrepTsaBuf\n\
 	adds r2, r0, #0\n\
 	adds r2, #0xa\n\
 	lsls r2, r2, #6			@ r2 = (i + 10) << 6\n\
@@ -1445,9 +1445,9 @@ asm("\
 	adds r6, r7, #0			@ for (j = _scroll_timer; j != 0; j--)\n\
 	lsls r1, r1, #1 		@ off2 * 2\n\
 	adds r0, r4, r3\n\
-	adds r5, r1, r0			@ r5 = src2 = gUnk_0200E8A4 + (i << 6) + (-_scroll_timer + 13) * 2\n\
+	adds r5, r1, r0			@ r5 = src2 = gPrepTsaBuf + (i << 6) + (-_scroll_timer + 13) * 2\n\
 	adds r2, r2, r3\n\
-	adds r2, r1, r2			@ r2 = src1 = gUnk_0200E8A4 + (i + 10) << 6\n\
+	adds r2, r1, r2			@ r2 = src1 = gPrepTsaBuf + (i + 10) << 6\n\
 .L0807B550:\n\
 	mov r0, sl\n\
 	adds r1, r4, r0			@ r1 = gBg1Tm + (r4) + j\n\
@@ -1485,7 +1485,7 @@ asm("\
 	.align 2, 0\n\
 .L0807B594: .4byte gBg0Tm\n\
 .L0807B598: .4byte gBg1Tm\n\
-.L0807B59C: .4byte gUnk_0200E8A4\n\
+.L0807B59C: .4byte gPrepTsaBuf\n\
 	.syntax divided\n\
 ");
 }
@@ -1513,8 +1513,8 @@ void func_fe6_0807B5A0(struct PrepMenuProc *proc)
 		{
 			if (i < r8)
 			{
-				gBg1Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(scroll_timer, i)];
-				gBg0Tm[TM_OFFSET(j, i)] = gUnk_0200E8A4[TM_OFFSET(scroll_timer, i + 10)];
+				gBg1Tm[TM_OFFSET(j, i)] = gPrepTsaBuf[TM_OFFSET(scroll_timer, i)];
+				gBg0Tm[TM_OFFSET(j, i)] = gPrepTsaBuf[TM_OFFSET(scroll_timer, i + 10)];
 			}
 			else
 			{
@@ -1590,8 +1590,8 @@ asm("\
 	adds r3, r2, #1\n\
 	mov ip, r3\n\
 	adds r0, r7, r1\n\
-	ldr r3, .L0807B610 @ =gUnk_0200E8A4\n\
-	adds r4, r0, r3							@ r4 = gUnk_0200E8A4 + (x = scroll_timer, y = j)\n\
+	ldr r3, .L0807B610 @ =gPrepTsaBuf\n\
+	adds r4, r0, r3							@ r4 = gPrepTsaBuf + (x = scroll_timer, y = j)\n\
 	ldr r0, .L0807B614 @ =gBg0Tm\n\
 	adds r3, r1, r0							@ r3 = gBg0Tm + (x = )\n\
 	ldr r0, .L0807B618 @ =gBg1Tm\n\
@@ -1599,7 +1599,7 @@ asm("\
 	adds r0, r2, #0\n\
 	adds r0, #0xa\n\
 	lsls r0, r0, #6\n\
-	ldr r2, .L0807B610 @ =gUnk_0200E8A4\n\
+	ldr r2, .L0807B610 @ =gPrepTsaBuf\n\
 	adds r0, r0, r2\n\
 	adds r2, r7, r0\n\
 .L0807B604:\n\
@@ -1609,7 +1609,7 @@ asm("\
 	strh r0, [r1]\n\
 	b .L0807B622\n\
 	.align 2, 0\n\
-.L0807B610: .4byte gUnk_0200E8A4\n\
+.L0807B610: .4byte gPrepTsaBuf\n\
 .L0807B614: .4byte gBg0Tm\n\
 .L0807B618: .4byte gBg1Tm\n\
 .L0807B61C:\n\

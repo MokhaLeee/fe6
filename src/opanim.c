@@ -4,6 +4,7 @@
 #include "event.h"
 #include "sound.h"
 #include "util.h"
+#include "msg.h"
 #include "titlescreen.h"
 #include "gamecontroller.h"
 #include "constants/songs.h"
@@ -283,4 +284,48 @@ void OpAnim_SetupGlyph(int pal_id)
 	ApplyPalette(Pal_OpAnimGlyphs + PAL_OFFSET(pal_id), 0x10 + OBPAL_OPANIM_0F);
 	func_fe6_0809937C();
 	PutImg_OpAnimGlyphs();
+}
+
+void OpAnim_PutSubtitle(int idx)
+{
+	char *str = DecodeMsg(Msgs_OpAnim_08691738[idx]);
+	u16 *unk_08 = gOpAnimSubtitleConf[idx].unk_08;
+	int unk_00 = gOpAnimSubtitleConf[idx].unk_00;
+	int unk_r8 = 0;
+
+	while (str != NULL) {
+		NewOpAnimSubtitleDisp(idx, unk_00, unk_r8, str);
+
+		str = OpAnimSubtitleStringAdvance(str);
+		unk_00 += 20;
+
+		if (gOpAnimSubtitleConf[idx].unk_02 != 0) {
+			unk_r8 += gUnk_08691498 + *unk_08;
+			unk_08++;
+		}
+	}
+}
+
+void NewOpAnimSubtitleDisp(int idx, int a, int delay, char *str)
+{
+	struct ProcOpAnimSubtitleDisp *proc;
+
+	proc = SpawnProc(ProcScr_OpAnimSubtitleDisp, PROC_TREE_3);
+	proc->delay_timer = delay;
+	proc->str = str;
+	proc->unk_30 = a;
+	proc->index = idx;
+}
+
+void OpAnimSubtitleDisp_Init(struct ProcOpAnimSubtitleDisp *proc)
+{
+	proc->delay_timer = 0;
+}
+
+void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc)
+{
+	proc->delay_timer--;
+
+	if (proc->delay_timer <= 0)
+		Proc_Break(proc);
 }

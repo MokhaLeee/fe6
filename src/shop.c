@@ -1028,7 +1028,7 @@ void DisplayShopUiArrows(void)
 
 void UnpackUiVArrowGfx(int chr, int pal)
 {
-	Decompress(Img_SpinningArrow, OBJ_VRAM0 + (OAM2_CHR(chr) << 5));
+	Decompress(Img_VeriticalSpinningArrow, OBJ_VRAM0 + (OAM2_CHR(chr) << 5));
 	ApplyPalette(Pal_SpinningArrow, pal + 0x10);
 }
 

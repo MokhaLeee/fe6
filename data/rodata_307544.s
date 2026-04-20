@@ -36,8 +36,8 @@ gUnk_083080AC: @ 083080AC
 gUnk_083080D0: @ 083080D0
 	.incbin "fe6-base.gba", 0x3080D0, (0x3087C8 - 0x3080D0) @ length: 06F8
 
-	.global Pal_Unk_083087C8
-Pal_Unk_083087C8: @ 083087C8
+	.global Pal_StatscreenPageNameFlashing
+Pal_StatscreenPageNameFlashing: @ 083087C8
 	.incbin "fe6-base.gba", 0x3087C8, (0x308920 - 0x3087C8) @ length: 0158
 
 	.global gUnk_08308920

@@ -7,12 +7,12 @@ ChapterInfoTable: @ 086637A4
     .global ChapterAssets
 ChapterAssets: @ 08664398
 	.4byte 0x00000000
-	.4byte gUnk_082478F0
-	.4byte gUnk_0824D240
-	.4byte gUnk_0823C980
-	.4byte gUnk_0823956C
-	.4byte gUnk_08247718
-	.4byte TilesetImgAnim_085C788C
+	.4byte MapAsset01_Img1
+	.4byte MapAsset01_Img2
+	.4byte MapAsset01_Pal
+	.4byte MapAsset01_TsaConf
+	.4byte MapTsa_Chapter1
+	.4byte MapAsset01_Anims
 	.4byte MapChange_Ch0
 	.4byte ChapterEventInfo_Unk_086676F0
 	.4byte EventScr_Wm_Tutorial
@@ -24,8 +24,8 @@ ChapterAssets: @ 08664398
 	.4byte MapChange_Ch2
 	.4byte ChapterEventInfo_Chapter2
 	.4byte EventScr_Wm_Ch2
-	.4byte gUnk_08222628
-	.4byte gUnk_0823C840
+	.4byte MapAsset02_Img
+	.4byte MapAsset02_Pal
 	.4byte gUnk_082384F8
 	.4byte gUnk_08246F30
 	.4byte MapChange_Ch3
@@ -166,7 +166,7 @@ ChapterAssets: @ 08664398
 	.4byte MapChange_Ch11b
 	.4byte ChapterEventInfo_Unk_08669A54
 	.4byte EventScr_Wm_Ch11b
-	.4byte gUnk_0823B6C0
+	.4byte MapAsset01_NightPal
 	.4byte gUnk_082409A4
 	.4byte MapChange_Ch17b
 	.4byte ChapterEventInfo_Unk_08669B58

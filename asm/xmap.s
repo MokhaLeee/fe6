@@ -1883,7 +1883,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, .L0808BBC0 @ =gUnk_08320EEC
+	ldr r0, .L0808BBC0 @ =Img_HorizontalSpinningArrow
 	ldr r1, .L0808BBC4 @ =0x06017000
 	bl Decompress
 	ldr r0, .L0808BBC8 @ =Pal_SpinningArrow
@@ -1922,7 +1922,7 @@ func_fe6_0808B9CC: @ 0x0808B9CC
 .L0808BBB4: .4byte gUnk_0832CAFC
 .L0808BBB8: .4byte 0x06012000
 .L0808BBBC: .4byte gUnk_0832CC90
-.L0808BBC0: .4byte gUnk_08320EEC
+.L0808BBC0: .4byte Img_HorizontalSpinningArrow
 .L0808BBC4: .4byte 0x06017000
 .L0808BBC8: .4byte Pal_SpinningArrow
 

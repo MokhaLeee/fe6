@@ -331,9 +331,9 @@ void PutStatScreenStatWithBar(int num, int x, int y, int base, int total, int ma
         bonus = total - base;
     }
 
-    PutDrawUiGauge(0x400 + 1 + num*6, 6,
+    PutDrawUiGauge(BGCHR_STATSCREEN_STATBAR + 1 + num*6, 6,
         gUiTmScratchC + TM_OFFSET(x - 2, y + 1),
-        TILEREF(0, BGPAL_STATSCREEN_6), max * 41 / 30, base * 41 / 30, bonus * 41 / 30);
+        TILEREF(0, BGPAL_STATSCREEN_STATBAR), max * 41 / 30, base * 41 / 30, bonus * 41 / 30);
 }
 
 void PutStatScreenPersonalInfoPage(void)
@@ -580,7 +580,7 @@ void PutStatScreenWeaponExpBar(int num, int x, int y, int item_kind)
         wexp -= WEXP_E;
 
     PutDrawUiGauge(0x400 + 1 + num * 6, 5,
-        gUiTmScratchC + TM_OFFSET(x + 3, y + 1), TILEREF(0, BGPAL_STATSCREEN_6),
+        gUiTmScratchC + TM_OFFSET(x + 3, y + 1), TILEREF(0, BGPAL_STATSCREEN_STATBAR),
         34, ((wexp % (WEXP_D - WEXP_E)) * 33) / 48, 0); // math look weird but gets something that ranges from 0 to 33. I would do "((wexp % 50) * 34) / 50"
 }
 
@@ -929,7 +929,7 @@ void PutUpdateStatScreenPageName(int page_id)
     color_num = (GetGameTime() / 4) % 16;
 
     CpuCopy16(
-        Pal_Unk_083087C8[page_id] + color_num,
+        Pal_StatscreenPageNameFlashing[page_id] + color_num,
         gPal + (0x10 + OBPAL_STATSCREEN_PAGENAME) * 0x10 + 4,
         sizeof(u16) * 11);
 
@@ -1213,7 +1213,7 @@ void StatScreen_Init(ProcPtr proc)
     Decompress(gUnk_083080D0, ((void *) VRAM + 0x10000) + OBCHR_STATSCREEN_240 * CHR_SIZE);
 
     ApplyIconPalettes(BGPAL_ICONS);
-    ApplyUiStatBarPal(BGPAL_STATSCREEN_6);
+    ApplyUiStatBarPal(BGPAL_STATSCREEN_STATBAR);
     ApplyIconPalette(1, 0x10 + OBPAL_STATSCREEN_PAGENAME);
 
     Decompress(gUnk_08307CEC, gBuf);

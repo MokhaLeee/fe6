@@ -1187,7 +1187,7 @@ void ManimExpBar_Init(struct ManimExpBarProc * proc)
 
     ApplyPalette(Pal_EkrExpBar, BGPAL_MANIM_INFO);
 
-    TmApplyTsa(gBg0Tm + TM_OFFSET(6, 8), gUnk_082DC5B0, TILEREF(BGCHR_MANIM_200, BGPAL_MANIM_INFO));
+    TmApplyTsa(gBg0Tm + TM_OFFSET(6, 8), Tsa_ManimExpBar, TILEREF(BGCHR_MANIM_200, BGPAL_MANIM_INFO));
 
     PutManimExpBar(6, 8, proc->exp_from);
 }
@@ -1738,9 +1738,9 @@ void ManimDebug_StartBattleManim(struct ManimDebugProc * proc)
 
 void StartManimMissTag(struct Unit * unit)
 {
-    Decompress(gUnk_082DB1C0, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_180);
+    Decompress(Img_ManimMissTag, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_180);
 
-    StartSpriteAnimProc(gUnk_082DB2B0,
+    StartSpriteAnimProc(Ap_ManimMissTag,
         SCREEN_TILE_X(unit->x) * 8 + 8,
         SCREEN_TILE_Y(unit->y) * 8 + 16,
         OAM2_CHR(OBCHR_MANIM_180), 0, 2);
@@ -1748,9 +1748,9 @@ void StartManimMissTag(struct Unit * unit)
 
 void StartManimNoDamageTag(struct Unit * unit)
 {
-    Decompress(gUnk_082DB418, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_180);
+    Decompress(Img_ManimNoDamageTag, OBJ_VRAM0 + CHR_SIZE * OBCHR_MANIM_180);
 
-    StartSpriteAnimProc(gUnk_082DB55C,
+    StartSpriteAnimProc(Ap_ManimNoDamageTag,
         SCREEN_TILE_X(unit->x) * 8 + 8,
         SCREEN_TILE_Y(unit->y) * 8 + 16,
         OAM2_CHR(OBCHR_MANIM_180), 0, 2);
@@ -2338,10 +2338,10 @@ void func_fe6_08065C9C(struct ManimSomethingProc_08065C30 * proc)
 {
     SetBgOffset(2, 0, 0);
 
-    Decompress(gUnk_082DD268, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
-    ApplyPalette(gUnk_082DD4C8, BGPAL_MANIM_4);
+    Decompress(Img_ManimWarp, ((void *) VRAM) + GetBgChrOffset(2) + CHR_SIZE * BGCHR_MANIM_140);
+    ApplyPalette(Pal_ManimWarp, BGPAL_MANIM_4);
 
-    func_fe6_080686D8();
+    SetupManimStarImage();
 
     proc->counter = 0;
 }
@@ -2359,7 +2359,7 @@ void func_fe6_08065CF4(struct ManimSomethingProc_08065C30 * proc)
         UINT8_MAX, // end
     };
 
-    func_fe6_08014F70(gBg2Tm, proc->x - 1, proc->y - 3, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4), 4, 6, gUnk_082DD4E8, lut[proc->counter / 2]);
+    func_fe6_08014F70(gBg2Tm, proc->x - 1, proc->y - 3, TILEREF(BGCHR_MANIM_140, BGPAL_MANIM_4), 4, 6, TsaRef_ManimWarp, lut[proc->counter / 2]);
     EnableBgSync(BG2_SYNC_BIT);
 
     proc->counter++;
@@ -3649,24 +3649,24 @@ void ManimLevelUp_Clear(struct ManimLevelUpProc * proc)
     ClearTalk();
 }
 
-void func_fe6_08068524(ProcPtr proc);
+void ManimFadeIn_Loop(ProcPtr proc);
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665684[] =
+struct ProcScr CONST_DATA ProcScr_ManimFadeIn[] =
 {
-    PROC_CALL(func_fe6_08068524),
+    PROC_CALL(ManimFadeIn_Loop),
     PROC_SLEEP(15),
     PROC_END,
 };
 
-void func_fe6_080684EC(ProcPtr parent)
+void NewManimFadeIn(ProcPtr parent)
 {
     if (parent != NULL)
-        SpawnProcLocking(ProcScr_Unk_08665684, parent);
+        SpawnProcLocking(ProcScr_ManimFadeIn, parent);
     else
-        SpawnProc(ProcScr_Unk_08665684, PROC_TREE_3);
+        SpawnProc(ProcScr_ManimFadeIn, PROC_TREE_3);
 }
 
-void func_fe6_08068524(ProcPtr proc)
+void ManimFadeIn_Loop(ProcPtr proc)
 {
     int i;
 
@@ -3678,24 +3678,24 @@ void func_fe6_08068524(ProcPtr proc)
     }
 }
 
-void func_fe6_080685B0(ProcPtr proc);
+void ManimFadeOut_Loop(ProcPtr proc);
 
-struct ProcScr CONST_DATA ProcScr_Unk_0866569C[] =
+struct ProcScr CONST_DATA ProcScr_ManimFadeOut[] =
 {
-    PROC_CALL(func_fe6_080685B0),
+    PROC_CALL(ManimFadeOut_Loop),
     PROC_SLEEP(16),
     PROC_END,
 };
 
-void func_fe6_08068578(ProcPtr parent)
+void NewManimFadeOut(ProcPtr parent)
 {
     if (parent != NULL)
-        SpawnProcLocking(ProcScr_Unk_0866569C, parent);
+        SpawnProcLocking(ProcScr_ManimFadeOut, parent);
     else
-        SpawnProc(ProcScr_Unk_0866569C, PROC_TREE_3);
+        SpawnProc(ProcScr_ManimFadeOut, PROC_TREE_3);
 }
 
-void func_fe6_080685B0(ProcPtr proc)
+void ManimFadeOut_Loop(ProcPtr proc)
 {
     int i;
 
@@ -3745,10 +3745,10 @@ void func_fe6_08068628(struct ManimSomethingProc_080685F0 * proc)
     }
 }
 
-void func_fe6_080686D8(void)
+void SetupManimStarImage(void)
 {
-    Decompress(gUnk_082DD7E8, (void *) OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
-    ApplyPalette(gUnk_082DD808, 0x10 + OBPAL_MANIM_4);
+    Decompress(Img_ManimStar, (void *) OBJ_VRAM0 + OBCHR_MANIM_1C0 * CHR_SIZE);
+    ApplyPalette(Pal_ManimStar, 0x10 + OBPAL_MANIM_4);
 }
 
 void func_fe6_08068704(int x, int y)
@@ -3793,7 +3793,7 @@ struct ManimSomethingProc_08068938
 void func_fe6_080687BC(struct ManimSomethingProc_08068938 * proc);
 void func_fe6_08068858(struct ManimSomethingProc_08068938 * proc);
 
-struct ProcScr CONST_DATA ProcScr_Unk_086656CC[] =
+struct ProcScr CONST_DATA ProcScr_ManimWarpStarDisp[] =
 {
     PROC_CALL(LockGame),
     PROC_SLEEP(1),
@@ -3807,7 +3807,7 @@ void func_fe6_080687BC(struct ManimSomethingProc_08068938 * proc)
 {
     int i;
 
-    func_fe6_080686D8();
+    SetupManimStarImage();
 
     for (i = 0; i < 0x10; i++)
     {
@@ -3842,11 +3842,11 @@ void func_fe6_08068858(struct ManimSomethingProc_08068938 * proc)
         Proc_Break(proc);
 }
 
-void func_fe6_08068938(int x, int y, int beg_radius, int end_radius, int arg_1C, int arg_20, int arg_24)
+void NewManimWarpStarDisp(int x, int y, int beg_radius, int end_radius, int arg_1C, int arg_20, int arg_24)
 {
     struct ManimSomethingProc_08068938 * proc;
 
-    proc = SpawnProc(ProcScr_Unk_086656CC, PROC_TREE_3);
+    proc = SpawnProc(ProcScr_ManimWarpStarDisp, PROC_TREE_3);
 
     proc->unk_2A = x;
     proc->unk_2C = y;
@@ -3857,14 +3857,14 @@ void func_fe6_08068938(int x, int y, int beg_radius, int end_radius, int arg_1C,
     proc->unk_40 = arg_24;
 }
 
-void func_fe6_080689F0(int x, int y)
+void PutManimStar1(int x, int y)
 {
-    func_fe6_08068938(x, y, 1, 200, 0, 80, 40);
+    NewManimWarpStarDisp(x, y, 1, 200, 0, 80, 40);
 }
 
-void func_fe6_08068A1C(int x, int y)
+void PutManimStar2(int x, int y)
 {
-    func_fe6_08068938(x, y, 200, 1, 0, 60, 55);
+    NewManimWarpStarDisp(x, y, 200, 1, 0, 60, 55);
 }
 
 void Manim_AttackerActionAnim(ProcPtr proc);
@@ -3881,13 +3881,13 @@ void func_fe6_080695C0(ProcPtr proc);
 void func_fe6_080695F0(ProcPtr proc);
 void func_fe6_0806962C(ProcPtr proc);
 void func_fe6_08069668(ProcPtr proc);
-void func_fe6_080696A4(ProcPtr proc);
-void func_fe6_080696E0(ProcPtr proc);
-void func_fe6_0806971C(ProcPtr proc);
+void Manim_Heal(ProcPtr proc);
+void Manim_Mend(ProcPtr proc);
+void Manim_Recover(ProcPtr proc);
 void func_fe6_08069758(ProcPtr proc);
 void func_fe6_08069794(ProcPtr proc);
 void func_fe6_0806984C(ProcPtr proc);
-void func_fe6_0806988C(ProcPtr proc);
+void Manim_Torch(ProcPtr proc);
 void func_fe6_080698BC(ProcPtr proc);
 void func_fe6_080698E4(ProcPtr proc);
 void func_fe6_08069914(ProcPtr proc);
@@ -3930,7 +3930,7 @@ struct ProcScr CONST_DATA ProcScr_DefaultManimRound[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_086657B4[] =
+struct ProcScr CONST_DATA ProcScr_ManimFortify[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -3949,7 +3949,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_086657B4[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_0866582C[] =
+struct ProcScr CONST_DATA ProcScr_ManimAntitoxin[] =
 {
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
@@ -3962,7 +3962,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_0866582C[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665874[] =
+struct ProcScr CONST_DATA ProcScr_ManimPureWater[] =
 {
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
@@ -3975,7 +3975,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665874[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_086658BC[] =
+struct ProcScr CONST_DATA ProcScr_ManimElixir[] =
 {
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
@@ -3990,7 +3990,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_086658BC[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665914[] =
+struct ProcScr CONST_DATA ProcScr_ManimVulnerary[] =
 {
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
@@ -4005,13 +4005,13 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665914[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_0866596C[] =
+struct ProcScr CONST_DATA ProcScr_ManimHeal[] =
 {
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
-    PROC_CALL(func_fe6_080696A4),
+    PROC_CALL(Manim_Heal),
     PROC_SLEEP(30),
     PROC_CALL(Manim_HitImpact),
     PROC_SLEEP(30),
@@ -4022,13 +4022,13 @@ struct ProcScr CONST_DATA ProcScr_Unk_0866596C[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_086659D4[] =
+struct ProcScr CONST_DATA ProcScr_ManimMend[] =
 {
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
-    PROC_CALL(func_fe6_080696E0),
+    PROC_CALL(Manim_Mend),
     PROC_SLEEP(30),
     PROC_CALL(Manim_HitImpact),
     PROC_SLEEP(30),
@@ -4039,13 +4039,13 @@ struct ProcScr CONST_DATA ProcScr_Unk_086659D4[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665A3C[] =
+struct ProcScr CONST_DATA ProcScr_ManimRecover[] =
 {
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
-    PROC_CALL(func_fe6_0806971C),
+    PROC_CALL(Manim_Recover),
     PROC_SLEEP(30),
     PROC_CALL(Manim_HitImpact),
     PROC_SLEEP(30),
@@ -4056,13 +4056,13 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665A3C[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665AA4[] =
+struct ProcScr CONST_DATA ProcScr_ManimPhysic[] =
 {
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
-    PROC_CALL(func_fe6_080696A4),
+    PROC_CALL(Manim_Heal),
     PROC_SLEEP(30),
     PROC_CALL(Manim_HitImpact),
     PROC_SLEEP(30),
@@ -4073,11 +4073,11 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665AA4[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665B0C[] =
+struct ProcScr CONST_DATA ProcScr_ManimTorch[] =
 {
     PROC_CALL(Manim_AttackerActionAnim),
     PROC_SLEEP(30),
-    PROC_CALL(func_fe6_0806988C),
+    PROC_CALL(Manim_Torch),
     PROC_SLEEP(2),
     PROC_SLEEP(100),
     PROC_SLEEP(10),
@@ -4086,7 +4086,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665B0C[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665B54[] =
+struct ProcScr CONST_DATA ProcScr_ManimUnlock[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -4107,7 +4107,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665B54[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665BDC[] =
+struct ProcScr CONST_DATA ProcScr_ManimWatch[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -4131,7 +4131,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665BDC[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665C7C[] =
+struct ProcScr CONST_DATA ProcScr_ManimSleep[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -4155,7 +4155,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665C7C[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665D1C[] =
+struct ProcScr CONST_DATA ProcScr_ManimSilence[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -4179,7 +4179,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665D1C[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665DBC[] =
+struct ProcScr CONST_DATA ProcScr_ManimRestore[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -4200,7 +4200,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665DBC[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665E44[] =
+struct ProcScr CONST_DATA ProcScr_ManimHammern[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -4257,7 +4257,7 @@ struct ProcScr CONST_DATA ProcScr_TrapDamageManimHit[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08665F8C[] =
+struct ProcScr CONST_DATA ProcScr_ManimBarrier[] =
 {
     PROC_CALL(DisableTilesetPalAnim),
     PROC_CALL(func_fe6_08069C04),
@@ -4278,7 +4278,7 @@ struct ProcScr CONST_DATA ProcScr_Unk_08665F8C[] =
     PROC_END,
 };
 
-struct ProcScr CONST_DATA ProcScr_Unk_08666014[] =
+struct ProcScr CONST_DATA ProcScr_ManimWarp[] =
 {
     PROC_CALL(Manim_WatchDefender),
     PROC_SLEEP(2),
@@ -4576,17 +4576,17 @@ void func_fe6_08069668(ProcPtr proc)
     func_fe6_08065694(gManimSt.actor[gManimSt.defender_actor].unit, gUnk_082DED00, gUnk_082DEFBC, SONG_8B);
 }
 
-void func_fe6_080696A4(ProcPtr proc)
+void Manim_Heal(ProcPtr proc)
 {
     func_fe6_08065694(gManimSt.actor[gManimSt.defender_actor].unit, gUnk_082DE994, gUnk_082DEFBC, SONG_89);
 }
 
-void func_fe6_080696E0(ProcPtr proc)
+void Manim_Mend(ProcPtr proc)
 {
     func_fe6_08065694(gManimSt.actor[gManimSt.defender_actor].unit, gUnk_082DEB08, gUnk_082DEFBC, SONG_8A);
 }
 
-void func_fe6_0806971C(ProcPtr proc)
+void Manim_Recover(ProcPtr proc)
 {
     func_fe6_08065694(gManimSt.actor[gManimSt.defender_actor].unit, gUnk_082DED00, gUnk_082DEFBC, SONG_8B);
 }
@@ -4616,7 +4616,7 @@ void func_fe6_0806984C(ProcPtr proc)
         gManimSt.unk_60, gManimSt.unk_61);
 }
 
-void func_fe6_0806988C(ProcPtr proc)
+void Manim_Torch(ProcPtr proc)
 {
     func_fe6_08065E08(gManimSt.actor[gManimSt.attacker_actor].unit);
 }
@@ -4663,7 +4663,7 @@ void func_fe6_08069A0C(ProcPtr proc)
 
 void func_fe6_08069A40(ProcPtr proc)
 {
-    func_fe6_080689F0(
+    PutManimStar1(
         gManimSt.actor[gManimSt.defender_actor].unit->x * 16 - gBmSt.camera.x + 8,
         gManimSt.actor[gManimSt.defender_actor].unit->y * 16 - gBmSt.camera.y + 8);
 }
@@ -4672,7 +4672,7 @@ void func_fe6_08069AB4(ProcPtr proc)
 {
     PlaySe(SONG_B5);
 
-    func_fe6_08068A1C(
+    PutManimStar2(
         gManimSt.actor[gManimSt.defender_actor].unit->x * 16 - gBmSt.camera.x + 8,
         gManimSt.actor[gManimSt.defender_actor].unit->y * 16 - gBmSt.camera.y + 8);
 }
@@ -4695,10 +4695,10 @@ void func_fe6_08069B70(ProcPtr proc)
 
 void func_fe6_08069C04(ProcPtr proc)
 {
-    func_fe6_080684EC(proc);
+    NewManimFadeIn(proc);
 }
 
 void func_fe6_08069C1C(ProcPtr proc)
 {
-    func_fe6_08068578(proc);
+    NewManimFadeOut(proc);
 }
