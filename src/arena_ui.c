@@ -171,9 +171,9 @@ void ArenaUi_Init(ProcPtr proc)
     SetBlendTargetA(0, 0, 0, 1, 0);
     SetBlendTargetB(0, 0, 0, 0, 0);
 
-    Decompress(Img_Background_082D80B0, (void *)BG_VRAM + GetBgChrOffset(BG_3));
-    TmApplyTsa(gBg3Tm, Tsa_Background_082DAC8C, 0xC000);
-    ApplyPalettes(Pal_Background_082DB140, 0xC, 4);
+    Decompress(Img_UiArenaBG, (void *)BG_VRAM + GetBgChrOffset(BG_3));
+    TmApplyTsa(gBg3Tm, Tsa_UiArenaBG, 0xC000);
+    ApplyPalettes(Pal_UiArenaBG, 0xC, 4);
 
     EnableBgSync(BG3_SYNC_BIT);
 }

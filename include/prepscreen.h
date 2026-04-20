@@ -584,7 +584,7 @@ void func_fe6_08082DA4(struct Proc_Prep_08679774 *proc, int x, int y, u32 scale)
 extern struct Text gPrepScreenText_PickLeftBar;
 extern struct Text gUnk_0200E864[];
 extern struct Text gPrepScreenText_LeftPersonName;
-extern u16 gUnk_0200E8A4[];
+extern u16 gPrepTsaBuf[0x400];
 extern struct Unit gPrepUnitPool[]; // rearrange buf
 extern struct Text gPrepScreenTexts_Units[];
 extern u8 gUnk_0200E7D4;
@@ -658,14 +658,14 @@ extern int Msgs_08679754[];
 extern CONST_DATA u16 Sprite_Prep_0867976C[];
 extern struct ProcScr ProcScr_Prep_08679774[];
 
-extern u16 const gUnk_08320FCE[]; // tiles
-extern u16 const gUnk_08326EE6[]; // tiles
-extern u32 const gUnk_0831A268[]; // img(lz)
-extern u32 const Img_SpinningArrow[]; // img(lz)
-extern u32 const gUnk_08326930[]; // img(lz)
+extern u16 const Tsa_PrepLeftUnitInfo[]; // tiles
+extern u16 const Tsa_Prep_08326EE6[]; // tiles
+extern u32 const Img_Prep_0831A268[]; // img(lz)
+extern u32 const Img_VeriticalSpinningArrow[]; // img(lz)
+extern u32 const Img_Prep_08326930[]; // img(lz)
 extern u16 const Pal_SpinningArrow[]; // pal
 extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
-extern u16 const gUnk_08326E64[]; // pal (x4)
-extern u16 const gUnk_08327108[]; // pal
-extern u32 const gUnk_08321FA4[]; // img(lz)
-extern u16 const gUnk_08326910[]; // pal
+extern u16 const Pal_Prep_08326E64[]; // pal (x4)
+extern u16 const Pal_Prep_08327108[]; // pal
+extern u32 const Img_PrepWorldMap[]; // img(lz)
+extern u16 const Pal_PrepWorldMap[]; // pal

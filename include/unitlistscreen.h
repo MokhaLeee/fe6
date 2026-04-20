@@ -154,10 +154,10 @@ extern u16 gUnk_Pal_02016874[0x10];
 
 extern u8 const Img_Prep_083198CC[]; // img
 extern u16 const Pal_SpinningArrow[]; // pal
-extern u8 const gUnk_083215B8[]; // img
-extern u16 const gUnk_08321EE4[]; // pal
-extern u8 const gUnk_083210A0[]; // tsa
-extern u16 const gUnk_08320EEC[]; // tm
+extern u8 const Img_UnitList_Title[]; // img
+extern u16 const Pal_UnitList_Title[]; // pal
+extern u8 const Tsa_UnitList_083210A0[]; // tsa
+extern u16 const Img_HorizontalSpinningArrow[]; // tm
 extern u16 const Pal_MonologueBG[]; // pal
 
 extern struct Text gUnk_0200D5BC[];

@@ -43,11 +43,32 @@ void PutOpAnimSubtitle6(void);
 void PutOpAnimSubtitle7(void);
 void OpAnim_SetupGlyph(int pal_id);
 void OpAnim_PutSubtitle(int idx);
-// func_fe6_08098B80
-// func_fe6_08098BB4
-// func_fe6_08098BBC
-// func_fe6_08098BDC
-// func_fe6_08098C00
+
+struct ProcOpAnimSubtitleDisp {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x30);
+
+	/* 30 */ int unk_30;
+
+	STRUCT_PAD(0x34, 0x44);
+
+	/* 44 */ i16 delay_timer;
+
+	STRUCT_PAD(0x46, 0x4C);
+
+	/* 4C */ char *str;
+
+	STRUCT_PAD(0x50, 0x54);
+
+	/* 54 */ int index;
+};
+
+void NewOpAnimSubtitleDisp(int idx, int a, int b, char *str);
+void OpAnimSubtitleDisp_Init(struct ProcOpAnimSubtitleDisp *proc);
+void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc);
+void OpAnimSubtitleDisp_Setup(struct ProcOpAnimSubtitleDisp *proc);
+void OpAnimSubtitleDisp_Loop(struct ProcOpAnimSubtitleDisp *proc);
 // func_fe6_08098C90
 // func_fe6_08098C94
 // func_fe6_08098CA4
@@ -69,7 +90,7 @@ void OpAnim_PutSubtitle(int idx);
 // func_fe6_080992DC
 // func_fe6_08099314
 // func_fe6_08099328
-// func_fe6_08099358
+char *OpAnimSubtitleStringAdvance(char *str);
 void func_fe6_0809937C(void);
 // func_fe6_080993AC
 // func_fe6_080993E8
@@ -186,13 +207,23 @@ extern u16 CONST_DATA BgConf_OpAnim_0869161C[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnimTimer[];
 // ??? gUnk_08691644
 // ??? gUnk_086916E5
-// ??? Msgs_OpAnim_08691738[];
-// ??? gUnk_08691778
-extern CONST_DATA struct ProcScr ProcScr_086917D8[];
+extern CONST_DATA int Msgs_OpAnim_08691738[];
+
+struct OpAnimSubtitleConf {
+	u16 unk_00;
+	u16 unk_02;
+
+	STRUCT_PAD(0x4, 0x8);
+
+	u16 *unk_08;
+};
+extern CONST_DATA struct OpAnimSubtitleConf gOpAnimSubtitleConf[];
+
+extern CONST_DATA struct ProcScr ProcScr_OpAnimSubtitleDisp[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691810[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691828[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691840[];
-extern CONST_DATA struct ProcScr ProcScr_08691858[];
+extern CONST_DATA struct ProcScr NewOpAnimSubtitleIntroDisp[];
 extern CONST_DATA struct ProcScr ProcScr_08691890[];
 // ??? gUnk_086918B0
 extern CONST_DATA struct ProcScr ProcScr_OpAnim1[];

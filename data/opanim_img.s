@@ -1,53 +1,5 @@
 	.section .rodata
 
-	.global Pal_Title_BG
-Pal_Title_BG: @ 0835CB90
-	.incbin "fe6-base.gba", 0x35CB90, (0x35CC90 - 0x35CB90) @ length: 0100
-
-	.global Img_Title_BG
-Img_Title_BG: @ 0835CC90
-	.incbin "fe6-base.gba", 0x35CC90, (0x35E6DC - 0x35CC90) @ length: 1A4C
-
-	.global Img_Title_Sprites
-Img_Title_Sprites: @ 0835E6DC
-	.incbin "fe6-base.gba", 0x35E6DC, (0x35F2C8 - 0x35E6DC) @ length: 0BEC
-
-	.global SpriteAnim_0835F2C8
-SpriteAnim_0835F2C8: @ 0835F2C8
-	.incbin "fe6-base.gba", 0x35F2C8, (0x35F388 - 0x35F2C8) @ length: 00C0
-
-	.global Pal_Title_0835F388
-Pal_Title_0835F388: @ 0835F388
-	.incbin "fe6-base.gba", 0x35F388, (0x35F3A8 - 0x35F388) @ length: 0020
-
-	.global Tsa_Title_BG2
-Tsa_Title_BG2: @ 0835F3A8
-	.incbin "fe6-base.gba", 0x35F3A8, (0x35F780 - 0x35F3A8) @ length: 03D8
-
-	.global Tsa_Title_BG0
-Tsa_Title_BG0: @ 0835F780
-	.incbin "fe6-base.gba", 0x35F780, (0x35F9EC - 0x35F780) @ length: 026C
-
-	.global Tsa_Title_BG1
-Tsa_Title_BG1: @ 0835F9EC
-	.incbin "fe6-base.gba", 0x35F9EC, (0x35FC3C - 0x35F9EC) @ length: 0250
-
-	.global Img_Title_BG3
-Img_Title_BG3: @ 0835FC3C
-	.incbin "fe6-base.gba", 0x35FC3C, (0x364418 - 0x35FC3C) @ length: 47DC
-
-	.global Pal_Title_BG3
-Pal_Title_BG3: @ 08364418
-	.incbin "fe6-base.gba", 0x364418, (0x364438 - 0x364418) @ length: 0020
-
-	.global Img_Title_08364438
-Img_Title_08364438: @ 08364438
-	.incbin "fe6-base.gba", 0x364438, (0x364A94 - 0x364438) @ length: 065C
-
-	.global Pal_Title_08364A94
-Pal_Title_08364A94: @ 08364A94
-	.incbin "fe6-base.gba", 0x364A94, (0x364AB4 - 0x364A94) @ length: 0020
-
 	.global Img_Title_08364AB4
 Img_Title_08364AB4: @ 08364AB4
 	.incbin "fe6-base.gba", 0x364AB4, (0x3674BC - 0x364AB4) @ length: 2A08
@@ -104,12 +56,12 @@ Img_OpAnim_083747A4: @ 083747A4
 Pal_OpAnim_08375888: @ 08375888
 	.incbin "fe6-base.gba", 0x375888, (0x3758A8 - 0x375888) @ length: 0020
 
-	.global gUnk_083758A8
-gUnk_083758A8: @ 083758A8
+	.global Pal_OpAnim_083758A8
+Pal_OpAnim_083758A8: @ 083758A8
 	.incbin "fe6-base.gba", 0x3758A8, (0x375908 - 0x3758A8) @ length: 0060
 
-	.global gUnk_08375908
-gUnk_08375908: @ 08375908
+	.global SpriteAnim_OpAnim_08375908
+SpriteAnim_OpAnim_08375908: @ 08375908
 	.incbin "fe6-base.gba", 0x375908, (0x375ADC - 0x375908) @ length: 01D4
 
 	.global gUnk_08375ADC
@@ -168,8 +120,8 @@ gUnk_0837AA68: @ 0837AA68
 gUnk_0837AAC8: @ 0837AAC8
 	.incbin "fe6-base.gba", 0x37AAC8, (0x37AAE8 - 0x37AAC8) @ length: 0020
 
-	.global gUnk_0837AAE8
-gUnk_0837AAE8: @ 0837AAE8
+	.global SpriteAnim_OpAnim_0837AAE8
+SpriteAnim_OpAnim_0837AAE8: @ 0837AAE8
 	.incbin "fe6-base.gba", 0x37AAE8, (0x37AB18 - 0x37AAE8) @ length: 0030
 
 	.global Img_OpAnimSparksOBJ

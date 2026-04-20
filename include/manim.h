@@ -338,21 +338,21 @@ void ManimLevelUp_StartLevelUpText(struct ManimLevelUpProc * proc);
 void ManimLevelUp_EndLevelUpText(struct ManimLevelUpProc * proc);
 void ManimLevelUp_RestoreBgm(struct ManimLevelUpProc * proc);
 void ManimLevelUp_Clear(struct ManimLevelUpProc * proc);
-// func_fe6_080684EC
-// func_fe6_08068524
-// func_fe6_08068578
-// func_fe6_080685B0
+// NewManimFadeIn
+// ManimFadeIn_Loop
+// NewManimFadeOut
+// ManimFadeOut_Loop
 // func_fe6_080685F0
 // func_fe6_08068608
 // func_fe6_08068628
-void func_fe6_080686D8(void);
+void SetupManimStarImage(void);
 // func_fe6_08068704
 // func_fe6_0806875C
 // func_fe6_080687BC
 // func_fe6_08068858
-// func_fe6_08068938
-// func_fe6_080689F0
-// func_fe6_08068A1C
+// NewManimWarpStarDisp
+// PutManimStar1
+// PutManimStar2
 struct ProcScr const * func_fe6_08068A48(void);
 // Manim_AttackerActionAnim
 // Manim_AttackerFaceDefenderDelayed
@@ -378,13 +378,13 @@ void ManimAnimateActorDamage(int actor_id, int damage);
 // func_fe6_080695F0
 // func_fe6_0806962C
 // func_fe6_08069668
-// func_fe6_080696A4
-// func_fe6_080696E0
-// func_fe6_0806971C
+// Manim_Heal
+// Manim_Mend
+// Manim_Recover
 // func_fe6_08069758
 // func_fe6_08069794
 // func_fe6_0806984C
-// func_fe6_0806988C
+// Manim_Torch
 // func_fe6_080698BC
 // func_fe6_080698E4
 // func_fe6_08069914
@@ -431,32 +431,32 @@ extern struct ProcScr CONST_DATA ProcScr_Unk_08665514[];
 extern struct ProcScr CONST_DATA ProcScr_ManimLevelUpStatGainLabel[];
 extern struct ProcScr CONST_DATA ProcScr_ManimLevelUpLabelColor[];
 extern struct ProcScr CONST_DATA ProcScr_ManimLevelUp[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665684[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_0866569C[];
+extern struct ProcScr CONST_DATA ProcScr_ManimFadeIn[];
+extern struct ProcScr CONST_DATA ProcScr_ManimFadeOut[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_086656B4[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_086656CC[];
+extern struct ProcScr CONST_DATA ProcScr_ManimWarpStarDisp[];
 extern struct ProcScr CONST_DATA ProcScr_DefaultManimRound[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_086657B4[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_0866582C[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665874[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_086658BC[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665914[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_0866596C[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_086659D4[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665A3C[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665AA4[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665B0C[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665B54[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665BDC[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665C7C[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665D1C[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665DBC[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665E44[];
+extern struct ProcScr CONST_DATA ProcScr_ManimFortify[];
+extern struct ProcScr CONST_DATA ProcScr_ManimAntitoxin[];
+extern struct ProcScr CONST_DATA ProcScr_ManimPureWater[];
+extern struct ProcScr CONST_DATA ProcScr_ManimElixir[];
+extern struct ProcScr CONST_DATA ProcScr_ManimVulnerary[];
+extern struct ProcScr CONST_DATA ProcScr_ManimHeal[];
+extern struct ProcScr CONST_DATA ProcScr_ManimMend[];
+extern struct ProcScr CONST_DATA ProcScr_ManimRecover[];
+extern struct ProcScr CONST_DATA ProcScr_ManimPhysic[];
+extern struct ProcScr CONST_DATA ProcScr_ManimTorch[];
+extern struct ProcScr CONST_DATA ProcScr_ManimUnlock[];
+extern struct ProcScr CONST_DATA ProcScr_ManimWatch[];
+extern struct ProcScr CONST_DATA ProcScr_ManimSleep[];
+extern struct ProcScr CONST_DATA ProcScr_ManimSilence[];
+extern struct ProcScr CONST_DATA ProcScr_ManimRestore[];
+extern struct ProcScr CONST_DATA ProcScr_ManimHammern[];
 extern struct ProcScr CONST_DATA ProcScr_Unk_08665ECC[];
 extern struct ProcScr CONST_DATA ProcScr_PoisonDamageManimHit[];
 extern struct ProcScr CONST_DATA ProcScr_TrapDamageManimHit[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08665F8C[];
-extern struct ProcScr CONST_DATA ProcScr_Unk_08666014[];
+extern struct ProcScr CONST_DATA ProcScr_ManimBarrier[];
+extern struct ProcScr CONST_DATA ProcScr_ManimWarp[];
 extern struct ProcScr CONST_DATA ProcScr_ManimShiftingSineWaveScanlineBuf[];
 
 extern u16 const Pal_ManimInfoFrameBlue[]; // pal blue
@@ -473,14 +473,14 @@ extern u8 const Tsa_EkrExpBar[];
 extern u8 const Img_EkrExpBarChange[]; // img exp bar b
 extern u8 const Img_BarNumfx[]; // img exp bar c
 extern u16 const Pal_EkrExpBar[]; // pal exp bar
-extern u8 const gUnk_082DC5B0[]; // tsa exp bar
+extern u8 const Tsa_ManimExpBar[]; // tsa exp bar
 extern u8 const Img_ManimRubble[]; // img
 extern u16 const Pal_ManimRubble[]; // pal
 extern u16 const SpriteAnim_ManimRubble[]; // sprite anim
-extern u8 const gUnk_082DB1C0[]; // img
-extern u16 const gUnk_082DB2B0[]; // sprite anim
-extern u8 const gUnk_082DB418[]; // img
-extern u16 const gUnk_082DB55C[]; // sprite anim
+extern u8 const Img_ManimMissTag[]; // img
+extern u16 const Ap_ManimMissTag[]; // sprite anim
+extern u8 const Img_ManimNoDamageTag[]; // img
+extern u16 const Ap_ManimNoDamageTag[]; // sprite anim
 extern u8 const Img_ManimPoison[]; // img
 extern u16 const Pal_ManimPoison[]; // pal
 extern u16 const SpriteAnim_ManimPoison[]; // sprite anim
@@ -488,9 +488,9 @@ extern u8 const gUnk_082DE994[]; // img
 extern u16 const gUnk_082DEFBC[]; // pal/colors
 extern u8 const gUnk_082DEFFC[]; // img
 extern u16 const gUnk_082DE354[]; // tm
-extern u8 const gUnk_082DD268[]; // img
-extern u16 const gUnk_082DD4C8[]; // pal
-extern u16 const gUnk_082DD4E8[]; // tm
+extern u8 const Img_ManimWarp[]; // img
+extern u16 const Pal_ManimWarp[]; // pal
+extern u16 const TsaRef_ManimWarp[]; // tm
 extern u8 const gUnk_082DF3D8[]; // img
 extern u16 const gUnk_082DF690[]; // pal
 extern u16 const SpriteAnim_082A8448[]; // sprite anim
@@ -525,8 +525,8 @@ extern u16 const SpriteAnim_ManimStatGain[]; // sprite anim
 extern u16 const Pal_ManimLevelUpStatGainCycling[]; // colors
 extern u8 const Img_ManimLevelUpText[]; // img
 extern u16 const SpriteAnim_082A7CBC[]; // sprite anim
-extern u8 const gUnk_082DD7E8[]; // img
-extern u16 const gUnk_082DD808[]; // pal
+extern u8 const Img_ManimStar[]; // img
+extern u16 const Pal_ManimStar[]; // pal
 extern u8 const gUnk_082DD848[]; // img
 extern u16 const gUnk_082DE974[]; // ^ pal
 extern u16 const gUnk_082DE954[]; // ^ pal

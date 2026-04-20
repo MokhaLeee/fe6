@@ -20,8 +20,8 @@ Img_Prep_0831A088: @ 0831A088
 Pal_Prep_0831A248: @ 0831A248
 	.incbin "fe6-base.gba", 0x31A248, (0x31A268 - 0x31A248) @ length: 0020
 
-	.global gUnk_0831A268
-gUnk_0831A268: @ 0831A268
+	.global Img_Prep_0831A268
+Img_Prep_0831A268: @ 0831A268
 	.incbin "fe6-base.gba", 0x31A268, (0x31AABC - 0x31A268) @ length: 0854
 
 	.global Pal_Sio_0831AABC
@@ -56,54 +56,60 @@ Tsa_MonologueScrollingBG: @ 08320436
 Pal_MonologueBG: @ 08320D98
 	.incbin "fe6-base.gba", 0x320D98, (0x320E18 - 0x320D98) @ length: 0080
 
-	.global Img_SpinningArrow
-Img_SpinningArrow: @ 08320E18
-	.incbin "fe6-base.gba", 0x320E18, (0x320EEC - 0x320E18) @ length: 00D4
+	.global Img_VeriticalSpinningArrow
+Img_VeriticalSpinningArrow: @ 08320E18
+	.incbin "data/prep/Img_VeriticalSpinningArrow.4bpp.lz"
 
-	.global gUnk_08320EEC
-gUnk_08320EEC: @ 08320EEC
-	.incbin "fe6-base.gba", 0x320EEC, (0x320FCE - 0x320EEC) @ length: 00E2
+	.global Img_HorizontalSpinningArrow
+Img_HorizontalSpinningArrow: @ 08320EEC
+	.incbin "data/prep/Img_HorizontalSpinningArrow.4bpp.lz"
 
-	.global gUnk_08320FCE
-gUnk_08320FCE: @ 08320FCE
+.short 0x70C
+
+	.global Tsa_PrepLeftUnitInfo
+Tsa_PrepLeftUnitInfo: @ 08320FCE
 	.incbin "fe6-base.gba", 0x320FCE, (0x3210A0 - 0x320FCE) @ length: 00D2
 
-	.global gUnk_083210A0
-gUnk_083210A0: @ 083210A0
+	.global Tsa_UnitList_083210A0
+Tsa_UnitList_083210A0: @ 083210A0
 	.incbin "fe6-base.gba", 0x3210A0, (0x3215B8 - 0x3210A0) @ length: 0518
 
-	.global gUnk_083215B8
-gUnk_083215B8: @ 083215B8
-	.incbin "fe6-base.gba", 0x3215B8, (0x321EE4 - 0x3215B8) @ length: 092C
+	.global Img_UnitList_Title
+Img_UnitList_Title: @ 083215B8
+	.incbin "data/unitlistscreen/Img_UnitList_Title.4bpp.lz"
 
-	.global gUnk_08321EE4
-gUnk_08321EE4: @ 08321EE4
-	.incbin "fe6-base.gba", 0x321EE4, (0x321F24 - 0x321EE4) @ length: 0040
+	.global Pal_UnitList_Title
+Pal_UnitList_Title: @ 08321EE4
+	.incbin "data/unitlistscreen/Img_UnitList_Title.gbapal", 0, 0x20
+
+	.incbin "fe6-base.gba", 0x321F04, (0x321F24 - 0x321F04)
 
 	.global gUnk_Ui_Pal_08321F24
 gUnk_Ui_Pal_08321F24: @ 08321F24
 	.incbin "fe6-base.gba", 0x321F24, (0x321FA4 - 0x321F24) @ length: 0080
 
-	.global gUnk_08321FA4
-gUnk_08321FA4: @ 08321FA4
-	.incbin "fe6-base.gba", 0x321FA4, (0x326910 - 0x321FA4) @ length: 496C
+	.global Img_PrepWorldMap
+Img_PrepWorldMap: @ 08321FA4
+	.incbin "data/prep/Img_PrepWorldMap.4bpp.lz"
 
-	.global gUnk_08326910
-gUnk_08326910: @ 08326910
-	.incbin "fe6-base.gba", 0x326910, (0x326930 - 0x326910) @ length: 0020
+	.global Pal_PrepWorldMap
+Pal_PrepWorldMap: @ 08326910
+	.incbin "data/prep/Img_PrepWorldMap.gbapal", 0, 0x20
 
-	.global gUnk_08326930
-gUnk_08326930: @ 08326930
+	.global Img_Prep_08326930
+Img_Prep_08326930: @ 08326930
 	.incbin "fe6-base.gba", 0x326930, (0x326E64 - 0x326930) @ length: 0534
 
-	.global gUnk_08326E64
-gUnk_08326E64: @ 08326E64
-	.incbin "fe6-base.gba", 0x326E64, (0x326EE6 - 0x326E64) @ length: 0082
+	.global Pal_Prep_08326E64
+Pal_Prep_08326E64: @ 08326E64
+	.incbin "fe6-base.gba", 0x326E64, (0x326EE4 - 0x326E64) @ length: 0080
 
-	.global gUnk_08326EE6
-gUnk_08326EE6: @ 08326EE6
+.short 0xF10 @ ?
+
+	.global Tsa_Prep_08326EE6
+Tsa_Prep_08326EE6: @ 08326EE6
 	.incbin "fe6-base.gba", 0x326EE6, (0x327108 - 0x326EE6) @ length: 0222
 
-	.global gUnk_08327108
-gUnk_08327108: @ 08327108
+	.global Pal_Prep_08327108
+Pal_Prep_08327108: @ 08327108
 	.incbin "fe6-base.gba", 0x327108, (0x327148 - 0x327108) @ length: 0040

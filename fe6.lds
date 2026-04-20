@@ -69,7 +69,7 @@ SECTIONS
         . = 0x00E864; gUnk_0200E864 = .; /* this is multiple text */
         . = 0x00E88C; gUnk_0200E88C = .; /* this is multiple (2?) text */
         . = 0x00E89C; gPrepScreenText_LeftPersonName = .;
-        . = 0x00E8A4; gUnk_0200E8A4 = .; /* this is a tilemap */
+        . = 0x00E8A4; gPrepTsaBuf = .; /* this is a tilemap */
         . = 0x00F0A4; gPrepUnitPool = .; /* this is units */
         . = 0x0100A4; gPrepFadePal = .;
         . = 0x0104A4; gUnk_020104A4 = .; /* buf? */
@@ -663,7 +663,7 @@ SECTIONS
         . = ALIGN(4); src/gamecontroller.o(.rodata);
         . = ALIGN(4); src/msg.o(.rodata);
         . = ALIGN(4); src/util.o(.rodata);
-        . = ALIGN(4); data/rodata_1004A4.o(.rodata);
+        . = ALIGN(4); src/bmio_img.o(.rodata);
         . = ALIGN(4); src/item.o(.rodata);
         . = ALIGN(4); src/unit.o(.rodata);
         . = ALIGN(4); src/debugmenu.o(.rodata);
@@ -690,7 +690,8 @@ SECTIONS
         . = ALIGN(4); src/code_sio.o(.rodata);
         . = ALIGN(4); data/sio_data.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
-        . = ALIGN(4); data/rodata_10F744.o(.rodata);
+        . = ALIGN(4); src/ui_img.o(.rodata);
+        . = ALIGN(4); src/banim_efxquake_data.o(.rodata);
         . = ALIGN(4); src/banim_efxflashing.o(.rodata);
         . = ALIGN(4); src/banim_ekrbattleintro.o(.rodata);
         . = ALIGN(4); src/banim_ekrbattleintrofx.o(.rodata);
@@ -719,7 +720,11 @@ SECTIONS
         . = ALIGN(4); src/ending_credit_info.o(.rodata);
         . = ALIGN(4); data/chapterinfo_debugname.o(.rodata);
         . = ALIGN(4); src/mu_info_data.o(.rodata);
-        . = ALIGN(4); data/rodata_279E60.o(.rodata);
+        . = ALIGN(4); src/manim_img1.o(.rodata);
+        . = ALIGN(4); src/worldmap_img.o(.rodata);
+        . = ALIGN(4); src/arena_img.o(.rodata);
+        . = ALIGN(4); src/manim_img2.o(.rodata);
+        . = ALIGN(4); src/backgrounds_img.o(.rodata);
         . = ALIGN(4); src/mu.o(.rodata);
         . = ALIGN(4); src/manim.o(.rodata);
         . = ALIGN(4); src/scanline.o(.rodata);
@@ -729,7 +734,7 @@ SECTIONS
         . = ALIGN(4); src/chapter_title.o(.rodata);
         . = ALIGN(4); src/helpbox_2.o(.rodata);
         . = ALIGN(4); src/statusscreen.o(.rodata);
-        . = ALIGN(4); data/rodata_3198C0.o(.rodata);
+        . = ALIGN(4); src/prep_img.o(.rodata);
         . = ALIGN(4); src/unitlistscreen.o(.rodata);
         . = ALIGN(4); src/prepmenu.o(.rodata);
         . = ALIGN(4); src/prepscreen_disp.o(.rodata);
@@ -752,12 +757,13 @@ SECTIONS
         . = ALIGN(4); src/ending_monologue_img.o(.rodata);
         . = ALIGN(4); src/trig_high_accuracy.o(.rodata);
         . = ALIGN(4); src/worldmapfx.o(.rodata);
-        . = ALIGN(4); data/rodata_08354760.o(.rodata);
+        . = ALIGN(4); src/opinfo_img.o(.rodata);
         . = ALIGN(4); src/opinfo_classdemo.o(.rodata);
         . = ALIGN(4); src/shop.o(.rodata);
         . = ALIGN(4); src/arena_ui.o(.rodata);
         . = ALIGN(4); src/suspend_ui.o(.rodata);
-        . = ALIGN(4); data/rodata_0835C80C.o(.rodata);
+        . = ALIGN(4); src/titlescreen_img.o(.rodata);
+        . = ALIGN(4); data/opanim_img.o(.rodata);
 
         . = ALIGN(4); src/m4a.o(.rodata);
         . = ALIGN(4); data/sounds/voicegroups.o(.rodata);

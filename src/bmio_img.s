@@ -3,19 +3,24 @@
 
 	.global Img_SystemObjects
 Img_SystemObjects: @ 081004A4
-	.incbin "fe6-base.gba", 0x1004A4, (0x100928 - 0x1004A4) @ length: 0484
+	.incbin "data/bmio/Img_SystemObjects.4bpp.lz"
 
 	.global Pal_SystemObjects
 Pal_SystemObjects: @ 08100928
-	.incbin "fe6-base.gba", 0x100928, (0x100968 - 0x100928) @ length: 0040
+	@.incbin "fe6-base.gba", 0x100928, (0x100968 - 0x100928) @ length: 0040
+	.incbin "data/bmio/Img_SystemObjects.gbapal",  0, 0x20
+	.incbin "data/bmio/Img_SystemObjects2.gbapal", 0, 0x20
 
 	.global Pal_UnitSprites
 Pal_UnitSprites: @ 08100968
-	.incbin "fe6-base.gba", 0x100968, (0x1009E8 - 0x100968) @ length: 0080
+	.incbin "data/bmio/Img_UnitSpritesBlue.gbapal", 0, 0x20
+	.incbin "data/bmio/Img_UnitSpritesRed.gbapal", 0, 0x20
+	.incbin "data/bmio/Img_UnitSpritesGreen.gbapal", 0, 0x20
+	.incbin "data/bmio/Img_UnitSpritesGray.gbapal", 0, 0x20
 
 	.global Pal_UnitSpritesPurple
 Pal_UnitSpritesPurple: @ 081009E8
-	.incbin "fe6-base.gba", 0x1009E8, (0x100A08 - 0x1009E8) @ length: 0020
+	.incbin "data/bmio/Img_UnitSpritesPurple.gbapal", 0, 0x20
 
 	.global Pal_Text
 Pal_Text: @ 08100A08

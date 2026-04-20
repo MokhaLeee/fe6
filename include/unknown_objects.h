@@ -127,7 +127,7 @@ extern u16 const Pal_SpinningArrow[];
 extern u8 const Img_Prep_08319EE8[];
 extern u8 const Img_Prep_0831A088[];
 extern u16 const Pal_Prep_0831A248[];
-// extern ??? gUnk_0831A268
+// extern ??? Img_Prep_0831A268
 extern u16 const Pal_Sio_0831AABC[]; // pal (x2)
 extern u16 const Pal_0831AAFC[];
 extern u8 const Img_Prep_0831AB1C[]; // img
@@ -136,19 +136,19 @@ extern u8 const Img_MonologueBG[];
 extern u8 const Tsa_MonologueBG[];
 extern u16 Tsa_MonologueScrollingBG[30 * 40];
 extern u16 const Pal_MonologueBG[];
-extern u32 const Img_SpinningArrow[];
-// extern ??? gUnk_08320EEC
-// extern ??? gUnk_08320FCE
-// extern ??? gUnk_083210A0
-// extern ??? gUnk_083215B8
-// extern ??? gUnk_08321EE4
+extern u32 const Img_VeriticalSpinningArrow[];
+// extern ??? Img_HorizontalSpinningArrow
+// extern ??? Tsa_PrepLeftUnitInfo
+// extern ??? Tsa_UnitList_083210A0
+// extern ??? Img_UnitList_Title
+// extern ??? Pal_UnitList_Title
 extern u16 const gUnk_Ui_Pal_08321F24[3 * 0x10];
-// extern ??? gUnk_08321FA4
-// extern ??? gUnk_08326910
-// extern ??? gUnk_08326930
-// extern ??? gUnk_08326E64
-// extern ??? gUnk_08326EE6
-// extern ??? gUnk_08327108
+// extern ??? Img_PrepWorldMap
+// extern ??? Pal_PrepWorldMap
+// extern ??? Img_Prep_08326930
+// extern ??? Pal_Prep_08326E64
+// extern ??? Tsa_Prep_08326EE6
+// extern ??? Pal_Prep_08327108
 
 extern struct ProcScr CONST_DATA ProcScr_OpAnim[];
 extern struct ProcScr CONST_DATA ProcScr_WorldMapIntroEvent[];
@@ -161,7 +161,7 @@ extern struct ChapterInfo CONST_DATA ChapterInfoTable[];
 extern void const * CONST_DATA ChapterAssets[];
 
 extern u16 const Pal_LinkArenaMuralBackground[];
-extern u16 const Pal_Unk_083087C8[][0x20];
+extern u16 const Pal_StatscreenPageNameFlashing[][0x20];
 
 extern u8 const gUnk_083080D0[]; // compressed img (statscreen misc sprite sheet)
 extern u8 const gUnk_08307CEC[]; // compressed tsa (statscreen main window frame)
@@ -244,9 +244,9 @@ extern u8 const Img_WmMapTextDisp_082D7934[];
 extern u8 const Img_WmMapTextDisp_082D7B20[];
 extern u8 const Img_WmMapTextDisp_082D7D24[];
 extern u8 const Img_WmMapTextDisp_082D7F2C[];
-extern u8 const Img_Background_082D80B0[];
-extern u8 const Tsa_Background_082DAC8C[];
-extern u16 const Pal_Background_082DB140[];
+extern u8 const Img_UiArenaBG[];
+extern u8 const Tsa_UiArenaBG[];
+extern u16 const Pal_UiArenaBG[];
 extern u8 const Img_Background_082E28F8[];
 extern u8 const Tsa_Background_082E35DC[];
 extern u16 const Pal_Background_082E3A90[];
@@ -481,8 +481,8 @@ extern u16 const Pal_Title_08364A94[];
 /* opanim */
 // extern const ??? Img_OpAnim_083747A4
 // extern const ??? Pal_OpAnim_08375888
-// extern const ??? gUnk_083758A8
-// extern const ??? gUnk_08375908
+// extern const ??? Pal_OpAnim_083758A8
+// extern const ??? SpriteAnim_OpAnim_08375908
 // extern const ??? gUnk_08375ADC
 // extern const ??? gUnk_08375B64
 // extern const ??? Tsa_OpAnim_08375B84
@@ -497,7 +497,7 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? gUnk_08379F8C
 // extern const ??? gUnk_0837AA68
 // extern const ??? gUnk_0837AAC8
-// extern const ??? gUnk_0837AAE8
+// extern const ??? SpriteAnim_OpAnim_0837AAE8
 // extern const ??? Img_OpAnimSparksOBJ
 // extern const ??? Pal_OpAnimSparksOBJ
 // extern const ??? Img_OpAnimThunderStorm

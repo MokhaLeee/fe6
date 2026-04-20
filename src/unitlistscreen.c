@@ -622,11 +622,11 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
     InitIcons();
     ApplyIconPalettes(4);
     UnpackUiWindowFrameGraphics();
-    Decompress(gUnk_083215B8, OBJ_VRAM0 + OBCHR_UNITLIST_240 * CHR_SIZE);
-    ApplyPalette(gUnk_08321EE4, 0x10 + OBPAL_UNITLIST_9);
+    Decompress(Img_UnitList_Title, OBJ_VRAM0 + OBCHR_UNITLIST_240 * CHR_SIZE);
+    ApplyPalette(Pal_UnitList_Title, 0x10 + OBPAL_UNITLIST_9);
 
     SetupPrepUiPalette();
-    TmApplyTsa(gBg1Tm, gUnk_083210A0, TILEREF(0, BGPAL_WINDOWFRAME));
+    TmApplyTsa(gBg1Tm, Tsa_UnitList_083210A0, TILEREF(0, BGPAL_WINDOWFRAME));
 
     for (i = 0; i < 7 ; i++)
     {
@@ -691,7 +691,7 @@ void func_fe6_08074EF0(struct UnitListScreenProc * proc)
     gDispIo.bg2_ct.priority = 1;
     gDispIo.bg3_ct.priority = 3;
 
-    Decompress(gUnk_08320EEC, gBg1Tm + TM_OFFSET(0, 20));
+    Decompress(Img_HorizontalSpinningArrow, gBg1Tm + TM_OFFSET(0, 20));
     ApplyPalette(Pal_SpinningArrow, BGPAL_UNITLIST_15);
 
     proc->sprites_proc = SpawnProc(ProcScr_UnitListScreenSprites, proc);
