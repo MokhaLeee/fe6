@@ -3,7 +3,7 @@
 
 import sys, ctypes
 
-def dump_one_part(rom_data, off):
+def dump_one_part(rom_data, off, i):
     data = int.from_bytes(rom_data[off + 0:off + 2], 'little')
     print(f"\t0x{data:X},")
     return off + 2
@@ -32,11 +32,14 @@ def main(args):
     with open(rom, 'rb') as f:
         rom_data = f.read()
 
+        i = 0
         while True:
-            off = dump_one_part(rom_data, off)
+            off = dump_one_part(rom_data, off, i)
 
             if off_end <= off:
                 break
+
+            i = i + 1
 
         print(f"// End at: {off + 0x08000000:08X}")
 

@@ -866,7 +866,8 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrpopup_data.o(.data);
         . = ALIGN(4); src/banim_ekrpopup.o(.data);
         . = ALIGN(4); src/gamedata.o(.data);
-        . = ALIGN(4), data/data-portrait.o(.data);
+        . = ALIGN(4); src/face_img.o(.rodata);
+        . = ALIGN(4); src/face_info.o(.data);
         . = ALIGN(4); src/gamedatainfo.o(.data);
         . = ALIGN(4); src/unitsprite_data.o(.data);
         . = ALIGN(4); src/spellassoc_data.o(.data);
