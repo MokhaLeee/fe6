@@ -23,7 +23,7 @@ static void InitMetatilesMap(void);
 static void RenderMapColumn(u16 x_offset);
 static void RenderMapLine(u16 y_offset);
 
-extern u16 gMapBuf[]; // ??
+EWRAM_OVERLAY(0) u16 gMapBuf[0x7B8] = {}; // ??
 
 struct Vec2i EWRAM_DATA gMapSize = {};
 

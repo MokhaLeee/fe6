@@ -16,7 +16,7 @@
 #include "constants/videoalloc_global.h"
 #include "constants/songs.h"
 
-extern struct Text gTradeMenuText[2][ITEMSLOT_INV_COUNT];
+EWRAM_OVERLAY(0) struct Text gTradeMenuText[2][ITEMSLOT_INV_COUNT] = {};
 
 enum
 {

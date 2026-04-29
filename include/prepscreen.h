@@ -176,7 +176,7 @@ extern u8 gPrepMenuItemCnt;
 extern struct Text gPrepTexts1[2][10];
 extern struct Text gPrepTexts3[2];
 
-extern u16 gPrepPageItemTable[];
+extern EWRAM_OVERLAY(0) u16 gPrepPageItemTable[800];
 
 struct PrepItemListEnt {
     union {
@@ -189,7 +189,7 @@ struct PrepItemListEnt {
         u32 raw;
     } u;
 };
-extern struct PrepItemListEnt gPrepItemListData[];
+extern EWRAM_OVERLAY(0) struct PrepItemListEnt gPrepItemListData[400];
 
 void ResetSioPidPool(void);
 void RegisterSioPid(fu8 pid);
@@ -582,19 +582,19 @@ void func_fe6_08082D08(struct Proc_Prep_08679774 *proc, int unused_1, fu16 obpal
 void func_fe6_08082D54(struct Proc_Prep_08679774 *proc, int msg_order_idx);
 void func_fe6_08082DA4(struct Proc_Prep_08679774 *proc, int x, int y, u32 scale);
 
-extern struct Text gPrepScreenText_PickLeftBar;
-extern struct Text gUnk_0200E864[];
-extern struct Text gPrepScreenText_LeftPersonName;
-extern u16 gPrepTsaBuf[0x400];
-extern struct Unit gPrepUnitPool[]; // rearrange buf
-extern struct Text gPrepScreenTexts_Units[];
-extern u8 gUnk_0200E7D4;
-extern struct Text gUnk_0200E88C[];
-extern u16 gPrepFadePal[0x200];
-extern u8 gUnk_020104A4[]; // img buf
-extern int gPrepSubMenuIcons[20];
-extern u16 gPrepAllItemsCount;
-extern u16 gPrepMenuScrollPos;
+extern EWRAM_OVERLAY(0) u8 gUnk_0200E7D4;
+extern EWRAM_OVERLAY(0) struct Text gPrepScreenText_PickLeftBar;
+extern EWRAM_OVERLAY(0) struct Text gPrepScreenTexts_Units[16];
+extern EWRAM_OVERLAY(0) struct Text gUnk_0200E864[5];
+extern EWRAM_OVERLAY(0) struct Text gUnk_0200E88C[2];
+extern EWRAM_OVERLAY(0) struct Text gPrepScreenText_LeftPersonName;
+extern EWRAM_OVERLAY(0) u16 gPrepTsaBuf[0x400];
+extern EWRAM_OVERLAY(0) u8 gPrepUnitPool[0x1000];
+extern EWRAM_OVERLAY(0) u16 gPrepFadePal[0x200];
+extern EWRAM_OVERLAY(0) u8 ImgBuf_PrepWorldMap[0x5000];
+extern EWRAM_OVERLAY(0) int gPrepSubMenuIcons[20];
+extern EWRAM_OVERLAY(0) u16 gPrepAllItemsCount;
+extern EWRAM_OVERLAY(0) u16 gPrepMenuScrollPos;
 
 extern CONST_DATA struct ProcScr ProcScr_AtMenu[];
 extern CONST_DATA struct ProcScr ProcScr_PrepMenuFadeOut[];

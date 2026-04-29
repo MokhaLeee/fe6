@@ -29,65 +29,21 @@ SECTIONS
     . = __ewram_overlay_beg;
     ewram_overlay_0 (NOLOAD) : ALIGN(4)
     {
-        . = 0x000000; gMinimapWinBuf = .; /* minimap */
-        . = 0x000500; gMinimapFrontWinBuf = .; /* minimap */
-        . = 0x000504; gMinimapBackWinBuf = .; /* minimap */
-        . = 0x000508; gMinimapDisplayedWinBuf = .; /* minimap */
-        . = 0x00050C; gMinimapObjectFlashPal = .; /* minimap */
-        /* skip */
-        . = 0x001000; gMapBuf = .; /* map */
-        . = 0x001F70; gChapterIntroMotifTmBuf = .; /* bmfx */
-        . = 0x002770; gFont_Unk_02002770 = .; /* mapmenu */
-        . = 0x002788; gTradeMenuText = .; /* trademenu */
-        . = 0x0027D8;
+        . = ALIGN(4); src/minimap.o(ewram_overlay_0);
+        . = ALIGN(0x1000); src/map.o(ewram_overlay_0);
+        . = ALIGN(4); src/bmfx.o(ewram_overlay_0);
+        . = ALIGN(4); src/mapmenu.o(ewram_overlay_0);
+        . = ALIGN(4); src/trademenu.o(ewram_overlay_0);
         . = ALIGN(4); src/bmio.o(ewram_overlay_0);
-        . = 0x002FD8; gBattlePreviewLabels = .; /* battlepreview */
-        . = 0x003008; gBattlePreviewIconPalBuf = .; /* battlepreview */
-        . = 0x003108; gStatScreenSt = .; /* statscreen */
-        . = 0x003238; gUiTmScratchA = .; /* statscreen? size = 0x500 */
-        . = 0x003738; gUiTmScratchB = .; /* statscreen? size = 0x500 */
-        . = 0x003C38; gUiTmScratchC = .; /* statscreen? size = 0x480? */
-        . = 0x0040B8; gStatusScreenSt = .; /* statusscreen (almost statscreen but not quite) */
-        . = 0x004138; gMuImgBuf = .; /* mu. size = 0x8800 */
-        . = 0x00C938; gSortedUnitsBuf = .; /* unitlistscreen */
-        . = 0x00CC38; gSortedUnits = .; /* unitlistscreen */
-        . = 0x00CD38; gUnk_0200CD38 = .;
-        . = 0x00CD3A; gUnk_0200CD3A = .;
-        . = 0x00D53A; gUnk_0200D53A = .;
-        . = 0x00D5BC; gUnk_0200D5BC = .;
-        . = 0x00D5F4; gUnk_0200D5F4 = .;
-        . = 0x00D69C; gUnk_0200D69C = .;
-        . = 0x00D6A4; gUnk_0200D6A4 = .;
-        . = 0x00D6AC; gUnk_0200D6AC = .;
-        . = 0x00D6B4; gUnk_0200D6B4 = .;
-        . = 0x00E6B4; gUnk_0200E6B4 = .;
-        . = 0x00E6D4; gPrepUnitList = .;
-        . = 0x00E7D4; gUnk_0200E7D4 = .; /* this is a u8 */
-        . = 0x00E7D8; gUnk_0200E7D8 = .;
-        . = 0x00E7DC; gPrepScreenText_PickLeftBar = .;
-        . = 0x00E7E4; gPrepScreenTexts_Units = .;
-        . = 0x00E864; gUnk_0200E864 = .; /* this is multiple text */
-        . = 0x00E88C; gUnk_0200E88C = .; /* this is multiple (2?) text */
-        . = 0x00E89C; gPrepScreenText_LeftPersonName = .;
-        . = 0x00E8A4; gPrepTsaBuf = .; /* this is a tilemap */
-        . = 0x00F0A4; gPrepUnitPool = .; /* this is units */
-        . = 0x0100A4; gPrepFadePal = .;
-        . = 0x0104A4; gUnk_020104A4 = .; /* buf? */
-        . = 0x0154A4; gPrepMenuItems = .;
-        . = 0x0155E4; gPrepMenuItemCnt = .;
-        . = 0x0155E8; gPrepTexts1 = .;
-        . = 0x015688; gPrepTexts3 = .;
-        . = 0x015698; gPrepSubMenuIcons = .;
-        . = 0x0156E8; gPrepPageItemTable = .;
-        . = 0x015D28; gPrepItemListData = .;
-        . = 0x016368; gPrepAllItemsCount = .;
-        . = 0x01636A; gPrepMenuScrollPos = .;
-        . = 0x01636C; sSallyCirWinH_obj = .;
-        . = 0x01686C; sSallyCirWinH = .;
-        . = 0x016874; gUnk_Pal_02016874 = .; /* big jump here? */
-        . = 0x0168F0;
+        . = . + 0x100;
+        . = ALIGN(4); src/battlepreview.o(ewram_overlay_0);
+        . = ALIGN(4); src/statscreen.o(ewram_overlay_0);
+        . = ALIGN(4); src/statusscreen.o(ewram_overlay_0);
+        . = ALIGN(4); src/mu.o(ewram_overlay_0);
+        . = ALIGN(4); src/unitlistscreen.o(ewram_overlay_0);
+        . = ALIGN(4); src/prepmenu.o(ewram_overlay_0);
+        . = ALIGN(4); src/prep_sallycir.o(ewram_overlay_0);
         . = ALIGN(4); src/secretscreen.o(ewram_overlay_0);
-        . = 0x0169CC;
         . = ALIGN(4); src/augury.o(ewram_overlay_0);
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);

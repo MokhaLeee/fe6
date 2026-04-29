@@ -37,9 +37,11 @@ enum
     PAGE_FRAME_SCREEN_Y = 2,
 };
 
-struct StatScreenInfo EWRAM_DATA gStatScreenInfo = { 0 };
-
-extern struct StatScreenSt gStatScreenSt; // TODO: ewram overlay
+EWRAM_DATA struct StatScreenInfo gStatScreenInfo = { 0 };
+EWRAM_OVERLAY(0) struct StatScreenSt gStatScreenSt = {}; // TODO: ewram overlay
+EWRAM_OVERLAY(0) u16 gUiTmScratchA[0x280] = {};
+EWRAM_OVERLAY(0) u16 gUiTmScratchB[0x280] = {};
+EWRAM_OVERLAY(0) u16 gUiTmScratchC[0x240] = {};
 
 void DrawUiGaugeBitmapEdgeColumn(u8 * bitmap, int pixels_per_line, int column)
 {

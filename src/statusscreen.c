@@ -33,7 +33,7 @@
 #include "constants/videoalloc_global.h"
 
 // TODO: put in ewram overlay properly
-extern struct StatusScreenSt gStatusScreenSt;
+EWRAM_OVERLAY(0) struct StatusScreenSt gStatusScreenSt = {};
 
 void StatusScreenFadeIn_Init(struct StatusScreenProc * proc)
 {

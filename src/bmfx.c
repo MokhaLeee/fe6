@@ -43,7 +43,7 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
-extern u16 gChapterIntroMotifTmBuf[];
+EWRAM_OVERLAY(0) u16 gChapterIntroMotifTmBuf[0x400] = {};
 
 struct RescueTransferAnimProc
 {

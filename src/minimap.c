@@ -16,11 +16,11 @@
 #include "constants/videoalloc_global.h"
 
 // TODO: those are in this file, part of the ewram overlay
-extern i16 gMinimapWinBuf[320 * 2];
-extern i16 * gMinimapFrontWinBuf;
-extern i16 * gMinimapBackWinBuf;
-extern i16 * gMinimapDisplayedWinBuf;
-extern u16 * gMinimapObjectFlashPal;
+EWRAM_OVERLAY(0) i16 gMinimapWinBuf[320 * 2] = {};
+EWRAM_OVERLAY(0) i16 *gMinimapFrontWinBuf = NULL;
+EWRAM_OVERLAY(0) i16 *gMinimapBackWinBuf = NULL;
+EWRAM_OVERLAY(0) i16 *gMinimapDisplayedWinBuf = NULL;
+EWRAM_OVERLAY(0) u16 *gMinimapObjectFlashPal = NULL;
 
 // TODO: those are in this file, rodata
 extern u8 const gUnk_083273E4[]; // lz
