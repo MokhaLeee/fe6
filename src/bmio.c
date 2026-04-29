@@ -15,74 +15,6 @@
 
 #include "constants/videoalloc_global.h"
 
-struct TsImgAnim
-{
-    /* 00 */ u16 time;
-    /* 02 */ u16 size;
-    /* 04 */ void const * data;
-};
-
-struct TsPalAnim
-{
-    /* 00 */ void const * data;
-    /* 04 */ u8 time;
-    /* 05 */ u8 colorCount;
-    /* 06 */ u8 colorStart;
-};
-
-struct WeatherParticle
-{
-    /* 00 */ short x;
-    /* 02 */ short y;
-
-    /* 04 */ short x_speed;
-    /* 06 */ short y_speed;
-
-    /* 08 */ u8 chr;
-    /* 09 */ u8 kind;
-};
-
-union WeatherEffect
-{
-    /**
-     * Array of weather particles
-     */
-    struct WeatherParticle particles[0x40];
-
-    /**
-     * Buffer for cloud graphics
-     */
-    u32 imgCloud[0xC0];
-};
-
-union WeatherGradient
-{
-    /**
-     * Buffer holding colors for vertical gradient.
-     */
-    u16 lines[320];
-
-    /**
-     * Buffer holding 8 different variations of the tileset palette
-     * Variations have increasing amounts of red; used for flames weather effect
-     */
-    u16 fireGradient[8][0x40];
-};
-
-struct BmVSyncProc
-{
-    PROC_HEADER;
-
-    /* 2C */ struct TsImgAnim const * imgAnimStart;
-    /* 30 */ struct TsImgAnim const * imgAnimCurrent;
-
-    /* 34 */ short imgAnimClock;
-    /* 36 */ short palAnimClock;
-
-    /* 38 */ struct TsPalAnim const * palAnimStart;
-    /* 3C */ struct TsPalAnim const * palAnimCurrent;
-};
-
 static void WeatherInit_None(void);
 static void WeatherInit_Snow(void);
 static void WeatherVBlank_Snow(void);
@@ -100,15 +32,15 @@ static void WeatherInit_Clouds(void);
 static void WeatherVBlank_Clouds(void);
 static void WeatherUpdate_Clouds(void);
 
-extern union WeatherEffect gWeatherEffect;
-extern union WeatherGradient gWeatherGradient;
-
 #include "data/tileset/anims.h"
 
 static void BmVSync_TsImgAnim(struct BmVSyncProc * proc);
 static void BmVSync_TsPalAnim(struct BmVSyncProc * proc);
 static void BmVSync_Repeat(struct BmVSyncProc * proc);
 static void BmVSync_End(struct BmVSyncProc * proc);
+
+EWRAM_OVERLAY(0) union WeatherEffect gWeatherEffect = {};
+EWRAM_OVERLAY(0) union WeatherGradient gWeatherGradient = {};
 
 struct ProcScr CONST_DATA ProcScr_BmVSync[] =
 {

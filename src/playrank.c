@@ -889,19 +889,19 @@ bool PlayRank_ChapterTurns_DrawTurn(int line)
 		ClearText(&gpPlayRankSt->texts[index]);
 		ClearText(&gpPlayRankSt->texts[PLAYRANK_TEXT_8]);
 
-		chapter_id = GetChapterInfo(chapter_stat->chapter_id)->number_id;
+		chapter_id = GetChapterInfo(chapter_stat->chapter_id)->index_gaiden;
 		PlayRank_ChapterTurns_DrawBase(
 			&gpPlayRankSt->texts[index],
 			chapter_id,
 			true
 		);
 
-		x = (0x46 - GetStringTextLen(DecodeMsg(GetChapterInfo(chapter_stat->chapter_id)->msg_38))) / 2;
+		x = (0x46 - GetStringTextLen(DecodeMsg(GetChapterInfo(chapter_stat->chapter_id)->msg_chapter_title))) / 2;
 		Text_InsertDrawString(
 			&gpPlayRankSt->texts[index],
 			x + 0x28,
 			TEXT_COLOR_SYSTEM_WHITE,
-			DecodeMsg(GetChapterInfo(chapter_stat->chapter_id)->msg_38)
+			DecodeMsg(GetChapterInfo(chapter_stat->chapter_id)->msg_chapter_title)
 		);
 
 		PutText(
@@ -1565,7 +1565,7 @@ u8 PlayRankGetter_Asset(void)
 {
 	u32 total_asset = GetTotalAsset();
 	_UNUSED struct ChapterStats *chapter_state = GetChapterStats(GetNextChapterStatsSlot());
-	u32 ref = GetChapterInfo(gPlaySt.chapter)->number_id / 2;
+	u32 ref = GetChapterInfo(gPlaySt.chapter)->index_gaiden / 2;
 
 	int i = 0;
 	int *ref_assets = gPlayRank_AssetRef;

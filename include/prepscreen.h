@@ -148,7 +148,8 @@ struct PrepUpperDispProc
     /* 32 */ u8 unk_32;
     /* 33 */ u8 unk_33;
     /* 34 */ u8 cursor_x, cursor_y;
-    /* 36 */ u8 unk36, chidx;
+    /* 36 */ u8 unk36;
+    /* 37 */ u8 index_gaiden;
     /* 38 */ u8 disp_x, disp_y;
     /* 3A */ u16 unk_3A;
     /* 3C */ u16 unk_3C;

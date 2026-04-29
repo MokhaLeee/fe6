@@ -120,8 +120,8 @@ gUnk_082365F4:	@ 0x082365F4
 gUnk_082376C4:	@ 0x082376C4
 	.incbin "fe6-base.gba", 0x2376C4, 0x2384F8 - 0x2376C4
 
-	.global gUnk_082384F8
-gUnk_082384F8:	@ 0x082384F8
+	.global MapAsset02_TsaConf
+MapAsset02_TsaConf:	@ 0x082384F8
 	.incbin "fe6-base.gba", 0x2384F8, 0x23956C - 0x2384F8
 
 	.global MapAsset01_TsaConf
@@ -393,21 +393,21 @@ gUnk_082468FC:	@ 0x082468FC
 gUnk_08246BF0:	@ 0x08246BF0
 	.incbin "fe6-base.gba", 0x246BF0, 0x246F30 - 0x246BF0
 
-	.global gUnk_08246F30
-gUnk_08246F30:	@ 0x08246F30
+	.global MapTsa_Ch3
+MapTsa_Ch3:	@ 0x08246F30
 	.incbin "fe6-base.gba", 0x246F30, 0x247230 - 0x246F30
 
-	.global gUnk_08247230
-gUnk_08247230:	@ 0x08247230
+	.global MapTsa_Chapter2
+MapTsa_Chapter2:	@ 0x08247230
 	.incbin "fe6-base.gba", 0x247230, 0x2474C8 - 0x247230
 
 	.global gUnk_082474C8
 gUnk_082474C8:	@ 0x082474C8
 	.incbin "fe6-base.gba", 0x2474C8, 0x247718 - 0x2474C8
 
-	.global MapTsa_Chapter1
-MapTsa_Chapter1:	@ 0x08247718
-	.incbin "data/mapassets/MapTsa_Chapter1.tsa.lz"
+	.global MapTsa_Chapter0
+MapTsa_Chapter0:	@ 0x08247718
+	.incbin "data/mapassets/MapTsa_Chapter0.tsa.lz"
 
 	.global MapAsset01_Img1
 MapAsset01_Img1:	@ 0x082478F0

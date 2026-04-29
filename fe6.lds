@@ -39,8 +39,8 @@ SECTIONS
         . = 0x001F70; gChapterIntroMotifTmBuf = .; /* bmfx */
         . = 0x002770; gFont_Unk_02002770 = .; /* mapmenu */
         . = 0x002788; gTradeMenuText = .; /* trademenu */
-        . = 0x0027D8, gWeatherEffect = .; /* bmio */
-        . = 0x002AD8; gWeatherGradient = .; /* bmio */
+        . = 0x0027D8;
+        . = ALIGN(4); src/bmio.o(ewram_overlay_0);
         . = 0x002FD8; gBattlePreviewLabels = .; /* battlepreview */
         . = 0x003008; gBattlePreviewIconPalBuf = .; /* battlepreview */
         . = 0x003108; gStatScreenSt = .; /* statscreen */
@@ -718,7 +718,7 @@ SECTIONS
         . = ALIGN(4); src/gamedata.o(.rodata);
         . = ALIGN(4); src/gamedatainfo.o(.rodata);
         . = ALIGN(4); src/ending_credit_info.o(.rodata);
-        . = ALIGN(4); data/chapterinfo_debugname.o(.rodata);
+        . = ALIGN(4); src/chapterinfo_data.o(.rodata);
         . = ALIGN(4); src/mu_info_data.o(.rodata);
         . = ALIGN(4); src/manim_img1.o(.rodata);
         . = ALIGN(4); src/worldmap_img.o(.rodata);
@@ -880,7 +880,9 @@ SECTIONS
         . = ALIGN(4); src/spellassoc_data.o(.data);
         . = ALIGN(4); src/support_bonus.o(.data);
         . = ALIGN(4), src/ending_credit_info.o(.data);
-        . = ALIGN(4), data/chapterinfo.o(.data);
+        . = ALIGN(4), src/chapterinfo_data.o(.data);
+        . = ALIGN(4), src/chapterinfo_assets.o(.data);
+        . = ALIGN(4), src/chapterinfo_assets_.o(.data);
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); src/mu_info.o(.data);
         . = ALIGN(4); src/manim.o(.data);

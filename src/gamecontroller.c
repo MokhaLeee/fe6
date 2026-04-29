@@ -214,9 +214,9 @@ int GetFurthestSaveChapter(void)
 
         ReadGameSavePlaySt(i, &play_st);
 
-        if (number < GetChapterInfo(play_st.chapter)->number_id)
+        if (number < GetChapterInfo(play_st.chapter)->index_gaiden)
         {
-            number = GetChapterInfo(play_st.chapter)->number_id;
+            number = GetChapterInfo(play_st.chapter)->index_gaiden;
             chapter = play_st.chapter;
         }
     }

@@ -11,6 +11,7 @@
 
 struct ChapterTitleFxSt EWRAM_DATA gChapterTitleFxSt = { 0 };
 
+// enum: CHAPTER_TITLE
 u16 const *CONST_DATA gChapterTitleData[] = {
 	Img_ChapterTitle_0830D9C0,
 	Img_ChapterTitle_0830DDBC,

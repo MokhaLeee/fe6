@@ -826,6 +826,20 @@ void NewEkrBaseAppear(int identifier, int duration);
 bool CheckEkrBaseAppearUnexist(void);
 // EkrBaseAppear_Loop
 bool _SetupBanim(void);
+
+enum banim_terrain_set_type {
+    BANIM_TERRAIN_SET_0,
+    BANIM_TERRAIN_SET_1,
+    BANIM_TERRAIN_SET_2,
+    BANIM_TERRAIN_SET_3,
+    BANIM_TERRAIN_SET_4,
+    BANIM_TERRAIN_SET_5,
+    BANIM_TERRAIN_SET_6,
+    BANIM_TERRAIN_SET_7,
+    BANIM_TERRAIN_SET_8,
+    BANIM_TERRAIN_SET_9
+};
+
 u16 GetBattleAnimationId(const struct BanimInfoEnt *animdef, u16 item);
 int GetBanimTerrainGround(u16 terrain, u16 tileset);
 int GetBanimBackgroundIndex(u16 terrain, u16 tileset);

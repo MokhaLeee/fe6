@@ -1,36 +1,5 @@
-    .data
+	.data
 
-    .global ChapterInfoTable
-ChapterInfoTable: @ 086637A4
-    .incbin "fe6-base.gba", 0x6637A4, (0x664398 - 0x6637A4) @ length: 0BF4
-
-    .global ChapterAssets
-ChapterAssets: @ 08664398
-	.4byte 0x00000000
-	.4byte MapAsset01_Img1
-	.4byte MapAsset01_Img2
-	.4byte MapAsset01_Pal
-	.4byte MapAsset01_TsaConf
-	.4byte MapTsa_Chapter1
-	.4byte MapAsset01_Anims
-	.4byte MapChange_Ch0
-	.4byte ChapterEventInfo_Unk_086676F0
-	.4byte EventScr_Wm_Tutorial
-	.4byte gUnk_082474C8
-	.4byte MapChange_Ch1
-	.4byte ChapterEventInfo_Chapter1
-	.4byte EventScr_Wm_Ch1
-	.4byte gUnk_08247230
-	.4byte MapChange_Ch2
-	.4byte ChapterEventInfo_Chapter2
-	.4byte EventScr_Wm_Ch2
-	.4byte MapAsset02_Img
-	.4byte MapAsset02_Pal
-	.4byte gUnk_082384F8
-	.4byte gUnk_08246F30
-	.4byte MapChange_Ch3
-	.4byte ChapterEventInfo_Chapter3
-	.4byte EventScr_Wm_Ch3
 	.4byte gUnk_08246BF0
 	.4byte MapChange_Ch4
 	.4byte ChapterEventInfo_Chapter4

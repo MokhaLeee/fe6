@@ -805,9 +805,9 @@ void PrepScreen_DrawScreenInfo(struct PrepMenuProc *proc)
 
 		ClearText(&gPrepScreenText_PickLeftBar);
 
-		Text_SetCursor(&gPrepScreenText_PickLeftBar, (0x48 - GetStringTextLen(DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C))) >> 1);
+		Text_SetCursor(&gPrepScreenText_PickLeftBar, (0x48 - GetStringTextLen(DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_wm_location))) >> 1);
 		Text_SetColor(&gPrepScreenText_PickLeftBar, TEXT_COLOR_SYSTEM_WHITE);
-		Text_DrawString(&gPrepScreenText_PickLeftBar, DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C));
+		Text_DrawString(&gPrepScreenText_PickLeftBar, DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_wm_location));
 
 		PutText(&gPrepScreenText_PickLeftBar, gBg0Tm + TM_OFFSET(17, 17));
 	} else {
@@ -872,7 +872,7 @@ void PrepMenu_InitExt(struct PrepMenuProc *proc)
 	PrepDisp_SetWorlMapInfo((proc->disp_proc = StartPrepUpperDisp(proc)),
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursorx * 8,
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursory * 8,
-		GetChapterInfo(gPlaySt.chapter)->number_id);
+		GetChapterInfo(gPlaySt.chapter)->index_gaiden);
 }
 
 fi8 PrepUnitSel_Loop(struct PrepMenuProc *proc)
