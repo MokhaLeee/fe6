@@ -2063,17 +2063,17 @@ const struct MapChangeInfo MapChange_Ch16[] = {
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch17a_0[] = {
+static const u16 Tiles_MapChange_Ch17c_0[] = {
 	0xE1C, 0xE20, 0xE24,
 	0xE9C, 0xEA0, 0xEA4,
 	0xF1C, 0xF20, 0xF24,
 };
 
-static const u16 Tiles_MapChange_Ch17a_1[] = {
+static const u16 Tiles_MapChange_Ch17c_1[] = {
 	0x080,
 };
 
-static const u16 Tiles_MapChange_Ch17a_2[] = {
+static const u16 Tiles_MapChange_Ch17c_2[] = {
 	0x000, 0x000, 0x000, 0x4E0, 0x644, 0x000,
 	0x000, 0x46C, 0x4EC, 0x358, 0x644, 0x644,
 	0x4E0, 0x644, 0x644, 0x644, 0x644, 0x3DC,
@@ -2083,14 +2083,14 @@ static const u16 Tiles_MapChange_Ch17a_2[] = {
 	0x000, 0x4E4, 0x000, 0x000, 0x000, 0x000,
 };
 
-const struct MapChangeInfo MapChange_Ch17a[] = {
+const struct MapChangeInfo MapChange_Ch17c[] = {
 	{
 		.id = 0,
 		.x = 1,
 		.y = 10,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch17a_0,
+		.metatiles = Tiles_MapChange_Ch17c_0,
 	},
 	{
 		.id = 1,
@@ -2098,7 +2098,7 @@ const struct MapChangeInfo MapChange_Ch17a[] = {
 		.y = 12,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch17a_1,
+		.metatiles = Tiles_MapChange_Ch17c_1,
 	},
 	{
 		.id = 2,
@@ -2106,39 +2106,39 @@ const struct MapChangeInfo MapChange_Ch17a[] = {
 		.y = 6,
 		.width = 6,
 		.height = 7,
-		.metatiles = Tiles_MapChange_Ch17a_2,
+		.metatiles = Tiles_MapChange_Ch17c_2,
 	},
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch17b_0[] = {
+static const u16 Tiles_MapChange_Ch17d_0[] = {
 	0xE1C, 0xE20, 0xE24,
 	0xE9C, 0xEA0, 0xEA4,
 	0xF1C, 0xF20, 0xF24,
 };
 
-static const u16 Tiles_MapChange_Ch17b_1[] = {
+static const u16 Tiles_MapChange_Ch17d_1[] = {
 	0xE1C, 0xE20, 0xE24,
 	0xE9C, 0xEA0, 0xEA4,
 	0xF1C, 0xF20, 0xF24,
 };
 
-static const u16 Tiles_MapChange_Ch17b_2[] = {
+static const u16 Tiles_MapChange_Ch17d_2[] = {
 	0x080,
 };
 
-static const u16 Tiles_MapChange_Ch17b_3[] = {
+static const u16 Tiles_MapChange_Ch17d_3[] = {
 	0x080,
 };
 
-const struct MapChangeInfo MapChange_Ch17b[] = {
+const struct MapChangeInfo MapChange_Ch17d[] = {
 	{
 		.id = 0,
 		.x = 1,
 		.y = 15,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch17b_0,
+		.metatiles = Tiles_MapChange_Ch17d_0,
 	},
 	{
 		.id = 1,
@@ -2146,7 +2146,7 @@ const struct MapChangeInfo MapChange_Ch17b[] = {
 		.y = 0,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch17b_1,
+		.metatiles = Tiles_MapChange_Ch17d_1,
 	},
 	{
 		.id = 2,
@@ -2154,7 +2154,7 @@ const struct MapChangeInfo MapChange_Ch17b[] = {
 		.y = 17,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch17b_2,
+		.metatiles = Tiles_MapChange_Ch17d_2,
 	},
 	{
 		.id = 3,
@@ -2162,42 +2162,42 @@ const struct MapChangeInfo MapChange_Ch17b[] = {
 		.y = 2,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch17b_3,
+		.metatiles = Tiles_MapChange_Ch17d_3,
 	},
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch18a_0[] = {
+static const u16 Tiles_MapChange_Ch18c_0[] = {
 	0xC1C, 0xC20, 0xC24,
 	0xC9C, 0xCA0, 0xCA4,
 	0xD1C, 0xD20, 0xD24,
 };
 
-static const u16 Tiles_MapChange_Ch18a_1[] = {
+static const u16 Tiles_MapChange_Ch18c_1[] = {
 	0xC1C, 0xC20, 0xC24,
 	0xC9C, 0xCA0, 0xCA4,
 	0xD1C, 0xD20, 0xD24,
 };
 
-static const u16 Tiles_MapChange_Ch18a_2[] = {
+static const u16 Tiles_MapChange_Ch18c_2[] = {
 	0xC1C, 0xC20, 0xC24,
 	0xC9C, 0xCA0, 0xCA4,
 	0xD1C, 0xD20, 0xD24,
 };
 
-static const u16 Tiles_MapChange_Ch18a_3[] = {
+static const u16 Tiles_MapChange_Ch18c_3[] = {
 	0x080,
 };
 
-static const u16 Tiles_MapChange_Ch18a_4[] = {
+static const u16 Tiles_MapChange_Ch18c_4[] = {
 	0x080,
 };
 
-static const u16 Tiles_MapChange_Ch18a_5[] = {
+static const u16 Tiles_MapChange_Ch18c_5[] = {
 	0x080,
 };
 
-static const u16 Tiles_MapChange_Ch18a_6[] = {
+static const u16 Tiles_MapChange_Ch18c_6[] = {
 	0x000, 0x000, 0x000, 0x5D0,
 	0x000, 0x000, 0x65C, 0x5D8,
 	0x000, 0x000, 0x650, 0x000,
@@ -2209,7 +2209,7 @@ static const u16 Tiles_MapChange_Ch18a_6[] = {
 	0x5D4, 0x000, 0x000, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch18a_7[] = {
+static const u16 Tiles_MapChange_Ch18c_7[] = {
 	0x85C,
 	0x7E0,
 	0x7E8,
@@ -2217,20 +2217,20 @@ static const u16 Tiles_MapChange_Ch18a_7[] = {
 	0x5D8,
 };
 
-static const u16 Tiles_MapChange_Ch18a_8[] = {
+static const u16 Tiles_MapChange_Ch18c_8[] = {
 	0x000, 0x000, 0x000, 0x65C,
 	0x000, 0x000, 0x85C, 0x5D4,
 	0x85C, 0x7F0, 0x7D8, 0x000,
 	0x7D8, 0x000, 0x000, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch18a_9[] = {
+static const u16 Tiles_MapChange_Ch18c_9[] = {
 	0x858, 0x000, 0x000, 0x000,
 	0x7DC, 0x5E0, 0x858, 0x000,
 	0x000, 0x000, 0x7DC, 0x7F4,
 };
 
-static const u16 Tiles_MapChange_Ch18a_10[] = {
+static const u16 Tiles_MapChange_Ch18c_10[] = {
 	0x858, 0x000, 0x000, 0x000,
 	0x7DC, 0x5E0, 0x858, 0x000,
 	0x000, 0x000, 0x5D0, 0x000,
@@ -2240,7 +2240,7 @@ static const u16 Tiles_MapChange_Ch18a_10[] = {
 	0x000, 0x000, 0x000, 0x7E0,
 };
 
-static const u16 Tiles_MapChange_Ch18a_11[] = {
+static const u16 Tiles_MapChange_Ch18c_11[] = {
 	0x6D4, 0x6FC, 0x6FC, 0x6E8, 0x55C, 0x6DC, 0x768, 0x76C, 0x760,
 	0x000, 0x874, 0x6FC, 0x750, 0x000, 0x000, 0x6D4, 0x5F8, 0x558,
 	0x000, 0x5D0, 0x6EC, 0x6FC, 0x750, 0x578, 0x668, 0x67C, 0x66C,
@@ -2248,7 +2248,7 @@ static const u16 Tiles_MapChange_Ch18a_11[] = {
 	0x7E0, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch18a_12[] = {
+static const u16 Tiles_MapChange_Ch18c_12[] = {
 	0x000, 0x000, 0x7DC, 0x858, 0x578, 0x85C, 0x5D4,
 	0x000, 0x000, 0x000, 0x7DC, 0x6FC, 0x7D8, 0xA80,
 	0x000, 0x654, 0x558, 0x7D0, 0x7D8, 0x000, 0x000,
@@ -2256,7 +2256,7 @@ static const u16 Tiles_MapChange_Ch18a_12[] = {
 	0x5E8, 0x678, 0x6FC, 0x6FC, 0x5F8, 0x67C, 0x66C,
 };
 
-static const u16 Tiles_MapChange_Ch18a_13[] = {
+static const u16 Tiles_MapChange_Ch18c_13[] = {
 	0x000, 0x85C, 0x7D8,
 	0x000, 0x5D0, 0x000,
 	0x000, 0x664, 0x000,
@@ -2269,7 +2269,7 @@ static const u16 Tiles_MapChange_Ch18a_13[] = {
 	0x000, 0x7DC, 0x858,
 };
 
-static const u16 Tiles_MapChange_Ch18a_14[] = {
+static const u16 Tiles_MapChange_Ch18c_14[] = {
 	0x7DC, 0x858,
 	0x000, 0x7E0,
 	0x000, 0x5D0,
@@ -2279,28 +2279,28 @@ static const u16 Tiles_MapChange_Ch18a_14[] = {
 	0x650, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch18a_15[] = {
+static const u16 Tiles_MapChange_Ch18c_15[] = {
 	0x000, 0x85C,
 	0x7D0, 0x7D8,
 	0x5D0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch18a_16[] = {
+static const u16 Tiles_MapChange_Ch18c_16[] = {
 	0x000, 0x85C, 0x7F0, 0x7F4,
 	0x65C, 0x7D8, 0x000, 0x000,
 	0x5D8, 0x000, 0x000, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch18a_17[] = {
+static const u16 Tiles_MapChange_Ch18c_17[] = {
 	0x858,
 	0x7DC,
 };
 
-static const u16 Tiles_MapChange_Ch18a_18[] = {
+static const u16 Tiles_MapChange_Ch18c_18[] = {
 	0x7DC,
 };
 
-static const u16 Tiles_MapChange_Ch18a_19[] = {
+static const u16 Tiles_MapChange_Ch18c_19[] = {
 	0x000, 0x000, 0x7E0, 0x000, 0x664, 0x000, 0x000, 0x000, 0x000, 0x7E0, 0x000,
 	0x000, 0x85C, 0x7D8, 0x000, 0x650, 0x000, 0x000, 0x000, 0x000, 0x7DC, 0x858,
 	0x000, 0x7E0, 0x000, 0x85C, 0x7D8, 0x000, 0x000, 0x000, 0x000, 0x000, 0x5D0,
@@ -2309,14 +2309,14 @@ static const u16 Tiles_MapChange_Ch18a_19[] = {
 	0x7D8, 0x000, 0x000, 0x000, 0x000, 0x7DC, 0x7D8, 0x000, 0x7DC, 0x87C, 0x000,
 };
 
-const struct MapChangeInfo MapChange_Ch18a[] = {
+const struct MapChangeInfo MapChange_Ch18c[] = {
 	{
 		.id = 0,
 		.x = 1,
 		.y = 2,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch18a_0,
+		.metatiles = Tiles_MapChange_Ch18c_0,
 	},
 	{
 		.id = 1,
@@ -2324,7 +2324,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 22,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch18a_1,
+		.metatiles = Tiles_MapChange_Ch18c_1,
 	},
 	{
 		.id = 2,
@@ -2332,7 +2332,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 7,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch18a_2,
+		.metatiles = Tiles_MapChange_Ch18c_2,
 	},
 	{
 		.id = 3,
@@ -2340,7 +2340,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 4,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch18a_3,
+		.metatiles = Tiles_MapChange_Ch18c_3,
 	},
 	{
 		.id = 4,
@@ -2348,7 +2348,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 24,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch18a_4,
+		.metatiles = Tiles_MapChange_Ch18c_4,
 	},
 	{
 		.id = 5,
@@ -2356,7 +2356,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 9,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch18a_5,
+		.metatiles = Tiles_MapChange_Ch18c_5,
 	},
 	{
 		.id = 6,
@@ -2364,7 +2364,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 0,
 		.width = 4,
 		.height = 9,
-		.metatiles = Tiles_MapChange_Ch18a_6,
+		.metatiles = Tiles_MapChange_Ch18c_6,
 	},
 	{
 		.id = 7,
@@ -2372,7 +2372,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 8,
 		.width = 1,
 		.height = 5,
-		.metatiles = Tiles_MapChange_Ch18a_7,
+		.metatiles = Tiles_MapChange_Ch18c_7,
 	},
 	{
 		.id = 8,
@@ -2380,7 +2380,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 12,
 		.width = 4,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch18a_8,
+		.metatiles = Tiles_MapChange_Ch18c_8,
 	},
 	{
 		.id = 9,
@@ -2388,7 +2388,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 23,
 		.width = 4,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch18a_9,
+		.metatiles = Tiles_MapChange_Ch18c_9,
 	},
 	{
 		.id = 10,
@@ -2396,7 +2396,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 25,
 		.width = 4,
 		.height = 7,
-		.metatiles = Tiles_MapChange_Ch18a_10,
+		.metatiles = Tiles_MapChange_Ch18c_10,
 	},
 	{
 		.id = 11,
@@ -2404,7 +2404,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 27,
 		.width = 9,
 		.height = 5,
-		.metatiles = Tiles_MapChange_Ch18a_11,
+		.metatiles = Tiles_MapChange_Ch18c_11,
 	},
 	{
 		.id = 12,
@@ -2412,7 +2412,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 22,
 		.width = 7,
 		.height = 5,
-		.metatiles = Tiles_MapChange_Ch18a_12,
+		.metatiles = Tiles_MapChange_Ch18c_12,
 	},
 	{
 		.id = 13,
@@ -2420,7 +2420,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 5,
 		.width = 3,
 		.height = 10,
-		.metatiles = Tiles_MapChange_Ch18a_13,
+		.metatiles = Tiles_MapChange_Ch18c_13,
 	},
 	{
 		.id = 14,
@@ -2428,7 +2428,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 15,
 		.width = 2,
 		.height = 7,
-		.metatiles = Tiles_MapChange_Ch18a_14,
+		.metatiles = Tiles_MapChange_Ch18c_14,
 	},
 	{
 		.id = 15,
@@ -2436,7 +2436,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 19,
 		.width = 2,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch18a_15,
+		.metatiles = Tiles_MapChange_Ch18c_15,
 	},
 	{
 		.id = 16,
@@ -2444,7 +2444,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 17,
 		.width = 4,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch18a_16,
+		.metatiles = Tiles_MapChange_Ch18c_16,
 	},
 	{
 		.id = 17,
@@ -2452,7 +2452,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 6,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch18a_17,
+		.metatiles = Tiles_MapChange_Ch18c_17,
 	},
 	{
 		.id = 18,
@@ -2460,7 +2460,7 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 6,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch18a_18,
+		.metatiles = Tiles_MapChange_Ch18c_18,
 	},
 	{
 		.id = 19,
@@ -2468,39 +2468,39 @@ const struct MapChangeInfo MapChange_Ch18a[] = {
 		.y = 0,
 		.width = 11,
 		.height = 6,
-		.metatiles = Tiles_MapChange_Ch18a_19,
+		.metatiles = Tiles_MapChange_Ch18c_19,
 	},
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch19a_0[] = {
+static const u16 Tiles_MapChange_Ch19c_0[] = {
 	0xC1C, 0xC20, 0xC24,
 	0xC9C, 0xCA0, 0xCA4,
 	0xD1C, 0xD20, 0xD24,
 };
 
-static const u16 Tiles_MapChange_Ch19a_1[] = {
+static const u16 Tiles_MapChange_Ch19c_1[] = {
 	0xC1C, 0xC20, 0xC24,
 	0xC9C, 0xCA0, 0xCA4,
 	0xD1C, 0xD20, 0xD24,
 };
 
-static const u16 Tiles_MapChange_Ch19a_2[] = {
+static const u16 Tiles_MapChange_Ch19c_2[] = {
 	0x080,
 };
 
-static const u16 Tiles_MapChange_Ch19a_3[] = {
+static const u16 Tiles_MapChange_Ch19c_3[] = {
 	0x080,
 };
 
-const struct MapChangeInfo MapChange_Ch19a[] = {
+const struct MapChangeInfo MapChange_Ch19c[] = {
 	{
 		.id = 0,
 		.x = 9,
 		.y = 12,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch19a_0,
+		.metatiles = Tiles_MapChange_Ch19c_0,
 	},
 	{
 		.id = 1,
@@ -2508,7 +2508,7 @@ const struct MapChangeInfo MapChange_Ch19a[] = {
 		.y = 12,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch19a_1,
+		.metatiles = Tiles_MapChange_Ch19c_1,
 	},
 	{
 		.id = 2,
@@ -2516,7 +2516,7 @@ const struct MapChangeInfo MapChange_Ch19a[] = {
 		.y = 14,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19a_2,
+		.metatiles = Tiles_MapChange_Ch19c_2,
 	},
 	{
 		.id = 3,
@@ -2524,83 +2524,83 @@ const struct MapChangeInfo MapChange_Ch19a[] = {
 		.y = 14,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19a_3,
+		.metatiles = Tiles_MapChange_Ch19c_3,
 	},
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch20a_0[] = {
+static const u16 Tiles_MapChange_Ch20c_0[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_1[] = {
+static const u16 Tiles_MapChange_Ch20c_1[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_2[] = {
+static const u16 Tiles_MapChange_Ch20c_2[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_3[] = {
+static const u16 Tiles_MapChange_Ch20c_3[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_4[] = {
+static const u16 Tiles_MapChange_Ch20c_4[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_5[] = {
+static const u16 Tiles_MapChange_Ch20c_5[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_6[] = {
+static const u16 Tiles_MapChange_Ch20c_6[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_7[] = {
+static const u16 Tiles_MapChange_Ch20c_7[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20a_8[] = {
+static const u16 Tiles_MapChange_Ch20c_8[] = {
 	0x3E0,
 };
 
-static const u16 Tiles_MapChange_Ch20a_9[] = {
+static const u16 Tiles_MapChange_Ch20c_9[] = {
 	0x9CC,
 	0x2D4,
 	0x9D0,
 };
 
-static const u16 Tiles_MapChange_Ch20a_10[] = {
+static const u16 Tiles_MapChange_Ch20c_10[] = {
 	0x358,
 };
 
-static const u16 Tiles_MapChange_Ch20a_11[] = {
+static const u16 Tiles_MapChange_Ch20c_11[] = {
 	0x8D8, 0x358, 0x8D4,
 };
 
-static const u16 Tiles_MapChange_Ch20a_12[] = {
+static const u16 Tiles_MapChange_Ch20c_12[] = {
 	0x8D8, 0x460,
 	0x000, 0x2D0,
 };
 
-static const u16 Tiles_MapChange_Ch20a_13[] = {
+static const u16 Tiles_MapChange_Ch20c_13[] = {
 	0x848, 0x460, 0x8D4,
 	0x000, 0x2D0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20a_14[] = {
+static const u16 Tiles_MapChange_Ch20c_14[] = {
 	0xA60, 0x358,
 };
 
-const struct MapChangeInfo MapChange_Ch20a[] = {
+const struct MapChangeInfo MapChange_Ch20c[] = {
 	{
 		.id = 0,
 		.x = 2,
 		.y = 10,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_0,
+		.metatiles = Tiles_MapChange_Ch20c_0,
 	},
 	{
 		.id = 1,
@@ -2608,7 +2608,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 11,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_1,
+		.metatiles = Tiles_MapChange_Ch20c_1,
 	},
 	{
 		.id = 2,
@@ -2616,7 +2616,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 11,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_2,
+		.metatiles = Tiles_MapChange_Ch20c_2,
 	},
 	{
 		.id = 3,
@@ -2624,7 +2624,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 10,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_3,
+		.metatiles = Tiles_MapChange_Ch20c_3,
 	},
 	{
 		.id = 4,
@@ -2632,7 +2632,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 16,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_4,
+		.metatiles = Tiles_MapChange_Ch20c_4,
 	},
 	{
 		.id = 5,
@@ -2640,7 +2640,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 16,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_5,
+		.metatiles = Tiles_MapChange_Ch20c_5,
 	},
 	{
 		.id = 6,
@@ -2648,7 +2648,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 16,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_6,
+		.metatiles = Tiles_MapChange_Ch20c_6,
 	},
 	{
 		.id = 7,
@@ -2656,7 +2656,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 18,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_7,
+		.metatiles = Tiles_MapChange_Ch20c_7,
 	},
 	{
 		.id = 8,
@@ -2664,7 +2664,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 8,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_8,
+		.metatiles = Tiles_MapChange_Ch20c_8,
 	},
 	{
 		.id = 9,
@@ -2672,7 +2672,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 10,
 		.width = 1,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20a_9,
+		.metatiles = Tiles_MapChange_Ch20c_9,
 	},
 	{
 		.id = 10,
@@ -2680,7 +2680,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 17,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_10,
+		.metatiles = Tiles_MapChange_Ch20c_10,
 	},
 	{
 		.id = 11,
@@ -2688,7 +2688,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 15,
 		.width = 3,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_11,
+		.metatiles = Tiles_MapChange_Ch20c_11,
 	},
 	{
 		.id = 12,
@@ -2696,7 +2696,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 20,
 		.width = 2,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch20a_12,
+		.metatiles = Tiles_MapChange_Ch20c_12,
 	},
 	{
 		.id = 13,
@@ -2704,7 +2704,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 20,
 		.width = 3,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch20a_13,
+		.metatiles = Tiles_MapChange_Ch20c_13,
 	},
 	{
 		.id = 14,
@@ -2712,7 +2712,7 @@ const struct MapChangeInfo MapChange_Ch20a[] = {
 		.y = 18,
 		.width = 2,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20a_14,
+		.metatiles = Tiles_MapChange_Ch20c_14,
 	},
 	{ .id = -1 }
 };
@@ -3002,91 +3002,91 @@ const struct MapChangeInfo MapChange_Ch24[] = {
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch19b_0[] = {
+static const u16 Tiles_MapChange_Ch19d_0[] = {
 	0x000,
 	0xE18,
 };
 
-static const u16 Tiles_MapChange_Ch19b_1[] = {
+static const u16 Tiles_MapChange_Ch19d_1[] = {
 	0x000,
 	0xE18,
 };
 
-static const u16 Tiles_MapChange_Ch19b_2[] = {
+static const u16 Tiles_MapChange_Ch19d_2[] = {
 	0x000,
 	0xE18,
 };
 
-static const u16 Tiles_MapChange_Ch19b_3[] = {
+static const u16 Tiles_MapChange_Ch19d_3[] = {
 	0x000,
 	0xE18,
 };
 
-static const u16 Tiles_MapChange_Ch19b_4[] = {
+static const u16 Tiles_MapChange_Ch19d_4[] = {
 	0x000,
 	0xE18,
 };
 
-static const u16 Tiles_MapChange_Ch19b_5[] = {
+static const u16 Tiles_MapChange_Ch19d_5[] = {
 	0xC0C, 0x58C, 0xC08,
 	0xD0C, 0xCD4, 0xD08,
 };
 
-static const u16 Tiles_MapChange_Ch19b_6[] = {
+static const u16 Tiles_MapChange_Ch19d_6[] = {
 	0xE1C,
 	0x148,
 };
 
-static const u16 Tiles_MapChange_Ch19b_7[] = {
+static const u16 Tiles_MapChange_Ch19d_7[] = {
 	0x238,
 };
 
-static const u16 Tiles_MapChange_Ch19b_8[] = {
+static const u16 Tiles_MapChange_Ch19d_8[] = {
 	0x1C8, 0x000,
 	0xF54, 0x1B8,
 	0x60C, 0xDE4,
 	0xCF8, 0x214,
 };
 
-static const u16 Tiles_MapChange_Ch19b_9[] = {
+static const u16 Tiles_MapChange_Ch19d_9[] = {
 	0xE1C,
 	0x19C,
 };
 
-static const u16 Tiles_MapChange_Ch19b_10[] = {
+static const u16 Tiles_MapChange_Ch19d_10[] = {
 	0xC0C, 0xF54, 0xC08,
 	0xD0C, 0x60C, 0xD08,
 	0x000, 0xCF8, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch19b_11[] = {
+static const u16 Tiles_MapChange_Ch19d_11[] = {
 	0xD90,
 };
 
-static const u16 Tiles_MapChange_Ch19b_12[] = {
+static const u16 Tiles_MapChange_Ch19d_12[] = {
 	0xD90,
 };
 
-static const u16 Tiles_MapChange_Ch19b_13[] = {
+static const u16 Tiles_MapChange_Ch19d_13[] = {
 	0xD90,
 };
 
-static const u16 Tiles_MapChange_Ch19b_14[] = {
+static const u16 Tiles_MapChange_Ch19d_14[] = {
 	0xD90,
 };
 
-static const u16 Tiles_MapChange_Ch19b_15[] = {
+static const u16 Tiles_MapChange_Ch19d_15[] = {
 	0xD90,
 };
 
-const struct MapChangeInfo MapChange_Ch19b[] = {
+const struct MapChangeInfo MapChange_Ch19d[] = {
 	{
 		.id = 0,
 		.x = 6,
 		.y = 4,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_0,
+		.metatiles = Tiles_MapChange_Ch19d_0,
 	},
 	{
 		.id = 1,
@@ -3094,7 +3094,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 9,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_1,
+		.metatiles = Tiles_MapChange_Ch19d_1,
 	},
 	{
 		.id = 2,
@@ -3102,7 +3102,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 11,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_2,
+		.metatiles = Tiles_MapChange_Ch19d_2,
 	},
 	{
 		.id = 3,
@@ -3110,7 +3110,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 9,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_3,
+		.metatiles = Tiles_MapChange_Ch19d_3,
 	},
 	{
 		.id = 4,
@@ -3118,7 +3118,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 2,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_4,
+		.metatiles = Tiles_MapChange_Ch19d_4,
 	},
 	{
 		.id = 5,
@@ -3126,7 +3126,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 7,
 		.width = 3,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_5,
+		.metatiles = Tiles_MapChange_Ch19d_5,
 	},
 	{
 		.id = 6,
@@ -3134,7 +3134,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 4,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_6,
+		.metatiles = Tiles_MapChange_Ch19d_6,
 	},
 	{
 		.id = 7,
@@ -3142,7 +3142,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 8,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19b_7,
+		.metatiles = Tiles_MapChange_Ch19d_7,
 	},
 	{
 		.id = 8,
@@ -3150,7 +3150,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 14,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch19b_8,
+		.metatiles = Tiles_MapChange_Ch19d_8,
 	},
 	{
 		.id = 9,
@@ -3158,7 +3158,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 4,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch19b_9,
+		.metatiles = Tiles_MapChange_Ch19d_9,
 	},
 	{
 		.id = 10,
@@ -3166,7 +3166,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 5,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch19b_10,
+		.metatiles = Tiles_MapChange_Ch19d_10,
 	},
 	{
 		.id = 11,
@@ -3174,7 +3174,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 5,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19b_11,
+		.metatiles = Tiles_MapChange_Ch19d_11,
 	},
 	{
 		.id = 12,
@@ -3182,7 +3182,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 10,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19b_12,
+		.metatiles = Tiles_MapChange_Ch19d_12,
 	},
 	{
 		.id = 13,
@@ -3190,7 +3190,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 12,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19b_13,
+		.metatiles = Tiles_MapChange_Ch19d_13,
 	},
 	{
 		.id = 14,
@@ -3198,7 +3198,7 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 10,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19b_14,
+		.metatiles = Tiles_MapChange_Ch19d_14,
 	},
 	{
 		.id = 15,
@@ -3206,76 +3206,76 @@ const struct MapChangeInfo MapChange_Ch19b[] = {
 		.y = 3,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch19b_15,
+		.metatiles = Tiles_MapChange_Ch19d_15,
 	},
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch20b_0[] = {
+static const u16 Tiles_MapChange_Ch20d_0[] = {
 	0xE28, 0xAF0,
 	0xB68, 0xB64,
 	0xDAC, 0xA70,
 };
 
-static const u16 Tiles_MapChange_Ch20b_1[] = {
+static const u16 Tiles_MapChange_Ch20d_1[] = {
 	0xB68, 0xB68,
 	0xDAC, 0xA70,
 };
 
-static const u16 Tiles_MapChange_Ch20b_2[] = {
+static const u16 Tiles_MapChange_Ch20d_2[] = {
 	0xA6C,
 	0xB64,
 };
 
-static const u16 Tiles_MapChange_Ch20b_3[] = {
+static const u16 Tiles_MapChange_Ch20d_3[] = {
 	0xC24, 0xAF0,
 	0xCA4, 0xB68,
 	0xDAC, 0xA70,
 };
 
-static const u16 Tiles_MapChange_Ch20b_4[] = {
+static const u16 Tiles_MapChange_Ch20d_4[] = {
 	0xC90, 0x000,
 	0xB68, 0xB68,
 	0xDAC, 0xA70,
 };
 
-static const u16 Tiles_MapChange_Ch20b_5[] = {
+static const u16 Tiles_MapChange_Ch20d_5[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20b_6[] = {
+static const u16 Tiles_MapChange_Ch20d_6[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20b_7[] = {
+static const u16 Tiles_MapChange_Ch20d_7[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20b_8[] = {
+static const u16 Tiles_MapChange_Ch20d_8[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20b_9[] = {
+static const u16 Tiles_MapChange_Ch20d_9[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20b_10[] = {
+static const u16 Tiles_MapChange_Ch20d_10[] = {
 	0x004,
 };
 
-static const u16 Tiles_MapChange_Ch20b_11[] = {
+static const u16 Tiles_MapChange_Ch20d_11[] = {
 	0xE28, 0xAF0,
 	0xB68, 0xB64,
 };
 
-const struct MapChangeInfo MapChange_Ch20b[] = {
+const struct MapChangeInfo MapChange_Ch20d[] = {
 	{
 		.id = 0,
 		.x = 10,
 		.y = 3,
 		.width = 2,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20b_0,
+		.metatiles = Tiles_MapChange_Ch20d_0,
 	},
 	{
 		.id = 1,
@@ -3283,7 +3283,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 5,
 		.width = 2,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch20b_1,
+		.metatiles = Tiles_MapChange_Ch20d_1,
 	},
 	{
 		.id = 2,
@@ -3291,7 +3291,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 11,
 		.width = 1,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch20b_2,
+		.metatiles = Tiles_MapChange_Ch20d_2,
 	},
 	{
 		.id = 3,
@@ -3299,7 +3299,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 14,
 		.width = 2,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20b_3,
+		.metatiles = Tiles_MapChange_Ch20d_3,
 	},
 	{
 		.id = 4,
@@ -3307,7 +3307,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 14,
 		.width = 2,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20b_4,
+		.metatiles = Tiles_MapChange_Ch20d_4,
 	},
 	{
 		.id = 5,
@@ -3315,7 +3315,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 4,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20b_5,
+		.metatiles = Tiles_MapChange_Ch20d_5,
 	},
 	{
 		.id = 6,
@@ -3323,7 +3323,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 5,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20b_6,
+		.metatiles = Tiles_MapChange_Ch20d_6,
 	},
 	{
 		.id = 7,
@@ -3331,7 +3331,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 6,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20b_7,
+		.metatiles = Tiles_MapChange_Ch20d_7,
 	},
 	{
 		.id = 8,
@@ -3339,7 +3339,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 6,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20b_8,
+		.metatiles = Tiles_MapChange_Ch20d_8,
 	},
 	{
 		.id = 9,
@@ -3347,7 +3347,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 8,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20b_9,
+		.metatiles = Tiles_MapChange_Ch20d_9,
 	},
 	{
 		.id = 10,
@@ -3355,7 +3355,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 9,
 		.width = 1,
 		.height = 1,
-		.metatiles = Tiles_MapChange_Ch20b_10,
+		.metatiles = Tiles_MapChange_Ch20d_10,
 	},
 	{
 		.id = 11,
@@ -3363,7 +3363,7 @@ const struct MapChangeInfo MapChange_Ch20b[] = {
 		.y = 6,
 		.width = 2,
 		.height = 2,
-		.metatiles = Tiles_MapChange_Ch20b_11,
+		.metatiles = Tiles_MapChange_Ch20d_11,
 	},
 	{ .id = -1 }
 };
@@ -4330,198 +4330,198 @@ const struct MapChangeInfo MapChange_Ch14x[] = {
 	{ .id = -1 }
 };
 
-static const u16 Tiles_MapChange_Ch20ax_0[] = {
+static const u16 Tiles_MapChange_Ch20cx_0[] = {
 	0xEA8, 0xD90, 0xFAC,
 	0xF28, 0xE9C, 0xF2C,
 	0x000, 0xEA0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_1[] = {
+static const u16 Tiles_MapChange_Ch20cx_1[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xEA0, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_2[] = {
+static const u16 Tiles_MapChange_Ch20cx_2[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_3[] = {
+static const u16 Tiles_MapChange_Ch20cx_3[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_4[] = {
+static const u16 Tiles_MapChange_Ch20cx_4[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_5[] = {
+static const u16 Tiles_MapChange_Ch20cx_5[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xEA0, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_6[] = {
+static const u16 Tiles_MapChange_Ch20cx_6[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_7[] = {
+static const u16 Tiles_MapChange_Ch20cx_7[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_8[] = {
+static const u16 Tiles_MapChange_Ch20cx_8[] = {
 	0xEA8, 0xD90, 0xEAC,
 	0xFA8, 0xE98, 0xF2C,
 	0x000, 0xEA0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_9[] = {
+static const u16 Tiles_MapChange_Ch20cx_9[] = {
 	0xD28, 0xD90, 0xEAC,
 	0xFA8, 0xD98, 0xF2C,
 	0x000, 0xEA0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_10[] = {
+static const u16 Tiles_MapChange_Ch20cx_10[] = {
 	0xEA8, 0xD90, 0xEAC,
 	0xF28, 0xD98, 0xF2C,
 	0x000, 0xE1C, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_11[] = {
+static const u16 Tiles_MapChange_Ch20cx_11[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x374,
 	0xEA0, 0x4F0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_12[] = {
+static const u16 Tiles_MapChange_Ch20cx_12[] = {
 	0xEA8, 0xD90, 0xEAC,
 	0xFA8, 0xD98, 0xF2C,
 	0x000, 0xEA0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_13[] = {
+static const u16 Tiles_MapChange_Ch20cx_13[] = {
 	0xEA8, 0xD90, 0xEAC,
 	0xFA8, 0xE98, 0xF2C,
 	0x000, 0xE20, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_14[] = {
+static const u16 Tiles_MapChange_Ch20cx_14[] = {
 	0xEA8, 0xD90, 0xEAC,
 	0xF28, 0xD98, 0xF2C,
 	0x000, 0xEA0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_15[] = {
+static const u16 Tiles_MapChange_Ch20cx_15[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_16[] = {
+static const u16 Tiles_MapChange_Ch20cx_16[] = {
 	0xEA8, 0xD90, 0xEAC,
 	0xF28, 0xE98, 0xF2C,
 	0x000, 0xE20, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_17[] = {
+static const u16 Tiles_MapChange_Ch20cx_17[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE1C, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_18[] = {
+static const u16 Tiles_MapChange_Ch20cx_18[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE1C, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_19[] = {
+static const u16 Tiles_MapChange_Ch20cx_19[] = {
 	0xEA8, 0xD90, 0xEAC,
 	0xFA8, 0xD98, 0xF2C,
 	0x000, 0xEA0, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_20[] = {
+static const u16 Tiles_MapChange_Ch20cx_20[] = {
 	0xEA8, 0xD90, 0xFAC,
 	0xF28, 0xE98, 0xF2C,
 	0x000, 0xE20, 0x000,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_21[] = {
+static const u16 Tiles_MapChange_Ch20cx_21[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_22[] = {
+static const u16 Tiles_MapChange_Ch20cx_22[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_23[] = {
+static const u16 Tiles_MapChange_Ch20cx_23[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_24[] = {
+static const u16 Tiles_MapChange_Ch20cx_24[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE1C, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_25[] = {
+static const u16 Tiles_MapChange_Ch20cx_25[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xEA0, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_26[] = {
+static const u16 Tiles_MapChange_Ch20cx_26[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xEA0, 0xD9C,
 	0x000, 0xDA0,
 };
 
-static const u16 Tiles_MapChange_Ch20ax_27[] = {
+static const u16 Tiles_MapChange_Ch20cx_27[] = {
 	0xE3C, 0x000,
 	0xEBC, 0x000,
 	0xE20, 0xD9C,
 	0x000, 0xDA0,
 };
 
-const struct MapChangeInfo MapChange_Ch20ax[] = {
+const struct MapChangeInfo MapChange_Ch20cx[] = {
 	{
 		.id = 0,
 		.x = 1,
 		.y = 20,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_0,
+		.metatiles = Tiles_MapChange_Ch20cx_0,
 	},
 	{
 		.id = 1,
@@ -4529,7 +4529,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 7,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_1,
+		.metatiles = Tiles_MapChange_Ch20cx_1,
 	},
 	{
 		.id = 2,
@@ -4537,7 +4537,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 13,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_2,
+		.metatiles = Tiles_MapChange_Ch20cx_2,
 	},
 	{
 		.id = 3,
@@ -4545,7 +4545,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 23,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_3,
+		.metatiles = Tiles_MapChange_Ch20cx_3,
 	},
 	{
 		.id = 4,
@@ -4553,7 +4553,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 0,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_4,
+		.metatiles = Tiles_MapChange_Ch20cx_4,
 	},
 	{
 		.id = 5,
@@ -4561,7 +4561,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 17,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_5,
+		.metatiles = Tiles_MapChange_Ch20cx_5,
 	},
 	{
 		.id = 6,
@@ -4569,7 +4569,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 4,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_6,
+		.metatiles = Tiles_MapChange_Ch20cx_6,
 	},
 	{
 		.id = 7,
@@ -4577,7 +4577,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 15,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_7,
+		.metatiles = Tiles_MapChange_Ch20cx_7,
 	},
 	{
 		.id = 8,
@@ -4585,7 +4585,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 23,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_8,
+		.metatiles = Tiles_MapChange_Ch20cx_8,
 	},
 	{
 		.id = 9,
@@ -4593,7 +4593,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 19,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_9,
+		.metatiles = Tiles_MapChange_Ch20cx_9,
 	},
 	{
 		.id = 10,
@@ -4601,7 +4601,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 27,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_10,
+		.metatiles = Tiles_MapChange_Ch20cx_10,
 	},
 	{
 		.id = 11,
@@ -4609,7 +4609,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 9,
 		.width = 2,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_11,
+		.metatiles = Tiles_MapChange_Ch20cx_11,
 	},
 	{
 		.id = 12,
@@ -4617,7 +4617,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 15,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_12,
+		.metatiles = Tiles_MapChange_Ch20cx_12,
 	},
 	{
 		.id = 13,
@@ -4625,7 +4625,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 23,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_13,
+		.metatiles = Tiles_MapChange_Ch20cx_13,
 	},
 	{
 		.id = 14,
@@ -4633,7 +4633,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 27,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_14,
+		.metatiles = Tiles_MapChange_Ch20cx_14,
 	},
 	{
 		.id = 15,
@@ -4641,7 +4641,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 8,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_15,
+		.metatiles = Tiles_MapChange_Ch20cx_15,
 	},
 	{
 		.id = 16,
@@ -4649,7 +4649,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 19,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_16,
+		.metatiles = Tiles_MapChange_Ch20cx_16,
 	},
 	{
 		.id = 17,
@@ -4657,7 +4657,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 2,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_17,
+		.metatiles = Tiles_MapChange_Ch20cx_17,
 	},
 	{
 		.id = 18,
@@ -4665,7 +4665,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 13,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_18,
+		.metatiles = Tiles_MapChange_Ch20cx_18,
 	},
 	{
 		.id = 19,
@@ -4673,7 +4673,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 23,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_19,
+		.metatiles = Tiles_MapChange_Ch20cx_19,
 	},
 	{
 		.id = 20,
@@ -4681,7 +4681,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 27,
 		.width = 3,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_20,
+		.metatiles = Tiles_MapChange_Ch20cx_20,
 	},
 	{
 		.id = 21,
@@ -4689,7 +4689,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 0,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_21,
+		.metatiles = Tiles_MapChange_Ch20cx_21,
 	},
 	{
 		.id = 22,
@@ -4697,7 +4697,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 9,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_22,
+		.metatiles = Tiles_MapChange_Ch20cx_22,
 	},
 	{
 		.id = 23,
@@ -4705,7 +4705,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 18,
 		.width = 2,
 		.height = 3,
-		.metatiles = Tiles_MapChange_Ch20ax_23,
+		.metatiles = Tiles_MapChange_Ch20cx_23,
 	},
 	{
 		.id = 24,
@@ -4713,7 +4713,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 28,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_24,
+		.metatiles = Tiles_MapChange_Ch20cx_24,
 	},
 	{
 		.id = 25,
@@ -4721,7 +4721,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 4,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_25,
+		.metatiles = Tiles_MapChange_Ch20cx_25,
 	},
 	{
 		.id = 26,
@@ -4729,7 +4729,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 15,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_26,
+		.metatiles = Tiles_MapChange_Ch20cx_26,
 	},
 	{
 		.id = 27,
@@ -4737,7 +4737,7 @@ const struct MapChangeInfo MapChange_Ch20ax[] = {
 		.y = 23,
 		.width = 2,
 		.height = 4,
-		.metatiles = Tiles_MapChange_Ch20ax_27,
+		.metatiles = Tiles_MapChange_Ch20cx_27,
 	},
 	{ .id = -1 }
 };

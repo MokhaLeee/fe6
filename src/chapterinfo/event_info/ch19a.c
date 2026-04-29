@@ -49,7 +49,7 @@ EventListScr CONST_DATA EventListScr_Unk_08668FFC[] =
 };
 
 // ChapterEventInfo @ 0866900C
-struct ChapterEventInfo CONST_DATA ChapterEventInfo_Unk_0866900C =
+struct ChapterEventInfo CONST_DATA ChapterEventInfo_Ch19c =
 {
     .event_list_turn = EventListScr_Unk_08668F48,
     .event_list_talk = EventListScr_Unk_08668F7C,

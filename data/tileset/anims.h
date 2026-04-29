@@ -107,7 +107,7 @@ struct TsImgAnim CONST_DATA MapAsset01_Anims[] =
     {},
 };
 
-struct TsImgAnim CONST_DATA TilesetImgAnim_085C7914[] =
+struct TsImgAnim CONST_DATA MapAsset09_ImgAnims[] =
 {
     { 28, 0x1000, Img_TilesetAnim_085C7914_0 },
     { 28, 0x1000, Img_TilesetAnim_085C7914_1 },
@@ -128,7 +128,7 @@ struct TsImgAnim CONST_DATA TilesetImgAnim_085C7914[] =
     {},
 };
 
-struct TsImgAnim CONST_DATA TilesetImgAnim_085C799C[] =
+struct TsImgAnim CONST_DATA MapAsset11_ImgAnims[] =
 {
     { 10, 0x0800, Img_TilesetAnim_085C799C_0 },
     {  8, 0x0800, Img_TilesetAnim_085C799C_1 },
@@ -139,7 +139,7 @@ struct TsImgAnim CONST_DATA TilesetImgAnim_085C799C[] =
     {},
 };
 
-struct TsImgAnim CONST_DATA TilesetImgAnim_085C79D4[] =
+struct TsImgAnim CONST_DATA MapAsset4c_ImgAnims[] =
 {
     { 11, 0x0800, Img_TilesetAnim_085C79D4_0 },
     { 11, 0x0800, Img_TilesetAnim_085C79D4_1 },
@@ -152,7 +152,7 @@ struct TsImgAnim CONST_DATA TilesetImgAnim_085C79D4[] =
     {},
 };
 
-struct TsPalAnim CONST_DATA TilesetPalAnim_085C7A1C[] =
+struct TsPalAnim CONST_DATA MapAsset09_PalAnims[] =
 {
     { Pal_TilesetAnim_085C7A1C_0, 61, 0x04, 0x3C },
     { Pal_TilesetAnim_085C7A1C_0, 61, 0x04, 0x3C },
@@ -165,7 +165,7 @@ struct TsPalAnim CONST_DATA TilesetPalAnim_085C7A1C[] =
     {},
 };
 
-struct TsPalAnim CONST_DATA TilesetPalAnim_085C7A64[] =
+struct TsPalAnim CONST_DATA MapAsset11_PalAnims[] =
 {
     { Pal_TilesetAnim_085C7A64_0, 5, 0x03, 0x31 },
     { Pal_TilesetAnim_085C7A64_1, 6, 0x03, 0x31 },
@@ -184,7 +184,7 @@ struct TsPalAnim CONST_DATA TilesetPalAnim_085C7A64[] =
     {},
 };
 
-struct TsPalAnim CONST_DATA TilesetPalAnim_085C7ADC[] =
+struct TsPalAnim CONST_DATA MapAsset7b_PalAnims[] =
 {
     { Pal_TilesetAnim_085C7ADC_0, 19, 0x04, 0x3C },
     { Pal_TilesetAnim_085C7ADC_1, 18, 0x04, 0x3C },
@@ -204,7 +204,7 @@ struct TsPalAnim CONST_DATA TilesetPalAnim_085C7ADC[] =
     {},
 };
 
-struct TsPalAnim CONST_DATA TilesetPalAnim_085C7B5C[] =
+struct TsPalAnim CONST_DATA MapAsset12_PalAnims[] =
 {
     { Pal_TilesetAnim_085C7B5C_0, 20, 0x04, 0x41 },
     { Pal_TilesetAnim_085C7B5C_1, 10, 0x04, 0x41 },

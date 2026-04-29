@@ -882,7 +882,6 @@ SECTIONS
         . = ALIGN(4), src/ending_credit_info.o(.data);
         . = ALIGN(4), src/chapterinfo_data.o(.data);
         . = ALIGN(4), src/chapterinfo_assets.o(.data);
-        . = ALIGN(4), src/chapterinfo_assets_.o(.data);
         . = ALIGN(4); src/mu.o(.data);
         . = ALIGN(4); src/mu_info.o(.data);
         . = ALIGN(4); src/manim.o(.data);

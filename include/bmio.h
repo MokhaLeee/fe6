@@ -86,12 +86,12 @@ extern struct ProcScr CONST_DATA ProcScr_BmVSync[];
 extern struct ProcScr CONST_DATA ProcScr_MapTask[];
 
 extern struct TsImgAnim CONST_DATA MapAsset01_Anims[];
-extern struct TsImgAnim CONST_DATA TilesetImgAnim_085C7914[];
-extern struct TsImgAnim CONST_DATA TilesetImgAnim_085C799C[];
-extern struct TsImgAnim CONST_DATA TilesetImgAnim_085C79D4[];
-extern struct TsPalAnim CONST_DATA TilesetPalAnim_085C7A1C[];
-extern struct TsPalAnim CONST_DATA TilesetPalAnim_085C7A64[];
-extern struct TsPalAnim CONST_DATA TilesetPalAnim_085C7ADC[];
-extern struct TsPalAnim CONST_DATA TilesetPalAnim_085C7B5C[];
+extern struct TsImgAnim CONST_DATA MapAsset09_ImgAnims[];
+extern struct TsImgAnim CONST_DATA MapAsset11_ImgAnims[];
+extern struct TsImgAnim CONST_DATA MapAsset4c_ImgAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset09_PalAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset11_PalAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset7b_PalAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset12_PalAnims[];
 
 #endif // BMIO_H
