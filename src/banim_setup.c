@@ -17,6 +17,14 @@
 #include "constants/jids.h"
 #include "constants/terrains.h"
 
+EWRAM_DATA i16 gBanimExpPrevious[2] = {};
+EWRAM_DATA i16 gBanimExpGain[2] = {};
+EWRAM_DATA i16 gBanimTerrain[2] = {};
+EWRAM_DATA i16 gBanimCon[2] = {};
+EWRAM_DATA i16 gBanimWtaBonus[2] = {};
+EWRAM_DATA i16 gBanimEffectiveness[2] = {};
+EWRAM_DATA i16 gBanimUniquePaletteDisabled[2] = {};
+
 static inline i16 GetBanimBattleActorPosition(int faction1, int faction2)
 {
 	int pos = POS_L;
@@ -667,43 +675,43 @@ int GetBanimTerrainGround(u16 terrain, u16 tileset)
 
 	// todo: tileset index
 	switch (tileset) {
-	case 0x01:
+	case BANIM_TERRAIN_SET_1:
 		ret = Terrain_BanimUnk_0860CC42[terrain];
 		break;
 
-	case 0x02:
+	case BANIM_TERRAIN_SET_2:
 		ret = Terrain_BanimUnk_0860CC75[terrain];
 		break;
 
-	case 0x03:
+	case BANIM_TERRAIN_SET_3:
 		ret = Terrain_BanimUnk_0860CCA8[terrain];
 		break;
 
-	case 0x04:
+	case BANIM_TERRAIN_SET_4:
 		ret = Terrain_BanimUnk_0860CCDB[terrain];
 		break;
 
-	case 0x05:
+	case BANIM_TERRAIN_SET_5:
 		ret = Terrain_BanimUnk_0860CD0E[terrain];
 		break;
 
-	case 0x06:
+	case BANIM_TERRAIN_SET_6:
 		ret = Terrain_BanimUnk_0860CD41[terrain];
 		break;
 
-	case 0x07:
+	case BANIM_TERRAIN_SET_7:
 		ret = Terrain_BanimUnk_0860CD74[terrain];
 		break;
 
-	case 0x08:
+	case BANIM_TERRAIN_SET_8:
 		ret = Terrain_BanimUnk_0860CDA7[terrain];
 		break;
 
-	case 0x09:
+	case BANIM_TERRAIN_SET_9:
 		ret = Terrain_BanimUnk_0860CDDA[terrain];
 		break;
 
-	case 0:
+	case BANIM_TERRAIN_SET_0:
 	default:
 		ret = Terrain_BanimUnk_0860CC0F[terrain];
 		break;

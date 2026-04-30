@@ -33,7 +33,7 @@
 #include "constants/videoalloc_global.h"
 
 // TODO: put in ewram overlay properly
-extern struct StatusScreenSt gStatusScreenSt;
+EWRAM_OVERLAY(0) struct StatusScreenSt gStatusScreenSt = {};
 
 void StatusScreenFadeIn_Init(struct StatusScreenProc * proc)
 {
@@ -162,7 +162,7 @@ void func_fe6_0807372C(struct StatusScreenProc * proc)
 {
     Text_InsertDrawString(gStatusScreenSt.text + 1, 2, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_724));
     PutDrawText(gStatusScreenSt.text + 1, gBg0Tm + TM_OFFSET(1, 5), TEXT_COLOR_SYSTEM_BLUE, 25, 0,
-        DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_30));
+        DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_clear_condition));
 
     Text_InsertDrawString(gStatusScreenSt.text + 2, 0, TEXT_COLOR_SYSTEM_WHITE, DecodeMsg(MSG_Turn));
     Text_SetParams(gStatusScreenSt.text + 2, 74, TEXT_COLOR_SYSTEM_BLUE);
@@ -205,13 +205,13 @@ void func_fe6_08073808(struct StatusScreenProc * proc)
 void func_fe6_080738FC(struct StatusScreenProc * proc)
 {
     Text_InsertDrawString(gStatusScreenSt.text + 4, 0, TEXT_COLOR_SYSTEM_WHITE,
-        DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_32));
+        DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_upper_army));
     Text_SetParams(gStatusScreenSt.text + 4, 69, TEXT_COLOR_SYSTEM_BLUE);
     Text_DrawNumber(gStatusScreenSt.text + 4,
         CountFactionUnitsWithoutFlags(FACTION_BLUE, UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED));
 
     Text_InsertDrawString(gStatusScreenSt.text + 5, 0, TEXT_COLOR_SYSTEM_WHITE,
-        DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_34));
+        DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_lower_army));
     Text_SetParams(gStatusScreenSt.text + 5, 69, TEXT_COLOR_SYSTEM_BLUE);
     Text_DrawNumber(gStatusScreenSt.text + 5,
         CountFactionUnitsWithoutFlags(FACTION_RED, UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED));
@@ -226,7 +226,7 @@ void func_fe6_080738FC(struct StatusScreenProc * proc)
 
 void DrawStatusScreenPageA(int unused)
 {
-    int chibi = GetChapterInfo(gPlaySt.chapter)->chibi_36;
+    int chibi = GetChapterInfo(gPlaySt.chapter)->enemy_flag_chibi;
 
     PutFaceChibi(FID_FACTION_CHIBI,
         gUiTmScratchC + TM_OFFSET(4, 0), 0x400 + BGCHR_B_STATUSSCREEN_280 + 1, 8, FALSE);
@@ -291,7 +291,7 @@ void DrawStatusScreenPageB(int unused)
 
     gActiveFont->tileref &= ~TILE_PAL_SAFE(-1);
 
-    Decompress(gUnk_08309408, gBuf);
+    Decompress(Tsa_08309408, gBuf);
     TmApplyTsa(gUiTmScratchB + TM_OFFSET(2, 0), gBuf, TILEREF(0, BGPAL_STATUSSCREEN_2));
 }
 
@@ -367,7 +367,7 @@ void StatusScreen_Init(struct StatusScreenProc * proc)
 
     Decompress(Img_PlayRankTimeOBJ, (void *) VRAM + CHR_SIZE * (0x400 + BGCHR_B_STATUSSCREEN_380));
     Decompress(Img_Unk_0833C378, (void *) VRAM + CHR_SIZE * 0);
-    Decompress(gUnk_083080D0, (void *) OBJ_VRAM0 + CHR_SIZE * 0x240);
+    Decompress(Img_Statscreen_083080D0, (void *) OBJ_VRAM0 + CHR_SIZE * 0x240);
 
     func_fe6_080736C8();
 

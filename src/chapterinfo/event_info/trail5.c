@@ -44,7 +44,7 @@ EventListScr CONST_DATA EventListScr_TrialE_Move[] =
 };
 
 // ChapterEventInfo @ 0866A800
-struct ChapterEventInfo CONST_DATA ChapterEventInfo_Unk_0866A800 =
+struct ChapterEventInfo CONST_DATA ChapterEventInfo_Xmap5 =
 {
     .event_list_turn = EventListScr_TrialE_Turn,
     .event_list_talk = EventListScr_TrialE_Talk,

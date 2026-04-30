@@ -118,7 +118,7 @@ extern u16 const Pal_EfxRestBG[]; // manim
 
 extern u8 const Tsa_StatusScreen_FactionInfoFrame[]; // tsa
 extern u8 const Tsa_StatusScreen_PlaytimeFrame[]; // tsa
-extern u8 const gUnk_08309408[]; // compressed tsa
+extern u8 const Tsa_08309408[]; // compressed tsa
 extern u8 const gUnk_0833C6F4[]; // tsa
 extern u8 const gUnk_0833C8D8[]; // tsa
 
@@ -163,17 +163,17 @@ extern void const * CONST_DATA ChapterAssets[];
 extern u16 const Pal_LinkArenaMuralBackground[];
 extern u16 const Pal_StatscreenPageNameFlashing[][0x20];
 
-extern u8 const gUnk_083080D0[]; // compressed img (statscreen misc sprite sheet)
-extern u8 const gUnk_08307CEC[]; // compressed tsa (statscreen main window frame)
-extern u16 const gUnk_08308050[]; // pal (statscreen equip stats frame)
-extern u8 const gUnk_08307ED4[]; // compressed img (statscreen equip stats frame)
-extern u8 const gUnk_08308920[]; // compressed img (equipment label)
+extern u8 const Img_Statscreen_083080D0[]; // compressed img (statscreen misc sprite sheet)
+extern u8 const Tsa_Statscreen_08307CEC[]; // compressed tsa (statscreen main window frame)
+extern u16 const Pal_Statscreen_08308050[]; // pal (statscreen equip stats frame)
+extern u8 const Img_Statscreen_08307ED4[]; // compressed img (statscreen equip stats frame)
+extern u8 const Img_Statscreen_08308920[]; // compressed img (equipment label)
 
-extern u8 const gUnk_08307D58[]; // tsa (compressed): statscreen page A frame
-extern u8 const gUnk_08307DD4[]; // tsa (compressed): statscreen page B frame
-extern u8 const gUnk_08307E50[]; // tsa (compressed): statscreen page C frame
-extern u8 const gUnk_08308070[]; // tsa (compressed): statscreen page B battle stat box
-extern u8 const gUnk_083080AC[]; // tsa: statscreen page B equipped weapon background
+extern u8 const Tsa_Statscreen_08307D58[]; // tsa (compressed): statscreen page A frame
+extern u8 const Tsa_Statscreen_08307DD4[]; // tsa (compressed): statscreen page B frame
+extern u8 const Tsa_Statscreen_08307E50[]; // tsa (compressed): statscreen page C frame
+extern u8 const Tsa_Statscreen_08308070[]; // tsa (compressed): statscreen page B battle stat box
+extern u8 const Tsa_Statscreen_083080AC[]; // tsa: statscreen page B equipped weapon background
 
 extern u8 Img_WmDialogueBox[];
 extern u16 Pal_WmDialogueBox[];
@@ -304,7 +304,7 @@ extern u16 const Pal_Unk_0830D5E4[];
 extern u8 const Img_ChapterTitleBG1[]; // img
 extern u8 const Img_ChapterTitleBG2[]; // img
 extern u8 const Tsa_ChapterTitleFxDefaultBG[]; // tsa
-extern u8 const gUnk_08308A78[]; // img
+extern u8 const Img_Helpbox_08308A78[]; // img
 extern u16 const Pal_08100A48[]; // pal
 
 extern u16 Img_ChapterTitle_0830D9C0[];

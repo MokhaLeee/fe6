@@ -125,7 +125,7 @@ extern struct SortedUnitEnt gSortedUnitsBuf[];
 extern struct SortedUnitEnt * gSortedUnits[];
 
 extern struct Text gUnk_0200D6AC;
-extern struct Unit gUnk_0200D6B4[];
+extern u8 gUnk_0200D6B4[];
 extern u8 gUnk_0200CD38;
 extern u32 gUnk_0200E6B4[]; // equipped item icons
 
@@ -150,7 +150,7 @@ extern u16 const * CONST_DATA gUnk_08678818[]; // sprites
 extern u16 CONST_DATA Sprite_08678758[]; // sprite
 extern u16 CONST_DATA Sprite_08678760[]; // sprite
 
-extern u16 gUnk_Pal_02016874[0x10];
+extern u16 gUnk_Pal_02016874[0x3E];
 
 extern u8 const Img_Prep_083198CC[]; // img
 extern u16 const Pal_SpinningArrow[]; // pal

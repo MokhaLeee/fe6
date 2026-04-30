@@ -76,8 +76,8 @@ struct ChapterInfo
     /* 0C */ u8 fog;
     /* 0D */ u8 has_prep;
     /* 0E */ u8 title_id;
-    /* 0F */ u8 unk_0F;
-    /* 10 */ u8 unk_10;
+    /* 0F */ u8 coord_x;
+    /* 10 */ u8 coord_y;
     /* 11 */ u8 weather;
     /* 12 */ u8 banim_terrain_id;
     /* 13 */ u8 hard_bonus_levels;
@@ -96,16 +96,16 @@ struct ChapterInfo
     /* 20 */ u16 exp_ranks[REFRANK_MAX];
     /* 28 */ u16 combat_ranks[REFRANK_MAX];
 
-    /* 30 */ u16 msg_30;
-    /* 32 */ u16 msg_32;
-    /* 34 */ u16 msg_34;
-    /* 36 */ u16 chibi_36;
-    /* 38 */ u16 msg_38;
+    /* 30 */ u16 msg_clear_condition;
+    /* 32 */ u16 msg_upper_army;
+    /* 34 */ u16 msg_lower_army;
+    /* 36 */ u16 enemy_flag_chibi;
+    /* 38 */ u16 msg_chapter_title;
     /* 3A */ u8 asset_event_info;
     /* 3B */ u8 asset_event_info_wm;
 
-    /* 3C */ u16 msg_unk_0C;
-    /* 3E */ u8 number_id;
+    /* 3C */ u16 msg_wm_location;
+    /* 3E */ u8 index_gaiden; /* bit0: gaiden, bit[7:1]: chapter index */
     /* 3F */ u8 gmap_dispx;
     /* 40 */ u8 gmap_dispy;
     /* 41 */ u8 gmap_cursorx;

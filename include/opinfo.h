@@ -17,6 +17,16 @@ enum OpInfoModeIndex {
 	OPINFO_STATE_3,
 };
 
+enum class_demo_set {
+	CLASSDEMO_SET0,
+	CLASSDEMO_SET1,
+	CLASSDEMO_SET2,
+	CLASSDEMO_SET3,
+	CLASSDEMO_SET4,
+	CLASSDEMO_SET5,
+	CLASSDEMO_SET6,
+};
+
 struct ClassDemoData {
 	STRUCT_PAD(0x00, 0x2C);
 

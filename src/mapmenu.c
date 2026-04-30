@@ -46,6 +46,8 @@
 
 #include "eventscript.h"
 
+EWRAM_OVERLAY(0) struct Font gFont_Unk_02002770 = {};
+
 static void CheckTutorialInterruptPromptResult(ProcPtr proc);
 
 EventScr CONST_DATA EventScr_WmTutorialInterruptQuitConfirm[] =

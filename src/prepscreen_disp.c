@@ -125,11 +125,11 @@ void func_fe6_0807B8B0(struct PrepUpperDispProc * proc, int idx)
     proc->unk_44 = TRUE;
 }
 
-void PrepDisp_SetWorlMapInfo(struct PrepUpperDispProc * proc, fu8 x, fu8 y, int chidx)
+void PrepDisp_SetWorlMapInfo(struct PrepUpperDispProc * proc, fu8 x, fu8 y, int index_gaiden)
 {
     proc->cursor_x = x;
     proc->cursor_y = y;
-    proc->chidx = chidx;
+    proc->index_gaiden = index_gaiden;
     proc->disp_x = GetChapterInfo(gPlaySt.chapter)->gmap_dispx;
     proc->disp_y = GetChapterInfo(gPlaySt.chapter)->gmap_dispy;
 }
@@ -424,10 +424,10 @@ void PrepMenu_DrawGmapSprites(struct PrepUpperDispProc * proc)
     if (proc->cursor_y < 0x20)
         ypos = 0x74;
 
-    if ((proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA) == 0 && proc->chidx != 0)
+    if ((proc->proc_parent->link_arena_flag & PREPMENU_FLAG_MULTIARENA) == 0 && proc->index_gaiden != 0)
     {
-        u8 chidx;
-        if ((1 & proc->chidx) != 0)
+        u8 index_gaiden;
+        if ((1 & proc->index_gaiden) != 0)
         {
             xpos = 0xA4;
 
@@ -444,13 +444,13 @@ void PrepMenu_DrawGmapSprites(struct PrepUpperDispProc * proc)
 
         PutSpriteExt(4, xpos, ypos, Sprite_0867908A, 0);
 
-        chidx = proc->chidx / 2;
-        if (chidx < 10)
+        index_gaiden = proc->index_gaiden / 2;
+        if (index_gaiden < 10)
             PutSpriteExt(4, xpos + 0x28, ypos, Sprites_0867913C[11], 0);
         else
-            PutSpriteExt(4, xpos + 0x28, ypos, Sprites_0867913C[chidx / 10], 0);
+            PutSpriteExt(4, xpos + 0x28, ypos, Sprites_0867913C[index_gaiden / 10], 0);
 
-            PutSpriteExt(4, xpos + 0x30, ypos, Sprites_0867913C[(proc->chidx / 2) % 10], 0);
+            PutSpriteExt(4, xpos + 0x30, ypos, Sprites_0867913C[(proc->index_gaiden / 2) % 10], 0);
     }
 
     if ((0xF & proc->unk_33) == 0)

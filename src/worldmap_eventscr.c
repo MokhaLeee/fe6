@@ -982,7 +982,7 @@ EvtWmZoomBack
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch17a[] = {
+CONST_DATA EventScr EventScr_Wm_Ch17c[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1059,7 +1059,7 @@ EvtWmZoomBack
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch18a[] = {
+CONST_DATA EventScr EventScr_Wm_Ch18c[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1089,7 +1089,7 @@ CONST_DATA EventScr EventScr_Wm_Ch18a[] = {
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch19a[] = {
+CONST_DATA EventScr EventScr_Wm_Ch19c[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1122,7 +1122,7 @@ CONST_DATA EventScr EventScr_Wm_Ch19a[] = {
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch20a[] = {
+CONST_DATA EventScr EventScr_Wm_Ch20c[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1174,7 +1174,7 @@ CONST_DATA EventScr EventScr_Wm_Ch20a[] = {
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch17b[] = {
+CONST_DATA EventScr EventScr_Wm_Ch17d[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1246,7 +1246,7 @@ EvtWmZoomBack
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch18b[] = {
+CONST_DATA EventScr EventScr_Wm_Ch18d[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1281,7 +1281,7 @@ CONST_DATA EventScr EventScr_Wm_Ch18b[] = {
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch19b[] = {
+CONST_DATA EventScr EventScr_Wm_Ch19d[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1323,7 +1323,7 @@ CONST_DATA EventScr EventScr_Wm_Ch19b[] = {
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch20b[] = {
+CONST_DATA EventScr EventScr_Wm_Ch20d[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1624,7 +1624,7 @@ CONST_DATA EventScr EventScr_Wm_Ch16x[] = {
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch20ax[] = {
+CONST_DATA EventScr EventScr_Wm_Ch20cx[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart
@@ -1646,7 +1646,7 @@ CONST_DATA EventScr EventScr_Wm_Ch20ax[] = {
     EvtEnd
 };
 
-CONST_DATA EventScr EventScr_Wm_Ch20bx[] = {
+CONST_DATA EventScr EventScr_Wm_Ch20dx[] = {
     EvtNoSkipNoTextSkip
     EvtFuncOnSkip(func_fe6_08093120)
     EvtWmStart

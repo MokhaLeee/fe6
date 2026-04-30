@@ -33,11 +33,24 @@
 
 // TODO: fix nonmatches
 
+EWRAM_OVERLAY(0) struct SortedUnitEnt gSortedUnitsBuf[0x40] = {};
+EWRAM_OVERLAY(0) struct SortedUnitEnt *gSortedUnits[0x40] = {};
+EWRAM_OVERLAY(0) u8 gUnk_0200CD38 = 0;
+EWRAM_OVERLAY(0) u16 gUnk_0200CD3A[0x400] = {};
+EWRAM_OVERLAY(0) u16 gUnk_0200D53A[0x41] = {};
+EWRAM_OVERLAY(0) struct Text gUnk_0200D5BC[7] = {};
+EWRAM_OVERLAY(0) struct Text gUnk_0200D5F4[7][3] = {};
+EWRAM_OVERLAY(0) struct Text gUnk_0200D69C = {};
+EWRAM_OVERLAY(0) struct Text gUnk_0200D6A4 = {};
+EWRAM_OVERLAY(0) struct Text gUnk_0200D6AC = {};
+EWRAM_OVERLAY(0) u8 gUnk_0200D6B4[0x1000] = {};
+EWRAM_OVERLAY(0) u32 gUnk_0200E6B4[8] = {};
+
 void func_fe6_080741EC(void)
 {
     int i;
 
-    UnitRearrangeInit(gUnk_0200D6B4);
+    UnitRearrangeInit((void *)gUnk_0200D6B4);
 
     for (i = 0; i < gUnk_0200CD38; i++)
     {

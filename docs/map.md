@@ -1,4 +1,4 @@
-gMapBuf --> ChapterInfo::asset_map --> MapTsa_Chapter1
+gMapBuf --> ChapterInfo::asset_map --> MapTsa_Chapter0
 gMapMetatiles --> rawed chapter map --> MapAsset01_TsaConf
 
 sTilesetInfo --> mapasset tilemap

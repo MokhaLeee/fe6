@@ -377,13 +377,13 @@ void EndingP0InfoText_Init(struct ProcEndingPinfoText *proc)
 	if (unit->flags & UNIT_FLAG_DEAD) {
 		proc->text_x = PlayRank_ChapterTurns_DrawBase(
 			&Texts_02016B48[0],
-			GetChapterInfo(pid_status->defeat_chapter)->number_id,
+			GetChapterInfo(pid_status->defeat_chapter)->index_gaiden,
 			false);
 
 		Text_SetCursor(&Texts_02016B48[0], proc->text_x + 3);
-		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_38);
+		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
-		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_38)) + 6;
+		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
 	} else {
 		const char *str;
 
@@ -538,13 +538,13 @@ void EndingP1InfoText_Init(struct ProcEndingPinfoText *proc)
 	if (unit->flags & UNIT_FLAG_DEAD) {
 		proc->text_x = PlayRank_ChapterTurns_DrawBase(
 			&Texts_02016B48[0],
-			GetChapterInfo(pid_status->defeat_chapter)->number_id,
+			GetChapterInfo(pid_status->defeat_chapter)->index_gaiden,
 			false);
 
 		Text_SetCursor(&Texts_02016B48[0], proc->text_x + 3);
-		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_38);
+		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
-		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_38)) + 6;
+		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
 	} else {
 		type_writter->str_it = DecodeMsg(gPersonEndingInfo[pid].msg_04);
 
@@ -623,13 +623,13 @@ void EndingP2InfoText_Init(struct ProcEndingPinfoText *proc)
 	if (unit->flags & UNIT_FLAG_DEAD) {
 		proc->text_x = PlayRank_ChapterTurns_DrawBase(
 			&Texts_02016B78[0],
-			GetChapterInfo(pid_status->defeat_chapter)->number_id,
+			GetChapterInfo(pid_status->defeat_chapter)->index_gaiden,
 			false);
 
 		Text_SetCursor(&Texts_02016B78[0], proc->text_x + 3);
-		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_38);
+		type_writter->str_it = DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title);
 
-		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_38)) + 6;
+		proc->text_x += GetStringTextLen(DecodeMsg(GetChapterInfo(pid_status->defeat_chapter)->msg_chapter_title)) + 6;
 	} else {
 		type_writter->str_it = DecodeMsg(gPersonEndingInfo[pid].msg_04);
 

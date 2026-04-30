@@ -23,7 +23,7 @@ enum EkrDistanceType_idx {
 
 extern i16 gEkrDistanceType;
 
-extern struct BaSprite * gAnims[4];
+extern struct BaSprite *gAnims[4];
 #define MAIN_ANIM_FRONT(pos) (gAnims[pos * 2 + 0])
 #define MAIN_ANIM_BACK(pos)  (gAnims[pos * 2 + 1])
 
@@ -116,10 +116,13 @@ enum banim_sprites_size {
     BAS_OAM_REF_MAX_SIZE = BAS_OAM_MAX_SIZE - 0x10,
 };
 
-extern u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
-extern u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
-extern u8 gBanimImgSheetBufs[2 * BAS_IMG_MAX_SIZE];
-extern u8 gBanimTerrainfxBufObj[0x800];
+extern EWRAM_OVERLAY(banim) u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Left[BAS_IMG_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimKakudaiBuf_Left[BAS_IMG_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Right[BAS_IMG_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimKakudaiBuf_Right[BAS_IMG_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimTerrainfxBufObj[0x2000];
 
 struct ProcEfx {
     PROC_HEADER;
@@ -239,28 +242,29 @@ struct ProcEfxOBJ {
     /* 68 */ struct  BaSprite *anim4;
 };
 
-extern void *gpBanimTerrainfxBufs[2];
-extern void *gpBanimTerrainTsaBufs[2];
-extern u16 *gpBanimTerrainPalBufs[2];
-extern int *gpBanimModesLeft;
-extern int *gpBanimModesRight;
-extern int gEkrDebugTimer;
-extern int gEkrDebugFlag1;
-extern int gEkrDebugFlag2;
-extern int gAnimC01Blocking;
-extern i16 gEkrXPosReal[2];
-extern i16 gEkrYPosReal[2];
-extern u16 gEkrXPosBase[2];
-extern u16 gEkrYPosBase[2];
-extern struct Vec2i gEkrBg0QuakeVec;
-extern u16 * gpEfxUnitPaletteBackup[2];
+extern EWRAM_OVERLAY(banim) void *gpBanimTerrainfxBufs[2];
+extern EWRAM_OVERLAY(banim) void *gpBanimTerrainTsaBufs[2];
+extern EWRAM_OVERLAY(banim) u16 *gpBanimTerrainPalBufs[2];
+extern EWRAM_OVERLAY(banim) int *gpBanimModesLeft;
+extern EWRAM_OVERLAY(banim) int *gpBanimModesRight;
+
+extern EWRAM_OVERLAY(banim) int gEkrDebugTimer;
+extern EWRAM_OVERLAY(banim) int gEkrDebugFlag1;
+extern EWRAM_OVERLAY(banim) int gEkrDebugFlag2;
+extern EWRAM_OVERLAY(banim) int gAnimC01Blocking;
+extern EWRAM_OVERLAY(banim) i16 gEkrXPosReal[2];
+extern EWRAM_OVERLAY(banim) i16 gEkrYPosReal[2];
+extern EWRAM_OVERLAY(banim) u16 gEkrXPosBase[2];
+extern EWRAM_OVERLAY(banim) u16 gEkrYPosBase[2];
+extern EWRAM_OVERLAY(banim) struct Vec2i gEkrBg0QuakeVec;
+extern EWRAM_OVERLAY(banim) u16 *gpEfxUnitPaletteBackup[2];
 extern i16 gEkrDebugModeMaybe;
-extern u16 gBanimPaletteLeft[0x50];
-extern u16 gBanimPaletteRight[0x50];
-extern u16 gEfxPal[0x130];
-extern struct Font gBanimFont;
-extern struct Text gBanimText[20];
-extern u32 gEkrBattleEndFlag;
+extern EWRAM_OVERLAY(banim) u16 gBanimPaletteLeft[0x50];
+extern EWRAM_OVERLAY(banim) u16 gBanimPaletteRight[0x50];
+extern EWRAM_OVERLAY(banim) u16 gEfxPal[0x200];
+extern EWRAM_OVERLAY(banim) struct Font gBanimFont;
+extern EWRAM_OVERLAY(banim) struct Text gBanimText[20];
+extern EWRAM_OVERLAY(banim) u32 gEkrBattleEndFlag;
 extern i8 gEfxSplitedColorBufA[2][0x30];
 extern i8 gEfxSplitedColorBufB[2][0x30];
 extern i16 gEfxSplitedColorBufC[2][0x30];
@@ -287,9 +291,9 @@ extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
 extern const u16 * gpBanimTriAtkPalettes[2];
 extern const u8 * gBanimUnitChgForceImg[2];
-extern i16 gBanimBG;
-extern i16 gEkrInitialHitSide;
-extern i16 gEkrSnowWeather;
+extern EWRAM_OVERLAY(banim) i16 gBanimBG;
+extern EWRAM_OVERLAY(banim) i16 gEkrInitialHitSide;
+extern EWRAM_OVERLAY(banim) i16 gEkrSnowWeather;
 extern u32 gEkrInitPosReal;
 extern u32 gEfxFarAttackExist;
 extern u32 gEfxBgSemaphore;
@@ -302,13 +306,13 @@ extern i16 gUnk_Banim_0201775C[2];
 extern u32 gEkrBgPosition;
 extern i16 gBanimEffectiveness[2];
 extern i16 gBanimUniquePaletteDisabled[2];
-extern i16 gBanimValid[2];
-extern i16 gBanimPosIsTarget[2];
-extern i16 gBanimIdx_bak[2];
-extern i16 gBanimUniquePal[2];
-extern i16 gBanimFactionPal[2];
-extern i16 gEkrSpellAnimIndex[2];
-extern i16 gBanimFloorfx[2];
+extern EWRAM_DATA i16 gBanimValid[2];
+extern EWRAM_DATA i16 gBanimPosIsTarget[2];
+extern EWRAM_DATA i16 gBanimIdx_bak[2];
+extern EWRAM_DATA i16 gBanimUniquePal[2];
+extern EWRAM_DATA i16 gBanimFactionPal[2];
+extern EWRAM_DATA i16 gEkrSpellAnimIndex[2];
+extern EWRAM_DATA i16 gBanimFloorfx[2];
 extern i16 gBanimExpGain[2];
 extern i16 gBanimTerrain[2];
 extern i16 gBanimCon[2];
@@ -320,7 +324,7 @@ extern i16 gEkrGaugeHit[2];
 extern i16 gEkrGaugeDmg[2];
 extern i16 gEkrGaugeCrt[2];
 extern i16 gEkrBmLocation[4];
-extern i16 gAnimRoundData[4];
+extern i16 gAnimRoundData[20];
 extern i16 gEfxHpLutOff[2];
 extern u16 gEfxHpLut[22];
 extern i16 gBanimIdx[2];
@@ -333,12 +337,12 @@ extern u32 gEkrDeadExist;
 extern u32 gEkrDeadEventExist;
 extern u32 gEfxQuakeExist;
 extern u32 gEfxHitQuakeExist;
-extern i16 gEkrHitNow[];
-extern u8 gSpellAnimBgfx[];
-extern u16 gEkrBarfxBuf[];
+extern i16 gEkrHitNow[2];
+extern u8 gSpellAnimBgfx[0x1D00];
+extern u16 gEkrBarfxBuf[0x300 / 2];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
-extern u8 gBuf_Banim[];
-extern u16 gPal_Banim[];
+extern u8 gBuf_Banim[0x2000];
+extern u16 gPal_Banim[0xA0];
 extern u16 gTmA_Banim[0xB58 / sizeof(u16)];
 extern u16 gTmB_Banim[0xB58 / sizeof(u16)];
 extern i16 gBanimExpPrevious[2];
@@ -366,7 +370,7 @@ struct ProcEkrGauge {
 
 extern struct ProcEkrGauge * gpProcEkrGauge;
 extern EWRAM_OVERLAY(banim) u16 Buf_EkrGaugeNumImg[0x200];
-extern EWRAM_OVERLAY(banim) u16 gUnk_Banim_02016DC0[];
+extern EWRAM_OVERLAY(banim) u16 gUnk_Banim_02016DC0[0x40];
 extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02016E40[0x200];
 extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02017040[0x200];
 extern EWRAM_OVERLAY(banim) u8 gUnk_Banim_02017240[0x200];
@@ -826,6 +830,20 @@ void NewEkrBaseAppear(int identifier, int duration);
 bool CheckEkrBaseAppearUnexist(void);
 // EkrBaseAppear_Loop
 bool _SetupBanim(void);
+
+enum banim_terrain_set_type {
+    BANIM_TERRAIN_SET_0,
+    BANIM_TERRAIN_SET_1,
+    BANIM_TERRAIN_SET_2,
+    BANIM_TERRAIN_SET_3,
+    BANIM_TERRAIN_SET_4,
+    BANIM_TERRAIN_SET_5,
+    BANIM_TERRAIN_SET_6,
+    BANIM_TERRAIN_SET_7,
+    BANIM_TERRAIN_SET_8,
+    BANIM_TERRAIN_SET_9
+};
+
 u16 GetBattleAnimationId(const struct BanimInfoEnt *animdef, u16 item);
 int GetBanimTerrainGround(u16 terrain, u16 tileset);
 int GetBanimBackgroundIndex(u16 terrain, u16 tileset);

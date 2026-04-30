@@ -1,53 +1,5 @@
 	.section .rodata
 
-	.global gUnk_08307CEC
-gUnk_08307CEC: @ 08307CEC
-	.incbin "fe6-base.gba", 0x307CEC, (0x307D58 - 0x307CEC) @ length: 006C
-
-	.global gUnk_08307D58
-gUnk_08307D58: @ 08307D58
-	.incbin "fe6-base.gba", 0x307D58, (0x307DD4 - 0x307D58) @ length: 007C
-
-	.global gUnk_08307DD4
-gUnk_08307DD4: @ 08307DD4
-	.incbin "fe6-base.gba", 0x307DD4, (0x307E50 - 0x307DD4) @ length: 007C
-
-	.global gUnk_08307E50
-gUnk_08307E50: @ 08307E50
-	.incbin "fe6-base.gba", 0x307E50, (0x307ED4 - 0x307E50) @ length: 0084
-
-	.global gUnk_08307ED4
-gUnk_08307ED4: @ 08307ED4
-	.incbin "fe6-base.gba", 0x307ED4, (0x308050 - 0x307ED4) @ length: 017C
-
-	.global gUnk_08308050
-gUnk_08308050: @ 08308050
-	.incbin "fe6-base.gba", 0x308050, (0x308070 - 0x308050) @ length: 0020
-
-	.global gUnk_08308070
-gUnk_08308070: @ 08308070
-	.incbin "fe6-base.gba", 0x308070, (0x3080AC - 0x308070) @ length: 003C
-
-	.global gUnk_083080AC
-gUnk_083080AC: @ 083080AC
-	.incbin "fe6-base.gba", 0x3080AC, (0x3080D0 - 0x3080AC) @ length: 0024
-
-	.global gUnk_083080D0
-gUnk_083080D0: @ 083080D0
-	.incbin "fe6-base.gba", 0x3080D0, (0x3087C8 - 0x3080D0) @ length: 06F8
-
-	.global Pal_StatscreenPageNameFlashing
-Pal_StatscreenPageNameFlashing: @ 083087C8
-	.incbin "fe6-base.gba", 0x3087C8, (0x308920 - 0x3087C8) @ length: 0158
-
-	.global gUnk_08308920
-gUnk_08308920: @ 08308920
-	.incbin "fe6-base.gba", 0x308920, (0x308A78 - 0x308920) @ length: 0158
-
-	.global gUnk_08308A78
-gUnk_08308A78: @ 08308A78
-	.incbin "fe6-base.gba", 0x308A78, (0x308B98 - 0x308A78) @ length: 0120
-
 	.global Img_LimitViewSquares
 Img_LimitViewSquares: @ 08308B98
 	.incbin "fe6-base.gba", 0x308B98, (0x308E98 - 0x308B98) @ length: 0300
@@ -96,8 +48,8 @@ Tsa_StatusScreen_FactionInfoFrame: @ 083093EC
 Tsa_StatusScreen_PlaytimeFrame: @ 083093F8
 	.incbin "fe6-base.gba", 0x3093F8, (0x309408 - 0x3093F8) @ length: 0010
 
-	.global gUnk_08309408
-gUnk_08309408: @ 08309408
+	.global Tsa_08309408
+Tsa_08309408: @ 08309408
 	.incbin "fe6-base.gba", 0x309408, (0x309474 - 0x309408) @ length: 006C
 
 	.global Pal_Unk_08309474

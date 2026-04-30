@@ -36,6 +36,28 @@
 
 #include "constants/videoalloc_global.h"
 
+EWRAM_OVERLAY(0) struct Unit *gPrepUnitList[64] = {};
+EWRAM_OVERLAY(0) u8 gUnk_0200E7D4 = 0;
+EWRAM_OVERLAY(0) int gUnk_0200E7D8 = 0;
+EWRAM_OVERLAY(0) struct Text gPrepScreenText_PickLeftBar = {};
+EWRAM_OVERLAY(0) struct Text gPrepScreenTexts_Units[16] = {};
+EWRAM_OVERLAY(0) struct Text gUnk_0200E864[5] = {};
+EWRAM_OVERLAY(0) struct Text gUnk_0200E88C[2] = {};
+EWRAM_OVERLAY(0) struct Text gPrepScreenText_LeftPersonName = {};
+EWRAM_OVERLAY(0) u16 gPrepTsaBuf[0x400] = {};
+EWRAM_OVERLAY(0) u8 gPrepUnitPool[0x1000] = {};
+EWRAM_OVERLAY(0) u16 gPrepFadePal[0x200] = {};
+EWRAM_OVERLAY(0) u8 ImgBuf_PrepWorldMap[0x5000] = {};
+EWRAM_OVERLAY(0) struct PrepMenuItem gPrepMenuItems[0x10] = {};
+EWRAM_OVERLAY(0) u8 gPrepMenuItemCnt = 0;
+EWRAM_OVERLAY(0) struct Text gPrepTexts1[2][10] = {};
+EWRAM_OVERLAY(0) struct Text gPrepTexts3[2] = {};
+EWRAM_OVERLAY(0) int gPrepSubMenuIcons[20] = {};
+EWRAM_OVERLAY(0) u16 gPrepPageItemTable[800] = {};
+EWRAM_OVERLAY(0) struct PrepItemListEnt gPrepItemListData[400] = {};
+EWRAM_OVERLAY(0) u16 gPrepAllItemsCount = 0;
+EWRAM_OVERLAY(0) u16 gPrepMenuScrollPos = 0;
+
 void ResetSioPidPool(void)
 {
 	int i;
@@ -331,7 +353,7 @@ void func_fe6_08079928(struct PrepMenuProc *proc, int unit_id_or_pid, bool by_pi
 
 void ReorderPlayerUnitsBasedOnDeployment(void)
 {
-	UnitRearrangeInit(gPrepUnitPool);
+	UnitRearrangeInit((struct Unit *)gPrepUnitPool);
 
 	FOR_UNITS(FACTION_BLUE + 1, FACTION_BLUE + 0x40, unit, {
 		if ((unit->flags & (UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED)) == 0)
@@ -583,7 +605,7 @@ void RearrangeMandatoryDeployUnits(void)
 		}
 	}
 
-	UnitRearrangeInit(gPrepUnitPool);
+	UnitRearrangeInit((struct Unit *)gPrepUnitPool);
 
 	for (i = 0; i < order_count; i++)
 		UnitRearrangeAdd(order[i]);
@@ -762,12 +784,12 @@ void PrepMenu_InitScreen(struct PrepMenuProc *proc)
 		proc->procbg = func_fe6_08082560(proc);
 	}
 
-	Decompress(Img_PrepWorldMap, gUnk_020104A4);
+	Decompress(Img_PrepWorldMap, ImgBuf_PrepWorldMap);
 	ApplyPalette(Pal_PrepWorldMap, BGPAL_PREPMENU_E);
 
 	for (i = 0; i < 12; i++) {
 		CpuFastCopy(
-			gUnk_020104A4 + (((GetChapterInfo(gPlaySt.chapter)->gmap_dispy + i) * 0x20)
+			ImgBuf_PrepWorldMap + (((GetChapterInfo(gPlaySt.chapter)->gmap_dispy + i) * 0x20)
 				+ GetChapterInfo(gPlaySt.chapter)->gmap_dispx) * 0x20,
 			(void *) VRAM + CHR_SIZE * BGCHR_PREPMENU_700 + 15 * CHR_SIZE * i, 15 * CHR_SIZE);
 	}
@@ -805,9 +827,9 @@ void PrepScreen_DrawScreenInfo(struct PrepMenuProc *proc)
 
 		ClearText(&gPrepScreenText_PickLeftBar);
 
-		Text_SetCursor(&gPrepScreenText_PickLeftBar, (0x48 - GetStringTextLen(DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C))) >> 1);
+		Text_SetCursor(&gPrepScreenText_PickLeftBar, (0x48 - GetStringTextLen(DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_wm_location))) >> 1);
 		Text_SetColor(&gPrepScreenText_PickLeftBar, TEXT_COLOR_SYSTEM_WHITE);
-		Text_DrawString(&gPrepScreenText_PickLeftBar, DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_unk_0C));
+		Text_DrawString(&gPrepScreenText_PickLeftBar, DecodeMsg(GetChapterInfo(gPlaySt.chapter)->msg_wm_location));
 
 		PutText(&gPrepScreenText_PickLeftBar, gBg0Tm + TM_OFFSET(17, 17));
 	} else {
@@ -872,7 +894,7 @@ void PrepMenu_InitExt(struct PrepMenuProc *proc)
 	PrepDisp_SetWorlMapInfo((proc->disp_proc = StartPrepUpperDisp(proc)),
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursorx * 8,
 		GetChapterInfo(gPlaySt.chapter)->gmap_cursory * 8,
-		GetChapterInfo(gPlaySt.chapter)->number_id);
+		GetChapterInfo(gPlaySt.chapter)->index_gaiden);
 }
 
 fi8 PrepUnitSel_Loop(struct PrepMenuProc *proc)

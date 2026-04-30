@@ -74,7 +74,7 @@ void LoadHelpBoxGfx(void * vram, int pal)
 
     pal = (pal & 15) + 0x10;
 
-    Decompress(gUnk_08308A78, vram);
+    Decompress(Img_Helpbox_08308A78, vram);
 
     InitSpriteTextFont(&gUnk_0203D40C.font, vram, pal);
     InitSpriteText(gUnk_0203D40C.text + 0);
@@ -97,7 +97,7 @@ void func_fe6_08070EEC(void * vram, int pal)
 
     pal = (pal & 15) + 0x10;
 
-    Decompress(gUnk_08308A78, vram);
+    Decompress(Img_Helpbox_08308A78, vram);
 
     InitSpriteTextFont(&gUnk_0203D40C.font, vram, pal);
     InitSpriteText(gUnk_0203D40C.text + 0);
@@ -715,7 +715,7 @@ void func_fe6_080718FC(void * vram, int pal)
 
     pal = (pal & 15) + 0x10;
 
-    Decompress(gUnk_08308A78, vram);
+    Decompress(Img_Helpbox_08308A78, vram);
 
     InitSpriteTextFont(&gUnk_0203D460.font, vram, pal);
     InitSpriteText(gUnk_0203D460.text + 0);

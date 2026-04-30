@@ -3,6 +3,72 @@
 
 #include "prelude.h"
 
+struct TsImgAnim {
+	/* 00 */ u16 time;
+	/* 02 */ u16 size;
+	/* 04 */ void const * data;
+};
+
+struct TsPalAnim {
+	/* 00 */ void const * data;
+	/* 04 */ u8 time;
+	/* 05 */ u8 colorCount;
+	/* 06 */ u8 colorStart;
+};
+
+struct WeatherParticle {
+	/* 00 */ short x;
+	/* 02 */ short y;
+
+	/* 04 */ short x_speed;
+	/* 06 */ short y_speed;
+
+	/* 08 */ u8 chr;
+	/* 09 */ u8 kind;
+};
+
+union WeatherEffect {
+	/**
+	 * Array of weather particles
+	 */
+	struct WeatherParticle particles[0x40];
+
+	/**
+	 * Buffer for cloud graphics
+	 */
+	u32 imgCloud[0xC0];
+};
+
+extern EWRAM_OVERLAY(0) union WeatherEffect gWeatherEffect;
+
+union WeatherGradient {
+	/**
+	 * Buffer holding colors for vertical gradient.
+	 */
+	u16 lines[320];
+
+	/**
+	 * Buffer holding 8 different variations of the tileset palette
+	 * Variations have increasing amounts of red; used for flames weather effect
+	 */
+	u16 fireGradient[8][0x40];
+};
+
+extern EWRAM_OVERLAY(0) union WeatherGradient gWeatherGradient;
+
+struct BmVSyncProc {
+	PROC_HEADER;
+
+	/* 2C */ struct TsImgAnim const * imgAnimStart;
+	/* 30 */ struct TsImgAnim const * imgAnimCurrent;
+
+	/* 34 */ short imgAnimClock;
+	/* 36 */ short palAnimClock;
+
+	/* 38 */ struct TsPalAnim const * palAnimStart;
+	/* 3C */ struct TsPalAnim const * palAnimCurrent;
+};
+
 void StartBmVSync(void);
 void EndBmVSync(void);
 void LockBmDisplay(void);
@@ -18,5 +84,14 @@ void SetWeather(int weather);
 
 extern struct ProcScr CONST_DATA ProcScr_BmVSync[];
 extern struct ProcScr CONST_DATA ProcScr_MapTask[];
+
+extern struct TsImgAnim CONST_DATA MapAsset01_Anims[];
+extern struct TsImgAnim CONST_DATA MapAsset09_ImgAnims[];
+extern struct TsImgAnim CONST_DATA MapAsset11_ImgAnims[];
+extern struct TsImgAnim CONST_DATA MapAsset4c_ImgAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset09_PalAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset11_PalAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset7b_PalAnims[];
+extern struct TsPalAnim CONST_DATA MapAsset12_PalAnims[];
 
 #endif // BMIO_H

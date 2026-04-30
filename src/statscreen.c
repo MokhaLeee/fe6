@@ -37,9 +37,11 @@ enum
     PAGE_FRAME_SCREEN_Y = 2,
 };
 
-struct StatScreenInfo EWRAM_DATA gStatScreenInfo = { 0 };
-
-extern struct StatScreenSt gStatScreenSt; // TODO: ewram overlay
+EWRAM_DATA struct StatScreenInfo gStatScreenInfo = { 0 };
+EWRAM_OVERLAY(0) struct StatScreenSt gStatScreenSt = {}; // TODO: ewram overlay
+EWRAM_OVERLAY(0) u16 gUiTmScratchA[0x280] = {};
+EWRAM_OVERLAY(0) u16 gUiTmScratchB[0x280] = {};
+EWRAM_OVERLAY(0) u16 gUiTmScratchC[0x240] = {};
 
 void DrawUiGaugeBitmapEdgeColumn(u8 * bitmap, int pixels_per_line, int column)
 {
@@ -338,7 +340,7 @@ void PutStatScreenStatWithBar(int num, int x, int y, int base, int total, int ma
 
 void PutStatScreenPersonalInfoPage(void)
 {
-    Decompress(gUnk_08307D58, gBuf);
+    Decompress(Tsa_Statscreen_08307D58, gBuf);
     TmApplyTsa(gUiTmScratchB, gBuf, TILEREF(BGCHR_WINDOWFRAME, BGPAL_WINDOWFRAME));
 
     PutStatScreenText(gStatScreenPersonalInfoLabelsInfo);
@@ -456,10 +458,10 @@ void PutStatScreenItemsPage(void)
 {
     int i, item;
 
-    Decompress(gUnk_08307DD4, gBuf);
+    Decompress(Tsa_Statscreen_08307DD4, gBuf);
     TmApplyTsa(gUiTmScratchB, gBuf, TILEREF(BGCHR_WINDOWFRAME, BGPAL_WINDOWFRAME));
 
-    Decompress(gUnk_08308070, gBuf);
+    Decompress(Tsa_Statscreen_08308070, gBuf);
     TmApplyTsa(gUiTmScratchC + TM_OFFSET(1, 11), gBuf, TILEREF(BGCHR_STATSCREEN_EQUIPSTATFRAME, BGPAL_STATSCREEN_EQUIPSTATFRAME));
 
     PutStatScreenText(gStatScreenEquipmentLabelsInfo);
@@ -482,7 +484,7 @@ void PutStatScreenItemsPage(void)
 
         TmApplyTsa(
             gUiTmScratchC + TM_OFFSET(1, 2 + i * 2),
-            gUnk_083080AC, TILEREF(BGCHR_STATSCREEN_EQUIPSTATFRAME, BGPAL_STATSCREEN_EQUIPSTATFRAME));
+            Tsa_Statscreen_083080AC, TILEREF(BGCHR_STATSCREEN_EQUIPSTATFRAME, BGPAL_STATSCREEN_EQUIPSTATFRAME));
 
         item = gStatScreenSt.unit->items[i];
     }
@@ -586,7 +588,7 @@ void PutStatScreenWeaponExpBar(int num, int x, int y, int item_kind)
 
 void PutStatScreenWeaponExpAndSupportsPage(void)
 {
-    Decompress(gUnk_08307E50, gBuf);
+    Decompress(Tsa_Statscreen_08307E50, gBuf);
     TmApplyTsa(gUiTmScratchB, gBuf, TILEREF(BGCHR_WINDOWFRAME, BGPAL_WINDOWFRAME));
 
     if (UnitKnowsMagic(gStatScreenSt.unit))
@@ -1210,23 +1212,23 @@ void StatScreen_Init(ProcPtr proc)
 
     StartMuralBackground(NULL, ((void *) VRAM) + 0x8000 + BGCHR_STATSCREEN_BACKMURAL * CHR_SIZE, -1);
 
-    Decompress(gUnk_083080D0, ((void *) VRAM + 0x10000) + OBCHR_STATSCREEN_240 * CHR_SIZE);
+    Decompress(Img_Statscreen_083080D0, ((void *) VRAM + 0x10000) + OBCHR_STATSCREEN_240 * CHR_SIZE);
 
     ApplyIconPalettes(BGPAL_ICONS);
     ApplyUiStatBarPal(BGPAL_STATSCREEN_STATBAR);
     ApplyIconPalette(1, 0x10 + OBPAL_STATSCREEN_PAGENAME);
 
-    Decompress(gUnk_08307CEC, gBuf);
+    Decompress(Tsa_Statscreen_08307CEC, gBuf);
     TmApplyTsa(gBg1Tm, gBuf, TILEREF(BGCHR_WINDOWFRAME, BGPAL_WINDOWFRAME));
 
-    Decompress(gUnk_08307ED4, ((void *) VRAM) + 0x8000 + BGCHR_STATSCREEN_EQUIPSTATFRAME * CHR_SIZE);
-    ApplyPalette(gUnk_08308050, BGPAL_STATSCREEN_EQUIPSTATFRAME);
+    Decompress(Img_Statscreen_08307ED4, ((void *) VRAM) + 0x8000 + BGCHR_STATSCREEN_EQUIPSTATFRAME * CHR_SIZE);
+    ApplyPalette(Pal_Statscreen_08308050, BGPAL_STATSCREEN_EQUIPSTATFRAME);
 
     CpuFastCopy(gPal + 0x10 * BGPAL_WINDOWFRAME, gPal + 0x100 + 0x10 * OBPAL_STATSCREEN_WINDOWFRAME, 0x20);
 
     ApplyIconPalette(1, 0x10 + OBPAL_STATSCREEN_SPRITES);
 
-    Decompress(gUnk_08308920, ((void *) VRAM) + BGCHR_STATSCREEN_EQUIPMENTLABEL * CHR_SIZE);
+    Decompress(Img_Statscreen_08308920, ((void *) VRAM) + BGCHR_STATSCREEN_EQUIPMENTLABEL * CHR_SIZE);
 
     gStatScreenSt.mu = NULL;
 

@@ -58,8 +58,8 @@ struct BattlePreviewProc
     /* 53 */ bool8 is_effective_b;
 };
 
-extern struct Text gBattlePreviewLabels[BATTLEPREVIEW_LABEL_COUNT];
-extern u16 gBattlePreviewIconPalBuf[8][0x10];
+EWRAM_OVERLAY(0) struct Text gBattlePreviewLabels[BATTLEPREVIEW_LABEL_COUNT] = {};
+EWRAM_OVERLAY(0) u16 gBattlePreviewIconPalBuf[8][0x10] = {};
 
 static int GetBattlePreviewPanelSide(void)
 {

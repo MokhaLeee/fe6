@@ -43,7 +43,7 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
-extern u16 gChapterIntroMotifTmBuf[];
+EWRAM_OVERLAY(0) u16 gChapterIntroMotifTmBuf[0x400] = {};
 
 struct RescueTransferAnimProc
 {
@@ -2008,12 +2008,12 @@ static void ChapterIntro_InitMapDisplay(struct Proc * proc)
     ApplyUnitSpritePalettes();
     ApplySystemObjectsGraphics();
 
-    val = GetChapterInfo(gPlaySt.chapter)->unk_0F;
+    val = GetChapterInfo(gPlaySt.chapter)->coord_x;
     val = GetCameraCenteredX(val*16);
     val = (val + 15) & 0x1F0;
     gBmSt.camera.x = val;
 
-    val = GetChapterInfo(gPlaySt.chapter)->unk_10;
+    val = GetChapterInfo(gPlaySt.chapter)->coord_y;
     val = GetCameraCenteredY(val*16);
     val = (val + 15) & 0x3F0;
     gBmSt.camera.y = val;
