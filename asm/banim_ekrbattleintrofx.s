@@ -700,7 +700,7 @@ func_fe6_08048A64: @ 0x08048A64
 	ldr r2, .L08048B94 @ =gBanimOamBufs
 	adds r1, r1, r2
 	str r1, [r4, #0x54]
-	ldr r1, .L08048B98 @ =gBanimImgSheetBufs
+	ldr r1, .L08048B98 @ =gBanimImgSheetBuf_Left
 	bl LZ77UnCompWram
 .L08048AC2:
 	ldrh r5, [r5, #2]
@@ -718,24 +718,24 @@ func_fe6_08048A64: @ 0x08048A64
 	ldr r2, .L08048BA4 @ =gBanimOamBufs + 0x5800
 	adds r1, r1, r2
 	str r1, [r4, #0x58]
-	ldr r1, .L08048BA8 @ =gUnk_Banim_02002080
+	ldr r1, .L08048BA8 @ =gBanimImgSheetBuf_Right
 	bl LZ77UnCompWram
 .L08048AE6:
 	ldr r5, .L08048BAC @ =gBanimUnitChgForceImg
 	ldr r0, [r5]
 	cmp r0, #0
 	beq .L08048AF4
-	ldr r1, .L08048BB0 @ =gUnk_Banim_02001080
+	ldr r1, .L08048BB0 @ =gBanimKakudaiBuf_Left
 	bl LZ77UnCompWram
 .L08048AF4:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq .L08048B00
-	ldr r1, .L08048BB4 @ =gUnk_Banim_02003080
+	ldr r1, .L08048BB4 @ =gBanimKakudaiBuf_Right
 	bl LZ77UnCompWram
 .L08048B00:
 	ldr r1, .L08048BB8 @ =0x06014000
-	ldr r0, .L08048B98 @ =gBanimImgSheetBufs
+	ldr r0, .L08048B98 @ =gBanimImgSheetBuf_Left
 	movs r2, #0x80
 	lsls r2, r2, #7
 	bl RegisterDataMove
@@ -800,14 +800,14 @@ func_fe6_08048A64: @ 0x08048A64
 .L08048B8C: .4byte gpBanimModesLeft
 .L08048B90: .4byte gBanimScrs
 .L08048B94: .4byte gBanimOamBufs
-.L08048B98: .4byte gBanimImgSheetBufs
+.L08048B98: .4byte gBanimImgSheetBuf_Left
 .L08048B9C: .4byte gpBanimModesRight
 .L08048BA0: .4byte gBanimScrs + 0x2A00
 .L08048BA4: .4byte gBanimOamBufs + 0x5800
-.L08048BA8: .4byte gUnk_Banim_02002080
+.L08048BA8: .4byte gBanimImgSheetBuf_Right
 .L08048BAC: .4byte gBanimUnitChgForceImg
-.L08048BB0: .4byte gUnk_Banim_02001080
-.L08048BB4: .4byte gUnk_Banim_02003080
+.L08048BB0: .4byte gBanimKakudaiBuf_Left
+.L08048BB4: .4byte gBanimKakudaiBuf_Right
 .L08048BB8: .4byte 0x06014000
 .L08048BBC: .4byte gEkrBmLocation
 .L08048BC0: .4byte BanimTypesPosLeft
@@ -1079,7 +1079,7 @@ NewEkrWindowAppear: @ 0x08048DA4
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
 	bl EkrGauge_Clr323A
-	ldr r1, .L08048DF0 @ =gUnk_Banim_0201E0EC
+	ldr r1, .L08048DF0 @ =gEkrWindowAppearUnexist
 	movs r0, #1
 	str r0, [r1]
 	bl EkrGauge_ClrInitFlag
@@ -1089,18 +1089,18 @@ NewEkrWindowAppear: @ 0x08048DA4
 	.align 2, 0
 .L08048DE8: .4byte ProcScr_EkrWindowAppear
 .L08048DEC: .4byte gEkrBg0QuakeVec
-.L08048DF0: .4byte gUnk_Banim_0201E0EC
+.L08048DF0: .4byte gEkrWindowAppearUnexist
 
 	thumb_func_start CheckEkrWindowAppearUnexist
 CheckEkrWindowAppearUnexist: @ 0x08048DF4
-	ldr r0, .L08048E00 @ =gUnk_Banim_0201E0EC
+	ldr r0, .L08048E00 @ =gEkrWindowAppearUnexist
 	ldr r0, [r0]
 	cmp r0, #0
 	beq .L08048E04
 	movs r0, #0
 	b .L08048E06
 	.align 2, 0
-.L08048E00: .4byte gUnk_Banim_0201E0EC
+.L08048E00: .4byte gEkrWindowAppearUnexist
 .L08048E04:
 	movs r0, #1
 .L08048E06:
@@ -1118,7 +1118,7 @@ func_fe6_08048E08: @ 0x08048E08
 	ldrsh r0, [r4, r3]
 	cmp r1, r0
 	blt .L08048E34
-	ldr r1, .L08048E30 @ =gUnk_Banim_0201E0EC
+	ldr r1, .L08048E30 @ =gEkrWindowAppearUnexist
 	movs r0, #0
 	str r0, [r1]
 	bl EkrGauge_SetInitFlag
@@ -1126,7 +1126,7 @@ func_fe6_08048E08: @ 0x08048E08
 	bl Proc_Break
 	b .L08048E7C
 	.align 2, 0
-.L08048E30: .4byte gUnk_Banim_0201E0EC
+.L08048E30: .4byte gEkrWindowAppearUnexist
 .L08048E34:
 	adds r0, r2, #1
 	strh r0, [r4, #0x2c]
@@ -1202,7 +1202,7 @@ NewEkrNamewinAppear: @ 0x08048E88
 	movs r1, #0
 	bl EkrDispUP_SetPositionUnsync
 .L08048EC4:
-	ldr r1, .L08048ED4 @ =gUnk_Banim_0201E0F0
+	ldr r1, .L08048ED4 @ =gEkrNameWinAppearExist
 	movs r0, #1
 	str r0, [r1]
 	bl UnsyncEkrDispUP
@@ -1210,18 +1210,18 @@ NewEkrNamewinAppear: @ 0x08048E88
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08048ED4: .4byte gUnk_Banim_0201E0F0
+.L08048ED4: .4byte gEkrNameWinAppearExist
 
 	thumb_func_start CheckEkrNamewinAppearUnexist
 CheckEkrNamewinAppearUnexist: @ 0x08048ED8
-	ldr r0, .L08048EE4 @ =gUnk_Banim_0201E0F0
+	ldr r0, .L08048EE4 @ =gEkrNameWinAppearExist
 	ldr r0, [r0]
 	cmp r0, #0
 	beq .L08048EE8
 	movs r0, #0
 	b .L08048EEA
 	.align 2, 0
-.L08048EE4: .4byte gUnk_Banim_0201E0F0
+.L08048EE4: .4byte gEkrNameWinAppearExist
 .L08048EE8:
 	movs r0, #1
 .L08048EEA:
@@ -1259,7 +1259,7 @@ func_fe6_08048F0C: @ 0x08048F0C
 	ldrsh r0, [r4, r3]
 	cmp r1, r0
 	blt .L08048F40
-	ldr r0, .L08048F3C @ =gUnk_Banim_0201E0F0
+	ldr r0, .L08048F3C @ =gEkrNameWinAppearExist
 	movs r1, #0
 	str r1, [r0]
 	bl SyncEkrDispUP
@@ -1272,7 +1272,7 @@ func_fe6_08048F0C: @ 0x08048F0C
 	bl Proc_Break
 	b .L08048F7E
 	.align 2, 0
-.L08048F3C: .4byte gUnk_Banim_0201E0F0
+.L08048F3C: .4byte gEkrNameWinAppearExist
 .L08048F40:
 	adds r0, r2, #1
 	strh r0, [r4, #0x2c]

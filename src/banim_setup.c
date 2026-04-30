@@ -17,6 +17,14 @@
 #include "constants/jids.h"
 #include "constants/terrains.h"
 
+EWRAM_DATA i16 gBanimExpPrevious[2] = {};
+EWRAM_DATA i16 gBanimExpGain[2] = {};
+EWRAM_DATA i16 gBanimTerrain[2] = {};
+EWRAM_DATA i16 gBanimCon[2] = {};
+EWRAM_DATA i16 gBanimWtaBonus[2] = {};
+EWRAM_DATA i16 gBanimEffectiveness[2] = {};
+EWRAM_DATA i16 gBanimUniquePaletteDisabled[2] = {};
+
 static inline i16 GetBanimBattleActorPosition(int faction1, int faction2)
 {
 	int pos = POS_L;

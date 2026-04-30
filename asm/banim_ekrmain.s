@@ -83,7 +83,7 @@ InitLeftAnim: @ 0x0804B37C
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strb r7, [r2, #0x12]
-	ldr r0, .L0804B4B4 @ =gBanimImgSheetBufs
+	ldr r0, .L0804B4B4 @ =gBanimImgSheetBuf_Left
 	str r0, [r2, #0x2c]
 	ldr r0, .L0804B4B8 @ =gBanimOamBufs
 	str r0, [r2, #0x30]
@@ -125,7 +125,7 @@ InitLeftAnim: @ 0x0804B37C
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strb r7, [r2, #0x12]
-	ldr r0, .L0804B4B4 @ =gBanimImgSheetBufs
+	ldr r0, .L0804B4B4 @ =gBanimImgSheetBuf_Left
 	str r0, [r2, #0x2c]
 	ldr r0, .L0804B4B8 @ =gBanimOamBufs
 	str r0, [r2, #0x30]
@@ -150,7 +150,7 @@ InitLeftAnim: @ 0x0804B37C
 .L0804B4A8: .4byte gBanimScrs
 .L0804B4AC: .4byte AnimScr_DefaultAnim
 .L0804B4B0: .4byte gEkrBgPosition
-.L0804B4B4: .4byte gBanimImgSheetBufs
+.L0804B4B4: .4byte gBanimImgSheetBuf_Left
 .L0804B4B8: .4byte gBanimOamBufs
 .L0804B4BC: .4byte gAnims
 
@@ -222,7 +222,7 @@ InitRightAnim: @ 0x0804B4C0
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strb r5, [r2, #0x12]
-	ldr r0, .L0804B5D4 @ =gUnk_Banim_02002080
+	ldr r0, .L0804B5D4 @ =gBanimImgSheetBuf_Right
 	str r0, [r2, #0x2c]
 	ldr r0, .L0804B5D8 @ =gBanimOamBufs + 0x5800
 	str r0, [r2, #0x30]
@@ -263,7 +263,7 @@ InitRightAnim: @ 0x0804B4C0
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strb r5, [r2, #0x12]
-	ldr r0, .L0804B5D4 @ =gUnk_Banim_02002080
+	ldr r0, .L0804B5D4 @ =gBanimImgSheetBuf_Right
 	str r0, [r2, #0x2c]
 	ldr r0, .L0804B5D8 @ =gBanimOamBufs + 0x5800
 	str r0, [r2, #0x30]
@@ -284,6 +284,6 @@ InitRightAnim: @ 0x0804B4C0
 .L0804B5C8: .4byte gBanimScrs + 0x2A00
 .L0804B5CC: .4byte AnimScr_DefaultAnim
 .L0804B5D0: .4byte gEkrBgPosition
-.L0804B5D4: .4byte gUnk_Banim_02002080
+.L0804B5D4: .4byte gBanimImgSheetBuf_Right
 .L0804B5D8: .4byte gBanimOamBufs + 0x5800
 .L0804B5DC: .4byte gAnims
