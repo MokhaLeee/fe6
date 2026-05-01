@@ -500,13 +500,13 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? SpriteAnim_OpAnim_0837AAE8
 // extern const ??? Img_OpAnimSparksOBJ
 // extern const ??? Pal_OpAnimSparksOBJ
-// extern const ??? Img_OpAnimThunderStorm
-// extern const ??? Tsa_OpAnimThunderStorm
-// extern const ??? gUnk_0837CB0C
-// extern const ??? gUnk_0837CB2C
-// extern const ??? gUnk_0837CB4C
-// extern const ??? gUnk_0837CB6C
-// extern const ??? Img_OpAnim_Dragon
+extern const u8 Img_OpAnimThunderStorm[];
+extern const u16 Tsa_OpAnimThunderStorm[];
+extern const u16 Pal_OpAnimThunderStorm1[];
+extern const u16 Pal_OpAnimThunderStorm2[];
+extern const u16 Pal_OpAnimThunderStorm3[];
+extern const u16 Pal_OpAnimThunderStorm4[];
+extern const u8 Img_OpAnim_Dragon[];
 // extern const ??? gUnk_0837EEB4
 // extern const ??? gUnk_0837F418
 // extern const ??? Img_OpAnimGlyphs

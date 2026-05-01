@@ -140,20 +140,20 @@ Img_OpAnimThunderStorm: @ 0837ACD0
 Tsa_OpAnimThunderStorm: @ 0837C844
 	.incbin "fe6-base.gba", 0x37C844, (0x37CB0C - 0x37C844) @ length: 02C8
 
-	.global gUnk_0837CB0C
-gUnk_0837CB0C: @ 0837CB0C
+	.global Pal_OpAnimThunderStorm1
+Pal_OpAnimThunderStorm1: @ 0837CB0C
 	.incbin "fe6-base.gba", 0x37CB0C, (0x37CB2C - 0x37CB0C) @ length: 0020
 
-	.global gUnk_0837CB2C
-gUnk_0837CB2C: @ 0837CB2C
+	.global Pal_OpAnimThunderStorm2
+Pal_OpAnimThunderStorm2: @ 0837CB2C
 	.incbin "fe6-base.gba", 0x37CB2C, (0x37CB4C - 0x37CB2C) @ length: 0020
 
-	.global gUnk_0837CB4C
-gUnk_0837CB4C: @ 0837CB4C
+	.global Pal_OpAnimThunderStorm3
+Pal_OpAnimThunderStorm3: @ 0837CB4C
 	.incbin "fe6-base.gba", 0x37CB4C, (0x37CB6C - 0x37CB4C) @ length: 0020
 
-	.global gUnk_0837CB6C
-gUnk_0837CB6C: @ 0837CB6C
+	.global Pal_OpAnimThunderStorm4
+Pal_OpAnimThunderStorm4: @ 0837CB6C
 	.incbin "fe6-base.gba", 0x37CB6C, (0x37CB8C - 0x37CB6C) @ length: 0020
 
 	.global Img_OpAnim_Dragon

@@ -126,7 +126,7 @@ void func_fe6_08014D9C(u16 const * colors, int pal_offset, int pal_size, int int
 void func_fe6_08014DB4(u16 const * colors, int pal_offset, int pal_size, int interval, ProcPtr parent);
 // func_fe6_08014DCC
 void func_fe6_08014E30(u16 * tm, int x, int y, u16 tileref, int width, int height);
-// func_fe6_08014E98
+void func_fe6_08014E98(u16 * tm, int x, int y, u16 tileref, int width, int height, u16 const * src, bool hflip);
 void func_fe6_08014F70(u16 * tm, int x, int y, u16 tileref, int width, int height, u16 const * src, int arg_7);
 void func_fe6_0801501C(u16 * tm, int x, int y, u16 tileref, int width, int height, u8 const * src, int arg_7);
 // func_fe6_080150DC

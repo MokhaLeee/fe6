@@ -329,3 +329,9 @@ void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc)
 	if (proc->delay_timer <= 0)
 		Proc_Break(proc);
 }
+
+void OpAnimSubtitleDisp_Setup(struct ProcOpAnimSubtitleDisp *proc)
+{
+	proc->x_center = (0xF0 - func_fe6_08099328(proc->str)) / 2;
+	proc->unk_64 = 0;
+}
