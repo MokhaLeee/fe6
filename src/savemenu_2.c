@@ -21,11 +21,11 @@ struct Unk_0868A518
     /* 04 */ u8 unk_04;
 };
 
-extern struct Unk_0868A518 gUnk_0868A4F8[];
-extern struct Unk_0868A518 gUnk_0868A518[];
+extern struct Unk_0868A518 Sprites_0868A4F8[];
+extern struct Unk_0868A518 Sprites_0868A518[];
 
-extern u16 const * gUnk_0868A550[]; // sprites
-extern u16 const * gUnk_0868A55C[]; // sprites
+extern u16 const * Sprites_0868A550[]; // sprites
+extern u16 const * Sprites_0868A55C[]; // sprites
 
 u16 EWRAM_OVERLAY(savemenu) gUnk_Savemenu_02000404[0x20] = { 0 };
 
@@ -626,16 +626,16 @@ void func_fe6_08089A3C(ProcPtr proc, int x, int y, fu8 arg_3, fu8 pal_a, fu8 pal
 {
     PutSpriteExt(4, OAM1_X(x), y, Sprite_0868A0FC, OAM2_PAL(pal_a));
 
-    PutSpriteExt(4, OAM1_X(x + 8 + gUnk_0868A518[arg_3].unk_04), y + 8,
-        gUnk_0868A518[arg_3].sprite, OAM2_PAL(pal_b));
+    PutSpriteExt(4, OAM1_X(x + 8 + Sprites_0868A518[arg_3].unk_04), y + 8,
+        Sprites_0868A518[arg_3].sprite, OAM2_PAL(pal_b));
 }
 
 void func_fe6_08089ABC(ProcPtr proc, int x, int y, fu8 arg_3, fu8 pal_a, fu8 pal_b)
 {
     PutSpriteExt(4, OAM1_X(x), y, Sprite_0868A0FC, OAM2_PAL(pal_a));
 
-    PutSpriteExt(4, OAM1_X(x + 8 + gUnk_0868A4F8[arg_3].unk_04), y + 8,
-        gUnk_0868A4F8[arg_3].sprite, OAM2_PAL(pal_b));
+    PutSpriteExt(4, OAM1_X(x + 8 + Sprites_0868A4F8[arg_3].unk_04), y + 8,
+        Sprites_0868A4F8[arg_3].sprite, OAM2_PAL(pal_b));
 }
 
 void func_fe6_08089B3C(struct UnkProc_0868A28C * proc)
@@ -681,15 +681,15 @@ void func_fe6_08089C70(struct UnkProc_0868A28C * proc)
     {
         id = func_fe6_08087CB0(proc->proc_parent->sel_index);
 
-        PutSpriteExt(4, 0x40 + gUnk_0868A518[id].unk_04, (y + 8) & 0x1FF,
-            gUnk_0868A4F8[id].sprite, OAM2_PAL(3));
+        PutSpriteExt(4, 0x40 + Sprites_0868A518[id].unk_04, (y + 8) & 0x1FF,
+            Sprites_0868A4F8[id].sprite, OAM2_PAL(3));
     }
     else
     {
         id = func_fe6_08087CB0(proc->proc_parent->unk_2E);
 
-        PutSpriteExt(4, 0x40 + gUnk_0868A518[id].unk_04, (y + 8) & 0x1FF,
-            gUnk_0868A518[id].sprite, OAM2_PAL(3));
+        PutSpriteExt(4, 0x40 + Sprites_0868A518[id].unk_04, (y + 8) & 0x1FF,
+            Sprites_0868A518[id].sprite, OAM2_PAL(3));
     }
 }
 
@@ -775,8 +775,8 @@ void func_fe6_08089D30(struct UnkProc_0868A28C * proc)
         {
             u32 r2 = (proc->proc_parent->unk_2D == 5 && proc->proc_parent->selected_id == i) ? 0x100 : 0;
 
-            PutSpriteExt(4, OAM1_X(0xF4 - proc->proc_parent->unk_2F), 0x20 + r2 + i * 0x20, gUnk_0868A55C[i], OAM2_PAL(10 + i * 2));
-            PutSpriteExt(4, OAM1_X(0xF4 - proc->proc_parent->unk_2F), 0x20 + r2 + i * 0x20 + 8, gUnk_0868A550[i], OAM2_PAL(11 + i * 2));
+            PutSpriteExt(4, OAM1_X(0xF4 - proc->proc_parent->unk_2F), 0x20 + r2 + i * 0x20, Sprites_0868A55C[i], OAM2_PAL(10 + i * 2));
+            PutSpriteExt(4, OAM1_X(0xF4 - proc->proc_parent->unk_2F), 0x20 + r2 + i * 0x20 + 8, Sprites_0868A550[i], OAM2_PAL(11 + i * 2));
         }
 
         if (proc->proc_parent->unk_3F != 0xFF)
