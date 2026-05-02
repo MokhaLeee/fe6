@@ -47,8 +47,9 @@ void OpAnim_PutSubtitle(int idx);
 struct ProcOpAnimSubtitleDisp {
 	PROC_HEADER;
 
-	STRUCT_PAD(0x29, 0x30);
+	STRUCT_PAD(0x29, 0x2C);
 
+	/* 2C */ int x_center;
 	/* 30 */ int unk_30;
 
 	STRUCT_PAD(0x34, 0x44);
@@ -62,6 +63,10 @@ struct ProcOpAnimSubtitleDisp {
 	STRUCT_PAD(0x50, 0x54);
 
 	/* 54 */ int index;
+
+	STRUCT_PAD(0x58, 0x64);
+
+	/* 64 */ u16 unk_64;
 };
 
 void NewOpAnimSubtitleDisp(int idx, int a, int b, char *str);
@@ -89,7 +94,7 @@ void OpAnimSubtitleDisp_Loop(struct ProcOpAnimSubtitleDisp *proc);
 // func_fe6_080992D0
 // func_fe6_080992DC
 // func_fe6_08099314
-// func_fe6_08099328
+int func_fe6_08099328(const char *str);
 char *OpAnimSubtitleStringAdvance(char *str);
 void func_fe6_0809937C(void);
 // func_fe6_080993AC
@@ -167,17 +172,30 @@ void PutImg_OpAnimGlyphs(void);
 // func_fe6_0809A8A4
 // func_fe6_0809A8B4
 // func_fe6_0809A900
-// OpAnim_PutThunderStormGfx
-// func_fe6_0809AA20
-// OpAnim6_StartBGM
-// OpAnim6_PutThunderStormGfx
-// OpAnim6_StartThunderStorm
-// func_fe6_0809AB4C
-// func_fe6_0809ABA8
-// func_fe6_0809ABF0
-// func_fe6_0809AC34
-// func_fe6_0809AC54
-// func_fe6_0809AC74
+
+struct ProcOpAnim6 {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x44);
+
+	i16 unk_44;
+
+	STRUCT_PAD(0x46, 0x64);
+
+	i16 unk_64;
+};
+
+void OpAnim_PutThunderStormGfx(void);
+void func_fe6_0809AA20(int a, int b);
+void OpAnim6_StartBGM(struct ProcOpAnim6 *proc);
+void OpAnim6_PutThunderStormGfx(struct ProcOpAnim6 *proc);
+void OpAnim6_StartThunderStorm(struct ProcOpAnim6 *proc);
+// OpAnimThunderStorm_Init
+// OpAnimThunderStorm_PutPal1
+// OpAnimThunderStorm_PutPal2
+// OpAnimThunderStorm_PutPal3
+// OpAnimThunderStorm_PutPal4
+// OpAnimThunderStorm_PutPal5
 // OpAnim6_PutIdunnGfx
 // func_fe6_0809AD3C
 // func_fe6_0809AD64
@@ -247,8 +265,22 @@ extern CONST_DATA struct ProcScr ProcScr_Unk_08691D88[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691DB8[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnim_08691DE8[];
 extern u16 CONST_DATA BgConf_OpAnim_08691DF8[];
-// ??? gUnk_08691E10
-// ??? gUnk_08691E30
+
+struct OpAnim_08691E10 {
+	u8 unk_00;
+	u8 tileref;
+	i8 unk_02;
+	u8 _pad_;
+};
+extern CONST_DATA struct OpAnim_08691E10 OpAnim_08691E10[];
+
+struct OpAnim_08691E30 {
+	u8 unk_00;
+	u8 tileref;
+	u16 unk_02;
+};
+extern CONST_DATA struct OpAnim_08691E30 OpAnim_08691E30[];
+
 extern CONST_DATA struct ProcScr ProcScr_OpAnim6[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnimThunderStorm[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnim5[];

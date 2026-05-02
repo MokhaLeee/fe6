@@ -29,6 +29,8 @@
 #include "constants/msg.h"
 #include "constants/songs.h"
 
+static struct Text Text_GoldBox;
+
 u16 CONST_DATA gDefaultShopItems[] = {
 	IID_IRONSWORD,
 	IID_IRONLANCE,

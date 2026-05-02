@@ -187,8 +187,6 @@ SECTIONS
         . = ALIGN(4); src/chapter_title.o(ewram_data);
         . = ALIGN(4); src/helpbox_2.o(ewram_data);
         . = ALIGN(4); src/secretscreen.o(ewram_data);
-
-        . = 0x0203D524 - __ewram_overlay_end;
         . = ALIGN(4); src/save_core.o(ewram_data);
         . = ALIGN(4); src/save_stats.o(ewram_data);
         . = ALIGN(4); src/save_game.o(ewram_data);
@@ -200,7 +198,6 @@ SECTIONS
 
         . = 0x0203DC70 - __ewram_overlay_end;
         . = ALIGN(4); src/ending_pinfo.o(ewram_data);
-
 
         . = 0x0203DCB8 - __ewram_overlay_end;
         . = ALIGN(4); src/shop.o(ewram_data);
@@ -241,21 +238,18 @@ SECTIONS
         . = 0x001410; gUnk_03001410 = .;
         . = 0x001418; gUnk_03001418 = .;
         . = 0x001428; gUnk_03001428 = .;
-        . = 0x001438; gUnk_03001438 = .;
+        . = 0x001438; gUnk_03001438 = .; . = . + 8;
 
-        . = 0x001440; src/mu.o(.bss);
-
-        . = 0x001570; Text_GoldBox = .;
-
-        . = 0x001578; data/sounds/music_player_table.o(.bss);
-
-        . = 0x002158; src/gbasram.o(.bss);
+        . = ALIGN(4); src/mu.o(.bss);
+        . = ALIGN(4); src/shop.o(.bss);
+        . = ALIGN(4); data/sounds/music_player_table.o(.bss);
+        . = ALIGN(4); src/gbasram.o(.bss);
         . = ALIGN(4); *libgcc.a:dp-bit.o(.bss);
         . = ALIGN(4); *libgcc.a:fp-bit.o(.bss);
-
         . = ALIGN(4); src/iwram-data.o(iwram_data);
 
         /* stack: 0x03006648 ~ 0x03007E60 */
+
         . = 0x008000; /* end */
     }
 
@@ -449,6 +443,8 @@ SECTIONS
         src/suspend_ui.o(.text);
         src/opanim.o(.text);
         asm/opanim.o(.text);
+        src/opanim6.o(.text);
+        asm/opanim6.o(.text);
         src/titlescreen.o(.text);
 
         src/m4a_1.o(.text);
@@ -871,6 +867,8 @@ SECTIONS
         . = ALIGN(4); src/suspend_ui.o(.data);
         . = ALIGN(4); src/opanim.o(.data);
         . = ALIGN(4); data/opanim.o(.data);
+        . = ALIGN(4); src/opanim6.o(.data);
+        . = ALIGN(4); data/opanim6.o(.data);
         . = ALIGN(4); src/titlescreen.o(.data);
 
         . = ALIGN(4); data/_maybayunused_692308.o(.data);

@@ -98,7 +98,6 @@ extern CONST_DATA struct ShopState *gpShopSt;
 
 #define SHOP_TEXT_LINES 5
 extern struct Text gShopItemTexts[SHOP_TEXT_LINES + 1];
-extern struct Text Text_GoldBox;
 
 int GetShopFace(struct ProcShop *proc);
 void StartShopDialogue(int msg, struct ProcShop *proc);
