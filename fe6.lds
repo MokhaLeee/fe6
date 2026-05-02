@@ -444,7 +444,7 @@ SECTIONS
         src/opanim.o(.text);
         asm/opanim.o(.text);
         src/opanim6.o(.text);
-        asm/opanim6.o(.text);
+        asm/opanim5.o(.text);
         src/titlescreen.o(.text);
 
         src/m4a_1.o(.text);

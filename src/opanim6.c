@@ -127,3 +127,27 @@ void OpAnimThunderStorm_PutPal5(struct ProcOpAnim6 *proc)
 	ApplyPalette(Pal_AllBlack, 0);
 	gPal[0] = 0;
 }
+
+void OpAnim6_PutIdunnGfx(struct ProcOpAnim6 *proc)
+{
+	PlaySe(SONG_94);
+
+	TmFill(gBg0Tm, 0);
+	Decompress(Img_OpAnim_Dragon, (u8 *)BG_VRAM + GetBgChrOffset(BG_0));
+	Decompress(Tsa_Opanim6_0837EEB4, gBg0Tm);
+	ApplyPalettes(Pal_Opanim6_0837F418, 0, 3);
+	EnableBgSync(BG0_SYNC_BIT);
+	SetBlendBrighten(0x10);
+	SetBlendTargetA(0, 1, 1, 1, 1);
+	SetBlendBackdropA(1);
+}
+
+void func_fe6_0809AD3C(struct ProcOpAnim6 *proc)
+{
+	SetBlendNone();
+}
+
+void func_fe6_0809AD64(struct ProcOpAnim6 *proc)
+{
+	SetDispEnable(0, 0, 0, 0, 0);
+}

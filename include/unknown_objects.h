@@ -507,9 +507,9 @@ extern const u16 Pal_OpAnimThunderStorm2[];
 extern const u16 Pal_OpAnimThunderStorm3[];
 extern const u16 Pal_OpAnimThunderStorm4[];
 extern const u8 Img_OpAnim_Dragon[];
-// extern const ??? gUnk_0837EEB4
-// extern const ??? gUnk_0837F418
-// extern const ??? Img_OpAnimGlyphs
+extern const u16 Tsa_Opanim6_0837EEB4[];
+extern const u16 Pal_Opanim6_0837F418[];
+extern const u8 Img_OpAnimGlyphs[];
 extern const u16 Pal_OpAnimGlyphs[];
 // extern const ??? gUnk_08380F4C
 // extern const ??? gUnk_08380F54

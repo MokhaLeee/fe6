@@ -196,7 +196,7 @@ void OpAnim6_StartThunderStorm(struct ProcOpAnim6 *proc);
 // OpAnimThunderStorm_PutPal3
 // OpAnimThunderStorm_PutPal4
 // OpAnimThunderStorm_PutPal5
-// OpAnim6_PutIdunnGfx
+void OpAnim6_PutIdunnGfx(struct ProcOpAnim6 *proc);
 // func_fe6_0809AD3C
 // func_fe6_0809AD64
 // func_fe6_0809AD88
