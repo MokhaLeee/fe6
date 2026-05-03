@@ -3,12 +3,14 @@
 #include "proc.h"
 #include "event.h"
 #include "sound.h"
+#include "sprite.h"
 #include "util.h"
 #include "msg.h"
+#include "oam.h"
 #include "titlescreen.h"
 #include "gamecontroller.h"
 #include "constants/songs.h"
-
+#include "constants/msg.h"
 #include "opanim.h"
 
 EWRAM_OVERLAY(opanim) u8 Opanim_02000000[0x2800] = {};
@@ -361,7 +363,6 @@ void OpAnimSubtitleDisp_Loop(struct ProcOpAnimText *proc)
 			child->x_center = proc->x_center;
 			child->unk_30 = conf->unk_04 + (proc->unk_30 & 0xFF);
 			child->unk_4A = func_fe6_080992DC(str);
-
 			proc->x_center += func_fe6_08099314(str);
 			str += 2;
 			break;
@@ -472,3 +473,120 @@ void OpAnimText_Init1(struct ProcOpAnimText *proc)
 		gOpAnimSubtitleConf[proc->index].unk_02,
 		proc) - 0x1000;
 }
+
+void func_fe6_08098FA8(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_58 >= gUnk_08691494) {
+		proc->unk_58 = 0;
+		func_fe6_080993E8(proc->index);
+		Proc_Break(proc);
+		OpAnimText_Loop1(proc);
+		return;
+	}
+
+	proc->unk_58++;
+
+	PutSpriteExt(
+		0,
+		proc->x_center + (proc->index << 9),
+		0x100 + Interpolate(4, proc->unk_30 + 8, proc->unk_30, proc->unk_58, gUnk_08691494),
+		Sprite_16x16,
+		proc->unk_4A);
+
+	SetObjAffineAuto(
+		proc->index, 0, 0x100,
+		Interpolate(4, 1, 0x100, proc->unk_58, gUnk_08691494));
+}
+
+void OpAnimText_Loop1(struct ProcOpAnimText *proc)
+{
+	PutSpriteExt(
+		0,
+		proc->x_center,
+		proc->unk_30,
+		Sprite_16x16,
+		proc->unk_4A + proc->unk_64);
+}
+
+void OpAnimText_Init2(struct ProcOpAnimText *proc)
+{
+	func_fe6_08099520(proc);
+}
+
+void OpAnimText_Loop2(struct ProcOpAnimText *proc)
+{
+	OpAnimText_Loop1(proc);
+}
+
+void func_fe6_080990FC(struct ProcOpAnimText *proc)
+{
+	proc->index = func_fe6_080993AC();
+	proc->unk_58 = 1;
+	SetObjAffineAuto(proc->index, 0, 1, 0x100);
+}
+
+void func_fe6_08099194(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_58 >= gUnk_08691494) {
+		proc->unk_58 = 0;
+		func_fe6_080993E8(proc->index);
+		Proc_Break(proc);
+		// OpAnimText_Loop1(proc);
+		return;
+	}
+
+	proc->unk_58++;
+
+	PutSpriteExt(
+		0,
+		Interpolate(4, proc->x_center, proc->x_center + 0x10, proc->unk_58, gUnk_08691494) + (proc->index << 9),
+		Interpolate(4, proc->unk_30, proc->unk_30 + 0x10, proc->unk_58, gUnk_08691494) + 0x100,
+		Sprite_16x16,
+		proc->unk_4A);
+
+	SetObjAffineAuto(
+		proc->index, 0, Interpolate(0, 0x100, 2, proc->unk_58, gUnk_08691494), 0x100);
+}
+
+void func_fe6_080992B8(void)
+{
+	Proc_ForEach(ProcScr_OpAnimText, (ProcFunc)func_fe6_080992D0);
+}
+
+void func_fe6_080992D0(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0x800;
+}
+
+CONST_DATA char gUnk_08691644[] = "あいえかきくけこさしすそたちつてとにのはまもよりるれをがずだっ　神人近時代祝福英雄存亡未来戦世界光導剣闇炎宿尊紋章幾多空間物語　・「」２０ＮｉｎｔｅｄｏＰｒｓ　";
+CONST_DATA u8 gUnk_086916E5[] = {
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
+	0x08, 0x08, 0x08, 0x07, 0x07, 0x09, 0x05, 0x07,
+	0x06, 0x07, 0x07, 0x07, 0x08, 0x07, 0x06, 0x06,
+	0x00,
+};
+
+CONST_DATA int Msgs_OpAnim_08691738[] = {
+	MSG_C08,
+	MSG_C09,
+	MSG_C0A,
+	MSG_C0C,
+	MSG_C0D,
+	MSG_C0E,
+	MSG_C0F,
+	MSG_C0B, // "闇よりいずるものたち"
+};
+
+CONST_DATA u8 gUnk_08691758[] = {
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0x3C, 0, 0x3C, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+};

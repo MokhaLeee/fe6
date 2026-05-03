@@ -64,8 +64,9 @@ struct ProcOpAnimText {
 	STRUCT_PAD(0x50, 0x54);
 
 	/* 54 */ int index;
+	/* 58 */ int unk_58;
 
-	STRUCT_PAD(0x58, 0x64);
+	STRUCT_PAD(0x5C, 0x64);
 
 	/* 64 */ i16 unk_64;
 };
@@ -84,26 +85,26 @@ void BreakOpAnimText(void);
 // func_fe6_08098DEC
 // func_fe6_08098E74
 // func_fe6_08098EC8
-// OpAnimText_Init1
-// func_fe6_08098FA8
-// OpAnimText_Loop1
-// OpAnimText_Init2
-// OpAnimText_Loop2
-// func_fe6_080990FC
+void OpAnimText_Init1(struct ProcOpAnimText *proc);
+void func_fe6_08098FA8(struct ProcOpAnimText *proc);
+void OpAnimText_Loop1(struct ProcOpAnimText *proc);
+void OpAnimText_Init2(struct ProcOpAnimText *proc);
+void OpAnimText_Loop2(struct ProcOpAnimText *proc);
+void func_fe6_080990FC(struct ProcOpAnimText *proc);
 // func_fe6_08099194
-// func_fe6_080992B8
-// func_fe6_080992D0
+void func_fe6_080992B8(void);
+void func_fe6_080992D0(struct ProcOpAnimText *proc);
 int func_fe6_080992DC(const char *str);
 int func_fe6_08099314(const char *str);
 int func_fe6_08099328(const char *str);
 char *OpAnimSubtitleStringAdvance(char *str);
 void func_fe6_0809937C(void);
-// func_fe6_080993AC
-// func_fe6_080993E8
+int func_fe6_080993AC(void);
+void func_fe6_080993E8(int index);
 void PutImg_OpAnimGlyphs(void);
 void func_fe6_08099424(int);
 int func_fe6_0809947C(int, int, ProcPtr proc);
-// func_fe6_08099520
+int func_fe6_08099520(ProcPtr proc);
 // func_fe6_08099534
 // func_fe6_08099540
 // func_fe6_08099580

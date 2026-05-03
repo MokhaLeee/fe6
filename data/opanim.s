@@ -1,18 +1,6 @@
 	.include "asm_proc.inc"
 	.data
 
-	.global gUnk_08691644
-gUnk_08691644: @ 08691644
-	.incbin "fe6-base.gba", 0x691644, (0x6916E5 - 0x691644) @ length: 00A1
-
-	.global gUnk_086916E5
-gUnk_086916E5: @ 086916E5
-	.incbin "fe6-base.gba", 0x6916E5, (0x691738 - 0x6916E5) @ length: 0053
-
-	.global Msgs_OpAnim_08691738
-Msgs_OpAnim_08691738: @ 08691738
-	.incbin "fe6-base.gba", 0x691738, (0x691778 - 0x691738) @ length: 0040
-
 	.global gOpAnimSubtitleConf
 gOpAnimSubtitleConf: @ 08691778
 	.incbin "fe6-base.gba", 0x691778, (0x6917D8 - 0x691778) @ length: 0060
