@@ -45,14 +45,14 @@ ProcScr_Unk_08691840: @ 08691840
 	PROC_REPEAT func_fe6_08098EC8
 	PROC_END
 
-	.global NewOpAnimSubtitleIntroDisp
-NewOpAnimSubtitleIntroDisp: @ 08691858
+	.global ProcScr_OpAnimText
+ProcScr_OpAnimText: @ 08691858
 	PROC_MARK 9
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098F68
-	PROC_REPEAT func_fe6_080990B8
-	PROC_CALL func_fe6_080990E4
-	PROC_REPEAT func_fe6_080990F0
+	PROC_CALL OpAnimText_Init1
+	PROC_REPEAT OpAnimText_Loop1
+	PROC_CALL OpAnimText_Init2
+	PROC_REPEAT OpAnimText_Loop2
 	PROC_END
 
 	.global ProcScr_08691890
@@ -84,9 +84,9 @@ ProcScr_OpAnim1: @ 08691930
 	PROC_CALL func_fe6_08099644
 	PROC_SLEEP 0
 	PROC_SLEEP 8
-	PROC_CALL func_fe6_08098CA4
+	PROC_CALL BreakOpAnimText
 	PROC_SLEEP 48
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_END
 
 	.global ProcScr_Unk_086919D0
@@ -125,7 +125,7 @@ ProcScr_OpAnim2: @ 08691A00
 	PROC_SLEEP 60
 	PROC_CALL func_fe6_08014998
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_END
 
 	.global ProcScr_Unk_08691AC0
@@ -237,9 +237,9 @@ ProcScr_OpAnim3: @ 08691CE0
 	PROC_SLEEP 84
 	PROC_START_CHILD ProcScr_Unk_08691D88
 	PROC_SLEEP 270
-	PROC_CALL func_fe6_08098CA4
+	PROC_CALL BreakOpAnimText
 	PROC_SLEEP 40
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_SLEEP 30
 	PROC_CALL PutOpAnimSubtitle7
 	PROC_SLEEP 90

@@ -11,6 +11,9 @@
 
 #include "opanim.h"
 
+EWRAM_OVERLAY(opanim) u8 Opanim_02000000[0x2800] = {};
+EWRAM_OVERLAY(opanim) int Opanim_02002800 = 0;
+
 CONST_DATA struct ProcScr ProcScr_TitleScreenHandler[] = {
 	PROC_START_CHILD_LOCKING(ProcScr_TitleScreen),
 	PROC_END
@@ -308,7 +311,7 @@ void OpAnim_PutSubtitle(int idx)
 
 void NewOpAnimSubtitleDisp(int idx, int a, int delay, char *str)
 {
-	struct ProcOpAnimSubtitleDisp *proc;
+	struct ProcOpAnimText *proc;
 
 	proc = SpawnProc(ProcScr_OpAnimSubtitleDisp, PROC_TREE_3);
 	proc->delay_timer = delay;
@@ -317,12 +320,12 @@ void NewOpAnimSubtitleDisp(int idx, int a, int delay, char *str)
 	proc->index = idx;
 }
 
-void OpAnimSubtitleDisp_Init(struct ProcOpAnimSubtitleDisp *proc)
+void OpAnimSubtitleDisp_Init(struct ProcOpAnimText *proc)
 {
 	proc->delay_timer = 0;
 }
 
-void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc)
+void OpAnimSubtitleDisp_Wait(struct ProcOpAnimText *proc)
 {
 	proc->delay_timer--;
 
@@ -330,8 +333,142 @@ void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc)
 		Proc_Break(proc);
 }
 
-void OpAnimSubtitleDisp_Setup(struct ProcOpAnimSubtitleDisp *proc)
+void OpAnimSubtitleDisp_Setup(struct ProcOpAnimText *proc)
 {
 	proc->x_center = (0xF0 - func_fe6_08099328(proc->str)) / 2;
 	proc->unk_64 = 0;
+}
+
+void OpAnimSubtitleDisp_Loop(struct ProcOpAnimText *proc)
+{
+	char *str = proc->str;
+	const struct OpAnimSubtitleConf *conf = &gOpAnimSubtitleConf[proc->index];
+
+	proc->unk_64 = 1 - proc->unk_64;
+	if (proc->unk_64 == 0)
+		return;
+
+	do {
+		switch (*str) {
+		case 4:
+			str++;
+			break;
+
+		default: {
+			struct ProcOpAnimText *child = SpawnProc(ProcScr_OpAnimText, PROC_TREE_3);
+
+			child->index = proc->index;
+			child->x_center = proc->x_center;
+			child->unk_30 = conf->unk_04 + (proc->unk_30 & 0xFF);
+			child->unk_4A = func_fe6_080992DC(str);
+
+			proc->x_center += func_fe6_08099314(str);
+			str += 2;
+			break;
+		}
+
+		case 0:
+		case 1:
+			Proc_Break(proc);
+			return;
+		}
+
+		proc->str = str;
+	} while (conf->unk_02 == 0);
+}
+
+void func_fe6_08098C90(void)
+{
+}
+
+void RemoveOpAnimText(void)
+{
+	Proc_EndEach(ProcScr_OpAnimText);
+}
+
+void BreakOpAnimText(void)
+{
+	Opanim_02002800 = 0;
+	Proc_BreakEach(ProcScr_OpAnimText);
+}
+
+void func_fe6_08098CC0(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	SetBlendTargetA(0, 0, 0, 0, 1);
+	SetBlendTargetB(1, 1, 1, 0, 0);
+    SetBlendBackdropB(1);
+	SetBlendAlpha(0x10, 0);
+}
+
+void func_fe6_08098D10(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_64 < 0x20) {
+		proc->unk_64++;
+		SetBlendAlpha(
+			Interpolate(0, 0x10, 0, proc->unk_64, 0x20),
+			Interpolate(0, 0, 0x10, proc->unk_64, 0x20));
+	} else {
+		SetBlendNone();
+		RemoveOpAnimText();
+		Proc_Break(proc);
+	}
+}
+
+void func_fe6_08098DB0(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	SetBlendTargetA(0, 0, 0, 0, 0);
+	SetBlendTargetB(0, 0, 0, 0, 0);
+    SetBlendBackdropB(1);
+	SetBlendNone();
+}
+
+void func_fe6_08098DEC(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_64 < 0x20) {
+		proc->unk_64++;
+
+		gDispIo.blend_ct.effect = 0;
+		gDispIo.blend_coef_a = Interpolate(0, 0x10, 0, proc->unk_64, 0x20);
+		gDispIo.blend_coef_b = 0;
+		gDispIo.blend_y = 0;
+	} else {
+		SetBlendNone();
+		RemoveOpAnimText();
+		Proc_Break(proc);
+	}
+}
+
+void func_fe6_08098E74(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	SetBlendTargetA(0, 0, 1, 0, 0);
+	SetBlendTargetB(0, 0, 0, 0, 1);
+    SetBlendBackdropB(0);
+	SetBlendAlpha(0, 0x10);
+}
+
+void func_fe6_08098EC8(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_64 < 0x20) {
+		proc->unk_64++;
+		SetBlendAlpha(
+			Interpolate(0, 0, 0x10, proc->unk_64, 0x20),
+			Interpolate(0, 0x10, 0, proc->unk_64, 0x20));
+	} else {
+		SetBlendNone();
+		RemoveOpAnimText();
+		Proc_Break(proc);
+	}
+}
+
+void OpAnimText_Init1(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	func_fe6_08099424(proc->unk_4A);
+	proc->unk_4A = func_fe6_0809947C(
+		proc->unk_4A,
+		gOpAnimSubtitleConf[proc->index].unk_02,
+		proc) - 0x1000;
 }
