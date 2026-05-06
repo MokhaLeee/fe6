@@ -43,11 +43,11 @@ ProcScr_OpAnimText: @ 08691858
 	PROC_REPEAT OpAnimText_Loop2
 	PROC_END
 
-	.global ProcScr_08691890
-ProcScr_08691890: @ 08691890
+	.global ProcScr_OpAnimGlyphFallIn
+ProcScr_OpAnimGlyphFallIn: @ 08691890
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08099534
-	PROC_REPEAT func_fe6_08099540
+	PROC_CALL OpAnimGlyphFallIn_Init
+	PROC_REPEAT OpAnimGlyphFallIn_Loop
 	PROC_END
 
 	.global gUnk_086918B0
