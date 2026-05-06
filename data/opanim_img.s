@@ -20,8 +20,8 @@ Tsa_OpAnim_0836A094: @ 0836A094
 Tsa_OpAnim_0836A494: @ 0836A494
 	.incbin "fe6-base.gba", 0x36A494, (0x36A888 - 0x36A494) @ length: 03F4
 
-	.global Pal_OpAnim_0836A888
-Pal_OpAnim_0836A888: @ 0836A888
+	.global ZPal_OpAnim_0836A888
+ZPal_OpAnim_0836A888: @ 0836A888
 	.incbin "fe6-base.gba", 0x36A888, (0x36A9AC - 0x36A888) @ length: 0124
 
 	.global Img_OpAnim_0836A9AC

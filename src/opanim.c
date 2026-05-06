@@ -244,6 +244,42 @@ void OpAnimAdvance(void)
 	gOpAnimStep[gOpAnimStep[0]] = timer->timer;
 }
 
+/* opanimfx */
+CONST_DATA char OpAnimTextRef[] =
+	"あいえかきくけこさしすそたちつてとにのはまもよりるれをがずだっ　神人近時代祝福英雄存亡未来戦世界光導剣闇炎宿尊紋章幾多空間物語　・「」２０ＮｉｎｔｅｄｏＰｒｓ　";
+
+CONST_DATA u8 OpAnimTextLenRef[] = {
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
+	0x08, 0x08, 0x08, 0x07, 0x07, 0x09, 0x05, 0x07,
+	0x06, 0x07, 0x07, 0x07, 0x08, 0x07, 0x06, 0x06,
+	0x00,
+};
+
+CONST_DATA int Msgs_OpAnim_08691738[] = {
+	MSG_C08,
+	MSG_C09,
+	MSG_C0A,
+	MSG_C0C,
+	MSG_C0D,
+	MSG_C0E,
+	MSG_C0F, // "２００２ Ｎｉｎｔｅｎｄｏ Ｐｒｅｓｅｎｔｓ"
+	MSG_C0B, // "闇よりいずるものたち"
+};
+
+CONST_DATA u8 gUnk_08691758[] = {
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0x3C, 0, 0x3C, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+};
+
 void PutOpAnimSubtitle0(void)
 {
 	OpAnim_PutSubtitle(0);
@@ -398,7 +434,7 @@ void func_fe6_08098CC0(struct ProcOpAnimText *proc)
 	proc->unk_64 = 0;
 	SetBlendTargetA(0, 0, 0, 0, 1);
 	SetBlendTargetB(1, 1, 1, 0, 0);
-    SetBlendBackdropB(1);
+	SetBlendBackdropB(1);
 	SetBlendAlpha(0x10, 0);
 }
 
@@ -421,7 +457,7 @@ void func_fe6_08098DB0(struct ProcOpAnimText *proc)
 	proc->unk_64 = 0;
 	SetBlendTargetA(0, 0, 0, 0, 0);
 	SetBlendTargetB(0, 0, 0, 0, 0);
-    SetBlendBackdropB(1);
+	SetBlendBackdropB(1);
 	SetBlendNone();
 }
 
@@ -446,7 +482,7 @@ void func_fe6_08098E74(struct ProcOpAnimText *proc)
 	proc->unk_64 = 0;
 	SetBlendTargetA(0, 0, 1, 0, 0);
 	SetBlendTargetB(0, 0, 0, 0, 1);
-    SetBlendBackdropB(0);
+	SetBlendBackdropB(0);
 	SetBlendAlpha(0, 0x10);
 }
 
@@ -558,9 +594,6 @@ void func_fe6_080992D0(struct ProcOpAnimText *proc)
 	proc->unk_64 = 0x800;
 }
 
-CONST_DATA char OpAnimTextRef[] =
-	"あいえかきくけこさしすそたちつてとにのはまもよりるれをがずだっ　神人近時代祝福英雄存亡未来戦世界光導剣闇炎宿尊紋章幾多空間物語　・「」２０ＮｉｎｔｅｄｏＰｒｓ　";
-
 int GetOpAnimTextIndex(const char *str)
 {
 	const char *ref = OpAnimTextRef;
@@ -573,20 +606,6 @@ int GetOpAnimTextIndex(const char *str)
 	}
 	return '@';
 }
-
-CONST_DATA u8 OpAnimTextLenRef[] = {
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
-	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
-	0x08, 0x08, 0x08, 0x07, 0x07, 0x09, 0x05, 0x07,
-	0x06, 0x07, 0x07, 0x07, 0x08, 0x07, 0x06, 0x06,
-	0x00,
-};
 
 int GetOpAnimTextChLength(const char *str)
 {
@@ -678,8 +697,6 @@ void func_fe6_08099424(int index)
 	OpAnimTextPutGlyph(src, dst, 0);
 }
 
-/* https://decomp.me/scratch/GVkFn */
-#if NONMATCHING
 int func_fe6_0809947C(int index, int speed, ProcPtr parent)
 {
 	int chr;
@@ -692,7 +709,8 @@ int func_fe6_0809947C(int index, int speed, ProcPtr parent)
 
 	OpAnimGlyphIndex++;
 
-	if (speed == 0) {
+	// BUGFIX ???
+	while (speed == 0) {
 		OpAnimTextPutGlyph(src, dst, 0xFFFF);
 		return chr;
 	}
@@ -703,93 +721,6 @@ int func_fe6_0809947C(int index, int speed, ProcPtr parent)
 	proc->speed = speed;
 	return chr;
 }
-#else
-NAKEDFUNC
-int func_fe6_0809947C(int index, int speed, ProcPtr parent)
-{
-asm("\
-	.syntax unified\n\
-	push {r4, r5, r6, r7, lr}\n\
-	mov r7, sl\n\
-	mov r6, sb\n\
-	mov r5, r8\n\
-	push {r5, r6, r7}\n\
-	mov sb, r1\n\
-	mov sl, r2\n\
-	ldr r1, .L080994EC @ =OpAnimGlyphIndex\n\
-	mov r8, r1\n\
-	ldr r3, [r1]\n\
-	movs r2, #0xf\n\
-	mov ip, r2\n\
-	adds r2, r3, #0\n\
-	mov r1, ip\n\
-	ands r2, r1\n\
-	lsls r2, r2, #1\n\
-	movs r5, #0xf0\n\
-	adds r1, r3, #0\n\
-	ands r1, r5\n\
-	lsls r1, r1, #2\n\
-	adds r2, r2, r1\n\
-	movs r1, #0x80\n\
-	lsls r1, r1, #2\n\
-	adds r6, r2, r1\n\
-	ldr r4, .L080994F0 @ =0x000003FF\n\
-	adds r1, r6, #0\n\
-	ands r1, r4\n\
-	lsls r1, r1, #5\n\
-	ldr r2, .L080994F4 @ =0x06010000\n\
-	adds r7, r1, r2\n\
-	adds r1, r0, #0\n\
-	mov r2, ip\n\
-	ands r1, r2\n\
-	lsls r1, r1, #1\n\
-	ands r0, r5\n\
-	lsls r0, r0, #2\n\
-	adds r1, r1, r0\n\
-	ands r1, r4\n\
-	lsls r1, r1, #5\n\
-	ldr r0, .L080994F8 @ =0x02000000\n\
-	adds r4, r1, r0\n\
-	adds r3, #1\n\
-	mov r0, r8\n\
-	str r3, [r0]\n\
-	mov r1, sb\n\
-	cmp r1, #0\n\
-	beq .L08099500\n\
-	ldr r0, .L080994FC @ =ProcScr_OpAnimGlyphFallIn\n\
-	mov r1, sl\n\
-	bl SpawnProc\n\
-	str r7, [r0, #0x30]\n\
-	str r4, [r0, #0x2c]\n\
-	mov r2, sb\n\
-	strh r2, [r0, #0x3c]\n\
-	b .L0809950A\n\
-	.align 2, 0\n\
-.L080994EC: .4byte OpAnimGlyphIndex\n\
-.L080994F0: .4byte 0x000003FF\n\
-.L080994F4: .4byte 0x06010000\n\
-.L080994F8: .4byte 0x02000000\n\
-.L080994FC: .4byte ProcScr_OpAnimGlyphFallIn\n\
-.L08099500:\n\
-	ldr r2, .L0809951C @ =0x0000FFFF\n\
-	adds r0, r4, #0\n\
-	adds r1, r7, #0\n\
-	bl OpAnimTextPutGlyph\n\
-.L0809950A:\n\
-	adds r0, r6, #0\n\
-	pop {r3, r4, r5}\n\
-	mov r8, r3\n\
-	mov sb, r4\n\
-	mov sl, r5\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r1}\n\
-	bx r1\n\
-	.align 2, 0\n\
-.L0809951C: .4byte 0x0000FFFF\n\
-	.syntax divided\n\
-");
-}
-#endif
 
 int func_fe6_08099520(ProcPtr proc)
 {
@@ -805,9 +736,9 @@ void OpAnimGlyphFallIn_Init(struct ProcOpAnimGlyphFallIn *proc)
 
 void OpAnimGlyphFallIn_Loop(struct ProcOpAnimGlyphFallIn *proc)
 {
-    register i16 c asm("r0");
-    register int a asm("r1");
-    register int b asm("r2");
+	register i16 c asm("r0");
+	register int a asm("r1");
+	register int b asm("r2");
 
 	a = proc->unk_38;
 	b = proc->unk3A;
@@ -821,7 +752,7 @@ _a:
 
 _b:
 	proc->unk_38 = a + b;
-    c = proc->unk_38;
+	c = proc->unk_38;
 	if (c > 0xFF)
 		goto _a;
 
@@ -829,36 +760,92 @@ _b:
 		Proc_Break(proc);
 }
 
-#if 0
 void func_fe6_08099580(const u32 *src, u32 *dst, int index)
 {
-	register int r2 asm("r2");
-	register int r3 asm("r3");
+	int r3;
 
 	r3 = 0xF << ((index & 7) << 2);
-	r2 = index >> 3;
+	index >>= 3;
 
-	if (r2 >= 0x10)
-		r2 += 0xF0;
+	if (index >= 0x10)
+		index += 0xF0;
 
-	dst[r2] = (dst[r2] & ~r3) + (src[r2] & r3);
+	dst[index] = (dst[index] & ~r3) + (src[index] & r3);
 }
-#endif
 
-CONST_DATA int Msgs_OpAnim_08691738[] = {
-	MSG_C08,
-	MSG_C09,
-	MSG_C0A,
-	MSG_C0C,
-	MSG_C0D,
-	MSG_C0E,
-	MSG_C0F,
-	MSG_C0B, // "闇よりいずるものたち"
-};
+void OpAnimTextPutGlyph(const void *src, void *dst, int index)
+{
+	switch (index) {
+	case 0:
+		CpuFastFill16(0, dst, 0x40);
+		CpuFastFill16(0, dst + 0x400, 0x40);
+		break;
 
-CONST_DATA u8 gUnk_08691758[] = {
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0x3C, 0, 0x3C, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-};
+	case 0xFFFF:
+		CpuFastCopy(src, dst, 0x40);
+		CpuFastCopy(src + 0x400, dst + 0x400, 0x40);
+		break;
+
+	default:
+		index -= 1;
+
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0x00);
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0x40);
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0x80);
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0xC0);
+		break;
+	}
+}
+
+void func_fe6_08099644(void)
+{
+	func_fe6_08014ACC(0x1F, 1);
+}
+
+void OpAnim1_Init(ProcPtr proc)
+{
+	if (bool_opanim_03005284) {
+		Proc_End(proc);
+		return;
+	}
+
+	func_fe6_08099BE4();
+	func_fe6_080998D4(Tsa_OpAnim_0836A494, gBg0Tm, 320, 0);
+	func_fe6_080998D4(Tsa_OpAnim_083674BC, gBg1Tm, 0,   1);
+	func_fe6_080998D4(Tsa_OpAnim_0836A094, gBg3Tm, 320, 3);
+
+	Decompress(ZPal_OpAnim_0836A888, gBuf);
+	ApplyPalettes(gBuf, 0, 0x10);
+	gPal[0] = 0;
+	SetBlackPal(6);
+	Decompress(Img_Title_08367B30, (u8 *)BG_VRAM + 0x2800 + GetBgChrOffset(BG_0));
+	Decompress(Img_Title_08364AB4, (u8 *)BG_VRAM + GetBgChrOffset(BG_1));
+	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+	OpAnim_SetupGlyph(1);
+	OpAnim_SetWin0Layers(1, 1, 0, 1, 1);
+}
+
+void func_fe6_08099738(ProcPtr proc)
+{
+	StartPalFade((const u16 *)gBuf + 0xF0, 0xE, 100, proc);
+}
+
+void func_fe6_08099750(ProcPtr proc)
+{
+	StartPalFade((const u16 *)gBuf + 0x60, 0x6, 180, proc);
+}
+
+void func_fe6_08099768(ProcPtr proc)
+{
+	SetPalFadeStop(StartPalFade(Pal_AllBlack, 0x6, 100, proc), 0x2C);
+}
+
+void func_fe6_08099784(ProcPtr proc)
+{
+	func_fe6_08014ACC(6, 1);
+}
+
+void func_fe6_08099794(struct Proc *proc)
+{
+	proc->timer1 = 0;
+}

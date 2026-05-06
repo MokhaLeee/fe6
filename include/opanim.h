@@ -122,7 +122,7 @@ void OpAnimGlyphFallIn_Loop(struct ProcOpAnimGlyphFallIn *proc);
 void func_fe6_08099580(const u32 *src, u32 *dst, int index);
 void OpAnimTextPutGlyph(const void *src, void *dst, int index);
 // func_fe6_08099644
-// func_fe6_08099654
+// OpAnim1_Init
 // func_fe6_08099738
 // func_fe6_08099750
 // func_fe6_08099768
@@ -132,7 +132,7 @@ void OpAnimTextPutGlyph(const void *src, void *dst, int index);
 // func_fe6_0809980C
 // func_fe6_08099824
 // func_fe6_08099868
-// func_fe6_080998D4
+void func_fe6_080998D4(const u16 *tsa, u16 *tm, int a, int b);
 // func_fe6_0809992C
 // func_fe6_0809997C
 // func_fe6_08099A2C
@@ -145,7 +145,7 @@ void OpAnimTextPutGlyph(const void *src, void *dst, int index);
 // func_fe6_08099B5C
 // func_fe6_08099BA8
 // func_fe6_08099BCC
-// func_fe6_08099BE4
+void func_fe6_08099BE4(void);
 // func_fe6_08099CCC
 // func_fe6_08099D3C
 // func_fe6_08099DA4
@@ -258,7 +258,7 @@ extern CONST_DATA struct ProcScr ProcScr_Unk_08691828[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691840[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnimText[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnimGlyphFallIn[];
-// ??? gUnk_086918B0
+extern CONST_DATA u16 gUnk_086918B0[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnim1[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_086919D0[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_086919E8[];

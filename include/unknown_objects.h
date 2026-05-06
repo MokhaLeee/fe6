@@ -448,9 +448,8 @@ extern u16 const Pal_Op_0835AB08[];
 extern u8 const Tsa_Op_0835AB28[];
 extern u8 const Img_ClassDemoFont[];
 extern u16 const Pal_ClassDemoFont[];
-// extern const ??? OpInfoClassIntroMsgs
 extern char const Str_OpInfo_Mag[];
-// extern const ??? gUnk_0835C829
+extern const u8 gUnk_0835C829[0xC];
 extern const char String_ShopGoldG[];
 extern const char String_Shop_0835CA78[];
 extern u16 const Pal_Title_BG[];
@@ -465,31 +464,31 @@ extern u8 const Img_Title_BG3[];
 extern u16 const Pal_Title_BG3[];
 extern u8 const Img_Title_08364438[];
 extern u16 const Pal_Title_08364A94[];
-// extern const ??? Img_Title_08364AB4
-// extern const ??? Tsa_OpAnim_083674BC
-// extern const ??? Img_Title_08367B30
-// extern const ??? Tsa_OpAnim_0836A094
-// extern const ??? Tsa_OpAnim_0836A494
-// extern const ??? Pal_OpAnim_0836A888
-// extern const ??? Img_OpAnim_0836A9AC
-// extern const ??? Img_OpAnim_0836EEFC
-// extern const ??? Tsa_OpAnim_0836F610
-// extern const ??? Img_EndingMonologue
-// extern const ??? Tsa_EndingMonologue
-// extern const ??? Zpal_EndingMonologue
+extern u16 const Img_Title_08364AB4[];
+extern u16 const Tsa_OpAnim_083674BC[];
+extern u16 const Img_Title_08367B30[];
+extern u16 const Tsa_OpAnim_0836A094[];
+extern u16 const Tsa_OpAnim_0836A494[];
+extern u16 const ZPal_OpAnim_0836A888[];
+extern u16 const Img_OpAnim_0836A9AC[];
+extern u16 const Img_OpAnim_0836EEFC[];
+extern u16 const Tsa_OpAnim_0836F610[];
+extern u16 const Img_EndingMonologue[];
+extern u16 const Tsa_EndingMonologue[];
+extern u16 const Zpal_EndingMonologue[];
 
 /* opanim */
-// extern const ??? Img_OpAnim_083747A4
-// extern const ??? Pal_OpAnim_08375888
-// extern const ??? Pal_OpAnim_083758A8
-// extern const ??? SpriteAnim_OpAnim_08375908
+extern u16 const Img_OpAnim_083747A4[];
+extern u16 const Pal_OpAnim_08375888[];
+extern u16 const Pal_OpAnim_083758A8[];
+extern u16 const SpriteAnim_OpAnim_08375908[];
 // extern const ??? gUnk_08375ADC
 // extern const ??? gUnk_08375B64
-// extern const ??? Tsa_OpAnim_08375B84
+extern u16 const Tsa_OpAnim_08375B84[];
 // extern const ??? gUnk_08376B70
-// extern const ??? Pal_Lz_OpAnim_Fog
-// extern const ??? Img_OpAnim_Fog
-// extern const ??? Tsa_OpAnim_Fog
+extern u16 const Pal_Lz_OpAnim_Fog[];
+extern u16 const Img_OpAnim_Fog[];
+extern u16 const Tsa_OpAnim_Fog[];
 // extern const ??? gUnk_08378F54
 // extern const ??? gUnk_08379D0C
 // extern const ??? gUnk_08379D2C
@@ -497,9 +496,9 @@ extern u16 const Pal_Title_08364A94[];
 // extern const ??? gUnk_08379F8C
 // extern const ??? gUnk_0837AA68
 // extern const ??? gUnk_0837AAC8
-// extern const ??? SpriteAnim_OpAnim_0837AAE8
-// extern const ??? Img_OpAnimSparksOBJ
-// extern const ??? Pal_OpAnimSparksOBJ
+extern u16 const SpriteAnim_OpAnim_0837AAE8[];
+extern u16 const Img_OpAnimSparksOBJ[];
+extern u16 const Pal_OpAnimSparksOBJ[];
 extern const u8 Img_OpAnimThunderStorm[];
 extern const u16 Tsa_OpAnimThunderStorm[];
 extern const u16 Pal_OpAnimThunderStorm1[];

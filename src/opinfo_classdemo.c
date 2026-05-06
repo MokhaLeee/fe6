@@ -634,7 +634,7 @@ asm("\
 }
 #endif
 
-const char Str_OpInfo_Mag[] = TEXT("魔力", "Res");
+const char Str_OpInfo_Mag[] = TEXT("魔力", "Mag");
 const u8 gUnk_0835C829[0xC] = { 2, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 4 };
 
 u16 CONST_DATA Sprite_ClassDemoFont_0[] = {
