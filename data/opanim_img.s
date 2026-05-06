@@ -20,8 +20,8 @@ Tsa_OpAnim_0836A094: @ 0836A094
 Tsa_OpAnim_0836A494: @ 0836A494
 	.incbin "fe6-base.gba", 0x36A494, (0x36A888 - 0x36A494) @ length: 03F4
 
-	.global Pal_OpAnim_0836A888
-Pal_OpAnim_0836A888: @ 0836A888
+	.global ZPal_OpAnim_0836A888
+ZPal_OpAnim_0836A888: @ 0836A888
 	.incbin "fe6-base.gba", 0x36A888, (0x36A9AC - 0x36A888) @ length: 0124
 
 	.global Img_OpAnim_0836A9AC
@@ -160,12 +160,12 @@ Pal_OpAnimThunderStorm4: @ 0837CB6C
 Img_OpAnim_Dragon: @ 0837CB8C
 	.incbin "fe6-base.gba", 0x37CB8C, (0x37EEB4 - 0x37CB8C) @ length: 2328
 
-	.global gUnk_0837EEB4
-gUnk_0837EEB4: @ 0837EEB4
+	.global Tsa_Opanim6_0837EEB4
+Tsa_Opanim6_0837EEB4: @ 0837EEB4
 	.incbin "fe6-base.gba", 0x37EEB4, (0x37F418 - 0x37EEB4) @ length: 0564
 
-	.global gUnk_0837F418
-gUnk_0837F418: @ 0837F418
+	.global Pal_Opanim6_0837F418
+Pal_Opanim6_0837F418: @ 0837F418
 	.incbin "fe6-base.gba", 0x37F418, (0x37F478 - 0x37F418) @ length: 0060
 
 	.global Img_OpAnimGlyphs

@@ -7,10 +7,13 @@ enum videoalloc_opanim {
 	OBPAL_OPANIM_0F = 0xF,
 };
 
-extern IWRAM_DATA u8 gUnk_03005280[4];
+extern IWRAM_DATA u8 gOpAnimTextMask[4];
 extern IWRAM_DATA bool bool_opanim_03005284;
 extern IWRAM_DATA u8 Pad_Common_03005285[11];
 extern IWRAM_DATA int gOpAnimStep[8];
+
+extern EWRAM_OVERLAY(opanim) u8 OpAnimGlyphBuffer[0x2800];
+extern EWRAM_OVERLAY(opanim) int OpAnimGlyphIndex;
 
 void StartOpAnim_unused(void);
 void OpAnimfxTerminator_Loop(ProcPtr proc);
@@ -44,7 +47,7 @@ void PutOpAnimSubtitle7(void);
 void OpAnim_SetupGlyph(int pal_id);
 void OpAnim_PutSubtitle(int idx);
 
-struct ProcOpAnimSubtitleDisp {
+struct ProcOpAnimText {
 	PROC_HEADER;
 
 	STRUCT_PAD(0x29, 0x2C);
@@ -56,59 +59,70 @@ struct ProcOpAnimSubtitleDisp {
 
 	/* 44 */ i16 delay_timer;
 
-	STRUCT_PAD(0x46, 0x4C);
+	STRUCT_PAD(0x46, 0x4A);
 
-	/* 4C */ char *str;
+	/* 4A */ u16 unk_4A;
+	/* 4C */ const char *str;
 
 	STRUCT_PAD(0x50, 0x54);
 
 	/* 54 */ int index;
+	/* 58 */ int unk_58;
 
-	STRUCT_PAD(0x58, 0x64);
+	STRUCT_PAD(0x5C, 0x64);
 
-	/* 64 */ u16 unk_64;
+	/* 64 */ i16 unk_64;
 };
 
-void NewOpAnimSubtitleDisp(int idx, int a, int b, char *str);
-void OpAnimSubtitleDisp_Init(struct ProcOpAnimSubtitleDisp *proc);
-void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc);
-void OpAnimSubtitleDisp_Setup(struct ProcOpAnimSubtitleDisp *proc);
-void OpAnimSubtitleDisp_Loop(struct ProcOpAnimSubtitleDisp *proc);
-// func_fe6_08098C90
-// func_fe6_08098C94
-// func_fe6_08098CA4
-// func_fe6_08098CC0
-// func_fe6_08098D10
-// func_fe6_08098DB0
-// func_fe6_08098DEC
-// func_fe6_08098E74
-// func_fe6_08098EC8
-// func_fe6_08098F68
-// func_fe6_08098FA8
-// func_fe6_080990B8
-// func_fe6_080990E4
-// func_fe6_080990F0
-// func_fe6_080990FC
-// func_fe6_08099194
-// func_fe6_080992B8
-// func_fe6_080992D0
-// func_fe6_080992DC
-// func_fe6_08099314
-int func_fe6_08099328(const char *str);
-char *OpAnimSubtitleStringAdvance(char *str);
-void func_fe6_0809937C(void);
-// func_fe6_080993AC
-// func_fe6_080993E8
+void NewOpAnimSubtitleDisp(int idx, int a, int b, const char *str);
+void OpAnimSubtitleDisp_Init(struct ProcOpAnimText *proc);
+void OpAnimSubtitleDisp_Wait(struct ProcOpAnimText *proc);
+void OpAnimSubtitleDisp_Setup(struct ProcOpAnimText *proc);
+void OpAnimSubtitleDisp_Loop(struct ProcOpAnimText *proc);
+void func_fe6_08098C90(void);
+void RemoveOpAnimText(void);
+void func_fe6_08098CC0(struct ProcOpAnimText *proc);
+void func_fe6_08098D10(struct ProcOpAnimText *proc);
+void func_fe6_08098DB0(struct ProcOpAnimText *proc);
+void func_fe6_08098DEC(struct ProcOpAnimText *proc);
+void func_fe6_08098E74(struct ProcOpAnimText *proc);
+void func_fe6_08098EC8(struct ProcOpAnimText *proc);
+void OpAnimText_Init1(struct ProcOpAnimText *proc);
+void func_fe6_08098FA8(struct ProcOpAnimText *proc);
+void OpAnimText_Loop1(struct ProcOpAnimText *proc);
+void OpAnimText_Init2(struct ProcOpAnimText *proc);
+void OpAnimText_Loop2(struct ProcOpAnimText *proc);
+void func_fe6_080990FC(struct ProcOpAnimText *proc);
+void func_fe6_08099194(struct ProcOpAnimText *proc);
+void func_fe6_080992B8(void);
+void func_fe6_080992D0(struct ProcOpAnimText *proc);
+int GetOpAnimTextIndex(const char *str);
+int GetOpAnimTextChLength(const char *str);
+int GetOpAnimTextStrLength(const char *str);
+const char *GetOpAnimTextPrNext(const char *str);
+void ResetOpAnimTextIndexMask(void);
+int GetNextOpAnimTextIndex(void);
+void ClearOpAnimTextIndex(int index);
 void PutImg_OpAnimGlyphs(void);
-// func_fe6_08099424
-// func_fe6_0809947C
-// func_fe6_08099520
-// func_fe6_08099534
-// func_fe6_08099540
-// func_fe6_08099580
-// func_fe6_080995B0
+void func_fe6_08099424(int);
+int func_fe6_0809947C(int index, int speed, ProcPtr parent);
+int func_fe6_08099520(ProcPtr proc);
+
+struct ProcOpAnimGlyphFallIn {
+	PROC_HEADER;
+
+	/* 2C */ const void *src;
+	/* 30 */ void *dst;
+	/* 34 */ int step;
+	/* 38 */ u16 unk_38;
+	/* 3A */ u16 unk3A, speed;
+};
+void OpAnimGlyphFallIn_Init(struct ProcOpAnimGlyphFallIn *proc);
+void OpAnimGlyphFallIn_Loop(struct ProcOpAnimGlyphFallIn *proc);
+void func_fe6_08099580(const u32 *src, u32 *dst, int index);
+void OpAnimTextPutGlyph(const void *src, void *dst, int index);
 // func_fe6_08099644
-// func_fe6_08099654
+// OpAnim1_Init
 // func_fe6_08099738
 // func_fe6_08099750
 // func_fe6_08099768
@@ -118,7 +132,7 @@ void PutImg_OpAnimGlyphs(void);
 // func_fe6_0809980C
 // func_fe6_08099824
 // func_fe6_08099868
-// func_fe6_080998D4
+void func_fe6_080998D4(const u16 *tsa, u16 *tm, int a, int b);
 // func_fe6_0809992C
 // func_fe6_0809997C
 // func_fe6_08099A2C
@@ -131,7 +145,7 @@ void PutImg_OpAnimGlyphs(void);
 // func_fe6_08099B5C
 // func_fe6_08099BA8
 // func_fe6_08099BCC
-// func_fe6_08099BE4
+void func_fe6_08099BE4(void);
 // func_fe6_08099CCC
 // func_fe6_08099D3C
 // func_fe6_08099DA4
@@ -190,15 +204,15 @@ void func_fe6_0809AA20(int a, int b);
 void OpAnim6_StartBGM(struct ProcOpAnim6 *proc);
 void OpAnim6_PutThunderStormGfx(struct ProcOpAnim6 *proc);
 void OpAnim6_StartThunderStorm(struct ProcOpAnim6 *proc);
-// OpAnimThunderStorm_Init
-// OpAnimThunderStorm_PutPal1
-// OpAnimThunderStorm_PutPal2
-// OpAnimThunderStorm_PutPal3
-// OpAnimThunderStorm_PutPal4
-// OpAnimThunderStorm_PutPal5
-// OpAnim6_PutIdunnGfx
-// func_fe6_0809AD3C
-// func_fe6_0809AD64
+void OpAnimThunderStorm_Init(struct ProcOpAnim6 *proc);
+void OpAnimThunderStorm_PutPal1(struct ProcOpAnim6 *proc);
+void OpAnimThunderStorm_PutPal2(struct ProcOpAnim6 *proc);
+void OpAnimThunderStorm_PutPal3(struct ProcOpAnim6 *proc);
+void OpAnimThunderStorm_PutPal4(struct ProcOpAnim6 *proc);
+void OpAnimThunderStorm_PutPal5(struct ProcOpAnim6 *proc);
+void OpAnim6_PutIdunnGfx(struct ProcOpAnim6 *proc);
+void func_fe6_0809AD3C(struct ProcOpAnim6 *proc);
+void func_fe6_0809AD64(struct ProcOpAnim6 *proc);
 // func_fe6_0809AD88
 // func_fe6_0809ADCC
 // func_fe6_0809AE60
@@ -223,15 +237,16 @@ extern CONST_DATA struct ProcScr ProcScr_OpAnim[];
 extern u16 CONST_DATA BgConf_OpAnim_08691604[];
 extern u16 CONST_DATA BgConf_OpAnim_0869161C[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnimTimer[];
-// ??? gUnk_08691644
-// ??? gUnk_086916E5
+extern CONST_DATA char OpAnimTextRef[];
+extern CONST_DATA u8 OpAnimTextLenRef[];
 extern CONST_DATA int Msgs_OpAnim_08691738[];
 
 struct OpAnimSubtitleConf {
 	u16 unk_00;
 	u16 unk_02;
+	u16 unk_04;
 
-	STRUCT_PAD(0x4, 0x8);
+	STRUCT_PAD(0x6, 0x8);
 
 	u16 *unk_08;
 };
@@ -241,9 +256,9 @@ extern CONST_DATA struct ProcScr ProcScr_OpAnimSubtitleDisp[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691810[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691828[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691840[];
-extern CONST_DATA struct ProcScr NewOpAnimSubtitleIntroDisp[];
-extern CONST_DATA struct ProcScr ProcScr_08691890[];
-// ??? gUnk_086918B0
+extern CONST_DATA struct ProcScr ProcScr_OpAnimText[];
+extern CONST_DATA struct ProcScr ProcScr_OpAnimGlyphFallIn[];
+extern CONST_DATA u16 gUnk_086918B0[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnim1[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_086919D0[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_086919E8[];

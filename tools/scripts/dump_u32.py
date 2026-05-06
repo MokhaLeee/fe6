@@ -10,8 +10,8 @@ def dump_one_part(rom_data, off):
 	val3 = int.from_bytes(rom_data[off + 8: off + 12], 'little')
 	val4 = int.from_bytes(rom_data[off + 12:off + 16], 'little')
 
-	print(f"{val1}, {val2}, {val3}, {val4}")
-	# print(f"0x{val1:04X}, 0x{val2:04X}, 0x{val3:04X}, 0x{val4:04X}")
+	# print(f"{val1}, {val2}, {val3}, {val4}")
+	print(f"0x{val1:04X}, 0x{val2:04X}, 0x{val3:04X}, 0x{val4:04X}")
 
 	return off + 16
 

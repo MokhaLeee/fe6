@@ -43,8 +43,4 @@ extern i8 CONST_DATA Ctrl_EndingMonologueText3[];
 extern i8 CONST_DATA Ctrl_EndingMonologueText4[];
 extern struct ProcScr CONST_DATA ProcScr_EndingMonologue[];
 
-extern u8 const Img_EndingMonologue[]; // img
-extern u8 const Tsa_EndingMonologue[]; // tm
-extern u8 const Zpal_EndingMonologue[]; // compressed pal
-extern u16 const Pal_EndingMonologueText[]; // pal
 extern u16 CONST_DATA BgConf_EndingMonologue[]; // bg config

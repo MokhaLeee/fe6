@@ -3,13 +3,18 @@
 #include "proc.h"
 #include "event.h"
 #include "sound.h"
+#include "sprite.h"
 #include "util.h"
 #include "msg.h"
+#include "oam.h"
 #include "titlescreen.h"
 #include "gamecontroller.h"
 #include "constants/songs.h"
-
+#include "constants/msg.h"
 #include "opanim.h"
+
+EWRAM_OVERLAY(opanim) u8 OpAnimGlyphBuffer[0x2800] = {};
+EWRAM_OVERLAY(opanim) int OpAnimGlyphIndex = 0;
 
 CONST_DATA struct ProcScr ProcScr_TitleScreenHandler[] = {
 	PROC_START_CHILD_LOCKING(ProcScr_TitleScreen),
@@ -239,6 +244,42 @@ void OpAnimAdvance(void)
 	gOpAnimStep[gOpAnimStep[0]] = timer->timer;
 }
 
+/* opanimfx */
+CONST_DATA char OpAnimTextRef[] =
+	"あいえかきくけこさしすそたちつてとにのはまもよりるれをがずだっ　神人近時代祝福英雄存亡未来戦世界光導剣闇炎宿尊紋章幾多空間物語　・「」２０ＮｉｎｔｅｄｏＰｒｓ　";
+
+CONST_DATA u8 OpAnimTextLenRef[] = {
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x06,
+	0x08, 0x08, 0x08, 0x07, 0x07, 0x09, 0x05, 0x07,
+	0x06, 0x07, 0x07, 0x07, 0x08, 0x07, 0x06, 0x06,
+	0x00,
+};
+
+CONST_DATA int Msgs_OpAnim_08691738[] = {
+	MSG_C08,
+	MSG_C09,
+	MSG_C0A,
+	MSG_C0C,
+	MSG_C0D,
+	MSG_C0E,
+	MSG_C0F, // "２００２ Ｎｉｎｔｅｎｄｏ Ｐｒｅｓｅｎｔｓ"
+	MSG_C0B, // "闇よりいずるものたち"
+};
+
+CONST_DATA u8 gUnk_08691758[] = {
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0x3C, 0, 0x3C, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+};
+
 void PutOpAnimSubtitle0(void)
 {
 	OpAnim_PutSubtitle(0);
@@ -282,13 +323,13 @@ void PutOpAnimSubtitle7(void)
 void OpAnim_SetupGlyph(int pal_id)
 {
 	ApplyPalette(Pal_OpAnimGlyphs + PAL_OFFSET(pal_id), 0x10 + OBPAL_OPANIM_0F);
-	func_fe6_0809937C();
+	ResetOpAnimTextIndexMask();
 	PutImg_OpAnimGlyphs();
 }
 
 void OpAnim_PutSubtitle(int idx)
 {
-	char *str = DecodeMsg(Msgs_OpAnim_08691738[idx]);
+	const char *str = DecodeMsg(Msgs_OpAnim_08691738[idx]);
 	u16 *unk_08 = gOpAnimSubtitleConf[idx].unk_08;
 	int unk_00 = gOpAnimSubtitleConf[idx].unk_00;
 	int unk_r8 = 0;
@@ -296,7 +337,7 @@ void OpAnim_PutSubtitle(int idx)
 	while (str != NULL) {
 		NewOpAnimSubtitleDisp(idx, unk_00, unk_r8, str);
 
-		str = OpAnimSubtitleStringAdvance(str);
+		str = GetOpAnimTextPrNext(str);
 		unk_00 += 20;
 
 		if (gOpAnimSubtitleConf[idx].unk_02 != 0) {
@@ -306,9 +347,9 @@ void OpAnim_PutSubtitle(int idx)
 	}
 }
 
-void NewOpAnimSubtitleDisp(int idx, int a, int delay, char *str)
+void NewOpAnimSubtitleDisp(int idx, int a, int delay, const char *str)
 {
-	struct ProcOpAnimSubtitleDisp *proc;
+	struct ProcOpAnimText *proc;
 
 	proc = SpawnProc(ProcScr_OpAnimSubtitleDisp, PROC_TREE_3);
 	proc->delay_timer = delay;
@@ -317,12 +358,12 @@ void NewOpAnimSubtitleDisp(int idx, int a, int delay, char *str)
 	proc->index = idx;
 }
 
-void OpAnimSubtitleDisp_Init(struct ProcOpAnimSubtitleDisp *proc)
+void OpAnimSubtitleDisp_Init(struct ProcOpAnimText *proc)
 {
 	proc->delay_timer = 0;
 }
 
-void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc)
+void OpAnimSubtitleDisp_Wait(struct ProcOpAnimText *proc)
 {
 	proc->delay_timer--;
 
@@ -330,8 +371,481 @@ void OpAnimSubtitleDisp_Wait(struct ProcOpAnimSubtitleDisp *proc)
 		Proc_Break(proc);
 }
 
-void OpAnimSubtitleDisp_Setup(struct ProcOpAnimSubtitleDisp *proc)
+void OpAnimSubtitleDisp_Setup(struct ProcOpAnimText *proc)
 {
-	proc->x_center = (0xF0 - func_fe6_08099328(proc->str)) / 2;
+	proc->x_center = (0xF0 - GetOpAnimTextStrLength(proc->str)) / 2;
 	proc->unk_64 = 0;
+}
+
+void OpAnimSubtitleDisp_Loop(struct ProcOpAnimText *proc)
+{
+	const char *str = proc->str;
+	const struct OpAnimSubtitleConf *conf = &gOpAnimSubtitleConf[proc->index];
+
+	proc->unk_64 = 1 - proc->unk_64;
+	if (proc->unk_64 == 0)
+		return;
+
+	do {
+		switch (*str) {
+		case 4:
+			str++;
+			break;
+
+		default: {
+			struct ProcOpAnimText *child = SpawnProc(ProcScr_OpAnimText, PROC_TREE_3);
+
+			child->index = proc->index;
+			child->x_center = proc->x_center;
+			child->unk_30 = conf->unk_04 + (proc->unk_30 & 0xFF);
+			child->unk_4A = GetOpAnimTextIndex(str);
+			proc->x_center += GetOpAnimTextChLength(str);
+			str += 2;
+			break;
+		}
+
+		case 0:
+		case 1:
+			Proc_Break(proc);
+			return;
+		}
+
+		proc->str = str;
+	} while (conf->unk_02 == 0);
+}
+
+void func_fe6_08098C90(void)
+{
+}
+
+void RemoveOpAnimText(void)
+{
+	Proc_EndEach(ProcScr_OpAnimText);
+}
+
+void BreakOpAnimText(void)
+{
+	OpAnimGlyphIndex = 0;
+	Proc_BreakEach(ProcScr_OpAnimText);
+}
+
+void func_fe6_08098CC0(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	SetBlendTargetA(0, 0, 0, 0, 1);
+	SetBlendTargetB(1, 1, 1, 0, 0);
+	SetBlendBackdropB(1);
+	SetBlendAlpha(0x10, 0);
+}
+
+void func_fe6_08098D10(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_64 < 0x20) {
+		proc->unk_64++;
+		SetBlendAlpha(
+			Interpolate(0, 0x10, 0, proc->unk_64, 0x20),
+			Interpolate(0, 0, 0x10, proc->unk_64, 0x20));
+	} else {
+		SetBlendNone();
+		RemoveOpAnimText();
+		Proc_Break(proc);
+	}
+}
+
+void func_fe6_08098DB0(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	SetBlendTargetA(0, 0, 0, 0, 0);
+	SetBlendTargetB(0, 0, 0, 0, 0);
+	SetBlendBackdropB(1);
+	SetBlendNone();
+}
+
+void func_fe6_08098DEC(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_64 < 0x20) {
+		proc->unk_64++;
+
+		gDispIo.blend_ct.effect = 0;
+		gDispIo.blend_coef_a = Interpolate(0, 0x10, 0, proc->unk_64, 0x20);
+		gDispIo.blend_coef_b = 0;
+		gDispIo.blend_y = 0;
+	} else {
+		SetBlendNone();
+		RemoveOpAnimText();
+		Proc_Break(proc);
+	}
+}
+
+void func_fe6_08098E74(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	SetBlendTargetA(0, 0, 1, 0, 0);
+	SetBlendTargetB(0, 0, 0, 0, 1);
+	SetBlendBackdropB(0);
+	SetBlendAlpha(0, 0x10);
+}
+
+void func_fe6_08098EC8(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_64 < 0x20) {
+		proc->unk_64++;
+		SetBlendAlpha(
+			Interpolate(0, 0, 0x10, proc->unk_64, 0x20),
+			Interpolate(0, 0x10, 0, proc->unk_64, 0x20));
+	} else {
+		SetBlendNone();
+		RemoveOpAnimText();
+		Proc_Break(proc);
+	}
+}
+
+void OpAnimText_Init1(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0;
+	func_fe6_08099424(proc->unk_4A);
+	proc->unk_4A = func_fe6_0809947C(
+		proc->unk_4A,
+		gOpAnimSubtitleConf[proc->index].unk_02,
+		proc) - 0x1000;
+}
+
+void func_fe6_08098FA8(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_58 >= gUnk_08691494) {
+		proc->unk_58 = 0;
+		ClearOpAnimTextIndex(proc->index);
+		Proc_Break(proc);
+		OpAnimText_Loop1(proc);
+		return;
+	}
+
+	proc->unk_58++;
+
+	PutSpriteExt(
+		0,
+		proc->x_center + (proc->index << 9),
+		0x100 + Interpolate(4, proc->unk_30 + 8, proc->unk_30, proc->unk_58, gUnk_08691494),
+		Sprite_16x16,
+		proc->unk_4A);
+
+	SetObjAffineAuto(
+		proc->index, 0, 0x100,
+		Interpolate(4, 1, 0x100, proc->unk_58, gUnk_08691494));
+}
+
+void OpAnimText_Loop1(struct ProcOpAnimText *proc)
+{
+	PutSpriteExt(
+		0,
+		proc->x_center,
+		proc->unk_30,
+		Sprite_16x16,
+		proc->unk_4A + proc->unk_64);
+}
+
+void OpAnimText_Init2(struct ProcOpAnimText *proc)
+{
+	func_fe6_08099520(proc);
+}
+
+void OpAnimText_Loop2(struct ProcOpAnimText *proc)
+{
+	OpAnimText_Loop1(proc);
+}
+
+void func_fe6_080990FC(struct ProcOpAnimText *proc)
+{
+	proc->index = GetNextOpAnimTextIndex();
+	proc->unk_58 = 1;
+	SetObjAffineAuto(proc->index, 0, 1, 0x100);
+}
+
+void func_fe6_08099194(struct ProcOpAnimText *proc)
+{
+	if (proc->unk_58 >= gUnk_08691494) {
+		proc->unk_58 = 0;
+		ClearOpAnimTextIndex(proc->index);
+		Proc_Break(proc);
+		// OpAnimText_Loop1(proc);
+		return;
+	}
+
+	proc->unk_58++;
+
+	PutSpriteExt(
+		0,
+		Interpolate(4, proc->x_center, proc->x_center + 0x10, proc->unk_58, gUnk_08691494) + (proc->index << 9),
+		Interpolate(4, proc->unk_30, proc->unk_30 + 0x10, proc->unk_58, gUnk_08691494) + 0x100,
+		Sprite_16x16,
+		proc->unk_4A);
+
+	SetObjAffineAuto(
+		proc->index, 0, Interpolate(0, 0x100, 2, proc->unk_58, gUnk_08691494), 0x100);
+}
+
+void func_fe6_080992B8(void)
+{
+	Proc_ForEach(ProcScr_OpAnimText, (ProcFunc)func_fe6_080992D0);
+}
+
+void func_fe6_080992D0(struct ProcOpAnimText *proc)
+{
+	proc->unk_64 = 0x800;
+}
+
+int GetOpAnimTextIndex(const char *str)
+{
+	const char *ref = OpAnimTextRef;
+	int i = 0;
+
+	// JTEXT
+	for (; ref[0] != '\0'; i++, ref += 2) {
+		if (ref[0] == str[0] && ref[1] == str[1])
+			return i;
+	}
+	return '@';
+}
+
+int GetOpAnimTextChLength(const char *str)
+{
+	int index = GetOpAnimTextIndex(str);
+
+	return OpAnimTextLenRef[index];
+}
+
+int GetOpAnimTextStrLength(const char *str)
+{
+	int len = 0;
+
+	while (str[0] != '\0') {
+		switch (str[0]) {
+		case 1:
+			return len;
+
+		default:
+			if (str[0] == 4)
+				str++;
+			else {
+				len = len + GetOpAnimTextChLength(str);
+				str = str + 2;
+			}
+			break;
+		}
+	}
+	return len;
+}
+
+const char *GetOpAnimTextPrNext(const char *str)
+{
+	while (*str != '\0') {
+		switch (str[0]) {
+		case 4:
+			str = str + 1;
+			break;
+
+		case 1:
+			return str + 1;
+
+		default:
+			str = str + 2;
+			break;
+		}
+	}
+	return NULL;
+}
+
+void ResetOpAnimTextIndexMask(void)
+{
+	int i;
+
+	for (i = 0; i < 0x20; i++)
+		gOpAnimTextMask[i >> 3] &= ~(1 << (i & 7));
+}
+
+int GetNextOpAnimTextIndex(void)
+{
+	int i;
+
+	for (i = 0; i < 0x20; i++) {
+		if (((gOpAnimTextMask[i >> 3] >> (i & 7)) & 1) == 0) {
+			gOpAnimTextMask[i >> 3] |= (1 << (i & 7));
+			return i;
+		}
+	}
+#if BUGFIX
+	return i;
+#endif
+}
+
+void ClearOpAnimTextIndex(int i)
+{
+	gOpAnimTextMask[i >> 3] &= ~(1 << (i & 7));
+}
+
+void PutImg_OpAnimGlyphs(void)
+{
+	Decompress(Img_OpAnimGlyphs, OpAnimGlyphBuffer);
+	OpAnimGlyphIndex = 0;
+}
+
+void func_fe6_08099424(int index)
+{
+	void *dst = OBJ_VRAM0 + ((((OpAnimGlyphIndex & 0x0F) * 2 + (OpAnimGlyphIndex & 0xF0) * 4 + 0x200) & 0x3FF) << 5);
+	void *src = OpAnimGlyphBuffer + ((((index & 0x0F) * 2 + (index & 0xF0) * 4 + 0) & 0x3FF) << 5);
+
+	OpAnimTextPutGlyph(src, dst, 0);
+}
+
+int func_fe6_0809947C(int index, int speed, ProcPtr parent)
+{
+	int chr;
+	void *dst, *src;
+	struct ProcOpAnimGlyphFallIn *proc;
+
+	chr = (OpAnimGlyphIndex & 0x0F) * 2 + (OpAnimGlyphIndex & 0xF0) * 4 + 0x200;
+	dst = OBJ_VRAM0 + ((chr & 0x3FF) << 5);
+	src = OpAnimGlyphBuffer + ((((index & 0x0F) * 2 + (index & 0xF0) * 4 + 0) & 0x3FF) << 5);
+
+	OpAnimGlyphIndex++;
+
+	// BUGFIX ???
+	while (speed == 0) {
+		OpAnimTextPutGlyph(src, dst, 0xFFFF);
+		return chr;
+	}
+
+	proc = SpawnProc(ProcScr_OpAnimGlyphFallIn, parent);
+	proc->dst = dst;
+	proc->src = src;
+	proc->speed = speed;
+	return chr;
+}
+
+int func_fe6_08099520(ProcPtr proc)
+{
+	return func_fe6_0809947C(0x1F, 0x180, proc);
+}
+
+void OpAnimGlyphFallIn_Init(struct ProcOpAnimGlyphFallIn *proc)
+{
+	proc->step = 0;
+	proc->unk_38 = 0;
+	proc->unk3A = proc->speed;
+}
+
+void OpAnimGlyphFallIn_Loop(struct ProcOpAnimGlyphFallIn *proc)
+{
+	register i16 c asm("r0");
+	register int a asm("r1");
+	register int b asm("r2");
+
+	a = proc->unk_38;
+	b = proc->unk3A;
+
+	goto _b;
+
+_a:
+	OpAnimTextPutGlyph(proc->src, proc->dst, ++proc->step);
+	a = proc->unk_38;
+	b = 0xFFFFFF00;
+
+_b:
+	proc->unk_38 = a + b;
+	c = proc->unk_38;
+	if (c > 0xFF)
+		goto _a;
+
+	if (proc->step >= 0x40)
+		Proc_Break(proc);
+}
+
+void func_fe6_08099580(const u32 *src, u32 *dst, int index)
+{
+	int r3;
+
+	r3 = 0xF << ((index & 7) << 2);
+	index >>= 3;
+
+	if (index >= 0x10)
+		index += 0xF0;
+
+	dst[index] = (dst[index] & ~r3) + (src[index] & r3);
+}
+
+void OpAnimTextPutGlyph(const void *src, void *dst, int index)
+{
+	switch (index) {
+	case 0:
+		CpuFastFill16(0, dst, 0x40);
+		CpuFastFill16(0, dst + 0x400, 0x40);
+		break;
+
+	case 0xFFFF:
+		CpuFastCopy(src, dst, 0x40);
+		CpuFastCopy(src + 0x400, dst + 0x400, 0x40);
+		break;
+
+	default:
+		index -= 1;
+
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0x00);
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0x40);
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0x80);
+		func_fe6_08099580(src, dst, gUnk_086918B0[index] + 0xC0);
+		break;
+	}
+}
+
+void func_fe6_08099644(void)
+{
+	func_fe6_08014ACC(0x1F, 1);
+}
+
+void OpAnim1_Init(ProcPtr proc)
+{
+	if (bool_opanim_03005284) {
+		Proc_End(proc);
+		return;
+	}
+
+	func_fe6_08099BE4();
+	func_fe6_080998D4(Tsa_OpAnim_0836A494, gBg0Tm, 320, 0);
+	func_fe6_080998D4(Tsa_OpAnim_083674BC, gBg1Tm, 0,   1);
+	func_fe6_080998D4(Tsa_OpAnim_0836A094, gBg3Tm, 320, 3);
+
+	Decompress(ZPal_OpAnim_0836A888, gBuf);
+	ApplyPalettes(gBuf, 0, 0x10);
+	gPal[0] = 0;
+	SetBlackPal(6);
+	Decompress(Img_Title_08367B30, (u8 *)BG_VRAM + 0x2800 + GetBgChrOffset(BG_0));
+	Decompress(Img_Title_08364AB4, (u8 *)BG_VRAM + GetBgChrOffset(BG_1));
+	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+	OpAnim_SetupGlyph(1);
+	OpAnim_SetWin0Layers(1, 1, 0, 1, 1);
+}
+
+void func_fe6_08099738(ProcPtr proc)
+{
+	StartPalFade((const u16 *)gBuf + 0xF0, 0xE, 100, proc);
+}
+
+void func_fe6_08099750(ProcPtr proc)
+{
+	StartPalFade((const u16 *)gBuf + 0x60, 0x6, 180, proc);
+}
+
+void func_fe6_08099768(ProcPtr proc)
+{
+	SetPalFadeStop(StartPalFade(Pal_AllBlack, 0x6, 100, proc), 0x2C);
+}
+
+void func_fe6_08099784(ProcPtr proc)
+{
+	func_fe6_08014ACC(6, 1);
+}
+
+void func_fe6_08099794(struct Proc *proc)
+{
+	proc->timer1 = 0;
 }

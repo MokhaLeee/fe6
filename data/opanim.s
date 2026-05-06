@@ -1,18 +1,6 @@
 	.include "asm_proc.inc"
 	.data
 
-	.global gUnk_08691644
-gUnk_08691644: @ 08691644
-	.incbin "fe6-base.gba", 0x691644, (0x6916E5 - 0x691644) @ length: 00A1
-
-	.global gUnk_086916E5
-gUnk_086916E5: @ 086916E5
-	.incbin "fe6-base.gba", 0x6916E5, (0x691738 - 0x6916E5) @ length: 0053
-
-	.global Msgs_OpAnim_08691738
-Msgs_OpAnim_08691738: @ 08691738
-	.incbin "fe6-base.gba", 0x691738, (0x691778 - 0x691738) @ length: 0040
-
 	.global gOpAnimSubtitleConf
 gOpAnimSubtitleConf: @ 08691778
 	.incbin "fe6-base.gba", 0x691778, (0x6917D8 - 0x691778) @ length: 0060
@@ -45,21 +33,21 @@ ProcScr_Unk_08691840: @ 08691840
 	PROC_REPEAT func_fe6_08098EC8
 	PROC_END
 
-	.global NewOpAnimSubtitleIntroDisp
-NewOpAnimSubtitleIntroDisp: @ 08691858
+	.global ProcScr_OpAnimText
+ProcScr_OpAnimText: @ 08691858
 	PROC_MARK 9
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098F68
-	PROC_REPEAT func_fe6_080990B8
-	PROC_CALL func_fe6_080990E4
-	PROC_REPEAT func_fe6_080990F0
+	PROC_CALL OpAnimText_Init1
+	PROC_REPEAT OpAnimText_Loop1
+	PROC_CALL OpAnimText_Init2
+	PROC_REPEAT OpAnimText_Loop2
 	PROC_END
 
-	.global ProcScr_08691890
-ProcScr_08691890: @ 08691890
+	.global ProcScr_OpAnimGlyphFallIn
+ProcScr_OpAnimGlyphFallIn: @ 08691890
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08099534
-	PROC_REPEAT func_fe6_08099540
+	PROC_CALL OpAnimGlyphFallIn_Init
+	PROC_REPEAT OpAnimGlyphFallIn_Loop
 	PROC_END
 
 	.global gUnk_086918B0
@@ -70,7 +58,7 @@ gUnk_086918B0: @ 086918B0
 ProcScr_OpAnim1: @ 08691930
 	PROC_MARK 9
 	PROC_START_CHILD ProcScr_Unk_086919E8
-	PROC_CALL func_fe6_08099654
+	PROC_CALL OpAnim1_Init
 	PROC_CALL FadeInBlackSpeed04
 	PROC_SLEEP 0
 	PROC_SLEEP 60
@@ -84,9 +72,9 @@ ProcScr_OpAnim1: @ 08691930
 	PROC_CALL func_fe6_08099644
 	PROC_SLEEP 0
 	PROC_SLEEP 8
-	PROC_CALL func_fe6_08098CA4
+	PROC_CALL BreakOpAnimText
 	PROC_SLEEP 48
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_END
 
 	.global ProcScr_Unk_086919D0
@@ -125,7 +113,7 @@ ProcScr_OpAnim2: @ 08691A00
 	PROC_SLEEP 60
 	PROC_CALL func_fe6_08014998
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_END
 
 	.global ProcScr_Unk_08691AC0
@@ -237,9 +225,9 @@ ProcScr_OpAnim3: @ 08691CE0
 	PROC_SLEEP 84
 	PROC_START_CHILD ProcScr_Unk_08691D88
 	PROC_SLEEP 270
-	PROC_CALL func_fe6_08098CA4
+	PROC_CALL BreakOpAnimText
 	PROC_SLEEP 40
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_SLEEP 30
 	PROC_CALL PutOpAnimSubtitle7
 	PROC_SLEEP 90

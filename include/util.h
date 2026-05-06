@@ -112,7 +112,7 @@ void StartFadeCore(int kind, int speed, ProcPtr parent, Func end_callback);
 // ColFade_Loop
 // ColFade_Step
 void func_fe6_08014AB8(void);
-// func_fe6_08014ACC
+void func_fe6_08014ACC(int a, int b);
 void RemoveFadeCoreCallBack(void);
 void Fade_CommonCallBack(void);
 void func_fe6_08014B68(void);

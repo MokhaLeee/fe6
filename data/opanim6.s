@@ -15,7 +15,7 @@ ProcScr_OpAnim6: @ 08691E48
 	PROC_SLEEP 0
 	PROC_CALL func_fe6_0809AD64
 	PROC_SLEEP 30
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_END
 
 	.global ProcScr_OpAnimThunderStorm
@@ -54,13 +54,13 @@ ProcScr_OpAnim5: @ 08691F18
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_CALL func_fe6_08099644
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_SLEEP 60
 	PROC_CALL PutOpAnimSubtitle5
 	PROC_SLEEP 290
 	PROC_CALL FadeInBlackWithCallBack_Speed04
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_SLEEP 30
 	PROC_END
 
@@ -77,7 +77,7 @@ ProcScr_Unk_08691FF8: @ 08691FF8
 	PROC_SLEEP 300
 	PROC_CALL FadeInBlackWithCallBack_Speed08
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_END
 
 	.global ProcScr_Unk_08692060
@@ -111,7 +111,7 @@ ProcScr_OpAnim_Nintendo: @ 086920D0
 	PROC_SLEEP 220
 	PROC_CALL FadeInBlackWithCallBack_Speed10
 	PROC_SLEEP 0
-	PROC_CALL func_fe6_08098C94
+	PROC_CALL RemoveOpAnimText
 	PROC_END
 
 	.global gTitleDuration

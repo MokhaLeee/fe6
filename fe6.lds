@@ -75,6 +75,7 @@ SECTIONS
     . = __ewram_overlay_beg;
     ewram_overlay_opanim (NOLOAD) : ALIGN(4)
     {
+        . = ALIGN(4); src/opanim.o(ewram_overlay_opanim);
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -444,7 +445,7 @@ SECTIONS
         src/opanim.o(.text);
         asm/opanim.o(.text);
         src/opanim6.o(.text);
-        asm/opanim6.o(.text);
+        asm/opanim5.o(.text);
         src/titlescreen.o(.text);
 
         src/m4a_1.o(.text);
