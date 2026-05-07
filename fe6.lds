@@ -53,6 +53,7 @@ SECTIONS
     {
         . = ALIGN(4); src/savemenu.o(ewram_overlay_savemenu);
         . = ALIGN(4); src/savemenu_2.o(ewram_overlay_savemenu);
+        . = ALIGN(4); src/soundroom.o(ewram_overlay_savemenu);
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -421,6 +422,9 @@ SECTIONS
         asm/savemenufx.o(.text);
         src/xmap.o(.text);
         asm/xmap.o(.text);
+
+        src/soundroom.o(.text);
+        asm/soundroom.o(.text);
         src/config.o(.text);
         src/augury.o(.text);
         src/playrank.o(.text);
@@ -844,6 +848,8 @@ SECTIONS
         . = ALIGN(4); data/savemenufx.o(.data);
         . = ALIGN(4); src/xmap.o(.data);
         . = ALIGN(4); data/xmap.o(.data);
+        . = ALIGN(4); src/soundroom.o(.data);
+        . = ALIGN(4); asm/soundroom.o(.data);
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); src/playrank.o(.data);

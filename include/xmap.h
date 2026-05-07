@@ -52,34 +52,8 @@ void Xmap_TextEnd(struct ProcXmap *proc);
 // func_fe6_0808B7B4
 // func_fe6_0808B854
 // func_fe6_0808B928
-// func_fe6_0808B93C
-// func_fe6_0808B9B4
-// func_fe6_0808B9CC
-// func_fe6_0808BBCC
-// func_fe6_0808BCBC
-// func_fe6_0808BCF0
-// func_fe6_0808BD28
-// SaveMenu_ExecSoundroom
-// func_fe6_0808BD6C
-// func_fe6_0808BD78
-// func_fe6_0808BDF8
-// NewProc_0868AA80
-// func_fe6_0808BE70
-// func_fe6_0808BF00
-// func_fe6_0808BFF0
-// func_fe6_0808C084
-// func_fe6_0808C098
-// NewProc_0868AAA8
+// PutSoundRoomCG
 
 extern struct ProcScr CONST_DATA ProcScr_Xmap[];
-// extern CONST_DATA ??? ProcScr_0868A634
-// extern CONST_DATA ??? ProcScr_0868A644
-// extern CONST_DATA ??? gUnk_0868A664
-// extern CONST_DATA ??? Sprite_0868A988
-// extern CONST_DATA ??? Imgs_0868A998
-// extern CONST_DATA ??? Sprite_0868A9E8
-// extern CONST_DATA ??? Sprite_0868A9F0
-// extern CONST_DATA ??? Sprite_0868A9F8
-// extern CONST_DATA ??? ProcScr_SoundRoom
-// extern CONST_DATA ??? ProcScr_0868AA80
-// extern CONST_DATA ??? ProcScr_0868AAA8
+extern struct ProcScr CONST_DATA ProcScr_0868A634[];
+extern struct ProcScr CONST_DATA ProcScr_0868A644[];
