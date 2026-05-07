@@ -11,11 +11,13 @@ struct SoundRoomInfo {
 };
 extern CONST_DATA struct SoundRoomInfo gSoundRoomInfo[];
 
+enum { SOUNDROOM_CG_NUM = 10 };
+
 struct SoundRoomCgInfo {
 	const u8  *img;
 	const u16 *pal;
 };
-extern CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[];
+extern CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[SOUNDROOM_CG_NUM];
 
 struct SoundRoomText {
 	struct Font font;

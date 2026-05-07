@@ -356,7 +356,7 @@ CONST_DATA u16 Sprite_0868A988[] = {
 	OAM0_SHAPE_8x8 + OAM0_Y(8), OAM1_SIZE_8x8, OAM2_CHR(0x386) + OAM2_LAYER(1),
 };
 
-CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[] = {
+CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[SOUNDROOM_CG_NUM] = {
 	{ EndingCG_Img1, EndingCG_Pal1 },
 	{ EndingCG_Img2, EndingCG_Pal2 },
 	{ EndingCG_Img3, EndingCG_Pal3 },
