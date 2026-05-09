@@ -482,16 +482,16 @@ char const * GetItemRangeString(int item)
 {
     char const * strings[] =
     {
-        JTEXT("１～魔力"), // 1 - mag
-        JTEXT("　　　１"), // 1
-        JTEXT("　１～２"), // 1 - 2
-        JTEXT("　１～３"), // 1 - 3
-        JTEXT("　　　２"), // 2
-        JTEXT("　２～３"), // 2 - 3
-        JTEXT("３～１０"), // 3 - 10
-        JTEXT("３～１５"), // 3 - 15
-        JTEXT("　　全体"), // all
-        JTEXT("　　ーー"), // none
+        TEXT("１～魔力", "1-mag"), // 1 - mag
+        TEXT("　　　１", "    1"), // 1
+        TEXT("　１～２", "  1-2"), // 1 - 2
+        TEXT("　１～３", "  1-3"), // 1 - 3
+        TEXT("　　　２", "    2"), // 2
+        TEXT("　２～３", "  2-3"), // 2 - 3
+        TEXT("３～１０", " 3-10"), // 3 - 10
+        TEXT("３～１５", " 3-15"), // 3 - 15
+        TEXT("　　全体", "  All"), // all
+        TEXT("　　ーー", " None"), // none
     };
 
     switch (GetItemEncodedRange(item))
@@ -557,13 +557,13 @@ char const * GetWeaponLevelStringFromExp(int wexp)
 {
     char const * strings[] =
     {
-        [WPN_LEVEL_0] = JTEXT("ー"),
-        [WPN_LEVEL_E] = JTEXT("Ｅ"),
-        [WPN_LEVEL_D] = JTEXT("Ｄ"),
-        [WPN_LEVEL_C] = JTEXT("Ｃ"),
-        [WPN_LEVEL_B] = JTEXT("Ｂ"),
-        [WPN_LEVEL_A] = JTEXT("Ａ"),
-        [WPN_LEVEL_S] = JTEXT("Ｓ"),
+        [WPN_LEVEL_0] = TEXT("ー", "-"),
+        [WPN_LEVEL_E] = TEXT("Ｅ", "E"),
+        [WPN_LEVEL_D] = TEXT("Ｄ", "D"),
+        [WPN_LEVEL_C] = TEXT("Ｃ", "C"),
+        [WPN_LEVEL_B] = TEXT("Ｂ", "B"),
+        [WPN_LEVEL_A] = TEXT("Ａ", "A"),
+        [WPN_LEVEL_S] = TEXT("Ｓ", "S"),
     };
 
     return strings[GetWeaponLevelFromExp(wexp)];
@@ -597,8 +597,8 @@ char const * GetItemKindString(int kind)
         [ITEM_KIND_ANIMA]  = TEXT("理", "Anima"),
         [ITEM_KIND_LIGHT]  = TEXT("光", "Light"),
         [ITEM_KIND_ELDER]  = TEXT("闇", "Dark"),
-        [ITEM_KIND_UNK8]   = JTEXT("道"),
-        [ITEM_KIND_ITEM]   = JTEXT("ア"),
+        [ITEM_KIND_UNK8]   = TEXT("道", "Unk08"),
+        [ITEM_KIND_ITEM]   = TEXT("ア", "Item"),
         [ITEM_KIND_DRAGON] = TEXT("竜", "Dragon"),
     };
 

@@ -1367,15 +1367,15 @@ struct ManimDebugParamInfo CONST_DATA gManimDebugParamInfoTable[] =
 
 char const * CONST_DATA gManimDebugParamLabelList[] =
 {
-    JTEXT("ＰＩＤ"),
-    JTEXT("ＸＹ"),
-    JTEXT("兵種"),
-    JTEXT("武器"),
-    JTEXT("１"),
-    JTEXT("２"),
-    JTEXT("３"),
-    JTEXT("４"),
-    JTEXT("５"),
+    TEXT("ＰＩＤ", "PID"),
+    TEXT("ＸＹ", "XY"),
+    TEXT("兵種", "class"),
+    TEXT("武器", "itype"),
+    TEXT("１", "1"),
+    TEXT("２", "2"),
+    TEXT("３", "3"),
+    TEXT("４", "4"),
+    TEXT("５", "5"),
     NULL, // end
 };
 
