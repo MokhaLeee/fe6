@@ -346,7 +346,7 @@ SECTIONS
         src/banim_ekrcmd.o(.text);
         src/banim_main.o(.text);
         src/banim_ekrmain.o(.text);
-        asm/banim_ekrmain.o(.text);
+        src/banim_ekrsetup.o(.text);
         src/banim_info.o(.text);
         src/banim_ekrmainmini.o(.text);
         src/banim_ekrterrainfx.o(.text);
