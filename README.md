@@ -11,6 +11,14 @@ GBAFE decompilation progress history can be found on [laqieer's FE decomp portal
 [fe6.gba]: https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=0367
 [fe-decomp-portal]: https://laqieer.github.io/fe-decomp-portal/
 
+## Used by
+
+Projects powered by this decomp:
+
+* [**fe-maps**](https://github.com/laqieer/fe-maps) ([site](https://laqieer.github.io/fe-maps/)) — browsable ROM/RAM data maps extracted from this decomp's ELF with `readelf`/`nm -l`.
+* [**FE_GBA_Function_Library**](https://github.com/laqieer/FE_GBA_Function_Library) ([site](https://laqieer.github.io/FE_GBA_Function_Library/)) — cross-game function documentation using `nm -l` for signatures and `source:line` links.
+* [**FE-Clib-Decomp**](https://github.com/laqieer/FE-Clib-Decomp) — ROM-hacking linker scripts, `lyn` reference assembly, and Event Assembler defines generated from this decomp's ELF.
+
 ## Quick setup
 
 - get a copy of the original rom (still required for every build for now), put it in this folder and name it `fe6-base.gba`.
