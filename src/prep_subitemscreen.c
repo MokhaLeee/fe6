@@ -161,17 +161,17 @@ void StartBmSupplyForDrop(struct Unit *unit, ProcPtr parent)
 	proc->unk4B = 1;
 }
 
-const char String_Prep_0832726C[] = "属性";
-const char String_Prep_08327274[] = "威力";
-const char String_Prep_0832727C[] = "命中";
-const char String_Prep_08327284[] = "必殺";
-const char String_Prep_0832728C[] = "重さ";
-const char String_Prep_08327294[] = "何もありません";
-const char Msg_Prep_Supply[] = "輸送隊";
-const char String_Prep_083272AC[] = "あずける";
-const char String_Prep_083272B8[] = "うけとる";
-const char String_Prep_083272C4[] = "すてる";
-const char String_Prep_083272CC[] = "本当に";
-const char String_Prep_083272D4[] = "すてますか";
+const char String_Prep_0832726C[] = TEXT("属性", "Affin");
+const char String_Prep_08327274[] = TEXT("威力", "Mt");
+const char String_Prep_0832727C[] = TEXT("命中", "Hit");
+const char String_Prep_08327284[] = TEXT("必殺", "Crt");
+const char String_Prep_0832728C[] = TEXT("重さ", "Wt");
+const char String_Prep_08327294[] = TEXT("何もありません", "None");
+const char Msg_Prep_Supply[] = TEXT("輸送隊", "Supply");
+const char String_Prep_083272AC[] = TEXT("あずける", "Save");
+const char String_Prep_083272B8[] = TEXT("うけとる", "Load");
+const char String_Prep_083272C4[] = TEXT("すてる", "Discard");
+const char String_Prep_083272CC[] = TEXT("本当に", "Are you sure");
+const char String_Prep_083272D4[] = TEXT("すてますか", "Are you sure");
 const char String_Prep_Yes[] = TEXT("はい", "Yes");
 const char String_Prep_No[] = TEXT("いいえ", "No");

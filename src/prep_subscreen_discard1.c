@@ -22,10 +22,10 @@ void PrepDiscardUpdateInfoWindow(struct ProcPrepDiscardScreen *proc)
 	UpdateEquipInfoWindow(proc->sel_slot);
 }
 
-const char gUnk_083272F0[] = "本当に";
-const char gUnk_083272F8[] = "すてますか";
-const char gUnk_08327304[] = "はい";
-const char gUnk_0832730C[] = "いいえ";
+const char gUnk_083272F0[] = TEXT("本当に", "Are you sure");
+const char gUnk_083272F8[] = TEXT("すてますか", "Discard?");
+const char gUnk_08327304[] = TEXT("はい", "Yes");
+const char gUnk_0832730C[] = TEXT("いいえ", "None");
 
 void func_fe6_0808166C(struct Text *text, bool disp)
 {

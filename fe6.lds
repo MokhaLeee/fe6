@@ -53,6 +53,7 @@ SECTIONS
     {
         . = ALIGN(4); src/savemenu.o(ewram_overlay_savemenu);
         . = ALIGN(4); src/savemenu_2.o(ewram_overlay_savemenu);
+        . = ALIGN(4); src/soundroom.o(ewram_overlay_savemenu);
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -345,7 +346,7 @@ SECTIONS
         src/banim_ekrcmd.o(.text);
         src/banim_main.o(.text);
         src/banim_ekrmain.o(.text);
-        asm/banim_ekrmain.o(.text);
+        src/banim_ekrsetup.o(.text);
         src/banim_info.o(.text);
         src/banim_ekrmainmini.o(.text);
         src/banim_ekrterrainfx.o(.text);
@@ -391,7 +392,6 @@ SECTIONS
         asm/prepscreen.o(.text);
         src/prepscreenfx2.o(.text);
         src/prep_subitemscreen1.o(.text);
-        asm/prep_subitemscreen_trade.o(.text);
         src/prep_subitemscreen_viewall.o(.text);
         asm/prep_subitemscreen_viewall.o(.text);
         src/prep_subitemscreen3.o(.text);
@@ -421,6 +421,9 @@ SECTIONS
         asm/savemenufx.o(.text);
         src/xmap.o(.text);
         asm/xmap.o(.text);
+
+        src/soundroom.o(.text);
+        asm/soundroom.o(.text);
         src/config.o(.text);
         src/augury.o(.text);
         src/playrank.o(.text);
@@ -674,7 +677,6 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrbattleintro.o(.data);
         . = ALIGN(4); src/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
-        . = ALIGN(4); asm/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmainmini.o(.data);
         . = ALIGN(4); src/banim_ekrarena.o(.data);
@@ -844,6 +846,8 @@ SECTIONS
         . = ALIGN(4); data/savemenufx.o(.data);
         . = ALIGN(4); src/xmap.o(.data);
         . = ALIGN(4); data/xmap.o(.data);
+        . = ALIGN(4); src/soundroom.o(.data);
+        . = ALIGN(4); asm/soundroom.o(.data);
         . = ALIGN(4); src/config.o(.data);
         . = ALIGN(4); src/augury.o(.data);
         . = ALIGN(4); src/playrank.o(.data);

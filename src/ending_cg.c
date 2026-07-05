@@ -15,13 +15,13 @@
 #include "constants/flags.h"
 
 CONST_DATA struct EndingCgConf gEndingCgConf[] = {
-	[1]  = { EndingCG_08330B4C, EndingCG_08331B9C, NULL, NULL },
-	[3]  = { EndingCG_0832EDCC, EndingCG_0832FD70, NULL, NULL },
-	[6]  = { EndingCG_0832CCB0, EndingCG_0832DC8C, NULL, NULL },
-	[8]  = { EndingCG_08335CE8, EndingCG_08336C40, NULL, NULL },
-	[10] = { EndingCG_08332E84, EndingCG_08333DD4, EndingCG_08331BBC, EndingCG_08332E64 },
-	[11] = { EndingCG_08333DF4, EndingCG_08335060, EndingCG_08335080, EndingCG_08335CC8 },
-	[12] = { EndingCG_0832FD90, EndingCG_08330B2C, EndingCG_0832DCAC, EndingCG_0832EDAC },
+	[1]  = { EndingCG_Img5, EndingCG_Pal5, NULL, NULL },
+	[3]  = { EndingCG_Img3, EndingCG_Pal3, NULL, NULL },
+	[6]  = { EndingCG_Img1, EndingCG_Pal1, NULL, NULL },
+	[8]  = { EndingCG_Img10, EndingCG_Pal10, NULL, NULL },
+	[10] = { EndingCG_Img7, EndingCG_Pal7, EndingCG_Img6, EndingCG_Pal6 },
+	[11] = { EndingCG_Img8, EndingCG_Pal8, EndingCG_Img9, EndingCG_Pal9 },
+	[12] = { EndingCG_Img4, EndingCG_Pal4, EndingCG_Img2, EndingCG_Pal2 },
 };
 
 bool CheckDisplayEndingCG(void)
