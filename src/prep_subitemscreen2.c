@@ -10,8 +10,11 @@
 
 void PrepSubItem_Trade_Loop(struct PrepSubItemProc *proc)
 {
-	int pre_sel_x = proc->hand_disp_x;
-	int pre_sel_y = proc->hand_disp_y;
+	char pre_sel_x;
+	int pre_sel_y;
+
+	pre_sel_x = proc->hand_disp_x;
+	pre_sel_y = proc->hand_disp_y;
 
 	func_fe6_0807E544(proc);
 
@@ -121,6 +124,7 @@ void PrepSubItem_Trade_Loop(struct PrepSubItemProc *proc)
 					proc->units[proc->unk30], proc->sel_action,
 					proc->units[proc->hand_disp_x], proc->hand_disp_y)) {
 
+					proc->hand_disp_y = proc->hand_disp_y;
 					StartPrepErrorHelpbox(
 						proc->hand_disp_x * 0x70 + 0x10,
 						proc->hand_disp_y * 0x10 + 0x48,
@@ -131,7 +135,7 @@ void PrepSubItem_Trade_Loop(struct PrepSubItemProc *proc)
 				proc->units[proc->unk30]->items[proc->sel_action] =
 					proc->units[proc->hand_disp_x]->items[proc->hand_disp_y];
 
-				proc->units[proc->hand_disp_x]->items[proc->hand_disp_y] = tmp;
+				proc->units[proc->hand_disp_x]->items[(*proc).hand_disp_y] = tmp;
 
 				RemoveUiEntryHover(
 					proc->hand_disp_x * 14 + 2,
@@ -197,8 +201,10 @@ void PrepSubItem_Trade_Loop(struct PrepSubItemProc *proc)
 		}
 	}
 
-	if (proc->unk29 == 2) {
-		if ((proc->hand_disp_x != pre_sel_x) || (proc->hand_disp_y != pre_sel_y)) {
+	if (proc->unk29 == 2)
+	{
+		if ((pre_sel_x != proc->hand_disp_x) || (pre_sel_y != proc->hand_disp_y))
+		{
 			StartItemHelpBox(
 				proc->hand_disp_x * 0x70 + 0x10,
 				proc->hand_disp_y * 0x10 + 0x48,
