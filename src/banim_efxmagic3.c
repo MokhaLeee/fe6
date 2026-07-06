@@ -175,3 +175,141 @@ void EfxHazymoonBG_Loop(struct ProcEfxEclipseBG * proc)
 	}
 }
 
+void NewEfxHazymoonOBJ2(struct BaSprite *anim)
+{
+	struct ProcEfxMagicOBJ *proc;
+	struct BaSprite *anim_front;
+	struct BaSprite *anim_other;
+
+	gEfxBgSemaphore++;
+
+	proc = (struct ProcEfxMagicOBJ *)SpawnProc(ProcScr_EfxHazymoonOBJ2, PROC_TREE_3);
+	proc->anim = anim;
+
+	anim_other = GetAnimAnotherSide(anim);
+
+	proc->timer = 0;
+
+	anim_front = EfxCreateFrontAnim(anim_other, AnimScr_Common, AnimScr_Common,
+					AnimScr_Common, AnimScr_Common);
+	proc->anim2 = anim_front;
+
+	anim_front->oam2 = (anim_front->oam2 & 0xF3FF) | 0x400;
+
+	if (GetAnimPosition(anim_other) == POS_L)
+		anim_front->xPosition -= 8;
+	else
+		anim_front->xPosition += 8;
+
+	anim_front->yPosition -= 0x10;
+
+	if (GetEkrDragonStateTypeIdunn() != 0)
+		anim_front->xPosition -= 0x10;
+}
+
+void EfxHazymoonOBJ2_OnEnd(struct ProcEfxMagicOBJ *proc)
+{
+	gEfxBgSemaphore--;
+	BasRemove(proc->anim2);
+}
+
+void EfxHazymoonOBJ2_Loop1(struct ProcEfxMagicOBJ *proc)
+{
+	struct BaSprite *anim = proc->anim2;
+
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		anim->script = AnimScr_EfxHazymoonOBJ2_1;
+		anim->scrCur = AnimScr_EfxHazymoonOBJ2_1;
+		anim->timer = 0;
+		proc->terminator = 0xa;
+		SpellFx_RegisterObjPal(Pal_EfxHazymoonOBJ2, 0x20);
+		SpellFx_RegisterObjGfx(Img_EfxHazymoonOBJ2_1, 0x1000);
+	} else if (proc->timer == proc->terminator) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EfxHazymoonOBJ2_Loop2(struct ProcEfxMagicOBJ *proc)
+{
+	struct BaSprite *anim = proc->anim2;
+
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		anim->script = AnimScr_EfxHazymoonOBJ2_2;
+		anim->scrCur = AnimScr_EfxHazymoonOBJ2_2;
+		anim->timer = 0;
+		proc->terminator = 0xa;
+		SpellFx_RegisterObjPal(Pal_EfxHazymoonOBJ2, 0x20);
+		SpellFx_RegisterObjGfx(Img_EfxHazymoonOBJ2_2, 0x1000);
+	} else if (proc->timer == proc->terminator) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EfxHazymoonOBJ2_Loop3(struct ProcEfxMagicOBJ *proc)
+{
+	struct BaSprite *anim = proc->anim2;
+
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		anim->script = AnimScr_EfxHazymoonOBJ2_3;
+		anim->scrCur = AnimScr_EfxHazymoonOBJ2_3;
+		anim->timer = 0;
+		proc->terminator = 0xa;
+		SpellFx_RegisterObjPal(Pal_EfxHazymoonOBJ2, 0x20);
+		SpellFx_RegisterObjGfx(Img_EfxHazymoonOBJ2_3, 0x1000);
+	} else if (proc->timer == proc->terminator) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxHazymoonOBJ3(struct BaSprite *anim)
+{
+	struct ProcEfxMagicOBJ *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = (struct ProcEfxMagicOBJ *)SpawnProc(ProcScr_EfxHazymoonOBJ3, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = 0;
+	proc->unk_30 = 0x64;
+
+	SpellFx_RegisterObjPal(Pal_EfxMistyrainOBJ1, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxMistyrainOBJ1_1, 0x1000);
+}
+
+void EfxHazymoonOBJ3_Loop(struct ProcEfxMagicOBJ *proc)
+{
+	i16 r0, r2;
+	void *coord;
+	i16 x, y;
+
+	proc->timer++;
+
+	if (proc->timer == 0x12) {
+		proc->timer = 0;
+
+		r2 = proc->terminator;
+		coord = gEclipseAnimSpriteCoordinates;
+
+		x = gEclipseAnimSpriteCoordinates[r2 * 2 + 0];
+		y = gEclipseAnimSpriteCoordinates[r2 * 2 + 1];
+
+		NewEfxHazymoonOBJ3RND(proc->anim, x, y);
+
+		proc->terminator++;
+
+		if (proc->terminator == 6) {
+			gEfxBgSemaphore--;
+			Proc_Break(proc);
+		}
+	}
+}

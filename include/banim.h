@@ -1168,9 +1168,11 @@ struct ProcEfxMagicOBJ {
 
     STRUCT_PAD(0x29, 0x2C);
 
-    /* 2C */ i16 timer, terminator;
+    /* 2C */ i16 timer;
+    /* 2E */ i16 terminator;
+    /* 30 */ i16 unk_30;
 
-    STRUCT_PAD(0x30, 0x5C);
+    STRUCT_PAD(0x32, 0x5C);
 
     /* 5C */ struct Anim *anim;
     /* 60 */ struct Anim *anim2;
@@ -2433,7 +2435,7 @@ extern CONST_DATA u16 *TsaArray_EfxHazymoonBG[];
 extern CONST_DATA u16 *ImgArray_EfxHazymoonBG[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonOBJ2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonOBJ3[];
-// ??? gEclipseAnimSpriteCoordinates[];
+extern u16 gEclipseAnimSpriteCoordinates[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonOBJ3RND[];
 extern CONST_DATA struct ProcScr ProcScr_EfxFenrir[];
 extern CONST_DATA struct ProcScr ProcScr_EfxFenrirBG[];
