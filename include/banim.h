@@ -573,6 +573,18 @@ struct ProcEfxFlashing {
     /* 5C */ struct Anim *anim;
 };
 
+struct ProcEfxApocalypseDummy {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+    /* 2C */ i16 timer;
+    /* 2E */ i16 duration;
+    STRUCT_PAD(0x30, 0x5C);
+    /* 5C */ struct BaSprite *anim;
+    STRUCT_PAD(0x60, 0x64);
+    /* 64 */ ProcPtr efxproc;
+};
+
 void NewEfxFlashBgWhite(struct Anim *anim, int duartion);
 void NewEfxFlashBgRed(struct Anim *anim, int duartion);
 void EfxFlashBg_Loop(struct ProcEfxFlashing *proc);
@@ -1453,19 +1465,19 @@ void NewEfxApocalypseBGCtrl(struct Anim *anim);
 void NewEfxApocalypseBGCOL(struct Anim *anim);
 // EfxApocalypseBGCOL_Loop
 void NewEfxApocalypseOBJ(struct Anim *anim);
+void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc);
+void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc);
+void EfxApocalypseOBJ_Loop4(struct ProcEfxOBJ *proc);
 // EfxApocalypseOBJ_Loop1
-// EfxApocalypseOBJ_Loop2
-// EfxApocalypseOBJ_Loop3
-// EfxApocalypseOBJ_Loop4
 void NewEfxApocalypseBGCOL2(struct Anim *anim, int);
-// EfxApocalypseBGCOL2_Loop
+void EfxApocalypseBGCOL2_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxApocalypseDummy(struct Anim *anim, ProcPtr, int);
-// EfxApocalypseDummy_Loop
+void EfxApocalypseDummy_Loop(struct ProcEfxApocalypseDummy *proc);
 void NewEfxApocalypseBgFlash1(struct Anim *anim, int, int);
-// EfxApocalypseBgFlash1_Loop
+void EfxApocalypseBgFlash1_Loop(struct ProcEfxFlashing *proc);
 void NewEfxApocalypseBgFlash2(struct Anim *anim, int, int);
-// EfxApocalypseBgFlash2_Loop1
-// EfxApocalypseBgFlash2_Loop2
+void EfxApocalypseBgFlash2_Loop1(struct ProcEfxFlashing *proc);
+void EfxApocalypseBgFlash2_Loop2(struct ProcEfxFlashing *proc);
 void NewEfxApocalypseBG2(struct Anim *anim, int);
 // EfxApocalypseBG2_Loop
 void NewEfxApocalypseOBJ2(struct Anim *anim, int, int);
@@ -1493,21 +1505,17 @@ void EfxHazymoonOBJ3RND_Loop(struct ProcEfxMagicOBJ *proc);
 void StartSpellAnimFenrir(struct Anim *anim);
 // EfxFenrir_Loop
 void NewEfxFenrirBG(struct Anim *anim, int duration);
+void EfxFenrirBG_OnEnd(void);
+void EfxFenrirBG_Loop(struct ProcEfxBG *proc);
 void NewEfxFenrirBGCOL(struct Anim *anim, int duration);
+void EfxFenrirBGCOL_OnEnd(void);
+void EfxFenrirBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxFenrirOBJ(struct Anim *anim, int duration);
+void EfxFenrirOBJ_Loop(struct ProcEfxOBJ *proc);
 void NewEfxFenrirBG2_A(struct Anim *anim);
 void NewEfxFenrirBG2_B(struct Anim *anim);
+void EfxFenrirBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxFenrirOBJ2(struct Anim *anim);
-// EfxFenrirBG_OnEnd
-// EfxFenrirBG_Loop
-// NewEfxFenrirBGCOL
-// EfxFenrirBGCOL_OnEnd
-// EfxFenrirBGCOL_Loop
-// NewEfxFenrirOBJ
-// EfxFenrirOBJ_Loop
-// NewEfxFenrirBG2_A
-// NewEfxFenrirBG2_B
-// EfxFenrirBG2_Loop
 // NewEfxFenrirOBJ2
 // EfxFenrirOBJ2_Loop
 // NewEfxFenrirOBJ2Chiri

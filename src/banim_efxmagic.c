@@ -6526,3 +6526,257 @@ void EfxApocalypseOBJ_Loop1(struct ProcEfxOBJ *proc)
 
 	Proc_Break(proc);
 }
+
+void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+	int zero;
+	i16 interp = Interpolate(0, 0xB4, 0x32, proc->timer, 0x3C);
+	unsigned oldAngle = proc->unk30;
+	register unsigned angle asm("r1") = oldAngle + 0x300;
+	register unsigned index asm("r2");
+	i16 xSin;
+	i16 ySin;
+	int x;
+	int y;
+	int xPos;
+	int yPos;
+
+	zero = 0;
+	proc->unk30 = angle;
+	index = angle >> 8;
+	xSin = gSinLut[index];
+	ySin = gSinLut[index + 0x40];
+	x = (xSin * (i16)interp) << 4;
+	y = ((i16)interp * ySin) << 4;
+	xPos = proc->unk32 + (x >> 16);
+	yPos = proc->unk3A + (y >> 16);
+	anim2->xPosition = xPos;
+	anim2->yPosition = yPos;
+
+	proc->timer++;
+
+	if (proc->timer > 0x3C)
+		proc->timer = 0x3C;
+
+	proc->terminator++;
+
+	if (proc->terminator > 0x78) {
+		proc->timer = zero;
+		proc->terminator = zero;
+		Proc_Break(proc);
+	}
+}
+
+void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+	int zero;
+	i16 interp = Interpolate(0, 0x32, 0, proc->timer, 0x50);
+	unsigned oldAngle = proc->unk30;
+	register unsigned angle asm("r1") = oldAngle + 0x300;
+	register unsigned index asm("r2");
+	i16 xSin;
+	i16 ySin;
+	int x;
+	int y;
+	int xPos;
+	int yPos;
+
+	zero = 0;
+	proc->unk30 = angle;
+	index = angle >> 8;
+	xSin = gSinLut[index];
+	ySin = gSinLut[index + 0x40];
+	x = (xSin * (i16)interp) << 4;
+	y = ((i16)interp * ySin) << 4;
+	xPos = proc->unk32 + (x >> 16);
+	yPos = proc->unk3A + (y >> 16);
+	anim2->xPosition = xPos;
+	anim2->yPosition = yPos;
+
+	proc->timer++;
+
+	if (proc->timer > 0x50)
+		proc->timer = 0x50;
+
+	proc->terminator++;
+
+	if (proc->terminator > 0x50) {
+		proc->timer = zero;
+		proc->terminator = zero;
+		Proc_Break(proc);
+	}
+}
+
+void EfxApocalypseOBJ_Loop4(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+	register i16 cap asm("r6");
+	i16 interp;
+	int timer;
+	unsigned oldAngle;
+	register unsigned angle asm("r1");
+	register unsigned index asm("r2");
+	i16 xSin;
+	i16 ySin;
+	int x;
+	int y;
+	int xPos;
+	int yPos;
+
+	timer = proc->timer;
+	cap = 0x32;
+	interp = Interpolate(1, 0, 0xB4, timer, cap);
+
+	oldAngle = proc->unk30;
+	angle = oldAngle + 0x800;
+	proc->unk30 = angle;
+	index = angle >> 8;
+	xSin = gSinLut[index];
+	ySin = gSinLut[index + 0x40];
+	x = (xSin * (i16)interp) << 4;
+	y = ((i16)interp * ySin) << 4;
+	xPos = proc->unk32 + (x >> 16);
+	yPos = proc->unk3A + (y >> 16);
+	anim2->xPosition = xPos;
+	anim2->yPosition = yPos;
+
+	proc->timer++;
+
+	if (proc->timer > 0x32)
+		proc->timer = cap;
+
+	proc->terminator++;
+
+	if (proc->terminator > 0x32) {
+		gEfxBgSemaphore--;
+		BasRemove(proc->anim2);
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseBGCOL2(struct Anim *anim, int duration)
+{
+	struct ProcEfxBGCOL *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseBGCOL2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->timer2 = 0;
+	proc->terminator = duration;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxApocalypseBGCOL2;
+	proc->pal = Pals_EfxApocalypseBGCOL2;
+}
+
+void EfxApocalypseBGCOL2_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret;
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame,
+				 proc->frame_config);
+
+	if (ret >= 0)
+		func_fe6_08047B6C(proc->pal, (u16 *)((char *)gPal + 2), ret, 0xf, 0xf);
+
+	proc->timer2++;
+
+	if (proc->timer2 > proc->terminator) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseDummy(struct Anim *anim, ProcPtr efxproc, int duration)
+{
+	struct ProcEfxApocalypseDummy *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseDummy, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->duration = duration;
+	proc->efxproc = efxproc;
+}
+
+void EfxApocalypseDummy_Loop(struct ProcEfxApocalypseDummy *proc)
+{
+	struct ProcEfx *efxproc = proc->efxproc;
+
+	efxproc->frame = Interpolate(4, 0x80, 0, proc->timer, proc->duration);
+
+	proc->timer++;
+
+	if (proc->timer > proc->duration) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseBgFlash1(struct Anim *anim, int terminator, int duration)
+{
+	struct ProcEfxFlashing *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseBgFlash1, PROC_TREE_3);
+	proc->timer = 0;
+	proc->terminator = terminator;
+	proc->terminator2 = duration;
+	proc->anim = anim;
+}
+
+void EfxApocalypseBgFlash1_Loop(struct ProcEfxFlashing *proc)
+{
+	proc->timer++;
+
+	if (proc->timer > proc->terminator) {
+		gEfxBgSemaphore--;
+		NewEfxFlashBgWhite(proc->anim, proc->terminator2);
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseBgFlash2(struct Anim *anim, int terminator, int duration)
+{
+	struct ProcEfxFlashing *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseBgFlash2, PROC_TREE_3);
+	proc->timer = 0;
+	proc->terminator = terminator;
+	proc->terminator2 = duration;
+	proc->anim = anim;
+}
+
+void EfxApocalypseBgFlash2_Loop1(struct ProcEfxFlashing *proc)
+{
+	proc->timer++;
+
+	if (proc->timer > proc->terminator) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EfxApocalypseBgFlash2_Loop2(struct ProcEfxFlashing *proc)
+{
+	int ret;
+
+	ret = Interpolate(0, 0, 0x10, proc->timer, proc->terminator2);
+
+	SpellFx_RegisterBgPal(Pal_EfxApocalypse_0817B418, 0x20);
+	EfxPalWhiteInOut(gPal, 1, 1, ret);
+
+	proc->timer++;
+
+	if (proc->timer > proc->terminator2) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}

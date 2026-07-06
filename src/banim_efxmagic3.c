@@ -431,3 +431,201 @@ void EfxFenrir_Loop(struct ProcEfx *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxFenrirBG(struct Anim *anim, int duration)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxFenrirBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = duration;
+
+	SpellFx_RegisterBgGfx(Img_EfxFenrirBG, 32 * 8 * CHR_SIZE);
+	SpellFx_ClearBG1();
+
+	LZ77UnCompWram(Tsa_EfxFenrirBG, gEkrTsaBuffer);
+	EfxTmCpyBG(gEkrTsaBuffer, gBg1Tm, 0x20, 0x20,
+		   BGPAL_EFX_SPELL_BG, VRAMOFF_BANIM_SPELL_BG / CHR_SIZE);
+
+	EnableBgSync(BG1_SYNC_BIT);
+	SpellFx_SetSomeColorEffect();
+	SetWinEnable(0, 0, 0);
+}
+
+void EfxFenrirBG_OnEnd(void)
+{
+	SpellFx_ClearBG1();
+	gEfxBgSemaphore--;
+	SpellFx_ClearColorEffects();
+}
+
+void EfxFenrirBG_Loop(struct ProcEfxBG *proc)
+{
+	gDispIo.bg_off[BG_1].y++;
+	gDispIo.bg_off[BG_1].x--;
+
+	proc->timer++;
+
+	if (proc->timer > proc->terminator)
+		Proc_Break(proc);
+}
+
+void NewEfxFenrirBGCOL(struct Anim *anim, int duration)
+{
+	struct ProcEfxBGCOL *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxFenrirBGCOL, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->timer2 = 0;
+	proc->terminator = duration;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxFenrirBGCOL;
+	proc->pal = Pal_EfxFenrirBGCOL;
+
+	SpellFx_RegisterBgPal(Pal_EfxFenrirBGCOL, 0x20);
+}
+
+void EfxFenrirBGCOL_OnEnd(void)
+{
+	gEfxBgSemaphore--;
+}
+
+void EfxFenrirBGCOL_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret;
+	const u16 *pal;
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame,
+				 proc->frame_config);
+
+	if (ret >= 0) {
+		pal = proc->pal;
+		SpellFx_RegisterBgPal(pal + ret * 0x10, 0x20);
+	}
+
+	proc->timer2++;
+
+	if (proc->timer2 > proc->terminator)
+		Proc_Break(proc);
+}
+
+void NewEfxFenrirOBJ(struct Anim *anim, int duration)
+{
+	struct ProcEfxOBJ *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxFenrirOBJ, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = duration;
+	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_EfxFenrirOBJ,
+					 AnimScr_EfxFenrirOBJ,
+					 AnimScr_EfxFenrirOBJ,
+					 AnimScr_EfxFenrirOBJ);
+
+	SpellFx_RegisterObjPal(Pal_EfxFenrirOBJ, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxFenrirOBJ, 32 * 4 * CHR_SIZE);
+}
+
+void EfxFenrirOBJ_Loop(struct ProcEfxOBJ *proc)
+{
+	proc->timer++;
+
+	if (proc->timer > proc->terminator) {
+		gEfxBgSemaphore--;
+		BasRemove(proc->anim2);
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxFenrirBG2_A(struct Anim *anim)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxFenrirBG2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxFenrirBG2_A;
+	proc->tsal = TsaArray_EfxFenrirBG2_A;
+	proc->tsar = TsaArray_EfxFenrirBG2_A;
+	proc->img = ImgArray_EfxFenrirBG2_A;
+
+	SpellFx_RegisterBgPal(Pal_EfxFenrirBG2_A, 0x20);
+	SpellFx_SetSomeColorEffect();
+
+	SetBgOffset(BG_1, 0, 0);
+
+	if (gEkrDistanceType != EKR_DISTANCE_CLOSE) {
+		if (GetAnimPosition(proc->anim) == POS_L)
+			SetBgOffset(BG_1, 0x18, 0);
+		else
+			SetBgOffset(BG_1, 0xE8, 0);
+	}
+}
+
+void NewEfxFenrirBG2_B(struct Anim *anim)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxFenrirBG2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->frame_config = FrameConf_EfxFireHITBG;
+	proc->tsal = TsaArray_EfxFireHITBG;
+	proc->tsar = TsaArray_EfxFireHITBG;
+	proc->img = ImgArray_EfxFireHITBG;
+
+	SpellFx_RegisterBgPal(Pal_EfxFenrirBG2_B, 0x20);
+	SpellFx_SetSomeColorEffect();
+
+	if (gEkrDistanceType != EKR_DISTANCE_CLOSE) {
+		if (GetAnimPosition(proc->anim) == POS_L)
+			SetBgOffset(BG_1, 0x18, 0);
+		else
+			SetBgOffset(BG_1, 0xE8, 0);
+	}
+}
+
+void EfxFenrirBG2_Loop(struct ProcEfxBG *proc)
+{
+	int ret;
+	u16 **tsal;
+	u16 **tsar;
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		tsal = proc->tsal;
+		tsar = proc->tsar;
+
+		SpellFx_RegisterBgGfx(proc->img[ret], 32 * 8 * CHR_SIZE);
+		SpellFx_WriteBgMap(proc->anim, tsal[ret], tsar[ret]);
+
+		if (gEkrDistanceType != EKR_DISTANCE_CLOSE) {
+			if (GetAnimPosition(proc->anim) == POS_L)
+				FillBGRect(gBg1Tm, 3, 20, 0, 0);
+			else
+				FillBGRect(gBg1Tm + TM_OFFSET(29, 0), 3, 20, 0, 0);
+
+			EnableBgSync(BG1_SYNC_BIT);
+		}
+	} else if (ret == -1) {
+		SpellFx_ClearBG1();
+		gEfxBgSemaphore--;
+		SpellFx_ClearColorEffects();
+		Proc_Break(proc);
+	}
+}
