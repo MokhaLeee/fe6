@@ -1499,10 +1499,10 @@ void NewEfxFenrirBGCOL(struct Anim *anim, int duration);
 void EfxFenrirBGCOL_OnEnd(void);
 void EfxFenrirBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxFenrirOBJ(struct Anim *anim, int duration);
+void EfxFenrirOBJ_Loop(struct ProcEfxOBJ *proc);
 void NewEfxFenrirBG2_A(struct Anim *anim);
 void NewEfxFenrirBG2_B(struct Anim *anim);
 void NewEfxFenrirOBJ2(struct Anim *anim);
-// EfxFenrirOBJ_Loop
 // NewEfxFenrirBG2_A
 // NewEfxFenrirBG2_B
 // EfxFenrirBG2_Loop

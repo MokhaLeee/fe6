@@ -533,3 +533,14 @@ void NewEfxFenrirOBJ(struct Anim *anim, int duration)
 	SpellFx_RegisterObjPal(Pal_EfxFenrirOBJ, 0x20);
 	SpellFx_RegisterObjGfx(Img_EfxFenrirOBJ, 32 * 4 * CHR_SIZE);
 }
+
+void EfxFenrirOBJ_Loop(struct ProcEfxOBJ *proc)
+{
+	proc->timer++;
+
+	if (proc->timer > proc->terminator) {
+		gEfxBgSemaphore--;
+		BasRemove(proc->anim2);
+		Proc_Break(proc);
+	}
+}
