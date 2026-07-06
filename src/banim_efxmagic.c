@@ -6671,3 +6671,112 @@ void NewEfxApocalypseBGCOL2(struct Anim *anim, int duration)
 	proc->frame_config = FrameArray_EfxApocalypseBGCOL2;
 	proc->pal = Pals_EfxApocalypseBGCOL2;
 }
+
+void EfxApocalypseBGCOL2_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret;
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame,
+				 proc->frame_config);
+
+	if (ret >= 0)
+		func_fe6_08047B6C(proc->pal, (u16 *)((char *)gPal + 2), ret, 0xf, 0xf);
+
+	proc->timer2++;
+
+	if (proc->timer2 > proc->terminator) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseDummy(struct Anim *anim, ProcPtr efxproc, int duration)
+{
+	struct ProcEfxApocalypseDummy *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseDummy, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->duration = duration;
+	proc->efxproc = efxproc;
+}
+
+void EfxApocalypseDummy_Loop(struct ProcEfxApocalypseDummy *proc)
+{
+	struct ProcEfx *efxproc = proc->efxproc;
+
+	efxproc->frame = Interpolate(4, 0x80, 0, proc->timer, proc->duration);
+
+	proc->timer++;
+
+	if (proc->timer > proc->duration) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseBgFlash1(struct Anim *anim, int terminator, int duration)
+{
+	struct ProcEfxFlashing *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseBgFlash1, PROC_TREE_3);
+	proc->timer = 0;
+	proc->terminator = terminator;
+	proc->terminator2 = duration;
+	proc->anim = anim;
+}
+
+void EfxApocalypseBgFlash1_Loop(struct ProcEfxFlashing *proc)
+{
+	proc->timer++;
+
+	if (proc->timer > proc->terminator) {
+		gEfxBgSemaphore--;
+		NewEfxFlashBgWhite(proc->anim, proc->terminator2);
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxApocalypseBgFlash2(struct Anim *anim, int terminator, int duration)
+{
+	struct ProcEfxFlashing *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseBgFlash2, PROC_TREE_3);
+	proc->timer = 0;
+	proc->terminator = terminator;
+	proc->terminator2 = duration;
+	proc->anim = anim;
+}
+
+void EfxApocalypseBgFlash2_Loop1(struct ProcEfxFlashing *proc)
+{
+	proc->timer++;
+
+	if (proc->timer > proc->terminator) {
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void EfxApocalypseBgFlash2_Loop2(struct ProcEfxFlashing *proc)
+{
+	int ret;
+
+	ret = Interpolate(0, 0, 0x10, proc->timer, proc->terminator2);
+
+	SpellFx_RegisterBgPal(Pal_EfxApocalypse_0817B418, 0x20);
+	EfxPalWhiteInOut(gPal, 1, 1, ret);
+
+	proc->timer++;
+
+	if (proc->timer > proc->terminator2) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
