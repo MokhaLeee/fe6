@@ -454,3 +454,10 @@ void NewEfxFenrirBG(struct Anim *anim, int duration)
 	SpellFx_SetSomeColorEffect();
 	SetWinEnable(0, 0, 0);
 }
+
+void EfxFenrirBG_OnEnd(void)
+{
+	SpellFx_ClearBG1();
+	gEfxBgSemaphore--;
+	SpellFx_ClearColorEffects();
+}

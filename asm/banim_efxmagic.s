@@ -3,20 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start EfxFenrirBG_OnEnd
-EfxFenrirBG_OnEnd: @ 0x08054084
-	push {lr}
-	bl SpellFx_ClearBG1
-	ldr r1, .L0805409C @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	bl SpellFx_ClearColorEffects
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805409C: .4byte gEfxBgSemaphore
-
 	thumb_func_start EfxFenrirBG_Loop
 EfxFenrirBG_Loop: @ 0x080540A0
 	push {lr}
