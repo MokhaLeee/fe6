@@ -598,3 +598,34 @@ void NewEfxFenrirBG2_B(struct Anim *anim)
 			SetBgOffset(BG_1, 0xE8, 0);
 	}
 }
+
+void EfxFenrirBG2_Loop(struct ProcEfxBG *proc)
+{
+	int ret;
+	u16 **tsal;
+	u16 **tsar;
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		tsal = proc->tsal;
+		tsar = proc->tsar;
+
+		SpellFx_RegisterBgGfx(proc->img[ret], 32 * 8 * CHR_SIZE);
+		SpellFx_WriteBgMap(proc->anim, tsal[ret], tsar[ret]);
+
+		if (gEkrDistanceType != EKR_DISTANCE_CLOSE) {
+			if (GetAnimPosition(proc->anim) == POS_L)
+				FillBGRect(gBg1Tm, 3, 20, 0, 0);
+			else
+				FillBGRect(gBg1Tm + TM_OFFSET(29, 0), 3, 20, 0, 0);
+
+			EnableBgSync(BG1_SYNC_BIT);
+		}
+	} else if (ret == -1) {
+		SpellFx_ClearBG1();
+		gEfxBgSemaphore--;
+		SpellFx_ClearColorEffects();
+		Proc_Break(proc);
+	}
+}

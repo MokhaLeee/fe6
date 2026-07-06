@@ -1502,8 +1502,8 @@ void NewEfxFenrirOBJ(struct Anim *anim, int duration);
 void EfxFenrirOBJ_Loop(struct ProcEfxOBJ *proc);
 void NewEfxFenrirBG2_A(struct Anim *anim);
 void NewEfxFenrirBG2_B(struct Anim *anim);
+void EfxFenrirBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxFenrirOBJ2(struct Anim *anim);
-// EfxFenrirBG2_Loop
 // NewEfxFenrirOBJ2
 // EfxFenrirOBJ2_Loop
 // NewEfxFenrirOBJ2Chiri
