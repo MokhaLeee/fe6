@@ -3,16 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start EfxFenrirBGCOL_OnEnd
-EfxFenrirBGCOL_OnEnd: @ 0x08054118
-	ldr r1, .L08054124 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-.L08054124: .4byte gEfxBgSemaphore
-
 	thumb_func_start EfxFenrirBGCOL_Loop
 EfxFenrirBGCOL_Loop: @ 0x08054128
 	push {r4, lr}

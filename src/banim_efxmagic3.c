@@ -490,3 +490,8 @@ void NewEfxFenrirBGCOL(struct Anim *anim, int duration)
 
 	SpellFx_RegisterBgPal(Pal_EfxFenrirBGCOL, 0x20);
 }
+
+void EfxFenrirBGCOL_OnEnd(void)
+{
+	gEfxBgSemaphore--;
+}
