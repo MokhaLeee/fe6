@@ -1500,7 +1500,6 @@ void NewEfxFenrirOBJ(struct Anim *anim, int duration);
 void NewEfxFenrirBG2_A(struct Anim *anim);
 void NewEfxFenrirBG2_B(struct Anim *anim);
 void NewEfxFenrirOBJ2(struct Anim *anim);
-// EfxFenrirBGCOL_Loop
 // NewEfxFenrirOBJ
 // EfxFenrirOBJ_Loop
 // NewEfxFenrirBG2_A
