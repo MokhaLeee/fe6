@@ -1455,8 +1455,8 @@ void NewEfxApocalypseBGCOL(struct Anim *anim);
 void NewEfxApocalypseOBJ(struct Anim *anim);
 void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc);
 void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc);
+void EfxApocalypseOBJ_Loop4(struct ProcEfxOBJ *proc);
 // EfxApocalypseOBJ_Loop1
-// EfxApocalypseOBJ_Loop4
 void NewEfxApocalypseBGCOL2(struct Anim *anim, int);
 // EfxApocalypseBGCOL2_Loop
 void NewEfxApocalypseDummy(struct Anim *anim, ProcPtr, int);
