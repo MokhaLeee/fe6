@@ -1494,12 +1494,12 @@ void StartSpellAnimFenrir(struct Anim *anim);
 // EfxFenrir_Loop
 void NewEfxFenrirBG(struct Anim *anim, int duration);
 void EfxFenrirBG_OnEnd(void);
+void EfxFenrirBG_Loop(struct ProcEfxBG *proc);
 void NewEfxFenrirBGCOL(struct Anim *anim, int duration);
 void NewEfxFenrirOBJ(struct Anim *anim, int duration);
 void NewEfxFenrirBG2_A(struct Anim *anim);
 void NewEfxFenrirBG2_B(struct Anim *anim);
 void NewEfxFenrirOBJ2(struct Anim *anim);
-// EfxFenrirBG_Loop
 // NewEfxFenrirBGCOL
 // EfxFenrirBGCOL_OnEnd
 // EfxFenrirBGCOL_Loop
