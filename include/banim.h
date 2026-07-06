@@ -1489,7 +1489,7 @@ void NewEfxHazymoonOBJ2(struct Anim *anim);
 void NewEfxHazymoonOBJ3(struct Anim *anim);
 // EfxHazymoonOBJ3_Loop
 void NewEfxHazymoonOBJ3RND(struct Anim *anim, int x, int y);
-// EfxHazymoonOBJ3RND_Loop
+void EfxHazymoonOBJ3RND_Loop(struct ProcEfxMagicOBJ *proc);
 void StartSpellAnimFenrir(struct Anim *anim);
 // EfxFenrir_Loop
 // NewEfxFenrirBG

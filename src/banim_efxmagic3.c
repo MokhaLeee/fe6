@@ -313,3 +313,44 @@ void EfxHazymoonOBJ3_Loop(struct ProcEfxMagicOBJ *proc)
 		}
 	}
 }
+
+void NewEfxHazymoonOBJ3RND(struct BaSprite *anim, int x, int y)
+{
+	struct ProcEfxMagicOBJ *proc;
+	struct BaSprite *anim_front;
+
+	gEfxBgSemaphore++;
+
+	proc = (struct ProcEfxMagicOBJ *)SpawnProc(ProcScr_EfxHazymoonOBJ3RND, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+
+	anim_front = EfxCreateFrontAnim(anim, AnimScr_EfxHazymoonOBJ3RND, AnimScr_EfxHazymoonOBJ3RND,
+					AnimScr_EfxHazymoonOBJ3RND, AnimScr_EfxHazymoonOBJ3RND);
+	proc->anim2 = anim_front;
+	anim_front->xPosition = x;
+	anim_front->yPosition = y;
+}
+
+void EfxHazymoonOBJ3RND_Loop(struct ProcEfxMagicOBJ *proc)
+{
+	gEfxBgSemaphore--;
+	BasRemove(proc->anim2);
+}
+
+/**
+ * Fenrir
+ */
+void StartSpellAnimFenrir(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxFenrir, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
