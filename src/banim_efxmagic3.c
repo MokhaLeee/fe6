@@ -354,3 +354,80 @@ void StartSpellAnimFenrir(struct Anim *anim)
 	proc->timer = 0;
 	proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
 }
+
+void EfxFenrir_Loop(struct ProcEfx *proc)
+{
+	struct Anim *anim;
+	int duration;
+	int frame;
+	u8 *disp;
+
+	anim = GetAnimAnotherSide(proc->anim);
+	duration = EfxGetCamMovDuration();
+
+	proc->timer++;
+
+	if (proc->timer == 1)
+		NewEfxFarAttackWithDistance(proc->anim, -1);
+
+	if (proc->timer == duration + 1) {
+		NewEfxFenrirBG(anim, 0x64);
+		NewEfxFenrirBGCOL(anim, 0x64);
+		frame = 0x100;
+		NewEfxRestRST(anim, 0x64, 2, frame, 1);
+		NewEfxRestWINH_(anim, 0x69, EfxRestWINH_DefaultHblank);
+
+		disp = (u8 *)&gDispIo;
+		disp[0x3C] = (disp[0x3C] & 0x3F) | 0x40;
+		{
+			register u8 *p asm("r0") = disp + 0x44;
+			u8 cb;
+
+			*p++ = 0;
+			cb = 0x10;
+			*p++ = cb;
+			*p = 0;
+			NewEfxALPHA(anim, 0, 0xF, 0, cb, 0);
+		}
+		NewEfxALPHA(anim, 0x46, 0xF, 0x10, 0, 0);
+		PlaySFX(SONG_130, 0x100, 0x78, 0);
+	} else if (proc->timer == duration + 0x28) {
+		NewEfxFenrirOBJ(anim, 0x4A);
+		PlaySFX(SONG_131, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0x6E) {
+		NewEfxFenrirBG2_A(anim);
+	} else if (proc->timer == duration + 0x6F) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0x8B) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0xA7) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0xC3) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0xDF) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0xFB) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0x117) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0x133) {
+		PlaySFX(SONG_132, 0x100, anim->xPosition, 1);
+	} else if (proc->timer == duration + 0x166) {
+		NewEfxFlashBgWhite(anim, 0xA);
+		NewEfxFenrirOBJ2(anim);
+		anim->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+		StartBattleAnimHitEffectsDefault(anim, proc->hitted);
+		PlaySFX(SONG_133, 0x100, anim->xPosition, 1);
+
+		if (!proc->hitted)
+			EfxPlayHittedSFX(anim);
+	} else if (proc->timer == duration + 0x170) {
+		NewEfxFenrirBG2_B(anim);
+		NewEfxALPHA(anim, 0x12, 8, 0x10, 0, 0);
+	} else if (proc->timer == duration + 0x19A) {
+	} else if (proc->timer == duration + 0x1A4) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+		Proc_Break(proc);
+	}
+}
