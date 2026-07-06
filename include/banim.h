@@ -1496,11 +1496,12 @@ void NewEfxFenrirBG(struct Anim *anim, int duration);
 void EfxFenrirBG_OnEnd(void);
 void EfxFenrirBG_Loop(struct ProcEfxBG *proc);
 void NewEfxFenrirBGCOL(struct Anim *anim, int duration);
+void EfxFenrirBGCOL_OnEnd(void);
+void EfxFenrirBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxFenrirOBJ(struct Anim *anim, int duration);
 void NewEfxFenrirBG2_A(struct Anim *anim);
 void NewEfxFenrirBG2_B(struct Anim *anim);
 void NewEfxFenrirOBJ2(struct Anim *anim);
-// NewEfxFenrirOBJ
 // EfxFenrirOBJ_Loop
 // NewEfxFenrirBG2_A
 // NewEfxFenrirBG2_B
