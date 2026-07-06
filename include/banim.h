@@ -1453,8 +1453,8 @@ void NewEfxApocalypseBGCtrl(struct Anim *anim);
 void NewEfxApocalypseBGCOL(struct Anim *anim);
 // EfxApocalypseBGCOL_Loop
 void NewEfxApocalypseOBJ(struct Anim *anim);
+void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc);
 // EfxApocalypseOBJ_Loop1
-// EfxApocalypseOBJ_Loop2
 // EfxApocalypseOBJ_Loop3
 // EfxApocalypseOBJ_Loop4
 void NewEfxApocalypseBGCOL2(struct Anim *anim, int);
