@@ -7760,14 +7760,12 @@ void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc)
 
 	lut = gSinLut;
 	angle = proc->unk44;
-	x_acc = ret;
-	x_acc = x_acc * lut[angle];
+	x_acc = ret * lut[angle];
 
 	angle = angle + 0x40;
 	y = ret * lut[angle];
 
 	anim2->xPosition = proc->unk32 + (x_acc >> 12);
-	asm volatile("" ::: "memory");
 	anim2->yPosition = proc->unk3A + (y >> 12);
 
 	proc->timer++;
