@@ -3,61 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start EfxLiveBG_Loop
-EfxLiveBG_Loop: @ 0x08054D08
-	push {r4, lr}
-	adds r4, r0, #0
-	adds r0, #0x2c
-	adds r1, r4, #0
-	adds r1, #0x44
-	ldr r2, [r4, #0x48]
-	bl EfxAdvanceFrameLut
-	lsls r0, r0, #0x10
-	asrs r3, r0, #0x10
-	cmp r3, #0
-	blt .L08054D3A
-	ldr r1, [r4, #0x4c]
-	ldr r2, [r4, #0x50]
-	ldr r0, [r4, #0x5c]
-	lsls r4, r3, #2
-	adds r4, r4, r3
-	lsls r3, r4, #4
-	subs r3, r3, r4
-	lsls r3, r3, #4
-	adds r1, r1, r3
-	adds r2, r2, r3
-	bl SpellFx_WriteBgMapUncomp
-	b .L08054D6C
-.L08054D3A:
-	movs r0, #1
-	rsbs r0, r0, #0
-	cmp r3, r0
-	bne .L08054D6C
-	adds r0, r4, #0
-	adds r0, #0x29
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne .L08054D54
-	bl SpellFx_ClearBG1
-	bl SpellFx_ClearColorEffects
-.L08054D54:
-	movs r0, #1
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	ldr r1, .L08054D74 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	subs r0, #1
-	str r0, [r1]
-	adds r0, r4, #0
-	bl Proc_Break
-.L08054D6C:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08054D74: .4byte gEfxBgSemaphore
-
 	thumb_func_start NewEfxLiveBGCOL_A
 NewEfxLiveBGCOL_A: @ 0x08054D78
 	push {r4, r5, lr}

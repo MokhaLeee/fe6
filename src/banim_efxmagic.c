@@ -9915,3 +9915,28 @@ void NewEfxLiveBG_B(struct Anim *anim, u32 type)
 
 	SpellFx_SetSomeColorEffect();
 }
+
+void EfxLiveBG_Loop(struct ProcEfxBG *proc)
+{
+	int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		u16 *tsaL = (u16 *)proc->tsal;
+		u16 *tsaR = (u16 *)proc->tsar;
+
+		SpellFx_WriteBgMapUncomp(proc->anim, tsaL + ret * 600, tsaR + ret * 600);
+		return;
+	}
+
+	if (ret != -1)
+		return;
+
+	if (proc->unk29 == 0) {
+		SpellFx_ClearBG1();
+		SpellFx_ClearColorEffects();
+	}
+
+	SetBgOffset(BG_1, 0, 0);
+	gEfxBgSemaphore--;
+	Proc_Break(proc);
+}
