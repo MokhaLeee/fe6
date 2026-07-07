@@ -6909,3 +6909,28 @@ void NewEfxApocalypseOBJ2(struct Anim *anim, int duration1, int duration2)
 	SpellFx_RegisterObjPal(Pal_EfxMistyrainOBJ1, 0x20);
 	SpellFx_RegisterObjGfx(Img_EfxApocalypseOBJ2_1, 0x1000);
 }
+
+void EfxApocalypseOBJ2_Loop1(struct ProcEfxOBJ *proc)
+{
+	register struct ProcEfxOBJ *proc_reg asm("r4");
+	struct Anim *anim2;
+	register i16 timer_reg asm("r0");
+	register int zero_reg asm("r3");
+
+	proc_reg = proc;
+	anim2 = proc_reg->anim2;
+
+	timer_reg = proc_reg->timer;
+	timer_reg++;
+	zero_reg = 0;
+	proc_reg->timer = timer_reg;
+
+	if ((timer_reg << 16) > (proc_reg->terminator << 16)) {
+		proc_reg->timer = zero_reg;
+		anim2->script = AnimScr_EfxApocalypseOBJ2_2;
+		anim2->scrCur = AnimScr_EfxApocalypseOBJ2_2;
+		anim2->timer = zero_reg;
+		SpellFx_RegisterObjGfx(Img_EfxApocalypseOBJ2_2, 0x1000);
+		Proc_Break(proc_reg);
+	}
+}
