@@ -1597,14 +1597,14 @@ void EfxReblowOBJ_Loop1(struct ProcEfxOBJ *proc);
 void EfxReblowOBJ_Loop2(struct ProcEfxOBJ *proc);
 void StartSpellAnimFortify(struct Anim *anim);
 void StartSpellAnimLatona(struct Anim *anim);
-// EfxReserve_Loop
-// NewEfxReserveBG
+void EfxReserve_Loop(struct ProcEfx *proc);
+void NewEfxReserveBG(struct Anim *anim);
 // EfxReserveBG_Loop
-// NewEfxReserveBGCOL
+void NewEfxReserveBGCOL(struct Anim *anim, u8 kind);
 // EfxReserveBGCOL_Loop
-// NewEfxReserveBG2
+void NewEfxReserveBG2(struct Anim *anim);
 // EfxReserveBG2_Loop
-// NewEfxReserveBGCOL2
+void NewEfxReserveBGCOL2(struct Anim *anim, u8 kind);
 // EfxReserveBGCOL2_Loop
 // StartSpellAnimRestore
 // EfxRest_Loop

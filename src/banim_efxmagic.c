@@ -10237,3 +10237,29 @@ void StartSpellAnimLatona(struct Anim *anim)
 	proc->timer = 0;
 	proc->hitted = 1;
 }
+
+void EfxReserve_Loop(struct ProcEfx *proc)
+{
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		NewEfxReserveOBJ(proc->anim);
+		PlaySFX(SONG_F3, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 52) {
+		NewEfxReserveBG(proc->anim);
+		NewEfxReserveBGCOL(proc->anim, proc->hitted);
+	} else if (proc->timer == 183) {
+		PlaySFX(SONG_114, 0x100, 0x78, 0);
+		NewEfxReserveBG2(proc->anim);
+		NewEfxReserveBGCOL2(proc->anim, proc->hitted);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 20, 0);
+		NewEfxLiveALPHA(proc->anim, 180, 40, 1);
+	} else if (proc->timer == 453) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+		Proc_Break(proc);
+	}
+}
