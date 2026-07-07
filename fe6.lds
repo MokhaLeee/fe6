@@ -352,9 +352,6 @@ SECTIONS
         src/banim_ekrterrainfx.o(.text);
         src/banim_ekrarena.o(.text);
         src/banim_efxmagic.o(.text);
-        asm/banim_efxmagic_aureola.o(.text);
-        src/banim_efxmagic3.o(.text);
-        asm/banim_efxmagic.o(.text);
         src/banim_efxhit.o(.text);
         src/banim_efxmisc.o(.text);
         src/banim_efxopmagic.o(.text);
@@ -536,7 +533,6 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrarena.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112380.o(.rodata);
         . = ALIGN(4); src/banim_efxmagic.o(.rodata);
-        . = ALIGN(4); data/eodata_banim_efxmagic.o(.rodata);
         . = ALIGN(4); src/banim_efxhit.o(.rodata);
         . = ALIGN(4); src/banim_efxmisc.o(.rodata);
         . = ALIGN(4); src/banim_efxopmagic.o(.rodata);
@@ -686,7 +682,6 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrbattleintrofx_data.o(.data);
         . = ALIGN(4); data/banim_efxmagic_.o(.data);
         . = ALIGN(4); src/banim_efxmagic.o(.data);
-        . = ALIGN(4); data/banim_efxmagic.o(.data);
         . = ALIGN(4); src/banim_efxhit.o(.data);
         . = ALIGN(4); src/banim_efxmisc.o(.data);
         . = ALIGN(4); src/banim_efxopmagic.o(.data);
