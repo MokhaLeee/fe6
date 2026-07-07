@@ -10080,3 +10080,14 @@ void NewEfxReserveOBJ(struct Anim *anim)
 	SpellFx_RegisterObjPal(Pal_EfxFimbulvetrOBJ, 0x20);
 	SpellFx_RegisterObjGfx(Img_EfxLiveOBJ, 0x80 << 5);
 }
+
+void EfxLiveOBJ_Loop(struct ProcEfxOBJ *proc)
+{
+	proc->timer++;
+
+	if (proc->timer == proc->terminator) {
+		gEfxBgSemaphore--;
+		BasRemove(proc->anim2);
+		Proc_Break(proc);
+	}
+}
