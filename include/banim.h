@@ -1533,7 +1533,7 @@ struct ProcEfxApocalypseOBJ3RND {
 void NewEfxApocalypseOBJ3(struct Anim *anim, int);
 void EfxApocalypseOBJ3_Loop(struct ProcEfxApocalypseOBJ3 *proc);
 void NewEfxApocalypseOBJ3RND(struct Anim *anim, int duration, int lo, u32 state);
-// EfxApocalypseOBJ3RND_Loop
+void EfxApocalypseOBJ3RND_Loop(struct ProcEfxApocalypseOBJ3RND *proc);
 // StartSpellAnimEclipse
 // EfxHazymoon_Loop
 void NewEfxHazymoonBG1(struct Anim *anim);

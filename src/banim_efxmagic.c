@@ -7016,3 +7016,41 @@ void NewEfxApocalypseOBJ3RND(struct Anim *anim, int duration, int lo, u32 state)
 	if (GetEkrDragonStateType() != 0)
 		anim2->oam2 = (anim2->oam2 & 0xF3FF) | 0x400;
 }
+
+void EfxApocalypseOBJ3RND_Loop(struct ProcEfxApocalypseOBJ3RND *proc)
+{
+	struct Anim *anim2 = proc->anim2;
+	i16 radius;
+	u8 angle_idx;
+	i16 x_sin;
+	i16 y_sin;
+	int x;
+	int y;
+
+	radius = Interpolate(INTERPOLATE_SQUARE, 0x6E, 0,
+			     proc->timer, proc->duration);
+
+	angle_idx = (Interpolate(INTERPOLATE_SQUARE, proc->lo, proc->angle,
+				 proc->timer, proc->duration) << 16) >> 24;
+
+	x_sin = SIN_Q12(angle_idx);
+	y_sin = COS_Q12(angle_idx);
+	x = (x_sin * radius) << 4;
+	y = (y_sin * radius) << 4;
+
+	{
+		i16 x_pos = proc->x_center + (x >> 16);
+		i16 y_pos = proc->y_center + (y >> 16);
+
+		anim2->xPosition = x_pos;
+		anim2->yPosition = y_pos;
+	}
+
+	proc->timer++;
+
+	if (proc->timer > proc->duration) {
+		BasRemove(proc->anim2);
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
