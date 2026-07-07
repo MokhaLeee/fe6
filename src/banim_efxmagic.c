@@ -9940,3 +9940,28 @@ void EfxLiveBG_Loop(struct ProcEfxBG *proc)
 	gEfxBgSemaphore--;
 	Proc_Break(proc);
 }
+
+void NewEfxLiveBGCOL_A(struct Anim *anim, u32 type)
+{
+	struct ProcEfxBGCOL *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxLiveBGCOL, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+
+	if (type == 0)
+		proc->frame_config = FrameArray1_EfxLiveBGCOL;
+	else if (type == 1)
+		proc->frame_config = FrameArray3_EfxLiveBGCOL;
+	else
+		proc->frame_config = FrameArray4_EfxLiveBGCOL;
+
+	if (type == 0)
+		proc->pal = Pals1_EfxLiveBGCOL;
+	else if (type == 1)
+		proc->pal = Pals2_EfxLiveBGCOL;
+	else
+		proc->pal = Pals3_EfxLiveBGCOL;
+}

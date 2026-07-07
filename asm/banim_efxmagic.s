@@ -3,66 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start NewEfxLiveBGCOL_A
-NewEfxLiveBGCOL_A: @ 0x08054D78
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r1, .L08054DA0 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L08054DA4 @ =ProcScr_EfxLiveBGCOL
-	movs r1, #3
-	bl SpawnProc
-	adds r1, r0, #0
-	str r4, [r1, #0x5c]
-	movs r0, #0
-	strh r0, [r1, #0x2c]
-	str r0, [r1, #0x44]
-	cmp r5, #0
-	bne .L08054DAC
-	ldr r0, .L08054DA8 @ =FrameArray1_EfxLiveBGCOL
-	b .L08054DBA
-	.align 2, 0
-.L08054DA0: .4byte gEfxBgSemaphore
-.L08054DA4: .4byte ProcScr_EfxLiveBGCOL
-.L08054DA8: .4byte FrameArray1_EfxLiveBGCOL
-.L08054DAC:
-	cmp r5, #1
-	bne .L08054DB8
-	ldr r0, .L08054DB4 @ =FrameArray3_EfxLiveBGCOL
-	b .L08054DBA
-	.align 2, 0
-.L08054DB4: .4byte FrameArray3_EfxLiveBGCOL
-.L08054DB8:
-	ldr r0, .L08054DC4 @ =FrameArray4_EfxLiveBGCOL
-.L08054DBA:
-	str r0, [r1, #0x48]
-	cmp r5, #0
-	bne .L08054DCC
-	ldr r0, .L08054DC8 @ =Pals1_EfxLiveBGCOL
-	b .L08054DDA
-	.align 2, 0
-.L08054DC4: .4byte FrameArray4_EfxLiveBGCOL
-.L08054DC8: .4byte Pals1_EfxLiveBGCOL
-.L08054DCC:
-	cmp r5, #1
-	bne .L08054DD8
-	ldr r0, .L08054DD4 @ =Pals2_EfxLiveBGCOL
-	b .L08054DDA
-	.align 2, 0
-.L08054DD4: .4byte Pals2_EfxLiveBGCOL
-.L08054DD8:
-	ldr r0, .L08054DE4 @ =Pals3_EfxLiveBGCOL
-.L08054DDA:
-	str r0, [r1, #0x4c]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08054DE4: .4byte Pals3_EfxLiveBGCOL
-
 	thumb_func_start NewEfxLiveBGCOL_B
 NewEfxLiveBGCOL_B: @ 0x08054DE8
 	push {r4, r5, lr}
