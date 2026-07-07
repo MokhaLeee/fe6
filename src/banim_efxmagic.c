@@ -10016,3 +10016,15 @@ void NewEfxLiveALPHA(struct Anim *anim, int timer, int duration, int type)
 	proc->delay = duration;
 	proc->unk29 = type;
 }
+
+void EfxLiveALPHA_Delay(struct ProcEfxALPHA *proc)
+{
+	proc->timer--;
+
+	if ((proc->timer << 16) != 0)
+		return;
+
+	Proc_Break(proc);
+}
+
+asm(".short 0");

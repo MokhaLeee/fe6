@@ -3,23 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start EfxLiveALPHA_Delay
-EfxLiveALPHA_Delay: @ 0x08054EDC
-	push {lr}
-	adds r1, r0, #0
-	ldrh r0, [r1, #0x2c]
-	subs r0, #1
-	strh r0, [r1, #0x2c]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bne .L08054EF2
-	adds r0, r1, #0
-	bl Proc_Break
-.L08054EF2:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start EfxLiveALPHA_Loop
 EfxLiveALPHA_Loop: @ 0x08054EF8
 	push {r4, r5, lr}
