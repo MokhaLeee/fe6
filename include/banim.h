@@ -1479,7 +1479,7 @@ void NewEfxApocalypseBgFlash2(struct Anim *anim, int, int);
 void EfxApocalypseBgFlash2_Loop1(struct ProcEfxFlashing *proc);
 void EfxApocalypseBgFlash2_Loop2(struct ProcEfxFlashing *proc);
 void NewEfxApocalypseBG2(struct Anim *anim, int);
-// EfxApocalypseBG2_Loop
+void EfxApocalypseBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxApocalypseOBJ2(struct Anim *anim, int, int);
 // EfxApocalypseOBJ2_Loop1
 // EfxApocalypseOBJ2_Loop2

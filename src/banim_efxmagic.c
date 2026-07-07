@@ -6826,3 +6826,50 @@ void NewEfxApocalypseBG2(struct Anim *anim, int duration)
 		anim_other->oam2 = (anim_other->oam2 & 0xF3FF) | 0x400;
 	}
 }
+
+void EfxApocalypseBG2_Loop(struct ProcEfxBG *proc)
+{
+	struct Anim *anim_other;
+	int ret;
+
+	anim_other = GetAnimAnotherSide(proc->anim);
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame,
+				 proc->frame_config);
+
+	if (ret >= 0) {
+		u16 **tsal = proc->tsal;
+		u16 **tsar = proc->tsar;
+		u16 **img = proc->img;
+
+		SpellFx_RegisterBgGfx(*(img + ret), 0x2000);
+		SpellFx_WriteBgMap(proc->anim, *(tsal + ret), *(tsar + ret));
+	}
+
+	proc->terminator++;
+
+	if (proc->terminator != proc->unk30)
+		return;
+
+	if (GetEkrDragonStateType() != 0) {
+		register int mask_reg asm("r1");
+		u8 *disp = (u8 *)&gDispIo;
+
+		mask_reg = 4;
+		mask_reg = 0 - mask_reg;
+
+		disp[0xc] &= mask_reg;
+		disp[0x10] = (disp[0x10] & mask_reg) | 1;
+		disp[0x18] = (disp[0x18] & mask_reg) | 2;
+		disp[0x14] |= 3;
+
+		proc->anim->oam2 &= 0xF3FF;
+		proc->anim->oam2 |= 0x800;
+		anim_other->oam2 = (anim_other->oam2 & 0xF3FF) | 0x800;
+	}
+
+	SpellFx_ClearBG1();
+	gEfxBgSemaphore--;
+	SpellFx_ClearColorEffects();
+	Proc_End(proc);
+}
