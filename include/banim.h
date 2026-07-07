@@ -1590,7 +1590,7 @@ void EfxLiveALPHA_Loop(struct ProcEfxALPHA *proc);
 void NewEfxLiveOBJ(struct Anim *anim);
 void NewEfxReserveOBJ(struct Anim *anim);
 void EfxLiveOBJ_Loop(struct ProcEfxOBJ *proc);
-// EfxReserveOBJ_Loop1
+void EfxReserveOBJ_Loop1(struct ProcEfxOBJ *proc);
 // EfxReserveOBJ_Loop2
 void NewEfxReblowOBJ(struct Anim *anim, int type);
 // EfxReblowOBJ_Loop1

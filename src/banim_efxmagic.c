@@ -10027,8 +10027,6 @@ void EfxLiveALPHA_Delay(struct ProcEfxALPHA *proc)
 	Proc_Break(proc);
 }
 
-asm(".short 0");
-
 void EfxLiveALPHA_Loop(struct ProcEfxALPHA *proc)
 {
 	int bldA;
@@ -10090,4 +10088,20 @@ void EfxLiveOBJ_Loop(struct ProcEfxOBJ *proc)
 		BasRemove(proc->anim2);
 		Proc_Break(proc);
 	}
+}
+
+void EfxReserveOBJ_Loop1(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim = proc->anim2;
+
+	proc->timer++;
+
+	if (proc->timer != proc->terminator)
+		return;
+
+	anim->script = AnimScr_EfxReserveOBJ;
+	anim->scrCur = AnimScr_EfxReserveOBJ;
+	anim->timer = 0;
+	proc->timer = 0;
+	Proc_Break(proc);
 }
