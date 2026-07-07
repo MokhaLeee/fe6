@@ -1482,7 +1482,7 @@ void NewEfxApocalypseBG2(struct Anim *anim, int);
 void EfxApocalypseBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxApocalypseOBJ2(struct Anim *anim, int, int);
 void EfxApocalypseOBJ2_Loop1(struct ProcEfxOBJ *proc);
-// EfxApocalypseOBJ2_Loop2
+void EfxApocalypseOBJ2_Loop2(struct ProcEfxOBJ *proc);
 void NewEfxApocalypseOBJ3(struct Anim *anim, int);
 // EfxApocalypseOBJ3_Loop
 // NewEfxApocalypseOBJ3RND

@@ -6934,3 +6934,25 @@ void EfxApocalypseOBJ2_Loop1(struct ProcEfxOBJ *proc)
 		Proc_Break(proc_reg);
 	}
 }
+
+void EfxApocalypseOBJ2_Loop2(struct ProcEfxOBJ *proc)
+{
+	register struct ProcEfxOBJ *proc_reg asm("r4");
+	register i16 timer_reg asm("r0");
+	register int timer_hi asm("r0");
+	register int limit_hi asm("r1");
+	register i16 limit_reg asm("r2");
+
+	proc_reg = proc;
+	timer_reg = proc_reg->timer;
+	timer_reg++;
+	proc_reg->timer = timer_reg;
+	timer_hi = (int)timer_reg << 16;
+	limit_hi = (int)(limit_reg = proc_reg->unk30) << 16;
+
+	if (timer_hi > limit_hi) {
+		BasRemove(proc_reg->anim2);
+		gEfxBgSemaphore--;
+		Proc_Break(proc_reg);
+	}
+}
