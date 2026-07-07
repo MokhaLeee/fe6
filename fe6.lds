@@ -533,7 +533,6 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrarena.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112380.o(.rodata);
         . = ALIGN(4); src/banim_efxmagic.o(.rodata);
-        . = ALIGN(4); data/eodata_banim_efxmagic.o(.rodata);
         . = ALIGN(4); src/banim_efxhit.o(.rodata);
         . = ALIGN(4); src/banim_efxmisc.o(.rodata);
         . = ALIGN(4); src/banim_efxopmagic.o(.rodata);
