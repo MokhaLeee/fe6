@@ -6873,3 +6873,39 @@ void EfxApocalypseBG2_Loop(struct ProcEfxBG *proc)
 	SpellFx_ClearColorEffects();
 	Proc_End(proc);
 }
+
+void NewEfxApocalypseOBJ2(struct Anim *anim, int duration1, int duration2)
+{
+	register struct Anim *anim_reg asm("r5");
+	register int dur1_reg asm("r6");
+	register int dur2_reg asm("r8");
+	register struct ProcEfxOBJ *proc_reg asm("r4");
+	struct Anim *anim2;
+	const AnimScr *scr;
+
+	anim_reg = anim;
+	dur1_reg = duration1;
+	dur2_reg = duration2;
+
+	gEfxBgSemaphore++;
+
+	proc_reg = SpawnProc(ProcScr_EfxApocalypseOBJ2, PROC_TREE_3);
+	proc_reg->anim = anim_reg;
+	proc_reg->timer = 0;
+	proc_reg->terminator = dur1_reg;
+	proc_reg->unk30 = dur2_reg;
+
+	scr = AnimScr_EfxApocalypseOBJ2_1;
+	anim2 = EfxCreateFrontAnim(anim_reg, scr, scr, scr, scr);
+	proc_reg->anim2 = anim2;
+	anim2->xPosition = 0x78;
+	anim2->yPosition = 0x48;
+	anim2->priority = 0x14;
+	BasSort();
+
+	if (GetEkrDragonStateType() != 0)
+		anim2->oam2 = (anim2->oam2 & 0xF3FF) | 0xC00;
+
+	SpellFx_RegisterObjPal(Pal_EfxMistyrainOBJ1, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxApocalypseOBJ2_1, 0x1000);
+}
