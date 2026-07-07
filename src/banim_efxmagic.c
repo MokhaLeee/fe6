@@ -3537,6 +3537,72 @@ void EfxFimbulvetrOBJ2Fall_Loop(struct ProcEfxOBJ *proc)
 /**
  * Bloting
  */
+struct ProcScr CONST_DATA ProcScr_EfxThunderstorm[] = {
+	PROC_NAME_DEBUG("efxThunderstorm"),
+	PROC_REPEAT(EfxThunderstorm_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxThunderstormBG[] = {
+	PROC_NAME_DEBUG("efxThunderstormBG"),
+	PROC_REPEAT(EfxThunderstormBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *ImgArray_EfxThunderstormBG[] = {
+	Img_EfxThunderstormBG_0813BD94,
+	Img_EfxThunderstormBG_0813BD94,
+	Img_EfxThunderstormBG_0813BD94,
+	Img_EfxThunderstormBG_0813BD94,
+	Img_EfxThunderstormBG_0813C964,
+	Img_EfxThunderstormBG_0813C964,
+	Img_EfxThunderstormBG_0813C964,
+	Img_EfxThunderstormBG_0813C964,
+	Img_EfxThunderstormBG_0813C964,
+	Img_EfxThunderstormBG_0813C964,
+	Img_EfxThunderstormBG_0813D9D0,
+};
+
+CONST_DATA u16 *TsaArray_EfxThunderstormBG[] = {
+	Tsa_EfxThunderstormBG_0813E7BC,
+	Tsa_EfxThunderstormBG_0813E950,
+	Tsa_EfxThunderstormBG_0813EB58,
+	Tsa_EfxThunderstormBG_0813ECBC,
+	Tsa_EfxThunderstormBG_0813ED9C,
+	Tsa_EfxThunderstormBG_0813EEB4,
+	Tsa_EfxThunderstormBG_0813F060,
+	Tsa_EfxThunderstormBG_0813F180,
+	Tsa_EfxThunderstormBG_0813F26C,
+	Tsa_EfxThunderstormBG_0813F354,
+	Tsa_EfxThunderstormBG_0813F3EC,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxThunderstormOBJ[] = {
+	PROC_NAME_DEBUG("efxThunderstormOBJ"),
+	PROC_REPEAT(EfxThunderstormOBJ_Loop),
+	PROC_SLEEP(100),
+	PROC_REPEAT(EfxThunderstormOBJ_End),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxThunderstormCOLOR[] = {
+	PROC_NAME_DEBUG("efxThunderstormCOLOR"),
+	PROC_SLEEP(94),
+	PROC_REPEAT(EfxThunderstormCOLOR_LoopA),
+	PROC_SLEEP(3),
+	PROC_REPEAT(EfxThunderstormCOLOR_LoopB),
+	PROC_SLEEP(20),
+	PROC_REPEAT(EfxThunderstormCOLOR_LoopC),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxThunderstormDARK[] = {
+	PROC_NAME_DEBUG("efxThunderstormDARK"),
+	PROC_REPEAT(EfxThunderstormDARK_LoopA),
+	PROC_REPEAT(EfxThunderstormDARK_LoopB),
+	PROC_END,
+};
+
 void StartSpellAnimBolting(struct Anim *anim)
 {
 	struct ProcEfx *proc;
@@ -3781,6 +3847,36 @@ void EfxThunderstormDARK_LoopB(struct ProcEfxBGCOL *proc)
 /**
  * Ex-calibur
  */
+struct ProcScr CONST_DATA ProcScr_EfxAlacalibur[] = {
+	PROC_NAME_DEBUG("efxAlacalibur"),
+	PROC_REPEAT(EfxAlacalibur_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAlacaliburBG[] = {
+	PROC_NAME_DEBUG("efxAlacaliburBG"),
+	PROC_REPEAT(EfxAlacaliburBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxAlacaliburBG[] = {
+	Tsa_EfxAlacaliburBG_0815B424,
+	Tsa_EfxAlacaliburBG_0815B5AC,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAlacaliburBGCOL[] = {
+	PROC_NAME_DEBUG("efxAlacaliburBGCOL"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_REPEAT(EfxAlacaliburBGCOL_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAlacaliburOBJ[] = {
+	PROC_NAME_DEBUG("efxAlacaliburOBJ"),
+	PROC_REPEAT(EfxAlacaliburOBJ_Loop),
+	PROC_END,
+};
+
 void StartSpellAnimAircalibur(struct Anim *anim)
 {
 	struct ProcEfx *proc;
@@ -3975,6 +4071,127 @@ void EfxAlacaliburOBJ_Loop(struct ProcEfxOBJ *proc)
 /**
  * Flux
  */
+struct ProcScr CONST_DATA ProcScr_EfxMistyrain[] = {
+	PROC_NAME_DEBUG("efxMistyrain"),
+	PROC_REPEAT(EfxMistyrain_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxMistyrainBG[] = {
+	PROC_NAME_DEBUG("efxMistyrainBG"),
+	PROC_REPEAT(NewEfxMistyrainBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxMistyrainBG[] = {
+	Tsa_EfxMistyrainBG_0815F8C0,
+	Tsa_EfxMistyrainBG_0815F9BC,
+	Tsa_EfxMistyrainBG_0815FABC,
+	Tsa_EfxMistyrainBG_0815FBC0,
+	Tsa_EfxMistyrainBG_0815FCB8,
+	Tsa_EfxMistyrainBG_0815FDC4,
+	Tsa_EfxMistyrainBG_0815FED0,
+	Tsa_EfxMistyrainBG_0815FFF0,
+	Tsa_EfxMistyrainBG_08160114,
+	Tsa_EfxMistyrainBG_081601FC,
+	Tsa_EfxMistyrainBG_081602D8,
+	Tsa_EfxMistyrainBG_08160398,
+	Tsa_EfxMistyrainBG_08160450,
+	Tsa_EfxMistyrainBG_081604F8,
+	Tsa_EfxMistyrainBG_081605B4,
+	Tsa_EfxMistyrainBG_0816068C,
+	Tsa_EfxMistyrainBG_0816076C,
+	Tsa_EfxMistyrainBG_0816085C,
+	Tsa_EfxMistyrainBG_08160958,
+	Tsa_EfxMistyrainBG_08160A4C,
+	Tsa_EfxMistyrainBG_08160B44,
+	Tsa_EfxMistyrainBG_08160C30,
+	Tsa_EfxMistyrainBG_08160D14,
+	Tsa_EfxMistyrainBG_08160DEC,
+	Tsa_EfxMistyrainBG_08160EBC,
+	Tsa_EfxMistyrainBG_08160F88,
+	Tsa_EfxMistyrainBG_08161050,
+	Tsa_EfxMistyrainBG_08161104,
+	Tsa_EfxMistyrainBG_081611B8,
+	Tsa_EfxMistyrainBG_08161258,
+	Tsa_EfxMistyrainBG_0816130C,
+	Tsa_EfxMistyrainBG_081613C8,
+	Tsa_EfxMistyrainBG_081614A4,
+	Tsa_EfxMistyrainBG_0816158C,
+	Tsa_EfxMistyrainBG_081616B0,
+	Tsa_EfxMistyrainBG_081617D0,
+	Tsa_EfxMistyrainBG_081618DC,
+	Tsa_EfxMistyrainBG_081619E8,
+	Tsa_EfxMistyrainBG_08161AE4,
+	Tsa_EfxMistyrainBG_08161BE4,
+	Tsa_EfxMistyrainBG_08161CE0,
+};
+
+CONST_DATA u16 *ImgArray_EfxMistyrainBG[] = {
+	Img_EfxMistyrainBG_0815BEF4,
+	Img_EfxMistyrainBG_0815BEF4,
+	Img_EfxMistyrainBG_0815BEF4,
+	Img_EfxMistyrainBG_0815CAC4,
+	Img_EfxMistyrainBG_0815CAC4,
+	Img_EfxMistyrainBG_0815CAC4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815EA30,
+	Img_EfxMistyrainBG_0815EA30,
+	Img_EfxMistyrainBG_0815EA30,
+	Img_EfxMistyrainBG_0815EA30,
+	Img_EfxMistyrainBG_0815EA30,
+	Img_EfxMistyrainBG_0815EA30,
+	Img_EfxMistyrainBG_0815F0B4,
+	Img_EfxMistyrainBG_0815F0B4,
+	Img_EfxMistyrainBG_0815F0B4,
+	Img_EfxMistyrainBG_0815F0B4,
+	Img_EfxMistyrainBG_0815F610,
+	Img_EfxMistyrainBG_0815F610,
+	Img_EfxMistyrainBG_0815F610,
+	Img_EfxMistyrainBG_0815F610,
+	Img_EfxMistyrainBG_0815F610,
+	Img_EfxMistyrainBG_0815F610,
+	Img_EfxMistyrainBG_0815F610,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815D7D4,
+	Img_EfxMistyrainBG_0815CAC4,
+	Img_EfxMistyrainBG_0815CAC4,
+	Img_EfxMistyrainBG_0815CAC4,
+	Img_EfxMistyrainBG_0815BEF4,
+	Img_EfxMistyrainBG_0815BEF4,
+	Img_EfxMistyrainBG_0815BEF4,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxMistyrainOBJ[] = {
+	PROC_NAME_DEBUG("efxMistyrainOBJ"),
+	PROC_ONEND(EfxMistyrainOBJ_OnEnd),
+	PROC_REPEAT(EfxMistyrainOBJ1_Loop1),
+	PROC_SLEEP(80),
+	PROC_REPEAT(EfxMistyrainOBJ1_Loop2),
+	PROC_SLEEP(11),
+	PROC_REPEAT(EfxMistyrainOBJ1_Loop3),
+	PROC_SLEEP(22),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxMistyrainOBJ2[] = {
+	PROC_NAME_DEBUG("efxMistyrainOBJ2"),
+	PROC_ONEND(EfxMistyrainOBJ_OnEnd),
+	PROC_REPEAT(EfxMistyrainOBJ2_Loop1),
+	PROC_SLEEP(14),
+	PROC_REPEAT(EfxMistyrainOBJ2_Loop2),
+	PROC_END,
+};
+
 void StartSpellAnimFlux(struct Anim *anim)
 {
 	struct ProcEfx *proc;

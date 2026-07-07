@@ -1337,6 +1337,7 @@ void NewEfxThunderstormDARK(struct Anim *anim, int timer, int terminator);
 void EfxThunderstormDARK_LoopA(struct ProcEfxBGCOL *proc);
 void EfxThunderstormDARK_LoopB(struct ProcEfxBGCOL *proc);
 void StartSpellAnimAircalibur(struct Anim *anim);
+void EfxAlacalibur_Loop(struct ProcEfx *proc);
 void NewEfxAlacaliburBG(struct Anim *anim);
 void NewEfxAlacaliburBG(struct Anim *anim);
 void EfxAlacaliburBG_Loop(struct ProcEfxBG *proc);
