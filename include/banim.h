@@ -1612,12 +1612,12 @@ void NewEfxRestBG(struct Anim *anim);
 void EfxRestBG_Loop(struct ProcEfxBG *proc);
 void NewEfxRestOBJ(struct Anim *anim);
 void EfxRestOBJ_Loop(void);
-// StartSpellAnimSilence
-// EfxSilence_Loop
-// NewEfxSilenceBG
-// EfxSilenceBG_Loop
-// NewEfxSilenceOBJ
-// EfxSilenceOBJ_OnEnd
+void StartSpellAnimSilence(struct Anim *anim);
+void EfxSilence_Loop(struct ProcEfx *proc);
+void NewEfxSilenceBG(struct Anim *anim);
+void EfxSilenceBG_Loop(struct ProcEfxBG *proc);
+void NewEfxSilenceOBJ(struct Anim *anim);
+void EfxSilenceOBJ_OnEnd(struct ProcEfxOBJ *proc);
 // StartSpellAnimSleep
 // EfxSleep_Loop
 // NewEfxSleepBG
