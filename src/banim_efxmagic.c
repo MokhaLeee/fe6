@@ -10263,3 +10263,46 @@ void EfxReserve_Loop(struct ProcEfx *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxReserveBG(struct Anim *anim)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxReserveBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxReserveBG;
+	proc->tsal = TsaArray_EfxReserveBG;
+	proc->tsar = TsaArray_EfxReserveBG;
+	SpellFx_RegisterBgGfx(Img_EfxHealCommon, 0x80 << 3);
+	SpellFx_SetSomeColorEffect();
+}
+
+void EfxReserveBG_Loop(struct ProcEfxBG *proc)
+{
+	struct Anim *target = GetAnimAnotherSide(proc->anim);
+	int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		u16 **tsaL = proc->tsal;
+		u16 **tsaR = proc->tsar;
+		u16 song;
+		u16 loc;
+
+		SpellFx_WriteBgMap(target, tsaL[ret], tsaR[ret]);
+		song = SfxArray_EfxReserveBG[ret];
+		loc = SfxLocArray_EfxReserveBG[ret];
+		PlaySFX(song, 0x100, loc, 0);
+		return;
+	}
+
+	if (ret != -1)
+		return;
+
+	SpellFx_ClearBG1();
+	gEfxBgSemaphore--;
+	SpellFx_ClearColorEffects();
+	Proc_Break(proc);
+}

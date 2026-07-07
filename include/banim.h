@@ -1599,7 +1599,7 @@ void StartSpellAnimFortify(struct Anim *anim);
 void StartSpellAnimLatona(struct Anim *anim);
 void EfxReserve_Loop(struct ProcEfx *proc);
 void NewEfxReserveBG(struct Anim *anim);
-// EfxReserveBG_Loop
+void EfxReserveBG_Loop(struct ProcEfxBG *proc);
 void NewEfxReserveBGCOL(struct Anim *anim, u8 kind);
 // EfxReserveBGCOL_Loop
 void NewEfxReserveBG2(struct Anim *anim);
