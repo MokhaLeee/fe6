@@ -3,37 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start NewEfxLiveALPHA
-NewEfxLiveALPHA: @ 0x08054EA0
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	adds r6, r2, #0
-	mov r8, r3
-	ldr r1, .L08054ED4 @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L08054ED8 @ =ProcScr_EfxLiveALPHA
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	strh r5, [r0, #0x2c]
-	strh r6, [r0, #0x2e]
-	adds r0, #0x29
-	mov r1, r8
-	strb r1, [r0]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08054ED4: .4byte gEfxBgSemaphore
-.L08054ED8: .4byte ProcScr_EfxLiveALPHA
-
 	thumb_func_start EfxLiveALPHA_Delay
 EfxLiveALPHA_Delay: @ 0x08054EDC
 	push {lr}

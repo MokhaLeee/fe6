@@ -10004,3 +10004,15 @@ void EfxLiveBGCOL_Loop(struct ProcEfxBGCOL *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxLiveALPHA(struct Anim *anim, int timer, int duration, int type)
+{
+	register struct ProcEfxALPHA *proc asm("r0");
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxLiveALPHA, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = timer;
+	proc->delay = duration;
+	proc->unk29 = type;
+}
