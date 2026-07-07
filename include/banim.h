@@ -1606,12 +1606,12 @@ void NewEfxReserveBG2(struct Anim *anim);
 void EfxReserveBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxReserveBGCOL2(struct Anim *anim, u32 kind);
 void EfxReserveBGCOL2_Loop(struct ProcEfxBGCOL *proc);
-// StartSpellAnimRestore
-// EfxRest_Loop
-// NewEfxRestBG
-// EfxRestBG_Loop
-// NewEfxRestOBJ
-// EfxRestOBJ_Loop
+void StartSpellAnimRestore(struct Anim *anim);
+void EfxRest_Loop(struct ProcEfx *proc);
+void NewEfxRestBG(struct Anim *anim);
+void EfxRestBG_Loop(struct ProcEfxBG *proc);
+void NewEfxRestOBJ(struct Anim *anim);
+void EfxRestOBJ_Loop(void);
 // StartSpellAnimSilence
 // EfxSilence_Loop
 // NewEfxSilenceBG
