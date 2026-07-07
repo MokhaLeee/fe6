@@ -9990,3 +9990,17 @@ void NewEfxLiveBGCOL_B(struct Anim *anim, u32 type)
 	else
 		proc->pal = Pals3_EfxLiveBGCOL;
 }
+
+void EfxLiveBGCOL_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame, proc->frame_config);
+
+	if (ret >= 0) {
+		const u16 *pal = proc->pal;
+
+		SpellFx_RegisterBgPal(pal + ret * 0x10, 0x20);
+	} else if (ret == -1) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
