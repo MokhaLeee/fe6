@@ -813,6 +813,35 @@ struct ProcEkrBaseKaiten {
 
 void NewEkrBaseKaiten(int identifier);
 void EkrBaseKaiten_Loop(struct ProcEkrBaseKaiten *proc);
+
+struct ProcEkrUnitKakudai {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+    /* 2E */ s16 terminator;
+    /* 30 */ u16 unk30;
+
+    /* 32 */ s16 x1;
+    /* 34 */ s16 x2;
+    /* 36 */ s16 left_pos;
+    /* 38 */ s16 right_pos;
+    /* 3A */ s16 y1;
+    /* 3C */ s16 y2;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ int type;
+
+    STRUCT_PAD(0x48, 0x4C);
+
+    /* 4C */ u32 valid_l;
+    /* 50 */ u32 valid_r;
+    /* 54 */ void *pOaml;
+    /* 58 */ void *pOamr;
+};
+
 void NewEkrUnitKakudai(int identifier);
 // func_fe6_08048A64
 // func_fe6_08048BF0

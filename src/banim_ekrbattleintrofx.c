@@ -4,6 +4,7 @@
 #include "util.h"
 
 #include "banim.h"
+#include "banim_ekrdragon.h"
 
 struct ProcScr CONST_DATA ProcScr_EkrBaseKaiten[] = {
 	PROC_19,
@@ -356,4 +357,40 @@ void EkrBaseKaiten_Loop(struct ProcEkrBaseKaiten *proc)
 
 	if (proc->timer <= proc->terminator)
 		proc->timer++;
+}
+
+void NewEkrUnitKakudai(int identifier)
+{
+	struct ProcEkrUnitKakudai *proc;
+
+	proc = SpawnProc(ProcScr_EkrUnitKakudai, PROC_TREE_3);
+	proc->type = identifier;
+	proc->valid_r = 0;
+	proc->valid_l = 0;
+
+	switch (gEkrDistanceType) {
+	case EKR_DISTANCE_CLOSE:
+	case EKR_DISTANCE_FAR:
+	case EKR_DISTANCE_FARFAR:
+	case EKR_DISTANCE_MONOCOMBAT:
+		if (gBanimValid[POS_L] == 1 && GetDragonPosition() != POS_L)
+			proc->valid_l = 1;
+
+		if (gBanimValid[POS_R] == 1 && GetDragonPosition() != POS_R)
+			proc->valid_r = 1;
+		return;
+
+	case EKR_DISTANCE_PROMOTION:
+		if (identifier == 0) {
+			proc->valid_l = 0;
+			proc->valid_r = 1;
+		} else {
+			proc->valid_l = 1;
+			proc->valid_r = 0;
+		}
+		break;
+
+	default:
+		break;
+	}
 }
