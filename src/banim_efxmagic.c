@@ -3098,6 +3098,82 @@ struct ProcScr CONST_DATA ProcScr_EfxFimbulvetr[] =
 	PROC_END,
 };
 
+struct ProcScr CONST_DATA ProcScr_EfxFimbulvetrBGTR[] = {
+	PROC_NAME_DEBUG("efxFimbulvetrBGTR"),
+	PROC_REPEAT(EfxFimbulvetrBGTR_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxFimbulvetrBGTR[] = {
+	Tsa_EfxFimbulvetrBGTR_081521E0,
+	Tsa_EfxFimbulvetrBGTR_081523CC,
+	Tsa_EfxFimbulvetrBGTR_081525A4,
+	Tsa_EfxFimbulvetrBGTR_0815276C,
+	Tsa_EfxFimbulvetrBGTR_081529A0,
+	Tsa_EfxFimbulvetrBGTR_08152BE8,
+};
+
+CONST_DATA u16 *ImgArray_EfxFimbulvetrBGTR[] = {
+	Img_EfxFimbulvetrBGTR_0814B39C,
+	Img_EfxFimbulvetrBGTR_0814C5A4,
+	Img_EfxFimbulvetrBGTR_0814D700,
+	Img_EfxFimbulvetrBGTR_0814E784,
+	Img_EfxFimbulvetrBGTR_0814FBC4,
+	Img_EfxFimbulvetrBGTR_08150F7C,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFimbulvetrBG[] = {
+	PROC_NAME_DEBUG("efxFimbulvetrBG"),
+	PROC_REPEAT(EfxFimbulvetrBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxFimbulvetrBG[] = {
+	Tsa_EfxFimbulvetrBG_0814A4B8,
+	Tsa_EfxFimbulvetrBG_0814A55C,
+	Tsa_EfxFimbulvetrBG_0814A604,
+	Tsa_EfxFimbulvetrBG_0814A6C0,
+	Tsa_EfxFimbulvetrBG_0814A794,
+	Tsa_EfxFimbulvetrBG_0814A890,
+	Tsa_EfxFimbulvetrBG_0814A9D0,
+	Tsa_EfxFimbulvetrBG_0814AB68,
+	Tsa_EfxFimbulvetrBG_0814AD3C,
+	Tsa_EfxFimbulvetrBG_0814AF4C,
+	Tsa_EfxFimbulvetrBG_0814B16C,
+};
+
+CONST_DATA u16 *ImgArray_EfxFimbulvetrBG[] = {
+	Img_EfxFimbulvetrBG_08144A20,
+	Img_EfxFimbulvetrBG_08144A20,
+	Img_EfxFimbulvetrBG_08144A20,
+	Img_EfxFimbulvetrBG_08144A20,
+	Img_EfxFimbulvetrBG_08144A20,
+	Img_EfxFimbulvetrBG_08144A20,
+	Img_EfxFimbulvetrBG_08145CF0,
+	Img_EfxFimbulvetrBG_08145CF0,
+	Img_EfxFimbulvetrBG_081475A0,
+	Img_EfxFimbulvetrBG_081489E4,
+	Img_EfxFimbulvetrBG_081489E4,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFimbulvetrOBJ[] = {
+	PROC_NAME_DEBUG("efxFimbulvetrOBJ"),
+	PROC_REPEAT(EfxFimbulvetrOBJ_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFimbulvetrOBJ2[] = {
+	PROC_NAME_DEBUG("efxFimbulvetrOBJ2"),
+	PROC_REPEAT(EfxFimbulvetrOBJ2_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFimbulvetrOBJ2Fall[] = {
+	PROC_NAME_DEBUG("efxFimbulvetrOBJ2Fall"),
+	PROC_REPEAT(EfxFimbulvetrOBJ2Fall_Loop),
+	PROC_END,
+};
+
 void StartSpellAnimFimbulvetr(struct Anim *anim)
 {
 	struct ProcEfx *proc;
