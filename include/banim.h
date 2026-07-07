@@ -1480,9 +1480,22 @@ void EfxApocalypseBgFlash2_Loop1(struct ProcEfxFlashing *proc);
 void EfxApocalypseBgFlash2_Loop2(struct ProcEfxFlashing *proc);
 void NewEfxApocalypseBG2(struct Anim *anim, int);
 void EfxApocalypseBG2_Loop(struct ProcEfxBG *proc);
+
+struct ProcEfxApocalypseOBJ2 {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x2C);
+	/* 2C */ i16 timer;
+	/* 2E */ i16 phase1_duration;
+	/* 30 */ i16 phase2_duration;
+	STRUCT_PAD(0x32, 0x5C);
+	/* 5C */ struct Anim *anim;
+	/* 60 */ struct Anim *anim2;
+};
+
 void NewEfxApocalypseOBJ2(struct Anim *anim, int, int);
-void EfxApocalypseOBJ2_Loop1(struct ProcEfxOBJ *proc);
-void EfxApocalypseOBJ2_Loop2(struct ProcEfxOBJ *proc);
+void EfxApocalypseOBJ2_Loop1(struct ProcEfxApocalypseOBJ2 *proc);
+void EfxApocalypseOBJ2_Loop2(struct ProcEfxApocalypseOBJ2 *proc);
 void NewEfxApocalypseOBJ3(struct Anim *anim, int);
 // EfxApocalypseOBJ3_Loop
 // NewEfxApocalypseOBJ3RND

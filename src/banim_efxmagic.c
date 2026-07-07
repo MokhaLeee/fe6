@@ -6783,47 +6783,36 @@ void EfxApocalypseBgFlash2_Loop2(struct ProcEfxFlashing *proc)
 
 void NewEfxApocalypseBG2(struct Anim *anim, int duration)
 {
-	register struct Anim *anim_reg asm("r6");
-	register int duration_reg asm("r4");
-	register struct ProcEfxBG *proc_reg asm("r5");
-	register int mask_reg asm("r2");
+	struct ProcEfxBG *proc;
 	struct Anim *anim_other;
-	u8 *disp;
-
-	anim_reg = anim;
-	duration_reg = duration;
 
 	gEfxBgSemaphore++;
 
-	proc_reg = SpawnProc(ProcScr_EfxApocalypseBG2, PROC_TREE_3);
-	proc_reg->anim = anim_reg;
-	proc_reg->timer = 0;
-	proc_reg->terminator = 0;
-	proc_reg->unk30 = duration_reg;
-	proc_reg->frame = 0;
-	proc_reg->frame_config = FrameArray_EfxApocalypseBG2;
-	proc_reg->tsal = TsaArray_EfxApocalypseBG2;
-	proc_reg->tsar = TsaArray_EfxApocalypseBG2;
-	proc_reg->img = ImgArray_EfxApocalypseBG2;
+	proc = SpawnProc(ProcScr_EfxApocalypseBG2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = 0;
+	proc->unk30 = duration;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxApocalypseBG2;
+	proc->tsal = TsaArray_EfxApocalypseBG2;
+	proc->tsar = TsaArray_EfxApocalypseBG2;
+	proc->img = ImgArray_EfxApocalypseBG2;
 
 	SpellFx_RegisterBgPal(Pal_EfxApocalypseBG2, 0x20);
 	SpellFx_SetSomeColorEffect();
 	SetBgOffset(BG_1, 0, 0);
 
 	if (GetEkrDragonStateType() != 0) {
-		anim_other = GetAnimAnotherSide(proc_reg->anim);
-		disp = (u8 *)&gDispIo;
+		anim_other = GetAnimAnotherSide(proc->anim);
 
-		mask_reg = 4;
-		mask_reg = 0 - mask_reg;
+		gDispIo.bg0_ct.priority = 0;
+		gDispIo.bg3_ct.priority = 1;
+		gDispIo.bg1_ct.priority = 2;
+		gDispIo.bg2_ct.priority = 3;
 
-		disp[0xc] &= mask_reg;
-		disp[0x18] = (disp[0x18] & mask_reg) | 1;
-		disp[0x10] = (disp[0x10] & mask_reg) | 2;
-		disp[0x14] |= 3;
-
-		anim_reg->oam2 = (anim_reg->oam2 & 0xF3FF) | 0x400;
-		anim_other->oam2 = (anim_other->oam2 & 0xF3FF) | 0x400;
+		anim->oam2 = (anim->oam2 & ~OAM2_LAYER_MASK) | OAM2_LAYER(1);
+		anim_other->oam2 = (anim_other->oam2 & ~OAM2_LAYER_MASK) | OAM2_LAYER(1);
 	}
 }
 
@@ -6852,20 +6841,14 @@ void EfxApocalypseBG2_Loop(struct ProcEfxBG *proc)
 		return;
 
 	if (GetEkrDragonStateType() != 0) {
-		register int mask_reg asm("r1");
-		u8 *disp = (u8 *)&gDispIo;
+		gDispIo.bg0_ct.priority = 0;
+		gDispIo.bg1_ct.priority = 1;
+		gDispIo.bg3_ct.priority = 2;
+		gDispIo.bg2_ct.priority = 3;
 
-		mask_reg = 4;
-		mask_reg = 0 - mask_reg;
-
-		disp[0xc] &= mask_reg;
-		disp[0x10] = (disp[0x10] & mask_reg) | 1;
-		disp[0x18] = (disp[0x18] & mask_reg) | 2;
-		disp[0x14] |= 3;
-
-		proc->anim->oam2 &= 0xF3FF;
-		proc->anim->oam2 |= 0x800;
-		anim_other->oam2 = (anim_other->oam2 & 0xF3FF) | 0x800;
+		proc->anim->oam2 &= ~OAM2_LAYER_MASK;
+		proc->anim->oam2 |= OAM2_LAYER(2);
+		anim_other->oam2 = (anim_other->oam2 & ~OAM2_LAYER_MASK) | OAM2_LAYER(2);
 	}
 
 	SpellFx_ClearBG1();
@@ -6876,83 +6859,56 @@ void EfxApocalypseBG2_Loop(struct ProcEfxBG *proc)
 
 void NewEfxApocalypseOBJ2(struct Anim *anim, int duration1, int duration2)
 {
-	register struct Anim *anim_reg asm("r5");
-	register int dur1_reg asm("r6");
-	register int dur2_reg asm("r8");
-	register struct ProcEfxOBJ *proc_reg asm("r4");
+	struct ProcEfxApocalypseOBJ2 *proc;
 	struct Anim *anim2;
 	const AnimScr *scr;
 
-	anim_reg = anim;
-	dur1_reg = duration1;
-	dur2_reg = duration2;
-
 	gEfxBgSemaphore++;
 
-	proc_reg = SpawnProc(ProcScr_EfxApocalypseOBJ2, PROC_TREE_3);
-	proc_reg->anim = anim_reg;
-	proc_reg->timer = 0;
-	proc_reg->terminator = dur1_reg;
-	proc_reg->unk30 = dur2_reg;
+	proc = SpawnProc(ProcScr_EfxApocalypseOBJ2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->phase1_duration = duration1;
+	proc->phase2_duration = duration2;
 
 	scr = AnimScr_EfxApocalypseOBJ2_1;
-	anim2 = EfxCreateFrontAnim(anim_reg, scr, scr, scr, scr);
-	proc_reg->anim2 = anim2;
+	anim2 = EfxCreateFrontAnim(anim, scr, scr, scr, scr);
+	proc->anim2 = anim2;
 	anim2->xPosition = 0x78;
 	anim2->yPosition = 0x48;
 	anim2->priority = 0x14;
 	BasSort();
 
 	if (GetEkrDragonStateType() != 0)
-		anim2->oam2 = (anim2->oam2 & 0xF3FF) | 0xC00;
+		anim2->oam2 = (anim2->oam2 & ~OAM2_LAYER_MASK) | OAM2_LAYER(3);
 
 	SpellFx_RegisterObjPal(Pal_EfxMistyrainOBJ1, 0x20);
 	SpellFx_RegisterObjGfx(Img_EfxApocalypseOBJ2_1, 0x1000);
 }
 
-void EfxApocalypseOBJ2_Loop1(struct ProcEfxOBJ *proc)
+void EfxApocalypseOBJ2_Loop1(struct ProcEfxApocalypseOBJ2 *proc)
 {
-	register struct ProcEfxOBJ *proc_reg asm("r4");
-	struct Anim *anim2;
-	register i16 timer_reg asm("r0");
-	register int zero_reg asm("r3");
+	struct Anim *anim2 = proc->anim2;
 
-	proc_reg = proc;
-	anim2 = proc_reg->anim2;
+	proc->timer++;
 
-	timer_reg = proc_reg->timer;
-	timer_reg++;
-	zero_reg = 0;
-	proc_reg->timer = timer_reg;
-
-	if ((timer_reg << 16) > (proc_reg->terminator << 16)) {
-		proc_reg->timer = zero_reg;
+	if (proc->timer > proc->phase1_duration) {
+		proc->timer = 0;
 		anim2->script = AnimScr_EfxApocalypseOBJ2_2;
 		anim2->scrCur = AnimScr_EfxApocalypseOBJ2_2;
-		anim2->timer = zero_reg;
+		anim2->timer = 0;
 		SpellFx_RegisterObjGfx(Img_EfxApocalypseOBJ2_2, 0x1000);
-		Proc_Break(proc_reg);
+		Proc_Break(proc);
 	}
 }
 
-void EfxApocalypseOBJ2_Loop2(struct ProcEfxOBJ *proc)
+void EfxApocalypseOBJ2_Loop2(struct ProcEfxApocalypseOBJ2 *proc)
 {
-	register struct ProcEfxOBJ *proc_reg asm("r4");
-	register i16 timer_reg asm("r0");
-	register int timer_hi asm("r0");
-	register int limit_hi asm("r1");
-	register i16 limit_reg asm("r2");
+	proc->timer++;
 
-	proc_reg = proc;
-	timer_reg = proc_reg->timer;
-	timer_reg++;
-	proc_reg->timer = timer_reg;
-	timer_hi = (int)timer_reg << 16;
-	limit_hi = (int)(limit_reg = proc_reg->unk30) << 16;
-
-	if (timer_hi > limit_hi) {
-		BasRemove(proc_reg->anim2);
+	if (proc->timer > proc->phase2_duration) {
+		BasRemove(proc->anim2);
 		gEfxBgSemaphore--;
-		Proc_Break(proc_reg);
+		Proc_Break(proc);
 	}
 }
