@@ -1,6 +1,7 @@
 #include "prelude.h"
 #include "proc.h"
 #include "hardware.h"
+#include "util.h"
 
 #include "banim.h"
 
@@ -329,4 +330,30 @@ void NewEkrBaseKaiten(int identifier)
 	default:
 		break;
 	}
+}
+
+void EkrBaseKaiten_Loop(struct ProcEkrBaseKaiten *proc)
+{
+	struct Anim *anim = proc->anim;
+
+	if (proc->timer >= proc->terminator) {
+		BasRemove(anim);
+		Proc_Break(proc);
+		return;
+	}
+
+	if (proc->type == 0) {
+		anim->xPosition =
+			Interpolate(0, proc->x1, proc->x2, proc->timer, proc->terminator);
+		anim->yPosition =
+			Interpolate(0, proc->y1, proc->y2, proc->timer, proc->terminator);
+	} else {
+		anim->xPosition =
+			Interpolate(0, proc->x2, proc->x1, proc->timer, proc->terminator);
+		anim->yPosition =
+			Interpolate(0, proc->y2, proc->y1, proc->timer, proc->terminator);
+	}
+
+	if (proc->timer <= proc->terminator)
+		proc->timer++;
 }
