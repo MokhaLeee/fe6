@@ -9594,6 +9594,394 @@ void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc)
 }
 
 /**
+ * Heal / status staves — proc scripts and data tables (from data/banim_efxmagic.s)
+ */
+CONST_DATA struct ProcScr ProcScr_EfxLive[] = {
+	PROC_NAME_DEBUG("efxLive"),
+	PROC_REPEAT(EfxLive_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxRelive[] = {
+	PROC_NAME_DEBUG("efxRelive"),
+	PROC_REPEAT(EfxRelive_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxRecover[] = {
+	PROC_NAME_DEBUG("efxRecover"),
+	PROC_REPEAT(EfxRecover_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReblow[] = {
+	PROC_NAME_DEBUG("efxReblow"),
+	PROC_REPEAT(EfxReblow_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxLiveBG[] = {
+	PROC_NAME_DEBUG("efxLiveBG"),
+	PROC_REPEAT(EfxLiveBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxLiveBGCOL[] = {
+	PROC_NAME_DEBUG("efxLiveBGCOL"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_REPEAT(EfxLiveBGCOL_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxLiveALPHA[] = {
+	PROC_NAME_DEBUG("efxLiveALPHA"),
+	PROC_REPEAT(EfxLiveALPHA_Delay),
+	PROC_REPEAT(EfxLiveALPHA_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxLiveOBJ[] = {
+	PROC_NAME_DEBUG("efxLiveOBJ"),
+	PROC_REPEAT(EfxLiveOBJ_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReserveOBJ[] = {
+	PROC_NAME_DEBUG("efxReserveOBJ"),
+	PROC_REPEAT(EfxReserveOBJ_Loop1),
+	PROC_REPEAT(EfxReserveOBJ_Loop2),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReblowOBJ[] = {
+	PROC_NAME_DEBUG("efxReblowOBJ"),
+	PROC_REPEAT(EfxReblowOBJ_Loop1),
+	PROC_REPEAT(EfxReblowOBJ_Loop2),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReserve[] = {
+	PROC_NAME_DEBUG("efxReserve"),
+	PROC_REPEAT(EfxReserve_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReserveBG[] = {
+	PROC_NAME_DEBUG("efxReserveBG"),
+	PROC_REPEAT(EfxReserveBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxReserveBG[] = {
+	Tsa_EfxReserveBG_081ADFEC,
+	Tsa_EfxReserveBG_081AE0F8,
+	Tsa_EfxReserveBG_081AE1F8,
+	Tsa_EfxReserveBG_081AE304,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReserveBGCOL[] = {
+	PROC_NAME_DEBUG("efxReserveBGCOL"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_REPEAT(EfxReserveBGCOL_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReserveBG2[] = {
+	PROC_NAME_DEBUG("efxReserveBG2"),
+	PROC_REPEAT(EfxReserveBG2_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxReserveBG2[] = {
+	Tsa_EfxReserveBG2_081AE410,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxReserveBGCOL2[] = {
+	PROC_NAME_DEBUG("efxReserveBGCOL2"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_REPEAT(EfxReserveBGCOL2_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxRest[] = {
+	PROC_NAME_DEBUG("efxRest"),
+	PROC_REPEAT(EfxRest_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxRestBG[] = {
+	PROC_NAME_DEBUG("efxRestBG"),
+	PROC_REPEAT(EfxRestBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxRestBG[] = {
+	Tsa_EfxRestBG_081B1730,
+	Tsa_EfxRestBG_081B17DC,
+	Tsa_EfxRestBG_081B1890,
+	Tsa_EfxRestBG_081B1950,
+	Tsa_EfxRestBG_081B1A18,
+	Tsa_EfxRestBG_081B1AF4,
+	Tsa_EfxRestBG_081B1BD4,
+	Tsa_EfxRestBG_081B1CBC,
+	Tsa_EfxRestBG_081B1DAC,
+	Tsa_EfxRestBG_081B1EAC,
+	Tsa_EfxRestBG_081B1FB8,
+	Tsa_EfxRestBG_081B20D8,
+	Tsa_EfxRestBG_081B2208,
+};
+
+CONST_DATA u16 *ImgArray_EfxRestBG[] = {
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081B029C,
+	Img_EfxRestBG_081B029C,
+	Img_EfxRestBG_081B029C,
+	Img_EfxRestBG_081B0994,
+	Img_EfxRestBG_081B0994,
+	Img_EfxRestBG_081B0FB4,
+	Img_EfxRestBG_081B0FB4,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxRestOBJ[] = {
+	PROC_NAME_DEBUG("efxRestOBJ"),
+	PROC_ONEND(EfxRestOBJ_Loop),
+	PROC_SLEEP(80),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSilence[] = {
+	PROC_NAME_DEBUG("efxSilence"),
+	PROC_REPEAT(EfxSilence_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSilenceBG[] = {
+	PROC_NAME_DEBUG("efxSilenceBG"),
+	PROC_REPEAT(EfxSilenceBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxSilenceBG[] = {
+	Tsa_EfxSilenceBG_081B2E10,
+	Tsa_EfxSilenceBG_081B2F0C,
+	Tsa_EfxSilenceBG_081B2FF4,
+	Tsa_EfxSilenceBG_081B30DC,
+	Tsa_EfxSilenceBG_081B31C4,
+	Tsa_EfxSilenceBG_081B32C0,
+	Tsa_EfxSilenceBG_081B33A8,
+	Tsa_EfxSilenceBG_081B3440,
+	Tsa_EfxSilenceBG_081B3528,
+	Tsa_EfxSilenceBG_081B35C0,
+	Tsa_EfxSilenceBG_081B36A8,
+	Tsa_EfxSilenceBG_081B37A4,
+	Tsa_EfxSilenceBG_081B383C,
+	Tsa_EfxSilenceBG_081B3924,
+	Tsa_EfxSilenceBG_081B39BC,
+	Tsa_EfxSilenceBG_081B3AB8,
+	Tsa_EfxSilenceBG_081B3B50,
+	Tsa_EfxSilenceBG_081B3C60,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSilenceOBJ[] = {
+	PROC_NAME_DEBUG("efxSilenceOBJ"),
+	PROC_ONEND(EfxSilenceOBJ_OnEnd),
+	PROC_SLEEP(40),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSleep[] = {
+	PROC_NAME_DEBUG("efxSleep"),
+	PROC_REPEAT(EfxSleep_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSleepBG[] = {
+	PROC_NAME_DEBUG("efxSleepBG"),
+	PROC_REPEAT(EfxSleepBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxSleepBG[] = {
+	Tsa_EfxSleepBG_081B66A8,
+	Tsa_EfxSleepBG_081B6784,
+	Tsa_EfxSleepBG_081B6860,
+	Tsa_EfxSleepBG_081B693C,
+	Tsa_EfxSleepBG_081B6A18,
+	Tsa_EfxSleepBG_081B6AF4,
+	Tsa_EfxSleepBG_081B6BD0,
+	Tsa_EfxSleepBG_081B6CAC,
+	Tsa_EfxSleepBG_081B6D88,
+	Tsa_EfxSleepBG_081B6E64,
+	Tsa_EfxSleepBG_081B6F40,
+	Tsa_EfxSleepBG_081B701C,
+	Tsa_EfxSleepBG_081B70F8,
+	Tsa_EfxSleepBG_081B71D4,
+	Tsa_EfxSleepBG_081B72B0,
+	Tsa_EfxSleepBG_081B738C,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSleepOBJ[] = {
+	PROC_NAME_DEBUG("efxSleepOBJ"),
+	PROC_ONEND(EfxSleepOBJ_OnEnd),
+	PROC_SLEEP(80),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSleepOBJ2[] = {
+	PROC_NAME_DEBUG("efxSleepOBJ2"),
+	PROC_ONEND(EfxSleepOBJ_OnEnd),
+	PROC_SLEEP(200),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxSleepSE[] = {
+	PROC_NAME_DEBUG("efxSleepSE"),
+	PROC_ONEND(EfxSleepSE_OnEnd),
+	PROC_SLEEP(1),
+	PROC_CALL(EfxSleepSE_PlaySE),
+	PROC_SLEEP(54),
+	PROC_CALL(EfxSleepSE_PlaySE),
+	PROC_SLEEP(65),
+	PROC_CALL(EfxSleepSE_PlaySE),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxHammarne[] = {
+	PROC_NAME_DEBUG("efxHammarne"),
+	PROC_REPEAT(EfxHammarne_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxHammarneBG[] = {
+	PROC_NAME_DEBUG("efxHammarneBG"),
+	PROC_REPEAT(EfxHammarneBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxHammarneBG[] = {
+	Tsa_EfxHammarneBG_081B4294,
+	Tsa_EfxHammarneBG_081B4340,
+	Tsa_EfxHammarneBG_081B43F0,
+	Tsa_EfxHammarneBG_081B44B0,
+	Tsa_EfxHammarneBG_081B4578,
+	Tsa_EfxHammarneBG_081B4650,
+	Tsa_EfxHammarneBG_081B472C,
+	Tsa_EfxHammarneBG_081B4814,
+	Tsa_EfxHammarneBG_081B4904,
+	Tsa_EfxHammarneBG_081B4A04,
+	Tsa_EfxHammarneBG_081B4B10,
+	Tsa_EfxHammarneBG_081B4C30,
+	Tsa_EfxHammarneBG_081B4D60,
+};
+
+CONST_DATA u16 *ImgArray_EfxHammarneBG[] = {
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081AFC70,
+	Img_EfxRestBG_081B029C,
+	Img_EfxRestBG_081B029C,
+	Img_EfxRestBG_081B029C,
+	Img_EfxRestBG_081B0994,
+	Img_EfxRestBG_081B0994,
+	Img_EfxRestBG_081B0FB4,
+	Img_EfxRestBG_081B0FB4,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxHammarneOBJ[] = {
+	PROC_NAME_DEBUG("efxHammarneOBJ"),
+	PROC_ONEND(EfxHammarneOBJ_OnEnd),
+	PROC_SLEEP(80),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxBerserk[] = {
+	PROC_NAME_DEBUG("efxBerserk"),
+	PROC_REPEAT(EfxBerserk_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxBerserkBG[] = {
+	PROC_NAME_DEBUG("efxBerserkBG"),
+	PROC_REPEAT(EfxBerserkBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxBerserkCLONE[] = {
+	PROC_NAME_DEBUG("efxBerserkCLONE"),
+	PROC_ONEND(EfxBerserkCLONE_OnEnd),
+	PROC_REPEAT(EfxBerserkCLONE_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxBerserkOBJ[] = {
+	PROC_NAME_DEBUG("efxBerserkOBJ"),
+	PROC_ONEND(EfxBerserkOBJ_OnEnd),
+	PROC_REPEAT(EfxBerserkOBJ_Loop1),
+	PROC_SLEEP(7),
+	PROC_REPEAT(EfxBerserkOBJ_Loop2),
+	PROC_SLEEP(3),
+	PROC_REPEAT(EfxBerserkOBJ_Loop3),
+	PROC_SLEEP(7),
+	PROC_REPEAT(EfxBerserkOBJ_Loop4),
+	PROC_SLEEP(3),
+	PROC_REPEAT(EfxBerserkOBJ_Loop5),
+	PROC_SLEEP(7),
+	PROC_REPEAT(EfxBerserkOBJ_Loop6),
+	PROC_SLEEP(3),
+	PROC_REPEAT(EfxBerserkOBJ_Loop7),
+	PROC_SLEEP(7),
+	PROC_REPEAT(EfxBerserkOBJ_Loop8),
+	PROC_SLEEP(3),
+	PROC_REPEAT(EfxBerserkOBJ_Loop9),
+	PROC_SLEEP(7),
+	PROC_REPEAT(EfxBerserkOBJ_Loop10),
+	PROC_SLEEP(17),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxMshield[] = {
+	PROC_NAME_DEBUG("efxMshield"),
+	PROC_REPEAT(EfxMshield_Loop),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxMshieldBG[] = {
+	PROC_NAME_DEBUG("efxMshieldBG"),
+	PROC_REPEAT(EfxMshieldBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxMshieldBG[] = {
+	Tsa_EfxMshieldBG_081B8974,
+	Tsa_EfxMshieldBG_081B8A2C,
+	Tsa_EfxMshieldBG_081B8AF0,
+	Tsa_EfxMshieldBG_081B8BE0,
+	Tsa_EfxMshieldBG_081B8D10,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxMshieldOBJ[] = {
+	PROC_NAME_DEBUG("efxMshieldOBJ"),
+	PROC_ONEND(EfxMshieldOBJ_OnEnd),
+	PROC_SLEEP(220),
+	PROC_END,
+};
+
+CONST_DATA struct ProcScr ProcScr_EfxMshieldOBJ2[] = {
+	PROC_NAME_DEBUG("efxMshieldOBJ2"),
+	PROC_ONEND(EfxMshieldOBJ_OnEnd),
+	PROC_SLEEP(110),
+	PROC_END,
+};
+
+/**
  * Heal
  */
 void StartSpellAnimHeal(struct Anim *anim)
@@ -11091,31 +11479,125 @@ void EfxBerserkOBJ_OnEnd(struct ProcEfxOBJ *proc)
 	BasRemove(proc->anim2);
 }
 
-#define EFX_BERSERK_OBJ_LOOP(n, scr, img) \
-void EfxBerserkOBJ_Loop##n(struct ProcEfxOBJ *proc) \
-{ \
-	struct BaSprite *anim2 = proc->anim2; \
-\
-	anim2->script = scr; \
-	anim2->scrCur = scr; \
-	anim2->timer = 0; \
-	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20); \
-	SpellFx_RegisterObjGfx(img, 0x80 << 5); \
-	Proc_Break(proc); \
+void EfxBerserkOBJ_Loop1(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk1;
+	anim2->scrCur = AnimScr_EfxBerserk1;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk1, 0x80 << 5);
+	Proc_Break(proc);
 }
 
-EFX_BERSERK_OBJ_LOOP(1, AnimScr_EfxBerserk1, Img_EfxBerserk1)
-EFX_BERSERK_OBJ_LOOP(3, AnimScr_EfxBerserk2, Img_EfxBerserk1)
-EFX_BERSERK_OBJ_LOOP(5, AnimScr_EfxBerserk3, Img_EfxBerserk1)
-EFX_BERSERK_OBJ_LOOP(7, AnimScr_EfxBerserk4, Img_EfxBerserk1)
-EFX_BERSERK_OBJ_LOOP(9, AnimScr_EfxBerserk5, Img_EfxBerserk1)
-EFX_BERSERK_OBJ_LOOP(2, AnimScr_EfxBerserk6, Img_EfxBerserk2)
-EFX_BERSERK_OBJ_LOOP(4, AnimScr_EfxBerserk7, Img_EfxBerserk2)
-EFX_BERSERK_OBJ_LOOP(6, AnimScr_EfxBerserk8, Img_EfxBerserk2)
-EFX_BERSERK_OBJ_LOOP(8, AnimScr_EfxBerserk9, Img_EfxBerserk2)
-EFX_BERSERK_OBJ_LOOP(10, AnimScr_EfxBerserk10, Img_EfxBerserk2)
+void EfxBerserkOBJ_Loop3(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
 
-#undef EFX_BERSERK_OBJ_LOOP
+	anim2->script = AnimScr_EfxBerserk2;
+	anim2->scrCur = AnimScr_EfxBerserk2;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk1, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop5(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk3;
+	anim2->scrCur = AnimScr_EfxBerserk3;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk1, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop7(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk4;
+	anim2->scrCur = AnimScr_EfxBerserk4;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk1, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop9(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk5;
+	anim2->scrCur = AnimScr_EfxBerserk5;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk1, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop2(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk6;
+	anim2->scrCur = AnimScr_EfxBerserk6;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk2, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop4(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk7;
+	anim2->scrCur = AnimScr_EfxBerserk7;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk2, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop6(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk8;
+	anim2->scrCur = AnimScr_EfxBerserk8;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk2, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop8(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk9;
+	anim2->scrCur = AnimScr_EfxBerserk9;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk2, 0x80 << 5);
+	Proc_Break(proc);
+}
+
+void EfxBerserkOBJ_Loop10(struct ProcEfxOBJ *proc)
+{
+	struct BaSprite *anim2 = proc->anim2;
+
+	anim2->script = AnimScr_EfxBerserk10;
+	anim2->scrCur = AnimScr_EfxBerserk10;
+	anim2->timer = 0;
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxBerserk2, 0x80 << 5);
+	Proc_Break(proc);
+}
 
 void StartSpellAnimBarrier(struct Anim *anim)
 {
