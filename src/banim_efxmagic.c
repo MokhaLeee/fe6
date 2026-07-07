@@ -9592,3 +9592,19 @@ void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc)
 		Proc_Break(proc);
 	}
 }
+
+/**
+ * Heal
+ */
+void StartSpellAnimHeal(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxLive, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+}

@@ -1567,7 +1567,7 @@ void NewEfxFenrirOBJ2(struct Anim *anim);
 void EfxFenrirOBJ2_Loop(struct ProcEfxOBJ *proc);
 void NewEfxFenrirOBJ2Chiri(struct Anim *anim, int idx);
 void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc);
-// StartSpellAnimHeal
+void StartSpellAnimHeal(struct Anim *anim);
 // EfxLive_Loop
 // StartSpellAnimMend
 // EfxRelive_Loop

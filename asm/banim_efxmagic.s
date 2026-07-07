@@ -3,25 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start StartSpellAnimHeal
-StartSpellAnimHeal: @ 0x08054558
-	push {r4, lr}
-	adds r4, r0, #0
-	bl SpellFx_Begin
-	bl NewEfxSpellCast
-	bl SpellFx_ClearBG1Position
-	ldr r0, .L0805457C @ =ProcScr_EfxLive
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805457C: .4byte ProcScr_EfxLive
-
 	thumb_func_start EfxLive_Loop
 EfxLive_Loop: @ 0x08054580
 	push {r4, r5, r6, lr}
