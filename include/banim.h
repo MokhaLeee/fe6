@@ -1513,8 +1513,8 @@ struct ProcEfxApocalypseOBJ3 {
 };
 
 void NewEfxApocalypseOBJ3(struct Anim *anim, int);
-// EfxApocalypseOBJ3_Loop
-// NewEfxApocalypseOBJ3RND
+void EfxApocalypseOBJ3_Loop(struct ProcEfxApocalypseOBJ3 *proc);
+void NewEfxApocalypseOBJ3RND(struct Anim *anim, int duration, int lo, int state);
 // EfxApocalypseOBJ3RND_Loop
 // StartSpellAnimEclipse
 // EfxHazymoon_Loop
@@ -2468,8 +2468,8 @@ extern CONST_DATA u16 *TsaArray_EfxApocalypseBG2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ3[];
 extern int DuraArray_EfxApocalypseOBJ3RND[];
-// ??? LoArray_EfxApocalypseOBJ3RND[];
-// ??? StateArray_EfxApocalypseOBJ3RND[];
+extern int LoArray_EfxApocalypseOBJ3RND[];
+extern int StateArray_EfxApocalypseOBJ3RND[];
 extern CONST_DATA struct ProcScr ProcScr_EfxApocalypseOBJ3RND[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHazymoon[];
 extern CONST_DATA struct ProcScr ProcScr_EfxHazymoonBG[];

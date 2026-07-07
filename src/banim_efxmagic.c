@@ -6928,3 +6928,38 @@ void NewEfxApocalypseOBJ3(struct Anim *anim, int duration)
 	proc->unk48 = 0;
 	proc->rnd_index = 0;
 }
+
+void EfxApocalypseOBJ3_Loop(struct ProcEfxApocalypseOBJ3 *proc)
+{
+	register int *dura_arr asm("r3");
+	int idx;
+	int dura;
+	int lo;
+	int state;
+
+	proc->timer++;
+
+	if (proc->timer == proc->duration) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+		return;
+	}
+
+	if (++proc->phase_counter != proc->spawn_threshold)
+		return;
+
+	proc->phase_counter = 0;
+	proc->spawn_threshold = 2;
+
+	dura_arr = DuraArray_EfxApocalypseOBJ3RND;
+	idx = proc->rnd_index;
+	dura = dura_arr[idx];
+	lo = LoArray_EfxApocalypseOBJ3RND[idx];
+	state = StateArray_EfxApocalypseOBJ3RND[idx];
+	proc->rnd_index = idx + 1;
+
+	if (dura_arr[proc->rnd_index] == -1)
+		proc->rnd_index = 0;
+
+	NewEfxApocalypseOBJ3RND(proc->anim, dura, lo, state);
+}
