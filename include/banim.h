@@ -1563,10 +1563,9 @@ void NewEfxFenrirBG2_A(struct Anim *anim);
 void NewEfxFenrirBG2_B(struct Anim *anim);
 void EfxFenrirBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxFenrirOBJ2(struct Anim *anim);
-// NewEfxFenrirOBJ2
-// EfxFenrirOBJ2_Loop
-// NewEfxFenrirOBJ2Chiri
-// EfxFenrirOBJ2Chiri_Loop
+void EfxFenrirOBJ2_Loop(struct ProcEfxOBJ *proc);
+void NewEfxFenrirOBJ2Chiri(struct Anim *anim, int idx);
+void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc);
 // StartSpellAnimHeal
 // EfxLive_Loop
 // StartSpellAnimMend
@@ -2506,7 +2505,7 @@ extern CONST_DATA u16 *ImgArray_EfxFenrirBG2_A[];
 extern CONST_DATA u16 *TsaArray_EfxFenrirBG2_A[];
 extern CONST_DATA struct ProcScr ProcScr_EfxFenrirOBJ2[];
 extern CONST_DATA struct ProcScr ProcScr_EfxFenrirOBJ2Chiri[];
-// ??? gFenrirSpriteAngles[];
+extern int gFenrirSpriteAngles[];
 extern CONST_DATA struct ProcScr ProcScr_EfxLive[];
 extern CONST_DATA struct ProcScr ProcScr_EfxRelive[];
 extern CONST_DATA struct ProcScr ProcScr_EfxRecover[];

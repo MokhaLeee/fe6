@@ -7677,3 +7677,104 @@ void EfxFenrirBG2_Loop(struct ProcEfxBG *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxFenrirOBJ2(struct Anim *anim)
+{
+	struct ProcEfxOBJ *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxFenrirOBJ2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = 0;
+	proc->unk44 = 0;
+
+	SpellFx_RegisterObjPal(Pal_EfxFenrirOBJ2, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxFenrirOBJ, 32 * 4 * CHR_SIZE);
+}
+
+void EfxFenrirOBJ2_Loop(struct ProcEfxOBJ *proc)
+{
+	proc->timer++;
+
+	if (proc->timer == 2) {
+		proc->timer = 0;
+
+		NewEfxFenrirOBJ2Chiri(proc->anim, proc->unk44++);
+
+		proc->terminator++;
+
+		if (proc->terminator == 8) {
+			gEfxBgSemaphore--;
+			Proc_Break(proc);
+		}
+	}
+}
+
+void NewEfxFenrirOBJ2Chiri(struct Anim *anim, int idx)
+{
+	struct ProcEfxOBJ *proc;
+	struct Anim *anim2;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxFenrirOBJ2Chiri, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = 30;
+	proc->unk44 = gFenrirSpriteAngles[idx & 7];
+
+	anim2 = NULL;
+
+	switch (idx & 1) {
+	case 0:
+		anim2 = BasCreate(AnimScr_EfxFenrirOBJ2Chiri1, 0x78);
+		proc->anim2 = anim2;
+		break;
+
+	case 1:
+		anim2 = BasCreate(AnimScr_EfxFenrirOBJ2Chiri2, 0x78);
+		proc->anim2 = anim2;
+		break;
+	}
+
+	anim2->oam2 = OAM2_CHR(0x40) + OAM2_LAYER(2) + OAM2_PAL(2);
+	anim2->xPosition = anim->xPosition;
+	proc->unk32 = anim->xPosition;
+	anim2->yPosition = anim->yPosition;
+	proc->unk3A = anim->yPosition;
+}
+
+void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc)
+{
+	struct Anim *anim2 = proc->anim2;
+	register int ret asm("r0");
+	register int angle asm("r2");
+	register int x_acc asm("r3");
+	register i16 *lut asm("r4");
+	int y;
+
+	ret = Interpolate(INTERPOLATE_LINEAR, 0, 300,
+			   proc->timer, proc->terminator);
+
+	lut = gSinLut;
+	angle = proc->unk44;
+	x_acc = ret;
+	x_acc = x_acc * lut[angle];
+
+	angle = angle + 0x40;
+	y = ret * lut[angle];
+
+	anim2->xPosition = proc->unk32 + (x_acc >> 12);
+	asm volatile("" ::: "memory");
+	anim2->yPosition = proc->unk3A + (y >> 12);
+
+	proc->timer++;
+
+	if (proc->timer > proc->terminator) {
+		gEfxBgSemaphore--;
+		BasRemove(proc->anim2);
+		Proc_Break(proc);
+	}
+}
