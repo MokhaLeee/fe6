@@ -10246,3 +10246,14 @@ void EfxReblowOBJ_Loop1(struct ProcEfxOBJ *proc)
 		".short 0\n\t"
 	);
 }
+
+void EfxReblowOBJ_Loop2(struct ProcEfxOBJ *proc)
+{
+	proc->timer++;
+
+	if (proc->timer == (i16)proc->unk30) {
+		gEfxBgSemaphore--;
+		BasRemove(proc->anim2);
+		Proc_Break(proc);
+	}
+}
