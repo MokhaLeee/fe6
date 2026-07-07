@@ -6780,3 +6780,49 @@ void EfxApocalypseBgFlash2_Loop2(struct ProcEfxFlashing *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxApocalypseBG2(struct Anim *anim, int duration)
+{
+	register struct Anim *anim_reg asm("r6");
+	register int duration_reg asm("r4");
+	register struct ProcEfxBG *proc_reg asm("r5");
+	register int mask_reg asm("r2");
+	struct Anim *anim_other;
+	u8 *disp;
+
+	anim_reg = anim;
+	duration_reg = duration;
+
+	gEfxBgSemaphore++;
+
+	proc_reg = SpawnProc(ProcScr_EfxApocalypseBG2, PROC_TREE_3);
+	proc_reg->anim = anim_reg;
+	proc_reg->timer = 0;
+	proc_reg->terminator = 0;
+	proc_reg->unk30 = duration_reg;
+	proc_reg->frame = 0;
+	proc_reg->frame_config = FrameArray_EfxApocalypseBG2;
+	proc_reg->tsal = TsaArray_EfxApocalypseBG2;
+	proc_reg->tsar = TsaArray_EfxApocalypseBG2;
+	proc_reg->img = ImgArray_EfxApocalypseBG2;
+
+	SpellFx_RegisterBgPal(Pal_EfxApocalypseBG2, 0x20);
+	SpellFx_SetSomeColorEffect();
+	SetBgOffset(BG_1, 0, 0);
+
+	if (GetEkrDragonStateType() != 0) {
+		anim_other = GetAnimAnotherSide(proc_reg->anim);
+		disp = (u8 *)&gDispIo;
+
+		mask_reg = 4;
+		mask_reg = 0 - mask_reg;
+
+		disp[0xc] &= mask_reg;
+		disp[0x18] = (disp[0x18] & mask_reg) | 1;
+		disp[0x10] = (disp[0x10] & mask_reg) | 2;
+		disp[0x14] |= 3;
+
+		anim_reg->oam2 = (anim_reg->oam2 & 0xF3FF) | 0x400;
+		anim_other->oam2 = (anim_other->oam2 & 0xF3FF) | 0x400;
+	}
+}
