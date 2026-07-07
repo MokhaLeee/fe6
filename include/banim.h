@@ -1628,12 +1628,12 @@ void EfxSleepOBJ_OnEnd(void);
 void NewEfxSleepSE(struct Anim *anim);
 void EfxSleepSE_PlaySE(struct ProcEfx *proc);
 void EfxSleepSE_OnEnd(void);
-// StartSpellAnimHammerne
-// EfxHammarne_Loop
-// NewEfxHammarneBG
-// EfxHammarneBG_Loop
-// NewEfxHammarneOBJ
-// EfxHammarneOBJ_OnEnd
+void StartSpellAnimHammerne(struct Anim *anim);
+void EfxHammarne_Loop(struct ProcEfx *proc);
+void NewEfxHammarneBG(struct Anim *anim);
+void EfxHammarneBG_Loop(struct ProcEfxBG *proc);
+void NewEfxHammarneOBJ(struct Anim *anim);
+void EfxHammarneOBJ_OnEnd(void);
 // StartSpellAnimBerserk
 // EfxBerserk_Loop
 // NewEfxBerserkBG
