@@ -1568,23 +1568,23 @@ void EfxFenrirOBJ2_Loop(struct ProcEfxOBJ *proc);
 void NewEfxFenrirOBJ2Chiri(struct Anim *anim, int idx);
 void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc);
 void StartSpellAnimHeal(struct Anim *anim);
-// EfxLive_Loop
+void EfxLive_Loop(struct ProcEfx *proc);
 // StartSpellAnimMend
 // EfxRelive_Loop
 // StartSpellAnimRecover
 // EfxRecover_Loop
 // StartSpellAnimPhysic
 // EfxReblow_Loop
-// NewEfxLiveBG_A
-// NewEfxLiveBG_B
+void NewEfxLiveBG_A(struct Anim *anim, int type);
+void NewEfxLiveBG_B(struct Anim *anim, int type);
 // EfxLiveBG_Loop
-// NewEfxLiveBGCOL_A
-// NewEfxLiveBGCOL_B
+void NewEfxLiveBGCOL_A(struct Anim *anim, int type);
+void NewEfxLiveBGCOL_B(struct Anim *anim, int type);
 // EfxLiveBGCOL_Loop
-// NewEfxLiveALPHA
+void NewEfxLiveALPHA(struct Anim *anim, int timer, int duration, int type);
 // EfxLiveALPHA_Delay
 // EfxLiveALPHA_Loop
-// NewEfxLiveOBJ
+void NewEfxLiveOBJ(struct Anim *anim);
 // NewEfxReserveOBJ
 // EfxLiveOBJ_Loop
 // EfxReserveOBJ_Loop1

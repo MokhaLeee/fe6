@@ -9608,3 +9608,45 @@ void StartSpellAnimHeal(struct Anim *anim)
 	proc->anim = anim;
 	proc->timer = 0;
 }
+
+void EfxLive_Loop(struct ProcEfx *proc)
+{
+	struct Anim *target = GetAnimAnotherSide(proc->anim);
+
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		NewEfxLiveOBJ(proc->anim);
+		PlaySFX(SONG_F3, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 52) {
+		NewEfxLiveBG_A(proc->anim, 0);
+		NewEfxLiveBGCOL_A(proc->anim, 0);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 35, 25, 1);
+
+		PlaySFX(SONG_10E, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 55) {
+		target->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+	} else if (proc->timer == 113) {
+		NewEfxLiveBG_B(proc->anim, 0);
+		NewEfxLiveBGCOL_B(proc->anim, 0);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 29, 25, 1);
+
+		PlaySFX(SONG_10F, 0x100, target->xPosition, 1);
+	} else if (proc->timer == 166) {
+		NewEfxHpBarLive(target);
+	} else if (proc->timer == 181) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+
+		if (GetAnimNextRoundType(target) != -1)
+			target->flags3 |= ANIM_BIT3_NEXT_ROUND_START;
+
+		Proc_Break(proc);
+	}
+}
