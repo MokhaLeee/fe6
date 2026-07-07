@@ -10063,3 +10063,20 @@ void NewEfxLiveOBJ(struct Anim *anim)
 	SpellFx_RegisterObjPal(Pal_EfxFimbulvetrOBJ, 0x20);
 	SpellFx_RegisterObjGfx(Img_EfxLiveOBJ, 0x80 << 5);
 }
+
+void NewEfxReserveOBJ(struct Anim *anim)
+{
+	struct ProcEfxOBJ *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxReserveOBJ, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = 0x33;
+	proc->unk30 = 0x34;
+	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_EfxLiveOBJ, AnimScr_EfxLiveOBJ,
+					 AnimScr_EfxLiveOBJ, AnimScr_EfxLiveOBJ);
+
+	SpellFx_RegisterObjPal(Pal_EfxFimbulvetrOBJ, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxLiveOBJ, 0x80 << 5);
+}

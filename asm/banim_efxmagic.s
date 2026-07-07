@@ -3,51 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start NewEfxReserveOBJ
-NewEfxReserveOBJ: @ 0x08054FEC
-	push {r4, r5, lr}
-	sub sp, #4
-	adds r5, r0, #0
-	ldr r1, .L0805503C @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L08055040 @ =ProcScr_EfxReserveOBJ
-	movs r1, #3
-	bl SpawnProc
-	adds r4, r0, #0
-	str r5, [r4, #0x5c]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	movs r0, #0x33
-	strh r0, [r4, #0x2e]
-	movs r0, #0x34
-	strh r0, [r4, #0x30]
-	ldr r3, .L08055044 @ =AnimScr_EfxLiveOBJ
-	str r3, [sp]
-	adds r0, r5, #0
-	adds r1, r3, #0
-	adds r2, r3, #0
-	bl EfxCreateFrontAnim
-	str r0, [r4, #0x60]
-	ldr r0, .L08055048 @ =Pal_EfxFimbulvetrOBJ
-	movs r1, #0x20
-	bl SpellFx_RegisterObjPal
-	ldr r0, .L0805504C @ =Img_EfxLiveOBJ
-	movs r1, #0x80
-	lsls r1, r1, #5
-	bl SpellFx_RegisterObjGfx
-	add sp, #4
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0805503C: .4byte gEfxBgSemaphore
-.L08055040: .4byte ProcScr_EfxReserveOBJ
-.L08055044: .4byte AnimScr_EfxLiveOBJ
-.L08055048: .4byte Pal_EfxFimbulvetrOBJ
-.L0805504C: .4byte Img_EfxLiveOBJ
-
 	thumb_func_start EfxLiveOBJ_Loop
 EfxLiveOBJ_Loop: @ 0x08055050
 	push {r4, lr}

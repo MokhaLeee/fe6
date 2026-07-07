@@ -1588,7 +1588,7 @@ void NewEfxLiveALPHA(struct Anim *anim, int timer, int duration, int type);
 void EfxLiveALPHA_Delay(struct ProcEfxALPHA *proc);
 void EfxLiveALPHA_Loop(struct ProcEfxALPHA *proc);
 void NewEfxLiveOBJ(struct Anim *anim);
-// NewEfxReserveOBJ
+void NewEfxReserveOBJ(struct Anim *anim);
 // EfxLiveOBJ_Loop
 // EfxReserveOBJ_Loop1
 // EfxReserveOBJ_Loop2
