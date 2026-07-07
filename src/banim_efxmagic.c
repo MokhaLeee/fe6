@@ -10105,3 +10105,14 @@ void EfxReserveOBJ_Loop1(struct ProcEfxOBJ *proc)
 	proc->timer = 0;
 	Proc_Break(proc);
 }
+
+void EfxReserveOBJ_Loop2(struct ProcEfxOBJ *proc)
+{
+	proc->timer++;
+
+	if (proc->timer == (i16)proc->unk30) {
+		gEfxBgSemaphore--;
+		BasRemove(proc->anim2);
+		Proc_Break(proc);
+	}
+}

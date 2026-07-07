@@ -3,33 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start EfxReserveOBJ_Loop2
-EfxReserveOBJ_Loop2: @ 0x080550B8
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	ldrh r2, [r4, #0x30]
-	lsls r1, r2, #0x10
-	cmp r0, r1
-	bne .L080550E0
-	ldr r0, .L080550E8 @ =gEfxBgSemaphore
-	ldr r1, [r0]
-	subs r1, #1
-	str r1, [r0]
-	ldr r0, [r4, #0x60]
-	bl BasRemove
-	adds r0, r4, #0
-	bl Proc_Break
-.L080550E0:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L080550E8: .4byte gEfxBgSemaphore
-
 	thumb_func_start NewEfxReblowOBJ
 NewEfxReblowOBJ: @ 0x080550EC
 	push {r4, r5, lr}
