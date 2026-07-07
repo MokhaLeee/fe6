@@ -1586,7 +1586,7 @@ void NewEfxLiveBGCOL_B(struct Anim *anim, u32 type);
 void EfxLiveBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxLiveALPHA(struct Anim *anim, int timer, int duration, int type);
 void EfxLiveALPHA_Delay(struct ProcEfxALPHA *proc);
-// EfxLiveALPHA_Loop
+void EfxLiveALPHA_Loop(struct ProcEfxALPHA *proc);
 void NewEfxLiveOBJ(struct Anim *anim);
 // NewEfxReserveOBJ
 // EfxLiveOBJ_Loop

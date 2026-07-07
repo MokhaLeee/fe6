@@ -10028,3 +10028,38 @@ void EfxLiveALPHA_Delay(struct ProcEfxALPHA *proc)
 }
 
 asm(".short 0");
+
+void EfxLiveALPHA_Loop(struct ProcEfxALPHA *proc)
+{
+	int bldA;
+
+	if (proc->timer > proc->delay) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+		return;
+	}
+
+	if (proc->unk29 == 0)
+		bldA = Interpolate(INTERPOLATE_LINEAR, 0, 16, proc->timer, proc->delay);
+	else
+		bldA = Interpolate(INTERPOLATE_LINEAR, 16, 0, proc->timer, proc->delay);
+
+	SetBlendAlpha(bldA, 16);
+	proc->timer++;
+}
+
+void NewEfxLiveOBJ(struct Anim *anim)
+{
+	struct ProcEfxOBJ *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxLiveOBJ, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = 0x33;
+	proc->anim2 = EfxCreateFrontAnim(anim, AnimScr_EfxLiveOBJ, AnimScr_EfxLiveOBJ,
+					 AnimScr_EfxLiveOBJ, AnimScr_EfxLiveOBJ);
+
+	SpellFx_RegisterObjPal(Pal_EfxFimbulvetrOBJ, 0x20);
+	SpellFx_RegisterObjGfx(Img_EfxLiveOBJ, 0x80 << 5);
+}
