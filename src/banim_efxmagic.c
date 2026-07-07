@@ -10932,3 +10932,187 @@ void EfxHammarneOBJ_OnEnd(void)
 {
 	gEfxBgSemaphore--;
 }
+
+void StartSpellAnimBerserk(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxBerserk, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->hitted = CheckRoundMiss(GetAnimRoundTypeAnotherSide(anim));
+}
+
+void EfxBerserk_Loop(struct ProcEfx *proc)
+{
+	struct Anim *target;
+	int duration;
+
+	target = GetAnimAnotherSide(proc->anim);
+	duration = EfxGetCamMovDuration();
+
+	proc->timer++;
+
+	if (proc->timer == 1)
+		NewEfxFarAttackWithDistance(proc->anim, -1);
+
+	if (proc->timer == duration + 1) {
+		NewEfxBerserkOBJ(target);
+		NewEfxBerserkBG(target, 0x4a);
+		NewEfxBerserkCLONE(target, 0x4a);
+		NewEfxRestRST(target, 0x4a, 10, 0x100, 1);
+		NewEfxRestWINH_(target, 0x4a, EfxRestWINH_DefaultHblank);
+		PlaySFX(SONG_F9, 0x100, target->xPosition, 1);
+	} else if (proc->timer == duration + 0x4a) {
+		NewEfxFlashBgWhite(target, 5);
+		target->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+		StartBattleAnimStatusChgHitEffects(target, proc->hitted);
+
+		if (!proc->hitted && GetUnitEfxDebuff(target) == 0)
+			SetUnitEfxDebuff(target, 4);
+	} else if (proc->timer == duration + 0x5a) {
+		target->flags3 |= ANIM_BIT3_NEXT_ROUND_START;
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxBerserkBG(struct Anim *anim, int duration)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxBerserkBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = duration;
+	SpellFx_RegisterBgPal(Pal_EfxBerserkBG, 0x20);
+	SpellFx_RegisterBgGfx(Img_EfxClasschgFIN, 0x2000);
+	EfxTmCpyBG(Tsa_EfxBerserkBG, gBg1Tm, 0x20, 0x20, 1, 0x100);
+	EnableBgSync(BG1_SYNC_BIT);
+	SpellFx_SetSomeColorEffect();
+	SetBlendConfig(0x1, 0xE, 0x8, 0x0);
+
+	gDispIo.win_ct.wobj_enable_blend = true;
+	SetWinEnable(0, 0, 1);
+	SetWObjLayers(0, 1, 1, 1, 1);
+	SetBlendTargetA(0, 1, 0, 0, 0);
+	SetBlendTargetB(0, 0, 1, 1, 1);
+	gDispIo.blend_ct.target2_enable_bd = true;
+
+	anim->oam01 |= 0x0800;
+	anim->oam2 &= 0xF3FF;
+	anim->oam2 |= 0x0400;
+}
+
+void EfxBerserkBG_Loop(struct ProcEfxBG *proc)
+{
+	struct Anim *anim = proc->anim;
+
+	gDispIo.bg_off[BG_1].y--;
+
+	if (++proc->timer == proc->terminator) {
+		SpellFx_ClearBG1();
+		SpellFx_ClearColorEffects();
+		anim->oam01 &= ~0x0800;
+		anim->oam2 &= 0xF3FF;
+		anim->oam2 |= 0x0800;
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}
+
+void NewEfxBerserkCLONE(struct Anim *anim, int duration)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxBerserkCLONE, PROC_TREE_4);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->terminator = duration;
+}
+
+void EfxBerserkCLONE_Loop(struct ProcEfxBG *proc)
+{
+	struct Anim _anim;
+	struct Anim *anim = proc->anim;
+
+	_anim.xPosition = anim->xPosition;
+	_anim.yPosition = anim->yPosition;
+	_anim.sprData = anim->sprData;
+	_anim.oam01 = anim->oam01 & ~0x0800;
+	_anim.oam2 = anim->oam2;
+	_anim.oam2 &= 0xF3FF;
+	_anim.oam2 |= 0x0800;
+
+	BasPutOam(&_anim);
+
+	if (++proc->timer == proc->terminator)
+		Proc_Break(proc);
+}
+
+void EfxBerserkCLONE_OnEnd(void)
+{
+	gEfxBgSemaphore--;
+}
+
+void NewEfxBerserkOBJ(struct Anim *anim)
+{
+	register struct Anim *a asm("r5") = anim;
+	register struct ProcEfxOBJ *proc asm("r4");
+	struct BaSprite *anim2;
+	struct Anim *arg;
+	const AnimScr *scr;
+	u16 oam2;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxBerserkOBJ, PROC_TREE_3);
+	proc->anim = a;
+	GetAnimAnotherSide(a);
+	scr = AnimScr_Common;
+	__asm__ volatile("" ::: "memory");
+	arg = proc->anim;
+	anim2 = EfxCreateFrontAnim(arg, scr, scr, scr, scr);
+	proc->anim2 = anim2;
+	oam2 = anim2->oam2 & 0xF3FF;
+	oam2 |= 0x0400;
+	anim2->oam2 = oam2;
+}
+
+void EfxBerserkOBJ_OnEnd(struct ProcEfxOBJ *proc)
+{
+	gEfxBgSemaphore--;
+	BasRemove(proc->anim2);
+}
+
+#define EFX_BERSERK_OBJ_LOOP(n, scr, img) \
+void EfxBerserkOBJ_Loop##n(struct ProcEfxOBJ *proc) \
+{ \
+	struct BaSprite *anim2 = proc->anim2; \
+\
+	anim2->script = scr; \
+	anim2->scrCur = scr; \
+	anim2->timer = 0; \
+	SpellFx_RegisterObjPal(Pal_EfxBerserk, 0x20); \
+	SpellFx_RegisterObjGfx(img, 0x80 << 5); \
+	Proc_Break(proc); \
+}
+
+EFX_BERSERK_OBJ_LOOP(1, AnimScr_EfxBerserk1, Img_EfxBerserk1)
+EFX_BERSERK_OBJ_LOOP(3, AnimScr_EfxBerserk2, Img_EfxBerserk1)
+EFX_BERSERK_OBJ_LOOP(5, AnimScr_EfxBerserk3, Img_EfxBerserk1)
+EFX_BERSERK_OBJ_LOOP(7, AnimScr_EfxBerserk4, Img_EfxBerserk1)
+EFX_BERSERK_OBJ_LOOP(9, AnimScr_EfxBerserk5, Img_EfxBerserk1)
+EFX_BERSERK_OBJ_LOOP(2, AnimScr_EfxBerserk6, Img_EfxBerserk2)
+EFX_BERSERK_OBJ_LOOP(4, AnimScr_EfxBerserk7, Img_EfxBerserk2)
+EFX_BERSERK_OBJ_LOOP(6, AnimScr_EfxBerserk8, Img_EfxBerserk2)
+EFX_BERSERK_OBJ_LOOP(8, AnimScr_EfxBerserk9, Img_EfxBerserk2)
+EFX_BERSERK_OBJ_LOOP(10, AnimScr_EfxBerserk10, Img_EfxBerserk2)
+
+#undef EFX_BERSERK_OBJ_LOOP

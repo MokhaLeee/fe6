@@ -1634,25 +1634,25 @@ void NewEfxHammarneBG(struct Anim *anim);
 void EfxHammarneBG_Loop(struct ProcEfxBG *proc);
 void NewEfxHammarneOBJ(struct Anim *anim);
 void EfxHammarneOBJ_OnEnd(void);
-// StartSpellAnimBerserk
-// EfxBerserk_Loop
-// NewEfxBerserkBG
-// EfxBerserkBG_Loop
-// NewEfxBerserkCLONE
-// EfxBerserkCLONE_Loop
-// EfxBerserkCLONE_OnEnd
-// NewEfxBerserkOBJ
-// EfxBerserkOBJ_OnEnd
-// EfxBerserkOBJ_Loop1
-// EfxBerserkOBJ_Loop3
-// EfxBerserkOBJ_Loop5
-// EfxBerserkOBJ_Loop7
-// EfxBerserkOBJ_Loop9
-// EfxBerserkOBJ_Loop2
-// EfxBerserkOBJ_Loop4
-// EfxBerserkOBJ_Loop6
-// EfxBerserkOBJ_Loop8
-// EfxBerserkOBJ_Loop10
+void StartSpellAnimBerserk(struct Anim *anim);
+void EfxBerserk_Loop(struct ProcEfx *proc);
+void NewEfxBerserkBG(struct Anim *anim, int duration);
+void EfxBerserkBG_Loop(struct ProcEfxBG *proc);
+void NewEfxBerserkCLONE(struct Anim *anim, int duration);
+void EfxBerserkCLONE_Loop(struct ProcEfxBG *proc);
+void EfxBerserkCLONE_OnEnd(void);
+void NewEfxBerserkOBJ(struct Anim *anim);
+void EfxBerserkOBJ_OnEnd(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop1(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop3(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop5(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop7(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop9(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop2(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop4(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop6(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop8(struct ProcEfxOBJ *proc);
+void EfxBerserkOBJ_Loop10(struct ProcEfxOBJ *proc);
 // StartSpellAnimBarrier
 // EfxMshield_Loop
 // NewEfxMshieldBG
