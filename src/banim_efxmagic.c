@@ -6912,3 +6912,19 @@ void EfxApocalypseOBJ2_Loop2(struct ProcEfxApocalypseOBJ2 *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxApocalypseOBJ3(struct Anim *anim, int duration)
+{
+	struct ProcEfxApocalypseOBJ3 *proc;
+
+	gEfxBgSemaphore++;
+
+	proc = SpawnProc(ProcScr_EfxApocalypseOBJ3, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->duration = duration;
+	proc->phase_counter = 0;
+	proc->spawn_threshold = 1;
+	proc->unk48 = 0;
+	proc->rnd_index = 0;
+}
