@@ -10209,3 +10209,17 @@ void EfxReblowOBJ_Loop2(struct ProcEfxOBJ *proc)
 		Proc_Break(proc);
 	}
 }
+
+void StartSpellAnimFortify(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxReserve, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->hitted = 0;
+}
