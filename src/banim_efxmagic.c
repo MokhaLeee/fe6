@@ -10116,3 +10116,22 @@ void EfxReserveOBJ_Loop2(struct ProcEfxOBJ *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxReblowOBJ(struct Anim *anim, u32 kind)
+{
+	struct ProcEfxOBJ *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxReblowOBJ, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->unk29 = kind;
+
+	if (kind == 0) {
+		proc->terminator = 0x2b;
+		proc->unk30 = 0x44;
+	} else {
+		proc->terminator = 0x1f;
+		proc->unk30 = 0x3d;
+	}
+}

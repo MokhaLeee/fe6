@@ -3,45 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start NewEfxReblowOBJ
-NewEfxReblowOBJ: @ 0x080550EC
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	ldr r1, .L0805511C @ =gEfxBgSemaphore
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	ldr r0, .L08055120 @ =ProcScr_EfxReblowOBJ
-	movs r1, #3
-	bl SpawnProc
-	adds r1, r0, #0
-	str r5, [r1, #0x5c]
-	movs r0, #0
-	strh r0, [r1, #0x2c]
-	adds r0, r1, #0
-	adds r0, #0x29
-	strb r4, [r0]
-	cmp r4, #0
-	bne .L08055124
-	movs r0, #0x2b
-	strh r0, [r1, #0x2e]
-	movs r0, #0x44
-	b .L0805512A
-	.align 2, 0
-.L0805511C: .4byte gEfxBgSemaphore
-.L08055120: .4byte ProcScr_EfxReblowOBJ
-.L08055124:
-	movs r0, #0x1f
-	strh r0, [r1, #0x2e]
-	movs r0, #0x3d
-.L0805512A:
-	strh r0, [r1, #0x30]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start EfxReblowOBJ_Loop1
 EfxReblowOBJ_Loop1: @ 0x08055134
 	push {r4, r5, r6, r7, lr}
