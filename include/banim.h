@@ -1370,41 +1370,41 @@ void EfxResireBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxResireRST(struct Anim *anim, ProcPtr proc_rst, int duration);
 void EfxResireRST_Loop(struct ProcEfxRST *proc);
 void StartSpellAnimLightning(struct Anim *anim);
-// EfxLightning_Loop
+void EfxLightning_Loop(struct ProcEfx *proc);
 void NewEfxLightningBG(struct Anim *anim);
-// EfxLightningBG_Loop
+void EfxLightningBG_Loop(struct ProcEfxBG *proc);
 void StartSpellAnimPurge(struct Anim *anim);
 // EfxPurge_PlaySFX
-// EfxPurge_Loop
+void EfxPurge_Loop(struct ProcEfx *proc);
 void NewEfxPurgeBG(struct Anim *anim);
-// EfxPurgeBG_Loop
+void EfxPurgeBG_Loop(struct ProcEfxBG *proc);
 void NewEfxPurgeOBJRND(struct Anim *anim);
-// EfxPurgeOBJRND_Loop
+void EfxPurgeOBJRND_Loop(struct ProcEfxOBJ *proc);
 void NewEfxPurgeOBJ(struct Anim *anim, int x, int y);
-// EfxPurgeOBJ_OnEnd
+void EfxPurgeOBJ_OnEnd(struct ProcEfxOBJ *proc);
 void StartSpellAnimForblaze(struct Anim *anim);
-// EfxForblaze_Loop
+void EfxForblaze_Loop(struct ProcEfx *proc);
 void NewEfxForblazeBG1(struct Anim *anim);
-// EfxForblazeBG1_Loop
+void EfxForblazeBG1_Loop(struct ProcEfxBG *proc);
 void NewEfxForblazeBGCOL1(struct Anim *anim, int duration);
-// EfxForblazeBGCOL1_Loop
+void EfxForblazeBGCOL1_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxForblazeBGCtrl1(void);
-// EfxForblazeBGCtrl1_Loop1
-// EfxForblazeBGCtrl1_Loop2
-// EfxForblazeBGCtrl1_Loop3
+void EfxForblazeBGCtrl1_Loop1(ProcPtr proc);
+void EfxForblazeBGCtrl1_Loop2(ProcPtr proc);
+void EfxForblazeBGCtrl1_Loop3(ProcPtr proc);
 void NewEfxForblazeObjHandle(struct Anim *anim, int duration);
-// EfxForblazeObjHandle_Loop
+void EfxForblazeObjHandle_Loop(struct ProcEfx *proc);
 void NewEfxForblazeOBJ(struct Anim *anim, int x, int y);
-// EfxForblazeOBJ_Loop
+void EfxForblazeOBJ_Loop(struct ProcEfxMagicOBJ *proc);
 void NewEfxForblazeBG2(struct Anim *anim, int duration);
-// EfxForblazeBG2_Loop
+void EfxForblazeBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxForblazeOBJCtrl(struct Anim *anim);
-// EfxForblazeOBJCtrl_Loop
+void EfxForblazeOBJCtrl_Loop(struct ProcEfxMagic *proc);
 void NewEfxForblazeOBJFall(struct Anim *anim, int duration, int unused);
-// EfxForblazeOBJFall_Loop
+void EfxForblazeOBJFall_Loop(struct ProcEfxOBJ *proc);
 void HBlank_EfxForblaze(void);
 void NewEfxForblazeRST(int duration);
-// EfxForblazeRST_Loop
+void EfxForblazeRST_Loop(struct ProcEfxMagic *proc);
 void StartSpellAnimDivine(struct Anim *anim);
 // EfxDivine_Loop
 void NewEfxDivineBG(struct Anim *anim);
