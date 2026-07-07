@@ -1406,23 +1406,23 @@ void HBlank_EfxForblaze(void);
 void NewEfxForblazeRST(int duration);
 void EfxForblazeRST_Loop(struct ProcEfxMagic *proc);
 void StartSpellAnimDivine(struct Anim *anim);
-// EfxDivine_Loop
+void EfxDivine_Loop(struct ProcEfx *proc);
 void NewEfxDivineBG(struct Anim *anim);
 void NewEfxDivineBG2(struct Anim *anim);
 void NewEfxDivineBG3(struct Anim *anim);
-// EfxDivineBG_Loop
+void EfxDivineBG_Loop(struct ProcEfxBG *proc);
 void NewEfxDivineOBJ(struct Anim *anim);
-// EfxDivineOBJ_Loop
+void EfxDivineOBJ_Loop(struct ProcEfxOBJ *proc);
 void StartSpellAnimAureola(struct Anim *anim);
-// EfxAureola_Loop
+void EfxAureola_Loop(struct ProcEfx *proc);
 void NewEfxAureolaBG(struct Anim *anim);
 void EfxAureolaBG_Loop(struct ProcEfxBG *proc);
 void NewEfxAureolaBG2(struct Anim *anim, int duration);
-// EfxAureolaBG2_Loop
+void EfxAureolaBG2_Loop(struct ProcEfxBG *proc);
 void NewEfxAureolaBG2COL(struct Anim *anim, int);
-// EfxAureolaBG2COL_Loop
+void EfxAureolaBG2COL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxAureolaOBJ(struct Anim *anim, int);
-// EfxAureolaOBJ_Loop
+void EfxAureolaOBJ_Loop(struct ProcEfxMagic *proc);
 
 struct ProcEfxAureolaOBJ {
     PROC_HEADER;
@@ -1450,26 +1450,26 @@ struct ProcEfxAureolaOBJ {
 };
 
 void NewEfxAureolaOBJCtrl(struct Anim *anim, int);
-// EfxAureolaOBJCtrl_Loop
+void EfxAureolaOBJCtrl_Loop(struct ProcEfxAureolaOBJ *proc);
 void NewEfxAureolaOBJ2(struct Anim *anim, int);
-// EfxAureolaOBJ2_Loop
+void EfxAureolaOBJ2_Loop(struct ProcEfxAureolaOBJ *proc);
 void NewEfxAureolaOBJ3(struct Anim *anim);
-// EfxAureolaOBJ3_Loop
+void EfxAureolaOBJ3_Loop(struct ProcEfxAureolaOBJ *proc);
 void NewEfxAureolaOBJ3Ctrl(struct Anim *anim, int);
-// EfxAureolaOBJ3Ctrl_Loop
+void EfxAureolaOBJ3Ctrl_Loop(struct ProcEfxAureolaOBJ *proc);
 void StartSpellAnimApocalypse(struct Anim *anim);
-// EfxApocalypse_Loop
+void EfxApocalypse_Loop(struct ProcEfx *proc);
 void NewEfxApocalypseBG(struct Anim *anim, int);
-// EfxApocalypseBG_Loop
+void EfxApocalypseBG_Loop(struct ProcEfxBG *proc);
 void NewEfxApocalypseBGCtrl(struct Anim *anim);
-// EfxApocalypseBGCtrl_Loop
+void EfxApocalypseBGCtrl_Loop(struct ProcEfxBG *proc);
 void NewEfxApocalypseBGCOL(struct Anim *anim);
-// EfxApocalypseBGCOL_Loop
+void EfxApocalypseBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxApocalypseOBJ(struct Anim *anim);
 void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc);
 void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc);
 void EfxApocalypseOBJ_Loop4(struct ProcEfxOBJ *proc);
-// EfxApocalypseOBJ_Loop1
+void EfxApocalypseOBJ_Loop1(struct ProcEfxOBJ *proc);
 void NewEfxApocalypseBGCOL2(struct Anim *anim, int);
 void EfxApocalypseBGCOL2_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxApocalypseDummy(struct Anim *anim, ProcPtr, int);
@@ -1536,22 +1536,22 @@ void EfxApocalypseOBJ3_Loop(struct ProcEfxApocalypseOBJ3 *proc);
 void NewEfxApocalypseOBJ3RND(struct Anim *anim, int duration, int lo, u32 state);
 void EfxApocalypseOBJ3RND_Loop(struct ProcEfxApocalypseOBJ3RND *proc);
 // StartSpellAnimEclipse
-// EfxHazymoon_Loop
+void EfxHazymoon_Loop(struct ProcEfx *proc);
 void NewEfxHazymoonBG1(struct Anim *anim);
 void NewEfxHazymoonBG2(struct Anim *anim);
 void NewEfxHazymoonBG3(struct Anim *anim);
-// EfxHazymoonBG_Loop
+void EfxHazymoonBG_Loop(struct ProcEfxEclipseBG *proc);
 void NewEfxHazymoonOBJ2(struct Anim *anim);
-// EfxHazymoonOBJ2_OnEnd
-// EfxHazymoonOBJ2_Loop1
-// EfxHazymoonOBJ2_Loop2
-// EfxHazymoonOBJ2_Loop3
+void EfxHazymoonOBJ2_OnEnd(struct ProcEfxMagicOBJ *proc);
+void EfxHazymoonOBJ2_Loop1(struct ProcEfxMagicOBJ *proc);
+void EfxHazymoonOBJ2_Loop2(struct ProcEfxMagicOBJ *proc);
+void EfxHazymoonOBJ2_Loop3(struct ProcEfxMagicOBJ *proc);
 void NewEfxHazymoonOBJ3(struct Anim *anim);
-// EfxHazymoonOBJ3_Loop
+void EfxHazymoonOBJ3_Loop(struct ProcEfxMagicOBJ *proc);
 void NewEfxHazymoonOBJ3RND(struct Anim *anim, int x, int y);
 void EfxHazymoonOBJ3RND_Loop(struct ProcEfxMagicOBJ *proc);
 void StartSpellAnimFenrir(struct Anim *anim);
-// EfxFenrir_Loop
+void EfxFenrir_Loop(struct ProcEfx *proc);
 void NewEfxFenrirBG(struct Anim *anim, int duration);
 void EfxFenrirBG_OnEnd(void);
 void EfxFenrirBG_Loop(struct ProcEfxBG *proc);

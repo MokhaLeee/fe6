@@ -1,53 +1,5 @@
 	.section .rodata
 
-	.global FrameArray_EfxDivineBG
-FrameArray_EfxDivineBG: @ 0811A530
-	.incbin "fe6-base.gba", 0x11A530, (0x11A59E - 0x11A530) @ length: 006E
-
-	.global FrameArray_EfxDivineBG2
-FrameArray_EfxDivineBG2: @ 0811A59E
-	.incbin "fe6-base.gba", 0x11A59E, (0x11A5AC - 0x11A59E) @ length: 000E
-
-	.global FrameArray_EfxDivineBG3
-FrameArray_EfxDivineBG3: @ 0811A5AC
-	.incbin "fe6-base.gba", 0x11A5AC, (0x11A602 - 0x11A5AC) @ length: 0056
-
-	.global FrameArray_EfxAureolaBG
-FrameArray_EfxAureolaBG: @ 0811A602
-	.incbin "fe6-base.gba", 0x11A602, (0x11A618 - 0x11A602) @ length: 0016
-
-	.global FrameArray_EfxAureolaBG2COL
-FrameArray_EfxAureolaBG2COL: @ 0811A618
-	.incbin "fe6-base.gba", 0x11A618, (0x11A62A - 0x11A618) @ length: 0012
-
-	.global FrameArray_EfxApocalypseBGCOL2
-FrameArray_EfxApocalypseBGCOL2: @ 0811A62A
-	.incbin "fe6-base.gba", 0x11A62A, (0x11A668 - 0x11A62A) @ length: 003E
-
-	.global FrameArray_EfxApocalypseBG2
-FrameArray_EfxApocalypseBG2: @ 0811A668
-	.incbin "fe6-base.gba", 0x11A668, (0x11A67A - 0x11A668) @ length: 0012
-
-	.global FrameArray_EfxHazymoonBG1
-FrameArray_EfxHazymoonBG1: @ 0811A67A
-	.incbin "fe6-base.gba", 0x11A67A, (0x11A680 - 0x11A67A) @ length: 0006
-
-	.global FrameArray_EfxHazymoonBG2
-FrameArray_EfxHazymoonBG2: @ 0811A680
-	.incbin "fe6-base.gba", 0x11A680, (0x11A722 - 0x11A680) @ length: 00A2
-
-	.global FrameArray_EfxHazymoonBG3
-FrameArray_EfxHazymoonBG3: @ 0811A722
-	.incbin "fe6-base.gba", 0x11A722, (0x11A758 - 0x11A722) @ length: 0036
-
-	.global FrameArray_EfxFenrirBGCOL
-FrameArray_EfxFenrirBGCOL: @ 0811A758
-	.incbin "fe6-base.gba", 0x11A758, (0x11A796 - 0x11A758) @ length: 003E
-
-	.global FrameArray_EfxFenrirBG2_A
-FrameArray_EfxFenrirBG2_A: @ 0811A796
-	.incbin "fe6-base.gba", 0x11A796, (0x11A898 - 0x11A796) @ length: 0102
-
 	.global FrameArray1_EfxLiveBG
 FrameArray1_EfxLiveBG: @ 0811A898
 	.incbin "fe6-base.gba", 0x11A898, (0x11A89E - 0x11A898) @ length: 0006

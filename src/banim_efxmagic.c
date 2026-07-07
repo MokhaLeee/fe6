@@ -6540,6 +6540,201 @@ void EfxForblazeRST_Loop(struct ProcEfxMagic *proc)
 	}
 }
 
+struct ProcScr CONST_DATA ProcScr_EfxDivine[] = {
+	PROC_NAME_DEBUG("efxDivine"),
+	PROC_REPEAT(EfxDivine_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxDivineBG[] = {
+	PROC_NAME_DEBUG("efxDivineBG"),
+	PROC_REPEAT(EfxDivineBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *ImgArray_EfxDivineBG[] = {
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+};
+
+CONST_DATA u16 *TsaArray_EfxDivineBG[] = {
+	Tsa_EfxDivineBG1_08179AB8,
+	Tsa_EfxDivineBG1_08179B58,
+	Tsa_EfxDivineBG1_08179C00,
+	Tsa_EfxDivineBG1_08179CA8,
+	Tsa_EfxDivineBG1_08179D58,
+	Tsa_EfxDivineBG1_08179E10,
+	Tsa_EfxDivineBG1_08179EDC,
+	Tsa_EfxDivineBG1_08179FA8,
+	Tsa_EfxDivineBG1_0817A07C,
+	Tsa_EfxDivineBG1_0817A154,
+	Tsa_EfxDivineBG1_0817A230,
+	Tsa_EfxDivineBG1_0817A30C,
+	Tsa_EfxDivineBG1_0817A3F0,
+	Tsa_EfxDivineBG1_0817A4A4,
+	Tsa_EfxDivineBG1_0817A540,
+	Tsa_EfxDivineBG1_0817A5DC,
+	Tsa_EfxDivineBG1_0817A678,
+	Tsa_EfxDivineBG1_0817A714,
+	Tsa_EfxDivineBG1_0817A7B0,
+	Tsa_EfxDivineBG1_0817A84C,
+};
+
+CONST_DATA u16 *ImgArray_EfxDivineBG2[] = {
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+	Img_EfxDivineBG1_081762DC,
+};
+
+CONST_DATA u16 *TsaArray_EfxDivineBG2[] = {
+	Tsa_EfxDivineBG2_0817A8E8,
+	Tsa_EfxDivineBG2_0817A984,
+	Tsa_EfxDivineBG2_0817AA20,
+};
+
+CONST_DATA u16 *ImgArray_EfxDivineBG3[] = {
+	Img_EfxDivineBG3_0816E3CC,
+	Img_EfxDivineBG3_0816E3CC,
+	Img_EfxDivineBG3_0816E980,
+	Img_EfxDivineBG3_0816F048,
+	Img_EfxDivineBG3_0816F688,
+	Img_EfxDivineBG3_0816FC90,
+	Img_EfxDivineBG3_081702F0,
+	Img_EfxDivineBG3_08170960,
+	Img_EfxDivineBG3_08170F9C,
+	Img_EfxDivineBG3_081715E4,
+	Img_EfxDivineBG3_08171CE8,
+	Img_EfxDivineBG3_081724A0,
+	Img_EfxDivineBG3_08172C94,
+	Img_EfxDivineBG3_0817346C,
+	Img_EfxDivineBG3_08173C88,
+	Img_EfxDivineBG3_08174408,
+	Img_EfxDivineBG3_08174B9C,
+	Img_EfxDivineBG3_081752D0,
+	Img_EfxDivineBG3_081752D0,
+	Img_EfxDivineBG3_08175D7C,
+	Img_EfxDivineBG3_08175D7C,
+};
+
+CONST_DATA u16 *TsaArray_EfxDivineBG3[] = {
+	Tsa_EfxDivineBG3_08176A8C,
+	Tsa_EfxDivineBG3_08176C20,
+	Tsa_EfxDivineBG3_08176E24,
+	Tsa_EfxDivineBG3_081770F4,
+	Tsa_EfxDivineBG3_081773C4,
+	Tsa_EfxDivineBG3_08177674,
+	Tsa_EfxDivineBG3_08177928,
+	Tsa_EfxDivineBG3_08177BB4,
+	Tsa_EfxDivineBG3_08177E38,
+	Tsa_EfxDivineBG3_081780AC,
+	Tsa_EfxDivineBG3_08178340,
+	Tsa_EfxDivineBG3_081785C8,
+	Tsa_EfxDivineBG3_08178864,
+	Tsa_EfxDivineBG3_08178AEC,
+	Tsa_EfxDivineBG3_08178D68,
+	Tsa_EfxDivineBG3_08178F98,
+	Tsa_EfxDivineBG3_081791E8,
+	Tsa_EfxDivineBG3_08179418,
+	Tsa_EfxDivineBG3_08179610,
+	Tsa_EfxDivineBG3_081797F4,
+	Tsa_EfxDivineBG3_08179990,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxDivineOBJ[] = {
+	PROC_NAME_DEBUG("efxDivineOBJ"),
+	PROC_REPEAT(EfxDivineOBJ_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureola[] = {
+	PROC_NAME_DEBUG("efxAureola"),
+	PROC_REPEAT(EfxAureola_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaBG[] = {
+	PROC_NAME_DEBUG("efxAureolaBG"),
+	PROC_REPEAT(EfxAureolaBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *ImgArray_EfxAureolaBG[] = {
+	Img_EfxAureolaBG2,
+	Img_EfxAureolaBG_081BA374,
+	Img_EfxAureolaBG_081BA374,
+	Img_EfxAureolaBG_081BA374,
+	Img_EfxAureolaBG_081BA374,
+};
+
+CONST_DATA u16 *TsaArray_EfxAureolaBG[] = {
+	Tsa_EfxAureolaBG_081BB3DC,
+	Tsa_EfxAureolaBG_081BB75C,
+	Tsa_EfxAureolaBG_081BB8E0,
+	Tsa_EfxAureolaBG_081BBA04,
+	Tsa_EfxAureolaBG_081BBB00,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaBG2[] = {
+	PROC_NAME_DEBUG("efxAureolaBG2"),
+	PROC_REPEAT(EfxAureolaBG2_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaBG2COL[] = {
+	PROC_NAME_DEBUG("efxAureolaBG2COL"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_REPEAT(EfxAureolaBG2COL_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaOBJ[] = {
+	PROC_NAME_DEBUG("efxAureolaOBJ"),
+	PROC_REPEAT(EfxAureolaOBJ_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaOBJCtrl[] = {
+	PROC_NAME_DEBUG("efxAureolaOBJCtrl"),
+	PROC_REPEAT(EfxAureolaOBJCtrl_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaOBJ2[] = {
+	PROC_NAME_DEBUG("efxAureolaOBJ2"),
+	PROC_REPEAT(EfxAureolaOBJ2_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaOBJ3[] = {
+	PROC_NAME_DEBUG("efxAureolaOBJ3"),
+	PROC_REPEAT(EfxAureolaOBJ3_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxAureolaOBJ3Ctrl[] = {
+	PROC_NAME_DEBUG("efxAureolaOBJ3Ctrl"),
+	PROC_REPEAT(EfxAureolaOBJ3Ctrl_Loop),
+	PROC_END,
+};
+
 /**
  * Divine
  */
@@ -6619,13 +6814,44 @@ void NewEfxDivineBG(struct Anim *anim)
 {
 	struct ProcEfxBG *proc;
 
+	static const u16 frames[] = {
+		0x0, 2,
+		0x1, 2,
+		0x2, 2,
+		0x3, 2,
+		0x4, 2,
+		0x5, 2,
+		0x7, 1,
+		0x5, 1,
+		0x7, 1,
+		0x5, 1,
+		0x7, 1,
+		0x5, 1,
+		0x7, 1,
+		0x6, 2,
+		0x7, 2,
+		0x8, 2,
+		0x9, 2,
+		0xA, 2,
+		0xB, 2,
+		0xC, 2,
+		0xD, 2,
+		0xE, 2,
+		0xF, 2,
+		0x10, 2,
+		0x11, 2,
+		0x12, 2,
+		0x13, 2,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxDivineBG, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxDivineBG;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxDivineBG;
 	proc->tsar = TsaArray_EfxDivineBG;
 	proc->img = ImgArray_EfxDivineBG;
@@ -6646,13 +6872,20 @@ void NewEfxDivineBG2(struct Anim *anim)
 {
 	struct ProcEfxBG *proc;
 
+	static const u16 frames[] = {
+		0x0, 1,
+		0x1, 1,
+		0x2, 1,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxDivineBG, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxDivineBG2;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxDivineBG2;
 	proc->tsar = TsaArray_EfxDivineBG2;
 	proc->img = ImgArray_EfxDivineBG2;
@@ -6673,13 +6906,38 @@ void NewEfxDivineBG3(struct Anim *anim)
 {
 	struct ProcEfxBG *proc;
 
+	static const u16 frames[] = {
+		0x0, 2,
+		0x1, 2,
+		0x2, 2,
+		0x3, 2,
+		0x4, 2,
+		0x5, 2,
+		0x6, 2,
+		0x7, 2,
+		0x8, 2,
+		0x9, 2,
+		0xA, 2,
+		0xB, 2,
+		0xC, 2,
+		0xD, 2,
+		0xE, 2,
+		0xF, 2,
+		0x10, 2,
+		0x11, 2,
+		0x12, 2,
+		0x13, 2,
+		0x14, 2,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxDivineBG, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxDivineBG3;
+	proc->frame_config = frames;
 
 	proc->tsal = TsaArray_EfxDivineBG3;
 	proc->tsar = TsaArray_EfxDivineBG3;
@@ -6832,13 +7090,22 @@ void NewEfxAureolaBG(struct Anim *anim)
 {
 	struct ProcEfxBG *proc;
 
+	static const u16 frames[] = {
+		0x0, 200,
+		0x1, 2,
+		0x2, 2,
+		0x3, 2,
+		0x4, 134,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxAureolaBG, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxAureolaBG;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxAureolaBG;
 	proc->img  = ImgArray_EfxAureolaBG;
 
@@ -6936,6 +7203,14 @@ void NewEfxAureolaBG2COL(struct Anim *anim, int duration)
 {
 	struct ProcEfxBGCOL *proc;
 
+	static const u16 frames[] = {
+		0x0, 1,
+		0x1, 1,
+		0x2, 1,
+		0x1, 1,
+		-2
+	};
+
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxAureolaBG2COL, PROC_TREE_3);
 	proc->anim = anim;
@@ -6943,7 +7218,7 @@ void NewEfxAureolaBG2COL(struct Anim *anim, int duration)
 	proc->timer2 = 0;
 	proc->terminator = duration;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxAureolaBG2COL;
+	proc->frame_config = frames;
 	proc->pal = Pal_EfxAureolaBG2;
 
 	SpellFx_RegisterBgPal(Pal_EfxAureolaBG2, 0x20);
@@ -7243,6 +7518,157 @@ void EfxAureolaOBJ3Ctrl_Loop(struct ProcEfxAureolaOBJ *proc)
 	anim->yPosition = y;
 	proc->timer++;
 }
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypse[] = {
+	PROC_NAME_DEBUG("efxApocalypse"),
+	PROC_REPEAT(EfxApocalypse_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseBG[] = {
+	PROC_NAME_DEBUG("efxApocalypseBG"),
+	PROC_REPEAT(EfxApocalypseBG_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseBGCtrl[] = {
+	PROC_NAME_DEBUG("efxApocalypseBGCtrl"),
+	PROC_SLEEP(145),
+	PROC_REPEAT(EfxApocalypseBGCtrl_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseBGCOL[] = {
+	PROC_NAME_DEBUG("efxApocalypseBGCOL"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_REPEAT(EfxApocalypseBGCOL_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseOBJ[] = {
+	PROC_NAME_DEBUG("efxApocalypseOBJ"),
+	PROC_SLEEP(195),
+	PROC_REPEAT(EfxApocalypseOBJ_Loop1),
+	PROC_REPEAT(EfxApocalypseOBJ_Loop2),
+	PROC_REPEAT(EfxApocalypseOBJ_Loop3),
+	PROC_REPEAT(EfxApocalypseOBJ_Loop4),
+	PROC_END,
+};
+
+extern CONST_DATA AnimScr AnimScr_085EB93C[];
+extern CONST_DATA AnimScr AnimScr_085EB944[];
+extern CONST_DATA AnimScr AnimScr_085EB94C[];
+extern CONST_DATA AnimScr AnimScr_085EB954[];
+extern CONST_DATA AnimScr AnimScr_085EB95C[];
+extern CONST_DATA AnimScr AnimScr_085EB964[];
+extern CONST_DATA AnimScr AnimScr_085EB96C[];
+extern CONST_DATA AnimScr AnimScr_085EB974[];
+
+CONST_DATA u32 *AnimArray_EfxApocalypseOBJ[] = {
+	(u32 *)AnimScr_085EB93C,
+	(u32 *)AnimScr_085EB944,
+	(u32 *)AnimScr_085EB94C,
+	(u32 *)AnimScr_085EB954,
+	(u32 *)AnimScr_085EB95C,
+	(u32 *)AnimScr_085EB964,
+	(u32 *)AnimScr_085EB96C,
+	(u32 *)AnimScr_085EB974,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseBGCOL2[] = {
+	PROC_NAME_DEBUG("efxApocalypseBGCOL2"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_REPEAT(EfxApocalypseBGCOL2_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseDummy[] = {
+	PROC_NAME_DEBUG("efxApocalypseDummy"),
+	PROC_REPEAT(EfxApocalypseDummy_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseBgFlash1[] = {
+	PROC_NAME_DEBUG("efxApocalypseBgFlash1"),
+	PROC_REPEAT(EfxApocalypseBgFlash1_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseBgFlash2[] = {
+	PROC_NAME_DEBUG("efxApocalypseBgFlash2"),
+	PROC_REPEAT(EfxApocalypseBgFlash2_Loop1),
+	PROC_REPEAT(EfxApocalypseBgFlash2_Loop2),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseBG2[] = {
+	PROC_NAME_DEBUG("efxApocalypseBG2"),
+	PROC_REPEAT(EfxApocalypseBG2_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *ImgArray_EfxApocalypseBG2[] = {
+	Img_EfxApocalypseBG2_0817BBD4,
+	Img_EfxApocalypseBG2_0817D4E0,
+	Img_EfxApocalypseBG2_0817ED8C,
+	Img_EfxApocalypseBG2_081804F4,
+};
+
+CONST_DATA u16 *TsaArray_EfxApocalypseBG2[] = {
+	Tsa_EfxApocalypseBG2_08181E80,
+	Tsa_EfxApocalypseBG2_08182320,
+	Tsa_EfxApocalypseBG2_081827B0,
+	Tsa_EfxApocalypseBG2_08182C4C,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseOBJ2[] = {
+	PROC_NAME_DEBUG("efxApocalypseOBJ2"),
+	PROC_REPEAT(EfxApocalypseOBJ2_Loop1),
+	PROC_REPEAT(EfxApocalypseOBJ2_Loop2),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseOBJ3[] = {
+	PROC_NAME_DEBUG("efxApocalypseOBJ3"),
+	PROC_REPEAT(EfxApocalypseOBJ3_Loop),
+	PROC_END,
+};
+
+CONST_DATA int DuraArray_EfxApocalypseOBJ3RND[] = {
+	43, 38, 44, 36, 43, 41, 50, 44,
+	48, 35, 36, 34, 44, 45, 35, 35,
+	49, 38, 35, 44, 50, 46, 31, 45,
+	36, 50, 48, 42, 45, 36, 30, 41,
+	40, 44, 32, 34, 32, 34, 35, 36,
+	46, 33, 33, 45, 50, 33, 37, 39,
+	42, 49, -1,
+};
+
+CONST_DATA int LoArray_EfxApocalypseOBJ3RND[] = {
+	0x7C34, 0x85C7, 0x3FB2, 0x7C4D, 0x8810, 0xFF13, 0xDB8E, 0xA559,
+	0x7A6C, 0x585F, 0x9EEA, 0x3365, 0xFD48, 0xA3AB, 0x83C6, 0xC871,
+	0x5AA4, 0x12F7, 0x2422, 0x267D, 0x7C80, 0xF843, 0xB9FE, 0x2F89,
+	0xECDC, 0xC58F, 0x1F5A, 0xE595, 0xD5B8, 0x0CDB, 0xCE36, 0x6AA1,
+	0x0114, 0x8027, 0xE092, 0x00AD, 0xD8F0, 0xF173, 0x106E, 0x09B9,
+	0x674C, 0x52BF, 0xB7CA, 0x07C5, 0x5628, 0xB60B, 0xD0A6, 0x9CD1,
+	0xEF84, 0x4D57,
+};
+
+CONST_DATA int StateArray_EfxApocalypseOBJ3RND[] = {
+	1, 0, 6, 0, 2, 3, 4, 4,
+	0, 3, 4, 5, 6, 4, 5, 6,
+	4, 5, 1, 6, 3, 2, 4, 0,
+	3, 5, 2, 6, 6, 4, 4, 5,
+	0, 4, 6, 3, 4, 4, 1, 1,
+	4, 4, 3, 0, 0, 5, 2, 2,
+	3, 2,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxApocalypseOBJ3RND[] = {
+	PROC_NAME_DEBUG("efxApocalypseOBJ3RND"),
+	PROC_REPEAT(EfxApocalypseOBJ3RND_Loop),
+	PROC_END,
+};
 
 /**
  * AnimApocalypse
@@ -7611,6 +8037,25 @@ void NewEfxApocalypseBGCOL2(struct Anim *anim, int duration)
 {
 	struct ProcEfxBGCOL *proc;
 
+	static const u16 frames[] = {
+		0x0, 2,
+		0x1, 2,
+		0x2, 2,
+		0x3, 2,
+		0x4, 2,
+		0x5, 2,
+		0x6, 2,
+		0x7, 2,
+		0x8, 2,
+		0x9, 2,
+		0xA, 2,
+		0xB, 2,
+		0xC, 2,
+		0xD, 2,
+		0xE, 2,
+		-2
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxApocalypseBGCOL2, PROC_TREE_3);
@@ -7619,7 +8064,7 @@ void NewEfxApocalypseBGCOL2(struct Anim *anim, int duration)
 	proc->timer2 = 0;
 	proc->terminator = duration;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxApocalypseBGCOL2;
+	proc->frame_config = frames;
 	proc->pal = Pals_EfxApocalypseBGCOL2;
 }
 
@@ -7737,6 +8182,14 @@ void NewEfxApocalypseBG2(struct Anim *anim, int duration)
 	struct ProcEfxBG *proc;
 	struct Anim *anim_other;
 
+	static const u16 frames[] = {
+		0x0, 3,
+		0x1, 3,
+		0x2, 3,
+		0x3, 3,
+		-2
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxApocalypseBG2, PROC_TREE_3);
@@ -7745,7 +8198,7 @@ void NewEfxApocalypseBG2(struct Anim *anim, int duration)
 	proc->terminator = 0;
 	proc->unk30 = duration;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxApocalypseBG2;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxApocalypseBG2;
 	proc->tsar = TsaArray_EfxApocalypseBG2;
 	proc->img = ImgArray_EfxApocalypseBG2;
@@ -8005,6 +8458,265 @@ void EfxApocalypseOBJ3RND_Loop(struct ProcEfxApocalypseOBJ3RND *proc)
 		Proc_Break(proc);
 	}
 }
+struct ProcScr CONST_DATA ProcScr_EfxHazymoon[] = {
+	PROC_NAME_DEBUG("efxHazymoon"),
+	PROC_REPEAT(EfxHazymoon_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxHazymoonBG[] = {
+	PROC_NAME_DEBUG("efxHazymoonBG"),
+	PROC_REPEAT(EfxHazymoonBG_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *TsaArray_EfxHazymoonBG[] = {
+	Tsa_EfxHazymoonBG_0818BC0C,
+	Tsa_EfxHazymoonBG_0818BDB0,
+	Tsa_EfxHazymoonBG_0818BE50,
+	Tsa_EfxHazymoonBG_0818BEF0,
+	Tsa_EfxHazymoonBG_0818BFA4,
+	Tsa_EfxHazymoonBG_0818C058,
+	Tsa_EfxHazymoonBG_0818C10C,
+	Tsa_EfxHazymoonBG_0818C1E8,
+	Tsa_EfxHazymoonBG_0818C2C4,
+	Tsa_EfxHazymoonBG_0818C3D8,
+	Tsa_EfxHazymoonBG_0818C4EC,
+	Tsa_EfxHazymoonBG_0818C600,
+	Tsa_EfxHazymoonBG_0818C714,
+	Tsa_EfxHazymoonBG_0818C828,
+	Tsa_EfxHazymoonBG_0818C934,
+	Tsa_EfxHazymoonBG_0818CA0C,
+	Tsa_EfxHazymoonBG_0818CB1C,
+	Tsa_EfxHazymoonBG_0818CC84,
+	Tsa_EfxHazymoonBG_0818CE48,
+	Tsa_EfxHazymoonBG_0818D00C,
+	Tsa_EfxHazymoonBG_0818D1C8,
+	Tsa_EfxHazymoonBG_0818D378,
+	Tsa_EfxHazymoonBG_0818D528,
+	Tsa_EfxHazymoonBG_0818D6D8,
+	Tsa_EfxHazymoonBG_0818D87C,
+	Tsa_EfxHazymoonBG_0818DA14,
+	Tsa_EfxHazymoonBG_0818DBA4,
+};
+
+CONST_DATA u16 *ImgArray_EfxHazymoonBG[] = {
+	Img_EfxHazymoonBG_0818398C,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_08183CD4,
+	Img_EfxHazymoonBG_081845A8,
+	Img_EfxHazymoonBG_081845A8,
+	Img_EfxHazymoonBG_081845A8,
+	Img_EfxHazymoonBG_081855E4,
+	Img_EfxHazymoonBG_08186250,
+	Img_EfxHazymoonBG_08186E6C,
+	Img_EfxHazymoonBG_081879C4,
+	Img_EfxHazymoonBG_08188518,
+	Img_EfxHazymoonBG_08188FC8,
+	Img_EfxHazymoonBG_081899F0,
+	Img_EfxHazymoonBG_0818A2EC,
+	Img_EfxHazymoonBG_0818ABB8,
+	Img_EfxHazymoonBG_0818B438,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxHazymoonOBJ2[] = {
+	PROC_NAME_DEBUG("efxHazymoonOBJ2"),
+	PROC_ONEND(EfxHazymoonOBJ2_OnEnd),
+	PROC_REPEAT(EfxHazymoonOBJ2_Loop1),
+	PROC_REPEAT(EfxHazymoonOBJ2_Loop2),
+	PROC_REPEAT(EfxHazymoonOBJ2_Loop3),
+	PROC_REPEAT(EfxHazymoonOBJ2_Loop1),
+	PROC_REPEAT(EfxHazymoonOBJ2_Loop2),
+	PROC_REPEAT(EfxHazymoonOBJ2_Loop3),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxHazymoonOBJ3[] = {
+	PROC_NAME_DEBUG("efxHazymoonOBJ3"),
+	PROC_REPEAT(EfxHazymoonOBJ3_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 gEclipseAnimSpriteCoordinates[] = {
+	0x60, 0x38, 0x30, 0x68, 0xA0, 0x40, 0x58, 0x88,
+	0xA0, 0x88, 0xC0, 0x60,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxHazymoonOBJ3RND[] = {
+	PROC_NAME_DEBUG("efxHazymoonOBJ3RND"),
+	PROC_ONEND(EfxHazymoonOBJ3RND_Loop),
+	PROC_SLEEP(100),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFenrir[] = {
+	PROC_NAME_DEBUG("efxFenrir"),
+	PROC_REPEAT(EfxFenrir_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFenrirBG[] = {
+	PROC_NAME_DEBUG("efxFenrirBG"),
+	PROC_ONEND(EfxFenrirBG_OnEnd),
+	PROC_REPEAT(EfxFenrirBG_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFenrirBGCOL[] = {
+	PROC_NAME_DEBUG("efxFenrirBGCOL"),
+	PROC_MARK(PROC_MARK_PAL_CHG),
+	PROC_ONEND(EfxFenrirBGCOL_OnEnd),
+	PROC_REPEAT(EfxFenrirBGCOL_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFenrirOBJ[] = {
+	PROC_NAME_DEBUG("efxFenrirOBJ"),
+	PROC_REPEAT(EfxFenrirOBJ_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFenrirBG2[] = {
+	PROC_NAME_DEBUG("efxFenrirBG2"),
+	PROC_REPEAT(EfxFenrirBG2_Loop),
+	PROC_END,
+};
+
+CONST_DATA u16 *ImgArray_EfxFenrirBG2_A[] = {
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_0818F5EC,
+	Img_EfxFenrirBG2_A_08190804,
+	Img_EfxFenrirBG2_A_08191B54,
+	Img_EfxFenrirBG2_A_081929D0,
+};
+
+CONST_DATA u16 *TsaArray_EfxFenrirBG2_A[] = {
+	Tsa_EfxFenrirBG2_A_081935D8,
+	Tsa_EfxFenrirBG2_A_08193694,
+	Tsa_EfxFenrirBG2_A_08193750,
+	Tsa_EfxFenrirBG2_A_0819380C,
+	Tsa_EfxFenrirBG2_A_081938C8,
+	Tsa_EfxFenrirBG2_A_08193984,
+	Tsa_EfxFenrirBG2_A_08193A40,
+	Tsa_EfxFenrirBG2_A_08193B44,
+	Tsa_EfxFenrirBG2_A_08193C48,
+	Tsa_EfxFenrirBG2_A_08193D4C,
+	Tsa_EfxFenrirBG2_A_08193E50,
+	Tsa_EfxFenrirBG2_A_08193F54,
+	Tsa_EfxFenrirBG2_A_08194058,
+	Tsa_EfxFenrirBG2_A_08194198,
+	Tsa_EfxFenrirBG2_A_081942DC,
+	Tsa_EfxFenrirBG2_A_08194420,
+	Tsa_EfxFenrirBG2_A_08194564,
+	Tsa_EfxFenrirBG2_A_081946A8,
+	Tsa_EfxFenrirBG2_A_081947EC,
+	Tsa_EfxFenrirBG2_A_0819496C,
+	Tsa_EfxFenrirBG2_A_08194AF0,
+	Tsa_EfxFenrirBG2_A_08194C74,
+	Tsa_EfxFenrirBG2_A_08194DD4,
+	Tsa_EfxFenrirBG2_A_08194F34,
+	Tsa_EfxFenrirBG2_A_08195094,
+	Tsa_EfxFenrirBG2_A_08195238,
+	Tsa_EfxFenrirBG2_A_081953DC,
+	Tsa_EfxFenrirBG2_A_08195580,
+	Tsa_EfxFenrirBG2_A_081956F0,
+	Tsa_EfxFenrirBG2_A_08195860,
+	Tsa_EfxFenrirBG2_A_081959D0,
+	Tsa_EfxFenrirBG2_A_08195B74,
+	Tsa_EfxFenrirBG2_A_08195D18,
+	Tsa_EfxFenrirBG2_A_08195EBC,
+	Tsa_EfxFenrirBG2_A_08196030,
+	Tsa_EfxFenrirBG2_A_081961A4,
+	Tsa_EfxFenrirBG2_A_08196318,
+	Tsa_EfxFenrirBG2_A_081964C8,
+	Tsa_EfxFenrirBG2_A_08196678,
+	Tsa_EfxFenrirBG2_A_08196828,
+	Tsa_EfxFenrirBG2_A_0819699C,
+	Tsa_EfxFenrirBG2_A_08196B10,
+	Tsa_EfxFenrirBG2_A_08196C84,
+	Tsa_EfxFenrirBG2_A_08196E38,
+	Tsa_EfxFenrirBG2_A_08196FEC,
+	Tsa_EfxFenrirBG2_A_081971A0,
+	Tsa_EfxFenrirBG2_A_08197318,
+	Tsa_EfxFenrirBG2_A_08197490,
+	Tsa_EfxFenrirBG2_A_08197608,
+	Tsa_EfxFenrirBG2_A_08197860,
+	Tsa_EfxFenrirBG2_A_08197A68,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFenrirOBJ2[] = {
+	PROC_NAME_DEBUG("efxFenrirOBJ2"),
+	PROC_REPEAT(EfxFenrirOBJ2_Loop),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EfxFenrirOBJ2Chiri[] = {
+	PROC_NAME_DEBUG("efxFenrirOBJ2Chiri"),
+	PROC_REPEAT(EfxFenrirOBJ2Chiri_Loop),
+	PROC_END,
+};
+
+CONST_DATA int gFenrirSpriteAngles[] = {
+	184, 85, 66, 119, 158, 39, 135, 210,
+};
+
 /**
  * Eclipse
  */
@@ -8095,13 +8807,18 @@ void NewEfxHazymoonBG1(struct Anim *anim)
 {
 	struct ProcEfxEclipseBG *proc;
 
+	static const u16 frames[] = {
+		0x0, 190,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxHazymoonBG, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxHazymoonBG1;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxHazymoonBG;
 	proc->tsar = TsaArray_EfxHazymoonBG;
 	proc->img = ImgArray_EfxHazymoonBG;
@@ -8116,13 +8833,57 @@ void NewEfxHazymoonBG2(struct Anim *anim)
 {
 	struct ProcEfxEclipseBG *proc;
 
+	static const u16 frames[] = {
+		0x1, 1,
+		0x2, 1,
+		0x3, 1,
+		0x4, 1,
+		0x5, 2,
+		0x6, 2,
+		0x7, 2,
+		0x8, 3,
+		0x9, 3,
+		0xA, 3,
+		0xB, 3,
+		0xC, 4,
+		0xD, 5,
+		0xC, 4,
+		0xB, 3,
+		0xA, 3,
+		0xB, 3,
+		0xC, 4,
+		0xD, 5,
+		0xC, 4,
+		0xB, 3,
+		0xA, 3,
+		0xB, 3,
+		0xC, 4,
+		0xD, 5,
+		0xC, 4,
+		0xB, 3,
+		0xA, 3,
+		0xB, 3,
+		0xC, 4,
+		0xD, 5,
+		0x9, 1,
+		0x8, 1,
+		0x7, 1,
+		0x6, 1,
+		0x5, 1,
+		0x4, 1,
+		0x3, 1,
+		0x2, 1,
+		0x1, 1,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxHazymoonBG, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxHazymoonBG2;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxHazymoonBG;
 	proc->tsar = TsaArray_EfxHazymoonBG;
 	proc->img = ImgArray_EfxHazymoonBG;
@@ -8137,13 +8898,30 @@ void NewEfxHazymoonBG3(struct Anim *anim)
 {
 	struct ProcEfxEclipseBG *proc;
 
+	static const u16 frames[] = {
+		0xE, 3,
+		0xF, 3,
+		0x10, 3,
+		0x11, 3,
+		0x12, 3,
+		0x13, 2,
+		0x14, 2,
+		0x15, 2,
+		0x16, 2,
+		0x17, 2,
+		0x18, 2,
+		0x19, 2,
+		0x1A, 2,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxHazymoonBG, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxHazymoonBG3;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxHazymoonBG;
 	proc->tsar = TsaArray_EfxHazymoonBG;
 	proc->img = ImgArray_EfxHazymoonBG;
@@ -8476,6 +9254,25 @@ void NewEfxFenrirBGCOL(struct Anim *anim, int duration)
 {
 	struct ProcEfxBGCOL *proc;
 
+	static const u16 frames[] = {
+		0x0, 4,
+		0x1, 4,
+		0x2, 4,
+		0x3, 4,
+		0x4, 4,
+		0x5, 4,
+		0x6, 4,
+		0x7, 4,
+		0x8, 4,
+		0x9, 4,
+		0xA, 4,
+		0xB, 4,
+		0xC, 4,
+		0xD, 4,
+		0xE, 4,
+		-2
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxFenrirBGCOL, PROC_TREE_3);
@@ -8484,7 +9281,7 @@ void NewEfxFenrirBGCOL(struct Anim *anim, int duration)
 	proc->timer2 = 0;
 	proc->terminator = duration;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxFenrirBGCOL;
+	proc->frame_config = frames;
 	proc->pal = Pal_EfxFenrirBGCOL;
 
 	SpellFx_RegisterBgPal(Pal_EfxFenrirBGCOL, 0x20);
@@ -8548,13 +9345,81 @@ void NewEfxFenrirBG2_A(struct Anim *anim)
 {
 	struct ProcEfxBG *proc;
 
+	static const u16 frames[] = {
+		0x0, 4,
+		0x1, 4,
+		0x2, 4,
+		0x3, 4,
+		0x4, 4,
+		0x5, 4,
+		0x3, 4,
+		0x6, 4,
+		0x7, 4,
+		0x8, 4,
+		0x9, 4,
+		0xA, 4,
+		0xB, 4,
+		0x9, 4,
+		0xC, 4,
+		0xD, 4,
+		0xE, 4,
+		0xF, 4,
+		0x10, 4,
+		0x11, 4,
+		0xF, 4,
+		0x12, 4,
+		0x13, 4,
+		0x14, 4,
+		0x15, 4,
+		0x16, 4,
+		0x17, 4,
+		0x15, 4,
+		0x18, 4,
+		0x19, 4,
+		0x1A, 4,
+		0x1B, 4,
+		0x1C, 4,
+		0x1D, 4,
+		0x1B, 4,
+		0x1E, 4,
+		0x1F, 4,
+		0x20, 4,
+		0x21, 4,
+		0x22, 4,
+		0x23, 4,
+		0x21, 4,
+		0x24, 4,
+		0x25, 4,
+		0x26, 4,
+		0x27, 4,
+		0x28, 4,
+		0x29, 4,
+		0x27, 4,
+		0x2A, 4,
+		0x2B, 4,
+		0x2C, 4,
+		0x2D, 4,
+		0x2E, 4,
+		0x2F, 4,
+		0x2D, 4,
+		0x2E, 4,
+		0x2F, 4,
+		0x2D, 4,
+		0x2E, 4,
+		0x2F, 4,
+		0x30, 1,
+		0x31, 1,
+		0x32, 1,
+		-1
+	};
+
 	gEfxBgSemaphore++;
 
 	proc = SpawnProc(ProcScr_EfxFenrirBG2, PROC_TREE_3);
 	proc->anim = anim;
 	proc->timer = 0;
 	proc->frame = 0;
-	proc->frame_config = FrameArray_EfxFenrirBG2_A;
+	proc->frame_config = frames;
 	proc->tsal = TsaArray_EfxFenrirBG2_A;
 	proc->tsar = TsaArray_EfxFenrirBG2_A;
 	proc->img = ImgArray_EfxFenrirBG2_A;
