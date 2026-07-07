@@ -9650,3 +9650,185 @@ void EfxLive_Loop(struct ProcEfx *proc)
 		Proc_Break(proc);
 	}
 }
+
+void StartSpellAnimMend(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxRelive, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+}
+
+void EfxRelive_Loop(struct ProcEfx *proc)
+{
+	struct Anim *target = GetAnimAnotherSide(proc->anim);
+	int duration = EfxGetCamMovDuration();
+
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		NewEfxLiveOBJ(proc->anim);
+		PlaySFX(SONG_F3, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 52) {
+		NewEfxLiveBG_A(proc->anim, 1);
+		NewEfxLiveBGCOL_A(proc->anim, 1);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 35, 25, 1);
+
+		PlaySFX(SONG_110, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 55) {
+		target->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+	} else if (proc->timer == 113) {
+		NewEfxFarAttackWithDistance(proc->anim, -1);
+	} else if (proc->timer == duration + 114) {
+		NewEfxLiveBG_B(proc->anim, 1);
+		NewEfxLiveBGCOL_B(proc->anim, 1);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 29, 25, 1);
+
+		PlaySFX(SONG_111, 0x100, target->xPosition, 1);
+	} else if (proc->timer == duration + 166) {
+		NewEfxHpBarLive(target);
+	} else if (proc->timer == duration + 181) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+
+		if (GetAnimNextRoundType(target) != -1)
+			target->flags3 |= ANIM_BIT3_NEXT_ROUND_START;
+
+		Proc_Break(proc);
+	}
+}
+
+void StartSpellAnimRecover(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxRecover, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+}
+
+void EfxRecover_Loop(struct ProcEfx *proc)
+{
+	struct Anim *target = GetAnimAnotherSide(proc->anim);
+	int duration = EfxGetCamMovDuration();
+
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		NewEfxLiveOBJ(proc->anim);
+		PlaySFX(SONG_F3, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 52) {
+		NewEfxLiveBG_A(proc->anim, 2);
+		NewEfxLiveBGCOL_A(proc->anim, 2);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 35, 25, 1);
+
+		PlaySFX(SONG_112, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 55) {
+		target->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+	} else if (proc->timer == 113) {
+		NewEfxFarAttackWithDistance(proc->anim, -1);
+	} else if (proc->timer == duration + 114) {
+		NewEfxLiveBG_B(proc->anim, 2);
+		NewEfxLiveBGCOL_B(proc->anim, 2);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 29, 25, 1);
+
+		PlaySFX(SONG_113, 0x100, target->xPosition, 1);
+	} else if (proc->timer == duration + 166) {
+		NewEfxHpBarLive(target);
+	} else if (proc->timer == duration + 181) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+
+		if (GetAnimNextRoundType(target) != -1)
+			target->flags3 |= ANIM_BIT3_NEXT_ROUND_START;
+
+		Proc_Break(proc);
+	}
+}
+
+void StartSpellAnimPhysic(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxReblow, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+}
+
+void EfxReblow_Loop(struct ProcEfx *proc)
+{
+	struct Anim *target = GetAnimAnotherSide(proc->anim);
+	int duration = EfxGetCamMovDuration();
+
+	proc->timer++;
+
+	if (proc->timer == 1) {
+		NewEfxLiveOBJ(proc->anim);
+		NewEfxReblowOBJ(proc->anim, 0);
+		PlaySFX(SONG_F3, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 52) {
+		NewEfxLiveBG_A(proc->anim, 0);
+		NewEfxLiveBGCOL_A(proc->anim, 0);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 35, 25, 1);
+
+		PlaySFX(SONG_10E, 0x100, proc->anim->xPosition, 1);
+	} else if (proc->timer == 55) {
+		target->flags3 |= ANIM_BIT3_C02_BLOCK_END | ANIM_BIT3_C01_BLOCK_END_INBATTLE;
+	} else if (proc->timer == 151) {
+		NewEfxReblowOBJ(proc->anim, 1);
+		NewEfxFarAttackWithDistance(proc->anim, -1);
+	} else if (proc->timer == duration + 161) {
+		NewEfxLiveBG_B(proc->anim, 0);
+		NewEfxLiveBGCOL_B(proc->anim, 0);
+
+		SetBlendAlpha(0, 16);
+
+		NewEfxLiveALPHA(proc->anim, 1, 12, 0);
+		NewEfxLiveALPHA(proc->anim, 29, 25, 1);
+
+		PlaySFX(SONG_10F, 0x100, target->xPosition, 1);
+	} else if (proc->timer == duration + 211) {
+		NewEfxHpBarLive(target);
+	} else if (proc->timer == duration + 221) {
+		SpellFx_Finish();
+		EndEfxSpellCastAsync();
+
+		if (GetAnimNextRoundType(target) != -1)
+			target->flags3 |= ANIM_BIT3_NEXT_ROUND_START;
+
+		Proc_Break(proc);
+	}
+}

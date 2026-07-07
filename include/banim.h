@@ -1570,11 +1570,14 @@ void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc);
 void StartSpellAnimHeal(struct Anim *anim);
 void EfxLive_Loop(struct ProcEfx *proc);
 // StartSpellAnimMend
-// EfxRelive_Loop
+void StartSpellAnimMend(struct Anim *anim);
+void EfxRelive_Loop(struct ProcEfx *proc);
 // StartSpellAnimRecover
-// EfxRecover_Loop
+void StartSpellAnimRecover(struct Anim *anim);
+void EfxRecover_Loop(struct ProcEfx *proc);
 // StartSpellAnimPhysic
-// EfxReblow_Loop
+void StartSpellAnimPhysic(struct Anim *anim);
+void EfxReblow_Loop(struct ProcEfx *proc);
 void NewEfxLiveBG_A(struct Anim *anim, int type);
 void NewEfxLiveBG_B(struct Anim *anim, int type);
 // EfxLiveBG_Loop
@@ -1589,7 +1592,7 @@ void NewEfxLiveOBJ(struct Anim *anim);
 // EfxLiveOBJ_Loop
 // EfxReserveOBJ_Loop1
 // EfxReserveOBJ_Loop2
-// NewEfxReblowOBJ
+void NewEfxReblowOBJ(struct Anim *anim, int type);
 // EfxReblowOBJ_Loop1
 // EfxReblowOBJ_Loop2
 // StartSpellAnimFortify
