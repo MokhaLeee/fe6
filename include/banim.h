@@ -1653,13 +1653,13 @@ void EfxBerserkOBJ_Loop4(struct ProcEfxOBJ *proc);
 void EfxBerserkOBJ_Loop6(struct ProcEfxOBJ *proc);
 void EfxBerserkOBJ_Loop8(struct ProcEfxOBJ *proc);
 void EfxBerserkOBJ_Loop10(struct ProcEfxOBJ *proc);
-// StartSpellAnimBarrier
-// EfxMshield_Loop
-// NewEfxMshieldBG
-// EfxMshieldBG_Loop
-// NewEfxMshieldOBJ
-// NewEfxMshieldOBJ2
-// EfxMshieldOBJ_OnEnd
+void StartSpellAnimBarrier(struct Anim *anim);
+void EfxMshield_Loop(struct ProcEfx *proc);
+void NewEfxMshieldBG(struct Anim *anim);
+void EfxMshieldBG_Loop(struct ProcEfxBG *proc);
+void NewEfxMshieldOBJ(struct Anim *anim);
+void NewEfxMshieldOBJ2(struct Anim *anim);
+void EfxMshieldOBJ_OnEnd(struct ProcEfxOBJ *proc);
 
 struct ProcEfxDamageMojiEffectOBJ {
     PROC_HEADER;

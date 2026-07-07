@@ -352,7 +352,6 @@ SECTIONS
         src/banim_ekrterrainfx.o(.text);
         src/banim_ekrarena.o(.text);
         src/banim_efxmagic.o(.text);
-        asm/banim_efxmagic.o(.text);
         src/banim_efxhit.o(.text);
         src/banim_efxmisc.o(.text);
         src/banim_efxopmagic.o(.text);
