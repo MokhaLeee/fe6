@@ -1578,8 +1578,8 @@ void EfxRecover_Loop(struct ProcEfx *proc);
 // StartSpellAnimPhysic
 void StartSpellAnimPhysic(struct Anim *anim);
 void EfxReblow_Loop(struct ProcEfx *proc);
-void NewEfxLiveBG_A(struct Anim *anim, int type);
-void NewEfxLiveBG_B(struct Anim *anim, int type);
+void NewEfxLiveBG_A(struct Anim *anim, u32 type);
+void NewEfxLiveBG_B(struct Anim *anim, u32 type);
 // EfxLiveBG_Loop
 void NewEfxLiveBGCOL_A(struct Anim *anim, int type);
 void NewEfxLiveBGCOL_B(struct Anim *anim, int type);

@@ -9832,3 +9832,86 @@ void EfxReblow_Loop(struct ProcEfx *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxLiveBG_A(struct Anim *anim, u32 type)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxLiveBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+
+	switch (type) {
+	case 0:
+		proc->unk29 = 1;
+		proc->frame_config = FrameArray1_EfxLiveBG;
+		proc->tsal = (u16 **)Tsa_Uncomp_EfxLiveBG_BB_L;
+		proc->tsar = (u16 **)Tsa_Uncomp_EfxLiveBG_BB_L;
+		SpellFx_RegisterBgGfx(Img_EfxHealCommon, 0x80 << 3);
+
+		if (gEkrDistanceType != 0) {
+			if (GetAnimPosition(proc->anim) == 0)
+				SetBgOffset(BG_1, 0x18, 0);
+			else
+				SetBgOffset(BG_1, 0xe8, 0);
+		}
+		break;
+
+	case 1:
+	case 2:
+		proc->unk29 = 1;
+		proc->frame_config = FrameArray3_EfxLiveBG;
+		proc->tsal = (u16 **)Tsa_Uncomp_EfxLiveBG_BA_L;
+		proc->tsar = (u16 **)Tsa_Uncomp_EfxLiveBG_BA_R;
+		SpellFx_RegisterBgGfx(Img_EfxLiveBG, 0xa8 * 0x20);
+		break;
+
+	default:
+		break;
+	}
+
+	SpellFx_SetSomeColorEffect();
+}
+
+void NewEfxLiveBG_B(struct Anim *anim, u32 type)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxLiveBG, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->unk29 = 0;
+
+	switch (type) {
+	case 0:
+		proc->frame_config = FrameArray2_EfxLiveBG;
+		proc->tsal = (u16 **)Tsa_Uncomp_EfxLiveBG_BB_L;
+		proc->tsar = (u16 **)Tsa_Uncomp_EfxLiveBG_BB_L;
+		SpellFx_RegisterBgGfx(Img_EfxHealCommon, 0x80 << 3);
+
+		if (gEkrDistanceType != 0) {
+			if (GetAnimPosition(proc->anim) == 0)
+				SetBgOffset(BG_1, 0xe8, 0);
+			else
+				SetBgOffset(BG_1, 0x18, 0);
+		}
+		break;
+
+	case 1:
+	case 2:
+		proc->frame_config = FrameArray4_EfxLiveBG;
+		proc->tsal = (u16 **)Tsa_Uncomp_EfxLiveBG_BA_L;
+		proc->tsar = (u16 **)Tsa_Uncomp_EfxLiveBG_BA_R;
+		SpellFx_RegisterBgGfx(Img_EfxLiveBG, 0xa8 * 0x20);
+		break;
+
+	default:
+		break;
+	}
+
+	SpellFx_SetSomeColorEffect();
+}
