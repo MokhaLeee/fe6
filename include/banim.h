@@ -1618,16 +1618,16 @@ void NewEfxSilenceBG(struct Anim *anim);
 void EfxSilenceBG_Loop(struct ProcEfxBG *proc);
 void NewEfxSilenceOBJ(struct Anim *anim);
 void EfxSilenceOBJ_OnEnd(struct ProcEfxOBJ *proc);
-// StartSpellAnimSleep
-// EfxSleep_Loop
-// NewEfxSleepBG
-// EfxSleepBG_Loop
-// NewEfxSleepOBJ
-// NewEfxSleepOBJ2
-// EfxSleepOBJ_OnEnd
-// NewEfxSleepSE
-// EfxSleepSE_PlaySE
-// EfxSleepSE_OnEnd
+void StartSpellAnimSleep(struct Anim *anim);
+void EfxSleep_Loop(struct ProcEfx *proc);
+void NewEfxSleepBG(struct Anim *anim);
+void EfxSleepBG_Loop(struct ProcEfxBG *proc);
+void NewEfxSleepOBJ(struct Anim *anim);
+void NewEfxSleepOBJ2(struct Anim *anim);
+void EfxSleepOBJ_OnEnd(void);
+void NewEfxSleepSE(struct Anim *anim);
+void EfxSleepSE_PlaySE(struct ProcEfx *proc);
+void EfxSleepSE_OnEnd(void);
 // StartSpellAnimHammerne
 // EfxHammarne_Loop
 // NewEfxHammarneBG
