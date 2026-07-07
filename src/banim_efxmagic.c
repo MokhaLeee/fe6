@@ -10342,3 +10342,99 @@ void EfxReserveBGCOL_Loop(struct ProcEfxBGCOL *proc)
 		Proc_Break(proc);
 	}
 }
+
+void NewEfxReserveBG2(struct Anim *anim)
+{
+	struct ProcEfxBG *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxReserveBG2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxReserveBG2;
+	proc->tsal = TsaArray_EfxReserveBG2;
+	proc->tsar = TsaArray_EfxReserveBG2;
+	SpellFx_RegisterBgGfx(Img_EfxLiveBG, 0xa8 * 0x20);
+
+	gDispIo.bg0_ct.priority = 0;
+	gDispIo.bg2_ct.priority = 1;
+	gDispIo.bg1_ct.priority = 2;
+	gDispIo.bg3_ct.priority = 3;
+
+	PutEfxTerrainToLowerLayer();
+
+	anim->oam2 = (anim->oam2 & 0xF3FF) | OAM2_LAYER(1);
+
+	SpellFx_SetSomeColorEffect();
+	SetBlendTargetA(0, 1, 0, 0, 0);
+	SetBlendTargetB(0, 0, 0, 1, 0);
+}
+
+void EfxReserveBG2_Loop(struct ProcEfxBG *proc)
+{
+	struct Anim *target = GetAnimAnotherSide(proc->anim);
+	struct Anim *caster = proc->anim;
+	int ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame,
+				     proc->frame_config);
+
+	if (ret >= 0) {
+		u16 **tsaL = proc->tsal;
+		u16 **tsaR = proc->tsar;
+
+		SpellFx_WriteBgMap(target, tsaL[ret], tsaR[ret]);
+		return;
+	}
+
+	if (ret != -1)
+		return;
+
+	SpellFx_ClearBG1();
+	gEfxBgSemaphore--;
+
+	gDispIo.bg0_ct.priority = 0;
+	gDispIo.bg1_ct.priority = 1;
+	gDispIo.bg2_ct.priority = 2;
+	gDispIo.bg3_ct.priority = 3;
+
+	caster->oam2 = (caster->oam2 & 0xF3FF) | OAM2_LAYER(2);
+
+	SpellFx_ClearColorEffects();
+	Proc_Break(proc);
+}
+
+void NewEfxReserveBGCOL2(struct Anim *anim, u32 kind)
+{
+	struct ProcEfxBGCOL *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxReserveBGCOL2, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxReserveBGCOL2;
+
+	if (kind == 0)
+		proc->pal = Pals1_EfxLiveBGCOL;
+	else if (kind == 1)
+		proc->pal = Pals2_EfxReserveBGCOL2;
+	else
+		proc->pal = Pals2_EfxReserveBGCOL2;
+}
+
+void EfxReserveBGCOL2_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret;
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame,
+				 proc->frame_config);
+
+	if (ret >= 0) {
+		const u16 *pal = proc->pal;
+
+		SpellFx_RegisterBgPal(pal + ret * 0x10, 0x20);
+	} else if (ret == -1) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}

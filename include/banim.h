@@ -1603,9 +1603,9 @@ void EfxReserveBG_Loop(struct ProcEfxBG *proc);
 void NewEfxReserveBGCOL(struct Anim *anim, u32 kind);
 void EfxReserveBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxReserveBG2(struct Anim *anim);
-// EfxReserveBG2_Loop
-void NewEfxReserveBGCOL2(struct Anim *anim, u8 kind);
-// EfxReserveBGCOL2_Loop
+void EfxReserveBG2_Loop(struct ProcEfxBG *proc);
+void NewEfxReserveBGCOL2(struct Anim *anim, u32 kind);
+void EfxReserveBGCOL2_Loop(struct ProcEfxBGCOL *proc);
 // StartSpellAnimRestore
 // EfxRest_Loop
 // NewEfxRestBG
@@ -3713,7 +3713,7 @@ extern u16 Tsa_EfxReserveBG_081AE304[];
 extern u16 Tsa_EfxReserveBG2_081AE410[];
 extern u16 const Pals1_EfxReserveBGCOL[];
 extern u16 const Pals2_EfxReserveBGCOL[];
-// extern ??? Pals2_EfxReserveBGCOL2[];
+extern u16 const Pals2_EfxReserveBGCOL2[];
 extern u16 Img_EfxRestBG_081AFC70[];
 extern u16 Img_EfxRestBG_081B029C[];
 extern u16 Img_EfxRestBG_081B0994[];
