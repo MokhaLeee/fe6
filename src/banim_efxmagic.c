@@ -10223,3 +10223,17 @@ void StartSpellAnimFortify(struct Anim *anim)
 	proc->timer = 0;
 	proc->hitted = 0;
 }
+
+void StartSpellAnimLatona(struct Anim *anim)
+{
+	struct ProcEfx *proc;
+
+	SpellFx_Begin();
+	NewEfxSpellCast();
+	SpellFx_ClearBG1Position();
+
+	proc = SpawnProc(ProcScr_EfxReserve, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->hitted = 1;
+}

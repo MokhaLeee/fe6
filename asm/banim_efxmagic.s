@@ -3,28 +3,6 @@
 	.syntax unified
 
 
-	thumb_func_start StartSpellAnimLatona
-StartSpellAnimLatona: @ 0x08055264
-	push {r4, lr}
-	adds r4, r0, #0
-	bl SpellFx_Begin
-	bl NewEfxSpellCast
-	bl SpellFx_ClearBG1Position
-	ldr r0, .L08055290 @ =ProcScr_EfxReserve
-	movs r1, #3
-	bl SpawnProc
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	adds r0, #0x29
-	movs r1, #1
-	strb r1, [r0]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08055290: .4byte ProcScr_EfxReserve
-
 	thumb_func_start EfxReserve_Loop
 EfxReserve_Loop: @ 0x08055294
 	push {r4, r5, lr}
