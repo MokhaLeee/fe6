@@ -10306,3 +10306,39 @@ void EfxReserveBG_Loop(struct ProcEfxBG *proc)
 	SpellFx_ClearColorEffects();
 	Proc_Break(proc);
 }
+
+void NewEfxReserveBGCOL(struct Anim *anim, u32 kind)
+{
+	struct ProcEfxBGCOL *proc;
+
+	gEfxBgSemaphore++;
+	proc = SpawnProc(ProcScr_EfxReserveBGCOL, PROC_TREE_3);
+	proc->anim = anim;
+	proc->timer = 0;
+	proc->frame = 0;
+	proc->frame_config = FrameArray_EfxReserveBGCOL;
+
+	if (kind == 0)
+		proc->pal = Pals1_EfxReserveBGCOL;
+	else if (kind == 1)
+		proc->pal = Pals2_EfxReserveBGCOL;
+	else
+		proc->pal = Pals2_EfxReserveBGCOL;
+}
+
+void EfxReserveBGCOL_Loop(struct ProcEfxBGCOL *proc)
+{
+	int ret;
+
+	ret = EfxAdvanceFrameLut((i16 *)&proc->timer, (i16 *)&proc->frame,
+				 proc->frame_config);
+
+	if (ret >= 0) {
+		const u16 *pal = proc->pal;
+
+		SpellFx_RegisterBgPal(pal + ret * 0x10, 0x20);
+	} else if (ret == -1) {
+		gEfxBgSemaphore--;
+		Proc_Break(proc);
+	}
+}

@@ -1600,8 +1600,8 @@ void StartSpellAnimLatona(struct Anim *anim);
 void EfxReserve_Loop(struct ProcEfx *proc);
 void NewEfxReserveBG(struct Anim *anim);
 void EfxReserveBG_Loop(struct ProcEfxBG *proc);
-void NewEfxReserveBGCOL(struct Anim *anim, u8 kind);
-// EfxReserveBGCOL_Loop
+void NewEfxReserveBGCOL(struct Anim *anim, u32 kind);
+void EfxReserveBGCOL_Loop(struct ProcEfxBGCOL *proc);
 void NewEfxReserveBG2(struct Anim *anim);
 // EfxReserveBG2_Loop
 void NewEfxReserveBGCOL2(struct Anim *anim, u8 kind);
@@ -3711,8 +3711,8 @@ extern u16 Tsa_EfxReserveBG_081AE0F8[];
 extern u16 Tsa_EfxReserveBG_081AE1F8[];
 extern u16 Tsa_EfxReserveBG_081AE304[];
 extern u16 Tsa_EfxReserveBG2_081AE410[];
-// extern ??? Pals1_EfxReserveBGCOL[];
-// extern ??? Pals2_EfxReserveBGCOL[];
+extern u16 const Pals1_EfxReserveBGCOL[];
+extern u16 const Pals2_EfxReserveBGCOL[];
 // extern ??? Pals2_EfxReserveBGCOL2[];
 extern u16 Img_EfxRestBG_081AFC70[];
 extern u16 Img_EfxRestBG_081B029C[];
