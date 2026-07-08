@@ -31,63 +31,6 @@ ProcScr_0868AAA8: @ 0868AAA8
 
     .text
 
-	thumb_func_start func_fe6_0808BCBC
-func_fe6_0808BCBC: @ 0x0808BCBC
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldrh r4, [r5, #0x2c]
-	adds r4, #1
-	strh r4, [r5, #0x2c]
-	movs r0, #6
-	subs r0, r0, r4
-	lsls r0, r0, #8
-	movs r1, #6
-	bl __divsi3
-	strh r0, [r5, #0x2e]
-	lsls r4, r4, #0x10
-	lsrs r4, r4, #0x10
-	cmp r4, #6
-	bne .L0808BCE8
-	adds r0, r5, #0
-	bl func_fe6_0808BF00
-	adds r0, r5, #0
-	bl Proc_Break
-.L0808BCE8:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start func_fe6_0808BCF0
-func_fe6_0808BCF0: @ 0x0808BCF0
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldrh r4, [r5, #0x2c]
-	subs r4, #1
-	movs r6, #0
-	strh r4, [r5, #0x2c]
-	movs r0, #6
-	subs r0, r0, r4
-	lsls r0, r0, #8
-	movs r1, #6
-	bl __divsi3
-	strh r0, [r5, #0x2e]
-	lsls r4, r4, #0x10
-	cmp r4, #0
-	bne .L0808BD20
-	adds r0, r5, #0
-	bl Proc_Break
-	adds r0, r5, #0
-	adds r0, #0x38
-	strb r6, [r0]
-	adds r0, #1
-	strb r6, [r0]
-.L0808BD20:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start func_fe6_0808BD28
 func_fe6_0808BD28: @ 0x0808BD28
 	push {lr}

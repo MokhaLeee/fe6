@@ -12,12 +12,15 @@
 
 #include "sound.h"
 #include "m4a.h"
+#include "gbasvc.h"
 
 #include "ending.h"
 #include "unknown_objects.h"
 #include "unitlistscreen.h"
 
 #include "soundroom.h"
+
+extern int __divsi3(int, int);
 
 EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText = {};
 EWRAM_OVERLAY(savemenu) u16 gSoundRoom_020004A8[2] = {};
@@ -504,5 +507,47 @@ void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
 					FadeBgmOut(-1);
 			}
 		}
+	}
+}
+
+void func_fe6_0808BCBC(struct ProcSoundRoom *proc)
+{
+	register struct ProcSoundRoom *r5 asm("r5");
+	register u32 r4 asm("r4");
+
+	r5 = proc;
+	r4 = r5->unk_2c;
+	r4++;
+	r5->unk_2c = r4;
+		r5->unk_2e = __divsi3((6 - r4) * 0x100, 6);
+	r4 = (u16)r4;
+
+	if (r4 == 6) {
+		func_fe6_0808BF00(r5);
+		Proc_Break(r5);
+	}
+}
+
+void func_fe6_0808BCF0(struct ProcSoundRoom *proc)
+{
+	register struct ProcSoundRoom *r5 asm("r5");
+	register u32 r4 asm("r4");
+	register u32 r6 asm("r6");
+	register u32 r0 asm("r0");
+
+	r5 = proc;
+	r4 = r5->unk_2c;
+	r4--;
+	r6 = 0;
+	r5->unk_2c = r4;
+		r5->unk_2e = __divsi3((6 - r4) * 0x100, 6);
+	r4 <<= 16;
+
+	if (r4 == 0) {
+		Proc_Break(r5);
+		r0 = (u32)r5 + 0x38;
+		*(u8 *)r0 = (u8)r6;
+		r0 += 1;
+		*(u8 *)r0 = (u8)r6;
 	}
 }

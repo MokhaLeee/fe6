@@ -48,6 +48,8 @@ struct ProcSoundRoom {
 
 void Soundroom_Init(struct ProcSoundRoom *proc);
 void func_fe6_0808BBCC(struct ProcSoundRoom *proc);
+void func_fe6_0808BCBC(struct ProcSoundRoom *proc);
+void func_fe6_0808BCF0(struct ProcSoundRoom *proc);
 
 int CountTotalSoundRoomSongs(void);
 
