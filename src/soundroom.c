@@ -379,6 +379,58 @@ CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[SOUNDROOM_CG_NUM] = {
 	{ EndingCG_Img10, EndingCG_Pal10 },
 };
 
+CONST_DATA u16 Sprite_0868A9E8[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x100) + OAM2_LAYER(1),
+};
+
+CONST_DATA u16 Sprite_0868A9F0[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x102) + OAM2_LAYER(1),
+};
+
+CONST_DATA u16 Sprite_0868A9F8[] = {
+	1,
+	OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(0x104) + OAM2_LAYER(1),
+	0x6D08, 0x0833, 0x6D2C, 0x0833,
+};
+
+struct ProcScr CONST_DATA ProcScr_SoundRoom[] = {
+	PROC_SLEEP(0),
+	PROC_CALL(Soundroom_Init),
+	PROC_CALL(StartSlowFadeFromBlack),
+	PROC_REPEAT(WhileFadeExists),
+
+PROC_LABEL(PL_SOUNDROOM_MAIN),
+	PROC_REPEAT(func_fe6_0808BBCC),
+
+PROC_LABEL(PL_SOUNDROOM_SLIDE),
+	PROC_REPEAT(func_fe6_0808BCBC),
+	PROC_REPEAT(func_fe6_0808BCF0),
+	PROC_GOTO(PL_SOUNDROOM_MAIN),
+
+PROC_LABEL(PL_SOUNDROOM_EXIT),
+	PROC_CALL(StartSlowFadeToBlack),
+	PROC_REPEAT(WhileFadeExists),
+	PROC_CALL(func_fe6_0808BD28),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_0868AA80[] = {
+	PROC_SLEEP(0),
+	PROC_CALL(func_fe6_0808BD6C),
+	PROC_REPEAT(func_fe6_0808BD78),
+	PROC_REPEAT(func_fe6_0808BDF8),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_0868AAA8[] = {
+	PROC_SLEEP(0),
+	PROC_CALL(func_fe6_0808C084),
+	PROC_REPEAT(func_fe6_0808C098),
+	PROC_END,
+};
+
 int CountTotalSoundRoomSongs(void)
 {
 	int ret = 0;
@@ -469,7 +521,7 @@ void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
 	keys = keyst->repeated;
 
 	if (keys & KEY_DPAD_LEFT) {
-		Proc_Goto(proc, 2);
+		Proc_Goto(proc, PL_SOUNDROOM_SLIDE);
 		PlaySe(SONG_67);
 
 		if ((int)proc->cur_index > 0)
@@ -480,7 +532,7 @@ void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
 		proc->unk_38 = 1;
 	} else {
 		if (KEY_DPAD_RIGHT & keys) {
-			Proc_Goto(proc, 2);
+			Proc_Goto(proc, PL_SOUNDROOM_SLIDE);
 			PlaySe(SONG_67);
 
 			if (proc->cur_index + 1 == CountTotalSoundRoomSongs())
@@ -499,7 +551,7 @@ void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
 				NewProc_0868AA80(proc);
 				proc->unk_40 = 1;
 			} else if (KEY_BUTTON_START & keys) {
-				Proc_Goto(proc, 3);
+				Proc_Goto(proc, PL_SOUNDROOM_EXIT);
 
 				if (IsBgmPlaying())
 					FadeBgmOut(-1);

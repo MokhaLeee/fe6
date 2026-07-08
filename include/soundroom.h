@@ -25,6 +25,12 @@ struct SoundRoomText {
 };
 extern EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText;
 
+enum {
+	PL_SOUNDROOM_MAIN = 0,
+	PL_SOUNDROOM_SLIDE = 2,
+	PL_SOUNDROOM_EXIT = 3,
+};
+
 struct ProcSoundRoom {
 	PROC_HEADER;
 
@@ -51,6 +57,11 @@ void func_fe6_0808BBCC(struct ProcSoundRoom *proc);
 void func_fe6_0808BCBC(struct ProcSoundRoom *proc);
 void func_fe6_0808BCF0(struct ProcSoundRoom *proc);
 void func_fe6_0808BD28(struct ProcSoundRoom *proc);
+void func_fe6_0808BD6C(struct ProcSoundRoom *proc);
+void func_fe6_0808BD78(struct ProcSoundRoom *proc);
+void func_fe6_0808BDF8(struct ProcSoundRoom *proc);
+void func_fe6_0808C084(struct ProcSoundRoom *proc);
+void func_fe6_0808C098(struct ProcSoundRoom *proc);
 
 int CountTotalSoundRoomSongs(void);
 
@@ -60,8 +71,6 @@ void func_fe6_0808BF00(struct ProcSoundRoom *proc);
 void func_fe6_0808BFF0(void);
 ProcPtr NewProc_0868AA80(struct ProcSoundRoom *proc);
 ProcPtr NewProc_0868AAA8(struct ProcSoundRoom *proc);
-
-// func_fe6_0808BCBC
 
 extern CONST_DATA u16 Sprite_0868A988[];
 extern CONST_DATA u16 Sprite_0868A9E8[];
