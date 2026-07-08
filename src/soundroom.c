@@ -18,6 +18,8 @@
 #include "unknown_objects.h"
 #include "unitlistscreen.h"
 
+#include "msg.h"
+#include "helpbox.h"
 #include "soundroom.h"
 
 EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText = {};
@@ -658,4 +660,56 @@ void func_fe6_0808BE70(void)
 	SetTextFont(NULL);
 
 	gSoundRoomText.oam2[0] = 0xa000 + (((vram & 0x1ffff) >> 5) & 0x3ff);
+}
+
+void func_fe6_0808BF00(struct ProcSoundRoom *proc)
+{
+	register u8 *r6 asm("r6");
+	register u32 r8 asm("r8");
+	register int sb asm("sb");
+	register int *r5 asm("r5");
+	struct Text *title;
+	int width;
+	int height;
+
+	r8 = proc->cur_index;
+	r6 = (u8 *)&gSoundRoomText;
+
+	SetTextFont((struct Font *)r6);
+	SetTextFontGlyphs(TEXT_GLYPHS_TALK);
+
+	sb = r8 * 12;
+	r5 = (int *)&gSoundRoomInfo;
+	r5 = (int *)((char *)r5 + 4);
+	r5 = (int *)((char *)r5 + sb);
+
+	func_fe6_08071C00(DecodeMsg(r5[0]), &width, &height);
+
+	title = (struct Text *)(r6 + 0x18);
+	SpriteText_DrawBackgroundExt(title, 0);
+	Text_SetCursor(title, (0xb0 - width) / 2);
+	Text_SetColor(title, 0);
+	Text_DrawString(title, DecodeMsg(r5[0]));
+
+	r6 += 0x20;
+	SpriteText_DrawBackgroundExt((struct Text *)r6, 0);
+
+	if (r8 == 0) {
+		proc->unk_41 = 1;
+	} else {
+		register int *r4 asm("r4");
+
+		proc->unk_41 = 0;
+
+		r4 = (int *)&gSoundRoomInfo;
+		r4 = (int *)((char *)r4 + 8);
+		r4 = (int *)((char *)r4 + sb);
+
+		func_fe6_08071C00(DecodeMsg(r4[0]), &width, &height);
+		Text_SetCursor((struct Text *)r6, 0xa8 - width);
+		Text_SetColor((struct Text *)r6, 0);
+		Text_DrawString((struct Text *)r6, DecodeMsg(r4[0]));
+	}
+
+	SetTextFont(NULL);
 }
