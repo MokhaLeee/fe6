@@ -617,3 +617,24 @@ void func_fe6_0808BD78(struct ProcSoundRoomConfirm *proc)
 		Proc_Break(proc);
 	}
 }
+
+void func_fe6_0808BDF8(struct ProcSoundRoomConfirm *proc)
+{
+	proc->unk_2c--;
+
+	gDispIo.blend_ct.effect = BLEND_EFFECT_BRIGHTEN;
+	gDispIo.blend_coef_a = 0;
+	gDispIo.blend_coef_b = 0;
+	gDispIo.blend_y = proc->unk_2c / 3;
+	SetBlendTargetA(0, 0, 1, 0, 0);
+
+	if (proc->unk_2c == 0) {
+		Proc_Break(proc);
+		proc->proc_parent->unk_40 = 0;
+	}
+}
+
+ProcPtr NewProc_0868AA80(struct ProcSoundRoom *proc)
+{
+	return SpawnProc(ProcScr_0868AA80, proc);
+}

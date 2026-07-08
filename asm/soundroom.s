@@ -4,67 +4,6 @@
 
 	.text
 
-	thumb_func_start func_fe6_0808BDF8
-func_fe6_0808BDF8: @ 0x0808BDF8
-	push {r4, r5, r6, r7, lr}
-	adds r6, r0, #0
-	ldrh r4, [r6, #0x2c]
-	subs r4, #1
-	movs r7, #0
-	strh r4, [r6, #0x2c]
-	ldr r5, .L0808BE54 @ =gDispIo
-	adds r2, r5, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x80
-	orrs r0, r1
-	strb r0, [r2]
-	adds r0, r5, #0
-	adds r0, #0x44
-	strb r7, [r0]
-	adds r0, #1
-	strb r7, [r0]
-	ldrh r0, [r6, #0x2c]
-	movs r1, #3
-	bl __udivsi3
-	adds r1, r5, #0
-	adds r1, #0x46
-	strb r0, [r1]
-	ldr r0, .L0808BE58 @ =0x0000FFE0
-	ldrh r1, [r5, #0x3c]
-	ands r0, r1
-	movs r1, #4
-	orrs r0, r1
-	strh r0, [r5, #0x3c]
-	lsls r4, r4, #0x10
-	cmp r4, #0
-	bne .L0808BE4C
-	adds r0, r6, #0
-	bl Proc_Break
-	ldr r0, [r6, #0x14]
-	adds r0, #0x40
-	strb r7, [r0]
-.L0808BE4C:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808BE54: .4byte gDispIo
-.L0808BE58: .4byte 0x0000FFE0
-
-	thumb_func_start NewProc_0868AA80
-NewProc_0868AA80: @ 0x0808BE5C
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, .L0808BE6C @ =ProcScr_0868AA80
-	bl SpawnProc
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L0808BE6C: .4byte ProcScr_0868AA80
-
 	thumb_func_start func_fe6_0808BE70
 func_fe6_0808BE70: @ 0x0808BE70
 	push {r4, r5, r6, lr}
