@@ -21,7 +21,6 @@
 #include "soundroom.h"
 
 EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText = {};
-EWRAM_OVERLAY(savemenu) u16 gSoundRoom_020004A8[2] = {};
 EWRAM_OVERLAY(savemenu) u8 gSoundRoom_020004AC[2] = {};
 
 CONST_DATA struct SoundRoomInfo gSoundRoomInfo[] = {
@@ -637,4 +636,26 @@ void func_fe6_0808BDF8(struct ProcSoundRoomConfirm *proc)
 ProcPtr NewProc_0868AA80(struct ProcSoundRoom *proc)
 {
 	return SpawnProc(ProcScr_0868AA80, proc);
+}
+
+void func_fe6_0808BE70(void)
+{
+	int i;
+	u32 vram = (u32)OBJ_VRAM1;
+
+	InitSpriteTextFont(&gSoundRoomText.font, (u8 *)vram, 5);
+	ApplyPalettes(Pal_Text, 0x1A, 2);
+	gPal[0x1A * 0x10] = 0;
+	EnablePalSync();
+
+	SetTextFont(&gSoundRoomText.font);
+	InitSpriteText(&gSoundRoomText.texts[0]);
+	InitSpriteText(&gSoundRoomText.texts[1]);
+
+	for (i = 0; i < 3; i++)
+		InitSpriteText(&gSoundRoomText.texts[i + 2]);
+
+	SetTextFont(NULL);
+
+	gSoundRoomText.oam2[0] = 0xa000 + (((vram & 0x1ffff) >> 5) & 0x3ff);
 }

@@ -22,6 +22,7 @@ extern CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[SOUNDROOM_CG_NUM];
 struct SoundRoomText {
 	struct Font font;
 	struct Text texts[5];
+	u16 oam2[2];
 };
 extern EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText;
 

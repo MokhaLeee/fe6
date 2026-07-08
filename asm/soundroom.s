@@ -4,68 +4,6 @@
 
 	.text
 
-	thumb_func_start func_fe6_0808BE70
-func_fe6_0808BE70: @ 0x0808BE70
-	push {r4, r5, r6, lr}
-	ldr r6, .L0808BEE8 @ =0x06014000
-	ldr r4, .L0808BEEC @ =gSoundRoomText
-	adds r0, r4, #0
-	adds r1, r6, #0
-	movs r2, #5
-	bl InitSpriteTextFont
-	ldr r0, .L0808BEF0 @ =Pal_Text
-	movs r5, #0xd0
-	lsls r5, r5, #2
-	adds r1, r5, #0
-	movs r2, #0x40
-	bl ApplyPaletteExt
-	ldr r0, .L0808BEF4 @ =gPal
-	adds r0, r0, r5
-	movs r1, #0
-	strh r1, [r0]
-	bl EnablePalSync
-	adds r0, r4, #0
-	bl SetTextFont
-	adds r0, r4, #0
-	adds r0, #0x18
-	bl InitSpriteText
-	adds r0, r4, #0
-	adds r0, #0x20
-	bl InitSpriteText
-	adds r4, #0x28
-	movs r5, #2
-.L0808BEB4:
-	adds r0, r4, #0
-	bl InitSpriteText
-	adds r4, #8
-	subs r5, #1
-	cmp r5, #0
-	bge .L0808BEB4
-	movs r0, #0
-	bl SetTextFont
-	ldr r2, .L0808BEEC @ =gSoundRoomText
-	ldr r0, .L0808BEF8 @ =0x0001FFFF
-	ands r0, r6
-	lsrs r0, r0, #5
-	ldr r3, .L0808BEFC @ =0x000003FF
-	adds r1, r3, #0
-	ands r0, r1
-	movs r3, #0xa0
-	lsls r3, r3, #8
-	adds r1, r3, #0
-	adds r0, r0, r1
-	adds r2, #0x40
-	strh r0, [r2]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808BEE8: .4byte 0x06014000
-.L0808BEEC: .4byte gSoundRoomText
-.L0808BEF0: .4byte Pal_Text
-.L0808BEF4: .4byte gPal
-.L0808BEF8: .4byte 0x0001FFFF
-.L0808BEFC: .4byte 0x000003FF
 
 	thumb_func_start func_fe6_0808BF00
 func_fe6_0808BF00: @ 0x0808BF00
@@ -373,7 +311,7 @@ func_fe6_0808C098: @ 0x0808C098
 	cmp r0, #0
 	bne .L0808C1F6
 	movs r4, #0x10
-	ldr r0, .L0808C318 @ =gSoundRoom_020004A8
+	ldr r0, .L0808C318 @ =gSoundRoomText + 0x40
 	mov r8, r0
 	movs r7, #0x40
 	movs r6, #0x20
@@ -413,7 +351,7 @@ func_fe6_0808C098: @ 0x0808C098
 	bl PutSpriteExt
 .L0808C1F6:
 	movs r5, #0
-	ldr r7, .L0808C318 @ =gSoundRoom_020004A8
+	ldr r7, .L0808C318 @ =gSoundRoomText + 0x40
 	movs r6, #0x20
 .L0808C1FC:
 	lsls r0, r5, #2
@@ -459,7 +397,7 @@ func_fe6_0808C098: @ 0x0808C098
 	ldr r1, [sp, #4]
 	adds r1, #0x31
 	str r1, [sp, #0xc]
-	ldr r2, .L0808C318 @ =gSoundRoom_020004A8
+	ldr r2, .L0808C318 @ =gSoundRoomText + 0x40
 	mov sl, r2
 .L0808C258:
 	asrs r1, r4, #1
@@ -557,7 +495,7 @@ func_fe6_0808C098: @ 0x0808C098
 .L0808C30C: .4byte Sprite_0868A988
 .L0808C310: .4byte 0x000010CE
 .L0808C314: .4byte gSinLut
-.L0808C318: .4byte gSoundRoom_020004A8
+.L0808C318: .4byte gSoundRoomText + 0x40
 .L0808C31C: .4byte Sprite_32x16
 .L0808C320: .4byte Sprite_16x16
 .L0808C324: .4byte gSoundRoomText
