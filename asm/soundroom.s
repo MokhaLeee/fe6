@@ -5,19 +5,6 @@
 	.text
 
 
-	thumb_func_start func_fe6_0808C084
-func_fe6_0808C084: @ 0x0808C084
-	ldr r1, [r0, #0x14]
-	str r1, [r0, #0x2c]
-	adds r1, r0, #0
-	adds r1, #0x30
-	movs r2, #0
-	strb r2, [r1]
-	adds r0, #0x31
-	strb r2, [r0]
-	bx lr
-	.align 2, 0
-
 	thumb_func_start func_fe6_0808C098
 func_fe6_0808C098: @ 0x0808C098
 	push {r4, r5, r6, r7, lr}

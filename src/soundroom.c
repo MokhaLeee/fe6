@@ -736,3 +736,10 @@ void func_fe6_0808BFF0(void)
 
 	SetTextFont(NULL);
 }
+
+void func_fe6_0808C084(struct ProcSoundRoom *proc)
+{
+	*(ProcPtr *)&proc->unk_2c = proc->proc_parent;
+	*(u8 *)&proc->cur_index = 0;
+	*((u8 *)&proc->cur_index + 1) = 0;
+}
