@@ -25,8 +25,30 @@ struct SoundRoomText {
 };
 extern EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText;
 
+struct ProcSoundRoom {
+	PROC_HEADER;
+
+	/* 29 */ u8 unk_29;
+
+	STRUCT_PAD(0x2A, 0x2C);
+
+	/* 2C */ u16 unk_2c;
+	/* 2E */ u16 unk_2e;
+	/* 30 */ u32 cur_index;
+	/* 34 */ u32 unk_34;
+	/* 38 */ u8 unk_38;
+	/* 39 */ u8 unk_39;
+
+	STRUCT_PAD(0x3A, 0x3C);
+
+	/* 3C */ ProcPtr sprite_proc;
+	/* 40 */ u8 unk_40;
+	/* 41 */ u8 unk_41;
+};
+
+void Soundroom_Init(struct ProcSoundRoom *proc);
+
 // CountTotalSoundRoomSongs
-// Soundroom_Init
 // func_fe6_0808BBCC
 // func_fe6_0808BCBC
 // func_fe6_0808BCF0

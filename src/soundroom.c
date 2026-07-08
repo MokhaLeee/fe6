@@ -5,8 +5,14 @@
 #include "bm.h"
 #include "oam.h"
 #include "sprite.h"
+#include "util.h"
+#include "armfunc.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
+
+#include "ending.h"
+#include "unknown_objects.h"
+#include "unitlistscreen.h"
 
 #include "soundroom.h"
 
@@ -382,4 +388,76 @@ int CountTotalSoundRoomSongs(void)
 	} while (1);
 
 	return ret;
+}
+
+void PutSoundRoomCG(void);
+void func_fe6_0808BE70(void);
+void func_fe6_0808BF00(struct ProcSoundRoom *proc);
+void func_fe6_0808BFF0(void);
+ProcPtr NewProc_0868AAA8(struct ProcSoundRoom *proc);
+
+void Soundroom_Init(struct ProcSoundRoom *proc)
+{
+	InitBgs(0);
+	ResetTextFont();
+	ResetText();
+	ApplySystemObjectsGraphics();
+	InitSystemTextFont();
+
+	SetDispEnable(1, 1, 1, 1, 1);
+	gDispIo.bg0_ct.priority = 0;
+	gDispIo.bg1_ct.priority = 2;
+	gDispIo.bg2_ct.priority = 1;
+	gDispIo.bg3_ct.priority = 3;
+	SetWinEnable(0, 0, 0);
+
+	SetBlankChr(0);
+	TmFill(gBg0Tm, 0);
+	TmFill(gBg1Tm, 0);
+	TmFill(gBg2Tm, 0);
+	TmFill(gBg3Tm, 0);
+	EnableBgSync(0xF);
+
+	proc->unk_34 = 0;
+	proc->cur_index = 0;
+
+	gSoundRoom_020004AC[1] |= 0xFF;
+	gSoundRoom_020004AC[0] |= 0xFF;
+
+	proc->unk_29 = 1;
+	proc->unk_2c = 0;
+	proc->unk_38 = 0;
+	proc->unk_39 = 0;
+	proc->unk_40 = 0;
+	proc->unk_41 = 0;
+
+	func_fe6_0808BE70();
+	func_fe6_0808BF00(proc);
+	func_fe6_0808BFF0();
+
+	SetBgOffset(BG_0, 0, 0);
+	SetBgOffset(BG_1, 0, 0);
+
+	Decompress(Img_EndingPInfoWindow, (void *)(BG_VRAM + GetBgChrOffset(BG_1)));
+	ApplyPaletteExt(Pal_EndingPInfoWindow, 0x80, 0x40);
+	TmApplyTsa(gBg1Tm, (u8 const *)gUnk_0832C5E8, 0x4000);
+
+	SetBgOffset(BG_2, (u16)0xFF98, (u16)0xFFC0);
+
+	GetGameTime();
+	PutSoundRoomCG();
+
+	PutEndingCreditTm(gBg2Tm, 0x6140, 15, 10);
+
+	Decompress(Img_MonologueBG, (void *)(BG_VRAM + GetBgChrOffset(BG_3)));
+	ApplyPaletteExt(gUnk_0832CA9C, 0xE0, 0x20);
+	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x7000);
+
+	Decompress(gUnk_0832CAFC, (void *)0x06012000);
+	ApplyPaletteExt(gUnk_0832CC90, 0x280, 0x20);
+	Decompress(Img_HorizontalSpinningArrow, (void *)0x06017000);
+	ApplyPaletteExt(Pal_SpinningArrow, 0x2A0, 0x20);
+
+	proc->unk_2e = 0x100;
+	proc->sprite_proc = NewProc_0868AAA8(proc);
 }
