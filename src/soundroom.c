@@ -10,6 +10,9 @@
 #include "constants/songs.h"
 #include "constants/msg.h"
 
+#include "sound.h"
+#include "m4a.h"
+
 #include "ending.h"
 #include "unknown_objects.h"
 #include "unitlistscreen.h"
@@ -390,12 +393,6 @@ int CountTotalSoundRoomSongs(void)
 	return ret;
 }
 
-void PutSoundRoomCG(void);
-void func_fe6_0808BE70(void);
-void func_fe6_0808BF00(struct ProcSoundRoom *proc);
-void func_fe6_0808BFF0(void);
-ProcPtr NewProc_0868AAA8(struct ProcSoundRoom *proc);
-
 void Soundroom_Init(struct ProcSoundRoom *proc)
 {
 	InitBgs(0);
@@ -460,4 +457,52 @@ void Soundroom_Init(struct ProcSoundRoom *proc)
 
 	proc->unk_2e = 0x100;
 	proc->sprite_proc = NewProc_0868AAA8(proc);
+}
+
+void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
+{
+	register struct KeySt *keyst asm("r2");
+	register u16 keys asm("r1");
+
+	keyst = gKeySt;
+	keys = keyst->repeated;
+
+	if (keys & KEY_DPAD_LEFT) {
+		Proc_Goto(proc, 2);
+		PlaySe(SONG_67);
+
+		if ((int)proc->cur_index > 0)
+			proc->cur_index--;
+		else
+			proc->cur_index = CountTotalSoundRoomSongs() - 1;
+
+		proc->unk_38 = 1;
+	} else {
+		if (KEY_DPAD_RIGHT & keys) {
+			Proc_Goto(proc, 2);
+			PlaySe(SONG_67);
+
+			if (proc->cur_index + 1 == CountTotalSoundRoomSongs())
+				proc->cur_index = 0;
+			else
+				proc->cur_index++;
+
+			proc->unk_39 = 1;
+		} else if (proc->unk_40 == 0) {
+			keys = keyst->pressed;
+
+			if (KEY_BUTTON_B & keys) {
+				FadeBgmOut(-1);
+				proc->unk_29 = 1;
+			} else if (KEY_BUTTON_A & keys) {
+				NewProc_0868AA80(proc);
+				proc->unk_40 = 1;
+			} else if (KEY_BUTTON_START & keys) {
+				Proc_Goto(proc, 3);
+
+				if (IsBgmPlaying())
+					FadeBgmOut(-1);
+			}
+		}
+	}
 }

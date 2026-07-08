@@ -47,23 +47,18 @@ struct ProcSoundRoom {
 };
 
 void Soundroom_Init(struct ProcSoundRoom *proc);
+void func_fe6_0808BBCC(struct ProcSoundRoom *proc);
 
-// CountTotalSoundRoomSongs
-// func_fe6_0808BBCC
+int CountTotalSoundRoomSongs(void);
+
+void PutSoundRoomCG(void);
+void func_fe6_0808BE70(void);
+void func_fe6_0808BF00(struct ProcSoundRoom *proc);
+void func_fe6_0808BFF0(void);
+ProcPtr NewProc_0868AA80(struct ProcSoundRoom *proc);
+ProcPtr NewProc_0868AAA8(struct ProcSoundRoom *proc);
+
 // func_fe6_0808BCBC
-// func_fe6_0808BCF0
-// func_fe6_0808BD28
-// SaveMenu_ExecSoundroom
-// func_fe6_0808BD6C
-// func_fe6_0808BD78
-// func_fe6_0808BDF8
-// NewProc_0868AA80
-// func_fe6_0808BE70
-// func_fe6_0808BF00
-// func_fe6_0808BFF0
-// func_fe6_0808C084
-// func_fe6_0808C098
-// NewProc_0868AAA8
 
 extern CONST_DATA u16 Sprite_0868A988[];
 extern CONST_DATA u16 Sprite_0868A9E8[];
