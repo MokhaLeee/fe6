@@ -5,65 +5,6 @@
 	.text
 
 
-	thumb_func_start func_fe6_0808BFF0
-func_fe6_0808BFF0: @ 0x0808BFF0
-	push {r4, r5, lr}
-	ldr r5, .L0808C074 @ =gSoundRoomText
-	adds r0, r5, #0
-	bl SetTextFont
-	movs r0, #0
-	bl SetTextFontGlyphs
-	adds r4, r5, #0
-	adds r4, #0x28
-	adds r0, r4, #0
-	movs r1, #0
-	bl SpriteText_DrawBackgroundExt
-	adds r0, r4, #0
-	movs r1, #0
-	bl Text_SetCursor
-	adds r0, r4, #0
-	movs r1, #0
-	bl Text_SetColor
-	ldr r1, .L0808C078 @ =String_Xmap_08336D3C
-	adds r0, r4, #0
-	bl Text_DrawString
-	adds r4, #8
-	adds r0, r4, #0
-	movs r1, #0
-	bl SpriteText_DrawBackgroundExt
-	adds r0, r4, #0
-	movs r1, #0
-	bl Text_SetCursor
-	adds r0, r4, #0
-	movs r1, #0
-	bl Text_SetColor
-	ldr r1, .L0808C07C @ =String_Xmap_08336D48
-	adds r0, r4, #0
-	bl Text_DrawString
-	adds r5, #0x38
-	adds r0, r5, #0
-	movs r1, #0
-	bl SpriteText_DrawBackgroundExt
-	adds r0, r5, #0
-	movs r1, #0
-	bl Text_SetCursor
-	adds r0, r5, #0
-	movs r1, #0
-	bl Text_SetColor
-	ldr r1, .L0808C080 @ =String_Xmap_08336D54
-	adds r0, r5, #0
-	bl Text_DrawString
-	movs r0, #0
-	bl SetTextFont
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808C074: .4byte gSoundRoomText
-.L0808C078: .4byte String_Xmap_08336D3C
-.L0808C07C: .4byte String_Xmap_08336D48
-.L0808C080: .4byte String_Xmap_08336D54
-
 	thumb_func_start func_fe6_0808C084
 func_fe6_0808C084: @ 0x0808C084
 	ldr r1, [r0, #0x14]

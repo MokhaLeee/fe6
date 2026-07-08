@@ -713,3 +713,26 @@ void func_fe6_0808BF00(struct ProcSoundRoom *proc)
 
 	SetTextFont(NULL);
 }
+
+void func_fe6_0808BFF0(void)
+{
+	SetTextFont(&gSoundRoomText.font);
+	SetTextFontGlyphs(0);
+
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[2], 0);
+	Text_SetCursor(&gSoundRoomText.texts[2], 0);
+	Text_SetColor(&gSoundRoomText.texts[2], 0);
+	Text_DrawString(&gSoundRoomText.texts[2], String_Xmap_08336D3C);
+
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[3], 0);
+	Text_SetCursor(&gSoundRoomText.texts[3], 0);
+	Text_SetColor(&gSoundRoomText.texts[3], 0);
+	Text_DrawString(&gSoundRoomText.texts[3], String_Xmap_08336D48);
+
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[4], 0);
+	Text_SetCursor(&gSoundRoomText.texts[4], 0);
+	Text_SetColor(&gSoundRoomText.texts[4], 0);
+	Text_DrawString(&gSoundRoomText.texts[4], String_Xmap_08336D54);
+
+	SetTextFont(NULL);
+}
