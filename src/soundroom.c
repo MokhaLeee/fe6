@@ -664,51 +664,51 @@ void func_fe6_0808BE70(void)
 
 void func_fe6_0808BF00(struct ProcSoundRoom *proc)
 {
-	register u8 *r6 asm("r6");
-	register u32 r8 asm("r8");
-	register int sb asm("sb");
-	register int *r5 asm("r5");
-	struct Text *title;
+	register struct SoundRoomText *srtext asm("r6");
+	register u32 cur_index asm("r8");
+	register u32 info_off asm("sb");
+	register int *name1 asm("r5");
+	register struct Text *title asm("r4");
 	int width;
 	int height;
 
-	r8 = proc->cur_index;
-	r6 = (u8 *)&gSoundRoomText;
+	cur_index = proc->cur_index;
+	srtext = &gSoundRoomText;
 
-	SetTextFont((struct Font *)r6);
+	SetTextFont(&srtext->font);
 	SetTextFontGlyphs(TEXT_GLYPHS_TALK);
 
-	sb = r8 * 12;
-	r5 = (int *)&gSoundRoomInfo;
-	r5 = (int *)((char *)r5 + 4);
-	r5 = (int *)((char *)r5 + sb);
+	info_off = cur_index * sizeof(struct SoundRoomInfo);
+	name1 = (int *)&gSoundRoomInfo;
+	name1 = (int *)((char *)name1 + 4);
+	name1 = (int *)((char *)name1 + info_off);
 
-	func_fe6_08071C00(DecodeMsg(r5[0]), &width, &height);
+	func_fe6_08071C00(DecodeMsg(name1[0]), &width, &height);
 
-	title = (struct Text *)(r6 + 0x18);
+	title = &srtext->texts[0];
 	SpriteText_DrawBackgroundExt(title, 0);
 	Text_SetCursor(title, (0xb0 - width) / 2);
 	Text_SetColor(title, 0);
-	Text_DrawString(title, DecodeMsg(r5[0]));
+	Text_DrawString(title, DecodeMsg(name1[0]));
 
-	r6 += 0x20;
-	SpriteText_DrawBackgroundExt((struct Text *)r6, 0);
+	srtext = (struct SoundRoomText *)((char *)srtext + 0x20);
+	SpriteText_DrawBackgroundExt((struct Text *)srtext, 0);
 
-	if (r8 == 0) {
+	if (cur_index == 0) {
 		proc->unk_41 = 1;
 	} else {
-		register int *r4 asm("r4");
+		register int *name2 asm("r4");
 
 		proc->unk_41 = 0;
 
-		r4 = (int *)&gSoundRoomInfo;
-		r4 = (int *)((char *)r4 + 8);
-		r4 = (int *)((char *)r4 + sb);
+		name2 = (int *)&gSoundRoomInfo;
+		name2 = (int *)((char *)name2 + 8);
+		name2 = (int *)((char *)name2 + info_off);
 
-		func_fe6_08071C00(DecodeMsg(r4[0]), &width, &height);
-		Text_SetCursor((struct Text *)r6, 0xa8 - width);
-		Text_SetColor((struct Text *)r6, 0);
-		Text_DrawString((struct Text *)r6, DecodeMsg(r4[0]));
+		func_fe6_08071C00(DecodeMsg(name2[0]), &width, &height);
+		Text_SetCursor((struct Text *)srtext, 0xa8 - width);
+		Text_SetColor((struct Text *)srtext, 0);
+		Text_DrawString((struct Text *)srtext, DecodeMsg(name2[0]));
 	}
 
 	SetTextFont(NULL);
