@@ -52,19 +52,32 @@ struct ProcSoundRoom {
 	/* 41 */ u8 unk_41;
 };
 
+struct ProcSoundRoomConfirm {
+	PROC_HEADER_EXT(struct ProcSoundRoom);
+
+	STRUCT_PAD(0x29, 0x2C);
+
+	/* 2C */ u16 unk_2c;
+
+	STRUCT_PAD(0x2E, 0x30);
+
+	/* 30 */ u32 cur_index;
+};
+
 void Soundroom_Init(struct ProcSoundRoom *proc);
 void func_fe6_0808BBCC(struct ProcSoundRoom *proc);
 void func_fe6_0808BCBC(struct ProcSoundRoom *proc);
 void func_fe6_0808BCF0(struct ProcSoundRoom *proc);
 void func_fe6_0808BD28(struct ProcSoundRoom *proc);
-void func_fe6_0808BD6C(struct ProcSoundRoom *proc);
-void func_fe6_0808BD78(struct ProcSoundRoom *proc);
+void func_fe6_0808BD6C(struct ProcSoundRoomConfirm *proc);
+void func_fe6_0808BD78(struct ProcSoundRoomConfirm *proc);
 void func_fe6_0808BDF8(struct ProcSoundRoom *proc);
 void func_fe6_0808C084(struct ProcSoundRoom *proc);
 void func_fe6_0808C098(struct ProcSoundRoom *proc);
 
 int CountTotalSoundRoomSongs(void);
 
+ProcPtr SaveMenu_ExecSoundroom(ProcPtr parent);
 void PutSoundRoomCG(void);
 void func_fe6_0808BE70(void);
 void func_fe6_0808BF00(struct ProcSoundRoom *proc);

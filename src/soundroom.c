@@ -588,3 +588,32 @@ void func_fe6_0808BD28(struct ProcSoundRoom *proc)
 	SetDispEnable(0, 0, 0, 0, 0);
 	Proc_End(proc->sprite_proc);
 }
+
+ProcPtr SaveMenu_ExecSoundroom(ProcPtr parent)
+{
+	return SpawnProcLocking(ProcScr_SoundRoom, parent);
+}
+
+void func_fe6_0808BD6C(struct ProcSoundRoomConfirm *proc)
+{
+	proc->unk_2c = 0;
+	proc->cur_index = proc->proc_parent->cur_index;
+}
+
+void func_fe6_0808BD78(struct ProcSoundRoomConfirm *proc)
+{
+	proc->unk_2c++;
+
+	gDispIo.blend_ct.effect = BLEND_EFFECT_BRIGHTEN;
+	gDispIo.blend_coef_a = 0;
+	gDispIo.blend_coef_b = 0;
+	gDispIo.blend_y = proc->unk_2c / 3;
+	SetBlendTargetA(0, 0, 1, 0, 0);
+
+	if (proc->unk_2c == 0x30) {
+		StartBgm(gSoundRoomInfo[proc->cur_index].id, NULL);
+		GetGameTime();
+		PutSoundRoomCG();
+		Proc_Break(proc);
+	}
+}
