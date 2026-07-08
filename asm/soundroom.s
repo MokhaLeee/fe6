@@ -31,31 +31,6 @@ ProcScr_0868AAA8: @ 0868AAA8
 
     .text
 
-	thumb_func_start func_fe6_0808BD28
-func_fe6_0808BD28: @ 0x0808BD28
-	push {lr}
-	ldr r3, .L0808BD54 @ =gDispIo
-	movs r1, #2
-	rsbs r1, r1, #0
-	ldrb r2, [r3, #1]
-	ands r1, r2
-	movs r2, #3
-	rsbs r2, r2, #0
-	ands r1, r2
-	subs r2, #2
-	ands r1, r2
-	subs r2, #4
-	ands r1, r2
-	subs r2, #8
-	ands r1, r2
-	strb r1, [r3, #1]
-	ldr r0, [r0, #0x3c]
-	bl Proc_End
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L0808BD54: .4byte gDispIo
-
 	thumb_func_start SaveMenu_ExecSoundroom
 SaveMenu_ExecSoundroom: @ 0x0808BD58
 	push {lr}
