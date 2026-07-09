@@ -2,39 +2,10 @@
 	.include "asm_proc.inc"
 	.syntax unified
 
-	.section .data
-
-	.global ProcScr_EkrUnitKakudai
-ProcScr_EkrUnitKakudai: @ 085CBD28
-	PROC_19
-	PROC_REPEAT func_fe6_08048A64
-	PROC_REPEAT func_fe6_08048BF0
-	PROC_REPEAT func_fe6_08048D98
-	PROC_END
-
-	.global ProcScr_EkrWindowAppear
-ProcScr_EkrWindowAppear: @ 085CBD50
-	PROC_19
-	PROC_REPEAT func_fe6_08048E08
-	PROC_END
-
-	.global ProcScr_EkrNamewinAppear
-ProcScr_EkrNamewinAppear: @ 085CBD68
-	PROC_19
-	PROC_REPEAT func_fe6_08048EEC
-	PROC_REPEAT func_fe6_08048F0C
-	PROC_END
-
-	.global ProcScr_EkrBaseAppear
-ProcScr_EkrBaseAppear: @ 085CBD88
-	PROC_19
-	PROC_REPEAT EkrBaseAppear_Loop
-	PROC_END
-
 	.section .text
 
-	thumb_func_start func_fe6_08048BF0
-func_fe6_08048BF0: @ 0x08048BF0
+	thumb_func_start EkrUnitKakudai_Main
+EkrUnitKakudai_Main: @ 0x08048BF0
 	push {r4, r5, r6, r7, lr}
 	ldr r4, .L08048C10 @ =0xFFFFFCB4
 	add sp, r4
@@ -245,8 +216,8 @@ func_fe6_08048BF0: @ 0x08048BF0
 	bx r0
 	.align 2, 0
 
-	thumb_func_start func_fe6_08048D98
-func_fe6_08048D98: @ 0x08048D98
+	thumb_func_start EkrUnitKakudai_End
+EkrUnitKakudai_End: @ 0x08048D98
 	push {lr}
 	bl Proc_Break
 	pop {r0}
@@ -307,8 +278,8 @@ CheckEkrWindowAppearUnexist: @ 0x08048DF4
 .L08048E06:
 	bx lr
 
-	thumb_func_start func_fe6_08048E08
-func_fe6_08048E08: @ 0x08048E08
+	thumb_func_start EkrWindowAppear_Main
+EkrWindowAppear_Main: @ 0x08048E08
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -428,8 +399,8 @@ CheckEkrNamewinAppearUnexist: @ 0x08048ED8
 .L08048EEA:
 	bx lr
 
-	thumb_func_start func_fe6_08048EEC
-func_fe6_08048EEC: @ 0x08048EEC
+	thumb_func_start EkrNamewinAppear_Delay
+EkrNamewinAppear_Delay: @ 0x08048EEC
 	push {lr}
 	adds r1, r0, #0
 	ldrh r0, [r1, #0x2c]
@@ -448,8 +419,8 @@ func_fe6_08048EEC: @ 0x08048EEC
 	pop {r0}
 	bx r0
 
-	thumb_func_start func_fe6_08048F0C
-func_fe6_08048F0C: @ 0x08048F0C
+	thumb_func_start EkrNamewinAppear_Main
+EkrNamewinAppear_Main: @ 0x08048F0C
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0

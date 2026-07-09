@@ -360,6 +360,14 @@ void EkrBaseKaiten_Loop(struct ProcEkrBaseKaiten *proc)
 		proc->timer++;
 }
 
+struct ProcScr CONST_DATA ProcScr_EkrUnitKakudai[] = {
+	PROC_19,
+	PROC_REPEAT(EkrUnitKakudai_PrepareAnimScript),
+	PROC_REPEAT(EkrUnitKakudai_Main),
+	PROC_REPEAT(EkrUnitKakudai_End),
+	PROC_END,
+};
+
 void NewEkrUnitKakudai(int identifier)
 {
 	struct ProcEkrUnitKakudai *proc;
@@ -396,7 +404,7 @@ void NewEkrUnitKakudai(int identifier)
 	}
 }
 
-void func_fe6_08048A64(struct ProcEkrUnitKakudai *proc)
+void EkrUnitKakudai_PrepareAnimScript(struct ProcEkrUnitKakudai *proc)
 {
     void *vram;
     int std_type = BanimDefaultStandingTypes[gEkrDistanceType];
@@ -451,3 +459,22 @@ void func_fe6_08048A64(struct ProcEkrUnitKakudai *proc)
 
 	Proc_Break(proc);
 }
+
+struct ProcScr CONST_DATA ProcScr_EkrWindowAppear[] = {
+	PROC_19,
+	PROC_REPEAT(EkrWindowAppear_Main),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EkrNamewinAppear[] = {
+	PROC_19,
+	PROC_REPEAT(EkrNamewinAppear_Delay),
+	PROC_REPEAT(EkrNamewinAppear_Main),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EkrBaseAppear[] = {
+	PROC_19,
+	PROC_REPEAT(EkrBaseAppear_Loop),
+	PROC_END,
+};

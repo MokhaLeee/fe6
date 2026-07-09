@@ -672,7 +672,6 @@ SECTIONS
         . = ALIGN(4); src/banim_efxflashing.o(.data);
         . = ALIGN(4); src/banim_ekrbattleintro.o(.data);
         . = ALIGN(4); src/banim_ekrbattleintrofx.o(.data);
-        . = ALIGN(4); asm/banim_ekrbattleintrofx.o(.data);
         . = ALIGN(4); src/banim_ekrmain.o(.data);
         . = ALIGN(4); src/banim_ekrmainmini.o(.data);
         . = ALIGN(4); src/banim_ekrarena.o(.data);
