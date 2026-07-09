@@ -2,8 +2,9 @@
 #include "proc.h"
 #include "hardware.h"
 #include "util.h"
-
+#include "move.h"
 #include "banim.h"
+#include "banim_data.h"
 #include "banim_ekrdragon.h"
 
 struct ProcScr CONST_DATA ProcScr_EkrBaseKaiten[] = {
@@ -393,4 +394,60 @@ void NewEkrUnitKakudai(int identifier)
 	default:
 		break;
 	}
+}
+
+void func_fe6_08048A64(struct ProcEkrUnitKakudai *proc)
+{
+    void *vram;
+    int std_type = BanimDefaultStandingTypes[gEkrDistanceType];
+	int front_mode = BanimDefaultModeConfig[std_type * 4];
+
+	UpdateBanimFrame();
+
+	if (proc->type == 0)
+		if (gBattleSt.flags & BATTLE_FLAG_REFRESH)
+			EfxPalModifyPetrifyEffect(gPal, 0x17, 1);
+
+	if (gBanimValid[POS_L] == 1) {
+		struct BanimScrFrame *scr = (void *)(gBanimScrs + gpBanimModesLeft[front_mode]);
+        const void *src = scr->img;
+
+		proc->pOaml = (void *)(gBanimOamBufs + scr->oam_offset);
+		LZ77UnCompWram(src, gBanimImgSheetBuf_Left);
+	}
+
+	if (gBanimValid[POS_R] == 1) {
+		struct BanimScrFrame *scr = (void *)(gBanimScrs + BAS_SCR_MAX_SIZE + gpBanimModesRight[front_mode]);
+		const void *src = scr->img;
+
+		proc->pOamr = (void *)(gBanimOamBufs + BAS_OAM_MAX_SIZE + scr->oam_offset);
+		LZ77UnCompWram(src, gBanimImgSheetBuf_Right);
+	}
+
+	if (gBanimUnitChgForceImg[POS_L] != NULL)
+		LZ77UnCompWram(gBanimUnitChgForceImg[POS_L], gBanimKakudaiBuf_Left);
+
+	if (gBanimUnitChgForceImg[POS_R] != NULL)
+		LZ77UnCompWram(gBanimUnitChgForceImg[POS_R], gBanimKakudaiBuf_Right);
+
+    vram = OBJ_VRAM1;
+	RegisterDataMove(gBanimImgSheetBuf_Left, vram, 0x4000);
+
+	proc->timer = 0;
+	proc->terminator = 0xB;
+
+	proc->x1 = gEkrBmLocation[0] * 0x10 + 8;
+	proc->y1 = gEkrBmLocation[1] * 0x10 + 8;
+	proc->x2 = gEkrBmLocation[2] * 0x10 + 8;
+	proc->y2 = gEkrBmLocation[3] * 0x10 + 8;
+
+	proc->left_pos = BanimTypesPosLeft[gEkrDistanceType];
+	proc->right_pos = BanimTypesPosRight[gEkrDistanceType];
+
+	if (gEkrInitPosReal == POS_L)
+		proc->right_pos += BanimLeftDefaultPos[gEkrDistanceType];
+	else
+		proc->left_pos -= BanimLeftDefaultPos[gEkrDistanceType];
+
+	Proc_Break(proc);
 }
