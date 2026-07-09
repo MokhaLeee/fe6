@@ -212,7 +212,7 @@ void BattleAIS_ExecCommands(void)
 							anim2->sprData = anim2->sprDataPool + BAS_OAM_REF_MAX_SIZE;
 #endif
 
-							if (gBanimUnitChgForceImg[GetAnimPosition(anim)] == NULL) {
+							if (gBanimBallistaImages[GetAnimPosition(anim)] == NULL) {
 								if (gpImgSheet[GetAnimPosition(anim1)] != anim1->imgSheet) {
 									NewEkrChienCHR(anim1);
 									gpImgSheet[GetAnimPosition(anim1)] = anim1->imgSheet;
@@ -477,7 +477,7 @@ void BattleAIS_ExecCommands(void)
 
 		if (type & ANIM_BIT2_FRAME) {
 			if (GetAnimLayer(anim) == 0) {
-				if (gBanimUnitChgForceImg[GetAnimPosition(anim)] == NULL)
+				if (gBanimBallistaImages[GetAnimPosition(anim)] == NULL)
 					if (!(anim->flags3 & ANIM_BIT3_4000))
 						if (gpImgSheet[GetAnimPosition(anim)] != anim->imgSheet) {
 							SyncBanimImage(anim);

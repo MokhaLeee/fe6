@@ -118,10 +118,8 @@ enum banim_sprites_size {
 
 extern EWRAM_OVERLAY(banim) u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
 extern EWRAM_OVERLAY(banim) u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Left[BAS_IMG_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimKakudaiBuf_Left[BAS_IMG_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Right[BAS_IMG_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimKakudaiBuf_Right[BAS_IMG_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Left[BAS_IMG_MAX_SIZE * 2];
+extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Right[BAS_IMG_MAX_SIZE * 2];
 extern EWRAM_OVERLAY(banim) u8 gBanimTerrainfxBufObj[0x2000];
 
 struct ProcEfx {
@@ -290,7 +288,7 @@ extern int gEfxPurgeCounter;
 extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
 extern const u16 * gpBanimTriAtkPalettes[2];
-extern const u8 * gBanimUnitChgForceImg[2];
+extern const u8 * gBanimBallistaImages[2];
 extern EWRAM_OVERLAY(banim) i16 gBanimBG;
 extern EWRAM_OVERLAY(banim) i16 gEkrInitialHitSide;
 extern EWRAM_OVERLAY(banim) i16 gEkrSnowWeather;

@@ -424,11 +424,11 @@ void func_fe6_08048A64(struct ProcEkrUnitKakudai *proc)
 		LZ77UnCompWram(src, gBanimImgSheetBuf_Right);
 	}
 
-	if (gBanimUnitChgForceImg[POS_L] != NULL)
-		LZ77UnCompWram(gBanimUnitChgForceImg[POS_L], gBanimKakudaiBuf_Left);
+	if (gBanimBallistaImages[POS_L] != NULL)
+		LZ77UnCompWram(gBanimBallistaImages[POS_L], gBanimImgSheetBuf_Left + BAS_IMG_MAX_SIZE);
 
-	if (gBanimUnitChgForceImg[POS_R] != NULL)
-		LZ77UnCompWram(gBanimUnitChgForceImg[POS_R], gBanimKakudaiBuf_Right);
+	if (gBanimBallistaImages[POS_R] != NULL)
+		LZ77UnCompWram(gBanimBallistaImages[POS_R], gBanimImgSheetBuf_Right + BAS_IMG_MAX_SIZE);
 
     vram = OBJ_VRAM1;
 	RegisterDataMove(gBanimImgSheetBuf_Left, vram, 0x4000);
