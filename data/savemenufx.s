@@ -107,11 +107,3 @@ Sprites_0868A55C: @ 0868A55C
 	.4byte Sprite_0868A448
 	.4byte Sprite_0868A45C
 	.4byte Sprite_0868A470
-
-	.global Sprite_0868A568
-Sprite_0868A568: @ 0868A568
-	.incbin "fe6-base.gba", 0x68A568, (0x68A570 - 0x68A568) @ length: 0008
-
-	.global Sprite_0868A570
-Sprite_0868A570: @ 0868A570
-	.incbin "fe6-base.gba", 0x68A570, (0x68A58C - 0x68A570) @ length: 001C
