@@ -194,8 +194,6 @@ SECTIONS
         . = ALIGN(4); src/save_game.o(ewram_data);
         . = ALIGN(4); src/save_multiarena.o(ewram_data);
         . = ALIGN(4); src/save_xmap.o(ewram_data);
-
-        . = 0x0203DC3C - __ewram_overlay_end;
         . = ALIGN(4); src/xmap.o(ewram_data);
 
         . = 0x0203DC70 - __ewram_overlay_end;
@@ -415,10 +413,8 @@ SECTIONS
         src/minimap.o(.text);
         src/savemenu.o(.text);
         src/savemenu_2.o(.text);
-        asm/savemenufx.o(.text);
         src/xmap.o(.text);
-        asm/xmap.o(.text);
-
+        asm/xmap.o(.text); /* actually soundroom */
         src/soundroom.o(.text);
         asm/soundroom.o(.text);
         src/config.o(.text);
@@ -582,7 +578,8 @@ SECTIONS
         . = ALIGN(4); src/ending_cg_img.o(.rodata);
         . = ALIGN(4); src/savemenu.o(.rodata);
         . = ALIGN(4); src/savemenu_2.o(.rodata);
-        . = ALIGN(4); data/xmap_rodata.o(.rodata);
+        . = ALIGN(4); src/xmap.o(.rodata);
+        . = ALIGN(4); data/xmap_rodata.o(.rodata); /* actually soundroom */
         . = ALIGN(4); data/rodata.o(.rodata);
         . = ALIGN(4); src/ending_pinfo.o(.rodata);
         . = ALIGN(4); src/monologue_img.o(.rodata);
@@ -840,7 +837,6 @@ SECTIONS
         . = ALIGN(4); src/savemenu_2.o(.data);
         . = ALIGN(4); data/savemenufx.o(.data);
         . = ALIGN(4); src/xmap.o(.data);
-        . = ALIGN(4); data/xmap.o(.data);
         . = ALIGN(4); src/soundroom.o(.data);
         . = ALIGN(4); asm/soundroom.o(.data);
         . = ALIGN(4); src/config.o(.data);

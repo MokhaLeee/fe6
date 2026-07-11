@@ -150,7 +150,7 @@ bool func_fe6_080718E0(void);
 void func_fe6_08071B6C(void);
 void func_fe6_08071B80(int x, int y, int msg, ProcPtr parent);
 // func_fe6_08071BC0
-// func_fe6_08071C00
+void func_fe6_08071C00(char const * str, int * out_w, int * out_h);
 // func_fe6_08071C8C
 void func_fe6_08071D04(int x, int y, int msg);
 void func_fe6_08071D94(int x, int y, int w, int h);

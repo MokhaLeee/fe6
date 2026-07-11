@@ -25,6 +25,7 @@ struct SoundRoomText {
 };
 extern EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText;
 
+// PutSoundRoomCG
 // CountTotalSoundRoomSongs
 // Soundroom_Init
 // func_fe6_0808BBCC

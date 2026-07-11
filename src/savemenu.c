@@ -27,7 +27,7 @@ void func_fe6_0808A454(char const * string, bool display);
 bool func_fe6_0808A79C(struct SaveMenuProc * proc);
 bool func_fe6_08088EB8(struct SaveMenuProc * proc, int direction);
 void func_fe6_0808A8B4(ProcPtr parent, int arg_1, int arg_2);
-void SaveMenu_ExecXmap(fu8 arg_0, ProcPtr parent);
+void StartXmap(fu8 arg_0, ProcPtr parent);
 void SaveMenu_ExecSoundroom(ProcPtr parent);
 void StartSaveDrawFadeIn(ProcPtr parent);
 void StartSaveDrawFadeOut(ProcPtr parent);
@@ -1107,7 +1107,7 @@ void SaveMenu_StartXmapSoundRoom(struct SaveMenuProc * proc)
     switch (proc->sel_index)
     {
         case 1:
-            SaveMenu_ExecXmap(0, proc);
+            StartXmap(0, proc);
             break;
 
         case 8:

@@ -1,20 +1,6 @@
 	.section .rodata
 
-	.global String_Xmap_08336CD0
-String_Xmap_08336CD0: @ 08336CD0
-	.incbin "fe6-base.gba", 0x336CD0, (0x336CF0 - 0x336CD0) @ length: 0020
-
-	.global String_Xmap_08336CF0
-String_Xmap_08336CF0: @ 08336CF0
-	.incbin "fe6-base.gba", 0x336CF0, (0x336CF8 - 0x336CF0) @ length: 0008
-
-	.global String_Xmap_08336CF8
-String_Xmap_08336CF8: @ 08336CF8
-	.incbin "fe6-base.gba", 0x336CF8, (0x336D00 - 0x336CF8) @ length: 0008
-
-	.global String_Xmap_08336D00
-String_Xmap_08336D00: @ 08336D00
-	.incbin "fe6-base.gba", 0x336D00, (0x336D3C - 0x336D00) @ length: 003C
+	.incbin "fe6-base.gba", 0x336D08, (0x336D3C - 0x336D08) @ length: 0034
 
 	.global String_Xmap_08336D3C
 String_Xmap_08336D3C: @ 08336D3C
