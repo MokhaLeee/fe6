@@ -14,6 +14,8 @@ EWRAM_DATA u8 _pad_0203D499[7] = { 0 };
 EWRAM_DATA struct SecretScreenData gSecretScreenData[SID_PID_POOL_SIZE] = {};
 EWRAM_DATA u8 Unk_0203D518[10] = {};
 
+EWRAM_OVERLAY(0) int Unk_020168E8 = 0;
+EWRAM_OVERLAY(0) int Unk_020168EC = 0;
 EWRAM_OVERLAY(0) int Unk_020168F0 = 0;
 EWRAM_OVERLAY(0) int Unk_020168F4 = 0;
 EWRAM_OVERLAY(0) struct Text gSecretScreenTexts[5] = {};

@@ -81,6 +81,8 @@ void SecretScreen_End(struct ProcSecretScreen *proc);
 ProcPtr NewGeneralSecretScreen(ProcPtr parent);
 ProcPtr NewUniqueSecretScreen(struct Unit *unit, ProcPtr parent);
 
+extern EWRAM_OVERLAY(0) int Unk_020168E8;
+extern EWRAM_OVERLAY(0) int Unk_020168EC;
 extern EWRAM_OVERLAY(0) int Unk_020168F0;
 extern EWRAM_OVERLAY(0) int Unk_020168F4;
 extern EWRAM_OVERLAY(0) struct Text gSecretScreenTexts[5];
