@@ -31,30 +31,6 @@ PROC_LABEL 0
 
 	.text
 
-	thumb_func_start GetSecretScreenRN
-GetSecretScreenRN: @ 0x08082EEC
-	push {r4, r5, lr}
-	ldr r5, .L08082F14 @ =gSecretScreenRN
-	ldr r0, [r5]
-	lsls r4, r0, #4
-	adds r4, r4, r0
-	lsls r4, r4, #0x13
-	lsrs r4, r4, #0x10
-	adds r0, r4, #0
-	movs r1, #0x47
-	bl __udivsi3
-	adds r4, r4, r0
-	adds r4, #3
-	lsls r4, r4, #0x10
-	lsrs r4, r4, #0x10
-	str r4, [r5]
-	adds r0, r4, #0
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L08082F14: .4byte gSecretScreenRN
-
 	thumb_func_start func_fe6_08082F18
 func_fe6_08082F18: @ 0x08082F18
 	push {r4, r5, r6, lr}
