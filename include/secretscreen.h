@@ -26,13 +26,15 @@ struct SecretScreenData {
 
 extern struct SecretScreenData gSecretScreenData[];
 
-struct UnkStruct_020169C4 {
-	STRUCT_PAD(0x0, 0x6);
-
-	u16 unk_06;
+/* Immediately follows gSecretScreenPasswordBuf[0xA0] in EWRAM (0x02016924 + 0xA0). */
+struct SecretScreenPasswordMeta {
+	u16 rn_seed;    /* +0x00: (checksum + game_time) & 0x3FF, seeds gSecretScreenRN */
+	u16 checksum_b; /* +0x02: tail checksum mixed with RN, & 0x1FF */
+	u16 checksum_c; /* +0x04: final tail checksum mixed with RN, & 0x1FF */
+	u16 tail_len;   /* +0x06: byte length of tail checksum region */
 };
 
-struct UnkStruct_SecretScreen_030048C0 {
+struct SecretScreenPlayRankStats {
 	/* 00 */ u16 total_turn;
 	/* 02 */ u16 winning_rate;
 	/* 04 */ u16 dead_allies;
@@ -44,35 +46,45 @@ struct UnkStruct_SecretScreen_030048C0 {
 	/* 11 */ u8 unk_11;
 };
 
-extern IWRAM_DATA struct UnkStruct_SecretScreen_030048C0 gSecretScreen_030048C0;
+extern IWRAM_DATA struct SecretScreenPlayRankStats gSecretScreenPlayRankStats;
 
-
-void func_fe6_08082E74(int a, int b);
-int func_fe6_08082EC0(int a);
+/* Bitstream / password buffer primitives */
+void SecretScreen_InitBitstream(int bit_count, int seed);
+int SecretScreen_CeilDivBitCount(int a);
 u32 GetSecretScreenRN(void);
-void func_fe6_08082F54(u8 *buf, int *counter, int value, int num_bits);
-// func_fe6_08082F18
-u32 SecretRnGetter_08082FE8(u8 *buf, int *counter, int round);
-u16 func_fe6_08083078(u8 *buf, int length);
-// func_fe6_080830AC
-// func_fe6_08083180
-void ModifyPassword(void (*func)(int a, int b));
-// func_fe6_08083378
-// func_fe6_0808344C
-// func_fe6_0808347C
-// InitPassword
-// func_fe6_0808357C
-// func_fe6_08083618
-// PrintPassword
-// func_fe6_08083750
-// func_fe6_080837C8
-// func_fe6_080838FC
-// func_fe6_08083900
+void SecretScreen_WriteBits(u8 *buf, int *counter, int value, int num_bits);
+void SecretScreen_ShufflePasswordBuf(void);
+u32 SecretScreen_ReadBits(u8 *buf, int *counter, int round);
+u16 SecretScreen_ChecksumPasswordBuf(u8 *buf, int length);
+
+/* Password meta embed / extract */
+void SecretScreen_EmbedPasswordMeta(void);
+void SecretScreen_ExtractPasswordMeta(void);
+
+/* Password encode / decode pipeline */
+void SecretScreen_ModifyPassword(void (*func)(int a, int b));
+void SecretScreen_VerifyPassword(void);
+void SecretScreen_FindGlyphIndex(void);
+void SecretScreen_MapGlyphsToPasswordBuf(void);
+
+/* Play rank password */
+void SecretScreen_EncodePlayRankStats(void);
+void SecretScreen_DecodePlayRankStats(void);
+void SecretScreen_FillPlayRankStats(void);
+void SecretScreen_PrintPlayRankPassword(void);
+void SecretScreen_PrintPlayRankStatNumbers(void);
+void SecretScreen_PlayRankPasswordInit(void);
+void SecretScreen_PlayRankPasswordLoop(void);
+void SecretScreen_PlayRankPasswordEnd(void);
 void NewPassword(ProcPtr);
-void func_fe6_08083944(int a, int b);
-void func_fe6_08083A68(int *counter, u8 *buf);
+
+/* Unit data encode / decode */
+void SecretScreen_EncodeUnitData(int a, int b);
+void SecretScreen_DecodeUnitData(int *counter, u8 *buf);
 int GetFlattenArrayOffset(int line, int col);
-void func_fe6_08083BC4(struct Unit *units[], int count);
+void SecretScreen_PackUnitData(struct Unit *units[], int count);
+
+/* UI */
 void PrintSecretScreenTexts(struct Text *text, const u8 *table);
 void PutSecretScreenLineNumber(int line);
 void SecretScreen_Init(struct ProcSecretScreen *proc);
@@ -81,19 +93,19 @@ void SecretScreen_End(struct ProcSecretScreen *proc);
 ProcPtr NewGeneralSecretScreen(ProcPtr parent);
 ProcPtr NewUniqueSecretScreen(struct Unit *unit, ProcPtr parent);
 
-extern EWRAM_OVERLAY(0) int Unk_020168E8;
-extern EWRAM_OVERLAY(0) int Unk_020168EC;
-extern EWRAM_OVERLAY(0) int Unk_020168F0;
-extern EWRAM_OVERLAY(0) int Unk_020168F4;
+extern EWRAM_OVERLAY(0) int gSecretScreenBitCount;
+extern EWRAM_OVERLAY(0) int gSecretScreenBitMask;
+extern EWRAM_OVERLAY(0) int gSecretScreenSymbolCount;
+extern EWRAM_OVERLAY(0) int gSecretScreenInitSeed;
 extern EWRAM_OVERLAY(0) struct Text gSecretScreenTexts[5];
 extern EWRAM_OVERLAY(0) int gSecretScreenRN;
-extern EWRAM_OVERLAY(0) u8 Unk_02016924[0xA0];
-extern EWRAM_OVERLAY(0) struct UnkStruct_020169C4 Unk_020169C4;
+extern EWRAM_OVERLAY(0) u8 gSecretScreenPasswordBuf[0xA0];
+extern EWRAM_OVERLAY(0) struct SecretScreenPasswordMeta gSecretScreenPasswordMeta;
 
 extern EWRAM_DATA u8 SioPidPool[SID_PID_POOL_SIZE];
-extern EWRAM_DATA u8 Unk_0203D518[10];
+extern EWRAM_DATA u8 gSecretScreenSupportLevels[10];
 
-extern CONST_DATA u8 gUnk_0867978C[];
+extern CONST_DATA u8 gSecretScreenPlayRankGlyphTable[];
 extern struct ProcScr ProcScr_Prep_Password[];
-extern CONST_DATA u8 gUnk_08679820[];
+extern CONST_DATA u8 gSecretScreenUnitGlyphTable[];
 extern CONST_DATA struct ProcScr ProcScr_SecretScreen[];

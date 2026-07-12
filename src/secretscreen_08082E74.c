@@ -1,29 +1,29 @@
 #include "prelude.h"
 #include "secretscreen.h"
 
-void func_fe6_08082E74(int bit_count, int seed)
+void SecretScreen_InitBitstream(int bit_count, int seed)
 {
 	int remainder;
 
-	Unk_020168E8 = bit_count;
-	Unk_020168EC = (1 << bit_count) - 1;
+	gSecretScreenBitCount = bit_count;
+	gSecretScreenBitMask = (1 << bit_count) - 1;
 
-	Unk_020168F0 = 28 / bit_count;
+	gSecretScreenSymbolCount = 28 / bit_count;
 	remainder = 28 % bit_count;
 
 	if (remainder > 0)
-		Unk_020168F0++;
+		gSecretScreenSymbolCount++;
 
-	Unk_020168F4 = seed;
+	gSecretScreenInitSeed = seed;
 }
 
-int func_fe6_08082EC0(int a)
+int SecretScreen_CeilDivBitCount(int a)
 {
 	int quotient;
 	int remainder;
 
-	quotient = a / Unk_020168E8;
-	remainder = a % Unk_020168E8;
+	quotient = a / gSecretScreenBitCount;
+	remainder = a % gSecretScreenBitCount;
 
 	if (remainder > 0)
 		quotient++;
@@ -50,22 +50,22 @@ u32 GetSecretScreenRN(void)
 
 #if NONMATCHING
 
-void func_fe6_08082F18(void)
+void SecretScreen_ShufflePasswordBuf(void)
 {
 	int i;
 
-	for (i = 0; i < Unk_020168F0; i++) {
-		int tmp = Unk_02016924[Unk_020168F0 + (i << 1) + i];
+	for (i = 0; i < gSecretScreenSymbolCount; i++) {
+		int tmp = gSecretScreenPasswordBuf[gSecretScreenSymbolCount + (i << 1) + i];
 
-		Unk_02016924[Unk_020168F0 + (i << 1) + i] = Unk_02016924[i];
-		Unk_02016924[i] = tmp;
+		gSecretScreenPasswordBuf[gSecretScreenSymbolCount + (i << 1) + i] = gSecretScreenPasswordBuf[i];
+		gSecretScreenPasswordBuf[i] = tmp;
 	}
 }
 
 #else
 
 NAKEDFUNC
-void func_fe6_08082F18(void)
+void SecretScreen_ShufflePasswordBuf(void)
 {
 	asm("\
 	.syntax unified\n\
@@ -97,14 +97,14 @@ void func_fe6_08082F18(void)
 	pop {r0}\n\
 	bx r0\n\
 	.align 2, 0\n\
-.L08082F4C: .4byte Unk_020168F0\n\
-.L08082F50: .4byte Unk_02016924\n\
+.L08082F4C: .4byte gSecretScreenSymbolCount\n\
+.L08082F50: .4byte gSecretScreenPasswordBuf\n\
 	.syntax divided");
 }
 
 #endif
 
-void func_fe6_08082F54(u8 *buf, int *counter, int value, int num_bits)
+void SecretScreen_WriteBits(u8 *buf, int *counter, int value, int num_bits)
 {
 	int i;
 	u16 tmp;
@@ -114,20 +114,20 @@ void func_fe6_08082F54(u8 *buf, int *counter, int value, int num_bits)
 	value &= (1 << num_bits) - 1;
 
 	for (i = 0; i < num_bits; i++) {
-		buf[*counter / Unk_020168E8] |= ((value & (1 << i)) >> i) << (*counter % Unk_020168E8 % 8);
+		buf[*counter / gSecretScreenBitCount] |= ((value & (1 << i)) >> i) << (*counter % gSecretScreenBitCount % 8);
 		(*counter)++;
 	}
 }
 
-u32 SecretRnGetter_08082FE8(u8 *buf, int *counter, int round)
+u32 SecretScreen_ReadBits(u8 *buf, int *counter, int round)
 {
 	int i;
 	u32 value = 0;
 	u16 tmp;
 
 	for (i = 0; i < round; i++) {
-		value |= ((buf[*counter / Unk_020168E8] & (1 << (*counter % Unk_020168E8 % 8)))
-			>> (*counter % Unk_020168E8 % 8)) << i;
+		value |= ((buf[*counter / gSecretScreenBitCount] & (1 << (*counter % gSecretScreenBitCount % 8)))
+			>> (*counter % gSecretScreenBitCount % 8)) << i;
 		(*counter)++;
 	}
 
@@ -135,7 +135,7 @@ u32 SecretRnGetter_08082FE8(u8 *buf, int *counter, int round)
 	return (value - tmp) & ((1 << round) - 1);
 }
 
-u16 func_fe6_08083078(u8 *buf, int length)
+u16 SecretScreen_ChecksumPasswordBuf(u8 *buf, int length)
 {
 	u16 sum = 0;
 	int i = 0;

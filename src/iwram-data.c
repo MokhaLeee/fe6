@@ -140,7 +140,7 @@ IWRAM_DATA u8 Pad_Common_030048B9[7] = {};
 /**
  * Secret screen
  */
-IWRAM_DATA struct UnkStruct_SecretScreen_030048C0 gSecretScreen_030048C0 = {};
+IWRAM_DATA struct SecretScreenPlayRankStats gSecretScreenPlayRankStats = {};
 
 /**
  * Play rank

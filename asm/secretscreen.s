@@ -4,16 +4,16 @@
 	.syntax unified
 
 	.data
-	.global gUnk_0867978C
-gUnk_0867978C: @ 0867978C
+	.global gSecretScreenPlayRankGlyphTable
+gSecretScreenPlayRankGlyphTable: @ 0867978C
 	.incbin "fe6-base.gba", 0x67978C, (0x6797D0 - 0x67978C) @ length: 0044
 
 	.global ProcScr_Prep_Password
 ProcScr_Prep_Password: @ 086797D0
 	.incbin "fe6-base.gba", 0x6797D0, (0x679820 - 0x6797D0) @ length: 0050
 
-	.global gUnk_08679820
-gUnk_08679820: @ 08679820
+	.global gSecretScreenUnitGlyphTable
+gSecretScreenUnitGlyphTable: @ 08679820
 	.incbin "fe6-base.gba", 0x679820, (0x679924 - 0x679820) @ length: 0104
 
 	.global ProcScr_SecretScreen
@@ -32,20 +32,20 @@ PROC_LABEL 0
 	.text
 
 
-	thumb_func_start func_fe6_080830AC
-func_fe6_080830AC: @ 0x080830AC
+	thumb_func_start SecretScreen_EmbedPasswordMeta
+SecretScreen_EmbedPasswordMeta: @ 0x080830AC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
 	movs r6, #0
-	ldr r0, .L080830E4 @ =Unk_020168F0
+	ldr r0, .L080830E4 @ =gSecretScreenSymbolCount
 	ldr r0, [r0]
-	ldr r5, .L080830E8 @ =Unk_02016924
+	ldr r5, .L080830E8 @ =gSecretScreenPasswordBuf
 	adds r0, r0, r5
-	ldr r4, .L080830EC @ =Unk_020169C4
+	ldr r4, .L080830EC @ =gSecretScreenPasswordMeta
 	ldrh r1, [r4, #6]
-	bl func_fe6_08083078
+	bl SecretScreen_ChecksumPasswordBuf
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov sb, r0
@@ -62,9 +62,9 @@ func_fe6_080830AC: @ 0x080830AC
 	ldrh r4, [r0]
 	b .L08083108
 	.align 2, 0
-.L080830E4: .4byte Unk_020168F0
-.L080830E8: .4byte Unk_02016924
-.L080830EC: .4byte Unk_020169C4
+.L080830E4: .4byte gSecretScreenSymbolCount
+.L080830E8: .4byte gSecretScreenPasswordBuf
+.L080830EC: .4byte gSecretScreenPasswordMeta
 .L080830F0:
 	cmp r5, #1
 	bne .L08083104
@@ -106,11 +106,11 @@ func_fe6_080830AC: @ 0x080830AC
 	cmp r6, #0x1c
 	bne .L080830D0
 	movs r2, #0
-	ldr r3, .L08083174 @ =Unk_020168F0
+	ldr r3, .L08083174 @ =gSecretScreenSymbolCount
 	ldr r0, [r3]
 	cmp r2, r0
 	bge .L08083160
-	ldr r5, .L08083178 @ =Unk_02016924
+	ldr r5, .L08083178 @ =gSecretScreenPasswordBuf
 	ldr r4, .L0808317C @ =0x020168EC
 .L0808314C:
 	adds r0, r2, r5
@@ -124,7 +124,7 @@ func_fe6_080830AC: @ 0x080830AC
 	cmp r2, r0
 	blt .L0808314C
 .L08083160:
-	bl func_fe6_08082F18
+	bl SecretScreen_ShufflePasswordBuf
 	pop {r3, r4}
 	mov r8, r3
 	mov sb, r4
@@ -133,12 +133,12 @@ func_fe6_080830AC: @ 0x080830AC
 	bx r0
 	.align 2, 0
 .L08083170: .4byte 0x020168E8
-.L08083174: .4byte Unk_020168F0
-.L08083178: .4byte Unk_02016924
+.L08083174: .4byte gSecretScreenSymbolCount
+.L08083178: .4byte gSecretScreenPasswordBuf
 .L0808317C: .4byte 0x020168EC
 
-	thumb_func_start func_fe6_08083180
-func_fe6_08083180: @ 0x08083180
+	thumb_func_start SecretScreen_ExtractPasswordMeta
+SecretScreen_ExtractPasswordMeta: @ 0x08083180
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -147,14 +147,14 @@ func_fe6_08083180: @ 0x08083180
 	movs r0, #0
 	mov sl, r0
 	movs r7, #0
-	bl func_fe6_08082F18
-	ldr r4, .L08083218 @ =Unk_020168F0
+	bl SecretScreen_ShufflePasswordBuf
+	ldr r4, .L08083218 @ =gSecretScreenSymbolCount
 	ldr r0, [r4]
-	ldr r5, .L0808321C @ =Unk_02016924
+	ldr r5, .L0808321C @ =gSecretScreenPasswordBuf
 	adds r0, r0, r5
-	ldr r1, .L08083220 @ =Unk_020169C4
+	ldr r1, .L08083220 @ =gSecretScreenPasswordMeta
 	ldrh r1, [r1, #6]
-	bl func_fe6_08083078
+	bl SecretScreen_ChecksumPasswordBuf
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
 	movs r2, #0
@@ -176,12 +176,12 @@ func_fe6_08083180: @ 0x08083180
 	cmp r2, r0
 	blt .L080831B4
 .L080831CA:
-	ldr r0, .L08083220 @ =Unk_020169C4
+	ldr r0, .L08083220 @ =gSecretScreenPasswordMeta
 	movs r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	strh r1, [r0, #4]
-	ldr r1, .L0808321C @ =Unk_02016924
+	ldr r1, .L0808321C @ =gSecretScreenPasswordBuf
 	ldr r2, .L08083228 @ =0x020168E8
 	mov sb, r2
 	mov r8, r0
@@ -213,9 +213,9 @@ func_fe6_08083180: @ 0x08083180
 	strh r4, [r1]
 	b .L0808327C
 	.align 2, 0
-.L08083218: .4byte Unk_020168F0
-.L0808321C: .4byte Unk_02016924
-.L08083220: .4byte Unk_020169C4
+.L08083218: .4byte gSecretScreenSymbolCount
+.L0808321C: .4byte gSecretScreenPasswordBuf
+.L08083220: .4byte gSecretScreenPasswordMeta
 .L08083224: .4byte 0x020168EC
 .L08083228: .4byte 0x020168E8
 .L0808322C:
@@ -276,15 +276,15 @@ func_fe6_08083180: @ 0x08083180
 	pop {r0}
 	bx r0
 
-	thumb_func_start ModifyPassword
-ModifyPassword: @ 0x080832A0
+	thumb_func_start SecretScreen_ModifyPassword
+SecretScreen_ModifyPassword: @ 0x080832A0
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r3, r0, #0
 	movs r0, #0
 	str r0, [sp]
-	ldr r6, .L0808335C @ =Unk_02016924
-	ldr r5, .L08083360 @ =Unk_020168F0
+	ldr r6, .L0808335C @ =gSecretScreenPasswordBuf
+	ldr r5, .L08083360 @ =gSecretScreenSymbolCount
 	adds r2, r6, #0
 	movs r1, #0
 	adds r0, r6, #0
@@ -299,13 +299,13 @@ ModifyPassword: @ 0x080832A0
 	mov r0, sp
 	bl _call_via_r3
 	ldr r0, [sp]
-	bl func_fe6_08082EC0
-	ldr r4, .L08083364 @ =Unk_020169C4
+	bl SecretScreen_CeilDivBitCount
+	ldr r4, .L08083364 @ =gSecretScreenPasswordMeta
 	strh r0, [r4, #6]
 	ldr r0, [r5]
 	adds r0, r0, r6
 	ldrh r1, [r4, #6]
-	bl func_fe6_08083078
+	bl SecretScreen_ChecksumPasswordBuf
 	strh r0, [r4, #2]
 	bl GetGameTime
 	lsrs r0, r0, #3
@@ -331,7 +331,7 @@ ModifyPassword: @ 0x080832A0
 	adds r4, r6, #0
 .L0808330E:
 	bl GetSecretScreenRN
-	ldr r1, .L08083360 @ =Unk_020168F0
+	ldr r1, .L08083360 @ =gSecretScreenSymbolCount
 	ldr r2, [r1]
 	adds r2, r5, r2
 	adds r2, r2, r4
@@ -342,18 +342,18 @@ ModifyPassword: @ 0x080832A0
 	ands r0, r1
 	strb r0, [r2]
 	adds r5, #1
-	ldr r0, .L08083364 @ =Unk_020169C4
+	ldr r0, .L08083364 @ =gSecretScreenPasswordMeta
 	ldrh r0, [r0, #6]
 	cmp r5, r0
 	blt .L0808330E
 .L08083330:
-	ldr r0, .L08083360 @ =Unk_020168F0
+	ldr r0, .L08083360 @ =gSecretScreenSymbolCount
 	ldr r0, [r0]
-	ldr r1, .L0808335C @ =Unk_02016924
+	ldr r1, .L0808335C @ =gSecretScreenPasswordBuf
 	adds r0, r0, r1
-	ldr r5, .L08083364 @ =Unk_020169C4
+	ldr r5, .L08083364 @ =gSecretScreenPasswordMeta
 	ldrh r1, [r5, #6]
-	bl func_fe6_08083078
+	bl SecretScreen_ChecksumPasswordBuf
 	adds r4, r0, #0
 	bl GetSecretScreenRN
 	adds r4, r4, r0
@@ -361,22 +361,22 @@ ModifyPassword: @ 0x080832A0
 	adds r0, r2, #0
 	ands r4, r0
 	strh r4, [r5, #4]
-	bl func_fe6_080830AC
+	bl SecretScreen_EmbedPasswordMeta
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L0808335C: .4byte Unk_02016924
-.L08083360: .4byte Unk_020168F0
-.L08083364: .4byte Unk_020169C4
+.L0808335C: .4byte gSecretScreenPasswordBuf
+.L08083360: .4byte gSecretScreenSymbolCount
+.L08083364: .4byte gSecretScreenPasswordMeta
 .L08083368: .4byte 0x000003FF
 .L0808336C: .4byte gSecretScreenRN
 .L08083370: .4byte 0x000001FF
 .L08083374: .4byte 0x020168EC
 
-	thumb_func_start func_fe6_08083378
-func_fe6_08083378: @ 0x08083378
+	thumb_func_start SecretScreen_VerifyPassword
+SecretScreen_VerifyPassword: @ 0x08083378
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -385,17 +385,17 @@ func_fe6_08083378: @ 0x08083378
 	mov sb, r0
 	movs r0, #0
 	str r0, [sp, #4]
-	bl func_fe6_08083180
+	bl SecretScreen_ExtractPasswordMeta
 	ldr r1, .L08083424 @ =gSecretScreenRN
-	ldr r4, .L08083428 @ =Unk_020169C4
+	ldr r4, .L08083428 @ =gSecretScreenPasswordMeta
 	ldrh r0, [r4]
 	str r0, [r1]
-	ldr r0, .L0808342C @ =Unk_020168F0
+	ldr r0, .L0808342C @ =gSecretScreenSymbolCount
 	ldr r0, [r0]
-	ldr r7, .L08083430 @ =Unk_02016924
+	ldr r7, .L08083430 @ =gSecretScreenPasswordBuf
 	adds r0, r0, r7
 	ldrh r1, [r4, #6]
-	bl func_fe6_08083078
+	bl SecretScreen_ChecksumPasswordBuf
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	bl GetSecretScreenRN
@@ -410,7 +410,7 @@ func_fe6_08083378: @ 0x08083378
 	adds r4, r7, #0
 .L080833BC:
 	bl GetSecretScreenRN
-	ldr r1, .L0808342C @ =Unk_020168F0
+	ldr r1, .L0808342C @ =gSecretScreenSymbolCount
 	ldr r2, [r1]
 	adds r2, r5, r2
 	adds r2, r2, r4
@@ -421,7 +421,7 @@ func_fe6_08083378: @ 0x08083378
 	ands r0, r1
 	strb r0, [r2]
 	adds r5, #1
-	ldr r0, .L08083428 @ =Unk_020169C4
+	ldr r0, .L08083428 @ =gSecretScreenPasswordMeta
 	ldrh r0, [r0, #6]
 	cmp r5, r0
 	blt .L080833BC
@@ -429,17 +429,17 @@ func_fe6_08083378: @ 0x08083378
 	bl GetSecretScreenRN
 	mov r1, sp
 	strh r0, [r1, #2]
-	ldr r5, .L0808342C @ =Unk_020168F0
+	ldr r5, .L0808342C @ =gSecretScreenSymbolCount
 	ldr r1, [r5]
-	ldr r4, .L08083430 @ =Unk_02016924
+	ldr r4, .L08083430 @ =gSecretScreenPasswordBuf
 	adds r1, r1, r4
 	mov r0, r8
 	bl _call_via_r9
 	ldr r0, [r5]
 	adds r0, r0, r4
-	ldr r4, .L08083428 @ =Unk_020169C4
+	ldr r4, .L08083428 @ =gSecretScreenPasswordMeta
 	ldrh r1, [r4, #6]
-	bl func_fe6_08083078
+	bl SecretScreen_ChecksumPasswordBuf
 	mov r1, sp
 	ldrh r1, [r1]
 	adds r0, r1, r0
@@ -461,9 +461,9 @@ func_fe6_08083378: @ 0x08083378
 	b .L0808343E
 	.align 2, 0
 .L08083424: .4byte gSecretScreenRN
-.L08083428: .4byte Unk_020169C4
-.L0808342C: .4byte Unk_020168F0
-.L08083430: .4byte Unk_02016924
+.L08083428: .4byte gSecretScreenPasswordMeta
+.L0808342C: .4byte gSecretScreenSymbolCount
+.L08083430: .4byte gSecretScreenPasswordBuf
 .L08083434: .4byte 0x020168EC
 .L08083438: .4byte 0x000001FF
 .L0808343C:
@@ -477,8 +477,8 @@ func_fe6_08083378: @ 0x08083378
 	pop {r1}
 	bx r1
 
-	thumb_func_start func_fe6_0808344C
-func_fe6_0808344C: @ 0x0808344C
+	thumb_func_start SecretScreen_FindGlyphIndex
+SecretScreen_FindGlyphIndex: @ 0x0808344C
 	adds r3, r0, #0
 	movs r2, #0
 	movs r0, #0
@@ -507,8 +507,8 @@ func_fe6_0808344C: @ 0x0808344C
 	.align 2, 0
 .L08083478: .4byte 0x0000FFFF
 
-	thumb_func_start func_fe6_0808347C
-func_fe6_0808347C: @ 0x0808347C
+	thumb_func_start SecretScreen_MapGlyphsToPasswordBuf
+SecretScreen_MapGlyphsToPasswordBuf: @ 0x0808347C
 	push {r4, r5, r6, lr}
 	adds r2, r0, #0
 	adds r6, r1, #0
@@ -521,8 +521,8 @@ func_fe6_0808347C: @ 0x0808347C
 .L0808348E:
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl func_fe6_0808344C
-	ldr r1, .L080834B0 @ =Unk_02016924
+	bl SecretScreen_FindGlyphIndex
+	ldr r1, .L080834B0 @ =gSecretScreenPasswordBuf
 	adds r1, r5, r1
 	strb r0, [r1]
 	adds r4, #2
@@ -536,23 +536,23 @@ func_fe6_0808347C: @ 0x0808347C
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080834B0: .4byte Unk_02016924
+.L080834B0: .4byte gSecretScreenPasswordBuf
 
-	thumb_func_start InitPassword
-InitPassword: @ 0x080834B4
+	thumb_func_start SecretScreen_EncodePlayRankStats
+SecretScreen_EncodePlayRankStats: @ 0x080834B4
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
 	ldr r1, .L08083570 @ =gSecretScreenRN
-	ldr r0, .L08083574 @ =Unk_020168F4
+	ldr r0, .L08083574 @ =gSecretScreenInitSeed
 	ldr r0, [r0]
 	str r0, [r1]
-	ldr r6, .L08083578 @ =gSecretScreen_030048C0
+	ldr r6, .L08083578 @ =gSecretScreenPlayRankStats
 	ldrb r2, [r6, #0x11]
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #1
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	bl PlayRank_GetTotalTurn
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
@@ -560,7 +560,7 @@ InitPassword: @ 0x080834B4
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0x10
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	bl PlayRank_GetWinningRate
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
@@ -568,7 +568,7 @@ InitPassword: @ 0x080834B4
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0x10
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	bl PlayRank_GetDeadAllies
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
@@ -576,7 +576,7 @@ InitPassword: @ 0x080834B4
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #7
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	bl PlayRank_GetTotalLevelsGained
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
@@ -584,13 +584,13 @@ InitPassword: @ 0x080834B4
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0xc
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	bl GetTotalAsset
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0x18
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	bl PlayRank_CalcTotalLevel
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
@@ -598,104 +598,104 @@ InitPassword: @ 0x080834B4
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0xc
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #0xe]
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0xa
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #0xf]
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #6
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #0x10]
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #6
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L08083570: .4byte gSecretScreenRN
-.L08083574: .4byte Unk_020168F4
-.L08083578: .4byte gSecretScreen_030048C0
+.L08083574: .4byte gSecretScreenInitSeed
+.L08083578: .4byte gSecretScreenPlayRankStats
 
-	thumb_func_start func_fe6_0808357C
-func_fe6_0808357C: @ 0x0808357C
+	thumb_func_start SecretScreen_DecodePlayRankStats
+SecretScreen_DecodePlayRankStats: @ 0x0808357C
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
 	ldr r1, .L0808360C @ =gSecretScreenRN
-	ldr r0, .L08083610 @ =Unk_020168F4
+	ldr r0, .L08083610 @ =gSecretScreenInitSeed
 	ldr r0, [r0]
 	str r0, [r1]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #1
-	bl SecretRnGetter_08082FE8
-	ldr r4, .L08083614 @ =gSecretScreen_030048C0
+	bl SecretScreen_ReadBits
+	ldr r4, .L08083614 @ =gSecretScreenPlayRankStats
 	strb r0, [r4, #0x11]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x10
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strh r0, [r4]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x10
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strh r0, [r4, #2]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #7
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strh r0, [r4, #4]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0xc
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strh r0, [r4, #6]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x18
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	str r0, [r4, #8]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0xc
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strh r0, [r4, #0xc]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0xa
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strb r0, [r4, #0xe]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #6
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strb r0, [r4, #0xf]
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #6
-	bl SecretRnGetter_08082FE8
+	bl SecretScreen_ReadBits
 	strb r0, [r4, #0x10]
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
 .L0808360C: .4byte gSecretScreenRN
-.L08083610: .4byte Unk_020168F4
-.L08083614: .4byte gSecretScreen_030048C0
+.L08083610: .4byte gSecretScreenInitSeed
+.L08083614: .4byte gSecretScreenPlayRankStats
 
-	thumb_func_start func_fe6_08083618
-func_fe6_08083618: @ 0x08083618
+	thumb_func_start SecretScreen_FillPlayRankStats
+SecretScreen_FillPlayRankStats: @ 0x08083618
 	push {r4, lr}
 	sub sp, #0xc
 	bl PlayRank_GetTotalTurn
-	ldr r4, .L08083654 @ =gSecretScreen_030048C0
+	ldr r4, .L08083654 @ =gSecretScreenPlayRankStats
 	strh r0, [r4]
 	bl PlayRank_GetWinningRate
 	strh r0, [r4, #2]
@@ -716,7 +716,7 @@ func_fe6_08083618: @ 0x08083618
 	movs r0, #1
 	b .L0808365E
 	.align 2, 0
-.L08083654: .4byte gSecretScreen_030048C0
+.L08083654: .4byte gSecretScreenPlayRankStats
 .L08083658: .4byte gPlaySt
 .L0808365C:
 	movs r0, #0
@@ -727,7 +727,7 @@ func_fe6_08083618: @ 0x08083618
 	add r3, sp, #8
 	mov r1, sp
 	bl FormatTime
-	ldr r1, .L08083684 @ =gSecretScreen_030048C0
+	ldr r1, .L08083684 @ =gSecretScreenPlayRankStats
 	ldr r0, [sp]
 	strb r0, [r1, #0xe]
 	ldr r0, [sp, #4]
@@ -739,10 +739,10 @@ func_fe6_08083618: @ 0x08083618
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08083684: .4byte gSecretScreen_030048C0
+.L08083684: .4byte gSecretScreenPlayRankStats
 
-	thumb_func_start PrintPassword
-PrintPassword: @ 0x08083688
+	thumb_func_start SecretScreen_PrintPlayRankPassword
+SecretScreen_PrintPlayRankPassword: @ 0x08083688
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -774,14 +774,14 @@ PrintPassword: @ 0x08083688
 .L080836C4:
 	mov r0, sb
 	adds r2, r0, r4
-	ldr r1, .L08083740 @ =Unk_020169C4
-	ldr r0, .L08083744 @ =Unk_020168F0
+	ldr r1, .L08083740 @ =gSecretScreenPasswordMeta
+	ldr r0, .L08083744 @ =gSecretScreenSymbolCount
 	ldr r0, [r0]
 	ldrh r1, [r1, #6]
 	adds r0, r1, r0
 	cmp r2, r0
 	beq .L08083730
-	ldr r1, .L08083748 @ =Unk_02016924
+	ldr r1, .L08083748 @ =gSecretScreenPasswordBuf
 	adds r1, r2, r1
 	ldrb r2, [r1]
 	lsls r0, r2, #1
@@ -835,13 +835,13 @@ PrintPassword: @ 0x08083688
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L08083740: .4byte Unk_020169C4
-.L08083744: .4byte Unk_020168F0
-.L08083748: .4byte Unk_02016924
+.L08083740: .4byte gSecretScreenPasswordMeta
+.L08083744: .4byte gSecretScreenSymbolCount
+.L08083748: .4byte gSecretScreenPasswordBuf
 .L0808374C: .4byte gBg2Tm+0x8
 
-	thumb_func_start func_fe6_08083750
-func_fe6_08083750: @ 0x08083750
+	thumb_func_start SecretScreen_PrintPlayRankStatNumbers
+SecretScreen_PrintPlayRankStatNumbers: @ 0x08083750
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -850,7 +850,7 @@ func_fe6_08083750: @ 0x08083750
 	ldr r0, .L080837C0 @ =gBg2Tm+0x4
 	mov r8, r0
 	adds r0, r4, r0
-	ldr r6, .L080837C4 @ =gSecretScreen_030048C0
+	ldr r6, .L080837C4 @ =gSecretScreenPlayRankStats
 	ldrh r2, [r6]
 	movs r1, #2
 	bl PutNumberOrBlank
@@ -893,10 +893,10 @@ func_fe6_08083750: @ 0x08083750
 	bx r0
 	.align 2, 0
 .L080837C0: .4byte gBg2Tm+0x4
-.L080837C4: .4byte gSecretScreen_030048C0
+.L080837C4: .4byte gSecretScreenPlayRankStats
 
-	thumb_func_start func_fe6_080837C8
-func_fe6_080837C8: @ 0x080837C8
+	thumb_func_start SecretScreen_PlayRankPasswordInit
+SecretScreen_PlayRankPasswordInit: @ 0x080837C8
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
@@ -996,15 +996,15 @@ func_fe6_080837C8: @ 0x080837C8
 	subs r4, #1
 	cmp r4, #0
 	bge .L0808389C
-	bl func_fe6_08083618
+	bl SecretScreen_FillPlayRankStats
 	movs r0, #5
 	movs r1, #0xb
-	bl func_fe6_08082E74
-	ldr r0, .L080838F4 @ =InitPassword
-	bl ModifyPassword
+	bl SecretScreen_InitBitstream
+	ldr r0, .L080838F4 @ =SecretScreen_EncodePlayRankStats
+	bl SecretScreen_ModifyPassword
 	ldr r0, .L080838F0 @ =gSecretScreenTexts
-	ldr r1, .L080838F8 @ =gUnk_0867978C
-	bl PrintPassword
+	ldr r1, .L080838F8 @ =gSecretScreenPlayRankGlyphTable
+	bl SecretScreen_PrintPlayRankPassword
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0xa
@@ -1021,16 +1021,16 @@ func_fe6_080837C8: @ 0x080837C8
 .L080838E8: .4byte gBg2Tm
 .L080838EC: .4byte gBg3Tm
 .L080838F0: .4byte gSecretScreenTexts
-.L080838F4: .4byte InitPassword
-.L080838F8: .4byte gUnk_0867978C
+.L080838F4: .4byte SecretScreen_EncodePlayRankStats
+.L080838F8: .4byte gSecretScreenPlayRankGlyphTable
 
-	thumb_func_start func_fe6_080838FC
-func_fe6_080838FC: @ 0x080838FC
+	thumb_func_start SecretScreen_PlayRankPasswordLoop
+SecretScreen_PlayRankPasswordLoop: @ 0x080838FC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start func_fe6_08083900
-func_fe6_08083900: @ 0x08083900
+	thumb_func_start SecretScreen_PlayRankPasswordEnd
+SecretScreen_PlayRankPasswordEnd: @ 0x08083900
 	push {lr}
 	ldr r0, [r0, #0x44]
 	bl Proc_End
@@ -1065,8 +1065,8 @@ NewPassword: @ 0x08083930
 	.align 2, 0
 .L08083940: .4byte ProcScr_Prep_Password
 
-	thumb_func_start func_fe6_08083944
-func_fe6_08083944: @ 0x08083944
+	thumb_func_start SecretScreen_EncodeUnitData
+SecretScreen_EncodeUnitData: @ 0x08083944
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1075,7 +1075,7 @@ func_fe6_08083944: @ 0x08083944
 	mov r8, r0
 	adds r7, r1, #0
 	ldr r0, .L08083A54 @ =gSecretScreenRN
-	ldr r1, .L08083A58 @ =Unk_020168F4
+	ldr r1, .L08083A58 @ =gSecretScreenInitSeed
 	ldr r1, [r1]
 	str r1, [r0]
 	ldr r0, .L08083A5C @ =gSecretScreenData
@@ -1088,57 +1088,57 @@ func_fe6_08083944: @ 0x08083944
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #8
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #1]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #1
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #2]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #3]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #6
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #4]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #5]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #6]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #7]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #8]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #9]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	ldrb r2, [r6, #0xa]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #5
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	mov r0, sl
 	adds r0, #0xb
 	mov r1, sb
@@ -1149,7 +1149,7 @@ func_fe6_08083944: @ 0x08083944
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #3
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	adds r4, #1
 	subs r5, #1
 	cmp r5, #0
@@ -1162,7 +1162,7 @@ func_fe6_08083944: @ 0x08083944
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #8
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	adds r4, #1
 	subs r5, #1
 	cmp r5, #0
@@ -1175,14 +1175,14 @@ func_fe6_08083944: @ 0x08083944
 	cmp r6, r0
 	ble .L08083964
 	movs r4, #0
-	ldr r5, .L08083A64 @ =Unk_0203D518
+	ldr r5, .L08083A64 @ =gSecretScreenSupportLevels
 .L08083A32:
 	adds r0, r4, r5
 	ldrb r2, [r0]
 	adds r0, r7, #0
 	mov r1, r8
 	movs r3, #2
-	bl func_fe6_08082F54
+	bl SecretScreen_WriteBits
 	adds r4, #1
 	cmp r4, #9
 	ble .L08083A32
@@ -1195,7 +1195,7 @@ func_fe6_08083944: @ 0x08083944
 	bx r0
 	.align 2, 0
 .L08083A54: .4byte gSecretScreenRN
-.L08083A58: .4byte Unk_020168F4
+.L08083A58: .4byte gSecretScreenInitSeed
 .L08083A5C: .4byte gSecretScreenData
 .L08083A60: .4byte 0x0203D4B3
-.L08083A64: .4byte Unk_0203D518
+.L08083A64: .4byte gSecretScreenSupportLevels
