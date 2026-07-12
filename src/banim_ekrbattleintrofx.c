@@ -166,7 +166,7 @@ void NewEkrBaseKaiten(int identifier)
 			mode = 1;
 	} else {
 		if (gEkrBmLocation[POS_R] >= gEkrBmLocation[3])
-			mode = 5;
+			mode = 5; 
 		else
 			mode = 3;
 	}
