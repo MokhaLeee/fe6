@@ -30,7 +30,6 @@ bool func_fe6_0808A79C(struct SaveMenuProc * proc);
 bool func_fe6_08088EB8(struct SaveMenuProc * proc, int direction);
 void func_fe6_0808A8B4(ProcPtr parent, int arg_1, int arg_2);
 void StartXmap(fu8 arg_0, ProcPtr parent);
-void SaveMenu_ExecSoundroom(ProcPtr parent);
 void StartSaveDrawFadeIn(ProcPtr parent);
 void StartSaveDrawFadeOut(ProcPtr parent);
 void func_fe6_08089578(ProcPtr parent);
