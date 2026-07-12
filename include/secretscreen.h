@@ -70,7 +70,7 @@ void ModifyPassword(void (*func)(int a, int b));
 // func_fe6_08083900
 void NewPassword(ProcPtr);
 void func_fe6_08083944(int a, int b);
-// func_fe6_08083A68
+void func_fe6_08083A68(int *counter, u8 *buf);
 int GetFlattenArrayOffset(int line, int col);
 void func_fe6_08083BC4(struct Unit *units[], int count);
 void PrintSecretScreenTexts(struct Text *text, const u8 *table);

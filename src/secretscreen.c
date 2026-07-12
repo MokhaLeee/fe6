@@ -23,9 +23,9 @@ EWRAM_OVERLAY(0) int gSecretScreenRN = 0;
 EWRAM_OVERLAY(0) u8 Unk_02016924[0xA0] = {};
 EWRAM_OVERLAY(0) struct UnkStruct_020169C4 Unk_020169C4 = {};
 
-void func_fe6_08083A68(int a, int b)
+void func_fe6_08083A68(int *counter, u8 *buf)
 {
-	int i, j, k;
+	int i, j;
 	struct SecretScreenData *data;
 
 	gSecretScreenRN = Unk_020168F4;
@@ -33,27 +33,27 @@ void func_fe6_08083A68(int a, int b)
 	data = gSecretScreenData;
 
 	for (i = 0; i < 5; i++) {
-		gSecretScreenData[i].numbers[0]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 8);
-		gSecretScreenData[i].numbers[1]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 1);
-		gSecretScreenData[i].numbers[2]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
-		gSecretScreenData[i].numbers[3]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 6);
-		gSecretScreenData[i].numbers[4]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
-		gSecretScreenData[i].numbers[5]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
-		gSecretScreenData[i].numbers[6]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
-		gSecretScreenData[i].numbers[7]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
-		gSecretScreenData[i].numbers[8]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
-		gSecretScreenData[i].numbers[9]  = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
-		gSecretScreenData[i].numbers[10] = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 5);
+		gSecretScreenData[i].numbers[0]  = SecretRnGetter_08082FE8(buf, counter, 8);
+		gSecretScreenData[i].numbers[1]  = SecretRnGetter_08082FE8(buf, counter, 1);
+		gSecretScreenData[i].numbers[2]  = SecretRnGetter_08082FE8(buf, counter, 5);
+		gSecretScreenData[i].numbers[3]  = SecretRnGetter_08082FE8(buf, counter, 6);
+		gSecretScreenData[i].numbers[4]  = SecretRnGetter_08082FE8(buf, counter, 5);
+		gSecretScreenData[i].numbers[5]  = SecretRnGetter_08082FE8(buf, counter, 5);
+		gSecretScreenData[i].numbers[6]  = SecretRnGetter_08082FE8(buf, counter, 5);
+		gSecretScreenData[i].numbers[7]  = SecretRnGetter_08082FE8(buf, counter, 5);
+		gSecretScreenData[i].numbers[8]  = SecretRnGetter_08082FE8(buf, counter, 5);
+		gSecretScreenData[i].numbers[9]  = SecretRnGetter_08082FE8(buf, counter, 5);
+		gSecretScreenData[i].numbers[10] = SecretRnGetter_08082FE8(buf, counter, 5);
 
 		for (j = 0; j < 8; j++)
-			gSecretScreenData[i].numbers[11 + j] = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 3);
+			gSecretScreenData[i].numbers[11 + j] = SecretRnGetter_08082FE8(buf, counter, 3);
 
 		for (j = 0; j < 5; j++)
-			gSecretScreenData[i].numbers[19 + j] = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 8);
+			gSecretScreenData[i].numbers[19 + j] = SecretRnGetter_08082FE8(buf, counter, 8);
 	}
 
 	for (i = 0; i < 10; i++)
-		Unk_0203D518[i] = SecretRnGetter_08082FE8((u8 *)b, (int *)a, 2);
+		Unk_0203D518[i] = SecretRnGetter_08082FE8(buf, counter, 2);
 }
 
 int GetFlattenArrayOffset(int line, int col)
