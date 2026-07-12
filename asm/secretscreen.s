@@ -31,30 +31,6 @@ PROC_LABEL 0
 
 	.text
 
-	thumb_func_start func_fe6_08082EC0
-func_fe6_08082EC0: @ 0x08082EC0
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	ldr r0, .L08082EE8 @ =0x020168E8
-	ldr r4, [r0]
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl __divsi3
-	adds r6, r0, #0
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl __modsi3
-	cmp r0, #0
-	ble .L08082EE0
-	adds r6, #1
-.L08082EE0:
-	adds r0, r6, #0
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L08082EE8: .4byte 0x020168E8
-
 	thumb_func_start GetSecretScreenRN
 GetSecretScreenRN: @ 0x08082EEC
 	push {r4, r5, lr}

@@ -48,7 +48,7 @@ extern IWRAM_DATA struct UnkStruct_SecretScreen_030048C0 gSecretScreen_030048C0;
 
 
 void func_fe6_08082E74(int a, int b);
-// func_fe6_08082EC0
+int func_fe6_08082EC0(int a);
 u32 GetSecretScreenRN(void);
 // func_fe6_08082F18
 // func_fe6_08082F54
