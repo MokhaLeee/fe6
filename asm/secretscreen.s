@@ -32,37 +32,6 @@ PROC_LABEL 0
 	.text
 
 
-	thumb_func_start func_fe6_08083078
-func_fe6_08083078: @ 0x08083078
-	push {r4, lr}
-	adds r4, r0, #0
-	adds r3, r1, #0
-	movs r2, #0
-	movs r1, #0
-	cmp r2, r3
-	bge .L08083098
-.L08083086:
-	adds r0, r4, r1
-	adds r1, #1
-	ldrb r0, [r0]
-	muls r0, r1, r0
-	adds r0, r2, r0
-	lsls r0, r0, #0x10
-	lsrs r2, r0, #0x10
-	cmp r1, r3
-	blt .L08083086
-.L08083098:
-	lsrs r0, r2, #9
-	adds r0, r2, r0
-	ldr r2, .L080830A8 @ =0x000001FF
-	adds r1, r2, #0
-	ands r0, r1
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-.L080830A8: .4byte 0x000001FF
-
 	thumb_func_start func_fe6_080830AC
 func_fe6_080830AC: @ 0x080830AC
 	push {r4, r5, r6, r7, lr}

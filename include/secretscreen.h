@@ -53,7 +53,7 @@ u32 GetSecretScreenRN(void);
 void func_fe6_08082F54(u8 *buf, int *counter, int value, int num_bits);
 // func_fe6_08082F18
 u32 SecretRnGetter_08082FE8(u8 *buf, int *counter, int round);
-// func_fe6_08083078
+u16 func_fe6_08083078(u8 *buf, int length);
 // func_fe6_080830AC
 // func_fe6_08083180
 void ModifyPassword(void (*func)(int a, int b));

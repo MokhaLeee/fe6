@@ -134,3 +134,16 @@ u32 SecretRnGetter_08082FE8(u8 *buf, int *counter, int round)
 	tmp = GetSecretScreenRN();
 	return (value - tmp) & ((1 << round) - 1);
 }
+
+u16 func_fe6_08083078(u8 *buf, int length)
+{
+	u16 sum = 0;
+	int i = 0;
+
+	while (i < length) {
+		sum = (u16)(sum + (buf[i] * (i + 1)));
+		i++;
+	}
+
+	return (sum + (sum >> 9)) & 0x1FF;
+}
