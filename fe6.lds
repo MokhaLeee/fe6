@@ -384,7 +384,6 @@ SECTIONS
         src/prepscreen_disp.o(.text);
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
-        asm/prepscreen.o(.text);
         src/prepscreenfx2.o(.text);
         src/prep_subitemscreen1.o(.text);
         src/prep_subitemscreen_viewall.o(.text);

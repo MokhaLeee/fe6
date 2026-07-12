@@ -46,18 +46,18 @@ void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc)
 		i = GetUnitItemCount(iunit);
 
 		for (i2 = 0; i2 < i; i2++) {
-			gPrepItemListData[gPrepAllItemsCount].u.info.pid  = UNIT_PID(iunit);
-			gPrepItemListData[gPrepAllItemsCount].u.info.item = iunit->items[i2];
-			gPrepItemListData[gPrepAllItemsCount].u.info.slot = i2;
+			gPrepItemListData[gPrepAllItemsCount].pid  = UNIT_PID(iunit);
+			gPrepItemListData[gPrepAllItemsCount].item = iunit->items[i2];
+			gPrepItemListData[gPrepAllItemsCount].slot = i2;
 			gPrepAllItemsCount++;
 		}
 	}
 
 	tmp = gPrepAllItemsCount;
 	for (i = 0; i < SUPPLY_ITEM_COUNT && supply_items[i] != 0; i++) {
-		gPrepItemListData[i + tmp].u.info.item = supply_items[i];
-		gPrepItemListData[i + tmp].u.info.pid = 0;
-		gPrepItemListData[i + tmp].u.info.slot = i;
+		gPrepItemListData[i + tmp].item = supply_items[i];
+		gPrepItemListData[i + tmp].pid = 0;
+		gPrepItemListData[i + tmp].slot = i;
 		gPrepAllItemsCount++;
 	}
 
@@ -75,7 +75,7 @@ void PrepSubItem_StartViewAllScreen(struct PrepSubItemProc *proc)
 
 	PrepAllItems_PutPName(
 		&gPrepTexts3[1],
-		gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].u.info.pid,
+		gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].pid,
 		0x18, 0);
 
 	PutUiEntryHover(

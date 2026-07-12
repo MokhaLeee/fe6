@@ -347,7 +347,7 @@ void func_fe6_0807D358(struct PrepSubItemProc *proc)
 
 	if (gPrepMenuScrollPos != 0) {
 		icons[j] = ICON_ITEM_KIND_BASE + GetItemKind(gPrepItemListData[
-			proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].u.info.item);
+			proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].item);
 
 		j++;
 	}
@@ -359,7 +359,7 @@ void func_fe6_0807D358(struct PrepSubItemProc *proc)
 		if (i >= gPrepMenuScrollPos)
 			break;
 
-		icons[j] = GetItemIcon(gPrepItemListData[i].u.info.item);
+		icons[j] = GetItemIcon(gPrepItemListData[i].item);
 		j++;
 	}
 

@@ -72,9 +72,9 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 		gPrepAllItemsCount = 0;
 
 		for (i = 0; i < SUPPLY_ITEM_COUNT && supply_items[i] != 0; i++) {
-			gPrepItemListData[i].u.info.item = supply_items[i];
-			gPrepItemListData[i].u.info.pid = 0;
-			gPrepItemListData[i].u.info.slot = i;
+			gPrepItemListData[i].item = supply_items[i];
+			gPrepItemListData[i].pid = 0;
+			gPrepItemListData[i].slot = i;
 			gPrepAllItemsCount++;
 		}
 
@@ -151,7 +151,7 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 			func_fe6_0807FBE8(proc);
 			Proc_Goto(proc, PL_PREP_SUBITEM_7);
 			PrepItem_PutItemDesc(1, 0xB,
-				gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].u.info.item,
+				gPrepItemListData[proc->menu_scroll_bar_disp_idx / 0x10 + proc->hand_disp_y].item,
 				proc->subproc1);
 			func_fe6_08071B80(0x10, 0x10, MSG_C47, proc);
 			return;

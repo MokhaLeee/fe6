@@ -176,19 +176,14 @@ extern u8 gPrepMenuItemCnt;
 extern struct Text gPrepTexts1[2][10];
 extern struct Text gPrepTexts3[2];
 
-extern EWRAM_OVERLAY(0) u16 gPrepPageItemTable[800];
-
 struct PrepItemListEnt {
-    union {
-        struct {
-            u8 pid;
-            u8 slot;
-            u16 item;
-        } info;
-
-        u32 raw;
-    } u;
+    u8 pid;
+    u8 slot;
+    u16 item;
 };
+
+extern EWRAM_OVERLAY(0) struct PrepItemListEnt gPrepPageItemTable[400];
+
 extern EWRAM_OVERLAY(0) struct PrepItemListEnt gPrepItemListData[400];
 
 void ResetSioPidPool(void);
@@ -361,7 +356,7 @@ void PrepSubItem_ResetIcon(void);
 void func_fe6_0807D358(struct PrepSubItemProc *proc);
 void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc);
 void func_fe6_0807D6C0(u8 index, struct Unit *unit);
-void func_fe6_0807D834(u8 convoy_page);
+void func_fe6_0807D834(fu8 convoy_page);
 void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused);
 void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit);
 void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y);
