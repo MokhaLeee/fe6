@@ -118,3 +118,19 @@ void func_fe6_08082F54(u8 *buf, int *counter, int value, int num_bits)
 		(*counter)++;
 	}
 }
+
+u32 SecretRnGetter_08082FE8(u8 *buf, int *counter, int round)
+{
+	int i;
+	u32 value = 0;
+	u16 tmp;
+
+	for (i = 0; i < round; i++) {
+		value |= ((buf[*counter / Unk_020168E8] & (1 << (*counter % Unk_020168E8 % 8)))
+			>> (*counter % Unk_020168E8 % 8)) << i;
+		(*counter)++;
+	}
+
+	tmp = GetSecretScreenRN();
+	return (value - tmp) & ((1 << round) - 1);
+}
