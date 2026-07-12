@@ -12,46 +12,48 @@
 EWRAM_DATA u8 SioPidPool[SID_PID_POOL_SIZE] = {};
 EWRAM_DATA u8 _pad_0203D499[7] = { 0 };
 EWRAM_DATA struct SecretScreenData gSecretScreenData[SID_PID_POOL_SIZE] = {};
-EWRAM_DATA u8 Unk_0203D518[10] = {};
+EWRAM_DATA u8 gSecretScreenSupportLevels[10] = {};
 
-EWRAM_OVERLAY(0) int Unk_020168F0 = 0;
-EWRAM_OVERLAY(0) int Unk_020168F4 = 0;
+EWRAM_OVERLAY(0) int gSecretScreenBitCount = 0;
+EWRAM_OVERLAY(0) int gSecretScreenBitMask = 0;
+EWRAM_OVERLAY(0) int gSecretScreenSymbolCount = 0;
+EWRAM_OVERLAY(0) int gSecretScreenInitSeed = 0;
 EWRAM_OVERLAY(0) struct Text gSecretScreenTexts[5] = {};
 EWRAM_OVERLAY(0) int gSecretScreenRN = 0;
-EWRAM_OVERLAY(0) u8 Unk_02016924[0xA0] = {};
-EWRAM_OVERLAY(0) struct UnkStruct_020169C4 Unk_020169C4 = {};
+EWRAM_OVERLAY(0) u8 gSecretScreenPasswordBuf[0xA0] = {};
+EWRAM_OVERLAY(0) struct SecretScreenPasswordMeta gSecretScreenPasswordMeta = {};
 
-void func_fe6_08083A68(int a, int b)
+void SecretScreen_DecodeUnitData(int *counter, u8 *buf)
 {
-	int i, j, k;
+	int i, j;
 	struct SecretScreenData *data;
 
-	gSecretScreenRN = Unk_020168F4;
+	gSecretScreenRN = gSecretScreenInitSeed;
 
 	data = gSecretScreenData;
 
 	for (i = 0; i < 5; i++) {
-		gSecretScreenData[i].numbers[0]  = SecretRnGetter_08082FE8(b, a, 8);
-		gSecretScreenData[i].numbers[1]  = SecretRnGetter_08082FE8(b, a, 1);
-		gSecretScreenData[i].numbers[2]  = SecretRnGetter_08082FE8(b, a, 5);
-		gSecretScreenData[i].numbers[3]  = SecretRnGetter_08082FE8(b, a, 6);
-		gSecretScreenData[i].numbers[4]  = SecretRnGetter_08082FE8(b, a, 5);
-		gSecretScreenData[i].numbers[5]  = SecretRnGetter_08082FE8(b, a, 5);
-		gSecretScreenData[i].numbers[6]  = SecretRnGetter_08082FE8(b, a, 5);
-		gSecretScreenData[i].numbers[7]  = SecretRnGetter_08082FE8(b, a, 5);
-		gSecretScreenData[i].numbers[8]  = SecretRnGetter_08082FE8(b, a, 5);
-		gSecretScreenData[i].numbers[9]  = SecretRnGetter_08082FE8(b, a, 5);
-		gSecretScreenData[i].numbers[10] = SecretRnGetter_08082FE8(b, a, 5);
+		gSecretScreenData[i].numbers[0]  = SecretScreen_ReadBits(buf, counter, 8);
+		gSecretScreenData[i].numbers[1]  = SecretScreen_ReadBits(buf, counter, 1);
+		gSecretScreenData[i].numbers[2]  = SecretScreen_ReadBits(buf, counter, 5);
+		gSecretScreenData[i].numbers[3]  = SecretScreen_ReadBits(buf, counter, 6);
+		gSecretScreenData[i].numbers[4]  = SecretScreen_ReadBits(buf, counter, 5);
+		gSecretScreenData[i].numbers[5]  = SecretScreen_ReadBits(buf, counter, 5);
+		gSecretScreenData[i].numbers[6]  = SecretScreen_ReadBits(buf, counter, 5);
+		gSecretScreenData[i].numbers[7]  = SecretScreen_ReadBits(buf, counter, 5);
+		gSecretScreenData[i].numbers[8]  = SecretScreen_ReadBits(buf, counter, 5);
+		gSecretScreenData[i].numbers[9]  = SecretScreen_ReadBits(buf, counter, 5);
+		gSecretScreenData[i].numbers[10] = SecretScreen_ReadBits(buf, counter, 5);
 
 		for (j = 0; j < 8; j++)
-			gSecretScreenData[i].numbers[11 + j] = SecretRnGetter_08082FE8(b, a, 3);
+			gSecretScreenData[i].numbers[11 + j] = SecretScreen_ReadBits(buf, counter, 3);
 
 		for (j = 0; j < 5; j++)
-			gSecretScreenData[i].numbers[19 + j] = SecretRnGetter_08082FE8(b, a, 8);
+			gSecretScreenData[i].numbers[19 + j] = SecretScreen_ReadBits(buf, counter, 8);
 	}
 
 	for (i = 0; i < 10; i++)
-		Unk_0203D518[i] = SecretRnGetter_08082FE8(b, a, 2);
+		gSecretScreenSupportLevels[i] = SecretScreen_ReadBits(buf, counter, 2);
 }
 
 int GetFlattenArrayOffset(int line, int col)
@@ -70,7 +72,7 @@ int GetFlattenArrayOffset(int line, int col)
 	return 0;
 }
 
-void func_fe6_08083BC4(struct Unit *units[], int count)
+void SecretScreen_PackUnitData(struct Unit *units[], int count)
 {
 	int i, j, k;
 
@@ -122,7 +124,7 @@ void func_fe6_08083BC4(struct Unit *units[], int count)
 	}
 
 	for (i = 0; i < 10; i++)
-		Unk_0203D518[i] = 0;
+		gSecretScreenSupportLevels[i] = 0;
 
 	for (i = 0; i < count; i++) {
 		u8 supp = GetUnitSupportCount(units[i]);
@@ -139,7 +141,7 @@ void func_fe6_08083BC4(struct Unit *units[], int count)
 				tmp_r4 = GetFlattenArrayOffset(i, k);
 				supp_lv = GetUnitSupportLevel(units[i], j);
 
-				Unk_0203D518[(u8)tmp_r4] = supp_lv & 3;
+				gSecretScreenSupportLevels[(u8)tmp_r4] = supp_lv & 3;
 			}
 		}
 	}
@@ -166,10 +168,10 @@ void PrintSecretScreenTexts(struct Text *text, const u8 *table)
 			const u8 *cur;
 			int loc = line * 0x13 + i;
 
-			if (loc == (Unk_020169C4.unk_06 + Unk_020168F0))
+			if (loc == (gSecretScreenPasswordMeta.tail_len + gSecretScreenSymbolCount))
 				return;
 
-			cur = table + Unk_02016924[loc] * 2;
+			cur = table + gSecretScreenPasswordBuf[loc] * 2;
 
 			/* This JP character! */
 			str[0] = cur[0];
@@ -240,10 +242,10 @@ void SecretScreen_Init(struct ProcSecretScreen *proc)
 	for (i = 0; i < SID_PID_POOL_SIZE; i++)
 		InitText(&gSecretScreenTexts[i], 0x1C);
 
-	func_fe6_08083BC4(proc->units, proc->count);
-	func_fe6_08082E74(7, 11);
-	ModifyPassword(func_fe6_08083944);
-	PrintSecretScreenTexts(gSecretScreenTexts, gUnk_08679820);
+	SecretScreen_PackUnitData(proc->units, proc->count);
+	SecretScreen_InitBitstream(7, 11);
+	SecretScreen_ModifyPassword(SecretScreen_EncodeUnitData);
+	PrintSecretScreenTexts(gSecretScreenTexts, gSecretScreenUnitGlyphTable);
 	proc->subproc = StartMuralBackground(PROC_TREE_VSYNC, NULL, BGPAL_SECRETSCREEN_MURALBG);
 }
 

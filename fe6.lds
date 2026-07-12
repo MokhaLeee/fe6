@@ -403,6 +403,7 @@ SECTIONS
         src/prep_bgscroll.o(.text);
         src/prep_sallycir.o(.text);
         src/prep_utils.o(.text);
+        src/secretscreen_08082E74.o(.text);
         asm/secretscreen.o(.text);
         src/secretscreen.o(.text);
         src/save_core.o(.text);
