@@ -118,10 +118,8 @@ enum banim_sprites_size {
 
 extern EWRAM_OVERLAY(banim) u8 gBanimScrs[2 * BAS_SCR_MAX_SIZE];
 extern EWRAM_OVERLAY(banim) u8 gBanimOamBufs[2 * BAS_OAM_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Left[BAS_IMG_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimKakudaiBuf_Left[BAS_IMG_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Right[BAS_IMG_MAX_SIZE];
-extern EWRAM_OVERLAY(banim) u8 gBanimKakudaiBuf_Right[BAS_IMG_MAX_SIZE];
+extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Left[BAS_IMG_MAX_SIZE * 2];
+extern EWRAM_OVERLAY(banim) u8 gBanimImgSheetBuf_Right[BAS_IMG_MAX_SIZE * 2];
 extern EWRAM_OVERLAY(banim) u8 gBanimTerrainfxBufObj[0x2000];
 
 struct ProcEfx {
@@ -290,7 +288,7 @@ extern int gEfxPurgeCounter;
 extern u8 gEkrPids[2];
 extern struct Unit * gpEkrTriangleUnits[2];
 extern const u16 * gpBanimTriAtkPalettes[2];
-extern const u8 * gBanimUnitChgForceImg[2];
+extern const u8 * gBanimBallistaImages[2];
 extern EWRAM_OVERLAY(banim) i16 gBanimBG;
 extern EWRAM_OVERLAY(banim) i16 gEkrInitialHitSide;
 extern EWRAM_OVERLAY(banim) i16 gEkrSnowWeather;
@@ -770,17 +768,17 @@ void EkrBaStart_InitBattleScreen(struct ProcEkrBattleStarting *proc);
 void EkrBaStart_ExecEkrBattle(struct ProcEkrBattleStarting *proc);
 void EkrBaStart_BgFadeOut(struct ProcEkrBattleStarting *proc);
 void EkrBaStart_MergeBG(struct ProcEkrBattleStarting *proc);
-void func_fe6_08048154(struct ProcEkrBattleStarting *proc);
+void EkrBaStart_BgPaletteIn(struct ProcEkrBattleStarting *proc);
 
 void NewEkrbattleending(void);
-void func_fe6_080481CC(struct ProcEkrBattleEnding *proc);
-void func_fe6_08048244(struct ProcEkrBattleEnding *proc);
-void func_fe6_08048298(struct ProcEkrBattleEnding *proc);
-void func_fe6_080482F4(struct ProcEkrBattleEnding *proc);
-void func_fe6_08048354(struct ProcEkrBattleEnding *proc);
-void func_fe6_080483E0(struct ProcEkrBattleEnding *proc);
-void func_fe6_08048470(struct ProcEkrBattleEnding *proc);
-void func_fe6_0804855C(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_BgPaletteIn(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_RestoreChapterMap(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_ChapterMapFadeOut(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_InitOutroFx(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_WaitOutroAndEndGauge(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_RestoreMapDisplay(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_ScreenFailOut(struct ProcEkrBattleEnding *proc);
+void EkrBaEnd_Finish(struct ProcEkrBattleEnding *proc);
 
 struct ProcEkrBaseKaiten {
     PROC_HEADER;
@@ -813,10 +811,39 @@ struct ProcEkrBaseKaiten {
 
 void NewEkrBaseKaiten(int identifier);
 void EkrBaseKaiten_Loop(struct ProcEkrBaseKaiten *proc);
+
+struct ProcEkrUnitKakudai {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+    /* 2E */ s16 terminator;
+    /* 30 */ u16 unk30;
+
+    /* 32 */ s16 x1;
+    /* 34 */ s16 x2;
+    /* 36 */ s16 left_pos;
+    /* 38 */ s16 right_pos;
+    /* 3A */ s16 y1;
+    /* 3C */ s16 y2;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ int type;
+
+    STRUCT_PAD(0x48, 0x4C);
+
+    /* 4C */ u32 valid_l;
+    /* 50 */ u32 valid_r;
+    /* 54 */ void *pOaml;
+    /* 58 */ void *pOamr;
+};
+
 void NewEkrUnitKakudai(int identifier);
-// func_fe6_08048A64
-// func_fe6_08048BF0
-// func_fe6_08048D98
+void EkrUnitKakudai_PrepareAnimScript(struct ProcEkrUnitKakudai *proc);
+void EkrUnitKakudai_Main(struct ProcEkrUnitKakudai *proc);
+void EkrUnitKakudai_End(struct ProcEkrUnitKakudai *proc);
 
 struct ProcEkrIntroWindow {
     PROC_HEADER;
@@ -833,14 +860,14 @@ struct ProcEkrIntroWindow {
 
 void NewEkrWindowAppear(int identifier, int duration);
 bool CheckEkrWindowAppearUnexist(void);
-// func_fe6_08048E08
+void EkrWindowAppear_Main(struct ProcEkrIntroWindow *proc);
 void NewEkrNamewinAppear(int identifier, int duration, int delay);
 bool CheckEkrNamewinAppearUnexist(void);
-// func_fe6_08048EEC
-// func_fe6_08048F0C
+void EkrNamewinAppear_Delay(struct ProcEkrIntroWindow *proc);
+void EkrNamewinAppear_Main(struct ProcEkrIntroWindow *proc);
 void NewEkrBaseAppear(int identifier, int duration);
 bool CheckEkrBaseAppearUnexist(void);
-// EkrBaseAppear_Loop
+void EkrBaseAppear_Loop(struct ProcEkrIntroWindow *proc);
 bool _SetupBanim(void);
 
 enum banim_terrain_set_type {

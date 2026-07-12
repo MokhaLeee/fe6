@@ -1,7 +1,11 @@
 #include "prelude.h"
 #include "proc.h"
-
+#include "hardware.h"
+#include "util.h"
+#include "move.h"
 #include "banim.h"
+#include "banim_data.h"
+#include "banim_ekrdragon.h"
 
 struct ProcScr CONST_DATA ProcScr_EkrBaseKaiten[] = {
 	PROC_19,
@@ -127,4 +131,350 @@ const u16 *CONST_DATA EkrBaseKaiten_Table3[] = {
 	EkrBaseKaiten_RefTable[7],
 	EkrBaseKaiten_RefTable[7],
 	EkrBaseKaiten_RefTable[7]
+};
+
+#define AccessArray(array, index, offset) \
+	(*(typeof(&*(array)))((void *)(array) + (offset)))
+
+void NewEkrBaseKaiten(int identifier)
+{
+	int mode;
+	struct Anim *anim;
+	struct ProcEkrBaseKaiten *proc;
+	u32 scale;
+	const u8 *img;
+
+	SetBlendConfig(0, 10, 6, 0);
+	SetBlendTargetA(0, 0, 0, 0, 0);
+	SetBlendTargetB(0, 0, 1, 1, 0);
+	gDispIo.blend_ct.target2_enable_bd = 1;
+
+	if (gEkrBmLocation[POS_L] == gEkrBmLocation[2]) {
+		if (gEkrBmLocation[POS_R] >= gEkrBmLocation[3])
+			mode = 6;
+		else
+			mode = 2;
+	} else if (gEkrBmLocation[POS_R] == gEkrBmLocation[3]) {
+		if (gEkrBmLocation[POS_L] < gEkrBmLocation[2])
+			mode = 0;
+		else
+			mode = 4;
+	} else if (gEkrBmLocation[POS_L] < gEkrBmLocation[2]) {
+		if (gEkrBmLocation[POS_R] >= gEkrBmLocation[3])
+			mode = 7;
+		else
+			mode = 1;
+	} else {
+		if (gEkrBmLocation[POS_R] >= gEkrBmLocation[3])
+			mode = 5;
+		else
+			mode = 3;
+	}
+
+	switch (gEkrDistanceType) {
+	case EKR_DISTANCE_CLOSE:
+	case EKR_DISTANCE_PROMOTION:
+		img = Imgs_EkrBaseKaiten1[mode];
+		break;
+
+	case EKR_DISTANCE_FAR:
+	case EKR_DISTANCE_FARFAR:
+	case EKR_DISTANCE_MONOCOMBAT:
+	default:
+		img = Imgs_EkrBaseKaiten2[mode];
+		break;
+	}
+
+	scale = mode << 2;
+	LZ77UnCompVram(img, OBJ_VRAM0);
+	CpuFastSet(Pal_EkrBaseKaiten, gPal + 0x140, 1);
+	EnablePalSync();
+
+	switch (gEkrDistanceType) {
+	case EKR_DISTANCE_CLOSE:
+	case EKR_DISTANCE_PROMOTION:
+		proc = SpawnProc(ProcScr_EkrBaseKaiten, PROC_TREE_3);
+		proc->type = identifier;
+		proc->unk29 = 0;
+		proc->timer = 0;
+		proc->terminator = 0xB;
+		proc->x1 = (gEkrBmLocation[POS_L] + gEkrBmLocation[2]) * 8 + 8;
+		proc->y1 = (gEkrBmLocation[POS_R] + gEkrBmLocation[3]) * 8 + 8;
+		proc->x2 = 0x78;
+		proc->y2 = 0x68;
+
+		if (proc->type == 0)
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten1, mode, scale), 0x64);
+		else
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten4, mode, scale), 0x64);
+
+		proc->anim = anim;
+		anim->oam2 = 0x4800;
+		anim->oam01 |= 0x400;
+
+		if (proc->type == 0) {
+			anim->xPosition = proc->x1;
+			anim->yPosition = proc->y1;
+		} else {
+			anim->xPosition = proc->x2;
+			anim->yPosition = proc->y2;
+		}
+
+		proc->unk60 = AccessArray(EkrBaseKaiten_Table1, mode, scale);
+		proc->unk3E = 0;
+		proc->unk36 = 0;
+		break;
+
+	case EKR_DISTANCE_FAR:
+	case EKR_DISTANCE_FARFAR:
+		proc = SpawnProc(ProcScr_EkrBaseKaiten, PROC_TREE_3);
+		proc->type = identifier;
+		proc->unk29 = 0;
+		proc->timer = 0;
+		proc->terminator = 0xB;
+		proc->x1 = gEkrBmLocation[POS_L] * 0x10 + 8;
+		proc->y1 = gEkrBmLocation[POS_R] * 0x10 + 8;
+		proc->x2 = 0x48;
+		proc->y2 = 0x68;
+
+		if (gEkrInitPosReal == POS_R)
+			proc->x2 -= BanimLeftDefaultPos[gEkrDistanceType];
+
+		if (proc->type == 0)
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten2, mode, scale), 0x64);
+		else
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten5, mode, scale), 0x64);
+
+		proc->anim = anim;
+		anim->oam2 = 0x4800;
+		anim->oam01 |= 0x400;
+
+		if (proc->type == 0) {
+			anim->xPosition = proc->x1;
+			anim->yPosition = proc->y1;
+		} else {
+			anim->xPosition = proc->x2;
+			anim->yPosition = proc->y2;
+		}
+
+		proc->unk60 = AccessArray(EkrBaseKaiten_Table2, mode, scale);
+		proc->unk3E = 0;
+		proc->unk36 = 0;
+
+		proc = SpawnProc(ProcScr_EkrBaseKaiten, PROC_TREE_3);
+		proc->type = identifier;
+		proc->unk29 = 1;
+		proc->timer = 0;
+		proc->terminator = 0xB;
+		proc->x1 = gEkrBmLocation[2] * 0x10 + 8;
+		proc->y1 = gEkrBmLocation[3] * 0x10 + 8;
+		proc->x2 = 0xA8;
+		proc->y2 = 0x68;
+
+		if (gEkrInitPosReal == POS_L)
+			proc->x2 = BanimLeftDefaultPos[gEkrDistanceType] + 0xA8;
+
+		if (proc->type == 0)
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten3, mode, scale), 0x64);
+		else
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten6, mode, scale), 0x64);
+
+		proc->anim = anim;
+		anim->oam2 = 0x4800;
+		anim->oam01 |= 0x400;
+
+		if (proc->type == 0) {
+			anim->xPosition = proc->x1;
+			anim->yPosition = proc->y1;
+		} else {
+			anim->xPosition = proc->x2;
+			anim->yPosition = proc->y2;
+		}
+
+		proc->unk60 = AccessArray(EkrBaseKaiten_Table3, mode, scale);
+		proc->unk3E = 0;
+		proc->unk36 = 0;
+		break;
+
+	case EKR_DISTANCE_MONOCOMBAT:
+		proc = SpawnProc(ProcScr_EkrBaseKaiten, PROC_TREE_3);
+		proc->type = identifier;
+		proc->unk29 = 0;
+		proc->timer = 0;
+		proc->terminator = 0xB;
+		proc->x1 = gEkrBmLocation[2] * 0x10 + 8;
+		proc->y1 = gEkrBmLocation[3] * 0x10 + 8;
+		proc->x2 = 0x78;
+		proc->y2 = 0x68;
+
+		if (proc->type == 0)
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten3, mode, scale), 0x64);
+		else
+			anim = BasCreate(AccessArray(AnimScrs_EkrBaseKaiten6, mode, scale), 0x64);
+
+		proc->anim = anim;
+		anim->oam2 = 0x4800;
+		anim->oam01 |= 0x400;
+
+		if (proc->type == 0) {
+			anim->xPosition = proc->x1;
+			anim->yPosition = proc->y1;
+		} else {
+			anim->xPosition = proc->x2;
+			anim->yPosition = proc->y2;
+		}
+
+		proc->unk60 = AccessArray(EkrBaseKaiten_Table3, mode, scale);
+		proc->unk3E = 0;
+		proc->unk36 = 0;
+		break;
+
+	default:
+		break;
+	}
+}
+
+void EkrBaseKaiten_Loop(struct ProcEkrBaseKaiten *proc)
+{
+	struct Anim *anim = proc->anim;
+
+	if (proc->timer >= proc->terminator) {
+		BasRemove(anim);
+		Proc_Break(proc);
+		return;
+	}
+
+	if (proc->type == 0) {
+		anim->xPosition =
+			Interpolate(0, proc->x1, proc->x2, proc->timer, proc->terminator);
+		anim->yPosition =
+			Interpolate(0, proc->y1, proc->y2, proc->timer, proc->terminator);
+	} else {
+		anim->xPosition =
+			Interpolate(0, proc->x2, proc->x1, proc->timer, proc->terminator);
+		anim->yPosition =
+			Interpolate(0, proc->y2, proc->y1, proc->timer, proc->terminator);
+	}
+
+	if (proc->timer <= proc->terminator)
+		proc->timer++;
+}
+
+struct ProcScr CONST_DATA ProcScr_EkrUnitKakudai[] = {
+	PROC_19,
+	PROC_REPEAT(EkrUnitKakudai_PrepareAnimScript),
+	PROC_REPEAT(EkrUnitKakudai_Main),
+	PROC_REPEAT(EkrUnitKakudai_End),
+	PROC_END,
+};
+
+void NewEkrUnitKakudai(int identifier)
+{
+	struct ProcEkrUnitKakudai *proc;
+
+	proc = SpawnProc(ProcScr_EkrUnitKakudai, PROC_TREE_3);
+	proc->type = identifier;
+	proc->valid_r = 0;
+	proc->valid_l = 0;
+
+	switch (gEkrDistanceType) {
+	case EKR_DISTANCE_CLOSE:
+	case EKR_DISTANCE_FAR:
+	case EKR_DISTANCE_FARFAR:
+	case EKR_DISTANCE_MONOCOMBAT:
+		if (gBanimValid[POS_L] == 1 && GetDragonPosition() != POS_L)
+			proc->valid_l = 1;
+
+		if (gBanimValid[POS_R] == 1 && GetDragonPosition() != POS_R)
+			proc->valid_r = 1;
+		return;
+
+	case EKR_DISTANCE_PROMOTION:
+		if (identifier == 0) {
+			proc->valid_l = 0;
+			proc->valid_r = 1;
+		} else {
+			proc->valid_l = 1;
+			proc->valid_r = 0;
+		}
+		break;
+
+	default:
+		break;
+	}
+}
+
+void EkrUnitKakudai_PrepareAnimScript(struct ProcEkrUnitKakudai *proc)
+{
+    void *vram;
+    int std_type = BanimDefaultStandingTypes[gEkrDistanceType];
+	int front_mode = BanimDefaultModeConfig[std_type * 4];
+
+	UpdateBanimFrame();
+
+	if (proc->type == 0)
+		if (gBattleSt.flags & BATTLE_FLAG_REFRESH)
+			EfxPalModifyPetrifyEffect(gPal, 0x17, 1);
+
+	if (gBanimValid[POS_L] == 1) {
+		struct BanimScrFrame *scr = (void *)(gBanimScrs + gpBanimModesLeft[front_mode]);
+        const void *src = scr->img;
+
+		proc->pOaml = (void *)(gBanimOamBufs + scr->oam_offset);
+		LZ77UnCompWram(src, gBanimImgSheetBuf_Left);
+	}
+
+	if (gBanimValid[POS_R] == 1) {
+		struct BanimScrFrame *scr = (void *)(gBanimScrs + BAS_SCR_MAX_SIZE + gpBanimModesRight[front_mode]);
+		const void *src = scr->img;
+
+		proc->pOamr = (void *)(gBanimOamBufs + BAS_OAM_MAX_SIZE + scr->oam_offset);
+		LZ77UnCompWram(src, gBanimImgSheetBuf_Right);
+	}
+
+	if (gBanimBallistaImages[POS_L] != NULL)
+		LZ77UnCompWram(gBanimBallistaImages[POS_L], gBanimImgSheetBuf_Left + BAS_IMG_MAX_SIZE);
+
+	if (gBanimBallistaImages[POS_R] != NULL)
+		LZ77UnCompWram(gBanimBallistaImages[POS_R], gBanimImgSheetBuf_Right + BAS_IMG_MAX_SIZE);
+
+    vram = OBJ_VRAM1;
+	RegisterDataMove(gBanimImgSheetBuf_Left, vram, 0x4000);
+
+	proc->timer = 0;
+	proc->terminator = 0xB;
+
+	proc->x1 = gEkrBmLocation[0] * 0x10 + 8;
+	proc->y1 = gEkrBmLocation[1] * 0x10 + 8;
+	proc->x2 = gEkrBmLocation[2] * 0x10 + 8;
+	proc->y2 = gEkrBmLocation[3] * 0x10 + 8;
+
+	proc->left_pos = BanimTypesPosLeft[gEkrDistanceType];
+	proc->right_pos = BanimTypesPosRight[gEkrDistanceType];
+
+	if (gEkrInitPosReal == POS_L)
+		proc->right_pos += BanimLeftDefaultPos[gEkrDistanceType];
+	else
+		proc->left_pos -= BanimLeftDefaultPos[gEkrDistanceType];
+
+	Proc_Break(proc);
+}
+
+struct ProcScr CONST_DATA ProcScr_EkrWindowAppear[] = {
+	PROC_19,
+	PROC_REPEAT(EkrWindowAppear_Main),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EkrNamewinAppear[] = {
+	PROC_19,
+	PROC_REPEAT(EkrNamewinAppear_Delay),
+	PROC_REPEAT(EkrNamewinAppear_Main),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_EkrBaseAppear[] = {
+	PROC_19,
+	PROC_REPEAT(EkrBaseAppear_Loop),
+	PROC_END,
 };

@@ -38,7 +38,7 @@ EWRAM_DATA struct BattleUnit *gpEkrBattleUnitRight = NULL;
 EWRAM_DATA u8 gEkrPids[2] = {};
 EWRAM_DATA struct Unit *gpEkrTriangleUnits[2] = {};
 EWRAM_DATA const u16 *gpBanimTriAtkPalettes[2] = {};
-EWRAM_DATA const u8 *gBanimUnitChgForceImg[2] = {};
+EWRAM_DATA const u8 *gBanimBallistaImages[2] = {};
 
 EWRAM_OVERLAY(banim) struct BaSprite *gAnims[4] = {};
 EWRAM_OVERLAY(banim) int gEkrDebugTimer = 0;

@@ -22,27 +22,79 @@ extern CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[SOUNDROOM_CG_NUM];
 struct SoundRoomText {
 	struct Font font;
 	struct Text texts[5];
+	u16 oam2[2];
 };
 extern EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText;
 
-// PutSoundRoomCG
-// CountTotalSoundRoomSongs
-// Soundroom_Init
-// func_fe6_0808BBCC
-// func_fe6_0808BCBC
-// func_fe6_0808BCF0
-// func_fe6_0808BD28
-// SaveMenu_ExecSoundroom
-// func_fe6_0808BD6C
-// func_fe6_0808BD78
-// func_fe6_0808BDF8
-// NewProc_0868AA80
-// func_fe6_0808BE70
-// func_fe6_0808BF00
-// func_fe6_0808BFF0
-// func_fe6_0808C084
-// func_fe6_0808C098
-// NewProc_0868AAA8
+enum {
+	PL_SOUNDROOM_MAIN = 0,
+	PL_SOUNDROOM_SLIDE = 2,
+	PL_SOUNDROOM_EXIT = 3,
+};
+
+struct ProcSoundRoom {
+	PROC_HEADER;
+
+	/* 29 */ u8 unk_29;
+
+	STRUCT_PAD(0x2A, 0x2C);
+
+	/* 2C */ u16 unk_2c;
+	/* 2E */ u16 unk_2e;
+	/* 30 */ u32 cur_index;
+	/* 34 */ u32 unk_34;
+	/* 38 */ u8 unk_38;
+	/* 39 */ u8 unk_39;
+
+	STRUCT_PAD(0x3A, 0x3C);
+
+	/* 3C */ ProcPtr sprite_proc;
+	/* 40 */ u8 unk_40;
+	/* 41 */ u8 unk_41;
+};
+
+struct ProcSoundRoomConfirm {
+	PROC_HEADER_EXT(struct ProcSoundRoom);
+
+	STRUCT_PAD(0x29, 0x2C);
+
+	/* 2C */ u16 unk_2c;
+
+	STRUCT_PAD(0x2E, 0x30);
+
+	/* 30 */ u32 cur_index;
+};
+
+struct ProcSoundRoomSprite {
+	PROC_HEADER_EXT(struct ProcSoundRoom);
+
+	STRUCT_PAD(0x29, 0x2C);
+
+	/* 2C */ struct ProcSoundRoom *parent;
+	/* 30 */ u8 arrow_anim_l;
+	/* 31 */ u8 arrow_anim_r;
+};
+
+void Soundroom_Init(struct ProcSoundRoom *proc);
+void func_fe6_0808BBCC(struct ProcSoundRoom *proc);
+void func_fe6_0808BCBC(struct ProcSoundRoom *proc);
+void func_fe6_0808BCF0(struct ProcSoundRoom *proc);
+void func_fe6_0808BD28(struct ProcSoundRoom *proc);
+void func_fe6_0808BD6C(struct ProcSoundRoomConfirm *proc);
+void func_fe6_0808BD78(struct ProcSoundRoomConfirm *proc);
+void func_fe6_0808BDF8(struct ProcSoundRoomConfirm *proc);
+void func_fe6_0808C084(struct ProcSoundRoomSprite *proc);
+void func_fe6_0808C098(struct ProcSoundRoom *proc);
+
+int CountTotalSoundRoomSongs(void);
+
+ProcPtr SaveMenu_ExecSoundroom(ProcPtr parent);
+void PutSoundRoomCG(void);
+void func_fe6_0808BE70(void);
+void func_fe6_0808BF00(struct ProcSoundRoom *proc);
+void func_fe6_0808BFF0(void);
+ProcPtr NewProc_0868AA80(struct ProcSoundRoom *proc);
+ProcPtr NewProc_0868AAA8(struct ProcSoundRoom *proc);
 
 extern CONST_DATA u16 Sprite_0868A988[];
 extern CONST_DATA u16 Sprite_0868A9E8[];

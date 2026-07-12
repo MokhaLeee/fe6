@@ -5,13 +5,24 @@
 #include "bm.h"
 #include "oam.h"
 #include "sprite.h"
+#include "util.h"
+#include "armfunc.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
 
+#include "sound.h"
+#include "m4a.h"
+#include "gbasvc.h"
+
+#include "ending.h"
+#include "unknown_objects.h"
+#include "unitlistscreen.h"
+
+#include "msg.h"
+#include "helpbox.h"
 #include "soundroom.h"
 
 EWRAM_OVERLAY(savemenu) struct SoundRoomText gSoundRoomText = {};
-EWRAM_OVERLAY(savemenu) u16 gSoundRoom_020004A8[2] = {};
 EWRAM_OVERLAY(savemenu) u8 gSoundRoom_020004AC[2] = {};
 
 CONST_DATA struct SoundRoomInfo gSoundRoomInfo[] = {
@@ -369,6 +380,58 @@ CONST_DATA struct SoundRoomCgInfo gSoundRoomCgInfo[SOUNDROOM_CG_NUM] = {
 	{ EndingCG_Img10, EndingCG_Pal10 },
 };
 
+CONST_DATA u16 Sprite_0868A9E8[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x100) + OAM2_LAYER(1),
+};
+
+CONST_DATA u16 Sprite_0868A9F0[] = {
+	1,
+	OAM0_SHAPE_16x16, OAM1_SIZE_16x16, OAM2_CHR(0x102) + OAM2_LAYER(1),
+};
+
+CONST_DATA u16 Sprite_0868A9F8[] = {
+	1,
+	OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(0x104) + OAM2_LAYER(1),
+	0x6D08, 0x0833, 0x6D2C, 0x0833,
+};
+
+struct ProcScr CONST_DATA ProcScr_SoundRoom[] = {
+	PROC_SLEEP(0),
+	PROC_CALL(Soundroom_Init),
+	PROC_CALL(StartSlowFadeFromBlack),
+	PROC_REPEAT(WhileFadeExists),
+
+PROC_LABEL(PL_SOUNDROOM_MAIN),
+	PROC_REPEAT(func_fe6_0808BBCC),
+
+PROC_LABEL(PL_SOUNDROOM_SLIDE),
+	PROC_REPEAT(func_fe6_0808BCBC),
+	PROC_REPEAT(func_fe6_0808BCF0),
+	PROC_GOTO(PL_SOUNDROOM_MAIN),
+
+PROC_LABEL(PL_SOUNDROOM_EXIT),
+	PROC_CALL(StartSlowFadeToBlack),
+	PROC_REPEAT(WhileFadeExists),
+	PROC_CALL(func_fe6_0808BD28),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_0868AA80[] = {
+	PROC_SLEEP(0),
+	PROC_CALL(func_fe6_0808BD6C),
+	PROC_REPEAT(func_fe6_0808BD78),
+	PROC_REPEAT(func_fe6_0808BDF8),
+	PROC_END,
+};
+
+struct ProcScr CONST_DATA ProcScr_0868AAA8[] = {
+	PROC_SLEEP(0),
+	PROC_CALL(func_fe6_0808C084),
+	PROC_REPEAT(func_fe6_0808C098),
+	PROC_END,
+};
+
 int CountTotalSoundRoomSongs(void)
 {
 	int ret = 0;
@@ -382,4 +445,301 @@ int CountTotalSoundRoomSongs(void)
 	} while (1);
 
 	return ret;
+}
+
+void Soundroom_Init(struct ProcSoundRoom *proc)
+{
+	InitBgs(0);
+	ResetTextFont();
+	ResetText();
+	ApplySystemObjectsGraphics();
+	InitSystemTextFont();
+
+	SetDispEnable(1, 1, 1, 1, 1);
+	gDispIo.bg0_ct.priority = 0;
+	gDispIo.bg1_ct.priority = 2;
+	gDispIo.bg2_ct.priority = 1;
+	gDispIo.bg3_ct.priority = 3;
+	SetWinEnable(0, 0, 0);
+
+	SetBlankChr(0);
+	TmFill(gBg0Tm, 0);
+	TmFill(gBg1Tm, 0);
+	TmFill(gBg2Tm, 0);
+	TmFill(gBg3Tm, 0);
+	EnableBgSync(0xF);
+
+	proc->unk_34 = 0;
+	proc->cur_index = 0;
+
+	gSoundRoom_020004AC[1] |= 0xFF;
+	gSoundRoom_020004AC[0] |= 0xFF;
+
+	proc->unk_29 = 1;
+	proc->unk_2c = 0;
+	proc->unk_38 = 0;
+	proc->unk_39 = 0;
+	proc->unk_40 = 0;
+	proc->unk_41 = 0;
+
+	func_fe6_0808BE70();
+	func_fe6_0808BF00(proc);
+	func_fe6_0808BFF0();
+
+	SetBgOffset(BG_0, 0, 0);
+	SetBgOffset(BG_1, 0, 0);
+
+	Decompress(Img_EndingPInfoWindow, (void *)(BG_VRAM + GetBgChrOffset(BG_1)));
+	ApplyPaletteExt(Pal_EndingPInfoWindow, 0x80, 0x40);
+	TmApplyTsa(gBg1Tm, (u8 const *)gUnk_0832C5E8, 0x4000);
+
+	SetBgOffset(BG_2, (u16)0xFF98, (u16)0xFFC0);
+
+	GetGameTime();
+	PutSoundRoomCG();
+
+	PutEndingCreditTm(gBg2Tm, 0x6140, 15, 10);
+
+	Decompress(Img_MonologueBG, (void *)(BG_VRAM + GetBgChrOffset(BG_3)));
+	ApplyPaletteExt(gUnk_0832CA9C, 0xE0, 0x20);
+	TmApplyTsa(gBg3Tm, Tsa_EndingPInfoBG, 0x7000);
+
+	Decompress(gUnk_0832CAFC, (void *)0x06012000);
+	ApplyPaletteExt(gUnk_0832CC90, 0x280, 0x20);
+	Decompress(Img_HorizontalSpinningArrow, (void *)0x06017000);
+	ApplyPaletteExt(Pal_SpinningArrow, 0x2A0, 0x20);
+
+	proc->unk_2e = 0x100;
+	proc->sprite_proc = NewProc_0868AAA8(proc);
+}
+
+void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
+{
+	register struct KeySt *keyst asm("r2");
+	register u16 keys asm("r1");
+
+	keyst = gKeySt;
+	keys = keyst->repeated;
+
+	if (keys & KEY_DPAD_LEFT) {
+		Proc_Goto(proc, PL_SOUNDROOM_SLIDE);
+		PlaySe(SONG_67);
+
+		if ((int)proc->cur_index > 0)
+			proc->cur_index--;
+		else
+			proc->cur_index = CountTotalSoundRoomSongs() - 1;
+
+		proc->unk_38 = 1;
+	} else {
+		if (KEY_DPAD_RIGHT & keys) {
+			Proc_Goto(proc, PL_SOUNDROOM_SLIDE);
+			PlaySe(SONG_67);
+
+			if (proc->cur_index + 1 == CountTotalSoundRoomSongs())
+				proc->cur_index = 0;
+			else
+				proc->cur_index++;
+
+			proc->unk_39 = 1;
+		} else if (proc->unk_40 == 0) {
+			keys = keyst->pressed;
+
+			if (KEY_BUTTON_B & keys) {
+				FadeBgmOut(-1);
+				proc->unk_29 = 1;
+			} else if (KEY_BUTTON_A & keys) {
+				NewProc_0868AA80(proc);
+				proc->unk_40 = 1;
+			} else if (KEY_BUTTON_START & keys) {
+				Proc_Goto(proc, PL_SOUNDROOM_EXIT);
+
+				if (IsBgmPlaying())
+					FadeBgmOut(-1);
+			}
+		}
+	}
+}
+
+void func_fe6_0808BCBC(struct ProcSoundRoom *proc)
+{
+	proc->unk_2c++;
+	proc->unk_2e = (6 - proc->unk_2c) * 0x100 / 6;
+
+	if (proc->unk_2c == 6) {
+		func_fe6_0808BF00(proc);
+		Proc_Break(proc);
+	}
+}
+
+void func_fe6_0808BCF0(struct ProcSoundRoom *proc)
+{
+	proc->unk_2c--;
+	proc->unk_2e = (6 - proc->unk_2c) * 0x100 / 6;
+
+	if (proc->unk_2c == 0) {
+		Proc_Break(proc);
+		proc->unk_38 = 0;
+		proc->unk_39 = 0;
+	}
+}
+
+void func_fe6_0808BD28(struct ProcSoundRoom *proc)
+{
+	SetDispEnable(0, 0, 0, 0, 0);
+	Proc_End(proc->sprite_proc);
+}
+
+ProcPtr SaveMenu_ExecSoundroom(ProcPtr parent)
+{
+	return SpawnProcLocking(ProcScr_SoundRoom, parent);
+}
+
+void func_fe6_0808BD6C(struct ProcSoundRoomConfirm *proc)
+{
+	proc->unk_2c = 0;
+	proc->cur_index = proc->proc_parent->cur_index;
+}
+
+void func_fe6_0808BD78(struct ProcSoundRoomConfirm *proc)
+{
+	proc->unk_2c++;
+
+	gDispIo.blend_ct.effect = BLEND_EFFECT_BRIGHTEN;
+	gDispIo.blend_coef_a = 0;
+	gDispIo.blend_coef_b = 0;
+	gDispIo.blend_y = proc->unk_2c / 3;
+	SetBlendTargetA(0, 0, 1, 0, 0);
+
+	if (proc->unk_2c == 0x30) {
+		StartBgm(gSoundRoomInfo[proc->cur_index].id, NULL);
+		GetGameTime();
+		PutSoundRoomCG();
+		Proc_Break(proc);
+	}
+}
+
+void func_fe6_0808BDF8(struct ProcSoundRoomConfirm *proc)
+{
+	proc->unk_2c--;
+
+	gDispIo.blend_ct.effect = BLEND_EFFECT_BRIGHTEN;
+	gDispIo.blend_coef_a = 0;
+	gDispIo.blend_coef_b = 0;
+	gDispIo.blend_y = proc->unk_2c / 3;
+	SetBlendTargetA(0, 0, 1, 0, 0);
+
+	if (proc->unk_2c == 0) {
+		Proc_Break(proc);
+		proc->proc_parent->unk_40 = 0;
+	}
+}
+
+ProcPtr NewProc_0868AA80(struct ProcSoundRoom *proc)
+{
+	return SpawnProc(ProcScr_0868AA80, proc);
+}
+
+void func_fe6_0808BE70(void)
+{
+	int i;
+	u32 vram = (u32)OBJ_VRAM1;
+
+	InitSpriteTextFont(&gSoundRoomText.font, (u8 *)vram, 5);
+	ApplyPalettes(Pal_Text, 0x1A, 2);
+	gPal[0x1A * 0x10] = 0;
+	EnablePalSync();
+
+	SetTextFont(&gSoundRoomText.font);
+	InitSpriteText(&gSoundRoomText.texts[0]);
+	InitSpriteText(&gSoundRoomText.texts[1]);
+
+	for (i = 0; i < 3; i++)
+		InitSpriteText(&gSoundRoomText.texts[i + 2]);
+
+	SetTextFont(NULL);
+
+	gSoundRoomText.oam2[0] = 0xa000 + (((vram & 0x1ffff) >> 5) & 0x3ff);
+}
+
+void func_fe6_0808BF00(struct ProcSoundRoom *proc)
+{
+	register struct SoundRoomText *srtext asm("r6");
+	register u32 cur_index asm("r8");
+	register u32 info_off asm("sb");
+	register int *name1 asm("r5");
+	register struct Text *title asm("r4");
+	int width;
+	int height;
+
+	cur_index = proc->cur_index;
+	srtext = &gSoundRoomText;
+
+	SetTextFont(&srtext->font);
+	SetTextFontGlyphs(TEXT_GLYPHS_TALK);
+
+	info_off = cur_index * sizeof(struct SoundRoomInfo);
+	name1 = (int *)&gSoundRoomInfo;
+	name1 = (int *)((char *)name1 + 4);
+	name1 = (int *)((char *)name1 + info_off);
+
+	func_fe6_08071C00(DecodeMsg(name1[0]), &width, &height);
+
+	title = &srtext->texts[0];
+	SpriteText_DrawBackgroundExt(title, 0);
+	Text_SetCursor(title, (0xb0 - width) / 2);
+	Text_SetColor(title, 0);
+	Text_DrawString(title, DecodeMsg(name1[0]));
+
+	srtext = (struct SoundRoomText *)((char *)srtext + 0x20);
+	SpriteText_DrawBackgroundExt((struct Text *)srtext, 0);
+
+	if (cur_index == 0) {
+		proc->unk_41 = 1;
+	} else {
+		register int *name2 asm("r4");
+
+		proc->unk_41 = 0;
+
+		name2 = (int *)&gSoundRoomInfo;
+		name2 = (int *)((char *)name2 + 8);
+		name2 = (int *)((char *)name2 + info_off);
+
+		func_fe6_08071C00(DecodeMsg(name2[0]), &width, &height);
+		Text_SetCursor((struct Text *)srtext, 0xa8 - width);
+		Text_SetColor((struct Text *)srtext, 0);
+		Text_DrawString((struct Text *)srtext, DecodeMsg(name2[0]));
+	}
+
+	SetTextFont(NULL);
+}
+
+void func_fe6_0808BFF0(void)
+{
+	SetTextFont(&gSoundRoomText.font);
+	SetTextFontGlyphs(0);
+
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[2], 0);
+	Text_SetCursor(&gSoundRoomText.texts[2], 0);
+	Text_SetColor(&gSoundRoomText.texts[2], 0);
+	Text_DrawString(&gSoundRoomText.texts[2], String_Xmap_08336D3C);
+
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[3], 0);
+	Text_SetCursor(&gSoundRoomText.texts[3], 0);
+	Text_SetColor(&gSoundRoomText.texts[3], 0);
+	Text_DrawString(&gSoundRoomText.texts[3], String_Xmap_08336D48);
+
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[4], 0);
+	Text_SetCursor(&gSoundRoomText.texts[4], 0);
+	Text_SetColor(&gSoundRoomText.texts[4], 0);
+	Text_DrawString(&gSoundRoomText.texts[4], String_Xmap_08336D54);
+
+	SetTextFont(NULL);
+}
+
+void func_fe6_0808C084(struct ProcSoundRoomSprite *proc)
+{
+	proc->parent = proc->proc_parent;
+	proc->arrow_anim_l = 0;
+	proc->arrow_anim_r = 0;
 }

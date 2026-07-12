@@ -18,6 +18,8 @@
 
 #include "constants/videoalloc_global.h"
 
+#include "soundroom.h"
+
 struct UnkProc_0868A28C * func_fe6_0808A14C(struct SaveMenuProc * parent);
 struct UnkProc_0868A2AC * func_fe6_0808A210(struct SaveMenuProc * parent);
 fu8 SaveMenu_GetNextSaveIndex(fu8 save_id, bool valid, fi8 direction);

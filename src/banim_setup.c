@@ -362,7 +362,7 @@ bool _SetupBanim(void)
 	if (valid_r) gBanimEffectiveness[POS_R] = IsItemEffectiveAgainst(bu2->weapon, unit_bu1);
 
 	/* Force display ballista anim */
-	gBanimUnitChgForceImg[POS_L] = gBanimUnitChgForceImg[POS_R] =  0;;
+	gBanimBallistaImages[POS_L] = gBanimBallistaImages[POS_R] =  0;;
 
 	if (valid_l) {
 		switch (GetItemIid(bu1->weapon_before)) {
@@ -371,15 +371,15 @@ bool _SetupBanim(void)
 		case IID_KILLERBALLISTA:
 			switch (UNIT_JID(unit_bu1)) {
 			case JID_ARCHER_F:
-				gBanimUnitChgForceImg[POS_L] = Img_BanimArcherFBallistaIntro;
+				gBanimBallistaImages[POS_L] = Img_BanimArcherFBallistaIntro;
 				break;
 
 			case JID_SNIPER:
-				gBanimUnitChgForceImg[POS_L] = Img_BanimArcherMBallistaIntro;
+				gBanimBallistaImages[POS_L] = Img_BanimArcherMBallistaIntro;
 				break;
 
 			case JID_SNIPER_F:
-				gBanimUnitChgForceImg[POS_L] = Img_BanimSnipperFBallistaIntro;
+				gBanimBallistaImages[POS_L] = Img_BanimSnipperFBallistaIntro;
 				break;
 
 			case JID_ARCHER:
@@ -401,15 +401,15 @@ bool _SetupBanim(void)
 		case IID_KILLERBALLISTA:
 			switch (UNIT_JID(unit_bu2)) {
 			case JID_ARCHER_F:
-				gBanimUnitChgForceImg[POS_R] = Img_BanimArcherFBallistaIntro;
+				gBanimBallistaImages[POS_R] = Img_BanimArcherFBallistaIntro;
 				break;
 
 			case JID_SNIPER:
-				gBanimUnitChgForceImg[POS_R] = Img_BanimArcherMBallistaIntro;
+				gBanimBallistaImages[POS_R] = Img_BanimArcherMBallistaIntro;
 				break;
 
 			case JID_SNIPER_F:
-				gBanimUnitChgForceImg[POS_R] = Img_BanimSnipperFBallistaIntro;
+				gBanimBallistaImages[POS_R] = Img_BanimSnipperFBallistaIntro;
 				break;
 
 			case JID_ARCHER:
