@@ -858,9 +858,14 @@ struct ProcEkrIntroWindow {
     /* 48 */ int ymax_name;
 };
 
+extern EWRAM_OVERLAY(banim) int gEkrWindowAppearUnexist;
+
 void NewEkrWindowAppear(int identifier, int duration);
 bool CheckEkrWindowAppearUnexist(void);
 void EkrWindowAppear_Main(struct ProcEkrIntroWindow *proc);
+
+extern EWRAM_OVERLAY(banim) int gEkrNameWinAppearExist;
+
 void NewEkrNamewinAppear(int identifier, int duration, int delay);
 bool CheckEkrNamewinAppearUnexist(void);
 void EkrNamewinAppear_Delay(struct ProcEkrIntroWindow *proc);
