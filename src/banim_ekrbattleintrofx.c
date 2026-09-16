@@ -3,6 +3,7 @@
 #include "hardware.h"
 #include "util.h"
 #include "move.h"
+#include "oam.h"
 #include "banim.h"
 #include "banim_data.h"
 #include "banim_ekrdragon.h"
@@ -460,11 +461,125 @@ void EkrUnitKakudai_PrepareAnimScript(struct ProcEkrUnitKakudai *proc)
 	Proc_Break(proc);
 }
 
+void EkrUnitKakudai_Main(struct ProcEkrUnitKakudai *proc)
+{
+	u16 ret, x, y;
+	struct BaSpriteData bas_data[0x40];
+	struct Anim local_anim;
+	struct Anim *anim = &local_anim;
+
+	if (proc->timer >= proc->terminator) {
+		Proc_Break(proc);
+		return;
+	}
+
+	proc->timer++;
+
+	if (proc->type == 0)
+		ret = Interpolate(0, 0x250, 0x100, proc->timer, proc->terminator);
+	else
+		ret = Interpolate(0, 0x100, 0x250, proc->timer, proc->terminator);
+
+	if (proc->valid_l == true) {
+		BanimUpdateSpriteRotScale(proc->pOaml, bas_data, ret, ret, 0);
+
+		if (proc->type == 0) {
+			x = Interpolate(0, proc->x1, proc->left_pos, proc->timer, proc->terminator);
+			y = Interpolate(0, proc->y1, 0x58, proc->timer, proc->terminator);
+		} else {
+			x = Interpolate(0, proc->left_pos, proc->x1, proc->timer, proc->terminator);
+			y = Interpolate(0, 0x58, proc->y1, proc->timer, proc->terminator);
+		}
+
+		anim->sprData = bas_data;
+		anim->xPosition = x;
+		anim->yPosition = y;
+		anim->flags2 = ANIM_BIT2_0400;
+		anim->oam2 = OAM2_CHR(VRAMOFF_OBJ_4000 / CHR_SIZE) + OAM2_PAL(OBPAL_EFX_UNIT_L) + OAM2_LAYER(0);
+		anim->oam01 = 0;
+		BasPutOam(anim);
+	}
+
+	if (proc->valid_r == true) {
+		BanimUpdateSpriteRotScale(proc->pOamr, bas_data, ret, ret, 1);
+
+		if (proc->type == 0) {
+			x = Interpolate(0, proc->x2, proc->right_pos, proc->timer, proc->terminator);
+			y = Interpolate(0, proc->y2, 0x58, proc->timer, proc->terminator);
+		} else {
+			x = Interpolate(0, proc->right_pos, proc->x2, proc->timer, proc->terminator);
+			y = Interpolate(0, 0x58, proc->y2, proc->timer, proc->terminator);
+		}
+
+		anim->sprData = bas_data;
+		anim->xPosition = x;
+		anim->yPosition = y;
+		anim->flags2 = 0x400;
+		anim->oam2 = 0x9300;
+		anim->oam01 = 0;
+		BasPutOam(anim);
+	}
+}
+
+void EkrUnitKakudai_End(struct ProcEkrUnitKakudai *proc)
+{
+	Proc_Break(proc);
+}
+
 struct ProcScr CONST_DATA ProcScr_EkrWindowAppear[] = {
 	PROC_19,
 	PROC_REPEAT(EkrWindowAppear_Main),
 	PROC_END,
 };
+
+void NewEkrWindowAppear(int identifier, int duration)
+{
+	int iy;
+	struct ProcEkrIntroWindow *proc;
+
+	proc = SpawnProc(ProcScr_EkrWindowAppear, PROC_TREE_3);
+	proc->type = identifier;
+	proc->timer = 0;
+	proc->terminator = duration;
+	proc->ymax = 0x39;
+
+	if (identifier == 0)
+		iy = 0x39;
+	else
+		iy = 0x00;
+
+	EkrGauge_Clr323A(gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y + iy);
+	gEkrWindowAppearUnexist = true;
+	EkrGauge_ClrInitFlag();
+}
+
+bool CheckEkrWindowAppearUnexist(void)
+{
+	if (gEkrWindowAppearUnexist == false)
+		return true;
+
+	return false;
+}
+
+void EkrWindowAppear_Main(struct ProcEkrIntroWindow *proc)
+{
+	int iy;
+
+	if (proc->timer >= proc->terminator) {
+		gEkrWindowAppearUnexist = false;
+		EkrGauge_SetInitFlag();
+		Proc_Break(proc);
+		return;
+	}
+
+	proc->timer++;
+	if (proc->type == 0)
+		iy = Interpolate(1, proc->ymax, 0, proc->timer, proc->terminator);
+	else
+		iy = Interpolate(4, 0, proc->ymax, proc->timer, proc->terminator);
+
+	EkrGauge_Clr323A(gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y + iy);
+}
 
 struct ProcScr CONST_DATA ProcScr_EkrNamewinAppear[] = {
 	PROC_19,
@@ -473,8 +588,119 @@ struct ProcScr CONST_DATA ProcScr_EkrNamewinAppear[] = {
 	PROC_END,
 };
 
+void NewEkrNamewinAppear(int identifier, int duration, int delay)
+{
+	int iy;
+	struct ProcEkrIntroWindow *proc;
+
+	proc = SpawnProc(ProcScr_EkrNamewinAppear, PROC_TREE_3);
+
+	proc->type = identifier;
+	proc->timer = 0;
+	proc->terminator = duration;
+	proc->ymax = delay;
+	proc->ymax_name = -49;
+
+	if (identifier == 0)
+		EkrDispUP_SetPositionUnsync(0, proc->ymax_name);
+	else
+		EkrDispUP_SetPositionUnsync(0, 0);
+
+	gEkrNameWinAppearExist = true;
+	UnsyncEkrDispUP();
+}
+
+bool CheckEkrNamewinAppearUnexist(void)
+{
+	if (gEkrNameWinAppearExist == false)
+		return true;
+
+	return false;
+}
+
+void EkrNamewinAppear_Delay(struct ProcEkrIntroWindow *proc)
+{
+	if (proc->timer == proc->ymax) {
+		proc->timer = 0;
+		Proc_Break(proc);
+		return;
+	}
+
+	proc->timer++;
+}
+
+void EkrNamewinAppear_Main(struct ProcEkrIntroWindow *proc)
+{
+	int iy;
+
+	if (proc->timer >= proc->terminator) {
+		gEkrNameWinAppearExist = false;
+		SyncEkrDispUP();
+
+		if (proc->type == 2)
+			EndEkrDispUP();
+
+		Proc_Break(proc);
+		return;
+	}
+	proc->timer++;
+
+	if (proc->type == 0)
+		iy = Interpolate(1, proc->ymax_name, 0, proc->timer, proc->terminator);
+	else
+		iy = Interpolate(4, 0, proc->ymax_name, proc->timer, proc->terminator);
+
+	EkrDispUP_SetPositionUnsync(0, iy);
+}
+
 struct ProcScr CONST_DATA ProcScr_EkrBaseAppear[] = {
 	PROC_19,
 	PROC_REPEAT(EkrBaseAppear_Loop),
 	PROC_END,
 };
+
+void NewEkrBaseAppear(int identifier, int duration)
+{
+	int iy;
+
+	struct ProcEkrIntroWindow *proc;
+
+	proc = SpawnProc(ProcScr_EkrBaseAppear, PROC_TREE_3);
+	proc->type = identifier;
+	proc->timer = 0;
+	proc->terminator = duration;
+
+	if (identifier == 0)
+		SetBgOffset(BG_2, 0, -0x58);
+	else
+		SetBgOffset(BG_2, 0, 0);
+
+	gProcEkrBaseAppearExist = true;
+}
+
+bool CheckEkrBaseAppearUnexist(void)
+{
+	if (gProcEkrBaseAppearExist == false)
+		return true;
+
+	return false;
+}
+
+void EkrBaseAppear_Loop(struct ProcEkrIntroWindow *proc)
+{
+	int iy;
+
+	if (proc->timer >= proc->terminator) {
+		gProcEkrBaseAppearExist = false;
+		Proc_Break(proc);
+		return;
+	}
+
+	proc->timer++;
+	if (proc->type == 0)
+		iy = Interpolate(1, -0x50, 0, proc->timer, proc->terminator);
+	else
+		iy = Interpolate(4, 0, -0x50, proc->timer, proc->terminator);
+
+	SetBgOffset(BG_2, 0, iy);
+}
