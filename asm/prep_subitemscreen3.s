@@ -2,367 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start PrepSubItem_SelLoop1
-PrepSubItem_SelLoop1: @ 0x0807FF98
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	adds r5, r0, #0
-	adds r0, #0x31
-	ldrb r0, [r0]
-	mov r8, r0
-	adds r4, r5, #0
-	adds r4, #0x29
-	ldrb r0, [r4]
-	ldr r7, .L0807FFCC @ =gKeySt
-	cmp r0, #0
-	beq .L0807FFD0
-	ldr r1, [r7]
-	movs r0, #0x81
-	lsls r0, r0, #1
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq .L0807FFD0
-	bl CloseHelpBox
-	movs r0, #0
-	strb r0, [r4]
-	b .L08080274
-	.align 2, 0
-.L0807FFCC: .4byte gKeySt
-.L0807FFD0:
-	ldr r2, [r7]
-	ldrh r1, [r2, #6]
-	movs r6, #0x80
-	adds r0, r6, #0
-	ands r0, r1
-	cmp r0, #0
-	beq .L0808004C
-	adds r4, r5, #0
-	adds r4, #0x31
-	ldrb r0, [r4]
-	lsls r1, r0, #1
-	adds r1, #9
-	movs r0, #0x13
-	movs r2, #7
-	bl RemoveUiEntryHover
-	ldrb r1, [r4]
-	adds r0, r5, #0
-	adds r0, #0x49
-	ldrb r0, [r0]
-	subs r0, #1
-	cmp r1, r0
-	bge .L08080018
-	adds r0, r1, #1
-	strb r0, [r4]
-	ldr r0, .L08080014 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L08080038
-	movs r0, #0x66
-	bl m4aSongNumStart
-	b .L08080038
-	.align 2, 0
-.L08080014: .4byte gPlaySt
-.L08080018:
-	ldr r1, [r7]
-	adds r0, r6, #0
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq .L08080038
-	movs r0, #0
-	strb r0, [r4]
-	ldr r0, .L08080048 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L08080038
-	movs r0, #0x66
-	bl m4aSongNumStart
-.L08080038:
-	ldrb r4, [r4]
-	lsls r1, r4, #1
-	adds r1, #9
-	movs r0, #0x13
-	movs r2, #7
-	bl PutUiEntryHover
-	b .L080800F8
-	.align 2, 0
-.L08080048: .4byte gPlaySt
-.L0808004C:
-	movs r6, #0x40
-	adds r0, r6, #0
-	ands r0, r1
-	cmp r0, #0
-	beq .L080800C4
-	adds r4, r5, #0
-	adds r4, #0x31
-	ldrb r0, [r4]
-	lsls r1, r0, #1
-	adds r1, #9
-	movs r0, #0x13
-	movs r2, #7
-	bl RemoveUiEntryHover
-	ldrb r0, [r4]
-	cmp r0, #0
-	beq .L08080088
-	subs r0, #1
-	strb r0, [r4]
-	ldr r0, .L08080084 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L080800AE
-	movs r0, #0x66
-	bl m4aSongNumStart
-	b .L080800AE
-	.align 2, 0
-.L08080084: .4byte gPlaySt
-.L08080088:
-	ldr r1, [r7]
-	adds r0, r6, #0
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq .L080800AE
-	ldr r0, .L080800C0 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L080800A4
-	movs r0, #0x66
-	bl m4aSongNumStart
-.L080800A4:
-	adds r0, r5, #0
-	adds r0, #0x49
-	ldrb r0, [r0]
-	subs r0, #1
-	strb r0, [r4]
-.L080800AE:
-	ldrb r4, [r4]
-	lsls r1, r4, #1
-	adds r1, #9
-	movs r0, #0x13
-	movs r2, #7
-	bl PutUiEntryHover
-	b .L080800F8
-	.align 2, 0
-.L080800C0: .4byte gPlaySt
-.L080800C4:
-	ldrh r1, [r2, #8]
-	movs r0, #2
-	ands r0, r1
-	cmp r0, #0
-	beq .L08080104
-	ldr r0, .L08080100 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L080800DE
-	movs r0, #0x6b
-	bl m4aSongNumStart
-.L080800DE:
-	adds r0, r5, #0
-	adds r0, #0x2d
-	ldrb r0, [r0]
-	cmp r0, #3
-	bhi .L080800F0
-	adds r0, r5, #0
-	movs r1, #1
-	bl NewSallyCir2
-.L080800F0:
-	adds r0, r5, #0
-	movs r1, #6
-	bl Proc_Goto
-.L080800F8:
-	adds r6, r5, #0
-	adds r6, #0x29
-	b .L08080250
-	.align 2, 0
-.L08080100: .4byte gPlaySt
-.L08080104:
-	movs r0, #1
-	ands r0, r1
-	adds r6, r5, #0
-	adds r6, #0x29
-	cmp r0, #0
-	bne .L08080112
-	b .L08080220
-.L08080112:
-	ldrb r0, [r6]
-	cmp r0, #0
-	beq .L0808011A
-	b .L08080220
-.L0808011A:
-	adds r0, r5, #0
-	adds r0, #0x31
-	ldrb r4, [r0]
-	cmp r4, #0
-	bne .L08080150
-	ldr r0, [r5, #0x54]
-	bl GetUnitItemCount
-	cmp r0, #0
-	beq .L08080184
-	ldr r0, .L0808014C @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L0808013E
-	movs r0, #0x6a
-	bl m4aSongNumStart
-.L0808013E:
-	adds r0, r5, #0
-	adds r0, #0x2e
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	b .L080801FC
-	.align 2, 0
-.L0808014C: .4byte gPlaySt
-.L08080150:
-	cmp r4, #1
-	bne .L08080178
-	ldr r0, .L08080170 @ =gPrepAllItemsCount
-	ldrh r0, [r0]
-	cmp r0, #0
-	beq .L08080184
-	ldr r0, .L08080174 @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L080801FC
-	movs r0, #0x6a
-	bl m4aSongNumStart
-	b .L080801FC
-	.align 2, 0
-.L08080170: .4byte gPrepAllItemsCount
-.L08080174: .4byte gPlaySt
-.L08080178:
-	cmp r4, #2
-	bne .L080801FC
-	ldr r0, .L08080198 @ =gPrepAllItemsCount
-	ldrh r0, [r0]
-	cmp r0, #0
-	bne .L080801A0
-.L08080184:
-	ldr r0, .L0808019C @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L08080274
-	movs r0, #0x6c
-	bl m4aSongNumStart
-	b .L08080274
-	.align 2, 0
-.L08080198: .4byte gPrepAllItemsCount
-.L0808019C: .4byte gPlaySt
-.L080801A0:
-	ldr r0, .L0808020C @ =gPlaySt
-	ldrb r0, [r0, #0x1d]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt .L080801B0
-	movs r0, #0x6a
-	bl m4aSongNumStart
-.L080801B0:
-	movs r0, #0
-	bl EndFaceById
-	ldr r0, .L08080210 @ =gBg0Tm
-	movs r1, #0xf
-	movs r2, #0x13
-	movs r3, #0
-	bl TmFillRect_thm
-	ldr r0, .L08080214 @ =gBg1Tm
-	movs r1, #0xf
-	movs r2, #0x13
-	movs r3, #0
-	bl TmFillRect_thm
-	ldr r0, .L08080218 @ =gBg2Tm
-	movs r1, #0xf
-	movs r2, #0x1f
-	movs r3, #0
-	bl TmFillRect_thm
-	ldr r1, .L0808021C @ =gPrepItemListData
-	adds r0, r5, #0
-	adds r0, #0x50
-	ldrh r0, [r0]
-	lsrs r0, r0, #4
-	adds r2, r5, #0
-	adds r2, #0x2e
-	ldrb r2, [r2]
-	adds r0, r2, r0
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldrh r2, [r0, #2]
-	ldr r3, [r5, #0x5c]
-	movs r0, #1
-	movs r1, #0xb
-	bl PrepItem_PutItemDesc
-.L080801FC:
-	adds r0, r5, #0
-	bl func_fe6_0807FBE8
-	adds r0, r5, #0
-	bl Proc_Break
-	b .L08080250
-	.align 2, 0
-.L0808020C: .4byte gPlaySt
-.L08080210: .4byte gBg0Tm
-.L08080214: .4byte gBg1Tm
-.L08080218: .4byte gBg2Tm
-.L0808021C: .4byte gPrepItemListData
-.L08080220:
-	ldr r1, [r7]
-	movs r0, #0x80
-	lsls r0, r0, #1
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq .L08080250
-	ldrb r0, [r6]
-	cmp r0, #0
-	bne .L08080250
-	movs r0, #2
-	strb r0, [r6]
-	adds r0, r5, #0
-	adds r0, #0x31
-	ldrb r0, [r0]
-	lsls r1, r0, #4
-	adds r1, #0x48
-	ldr r2, .L08080280 @ =HelpboxMsg_0867929C
-	lsls r0, r0, #2
-	adds r0, r0, r2
-	ldr r2, [r0]
-	movs r0, #0xa0
-	bl StartHelpBox
-.L08080250:
-	ldrb r6, [r6]
-	cmp r6, #2
-	bne .L08080274
-	adds r0, r5, #0
-	adds r0, #0x31
-	ldrb r1, [r0]
-	cmp r1, r8
-	beq .L08080274
-	ldrb r0, [r0]
-	lsls r1, r0, #4
-	adds r1, #0x48
-	ldr r2, .L08080280 @ =HelpboxMsg_0867929C
-	lsls r0, r0, #2
-	adds r0, r0, r2
-	ldr r2, [r0]
-	movs r0, #0xa0
-	bl StartHelpBox
-.L08080274:
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-.L08080280: .4byte HelpboxMsg_0867929C
-
 	thumb_func_start PrepSubItem_SelLoop2
 PrepSubItem_SelLoop2: @ 0x08080284
 	push {r4, r5, r6, r7, lr}
@@ -390,51 +29,51 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r4, #0x29
 	ldrb r2, [r4]
 	cmp r2, #0
-	beq .L080802E0
-	ldr r0, .L080802D8 @ =gKeySt
+	beq .switch_menu_pos
+	ldr r0, .Lpool_gKeySt_close @ =gKeySt
 	ldr r1, [r0]
 	movs r0, #0x81
 	lsls r0, r0, #1
 	ldrh r1, [r1, #8]
 	ands r0, r1
 	cmp r0, #0
-	beq .L080802E0
+	beq .switch_menu_pos
 	cmp r2, #1
-	beq .L080802DC
+	beq .clear_empty_helpbox
 	bl CloseHelpBox
 	movs r0, #0
 	strb r0, [r4]
-	bl .L080813D2
+	bl .end
 	.align 2, 0
-.L080802D8: .4byte gKeySt
-.L080802DC:
+.Lpool_gKeySt_close: .4byte gKeySt
+.clear_empty_helpbox:
 	movs r0, #0
 	strb r0, [r4]
-.L080802E0:
+.switch_menu_pos:
 	adds r4, r6, #0
 	adds r4, #0x2c
 	ldrb r0, [r4]
 	str r4, [sp, #0xc]
 	cmp r0, #7
-	bne .L080802F0
-	bl .L080811E4
-.L080802F0:
+	bne .switch_le7
+	bl .case_page_right_end
+.switch_le7:
 	cmp r0, #7
-	bgt .L0808034C
+	bgt .switch_gt7
 	cmp r0, #2
-	bne .L080802FC
-	bl .L080810D0
-.L080802FC:
+	bne .switch_le2
+	bl .case_scroll_down
+.switch_le2:
 	cmp r0, #2
-	bgt .L08080322
+	bgt .switch_gt2
 	cmp r0, #0
-	bne .L08080306
-	b .L080806B0
-.L08080306:
+	bne .switch_if_case1
+	b .case_main
+.switch_if_case1:
 	cmp r0, #1
-	bne .L0808030E
-	bl .L08081078
-.L0808030E:
+	bne .switch_default_le2
+	bl .case_scroll_up
+.switch_default_le2:
 	adds r7, r6, #0
 	adds r7, #0x2e
 	movs r0, #0x50
@@ -443,16 +82,16 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r1, #0x45
 	adds r1, r1, r6
 	mov sb, r1
-	bl .L080812C6
-.L08080322:
+	bl .setup_timer_ptr_tail
+.switch_gt2:
 	cmp r0, #5
-	bne .L0808032A
-	bl .L08081128
-.L0808032A:
+	bne .switch_if_case6
+	bl .case_page_right_anim
+.switch_if_case6:
 	cmp r0, #6
-	bne .L08080332
-	bl .L08081152
-.L08080332:
+	bne .switch_default_le7
+	bl .case_page_right_swap
+.switch_default_le7:
 	adds r7, r6, #0
 	adds r7, #0x2e
 	movs r3, #0x50
@@ -464,22 +103,22 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r5, #0x52
 	adds r5, r5, r6
 	mov sl, r5
-	bl .L080812FA
-.L0808034C:
+	bl .tail
+.switch_gt7:
 	cmp r0, #0xc
-	bne .L08080354
-	bl .L080812D4
-.L08080354:
+	bne .switch_le12
+	bl .case_page_left_end
+.switch_le12:
 	cmp r0, #0xc
-	bgt .L0808037C
+	bgt .switch_gt12
 	cmp r0, #0xa
-	bne .L08080360
-	bl .L080811EE
-.L08080360:
+	bne .switch_if_case11
+	bl .case_page_left_anim
+.switch_if_case11:
 	cmp r0, #0xb
-	bne .L08080368
-	bl .L08081216
-.L08080368:
+	bne .switch_default_le12
+	bl .case_page_left_swap
+.switch_default_le12:
 	adds r7, r6, #0
 	adds r7, #0x2e
 	movs r0, #0x50
@@ -488,12 +127,12 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r1, #0x45
 	adds r1, r1, r6
 	mov sb, r1
-	bl .L080812C6
-.L0808037C:
+	bl .setup_timer_ptr_tail
+.switch_gt12:
 	cmp r0, #0x14
-	bne .L08080382
-	b .L080804B8
-.L08080382:
+	bne .switch_check_exit
+	b .case_confirm
+.switch_check_exit:
 	adds r7, r6, #0
 	adds r7, #0x2e
 	movs r3, #0x50
@@ -506,15 +145,15 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r5, r6
 	mov sl, r5
 	cmp r0, #0xff
-	beq .L080803A0
-	bl .L080812FA
-.L080803A0:
+	beq .case_exit
+	bl .tail
+.case_exit:
 	adds r0, r6, #0
 	adds r0, #0x31
 	ldrb r1, [r0]
 	str r0, [sp, #0x10]
 	cmp r1, #0
-	bne .L080803CA
+	bne .exit_save_list_cursor
 	subs r0, #2
 	ldrb r2, [r0]
 	lsls r0, r2, #3
@@ -528,8 +167,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl RemoveUiEntryHover
-	b .L080803EA
-.L080803CA:
+	b .exit_check_restore_face
+.exit_save_list_cursor:
 	adds r2, r6, #0
 	adds r2, #0x46
 	adds r0, r6, #0
@@ -546,11 +185,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r5, [r5]
 	lsrs r1, r5, #4
 	strb r1, [r0]
-.L080803EA:
+.exit_check_restore_face:
 	ldr r0, [sp, #0x10]
 	ldrb r0, [r0]
 	cmp r0, #2
-	bne .L0808047E
+	bne .exit_save_parent_page
 	ldr r0, [r6, #0x54]
 	bl GetUnitFid
 	adds r1, r0, #0
@@ -561,18 +200,18 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0
 	movs r2, #0x40
 	bl StartFace
-	ldr r5, .L080804A8 @ =gBg0Tm
+	ldr r5, .Lpool_gBg0Tm_exit @ =gBg0Tm
 	adds r0, r5, #0
 	movs r1, #0xf
 	movs r2, #0x13
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r0, .L080804AC @ =gBg1Tm
+	ldr r0, .Lpool_gBg1Tm_exit @ =gBg1Tm
 	movs r1, #0xf
 	movs r2, #0x13
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r0, .L080804B0 @ =gBg2Tm
+	ldr r0, .Lpool_gBg2Tm_exit @ =gBg2Tm
 	movs r1, #0xf
 	movs r2, #0x1f
 	movs r3, #0
@@ -599,7 +238,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bl DecodeMsg
-	ldr r1, .L080804B4 @ =gPrepTexts3
+	ldr r1, .Lpool_gPrepTexts3_exit @ =gPrepTexts3
 	str r0, [sp]
 	adds r0, r1, #0
 	adds r1, r5, #0
@@ -609,91 +248,91 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldr r1, [r6, #0x54]
 	movs r0, #0
 	bl func_fe6_0807D6C0
-.L0808047E:
+.exit_save_parent_page:
 	adds r0, r6, #0
 	adds r0, #0x2d
 	ldrb r0, [r0]
 	cmp r0, #3
-	bhi .L08080494
+	bhi .exit_goto_convoy
 	ldr r0, [r6, #0x14]
 	adds r1, r6, #0
 	adds r1, #0x46
 	ldrb r1, [r1]
 	adds r0, #0x3a
 	strb r1, [r0]
-.L08080494:
+.exit_goto_convoy:
 	adds r0, r6, #0
 	movs r1, #4
 	bl Proc_Goto
 	movs r1, #0x45
 	adds r1, r1, r6
 	mov sb, r1
-	bl .L080812C6
+	bl .setup_timer_ptr_tail
 	.align 2, 0
-.L080804A8: .4byte gBg0Tm
-.L080804AC: .4byte gBg1Tm
-.L080804B0: .4byte gBg2Tm
-.L080804B4: .4byte gPrepTexts3
-.L080804B8:
-	ldr r0, .L080805D4 @ =gKeySt
+.Lpool_gBg0Tm_exit: .4byte gBg0Tm
+.Lpool_gBg1Tm_exit: .4byte gBg1Tm
+.Lpool_gBg2Tm_exit: .4byte gBg2Tm
+.Lpool_gPrepTexts3_exit: .4byte gPrepTexts3
+.case_confirm:
+	ldr r0, .Lpool_gKeySt_confirm @ =gKeySt
 	ldr r1, [r0]
 	movs r0, #0x20
 	ldrh r1, [r1, #6]
 	ands r0, r1
 	cmp r0, #0
-	beq .L080804E4
+	beq .confirm_check_right
 	adds r1, r6, #0
 	adds r1, #0x30
 	ldrb r0, [r1]
 	cmp r0, #0
-	beq .L080804E4
+	beq .confirm_check_right
 	movs r0, #0
 	strb r0, [r1]
-	ldr r0, .L080805D8 @ =gPlaySt
+	ldr r0, .Lpool_gPlaySt_confirm @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L080804E4
+	blt .confirm_check_right
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L080804E4:
-	ldr r0, .L080805D4 @ =gKeySt
+.confirm_check_right:
+	ldr r0, .Lpool_gKeySt_confirm @ =gKeySt
 	ldr r1, [r0]
 	movs r0, #0x10
 	ldrh r1, [r1, #6]
 	ands r0, r1
 	cmp r0, #0
-	beq .L08080510
+	beq .confirm_check_a
 	adds r1, r6, #0
 	adds r1, #0x30
 	ldrb r3, [r1]
 	cmp r3, #1
-	beq .L08080510
+	beq .confirm_check_a
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, .L080805D8 @ =gPlaySt
+	ldr r0, .Lpool_gPlaySt_confirm @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080510
+	blt .confirm_check_a
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080510:
-	ldr r0, .L080805D4 @ =gKeySt
+.confirm_check_a:
+	ldr r0, .Lpool_gKeySt_confirm @ =gKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
 	movs r4, #1
 	ands r4, r1
 	cmp r4, #0
-	beq .L080805F0
-	ldr r0, .L080805D8 @ =gPlaySt
+	beq .confirm_check_b
+	ldr r0, .Lpool_gPlaySt_confirm @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L0808052E
+	blt .confirm_after_se
 	movs r0, #0x6a
 	bl m4aSongNumStart
-.L0808052E:
+.confirm_after_se:
 	adds r0, r6, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -709,24 +348,24 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r1, r1, r6
 	mov sl, r1
 	cmp r0, #0
-	bne .L080805CC
+	bne .confirm_set_pos0
 	ldrh r2, [r4]
 	lsrs r0, r2, #4
 	ldrb r3, [r7]
 	adds r0, r3, r0
 	lsls r1, r0, #0x10
-	ldr r4, .L080805DC @ =gPrepAllItemsCount
+	ldr r4, .Lpool_gPrepAllItemsCount_confirm @ =gPrepAllItemsCount
 	adds r5, r4, #0
-	ldr r2, .L080805E0 @ =gPrepMenuScrollPos
+	ldr r2, .Lpool_gPrepMenuScrollPos_confirm @ =gPrepMenuScrollPos
 	mov ip, r2
 	adds r3, r6, #0
 	adds r3, #0x4b
 	str r3, [sp, #0x14]
 	ldrh r2, [r4]
 	cmp r0, r2
-	bge .L08080588
-	ldr r3, .L080805E4 @ =gPrepItemListData
-.L0808056E:
+	bge .confirm_yes_after_shift
+	ldr r3, .Lpool_gPrepItemListData_confirm @ =gPrepItemListData
+.confirm_yes_shift_loop:
 	asrs r1, r1, #0x10
 	lsls r2, r1, #2
 	adds r2, r2, r3
@@ -739,8 +378,8 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	asrs r0, r1, #0x10
 	ldrh r2, [r4]
 	cmp r0, r2
-	blt .L0808056E
-.L08080588:
+	blt .confirm_yes_shift_loop
+.confirm_yes_after_shift:
 	ldrh r0, [r5]
 	subs r0, #1
 	strh r0, [r5]
@@ -751,7 +390,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	mov r1, r8
 	bl func_fe6_080823A0
-	ldr r0, .L080805E8 @ =gPrepTexts1 + 0x50
+	ldr r0, .Lpool_gPrepTexts1_confirm @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	mov r4, r8
 	ldrh r4, [r4]
@@ -761,30 +400,30 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r1, #1
 	bl func_fe6_0807D9E4
 	bl PrepAllItems_Update
-	ldr r1, .L080805EC @ =gAction
+	ldr r1, .Lpool_gAction_confirm @ =gAction
 	movs r0, #0x19
 	strb r0, [r1, #0x11]
 	ldr r5, [sp, #0x14]
 	ldrb r0, [r5]
 	cmp r0, #0
-	beq .L080805CC
+	beq .confirm_set_pos0
 	adds r0, r6, #0
 	movs r1, #6
 	bl Proc_Goto
-.L080805CC:
+.confirm_set_pos0:
 	movs r0, #0
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
-	b .L08080622
+	b .confirm_check_done
 	.align 2, 0
-.L080805D4: .4byte gKeySt
-.L080805D8: .4byte gPlaySt
-.L080805DC: .4byte gPrepAllItemsCount
-.L080805E0: .4byte gPrepMenuScrollPos
-.L080805E4: .4byte gPrepItemListData
-.L080805E8: .4byte gPrepTexts1 + 0x50
-.L080805EC: .4byte gAction
-.L080805F0:
+.Lpool_gKeySt_confirm: .4byte gKeySt
+.Lpool_gPlaySt_confirm: .4byte gPlaySt
+.Lpool_gPrepAllItemsCount_confirm: .4byte gPrepAllItemsCount
+.Lpool_gPrepMenuScrollPos_confirm: .4byte gPrepMenuScrollPos
+.Lpool_gPrepItemListData_confirm: .4byte gPrepItemListData
+.Lpool_gPrepTexts1_confirm: .4byte gPrepTexts1 + 0x50
+.Lpool_gAction_confirm: .4byte gAction
+.confirm_check_b:
 	movs r0, #2
 	ands r0, r1
 	adds r7, r6, #0
@@ -799,24 +438,24 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r5, r6
 	mov sl, r5
 	cmp r0, #0
-	beq .L08080622
-	ldr r0, .L0808069C @ =gPlaySt
+	beq .confirm_check_done
+	ldr r0, .Lpool_gPlaySt_confirm_b @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L0808061E
+	blt .confirm_b_after_se
 	movs r0, #0x6b
 	bl m4aSongNumStart
-.L0808061E:
+.confirm_b_after_se:
 	ldr r0, [sp, #0xc]
 	strb r4, [r0]
-.L08080622:
+.confirm_check_done:
 	ldr r1, [sp, #0xc]
 	ldrb r0, [r1]
 	cmp r0, #0
-	beq .L0808062E
-	bl .L080812FA
-.L0808062E:
+	beq .confirm_restore_ui
+	bl .tail
+.confirm_restore_ui:
 	adds r0, r6, #0
 	adds r0, #0x2f
 	ldrb r2, [r0]
@@ -831,17 +470,17 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-	ldr r0, .L080806A0 @ =gBg0Tm
+	ldr r0, .Lpool_gBg0Tm_confirm @ =gBg0Tm
 	movs r1, #0xe
 	movs r2, #0x13
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r0, .L080806A4 @ =gBg1Tm
+	ldr r0, .Lpool_gBg1Tm_confirm @ =gBg1Tm
 	movs r1, #0xe
 	movs r2, #0x13
 	movs r3, #0
 	bl TmFillRect_thm
-	ldr r1, .L080806A8 @ =gPrepItemListData
+	ldr r1, .Lpool_gPrepItemListData_confirm_ui @ =gPrepItemListData
 	mov r4, r8
 	ldrh r4, [r4]
 	lsrs r0, r4, #4
@@ -856,37 +495,37 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl PrepItem_PutItemDesc
 	movs r0, #3
 	bl EnableBgSync
-	ldr r0, .L080806AC @ =gPrepAllItemsCount
+	ldr r0, .Lpool_gPrepAllItemsCount_confirm_ui @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	cmp r0, #0
-	beq .L08080692
-	bl .L080812FA
-.L08080692:
+	beq .confirm_list_empty_exit
+	bl .tail
+.confirm_list_empty_exit:
 	movs r0, #0xff
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
-	bl .L080812FA
+	bl .tail
 	.align 2, 0
-.L0808069C: .4byte gPlaySt
-.L080806A0: .4byte gBg0Tm
-.L080806A4: .4byte gBg1Tm
-.L080806A8: .4byte gPrepItemListData
-.L080806AC: .4byte gPrepAllItemsCount
-.L080806B0:
-	ldr r1, .L080806F8 @ =gKeySt
+.Lpool_gPlaySt_confirm_b: .4byte gPlaySt
+.Lpool_gBg0Tm_confirm: .4byte gBg0Tm
+.Lpool_gBg1Tm_confirm: .4byte gBg1Tm
+.Lpool_gPrepItemListData_confirm_ui: .4byte gPrepItemListData
+.Lpool_gPrepAllItemsCount_confirm_ui: .4byte gPrepAllItemsCount
+.case_main:
+	ldr r1, .Lpool_gKeySt_main @ =gKeySt
 	ldr r0, [r1]
 	ldrh r2, [r0, #8]
 	movs r0, #2
 	ands r0, r2
 	adds r3, r1, #0
 	cmp r0, #0
-	beq .L08080720
+	beq .main_check_a
 	adds r0, r6, #0
 	adds r0, #0x4b
 	ldrb r0, [r0]
 	cmp r0, #0
-	beq .L08080700
-	ldr r0, .L080806FC @ =gPlaySt
+	beq .main_b_exit
+	ldr r0, .Lpool_gPlaySt_main_b_locked @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	adds r7, r6, #0
@@ -901,45 +540,45 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r4, r4, r6
 	mov sl, r4
 	cmp r0, #0
-	bge .L080806EE
-	bl .L080812FA
-.L080806EE:
+	bge .main_b_locked_play_se
+	bl .tail
+.main_b_locked_play_se:
 	movs r0, #0x6c
 	bl m4aSongNumStart
-	bl .L080812FA
+	bl .tail
 	.align 2, 0
-.L080806F8: .4byte gKeySt
-.L080806FC: .4byte gPlaySt
-.L08080700:
-	ldr r0, .L0808071C @ =gPlaySt
+.Lpool_gKeySt_main: .4byte gKeySt
+.Lpool_gPlaySt_main_b_locked: .4byte gPlaySt
+.main_b_exit:
+	ldr r0, .Lpool_gPlaySt_main_b @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080710
+	blt .main_b_set_exit
 	movs r0, #0x6b
 	bl m4aSongNumStart
-.L08080710:
+.main_b_set_exit:
 	movs r0, #0xff
 	strb r0, [r4]
 	adds r7, r6, #0
 	adds r7, #0x2e
-	b .L08080BBA
+	b .main_setup_regs_tail
 	.align 2, 0
-.L0808071C: .4byte gPlaySt
-.L08080720:
+.Lpool_gPlaySt_main_b: .4byte gPlaySt
+.main_check_a:
 	movs r0, #1
 	ands r0, r2
 	cmp r0, #0
-	bne .L0808072A
-	b .L08080B68
-.L0808072A:
+	bne .main_a_check_helpbox
+	b .main_check_r
+.main_a_check_helpbox:
 	adds r0, r6, #0
 	adds r0, #0x29
 	ldrb r0, [r0]
 	cmp r0, #0
-	beq .L08080736
-	b .L08080B68
-.L08080736:
+	beq .main_a_do
+	b .main_check_r
+.main_a_do:
 	adds r4, r6, #0
 	adds r4, #0x2f
 	ldrb r2, [r4]
@@ -963,15 +602,15 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	str r0, [sp, #0x10]
 	adds r5, r4, #0
 	cmp r1, #0
-	beq .L0808076A
-	b .L08080918
-.L0808076A:
+	beq .main_a_give
+	b .main_a_not_give
+.main_a_give:
 	bl GetTotalSupplyItemCount
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #0x64
-	bne .L080807A0
-	ldr r0, .L0808079C @ =gPlaySt
+	bne .main_give_not_full
+	ldr r0, .Lpool_gPlaySt_give_full @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	movs r4, #0x50
@@ -984,30 +623,30 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r2, r2, r6
 	mov sl, r2
 	cmp r0, #0
-	bge .L08080794
-	b .L08080A3E
-.L08080794:
+	bge .main_give_full_play_se
+	b .main_a_after_give_take
+.main_give_full_play_se:
 	movs r0, #0x6c
 	bl m4aSongNumStart
-	b .L08080A3E
+	b .main_a_after_give_take
 	.align 2, 0
-.L0808079C: .4byte gPlaySt
-.L080807A0:
+.Lpool_gPlaySt_give_full: .4byte gPlaySt
+.main_give_not_full:
 	adds r0, r6, #0
 	adds r0, #0x4c
 	ldrb r0, [r0]
 	cmp r0, #0
-	beq .L080807E0
+	beq .main_give_ok
 	ldr r0, [r6, #0x54]
 	ldrb r1, [r7]
 	bl PrepCanUnitPutItemToSupply
 	lsls r0, r0, #0x18
 	cmp r0, #0
-	bne .L080807E0
+	bne .main_give_ok
 	ldrb r3, [r7]
 	lsls r1, r3, #4
 	adds r1, #0x48
-	ldr r2, .L080807DC @ =0x000006C2
+	ldr r2, .Lpool_MSG_6C2 @ =0x000006C2
 	movs r0, #0x10
 	adds r3, r6, #0
 	bl StartPrepErrorHelpbox
@@ -1020,18 +659,18 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r1, #0x52
 	adds r1, r1, r6
 	mov sl, r1
-	b .L08080A3E
+	b .main_a_after_give_take
 	.align 2, 0
-.L080807DC: .4byte 0x000006C2
-.L080807E0:
-	ldr r0, .L080808C8 @ =gPlaySt
+.Lpool_MSG_6C2: .4byte 0x000006C2
+.main_give_ok:
+	ldr r0, .Lpool_gPlaySt_give @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L080807F0
+	blt .main_give_after_se
 	movs r0, #0x6a
 	bl m4aSongNumStart
-.L080807F0:
+.main_give_after_se:
 	ldr r0, [r6, #0x54]
 	ldrb r2, [r7]
 	lsls r1, r2, #1
@@ -1040,7 +679,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r1, [r0]
 	adds r0, r6, #0
 	bl func_fe6_0807DEC8
-	ldr r0, .L080808CC @ =gPrepAllItemsCount
+	ldr r0, .Lpool_gPrepAllItemsCount_give @ =gPrepAllItemsCount
 	ldrh r0, [r0]
 	lsls r2, r0, #0x10
 	asrs r1, r2, #0x10
@@ -1050,12 +689,12 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsrs r0, r4, #4
 	mov r8, r3
 	cmp r1, r0
-	blt .L08080842
-	ldr r0, .L080808D0 @ =gPrepItemListData
+	blt .main_give_insert
+	ldr r0, .Lpool_gPrepItemListData_give @ =gPrepItemListData
 	mov sl, r0
 	movs r1, #0
 	mov sb, r1
-.L08080820:
+.main_give_shift_loop:
 	asrs r2, r2, #0x10
 	adds r1, r2, #1
 	lsls r1, r1, #2
@@ -1072,9 +711,9 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r4, [r3]
 	lsrs r0, r4, #4
 	cmp r1, r0
-	bge .L08080820
-.L08080842:
-	ldr r3, .L080808D0 @ =gPrepItemListData
+	bge .main_give_shift_loop
+.main_give_insert:
+	ldr r3, .Lpool_gPrepItemListData_give @ =gPrepItemListData
 	mov r0, r8
 	ldrh r0, [r0]
 	lsrs r1, r0, #4
@@ -1094,11 +733,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r0, r0, #2
 	adds r0, r0, r3
 	strb r2, [r0]
-	ldr r1, .L080808CC @ =gPrepAllItemsCount
+	ldr r1, .Lpool_gPrepAllItemsCount_give @ =gPrepAllItemsCount
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
-	ldr r1, .L080808D4 @ =gPrepMenuScrollPos
+	ldr r1, .Lpool_gPrepMenuScrollPos_give @ =gPrepMenuScrollPos
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
@@ -1109,39 +748,39 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0
 	bl func_fe6_0807D6C0
 	bl PrepAllItems_Update
-	ldr r1, .L080808D8 @ =gAction
+	ldr r1, .Lpool_gAction_give @ =gAction
 	movs r0, #0x19
 	strb r0, [r1, #0x11]
 	ldr r0, [r6, #0x54]
 	bl GetUnitItemCount
 	cmp r0, #0
-	bne .L080808DC
+	bne .main_give_remaining
 	adds r0, r6, #0
 	bl func_fe6_0807D358
 	adds r0, r6, #0
 	adds r0, #0x2d
 	ldrb r0, [r0]
 	cmp r0, #3
-	bhi .L080808BA
+	bhi .main_give_empty_goto
 	ldr r0, [r6, #0x14]
 	adds r1, r6, #0
 	adds r1, #0x46
 	ldrb r1, [r1]
 	adds r0, #0x3a
 	strb r1, [r0]
-.L080808BA:
+.main_give_empty_goto:
 	adds r0, r6, #0
 	movs r1, #4
 	bl Proc_Goto
-	bl .L080813D2
+	bl .end
 	.align 2, 0
-.L080808C8: .4byte gPlaySt
-.L080808CC: .4byte gPrepAllItemsCount
-.L080808D0: .4byte gPrepItemListData
-.L080808D4: .4byte gPrepMenuScrollPos
-.L080808D8: .4byte gAction
-.L080808DC:
-	ldr r0, .L08080914 @ =gPrepTexts1 + 0x50
+.Lpool_gPlaySt_give: .4byte gPlaySt
+.Lpool_gPrepAllItemsCount_give: .4byte gPrepAllItemsCount
+.Lpool_gPrepItemListData_give: .4byte gPrepItemListData
+.Lpool_gPrepMenuScrollPos_give: .4byte gPrepMenuScrollPos
+.Lpool_gAction_give: .4byte gAction
+.main_give_remaining:
+	ldr r0, .Lpool_gPrepTexts1_give @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	mov r4, r8
 	ldrh r4, [r4]
@@ -1161,15 +800,15 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r4, r4, r6
 	mov sl, r4
 	cmp r0, r1
-	blt .L0808090C
-	b .L08080A3E
-.L0808090C:
+	blt .main_give_dec_hand_y
+	b .main_a_after_give_take
+.main_give_dec_hand_y:
 	subs r0, r2, #1
 	strb r0, [r7]
-	b .L08080A3E
+	b .main_a_after_give_take
 	.align 2, 0
-.L08080914: .4byte gPrepTexts1 + 0x50
-.L08080918:
+.Lpool_gPrepTexts1_give: .4byte gPrepTexts1 + 0x50
+.main_a_not_give:
 	movs r0, #0x50
 	adds r0, r0, r6
 	mov r8, r0
@@ -1180,25 +819,25 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r3, r3, r6
 	mov sl, r3
 	cmp r1, #1
-	beq .L08080930
-	b .L08080A3E
-.L08080930:
-	ldr r0, .L08080A04 @ =gPrepMenuScrollPos
+	beq .main_a_take
+	b .main_a_after_give_take
+.main_a_take:
+	ldr r0, .Lpool_gPrepMenuScrollPos_take @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
-	beq .L08080A1C
+	beq .main_take_fail
 	ldr r0, [r6, #0x54]
 	bl GetUnitItemCount
 	cmp r0, #4
-	bgt .L08080A1C
-	ldr r0, .L08080A08 @ =gPlaySt
+	bgt .main_take_fail
+	ldr r0, .Lpool_gPlaySt_take @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080952
+	blt .main_take_after_se
 	movs r0, #0x6a
 	bl m4aSongNumStart
-.L08080952:
+.main_take_after_se:
 	ldr r0, [r6, #0x54]
 	bl GetUnitItemCount
 	ldr r1, [r6, #0x54]
@@ -1211,7 +850,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r2, [r7]
 	adds r0, r2, r0
 	lsls r0, r0, #2
-	ldr r3, .L08080A0C @ =gPrepItemListData
+	ldr r3, .Lpool_gPrepItemListData_take @ =gPrepItemListData
 	adds r0, r0, r3
 	ldrh r0, [r0, #2]
 	strh r0, [r1]
@@ -1223,12 +862,12 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrb r1, [r7]
 	adds r0, r1, r0
 	lsls r1, r0, #0x10
-	ldr r4, .L08080A10 @ =gPrepAllItemsCount
+	ldr r4, .Lpool_gPrepAllItemsCount_take @ =gPrepAllItemsCount
 	ldrh r2, [r4]
 	cmp r0, r2
-	bge .L080809AA
-	ldr r3, .L08080A0C @ =gPrepItemListData
-.L08080990:
+	bge .main_take_after_shift
+	ldr r3, .Lpool_gPrepItemListData_take @ =gPrepItemListData
+.main_take_shift_loop:
 	asrs r1, r1, #0x10
 	lsls r2, r1, #2
 	adds r2, r2, r3
@@ -1241,20 +880,20 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	asrs r0, r1, #0x10
 	ldrh r2, [r4]
 	cmp r0, r2
-	blt .L08080990
-.L080809AA:
-	ldr r4, .L08080A10 @ =gPrepAllItemsCount
+	blt .main_take_shift_loop
+.main_take_after_shift:
+	ldr r4, .Lpool_gPrepAllItemsCount_take @ =gPrepAllItemsCount
 	ldrh r0, [r4]
 	subs r0, #1
 	strh r0, [r4]
-	ldr r1, .L08080A04 @ =gPrepMenuScrollPos
+	ldr r1, .Lpool_gPrepMenuScrollPos_take @ =gPrepMenuScrollPos
 	ldrh r0, [r1]
 	subs r0, #1
 	strh r0, [r1]
 	adds r0, r7, #0
 	mov r1, r8
 	bl func_fe6_080823A0
-	ldr r0, .L08080A14 @ =gPrepTexts1 + 0x50
+	ldr r0, .Lpool_gPrepTexts1_take @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	mov r3, r8
 	ldrh r1, [r3]
@@ -1269,30 +908,30 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0
 	bl func_fe6_0807D6C0
 	bl PrepAllItems_Update
-	ldr r1, .L08080A18 @ =gAction
+	ldr r1, .Lpool_gAction_take @ =gAction
 	movs r0, #0x19
 	strb r0, [r1, #0x11]
 	ldr r0, [r6, #0x54]
 	bl GetUnitItemCount
 	cmp r0, #5
-	beq .L080809FC
+	beq .main_take_set_exit
 	ldrh r0, [r4]
 	cmp r0, #0
-	bne .L08080A3E
-.L080809FC:
+	bne .main_a_after_give_take
+.main_take_set_exit:
 	movs r0, #0xff
 	ldr r2, [sp, #0xc]
 	strb r0, [r2]
-	b .L08080A3E
+	b .main_a_after_give_take
 	.align 2, 0
-.L08080A04: .4byte gPrepMenuScrollPos
-.L08080A08: .4byte gPlaySt
-.L08080A0C: .4byte gPrepItemListData
-.L08080A10: .4byte gPrepAllItemsCount
-.L08080A14: .4byte gPrepTexts1 + 0x50
-.L08080A18: .4byte gAction
-.L08080A1C:
-	ldr r0, .L08080A90 @ =gPlaySt
+.Lpool_gPrepMenuScrollPos_take: .4byte gPrepMenuScrollPos
+.Lpool_gPlaySt_take: .4byte gPlaySt
+.Lpool_gPrepItemListData_take: .4byte gPrepItemListData
+.Lpool_gPrepAllItemsCount_take: .4byte gPrepAllItemsCount
+.Lpool_gPrepTexts1_take: .4byte gPrepTexts1 + 0x50
+.Lpool_gAction_take: .4byte gAction
+.main_take_fail:
+	ldr r0, .Lpool_gPlaySt_take_fail @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	movs r3, #0x50
@@ -1305,21 +944,21 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r1, r1, r6
 	mov sl, r1
 	cmp r0, #0
-	blt .L08080A3E
+	blt .main_a_after_give_take
 	movs r0, #0x6c
 	bl m4aSongNumStart
-.L08080A3E:
+.main_a_after_give_take:
 	ldr r2, [sp, #0x10]
 	ldrb r2, [r2]
 	cmp r2, #2
-	beq .L08080A48
-	b .L08080B60
-.L08080A48:
-	ldr r0, .L08080A94 @ =gPrepMenuScrollPos
+	beq .main_a_discard
+	b .main_a_not_discard
+.main_a_discard:
+	ldr r0, .Lpool_gPrepMenuScrollPos_discard @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
-	beq .L08080B3C
-	ldr r1, .L08080A98 @ =gPrepItemListData
+	beq .main_discard_empty
+	ldr r1, .Lpool_gPrepItemListData_discard @ =gPrepItemListData
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r0, r3, #4
@@ -1333,7 +972,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0x10
 	ands r4, r0
 	cmp r4, #0
-	beq .L08080AA0
+	beq .main_discard_open_confirm
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1344,24 +983,24 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r2, r2, #5
 	subs r2, #0x48
 	subs r1, r1, r2
-	ldr r2, .L08080A9C @ =0x00000C33
+	ldr r2, .Lpool_MSG_C33 @ =0x00000C33
 	adds r3, r6, #0
 	bl StartPrepErrorHelpbox
-	b .L08080E2E
+	b .main_put_hover
 	.align 2, 0
-.L08080A90: .4byte gPlaySt
-.L08080A94: .4byte gPrepMenuScrollPos
-.L08080A98: .4byte gPrepItemListData
-.L08080A9C: .4byte 0x00000C33
-.L08080AA0:
-	ldr r0, .L08080B20 @ =gPlaySt
+.Lpool_gPlaySt_take_fail: .4byte gPlaySt
+.Lpool_gPrepMenuScrollPos_discard: .4byte gPrepMenuScrollPos
+.Lpool_gPrepItemListData_discard: .4byte gPrepItemListData
+.Lpool_MSG_C33: .4byte 0x00000C33
+.main_discard_open_confirm:
+	ldr r0, .Lpool_gPlaySt_discard @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080AB0
+	blt .main_discard_after_se
 	movs r0, #0x6a
 	bl m4aSongNumStart
-.L08080AB0:
+.main_discard_after_se:
 	adds r1, r6, #0
 	adds r1, #0x30
 	movs r0, #1
@@ -1375,9 +1014,9 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r2, #0xc
 	movs r3, #7
 	bl PutUiWindowFrame
-	ldr r4, .L08080B24 @ =gPrepTexts1
-	ldr r5, .L08080B28 @ =gBg0Tm+0x148
-	ldr r0, .L08080B2C @ =String_Prep_083272CC
+	ldr r4, .Lpool_gPrepTexts1_discard @ =gPrepTexts1
+	ldr r5, .Lpool_gBg0Tm_discard @ =gBg0Tm+0x148
+	ldr r0, .Lpool_str_really @ =String_Prep_083272CC
 	str r0, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1387,7 +1026,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r4, #0
 	adds r0, #8
 	adds r1, r5, #6
-	ldr r2, .L08080B30 @ =String_Prep_083272D4
+	ldr r2, .Lpool_str_discard_q @ =String_Prep_083272D4
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0
@@ -1396,38 +1035,38 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, #0x10
 	adds r1, r5, #0
 	adds r1, #0xc2
-	ldr r2, .L08080B34 @ =String_Prep_Yes
+	ldr r2, .Lpool_str_yes @ =String_Prep_Yes
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0
 	bl PrepPutText
 	adds r4, #0x18
 	adds r5, #0xca
-	ldr r0, .L08080B38 @ =String_Prep_No
+	ldr r0, .Lpool_str_no @ =String_Prep_No
 	str r0, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
 	bl PrepPutText
-	bl .L080812FA
+	bl .tail
 	.align 2, 0
-.L08080B20: .4byte gPlaySt
-.L08080B24: .4byte gPrepTexts1
-.L08080B28: .4byte gBg0Tm+0x148
-.L08080B2C: .4byte String_Prep_083272CC
-.L08080B30: .4byte String_Prep_083272D4
-.L08080B34: .4byte String_Prep_Yes
-.L08080B38: .4byte String_Prep_No
-.L08080B3C:
-	ldr r0, .L08080B5C @ =gPlaySt
+.Lpool_gPlaySt_discard: .4byte gPlaySt
+.Lpool_gPrepTexts1_discard: .4byte gPrepTexts1
+.Lpool_gBg0Tm_discard: .4byte gBg0Tm+0x148
+.Lpool_str_really: .4byte String_Prep_083272CC
+.Lpool_str_discard_q: .4byte String_Prep_083272D4
+.Lpool_str_yes: .4byte String_Prep_Yes
+.Lpool_str_no: .4byte String_Prep_No
+.main_discard_empty:
+	ldr r0, .Lpool_gPlaySt_discard_empty @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080B4C
+	blt .main_discard_empty_put_hover
 	movs r0, #0x6c
 	bl m4aSongNumStart
-.L08080B4C:
+.main_discard_empty_put_hover:
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1435,31 +1074,31 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, #2
 	ldrb r3, [r7]
 	lsls r1, r3, #1
-	b .L08080E3C
+	b .main_put_hover_y
 	.align 2, 0
-.L08080B5C: .4byte gPlaySt
-.L08080B60:
+.Lpool_gPlaySt_discard_empty: .4byte gPlaySt
+.main_a_not_discard:
 	adds r0, r6, #0
 	bl func_fe6_0807D358
-	b .L08080E2E
-.L08080B68:
+	b .main_put_hover
+.main_check_r:
 	ldr r1, [r3]
 	movs r0, #0x80
 	lsls r0, r0, #1
 	ldrh r1, [r1, #8]
 	ands r0, r1
 	cmp r0, #0
-	beq .L08080C34
+	beq .main_check_hand_x
 	adds r1, r6, #0
 	adds r1, #0x29
 	ldrb r0, [r1]
 	cmp r0, #0
-	bne .L08080C34
+	bne .main_check_hand_x
 	adds r0, r6, #0
 	adds r0, #0x31
 	ldrb r2, [r0]
 	cmp r2, #0
-	bne .L08080BCE
+	bne .main_r_list
 	movs r0, #2
 	strb r0, [r1]
 	adds r0, r6, #0
@@ -1483,7 +1122,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r2, [r2]
 	bl StartItemHelpBox
 	adds r7, r4, #0
-.L08080BBA:
+.main_setup_regs_tail:
 	movs r5, #0x50
 	adds r5, r5, r6
 	mov r8, r5
@@ -1493,9 +1132,9 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r1, #0x52
 	adds r1, r1, r6
 	mov sl, r1
-	b .L080812FA
-.L08080BCE:
-	ldr r0, .L08080C2C @ =gPrepMenuScrollPos
+	b .tail
+.main_r_list:
+	ldr r0, .Lpool_gPrepMenuScrollPos_r @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	adds r7, r6, #0
 	adds r7, #0x2e
@@ -1509,16 +1148,16 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r5, r6
 	mov sl, r5
 	cmp r0, #0
-	bne .L08080BEE
-	b .L080812FA
-.L08080BEE:
+	bne .main_r_list_check_sel
+	b .tail
+.main_r_list_check_sel:
 	subs r0, r2, #1
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #1
-	bls .L08080BFA
-	b .L080812FA
-.L08080BFA:
+	bls .main_r_list_open_helpbox
+	b .tail
+.main_r_list_open_helpbox:
 	movs r0, #2
 	strb r0, [r1]
 	adds r0, r6, #0
@@ -1533,7 +1172,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r2, r2, #5
 	subs r2, #0x48
 	subs r1, r1, r2
-	ldr r2, .L08080C30 @ =gPrepItemListData
+	ldr r2, .Lpool_gPrepItemListData_r @ =gPrepItemListData
 	mov ip, r2
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -1542,54 +1181,54 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	add r2, ip
 	ldrh r2, [r2, #2]
 	bl StartItemHelpBox
-	b .L080812FA
+	b .tail
 	.align 2, 0
-.L08080C2C: .4byte gPrepMenuScrollPos
-.L08080C30: .4byte gPrepItemListData
-.L08080C34:
+.Lpool_gPrepMenuScrollPos_r: .4byte gPrepMenuScrollPos
+.Lpool_gPrepItemListData_r: .4byte gPrepItemListData
+.main_check_hand_x:
 	adds r0, r6, #0
 	adds r0, #0x2f
 	ldrb r2, [r0]
 	adds r5, r0, #0
 	cmp r2, #1
-	beq .L08080C42
-	b .L08080E50
-.L08080C42:
+	beq .main_list_nav
+	b .main_unit_nav
+.main_list_nav:
 	ldr r1, [r3]
 	movs r0, #0x80
 	lsls r0, r0, #2
 	ldrh r1, [r1, #4]
 	ands r0, r1
 	cmp r0, #0
-	beq .L08080C5C
+	beq .main_list_no_l
 	adds r1, r6, #0
 	adds r1, #0x4a
 	movs r0, #2
 	strb r0, [r1]
 	adds r4, r1, #0
-	b .L08080C64
-.L08080C5C:
+	b .main_list_check_up
+.main_list_no_l:
 	adds r0, r6, #0
 	adds r0, #0x4a
 	strb r2, [r0]
 	adds r4, r0, #0
-.L08080C64:
+.main_list_check_up:
 	ldr r1, [r3]
 	movs r2, #0x40
 	adds r0, r2, #0
 	ldrh r7, [r1, #6]
 	ands r0, r7
 	cmp r0, #0
-	bne .L08080C82
+	bne .main_list_up
 	adds r0, r2, #0
 	ldrh r1, [r1, #0x10]
 	ands r0, r1
 	cmp r0, #0
-	beq .L08080D34
+	beq .main_list_check_down
 	ldrb r0, [r4]
 	cmp r0, #2
-	bne .L08080D34
-.L08080C82:
+	bne .main_list_check_down
+.main_list_up:
 	adds r0, r6, #0
 	adds r0, #0x2e
 	ldrb r1, [r0]
@@ -1599,19 +1238,19 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r2, r2, r6
 	mov r8, r2
 	cmp r1, #1
-	bne .L08080CEC
+	bne .main_list_up_move_y
 	ldrh r0, [r2]
 	cmp r0, #0
-	beq .L08080CEC
-	ldr r0, .L08080CE4 @ =gPlaySt
+	beq .main_list_up_move_y
+	ldr r0, .Lpool_gPlaySt_list_up @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080CAC
+	blt .main_list_scroll_up_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080CAC:
-	ldr r0, .L08080CE8 @ =gPrepTexts1 + 0x50
+.main_list_scroll_up_after_se:
+	ldr r0, .Lpool_gPrepTexts1_list_up @ =gPrepTexts1 + 0x50
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -1635,11 +1274,11 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov r1, sb
 	ldr r0, [sp, #0xc]
 	strb r1, [r0]
-	b .L08080DC2
+	b .main_list_scroll_setup_tail
 	.align 2, 0
-.L08080CE4: .4byte gPlaySt
-.L08080CE8: .4byte gPrepTexts1 + 0x50
-.L08080CEC:
+.Lpool_gPlaySt_list_up: .4byte gPlaySt
+.Lpool_gPrepTexts1_list_up: .4byte gPrepTexts1 + 0x50
+.main_list_up_move_y:
 	ldrb r0, [r7]
 	movs r4, #0x45
 	adds r4, r4, r6
@@ -1648,17 +1287,17 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r1, r1, r6
 	mov sl, r1
 	cmp r0, #0
-	bne .L08080D00
-	b .L080812FA
-.L08080D00:
-	ldr r0, .L08080D30 @ =gPlaySt
+	bne .main_list_up_dec_y
+	b .tail
+.main_list_up_dec_y:
+	ldr r0, .Lpool_gPlaySt_list_up_y @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080D10
+	blt .main_list_up_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080D10:
+.main_list_up_after_se:
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1673,61 +1312,61 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl RemoveUiEntryHover
 	ldrb r0, [r7]
 	subs r0, #1
-	b .L08080E2C
+	b .main_commit_hand_y
 	.align 2, 0
-.L08080D30: .4byte gPlaySt
-.L08080D34:
+.Lpool_gPlaySt_list_up_y: .4byte gPlaySt
+.main_list_check_down:
 	ldr r1, [r3]
 	movs r2, #0x80
 	adds r0, r2, #0
 	ldrh r7, [r1, #6]
 	ands r0, r7
 	cmp r0, #0
-	bne .L08080D5A
+	bne .main_list_down
 	adds r0, r2, #0
 	ldrh r1, [r1, #0x10]
 	ands r0, r1
 	adds r7, r6, #0
 	adds r7, #0x2e
 	cmp r0, #0
-	bne .L08080D52
-	b .L08080F84
-.L08080D52:
+	bne .main_list_down_check_turbo
+	b .main_check_page_lr
+.main_list_down_check_turbo:
 	ldrb r0, [r4]
 	cmp r0, #2
-	beq .L08080D5A
-	b .L08080F84
-.L08080D5A:
+	beq .main_list_down
+	b .main_check_page_lr
+.main_list_down:
 	adds r0, r6, #0
 	adds r0, #0x2e
 	ldrb r1, [r0]
 	adds r7, r0, #0
 	cmp r1, #5
-	bls .L08080D68
-	b .L08080F84
-.L08080D68:
+	bls .main_list_down_check_scroll
+	b .main_check_page_lr
+.main_list_down_check_scroll:
 	movs r2, #0x50
 	adds r2, r2, r6
 	mov r8, r2
-	ldr r3, .L08080DD0 @ =gPrepMenuScrollPos
+	ldr r3, .Lpool_gPrepMenuScrollPos_list_down @ =gPrepMenuScrollPos
 	mov ip, r3
 	cmp r1, #5
-	bne .L08080DDC
+	bne .main_list_down_move_y
 	ldrh r1, [r2]
 	lsrs r0, r1, #4
 	adds r0, #7
 	ldrh r1, [r3]
 	cmp r0, r1
-	bge .L08080DDC
-	ldr r0, .L08080DD4 @ =gPlaySt
+	bge .main_list_down_move_y
+	ldr r0, .Lpool_gPlaySt_list_down @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080D92
+	blt .main_list_scroll_down_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080D92:
-	ldr r0, .L08080DD8 @ =gPrepTexts1 + 0x50
+.main_list_scroll_down_after_se:
+	ldr r0, .Lpool_gPrepTexts1_list_down @ =gPrepTexts1 + 0x50
 	mov r3, r8
 	ldrh r3, [r3]
 	lsrs r2, r3, #4
@@ -1749,19 +1388,19 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #2
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
-.L08080DC2:
+.main_list_scroll_setup_tail:
 	movs r2, #0x45
 	adds r2, r2, r6
 	mov sb, r2
 	movs r3, #0x52
 	adds r3, r3, r6
 	mov sl, r3
-	b .L080812FA
+	b .tail
 	.align 2, 0
-.L08080DD0: .4byte gPrepMenuScrollPos
-.L08080DD4: .4byte gPlaySt
-.L08080DD8: .4byte gPrepTexts1 + 0x50
-.L08080DDC:
+.Lpool_gPrepMenuScrollPos_list_down: .4byte gPrepMenuScrollPos
+.Lpool_gPlaySt_list_down: .4byte gPlaySt
+.Lpool_gPrepTexts1_list_down: .4byte gPrepTexts1 + 0x50
+.main_list_down_move_y:
 	mov r4, r8
 	ldrh r4, [r4]
 	lsrs r0, r4, #4
@@ -1777,17 +1416,17 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov r4, ip
 	ldrh r4, [r4]
 	cmp r0, r4
-	blt .L08080DFE
-	b .L080812FA
-.L08080DFE:
-	ldr r0, .L08080E4C @ =gPlaySt
+	blt .main_list_down_inc_y
+	b .tail
+.main_list_down_inc_y:
+	ldr r0, .Lpool_gPlaySt_list_down_y @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080E0E
+	blt .main_list_down_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080E0E:
+.main_list_down_after_se:
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1802,9 +1441,9 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl RemoveUiEntryHover
 	ldrb r0, [r7]
 	adds r0, #1
-.L08080E2C:
+.main_commit_hand_y:
 	strb r0, [r7]
-.L08080E2E:
+.main_put_hover:
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1812,16 +1451,16 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, #2
 	ldrb r4, [r7]
 	lsls r1, r4, #1
-.L08080E3C:
+.main_put_hover_y:
 	lsls r2, r2, #2
 	subs r2, #9
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-	b .L080812FA
+	b .tail
 	.align 2, 0
-.L08080E4C: .4byte gPlaySt
-.L08080E50:
+.Lpool_gPlaySt_list_down_y: .4byte gPlaySt
+.main_unit_nav:
 	ldr r0, [r3]
 	ldrh r1, [r0, #6]
 	movs r7, #0x40
@@ -1829,7 +1468,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov r0, r8
 	ands r0, r1
 	cmp r0, #0
-	beq .L08080EF4
+	beq .main_unit_check_down
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1849,34 +1488,34 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r7, r4, #0
 	ldr r3, [sp, #0x18]
 	cmp r0, #0
-	beq .L08080EA4
-	ldr r0, .L08080EA0 @ =gPlaySt
+	beq .main_unit_try_wrap_up
+	ldr r0, .Lpool_gPlaySt_unit_up @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080E9A
+	blt .main_unit_up_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080E9A:
+.main_unit_up_after_se:
 	ldrb r0, [r7]
-	b .L08080ED0
+	b .main_unit_set_y_from_count
 	.align 2, 0
-.L08080EA0: .4byte gPlaySt
-.L08080EA4:
+.Lpool_gPlaySt_unit_up: .4byte gPlaySt
+.main_unit_try_wrap_up:
 	ldr r1, [r3]
 	mov r0, r8
 	ldrh r1, [r1, #8]
 	ands r0, r1
 	cmp r0, #0
-	beq .L08080ED4
-	ldr r0, .L08080EF0 @ =gPlaySt
+	beq .main_unit_up_put_hover
+	ldr r0, .Lpool_gPlaySt_unit_wrap_up @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080EC0
+	blt .main_unit_wrap_up_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080EC0:
+.main_unit_wrap_up_after_se:
 	ldrb r0, [r5]
 	lsls r1, r0, #2
 	adds r0, r6, #0
@@ -1884,10 +1523,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r0, r1
 	ldr r0, [r0]
 	bl GetUnitItemCount
-.L08080ED0:
+.main_unit_set_y_from_count:
 	subs r0, #1
 	strb r0, [r7]
-.L08080ED4:
+.main_unit_up_put_hover:
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1900,16 +1539,16 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-	b .L08080F84
+	b .main_check_page_lr
 	.align 2, 0
-.L08080EF0: .4byte gPlaySt
-.L08080EF4:
+.Lpool_gPlaySt_unit_wrap_up: .4byte gPlaySt
+.main_unit_check_down:
 	movs r0, #0x80
 	ands r0, r1
 	adds r7, r6, #0
 	adds r7, #0x2e
 	cmp r0, #0
-	beq .L08080F84
+	beq .main_check_page_lr
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1927,43 +1566,43 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	bl GetUnitItemCount
 	subs r0, #1
 	cmp r4, r0
-	bge .L08080F48
+	bge .main_unit_try_wrap_down
 	ldrb r0, [r7]
 	cmp r0, #3
-	bhi .L08080F48
-	ldr r0, .L08080F44 @ =gPlaySt
+	bhi .main_unit_try_wrap_down
+	ldr r0, .Lpool_gPlaySt_unit_down @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080F3E
+	blt .main_unit_down_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080F3E:
+.main_unit_down_after_se:
 	ldrb r0, [r7]
 	adds r0, #1
-	b .L08080F68
+	b .main_unit_set_y
 	.align 2, 0
-.L08080F44: .4byte gPlaySt
-.L08080F48:
-	ldr r0, .L08081008 @ =gKeySt
+.Lpool_gPlaySt_unit_down: .4byte gPlaySt
+.main_unit_try_wrap_down:
+	ldr r0, .Lpool_gKeySt_page @ =gKeySt
 	ldr r1, [r0]
 	movs r0, #0x80
 	ldrh r1, [r1, #8]
 	ands r0, r1
 	cmp r0, #0
-	beq .L08080F6A
-	ldr r0, .L0808100C @ =gPlaySt
+	beq .main_unit_down_put_hover
+	ldr r0, .Lpool_gPlaySt_page @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080F66
+	blt .main_unit_wrap_down_after_se
 	movs r0, #0x66
 	bl m4aSongNumStart
-.L08080F66:
+.main_unit_wrap_down_after_se:
 	movs r0, #0
-.L08080F68:
+.main_unit_set_y:
 	strb r0, [r7]
-.L08080F6A:
+.main_unit_down_put_hover:
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -1976,7 +1615,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	subs r1, r1, r2
 	movs r2, #0xc
 	bl PutUiEntryHover
-.L08080F84:
+.main_check_page_lr:
 	adds r4, r5, #0
 	movs r0, #0x50
 	adds r0, r0, r6
@@ -1989,24 +1628,24 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	mov sl, r2
 	ldrb r3, [r4]
 	cmp r3, #1
-	beq .L08080FA0
-	b .L080812FA
-.L08080FA0:
-	ldr r0, .L08081008 @ =gKeySt
+	beq .main_page_right
+	b .tail
+.main_page_right:
+	ldr r0, .Lpool_gKeySt_page @ =gKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #6]
 	movs r0, #0x10
 	ands r0, r1
 	cmp r0, #0
-	beq .L08081010
-	ldr r0, .L0808100C @ =gPlaySt
+	beq .main_check_page_left
+	ldr r0, .Lpool_gPlaySt_page @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L08080FBE
+	blt .main_page_right_after_se
 	movs r0, #0x67
 	bl m4aSongNumStart
-.L08080FBE:
+.main_page_right_after_se:
 	ldrb r2, [r4]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -2041,25 +1680,25 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #5
 	ldr r5, [sp, #0xc]
 	strb r0, [r5]
-	b .L080812FA
+	b .tail
 	.align 2, 0
-.L08081008: .4byte gKeySt
-.L0808100C: .4byte gPlaySt
-.L08081010:
+.Lpool_gKeySt_page: .4byte gKeySt
+.Lpool_gPlaySt_page: .4byte gPlaySt
+.main_check_page_left:
 	movs r0, #0x20
 	ands r0, r1
 	cmp r0, #0
-	bne .L0808101A
-	b .L080812FA
-.L0808101A:
-	ldr r0, .L08081074 @ =gPlaySt
+	bne .main_page_left
+	b .tail
+.main_page_left:
+	ldr r0, .Lpool_gPlaySt_page_left @ =gPlaySt
 	ldrb r0, [r0, #0x1d]
 	lsls r0, r0, #0x1e
 	cmp r0, #0
-	blt .L0808102A
+	blt .main_page_left_after_se
 	movs r0, #0x67
 	bl m4aSongNumStart
-.L0808102A:
+.main_page_left_after_se:
 	ldrb r2, [r5]
 	lsls r0, r2, #3
 	subs r0, r0, r2
@@ -2094,10 +1733,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #0xa
 	ldr r2, [sp, #0xc]
 	strb r0, [r2]
-	b .L080812FA
+	b .tail
 	.align 2, 0
-.L08081074: .4byte gPlaySt
-.L08081078:
+.Lpool_gPlaySt_page_left: .4byte gPlaySt
+.case_scroll_up:
 	adds r0, r6, #0
 	adds r0, #0x50
 	adds r1, r6, #0
@@ -2120,16 +1759,16 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r0, r6
 	mov sl, r0
 	cmp r1, #0
-	beq .L080810A8
-	b .L080812FA
-.L080810A8:
+	beq .scroll_up_aligned
+	b .tail
+.scroll_up_aligned:
 	lsrs r0, r2, #4
 	adds r0, #7
 	lsls r0, r0, #1
 	movs r1, #0x1f
 	ands r0, r1
 	lsls r0, r0, #6
-	ldr r1, .L080810CC @ =gBg2Tm+0x1E
+	ldr r1, .Lpool_gBg2Tm_scroll_up @ =gBg2Tm+0x1E
 	adds r0, r0, r1
 	movs r1, #0xf
 	movs r2, #1
@@ -2138,10 +1777,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #4
 	bl EnableBgSync
 	movs r0, #0
-	b .L080812F8
+	b .store_menu_pos
 	.align 2, 0
-.L080810CC: .4byte gBg2Tm+0x1E
-.L080810D0:
+.Lpool_gBg2Tm_scroll_up: .4byte gBg2Tm+0x1E
+.case_scroll_down:
 	adds r0, r6, #0
 	adds r0, #0x50
 	adds r1, r6, #0
@@ -2164,16 +1803,16 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r5, r6
 	mov sl, r5
 	cmp r1, #0
-	beq .L08081100
-	b .L080812FA
-.L08081100:
+	beq .scroll_down_aligned
+	b .tail
+.scroll_down_aligned:
 	lsrs r0, r2, #4
 	subs r0, #1
 	lsls r0, r0, #1
 	movs r1, #0x1f
 	ands r0, r1
 	lsls r0, r0, #6
-	ldr r1, .L08081124 @ =gBg2Tm+0x1E
+	ldr r1, .Lpool_gBg2Tm_scroll_down @ =gBg2Tm+0x1E
 	adds r0, r0, r1
 	movs r1, #0xf
 	movs r2, #1
@@ -2182,10 +1821,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #4
 	bl EnableBgSync
 	movs r0, #0
-	b .L080812F8
+	b .store_menu_pos
 	.align 2, 0
-.L08081124: .4byte gBg2Tm+0x1E
-.L08081128:
+.Lpool_gBg2Tm_scroll_down: .4byte gBg2Tm+0x1E
+.case_page_right_anim:
 	adds r1, r6, #0
 	adds r1, #0x45
 	ldrb r0, [r1]
@@ -2203,12 +1842,12 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r3, r3, r6
 	mov sl, r3
 	cmp r0, #0x70
-	beq .L0808114E
-	b .L080812FA
-.L0808114E:
+	beq .page_right_anim_done
+	b .tail
+.page_right_anim_done:
 	movs r0, #6
-	b .L080812F8
-.L08081152:
+	b .store_menu_pos
+.case_page_right_swap:
 	adds r2, r6, #0
 	adds r2, #0x45
 	movs r0, #0x90
@@ -2219,12 +1858,12 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r0, #0
 	mov sb, r2
 	cmp r1, #8
-	bne .L0808116C
+	bne .page_right_inc
 	movs r0, #0
-	b .L0808116E
-.L0808116C:
+	b .page_right_set_page
+.page_right_inc:
 	adds r0, r1, #1
-.L0808116E:
+.page_right_set_page:
 	strb r0, [r5]
 	adds r0, r6, #0
 	adds r0, #0x32
@@ -2248,7 +1887,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L080811E0 @ =gPrepTexts1 + 0x50
+	ldr r0, .Lpool_gPrepTexts1_page_right @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	ldrh r1, [r4]
 	lsrs r3, r1, #4
@@ -2276,16 +1915,16 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, #0xe
 	strb r0, [r5]
 	movs r0, #7
-	b .L080812C0
+	b .page_swap_set_pos
 	.align 2, 0
-.L080811E0: .4byte gPrepTexts1 + 0x50
-.L080811E4:
+.Lpool_gPrepTexts1_page_right: .4byte gPrepTexts1 + 0x50
+.case_page_right_end:
 	adds r1, r6, #0
 	adds r1, #0x45
 	ldrb r0, [r1]
 	adds r0, #0xe
-	b .L080812DC
-.L080811EE:
+	b .page_end_store_xoff
+.case_page_left_anim:
 	adds r1, r6, #0
 	adds r1, #0x45
 	ldrb r0, [r1]
@@ -2303,10 +1942,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r3, r3, r6
 	mov sl, r3
 	cmp r0, #0x90
-	bne .L080812FA
+	bne .tail
 	movs r0, #0xb
-	b .L080812F8
-.L08081216:
+	b .store_menu_pos
+.case_page_left_swap:
 	adds r2, r6, #0
 	adds r2, #0x45
 	movs r0, #0x70
@@ -2317,12 +1956,12 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r0, #0
 	mov sb, r2
 	cmp r1, #0
-	bne .L08081230
+	bne .page_left_dec
 	movs r0, #8
-	b .L08081232
-.L08081230:
+	b .page_left_set_page
+.page_left_dec:
 	subs r0, r1, #1
-.L08081232:
+.page_left_set_page:
 	strb r0, [r5]
 	movs r4, #0x2f
 	adds r4, r4, r6
@@ -2361,7 +2000,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl func_fe6_080823A0
-	ldr r0, .L080812D0 @ =gPrepTexts1 + 0x50
+	ldr r0, .Lpool_gPrepTexts1_page_left @ =gPrepTexts1 + 0x50
 	ldr r2, [r6, #0x54]
 	ldrh r5, [r4]
 	lsrs r3, r5, #4
@@ -2388,23 +2027,23 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	subs r0, #0xe
 	strb r0, [r5]
 	movs r0, #0xc
-.L080812C0:
+.page_swap_set_pos:
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
 	mov r8, r4
-.L080812C6:
+.setup_timer_ptr_tail:
 	movs r2, #0x52
 	adds r2, r2, r6
 	mov sl, r2
-	b .L080812FA
+	b .tail
 	.align 2, 0
-.L080812D0: .4byte gPrepTexts1 + 0x50
-.L080812D4:
+.Lpool_gPrepTexts1_page_left: .4byte gPrepTexts1 + 0x50
+.case_page_left_end:
 	adds r1, r6, #0
 	adds r1, #0x45
 	ldrb r0, [r1]
 	subs r0, #0xe
-.L080812DC:
+.page_end_store_xoff:
 	strb r0, [r1]
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
@@ -2418,10 +2057,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r5, r6
 	mov sl, r5
 	cmp r0, #0
-	bne .L080812FA
-.L080812F8:
+	bne .tail
+.store_menu_pos:
 	strb r0, [r4]
-.L080812FA:
+.tail:
 	mov r1, r8
 	ldrh r1, [r1]
 	lsrs r0, r1, #4
@@ -2429,14 +2068,14 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r5, r0, r3
 	ldr r2, [sp, #4]
 	cmp r2, r5
-	bne .L08081316
+	bne .tail_sel_changed
 	adds r0, r6, #0
 	adds r0, #0x46
 	ldr r4, [sp, #8]
 	ldrb r0, [r0]
 	cmp r4, r0
-	beq .L080813B6
-.L08081316:
+	beq .tail_set_bg_offset
+.tail_sel_changed:
 	adds r4, r6, #0
 	adds r4, #0x29
 	ldrb r1, [r4]
@@ -2444,10 +2083,10 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r0, #0x31
 	str r0, [sp, #0x10]
 	cmp r1, #0
-	beq .L08081392
+	beq .tail_check_discard_desc
 	ldrb r0, [r0]
 	cmp r0, #0
-	bne .L08081352
+	bne .tail_helpbox_list
 	adds r0, r6, #0
 	adds r0, #0x2f
 	ldrb r2, [r0]
@@ -2465,21 +2104,21 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	adds r2, r2, r3
 	ldrh r2, [r2]
 	bl StartItemHelpBox
-	b .L08081392
-.L08081352:
-	ldr r0, .L08081368 @ =gPrepMenuScrollPos
+	b .tail_check_discard_desc
+.tail_helpbox_list:
+	ldr r0, .Lpool_gPrepMenuScrollPos_tail @ =gPrepMenuScrollPos
 	ldrh r0, [r0]
 	cmp r0, #0
-	bne .L0808136C
+	bne .tail_helpbox_list_item
 	cmp r1, #1
-	beq .L08081362
+	beq .tail_helpbox_empty_skip_close
 	bl CloseHelpBox
-.L08081362:
+.tail_helpbox_empty_skip_close:
 	movs r0, #1
-	b .L08081390
+	b .tail_set_unk29
 	.align 2, 0
-.L08081368: .4byte gPrepMenuScrollPos
-.L0808136C:
+.Lpool_gPrepMenuScrollPos_tail: .4byte gPrepMenuScrollPos
+.tail_helpbox_list_item:
 	adds r0, r6, #0
 	adds r0, #0x2f
 	ldrb r2, [r0]
@@ -2491,20 +2130,20 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	lsls r2, r2, #5
 	subs r2, #0x48
 	subs r1, r1, r2
-	ldr r3, .L080813E4 @ =gPrepItemListData
+	ldr r3, .Lpool_gPrepItemListData_tail @ =gPrepItemListData
 	lsls r2, r5, #2
 	adds r2, r2, r3
 	ldrh r2, [r2, #2]
 	bl StartItemHelpBox
 	movs r0, #2
-.L08081390:
+.tail_set_unk29:
 	strb r0, [r4]
-.L08081392:
+.tail_check_discard_desc:
 	ldr r1, [sp, #0x10]
 	ldrb r1, [r1]
 	cmp r1, #2
-	bne .L080813B6
-	ldr r1, .L080813E4 @ =gPrepItemListData
+	bne .tail_set_bg_offset
+	ldr r1, .Lpool_gPrepItemListData_tail @ =gPrepItemListData
 	mov r2, r8
 	ldrh r2, [r2]
 	lsrs r0, r2, #4
@@ -2517,7 +2156,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	movs r0, #1
 	movs r1, #0xb
 	bl PrepItem_PutItemDesc
-.L080813B6:
+.tail_set_bg_offset:
 	mov r3, sb
 	ldrb r1, [r3]
 	mov r4, r8
@@ -2531,7 +2170,7 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	ldrh r0, [r5]
 	adds r0, #1
 	strh r0, [r5]
-.L080813D2:
+.end:
 	add sp, #0x1c
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -2541,4 +2180,4 @@ PrepSubItem_SelLoop2: @ 0x08080284
 	pop {r0}
 	bx r0
 	.align 2, 0
-.L080813E4: .4byte gPrepItemListData
+.Lpool_gPrepItemListData_tail: .4byte gPrepItemListData

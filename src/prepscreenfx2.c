@@ -143,7 +143,7 @@ void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int 
 	EnableBgSync(BG2_SYNC_BIT);
 }
 
-void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit)
+void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit, int unused)
 {
 	i8 tmp;
 	struct Text *text;
