@@ -183,7 +183,6 @@ struct PrepItemListEnt {
 };
 
 extern EWRAM_OVERLAY(0) struct PrepItemListEnt gPrepPageItemTable[400];
-
 extern EWRAM_OVERLAY(0) struct PrepItemListEnt gPrepItemListData[400];
 
 void ResetSioPidPool(void);
@@ -358,7 +357,7 @@ void PrepItem_PutItemDesc(u8 x, u8 y, int item, struct ProcPrepSubItemfx *proc);
 void func_fe6_0807D6C0(u8 index, struct Unit *unit);
 void func_fe6_0807D834(fu8 convoy_page);
 void func_fe6_0807D9E4(struct Text *text, u8 x, struct Unit *unit, u16 off, int unused);
-void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit);
+void func_fe6_0807DB80(struct Text *texts, u8 x, u16 y, struct Unit *unit, int unused);
 void PrepAllItems_PutPName(struct Text *text, u8 pid, u8 x, u8 y);
 void PrepAllItems_PutTotalNum(u8 x, u8 y);
 void PrepAllItems_Update(void);
@@ -621,7 +620,7 @@ extern CONST_DATA u16 Sprite_086791A2[];
 extern CONST_DATA u16 Sprite_086791B0[];
 extern CONST_DATA u16 Sprite_086791BE[];
 extern struct ProcScr ProcScr_PrepUpperDisp[];
-// ??? HelpboxMsg_0867929C
+extern CONST_DATA int HelpboxMsg_0867929C[];
 extern CONST_DATA u16 Sprite_086792A8[];
 extern CONST_DATA u16 Sprite_086792B6[];
 extern CONST_DATA u16 Sprite_086792C4[];

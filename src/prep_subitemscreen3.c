@@ -17,6 +17,7 @@
 
 #include "constants/videoalloc_global.h"
 #include "constants/msg.h"
+#include "constants/songs.h"
 
 extern const char String_Prep_083272AC[];
 extern const char String_Prep_083272B8[];
@@ -163,4 +164,91 @@ void PrepSubItem_StartSupplyScreen(struct PrepSubItemProc *proc)
 
 	PutUiWindowFrame(18, 8, 10, proc->unk_49 * 2 + 2, 0);
 	PutUiEntryHover(0x13, proc->sel_action * 2 + 9, 7);
+}
+
+void PrepSubItem_SelLoop1(struct PrepSubItemProc *proc)
+{
+	u8 prev_sel = proc->sel_action;
+
+	if (proc->unk29 != 0 && (gKeySt->pressed & (KEY_BUTTON_B | KEY_BUTTON_R))) {
+		CloseHelpBox();
+		proc->unk29 = 0;
+		return;
+	}
+
+	if (gKeySt->repeated & KEY_DPAD_DOWN) {
+		RemoveUiEntryHover(0x13, proc->sel_action * 2 + 9, 7);
+
+		if (proc->sel_action < proc->unk_49 - 1) {
+			proc->sel_action++;
+			PlaySe(SONG_66);
+		} else if (gKeySt->pressed & KEY_DPAD_DOWN) {
+			proc->sel_action = 0;
+			PlaySe(SONG_66);
+		}
+
+		PutUiEntryHover(0x13, proc->sel_action * 2 + 9, 7);
+	} else if (gKeySt->repeated & KEY_DPAD_UP) {
+		RemoveUiEntryHover(0x13, proc->sel_action * 2 + 9, 7);
+
+		if (proc->sel_action != 0) {
+			proc->sel_action--;
+			PlaySe(SONG_66);
+		} else if (gKeySt->pressed & KEY_DPAD_UP) {
+			PlaySe(SONG_66);
+			proc->sel_action = proc->unk_49 - 1;
+		}
+
+		PutUiEntryHover(0x13, proc->sel_action * 2 + 9, 7);
+	} else if (gKeySt->pressed & KEY_BUTTON_B) {
+		PlaySe(SONG_6B);
+
+		if (proc->unk2D <= 3)
+			NewSallyCir2(proc, 1);
+
+		Proc_Goto(proc, PL_PREP_SUBITEM_6);
+	} else if ((gKeySt->pressed & KEY_BUTTON_A) && proc->unk29 == 0) {
+		if (proc->sel_action == 0) {
+			if (GetUnitItemCount(proc->units[POS_L]) == 0) {
+				PlaySe(SONG_6C);
+				return;
+			}
+
+			PlaySe(SONG_6A);
+			proc->hand_disp_y = 0;
+			proc->hand_disp_x = 0;
+		} else if (proc->sel_action == 1) {
+			if (gPrepAllItemsCount == 0) {
+				PlaySe(SONG_6C);
+				return;
+			}
+
+			PlaySe(SONG_6A);
+		} else if (proc->sel_action == 2) {
+			if (gPrepAllItemsCount == 0) {
+				PlaySe(SONG_6C);
+				return;
+			}
+
+			PlaySe(SONG_6A);
+			EndFaceById(0);
+			TmFillRect(gBg0Tm, 0xF, 0x13, 0);
+			TmFillRect(gBg1Tm, 0xF, 0x13, 0);
+			TmFillRect(gBg2Tm, 0xF, 0x1F, 0);
+			PrepItem_PutItemDesc(
+				1, 0xB,
+				gPrepItemListData[proc->menu_scroll_bar_disp_idx / 16 + proc->hand_disp_y].item,
+				proc->subproc1);
+		}
+
+		func_fe6_0807FBE8(proc);
+		Proc_Break(proc);
+	} else if ((gKeySt->pressed & KEY_BUTTON_R) && proc->unk29 == 0) {
+		proc->unk29 = 2;
+		StartHelpBox(0xA0, proc->sel_action * 16 + 0x48, HelpboxMsg_0867929C[proc->sel_action]);
+	}
+
+	if (proc->unk29 == 2 && proc->sel_action != prev_sel) {
+		StartHelpBox(0xA0, proc->sel_action * 16 + 0x48, HelpboxMsg_0867929C[proc->sel_action]);
+	}
 }
