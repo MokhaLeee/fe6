@@ -207,35 +207,27 @@ int BasRunScript(struct BaSprite * bas)
 
     ins = *bas->scrCur++;
 
-    if (ins & 0x80000000)
-    {
-        if (ins & 0x40000000)
-        {
-            switch ((ins >> 28) & 0x3)
-            {
-
+    if (ANINS_IS_NOT_FORCESPRITE(ins)) {
+        if (ANINS_IS_PTRINS(ins)) {
+            switch (ANINS_PTRINS_GET_TYPE(ins)) {
             case 0: // function call
-                ((BasFunc) (ins &~ 0xF0000000))(bas);
+                ((BasFunc) ANINS_PTRINS_GET_ADDRESS(ins))(bas);
                 break;
 
             case 1: // set new frame data
-                bas->scrCur = bas->script = (u32 const *) (ins &~ 0xF0000000);
+                bas->scrCur = bas->script = ANINS_PTRINS_GET_ADDRESS(ins);
                 bas->timer = 1;
 
                 break;
 
             }
-        }
-        else
-        {
-            switch (0x3F & (ins >> 24))
-            {
-
+        } else {
+            switch (ANINS_GET_TYPE(ins)) {
             case BAS_INS_KIND_STOP:
                 bas->scrCur--;
                 bas->timer = 1;
 
-                bas->flags2 = (bas->flags2 & 0xFFF) | 0x4000;
+                bas->flags2 = (bas->flags2 & ~ANIM_BIT2_CMD_MASK) | ANIM_BIT2_STOP;
 
                 break;
 
@@ -254,29 +246,28 @@ int BasRunScript(struct BaSprite * bas)
                 break;
 
             case BAS_INS_KIND_WAIT:
-                bas->timer = (ins) & 0xFFFF;
+                bas->timer = ANINS_WAIT_GET_DELAY(ins);
                 break;
 
             case BAS_INS_KIND_MOVE:
                 bas->xPosition += (i8) (ins);
                 bas->yPosition += (i8) (ins >> 8);
 
-                bas->timer = (ins >> 16) & 0xFF;
+                bas->timer = ANINS_MOVE_GET_DELAY(ins);
 
                 break;
 
             case BAS_INS_KIND_COMMAND:
-                bas->flags2 = (bas->flags2 & 0xFFF) | 0x1000;
+                bas->flags2 = (bas->flags2 & ~ANIM_BIT2_CMD_MASK) | ANIM_BIT2_COMMAND;
 
                 if (bas->cqSize > 7) {}
 
-                bas->cq[bas->cqSize] = ins & 0xFF;
+                bas->cq[bas->cqSize] = ANINS_COMMAND_GET_ID(ins);
                 bas->cqSize++;
 
                 bas->timer = 1;
 
-                switch (ins & 0xFF)
-                {
+                switch (ANINS_COMMAND_GET_ID(ins)) {
 
                 case BAS_CMD_WAIT_01:
                 case BAS_CMD_WAIT_02:
@@ -294,26 +285,21 @@ int BasRunScript(struct BaSprite * bas)
                 break;
 
             case BAS_INS_KIND_FRAME:
-                bas->timer = ins & 0xFFFF;
-                bas->unk13 = (ins >> 16) & 0xFF;
-
+                bas->timer = ANINS_FRAME_GET_DELAY(ins);
+                bas->unk13 = ANINS_FRAME_GET_UNK(ins);
                 bas->imgSheet = (void const *) *bas->scrCur++;
 
                 // weird but ok
                 bas->sprData = (void const *) *bas->scrCur++;
                 bas->sprData += (int) bas->sprDataPool;
-
-                bas->flags2 = (bas->flags2 & 0xFFF) | 0x2000;
-
+                bas->flags2 = (bas->flags2 & ~ANIM_BIT2_CMD_MASK) | ANIM_BIT2_FRAME;
                 break;
 
             }
         }
-    }
-    else
-    {
-        bas->sprData = (u8 const *) (ins &~ 0xF0000003);
-        bas->timer   = ((ins >> 26) & 0x1C) + (ins & 3);
+    } else {
+        bas->sprData = ANINS_FORCESPRITE_GET_ADDRESS(ins);
+        bas->timer   = ANINS_FORCESPRITE_GET_DELAY(ins);
     }
 
     return boolNeedsResort;
