@@ -521,7 +521,6 @@ SECTIONS
         . = ALIGN(4); src/banim_ekrbattleintro.o(.rodata);
         . = ALIGN(4); src/banim_ekrbattleintrofx.o(.rodata);
         . = ALIGN(4); src/banim_ekrcmd.o(.rodata);
-        . = ALIGN(4); data/rodata_banim_08112122.o(.rodata);
         . = ALIGN(4); src/banim_ekrterrainfx.o(.rodata);
         . = ALIGN(4); src/banim_ekrarena.o(.rodata);
         . = ALIGN(4); data/rodata_banim_08112380.o(.rodata);
