@@ -468,7 +468,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         if (uVar8 != 0) {
             func_fe6_0805B380(auStack_e8, uVar15, uVar8);
             if (hp_changed == 1) {
-                func_fe6_080435EC(auStack_e8, gUnk_Banim_02016E40);
+                func_fe6_080435EC(auStack_e8, gEkrGaugeBuf);
             }
 
             AStack_130.yPosition = y + 0x8e;
@@ -482,7 +482,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         func_fe6_0805B380(auStack_e8, sVar16, sVar5);
 
         if (hp_changed == 1) {
-            func_fe6_080435EC(auStack_e8, gUnk_Banim_02017240);
+            func_fe6_080435EC(auStack_e8, gEkrGaugeBuf + 0x400);
         }
 
         if (uVar8 != 0) {
@@ -530,7 +530,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         if (uVar8 != 0) {
             func_fe6_0805B380(auStack_e8, uVar15, uVar8);
             if (hp_changed == 1) {
-                func_fe6_080435EC(auStack_e8, gUnk_Banim_02017040);
+                func_fe6_080435EC(auStack_e8, gEkrGaugeBuf + 0x200);
             }
 
             AStack_130.yPosition = y + 0x8e;
@@ -544,7 +544,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
         func_fe6_0805B380(auStack_e8, sVar16, sVar5);
 
         if (hp_changed == 1) {
-            func_fe6_080435EC(auStack_e8, gUnk_Banim_02017440);
+            func_fe6_080435EC(auStack_e8, gEkrGaugeBuf + 0x600);
         }
 
         if (uVar8 != 0) {
@@ -561,7 +561,7 @@ void EkrGauge_Loop(struct ProcEkrGauge * proc)
     }
 
     if (hp_changed == 1) {
-        RegisterDataMove((void *)gUnk_Banim_02016E40, (void *)0x06013000, 0x800);
+        RegisterDataMove((void *)gEkrGaugeBuf, (void *)0x06013000, 0x800);
     }
 
     if (proc->unk4C == 0) {
