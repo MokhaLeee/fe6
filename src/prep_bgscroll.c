@@ -14,36 +14,59 @@ PROC_LABEL(0),
     PROC_END,
 };
 
-#if 0
+void PrepBgScrolling_Init(struct Proc_0867968C *proc)
+{
+	fu16 ix, iy;
+	u16 const *src;
+
+	TmFill(gBg3Tm, 0);
+
+	src = Tsa_MonologueScrollingBG;
+
+	for (iy = 0; iy < 32; iy++) {
+		u32 row_offset = TM_OFFSET(0, iy);
+
+		for (ix = 0; ix < 30; ix++)
+			(gBg3Tm + row_offset)[ix] = (src + (40 - (iy + 1)) * 30)[ix] + TILEREF(0, 10);
+	}
+
+	EnableBgSync(BG3_SYNC_BIT);
+
+	proc->pos = 0;
+	SetBgOffset(BG_3, 0, proc->pos & 0xFF);
+	REG_BG3VOFS = proc->pos & 0xFF;
+
+	proc->timer = 0;
+	proc->pos = 0;
+}
+
 void PrepBgScrolling_Loop(struct Proc_0867968C *proc)
 {
-	int voffs;
-
 	if (proc->timer == 3) {
-		proc->pos++;
-
-		if (proc->pos == 0x500)
+		if (++proc->pos == 0x500)
 			proc->pos = 0;
 
-		SetBgOffset(BG_3, 0, 0xFF & proc->pos);
+		SetBgOffset(BG_3, 0, proc->pos & 0xFF);
+		REG_BG3VOFS = proc->pos & 0xFF;
 
-		voffs = 0xFF & proc->pos;
-		REG_BG3VOFS = voffs;
 		proc->timer = 0;
 	}
 
 	proc->timer++;
 
-	if ((proc->pos & 7) == 0) {
-		u16 i;
+	if ((proc->pos % 8) == 0) {
+		fu16 ix;
 
-		for (i = 0; i < 30; i++) {
+		u16 const *src = Tsa_MonologueScrollingBG;
+		u32 dst_row_off = TM_OFFSET(0, (proc->pos / 8 - 1) & 0x1F);
+		fu8 src_row = (proc->pos / 8 + 30) % 40;
 
-		}
-		const u16 *tsa = Tsa_MonologueScrollingBG;
+		for (ix = 0; ix < 30; ix++)
+			(gBg3Tm + dst_row_off)[ix] = (src + (40 - (src_row + 1)) * 30)[ix] + TILEREF(0, 10);
+
+		CpuFastCopy(gBg3Tm + dst_row_off, (u16 *)(VRAM + 0x7800) + dst_row_off, 0x3C);
 	}
 }
-#endif
 
 void PrepBgScrolling_End(struct Proc_0867968C *proc)
 {}

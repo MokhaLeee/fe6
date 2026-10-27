@@ -146,6 +146,105 @@ struct ProcScr CONST_DATA ProcScr_menu_scroll[] = {
 	PROC_END,
 };
 
+void MenuScroll_Init(struct MenuScrollBarProc * proc)
+{
+	proc->xBase = 0;
+	proc->yBase = 0;
+	proc->numSegments = 0;
+
+	proc->currentSegment = 0;
+	proc->numTotalRows = proc->currentSegment;
+	proc->numVisibleRows = 0;
+	proc->prevSegment = proc->currentSegment;
+	proc->oam2Chr = 0x390;
+	proc->oam2Pal = 0x1000;
+	proc->topArrowFrameIdx = 0;
+	proc->bottomArrowFrameIdx = 0;
+}
+
+void MenuScroll_Loop(struct MenuScrollBarProc *proc)
+{
+	u8 i, j, k;
+
+	if (proc->numTotalRows <= proc->numVisibleRows)
+		return;
+
+	for (i = 0; i < proc->numSegments / 4; i++)
+		PutSpriteExt(4, proc->xBase, proc->yBase + i * 32,
+			Sprite_MenuScrollContainer, proc->oam2Chr + proc->oam2Pal);
+
+	for (j = 0; j < (proc->numSegments - i * 4) >> 1; j++)
+		PutSpriteExt(4, proc->xBase, proc->yBase + j * 16 + i * 32,
+			Sprite_08679580, proc->oam2Chr + proc->oam2Pal);
+
+	for (k = 0; k < proc->numSegments - (i * 4 + j * 2); k++)
+		PutSpriteExt(4, proc->xBase, proc->yBase + k * 8 + j * 16 + i * 32,
+			Sprite_08679578, proc->oam2Chr + proc->oam2Pal);
+
+	if (i + j + k > 0) {
+		u32 len = proc->numSegments << 19;
+		u16 cur = proc->currentSegment;
+		u16 total = proc->numTotalRows;
+		u8 visible = proc->numVisibleRows;
+
+		if (total > visible) {
+			u32 unit = len / total;
+			u32 bar = len * visible / total;
+			u32 n32;
+
+			if (cur != 0)
+				PutSpriteExt(4, (proc->xBase + 1) | OAM1_VFLIP, proc->yBase - 8,
+					MenuScrollArrowSprites[proc->topArrowFrameIdx >> 3], proc->oam2Chr + proc->oam2Pal);
+
+			for (n32 = 0; n32 < bar >> 21; n32++)
+				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + n32 * 32,
+					MenuScrollBarSegmentSprites[10], proc->oam2Chr + proc->oam2Pal);
+
+			for (j = 0; j < ((bar >> 16) - n32 * 32) >> 4; j++)
+				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + n32 * 32 + j * 16,
+					MenuScrollBarSegmentSprites[9], proc->oam2Chr + proc->oam2Pal);
+
+			for (k = 0; k < ((bar >> 16) - n32 * 32 - j * 16) >> 3; k++)
+				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + n32 * 32 + j * 16 + k * 8,
+					MenuScrollBarSegmentSprites[8], proc->oam2Chr + proc->oam2Pal);
+
+			if ((proc->currentSegment >> 4) + proc->numVisibleRows == proc->numTotalRows) {
+				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + (n32 * 32 + j * 16 + k * 8),
+					MenuScrollBarSegmentSprites[proc->numSegments * 8 - ((unit * cur >> 20) + (n32 * 32 + j * 16 + k * 8))],
+					proc->oam2Chr + proc->oam2Pal);
+			} else {
+				PutSpriteExt(4, proc->xBase, proc->yBase + (unit * cur >> 20) + (n32 * 32 + j * 16 + k * 8),
+					MenuScrollBarSegmentSprites[(bar >> 16) & 7], proc->oam2Chr + proc->oam2Pal);
+
+				PutSpriteExt(4, proc->xBase + 1, proc->yBase + proc->numSegments * 8 + 1,
+					MenuScrollArrowSprites[proc->bottomArrowFrameIdx >> 3], proc->oam2Chr + proc->oam2Pal);
+			}
+		}
+
+		PutSpriteExt(4, proc->xBase, proc->yBase - 8, Sprite_08679590, proc->oam2Chr + proc->oam2Pal);
+		PutSpriteExt(4, proc->xBase, proc->yBase + proc->numSegments * 8, Sprite_08679598, proc->oam2Chr + proc->oam2Pal);
+	}
+
+	if (proc->prevSegment != proc->currentSegment) {
+		if (proc->prevSegment > proc->currentSegment)
+			proc->topArrowFrameIdx++;
+
+		if (proc->prevSegment < proc->currentSegment)
+			proc->bottomArrowFrameIdx++;
+
+		proc->prevSegment = proc->currentSegment;
+	}
+
+	proc->topArrowFrameIdx++;
+	proc->bottomArrowFrameIdx++;
+
+	if ((proc->topArrowFrameIdx >> 3) > 5)
+		proc->topArrowFrameIdx = 0;
+
+	if ((proc->bottomArrowFrameIdx >> 3) > 5)
+		proc->bottomArrowFrameIdx = 0;
+}
+
 ProcPtr StartMenuScrollBar(ProcPtr parent)
 {
 	return SpawnProc(ProcScr_menu_scroll, parent);

@@ -384,18 +384,10 @@ SECTIONS
         src/prepmenuitem.o(.text);
         src/prepscreenfx.o(.text);
         src/prepscreenfx2.o(.text);
-        src/prep_subitemscreen1.o(.text);
-        src/prep_subitemscreen_viewall.o(.text);
-        asm/prep_subitemscreen_viewall.o(.text);
-        src/prep_subitemscreen3.o(.text);
-        asm/prep_subitemscreen3.o(.text);
         src/prep_subitemscreen.o(.text);
         src/prep_subscreen_discard.o(.text);
-        src/prep_menuscrollbar1.o(.text);
-        asm/prep_menuscrollbar.o(.text);
         src/prep_menuscrollbar.o(.text);
         src/prep_080823A0.o(.text);
-        asm/prep_bgscroll.o(.text);
         src/prep_bgscroll.o(.text);
         src/prep_sallycir.o(.text);
         src/prep_utils.o(.text);
