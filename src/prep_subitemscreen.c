@@ -1392,8 +1392,9 @@ void PrepSubItem_SelLoop2(struct PrepSubItemProc *proc)
 						12);
 					break;
 				}
-			} else
+			} else {
 				func_fe6_0807D358(proc);
+			}
 
 			PutUiEntryHover(
 				proc->hand_disp_x * 14 + 2,
