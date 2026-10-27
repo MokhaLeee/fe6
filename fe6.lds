@@ -387,7 +387,6 @@ SECTIONS
         src/prep_subitemscreen1.o(.text);
         src/prep_subitemscreen_viewall.o(.text);
         src/prep_subitemscreen3.o(.text);
-        asm/prep_subitemscreen3.o(.text);
         src/prep_subitemscreen.o(.text);
         src/prep_subscreen_discard.o(.text);
         src/prep_menuscrollbar.o(.text);
