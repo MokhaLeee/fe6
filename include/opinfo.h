@@ -85,32 +85,53 @@ struct ProcOpInfoEnter {
 	PROC_HEADER;
 
 	/* 2A */ u16 timer;
-	/* 2C */ u16 unk_2C;
-	/* 2E */ u8 unk_2E;
-	/* 2F */ u8 char_count;
-	/* 30 */ u8 sprit_count;
+	/* 2C */ u16 x;
+	/* 2E */ u8 letter_count;
+	/* 2F */ u8 sprite_base;
+	/* 30 */ u8 class_index;
+	/* 34 */ ProcPtr letter_procs[10];
+	/* 5C */ ProcPtr icon_proc;
+	/* 60 */ struct ProcOpInfo *opinfo;
+};
+
+struct ProcOpInfoView {
+	PROC_HEADER;
+
+	/* 2A */ u16 timer;
+	/* 2C */ u16 sprite_base;
+	/* 2E */ u8 index;
+	/* 30 */ u16 x;
+};
+
+struct ProcOpInfoIcon {
+	PROC_HEADER;
+
+	/* 2A */ u16 timer;
+	/* 2C */ u8 class_index;
+	/* 2D */ u8 icon_count;
+	/* 2E */ u8 icon_bits;
 };
 
 void OpInfoEnter_Init(struct ProcOpInfoEnter *proc);
-// func_fe6_08094B28
-// OpInfoEnter_Loop_In
-// OpInfoEnter_Loop_Out
-// OpInfoEnter_OnEnd
-ProcPtr NewOpInfoEnter(struct ProcOpInfo *proc, int a);
-// OpInfoView_Init
-// OpInfoView_Loop_FadeIn
-// OpInfoView_Loop_Display
-// OpInfoView_Loop_FadeOut
-// NewOpInfoView
-// func_fe6_08094F08
-// OpInfoIcon_Init
-// func_fe6_08094F94
-// func_fe6_08095034
-// OpInfoIcon_Loop_FadeIn
-// OpInfoIcon_LoopA
-// OpInfoIcon_LoopB
-// OpInfoIcon_Loop_FadeOut
-// NewOpInfoIcon
+void func_fe6_08094B28(struct ProcOpInfoEnter *proc);
+void OpInfoEnter_Loop_In(struct ProcOpInfoEnter *proc);
+void OpInfoEnter_Loop_Out(struct ProcOpInfoEnter *proc);
+void OpInfoEnter_OnEnd(struct ProcOpInfoEnter *proc);
+ProcPtr NewOpInfoEnter(struct ProcOpInfo *parent, u8 class_index);
+void OpInfoView_Init(struct ProcOpInfoView *proc);
+void OpInfoView_Loop_FadeIn(struct ProcOpInfoView *proc);
+void OpInfoView_Loop_Display(struct ProcOpInfoView *proc);
+void OpInfoView_Loop_FadeOut(struct ProcOpInfoView *proc);
+ProcPtr NewOpInfoView(struct ProcOpInfoEnter *parent, u8 index);
+void func_fe6_08094F08(void);
+void OpInfoIcon_Init(struct ProcOpInfoIcon *proc);
+void func_fe6_08094F94(u8 len, u8 flag);
+void func_fe6_08095034(u8 fade, u8 count, u8 bits);
+void OpInfoIcon_Loop_FadeIn(struct ProcOpInfoIcon *proc);
+void OpInfoIcon_LoopA(struct ProcOpInfoIcon *proc);
+void OpInfoIcon_LoopB(struct ProcOpInfoIcon *proc);
+void OpInfoIcon_Loop_FadeOut(struct ProcOpInfoIcon *proc);
+ProcPtr NewOpInfoIcon(struct ProcOpInfoEnter *parent, u8 class_index);
 
 struct ProcClassDemoStatus;
 

@@ -420,7 +420,6 @@ SECTIONS
         src/worldmapfx.o(.text);
         src/monologue.o(.text);
         src/opinfo.o(.text);
-        asm/opinfo.o(.text);
         src/opinfo_classdemo.o(.text);
         asm/opinfo_classdemo.o(.text);
         src/opinfo_classdemo2.o(.text);
