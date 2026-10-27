@@ -395,7 +395,6 @@ SECTIONS
         asm/prep_menuscrollbar.o(.text);
         src/prep_menuscrollbar.o(.text);
         src/prep_080823A0.o(.text);
-        asm/prep_bgscroll.o(.text);
         src/prep_bgscroll.o(.text);
         src/prep_sallycir.o(.text);
         src/prep_utils.o(.text);
