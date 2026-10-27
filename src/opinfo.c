@@ -7,6 +7,9 @@
 #include "hardware.h"
 #include "savemenu.h"
 #include "gamecontroller.h"
+#include "unit.h"
+#include "util.h"
+#include "unknown_objects.h"
 #include "opinfo.h"
 
 EWRAM_OVERLAY(opinfo) u16 gOpInfoPalettes[0x200] = {};
@@ -235,32 +238,375 @@ void PutOpInfoViewLetter(u16 char_base, u8 char_index, int x, int y, u16 x_scale
 	);
 }
 
-#if 0
 void OpInfoEnter_Init(struct ProcOpInfoEnter *proc)
 {
-	int i, j;
-	const u16 *pr_sprites;
+	int i, count;
 
 	SetWinEnable(0, 0, 0);
 
 	proc->timer = 0;
 
-	if (proc->sprit_count == 0) {
-		proc->char_count = 0;
-		pr_sprites = Sprites_OpInfo_08690288;
+	if (proc->class_index == 0) {
+		proc->sprite_base = 0;
 	} else {
-		int count = 0;
+		count = 0;
+		i = 0;
 
-		pr_sprites = Sprites_OpInfo_08690288;
+		while (1) {
+			count++;
 
-		for (i = 0; i < proc->sprit_count; i++) {
-			for (j = 0; j < proc->char_count; j++) {
-				if (pr_sprites[++count] == NULL)
+			if (Sprites_OpInfo_08690288[count] == NULL) {
+				i++;
+
+				if (i == proc->class_index) {
+					proc->sprite_base = count + 1;
 					break;
+				}
 			}
 		}
+	}
 
-		proc->char_count = count + 1;
+	proc->letter_count = 0;
+
+	for (i = proc->sprite_base; Sprites_OpInfo_08690288[i] != NULL; i++)
+		proc->letter_count++;
+
+	if (proc->class_index > 0x13)
+		Decompress(Img_OpInfoViewLettersA, OBJ_VRAM0);
+	else
+		Decompress(Img_OpInfoViewLettersB, OBJ_VRAM0);
+
+	ApplyPalette(Pal_OpInfoViewLetters, 0x10);
+	ApplyPalette(Pal_OpInfoViewIcon, 0x10 + OBPAL_OFINFOICON_LINE);
+	ApplyPalette(Pal_OpInfoViewIcon, 0x10 + OBPAL_OFINFOICON);
+	Decompress(Img_OpInfoViewIcon, OBJ_VRAM0 + 0x6000);
+
+	for (i = 0; i < 10; i++)
+		proc->letter_procs[i] = NULL;
+
+	proc->x = (((DISPLAY_WIDTH - proc->letter_count * 28) >> 1) - 0x10) & 0x1FF;
+
+	proc->letter_procs[0] = NewOpInfoView(proc, 0);
+	proc->icon_proc = NewOpInfoIcon(proc, proc->class_index);
+}
+
+void func_fe6_08094B28(struct ProcOpInfoEnter *proc)
+{
+	SetBlendBrighten(0x10 - proc->timer / 2);
+	SetBlendBackdropA(1);
+
+	if (++proc->timer == 0x20) {
+		proc->timer = 0;
+		Proc_Break(proc);
 	}
 }
-#endif
+
+void OpInfoEnter_Loop_In(struct ProcOpInfoEnter *proc)
+{
+	if (proc->timer >= 0x60) {
+		Proc_Break(proc);
+		proc->timer = 0;
+		return;
+	}
+
+	if (proc->timer >= 0x10) {
+		int t = proc->timer - 0x10;
+
+		if ((t & 3) == 0 && (t / 4 + 1) < proc->letter_count)
+			proc->letter_procs[t / 4 + 1] = NewOpInfoView(proc, t / 4 + 1);
+	}
+
+	proc->timer++;
+}
+
+void OpInfoEnter_Loop_Out(struct ProcOpInfoEnter *proc)
+{
+	if (proc->timer == 20)
+		Proc_Goto(proc->icon_proc, 4);
+
+	if (proc->timer >= 80) {
+		Proc_Break(proc);
+		proc->timer = 0;
+		proc->class_index++;
+		return;
+	}
+
+	if ((u16) (proc->timer % 6) == 0 && (u16) (proc->timer / 6) < proc->letter_count)
+		Proc_Break(proc->letter_procs[(u16) (proc->timer / 6)]);
+
+	proc->timer++;
+}
+
+void OpInfoEnter_OnEnd(struct ProcOpInfoEnter *proc)
+{
+	int i;
+
+	for (i = 0; i < 8; i++) {
+		if (proc->letter_procs[i] != NULL)
+			Proc_End(proc->letter_procs[i]);
+	}
+
+	proc->opinfo->subproc1 = NULL;
+	proc->opinfo->mode = OPINFO_STATE_3;
+}
+
+ProcPtr NewOpInfoEnter(struct ProcOpInfo *parent, u8 class_index)
+{
+	int i;
+	struct ProcOpInfoEnter *proc;
+
+	proc = SpawnProc(ProcScr_OpInfoEnter, parent);
+	proc->opinfo = parent;
+	proc->class_index = class_index;
+
+	for (i = 0; i < 10; i++)
+		proc->letter_procs[i] = NULL;
+
+	proc->icon_proc = NULL;
+
+	return proc;
+}
+
+void OpInfoView_Init(struct ProcOpInfoView *proc)
+{
+	struct ProcOpInfoEnter *parent;
+
+	proc->timer = 0;
+
+	parent = proc->proc_parent;
+	proc->sprite_base = parent->sprite_base;
+	proc->x = (parent->x + proc->index * 28) & 0x1FF;
+}
+
+void OpInfoView_Loop_FadeIn(struct ProcOpInfoView *proc)
+{
+	int x, y;
+
+	if (proc->index == 0) {
+		int x0, y0, angle;
+		u16 scale;
+
+		x0 = (gSinLut[0x40 + 0x60] * 0x40) >> 12;
+		y0 = (gSinLut[0x60] * 0x18) >> 12;
+
+		angle = 0xC0 - proc->timer;
+		x = (gSinLut[0x40 + (angle & 0xFF)] * 0x40) >> 12;
+		y = (gSinLut[angle & 0xFF] * 0x18) >> 12;
+
+		scale = 0x200 - ((proc->timer << 8) / 0x60);
+
+		PutOpInfoViewLetter(proc->sprite_base, proc->index, ((proc->x + x) - x0) & 0x1FF, ((0x18 + y) - y0) & 0x1FF,
+			scale, scale, 8 - proc->timer * 8 / 0x60);
+
+		proc->timer += 4;
+
+		if (proc->timer == 0x60) {
+			proc->timer = 0;
+			Proc_Break(proc);
+		}
+	} else {
+		// FAKEMATCH: pinned registers and empty ++/-- ifs reproduce the original's dead timer copy and register choices.
+		register int timer asm("r1") = proc->timer;
+		int b = timer;
+		register int c asm("r2") = timer;
+		int t4;
+
+		asm("" : : "r"(c));
+		t4 = b / 16;
+		x = 0x10 - t4;
+		asm("" : : "r"(x));
+		y = x;
+
+		if (x) { ++x; --x; }
+
+		((void (*)(u16, u8, int, int, int, u16, u8)) PutOpInfoViewLetter)(proc->sprite_base, proc->index, proc->x - y,
+			({ register int k asm("r0") = 0x18; k; }) - y,
+			timer, 0x100, 0x10 - t4);
+
+		if (c) { ++c; --c; }
+
+		proc->timer += 0x10;
+
+		if (proc->timer == 0x100) {
+			proc->timer = 0;
+			Proc_Break(proc);
+		}
+	}
+}
+
+void OpInfoView_Loop_Display(struct ProcOpInfoView *proc)
+{
+	PutOpInfoViewLetter(proc->sprite_base, proc->index, proc->x, 0x18, 0x100, 0x100, 0);
+	proc->timer = 0;
+}
+
+void OpInfoView_Loop_FadeOut(struct ProcOpInfoView *proc)
+{
+	struct ProcOpInfoEnter *parent;
+	int timer = proc->timer;
+	int x_scale = 0x100 + timer;
+	int y_scale = 0x100 - timer;
+	int dx;
+
+	if (proc->x > 0xFF)
+		dx = -0x58 * ((timer * timer) >> 7) / 0x100;
+	else
+		dx = ((proc->x & 0xFF) - 0x58) * ((timer * timer) >> 7) / 0x100;
+
+	PutOpInfoViewLetter(proc->sprite_base, proc->index, proc->x + dx, 0x18, x_scale, y_scale, proc->timer * 0x10 / 0x100);
+
+	if (proc->timer == 0x100) {
+		parent = proc->proc_parent;
+		parent->letter_procs[proc->index] = NULL;
+		Proc_Break(proc);
+	}
+
+	proc->timer += 8;
+}
+
+ProcPtr NewOpInfoView(struct ProcOpInfoEnter *parent, u8 index)
+{
+	struct ProcOpInfoView *proc;
+
+	proc = SpawnProc(ProcScr_OpInfoView, parent);
+	proc->index = index;
+
+	return proc;
+}
+
+void func_fe6_08094F08(void)
+{
+	EnablePalSync();
+}
+
+void OpInfoIcon_Init(struct ProcOpInfoIcon *proc)
+{
+	int i;
+
+	proc->timer = 0;
+
+	for (i = 0; i < 0x10; i++)
+		gPal[0x100 + OBPAL_OFINFOICON * 0x10 + i] = 0;
+
+	proc->icon_bits = 0;
+	proc->icon_count = 0;
+
+	for (i = 0; i < 8; i++) {
+		if (GetJInfo(OpClassDemo_JidConfig[proc->class_index])->wexp[i] == 0)
+			continue;
+
+		proc->icon_bits |= 1 << i;
+		proc->icon_count++;
+	}
+
+	EnablePalSync();
+}
+
+void func_fe6_08094F94(u8 len, u8 flag)
+{
+	int i;
+	u16 oam2 = OAM2_PAL(OBPAL_OFINFOICON_LINE);
+
+	if (flag)
+		oam2 = OAM2_PAL(OBPAL_OFINFOICON);
+
+	PutSpriteExt(4, 0x74, 0x48, Sprite_OpInfo_086900F8, oam2);
+
+	for (i = 0; i < len; i++) {
+		if (i < len - 1) {
+			PutSpriteExt(4, 0x74 - i * 8, 0x48, Sprite_OpInfo_086900F8, oam2);
+			PutSpriteExt(4, 0x74 + i * 8, 0x48, Sprite_OpInfo_086900F8, oam2);
+		} else {
+			PutSpriteExt(4, 0x74 - i * 8, 0x48, Sprite_OpInfo_086900F0, oam2);
+			PutSpriteExt(4, 0x74 + i * 8, 0x48, Sprite_OpInfo_08690100, oam2);
+		}
+	}
+}
+
+void func_fe6_08095034(u8 fade, u8 count, u8 bits)
+{
+	int i, j;
+	u16 oam2 = OAM2_PAL(OBPAL_OFINFOICON_LINE);
+
+	if (fade != 0)
+		oam2 = OAM2_PAL(OBPAL_OFINFOICON);
+
+	for (i = 0; i < 0x10; i++) {
+		u16 color;
+
+		if (fade + i < 0x10)
+			color = fade + i;
+		else
+			color = 0xF;
+
+		gPal[0x100 + OBPAL_OFINFOICON * 0x10 + i] = gPal[0x100 + OBPAL_OFINFOICON_LINE * 0x10 + color];
+	}
+
+	EnablePalSync();
+
+	for (i = 0, j = 0; i < 8; i++) {
+		if ((bits >> i) & 1) {
+			PutSpriteExt(4, (0x88 + j * 0x20 - count * 0x20) & 0x1FF, 0x50, Sprites_OpInfo_086900BC[i], OAM2_PAL(OBPAL_OFINFOICON));
+			j++;
+		}
+	}
+
+	PutSpriteExt(4, 0x90, 0x50, Sprite_OpInfo_086900DC, oam2);
+}
+
+void OpInfoIcon_Loop_FadeIn(struct ProcOpInfoIcon *proc)
+{
+	if (++proc->timer < 0xE) {
+		func_fe6_08094F94(proc->timer, 0);
+	} else {
+		func_fe6_08094F94(0xE, 0);
+		proc->timer = 0;
+		Proc_Break(proc);
+	}
+}
+
+void OpInfoIcon_LoopA(struct ProcOpInfoIcon *proc)
+{
+	u8 fade;
+
+	proc->timer++;
+
+	if (proc->timer > 0x10) {
+		fade = 0;
+		Proc_Break(proc);
+	} else {
+		fade = 0x10 - proc->timer;
+	}
+
+	func_fe6_08094F94(0xE, 0);
+	func_fe6_08095034(fade, proc->icon_count, proc->icon_bits);
+}
+
+void OpInfoIcon_LoopB(struct ProcOpInfoIcon *proc)
+{
+	func_fe6_08094F94(0xE, 0);
+	func_fe6_08095034(0, proc->icon_count, proc->icon_bits);
+	proc->timer = 0;
+}
+
+void OpInfoIcon_Loop_FadeOut(struct ProcOpInfoIcon *proc)
+{
+	proc->timer++;
+
+	if ((proc->timer >> 1) > 0x10) {
+		Proc_Break(proc);
+	} else {
+		func_fe6_08095034(proc->timer >> 1, proc->icon_count, proc->icon_bits);
+		func_fe6_08094F94(0xE, 1);
+	}
+}
+
+ProcPtr NewOpInfoIcon(struct ProcOpInfoEnter *parent, u8 class_index)
+{
+	struct ProcOpInfoIcon *proc;
+
+	proc = SpawnProc(ProcScr_OpInfoIcon, parent);
+	proc->class_index = class_index;
+
+	return proc;
+}
