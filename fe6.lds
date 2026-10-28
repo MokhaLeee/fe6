@@ -154,6 +154,7 @@ SECTIONS
         . = 0x0203C900 - __ewram_overlay_end; gSioTexts = .;
         . = 0x0203C920 - __ewram_overlay_end; gKeyInputSequenceBuffer = .;
         . = 0x0203C940 - __ewram_overlay_end; gKeyInputSequenceTimer = .;
+        . = 0x0203C944 - __ewram_overlay_end; gUnk_Sio_0203C944 = .;
         . = 0x0203C980 - __ewram_overlay_end; gSioXmapOption = .;
         . = 0x0203C984 - __ewram_overlay_end; gSioBmSt = .;
         . = 0x0203C993 - __ewram_overlay_end; Sio_Unk_0203C993 = .;
@@ -322,6 +323,7 @@ SECTIONS
         src/ai_battle.o(.text);
         src/ai_080326C4.o(.text);
         src/sio_core.o(.text);
+        src/sio.o(.text);
         asm/code-sio.o(.text);
         src/ui.o(.text);
         src/menu.o(.text);
@@ -495,6 +497,8 @@ SECTIONS
         . = ALIGN(4); src/ai_080326C4.o(.rodata);
         . = ALIGN(4); src/sio_core.o(.rodata);
         . = ALIGN(4); data/sio_data.o(.rodata);
+        . = ALIGN(4); src/sio.o(.rodata);
+        . = ALIGN(4); data/sio_rodata2.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); src/ui_img.o(.rodata);
         . = ALIGN(4); src/banim_efxquake_data.o(.rodata);
