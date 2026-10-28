@@ -23,4 +23,4 @@ Some functions are only matching thanks to "hacks" such as register variables. T
 | `eventinfo.c` | `StartAvailableTileEvent` | `O2` | somehow theres a couple `nop`s in here.
 | `statusscreen.c` | `StatusScreenSprites_Loop`| `O2` | register asm("r4")
 | `minimap.c` | `Minimap_ApplyViewportFlashColor` | `O2` | register asm("r3")
-| `opinfo.c` | `OpInfoView_Loop_FadeIn` | `O2` | register asm vars and empty `++`/`--` ifs in the else branch (as in fe7)
+| `opinfo.c` | `OpInfoView_Loop_FadeIn` | `O2` | redundant sign check on the scaled timer in the else branch

@@ -405,25 +405,18 @@ void OpInfoView_Loop_FadeIn(struct ProcOpInfoView *proc)
 			Proc_Break(proc);
 		}
 	} else {
-		// FAKEMATCH: pinned registers and empty ++/-- ifs reproduce the original's dead timer copy and register choices.
-		register int timer asm("r1") = proc->timer;
-		int b = timer;
-		register int c asm("r2") = timer;
-		int t4;
+		// FAKEMATCH: the first sign check is redundant, but the original needs two.
+		if (proc->timer * 0x10 / 0x100 <= 0)
+			y = 0x10;
 
-		asm("" : : "r"(c));
-		t4 = b / 16;
-		x = 0x10 - t4;
-		asm("" : : "r"(x));
-		y = x;
+		x = 0x10 - proc->timer * 0x10 / 0x100;
 
-		if (x) { ++x; --x; }
+		if (proc->timer * 0x10 / 0x100 < 0)
+			y = 0x10;
+		else
+			y = x;
 
-		((void (*)(u16, u8, int, int, int, u16, u8)) PutOpInfoViewLetter)(proc->sprite_base, proc->index, proc->x - y,
-			({ register int k asm("r0") = 0x18; k; }) - y,
-			timer, 0x100, 0x10 - t4);
-
-		if (c) { ++c; --c; }
+		PutOpInfoViewLetter(proc->sprite_base, proc->index, proc->x - y, 0x18 - y, proc->timer, 0x100, 0x10 - proc->timer * 0x10 / 0x100);
 
 		proc->timer += 0x10;
 
