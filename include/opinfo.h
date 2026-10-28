@@ -234,7 +234,7 @@ extern CONST_DATA u8 OpClassDemo_JidConfig[35];
 struct ClassDisplayFont {
 	u16 *sprite;
 	char ch;
-	u8 x_start, width, c;
+	i8 x_start, width, c;
 };
 
 extern CONST_DATA struct ClassDisplayFont gClassDisplayFont1[];

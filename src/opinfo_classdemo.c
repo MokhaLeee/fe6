@@ -635,7 +635,60 @@ asm("\
 #endif
 
 const char Str_OpInfo_Mag[] = TEXT("魔力", "Mag");
-const u8 gUnk_0835C829[0xC] = { 2, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 4 };
+
+void ClassDemoStatus_Loop(struct ProcClassDemoStatus *proc)
+{
+	u8 unused[] = { 2, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 4 };
+	int i, x;
+
+	for (i = 0; i < 6; i++) {
+		u8 status = proc->gauge->unit_status[i];
+
+		for (x = 0; x < status / 4; x++)
+			PutSpriteExt(13, 0x30 + x * 8, 0x10 + i * 0x10, Sprites_OpInfo_0869006C[3], OAM2_PAL(5));
+
+		if (status % 4)
+			PutSpriteExt(13, 0x30 + x * 8, 0x10 + i * 0x10, Sprites_OpInfo_0869006C[status % 4 - 1], OAM2_PAL(5));
+	}
+
+	x = (0x78 - proc->unk_42) / 2 + proc->unk_43;
+
+	for (i = 0; i < 14 && proc->ch_pos[i] != 0xFF; i++) {
+		PutSpriteExt(4, x - gClassDisplayFont1[proc->ch_pos[i]].x_start, 8 - gClassDisplayFont1[proc->ch_pos[i]].c,
+			gClassDisplayFont1[proc->ch_pos[i]].sprite, OAM2_PAL(5));
+		PutSpriteExt(4, x - gClassDisplayFont1[proc->ch_pos[i]].x_start - 2, 6 - gClassDisplayFont1[proc->ch_pos[i]].c,
+			gClassDisplayFont1[proc->ch_pos[i]].sprite, OAM2_PAL(4));
+
+		x += gClassDisplayFont1[proc->ch_pos[i]].width - gClassDisplayFont1[proc->ch_pos[i]].x_start;
+	}
+
+	if (proc->timer < 0xFF)
+		proc->timer++;
+}
+
+void func_fe6_08095D28(void)
+{
+}
+
+ProcPtr StartClassDemoStatus(ProcPtr parent)
+{
+	return SpawnProc(ProcScr_ClassDemoStatus, parent);
+}
+
+void SetOpClassDemoStatusPos(struct ProcClassDemoStatus *proc, int pos)
+{
+	proc->unk_43 = pos;
+}
+
+void func_fe6_08095D48(ProcPtr unused)
+{
+	unk_opinfo_0200FF54[0] = 0x80;
+	unk_opinfo_0200FF54[1] = 2;
+}
+
+void func_fe6_08095D58(void)
+{
+}
 
 u16 CONST_DATA Sprite_ClassDemoFont_0[] = {
 	1,
