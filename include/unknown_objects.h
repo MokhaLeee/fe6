@@ -481,8 +481,8 @@ extern u16 const Img_OpAnim_083747A4[];
 extern u16 const Pal_OpAnim_08375888[];
 extern u16 const Pal_OpAnim_083758A8[];
 extern u16 const SpriteAnim_OpAnim_08375908[];
-// extern const ??? gUnk_08375ADC
-// extern const ??? gUnk_08375B64
+extern u16 const gUnk_08375ADC[];
+extern u16 const gUnk_08375B64[];
 extern u16 const Tsa_OpAnim_08375B84[];
 // extern const ??? gUnk_08376B70
 extern u16 const Pal_Lz_OpAnim_Fog[];
