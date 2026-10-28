@@ -84,7 +84,7 @@ void func_fe6_0808BD6C(struct ProcSoundRoomConfirm *proc);
 void func_fe6_0808BD78(struct ProcSoundRoomConfirm *proc);
 void func_fe6_0808BDF8(struct ProcSoundRoomConfirm *proc);
 void func_fe6_0808C084(struct ProcSoundRoomSprite *proc);
-void func_fe6_0808C098(struct ProcSoundRoom *proc);
+void func_fe6_0808C098(struct ProcSoundRoomSprite *proc);
 
 int CountTotalSoundRoomSongs(void);
 

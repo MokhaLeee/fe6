@@ -760,3 +760,64 @@ void func_fe6_0808C084(struct ProcSoundRoomSprite *proc)
 	proc->arrow_anim_l = 0;
 	proc->arrow_anim_r = 0;
 }
+
+void func_fe6_0808C098(struct ProcSoundRoomSprite *proc)
+{
+	int i, j, y;
+
+	PutSprite(11, 0x14, 0x4D, Sprite_0868A9E8, OAM2_PAL(4));
+	PutSprite(11, 0x14, 0x61, Sprite_0868A9F0, OAM2_PAL(4));
+	PutSprite(11, 0x14, 0x75, Sprite_0868A9F8, OAM2_PAL(4));
+
+	PutSpriteExt(11, 0x1A, 0x1A, Sprite_0868A988, OAM2_PAL(5) + (proc->arrow_anim_l >> 3) % 6);
+	PutSpriteExt(11, OAM1_HFLIP + 0xCE, 0x1A, Sprite_0868A988, OAM2_PAL(5) + (proc->arrow_anim_r >> 3) % 6);
+
+	if (proc->parent->unk_2e > 0x30) {
+		SetObjAffine(0,
+			Div(+COS_Q12(0) * 16, 0x100),
+			Div(-SIN_Q12(0) * 16, proc->parent->unk_2e),
+			Div(+SIN_Q12(0) * 16, 0x100),
+			Div(+COS_Q12(0) * 16, proc->parent->unk_2e));
+
+		if (proc->parent->unk_41 != 0) {
+			y = 0x18;
+		} else {
+			y = 0x10;
+
+			for (i = 0; i < 5; i++)
+				PutSpriteExt(4, 0x20 + i * 0x20, OAM0_AFFINE_ENABLE + 0x10 + y, Sprite_32x16, gSoundRoomText.oam2[0] + 0x40 + i * 4 + OAM2_PAL(1));
+
+			PutSpriteExt(4, 0x20 + i * 0x20, OAM0_AFFINE_ENABLE + 0x10 + y, Sprite_16x16, gSoundRoomText.oam2[0] + 0x40 + i * 4 + OAM2_PAL(1));
+		}
+
+		for (i = 0; i < 5; i++)
+			PutSpriteExt(4, 0x20 + i * 0x20, OAM0_AFFINE_ENABLE + y, Sprite_32x16, gSoundRoomText.oam2[0] + i * 4 + OAM2_PAL(1));
+
+		PutSpriteExt(4, 0x20 + i * 0x20, OAM0_AFFINE_ENABLE + y, Sprite_16x16, gSoundRoomText.oam2[0] + i * 4 + OAM2_PAL(1));
+	}
+
+	for (y = 0; y < 3; y++) {
+		for (j = 0; j < 2; j++)
+			PutSpriteExt(4, 0x28 + (y >> 1) * 0x10 + j * 0x20, 0x4C + y * 20, Sprite_32x16, gSoundRoomText.oam2[0] + 0x80 + j * 4 + y * 0x40);
+	}
+
+	proc->arrow_anim_l++;
+	proc->arrow_anim_r++;
+
+	if (proc->parent->unk_38)
+		proc->arrow_anim_l++;
+
+	if (proc->parent->unk_39)
+		proc->arrow_anim_r++;
+
+	if ((proc->arrow_anim_l >> 3) > 5)
+		proc->arrow_anim_l -= 0x30;
+
+	if ((proc->arrow_anim_r >> 3) > 5)
+		proc->arrow_anim_r -= 0x30;
+}
+
+ProcPtr NewProc_0868AAA8(struct ProcSoundRoom *proc)
+{
+	return SpawnProc(ProcScr_0868AAA8, proc);
+}
