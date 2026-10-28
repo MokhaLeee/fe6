@@ -391,8 +391,6 @@ SECTIONS
         src/prep_bgscroll.o(.text);
         src/prep_sallycir.o(.text);
         src/prep_utils.o(.text);
-        src/secretscreen_08082E74.o(.text);
-        asm/secretscreen.o(.text);
         src/secretscreen.o(.text);
         src/save_core.o(.text);
         src/save_stats.o(.text);
@@ -813,7 +811,7 @@ SECTIONS
         . = ALIGN(4); src/prep_bgscroll.o(.data);
         . = ALIGN(4); src/prep_sallycir.o(.data);
         . = ALIGN(4); src/prep_utils.o(.data);
-        . = ALIGN(4); asm/secretscreen.o(.data);
+        . = ALIGN(4); src/secretscreen.o(.data);
         . = ALIGN(4); src/chapterunits.o(.data);
         . = ALIGN(4); src/chapterinfo/map_changes.o(.rodata);
         . = ALIGN(4); src/save_core.o(.data);
