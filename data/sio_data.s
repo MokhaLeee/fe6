@@ -1,19 +1,5 @@
 	.include "asm_proc.inc"
 
-	.section .rodata
-
-	.global gTacticianTextConf
-gTacticianTextConf: @ 0810DBCC
-	.incbin "fe6-base.gba", 0x10DBCC, (0x10EDA4 - 0x10DBCC) @ length: 11D8
-
-	.global gUnk_Sio_0810EDA4
-gUnk_Sio_0810EDA4: @ 0810EDA4
-	.incbin "fe6-base.gba", 0x10EDA4, (0x10EFD2 - 0x10EDA4) @ length: 022E
-
-	.global gUnk_Sio_0810EFD2
-gUnk_Sio_0810EFD2: @ 0810EFD2
-	.incbin "fe6-base.gba", 0x10EFD2, (0x10F068 - 0x10EFD2) @ length: 0096
-
 	.data
 
 	.global ProcScr_SIOCON

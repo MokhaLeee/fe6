@@ -1,4 +1,5 @@
 #include "prelude.h"
+#include "sio_core.h"
 #include "oam.h"
 #include "irq.h"
 #include "oam.h"
@@ -104,7 +105,7 @@ IWRAM_DATA u8 Pad_Common_030044CC[0x4] = {};
 IWRAM_DATA int gUnk_Sio_030044D0 = 0;
 IWRAM_DATA int gUnk_Sio_030044D4 = 0;
 IWRAM_DATA u8 Pad_Common_030044D8[0x8] = {};
-IWRAM_DATA u8 gSioBuf_030044E0[0x88] = {};
+IWRAM_DATA struct SioData gSioBuf_030044E0 = {};
 IWRAM_DATA u32 gSioStateId = 0;
 IWRAM_DATA struct SioMessage gSioMsgBuf = {};
 
