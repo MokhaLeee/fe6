@@ -116,7 +116,8 @@ void StatusScreenSprites_Loop(struct StatusScreenProc * proc)
     if ((gPlaySt.flags & PLAY_FLAG_COMPLETE) != 0)
     {
         // D=
-        register int oam2 asm("r4") = OAM2_CHR(0x280 + 10) + OAM2_PAL(3) + (GetGameTime() / 8) % 6;
+        int oam2 = OAM2_CHR(0x280 + 10) + OAM2_PAL(3);
+        oam2 += (GetGameTime() / 8) % 6;
 
         if (gStatusScreenSt.page == 0)
         {

@@ -1316,37 +1316,12 @@ void AtMenu_OnSubmenuEnd(struct PrepMenuProc *proc)
 		break;
 	}
 
-#if NONMATCHING
-	switch (proc->sub2_action) {
-	case PREP_SUB2ACT_STATSCREEN:
-		Proc_Goto(proc, 0xF);
-		break;
-
-	case PREP_SUB2ACT_SAVEMENU:
-	case PREP_SUB2ACT_8:
-	case PREP_SUB2ACT_9:
-	case PREP_SUB2ACT_ARMORY:
-	default:
-		Proc_Goto(proc, 0xC);
-		break;
-
-	case PREP_SUB2ACT_NONE:
-	case PREP_SUB2ACT_1:
-	case PREP_SUB2ACT_TRADE_ITEM:
-	case PREP_SUB2ACT_CONVOY:
-	case PREP_SUB2ACT_DISCARD_ITEM:
-	case PREP_SUB2ACT_CHECK_ALL_ITEM:
-		Proc_Break(proc);
-		break;
-	}
-#else
 	if (proc->sub2_action == PREP_SUB2ACT_STATSCREEN)
 		Proc_Goto(proc, 0xF);
 	else if (proc->sub2_action > PREP_SUB2ACT_STATSCREEN)
 		Proc_Goto(proc, 0xC);
 	else
 		Proc_Break(proc);
-#endif
 
 	proc->sub2_action = PREP_SUB2ACT_NONE;
 }

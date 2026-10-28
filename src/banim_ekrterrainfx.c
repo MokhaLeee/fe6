@@ -8,16 +8,14 @@
 
 void NewEkrTerrainfx(struct EkrTerrainfxDesc *desc)
 {
-    register const struct BattleAnimTerrain *terrain1;
-    register const struct BattleAnimTerrain *terrain2;
+	const struct BattleAnimTerrain *terrain1;
+	const struct BattleAnimTerrain *terrain2;
 	u8 *img_buf1, *img_buf2;
 	u16 *pal1, *pal2;
 	i16 oam2_pal;
 	u16 oam2;
-	u8 *vram;
-    _UNUSED int tmp1;
 
-    terrain1 = &gBanimTerrainTable[desc->terrain_l];
+	terrain1 = &gBanimTerrainTable[desc->terrain_l];
 	terrain2 = &gBanimTerrainTable[desc->terrain_r];
 
 	if (desc->terrain_l != -1)
@@ -50,21 +48,8 @@ void NewEkrTerrainfx(struct EkrTerrainfxDesc *desc)
 	case BG_1:
 	case BG_2:
 	case BG_3:
-#if NONMATCHING
-		vram = (void *)((desc->chr_l + 0x40) * CHR_SIZE + BG_VRAM);
-		RegisterDataMove(img_buf1, desc->vram_offset + vram, 0x800);
-
-		vram = (void *)((desc->chr_r) * CHR_SIZE + BG_VRAM);
-		RegisterDataMove(img_buf2, desc->vram_offset + vram, 0x800);
-#else
-		vram = (void *)((desc->chr_l + 0x40) * CHR_SIZE + BG_VRAM);
-		tmp1 = desc->vram_offset;
-		RegisterDataMove(img_buf1, (void *)(tmp1 = tmp1 + (int)vram), 0x800);
-
-		vram = (void *)((desc->chr_r) * CHR_SIZE + BG_VRAM);
-		tmp1 = desc->vram_offset;
-		RegisterDataMove(img_buf2, (void *)(tmp1 = tmp1 + (int)vram), 0x800);
-#endif
+		RegisterDataMove(img_buf1, (void *)(BG_VRAM + desc->vram_offset + (desc->chr_l + 0x40) * CHR_SIZE), 0x800);
+		RegisterDataMove(img_buf2, (void *)(BG_VRAM + desc->vram_offset + (desc->chr_r) * CHR_SIZE), 0x800);
 
 		CpuFastCopy(pal1, gPal + PAL_OFFSET(desc->pal_l), 0x20);
 		CpuFastCopy(pal2, gPal + PAL_OFFSET(desc->pal_r), 0x20);

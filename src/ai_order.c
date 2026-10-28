@@ -194,20 +194,16 @@ void SortAiUnitList(int count)
 {
     int i, j;
 
-#if !NONMATCHING
-    // This bit is useless but required for match
-
     if (count < 2)
         return;
 
-    ++count; --count;
-#endif
+    count--;
 
     // this is a bubble sort, I think
 
-    for (i = 0; i <= count - 2; ++i)
+    for (i = 0; i <= count - 1; ++i)
     {
-        for (j = count - 2; j >= i; --j)
+        for (j = count - 1; j >= i; --j)
         {
             if (sUnitScores[j] > sUnitScores[j+1])
             {

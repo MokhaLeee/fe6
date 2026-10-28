@@ -280,7 +280,7 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 item)
     proc->anim = anim;
     anim->oam2 = OAM2_PAL(0x2) + OAM2_LAYER(0x1) + OAM2_CHR(0x0800 / 0x20);;
 
-    anim->xPosition = x_bg1 + ({ x_cursor + 0x8; }) + x1;
+    anim->xPosition = 8 + x_bg1 + x_cursor + x1;
     anim->yPosition = 0x38;
 
     EnablePalSync();

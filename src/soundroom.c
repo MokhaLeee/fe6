@@ -533,13 +533,7 @@ void Soundroom_Init(struct ProcSoundRoom *proc)
 
 void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
 {
-	register struct KeySt *keyst asm("r2");
-	register u16 keys asm("r1");
-
-	keyst = gKeySt;
-	keys = keyst->repeated;
-
-	if (keys & KEY_DPAD_LEFT) {
+	if (gKeySt->repeated & KEY_DPAD_LEFT) {
 		Proc_Goto(proc, PL_SOUNDROOM_SLIDE);
 		PlaySe(SONG_67);
 
@@ -550,7 +544,7 @@ void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
 
 		proc->unk_38 = 1;
 	} else {
-		if (KEY_DPAD_RIGHT & keys) {
+		if (gKeySt->repeated & KEY_DPAD_RIGHT) {
 			Proc_Goto(proc, PL_SOUNDROOM_SLIDE);
 			PlaySe(SONG_67);
 
@@ -561,15 +555,14 @@ void func_fe6_0808BBCC(struct ProcSoundRoom *proc)
 
 			proc->unk_39 = 1;
 		} else if (proc->unk_40 == 0) {
-			keys = keyst->pressed;
 
-			if (KEY_BUTTON_B & keys) {
+			if (gKeySt->pressed & KEY_BUTTON_B) {
 				FadeBgmOut(-1);
 				proc->unk_29 = 1;
-			} else if (KEY_BUTTON_A & keys) {
+			} else if (gKeySt->pressed & KEY_BUTTON_A) {
 				NewProc_0868AA80(proc);
 				proc->unk_40 = 1;
-			} else if (KEY_BUTTON_START & keys) {
+			} else if (gKeySt->pressed & KEY_BUTTON_START) {
 				Proc_Goto(proc, PL_SOUNDROOM_EXIT);
 
 				if (IsBgmPlaying())
@@ -681,51 +674,31 @@ void func_fe6_0808BE70(void)
 
 void func_fe6_0808BF00(struct ProcSoundRoom *proc)
 {
-	register struct SoundRoomText *srtext asm("r6");
-	register u32 cur_index asm("r8");
-	register u32 info_off asm("sb");
-	register int *name1 asm("r5");
-	register struct Text *title asm("r4");
 	int width;
 	int height;
+	u32 cur_index = proc->cur_index;
 
-	cur_index = proc->cur_index;
-	srtext = &gSoundRoomText;
-
-	SetTextFont(&srtext->font);
+	SetTextFont(&gSoundRoomText.font);
 	SetTextFontGlyphs(TEXT_GLYPHS_TALK);
 
-	info_off = cur_index * sizeof(struct SoundRoomInfo);
-	name1 = (int *)&gSoundRoomInfo;
-	name1 = (int *)((char *)name1 + 4);
-	name1 = (int *)((char *)name1 + info_off);
+	func_fe6_08071C00(DecodeMsg(gSoundRoomInfo[cur_index].msg_name1), &width, &height);
 
-	func_fe6_08071C00(DecodeMsg(name1[0]), &width, &height);
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[0], 0);
+	Text_SetCursor(&gSoundRoomText.texts[0], (0xb0 - width) / 2);
+	Text_SetColor(&gSoundRoomText.texts[0], 0);
+	Text_DrawString(&gSoundRoomText.texts[0], DecodeMsg(gSoundRoomInfo[cur_index].msg_name1));
 
-	title = &srtext->texts[0];
-	SpriteText_DrawBackgroundExt(title, 0);
-	Text_SetCursor(title, (0xb0 - width) / 2);
-	Text_SetColor(title, 0);
-	Text_DrawString(title, DecodeMsg(name1[0]));
-
-	srtext = (struct SoundRoomText *)((char *)srtext + 0x20);
-	SpriteText_DrawBackgroundExt((struct Text *)srtext, 0);
+	SpriteText_DrawBackgroundExt(&gSoundRoomText.texts[1], 0);
 
 	if (cur_index == 0) {
 		proc->unk_41 = 1;
 	} else {
-		register int *name2 asm("r4");
-
 		proc->unk_41 = 0;
 
-		name2 = (int *)&gSoundRoomInfo;
-		name2 = (int *)((char *)name2 + 8);
-		name2 = (int *)((char *)name2 + info_off);
-
-		func_fe6_08071C00(DecodeMsg(name2[0]), &width, &height);
-		Text_SetCursor((struct Text *)srtext, 0xa8 - width);
-		Text_SetColor((struct Text *)srtext, 0);
-		Text_DrawString((struct Text *)srtext, DecodeMsg(name2[0]));
+		func_fe6_08071C00(DecodeMsg(gSoundRoomInfo[cur_index].msg_name2), &width, &height);
+		Text_SetCursor(&gSoundRoomText.texts[1], 0xa8 - width);
+		Text_SetColor(&gSoundRoomText.texts[1], 0);
+		Text_DrawString(&gSoundRoomText.texts[1], DecodeMsg(gSoundRoomInfo[cur_index].msg_name2));
 	}
 
 	SetTextFont(NULL);

@@ -6518,7 +6518,7 @@ void NewEfxForblazeRST(int duration)
 void EfxForblazeRST_Loop(struct ProcEfxMagic *proc)
 {
 	u32 i;
-	register u16 *buf;
+	u16 *buf;
 
 	if (gEkrBg1ScrollFlip == 0)
 		buf = gpBg2ScrollOffsetTable2;
@@ -8335,7 +8335,7 @@ void NewEfxApocalypseOBJ3(struct Anim *anim, int duration)
 
 void EfxApocalypseOBJ3_Loop(struct ProcEfxApocalypseOBJ3 *proc)
 {
-	register int *dura_arr asm("r3");
+	int *dura_arr;
 	int idx;
 	int dura;
 	int lo;
@@ -9136,8 +9136,6 @@ void EfxFenrir_Loop(struct ProcEfx *proc)
 {
 	struct Anim *anim;
 	int duration;
-	int frame;
-	u8 *disp;
 
 	anim = GetAnimAnotherSide(proc->anim);
 	duration = EfxGetCamMovDuration();
@@ -9150,22 +9148,11 @@ void EfxFenrir_Loop(struct ProcEfx *proc)
 	if (proc->timer == duration + 1) {
 		NewEfxFenrirBG(anim, 0x64);
 		NewEfxFenrirBGCOL(anim, 0x64);
-		frame = 0x100;
-		NewEfxRestRST(anim, 0x64, 2, frame, 1);
+		NewEfxRestRST(anim, 0x64, 2, 0x100, 1);
 		NewEfxRestWINH_(anim, 0x69, EfxRestWINH_DefaultHblank);
 
-		disp = (u8 *)&gDispIo;
-		disp[0x3C] = (disp[0x3C] & 0x3F) | 0x40;
-		{
-			register u8 *p asm("r0") = disp + 0x44;
-			u8 cb;
-
-			*p++ = 0;
-			cb = 0x10;
-			*p++ = cb;
-			*p = 0;
-			NewEfxALPHA(anim, 0, 0xF, 0, cb, 0);
-		}
+		SetBlendAlpha(0, 0x10);
+		NewEfxALPHA(anim, 0, 0xF, 0, 0x10, 0);
 		NewEfxALPHA(anim, 0x46, 0xF, 0x10, 0, 0);
 		PlaySFX(SONG_130, 0x100, 0x78, 0);
 	} else if (proc->timer == duration + 0x28) {
@@ -9565,23 +9552,11 @@ void NewEfxFenrirOBJ2Chiri(struct Anim *anim, int idx)
 void EfxFenrirOBJ2Chiri_Loop(struct ProcEfxOBJ *proc)
 {
 	struct Anim *anim2 = proc->anim2;
-	register int ret asm("r0");
-	register int angle asm("r2");
-	register int x_acc asm("r3");
-	register i16 *lut asm("r4");
-	int y;
+	int ret = Interpolate(INTERPOLATE_LINEAR, 0, 300, proc->timer, proc->terminator);
+	int x = ret * gSinLut[proc->unk44];
+	int y = ret * gSinLut[proc->unk44 + 0x40];
 
-	ret = Interpolate(INTERPOLATE_LINEAR, 0, 300,
-			   proc->timer, proc->terminator);
-
-	lut = gSinLut;
-	angle = proc->unk44;
-	x_acc = ret * lut[angle];
-
-	angle = angle + 0x40;
-	y = ret * lut[angle];
-
-	anim2->xPosition = proc->unk32 + (x_acc >> 12);
+	anim2->xPosition = proc->unk32 + (x >> 12);
 	anim2->yPosition = proc->unk3A + (y >> 12);
 
 	proc->timer++;
@@ -10160,7 +10135,7 @@ void EfxLiveBGCOL_Loop(struct ProcEfxBGCOL *proc)
 
 void NewEfxLiveALPHA(struct Anim *anim, int timer, int duration, int type)
 {
-	register struct ProcEfxALPHA *proc asm("r0");
+	struct ProcEfxALPHA *proc;
 
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxLiveALPHA, PROC_TREE_3);
@@ -10977,18 +10952,17 @@ void EfxRestBG_Loop(struct ProcEfxBG *proc)
 
 void NewEfxRestOBJ(struct Anim *anim)
 {
-	register struct Anim *a asm("r4") = anim;
-	register struct ProcEfxOBJ *proc asm("r5");
-	register struct BaSprite *anim2 asm("r6");
+	struct ProcEfxOBJ *proc;
+	struct BaSprite *anim2;
 
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxRestOBJ, PROC_TREE_3);
-	proc->anim = a;
-	anim2 = EfxCreateFrontAnim(a, AnimScr_EfxRestOBJ, AnimScr_EfxRestOBJ,
+	proc->anim = anim;
+	anim2 = EfxCreateFrontAnim(anim, AnimScr_EfxRestOBJ, AnimScr_EfxRestOBJ,
 				   AnimScr_EfxRestOBJ, AnimScr_EfxRestOBJ);
 	proc->anim2 = anim2;
 
-	if (GetAnimPosition(a) == 0)
+	if (GetAnimPosition(anim) == 0)
 		anim2->xPosition -= 8;
 	else
 		anim2->xPosition += 8;
@@ -11428,8 +11402,8 @@ void NewEfxSleepOBJ(struct Anim *anim)
 
 void NewEfxSleepOBJ2(struct Anim *anim)
 {
-	register struct ProcEfxOBJ *proc asm("r4");
-	register struct BaSprite *sprite asm("r5");
+	struct ProcEfxOBJ *proc;
+	struct BaSprite *sprite;
 
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxSleepOBJ2, PROC_TREE_3);
@@ -11828,8 +11802,7 @@ void EfxBerserkCLONE_OnEnd(void)
 
 void NewEfxBerserkOBJ(struct Anim *anim)
 {
-	register struct Anim *a asm("r5") = anim;
-	register struct ProcEfxOBJ *proc asm("r4");
+	struct ProcEfxOBJ *proc;
 	struct BaSprite *anim2;
 	struct Anim *arg;
 	const AnimScr *scr;
@@ -11837,10 +11810,9 @@ void NewEfxBerserkOBJ(struct Anim *anim)
 
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxBerserkOBJ, PROC_TREE_3);
-	proc->anim = a;
-	GetAnimAnotherSide(a);
+	proc->anim = anim;
+	GetAnimAnotherSide(anim);
 	scr = AnimScr_Common;
-	__asm__ volatile("" ::: "memory");
 	arg = proc->anim;
 	anim2 = EfxCreateFrontAnim(arg, scr, scr, scr, scr);
 	proc->anim2 = anim2;
@@ -12157,17 +12129,15 @@ void EfxMshieldBG_Loop(struct ProcEfxBG *proc)
 
 void NewEfxMshieldOBJ(struct Anim *anim)
 {
-	register struct Anim *a asm("r5") = anim;
-	register struct ProcEfxOBJ *proc asm("r4");
+	struct ProcEfxOBJ *proc;
 	struct BaSprite *anim2;
 	const AnimScr *scr;
 
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxMshieldOBJ, PROC_TREE_3);
-	proc->anim = a;
+	proc->anim = anim;
 	scr = AnimScr_EfxMshieldOBJ;
-	__asm__ volatile("" ::: "memory");
-	anim2 = EfxCreateFrontAnim(a, scr, scr, scr, scr);
+	anim2 = EfxCreateFrontAnim(anim, scr, scr, scr, scr);
 	proc->anim2 = anim2;
 	SpellFx_RegisterObjPal(Pal_EfxMshieldOBJ, 0x20);
 	SpellFx_RegisterObjGfx(Img_EfxHammarneOBJ, 0x80 << 4);
@@ -12175,17 +12145,15 @@ void NewEfxMshieldOBJ(struct Anim *anim)
 
 void NewEfxMshieldOBJ2(struct Anim *anim)
 {
-	register struct Anim *a asm("r5") = anim;
-	register struct ProcEfxOBJ *proc asm("r4");
+	struct ProcEfxOBJ *proc;
 	struct BaSprite *anim2;
 	const AnimScr *scr;
 
 	gEfxBgSemaphore++;
 	proc = SpawnProc(ProcScr_EfxMshieldOBJ2, PROC_TREE_3);
-	proc->anim = a;
+	proc->anim = anim;
 	scr = AnimScr_EfxMshieldOBJ2;
-	__asm__ volatile("" ::: "memory");
-	anim2 = EfxCreateFrontAnim(a, scr, scr, scr, scr);
+	anim2 = EfxCreateFrontAnim(anim, scr, scr, scr, scr);
 	proc->anim2 = anim2;
 }
 

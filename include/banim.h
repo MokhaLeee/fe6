@@ -3873,8 +3873,8 @@ extern u16 const Tsa_EkrFaefx9[];
 extern u16 const Tsa_EkrFaefx10[];
 extern u16 const Tsa_EkrFaefx11[];
 extern u16 const Tsa_EkrFaefx12[];
-extern const s16 gAnimSpriteRotScalePosX[];
-extern const s16 gAnimSpriteRotScalePosY[];
+extern const s16 gAnimSpriteRotScalePosX[][4];
+extern const s16 gAnimSpriteRotScalePosY[][4];
 // extern ??? EkrLvupMsgsStr
 // extern ??? EkrLvupMsgsMag
 // extern ??? sEfxLvupPartsPos

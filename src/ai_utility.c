@@ -1156,7 +1156,7 @@ void func_fe6_08030968(struct Unit * unit, u16 item)
 {
     if (GetItemAttributes(item) & ITEM_ATTR_STAFF)
     {
-        int register flag asm("r4") = AI_UNIT_FLAG_1;
+        int flag = AI_UNIT_FLAG_1;
 
         switch (GetItemIid(item))
         {
