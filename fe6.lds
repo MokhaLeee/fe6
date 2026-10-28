@@ -140,10 +140,9 @@ SECTIONS
         . = ALIGN(4); src/ai_phase.o(ewram_data);
         . = ALIGN(4); src/ai_decide.o(ewram_data);
         . = ALIGN(4); src/ai_080326C4.o(ewram_data);
+        . = ALIGN(4); src/sio_core.o(ewram_data);
 
         /* SIO */
-        . = 0x0203B218 - __ewram_overlay_end; gSioOutgoing = .;
-        . = 0x0203B618 - __ewram_overlay_end; gSioIncoming = .;
         . = 0x0203C618 - __ewram_overlay_end; gLinkArenaSt = .;
         . = 0x0203C67C - __ewram_overlay_end; gSioText_0203C67C = .;
         . = 0x0203C6A4 - __ewram_overlay_end; gSioText_0203C6A4 = .;
@@ -322,6 +321,7 @@ SECTIONS
         src/ai_script.o(.text);
         src/ai_battle.o(.text);
         src/ai_080326C4.o(.text);
+        src/sio_core.o(.text);
         asm/code-sio.o(.text);
         src/ui.o(.text);
         src/menu.o(.text);
@@ -493,7 +493,7 @@ SECTIONS
         . = ALIGN(4); src/ai_data.o(.rodata);
         . = ALIGN(4); src/ai_battle.o(.rodata);
         . = ALIGN(4); src/ai_080326C4.o(.rodata);
-        . = ALIGN(4); src/code_sio.o(.rodata);
+        . = ALIGN(4); src/sio_core.o(.rodata);
         . = ALIGN(4); data/sio_data.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); src/ui_img.o(.rodata);
@@ -630,6 +630,7 @@ SECTIONS
         . = ALIGN(4); src/ai_data.o(.data);
         . = ALIGN(4); src/ai_battle.o(.data);
         . = ALIGN(4); src/ai_080326C4.o(.data);
+        . = ALIGN(4); src/sio_core.o(.data);
         . = ALIGN(4); data/sio_data.o(.data);
         . = ALIGN(4); src/ui.o(.data);
         . = ALIGN(4); src/menu.o(.data);

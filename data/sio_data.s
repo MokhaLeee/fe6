@@ -284,18 +284,6 @@ Sprite_LinkArena_ChoiceBanner: @ 0810F6A4
 
 	.data
 
-	.global gSioSt
-gSioSt: @ 085C98F4
-	.incbin "fe6-base.gba", 0x5C98F4, (0x5C98F8 - 0x5C98F4) @ length: 0004
-
-	.global gUnk_Sio_085C98F8
-gUnk_Sio_085C98F8: @ 085C98F8
-	.incbin "fe6-base.gba", 0x5C98F8, (0x5C9918 - 0x5C98F8) @ length: 0020
-
-	.global gUnk_Sio_085C9918
-gUnk_Sio_085C9918: @ 085C9918
-	.incbin "fe6-base.gba", 0x5C9918, (0x5C9940 - 0x5C9918) @ length: 0028
-
 	.global ProcScr_SIOCON
 ProcScr_SIOCON: @ 085C9940
 	.incbin "fe6-base.gba", 0x5C9940, (0x5C9968 - 0x5C9940) @ length: 0028
