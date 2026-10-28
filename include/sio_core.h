@@ -2,6 +2,7 @@
 
 #include "prelude.h"
 #include "proc.h"
+#include "text.h"
 
 #define SIO_MAX_PACKET 0x80
 
@@ -122,7 +123,17 @@ struct SioSt
 
 struct LinkArenaSt
 {
-    /* 00 */ STRUCT_PAD(0x00, 0x9C);
+    /* 00 */ u8 unk_00;
+    /* 01 */ u8 unk_01;
+    /* 02 */ STRUCT_PAD(0x02, 0x03);
+    /* 03 */ u8 unk_03;
+    /* 04 */ u8 unk_04;
+    /* 05 */ u8 unk_05;
+    /* 06 */ u8 unk_06[4];
+    /* 0A */ u8 unk_0A;
+    /* 0B */ u8 unk_0B;
+    /* 0C */ struct Text texts[11];
+    /* 64 */ struct Text unk_64[7];
     /* 9C */ u8 linking_status[4];
     /* A0 */ u8 unk_A0;
     /* A1 */ u8 unk_A1[4][15];

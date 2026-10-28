@@ -167,6 +167,7 @@ extern struct Text gUnk_0200D6A4;
 extern struct Text gUnk_0200D6AC;
 
 extern struct ProcScr CONST_DATA ProcScr_UnitListScreenSprites[];
+extern struct ProcScr CONST_DATA ProcScr_UnitListScreen_PrepMenu[];
 
 enum
 {
