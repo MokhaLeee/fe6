@@ -21,7 +21,7 @@ void OnHBlank_0806A040(void);
 void StartManimFrameGradientScanlineEffect(u16 arg_0, u16 arg_1, u16 color_2, u16 color_3);
 void func_fe6_0806A218(u16 yStart, u16 yEnd, u16 arg_2, u16 arg_3);
 void func_fe6_0806A270(int x, int y, int a, int b, u8 const *unk);
-// PrepareSineWaveScanlineBuf
+void PrepareSineWaveScanlineBuf(u16 *buf, fi16 phase, fi16 amplitude, fi16 frequence);
 // PrepareSineWaveScanlineBufExt
 void SwapScanlineBufs(void);
 void InitScanlineBuf(u16 *buf);
