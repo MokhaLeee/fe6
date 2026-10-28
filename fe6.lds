@@ -421,7 +421,6 @@ SECTIONS
         src/arena_ui.o(.text);
         src/suspend_ui.o(.text);
         src/opanim.o(.text);
-        asm/opanim.o(.text);
         src/opanim6.o(.text);
         src/titlescreen.o(.text);
 
