@@ -213,24 +213,34 @@ void OpAnimThunderStorm_PutPal5(struct ProcOpAnim6 *proc);
 void OpAnim6_PutIdunnGfx(struct ProcOpAnim6 *proc);
 void func_fe6_0809AD3C(struct ProcOpAnim6 *proc);
 void func_fe6_0809AD64(struct ProcOpAnim6 *proc);
-// func_fe6_0809AD88
-// func_fe6_0809ADCC
-// func_fe6_0809AE60
-// func_fe6_0809AEA0
-// func_fe6_0809AEC4
-// func_fe6_0809AED4
-// func_fe6_0809AF30
-// func_fe6_0809AF74
-// func_fe6_0809AF84
-// func_fe6_0809AFE4
-// func_fe6_0809B01C
-// func_fe6_0809B024
-// func_fe6_0809B094
-// func_fe6_0809B0A4
-// func_fe6_0809B0E8
-// func_fe6_0809B188
-// func_fe6_0809B220
-// func_fe6_0809B280
+
+struct ProcOpAnim5 {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x64);
+
+	i16 unk_64;
+	i16 unk_66;
+};
+
+void func_fe6_0809AD88(ProcPtr proc);
+void func_fe6_0809ADCC(ProcPtr proc);
+void func_fe6_0809AE60(ProcPtr proc);
+void func_fe6_0809AEA0(void);
+void func_fe6_0809AEC4(void);
+void func_fe6_0809AED4(void);
+void func_fe6_0809AF30(ProcPtr proc);
+void func_fe6_0809AF74(struct ProcOpAnim5 *proc);
+void func_fe6_0809AF84(struct ProcOpAnim5 *proc);
+void func_fe6_0809AFE4(struct ProcOpAnim5 *proc);
+void func_fe6_0809B01C(struct ProcOpAnim5 *proc);
+void func_fe6_0809B024(struct ProcOpAnim5 *proc);
+void func_fe6_0809B094(struct ProcOpAnim5 *proc);
+void func_fe6_0809B0A4(struct ProcOpAnim5 *proc);
+void func_fe6_0809B0E8(void);
+void func_fe6_0809B188(void);
+void func_fe6_0809B220(u16 *tm, u16 tileref, int width, int height);
+void func_fe6_0809B280(ProcPtr proc);
 
 extern CONST_DATA struct ProcScr ProcScr_TitleScreenHandler[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnim[];
@@ -240,6 +250,9 @@ extern CONST_DATA struct ProcScr ProcScr_OpAnimTimer[];
 extern CONST_DATA char OpAnimTextRef[];
 extern CONST_DATA u8 OpAnimTextLenRef[];
 extern CONST_DATA int Msgs_OpAnim_08691738[];
+extern CONST_DATA int gUnk_086914F0;
+extern CONST_DATA int gUnk_086914F4;
+extern CONST_DATA int gUnk_086914F8;
 
 struct OpAnimSubtitleConf {
 	u16 unk_00;
