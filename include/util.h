@@ -79,7 +79,7 @@ void StartFastLockingFadeFromBlack(ProcPtr parent);
 void StartSlowLockingFadeToWhite(ProcPtr parent);
 void StartSlowLockingFadeFromWhite(ProcPtr parent);
 // func_fe6_08014778
-// func_fe6_08014790
+void func_fe6_08014790(ProcPtr parent);
 // func_fe6_080147A8
 // func_fe6_080147C0
 // func_fe6_080147D8
@@ -102,8 +102,8 @@ void FadeInBlackSpeed40(ProcPtr parent);
 // func_fe6_08014948
 // func_fe6_0801495C
 // func_fe6_08014970
-// func_fe6_08014984
-// func_fe6_08014998
+void func_fe6_08014984(ProcPtr parent);
+void func_fe6_08014998(ProcPtr parent);
 void WhileFadeExists(ProcPtr proc);
 // func_fe6_080149CC
 void StartFadeCore(int kind, int speed, ProcPtr parent, Func end_callback);
