@@ -146,6 +146,7 @@ SECTIONS
         . = 0x0203C618 - __ewram_overlay_end; gLinkArenaSt = .;
         . = 0x0203C67C - __ewram_overlay_end; gSioText_0203C67C = .;
         . = 0x0203C6A4 - __ewram_overlay_end; gSioText_0203C6A4 = .;
+        . = 0x0203C6B9 - __ewram_overlay_end; gSioTeamNames = .;
         . = 0x0203C704 - __ewram_overlay_end; gSioSaveConfig = .;
         . = 0x0203C708 - __ewram_overlay_end; gSioText_0203C708 = .;
         . = 0x0203C758 - __ewram_overlay_end; gSioFont_0203C758 = .;

@@ -159,6 +159,7 @@ extern int gUnk_Sio_030044D4;
 extern u8 gUnk_Sio_03004580[SIO_MAX_PACKET];
 
 extern struct LinkArenaSt gLinkArenaSt;
+extern char gSioTeamNames[][15];
 
 extern struct ProcScr CONST_DATA ProcScr_SioBigSend[];
 extern struct ProcScr CONST_DATA ProcScr_SioBigReceive[];

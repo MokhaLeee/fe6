@@ -2017,9 +2017,9 @@ void func_fe6_080392F4(struct SioBatProc * proc)
 		FadeBgmOut(1);
 }
 
-#if NONMATCHING
 void func_fe6_08039388(void)
 {
+	struct SioSaveConf * conf = &gSioSaveConfig;
 	int i, j;
 
 	u8 player_counts[] = { 3, 7, 15 };
@@ -2030,7 +2030,9 @@ void func_fe6_08039388(void)
 		int id = i * 0x40 + 1;
 
 		struct Unit * unit = GetUnit(id);
-		ReadMultiArenaSaveTeam(gLinkArenaSt.unk_06[i], unit, gLinkArenaSt.unk_A1[i]);
+		ReadMultiArenaSaveTeam(gLinkArenaSt.unk_06[i], unit, gSioTeamNames[i]);
+
+		gLinkArenaSt.unk_05 = gLinkArenaSt.unk_05;
 
 		for (j = 0; j < 5; j++) {
 			unit = GetUnit(id + j);
@@ -2039,19 +2041,17 @@ void func_fe6_08039388(void)
 			SetUnitStatus(unit, UNIT_STATUS_NONE);
 			unit->rescue = 0;
 
-			if (!gSioSaveConfig.unk_2)
+			if (!conf->unk_2)
 				SioSetNormalWeapons(unit);
 			else
 				SioSetUniqueWeapons(unit);
 
-			if (j == 0) {
-				u16 * fid = gSioBmSt.unk_24 + i;
-				*fid = GetUnitChibiId(unit);
-			}
+			if (j == 0)
+				gSioBmSt.unk_24[i] = GetUnitChibiId(unit);
 
 			unit->id = id + j;
 
-			if (i != 0 && !gSioSaveConfig.unk_0)
+			if (i != 0 && !conf->unk_0)
 				unit->flags = UNIT_FLAG_CONCEALED;
 		}
 	}
@@ -2064,152 +2064,6 @@ void func_fe6_08039388(void)
 
 	gLinkArenaSt.unk_A0 = gLinkArenaSt.unk_05 + 2;
 }
-#else
-u8 const gUnk_Sio_0810F294[] = { 3, 7, 15 };
-
-NAKEDFUNC
-void func_fe6_08039388(void)
-{
-asm("\
-	.syntax unified\n\
-	push {r4, r5, r6, r7, lr}\n\
-	mov r7, sl\n\
-	mov r6, sb\n\
-	mov r5, r8\n\
-	push {r5, r6, r7}\n\
-	sub sp, #4\n\
-	ldr r1, .L0803940C @ =gUnk_Sio_0810F294\n\
-	mov r0, sp\n\
-	movs r2, #3\n\
-	bl memcpy\n\
-	bl InitUnits\n\
-	movs r6, #0\n\
-	ldr r1, .L08039410 @ =gLinkArenaSt\n\
-	ldrb r0, [r1, #5]\n\
-	adds r0, #2\n\
-	cmp r6, r0\n\
-	bge .L08039460\n\
-	mov sb, r1\n\
-.L080393B0:\n\
-	lsls r4, r6, #6\n\
-	adds r4, #1\n\
-	adds r0, r4, #0\n\
-	bl GetUnit\n\
-	adds r5, r0, #0\n\
-	mov r0, sb\n\
-	adds r0, #6\n\
-	adds r0, r6, r0\n\
-	ldrb r0, [r0]\n\
-	lsls r2, r6, #4\n\
-	subs r2, r2, r6\n\
-	ldr r1, .L08039414 @ =0x0203C6B9\n\
-	adds r2, r2, r1\n\
-	adds r1, r5, #0\n\
-	bl ReadMultiArenaSaveTeam\n\
-	movs r7, #0\n\
-	adds r2, r6, #1\n\
-	mov sl, r2\n\
-	lsls r0, r6, #1\n\
-	ldr r1, .L08039418 @ =0x0203C9A8\n\
-	adds r0, r0, r1\n\
-	mov r8, r0\n\
-.L080393E0:\n\
-	adds r0, r4, #0\n\
-	bl GetUnit\n\
-	adds r5, r0, #0\n\
-	movs r2, #0\n\
-	strb r2, [r5, #9]\n\
-	movs r1, #0\n\
-	bl SetUnitStatus\n\
-	movs r0, #0\n\
-	strb r0, [r5, #0x19]\n\
-	movs r0, #4\n\
-	ldr r1, .L0803941C @ =gSioSaveConfig\n\
-	ldrb r1, [r1]\n\
-	ands r0, r1\n\
-	cmp r0, #0\n\
-	bne .L08039420\n\
-	adds r0, r5, #0\n\
-	bl SioSetNormalWeapons\n\
-	b .L08039426\n\
-	.align 2, 0\n\
-.L0803940C: .4byte gUnk_Sio_0810F294\n\
-.L08039410: .4byte gLinkArenaSt\n\
-.L08039414: .4byte 0x0203C6B9\n\
-.L08039418: .4byte 0x0203C9A8\n\
-.L0803941C: .4byte gSioSaveConfig\n\
-.L08039420:\n\
-	adds r0, r5, #0\n\
-	bl SioSetUniqueWeapons\n\
-.L08039426:\n\
-	cmp r7, #0\n\
-	bne .L08039434\n\
-	adds r0, r5, #0\n\
-	bl GetUnitChibiId\n\
-	mov r2, r8\n\
-	strh r0, [r2]\n\
-.L08039434:\n\
-	strb r4, [r5, #0xb]\n\
-	cmp r6, #0\n\
-	beq .L0803944C\n\
-	movs r0, #1\n\
-	ldr r1, .L08039498 @ =gSioSaveConfig\n\
-	ldrb r1, [r1]\n\
-	ands r0, r1\n\
-	cmp r0, #0\n\
-	bne .L0803944C\n\
-	movs r0, #0x80\n\
-	lsls r0, r0, #2\n\
-	strh r0, [r5, #0xc]\n\
-.L0803944C:\n\
-	adds r4, #1\n\
-	adds r7, #1\n\
-	cmp r7, #4\n\
-	ble .L080393E0\n\
-	mov r6, sl\n\
-	mov r2, sb\n\
-	ldrb r0, [r2, #5]\n\
-	adds r0, #2\n\
-	cmp r6, r0\n\
-	blt .L080393B0\n\
-.L08039460:\n\
-	ldr r0, .L0803949C @ =gSioBmSt\n\
-	movs r1, #0\n\
-	strb r1, [r0]\n\
-	ldr r2, .L080394A0 @ =gSioSt\n\
-	ldr r0, [r2]\n\
-	strb r1, [r0, #6]\n\
-	ldr r3, [r2]\n\
-	ldr r1, .L080394A4 @ =gLinkArenaSt\n\
-	ldrb r0, [r1, #5]\n\
-	add r0, sp\n\
-	ldrb r0, [r0]\n\
-	strb r0, [r3, #9]\n\
-	ldr r2, [r2]\n\
-	ldrb r0, [r1, #5]\n\
-	adds r0, #2\n\
-	strb r0, [r2, #7]\n\
-	ldrb r0, [r1, #5]\n\
-	adds r0, #2\n\
-	adds r1, #0xa0\n\
-	strb r0, [r1]\n\
-	add sp, #4\n\
-	pop {r3, r4, r5}\n\
-	mov r8, r3\n\
-	mov sb, r4\n\
-	mov sl, r5\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-.L08039498: .4byte gSioSaveConfig\n\
-.L0803949C: .4byte gSioBmSt\n\
-.L080394A0: .4byte gSioSt\n\
-.L080394A4: .4byte gLinkArenaSt\n\
-	.syntax divided\n\
-");
-}
-#endif
 
 void NewSIOMAIN2(void)
 {
