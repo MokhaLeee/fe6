@@ -331,24 +331,6 @@ extern CONST_DATA struct ProcScr ProcScr_OpAnimTimer[];
 extern CONST_DATA char OpAnimTextRef[];
 extern CONST_DATA u8 OpAnimTextLenRef[];
 extern CONST_DATA int Msgs_OpAnim_08691738[];
-extern CONST_DATA int gUnk_086914A4;
-extern CONST_DATA int gUnk_086914A8;
-extern CONST_DATA int gUnk_086914AC;
-extern CONST_DATA int gUnk_086914B0;
-extern CONST_DATA int gUnk_086914B4;
-extern CONST_DATA int gUnk_086914B8;
-extern CONST_DATA int gUnk_086914BC;
-extern CONST_DATA int gUnk_086914C0;
-extern CONST_DATA int gUnk_086914C4;
-extern CONST_DATA int gUnk_086914C8;
-extern CONST_DATA int gUnk_086914CC;
-extern CONST_DATA int gUnk_086914D0;
-extern CONST_DATA int gUnk_086914D4;
-extern CONST_DATA int gUnk_086914D8;
-extern CONST_DATA int gUnk_086914DC;
-extern CONST_DATA int gUnk_086914F0;
-extern CONST_DATA int gUnk_086914F4;
-extern CONST_DATA int gUnk_086914F8;
 
 struct OpAnimSubtitleConf {
 	u16 unk_00;
