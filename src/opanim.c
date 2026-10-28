@@ -4,17 +4,23 @@
 #include "event.h"
 #include "sound.h"
 #include "sprite.h"
+#include "spriteanim.h"
+#include "armfunc.h"
+#include "scanline.h"
 #include "util.h"
 #include "msg.h"
 #include "oam.h"
 #include "titlescreen.h"
 #include "gamecontroller.h"
+#include "banim.h"
+#include "unknown_objects.h"
 #include "constants/songs.h"
 #include "constants/msg.h"
 #include "opanim.h"
 
 EWRAM_OVERLAY(opanim) u8 OpAnimGlyphBuffer[0x2800] = {};
 EWRAM_OVERLAY(opanim) int OpAnimGlyphIndex = 0;
+EWRAM_OVERLAY(opanim) u8 gOpAnimBgTmBuf[0x2000] = {};
 
 CONST_DATA struct ProcScr ProcScr_TitleScreenHandler[] = {
 	PROC_START_CHILD_LOCKING(ProcScr_TitleScreen),
@@ -816,4 +822,328 @@ void func_fe6_08099784(ProcPtr proc)
 void func_fe6_08099794(struct Proc *proc)
 {
 	proc->timer1 = 0;
+}
+
+void func_fe6_0809979C(struct Proc *proc)
+{
+	if (proc->timer1 < 200)
+		proc->timer1++;
+	else
+		Proc_Break(proc);
+
+	SetBlendAlpha(Interpolate(0, 0, gUnk_0869149C, proc->timer1, 200), 0x10);
+}
+
+void func_fe6_0809980C(struct ProcOpAnimBgScroll *proc)
+{
+	int i;
+
+	for (i = 0; i < 4; i++)
+		proc->bg_off[i] = 0;
+
+	proc->timer = 0;
+}
+
+void func_fe6_08099824(struct ProcOpAnimBgScroll *proc)
+{
+	int i;
+
+	for (i = 0; i < 4; i++) {
+		proc->bg_off[i] += gUnk_08380F4C[i];
+		func_fe6_0809992C(i, proc->bg_off[i] >> 8);
+		SetBgOffset(i, proc->bg_off[i] >> 8, 0);
+	}
+}
+
+void func_fe6_08099868(struct ProcOpAnimBgScroll *proc)
+{
+	int i;
+	int timer = proc->timer++;
+
+	for (i = 0; i < 4; i++) {
+		proc->bg_off[i] += Interpolate(0, gUnk_08380F4C[i], 0x200, timer, 60);
+		func_fe6_0809992C(i, proc->bg_off[i] >> 8);
+		SetBgOffset(i, proc->bg_off[i] >> 8, 0);
+	}
+}
+
+void func_fe6_080998D4(const u16 *tsa, u16 *tm, int a, int b)
+{
+	Decompress(tsa, gBuf);
+	PutTmLinear((u16 *)gBuf, tm, 0x800, a);
+	PutTmLinear((u16 *)gBuf + 0x400, (u16 *)&gOpAnimBgTmBuf[b * 0x800], 0x800, a);
+}
+
+void func_fe6_0809992C(int bg, int x)
+{
+	int i;
+	u16 *dst, *src;
+	int col = (x / 8 - 1) & 0x1F;
+
+	if (x > 8) {
+		dst = GetTmOffsetById(bg, col, 0);
+		src = (u16 *)&gOpAnimBgTmBuf[bg * 0x800 + col * 2];
+
+		for (i = 0; i < 32; i++) {
+			*dst = *src;
+			dst += 0x20;
+			src += 0x20;
+		}
+
+		EnableBgSyncById(bg);
+	}
+}
+
+void func_fe6_0809997C(ProcPtr proc)
+{
+	if (bool_opanim_03005284) {
+		Proc_End(proc);
+		return;
+	}
+
+	func_fe6_08099CCC();
+	Decompress(Img_OpAnim_0836A9AC, (u8 *)BG_VRAM + GetBgChrOffset(BG_0));
+	Decompress(Img_OpAnim_0836EEFC, gBg0Tm);
+	Decompress(Tsa_OpAnim_0836F610, gBuf);
+	ApplyPaletteExt(gBuf, 0, 0x200);
+	gPal[0] = 0;
+	Decompress(Img_OpAnim_083747A4, OBJ_VRAM0);
+	ApplyPaletteExt(Pal_OpAnim_08375888, 0x200, 0x20);
+	gPal[0] = 0;
+	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+	OpAnim_SetWin0Layers(1, 0, 1, 0, 1);
+}
+
+void func_fe6_08099A2C(ProcPtr proc)
+{
+	SetBlendAlpha(0x10, 6);
+	SetBlendTargetA(1, 1, 0, 0, 0);
+	SetBlendTargetB(0, 0, 0, 0, 1);
+	OpAnim_SetupGlyph(2);
+}
+
+void func_fe6_08099A84(struct ProcOpAnimSprite *proc)
+{
+	EndSpriteAnim(proc->anim);
+}
+
+void func_fe6_08099A90(struct ProcOpAnimSprite *proc)
+{
+	SetBlackPal(0x10);
+	SetBlackPal(0x11);
+	SetBlackPal(0x12);
+	SetBlackPal(0x13);
+
+	proc->unk_64 = 0;
+
+	proc->anim = StartSpriteAnim(SpriteAnim_OpAnim_08375908, 13);
+	proc->anim->oam2 = 0xC00;
+}
+
+void func_fe6_08099AD0(struct ProcOpAnimSprite *proc)
+{
+	if (proc->unk_64 == 2)
+		StartPalFade(Pal_OpAnim_083758A8, 0x11, gUnk_086914A0, proc);
+
+	StartPalFade(Pal_OpAnim_08375888, proc->unk_64 + 0x10, gUnk_086914A0, proc);
+	proc->unk_64++;
+}
+
+void func_fe6_08099B18(struct ProcOpAnimSprite *proc)
+{
+	DisplaySpriteAnim(proc->anim, 0xB4 - func_fe6_08099BCC(), 0x10);
+}
+
+void func_fe6_08099B34(struct ProcOpAnim5 *proc)
+{
+	proc->unk_64 = 0;
+	proc->unk_66 = 0;
+}
+
+void func_fe6_08099B44(struct ProcOpAnim5 *proc)
+{
+	proc->unk_64 += 0x18;
+	func_fe6_08099BA8(proc->unk_64 >> 8);
+}
+
+void func_fe6_08099B5C(struct ProcOpAnim5 *proc)
+{
+	proc->unk_64 += Interpolate(0, 0x100, 0x18, proc->unk_66++, 30);
+	func_fe6_08099BA8(proc->unk_64 >> 8);
+
+	if (proc->unk_66 >= 30)
+		Proc_Break(proc);
+}
+
+void func_fe6_08099BA8(int offset)
+{
+	SetBgOffset(BG_0, offset, 0);
+	SetBgOffset(BG_2, offset, 0);
+}
+
+int func_fe6_08099BCC(void)
+{
+	struct ProcOpAnim5 *proc = FindProc(ProcScr_OpAnim_08691B20);
+
+	return proc->unk_64 >> 8;
+}
+
+void func_fe6_08099BE4(void)
+{
+	InitBgs(BgConf_OpAnim_08691B38);
+	DisableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+
+	gDispIo.disp_ct.mode = 0;
+	SetDispEnable(1, 1, 0, 1, 1);
+	SetWinEnable(0, 0, 0);
+	SetBlendNone();
+
+	gDispIo.bg0_ct.priority = 0;
+	gDispIo.bg1_ct.priority = 1;
+	gDispIo.bg2_ct.priority = 2;
+	gDispIo.bg3_ct.priority = 3;
+
+	SetBlendAlpha(0x10, 0x10);
+	SetBlendTargetA(1, 0, 0, 0, 0);
+	SetBlendTargetB(0, 1, 1, 1, 0);
+}
+
+void func_fe6_08099CCC(void)
+{
+	InitBgs(BgConf_OpAnim_08691B50);
+	DisableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+
+	gDispIo.disp_ct.mode = 0;
+	SetDispEnable(1, 0, 1, 0, 1);
+	SetWinEnable(0, 0, 0);
+	SetBlendNone();
+}
+
+void func_fe6_08099D3C(ProcPtr proc)
+{
+	if (bool_opanim_03005284) {
+		Proc_End(proc);
+		return;
+	}
+
+	OpAnim6_ResetBG();
+
+	gDispIo.bg0_ct.priority = 0;
+	gDispIo.bg1_ct.priority = 3;
+	gDispIo.bg2_ct.priority = 0;
+	gDispIo.bg3_ct.priority = 0;
+
+	SetDispEnable(0, 0, 0, 0, 1);
+}
+
+void func_fe6_08099DA4(ProcPtr proc)
+{
+	OpAnim6_ResetBG();
+
+	gDispIo.bg0_ct.priority = 0;
+	gDispIo.bg1_ct.priority = 3;
+	gDispIo.bg2_ct.priority = 0;
+	gDispIo.bg3_ct.priority = 0;
+
+	SetDispEnable(0, 0, 0, 0, 1);
+
+	Decompress(Img1_EfxForblazeBG2, (u8 *)BG_VRAM + 0x20 + GetBgChrOffset(BG_1));
+	Decompress(Tsa1_EfxForblazeBG2, gBuf);
+	func_fe6_08014F70(gBg1Tm, 0, 1, 1, 0x20, 0x13, (u16 *)gBuf, 0);
+	OpAnim_SetWin0Layers(1, 1, 0, 0, 1);
+}
+
+void func_fe6_08099E50(ProcPtr proc)
+{
+	if (bool_opanim_03005284) {
+		Proc_End(proc);
+		return;
+	}
+
+	Decompress(gUnk_08378F54, (u8 *)BG_VRAM + 0x20 + GetBgChrOffset(BG_0));
+	Decompress(gUnk_08379DCC, gBuf);
+	TmApplyTsa(gBg0Tm, gBuf, 1);
+	Decompress(gUnk_08379F8C, OBJ_VRAM0 + 0x800);
+}
+
+void func_fe6_08099EC0(ProcPtr proc)
+{
+	SetBlendAlpha(0xE, 0x10);
+	SetBlendTargetA(1, 0, 0, 0, 0);
+	SetBlendTargetB(0, 1, 0, 0, 1);
+	SetBlendBackdropB(1);
+	SetDispEnable(1, 1, 0, 0, 1);
+
+	OpAnim_SetupGlyph(1);
+	EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
+
+	ApplyPaletteExt(gUnk_08379D0C + 0x10, 0x20, 0x20);
+	gPal[0] = 0;
+	ApplyPaletteExt(gUnk_08379D0C, 0, 0x20);
+	gPal[0] = 0;
+	SetBlackPal(0x10);
+
+	InitScanlineEffect();
+	SetOnHBlankA(OnHBlank_0806A040);
+	SpawnProc(ProcScr_OpAnim_08691CC0, proc);
+}
+
+void func_fe6_08099F98(void)
+{
+}
+
+void func_fe6_08099F9C(struct ProcOpAnim4 *proc)
+{
+	EndSpriteAnim(proc->anim);
+}
+
+void func_fe6_08099FA8(struct ProcOpAnim4 *proc)
+{
+	proc->anim = StartSpriteAnim(SpriteAnim_OpAnim_0837AAE8, 2);
+	proc->anim->oam2 = 0x440;
+	proc->y = 0xC8;
+	proc->timer = 0;
+}
+
+void func_fe6_08099FD0(struct ProcOpAnim4 *proc)
+{
+	if (proc->timer <= gUnk_086914E0)
+		proc->y = Interpolate(0, 0xC8, 0x80, proc->timer++, gUnk_086914E0);
+
+	DisplaySpriteAnim(proc->anim, 0x78, proc->y);
+}
+
+void func_fe6_0809A014(struct ProcOpAnim4 *proc)
+{
+	proc->unk_64 = 0;
+	StartPalFade(gUnk_0837AAC8, 0x10, 0x104, proc);
+}
+
+void func_fe6_0809A034(struct ProcOpAnim4 *proc)
+{
+	proc->unk_64++;
+	func_fe6_0809A0A8(proc);
+}
+
+void func_fe6_0809A048(struct ProcOpAnim4 *proc)
+{
+	proc->unk_64++;
+	func_fe6_0809A068(proc);
+	func_fe6_0809A0A8(proc);
+}
+
+void func_fe6_0809A068(struct ProcOpAnim4 *proc)
+{
+	int idx = (proc->unk_64 >> 2) % 6;
+
+	ApplyPaletteExt(gUnk_0837AA68 + gUnk_08380F54[idx] * 0x10, 0x200, 0x20);
+	gPal[0] = 0;
+}
+
+void func_fe6_0809A0A8(struct ProcOpAnim4 *proc)
+{
+	int idx = (proc->unk_64 >> 3) & 7;
+
+	ApplyPaletteExt(gUnk_08379D0C + gUnk_08691C78[idx] * 0x10, 0, 0x20);
+	gPal[0] = 0;
 }

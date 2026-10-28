@@ -14,6 +14,7 @@ extern IWRAM_DATA int gOpAnimStep[8];
 
 extern EWRAM_OVERLAY(opanim) u8 OpAnimGlyphBuffer[0x2800];
 extern EWRAM_OVERLAY(opanim) int OpAnimGlyphIndex;
+extern EWRAM_OVERLAY(opanim) u8 gOpAnimBgTmBuf[0x2000];
 
 void StartOpAnim_unused(void);
 void OpAnimfxTerminator_Loop(ProcPtr proc);
@@ -121,45 +122,98 @@ void OpAnimGlyphFallIn_Init(struct ProcOpAnimGlyphFallIn *proc);
 void OpAnimGlyphFallIn_Loop(struct ProcOpAnimGlyphFallIn *proc);
 void func_fe6_08099580(const u32 *src, u32 *dst, int index);
 void OpAnimTextPutGlyph(const void *src, void *dst, int index);
-// func_fe6_08099644
-// OpAnim1_Init
-// func_fe6_08099738
-// func_fe6_08099750
-// func_fe6_08099768
-// func_fe6_08099784
-// func_fe6_08099794
-// func_fe6_0809979C
-// func_fe6_0809980C
-// func_fe6_08099824
-// func_fe6_08099868
+struct ProcOpAnim5 {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x64);
+
+	i16 unk_64;
+	i16 unk_66;
+};
+
+struct ProcOpAnimBgScroll {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x2A);
+
+	/* 2A */ u16 bg_off[4];
+
+	STRUCT_PAD(0x32, 0x34);
+
+	/* 34 */ i16 timer;
+};
+
+struct ProcOpAnimSprite {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x50);
+
+	/* 50 */ struct SpriteAnim *anim;
+
+	STRUCT_PAD(0x54, 0x64);
+
+	/* 64 */ i16 unk_64;
+};
+
+struct ProcOpAnim4 {
+	PROC_HEADER;
+
+	STRUCT_PAD(0x29, 0x30);
+
+	/* 30 */ int y;
+
+	STRUCT_PAD(0x34, 0x44);
+
+	/* 44 */ i16 timer;
+
+	STRUCT_PAD(0x46, 0x50);
+
+	/* 50 */ struct SpriteAnim *anim;
+
+	STRUCT_PAD(0x54, 0x64);
+
+	/* 64 */ i16 unk_64;
+};
+
+void func_fe6_08099644(void);
+void OpAnim1_Init(ProcPtr proc);
+void func_fe6_08099738(ProcPtr proc);
+void func_fe6_08099750(ProcPtr proc);
+void func_fe6_08099768(ProcPtr proc);
+void func_fe6_08099784(ProcPtr proc);
+void func_fe6_08099794(struct Proc *proc);
+void func_fe6_0809979C(struct Proc *proc);
+void func_fe6_0809980C(struct ProcOpAnimBgScroll *proc);
+void func_fe6_08099824(struct ProcOpAnimBgScroll *proc);
+void func_fe6_08099868(struct ProcOpAnimBgScroll *proc);
 void func_fe6_080998D4(const u16 *tsa, u16 *tm, int a, int b);
-// func_fe6_0809992C
-// func_fe6_0809997C
-// func_fe6_08099A2C
-// func_fe6_08099A84
-// func_fe6_08099A90
-// func_fe6_08099AD0
-// func_fe6_08099B18
-// func_fe6_08099B34
-// func_fe6_08099B44
-// func_fe6_08099B5C
-// func_fe6_08099BA8
-// func_fe6_08099BCC
+void func_fe6_0809992C(int bg, int x);
+void func_fe6_0809997C(ProcPtr proc);
+void func_fe6_08099A2C(ProcPtr proc);
+void func_fe6_08099A84(struct ProcOpAnimSprite *proc);
+void func_fe6_08099A90(struct ProcOpAnimSprite *proc);
+void func_fe6_08099AD0(struct ProcOpAnimSprite *proc);
+void func_fe6_08099B18(struct ProcOpAnimSprite *proc);
+void func_fe6_08099B34(struct ProcOpAnim5 *proc);
+void func_fe6_08099B44(struct ProcOpAnim5 *proc);
+void func_fe6_08099B5C(struct ProcOpAnim5 *proc);
+void func_fe6_08099BA8(int offset);
+int func_fe6_08099BCC(void);
 void func_fe6_08099BE4(void);
-// func_fe6_08099CCC
-// func_fe6_08099D3C
-// func_fe6_08099DA4
-// func_fe6_08099E50
-// func_fe6_08099EC0
-// func_fe6_08099F98
-// func_fe6_08099F9C
-// func_fe6_08099FA8
-// func_fe6_08099FD0
-// func_fe6_0809A014
-// func_fe6_0809A034
-// func_fe6_0809A048
-// func_fe6_0809A068
-// func_fe6_0809A0A8
+void func_fe6_08099CCC(void);
+void func_fe6_08099D3C(ProcPtr proc);
+void func_fe6_08099DA4(ProcPtr proc);
+void func_fe6_08099E50(ProcPtr proc);
+void func_fe6_08099EC0(ProcPtr proc);
+void func_fe6_08099F98(void);
+void func_fe6_08099F9C(struct ProcOpAnim4 *proc);
+void func_fe6_08099FA8(struct ProcOpAnim4 *proc);
+void func_fe6_08099FD0(struct ProcOpAnim4 *proc);
+void func_fe6_0809A014(struct ProcOpAnim4 *proc);
+void func_fe6_0809A034(struct ProcOpAnim4 *proc);
+void func_fe6_0809A048(struct ProcOpAnim4 *proc);
+void func_fe6_0809A068(struct ProcOpAnim4 *proc);
+void func_fe6_0809A0A8(struct ProcOpAnim4 *proc);
 // OpAnimSparksOBJ_Init
 // OpAnimSparksOBJ_Loop
 // PutOpAnimSparksObjGfx
@@ -213,15 +267,6 @@ void OpAnimThunderStorm_PutPal5(struct ProcOpAnim6 *proc);
 void OpAnim6_PutIdunnGfx(struct ProcOpAnim6 *proc);
 void func_fe6_0809AD3C(struct ProcOpAnim6 *proc);
 void func_fe6_0809AD64(struct ProcOpAnim6 *proc);
-
-struct ProcOpAnim5 {
-	PROC_HEADER;
-
-	STRUCT_PAD(0x29, 0x64);
-
-	i16 unk_64;
-	i16 unk_66;
-};
 
 void func_fe6_0809AD88(ProcPtr proc);
 void func_fe6_0809ADCC(ProcPtr proc);
@@ -283,7 +328,7 @@ extern u16 CONST_DATA BgConf_OpAnim_08691B50[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnim4[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691C38[];
 extern CONST_DATA struct ProcScr ProcScr_Unk_08691C58[];
-// ??? gUnk_08691C78
+extern CONST_DATA u8 gUnk_08691C78[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnimSparksOBJ[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnimSparksOBJFALL[];
 extern CONST_DATA struct ProcScr ProcScr_OpAnim_08691CC0[];

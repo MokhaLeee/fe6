@@ -488,13 +488,12 @@ extern u16 const Tsa_OpAnim_08375B84[];
 extern u16 const Pal_Lz_OpAnim_Fog[];
 extern u16 const Img_OpAnim_Fog[];
 extern u16 const Tsa_OpAnim_Fog[];
-// extern const ??? gUnk_08378F54
-// extern const ??? gUnk_08379D0C
-// extern const ??? gUnk_08379D2C
-// extern const ??? gUnk_08379DCC
-// extern const ??? gUnk_08379F8C
-// extern const ??? gUnk_0837AA68
-// extern const ??? gUnk_0837AAC8
+extern u16 const gUnk_08378F54[];
+extern u16 const gUnk_08379D0C[];
+extern u16 const gUnk_08379DCC[];
+extern u16 const gUnk_08379F8C[];
+extern u16 const gUnk_0837AA68[];
+extern u16 const gUnk_0837AAC8[];
 extern u16 const SpriteAnim_OpAnim_0837AAE8[];
 extern u16 const Img_OpAnimSparksOBJ[];
 extern u16 const Pal_OpAnimSparksOBJ[];
@@ -509,8 +508,8 @@ extern const u16 Tsa_Opanim6_0837EEB4[];
 extern const u16 Pal_Opanim6_0837F418[];
 extern const u8 Img_OpAnimGlyphs[];
 extern const u16 Pal_OpAnimGlyphs[];
-// extern const ??? gUnk_08380F4C
-// extern const ??? gUnk_08380F54
+extern u16 const gUnk_08380F4C[];
+extern u8 const gUnk_08380F54[];
 // extern const ??? gUnk_08380F5A
 // extern const ??? gUnk_08380F62
 

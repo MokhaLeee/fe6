@@ -98,11 +98,7 @@ gUnk_08378F54: @ 08378F54
 
 	.global gUnk_08379D0C
 gUnk_08379D0C: @ 08379D0C
-	.incbin "fe6-base.gba", 0x379D0C, (0x379D2C - 0x379D0C) @ length: 0020
-
-	.global gUnk_08379D2C
-gUnk_08379D2C: @ 08379D2C
-	.incbin "fe6-base.gba", 0x379D2C, (0x379DCC - 0x379D2C) @ length: 00A0
+	.incbin "fe6-base.gba", 0x379D0C, (0x379DCC - 0x379D0C) @ length: 00C0
 
 	.global gUnk_08379DCC
 gUnk_08379DCC: @ 08379DCC
