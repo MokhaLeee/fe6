@@ -18,126 +18,103 @@ CONST_DATA struct EndingCreditWordLenConf gEndingCredit_WordLenConf[] = {
 	{}
 };
 
-// https://decomp.me/scratch/JebWS
-#if 0
 void func_fe6_0808FFE0(struct ProcGameCredit *proc, int step)
 {
 	int x = gCreditInfo[step].x * 8 + 0x16;
-	int y = gCreditInfo[step].y * 8;
-	int oam0, index;
+	int y = (gCreditInfo[step].y + 2) * 8;
+	int oam0;
 	int i = 0;
-	int unk_r3 = 0;
-	int unk_r12 = 0;
-	u32 ctrl = (u32)gCreditInfo[gCreditInfoDispStep].job - 1;
+	int kern = 0;
+	int prev_ch = 0;
+	int index, chr, ch, tmp;
 
-	if (ctrl <= 1)
+	if ((u32)gCreditInfo[gCreditInfoDispStep].job - 1 <= 1)
 		return;
 
 	proc->unk_4C = 0;
 
-	if (unk_02016A3F != 0)
+	if (unk_02016A3F == 0)
 		return;
 
-	oam0 = (unk_02016A3F == 1) ? 0 : OAM0_BLEND;
+	oam0 = 0;
+	if (unk_02016A3F == 1)
+		oam0 = OAM0_BLEND;
 
-	while (1) {
-		int ch = gCreditInfo[step].job[i];
-
-		if (ch == '\0')
-			break;
-
+	while ((index = ch = gCreditInfo[step].staff[i]) != '\0') {
 		switch (ch) {
 		case '\n':
-			y = y + 0x10;
+			y += 0x10;
 			x = gCreditInfo[step].x * 8 + 0x16;
+			kern = 0;
 			break;
 
 		case ' ':
-			x = x + 7;
+			x += 7;
 			break;
 
 		case '&':
 			index = 0x1C;
-			goto goto_single_char;
+			goto put_symbol;
 
 		case ',':
 			index = 0x1A;
-			goto goto_single_char;
+			goto put_symbol;
 
 		case '.':
 			index = 0x1B;
 
-			goto_single_char:
-				PutOamHi(
-					func_fe6_0808FF04(proc, x, y),
-					y | oam0,
-					Sprite_16x16,
-					0x4000 | (0x2A0 + index));
-
-				x = gEndingCredit_FontObjConf[26].unk_00 + x + 1;
+		put_symbol:
+			PutOamHi(func_fe6_0808FF04(proc, x, y), y | oam0, Sprite_16x16, OAM2_PAL(OBPAL_CREDIT_GLYPH) | (OBCHR_CREDIT_GLYPH_CAP + 0x20 + index * 2));
+			x += gEndingCredit_FontObjConf[26].unk_00 + 1;
+			kern = gEndingCredit_FontObjConf[26].unk_02;
 			break;
 
 		default:
-				if (ch < 'a') {
-					int chr;
+			if (index < 'a') {
+				index -= 'A';
+				chr = (index < 16) ? 0 : 0x20;
 
-					index = ch - 'A';
-					chr = (index < 16) ? 0 : 0x20;
+				if (kern != 0) {
+					tmp = (gEndingCredit_FontObjConf[index].unk_01 + kern) & 0xFF;
 
-					if (unk_r3 != 0) {
-						int tmp = (gEndingCredit_FontObjConf[index].unk_01 + unk_r3) & 0xFF;
-						
-						if (tmp < 0x80)
-							x = x - ((tmp & 0xF) >> 1);
-					} else {
-						int tmp = gEndingCredit_FontObjConf[index].unk_01 & 0x40;
-
-						if (tmp != 0)
-							x = x - 2;
-					}
-					x = EndingCredit_FindWordLen(x, unk_r12, ch);
-					PutOamHi(
-						func_fe6_0808FF04(proc, x, y),
-						y | oam0,
-						Sprite_16x16,
-						0x4000 | (0x280 + chr));
-
-					x = gEndingCredit_FontObjConf[index].unk_02 + x + 1;
-				} else {
-					int chr;
-
-					index = ch - 'a';
-					chr = (index < 16) ? 0 : 0x20;
-
-					if (unk_r3 != 0) {
-						int tmp = (gEndingCredit_FontObjConf[index].unk_01 + unk_r3) & 0xFF;
-						
-						if (tmp < 0x80)
-							x = x - ((tmp & 0xF) >> 1);
-					} else {
-						int tmp = gEndingCredit_FontObjConf[index].unk_01 & 0x40;
-
-						if (tmp != 0)
-							x = x - 2;
-					}
-					x = EndingCredit_FindWordLen(x, unk_r12, ch);
-					PutOamHi(
-						func_fe6_0808FF04(proc, x, y),
-						y | oam0,
-						Sprite_16x16,
-						0x4000 | (0x200 + chr));
-
-					x = gEndingCredit_FontObjConf[index].unk_02 + x + 1;
+					if (tmp < 0x80)
+						x -= (tmp & 0xF) >> 1;
+				} else if (gEndingCredit_FontObjConf[index].unk_01 & 0x40) {
+					x -= 2;
 				}
+
+				x = EndingCredit_FindWordLen(x, prev_ch, ch);
+				PutOamHi(func_fe6_0808FF04(proc, x, y), y | oam0, Sprite_16x16, OAM2_PAL(OBPAL_CREDIT_GLYPH) | (OBCHR_CREDIT_GLYPH_CAP + index * 2 + chr));
+				x += gEndingCredit_FontObjConf[index].unk_00 + 1;
+				kern = gEndingCredit_FontObjConf[index].unk_02;
+			} else {
+				index -= 'a';
+				chr = (index < 16) ? 0 : 0x20;
+
+				if (kern != 0) {
+					tmp = (gEndingCredit_FontObjConf[index].unk_04 + kern) & 0xFF;
+
+					if (tmp < 0x80)
+						x -= (tmp & 0xF) >> 1;
+				} else if (gEndingCredit_FontObjConf[index].unk_04 & 0x40) {
+					x -= 2;
+				}
+
+				x = EndingCredit_FindWordLen(x, prev_ch, ch);
+				PutOamHi(func_fe6_0808FF04(proc, x, y), (y + 1) | oam0, Sprite_16x16, OAM2_PAL(OBPAL_CREDIT_GLYPH) | (OBCHR_CREDIT_GLYPH_LOW + index * 2 + chr));
+				x += gEndingCredit_FontObjConf[index].unk_03 + 1;
+				kern = gEndingCredit_FontObjConf[index].unk_05;
+			}
+			break;
 		}
-		unk_r12 = ch;
-		x++, i++;
+
+		prev_ch = ch;
+		i++;
 	}
 
 	if (unk_02016A42 < 20)
 		unk_02016A42++;
 }
-#endif
 
 void EndingCredit_PutJobName(int step)
 {
