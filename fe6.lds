@@ -407,7 +407,6 @@ SECTIONS
         src/augury.o(.text);
         src/playrank.o(.text);
         src/ending_credit.o(.text);
-        asm/playrank_0808F33C.o(.text);
         src/ending_credit2.o(.text);
         src/ending_fin.o(.text);
         src/ending_cg.o(.text);
