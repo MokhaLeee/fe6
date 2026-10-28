@@ -327,7 +327,7 @@ SECTIONS
         src/ai_080326C4.o(.text);
         src/sio_core.o(.text);
         src/sio.o(.text);
-        asm/code-sio.o(.text);
+        src/sio_bm.o(.text);
         src/ui.o(.text);
         src/menu.o(.text);
         src/mapselect.o(.text);
@@ -500,7 +500,7 @@ SECTIONS
         . = ALIGN(4); src/ai_080326C4.o(.rodata);
         . = ALIGN(4); src/sio_core.o(.rodata);
         . = ALIGN(4); src/sio.o(.rodata);
-        . = ALIGN(4); data/sio_rodata2.o(.rodata);
+        . = ALIGN(4); src/sio_bm.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); src/ui_img.o(.rodata);
         . = ALIGN(4); src/banim_efxquake_data.o(.rodata);
@@ -638,6 +638,7 @@ SECTIONS
         . = ALIGN(4); src/ai_080326C4.o(.data);
         . = ALIGN(4); src/sio_core.o(.data);
         . = ALIGN(4); data/sio_data.o(.data);
+        . = ALIGN(4); src/sio_bm.o(.data);
         . = ALIGN(4); src/ui.o(.data);
         . = ALIGN(4); src/menu.o(.data);
         . = ALIGN(4); src/mapselect.o(.data);

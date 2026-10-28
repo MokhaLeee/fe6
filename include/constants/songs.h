@@ -123,6 +123,7 @@ enum
     SONG_7C = 0x7C,
     SONG_7D = 0x7D,
     SONG_7E = 0x7E,
+    SONG_80 = 0x80,
     SONG_81 = 0x81,
     SONG_82 = 0x82, // manim
     SONG_83 = 0x83, // manim
