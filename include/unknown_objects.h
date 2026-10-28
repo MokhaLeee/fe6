@@ -449,7 +449,6 @@ extern u8 const Tsa_Op_0835AB28[];
 extern u8 const Img_ClassDemoFont[];
 extern u16 const Pal_ClassDemoFont[];
 extern char const Str_OpInfo_Mag[];
-extern const u8 gUnk_0835C829[0xC];
 extern const char String_ShopGoldG[];
 extern const char String_Shop_0835CA78[];
 extern u16 const Pal_Title_BG[];
