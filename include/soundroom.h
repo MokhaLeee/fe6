@@ -89,7 +89,7 @@ void func_fe6_0808C098(struct ProcSoundRoom *proc);
 int CountTotalSoundRoomSongs(void);
 
 ProcPtr SaveMenu_ExecSoundroom(ProcPtr parent);
-void PutSoundRoomCG(void);
+void PutSoundRoomCG(int seed);
 void func_fe6_0808BE70(void);
 void func_fe6_0808BF00(struct ProcSoundRoom *proc);
 void func_fe6_0808BFF0(void);

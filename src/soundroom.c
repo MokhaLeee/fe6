@@ -432,6 +432,25 @@ struct ProcScr CONST_DATA ProcScr_0868AAA8[] = {
 	PROC_END,
 };
 
+void PutSoundRoomCG(int seed)
+{
+	int i;
+	int cg = seed;
+
+	cg %= SOUNDROOM_CG_NUM;
+
+	for (i = 0; i < 3; i++) {
+		if (gSoundRoom_020004AC[i % 2] == cg)
+			cg = (cg + 1) % SOUNDROOM_CG_NUM;
+	}
+
+	gSoundRoom_020004AC[1] = gSoundRoom_020004AC[0];
+	gSoundRoom_020004AC[0] = cg;
+
+	Decompress(gSoundRoomCgInfo[cg].img, (u8 *)BG_VRAM + 0x2800 + GetBgChrOffset(BG_2));
+	ApplyPaletteExt(gSoundRoomCgInfo[gSoundRoom_020004AC[0]].pal, 0xC0, 0x20);
+}
+
 int CountTotalSoundRoomSongs(void)
 {
 	int ret = 0;
@@ -495,8 +514,7 @@ void Soundroom_Init(struct ProcSoundRoom *proc)
 
 	SetBgOffset(BG_2, (u16)0xFF98, (u16)0xFFC0);
 
-	GetGameTime();
-	PutSoundRoomCG();
+	PutSoundRoomCG(GetGameTime());
 
 	PutEndingCreditTm(gBg2Tm, 0x6140, 15, 10);
 
@@ -613,8 +631,7 @@ void func_fe6_0808BD78(struct ProcSoundRoomConfirm *proc)
 
 	if (proc->unk_2c == 0x30) {
 		StartBgm(gSoundRoomInfo[proc->cur_index].id, NULL);
-		GetGameTime();
-		PutSoundRoomCG();
+		PutSoundRoomCG(GetGameTime());
 		Proc_Break(proc);
 	}
 }

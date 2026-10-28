@@ -401,7 +401,6 @@ SECTIONS
         src/savemenu.o(.text);
         src/savemenu_2.o(.text);
         src/xmap.o(.text);
-        asm/xmap.o(.text); /* actually soundroom */
         src/soundroom.o(.text);
         asm/soundroom.o(.text);
         src/config.o(.text);
