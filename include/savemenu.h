@@ -4,243 +4,256 @@
 #include "prelude.h"
 
 // TODO: MOVE
-enum
-{
-    BGCHR_SAVEMENU_0 = 0,
-    BGCHR_SAVEMENU_2_0 = 0, // 8000
+enum { BGCHR_SAVEMENU_0 = 0,
+       BGCHR_SAVEMENU_2_0 = 0, // 8000
 
-    OBCHR_SAVEMENU_1C0 = 0x1C0,
-    OBCHR_SAVEMENU_200 = 0x200,
+       OBCHR_SAVEMENU_1C0 = 0x1C0,
+       OBCHR_SAVEMENU_200 = 0x200,
 
-    OBPAL_SAVEMENU_9 = 9,
+       OBPAL_SAVEMENU_9 = 9,
 
-    OBPAL_SAVEMENU_1 = 1,
-    OBPAL_SAVEMENU_2 = 2,
+       OBPAL_SAVEMENU_1 = 1,
+       OBPAL_SAVEMENU_2 = 2,
 };
 
-enum
-{
-    L_SAVEMENU_BEGIN = 0,
-    L_SAVEMENU_1 = 1,
-    L_SAVEMENU_2 = 2,
-    L_SAVEMENU_3 = 3,
-    L_SAVEMENU_4 = 4,
-    L_SAVEMENU_5 = 5,
-    L_SAVEMENU_6 = 6,
-    L_SAVEMENU_EXTRA_INTRO = 7,
-    L_SAVEMENU_EXTRA_EXIT = 8,
-    L_SAVEMENU_EXTRA_MENU = 9,
-    L_SAVEMENU_XMAP1_MAIN = 10,
-    L_SAVEMENU_XMAP1_INTRO = 11,
-    L_SAVEMENU_XMAP1_EXIT = 12,
-    L_SAVEMENU_13 = 13,
-    L_SAVEMENU_14 = 14,
-    L_SAVEMENU_15 = 15,
-    L_SAVEMENU_16 = 16,
+enum { L_SAVEMENU_BEGIN = 0,
+       L_SAVEMENU_1 = 1,
+       L_SAVEMENU_2 = 2,
+       L_SAVEMENU_3 = 3,
+       L_SAVEMENU_4 = 4,
+       L_SAVEMENU_5 = 5,
+       L_SAVEMENU_6 = 6,
+       L_SAVEMENU_EXTRA_INTRO = 7,
+       L_SAVEMENU_EXTRA_EXIT = 8,
+       L_SAVEMENU_EXTRA_MENU = 9,
+       L_SAVEMENU_XMAP1_MAIN = 10,
+       L_SAVEMENU_XMAP1_INTRO = 11,
+       L_SAVEMENU_XMAP1_EXIT = 12,
+       L_SAVEMENU_13 = 13,
+       L_SAVEMENU_14 = 14,
+       L_SAVEMENU_15 = 15,
+       L_SAVEMENU_16 = 16,
 };
 
-enum
-{
-    // those are the shift of UNK_SAVEMENU_... values
-    // TODO: names
+enum {
+	// prompt index = bit index of the corresponding SAVEMENU_ACTION_*
 
-    SAVEMENU_PROMPT_0 = 0,
-    SAVEMENU_PROMPT_1,
-    SAVEMENU_PROMPT_2,
-    SAVEMENU_PROMPT_3,
-    SAVEMENU_PROMPT_4,
-    SAVEMENU_PROMPT_5,
-    SAVEMENU_PROMPT_6,
+	SAVEMENU_PROMPT_0 = 0,
+	SAVEMENU_PROMPT_1,
+	SAVEMENU_PROMPT_2,
+	SAVEMENU_PROMPT_3,
+	SAVEMENU_PROMPT_4,
+	SAVEMENU_PROMPT_5,
+	SAVEMENU_PROMPT_6,
 };
 
-enum
-{
-    UNK_SAVEMENU_0 = 1 << 0,
-    UNK_SAVEMENU_1 = 1 << 1,
-    UNK_SAVEMENU_2 = 1 << 2,
-    UNK_SAVEMENU_3 = 1 << 3,
-    UNK_SAVEMENU_4 = 1 << 4,
-    UNK_SAVEMENU_5 = 1 << 5,
-    UNK_SAVEMENU_6 = 1 << 6, // save screen
-    UNK_SAVEMENU_7 = 1 << 7,
+enum { SAVEMENU_ACTION_RESUME = 1 << 0,
+       SAVEMENU_ACTION_CONTINUE = 1 << 1,
+       SAVEMENU_ACTION_COPY = 1 << 2,
+       SAVEMENU_ACTION_ERASE = 1 << 3,
+       SAVEMENU_ACTION_NEW_GAME = 1 << 4,
+       SAVEMENU_ACTION_EXTRA = 1 << 5,
+       SAVEMENU_ACTION_SAVE = 1 << 6, // save screen
+       SAVEMENU_ACTION_EXIT = 1 << 7,
 };
 
-struct UnkProc_0868A28C;
-struct UnkProc_0868A2AC;
-struct UnkProc_0868A2CC;
+struct SaveMenuSlotProc;
+struct SaveMenuBgProc;
+struct SaveMenuCursorProc;
+struct SaveMenuWindowProc;
 
-struct SaveMenuProc
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ u8 anim_clock;
-    /* 2A */ u8 unk_2A;
-    /* 2B */ u8 selected_id;
-    /* 2C */ u8 copy_from_id;
-    /* 2D */ u8 unk_2D; // proc label
-    /* 2E */ u8 unk_2E;
-    /* 2F */ u8 unk_2F;
-    /* 30 */ u8 unk_30;
-    /* 31 */ u8 unk_31;
-    /* 32 */ u8 unk_32;
-    /* 33 */ u8 max_index;
-    /* 34 */ u8 hand_index;
-    /* 35 */ u8 sel_index;
-    /* 36 */ u8 unk_36;
-    /* 37 */ u8 unk_37[3]; // unsure of length
-    /* 3A */ u8 unk_3A[3];
-    /* 3D */ u8 unk_3D;
-    /* 3E */ u8 unk_3E;
-    /* 3F */ u8 unk_3F;
-    /* 40 */ u16 unk_40;
-    /* 42 */ u16 unk_42;
-    /* 44 */ u32 unk_44[3]; // time value
-    /* 50 */ u32 unk_50; // time value
-    /* 54 */ struct UnkProc_0868A28C * unk_54;
-    /* 58 */ struct UnkProc_0868A2AC * unk_58;
-    /* 5C */ ProcPtr unk_5C; // sprite anim proc
+struct SaveMenuProc {
+	/* 00 */ PROC_HEADER;
+	/* 29 */ u8 anim_clock;
+	/* 2A */ u8 menu_index;
+	/* 2B */ u8 selected_id;
+	/* 2C */ u8 copy_from_id;
+	/* 2D */ u8 label; // proc label
+	/* 2E */ u8 action;
+	/* 2F */ u8 scroll_x;
+	/* 30 */ u8 action_mask;
+	/* 31 */ u8 action_count;
+	/* 32 */ u8 extra_mask;
+	/* 33 */ u8 extra_count;
+	/* 34 */ u8 extra_index;
+	/* 35 */ u8 extra_action;
+	/* 36 */ u8 choice;
+	/* 37 */ u8 slot_titles[3]; // unsure of length
+	/* 3A */ u8 slot_completed[3];
+	/* 3D */ u8 difficulty;
+	/* 3E */ u8 help_shown;
+	/* 3F */ u8 target_id;
+	/* 40 */ u16 scale;
+	/* 42 */ u16 extra_scroll_x;
+	/* 44 */ u32 slot_times[3]; // time value
+	/* 50 */ u32 suspend_time;  // time value
+	/* 54 */ struct SaveMenuSlotProc *slot_proc;
+	/* 58 */ struct SaveMenuBgProc *bg_proc;
+	/* 5C */ ProcPtr chapter_sprite; // sprite anim proc
 };
 
-struct SaveMenuUnkPalProc
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ u8 unk_29;
+struct SaveDrawPalProc {
+	/* 00 */ PROC_HEADER;
+	/* 29 */ u8 progress;
 };
 
-struct UnkProc_0868A28C
-{
-    /* 00 */ PROC_HEADER_EXT(struct SaveMenuProc);
-    /* 29 */ STRUCT_PAD(0x29, 0x2A);
-    /* 2A */ u16 unk_2A;
-    /* 2C */ u16 unk_2C;
-    /* 2E */ u16 unk_2E;
-    /* 30 */ u16 unk_30;
-    /* 30 */ u8 unk_32;
-    /* 33 */ u8 unk_33;
-    /* 34 */ struct UnkProc_0868A2CC * unk_34;
-    /* 38 */ STRUCT_PAD(0x38, 0x39);
-    /* 39 */ u8 unk_39;
-    /* 3A */ u8 unk_3A;
-    /* 3B */ u8 unk_3B;
-    /* 3C */ u8 unk_3C;
+struct SaveMenuSlotProc {
+	/* 00 */ PROC_HEADER_EXT(struct SaveMenuProc);
+	/* 29 */ STRUCT_PAD(0x29, 0x2A);
+	/* 2A */ u16 clock;
+	/* 2C */ u16 angle;
+	/* 2E */ u16 unk_2E;
+	/* 30 */ u16 unk_30;
+	/* 30 */ u8 unk_32;
+	/* 33 */ u8 action;
+	/* 34 */ struct SaveMenuCursorProc *cursor_proc;
+	/* 38 */ STRUCT_PAD(0x38, 0x39);
+	/* 39 */ u8 unk_39;
+	/* 3A */ u8 unk_3A;
+	/* 3B */ u8 unk_3B;
+	/* 3C */ u8 last_selected_id;
 };
 
-struct UnkProc_0868A2AC
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ STRUCT_PAD(0x29, 0x2A);
-    /* 2A */ u16 unk_2A;
-    /* 2C */ u16 unk_2C;
-    /* 2E */ STRUCT_PAD(0x2E, 0x30);
-    /* 30 */ struct SaveMenuProc * sm_proc;
-    /* 34 */ u8 unk_34;
-    /* 35 */ u8 unk_35;
-    /* 36 */ u8 unk_36;
-    /* 37 */ u8 unk_37;
-    /* 38 */ u8 unk_38;
-    /* 39 */ u8 unk_39;
-    /* 3A */ u8 unk_3A;
-    /* 3B */ u8 unk_3B;
-    /* 3C */ STRUCT_PAD(0x3C, 0x3D);
-    /* 3D */ u8 unk_3D;
+struct SaveMenuBgProc {
+	/* 00 */ PROC_HEADER;
+	/* 29 */ STRUCT_PAD(0x29, 0x2A);
+	/* 2A */ u16 clock;
+	/* 2C */ u16 angle;
+	/* 2E */ STRUCT_PAD(0x2E, 0x30);
+	/* 30 */ struct SaveMenuProc *sm_proc;
+	/* 34 */ u8 unk_34;
+	/* 35 */ u8 unk_35;
+	/* 36 */ u8 unk_36;
+	/* 37 */ u8 unk_37;
+	/* 38 */ u8 unk_38;
+	/* 39 */ u8 unk_39;
+	/* 3A */ u8 unk_3A;
+	/* 3B */ u8 unk_3B;
+	/* 3C */ STRUCT_PAD(0x3C, 0x3D);
+	/* 3D */ u8 unk_3D;
 };
 
-struct UnkProc_0868A2CC
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ STRUCT_PAD(0x29, 0x2A);
-    /* 2A */ u16 unk_2A;
-    /* 2C */ u8 unk_2C;
-    /* 2D */ u8 unk_2D;
-    /* 2E */ u8 unk_2E;
-    /* 2F */ u8 unk_2F;
-    /* 30 */ u8 unk_30;
-    /* 31 */ u8 unk_31;
-    /* 32 */ u8 unk_32;
-    /* 33 */ u8 unk_33;
-    /* 34 */ u8 unk_34;
-    /* 35 */ u8 unk_35;
+struct SaveMenuCursorProc {
+	/* 00 */ PROC_HEADER;
+	/* 29 */ STRUCT_PAD(0x29, 0x2A);
+	/* 2A */ u16 clock;
+	/* 2C */ u8 time;
+	/* 2D */ u8 target_x;
+	/* 2E */ u8 x;
+	/* 2F */ u8 target_y;
+	/* 30 */ u8 y;
+	/* 31 */ u8 active;
+	/* 32 */ u8 static_y;
+	/* 33 */ u8 show_static;
+	/* 34 */ u8 clear_static;
+	/* 35 */ u8 mirror;
 };
 
-// SaveMenuOnHBlank
-// func_fe6_08087C60
+void SaveMenuOnHBlank(void);
+void SaveMenu_StartExit(struct SaveMenuProc *proc);
 fu8 GetSaveMenuSelectIndex(fu8 byte, int num);
-fu8 func_fe6_08087CB0(fu8 byte);
-// func_fe6_08087CD4
-// SaveMenu_InitSong
-// SaveMenu_InitDisplay
-// SaveMenu_PutScreen
-// func_fe6_08088094
-// func_fe6_080881B8
-// func_fe6_080881C8
-// func_fe6_08088404
-// func_fe6_080885DC
-// func_fe6_08088854
-// func_fe6_08088860
-// func_fe6_08088870
-// func_fe6_08088B40
-// func_fe6_08088B9C
-// SaveMenu_ExtraMenuScrollIn
-// SaveMenu_ExtraMenuScrollOut
-// SaveMenu_XMap1ScrollIn
-// SaveMenu_XMap1ScrollOut
-// SaveMenu_ExtraMenu_Loop
-// func_fe6_08088EB8
-// SaveMenu_Xmap1_Loop
-// func_fe6_080890B8
-// SaveMenu_Finish
-// SaveMenu_StartXmapSoundRoom
-// func_fe6_080891DC
+fu8 GetSaveMenuBitIndex(fu8 byte);
+void SaveMenu_UpdateHelpBox(struct SaveMenuProc *proc);
+void SaveMenu_InitSong(struct SaveMenuProc *proc);
+void SaveMenu_InitDisplay(struct SaveMenuProc *proc);
+void SaveMenu_PutScreen(struct SaveMenuProc *proc);
+void SaveMenu_InitSlotList(struct SaveMenuProc *proc);
+void SaveMenu_GotoLabel(struct SaveMenuProc *proc);
+void SaveMenu_Main_Loop(struct SaveMenuProc *proc);
+void SaveMenu_HandleAction(struct SaveMenuProc *proc);
+void SaveMenu_SlotSelect_Loop(struct SaveMenuProc *proc);
+void SaveMenu_ConfirmAction(struct SaveMenuProc *proc);
+void SaveMenu_ExitAnim_Init(struct SaveMenuProc *proc);
+void SaveMenu_ExitAnim_Loop(struct SaveMenuProc *proc);
+void SaveMenu_SlotScrollIn_Loop(struct SaveMenuProc *proc);
+void SaveMenu_SlotScrollOut_Loop(struct SaveMenuProc *proc);
+void SaveMenu_ExtraMenuScrollIn(struct SaveMenuProc *proc);
+void SaveMenu_ExtraMenuScrollOut(struct SaveMenuProc *proc);
+void SaveMenu_XMap1ScrollIn(struct SaveMenuProc *proc);
+void SaveMenu_XMap1ScrollOut(struct SaveMenuProc *proc);
+void SaveMenu_ExtraMenu_Loop(struct SaveMenuProc *proc);
+bool SaveMenu_MoveXmapSlot(struct SaveMenuProc *proc, int direction);
+void SaveMenu_Xmap1_Loop(struct SaveMenuProc *proc);
+void SaveMenu_StartWindowAnim(struct SaveMenuProc *proc);
+void SaveMenu_Finish(struct SaveMenuProc *proc);
+void SaveMenu_StartXmapSoundRoom(struct SaveMenuProc *proc);
+void SaveMenu_GotoExtraScreen(struct SaveMenuProc *proc);
 void StartMainMenu(ProcPtr parent);
 void StartSaveMenu(ProcPtr parent);
 
-// SaveDraw_SavePalette
-// SaveDrawFadeIn_Loop
-// SaveDrawFadeOut_Loop
-// func_fe6_080893D0
-// func_fe6_08089490
-void StartSaveDrawFadeIn(ProcPtr proc);
-void StartSaveDrawFadeOut(ProcPtr proc);
-// func_fe6_08089578
-void func_fe6_0808958C(ProcPtr parent);
-void func_fe6_080895A0(u16 const * src, u16 * dst, int count);
-// func_fe6_080895B8
-// func_fe6_08089684
-// func_fe6_08089894
-// func_fe6_080898F0
-// func_fe6_080899F0
-// func_fe6_08089A3C
-// func_fe6_08089ABC
-// func_fe6_08089B3C
-// func_fe6_08089C70
-// func_fe6_08089D30
-// func_fe6_0808A14C
-// func_fe6_0808A160
-// func_fe6_0808A194
-// func_fe6_0808A210
-// func_fe6_0808A228
-// func_fe6_0808A25C
-void func_fe6_0808A3C8(int a, int b, fu8 c, struct UnkProc_0868A28C * proc);
-void func_fe6_0808A3E8(int a, fu8 b, struct UnkProc_0868A28C * proc);
-struct UnkProc_0868A2CC * func_fe6_0808A418(ProcPtr parent);
-void func_fe6_0808A42C(void);
-// func_fe6_0808A454
-// func_fe6_0808A4B8
-void func_fe6_0808A4F0(void);
-void func_fe6_0808A524(struct SaveMenuProc * proc);
-// SaveMenu_GetNextSaveIndex
-// func_fe6_0808A6C8
-// func_fe6_0808A79C
-// func_fe6_0808A7B8
-// func_fe6_0808A8B4
-// func_fe6_0808A8E8
-// func_fe6_0808A904
-void func_fe6_0808A918(fu8 arg_0, struct SaveMenuProc * proc);
-void func_fe6_0808A9F4(fu8 save_id);
-fu8 func_fe6_0808AA54(fu8 end_mask, struct SaveMenuProc * proc);
+void SaveDraw_SavePalette(struct SaveDrawPalProc *proc);
+void SaveDrawFadeIn_Loop(struct SaveDrawPalProc *proc);
+void SaveDrawFadeOut_Loop(struct SaveDrawPalProc *proc);
+void SaveDrawFadeOut32_Loop(struct SaveDrawPalProc *proc);
+void SaveDrawFadeOut64_Loop(struct SaveDrawPalProc *proc);
+void StartSaveDrawFadeIn(ProcPtr parent);
+void StartSaveDrawFadeOut(ProcPtr parent);
+void StartSaveDrawFadeOut32(ProcPtr parent);
+void StartSaveDrawFadeOut64(ProcPtr parent);
+void CopyPaletteBlock(u16 const *src, u16 *dst, int count);
+void SaveMenu_AnimateHighlight(u32 point);
 
-extern u16 gUnk_Savemenu_02000000;
-extern u16 gUnk_Savemenu_02000002[0x200];
+void SaveMenu_PutSaveTime(ProcPtr proc);
+void SaveMenu_SetBgAffine(fu8 bg,
+			  i32 scr_x,
+			  i32 scr_y,
+			  i32 tex_x,
+			  i32 tex_y,
+			  fi16 angle,
+			  fi16 scale);
+void SaveMenuSlot_Init(struct SaveMenuSlotProc *proc);
+void SaveMenu_SetIconPalette(bool arg_0, fu16 arg_1);
+void SaveMenu_PutAction(
+	ProcPtr proc, int x, int y, fu8 arg_3, fu8 pal_a, fu8 pal_b);
+void SaveMenu_PutExtraAction(
+	ProcPtr proc, int x, int y, fu8 arg_3, fu8 pal_a, fu8 pal_b);
+void SaveMenuSlot_UpdateCursor(struct SaveMenuSlotProc *proc);
+void SaveMenuSlot_PutSuspendIcon(struct SaveMenuSlotProc *proc);
+void SaveMenuSlot_Loop(struct SaveMenuSlotProc *proc);
+struct SaveMenuSlotProc *StartSaveMenuSlot(struct SaveMenuProc *parent);
+void SaveMenuBg_Init(struct SaveMenuBgProc *proc);
+void SaveMenuBg_Loop(struct SaveMenuBgProc *proc);
+struct SaveMenuBgProc *StartSaveMenuBg(struct SaveMenuProc *parent);
+void SaveMenuCursor_Init(struct SaveMenuCursorProc *proc);
+void SaveMenuCursor_Loop(struct SaveMenuCursorProc *proc);
+void SaveMenuCursor_MoveTo(int a, int b, fu8 c, struct SaveMenuSlotProc *proc);
+void SaveMenuCursor_PutStatic(int a, fu8 b, struct SaveMenuSlotProc *proc);
+struct SaveMenuCursorProc *StartSaveMenuCursor(ProcPtr parent);
 
-extern u16 gUnk_Savemenu_02000404[0x20];
+void SaveMenu_InitText(void);
+void SaveMenu_PutPrompt(char const *string, bool display);
+void SaveMenu_UpdatePrompt(struct SaveMenuProc *proc, bool display);
+void SaveMenu_ClearVram(void);
+void SaveMenu_UpdateAvailableActions(struct SaveMenuProc *proc);
+fu8 SaveMenu_GetNextSaveIndex(fu8 save_id, bool valid, fi8 direction);
+bool SaveMenu_MoveSlot(struct SaveMenuProc *proc, fi8 direction);
+bool SaveMenu_IsActionAvailable(struct SaveMenuProc *proc);
+
+void SaveMenu_WindowAnim_Loop(struct SaveMenuWindowProc *proc);
+void StartSaveMenuWindowAnim(ProcPtr parent,
+			     fi8 anim_direction,
+			     fu8 anim_speed);
+void SaveMenu_CopyBg2(ProcPtr proc);
+ProcPtr StartSaveMenuBg2Copy(ProcPtr parent);
+
+void SaveMenu_LoadSlotInfo(fu8 save_id, struct SaveMenuProc *proc);
+void SaveMenu_UpdateSlotPal(fu8 save_id);
+fu8 SaveMenu_GetActionIndex(fu8 end_mask, struct SaveMenuProc *proc);
+
+extern struct ProcScr CONST_DATA ProcScr_SaveMenu[];
+extern struct ProcScr CONST_DATA ProcScr_SaveDrawFadeIn[];
+extern struct ProcScr CONST_DATA ProcScr_SaveDrawFadeOut[];
+extern struct ProcScr CONST_DATA ProcScr_SaveDrawFadeOut32[];
+extern struct ProcScr CONST_DATA ProcScr_SaveDrawFadeOut64[];
+extern struct ProcScr CONST_DATA ProcScr_SaveMenuSlot[];
+extern struct ProcScr CONST_DATA ProcScr_SaveMenuBg[];
+extern struct ProcScr CONST_DATA ProcScr_SaveMenuCursor[];
+extern struct ProcScr CONST_DATA ProcScr_SaveMenuWindowAnim[];
+extern struct ProcScr CONST_DATA ProcScr_SaveMenuBg2Copy[];
+
+extern u16 gSaveMenuUnk00;
+extern u16 gSaveMenuPalBackup[0x200];
+
+extern u16 gSaveMenuPalFx[0x20];
 
 #endif // SAVEMENU_H

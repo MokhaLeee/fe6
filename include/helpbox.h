@@ -37,7 +37,7 @@ struct HelpBoxProc
 
     /* 50 */ u16 move_key_bit; // move ctrl proc only
 
-    /* 52 */ u8 unk_52;
+    /* 52 */ u8 plain;
 
     // NOTE: there's likely more, need to decompile more files
 };
@@ -75,8 +75,8 @@ void HelpBox_OnClose(struct HelpBoxProc * proc);
 void HelpBox_WaitClose(struct HelpBoxProc * proc);
 void StartHelpBox(int x, int y, int msg);
 void StartItemHelpBox(int x, int y, int item);
-void StartHelpBoxExt(struct HelpBoxInfo const * info, int unk);
-void StartHelpBox_08070804(int x, int y, int msg);
+void StartHelpBoxExt(struct HelpBoxInfo const * info, int plain);
+void StartSimpleHelpBox(int x, int y, int msg);
 void CloseHelpBox(void);
 void KillHelpBox(void);
 // HelpBoxMoveControl_OnInitBox

@@ -27,7 +27,7 @@ void UpdateHelpBoxDisplay(struct HelpBoxProc * proc, int interpolate_method)
 
     PutSpriteTalkBox(proc->x_box, proc->y_box, proc->w_box, proc->h_box);
 
-    if (proc->unk_52 == 0)
+    if (proc->plain == 0)
     {
         PutSprite(0, proc->x_box, proc->y_box - 11, Sprite_32x16, OAM2_CHR(OBCHR_SYSTEM_OBJECTS + 11) + OAM2_PAL(OBPAL_SYSTEM_OBJECTS));
     }
@@ -35,7 +35,7 @@ void UpdateHelpBoxDisplay(struct HelpBoxProc * proc, int interpolate_method)
 
 void HelpBox_OnOpen(struct HelpBoxProc * proc)
 {
-    if (proc->unk_52 == 0)
+    if (proc->plain == 0)
     {
         PlaySe(SONG_70);
     }
@@ -51,7 +51,7 @@ void HelpBox_OnLoop(struct HelpBoxProc * proc)
 
 void HelpBox_OnClose(struct HelpBoxProc * proc)
 {
-    if (proc->unk_52 == 0)
+    if (proc->plain == 0)
     {
         PlaySe(SONG_71);
 
@@ -120,7 +120,7 @@ PROC_LABEL(99),
     PROC_END,
 };
 
-void StartHelpBoxExt(struct HelpBoxInfo const * info, int unk)
+void StartHelpBoxExt(struct HelpBoxInfo const * info, int plain)
 {
     struct HelpBoxProc * proc;
     int w_inner, h_inner;
@@ -131,7 +131,7 @@ void StartHelpBoxExt(struct HelpBoxInfo const * info, int unk)
     {
         proc = SpawnProc(ProcScr_HelpBox, PROC_TREE_3);
 
-        proc->unk_52 = unk;
+        proc->plain = plain;
         SetHelpBoxInitPosition(proc, info->x, info->y);
         ResetHelpBoxInitSize(proc);
     }
@@ -165,14 +165,14 @@ void StartHelpBoxExt(struct HelpBoxInfo const * info, int unk)
     gLastHelpBoxInfo = info;
 }
 
-void StartHelpBox_08070804(int x, int y, int msg)
+void StartSimpleHelpBox(int x, int y, int msg)
 {
     struct HelpBoxProc * proc;
     int w_inner, h_inner;
 
     proc = SpawnProc(ProcScr_HelpBox, PROC_TREE_3);
 
-    proc->unk_52 = TRUE;
+    proc->plain = TRUE;
     proc->timer = 0;
     proc->timer_end = 12;
     proc->item = 0;
