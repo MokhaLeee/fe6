@@ -2249,7 +2249,7 @@ void func_fe6_0803ED9C(struct SioBattleMapProc * proc)
 	int i;
 
 	LoadHelpBoxGfx((void *) 0x06015000, 6);
-	StartHelpBox_08070804(64, 56, MSG_6E5);
+	StartSimpleHelpBox(64, 56, MSG_6E5);
 
 	for (i = 0; i < 4; i++) {
 		if (!func_fe6_08035CB0(i))
