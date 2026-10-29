@@ -1342,7 +1342,7 @@ void func_fe6_0807B4C0(struct PrepMenuProc *proc)
 
 	if (proc->scroll_timer == 0)
 	{
-		proc->unk_29 = TRUE;
+		proc->sel_unit = TRUE;
 		proc->not_in_upper_menu = TRUE;
 		proc->unk_2B = TRUE;
 
@@ -1527,7 +1527,7 @@ void func_fe6_0807B5A0(struct PrepMenuProc *proc)
 	{
 		u8 pid;
 
-		proc->unk_29 = 0;
+		proc->sel_unit = 0;
 		proc->not_in_upper_menu = 0;
 		func_fe6_08079A94(proc);
 		Proc_Break(proc);

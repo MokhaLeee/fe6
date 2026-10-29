@@ -7907,11 +7907,8 @@ void EfxApocalypseOBJ_Loop1(struct ProcEfxOBJ *proc)
 void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc)
 {
 	struct BaSprite *anim2 = proc->anim2;
-	int zero;
 	i16 interp = Interpolate(0, 0xB4, 0x32, proc->timer, 0x3C);
-	unsigned oldAngle = proc->unk30;
-	register unsigned angle asm("r1") = oldAngle + 0x300;
-	register unsigned index asm("r2");
+	unsigned index = proc->unk30;
 	i16 xSin;
 	i16 ySin;
 	int x;
@@ -7919,9 +7916,8 @@ void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc)
 	int xPos;
 	int yPos;
 
-	zero = 0;
-	proc->unk30 = angle;
-	index = angle >> 8;
+	proc->unk30 = index + 0x300;
+	index = (index + 0x300) >> 8;
 	xSin = gSinLut[index];
 	ySin = gSinLut[index + 0x40];
 	x = (xSin * (i16)interp) << 4;
@@ -7930,17 +7926,13 @@ void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc)
 	yPos = proc->unk3A + (y >> 16);
 	anim2->xPosition = xPos;
 	anim2->yPosition = yPos;
-
 	proc->timer++;
-
 	if (proc->timer > 0x3C)
 		proc->timer = 0x3C;
-
 	proc->terminator++;
-
 	if (proc->terminator > 0x78) {
-		proc->timer = zero;
-		proc->terminator = zero;
+		proc->timer = 0;
+		proc->terminator = 0;
 		Proc_Break(proc);
 	}
 }
@@ -7948,11 +7940,8 @@ void EfxApocalypseOBJ_Loop2(struct ProcEfxOBJ *proc)
 void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc)
 {
 	struct BaSprite *anim2 = proc->anim2;
-	int zero;
 	i16 interp = Interpolate(0, 0x32, 0, proc->timer, 0x50);
-	unsigned oldAngle = proc->unk30;
-	register unsigned angle asm("r1") = oldAngle + 0x300;
-	register unsigned index asm("r2");
+	unsigned index = proc->unk30;
 	i16 xSin;
 	i16 ySin;
 	int x;
@@ -7960,9 +7949,8 @@ void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc)
 	int xPos;
 	int yPos;
 
-	zero = 0;
-	proc->unk30 = angle;
-	index = angle >> 8;
+	proc->unk30 = index + 0x300;
+	index = (index + 0x300) >> 8;
 	xSin = gSinLut[index];
 	ySin = gSinLut[index + 0x40];
 	x = (xSin * (i16)interp) << 4;
@@ -7980,8 +7968,8 @@ void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc)
 	proc->terminator++;
 
 	if (proc->terminator > 0x50) {
-		proc->timer = zero;
-		proc->terminator = zero;
+		proc->timer = 0;
+		proc->terminator = 0;
 		Proc_Break(proc);
 	}
 }
@@ -7989,12 +7977,9 @@ void EfxApocalypseOBJ_Loop3(struct ProcEfxOBJ *proc)
 void EfxApocalypseOBJ_Loop4(struct ProcEfxOBJ *proc)
 {
 	struct BaSprite *anim2 = proc->anim2;
-	register i16 cap asm("r6");
 	i16 interp;
 	int timer;
-	unsigned oldAngle;
-	register unsigned angle asm("r1");
-	register unsigned index asm("r2");
+	unsigned index;
 	i16 xSin;
 	i16 ySin;
 	int x;
@@ -8003,13 +7988,11 @@ void EfxApocalypseOBJ_Loop4(struct ProcEfxOBJ *proc)
 	int yPos;
 
 	timer = proc->timer;
-	cap = 0x32;
-	interp = Interpolate(1, 0, 0xB4, timer, cap);
+	interp = Interpolate(1, 0, 0xB4, timer, 0x32);
 
-	oldAngle = proc->unk30;
-	angle = oldAngle + 0x800;
-	proc->unk30 = angle;
-	index = angle >> 8;
+	index = proc->unk30;
+	proc->unk30 = index + 0x800;
+	index = (index + 0x800) >> 8;
 	xSin = gSinLut[index];
 	ySin = gSinLut[index + 0x40];
 	x = (xSin * (i16)interp) << 4;
@@ -8022,7 +8005,7 @@ void EfxApocalypseOBJ_Loop4(struct ProcEfxOBJ *proc)
 	proc->timer++;
 
 	if (proc->timer > 0x32)
-		proc->timer = cap;
+		proc->timer = 0x32;
 
 	proc->terminator++;
 

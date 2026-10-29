@@ -249,11 +249,7 @@ void EkrTerrainfx_PutTiles(struct EkrTerrainfxDesc *desc)
 	EfxTmCpyExt(tm1, -1, gTmA_Banim + TM_OFFSET(0x1A, 0x1A) + offset1, 0x42, 0xF, 5, desc->pal_l, desc->chr_l);
 	EfxTmCpyExt(tm2, -1, gTmA_Banim + TM_OFFSET(0x1A, 0x1A) + offset2, 0x42, 0xF, 5, desc->pal_r, desc->chr_r);
 
-#if NONMATCHING
-	EfxTmCpyExt(gTmA_Banim + TM_OFFSET(5, 5) + offset, 0x42, gBg2Tm, 0x20, 0x20, 0x14, -1, -1);
-#else
-	EfxTmCpyExt(({gTmA_Banim + offset;}) + TM_OFFSET(5, 5), 0x42, gBg2Tm, 0x20, 0x20, 0x14, -1, -1);
-#endif
+	EfxTmCpyExt(gTmA_Banim + offset + 5 + 0x20 * 5, 0x42, gBg2Tm, 0x20, 0x20, 0x14, -1, -1);
 
 	EnableBgSync(BG2_SYNC_BIT);
 }
