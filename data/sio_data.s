@@ -1,19 +1,5 @@
 	.include "asm_proc.inc"
 
-	.section .rodata
-
-	.global gTacticianTextConf
-gTacticianTextConf: @ 0810DBCC
-	.incbin "fe6-base.gba", 0x10DBCC, (0x10EDA4 - 0x10DBCC) @ length: 11D8
-
-	.global gUnk_Sio_0810EDA4
-gUnk_Sio_0810EDA4: @ 0810EDA4
-	.incbin "fe6-base.gba", 0x10EDA4, (0x10EFD2 - 0x10EDA4) @ length: 022E
-
-	.global gUnk_Sio_0810EFD2
-gUnk_Sio_0810EFD2: @ 0810EFD2
-	.incbin "fe6-base.gba", 0x10EFD2, (0x10F068 - 0x10EFD2) @ length: 0096
-
 	.data
 
 	.global ProcScr_SIOCON
@@ -417,10 +403,3 @@ SpriteArray_LAVersusPlayerNumbers: @ 085CB1E4
 ProcScr_LAVersusSpriteDraw: @ 085CB1F4
 	.incbin "fe6-base.gba", 0x5CB1F4, (0x5CB204 - 0x5CB1F4) @ length: 0010
 
-	.global ProcScr_Sio_085CB204
-ProcScr_Sio_085CB204: @ 085CB204
-	.incbin "fe6-base.gba", 0x5CB204, (0x5CB384 - 0x5CB204) @ length: 0180
-
-	.global gUnk_Sio_085CB384
-gUnk_Sio_085CB384: @ 085CB384
-	.incbin "fe6-base.gba", 0x5CB384, (0x5CB3A8 - 0x5CB384) @ length: 0024

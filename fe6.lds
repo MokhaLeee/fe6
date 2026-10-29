@@ -146,18 +146,21 @@ SECTIONS
         . = 0x0203C618 - __ewram_overlay_end; gLinkArenaSt = .;
         . = 0x0203C67C - __ewram_overlay_end; gSioText_0203C67C = .;
         . = 0x0203C6A4 - __ewram_overlay_end; gSioText_0203C6A4 = .;
+        . = 0x0203C6B9 - __ewram_overlay_end; gSioTeamNames = .;
         . = 0x0203C704 - __ewram_overlay_end; gSioSaveConfig = .;
         . = 0x0203C708 - __ewram_overlay_end; gSioText_0203C708 = .;
         . = 0x0203C758 - __ewram_overlay_end; gSioFont_0203C758 = .;
         . = 0x0203C770 - __ewram_overlay_end; gLinkArenaTeamList = .;
-        . = 0x0203C83C - __ewram_overlay_end; gSioResultRankings = .;
+        . = 0x0203C838 - __ewram_overlay_end; gSioResultRankings = .;
         . = 0x0203C900 - __ewram_overlay_end; gSioTexts = .;
+        . = 0x0203C910 - __ewram_overlay_end; gSioText_0203C910 = .;
+        . = 0x0203C918 - __ewram_overlay_end; gUnk_Sio_0203C918 = .;
+        . = 0x0203C91C - __ewram_overlay_end; gUnk_Sio_0203C91C = .;
         . = 0x0203C920 - __ewram_overlay_end; gKeyInputSequenceBuffer = .;
         . = 0x0203C940 - __ewram_overlay_end; gKeyInputSequenceTimer = .;
         . = 0x0203C944 - __ewram_overlay_end; gUnk_Sio_0203C944 = .;
         . = 0x0203C980 - __ewram_overlay_end; gSioXmapOption = .;
         . = 0x0203C984 - __ewram_overlay_end; gSioBmSt = .;
-        . = 0x0203C993 - __ewram_overlay_end; Sio_Unk_0203C993 = .;
         . = 0x0203C9D0 - __ewram_overlay_end; Unk_Sio_0203C9D0 = .;
 
         . = 0x0203C9D4 - __ewram_overlay_end;
@@ -324,7 +327,7 @@ SECTIONS
         src/ai_080326C4.o(.text);
         src/sio_core.o(.text);
         src/sio.o(.text);
-        asm/code-sio.o(.text);
+        src/sio_bm.o(.text);
         src/ui.o(.text);
         src/menu.o(.text);
         src/mapselect.o(.text);
@@ -496,9 +499,8 @@ SECTIONS
         . = ALIGN(4); src/ai_battle.o(.rodata);
         . = ALIGN(4); src/ai_080326C4.o(.rodata);
         . = ALIGN(4); src/sio_core.o(.rodata);
-        . = ALIGN(4); data/sio_data.o(.rodata);
         . = ALIGN(4); src/sio.o(.rodata);
-        . = ALIGN(4); data/sio_rodata2.o(.rodata);
+        . = ALIGN(4); src/sio_bm.o(.rodata);
         . = ALIGN(4); src/ui.o(.rodata);
         . = ALIGN(4); src/ui_img.o(.rodata);
         . = ALIGN(4); src/banim_efxquake_data.o(.rodata);
@@ -636,6 +638,7 @@ SECTIONS
         . = ALIGN(4); src/ai_080326C4.o(.data);
         . = ALIGN(4); src/sio_core.o(.data);
         . = ALIGN(4); data/sio_data.o(.data);
+        . = ALIGN(4); src/sio_bm.o(.data);
         . = ALIGN(4); src/ui.o(.data);
         . = ALIGN(4); src/menu.o(.data);
         . = ALIGN(4); src/mapselect.o(.data);

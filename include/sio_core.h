@@ -137,6 +137,13 @@ struct LinkArenaSt
     /* 9C */ u8 linking_status[4];
     /* A0 */ u8 unk_A0;
     /* A1 */ u8 unk_A1[4][15];
+    /* DD */ STRUCT_PAD(0xDD, 0xEC);
+    /* EC */ struct LinkArenaRules
+    {
+        u16 unk_0_0 : 1;
+        u16 unk_0_1 : 1;
+        u16 unk_0_2 : 1;
+    } rules;
 };
 
 extern struct SioSt EWRAM_DATA gSioStInstance;
@@ -152,6 +159,7 @@ extern int gUnk_Sio_030044D4;
 extern u8 gUnk_Sio_03004580[SIO_MAX_PACKET];
 
 extern struct LinkArenaSt gLinkArenaSt;
+extern char gSioTeamNames[][15];
 
 extern struct ProcScr CONST_DATA ProcScr_SioBigSend[];
 extern struct ProcScr CONST_DATA ProcScr_SioBigReceive[];
@@ -198,3 +206,4 @@ void func_fe6_08036758(struct SioBigReceiveProc * proc);
 int StartSioBigSend(void * data, u32 len, void (* func)(struct SioBigSendProc * proc), u8 arg_3, ProcPtr parent);
 void StartSioBigReceive(void * data, void (* func)(struct SioBigReceiveProc * proc), ProcPtr parent);
 bool IsSioBigTransferActive(void);
+extern struct SioData gSioBuf_030044E0;
