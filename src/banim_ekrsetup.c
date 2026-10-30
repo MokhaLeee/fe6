@@ -25,7 +25,7 @@ void InitLeftAnim(int round_type)
 		scr = AnimScr_DefaultAnim;
 
 	/* front */
-	anim = BasCreate(scr, priority_front);
+	do anim = BasCreate(scr, priority_front); while (0);
 	anim->xPosition = gEkrXPosReal[0] - gEkrBgPosition;
 	anim->yPosition = gEkrYPosReal[0];
 	anim->oam2 = OAM2_PAL(0x7) + OAM2_LAYER(0x2) + OAM2_CHR(0x4000 / 0x20);
@@ -53,7 +53,6 @@ void InitLeftAnim(int round_type)
 		anim->flags2 |= ANIM_BIT2_0400 | ANIM_BIT2_FRONT_FRAME;
 		anim->nextRoundId = 0x0;
 	} while (0);
-	asm("":::"r6");
 	anim->currentRoundType = round_type;
 	anim->imgBuf = gBanimImgSheetBuf_Left;
 	anim->sprDataPool = gBanimOamBufs;
@@ -83,7 +82,7 @@ void InitRightAnim(int round_type)
 		scr = AnimScr_DefaultAnim;
 
 	/* front */
-	anim = BasCreate(scr, priority_front);
+	do anim = BasCreate(scr, priority_front); while (0);
 	anim->xPosition = gEkrXPosReal[1] - gEkrBgPosition;
 	anim->yPosition = gEkrYPosReal[1];
 	anim->oam2 = OAM2_PAL(0x9) + OAM2_LAYER(0x2) + OAM2_CHR(0x6000 / 0x20);
@@ -111,7 +110,6 @@ void InitRightAnim(int round_type)
 		anim->flags2 |= ANIM_BIT2_FRONT_FRAME | ANIM_BIT2_POS_RIGHT | ANIM_BIT2_0400;
 		anim->nextRoundId = 0x0;
 	} while (0);
-	asm("":::"r4");
 	anim->currentRoundType = round_type;
 	anim->imgBuf = gBanimImgSheetBuf_Right;
 	anim->sprDataPool = gBanimOamBufs + BAS_OAM_MAX_SIZE;

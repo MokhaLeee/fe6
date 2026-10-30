@@ -708,14 +708,9 @@ void Minimap_ApplyFlashPalette(struct MinimapProc * proc)
 
 void Minimap_ApplyViewportFlashColor(struct MinimapProc * proc)
 {
-    u32 r, g, b;
-    u32 idx;
-
-#if NONMATCHING
-    u32 component;
-#else
-    u32 register component asm("r3");
-#endif
+    int r, g, b;
+    u8 idx;
+    int component;
 
     SHOULD_BE_STATIC u8 SHOULD_BE_CONST unk_0832786F[] =
     {
@@ -725,14 +720,15 @@ void Minimap_ApplyViewportFlashColor(struct MinimapProc * proc)
         0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01, 0x00,
     };
 
-    idx = unk_0832786F[GetGameTime() % sizeof(unk_0832786F)];
+    component = GetGameTime() & 0x1F;
+    idx = unk_0832786F[component];
     component = idx + 0x10;
 
     r = component;
     g = component;
     b = component;
 
-    gPal[(0x10 + OBPAL_SYSTEM_OBJECTS) * 0x10 + 0x0E] = (b << 10) + (g << 5) + r;
+    PAL_OBJ_COLOR(OBPAL_SYSTEM_OBJECTS, 0x0E) = (b << 10) + (g << 5) + r;
 
     EnablePalSync();
 }

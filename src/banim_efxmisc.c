@@ -347,38 +347,18 @@ void NewEfxMagfcast(struct Anim *anim, int type)
 
     banim_index = gBanimIdx[GetAnimPosition(anim)];
 
-#if !NONMATCHING
-	if (banim_index == 0x11)
-		goto L080571F8;
-	if (banim_index > 0x11)
-		goto L080571F8;
-    switch (banim_index) {
-    case 0xC:
-    case 0xD:
-        NewEfxMagfcastBG(proc->anim, type);
-        return;
-    default:
-        break;
+    if (banim_index != 0x11) {
+        if (banim_index <= 0x11) {
+        switch (banim_index) {
+        case 0xC:
+        case 0xD:
+            NewEfxMagfcastBG(proc->anim, type);
+            return;
+        }
+        }
     }
 
-	
-
-L080571F8:
-	NewEfxMagfcastBG(proc->anim, type + 2);
-	return;
-#else
-    switch (banim_index) {
-    case 0xC:
-    case 0xD:
-        NewEfxMagfcastBG(proc->anim, type);
-        break;
-
-	case 0x11:
-    default:
-        NewEfxMagfcastBG(proc->anim, type + 2);
-        break;
-    }
-#endif
+    NewEfxMagfcastBG(proc->anim, type + 2);
 }
 
 void EfxMagfcast_Loop(struct ProcEfx *proc)
@@ -915,7 +895,7 @@ void NewEfxSpecalEffect(struct Anim *anim)
 	struct Anim *anim1, *anim2;
 
 	if (gEfxSpecalEffectExist[GetAnimPosition(anim)] == false) {
-		register int is_legency asm("r1");
+		int is_legency;
 		struct BattleUnit *bu;
 
 		gEfxSpecalEffectExist[GetAnimPosition(anim)] = true;

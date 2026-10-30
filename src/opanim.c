@@ -779,25 +779,12 @@ void OpAnimGlyphFallIn_Init(struct ProcOpAnimGlyphFallIn *proc)
 
 void OpAnimGlyphFallIn_Loop(struct ProcOpAnimGlyphFallIn *proc)
 {
-	register i16 c asm("r0");
-	register int a asm("r1");
-	register int b asm("r2");
+	proc->unk_38 += proc->unk3A;
 
-	a = proc->unk_38;
-	b = proc->unk3A;
-
-	goto _b;
-
-_a:
-	OpAnimTextPutGlyph(proc->src, proc->dst, ++proc->step);
-	a = proc->unk_38;
-	b = 0xFFFFFF00;
-
-_b:
-	proc->unk_38 = a + b;
-	c = proc->unk_38;
-	if (c > 0xFF)
-		goto _a;
+	while ((i16)proc->unk_38 > 0xFF) {
+		OpAnimTextPutGlyph(proc->src, proc->dst, ++proc->step);
+		proc->unk_38 -= 0x100;
+	}
 
 	if (proc->step >= 0x40)
 		Proc_Break(proc);

@@ -108,6 +108,8 @@ struct ProcWmZoom {
 void StartWmZoomTo(int x, int y, ProcPtr parent);
 void WmZoomTo_Init(struct ProcWmZoom * proc);
 void WmZoomTo_Loop(struct ProcWmZoom * proc);
+extern EWRAM_OVERLAY(worldmap) u8 gWmImgBuf[0x9600];
+
 void func_fe6_08092A9C(int x, int y);
 void StartWmZoomBack(ProcPtr parent);
 void WmZoomBack_Init(struct ProcWmZoom * proc);

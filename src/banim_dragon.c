@@ -232,30 +232,12 @@ void PutManaketeBodyStd(struct ProcEkrDragon * proc)
     {
         int x;
 
-#if NONMATCHING
-        switch (gEkrDistanceType) {
-        case EKR_DISTANCE_CLOSE:
+        if (gEkrDistanceType == EKR_DISTANCE_CLOSE)
             x = 0x21;
-            break;
-
-        default:
-            x = 1;
-            break;
-
-        case EKR_DISTANCE_FAR:
+        else if (gEkrDistanceType == EKR_DISTANCE_FAR)
             x = 0x1B;
-            break;
-        }
-#else
-        int distance = gEkrDistanceType;
-        x = 0x21;
-        if (distance != EKR_DISTANCE_CLOSE)
-        {
+        else
             x = 1;
-            if (distance == EKR_DISTANCE_FAR)
-                x = 0x1B;
-        }
-#endif
 
         EfxTmCpyExtHFlip(
             gEkrTsaBuffer, -1,

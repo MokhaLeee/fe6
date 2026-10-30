@@ -32,6 +32,8 @@ u8 CONST_DATA * Pals_0868C2DC[10] = {
     Pal_Wm_082D1964,
 };
 
+EWRAM_OVERLAY(worldmap) u8 gWmImgBuf[0x9600] = {};
+
 u8 * GetCompressedWmPalette(int a, int b)
 {
     return Pals_0868C2DC[a * 2 + b];
@@ -197,62 +199,40 @@ void WmArrow_Init(struct ProcWmArrow * proc)
     }
 }
 
-/* https://decomp.me/scratch/WjMel */
 void PutWmArrowSpriteExt(struct WmArrowSt * conf, int idx)
 {
-    int r0 = OAM2_CHR(conf->unk_294[idx] + 0x20);
-    int r2 = r0 >> 6;
-    int r3 = (r0 >> 8) << 8;
-    int r6 = (r2 & 3) * 2;
+    int chr = OAM2_CHR(conf->unk_294[idx] + 0x20);
+    int r2 = chr >> 6;
+    int r3 = (chr >> 8) << 8;
+    int oam2 = (r2 & 3) * 2;
 
     if (idx == (conf->unk_03 - 1))
     {
-        int a1;
-        register u32 r1 asm("r1");
+        int pal;
 
         DrawWmArrowCore(conf->sprite_index, 0x100, 0x100, r3);
 
-        a1 = OAM2_PAL(conf->color);
-        a1 = a1 + 0x310;
-        r6 = r6 + a1;
-
-        r1 = conf->x_array[idx];
-        r1 = (r1 << 0xF) >> 0x17;
-        r1 = r1 | (conf->sprite_index << 9);
-
-        r2 = conf->y_array[idx];
-        r2 = (r2 >> 8) & 0xFF;
-        r2 = r2 | 0x100;
+        pal = OAM2_PAL(conf->color);
+        pal = pal + 0x310;
+        oam2 = oam2 + pal;
 
         PutSpriteExt(
             0xC,
-            r1,
-            r2,
+            OAM1_X(conf->x_array[idx] >> 8) | (conf->sprite_index << 9),
+            OAM0_Y(conf->y_array[idx] >> 8) | 0x100,
             Sprite_0868C2D4,
-            r6
-        );
+            oam2);
     }
     else
     {
-        int a1;
-        register u32 r1 asm("r1");
-
-        a1 = OAM2_PAL(conf->color);
-        a1 += 0x323;
-        r6 = a1;
-
-        r1 = conf->x_array[idx];
-        r1 = ((r1 << 0xF) >> 0x17);
-
-        r2 = ((conf->y_array[idx] >> 8) & 0xFF);
+        oam2 = OAM2_PAL(conf->color) + 0x323;
 
         PutSpriteExt(
             0xC,
-            r1,
-            r2,
+            OAM1_X(conf->x_array[idx] >> 8),
+            OAM0_Y(conf->y_array[idx] >> 8),
             Sprite_0868C2CC,
-            r6
-        );
+            oam2);
     }
 }
 
@@ -467,297 +447,60 @@ void WmZoomTo_Loop(struct ProcWmZoom * proc)
     WmZoomCore(wmproc->unk2C, wmproc->unk30, wmproc->unk34, wmproc->unk38, wmproc->unk44, wmproc->unk48, wmproc->unk4A);
 }
 
-NAKEDFUNC
 void func_fe6_08092A9C(int x, int y)
 {
-asm("\
-    .syntax unified\n\
-    push {r4, r5, r6, r7, lr}\n\
-    mov r7, sl\n\
-    mov r6, sb\n\
-    mov r5, r8\n\
-    push {r5, r6, r7}\n\
-    sub sp, #0x18\n\
-    adds r2, r0, #0\n\
-    adds r3, r1, #0\n\
-    asrs r0, r2, #8\n\
-    adds r2, r0, #0\n\
-    subs r2, #0x78\n\
-    asrs r0, r3, #8\n\
-    adds r3, r0, #0\n\
-    subs r3, #0x50\n\
-    movs r1, #0xf0\n\
-    subs r0, r1, r2\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r4, r0, #0x10\n\
-    mov sb, r4\n\
-    asrs r0, r0, #0x10\n\
-    subs r1, r1, r0\n\
-    lsls r1, r1, #0x10\n\
-    lsrs r1, r1, #0x10\n\
-    str r1, [sp, #0x14]        @ sp_14 = sb = 0xF0 - r2\n\
-    movs r1, #0xa0\n\
-    subs r4, r1, r3\n\
-    lsls r4, r4, #0x10\n\
-    lsrs r5, r4, #0x10\n\
-    asrs r4, r4, #0x10\n\
-    subs r1, r1, r4\n\
-    lsls r1, r1, #0x10\n\
-    lsrs r1, r1, #0x10\n\
-    mov r8, r1\n\
-    adds r0, r0, r2\n\
-    subs r0, #0xf0\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r0, r0, #0x10\n\
-    mov sl, r0\n\
-    mov r0, r8\n\
-    str r0, [sp, #8]\n\
-    ldr r1, [sp, #0x14]\n\
-    str r1, [sp]\n\
-    adds r0, r4, r3\n\
-    subs r0, #0xa0\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r0, r0, #0x10\n\
-    str r0, [sp, #0xc]\n\
-    mov r2, sl\n\
-    str r2, [sp, #4]\n\
-    str r0, [sp, #0x10]\n\
-    movs r0, #1\n\
-    movs r1, #0\n\
-    bl GetCompressedWmPalette\n\
-    ldr r1, .L08092CD0 @ =0x02000000\n\
-    bl Decompress\n\
-    movs r2, #0\n\
-    cmp r2, r4\n\
-    bge .L08092B66\n\
-    ldr r4, [sp, #8]\n\
-    lsls r0, r4, #0x10\n\
-    asrs r7, r0, #0x10\n\
-    ldr r1, [sp, #0x14]\n\
-    lsls r0, r1, #0x10\n\
-    asrs r6, r0, #0x10\n\
-.L08092B20:\n\
-    lsls r0, r2, #0x10\n\
-    asrs r4, r0, #0x10\n\
-    lsls r0, r4, #4\n\
-    subs r0, r0, r4\n\
-    lsls r0, r0, #4\n\
-    ldr r2, .L08092CD4 @ =0x0600A000\n\
-    adds r3, r0, r2\n\
-    adds r1, r7, r4\n\
-    lsls r0, r1, #4\n\
-    subs r0, r0, r1\n\
-    lsls r0, r0, #4\n\
-    adds r0, r0, r6\n\
-    ldr r1, .L08092CD0 @ =0x02000000\n\
-    adds r1, r0, r1\n\
-    mov r2, sb\n\
-    lsls r0, r2, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    cmp r0, #0\n\
-    bge .L08092B48\n\
-    adds r0, #3\n\
-.L08092B48:\n\
-    lsls r2, r0, #9\n\
-    lsrs r2, r2, #0xb\n\
-    movs r0, #0x80\n\
-    lsls r0, r0, #0x13\n\
-    orrs r2, r0\n\
-    adds r0, r1, #0\n\
-    adds r1, r3, #0\n\
-    bl CpuSet\n\
-    adds r1, r4, #1\n\
-    lsls r1, r1, #0x10\n\
-    lsrs r2, r1, #0x10\n\
-    lsls r0, r5, #0x10\n\
-    cmp r1, r0\n\
-    blt .L08092B20\n\
-.L08092B66:\n\
-    movs r0, #2\n\
-    movs r1, #0\n\
-    bl GetCompressedWmPalette\n\
-    ldr r1, .L08092CD0 @ =0x02000000\n\
-    bl Decompress\n\
-    lsls r0, r5, #0x10\n\
-    movs r2, #0\n\
-    adds r5, r0, #0\n\
-    mov r4, r8\n\
-    lsls r6, r4, #0x10\n\
-    cmp r5, #0\n\
-    ble .L08092BDE\n\
-    mov r1, sb\n\
-    lsls r0, r1, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    ldr r4, .L08092CD4 @ =0x0600A000\n\
-    adds r4, r4, r0\n\
-    mov r8, r4\n\
-    ldr r1, [sp, #8]\n\
-    lsls r0, r1, #0x10\n\
-    asrs r7, r0, #0x10\n\
-.L08092B94:\n\
-    lsls r0, r2, #0x10\n\
-    asrs r4, r0, #0x10\n\
-    lsls r0, r4, #4\n\
-    subs r0, r0, r4\n\
-    lsls r0, r0, #4\n\
-    mov r2, r8\n\
-    adds r3, r0, r2\n\
-    adds r0, r7, r4\n\
-    lsls r1, r0, #4\n\
-    subs r1, r1, r0\n\
-    lsls r1, r1, #4\n\
-    mov r2, sl\n\
-    lsls r0, r2, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    adds r1, r1, r0\n\
-    ldr r0, .L08092CD0 @ =0x02000000\n\
-    adds r1, r1, r0\n\
-    ldr r2, [sp, #0x14]\n\
-    lsls r0, r2, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    cmp r0, #0\n\
-    bge .L08092BC2\n\
-    adds r0, #3\n\
-.L08092BC2:\n\
-    lsls r2, r0, #9\n\
-    lsrs r2, r2, #0xb\n\
-    movs r0, #0x80\n\
-    lsls r0, r0, #0x13\n\
-    orrs r2, r0\n\
-    adds r0, r1, #0\n\
-    adds r1, r3, #0\n\
-    bl CpuSet\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r2, r0, #0x10\n\
-    cmp r0, r5\n\
-    blt .L08092B94\n\
-.L08092BDE:\n\
-    movs r0, #3\n\
-    movs r1, #0\n\
-    bl GetCompressedWmPalette\n\
-    ldr r1, .L08092CD0 @ =0x02000000\n\
-    bl Decompress\n\
-    movs r2, #0\n\
-    cmp r6, #0\n\
-    ble .L08092C4A\n\
-    ldr r4, [sp, #0xc]\n\
-    lsls r0, r4, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    mov r8, r0\n\
-    ldr r1, [sp]\n\
-    lsls r0, r1, #0x10\n\
-    asrs r7, r0, #0x10\n\
-.L08092C00:\n\
-    asrs r1, r5, #0x10\n\
-    lsls r0, r2, #0x10\n\
-    asrs r4, r0, #0x10\n\
-    adds r1, r1, r4\n\
-    lsls r0, r1, #4\n\
-    subs r0, r0, r1\n\
-    lsls r0, r0, #4\n\
-    ldr r2, .L08092CD4 @ =0x0600A000\n\
-    adds r3, r0, r2\n\
-    mov r0, r8\n\
-    adds r1, r0, r4\n\
-    lsls r0, r1, #4\n\
-    subs r0, r0, r1\n\
-    lsls r0, r0, #4\n\
-    adds r0, r0, r7\n\
-    ldr r1, .L08092CD0 @ =0x02000000\n\
-    adds r1, r0, r1\n\
-    mov r2, sb\n\
-    lsls r0, r2, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    cmp r0, #0\n\
-    bge .L08092C2E\n\
-    adds r0, #3\n\
-.L08092C2E:\n\
-    lsls r2, r0, #9\n\
-    lsrs r2, r2, #0xb\n\
-    movs r0, #0x80\n\
-    lsls r0, r0, #0x13\n\
-    orrs r2, r0\n\
-    adds r0, r1, #0\n\
-    adds r1, r3, #0\n\
-    bl CpuSet\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r2, r0, #0x10\n\
-    cmp r0, r6\n\
-    blt .L08092C00\n\
-.L08092C4A:\n\
-    movs r0, #4\n\
-    movs r1, #0\n\
-    bl GetCompressedWmPalette\n\
-    ldr r1, .L08092CD0 @ =0x02000000\n\
-    bl Decompress\n\
-    movs r2, #0\n\
-    cmp r6, #0\n\
-    ble .L08092CBE\n\
-    mov r4, sb\n\
-    lsls r0, r4, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    ldr r1, .L08092CD4 @ =0x0600A000\n\
-    adds r1, r1, r0\n\
-    mov r8, r1\n\
-    ldr r4, [sp, #0x10]\n\
-    lsls r0, r4, #0x10\n\
-    asrs r7, r0, #0x10\n\
-.L08092C70:\n\
-    asrs r1, r5, #0x10\n\
-    lsls r0, r2, #0x10\n\
-    asrs r4, r0, #0x10\n\
-    adds r1, r1, r4\n\
-    lsls r0, r1, #4\n\
-    subs r0, r0, r1\n\
-    lsls r0, r0, #4\n\
-    mov r1, r8\n\
-    adds r3, r0, r1\n\
-    adds r0, r7, r4\n\
-    lsls r1, r0, #4\n\
-    subs r1, r1, r0\n\
-    lsls r1, r1, #4\n\
-    ldr r2, [sp, #4]\n\
-    lsls r0, r2, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    adds r1, r1, r0\n\
-    ldr r0, .L08092CD0 @ =0x02000000\n\
-    adds r1, r1, r0\n\
-    ldr r2, [sp, #0x14]\n\
-    lsls r0, r2, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    cmp r0, #0\n\
-    bge .L08092CA2\n\
-    adds r0, #3\n\
-.L08092CA2:\n\
-    lsls r2, r0, #9\n\
-    lsrs r2, r2, #0xb\n\
-    movs r0, #0x80\n\
-    lsls r0, r0, #0x13\n\
-    orrs r2, r0\n\
-    adds r0, r1, #0\n\
-    adds r1, r3, #0\n\
-    bl CpuSet\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r2, r0, #0x10\n\
-    cmp r0, r6\n\
-    blt .L08092C70\n\
-.L08092CBE:\n\
-    add sp, #0x18\n\
-    pop {r3, r4, r5}\n\
-    mov r8, r3\n\
-    mov sb, r4\n\
-    mov sl, r5\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .align 2, 0\n\
-.L08092CD0: .4byte 0x02000000\n\
-.L08092CD4: .4byte 0x0600A000\n\
-    .syntax divided\n\
-");
+    i16 x2, i, w1, x3, x4, h2, h1, y1, y3, y4, x1;
+    u8 *dst, *src;
+
+    x = (x >> 8) - 0x78;
+    y = (y >> 8) - 0x50;
+
+    w1 = 0xF0 - x;
+    x1 = 0xF0 - w1;
+    h1 = 0xA0 - y;
+    h2 = 0xA0 - h1;
+    x2 = w1 + x - 0xF0;
+    y1 = h2;
+    x3 = 0xF0 - w1;
+    y3 = h1 + y - 0xA0;
+    x4 = x2;
+    y4 = y3;
+
+    Decompress(GetCompressedWmPalette(1, 0), gWmImgBuf);
+
+    for (i = 0; i < h1; i++)
+    {
+        dst = (u8 *)0x0600A000 + i * 0xF0;
+        src = gWmImgBuf + ((y1 + i) * 0xF0 + x1);
+        CpuCopy32(src, dst, w1);
+    }
+
+    Decompress(GetCompressedWmPalette(2, 0), gWmImgBuf);
+
+    for (i = 0; i < h1; i++)
+    {
+        dst = (u8 *)0x0600A000 + i * 0xF0 + w1;
+        src = gWmImgBuf + ((y1 + i) * 0xF0 + x2);
+        CpuCopy32(src, dst, x1);
+    }
+
+    Decompress(GetCompressedWmPalette(3, 0), gWmImgBuf);
+
+    for (i = 0; i < h2; i++)
+    {
+        dst = (u8 *)0x0600A000 + (h1 + i) * 0xF0;
+        src = gWmImgBuf + ((y3 + i) * 0xF0 + x3);
+        CpuCopy32(src, dst, w1);
+    }
+
+    Decompress(GetCompressedWmPalette(4, 0), gWmImgBuf);
+
+    for (i = 0; i < h2; i++)
+    {
+        dst = (u8 *)0x0600A000 + (h1 + i) * 0xF0 + w1;
+        src = gWmImgBuf + ((y4 + i) * 0xF0 + x4);
+        CpuCopy32(src, dst, x1);
+    }
 }
 
 struct ProcScr CONST_DATA ProcScr_WmZoomBack[] = {

@@ -13,7 +13,6 @@
 int Interpolate(int method, int lo, int hi, int x, int end)
 {
     int denom, left, result;
-    register int _deno asm("r0");
 
     if (end == 0)
         return hi;
@@ -27,8 +26,9 @@ int Interpolate(int method, int lo, int hi, int x, int end)
         break;
 
     case INTERPOLATE_SQUARE:
-        _deno = x * x;
-        denom = _deno * (hi - lo);
+        result = x * x;
+        left = hi - lo;
+        denom = result * left;
         result = lo + Div(denom, end * end);
         break;
 

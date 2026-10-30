@@ -831,8 +831,7 @@ void EkrRestoreBGM(void)
 
 int GetProperAnimSoundLocation(struct Anim *anim)
 {
-	int i, header, val2, val1;
-	u32 ret;
+	int header, val2, val1;
 	const struct BaSpriteData *anim_sprite, *it;
 
 	anim_sprite = anim->sprData;
@@ -858,14 +857,10 @@ int GetProperAnimSoundLocation(struct Anim *anim)
 	}
 
 	if (val2 == 0)
-		ret = 0x7FFFFFFF;
+		val1 = 0x7FFFFFFF;
 	else
-		ret = Div(val1, val2);
+		val1 = Div(val1, val2);
 
-	val1 = ret;
-
-	asm("":::"memory");
-	ret = val1;
 	return val1;
 }
 

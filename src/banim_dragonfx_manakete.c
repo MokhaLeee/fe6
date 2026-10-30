@@ -562,8 +562,7 @@ void EkrManaketeDeamon_Loop(struct ProcEkrDragonDeamon * proc)
 
     if (proc->anim->currentRoundType != proc->round_cur)
     {
-        register int rtype asm("r0");
-        rtype = proc->anim->currentRoundType;
+        i16 rtype = proc->anim->currentRoundType;
 
         /* Config round switch */
         switch (rtype) {

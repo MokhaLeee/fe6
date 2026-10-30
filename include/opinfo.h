@@ -192,7 +192,12 @@ extern EWRAM_OVERLAY(opinfo) u8 OpEkrMagi_ObImgBuf[0x1000];
 extern EWRAM_OVERLAY(opinfo) struct EkrTerrainfxDesc OpEkrTerrainDesc;
 extern EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000];
 extern EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6];
-extern EWRAM_OVERLAY(opinfo) u8 unk_opinfo_0200FF54[14 * 2];
+struct OpInfoUnk0200FF54 {
+	/* 00 */ u8 x, y;
+	STRUCT_PAD(0x02, 0x04);
+};
+
+extern EWRAM_OVERLAY(opinfo) struct OpInfoUnk0200FF54 unk_opinfo_0200FF54[14];
 
 extern CONST_DATA struct ProcScr ProcScr_OpInfo[];
 extern CONST_DATA struct ProcScr ProcScr_OpInfoFadeOut[];
@@ -233,9 +238,9 @@ extern CONST_DATA u8 OpClassDemo_JidConfig[35];
 
 struct ClassDisplayFont {
 	u16 *sprite;
-	char ch;
+	i8 ch;
 	i8 x_start, width, c;
 };
 
 extern CONST_DATA struct ClassDisplayFont gClassDisplayFont1[];
-extern const char * CONST_DATA gClassDemoNames[];
+extern i8 const * CONST_DATA gClassDemoNames[];

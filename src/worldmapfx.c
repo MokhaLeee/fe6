@@ -19,83 +19,16 @@
 #include "constants/videoalloc_global.h"
 #include "constants/worldmap.h"
 
-#if NONMATCHING
 void DrawWmArrowCore(u8 id, i16 b, i16 c, int d)
 {
     PutSpriteAffine(
         id,
-        (gSinLut_u32[(d + 0x100) & 0x3FF] * b) >> 0xF,
-        (gSinLut_u32[(d) & 0x3FF] * c) >> 0xF,
+        (b * gSinLut_u32[(d + 0x100) & 0x3FF]) >> 0xF,
+        (c * gSinLut_u32[(d) & 0x3FF]) >> 0xF,
         -((gSinLut_u32[(d) & 0x3FF] * b) >> 0xF),
         (gSinLut_u32[(d + 0x100) & 0x3FF] * c) >> 0xF
     );
 }
-#else
-
-NAKEDFUNC
-void DrawWmArrowCore(u8 id, i16 b, i16 c, int d)
-{
-asm("\
-    .syntax unified\n\
-    push {r4, r5, r6, lr}\n\
-    mov r6, r8\n\
-    push {r6}\n\
-    sub sp, #4\n\
-    adds r4, r1, #0\n\
-    adds r5, r2, #0\n\
-    lsls r0, r0, #0x18\n\
-    lsrs r0, r0, #0x18\n\
-    lsls r4, r4, #0x10\n\
-    asrs r4, r4, #0x10\n\
-    ldr r6, .L080930CC @ =gSinLut_u32\n\
-    movs r2, #0x80\n\
-    lsls r2, r2, #1\n\
-    adds r1, r3, r2\n\
-    ldr r2, .L080930D0 @ =0x000003FF\n\
-    ands r1, r2\n\
-    lsls r1, r1, #2\n\
-    adds r1, r1, r6\n\
-    ldr r1, [r1]\n\
-    mov r8, r1\n\
-    mov r1, r8\n\
-    muls r1, r4, r1\n\
-    lsls r1, r1, #1\n\
-    asrs r1, r1, #0x10\n\
-    lsls r5, r5, #0x10\n\
-    asrs r5, r5, #0x10\n\
-    ands r3, r2\n\
-    lsls r3, r3, #2\n\
-    adds r3, r3, r6\n\
-    ldr r3, [r3]\n\
-    adds r2, r5, #0\n\
-    muls r2, r3, r2\n\
-    lsls r2, r2, #1\n\
-    asrs r2, r2, #0x10\n\
-    muls r3, r4, r3\n\
-    asrs r3, r3, #0xf\n\
-    rsbs r3, r3, #0\n\
-    lsls r3, r3, #0x10\n\
-    asrs r3, r3, #0x10\n\
-    mov r4, r8\n\
-    muls r4, r5, r4\n\
-    lsls r4, r4, #1\n\
-    asrs r4, r4, #0x10\n\
-    str r4, [sp]\n\
-    bl PutSpriteAffine\n\
-    add sp, #4\n\
-    pop {r3}\n\
-    mov r8, r3\n\
-    pop {r4, r5, r6}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .align 2, 0\n\
-.L080930CC: .4byte gSinLut_u32\n\
-.L080930D0: .4byte 0x000003FF\n\
-    .syntax divided\n\
-");
-}
-
-#endif
 
 void StartWmEvent(void)
 {
@@ -902,14 +835,12 @@ CONST_DATA struct WmMapTextSpriteConfig SpriteConf_WmMapTextDisp[] = {
     [3] = { Sprite_0868C938, 4, 8, -1, 0 },
 };
 
-#if NONMATCHING
 void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
 {
-    int _e = e;
     int oam1 = oam1_x & 0xFFFFFE00;
     int oam0 = oam0_y & 0xFFFFFF00;
 
-    switch (_e) {
+    switch (e) {
     case 0:
         oam1_x = oam1_x - 2;
         break;
@@ -922,9 +853,6 @@ void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, i
     case 3:
         oam1_x = oam1_x + 2;
         break;
-
-    default:
-        break;
     }
 
     f *= 2;
@@ -933,8 +861,8 @@ void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, i
     {
         PutSpriteExt(
             0xB,
-            OAM1_X(oam1_x),
-            OAM0_Y(oam0_y),
+            oam1 + OAM1_X(oam1_x),
+            oam0 + OAM0_Y(oam0_y),
             SpriteConf_WmMapTextDisp[e].sprite,
             0x4320);
 
@@ -942,196 +870,29 @@ void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, i
         oam0_y += SpriteConf_WmMapTextDisp[e].y1;
     }
 
-    switch (_e) {
+    switch (e) {
     case 2:
         oam1_x = oam1_x + 2;
 
         /* Fall through */
 
     case 0:
-        oam1_x = oam1_x - Config_WmMapText[e].x;
+        oam1_x = oam1_x - Config_WmMapText[d].x;
+        break;
+
+    case 1:
         break;
 
     case 3:
         oam1_x = oam1_x - 2;
         break;
-
-    default:
-        break;
     }
 
     DisplaySpriteAnim(
         sprit_anim,
-        oam1 + OAM1_X(oam1_x + SpriteConf_WmMapTextDisp[d].x2),
-        oam0 + OAM0_Y(oam0_y + SpriteConf_WmMapTextDisp[d].y2));
+        oam1 + OAM1_X(oam1_x + SpriteConf_WmMapTextDisp[e].x2),
+        oam0 + OAM0_Y(oam0_y + SpriteConf_WmMapTextDisp[e].y2));
 }
-
-#else
-
-NAKEDFUNC
-void DrawWmMapTextCore(struct SpriteAnim * sprit_anim, int oam1_x, int oam0_y, int d, int e, int f)
-{
-asm("\
-    .syntax unified\n\
-    push {r4, r5, r6, r7, lr}\n\
-    mov r7, sl\n\
-    mov r6, sb\n\
-    mov r5, r8\n\
-    push {r5, r6, r7}\n\
-    sub sp, #0x10\n\
-    str r0, [sp, #4]\n\
-    adds r4, r1, #0\n\
-    adds r7, r2, #0\n\
-    str r3, [sp, #8]\n\
-    ldr r0, [sp, #0x30]\n\
-    mov r8, r0\n\
-    ldr r5, [sp, #0x34]\n\
-    ldr r1, .L08093EEC @ =0xFFFFFE00\n\
-    mov sb, r1\n\
-    mov r2, sb\n\
-    ands r2, r4\n\
-    mov sb, r2\n\
-    ldr r0, .L08093EF0 @ =0xFFFFFF00\n\
-    mov sl, r0\n\
-    mov r1, sl\n\
-    ands r1, r7\n\
-    mov sl, r1\n\
-    mov r2, r8\n\
-    cmp r2, #1\n\
-    beq .L08093F08\n\
-    cmp r2, #1\n\
-    bgt .L08093EF4\n\
-    cmp r2, #0\n\
-    beq .L08093F00\n\
-    b .L08093F0A\n\
-    .align 2, 0\n\
-.L08093EEC: .4byte 0xFFFFFE00\n\
-.L08093EF0: .4byte 0xFFFFFF00\n\
-.L08093EF4:\n\
-    mov r0, r8\n\
-    cmp r0, #2\n\
-    beq .L08093F04\n\
-    cmp r0, #3\n\
-    beq .L08093F08\n\
-    b .L08093F0A\n\
-.L08093F00:\n\
-    subs r4, #2\n\
-    b .L08093F0A\n\
-.L08093F04:\n\
-    subs r4, #3\n\
-    b .L08093F0A\n\
-.L08093F08:\n\
-    adds r4, #2\n\
-.L08093F0A:\n\
-    lsls r5, r5, #1\n\
-    subs r5, #1\n\
-    movs r0, #1\n\
-    rsbs r0, r0, #0\n\
-    mov r1, r8\n\
-    lsls r1, r1, #1\n\
-    str r1, [sp, #0xc]\n\
-    cmp r5, r0\n\
-    beq .L08093F54\n\
-    ldr r1, .L08093F64\n\
-    ldr r0, [sp, #0xc]\n\
-    add r0, r8\n\
-    lsls r0, r0, #2\n\
-    adds r6, r0, r1\n\
-.L08093F26:\n\
-    ldr r1, .L08093F68 @ =0x000001FF\n\
-    ands r1, r4\n\
-    add r1, sb\n\
-    movs r2, #0xff\n\
-    ands r2, r7\n\
-    add r2, sl\n\
-    ldr r3, [r6]\n\
-    ldr r0, .L08093F6C @ =0x00004320\n\
-    str r0, [sp]\n\
-    movs r0, #0xb\n\
-    bl PutSpriteExt\n\
-    movs r2, #4\n\
-    ldrsh r0, [r6, r2]\n\
-    adds r4, r4, r0\n\
-    movs r1, #6\n\
-    ldrsh r0, [r6, r1]\n\
-    adds r7, r7, r0\n\
-    subs r5, #1\n\
-    movs r0, #1\n\
-    rsbs r0, r0, #0\n\
-    cmp r5, r0\n\
-    bne .L08093F26\n\
-.L08093F54:\n\
-    mov r2, r8\n\
-    cmp r2, #1\n\
-    beq .L08093F96\n\
-    cmp r2, #1\n\
-    bgt .L08093F70\n\
-    cmp r2, #0\n\
-    beq .L08093F7E\n\
-    b .L08093F96\n\
-    .align 2, 0\n\
-.L08093F64: .4byte SpriteConf_WmMapTextDisp\n\
-.L08093F68: .4byte 0x000001FF\n\
-.L08093F6C: .4byte 0x00004320\n\
-.L08093F70:\n\
-    mov r0, r8\n\
-    cmp r0, #2\n\
-    beq .L08093F7C\n\
-    cmp r0, #3\n\
-    beq .L08093F94\n\
-    b .L08093F96\n\
-.L08093F7C:\n\
-    adds r4, #2\n\
-.L08093F7E:\n\
-    ldr r0, .L08093F90 @ =Config_WmMapText\n\
-    ldr r2, [sp, #8]\n\
-    lsls r1, r2, #1\n\
-    adds r1, r1, r2\n\
-    lsls r1, r1, #2\n\
-    adds r1, r1, r0\n\
-    ldr r0, [r1]\n\
-    subs r4, r4, r0\n\
-    b .L08093F96\n\
-    .align 2, 0\n\
-.L08093F90: .4byte Config_WmMapText\n\
-.L08093F94:\n\
-    subs r4, #2\n\
-.L08093F96:\n\
-    ldr r0, .L08093FD0 @ =SpriteConf_WmMapTextDisp\n\
-    ldr r2, [sp, #0xc]\n\
-    add r2, r8\n\
-    lsls r2, r2, #2\n\
-    adds r2, r2, r0\n\
-    movs r0, #8\n\
-    ldrsh r1, [r2, r0]\n\
-    adds r1, r4, r1\n\
-    ldr r0, .L08093FD4 @ =0x000001FF\n\
-    ands r1, r0\n\
-    add r1, sb\n\
-    movs r0, #0xa\n\
-    ldrsh r2, [r2, r0]\n\
-    adds r2, r7, r2\n\
-    movs r0, #0xff\n\
-    ands r2, r0\n\
-    add r2, sl\n\
-    ldr r0, [sp, #4]\n\
-    bl DisplaySpriteAnim\n\
-    add sp, #0x10\n\
-    pop {r3, r4, r5}\n\
-    mov r8, r3\n\
-    mov sb, r4\n\
-    mov sl, r5\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .align 2, 0\n\
-.L08093FD0: .4byte SpriteConf_WmMapTextDisp\n\
-.L08093FD4: .4byte 0x000001FF\n\
-    .syntax divided\n\
-");
-}
-
-#endif
 
 void ModifyWmSpritePosition(struct Vec2i * vec)
 {

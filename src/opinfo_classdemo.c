@@ -34,7 +34,7 @@ EWRAM_OVERLAY(opinfo) u8 OpEkrTerrain_ImgBuf[0x2000] = {};
 
 EWRAM_OVERLAY(opinfo) struct Text OpClassDemoTexts[6] = {};
 
-EWRAM_OVERLAY(opinfo) u8 unk_opinfo_0200FF54[14 * 2] = {};
+EWRAM_OVERLAY(opinfo) struct OpInfoUnk0200FF54 unk_opinfo_0200FF54[14] = {};
 
 CONST_DATA i8 OpClassDemo_MagiConfig[35 * 5] = {
 	0, 0, 0, 0, 0,
@@ -196,9 +196,7 @@ const char Str_OpInfo_Res[] = TEXT("魔防", "Res");
 
 void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 {
-	int i, j;
-	register int k asm("r2");
-	struct OpClassDemoBanimCtrl *ctrl;
+	int i, k;
 
 	int use_mag = false;
 
@@ -230,19 +228,18 @@ void ClassDemoMain_ExecEkrMainMini(struct ProcClassDemoMain *proc)
 
 	if (proc->index == 0) {
 		proc->ctrl_index = 0;
-		ctrl = gOpClassDemoBanimCtrl;
 	} else {
 		i = 0;
 		k = 0;
-		j = 0;
 
-		do {
-			do {
-				ctrl = &gOpClassDemoBanimCtrl[++j];
-				++i;
-			} while (ctrl->duration != 0);
-			k++;
-		} while(k != proc->index);
+		while (1) {
+			i++;
+			if (gOpClassDemoBanimCtrl[i].duration == 0) {
+				k++;
+				if (k == proc->index)
+					break;
+			}
+		}
 		proc->ctrl_index = i + 1;
 	}
 	proc->round_type = gOpClassDemoBanimCtrl[proc->ctrl_index].round_type;
@@ -471,34 +468,29 @@ ProcPtr StartClassAnimDisplay(struct ProcOpInfo *parent, u8 index)
 	return proc;
 }
 
-#if NONMATCHING
 void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
 {
-	int i;
-	struct ProcClassDemoMain *parent = proc->gauge;
+	int i, j;
 
+	proc->gauge = proc->proc_parent;
 	proc->timer = 0;
 	proc->unk_42 = 0;
 	proc->unk_43 = 250;
 
 	for (i = 0; i < 14; i++) {
-		char ch;
-		int j;
-		const struct ClassDisplayFont *font;
-
 		unk_opinfo_0200FF54[i].x = 0;
 		unk_opinfo_0200FF54[i].y = 0;
 
-		ch = gClassDemoNames[parent->index][i];
-		if (ch == '\0') {
+		if (gClassDemoNames[proc->gauge->index][i] == '\0') {
 			proc->ch_pos[i] = 0xFF;
 			break;
 		}
 
-		for (j = 0, font = gClassDisplayFont1; ; j++) {
-			if (font->sprite && font->ch == ch) {
+		for (j = 0; gClassDisplayFont1[j].sprite != NULL; j++) {
+			if (gClassDisplayFont1[j].ch == gClassDemoNames[proc->gauge->index][i]) {
 				proc->ch_pos[i] = j;
-				proc->unk_42 += font->width - font->x_start;
+				proc->unk_42 += gClassDisplayFont1[j].width - gClassDisplayFont1[j].x_start;
+				break;
 			}
 		}
 	}
@@ -506,133 +498,6 @@ void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
 	Decompress(Img_ClassDemoFont, OBJ_VRAM0);
 	ApplyPalettes(Pal_ClassDemoFont, 0x14, 2);
 }
-#else
-NAKEDFUNC
-void ClassDemoStatus_Init(struct ProcClassDemoStatus *proc)
-{
-asm("\
-	.syntax unified\n\
-	push {r4, r5, r6, r7, lr}\n\
-	mov r7, sl\n\
-	mov r6, sb\n\
-	mov r5, r8\n\
-	push {r5, r6, r7}\n\
-	mov ip, r0				@ ip = proc\n\
-	ldr r0, [r0, #0x14]\n\
-	mov r1, ip\n\
-	str r0, [r1, #0x30]		@ r1+30 = parent\n\
-	movs r1, #0\n\
-	movs r0, #0\n\
-	mov r2, ip\n\
-	strh r0, [r2, #0x2a]\n\
-	adds r2, #0x42\n\
-	strb r1, [r2]\n\
-	mov r1, ip\n\
-	adds r1, #0x43\n\
-	movs r0, #0xfa\n\
-	strb r0, [r1]\n\
-	movs r4, #0\n\
-	ldr r0, .L08095B48 @ =gClassDemoNames\n\
-	mov sb, r0\n\
-	movs r1, #0x34\n\
-	add r1, ip\n\
-	mov r8, r1\n\
-	adds r7, r2, #0\n\
-	mov sl, sb\n\
-.L08095B16:\n\
-	lsls r0, r4, #2\n\
-	ldr r2, .L08095B4C @ =unk_opinfo_0200FF54\n\
-	adds r0, r0, r2\n\
-	movs r1, #0\n\
-	strb r1, [r0]\n\
-	strb r1, [r0, #1]\n\
-	mov r1, ip\n\
-	ldr r0, [r1, #0x30]\n\
-	adds r0, #0x31\n\
-	ldrb r0, [r0]\n\
-	lsls r3, r0, #2\n\
-	mov r2, sb\n\
-	adds r0, r3, r2\n\
-	ldr r0, [r0]\n\
-	adds r0, r0, r4\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	cmp r0, #0\n\
-	bne .L08095B64\n\
-	mov r0, r8\n\
-	adds r1, r0, r4\n\
-	movs r0, #0xff\n\
-	strb r0, [r1]\n\
-	b .L08095B98\n\
-	.align 2, 0\n\
-.L08095B48: .4byte gClassDemoNames\n\
-.L08095B4C: .4byte unk_opinfo_0200FF54\n\
-.L08095B50:\n\
-	mov r1, r8\n\
-	adds r0, r1, r4\n\
-	strb r5, [r0]\n\
-	ldrb r2, [r3, #6]\n\
-	ldrb r1, [r3, #5]\n\
-	subs r0, r2, r1\n\
-	ldrb r2, [r7]\n\
-	adds r0, r2, r0\n\
-	strb r0, [r7]\n\
-	b .L08095B92\n\
-.L08095B64:\n\
-	movs r5, #0\n\
-	ldr r1, .L08095BBC @ =gClassDisplayFont1\n\
-	ldr r0, [r1]\n\
-	adds r6, r4, #1\n\
-	cmp r0, #0\n\
-	beq .L08095B92\n\
-	mov r2, sl\n\
-	adds r0, r3, r2\n\
-	ldr r0, [r0]\n\
-	adds r0, r0, r4\n\
-	movs r2, #0\n\
-	ldrsb r2, [r0, r2]\n\
-	adds r3, r1, #0\n\
-.L08095B7E:\n\
-	movs r0, #4\n\
-	ldrsb r0, [r3, r0]\n\
-	cmp r0, r2\n\
-	beq .L08095B50\n\
-	adds r1, #8\n\
-	adds r3, #8\n\
-	adds r5, #1\n\
-	ldr r0, [r1]\n\
-	cmp r0, #0\n\
-	bne .L08095B7E\n\
-.L08095B92:\n\
-	adds r4, r6, #0\n\
-	cmp r4, #0xd\n\
-	ble .L08095B16\n\
-.L08095B98:\n\
-	ldr r1, .L08095BC0 @ =0x06010000\n\
-	ldr r0, .L08095BC4 @ =Img_ClassDemoFont\n\
-	bl Decompress\n\
-	ldr r0, .L08095BC8 @ =Pal_ClassDemoFont\n\
-	movs r1, #0xa0\n\
-	lsls r1, r1, #2\n\
-	movs r2, #0x40\n\
-	bl ApplyPaletteExt\n\
-	pop {r3, r4, r5}\n\
-	mov r8, r3\n\
-	mov sb, r4\n\
-	mov sl, r5\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-.L08095BBC: .4byte gClassDisplayFont1\n\
-.L08095BC0: .4byte 0x06010000\n\
-.L08095BC4: .4byte Img_ClassDemoFont\n\
-.L08095BC8: .4byte Pal_ClassDemoFont\n\
-	.syntax divided\n\
-");
-}
-#endif
 
 const char Str_OpInfo_Mag[] = TEXT("魔力", "Mag");
 
@@ -682,8 +547,8 @@ void SetOpClassDemoStatusPos(struct ProcClassDemoStatus *proc, int pos)
 
 void func_fe6_08095D48(ProcPtr unused)
 {
-	unk_opinfo_0200FF54[0] = 0x80;
-	unk_opinfo_0200FF54[1] = 2;
+	unk_opinfo_0200FF54[0].x = 0x80;
+	unk_opinfo_0200FF54[0].y = 2;
 }
 
 void func_fe6_08095D58(void)
@@ -924,7 +789,7 @@ CONST_DATA struct ClassDisplayFont gClassDisplayFont1[] = {
 	{ NULL, 0, 0, 0, 0 },
 };
 
-const char * CONST_DATA gClassDemoNames[] = {
+i8 const * CONST_DATA gClassDemoNames[] = {
 	"Lord",
 	"Socialknight",
 	"Paladin",

@@ -81,6 +81,13 @@ SECTIONS
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
     . = __ewram_overlay_beg;
+    ewram_overlay_worldmap (NOLOAD) : ALIGN(4)
+    {
+        . = ALIGN(4); src/worldmap.o(ewram_overlay_worldmap);
+    }
+    __ewram_overlay_end = MAX(., __ewram_overlay_end);
+
+    . = __ewram_overlay_beg;
     ewram_overlay_opinfo (NOLOAD) : ALIGN(4)
     {
         . = ALIGN(4); src/opinfo.o(ewram_overlay_opinfo);

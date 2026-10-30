@@ -317,7 +317,7 @@ void BattleAIS_ExecCommands(void)
 					break;
 
 				case BAS_CMD(0x2D):
-					if (GetAnimLayer(anim) == 0) {}
+					GetAnimLayer(anim);
 					break;
 
 				/**
