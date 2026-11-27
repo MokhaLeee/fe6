@@ -56,6 +56,8 @@ EWRAM_OVERLAY(banim) struct ProcEkrBattle *gpProcEkrBattle = NULL;
 
 CONST_DATA char gNopStr[] = "\0";
 
+#define gEkrBarfxBuf ((u16 *) (void *) (gSpellAnimBgfx + 0x1D00))
+
 void SetBanimLinkArenaFlag(int flag)
 {
     gBanimLinkArenaFlag = flag;
